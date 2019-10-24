@@ -48,8 +48,6 @@ class SuggestionBox extends React.PureComponent {
                         className="recentTag"
                       >
                         <Anchor
-                          // asPath={`/search/${item}`}
-                          // to={`/search?searchQuery=${item}`}
                           noLink
                           className="suggestion-label"
                           onClick={() => hideOverlayAfterClick(`${item}`)}

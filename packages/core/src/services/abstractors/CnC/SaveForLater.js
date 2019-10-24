@@ -88,6 +88,7 @@ export function formatSflItems(sflResponse, imageGenerator, currencyCode, isCana
       itemInfo: {
         itemId: item.itemCatentryId.toString(),
         offerPrice: getItemOfferPrice(item, sizeAndFit, isCanada),
+        listPrice: flatCurrencyToCents(item.productInfo.listPrice),
       },
       miscInfo: {
         // set badge info

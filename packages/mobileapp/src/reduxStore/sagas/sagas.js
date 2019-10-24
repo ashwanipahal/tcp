@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import LayoutSaga from '@tcp/core/src/reduxStore/sagas/layout';
 import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
@@ -52,6 +53,7 @@ import ExtraPointsSaga from '@tcp/core/src/components/features/account/ExtraPoin
 import PickupStoreSaga from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.saga';
 import OutfitDetailsSaga from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.saga';
 import ConfirmationPageSaga from '@tcp/core/src/components/features/CnC/Confirmation/container/Confirmation.saga';
+import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.saga';
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
@@ -63,6 +65,7 @@ import SearchBarSaga from '@tcp/core/src/components/common/molecules/SearchBar/S
 import FavoriteSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
 import RecommendationsSaga from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.saga';
 import RecentSearchSaga from '@tcp/core/src/components/common/organisms/SearchProduct/RecentSearch.saga';
+import SubscribeStoreSaga from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -129,5 +132,9 @@ export default function* rootSaga() {
     OutfitDetailsSaga(),
     RecentSearchSaga(),
     AccountSaga(),
+    SubscribeStoreSaga(),
+    LayoutSaga(),
+    NavigateXHRSaga(),
+    SubscribeStoreSaga(),
   ]);
 }

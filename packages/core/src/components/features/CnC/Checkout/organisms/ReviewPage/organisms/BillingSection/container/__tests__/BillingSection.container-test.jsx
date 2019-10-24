@@ -9,6 +9,7 @@ describe('Gift Cards Container', () => {
     card: null,
     labels: {},
     address: null,
+    getCVVCodeInfo: jest.fn(),
   };
 
   it('should render Gift Card view section', () => {

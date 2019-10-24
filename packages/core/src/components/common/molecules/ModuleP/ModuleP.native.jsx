@@ -30,6 +30,7 @@ const ModuleP = props => {
     isPlcc,
     onQuickViewOpenClick,
     item,
+    viaModule,
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -56,6 +57,7 @@ const ModuleP = props => {
   return (
     <View>
       <ListItem
+        paddings="12px 0 12px 12px"
         item={item}
         isMatchingFamily={isMatchingFamily}
         badge1={topBadge}
@@ -70,6 +72,7 @@ const ModuleP = props => {
         onQuickViewOpenClick={onQuickViewOpenClick}
         fullWidth
         productImageWidth={PRODUCT_IMAGE_WIDTH}
+        viaModule={viaModule}
       />
     </View>
   );
@@ -82,6 +85,7 @@ ModuleP.propTypes = {
   isPlcc: PropTypes.bool,
   onQuickViewOpenClick: PropTypes.func,
   item: PropTypes.shape({}).isRequired,
+  viaModule: PropTypes.string,
 };
 
 ModuleP.defaultProps = {
@@ -90,6 +94,7 @@ ModuleP.defaultProps = {
   isMatchingFamily: true,
   isPlcc: false,
   currencySymbol: '$',
+  viaModule: '',
 };
 
 export default ModuleP;

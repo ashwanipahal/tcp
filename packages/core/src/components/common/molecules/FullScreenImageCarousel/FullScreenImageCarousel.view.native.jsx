@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import PaginationDots from '../PaginationDots';
 import ModalNative from '../Modal';
-import { getScreenHeight, getScreenWidth } from '../../../../utils/index.native';
+import { getScreenHeight, getScreenWidth, getAPIConfig } from '../../../../utils/index.native';
 import { ModalCarousel, PaginationContainer } from './styles/FullScreenImageCarousel.style.native';
 
 class FullScreenImageCarousel extends React.PureComponent {
@@ -30,8 +30,17 @@ class FullScreenImageCarousel extends React.PureComponent {
       alignItems: 'flex-end',
     };
 
+    const config = 'w_450';
+    const apiConfigObj = getAPIConfig();
+
+    const { brandId } = apiConfigObj;
+
+    const brandName = brandId && brandId.toUpperCase();
+    const assetHost = apiConfigObj[`assetHost${brandName}`];
+    const productAssetPath = apiConfigObj[`productAssetPath${brandName}`];
+
     const imageObjects = imageUrls.map(item => ({
-      url: item.regularSizeImageUrl,
+      url: `${assetHost}/${config}/${productAssetPath}/${item.regularSizeImageUrl}`,
       width: getScreenWidth() - 24,
       height: getScreenHeight() / 2,
       props: {

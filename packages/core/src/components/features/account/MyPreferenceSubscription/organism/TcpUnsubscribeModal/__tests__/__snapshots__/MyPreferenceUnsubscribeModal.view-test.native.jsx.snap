@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInformation component should render correctly 1`] = `
+<Styled(View)
+  spacingStyles="margin-bottom-XXXL margin-left-LRG margin-right-LRG"
+>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    data-locator="my-preference-modal_title"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-LRG"
+    text="lbl_prefrence_modal_unsubscribe_title"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    component="div"
+    data-locator="my-preference-modal_info-text"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    text="lbl_prefrence_modal_are_you_sure"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    component="div"
+    data-locator="my-preference-modal_info-text"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-LRG"
+    text="lbl_prefrence_modal_clicking_submit_text"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    component="div"
+    data-locator="my-preference-modal_sub-info-text"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    text="lbl_prefrence_modal_phone_number"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    component="div"
+    data-locator="my-preference-modal_sub-info-text"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-XXXL"
+    text="(234) 736-8468"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    className="submit-button"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    dataLocator="subscribe_modal_submit"
+    disableButton={false}
+    fill="BLUE"
+    fullWidth={true}
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
+    onPress={[MockFunction]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="lbl_prefrence_modal_submit"
+    theme={Object {}}
+    type="submit"
+    url=""
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      className="cancel-button"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      dataLocator="subscribe_modal_cancel"
+      disableButton={false}
+      fill="WHITE"
+      fullWidth={true}
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_prefrence_modal_cancel"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

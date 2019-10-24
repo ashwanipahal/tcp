@@ -32,6 +32,7 @@ type Props = {
   addGiftCardError: string,
   untouch: Function,
   onClearError: Function,
+  isFromReview: Boolean,
 };
 
 class AddGiftCardForm extends React.PureComponent<Props> {
@@ -187,15 +188,35 @@ class AddGiftCardForm extends React.PureComponent<Props> {
     }
   };
 
+  getColProps = () => {
+    const { isRow, isFromReview } = this.props;
+    if (!isFromReview) {
+      return {
+        cardNoWithIsRow: { colSize: { small: 6, medium: isRow ? 10 : 4, large: isRow ? 6 : 4 } },
+        cardNoWithoutRow: { colSize: { small: 6, medium: 2, large: 3 } },
+        cardPin: { colSize: { small: 6, medium: 10, large: 6 } },
+      };
+    }
+    return {
+      cardNoWithIsRow: { colSize: { small: 6, medium: 8, large: 12 } },
+      cardPin: { colSize: { small: 6, medium: 8, large: 12 } },
+    };
+  };
+
+  handleSubmitData = e => {
+    const { handleSubmit } = this.props;
+    e.preventDefault();
+    e.stopPropagation();
+    handleSubmit(this.handleSubmit.bind(this))(e);
+  };
+
   render() {
-    const { handleSubmit, labels, isLoading, isRow } = this.props;
+    const { labels, isLoading, isRow, isFromReview } = this.props;
+    const colProps = this.getColProps();
     return (
-      <form onSubmit={handleSubmit(this.handleSubmit.bind(this))}>
+      <form onSubmit={this.handleSubmitData}>
         <Row fullBleed className="elem-mb-MED">
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 6, medium: isRow ? 10 : 4, large: isRow ? 6 : 4 }}
-          >
+          <Col ignoreGutter={{ small: true }} {...colProps.cardNoWithIsRow}>
             <Field
               placeholder={getLabelValue(labels, 'lbl_payment_giftCardNoPlaceholder')}
               name="giftCardNumber"
@@ -209,7 +230,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             />
           </Col>
           {!isRow && (
-            <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
+            <Col ignoreGutter={{ small: true }} {...colProps.cardNoWithoutRow}>
               <Field
                 placeholder={getLabelValue(labels, 'lbl_payment_giftCardPinPlaceholder')}
                 name="cardPin"
@@ -224,7 +245,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         </Row>
         {isRow && (
           <Row fullBleed className="elem-mb-XL">
-            <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 10, large: 6 }}>
+            <Col ignoreGutter={{ small: true }} {...colProps.cardPin}>
               <Field
                 placeholder={getLabelValue(labels, 'lbl_payment_giftCardPinPlaceholder')}
                 name="cardPin"
@@ -262,7 +283,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             </Col>
           )}
 
-          {this.renderButtons(isRow, labels, isLoading)}
+          {this.renderButtons(isRow, labels, isLoading, isFromReview)}
         </Row>
       </form>
     );

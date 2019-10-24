@@ -4,14 +4,14 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
 <Styled(View)
   style={
     Object {
-      "elevation": 7,
+      "elevation": 5,
       "shadowColor": "#9b9b9b",
       "shadowOffset": Object {
-        "height": 2,
+        "height": 5,
         "width": 0,
       },
       "shadowOpacity": 0.2,
-      "shadowRadius": 5,
+      "shadowRadius": 10,
     }
   }
   viewAll={true}

@@ -158,7 +158,10 @@ GooglePlacesInput.propTypes = {
   refs: PropTypes.func,
   onChangeText: PropTypes.func,
   input: PropTypes.shape({}),
-  meta: PropTypes.shape({}),
+  meta: PropTypes.shape({
+    touched: PropTypes.string,
+    error: PropTypes.string,
+  }),
   initialValue: PropTypes.string,
   clearButtonMode: PropTypes.string,
 };

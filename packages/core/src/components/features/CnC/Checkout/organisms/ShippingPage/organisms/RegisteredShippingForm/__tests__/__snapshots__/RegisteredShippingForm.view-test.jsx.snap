@@ -120,6 +120,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="edit-link-placement"
       colSize={
         Object {
           "large": 1,
@@ -131,7 +132,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -173,7 +174,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -300,6 +301,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="edit-link-placement"
       colSize={
         Object {
           "large": 1,
@@ -311,7 +313,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -403,7 +405,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -531,6 +533,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="edit-link-placement"
       colSize={
         Object {
           "large": 1,
@@ -542,7 +545,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -647,7 +650,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -1245,27 +1248,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
         </FormSection>
       </div>
     </Styled(Col)>
-    <Styled(Col)
-      className="hide-on-desktop"
-      colSize={
-        Object {
-          "large": 1,
-          "medium": 1,
-          "small": 1,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
-        noLink={true}
-        onClick={[Function]}
-        underline={true}
-      >
-        lbl_shipping_edit
-      </Styled(Anchor)>
-    </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
     fullBleed={true}
@@ -1761,27 +1743,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           />
         </FormSection>
       </div>
-    </Styled(Col)>
-    <Styled(Col)
-      className="hide-on-desktop"
-      colSize={
-        Object {
-          "large": 1,
-          "medium": 1,
-          "small": 1,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
-        noLink={true}
-        onClick={[Function]}
-        underline={true}
-      >
-        lbl_shipping_edit
-      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)

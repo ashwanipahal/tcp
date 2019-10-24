@@ -62,6 +62,10 @@ const formErrorCMSMessage = {
   lbl_err_cvvcode_cvvlengththree: 'Security code must be a 3-digit number without any spaces',
   lbl_err_cvvcode_cvvlengthfour: 'Security code must be a 4-digit number without any spaces',
   lbl_storelanding_errorLabel: 'Please re-type address & select location from dropdown suggestions',
+  lbl_storelanding_validErrorLabel: 'Please enter a valid street address',
+  lbl_storelanding_invalidAddressError:
+    'The value entered in the street address has special character.',
+  lbl_err_prefix: 'ERROR:',
 };
 
 export default formErrorCMSMessage;

@@ -43,6 +43,7 @@ export class CreditCardTextBox extends React.Component {
     customStyle: PropTypes.shape({}),
     cardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
+    onCardFocus: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -72,7 +73,7 @@ export class CreditCardTextBox extends React.Component {
   }
 
   handleFocus = () => {
-    const { isEdit } = this.props;
+    const { isEdit, onCardFocus } = this.props;
     const { clearValue } = this.state;
     if (isEdit) {
       this.textboxValue = !(isEdit && !clearValue);
@@ -84,6 +85,9 @@ export class CreditCardTextBox extends React.Component {
       this.setState({
         isFocused: true,
       });
+    }
+    if (onCardFocus) {
+      onCardFocus();
     }
   };
 
@@ -162,7 +166,12 @@ export class CreditCardTextBox extends React.Component {
         />
         {cardType !== null && (
           <ImageWrapper>
-            <Image source={getCardTypeImgUrl(cardType)} width="40" height="30" />
+            <Image
+              source={getCardTypeImgUrl(cardType)}
+              width="40"
+              height="30"
+              resizeMode="contain"
+            />
           </ImageWrapper>
         )}
       </View>

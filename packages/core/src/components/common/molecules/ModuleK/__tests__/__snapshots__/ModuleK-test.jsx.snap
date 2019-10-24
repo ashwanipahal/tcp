@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-fAjcbJ",
+              "componentId": "sc-caSCKo",
               "isStatic": false,
               "rules": Array [
                 "
@@ -136,7 +136,7 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.05;
 
     @media ",
@@ -157,15 +157,18 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 22px;
+    font-size: ",
+                [Function],
+                ";
     line-height: normal;
     letter-spacing: 2px;
 
     @media ",
                 [Function],
                 " {
-      font-size: 42px;
-      letter-spacing: 2.42px;
+      font-size: 64px;
+      letter-spacing: 4px;
+      font-weight: 500;
     }
   }
 
@@ -187,6 +190,9 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
   .medium_text_black {
+    color: ",
+                [Function],
+                ";
     font-family: ",
                 [Function],
                 ";
@@ -285,6 +291,30 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+  /* Module N Heading Styles Gymboree*/
+  .white_large_text_half {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    color: ",
+                [Function],
+                ";
+    text-align: center;
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -299,10 +329,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-jKJlTe",
+              "sc-eNQAEJ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-fAjcbJ",
+            "styledComponentId": "sc-caSCKo",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -346,7 +376,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-eqIVtm",
+              "componentId": "sc-fAjcbJ",
               "isStatic": false,
               "rules": Array [
                 "
@@ -512,9 +542,7 @@ exports[`ModuleK component renders correctly 1`] = `
 
   .slick-dots {
     position: absolute;
-    bottom: ",
-                [Function],
-                ";
+    bottom: 16px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -638,10 +666,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-jzJRlG",
+              "sc-cSHVUG",
             ],
             "render": [Function],
-            "styledComponentId": "sc-eqIVtm",
+            "styledComponentId": "sc-fAjcbJ",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -713,14 +741,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_1"
           dataLocatorContainer="moduleK_image_set_1"
-          imageMaxWidth="270px"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {
@@ -845,14 +873,14 @@ exports[`ModuleK component renders correctly 1`] = `
           colM={2}
           dataLocator="moduleK_image_2"
           dataLocatorContainer="moduleK_image_set_2"
-          imageMaxWidth="270px"
-          imgConfigs={
+          imageConfig={
             Array [
               "t_mod_K_img_m",
               "t_mod_K_img_t",
               "t_mod_K_img_d",
             ]
           }
+          imageMaxWidth="270px"
           mediaLinkedList={
             Array [
               Object {

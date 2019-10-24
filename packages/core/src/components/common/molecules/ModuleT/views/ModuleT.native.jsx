@@ -125,7 +125,7 @@ class ModuleT extends React.PureComponent {
       <ImageContainer>
         {mediaLinkedList.map(({ image, link }, index) => {
           return (
-            <ImageWrapper>
+            <ImageWrapper tileIndex={index}>
               <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
                 <DamImage
                   url={image && image.url}

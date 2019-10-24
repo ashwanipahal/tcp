@@ -13,14 +13,16 @@ describe('Shipping Page', () => {
     const data = { address, shipmentMethods: [{}], smsSignUp: {}, onFileAddressKey: '1234' };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
       formatPayload: () => {},
-      addressLabels: {},
       verifyAddressAction: () => {},
       shippingLabels: {
         sectionHeader: '',
       },
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       handleSubmit: mockedhandleSubmit,
       navigation: {
         state: {
@@ -52,6 +54,8 @@ describe('Shipping Page', () => {
     };
     const mockedloadShipmentMethods = jest.fn();
     const props = {
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       shippingLabels: {
@@ -96,6 +100,7 @@ describe('Shipping Page', () => {
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       formatPayload: () => {},
+      shippingDidMount: () => {},
       addressLabels: {},
       selectedShipmentId: '334',
       verifyAddressAction: () => {},
@@ -140,6 +145,7 @@ describe('Shipping Page', () => {
       handleSubmit: () => {},
       formatPayload: () => {},
       verifyAddressAction: () => {},
+      shippingDidMount: () => {},
       addressLabels: {},
       selectedShipmentId: '334',
       userAddresses: new List([
@@ -182,7 +188,9 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       handleSubmit: () => {},
+      verifyAddressAction: mockedupdateShippingAddressData,
       selectedShipmentId: '334',
       userAddresses: new List([
         {
@@ -205,6 +213,8 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
+      shippingDidMount: () => {},
+      formatPayload: () => {},
     };
 
     const tree = shallow(<ShippingPage {...props} />);

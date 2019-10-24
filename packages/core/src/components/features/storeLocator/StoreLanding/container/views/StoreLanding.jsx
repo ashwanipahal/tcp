@@ -27,6 +27,7 @@ export class StoreLanding extends PureComponent {
     isOutlet: false,
     isGym: isGymboree(),
     centeredStoreId: '',
+    showSubmitError: false,
   };
 
   openStoreDetails = (event, store) => {
@@ -50,6 +51,7 @@ export class StoreLanding extends PureComponent {
         <Notification
           status="info"
           message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+          className="storeview__error"
         />
       ) : (
         suggestedStoreList.map((item, index) => (
@@ -68,7 +70,7 @@ export class StoreLanding extends PureComponent {
               key={item.basicInfo.id}
               openStoreDetails={this.openStoreDetails}
               titleClickCb={this.focusOnMap}
-              selectedStoreId={centeredStoreId}
+              selectedStoreId={centeredStoreId === item.basicInfo.id}
             />
           </Col>
         ))
@@ -108,7 +110,7 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { centeredStoreId } = this.state;
+    const { centeredStoreId, showSubmitError } = this.state;
     const {
       setFavoriteStore,
       favoriteStore,
@@ -117,11 +119,19 @@ export class StoreLanding extends PureComponent {
       searchDone,
       geoLocationEnabled,
     } = this.props;
-    if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
+    if (
+      showSubmitError ||
+      (searchDone &&
+        !(suggestedStoreList && (suggestedStoreList.length || suggestedStoreList.size)))
+    ) {
       return (
         <Notification
-          status="info"
-          message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+          status={showSubmitError ? 'error' : 'info'}
+          message={getLabelValue(
+            labels,
+            showSubmitError ? 'lbl_storelanding_errorLabel' : 'lbl_storelanding_noStoresFound'
+          )}
+          className="storeview__error"
         />
       );
     }
@@ -192,6 +202,11 @@ export class StoreLanding extends PureComponent {
     });
   };
 
+  showSubmitError = value => {
+    const { showSubmitError } = this.state;
+    if (showSubmitError !== value) this.setState({ showSubmitError: value });
+  };
+
   render() {
     const {
       className,
@@ -247,6 +262,7 @@ export class StoreLanding extends PureComponent {
                     searchIcon={searchIcon}
                     markerIcon={markerIcon}
                     getLocationStores={getLocationStores}
+                    showSubmitError={this.showSubmitError}
                     selectedCountry={isCanada() ? 'CA' : 'USA'}
                   />
                 </Col>

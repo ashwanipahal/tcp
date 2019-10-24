@@ -100,14 +100,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -265,23 +269,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -337,7 +328,41 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
+      onPickUpOpenClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "alwaysSearchForBOSS": false,
+                "colorProductId": undefined,
+                "isBopisCtaEnabled": true,
+                "isBossCtaEnabled": false,
+                "isItemShipToHome": true,
+                "openSkuSelectionForm": false,
+                "orderInfo": Object {
+                  "Fit": "regular",
+                  "Quantity": "1",
+                  "Size": "1",
+                  "color": undefined,
+                  "itemBrand": "TCP",
+                  "orderId": 123,
+                  "orderItemId": undefined,
+                  "orderItemType": "BOPIS",
+                },
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -472,14 +497,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -637,23 +666,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -709,7 +725,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         }
       }
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -859,14 +878,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -1024,23 +1047,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -1112,7 +1122,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1242,14 +1255,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -1407,23 +1424,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -1479,7 +1483,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         }
       }
       noBopisMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1609,14 +1616,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -1774,23 +1785,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -1847,7 +1845,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -1977,14 +1978,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -2142,23 +2147,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -2215,7 +2207,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -2345,14 +2340,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
           <Styled(View)>
             <Styled(BodyCopy)
@@ -2523,23 +2522,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -2673,14 +2659,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -2838,23 +2828,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -2911,7 +2888,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -3041,14 +3021,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
           <Styled(View)>
             <Styled(BodyCopy)
@@ -3219,23 +3203,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -3369,14 +3340,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -3534,23 +3509,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -3607,7 +3569,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -3737,14 +3702,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -3902,23 +3871,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -3975,7 +3931,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4125,14 +4084,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -4290,23 +4253,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -4378,7 +4328,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4528,14 +4481,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -4693,23 +4650,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -4781,7 +4725,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -4931,14 +4878,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -5096,23 +5047,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -5184,7 +5122,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       }
       noBopisMessage={null}
       noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
       openedTile={0}
+      orderId={123}
       productDetail={
         Object {
           "itemInfo": Object {
@@ -5314,14 +5255,18 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
+            itemBrand="tcp"
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
           <Styled(View)>
             <Styled(BodyCopy)
@@ -5492,23 +5437,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -5677,14 +5609,17 @@ exports[`CartItemTile common component renders correctly 1`] = `
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -5909,6 +5844,43 @@ exports[`CartItemTile common component renders correctly 1`] = `
         textDecorationLine="underline"
       />
     </Styled(TouchableOpacity)>
+    <CartItemRadioButtons
+      index={0}
+      labels={
+        Object {
+          "color": "Color",
+          "design": "Design",
+          "price": "Price",
+          "qty": "Qty",
+          "sizeL": "Size",
+        }
+      }
+      openPickUpModal={[Function]}
+      openedTile={0}
+      orderId=""
+      productDetail={
+        Object {
+          "itemInfo": Object {
+            "color": "red",
+            "fit": "regular",
+            "isGiftItem": true,
+            "itemBrand": "TCP",
+            "myPlacePoints": 123,
+            "name": "Boys Basic Skinny Jeans",
+            "price": 123,
+            "qty": "1",
+            "size": "1",
+          },
+          "miscInfo": Object {
+            "badge": "",
+          },
+          "productInfo": Object {
+            "productPartNumber": 123,
+            "skuId": "123",
+          },
+        }
+      }
+    />
   </Styled(View)>
 </Swipeable>
 `;
@@ -6046,14 +6018,17 @@ exports[`CartItemTile common component renders correctly with Save for later ena
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>
@@ -6277,6 +6252,42 @@ exports[`CartItemTile common component renders correctly with Save for later ena
         textDecorationLine="underline"
       />
     </Styled(TouchableOpacity)>
+    <CartItemRadioButtons
+      index={0}
+      labels={
+        Object {
+          "color": "Color",
+          "design": "Design",
+          "price": "Price",
+          "qty": "Qty",
+          "sizeL": "Size",
+        }
+      }
+      openPickUpModal={[Function]}
+      openedTile={0}
+      orderId=""
+      productDetail={
+        Object {
+          "itemInfo": Object {
+            "fit": "regular",
+            "isGiftItem": true,
+            "itemBrand": "TCP",
+            "myPlacePoints": 123,
+            "name": "Boys Basic",
+            "price": 123,
+            "qty": "1",
+            "size": "1",
+          },
+          "miscInfo": Object {
+            "availability": "OK",
+            "badge": "",
+          },
+          "productInfo": Object {
+            "skuId": "123",
+          },
+        }
+      }
+    />
   </Styled(View)>
 </Swipeable>
 `;
@@ -6396,14 +6407,17 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
         showOnReviewPage={true}
       >
         <View>
-          <Styled(Image)
-            data-locator="cartItemImage"
+          <Styled(DamImage)
+            alt=""
+            crop=""
+            height={100}
+            host=""
+            imgConfig=""
+            isProductImage={true}
             showOnReviewPage={true}
-            source={
-              Object {
-                "uri": "https://test4.childrensplace.comundefined",
-              }
-            }
+            source=""
+            url=""
+            width={100}
           />
         </View>
       </Styled(View)>

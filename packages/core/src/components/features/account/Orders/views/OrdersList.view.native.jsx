@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { StyledHeading } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import UnderlineStyle from '../styles/OrdersList.style.native';
 import RecentOrders from '../molecules/RecentOrders';
 import PastOrders from '../molecules/PastOrders';
+import OrderPreviewItemsList from '../molecules/OrderPreviewItemsList';
 
 export const OrdersList = ({
   labels,
@@ -12,11 +14,18 @@ export const OrdersList = ({
   navigation,
   handleComponentChange,
   componentProps,
+  orderItems,
 }) => {
   return (
     <React.Fragment>
-      <StyledHeading>{getLabelValue(labels, 'lbl_orders_heading', 'orders')}</StyledHeading>
-      <LineComp marginBottom={28} borderWidth={1} borderColor="black" />
+      <StyledHeading>
+        <BodyCopy
+          fontSize="fs16"
+          fontWeight="extrabold"
+          text={getLabelValue(labels, 'lbl_orders_heading', 'orders')}
+        />
+      </StyledHeading>
+      <UnderlineStyle />
       <RecentOrders
         labels={labels}
         ordersListItems={ordersListItems}
@@ -24,7 +33,15 @@ export const OrdersList = ({
         handleComponentChange={handleComponentChange}
         componentProps={componentProps}
       />
-      {ordersListItems && ordersListItems.length ? (
+      {orderItems && orderItems.length > 0 && (
+        <OrderPreviewItemsList
+          labels={labels}
+          navigation={navigation}
+          items={orderItems}
+          orderNumber={ordersListItems[0].orderNumber}
+        />
+      )}
+      {ordersListItems && ordersListItems.length > 1 ? (
         <PastOrders
           labels={labels}
           ordersListItems={ordersListItems}
@@ -43,6 +60,7 @@ OrdersList.propTypes = {
   ordersListItems: PropTypes.shape([]).isRequired,
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
+  orderItems: PropTypes.shape([]).isRequired,
 };
 OrdersList.defaultProps = {
   handleComponentChange: () => {},

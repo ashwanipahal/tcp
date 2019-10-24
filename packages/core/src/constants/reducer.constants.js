@@ -14,6 +14,8 @@ export const RECOMMENDATIONS_REDUCER_KEY = 'Recommendations';
 export const SEARCH_REDUCER_KEY = 'Search';
 export const SOCIAL_REDUCER_KEY = 'Social';
 export const RECENT_SEARCH_REDUCER_KEY = 'RecentSearches';
+export const BUNDLEPRODUCT_REDUCER_KEY = 'BundleProduct';
+export const BUNDLEPRODUCT_ACTION_PATTERN = '@@Bundle--';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -211,6 +213,10 @@ export const ORDERS_ACTION_PATTERN = '@@Orders-';
 export const STORE_LIST_REDUCER_KEY = 'StoreListReducer';
 export const STORE_LIST_ACTION_PATTERN = '@@StoreList-';
 
+// Category List Reducer
+export const CATEGORY_LIST_REDUCER_KEY = 'CategoryListReducer';
+export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
+
 // My Profile reducer
 export const MY_PREFERENCE_REDUCER_KEY = 'MyPreference';
 export const MY_PREFERENCE_ACTION_PATTERN = '@@MyPreference-';
@@ -254,4 +260,6 @@ export const REDUCER_ACTION_MAPPING = {
   [OUTFIT_DETAILS_REDUCER_KEY]: OUTFIT_DETAILS_PATTERN,
   [STORE_LIST_REDUCER_KEY]: STORE_LIST_ACTION_PATTERN,
   [MY_PREFERENCE_REDUCER_KEY]: MY_PREFERENCE_ACTION_PATTERN,
+  [BUNDLEPRODUCT_REDUCER_KEY]: BUNDLEPRODUCT_ACTION_PATTERN,
+  [COUPON_REDUCER_KEY]: COUPON_ACTION_PATTERN,
 };

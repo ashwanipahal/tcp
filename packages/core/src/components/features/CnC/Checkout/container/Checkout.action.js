@@ -1,6 +1,7 @@
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
+import { setServerErrorCheckout, resetCheckoutReducer } from './Checkout.action.util';
 
 /**
  * @function initCheckoutAction
@@ -491,23 +492,17 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
+
 /**
  * @function updateCardData
  *  @param { object } payload
  * action creator for type: UPDATE_CARD_DATA
  */
-export const updateCardData = payload => {
-  return {
-    payload,
-    type: constants.UPDATE_CARD_DATA,
-  };
-};
-/**
- * @function resetCheckoutReducer
- * action creator for type: RESET_CHECKOUT_REDUCER
- */
-export const resetCheckoutReducer = () => {
-  return {
-    type: constants.RESET_CHECKOUT_REDUCER,
-  };
-};
+export const updateCardData = payload => ({ payload, type: constants.UPDATE_CARD_DATA });
+
+export const initCheckoutSectionPageAction = payload => ({
+  type: constants.INIT_CHECKOUT_SECTION_PAGE,
+  payload,
+});
+
+export default { setServerErrorCheckout, resetCheckoutReducer };

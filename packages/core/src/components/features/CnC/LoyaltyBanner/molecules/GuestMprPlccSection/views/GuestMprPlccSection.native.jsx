@@ -30,51 +30,47 @@ const GuestMprPlccSection = props => {
     getCurrencySymbol,
     currentSubtotal,
     estimatedSubtotal,
+    pageChecksObj,
   } = props;
   return (
     <View>
       {headingLabel && (
-        <HeadingLabel>
+        <HeadingLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs12"
-            color="black"
             text={headingLabel}
           />
         </HeadingLabel>
       )}
       {subHeadingLabel && (
-        <SubHeadingLabel>
+        <SubHeadingLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs18"
             text={subHeadingLabel}
           />
         </SubHeadingLabel>
       )}
       {descriptionLabel && (
-        <DescriptionLabel>
+        <DescriptionLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs12"
             color="black"
             text={descriptionLabel}
           />
         </DescriptionLabel>
       )}
       {remainingPlcc && (
-        <RemainingPlccLabel>
+        <RemainingPlccLabel pageChecksObj={pageChecksObj}>
           <BodyCopy
             mobilefontFamily={['secondary']}
             textAlign="center"
             fontWeight="extrabold"
-            fontSize="fs12"
             color="black"
             text={remainingPlcc}
           />
@@ -145,6 +141,7 @@ GuestMprPlccSection.propTypes = {
   descriptionLabel: PropTypes.string,
   remainingPlcc: PropTypes.string,
   showSubtotal: PropTypes.bool,
+  pageChecksObj: PropTypes.shape({}),
   getCurrencySymbol: PropTypes.string,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.string,
@@ -156,6 +153,7 @@ GuestMprPlccSection.defaultProps = {
   descriptionLabel: '',
   remainingPlcc: '',
   showSubtotal: false,
+  pageChecksObj: {},
   getCurrencySymbol: '',
   currentSubtotal: 0,
   estimatedSubtotal: '',

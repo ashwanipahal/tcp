@@ -55,6 +55,7 @@ exports[`Bag page View should not render SFL section 1`] = `
     isNonEmptySFL={false}
     isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={true}
   />
@@ -119,6 +120,7 @@ exports[`Bag page View should render Added to Bag view section 1`] = `
     isNonEmptySFL={false}
     isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={true}
   />
@@ -183,6 +185,7 @@ exports[`Bag page View should render SFL section 1`] = `
     isNonEmptySFL={true}
     isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={true}
   />
@@ -367,6 +370,7 @@ exports[`Bag page View should render with only SFL condition 1`] = `
     isNonEmptySFL={true}
     isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={false}
   />
@@ -565,6 +569,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
     isNonEmptySFL={false}
     isNotLoaded={true}
     leftSection={[Function]}
+    pageCategory="bagPage"
     showAccordian={false}
     showLeftSection={true}
   />
