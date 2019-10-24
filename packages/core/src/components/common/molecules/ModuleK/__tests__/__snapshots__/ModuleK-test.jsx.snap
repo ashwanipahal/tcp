@@ -659,7 +659,7 @@ exports[`ModuleK component renders correctly 1`] = `
     width: 13px;
   }
   .slick-dots {
-    bottom: -20px;
+    bottom: -12px;
   }
 ",
               ],
@@ -816,11 +816,19 @@ exports[`ModuleK component renders correctly 1`] = `
           promo={1}
         />
         <Styled(Col)
+          className="moduleK__button"
           colSize={
             Object {
               "large": 3,
               "medium": 2,
               "small": 4,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
             }
           }
         >
@@ -948,11 +956,19 @@ exports[`ModuleK component renders correctly 1`] = `
           promo={1}
         />
         <Styled(Col)
+          className="moduleK__button"
           colSize={
             Object {
               "large": 3,
               "medium": 2,
               "small": 4,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
             }
           }
         >
