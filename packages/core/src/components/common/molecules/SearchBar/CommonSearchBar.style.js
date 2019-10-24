@@ -61,7 +61,6 @@ export const commonSearchBarStyles = css`
 
 export const commonStyles = css`
   display: inline;
-  height: 40px;
   flex-grow: 1;
 
   .icon {
