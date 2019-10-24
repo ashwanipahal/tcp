@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyPreferencesTile component should render correctly when coupons are not present 1`] = `
+exports[`MyPreferencesTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
   ctaLink="/account?id=my-preference"
   ctaPath="/account/my-preference"

@@ -3,7 +3,7 @@
 exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
 <Styled(View)
   borderBottomColor="#979797"
-  borderBottomWidth={false}
+  borderBottomWidth={0}
 >
   <Styled(View)
     pointerEvents="none"

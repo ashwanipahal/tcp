@@ -14,6 +14,7 @@ import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import InformationHeader from '../../common/molecules/InformationHeader';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class BagPageView extends React.Component {
       activeSection: null,
       showCondensedHeader: false,
       showStickyHeaderMob: false,
+      headerError: false,
     };
     this.bagPageHeader = null;
     this.bagActionsContainer = null;
@@ -67,6 +69,10 @@ class BagPageView extends React.Component {
   componentWillUnmount() {
     this.removeScrollListener();
   }
+
+  setHeaderErrorState = (state, ...params) => {
+    this.setState({ headerError: true, params });
+  };
 
   getBagPageHeaderRef(ref) {
     this.bagPageHeader = ref;
@@ -134,8 +140,7 @@ class BagPageView extends React.Component {
     }
   };
 
-  wrapSection = Component => {
-    const { orderItemsCount } = this.props;
+  wrapSection = (Component, orderItemsCount) => {
     const isNoNEmptyBag = orderItemsCount > 0;
     if (!isNoNEmptyBag) {
       return (
@@ -154,7 +159,13 @@ class BagPageView extends React.Component {
   };
 
   renderLeftSection = () => {
-    const { labels, sflItems, isShowSaveForLaterSwitch, isSflItemRemoved } = this.props;
+    const {
+      labels,
+      sflItems,
+      isShowSaveForLaterSwitch,
+      isSflItemRemoved,
+      orderItemsCount,
+    } = this.props;
     const { activeSection } = this.state;
     const myBag = 'myBag';
     return (
@@ -164,7 +175,12 @@ class BagPageView extends React.Component {
             activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeSection' : 'inActiveSection'
           }`}
         >
-          <ProductTileWrapper bagLabels={labels} pageView={myBag} showPlccApplyNow />
+          <ProductTileWrapper
+            bagLabels={labels}
+            pageView={myBag}
+            showPlccApplyNow
+            setHeaderErrorState={this.setHeaderErrorState}
+          />
         </div>
 
         {isShowSaveForLaterSwitch &&
@@ -188,8 +204,10 @@ class BagPageView extends React.Component {
                 sflItems={sflItems}
                 showPlccApplyNow={false}
                 isBagPageSflSection
+                setHeaderErrorState={this.setHeaderErrorState}
               />
-            </div>
+            </div>,
+            orderItemsCount
           )}
       </React.Fragment>
     );
@@ -269,6 +287,40 @@ class BagPageView extends React.Component {
     );
   };
 
+  getHeaderError = ({
+    labels,
+    orderItems,
+    pageView,
+    isUnavailable,
+    isSoldOut,
+    getUnavailableOOSItems,
+    confirmRemoveCartItem,
+    isBagPageSflSection,
+    isCartItemSFL,
+    isCartItemsUpdating,
+    isSflItemRemoved,
+  }) => {
+    return (
+      <InformationHeader
+        labels={labels}
+        orderItems={orderItems}
+        pageView={pageView}
+        isUnavailable={isUnavailable}
+        isSoldOut={isSoldOut}
+        getUnavailableOOSItems={getUnavailableOOSItems}
+        confirmRemoveCartItem={confirmRemoveCartItem}
+        isBagPageSflSection={isBagPageSflSection}
+        isCartItemSFL={isCartItemSFL}
+        isCartItemsUpdating={isCartItemsUpdating}
+        isSflItemRemoved={isSflItemRemoved}
+      />
+    );
+  };
+
+  renderHeaderError = (headerError, params) => {
+    return headerError && this.getHeaderError(params[0]);
+  };
+
   render() {
     const {
       className,
@@ -282,13 +334,20 @@ class BagPageView extends React.Component {
       orderBalanceTotal,
       currencySymbol,
     } = this.props;
-    const { activeSection, showStickyHeaderMob, showCondensedHeader } = this.state;
+    const {
+      activeSection,
+      showStickyHeaderMob,
+      showCondensedHeader,
+      headerError,
+      params,
+    } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
         {showCondensedHeader && this.stickyBagCondensedHeader()}
+
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
@@ -345,6 +404,7 @@ class BagPageView extends React.Component {
               </Col>
             )}
           </Row>
+          {this.renderHeaderError(headerError, params)}
         </div>
         <CnCTemplate
           leftSection={this.renderLeftSection}

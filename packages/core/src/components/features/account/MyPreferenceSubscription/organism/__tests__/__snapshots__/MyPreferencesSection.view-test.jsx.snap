@@ -591,6 +591,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               dataLocator="mypreference-texttcpcheckbox"
               name="tcpWebSubscribe"
               onBlur={[Function]}
+              onChange={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}
@@ -742,6 +743,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               dataLocator="mypreference-textgymcheckbox"
               name="gymboreeWebSubscribe"
               onBlur={[Function]}
+              onChange={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}

@@ -3,7 +3,9 @@ import { css } from 'styled-components';
 export default css`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-
+  input {
+    background-color: ${props => props.theme.colorPalette.gray[300]};
+  }
   .sub-heading {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -50,5 +52,23 @@ export default css`
 
   .venmo-save-checkbox .CheckBox__text {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  }
+
+  .cvvCode {
+    position: relative;
+    width: 100px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    .TextBox__label {
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      font-size: ${props => props.theme.typography.fontSizes.fs10};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+  }
+
+  .cvv-icon {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 `;
