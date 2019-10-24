@@ -45,4 +45,47 @@ const renderAddGiftCardProps = {
   isLoading: PropTypes.bool.isRequired,
 };
 
-export { propTypes, defaultProps, renderAddGiftCardProps };
+const renderGiftCardTileProps = {
+  propTypes: {
+    isGiftCardApplied: PropTypes.bool,
+    handleRemoveGiftCard: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    giftCardErrors: PropTypes.shape({}),
+    isExpressCheckout: PropTypes.bool,
+    isFromReview: PropTypes.bool,
+    applyExistingGiftCardToOrder: PropTypes.func.isRequired,
+    orderBalanceTotal: PropTypes.number,
+  },
+  defaultProps: {
+    isGiftCardApplied: false,
+    giftCardErrors: {},
+    orderBalanceTotal: 0,
+    isFromReview: false,
+    isExpressCheckout: false,
+  },
+};
+
+const renderAppliedGiftCardsProps = {
+  propTypes: {
+    appliedGiftCards: PropTypes.shape({}),
+    handleRemoveGiftCard: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    giftCardErrors: PropTypes.shape({}),
+    isExpressCheckout: PropTypes.bool,
+    isFromReview: PropTypes.bool,
+  },
+  defaultProps: {
+    appliedGiftCards: {},
+    giftCardErrors: {},
+    isFromReview: false,
+    isExpressCheckout: false,
+  },
+};
+
+export {
+  propTypes,
+  defaultProps,
+  renderAddGiftCardProps,
+  renderGiftCardTileProps,
+  renderAppliedGiftCardsProps,
+};

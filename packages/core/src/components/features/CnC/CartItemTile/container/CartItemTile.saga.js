@@ -7,6 +7,7 @@ import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
+import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/SaveForLater/container/SaveForLater.selectors';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 import fetchData from '../../../../../service/API';
@@ -53,7 +54,15 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
     if (afterHandler) {
       afterHandler();
     }
-    yield put(BAG_PAGE_ACTIONS.getCartData({ onCartRes: afterRemovingCartItem }));
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        onCartRes: afterRemovingCartItem,
+        recalcRewards: true,
+        isRecalculateTaxes: true,
+        translation: false,
+        excludeCartItems: false,
+      })
+    );
   } catch (err) {
     logger.error(err);
   }
@@ -71,7 +80,8 @@ export function* removeCartItem({ payload }) {
   if (pageView === 'myBag') {
     const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
     const isItemInEligible = yield select(isItemBossBopisInEligible, payload);
-    if (isUnqualifiedItem || isItemInEligible) {
+    const isShowSaveForLaterSwitch = yield select(getSaveForLaterSwitch);
+    if (isUnqualifiedItem || isItemInEligible || !isShowSaveForLaterSwitch) {
       yield call(confirmRemoveItem, { payload: itemId });
       return;
     }
@@ -113,8 +123,16 @@ export function* updateCartItemSaga({ payload }) {
     if (callBack) {
       callBack();
     }
+    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     yield put(clearToggleCartItemError());
-    yield put(BAG_PAGE_ACTIONS.getCartData());
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        recalcRewards: true,
+        isRecalculateTaxes: true,
+        translation: true,
+        excludeCartItems: false,
+      })
+    );
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
   } catch (err) {
@@ -199,6 +217,7 @@ export function* openPickupModalFromBag(payload) {
         isBopisCtaEnabled,
         isBossCtaEnabled,
         isItemShipToHome,
+        alwaysSearchForBOSS,
       },
     } = payload;
     let itemBrand;
@@ -221,6 +240,7 @@ export function* openPickupModalFromBag(payload) {
         initialValues: { ...orderInfo },
         updateCartItemStore: true,
         isItemShipToHome,
+        alwaysSearchForBOSS,
       })
     );
   } catch (err) {

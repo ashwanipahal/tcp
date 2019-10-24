@@ -51,6 +51,7 @@ export class StoreLanding extends PureComponent {
         <Notification
           status="info"
           message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+          className="storeview__error"
         />
       ) : (
         suggestedStoreList.map((item, index) => (
@@ -69,7 +70,7 @@ export class StoreLanding extends PureComponent {
               key={item.basicInfo.id}
               openStoreDetails={this.openStoreDetails}
               titleClickCb={this.focusOnMap}
-              selectedStoreId={centeredStoreId}
+              selectedStoreId={centeredStoreId === item.basicInfo.id}
             />
           </Col>
         ))
@@ -125,8 +126,12 @@ export class StoreLanding extends PureComponent {
     ) {
       return (
         <Notification
-          status="info"
-          message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+          status={showSubmitError ? 'error' : 'info'}
+          message={getLabelValue(
+            labels,
+            showSubmitError ? 'lbl_storelanding_errorLabel' : 'lbl_storelanding_noStoresFound'
+          )}
+          className="storeview__error"
         />
       );
     }

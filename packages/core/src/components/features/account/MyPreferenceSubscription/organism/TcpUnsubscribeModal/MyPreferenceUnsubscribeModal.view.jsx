@@ -19,22 +19,14 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    handleSubmitModalPopup: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     phoneNumber: PropTypes.string.isRequired,
-    activeModal: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
     labels: {},
-  };
-
-  handleSubmitData = () => {
-    const { handleSubmitModalPopup, activeModal } = this.props;
-    const data = { activeBrand: activeModal };
-    handleSubmitModalPopup(data);
   };
 
   /**
@@ -44,7 +36,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, handleSubmit, onRequestClose, phoneNumber, labels } = this.props;
+    const { className, onRequestClose, onSubmit, phoneNumber, labels } = this.props;
 
     return (
       <div className={className}>
@@ -52,7 +44,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
           <form
             name={myPreferenceConst.MY_PREFERENCE_FORM_MODAL_UNSUBSCRIBE}
             className={className}
-            onSubmit={handleSubmit(this.handleSubmitData)}
+            onSubmit={onSubmit}
             noValidate
           >
             <BodyCopy
@@ -63,7 +55,7 @@ class MyPreferenceUnsubscribeModal extends React.PureComponent {
               className="elem-mb-LRG elem-mt-LRG"
               data-locator="my-preference-modal_title"
             >
-              {getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts')}
+              {getLabelValue(labels, 'lbl_prefrence_modal_unsubscribe_title')}
             </BodyCopy>
             <BodyCopy
               component="div"

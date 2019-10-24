@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
@@ -29,6 +30,7 @@ import ColorSwitch from '../../ColorSwitch';
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_FONT_CLASS, ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
 import ImageCarousel from '../../ImageCarousel';
+import { getProductListToPathInMobileApp } from '../../ProductList/utils/productsCommonUtils';
 
 const TextProps = {
   text: PropTypes.string.isRequired,
@@ -47,7 +49,8 @@ const renderAddToBagContainer = (
   renderPriceOnly,
   selectedColorIndex,
   colorMapData,
-  onQuickViewOpenClick
+  onQuickViewOpenClick,
+  isGiftCard
 ) => {
   if (renderVariation && !renderPriceOnly) return null;
   return (
@@ -58,9 +61,12 @@ const renderAddToBagContainer = (
         buttonVariation="variable-width"
         data-locator=""
         text="ADD TO BAG"
-        onPress={() => {
-          handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick);
-        }}
+        onPress={
+          () =>
+            !isGiftCard
+              ? handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick)
+              : () => {} // TODO Quick View for Gift Card
+        }
         accessibilityLabel="add to bag"
       />
     </AddToBagContainer>
@@ -85,19 +91,27 @@ const ListItem = props => {
     renderPriceAndBagOnly,
     renderPriceOnly,
     productImageWidth,
+    margins,
+    paddings,
     viaModule,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
-  const { name } = productInfo;
+  const { name, isGiftCard } = productInfo;
   const miscInfo = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
 
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
 
   return (
-    <ListContainer fullWidth={fullWidth} renderPriceAndBagOnly={renderVariation} accessible>
+    <ListContainer
+      fullWidth={fullWidth}
+      renderPriceAndBagOnly={renderVariation}
+      accessible
+      margins={margins}
+      paddings={paddings}
+    >
       <RenderTopBadge1 text={badge1} />
       <ImageSection
         item={item}
@@ -126,7 +140,14 @@ const ListItem = props => {
         itemInfo={isFavorite ? itemInfo : {}}
         accessibilityLabel="Price Section"
       />
-      <RenderTitle text={name} />
+      <RenderTitle
+        text={name}
+        onGoToPDPPage={onGoToPDPPage}
+        selectedColorIndex={selectedColorIndex}
+        item={item}
+        productInfo={productInfo}
+        colorsMap={colorMapData}
+      />
       <RenderColorSwitch colorsMap={colorMapData} setSelectedColorIndex={setSelectedColorIndex} />
       {isFavorite && <RenderSizeFit item={item} />}
       {loyaltyPromotionMessage ? (
@@ -141,7 +162,8 @@ const ListItem = props => {
         renderPriceOnly,
         selectedColorIndex,
         colorMapData,
-        onQuickViewOpenClick
+        onQuickViewOpenClick,
+        isGiftCard
       )}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && <RenderMoveToWishlist />}
@@ -240,7 +262,7 @@ const RenderPricesSection = values => {
                 name={ICON_NAME.filledHeart}
                 size="fs21"
                 color="gray.500"
-                onPress={() => setLastDeletedItemId(itemId)}
+                onPress={() => setLastDeletedItemId({ itemId })}
               />
             ) : (
               <CustomIcon
@@ -271,10 +293,14 @@ const RenderPricesSection = values => {
   );
 };
 
-const RenderTitle = ({ text }) => {
+const RenderTitle = ({ text, onGoToPDPPage, colorsMap, productInfo, selectedColorIndex, item }) => {
+  const { pdpUrl } = productInfo;
+  const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
+  const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
+
   if (renderVariation) return null;
   return (
-    <TitleContainer>
+    <TitleContainer onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, text)}>
       <TitleText accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
         {text}
       </TitleText>
@@ -365,7 +391,35 @@ RenderPurchasedQuantity.propTypes = {
   item: PropTypes.shape({}).isRequired,
 };
 
-RenderTitle.propTypes = TextProps;
+RenderTitle.propTypes = {
+  text: PropTypes.string.isRequired,
+  onGoToPDPPage: PropTypes.func.isRequired,
+  colorsMap: PropTypes.shape({
+    miscInfo: PropTypes.string,
+  }),
+  productInfo: PropTypes.shape({
+    name: PropTypes.string,
+    pdpUrl: PropTypes.string,
+  }),
+  selectedColorIndex: PropTypes.number,
+  item: PropTypes.shape({
+    skuInfo: PropTypes.string,
+  }),
+};
+
+RenderTitle.defaultProps = {
+  colorsMap: {
+    miscInfo: '',
+  },
+  productInfo: {
+    name: '',
+    pdpUrl: '',
+  },
+  selectedColorIndex: 0,
+  item: {
+    skuInfo: '',
+  },
+};
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
@@ -385,6 +439,8 @@ ListItem.propTypes = {
   renderPriceAndBagOnly: PropTypes.bool,
   renderPriceOnly: PropTypes.bool,
   productImageWidth: PropTypes.number,
+  margins: PropTypes.string,
+  paddings: PropTypes.string,
   viaModule: PropTypes.string,
 };
 
@@ -402,6 +458,8 @@ ListItem.defaultProps = {
   renderPriceAndBagOnly: false,
   renderPriceOnly: false,
   productImageWidth: '',
+  margins: null,
+  paddings: '12px 0 12px 0',
   viaModule: '',
 };
 

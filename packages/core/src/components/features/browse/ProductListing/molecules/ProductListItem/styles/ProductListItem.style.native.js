@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components/native';
 
 const getAdditionalStyle = props => {
-  const { margins, padding } = props;
+  const { margins, paddings } = props;
   return {
     ...(margins && { margin: margins }),
-    ...(padding && { padding }),
+    ...(paddings && { padding: paddings }),
   };
 };
 
@@ -15,10 +15,10 @@ const RowContainer = styled.View`
 `;
 
 const ListContainer = styled.View`
-  width: ${props => (props.fullWidth ? '100%' : '50%')};
+  width: ${props => (props.fullWidth ? '100%' : '48%')};
   ${props => (!props.renderPriceAndBagOnly ? `min-height: 412;` : ``)}
   background: white;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  ${getAdditionalStyle};
 `;
 
 const FavoriteIconContainer = styled.View``;
@@ -87,7 +87,7 @@ const Badge3Text = styled.Text`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const TitleContainer = styled.View`
+const TitleContainer = styled.TouchableOpacity`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   height: 32;
 `;
@@ -95,7 +95,7 @@ const TitleContainer = styled.View`
 const TitleText = styled.Text`
   font-family: ${props => props.theme.typography.fonts.secondary};
   color: ${props => props.theme.colorPalette.gray[900]};
-  font-size: ${props => props.theme.typography.fontSizes.fs10};
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
   line-height: 14.4;
 `;
 

@@ -52,7 +52,9 @@ const setErrorReporter = () => {
     raygunApiKey: process.env.RWD_WEB_RAYGUN_API_KEY,
     isDevelopment: process.env.NODE_ENV === ENV_DEVELOPMENT,
   };
-  initErrorReporter(config);
+  if (process.env.IS_ERROR_REPORTING_NODE_ACTIVE) {
+    initErrorReporter(config);
+  }
   const expressMiddleWare = getExpressMiddleware();
   if (expressMiddleWare) {
     server.use(expressMiddleWare);
@@ -97,6 +99,8 @@ const setBrandId = (req, res) => {
   res.locals.brandId = brandId;
 };
 
+setErrorReporter();
+
 connectRedis({
   REDIS_CLIENT: redis,
   REDIS_HOST: process.env.RWD_REDIS_HOST,
@@ -107,8 +111,6 @@ const setHostname = (req, res) => {
   const { hostname } = req;
   res.locals.hostname = hostname;
 };
-
-setErrorReporter();
 
 const redirectToErrorPage = (req, res) => {
   // TODO - To handle all this in Akamai redirect ?

@@ -49,8 +49,9 @@ class CouponCard extends React.Component<Props> {
             data-locator="coupon_header_applied"
             className="couponCard__header_expired"
             component="p"
-            fontSize="fs12"
-            fontFamily="secondary"
+            fontSize="fs10"
+            fontFamily="primary"
+            fontWeight="black"
           >
             {getLabelValue(commonLabels, 'lbl_my_rewards_applied', 'placeRewards')}
           </BodyCopy>
