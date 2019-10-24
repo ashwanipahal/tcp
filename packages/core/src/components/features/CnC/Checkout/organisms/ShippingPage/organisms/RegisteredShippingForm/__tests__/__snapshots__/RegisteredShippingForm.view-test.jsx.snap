@@ -998,7 +998,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -1381,7 +1381,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -1546,7 +1546,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -1883,7 +1883,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -2048,7 +2048,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -2406,7 +2406,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -2695,7 +2695,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -2860,7 +2860,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -3103,7 +3103,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -3268,7 +3268,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -3511,7 +3511,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -3676,7 +3676,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -3919,7 +3919,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -4084,7 +4084,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";

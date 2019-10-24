@@ -16,7 +16,7 @@ exports[`ElectronicConsent component should renders correctly when no arguments 
   <styled.div>
     <Styled(RichText)
       dataLocator="contact_disclaimer_info"
-      richTextHtml="<h1>Electronic Consent</h1>"
+      richTextHtml=""
     />
   </styled.div>
 </Fragment>

@@ -1172,7 +1172,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -2426,7 +2426,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";

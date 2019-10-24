@@ -670,7 +670,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                   ";
@@ -1418,7 +1418,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                   ";
@@ -2908,7 +2908,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                   ";
@@ -4521,7 +4521,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                   ";
@@ -5268,7 +5268,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                   ";

@@ -240,7 +240,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                       ";
@@ -273,7 +273,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 link={null}
                 textAlign="left"
               >
-
+                 
                 lbl_prefrence_tcp_label
               </Styled(BodyCopy)>
             </Field>
@@ -394,7 +394,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                       ";
@@ -427,7 +427,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                 link={null}
                 textAlign="left"
               >
-
+                 
                 lbl_prefrence_gym_label
               </Styled(BodyCopy)>
             </Field>
@@ -580,7 +580,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                       ";
@@ -735,7 +735,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                       ";

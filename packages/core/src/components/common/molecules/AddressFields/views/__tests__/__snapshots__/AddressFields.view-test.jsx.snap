@@ -1802,7 +1802,7 @@ exports[`AddressFields component should render correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";

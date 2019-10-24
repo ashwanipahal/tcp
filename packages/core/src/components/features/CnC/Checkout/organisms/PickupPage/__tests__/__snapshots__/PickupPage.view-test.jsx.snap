@@ -331,7 +331,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";

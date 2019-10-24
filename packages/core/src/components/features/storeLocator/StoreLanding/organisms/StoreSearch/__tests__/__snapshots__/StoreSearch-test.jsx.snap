@@ -215,7 +215,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                       ";
@@ -380,7 +380,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                       ";

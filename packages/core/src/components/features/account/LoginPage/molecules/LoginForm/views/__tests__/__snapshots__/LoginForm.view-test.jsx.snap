@@ -400,7 +400,7 @@ exports[`LoginForm component should renders correctly 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                   ";
@@ -920,7 +920,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                   ";

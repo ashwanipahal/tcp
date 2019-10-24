@@ -1281,7 +1281,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -1908,7 +1908,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";

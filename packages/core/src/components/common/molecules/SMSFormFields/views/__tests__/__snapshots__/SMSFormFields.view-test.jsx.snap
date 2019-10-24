@@ -133,7 +133,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -313,7 +313,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -373,7 +373,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       <span
         className="phone-prefix"
       >
-         +1
+         +1 
       </span>
       <Field
         className="phone-field"
@@ -703,7 +703,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -763,7 +763,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
       <span
         className="phone-prefix"
       >
-         +1
+         +1 
       </span>
       <Field
         className="phone-field"

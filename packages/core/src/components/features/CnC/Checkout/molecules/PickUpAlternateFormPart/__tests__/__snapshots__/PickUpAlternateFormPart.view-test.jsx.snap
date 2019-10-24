@@ -133,7 +133,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
@@ -311,7 +311,7 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
     margin-top: 2px;
   }
   & #checkbox__error__iAgree {
-      margin-top: 4px;
+    margin-top: 4px;
   }
 ",
                 ";
