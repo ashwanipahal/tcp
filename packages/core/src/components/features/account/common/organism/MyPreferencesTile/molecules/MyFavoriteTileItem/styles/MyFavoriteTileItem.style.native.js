@@ -25,9 +25,4 @@ const RightContainer = styled.View`
   align-items: center;
 `;
 
-export {
-  MyFavoriteTileItemContainer,
-  LeftContainer,
-  RightContainer,
-  BodyCopyWrapper,
-};
+export { MyFavoriteTileItemContainer, LeftContainer, RightContainer, BodyCopyWrapper };
