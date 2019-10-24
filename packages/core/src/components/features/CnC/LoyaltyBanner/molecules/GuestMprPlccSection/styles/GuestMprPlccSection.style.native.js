@@ -44,10 +44,6 @@ const HeadingLabel = styled.Text`
       : ''}
 `;
 
-const PointsValueText = styled.Text`
-  color: ${props => plccMpr(props)};
-`;
-
 const SubHeadingLabel = styled.Text`
   color: ${plccMpr};
   padding-top: 12px;
@@ -107,6 +103,18 @@ const EstimatedSubTotalValue = styled.Text`
   color: ${props => props.theme.colorPalette.gray[900]};
 `;
 
+const PointsValueText = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
+const PointsToNextReward = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
+const SectionSymbol = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
 export {
   Styles,
   SubTotalLine,
@@ -122,4 +130,6 @@ export {
   EstimatedSubTotalWrapper,
   EstimatedSubTotalLabel,
   EstimatedSubTotalValue,
+  PointsToNextReward,
+  SectionSymbol,
 };

@@ -56,7 +56,7 @@ const LoyaltyBannerSection = props => {
     isProductDetailView
   );
 
-  const utilArrRewards = [
+  const utilArrHeader = [
     {
       key: '#estimatedRewardsVal#',
       value: `<span class="${className} mpr-plcc-theme">${
@@ -76,22 +76,31 @@ const LoyaltyBannerSection = props => {
       value: `</span>`,
     },
   ];
-  const utilArrSectionSymbol = [
+  const finalHeaderValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrHeader);
+  headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalHeaderValue) : false;
+
+  const utilArrSubHeader = [
     {
       key: '#sectionSymbol#',
       value: `<span class="${className} section-symbol">${labels.sectionSymbol}</span>`,
     },
   ];
-
-  const finalPointsValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrRewards);
-  const finalSubHeading = labelsHashValuesReplace(
+  const finalSubHeadingValue = labelsHashValuesReplace(
     LoyaltyLabels.subHeadingLabelFn,
-    utilArrSectionSymbol
+    utilArrSubHeader
   );
-
-  headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalPointsValue) : false;
-  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn ? convertHtml(finalSubHeading) : false;
-  descriptionLabel = LoyaltyLabels.descriptionLabelFn || false;
+  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn ? convertHtml(finalSubHeadingValue) : false;
+  const utilArrDescription = [
+    {
+      key: '#br#',
+      value: '<br/>',
+    },
+  ];
+  const finalDescriptionValue = labelsHashValuesReplace(
+    LoyaltyLabels.descriptionLabelFn,
+    utilArrDescription
+  );
+  descriptionLabel = LoyaltyLabels.descriptionLabelFn ? convertHtml(finalDescriptionValue) : false;
 
   const utilArrNextReward = [
     {
