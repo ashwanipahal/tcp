@@ -4,78 +4,80 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <LinkText
-        headerText={
-          Array [
-            Object {
-              "icon": Object {
-                "icon": "",
-                "placement": "",
-              },
-              "link": Object {
-                "action": "",
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/p/",
-              },
-              "textItems": Array [
-                Object {
-                  "style": "medium_text_regular",
-                  "text": "ALL MATCHABLES",
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
                 },
-              ],
-            },
-            Object {
-              "icon": Object {
-                "icon": "",
-                "placement": "",
-              },
-              "link": Object {
-                "action": "",
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/p/",
-              },
-              "textItems": Array [
-                Object {
-                  "style": "medium_text_black",
-                  "text": "60% OFF",
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/p/",
                 },
-              ],
-            },
-          ]
-        }
-        useStyle={true}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <PromoBanner
-        promoBanner={
-          Array [
-            Object {
-              "link": Object {
-                "class": "",
-                "external": 0,
-                "target": "",
-                "text": "",
-                "title": "",
-                "url": "/c/",
+                "textItems": Array [
+                  Object {
+                    "style": "medium_text_regular",
+                    "text": "ALL MATCHABLES",
+                  },
+                ],
               },
-              "textItems": Array [
-                Object {
-                  "style": "extrabold_text_regular",
-                  "style2": "style2",
-                  "text": "60% OFF",
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
                 },
-              ],
-            },
-          ]
-        }
-      />
+                "link": Object {
+                  "action": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/p/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "medium_text_black",
+                    "text": "60% OFF",
+                  },
+                ],
+              },
+            ]
+          }
+          useStyle={true}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <PromoBanner
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "class": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "extrabold_text_regular",
+                    "style2": "style2",
+                    "text": "60% OFF",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </Styled(View)>
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
@@ -195,26 +197,43 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       }
     />
   </Styled(View)>
-  <Styled(View)>
-    <Styled(View) />
-  </Styled(View)>
   <View>
-    <Styled(View) />
-    <Styled(View)>
-      <Styled(View) />
-      <Styled(View) />
-      <Styled(Styled(ImageComp))
-        alt=""
-        host=""
-        source={
-          Object {
-            "testUri": "../../../../core/src/assets/plus.png",
-          }
+    <Skeleton
+      col={3}
+      colProps={Object {}}
+      height={170}
+      otherprops={Object {}}
+      row={1}
+      rowProps={
+        Object {
+          "justifyContent": "center",
+          "marginTop": "20px",
         }
-        url=""
-      />
+      }
+      showArrows={true}
+      width={190}
+    />
+    <Styled(View)>
+      <View />
     </Styled(View)>
-    <Styled(View) />
+    <Skeleton
+      col={3}
+      colProps={Object {}}
+      height={170}
+      otherprops={Object {}}
+      row={1}
+      rowProps={
+        Object {
+          "justifyContent": "center",
+          "marginTop": "20px",
+        }
+      }
+      showArrows={true}
+      width={190}
+    />
+    <Styled(View)>
+      <View />
+    </Styled(View)>
   </View>
   <Connect(QuickViewModalContainer) />
 </Styled(View)>
