@@ -97,7 +97,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="checkout-mobile-header-font"
         color="text.primary"
         component="span"
         fontFamily="primary"
@@ -226,7 +226,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 2`] = `
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="checkout-mobile-header-font"
         color="text.primary"
         component="span"
         fontFamily="primary"

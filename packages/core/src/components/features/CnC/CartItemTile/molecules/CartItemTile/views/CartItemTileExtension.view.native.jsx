@@ -205,6 +205,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
   const isItemShipToHome = !store;
   const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
   const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+  const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
   onPickUpOpenClick({
     colorProductId: productPartNumber,
     orderInfo: {
@@ -221,6 +222,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
     isBopisCtaEnabled,
     isBossCtaEnabled,
     isItemShipToHome,
+    alwaysSearchForBOSS,
   });
 };
 
