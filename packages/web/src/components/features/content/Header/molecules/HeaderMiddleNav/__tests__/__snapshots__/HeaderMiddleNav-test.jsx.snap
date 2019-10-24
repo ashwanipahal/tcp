@@ -97,6 +97,13 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           }
         }
       >
+        <Connect(Styled(SearchBar))
+          className="leftLink"
+          isFullSizeSearchModalOpen={false}
+          isSearchOpen={false}
+          onCloseClick={[Function]}
+          setSearchState={[Function]}
+        />
         <Styled(Anchor)
           anchorVariation="primary"
           className="leftLink"
@@ -119,13 +126,6 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         >
           Login
         </Styled(Anchor)>
-        <Connect(Styled(SearchBar))
-          className="rightLink"
-          isFullSizeSearchModalOpen={false}
-          isSearchOpen={false}
-          onCloseClick={[Function]}
-          setSearchState={[Function]}
-        />
         <Styled(Anchor)
           anchorVariation="primary"
           aria-label="undefined undefined item"
@@ -291,6 +291,13 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           }
         }
       >
+        <Connect(Styled(SearchBar))
+          className="leftLink"
+          isFullSizeSearchModalOpen={false}
+          isSearchOpen={false}
+          onCloseClick={[Function]}
+          setSearchState={[Function]}
+        />
         <Styled(Anchor)
           anchorVariation="primary"
           className="leftLink"
@@ -313,13 +320,6 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         >
           Login
         </Styled(Anchor)>
-        <Connect(Styled(SearchBar))
-          className="rightLink"
-          isFullSizeSearchModalOpen={false}
-          isSearchOpen={false}
-          onCloseClick={[Function]}
-          setSearchState={[Function]}
-        />
         <Styled(Anchor)
           anchorVariation="primary"
           aria-label="undefined undefined item"
