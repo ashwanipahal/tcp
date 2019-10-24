@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, Button, BodyCopy } from '../../../atoms';
+import { Row, Button, BodyCopy, Col } from '../../../atoms';
 import { PromoBanner } from '../..';
 import { Carousel, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
@@ -122,6 +122,11 @@ const ModuleK = props => {
                       small: 4,
                       medium: 2,
                       large: 3,
+                    }}
+                    ignoreGutter={{
+                      small: true,
+                      medium: true,
+                      large: true,
                     }}
                     className="moduleK__button"
                   >

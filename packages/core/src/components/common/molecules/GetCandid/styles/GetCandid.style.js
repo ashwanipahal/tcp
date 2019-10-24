@@ -44,27 +44,32 @@ export default css`
   }
 
   .gellary-button-right {
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    width: 164px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 164px;
+      margin-left: 7px;
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-left: 6px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 180px;
+      width: 210px;
+      margin-left: 6px;
     }
   }
 
   .gallery-button-left {
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    width: 164px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 164px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
-      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 180px;
+      width: 210px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 `;

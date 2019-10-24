@@ -4,7 +4,11 @@ export default css`
   .moduleD_button {
     margin: 0 auto 32px;
     width: 225px;
-    padding: 11px 0;
+    padding: 15px 0;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding: 11px 0;
+    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
     }
