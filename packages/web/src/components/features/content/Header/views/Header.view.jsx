@@ -80,7 +80,10 @@ class Header extends React.PureComponent {
       navigationDrawer,
       openNavigationDrawer,
       closeNavigationDrawer,
+      isUserPlcc,
       userName,
+      userPoints,
+      userRewards,
       openOverlay,
       openTrackOrderOverlay,
       isLoggedIn,
@@ -113,7 +116,10 @@ class Header extends React.PureComponent {
           openNavigationDrawer={openNavigationDrawer}
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
+          isUserPlcc={isUserPlcc}
           userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           openOverlay={openOverlay}
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
@@ -136,6 +142,8 @@ class Header extends React.PureComponent {
             closeNavigationDrawer={closeNavigationDrawer}
             navigationDrawer={navigationDrawer}
             userName={userName}
+            userPoints={userPoints}
+            userRewards={userRewards}
             openOverlay={openOverlay}
             isLoggedIn={isLoggedIn}
             cartItemCount={cartItemCount}
@@ -161,7 +169,10 @@ Header.propTypes = {
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  isUserPlcc: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
