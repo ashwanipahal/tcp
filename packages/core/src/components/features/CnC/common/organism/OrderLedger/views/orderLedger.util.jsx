@@ -4,7 +4,7 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
-import { PRICING_VISIBLE, PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { getLocator, isCanada } from '@tcp/core/src/utils';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
@@ -348,12 +348,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             </Col>
           </Row>
         ) : null}
-        {!isCanada() && (
-          <>
-            <LoyaltyBanner pageCategory={pageCategory} />
-            <RenderPerf.Measure name={PROMOTION_VISIBLE} />
-          </>
-        )}
+        {!isCanada() && <LoyaltyBanner pageCategory={pageCategory} />}
       </Grid>
       <RenderPerf.Measure name={PRICING_VISIBLE} />
     </React.Fragment>

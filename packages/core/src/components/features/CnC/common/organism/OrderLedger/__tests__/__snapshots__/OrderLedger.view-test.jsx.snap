@@ -194,14 +194,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
-            <React.Fragment>
-              <Connect(LoyaltyBannerContainer)
-                pageCategory=""
-              />
-              <Measure
-                name="promotion_visible"
-              />
-            </React.Fragment>
+            <Connect(LoyaltyBannerContainer)
+              pageCategory=""
+            />
           </ForwardRef>
           <Measure
             name="pricing_visible"
@@ -828,14 +823,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
-            <React.Fragment>
-              <Connect(LoyaltyBannerContainer)
-                pageCategory=""
-              />
-              <Measure
-                name="promotion_visible"
-              />
-            </React.Fragment>
+            <Connect(LoyaltyBannerContainer)
+              pageCategory=""
+            />
           </ForwardRef>
           <Measure
             name="pricing_visible"
@@ -1408,14 +1398,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
-            <React.Fragment>
-              <Connect(LoyaltyBannerContainer)
-                pageCategory=""
-              />
-              <Measure
-                name="promotion_visible"
-              />
-            </React.Fragment>
+            <Connect(LoyaltyBannerContainer)
+              pageCategory=""
+            />
           </ForwardRef>
           <Measure
             name="pricing_visible"
