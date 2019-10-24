@@ -24,6 +24,9 @@ const handleBillingFormSubmit = (scope, e, isMobile) => {
   const { handleSubmit, labels, onSubmit, scrollView } = scope.props;
   const { editMode } = scope.state;
   if (editMode) {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
     scope.setState({ editModeSubmissionError: labels.cardEditUnSavedError });
     return isMobile
       ? scrollView.scrollTo({ x: 0, y: 1300, animated: true })
