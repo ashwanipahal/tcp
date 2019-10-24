@@ -14,6 +14,7 @@ import {
   ForgotHeadingStyle,
   ForgotDescriptionStyle,
   FloatWrapper,
+  CustomIconWrapper,
 } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
@@ -22,6 +23,8 @@ import Anchor from '../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
 import LineComp from '../../../../common/atoms/Line';
+import CustomIcon from '../../../../common/atoms/Icon';
+import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
 
 const colorPallete = createThemeColorPalette();
 class ForgotPasswordView extends React.Component<Props> {
@@ -117,11 +120,21 @@ class ForgotPasswordView extends React.Component<Props> {
   };
 
   render() {
-    const { labels, successFullResetEmail } = this.props;
+    const { labels, successFullResetEmail, updateHeader } = this.props;
+    updateHeader(); // remove the header and border line of the modal
     return (
       <View>
         <FormStyleView>
           <FloatWrapper>
+            <CustomIconWrapper>
+              <CustomIcon
+                name={ICON_NAME.chevronLeft}
+                size="fs14"
+                color="blue.800"
+                isButton
+                onPress={() => this.onBackClick()}
+              />
+            </CustomIconWrapper>
             <Anchor
               fontSizeVariation="xlarge"
               anchorVariation="secondary"
