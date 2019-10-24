@@ -57,6 +57,7 @@ const style = css`
     padding-right: 20px;
     padding-bottom: 16px;
     padding-left: 20px;
+    color: ${props => props.theme.colorPalette.gray[800]};
   }
 
   &.gymboree-module-a .banner-content {

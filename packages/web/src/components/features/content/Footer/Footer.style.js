@@ -274,6 +274,7 @@ export default css`
 
     .candidate_a_inline_container_button .refer_a_friend_button{
       width: 165px;
+      padding: 11px 20px;
     }
   }
 

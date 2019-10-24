@@ -197,8 +197,8 @@ const ButtonStyles = css`
         font-size: ${props.theme.typography.fontSizes.fs14};
         font-weight: ${
           props.active
-            ? props.theme.typography.fontWeights.extrabold
-            : props.theme.typography.fontWeights.regular
+            ? props.theme.typography.fontWeights.semibold
+            : props.theme.typography.fontWeights.normal
         };
         border-bottom: 2px solid ${
           props.active ? props.theme.colorPalette.primary.main : 'transparent'
@@ -215,8 +215,8 @@ const ButtonStyles = css`
           font-size: ${props.theme.typography.fontSizes.fs20};
           font-weight: ${
             props.active
-              ? props.theme.typography.fontWeights.extrabold
-              : props.theme.typography.fontWeights.semibold
+              ? props.theme.typography.fontWeights.semibold
+              : props.theme.typography.fontWeights.normal
           };
         }
       `

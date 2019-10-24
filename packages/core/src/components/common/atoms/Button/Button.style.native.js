@@ -269,9 +269,9 @@ const CustomStyleText = styled(StyledText)`
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   font-family: ${props => props.theme.typography.fonts.secondary};
-  font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-  color: ${props => props.color || props.theme.colorPalette.gray[700]};
-  padding: 12px 20px;
+  font-weight: ${props => props.theme.typography.fontWeights.black};
+  color: ${props => props.color || props.theme.colorPalette.gray[800]};
+  padding: 11px 20px;
 
   ${props =>
     props.buttonVariation === 'variable-width'
@@ -288,6 +288,7 @@ const CustomStyleText = styled(StyledText)`
     props.buttonVariation === 'cautionary'
       ? `
    color: ${props.theme.colorPalette.secondary.dark};
+   font-weight: 800;
    `
       : ''};
 

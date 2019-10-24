@@ -33,9 +33,9 @@ export default css`
     padding-bottom: 16px;
     padding-left: 20px;
     color: ${props =>
-      props.theme.isGymboree && props.ctaType === 'stackedCTAButtons'
-        ? props.theme.colorPalette.gray['700']
-        : props.theme.colorPalette.red['300']};
+      props.theme.isGymboree &&
+      props.ctaType === 'stackedCTAButtons' &&
+      props.theme.colorPalette.red['300']};
   }
 
   .dropdown-button {
@@ -91,5 +91,8 @@ export default css`
       display: block;
       margin-bottom: 0px;
     }
+  }
+  .ModuleN_Button .link-button-wrapper-class {
+    border-bottom-color: #fff;
   }
 `;
