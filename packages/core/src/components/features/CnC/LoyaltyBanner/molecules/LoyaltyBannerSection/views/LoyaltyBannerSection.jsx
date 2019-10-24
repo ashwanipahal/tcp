@@ -40,7 +40,13 @@ const LoyaltyBannerSection = props => {
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
 
   /* istanbul ignore else */
-  if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
+  if (
+    currentSubtotal > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    estimatedSubtotal
+  ) {
     showSubtotal = true;
   }
 

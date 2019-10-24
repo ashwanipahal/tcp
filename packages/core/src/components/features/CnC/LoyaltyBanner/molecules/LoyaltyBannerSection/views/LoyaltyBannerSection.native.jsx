@@ -49,7 +49,13 @@ const LoyaltyBannerSection = props => {
   };
 
   /* istanbul ignore else */
-  if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
+  if (
+    currentSubtotal > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    estimatedSubtotal
+  ) {
     showSubtotal = true;
   }
 
