@@ -5,7 +5,7 @@ const getPageStyle = props => {
   return `
   margin: auto  ${theme.spacing.APP_LAYOUT_SPACING.SM};
   justify-content: ${'center'};
- 
+
   `;
 };
 const SectionStyle = css`
@@ -111,6 +111,11 @@ const DescriptionStyle = styled.Text`
 const ImageWrapper = styled.Text`
   ${ImageWrapperStyle}
 `;
+
+const WelcomeBackWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
 export {
   SectionStyle,
   HeadingStyle,
@@ -120,4 +125,5 @@ export {
   FavtHeading,
   FavtSubHeading,
   ResetPassword,
+  WelcomeBackWrapper,
 };

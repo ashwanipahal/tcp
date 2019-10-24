@@ -55,13 +55,8 @@ class LoginView extends React.PureComponent {
     onSubmit(formdata);
     isSupportedTouch().then(biometryType => {
       if (biometryType && (formdata.userTouchId || formdata.useFaceID)) {
-        touchIDCheck().then(touchIdResp => {
-          if (touchIdResp) {
-            setUserLoginDetails(formdata.emailAddress, formdata.password);
-          } else {
-            setUserLoginDetails(formdata.emailAddress, '');
-          }
-        });
+        setUserLoginDetails(formdata.emailAddress, formdata.password);
+        touchIDCheck();
       } else {
         setUserLoginDetails(formdata.emailAddress, '');
       }
