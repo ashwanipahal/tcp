@@ -22,6 +22,38 @@
 	<string>1.0-${APP_ENV}</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>twitterkit-7GFPBsI0aEZgbVSFQYXBwBbOK</string>
+      </array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb312738492865420</string>
+      </array>
+    </dict>
+  </array>
+  <key>FacebookAppID</key>
+  <string>312738492865420</string>
+  <key>FacebookDisplayName</key>
+  <string>My Place</string>
+  <key>LSApplicationCategoryType</key>
+  <string></string>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>twitter</string>
+    <string>twitterauth</string>
+    <string>fbapi</string>
+    <string>fb-messenger-share-api</string>
+    <string>fbauth2</string>
+    <string>fbshareextension</string>
+  </array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -39,9 +71,15 @@
 			</dict>
 		</dict>
 	</dict>
+  <key>NSCameraUsageDescription</key>
+  <string>This app would like to access your camera to attach pictures with your product review.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string/>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string/>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string/>
 	<key>UIAppFonts</key>
 	<array>

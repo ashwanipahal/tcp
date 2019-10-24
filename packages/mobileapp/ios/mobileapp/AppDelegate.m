@@ -16,11 +16,11 @@
 #import <AppCenterReactNativeAnalytics.h>
 #import <AppCenterReactNativeCrashes.h>
 #import <MPulse/MPulse.h>
+#import <raygun4apple/raygun4apple_iOS.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
-#define MPULSE_API_KEY @"YOUR_API_KEY"
-
-
+#define MPULSE_API_KEY @"APZRQ-P5BYB-9WHCK-VARZB-JGTU7"
 
 //  #if DEBUG
 //  #import <FlipperKit/FlipperClient.h>
@@ -36,10 +36,39 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //  NSDictionary *props = @{@"appType":launchOptions};
+  
+  // Start Init of 3P Modules/Services
+  
+  // ********************************
+  // RAYGUN (Error Reporting)
+  // ********************************
+  RaygunClient *rgClient = [RaygunClient sharedInstanceWithApiKey:@"W1Hxa4blNaRqscJ9Y5A0Q"];
+  [rgClient enableCrashReporting];
+  NSException *exception = [NSException exceptionWithName:@"TestException" reason:@"Something went wrong" userInfo:nil];
+  [RaygunClient.sharedInstance sendException:exception withTags:@[@"CustomTag1", @"CustomTag2"]];
+  //  [rgClient enableRealUserMonitoring];
+  //  [RaygunClient.sharedInstance enableNetworkPerformanceMonitoring];
+  
+  
+  // ********************************
+  // mPULSE (Performance Monitoring)
+  // ********************************
+  [MPulse initializeWithAPIKey:MPULSE_API_KEY];
+  
+  
+  // ********************************
+  // AppCenter
+  // ********************************
+    [AppCenterReactNative register];
+    [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
+  //[AppCenterReactNativeCrashes registerWithAutomaticProcessing];
 
-// Initialize the library with your
-// mPulse API key, MPULSE_API_KEY
-[MPulse initializeWithAPIKey:MPULSE_API_KEY];
+  // ********************************
+  // Facebook
+  // ********************************
+    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+
+
 
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
@@ -55,9 +84,7 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
 
-  [AppCenterReactNative register];
-[AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
-[AppCenterReactNativeCrashes registerWithAutomaticProcessing];
+ 
  
   return YES;
 }
@@ -83,5 +110,14 @@
 //    [client start];
 //  #endif
  }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+
+  BOOL handled =  [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options];
+  // Add any custom logic here.
+  return handled;
+}
 
 @end
