@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import ListItem from '../../ProductListItem';
@@ -8,9 +8,20 @@ import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { styles, PageContainer } from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
+import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
+import ModalNative from '../../../../../../common/molecules/Modal/index';
+import LoginPageContainer from '../../../../../account/LoginPage/index';
 
 class ProductList extends React.PureComponent {
   flatListRef = null;
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: false,
+    };
+  }
 
   componentDidUpdate(prevProps) {
     const isScrollToTopValue = get(this.props, 'scrollToTop');
@@ -24,7 +35,21 @@ class ProductList extends React.PureComponent {
   onAddToBag = data => {};
 
   // eslint-disable-next-line
-  onFavorite = item => {};
+  onFavorite = generalProductId => {
+    const { onAddItemToFavorites, isLoggedIn } = this.props;
+
+    onAddItemToFavorites({ colorProductId: generalProductId });
+
+    if (!isLoggedIn) {
+      this.setState({ showModal: true });
+    }
+  };
+
+  toggleModal = () => {
+    this.setState(state => ({
+      showModal: !state.showModal,
+    }));
+  };
 
   onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, name) => {
     const { title, onGoToPDPPage, isFavorite } = this.props;
@@ -46,6 +71,20 @@ class ProductList extends React.PureComponent {
     );
   };
 
+  renderComponent = ({ isUserLoggedIn }) => {
+    let componentContainer = null;
+    if (!isUserLoggedIn) {
+      componentContainer = (
+        <LoginPageContainer
+          onRequestClose={this.toggleModal}
+          isUserLoggedIn={isUserLoggedIn}
+          showLogin={this.showloginModal}
+        />
+      );
+    }
+    return <React.Fragment>{componentContainer}</React.Fragment>;
+  };
+
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -59,6 +98,7 @@ class ProductList extends React.PureComponent {
       onQuickViewOpenClick,
       isFavorite,
       setLastDeletedItemId,
+      isLoggedIn,
     } = this.props;
     const { item } = itemData;
 
@@ -78,23 +118,43 @@ class ProductList extends React.PureComponent {
 
     // get default Loyalty message
     const loyaltyPromotionMessage = this.getLoyaltyPromotionMessage(productInfo, colorsMap);
+
+    const { showModal } = this.state;
     return (
-      <ListItem
-        item={item}
-        isMatchingFamily={isMatchingFamily}
-        badge1={topBadge}
-        badge2={badge2}
-        isPlcc={isPlcc}
-        loyaltyPromotionMessage={loyaltyPromotionMessage}
-        onAddToBag={this.onAddToBag}
-        onFavorite={this.onFavorite}
-        currencyExchange={currencyExchange}
-        currencySymbol={currencySymbol}
-        onGoToPDPPage={this.onOpenPDPPageHandler}
-        onQuickViewOpenClick={onQuickViewOpenClick}
-        isFavorite={isFavorite}
-        setLastDeletedItemId={setLastDeletedItemId}
-      />
+      <>
+        <ListItem
+          item={item}
+          isMatchingFamily={isMatchingFamily}
+          badge1={topBadge}
+          badge2={badge2}
+          isPlcc={isPlcc}
+          loyaltyPromotionMessage={loyaltyPromotionMessage}
+          onAddToBag={this.onAddToBag}
+          onFavorite={this.onFavorite}
+          currencyExchange={currencyExchange}
+          currencySymbol={currencySymbol}
+          onGoToPDPPage={this.onOpenPDPPageHandler}
+          onQuickViewOpenClick={onQuickViewOpenClick}
+          isFavorite={isFavorite}
+          setLastDeletedItemId={setLastDeletedItemId}
+        />
+        {showModal && (
+          <ModalNative
+            isOpen={showModal}
+            onRequestClose={this.toggleModal}
+            headingFontFamily="secondary"
+            fontSize="fs16"
+          >
+            <SafeAreaView>
+              <ModalViewWrapper>
+                {this.renderComponent({
+                  isLoggedIn,
+                })}
+              </ModalViewWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        )}
+      </>
     );
   };
 
@@ -226,6 +286,7 @@ ProductList.propTypes = {
   setListRef: PropTypes.func,
   isFavorite: PropTypes.bool,
   setLastDeletedItemId: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -251,6 +312,7 @@ ProductList.defaultProps = {
   isPlcc: false,
   currencySymbol: '$',
   isFavorite: false,
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductList, styles);

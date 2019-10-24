@@ -8,6 +8,7 @@ import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDe
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import {
   getUnbxdId,
   getCategoryId,
@@ -33,6 +34,10 @@ import {
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 import { setRecentSearch } from '../../../../common/organisms/SearchProduct/RecentSearch.actions';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 
 class SearchDetailContainer extends React.PureComponent {
   constructor(props) {
@@ -132,6 +137,8 @@ class SearchDetailContainer extends React.PureComponent {
       sortLabels,
       isSearchResultsAvailable,
       searchedText,
+      onAddItemToFavorites,
+      isLoggedIn,
       ...otherProps
     } = this.props;
 
@@ -160,6 +167,8 @@ class SearchDetailContainer extends React.PureComponent {
                 searchResultSuggestions={searchResultSuggestions}
                 onGoToPDPPage={this.onGoToPDPPage}
                 onLoadMoreProducts={this.onLoadMoreProducts}
+                onAddItemToFavorites={onAddItemToFavorites}
+                isLoggedIn={isLoggedIn}
                 {...otherProps}
               />
             ) : (
@@ -227,6 +236,7 @@ function mapStateToProps(state) {
       state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 }
 
@@ -243,6 +253,9 @@ function mapDispatchToProps(dispatch) {
     },
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
     setRecentSearches: searchTerm => {
       dispatch(setRecentSearch({ searchTerm }));
@@ -286,6 +299,8 @@ SearchDetailContainer.propTypes = {
   sortLabels: PropTypes.shape({}),
   resetProducts: PropTypes.func,
   setRecentSearches: PropTypes.func,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 SearchDetailContainer.defaultProps = {
@@ -311,6 +326,8 @@ SearchDetailContainer.defaultProps = {
   sortLabels: {},
   resetProducts: () => {},
   setRecentSearches: null,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
 };
 
 export default connect(

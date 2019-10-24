@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import {
   getNavigationTree,
@@ -23,7 +24,11 @@ import {
   getIsDataLoading,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
-import { isPlccUser } from '../../../account/User/container/User.selectors';
+import {
+  isPlccUser,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
@@ -81,6 +86,8 @@ class ProductListingContainer extends React.PureComponent {
       getProducts,
       navigation,
       sortLabels,
+      onAddItemToFavorites,
+      isLoggedIn,
       ...otherProps
     } = this.props;
     return (
@@ -107,6 +114,8 @@ class ProductListingContainer extends React.PureComponent {
         onGoToPDPPage={this.onGoToPDPPage}
         sortLabels={sortLabels}
         onLoadMoreProducts={this.onLoadMoreProducts}
+        onAddItemToFavorites={onAddItemToFavorites}
+        isLoggedIn={isLoggedIn}
         {...otherProps}
       />
     );
@@ -156,6 +165,7 @@ function mapStateToProps(state) {
     isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
   };
 }
 
@@ -171,6 +181,9 @@ function mapDispatchToProps(dispatch) {
     addItemToCartBopis: () => {},
     resetProducts: () => {
       dispatch(resetPlpProducts());
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
@@ -200,6 +213,8 @@ ProductListingContainer.propTypes = {
   router: PropTypes.shape({}).isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   resetProducts: PropTypes.func,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -219,6 +234,8 @@ ProductListingContainer.defaultProps = {
   lastLoadedPageNumber: 0,
   sortLabels: [],
   resetProducts: () => {},
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
 };
 
 export default connect(

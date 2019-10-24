@@ -54,6 +54,8 @@ class SearchDetail extends React.PureComponent {
       getProducts,
       navigation,
       sortLabels,
+      onAddItemToFavorites,
+      isLoggedIn,
       ...otherProps
     } = this.props;
 
@@ -76,6 +78,8 @@ class SearchDetail extends React.PureComponent {
           onGoToPDPPage={this.onGoToPDPPage}
           sortLabels={sortLabels}
           onLoadMoreProducts={this.onLoadMoreProducts}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
           {...otherProps}
         />
         <QuickViewModal />
@@ -100,6 +104,8 @@ SearchDetail.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 SearchDetail.defaultProps = {
@@ -107,6 +113,8 @@ SearchDetail.defaultProps = {
   labels: {},
   slpLabels: {},
   sortLabels: {},
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
 };
 
 export default withStyles(SearchDetail, styles);

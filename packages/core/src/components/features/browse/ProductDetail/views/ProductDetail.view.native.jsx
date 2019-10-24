@@ -91,6 +91,8 @@ class ProductDetailView extends React.PureComponent {
       pdpLabels,
       currency,
       currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
     } = this.props;
     const { currentColorEntry, currentGiftCardValue } = this.state;
     let imageUrls = [];
@@ -109,6 +111,9 @@ class ProductDetailView extends React.PureComponent {
           <ImageCarousel
             isGiftCard={currentProduct.isGiftCard}
             imageUrls={imageUrls}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
+            currentProduct={currentProduct}
             onImageClick={this.onImageClick}
           />
           <ProductSummary
@@ -180,6 +185,8 @@ ProductDetailView.propTypes = {
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.number,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -196,6 +203,8 @@ ProductDetailView.defaultProps = {
   pdpLabels: {},
   currency: 'USD',
   currencyExchange: 1,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductDetailView);

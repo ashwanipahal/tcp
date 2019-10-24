@@ -101,6 +101,8 @@ const ProductListView = ({
   renderBrandFilter,
   margins,
   paddings,
+  onAddItemToFavorites,
+  isLoggedIn,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -128,6 +130,8 @@ const ProductListView = ({
         totalProductsCount={totalProductsCount}
         onRenderHeader={() => onRenderHeader(headerData)}
         isFavorite={isFavorite}
+        onAddItemToFavorites={onAddItemToFavorites}
+        isLoggedIn={isLoggedIn}
         {...otherProps}
       />
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
@@ -160,6 +164,8 @@ ProductListView.propTypes = {
   renderBrandFilter: PropTypes.func,
   margins: PropTypes.string,
   paddings: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -177,6 +183,8 @@ ProductListView.defaultProps = {
   renderBrandFilter: null,
   margins: null,
   paddings: null,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductListView, styles);

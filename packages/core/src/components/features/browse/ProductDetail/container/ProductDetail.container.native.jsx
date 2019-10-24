@@ -24,6 +24,11 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -71,6 +76,8 @@ class ProductDetailContainer extends React.PureComponent {
       longDescription,
       shortDescription,
       itemPartNumber,
+      onAddItemToFavorites,
+      isLoggedIn,
       currency,
       currencyAttributes,
     } = this.props;
@@ -93,6 +100,8 @@ class ProductDetailContainer extends React.PureComponent {
             shortDescription={shortDescription}
             itemPartNumber={itemPartNumber}
             longDescription={longDescription}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
             currency={currency}
             currencyExchange={currencyAttributes.exchangevalue}
           />
@@ -115,6 +124,7 @@ function mapStateToProps(state) {
     shortDescription: getShortDescription(state),
     itemPartNumber: getGeneralProductId(state),
     longDescription: getDescription(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
   };
@@ -130,6 +140,9 @@ function mapDispatchToProps(dispatch) {
     },
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
   };
 }
@@ -150,6 +163,8 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
   currency: PropTypes.string,
   currencyAttributes: PropTypes.shape({}),
 };
@@ -165,6 +180,8 @@ ProductDetailContainer.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
   currency: 'USD',
   currencyAttributes: {
     exchangevalue: 1,

@@ -136,6 +136,7 @@ const ListItem = props => {
         setLastDeletedItemId={setLastDeletedItemId}
         isFavorite={isFavorite}
         itemInfo={isFavorite ? itemInfo : {}}
+        productInfo={productInfo}
         accessibilityLabel="Price Section"
       />
       <RenderTitle text={name} />
@@ -227,9 +228,11 @@ const RenderPricesSection = values => {
     setLastDeletedItemId,
     itemInfo,
     hideFavorite,
+    productInfo,
   } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   const { itemId } = itemInfo;
+  const { generalProductId } = productInfo || '';
   // calculate default list price
   const listPriceForColor = `${currencySymbol}${(
     listPrice * currencyExchange[0].exchangevalue
@@ -238,6 +241,8 @@ const RenderPricesSection = values => {
   const offerPriceForColor = `${currencySymbol}${(
     offerPrice * currencyExchange[0].exchangevalue
   ).toFixed(2)}`;
+
+  const [isAddedToFav, setIsAddedToFav] = useState(false);
   return (
     <PricesSection>
       <OfferPriceAndFavoriteIconContainer>
@@ -246,7 +251,7 @@ const RenderPricesSection = values => {
         </ListPrice>
         {!hideFavorite && (
           <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
-            {isFavorite ? (
+            {isFavorite || isAddedToFav ? (
               <CustomIcon
                 isButton
                 iconFontName={ICON_FONT_CLASS.Icomoon}
@@ -261,7 +266,10 @@ const RenderPricesSection = values => {
                 name={ICON_NAME.favorite}
                 size="fs21"
                 color="gray.600"
-                onPress={onFavorite}
+                onPress={() => {
+                  onFavorite(generalProductId);
+                  setIsAddedToFav(true);
+                }}
               />
             )}
           </FavoriteIconContainer>
