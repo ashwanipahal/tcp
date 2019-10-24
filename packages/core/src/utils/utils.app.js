@@ -398,6 +398,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,
+    assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`],
     productAssetPathGYM: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxdTCP: envConfig.RWD_APP_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
