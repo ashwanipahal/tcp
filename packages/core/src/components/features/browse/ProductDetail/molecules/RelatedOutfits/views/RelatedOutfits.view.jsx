@@ -19,22 +19,23 @@ class RelatedOutfits extends React.PureComponent {
     return isAccordionOpen ? 'show-accordion-toggle' : '';
   };
 
+  RelatedOutfitsSlots = () => {
+    const { selectedColorProductId } = this.props;
+    return (
+      <ModuleQ
+        selectedColorProductId={selectedColorProductId}
+        hideTabs
+        divTabs={[]}
+        bgClass="yellow-bg"
+      />
+    );
+  };
+
   render() {
-    const { pdpLabels, className, selectedColorProductId } = this.props;
+    const { pdpLabels, className } = this.props;
     const { completeTheLook } = pdpLabels;
     const { isAccordionOpen } = this.state;
     const accordionToggleClass = this.getAccordionClass(isAccordionOpen);
-
-    const RelatedOutfitsSlots = () => {
-      return (
-        <ModuleQ
-          selectedColorProductId={selectedColorProductId}
-          hideTabs
-          divTabs={[]}
-          bgClass="yellow-bg"
-        />
-      );
-    };
 
     return (
       <div className={`${className} product-description-list`}>
@@ -48,7 +49,7 @@ class RelatedOutfits extends React.PureComponent {
         >
           {completeTheLook}
         </BodyCopy>
-        {isAccordionOpen ? <RelatedOutfitsSlots /> : null}
+        {this.RelatedOutfitsSlots()}
       </div>
     );
   }
@@ -57,7 +58,7 @@ class RelatedOutfits extends React.PureComponent {
 RelatedOutfits.propTypes = {
   className: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
-  selectedColorProductId: PropTypes.number.isRequired,
+  selectedColorProductId: PropTypes.string.isRequired,
 };
 
 RelatedOutfits.defaultProps = {
