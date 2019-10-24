@@ -37,8 +37,9 @@ const style = css`
     }
   }
   .header-middle-login-section {
-    position: absolute;
-    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     margin-top: 30px;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 71%;
@@ -48,12 +49,61 @@ const style = css`
       width: 74%;
     }
   }
-  .username {
+  .account-info-section {
     cursor: pointer;
     display: inline-block;
+    line-height: normal;
+    padding: 0px 12px;
+  }
+  .carrot-down-icon {
+    margin-left: 9px;
+    transform: rotate(0deg);
+    transition: transform 0.1s linear;
+  }
+  .carrot-up-icon {
+    margin-left: 9px;
+    transform: rotate(180deg);
+    transition: transform 0.15s linear;
+  }
+  .account-info {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    cursor: pointer;
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+  .user-name {
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    text-align: left;
+    &:hover {
+      color: ${props => props.theme.colorPalette.blue[500]};
+    }
+  }
+  .user-points,
+  .user-rewards {
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+    color: ${props =>
+      props.isUserPlcc ? props.theme.colorPalette.blue[500] : props.theme.colorPalette.orange[800]};
+  }
+  .usericon {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: baseline;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
   }
   .product-image {
+    padding-left: 12px;
     vertical-align: baseline;
+  }
+  #login {
+    padding-right: 12px;
+  }
+  #createaccount {
+    padding-left: 12px;
   }
 
   .rightLink {
