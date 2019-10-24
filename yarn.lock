@@ -18075,6 +18075,11 @@ raygun4js@^2.17.1:
   resolved "https://registry.yarnpkg.com/raygun4js/-/raygun4js-2.17.1.tgz#8886028f358bfdf5210b5e592e461efb2b00ea6b"
   integrity sha512-NH/BL5wti08PpflHcrZbB1tqmk0h1eiOg65ImpRwHVHFTww3vu8GzXgMKMiVvC2Mm4OaPY0anqBfhZVkubelmg==
 
+raygun4js@^2.17.2:
+  version "2.17.2"
+  resolved "https://registry.yarnpkg.com/raygun4js/-/raygun4js-2.17.2.tgz#e172482c5f2dc674858f900a5275ac1d8cba7250"
+  integrity sha512-3HjQwSy9YFezpZhAR1uixjDiWiOapzJ1x+mtw5eA7n12jWCjx5iDwi2yNmNaBcoRcykpEruG+5KqcxoVdS84Dg==
+
 raygun@^0.10.1:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/raygun/-/raygun-0.10.1.tgz#093b26765f5d42114673c082e6216c7e472418fe"

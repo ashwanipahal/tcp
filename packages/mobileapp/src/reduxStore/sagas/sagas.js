@@ -135,5 +135,6 @@ export default function* rootSaga() {
     SubscribeStoreSaga(),
     LayoutSaga(),
     NavigateXHRSaga(),
+    SubscribeStoreSaga(),
   ]);
 }

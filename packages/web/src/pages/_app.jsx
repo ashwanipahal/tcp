@@ -89,14 +89,16 @@ class TCPWebApp extends App {
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
-    const { envId, raygunApiKey, channelId } = getAPIConfig();
-    initErrorReporter({
-      isServer: false,
-      envId,
-      raygunApiKey,
-      channelId,
-      isDevelopment: isDevelopment(),
-    });
+    const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
+    if (isErrorReportingBrowserActive) {
+      initErrorReporter({
+        isServer: false,
+        envId,
+        raygunApiKey,
+        channelId,
+        isDevelopment: isDevelopment(),
+      });
+    }
 
     /**
      * This is where we assign window._dataLayer for analytics logic

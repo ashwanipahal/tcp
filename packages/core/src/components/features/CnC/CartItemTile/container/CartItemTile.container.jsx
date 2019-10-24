@@ -25,6 +25,7 @@ import {
   getCartOrderList,
   getEditableProductInfo,
   getCartToggleError,
+  getCurrencyExchange,
 } from './CartItemTile.selectors';
 import {
   getSaveForLaterSwitch,
@@ -91,6 +92,7 @@ export const CartItemTileContainer = ({
   setShipToHome,
   toggleError,
   clearToggleError,
+  currencyExchange,
 }) => (
   <CartItemTile
     labels={labels}
@@ -133,6 +135,7 @@ export const CartItemTileContainer = ({
     setShipToHome={setShipToHome}
     toggleError={toggleError}
     clearToggleError={clearToggleError}
+    currencyExchange={currencyExchange}
   />
 );
 
@@ -217,6 +220,8 @@ export function mapStateToProps(state) {
     isRadialInventoryEnabled: getIsRadialInventoryEnabled(state),
     orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state) || '',
     toggleError: getCartToggleError(state),
+    orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state),
+    currencyExchange: getCurrencyExchange(state),
   };
 }
 

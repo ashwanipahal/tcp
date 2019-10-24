@@ -10,9 +10,17 @@ describe('GiftCardTileVanilla', () => {
     handleRemoveGiftCard: jest.fn(),
     className: 'test',
     cardData: { creditCardId: 123, name: 'test' },
+    isFromReview: false,
   };
 
   it('should render gift card tile', () => {
+    const component = shallow(<GiftCardTileVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should render gift card tile if from review page', () => {
+    props.isFromReview = true;
+    props.isExpressCheckout = true;
     const component = shallow(<GiftCardTileVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });

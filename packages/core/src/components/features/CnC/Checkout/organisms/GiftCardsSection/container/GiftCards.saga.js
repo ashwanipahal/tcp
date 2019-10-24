@@ -29,9 +29,16 @@ export function* applyGiftCard(payloadData) {
         [payload.creditCardId]: resErr,
       };
       yield put(setGiftCardError(errorObject));
-    }
-
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    } else
+      yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: true,
+          excludeCartItems: true,
+          recalcRewards: true,
+          isCheckoutFlow: true,
+          translation: false,
+        })
+      );
   } catch (err) {
     const errorObject = {
       [payload.creditCardId]: err,
@@ -46,7 +53,15 @@ export function* removeGiftCardFromOrder(payloadData) {
     yield put(resetGiftCardError());
     const labels = yield select(BagPageSelectors.getErrorMapping);
     yield call(removeGiftCard, payload, labels);
-    yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        isRecalculateTaxes: true,
+        excludeCartItems: true,
+        recalcRewards: true,
+        isCheckoutFlow: true,
+        translation: false,
+      })
+    );
   } catch (err) {
     console.log(err);
   }
