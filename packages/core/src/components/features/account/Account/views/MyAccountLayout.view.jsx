@@ -24,6 +24,7 @@ const MyAccountLayoutView = props => {
     className,
     router,
     labels,
+    isUserLoggedIn,
   } = props;
   return (
     <div className={className}>
@@ -32,19 +33,23 @@ const MyAccountLayoutView = props => {
           <AccountHeader labels={labels} />
         </Col>
       </Row>
-      <Row className="is-hidden-nav">
-        <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
-          <Dropdown options={navData} active={active} isUpperCase />
-        </Col>
-      </Row>
+      {isUserLoggedIn && (
+        <Row className="is-hidden-nav">
+          <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
+            <Dropdown options={navData} active={active} isUpperCase />
+          </Col>
+        </Row>
+      )}
       <Row>
-        <Col colSize={{ large: 2, medium: 8, small: 6 }} className="is-visible-nav">
-          <MyAccountLeftNav
-            navData={navData}
-            active={active}
-            activeSubComponent={activeSubComponent}
-          />
-        </Col>
+        {isUserLoggedIn && (
+          <Col colSize={{ large: 2, medium: 8, small: 6 }} className="is-visible-nav">
+            <MyAccountLeftNav
+              navData={navData}
+              active={active}
+              activeSubComponent={activeSubComponent}
+            />
+          </Col>
+        )}
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
           <MainContent router={router} labels={labels} />
         </Col>
@@ -61,6 +66,7 @@ MyAccountLayoutView.propTypes = {
   className: PropTypes.string,
   router: PropTypes.shape({}),
   labels: PropTypes.shape({}),
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 MyAccountLayoutView.defaultProps = {

@@ -92,6 +92,7 @@ export class Account extends React.PureComponent {
             navData={navData}
             router={router}
             labels={labels}
+            isUserLoggedIn={isUserLoggedIn}
           />
           {process.env.ANALYTICS && <RouteTracker />}
         </>

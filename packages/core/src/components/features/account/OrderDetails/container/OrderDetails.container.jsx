@@ -12,11 +12,13 @@ import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.select
  */
 export class OrderDetailsContainer extends PureComponent {
   componentDidMount() {
-    const { getOrderDetailsAction, orderId } = this.props;
+    const { getOrderDetailsAction, orderId, orderDetailsData } = this.props;
     const payload = {
       orderId,
     };
-    getOrderDetailsAction(payload);
+    if (orderId && orderDetailsData.orderNumber !== orderId) {
+      getOrderDetailsAction(payload);
+    }
   }
 
   /**
