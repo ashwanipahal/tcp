@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { View, WebView, Platform } from 'react-native';
+import CheckoutSelector from '../../../../../../Checkout/container/Checkout.selector';
 
 const PayPalButton = props => {
   const {
@@ -11,33 +12,40 @@ const PayPalButton = props => {
     clearPaypalSettings,
     navigation,
     paypalEnv,
+    setVenmoState,
   } = props;
+
   const [showAsModal, setAsModal] = useState(false);
   const handleWebViewEvents = event => {
     switch (event.nativeEvent.data) {
       case 'payment':
         payPalWebViewHandle(true);
         setAsModal(true);
+        //Here to disable venmo button
+        setVenmoState(false);
         break;
       case 'onAuthorize':
         paypalAuthorizationHandle({ navigation, navigationActions: NavigationActions });
         payPalWebViewHandle(false);
         setAsModal(false);
+        setVenmoState(true);
         break;
       case 'onCancel':
         clearPaypalSettings();
-        payPalWebViewHandle(false);
-        setAsModal(false);
+        setVenmoState(true);
         break;
       default:
         payPalWebViewHandle(false);
         setAsModal(false);
+        setVenmoState(true);
     }
   };
   let styles = {
     height: 42,
     width: 150,
+    flex: 1,
   };
+
   if (showAsModal) {
     styles = {
       position: 'absolute',
@@ -51,7 +59,7 @@ const PayPalButton = props => {
   const webURL = `http://dev.childrensplace.com:3000/static/paypal/index.html?key=${
     getPayPalSettings.paypalInContextToken
   }&paypalEnv=${paypalEnv}`;
-
+  console.log('url=>', webURL);
   return (
     <View style={{ ...styles }}>
       <WebView

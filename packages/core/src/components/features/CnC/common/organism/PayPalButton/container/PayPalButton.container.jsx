@@ -63,6 +63,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       payPalWebViewHandle,
       paypalAuthorizationHandle,
       clearPaypalSettings,
+      setVenmoState,
     } = this.props;
     console.log('getPayPalSettings', getPayPalSettings, this.paypalEnv);
     return (
@@ -78,6 +79,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
           paypalAuthorizationHandle={paypalAuthorizationHandle}
           clearPaypalSettings={clearPaypalSettings}
           paypalEnv={this.paypalEnv}
+          setVenmoState={setVenmoState}
         />
       )
     );
@@ -101,7 +103,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(bagPageActions.paypalAuthorization(payload));
     },
     clearPaypalSettings: () => {
-      dispatch(getSetIsPaypalPaymentSettings(null));
+      dispatch(bagPageActions.startPaypalNativeCheckout());
     },
     payPalWebViewHandle: payload => {
       dispatch(bagPageActions.getSetPayPalWebView(payload));

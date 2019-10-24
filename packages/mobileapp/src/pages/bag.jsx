@@ -11,10 +11,10 @@ const BagStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+    defaultNavigationOptions: ({ navigation }) => ({
+      header: props => (checkNavigation(navigation) === true ? <Header {...props} /> : null),
       headerBackground: 'transparent',
-    },
+    }),
   }
 );
 
@@ -24,6 +24,11 @@ BagStack.navigationOptions = {
   tabBarIcon: props => (
     <NavBarIcon iconActive="home-active" iconInactive="home-inactive" {...props} />
   ),
+  headerVisible: false,
+};
+
+const checkNavigation = nav => {
+  return !nav.getParam('headerMode');
 };
 
 export default BagStack;

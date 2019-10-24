@@ -316,6 +316,7 @@ export function* startPaypalCheckout({ payload }) {
 }
 
 export function* startPaypalNativeCheckout() {
+  yield put(getSetIsPaypalPaymentSettings(null));
   const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
   // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
   const fromPage = 'AjaxOrderItemDisplayView';

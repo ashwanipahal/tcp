@@ -16,6 +16,13 @@ import CheckoutModals from '../../common/organism/CheckoutModals';
 import VenmoPaymentButton from '../../../../common/atoms/VenmoPaymentButton';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.changeVenmoState = this.changeVenmoState.bind(this);
+    this.state = {
+      venmoEnable: true,
+    };
+  }
   getVenmoPaymentButton() {
     const { isInternationalShipping, handleCartCheckout, isEditingItem } = this.props;
     if (!isInternationalShipping) {
@@ -31,6 +38,15 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return null;
   }
 
+  changeVenmoState = isVenmoEnable => {
+    this.setState({ venmoEnable: isVenmoEnable });
+    if (isVenmoEnable) {
+      this.props.hideHeader(false);
+    } else {
+      this.props.hideHeader(true);
+    }
+  };
+
   render() {
     const {
       labels,
@@ -42,6 +58,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isNoNEmptyBag,
       fromAddedToBagModal,
       getPayPalSettings,
+      hideHeader,
     } = this.props;
     return (
       <ActionsWrapper>
@@ -69,7 +86,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
         {(isNoNEmptyBag || fromAddedToBagModal) && (
           <View>
             <ButtonWrapper>
-              <PayPalButton getPayPalSettings={getPayPalSettings} navigation={navigation} />
+              <PayPalButton
+                getPayPalSettings={getPayPalSettings}
+                navigation={navigation}
+                setVenmoState={this.changeVenmoState}
+              />
               <CheckoutButton
                 onPress={() => {
                   handleCartCheckout({
@@ -91,7 +112,10 @@ class AddedToBagActions extends React.PureComponent<Props> {
             </ButtonWrapper>
           </View>
         )}
-        {(isNoNEmptyBag || fromAddedToBagModal) && this.getVenmoPaymentButton()}
+
+        {(isNoNEmptyBag || fromAddedToBagModal) &&
+          this.state.venmoEnable &&
+          this.getVenmoPaymentButton()}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>
     );

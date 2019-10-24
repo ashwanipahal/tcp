@@ -43,6 +43,7 @@ const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 export class BagPage extends React.Component {
   constructor(props) {
     super(props);
+    this.hideHeaderWhilePaypalView = this.hideHeaderWhilePaypalView.bind(this);
     this.state = {
       activeSection: null,
       showCondensedHeader: false,
@@ -50,6 +51,14 @@ export class BagPage extends React.Component {
     };
     this.timer = null;
   }
+
+  hideHeaderWhilePaypalView = hide => {
+    if (hide) {
+      this.props.navigation.setParams({ headerMode: true });
+    } else {
+      this.props.navigation.setParams({ headerMode: false });
+    }
+  };
 
   componentDidMount() {
     const { fetchLabels, totalCount, sflItems, isShowSaveForLaterSwitch } = this.props;
@@ -337,6 +346,7 @@ export class BagPage extends React.Component {
               showAddTobag={showAddTobag}
               navigation={navigation}
               isNoNEmptyBag={isNoNEmptyBag}
+              hideHeader={this.hideHeaderWhilePaypalView}
             />
           </FooterView>
         )}

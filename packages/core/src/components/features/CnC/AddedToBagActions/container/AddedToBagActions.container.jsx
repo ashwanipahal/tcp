@@ -32,6 +32,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isUSSite,
       getPayPalSettings,
       containerId,
+      hideHeader,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -52,6 +53,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         inheritedStyles={inheritedStyles}
         getPayPalSettings={getPayPalSettings}
         containerId={containerId}
+        hideHeader={hideHeader}
       />
     );
   }
