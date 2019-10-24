@@ -72,6 +72,7 @@ class LoginSection extends PureComponent<Props> {
               showForgotPasswordForm={this.showForgotPassword}
               variation={variation}
               labels={labels}
+              updateHeader={updateHeader}
             />
             <LoginForm
               getTouchStatus={getTouchStatus}

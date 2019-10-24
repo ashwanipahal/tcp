@@ -30,8 +30,13 @@ const showForgotPassword = props => {
 };
 
 const LoginTopSection = props => {
-  const { labels, variation } = props;
+  const { labels, variation, updateHeader } = props;
   const imgStyle = { alignSelf: 'center', marginTop: 20 };
+
+  if (variation === 'checkout') {
+    updateHeader(); // hide the header and rule line
+  }
+
   return (
     <View {...props}>
       {!(variation === 'favorites' || variation === 'checkout') && (
@@ -141,6 +146,7 @@ LoginTopSection.propTypes = {
       lbl_login_subDescription: PropTypes.string,
     },
   }),
+  updateHeader: PropTypes.func.isRequired,
 };
 
 LoginTopSection.defaultProps = {
