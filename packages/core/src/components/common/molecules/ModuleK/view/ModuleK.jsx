@@ -123,6 +123,7 @@ const ModuleK = props => {
                       medium: 2,
                       large: 3,
                     }}
+                    className="moduleK__button"
                   >
                     {singleCTAButton && (
                       <Button

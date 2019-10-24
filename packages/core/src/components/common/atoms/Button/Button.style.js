@@ -45,10 +45,10 @@ const ButtonStyles = css`
       ? `
       min-width: 40px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colorPalette.text.darkgray};
+      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
-      border: 1px solid ${props.theme.colorPalette.text.hint};
+      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 20px;
       width: 100%;
       &:hover{
@@ -62,10 +62,10 @@ const ButtonStyles = css`
       ? `
       min-width: 64px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colorPalette.text.darkgray};
+      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-weight: ${props.theme.fonts.fontWeight.black};
-      border: 1px solid ${props.theme.colorPalette.text.hint};
+      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 32px;
       &:hover{
         border: solid 1px #9b9b9b;
@@ -168,7 +168,7 @@ const ButtonStyles = css`
         };
         box-shadow: 4px 4px white inset, 6px 6px ${
           props.theme.isGymboree
-            ? props.theme.colorPalette.orange[50]
+            ? props.theme.colorPalette.orange[800]
             : props.theme.colors.PRIMARY.COLOR1
         };
         border: 2px solid ${props.theme.colors.PRIMARY.GRAY};

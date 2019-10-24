@@ -32,18 +32,40 @@ const StyledImageGrid = styled(ImageGrid)`
 `;
 
 const StyledModuleK = css`
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0;
+  .moduleK__button {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-right: 0;
+    }
+  }
+  .carousal-cta {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    width: 210px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      width: 161px;
+    }
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 225px;
+    }
+  }
+  .moduleK__button .carousal-cta {
+    width: 210px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 161px;
+    }
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 225px;
+      padding: 11px 44px;
+    }
+  }
   .moduleK__promoBanner,
   .moduleK__header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-right: 0;
   }
-  .carousal-cta {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    width: 210px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
-  }
+
   .tcp_carousel_wrapper {
     position: relative;
   }

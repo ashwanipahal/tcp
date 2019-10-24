@@ -143,7 +143,6 @@ const style = css`
   &.gymboree-module-a .imageCTAList .image-comp,
   &.gymboree-module-a .linkCTAList .link-button-wrapper-class {
     color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
-    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
   }
 
   &.gymboree-module-a .slick-dots {

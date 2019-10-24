@@ -29,7 +29,7 @@ export default css`
   }
   .dropdown-button {
     background: ${props => props.theme.colorPalette.gray[300]};
-    color: ${props => props.theme.colorPalette.gray[700]};
+    color: ${props => props.theme.colorPalette.gray[800]};
     font-weight: ${props => props.theme.typography.fontWeights.black};
 
     &.is-open {
@@ -47,6 +47,7 @@ export default css`
   .dropdown-items:hover,
   .dropdown-items:focus {
     background: ${props => props.theme.colorPalette.blue[50]};
+    border-color: ${props => props.theme.colorPalette.blue[700]};
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .dropdown-button-container {
