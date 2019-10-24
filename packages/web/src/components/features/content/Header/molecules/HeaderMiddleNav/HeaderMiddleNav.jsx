@@ -188,6 +188,40 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
               className={`textRight header-middle-login-section ${isSearchOpen && 'flexbox'}`}
             >
+              {isFullSizeSearchModalOpen ? (
+                <Modal
+                  isOpen={isFullSizeSearchModalOpen}
+                  onRequestClose={this.handleShowHideFullSizeModalClick}
+                  overlayClassName="TCPModal__Overlay"
+                  className="TCPModal__Content"
+                  widthConfig={{ small: '375px', medium: '765px', large: '1023px' }}
+                  heightConfig={{ height: '99%' }}
+                  fixedWidth
+                  inheritedStyles={customHeaderStyle}
+                  headingAlign="center"
+                  horizontalBar={false}
+                  stickyCloseIcon
+                  fullWidth
+                  stickyHeader
+                >
+                  <SearchBar
+                    className={!isSearchOpen}
+                    setSearchState={this.setSearchState}
+                    isSearchOpen={isSearchOpen}
+                    onCloseClick={this.onCloseClick}
+                    isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                  />
+                </Modal>
+              ) : (
+                <SearchBar
+                  className={!isSearchOpen && 'leftLink'}
+                  setSearchState={this.setSearchState}
+                  isSearchOpen={isSearchOpen}
+                  onCloseClick={this.onCloseClick}
+                  isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                />
+              )}
+
               {userName ? (
                 <React.Fragment>
                   <BodyCopy
@@ -227,40 +261,6 @@ class HeaderMiddleNav extends React.PureComponent {
                   </React.Fragment>
                 )
               )}
-              {isFullSizeSearchModalOpen ? (
-                <Modal
-                  isOpen={isFullSizeSearchModalOpen}
-                  onRequestClose={this.handleShowHideFullSizeModalClick}
-                  overlayClassName="TCPModal__Overlay"
-                  className="TCPModal__Content"
-                  widthConfig={{ small: '375px', medium: '765px', large: '1023px' }}
-                  heightConfig={{ height: '99%' }}
-                  fixedWidth
-                  inheritedStyles={customHeaderStyle}
-                  headingAlign="center"
-                  horizontalBar={false}
-                  stickyCloseIcon
-                  fullWidth
-                  stickyHeader
-                >
-                  <SearchBar
-                    className={!isSearchOpen}
-                    setSearchState={this.setSearchState}
-                    isSearchOpen={isSearchOpen}
-                    onCloseClick={this.onCloseClick}
-                    isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
-                  />
-                </Modal>
-              ) : (
-                <SearchBar
-                  className={!isSearchOpen && 'rightLink'}
-                  setSearchState={this.setSearchState}
-                  isSearchOpen={isSearchOpen}
-                  onCloseClick={this.onCloseClick}
-                  isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
-                />
-              )}
-
               <Anchor
                 to=""
                 id="cartIcon"

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -14,6 +14,7 @@ import SuggestionBox from './SuggestionBox.view';
 import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
 import SearchBarPropTypes from '../SearchBar.PropTypes';
 import LookingForProductDetail from './LookingForProductDetail.view';
+import SearchImageWrapper from './SearchImageWrapper.view';
 
 /**
  * This component produces a Search Bar component for Header
@@ -272,7 +273,14 @@ class SearchBar extends React.PureComponent {
   };
 
   render() {
-    const { className, showProduct, fromCondensedHeader, searchResults, isSearchOpen } = this.props;
+    const {
+      className,
+      showProduct,
+      fromCondensedHeader,
+      searchResults,
+      isSearchOpen,
+      labels,
+    } = this.props;
 
     const getRecentStore = getRecentStoreFromLocalStorage();
     let latestSearchResults;
@@ -294,8 +302,6 @@ class SearchBar extends React.PureComponent {
     };
 
     const HighLightSearch = inputText => this.highlight(inputText);
-
-    const SEARCH_IMAGE = 'search-icon';
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
     return (
       <React.Fragment>
@@ -400,15 +406,13 @@ class SearchBar extends React.PureComponent {
               </div>
             </div>
           ) : (
-            <Image
-              alt="search-image"
-              className="search-image icon`"
-              onClick={this.openSearchBar}
-              src={getIconPath(
-                fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
-              )}
-              data-locator="search-icon"
-              height="25px"
+            <SearchImageWrapper
+              fromCondensedHeader={fromCondensedHeader}
+              className={className}
+              initiateSearchBySubmit={this.initiateSearchBySubmit}
+              openSearchBar={this.openSearchBar}
+              labels={labels}
+              initiateSearch={this.initiateSearch}
             />
           )}
         </BodyCopy>

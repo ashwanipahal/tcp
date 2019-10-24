@@ -37,9 +37,7 @@ const style = css`
     }
   }
   .header-middle-login-section {
-    position: absolute;
-    right: 0;
-    margin-top: 30px;
+    margin-top: 8px;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 71%;
       margin-top: auto;
