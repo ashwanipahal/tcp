@@ -25,7 +25,6 @@ class ModuleJ extends React.PureComponent {
 
   getCurrentCtaButton = () => {
     const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
-
     return currentSingleCTAButton ? (
       <Row centered>
         <Col
@@ -88,7 +87,7 @@ class ModuleJ extends React.PureComponent {
     const promoMediaLinkedList = mediaLinkedList || [];
     const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
-    const { CAROUSEL_OPTIONS, PROMO_IMG_DATA, TOTAL_IMAGES } = config;
+    const { CAROUSEL_OPTIONS, IMG_DATA, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
     const iconPath = getIconPath('carousel-big-carrot');
@@ -120,7 +119,7 @@ class ModuleJ extends React.PureComponent {
               }}
             >
               <DamImage
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage1}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
                 link={promoLink1}
@@ -139,11 +138,13 @@ class ModuleJ extends React.PureComponent {
             >
               {this.getHeaderText()}
               {this.getPromoBanner()}
-              <ProductTabList
-                onProductTabChange={this.onTabChange}
-                tabItems={divTabs}
-                dataLocator={getLocator('moduleJ_cta_link')}
-              />
+              <div className="product-tab-list">
+                <ProductTabList
+                  onProductTabChange={this.onTabChange}
+                  tabItems={divTabs}
+                  dataLocator={getLocator('moduleJ_cta_link')}
+                />
+              </div>
             </Col>
             <Col
               className="promo-image-right"
@@ -155,7 +156,7 @@ class ModuleJ extends React.PureComponent {
             >
               <DamImage
                 className="promo-img"
-                imgConfigs={PROMO_IMG_DATA.imgConfig}
+                imgConfigs={IMG_DATA.promoImgConfig}
                 imgData={promoImage2}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
                 link={promoLink2}
@@ -195,7 +196,7 @@ class ModuleJ extends React.PureComponent {
             </Col>
           </Row>
         )}
-        <Row>
+        <Row className="product-image">
           <Col
             className="moduleJ__carousel-wrapper"
             colSize={{

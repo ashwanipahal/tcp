@@ -68,7 +68,7 @@ export class MyPreferenceSubscription extends PureComponent {
             preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'marketingPreferenceEmail',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: true,
           },
         ],
@@ -85,7 +85,7 @@ export class MyPreferenceSubscription extends PureComponent {
             preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'marketingPreferenceEmail',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: false,
           },
         ],
@@ -99,10 +99,10 @@ export class MyPreferenceSubscription extends PureComponent {
         CustomerPreferencesGym: [
           {
             isModeSelected: true,
-            preferenceMode: 'gymPlaceRewardsSms',
+            preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'gymMarketingPreferenceSMS',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: true,
           },
         ],
@@ -116,10 +116,10 @@ export class MyPreferenceSubscription extends PureComponent {
         CustomerPreferencesGym: [
           {
             isModeSelected: false,
-            preferenceMode: 'gymPlaceRewardsSms',
+            preferenceMode: 'placeRewardsSms',
           },
           {
-            preferenceMode: 'gymMarketingPreferenceSMS',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: false,
           },
         ],
@@ -203,9 +203,12 @@ export class MyPreferenceSubscription extends PureComponent {
             overlayClassName="TCPModal__Overlay"
             className="TCPModal__Content"
             maxWidth="457px"
-            minHeight="517px"
             fixedWidth
             heading=" "
+            heightConfig={{
+              maxHeight: '100%',
+              height: 'auto',
+            }}
             horizontalBar={false}
             closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
           >

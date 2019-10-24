@@ -153,7 +153,9 @@ class ProductListingContainer extends React.PureComponent {
   }
 }
 
-ProductListingContainer.pageId = 'c';
+ProductListingContainer.pageInfo = {
+  pageId: 'c',
+};
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);

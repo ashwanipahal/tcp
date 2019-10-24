@@ -222,6 +222,7 @@ export function* submitBillingData(formData, address) {
   // if (updatePaymentRequired) {
   yield call(updatePaymentInstruction, formData, cardDetails, isGuestUser, res);
   // }
+  yield put(getSetIsBillingVisitedActn(true));
 }
 
 /**

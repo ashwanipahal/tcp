@@ -111,3 +111,10 @@ export const getSetActiveWishlistAction = activeWishlist => {
     type: 'FAVORITES_SET_ACTIVE_WISHLIST',
   };
 };
+
+export const setLoadingState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.FAVORITES_SET_LOADING,
+    payload,
+  };
+};

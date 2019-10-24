@@ -157,7 +157,7 @@ const CarouselStyle = css`
 
   .slick-dots {
     position: absolute;
-    bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    bottom: 16px;
     width: 100%;
     padding: 0;
     margin: 0;

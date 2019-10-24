@@ -3,14 +3,18 @@
 exports[`OrdersList View component should renders correctly 1`] = `
 <Fragment>
   <Styled(Text)>
-    lbl_orders_heading
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_orders_heading"
+      textDecoration={null}
+    />
   </Styled(Text)>
-  <Styled(LineComp)
-    borderColor="black"
-    borderWidth={1}
-    marginBottom={28}
-    marginTop={0}
-  />
+  <Styled(View) />
   <RecentOrders
     componentProps={Object {}}
     handleComponentChange={[Function]}
@@ -23,14 +27,18 @@ exports[`OrdersList View component should renders correctly 1`] = `
 exports[`OrdersList View component should renders correctly 2`] = `
 <Fragment>
   <Styled(Text)>
-    lbl_orders_heading
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      fontWeight="extrabold"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_orders_heading"
+      textDecoration={null}
+    />
   </Styled(Text)>
-  <Styled(LineComp)
-    borderColor="black"
-    borderWidth={1}
-    marginBottom={28}
-    marginTop={0}
-  />
+  <Styled(View) />
   <RecentOrders
     componentProps={Object {}}
     handleComponentChange={[Function]}

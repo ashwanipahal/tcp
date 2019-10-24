@@ -209,6 +209,7 @@ describe('CartItemTile common component', () => {
           price: 25,
           qty: 1,
           color: 'blue',
+          offerPrice: 38.85,
         },
         miscInfo: {
           badge: '',
@@ -256,6 +257,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
           fit: 'regular',
           itemBrand: 'TCP',
           itemUnitPrice: 12.345,
+          offerPrice: 38.85,
         },
         miscInfo: {
           badge: '',
