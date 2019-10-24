@@ -165,7 +165,11 @@ function* loadShipmentMethods(miniAddress, throwError) {
 }
 
 function* loadCartAndCheckoutDetails(...params) {
-  const [recalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
+  const [recalcRewards, excludeItems, translation, updateSmsInfo] = params;
+  let excludeCartItems = excludeItems;
+  if (isMobileApp()) {
+    excludeCartItems = false;
+  }
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
       isRecalculateTaxes: false,
@@ -255,7 +259,7 @@ function* initCheckoutSectionData({
         put(
           BAG_PAGE_ACTIONS.getCartData({
             isRecalculateTaxes: true,
-            excludeCartItems: false,
+            excludeCartItems: !isMobile,
             recalcRewards: recalc,
             updateSmsInfo: false,
             translation: true,
