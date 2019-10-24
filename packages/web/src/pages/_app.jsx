@@ -28,7 +28,7 @@ import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
-import CHECKOUT_STAGES from './App.constants';
+import { CHECKOUT_URLS } from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
@@ -214,7 +214,7 @@ class TCPWebApp extends App {
     const { Component, pageProps, store, router } = this.props;
     const componentPageName = Component.pageInfo ? Component.pageInfo.name || '' : '';
     let isNonCheckoutPage = true;
-    const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_STAGES;
+    const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_URLS;
     const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT];
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
