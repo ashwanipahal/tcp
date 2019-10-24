@@ -15,6 +15,7 @@ import {
   ImageWrapper,
   FavtHeading,
   FavtSubHeading,
+  WelcomeBackWrapper,
 } from '../LoginTopSection.style.native';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
@@ -97,30 +98,30 @@ const LoginTopSection = props => {
           </FavtSubHeading>
         </>
       )}
-
       {variation === 'checkout' && (
         <>
-          <BodyCopy
-            fontSize="fs28"
-            fontWeight="black"
-            mobilefontFamily={['primary']}
-            textAlign="center"
-            text={getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
-          />
+          <WelcomeBackWrapper>
+            <BodyCopy
+              fontSize="fs28"
+              fontWeight="black"
+              fontFamily="primary"
+              textAlign="center"
+              text={getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
+            />
+          </WelcomeBackWrapper>
 
           <BodyCopy
-            component="span"
             fontSize="fs18"
-            mobilefontFamily={['secondary']}
+            fontFamily="secondary"
+            fontWeight="regular"
             textAlign="center"
             text={getLabelValue(labels, 'lbl_login_checkout_modal_heading_1', 'login')}
           />
 
           <BodyCopy
-            component="span"
             fontSize="fs18"
             fontWeight="black"
-            mobilefontFamily={['secondary']}
+            fontFamily="secondary"
             textAlign="center"
             text={getLabelValue(labels, 'lbl_login_checkout_modal_heading_2', 'login')}
           />

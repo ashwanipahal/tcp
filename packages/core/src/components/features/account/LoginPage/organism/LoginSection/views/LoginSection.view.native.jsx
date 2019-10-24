@@ -1,10 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import CustomButton from '../../../../../../common/atoms/Button';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
 import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
@@ -108,8 +109,20 @@ class LoginSection extends PureComponent<Props> {
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>{getLabelValue(labels, 'lbl_login_createAccountHelp_1', 'login')}</Text>
-            <Text>{getLabelValue(labels, 'lbl_login_createAccountHelp_2', 'login')}</Text>
+            <BodyCopy
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs12"
+              color="gray.900"
+              text={getLabelValue(labels, 'lbl_login_createAccountHelp_1', 'login')}
+            />
+            <BodyCopy
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs12"
+              color="gray.900"
+              text={getLabelValue(labels, 'lbl_login_createAccountHelp_2', 'login')}
+            />
           </DescriptionStyle>
           <CustomButton
             color={colorPallete.text.secondary}
