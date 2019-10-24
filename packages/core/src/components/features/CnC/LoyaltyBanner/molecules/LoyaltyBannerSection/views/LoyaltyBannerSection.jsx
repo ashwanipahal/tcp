@@ -38,9 +38,6 @@ const LoyaltyBannerSection = props => {
 
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
-  // isReviewPage = true;
-  // isConfirmationPage = false;
-  // isAddedToBagPage = false;
 
   /* istanbul ignore else */
   if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
@@ -62,15 +59,27 @@ const LoyaltyBannerSection = props => {
   const utilArrRewards = [
     {
       key: '#estimatedRewardsVal#',
-      value: LoyaltyLabels.rewardPointsValueFn,
-      classValue: `${className} mpr-plcc-theme`,
+      value: `<span class="${className} mpr-plcc-theme">${
+        LoyaltyLabels.rewardPointsValueFn
+      }</span>`,
+    },
+    {
+      key: '#br#',
+      value: '<br/>',
+    },
+    {
+      key: '#tagOpen#',
+      value: `<span class="${className} mpr-plcc-theme">`,
+    },
+    {
+      key: '#tagClose#',
+      value: `</span>`,
     },
   ];
   const utilArrSectionSymbol = [
     {
       key: '#sectionSymbol#',
-      value: labels.sectionSymbol,
-      classValue: `${className} section-symbol`,
+      value: `<span class="${className} section-symbol">${labels.sectionSymbol}</span>`,
     },
   ];
 
@@ -87,8 +96,7 @@ const LoyaltyBannerSection = props => {
   const utilArrNextReward = [
     {
       key: '#pointsToNextReward#',
-      value: pointsToNextReward,
-      classValue: `${className} mpr-plcc-theme`,
+      value: `<span class="${className} mpr-plcc-theme">${pointsToNextReward}</span>`,
     },
   ];
   const finalStrRemainingValue = labelsHashValuesReplace(
@@ -115,6 +123,7 @@ const LoyaltyBannerSection = props => {
             isPlcc={isPlcc}
             pageCategory={pageCategory}
             isProductDetailView={isProductDetailView}
+            earnedRewardAvailable={earnedRewardAvailable}
           />
           <div className="footer">
             <LoyaltyFooterSection
