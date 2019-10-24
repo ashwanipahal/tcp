@@ -54,11 +54,13 @@ const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabel
 };
 
 const addShopBySize = item => {
-  let {
-    item: {
-      categoryContent: { mainCategory },
-    },
+  const {
+    item: { categoryContent },
   } = item;
+  if (!categoryContent) {
+    return false;
+  }
+  let { mainCategory } = categoryContent;
   if (!mainCategory) {
     mainCategory = {
       categoryLayout: [],
