@@ -20,6 +20,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
   constructor(props) {
     super(props);
     const { currentProduct, initialValues } = this.props;
+    this.formValues = initialValues;
     this.colorFitsSizesMap = currentProduct && currentProduct.colorFitsSizesMap;
     const generalProductId =
       currentProduct && getMapSliceForColor(this.colorFitsSizesMap, initialValues.color);
@@ -33,7 +34,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
     };
   }
 
-  onChangeColor = e => {
+  onChangeColor = (e, selectedSize, selectedFit) => {
     this.generalProductId =
       this.colorFitsSizesMap && getMapSliceForColor(this.colorFitsSizesMap, e);
     this.generalProductId = this.generalProductId && this.generalProductId.colorDisplayId;
@@ -41,6 +42,13 @@ class PickupSkuSelectionFormContainer extends React.Component {
       currentColorEntry: getMapSliceForColor(this.colorFitsSizesMap, e),
       selectedColor: e,
     });
+
+    this.formValues = {
+      ...this.formValues,
+      Fit: selectedFit,
+      Size: selectedSize,
+      color: e,
+    };
   };
 
   navigateToPDP = () => {
@@ -50,8 +58,8 @@ class PickupSkuSelectionFormContainer extends React.Component {
 
   render() {
     const {
-      colorFitSizeDisplayNames,
       initialValues,
+      colorFitSizeDisplayNames,
       isCanada,
       isPlcc,
       currencySymbol,
@@ -100,6 +108,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
       />
     ) : (
       <PickupSkuSelectionForm
+        {...this.props}
         selectedColor={selectedColor}
         generalProductId={this.generalProductId}
         navigateToPDP={this.navigateToPDP}
@@ -107,7 +116,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
         imageUrl={imageUrl}
         currentColorEntry={currentColorEntry}
         currencyExchange={currencyExchange}
-        {...this.props}
+        initialValues={this.formValues}
       />
     );
   }

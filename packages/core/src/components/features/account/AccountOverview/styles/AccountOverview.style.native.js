@@ -14,9 +14,15 @@ const ImageWrapper = styled.View`
   right: 0;
 `;
 
+const FavImageWrapper = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  justify-content: center;
+`;
+
 const FavtWrapper = styled.View`
   width: 32%;
   position: relative;
+  flex-direction: row;
 `;
 
 const TouchabelContainer = styled.TouchableOpacity`
@@ -29,6 +35,13 @@ const TouchabelContainer = styled.TouchableOpacity`
 const ImageContainer = styled.View`
   margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM}
     ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
+const RightArrowImageContainer = styled.View`
+  margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  flex: 1;
+  align-items: flex-end;
 `;
 
 const FavoritesContainer = styled.TouchableHighlight.attrs({
@@ -65,4 +78,6 @@ export {
   FavoritesWrapper,
   TextWrapper,
   StyledImage,
+  FavImageWrapper,
+  RightArrowImageContainer,
 };

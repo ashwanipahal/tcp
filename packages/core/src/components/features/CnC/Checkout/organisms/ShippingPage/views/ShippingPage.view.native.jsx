@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -29,6 +29,7 @@ export default class ShippingPage extends React.Component {
     shipmentMethods: PropTypes.shape([]),
     defaultShipmentId: PropTypes.number,
     loadShipmentMethods: PropTypes.func.isRequired,
+    shippingDidMount: PropTypes.func.isRequired,
     formatPayload: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
@@ -97,6 +98,11 @@ export default class ShippingPage extends React.Component {
       return { defaultAddressId: addEditResponseAddressId };
     }
     return null;
+  }
+
+  componentDidMount() {
+    const { shippingDidMount } = this.props;
+    shippingDidMount(true);
   }
 
   shouldComponentUpdate() {
@@ -294,12 +300,17 @@ export default class ShippingPage extends React.Component {
             onRequestClose={this.closeAddAddressVerificationModal}
             heading={getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout')}
           >
-            <AddressVerification
-              onSuccess={this.submitVerifiedShippingAddressData}
-              heading={addressLabels.addAddressHeading}
-              onError={this.submitVerifiedShippingAddressData}
-              shippingAddress={formatPayload(shippingAddressData)}
-            />
+            <SafeAreaView>
+              <ScrollView>
+                <AddressVerification
+                  onSuccess={this.submitVerifiedShippingAddressData}
+                  heading={addressLabels.addAddressHeading}
+                  onError={this.submitVerifiedShippingAddressData}
+                  shippingAddress={formatPayload(shippingAddressData)}
+                  toggleAddressModal={this.closeAddAddressVerificationModal}
+                />
+              </ScrollView>
+            </SafeAreaView>
           </ModalNative>
         )}
         <>

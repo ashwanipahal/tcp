@@ -45,7 +45,7 @@ const {
 
 describe('utility', () => {
   it('getOrderPointsRecalcFlag', () => {
-    expect(getOrderPointsRecalcFlag()).toBe(false);
+    expect(getOrderPointsRecalcFlag(false)).toBe(false);
   });
   it('updateCartInfo', () => {
     const cartInfo = {

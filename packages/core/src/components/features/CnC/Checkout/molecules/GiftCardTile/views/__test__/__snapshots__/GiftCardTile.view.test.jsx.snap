@@ -55,7 +55,6 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
           disabled={true}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -65,7 +64,7 @@ exports[`GiftCardTileVanilla should render gift card tile 1`] = `
 </div>
 `;
 
-exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1`] = `
+exports[`GiftCardTileVanilla should render gift card tile if from review page 1`] = `
 <div
   className="test"
 >
@@ -79,7 +78,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
         className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 8,
+            "large": 6,
             "medium": 4,
             "small": 4,
           }
@@ -120,7 +119,70 @@ exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1
           disabled={true}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
+        >
+          lbl_giftcard_applyBtn
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;
+
+exports[`GiftCardTileVanilla should render gift card tile with 0 order balance 1`] = `
+<div
+  className="test"
+>
+  <div
+    className="gift_card_box elem-mt-SM"
+  >
+    <Styled(Row)
+      className="gift-card-row"
+    >
+      <Styled(Col)
+        className="gift-tile-msg-container"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 4,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className="gift_card_number_detail available_giftCards_text"
+          color="text.secondary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs16"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_giftcard_endingIn 
+          <span
+            className="remainingBalanceText"
+          />
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="gift-action-container"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 4,
+            "small": 2,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="variable-width"
+          className="gift_apply_button gift-action-btn"
+          data-locator="gift_apply_button"
+          disabled={true}
+          fullWidth="true"
+          onClick={[Function]}
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -144,7 +206,7 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
         className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 8,
+            "large": 6,
             "medium": 4,
             "small": 4,
           }
@@ -185,7 +247,6 @@ exports[`GiftCardTileVanilla should render gift card tile with 100 order balance
           disabled={false}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -225,7 +286,7 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
         className="gift-tile-msg-container"
         colSize={
           Object {
-            "large": 8,
+            "large": 6,
             "medium": 4,
             "small": 4,
           }
@@ -266,7 +327,6 @@ exports[`GiftCardTileVanilla should render gift card tile with errors 1`] = `
           disabled={true}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_applyBtn
         </Styled(Button)>
@@ -333,7 +393,6 @@ exports[`GiftCardTileVanilla should render gift card tile with isGiftCardApplied
           disabled={false}
           fullWidth="true"
           onClick={[Function]}
-          type="submit"
         >
           lbl_giftcard_removeBtn
         </Styled(Button)>
