@@ -19,7 +19,7 @@ class RelatedOutfits extends React.PureComponent {
     return isAccordionOpen ? 'show-accordion-toggle' : '';
   };
 
-  RelatedOutfitsSlots = () => {
+  getRelatedOutfitSlots = () => {
     const { selectedColorProductId } = this.props;
     return (
       <ModuleQ
@@ -49,7 +49,7 @@ class RelatedOutfits extends React.PureComponent {
         >
           {completeTheLook}
         </BodyCopy>
-        {this.RelatedOutfitsSlots()}
+        {this.getRelatedOutfitSlots()}
       </div>
     );
   }

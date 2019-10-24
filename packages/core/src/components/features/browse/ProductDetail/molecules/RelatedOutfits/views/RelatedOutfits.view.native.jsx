@@ -22,7 +22,7 @@ class RelatedOutfits extends React.PureComponent {
     this.setState({ isAccordionOpen: !isAccordionOpen });
   };
 
-  RelatedOutfitsSlots = () => {
+  getRelatedOutfitSlots = () => {
     const { navigation, selectedColorProductId } = this.props;
     return (
       <ModuleQ
@@ -59,7 +59,7 @@ class RelatedOutfits extends React.PureComponent {
           </ImageStyleWrapper>
         </StyleRelatedOutfits>
 
-        {isAccordionOpen ? this.RelatedOutfitsSlots() : null}
+        {isAccordionOpen ? this.getRelatedOutfitSlots() : null}
       </View>
     );
   }
