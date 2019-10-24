@@ -55,6 +55,10 @@ export default css`
   .favoriteStore__container {
     width: 100%;
     margin: 0 0 20px;
+
+    .address-tile {
+      border-bottom: 0;
+    }
   }
 
   .google-map {
