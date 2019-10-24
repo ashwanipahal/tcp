@@ -85,6 +85,7 @@ class ProductListingContainer extends React.PureComponent {
     } = this.props;
     return (
       <ProductListing
+        margins="0 12px 0 12px"
         productsBlock={productsBlock}
         products={products}
         filters={filters}

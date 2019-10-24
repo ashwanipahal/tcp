@@ -20,7 +20,7 @@ export const OrdersList = ({ labels, ordersListItems, ...otherprops }) => {
       />
       <OrdersLinks labels={labels} {...otherprops} />
       <RecentOrders labels={labels} ordersListItems={ordersListItems} />
-      {ordersListItems && ordersListItems.length ? (
+      {ordersListItems && ordersListItems.length > 1 ? (
         <PastOrders labels={labels} ordersListItems={ordersListItems} />
       ) : null}
     </React.Fragment>

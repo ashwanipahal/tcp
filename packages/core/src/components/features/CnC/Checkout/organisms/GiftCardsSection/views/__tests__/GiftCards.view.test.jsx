@@ -25,6 +25,7 @@ describe('GiftCardsVanilla', () => {
     giftCardList: new List(appliedGiftCardList),
     getAddGiftCardError: 'Duplicate card',
     enableAddGiftCard: false,
+    isFromReview: false,
   };
 
   it('should render gift card tile', () => {
@@ -43,6 +44,13 @@ describe('GiftCardsVanilla', () => {
   });
   it('should render gift card tile with 100 order balance with enableAddGiftCard ', () => {
     props.enableAddGiftCard = true;
+    const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+  it('should render gift card tile with 100 order balance with enableAddGiftCard and with isExpressCheckout flag true', () => {
+    props.enableAddGiftCard = false;
+    props.isFromReview = true;
+    props.isExpressCheckout = true;
     const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
     expect(component).toMatchSnapshot();
   });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { isCanada } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -18,6 +19,7 @@ import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import AddedToBagActions from '../../AddedToBagActions';
 import Anchor from '../../../../common/atoms/Anchor';
+import LoyaltyBanner from '../../LoyaltyBanner';
 
 const closeIcon = require('../../../../../assets/close.png');
 
@@ -102,6 +104,7 @@ const AddedToBag = ({
                 fromAddedToBagModal
               />
               <BossBanner labels={labels} />
+              {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
               <StyledAnchorWrapper>
                 <Anchor
                   fontSizeVariation="medium"

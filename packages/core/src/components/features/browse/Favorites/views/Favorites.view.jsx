@@ -57,9 +57,9 @@ const FavoritesView = props => {
   });
 
   const filters = activeWishList ? getNonEmptyFiltersList(activeWishList.items, labels) : [];
+
   let filteredItemsList =
     !!activeWishList && getVisibleWishlistItems(activeWishList.items, filteredId, sortId);
-
   if (filteredItemsList) {
     if (gymSelected) {
       filteredItemsList = filteredItemsList.filter(item => !item.itemInfo.isTCP);

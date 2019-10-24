@@ -26,7 +26,8 @@ const getCategoryMap = (catPath, l1) => {
 const isGiftCard = product =>
   !!(
     product &&
-    (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
+    ((product.style_partno && product.style_partno.toLowerCase() === 'giftcardbundle') ||
+      product.giftcard === '1')
   );
 
 const getProductByColorId = (products, colorDetails) => {

@@ -40,6 +40,11 @@ const ignorePsuedoCodeDir = [
   '/ProductColorChipSelector/views/',
   '/organisms/QuickViewModal/',
   '/ProductCustomizeForm/views/',
+  '/ProductSizeSelector/',
+  '/StyliticsProductTabList/',
+  '/LabeledRadioButton/',
+  '/ReactToolTip/',
+  '/ModuleQ/',
 ];
 
 module.exports = {

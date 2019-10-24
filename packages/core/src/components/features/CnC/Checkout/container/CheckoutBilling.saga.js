@@ -39,15 +39,8 @@ const {
 } = selectors;
 const { getCreditCardType } = utility;
 
-export function* updatePaymentInstruction(
-  formData,
-  cardDetailsInfo,
-  isGuestUser,
-  res,
-  loadUpdatedCheckoutValues
-) {
+export function* updatePaymentInstruction(formData, cardDetailsInfo, isGuestUser, res) {
   let cardDetails;
-  let cardNotUpdated = true;
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (formData.onFileCardId) {
     if (!cardDetailsInfo) {
@@ -72,7 +65,7 @@ export function* updatePaymentInstruction(
     // FIXME: we need to store the details of the selected card and selected
     // address book entry, but like this it is pretty ugly. needs major cleanup
     yield call(addPaymentToOrder, requestData, errorMappings);
-    cardNotUpdated = yield select(isCardNotUpdated, requestData.onFileCardId);
+    yield select(isCardNotUpdated, requestData.onFileCardId);
   } else {
     const cardType = getCreditCardType(formData);
     const checkoutDetails = yield select(getBillingValues);
@@ -106,9 +99,6 @@ export function* updatePaymentInstruction(
   }
   // updatePaymentToActiveOnSubmitBilling(store);
   // getUserOperator(store).setRewardPointsData();
-  if (!isMobileApp()) {
-    yield call(loadUpdatedCheckoutValues, false, true, cardNotUpdated, false, false);
-  }
 }
 
 /**
@@ -162,7 +152,7 @@ export function addressIdToString(addressId) {
   return null;
 }
 
-export function* submitBillingData(formData, address, loadUpdatedCheckoutValues) {
+export function* submitBillingData(formData, address) {
   let res;
   let cardDetails;
   // const updatePaymentRequired = true;
@@ -230,15 +220,9 @@ export function* submitBillingData(formData, address, loadUpdatedCheckoutValues)
     res = res.body;
   }
   // if (updatePaymentRequired) {
-  yield call(
-    updatePaymentInstruction,
-    formData,
-    cardDetails,
-    isGuestUser,
-    res,
-    loadUpdatedCheckoutValues
-  );
+  yield call(updatePaymentInstruction, formData, cardDetails, isGuestUser, res);
   // }
+  yield put(getSetIsBillingVisitedActn(true));
 }
 
 /**
@@ -257,10 +241,10 @@ export function* submitVenmoBilling(payload = {}) {
   }
 }
 
-export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) {
+export default function* submitBilling(action = {}) {
   try {
     // TODO need to remove as it is temp fix to deliver review page for app
-    const { payload: { navigation, ...formData } = {} } = payload;
+    const { payload: { navigation, ...formData } = {} } = action;
     formData.phoneNumber = formData.phoneNumber || '';
     const {
       addressLine1: address1,
@@ -276,7 +260,7 @@ export default function* submitBilling(payload = {}, loadUpdatedCheckoutValues) 
     yield put(getSetIsBillingVisitedActn(true)); // flag that billing section was visited by the user
     const isPaymentDisabled = yield select(getIsPaymentDisabled);
     if (!isPaymentDisabled) {
-      yield call(submitBillingData, formData, address, loadUpdatedCheckoutValues);
+      yield call(submitBillingData, formData, address);
     }
     yield call(getAddressList);
     yield call(getCardList);

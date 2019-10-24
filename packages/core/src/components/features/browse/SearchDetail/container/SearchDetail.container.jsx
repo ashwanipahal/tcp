@@ -205,7 +205,9 @@ class SearchDetailContainer extends React.PureComponent {
   }
 }
 
-SearchDetailContainer.pageId = 'search';
+SearchDetailContainer.pageInfo = {
+  pageId: 'search',
+};
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
