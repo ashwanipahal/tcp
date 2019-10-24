@@ -50,7 +50,7 @@ const styles = css`
   .couponCard__body {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
       ${props => props.theme.spacing.ELEM_SPACING.MED}
-      ${props => props.theme.spacing.ELEM_SPACING.XXS}
+      ${props => props.theme.spacing.ELEM_SPACING.XS}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .couponCard__row {
