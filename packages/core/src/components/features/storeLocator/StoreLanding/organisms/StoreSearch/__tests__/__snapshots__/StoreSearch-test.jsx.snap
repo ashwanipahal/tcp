@@ -59,6 +59,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
             enableSuccessCheck={false}
             id="storeAddressLocator"
             name="storeAddressLocator"
+            onChange={[Function]}
             onPlaceSelected={[Function]}
             placeholder="lbl_storelanding_storeSearchPlaceholder"
             title="lbl_storelanding_storeSearchPlaceholder"

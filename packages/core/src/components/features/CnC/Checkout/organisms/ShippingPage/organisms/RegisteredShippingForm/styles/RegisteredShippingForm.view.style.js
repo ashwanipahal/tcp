@@ -82,6 +82,17 @@ const styles = css`
   .edit-shipping-error-container {
     display: flex;
   }
+  .edit-link-placement {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+  }
+  .select__input {
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
 `;
 
 export default styles;

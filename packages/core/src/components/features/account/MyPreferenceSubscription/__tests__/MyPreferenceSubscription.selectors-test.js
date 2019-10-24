@@ -21,17 +21,17 @@ describe('#My Preference Selectors', () => {
         gymSmsPhone: '2012386357',
         CustomerPreferencesGym: [
           {
-            preferenceMode: 'gymPlaceRewardsSms',
+            preferenceMode: 'placeRewardsSms',
             isModeSelected: true,
           },
           {
-            preferenceMode: 'gymMarketingPreferenceSMS',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: true,
           },
         ],
         CustomerPreferences: [
           {
-            preferenceMode: 'marketingPreferenceEmail',
+            preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: true,
           },
           {

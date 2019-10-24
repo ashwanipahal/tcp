@@ -114,7 +114,7 @@ const ModuleK = props => {
                     dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
                     dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
                     promo={checkPromo}
-                    imgConfigs={IMG_DATA.imgConfig}
+                    imageConfig={IMG_DATA.imgConfig}
                     imageMaxWidth="270px"
                   />
                   <Col

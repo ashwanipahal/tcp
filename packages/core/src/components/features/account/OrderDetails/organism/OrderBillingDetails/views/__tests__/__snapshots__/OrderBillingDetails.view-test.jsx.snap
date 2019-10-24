@@ -149,6 +149,7 @@ exports[`Order Billing Details component should renders correctly with venmo car
       >
         <Styled(Image)
           className="elem-mr-XS card-border"
+          src="/static/images/venmo.svg"
         />
         <Styled(BodyCopy)
           className={null}
@@ -162,7 +163,7 @@ exports[`Order Billing Details component should renders correctly with venmo car
           link={null}
           textAlign="left"
         >
-          lbl_orders_ending name
+          testusername
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>

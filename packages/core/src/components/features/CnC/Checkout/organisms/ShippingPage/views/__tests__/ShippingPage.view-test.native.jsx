@@ -21,6 +21,8 @@ describe('Shipping Page', () => {
       shippingLabels: {
         sectionHeader: '',
       },
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       handleSubmit: mockedhandleSubmit,
       navigation: {
         state: {
@@ -52,6 +54,8 @@ describe('Shipping Page', () => {
     };
     const mockedloadShipmentMethods = jest.fn();
     const props = {
+      initShippingPage: () => {},
+      shippingDidMount: () => {},
       shipmentMethods: [{}],
       loadShipmentMethods: mockedloadShipmentMethods,
       shippingLabels: {
@@ -96,6 +100,7 @@ describe('Shipping Page', () => {
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       formatPayload: () => {},
+      shippingDidMount: () => {},
       addressLabels: {},
       selectedShipmentId: '334',
       verifyAddressAction: () => {},
@@ -140,6 +145,7 @@ describe('Shipping Page', () => {
       handleSubmit: () => {},
       formatPayload: () => {},
       verifyAddressAction: () => {},
+      shippingDidMount: () => {},
       addressLabels: {},
       selectedShipmentId: '334',
       userAddresses: new List([
@@ -207,6 +213,7 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
+      shippingDidMount: () => {},
       formatPayload: () => {},
     };
 
