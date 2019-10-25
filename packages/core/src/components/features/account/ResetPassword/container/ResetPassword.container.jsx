@@ -24,6 +24,15 @@ export class ResetPasswordContainer extends PureComponent {
     }).isRequired,
     resetPasswordErrorMessage: PropTypes.string.isRequired,
     showNotification: PropTypes.bool.isRequired,
+    showNewPassword: PropTypes.func,
+    showLogin: PropTypes.func,
+    updateHeader: PropTypes.func,
+  };
+
+  static defaultProps = {
+    showNewPassword: () => {},
+    showLogin: () => {},
+    updateHeader: () => {},
   };
 
   componentDidUpdate() {
@@ -53,6 +62,14 @@ export class ResetPasswordContainer extends PureComponent {
     backToLoginAction();
   };
 
+  onBackClick = () => {
+    const { showLogin, showNewPassword } = this.props;
+    if (showLogin && showNewPassword) {
+      showLogin();
+      showNewPassword();
+    }
+  };
+
   render() {
     const {
       successMessage,
@@ -60,6 +77,9 @@ export class ResetPasswordContainer extends PureComponent {
       labels,
       resetPasswordErrorMessage,
       showNotification,
+      showLogin,
+      showNewPassword,
+      updateHeader,
     } = this.props;
     return (
       <ResetPasswordComponent
@@ -70,6 +90,10 @@ export class ResetPasswordContainer extends PureComponent {
         labels={labels}
         resetPasswordErrorMessage={resetPasswordErrorMessage}
         showNotification={showNotification}
+        showLogin={showLogin}
+        showNewPassword={showNewPassword}
+        onBackClick={this.onBackClick}
+        updateHeader={updateHeader}
       />
     );
   }

@@ -8,6 +8,7 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
 import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
+import ResetPassword from '../../../../ResetPassword';
 import {
   FormStyle,
   FormStyleView,
@@ -20,7 +21,29 @@ class LoginSection extends PureComponent<Props> {
     super(props);
     this.state = {
       resetPassword: false,
+      newPassword: false,
     };
+    this.queryParams = {};
+  }
+
+  componentDidMount() {
+    try {
+      const { navigation } = this.props;
+      const {
+        state: {
+          params: { component, logonPasswordOld, em },
+        },
+      } = navigation;
+      if (component && component === 'change-password') {
+        this.showNewPassword();
+      }
+      this.queryParams = {
+        logonPasswordOld,
+        em,
+      };
+    } catch (e) {
+      // nested variable might not available always
+    }
   }
 
   toggleCheckoutModal = () => {
@@ -32,6 +55,13 @@ class LoginSection extends PureComponent<Props> {
     const { resetPassword } = this.state;
     this.setState({
       resetPassword: !resetPassword,
+    });
+  };
+
+  showNewPassword = () => {
+    const { newPassword } = this.state;
+    this.setState({
+      newPassword: !newPassword,
     });
   };
 
@@ -62,10 +92,11 @@ class LoginSection extends PureComponent<Props> {
       updateHeader,
     } = this.props;
 
-    const { resetPassword } = this.state;
+    const { resetPassword, newPassword } = this.state;
+
     return (
       <View>
-        {!resetPassword && (
+        {!resetPassword && !newPassword && (
           <Fragment>
             <LoginTopSection
               showForgotPasswordForm={this.showForgotPassword}
@@ -105,6 +136,16 @@ class LoginSection extends PureComponent<Props> {
             resetLoginState={resetLoginState}
             successFullResetEmail={successFullResetEmail}
             showLogin={showLogin}
+            updateHeader={updateHeader}
+          />
+        )}
+
+        {newPassword && (
+          <ResetPassword
+            labels={labels.password}
+            queryParams={this.queryParams}
+            showLogin={showLogin}
+            showNewPassword={this.showNewPassword}
             updateHeader={updateHeader}
           />
         )}

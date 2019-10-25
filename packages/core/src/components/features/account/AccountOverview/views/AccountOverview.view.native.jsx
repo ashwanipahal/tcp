@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
@@ -65,6 +66,31 @@ class AccountOverview extends PureComponent<Props> {
       return { showModal: false };
     }
     return null;
+  }
+
+  componentDidMount() {
+    try {
+      const { navigation } = this.props;
+      const {
+        state: {
+          params: { component },
+        },
+      } = navigation;
+      if (component === 'change-password') {
+        // using set timeout as labels doesn;t load sometime just after opening app
+        setTimeout(() => {
+          this.toggleModal({
+            getComponentId: {
+              login: true,
+              createAccount: false,
+              favorites: false,
+            },
+          });
+        }, 4000);
+      }
+    } catch (e) {
+      // do nothing
+    }
   }
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
