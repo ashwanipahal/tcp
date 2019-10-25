@@ -89,6 +89,7 @@ class LabeledRadioButtonGroup extends React.Component {
      * label. Defaults to true.
      */
     isShowSelectedValueInLabel: PropTypes.bool,
+    colorSelector: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -101,6 +102,7 @@ class LabeledRadioButtonGroup extends React.Component {
         name: '',
       },
     },
+    colorSelector: false,
   };
 
   static radioGroupCounter = 0;
@@ -167,6 +169,7 @@ class LabeledRadioButtonGroup extends React.Component {
       // meta, // eslint-disable-line no-unused-vars
       isHideIfEmptyOptionsMap,
       isShowSelectedValueInLabel,
+      colorSelector,
       ...otherProps
     } = this.props;
 
@@ -222,7 +225,7 @@ class LabeledRadioButtonGroup extends React.Component {
                 { ' item-disabled-option': option.disabled }
               )}
             >
-              {option.content}
+              {colorSelector ? option.content : option.value.toUpperCase()}
             </LabeledRadioButton>
           ))}
         </div>
