@@ -19,6 +19,7 @@ import {
   ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -77,6 +78,7 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
+        <LoyaltyPromoBanner />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
