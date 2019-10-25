@@ -75,15 +75,16 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
       inheritedStyles={
         Array [
           "
-.row-padding{
-  margin: 0;
+  .row-padding {
+    margin: 0;
     width: 100%;
-}
-.divided-line{
-  margin-left: 0;
-  margin-right:0
-  width: 100%;
-}",
+  }
+  .divided-line {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+",
         ]
       }
       labels={Object {}}
