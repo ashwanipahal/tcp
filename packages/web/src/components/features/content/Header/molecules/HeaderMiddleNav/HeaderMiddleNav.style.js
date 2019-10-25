@@ -24,7 +24,7 @@ const style = css`
       width: 24%;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 20%;
+      width: 12%;
     }
 
     .storelocatorlink__container,
@@ -37,16 +37,18 @@ const style = css`
     }
   }
   .header-middle-login-section {
-    display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 8px;
+    display: inline-flex;
     @media ${props => props.theme.mediaQuery.mediumMax} {
-      width: 71%;
+      width: 75%;
       margin-top: auto;
+      display: inline-flex;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 74%;
+      width: 88%;
+      display: inline-flex;
     }
   }
   .account-info-section {
@@ -89,8 +91,9 @@ const style = css`
   }
   .usericon {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
     vertical-align: baseline;
+    padding-right: 12px;
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
@@ -151,6 +154,14 @@ const style = css`
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
+    }
+  }
+
+  .create-account-header-label,
+  .login-header-label {
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline-flex;
     }
   }
 `;
