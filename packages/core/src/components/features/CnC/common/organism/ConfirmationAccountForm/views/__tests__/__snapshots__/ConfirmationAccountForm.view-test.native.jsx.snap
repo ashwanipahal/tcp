@@ -116,6 +116,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
           popover={
             <PasswordRequirement
               labels={Object {}}
+              resetPassword={false}
             />
           }
           textAlign="left"
@@ -445,6 +446,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           popover={
             <PasswordRequirement
               labels={Object {}}
+              resetPassword={false}
             />
           }
           textAlign="left"
@@ -875,6 +877,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           popover={
             <PasswordRequirement
               labels={Object {}}
+              resetPassword={false}
             />
           }
           textAlign="left"
@@ -1424,6 +1427,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           popover={
             <PasswordRequirement
               labels={Object {}}
+              resetPassword={false}
             />
           }
           textAlign="left"
@@ -1859,6 +1863,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           popover={
             <PasswordRequirement
               labels={Object {}}
+              resetPassword={false}
             />
           }
           textAlign="left"

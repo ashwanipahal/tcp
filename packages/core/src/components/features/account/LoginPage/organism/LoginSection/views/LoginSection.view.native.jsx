@@ -37,6 +37,7 @@ class LoginSection extends PureComponent<Props> {
       } = navigation;
       if (component && component === 'change-password') {
         this.showNewPassword();
+        navigation.setParams({ component: null, logonPasswordOld: null, em: null }); // reset the params
       }
       this.queryParams = {
         logonPasswordOld,
