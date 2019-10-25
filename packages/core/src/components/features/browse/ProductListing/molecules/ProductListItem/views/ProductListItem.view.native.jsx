@@ -94,6 +94,7 @@ const ListItem = props => {
     margins,
     paddings,
     viaModule,
+    isLoggedIn,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
@@ -139,6 +140,8 @@ const ListItem = props => {
         isFavorite={isFavorite}
         itemInfo={isFavorite ? itemInfo : {}}
         productInfo={productInfo}
+        item={item}
+        isLoggedIn={isLoggedIn}
         accessibilityLabel="Price Section"
       />
       <RenderTitle
@@ -229,6 +232,7 @@ RenderBadge2.propTypes = TextProps;
 
 const RenderPricesSection = values => {
   const {
+    item,
     miscInfo,
     currencyExchange,
     currencySymbol,
@@ -238,6 +242,7 @@ const RenderPricesSection = values => {
     itemInfo,
     hideFavorite,
     productInfo,
+    isLoggedIn,
   } = values;
   const { badge3, listPrice, offerPrice } = miscInfo;
   const { itemId } = itemInfo;
@@ -251,7 +256,9 @@ const RenderPricesSection = values => {
     offerPrice * currencyExchange[0].exchangevalue
   ).toFixed(2)}`;
 
-  const [isAddedToFav, setIsAddedToFav] = useState(false);
+  const [isAddedToFav, setIsAddedToFav] = useState(
+    (item.miscInfo && item.miscInfo.isInDefaultWishlist) || false
+  );
   return (
     <PricesSection>
       <OfferPriceAndFavoriteIconContainer>
@@ -277,7 +284,7 @@ const RenderPricesSection = values => {
                 color="gray.600"
                 onPress={() => {
                   onFavorite(generalProductId);
-                  setIsAddedToFav(true);
+                  setIsAddedToFav(!!isLoggedIn);
                 }}
               />
             )}
@@ -450,6 +457,7 @@ ListItem.propTypes = {
   margins: PropTypes.string,
   paddings: PropTypes.string,
   viaModule: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
 };
 
 ListItem.defaultProps = {
@@ -469,6 +477,7 @@ ListItem.defaultProps = {
   margins: null,
   paddings: '12px 0 12px 0',
   viaModule: '',
+  isLoggedIn: false,
 };
 
 export default withStyles(ListItem, styles);

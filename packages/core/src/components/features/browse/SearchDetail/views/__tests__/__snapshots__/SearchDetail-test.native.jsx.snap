@@ -37,6 +37,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     getProducts={[MockFunction]}
     isFavorite={false}
     isLoadingMore={false}
+    isLoggedIn={false}
     labels={Object {}}
     labelsFilter={Object {}}
     lastLoadedPageNumber={0}
@@ -46,6 +47,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
         "getParam": [Function],
       }
     }
+    onAddItemToFavorites={null}
     onFilterSelection={[Function]}
     onPickUpOpenClick={[Function]}
     onSortSelection={[Function]}

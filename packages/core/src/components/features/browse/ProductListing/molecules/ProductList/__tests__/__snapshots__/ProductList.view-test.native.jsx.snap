@@ -25,6 +25,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,
+        "isLoggedIn": false,
         "isMatchingFamily": true,
         "isPlcc": false,
         "loadedProductCount": 12,

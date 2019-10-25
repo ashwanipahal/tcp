@@ -123,6 +123,7 @@ class ImageCarousel extends React.PureComponent {
           onRequestClose={this.toggleModal}
           isUserLoggedIn={isUserLoggedIn}
           showLogin={this.showloginModal}
+          variation="favorites"
         />
       );
     }
@@ -182,14 +183,27 @@ class ImageCarousel extends React.PureComponent {
           {!isGiftCard ? (
             <FavoriteAndPaginationContainer>
               <FavoriteContainer>
-                <CustomIcon
-                  name={ICON_NAME.favorite}
-                  size={this.favoriteIconSize}
-                  color={this.favoriteIconColor}
-                  onPress={this.onFavorite}
-                  isButton
-                  dataLocator="pdp_favorite_icon"
-                />
+                {isAddedToFav ? (
+                  <CustomIcon
+                    isButton
+                    name={ICON_NAME.favorite}
+                    size={this.favoriteIconSize}
+                    color="gray.500"
+                    dataLocator="pdp_favorite_icon"
+                  />
+                ) : (
+                  <CustomIcon
+                    isButton
+                    name={ICON_NAME.favorite}
+                    size={this.favoriteIconSize}
+                    color={this.favoriteIconColor}
+                    dataLocator="pdp_favorite_icon"
+                    onPress={() => {
+                      this.onFavorite(generalProductId);
+                      this.setIsAddedToFav();
+                    }}
+                  />
+                )}
                 <BodyCopy
                   dataLocator="pdp_favorite_icon_count"
                   margin="0 0 0 8px"
@@ -222,38 +236,6 @@ class ImageCarousel extends React.PureComponent {
             </FavoriteAndPaginationContainer>
           ) : null}
           <FavoriteAndPaginationContainer>
-            <FavoriteContainer>
-              {isAddedToFav ? (
-                <CustomIcon
-                  isButton
-                  name={ICON_NAME.favorite}
-                  size={this.favoriteIconSize}
-                  color="gray.500"
-                  dataLocator="pdp_favorite_icon"
-                />
-              ) : (
-                <CustomIcon
-                  isButton
-                  name={ICON_NAME.favorite}
-                  size={this.favoriteIconSize}
-                  color={this.favoriteIconColor}
-                  dataLocator="pdp_favorite_icon"
-                  onPress={() => {
-                    this.onFavorite(generalProductId);
-                    this.setIsAddedToFav();
-                  }}
-                />
-              )}
-              <BodyCopy
-                dataLocator="pdp_favorite_icon_count"
-                margin="0 0 0 8px"
-                mobileFontFamily="secondary"
-                fontSize="fs10"
-                fontWeight="regular"
-                color="gray.600"
-                text="100"
-              />
-            </FavoriteContainer>
             {imageUrls.length > 1 && (
               <PaginationDots
                 numberOfDots={imageUrls.length}
@@ -265,6 +247,7 @@ class ImageCarousel extends React.PureComponent {
               <ModalNative
                 isOpen={showModal}
                 onRequestClose={this.toggleModal}
+                heading="LOG IN"
                 headingFontFamily="secondary"
                 fontSize="fs16"
               >
@@ -277,18 +260,6 @@ class ImageCarousel extends React.PureComponent {
                 </SafeAreaView>
               </ModalNative>
             )}
-            <DownloadContainer>
-              <CustomIcon
-                iconFontName={ICON_FONT_CLASS.Icomoon}
-                name={ICON_NAME.iconShare}
-                size="fs18"
-                color="gray.1600"
-                dataLocator="pdp_social_connect"
-                onPress={this.onShare}
-                title="Share"
-                isButton
-              />
-            </DownloadContainer>
           </FavoriteAndPaginationContainer>
         </Container>
       );

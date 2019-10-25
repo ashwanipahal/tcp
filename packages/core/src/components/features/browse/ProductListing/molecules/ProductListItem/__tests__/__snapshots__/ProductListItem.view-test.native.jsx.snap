@@ -44,6 +44,11 @@ exports[`ProductListItem component should render correctly 1`] = `
     itemInfo={Object {}}
     miscInfo={Object {}}
     onFavorite={[MockFunction]}
+    productInfo={
+      Object {
+        "name": "tcp",
+      }
+    }
     setLastDeletedItemId={[MockFunction]}
   />
   <RenderTitle

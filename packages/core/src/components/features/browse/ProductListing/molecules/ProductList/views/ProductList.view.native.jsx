@@ -79,6 +79,7 @@ class ProductList extends React.PureComponent {
           onRequestClose={this.toggleModal}
           isUserLoggedIn={isUserLoggedIn}
           showLogin={this.showloginModal}
+          variation="favorites"
         />
       );
     }
@@ -99,9 +100,11 @@ class ProductList extends React.PureComponent {
       isFavorite,
       setLastDeletedItemId,
       isLoggedIn,
+      labelsLogin,
     } = this.props;
     const { item } = itemData;
 
+    const { logIn } = labelsLogin;
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -137,11 +140,13 @@ class ProductList extends React.PureComponent {
           onQuickViewOpenClick={onQuickViewOpenClick}
           isFavorite={isFavorite}
           setLastDeletedItemId={setLastDeletedItemId}
+          isLoggedIn={isLoggedIn}
         />
         {showModal && (
           <ModalNative
             isOpen={showModal}
             onRequestClose={this.toggleModal}
+            heading={logIn}
             headingFontFamily="secondary"
             fontSize="fs16"
           >
@@ -287,6 +292,7 @@ ProductList.propTypes = {
   isFavorite: PropTypes.bool,
   setLastDeletedItemId: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductList.defaultProps = {
@@ -313,6 +319,9 @@ ProductList.defaultProps = {
   currencySymbol: '$',
   isFavorite: false,
   isLoggedIn: false,
+  labelsLogin: {
+    logIn: '',
+  },
 };
 
 export default withStyles(ProductList, styles);

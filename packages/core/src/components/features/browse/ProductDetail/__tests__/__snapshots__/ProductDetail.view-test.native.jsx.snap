@@ -10,7 +10,16 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 >
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
+      currentProduct={
+        Object {
+          "colorFitsSizesMap": Array [],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
       imageUrls={null}
+      isLoggedIn={false}
+      onAddItemToFavorites={null}
       onImageClick={[Function]}
     />
     <Styled(ProductSummary)

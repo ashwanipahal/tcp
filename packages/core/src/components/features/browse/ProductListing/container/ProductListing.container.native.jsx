@@ -12,6 +12,7 @@ import {
   getUnbxdId,
   getCategoryId,
   getLabelsProductListing,
+  getLabelsAccountOverView,
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
@@ -88,6 +89,7 @@ class ProductListingContainer extends React.PureComponent {
       sortLabels,
       onAddItemToFavorites,
       isLoggedIn,
+      labelsLogin,
       ...otherProps
     } = this.props;
     return (
@@ -106,6 +108,7 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         labelsFilter={labelsFilter}
         labels={labels}
+        labelsLogin={labelsLogin}
         isLoadingMore={isLoadingMore}
         lastLoadedPageNumber={lastLoadedPageNumber}
         onSubmit={submitProductListingFiltersForm}
@@ -157,6 +160,7 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    labelsLogin: getLabelsAccountOverView(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     isPlcc: isPlccUser(state),
@@ -215,6 +219,7 @@ ProductListingContainer.propTypes = {
   resetProducts: PropTypes.func,
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingContainer.defaultProps = {
@@ -236,6 +241,7 @@ ProductListingContainer.defaultProps = {
   resetProducts: () => {},
   onAddItemToFavorites: null,
   isLoggedIn: false,
+  labelsLogin: {},
 };
 
 export default connect(

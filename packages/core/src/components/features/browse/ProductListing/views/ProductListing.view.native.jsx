@@ -82,6 +82,7 @@ const ProductListView = ({
   products,
   filters,
   labelsFilter,
+  labelsLogin,
   breadCrumbs,
   onPressFilter,
   onPressSort,
@@ -132,6 +133,7 @@ const ProductListView = ({
         isFavorite={isFavorite}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
+        labelsLogin={labelsLogin}
         {...otherProps}
       />
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
@@ -166,6 +168,7 @@ ProductListView.propTypes = {
   paddings: PropTypes.string,
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListView.defaultProps = {
@@ -185,6 +188,7 @@ ProductListView.defaultProps = {
   paddings: null,
   onAddItemToFavorites: null,
   isLoggedIn: false,
+  labelsLogin: {},
 };
 
 export default withStyles(ProductListView, styles);
