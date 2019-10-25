@@ -40,6 +40,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     isLoggedIn={false}
     labels={Object {}}
     labelsFilter={Object {}}
+    labelsLogin={Object {}}
     lastLoadedPageNumber={0}
     margins={null}
     navigation={

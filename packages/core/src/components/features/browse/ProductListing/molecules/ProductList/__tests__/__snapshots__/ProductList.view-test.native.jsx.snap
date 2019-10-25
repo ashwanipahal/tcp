@@ -28,6 +28,9 @@ exports[`ProductList component should renders correctly 1`] = `
         "isLoggedIn": false,
         "isMatchingFamily": true,
         "isPlcc": false,
+        "labelsLogin": Object {
+          "logIn": "",
+        },
         "loadedProductCount": 12,
         "onAddItemToFavorites": [MockFunction],
         "onColorChange": [MockFunction],

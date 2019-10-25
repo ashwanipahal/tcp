@@ -41,6 +41,25 @@ exports[`ProductListItem component should render correctly 1`] = `
     accessibilityLabel="Price Section"
     hideFavorite={false}
     isFavorite={false}
+    isLoggedIn={false}
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "imagePath": "",
+              "name": "TIDAL",
+            },
+            "colorProductId": "3001084_IV",
+            "imageName": "3001084_IV",
+            "miscInfo": Object {},
+          },
+        ],
+        "productInfo": Object {
+          "name": "tcp",
+        },
+      }
+    }
     itemInfo={Object {}}
     miscInfo={Object {}}
     onFavorite={[MockFunction]}
