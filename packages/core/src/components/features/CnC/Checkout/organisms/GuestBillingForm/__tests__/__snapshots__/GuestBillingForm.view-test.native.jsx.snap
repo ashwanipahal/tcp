@@ -24,14 +24,23 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
       cvvInfo={
         <ReactTooltip
           backgroundColor="#fff"
-          height={96}
+          height={350}
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
           pointerColor="#fff"
-          popover=""
+          popover={
+            <RichText
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source=""
+              thirdPartyCookiesEnabled={false}
+            />
+          }
           toggleOnPress={true}
-          width={240}
+          width={350}
           withOverlay={false}
           withPointer={true}
         >
@@ -109,14 +118,23 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       cvvInfo={
         <ReactTooltip
           backgroundColor="#fff"
-          height={96}
+          height={350}
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
           pointerColor="#fff"
-          popover=""
+          popover={
+            <RichText
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source=""
+              thirdPartyCookiesEnabled={false}
+            />
+          }
           toggleOnPress={true}
-          width={240}
+          width={350}
           withOverlay={false}
           withPointer={true}
         >

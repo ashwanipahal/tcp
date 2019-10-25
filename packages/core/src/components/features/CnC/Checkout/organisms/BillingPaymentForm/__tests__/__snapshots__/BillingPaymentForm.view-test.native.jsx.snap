@@ -367,14 +367,23 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       cvvInfo={
         <ReactTooltip
           backgroundColor="#fff"
-          height={96}
+          height={350}
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
           pointerColor="#fff"
-          popover={null}
+          popover={
+            <RichText
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source={null}
+              thirdPartyCookiesEnabled={false}
+            />
+          }
           toggleOnPress={true}
-          width={240}
+          width={350}
           withOverlay={false}
           withPointer={true}
         >
@@ -752,14 +761,23 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       cvvInfo={
         <ReactTooltip
           backgroundColor="#fff"
-          height={96}
+          height={350}
           onClose={[Function]}
           onOpen={[Function]}
           overlayColor="rgba(250, 250, 250, 0.80)"
           pointerColor="#fff"
-          popover={null}
+          popover={
+            <RichText
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source={null}
+              thirdPartyCookiesEnabled={false}
+            />
+          }
           toggleOnPress={true}
-          width={240}
+          width={350}
           withOverlay={false}
           withPointer={true}
         >
@@ -1323,14 +1341,23 @@ exports[`ButtonList component renders correctly without props 1`] = `
           <Styled(View)>
             <ReactTooltip
               backgroundColor="#fff"
-              height={96}
+              height={350}
               onClose={[Function]}
               onOpen={[Function]}
               overlayColor="rgba(250, 250, 250, 0.80)"
               pointerColor="#fff"
-              popover={null}
+              popover={
+                <RichText
+                  domStorageEnabled={false}
+                  isApplyDeviceHeight={false}
+                  isNativeView={true}
+                  javaScriptEnabled={false}
+                  source={null}
+                  thirdPartyCookiesEnabled={false}
+                />
+              }
               toggleOnPress={true}
-              width={240}
+              width={350}
               withOverlay={false}
               withPointer={true}
             >
@@ -1688,14 +1715,23 @@ exports[`ButtonList component renders correctly without props 2`] = `
           <Styled(View)>
             <ReactTooltip
               backgroundColor="#fff"
-              height={96}
+              height={350}
               onClose={[Function]}
               onOpen={[Function]}
               overlayColor="rgba(250, 250, 250, 0.80)"
               pointerColor="#fff"
-              popover={null}
+              popover={
+                <RichText
+                  domStorageEnabled={false}
+                  isApplyDeviceHeight={false}
+                  isNativeView={true}
+                  javaScriptEnabled={false}
+                  source={null}
+                  thirdPartyCookiesEnabled={false}
+                />
+              }
               toggleOnPress={true}
-              width={240}
+              width={350}
               withOverlay={false}
               withPointer={true}
             >
