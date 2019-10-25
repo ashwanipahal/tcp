@@ -66,16 +66,13 @@ class HeaderMiddleNav extends React.PureComponent {
   }
 
   onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
-    e.preventDefault();
+    e.stopPropagation();
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
         component: componentToOpen,
         variation: 'primary',
       });
     }
-    this.setState({
-      userNameClick: triggerLoginCreateAccount && userNameClick ? userNameClick : !userNameClick,
-    });
   };
 
   handleUserTypeColor = isUserPlcc => {
