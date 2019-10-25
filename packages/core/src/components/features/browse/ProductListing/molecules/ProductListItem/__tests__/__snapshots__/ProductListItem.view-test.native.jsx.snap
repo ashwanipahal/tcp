@@ -4,6 +4,8 @@ exports[`ProductListItem component should render correctly 1`] = `
 <Styled(View)
   accessible={true}
   fullWidth={false}
+  margins={null}
+  paddings="12px 0 12px 0"
   renderPriceAndBagOnly={false}
 >
   <RenderTopBadge1
@@ -45,6 +47,44 @@ exports[`ProductListItem component should render correctly 1`] = `
     setLastDeletedItemId={[MockFunction]}
   />
   <RenderTitle
+    colorsMap={
+      Array [
+        Object {
+          "color": Object {
+            "imagePath": "",
+            "name": "TIDAL",
+          },
+          "colorProductId": "3001084_IV",
+          "imageName": "3001084_IV",
+          "miscInfo": Object {},
+        },
+      ]
+    }
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "imagePath": "",
+              "name": "TIDAL",
+            },
+            "colorProductId": "3001084_IV",
+            "imageName": "3001084_IV",
+            "miscInfo": Object {},
+          },
+        ],
+        "productInfo": Object {
+          "name": "tcp",
+        },
+      }
+    }
+    onGoToPDPPage={[MockFunction]}
+    productInfo={
+      Object {
+        "name": "tcp",
+      }
+    }
+    selectedColorIndex={0}
     text="tcp"
   />
   <RenderColorSwitch

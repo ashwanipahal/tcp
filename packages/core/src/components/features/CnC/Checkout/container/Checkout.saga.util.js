@@ -32,7 +32,7 @@ import {
   addGiftWrappingOption,
   removeGiftWrappingOption,
 } from '../../../../../services/abstractors/CnC/Checkout';
-import { isCanada, isMobileApp } from '../../../../../utils';
+import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 export const pickUpRouting = ({
@@ -106,11 +106,11 @@ export function* updateShipmentMethodSelection({ payload }) {
 
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
-        calcsEnabled: true,
+        isRecalculateTaxes: true,
         excludeCartItems: true,
         recalcRewards: false,
-        isCanada: isCanada(),
         isCheckoutFlow: true,
+        translation: false,
       })
     );
   } catch (err) {
@@ -185,6 +185,7 @@ export function* addNewShippingAddress({ payload }) {
 export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
+
 export function* addAndSetGiftWrappingOptions(payload) {
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (payload.hasGiftWrapping) {

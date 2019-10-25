@@ -22,14 +22,15 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
+import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
-import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
+import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
 // constants
@@ -51,13 +52,13 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    let compProps;
+    let globalProps;
     try {
-      compProps = await TCPWebApp.loadComponentData(Component, ctx, {});
+      globalProps = await TCPWebApp.loadGlobalData(Component, ctx, {});
     } catch (e) {
-      compProps = {};
+      globalProps = {};
     }
-    const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
+    const pageProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
       pageProps,
     };
@@ -89,14 +90,16 @@ class TCPWebApp extends App {
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
-    const { envId, raygunApiKey, channelId } = getAPIConfig();
-    initErrorReporter({
-      isServer: false,
-      envId,
-      raygunApiKey,
-      channelId,
-      isDevelopment: isDevelopment(),
-    });
+    const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
+    if (isErrorReportingBrowserActive) {
+      initErrorReporter({
+        isServer: false,
+        envId,
+        raygunApiKey,
+        channelId,
+        isDevelopment: isDevelopment(),
+      });
+    }
 
     /**
      * This is where we assign window._dataLayer for analytics logic
@@ -173,7 +176,6 @@ class TCPWebApp extends App {
           ...payload,
         };
       }
-
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
@@ -209,12 +211,25 @@ class TCPWebApp extends App {
     return null;
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const { Component, pageProps, store, router } = this.props;
     const componentPageName = Component.pageInfo ? Component.pageInfo.name || '' : '';
     let isNonCheckoutPage = true;
-    const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_STAGES;
-    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT];
+    const {
+      pickupPage,
+      shippingPage,
+      billingPage,
+      reviewPage,
+      internationalCheckout,
+    } = CHECKOUT_ROUTES;
+    const checkoutPageURL = [
+      pickupPage.asPath,
+      shippingPage.asPath,
+      billingPage.asPath,
+      reviewPage.asPath,
+      internationalCheckout.asPath,
+    ];
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -227,7 +242,9 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {Component.pageId ? this.getSEOTags(Component.pageId, store, router) : null}
+              {Component.pageInfo && Component.pageInfo.pageId
+                ? this.getSEOTags(Component.pageInfo.pageId, store, router)
+                : null}
               <Header />
               <CheckoutHeader />
               <Loader />
@@ -241,6 +258,8 @@ class TCPWebApp extends App {
               <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>
+            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
+            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}

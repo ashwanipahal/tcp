@@ -13,7 +13,6 @@ class CollapsibleContainer extends React.Component {
     iconClose: PropTypes.string,
     className: PropTypes.string,
     defaultOpen: PropTypes.bool,
-    id: PropTypes.string,
     onToggleCallback: PropTypes.func,
   };
 
@@ -22,7 +21,6 @@ class CollapsibleContainer extends React.Component {
     iconClose: 'down_arrow_icon',
     className: '',
     defaultOpen: false,
-    id: '',
     onToggleCallback: null,
   };
 
@@ -58,12 +56,12 @@ class CollapsibleContainer extends React.Component {
   };
 
   render() {
-    const { header, body, iconOpen, iconClose, className, id } = this.props;
+    const { header, body, iconOpen, iconClose, className } = this.props;
     const IconOpen = (iconOpen && getIconPath(iconOpen)) || getIconPath('up_arrow_icon');
     const IconClose = (iconClose && getIconPath(iconClose)) || getIconPath('down_arrow_icon');
     const { isExpanded } = this.state;
     return (
-      <div className={className} id={id}>
+      <div className={className}>
         <button
           aria-expanded={!!isExpanded}
           onClick={this.toggleCollapseState}

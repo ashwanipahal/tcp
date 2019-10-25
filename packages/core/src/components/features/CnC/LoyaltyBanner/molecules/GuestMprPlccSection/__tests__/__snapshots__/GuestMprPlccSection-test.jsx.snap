@@ -112,7 +112,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           link={null}
           textAlign="left"
         >
-          21
+          21.00
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -165,7 +165,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           link={null}
           textAlign="left"
         >
-          33
+          33.00
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>

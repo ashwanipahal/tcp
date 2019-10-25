@@ -75,6 +75,7 @@ const mapStateToProps = (state, ownProps) => {
   const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
   const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);
   const isItemShipToHome = PickupSelectors.getIsItemShipToHome(state);
+  const alwaysSearchForBOSS = PickupSelectors.getAlwaysSearchForBOSS(state);
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
     onSubmit,
@@ -94,6 +95,7 @@ const mapStateToProps = (state, ownProps) => {
     isBossCtaEnabled,
     isPickUpWarningModal,
     openSkuSelectionForm,
+    alwaysSearchForBOSS,
     isCanada: isCanada(),
     addToBagError: getAddedToPickupError(state),
     isPlcc: PickupSelectors.getUserIsPlcc(state),

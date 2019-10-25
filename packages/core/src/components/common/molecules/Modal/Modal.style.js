@@ -36,6 +36,7 @@ const ModalStyle = css`
     }
   }
   .Modal_Heading {
+    font-family: ${props => props.theme.typography.fonts.secondary};
     border-bottom: 3px solid ${props => props.theme.colors.BLACK};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-top: 0;

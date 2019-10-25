@@ -20,7 +20,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             component="span"
             data-locator="plp_filter_label_filterby"
             fontFamily="secondary"
-            fontSize="fs14"
+            fontSize="fs16"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"

@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components/native';
 
 const plccMpr = props =>
-  props.isPlcc ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;
+  props.pageChecksObj && props.pageChecksObj.isPlcc
+    ? props.theme.colorPalette.userTheme.plcc
+    : props.theme.colorPalette.userTheme.mpr;
 
 const Styles = css`
   padding: 2px;
@@ -14,25 +16,55 @@ const SubTotalLine = styled.View`
 `;
 
 const HeadingLabel = styled.Text`
-  padding: 12px 45px 0;
-  color: ${props => (props.isPlcc ? plccMpr : props.theme.colorPalette.gray[900])};
-`;
-
-const PointsValueText = styled.Text`
-  color: ${plccMpr};
+  padding-top: 12px;
+  font-size: ${props => (props.pageChecksObj && props.pageChecksObj.isPlcc ? '12px;' : '16px;')};
+  color: ${props =>
+    props.pageChecksObj && props.pageChecksObj.isPlcc
+      ? plccMpr
+      : props.theme.colorPalette.gray[900]};
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isReviewPage
+      ? `color: ${plccMpr(props)}
+      font-size: 16px;
+      `
+      : ''}
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isConfirmationPage
+      ? `${
+          !props.pageChecksObj.earnedRewardAvailable && props.pageChecksObj.isGuest
+            ? `color: ${props.theme.colorPalette.gray[900]};`
+            : `color: ${plccMpr(props)}`
+        }
+      font-size: 16px;
+      `
+      : ''}
 `;
 
 const SubHeadingLabel = styled.Text`
   color: ${plccMpr};
   padding-top: 12px;
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isReviewPage
+      ? `color: ${props.theme.colorPalette.gray[900]};
+          font-size: 12px;
+          `
+      : ''}
 `;
 
 const DescriptionLabel = styled.Text`
   padding: 12px 20px 0;
+  font-size: 12px;
 `;
 
 const RemainingPlccLabel = styled.Text`
   padding: 12px 20px 0;
+  font-size: 12px;
 `;
 
 const ShowSubTotalWrapper = styled.View`
@@ -71,6 +103,18 @@ const EstimatedSubTotalValue = styled.Text`
   color: ${props => props.theme.colorPalette.gray[900]};
 `;
 
+const PointsValueText = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
+const PointsToNextReward = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
+const SectionSymbol = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
 export {
   Styles,
   SubTotalLine,
@@ -86,4 +130,6 @@ export {
   EstimatedSubTotalWrapper,
   EstimatedSubTotalLabel,
   EstimatedSubTotalValue,
+  PointsToNextReward,
+  SectionSymbol,
 };

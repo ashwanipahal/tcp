@@ -66,7 +66,10 @@ const CnCTemplate = ({
               <>
                 {isConfirmationPage ? (
                   <>
-                    <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+                    <OrderLedgerContainer
+                      isConfirmationPage={isConfirmationPage}
+                      pageCategory="confirmation"
+                    />
                     <Row fullBleed>
                       <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                         <PersonalizedCoupons />
@@ -83,6 +86,7 @@ const CnCTemplate = ({
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos
+                      fullPageInfo={!isCheckoutView || orderLedgerAfterView}
                       showAccordian={showAccordian}
                       additionalClassNameModal="coupon-modal-web"
                       idPrefix="desktop"

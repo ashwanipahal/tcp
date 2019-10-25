@@ -45,7 +45,7 @@ export default {
       LOOP_CLONES_PER_SIDE: 2,
       INACTIVE_SLIDE_SCALE: 0.75,
       INACTIVE_SLIDE_OPACITY: 0.6,
-      ITEM_WIDTH: 230,
+      ITEM_WIDTH: 240,
     },
   },
   IMG_DATA: {
