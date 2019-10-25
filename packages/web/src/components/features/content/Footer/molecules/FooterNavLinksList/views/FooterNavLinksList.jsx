@@ -104,14 +104,15 @@ const FooterNavLinksList = ({
 
   const createNavListItem = (linkItems, index) => {
     const linkAction = linkItems.action;
+    const linkUrl = linkItems.url;
     let dispatchFn = null;
-    if (linkConfig[linkItems.url]) {
-      dispatchFn = linkConfig[linkItems.url];
+    if (linkUrl) {
+      dispatchFn = linkConfig[linkUrl];
     } else {
       dispatchFn = linkConfig[linkAction];
     }
     /*
-      hideLogoutMyActLink - true - if linkAction is login and user is logged in.
+      hideLogoutMyActLink - true - if linkAction is login-account and user is logged in.
       hideLogoutMyActLink - true - if linkAction is log-out and user is  not logged in.
        hideLogoutMyActLink - false - other wise false, to show the other links.
       This condition is to satisfy the use case, to toggle between My Account and logout
