@@ -151,19 +151,10 @@ export class EarnPoints extends React.PureComponent {
             promoListData.map((item, index) => {
               return (
                 <>
-                  {item && (index === 0 || index === 2) && (
-                    <>
-                      <PromoTileWrapper>
-                        <PromoListTile tileData={item} />
-                      </PromoTileWrapper>
-                      <LineBorder />
-                    </>
-                  )}
-                  {item && (index === 1 || index === 3) && (
-                    <PromoTileWrapper>
-                      <PromoListTile tileData={item} />
-                    </PromoTileWrapper>
-                  )}
+                  <PromoTileWrapper>
+                    <PromoListTile tileData={item} />
+                  </PromoTileWrapper>
+                  {item && (index === 0 || index === 2) && <LineBorder />}
                 </>
               );
             })}
