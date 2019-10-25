@@ -47,11 +47,11 @@ class ExtraPointsDetailModal extends React.PureComponent {
           <BodyCopy component="div" className={`imageSizeSingle ${waysToEarnRow.activityCode}`} />
         </BodyCopy>
         <BodyCopy
-          fontSize="fs42"
+          fontSize={['fs28', 'fs42']}
           fontWeight="black"
           fontFamily="primary"
           textAlign="center"
-          className="elem-mb-MED"
+          className="earnPointsModal_title"
           data-locator={`earnPointsModal_${activeActivity.activityModalAction}_title`}
         >
           {activeActivity.activityModalTitle}
