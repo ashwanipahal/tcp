@@ -111,7 +111,7 @@ export default css`
       width: 202px;
       height: 30px;
       border-radius: 20px;
-      background-color: #f2f2f2;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: #575757;
       border-color: unset;
       margin-right: 10px;
@@ -120,7 +120,7 @@ export default css`
     .searchBar-input-wrapper{
       display: inline-block;
       line-height: 30px;
-      background-color: #f2f2f2;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       border-radius: 20px;
       width: 100%;
       position: relative;
@@ -135,7 +135,7 @@ export default css`
 
       width: 172px;
       height: 30px;
-      background-color: #f2f2f2;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       border: none;
       outline: none;
       font-size: 12px;

@@ -6,8 +6,8 @@ export const commonSearchBarStyles = css`
     width: 240px;
     height: 40px;
     border-radius: 20px;
-    background-color: #f2f2f2;
-    color: #575757;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+    color: ${props => props.theme.colorPalette.gray[800]};
     border-color: unset;
     margin-right: 5px;
   }
@@ -15,24 +15,24 @@ export const commonSearchBarStyles = css`
   .searchBar-input-wrapper {
     display: inline-block;
     line-height: 40px;
-    background-color: #f2f2f2;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border-radius: 20px;
     width: 100%;
     position: relative;
   }
   .searchBar-input-form {
-    padding-left: 20px;
-    padding-right: 10px;
+    padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    padding-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   }
 
   .searchBar-input {
     width: 175px;
     height: 40px;
-    background-color: #f2f2f2;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border: none;
     outline: none;
-    font-size: 13px;
-    color: #575757;
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    color: ${props => props.theme.colorPalette.gray[800]};
   }
 
   .searchBar-image-typeAhead {
@@ -201,8 +201,8 @@ export const mediumOnlyStyles = css`
       width: 222px;
       height: 40px;
       border-radius: 20px;
-      background-color: #f2f2f2;
-      color: #575757;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      color: ${props => props.theme.colorPalette.gray[800]};
       border-color: unset;
       margin-right: 10px;
       margin-left: 53px;
@@ -211,24 +211,24 @@ export const mediumOnlyStyles = css`
     .searchBar-input-wrapper {
       display: inline-block;
       line-height: 40px;
-      background-color: #f2f2f2;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       border-radius: 20px;
       width: 100%;
       position: relative;
     }
     .searchBar-input-form {
-      padding-left: 14px;
-      padding-right: 0px;
+      padding-left: ${props => props.theme.typography.fontSizes.fs14};
+      padding-right: 0;
     }
 
     .searchBar-input {
       width: 189px;
       height: 40px;
-      background-color: #f2f2f2;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       border: none;
       outline: none;
-      font-size: 12px;
-      color: #575757;
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      color: ${props => props.theme.colorPalette.gray[800]};
     }
 
     .searchBar-image-typeAhead {
