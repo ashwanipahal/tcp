@@ -145,7 +145,7 @@ class SearchLayoutWrapper extends React.PureComponent {
       .getElementById(`${CLOSE_IMAGE}`)
       .classList.contains(`${CLOSE_IMAGE_MOBILE}`);
 
-    if (searchText.length > RECENT_SEARCH_CONSTANTS.MIN_SEARCH_CHARS) {
+    if (searchText.length >= RECENT_SEARCH_CONSTANTS.MIN_SEARCH_CHARS) {
       const payload = {
         searchText,
         slpLabels: labels,
