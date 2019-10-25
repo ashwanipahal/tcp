@@ -1,11 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InternationalCheckoutVanilla should render InternationalCheckoutVanilla section 1`] = `
-<div>
+<div
+  className="undefined 'borders-free-container'"
+>
   <iframe
     className="__frame"
     frameBorder="0"
     height="0"
+    id="__frame"
     src="https://stagecheckout.fiftyone.com/utils/empty.jsp"
     title="internationalCheckout"
     width="0"
@@ -13,6 +16,7 @@ exports[`InternationalCheckoutVanilla should render InternationalCheckoutVanilla
   <iframe
     className="envoyId"
     frameBorder="0"
+    id="envoyId"
     name="envoy"
     scrolling="yes"
     src=""
