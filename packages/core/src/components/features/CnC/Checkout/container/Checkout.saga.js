@@ -234,7 +234,6 @@ function* initCheckoutSectionData({
   payload: { recalc, pageName, isPaypalPostBack, initialLoad },
 }) {
   const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
-  const isMobile = isMobileApp();
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
     yield call(initShippingData, pageName, initialLoad, pendingPromises);
@@ -244,7 +243,7 @@ function* initCheckoutSectionData({
       put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: false,
-          excludeCartItems: !isMobile,
+          excludeCartItems: false,
           recalcRewards: recalc,
           updateSmsInfo: false,
           translation: false,
@@ -259,7 +258,7 @@ function* initCheckoutSectionData({
         put(
           BAG_PAGE_ACTIONS.getCartData({
             isRecalculateTaxes: true,
-            excludeCartItems: !isMobile,
+            excludeCartItems: false,
             recalcRewards: recalc,
             updateSmsInfo: false,
             translation: true,

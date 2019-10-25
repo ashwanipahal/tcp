@@ -619,9 +619,9 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
-    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    pageCategory={Object {}}
     routeToPage=""
     showAccordian={true}
   />
@@ -990,9 +990,9 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
-    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    pageCategory={Object {}}
     routeToPage=""
     showAccordian={true}
   />
@@ -1047,9 +1047,9 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
-    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    pageCategory={Object {}}
     routeToPage=""
     showAccordian={true}
   />
@@ -1380,9 +1380,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
-    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    pageCategory={Object {}}
     routeToPage=""
     showAccordian={true}
   />
@@ -1745,9 +1745,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
-    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    pageCategory={Object {}}
     routeToPage=""
     showAccordian={true}
   />
@@ -2708,9 +2708,9 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
-    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    pageCategory={Object {}}
     routeToPage=""
     showAccordian={true}
   />
@@ -2723,9 +2723,9 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
-    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
+    pageCategory={Object {}}
     routeToPage=""
     showAccordian={true}
   />
