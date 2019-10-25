@@ -10,6 +10,7 @@ import {
   responseContainsErrors,
   ServiceResponseError,
   getFormattedError,
+  getFormattedErrorFromResponse,
 } from '../../../utils/errorMessage.util';
 import { getAPIConfig, capitalize, toTimeString } from '../../../utils';
 import { parseDate } from '../../../utils/parseDate';
@@ -59,7 +60,19 @@ export const getGiftWrappingOptions = () => {
 };
 
 export const getServerErrorMessage = (error, errorsMapping) => {
-  const errorMsg = getFormattedError(error, errorsMapping);
+  let errorMsg;
+  if (error.response && error.response.body && error.response.body.errors) {
+    errorMsg = getFormattedError(error, errorsMapping);
+  } else if (error.errorResponse && error.errorResponse.errors) {
+    const errorList = [
+      {
+        errorCode: error.errorResponse.errors[0].errorCode,
+        errorKey: error.errorResponse.errors[0].errorKey,
+        errorMessage: error.errorResponse.errors[0].errorMessage,
+      },
+    ];
+    errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
+  }
   if (typeof errorMsg.errorMessages === 'undefined') {
     return 'Oops... Something went Wrong !!!!';
   }
@@ -172,7 +185,7 @@ export function addGiftWrappingOption(payload, errorsMapping) {
       return res;
     })
     .catch(err => {
-      throw getServerErrorMessage(err, errorsMapping);
+      throw getFormattedError(err, errorsMapping);
     });
 }
 export function removeGiftWrappingOption() {
@@ -409,7 +422,7 @@ export function addPaymentToOrder(
       };
     })
     .catch(err => {
-      throw getServerErrorMessage(err, errorsMapping);
+      throw getFormattedError(err, errorsMapping);
     });
 }
 
@@ -445,7 +458,7 @@ export function updatePaymentOnOrder(args, errorsMapping) {
       return { paymentId: res.body.paymentInstruction[0].piId };
     })
     .catch(err => {
-      throw getServerErrorMessage(err, errorsMapping);
+      throw getFormattedError(err, errorsMapping);
     });
 }
 
@@ -824,7 +837,7 @@ export function submitOrder(
   })
     .then(handleSubmitOrderResponse)
     .catch(err => {
-      throw getServerErrorMessage(err, errorsMapping);
+      throw getFormattedError(err, errorsMapping);
     });
 }
 

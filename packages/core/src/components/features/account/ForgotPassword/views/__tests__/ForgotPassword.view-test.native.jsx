@@ -14,6 +14,7 @@ describe('ForgotPasswordView component', () => {
       showNotification: '',
       resetForgotPasswordErrorResponse: '',
       successFullResetEmail: '',
+      updateHeader: jest.fn(),
     };
     const component = shallow(<ForgotPasswordViewVanilla {...props} />);
     expect(component).toMatchSnapshot();

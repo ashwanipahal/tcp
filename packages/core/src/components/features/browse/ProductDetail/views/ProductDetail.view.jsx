@@ -31,6 +31,7 @@ import RelatedOutfits from '../molecules/RelatedOutfits/views';
 class ProductDetailView extends React.Component {
   constructor(props) {
     super(props);
+    this.formValues = null;
     const {
       productInfo,
       productInfo: { colorFitsSizesMap },
@@ -41,14 +42,24 @@ class ProductDetailView extends React.Component {
         productInfo.generalProductId
       ),
       currentGiftCardValue: productInfo.offerPrice,
+      renderReceiveProps: false,
     };
   }
 
-  onChangeColor = e => {
+  onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     const {
       productInfo: { colorFitsSizesMap },
     } = this.props;
-    this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+    this.setState({
+      currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e),
+      renderReceiveProps: true,
+    });
+    this.formValues = {
+      Fit: selectedFit,
+      Size: selectedSize,
+      color: e,
+      Quantity: selectedQuantity,
+    };
   };
 
   onChangeSize = e => {
@@ -168,7 +179,7 @@ class ProductDetailView extends React.Component {
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
-    const { currentColorEntry } = this.state;
+    const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
 
     if (isProductDataAvailable) {
@@ -230,6 +241,8 @@ class ProductDetailView extends React.Component {
                 customSubmitButtonStyle={customSubmitButtonStyle}
                 onChangeSize={this.onChangeSize}
                 selectedColorProductId={selectedColorProductId}
+                renderReceiveProps={renderReceiveProps}
+                initialFormValues={this.formValues}
                 isPDP
               />
             )}

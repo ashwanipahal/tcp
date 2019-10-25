@@ -8,4 +8,8 @@ const LineStyle = styled.View`
   border-color: ${plccMpr};
 `;
 
-export default LineStyle;
+const LoyaltySectionWrapper = styled.View`
+  padding: 0 12px 12px;
+`;
+
+export { LineStyle, LoyaltySectionWrapper };

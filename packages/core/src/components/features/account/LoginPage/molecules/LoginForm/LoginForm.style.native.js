@@ -114,6 +114,7 @@ const leftAignWrapper = () => {
   return `
     align-items:flex-start;
     margin-bottom:20px;
+    flex-direction: row;
   `;
 };
 
@@ -163,6 +164,10 @@ const LineWrapper = styled.View`
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
+const CustomIconWrapper = styled.TouchableOpacity`
+  align-self: center;
+`;
+
 export {
   FormStyle,
   DescriptionStyle,
@@ -176,4 +181,5 @@ export {
   ModalHeading,
   ModalViewWrapper,
   LineWrapper,
+  CustomIconWrapper,
 };

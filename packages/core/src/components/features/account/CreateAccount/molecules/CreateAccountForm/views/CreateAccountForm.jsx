@@ -16,7 +16,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { getIconPath } from '../../../../../../../utils';
+import { getIconPath, isCanada } from '../../../../../../../utils';
 import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -43,7 +43,7 @@ let CreateAccountForm = ({
         <Row fullBleed className="row-form-wrapper">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="First Name"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_firstName', 'registration')}
               name="firstName"
               id="firstName"
               component={TextBox}
@@ -53,7 +53,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Last Name"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_lastName', 'registration')}
               name="lastName"
               id="lastName"
               component={TextBox}
@@ -63,7 +63,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Phone Number"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_phoneNumber', 'registration')}
               name="phoneNumber"
               id="phoneNumber"
               type="tel"
@@ -76,7 +76,11 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Zip Code"
+              placeholder={
+                isCanada()
+                  ? getLabelValue(labels, 'lbl_addEditAddress_postalCode', 'addEditAddress')
+                  : getLabelValue(labels, 'lbl_createAccount_zipCode', 'registration')
+              }
               name="noCountryZip"
               id="noCountryZip"
               component={TextBox}
@@ -86,7 +90,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Email Address"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_emailAddress', 'registration')}
               name="emailAddress"
               id="emailAddress"
               component={TextBox}
@@ -96,7 +100,7 @@ let CreateAccountForm = ({
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Confirm Email Address"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_confirmEmail', 'registration')}
               name="confirmEmailAddress"
               id="confirmEmailAddress"
               component={TextBox}
@@ -106,7 +110,7 @@ let CreateAccountForm = ({
           </Col>
           <Col className="position-relative" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Password"
+              placeholder={getLabelValue(labels, 'lbl_createAccount_password', 'registration')}
               name="password"
               id="password"
               type={hideShowPwd ? 'text' : 'password'}
@@ -140,7 +144,11 @@ let CreateAccountForm = ({
           </Col>
           <Col className="position-relative" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
-              placeholder="Confirm Password"
+              placeholder={getLabelValue(
+                labels,
+                'lbl_createAccount_confirmPassword',
+                'registration'
+              )}
               name="confirmPassword"
               id="confirmPassword"
               type={confirmHideShowPwd ? 'text' : 'password'}

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+
 import { resetPassword, resetLoginForgotPasswordState } from './ForgotPassword.actions';
 import {
   getShowNotificationState,
@@ -30,6 +32,8 @@ class ForgotPasswordContainer extends React.PureComponent {
       labels,
       showLogin,
       forgotPasswordErrorMessage,
+      toastMessage,
+      updateHeader,
     } = this.props;
     const initialValues = {
       rememberMe: true,
@@ -48,6 +52,8 @@ class ForgotPasswordContainer extends React.PureComponent {
         resetLoginState={resetLoginState}
         showLogin={showLogin}
         forgotPasswordErrorMessage={forgotPasswordErrorMessage}
+        toastMessage={toastMessage}
+        updateHeader={updateHeader}
       />
     );
   }
@@ -64,11 +70,14 @@ ForgotPasswordContainer.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   showLogin: PropTypes.func,
   forgotPasswordErrorMessage: PropTypes.shape({}).isRequired,
+  toastMessage: PropTypes.string.isRequired,
+  updateHeader: PropTypes.func,
 };
 
 ForgotPasswordContainer.defaultProps = {
   resetLoginState: () => {},
   showLogin: () => {},
+  updateHeader: () => {},
 };
 
 const mapDispatchToProps = dispatch => {
@@ -87,6 +96,9 @@ const mapDispatchToProps = dispatch => {
     },
     openOverlay: payload => {
       dispatch(openOverlayModal(payload));
+    },
+    toastMessage: palyoad => {
+      dispatch(toastMessageInfo(palyoad));
     },
   };
 };

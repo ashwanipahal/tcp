@@ -12,13 +12,9 @@ exports[`AccountOverview component should render correctly 1`] = `
     <Styled(BodyCopy)
       accessibilityText=""
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs14"
       margin={null}
-      mobileFontFamily={
-        Array [
-          "primary",
-        ]
-      }
       numberOfLines={null}
       text="lbl_overview_logout_heading_Text_1"
       textAlign="center"
@@ -27,13 +23,9 @@ exports[`AccountOverview component should render correctly 1`] = `
     <Styled(BodyCopy)
       accessibilityText=""
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs14"
       margin={null}
-      mobileFontFamily={
-        Array [
-          "primary",
-        ]
-      }
       numberOfLines={null}
       text="lbl_overview_logout_heading_Text_2"
       textAlign="center"
@@ -66,7 +58,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
-      width="150px"
+      width="47%"
     />
     <Styled(CustomButton)
       active={false}
@@ -92,7 +84,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
-      width="150px"
+      width="47%"
     />
   </Styled(View)>
   <Styled(View)>
@@ -100,14 +92,10 @@ exports[`AccountOverview component should render correctly 1`] = `
       accessibilityText=""
       color="gray.900"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs13"
-      fontWeight="semibold"
+      fontWeight="regular"
       margin={null}
-      mobileFontFamily={
-        Array [
-          "primary",
-        ]
-      }
       numberOfLines={null}
       onPress={[Function]}
       text="lbl_overview_myFavoritesHeading"
@@ -117,7 +105,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     <Styled(View)>
       <Styled(ImageComp)
         alt=""
-        height={18}
+        height={13}
         host=""
         source={
           Object {
@@ -125,7 +113,7 @@ exports[`AccountOverview component should render correctly 1`] = `
           }
         }
         url=""
-        width={20}
+        width={15}
       />
     </Styled(View)>
   </Styled(View)>
@@ -163,6 +151,46 @@ exports[`AccountOverview component should render correctly 1`] = `
         />
       </Styled(View)>
     </Styled(View)>
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.600"
+      dataLocator=""
+      iconFontName="FontAwesome"
+      isButton={true}
+      isDisabled={false}
+      margins={null}
+      name="chevron-right"
+      onPress={[Function]}
+      size="fs12"
+    />
+  </Styled(TouchableOpacity)>
+  <Connect(ApplyNowModalWrapper)
+    applyNow={false}
+    toggleModalWrapper={[Function]}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+    title="lbl_overview_manage_creditCard"
+  />
+  <Styled(View) />
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_overview_purchase_giftCards"
+      textDecoration={null}
+    />
     <Styled(View)>
       <Styled(ImageComp)
         alt=""
@@ -178,25 +206,6 @@ exports[`AccountOverview component should render correctly 1`] = `
       />
     </Styled(View)>
   </Styled(TouchableOpacity)>
-  <Connect(ApplyNowModalWrapper)
-    applyNow={false}
-    toggleModalWrapper={[Function]}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_manage_creditCard"
-  />
-  <Styled(View) />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-    title="lbl_overview_purchase_giftCards"
-  />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}

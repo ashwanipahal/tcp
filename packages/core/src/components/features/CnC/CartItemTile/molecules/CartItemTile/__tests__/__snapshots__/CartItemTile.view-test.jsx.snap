@@ -318,7 +318,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -331,7 +330,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -746,7 +745,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -759,7 +757,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1188,7 +1186,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -1201,7 +1198,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1612,7 +1609,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -1625,7 +1621,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2036,7 +2032,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -2049,7 +2044,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2460,7 +2455,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -2473,7 +2467,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2910,7 +2904,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -2923,7 +2916,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3348,7 +3341,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -3361,7 +3353,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3798,7 +3790,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -3811,7 +3802,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4236,7 +4227,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -4249,7 +4239,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4674,7 +4664,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -4687,7 +4676,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5116,7 +5105,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -5129,7 +5117,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5558,7 +5546,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -5571,7 +5558,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6000,7 +5987,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -6013,7 +5999,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6468,7 +6454,6 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             className={false}
             color="text.primary"
             component="span"
-            dataLocator="cartItemPrice"
             fontFamily="secondary"
             fontSize="fs12"
             fontWeight={
@@ -6481,7 +6466,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefined123.00
+            undefinedNaN
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6625,6 +6610,15 @@ exports[`CartItemTile common component renders correctly 1`] = `
       display: inline-flex;
     }
   }
+
+  span.was-price {
+    margin-left: 5px;
+    color: ",
+          [Function],
+          ";
+    text-decoration: line-through;
+  }
+
   .padding-left-6 {
     padding-left: 6px;
   }
@@ -6842,6 +6836,11 @@ exports[`CartItemTile common component renders correctly 1`] = `
           font-size: ",
           [Function],
           "px;
+        }
+        span.was-price {
+          font-size: ",
+          [Function],
+          ";
         }
         /* stylelint-enable */
       }
@@ -7102,6 +7101,15 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       display: inline-flex;
     }
   }
+
+  span.was-price {
+    margin-left: 5px;
+    color: ",
+          [Function],
+          ";
+    text-decoration: line-through;
+  }
+
   .padding-left-6 {
     padding-left: 6px;
   }
@@ -7319,6 +7327,11 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           font-size: ",
           [Function],
           "px;
+        }
+        span.was-price {
+          font-size: ",
+          [Function],
+          ";
         }
         /* stylelint-enable */
       }

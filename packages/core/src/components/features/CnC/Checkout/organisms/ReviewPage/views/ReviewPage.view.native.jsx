@@ -106,6 +106,7 @@ class ReviewPage extends React.PureComponent {
             onBackLinkPress={() => setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM)}
             footerBody={this.renderFooter()}
             showAccordian
+            pageCategory="review"
           />
         </ScrollView>
       </>
