@@ -105,10 +105,10 @@ const FooterNavLinksList = ({
   const createNavListItem = (linkItems, index) => {
     const linkAction = linkItems.action;
     let dispatchFn = null;
-    if (linkConfig[linkAction]) {
-      dispatchFn = linkConfig[linkAction];
-    } else {
+    if (linkConfig[linkItems.url]) {
       dispatchFn = linkConfig[linkItems.url];
+    } else {
+      dispatchFn = linkConfig[linkAction];
     }
     /*
       hideLogoutMyActLink - true - if linkAction is login and user is logged in.
