@@ -87,10 +87,12 @@ class ImageCarousel extends React.PureComponent {
     }));
   };
 
-  setIsAddedToFav = () => {
-    this.setState(() => ({
-      isAddedToFav: true,
-    }));
+  setIsAddedToFav = isLoggedIn => {
+    if (isLoggedIn) {
+      this.setState(() => ({
+        isAddedToFav: true,
+      }));
+    }
   };
 
   onShare = async () => {
@@ -200,7 +202,7 @@ class ImageCarousel extends React.PureComponent {
                     dataLocator="pdp_favorite_icon"
                     onPress={() => {
                       this.onFavorite(generalProductId);
-                      this.setIsAddedToFav();
+                      this.setIsAddedToFav(isLoggedIn);
                     }}
                   />
                 )}

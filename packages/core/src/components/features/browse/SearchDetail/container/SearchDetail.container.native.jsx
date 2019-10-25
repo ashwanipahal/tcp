@@ -13,6 +13,7 @@ import {
   getUnbxdId,
   getCategoryId,
   getLabelsProductListing,
+  getLabelsAccountOverView,
   getNavigationTree,
   getLongDescription,
   getLastLoadedPageNumber,
@@ -139,6 +140,7 @@ class SearchDetailContainer extends React.PureComponent {
       searchedText,
       onAddItemToFavorites,
       isLoggedIn,
+      labelsLogin,
       ...otherProps
     } = this.props;
 
@@ -169,6 +171,7 @@ class SearchDetailContainer extends React.PureComponent {
                 onLoadMoreProducts={this.onLoadMoreProducts}
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
+                labelsLogin={labelsLogin}
                 {...otherProps}
               />
             ) : (
@@ -226,6 +229,7 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    labelsLogin: getLabelsAccountOverView(state),
     isLoadingMore: getIsLoadingMore(state),
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
@@ -301,6 +305,7 @@ SearchDetailContainer.propTypes = {
   setRecentSearches: PropTypes.func,
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -328,6 +333,7 @@ SearchDetailContainer.defaultProps = {
   setRecentSearches: null,
   onAddItemToFavorites: null,
   isLoggedIn: false,
+  labelsLogin: {},
 };
 
 export default connect(
