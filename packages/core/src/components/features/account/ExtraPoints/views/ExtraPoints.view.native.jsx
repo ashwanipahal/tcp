@@ -23,6 +23,7 @@ import {
   MorePointsWrapper,
   ExtraEarningHeader,
   PromoTileWrapper,
+  LineBorder,
 } from '../styles/ExtraPoints.style.native';
 
 /**
@@ -127,11 +128,11 @@ export class EarnPoints extends React.PureComponent {
             fontFamily="secondary"
             fontSize="fs16"
             text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_checkOffers')}
-            spacingStyles="margin-right-MED margin-bottom-SM margin-left-MED"
+            spacingStyles="margin-right-MED margin-left-MED"
             textAlign="center"
             fontWeight="regular"
           />
-          <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-XL">
+          <ViewWithSpacing spacingStyles="margin-top-SM margin-bottom-XL">
             <Anchor
               fontSizeVariation="large"
               underline
@@ -147,11 +148,23 @@ export class EarnPoints extends React.PureComponent {
         <TilesWrapper>
           {promoListData &&
             promoListData.length > 0 &&
-            promoListData.map(item => {
+            promoListData.map((item, index) => {
               return (
-                <PromoTileWrapper>
-                  <PromoListTile tileData={item} />
-                </PromoTileWrapper>
+                <>
+                  {item && (index === 0 || index === 2) && (
+                    <>
+                      <PromoTileWrapper>
+                        <PromoListTile tileData={item} />
+                      </PromoTileWrapper>
+                      <LineBorder />
+                    </>
+                  )}
+                  {item && (index === 1 || index === 3) && (
+                    <PromoTileWrapper>
+                      <PromoListTile tileData={item} />
+                    </PromoTileWrapper>
+                  )}
+                </>
               );
             })}
         </TilesWrapper>
