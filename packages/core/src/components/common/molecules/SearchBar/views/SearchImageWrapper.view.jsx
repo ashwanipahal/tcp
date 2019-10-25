@@ -62,6 +62,7 @@ class SearchImageWrapper extends React.PureComponent {
                   maxLength="50"
                   autoComplete="off"
                   placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
+                  readOnly
                 />
               </form>
               <Image
