@@ -77,7 +77,7 @@ class AccountOverview extends PureComponent<Props> {
         },
       } = navigation;
       if (component === 'change-password') {
-        // using set timeout as labels doesn;t load sometime just after opening app
+        // using set timeout as labels doesn't load sometime just after opening app
         setTimeout(() => {
           this.toggleModal({
             getComponentId: {

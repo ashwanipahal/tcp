@@ -9,6 +9,7 @@ import {
 } from './ResetPassword.selectors';
 import ResetPasswordComponent from '../views';
 import { resetPassword, resetState } from './ResetPassword.actions';
+import { isMobileApp } from '../../../../../utils';
 
 export class ResetPasswordContainer extends PureComponent {
   static propTypes = {
@@ -43,9 +44,15 @@ export class ResetPasswordContainer extends PureComponent {
   componentDidUpdate() {
     const { successMessage } = this.props;
     if (successMessage) {
-      setTimeout(() => {
-        this.backHandler();
-      }, 2000);
+      if (isMobileApp()) {
+        setTimeout(() => {
+          this.onBackClick();
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          this.backHandler();
+        }, 2000);
+      }
     }
   }
 
