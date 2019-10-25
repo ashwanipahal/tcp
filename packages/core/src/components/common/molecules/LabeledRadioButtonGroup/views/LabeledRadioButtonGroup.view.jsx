@@ -225,7 +225,7 @@ class LabeledRadioButtonGroup extends React.Component {
                 { ' item-disabled-option': option.disabled }
               )}
             >
-              {colorSelector ? option.content : option.value.toUpperCase()}
+              {colorSelector ? option.content : option.value && option.value.toUpperCase()}
             </LabeledRadioButton>
           ))}
         </div>
