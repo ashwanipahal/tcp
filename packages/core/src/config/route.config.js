@@ -160,6 +160,12 @@ const ROUTES_LIST = [
     path: '/stores',
     resolver: '/StoreList',
   },
+  {
+    noSlugPath: 'trackOrder',
+    path: '/track-order/:orderId/:emailAddress',
+    resolver: '/TrackOrder',
+    params: ['orderId', 'emailAddress'],
+  },
 ];
 
 const ROUTING_MAP = {};
