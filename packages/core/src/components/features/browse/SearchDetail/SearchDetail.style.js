@@ -130,6 +130,7 @@ export default css`
     }
     .filter-and-sort-form-container .desktop-dropdown {
       display: flex;
+      position: relative;
     }
     .searched-label {
       padding-bottom: 0;
