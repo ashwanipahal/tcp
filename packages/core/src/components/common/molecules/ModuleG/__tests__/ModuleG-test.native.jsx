@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import moduleGMockData from '../../../../../services/abstractors/common/moduleG/mock';
-import { ModuleGVanilla } from '../view/ModuleG.native';
+import { ModuleGVanilla } from '../views/ModuleG.native';
 
 describe('ModuleGVanilla', () => {
   let ModuleGComponent;

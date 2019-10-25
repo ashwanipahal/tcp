@@ -14,14 +14,6 @@ const styles = css`
     text-align: center;
   }
 
-  .loyalty-banner {
-    display: none;
-    @media ${props => props.theme.mediaQuery.medium} {
-      display: block;
-    }
-    height: 100px;
-  }
-
   .sms-sign-up {
     height: 50px;
   }

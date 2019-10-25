@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isCanada } from '@tcp/core/src/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -9,6 +10,7 @@ import ThankYouComponent from '../organisms/ThankYouComponent';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
 import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
+import LoyaltyBanner from '../../LoyaltyBanner';
 import {
   checkIfShippingFullName,
   checkIfNotShippingFullName,
@@ -122,7 +124,7 @@ const ConfirmationView = ({
       </Row>
       <Row fullBleed className="placeholder loyalty-banner">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div>LOYALTY BANNER</div>
+          {!isCanada() && <LoyaltyBanner pageCategory="confirmation" />}
         </Col>
       </Row>
       {renderAccountForm(isGuest)}

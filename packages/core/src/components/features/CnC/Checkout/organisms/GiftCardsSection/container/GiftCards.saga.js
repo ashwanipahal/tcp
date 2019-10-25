@@ -29,16 +29,17 @@ export function* applyGiftCard(payloadData) {
         [payload.creditCardId]: resErr,
       };
       yield put(setGiftCardError(errorObject));
-    } else
+    } else {
       yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: true,
-          excludeCartItems: true,
+          excludeCartItems: false,
           recalcRewards: true,
           isCheckoutFlow: true,
           translation: false,
         })
       );
+    }
   } catch (err) {
     const errorObject = {
       [payload.creditCardId]: err,
@@ -56,7 +57,7 @@ export function* removeGiftCardFromOrder(payloadData) {
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
-        excludeCartItems: true,
+        excludeCartItems: false,
         recalcRewards: true,
         isCheckoutFlow: true,
         translation: false,
@@ -78,7 +79,7 @@ export function* addGiftCardFromBilling(payloadData) {
       yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: true,
-          excludeCartItems: true,
+          excludeCartItems: false,
           recalcRewards: true,
           isCheckoutFlow: true,
           translation: false,

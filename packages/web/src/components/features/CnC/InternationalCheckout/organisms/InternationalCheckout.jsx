@@ -44,13 +44,14 @@ class InternationalCheckout extends PureComponent {
     const { iframeUrl, communicationUrl, className } = this.props;
 
     return (
-      <div className={className}>
+      <div className={`${className} 'borders-free-container'`}>
         <iframe
           title="internationalCheckout"
           className="__frame"
           width="0"
           height="0"
           frameBorder="0"
+          id="__frame"
           src={communicationUrl}
         />
         <iframe
@@ -59,6 +60,7 @@ class InternationalCheckout extends PureComponent {
           className="envoyId"
           src={iframeUrl}
           frameBorder="0"
+          id="envoyId"
           scrolling="yes"
         />
       </div>

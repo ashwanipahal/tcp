@@ -16,15 +16,10 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
           colSize={{
             small: 3,
             large: 6,
-            medium: 3,
+            medium: 4,
           }}
         >
-          <BodyCopy
-            component="div"
-            fontSize="fs14"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-          >
+          <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
             {getLabelValue(labels, 'lbl_preference_tileContactPreference', 'preferences')}
           </BodyCopy>
         </Col>
@@ -32,15 +27,15 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
           colSize={{
             small: 3,
             large: 6,
-            medium: 3,
+            medium: 4,
           }}
         >
           <Row fullBleed>
             <Col
               colSize={{
                 small: 2,
-                large: 4,
-                medium: 3,
+                large: 5,
+                medium: 2,
               }}
             >
               {placeRewardsSms ? (
@@ -59,7 +54,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
                 />
               )}
               <BodyCopy
-                component="span"
+                component="div"
                 fontSize="fs10"
                 fontWeight="extrabold"
                 fontFamily="secondary"
@@ -70,8 +65,8 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
             <Col
               colSize={{
                 small: 2,
-                large: 4,
-                medium: 3,
+                large: 5,
+                medium: 2,
               }}
             >
               {placeRewardsPush ? (
@@ -91,7 +86,7 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
               )}
               <BodyCopy
                 className="elem-pl-XXXS"
-                component="span"
+                component="div"
                 fontSize="fs10"
                 fontWeight="extrabold"
                 fontFamily="secondary"
@@ -102,8 +97,8 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
             <Col
               colSize={{
                 small: 2,
-                large: 4,
-                medium: 2,
+                large: 2,
+                medium: 4,
               }}
             >
               <BodyCopy component="div" textAlign="right" fontSize="fs14" fontFamily="secondary">

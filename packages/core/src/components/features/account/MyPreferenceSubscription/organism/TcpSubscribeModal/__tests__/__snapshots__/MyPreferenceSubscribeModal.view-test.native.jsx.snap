@@ -117,6 +117,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
       dataLocator="my-preference-modal_disclaimer_sub_text"
       domStorageEnabled={false}
       isApplyDeviceHeight={false}
+      isNativeView={false}
       javaScriptEnabled={false}
       source={
         Object {
