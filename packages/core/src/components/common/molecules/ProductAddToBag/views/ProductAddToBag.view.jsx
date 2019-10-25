@@ -88,7 +88,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             colorFitsSizesMap={colorList}
             onChange={selectColor}
             dataLocator="addnewaddress-state"
-            title={colorTitle}
+            title={`${colorTitle}:`}
             inheritedStyles={isGiftCard && isPDP ? giftCardDesignStyle : quickViewColorSwatchesCss}
           />
         </div>

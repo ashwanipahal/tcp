@@ -9,7 +9,6 @@ exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] 
   getCurrencySymbol=""
   isGuest={false}
   isPlcc={false}
-  isProductDetailView={false}
   labels={Object {}}
   pageCategory=""
   pointsToNextReward={0}

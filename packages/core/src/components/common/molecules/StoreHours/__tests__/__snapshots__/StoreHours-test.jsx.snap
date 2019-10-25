@@ -4176,7 +4176,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
               }
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
-              id=""
               onToggleCallback={null}
               theme={
                 Object {
@@ -4792,7 +4791,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
             >
               <div
                 className="sc-htpNat sc-bxivhb bRBPiy"
-                id=""
               >
                 <button
                   aria-expanded={true}
@@ -8364,7 +8362,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
               }
               iconClose="down_arrow_icon"
               iconOpen="up_arrow_icon"
-              id=""
               onToggleCallback={null}
               theme={
                 Object {
@@ -8980,7 +8977,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
             >
               <div
                 className="sc-htpNat sc-bxivhb bRBPiy"
-                id=""
               >
                 <button
                   aria-expanded={true}

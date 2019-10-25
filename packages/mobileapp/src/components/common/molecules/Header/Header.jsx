@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator, toTimeString, capitalize, navigateToNestedRoute } from '@tcp/core/src/utils';
+import {
+  getLocator,
+  toTimeString,
+  capitalize,
+  navigateToNestedRoute,
+  getLabelValue,
+} from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
@@ -100,7 +106,7 @@ class Header extends React.PureComponent<Props> {
     navigation.navigate({
       routeName: 'StoreLanding',
       params: {
-        title: labels.lbl_header_storeDefaultTitle.toUpperCase(),
+        title: getLabelValue(labels, 'lbl_header_storeDefaultTitle').toUpperCase(),
       },
     });
     this.setState({
