@@ -33,7 +33,7 @@ export function* applyGiftCard(payloadData) {
       yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: true,
-          excludeCartItems: true,
+          excludeCartItems: false,
           recalcRewards: true,
           isCheckoutFlow: true,
           translation: false,
@@ -57,7 +57,7 @@ export function* removeGiftCardFromOrder(payloadData) {
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
-        excludeCartItems: true,
+        excludeCartItems: false,
         recalcRewards: true,
         isCheckoutFlow: true,
         translation: false,
@@ -79,7 +79,7 @@ export function* addGiftCardFromBilling(payloadData) {
       yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: true,
-          excludeCartItems: true,
+          excludeCartItems: false,
           recalcRewards: true,
           isCheckoutFlow: true,
           translation: false,
