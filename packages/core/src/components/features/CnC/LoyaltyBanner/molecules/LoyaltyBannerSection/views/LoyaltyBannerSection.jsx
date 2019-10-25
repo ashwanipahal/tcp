@@ -76,7 +76,7 @@ const LoyaltyBannerSection = props => {
 
   /* istanbul ignore else */
   if (
-    currentSubtotal > thresholdValue &&
+    estimatedSubtotal > thresholdValue &&
     !isPlcc &&
     !isReviewPage &&
     !isConfirmationPage &&
