@@ -205,7 +205,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -632,7 +632,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -1055,7 +1055,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -1496,7 +1496,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -1919,7 +1919,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -2342,7 +2342,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -2791,7 +2791,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -3228,7 +3228,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -3677,7 +3677,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -4114,7 +4114,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -4551,7 +4551,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -4974,7 +4974,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -5415,7 +5415,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -5856,7 +5856,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
@@ -6323,7 +6323,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               textAlign="left"
             >
               1
-               
+               regular
             </Styled(BodyCopy)>
             <Styled(BodyCopy)
               className="color-fit-size-separator"
