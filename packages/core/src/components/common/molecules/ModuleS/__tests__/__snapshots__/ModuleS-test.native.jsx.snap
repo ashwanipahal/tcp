@@ -20,6 +20,7 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
       height=""
       host="lazyload-home"
       imgConfig="c_crop,g_face:center,q_auto:best,w_375"
+      isSwatchImage={false}
       itemBrand=""
       source=""
       url="https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png"

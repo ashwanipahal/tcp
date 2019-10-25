@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+import { DamImage } from '../../../../../../common/atoms';
 
 const getImageStyle = props => {
   const { selected } = props;
@@ -50,7 +51,7 @@ const ItemSeparatorStyle = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const ImageStyle = styled.Image`
+const ImageStyle = styled(DamImage)`
   ${getImageStyle}
 `;
 const styles = css``;

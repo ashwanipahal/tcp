@@ -10,6 +10,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
       host=""
       imgConfig=""
       isProductImage={true}
+      isSwatchImage={false}
       itemBrand=""
       source=""
       url=""
