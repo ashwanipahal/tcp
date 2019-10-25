@@ -100,6 +100,7 @@ class LoginPageContainer extends React.PureComponent {
       userplccCardId,
       updateHeader,
       navigation,
+      toastMessage,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -134,6 +135,7 @@ class LoginPageContainer extends React.PureComponent {
         userplccCardId={userplccCardId}
         updateHeader={updateHeader}
         navigation={navigation}
+        toastMessage={toastMessage}
       />
     );
   }

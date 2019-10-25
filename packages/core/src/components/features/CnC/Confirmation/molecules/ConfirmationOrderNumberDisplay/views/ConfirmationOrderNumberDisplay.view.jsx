@@ -34,8 +34,8 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
   const bossEndDate = bossMaxDate ? getDateInformation(bossMaxDate) : '';
   const bossDate =
     !!(bossStartDate && bossEndDate) &&
-    `${bossStartDate.day}. ${bossStartDate.month}
-   ${bossStartDate.date} - ${bossEndDate.day}. ${bossEndDate.month} ${bossEndDate.date}`;
+    `${bossStartDate.day}, ${bossStartDate.month}
+   ${bossStartDate.date} - ${bossEndDate.day}, ${bossEndDate.month} ${bossEndDate.date}`;
   const bopisDate = `${labels.bopisDate} ${today.month} ${today.date}`;
   return (
     <div className={className}>

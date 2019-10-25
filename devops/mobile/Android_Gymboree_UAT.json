@@ -1,6 +1,6 @@
 {
   "branch": {
-    "name": "RELEASE-1-RWD"
+    "name": "<BRANCH_NAME>"
   },
   "id": 1,
   "trigger": "manual",
