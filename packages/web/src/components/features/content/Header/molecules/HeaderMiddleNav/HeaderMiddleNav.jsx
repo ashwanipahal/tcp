@@ -103,6 +103,7 @@ class HeaderMiddleNav extends React.PureComponent {
           triggerLoginCreateAccount={triggerLoginCreateAccount}
           onLinkClick={this.onLinkClick}
           openOverlay={openOverlay}
+          isDrawer={false}
         />
       )
     );

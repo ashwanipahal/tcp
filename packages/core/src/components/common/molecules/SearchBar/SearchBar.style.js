@@ -14,9 +14,7 @@ export default css`
       top: 0;
       height: 50px;
     }
-    .search-image{
-      padding: 0 12px;
-    }
+
     .searchbar {
       border-radius: 0;
       background-color: ${props => props.theme.colors.WHITE};
@@ -105,7 +103,6 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .search-image{
-      padding: 0 12px;
       width:25px;
     }
 
@@ -274,7 +271,19 @@ export default css`
       width: 100%;
       height: 40px;
       display: inline-block;
-      position:inherit;
+      position:absolute;
+      right:0;
+      top:0;
+
+      @media ${props => props.theme.mediaQuery.large} {
+        width: 437px;
+        top: 49px;
+        right: 35px;
+      }
+
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 100%;
+      }
 
       ${props =>
         props.fromCondensedHeader
@@ -296,6 +305,8 @@ export default css`
           }
         `
           : ``};
+
+
     }
 
     .searchbar {

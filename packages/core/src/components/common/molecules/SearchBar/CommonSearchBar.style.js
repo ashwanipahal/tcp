@@ -9,7 +9,7 @@ export const commonSearchBarStyles = css`
     background-color: #f2f2f2;
     color: #575757;
     border-color: unset;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   .searchBar-input-wrapper {
@@ -205,6 +205,7 @@ export const mediumOnlyStyles = css`
       color: #575757;
       border-color: unset;
       margin-right: 10px;
+      margin-left: 53px;
     }
 
     .searchBar-input-wrapper {
