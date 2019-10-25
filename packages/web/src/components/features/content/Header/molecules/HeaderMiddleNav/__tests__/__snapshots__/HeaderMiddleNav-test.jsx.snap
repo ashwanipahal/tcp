@@ -106,6 +106,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         />
         <GuestUserInfo
           createAccount="createAccount"
+          isDrawer={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
@@ -287,6 +288,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         />
         <GuestUserInfo
           createAccount="createAccount"
+          isDrawer={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
