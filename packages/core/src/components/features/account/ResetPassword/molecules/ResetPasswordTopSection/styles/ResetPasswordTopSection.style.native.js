@@ -14,11 +14,10 @@ const FloatWrapper = styled.View`
 
 const CustomIconWrapper = styled.TouchableOpacity`
   align-self: center;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const ContainerWrapper = styled.View`
-  margin: 0px ${props => props.theme.spacing.ELEM_SPACING.LRG};
+const PasswordDescriptionWrapper = styled.View`
+  margin: 0px ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-export { CustomIconWrapper, FloatWrapper, ContainerWrapper };
+export { CustomIconWrapper, FloatWrapper, PasswordDescriptionWrapper };

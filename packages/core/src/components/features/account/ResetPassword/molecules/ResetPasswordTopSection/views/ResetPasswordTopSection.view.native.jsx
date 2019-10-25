@@ -9,18 +9,12 @@ import { ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
 import {
   CustomIconWrapper,
   FloatWrapper,
-  ContainerWrapper,
+  PasswordDescriptionWrapper,
 } from '../styles/ResetPasswordTopSection.style.native';
-
-const styles = {
-  newPasswordStyle: {
-    marginTop: 10,
-  },
-};
 
 export const ResetPasswordTopSection = ({ labels, onBackClick }) => {
   return (
-    <ContainerWrapper>
+    <>
       <FloatWrapper>
         <CustomIconWrapper>
           <CustomIcon
@@ -35,7 +29,6 @@ export const ResetPasswordTopSection = ({ labels, onBackClick }) => {
           fontSizeVariation="xlarge"
           anchorVariation="secondary"
           text={getLabelValue(labels, 'lbl_resetPassword_backLogin')}
-          customStyle={styles.newPasswordStyle}
           onPress={onBackClick}
           className="floatLt"
         />
@@ -47,8 +40,10 @@ export const ResetPasswordTopSection = ({ labels, onBackClick }) => {
         fontWeight="black"
         text={getLabelValue(labels, 'lbl_resetPassword_heading')}
       />
-      <PasswordRequirement labels={labels} />
-    </ContainerWrapper>
+      <PasswordDescriptionWrapper>
+        <PasswordRequirement labels={labels} resetPassword />
+      </PasswordDescriptionWrapper>
+    </>
   );
 };
 

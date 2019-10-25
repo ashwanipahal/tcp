@@ -35,6 +35,11 @@ export class ResetPasswordContainer extends PureComponent {
     updateHeader: () => {},
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { hideShowPwd: false, confirmHideShowPwd: false };
+  }
+
   componentDidUpdate() {
     const { successMessage } = this.props;
     if (successMessage) {
@@ -70,6 +75,14 @@ export class ResetPasswordContainer extends PureComponent {
     }
   };
 
+  onPwdHideShowClick = value => {
+    this.setState({ hideShowPwd: value });
+  };
+
+  onConfirmPwdHideShowClick = value => {
+    this.setState({ confirmHideShowPwd: value });
+  };
+
   render() {
     const {
       successMessage,
@@ -81,6 +94,7 @@ export class ResetPasswordContainer extends PureComponent {
       showNewPassword,
       updateHeader,
     } = this.props;
+    const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
       <ResetPasswordComponent
         successMessage={successMessage}
@@ -94,6 +108,10 @@ export class ResetPasswordContainer extends PureComponent {
         showNewPassword={showNewPassword}
         onBackClick={this.onBackClick}
         updateHeader={updateHeader}
+        onPwdHideShowClick={this.onPwdHideShowClick}
+        onConfirmPwdHideShowClick={this.onConfirmPwdHideShowClick}
+        hideShowPwd={hideShowPwd}
+        confirmHideShowPwd={confirmHideShowPwd}
       />
     );
   }
