@@ -77,10 +77,10 @@ const FooterNavLinksList = ({
     let onClick = null;
     if (action === 'track-order' || linkItems.url === '/track-order')
       onClick = e => trackOrderLink(e, dispatchFn);
-    if (action === 'favorites' || linkItems.url === 'www.childrensplace.com/us/favorites')
+    if (action === 'favorites' || linkItems.url === '/favorites')
       onClick = e => loginModalOpenClick(e, dispatchFn);
-    if (action === 'log-out' || linkItems.url === '/home') onClick = e => logout(e, dispatchFn);
-    if (action === 'my-account' || linkItems.url === '/account')
+    if (action === 'log-out' || linkItems.url === '/log-out') onClick = e => logout(e, dispatchFn);
+    if (action === 'login-account' || linkItems.url === '/login-account')
       onClick = e => myAccountLogin(e, dispatchFn);
     onClick = createAccountOnClick(action, linkItems, dispatchFn, onClick);
     return onClick;
@@ -95,8 +95,9 @@ const FooterNavLinksList = ({
 
   const hideLogoutMyActLinkBool = linkItems => {
     return (
-      (isLoggedIn && (linkItems.action === 'my-account' || linkItems.url === '/account')) ||
-      (!isLoggedIn && (linkItems.action === 'log-out' || linkItems.url === '/home')) ||
+      (isLoggedIn &&
+        (linkItems.action === 'login-account' || linkItems.url === '/login-account')) ||
+      (!isLoggedIn && (linkItems.action === 'log-out' || linkItems.url === '/log-out')) ||
       (isLoggedIn && (linkItems.action === 'create-account' || linkItems.url === '/create-account'))
     );
   };
@@ -104,13 +105,13 @@ const FooterNavLinksList = ({
   const createNavListItem = (linkItems, index) => {
     const linkAction = linkItems.action;
     let dispatchFn = null;
-    if (linkAction) {
+    if (linkConfig[linkAction]) {
       dispatchFn = linkConfig[linkAction];
-    } else if (linkItems.url) {
+    } else {
       dispatchFn = linkConfig[linkItems.url];
     }
     /*
-      hideLogoutMyActLink - true - if linkAction is my-account and user is logged in.
+      hideLogoutMyActLink - true - if linkAction is login and user is logged in.
       hideLogoutMyActLink - true - if linkAction is log-out and user is  not logged in.
        hideLogoutMyActLink - false - other wise false, to show the other links.
       This condition is to satisfy the use case, to toggle between My Account and logout
@@ -177,7 +178,8 @@ FooterNavLinksList.propTypes = {
     'track-order': PropTypes.func,
     favorites: PropTypes.func,
     'log-out': PropTypes.func,
-    'my-account': PropTypes.func,
+    'login-account': PropTypes.func,
+    'create-account': PropTypes.func,
   }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
 };
