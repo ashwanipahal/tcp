@@ -4,7 +4,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
 <Fragment>
   <Styled(Anchor)
     anchorVariation="primary"
-    className=""
+    className="create-account-header-label"
     fontSizeVariation="large"
     href="#"
     id="createAccount"
@@ -15,7 +15,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
   </Styled(Anchor)>
   <Styled(Anchor)
     anchorVariation="primary"
-    className="rightLink"
+    className="rightLink login-header-label"
     fontSizeVariation="large"
     href="#"
     id="login"
@@ -24,6 +24,12 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
   >
     Login
   </Styled(Anchor)>
+  <Styled(Image)
+    alt="user"
+    className="usericon"
+    onClick={[Function]}
+    src="/static/images/user-icon.png"
+  />
 </Fragment>
 `;
 
@@ -31,7 +37,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
 <Fragment>
   <Styled(Anchor)
     anchorVariation="primary"
-    className=""
+    className="create-account-header-label"
     fontSizeVariation="large"
     href="#"
     id="createAccount"
@@ -42,7 +48,7 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
   </Styled(Anchor)>
   <Styled(Anchor)
     anchorVariation="primary"
-    className="rightLink"
+    className="rightLink login-header-label"
     fontSizeVariation="large"
     href="#"
     id="login"
@@ -51,5 +57,11 @@ exports[`GuestUserInfo component GuestUserInfo component renders correctly to ma
   >
     Login
   </Styled(Anchor)>
+  <Styled(Image)
+    alt="user"
+    className="usericon"
+    onClick={[Function]}
+    src="/static/images/user-icon.png"
+  />
 </Fragment>
 `;
