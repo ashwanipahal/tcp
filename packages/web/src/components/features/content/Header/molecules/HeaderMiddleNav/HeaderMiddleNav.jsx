@@ -100,6 +100,7 @@ class HeaderMiddleNav extends React.PureComponent {
           triggerLoginCreateAccount={triggerLoginCreateAccount}
           onLinkClick={this.onLinkClick}
           openOverlay={openOverlay}
+          isDrawer={false}
         />
       )
     );
@@ -241,7 +242,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 </Modal>
               ) : (
                 <SearchBar
-                  className={!isSearchOpen}
+                  className={!isSearchOpen && 'leftLink'}
                   setSearchState={this.setSearchState}
                   isSearchOpen={isSearchOpen}
                   onCloseClick={this.onCloseClick}

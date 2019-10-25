@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor } from '@tcp/core/src/components/common/atoms';
+import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const GuestUserInfo = ({
   createAccount,
@@ -9,6 +10,7 @@ const GuestUserInfo = ({
   triggerLoginCreateAccount,
   onLinkClick,
   userNameClick,
+  isDrawer,
 }) => {
   return (
     <React.Fragment>
@@ -16,7 +18,7 @@ const GuestUserInfo = ({
         href="#"
         noLink
         id={createAccount}
-        className=""
+        className="create-account-header-label"
         onClick={e =>
           onLinkClick({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, createAccount)
         }
@@ -29,7 +31,7 @@ const GuestUserInfo = ({
         href="#"
         noLink
         id={login}
-        className="rightLink"
+        className="rightLink login-header-label"
         onClick={e =>
           onLinkClick({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, login)
         }
@@ -38,6 +40,17 @@ const GuestUserInfo = ({
       >
         Login
       </Anchor>
+
+      {!isDrawer ? (
+        <Image
+          alt="user"
+          className="usericon"
+          src={getIconPath('user-icon')}
+          onClick={e =>
+            onLinkClick({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, login)
+          }
+        />
+      ) : null}
     </React.Fragment>
   );
 };
@@ -49,5 +62,6 @@ GuestUserInfo.propTypes = {
   userNameClick: PropTypes.bool.isRequired,
   onLinkClick: PropTypes.func.isRequired,
   triggerLoginCreateAccount: PropTypes.bool.isRequired,
+  isDrawer: PropTypes.bool.isRequired,
 };
 export default GuestUserInfo;
