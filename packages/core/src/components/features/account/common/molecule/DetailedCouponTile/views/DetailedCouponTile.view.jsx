@@ -262,6 +262,7 @@ export class DetailedCouponTile extends React.Component {
                   disabled={isApplyButtonDisabled}
                   onClick={this.handleApplyToBag}
                   data-locator="myrewards-applytobagbtn"
+                  className="applybag-btn"
                 >
                   {addToBagCTALabel}
                 </Button>
