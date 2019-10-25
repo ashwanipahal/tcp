@@ -24,8 +24,8 @@ export function* logoutSaga() {
         setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
         if (
-          window.location.href.indexOf('account') > 0 ||
-          window.location.href.indexOf('checkout/confirmation') > 0
+          window.location.href.includes('account') ||
+          window.location.href.includes('checkout/confirmation')
         ) {
           routerPush('/', '/home');
           scrollPage();
