@@ -76,6 +76,9 @@ const styles = css`
       width: 100%;
     }
   }
+  .applybag-btn {
+    padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  }
 `;
 
 export default styles;
