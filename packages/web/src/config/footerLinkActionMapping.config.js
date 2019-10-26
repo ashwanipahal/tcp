@@ -7,7 +7,10 @@ export const footerLinksActionMappingConfig = {
   'track-order': setTrackOrderModalMountedState,
   favorites: setLoginModalMountedState,
   'log-out': logout,
-  'my-account': openOverlayModal,
+  'login-account': openOverlayModal,
+  '/login-account': openOverlayModal,
+  'create-account': openOverlayModal,
+  '/create-account': openOverlayModal,
 };
 
 export default footerLinksActionMappingConfig;
