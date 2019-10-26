@@ -77,7 +77,7 @@ const style = css`
     }
   }
   .user-name {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
     text-align: left;
     &:hover {
       color: ${props => props.theme.colorPalette.blue[500]};
