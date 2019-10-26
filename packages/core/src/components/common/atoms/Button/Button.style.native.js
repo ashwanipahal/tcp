@@ -288,7 +288,7 @@ const CustomStyleText = styled(StyledText)`
     props.buttonVariation === 'cautionary'
       ? `
    color: ${props.theme.colorPalette.secondary.dark};
-   font-weight: 800;
+   font-weight: ${props.theme.typography.fontWeights.extrabold};
    `
       : ''};
 

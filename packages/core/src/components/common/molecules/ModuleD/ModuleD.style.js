@@ -8,8 +8,6 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 11px 0;
-    }
-    @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
     }
 

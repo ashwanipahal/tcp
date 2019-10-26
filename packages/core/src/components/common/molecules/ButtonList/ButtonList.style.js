@@ -275,7 +275,7 @@ export default css`
     }
     .stacked-cta-wrapper-class {
       font-size: 14px;
-      color: ${props => props.theme.colorPalette.gray['900']};
+      color: ${props => props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].TEXT};
     }
 
     &.stacked-button-list-wrapper .stacked-button,

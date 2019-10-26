@@ -93,6 +93,6 @@ export default css`
     }
   }
   .ModuleN_Button .link-button-wrapper-class {
-    border-bottom-color: #fff;
+    border-bottom-color: ${props => props.theme.colorPalette.white};
   }
 `;

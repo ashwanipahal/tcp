@@ -46,6 +46,12 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
   );
 };
 
+const renderLoyaltyBanner = pageCategory => {
+  return (
+    !isCanada() && pageCategory !== 'confirmation' && <LoyaltyBanner pageCategory={pageCategory} />
+  );
+};
+
 const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
   const {
     itemsCount,
@@ -348,7 +354,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             </Col>
           </Row>
         ) : null}
-        {!isCanada() && <LoyaltyBanner pageCategory={pageCategory} />}
+        {renderLoyaltyBanner(pageCategory)}
       </Grid>
       <RenderPerf.Measure name={PRICING_VISIBLE} />
     </React.Fragment>
