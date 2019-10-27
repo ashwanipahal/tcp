@@ -9,4 +9,4 @@ import { name as appName } from './app.json';
 AppRegistry.registerComponent(appName, () => MobileApp);
 
 // eslint-disable-next-line
-console.disableYellowBox = false;
+console.disableYellowBox = true;

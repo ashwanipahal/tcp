@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android --tasks installTcpDebug ",
+    "android:release": "react-native run-android --tasks installTcpRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "lint": "eslint .",
     "test": "jest --config ../../config/jest.config.native.js",
     "run:ios": "react-native run-ios",
     "run:android": "react-native run-android",
-    "cp": "code-push deployment ls"
+    "cp": "code-push deployment ls",
+    "postinstall": "npx jetify"
   },
   "dependencies": {
     "@fabulas/astly": "^0.0.12",
@@ -90,6 +92,7 @@
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.8.0",
     "jest": "^24.9.0",
+    "jetifier": "^1.6.4",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-native-monorepo-helper": "^0.2.6",
     "react-test-renderer": "16.9.0",

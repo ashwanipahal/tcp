@@ -1,35 +1,24 @@
 package com.mobileapp;
 
 import android.app.Application;
+
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-// import fr.greweb.reactnativeviewshot.RNViewShotPackage;
-// import com.oblador.vectoricons.VectorIconsPackage;
-// import com.goldenowl.twittersignin.TwitterSigninPackage;
-// import com.rnfingerprint.FingerprintAuthPackage;
-// import com.christopherdro.RNPrint.RNPrintPackage;
-// import com.oblador.keychain.KeychainPackage;
-// import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
-// import com.facebook.reactnative.androidsdk.FBSDKPackage;
-// import com.dylanvann.fastimage.FastImageViewPackage;
-// import com.learnium.RNDeviceInfo.RNDeviceInfo;
-// import com.psykar.cookiemanager.CookieManagerPackage;
-// import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-// import com.cardio.RNCardIOPackage;
-// import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
-// import com.microsoft.appcenter.reactnative.analytics.AppCenterReactNativeAnalyticsPackage;
-// import com.microsoft.appcenter.reactnative.appcenter.AppCenterReactNativePackage;
-// import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
-import com.microsoft.codepush.react.ReactInstanceHolder;
-
-import com.microsoft.codepush.react.CodePush;
-// import com.reactnativecommunity.webview.RNCWebViewPackage;
-// import com.reactnativecommunity.netinfo.NetInfoPackage;
+import com.facebook.soloader.SoLoader;
+import com.facebook.react.shell.MainReactPackage;
+import com.facebook.react.ReactInstanceManager;
 
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.soloader.SoLoader;
+
+import com.microsoft.codepush.react.CodePush;
+import com.microsoft.codepush.react.ReactInstanceHolder;
+
+
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -37,28 +26,38 @@ import java.util.List;
 
 
 
-
 public class MainApplication extends Application implements ReactApplication {
 
-  private final ReactNativeHost mReactNativeHost =
-      new ReactNativeHost(this) {
+  private ReactInstanceHolder instanceHolder = new ReactInstanceHolder() {
     @Override
-    protected String getJSBundleFile(){
-      return CodePush.getJSBundleFile();
+    public ReactInstanceManager getReactInstanceManager() {
+      return mReactNativeHost.getReactInstanceManager();
     }
+  };
 
-        @Override
-        public boolean getUseDeveloperSupport() {
-          return BuildConfig.DEBUG;
-        }
+
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+   
+
+    
+      @Override
+      protected String getJSBundleFile(){
+        return CodePush.getJSBundleFile();
+      }
+
+      @Override
+      public boolean getUseDeveloperSupport() {
+        return BuildConfig.DEBUG;
+      }
        
-
         @Override
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example
-          packages.add(new CodePush("spClHqj4L07OjWqQEy1iPmC4RMZ5SkveJ0SIQQ", getApplicationContext(), BuildConfig.DEBUG));
+          packages.add(new FBSDKPackage());
+          packages.add(new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), MainApplication.this, BuildConfig.DEBUG));
           return packages;
         }
 
@@ -75,7 +74,7 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-
+    CodePush.setReactInstanceHolder(instanceHolder);
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     // initializeFlipper(this); // Remove this line if you don't want Flipper enabled
