@@ -80,7 +80,7 @@ const LoyaltyBannerSection = props => {
     !isPlcc &&
     !isReviewPage &&
     !isConfirmationPage &&
-    estimatedSubtotal
+    !isAddedToBagPage
   ) {
     showSubtotal = true;
   }
