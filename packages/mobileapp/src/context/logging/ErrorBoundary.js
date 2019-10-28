@@ -11,7 +11,8 @@ export class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // log the error to an error reporting service
+    const { logger } = this.props;
+    logger.report({ error });
     console.log('ERROR', error, errorInfo);
   }
 
@@ -34,6 +35,5 @@ export class ErrorBoundary extends React.Component {
 
 export default props => {
   const error = useErrorReporter();
-  console.log(error);
-  return <ErrorBoundary>{props.children}</ErrorBoundary>;
+  return <ErrorBoundary logger={error}>{props.children}</ErrorBoundary>;
 };

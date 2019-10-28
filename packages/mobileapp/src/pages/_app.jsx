@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
 import { Box } from '@fabulas/astly';
 import { Provider } from 'react-redux';
-
+import codePush from 'react-native-code-push';
 import { PropTypes } from 'prop-types';
 import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.native';
 import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tcp/core/src/utils';
