@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android --tasks installTcpDebug ",
-    "android:release": "react-native run-android --tasks installTcpRelease",
+    "android:release": "react-native run-android --tasks assembleTcpRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "lint": "eslint .",

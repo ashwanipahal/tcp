@@ -15,8 +15,7 @@ import com.facebook.soloader.SoLoader;
 import com.microsoft.codepush.react.CodePush;
 
 public class MainActivity extends ReactActivity {
-    private ReactRootView mReactRootView;
-    private ReactInstanceManager mReactInstanceManager;
+   
 
     /**
      * Returns the name of the main component registered from JavaScript.

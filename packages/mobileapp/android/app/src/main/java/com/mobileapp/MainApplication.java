@@ -56,7 +56,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example
-          packages.add(new FBSDKPackage());
+          // packages.add(new FBSDKPackage());
           packages.add(new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), MainApplication.this, BuildConfig.DEBUG));
           return packages;
         }
@@ -74,7 +74,7 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-    CodePush.setReactInstanceHolder(instanceHolder);
+//    CodePush.setReactInstanceHolder(instanceHolder);
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     // initializeFlipper(this); // Remove this line if you don't want Flipper enabled
