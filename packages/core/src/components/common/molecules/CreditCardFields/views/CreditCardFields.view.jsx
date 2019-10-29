@@ -121,6 +121,7 @@ export const CreditCardFields = ({
                 dataLocator="cvvTxtBox"
                 maxLength="4"
                 enableSuccessCheck={false}
+                autocomplete="off"
               />
               <Field name="cardType" id="cardType" component={TextBox} type="hidden" />
               <span className="cvv-icon">{cvvInfo}</span>
