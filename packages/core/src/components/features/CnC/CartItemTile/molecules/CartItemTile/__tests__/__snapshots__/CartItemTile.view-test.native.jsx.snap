@@ -269,23 +269,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -679,23 +666,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -1073,23 +1047,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -1463,23 +1424,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -1837,23 +1785,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -2212,23 +2147,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -2600,23 +2522,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -2919,23 +2828,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -3307,23 +3203,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -3626,23 +3509,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -4001,23 +3871,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -4396,23 +4253,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -4806,23 +4650,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -5216,23 +5047,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>
@@ -5619,23 +5437,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               }
               margin={null}
               numberOfLines={null}
-              text="undefined123"
+              text="undefinedNaN"
               textAlign="left"
               textDecoration={null}
             />
-            <Styled(View)>
-              <Styled(BodyCopy)
-                accessibilityText=""
-                color="gray.800"
-                dataLocator=""
-                fontFamily="secondary"
-                fontSize="fs13"
-                margin={null}
-                numberOfLines={null}
-                text="undefinedundefined"
-                textDecoration={null}
-              />
-            </Styled(View)>
           </Styled(View)>
           <Styled(View)>
             <Styled(View)>

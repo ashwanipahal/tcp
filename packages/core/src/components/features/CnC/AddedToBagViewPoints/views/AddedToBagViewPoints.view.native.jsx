@@ -11,13 +11,14 @@ type Props = {
   pointsSummary: Object,
   labels: Object,
   currencySymbol: String,
+  isUserLoggedIn: boolean,
 };
 
 const getModifiedString = (labels, totalItems) => {
   return `${labels.bagSubTotal.replace('#items', `${totalItems}`)}`;
 };
 
-const AddedToBagViewPoints = ({ pointsSummary, labels, currencySymbol }: Props) => {
+const AddedToBagViewPoints = ({ pointsSummary, labels, currencySymbol, isUserLoggedIn }: Props) => {
   const {
     itemPrice,
     itemPoints,
@@ -41,7 +42,7 @@ const AddedToBagViewPoints = ({ pointsSummary, labels, currencySymbol }: Props) 
           fontWeight="extrabold"
           fontFamily="secondary"
           fontSize="fs13"
-          text={labels.pointsYouCanEarn}
+          text={isUserLoggedIn ? labels.MPRPoints : labels.pointsYouCanEarn}
         />
         <BodyCopy
           color="orange.500"

@@ -8,6 +8,8 @@ import {
   enableBodyScroll,
   disableBodyScroll,
 } from '@tcp/core/src/utils';
+import { Row } from '@tcp/core/src/components/common/atoms';
+import AccountInfoSection from '../../../Header/molecules/AccountInfoSection/AccountInfoSection';
 import style from './Drawer.style';
 
 /**
@@ -85,6 +87,14 @@ class Drawer extends React.Component {
     }
   };
 
+  handleUserName = userName => {
+    return userName.length <= 15 ? userName : userName.substring(0, 15).concat('...');
+  };
+
+  handleUserRewards = userRewards => {
+    return userRewards % 1 ? userRewards : Math.floor(userRewards);
+  };
+
   /* Style for drawer to make it scrollable within */
   getDrawerStyle = () => {
     if (window) {
@@ -92,6 +102,8 @@ class Drawer extends React.Component {
       const headerTopNav = document.getElementsByClassName('header-topnav')[0];
       const middleNav = document.getElementsByClassName('header-middle-nav')[0];
       const condensedHeader = document.getElementById('condensedHeader');
+      const userInfo = document.getElementById('sideNavUserInfo');
+      const userInfoHeight = userInfo ? userInfo.getBoundingClientRect().height : null;
       const wHeight = window.innerHeight;
       const {
         values: { lg },
@@ -109,11 +121,11 @@ class Drawer extends React.Component {
         if (condensedHeader) {
           headerHeight = condensedHeader.getBoundingClientRect().height;
         }
-
-        drawer.style.height = `${wHeight - headerHeight}px`;
+        userInfo.style.top = `${headerHeight}px`;
+        drawer.style.height = `${wHeight - (headerHeight + userInfoHeight)}px`;
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
-        drawer.style.top = `${headerHeight}px`;
+        drawer.style.top = `${headerHeight + userInfoHeight}px`;
         disableBodyScroll();
       }
     }
@@ -123,6 +135,13 @@ class Drawer extends React.Component {
     const {
       children,
       className,
+      userName,
+      userPoints,
+      userRewards,
+      userNameClick,
+      onLinkClick,
+      triggerLoginCreateAccount,
+      openOverlay,
       small,
       medium,
       large,
@@ -162,6 +181,17 @@ class Drawer extends React.Component {
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
             >
+              <Row>
+                <AccountInfoSection
+                  userName={userName}
+                  userPoints={userPoints}
+                  userRewards={userRewards}
+                  openOverlay={openOverlay}
+                  userNameClick={userNameClick}
+                  onLinkClick={onLinkClick}
+                  triggerLoginCreateAccount={triggerLoginCreateAccount}
+                />
+              </Row>
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
                 {renderDrawerFooter(hideNavigationFooter, drawerFooter)}
@@ -187,6 +217,13 @@ Drawer.propTypes = {
   drawerFooter: PropTypes.element,
   hideNavigationFooter: PropTypes.bool,
   showCondensedHeader: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
+  userNameClick: PropTypes.bool.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+  triggerLoginCreateAccount: PropTypes.bool.isRequired,
+  openOverlay: PropTypes.func.isRequired,
 };
 
 Drawer.defaultProps = {

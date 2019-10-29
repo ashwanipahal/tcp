@@ -15,6 +15,8 @@ import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
 import style, { customHeaderStyle } from './HeaderMiddleNav.style';
 import StoreLocatorLink from '../StoreLocatorLink';
+import LoggedInUserInfo from '../LoggedInUserInfo/view/LoggedInUserInfo';
+import GuestUserInfo from '../GuestUserInfo/view/GuestUserInfo';
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -63,17 +65,47 @@ class HeaderMiddleNav extends React.PureComponent {
     return null;
   }
 
-  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }) => {
-    e.preventDefault();
+  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
+    e.stopPropagation();
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
-        component: e.target.id,
+        component: componentToOpen,
         variation: 'primary',
       });
     }
-    this.setState({
-      userNameClick: triggerLoginCreateAccount && userNameClick ? userNameClick : !userNameClick,
-    });
+  };
+
+  handleUserTypeColor = isUserPlcc => {
+    return isUserPlcc ? 'blue.500' : 'orange.800';
+  };
+
+  renderAccountInfoSection = (userName, openOverlay, isUserPlcc, userPoints, userRewards) => {
+    const { userNameClick, triggerLoginCreateAccount, isSearchOpen } = this.state;
+    const { isOpenOverlay } = this.props;
+    return userName && !isSearchOpen ? (
+      <LoggedInUserInfo
+        mainId="accountDrawer"
+        userName={userName}
+        userPoints={userPoints}
+        userRewards={userRewards}
+        userNameClick={userNameClick}
+        openOverlay={openOverlay}
+        isOpenOverlay={isOpenOverlay}
+        onLinkClick={this.onLinkClick}
+        isDrawer={false}
+      />
+    ) : (
+      !isSearchOpen && (
+        <GuestUserInfo
+          createAccount="createAccount"
+          login="login"
+          triggerLoginCreateAccount={triggerLoginCreateAccount}
+          onLinkClick={this.onLinkClick}
+          openOverlay={openOverlay}
+          isDrawer={false}
+        />
+      )
+    );
   };
 
   handleKeyDown = (event, openNavigationDrawer, closeNavigationDrawer, isNavigationDrawerOpen) => {
@@ -107,18 +139,16 @@ class HeaderMiddleNav extends React.PureComponent {
       closeNavigationDrawer,
       navigationDrawer,
       openOverlay,
+      isUserPlcc,
       userName,
+      userPoints,
+      userRewards,
       store,
       labels,
     } = this.props;
+    const { userNameClick, triggerLoginCreateAccount } = this.state;
     const brand = getBrand();
-    const {
-      userNameClick,
-      triggerLoginCreateAccount,
-      cartItemCount,
-      isSearchOpen,
-      isFullSizeSearchModalOpen,
-    } = this.state;
+    const { cartItemCount, isSearchOpen, isFullSizeSearchModalOpen } = this.state;
     const {
       accessibility: { cartIconButton, closeIconButton, hamburgerMenu } = {},
       store: storeLabel = {},
@@ -188,45 +218,6 @@ class HeaderMiddleNav extends React.PureComponent {
               }}
               className={`textRight header-middle-login-section ${isSearchOpen && 'flexbox'}`}
             >
-              {userName ? (
-                <React.Fragment>
-                  <BodyCopy
-                    id="accountDrawer"
-                    textAlign="right"
-                    className="username"
-                    onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
-                  >
-                    {`Hi, ${userName}`}
-                  </BodyCopy>
-                </React.Fragment>
-              ) : (
-                !isSearchOpen && (
-                  <React.Fragment>
-                    <Anchor
-                      href="#"
-                      noLink
-                      id="createAccount"
-                      className="leftLink"
-                      onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                      fontSizeVariation="large"
-                      anchorVariation="primary"
-                    >
-                      Create Account
-                    </Anchor>
-                    <Anchor
-                      href="#"
-                      noLink
-                      id="login"
-                      className="rightLink"
-                      onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
-                      fontSizeVariation="large"
-                      anchorVariation="primary"
-                    >
-                      Login
-                    </Anchor>
-                  </React.Fragment>
-                )
-              )}
               {isFullSizeSearchModalOpen ? (
                 <Modal
                   isOpen={isFullSizeSearchModalOpen}
@@ -253,7 +244,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 </Modal>
               ) : (
                 <SearchBar
-                  className={!isSearchOpen && 'rightLink'}
+                  className={!isSearchOpen && 'leftLink'}
                   setSearchState={this.setSearchState}
                   isSearchOpen={isSearchOpen}
                   onCloseClick={this.onCloseClick}
@@ -261,11 +252,18 @@ class HeaderMiddleNav extends React.PureComponent {
                 />
               )}
 
+              {this.renderAccountInfoSection(
+                userName,
+                openOverlay,
+                isUserPlcc,
+                userPoints,
+                userRewards
+              )}
               <Anchor
                 to=""
                 id="cartIcon"
                 aria-label={`${cartIconButton} ${cartItemCount} item`}
-                className="rightLink"
+                className=""
                 onClick={e => this.openMiniBag(e)}
                 fontSizeVariation="large"
                 anchorVariation="primary"
@@ -311,6 +309,12 @@ class HeaderMiddleNav extends React.PureComponent {
               openNavigationDrawer={navigationDrawer.open}
               closeNavigationDrawer={!navigationDrawer.open}
               closeNav={closeNavigationDrawer}
+              userName={userName}
+              userPoints={userPoints}
+              userRewards={userRewards}
+              userNameClick={userNameClick}
+              onLinkClick={this.onLinkClick}
+              triggerLoginCreateAccount={triggerLoginCreateAccount}
             />
           </Col>
         </Row>
@@ -325,8 +329,12 @@ HeaderMiddleNav.propTypes = {
   navigationDrawer: PropTypes.shape({}),
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  isUserPlcc: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   openMiniBagDispatch: PropTypes.func.isRequired,

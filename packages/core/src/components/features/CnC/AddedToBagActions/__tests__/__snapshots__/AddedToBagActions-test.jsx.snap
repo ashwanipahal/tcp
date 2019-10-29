@@ -4,7 +4,9 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
 <div
   className="checkout"
 >
-  <Styled(Row)>
+  <Styled(Row)
+    className="view-bag-container"
+  >
     <Styled(Col)
       colSize={
         Object {

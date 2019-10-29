@@ -70,11 +70,20 @@ exports[`Create Account component should renders correctly 1`] = `
       <span>
         Create a
       </span>
-      <span
-        className="my-place-rewards"
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.700"
+        component="span"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
         My Place Rewards
-      </span>
+      </Styled(BodyCopy)>
       <span>
         account to earn
       </span>
@@ -95,7 +104,7 @@ exports[`Create Account component should renders correctly 1`] = `
     points on every purchase
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="my-place-rewards"
+    className="my-place-rewards elem-pb-MED"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -150,13 +159,6 @@ exports[`Create Account component should renders correctly 1`] = `
         link={null}
         textAlign="center"
       >
-        <Styled(Anchor)
-          className="reset-password"
-          onClick={[Function]}
-          underline={true}
-        >
-          lbl_createAccount_clickhere
-        </Styled(Anchor)>
         lbl_createAccount_resetPassword
       </Styled(BodyCopy)>
     </Styled(BodyCopy)>

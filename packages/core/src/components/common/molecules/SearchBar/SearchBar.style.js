@@ -1,126 +1,16 @@
 import { css } from 'styled-components';
-import { commonSearchBarStyles, commonStyles } from './CommonSearchBar.style';
+import { commonSearchBarStyles, commonStyles, mediumOnlyStyles } from './CommonSearchBar.style';
 
 export default css`
 
+
   ${commonSearchBarStyles}
   ${commonStyles}
-
-  @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .searchWrapper {
-      position: absolute;
-      top: 0;
-      left:0;
-      height:50px;
-      ${props =>
-        props.fromCondensedHeader
-          ? `
-          position: fixed;
-          width: 100%;
-          left: 0;
-          top: 0;
-
-          @media ${props.theme.mediaQuery.large} {
-            width: 100%;
-          }
-
-          @media ${props.theme.mediaQuery.large} {
-            width: 31.8%;
-            left: 0;
-            top: 0;
-          }
-        `
-          : ``};
-    }
-
-    .searchbar {
-      border-radius: 0;
-      background-color: ${props => props.theme.colors.WHITE};
-      height:50px;
-    }
-
-    .searchbar input {
-      width: 122px;
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
-      padding-right: 172px;
-      background-color: ${props => props.theme.colors.WHITE};
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    }
-
-    .searchbar .icon-small {
-      vertical-align: middle;
-      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
-      cursor: pointer;
-      padding-left:35px;
-    }
-
-    .close-image-toggle {
-      display: inline-block;
-    }
-
-    .search-mobile-image {
-      display: none;
-      height: 19px;
-      width: 19px;
-      padding-left:35px;
-    }
-
-    .search-image-typeAhead {
-      display: inline-block;
-    }
-
-    .cancel-search-label {
-      display: none;
-      font-size: ${props => props.theme.typography.fontSizes.fs13};
-    }
-
-    .close-mobile-image-toggle {
-      display: none;
-    }
-
-    .close-image-mobile {
-      display: inline-block;
-    }
-
-    .trendingBox .trendingBoxHead,
-    .recentBox .recentBoxHead,
-    .matchLinkBox .matchLinkBoxHead,
-    .matchProductBox .matchProductHead {
-      height: 52px;
-      background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
-      line-height: 52px;
-      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
-      padding-left:35px;
-    }
-
-    .recentBox .recentBoxBody {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-        ${props => props.theme.spacing.ELEM_SPACING.XXL}
-        ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    }
-
-    .matchLinkBox .matchLinkBoxBody {
-      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-        ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    }
-
-    .search-close-icon-wrapper{
-      padding-left :251px;
-    }
-
-    .cancel-search-label-wrapper {
-      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-    }
-    .li.productBox{
-      height: 152px;
-      width: 152px;
-    }
-  }
+  ${mediumOnlyStyles}
 
   @media ${props => props.theme.mediaQuery.medium} {
 
     .searchWrapper {
-      position: absolute;
       top: 0;
       height: 50px;
     }
@@ -212,6 +102,53 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
+    .search-image{
+      width:25px;
+    }
+
+    .search-input-wrapper{
+      display: inline-block;
+      width: 202px;
+      height: 30px;
+      border-radius: 20px;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      color: #575757;
+      border-color: unset;
+      margin-right: 10px;
+    }
+
+    .searchBar-input-wrapper{
+      display: inline-block;
+      line-height: 30px;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      border-radius: 20px;
+      width: 100%;
+      position: relative;
+
+    }
+    .searchBar-input-form{
+      padding-left: 14px;
+      padding-right: 0px;
+    }
+
+    .searchBar-input{
+
+      width: 172px;
+      height: 30px;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      border: none;
+      outline: none;
+      font-size: 12px;
+      color: #575757;
+    }
+
+    .searchBar-image-typeAhead {
+      height: 15px;
+      width: 15px;
+      position: absolute;
+      top: 8px;
+      right: 5px;
+    }
 
     .searchWrapper {
       position: absolute;
@@ -334,6 +271,19 @@ export default css`
       width: 100%;
       height: 40px;
       display: inline-block;
+      position:absolute;
+      right:0;
+      top:0;
+
+      @media ${props => props.theme.mediaQuery.large} {
+        width: 437px;
+        top: 49px;
+        right: 35px;
+      }
+
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 100%;
+      }
 
       ${props =>
         props.fromCondensedHeader
@@ -355,6 +305,8 @@ export default css`
           }
         `
           : ``};
+
+
     }
 
     .searchbar {

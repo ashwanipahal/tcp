@@ -165,7 +165,11 @@ function* loadShipmentMethods(miniAddress, throwError) {
 }
 
 function* loadCartAndCheckoutDetails(...params) {
-  const [recalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
+  const [recalcRewards, excludeItems, translation, updateSmsInfo] = params;
+  let excludeCartItems = excludeItems;
+  if (isMobileApp()) {
+    excludeCartItems = false;
+  }
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
       isRecalculateTaxes: false,
@@ -230,7 +234,6 @@ function* initCheckoutSectionData({
   payload: { recalc, pageName, isPaypalPostBack, initialLoad },
 }) {
   const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
-  const isMobile = isMobileApp();
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
     yield call(initShippingData, pageName, initialLoad, pendingPromises);
@@ -240,7 +243,7 @@ function* initCheckoutSectionData({
       put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: false,
-          excludeCartItems: !isMobile,
+          excludeCartItems: false,
           recalcRewards: recalc,
           updateSmsInfo: false,
           translation: false,

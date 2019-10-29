@@ -5,7 +5,12 @@ import AddedToBagActions from '../../AddedToBagActions';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
-import styles, { modalStyles } from '../styles/AddedToBag.style';
+import styles, {
+  modalStyles,
+  productInfoStyles,
+  pointsInfoStyles,
+  buttonActionStyles,
+} from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
 import Anchor from '../../../../common/atoms/Anchor';
@@ -52,13 +57,23 @@ const AddedToBag = ({
       innerContentClassName="atb-innerContent"
     >
       <div className="addedToBagWrapper">
-        <ProductInformationView data={addedToBagData} labels={labels} quantity={quantity} />
-        <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
+        <ProductInformationView
+          data={addedToBagData}
+          labels={labels}
+          quantity={quantity}
+          inheritedStyles={productInfoStyles}
+        />
+        <AddedToBagViewPoints
+          labels={labels}
+          className="added-to-bag-points"
+          inheritedStyles={pointsInfoStyles}
+        />
         <AddedToBagActions
           labels={labels}
           handleCartCheckout={handleCartCheckout}
           showVenmo={false}
           containerId="paypal-button-container-added-to-bag"
+          inheritedStyles={buttonActionStyles}
         />
         {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
         {!isInternationalShipping && <BossBannerView labels={labels} />}

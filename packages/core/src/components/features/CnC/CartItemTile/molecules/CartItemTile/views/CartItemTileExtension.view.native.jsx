@@ -12,6 +12,9 @@ import {
   HeartIcon,
   ProductName,
   ProductListPriceOnReview,
+  IconTextMoveToBag,
+  IconHeight,
+  IconWidth,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
@@ -388,6 +391,27 @@ const onSwipeComplete = (props, swipe) => {
   setSwipedElement(swipe);
 };
 
+const renderImage = ({ icon, dataLocator, iconText }) => {
+  return (
+    <>
+      <Image data-locator={dataLocator} source={icon} height={IconHeight} width={IconWidth} />
+      <IconTextMoveToBag>{iconText}</IconTextMoveToBag>
+    </>
+  );
+};
+
+renderImage.propTypes = {
+  icon: PropTypes.string,
+  dataLocator: PropTypes.string,
+  iconText: PropTypes.string,
+};
+
+renderImage.defaultProps = {
+  icon: '',
+  dataLocator: '',
+  iconText: '',
+};
+
 export default {
   CartItemImageWrapper,
   heartIcon,
@@ -402,4 +426,5 @@ export default {
   callEditMethod,
   handleEditCartItemWithStore,
   onSwipeComplete,
+  renderImage,
 };

@@ -6,9 +6,18 @@ const styles = css`
     display: flex;
     justify-content: center;
     align-items: baseline;
+    width: 210px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 245px;
+    }
+    margin: 0 auto;
+    position: relative;
   }
   .confirmation-fullfillment-details {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    position: absolute;
+    right: -34px;
+    top: 5px;
   }
   .confirmation-fullfillment-store {
     font-size: ${props => props.theme.typography.fontSizes.fs22};

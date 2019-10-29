@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PickUpSkUSectionContainer = styled.View`
-  margin: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0;
+  margin: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 14px;
 `;
 
 const ImageWrapper = styled.View`
