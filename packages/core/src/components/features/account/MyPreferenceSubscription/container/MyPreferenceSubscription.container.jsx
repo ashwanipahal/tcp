@@ -16,6 +16,7 @@ import MyPreferenceAppSubscribeModal from '../organism/TcpAppSubscribeModal/MyPr
 import MyPreferenceUnsubscribeModal from '../organism/TcpUnsubscribeModal/MyPreferenceUnsubscribeModal.view';
 import MyPreferenceAppUnsubscribeModal from '../organism/TcpAppUnsubscribeModal/MyPreferenceAppUnsubscribeModal.view';
 import { getSubscribeStore, setBrandSubscribeData } from './MyPreferenceSubscription.actions';
+import MyPreferenceSubscriptionConstants from '../MyPreferenceSubscription.constants';
 
 export class MyPreferenceSubscription extends PureComponent {
   constructor(props) {
@@ -61,121 +62,121 @@ export class MyPreferenceSubscription extends PureComponent {
     const { submitSubscribeBrand, smsPhone, gymSmsPhone } = this.props;
     let formSubscribeData = {};
 
-    if (activeModal === 'tcpWebSubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE) {
       formSubscribeData = {
-        brand: 'tcp',
+        brand: MyPreferenceSubscriptionConstants.BRAND_TCP,
         mobileNumber: data.phoneNumber,
         CustomerPreferences: [
           {
             isModeSelected: true,
-            preferenceMode: 'placeRewardsSms',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_SMS,
           },
           {
-            preferenceMode: 'marketingPreferenceSMS',
+            preferenceMode: MyPreferenceSubscriptionConstants.MARKETING_PREFERENCE_SMS,
             isModeSelected: true,
           },
         ],
       };
     }
 
-    if (activeModal === 'tcpAppSubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE) {
       formSubscribeData = {
-        brand: 'tcp',
+        brand: MyPreferenceSubscriptionConstants.BRAND_TCP,
         mobileNumber: smsPhone,
         CustomerPreferences: [
           {
             isModeSelected: true,
-            preferenceMode: 'placeRewardsPush',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_PUSH,
           },
         ],
       };
     }
 
-    if (activeModal === 'tcpWebUnsubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.TCP_WEB_UNSUBSCRIBE) {
       formSubscribeData = {
-        brand: 'tcp',
+        brand: MyPreferenceSubscriptionConstants.BRAND_TCP,
         mobileNumber: smsPhone,
         CustomerPreferences: [
           {
             isModeSelected: false,
-            preferenceMode: 'placeRewardsSms',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_SMS,
           },
           {
-            preferenceMode: 'marketingPreferenceSMS',
+            preferenceMode: MyPreferenceSubscriptionConstants.MARKETING_PREFERENCE_SMS,
             isModeSelected: false,
           },
         ],
       };
     }
 
-    if (activeModal === 'tcpAppUnsubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.TCP_APP_UNSUBSCRIBE) {
       formSubscribeData = {
-        brand: 'tcp',
+        brand: MyPreferenceSubscriptionConstants.BRAND_TCP,
         mobileNumber: smsPhone,
         CustomerPreferences: [
           {
             isModeSelected: false,
-            preferenceMode: 'placeRewardsPush',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_PUSH,
           },
         ],
       };
     }
 
-    if (activeModal === 'gymboreeWebSubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) {
       formSubscribeData = {
-        brand: 'gymboree',
+        brand: MyPreferenceSubscriptionConstants.BRAND_GYMBOREE,
         mobileNumber: data.phoneNumber,
         CustomerPreferencesGym: [
           {
             isModeSelected: true,
-            preferenceMode: 'placeRewardsSms',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_SMS,
           },
           {
-            preferenceMode: 'marketingPreferenceSMS',
+            preferenceMode: MyPreferenceSubscriptionConstants.GYMBOREE_MARKETING_PREFERENCE_SMS,
             isModeSelected: true,
           },
         ],
       };
     }
 
-    if (activeModal === 'gymboreeAppSubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) {
       formSubscribeData = {
-        brand: 'gymboree',
+        brand: MyPreferenceSubscriptionConstants.BRAND_GYMBOREE,
         mobileNumber: gymSmsPhone,
         CustomerPreferencesGym: [
           {
             isModeSelected: true,
-            preferenceMode: 'placeRewardsPush',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_PUSH,
           },
         ],
       };
     }
 
-    if (activeModal === 'gymboreeWebUnsubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_UNSUBSCRIBE) {
       formSubscribeData = {
-        brand: 'gymboree',
+        brand: MyPreferenceSubscriptionConstants.BRAND_GYMBOREE,
         mobileNumber: gymSmsPhone,
         CustomerPreferencesGym: [
           {
             isModeSelected: false,
-            preferenceMode: 'placeRewardsSms',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_SMS,
           },
           {
-            preferenceMode: 'marketingPreferenceSMS',
+            preferenceMode: MyPreferenceSubscriptionConstants.GYMBOREE_MARKETING_PREFERENCE_SMS,
             isModeSelected: false,
           },
         ],
       };
     }
 
-    if (activeModal === 'gymboreeAppUnsubscribe') {
+    if (activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_APP_UNSUBSCRIBE) {
       formSubscribeData = {
-        brand: 'gymboree',
+        brand: MyPreferenceSubscriptionConstants.BRAND_GYMBOREE,
         mobileNumber: gymSmsPhone,
         CustomerPreferencesGym: [
           {
             isModeSelected: false,
-            preferenceMode: 'placeRewardsPush',
+            preferenceMode: MyPreferenceSubscriptionConstants.PLACE_REWARDS_PUSH,
           },
         ],
       };
@@ -190,62 +191,62 @@ export class MyPreferenceSubscription extends PureComponent {
    * @param {object} event - event object
    */
   onSubscribe = subscribeBrand => {
-    if (subscribeBrand === 'tcpWebSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'tcpWebSubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE,
       });
     }
 
-    if (subscribeBrand === 'gymboreeWebSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'gymboreeWebSubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE,
       });
     }
 
-    if (subscribeBrand === 'tcpAppSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'tcpAppSubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE,
       });
     }
 
-    if (subscribeBrand === 'gymboreeAppSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'gymboreeAppSubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE,
       });
     }
     return true;
   };
 
   onUnsubscribe = subscribeBrand => {
-    if (subscribeBrand === 'tcpWebSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'tcpWebUnsubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.TCP_WEB_UNSUBSCRIBE,
       });
     }
 
-    if (subscribeBrand === 'gymboreeWebSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'gymboreeWebUnsubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.GYMBOREE_WEB_UNSUBSCRIBE,
       });
     }
 
-    if (subscribeBrand === 'tcpAppSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'tcpAppUnsubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.TCP_APP_UNSUBSCRIBE,
       });
     }
 
-    if (subscribeBrand === 'gymboreeAppSubscribe') {
+    if (subscribeBrand === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) {
       this.setState({
         modalVisible: true,
-        activeModal: 'gymboreeAppUnsubscribe',
+        activeModal: MyPreferenceSubscriptionConstants.GYMBOREE_APP_UNSUBSCRIBE,
       });
     }
     return true;
@@ -300,7 +301,8 @@ export class MyPreferenceSubscription extends PureComponent {
             horizontalBar={false}
             closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
           >
-            {activeModal === 'tcpWebSubscribe' && (
+            {(activeModal === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE ||
+              activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) && (
               <MyPreferenceSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 onSubmit={this.handleSubmitModalPopup}
@@ -310,7 +312,7 @@ export class MyPreferenceSubscription extends PureComponent {
                 activeModal={activeModal}
               />
             )}
-            {activeModal === 'tcpWebUnsubscribe' && (
+            {activeModal === MyPreferenceSubscriptionConstants.TCP_WEB_UNSUBSCRIBE && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 onSubmit={this.handleSubmitModalPopup}
@@ -319,17 +321,7 @@ export class MyPreferenceSubscription extends PureComponent {
                 activeModal={activeModal}
               />
             )}
-            {activeModal === 'gymboreeWebSubscribe' && (
-              <MyPreferenceSubscribeModal
-                onRequestClose={this.handlePopupSubscribeModal}
-                onSubmit={this.handleSubmitModalPopup}
-                phoneNumber={phoneNumber}
-                initialValues={this.initialValuesSubscribe}
-                labels={labels}
-                activeModal={activeModal}
-              />
-            )}
-            {activeModal === 'gymboreeWebUnsubscribe' && (
+            {activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_UNSUBSCRIBE && (
               <MyPreferenceUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 onSubmit={this.handleSubmitModalPopup}
@@ -339,7 +331,8 @@ export class MyPreferenceSubscription extends PureComponent {
               />
             )}
 
-            {(activeModal === 'tcpAppSubscribe' || activeModal === 'gymboreeAppSubscribe') && (
+            {(activeModal === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE ||
+              activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) && (
               <MyPreferenceAppSubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 onSubmit={this.handleSubmitModalPopup}
@@ -350,7 +343,8 @@ export class MyPreferenceSubscription extends PureComponent {
               />
             )}
 
-            {(activeModal === 'tcpAppUnsubscribe' || activeModal === 'gymboreeAppUnsubscribe') && (
+            {(activeModal === MyPreferenceSubscriptionConstants.TCP_APP_UNSUBSCRIBE ||
+              activeModal === MyPreferenceSubscriptionConstants.GYMBOREE_APP_UNSUBSCRIBE) && (
               <MyPreferenceAppUnsubscribeModal
                 onRequestClose={this.handlePopupSubscribeModal}
                 onSubmit={this.handleSubmitModalPopup}
