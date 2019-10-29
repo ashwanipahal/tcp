@@ -274,7 +274,9 @@ export default css`
 
     .candidate_a_inline_container_button .refer_a_friend_button{
       width: 165px;
-      padding: 11px 20px;
+        @media ${props => props.theme.mediaQuery.smallMax} {
+          width: 192px;
+      }
     }
   }
 
@@ -293,10 +295,5 @@ export default css`
     .hide-in-medium-down {
       display: none;
     }
-    .refer_a_friend_desktop .refer_a_friend_button{
-      @media ${props => props.theme.mediaQuery.smallMax} {
-        width: 192px;
-    }
-  }
 }
 `;
