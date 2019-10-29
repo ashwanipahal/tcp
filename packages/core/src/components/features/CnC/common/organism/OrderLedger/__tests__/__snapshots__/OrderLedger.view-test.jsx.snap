@@ -194,6 +194,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
+            <Connect(FreeShippingBannerContainer) />
             <Connect(LoyaltyBannerContainer)
               pageCategory=""
             />
@@ -823,6 +824,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
+            <Connect(FreeShippingBannerContainer) />
             <Connect(LoyaltyBannerContainer)
               pageCategory=""
             />
@@ -1398,6 +1400,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
+            <Connect(FreeShippingBannerContainer) />
             <Connect(LoyaltyBannerContainer)
               pageCategory=""
             />

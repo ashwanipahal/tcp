@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FreeShippingBannerSection View Component FreeShippingBannerSection should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="free-shipping-banner-section-wrapper"
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "lbl_freeShippingBanner_label",
+        }
+      }
+    />
+    <span
+      className="free-shipping-details"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="details"
+        target="_blank"
+        text="lbl_freeShippingBanner_details"
+        underline={true}
+        url="/content/free-shipping"
+      />
+    </span>
+  </Styled(BodyCopy)>
+</div>
+`;
+
+exports[`FreeShippingBannerSection View Component FreeShippingBannerSection with label should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="free-shipping-banner-section-wrapper"
+    color="text.primary"
+    component="div"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "lbl_freeShippingBanner_label",
+        }
+      }
+    />
+    <span
+      className="free-shipping-details"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="details"
+        target="_blank"
+        text="lbl_freeShippingBanner_details"
+        underline={true}
+        url="/content/free-shipping"
+      />
+    </span>
+  </Styled(BodyCopy)>
+</div>
+`;
