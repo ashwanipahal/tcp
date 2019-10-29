@@ -9,8 +9,8 @@ import {
 
 describe('#My Preference Selectors', () => {
   const subscribeStoreData = {
-    smsPhone: '2012386357',
-    gymSmsPhone: '2012386357',
+    smsPhone: '2012386358',
+    gymSmsPhone: '2012386358',
     marketingPreferenceSMS: true,
     gymPlaceRewardsSms: true,
     placeRewardsSms: true,
@@ -33,8 +33,8 @@ describe('#My Preference Selectors', () => {
   const state = {
     [MY_PREFERENCE_REDUCER_KEY]: {
       subscribeStoreData: {
-        smsPhone: '2012386357',
-        gymSmsPhone: '2012386357',
+        smsPhone: '2012386358',
+        gymSmsPhone: '2012386358',
         CustomerPreferencesGym: [
           {
             preferenceMode: 'placeRewardsSms',
