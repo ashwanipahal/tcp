@@ -27,13 +27,14 @@ const OrderLedger = ({
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
   orderLedgerAfterView,
+  pageCategory,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = OrderLedgerUtils.getBody(className, summaryData, labels);
+  const body = OrderLedgerUtils.getBody(className, summaryData, labels, pageCategory);
   return (
     <div className={`${className} elem-mb-MED`}>
       <Col
@@ -42,18 +43,17 @@ const OrderLedger = ({
           medium: 8,
           small: 6,
         }}
-        ignoreGutter={{ small: true, medium: true }}
-        className={showAccordian ? 'hide-in-large-up' : 'hideAccordian'}
+        ignoreGutter={{ small: true }}
       >
         <CollapsibleContainer
-          className={`${''} ${showAccordian ? 'orderLedgerAccordian' : ''}`}
+          className={`${showAccordian ? 'orderLedgerAccordian' : ''}`}
           header={header}
           body={body}
           iconLocator="arrowicon"
           defaultOpen={false}
+          isDefaultView={!showAccordian}
         />
       </Col>
-      <div className={showAccordian ? 'hide-in-medium-down' : ''}>{body}</div>
       {orderLedgerAfterView}
     </div>
   );
@@ -75,6 +75,7 @@ OrderLedger.propTypes = {
     totalOrderSavings: PropTypes.number,
   }),
   labels: PropTypes.shape({}),
+  pageCategory: PropTypes.string,
   orderLedgerAfterView: PropTypes.shape({}).isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
@@ -97,6 +98,7 @@ OrderLedger.defaultProps = {
   labels: {},
   confirmationPageLedgerSummaryData: {},
   isConfirmationPage: false,
+  pageCategory: '',
 };
 export default withStyles(OrderLedger, styles);
 export { OrderLedger as OrderLedgerVanilla };

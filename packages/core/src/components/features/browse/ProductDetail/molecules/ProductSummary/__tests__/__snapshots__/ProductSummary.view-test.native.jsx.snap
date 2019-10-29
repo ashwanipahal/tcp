@@ -44,6 +44,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
       fontSizeVariation="medium"
       href="#"
       locator="pdp_anchor_complete_the_look"
+      margins={null}
       onPress={[Function]}
       text="Complete The Look"
       underline={true}
@@ -82,14 +83,14 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
   />
   <Styled(BodyCopy)
     accessibilityText=""
-    color="red.500"
+    color="red.600"
     dataLocator="pdp_current_product_price"
     fontSize="fs22"
     fontWeight="black"
     margin="4px 0 0 0"
     mobileFontFamily="secondary"
     numberOfLines={null}
-    text="$24.95"
+    text="$NaN"
     textDecoration={null}
   />
   <Styled(View) />

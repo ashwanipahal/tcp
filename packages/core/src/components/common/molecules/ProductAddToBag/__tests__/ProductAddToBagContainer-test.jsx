@@ -172,7 +172,16 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
   });
 
   it('should set fit list', () => {
-    const fits = [];
+    const fits = [
+      {
+        displayName: 'regular',
+        id: 'regular',
+      },
+      {
+        displayName: 'plus',
+        id: 'plus',
+      },
+    ];
     const color = { name: 'WHITE', hasFits: true, fits };
     const currentProduct = {
       colorFitsSizesMap: [

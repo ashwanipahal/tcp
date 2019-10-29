@@ -1,7 +1,8 @@
 import { trackError } from '@tcp/core/src/utils/errorReporter.util';
+import { generateSessionId } from '../../utils/cookie.util';
 import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
-import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';
+import { importGraphQLClientDynamically, getAPIConfig, generateTraceId } from '../../utils';
 import StatefulAPIClient from './stateful/statefulClient';
 import UnbxdAPIClient from './unbxd/unbxdClient';
 import ExternalAPIClient from './external/externalClient';
@@ -24,14 +25,12 @@ const errorHandler = ({
 } = {}) => {
   trackError({
     error: err,
-    tags: {
-      component: 'API Handler',
-      endpoint: reqObj.webService.URI,
-      'trace-request-id': reqHeaders['tcp-trace-request-id'],
-      'trace-session-id': reqHeaders['tcp-trace-session-id'],
-    },
+    errorTags: [`API Handler-${reqObj.webService.URI}`, generateSessionId()],
     extraData: {
       ...reqObj,
+      'trace-request-id': generateTraceId(),
+      'trace-session-id': reqHeaders['tcp-trace-session-id'],
+      'unbxd-request-id': err && err.response ? err.response.headers['unbxd-request-id'] : 'N/A',
     },
   });
   throw err;

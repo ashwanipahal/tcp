@@ -26,7 +26,7 @@ exports[`Shipping Page should render correctly 1`] = `
                       "addressId": undefined,
                       "emailAddress": undefined,
                       "emailSignup": true,
-                      "onFileAddressKey": undefined,
+                      "onFileAddressKey": "1234",
                       "phoneNumber": undefined,
                       "saveToAccount": undefined,
                       "setAsDefault": false,
@@ -85,6 +85,7 @@ exports[`Shipping Page should render correctly 1`] = `
           "addressLine2": "",
         }
       }
+      addressLabels={Object {}}
       addressPhoneNo={null}
       defaultAddressId={null}
       destroyOnUnmount={false}
@@ -132,7 +133,7 @@ exports[`Shipping Page should render correctly 1`] = `
                         "addressId": undefined,
                         "emailAddress": undefined,
                         "emailSignup": true,
-                        "onFileAddressKey": undefined,
+                        "onFileAddressKey": "1234",
                         "phoneNumber": undefined,
                         "saveToAccount": undefined,
                         "setAsDefault": false,
@@ -191,6 +192,23 @@ exports[`Shipping Page should render correctly 1`] = `
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `
 <Fragment>
+  <ModalNative
+    heading="lbl_shipping_addNewAddress"
+    inheritedStyles=""
+    isOpen={true}
+    isOverlay={false}
+    onRequestClose={[Function]}
+  >
+    <SafeAreaView>
+      <ScrollViewMock>
+        <Connect(AddressVerification)
+          onError={[Function]}
+          onSuccess={[Function]}
+          toggleAddressModal={[Function]}
+        />
+      </ScrollViewMock>
+    </SafeAreaView>
+  </ModalNative>
   <CheckoutProgressIndicator
     activeStage="shipping"
     navigation={null}
@@ -226,6 +244,7 @@ exports[`Shipping Page should render correctly with component did update and get
           "addressLine2": "pob",
         }
       }
+      addressLabels={Object {}}
       addressPhoneNo={null}
       defaultAddressId="34789"
       destroyOnUnmount={false}
@@ -315,6 +334,23 @@ exports[`Shipping Page should render correctly with component did update and get
 
 exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `
 <Fragment>
+  <ModalNative
+    heading="lbl_shipping_addNewAddress"
+    inheritedStyles=""
+    isOpen={true}
+    isOverlay={false}
+    onRequestClose={[Function]}
+  >
+    <SafeAreaView>
+      <ScrollViewMock>
+        <Connect(AddressVerification)
+          onError={[Function]}
+          onSuccess={[Function]}
+          toggleAddressModal={[Function]}
+        />
+      </ScrollViewMock>
+    </SafeAreaView>
+  </ModalNative>
   <CheckoutProgressIndicator
     activeStage="shipping"
     navigation={null}
@@ -350,6 +386,7 @@ exports[`Shipping Page should render correctly with component did update and get
           "addressLine2": "pob",
         }
       }
+      addressLabels={Object {}}
       addressPhoneNo={null}
       destroyOnUnmount={false}
       enableReinitialize={true}

@@ -22,7 +22,7 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
         <BodyCopy
           component="span"
           fontSize="fs18"
-          fontWeight="semibold"
+          fontWeight="extrabold"
           textAlign="left"
           fontFamily="secondary"
           color="gray.800"
@@ -32,13 +32,15 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
       </div>
       <div className="continue-shopping">
         <Anchor
-          fontSizeVariation="medium"
+          className="continueShoppingText"
           underline
           anchorVariation="primary"
           to="/home"
           dataLocator="emptyMiniBag-continueShopping"
         >
-          {labels.continueShopping}
+          <BodyCopy component="span" fontSize="fs15" fontFamily="secondary">
+            {labels.continueShopping}
+          </BodyCopy>
         </Anchor>
       </div>
       {!userName ? (

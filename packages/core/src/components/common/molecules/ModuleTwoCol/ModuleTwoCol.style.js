@@ -14,9 +14,17 @@ export default css`
     max-height: 541px;
   }
 
-  .moduleH,
-  .moduleN {
-    margin-top: 0;
-    margin-bottom: 0;
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .moduleH {
+      margin-bottom: 32px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    .moduleH,
+    .moduleN {
+      margin: 0;
+      width: 100%;
+    }
   }
 `;

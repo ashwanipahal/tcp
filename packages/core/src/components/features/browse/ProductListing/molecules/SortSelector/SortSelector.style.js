@@ -5,6 +5,7 @@ const selectedIcon = getIconPath('selected-item-check-no-circle');
 
 export default css`
   .sort-select-title {
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     display: none;
     padding-right: 5px;
   }
@@ -91,7 +92,7 @@ export default css`
     }
     .sort-item-highlighted {
       .sort-title {
-        font-size: ${props => props.theme.typography.fontSizes.fs13};
+        font-size: ${props => props.theme.typography.fontSizes.fs16};
         font-weight: ${props => props.theme.typography.fontWeights.extrabold};
       }
     }

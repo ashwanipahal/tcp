@@ -1,7 +1,5 @@
 export {
   default,
-  enableBodyScroll,
-  disableBodyScroll,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -32,6 +30,8 @@ export {
   fetchStoreIdFromUrlPath,
   routeToStoreDetails,
   getLocationOrigin,
+  canUseDOM,
+  getUrlParameter,
   scrollToParticularElement,
   getDirections,
 } from './utils.web';
@@ -75,4 +75,8 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  generateTraceId,
+  enableBodyScroll,
+  disableBodyScroll,
+  readCookieMobileApp,
 } from './utils';

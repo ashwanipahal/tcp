@@ -26,7 +26,7 @@ const ProductList = props => {
     className,
     productsBlock,
     showQuickViewForProductId,
-    currencySymbol,
+    currency,
     onAddItemToFavorites,
     onQuickViewOpenClick,
     onPickUpOpenClick,
@@ -67,6 +67,7 @@ const ProductList = props => {
             fontFamily="secondaryFontFamily"
           >
             {item}
+            <hr className="horizontal-bar" />
           </Heading>
         ) : (
           <div className={`${className} product-tile ${productTileVariation}`}>
@@ -77,7 +78,7 @@ const ProductList = props => {
               item={item}
               isGridView
               isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}
-              currencySymbol={currencySymbol}
+              currencySymbol={currency}
               currencyExchange={currencyExchange}
               onAddItemToFavorites={onAddItemToFavorites}
               onQuickViewOpenClick={onQuickViewOpenClick}
@@ -124,8 +125,8 @@ ProductList.propTypes = {
   /** the generalProductId of the product (if any) requesting quickView to show */
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
-  currencySymbol: PropTypes.string,
-  currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
+  currency: PropTypes.string,
+  currencyExchange: PropTypes.shape({}),
   /** callback for clicks on wishlist CTAs. Accepts: colorProductId. */
   onAddItemToFavorites: PropTypes.func,
   /** callback for clicks on quickView CTAs. Accepts a generalProductId, colorProductId */
@@ -160,7 +161,7 @@ ProductList.defaultProps = {
   className: '',
   productsBlock: [],
   showQuickViewForProductId: '',
-  currencySymbol: '',
+  currency: '',
   onAddItemToFavorites: () => {},
   onQuickViewOpenClick: () => {},
   onPickUpOpenClick: () => {},
@@ -170,7 +171,7 @@ ProductList.defaultProps = {
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},
-  currencyExchange: [{ exchangevalue: 1 }],
+  currencyExchange: 1,
   siblingProperties: {
     colorMap: [],
     promotionalMessage: '',

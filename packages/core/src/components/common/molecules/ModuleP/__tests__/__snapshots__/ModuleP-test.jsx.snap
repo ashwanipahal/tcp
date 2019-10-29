@@ -65,6 +65,7 @@ exports[`Module P component renders correctly 1`] = `
     }
     sqnNmbr={12312}
     unbxdId=""
+    viaModule=""
   />
 </ul>
 `;

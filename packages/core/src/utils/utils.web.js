@@ -35,6 +35,13 @@ export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
 };
 
+export const getUrlParameter = name => {
+  const replacedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp(`[\\?&]${replacedName}=([^&#]*)`);
+  const results = regex.exec(window.location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
 export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
@@ -135,6 +142,10 @@ export const createUrlSearchParams = (query = {}) => {
   return queryParams.join('&');
 };
 
+export function getHostName() {
+  return window.location.hostname;
+}
+
 export const buildUrl = options => {
   if (typeof options === 'object') {
     const { pathname, query } = options;
@@ -215,26 +226,6 @@ export const getViewportInfo = () => {
     isTablet,
     isDesktop,
   };
-};
-
-/**
- * Enable Body Scroll
- */
-export const enableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'auto';
-  }
-};
-
-/**
- * Disable Body Scroll
- */
-export const disableBodyScroll = () => {
-  if (typeof window !== 'undefined') {
-    const [body] = document.getElementsByTagName('body');
-    body.style['overflow-y'] = 'hidden';
-  }
 };
 
 /**
@@ -341,23 +332,30 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
-  const country = siteId && siteId.toUpperCase();
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
-  const unbxdApiKey = processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_EN`];
+
+  const unbxdApiKeyTCP = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_TCP`];
+  const unbxdApiKeyGYM = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.RWD_WEB_DAM_HOST || apiSiteInfo.assetHost,
-    productAssetPath: processEnv.PWD_WEB_DAM_PRODUCT_IMAGE_PATH,
+    assetHostTCP: processEnv.RWD_WEB_DAM_HOST_TCP || apiSiteInfo.assetHost,
+    productAssetPathTCP: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_TCP,
+    assetHostGYM: processEnv.RWD_WEB_DAM_HOST_GYM || apiSiteInfo.assetHost,
+    productAssetPathGYM: processEnv.RWD_WEB_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
-    unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unbxdTCP: processEnv.RWD_WEB_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
+    unbxdGYM: processEnv.RWD_WEB_UNBXD_DOMAIN_GYM || apiSiteInfo.unbxd,
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
-    unboxKey: `${unbxdApiKey}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_EN`]}`,
-    unbxdApiKey,
+
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_TCP`]}`,
+    unbxdApiKeyTCP,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
+    unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
@@ -367,6 +365,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, siteId) => {
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
     ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
+    isErrorReportingNodeActive: processEnv.IS_ERROR_REPORTING_NODE_ACTIVE,
+    isErrorReportingBrowserActive: processEnv.IS_ERROR_REPORTING_BROWSER_ACTIVE,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
@@ -437,7 +437,11 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, siteId);
+  const basicConfig = getAPIInfoFromEnv(
+    apiSiteInfo,
+    processEnv,
+    countryConfig && countryConfig.countryKey
+  );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,

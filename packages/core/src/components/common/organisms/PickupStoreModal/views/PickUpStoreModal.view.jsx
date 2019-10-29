@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable no-underscore-dangle */
 /**
  * @module PickUpStoreModal
@@ -37,7 +38,7 @@ const DISTANCES_MAP_PROP_TYPE = PropTypes.arrayOf(
 );
 
 // eslint-disable-next-line no-unused-vars
-const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
+// const ERRORS_MAP = require('../../../../../services/handler/stateful/errorResponseMapping/index.json');
 
 class PickUpStoreModalView extends React.Component {
   static propTypes = {
@@ -77,7 +78,6 @@ class PickUpStoreModalView extends React.Component {
 
     // determines if step one needs to be opened
     openSkuSelectionForm: PropTypes.bool,
-
     maxAllowedStoresInCart: PropTypes.number.isRequired,
 
     /**
@@ -89,6 +89,7 @@ class PickUpStoreModalView extends React.Component {
      */
     addItemToCartInPickup: PropTypes.func.isRequired,
     navigation: PropTypes.shape({}),
+    alwaysSearchForBOSS: PropTypes.bool.isRequired,
 
     /**
      * Function to call when the item has been successfully added to, or updated
@@ -99,7 +100,6 @@ class PickUpStoreModalView extends React.Component {
 
     /** callback for closing this modal */
     closePickupModal: PropTypes.func.isRequired,
-
     onColorChange: PropTypes.func.isRequired,
 
     /**
@@ -118,7 +118,6 @@ class PickUpStoreModalView extends React.Component {
 
     /** submit method for BopisCartStoresInventoryForm */
     onSearchInCurrentCartStoresSubmit: PropTypes.func.isRequired,
-
     currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
     /** an optional identifier to be passed to addItemToCartInPickup */
@@ -138,6 +137,7 @@ class PickUpStoreModalView extends React.Component {
     isBossCtaEnabled: PropTypes.bool,
     isBopisCtaEnabled: PropTypes.bool,
     updateCartItemStore: PropTypes.bool,
+    isItemShipToHome: PropTypes.bool,
     autoSkipStep1: PropTypes.bool,
     showDefaultSizeMsg: PropTypes.bool,
     isRadialInventoryEnabled: PropTypes.number,
@@ -158,6 +158,7 @@ class PickUpStoreModalView extends React.Component {
     }).isRequired,
     className: PropTypes.string,
     currency: PropTypes.string,
+    currencyAttributes: PropTypes.shape({}),
     updatePickUpCartItem: PropTypes.func.isRequired,
     initialValuesFromBagPage: PropTypes.shape({}).isRequired,
   };
@@ -188,6 +189,10 @@ class PickUpStoreModalView extends React.Component {
     addToBagError: '',
     className: '',
     currency: 'USD',
+    isItemShipToHome: false,
+    currencyAttributes: {
+      exchangevalue: 1,
+    },
   };
 
   constructor(props) {
@@ -293,7 +298,7 @@ class PickUpStoreModalView extends React.Component {
 
   deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount) {
     const { SkuSelectedValues } = this.state;
-    const { getUserCartStoresAndSearch } = this.props;
+    const { getUserCartStoresAndSearch, alwaysSearchForBOSS } = this.props;
     const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
     const country = getSiteId() && getSiteId().toUpperCase();
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
@@ -302,13 +307,16 @@ class PickUpStoreModalView extends React.Component {
     this.skuId = skuId;
     this.quantity = quantity;
     getUserCartStoresAndSearch({
-      skuId,
-      quantity,
-      distance,
-      locationPromise,
-      variantId,
-      cartItemsCount,
-      country,
+      apiPayload: {
+        skuId,
+        quantity,
+        distance,
+        locationPromise,
+        variantId,
+        cartItemsCount,
+        country,
+      },
+      alwaysSearchForBOSS,
     });
   }
 
@@ -392,10 +400,12 @@ class PickUpStoreModalView extends React.Component {
       addItemToCartInPickup,
       updatePickUpCartItem,
       currency,
+      currencyAttributes,
       PickupSkuFormValues,
       addToBagError,
       navigation,
       initialValuesFromBagPage,
+      isItemShipToHome,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -462,6 +472,7 @@ class PickUpStoreModalView extends React.Component {
           initialValues={SkuSelectedValues}
           selectedColor={selectedColor}
           currency={currency}
+          currencyExchange={currencyAttributes.exchangevalue}
           className="pickup-sku-selection"
           onCloseClick={this.onCloseClick}
           navigation={navigation}
@@ -510,6 +521,8 @@ class PickUpStoreModalView extends React.Component {
           isSkuResolved={isSkuResolved}
           PickupSkuFormValues={PickupSkuFormValues}
           initialValuesFromBagPage={initialValuesFromBagPage}
+          isItemShipToHome={isItemShipToHome}
+          currencyExchange={currencyAttributes.exchangevalue}
         />
       </>
     );

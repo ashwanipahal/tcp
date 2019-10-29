@@ -46,6 +46,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       isMobile={false}
       isPLPredesign={false}
       isShowVideoOnPlp={false}
+      isSoldOut={false}
       loadedProductCount={12}
       onImageChange={[Function]}
       videoUrl=""
@@ -81,7 +82,15 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           lineHeight="normal"
           link={null}
           textAlign="left"
-        />
+        >
+          <ProductPricesSection
+            currencySymbol="$"
+            hidePrefixListPrice={true}
+            listPrice={NaN}
+            merchantTag=""
+            offerPrice={NaN}
+          />
+        </Styled(BodyCopy)>
       </Styled(Col)>
       <Styled(Col)
         colSize={
@@ -98,13 +107,6 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         />
       </Styled(Col)>
     </Styled(Row)>
-    <ProductPricesSection
-      currencySymbol="$"
-      hidePrefixListPrice={true}
-      listPrice={NaN}
-      merchantTag=""
-      offerPrice={NaN}
-    />
     <ProductTitle
       analyticsData={
         Object {
@@ -151,6 +153,7 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
         buttonVariation="fixed-width"
         className="added-to-bag"
         dataLocator="global-addtocart-Button"
+        fill=""
         fullWidth={true}
         onClick={[Function]}
       />

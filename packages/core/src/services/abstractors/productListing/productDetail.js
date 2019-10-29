@@ -152,12 +152,11 @@ export const parseProductFromAPI = (
  * @function getProductInfoById
  * @summary This will get product info and all color/sizes for that product
  */
-const getProductInfoById = (productColorId, state) => {
+const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
   // const isRadialInvEnabled = generalStoreView.getIsRadialInventoryEnabled(this.store.getState());
   // const location = routingInfoStoreView.getHistory(this.store.getState()).location;
   // const isBundleProduct = matchPath(location.pathname, { path: PAGES.productBundle.pathPattern });
   const isRadialInvEnabled = true;
-  const isBundleProduct = false;
 
   const breadCrumb = processHelperUtil.breadCrumbFactory(state);
   // eslint-disable-next-line
@@ -199,6 +198,7 @@ const getProductInfoById = (productColorId, state) => {
       fields,
     },
     webService: endpoints.getProductInfoById,
+    brand,
   };
 
   if (productId === 'gift') {

@@ -33,6 +33,7 @@ export class CouponContainer extends React.PureComponent {
       showAccordian,
       isCarouselView,
       closedOverlay,
+      idPrefix,
       additionalClassNameModal,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
@@ -51,6 +52,7 @@ export class CouponContainer extends React.PureComponent {
             handleErrorCoupon={handleErrorCoupon}
             showAccordian={showAccordian}
             additionalClassNameModal={additionalClassNameModal}
+            idPrefix={idPrefix}
           />
         )}
 
@@ -94,18 +96,21 @@ CouponContainer.propTypes = {
   handleErrorCoupon: PropTypes.func.isRequired,
   isCarouselView: PropTypes.bool,
   closedOverlay: PropTypes.func,
+  idPrefix: PropTypes.string,
 };
 
 CouponContainer.defaultProps = {
   closedOverlay: () => {},
   isCarouselView: false,
+  idPrefix: '',
 };
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
   handleApplyCouponFromList: coupon => {
     return new Promise((resolve, reject) => {
       dispatch(
         applyCoupon({
+          fullPageInfo,
           formData: { couponCode: coupon.id },
           formPromise: { resolve, reject },
           coupon,
@@ -115,13 +120,24 @@ export const mapDispatchToProps = dispatch => ({
   },
   handleRemoveCoupon: coupon => {
     return new Promise((resolve, reject) => {
-      dispatch(removeCoupon({ coupon, formPromise: { resolve, reject } }));
+      dispatch(
+        removeCoupon({
+          coupon,
+          fullPageInfo,
+          formPromise: { resolve, reject },
+        })
+      );
     });
   },
   handleApplyCoupon: (formData, _, props) =>
     new Promise((resolve, reject) => {
       dispatch(
-        applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
+        applyCoupon({
+          formData,
+          fullPageInfo,
+          source: props && props.source,
+          formPromise: { resolve, reject },
+        })
       );
     }),
   handleErrorCoupon: coupon => {

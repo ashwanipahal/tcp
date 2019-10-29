@@ -16,7 +16,10 @@ import {
   getUserCartStores,
 } from './PickUpStoreModal.actions';
 import { addItemToCartBopis } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
-import { getCurrentCurrency } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
+import {
+  getCurrentCurrency,
+  getCurrencyAttributes,
+} from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 import { getAddedToPickupError } from '../../../../features/CnC/AddedToBag/container/AddedToBag.selectors';
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
 
@@ -71,7 +74,8 @@ const mapStateToProps = (state, ownProps) => {
   const fromBagPage = PickupSelectors.getIsPickupModalOpenFromBagPage(state);
   const initialValuesFromBagPage = PickupSelectors.getInitialValuesFromBagPage(state);
   const updateCartItemStore = PickupSelectors.getUpdateCartItemStore(state);
-
+  const isItemShipToHome = PickupSelectors.getIsItemShipToHome(state);
+  const alwaysSearchForBOSS = PickupSelectors.getAlwaysSearchForBOSS(state);
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
     onSubmit,
@@ -91,6 +95,7 @@ const mapStateToProps = (state, ownProps) => {
     isBossCtaEnabled,
     isPickUpWarningModal,
     openSkuSelectionForm,
+    alwaysSearchForBOSS,
     isCanada: isCanada(),
     addToBagError: getAddedToPickupError(state),
     isPlcc: PickupSelectors.getUserIsPlcc(state),
@@ -106,9 +111,11 @@ const mapStateToProps = (state, ownProps) => {
     currentProduct,
     PickupSkuFormValues,
     currency: getCurrentCurrency(state),
+    currencyAttributes: getCurrencyAttributes(state),
     navigation,
     updateCartItemStore,
     initialValuesFromBagPage,
+    isItemShipToHome,
   };
 };
 

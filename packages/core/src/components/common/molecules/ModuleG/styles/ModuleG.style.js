@@ -1,4 +1,5 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Skeleton } from '../../../atoms';
 
 export default css`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
@@ -7,8 +8,6 @@ export default css`
   .wrapper {
     position: relative;
     overflow: hidden;
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
 
   .moduleG__carousel-wrapper {
@@ -105,6 +104,60 @@ export default css`
     }
   }
   .carousel-bottom-link {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     text-align: center;
+  }
+
+  .promo-header a:nth-child(1) {
+    > .link-text {
+      margin-bottom: 0;
+    }
+  }
+
+  .shopall_footerlink {
+    font-size: ${props => props.theme.fonts.fontSize.promo1.small}px;
+  }
+
+  .right_chevron_arrow {
+    margin-left: 9px;
+  }
+
+  .promo-header a:nth-child(2) {
+    > .link-text {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+  }
+`;
+
+export const StyledSkeleton = styled(Skeleton)`
+  justify-content: center;
+  margin-bottom: 10px;
+  @media ${props => props.theme.mediaQuery.large} {
+    .left-carousel {
+      left: 10px;
+    }
+    .right-carousel {
+      right: 10px;
+    }
+  }
+  .skeleton-col {
+    height: 200px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      &:nth-child(n + 4) {
+        display: none;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 185px;
+      &:nth-child(n + 5) {
+        display: none;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 239px;
+      &:nth-child(n + 6) {
+        display: none;
+      }
+    }
   }
 `;

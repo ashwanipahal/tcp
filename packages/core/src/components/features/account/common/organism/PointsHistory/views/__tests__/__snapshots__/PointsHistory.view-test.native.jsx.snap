@@ -78,7 +78,6 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         margin={null}
         numberOfLines={null}
         text={5}
-        textAlign="center"
         textDecoration={null}
       />
     </Styled(View)>
@@ -91,6 +90,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
       customStyle={Object {}}
       fontSizeVariation="medium"
       locator=""
+      margins={null}
       noLink={true}
       onPress={[Function]}
       text="Points History"

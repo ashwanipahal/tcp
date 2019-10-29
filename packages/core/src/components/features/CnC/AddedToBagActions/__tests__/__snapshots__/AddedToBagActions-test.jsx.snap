@@ -46,7 +46,6 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       >
         <withRouter(Connect(PayPalButtonContainer))
           className="payPal-button"
-          containerId="paypal-button-container"
         />
       </div>
     </div>
@@ -70,6 +69,14 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     </Styled(Button)>
     <Measure
       name="call_to_action_visible"
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-MED"
+  >
+    <Styled(ErrorMessage)
+      className="checkout-page-error"
+      error="something went wrong"
     />
   </Styled(Row)>
 </div>

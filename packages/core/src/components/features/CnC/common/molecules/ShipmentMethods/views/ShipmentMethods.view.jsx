@@ -18,6 +18,7 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
         fontSize="fs16"
         fontWeight="extrabold"
         className="elem-mb-XXS"
+        dataLocator="shippingMethods"
       >
         {shipmentHeader}
       </BodyCopy>
@@ -39,6 +40,7 @@ const ShipmentMethods = ({ shipmentMethods, selectedShipmentId, className, shipm
                   name="shippingMethodId"
                   hideSubtitleOnMobile
                   variation="secondary"
+                  className="estimated-shipping-size"
                 />
               </Col>
             );

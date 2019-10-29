@@ -1,9 +1,11 @@
+import React from 'react';
+
 const labelsHashValuesReplace = (str, utilArr) => {
-  let finalString = '';
+  let finalString = str;
   utilArr.map(obj => {
     finalString =
-      str &&
-      str.replace(
+      finalString &&
+      finalString.replace(
         obj.key,
         obj.value == null ? '' : `<span class="${obj.classValue}">${obj.value}</span>`
       );
@@ -12,4 +14,9 @@ const labelsHashValuesReplace = (str, utilArr) => {
   return finalString;
 };
 
-export default labelsHashValuesReplace;
+const convertHtml = value => {
+  // eslint-disable-next-line react/no-danger
+  return <span dangerouslySetInnerHTML={{ __html: value }} />;
+};
+
+export { labelsHashValuesReplace, convertHtml };

@@ -48,20 +48,21 @@ class Drawer extends React.Component {
     this.closeNavOnOverlayClick = this.closeNavOnOverlayClick.bind(this);
   }
 
-  componentDidMount() {
-    document.body.addEventListener('click', this.closeNavOnOverlayClick);
-  }
-
   componentDidUpdate() {
-    const { renderOverlay } = this.props;
+    const { open, renderOverlay } = this.props;
     if (renderOverlay) {
       this.getDrawerStyle();
+    }
+    if (open) {
+      document.body.addEventListener('click', this.closeNavOnOverlayClick);
+    } else {
+      document.body.removeEventListener('click', this.closeNavOnOverlayClick);
     }
     return null;
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('click', this.closeNavOnOverlayClick);
+    enableBodyScroll();
   }
 
   /* Set drawer ref */
@@ -71,9 +72,16 @@ class Drawer extends React.Component {
 
   /* Method to close nav bar on click of dark overlay */
   closeNavOnOverlayClick = e => {
-    const { close } = this.props;
-    if (this.drawerRef && !this.drawerRef.contains(e.target) && typeof close === 'function') {
+    const { close, open } = this.props;
+    if (
+      open &&
+      this.drawerRef &&
+      !this.drawerRef.contains(e.target) &&
+      typeof close === 'function'
+    ) {
       close();
+      enableBodyScroll();
+      e.stopPropagation();
     }
   };
 
@@ -133,7 +141,6 @@ class Drawer extends React.Component {
     }
     if (close && renderOverlay) {
       closeOverlay();
-      enableBodyScroll();
     }
     if (openDrawer && renderOverlay) {
       showOverlay();

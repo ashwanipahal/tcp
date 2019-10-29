@@ -24,8 +24,9 @@ export const formValidationMessages = {
     maxLength: 'lbl_err_addressline1_maxlength',
   },
   storeAddressLocator: {
-    required: 'lbl_storelanding_errorLabel',
-    address: 'lbl_storelanding_errorLabel',
+    required: 'lbl_storelanding_validErrorLabel',
+    address: 'lbl_storelanding_invalidAddressError',
+    minLength: 'lbl_storelanding_validErrorLabel',
   },
   addressLine2: {
     address: 'lbl_err_addressline2_address',
@@ -40,10 +41,10 @@ export const formValidationMessages = {
     required: 'lbl_err_country_required',
   },
   userBirthMonth: {
-    required: 'lbl_err_userbirthdaymonth_required',
+    userBirthday: 'lbl_err_userbirthdaymonth_required',
   },
   userBirthYear: {
-    required: 'lbl_err_userbirthdayyear_required',
+    userBirthday: 'lbl_err_userbirthdayyear_required',
   },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
@@ -214,6 +215,7 @@ export const formValidationRules = {
   storeAddressLocator: {
     required: true,
     address: true,
+    minLength: 3,
   },
   addressLine2: {
     address: true,
@@ -234,10 +236,14 @@ export const formValidationRules = {
   },
 
   userBirthMonth: {
-    required: true,
+    userBirthday: {
+      linkedProps: ['values'],
+    },
   },
   userBirthYear: {
-    required: true,
+    userBirthday: {
+      linkedProps: ['values'],
+    },
   },
   firstName: {
     nonEmpty: true,

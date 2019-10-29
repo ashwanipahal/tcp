@@ -6,6 +6,7 @@ exports[`Shipping Page should render correctly 1`] = `
     className="elem-mb-XXS"
     color="text.primary"
     component="p"
+    dataLocator="shippingMethods"
     fontFamily="secondary"
     fontSize="fs16"
     fontWeight="extrabold"
@@ -29,6 +30,7 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     >
       <Field
+        className="estimated-shipping-size"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -189,6 +191,7 @@ exports[`Shipping Page should render correctly 1`] = `
       }
     >
       <Field
+        className="estimated-shipping-size"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),

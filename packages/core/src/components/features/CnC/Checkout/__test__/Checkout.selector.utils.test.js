@@ -1,9 +1,13 @@
-import { fromJS } from 'immutable';
-import CHECKOUT_SELECTORS, { getSendOrderUpdate } from '../container/Checkout.selector';
-import { isMobileApp } from '../../../../../utils';
+import { fromJS, List } from 'immutable';
+import CHECKOUT_SELECTORS, {
+  getSendOrderUpdate,
+  getAlternateFormFieldsExpress,
+} from '../container/Checkout.selector';
+import { isMobileApp, getAPIConfig } from '../../../../../utils';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
+  getAPIConfig: jest.fn(),
 }));
 
 describe('Checkout Selectors', () => {
@@ -194,11 +198,11 @@ describe('Checkout Selectors', () => {
 
   it('#getIsVenmoEnabled', () => {
     const { getIsVenmoEnabled } = CHECKOUT_SELECTORS;
-    const session = fromJS({
+    const session = {
       siteDetails: {
         VENMO_ENABLED: 'TRUE',
       },
-    });
+    };
 
     const state = {
       session,
@@ -238,5 +242,117 @@ describe('Checkout Selectors', () => {
     expect(getVenmoClientTokenData(state)).toEqual(
       Checkout.getIn(['values', 'venmoClientTokenData'])
     );
+  });
+  it('#getCurrentCheckoutStage', () => {
+    const { getCurrentCheckoutStage } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        stage: 'true',
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          stage: 'true',
+        },
+      }),
+    };
+    expect(getCurrentCheckoutStage(state)).toEqual(Checkout.getIn(['uiFlags', 'stage']));
+  });
+
+  it('#getCheckoutServerError', () => {
+    const { getCheckoutServerError } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        checkoutServerError: null,
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          checkoutServerError: null,
+        },
+      }),
+    };
+    expect(getCheckoutServerError(state)).toEqual(
+      Checkout.getIn(['uiFlags', 'checkoutServerError'])
+    );
+  });
+
+  it('#getExpressReviewShippingSectionId', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            expressReviewShippingSection: {
+              shippingMethodId: '911',
+            },
+          },
+        },
+      },
+    };
+    expect(CHECKOUT_SELECTORS.getExpressReviewShippingSectionId(state)).toEqual({
+      shippingMethodId: '911',
+    });
+  });
+
+  it('#getAlternateFormFieldsExpress', () => {
+    const state = {
+      form: {
+        expressReviewPage: {
+          values: {
+            pickUpAlternateExpress: {
+              hasAlternatePickup: true,
+            },
+          },
+        },
+      },
+    };
+    expect(getAlternateFormFieldsExpress(state)).toEqual({
+      hasAlternatePickup: true,
+    });
+  });
+
+  it('#getShippingAddressList', () => {
+    getAPIConfig.mockImplementation(() => {
+      return { siteId: 'us' };
+    });
+    const AddressBookReducer = fromJS({
+      list: List([
+        {
+          addressId: '158247',
+          nickName: 'sb_2019-06-21 01:23:49.834',
+          primary: 'false',
+          country: 'US',
+          xcont_isShippingAddress: 'true',
+        },
+      ]),
+    });
+
+    const state = {
+      AddressBookReducer,
+    };
+    expect(CHECKOUT_SELECTORS.getShippingAddressList(state)).toEqual(
+      AddressBookReducer.get('list')
+    );
+  });
+  it('#getIsBillingVisited', () => {
+    const { getIsBillingVisited } = CHECKOUT_SELECTORS;
+    const Checkout = fromJS({
+      uiFlags: {
+        isBillingVisited: true,
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        uiFlags: {
+          isBillingVisited: true,
+        },
+      }),
+    };
+    expect(getIsBillingVisited(state)).toEqual(Checkout.getIn(['uiFlags', 'isBillingVisited']));
   });
 });

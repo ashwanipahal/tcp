@@ -1,10 +1,11 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, UIManager } from 'react-native';
+import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
 import { Box } from '@fabulas/astly';
 import { Provider } from 'react-redux';
 
 import { PropTypes } from 'prop-types';
 import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
+import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.native';
 import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tcp/core/src/utils';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
@@ -52,6 +53,17 @@ export class App extends React.PureComponent {
 
   componentDidMount() {
     this.store.dispatch(getUserInfo());
+    const { apiConfig } = this.state;
+    const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
+
+    if (isErrorReportingActive) {
+      initAppErrorReporter({
+        isDevelopment: false,
+        raygunApiKey: RAYGUN_API_KEY,
+        appType: brandId,
+        envId: RWD_APP_VERSION,
+      });
+    }
   }
 
   removeSplash = () => {
@@ -66,15 +78,17 @@ export class App extends React.PureComponent {
    */
   toggleBrandAction = () => {
     const { showBrands } = this.state;
-    this.setState({ showBrands: !showBrands });
+    this.setState({ showBrands: !showBrands }, () => {
+      this.store.dispatch(getUserInfo());
+    });
   };
-
   /**
    * @function switchBrand
    * This methods current app type in utils and switches apiConfig in app
    *
    * @memberof App
    */
+
   switchBrand = appType => {
     resetApiConfig();
     updateBrandName(appType);
@@ -90,7 +104,12 @@ export class App extends React.PureComponent {
         <NetworkProvider>
           <ThemeWrapperHOC appType={appType} switchBrand={this.switchBrand}>
             <Box style={styles.container}>
-              {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+              {Platform.OS === 'ios' ? (
+                <StatusBar barStyle="default" />
+              ) : (
+                <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
+              )}
+
               <AppNavigator
                 screenProps={{ toggleBrandAction: this.toggleBrandAction, apiConfig }}
               />

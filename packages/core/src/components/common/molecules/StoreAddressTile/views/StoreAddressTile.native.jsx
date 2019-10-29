@@ -165,10 +165,15 @@ class StoreAddressTile extends PureComponent {
   }
 
   getStoreAddress() {
-    const { store } = this.props;
+    const { store, labels, variation } = this.props;
     const { address, phone } = store.basicInfo;
     const { addressLine1, city, state, zipCode } = address;
-    return [addressLine1, `${city}, ${state}, ${zipCode}`, phone].map((item, i) => (
+    const distance =
+      variation === detailsType && store.distance
+        ? `${store.distance} ${getLabelValue(labels, 'lbl_storelanding_milesAway')}`
+        : null;
+
+    return [addressLine1, `${city}, ${state}, ${zipCode}`, phone, distance].map((item, i) => (
       <AddressText key={`${item + i}`}>{item && capitalize(item)}</AddressText>
     ));
   }
@@ -183,9 +188,7 @@ class StoreAddressTile extends PureComponent {
         <BrandImage source={gymboreeLogo} accessibilityLabel="Gymboree" accessibilityRole="image" />
         <ListingTitleText>{getLabelValue(labels, 'lbl_storelanding_atThisPlace')}</ListingTitleText>
       </StoryType>
-    ) : (
-      <StoryType />
-    );
+    ) : null;
   }
 
   getStoreType() {
@@ -235,9 +238,9 @@ class StoreAddressTile extends PureComponent {
   }
 
   render() {
-    const { children, variation } = this.props;
+    const { children, variation, selectedStoreId } = this.props;
     return (
-      <StoreAddressTileRoot variation={variation}>
+      <StoreAddressTileRoot variation={variation} selectedStoreId={selectedStoreId}>
         <TileHeader>
           {variation === detailsType && this.getDetailsHeader()}
           {variation !== detailsType && this.getListingHeader()}

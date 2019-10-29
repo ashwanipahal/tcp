@@ -1,5 +1,6 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
-import { getAPIConfig, parseBoolean } from '@tcp/core/src/utils';
+import { getAPIConfig, parseBoolean, getBrand } from '@tcp/core/src/utils';
 import {
   responseContainsErrors,
   ServiceResponseError,
@@ -10,11 +11,11 @@ import {
   isBossProduct,
 } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { insertIntoString } from '@tcp/core/src/utils/utils';
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
 const FAKE_WISHLIST_ID = 'fake_sv2a9';
-// const noImgPath = '/wcsstore/static/images/im_NotFound.svg';
 
 export const AVAILABILITY = {
   OK: 'OK',
@@ -26,10 +27,10 @@ export const AVAILABILITY = {
 };
 
 const addItemToWishlist = wishlistDetails => {
-  const { wishlistId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
+  const { wishListId, skuIdOrProductId, quantity, isProduct, uniqueId } = wishlistDetails;
   const payload = {
     header: {
-      externalId: wishlistId,
+      externalId: wishListId,
       addItem: true,
     },
     body: {
@@ -146,6 +147,57 @@ const getAvailability = item => {
 const generateUPC = item =>
   parseBoolean(item.isProduct) ? null : (item.sizes[item.productId] || {}).UPC;
 
+const getExistingImagesNames = (imageSuffixesArray, baseUrl) => {
+  const NOP = () => null;
+  // eslint-disable-next-line global-require
+  const request = require('superagent');
+  const pendingPromises = [];
+  const foundImagesMap = {};
+  imageSuffixesArray.forEach(suffix => {
+    pendingPromises.push(
+      /** Assumption: if the icon exists the images should be available in all other sizes as well  */
+      request
+        .head(insertIntoString(baseUrl, -4, 0, suffix))
+        .timeout({
+          response: 10000, // Wait 10 seconds for the server to start sending,
+          deadline: 30000, // but allow 30 seconds for the file to finish loading.
+        })
+        .then(res => {
+          if (res.ok) {
+            foundImagesMap[suffix] = true; // changed from push() to keep the same order as it came in imageSuffixesArray
+          }
+        })
+        .catch(NOP) // ignore any failures (we simply do not increment foundImagesCount)
+    );
+  });
+  return Promise.all(pendingPromises).then(() =>
+    imageSuffixesArray.filter(suffix => foundImagesMap[suffix])
+  );
+};
+
+const getExtraImages = (imagePath, extraSizes, imageGenerator) => {
+  const { productImages } = imageGenerator(imagePath);
+  const { assetHost, productAssetPath = `ecom/assets/products/${getBrand()}` } = getAPIConfig();
+  const baseImgPath = `${assetHost}/w_320/${productAssetPath}/${productImages[125]}`;
+  return getExistingImagesNames(extraSizes || ['', '-1', '-2', '-3', '-4', '-5'], baseImgPath).then(
+    existingSuffixes =>
+      existingSuffixes.map(suffix => ({
+        iconSizeImageUrl: insertIntoString(productImages[125], -4, 0, suffix),
+        listingSizeImageUrl: insertIntoString(productImages[380], -4, 0, suffix),
+        regularSizeImageUrl: insertIntoString(productImages[500], -4, 0, suffix),
+        bigSizeImageUrl: insertIntoString(productImages[900], -4, 0, suffix),
+        superSizeImageUrl: insertIntoString(productImages[900], -4, 0, suffix),
+      }))
+  );
+};
+
+const getKeepAlive = (item, isUSStore) =>
+  parseBoolean(isUSStore ? item.TCPOutOfStockFlagUSStore : item.TCPOutOfStockFlagCanadaStore);
+
+const getClearanceItem = item => (item.itemTCPProductInd || '').toLowerCase() === 'clearance';
+
+const newArrivalItem = item => (item.itemTCPProductInd || '').toLowerCase() === 'new arrivals';
+
 /**
  * @function getWishListbyId
  * @param {String} wishListId - Id of the wishlist you are moving the item from
@@ -194,25 +246,30 @@ export const getWishListbyId = ({
           displayName: wishlist.descriptionName,
           creatorName: userName,
           isDefault: wishlist.default === 'true',
-          items: wishlist.item.map((item /* , index */) => {
-            // TODO - fix the image request
-            // pendingPromises.push(getExtraImages(item.productPartNumber, false, imageGenerator)
-            //   .then((extraImages) => {
-            //     let extraImage;
-            //     if (extraImages.length === 0) {
-            //       extraImage = [{
-            //         iconSizeImageUrl: noImgPath,
-            //         listingSizeImageUrl: noImgPath,
-            //         regularSizeImageUrl: noImgPath,
-            //         bigSizeImageUrl: noImgPath,
-            //         superSizeImageUrl: noImgPath
-            //       }];
-            //     } else {
-            //       extraImage = extraImages;
-            //     }
-
-            //     rv.items[index].imagesByColor[item.productColor].extraImages = extraImage;
-            //   }));
+          items: wishlist.item.map((item, index) => {
+            const { productImages } = imageGenerator(item.productPartNumber);
+            pendingPromises.push(
+              getExtraImages(item.productPartNumber, false, imageGenerator).then(extraImages => {
+                let extraImage;
+                if (extraImages.length === 0) {
+                  extraImage = [
+                    {
+                      iconSizeImageUrl: productImages[125],
+                      listingSizeImageUrl: productImages[380],
+                      regularSizeImageUrl: productImages[500],
+                      bigSizeImageUrl: productImages[900],
+                      superSizeImageUrl: productImages[900],
+                    },
+                  ];
+                } else {
+                  extraImage = extraImages;
+                }
+                rv.items[index].imagesByColor[item.productColor] = {
+                  extraImages: extraImage,
+                  basicImageUrl: productImages[125],
+                };
+              })
+            );
 
             return {
               productInfo: {
@@ -241,10 +298,9 @@ export const getWishListbyId = ({
                 quantity: parseInt(item.quantityRequested, 10),
                 store: null,
                 storeZipCode: null,
+                isTCP: item.itemBrand === 'TCP',
                 availability: getAvailability(item),
-                keepAlive: parseBoolean(
-                  isUSStore ? item.TCPOutOfStockFlagUSStore : item.TCPOutOfStockFlagCanadaStore
-                ),
+                keepAlive: getKeepAlive(item, isUSStore),
               },
               imagesByColor: {
                 [item.productColor]: {
@@ -258,8 +314,8 @@ export const getWishListbyId = ({
                 isShowQuickView: parseBoolean(item.isProduct),
                 isBopisEligible: !!item.itemTCPROPISUSStore,
                 itemTCPROPISUSStore: null,
-                clearanceItem: (item.itemTCPProductInd || '').toLowerCase() === 'clearance',
-                newArrivalItem: (item.itemTCPProductInd || '').toLowerCase() === 'new arrivals',
+                clearanceItem: getClearanceItem(item),
+                newArrivalItem: newArrivalItem(item),
               },
               quantityPurchased: parseInt(item.quantityBought, 10),
             };

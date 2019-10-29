@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export default css`
+const style = css`
   box-sizing: border-box;
   padding: 14px 0;
   position: relative;
@@ -37,6 +37,8 @@ export default css`
     }
   }
   .header-middle-login-section {
+    position: absolute;
+    right: 0;
     margin-top: 30px;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 71%;
@@ -104,3 +106,28 @@ export default css`
     }
   }
 `;
+
+export const customHeaderStyle = css`
+  .Modal_Heading {
+    border-bottom: none;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    font-size: ${props => props.theme.typography.fontSizes.fs22};
+    display: flex;
+    justify-content: center;
+    height: auto;
+    padding-bottom: 0;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: flex;
+      justify-content: center;
+      height: auto;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+  }
+  .close-modal {
+    display: none;
+  }
+`;
+
+export default style;

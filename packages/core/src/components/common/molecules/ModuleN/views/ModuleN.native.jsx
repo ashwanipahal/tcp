@@ -10,8 +10,10 @@ import {
   Border,
   ContainerView,
   DivImageCTAContainer,
+  HeaderContainer,
 } from '../ModuleN.styles.native';
-import config from '../config';
+import { config } from '../config';
+import { isGymboree } from '../../../../../utils';
 
 /**
  * @param {object} props : Props for Module N multi type of banner list, button list, header text.
@@ -26,24 +28,26 @@ const { ctaTypes } = config;
 
 const ModuleN = (props: Props) => {
   const { ctaItems, headerText, navigation, promoBanner, ctaType } = props;
-
   const ctaTypeVal = ctaTypes[ctaType];
 
   return (
     <Container background="red">
-      {headerText && (
-        <LinkText
-          type="heading"
-          fontFamily="primary"
-          fontSize="fs20"
-          letterSpacing="ls271"
-          textAlign="center"
-          color="white"
-          navigation={navigation}
-          headerText={headerText}
-          locator="moduleN_header_text"
-        />
-      )}
+      <HeaderContainer>
+        {headerText && (
+          <LinkText
+            type="heading"
+            fontFamily={isGymboree() ? 'secondary' : 'primary'}
+            fontSize={isGymboree() ? 'fs20' : 'fs22'}
+            fontWeight={isGymboree() ? 'semibold' : null}
+            letterSpacing="ls222"
+            textAlign="center"
+            color="white"
+            navigation={navigation}
+            headerText={headerText}
+            locator="moduleN_header_text"
+          />
+        )}
+      </HeaderContainer>
       <PromoTextBannerWrapper>
         {promoBanner && (
           <PromoBanner
@@ -54,7 +58,7 @@ const ModuleN = (props: Props) => {
         )}
       </PromoTextBannerWrapper>
 
-      {ctaTypeVal === 'imageCTAList' && (
+      {ctaTypeVal === ctaTypes.divImageCTACarousel && (
         <DivImageCTAContainer>
           <ButtonList
             buttonListVariation={ctaTypeVal}
@@ -66,7 +70,7 @@ const ModuleN = (props: Props) => {
         </DivImageCTAContainer>
       )}
 
-      {ctaTypeVal === 'stackedCTAList' && (
+      {ctaTypeVal === ctaTypes.stackedCTAButtons && (
         <ContainerView>
           <ButtonList
             buttonListVariation={ctaTypeVal}
@@ -79,7 +83,7 @@ const ModuleN = (props: Props) => {
         </ContainerView>
       )}
 
-      {ctaTypeVal === 'scrollCTAList' && (
+      {ctaTypeVal === ctaTypes.CTAButtonCarousel && (
         <ButtonContainer>
           <ButtonList
             buttonListVariation={ctaTypeVal}
@@ -87,10 +91,11 @@ const ModuleN = (props: Props) => {
             buttonsData={ctaItems}
             locator="moduleN_cta_links"
             color="red"
+            buttonVariation="cautionary"
           />
         </ButtonContainer>
       )}
-      {ctaTypeVal === 'linkCTAList' && (
+      {ctaTypeVal === ctaTypes.linkList && (
         <ButtonContainer>
           <ButtonList
             buttonListVariation={ctaTypeVal}

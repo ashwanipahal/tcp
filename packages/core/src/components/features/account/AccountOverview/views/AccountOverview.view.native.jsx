@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
@@ -12,6 +11,7 @@ import PaymentTile from '../../common/organism/PaymentTile';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import OrdersTile from '../../common/organism/OrdersTile';
+import MyPreferencesTile from '../../common/organism/MyPreferencesTile';
 import {
   UnderlineStyle,
   ImageWrapper,
@@ -20,6 +20,7 @@ import {
   TextWrapper,
   TouchabelContainer,
   ImageContainer,
+  RightArrowImageContainer,
   StyledImage,
 } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
@@ -36,6 +37,8 @@ import CreateAccount from '../../CreateAccount';
 import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
+import CustomIcon from '../../../../common/atoms/Icon';
+import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.constants';
 
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
@@ -137,8 +140,11 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   showTrackOrderModal = () => {
-    const { openTrackOrder } = this.props;
-    openTrackOrder({ state: true });
+    const { navigation } = this.props;
+    navigation.navigate('TrackOrder', {
+      handleToggle: this.toggleModal,
+      noHeader: true,
+    });
   };
 
   getModalHeader = (getComponentId, labels) => {
@@ -181,7 +187,11 @@ class AccountOverview extends PureComponent<Props> {
               <EarnExtraPointsOverview handleComponentChange={handleComponentChange} />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_ordersHeading')}>
-              <OrdersTile labels={labels} navigation={navigation} />
+              <OrdersTile
+                labels={labels}
+                navigation={navigation}
+                handleComponentChange={handleComponentChange}
+              />
             </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_addressBookHeading')}>
               <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
@@ -192,7 +202,9 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_paymentHeading')}>
               <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
+              <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
+            </Panel>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
           </React.Fragment>
         )}
@@ -322,10 +334,26 @@ class AccountOverview extends PureComponent<Props> {
 
             <UnderlineStyle />
 
-            <Panel
-              title={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
-              isVariationTypeLink
-            />
+            <TouchabelContainer
+              onPress={() => {
+                navigation.navigate('GiftCardPage', {
+                  title: 'Gift Cards',
+                  pdpUrl: 'Gift Card',
+                });
+              }}
+            >
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs13"
+                fontWeight="regular"
+                text={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
+                color="gray.900"
+              />
+              <RightArrowImageContainer>
+                <ImageComp source={rightIcon} width={7} height={10} />
+              </RightArrowImageContainer>
+            </TouchabelContainer>
+
             <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
             <Panel
               title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}
@@ -338,9 +366,26 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
           </React.Fragment>
         )}
-
+        {isUserLoggedIn && (
+          <TouchabelContainer onPress={() => handleComponentChange('myFavoritePageMobile')}>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              text={getLabelValue(labels, 'lbl_overview_myFavoritesHeading')}
+              color="gray.900"
+              textAlign="center"
+            />
+            <CustomIcon
+              margins="0 0 0 8px"
+              iconFontName={ICON_FONT_CLASS.Icomoon}
+              name={ICON_NAME.filledHeart}
+              size="fs20"
+              color="red.500"
+            />
+          </TouchabelContainer>
+        )}
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
-        <TrackOrderContainer handleToggle={this.toggleModal} navigation={navigation} />
         <UnderlineStyle />
       </View>
     );

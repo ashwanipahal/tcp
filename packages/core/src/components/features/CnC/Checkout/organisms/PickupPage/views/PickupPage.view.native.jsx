@@ -52,6 +52,11 @@ class PickUpFormPart extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { pickupDidMount } = this.props;
+    pickupDidMount(true);
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -165,6 +170,7 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
       navigation,
       availableStages,
+      setCheckoutStage,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -176,6 +182,7 @@ class PickUpFormPart extends React.Component {
           activeStage="pickup"
           navigation={navigation}
           availableStages={availableStages}
+          setCheckoutStage={setCheckoutStage}
         />
         <ScrollView>
           <Container>
@@ -333,10 +340,12 @@ PickUpFormPart.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   availableStages: PropTypes.shape([]).isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 PickUpFormPart.defaultProps = {

@@ -52,7 +52,9 @@ const setErrorReporter = () => {
     raygunApiKey: process.env.RWD_WEB_RAYGUN_API_KEY,
     isDevelopment: process.env.NODE_ENV === ENV_DEVELOPMENT,
   };
-  initErrorReporter(config);
+  if (process.env.IS_ERROR_REPORTING_NODE_ACTIVE) {
+    initErrorReporter(config);
+  }
   const expressMiddleWare = getExpressMiddleware();
   if (expressMiddleWare) {
     server.use(expressMiddleWare);
@@ -97,6 +99,8 @@ const setBrandId = (req, res) => {
   res.locals.brandId = brandId;
 };
 
+setErrorReporter();
+
 connectRedis({
   REDIS_CLIENT: redis,
   REDIS_HOST: process.env.RWD_REDIS_HOST,
@@ -107,8 +111,6 @@ const setHostname = (req, res) => {
   const { hostname } = req;
   res.locals.hostname = hostname;
 };
-
-setErrorReporter();
 
 const redirectToErrorPage = (req, res) => {
   // TODO - To handle all this in Akamai redirect ?
@@ -137,6 +139,7 @@ const getCacheKey = req => {
  * @param {object} app The express/next app instance
  * @param {string} resolver The route resolver
  * @param {object} params The route params
+ * NOTE: To be used when page level cache is needed from redis, currently its done by akamai
  */
 const renderAndCache = async (app, req, res, resolver, params) => {
   // Key it the request path
@@ -191,7 +194,7 @@ app.prepare().then(() => {
       setHostname(req, res);
       // Handling routes without params
       if (!route.params) {
-        renderAndCache(app, req, res, route.resolver, req.query);
+        app.render(req, res, route.resolver, req.query);
         return;
       }
 
@@ -201,7 +204,7 @@ app.prepare().then(() => {
         componentParam[paramKey] = req.params[paramKey];
         return componentParam;
       }, {});
-      renderAndCache(app, req, res, route.resolver, params);
+      app.render(req, res, route.resolver, params);
     });
   });
 

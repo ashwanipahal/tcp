@@ -53,6 +53,9 @@ const CouponDetailModalStyle = css`
   .AddShopperType {
     background-image: url('/static/images/survey.png');
   }
+  .AddBirthDate {
+    background-image: url('/static/images/birthday.png');
+  }
 
   .FeedbackSurvey {
     background-image: url('/static/images/oval.svg');

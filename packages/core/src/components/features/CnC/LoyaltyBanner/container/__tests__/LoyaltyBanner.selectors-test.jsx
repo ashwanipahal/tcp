@@ -3,17 +3,15 @@ import { getThresholdValue, cartOrderDetails } from '../LoyaltyBanner.selectors'
 
 describe('#loyaltyBanner Selectors', () => {
   it('#loyaltyBanner should return siteDetails', () => {
-    const session = fromJS({
+    const session = {
       siteDetails: {
         PLCC_MARKETING_BAG_TOTAL_CUT_OFF: 0,
       },
-    });
+    };
     const state = {
       session,
     };
-    expect(getThresholdValue(state)).toEqual(
-      session.getIn(['siteDetails', 'PLCC_MARKETING_BAG_TOTAL_CUT_OFF'])
-    );
+    expect(getThresholdValue(state)).toEqual(session.siteDetails.PLCC_MARKETING_BAG_TOTAL_CUT_OFF);
   });
 
   it('#loyaltyBanner should return cartOrderDetails', () => {
@@ -35,7 +33,7 @@ describe('#loyaltyBanner Selectors', () => {
       CartPageReducer,
     };
     const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
-    const subTotal = cartOrderDetailsObj.get('subTotalWithDiscounts');
+    const subTotal = cartOrderDetailsObj.get('subTotal');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
     const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
     expect(cartOrderDetails(state)).toEqual({

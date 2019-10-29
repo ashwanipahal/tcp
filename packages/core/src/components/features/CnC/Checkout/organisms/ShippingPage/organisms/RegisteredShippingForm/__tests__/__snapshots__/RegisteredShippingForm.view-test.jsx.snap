@@ -3,6 +3,7 @@
 exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Row)
@@ -17,11 +18,17 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={null}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -66,6 +73,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={false}
                 fill="BLACK"
                 fullWidth={true}
@@ -112,6 +120,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="edit-link-placement"
       colSize={
         Object {
           "large": 1,
@@ -123,7 +132,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -147,7 +156,8 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Address)
         address={null}
         className="shipping__address"
-        dataLocatorPrefix="address"
+        dataLocatorPrefix="shipping"
+        parentDataLocator="shipping-details"
         showPhone={true}
       />
     </Styled(Col)>
@@ -164,7 +174,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         noLink={true}
         onClick={[Function]}
         underline={true}
@@ -176,50 +186,14 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
   <Styled(Row)
     fullBleed={true}
   />
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-  />
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
->
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="add"
-  />
-</div>
-`;
-
-exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`] = `
-<div
-  className=""
-  isEditing={null}
->
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={true}
-    modalType="edit"
-  />
-</div>
-`;
-
-exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDownChange 1`] = `
-<div
-  className=""
-  isEditing={true}
 >
   <Styled(Row)
     fullBleed={true}
@@ -233,11 +207,248 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           "small": 6,
         }
       }
-      isEditing={true}
+      data-locator="address-dropdown"
+      isEditing={null}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <div
+                className="address-wrapper"
+              >
+                <ForwardRef
+                  address={
+                    Object {
+                      "addressLine": Array [
+                        "addressline 1ooo",
+                        "addressline 2aaa",
+                      ],
+                      "city": "test city",
+                      "country": "test country bbbb",
+                      "firstName": "test",
+                      "lastName": "test",
+                      "phone1": "1234567890",
+                    }
+                  }
+                  className="address"
+                  isDefault={false}
+                  showCountry={false}
+                  showDefault={false}
+                  showPhone={false}
+                />
+              </div>,
+              "title": "test test ",
+              "value": undefined,
+            },
+            Object {
+              "content": <ForwardRef
+                buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
+                disabled={false}
+                fill="BLACK"
+                fullWidth={true}
+                onClick={[Function]}
+              >
+                lbl_shipping_addNewAddress
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_shipping_sectionHeader
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="edit-link-placement"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="medium"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 5,
+        }
+      }
+    >
+      <Styled(Address)
+        address={null}
+        className="shipping__address"
+        dataLocatorPrefix="shipping"
+        parentDataLocator="shipping-details"
+        showPhone={true}
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "onFileAddressKey",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": undefined,
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="medium"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`] = `
+<div
+  className=""
+  data-locator="shipping-details"
+  isEditing={null}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      data-locator="address-dropdown"
+      isEditing={null}
+    >
+      <Field
+        component={[Function]}
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -275,6 +486,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={false}
                 fill="BLACK"
                 fullWidth={true}
@@ -290,6 +502,271 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         selectListTitle="Select from address book"
       />
     </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-mobile"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-XS"
+        color="text.primary"
+        component="p"
+        data-locator="shipping-details"
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_shipping_sectionHeader
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="edit-link-placement"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="medium"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 5,
+        }
+      }
+    >
+      <Styled(Address)
+        address={
+          Object {
+            "addressId": "123",
+            "addressLine": Array [
+              "addressline 1 hhh",
+              "addressline 2 mmm",
+            ],
+            "city": "test city",
+            "country": "test country hhh",
+            "firstName": "test",
+            "lastName": "test",
+            "phone1": "1234567890",
+          }
+        }
+        className="shipping__address"
+        dataLocatorPrefix="shipping"
+        parentDataLocator="shipping-details"
+        showPhone={true}
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="address-form"
+      >
+        <FormSection
+          name="address"
+        >
+          <Styled(AddressFields)
+            addressPhoneNo={null}
+            dispatch={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    Object {
+                      "meta": Object {
+                        "field": "onFileAddressKey",
+                        "form": "checkoutShipping",
+                        "persistentSubmitErrors": undefined,
+                        "touch": undefined,
+                      },
+                      "payload": "123",
+                      "type": "@@redux-form/CHANGE",
+                    },
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            formName="checkoutShipping"
+            formSection="address"
+            isGuest={false}
+            showDefaultCheckbox={false}
+            variation="secondary"
+          />
+        </FormSection>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-desktop"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="edit-shipping-address"
+        fontSizeVariation="medium"
+        noLink={true}
+        onClick={[Function]}
+        underline={true}
+      >
+        lbl_shipping_edit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  />
+</div>
+`;
+
+exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDownChange 1`] = `
+<div
+  className=""
+  data-locator="shipping-details"
+  isEditing={true}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="address-dropDown"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      data-locator="address-dropdown"
+      isEditing={true}
+    >
+      <Field
+        component={[Function]}
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        onChange={[Function]}
+        options={
+          Immutable.List [
+            Object {
+              "content": <div
+                className="address-wrapper"
+              >
+                <ForwardRef
+                  address={
+                    Object {
+                      "addressId": "123",
+                      "addressLine": Array [
+                        "addressline 1 hhh",
+                        "addressline 2 mmm",
+                      ],
+                      "city": "test city",
+                      "country": "test country hhh",
+                      "firstName": "test",
+                      "lastName": "test",
+                      "phone1": "1234567890",
+                    }
+                  }
+                  className="address"
+                  isDefault={false}
+                  showCountry={false}
+                  showDefault={false}
+                  showPhone={false}
+                />
+              </div>,
+              "title": "test test ",
+              "value": "123",
+            },
+            Object {
+              "content": <ForwardRef
+                buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
+                disabled={false}
+                fill="BLACK"
+                fullWidth={true}
+                onClick={[Function]}
+              >
+                lbl_shipping_addNewAddress
+              </ForwardRef>,
+              "title": "Add New Address",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-desktop"
+    fullBleed={true}
+  >
+    <Styled(BodyCopy)
+      className="elem-mb-XS"
+      color="text.primary"
+      component="p"
+      data-locator="shipping-details"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      lbl_shipping_edit
+    </Styled(BodyCopy)>
   </Styled(Row)>
   <Styled(Row)
     className="hide-on-mobile"
@@ -390,27 +867,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
         </FormSection>
       </div>
     </Styled(Col)>
-    <Styled(Col)
-      className="hide-on-desktop"
-      colSize={
-        Object {
-          "large": 1,
-          "medium": 1,
-          "small": 1,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
-        noLink={true}
-        onClick={[Function]}
-        underline={true}
-      >
-        lbl_shipping_edit
-      </Styled(Anchor)>
-    </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
     fullBleed={true}
@@ -564,6 +1020,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -577,64 +1034,59 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-XL edit-cta "
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
-        }
-      }
+  <div>
+    <Styled(Row)
+      className="elem-mt-XL edit-cta"
+      fullBleed={true}
     >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className=""
-        data-locator="edit-shipping-cancel-btn"
-        disabled={false}
-        fill="WHITE"
-        onClick={[Function]}
-        type="button"
-      >
-        lbl_shipping_cancel
-      </Styled(Button)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
         }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        data-locator="edit-shipping-save-btn"
-        fill="BLUE"
-        onClick={[Function]}
-        type="button"
       >
-        lbl_shipping_save
-      </Styled(Button)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-  />
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="edit-shipping-cancel-btn"
+          fill="WHITE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_cancel
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="save-btn"
+          data-locator="edit-shipping-save-btn"
+          fill="BLUE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_save
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddress true 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Row)
@@ -649,11 +1101,17 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={null}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -690,6 +1148,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={true}
                 fill="BLACK"
                 fullWidth={true}
@@ -788,27 +1247,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           />
         </FormSection>
       </div>
-    </Styled(Col)>
-    <Styled(Col)
-      className="hide-on-desktop"
-      colSize={
-        Object {
-          "large": 1,
-          "medium": 1,
-          "small": 1,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
-        noLink={true}
-        onClick={[Function]}
-        underline={true}
-      >
-        lbl_shipping_edit
-      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -962,6 +1400,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1123,6 +1562,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1136,19 +1576,13 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-  />
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddress true and isSaveToAddressBookChecked true 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Row)
@@ -1163,11 +1597,17 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={null}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -1204,6 +1644,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={true}
                 fill="BLACK"
                 fullWidth={true}
@@ -1302,27 +1743,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           />
         </FormSection>
       </div>
-    </Styled(Col)>
-    <Styled(Col)
-      className="hide-on-desktop"
-      colSize={
-        Object {
-          "large": 1,
-          "medium": 1,
-          "small": 1,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
-        noLink={true}
-        onClick={[Function]}
-        underline={true}
-      >
-        lbl_shipping_edit
-      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1476,6 +1896,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1637,6 +2058,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -1650,19 +2072,13 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-  />
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly with isEditing true 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={true}
 >
   <Styled(Row)
@@ -1677,11 +2093,17 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           "small": 6,
         }
       }
+      data-locator="address-dropdown"
       isEditing={true}
     >
       <Field
         component={[Function]}
-        dataLocator="shipping-address"
+        dataLocatorObj={
+          Object {
+            "dropDownList": "shipping-details-lst",
+            "heading": "address-book-txt",
+          }
+        }
         id="onFileAddressKey"
         name="onFileAddressKey"
         onChange={[Function]}
@@ -1718,6 +2140,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
             Object {
               "content": <ForwardRef
                 buttonVariation="variable-width"
+                dataLocator="new-addressbtn"
                 disabled={false}
                 fill="BLACK"
                 fullWidth={true}
@@ -1733,6 +2156,26 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
         selectListTitle="Select from address book"
       />
     </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="hide-on-desktop"
+    fullBleed={true}
+  >
+    <Styled(BodyCopy)
+      className="elem-mb-XS"
+      color="text.primary"
+      component="p"
+      data-locator="shipping-details"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      lbl_shipping_edit
+    </Styled(BodyCopy)>
   </Styled(Row)>
   <Styled(Row)
     className="hide-on-mobile"
@@ -1816,27 +2259,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           />
         </FormSection>
       </div>
-    </Styled(Col)>
-    <Styled(Col)
-      className="hide-on-desktop"
-      colSize={
-        Object {
-          "large": 1,
-          "medium": 1,
-          "small": 1,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="edit-shipping-address"
-        fontSizeVariation="small"
-        noLink={true}
-        onClick={[Function]}
-        underline={true}
-      >
-        lbl_shipping_edit
-      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -1991,6 +2413,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2004,64 +2427,59 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    className="elem-mt-XL edit-cta "
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
-        }
-      }
+  <div>
+    <Styled(Row)
+      className="elem-mt-XL edit-cta"
+      fullBleed={true}
     >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className=""
-        data-locator="edit-shipping-cancel-btn"
-        disabled={false}
-        fill="WHITE"
-        onClick={[Function]}
-        type="button"
-      >
-        lbl_shipping_cancel
-      </Styled(Button)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 6,
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
         }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        data-locator="edit-shipping-save-btn"
-        fill="BLUE"
-        onClick={[Function]}
-        type="button"
       >
-        lbl_shipping_save
-      </Styled(Button)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-  />
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          data-locator="edit-shipping-cancel-btn"
+          fill="WHITE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_cancel
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 2,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="save-btn"
+          data-locator="edit-shipping-save-btn"
+          fill="BLUE"
+          onClick={[Function]}
+          type="button"
+        >
+          lbl_shipping_save
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddEditModal 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -2281,6 +2699,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2442,6 +2861,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2455,36 +2875,13 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-    toggleAddEditModal={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            Object {
-              "type": "edit",
-            },
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      }
-    }
-  />
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddEditModal 2`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -2531,24 +2928,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": false,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -2720,6 +3101,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2881,6 +3263,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -2894,36 +3277,13 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-    toggleAddEditModal={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            Object {
-              "type": "add",
-            },
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      }
-    }
-  />
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleAddNewAddress 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -2970,24 +3330,8 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
                     "type": "@@redux-form/CHANGE",
                   },
                 ],
-                Array [
-                  Object {
-                    "meta": Object {
-                      "field": "defaultShipping",
-                      "form": "checkoutShipping",
-                      "persistentSubmitErrors": undefined,
-                      "touch": undefined,
-                    },
-                    "payload": false,
-                    "type": "@@redux-form/CHANGE",
-                  },
-                ],
               ],
               "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -3159,6 +3503,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -3320,6 +3665,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -3333,19 +3679,13 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-  />
 </div>
 `;
 
 exports[`RegisteredShippingFormVanilla should render correctly with no addresses and call toggleIsEditing 1`] = `
 <div
   className=""
+  data-locator="shipping-details"
   isEditing={null}
 >
   <Styled(Col)
@@ -3565,6 +3905,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="saveaddress-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -3726,6 +4067,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
           className={null}
           color="text.primary"
           component="p"
+          dataLocator="shippingDefault-chk"
           fontFamily="secondary"
           fontSize="fs16"
           fontWeight="regular"
@@ -3739,12 +4081,5 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
       </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(AddEditShippingAddress)
-    actionButtons={[Function]}
-    addressFields={[Function]}
-    defaultOptions={[Function]}
-    modalState={false}
-    modalType={null}
-  />
 </div>
 `;

@@ -12,7 +12,10 @@ import {
   StyledErrorWrapper,
   StyledTextBoxWrapper,
   ImageWrapper,
+  StyledErrorIcon,
 } from '../CreditCardTextBox.style.native';
+
+const errorIcon = require('../../../../../assets/alert-triangle.png');
 
 const getCardTypeImgUrl = cardType => {
   return getIconCard(cardIconMapping[cardType]);
@@ -39,6 +42,8 @@ export class CreditCardTextBox extends React.Component {
     val: PropTypes.string,
     customStyle: PropTypes.shape({}),
     cardType: PropTypes.string,
+    showErrorIcon: PropTypes.bool,
+    onCardFocus: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -55,6 +60,7 @@ export class CreditCardTextBox extends React.Component {
     val: '',
     customStyle: {},
     cardType: '',
+    showErrorIcon: true,
   };
 
   constructor(props) {
@@ -67,7 +73,7 @@ export class CreditCardTextBox extends React.Component {
   }
 
   handleFocus = () => {
-    const { isEdit } = this.props;
+    const { isEdit, onCardFocus } = this.props;
     const { clearValue } = this.state;
     if (isEdit) {
       this.textboxValue = !(isEdit && !clearValue);
@@ -80,6 +86,9 @@ export class CreditCardTextBox extends React.Component {
         isFocused: true,
       });
     }
+    if (onCardFocus) {
+      onCardFocus();
+    }
   };
 
   handleBlur = () => {
@@ -91,10 +100,16 @@ export class CreditCardTextBox extends React.Component {
   getErrorMsg = () => {
     const {
       meta: { touched, error },
+      showErrorIcon,
     } = this.props;
     if (touched && error) {
       return (
         <StyledErrorWrapper>
+          {showErrorIcon && (
+            <StyledErrorIcon>
+              <Image source={errorIcon} width="15px" height="15px" />
+            </StyledErrorIcon>
+          )}
           <BodyCopy
             mobilefontFamily={['secondary']}
             fontWeight="semibold"
@@ -151,7 +166,12 @@ export class CreditCardTextBox extends React.Component {
         />
         {cardType !== null && (
           <ImageWrapper>
-            <Image source={getCardTypeImgUrl(cardType)} width="40" height="30" />
+            <Image
+              source={getCardTypeImgUrl(cardType)}
+              width="40"
+              height="30"
+              resizeMode="contain"
+            />
           </ImageWrapper>
         )}
       </View>

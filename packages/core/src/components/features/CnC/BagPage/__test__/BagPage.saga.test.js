@@ -45,7 +45,11 @@ describe('Cart Item saga', () => {
   });
 
   it('should dispatch getCartDataSaga action for success resposnse', () => {
-    const getCartDataSagaGen = getCartDataSaga({ payload: {} });
+    const getCartDataSagaGen = getCartDataSaga({
+      payload: { isCheckoutFlow: true, translation: true },
+    });
+    getCartDataSagaGen.next();
+    getCartDataSagaGen.next();
     getCartDataSagaGen.next();
 
     const res = {
@@ -58,9 +62,11 @@ describe('Cart Item saga', () => {
       coupons: {},
     };
     getCartDataSagaGen.next(res);
+    getCartDataSagaGen.next([{ prodpartno: '123' }]);
     expect(getCartDataSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );
+    getCartDataSagaGen.next(res);
     const putDescriptor = getCartDataSagaGen.next(res).value;
     expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCouponsData(res.coupons)));
   });

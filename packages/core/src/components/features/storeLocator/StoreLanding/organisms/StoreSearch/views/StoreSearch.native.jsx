@@ -7,7 +7,7 @@ import { getAPIConfig, getLabelValue } from '@tcp/core/src/utils';
 import { Anchor, BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, change } from 'redux-form';
 import {
   StyledContainer,
   StyledStoreLocator,
@@ -38,14 +38,16 @@ class StoreSearch extends Component {
 
   locationRef = null;
 
-  handleLocationSelection = ({ geometry }) => {
-    const { loadStoresByCoordinates, submitting } = this.props;
+  handleLocationSelection = (data, inputValue) => {
+    const { geometry } = data;
+    const { loadStoresByCoordinates, submitting, dispatch } = this.props;
     if (!geometry || submitting) {
       return;
     }
     const {
       location: { lat, lng },
     } = geometry;
+    dispatch(change('StoreSearch', 'storeAddressLocator', inputValue));
     loadStoresByCoordinates(Promise.resolve({ lat, lng }), INITIAL_STORE_LIMIT);
   };
 
@@ -187,13 +189,16 @@ class StoreSearch extends Component {
               component={GooglePlacesInput}
               dataLocator="storeAddressLocator"
               componentRestrictions={{ ...{ country: [selectedCountry] } }}
-              onValueChange={this.handleLocationSelection}
+              onValueChange={(data, inputValue) => {
+                this.handleLocationSelection(data, inputValue);
+              }}
               refs={instance => {
                 this.locationRef = instance;
               }}
               clearButtonMode="never"
               errorMessage={errorMessage}
               onSubmitEditing={inputSearch => this.onSearch(inputSearch)}
+              name="storeAddressLocator"
             />
           </>
         </StyledAutoComplete>
@@ -228,6 +233,7 @@ StoreSearch.propTypes = {
   mapView: PropTypes.bool,
   selectStoreType: PropTypes.func.isRequired,
   getLocationStores: PropTypes.func.isRequired,
+  dispatch: PropTypes.func,
 };
 
 StoreSearch.defaultProps = {
@@ -235,6 +241,7 @@ StoreSearch.defaultProps = {
   selectedCountry: 'US',
   submitting: false,
   mapView: false,
+  dispatch: () => {},
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['storeAddressLocator']));

@@ -1,7 +1,9 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
 import mock from './mock';
+import module2ColumnMock from './module2ColumnMock';
 import handler from '../../../handler';
 
+let mockAdded = 0;
 /**
  * Abstractor layer for loading data from API for Layout
  */
@@ -56,7 +58,13 @@ const LayoutAbstractor = {
    * @param {Object} data Response object for layout query
    */
   getModulesFromLayout: async data => {
-    const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
+    // Adding Module 2 columns mock
+    const layoutResponse = data.items;
+    if (!mockAdded) {
+      layoutResponse[0].layout.slots.push(module2ColumnMock);
+      mockAdded = 1;
+    }
+    const moduleObjects = LayoutAbstractor.collateModuleObject(layoutResponse);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
       return LayoutAbstractor.processModuleData(response.data);
     });
@@ -68,15 +76,32 @@ const LayoutAbstractor = {
   collateModuleObject: items => {
     const moduleIds = [];
     items.forEach(({ layout: { slots } }) => {
-      slots.forEach(slot =>
-        moduleIds.push({
-          name: slot.moduleName,
-          data: {
-            contentId: slot.contentId,
-            slot: slot.name,
-          },
-        })
-      );
+      slots.forEach(slot => {
+        if (slot.contentId) {
+          const contentIds = slot.contentId.split(',');
+          if (contentIds.length > 1) {
+            const moduleNames = slot.val.split(',');
+            contentIds.forEach((contentId, index) => {
+              const moduleName = moduleNames[index];
+              moduleIds.push({
+                name: moduleName,
+                data: {
+                  contentId,
+                  slot: `${slot.name}_${index}`,
+                },
+              });
+            });
+          } else {
+            moduleIds.push({
+              name: slot.moduleName,
+              data: {
+                contentId: slot.contentId,
+                slot: slot.name,
+              },
+            });
+          }
+        }
+      });
     });
     return moduleIds;
   },
@@ -86,6 +111,7 @@ const LayoutAbstractor = {
       const { set = [] } = moduleData[slotKey];
       modulesObject[moduleData[slotKey].contentId] = {
         ...moduleData[slotKey].composites,
+        moduleName: moduleData[slotKey].name,
         set,
       };
       set.forEach(({ key, val }) => {

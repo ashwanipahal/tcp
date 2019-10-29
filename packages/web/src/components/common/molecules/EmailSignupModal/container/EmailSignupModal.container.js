@@ -24,23 +24,8 @@ export const mapDispatchToProps = dispatch => {
     closeModal: () => {
       dispatch(toggleEmailSignupModal({ isModalOpen: false }));
     },
-    /* Validate function for redux-form */
-    asyncValidate: (values, reduxFormDispatch, props) => {
-      const {
-        formViewConfig: { validationErrorLabel },
-      } = props;
-
-      return values.signup
-        ? emailSignupAbstractor.verifyEmail(values.signup).then(result => {
-            if (result.error) {
-              const error = { signup: validationErrorLabel };
-              // eslint-disable-next-line prefer-promise-reject-errors
-              return Promise.reject({ ...error, _error: error });
-            }
-
-            return result;
-          })
-        : Promise.resolve();
+    validateSignupEmail: email => {
+      return emailSignupAbstractor.verifyEmail(email);
     },
   };
 };

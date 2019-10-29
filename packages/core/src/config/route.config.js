@@ -52,6 +52,12 @@ const ROUTES_LIST = [
     resolver: '/instagram',
   },
   {
+    noSlugPath: 'twitter',
+    path: '/twitter',
+    resolver: '/twitter',
+  },
+
+  {
     noSlugPath: 'account',
     path: '/account/:id?/:subSection?',
     resolver: '/account',
@@ -75,7 +81,7 @@ const ROUTES_LIST = [
   {
     noSlugPath: 'c',
     path: '/c/:cid',
-    resolver: '/ProductListing',
+    resolver: '/ListingPage',
     params: ['cid'],
   },
   {
@@ -85,8 +91,14 @@ const ROUTES_LIST = [
     params: ['pid'],
   },
   {
+    noSlugPath: 'b',
+    path: '/b/:bid',
+    resolver: '/BundleProduct',
+    params: ['bid'],
+  },
+  {
     noSlugPath: 'search',
-    path: '/search/:searchQuery',
+    path: '/search/:searchQuery?',
     resolver: '/SearchDetail',
     params: ['searchQuery'],
   },

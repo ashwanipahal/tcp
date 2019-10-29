@@ -23,9 +23,11 @@ const OutfitDetailsView = ({
   isPlcc,
   isInternationalShipping,
   currencySymbol,
-  priceCurrency,
   currencyExchange,
   handleAddToBag,
+  addToBagError,
+  isLoggedIn,
+  addToFavorites,
 }) => {
   const { imagesByColor, colorFitsSizesMap } = outfitProduct;
   const colorProduct =
@@ -37,7 +39,7 @@ const OutfitDetailsView = ({
 
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
-  const viewDetails = labels && labels.lbl_outfit_title;
+  const viewDetails = labels && labels.lbl_outfit_viewdetail;
 
   return (
     <Row className={className}>
@@ -88,10 +90,11 @@ const OutfitDetailsView = ({
             isCanada={isCanada}
             isPlcc={isPlcc}
             isInternationalShipping={isInternationalShipping}
+            onAddItemToFavorites={addToFavorites}
+            isLoggedIn={isLoggedIn}
           />
           <ProductPrice
             currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
             currencyExchange={currencyExchange}
             {...prices}
             isCanada={isCanada}
@@ -105,6 +108,7 @@ const OutfitDetailsView = ({
             currentProduct={outfitProduct}
             plpLabels={plpLabels}
             isOutfitPage
+            errorOnHandleSubmit={addToBagError}
           />
         </div>
       </Col>
@@ -122,10 +126,12 @@ OutfitDetailsView.propTypes = {
   isPlcc: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
-  priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.shape({}),
+  currencyExchange: PropTypes.number,
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
+  addToBagError: PropTypes.bool,
+  addToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -137,10 +143,11 @@ OutfitDetailsView.defaultProps = {
   isCanada: false,
   isPlcc: false,
   isInternationalShipping: false,
-  currencySymbol: '$',
-  priceCurrency: 'USD',
-  currencyExchange: [{ exchangevalue: 1 }],
+  currencySymbol: 'USD',
+  currencyExchange: 1,
   labels: {},
+  addToBagError: false,
+  isLoggedIn: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

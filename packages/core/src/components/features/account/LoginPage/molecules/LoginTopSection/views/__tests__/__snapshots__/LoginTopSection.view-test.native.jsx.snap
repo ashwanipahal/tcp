@@ -65,6 +65,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
       fontSizeVariation="medium"
       id="forgotPasswordForm"
       locator=""
+      margins={null}
       onPress={[Function]}
       text="lbl_login_Description_clickhere"
       underline={true}

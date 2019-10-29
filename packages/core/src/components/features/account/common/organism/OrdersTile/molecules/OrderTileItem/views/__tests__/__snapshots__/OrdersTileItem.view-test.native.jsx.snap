@@ -2,7 +2,7 @@
 
 exports[`OrdersTileItem component should render correctly 1`] = `
 <Styled(View)
-  spacingStyles="margin-bottom-MED"
+  spacingStyles="margin-bottom-LRG"
 >
   <Styled(View)>
     <Styled(BodyCopy)
@@ -47,28 +47,13 @@ exports[`OrdersTileItem component should render correctly 1`] = `
       fontSize="fs14"
       fontSizeVariation="large"
       locator=""
-      onPress={null}
-      text=""
+      margins={null}
+      noLink={true}
+      onPress={[Function]}
+      text="7000037172"
       underline={true}
       visible={false}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontSize="fs14"
-        fontWeight="regular"
-        margin={null}
-        mobilefontFamily={
-          Array [
-            "secondary",
-          ]
-        }
-        numberOfLines={null}
-        text="7000037172"
-        textDecoration={null}
-      />
-    </Styled(Anchor)>
+    />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
@@ -275,7 +260,7 @@ exports[`OrdersTileItem component should render correctly 1`] = `
 
 exports[`OrdersTileItem component should render correctly 2`] = `
 <Styled(View)
-  spacingStyles="margin-bottom-MED"
+  spacingStyles="margin-bottom-LRG"
 >
   <Styled(View)>
     <Styled(BodyCopy)
@@ -320,27 +305,13 @@ exports[`OrdersTileItem component should render correctly 2`] = `
       fontSize="fs14"
       fontSizeVariation="large"
       locator=""
-      onPress={null}
+      margins={null}
+      noLink={true}
+      onPress={[Function]}
       text=""
       underline={true}
       visible={false}
-    >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontSize="fs14"
-        fontWeight="regular"
-        margin={null}
-        mobilefontFamily={
-          Array [
-            "secondary",
-          ]
-        }
-        numberOfLines={null}
-        textDecoration={null}
-      />
-    </Styled(Anchor)>
+    />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)

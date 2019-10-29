@@ -7,7 +7,6 @@ import OrderLedgerContainer from '../../OrderLedger';
 import AirmilesBanner from '../../AirmilesBanner';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
-import LoyaltyBanner from '../../../../LoyaltyBanner';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 import styles from '../styles/CnCTemplate.style';
@@ -38,12 +37,12 @@ const CnCTemplate = ({
   isGuest,
   isCheckoutView,
   showAccordian,
-  isNonEmptySFL,
   isConfirmationPage,
   isNotLoaded,
   orderLedgerAfterView,
+  pageCategory,
 }) => {
-  const isSmallLeftSection = isNonEmptySFL || showLeftSection;
+  const isSmallLeftSection = showLeftSection;
   return (
     <section className={className}>
       {Header && <Header />}
@@ -76,14 +75,18 @@ const CnCTemplate = ({
                   </>
                 ) : (
                   <>
-                    <OrderLedgerContainer orderLedgerAfterView={orderLedgerAfterView} />
+                    <OrderLedgerContainer
+                      orderLedgerAfterView={orderLedgerAfterView}
+                      pageCategory={pageCategory}
+                    />
                     {getBagActions({ BagActions })}
-                    <LoyaltyBanner />
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos
+                      fullPageInfo={!isCheckoutView || orderLedgerAfterView}
                       showAccordian={showAccordian}
                       additionalClassNameModal="coupon-modal-web"
+                      idPrefix="desktop"
                     />
                   </>
                 )}
@@ -106,10 +109,10 @@ CnCTemplate.propTypes = {
   showLeftSection: PropTypes.bool,
   isGuest: PropTypes.bool.isRequired,
   showAccordian: PropTypes.bool,
-  isNonEmptySFL: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
   isNotLoaded: PropTypes.bool,
+  pageCategory: PropTypes.string,
 };
 
 CnCTemplate.defaultProps = {
@@ -117,10 +120,10 @@ CnCTemplate.defaultProps = {
   header: false,
   showLeftSection: true,
   showAccordian: true,
-  isNonEmptySFL: true,
   isCheckoutView: false,
   isConfirmationPage: false,
   isNotLoaded: true,
+  pageCategory: '',
 };
 
 export default withStyles(CnCTemplate, styles);

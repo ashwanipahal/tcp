@@ -20,6 +20,7 @@ import {
   getAllProductsSelect,
   getScrollToTopValue,
   getTotalProductsCount,
+  getIsDataLoading,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -84,6 +85,7 @@ class ProductListingContainer extends React.PureComponent {
     } = this.props;
     return (
       <ProductListing
+        margins="0 12px 0 12px"
         productsBlock={productsBlock}
         products={products}
         filters={filters}
@@ -153,6 +155,7 @@ function mapStateToProps(state) {
     scrollToTop: getScrollToTopValue(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
+    isDataLoading: getIsDataLoading(state),
   };
 }
 

@@ -22,6 +22,10 @@ describe('Shipping Page', () => {
       loadShipmentMethods: () => {},
       handleSubmit: () => {},
       userAddresses: List(),
+      addressLabels: {},
+      verifyAddressAction: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -39,6 +43,7 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
@@ -56,6 +61,9 @@ describe('Shipping Page', () => {
         },
       ]),
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
+      verifyAddressAction: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -82,6 +90,7 @@ describe('Shipping Page', () => {
     const props = {
       address,
       shipmentMethods: [{}],
+      addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
@@ -99,6 +108,9 @@ describe('Shipping Page', () => {
       ]),
       addEditResponseAddressId: '34789',
       updateShippingMethodSelection: mockedupdateShippingMethodSelection,
+      verifyAddressAction: () => {},
+      formatPayload: () => {},
+      shippingDidMount: () => {},
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -123,6 +135,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
       selectedShipmentId: '334',
@@ -138,6 +151,9 @@ describe('Shipping Page', () => {
           primary: 'true',
         },
       ]),
+      formatPayload: () => {},
+      shippingDidMount: () => {},
+
       addEditResponseAddressId: '34789',
     };
     const tree = shallow(<ShippingPage {...props} />);
@@ -155,8 +171,10 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
+      formatPayload: () => {},
       selectedShipmentId: '334',
       userAddresses: new List([
         {
@@ -179,12 +197,13 @@ describe('Shipping Page', () => {
       onFileAddressKey: '123',
       setAsDefaultShipping: true,
       saveToAddressBook: true,
+      verifyAddressAction: () => {},
+      shippingDidMount: () => {},
     };
 
     const tree = shallow(<ShippingPage {...props} />);
     tree.setState({ isAddNewAddress: false });
     tree.instance().updateShippingAddress();
-    expect(mockedupdateShippingAddressData).toBeCalled();
     tree.instance().addNewShippingAddress();
     expect(mockedaddNewShippingAddressData).toBeCalled();
     tree

@@ -50,7 +50,14 @@ class CreateAccountForm extends PureComponent<Props> {
       onConfirmPwdHideShowClick,
       confirmHideShowPwd,
       getTouchStatus,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
+    const getPlccLbl = getLabelValue(
+      labels,
+      'lbl_createAccount_plcc_checkbox_Text',
+      'registration'
+    ).replace('#number', `${userplccCardNumber}`);
     return (
       <View {...this.props}>
         <ParentView>
@@ -158,6 +165,19 @@ class CreateAccountForm extends PureComponent<Props> {
           </ConfirmPasswordWrapper>
 
           {/* CHECKBOXES */}
+
+          {!!(userplccCardNumber && userplccCardId) && (
+            <Field
+              inputVariation="inputVariation-1"
+              name="plcc_checkbox"
+              component={InputCheckbox}
+              dataLocator="plcc_checkbox"
+              disabled={false}
+              rightText={getPlccLbl}
+              marginTop={13}
+            />
+          )}
+
           <Field
             inputVariation="inputVariation-1"
             name="iAgree"
@@ -224,6 +244,8 @@ CreateAccountForm.propTypes = {
   onConfirmPwdHideShowClick: PropTypes.func,
   onRequestClose: PropTypes.func,
   confirmHideShowPwd: PropTypes.bool,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 CreateAccountForm.defaultProps = {
@@ -246,6 +268,8 @@ CreateAccountForm.defaultProps = {
   onConfirmPwdHideShowClick: () => {},
   onRequestClose: () => {},
   confirmHideShowPwd: false,
+  userplccCardId: '',
+  userplccCardNumber: '',
 };
 
 export default reduxForm({

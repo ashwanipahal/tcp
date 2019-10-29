@@ -8,7 +8,9 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
     />
   </Styled(View)>
   <View>
-    <Connect(OrderLedgerContainer) />
+    <Connect(OrderLedgerContainer)
+      isReviewPage={false}
+    />
   </View>
   <Styled(View)>
     <Connect(BonusPointsDays) />
@@ -20,7 +22,7 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="white"
-        dataLocator=""
+        dataLocator="reviewBtn"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"
@@ -39,6 +41,7 @@ exports[`CnCCommonTemplate Page should render correctly if on confirmation page 
   <View>
     <Connect(OrderLedgerContainer)
       isConfirmationPage={true}
+      showAccordian={true}
     />
     <Styled(View)>
       <Styled(Styled(BodyCopy))
@@ -68,34 +71,7 @@ exports[`CnCCommonTemplate Page should render correctly if on confirmation page 
         textDecoration={null}
       />
     </Styled(View)>
-    <Styled(View)>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        spacingStyles="margin-top-LRG margin-bottom-LRG"
-        text="COUPONS"
-        textAlign="center"
-        textDecoration={null}
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        spacingStyles="margin-top-LRG margin-bottom-LRG"
-        text="COUPONS"
-        textAlign="center"
-        textDecoration={null}
-      />
-    </Styled(View)>
+    <Connect(PersonalizedCoupons) />
   </View>
 </Fragment>
 `;

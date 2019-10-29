@@ -28,7 +28,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 1",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -63,22 +63,21 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming",
                   },
                 ],
               },
             ],
             "ribbonBanner": Array [
               Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
                 "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
@@ -110,7 +109,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 2",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -145,22 +144,21 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming",
                   },
                 ],
               },
             ],
             "ribbonBanner": Array [
               Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
                 "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
@@ -192,7 +190,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 3",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -227,22 +225,21 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming",
                   },
                 ],
               },
             ],
             "ribbonBanner": Array [
               Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
                 "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
@@ -274,7 +271,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style1",
-                    "text": "ENTER SITE 4",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -309,22 +306,21 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "percentage_wrapped_extra_large",
-                    "text": "60 % OFF",
-                  },
-                  Object {
-                    "style": "small_text_bold",
-                    "text": "50 % Off",
-                  },
-                  Object {
-                    "style": "small_text_normal",
-                    "text": " All Shoes & Select Accessories",
+                    "style": "gymboree_description",
+                    "text": "The whole bunch is blooming",
                   },
                 ],
               },
             ],
             "ribbonBanner": Array [
               Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/c/",
+                },
                 "ribbonPlacement": "right",
                 "textItems": Array [
                   Object {
@@ -349,11 +345,7 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(View)>
-    <Styled(View)
-      background="gray"
-    />
     <ButtonList
-      buttonListVariation="stackedCTAList"
       buttonsData={
         Array [
           Object {
@@ -443,11 +435,8 @@ exports[`ModuleNVanilla ModuleA should render correctly 1`] = `
           },
         ]
       }
-      color="fixed-width"
-      locator="stacked_cta_list"
-    />
-    <Styled(View)
-      background="gray"
+      color="black"
+      locator="moduleA_cta_links"
     />
   </Styled(View)>
 </Styled(View)>

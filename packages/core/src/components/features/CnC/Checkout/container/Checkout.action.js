@@ -1,6 +1,7 @@
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
+import { setServerErrorCheckout, resetCheckoutReducer } from './Checkout.action.util';
 
 /**
  * @function initCheckoutAction
@@ -81,6 +82,7 @@ export function getSetEstimatedAirMilesActn(estimatedAirMiles) {
     type: 'CART_SUMMARY_SET_ESTIMATED_AIRMILES',
   };
 }
+
 export function setShippingTotal(shippingTotal) {
   return {
     shippingTotal,
@@ -283,8 +285,6 @@ export const routeToPickupPage = () => {
   };
 };
 
-// export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
-
 export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
 export const updateShippingAddress = payload => {
@@ -307,12 +307,7 @@ export function submitBillingSection(payload) {
   };
 }
 
-export const setGiftCardError = payload => {
-  return {
-    type: constants.SET_GIFTCARD_ERROR,
-    payload,
-  };
-};
+export const setGiftCardError = payload => ({ type: constants.SET_GIFTCARD_ERROR, payload });
 
 export const addNewShippingAddress = payload => {
   return {
@@ -418,6 +413,13 @@ export const setVenmoData = payload => {
   };
 };
 
+export const submitVerifiedAddressData = payload => {
+  return {
+    type: constants.CHECKOUT_SUBMIT_VERIFIED_SHIPPING_ADDRESS,
+    payload,
+  };
+};
+
 export const addGiftCardSuccess = payload => {
   return {
     type: constants.ADD_GIFT_CARD_SUCCESS,
@@ -490,23 +492,17 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
+
 /**
  * @function updateCardData
  *  @param { object } payload
  * action creator for type: UPDATE_CARD_DATA
  */
-export const updateCardData = payload => {
-  return {
-    payload,
-    type: constants.UPDATE_CARD_DATA,
-  };
-};
-/**
- * @function resetCheckoutReducer
- * action creator for type: RESET_CHECKOUT_REDUCER
- */
-export const resetCheckoutReducer = () => {
-  return {
-    type: constants.RESET_CHECKOUT_REDUCER,
-  };
-};
+export const updateCardData = payload => ({ payload, type: constants.UPDATE_CARD_DATA });
+
+export const initCheckoutSectionPageAction = payload => ({
+  type: constants.INIT_CHECKOUT_SECTION_PAGE,
+  payload,
+});
+
+export default { setServerErrorCheckout, resetCheckoutReducer };

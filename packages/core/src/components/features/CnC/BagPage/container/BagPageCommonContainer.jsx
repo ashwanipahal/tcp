@@ -31,6 +31,7 @@ import {
   getGrandTotal,
   getGiftCardsTotal,
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
+import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
@@ -91,6 +92,7 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessagePositionInfo,
       cartItemSflError,
       currencySymbol,
+      isPickupModalOpen,
     } = this.props;
 
     const showAddTobag = false;
@@ -120,6 +122,7 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
+        isPickupModalOpen={isPickupModalOpen}
       />
     );
   }
@@ -130,7 +133,13 @@ BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
-      dispatch(BAG_PAGE_ACTIONS.getCartData());
+      dispatch(
+        BAG_PAGE_ACTIONS.getCartData({
+          isCartPage: true,
+          translation: true,
+          excludeCartItems: false,
+        })
+      );
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
@@ -153,7 +162,7 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   const { size = false } = getCartOrderList(state) || {};
   return {
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
@@ -174,6 +183,7 @@ const mapStateToProps = state => {
     cartItemSflError: getCartItemsSflError(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
+    isPickupModalOpen: getIsPickupModalOpen(state),
   };
 };
 

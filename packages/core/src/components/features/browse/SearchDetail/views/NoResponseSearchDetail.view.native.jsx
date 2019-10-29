@@ -44,7 +44,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
   goToSearchResultsPage = searchText => {
     this.closeSearchProductPage();
     const { navigation } = this.props;
-    navigateToNestedRoute(navigation, 'PlpStack', 'SearchDetail', {
+    navigateToNestedRoute(navigation, 'HomeStack', 'SearchDetail', {
       title: searchText,
       isForceUpdate: true,
     });
@@ -61,7 +61,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
           fontSize="fs16"
           fontWeight="semibold"
           color="gray.900"
-          text={`${slpLabels.lbl_nothing_matched} "${searchedText}"`}
+          text={`${slpLabels.lbl_nothing_matched} "${searchedText}".`}
         />
       );
     }
@@ -100,6 +100,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
       );
     };
 
+    const lblTrySearching = slpLabels.lbl_try_searching && slpLabels.lbl_try_searching.split('(');
+
     return (
       <PageContainer>
         {this.renderSearchTopSection()}
@@ -117,7 +119,11 @@ class NoResponseSearchDetailView extends React.PureComponent {
           </RowContainer>
         )}
 
-        <SearchBar showCustomizedSearch openSearchProductPage={this.openSearchProductPage} />
+        <SearchBar
+          showCustomizedSearch
+          openSearchProductPage={this.openSearchProductPage}
+          labels={slpLabels}
+        />
         {showSearchModal && (
           <SearchProduct
             closeSearchModal={this.closeSearchProductPage}
@@ -149,13 +155,24 @@ class NoResponseSearchDetailView extends React.PureComponent {
           color="gray.1000"
           text={`${slpLabels.lbl_simplified_keywords}`}
         />
-        <BodyCopy
-          dataLocator="slp_store_name_value"
-          fontFamily="secondary"
-          fontSize="fs12"
-          color="gray.1000"
-          text={`${slpLabels.lbl_try_searching}`}
-        />
+        {lblTrySearching && (
+          <BodyCopy
+            dataLocator="slp_store_name_value"
+            fontFamily="secondary"
+            fontSize="fs12"
+            color="gray.1000"
+            text={`${lblTrySearching[0]}`}
+          />
+        )}
+        {lblTrySearching && (
+          <BodyCopy
+            dataLocator="slp_store_name_value"
+            fontFamily="secondary"
+            fontSize="fs12"
+            color="gray.1000"
+            text={`(${lblTrySearching[1]}`}
+          />
+        )}
         <BodyCopy
           dataLocator="slp_store_name_value"
           fontFamily="secondary"

@@ -5,6 +5,11 @@ exports[`ProductList component should renders correctly 1`] = `
   <FlatList
     ListFooterComponent={[Function]}
     ListHeaderComponent={[Function]}
+    columnWrapperStyle={
+      Object {
+        "justifyContent": "space-between",
+      }
+    }
     data={
       Array [
         Object {
@@ -19,23 +24,29 @@ exports[`ProductList component should renders correctly 1`] = `
         "currencySymbol": "",
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
+        "isFavorite": false,
         "isMatchingFamily": true,
         "isPlcc": false,
         "loadedProductCount": 12,
         "onAddItemToFavorites": [MockFunction],
         "onColorChange": [MockFunction],
+        "onGoToPDPPage": [MockFunction],
+        "onLoadMoreProducts": [MockFunction],
         "onPickUpOpenClick": [MockFunction],
         "onProductCardHover": [MockFunction],
         "onQuickBopisOpenClick": [MockFunction],
         "onQuickViewOpenClick": [MockFunction],
+        "onRenderHeader": [MockFunction],
         "products": Array [
           Object {
             "productInfo": "",
           },
         ],
+        "setLastDeletedItemId": [MockFunction],
         "setListRef": [MockFunction],
         "showQuickViewForProductId": "",
         "siblingProperties": "",
+        "title": "",
         "unbxdId": "",
       }
     }

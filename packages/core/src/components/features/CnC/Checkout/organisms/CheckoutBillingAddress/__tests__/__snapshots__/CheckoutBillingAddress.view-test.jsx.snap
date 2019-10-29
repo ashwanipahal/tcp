@@ -8,7 +8,7 @@ exports[`CheckoutAddress should call onSameAsShippingChange 1`] = `
     className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
     color="text.primary"
     component="h2"
-    dataLocator="billing-payment-billingAddress"
+    dataLocator="billingAddressLbl"
     textAlign="left"
     variant="listMenu"
   />
@@ -172,7 +172,7 @@ exports[`CheckoutAddress should render correctly 1`] = `
     className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
     color="text.primary"
     component="h2"
-    dataLocator="billing-payment-billingAddress"
+    dataLocator="billingAddressLbl"
     textAlign="left"
     variant="listMenu"
   />
@@ -319,6 +319,7 @@ exports[`CheckoutAddress should render correctly 1`] = `
             "withComponent": [Function],
           }
         }
+        dataLocator="sameShiAddChkBox"
         name="sameAsShipping"
         onChange={[Function]}
         showDefaultCheckbox={false}
@@ -363,7 +364,7 @@ exports[`CheckoutAddress should render correctly if order doesnot have shipping 
     className="paymentMethodHeading elem-mt-MED elem-mb-LRG"
     color="text.primary"
     component="h2"
-    dataLocator="billing-payment-billingAddress"
+    dataLocator="billingAddressLbl"
     textAlign="left"
     variant="listMenu"
   />

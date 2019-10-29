@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator, toTimeString, capitalize } from '@tcp/core/src/utils';
+import { getLocator, toTimeString, capitalize, navigateToNestedRoute } from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
@@ -11,6 +11,13 @@ import {
   updateCartManually,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
+import {
+  getUserLoggedInState,
+  getUserName,
+} from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { SearchBar } from '@tcp/core/src/components/common/molecules';
+import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
+
 import { readCookieMobileApp } from '../../../../utils/utils';
 
 import {
@@ -22,10 +29,11 @@ import {
   RoundView,
   SafeAreaViewStyle,
   TextStyle,
-  BackgroundView,
   CartIconView,
   ImageColor,
   Touchable,
+  HeaderContainer,
+  SearchContainer,
 } from './Header.style';
 
 const CART_ITEM_COUNTER = 'cartItemsCount';
@@ -55,29 +63,32 @@ class Header extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isDownIcon: false,
+      showSearchModal: false,
     };
   }
 
   componentDidMount() {
-    const { loadFavoriteStore } = this.props;
-    loadFavoriteStore({});
     this.getInitialProps();
   }
 
   componentDidUpdate(prevProps) {
-    const { isUpdateCartCount, updateCartManuallyAction } = this.props;
-    if (isUpdateCartCount !== prevProps.isUpdateCartCount) {
+    const { isUpdateCartCount, updateCartManuallyAction, isUserLoggedIn } = this.props;
+    if (
+      isUpdateCartCount !== prevProps.isUpdateCartCount ||
+      isUserLoggedIn !== prevProps.isUserLoggedIn
+    ) {
       this.getInitialProps();
       updateCartManuallyAction(false);
     }
   }
 
   getInitialProps() {
-    const { updateCartCountAction } = this.props;
+    const { updateCartCountAction, loadFavoriteStore } = this.props;
     const cartValuePromise = readCookieMobileApp(CART_ITEM_COUNTER);
     cartValuePromise.then(res => {
       updateCartCountAction(parseInt(res || 0, 10));
     });
+    loadFavoriteStore({});
   }
 
   /**
@@ -88,11 +99,68 @@ class Header extends React.PureComponent<Props> {
     const { isDownIcon } = this.state;
     navigation.navigate({
       routeName: 'StoreLanding',
-      params: { title: labels.lbl_header_storeDefaultTitle.toUpperCase() },
+      params: {
+        title: labels.lbl_header_storeDefaultTitle.toUpperCase(),
+      },
     });
     this.setState({
       isDownIcon: !isDownIcon,
     });
+  };
+
+  /**
+   * @function openSearchProductPage
+   * opens search product modal
+   *
+   * @memberof Header
+   */
+  openSearchProductPage = () => {
+    this.setState({ showSearchModal: true });
+  };
+
+  /**
+   * @function closeSearchProductPage
+   * closes search product modal
+   *
+   * @memberof Header
+   */
+  closeSearchProductPage = () => {
+    this.setState({ showSearchModal: false });
+  };
+
+  /**
+   * @function goToSearchResultsPage
+   * navigates to search results page
+   *
+   * @memberof Header
+   */
+  goToSearchResultsPage = searchText => {
+    this.closeSearchProductPage();
+
+    const { navigation } = this.props;
+    navigateToNestedRoute(navigation, 'HomeStack', 'SearchDetail', {
+      title: searchText,
+      isForceUpdate: true,
+    });
+  };
+
+  renderSearchBar = () => {
+    const { showSearch, slpLabels } = this.props;
+    const { showSearchModal } = this.state;
+    if (!showSearch) return null;
+    return (
+      <SearchContainer>
+        {showSearch && (
+          <SearchBar openSearchProductPage={this.openSearchProductPage} labels={slpLabels} />
+        )}
+        {showSearchModal && (
+          <SearchProduct
+            closeSearchModal={this.closeSearchProductPage}
+            goToSearchResultsPage={this.goToSearchResultsPage}
+          />
+        )}
+      </SearchContainer>
+    );
   };
 
   /**
@@ -124,7 +192,7 @@ class Header extends React.PureComponent<Props> {
   };
 
   render() {
-    const { favStore, labels, cartVal } = this.props;
+    const { favStore, labels, cartVal, isUserLoggedIn, userName } = this.props;
     const { isDownIcon } = this.state;
     const basicInfo = favStore && favStore.basicInfo;
     const storeTime = this.getStoreHours(favStore);
@@ -140,71 +208,78 @@ class Header extends React.PureComponent<Props> {
     const favStoreTxt = isInfoPresent
       ? `${capitalize(basicInfo.storeName)} ${headerLabels.lbl_header_openUntil} ${storeTime}`
       : null;
+    const welcomeMessage = isUserLoggedIn
+      ? `${headerLabels.lbl_header_hiTxt} ${userName}!`
+      : headerLabels.lbl_header_welcomeMessage;
 
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
-        <Container data-locator={getLocator('global_headerpanel')}>
-          <MessageContainer>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs14"
-              textAlign="center"
-              color="black"
-              fontWeight="semibold"
-              text={headerLabels.lbl_header_welcomeMessage}
-              data-locator={getLocator('global_headerpanelwelcometext')}
-            />
-            <StoreContainer onPress={this.validateIcon}>
+        <Container>
+          <HeaderContainer data-locator={getLocator('global_headerpanel')}>
+            <MessageContainer>
               <BodyCopy
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs14"
                 textAlign="center"
-                color="text.primary"
-                fontWeight="regular"
-                text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
-                data-locator={getLocator('global_findastoretext')}
-                accessibilityText="Drop Down"
+                color="black"
+                fontWeight="semibold"
+                text={welcomeMessage}
+                data-locator={getLocator('global_headerpanelwelcometext')}
               />
-              {isDownIcon ? (
-                <Icon
-                  source={upIcon}
-                  style={ImageColor}
-                  data-locator={getLocator('global_headerpanelexpandedicon')}
+              <StoreContainer onPress={this.validateIcon}>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  textAlign="center"
+                  color="text.primary"
+                  fontWeight="regular"
+                  text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
+                  data-locator={getLocator('global_findastoretext')}
+                  accessibilityText="Drop Down"
                 />
-              ) : (
-                <Icon
-                  source={downIcon}
-                  style={ImageColor}
-                  data-locator={getLocator('global_headerpanelcollapsedicon')}
+                {isDownIcon ? (
+                  <Icon
+                    source={upIcon}
+                    style={ImageColor}
+                    data-locator={getLocator('global_headerpanelexpandedicon')}
+                  />
+                ) : (
+                  <Icon
+                    source={downIcon}
+                    style={ImageColor}
+                    data-locator={getLocator('global_headerpanelcollapsedicon')}
+                  />
+                )}
+              </StoreContainer>
+            </MessageContainer>
+            <CartContainer>
+              <Touchable
+                accessibilityRole="button"
+                onPress={() => {
+                  // eslint-disable-next-line react/destructuring-assignment
+                  this.props.navigation.navigate('BagPage');
+                }}
+              >
+                <CartIconView
+                  source={cartIcon}
+                  data-locator={getLocator('global_headerpanelbagicon')}
+                  cartVal={cartVal}
                 />
-              )}
-            </StoreContainer>
-          </MessageContainer>
-          <CartContainer>
-            <Touchable
-              accessibilityRole="button"
-              onPress={() => {
-                // eslint-disable-next-line react/destructuring-assignment
-                this.props.navigation.navigate('BagPage');
-              }}
-            >
-              <CartIconView
-                source={cartIcon}
-                data-locator={getLocator('global_headerpanelbagicon')}
-              />
-              <BackgroundView />
-              <RoundView />
-              <BodyCopy
-                text={cartVal}
-                color="white"
-                style={TextStyle}
-                fontSize="fs10"
-                data-locator={getLocator('global_headerpanelbagitemtext')}
-                accessibilityText="Mini bag with count"
-              />
-            </Touchable>
-          </CartContainer>
+                <RoundView cartVal={cartVal} />
+                <BodyCopy
+                  text={cartVal}
+                  color="white"
+                  style={TextStyle}
+                  fontSize="fs10"
+                  data-locator={getLocator('global_headerpanelbagitemtext')}
+                  accessibilityText="Mini bag with count"
+                  fontWeight="extrabold"
+                />
+              </Touchable>
+            </CartContainer>
+          </HeaderContainer>
+          {this.renderSearchBar()}
         </Container>
       </SafeAreaViewStyle>
     );
@@ -216,11 +291,13 @@ Header.propTypes = {
   favStore: PropTypes.shape({}),
   loadFavoriteStore: PropTypes.func,
   cartVal: PropTypes.number.isRequired,
+  showSearch: PropTypes.bool,
 };
 
 Header.defaultProps = {
   favStore: {},
   loadFavoriteStore: () => null,
+  showSearch: false,
 };
 
 const mapStateToProps = state => {
@@ -229,6 +306,9 @@ const mapStateToProps = state => {
     favStore: state.User && state.User.get('defaultStore'),
     cartVal: state.Header && state.Header.cartItemCount,
     isUpdateCartCount: state.Header && state.Header.updateCartCount,
+    isUserLoggedIn: getUserLoggedInState(state),
+    userName: getUserName(state),
+    slpLabels: state.Labels.Browse && state.Labels.Browse.SLP,
   };
 };
 

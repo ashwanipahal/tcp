@@ -22,6 +22,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -63,6 +64,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         colorName={null}
         customStyle={Object {}}
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -94,6 +96,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       dataLocator="storeAddressLocator"
       errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
@@ -139,6 +142,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       customStyle={Object {}}
       fontWeight="regular"
       locator=""
+      margins={null}
       onPress={null}
       text="View Map"
       underline={true}
@@ -170,6 +174,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -211,6 +216,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         colorName={null}
         customStyle={Object {}}
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -242,6 +248,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       dataLocator="storeAddressLocator"
       errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
@@ -287,6 +294,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       customStyle={Object {}}
       fontWeight="regular"
       locator=""
+      margins={null}
       onPress={null}
       text="View List"
       underline={true}
@@ -318,6 +326,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -359,6 +368,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         colorName={null}
         customStyle={Object {}}
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -390,6 +400,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       dataLocator="storeAddressLocator"
       errorMessage="you have an error in the component"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
@@ -435,6 +446,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       customStyle={Object {}}
       fontWeight="regular"
       locator=""
+      margins={null}
       onPress={null}
       text="View Map"
       underline={true}
@@ -466,6 +478,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
     colorName={null}
     customStyle={Object {}}
     locator=""
+    margins={null}
     onPress={null}
     text=""
     visible={false}
@@ -507,6 +520,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
         colorName={null}
         customStyle={Object {}}
         locator=""
+        margins={null}
         onPress={[Function]}
         text=""
         visible={false}
@@ -538,6 +552,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
       dataLocator="storeAddressLocator"
       errorMessage="there is an error in the input"
       headerTitle="ZIP or city, state"
+      name="storeAddressLocator"
       onSubmitEditing={[Function]}
       onValueChange={[Function]}
       refs={[Function]}
@@ -583,6 +598,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
       customStyle={Object {}}
       fontWeight="regular"
       locator=""
+      margins={null}
       onPress={null}
       text="View Map"
       underline={true}

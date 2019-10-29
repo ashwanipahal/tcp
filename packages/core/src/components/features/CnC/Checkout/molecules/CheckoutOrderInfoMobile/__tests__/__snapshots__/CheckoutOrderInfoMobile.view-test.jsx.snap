@@ -77,6 +77,8 @@ exports[`CheckoutFooterVanilla component should renders correctly for non confir
 >
   <Connect(CouponContainer)
     additionalClassNameModal="coupon-modal-mob"
+    fullPageInfo={false}
+    idPrefix="mobile"
     showAccordian={false}
   />
   <Connect(OrderLedgerContainer)
@@ -97,6 +99,8 @@ exports[`CheckoutFooterVanilla component should renders correctly for non venmo 
 >
   <Connect(CouponContainer)
     additionalClassNameModal="coupon-modal-mob"
+    fullPageInfo={false}
+    idPrefix="mobile"
     showAccordian={false}
   />
   <Connect(OrderLedgerContainer)
@@ -117,6 +121,8 @@ exports[`CheckoutFooterVanilla component should renders correctly for non venmo 
 >
   <Connect(CouponContainer)
     additionalClassNameModal="coupon-modal-mob"
+    fullPageInfo={false}
+    idPrefix="mobile"
     showAccordian={true}
   />
   <Connect(OrderLedgerContainer)

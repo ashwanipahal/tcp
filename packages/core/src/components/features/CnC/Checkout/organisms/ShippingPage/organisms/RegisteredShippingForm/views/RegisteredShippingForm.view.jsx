@@ -11,17 +11,15 @@ import styles from '../styles/RegisteredShippingForm.view.style';
 import AddressDropdown from '../../../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Address from '../../../../../../../../common/molecules/Address';
 import Button from '../../../../../../../../common/atoms/Button';
-import AddEditShippingAddressModal from '../../../../../molecules/AddEditShippingAddressModal';
 import { getLabelValue } from '../../../../../../../../../utils';
+import ErrorMessage from '../../../../../../common/molecules/ErrorMessage';
 import {
   getSelectedAddress,
   getDefaultShippingDisabledState,
   onSaveBtnClick,
-  getCancelAction,
   getShowAddressFields,
   propTypes,
   defaultProps,
-  getFieldsValidation,
   setDefaultShippingValue,
 } from './RegisteredShippingForm.util';
 import Badge from '../../../../../../../../common/atoms/Badge';
@@ -106,6 +104,7 @@ class RegisteredShippingForm extends React.Component {
           fill="BLACK"
           onClick={this.toggleAddNewAddressMode}
           disabled={isAddNewAddress}
+          dataLocator="new-addressbtn"
         >
           {getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout')}
         </Button>
@@ -115,20 +114,14 @@ class RegisteredShippingForm extends React.Component {
   };
 
   toggleEditingMode = e => {
-    const { toggleIsEditing, isMobile, toggleAddEditModal } = this.props;
-    if (isMobile) {
-      return toggleAddEditModal({ type: 'edit' });
-    }
+    const { toggleIsEditing } = this.props;
     e.preventDefault();
     return toggleIsEditing();
   };
 
   toggleAddNewAddressMode = () => {
-    const { toggleAddNewAddress, isMobile, toggleAddEditModal, dispatch } = this.props;
+    const { dispatch, toggleAddNewAddress } = this.props;
     dispatch(change(formName, 'defaultShipping', false));
-    if (isMobile) {
-      return toggleAddEditModal({ type: 'add' });
-    }
     return toggleAddNewAddress();
   };
 
@@ -179,7 +172,6 @@ class RegisteredShippingForm extends React.Component {
       onFileAddressKey,
       userAddresses,
       isEditing,
-      toggleAddEditModal,
       labels,
       shippingAddressId,
       isAddNewAddress,
@@ -192,29 +184,32 @@ class RegisteredShippingForm extends React.Component {
               address={getSelectedAddress(userAddresses, onFileAddressKey, shippingAddressId)}
               showPhone
               className="shipping__address"
-              dataLocatorPrefix="address"
+              dataLocatorPrefix="shipping"
+              parentDataLocator="shipping-details"
             />
           </Col>
         )}
         {this.renderAddressFields()}
-        <Col colSize={{ small: 1, medium: 1, large: 1 }} className="hide-on-desktop">
-          <Anchor
-            fontSizeVariation="small"
-            underline
-            noLink
-            anchorVariation="primary"
-            dataLocator="edit-shipping-address"
-            onClick={e => toggleAddEditModal({ type: 'edit', e })}
-          >
-            {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
-          </Anchor>
-        </Col>
+        {!isEditing && !isAddNewAddress && (
+          <Col colSize={{ small: 1, medium: 1, large: 1 }} className="hide-on-desktop">
+            <Anchor
+              fontSizeVariation="medium"
+              underline
+              noLink
+              anchorVariation="primary"
+              dataLocator="edit-shipping-address"
+              onClick={this.toggleEditingMode}
+            >
+              {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
+            </Anchor>
+          </Col>
+        )}
       </Row>
     );
   };
 
   renderAddressForm = () => {
-    const { userAddresses, isGuest, isEditing, isAddNewAddress, labels } = this.props;
+    const { userAddresses, isEditing, isAddNewAddress, labels } = this.props;
     const showEditLink = !isEditing && !isAddNewAddress;
     return userAddresses && userAddresses.size > 0 ? (
       <>
@@ -223,47 +218,62 @@ class RegisteredShippingForm extends React.Component {
             colSize={{ small: 6, medium: 8, large: 6 }}
             className="address-dropDown"
             isEditing={isEditing}
+            data-locator="address-dropdown"
           >
             <Field
               selectListTitle="Select from address book"
               name="onFileAddressKey"
               id="onFileAddressKey"
               component={AddressDropdown}
-              dataLocator="shipping-address"
               options={this.getAddressOptions()}
               onChange={this.onAddressDropDownChange}
+              dataLocatorObj={{
+                heading: 'address-book-txt',
+                dropDownList: 'shipping-details-lst',
+              }}
             />
           </Col>
         </Row>
-        {!isGuest && (
-          <Row fullBleed className="hide-on-mobile">
-            <Col colSize={{ small: 6, medium: 6, large: 4 }}>
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs28"
-                fontWeight="regular"
-                data-locator="shipping-details"
-                className="elem-mb-XS"
-              >
-                {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
-              </BodyCopy>
-            </Col>
-            {showEditLink && (
-              <Col colSize={{ small: 1, medium: 1, large: 1 }}>
-                <Anchor
-                  fontSizeVariation="small"
-                  underline
-                  noLink
-                  anchorVariation="primary"
-                  dataLocator="edit-shipping-address"
-                  onClick={this.toggleEditingMode}
-                >
-                  {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
-                </Anchor>
-              </Col>
-            )}
+        {isEditing && (
+          <Row fullBleed className="hide-on-desktop">
+            <BodyCopy
+              fontFamily="primary"
+              fontSize="fs28"
+              fontWeight="regular"
+              data-locator="shipping-details"
+              className="elem-mb-XS"
+            >
+              {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
+            </BodyCopy>
           </Row>
         )}
+        <Row fullBleed className="hide-on-mobile">
+          <Col colSize={{ small: 6, medium: 6, large: 4 }}>
+            <BodyCopy
+              fontFamily="primary"
+              fontSize="fs28"
+              fontWeight="regular"
+              data-locator="shipping-details"
+              className="elem-mb-XS"
+            >
+              {getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
+            </BodyCopy>
+          </Col>
+          {showEditLink && (
+            <Col colSize={{ small: 1, medium: 1, large: 1 }} className="edit-link-placement">
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                noLink
+                anchorVariation="primary"
+                dataLocator="edit-shipping-address"
+                onClick={this.toggleEditingMode}
+              >
+                {getLabelValue(labels, 'lbl_shipping_edit', 'shipping', 'checkout')}
+              </Anchor>
+            </Col>
+          )}
+        </Row>
         {this.renderDefaultAddress()}
       </>
     ) : (
@@ -279,12 +289,9 @@ class RegisteredShippingForm extends React.Component {
   };
 
   renderDefaultOptions = () => {
-    const { isAddNewAddress, userAddresses, isEditing, modalState, modalType, labels } = this.props;
-    const showSaveToAddressBook =
-      isAddNewAddress ||
-      (modalState && modalType === 'add') ||
-      (userAddresses && userAddresses.size === 0);
-    const showDefaultShipping = showSaveToAddressBook || isEditing || modalState;
+    const { isAddNewAddress, userAddresses, isEditing, labels } = this.props;
+    const showSaveToAddressBook = isAddNewAddress || (userAddresses && userAddresses.size === 0);
+    const showDefaultShipping = showSaveToAddressBook || isEditing;
     const defaultShippingDisabled = getDefaultShippingDisabledState({
       ...this.props,
     });
@@ -298,7 +305,7 @@ class RegisteredShippingForm extends React.Component {
               name="saveToAddressBook"
               onChange={this.onSaveToAccountChange}
             >
-              <BodyCopy fontSize="fs16" fontFamily="secondary">
+              <BodyCopy fontSize="fs16" fontFamily="secondary" dataLocator="saveaddress-chk">
                 {getLabelValue(labels, 'lbl_shipping_saveToAccount', 'shipping', 'checkout')}
               </BodyCopy>
             </Field>
@@ -316,7 +323,7 @@ class RegisteredShippingForm extends React.Component {
               name="defaultShipping"
               disabled={defaultShippingDisabled}
             >
-              <BodyCopy fontSize="fs16" fontFamily="secondary">
+              <BodyCopy fontSize="fs16" fontFamily="secondary" dataLocator="shippingDefault-chk">
                 {getLabelValue(labels, 'lbl_shipping_defaultShipping', 'shipping', 'checkout')}
               </BodyCopy>
             </Field>
@@ -332,80 +339,51 @@ class RegisteredShippingForm extends React.Component {
     });
   };
 
-  getBtnDisabledState = () => {
-    let disabledState = false;
-    const { modalState, syncErrorsObject } = this.props;
-    if (modalState) {
-      disabledState = getFieldsValidation({ syncErrorsObject });
-    }
-    return disabledState;
-  };
-
-  renderActionButtons = () => {
-    const { modalState, labels } = this.props;
-    const cancelAction = getCancelAction({
-      ...this.props,
-      toggleEditingMode: this.toggleEditingMode,
-    });
+  renderActionButtons = (errorMessageRef, editShipmentDetailsError) => {
+    const { labels } = this.props;
     return (
-      <>
-        <Row
-          fullBleed
-          className={`elem-mt-XL edit-cta ${modalState ? 'elem-mb-LRG top-border' : ''}`}
-        >
+      <div ref={errorMessageRef}>
+        {editShipmentDetailsError && (
+          <ErrorMessage error={editShipmentDetailsError} className="edit-shipping-error" />
+        )}
+        <Row fullBleed className="elem-mt-XL edit-cta">
           <Col colSize={{ small: 6, medium: 2, large: 3 }}>
             <Button
-              fill={modalState ? 'BLUE' : 'WHITE'}
+              fill="WHITE"
               type="button"
               buttonVariation="fixed-width"
               data-locator="edit-shipping-cancel-btn"
-              onClick={modalState ? this.saveBtnClickHandler : this.toggleEditingMode}
-              className={modalState ? 'elem-mb-MED' : ''}
-              disabled={this.getBtnDisabledState()}
+              onClick={this.toggleEditingMode}
             >
-              {modalState
-                ? getLabelValue(labels, 'lbl_shipping_selectShipAdd', 'shipping', 'checkout')
-                : getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}
+              {getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}
             </Button>
           </Col>
           <Col colSize={{ small: 6, medium: 2, large: 3 }}>
             <Button
-              fill={modalState ? 'WHITE' : 'BLUE'}
+              fill="BLUE"
               type="button"
               buttonVariation="fixed-width"
               data-locator="edit-shipping-save-btn"
-              onClick={modalState ? cancelAction : this.saveBtnClickHandler}
+              className="save-btn"
+              onClick={this.saveBtnClickHandler}
             >
-              {modalState
-                ? getLabelValue(labels, 'lbl_shipping_cancelCaps', 'shipping', 'checkout')
-                : getLabelValue(labels, 'lbl_shipping_save', 'shipping', 'checkout')}
+              {getLabelValue(labels, 'lbl_shipping_save', 'shipping', 'checkout')}
             </Button>
           </Col>
         </Row>
-      </>
+      </div>
     );
   };
 
   render() {
-    const { isEditing, className, modalState, modalType, toggleAddEditModal, labels } = this.props;
+    const { isEditing, className, errorMessageRef, editShipmentDetailsError } = this.props;
     return (
-      <div className={className} isEditing={isEditing}>
-        {!modalState && (
-          <>
-            {this.renderAddressForm()}
-            {this.renderDefaultOptions()}
-            {isEditing && this.renderActionButtons()}
-          </>
-        )}
-        <AddEditShippingAddressModal
-          modalState={modalState}
-          addressFields={this.renderAddressFields}
-          modalType={modalType}
-          defaultOptions={this.renderDefaultOptions}
-          toggleAddEditModal={toggleAddEditModal}
-          actionButtons={this.renderActionButtons}
-          labels={labels}
-        />
+      <div className={className} isEditing={isEditing} data-locator="shipping-details">
+        <>
+          {this.renderAddressForm()}
+          {this.renderDefaultOptions()}
+          {isEditing && this.renderActionButtons(errorMessageRef, editShipmentDetailsError)}
+        </>
       </div>
     );
   }

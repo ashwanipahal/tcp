@@ -35,7 +35,7 @@ class LoginView extends React.PureComponent {
         password: credentials.password,
       };
       this.setState({ setEmailid: credentials.username });
-      if (credentials) {
+      if (credentials.username && credentials.password) {
         isSupportedTouch().then(techAvailable => {
           if (techAvailable) {
             touchIDCheck().then(touchIdResp => {
@@ -52,13 +52,18 @@ class LoginView extends React.PureComponent {
   onSubmitHandler = formdata => {
     const { onSubmit } = this.props;
     resetTouchPassword();
-    setUserLoginDetails(formdata.emailAddress, formdata.password);
-
     onSubmit(formdata);
-
     isSupportedTouch().then(biometryType => {
       if (biometryType && (formdata.userTouchId || formdata.useFaceID)) {
-        touchIDCheck();
+        touchIDCheck().then(touchIdResp => {
+          if (touchIdResp) {
+            setUserLoginDetails(formdata.emailAddress, formdata.password);
+          } else {
+            setUserLoginDetails(formdata.emailAddress, '');
+          }
+        });
+      } else {
+        setUserLoginDetails(formdata.emailAddress, '');
       }
     });
   };
@@ -82,6 +87,8 @@ class LoginView extends React.PureComponent {
       loginError,
       showCheckoutModal,
       showLogin,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     const { setEmailid, getTouchStatus } = this.state;
     return (
@@ -107,6 +114,8 @@ class LoginView extends React.PureComponent {
           handleContinueAsGuest={handleContinueAsGuest}
           showCheckoutModal={showCheckoutModal}
           showLogin={showLogin}
+          userplccCardNumber={userplccCardNumber}
+          userplccCardId={userplccCardId}
         />
       </ScrollViewStyle>
     );
@@ -131,6 +140,8 @@ LoginView.propTypes = {
   loginError: PropTypes.bool.isRequired,
   showCheckoutModal: PropTypes.func,
   showLogin: PropTypes.func,
+  userplccCardNumber: PropTypes.string,
+  userplccCardId: PropTypes.string,
 };
 
 LoginView.defaultProps = {
@@ -138,6 +149,8 @@ LoginView.defaultProps = {
   navigation: {},
   showCheckoutModal: () => {},
   showLogin: () => {},
+  userplccCardNumber: '',
+  userplccCardId: '',
 };
 
 export default LoginView;

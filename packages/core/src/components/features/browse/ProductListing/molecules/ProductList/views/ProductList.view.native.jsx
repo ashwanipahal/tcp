@@ -12,17 +12,6 @@ import CustomButton from '../../../../../../common/atoms/Button';
 class ProductList extends React.PureComponent {
   flatListRef = null;
 
-  constructor(props) {
-    super(props);
-    const { products } = this.props;
-    const item = get(products, '[0]', []);
-    const colorName = get(item, 'colorsMap[0].color.name', 'colorName');
-    const miscInfo = get(item, 'colorsMap[0].miscInfo', '');
-    this.colorsExtraInfo = {
-      [colorName]: miscInfo,
-    };
-  }
-
   componentDidUpdate(prevProps) {
     const isScrollToTopValue = get(this.props, 'scrollToTop');
     const isScrollToTopPrevPropValue = get(prevProps, 'scrollToTop');
@@ -37,11 +26,24 @@ class ProductList extends React.PureComponent {
   // eslint-disable-next-line
   onFavorite = item => {};
 
-  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex) => {
-    const { title, onGoToPDPPage } = this.props;
+  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, name) => {
+    const { title, onGoToPDPPage, isFavorite } = this.props;
+    const productTitle = isFavorite ? name : title;
     if (onGoToPDPPage) {
-      onGoToPDPPage(title, pdpUrl, selectedColorIndex);
+      onGoToPDPPage(productTitle, pdpUrl, selectedColorIndex);
     }
+  };
+
+  getLoyaltyPromotionMessage = (productInfo, colorsMap) => {
+    const { isPlcc } = this.props;
+    const { promotionalMessage, promotionalPLCCMessage } = productInfo;
+    return (
+      colorsMap &&
+      getPromotionalMessage(isPlcc, {
+        promotionalMessage,
+        promotionalPLCCMessage,
+      })
+    );
   };
 
   /**
@@ -55,28 +57,27 @@ class ProductList extends React.PureComponent {
       currencySymbol,
       isPlcc,
       onQuickViewOpenClick,
+      isFavorite,
+      setLastDeletedItemId,
     } = this.props;
     const { item } = itemData;
+
     const { colorsMap, productInfo } = item;
-    const { promotionalMessage, promotionalPLCCMessage } = productInfo;
-    const { colorProductId } = colorsMap[0];
+    const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
     // get default zero index color entry
-    const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
+    const curentColorEntry = colorsMap && getMapSliceForColorProductId(colorsMap, colorProductId);
     // get product color and price info of default zero index item
-    const currentColorMiscInfo =
-      this.colorsExtraInfo[curentColorEntry.color.name] || curentColorEntry.miscInfo || {};
+    const currentColorMiscInfo = (colorsMap && curentColorEntry.miscInfo) || {};
     const { badge1, badge2 } = currentColorMiscInfo;
     // get default top badge data
-    const topBadge =
-      isMatchingFamily && badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
+    let topBadge;
+    if (colorsMap) {
+      topBadge = isMatchingFamily && badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
+    }
 
     // get default Loyalty message
-    const loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
-      promotionalMessage,
-      promotionalPLCCMessage,
-    });
-
+    const loyaltyPromotionMessage = this.getLoyaltyPromotionMessage(productInfo, colorsMap);
     return (
       <ListItem
         item={item}
@@ -91,6 +92,8 @@ class ProductList extends React.PureComponent {
         currencySymbol={currencySymbol}
         onGoToPDPPage={this.onOpenPDPPageHandler}
         onQuickViewOpenClick={onQuickViewOpenClick}
+        isFavorite={isFavorite}
+        setLastDeletedItemId={setLastDeletedItemId}
       />
     );
   };
@@ -106,7 +109,8 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list load more footer
    */
   renderFooter = () => {
-    const { products } = this.props;
+    const { products, isFavorite } = this.props;
+    if (isFavorite) return null;
     const productsLen = get(products, 'length', 0);
     const totalProductsCount = get(this.props, 'totalProductsCount', 0);
     if (productsLen === totalProductsCount) {
@@ -145,6 +149,12 @@ class ProductList extends React.PureComponent {
     }
   };
 
+  getColumnWrapperStyle = () => {
+    return {
+      justifyContent: 'space-between',
+    };
+  };
+
   /**
    * @desc This is render product list
    */
@@ -163,6 +173,7 @@ class ProductList extends React.PureComponent {
         ListFooterComponent={this.renderFooter}
         ListHeaderComponent={this.renderHeader}
         stickyHeaderIndices={[0]}
+        columnWrapperStyle={this.getColumnWrapperStyle()}
       />
     );
   };
@@ -213,6 +224,8 @@ ProductList.propTypes = {
   onLoadMoreProducts: PropTypes.func.isRequired,
   onRenderHeader: PropTypes.func.isRequired,
   setListRef: PropTypes.func,
+  isFavorite: PropTypes.bool,
+  setLastDeletedItemId: PropTypes.func.isRequired,
 };
 
 ProductList.defaultProps = {
@@ -237,6 +250,7 @@ ProductList.defaultProps = {
   isMatchingFamily: true,
   isPlcc: false,
   currencySymbol: '$',
+  isFavorite: false,
 };
 
 export default withStyles(ProductList, styles);

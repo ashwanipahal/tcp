@@ -41,6 +41,7 @@ class AddNewCCForm extends React.PureComponent {
       expYear: PropTypes.string,
       cvvCode: PropTypes.string,
     }),
+    onCardFocus: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -108,6 +109,7 @@ class AddNewCCForm extends React.PureComponent {
             onChange={this.onSaveToAccountChange}
             fontSize="fs16"
             rightText={labels.saveToAccount}
+            dataLocator="saveCardChkBox"
           />
         </SaveToAccWrapper>
         <DefaultPaymentWrapper>
@@ -118,6 +120,7 @@ class AddNewCCForm extends React.PureComponent {
             disabled={!cardList && !isSaveToAccountChecked}
             fontSize="fs16"
             rightText={labels.defaultPayment}
+            dataLocator="defaultPaymentChkBox"
           />
         </DefaultPaymentWrapper>
       </>
@@ -179,6 +182,7 @@ class AddNewCCForm extends React.PureComponent {
       editMode,
       isSameAsShippingChecked,
       selectedCard,
+      onCardFocus,
     } = this.props;
     const { expMonth, expYear } = this.getExpData();
     return (
@@ -202,6 +206,7 @@ class AddNewCCForm extends React.PureComponent {
           selectedCard={selectedCard}
           isEdit={editMode}
           dto={selectedCard}
+          onCardFocus={onCardFocus}
         />
         {!isGuest && !editMode && this.renderSaveToAccountOptions()}
       </>

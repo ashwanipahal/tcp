@@ -50,6 +50,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "1400": "#90939b",
           "1500": "#c3c3c3",
           "1600": "#979797",
+          "1700": "#333333",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -86,8 +87,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "100": "#f3d7d7",
           "200": "#f3d7d7",
           "300": "#c84747",
+          "400": "#f53d3d",
           "500": "#c8102e",
           "600": "#c01f1f",
+          "700": "#3f3356",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -455,6 +458,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fs25": "25px",
           "fs26": "26px",
           "fs28": "28px",
+          "fs30": "30px",
           "fs32": "32px",
           "fs36": "36px",
           "fs38": "38px",
@@ -489,9 +493,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs36",
-            "fs36",
-            "fs52",
+            "fs32",
+            "fs32",
+            "fs48",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -502,7 +506,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs38",
+            "fs36",
           ],
           "fontWeight": "black",
           "letterSpacing": Array [
@@ -517,7 +521,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fontSize": Array [
             "fs20",
             "fs20",
-            "fs36",
+            "fs32",
           ],
           "fontWeight": "semibold",
           "letterSpacing": Array [
@@ -530,9 +534,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "h5": Object {
           "fontFamily": "primary",
           "fontSize": Array [
+            "fs14",
             "fs16",
-            "fs16",
-            "fs28",
+            "fs20",
           ],
           "fontWeight": "normal",
           "letterSpacing": "normal",

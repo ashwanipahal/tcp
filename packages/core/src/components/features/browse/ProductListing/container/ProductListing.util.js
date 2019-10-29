@@ -12,8 +12,8 @@ export const getRequiredCategoryData = data => {
   return {
     categoryId: data.categoryContent.id,
     title: data.categoryContent.name,
-    // seoTitle: data.seoTitle,
-    // seoDesc: data.seoDesc,
+    seoTitle: data.categoryContent.seoTitle,
+    seoMetaDesc: data.categoryContent.seoMetaDesc,
     longDescription: data.categoryContent.longDescription,
     url: data.url,
     // productCount: data.productCount,

@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-VigVT",
+        "componentId": "sc-fjdhpX",
         "isStatic": false,
         "rules": Array [
           "
@@ -73,9 +73,11 @@ exports[`CreateAccountForm should render correctly 1`] = `
         "labels": [Function],
         "onAlreadyHaveAnAccountClick": [Function],
         "tooltipContent": [Function],
+        "userplccCardId": [Function],
+        "userplccCardNumber": [Function],
       },
       "render": [Function],
-      "styledComponentId": "sc-VigVT",
+      "styledComponentId": "sc-fjdhpX",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {
@@ -107,6 +109,8 @@ exports[`CreateAccountForm should render correctly 1`] = `
           "labels": [Function],
           "onAlreadyHaveAnAccountClick": [Function],
           "tooltipContent": [Function],
+          "userplccCardId": [Function],
+          "userplccCardNumber": [Function],
         },
         "render": [Function],
       },

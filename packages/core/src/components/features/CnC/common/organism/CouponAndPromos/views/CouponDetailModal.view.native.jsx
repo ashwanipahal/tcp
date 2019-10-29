@@ -97,7 +97,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
   }
 
   render() {
-    const { openState, onRequestClose, coupon, isDisabled, labels } = this.props;
+    const { openState, onRequestClose, coupon, isDisabled, labels, isConfirmation } = this.props;
     const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
@@ -122,88 +122,113 @@ class CouponDetailModal extends React.PureComponent<Props> {
               fontWeight="black"
               text={coupon.title}
             />
-            <ViewWithSpacing spacingStyles="margin-top-SM">
-              <BodyCopy
-                data-locator={`couponDetailModal_${coupon.status}_ValidityDateLbl`}
-                fontSize="fs24"
-                fontFamily="secondary"
-                fontWeight="semibold"
-                text={this.showValidity()}
-              />
-            </ViewWithSpacing>
-            <Horizontal />
-            <View data-locator={`couponDetailModal_${coupon.status}_BarCode`}>
+            {!isConfirmation && (
+              <ViewWithSpacing spacingStyles="margin-top-SM">
+                <BodyCopy
+                  data-locator={`couponDetailModal_${coupon.status}_ValidityDateLbl`}
+                  fontSize="fs24"
+                  fontFamily="secondary"
+                  fontWeight="semibold"
+                  text={this.showValidity()}
+                />
+              </ViewWithSpacing>
+            )}
+            {coupon.id ? (
+              <>
+                <Horizontal />
+                <View data-locator={`couponDetailModal_${coupon.status}_BarCode`}>
+                  <ScreenViewShot
+                    setScreenViewShotRef={this.setScreenViewShotRef}
+                    options={{ format: 'png', quality: 0.9, result: 'base64' }}
+                  >
+                    <Barcode value={coupon.id} height="50" />
+                  </ScreenViewShot>
+                </View>
+                <Horizontal />
+              </>
+            ) : (
               <ScreenViewShot
                 setScreenViewShotRef={this.setScreenViewShotRef}
                 options={{ format: 'png', quality: 0.9, result: 'base64' }}
               >
-                <Barcode value={coupon.id} height="50" />
+                <BodyCopy
+                  data-locator={`couponDetailModal_${coupon.status}_NameLbl`}
+                  fontSize="fs42"
+                  fontFamily="primary"
+                  fontWeight="black"
+                  text=" "
+                />
               </ScreenViewShot>
-            </View>
-            <Horizontal />
-            <ViewWithSpacing spacingStyles="margin-bottom-LRG">
-              <CustomButton
-                text={addToBagCTALabel}
-                buttonVariation="fixed-width"
-                disabled={isApplyButtonDisabled}
-                data-locator={`couponDetailModal_${coupon.status}_AddToBagBtn`}
-                fill="BLUE"
-                onPress={() => {
-                  this.handleApplyToBag();
-                }}
-              />
-            </ViewWithSpacing>
+            )}
+            {!isConfirmation && (
+              <ViewWithSpacing spacingStyles="margin-bottom-LRG">
+                <CustomButton
+                  text={addToBagCTALabel}
+                  buttonVariation="fixed-width"
+                  disabled={isApplyButtonDisabled}
+                  data-locator={`couponDetailModal_${coupon.status}_AddToBagBtn`}
+                  fill="BLUE"
+                  onPress={() => {
+                    this.handleApplyToBag();
+                  }}
+                />
+              </ViewWithSpacing>
+            )}
             <Anchor
               fontSizeVariation="large"
-              underlineBlue
-              anchorVariation="secondary"
+              underline
+              anchorVariation="primary"
               dataLocator={`couponDetailModal_${coupon.status}_printAch`}
               text={getLabelValue(labels, 'PRINT_ANCHOR_TEXT')}
               class="clickhere"
               onPress={() => this.printHTML(coupon, labels, this.showValidity())}
             />
-            <PrivacyContent data-locator={`couponDetailModal_${coupon.status}_LongDesc`}>
-              <HTML html={coupon.legalText} />
-            </PrivacyContent>
-            <PrivacyContent>
-              <BodyCopy
-                data-locator={`couponDetailModal_${coupon.status}_ShortDesc`}
-                fontSize="fs12"
-                fontFamily="primary"
-                fontWeight="regular"
-                text={getLabelValue(labels, 'MODAL_SHORT_DESCRIPTION')}
-              />
-              <Anchor
-                fontSizeVariation="medium"
-                fontFamily="secondary"
-                anchorVariation="primary"
-                underline
-                noLink
-                onPress={() => {
-                  UrlHandler(endpoints.termsAndConditionsPage);
-                }}
-                dataLocator={`couponDetailModal_${coupon.status}_tAndC`}
-                text={getLabelValue(labels, 'TERMS_AND_CONDITIONS')}
-              />
-              <BodyCopy
-                data-locator={`couponDetailModal_${coupon.status}_and`}
-                fontSize="fs12"
-                fontFamily="primary"
-                fontWeight="regular"
-                text=" and "
-              />
-              <Anchor
-                fontSizeVariation="medium"
-                underline
-                noLink
-                onPress={() => {
-                  UrlHandler(endpoints.privacyPolicyPage);
-                }}
-                anchorVariation="primary"
-                dataLocator={`couponDetailModal_${coupon.status}_pp`}
-                text={getLabelValue(labels, 'PRIVACY_POLICY')}
-              />
-            </PrivacyContent>
+            {!!coupon.legalText && (
+              <PrivacyContent data-locator={`couponDetailModal_${coupon.status}_LongDesc`}>
+                <HTML html={coupon.legalText} />
+              </PrivacyContent>
+            )}
+            {!isConfirmation && (
+              <PrivacyContent>
+                <BodyCopy
+                  data-locator={`couponDetailModal_${coupon.status}_ShortDesc`}
+                  fontSize="fs12"
+                  fontFamily="primary"
+                  fontWeight="regular"
+                  text={getLabelValue(labels, 'MODAL_SHORT_DESCRIPTION')}
+                />
+                <Anchor
+                  fontSizeVariation="medium"
+                  fontFamily="secondary"
+                  anchorVariation="primary"
+                  underline
+                  noLink
+                  onPress={() => {
+                    UrlHandler(endpoints.termsAndConditionsPage);
+                  }}
+                  dataLocator={`couponDetailModal_${coupon.status}_tAndC`}
+                  text={getLabelValue(labels, 'TERMS_AND_CONDITIONS')}
+                />
+                <BodyCopy
+                  data-locator={`couponDetailModal_${coupon.status}_and`}
+                  fontSize="fs12"
+                  fontFamily="primary"
+                  fontWeight="regular"
+                  text=" and "
+                />
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  noLink
+                  onPress={() => {
+                    UrlHandler(endpoints.privacyPolicyPage);
+                  }}
+                  anchorVariation="primary"
+                  dataLocator={`couponDetailModal_${coupon.status}_pp`}
+                  text={getLabelValue(labels, 'PRIVACY_POLICY')}
+                />
+              </PrivacyContent>
+            )}
           </StyledModalWrapper>
         </ScrollView>
       </Modal>

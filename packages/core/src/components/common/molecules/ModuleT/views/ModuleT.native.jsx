@@ -7,7 +7,6 @@ import config from '../moduleT.config';
 import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import ButtonList from '../../ButtonList';
-import { getScreenWidth } from '../../../../../utils/utils.app';
 import {
   Container,
   PromoContainer,
@@ -18,6 +17,7 @@ import {
   ButtonContainer,
   ButtonLinksContainer,
   Border,
+  ImageWrapper,
 } from '../ModuleT.style.native';
 
 // TODO: keys will be changed once we get the actual data from CMS
@@ -26,7 +26,7 @@ const { IMG_DATA, ctaTypes } = config;
 /**
  * These are button width.
  */
-const buttonWidth = getScreenWidth() / 2 - 14;
+const buttonWidth = 164;
 
 /**
  * @param {object} props : Props for Module T multi type of banner list, button list, header text.
@@ -66,19 +66,26 @@ class ModuleT extends React.PureComponent {
    *  @naviagtion is used to navigate the page.
    */
   renderButtonList(ctaType, navigation, ctaItems) {
+    const ctaTypeValue = ctaTypes[ctaType];
     return (
       <View>
-        {ctaType === ctaTypes.divImageCTACarousel && (
+        {ctaTypeValue === ctaTypes.divImageCTACarousel && (
           <View>
-            {this.renderButtonListItem(ctaType, navigation, ctaItems, 'moduleT_cta_links', 'black')}
+            {this.renderButtonListItem(
+              ctaTypeValue,
+              navigation,
+              ctaItems,
+              'moduleT_cta_links',
+              'black'
+            )}
           </View>
         )}
 
-        {ctaType === ctaTypes.stackedCTAButtons && (
+        {ctaTypeValue === ctaTypes.stackedCTAButtons && (
           <View>
             <Border />
             {this.renderButtonListItem(
-              ctaType,
+              ctaTypeValue,
               navigation,
               ctaItems,
               'stacked_cta_list',
@@ -88,15 +95,21 @@ class ModuleT extends React.PureComponent {
           </View>
         )}
 
-        {ctaType === ctaTypes.scrollCTAList && (
+        {ctaTypeValue === ctaTypes.scrollCTAList && (
           <ButtonContainer>
-            {this.renderButtonListItem(ctaType, navigation, ctaItems, 'scroll_cta_list', 'gray')}
+            {this.renderButtonListItem(
+              ctaTypeValue,
+              navigation,
+              ctaItems,
+              'scroll_cta_list',
+              'gray'
+            )}
           </ButtonContainer>
         )}
 
-        {ctaType === ctaTypes.linkList && (
+        {ctaTypeValue === ctaTypes.linkList && (
           <ButtonLinksContainer>
-            {this.renderButtonListItem(ctaType, navigation, ctaItems, 'link_cta_list', 'gray')}
+            {this.renderButtonListItem(ctaTypeValue, navigation, ctaItems, 'link_cta_list', 'gray')}
           </ButtonLinksContainer>
         )}
       </View>
@@ -112,16 +125,18 @@ class ModuleT extends React.PureComponent {
       <ImageContainer>
         {mediaLinkedList.map(({ image, link }, index) => {
           return (
-            <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
-              <DamImage
-                url={image && image.url}
-                height="202px"
-                width={`${buttonWidth}px`}
-                testID={`${getLocator('moduleT_product_img')}${index}`}
-                alt={image && image.alt}
-                imgConfig={IMG_DATA.promoImgConfig[0]}
-              />
-            </Anchor>
+            <ImageWrapper tileIndex={index}>
+              <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
+                <DamImage
+                  url={image && image.url}
+                  height="202px"
+                  width={`${buttonWidth}px`}
+                  testID={`${getLocator('moduleT_product_img')}${index}`}
+                  alt={image && image.alt}
+                  imgConfig={IMG_DATA.promoImgConfig[0]}
+                />
+              </Anchor>
+            </ImageWrapper>
           );
         })}
       </ImageContainer>

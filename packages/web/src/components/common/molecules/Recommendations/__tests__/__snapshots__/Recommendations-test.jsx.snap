@@ -36,6 +36,8 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
       >
         <LoadableComponent
           className="test class product-list price-only"
+          currencyExchange={1}
+          currencySymbol="USD"
           isPerfectBlock={true}
           item={
             Object {
@@ -58,6 +60,7 @@ exports[`Recommendations Module O price only variation Recommendations Module O 
           }
           sequenceNumber={1}
           variation="moduleO"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>
@@ -101,6 +104,8 @@ exports[`Recommendations Module O show button variation Recommendations Module O
       >
         <LoadableComponent
           className="test class product-list "
+          currencyExchange={1}
+          currencySymbol="USD"
           isPerfectBlock={true}
           item={
             Object {
@@ -123,6 +128,7 @@ exports[`Recommendations Module O show button variation Recommendations Module O
           }
           sequenceNumber={1}
           variation="moduleO"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>
@@ -190,6 +196,8 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
       >
         <LoadableComponent
           className="test class product-list "
+          currencyExchange={1}
+          currencySymbol="USD"
           isPerfectBlock={true}
           item={
             Object {
@@ -212,6 +220,7 @@ exports[`Recommendations Module O variation renders correctly 1`] = `
           }
           sequenceNumber={1}
           variation="moduleO"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>
@@ -255,6 +264,8 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
       >
         <LoadableComponent
           className="test class product-list "
+          currencyExchange={1}
+          currencySymbol="USD"
           isPerfectBlock={true}
           item={
             Object {
@@ -277,6 +288,7 @@ exports[`Recommendations Module P variation Recommendations Module P variation r
           }
           sequenceNumber={1}
           variation="moduleP"
+          viaModule="Recommendation"
         />
       </div>
     </Styled(Col)>

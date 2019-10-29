@@ -27,6 +27,10 @@ const SearchListingView = ({
   initialValues,
   labelsFilter,
   onSubmit,
+  currency,
+  currencyAttributes,
+  onAddItemToFavorites,
+  isLoggedIn,
   ...otherProps
 }) => {
   return (
@@ -88,6 +92,10 @@ const SearchListingView = ({
               products={products}
               labels={labels}
               productTileVariation="search-product-tile"
+              currencyExchange={currencyAttributes.exchangevalue}
+              currency={currency}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
               {...otherProps}
             />
           ) : null}
@@ -118,6 +126,10 @@ SearchListingView.propTypes = {
   searchedText: PropTypes.string,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  currencyAttributes: PropTypes.shape({}),
+  currency: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 SearchListingView.defaultProps = {
@@ -133,6 +145,11 @@ SearchListingView.defaultProps = {
   searchedText: '',
   slpLabels: {},
   sortLabels: {},
+  currencyAttributes: {
+    exchangevalue: 1,
+  },
+  currency: 'USD',
+  isLoggedIn: false,
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

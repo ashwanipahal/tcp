@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   getGrandTotal,
@@ -10,6 +11,9 @@ import {
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import { isPlccUser } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { getAddedToBagError } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.selectors';
+import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/SaveForLater/container/SaveForLater.selectors';
 import MiniBagView from '../views/MiniBag.view';
 import {
   getLabelsMiniBag,
@@ -25,25 +29,28 @@ import {
 } from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
 import BAG_ACTIONS from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.actions';
 
-// @flow
-type Props = {
-  isOpen: boolean,
-  totalItems: any,
-  labels: any,
-  userName: any,
-  subTotal: any,
-  currencySymbol: any,
-  currentPoints: any,
-  totalRewards: any,
-  isCartItemsUpdating: any,
-  isCartItemSFL: any,
-  cartItemSflError: any,
-  updateCartItemCount: Function,
-  closeMiniBagDispatch: Function,
-  openOverlay: Function,
-  resetSuccessMessage: Function,
-};
-export class MiniBagContainer extends React.Component<Props> {
+export class MiniBagContainer extends React.PureComponent {
+  static propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    totalItems: PropTypes.number.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    userName: PropTypes.string.isRequired,
+    subTotal: PropTypes.number.isRequired,
+    currencySymbol: PropTypes.string.isRequired,
+    currentPoints: PropTypes.number.isRequired,
+    totalRewards: PropTypes.number.isRequired,
+    isCartItemsUpdating: PropTypes.bool.isRequired,
+    isCartItemSFL: PropTypes.bool.isRequired,
+    cartItemSflError: PropTypes.string.isRequired,
+    updateCartItemCount: PropTypes.func.isRequired,
+    closeMiniBagDispatch: PropTypes.func.isRequired,
+    openOverlay: PropTypes.func.isRequired,
+    resetSuccessMessage: PropTypes.func.isRequired,
+    isPlcc: PropTypes.bool.isRequired,
+    addedToBagError: PropTypes.string.isRequired,
+    isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.closeModal = this.closeModal.bind(this);
@@ -72,6 +79,9 @@ export class MiniBagContainer extends React.Component<Props> {
       closeMiniBagDispatch,
       openOverlay,
       resetSuccessMessage,
+      isPlcc,
+      addedToBagError,
+      isShowSaveForLaterSwitch,
     } = this.props;
     return (
       <MiniBagView
@@ -90,6 +100,9 @@ export class MiniBagContainer extends React.Component<Props> {
         closeMiniBagDispatch={closeMiniBagDispatch}
         openOverlay={openOverlay}
         resetSuccessMessage={resetSuccessMessage}
+        isPlcc={isPlcc}
+        addedToBagError={addedToBagError}
+        isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
       />
     );
   }
@@ -106,6 +119,9 @@ const mapStateToProps = state => {
     isCartItemSFL: getIsCartItemsSFL(state),
     cartItemSflError: getCartItemsSflError(state),
     isOpen: getIsMiniBagOpen(state),
+    isPlcc: isPlccUser(state),
+    addedToBagError: getAddedToBagError(state),
+    isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
   };
 };
 

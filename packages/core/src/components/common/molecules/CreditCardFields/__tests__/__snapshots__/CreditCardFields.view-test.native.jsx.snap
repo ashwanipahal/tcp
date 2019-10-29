@@ -13,14 +13,14 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           "height": 72,
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isPLCCEnabled={true}
       keyboardType="numeric"
       label=""
       name="cardNumber"
-      onFocus={[Function]}
+      onCardFocus={[Function]}
       val=""
     />
   </Styled(View)>
@@ -72,7 +72,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "withComponent": [Function],
           }
         }
-        dataLocator="addEditCreditCard-expMonth"
+        dataLocator="expMonthDropDown"
         dropDownStyle={
           Object {
             "border": 1,
@@ -191,7 +191,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "withComponent": [Function],
           }
         }
-        dataLocator="addEditCreditCard-expYear"
+        dataLocator="expYearDropDown"
         dropDownStyle={
           Object {
             "border": 1,
@@ -316,7 +316,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "height": 72,
           }
         }
-        dataLocator="payment-cvv"
+        dataLocator="cvvTxtBox"
         id="cvvCode"
         keyboardType="numeric"
         label=""
@@ -390,7 +390,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
           "height": 72,
         }
       }
-      dataLocator="payment-cardtextfield"
+      dataLocator="cardNbrTxtBox"
       enableSuccessCheck={false}
       id="cardNumber"
       isEdit={true}
@@ -398,7 +398,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
       keyboardType="numeric"
       label=""
       name="cardNumber"
-      onFocus={[Function]}
+      onCardFocus={[Function]}
       val=""
     />
     <Styled(TouchableOpacity)
@@ -411,7 +411,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
         iconFontName="FontAwesome"
         isButton={false}
         isDisabled={false}
-        margin={null}
+        margins={null}
         name="camera"
         onPress={[Function]}
         size="fs25"
@@ -466,7 +466,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "withComponent": [Function],
           }
         }
-        dataLocator="addEditCreditCard-expMonth"
+        dataLocator="expMonthDropDown"
         dropDownStyle={
           Object {
             "border": 1,
@@ -585,7 +585,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "withComponent": [Function],
           }
         }
-        dataLocator="addEditCreditCard-expYear"
+        dataLocator="expYearDropDown"
         dropDownStyle={
           Object {
             "border": 1,
@@ -710,7 +710,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "height": 72,
           }
         }
-        dataLocator="payment-cvv"
+        dataLocator="cvvTxtBox"
         id="cvvCode"
         keyboardType="numeric"
         label=""

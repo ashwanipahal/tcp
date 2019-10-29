@@ -46,6 +46,13 @@ const styles = css`
   .edit-cta {
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    margin-top: ${props =>
+      props.editShipmentDetailsError ? 0 : props.theme.spacing.ELEM_SPACING.XL};
+    .save-btn {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      }
+    }
   }
 
   .hide-on-mobile {
@@ -65,6 +72,26 @@ const styles = css`
 
   .Modal_Heading {
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+  }
+  .edit-shipping-error {
+    span {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    }
+  }
+  .edit-shipping-error-container {
+    display: flex;
+  }
+  .edit-link-placement {
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+  }
+  .select__input {
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 

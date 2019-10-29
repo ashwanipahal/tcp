@@ -44,6 +44,7 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
       customStyle={Object {}}
       fontSizeVariation="large"
       locator=""
+      margins={null}
       noLink={true}
       onPress={[Function]}
       text="Apply Today"

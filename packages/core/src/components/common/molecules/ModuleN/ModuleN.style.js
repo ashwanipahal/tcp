@@ -1,17 +1,47 @@
 import { css } from 'styled-components';
 
 export default css`
-  .moduleN-innerContent {
-    background-color: #f53d3d;
-    margin-bottom: 40px;
-  }
+  background-color: ${props => props.theme.colorPalette.red['400']};
+  margin-bottom: 40px;
+
   .heading-wrapper {
     padding: 16px 0;
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding-top: 30px;
-      padding-bottom: 25px;
+      padding-top: 16px;
+      padding-bottom: 24px;
+    }
+  }
+
+  .stacked-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 24px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: ${props => (props.theme.isGymboree ? '32px' : '24px')};
+    }
+  }
+
+  .text_normal {
+    margin-top: -14px;
+  }
+
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    color: ${props =>
+      props.theme.isGymboree && props.ctaType === 'stackedCTAButtons'
+        ? props.theme.colorPalette.gray['700']
+        : props.theme.colorPalette.red['300']};
+  }
+
+  .dropdown-button {
+    margin-top: 32px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 48px;
     }
   }
 
@@ -41,13 +71,25 @@ export default css`
     }
   }
 
+  .ModuleN-heading {
+    @media ${props => props.theme.mediaQuery.large} {
+      display: inline-block;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     .heading-wrapper {
       text-align: center;
+      display: ${props => (props.halfWidth ? 'block' : 'flex')};
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 0px;
+      padding-top: ${props => (props.theme.isGymboree ? '32px' : '16px')};
     }
     .heading,
     .moduleN__promo-banner {
-      display: inline-block;
+      display: block;
+      margin-bottom: 0px;
     }
   }
 `;

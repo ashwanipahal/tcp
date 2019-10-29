@@ -2,7 +2,7 @@
 import superagent from 'superagent';
 import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
-import { isClient, isMobileApp, getAPIConfig } from '../../../utils';
+import { isClient, isMobileApp, getBrand } from '../../../utils';
 
 const modifyUnbxdUrl = unboxKey => {
   const temp = unboxKey.split('/');
@@ -19,12 +19,19 @@ const getRequestParams = (apiConfig, reqObj) => {
   const {
     webService: { URI, unbxdCustom },
   } = reqObj;
+  let { brand } = reqObj;
+  if (!brand) {
+    const brandID = getBrand();
+    brand = brandID && brandID.toUpperCase();
+  }
+  const brandUnboxKey = apiConfig[`unboxKey${brand}`];
+  const unboxKey = unbxdCustom ? modifyUnbxdUrl(brandUnboxKey) : brandUnboxKey;
+  const unbxdKey = apiConfig[`unbxd${brand}`];
+  const requestUrl = `${unbxdKey}/${unboxKey}/${URI}`;
+  const unbxdAPIKey = apiConfig[`unbxdApiKey${brand}`];
 
-  const unboxKey = unbxdCustom ? modifyUnbxdUrl(apiConfig.unboxKey) : apiConfig.unboxKey;
-  const requestUrl = `${apiConfig.unbxd}/${unboxKey}/${URI}`;
-  const { unbxdApiKey } = getAPIConfig();
   const reqHeaders = {
-    Authorization: unbxdApiKey,
+    Authorization: unbxdAPIKey,
   };
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
@@ -83,7 +90,7 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
       })
       .catch(err => {
         // eslint-disable-next-line prefer-promise-reject-errors
-        reject({ err, reqObj });
+        reject({ err, reqObj, reqHeaders });
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.

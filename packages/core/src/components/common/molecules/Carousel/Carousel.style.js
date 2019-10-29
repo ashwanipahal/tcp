@@ -157,7 +157,7 @@ const CarouselStyle = css`
 
   .slick-dots {
     position: absolute;
-    bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    bottom: 16px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -170,76 +170,55 @@ const CarouselStyle = css`
   .slick-dots ul {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   .slick-dots li {
     position: relative;
     display: inline-block;
-    background: url('/static/images/carousal-dot.svg') no-repeat 0 0;
-    width: 10px;
-    height: 10px;
-    button,
-    button:before {
-      margin: 0;
+    margin: 0 2px;
+    width: 6px;
+    height: 6px;
+    button {
+      font-size: 0;
+      line-height: 0;
+      width: 6px;
+      height: 6px;
+      display: block;
+      cursor: pointer;
+      color: transparent;
+      border: 0;
+      outline: none;
+      background: transparent;
       padding: 0;
-      width: 7px;
-      height: 7px;
+      &:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: ${props => props.theme.colorPalette.gray[700]};
+      }
     }
-  }
-
-  .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    pointer-events: none;
-    background: transparent;
-  }
-
-  .slick-dots li button:before {
-    font-family: Arial;
-    font-size: 6px;
-    line-height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    opacity: 0.25;
-    color: black;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   li.slick-active {
-    width: 11px;
-    height: 11px;
-    background: url('/static/images/carousal-dot-active.svg') no-repeat 0 0;
-    button,
-    button:before {
+    margin: 0;
+    width: 10px;
+    height: 10px;
+    button {
       width: 10px;
       height: 10px;
+      &:before {
+        width: 10px;
+        height: 10px;
+        background: ${props => props.theme.colors.WHITE};
+        border: 1px solid ${props => props.theme.colorPalette.gray[700]};
+      }
     }
-  }
-
-  .slick-dots li.slick-active button:before {
-    opacity: 0.75;
-    color: black;
-  }
-  .slick-dots li button:hover,
-  .slick-dots li button:focus {
-    outline: none;
-  }
-  .slick-dots li button:hover:before,
-  .slick-dots li button:focus:before {
-    opacity: 1;
   }
 
   .tcp_carousel__play_pause_button {

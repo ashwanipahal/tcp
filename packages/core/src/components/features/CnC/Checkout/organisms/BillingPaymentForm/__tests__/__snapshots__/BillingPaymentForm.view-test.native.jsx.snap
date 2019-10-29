@@ -7,8 +7,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -122,7 +121,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
-            dataLocator="billing-payment-bilingcreditcardlabel"
+            dataLocator="cardDropDownLbl"
             fontSize="fs10"
             fontWeight="extrabold"
             margin={null}
@@ -620,6 +619,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
+    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     routeToPage=""
@@ -635,8 +635,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -991,6 +990,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
+    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     routeToPage=""
@@ -1006,8 +1006,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1048,6 +1047,7 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
+    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     routeToPage=""
@@ -1063,8 +1063,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1130,7 +1129,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
-            dataLocator="billing-payment-bilingcreditcardlabel"
+            dataLocator="cardDropDownLbl"
             fontSize="fs10"
             fontWeight="extrabold"
             margin={null}
@@ -1220,6 +1219,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             fontSizeVariation="small"
             href=""
             locator=""
+            margins={null}
             noLink={true}
             onPress={[Function]}
             target=""
@@ -1233,8 +1233,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           color="gray.900"
-          data-locator="billing-payment-method"
-          dataLocator=""
+          dataLocator="paymentMethodLbl"
           fontSize="fs16"
           fontWeight="extrabold"
           margin={null}
@@ -1315,7 +1314,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "height": 72,
               }
             }
-            dataLocator="payment-cvv"
+            dataLocator="cvvTxtBox"
             id="cvvCode"
             label="CVV Code"
             name="cvvCode"
@@ -1369,7 +1368,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             }
           }
           cardNumber=""
-          dataLocatorPrefix="billing-payment-card-detail"
+          dataLocator="selectedCardDetail"
           isDefault={false}
           selectedValue=""
           showAddress={true}
@@ -1381,6 +1380,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
+    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     routeToPage=""
@@ -1396,8 +1396,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -1479,7 +1478,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
-            dataLocator="billing-payment-bilingcreditcardlabel"
+            dataLocator="cardDropDownLbl"
             fontSize="fs10"
             fontWeight="extrabold"
             margin={null}
@@ -1585,6 +1584,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             fontSizeVariation="small"
             href=""
             locator=""
+            margins={null}
             noLink={true}
             onPress={[Function]}
             target=""
@@ -1598,8 +1598,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           color="gray.900"
-          data-locator="billing-payment-method"
-          dataLocator=""
+          dataLocator="paymentMethodLbl"
           fontSize="fs16"
           fontWeight="extrabold"
           margin={null}
@@ -1680,7 +1679,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "height": 72,
               }
             }
-            dataLocator="payment-cvv"
+            dataLocator="cvvTxtBox"
             id="cvvCode"
             label="CVV Code"
             name="cvvCode"
@@ -1734,7 +1733,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             }
           }
           cardNumber=""
-          dataLocatorPrefix="billing-payment-card-detail"
+          dataLocator="selectedCardDetail"
           isDefault={false}
           selectedValue=""
           showAddress={true}
@@ -1746,6 +1745,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
+    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     routeToPage=""
@@ -1761,8 +1761,7 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
       <Styled(BodyCopy)
         accessibilityText=""
         color="gray.900"
-        data-locator="billing-details"
-        dataLocator=""
+        dataLocator="paymentMethodLbl"
         fontFamily="primary"
         fontSize="fs26"
         fontWeight="regular"
@@ -2068,7 +2067,7 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
         <Styled(View)>
           <Styled(BodyCopy)
             accessibilityText=""
-            dataLocator="billing-payment-bilingcreditcardlabel"
+            dataLocator="cardDropDownLbl"
             fontSize="fs10"
             fontWeight="extrabold"
             margin={null}
@@ -2709,6 +2708,7 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
+    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     routeToPage=""
@@ -2723,6 +2723,7 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
     backLinkText=""
     btnText=""
     isConfirmationPage={false}
+    isReviewPage={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     routeToPage=""

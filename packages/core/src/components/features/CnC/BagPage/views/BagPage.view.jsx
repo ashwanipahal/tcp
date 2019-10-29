@@ -14,6 +14,7 @@ import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
+import InformationHeader from '../../common/molecules/InformationHeader';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class BagPageView extends React.Component {
       activeSection: null,
       showCondensedHeader: false,
       showStickyHeaderMob: false,
+      headerError: false,
     };
     this.bagPageHeader = null;
     this.bagActionsContainer = null;
@@ -51,6 +53,7 @@ class BagPageView extends React.Component {
   }
 
   componentDidUpdate() {
+    /* istanbul ignore else */
     if (!this.bagPageCondenseHeaderBind) {
       const checkoutCta = this.bagActionsContainer;
       const header = this.bagPageHeader;
@@ -66,6 +69,10 @@ class BagPageView extends React.Component {
   componentWillUnmount() {
     this.removeScrollListener();
   }
+
+  setHeaderErrorState = (state, ...params) => {
+    this.setState({ headerError: true, params });
+  };
 
   getBagPageHeaderRef(ref) {
     this.bagPageHeader = ref;
@@ -133,8 +140,32 @@ class BagPageView extends React.Component {
     }
   };
 
+  wrapSection = (Component, orderItemsCount) => {
+    const isNoNEmptyBag = orderItemsCount > 0;
+    if (!isNoNEmptyBag) {
+      return (
+        <Col
+          colSize={{
+            small: 6,
+            medium: 5,
+            large: 8,
+          }}
+        >
+          {Component}
+        </Col>
+      );
+    }
+    return Component;
+  };
+
   renderLeftSection = () => {
-    const { labels, sflItems, isShowSaveForLaterSwitch, isSflItemRemoved } = this.props;
+    const {
+      labels,
+      sflItems,
+      isShowSaveForLaterSwitch,
+      isSflItemRemoved,
+      orderItemsCount,
+    } = this.props;
     const { activeSection } = this.state;
     const myBag = 'myBag';
     return (
@@ -144,31 +175,40 @@ class BagPageView extends React.Component {
             activeSection === BAGPAGE_CONSTANTS.BAG_STATE ? 'activeSection' : 'inActiveSection'
           }`}
         >
-          <ProductTileWrapper bagLabels={labels} pageView={myBag} showPlccApplyNow />
+          <ProductTileWrapper
+            bagLabels={labels}
+            pageView={myBag}
+            showPlccApplyNow
+            setHeaderErrorState={this.setHeaderErrorState}
+          />
         </div>
-        {isShowSaveForLaterSwitch && (
-          <div
-            className={`save-for-later-section ${
-              activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
-            } ${sflItems.size === 0 && !isSflItemRemoved ? 'hide-on-desktop' : ''}`}
-          >
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight={['semibold']}
-              className="elem-mt-XXL elem-mb-XL save-for-later-section-heading"
+
+        {isShowSaveForLaterSwitch &&
+          this.wrapSection(
+            <div
+              className={`save-for-later-section ${
+                activeSection === BAGPAGE_CONSTANTS.SFL_STATE ? 'activeSection' : 'inActiveSection'
+              } ${sflItems.size === 0 && !isSflItemRemoved ? 'hide-on-desktop' : ''}`}
             >
-              {`${labels.savedForLaterText} (${sflItems.size})`}
-            </BodyCopy>
-            <ProductTileWrapper
-              bagLabels={labels}
-              pageView={myBag}
-              sflItems={sflItems}
-              showPlccApplyNow={false}
-              isBagPageSflSection
-            />
-          </div>
-        )}
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight={['semibold']}
+                className="elem-mt-XXL elem-mb-XL save-for-later-section-heading"
+              >
+                {`${labels.savedForLaterText} (${sflItems.size})`}
+              </BodyCopy>
+              <ProductTileWrapper
+                bagLabels={labels}
+                pageView={myBag}
+                sflItems={sflItems}
+                showPlccApplyNow={false}
+                isBagPageSflSection
+                setHeaderErrorState={this.setHeaderErrorState}
+              />
+            </div>,
+            orderItemsCount
+          )}
       </React.Fragment>
     );
   };
@@ -183,6 +223,7 @@ class BagPageView extends React.Component {
           showAddTobag={showAddTobag}
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
+          containerId="paypal-button-container-bag"
         />
       </div>
     );
@@ -237,12 +278,47 @@ class BagPageView extends React.Component {
                 inheritedStyles={addedToBagActionsStyles}
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
+                containerId="paypal-button-container-bag-header"
               />
             </Col>
           </Row>
         </Row>
       </div>
     );
+  };
+
+  getHeaderError = ({
+    labels,
+    orderItems,
+    pageView,
+    isUnavailable,
+    isSoldOut,
+    getUnavailableOOSItems,
+    confirmRemoveCartItem,
+    isBagPageSflSection,
+    isCartItemSFL,
+    isCartItemsUpdating,
+    isSflItemRemoved,
+  }) => {
+    return (
+      <InformationHeader
+        labels={labels}
+        orderItems={orderItems}
+        pageView={pageView}
+        isUnavailable={isUnavailable}
+        isSoldOut={isSoldOut}
+        getUnavailableOOSItems={getUnavailableOOSItems}
+        confirmRemoveCartItem={confirmRemoveCartItem}
+        isBagPageSflSection={isBagPageSflSection}
+        isCartItemSFL={isCartItemSFL}
+        isCartItemsUpdating={isCartItemsUpdating}
+        isSflItemRemoved={isSflItemRemoved}
+      />
+    );
+  };
+
+  renderHeaderError = (headerError, params) => {
+    return headerError && this.getHeaderError(params[0]);
   };
 
   render() {
@@ -258,18 +334,25 @@ class BagPageView extends React.Component {
       orderBalanceTotal,
       currencySymbol,
     } = this.props;
-    const { activeSection, showStickyHeaderMob } = this.state;
+    const {
+      activeSection,
+      showStickyHeaderMob,
+      showCondensedHeader,
+      headerError,
+      params,
+    } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
-        {this.stickyBagCondensedHeader()}
+        {showCondensedHeader && this.stickyBagCondensedHeader()}
+
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
         >
-          <Row tagName="header">
+          <Row tagName="header" className="cartPageTitleHeader">
             <Col
               colSize={{ small: 3, medium: 4, large: 6 }}
               className="left-sec"
@@ -321,6 +404,7 @@ class BagPageView extends React.Component {
               </Col>
             )}
           </Row>
+          {this.renderHeaderError(headerError, params)}
         </div>
         <CnCTemplate
           leftSection={this.renderLeftSection}
@@ -333,6 +417,7 @@ class BagPageView extends React.Component {
           isGuest={isGuest}
           showAccordian={false}
           isNonEmptySFL={isNonEmptySFL}
+          pageCategory="bagPage"
         />
         <QuickViewModal fromBagPage />
       </div>

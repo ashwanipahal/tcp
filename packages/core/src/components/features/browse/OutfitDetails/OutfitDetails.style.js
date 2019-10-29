@@ -13,6 +13,14 @@ export default css`
     }
   }
 
+  .outfit-back-button {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+  }
+
   .outfit-image {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }

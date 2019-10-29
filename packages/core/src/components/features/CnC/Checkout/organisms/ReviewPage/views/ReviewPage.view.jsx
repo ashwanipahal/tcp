@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormSection, reduxForm, change } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
@@ -12,11 +14,16 @@ import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import BillingSection from '../organisms/BillingSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import ContactFormFields from '../../../molecules/ContactFormFields';
+
+const formName = 'expressReviewPage';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
     labels: PropTypes.shape({}).isRequired,
+    reviewDidMount: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
@@ -24,22 +31,81 @@ class ReviewPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     showAccordian: PropTypes.bool,
     isGuest: PropTypes.bool.isRequired,
+    isExpressCheckout: PropTypes.bool,
+    shipmentMethods: PropTypes.shape({}).isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    pickUpContactPerson: PropTypes.shape({}).isRequired,
+    pickUpContactAlternate: PropTypes.shape({}).isRequired,
+    ServerErrors: PropTypes.node.isRequired,
+    isPaymentDisabled: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     setVenmoShippingState: () => {},
     setVenmoPickupState: () => {},
     showAccordian: true,
+    isExpressCheckout: false,
+    isPaymentDisabled: false,
   };
 
   componentDidMount() {
-    const { setVenmoShippingState, setVenmoPickupState } = this.props;
+    const { setVenmoShippingState, setVenmoPickupState, reviewDidMount } = this.props;
     setVenmoShippingState(true);
     setVenmoPickupState(true);
+    reviewDidMount();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isPaymentDisabled: prevPaymentDisabled } = prevProps;
+    const { isPaymentDisabled, dispatch } = this.props;
+    if (prevPaymentDisabled !== isPaymentDisabled) {
+      dispatch(change(formName, 'cvvCode', null));
+    }
   }
 
   handleDefaultLinkClick = e => {
     e.preventDefault();
+  };
+
+  reviewFormSubmit = data => {
+    const {
+      submitReview,
+      pickUpContactPerson,
+      pickUpContactAlternate,
+      isExpressCheckout,
+    } = this.props;
+    const { firstName, lastName, hasAlternatePickup, emailAddress } = data.pickUpAlternateExpress;
+    const { cvvCode } = data;
+    const pickupContactData =
+      typeof pickUpContactPerson.firstName !== 'undefined'
+        ? pickUpContactPerson
+        : pickUpContactAlternate.pickUpContact;
+
+    if (isExpressCheckout) {
+      const formDataSubmission = {
+        formData: {
+          hasAlternatePickup,
+          pickUpAlternate: {
+            emailAddress,
+            firstName,
+            lastName,
+          },
+          pickUpContact: {
+            firstName: pickupContactData.firstName,
+            lastName: pickupContactData.lastName,
+            phoneNumber: pickupContactData.phoneNumber,
+            emailAddress: pickupContactData.emailAddress,
+          },
+          billing: {
+            cvv: cvvCode,
+          },
+        },
+      };
+      submitReview(formDataSubmission);
+    } else {
+      submitReview({});
+    }
   };
 
   render() {
@@ -48,9 +114,12 @@ class ReviewPage extends React.PureComponent {
       labels,
       orderHasPickUp,
       orderHasShipping,
-      submitReview,
       isGuest,
       showAccordian,
+      isExpressCheckout,
+      shipmentMethods,
+      handleSubmit,
+      ServerErrors,
     } = this.props;
     const {
       header,
@@ -64,30 +133,39 @@ class ReviewPage extends React.PureComponent {
       ariaLabelSubmitOrderButton,
     } = labels;
 
+    const expressReviewShippingSection = 'expressReviewShippingSection';
     return (
-      <div className={className}>
+      <form name={formName} className={className} onSubmit={handleSubmit(this.reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
+        {ServerErrors && <ServerErrors />}
         {!!orderHasPickUp && (
           <div className="review-pickup">
             <PickUpReviewSectionContainer
+              isExpressCheckout={isExpressCheckout}
               onEdit={() => {
                 utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
               }}
             />
           </div>
         )}
-        {!!orderHasShipping && (
-          <div className="review-shipping">
-            <ShippingReviewSection
-              onEdit={() => {
-                utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
-              }}
-            />
-          </div>
-        )}
-        <BillingSection />
+        <FormSection name={expressReviewShippingSection}>
+          {!!orderHasShipping && (
+            <div className="review-shipping">
+              <ShippingReviewSection
+                isExpressCheckout={isExpressCheckout}
+                shipmentMethods={shipmentMethods}
+                formName={formName}
+                formSection={expressReviewShippingSection}
+                onEdit={() => {
+                  utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
+                }}
+              />
+            </div>
+          )}
+        </FormSection>
+        <BillingSection isExpressCheckout={isExpressCheckout} />
         <CheckoutCartItemList />
-        <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
+        <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} fullPageInfo />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}
@@ -95,7 +173,6 @@ class ReviewPage extends React.PureComponent {
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.billingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={backLinkBilling}
-          nextHandler={submitReview}
           footerBody={[
             applyConditionPreText,
             <Anchor
@@ -117,10 +194,19 @@ class ReviewPage extends React.PureComponent {
             </Anchor>,
           ]}
         />
-      </div>
+      </form>
     );
   }
 }
 
-export default withStyles(ReviewPage, styles);
+const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
+  ...getStandardConfig(['cvvCode']),
+});
+
+export default reduxForm({
+  form: formName, // a unique identifier for this form
+  ...validateMethod,
+  enableReinitialize: true,
+})(withStyles(ReviewPage, styles));
 export { ReviewPage as ReviewPageVanilla };

@@ -5,9 +5,9 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
-import ModuleTwoCol from '@tcp/core/src/components/common/molecules/ModuleTwoCol/views/ModuleTwoCol';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
+import RouteTracker from '../../../../common/atoms/RouteTracker';
 
 const returnModule = mod => mod.default;
 const HomePageView = dynamic({
@@ -24,14 +24,17 @@ const HomePageView = dynamic({
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
+    module2columns: () =>
+      import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
+    moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
   }),
   render: ({ slots }, modules) => {
     return [
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleT {...mock.moduleT.composites} />,
-      <ModuleTwoCol slots={slots} modules={modules} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
+      process.env.ANALYTICS && <RouteTracker />,
     ];
   },
 });

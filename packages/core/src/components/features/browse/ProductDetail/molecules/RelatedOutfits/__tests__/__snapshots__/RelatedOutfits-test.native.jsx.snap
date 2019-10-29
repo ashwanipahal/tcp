@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
+<View>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="black"
+      isAccordionOpen={true}
+      margin={null}
+      numberOfLines={null}
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation=""
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        margins={null}
+        onPress={[Function]}
+        text=""
+        visible={false}
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/carrot-small-up.png",
+            }
+          }
+        />
+      </Styled(Anchor)>
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <RelatedOutfitsSlots />
+</View>
+`;

@@ -21,6 +21,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      yield put(getUserInfo());
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
       } else {
@@ -33,9 +34,14 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       }
       yield put(navigateXHRAction());
       // Provide check for current page and depending on that make Cart or OrderDetails call.
-      yield put(BAG_PAGE_ACTIONS.getCartData());
-      // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-      return yield put(getUserInfo());
+      return yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: false,
+          excludeCartItems: true,
+          recalcRewards: false,
+          translation: false,
+        })
+      );
     }
     return yield put(setLoginInfo(response));
   } catch (err) {

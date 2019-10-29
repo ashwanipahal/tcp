@@ -174,7 +174,10 @@ export const getOrderInfoByOrderId = updatedPayload => {
           quantityOOS: 0, // no support from backend
           itemBrand: item.brand ? item.brand : '',
         },
-        trackingInfo: item.shipmentAndStatusInfo ? item.shipmentAndStatusInfo : [],
+        trackingInfo:
+          item.shipmentAndStatusInfo.length > 0
+            ? item.shipmentAndStatusInfo
+            : [{ status: orderDetails.orderStatus }],
         isShippedItem: parseInt(item.quantity, 10) === parseInt(item.quantityShipped, 10),
       }));
 
@@ -217,6 +220,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
               trackingUrl: sanitizeEntity(shipment.trackingUrl),
               shippedDate: shipment.shipDate,
               status: OrderShippedKey,
+              orderStatus: OrderShippedKey.toLowerCase(),
               items,
             };
           }
@@ -269,9 +273,11 @@ export const getOrderInfoByOrderId = updatedPayload => {
                     quantity,
                   },
                   productInfo: item.productInfo,
+                  trackingInfo: item.trackingInfo,
                 };
               }),
               status: 'order received',
+              orderStatus: 'order received',
               trackingNumber: aTrackingItem.trackingNumber || null,
               trackingUrl: sanitizeEntity(aTrackingItem.trackingUrl) || null,
             };
@@ -295,6 +301,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
             ...item.itemInfo,
             linePrice: extractFloat(item.paidUnitPrice) * item.itemInfo.quantityCanceled,
           },
+          trackingInfo: item.trackingInfo,
         }));
 
       const outOfStockItems = []; // cartItems.filter((item) => item.itemInfo.quantityOOS);
@@ -306,6 +313,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
           res.body.orderLookupResponse.orderSummary.requestedDeliveryBy.replace('T', ' '),
         pickedUpDate: (orderDetails.dateShipped || '').replace('T', ' '),
         shippedDate: (orderDetails.dateShipped || '').replace('T', ' '),
+        orderStatus: orderDetails.orderStatus ? orderDetails.orderStatus.toLowerCase() : '',
         status:
           orderDetails.orderType === orderConfig.ORDER_ITEM_TYPE.BOSS
             ? orderDetails.orderStatus

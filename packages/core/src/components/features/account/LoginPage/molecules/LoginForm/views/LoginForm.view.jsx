@@ -40,11 +40,12 @@ class LoginForm extends React.PureComponent<Props> {
       className,
       showRecaptcha,
       change,
-      showSavePlcc,
       pristine,
       variation,
       handleContinueAsGuest,
       tooltipContent,
+      userplccCardNumber,
+      userplccCardId,
     } = this.props;
     return (
       <div className={className}>
@@ -88,23 +89,37 @@ class LoginForm extends React.PureComponent<Props> {
                 dataLocator="login-remembermecb"
                 className=""
               >
-                <span className="remember-me-text">
+                <BodyCopy
+                  fontFamily="secondary"
+                  tag="span"
+                  className="remember-me-text"
+                  fontSize="fs10"
+                >
                   {getLabelValue(labels, 'lbl_login_rememberMe', 'login')}
-                </span>
-                <span>{getLabelValue(labels, 'lbl_login_rememberMeHelpText', 'login')}</span>
+                </BodyCopy>
+                <BodyCopy fontFamily="secondary" tag="span" fontSize="fs10">
+                  {getLabelValue(labels, 'lbl_login_rememberMeHelpText', 'login')}
+                </BodyCopy>
               </Field>
             </BodyCopy>
-            {showSavePlcc && (
-              <BodyCopy component="div">
+
+            {userplccCardNumber && userplccCardId && (
+              <BodyCopy component="div" className="save-my-plcc">
                 <Field
                   name="savePlcc"
                   component={InputCheckbox}
                   dataLocator="login-savemyplcccardcb"
                 >
-                  {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login')}
+                  <BodyCopy fontFamily="secondary" tag="span" fontSize="fs10">
+                    {getLabelValue(labels, 'lbl_login_saveMyPlace', 'login').replace(
+                      '#number',
+                      `${userplccCardNumber}`
+                    )}
+                  </BodyCopy>
                 </Field>
               </BodyCopy>
             )}
+
             <BodyCopy component="div">
               {showRecaptcha && (
                 <>
@@ -170,9 +185,10 @@ LoginForm.propTypes = {
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
-  showSavePlcc: PropTypes.bool,
   pristine: PropTypes.bool,
   handleContinueAsGuest: PropTypes.func.isRequired,
+  userplccCardNumber: PropTypes.string.isRequired,
+  userplccCardId: PropTypes.string.isRequired,
 };
 
 LoginForm.defaultProps = {
@@ -180,7 +196,6 @@ LoginForm.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   change: () => {},
-  showSavePlcc: false,
   pristine: false,
 };
 

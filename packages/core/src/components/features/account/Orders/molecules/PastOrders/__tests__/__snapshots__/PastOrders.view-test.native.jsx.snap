@@ -40,6 +40,8 @@ exports[`PastOrders component should renders correctly 2`] = `
     />
   </Styled(View)>
   <OrdersListItem
+    componentProps={Object {}}
+    handleComponentChange={[MockFunction]}
     key="7000036213"
     labels={Object {}}
     orderItem={

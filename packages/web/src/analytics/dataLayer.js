@@ -1,5 +1,5 @@
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
-import { generateBrowseDataLayer } from './dataLayers';
+import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -20,25 +20,104 @@ import { generateBrowseDataLayer } from './dataLayers';
  */
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
+  const homepageDataLayer = generateHomePageDataLayer(store);
+  const siteType = 'global site';
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
-
-    // TODO: All pods to include dataElements here like browseDataLayer and make a global for common one.
-
+    ...homepageDataLayer,
     pageName: {
       get() {
-        return store.getState().pageName;
+        return `gl:${store.getState().pageData.pageName}`;
       },
     },
+
+    pageshortName: {
+      get() {
+        return store.getState().pageData.pageName;
+      },
+    },
+
+    pageType: {
+      get() {
+        return store.getState().pageData.pageName;
+      },
+    },
+
+    countryId: {
+      get() {
+        return store.getState().APIConfig.storeId;
+      },
+    },
+
+    pageLocale: {
+      get() {
+        return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
+      },
+    },
+
+    pageSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    pageSubSubSection: {
+      get() {
+        return store.getState().pageData.pageSection;
+      },
+    },
+
+    siteType: {
+      get() {
+        return siteType;
+      },
+    },
+
+    customerType: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('isGuest')
+          ? 'no rewards:guest'
+          : 'rewards member:logged in';
+      },
+    },
+
+    userEmailAddress: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .getIn(['contactInfo', 'emailAddress']);
+      },
+    },
+
+    currencyCode: {
+      get() {
+        return store.getState().APIConfig.currency;
+      },
+    },
+
+    pageDate: {
+      get() {
+        return new Date().toISOString().split('T')[0];
+      },
+    },
+
+    customerId: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('userId');
+      },
+    },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {
         return store.getState().ProductListing.get('totalProductsCount');
-      },
-    },
-    listingCategory: {
-      get() {
-        return store.getState().ProductListing.get('currentListingId');
       },
     },
   });

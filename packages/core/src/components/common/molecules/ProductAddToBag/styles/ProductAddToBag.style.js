@@ -16,17 +16,39 @@ const styles = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
   .add-to-bag-button {
-    width: 100%;
     max-width: 450px;
     text-align: center;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
-    font-weight: 800;
-    height: 42px;
+    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
+    font-stretch: normal;
+    line-height: normal;
+    font-style: normal;
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: 126px;
+    padding-right: 125px;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-left: 90px;
+      padding-right: 89px;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
+    }
     @media ${props => props.theme.mediaQuery.large} {
-      height: 50px;
+      padding-top: 15px;
+      padding-left: 72px;
+      padding-right: 70px;
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
   .select-value-wrapper {
@@ -63,6 +85,7 @@ const styles = css`
   }
 
   .color-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
     margin-bottom: 33px;
@@ -78,6 +101,7 @@ const styles = css`
   }
 
   .size-selector {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 100%;
   }
 
@@ -88,6 +112,10 @@ const styles = css`
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
     font-weight: 800;
+    display: inline-flex;
+  }
+
+  .default-error {
     display: inline-flex;
   }
 
@@ -111,12 +139,15 @@ const styles = css`
     letter-spacing: normal;
     color: ${props => props.theme.colors.PRIMARY.DARK};
     text-transform: uppercase;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
 
   .color-chips-selector-title-name,
   .size-and-fit-detail-title-name {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-weight: normal;
     margin-left: 6px;
+    font-stretch: normal;
   }
 
   .qty-selector {
@@ -142,6 +173,10 @@ const styles = css`
     width: auto;
   }
 
+  .product-size-error {
+    margin-top: 30px;
+  }
+
   .size-field-error {
     height: auto;
     .select__input {
@@ -154,6 +189,51 @@ const styles = css`
     padding-right: 6px;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+`;
+
+export const giftCardDesignStyle = css`
+  .color-chips-selector-item {
+    height: 126px;
+    width: 103px;
+    border-radius: 0;
+
+    .input-radio-title {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Image color of item */
+    .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+
+    /* When the input is checked, the image color has black border (selected) */
+    .input-radio-icon-checked + .input-radio-title {
+      border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    }
+
+    .input-radio-icon-checked + .input-radio-title .color-image {
+      border: 0;
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .color-chips-selector-item {
+      height: 79px;
+      width: 66px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .color-chips-selector-item {
+      height: 109px;
+      width: 90px;
+    }
+  }
 `;
 
 export default styles;

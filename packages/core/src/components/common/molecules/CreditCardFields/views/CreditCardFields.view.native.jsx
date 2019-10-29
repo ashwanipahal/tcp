@@ -120,7 +120,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             id="cardNumber"
             keyboardType="numeric"
             component={CreditCardNumber}
-            dataLocator="payment-cardtextfield"
+            dataLocator="cardNbrTxtBox"
             cardTypeImgUrl={cardTypeImgUrl}
             isPLCCEnabled={isPLCCEnabled}
             cardType={cardType}
@@ -130,7 +130,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             creditCard={creditCard}
             customStyle={CardTextboxStyle}
             cameraIcon={cameraIcon}
-            onFocus={onCardFocus}
+            onCardFocus={onCardFocus}
           />
           {cameraIcon && cardType == null && (
             <StyledImageWrapper onPress={this.scanCard}>
@@ -151,7 +151,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 component={DropDown}
                 name="expMonth"
                 data={expMonthOptionsMap}
-                dataLocator="addEditCreditCard-expMonth"
+                dataLocator="expMonthDropDown"
                 onValueChange={itemValue => {
                   this.setState({ selectedMonth: itemValue });
                   updateExpiryDate(itemValue, selectedYear);
@@ -178,7 +178,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                 component={DropDown}
                 name="expYear"
                 data={expYearOptionsMap}
-                dataLocator="addEditCreditCard-expYear"
+                dataLocator="expYearDropDown"
                 variation="secondary"
                 dropDownStyle={{ ...dropDownStyle }}
                 itemStyle={{ ...itemStyle }}
@@ -209,7 +209,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
                   keyboardType="numeric"
                   type="text"
                   component={TextBox}
-                  dataLocator="payment-cvv"
+                  dataLocator="cvvTxtBox"
                   customStyle={CvvTextboxStyle}
                 />
                 <Field name="cardType" id="cardType" component={TextBox} type="hidden" />

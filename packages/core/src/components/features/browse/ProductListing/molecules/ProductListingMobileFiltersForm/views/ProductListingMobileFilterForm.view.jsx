@@ -93,6 +93,7 @@ const getFilterOptionsMap = optionsMap => {
   return optionsMap.map(option => ({
     value: option.id,
     title: option.displayName,
+    disabled: option.disabled,
     content: <span className="size-title">{option.displayName}</span>,
   }));
 };
@@ -187,6 +188,8 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
 
   showSortModal = () => {
     this.setState({ show: true, isSortOpenModal: true });
+    document.body.style.height = '90vh';
+    document.body.style.position = 'fixed';
   };
   /**
    * @function toggleFilterIcon
@@ -207,7 +210,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @param {String} facetName - filter names "category, color etc"
    */
   renderFilterField(selectedFilters, filterName, facetName) {
-    const { filtersMaps } = this.props;
+    const { filtersMaps, isFavoriteView, onFilterSelection } = this.props;
     const optionsMap = getFilterOptionsMap(filtersMaps[facetName]);
 
     const className = 'item-list-collapsible item-list-collapsible-expanded size-detail-chips';
@@ -218,13 +221,14 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
         component={CustomSelect}
         optionsMap={optionsMap}
         placeholder={filterName}
-        allowMultipleSelections
+        allowMultipleSelections={!isFavoriteView}
         className={className}
         expanded
         ref={this.captureFilterRef}
         withRef
         forwardRef
         disableExpandStateChanges
+        onFilterSelection={onFilterSelection}
       />
     );
   }
@@ -266,8 +270,15 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    */
   renderMobilePlpFilterForm() {
     const { isSortOpenModal } = this.state;
-    const { handleSubmit, handleSubmitOnChange, sortLabels } = this.props;
-    const sortOptions = getSortOptions(sortLabels);
+    const {
+      handleSubmit,
+      handleSubmitOnChange,
+      sortLabels,
+      isFavoriteView,
+      onSortSelection,
+      favoriteSortingParams,
+    } = this.props;
+    const sortOptions = favoriteSortingParams || getSortOptions(sortLabels);
 
     return (
       <div>
@@ -280,10 +291,17 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
             sortSelectOptions={getSortCustomOptionsMap(sortOptions)}
             hideTitle
             isSortOpenModal
-            onChange={handleSubmit(formValues => {
-              this.hideModal(true);
-              handleSubmitOnChange(formValues);
-            })}
+            onChange={
+              !isFavoriteView
+                ? handleSubmit(formValues => {
+                    this.hideModal(true);
+                    handleSubmitOnChange(formValues);
+                  })
+                : selectedOption => {
+                    this.hideModal(true);
+                    onSortSelection(selectedOption);
+                  }
+            }
           />
         )}
       </div>
@@ -296,7 +314,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
    * @param none
    */
   renderMobileFilters() {
-    const { filtersMaps, filtersLength, className } = this.props;
+    const { filtersMaps, filtersLength, className, selectedKeyValue } = this.props;
     const filterKeys = Object.keys(filtersMaps);
     const unbxdKeyMapping = filtersMaps.unbxdDisplayName;
     const accordionItems = [];
@@ -306,7 +324,7 @@ class ProductListingMobileFiltersForm extends React.PureComponent<Props> {
       if (this.isUnbxdFacetKey(key)) {
         const titleKey = {
           header: {
-            title: unbxdKeyMapping[key],
+            title: unbxdKeyMapping[key] || selectedKeyValue,
           },
         };
         accordionItems.push(titleKey);
@@ -474,6 +492,11 @@ ProductListingMobileFiltersForm.propTypes = {
   handleSubmitOnChange: PropTypes.func,
   removeAllFilters: PropTypes.func,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  selectedKeyValue: PropTypes.string,
+  isFavoriteView: PropTypes.bool,
+  onSortSelection: PropTypes.func,
+  onFilterSelection: PropTypes.func,
+  favoriteSortingParams: PropTypes.shape({}),
 };
 
 ProductListingMobileFiltersForm.defaultProps = {
@@ -482,6 +505,11 @@ ProductListingMobileFiltersForm.defaultProps = {
   sortLabels: [],
   handleSubmitOnChange: () => {},
   removeAllFilters: () => {},
+  selectedKeyValue: 'All',
+  isFavoriteView: false,
+  onSortSelection: null,
+  onFilterSelection: null,
+  favoriteSortingParams: null,
 };
 export default withStyles(ProductListingMobileFiltersForm, ProductListingMobileFiltersFormStyle);
 
