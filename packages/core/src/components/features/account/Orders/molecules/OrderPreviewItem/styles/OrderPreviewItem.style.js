@@ -7,10 +7,6 @@ const styles = css`
   .quantity-spacing {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-      font-weight: ${props => props.theme.typography.fontWeights.regular};
-    }
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
       font-weight: ${props => props.theme.typography.fontWeights.regular};
@@ -22,24 +18,18 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       font-weight: ${props => props.theme.typography.fontWeights.regular};
     }
-    @media ${props => props.theme.mediaQuery.large} {
-      font-weight: ${props => props.theme.typography.fontWeights.regular};
-    }
   }
   .image-sizing {
     width: 103px;
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 90px;
-    }
     @media ${props => props.theme.mediaQuery.medium} {
       width: 162px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 90px;
     }
   }
   .product-name {
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-    }
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
     }
