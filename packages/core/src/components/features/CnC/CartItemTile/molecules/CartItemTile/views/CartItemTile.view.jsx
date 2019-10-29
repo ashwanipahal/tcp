@@ -549,9 +549,7 @@ class CartItemTile extends React.Component {
   };
 
   getProductFit = productDetail => {
-    return !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'regular'
-      ? ' '
-      : ` ${productDetail.itemInfo.fit}`;
+    return !productDetail.itemInfo.fit ? ' ' : ` ${productDetail.itemInfo.fit}`;
   };
 
   getUnavailableHeaderClass = () => {

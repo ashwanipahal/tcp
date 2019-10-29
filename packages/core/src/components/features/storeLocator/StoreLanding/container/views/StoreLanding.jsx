@@ -30,6 +30,38 @@ export class StoreLanding extends PureComponent {
     showSubmitError: false,
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    const { favoriteStore } = this.props;
+    const { mapView } = this.state;
+    const currentFavStoreBasicInfo = favoriteStore && favoriteStore.basicInfo;
+    const prevFavStoreBasicInfo = prevProps.favoriteStore && prevProps.favoriteStore.basicInfo;
+
+    /**
+     * USE CASE - When we select a store to be fav store, the fav store icon will replace the button.
+     *  Then the selected flex item height is greater than one in the row, which make the user experience bad.
+     * IMPLEMENTATION - Put a check whether prev prop fav store is not equal to new prop fav store, then
+     *  retrieve all the tiles and calculate the height and apply the max height to all the tiles.
+     */
+    if (
+      (currentFavStoreBasicInfo &&
+        prevFavStoreBasicInfo &&
+        prevFavStoreBasicInfo.id !== currentFavStoreBasicInfo.id) ||
+      mapView !== prevState.mapView
+    ) {
+      const storeList = document.querySelectorAll(
+        '.store__list.store_item_container .address-tile'
+      );
+      let storeMaxHeight = 0;
+      storeList.forEach(list => {
+        if (storeMaxHeight < list.offsetHeight) storeMaxHeight = list.offsetHeight;
+      });
+      storeList.forEach(list => {
+        const element = list;
+        element.style.height = `${storeMaxHeight}px`;
+      });
+    }
+  }
+
   openStoreDetails = (event, store) => {
     event.preventDefault();
     const { routerHandler } = routeToStoreDetails(store);
@@ -137,7 +169,7 @@ export class StoreLanding extends PureComponent {
     }
     return suggestedStoreList.map((item, index) => (
       <Col
-        colSize={{ large: 12, medium: 8, small: 6 }}
+        colSize={{ large: 12, medium: 4, small: 6 }}
         ignoreGutter={{ small: true }}
         className="store__list store_item_container"
         key={item.basicInfo.id}
@@ -267,7 +299,10 @@ export class StoreLanding extends PureComponent {
                   />
                 </Col>
               </Row>
-              <Row className="storeView__List" fullBleed>
+              <Row
+                className={`storeView__List${mapView ? ' storeView__ListAndMap' : ''}`}
+                fullBleed
+              >
                 {mapView
                   ? this.renderMapView(modifiedStoreList)
                   : this.renderStoreList(modifiedStoreList)}

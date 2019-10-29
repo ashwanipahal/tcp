@@ -17,7 +17,7 @@ const PastOrders = ({
     <>
       <ViewWithSpacing spacingStyles="margin-bottom-MED margin-top-XXXL">
         <BodyCopy
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs16"
           fontWeight="semibold"
           data-locator="no_rewards_msg"

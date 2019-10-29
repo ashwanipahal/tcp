@@ -94,10 +94,14 @@ class DropDown extends React.PureComponent<Props> {
       return item.value === selectedValue;
     });
 
-    let selectedLabelState;
+    let selectedLabelState = '';
     if (selectedValue) {
-      if (selectedObject) selectedLabelState = selectedObject.label;
-      else selectedLabelState = selectedValue;
+      if (selectedObject) {
+        selectedLabelState = selectedObject.label;
+      } else if (data && data.length > 0) {
+        // in case selectedValue is not part of data optionSet passed, then it should be the first option label
+        selectedLabelState = data[0].label;
+      }
     } else {
       selectedLabelState = data.label;
     }

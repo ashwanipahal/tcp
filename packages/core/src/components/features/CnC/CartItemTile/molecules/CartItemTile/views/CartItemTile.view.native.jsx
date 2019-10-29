@@ -141,12 +141,7 @@ class ProductInformation extends React.Component {
           dataLocator={getLocator('cart_item_size')}
           text={`${size} `}
         />
-        <BodyCopy
-          fontSize="fs13"
-          color="gray.800"
-          fontFamily="secondary"
-          text={!fit || fit === 'Regular' ? ' ' : fit}
-        />
+        <BodyCopy fontSize="fs13" color="gray.800" fontFamily="secondary" text={!fit ? ' ' : fit} />
       </ProductDesc>
     );
   };
