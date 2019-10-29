@@ -23,7 +23,14 @@ class MyPrefrenceSection extends React.PureComponent {
   };
 
   render() {
-    const { className, labels, isTcpSubscribe, isGymSubscribe } = this.props;
+    const {
+      className,
+      labels,
+      isTcpSubscribe,
+      isTcpAppSubscribe,
+      isGymAppSubscribe,
+      isGymSubscribe,
+    } = this.props;
     return (
       <div className={className}>
         <Row fullBleed className="elem-pt-LRG">
@@ -104,6 +111,18 @@ class MyPrefrenceSection extends React.PureComponent {
                     component={InputCheckbox}
                     dataLocator="mypreference-apptcpcheckbox"
                     className="elm-padding-top"
+                    onChange={e => {
+                      e.preventDefault();
+                      if (isTcpAppSubscribe) {
+                        this.onUnsubscribeHandler('tcpAppSubscribe');
+                      } else {
+                        this.onSubscribeHandler('tcpAppSubscribe');
+                      }
+                    }}
+                    checked={isTcpAppSubscribe || false}
+                    onBlur={e => {
+                      e.preventDefault();
+                    }}
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -120,6 +139,18 @@ class MyPrefrenceSection extends React.PureComponent {
                     component={InputCheckbox}
                     dataLocator="mypreference-appgymcheckbox"
                     className="elm-padding-top"
+                    onChange={e => {
+                      e.preventDefault();
+                      if (isGymAppSubscribe) {
+                        this.onUnsubscribeHandler('gymboreeAppSubscribe');
+                      } else {
+                        this.onSubscribeHandler('gymboreeAppSubscribe');
+                      }
+                    }}
+                    checked={isGymAppSubscribe || false}
+                    onBlur={e => {
+                      e.preventDefault();
+                    }}
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -211,6 +242,8 @@ MyPrefrenceSection.propTypes = {
   onSubscribe: PropTypes.func.isRequired,
   onUnsubscribe: PropTypes.func.isRequired,
   isTcpSubscribe: PropTypes.bool,
+  isTcpAppSubscribe: PropTypes.bool,
+  isGymAppSubscribe: PropTypes.bool,
   isGymSubscribe: PropTypes.bool,
 };
 
@@ -218,6 +251,8 @@ MyPrefrenceSection.defaultProps = {
   labels: {},
   isTcpSubscribe: false,
   isGymSubscribe: false,
+  isTcpAppSubscribe: false,
+  isGymAppSubscribe: false,
   urlParams: {},
 };
 

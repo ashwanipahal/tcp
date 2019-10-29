@@ -3,7 +3,7 @@ import { MY_PREFERENCE_REDUCER_KEY } from '@tcp/core/src/constants/reducer.const
 
 const getState = state => state[MY_PREFERENCE_REDUCER_KEY];
 
-export const getPlaceRewardsSms = createSelector(
+export const getCustomerPreferencesTcp = createSelector(
   getState,
   state => {
     if (state && state.subscribeStoreData && state.subscribeStoreData.CustomerPreferences) {
@@ -12,13 +12,13 @@ export const getPlaceRewardsSms = createSelector(
         placeRewardsObject[itm.preferenceMode] = itm.isModeSelected;
         return true;
       });
-      return placeRewardsObject.placeRewardsSms || false;
+      return placeRewardsObject;
     }
     return false;
   }
 );
 
-export const getGymPlaceRewardsSms = createSelector(
+export const getCustomerPreferencesGym = createSelector(
   getState,
   state => {
     if (state && state.subscribeStoreData && state.subscribeStoreData.CustomerPreferencesGym) {
@@ -27,7 +27,7 @@ export const getGymPlaceRewardsSms = createSelector(
         placeRewardsGymObject[itm.preferenceMode] = itm.isModeSelected;
         return true;
       });
-      return placeRewardsGymObject.placeRewardsSms || false;
+      return placeRewardsGymObject;
     }
     return false;
   }

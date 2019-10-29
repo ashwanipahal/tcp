@@ -1,7 +1,7 @@
 import { MY_PREFERENCE_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import {
-  getPlaceRewardsSms,
-  getGymPlaceRewardsSms,
+  getCustomerPreferences,
+  getCustomerPreferencesTcp,
   getSmsPhone,
   getGymSmsPhone,
 } from '../container/MyPreferenceSubscription.selectors';
@@ -43,12 +43,14 @@ describe('#My Preference Selectors', () => {
     },
   };
 
-  it('#getPlaceRewardsSms should return placeRewardsSms state', () => {
-    expect(getPlaceRewardsSms(state)).toEqual(subscribeStoreData.placeRewardsSms);
+  it('#getCustomerPreferences should return placeRewardsSms state', () => {
+    expect(getCustomerPreferences(state).placeRewardsSms).toEqual(
+      subscribeStoreData.placeRewardsSms
+    );
   });
 
-  it('#getGymPlaceRewardsSms should return gymPlaceRewardsSms state', () => {
-    expect(getGymPlaceRewardsSms(state)).toEqual(subscribeStoreData.gymPlaceRewardsSms);
+  it('#getCustomerPreferencesTcp should return gymPlaceRewardsSms state', () => {
+    expect(getCustomerPreferencesTcp(state)).toEqual(subscribeStoreData);
   });
 
   it('#getSmsPhone should return smsPhone state', () => {

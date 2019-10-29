@@ -2,16 +2,19 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
+import { isMobileApp } from '@tcp/core/src/utils';
 import MyPrefrence from '../views';
 import {
-  getPlaceRewardsSms,
+  getCustomerPreferencesTcp,
   getSmsPhone,
-  getGymPlaceRewardsSms,
+  getCustomerPreferencesGym,
   getGymSmsPhone,
 } from './MyPreferenceSubscription.selectors';
 import { getUserPhoneNumber } from '../../User/container/User.selectors';
 import MyPreferenceSubscribeModal from '../organism/TcpSubscribeModal/MyPreferenceSubscribeModal.view';
+import MyPreferenceAppSubscribeModal from '../organism/TcpAppSubscribeModal/MyPreferenceAppSubscribeModal.view';
 import MyPreferenceUnsubscribeModal from '../organism/TcpUnsubscribeModal/MyPreferenceUnsubscribeModal.view';
+import MyPreferenceAppUnsubscribeModal from '../organism/TcpAppUnsubscribeModal/MyPreferenceAppUnsubscribeModal.view';
 import { getSubscribeStore, setBrandSubscribeData } from './MyPreferenceSubscription.actions';
 
 export class MyPreferenceSubscription extends PureComponent {
@@ -75,6 +78,19 @@ export class MyPreferenceSubscription extends PureComponent {
       };
     }
 
+    if (activeModal === 'tcpAppSubscribe') {
+      formSubscribeData = {
+        brand: 'tcp',
+        mobileNumber: smsPhone,
+        CustomerPreferences: [
+          {
+            isModeSelected: true,
+            preferenceMode: 'placeRewardsPush',
+          },
+        ],
+      };
+    }
+
     if (activeModal === 'tcpWebUnsubscribe') {
       formSubscribeData = {
         brand: 'tcp',
@@ -87,6 +103,19 @@ export class MyPreferenceSubscription extends PureComponent {
           {
             preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: false,
+          },
+        ],
+      };
+    }
+
+    if (activeModal === 'tcpAppUnsubscribe') {
+      formSubscribeData = {
+        brand: 'tcp',
+        mobileNumber: smsPhone,
+        CustomerPreferences: [
+          {
+            isModeSelected: false,
+            preferenceMode: 'placeRewardsPush',
           },
         ],
       };
@@ -109,6 +138,19 @@ export class MyPreferenceSubscription extends PureComponent {
       };
     }
 
+    if (activeModal === 'gymboreeAppSubscribe') {
+      formSubscribeData = {
+        brand: 'gymboree',
+        mobileNumber: gymSmsPhone,
+        CustomerPreferencesGym: [
+          {
+            isModeSelected: true,
+            preferenceMode: 'placeRewardsPush',
+          },
+        ],
+      };
+    }
+
     if (activeModal === 'gymboreeWebUnsubscribe') {
       formSubscribeData = {
         brand: 'gymboree',
@@ -121,6 +163,19 @@ export class MyPreferenceSubscription extends PureComponent {
           {
             preferenceMode: 'marketingPreferenceSMS',
             isModeSelected: false,
+          },
+        ],
+      };
+    }
+
+    if (activeModal === 'gymboreeAppUnsubscribe') {
+      formSubscribeData = {
+        brand: 'gymboree',
+        mobileNumber: gymSmsPhone,
+        CustomerPreferencesGym: [
+          {
+            isModeSelected: false,
+            preferenceMode: 'placeRewardsPush',
           },
         ],
       };
@@ -148,6 +203,20 @@ export class MyPreferenceSubscription extends PureComponent {
         activeModal: 'gymboreeWebSubscribe',
       });
     }
+
+    if (subscribeBrand === 'tcpAppSubscribe') {
+      this.setState({
+        modalVisible: true,
+        activeModal: 'tcpAppSubscribe',
+      });
+    }
+
+    if (subscribeBrand === 'gymboreeAppSubscribe') {
+      this.setState({
+        modalVisible: true,
+        activeModal: 'gymboreeAppSubscribe',
+      });
+    }
     return true;
   };
 
@@ -165,9 +234,24 @@ export class MyPreferenceSubscription extends PureComponent {
         activeModal: 'gymboreeWebUnsubscribe',
       });
     }
+
+    if (subscribeBrand === 'tcpAppSubscribe') {
+      this.setState({
+        modalVisible: true,
+        activeModal: 'tcpAppUnsubscribe',
+      });
+    }
+
+    if (subscribeBrand === 'gymboreeAppSubscribe') {
+      this.setState({
+        modalVisible: true,
+        activeModal: 'gymboreeAppUnsubscribe',
+      });
+    }
     return true;
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       labels,
@@ -175,9 +259,11 @@ export class MyPreferenceSubscription extends PureComponent {
       componentProps,
       router,
       isTcpSubscribe,
+      isTcpAppSubscribe,
       phoneNumber,
       smsPhone,
       isGymSubscribe,
+      isGymAppSubscribe,
       gymSmsPhone,
     } = this.props;
     const { modalVisible, activeModal } = this.state;
@@ -190,7 +276,9 @@ export class MyPreferenceSubscription extends PureComponent {
           handleComponentChange={handleComponentChange}
           componentProps={componentProps}
           isTcpSubscribe={isTcpSubscribe}
+          isTcpAppSubscribe={isTcpAppSubscribe}
           isGymSubscribe={isGymSubscribe}
+          isGymAppSubscribe={isGymAppSubscribe}
           initialValues={this.initialValuesPreference}
           onSubscribe={this.onSubscribe}
           onUnsubscribe={this.onUnsubscribe}
@@ -204,7 +292,7 @@ export class MyPreferenceSubscription extends PureComponent {
             className="TCPModal__Content"
             maxWidth="457px"
             fixedWidth
-            heading=" "
+            heading={!isMobileApp() ? '' : ' '}
             heightConfig={{
               maxHeight: '100%',
               height: 'auto',
@@ -250,6 +338,27 @@ export class MyPreferenceSubscription extends PureComponent {
                 activeModal={activeModal}
               />
             )}
+
+            {(activeModal === 'tcpAppSubscribe' || activeModal === 'gymboreeAppSubscribe') && (
+              <MyPreferenceAppSubscribeModal
+                onRequestClose={this.handlePopupSubscribeModal}
+                onSubmit={this.handleSubmitModalPopup}
+                phoneNumber={phoneNumber}
+                initialValues={this.initialValuesSubscribe}
+                labels={labels}
+                activeModal={activeModal}
+              />
+            )}
+
+            {(activeModal === 'tcpAppUnsubscribe' || activeModal === 'gymboreeAppUnsubscribe') && (
+              <MyPreferenceAppUnsubscribeModal
+                onRequestClose={this.handlePopupSubscribeModal}
+                onSubmit={this.handleSubmitModalPopup}
+                phoneNumber={gymSmsPhone}
+                labels={labels}
+                activeModal={activeModal}
+              />
+            )}
           </Modal>
         )}
       </>
@@ -258,10 +367,20 @@ export class MyPreferenceSubscription extends PureComponent {
 }
 
 export const mapStateToProps = state => ({
-  isTcpSubscribe: getPlaceRewardsSms(state),
+  isTcpSubscribe: getCustomerPreferencesTcp(state).placeRewardsSms
+    ? getCustomerPreferencesTcp(state).placeRewardsSms
+    : false,
+  isTcpAppSubscribe: getCustomerPreferencesTcp(state).placeRewardsPush
+    ? getCustomerPreferencesTcp(state).placeRewardsPush
+    : false,
   phoneNumber: getUserPhoneNumber(state),
   smsPhone: getSmsPhone(state),
-  isGymSubscribe: getGymPlaceRewardsSms(state),
+  isGymSubscribe: getCustomerPreferencesGym(state).placeRewardsSms
+    ? getCustomerPreferencesGym(state).placeRewardsSms
+    : false,
+  isGymAppSubscribe: getCustomerPreferencesGym(state).placeRewardsPush
+    ? getCustomerPreferencesGym(state).placeRewardsPush
+    : false,
   gymSmsPhone: getGymSmsPhone(state),
 });
 
@@ -281,7 +400,9 @@ MyPreferenceSubscription.propTypes = {
   handleComponentChange: PropTypes.func,
   componentProps: PropTypes.shape({}),
   isTcpSubscribe: PropTypes.bool,
+  isTcpAppSubscribe: PropTypes.bool,
   isGymSubscribe: PropTypes.bool,
+  isGymAppSubscribe: PropTypes.bool,
   getSubscribeStoreAction: PropTypes.func.isRequired,
   submitSubscribeBrand: PropTypes.func.isRequired,
   phoneNumber: PropTypes.string.isRequired,
@@ -297,6 +418,8 @@ MyPreferenceSubscription.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
   isTcpSubscribe: false,
+  isTcpAppSubscribe: false,
+  isGymAppSubscribe: false,
   isGymSubscribe: false,
   smsPhone: '',
   gymSmsPhone: '',

@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
-import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
-import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
-import { BodyCopy, Row, Col, Button, RichText } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Row, Col, Button, Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { formatPhoneNumber } from '../../../../../../utils/formValidation/phoneNumber';
-import styles from './styles/MyPreferenceSubscribeModal.style';
+import externalEndpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
+import styles from './styles/MyPreferenceAppSubscribeModal.style';
+import { getIconPath } from '../../../../../../utils';
 import myPreferenceConst from '../../MyPreferenceSubscription.constants';
 
 /**
@@ -16,14 +14,15 @@ import myPreferenceConst from '../../MyPreferenceSubscription.constants';
  * can be passed in the component.
  * @param MyPreferenceSubscribeModal - used for pass data to the modal popup
  * * @param onRequestClose - received onRequestClose function as param for closed popup
- * * @param openState - received openState function as param for open popup
+ * * @param onSubmit - received onSubmit function to handle form data
  */
-class MyPreferenceSubscribeModal extends React.PureComponent {
+class MyPreferenceAppSubscribeModal extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    activeModal: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
   };
 
@@ -32,28 +31,6 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
     labels: {},
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      disclaimerText: '',
-    };
-  }
-
-  componentDidMount() {
-    let disclaimerLabels = '';
-    const { labels } = this.props;
-    const disclaimerLabelsArray = Object.keys(labels).filter(disclaimerLabelsValue =>
-      /lbl_prefrence_modal_disclaimer_line-/.test(disclaimerLabelsValue)
-    );
-    disclaimerLabelsArray.forEach(elem => {
-      disclaimerLabels += getLabelValue(labels, elem);
-    });
-
-    this.setState({
-      disclaimerText: disclaimerLabels,
-    });
-  }
-
   /**
    * @function render  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -61,8 +38,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, handleSubmit, onSubmit, onRequestClose, labels } = this.props;
-    const { disclaimerText } = this.state;
+    const { className, handleSubmit, activeModal, onSubmit, onRequestClose, labels } = this.props;
 
     return (
       <div className={className}>
@@ -79,9 +55,9 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontFamily="secondary"
               textAlign="center"
               className="elem-mb-MED elem-mt-LRG"
-              data-locator="my-preference-modal_title"
+              data-locator="my-preference-web-push_title"
             >
-              {getLabelValue(labels, 'lbl_prefrence_subscribe_text_alerts')}
+              {getLabelValue(labels, 'lbl_preference_push_notification_heading')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -89,9 +65,9 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontFamily="secondary"
               textAlign="center"
               className="elem-mb-LRG"
-              data-locator="my-preference-modal_info_text"
+              data-locator="my-preference-web-push_subtext"
             >
-              {getLabelValue(labels, 'lbl_prefrence_modal_info_text')}
+              {getLabelValue(labels, 'lbl_preference_push_notification_subtext')}
             </BodyCopy>
             <BodyCopy
               component="div"
@@ -99,41 +75,52 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
               fontFamily="secondary"
               textAlign="center"
               className="elem-mb-MED"
-              data-locator="my-preference-modal_sub_info_text"
+              fontWeight="extrabold"
+              data-locator="my-preference--web-push_download"
             >
-              {getLabelValue(labels, 'lbl_prefrence_modal_sub_info_text')}
+              {getLabelValue(labels, 'lbl_preference_push_notification_download')}
             </BodyCopy>
+
+            <Row fullBleed className="elem-mb-LRG">
+              <Col colSize={{ small: 3, medium: 4, large: 6 }}>
+                <Anchor
+                  href={`${
+                    activeModal === 'tcpAppSubscribe'
+                      ? externalEndpoints.appsStoreTcpAppPage
+                      : externalEndpoints.termsAndConditionsPage
+                  }`}
+                  className="elem-ml-SM"
+                  data-locator="my-preference-modal_app_store"
+                >
+                  <Image class="elem-pl-XS" src={getIconPath('app-store')} />
+                </Anchor>
+              </Col>
+              <Col colSize={{ small: 3, medium: 4, large: 6 }}>
+                <Anchor
+                  href={`${
+                    activeModal === 'tcpAppSubscribe'
+                      ? externalEndpoints.googlePlayTcpAppPage
+                      : externalEndpoints.termsAndConditionsPage
+                  }`}
+                  className="elem-ml-SM"
+                  data-locator="my-preference-modal_google_play"
+                >
+                  <Image class="elem-pl-XS" src={getIconPath('google-play')} />
+                </Anchor>
+              </Col>
+            </Row>
 
             <BodyCopy
               component="div"
               fontSize="fs14"
               fontFamily="secondary"
               textAlign="center"
-              className="elem-mb-MED"
-              data-locator="my-preference-modal_phnumber"
-            >
-              <Field
-                placeholder={getLabelValue(labels, 'lbl_preference_mobileNumber')}
-                name="phoneNumber"
-                id="phoneNumber"
-                component={TextBox}
-                dataLocator="my-preference-modal-phoneNumber"
-                type="tel"
-                normalize={formatPhoneNumber}
-              />
-            </BodyCopy>
-            <BodyCopy
-              component="div"
-              textAlign="center"
-              fontSize="fs14"
-              fontFamily="secondary"
               className="disclaimer-sub-text"
+              data-locator="my-preference-web-push_note"
             >
-              <RichText
-                richTextHtml={disclaimerText}
-                dataLocator="my-preference-modal_disclaimer_sub_text"
-              />
+              {getLabelValue(labels, 'lbl_preference_push_notification_note')}
             </BodyCopy>
+
             <Row fullBleed className="elem-mb-LRG">
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <Button
@@ -142,7 +129,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
                   fill="BLUE"
                   type="submit"
                   className="submit-button"
-                  dataLocator="subscribe_modal_submit"
+                  dataLocator="subscribe-web-push_submit"
                 >
                   {getLabelValue(labels, 'lbl_prefrence_modal_submit')}
                 </Button>
@@ -155,7 +142,7 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
                   buttonVariation="fixed-width"
                   fill="WHITE"
                   className="cancel-button"
-                  dataLocator="subscribe_modal_cancel"
+                  dataLocator="subscribe-web-push_cancel"
                   onClick={onRequestClose}
                 >
                   {getLabelValue(labels, 'lbl_prefrence_modal_cancel')}
@@ -169,11 +156,8 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
   }
 }
 
-const validateMethod = createValidateMethod(getStandardConfig(['phoneNumber']));
-
 export default reduxForm({
   form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL, // a unique identifier for this form
   enableReinitialize: true,
-  ...validateMethod,
-})(withStyles(MyPreferenceSubscribeModal, styles));
-export { MyPreferenceSubscribeModal as MyPreferenceSubscribeModalVanilla };
+})(withStyles(MyPreferenceAppSubscribeModal, styles));
+export { MyPreferenceAppSubscribeModal as MyPreferenceAppSubscribeModalVanilla };
