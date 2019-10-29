@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyPreferenceSubscribeModalVanilla } from '../MyPreferenceSubscribeModal.view.native';
+import { MyPreferenceAppSubscribeModalVanilla } from '../MyPreferenceAppSubscribeModal.view.native';
 
 describe('MyPreference Subscribe component', () => {
   const props = {
@@ -9,7 +9,7 @@ describe('MyPreference Subscribe component', () => {
     labels: {},
   };
   it('should render correctly', () => {
-    const component = shallow(<MyPreferenceSubscribeModalVanilla {...props} />);
+    const component = shallow(<MyPreferenceAppSubscribeModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

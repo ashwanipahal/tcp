@@ -18,7 +18,7 @@ import { ButtonWrapper } from './styles/MyPreferenceAppSubscribeModal.style.nati
  * * @param onRequestClose - received onRequestClose function as param for closed popup
  * * @param handleSubmit - received handleSubmit props to submit form
  */
-class MyPreferenceSubscribeModal extends React.PureComponent {
+class MyPreferenceAppSubscribeModal extends React.PureComponent {
   static propTypes = {
     onRequestClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -100,5 +100,5 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
 export default reduxForm({
   form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL, // a unique identifier for this form
   enableReinitialize: true,
-})(MyPreferenceSubscribeModal);
-export { MyPreferenceSubscribeModal as MyPreferenceSubscribeModalVanilla };
+})(MyPreferenceAppSubscribeModal);
+export { MyPreferenceAppSubscribeModal as MyPreferenceAppSubscribeModalVanilla };

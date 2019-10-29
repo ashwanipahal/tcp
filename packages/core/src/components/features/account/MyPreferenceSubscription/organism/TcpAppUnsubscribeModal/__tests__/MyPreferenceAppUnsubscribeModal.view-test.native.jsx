@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyPreferenceAppUnsubscribeModalVanilla } from '../MyPreferenceUnsubscribeModal.view.native';
+import { MyPreferenceAppUnsubscribeModalVanilla } from '../MyPreferenceAppUnsubscribeModal.view.native';
 
 describe('ProfileInformation component', () => {
   const props = {
