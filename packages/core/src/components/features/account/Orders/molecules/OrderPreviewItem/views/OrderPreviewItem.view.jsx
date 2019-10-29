@@ -98,7 +98,8 @@ const OrderPreviewItem = ({ ...otherProps }) => {
                 fontFamily="secondary"
                 className="status-spacing"
               >
-                {getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}:
+                {getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}
+                <span>:</span>
                 <span>
                   <BodyCopy
                     component="span"
