@@ -24,6 +24,16 @@ export const keyboard = {
   KEY_END_KEY: 35,
 };
 
+export const filterParams = {
+  FILTER_CATAGORY: 'categoryPath2_uFilter',
+  FILTER_COLOR: 'TCPColor_uFilter',
+  FILTER_SIZE: 'v_tcpsize_uFilter',
+  FILTER_PRICE_RANGE: 'unbxd_price_range_uFilter',
+  FILTER_FIT: 'v_tcpfit_unbxd_uFilter',
+  FILTER_GENDER: 'gender_uFilter',
+  FILTER_AGE: 'age_group_uFilter',
+};
+
 export const defaultDeviceType = 'desktop';
 
 const OPTIMIZELY_DECISION_LABEL = 'optimizely_decision';

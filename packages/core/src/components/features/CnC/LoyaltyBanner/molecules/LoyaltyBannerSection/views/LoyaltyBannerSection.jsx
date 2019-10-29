@@ -13,6 +13,41 @@ import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommo
 //   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
 // };
 
+const utilArrayHeader = (LoyaltyLabels, className) => {
+  return [
+    {
+      key: '#estimatedRewardsVal#',
+      value: LoyaltyLabels.rewardPointsValueFn
+        ? `<span class="${className} mpr-plcc-theme">${LoyaltyLabels.rewardPointsValueFn}</span>`
+        : false,
+    },
+    {
+      key: '#br#',
+      value: '<br/>',
+    },
+    {
+      key: '#tagOpen#',
+      value: `<span class="${className} mpr-plcc-theme">`,
+    },
+    {
+      key: '#tagClose#',
+      value: `</span>`,
+    },
+  ];
+};
+
+const utilArrayNextReward = (pointsToNextReward, className) => {
+  return [
+    {
+      key: '#pointsToNextReward#',
+      value:
+        pointsToNextReward && pointsToNextReward > 0
+          ? `<span class="${className} mpr-plcc-theme">${pointsToNextReward}</span>`
+          : '',
+    },
+  ];
+};
+
 const LoyaltyBannerSection = props => {
   const {
     className,
@@ -38,12 +73,15 @@ const LoyaltyBannerSection = props => {
 
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
-  // isReviewPage = true;
-  // isConfirmationPage = false;
-  // isAddedToBagPage = false;
 
   /* istanbul ignore else */
-  if (currentSubtotal > thresholdValue && !isPlcc && !isReviewPage && !isConfirmationPage) {
+  if (
+    estimatedSubtotal > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    estimatedSubtotal
+  ) {
     showSubtotal = true;
   }
 
@@ -59,38 +97,34 @@ const LoyaltyBannerSection = props => {
     isProductDetailView
   );
 
-  const utilArrRewards = [
-    {
-      key: '#estimatedRewardsVal#',
-      value: LoyaltyLabels.rewardPointsValueFn,
-      classValue: `${className} mpr-plcc-theme`,
-    },
-  ];
-  const utilArrSectionSymbol = [
+  const utilArrHeader = utilArrayHeader(LoyaltyLabels, className);
+  const finalHeaderValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrHeader);
+  headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalHeaderValue) : false;
+
+  const utilArrSubHeader = [
     {
       key: '#sectionSymbol#',
-      value: labels.sectionSymbol,
-      classValue: `${className} section-symbol`,
+      value: `<span class="${className} section-symbol">${labels.sectionSymbol}</span>`,
     },
   ];
-
-  const finalPointsValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrRewards);
-  const finalSubHeading = labelsHashValuesReplace(
+  const finalSubHeadingValue = labelsHashValuesReplace(
     LoyaltyLabels.subHeadingLabelFn,
-    utilArrSectionSymbol
+    utilArrSubHeader
   );
-
-  headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalPointsValue) : false;
-  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn ? convertHtml(finalSubHeading) : false;
-  descriptionLabel = LoyaltyLabels.descriptionLabelFn || false;
-
-  const utilArrNextReward = [
+  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn ? convertHtml(finalSubHeadingValue) : false;
+  const utilArrDescription = [
     {
-      key: '#pointsToNextReward#',
-      value: pointsToNextReward,
-      classValue: `${className} mpr-plcc-theme`,
+      key: '#br#',
+      value: '<br/>',
     },
   ];
+  const finalDescriptionValue = labelsHashValuesReplace(
+    LoyaltyLabels.descriptionLabelFn,
+    utilArrDescription
+  );
+  descriptionLabel = LoyaltyLabels.descriptionLabelFn ? convertHtml(finalDescriptionValue) : false;
+
+  const utilArrNextReward = utilArrayNextReward(pointsToNextReward, className);
   const finalStrRemainingValue = labelsHashValuesReplace(
     LoyaltyLabels.remainingPlccValFn,
     utilArrNextReward
@@ -115,6 +149,7 @@ const LoyaltyBannerSection = props => {
             isPlcc={isPlcc}
             pageCategory={pageCategory}
             isProductDetailView={isProductDetailView}
+            earnedRewardAvailable={earnedRewardAvailable}
           />
           <div className="footer">
             <LoyaltyFooterSection
