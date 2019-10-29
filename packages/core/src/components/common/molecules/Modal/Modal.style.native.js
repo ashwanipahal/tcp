@@ -45,9 +45,7 @@ const LineWrapper = styled.View`
 `;
 
 const RowWrapper = styled.View`
-  margin: ${Platform.OS === 'ios'
-      ? props => props.theme.spacing.ELEM_SPACING.XXXL
-      : props => props.theme.spacing.ELEM_SPACING.MED}
+  margin: ${Platform.OS === 'ios' ? '0' : props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
   flex-direction: row;
