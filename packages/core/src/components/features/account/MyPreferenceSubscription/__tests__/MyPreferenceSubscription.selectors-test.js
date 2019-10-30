@@ -4,6 +4,7 @@ import {
   getGymPlaceRewardsSms,
   getSmsPhone,
   getGymSmsPhone,
+  getSubscribeStoreFetchingState,
 } from '../container/MyPreferenceSubscription.selectors';
 
 describe('#My Preference Selectors', () => {
@@ -12,6 +13,7 @@ describe('#My Preference Selectors', () => {
     gymSmsPhone: '2012386357',
     gymPlaceRewardsSms: true,
     placeRewardsSms: true,
+    isFetching: false,
   };
 
   const state = {
@@ -19,6 +21,7 @@ describe('#My Preference Selectors', () => {
       subscribeStoreData: {
         smsPhone: '2012386357',
         gymSmsPhone: '2012386357',
+        isFetching: false,
         CustomerPreferencesGym: [
           {
             preferenceMode: 'placeRewardsSms',
@@ -57,5 +60,9 @@ describe('#My Preference Selectors', () => {
 
   it('#getGymSmsPhone should return gymSmsPhone state', () => {
     expect(getGymSmsPhone(state)).toEqual(subscribeStoreData.gymSmsPhone);
+  });
+
+  it('#getSubscribeStoreFetchingState should return subscribeStoreData state', () => {
+    expect(getSubscribeStoreFetchingState(state)).toEqual(subscribeStoreData.isFetching);
   });
 });

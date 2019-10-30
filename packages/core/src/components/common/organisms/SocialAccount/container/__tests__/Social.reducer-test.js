@@ -6,6 +6,7 @@ describe('SocialReducer List reducer', () => {
   it('should return  default state', () => {
     const initialState = fromJS({
       socialDataOnLoad: {},
+      isFetching: false,
     });
     expect(SocialReducer(initialState, {}));
   });
@@ -13,6 +14,7 @@ describe('SocialReducer List reducer', () => {
   it('should handle success SocialReducer', () => {
     const initialState = fromJS({
       socialDataOnLoad: {},
+      isFetching: false,
     });
 
     // const result = fromJS({
@@ -27,6 +29,7 @@ describe('SocialReducer List reducer', () => {
     ).toEqual(
       fromJS({
         socialDataOnLoad: fromJS({}),
+        isFetching: false,
       })
     );
   });

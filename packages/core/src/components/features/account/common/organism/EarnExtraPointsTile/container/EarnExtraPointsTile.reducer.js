@@ -4,6 +4,7 @@ import EARNEXTRAPOINTS_CONSTANTS from '../EarnExtraPointsTile.constants';
 const initialState = fromJS({
   earnExtraPointsData: null,
   earnedPointsNotificationData: null,
+  isFetching: false,
 });
 
 const getDefaultState = state => {
@@ -16,8 +17,10 @@ const getDefaultState = state => {
 
 const EarnExtraPointsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case EARNEXTRAPOINTS_CONSTANTS.GET_EARNEXTRAPOINTS_LIST:
+      return state.set('isFetching', true);
     case EARNEXTRAPOINTS_CONSTANTS.SET_EARNEXTRAPOINTS_LIST:
-      return state.set('earnExtraPointsData', action.payload);
+      return state.set('isFetching', false).set('earnExtraPointsData', action.payload);
     case EARNEXTRAPOINTS_CONSTANTS.SET_EARNEDPOINTS_NOTIFICATION:
       return state.set('earnedPointsNotificationData', action.payload);
     default:

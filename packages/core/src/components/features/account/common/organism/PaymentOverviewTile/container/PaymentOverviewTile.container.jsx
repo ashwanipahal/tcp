@@ -6,8 +6,10 @@ import {
   getCreditCardDefault,
   getGiftCards,
   getVenmoCards,
+  getCardListFetchingState,
 } from '../../../../Payment/container/Payment.selectors';
 import { getCardList } from '../../../../Payment/container/Payment.actions';
+import PaymentOverviewTileSkelton from '../skelton/PaymentOverviewTileSkelton.view';
 
 export class PaymentOverviewTile extends React.Component {
   static propTypes = {
@@ -19,6 +21,7 @@ export class PaymentOverviewTile extends React.Component {
     creditCardDefault: PropTypes.shape({}),
     giftCardList: PropTypes.shape({}),
     venmoCardList: PropTypes.shape({}),
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -30,6 +33,7 @@ export class PaymentOverviewTile extends React.Component {
     creditCardDefault: {},
     giftCardList: {},
     venmoCardList: {},
+    isFetching: false,
   };
 
   componentDidMount() {
@@ -38,17 +42,19 @@ export class PaymentOverviewTile extends React.Component {
   }
 
   render() {
-    const { creditCardDefault, giftCardList, venmoCardList, labels } = this.props;
+    const { creditCardDefault, giftCardList, venmoCardList, labels, isFetching } = this.props;
     const creditCardDefaultValue = creditCardDefault && creditCardDefault.get(0);
     const giftCardListValue = giftCardList && giftCardList.get(-1);
     const venmoCardListValue = venmoCardList && venmoCardList.get(0);
-    return (
+    return !isFetching ? (
       <PaymentOverviewTileComponent
         creditCardDefault={creditCardDefaultValue}
         giftCardList={giftCardListValue}
         venmoCardList={venmoCardListValue}
         labels={labels}
       />
+    ) : (
+      <PaymentOverviewTileSkelton />
     );
   }
 }
@@ -66,6 +72,7 @@ const mapStateToProps = state => {
     creditCardDefault: getCreditCardDefault(state),
     giftCardList: getGiftCards(state),
     venmoCardList: getVenmoCards(state),
+    isFetching: getCardListFetchingState(state),
   };
 };
 

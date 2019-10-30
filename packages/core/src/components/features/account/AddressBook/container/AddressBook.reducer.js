@@ -37,10 +37,17 @@ const getDefaultState = state => {
   return state;
 };
 
+const setAddressListFetchingState = (state, action) => {
+  if (action.type === ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST) {
+    return state.set('isFetching', true);
+  }
+  return state;
+};
+
 const AddressBookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADDRESS_BOOK_CONSTANTS.SHOW_LOADER:
-      return state.set('isFetching', true);
+      return setAddressListFetchingState(state, action);
     case ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_LIST:
       return state
         .set('isFetching', false)

@@ -4,12 +4,15 @@ import SOCIAL_CONSTANTS from '../social.constants';
 const initialState = fromJS({
   socialDataOnLoad: {},
   pointModalMountState: false,
+  isFetching: false,
 });
 
 const SocialReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SOCIAL_CONSTANTS.GET_SOCIAL_LOAD:
+      return state.set('isFetching', true);
     case SOCIAL_CONSTANTS.SET_SOCIAL_LOAD:
-      return state.set('socialDataOnLoad', action.payload);
+      return state.set('isFetching', false).set('socialDataOnLoad', action.payload);
     case SOCIAL_CONSTANTS.POINT_MODAL_MOUNT_STATE:
       return state.set('pointModalMountState', action.payload.state);
     default:

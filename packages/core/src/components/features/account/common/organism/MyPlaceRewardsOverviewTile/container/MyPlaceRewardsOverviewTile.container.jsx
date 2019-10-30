@@ -2,9 +2,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCouponList } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
-import { getAllRewardsCoupons } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
+import {
+  getAllRewardsCoupons,
+  getCouponFetchingState,
+} from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyPlaceRewardsOverviewTileComponent from '../views';
 import { getBrierleySwitch } from './MyPlaceRewardsOverviewTile.selectors';
+import MyPlaceRewardsOverviewTileSkelton from '../skelton/MyPlaceRewardsOverviewTileSkelton.view';
 
 export class MyPlaceRewardsOverviewTile extends PureComponent {
   static propTypes = {
@@ -17,13 +21,27 @@ export class MyPlaceRewardsOverviewTile extends PureComponent {
   }
 
   render() {
-    return <MyPlaceRewardsOverviewTileComponent {...this.props} />;
+    const { isFetching } = this.props;
+    return !isFetching ? (
+      <MyPlaceRewardsOverviewTileComponent {...this.props} />
+    ) : (
+      <MyPlaceRewardsOverviewTileSkelton />
+    );
   }
 }
+
+MyPlaceRewardsOverviewTile.propTypes = {
+  isFetching: PropTypes.bool,
+};
+
+MyPlaceRewardsOverviewTile.defaultProps = {
+  isFetching: false,
+};
 
 const mapStateToProps = state => ({
   coupons: getAllRewardsCoupons(state),
   isBrierleyEnabled: getBrierleySwitch(state),
+  isFetching: getCouponFetchingState(state),
 });
 
 const mapDispatchToProps = dispatch => ({
