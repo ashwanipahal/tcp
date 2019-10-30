@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot 1`] = `
+<Fragment>
+  <Styled(Button)
+    anchorVariation="primary"
+    className="create-account-header-label"
+    fontSizeVariation="large"
+    id="createAccount"
+    link={true}
+    nohover={true}
+    onClick={[Function]}
+    type="button"
+  >
+    Create Account
+  </Styled(Button)>
+  <Styled(Button)
+    anchorVariation="primary"
+    className="rightLink login-header-label"
+    fontSizeVariation="large"
+    id="login"
+    link={true}
+    nohover={true}
+    onClick={[Function]}
+    type="button"
+  >
+    Login
+  </Styled(Button)>
+  <Styled(Image)
+    alt="user"
+    className="usericon"
+    onClick={[Function]}
+    src="/static/images/user-icon.png"
+  />
+</Fragment>
+`;
+
+exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot 2`] = `
+<Fragment>
+  <Styled(Button)
+    anchorVariation="primary"
+    className="create-account-header-label"
+    fontSizeVariation="large"
+    id="createAccount"
+    link={true}
+    nohover={true}
+    onClick={[Function]}
+    type="button"
+  >
+    Create Account
+  </Styled(Button)>
+  <Styled(Button)
+    anchorVariation="primary"
+    className="rightLink login-header-label"
+    fontSizeVariation="large"
+    id="login"
+    link={true}
+    nohover={true}
+    onClick={[Function]}
+    type="button"
+  >
+    Login
+  </Styled(Button)>
+  <Styled(Image)
+    alt="user"
+    className="usericon"
+    onClick={[Function]}
+    src="/static/images/user-icon.png"
+  />
+</Fragment>
+`;

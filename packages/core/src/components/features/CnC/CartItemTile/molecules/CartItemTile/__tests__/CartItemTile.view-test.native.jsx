@@ -151,6 +151,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
       isRadialInventoryEnabled: true,
       onPickUpOpenClick: jest.fn(),
       orderId: 123,
+      removeCartItem: jest.fn(),
     };
   });
 
@@ -257,5 +258,19 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     props.productDetail.miscInfo.availability = CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT;
     const component = shallow(<CartItemTile {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should clear toggle error', () => {
+    const component = shallow(<CartItemTile {...props} />);
+    component.instance().handleRemoveClick({
+      itemId: '',
+      pageView: '',
+      catEntryId: '',
+      userInfoRequired: false,
+      isBagPageSflSection: false,
+      itemBrand: 'TCP',
+      orderItemType: 'BOSS',
+    });
+    expect(props.clearToggleError).toHaveBeenCalled();
   });
 });

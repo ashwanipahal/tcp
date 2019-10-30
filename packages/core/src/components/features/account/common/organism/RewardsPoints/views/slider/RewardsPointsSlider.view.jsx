@@ -33,7 +33,7 @@ const RewardsPointsSlider = ({
                 <BodyCopy
                   data-locator="slidercurrentpointsvalue"
                   component="span"
-                  fontWeight="black"
+                  fontWeight="extrabold"
                   fontFamily="secondary"
                   fontSize="fs13"
                 >
@@ -52,7 +52,7 @@ const RewardsPointsSlider = ({
                 <BodyCopy
                   data-locator="slidermyrewardsvalue"
                   component="span"
-                  fontWeight="black"
+                  fontWeight="extrabold"
                   fontFamily="secondary"
                   fontSize="fs13"
                 >
@@ -92,7 +92,7 @@ const RewardsPointsSlider = ({
             <BodyCopy
               data-locator="slidernextrewardspointsvalue"
               component="span"
-              fontWeight="black"
+              fontWeight="extrabold"
               fontFamily="secondary"
               fontSize="fs13"
             >

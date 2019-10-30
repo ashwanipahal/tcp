@@ -8,12 +8,8 @@ const LineStyle = styled.View`
   border-color: ${plccMpr};
 `;
 
-const PointsValueText = styled.Text`
-  color: ${props => plccMpr(props)};
-`;
-
 const LoyaltySectionWrapper = styled.View`
   padding: 0 12px 12px;
 `;
 
-export { LineStyle, PointsValueText, LoyaltySectionWrapper };
+export { LineStyle, LoyaltySectionWrapper };

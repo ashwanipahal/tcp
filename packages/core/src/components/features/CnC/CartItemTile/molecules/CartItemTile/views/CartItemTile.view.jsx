@@ -6,6 +6,8 @@ import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
@@ -27,7 +29,10 @@ import {
   getBOSSUnavailabilityMessage,
   getBOPISUnavailabilityMessage,
   getSTHUnavailabilityMessage,
+  getPrices,
+  isCurrencyExchangeAvailable,
 } from './CartItemTile.utils';
+import { currencyConversion } from '../../../utils/utils';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -321,9 +326,19 @@ class CartItemTile extends React.Component {
     });
   };
 
+  getOfferPrice = (offerPrice, currencyExchange) => {
+    const isCurrencyExchange = isCurrencyExchangeAvailable(currencyExchange);
+    return isCurrencyExchange && offerPrice
+      ? currencyConversion(offerPrice, currencyExchange[0])
+      : offerPrice;
+  };
+
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol } = this.props;
+    const { currencySymbol, currencyExchange } = this.props;
+    let { offerPrice } = productDetail.itemInfo;
+    // SFL prices
+    offerPrice = this.getOfferPrice(offerPrice, currencyExchange);
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
@@ -367,7 +382,7 @@ class CartItemTile extends React.Component {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {`${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
+            {`${currencySymbol}${offerPrice.toFixed(2)}`}
           </BodyCopy>
         )}
       </Row>
@@ -410,8 +425,13 @@ class CartItemTile extends React.Component {
     return '';
   };
 
-  getProductPriceList = (productDetail, pageView) => {
+  getProductPriceList = (productDetail, pageView, currencyExchange) => {
     const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
+    const { isGiftItem } = productDetail.itemInfo;
+    const { salePrice, wasPrice, listPrice, price } = getPrices({
+      productDetail,
+      currencyExchange,
+    });
     if (isBagPageSflSection) {
       return (
         <>
@@ -431,11 +451,21 @@ class CartItemTile extends React.Component {
             <BodyCopy
               fontFamily="secondary"
               component="span"
-              fontSize="fs12"
-              dataLocator={getLocator('cart_item_price')}
+              fontSize="fs13"
+              dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              {`${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
+              {`${currencySymbol}${Number(price).toFixed(2)}`}
+            </BodyCopy>
+            <BodyCopy
+              fontFamily="secondary"
+              component="span"
+              fontSize="fs12"
+              dataLocator={getLocator('sfl_was_price')}
+              fontWeight={['regular']}
+              className="was-price"
+            >
+              {`${currencySymbol}${Number(listPrice).toFixed(2)}`}
             </BodyCopy>
           </Col>
         </>
@@ -460,14 +490,24 @@ class CartItemTile extends React.Component {
             fontFamily="secondary"
             component="span"
             fontSize={showOnReviewPage ? 'fs12' : 'fs16'}
-            dataLocator={getLocator('cart_item_price')}
+            dataLocator={getLocator('cart_sale_price')}
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            {pageView === 'myBag'
-              ? `${currencySymbol}${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`
-              : `${currencySymbol}${productDetail.itemInfo.price.toFixed(2)}`}
+            {`${currencySymbol}${Number(salePrice).toFixed(2)}`}
           </BodyCopy>
+          {!isGiftItem && wasPrice !== salePrice && (
+            <BodyCopy
+              fontFamily="secondary"
+              component="span"
+              fontSize="fs12"
+              dataLocator={getLocator('cart_was_price')}
+              fontWeight={['regular']}
+              className="was-price"
+            >
+              {`${currencySymbol}${Number(wasPrice).toFixed(2)}`}
+            </BodyCopy>
+          )}
         </Col>
       </>
     );
@@ -511,9 +551,7 @@ class CartItemTile extends React.Component {
   };
 
   getProductFit = productDetail => {
-    return !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'regular'
-      ? ' '
-      : ` ${productDetail.itemInfo.fit}`;
+    return !productDetail.itemInfo.fit ? ' ' : ` ${productDetail.itemInfo.fit}`;
   };
 
   getUnavailableHeaderClass = () => {
@@ -786,6 +824,7 @@ class CartItemTile extends React.Component {
       isBagPageSflSection,
       showOnReviewPage,
       setShipToHome,
+      currencyExchange,
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -987,7 +1026,7 @@ class CartItemTile extends React.Component {
               />
             )}
             <Row className="product-detail-row label-responsive-wrapper padding-top-10">
-              {this.getProductPriceList(productDetail, pageView)}
+              {this.getProductPriceList(productDetail, pageView, currencyExchange)}
             </Row>
             {this.getProductPointsList(productDetail, isBagPageSflSection, showOnReviewPage)}
             {showOnReviewPage && this.getItemDetails(productDetail, labels, pageView)}
@@ -1022,6 +1061,7 @@ class CartItemTile extends React.Component {
                 openPickUpModal={this.handleEditCartItemWithStore}
                 setShipToHome={setShipToHome}
               />
+              <RenderPerf.Measure name={CONTROLS_VISIBLE} />
             </Row>
           )}
       </div>
@@ -1040,6 +1080,7 @@ CartItemTile.defaultProps = {
   setShipToHome: () => {},
   toggleError: null,
   clearToggleError: () => {},
+  currencyExchange: null,
 };
 
 CartItemTile.propTypes = {
@@ -1072,6 +1113,7 @@ CartItemTile.propTypes = {
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
   clearToggleError: PropTypes.func,
+  currencyExchange: PropTypes.shape([]),
 };
 
 export default withStyles(CartItemTile, styles);

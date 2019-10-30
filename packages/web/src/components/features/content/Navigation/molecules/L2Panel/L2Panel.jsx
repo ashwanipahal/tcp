@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import mock from '@tcp/core/src/services/abstractors/bootstrap/navigation/mock';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { Heading, Row, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { keyboard } from '../../../../../../constants/constants';
@@ -90,6 +89,10 @@ const renderL3Panel = (
 const openL3Nav = (id, hasL3, hideL2Nav, openL3Drawer, e) => {
   if (!getViewportInfo().isDesktop) {
     openL3Drawer(`l3-drawer-${id.toString()}`, hasL3)(e);
+    const drawerElement = document.getElementById('tcp-nav-drawer');
+    if (drawerElement) {
+      drawerElement.scrollTop = 0;
+    }
   } else {
     hideL2Nav();
   }
@@ -175,6 +178,83 @@ const createLinks = (
     );
   }
   return ``;
+};
+const createShopBySizeCol = (columns, l1Index) => {
+  return columns.map(({ imageBanner, shopBySize }) => {
+    const sizes = shopBySize ? shopBySize[0] : {};
+    const shopBySizeCol1 = shopBySize ? sizes.linkList.slice(0, 5) : [];
+    const shopBySizeCol2 = shopBySize ? sizes.linkList.slice(5) : [];
+    return (
+      <React.Fragment>
+        {shopBySize && (
+          <Col
+            className="l2-nav-category shop-by-size-category"
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 2,
+            }}
+            ignoreNthRule
+          >
+            <div className="l2-nav-category-header">
+              <Heading
+                variant="h6"
+                className="l2-nav-category-heading"
+                dataLocator="l2_col_heading_3"
+              >
+                {shopBySize ? sizes.text.text : ''}
+              </Heading>
+              <span className="l2-nav-category-divider" />
+            </div>
+            <div className="shop-by-size-links">
+              {createShopByLinks(shopBySizeCol1, 1)}
+              {createShopByLinks(shopBySizeCol2, 2)}
+            </div>
+          </Col>
+        )}
+        {imageBanner && (
+          <Col
+            className="l2-image-banner"
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 2,
+            }}
+            ignoreNthRule
+          >
+            {imageBanner.map(({ image, link }) => (
+              <React.Fragment>
+                <Anchor
+                  className="l2-image-banner-link"
+                  to={link.url}
+                  title={link.title}
+                  dataLocator={`overlay_img_link_${l1Index}`}
+                  target={link.target}
+                >
+                  <Image
+                    className="l2-image-banner-image"
+                    data-locator={`overlay_img_${l1Index}`}
+                    {...image}
+                  />
+                  <BodyCopy
+                    className="l2-nav-link"
+                    fontFamily="secondary"
+                    fontSize={['fs13', 'fs13', 'fs14']}
+                    lineHeight="lh107"
+                    color="text.primary"
+                    textAlign="center"
+                  >
+                    <span className="nav-bar-l1-item-label">{link.text}</span>
+                    <span className="icon-arrow" />
+                  </BodyCopy>
+                </Anchor>
+              </React.Fragment>
+            ))}
+          </Col>
+        )}
+      </React.Fragment>
+    );
+  });
 };
 
 const L2Panel = props => {
@@ -282,82 +362,7 @@ const L2Panel = props => {
                       );
                     })}
                   {categoryLayout &&
-                    categoryLayout.map(({ columns }) =>
-                      columns.map(({ imageBanner, shopBySize }) => {
-                        const shopBySizeCol1 = mock.shopBySizeMockData.slice(0, 5);
-                        const shopBySizeCol2 = mock.shopBySizeMockData.slice(5);
-                        return (
-                          <React.Fragment>
-                            {shopBySize && (
-                              <Col
-                                className="l2-nav-category shop-by-size-category"
-                                colSize={{
-                                  small: 6,
-                                  medium: 8,
-                                  large: 2,
-                                }}
-                                ignoreNthRule
-                              >
-                                <div className="l2-nav-category-header">
-                                  <Heading
-                                    variant="h6"
-                                    className="l2-nav-category-heading"
-                                    dataLocator="l2_col_heading_3"
-                                  >
-                                    Shop By Size
-                                  </Heading>
-                                  <span className="l2-nav-category-divider" />
-                                </div>
-                                <div className="shop-by-size-links">
-                                  {createShopByLinks(shopBySizeCol1, 1)}
-                                  {createShopByLinks(shopBySizeCol2, 2)}
-                                </div>
-                              </Col>
-                            )}
-                            {imageBanner && (
-                              <Col
-                                className="l2-image-banner"
-                                colSize={{
-                                  small: 6,
-                                  medium: 8,
-                                  large: 2,
-                                }}
-                                ignoreNthRule
-                              >
-                                {imageBanner.map(({ image, link }) => (
-                                  <React.Fragment>
-                                    <Anchor
-                                      className="l2-image-banner-link"
-                                      to={link.url}
-                                      title={link.title}
-                                      dataLocator={`overlay_img_link_${l1Index}`}
-                                      target={link.target}
-                                    >
-                                      <Image
-                                        className="l2-image-banner-image"
-                                        data-locator={`overlay_img_${l1Index}`}
-                                        {...image}
-                                      />
-                                      <BodyCopy
-                                        className="l2-nav-link"
-                                        fontFamily="secondary"
-                                        fontSize={['fs13', 'fs13', 'fs14']}
-                                        lineHeight="lh107"
-                                        color="text.primary"
-                                        textAlign="center"
-                                      >
-                                        <span className="nav-bar-l1-item-label">{link.text}</span>
-                                        <span className="icon-arrow" />
-                                      </BodyCopy>
-                                    </Anchor>
-                                  </React.Fragment>
-                                ))}
-                              </Col>
-                            )}
-                          </React.Fragment>
-                        );
-                      })
-                    )}
+                    categoryLayout.map(({ columns }) => createShopBySizeCol(columns, l1Index))}
                 </Row>
               </Row>
             </div>

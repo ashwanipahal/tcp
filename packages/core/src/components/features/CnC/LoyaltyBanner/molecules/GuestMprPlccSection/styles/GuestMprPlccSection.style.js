@@ -15,18 +15,6 @@ const paddingTopSm = props => `
 const paddingTopMed = props => `
     padding-top: ${props.theme.spacing.ELEM_SPACING.MED};
 `;
-const paddingLeftXxs = props => `
-    padding-left: ${props.theme.spacing.LAYOUT_SPACING.XXS};
-`;
-const paddingRightXxs = props => `
-    padding-right: ${props.theme.spacing.LAYOUT_SPACING.XXS};
-`;
-const paddingLeftMed = props => `
-    padding-left: ${props.theme.spacing.LAYOUT_SPACING.MED};
-`;
-const paddingRightMed = props => `
-    padding-right: ${props.theme.spacing.LAYOUT_SPACING.MED};
-`;
 const fontSize10 = props => `
     font-size: ${props.theme.typography.fontSizes.fs10};
 `;
@@ -61,25 +49,17 @@ const Styles = css`
     ${alignCenter()}
     ${props => {
       if (props.isPlcc) {
-        return `${fontSize16(props)}${colorTheme(props)}${paddingLeftMed(props)}${paddingRightMed(
-          props
-        )}`;
+        return `${fontSize16(props)}${colorTheme(props)}`;
       }
       return fontSize12(props);
     }};
 
     @media ${props => props.theme.mediaQuery.medium} {
-        ${props =>
-          props.isPlcc
-            ? `${fontSize14(props)}${paddingLeftXxs(props)}${paddingRightXxs(props)}`
-            : fontSize10(props)};
+        ${props => (props.isPlcc ? `${fontSize14(props)}` : fontSize10(props))};
     }
     @media ${props => props.theme.mediaQuery.large} {
         ${props => paddingTopMed(props)}
-        ${props =>
-          props.isPlcc
-            ? `${fontSize18(props)}${paddingLeftMed(props)}${paddingRightMed(props)}`
-            : fontSize16(props)};
+        ${props => (props.isPlcc ? `${fontSize18(props)}` : fontSize16(props))};
     }
   }
   .subheading-val {
@@ -213,7 +193,11 @@ const Styles = css`
         .heading-val {
           ${paddingTopSm(props)}
           ${fontSize16(props)}
-          ${colorTheme(props)}
+          ${
+            props.earnedRewardAvailable
+              ? colorTheme(props)
+              : `color: ${props.theme.colorPalette.gray[900]};`
+          }
           @media ${props.theme.mediaQuery.medium} {
             ${fontSize14(props)}
           }

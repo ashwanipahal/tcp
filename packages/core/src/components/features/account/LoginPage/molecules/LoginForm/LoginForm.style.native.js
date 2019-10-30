@@ -114,6 +114,7 @@ const leftAignWrapper = () => {
   return `
     align-items:flex-start;
     margin-bottom:20px;
+    flex-direction: row;
   `;
 };
 
@@ -163,6 +164,15 @@ const LineWrapper = styled.View`
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
+const CustomIconWrapper = styled.TouchableOpacity`
+  align-self: center;
+`;
+
+const ForgotPasswordWrapper = styled.View`
+  margin: 0px ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0px
+    ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+`;
+
 export {
   FormStyle,
   DescriptionStyle,
@@ -176,4 +186,6 @@ export {
   ModalHeading,
   ModalViewWrapper,
   LineWrapper,
+  CustomIconWrapper,
+  ForgotPasswordWrapper,
 };

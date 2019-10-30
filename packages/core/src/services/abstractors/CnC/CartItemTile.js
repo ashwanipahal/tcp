@@ -619,14 +619,25 @@ tomorrowClosingTime
           // This code is misleading - itemPrice and itemDstPrice are not equal to list price/offer price
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
+
           listPrice: flatCurrencyToCents(item.itemPrice),
-          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
-          unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
-          salePrice: isCanada
+          salePrice: isGiftCard
+            ? flatCurrencyToCents(item.itemUnitPrice)
+            : isCanada
             ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
             : flatCurrencyToCents(item.productInfo.offerPrice),
+
+          // listPrice: flatCurrencyToCents(item.itemPrice),
+          // offerPrice: flatCurrencyToCents(item.itemDstPrice),
+          // wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
+          // salePrice: isCanada
+          //   ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
+          //   : flatCurrencyToCents(item.productInfo.offerPrice),
+
+          // listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
+          // unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
         },
         miscInfo: {
           clearanceItem: !isCASite()

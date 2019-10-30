@@ -74,10 +74,11 @@ class ProductVariantSelector extends React.PureComponent {
   };
 
   renderGridItem = ({ item }) => {
-    const { selectedItem, selectItem, itemNameKey } = this.props;
+    const { selectedItem, selectItem, itemNameKey, isDisableZeroInventoryEntries } = this.props;
     const itemValue = item[itemNameKey];
     const isSelected = (selectedItem && item[itemNameKey] === selectedItem) || false;
     const { disabled } = item;
+    const isDisabled = isDisableZeroInventoryEntries ? disabled : false;
 
     return (
       <Button
@@ -90,10 +91,10 @@ class ProductVariantSelector extends React.PureComponent {
           this.handleItemChange(value);
           selectItem(item[itemNameKey]);
         }}
-        selected={!disabled && isSelected}
+        selected={!isDisabled && isSelected}
         data-locator=""
         accessibilityLabel={itemValue}
-        disableButton={disabled}
+        disableButton={isDisabled}
       />
     );
   };
@@ -182,6 +183,7 @@ ProductVariantSelector.propTypes = {
   input: PropTypes.instanceOf(Object),
   renderColorItem: PropTypes.bool,
   isGiftCard: PropTypes.bool,
+  isDisableZeroInventoryEntries: PropTypes.bool,
 };
 
 ProductVariantSelector.defaultProps = {
@@ -200,6 +202,7 @@ ProductVariantSelector.defaultProps = {
   selectColor: null,
   renderColorItem: false,
   isGiftCard: false,
+  isDisableZeroInventoryEntries: true,
 };
 
 /* export class with styles */

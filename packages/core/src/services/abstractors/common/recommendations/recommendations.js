@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { readCookie } from '../../../../utils/cookie.util';
-import { getSiteId, getAPIConfig } from '../../../../utils';
+import { getSiteId } from '../../../../utils';
 import { executeUnbxdAPICall, executeExternalAPICall } from '../../../handler';
 import logger from '../../../../utils/loggerInstance';
 import processResponse from '../../productListing/processResponse';
@@ -108,7 +108,7 @@ const RecommendationsAbstractor = {
     });
   },
   getAppData: ({ pageType, categoryName, partNumber }) => {
-    const ADOBE_RECOMMENDATIONS_URL = getAPIConfig().RECOMMENDATIONS_API;
+    const ADOBE_RECOMMENDATIONS_URL = 'https://tcp.tt.omtrdc.net/rest/v1/mbox?client=tcp';
     const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
     const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
     const region = getSiteId(); // TODO use `CA` for Canada

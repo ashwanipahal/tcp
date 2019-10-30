@@ -1,6 +1,47 @@
 import { css } from 'styled-components';
 
 export const commonSearchBarStyles = css`
+  .search-input-wrapper {
+    display: inline-block;
+    width: 240px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+    color: ${props => props.theme.colorPalette.gray[800]};
+    border-color: unset;
+    margin-right: 5px;
+  }
+
+  .searchBar-input-wrapper {
+    display: inline-block;
+    line-height: 40px;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+    border-radius: 20px;
+    width: 100%;
+    position: relative;
+  }
+  .searchBar-input-form {
+    padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    padding-right: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+  }
+
+  .searchBar-input {
+    width: 175px;
+    height: 40px;
+    background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+    border: none;
+    outline: none;
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    color: ${props => props.theme.colorPalette.gray[800]};
+  }
+
+  .searchBar-image-typeAhead {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 10px;
+  }
+
   .searchWrapper {
     width: 100%;
     height: 40px;
@@ -61,7 +102,6 @@ export const commonSearchBarStyles = css`
 
 export const commonStyles = css`
   display: inline;
-  height: 40px;
   flex-grow: 1;
 
   .icon {
@@ -105,7 +145,11 @@ export const commonStyles = css`
   }
 
   .matchProductBox .matchProductBody {
-    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XL}
+      ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 35px;
+    }
   }
 
   .matchProductBox .matchProductBody ul {
@@ -137,19 +181,178 @@ export const commonStyles = css`
   }
 
   li.productBox {
-    width: 24%;
-    height: 81px;
-    border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
-    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+    background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    height: 87px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 152px;
+    }
   }
+
   .autosuggest-image {
-    height: 80px;
-    width: 80px;
+    height: 87px;
+    width: 88px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 152px;
+      width: 152px;
+    }
   }
 
   .close-mobile-image {
     display: none;
     width: 12px;
     height: 12px;
+  }
+`;
+
+export const mediumOnlyStyles = css`
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    .search-input-wrapper {
+      display: inline-block;
+      width: 222px;
+      height: 40px;
+      border-radius: 20px;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      color: ${props => props.theme.colorPalette.gray[800]};
+      border-color: unset;
+      margin-right: 10px;
+      margin-left: 53px;
+    }
+
+    .searchBar-input-wrapper {
+      display: inline-block;
+      line-height: 40px;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      border-radius: 20px;
+      width: 100%;
+      position: relative;
+    }
+    .searchBar-input-form {
+      padding-left: ${props => props.theme.typography.fontSizes.fs14};
+      padding-right: 0;
+    }
+
+    .searchBar-input {
+      width: 189px;
+      height: 40px;
+      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      border: none;
+      outline: none;
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      color: ${props => props.theme.colorPalette.gray[800]};
+    }
+
+    .searchBar-image-typeAhead {
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .searchWrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 50px;
+      ${props =>
+        props.fromCondensedHeader
+          ? `
+
+              position: fixed;
+              width: 100%;
+              left: 0;
+              top: 0;
+
+              @media ${props.theme.mediaQuery.large} {
+                width: 100%;
+              }
+
+              @media ${props.theme.mediaQuery.large} {
+                width: 31.8%;
+                left: 0;
+                top: 0;
+              }
+            `
+          : ``};
+    }
+
+    .searchbar {
+      border-radius: 0;
+      background-color: ${props => props.theme.colors.WHITE};
+      height: 50px;
+    }
+
+    .searchbar input {
+      width: 122px;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+      padding-right: 172px;
+      background-color: ${props => props.theme.colors.WHITE};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+
+    .searchbar .icon-small {
+      vertical-align: middle;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
+      cursor: pointer;
+      padding-left: 35px;
+    }
+
+    .close-image-toggle {
+      display: inline-block;
+    }
+
+    .search-mobile-image {
+      display: none;
+      height: 19px;
+      width: 19px;
+      padding-left: 35px;
+    }
+
+    .search-image-typeAhead {
+      display: inline-block;
+    }
+
+    .cancel-search-label {
+      display: none;
+      font-size: ${props => props.theme.typography.fontSizes.fs13};
+    }
+
+    .close-mobile-image-toggle {
+      display: none;
+    }
+
+    .close-image-mobile {
+      display: inline-block;
+    }
+
+    .trendingBox .trendingBoxHead,
+    .recentBox .recentBoxHead,
+    .matchLinkBox .matchLinkBoxHead,
+    .matchProductBox .matchProductHead {
+      height: 52px;
+      background-color: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
+      line-height: 52px;
+      padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-left: 35px;
+    }
+
+    .recentBox .recentBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.XXL}
+        ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+
+    .matchLinkBox .matchLinkBoxBody {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+        ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+
+    .search-close-icon-wrapper {
+      padding-left: 251px;
+    }
+
+    .cancel-search-label-wrapper {
+      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+    }
   }
 `;

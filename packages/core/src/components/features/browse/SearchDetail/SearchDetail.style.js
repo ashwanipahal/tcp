@@ -53,6 +53,9 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
+    .empty-searched-label {
+      display: block;
+    }
     .search-product-tile:nth-child(2n) {
       padding-right: 0;
     }
@@ -130,6 +133,7 @@ export default css`
     }
     .filter-and-sort-form-container .desktop-dropdown {
       display: flex;
+      position: relative;
     }
     .searched-label {
       padding-bottom: 0;
