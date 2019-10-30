@@ -51,6 +51,12 @@ const style = css`
       display: inline-flex;
     }
   }
+
+  .header-middle-login-section .headerSearchBox {
+    position: relative;
+    height: 40px;
+  }
+
   .account-info-section {
     cursor: pointer;
     display: inline-block;
