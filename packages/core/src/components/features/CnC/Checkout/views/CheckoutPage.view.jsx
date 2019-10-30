@@ -32,6 +32,15 @@ class CheckoutPage extends React.PureComponent {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { router, checkoutServerError, clearCheckoutServerError } = this.props;
+    const nextRouter = nextProps.router;
+
+    if (router.query.section !== nextRouter.query.section && checkoutServerError) {
+      clearCheckoutServerError({});
+    }
+  }
+
   componentDidUpdate(prevProps) {
     const { checkoutServerError } = this.props;
     if (
@@ -399,6 +408,7 @@ CheckoutPage.propTypes = {
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
   pickUpContactPerson: PropTypes.shape({}).isRequired,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  clearCheckoutServerError: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {
