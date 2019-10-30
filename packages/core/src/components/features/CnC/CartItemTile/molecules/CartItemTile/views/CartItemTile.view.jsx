@@ -6,6 +6,8 @@ import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
@@ -549,9 +551,7 @@ class CartItemTile extends React.Component {
   };
 
   getProductFit = productDetail => {
-    return !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'regular'
-      ? ' '
-      : ` ${productDetail.itemInfo.fit}`;
+    return !productDetail.itemInfo.fit ? ' ' : ` ${productDetail.itemInfo.fit}`;
   };
 
   getUnavailableHeaderClass = () => {
@@ -1061,6 +1061,7 @@ class CartItemTile extends React.Component {
                 openPickUpModal={this.handleEditCartItemWithStore}
                 setShipToHome={setShipToHome}
               />
+              <RenderPerf.Measure name={CONTROLS_VISIBLE} />
             </Row>
           )}
       </div>

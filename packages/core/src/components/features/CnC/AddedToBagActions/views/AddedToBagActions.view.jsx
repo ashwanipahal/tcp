@@ -91,7 +91,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return (
       <div className={className}>
         {showAddTobag && (
-          <Row>
+          <Row className="view-bag-container">
             <Col colSize={{ medium: 8, large: 12, small: 6 }}>
               <Button
                 onClick={onClickViewBag}
