@@ -23,17 +23,20 @@ export default css`
   .shop-by-size-links li {
     cursor: pointer;
     border: 1px solid ${props => props.theme.colorPalette.gray[800]};
-    width: 41px;
-    height: 41px;
-    border-radius: 21px 21px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px 20px;
     align-items: center;
     justify-content: center;
     display: flex;
     margin-bottom: 16px;
-    margin-right: 19px;
+    margin-right: 18px;
+    &:nth-child(n + 5) {
+      margin-right: 0;
+    }
     @media ${props => props.theme.mediaQuery.large} {
-      width: 39px;
-      height: 39px;
+      width: 38px;
+      height: 38px;
     }
   }
   .shop-by-size-links li:hover {
