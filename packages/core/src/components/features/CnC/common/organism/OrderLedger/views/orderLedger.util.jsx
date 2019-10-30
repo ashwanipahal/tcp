@@ -24,7 +24,7 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
             color="primary"
             fontFamily="secondary"
             fontWeight="semibold"
-            fontSize="fs13"
+            fontSize="fs16"
           >
             {`${labels.giftServiceLabel}:`}
           </BodyCopy>
@@ -35,7 +35,7 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
             color="primary"
             fontFamily="secondary"
             fontWeight="semibold"
-            fontSize="fs13"
+            fontSize="fs16"
             textAlign="right"
           >
             {`${currencySymbol}${giftServiceTotal.toFixed(2)}`}
@@ -172,7 +172,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
               >
                 {`${labels.shippingLabel}:`}
               </BodyCopy>
@@ -183,7 +183,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
                 textAlign="right"
               >
                 {/* eslint-disable-next-line no-nested-ternary */}
@@ -208,7 +208,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs13"
+              fontSize="fs16"
             >
               {`${labels.taxLabel}:`}
             </BodyCopy>
@@ -219,7 +219,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs13"
+              fontSize="fs16"
               textAlign="right"
             >
               {`${currencySymbol}${taxesTotal.toFixed(2)}`}
@@ -327,7 +327,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
               >
                 {`${labels.totalSavingsLabel}`}
                 <ReactToolTip
@@ -346,7 +346,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
                 textAlign="right"
               >
                 {`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
