@@ -1,4 +1,3 @@
-/* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
