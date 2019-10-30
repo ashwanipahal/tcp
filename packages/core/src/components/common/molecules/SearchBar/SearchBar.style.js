@@ -299,8 +299,8 @@ export default css`
           }
 
           @media ${props.theme.mediaQuery.large} {
-            width: 31.8%;
-            right: 130px;
+            width: 437px;
+            right: 218px;
             top: ${props.theme.spacing.ELEM_SPACING.SM};
           }
         `
