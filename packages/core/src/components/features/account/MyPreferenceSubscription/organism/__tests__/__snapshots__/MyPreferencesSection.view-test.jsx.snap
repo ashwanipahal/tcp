@@ -124,6 +124,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               width="17"
             />
             <Field
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -256,6 +257,8 @@ exports[`ProfileInformation component should render correctly 1`] = `
               }
               dataLocator="mypreference-apptcpcheckbox"
               name="tcpAppSubscribe"
+              onBlur={[Function]}
+              onChange={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}
@@ -275,6 +278,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -407,6 +411,8 @@ exports[`ProfileInformation component should render correctly 1`] = `
               }
               dataLocator="mypreference-appgymcheckbox"
               name="gymboreeAppSubscribe"
+              onBlur={[Function]}
+              onChange={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}
@@ -457,7 +463,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               width="17"
             />
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -609,7 +615,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {

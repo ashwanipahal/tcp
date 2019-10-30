@@ -5,6 +5,8 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
   <ErrorMessage
     bagPage={false}
     error=""
+    fontSize=""
+    fontWeight=""
   />
   <Styled(View)>
     <Styled(View)>
