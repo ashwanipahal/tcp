@@ -85,6 +85,10 @@ const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
 };
 
+const getIsPayPalEnabled = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
+};
+
 const getConfirmationModalFlag = state => {
   return {
     showModal: state.CartPageReducer.get('showConfirmationModal'),
@@ -246,5 +250,6 @@ export default {
   checkoutIfItemIsUnqualified,
   getCurrentDeleteSelectedItemInfo,
   itemDeleteModalLabels,
+  getIsPayPalEnabled,
   getBagStickyHeaderInterval,
 };

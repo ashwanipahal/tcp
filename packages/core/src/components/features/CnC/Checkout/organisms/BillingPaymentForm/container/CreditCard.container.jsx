@@ -6,6 +6,8 @@ import BillingPaymentForm from '../views';
 import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
+import BagPageSelector from '../../../../BagPage/container/BagPage.selectors';
+
 import { updateCardData } from '../../../container/Checkout.action';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
@@ -311,6 +313,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       navigation,
       creditFieldLabels,
       updateCardDetail,
+      isPayPalEnabled,
       isVenmoEnabled,
       editFormCardType,
       isPLCCEnabled,
@@ -350,6 +353,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         creditFieldLabels={creditFieldLabels}
         updateCardDetail={updateCardDetail}
         isEditFormSameAsShippingChecked={isEditFormSameAsShippingChecked}
+        isPayPalEnabled={isPayPalEnabled}
         isVenmoEnabled={isVenmoEnabled}
         isPLCCEnabled={isPLCCEnabled}
         scrollView={scrollView}
@@ -377,6 +381,7 @@ const mapStateToProps = (state, ownProps) => {
     selectedOnFileAddressId: CreditCardSelector.getSelectedOnFileAddressId(state),
     editFormSelectedOnFileAddressId: CreditCardSelector.getEditFormSelectedOnFileAddressId(state),
     shippingOnFileAddressId: CreditCardSelector.getShippingOnFileAddressId(state),
+    isPayPalEnabled: BagPageSelector.getIsPayPalEnabled(state),
     isPLCCEnabled: CreditCardSelector.getIsPLCCEnabled(state),
     isVenmoEnabled: CheckoutSelectors.getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
   };

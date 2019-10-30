@@ -386,11 +386,11 @@ export class BillingPaymentForm extends React.PureComponent {
    */
   render() {
     const { className, handleSubmit, cardList, isGuest } = this.props;
-    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled } = this.props;
+    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled, isPayPalEnabled } = this.props;
     const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
-    console.log('paymentMethodId', paymentMethodId, constants.PAYMENT_METHOD_PAY_PAL);
+
     return (
       <form
         name={constants.FORM_NAME}
@@ -421,7 +421,8 @@ export class BillingPaymentForm extends React.PureComponent {
                 cvvCodeRichText,
                 onFileCardKey,
               })}
-            {paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL && (
+
+            {isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL ? (
               <div className="payment-paypal-container">
                 <BodyCopy
                   fontFamily="secondary"
@@ -434,11 +435,12 @@ export class BillingPaymentForm extends React.PureComponent {
                 </BodyCopy>
                 <PayPalButton
                   className="billing-payPal-button"
-                  containerId="billing-page-paypal"
+                  containerId="billing-page-paypal-1"
                   isBillingPage
                 />
               </div>
-            )}
+            ) : null}
+
             {paymentMethodId === constants.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
               <VenmoPaymentButton
                 className="venmo-container"
@@ -456,7 +458,7 @@ export class BillingPaymentForm extends React.PureComponent {
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
-          showPayPalButton={paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL}
+          showPayPalButton={isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
         />

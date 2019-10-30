@@ -15,6 +15,7 @@ import utility from '../../../util/utility';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import PayPalButton from '../../../../common/organism/PayPalButton';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -36,6 +37,7 @@ class GuestBillingForm extends React.Component {
     billingData: PropTypes.shape({}),
     creditFieldLabels: PropTypes.shape({}),
     showAccordian: PropTypes.bool,
+    isPayPalEnabled: PropTypes.bool,
     isVenmoEnabled: PropTypes.bool, // Venmo Kill Switch, if Venmo enabled then true, else false.
     isPaymentDisabled: PropTypes.bool,
   };
@@ -55,6 +57,7 @@ class GuestBillingForm extends React.Component {
     backLinkShipping: '',
     backLinkPickup: '',
     creditFieldLabels: {},
+    isPayPalEnabled: false,
     showAccordian: true,
     isVenmoEnabled: false,
     isPaymentDisabled: false,
@@ -94,6 +97,7 @@ class GuestBillingForm extends React.Component {
       billingData,
       creditFieldLabels,
       showAccordian,
+      isPayPalEnabled,
       isVenmoEnabled,
       isPaymentDisabled,
     } = this.props;
@@ -116,6 +120,24 @@ class GuestBillingForm extends React.Component {
               {labels.paymentMethod}
             </BodyCopy>
             <PaymentMethods labels={labels} isVenmoEnabled={isVenmoEnabled} />
+            {isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAY_PAL ? (
+              <div className="payment-paypal-container">
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="extrabold"
+                  dataLocator="completePurchaseLblÎ"
+                  className="paypal-complete-purchase"
+                >
+                  Complete Purchase with
+                </BodyCopy>
+                <PayPalButton
+                  className="billing-payPal-button"
+                  containerId="billing-page-paypal-1"
+                  isBillingPage
+                />
+              </div>
+            ) : null}
             <div className="elem-mt-LRG elem-pb-XL">
               {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
                 <>
@@ -160,6 +182,7 @@ class GuestBillingForm extends React.Component {
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO}
+          showPayPalButton={isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAY_PAL}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
         />

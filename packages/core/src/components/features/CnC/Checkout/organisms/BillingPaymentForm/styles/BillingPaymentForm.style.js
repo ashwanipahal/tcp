@@ -15,11 +15,14 @@ export default css`
   .payment-paypal-container {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    @media ${props => props.theme.mediaQuery.large} {
+      display: none;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       display: block;
-      .billing-payPal-button {
-        display: block;
-      }
     }
   }
   .disable-drop-down {
