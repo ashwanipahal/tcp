@@ -144,9 +144,11 @@ const getPlpUrlQueryValues = filtersAndSort => {
   routeURL = `${urlPath}${routeURL}`;
 
   routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
-  if (routeURL.includes('search') && routeURL !== `/search/${urlPathCID}`) {
+  if (routeURL.includes('search')) {
+    localStorage.setItem('ClearSearchFilter', true);
     routerPush(`/search?searchQuery=${urlPathCID}`, routeURL, { shallow: true });
-  } else if (routeURL.includes('/c/') && routeURL !== `/c/${urlPathCID}`) {
+  } else if (routeURL.includes('/c/')) {
+    localStorage.setItem('ClearPLPFilter', true);
     routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
   }
   return true;

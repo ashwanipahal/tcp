@@ -34,6 +34,8 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
  */
 // eslint-disable-next-line complexity
 const handleRouteComplete = url => {
+  const clearAllFilter =
+    localStorage.getItem('ClearSearchFilter') || localStorage.getItem('ClearPLPFilter');
   const params = new URL(document.location).searchParams;
   const sortParam = params.has('sort');
 
@@ -49,15 +51,19 @@ const handleRouteComplete = url => {
   /**
    * check if sort or filter param present in PLP page
    */
-  const checkListingPageParam = url.match(/\/c\//g) && (sortParam || filterParam);
+  const checkListingPageParam = url.match(/\/c\//g) && (sortParam || filterParam || clearAllFilter);
 
   /**
    * check if sort or filter param present in Search page
    */
-  const checkSearchPageParam = url.match(/\/search\//g) && (sortParam || filterParam);
+  const checkSearchPageParam =
+    url.match(/\/search\//g) && (sortParam || filterParam || clearAllFilter);
 
   if (!checkListingPageParam && !checkSearchPageParam) {
     window.scrollTo(0, 0);
+  } else {
+    localStorage.removeItem('ClearSearchFilter');
+    localStorage.removeItem('ClearPLPFilter');
   }
 };
 
@@ -93,7 +99,9 @@ const Navigation = props => {
     isDrawerOpen,
   } = props;
 
-  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen));
+  useEffect(() => {
+    registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen);
+  }, []);
 
   return (
     <Drawer
