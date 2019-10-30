@@ -20,6 +20,6 @@ export default {
   BRAND_GYMBOREE: 'gymboree',
   PLACE_REWARDS_SMS: 'placeRewardsSms',
   MARKETING_PREFERENCE_SMS: 'marketingPreferenceSms',
-  GYMBOREE_MARKETING_PREFERENCE_SMS: 'marketingPreferenceSMS',
+  GYMBOREE_MARKETING_PREFERENCE_SMS: 'marketingPreferenceSms',
   PLACE_REWARDS_PUSH: 'placeRewardsPush',
 };
