@@ -5,10 +5,12 @@ import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { isMobileApp } from '@tcp/core/src/utils';
 import MyPrefrence from '../views';
 import {
-  getCustomerPreferencesTcp,
   getSmsPhone,
-  getCustomerPreferencesGym,
   getGymSmsPhone,
+  getTcpSubscribe,
+  getTcpAppSubscribe,
+  getGymSubscribe,
+  getGymAppSubscribe,
 } from './MyPreferenceSubscription.selectors';
 import { getUserPhoneNumber } from '../../User/container/User.selectors';
 import MyPreferenceSubscribeModal from '../organism/TcpSubscribeModal/MyPreferenceSubscribeModal.view';
@@ -361,20 +363,12 @@ export class MyPreferenceSubscription extends PureComponent {
 }
 
 export const mapStateToProps = state => ({
-  isTcpSubscribe: getCustomerPreferencesTcp(state).placeRewardsSms
-    ? getCustomerPreferencesTcp(state).placeRewardsSms
-    : false,
-  isTcpAppSubscribe: getCustomerPreferencesTcp(state).placeRewardsPush
-    ? getCustomerPreferencesTcp(state).placeRewardsPush
-    : false,
+  isTcpSubscribe: getTcpSubscribe(state),
+  isTcpAppSubscribe: getTcpAppSubscribe(state),
   phoneNumber: getUserPhoneNumber(state),
   smsPhone: getSmsPhone(state),
-  isGymSubscribe: getCustomerPreferencesGym(state).placeRewardsSms
-    ? getCustomerPreferencesGym(state).placeRewardsSms
-    : false,
-  isGymAppSubscribe: getCustomerPreferencesGym(state).placeRewardsPush
-    ? getCustomerPreferencesGym(state).placeRewardsPush
-    : false,
+  isGymSubscribe: getGymSubscribe(state),
+  isGymAppSubscribe: getGymAppSubscribe(state),
   gymSmsPhone: getGymSmsPhone(state),
 });
 

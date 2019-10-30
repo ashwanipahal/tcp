@@ -13,6 +13,7 @@ import {
   AppAlertWrapper,
   SubscribeCheckWrapper,
 } from '../styles/MyPreferenceSubscription.style.native';
+import MyPreferenceSubscriptionConstants from '../MyPreferenceSubscription.constants';
 
 const alertIcon = require('@tcp/core/src/assets/icon-alarm-gray.png');
 const textIcon = require('@tcp/core/src/assets/icon-chat-gray.png');
@@ -85,14 +86,45 @@ class MyPrefrenceSection extends React.PureComponent {
     onUnsubscribe(subscribeBrand);
   };
 
+  onGymSubscribe = subscribeValue => {
+    const { isGymSubscribe } = this.props;
+    if (isGymSubscribe) {
+      this.onUnsubscribeHandler(subscribeValue);
+    } else {
+      this.onSubscribeHandler(subscribeValue);
+    }
+  };
+
+  onChangeCallback = subscribeValue => {
+    const { isTcpSubscribe, isTcpAppSubscribe, isGymAppSubscribe } = this.props;
+    if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE) {
+      if (isTcpAppSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) {
+      if (isGymAppSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE) {
+      if (isTcpSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) {
+      this.onGymSubscribe(subscribeValue);
+    }
+  };
+
   render() {
-    const {
-      labels,
-      isTcpSubscribe,
-      isGymSubscribe,
-      isTcpAppSubscribe,
-      isGymAppSubscribe,
-    } = this.props;
+    const { labels } = this.props;
     const {
       isTcpSubscribeState,
       isGymSubscribeState,
@@ -141,7 +173,7 @@ class MyPrefrenceSection extends React.PureComponent {
         </AppTextWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="tcpAppSubscribe"
+            name={MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-apptcpcheckbox"
             className="elm-padding-top"
@@ -151,13 +183,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 {
                   isTcpAppSubscribeState: value,
                 },
-                () => {
-                  if (isTcpAppSubscribe) {
-                    this.onUnsubscribeHandler('tcpAppSubscribe');
-                  } else {
-                    this.onSubscribeHandler('tcpAppSubscribe');
-                  }
-                }
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE)
               );
             }}
             isChecked={isTcpAppSubscribeState}
@@ -174,7 +200,7 @@ class MyPrefrenceSection extends React.PureComponent {
         </SubscribeCheckWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="gymboreeAppSubscribe"
+            name={MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-appgymcheckbox"
             className="elm-padding-top"
@@ -184,13 +210,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 {
                   isGymAppSubscribeState: value,
                 },
-                () => {
-                  if (isGymAppSubscribe) {
-                    this.onUnsubscribeHandler('gymboreeAppSubscribe');
-                  } else {
-                    this.onSubscribeHandler('gymboreeAppSubscribe');
-                  }
-                }
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE)
               );
             }}
             isChecked={isGymAppSubscribeState}
@@ -219,7 +239,7 @@ class MyPrefrenceSection extends React.PureComponent {
         </AppTextWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="tcpWebSubscribe"
+            name={MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-texttcpcheckbox"
             className="elm-padding-top"
@@ -229,13 +249,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 {
                   isTcpSubscribeState: value,
                 },
-                () => {
-                  if (isTcpSubscribe) {
-                    this.onUnsubscribeHandler('tcpWebSubscribe');
-                  } else {
-                    this.onSubscribeHandler('tcpWebSubscribe');
-                  }
-                }
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE)
               );
             }}
             isChecked={isTcpSubscribeState}
@@ -251,7 +265,7 @@ class MyPrefrenceSection extends React.PureComponent {
         </SubscribeCheckWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="gymboreeWebSubscribe"
+            name={MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-textgymcheckbox"
             className="elm-padding-top"
@@ -261,13 +275,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 {
                   isGymSubscribeState: value,
                 },
-                () => {
-                  if (isGymSubscribe) {
-                    this.onUnsubscribeHandler('gymboreeWebSubscribe');
-                  } else {
-                    this.onSubscribeHandler('gymboreeWebSubscribe');
-                  }
-                }
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE)
               );
             }}
             isChecked={isGymSubscribeState}

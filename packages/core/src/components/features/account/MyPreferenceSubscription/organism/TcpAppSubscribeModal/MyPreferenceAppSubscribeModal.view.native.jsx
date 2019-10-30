@@ -1,27 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Button } from '@tcp/core/src/components/common/atoms';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import {
   ViewWithSpacing,
   BodyCopyWithSpacing,
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import myPreferenceConst from '../../MyPreferenceSubscription.constants';
 
-import { ButtonWrapper } from './styles/MyPreferenceAppSubscribeModal.style.native';
+// import { ButtonWrapper } from './styles/MyPreferenceAppSubscribeModal.style.native';
 
 /**
- * This Class component use for return the Extra Points Detail Modal
+ * This Class component use for return the My Preference App Subscribe Modal
  * can be passed in the component.
- * @param MyPreferenceSubscribeModal - used for pass data to the modal popup
+ * @param MyPreferenceAppSubscribeModal - is a  functional component we can use it within  any component
  * * @param onRequestClose - received onRequestClose function as param for closed popup
- * * @param handleSubmit - received handleSubmit props to submit form
+ * * @param onSubmit - received onSubmit function to handle form data
  */
 class MyPreferenceAppSubscribeModal extends React.PureComponent {
   static propTypes = {
     onRequestClose: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     labels: PropTypes.shape({}),
   };
 
@@ -36,7 +35,7 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { onRequestClose, handleSubmit, labels } = this.props;
+    const { onRequestClose, onSubmit, labels } = this.props;
     return (
       <ViewWithSpacing spacingStyles="margin-bottom-XXXL margin-left-MED margin-right-MED">
         <BodyCopyWithSpacing
@@ -48,7 +47,6 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
           data-locator="my-preference-app-push_title"
           text={getLabelValue(labels, 'lbl_preference_push_notification_heading')}
         />
-
         <BodyCopyWithSpacing
           component="div"
           fontSize="fs14"
@@ -59,7 +57,6 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
           data-locator="my-preference-app-push_subtext"
           text={getLabelValue(labels, 'lbl_preference_push_notification_subtext')}
         />
-
         <BodyCopyWithSpacing
           component="div"
           fontSize="fs14"
@@ -70,18 +67,17 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
           data-locator="my-preference-app-push_notification_note"
           text={getLabelValue(labels, 'lbl_preference_push_notification_note')}
         />
-
         <Button
           fullWidth
           buttonVariation="fixed-width"
           fill="BLUE"
           type="submit"
           className="submit-button"
-          onPress={handleSubmit}
+          onPress={onSubmit}
           dataLocator="subscribe_app_push_submit"
           text={getLabelValue(labels, 'lbl_prefrence_modal_submit')}
         />
-        <ButtonWrapper>
+        <ViewWithSpacing spacingStyles="margin-top-LRG">
           <Button
             fullWidth
             buttonVariation="fixed-width"
@@ -91,14 +87,11 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
             onPress={onRequestClose}
             text={getLabelValue(labels, 'lbl_prefrence_modal_cancel')}
           />
-        </ButtonWrapper>
+        </ViewWithSpacing>
       </ViewWithSpacing>
     );
   }
 }
 
-export default reduxForm({
-  form: myPreferenceConst.MY_PREFERENCE_FORM_MODAL, // a unique identifier for this form
-  enableReinitialize: true,
-})(MyPreferenceAppSubscribeModal);
+export default withStyles(MyPreferenceAppSubscribeModal);
 export { MyPreferenceAppSubscribeModal as MyPreferenceAppSubscribeModalVanilla };

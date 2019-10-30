@@ -6,8 +6,4 @@ export default css`
       margin: 0 55px;
     }
   }
-
-  .disclaimer-sub-text {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-  }
 `;

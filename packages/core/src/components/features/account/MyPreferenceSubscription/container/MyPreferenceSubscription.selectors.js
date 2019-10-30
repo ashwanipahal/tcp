@@ -38,6 +38,26 @@ export const getSmsPhone = createSelector(
   state => state && state.subscribeStoreData && state.subscribeStoreData.smsPhone
 );
 
+export const getTcpSubscribe = createSelector(
+  getCustomerPreferencesTcp,
+  placeRewardsGymObject => placeRewardsGymObject && placeRewardsGymObject.placeRewardsSms
+);
+
+export const getTcpAppSubscribe = createSelector(
+  getCustomerPreferencesTcp,
+  placeRewardsGymObject => placeRewardsGymObject && placeRewardsGymObject.placeRewardsPush
+);
+
+export const getGymSubscribe = createSelector(
+  getCustomerPreferencesGym,
+  placeRewardsGymObject => placeRewardsGymObject && placeRewardsGymObject.placeRewardsSms
+);
+
+export const getGymAppSubscribe = createSelector(
+  getCustomerPreferencesGym,
+  placeRewardsGymObject => placeRewardsGymObject && placeRewardsGymObject.placeRewardsPush
+);
+
 export const getGymSmsPhone = createSelector(
   getState,
   state => state && state.subscribeStoreData && state.subscribeStoreData.gymSmsPhone
