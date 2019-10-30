@@ -85,7 +85,7 @@ const LoyaltyBannerSection = props => {
       value: '\n',
     },
     {
-      key: '#tagOpen#',
+      key: '#tagOpen# ',
       value: 'MyPlaceRewards',
     },
   ];

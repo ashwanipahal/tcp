@@ -9,13 +9,13 @@ export const FreeShippingBannerContainer = ({ labels }) => {
 };
 
 FreeShippingBannerContainer.propTypes = {
-  labels: PropTypes.shape.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
-export function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     labels: getLabels(state),
   };
-}
+};
 
 export default connect(mapStateToProps)(FreeShippingBannerContainer);

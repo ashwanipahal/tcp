@@ -10,7 +10,7 @@ const FreeShippingBannerSection = props => {
   const { labels } = props;
   const utilArrShippingNew = [
     {
-      key: '#tagOpen#',
+      key: '#tagOpen# ',
       value: 'ShippingNew',
     },
   ];
@@ -34,8 +34,6 @@ const FreeShippingBannerSection = props => {
               className="details"
               anchorVariation="primary"
               text={getLabelValue(labels, 'lbl_freeShippingBanner_details')}
-              url="/content/free-shipping"
-              target="_blank"
               underline
             />
           </AnchorWrapper>

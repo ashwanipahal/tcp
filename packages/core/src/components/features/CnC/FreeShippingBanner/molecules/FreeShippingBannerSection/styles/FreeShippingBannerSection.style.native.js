@@ -15,4 +15,14 @@ const AnchorWrapper = styled.View`
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-export { FreeShippingLabel, ShippingNew, AnchorWrapper };
+const FreeShippingIconWrapper = styled.View`
+  height: 18px;
+  width: 20px;
+  @media ${props => props.theme.mediaQuery.large} {
+    height: 23px;
+    width: 25px;
+  }
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+export { FreeShippingLabel, ShippingNew, AnchorWrapper, FreeShippingIconWrapper };

@@ -3,14 +3,21 @@ import { ShippingNew } from '../../FreeShippingBanner/molecules/FreeShippingBann
 import { MyPlaceRewards } from '../molecules/GuestMprPlccSection/styles/GuestMprPlccSection.style.native';
 
 const mobileHashValues = (str, utilArr) => {
-  let textArr = [];
-  utilArr.map((obj, index) => {
-    if (utilArr[index].key === '#tagOpen#') {
+  let textArr = str.split(' ');
+  textArr.map((value, i) => {
+    textArr[i] = `${value} `;
+    return textArr[i];
+  });
+  utilArr.forEach((obj, index) => {
+    const keyIndex = textArr.indexOf(obj.key);
+    if (keyIndex === -1) return;
+    if (utilArr[index].key === '#tagOpen# ') {
+      textArr = [];
       let tagMaking;
-      const startingStr = str.substring(0, str.indexOf('#tagOpen#'));
-      const tagsStr = str.substring(str.indexOf('#tagOpen#') + 9, str.indexOf('#tagClose#'));
-      const endingStr = str.substring(str.indexOf('#tagClose#') + 10, str.length);
-      textArr = startingStr.split(' ');
+      const startingStr = str.substring(0, str.indexOf('#tagOpen# '));
+      const tagsStr = str.substring(str.indexOf('#tagOpen#') + 9, str.indexOf('#tagClose# '));
+      const endingStr = str.substring(str.indexOf('#tagClose# ') + 10, str.length);
+      textArr = startingStr.split(' ');
       textArr.map((value, i) => {
         textArr[i] = `${value} `;
         return textArr[i];
@@ -27,16 +34,9 @@ const mobileHashValues = (str, utilArr) => {
         return endingArr[i];
       });
       textArr = textArr.concat(endingArr);
-      return textArr;
+      return;
     }
-    textArr = str.split(' ');
-    textArr.map((value, i) => {
-      textArr[i] = `${value} `;
-      return textArr[i];
-    });
-    const keyIndex = textArr.indexOf(obj.key);
     textArr[keyIndex] = obj.value == null ? '' : obj.value;
-    return textArr;
   });
 
   return textArr;
