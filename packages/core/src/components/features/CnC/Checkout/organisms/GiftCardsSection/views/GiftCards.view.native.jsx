@@ -13,7 +13,7 @@ import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrappe
 import GiftCardTileView from '../../../molecules/GiftCardTile';
 import CustomButton from '../../../../../../common/atoms/Button';
 import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm.native';
-import { propTypes, defaultProps } from './GiftCards.view.utils';
+import { propTypes, defaultProps, GiftCardSectionHeading } from './GiftCards.view.utils';
 
 class GiftCards extends React.PureComponent {
   constructor(props) {
@@ -30,6 +30,23 @@ class GiftCards extends React.PureComponent {
     }
     return null;
   }
+
+  getHeading = (labels, isGiftCardApplied) => {
+    return (
+      <BodyCopyWithSpacing
+        text={`${isGiftCardApplied ? labels.appliedGiftCards : labels.availableGiftCards}`}
+        fontSize="fs16"
+        fontWeight="extrabold"
+        fontFamily="secondary"
+        spacingStyles="margin-bottom-MED margin-top-MED"
+        color="gray.900"
+      />
+    );
+  };
+
+  checkAddNew = (enableAddGiftCard, isFromReview, isExpressCheckout) => {
+    return !enableAddGiftCard && (!isFromReview || (isFromReview && isExpressCheckout));
+  };
 
   renderAddNewGiftButton() {
     const { labels, appliedGiftCards, showAddGiftCard } = this.props;
@@ -99,23 +116,6 @@ class GiftCards extends React.PureComponent {
     );
   }
 
-  renderAvailableCardHeading = (giftCardList, labels) => {
-    return (
-      <>
-        {giftCardList && giftCardList.size > 0 && (
-          <BodyCopyWithSpacing
-            text={labels.availableGiftCards}
-            fontSize="fs16"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            spacingStyles="margin-bottom-MED margin-top-MED"
-            color="gray.900"
-          />
-        )}
-      </>
-    );
-  };
-
   renderHeadsUpHeading = (labels, appliedGiftCards, giftCardList) => {
     return (
       <>
@@ -144,6 +144,23 @@ class GiftCards extends React.PureComponent {
     );
   };
 
+  renderNoApplied = (labels, isFromReview, appliedGiftCards) => {
+    return (
+      isFromReview &&
+      appliedGiftCards &&
+      appliedGiftCards.size === 0 && (
+        <BodyCopyWithSpacing
+          text={labels.noGiftCards}
+          fontSize="fs16"
+          fontWeight="regular"
+          fontFamily="secondary"
+          color="gray.900"
+          data-locator="gift-cards-none"
+        />
+      )
+    );
+  };
+
   render() {
     const {
       labels,
@@ -154,39 +171,45 @@ class GiftCards extends React.PureComponent {
       giftCardList,
       applyExistingGiftCardToOrder,
       enableAddGiftCard,
+      isFromReview,
+      isExpressCheckout,
     } = this.props;
     const { orderBalanceTotal } = this.state;
+    const checkAddNewButton = this.checkAddNew(enableAddGiftCard, isFromReview, isExpressCheckout);
     return (
       <>
         <Container>
-          <BodyCopyWithSpacing
-            text={labels.giftCardTitle}
-            fontSize="fs26"
-            fontWeight="regular"
-            fontFamily="primary"
-            spacingStyles="margin-bottom-MED"
-            color="gray.900"
-          />
+          {!isFromReview && (
+            <>
+              <BodyCopyWithSpacing
+                text={labels.giftCardTitle}
+                fontSize="fs26"
+                fontWeight="regular"
+                fontFamily="primary"
+                spacingStyles="margin-bottom-MED"
+                color="gray.900"
+              />
 
-          <BodyCopyWithSpacing
-            text={labels.giftCardAddUpToMsg}
-            fontSize="fs16"
-            fontWeight="regular"
-            fontFamily="primary"
-            spacingStyles="margin-bottom-MED"
-            color="gray.900"
-          />
-
-          {appliedGiftCards && appliedGiftCards.size > 0 && (
-            <BodyCopyWithSpacing
-              text={labels.appliedGiftCards}
-              fontSize="fs16"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              spacingStyles="margin-bottom-MED"
-              color="gray.900"
-            />
+              <BodyCopyWithSpacing
+                text={labels.giftCardAddUpToMsg}
+                fontSize="fs16"
+                fontWeight="regular"
+                fontFamily="primary"
+                spacingStyles="margin-bottom-MED"
+                color="gray.900"
+              />
+            </>
           )}
+          {GiftCardSectionHeading(
+            appliedGiftCards,
+            labels,
+            isFromReview,
+            isExpressCheckout,
+            this.getHeading,
+            true
+          )}
+
+          {this.renderNoApplied(labels, isFromReview, appliedGiftCards)}
 
           {appliedGiftCards &&
             appliedGiftCards.size > 0 &&
@@ -200,6 +223,8 @@ class GiftCards extends React.PureComponent {
                     isGiftCardApplied
                     giftCardErrors={giftCardErrors}
                     toastMessage={toastMessage}
+                    isExpressCheckout={isExpressCheckout}
+                    isFromReview={isFromReview}
                   />
                 </GiftCardBody>
               );
@@ -207,9 +232,16 @@ class GiftCards extends React.PureComponent {
 
           {this.renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
 
-          {this.renderAvailableCardHeading(giftCardList, labels)}
+          {GiftCardSectionHeading(
+            giftCardList,
+            labels,
+            isFromReview,
+            isExpressCheckout,
+            this.getHeading
+          )}
 
-          {giftCardList &&
+          {(!isFromReview || isExpressCheckout) &&
+            giftCardList &&
             giftCardList.size > 0 &&
             giftCardList.map(cardData => {
               return (
@@ -221,11 +253,13 @@ class GiftCards extends React.PureComponent {
                     giftCardErrors={giftCardErrors}
                     orderBalanceTotal={orderBalanceTotal}
                     toastMessage={toastMessage}
+                    isExpressCheckout={isExpressCheckout}
+                    isFromReview={isFromReview}
                   />
                 </GiftCardBody>
               );
             })}
-          {!enableAddGiftCard && this.renderAddNewGiftButton()}
+          {checkAddNewButton && this.renderAddNewGiftButton()}
           {enableAddGiftCard && this.renderAddGiftCard()}
         </Container>
       </>

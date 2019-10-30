@@ -195,6 +195,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isHasPickUpAlternatePerson,
       pickUpContactPerson,
       pickUpContactAlternate,
+      toastMessage,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -253,6 +254,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        toastMessage={toastMessage}
       />
     );
   }
