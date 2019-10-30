@@ -137,7 +137,7 @@ exports[`Order Items component should renders correctly 1`] = `
         target="_blank"
         to="/account?id=orders&subSection=order-details"
       >
-        VIEW FULL ORDER DETAILS
+        lbl_orders_fullOrderDetail
       </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
