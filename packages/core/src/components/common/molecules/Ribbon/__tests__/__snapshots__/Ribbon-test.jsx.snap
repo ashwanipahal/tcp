@@ -7,10 +7,7 @@ exports[`RibbonComponent should call the getConfig getImgPath 1`] = `
     imgPath="/static/images/module-s-right-ribbon.png"
     width="200"
   >
-    <Styled(PromoBanner)
-      color="white"
-      fontFamily="secondary"
-      fontWeight="black"
+    <Styled(Styled(PromoBanner))
       promoBanner={
         Array [
           Object {
@@ -42,10 +39,7 @@ exports[`RibbonComponent should match snapshot 1`] = `
     imgPath="/static/images/module-s-left-ribbon.png"
     width="200"
   >
-    <Styled(PromoBanner)
-      color="white"
-      fontFamily="secondary"
-      fontWeight="black"
+    <Styled(Styled(PromoBanner))
       promoBanner={
         Array [
           Object {
