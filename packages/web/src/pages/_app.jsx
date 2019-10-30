@@ -103,7 +103,7 @@ class TCPWebApp extends App {
         });
       }
     } catch (e) {
-      logger.info('Raygun Integration', e);
+      logger.info('Raygun Initialization failed', e);
     }
 
     /**
