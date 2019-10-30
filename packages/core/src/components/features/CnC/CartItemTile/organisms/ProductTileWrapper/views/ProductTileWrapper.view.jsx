@@ -202,6 +202,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       return (
         <>
           {!isMobileApp() &&
+            setHeaderErrorState &&
             setHeaderErrorState(true, {
               labels,
               orderItems,
@@ -224,6 +225,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     return (
       <>
         {!isMobileApp() &&
+          setHeaderErrorState &&
           setHeaderErrorState(true, {
             labels,
             orderItems,
