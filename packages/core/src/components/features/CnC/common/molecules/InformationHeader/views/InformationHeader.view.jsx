@@ -133,44 +133,39 @@ class InformationHeader extends React.PureComponent {
     const { isUpdating, isDeleting } = isCartItemsUpdating;
     const isBagPage = pageView === 'myBag';
     const styles = pageView === 'myBag' ? bagTileCSS : customStyles;
-    if (orderItems && orderItems.size > 0) {
-      const showError = orderItems.find(tile => {
-        const productDetail = getProductDetails(tile);
-        return (
-          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
-          productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
-        );
-      });
+    const showError = orderItems.find(tile => {
+      const productDetail = getProductDetails(tile);
       return (
-        <div className={`${className} information-header`}>
-          {showError && (
-            <ErrorMessage bagPage customClass={styles} error={labels.problemWithOrder} />
-          )}
-          {!isBagPageSflSection && isSoldOut && (
-            <RemoveSoldOut
-              pageView={pageView}
-              labels={labels}
-              removeCartItem={confirmRemoveCartItem}
-              getUnavailableOOSItems={getUnavailableOOSItems}
-              showLabelForRemove
-            />
-          )}
-          {!isBagPageSflSection && isUnavailable && (
-            <RemoveSoldOut pageView={pageView} labels={labels} />
-          )}
-          {this.renderItemDeleteSuccessMsg(
-            isBagPageSflSection,
-            isBagPage,
-            isDeleting,
-            labels.itemDeleted
-          )}
-          {this.renderItemSflSuccessMsg(isBagPage, labels.sflSuccess)}
-          {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
-          {this.renderUpdatingBagItemSuccessfulMsg(isUpdating)}
-        </div>
+        productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT ||
+        productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_UNAVAILABLE
       );
-    }
-    return null;
+    });
+    return (
+      <div className={`${className} information-header`}>
+        {showError && <ErrorMessage bagPage customClass={styles} error={labels.problemWithOrder} />}
+        {!isBagPageSflSection && isSoldOut && (
+          <RemoveSoldOut
+            pageView={pageView}
+            labels={labels}
+            removeCartItem={confirmRemoveCartItem}
+            getUnavailableOOSItems={getUnavailableOOSItems}
+            showLabelForRemove
+          />
+        )}
+        {!isBagPageSflSection && isUnavailable && (
+          <RemoveSoldOut pageView={pageView} labels={labels} />
+        )}
+        {this.renderItemDeleteSuccessMsg(
+          isBagPageSflSection,
+          isBagPage,
+          isDeleting,
+          labels.itemDeleted
+        )}
+        {this.renderItemSflSuccessMsg(isBagPage, labels.sflSuccess)}
+        {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
+        {this.renderUpdatingBagItemSuccessfulMsg(isUpdating)}
+      </div>
+    );
   }
 }
 

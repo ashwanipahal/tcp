@@ -204,7 +204,6 @@ class BagPageView extends React.Component {
                 sflItems={sflItems}
                 showPlccApplyNow={false}
                 isBagPageSflSection
-                setHeaderErrorState={this.setHeaderErrorState}
               />
             </div>,
             orderItemsCount

@@ -84,7 +84,7 @@ class LoginSection extends React.PureComponent<Props> {
             medium: 8,
             large: 12,
           }}
-          className={`elem-pt-LRG elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+          className={`elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
             variation === 'checkout' ? 'checkoutForm' : 'loginForm'
           }`}
         >
