@@ -3,7 +3,7 @@
 exports[`LoginSection component should renders correctly 1`] = `
 <Styled(Row)>
   <Styled(Col)
-    className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG loginForm"
+    className="elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG loginForm"
     colSize={
       Object {
         "large": 12,
@@ -13,7 +13,7 @@ exports[`LoginSection component should renders correctly 1`] = `
     }
   >
     <Styled(LoginTopSection)
-      className="elem-mb-LRG"
+      className="elem-mb-LRG logintop-alignment"
       isCanada={false}
       labels={
         Object {

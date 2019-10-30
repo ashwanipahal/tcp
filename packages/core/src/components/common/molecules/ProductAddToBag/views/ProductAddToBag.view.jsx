@@ -129,6 +129,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       errorOnHandleSubmit,
       handleFormSubmit,
       showAddToBagCTA,
+      isDisableZeroInventoryEntries,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -166,6 +167,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     onChange={selectSize}
                     dataLocator="addnewaddress-state"
                     title={`${colorFitSizeDisplayNames.size}:`}
+                    isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
                   />
                   {isErrorMessageDisplayed && ErrorComp(errorMessage)}
                 </div>

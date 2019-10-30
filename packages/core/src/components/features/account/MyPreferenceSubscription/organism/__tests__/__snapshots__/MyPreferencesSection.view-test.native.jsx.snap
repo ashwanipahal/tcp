@@ -75,7 +75,10 @@ exports[`ProfileInformation component should render correctly 1`] = `
       className="elm-padding-top"
       component={[Function]}
       dataLocator="mypreference-apptcpcheckbox"
+      execOnChangeByDefault={false}
+      isChecked={false}
       name="tcpAppSubscribe"
+      onChange={[Function]}
     />
     <Styled(Styled(BodyCopy))
       accessibilityText=""
@@ -97,7 +100,10 @@ exports[`ProfileInformation component should render correctly 1`] = `
       className="elm-padding-top"
       component={[Function]}
       dataLocator="mypreference-appgymcheckbox"
+      execOnChangeByDefault={false}
+      isChecked={false}
       name="gymboreeAppSubscribe"
+      onChange={[Function]}
     />
     <Styled(Styled(BodyCopy))
       accessibilityText=""
@@ -149,6 +155,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
       component={[Function]}
       dataLocator="mypreference-texttcpcheckbox"
       execOnChangeByDefault={false}
+      isChecked={false}
       name="tcpWebSubscribe"
       onChange={[Function]}
     />

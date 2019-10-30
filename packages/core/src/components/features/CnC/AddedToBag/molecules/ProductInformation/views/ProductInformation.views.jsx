@@ -122,7 +122,7 @@ const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) 
                 dataLocator="addedtobag-productsize"
               >
                 {`${data.skuInfo.size} `}
-                {!data.skuInfo.fit || data.skuInfo.fit === 'regular' ? ' ' : data.skuInfo.fit}
+                {!data.skuInfo.fit ? ' ' : data.skuInfo.fit}
               </BodyCopy>
             </Col>
           </Row>
