@@ -6,7 +6,7 @@ import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
 import style from '../Navigation.style';
-import { filterParams } from '../../../../../constants/constants';
+import { filterParams, clearAll } from '../../../../../constants/constants';
 
 const {
   FILTER_CATAGORY,
@@ -18,6 +18,7 @@ const {
   FILTER_AGE,
 } = filterParams;
 
+const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 /**
  * This function closes Navigation Drawer on route change
  * @param {function} closeNavigationDrawer
@@ -35,7 +36,7 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 // eslint-disable-next-line complexity
 const handleRouteComplete = url => {
   const clearAllFilter =
-    localStorage.getItem('ClearSearchFilter') || localStorage.getItem('ClearPLPFilter');
+    localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) || localStorage.getItem(CLEAR_ALL_PLP_FILTER);
   const params = new URL(document.location).searchParams;
   const sortParam = params.has('sort');
 
@@ -62,8 +63,8 @@ const handleRouteComplete = url => {
   if (!checkListingPageParam && !checkSearchPageParam) {
     window.scrollTo(0, 0);
   } else {
-    localStorage.removeItem('ClearSearchFilter');
-    localStorage.removeItem('ClearPLPFilter');
+    localStorage.removeItem(CLEAR_ALL_SEARCH_FILTER);
+    localStorage.removeItem(CLEAR_ALL_PLP_FILTER);
   }
 };
 

@@ -7,6 +7,9 @@ import {
   getTotalProductsCount,
   getCurrentListingIds,
 } from '../../../components/features/browse/ProductListing/container/ProductListing.selectors';
+import { clearAll } from '../../../../../web/src/constants/constants';
+
+const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 
 const getAvailableL3List = facets => {
   return facets && facets.multilevel && facets.multilevel.bucket;
@@ -145,10 +148,12 @@ const getPlpUrlQueryValues = filtersAndSort => {
 
   routeURL = urlQueryValues === '' ? routeURL.substring(0, routeURL.length - 1) : routeURL;
   if (routeURL.includes('search')) {
-    localStorage.setItem('ClearSearchFilter', true);
+    if (localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) === null)
+      localStorage.setItem(CLEAR_ALL_SEARCH_FILTER, true);
     routerPush(`/search?searchQuery=${urlPathCID}`, routeURL, { shallow: true });
   } else if (routeURL.includes('/c/')) {
-    localStorage.setItem('ClearPLPFilter', true);
+    if (localStorage.getItem(CLEAR_ALL_PLP_FILTER) === null)
+      localStorage.setItem(CLEAR_ALL_PLP_FILTER, true);
     routerPush(`/c?cid=${urlPathCID}`, routeURL, { shallow: true });
   }
   return true;
