@@ -13,7 +13,7 @@ exports[`LoginSection component should renders correctly 1`] = `
     }
   >
     <Styled(LoginTopSection)
-      className="elem-mb-LRG"
+      className="elem-mb-LRG logintop-alignment"
       isCanada={false}
       labels={
         Object {
