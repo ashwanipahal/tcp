@@ -309,11 +309,17 @@ export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
 export const languageRedirect = (newLanguage, oldLanguage) => {
   if (newLanguage && newLanguage !== oldLanguage) {
     const { protocol, host, pathname } = window.location;
-    if (newLanguage === 'fr' && host.indexOf('fr.') === -1) {
-      const href = `${protocol}//fr.${host}${pathname}`;
-      window.location = href;
-    } else if (newLanguage === 'es' && host.indexOf('es.') === -1) {
-      const href = `${protocol}//es.${host}${pathname}`;
+    const hostWithoutLanguage = host.replace(`${oldLanguage}.`, '');
+    let redirect = false;
+    if (
+      (newLanguage === 'fr' && host.indexOf('fr.') === -1) ||
+      (newLanguage === 'es' && host.indexOf('es.') === -1)
+    ) {
+      redirect = true;
+    }
+
+    if (redirect) {
+      const href = `${protocol}//${newLanguage}.${hostWithoutLanguage}${pathname}`;
       window.location = href;
     }
   }
