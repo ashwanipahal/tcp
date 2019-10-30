@@ -54,10 +54,11 @@ class BagPageView extends React.Component {
 
   componentDidUpdate() {
     /* istanbul ignore else */
+    const { isMobile } = this.props;
     if (!this.bagPageCondenseHeaderBind) {
       const checkoutCta = this.bagActionsContainer;
       const header = this.bagPageHeader;
-      if (checkoutCta) {
+      if (checkoutCta && !isMobile) {
         this.addScrollListener();
         this.bagPageCondenseHeaderBind = true;
       } else if (header) {
@@ -430,6 +431,7 @@ BagPageView.propTypes = {
   orderItemsCount: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isGuest: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,

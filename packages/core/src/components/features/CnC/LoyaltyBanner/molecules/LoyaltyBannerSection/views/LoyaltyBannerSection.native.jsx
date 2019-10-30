@@ -84,6 +84,10 @@ const LoyaltyBannerSection = props => {
       key: '#br# ',
       value: '\n',
     },
+    {
+      key: '#tagOpen# ',
+      value: 'MyPlaceRewards',
+    },
   ];
   headingLabel = LoyaltyLabels.headingLabelValFn
     ? mobileHashValues(LoyaltyLabels.headingLabelValFn, utilArrHeading)

@@ -88,7 +88,7 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
-    margin-bottom: 33px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;
@@ -97,6 +97,13 @@ const styles = css`
       .dropdownUlBorder {
         border: none;
       }
+    }
+  }
+
+  .fit-selector {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    .input-radio-title {
+      margin-bottom: 0;
     }
   }
 
@@ -151,11 +158,18 @@ const styles = css`
   }
 
   .qty-selector {
-    display: inline-flex;
+    display: inline-block;
     margin-top: 31px;
     width: 100%;
     #quantity {
       font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 48px;
+    }
+    p {
+      display: inline-block;
+      vertical-align: top;
     }
   }
 
@@ -164,7 +178,6 @@ const styles = css`
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     color: #3b3b3b;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    padding-top: 9px;
     text-transform: uppercase;
   }
 
