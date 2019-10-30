@@ -31,8 +31,8 @@ const mapStateToProps = state => {
   return {
     slots: homepageSlots.map(slot => {
       // Logic for accomodating two modules in one slot (Half width modules view)
-      const { contentId = '' } = slot;
-      const contentIds = contentId && contentId.split(',');
+      const { contentId: slotContent = '' } = slot;
+      const contentIds = slotContent && slotContent.split(',');
       if (contentIds && contentIds.length > 1) {
         const response = {
           ...slot,
@@ -42,8 +42,8 @@ const mapStateToProps = state => {
           },
         };
 
-        contentIds.forEach(id => {
-          response.data.slot.push(Modules[id]);
+        contentIds.forEach(contentId => {
+          response.data.slot.push(Modules[contentId]);
         });
 
         return response;
