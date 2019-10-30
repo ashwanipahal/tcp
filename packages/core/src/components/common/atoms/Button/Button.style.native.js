@@ -5,11 +5,10 @@ import { StyledText } from '../../../../../styles/globalStyles/StyledText.style'
 import { BUTTON_VARIATION } from '.';
 
 const getAdditionalStyle = props => {
-  const { margin } = props;
+  const { margin, padings } = props;
   return {
-    ...(margin && {
-      margin,
-    }),
+    ...(margin && { margin }),
+    ...(padings && { pading: padings }),
   };
 };
 
@@ -276,7 +275,7 @@ const CustomStyleText = styled(StyledText)`
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-      padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
+      ${getAdditionalStyle};
   `
       : ''};
 

@@ -44,6 +44,11 @@ exports[`ProductListItem component should render correctly 1`] = `
     itemInfo={Object {}}
     miscInfo={Object {}}
     onFavorite={[MockFunction]}
+    productInfo={
+      Object {
+        "name": "tcp",
+      }
+    }
     setLastDeletedItemId={[MockFunction]}
   />
   <RenderTitle
@@ -121,6 +126,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 12px 12px 12px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
