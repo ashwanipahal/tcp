@@ -13,6 +13,41 @@ import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommo
 //   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
 // };
 
+const utilArrayHeader = (LoyaltyLabels, className) => {
+  return [
+    {
+      key: '#estimatedRewardsVal#',
+      value: LoyaltyLabels.rewardPointsValueFn
+        ? `<span class="${className} mpr-plcc-theme">${LoyaltyLabels.rewardPointsValueFn}</span>`
+        : false,
+    },
+    {
+      key: '#br#',
+      value: '<br/>',
+    },
+    {
+      key: '#tagOpen#',
+      value: `<span class="${className} mpr-plcc-theme">`,
+    },
+    {
+      key: '#tagClose#',
+      value: `</span>`,
+    },
+  ];
+};
+
+const utilArrayNextReward = (pointsToNextReward, className) => {
+  return [
+    {
+      key: '#pointsToNextReward#',
+      value:
+        pointsToNextReward && pointsToNextReward > 0
+          ? `<span class="${className} mpr-plcc-theme">${pointsToNextReward}</span>`
+          : '',
+    },
+  ];
+};
+
 const LoyaltyBannerSection = props => {
   const {
     className,
@@ -41,11 +76,11 @@ const LoyaltyBannerSection = props => {
 
   /* istanbul ignore else */
   if (
-    currentSubtotal > thresholdValue &&
+    estimatedSubtotal > thresholdValue &&
     !isPlcc &&
     !isReviewPage &&
     !isConfirmationPage &&
-    estimatedSubtotal
+    !isAddedToBagPage
   ) {
     showSubtotal = true;
   }
@@ -62,26 +97,7 @@ const LoyaltyBannerSection = props => {
     isProductDetailView
   );
 
-  const utilArrHeader = [
-    {
-      key: '#estimatedRewardsVal#',
-      value: `<span class="${className} mpr-plcc-theme">${
-        LoyaltyLabels.rewardPointsValueFn
-      }</span>`,
-    },
-    {
-      key: '#br#',
-      value: '<br/>',
-    },
-    {
-      key: '#tagOpen#',
-      value: `<span class="${className} mpr-plcc-theme">`,
-    },
-    {
-      key: '#tagClose#',
-      value: `</span>`,
-    },
-  ];
+  const utilArrHeader = utilArrayHeader(LoyaltyLabels, className);
   const finalHeaderValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrHeader);
   headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalHeaderValue) : false;
 
@@ -108,12 +124,7 @@ const LoyaltyBannerSection = props => {
   );
   descriptionLabel = LoyaltyLabels.descriptionLabelFn ? convertHtml(finalDescriptionValue) : false;
 
-  const utilArrNextReward = [
-    {
-      key: '#pointsToNextReward#',
-      value: `<span class="${className} mpr-plcc-theme">${pointsToNextReward}</span>`,
-    },
-  ];
+  const utilArrNextReward = utilArrayNextReward(pointsToNextReward, className);
   const finalStrRemainingValue = labelsHashValuesReplace(
     LoyaltyLabels.remainingPlccValFn,
     utilArrNextReward

@@ -39,6 +39,7 @@ const styles = css`
   .image-title-wrapper {
     display: flex;
     flex-direction: row;
+    z-index: 1;
   }
   .price-container {
     display: inline-flex;
