@@ -42,6 +42,7 @@ describe('CartItemRadioButtons Component', () => {
       bopisDisabled: false,
       setShipToHome: jest.fn(),
       openPickUpModal: jest.fn(),
+      pickupStoresInCart: {},
     };
   });
 
