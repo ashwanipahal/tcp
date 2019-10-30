@@ -199,7 +199,6 @@ class ProductTileWrapper extends React.PureComponent<props> {
           </>
         );
       });
-      console.log('1in>>>>');
       return (
         <>
           {!isMobileApp() &&
