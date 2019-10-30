@@ -103,6 +103,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
         />
       </Text>
     </Styled(View)>
+    <Connect(FreeShippingBannerContainer) />
     <Connect(LoyaltyBannerContainer)
       isConfirmationPage={false}
       pageCategory={Object {}}
@@ -477,6 +478,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
         />
       </Text>
     </Styled(View)>
+    <Connect(FreeShippingBannerContainer) />
     <Connect(LoyaltyBannerContainer)
       isConfirmationPage={false}
       pageCategory={Object {}}

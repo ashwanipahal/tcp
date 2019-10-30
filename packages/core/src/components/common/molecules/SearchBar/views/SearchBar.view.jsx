@@ -131,7 +131,6 @@ class SearchBar extends React.PureComponent {
     }
 
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-    this.commonCloseClick();
   };
 
   hideOverlayAfterClick = searchText => {

@@ -12,11 +12,18 @@ import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.select
  */
 export class OrderDetailsContainer extends PureComponent {
   componentDidMount() {
-    const { getOrderDetailsAction, orderId } = this.props;
+    const { getOrderDetailsAction, orderId, emailAddress, orderDetailsData } = this.props;
     const payload = {
       orderId,
+      emailAddress,
     };
-    getOrderDetailsAction(payload);
+
+    if (
+      orderId &&
+      (!orderDetailsData || (orderDetailsData && orderDetailsData.orderNumber !== orderId))
+    ) {
+      getOrderDetailsAction(payload);
+    }
   }
 
   /**
@@ -48,12 +55,14 @@ export const mapDispatchToProps = dispatch => {
 export const mapStateToProps = (state, ownProps) => {
   return {
     orderId: ownProps.router.query.orderId,
+    emailAddress: ownProps.router.query.emailAddress,
     orderDetailsData: getOrderDetailsDataState(state),
     ordersLabels: getOrdersLabels(state),
   };
 };
 
 OrderDetailsContainer.propTypes = {
+  emailAddress: PropTypes.string,
   orderId: PropTypes.string,
   orderDetailsData: PropTypes.shape({}),
   ordersLabels: PropTypes.shape({}),
@@ -61,6 +70,7 @@ OrderDetailsContainer.propTypes = {
 };
 
 OrderDetailsContainer.defaultProps = {
+  emailAddress: '',
   orderId: '',
   ordersLabels: {},
   orderDetailsData: {},

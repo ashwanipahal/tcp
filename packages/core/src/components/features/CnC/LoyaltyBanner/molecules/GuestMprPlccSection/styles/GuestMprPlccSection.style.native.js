@@ -6,18 +6,21 @@ const plccMpr = props =>
     : props.theme.colorPalette.userTheme.mpr;
 
 const Styles = css`
-  padding: 2px;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
 const SubTotalLine = styled.View`
   border-top-width: 1px;
   border-color: ${props => props.theme.colorPalette.gray[500]};
-  margin-top: 12px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const HeadingLabel = styled.Text`
-  padding-top: 12px;
-  font-size: ${props => (props.pageChecksObj && props.pageChecksObj.isPlcc ? '12px;' : '16px;')};
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  font-size: ${props =>
+    props.pageChecksObj && props.pageChecksObj.isPlcc
+      ? props.theme.typography.fontSizes.fs12
+      : props.theme.typography.fontSizes.fs16};
   color: ${props =>
     props.pageChecksObj && props.pageChecksObj.isPlcc
       ? plccMpr
@@ -27,7 +30,7 @@ const HeadingLabel = styled.Text`
     props.pageChecksObj.pageCategoryArr &&
     props.pageChecksObj.pageCategoryArr.isReviewPage
       ? `color: ${plccMpr(props)}
-      font-size: 16px;
+      font-size: ${props.theme.typography.fontSizes.fs16};
       `
       : ''}
   ${props =>
@@ -39,20 +42,20 @@ const HeadingLabel = styled.Text`
             ? `color: ${props.theme.colorPalette.gray[900]};`
             : `color: ${plccMpr(props)}`
         }
-      font-size: 16px;
+      font-size: ${props.theme.typography.fontSizes.fs16};
       `
       : ''}
 `;
 
 const SubHeadingLabel = styled.Text`
   color: ${plccMpr};
-  padding-top: 12px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   ${props =>
     props.pageChecksObj &&
     props.pageChecksObj.pageCategoryArr &&
     props.pageChecksObj.pageCategoryArr.isReviewPage
       ? `color: ${props.theme.colorPalette.gray[900]};
-          font-size: 12px;
+          font-size: ${props.theme.typography.fontSizes.fs12};
           `
       : ''}
 `;
@@ -63,8 +66,9 @@ const DescriptionLabel = styled.Text`
 `;
 
 const RemainingPlccLabel = styled.Text`
-  padding: 12px 20px 0;
-  font-size: 12px;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0;
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
 `;
 
 const ShowSubTotalWrapper = styled.View`
@@ -75,7 +79,7 @@ const CurrentTotalWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 16px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const SubTotalLabel = styled.Text`
@@ -115,6 +119,10 @@ const SectionSymbol = styled.Text`
   color: ${props => plccMpr(props)};
 `;
 
+const MyPlaceRewards = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
 export {
   Styles,
   SubTotalLine,
@@ -132,4 +140,5 @@ export {
   EstimatedSubTotalValue,
   PointsToNextReward,
   SectionSymbol,
+  MyPlaceRewards,
 };

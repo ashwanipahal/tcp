@@ -255,7 +255,11 @@ let CreateAccountForm = ({
             colSize={{ small: 6 }}
             className="already-account align-center"
           >
-            <Anchor fontSizeVariation="large" onClick={onAlreadyHaveAnAccountClick}>
+            <Anchor
+              fontSizeVariation="large"
+              className="already-account"
+              onClick={onAlreadyHaveAnAccountClick}
+            >
               {getLabelValue(labels, 'lbl_createAccount_alreadyAccount', 'registration')}
             </Anchor>
           </Col>
