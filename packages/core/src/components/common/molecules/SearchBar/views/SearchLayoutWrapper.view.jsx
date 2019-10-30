@@ -217,6 +217,8 @@ class SearchLayoutWrapper extends React.PureComponent {
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
                 className="search-input"
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
                 maxLength="50"
                 autoComplete="off"
               />
