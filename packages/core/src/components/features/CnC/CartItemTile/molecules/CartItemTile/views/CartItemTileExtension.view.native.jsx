@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* TODO to refactor later as per discussion */
 import React from 'react';
 import { View } from 'react-native';
 import { DamImage } from '@tcp/core/src/components/common/atoms';

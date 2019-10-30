@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+/* TODO to refactor later as per discussion */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
