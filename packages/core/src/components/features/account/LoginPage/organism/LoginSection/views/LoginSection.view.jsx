@@ -84,7 +84,7 @@ class LoginSection extends React.PureComponent<Props> {
             medium: 8,
             large: 12,
           }}
-          className={`elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+          className={`elem-pt-LRG elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
             variation === 'checkout' ? 'checkoutForm' : 'loginForm'
           }`}
         >
@@ -93,7 +93,7 @@ class LoginSection extends React.PureComponent<Props> {
               <LoginTopSection
                 variation={variation}
                 labels={labels}
-                className="elem-mb-LRG"
+                className="elem-mb-LRG logintop-alignment"
                 isCanada={this.isCanada}
                 showForgotPasswordForm={this.showForgotPasswordForm}
               />
