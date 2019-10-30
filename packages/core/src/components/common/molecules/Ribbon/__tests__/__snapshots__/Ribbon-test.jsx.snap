@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RibbonComponent should call the getConfig getImgPath 1`] = `
-<styled.div>
+<styled.div
+  position="right"
+>
   <styled.div
     height="70"
     imgPath="/static/images/module-s-right-ribbon.png"
@@ -33,7 +35,9 @@ exports[`RibbonComponent should call the getConfig getImgPath 1`] = `
 `;
 
 exports[`RibbonComponent should match snapshot 1`] = `
-<styled.div>
+<styled.div
+  position="left"
+>
   <styled.div
     height="70"
     imgPath="/static/images/module-s-left-ribbon.png"

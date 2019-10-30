@@ -12,8 +12,13 @@ const getImgPath = ribbonBanner => {
 };
 const RibbonComponent = props => {
   const { ribbonBanner, locator, width, height } = props;
+  let position = 'right';
+  if (ribbonBanner) {
+    const [ribbonDetails] = ribbonBanner;
+    position = ribbonDetails.ribbonPlacement;
+  }
   return (
-    <RibbonWrapper>
+    <RibbonWrapper position={position}>
       {ribbonBanner && (
         <RibbonContainer width={width} height={height} imgPath={getImgPath(ribbonBanner)}>
           <RibbonPromoBanner promoBanner={ribbonBanner} data-locator={getLocator(locator)} />

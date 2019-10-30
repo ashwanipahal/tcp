@@ -3,8 +3,7 @@ import { PromoBanner } from '..';
 
 export const RibbonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  ${props => (props.position === 'right' ? 'flex-end;' : 'flex-start')};
+  justify-content: ${props => (props.position === 'right' ? 'flex-end;' : 'flex-start')};
 `;
 
 export const RibbonPromoBanner = styled(PromoBanner)`
