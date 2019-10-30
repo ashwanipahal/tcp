@@ -23,6 +23,7 @@ import { getUserInfo } from '@tcp/core/src/components/features/account/User/cont
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -91,14 +92,19 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
-    if (isErrorReportingBrowserActive) {
-      initErrorReporter({
-        isServer: false,
-        envId,
-        raygunApiKey,
-        channelId,
-        isDevelopment: isDevelopment(),
-      });
+
+    try {
+      if (isErrorReportingBrowserActive) {
+        initErrorReporter({
+          isServer: false,
+          envId,
+          raygunApiKey,
+          channelId,
+          isDevelopment: isDevelopment(),
+        });
+      }
+    } catch (e) {
+      logger.info('Error occurred in Raygun initialization', e);
     }
 
     /**
