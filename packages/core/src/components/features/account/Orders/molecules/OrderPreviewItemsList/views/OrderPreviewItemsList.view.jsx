@@ -54,7 +54,7 @@ const OrderPreviewItemsList = ({ className, ...otherProps }) => {
             centered
             target="_blank"
           >
-            VIEW FULL ORDER DETAILS
+            {getLabelValue(labels, 'lbl_orders_fullOrderDetail', 'orders')}
           </Anchor>
         </Col>
       </Row>
