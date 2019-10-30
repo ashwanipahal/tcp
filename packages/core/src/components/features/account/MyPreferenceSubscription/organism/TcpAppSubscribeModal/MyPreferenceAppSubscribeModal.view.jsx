@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getLabelValue, getIconPath, isTCP } from '@tcp/core/src/utils/utils';
 import { BodyCopy, Row, Col, Button, Image, Anchor } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import externalEndpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import styles from './styles/MyPreferenceAppSubscribeModal.style';
-import { getIconPath } from '../../../../../../utils';
 
 /**
  * This Class component use for return the My Preference Subscribe Modal
@@ -19,7 +18,7 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
     className: PropTypes.string,
     onRequestClose: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    activeModal: PropTypes.string.isRequired,
+    // activeModal: PropTypes.string.isRequired,
     labels: PropTypes.shape({}),
   };
 
@@ -35,7 +34,13 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
    */
 
   render() {
-    const { className, activeModal, onSubmit, onRequestClose, labels } = this.props;
+    const {
+      className,
+      // activeModal,
+      onSubmit,
+      onRequestClose,
+      labels,
+    } = this.props;
 
     return (
       <div className={className}>
@@ -69,31 +74,35 @@ class MyPreferenceAppSubscribeModal extends React.PureComponent {
             fontWeight="extrabold"
             data-locator="my-preference--web-push_download"
           >
-            {getLabelValue(labels, 'lbl_preference_push_notification_download')}
+            {isTCP()
+              ? getLabelValue(labels, 'lbl_preference_push_notification_Tcp_download')
+              : getLabelValue(labels, 'lbl_preference_push_notification_Gymboree_download')}
           </BodyCopy>
 
           <Row fullBleed className="elem-mb-LRG">
             <Col colSize={{ small: 3, medium: 4, large: 6 }}>
               <Anchor
-                href={`${
-                  activeModal === 'tcpAppSubscribe'
-                    ? externalEndpoints.appsStoreTcpAppPage
-                    : externalEndpoints.termsAndConditionsPage
-                }`}
+                // TODO-Change url when GYM app url ready
+                // href={`${ activeModal === 'tcpAppSubscribe'? externalEndpoints.appsStoreTcpAppPage
+                //     : externalEndpoints.googlePlayTcpAppPage
+                // }`}
+                href={externalEndpoints.appsStoreTcpAppPage}
                 className="elem-ml-SM"
                 data-locator="my-preference-modal_app_store"
+                target="_blank"
               >
                 <Image class="elem-pl-XS" src={getIconPath('app-store')} />
               </Anchor>
             </Col>
             <Col colSize={{ small: 3, medium: 4, large: 6 }}>
               <Anchor
-                href={`${
-                  activeModal === 'tcpAppSubscribe'
-                    ? externalEndpoints.googlePlayTcpAppPage
-                    : externalEndpoints.termsAndConditionsPage
-                }`}
+                // TODO-Change url when GYM app url ready
+                // href={`${activeModal === 'tcpAppSubscribe' ? externalEndpoints.googlePlayTcpAppPage
+                //     : externalEndpoints.googlePlayTcpAppPage
+                // }`}
+                href={externalEndpoints.googlePlayTcpAppPage}
                 className="elem-ml-SM"
+                target="_blank"
                 data-locator="my-preference-modal_google_play"
               >
                 <Image class="elem-pl-XS" src={getIconPath('google-play')} />

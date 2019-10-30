@@ -59,7 +59,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
       link={null}
       textAlign="center"
     >
-      lbl_preference_push_notification_download
+      lbl_preference_push_notification_Gymboree_download
     </Styled(BodyCopy)>
     <Styled(Row)
       className="elem-mb-LRG"
@@ -77,7 +77,8 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
         <Styled(Anchor)
           className="elem-ml-SM"
           data-locator="my-preference-modal_app_store"
-          href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+          href="https://apps.apple.com/us/app/the-childrens-place/id1292363109"
+          target="_blank"
         >
           <Styled(Image)
             class="elem-pl-XS"
@@ -97,7 +98,8 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
         <Styled(Anchor)
           className="elem-ml-SM"
           data-locator="my-preference-modal_google_play"
-          href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+          href="https://play.google.com/store/apps/details?id=com.childrensplace.tcpmobileapp&hl=en_US"
+          target="_blank"
         >
           <Styled(Image)
             class="elem-pl-XS"
