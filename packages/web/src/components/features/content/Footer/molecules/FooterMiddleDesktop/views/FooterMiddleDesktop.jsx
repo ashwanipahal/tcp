@@ -157,7 +157,8 @@ FooterMiddleDesktop.propTypes = {
     'track-order': PropTypes.func,
     favorites: PropTypes.func,
     'log-out': PropTypes.func,
-    'my-account': PropTypes.func,
+    'login-account': PropTypes.func,
+    'create-account': PropTypes.func,
   }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
 };

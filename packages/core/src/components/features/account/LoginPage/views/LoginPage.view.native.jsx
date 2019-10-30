@@ -17,7 +17,6 @@ import {
 class LoginView extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
       setEmailid: '',
       getTouchStatus: false,
@@ -54,14 +53,9 @@ class LoginView extends React.PureComponent {
     resetTouchPassword();
     onSubmit(formdata);
     isSupportedTouch().then(biometryType => {
-      if (biometryType && (formdata.userTouchId || formdata.useFaceID)) {
-        touchIDCheck().then(touchIdResp => {
-          if (touchIdResp) {
-            setUserLoginDetails(formdata.emailAddress, formdata.password);
-          } else {
-            setUserLoginDetails(formdata.emailAddress, '');
-          }
-        });
+      if (biometryType && (formdata.useTouchID || formdata.useFaceID)) {
+        setUserLoginDetails(formdata.emailAddress, formdata.password);
+        touchIDCheck();
       } else {
         setUserLoginDetails(formdata.emailAddress, '');
       }
@@ -90,6 +84,7 @@ class LoginView extends React.PureComponent {
       userplccCardNumber,
       userplccCardId,
       updateHeader,
+      toastMessage,
     } = this.props;
     const { setEmailid, getTouchStatus } = this.state;
     return (
@@ -118,6 +113,7 @@ class LoginView extends React.PureComponent {
           userplccCardNumber={userplccCardNumber}
           userplccCardId={userplccCardId}
           updateHeader={updateHeader}
+          toastMessage={toastMessage}
         />
       </ScrollViewStyle>
     );
@@ -145,6 +141,7 @@ LoginView.propTypes = {
   userplccCardNumber: PropTypes.string,
   userplccCardId: PropTypes.string,
   updateHeader: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 LoginView.defaultProps = {
@@ -154,6 +151,7 @@ LoginView.defaultProps = {
   showLogin: () => {},
   userplccCardNumber: '',
   userplccCardId: '',
+  toastMessage: () => {},
 };
 
 export default LoginView;

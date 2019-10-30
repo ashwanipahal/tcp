@@ -36,4 +36,5 @@ export default styled.div`
     flex-direction: column;
     align-items: center;
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

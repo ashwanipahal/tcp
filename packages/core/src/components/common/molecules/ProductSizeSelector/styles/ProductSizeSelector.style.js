@@ -12,7 +12,7 @@ const styles = css`
   }
 
   .size-and-fit-detail-items-list {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
@@ -26,13 +26,15 @@ const styles = css`
     cursor: pointer;
 
     .input-radio-title {
-      padding: 5px ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      padding: 5px ${props => props.theme.spacing.ELEM_SPACING.SM};
       border: solid 1px #e3e3e3;
       display: inline-block;
       text-transform: capitalize;
       font-size: ${props => props.theme.fonts.fontSize.anchor.small}px;
       border-radius: 6px;
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      text-align: center;
+      width: 54px;
     }
 
     &.item-disabled-option .input-radio-title {

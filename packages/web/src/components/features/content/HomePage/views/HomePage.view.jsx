@@ -7,7 +7,6 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import Recommendations from '../../../../common/molecules/Recommendations';
-import RouteTracker from '../../../../common/atoms/RouteTracker';
 
 const returnModule = mod => mod.default;
 const HomePageView = dynamic({
@@ -34,7 +33,6 @@ const HomePageView = dynamic({
       <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,
       <Recommendations variations="moduleO,moduleP" />,
-      process.env.ANALYTICS && <RouteTracker />,
     ];
   },
 });
