@@ -20,6 +20,14 @@ exports[`CreateAccountForm should render correctly 1`] = `
   .remember-me-text {
     display: block;
   }
+  .already-account {
+    font-size: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+  }
   .i-agree-checkbox {
     padding-top: 10px;
   }

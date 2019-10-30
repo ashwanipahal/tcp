@@ -11,6 +11,10 @@ const styles = css`
   .signuptext {
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+  .checkout-border {
+    width: 40%;
+    margin: 0 auto;
+  }
 `;
 
 export default styles;
