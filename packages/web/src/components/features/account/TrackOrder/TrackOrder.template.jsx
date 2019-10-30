@@ -4,7 +4,6 @@ import { withRouter } from 'next/router';
 import Account from '@tcp/core/src/components/features/account/Account';
 
 const TrackOrder = ({ router, ...props }) => {
-  console.log('----------------router---------------', router);
   const { orderId, emailAddress } = (router && router.query) || {};
 
   const routerProp = {

@@ -17,7 +17,6 @@ import {
 } from './TrackOrder.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { routerPush } from '../../../../../utils';
-// import { ROUTE_PATH } from '../../../../../config/route.config';
 
 export class TrackOrderContainer extends React.PureComponent {
   constructor(props) {
