@@ -177,6 +177,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     margin="16px 0 0 0"
     navigation={Object {}}
     onPress={[Function]}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}

@@ -75,6 +75,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -167,6 +168,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}

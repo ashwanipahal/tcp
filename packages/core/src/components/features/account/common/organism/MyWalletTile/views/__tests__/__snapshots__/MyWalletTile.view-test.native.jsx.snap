@@ -65,6 +65,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -138,6 +139,7 @@ exports[`MyWalletTile component should render correctly when coupons are present
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
