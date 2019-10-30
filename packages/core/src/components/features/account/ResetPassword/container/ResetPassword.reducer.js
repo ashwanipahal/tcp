@@ -9,7 +9,10 @@ const initialState = fromJS({
 const ResetPasswordReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.RESET_PASSWORD_SUCCESS:
-      return state.set('error', null).set('success', action.payload);
+      return state
+        .set('error', null)
+        .set('success', action.payload)
+        .set('showNotification', false);
     case constants.RESET_PASSWORD_ERROR:
       return state
         .set('error', fromJS(action.payload))

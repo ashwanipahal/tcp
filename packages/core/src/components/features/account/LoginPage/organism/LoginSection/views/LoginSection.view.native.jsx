@@ -65,10 +65,11 @@ class LoginSection extends PureComponent<Props> {
   };
 
   showNewPassword = () => {
-    const { newPassword } = this.state;
+    const { newPassword, resetPassword } = this.state;
     this.setState({
       newPassword: !newPassword,
     });
+    if (resetPassword) this.showForgotPassword(); // if user is on forgot password then dismiss it
   };
 
   render() {
