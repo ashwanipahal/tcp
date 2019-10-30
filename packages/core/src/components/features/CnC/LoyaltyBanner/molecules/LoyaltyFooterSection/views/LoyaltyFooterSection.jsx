@@ -71,7 +71,7 @@ const createLoginLinks = (labels, openLoginModal) => {
   );
 };
 
-const applyLearnLinks = labels => {
+const applyNowLearnMoreLinks = labels => {
   return (
     <div className="links-wrapper">
       <span className="links-container">
@@ -96,18 +96,11 @@ const applyLearnLinks = labels => {
   );
 };
 
-const addedToBagPageLinks = (labels, isGuest, isPlcc, earnedRewardAvailable, openLoginModal) => {
+const addedToBagPageLinks = (labels, isGuest, isPlcc, openLoginModal) => {
   return (
     <>
       {isGuest && createLoginLinks(labels, openLoginModal)}
-      {!isGuest && !isPlcc && (
-        <>
-          {!earnedRewardAvailable && applyLearnLinks(labels)}
-          {earnedRewardAvailable && (
-            <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
-          )}
-        </>
-      )}
+      {!isGuest && !isPlcc && applyNowLearnMoreLinks(labels)}
       {!isGuest && isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
     </>
   );
@@ -125,7 +118,7 @@ const renderConfirmationAndBagLinks = (
     <>
       {!isConfirmationPage && (
         <>
-          {!isPlcc && applyLearnLinks(labels)}
+          {!isPlcc && applyNowLearnMoreLinks(labels)}
           {isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
         </>
       )}
@@ -177,8 +170,7 @@ const LoyaltyFooterSection = props => {
   return (
     <div className={`${className} footerWrapper`}>
       {isProductDetailView && detailViewFooter(labels, isGuest, isPlcc, openLoginModal)}
-      {isAddedToBagPage &&
-        addedToBagPageLinks(labels, isGuest, isPlcc, earnedRewardAvailable, openLoginModal)}
+      {isAddedToBagPage && addedToBagPageLinks(labels, isGuest, isPlcc, openLoginModal)}
       {!isProductDetailView && !isAddedToBagPage && (
         <>
           {!isReviewPage &&

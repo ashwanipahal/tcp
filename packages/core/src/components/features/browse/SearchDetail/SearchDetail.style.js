@@ -53,6 +53,9 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
+    .empty-searched-label {
+      display: block;
+    }
     .search-product-tile:nth-child(2n) {
       padding-right: 0;
     }

@@ -13,6 +13,9 @@ const OuterContainer = styled.View`
       : `${props.theme.spacing.APP_LAYOUT_SPACING.XXS} 0`};
   background-color: ${props => props.theme.colorPalette.white};
 `;
+const ToggleError = styled.View`
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
 const UnavailableView = styled.View`
   display: flex;
   padding: 5px 2px 2px 14px;
@@ -185,4 +188,5 @@ export {
   SflIcons,
   ProductListPriceOnReview,
   SizeQtyOnReview,
+  ToggleError,
 };
