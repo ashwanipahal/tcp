@@ -10,6 +10,7 @@ import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoyaltyBanner from '../../../../LoyaltyBanner';
+import FreeShippingBanner from '../../../../FreeShippingBanner';
 
 const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTotal, labels) => {
   return (
@@ -354,6 +355,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             </Col>
           </Row>
         ) : null}
+        <FreeShippingBanner />
         {renderLoyaltyBanner(pageCategory)}
       </Grid>
       <RenderPerf.Measure name={PRICING_VISIBLE} />
