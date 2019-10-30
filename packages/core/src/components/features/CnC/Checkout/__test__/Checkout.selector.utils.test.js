@@ -356,3 +356,30 @@ describe('Checkout Selectors', () => {
     expect(getIsBillingVisited(state)).toEqual(Checkout.getIn(['uiFlags', 'isBillingVisited']));
   });
 });
+
+it('#getVenmoError', () => {
+  const { getVenmoError } = CHECKOUT_SELECTORS;
+  const Checkout = fromJS({
+    values: {
+      venmoData: {
+        error: {
+          message: 'Venmo Authentication failed',
+        },
+      },
+    },
+  });
+
+  const state = {
+    Checkout: fromJS({
+      values: {
+        venmoData: {
+          error: {
+            message: 'Venmo Authentication failed',
+          },
+        },
+      },
+    }),
+  };
+  const error = Checkout.getIn(['values', 'venmoData', 'error']);
+  expect(getVenmoError(state)).toEqual(error.message);
+});
