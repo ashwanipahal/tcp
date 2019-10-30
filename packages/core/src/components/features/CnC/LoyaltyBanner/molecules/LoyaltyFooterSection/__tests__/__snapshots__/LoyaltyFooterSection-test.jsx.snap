@@ -14,6 +14,7 @@ exports[`LoyaltyFooterSection View Component ProductDetailSection true should re
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </span>
@@ -54,6 +55,7 @@ exports[`LoyaltyFooterSection View Component is not ProductDetailView should ren
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -96,6 +98,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward tru
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -119,6 +122,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true sho
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -129,6 +133,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true sho
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -148,6 +153,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isPlcc true shou
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </div>
@@ -188,6 +194,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -211,6 +218,7 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -221,6 +229,7 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -240,6 +249,7 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </div>
@@ -263,6 +273,7 @@ exports[`LoyaltyFooterSection View Component isPlcc & isReviewPage true should r
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </div>
@@ -280,6 +291,7 @@ exports[`LoyaltyFooterSection View Component isPlcc true should render correctly
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </div>
@@ -295,12 +307,14 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest shou
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
     <Styled(Anchor)
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </span>
@@ -315,6 +329,7 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
     anchorVariation="primary"
     className="learnMore"
     fontSizeVariation="medium"
+    onClick={[Function]}
     underline={true}
   />
 </div>
@@ -334,6 +349,7 @@ exports[`LoyaltyFooterSection View Component isProductDetailView should render c
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </span>
@@ -374,6 +390,7 @@ exports[`LoyaltyFooterSection View Component not isPlcc should render correctly 
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
