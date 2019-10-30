@@ -145,7 +145,11 @@ export const commonStyles = css`
   }
 
   .matchProductBox .matchProductBody {
-    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XL}
+      ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 35px;
+    }
   }
 
   .matchProductBox .matchProductBody ul {
@@ -177,14 +181,20 @@ export const commonStyles = css`
   }
 
   li.productBox {
-    width: 24%;
-    height: 81px;
-    border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
-    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+    background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    height: 87px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 152px;
+    }
   }
+
   .autosuggest-image {
-    height: 80px;
-    width: 80px;
+    height: 87px;
+    width: 88px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 152px;
+      width: 152px;
+    }
   }
 
   .close-mobile-image {
@@ -343,10 +353,6 @@ export const mediumOnlyStyles = css`
 
     .cancel-search-label-wrapper {
       padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-    }
-    .li.productBox {
-      height: 152px;
-      width: 152px;
     }
   }
 `;

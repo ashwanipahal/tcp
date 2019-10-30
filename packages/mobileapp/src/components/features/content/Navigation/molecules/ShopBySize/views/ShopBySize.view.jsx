@@ -20,10 +20,13 @@ const navigateFromL2 = (navigate, subCategories, hasL3) => {
  * @param {object} links shop by size links
  */
 const ShopBySize = ({ navigate, links, hasL3 }) => {
+  if (!links) {
+    return null;
+  }
   return (
     <ShopBySizeContainer>
       {links.map(linkItem => {
-        return (
+        return linkItem ? (
           <ShopBySizeLink
             accessibilityRole="button"
             onPress={() => navigateFromL2(navigate, linkItem.url, hasL3)}
@@ -35,7 +38,7 @@ const ShopBySize = ({ navigate, links, hasL3 }) => {
               color="text.primary"
             />
           </ShopBySizeLink>
-        );
+        ) : null;
       })}
     </ShopBySizeContainer>
   );

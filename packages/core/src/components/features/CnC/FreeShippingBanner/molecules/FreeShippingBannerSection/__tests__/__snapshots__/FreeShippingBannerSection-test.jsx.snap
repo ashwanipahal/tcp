@@ -16,6 +16,10 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
     link={null}
     textAlign="left"
   >
+    <Styled(Image)
+      className="fast-shipping"
+      src="/static/images/fast-shipping.svg"
+    />
     <span
       dangerouslySetInnerHTML={
         Object {
@@ -55,6 +59,10 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection with
     link={null}
     textAlign="left"
   >
+    <Styled(Image)
+      className="fast-shipping"
+      src="/static/images/fast-shipping.svg"
+    />
     <span
       dangerouslySetInnerHTML={
         Object {

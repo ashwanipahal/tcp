@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { Image, Button } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
 
 const GuestUserInfo = ({
@@ -14,9 +14,10 @@ const GuestUserInfo = ({
 }) => {
   return (
     <React.Fragment>
-      <Anchor
-        href="#"
-        noLink
+      <Button
+        nohover
+        type="button"
+        link
         id={createAccount}
         className="create-account-header-label"
         onClick={e =>
@@ -26,10 +27,11 @@ const GuestUserInfo = ({
         anchorVariation="primary"
       >
         Create Account
-      </Anchor>
-      <Anchor
-        href="#"
-        noLink
+      </Button>
+      <Button
+        nohover
+        type="button"
+        link
         id={login}
         className="rightLink login-header-label"
         onClick={e =>
@@ -39,7 +41,7 @@ const GuestUserInfo = ({
         anchorVariation="primary"
       >
         Login
-      </Anchor>
+      </Button>
 
       {!isDrawer ? (
         <Image

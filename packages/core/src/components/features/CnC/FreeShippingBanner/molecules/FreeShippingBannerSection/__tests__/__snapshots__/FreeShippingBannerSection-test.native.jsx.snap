@@ -17,11 +17,7 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
         numberOfLines={null}
         text={
           Array [
-            " ",
-            <ForwardRef>
-              lbl_free
-            </ForwardRef>,
-            "hippingBanner_label ",
+            "lbl_freeShippingBanner_label ",
           ]
         }
         textAlign="center"
@@ -38,10 +34,8 @@ exports[`FreeShippingBannerSection View Component FreeShippingBannerSection shou
         locator=""
         margins={null}
         onPress={null}
-        target="_blank"
         text="lbl_freeShippingBanner_details"
         underline={true}
-        url="/content/free-shipping"
         visible={false}
       />
     </Styled(View)>

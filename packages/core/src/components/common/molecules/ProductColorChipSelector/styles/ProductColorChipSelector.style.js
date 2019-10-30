@@ -20,7 +20,7 @@ const styles = css`
     padding: 0px;
     display: inline-block;
     vertical-align: middle;
-    margin: 5px 16px 5px 0;
+    margin: 0px 16px 0px 0;
     border-radius: 50%;
     line-height: 25px;
     position: relative;
