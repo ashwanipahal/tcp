@@ -39,7 +39,7 @@ export const OrdersList = ({ labels, orderItems, ordersListItems, ...otherprops 
 OrdersList.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]).isRequired,
-  orderItems: PropTypes.shape({}).isRequired,
+  orderItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default OrdersList;

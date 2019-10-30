@@ -119,9 +119,12 @@ const OrderPreviewItem = ({ ...otherProps }) => {
   );
 };
 OrderPreviewItem.propTypes = {
+  className: PropTypes.string,
   orderGroup: PropTypes.shape({}).isRequired,
 };
 
-OrderPreviewItem.defaultProps = {};
+OrderPreviewItem.defaultProps = {
+  className: '',
+};
 
 export default withStyles(OrderPreviewItem, styles);

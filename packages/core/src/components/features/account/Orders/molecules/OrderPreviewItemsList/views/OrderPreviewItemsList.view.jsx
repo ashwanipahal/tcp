@@ -68,7 +68,6 @@ OrderPreviewItemsList.propTypes = {
   items: PropTypes.shape({}).isRequired,
   isCanceledList: PropTypes.arrayOf(PropTypes.shape({})),
   ordersLabels: PropTypes.shape({}).isRequired,
-  orderDetailsData: PropTypes.shape({}).isRequired,
 };
 
 OrderPreviewItemsList.defaultProps = {
