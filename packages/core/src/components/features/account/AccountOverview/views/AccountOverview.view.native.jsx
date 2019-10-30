@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { isEmpty } from 'lodash';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
@@ -58,6 +59,7 @@ class AccountOverview extends PureComponent<Props> {
       },
       horizontalBar: true,
       modalHeaderLbl: ' ',
+      changePassword: false,
     };
   }
 
@@ -69,16 +71,32 @@ class AccountOverview extends PureComponent<Props> {
   }
 
   componentDidMount() {
+    this.navigateToChangePassword();
+  }
+
+  componentDidUpdate() {
+    this.navigateToChangePassword();
+  }
+
+  navigateToChangePassword = () => {
     try {
-      const { navigation } = this.props;
-      const {
-        state: {
-          params: { component },
-        },
-      } = navigation;
-      if (component === 'change-password') {
-        // using set timeout as labels doesn't load sometime just after opening app
-        setTimeout(() => {
+      const { labels } = this.props;
+      const { changePassword, showModal } = this.state;
+      if (!isEmpty(labels)) {
+        const { navigation } = this.props;
+        const {
+          state: {
+            params: { component },
+          },
+        } = navigation;
+        if (component === 'change-password' && !changePassword) {
+          // eslint-disable-next-line react/no-did-update-set-state
+          this.setState({ changePassword: true });
+          if (showModal) {
+            // if login modal is already opened
+            this.setState({ showModal: false });
+          }
+          // using set timeout as labels doesn't load sometime just after opening app
           this.toggleModal({
             getComponentId: {
               login: true,
@@ -86,12 +104,12 @@ class AccountOverview extends PureComponent<Props> {
               favorites: false,
             },
           });
-        }, 4000);
+        }
       }
     } catch (e) {
       // do nothing
     }
-  }
+  };
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     let componentContainer = null;
@@ -105,6 +123,7 @@ class AccountOverview extends PureComponent<Props> {
           showLogin={this.showloginModal}
           showCheckoutModal={this.showCheckoutModal}
           updateHeader={this.updateHeader}
+          resetChangePasswordState={this.resetChangePasswordState}
         />
       );
     }
@@ -197,6 +216,12 @@ class AccountOverview extends PureComponent<Props> {
     this.setState({
       modalHeaderLbl: ' ',
       horizontalBar: false,
+    });
+  };
+
+  resetChangePasswordState = () => {
+    this.setState({
+      changePassword: false,
     });
   };
 

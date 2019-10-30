@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, Linking } from 'react-native';
+import { Linking } from 'react-native';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
@@ -43,23 +43,29 @@ const modulesMap = {
 };
 
 class HomePageView extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      handeOpenURLRegister: false,
+    };
+  }
+
   componentDidMount() {
     this.loadBootstrapData();
 
     const { loadNavigationData } = this.props;
     loadNavigationData();
+    const { handeOpenURLRegister } = this.state;
 
-    if (Platform.OS === 'android') {
-      Linking.getInitialURL().then(url => {
-        this.navigate(url);
-      });
-    } else {
+    if (!handeOpenURLRegister) {
+      this.setState({ handeOpenURLRegister: true });
       Linking.addEventListener('url', this.handleOpenURL);
     }
   }
 
   componentWillUnmount() {
     Linking.removeEventListener('url', this.handleOpenURL);
+    this.setState({ handeOpenURLRegister: false });
   }
 
   /**
@@ -88,11 +94,15 @@ class HomePageView extends React.PureComponent<Props> {
 
   navigate = url => {
     const route = url.replace(/.*?:\/\//g, '');
-    const routeName = route.split('/')[0];
-    const params = route.split('/')[1];
+    const routeName = route.split('?')[0];
+    const params = route.split('?')[1];
     if (routeName === 'change-password') {
-      const logonPasswordOld = params.split('&')[0].split('=')[1];
-      const em = params.split('&')[1].split('=')[1];
+      const password = params.split('&')[0].replace(/%20/g, '+');
+      const emm = params.split('&')[1];
+
+      const logonPasswordOld = password.substring(password.indexOf('=') + 1);
+      const em = emm.substring(emm.indexOf('=') + 1);
+
       const { navigation } = this.props;
       navigateToNestedRoute(navigation, 'AccountStack', 'Account', {
         component: 'change-password',

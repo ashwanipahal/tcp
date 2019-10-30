@@ -28,12 +28,14 @@ export class ResetPasswordContainer extends PureComponent {
     showNewPassword: PropTypes.func,
     showLogin: PropTypes.func,
     updateHeader: PropTypes.func,
+    resetChangePasswordState: PropTypes.func,
   };
 
   static defaultProps = {
     showNewPassword: () => {},
     showLogin: () => {},
     updateHeader: () => {},
+    resetChangePasswordState: () => {},
   };
 
   constructor(props) {
@@ -53,6 +55,13 @@ export class ResetPasswordContainer extends PureComponent {
           this.backHandler();
         }, 2000);
       }
+    }
+  }
+
+  componentWillUnmount() {
+    const { resetChangePasswordState } = this.props;
+    if (resetChangePasswordState) {
+      resetChangePasswordState();
     }
   }
 

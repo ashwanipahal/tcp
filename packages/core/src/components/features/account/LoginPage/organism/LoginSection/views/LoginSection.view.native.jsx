@@ -27,7 +27,11 @@ class LoginSection extends PureComponent<Props> {
     this.queryParams = {};
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
+    this.navigateToResetPassword();
+  }
+
+  navigateToResetPassword = () => {
     try {
       const { navigation } = this.props;
       const {
@@ -37,16 +41,16 @@ class LoginSection extends PureComponent<Props> {
       } = navigation;
       if (component && component === 'change-password') {
         this.showNewPassword();
+        this.queryParams = {
+          logonPasswordOld,
+          em,
+        };
         navigation.setParams({ component: null, logonPasswordOld: null, em: null }); // reset the params
       }
-      this.queryParams = {
-        logonPasswordOld,
-        em,
-      };
     } catch (e) {
       // nested variable might not available always
     }
-  }
+  };
 
   toggleCheckoutModal = () => {
     const { showCheckoutModal } = this.props;
@@ -93,6 +97,7 @@ class LoginSection extends PureComponent<Props> {
       userplccCardId,
       updateHeader,
       toastMessage,
+      resetChangePasswordState,
     } = this.props;
 
     const { resetPassword, newPassword } = this.state;
@@ -152,6 +157,7 @@ class LoginSection extends PureComponent<Props> {
             showLogin={showLogin}
             showNewPassword={this.showNewPassword}
             updateHeader={updateHeader}
+            resetChangePasswordState={resetChangePasswordState}
           />
         )}
         <FormStyleView>
