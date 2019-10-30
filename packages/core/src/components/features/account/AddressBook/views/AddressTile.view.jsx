@@ -4,6 +4,7 @@ import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Anchor from '../../../../common/atoms/Anchor';
+import Button from '../../../../common/atoms/Button';
 import Address from '../../../../common/molecules/Address';
 import styles from '../styles/AddressTile.style';
 import Badge from '../../../../common/atoms/Badge';
@@ -98,8 +99,11 @@ class AddressBookTile extends React.Component {
                 )}
                 {address.primary !== 'true' && (
                   <div className="textRight">
-                    <Anchor
+                    <Button
                       fontSizeVariation="small"
+                      nohover
+                      type="button"
+                      link
                       underline
                       anchorVariation="primary"
                       handleLinkClick={this.handleDefaultLinkClick}
@@ -108,7 +112,7 @@ class AddressBookTile extends React.Component {
                       dataLocator="addressbook-makedefault"
                     >
                       {getLabelValue(labels, 'lbl_common_makeDefault', 'common')}
-                    </Anchor>
+                    </Button>
                   </div>
                 )}
               </div>
@@ -116,17 +120,19 @@ class AddressBookTile extends React.Component {
           </Row>
         </div>
         <div className="addressTile__row">
-          <Anchor
+          <Button
             fontSizeVariation="large"
+            nohover
+            type="button"
+            link
             underline
-            to="/#"
             aria-describedby={addressId}
             anchorVariation="primary"
             dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
           >
             {getLabelValue(labels, 'lbl_common_edit', 'common')}
-          </Anchor>
+          </Button>
           <Anchor
             fontSizeVariation="large"
             underline
