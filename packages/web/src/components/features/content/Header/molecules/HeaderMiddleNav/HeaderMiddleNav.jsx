@@ -66,16 +66,13 @@ class HeaderMiddleNav extends React.PureComponent {
   }
 
   onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
-    e.preventDefault();
+    e.stopPropagation();
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
         component: componentToOpen,
         variation: 'primary',
       });
     }
-    this.setState({
-      userNameClick: triggerLoginCreateAccount && userNameClick ? userNameClick : !userNameClick,
-    });
   };
 
   handleUserTypeColor = isUserPlcc => {
@@ -84,6 +81,7 @@ class HeaderMiddleNav extends React.PureComponent {
 
   renderAccountInfoSection = (userName, openOverlay, isUserPlcc, userPoints, userRewards) => {
     const { userNameClick, triggerLoginCreateAccount, isSearchOpen } = this.state;
+    const { isOpenOverlay } = this.props;
     return userName && !isSearchOpen ? (
       <LoggedInUserInfo
         mainId="accountDrawer"
@@ -92,6 +90,7 @@ class HeaderMiddleNav extends React.PureComponent {
         userRewards={userRewards}
         userNameClick={userNameClick}
         openOverlay={openOverlay}
+        isOpenOverlay={isOpenOverlay}
         onLinkClick={this.onLinkClick}
         isDrawer={false}
       />
@@ -335,6 +334,7 @@ HeaderMiddleNav.propTypes = {
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   openMiniBagDispatch: PropTypes.func.isRequired,

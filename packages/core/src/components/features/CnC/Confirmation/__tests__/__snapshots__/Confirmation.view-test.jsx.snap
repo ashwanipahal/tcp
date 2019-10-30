@@ -84,9 +84,9 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
         }
       }
     >
-      <div>
-        LOYALTY BANNER
-      </div>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="confirmation"
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -194,9 +194,9 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
         }
       }
     >
-      <div>
-        LOYALTY BANNER
-      </div>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="confirmation"
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -311,9 +311,9 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
         }
       }
     >
-      <div>
-        LOYALTY BANNER
-      </div>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="confirmation"
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
