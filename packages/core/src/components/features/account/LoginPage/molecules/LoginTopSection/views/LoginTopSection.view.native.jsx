@@ -33,7 +33,7 @@ const LoginTopSection = props => {
   const { labels, variation, updateHeader } = props;
   const imgStyle = { alignSelf: 'center', marginTop: 20 };
 
-  if (variation === 'checkout') {
+  if (variation === 'checkout' && updateHeader) {
     updateHeader(); // hide the header and rule line
   }
 
