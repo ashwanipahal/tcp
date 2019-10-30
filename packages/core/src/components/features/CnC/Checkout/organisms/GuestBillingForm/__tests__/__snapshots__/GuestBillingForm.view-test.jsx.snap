@@ -33,6 +33,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showPayPalButton={false}
     showVenmoSubmit={false}
   />
 </form>
@@ -137,6 +138,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showPayPalButton={false}
     showVenmoSubmit={false}
   />
 </form>
