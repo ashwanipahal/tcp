@@ -85,6 +85,7 @@ class ProductColorChipsSelector extends React.PureComponent<Props> {
       <LabeledRadioButtonGroup
         className={`${className} color-chips-selector`}
         optionsMap={optionsMap}
+        colorSelector
         {...otherProps}
       />
     );

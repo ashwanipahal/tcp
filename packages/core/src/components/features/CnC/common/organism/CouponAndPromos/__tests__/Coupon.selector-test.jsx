@@ -5,6 +5,7 @@ import {
   getAppliedCouponListState,
   getAvailableCouponListState,
   getAllRewardsCoupons,
+  isCouponApplied,
 } from '../container/Coupon.selectors';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
@@ -93,6 +94,12 @@ describe('#Coupon selector', () => {
     expect(getAppliedCouponListState(state)).toEqual(
       couponState.get('couponsAndOffers').filter(i => i.status === 'applied')
     );
+  });
+  it('#isCouponApplied should return true if coupons are applied', () => {
+    const state = {
+      CouponsAndPromos: couponState,
+    };
+    expect(isCouponApplied(state)).toEqual(false);
   });
 
   it('#Coupon should return couponsAndOffers available state', () => {

@@ -1,19 +1,16 @@
-import React from 'react';
-import { PointsValueText } from '../molecules/GuestMprPlccSection/styles/GuestMprPlccSection.style.native';
-
-const mobileHashValues = (str, key, value, pageChecksObj) => {
+const mobileHashValues = (str, utilArr) => {
   const textArr = str.split(' ');
-  const keyIndex = textArr.indexOf(key);
   textArr.map((obj, i) => {
     textArr[i] = `${obj} `;
     return textArr[i];
   });
-  textArr[keyIndex] =
-    value == null ? (
-      ''
-    ) : (
-      <PointsValueText pageChecksObj={pageChecksObj}>{`${value} `}</PointsValueText>
-    );
+
+  utilArr.map(obj => {
+    const keyIndex = textArr.indexOf(obj.key);
+    textArr[keyIndex] = obj.value == null ? '' : obj.value;
+    return textArr[keyIndex];
+  });
+
   return textArr;
 };
 

@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 import BagPageSelector from '../../../../BagPage/container/BagPage.selectors';
 import { getLabelValue } from '../../../../../../../utils';
@@ -80,6 +81,13 @@ export const getAppliedCouponListState = state => {
   const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
   return list && list.filter(i => i.status === 'applied');
 };
+
+export const isCouponApplied = createSelector(
+  getAppliedCouponListState,
+  appliedCouponList => {
+    return appliedCouponList && appliedCouponList.size > 0;
+  }
+);
 
 export const getAvailableCouponListState = state => {
   const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');

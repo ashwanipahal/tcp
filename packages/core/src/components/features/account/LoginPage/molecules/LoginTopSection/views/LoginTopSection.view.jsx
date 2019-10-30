@@ -39,6 +39,10 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading_2', 'login')}
             </BodyCopy>
+            <BodyCopy
+              component="div"
+              className="bordered elem-pt-MED elem-pb-LRG checkout-border"
+            />
           </>
         )}
 
