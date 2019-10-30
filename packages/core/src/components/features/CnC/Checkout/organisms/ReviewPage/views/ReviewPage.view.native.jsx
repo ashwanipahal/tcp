@@ -21,9 +21,15 @@ class ReviewPage extends React.PureComponent {
     orderHasShipping: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
     availableStages: PropTypes.func.isRequired,
+    reviewDidMount: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
     setCheckoutStage: PropTypes.func.isRequired,
   };
+
+  componentDidMount() {
+    const { reviewDidMount } = this.props;
+    reviewDidMount();
+  }
 
   renderFooter = () => {
     const {
@@ -100,6 +106,7 @@ class ReviewPage extends React.PureComponent {
             onBackLinkPress={() => setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM)}
             footerBody={this.renderFooter()}
             showAccordian
+            pageCategory="review"
           />
         </ScrollView>
       </>

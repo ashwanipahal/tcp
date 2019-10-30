@@ -34,7 +34,14 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       }
       yield put(navigateXHRAction());
       // Provide check for current page and depending on that make Cart or OrderDetails call.
-      return yield put(BAG_PAGE_ACTIONS.getCartData());
+      return yield put(
+        BAG_PAGE_ACTIONS.getCartData({
+          isRecalculateTaxes: false,
+          excludeCartItems: true,
+          recalcRewards: false,
+          translation: false,
+        })
+      );
     }
     return yield put(setLoginInfo(response));
   } catch (err) {

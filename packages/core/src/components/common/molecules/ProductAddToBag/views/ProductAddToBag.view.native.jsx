@@ -87,6 +87,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectColor,
       showAddToBagCTA,
       showColorChips,
+      isGiftCard,
+      isDisableZeroInventoryEntries,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
@@ -96,6 +98,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const quantityDropDownStyle = {
       width: 200,
     };
+    let { colorFitSizeDisplayNames } = this.props;
+    colorFitSizeDisplayNames = {
+      color,
+      fit,
+      size,
+      ...colorFitSizeDisplayNames,
+    };
     return (
       <View {...this.props}>
         {showColorChips && (
@@ -104,7 +113,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             name="color"
             itemValue={colorName}
             component={ProductVariantSelector}
-            title={color}
+            title={colorFitSizeDisplayNames.color}
             renderColorItem
             data={colorList}
             selectedItem={colorName}
@@ -113,13 +122,14 @@ class ProductAddToBag extends React.PureComponent<Props> {
             componentWidth={30}
             separatorWidth={16}
             locators={{ key: 'pdp_color_label', value: 'pdp_color_value' }}
+            isGiftCard={isGiftCard}
           />
         )}
         <Field
           id="fit"
           name="Fit"
           component={ProductVariantSelector}
-          title={fit}
+          title={colorFitSizeDisplayNames.fit}
           itemValue={fitName}
           data={fitList}
           selectedItem={fitName}
@@ -131,7 +141,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           id="size"
           name="Size"
           component={ProductVariantSelector}
-          title={size}
+          title={colorFitSizeDisplayNames.size}
           itemValue={sizeName}
           renderItem={this.renderSize}
           data={sizeList}
@@ -140,6 +150,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           itemNameKey="displayName"
           error={sizeError}
           locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
+          isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
         />
         <RowViewContainer style={quantityDropDownStyle}>
           <BodyCopy

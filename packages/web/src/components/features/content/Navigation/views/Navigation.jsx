@@ -6,6 +6,17 @@ import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
 import style from '../Navigation.style';
+import { filterParams } from '../../../../../constants/constants';
+
+const {
+  FILTER_CATAGORY,
+  FILTER_COLOR,
+  FILTER_SIZE,
+  FILTER_PRICE_RANGE,
+  FILTER_FIT,
+  FILTER_GENDER,
+  FILTER_AGE,
+} = filterParams;
 
 /**
  * This function closes Navigation Drawer on route change
@@ -21,10 +32,19 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 /**
  * This function scrolls page to top on route change complete
  */
+// eslint-disable-next-line complexity
 const handleRouteComplete = url => {
   const params = new URL(document.location).searchParams;
   const sortParam = params.has('sort');
-  const filterParam = params.has('categoryPath2_uFilter');
+
+  const filterParam =
+    params.has(FILTER_CATAGORY) ||
+    params.has(FILTER_COLOR) ||
+    params.has(FILTER_SIZE) ||
+    params.has(FILTER_PRICE_RANGE) ||
+    params.has(FILTER_FIT) ||
+    params.has(FILTER_GENDER) ||
+    params.has(FILTER_AGE);
 
   /**
    * check if sort or filter param present in PLP page
@@ -78,9 +98,16 @@ const Navigation = props => {
   const {
     openNavigationDrawer,
     className,
+    userName,
+    userPoints,
+    userRewards,
+    userNameClick,
+    onLinkClick,
+    triggerLoginCreateAccount,
     closeNavigationDrawer,
     hideNavigationFooter,
     showCondensedHeader,
+    openOverlay,
     isDrawerOpen,
   } = props;
 
@@ -92,8 +119,15 @@ const Navigation = props => {
       id="l1_drawer"
       small
       medium
+      userName={userName}
+      userPoints={userPoints}
+      userRewards={userRewards}
+      userNameClick={userNameClick}
+      onLinkClick={onLinkClick}
+      triggerLoginCreateAccount={triggerLoginCreateAccount}
       open={openNavigationDrawer}
       close={closeNavigationDrawer}
+      openOverlay={openOverlay}
       width={{
         small: '314px',
         medium: '314px',
@@ -122,6 +156,13 @@ Navigation.propTypes = {
   className: PropTypes.string.isRequired,
   hideNavigationFooter: PropTypes.bool.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
+  userNameClick: PropTypes.bool.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+  triggerLoginCreateAccount: PropTypes.bool.isRequired,
+  openOverlay: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
 };
 

@@ -207,6 +207,7 @@ class CheckoutAddress extends React.Component {
     const { editMode, userAddresses, dispatch, formName } = this.props;
     if (this.newAddressModeStarted) {
       this.newAddressModeStarted = false;
+      updateAddress(null, editMode, dispatch, formName, false, true);
       return;
     }
     if (editMode) {

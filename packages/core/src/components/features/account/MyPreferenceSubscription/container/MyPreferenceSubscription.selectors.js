@@ -27,7 +27,7 @@ export const getGymPlaceRewardsSms = createSelector(
         placeRewardsGymObject[itm.preferenceMode] = itm.isModeSelected;
         return true;
       });
-      return placeRewardsGymObject.gymPlaceRewardsSms || false;
+      return placeRewardsGymObject.placeRewardsSms || false;
     }
     return false;
   }

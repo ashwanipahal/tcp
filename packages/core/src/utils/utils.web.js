@@ -365,6 +365,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
     ACQUISITION_ID: process.env.RWD_WEB_ACQUISITION_ID,
     raygunApiKey: processEnv.RWD_WEB_RAYGUN_API_KEY,
+    isErrorReportingNodeActive: processEnv.IS_ERROR_REPORTING_NODE_ACTIVE,
+    isErrorReportingBrowserActive: processEnv.IS_ERROR_REPORTING_BROWSER_ACTIVE,
     channelId: API_CONFIG.channelIds.Desktop, // TODO - Make it dynamic for all 3 platforms
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,

@@ -12,15 +12,18 @@ import InputCheckbox from '../../../../common/atoms/InputCheckbox';
 import { getIconPath } from '../../../../../utils';
 
 class MyPrefrenceSection extends React.PureComponent {
+  onSubscribeHandler = subscribeBrand => {
+    const { onSubscribe } = this.props;
+    onSubscribe(subscribeBrand);
+  };
+
+  onUnsubscribeHandler = subscribeBrand => {
+    const { onUnsubscribe } = this.props;
+    onUnsubscribe(subscribeBrand);
+  };
+
   render() {
-    const {
-      className,
-      labels,
-      onSubscribe,
-      onUnsubscribe,
-      isTcpSubscribe,
-      isGymSubscribe,
-    } = this.props;
+    const { className, labels, isTcpSubscribe, isGymSubscribe } = this.props;
     return (
       <div className={className}>
         <Row fullBleed className="elem-pt-LRG">
@@ -152,7 +155,14 @@ class MyPrefrenceSection extends React.PureComponent {
                     component={InputCheckbox}
                     dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
-                    onChange={isTcpSubscribe ? onUnsubscribe : onSubscribe}
+                    onChange={e => {
+                      e.preventDefault();
+                      if (isTcpSubscribe) {
+                        this.onUnsubscribeHandler('tcpWebSubscribe');
+                      } else {
+                        this.onSubscribeHandler('tcpWebSubscribe');
+                      }
+                    }}
                     checked={isTcpSubscribe || false}
                     onBlur={e => {
                       e.preventDefault();
@@ -167,7 +177,14 @@ class MyPrefrenceSection extends React.PureComponent {
                     component={InputCheckbox}
                     dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
-                    onChange={isGymSubscribe ? onUnsubscribe : onSubscribe}
+                    onChange={e => {
+                      e.preventDefault();
+                      if (isGymSubscribe) {
+                        this.onUnsubscribeHandler('gymboreeWebSubscribe');
+                      } else {
+                        this.onSubscribeHandler('gymboreeWebSubscribe');
+                      }
+                    }}
                     checked={isGymSubscribe || false}
                     onBlur={e => {
                       e.preventDefault();

@@ -1,10 +1,9 @@
 import styled from 'styled-components/native';
-import { isGymboree } from '@tcp/core/src/utils';
 
 const setBackground = props => {
-  if (isGymboree()) {
+  if (props.theme.isGymboree) {
     return `
-    background-color: ${props.theme.colorPalette.orange[700]};
+    background-color: ${props.theme.colorPalette.orange[900]};
     `;
   }
   return `
@@ -86,7 +85,7 @@ export const RoundView = styled.View`
   border-radius: 10;
   position: absolute;
   margin-top: 15px;
-  border: 2px solid white;
+  border: 2px solid ${props => props.theme.colorPalette.white};
 `;
 
 export const CartIconView = styled.Image`

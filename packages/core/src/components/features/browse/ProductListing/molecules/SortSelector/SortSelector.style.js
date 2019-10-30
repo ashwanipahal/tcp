@@ -5,6 +5,7 @@ const selectedIcon = getIconPath('selected-item-check-no-circle');
 
 export default css`
   .sort-select-title {
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
     display: none;
     padding-right: 5px;
   }
@@ -74,6 +75,7 @@ export default css`
       width: auto;
       min-width: 162px;
       margin: 27px 0 0 20px;
+      left: 0px;
     }
     .custom-sort-dropdown {
       border-bottom: 1px solid ${props => props.theme.colorPalette.gray[600]};
@@ -91,7 +93,7 @@ export default css`
     }
     .sort-item-highlighted {
       .sort-title {
-        font-size: ${props => props.theme.typography.fontSizes.fs13};
+        font-size: ${props => props.theme.typography.fontSizes.fs16};
         font-weight: ${props => props.theme.typography.fontWeights.extrabold};
       }
     }

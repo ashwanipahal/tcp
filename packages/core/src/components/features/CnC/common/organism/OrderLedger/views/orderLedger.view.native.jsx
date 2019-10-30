@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { isCanada } from '@tcp/core/src/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
@@ -27,6 +28,14 @@ const popover = message => {
       color="gray.900"
       text={message}
     />
+  );
+};
+
+const getLoyaltybanner = (isConfirmationPage, pageCategory) => {
+  return (
+    !isCanada() && (
+      <LoyaltyBanner isConfirmationPage={isConfirmationPage} pageCategory={pageCategory} />
+    )
   );
 };
 
@@ -57,7 +66,7 @@ export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, l
   ) : null;
 };
 
-const getBody = (ledgerSummaryData, labels, isConfirmationPage, isReviewPage) => {
+const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) => {
   const {
     itemsCount,
     currencySymbol,
@@ -304,7 +313,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, isReviewPage) =>
           </Text>
         </StyledRowDataContainer>
       ) : null}
-      <LoyaltyBanner isConfirmationPage={isConfirmationPage} isReviewPage={isReviewPage} />
+      {getLoyaltybanner(isConfirmationPage, pageCategory)}
     </StyledOrderLedger>
   );
 };
@@ -333,14 +342,14 @@ const OrderLedger = ({
   showAccordian,
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
-  isReviewPage,
+  pageCategory,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = getBody(summaryData, labels, isConfirmationPage, isReviewPage);
+  const body = getBody(summaryData, labels, isConfirmationPage, pageCategory);
   return (
     <View>
       {showAccordian ? (
@@ -451,7 +460,7 @@ OrderLedger.propTypes = {
 
   /** Flag to identify if the current page is confirmation page */
   isConfirmationPage: PropTypes.bool,
-  isReviewPage: PropTypes.bool,
+  pageCategory: PropTypes.shape({}),
 };
 
 OrderLedger.defaultProps = {
@@ -459,7 +468,7 @@ OrderLedger.defaultProps = {
   labels: {},
   confirmationPageLedgerSummaryData: {},
   isConfirmationPage: false,
-  isReviewPage: false,
+  pageCategory: {},
 };
 
 export default OrderLedger;

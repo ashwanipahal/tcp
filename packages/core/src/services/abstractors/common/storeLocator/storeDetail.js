@@ -27,7 +27,7 @@ const errorHandler = err => {
  * @param {object} storeInfo - store object
  * @returns {boolean} returns true is store is a gymboree store.
  */
-const hasGymboreeStores = storeInfo => {
+export const hasGymboreeStores = storeInfo => {
   const gymStoreArr = storeInfo.x_brands || storeInfo.brands;
   return (
     (Array.isArray(gymStoreArr) && gymStoreArr.includes(BRAND_TYPE.gymboree)) ||

@@ -79,6 +79,9 @@ export default {
 
   /* This is AB test for Pickup CTA */
   // isPLPShowPickupCTA: PropTypes.bool,
+
+  /* This will be used to get the name of where this component has been called */
+  viaModule: PropTypes.string,
 };
 
 export const productGridDefaultProps = {
@@ -97,4 +100,5 @@ export const productGridDefaultProps = {
   currencyExchange: {
     exchangevalue: 0,
   },
+  viaModule: '',
 };

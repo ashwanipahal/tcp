@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 import { PropTypes } from 'prop-types';
 import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
+import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.native';
 import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tcp/core/src/utils';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
@@ -52,6 +53,17 @@ export class App extends React.PureComponent {
 
   componentDidMount() {
     this.store.dispatch(getUserInfo());
+    const { apiConfig } = this.state;
+    const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
+
+    if (isErrorReportingActive) {
+      initAppErrorReporter({
+        isDevelopment: false,
+        raygunApiKey: RAYGUN_API_KEY,
+        appType: brandId,
+        envId: RWD_APP_VERSION,
+      });
+    }
   }
 
   removeSplash = () => {

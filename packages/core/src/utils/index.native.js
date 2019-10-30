@@ -58,6 +58,8 @@ export {
   buildStorePageUrlSuffix,
   getBrand,
   parseStoreHours,
+  getModifiedLanguageCode,
+  generateTraceId,
   parseBoolean,
   enableBodyScroll,
   disableBodyScroll,

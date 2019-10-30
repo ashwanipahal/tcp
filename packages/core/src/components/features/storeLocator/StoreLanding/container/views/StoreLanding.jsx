@@ -27,7 +27,40 @@ export class StoreLanding extends PureComponent {
     isOutlet: false,
     isGym: isGymboree(),
     centeredStoreId: '',
+    showSubmitError: false,
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { favoriteStore } = this.props;
+    const { mapView } = this.state;
+    const currentFavStoreBasicInfo = favoriteStore && favoriteStore.basicInfo;
+    const prevFavStoreBasicInfo = prevProps.favoriteStore && prevProps.favoriteStore.basicInfo;
+
+    /**
+     * USE CASE - When we select a store to be fav store, the fav store icon will replace the button.
+     *  Then the selected flex item height is greater than one in the row, which make the user experience bad.
+     * IMPLEMENTATION - Put a check whether prev prop fav store is not equal to new prop fav store, then
+     *  retrieve all the tiles and calculate the height and apply the max height to all the tiles.
+     */
+    if (
+      (currentFavStoreBasicInfo &&
+        prevFavStoreBasicInfo &&
+        prevFavStoreBasicInfo.id !== currentFavStoreBasicInfo.id) ||
+      mapView !== prevState.mapView
+    ) {
+      const storeList = document.querySelectorAll(
+        '.store__list.store_item_container .address-tile'
+      );
+      let storeMaxHeight = 0;
+      storeList.forEach(list => {
+        if (storeMaxHeight < list.offsetHeight) storeMaxHeight = list.offsetHeight;
+      });
+      storeList.forEach(list => {
+        const element = list;
+        element.style.height = `${storeMaxHeight}px`;
+      });
+    }
+  }
 
   openStoreDetails = (event, store) => {
     event.preventDefault();
@@ -50,6 +83,7 @@ export class StoreLanding extends PureComponent {
         <Notification
           status="info"
           message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+          className="storeview__error"
         />
       ) : (
         suggestedStoreList.map((item, index) => (
@@ -68,7 +102,7 @@ export class StoreLanding extends PureComponent {
               key={item.basicInfo.id}
               openStoreDetails={this.openStoreDetails}
               titleClickCb={this.focusOnMap}
-              selectedStoreId={centeredStoreId}
+              selectedStoreId={centeredStoreId === item.basicInfo.id}
             />
           </Col>
         ))
@@ -108,7 +142,7 @@ export class StoreLanding extends PureComponent {
   };
 
   renderStoreList = suggestedStoreList => {
-    const { centeredStoreId } = this.state;
+    const { centeredStoreId, showSubmitError } = this.state;
     const {
       setFavoriteStore,
       favoriteStore,
@@ -117,17 +151,25 @@ export class StoreLanding extends PureComponent {
       searchDone,
       geoLocationEnabled,
     } = this.props;
-    if (searchDone && !(suggestedStoreList && suggestedStoreList.length)) {
+    if (
+      showSubmitError ||
+      (searchDone &&
+        !(suggestedStoreList && (suggestedStoreList.length || suggestedStoreList.size)))
+    ) {
       return (
         <Notification
-          status="info"
-          message={getLabelValue(labels, 'lbl_storelanding_noStoresFound')}
+          status={showSubmitError ? 'error' : 'info'}
+          message={getLabelValue(
+            labels,
+            showSubmitError ? 'lbl_storelanding_errorLabel' : 'lbl_storelanding_noStoresFound'
+          )}
+          className="storeview__error"
         />
       );
     }
     return suggestedStoreList.map((item, index) => (
       <Col
-        colSize={{ large: 12, medium: 8, small: 6 }}
+        colSize={{ large: 12, medium: 4, small: 6 }}
         ignoreGutter={{ small: true }}
         className="store__list store_item_container"
         key={item.basicInfo.id}
@@ -192,6 +234,11 @@ export class StoreLanding extends PureComponent {
     });
   };
 
+  showSubmitError = value => {
+    const { showSubmitError } = this.state;
+    if (showSubmitError !== value) this.setState({ showSubmitError: value });
+  };
+
   render() {
     const {
       className,
@@ -247,11 +294,15 @@ export class StoreLanding extends PureComponent {
                     searchIcon={searchIcon}
                     markerIcon={markerIcon}
                     getLocationStores={getLocationStores}
+                    showSubmitError={this.showSubmitError}
                     selectedCountry={isCanada() ? 'CA' : 'USA'}
                   />
                 </Col>
               </Row>
-              <Row className="storeView__List" fullBleed>
+              <Row
+                className={`storeView__List${mapView ? ' storeView__ListAndMap' : ''}`}
+                fullBleed
+              >
                 {mapView
                   ? this.renderMapView(modifiedStoreList)
                   : this.renderStoreList(modifiedStoreList)}

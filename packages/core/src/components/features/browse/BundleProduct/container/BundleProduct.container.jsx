@@ -26,8 +26,9 @@ class ProductBundleContainer extends React.PureComponent {
   }
 }
 
-ProductBundleContainer.pageId = 'b';
-
+ProductBundleContainer.pageInfo = {
+  pageId: 'b',
+};
 function mapStateToProps(state) {
   return {
     state,

@@ -8,6 +8,7 @@ import StyliticsProductTabList from '../../../organisms/StyliticsProductTabList'
 import moduleQStyle, { StyledSkeleton } from '../styles/ModuleQ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleQ.config';
+import constant from '../ModuleQ.constant';
 
 /**
  * @class ModuleQ - global reusable component will display a featured content
@@ -23,7 +24,7 @@ class ModuleQ extends React.PureComponent {
 
     this.state = {
       currentCatId: '',
-      currentTabItem: {},
+      currentTabItem: [],
     };
   }
 
@@ -48,12 +49,20 @@ class ModuleQ extends React.PureComponent {
     const { shopThisLookLabel } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
+    const outfitParams = pdpUrl && pdpUrl.split('/');
+    const { RECOMMENDATION } = constant;
     return (
       <div>
         <Anchor
           key={id}
           className="moduleQ-image-link"
-          to={pdpUrl}
+          to={
+            outfitParams &&
+            outfitParams.length > 1 &&
+            `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+              outfitParams[outfitParams.length - 1]
+            }&viaModule=${RECOMMENDATION}`
+          }
           asPath={pdpUrl}
           dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
         >
@@ -94,7 +103,11 @@ class ModuleQ extends React.PureComponent {
   };
 
   getCurrentCtaButton = () => {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+    const { currentTabItem } = this.state;
+    if (!currentTabItem || !currentTabItem.length) {
+      return null;
+    }
+    const { singleCTAButton: currentSingleCTAButton } = currentTabItem.length && currentTabItem[0];
 
     return currentSingleCTAButton ? (
       <Row centered>

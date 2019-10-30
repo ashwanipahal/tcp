@@ -20,6 +20,7 @@ import {
 import { isCanada as isCASite } from '../../../utils';
 import CARTITEMTILE_CONSTANTS from '../../../components/features/CnC/CartItemTile/CartItemTile.constants';
 import { UPDATE_ITEM_IN_CART } from '../../config';
+import { setLocalStorage } from '../../../utils/localStorageManagement';
 
 export const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -109,6 +110,10 @@ export const getProductImgPath = (id, excludeExtension) => {
     500: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
     900: `${imagePath}/${id}${excludeExtension ? '' : '.jpg'}`,
   };
+};
+
+const setBrierleyOrderPointsTimeCache = () => {
+  setLocalStorage({ key: 'orderPointsTimeStamp', value: new Date().getTime() });
 };
 
 // NOTE: (DT-19681) LOYALTY/PLACECASH/OTHERS
@@ -614,14 +619,25 @@ tomorrowClosingTime
           // This code is misleading - itemPrice and itemDstPrice are not equal to list price/offer price
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
+
           listPrice: flatCurrencyToCents(item.itemPrice),
-          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
-          unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
-          salePrice: isCanada
+          salePrice: isGiftCard
+            ? flatCurrencyToCents(item.itemUnitPrice)
+            : isCanada
             ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
             : flatCurrencyToCents(item.productInfo.offerPrice),
+
+          // listPrice: flatCurrencyToCents(item.itemPrice),
+          // offerPrice: flatCurrencyToCents(item.itemDstPrice),
+          // wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
+          // salePrice: isCanada
+          //   ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
+          //   : flatCurrencyToCents(item.productInfo.offerPrice),
+
+          // listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
+          // unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
         },
         miscInfo: {
           clearanceItem: !isCASite()
@@ -720,7 +736,7 @@ export const getOrderDetailsData = () => {
     const orderDetailsResponse = res.body;
 
     return {
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
+      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, isCASite()),
     };
   });
 };
@@ -746,18 +762,18 @@ export const getProductInfoForTranslationData = query => {
 
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems,
+  excludeCartItems = true,
   recalcRewards,
-  isCanada,
   isCheckoutFlow,
   isRadialInvEnabled,
+  isLoggedIn,
 }) => {
   const payload = {
     webService: endpoints.fullDetails,
     header: {
       pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
       langId: -1,
-      source: '',
+      source: isLoggedIn ? 'login' : '',
       calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
       recalculate: !!recalcRewards,
     },
@@ -768,7 +784,9 @@ export const getCartData = ({
       throw new Error('res body is null');
       // TODO - Set API Helper to filter if error exists in response
     }
-
+    if (res.req && res.req.header && res.req.header.recalculate) {
+      setBrierleyOrderPointsTimeCache();
+    }
     const orderDetailsResponse =
       res.body.orderDetails.orderDetailsResponse || res.body.orderDetails;
     const coupons = isCheckoutFlow
@@ -781,7 +799,7 @@ export const getCartData = ({
       orderDetails: getCurrentOrderFormatter(
         orderDetailsResponse,
         excludeCartItems,
-        isCanada,
+        isCASite(),
         isRadialInvEnabled
       ),
     };

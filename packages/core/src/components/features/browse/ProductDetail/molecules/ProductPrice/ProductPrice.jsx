@@ -59,7 +59,7 @@ class ProductPrice extends React.Component {
     return badge2 ? (
       <BodyCopy
         className="badge"
-        color="red.500"
+        color="red.600"
         fontSize="fs14"
         fontWeight="semibold"
         fontFamily="secondary"
@@ -98,10 +98,10 @@ class ProductPrice extends React.Component {
         <div className={`${className} price-container`}>
           <BodyCopy
             className="price-item actual-price"
-            fontSize="fs22"
+            fontSize="fs16"
             fontFamily="secondary"
             fontWeight="black"
-            color="red.500"
+            color="red.600"
           >
             {currency}
             {offerPrice.toFixed(2)}
@@ -128,10 +128,10 @@ class ProductPrice extends React.Component {
       return (
         <BodyCopy
           className="price-item actual-price"
-          fontSize="fs22"
+          fontSize="fs16"
           fontFamily="secondary"
           fontWeight="black"
-          color="red.500"
+          color="red.600"
         >
           {currency}
           {offerPrice.toFixed(2)}

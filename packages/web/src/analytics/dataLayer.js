@@ -1,5 +1,5 @@
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
-import { generateBrowseDataLayer } from './dataLayers';
+import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -20,12 +20,11 @@ import { generateBrowseDataLayer } from './dataLayers';
  */
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
+  const homepageDataLayer = generateHomePageDataLayer(store);
   const siteType = 'global site';
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
-
-    // TODO: All pods to include dataElements here like browseDataLayer and make a global for common one.
-
+    ...homepageDataLayer,
     pageName: {
       get() {
         return `gl:${store.getState().pageData.pageName}`;
@@ -33,6 +32,12 @@ export default function create(store) {
     },
 
     pageshortName: {
+      get() {
+        return store.getState().pageData.pageName;
+      },
+    },
+
+    pageType: {
       get() {
         return store.getState().pageData.pageName;
       },
@@ -47,12 +52,6 @@ export default function create(store) {
     pageLocale: {
       get() {
         return `${store.getState().APIConfig.country}:${store.getState().APIConfig.language}`;
-      },
-    },
-
-    pageType: {
-      get() {
-        return store.getState().pageData.pageSection;
       },
     },
 
@@ -112,6 +111,24 @@ export default function create(store) {
           .getState()
           .User.get('personalData')
           .get('userId');
+      },
+    },
+
+    customerFirstName: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .getIn(['contactInfo', 'firstName']);
+      },
+    },
+
+    customerLastName: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .getIn(['contactInfo', 'lastName']);
       },
     },
 
