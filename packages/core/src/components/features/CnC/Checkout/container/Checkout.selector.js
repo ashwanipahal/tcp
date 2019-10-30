@@ -1032,4 +1032,5 @@ export default {
   getIsBillingVisited,
   getVenmoUserEmail,
   getVenmoError,
+  getPickupValues,
 };
