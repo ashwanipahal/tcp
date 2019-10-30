@@ -124,7 +124,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               width="17"
             />
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -278,7 +278,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -463,7 +463,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               width="17"
             />
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -615,7 +615,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
