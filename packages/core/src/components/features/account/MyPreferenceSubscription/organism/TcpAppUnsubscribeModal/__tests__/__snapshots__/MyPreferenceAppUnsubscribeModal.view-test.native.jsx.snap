@@ -40,7 +40,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     fontSize="fs14"
     margin={null}
     numberOfLines={null}
-    spacingStyles="margin-bottom-LRG margin-right-XXL margin-left-XXL"
+    spacingStyles="margin-bottom-XXL margin-right-XXL margin-left-XXL"
     text="lbl_prefrence_modal_clicking_submit_push_text"
     textAlign="center"
     textDecoration={null}
@@ -61,7 +61,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     iconSize="fs12"
     locator=""
     navigation={Object {}}
-    onPress={[MockFunction]}
+    onPress={null}
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}
@@ -70,7 +70,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
     type="submit"
     url=""
   />
-  <Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-LRG"
+  >
     <Styled(CustomButton)
       active={false}
       buttonVariation="fixed-width"

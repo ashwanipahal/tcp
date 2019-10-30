@@ -64,7 +64,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
     iconSize="fs12"
     locator=""
     navigation={Object {}}
-    onPress={[MockFunction]}
+    onPress={null}
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}
@@ -73,7 +73,9 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
     type="submit"
     url=""
   />
-  <Styled(View)>
+  <Styled(View)
+    spacingStyles="margin-top-LRG"
+  >
     <Styled(CustomButton)
       active={false}
       buttonVariation="fixed-width"

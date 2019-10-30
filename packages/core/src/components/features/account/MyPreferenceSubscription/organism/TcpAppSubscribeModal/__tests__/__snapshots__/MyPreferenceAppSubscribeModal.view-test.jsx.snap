@@ -16,167 +16,162 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
     link={null}
     textAlign="left"
   >
-    <form
-      className="test"
-      name="MyPreferenceFormModal"
-      noValidate={true}
+    <Styled(BodyCopy)
+      className="elem-mb-MED elem-mt-LRG"
+      color="text.primary"
+      component="p"
+      data-locator="my-preference-web-push_title"
+      fontFamily="secondary"
+      fontSize="fs22"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
     >
-      <Styled(BodyCopy)
-        className="elem-mb-MED elem-mt-LRG"
-        color="text.primary"
-        component="p"
-        data-locator="my-preference-web-push_title"
-        fontFamily="secondary"
-        fontSize="fs22"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="center"
-      >
-        lbl_preference_push_notification_heading
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mb-LRG"
-        color="text.primary"
-        component="div"
-        data-locator="my-preference-web-push_subtext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="center"
-      >
-        lbl_preference_push_notification_subtext
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mb-MED"
-        color="text.primary"
-        component="div"
-        data-locator="my-preference--web-push_download"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="center"
-      >
-        lbl_preference_push_notification_download
-      </Styled(BodyCopy)>
-      <Styled(Row)
-        className="elem-mb-LRG"
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 6,
-              "medium": 4,
-              "small": 3,
-            }
+      lbl_preference_push_notification_heading
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="elem-mb-LRG"
+      color="text.primary"
+      component="div"
+      data-locator="my-preference-web-push_subtext"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_preference_push_notification_subtext
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="elem-mb-MED"
+      color="text.primary"
+      component="div"
+      data-locator="my-preference--web-push_download"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_preference_push_notification_download
+    </Styled(BodyCopy)>
+    <Styled(Row)
+      className="elem-mb-LRG"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
           }
-        >
-          <Styled(Anchor)
-            className="elem-ml-SM"
-            data-locator="my-preference-modal_app_store"
-            href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
-          >
-            <Styled(Image)
-              class="elem-pl-XS"
-              src="/static/images/app-store-logo.png"
-            />
-          </Styled(Anchor)>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 6,
-              "medium": 4,
-              "small": 3,
-            }
-          }
-        >
-          <Styled(Anchor)
-            className="elem-ml-SM"
-            data-locator="my-preference-modal_google_play"
-            href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
-          >
-            <Styled(Image)
-              class="elem-pl-XS"
-              src="/static/images/google-play-badge.svg"
-            />
-          </Styled(Anchor)>
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(BodyCopy)
-        className="disclaimer-sub-text"
-        color="text.primary"
-        component="div"
-        data-locator="my-preference-web-push_note"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="center"
+        }
       >
-        lbl_preference_push_notification_note
-      </Styled(BodyCopy)>
-      <Styled(Row)
-        className="elem-mb-LRG"
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
+        <Styled(Anchor)
+          className="elem-ml-SM"
+          data-locator="my-preference-modal_app_store"
+          href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
         >
-          <Styled(Button)
-            buttonVariation="fixed-width"
-            className="submit-button"
-            dataLocator="subscribe-web-push_submit"
-            fill="BLUE"
-            fullWidth={true}
-            type="submit"
-          >
-            lbl_prefrence_modal_submit
-          </Styled(Button)>
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        className="elem-mb-LRG"
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
+          <Styled(Image)
+            class="elem-pl-XS"
+            src="/static/images/app-store-logo.png"
+          />
+        </Styled(Anchor)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
           }
+        }
+      >
+        <Styled(Anchor)
+          className="elem-ml-SM"
+          data-locator="my-preference-modal_google_play"
+          href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
         >
-          <Styled(Button)
-            buttonVariation="fixed-width"
-            className="cancel-button"
-            dataLocator="subscribe-web-push_cancel"
-            fill="WHITE"
-            fullWidth={true}
-            onClick={[MockFunction]}
-          >
-            lbl_prefrence_modal_cancel
-          </Styled(Button)>
-        </Styled(Col)>
-      </Styled(Row)>
-    </form>
+          <Styled(Image)
+            class="elem-pl-XS"
+            src="/static/images/google-play-badge.svg"
+          />
+        </Styled(Anchor)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(BodyCopy)
+      className="layout-pb-LRG"
+      color="text.primary"
+      component="div"
+      data-locator="my-preference-web-push_note"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      lbl_preference_push_notification_note
+    </Styled(BodyCopy)>
+    <Styled(Row)
+      className="elem-mb-LRG"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="submit-button"
+          dataLocator="subscribe-web-push_submit"
+          fill="BLUE"
+          fullWidth={true}
+          onClick={[MockFunction]}
+          type="submit"
+        >
+          lbl_prefrence_modal_submit
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="elem-mb-LRG"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Button)
+          buttonVariation="fixed-width"
+          className="cancel-button"
+          dataLocator="subscribe-web-push_cancel"
+          fill="WHITE"
+          fullWidth={true}
+          onClick={[MockFunction]}
+        >
+          lbl_prefrence_modal_cancel
+        </Styled(Button)>
+      </Styled(Col)>
+    </Styled(Row)>
   </Styled(BodyCopy)>
 </div>
 `;
