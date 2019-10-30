@@ -59,8 +59,8 @@ export class TrackOrderContainer extends React.PureComponent {
         this.hasNavigateToNestedRoute(navigation, 'AccountStack', 'Account');
       } else {
         routerPush(
-          `${internalEndpoints.orderPage.link}&orderId=${orderId}&email=${encryptedEmailAddress}`,
-          `${internalEndpoints.orderPage.path}/${orderId}/${encryptedEmailAddress}`
+          `${internalEndpoints.trackOrder.link}&orderId=${orderId}&email=${encryptedEmailAddress}`,
+          `${internalEndpoints.trackOrder.path}/${orderId}/${encryptedEmailAddress}`
         );
       }
     }

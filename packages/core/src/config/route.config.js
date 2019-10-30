@@ -161,7 +161,7 @@ const ROUTES_LIST = [
     resolver: '/StoreList',
   },
   {
-    noSlugPath: 'trackOrder',
+    noSlugPath: 'track-order',
     path: '/track-order/:orderId/:emailAddress',
     resolver: '/TrackOrder',
     params: ['orderId', 'emailAddress'],
