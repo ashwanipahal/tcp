@@ -116,4 +116,6 @@ export default {
   'sms-disabled': '/static/images/sms-disabled.svg',
   'push-enabled': '/static/images/push-enabled.svg',
   'sms-enabled': '/static/images/sms-enabled.svg',
+  'app-store': '/static/images/app-store-logo.png',
+  'google-play': '/static/images/google-play-badge.svg',
 };
