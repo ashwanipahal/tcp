@@ -6,6 +6,7 @@ const initialState = fromJS({
   loginModalMountedState: false,
   checkoutModalMountedState: false,
   loginErrorMessage: null,
+  componentType: 'login',
 });
 
 const LoginPageReducer = (state = initialState, action) => {
@@ -19,7 +20,12 @@ const LoginPageReducer = (state = initialState, action) => {
     case LOGINPAGE_CONSTANTS.LOGIN_MODAL_MOUNTED_STATE:
       return state.set('loginModalMountedState', action.payload.state);
     case LOGINPAGE_CONSTANTS.CHECKOUT_MODAL_MOUNTED_STATE:
-      return state.set('checkoutModalMountedState', action.payload.state);
+      return state
+        .set('checkoutModalMountedState', action.payload.state)
+        .set(
+          'componentType',
+          action.payload.state ? action.payload.componentType || 'login' : 'login'
+        );
     default:
       if (state instanceof Object) {
         return fromJS(state);

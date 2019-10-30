@@ -63,6 +63,7 @@ const LoyaltyBannerSection = props => {
     getCurrencySymbol,
     pageCategory,
     isProductDetailView,
+    openLoginModal,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -156,6 +157,7 @@ const LoyaltyBannerSection = props => {
               className={className}
               labels={labels}
               isPlcc={isPlcc}
+              openLoginModal={openLoginModal}
               isProductDetailView={isProductDetailView}
               isReviewPage={isReviewPage}
               isConfirmationPage={isConfirmationPage}
@@ -184,6 +186,7 @@ LoyaltyBannerSection.propTypes = {
   getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
   pageCategory: PropTypes.string,
+  openLoginModal: PropTypes.string,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -196,6 +199,7 @@ LoyaltyBannerSection.defaultProps = {
   earnedReward: 0,
   isPlcc: false,
   pageCategory: '',
+  openLoginModal: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',
