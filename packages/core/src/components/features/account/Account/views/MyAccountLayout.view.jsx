@@ -40,8 +40,8 @@ const MyAccountLayoutView = props => {
           </Col>
         </Row>
       )}
-      <Row>
-        {isUserLoggedIn && (
+      {isUserLoggedIn ? (
+        <Row>
           <Col colSize={{ large: 2, medium: 8, small: 6 }} className="is-visible-nav">
             <MyAccountLeftNav
               navData={navData}
@@ -49,11 +49,18 @@ const MyAccountLayoutView = props => {
               activeSubComponent={activeSubComponent}
             />
           </Col>
-        )}
-        <Col colSize={{ large: 10, medium: 8, small: 6 }}>
-          <MainContent router={router} labels={labels} />
-        </Col>
-      </Row>
+
+          <Col colSize={{ large: 10, medium: 8, small: 6 }}>
+            <MainContent router={router} labels={labels} />
+          </Col>
+        </Row>
+      ) : (
+        <Row>
+          <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+            <MainContent router={router} labels={labels} />
+          </Col>
+        </Row>
+      )}
     </div>
   );
 };
