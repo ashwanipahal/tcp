@@ -50,7 +50,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -67,7 +67,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -124,7 +124,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
@@ -141,7 +141,7 @@ exports[`GiftCardsVanilla should render gift card tile 1`] = `
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
@@ -202,7 +202,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -219,7 +219,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -276,7 +276,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
@@ -293,7 +293,7 @@ exports[`GiftCardsVanilla should render gift card tile with 0 order balance 1`] 
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
@@ -354,7 +354,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -371,7 +371,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -428,7 +428,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
@@ -445,7 +445,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance 1`
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
@@ -532,7 +532,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -549,7 +549,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
         }
         giftCardErrors={Object {}}
         handleRemoveGiftCard={[MockFunction]}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={true}
         labels={Object {}}
@@ -606,7 +606,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}
@@ -623,7 +623,7 @@ exports[`GiftCardsVanilla should render gift card tile with 100 order balance wi
           }
         }
         giftCardErrors={Object {}}
-        isExpressCheckout={false}
+        isExpressCheckout={true}
         isFromReview={false}
         isGiftCardApplied={false}
         labels={Object {}}

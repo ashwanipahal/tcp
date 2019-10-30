@@ -25,6 +25,7 @@ describe('GiftCardsVanilla', () => {
     giftCardList: new List(appliedGiftCardList),
     getAddGiftCardError: '',
     enableAddGiftCard: false,
+    isExpressCheckout: true,
   };
 
   it('should render gift card tile', () => {

@@ -78,6 +78,7 @@ describe('BillingSection', () => {
       labels: {
         ...labelsMock,
       },
+      isExpressCheckout: true,
     };
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();

@@ -96,6 +96,99 @@ exports[`BillingSection should render correctly without address details 1`] = `
         />
       </Styled(View)>
     </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        customStyle={
+          Object {
+            "height": 72,
+          }
+        }
+        dataLocator="cvvTxtBox"
+        id="cvvCode"
+        name="cvvCode"
+        type="text"
+      />
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={350}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <RichText
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source=""
+              thirdPartyCookiesEnabled={false}
+            />
+          }
+          toggleOnPress={true}
+          width={350}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            alt=""
+            height={15}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={15}
+          />
+        </ReactTooltip>
+      </Styled(View)>
+    </Styled(View)>
   </Styled(View)>
   <Connect(GiftCardsContainer)
     isFromReview={true}
