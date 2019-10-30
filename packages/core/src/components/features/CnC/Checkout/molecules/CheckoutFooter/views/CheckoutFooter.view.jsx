@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/CheckoutFooter.style';
+import PayPalButton from '../../../../common/organism/PayPalButton';
 import { Button } from '../../../../../../common/atoms';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 
@@ -21,9 +22,11 @@ class CheckoutFooter extends React.PureComponent {
       ariaLabelBackLink,
       ariaLabelNextButton,
       showVenmoSubmit, // Show Venmo Submit on billing page on selecting venmo payment method
+      showPayPalButton,
       continueWithText,
       onVenmoSubmit,
     } = this.props;
+    console.log('showPayPalButton ', showPayPalButton);
     return (
       <div className={className}>
         {footerBody && <div className="footer-body-container">{footerBody}</div>}
@@ -66,7 +69,16 @@ class CheckoutFooter extends React.PureComponent {
               </Button>
             )}
           </div>
-          {!showVenmoSubmit && (
+          {showPayPalButton && (
+            <div className="footer-paypal-button">
+              <PayPalButton
+                className="payPal-button"
+                containerId="billing-footer-page"
+                isBillingPage
+              />
+            </div>
+          )}
+          {!showVenmoSubmit && !showPayPalButton && (
             <Button
               disabled={disableDesktopOnlyNext || disableNext}
               aria-label={ariaLabelNextButton}
@@ -101,6 +113,7 @@ CheckoutFooter.propTypes = {
   hideBackLink: PropTypes.bool,
   footerBody: PropTypes.shape({}).isRequired,
   showVenmoSubmit: PropTypes.bool,
+  showPayPalButton: PropTypes.bool,
   disableDesktopOnlyNext: PropTypes.bool,
   continueWithText: PropTypes.string,
   onVenmoSubmit: PropTypes.func, // Venmo Submit for billing page, redirect to review page once already authorized or new authorization with the venmo app.
@@ -109,6 +122,7 @@ CheckoutFooter.propTypes = {
 CheckoutFooter.defaultProps = {
   hideBackLink: false,
   showVenmoSubmit: false,
+  showPayPalButton: false,
   disableDesktopOnlyNext: false,
   continueWithText: '',
   onVenmoSubmit: () => {},

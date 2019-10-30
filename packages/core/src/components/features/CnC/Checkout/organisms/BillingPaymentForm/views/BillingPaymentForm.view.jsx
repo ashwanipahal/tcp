@@ -35,6 +35,8 @@ import {
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import CardEditFrom from './CardEditForm.view';
+import PayPalButton from '../../../../common/organism/PayPalButton';
+
 import {
   onEditCardFocus,
   setFormToEditState,
@@ -388,6 +390,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
+    console.log('paymentMethodId', paymentMethodId, constants.PAYMENT_METHOD_PAY_PAL);
     return (
       <form
         name={constants.FORM_NAME}
@@ -418,8 +421,23 @@ export class BillingPaymentForm extends React.PureComponent {
                 cvvCodeRichText,
                 onFileCardKey,
               })}
-            {paymentMethodId === constants.PAYMENT_METHOD_PAYPAL && (
-              <div className="payment-paypal-container" />
+            {paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL && (
+              <div className="payment-paypal-container">
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="extrabold"
+                  dataLocator="completePurchaseLblÎ"
+                  className="paypal-complete-purchase"
+                >
+                  Complete Purchase with
+                </BodyCopy>
+                <PayPalButton
+                  className="billing-payPal-button"
+                  containerId="billing-page-paypal"
+                  isBillingPage
+                />
+              </div>
             )}
             {paymentMethodId === constants.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
               <VenmoPaymentButton
@@ -438,6 +456,7 @@ export class BillingPaymentForm extends React.PureComponent {
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
+          showPayPalButton={paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
         />
