@@ -47,7 +47,6 @@ export class DetailedCouponTile extends React.Component {
       lbl_common_couponTypeReward: PropTypes.string,
       lbl_common_couponTypeSaving: PropTypes.string,
     }),
-    isDisabled: PropTypes.bool,
     onApplyCouponToBagFromList: PropTypes.func,
     onRemove: PropTypes.func,
     onViewCouponDetails: PropTypes.func,
@@ -55,7 +54,6 @@ export class DetailedCouponTile extends React.Component {
   };
 
   static defaultProps = {
-    isDisabled: false,
     onApplyCouponToBagFromList: () => {},
     onRemove: () => {},
     onViewCouponDetails: () => {},
@@ -171,8 +169,7 @@ export class DetailedCouponTile extends React.Component {
   };
 
   render() {
-    const { coupon, labels, isDisabled } = this.props;
-    const isApplyButtonDisabled = isDisabled || !coupon.isStarted;
+    const { coupon, labels } = this.props;
     const isPlaceCash = coupon.redemptionType === COUPON_REDEMPTION_TYPE.PLACECASH;
     const addToBagCTALabel = this.getAddToBagCtaLabel(labels, coupon.isStarted, isPlaceCash);
     const colorPallete = createThemeColorPalette();
@@ -263,7 +260,7 @@ export class DetailedCouponTile extends React.Component {
             ) : (
               <CustomButton
                 text={addToBagCTALabel}
-                disabled={isApplyButtonDisabled}
+                disableButton={!coupon.isStarted}
                 fill="BLUE"
                 color={colorPallete.white}
                 onPress={() => {

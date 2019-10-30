@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly to match snapshot 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="account-info-section"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    id="accountDrawer"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    onClick={[Function]}
+    textAlign="left"
+  >
+    <div
+      className="account-info user-name"
+    >
+      Hi, vijayendrakumar...
+    </div>
+    <Styled(Image)
+      alt="user"
+      className="account-info carrot-down-icon"
+      height="6px"
+      src="/static/images/carrot-small-down.png"
+    />
+    <div>
+      <div
+        className="account-info user-points"
+      >
+        21 Points
+      </div>
+      <span
+        className="account-info user-rewards rightLink"
+      >
+        $5.51 Rewards
+      </span>
+    </div>
+    <Styled(Image)
+      alt="user"
+      className="usericon"
+      src="/static/images/user-icon.png"
+    />
+  </Styled(BodyCopy)>
+</Fragment>
+`;

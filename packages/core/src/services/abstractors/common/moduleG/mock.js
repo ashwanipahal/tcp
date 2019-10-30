@@ -1,7 +1,9 @@
 const dummyUrl = 'http://www.childrensplace.com';
 const cat1 = '47526';
 const cat2 = '47503>47544';
+const cat3 = '47501>47526';
 const footerlink = 'Shop All Matchables';
+const adTobag = 'add to bag';
 
 export default {
   moduleG: {
@@ -79,12 +81,12 @@ export default {
             text: 'GIRL',
           },
           category: {
-            cat_id: [cat2, '47501>47526'],
+            cat_id: [cat2, cat3],
           },
           singleCTAButton: {
             url: dummyUrl,
             text: footerlink,
-            title: 'SHOP ALL',
+            title: 'add to bag',
             target: '',
             external: 0,
             action: '',
@@ -92,7 +94,7 @@ export default {
           singleCTAButtonCart: {
             url: dummyUrl,
             text: footerlink,
-            title: 'SHOP ALL',
+            title: adTobag,
             target: '',
             external: 0,
             action: '',
@@ -103,12 +105,12 @@ export default {
             text: 'TODDLER GIRL',
           },
           category: {
-            cat_id: [cat1, cat2],
+            cat_id: [cat2, cat1],
           },
           singleCTAButton: {
             url: dummyUrl,
             text: footerlink,
-            title: 'SHOP ALL',
+            title: adTobag,
             target: '',
             external: 0,
             action: '',
@@ -116,7 +118,7 @@ export default {
           singleCTAButtonCart: {
             url: dummyUrl,
             text: footerlink,
-            title: 'SHOP ALL',
+            title: adTobag,
             target: '',
             external: 0,
             action: '',
@@ -127,12 +129,12 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: [cat2, cat1],
+            cat_id: [cat1, cat2],
           },
           singleCTAButton: {
             url: dummyUrl,
             text: footerlink,
-            title: 'SHOP ALL',
+            title: adTobag,
             target: '',
             external: 0,
             action: '',
@@ -140,7 +142,7 @@ export default {
           singleCTAButtonCart: {
             url: dummyUrl,
             text: footerlink,
-            title: 'SHOP ALL',
+            title: adTobag,
             target: '',
             external: 0,
             action: '',
@@ -151,12 +153,12 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: ['47501>47526', cat2],
+            cat_id: [cat3, cat3],
           },
           singleCTAButton: {
             url: dummyUrl,
             text: footerlink,
-            title: 'SHOP ALL',
+            title: adTobag,
             target: '',
             external: 0,
             action: '',
@@ -164,7 +166,7 @@ export default {
           singleCTAButtonCart: {
             url: '/us',
             text: footerlink,
-            title: 'SHOP ALL',
+            title: adTobag,
             target: '',
             external: 0,
             action: '',

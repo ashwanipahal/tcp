@@ -54,13 +54,12 @@ const styles = css`
     text-align: center;
     background: ${props => props.theme.colors.TEXT.DARKERGRAY};
     color: ${props => props.theme.colors.WHITE};
-    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     line-height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .couponCard__body {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
       ${props => props.theme.spacing.ELEM_SPACING.MED}
-      ${props => props.theme.spacing.ELEM_SPACING.XXS}
+      ${props => props.theme.spacing.ELEM_SPACING.XS}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .couponCard__row {
@@ -76,6 +75,7 @@ const styles = css`
   }
   .coupon__button_black {
     background-color: ${props => props.theme.colors.BLACK};
+    min-width: 100px;
     color: ${props => props.theme.colors.WHITE};
     font-size: ${props => props.theme.typography.fontSizes.fs10};
     ${props =>
@@ -93,6 +93,7 @@ const styles = css`
 
   .coupon__button_white {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+    min-width: 100px;
     ${props =>
       props.isCarouselView
         ? `padding-right: ${props.theme.spacing.ELEM_SPACING.MED}; padding-left: ${

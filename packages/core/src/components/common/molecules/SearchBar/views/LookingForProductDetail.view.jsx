@@ -30,7 +30,7 @@ class LookingForProductDetail extends React.PureComponent {
                   <BodyCopy component="li" key={item.id} className="productBox">
                     <Anchor
                       asPath={`${item.productUrl}`}
-                      to={`${item.productUrl}`}
+                      to={`/p?pid=${item.productUrl.split('/p/')[1]}`}
                       className="suggestion-label"
                     >
                       <Image

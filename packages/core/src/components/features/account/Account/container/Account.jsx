@@ -9,7 +9,6 @@ import utils from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
-import RouteTracker from '../../../../../../../web/src/components/common/atoms/RouteTracker';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -84,17 +83,15 @@ export class Account extends React.PureComponent {
     // _app.jsx itself.
     if (typeof labels === 'object' && isUserLoggedIn !== null) {
       return (
-        <>
-          <MyAccountLayout
-            mainContent={AccountComponentMapping[componentToLoad]}
-            active={activeComponent}
-            activeSubComponent={componentToLoad}
-            navData={navData}
-            router={router}
-            labels={labels}
-          />
-          {process.env.ANALYTICS && <RouteTracker />}
-        </>
+        <MyAccountLayout
+          mainContent={AccountComponentMapping[componentToLoad]}
+          active={activeComponent}
+          activeSubComponent={componentToLoad}
+          navData={navData}
+          router={router}
+          labels={labels}
+          isUserLoggedIn={isUserLoggedIn}
+        />
       );
     }
 
