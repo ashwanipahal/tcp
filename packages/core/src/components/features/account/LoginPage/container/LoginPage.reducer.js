@@ -6,7 +6,7 @@ const initialState = fromJS({
   loginModalMountedState: false,
   checkoutModalMountedState: false,
   loginErrorMessage: null,
-  componentType: 'login',
+  componentType: LOGINPAGE_CONSTANTS.PAGE_TYPE.LOGIN,
 });
 
 const LoginPageReducer = (state = initialState, action) => {
@@ -24,7 +24,9 @@ const LoginPageReducer = (state = initialState, action) => {
         .set('checkoutModalMountedState', action.payload.state)
         .set(
           'componentType',
-          action.payload.state ? action.payload.componentType || 'login' : 'login'
+          action.payload.state
+            ? action.payload.componentType || LOGINPAGE_CONSTANTS.PAGE_TYPE.LOGIN
+            : LOGINPAGE_CONSTANTS.PAGE_TYPE.LOGIN
         );
     default:
       if (state instanceof Object) {

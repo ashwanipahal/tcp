@@ -9,10 +9,6 @@ import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 
-// const concatSectionSymbol = (str, sectionSymbol) => {
-//   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
-// };
-
 const utilArrayHeader = (LoyaltyLabels, className) => {
   return [
     {
