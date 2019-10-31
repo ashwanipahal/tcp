@@ -164,16 +164,47 @@ describe('ButtonList component', () => {
       nextSubmitText: '',
       syncErrorsObj: {
         syncError: {
-          cvvCode: 'Enter correct code',
+          cvvCode: 'Correct code',
         },
       },
       dispatch: jest.fn(),
       change: jest.fn(),
+      isPayPalEnabled: false,
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
   });
+
+  it('renders with payPal enable', () => {
+    const props3 = {
+      className: '',
+      onFileCardKey: 82596,
+      isMobile: false,
+      cvvCodeRichText: null,
+      orderHasShipping,
+      isGuest: false,
+      handleSubmit: jest.fn(),
+      cardList: new List([]),
+      labels,
+      paymentMethodId: 'payPal',
+      backLinkPickup: '',
+      backLinkShipping: '',
+      nextSubmitText: '',
+      syncErrorsObj: {
+        syncError: {
+          cvvCode: 'Enter correct code',
+        },
+      },
+      dispatch: jest.fn(),
+      change: jest.fn(),
+      isPayPalEnabled: true,
+    };
+    const component = shallow(<BillingPaymentForm {...props3} />);
+    component.setState({ addNewCCState: true });
+    expect(component).toMatchSnapshot();
+  });
+
   it('renders correctly with method onAddNewCreditCardClick', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();

@@ -19,7 +19,6 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       clearPaypalSettings,
       isBillingPage,
     } = this.props;
-    console.log('paypalEnv', paypalEnv, isBillingPage);
 
     const { containerId, height } = data;
     const options = {
