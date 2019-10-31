@@ -7,6 +7,7 @@ import {
   getThresholdValue,
   cartOrderDetails,
   getLoyaltyBannerLabels,
+  confirmationDetails,
 } from './LoyaltyBanner.selectors';
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
@@ -73,9 +74,10 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 /* istanbul ignore next */
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state, ownProps) => ({
   labels: getLoyaltyBannerLabels(state),
-  orderDetails: cartOrderDetails(state),
+  orderDetails:
+    ownProps.pageCategory === 'confirmation' ? confirmationDetails(state) : cartOrderDetails(state),
   thresholdValue: getThresholdValue(state),
   isGuestCheck: isGuest(state),
   isPlcc: isPlccUser(state),
