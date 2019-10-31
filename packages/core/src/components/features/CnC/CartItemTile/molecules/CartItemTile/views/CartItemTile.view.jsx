@@ -338,7 +338,41 @@ class CartItemTile extends React.Component {
       : offerPrice;
   };
 
-  getItemDetails = (productDetail, labels, pageView) => {
+  renderEditLink = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) => {
+    const { labels, showOnReviewPage, isBagPageSflSection, isEditAllowed } = this.props;
+    return (
+      <>
+        {showOnReviewPage &&
+          !isBagPageSflSection &&
+          isEditAllowed &&
+          !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="div"
+              role="button"
+              tabIndex="0"
+              dataLocator={getLocator('cart_item_edit_link')}
+              className="padding-left-10 responsive-edit-css"
+              onClick={this.callEditMethod}
+              onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
+            >
+              {labels.edit}
+            </BodyCopy>
+          )}
+      </>
+    );
+  };
+
+  getItemDetails = (
+    productDetail,
+    labels,
+    pageView,
+    isBOSSOrder,
+    bossDisabled,
+    isBOPISOrder,
+    bopisDisabled
+  ) => {
     const { isEdit } = this.state;
     const { currencySymbol, currencyExchange } = this.props;
     let { offerPrice } = productDetail.itemInfo;
@@ -377,6 +411,8 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             )}
           {this.renderSflActionsLinks()}
+          {pageView === 'myBag' &&
+            this.renderEditLink(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)}
         </Col>
         {pageView === 'myBag' && (
           <BodyCopy
@@ -825,7 +861,6 @@ class CartItemTile extends React.Component {
       editableProductInfo,
       className,
       pageView,
-      isEditAllowed,
       isBagPageSflSection,
       showOnReviewPage,
       setShipToHome,
@@ -955,9 +990,9 @@ class CartItemTile extends React.Component {
                     className={
                       pageView !== 'myBag' ? this.getProductDetailClass() : 'product-detail-bag'
                     }
-                    colSize={{ small: 10, medium: 10, large: 10 }}
+                    colSize={{ small: 12, medium: 12, large: 12 }}
                   >
-                    <div>
+                    <div className="product-detail-section">
                       <div className="color-size-fit-label">
                         <BodyCopy
                           fontFamily="secondary"
@@ -990,35 +1025,11 @@ class CartItemTile extends React.Component {
                           |
                         </BodyCopy>
                       )}
+                      {this.renderReviewPageSection()}
                     </div>
-                    {this.renderReviewPageSection()}
+                    {pageView !== 'myBag' &&
+                      this.renderEditLink(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)}
                   </Col>
-                  {showOnReviewPage && (
-                    <Col colSize={{ small: 2, medium: 2, large: 2 }}>
-                      {!isBagPageSflSection &&
-                        isEditAllowed &&
-                        !hideEditBossBopis(
-                          isBOSSOrder,
-                          bossDisabled,
-                          isBOPISOrder,
-                          bopisDisabled
-                        ) && (
-                          <BodyCopy
-                            fontFamily="secondary"
-                            fontSize="fs12"
-                            component="div"
-                            role="button"
-                            tabIndex="0"
-                            dataLocator={getLocator('cart_item_edit_link')}
-                            className="padding-left-10 responsive-edit-css"
-                            onClick={this.callEditMethod}
-                            onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
-                          >
-                            {labels.edit}
-                          </BodyCopy>
-                        )}
-                    </Col>
-                  )}
                 </Row>
               </React.Fragment>
             ) : (
@@ -1035,7 +1046,16 @@ class CartItemTile extends React.Component {
               {this.getProductPriceList(productDetail, pageView, currencyExchange)}
             </Row>
             {this.getProductPointsList(productDetail, isBagPageSflSection, showOnReviewPage)}
-            {showOnReviewPage && this.getItemDetails(productDetail, labels, pageView)}
+            {showOnReviewPage &&
+              this.getItemDetails(
+                productDetail,
+                labels,
+                pageView,
+                isBOSSOrder,
+                bossDisabled,
+                isBOPISOrder,
+                bopisDisabled
+              )}
           </Col>
           {showOnReviewPage && this.renderHeartIcon()}
         </Row>
