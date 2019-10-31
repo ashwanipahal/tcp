@@ -91,6 +91,7 @@ class NativeDropDown extends React.PureComponent {
       androidPickerStyle,
       buttonVariation,
       disabled,
+      quantityFieldForQuickView,
     } = this.props;
     const itemList = data.map(item => {
       const label = (item.displayName && item.displayName.toString()) || item.displayName;
@@ -128,6 +129,7 @@ class NativeDropDown extends React.PureComponent {
           bottomBorderOnly={bottomBorderOnly}
           customTextStyle={iOSPickerButtonStyle}
           disabled={disabled}
+          quantityFieldForQuickView={quantityFieldForQuickView}
         />
         <Modal visible={showPicker} transparent animationType="slide">
           <SafeAreaViewStyle>
@@ -172,6 +174,7 @@ NativeDropDown.propTypes = {
   androidPickerStyle: ViewPropTypes.style,
   buttonVariation: PropTypes.string,
   disabled: PropTypes.bool,
+  quantityFieldForQuickView: PropTypes.bool,
 };
 
 NativeDropDown.defaultProps = {
@@ -183,6 +186,7 @@ NativeDropDown.defaultProps = {
   androidPickerStyle: null,
   buttonVariation: 'mobileApp-filter',
   disabled: false,
+  quantityFieldForQuickView: false,
 };
 
 export default NativeDropDown;
