@@ -26,6 +26,7 @@ const renderItem = ({
   currentState,
   labels,
   navigation,
+  isLoggedIn,
 }) => {
   return (
     <OutfitProduct
@@ -34,11 +35,10 @@ const renderItem = ({
       productIndexText={`Product ${index + 1} of ${productsCount}`}
       labels={labels}
       navigation={navigation}
+      addToFavorites={addToFavorites}
+      isLoggedIn={isLoggedIn}
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
-      }}
-      handleAddToFavorites={() => {
-        addToFavorites({ colorProductId: item.generalProductId });
       }}
     />
   );
@@ -57,6 +57,7 @@ renderItem.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }),
+  isLoggedIn: PropTypes.bool,
 };
 
 renderItem.defaultProps = {
@@ -67,6 +68,7 @@ renderItem.defaultProps = {
   currentState: null,
   labels: {},
   navigation: {},
+  isLoggedIn: false,
 };
 
 const OutfitDetailsView = props => {
@@ -81,6 +83,7 @@ const OutfitDetailsView = props => {
     labels,
     isPickupModalOpen,
     navigation,
+    isLoggedIn,
   } = props;
   return (
     <ScrollViewContainer>
@@ -101,6 +104,7 @@ const OutfitDetailsView = props => {
             currentState,
             labels,
             navigation,
+            isLoggedIn,
           })
         }
       />
@@ -122,6 +126,7 @@ OutfitDetailsView.propTypes = {
   labels: PropTypes.shape({}),
   isPickupModalOpen: PropTypes.bool,
   navigation: PropTypes.shape({}),
+  isLoggedIn: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -132,6 +137,7 @@ OutfitDetailsView.defaultProps = {
   labels: {},
   isPickupModalOpen: false,
   navigation: {},
+  isLoggedIn: false,
 };
 
 export default OutfitDetailsView;
