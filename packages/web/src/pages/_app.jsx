@@ -95,12 +95,15 @@ class TCPWebApp extends App {
 
     try {
       if (isErrorReportingBrowserActive) {
+        // eslint-disable-next-line global-require
+        const rg4js = require('raygun4js');
         initErrorReporter({
           isServer: false,
           envId,
           raygunApiKey,
           channelId,
           isDevelopment: isDevelopment(),
+          rg4js,
         });
       }
     } catch (e) {
