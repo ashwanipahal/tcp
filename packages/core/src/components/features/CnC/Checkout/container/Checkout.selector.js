@@ -333,6 +333,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_cardEditSave',
       'lbl_billing_cvvCode',
       'lbl_billing_continueWith',
+      'lbl_billing_continueWithPayPal',
       'lbl_billing_cardEditUnSavedError',
       'lbl_billing_addCC',
     ];
@@ -367,6 +368,7 @@ const getBillingLabels = createSelector(
       lbl_billing_cardEditCancel: cancelButtonText,
       lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
+      lbl_billing_continueWithPayPal: continueWithPayPal = 'Complete Purchase with',
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
       lbl_billing_addCC: addCreditCard,
     } = labels;
@@ -399,6 +401,7 @@ const getBillingLabels = createSelector(
       select,
       cvvCode,
       continueWith,
+      continueWithPayPal,
       addCreditCard,
     };
   }

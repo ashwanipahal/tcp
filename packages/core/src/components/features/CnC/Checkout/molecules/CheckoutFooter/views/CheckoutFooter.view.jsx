@@ -26,7 +26,6 @@ class CheckoutFooter extends React.PureComponent {
       continueWithText,
       onVenmoSubmit,
     } = this.props;
-    console.log('showPayPalButton ', showPayPalButton);
     return (
       <div className={className}>
         {footerBody && <div className="footer-body-container">{footerBody}</div>}

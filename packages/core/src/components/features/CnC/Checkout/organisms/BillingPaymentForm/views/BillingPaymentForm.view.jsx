@@ -431,7 +431,7 @@ export class BillingPaymentForm extends React.PureComponent {
                   dataLocator="completePurchaseLblÎ"
                   className="paypal-complete-purchase"
                 >
-                  Complete Purchase with
+                  {labels.continueWithPayPal}
                 </BodyCopy>
                 <PayPalButton
                   className="billing-payPal-button"
