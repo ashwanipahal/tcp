@@ -242,7 +242,7 @@ class ModuleG extends React.PureComponent {
     const productTabsCompletionInfo = Object.assign({}, productTabList);
     // eslint-disable-next-line
     if (productTabsCompletionInfo && productTabsCompletionInfo.hasOwnProperty('completed')) {
-      currentCatId.map(id => {
+      currentCatId.forEach(id => {
         // eslint-disable-next-line
         if (productTabsCompletionInfo.completed.hasOwnProperty(id)) {
           showPlusButton = true;
