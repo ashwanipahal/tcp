@@ -45,14 +45,16 @@ const OPTIMIZELY_DECISION_LABEL = 'optimizely_decision';
 
 const OPTIMIZELY_HEADER_PREFIX = 'x-flag-';
 
-const PREVIEW_HEADER_KEY = 'x-akamai-staging';
+const PREVIEW_RES_HEADER_KEY = 'x-akamai-staging';
+const PREVIEW_REQ_HEADER_KEY = 'is_preview';
 
 export default {
   brand,
   defaultDeviceType,
   OPTIMIZELY_DECISION_LABEL,
   OPTIMIZELY_HEADER_PREFIX,
-  PREVIEW_HEADER_KEY,
+  PREVIEW_RES_HEADER_KEY,
+  PREVIEW_REQ_HEADER_KEY,
   sites,
   keyboard,
 };
