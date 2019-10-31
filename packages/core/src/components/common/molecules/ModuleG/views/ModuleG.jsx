@@ -249,7 +249,6 @@ class ModuleG extends React.PureComponent {
         } else {
           showPlusButton = false;
         }
-        return showPlusButton;
       });
     }
 
