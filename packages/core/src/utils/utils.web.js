@@ -314,7 +314,10 @@ export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage,
     hostURL = `${protocol}//${newLanguage}.`;
   }
 
-  /* By default language will be english. Hence if language is english then don't append it to the domain  */
+  /*
+   As per production implementation, if the country and language both get changed at the same time, the language will not append in the URL.
+   By default, the English language will entertain.
+  */
   if (newCountry !== oldCountry || newLanguage === 'en') {
     hostURL = `${protocol}//`;
   }
