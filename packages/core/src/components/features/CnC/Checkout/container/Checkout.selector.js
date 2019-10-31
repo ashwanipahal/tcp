@@ -7,7 +7,6 @@ import {
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
-import { getLocalStorage } from '@tcp/core/src/utils/localStorageManagement';
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
@@ -679,8 +678,6 @@ const getSmsNumberForBillingOrderUpdates = state =>
 
 const getVenmoData = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
-  // const venmoDataString = getLocalStorage(venmoConstants.VENMO_STORAGE_KEY);
-  // return venmoDataString ? JSON.parse(venmoDataString) : {};
 };
 
 const getVenmoClientTokenData = state =>
@@ -688,20 +685,14 @@ const getVenmoClientTokenData = state =>
 
 const isVenmoPaymentInProgress = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
-  // const venmoProgressString = getLocalStorage(venmoConstants.VENMO_INPROGRESS_KEY);
-  // return venmoProgressString ? venmoProgressString === 'true' : false;
 };
 
 const isVenmoPickupBannerDisplayed = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPickupMessageDisplayed']);
-  // const venmoPickupBanner = getLocalStorage(venmoConstants.VENMO_PICKUP_BANNER);
-  // return venmoPickupBanner ? venmoPickupBanner === 'true' : false;
 };
 
 const isVenmoShippingBannerDisplayed = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoShippingMessageDisplayed']);
-  // const venmoShippingBanner = getLocalStorage(venmoConstants.VENMO_SHIPPING_BANNER);
-  // return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
 };
 
 const isVenmoPaymentSaveSelected = state =>
