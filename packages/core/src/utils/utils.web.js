@@ -306,22 +306,24 @@ export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   }
 };
 
-export const languageRedirect = (newLanguage, oldLanguage) => {
-  if (newLanguage && newLanguage !== oldLanguage) {
-    const { protocol, host, pathname } = window.location;
-    const hostWithoutLanguage = host.replace(`${oldLanguage}.`, '');
-    let redirect = false;
-    if (
-      (newLanguage === 'fr' && host.indexOf('fr.') === -1) ||
-      (newLanguage === 'es' && host.indexOf('es.') === -1)
-    ) {
-      redirect = true;
-    }
+export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage, oldLanguage) => {
+  const { protocol, host } = window.location;
+  const baseDomain = host.replace(`${oldLanguage}.`, '');
+  let hostURL = '';
+  if (newLanguage !== oldLanguage && newCountry === oldCountry) {
+    hostURL = `${protocol}//${newLanguage}.`;
+  }
 
-    if (redirect) {
-      const href = `${protocol}//${newLanguage}.${hostWithoutLanguage}${pathname}`;
-      window.location = href;
-    }
+  /* By default language will be english. Hence if language is english then don't append it to the domain  */
+  if (newCountry !== oldCountry || newLanguage === 'en') {
+    hostURL = `${protocol}//`;
+  }
+
+  if (hostURL && !(newLanguage === oldLanguage && newCountry === oldCountry)) {
+    window.location = `${hostURL}${baseDomain}${getAsPathWithSlug(
+      ROUTE_PATH.home,
+      newSiteId || getSiteId()
+    )}`;
   }
 };
 
