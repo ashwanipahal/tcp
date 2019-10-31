@@ -135,27 +135,6 @@ class PickUpFormPart extends React.Component {
     onPickupSubmit(params);
   };
 
-  updatePickupForm() {
-    const { pickupInitialValues, dispatch } = this.props;
-    const { pickUpContact } = this.state;
-    if (
-      pickupInitialValues &&
-      pickupInitialValues.pickUpContact &&
-      (pickupInitialValues.pickUpContact.firstName !== pickUpContact.firstName ||
-        pickupInitialValues.pickUpContact.lastName !== pickUpContact.lastName ||
-        pickupInitialValues.pickUpContact.phoneNumber !== pickUpContact.phoneNumber)
-    ) {
-      const pickUpContactUpdate = {
-        firstName: pickupInitialValues.pickUpContact.firstName,
-        lastName: pickupInitialValues.pickUpContact.lastName,
-        phoneNumber: pickupInitialValues.pickUpContact.phoneNumber,
-        emailAddress: pickupInitialValues.pickUpContact.emailAddress,
-      };
-      dispatch(initialize('checkoutPickup', pickupInitialValues));
-      this.setState({ pickUpContact: pickUpContactUpdate });
-    }
-  }
-
   /**
    * This method is to return the label text based on venmo or normal checkout
    */
@@ -195,6 +174,27 @@ class PickUpFormPart extends React.Component {
         (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && !isVenmoShippingDisplayed))
     );
   };
+
+  updatePickupForm() {
+    const { pickupInitialValues, dispatch } = this.props;
+    const { pickUpContact } = this.state;
+    if (
+      pickupInitialValues &&
+      pickupInitialValues.pickUpContact &&
+      (pickupInitialValues.pickUpContact.firstName !== pickUpContact.firstName ||
+        pickupInitialValues.pickUpContact.lastName !== pickUpContact.lastName ||
+        pickupInitialValues.pickUpContact.phoneNumber !== pickUpContact.phoneNumber)
+    ) {
+      const pickUpContactUpdate = {
+        firstName: pickupInitialValues.pickUpContact.firstName,
+        lastName: pickupInitialValues.pickUpContact.lastName,
+        phoneNumber: pickupInitialValues.pickUpContact.phoneNumber,
+        emailAddress: pickupInitialValues.pickUpContact.emailAddress,
+      };
+      dispatch(initialize('checkoutPickup', pickupInitialValues));
+      this.setState({ pickUpContact: pickUpContactUpdate });
+    }
+  }
 
   render() {
     const {
