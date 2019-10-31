@@ -33,11 +33,6 @@ export class AddedToBagContainer extends React.Component<Props> {
     closeModal();
   };
 
-  closeModal(event) {
-    if (event) event.preventDefault();
-    this.handleCloseModal();
-  }
-
   hideHeaderWhilePaypalView = hide => {
     if (hide) {
       this.props.navigation.setParams({ headerMode: true });
@@ -46,6 +41,10 @@ export class AddedToBagContainer extends React.Component<Props> {
     }
   };
 
+  closeModal(event) {
+    if (event) event.preventDefault();
+    this.handleCloseModal();
+  }
   render() {
     const {
       addedToBagData,

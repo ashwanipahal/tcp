@@ -99,6 +99,7 @@ const AddedToBag = ({
 AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  hideHeader:PropTypes.bool,
 };
 
 export default withStyles(AddedToBag, styles);

@@ -9,6 +9,7 @@ import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);

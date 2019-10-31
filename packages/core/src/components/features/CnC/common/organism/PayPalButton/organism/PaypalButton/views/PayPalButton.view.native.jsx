@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { View, WebView, Platform } from 'react-native';
-import CheckoutSelector from '../../../../../../Checkout/container/Checkout.selector';
 
 const PayPalButton = props => {
   const {
@@ -92,6 +91,8 @@ PayPalButton.propTypes = {
   clearPaypalSettings: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   paypalEnv: PropTypes.string.isRequired,
+  setVenmoState: PropTypes.bool,
+  closeModal:PropTypes.bool,
 };
 
 export default PayPalButton;

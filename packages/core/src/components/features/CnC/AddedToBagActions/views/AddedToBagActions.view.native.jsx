@@ -4,8 +4,6 @@ import { View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
-  ButtonWrapper,
-  ActionsWrapper,
   ViewBagButton,
   CheckoutButton,
   PaymentsButtonWrapper,
@@ -16,6 +14,7 @@ import CheckoutModals from '../../common/organism/CheckoutModals';
 import VenmoPaymentButton from '../../../../common/atoms/VenmoPaymentButton';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+
   constructor(props) {
     super(props);
     this.changeVenmoState = this.changeVenmoState.bind(this);
@@ -25,6 +24,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       venmoEnable: true,
     };
   }
+
   getVenmoPaymentButton() {
     const { isInternationalShipping, handleCartCheckout, isEditingItem } = this.props;
     if (!isInternationalShipping) {
@@ -40,14 +40,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return null;
   }
 
-  changeVenmoState = isVenmoEnable => {
-    this.setState({ venmoEnable: isVenmoEnable });
-    if (isVenmoEnable) {
-      this.props.hideHeader(false);
-    } else {
-      this.props.hideHeader(true);
-    }
-  };
+
 
   closeModal = close => {
     if (close) {
@@ -70,10 +63,17 @@ class AddedToBagActions extends React.PureComponent<Props> {
         flexDirection: 'row',
         marginTop: 20,
       };
-    } else {
-      return { position: 'relative' };
     }
   }
+
+  changeVenmoState = isVenmoEnable => {
+    this.setState({ venmoEnable: isVenmoEnable });
+    if (isVenmoEnable) {
+      this.props.hideHeader(false);
+    } else {
+      this.props.hideHeader(true);
+    }
+  };
 
   render() {
     const {
@@ -86,8 +86,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isNoNEmptyBag,
       fromAddedToBagModal,
       getPayPalSettings,
-      hideHeader,
-      isPayPalWebViewEnable,
     } = this.props;
 
     return (

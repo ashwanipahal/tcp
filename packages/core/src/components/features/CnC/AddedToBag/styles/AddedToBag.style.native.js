@@ -37,17 +37,17 @@ const applyPositionClassStyleAddedToBagWrapper = props => {
   }
   return 'position:relative';
 };
-const applyPositionClassStyleWrapper = props => {
-  if (props.isPayPalWebViewEnable === true) {
-    return `
-    top: 0;
-    position:absolute;
-    height:100%;
-    width:100%;
-    `;
-  }
-  return 'position:relative';
-};
+// const applyPositionClassStyleWrapper = props => {
+//   if (props.isPayPalWebViewEnable === true) {
+//     return `
+//     top: 0;
+//     position:absolute;
+//     height:100%;
+//     width:100%;
+//     `;
+//   }
+//   return 'position:relative';
+// };
 export const StyledWrapper = styled.View`
   height: 100%;
   background-color: ${props => props.theme.colors.WHITE};

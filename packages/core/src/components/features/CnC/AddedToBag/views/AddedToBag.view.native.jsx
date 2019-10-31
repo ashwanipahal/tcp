@@ -26,9 +26,9 @@ const closeIcon = require('../../../../../assets/close.png');
 const getContainerStyle = navigation => {
   if (!navigation.getParam('headerMode', false)) {
     return { flex: 1, paddingLeft: 25, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
-  } else {
-    return { flex: 1, paddingLeft: 0, paddingRight: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
   }
+    return { flex: 1, paddingLeft: 0, paddingRight: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
+
 };
 
 const getCloseIcon = (onRequestClose, labels) => {
@@ -60,9 +60,9 @@ const getRowWrapper = (labels, onRequestClose, navigation) => {
         {getCloseIcon(onRequestClose, labels)}
       </RowWrapper>
     );
-  } else {
-    return <RowWrapper />;
   }
+    return <RowWrapper />;
+
 };
 
 const AddedToBag = ({
@@ -73,7 +73,6 @@ const AddedToBag = ({
   quantity,
   handleContinueShopping,
   navigation,
-  isPayPalWebViewEnable,
   hideHeader,
 }) => {
   return (
