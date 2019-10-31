@@ -107,8 +107,8 @@ export default css`
       content: '';
       background: url(${checkouttick});
       background-color: ${props => props.theme.colors.WHITE};
-      height: 26px;
-      width: 26px;
+      height: 25px;
+      width: 25px;
       position: inherit;
       display: block;
       z-index: 1;
