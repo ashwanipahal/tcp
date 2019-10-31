@@ -95,6 +95,7 @@ const renderRecommendationView = (props, variation) => {
           fontSize="fs20"
           fontWeight="semibold"
           textAlign="center"
+          color="gray.900"
         />
         <CarouselContainer>
           <Carousel
