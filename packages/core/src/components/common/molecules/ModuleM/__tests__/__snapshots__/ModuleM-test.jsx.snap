@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleM component ModuleM component renders correctly without props 1`] = `
+<Styled(Grid)
+  className=" moduleM"
+>
+  <Styled(Row)
+    className="topview"
+    fullBleed={
+      Object {
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="promo-header-wrapper"
+      >
+        <Styled(LinkText)
+          className="promo-header"
+          component="div"
+          headerText={
+            Array [
+              Object {
+                "__typename": "HeaderText",
+                "icon": Object {
+                  "__typename": "Icon",
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "__typename": "Link",
+                  "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "target": "_blank",
+                  "title": "ALL CLEARANCE",
+                  "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                },
+                "textItems": Array [
+                  Object {
+                    "__typename": "StyledText",
+                    "style": "medium_text_black",
+                    "text": "YOUR UNIFORM PLACE",
+                  },
+                ],
+              },
+              Object {
+                "__typename": "HeaderText",
+                "icon": Object {
+                  "__typename": "Icon",
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "__typename": "Link",
+                  "asPath": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "target": "_blank",
+                  "title": "Give Their School Outfits A Head-To-Toe Refresh",
+                  "to": "/search?sq=https://www.childrensplace.com/usall-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                  "url": "https://www.childrensplace.com/us/search/all-clearance?icid=hp_s15_buttonnlivetext_searchall_070819_clearance",
+                },
+                "textItems": Array [
+                  Object {
+                    "__typename": "StyledText",
+                    "style": "medium_text_subpromo",
+                    "text": "Give Their School Outfits A Head-To-Toe Refresh",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <Styled(PromoBanner)
+        className="promoBanner"
+        promoBanner={
+          Array [
+            Object {
+              "__typename": "PromoBanner",
+              "link": Object {
+                "__typename": "Link",
+                "asPath": "/c/kids-holiday-dress-up-all",
+                "title": "",
+                "to": "/c?cid=kids-holiday-dress-up-all",
+                "url": "/c/kids-holiday-dress-up-all",
+              },
+              "textItems": Array [
+                Object {
+                  "__typename": "StyledText",
+                  "style": "medium_text_semibold",
+                  "text": "ALL UNIFORMS",
+                },
+                Object {
+                  "__typename": "StyledText",
+                  "style": "fixed_medium_text_black",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="product-tab-list"
+      >
+        <Connect(ProductTabListContainer)
+          onProductTabChange={[Function]}
+          tabItems={
+            Array [
+              Object {
+                "__typename": "DivTabs",
+                "category": Object {
+                  "__typename": "CatID",
+                  "cat_id": "47511",
+                },
+                "singleCTAButton": Object {
+                  "__typename": "Button",
+                  "target": "",
+                  "text": "GIRL",
+                  "title": "",
+                  "url": "/",
+                },
+                "text": Object {
+                  "__typename": "Text",
+                  "text": "GIRL",
+                },
+              },
+              Object {
+                "__typename": "DivTabs",
+                "category": Object {
+                  "__typename": "CatID",
+                  "cat_id": "47512",
+                },
+                "singleCTAButton": Object {
+                  "__typename": "Button",
+                  "target": "",
+                  "text": "TODDLER GIRL",
+                  "title": "",
+                  "url": "/",
+                },
+                "text": Object {
+                  "__typename": "Text",
+                  "text": "TODDLER GIRL",
+                },
+              },
+              Object {
+                "__typename": "DivTabs",
+                "category": Object {
+                  "__typename": "CatID",
+                  "cat_id": "47513",
+                },
+                "singleCTAButton": Object {
+                  "__typename": "Button",
+                  "target": "",
+                  "text": "BOY",
+                  "title": "",
+                  "url": "/",
+                },
+                "text": Object {
+                  "__typename": "Text",
+                  "text": "BOY",
+                },
+              },
+              Object {
+                "__typename": "DivTabs",
+                "category": Object {
+                  "__typename": "CatID",
+                  "cat_id": "47514",
+                },
+                "singleCTAButton": Object {
+                  "__typename": "Button",
+                  "target": "",
+                  "text": "TODDLER BOY",
+                  "title": "",
+                  "url": "/",
+                },
+                "text": Object {
+                  "__typename": "Text",
+                  "text": "TODDLER BOY",
+                },
+              },
+            ]
+          }
+        />
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Row)
+        className="image-items-container"
+      >
+        <Styled(Styled(Col))
+          className="moduleM__shopAllBtnWrapper"
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
+            }
+          }
+          offsetRight={null}
+        >
+          <Styled(Anchor)
+            asPath="/c/baby-clothes"
+            className="moduleM__shopAllBtn"
+            dataLocator="undefined"
+            to="/c/baby-clothes"
+          >
+            SHOP ALL
+          </Styled(Anchor)>
+        </Styled(Styled(Col))>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(Grid)>
+`;

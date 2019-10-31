@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
+import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
@@ -34,6 +35,7 @@ const HomePageView = dynamic({
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,
+      <ModuleM />,
       <Recommendations variations="moduleO,moduleP" />,
       <ModuleG {...mockG.moduleG.composites} />,
     ];
