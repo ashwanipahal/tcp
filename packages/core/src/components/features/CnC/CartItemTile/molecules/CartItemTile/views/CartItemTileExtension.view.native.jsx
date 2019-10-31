@@ -35,6 +35,14 @@ const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const heart = require('../../../../../../../assets/heart.png');
 
+/**
+ *
+ * @method goToPdpPage
+ * @description navigate to pdp from bag
+ * @param {*} title - header
+ * @param {*} productDetail - details of product for pdp
+ * @param {*} navigation - navigation
+ */
 const goToPdpPage = (title, productDetail, navigation) => {
   const {
     productInfo: { pdpUrl, productPartNumber },
