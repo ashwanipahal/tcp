@@ -134,6 +134,7 @@ class QuickViewModal extends React.Component {
       quickViewLabels,
       fromBagPage,
     } = this.props;
+
     const [{ product }] = productInfo;
 
     return (

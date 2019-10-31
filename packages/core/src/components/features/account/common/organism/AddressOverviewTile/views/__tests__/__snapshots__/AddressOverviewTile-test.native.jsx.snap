@@ -160,6 +160,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       text="View Address Book"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -325,6 +326,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       text="lbl_overview_addressBookCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
