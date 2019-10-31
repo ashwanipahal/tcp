@@ -10,6 +10,7 @@ import NativeDropDown from './NativeDropDown';
 import Skeleton from './Skeleton';
 import CustomIcon from './Icon';
 import Spinner from './Spinner';
+import PLPSkeleton from './PLPSkeleton';
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   Skeleton,
   CustomIcon,
   Spinner,
+  PLPSkeleton,
 };

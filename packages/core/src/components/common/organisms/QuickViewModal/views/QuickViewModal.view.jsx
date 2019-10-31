@@ -119,6 +119,8 @@ class QuickViewModal extends React.Component {
             isMultiItemQVModal={isMultiItemQVModal}
             formRef={formRef}
             quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+            quickViewAddToBagActionPadding
+            marginTopNone
             {...otherProps}
           />
         );

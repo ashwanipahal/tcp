@@ -101,6 +101,7 @@ exports[`PaymentTile component should render correctly 1`] = `
       text="lbl_overview_view_payments"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
