@@ -27,7 +27,7 @@ export const LoyaltyBannerContainer = ({
   const {
     estimatedRewards,
     subTotal,
-    cartTotalAfterPLCCDiscount,
+    subTotalWithDiscounts,
     earnedReward,
     pointsToNextReward,
   } = orderDetails;
@@ -36,7 +36,7 @@ export const LoyaltyBannerContainer = ({
       labels={labels}
       estimatedRewardsVal={estimatedRewards}
       currentSubtotal={subTotal}
-      estimatedSubtotal={cartTotalAfterPLCCDiscount}
+      estimatedSubtotal={subTotalWithDiscounts}
       thresholdValue={thresholdValue}
       isGuest={isGuestCheck}
       earnedReward={earnedReward}

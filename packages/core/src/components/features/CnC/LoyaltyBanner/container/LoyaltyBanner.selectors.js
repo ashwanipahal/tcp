@@ -11,13 +11,13 @@ const cartOrderDetails = createSelector(
   cartOrderDetailsObj => {
     const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
     const subTotal = cartOrderDetailsObj.get('subTotal');
-    const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
+    const subTotalWithDiscounts = cartOrderDetailsObj.get('subTotalWithDiscounts');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
     const pointsToNextReward = cartOrderDetailsObj.get('pointsToNextReward');
     return {
       estimatedRewards,
       subTotal,
-      cartTotalAfterPLCCDiscount,
+      subTotalWithDiscounts,
       earnedReward,
       pointsToNextReward,
     };
@@ -26,17 +26,11 @@ const cartOrderDetails = createSelector(
 
 const confirmationDetails = createSelector(
   ConfirmationSelectors.getConfirmationSummary,
-  ({
-    estimatedRewards,
-    subTotal,
-    cartTotalAfterPLCCDiscount,
-    earnedReward,
-    pointsToNextReward,
-  }) => {
+  ({ estimatedRewards, subTotal, subTotalWithDiscounts, earnedReward, pointsToNextReward }) => {
     return {
       estimatedRewards,
       subTotal,
-      cartTotalAfterPLCCDiscount,
+      subTotalWithDiscounts,
       earnedReward,
       pointsToNextReward,
     };
