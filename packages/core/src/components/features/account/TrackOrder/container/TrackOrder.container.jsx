@@ -1,11 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
-import { trackOrder, setTrackOrderModalMountedState, setErrorInfoNull } from './TrackOrder.actions';
+import { setTrackOrderModalMountedState, setErrorInfoNull } from './TrackOrder.actions';
+import internalEndpoints from '../../common/internalEndpoints';
+import { getOrderDetails } from '../../OrderDetails/container/OrderDetails.actions';
 import TrackOrderView from '../views';
 import {
   getLabels,
+  getOrderLabels,
   getErrorMessage,
   getTrackOrderMountedState,
   getEmailId,
@@ -15,7 +19,6 @@ import {
 } from './TrackOrder.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { routerPush } from '../../../../../utils';
-import { ROUTE_PATH } from '../../../../../config/route.config';
 
 export class TrackOrderContainer extends React.PureComponent {
   constructor(props) {
@@ -35,8 +38,8 @@ export class TrackOrderContainer extends React.PureComponent {
     const isSuccess = orderDetailResponse && orderDetailResponse.get('success');
     if (isSuccess) {
       this.trackOrderDetail(
-        orderDetailResponse.orderId,
-        orderDetailResponse.encryptedEmailAddress,
+        orderDetailResponse.get('orderId'),
+        orderDetailResponse.get('encryptedEmailAddress'),
         isUserLoggedIn
       );
     }
@@ -49,16 +52,25 @@ export class TrackOrderContainer extends React.PureComponent {
    * @param {boolean} isGuest - check if it is guest login or signed in user.
    */
   trackOrderDetail = (orderId = '', encryptedEmailAddress = '', isUserLoggedIn = false) => {
-    const { navigation, setTrackOrderModalMountState } = this.props;
-    const pathToNavigate = ROUTE_PATH.guestOrderDetails({
-      pathSuffix: `${orderId}/${encryptedEmailAddress}`,
-    });
+    const { navigation, setTrackOrderModalMountState, orderLabels } = this.props;
     if (!isUserLoggedIn) {
       setTrackOrderModalMountState({ state: false });
       if (this.hasMobileApp()) {
-        // TO DO - This has to be implemented when the track order page is available
-        this.hasNavigateToNestedRoute(navigation, 'AccountStack', 'Account');
-      } else routerPush(pathToNavigate);
+        const router = {
+          query: {
+            orderId,
+          },
+        };
+        navigation.navigate('OrderDetailPage', {
+          title: `${getLabelValue(orderLabels, 'lbl_orderDetail_heading', 'orders')} #${orderId}`,
+          router,
+        });
+      } else {
+        routerPush(
+          `${internalEndpoints.trackOrder.link}&orderId=${orderId}&email=${encryptedEmailAddress}`,
+          `${internalEndpoints.trackOrder.path}/${orderId}/${encryptedEmailAddress}`
+        );
+      }
     }
   };
 
@@ -66,7 +78,7 @@ export class TrackOrderContainer extends React.PureComponent {
     e.preventDefault();
     const { onSubmit, emailId, orderId } = this.props;
     const payloadArgs = {
-      orderNumber: orderId,
+      orderId,
       emailAddress: emailId,
     };
     if (emailId && orderId) onSubmit(payloadArgs);
@@ -107,6 +119,7 @@ export class TrackOrderContainer extends React.PureComponent {
 export const mapStateToProps = state => {
   return {
     labels: getLabels(state),
+    orderLabels: getOrderLabels(state),
     errorMessage: getErrorMessage(state),
     isUserLoggedIn: getUserLoggedInState(state),
     trackOrderMountedState: getTrackOrderMountedState(state),
@@ -120,7 +133,7 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     onSubmit: payload => {
-      dispatch(trackOrder(payload));
+      dispatch(getOrderDetails(payload));
     },
     onChangeForm: () => {
       dispatch(setErrorInfoNull());
@@ -142,6 +155,9 @@ TrackOrderContainer.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string.isRequired,
   labels: PropTypes.shape({
+    trackOrder: PropTypes.shape({}),
+  }).isRequired,
+  orderLabels: PropTypes.shape({
     trackOrder: PropTypes.shape({}),
   }).isRequired,
   openLoginOverlay: PropTypes.func.isRequired,

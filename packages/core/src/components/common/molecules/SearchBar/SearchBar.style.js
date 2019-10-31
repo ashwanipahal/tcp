@@ -277,8 +277,6 @@ export default css`
 
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
-        top: 49px;
-        right: 35px;
       }
 
       @media ${props => props.theme.mediaQuery.smallOnly} {
@@ -290,7 +288,7 @@ export default css`
           ? `
 
           position: fixed;
-          width: 66%;
+          width: 437px;
           right: 120px;
           top: ${props.theme.spacing.ELEM_SPACING.XS};
 
@@ -299,8 +297,8 @@ export default css`
           }
 
           @media ${props.theme.mediaQuery.large} {
-            width: 31.8%;
-            right: 130px;
+            width: 437px;
+            right: 218px;
             top: ${props.theme.spacing.ELEM_SPACING.SM};
           }
         `

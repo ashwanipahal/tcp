@@ -148,6 +148,41 @@ class NoResponseSearchDetailView extends React.PureComponent {
       return null;
     };
 
+    const ProductMatchesData = () => {
+      if (
+        searchResults &&
+        searchResults.autosuggestProducts &&
+        searchResults.autosuggestProducts.length > 0
+      ) {
+        return (
+          <BodyCopy className="matchProductBody" lineHeight="39" component="div">
+            <ul>
+              {searchResults.autosuggestProducts.map(item => {
+                return (
+                  <BodyCopy component="li" key={item.id} className="productBox">
+                    <Anchor
+                      asPath={`${item.productUrl}`}
+                      to={`${item.productUrl}`}
+                      className="suggestion-label"
+                    >
+                      <Image
+                        alt={`${item.name}`}
+                        className="autosuggest-image"
+                        src={`${item.imageUrl[0]}`}
+                        data-locator={`${item.name}`}
+                        height="25px"
+                      />
+                    </Anchor>
+                  </BodyCopy>
+                );
+              })}
+            </ul>
+          </BodyCopy>
+        );
+      }
+      return null;
+    };
+
     return (
       <div className={className}>
         <Row className="search-by-keywords-container">
@@ -191,6 +226,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                 <Anchor
                   noLink
                   className="suggestion-label"
+                  to={`/us/search/${searchResultSuggestionsArg}`}
                   onClick={() => this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`)}
                 >
                   {` "${searchResultSuggestionsArg}" ?`}
@@ -238,6 +274,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   <div className="matchLinkBox">
                     {searchResults &&
                       searchResults.autosuggestList &&
+                      searchResults.autosuggestList.length > 0 &&
                       searchResults.autosuggestList.map(item => {
                         return (
                           <div>
@@ -277,31 +314,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   </div>
                   <div className="matchProductBox">
                     <ProductMatchesLabel />
-                    <BodyCopy className="matchProductBody" lineHeight="39" component="div">
-                      <ul>
-                        {searchResults &&
-                          searchResults.autosuggestProducts &&
-                          searchResults.autosuggestProducts.map(item => {
-                            return (
-                              <BodyCopy component="li" key={item.id} className="productBox">
-                                <Anchor
-                                  asPath={`${item.productUrl}`}
-                                  to={`${item.productUrl}`}
-                                  className="suggestion-label"
-                                >
-                                  <Image
-                                    alt={`${item.name}`}
-                                    className="autosuggest-image"
-                                    src={`${item.imageUrl[0]}`}
-                                    data-locator={`${item.name}`}
-                                    height="25px"
-                                  />
-                                </Anchor>
-                              </BodyCopy>
-                            );
-                          })}
-                      </ul>
-                    </BodyCopy>
+
+                    <ProductMatchesData />
                   </div>
                 </div>
               )}

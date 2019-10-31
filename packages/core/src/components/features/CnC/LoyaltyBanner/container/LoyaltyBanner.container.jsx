@@ -11,6 +11,7 @@ import {
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
+import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 
 export const LoyaltyBannerContainer = ({
   labels,
@@ -20,6 +21,7 @@ export const LoyaltyBannerContainer = ({
   isPlcc,
   currencySymbol,
   pageCategory,
+  openLoginModal,
 }) => {
   const {
     estimatedRewards,
@@ -41,13 +43,15 @@ export const LoyaltyBannerContainer = ({
       pointsToNextReward={pointsToNextReward}
       getCurrencySymbol={currencySymbol}
       pageCategory={pageCategory}
+      openLoginModal={openLoginModal}
     />
   );
 };
 
 LoyaltyBannerContainer.propTypes = {
-  labels: PropTypes.shape.isRequired,
-  orderDetails: PropTypes.shape.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  orderDetails: PropTypes.shape({}).isRequired,
+  openLoginModal: PropTypes.func.isRequired,
   thresholdValue: PropTypes.number,
   isGuestCheck: PropTypes.bool,
   isPlcc: PropTypes.bool,
@@ -63,18 +67,22 @@ LoyaltyBannerContainer.defaultProps = {
   pageCategory: '',
 };
 
-/* istanbul ignore next */
-export function mapStateToProps(state) {
-  return {
-    labels: getLoyaltyBannerLabels(state),
-    orderDetails: cartOrderDetails(state),
-    thresholdValue: getThresholdValue(state),
-    isGuestCheck: isGuest(state),
-    isPlcc: isPlccUser(state),
-    // isGuestCheck: false,
-    // isPlcc: true,
-    currencySymbol: getCurrencySymbol(state),
-  };
-}
+export const mapDispatchToProps = dispatch => ({
+  openLoginModal: componentType =>
+    dispatch(setCheckoutModalMountedState({ state: true, componentType })),
+});
 
-export default connect(mapStateToProps)(LoyaltyBannerContainer);
+/* istanbul ignore next */
+export const mapStateToProps = state => ({
+  labels: getLoyaltyBannerLabels(state),
+  orderDetails: cartOrderDetails(state),
+  thresholdValue: getThresholdValue(state),
+  isGuestCheck: isGuest(state),
+  isPlcc: isPlccUser(state),
+  currencySymbol: getCurrencySymbol(state),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoyaltyBannerContainer);

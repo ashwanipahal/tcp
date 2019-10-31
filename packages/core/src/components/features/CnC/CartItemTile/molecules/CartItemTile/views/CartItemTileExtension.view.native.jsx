@@ -1,8 +1,11 @@
+/* eslint-disable max-lines */
+/* TODO to refactor later as per discussion */
 import React from 'react';
 import { View } from 'react-native';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
+import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   ImgWrapper,
@@ -15,6 +18,7 @@ import {
   IconTextMoveToBag,
   IconHeight,
   IconWidth,
+  ToggleError,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
@@ -158,6 +162,7 @@ const handleMoveItemtoSaveList = props => {
     addItemToSflList,
     setCartItemsSflError,
     labels,
+    clearToggleError,
   } = props;
   const {
     itemInfo: { itemId, isGiftItem },
@@ -166,6 +171,7 @@ const handleMoveItemtoSaveList = props => {
   const catEntryId = isGiftItem ? generalProductId : skuId;
   const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense;
 
+  clearToggleError();
   if (sflItemsCount >= sflMaxCount) {
     return setCartItemsSflError(labels.sflMaxLimitError);
   }
@@ -186,7 +192,7 @@ const removeSflItem = props => {
 };
 
 const moveToBagSflItem = props => {
-  const { productDetail, startSflDataMoveToBag } = props;
+  const { productDetail, startSflDataMoveToBag, clearToggleError } = props;
   const {
     itemInfo: { itemId, isGiftItem },
     productInfo: { skuId, generalProductId },
@@ -194,11 +200,12 @@ const moveToBagSflItem = props => {
   const catEntryId = isGiftItem ? generalProductId : skuId;
 
   const payloadData = { itemId, catEntryId };
+  clearToggleError();
   return startSflDataMoveToBag({ ...payloadData });
 };
 
 const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false, props) => {
-  const { onPickUpOpenClick, productDetail, orderId } = props;
+  const { onPickUpOpenClick, productDetail, orderId, clearToggleError } = props;
   const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
   const { store, orderItemType } = productDetail.miscInfo;
   const { productPartNumber } = productDetail.productInfo;
@@ -206,6 +213,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
   const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
   const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
   const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+  clearToggleError();
   onPickUpOpenClick({
     colorProductId: productPartNumber,
     orderInfo: {
@@ -246,6 +254,7 @@ const getCartRadioButtons = ({
   isBopisEnabled,
   orderId,
   onPickUpOpenClick,
+  setShipToHome,
 }) => {
   if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
@@ -269,6 +278,7 @@ const getCartRadioButtons = ({
         openPickUpModal={handleEditCartItemWithStore}
         onPickUpOpenClick={onPickUpOpenClick}
         orderId={orderId}
+        setShipToHome={setShipToHome}
       />
     );
   }
@@ -295,6 +305,7 @@ getCartRadioButtons.propTypes = {
   isBopisEnabled: PropTypes.bool.isRequired,
   orderId: PropTypes.string.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
+  setShipToHome: PropTypes.func.isRequired,
 };
 
 /**
@@ -412,6 +423,35 @@ renderImage.defaultProps = {
   iconText: '',
 };
 
+/**
+ * @function renderTogglingError Render Toggling error
+ * @returns {JSX} Error Component with toggling api error.
+ * @memberof CartItemTile
+ */
+const renderTogglingError = props => {
+  const {
+    toggleError,
+    productDetail: {
+      itemInfo: { itemId },
+    },
+  } = props;
+  return toggleError && itemId === toggleError.itemId ? (
+    <ToggleError>
+      <ErrorMessage
+        fontSize="fs12"
+        fontWeight="extrabold"
+        error={toggleError.errorMessage}
+        showAccordian
+      />
+    </ToggleError>
+  ) : null;
+};
+
+renderTogglingError.propTypes = {
+  toggleError: PropTypes.shape({}).isRequired,
+  productDetail: PropTypes.shape({}).isRequired,
+};
+
 export default {
   CartItemImageWrapper,
   heartIcon,
@@ -427,4 +467,5 @@ export default {
   handleEditCartItemWithStore,
   onSwipeComplete,
   renderImage,
+  renderTogglingError,
 };

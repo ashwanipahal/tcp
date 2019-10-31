@@ -1,6 +1,7 @@
 import React from 'react';
 import { RichText } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
+import ElectronicConsentWrapper from './styles/ElectronicConsent.style';
 
 /**
  * @constant ElectronicConsent
@@ -10,7 +11,9 @@ import PropTypes from 'prop-types';
 const ElectronicConsent = ({ electronicConsent = '' }) => {
   return (
     <React.Fragment>
-      <RichText richTextHtml={electronicConsent} dataLocator="contact_disclaimer_info" />
+      <ElectronicConsentWrapper>
+        <RichText richTextHtml={electronicConsent} dataLocator="contact_disclaimer_info" />
+      </ElectronicConsentWrapper>
     </React.Fragment>
   );
 };

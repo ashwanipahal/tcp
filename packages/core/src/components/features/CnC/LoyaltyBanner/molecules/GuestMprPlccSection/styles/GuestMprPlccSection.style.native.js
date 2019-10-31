@@ -119,6 +119,10 @@ const SectionSymbol = styled.Text`
   color: ${props => plccMpr(props)};
 `;
 
+const MyPlaceRewards = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
 export {
   Styles,
   SubTotalLine,
@@ -136,4 +140,5 @@ export {
   EstimatedSubTotalValue,
   PointsToNextReward,
   SectionSymbol,
+  MyPlaceRewards,
 };

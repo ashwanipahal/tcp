@@ -155,6 +155,7 @@ class QuickViewModal extends React.Component {
         stickyCloseIcon
         fullWidth
         stickyHeader
+        rightAlignCrossIcon
       >
         {this.renderProductCustomizeFormPart()}
         {!isMultiItemQVModal && !fromBagPage && (

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FreeShippingBannerSection View Component FreeShippingBannerSection should render correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontWeight="extrabold"
+        margin={null}
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        numberOfLines={null}
+        text={
+          Array [
+            "lbl_freeShippingBanner_label ",
+          ]
+        }
+        textAlign="center"
+        textDecoration={null}
+      />
+    </View>
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        className="details"
+        colorName={null}
+        customStyle={Object {}}
+        locator=""
+        margins={null}
+        onPress={null}
+        text="lbl_freeShippingBanner_details"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
