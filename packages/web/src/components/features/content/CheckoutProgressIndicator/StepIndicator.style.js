@@ -12,11 +12,10 @@ export default css`
 
   .checkout-progress-bar {
     margin: 0 auto;
-    padding: 0;
     overflow: hidden;
     width: 100%;
     position: relative;
-    padding-top: 6px;
+    padding: 6px 0 18px;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: block;

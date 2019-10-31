@@ -97,7 +97,7 @@ export default css`
 
   .checkout-mobile-header {
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0 4px;
     margin-left: 0;
     width: 100%;
     border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
