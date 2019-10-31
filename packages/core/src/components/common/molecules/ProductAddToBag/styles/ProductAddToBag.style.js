@@ -22,7 +22,7 @@ const styles = css`
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
-    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     font-stretch: normal;
     line-height: normal;
     font-style: normal;
