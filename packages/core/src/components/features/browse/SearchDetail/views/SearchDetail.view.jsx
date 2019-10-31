@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import ProductsGrid from '../../ProductListing/molecules/ProductsGrid/views';
-import { Row, Col } from '../../../../common/atoms';
+import { Row, Col, PLPSkeleton } from '../../../../common/atoms';
 import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -31,6 +31,7 @@ const SearchListingView = ({
   currencyAttributes,
   onAddItemToFavorites,
   isLoggedIn,
+  isLoadingMore,
   ...otherProps
 }) => {
   return (
@@ -99,6 +100,7 @@ const SearchListingView = ({
               {...otherProps}
             />
           ) : null}
+          {isLoadingMore ? <PLPSkeleton col={20} /> : null}
         </Col>
       </Row>
       <QuickViewModal />
@@ -130,6 +132,7 @@ SearchListingView.propTypes = {
   currency: PropTypes.string,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  isLoadingMore: PropTypes.bool,
 };
 
 SearchListingView.defaultProps = {
@@ -150,6 +153,7 @@ SearchListingView.defaultProps = {
   },
   currency: 'USD',
   isLoggedIn: false,
+  isLoadingMore: false,
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

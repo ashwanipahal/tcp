@@ -9,6 +9,7 @@ import DamImage from './DamImage';
 import NativeDropDown from './NativeDropDown';
 import Skeleton from './Skeleton';
 import CustomIcon from './Icon';
+import Spinner from './Spinner';
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   NativeDropDown,
   Skeleton,
   CustomIcon,
+  Spinner,
 };

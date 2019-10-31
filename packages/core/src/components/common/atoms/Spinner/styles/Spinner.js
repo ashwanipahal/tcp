@@ -1,5 +1,11 @@
 import { css } from 'styled-components';
 
+const applyBrandSpecificColor = props => {
+  return props.theme.isGymboree
+    ? props.theme.colorPalette.orange[800]
+    : props.theme.colors.BRAND.PRIMARY;
+};
+
 const styles = css`
   display: flex;
   justify-content: center;
@@ -16,7 +22,7 @@ const styles = css`
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    background: #4b9fdd;
+    background: ${applyBrandSpecificColor};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
   .tcp-circle div:nth-child(1) {

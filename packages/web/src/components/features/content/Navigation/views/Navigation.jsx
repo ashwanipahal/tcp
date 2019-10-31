@@ -27,6 +27,7 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
   if (isDrawerOpen) {
     closeNavigationDrawer();
   }
+  document.getElementById(`default_spinner_overlay`).classList.add(`show-default-spinner`);
 };
 
 /**
@@ -36,7 +37,7 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 const handleRouteComplete = url => {
   const params = new URL(document.location).searchParams;
   const sortParam = params.has('sort');
-
+  document.getElementById(`default_spinner_overlay`).classList.add(`hide-default-spinner`);
   const filterParam =
     params.has(FILTER_CATAGORY) ||
     params.has(FILTER_COLOR) ||
