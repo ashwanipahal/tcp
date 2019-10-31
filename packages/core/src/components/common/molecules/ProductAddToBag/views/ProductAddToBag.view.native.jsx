@@ -168,7 +168,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onValueChange={this.onQuantityValueChange}
             heading={qunatityText}
             name="Quantity"
-            quantityFieldForQuickView
+            textAlignLeft
+            lightGrayColor
           />
         </RowViewContainer>
 

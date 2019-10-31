@@ -26,15 +26,22 @@ const getShape = props => {
 };
 
 const getMobileAppFilterButtonViewStyle = props => {
-  const { theme, selected, buttonVariation, bottomBorderOnly, quantityFieldForQuickView } = props;
+  const {
+    theme,
+    selected,
+    buttonVariation,
+    bottomBorderOnly,
+    textAlignLeft,
+    lightGrayColor,
+  } = props;
   const { colorPalette, spacing } = theme;
   const bgColor = selected ? colorPalette.gray[900] : 'transparent';
-  const borderColor = quantityFieldForQuickView ? colorPalette.gray[1500] : colorPalette.gray[900];
+  const borderColor = lightGrayColor ? colorPalette.gray[1500] : colorPalette.gray[900];
   const padding = spacing.ELEM_SPACING.XXS;
 
   if (buttonVariation === BUTTON_VARIATION.mobileAppFilter) {
     return `
-      ${quantityFieldForQuickView ? `justify-content: flex-start` : `justify-content: center`};
+      ${textAlignLeft ? `justify-content: flex-start` : `justify-content: center`};
       min-width: 80px;
       border: 1px solid ${borderColor};
       padding: ${padding};

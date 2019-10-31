@@ -31,10 +31,11 @@ exports[`Selectbox component renders correctly 1`] = `
     }
     disabled={false}
     id="test"
+    lightGrayColor={false}
     name="test"
     onValueChange={[Function]}
-    quantityFieldForQuickView={false}
     selectedValue="test"
+    textAlignLeft={false}
     width="100%"
   />
 </Styled(View)>
@@ -71,10 +72,11 @@ exports[`Selectbox component renders correctly for error 1`] = `
     }
     disabled={false}
     id="test"
+    lightGrayColor={false}
     name="test"
     onValueChange={[Function]}
-    quantityFieldForQuickView={false}
     selectedValue="test"
+    textAlignLeft={false}
     width="100%"
   />
   <Styled(View)>
