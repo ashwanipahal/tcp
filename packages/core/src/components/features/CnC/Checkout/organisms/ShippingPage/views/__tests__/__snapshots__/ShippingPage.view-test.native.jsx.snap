@@ -109,6 +109,8 @@ exports[`Shipping Page should render correctly 1`] = `
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
       isUsSite={true}
+      isVenmoPaymentInProgress={false}
+      isVenmoShippingDisplayed={true}
       keepDirtyOnReinitialize={true}
       loadShipmentMethods={[Function]}
       navigation={
@@ -268,6 +270,8 @@ exports[`Shipping Page should render correctly with component did update and get
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
       isUsSite={true}
+      isVenmoPaymentInProgress={false}
+      isVenmoShippingDisplayed={true}
       keepDirtyOnReinitialize={true}
       loadShipmentMethods={
         [MockFunction] {
@@ -409,6 +413,8 @@ exports[`Shipping Page should render correctly with component did update and get
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
       isUsSite={true}
+      isVenmoPaymentInProgress={false}
+      isVenmoShippingDisplayed={true}
       keepDirtyOnReinitialize={true}
       loadShipmentMethods={
         [MockFunction] {

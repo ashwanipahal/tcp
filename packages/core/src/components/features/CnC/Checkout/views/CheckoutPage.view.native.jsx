@@ -117,6 +117,7 @@ class CheckoutPage extends React.PureComponent {
             setCheckoutStage={setCheckoutStage}
             venmoBannerLabel={{ venmoBannerText }}
             setVenmoPickupState={setVenmoPickupState}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isVenmoPickupDisplayed={isVenmoPickupBannerDisplayed}
             isVenmoShippingDisplayed={isVenmoShippingBannerDisplayed}
           />
@@ -132,6 +133,7 @@ class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             submitBilling={submitBilling}
             setCheckoutStage={setCheckoutStage}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             setVenmoPickupState={setVenmoPickupState}
             setVenmoShippingState={setVenmoShippingState}
           />
@@ -146,6 +148,7 @@ class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           />
         );
       case CONFIRMATION:

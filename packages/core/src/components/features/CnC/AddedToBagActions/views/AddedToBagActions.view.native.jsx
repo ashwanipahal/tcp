@@ -26,6 +26,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
               navigation,
               closeModal,
               navigationActions: NavigationActions,
+              isVenmoProgress: true,
             })
           }
         />
@@ -76,6 +77,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                   navigation,
                   closeModal,
                   navigationActions: NavigationActions,
+                  isVenmoProgress: false,
                 });
               }}
             >

@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select, delay } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import CONSTANTS, { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
+import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import {
   getOrderDetailsData,
@@ -18,7 +18,6 @@ import BAG_PAGE_ACTIONS from './BagPage.actions';
 import {
   checkoutSetCartData,
   getSetIsPaypalPaymentSettings,
-  getSetCheckoutStage,
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
@@ -54,6 +53,7 @@ import getBopisInventoryDetails from '../../../../../services/abstractors/common
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
 import { setServerErrorCheckout } from '../../Checkout/container/Checkout.action.util';
+import routeForAppCartCheckout from './BagPage.saga.util';
 
 const { getOrderPointsRecalcFlag } = utility;
 
@@ -197,14 +197,6 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-function* navigateToCheckout(stage, navigation, navigationActions) {
-  yield put(getSetCheckoutStage(stage));
-  const navigateAction = navigationActions.navigate({
-    routeName: CONSTANTS.CHECKOUT_ROOT,
-  });
-  navigation.dispatch(navigateAction);
-}
-
 /**
  * routeForCartCheckout component. This is responsible for routing our web to specific page of checkout journey.
  * @param {Boolean} recalc query parameter for recalculation of points
@@ -218,19 +210,15 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
-  debugger;
   if (isMobileApp()) {
-    if (hasVenmoReviewPage) {
-      yield call(navigateToCheckout, CONSTANTS.REVIEW_DEFAULT_PARAM, navigation, navigationActions);
-    } else if (orderHasPickup) {
-      yield call(navigateToCheckout, CONSTANTS.PICKUP_DEFAULT_PARAM, navigation, navigationActions);
-    } else {
-      const params = [CONSTANTS.SHIPPING_DEFAULT_PARAM, navigation, navigationActions];
-      yield call(navigateToCheckout, ...params);
-    }
-    if (closeModal) {
-      closeModal();
-    }
+    yield call(
+      routeForAppCartCheckout,
+      recalc,
+      navigation,
+      closeModal,
+      navigationActions,
+      orderHasPickup
+    );
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
     if (hasVenmoReviewPage || isExpressCheckoutEnabled) {

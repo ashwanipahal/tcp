@@ -8,17 +8,29 @@ import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
+import { setVenmoPaymentInProgress } from '../../Checkout/container/Checkout.action';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
   };
 
+  /**
+   * onCartCheckout method will check for selected checkout method
+   * {params} payload - checkout payload for app and web
+   */
+  onCartCheckout = payload => {
+    const { handleCartCheckout, setVenmoInProgress } = this.props;
+    if (payload && !payload.isVenmoProgress) {
+      setVenmoInProgress(false);
+    }
+    handleCartCheckout(payload);
+  };
+
   render() {
     const {
       labels,
       showAddTobag,
-      handleCartCheckout,
       isEditingItem,
       isInternationalShipping,
       isVenmoEnabled,
@@ -38,7 +50,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         labels={labels}
         onClickViewBag={this.onClickViewBag}
         showAddTobag={showAddTobag}
-        handleCartCheckout={handleCartCheckout}
+        handleCartCheckout={this.onCartCheckout}
         isEditingItem={isEditingItem}
         isInternationalShipping={isInternationalShipping}
         isVenmoEnabled={isVenmoEnabled}
@@ -76,6 +88,7 @@ const mapDispatchToProps = dispatch => {
     handleCartCheckout: payload => {
       dispatch(bagPageActions.startCheckout(payload));
     },
+    setVenmoInProgress: data => dispatch(setVenmoPaymentInProgress(data)),
   };
 };
 

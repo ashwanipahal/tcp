@@ -13,6 +13,7 @@ describe('Bag page Container', () => {
     setVenmoShippingState: jest.fn(),
     getUserInformation: jest.fn(),
     isPickupModalOpen: jest.fn(),
+    setVenmoInProgress: jest.fn(),
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<BagPageContainer {...props} />);

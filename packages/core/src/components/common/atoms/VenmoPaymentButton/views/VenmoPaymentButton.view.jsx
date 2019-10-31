@@ -107,24 +107,14 @@ export class VenmoPaymentButton extends Component {
     }
     setVenmoData({ loading: true, error: null });
     setVenmoPaymentInProgress(true);
-    this.handleVenmoSuccess({
-      details: { username: 'gagandsb' },
-      username: 'gagandsb',
-      deviceData: '523d2ff2f87421afab351d7447afafab',
-      error: null,
-      nonce: 'fake-venmo-account-nonce',
-      supportedByBrowser: true,
-      timestamp: Date.now(),
-      type: 'VenmoAccount',
-    });
-    // if (venmoInstance && !isNonceNotExpired && this.canCallVenmoApi()) {
-    //   this.venmoButtonRef.disable = true;
-    //   this.fetchVenmoNonce();
-    // } else {
-    //   onVenmoPaymentButtonClick(mode);
-    //   setVenmoData({ loading: false });
-    //   this.disableVenmoButton(false);
-    // }
+    if (venmoInstance && !isNonceNotExpired && this.canCallVenmoApi()) {
+      this.venmoButtonRef.disable = true;
+      this.fetchVenmoNonce();
+    } else {
+      onVenmoPaymentButtonClick(mode);
+      setVenmoData({ loading: false });
+      this.disableVenmoButton(false);
+    }
   };
 
   /**

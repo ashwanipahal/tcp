@@ -79,12 +79,12 @@ describe('CheckoutPageVanilla component', () => {
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();
-    expect(componentInstance.isShowVenmoBanner(CHECKOUT_STAGES.PICKUP)).toBeTruthy();
+    expect(componentInstance.isShowVenmoBanner(CHECKOUT_STAGES.PICKUP)).toBeFalsy();
   });
 
   it('calling isShowVenmoBanner method for Shipping', () => {
     const componentInstance = tree.instance();
-    expect(componentInstance.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING)).toBeTruthy();
+    expect(componentInstance.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING)).toBeFalsy();
   });
 
   it('calling isVenmoPickupDisplayed method for pickup page', () => {
@@ -101,11 +101,11 @@ describe('CheckoutPageVanilla component', () => {
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();
-    expect(componentInstance.isVenmoPickupDisplayed()).toBeFalsy();
+    expect(componentInstance.isVenmoPickupDisplayed()).toBeTruthy();
   });
 
   it('calling isVenmoShippingDisplayed method', () => {
     const componentInstance = tree.instance();
-    expect(componentInstance.isVenmoShippingDisplayed()).toBeFalsy();
+    expect(componentInstance.isVenmoShippingDisplayed()).toBeTruthy();
   });
 });

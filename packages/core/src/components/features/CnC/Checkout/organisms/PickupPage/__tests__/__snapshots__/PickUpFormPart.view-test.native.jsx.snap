@@ -136,6 +136,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      btnText="undefined: undefined"
       isConfirmationPage={false}
       isGuest={true}
       pageCategory={Object {}}
@@ -282,6 +283,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      btnText="undefined: undefined"
       isConfirmationPage={false}
       isGuest={true}
       pageCategory={Object {}}
@@ -378,6 +380,7 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      btnText="undefined: undefined"
       isConfirmationPage={false}
       isGuest={false}
       pageCategory={Object {}}

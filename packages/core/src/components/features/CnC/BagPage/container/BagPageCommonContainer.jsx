@@ -38,9 +38,10 @@ export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
     fetchNeedHelpContent([needHelpContentId]);
-    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    setVenmoInProgress(false); // Setting venmo progress as false. User can select normal checkout on cart page.
     this.fetchInitialActions();
   }
 

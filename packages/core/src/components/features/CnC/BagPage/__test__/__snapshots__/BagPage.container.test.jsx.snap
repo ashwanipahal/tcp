@@ -4,6 +4,28 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
 <Styled(BagPageView)
   isPickupModalOpen={[MockFunction]}
   labels={Object {}}
+  setVenmoPaymentInProgress={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          false,
+        ],
+        Array [
+          false,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   showAddTobag={false}
 />
 `;
