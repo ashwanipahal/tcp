@@ -21,6 +21,7 @@ class CartItemRadioButtons extends React.Component {
     } = this.props;
     const openSkuSelectionForm = false;
     let openRestrictedModalForBopis = false;
+    /* istanbul ignore else */
     if (
       orderItemType === CARTPAGE_CONSTANTS.BOPIS &&
       pickupStoresInCart.size === maxAllowedStoresInCart
