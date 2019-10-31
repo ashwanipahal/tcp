@@ -93,22 +93,26 @@ class HomePageView extends React.PureComponent<Props> {
   };
 
   navigate = url => {
-    const route = url.replace(/.*?:\/\//g, '');
-    const routeName = route.split('?')[0];
-    const params = route.split('?')[1];
-    if (routeName === 'change-password') {
-      const password = params.split('&')[0].replace(/%20/g, '+');
-      const emm = params.split('&')[1];
+    try {
+      const route = url.substring(url.indexOf('change'));
+      const routeName = route.split('?')[0];
+      const params = route.split('?')[1];
+      if (routeName === 'change-password') {
+        const password = params.split('&')[0].replace(/%20/g, '+');
+        const emm = params.split('&')[1];
 
-      const logonPasswordOld = password.substring(password.indexOf('=') + 1);
-      const em = emm.substring(emm.indexOf('=') + 1);
+        const logonPasswordOld = password.substring(password.indexOf('=') + 1);
+        const em = emm.substring(emm.indexOf('=') + 1);
 
-      const { navigation } = this.props;
-      navigateToNestedRoute(navigation, 'AccountStack', 'Account', {
-        component: 'change-password',
-        logonPasswordOld,
-        em,
-      });
+        const { navigation } = this.props;
+        navigateToNestedRoute(navigation, 'AccountStack', 'Account', {
+          component: 'change-password',
+          logonPasswordOld,
+          em,
+        });
+      }
+    } catch (e) {
+      // do nothing
     }
   };
 
