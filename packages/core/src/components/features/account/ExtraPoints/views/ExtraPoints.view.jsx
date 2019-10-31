@@ -142,7 +142,6 @@ const EarnPoints = ({
             className="myAccountRightView"
           />
           {getNotificationMarkup(earnedPointsNotification, infoMessage, earnExtraPointsLabels)}
-
           <div className="extraEarningWrapper">
             <BodyCopy
               fontSize="fs28"
@@ -180,9 +179,7 @@ const EarnPoints = ({
               </Anchor>
             </BodyCopy>
           </div>
-
           {getPromoTileData(promoListData)}
-
           {waysToEarn && waysToEarn.length && (
             <>
               <BodyCopy
@@ -270,7 +267,8 @@ const EarnPoints = ({
               {getLabelValue(labels, 'lbl_common_check_here')}
             </Anchor>
             {getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
-          </BodyCopy>
+          </BodyCopy>{' '}
+          */}
         </>
       )}
     </div>
