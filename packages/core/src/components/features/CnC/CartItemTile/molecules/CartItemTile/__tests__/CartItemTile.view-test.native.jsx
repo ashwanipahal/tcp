@@ -19,7 +19,7 @@ describe('CartItemTile common component', () => {
           itemBrand: 'TCP',
           color: 'red',
         },
-        productInfo: { skuId: '123', productPartNumber: 123 },
+        productInfo: { skuId: '123', productPartNumber: 123, pdpUrl: '' },
         miscInfo: {
           badge: '',
         },
@@ -40,7 +40,7 @@ describe('CartItemTile common component', () => {
   it('renders correctly with Save for later enabled', () => {
     const props = {
       productDetail: {
-        productInfo: { skuId: '123' },
+        productInfo: { skuId: '123', pdpUrl: '' },
         itemInfo: {
           name: 'Boys Basic',
           qty: '1',
@@ -71,7 +71,7 @@ describe('CartItemTile common component', () => {
   it('renders correctly with bag page sfl section', () => {
     const props = {
       productDetail: {
-        productInfo: { skuId: '123' },
+        productInfo: { skuId: '123', pdpUrl: '' },
         itemInfo: {
           name: 'Boys Basic Skinny Jeans',
           qty: '1',
@@ -132,6 +132,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
         },
         productInfo: {
           upc: 'upc',
+          pdpUrl: '',
         },
       },
       labels: {

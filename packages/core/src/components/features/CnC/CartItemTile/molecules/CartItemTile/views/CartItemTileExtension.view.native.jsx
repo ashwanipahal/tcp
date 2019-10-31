@@ -19,6 +19,7 @@ import {
   IconHeight,
   IconWidth,
   ToggleError,
+  ImageTouchableOpacity,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
@@ -34,7 +35,20 @@ const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const heart = require('../../../../../../../assets/heart.png');
 
-const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
+const goToPdpPage = (title, productDetail, navigation) => {
+  const {
+    productInfo: { pdpUrl, productPartNumber },
+  } = productDetail;
+  const pdpAsPathUrl = pdpUrl.split('/p/')[1];
+  navigation.navigate('ProductDetail', {
+    title,
+    pdpUrl: pdpAsPathUrl,
+    selectedColorProductId: productPartNumber,
+    reset: true,
+  });
+};
+
+const CartItemImageWrapper = (productDetail, labels, showOnReviewPage, navigation) => {
   return (
     <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
@@ -43,17 +57,23 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
           source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
           showOnReviewPage={showOnReviewPage}
         /> */}
-        <DamImage
-          width={100}
-          height={100}
-          isProductImage
-          alt={labels.productImageAlt}
-          url={productDetail.itemInfo.imagePath}
-          showOnReviewPage={showOnReviewPage}
-          itemBrand={
-            productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
-          }
-        />
+        <ImageTouchableOpacity
+          onPress={() => {
+            goToPdpPage('', productDetail, navigation);
+          }}
+        >
+          <DamImage
+            width={100}
+            height={100}
+            isProductImage
+            alt={labels.productImageAlt}
+            url={productDetail.itemInfo.imagePath}
+            showOnReviewPage={showOnReviewPage}
+            itemBrand={
+              productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
+            }
+          />
+        </ImageTouchableOpacity>
         {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
           <SoldOutLabel>
             <BodyCopy
@@ -138,7 +158,7 @@ const heartIcon = isBagPageSflSection => {
   );
 };
 
-const getProductName = (productDetail, showOnReviewPage) => {
+const getProductName = (productDetail, showOnReviewPage, navigation) => {
   return (
     <ProductName showOnReviewPage={showOnReviewPage}>
       <BodyCopy
@@ -147,6 +167,9 @@ const getProductName = (productDetail, showOnReviewPage) => {
         dataLocator={getLocator('cart_item_title')}
         fontWeight={['semibold']}
         text={productDetail.itemInfo.name}
+        onPress={() => {
+          goToPdpPage('', productDetail, navigation);
+        }}
       />
     </ProductName>
   );

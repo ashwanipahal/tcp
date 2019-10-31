@@ -10,7 +10,7 @@ import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
-import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
+import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
 import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
@@ -33,6 +33,7 @@ import {
   isCurrencyExchangeAvailable,
 } from './CartItemTile.utils';
 import { currencyConversion } from '../../../utils/utils';
+import { getProductListToPath } from '../../../../../browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -820,6 +821,7 @@ class CartItemTile extends React.Component {
       productDetail: {
         miscInfo: { store, orderItemType, availability },
         itemInfo: { itemBrand },
+        productInfo: { pdpUrl },
       },
       labels,
       editableProductInfo,
@@ -855,6 +857,8 @@ class CartItemTile extends React.Component {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
+    const pdpToPath = getProductListToPath(pdpUrl);
+    const pdpAsPathUrl = pdpUrl.split('/us')[1];
 
     return (
       <div className={`${className} tile-header`}>
@@ -891,14 +895,16 @@ class CartItemTile extends React.Component {
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
               /> */}
-              <DamImage
-                imgData={{
-                  alt: labels.productImageAlt,
-                  url: productDetail.itemInfo.imagePath,
-                }}
-                itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
-                isProductImage
-              />
+              <Anchor to={pdpToPath} asPath={pdpAsPathUrl}>
+                <DamImage
+                  imgData={{
+                    alt: labels.productImageAlt,
+                    url: productDetail.itemInfo.imagePath,
+                  }}
+                  itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
+                  isProductImage
+                />
+              </Anchor>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
                 <BodyCopy
                   className="soldOutLabel"
@@ -936,15 +942,17 @@ class CartItemTile extends React.Component {
               this.getBadgeDetails(productDetail)}
             <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="h2"
-                  fontSize="fs14"
-                  fontWeight={['extrabold']}
-                  dataLocator={getLocator('cart_item_title')}
-                >
-                  {productDetail.itemInfo.name}
-                </BodyCopy>
+                <Anchor to={pdpToPath} asPath={pdpAsPathUrl}>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="h2"
+                    fontSize="fs14"
+                    fontWeight={['extrabold']}
+                    dataLocator={getLocator('cart_item_title')}
+                  >
+                    {productDetail.itemInfo.name}
+                  </BodyCopy>
+                </Anchor>
               </Col>
             </Row>
             {showOnReviewPage && this.getProductItemUpcNumber(productDetail, pageView)}

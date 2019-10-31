@@ -46,6 +46,11 @@ describe('CartItemTile common component', () => {
         miscInfo: {
           badge: '',
         },
+        productInfo: {
+          skuId: '3444',
+          generalProductId: '111',
+          pdpUrl: '',
+        },
       },
       labels: {
         color: 'Color',
@@ -77,6 +82,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       addItemToSflList: jest.fn(),
@@ -141,6 +147,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       addItemToSflList: jest.fn(),
@@ -179,6 +186,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       addItemToSflList: jest.fn(),
@@ -220,6 +228,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       onPickUpOpenClick: jest.fn(),
@@ -272,6 +281,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
         },
         productInfo: {
           upc: 'upc',
+          pdpUrl: '',
         },
       },
       labels: {

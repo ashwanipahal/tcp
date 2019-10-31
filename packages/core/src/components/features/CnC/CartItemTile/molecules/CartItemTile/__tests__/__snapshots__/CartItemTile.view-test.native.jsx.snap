@@ -109,20 +109,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -141,6 +145,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -398,6 +403,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "orderItemType": "BOPIS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -517,20 +523,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -549,6 +559,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -775,6 +786,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "orderItemType": "BOPIS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -909,20 +921,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -941,6 +957,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -1183,6 +1200,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -1297,20 +1315,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -1329,6 +1351,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -1555,6 +1578,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -1669,20 +1693,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -1701,6 +1729,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -1928,6 +1957,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -2042,20 +2072,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -2074,6 +2108,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -2301,6 +2336,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -2415,20 +2451,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
           <Styled(View)>
             <Styled(BodyCopy)
               accessibilityText=""
@@ -2460,6 +2500,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -2744,20 +2785,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -2776,6 +2821,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -3003,6 +3049,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -3117,20 +3164,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
           <Styled(View)>
             <Styled(BodyCopy)
               accessibilityText=""
@@ -3162,6 +3213,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -3446,20 +3498,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -3478,6 +3534,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -3705,6 +3762,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -3819,20 +3877,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -3851,6 +3913,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -4078,6 +4141,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -4212,20 +4276,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -4244,6 +4312,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -4486,6 +4555,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -4620,20 +4690,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -4652,6 +4726,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -4894,6 +4969,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             "orderItemType": "ECOM",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -5028,20 +5104,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -5060,6 +5140,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -5302,6 +5383,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             "orderItemType": "ECOM",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
@@ -5416,20 +5498,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            swatchConfig=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
           <Styled(View)>
             <Styled(BodyCopy)
               accessibilityText=""
@@ -5461,6 +5547,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />

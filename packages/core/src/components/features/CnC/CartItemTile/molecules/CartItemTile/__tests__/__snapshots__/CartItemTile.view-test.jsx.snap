@@ -45,16 +45,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -81,25 +85,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -472,16 +480,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -508,25 +520,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -895,16 +911,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -931,25 +951,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -1336,16 +1360,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -1372,25 +1400,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -1759,16 +1791,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -1795,25 +1831,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -2182,16 +2222,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -2218,25 +2262,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -2619,16 +2667,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -2667,25 +2719,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -3068,16 +3124,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -3104,25 +3164,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -3505,16 +3569,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -3553,25 +3621,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -3954,16 +4026,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -3990,25 +4066,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4391,16 +4471,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -4427,25 +4511,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4814,16 +4902,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -4850,25 +4942,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5255,16 +5351,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -5291,25 +5391,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5696,16 +5800,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -5732,25 +5840,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -6151,16 +6263,20 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -6199,25 +6315,29 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
