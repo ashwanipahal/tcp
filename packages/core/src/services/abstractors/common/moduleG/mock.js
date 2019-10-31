@@ -38,7 +38,7 @@ export default {
           textItems: [
             {
               text: '60% OFF',
-              style: 'medium_text_black',
+              style: 'large_text_black',
             },
           ],
           link: {
