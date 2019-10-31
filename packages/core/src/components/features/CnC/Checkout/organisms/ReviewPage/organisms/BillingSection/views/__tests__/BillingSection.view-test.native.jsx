@@ -111,4 +111,21 @@ describe('BillingSection', () => {
     const tree = shallow(<BillingSection {...props} />);
     expect(tree).toMatchSnapshot();
   });
+  it('should render correctly without address details', () => {
+    const props = {
+      card: {
+        ...cardMock,
+      },
+      address: null,
+      appliedGiftCards: fromJS([...appliedGiftCardsMock]),
+      className: '',
+      labels: {
+        ...labelsMock,
+      },
+      isExpressCheckout: true,
+      isPaymentDisabled: true,
+    };
+    const tree = shallow(<BillingSection {...props} />);
+    expect(tree).toMatchSnapshot();
+  });
 });

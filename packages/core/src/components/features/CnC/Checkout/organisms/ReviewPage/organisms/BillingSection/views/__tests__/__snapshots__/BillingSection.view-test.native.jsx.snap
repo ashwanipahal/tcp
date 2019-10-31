@@ -196,6 +196,41 @@ exports[`BillingSection should render correctly without address details 1`] = `
 </Fragment>
 `;
 
+exports[`BillingSection should render correctly without address details 2`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs26"
+      margin={null}
+      mobileFontFamily="primary"
+      numberOfLines={null}
+      text="Billing "
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Connect(GiftCardsContainer)
+    isFromReview={true}
+  />
+</Fragment>
+`;
+
 exports[`BillingSection should render correctly without card & address details or with gift card empty 1`] = `
 <Fragment>
   <Styled(View)>

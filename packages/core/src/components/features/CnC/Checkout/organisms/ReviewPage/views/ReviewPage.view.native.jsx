@@ -52,6 +52,11 @@ class ReviewPage extends React.PureComponent {
     }
   }
 
+  /**
+   * @function reviewFormSubmit
+   * @description returns form submit data
+   *
+   */
   reviewFormSubmit = data => {
     const { submitReview, isExpressCheckout, navigation } = this.props;
     const { cvvCode } = data;

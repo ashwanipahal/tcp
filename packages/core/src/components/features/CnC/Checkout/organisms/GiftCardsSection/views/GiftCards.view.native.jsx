@@ -31,6 +31,13 @@ class GiftCards extends React.PureComponent {
     return null;
   }
 
+  /**
+   * @function getHeading
+   * @description returns heading of  gift card
+   * @param {object}[labels] Labels of module
+   * @param {boolean}[isGiftCardApplied] Applied gift cards
+   *
+   */
   getHeading = (labels, isGiftCardApplied) => {
     return (
       <BodyCopyWithSpacing
@@ -44,6 +51,13 @@ class GiftCards extends React.PureComponent {
     );
   };
 
+  /**
+   * @function checkAddNew
+   * @description returns to show add new gift card button
+   * @param {boolean}[enableAddGiftCard] Enable add button
+   * @param {boolean}[isFromReview] Parent form is Review form
+   * @param {boolean}[isExpressCheckout] Express checkout page
+   */
   checkAddNew = (enableAddGiftCard, isFromReview, isExpressCheckout) => {
     return !enableAddGiftCard && (!isFromReview || (isFromReview && isExpressCheckout));
   };
@@ -144,6 +158,13 @@ class GiftCards extends React.PureComponent {
     );
   };
 
+  /**
+   * @function renderNoApplied
+   * @description returns No Gift card text
+   * @param {object}[labels] Labels of module
+   * @param {boolean}[isFromReview] Parent form is Review form
+   * @param {object}[appliedGiftCards] Array of applied gift cards
+   */
   renderNoApplied = (labels, isFromReview, appliedGiftCards) => {
     return (
       isFromReview &&

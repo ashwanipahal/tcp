@@ -82,6 +82,11 @@ const renderAppliedGiftCardsProps = {
   },
 };
 
+/**
+ * @function GiftCardSectionHeading
+ * @description returns heading of gift cards
+ *
+ */
 const GiftCardSectionHeading = (
   giftCardList,
   labels,
