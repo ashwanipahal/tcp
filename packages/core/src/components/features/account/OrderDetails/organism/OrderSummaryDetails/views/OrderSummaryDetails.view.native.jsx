@@ -20,7 +20,7 @@ import {
 export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
   const { summary } = orderDetailsData || {};
   const {
-    // canceledItem,
+    canceledItems,
     couponsTotal,
     currencySymbol,
     grandTotal,
@@ -42,7 +42,7 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
           fontSize="fs14"
           fontWeight="semibold"
           textAlign="left"
-          spacingStyles="margin-top-MED margin-bottom-XS"
+          spacingStyles="margin-top-SM margin-bottom-XS"
           text={getLabelValue(ordersLabels, 'lbl_orderDetails_orderSummary')}
         />
 
@@ -60,95 +60,100 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
           fontFamily="primary"
           fontSize="fs14"
           textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
-          text={`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems}):`}
+          spacingStyles="margin-top-XS "
+          text={`${getLabelValue(ordersLabels, 'lbl_orders_items')} (${purchasedItems ||
+            canceledItems}):`}
         />
         <BodyCopyWithSpacing
           fontFamily="primary"
           fontSize="fs14"
           textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
+          spacingStyles="margin-top-XS "
           text={formatAmount(subTotal, currencySymbol)}
         />
       </StyledRowDataContainer>
-      <StyledRowDataContainer>
-        <BodyCopyWithSpacing
-          fontFamily="primary"
-          fontSize="fs14"
-          textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
-          text={`${getLabelValue(ordersLabels, 'lbl_orders_couponsPromotions')}:`}
-        />
-        <BodyCopyWithSpacing
-          fontFamily="primary"
-          fontSize="fs14"
-          textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
-          text={formatAmount(couponsTotal, currencySymbol)}
-        />
-      </StyledRowDataContainer>
-      <StyledRowDataContainer>
-        <BodyCopyWithSpacing
-          fontFamily="primary"
-          fontSize="fs14"
-          textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
-          text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}:`}
-        />
-
-        <BodyCopyWithSpacing
-          fontFamily="primary"
-          fontSize="fs14"
-          textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
-          text={
-            shippingTotal > 0
-              ? formatAmount(shippingTotal, currencySymbol)
-              : `${getLabelValue(ordersLabels, 'lbl_orders_free')}`
-          }
-        />
-      </StyledRowDataContainer>
-      <StyledRowDataContainer>
-        <BodyCopyWithSpacing
-          fontFamily="primary"
-          fontSize="fs14"
-          textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
-          text={`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
-        />
-        <BodyCopyWithSpacing
-          fontFamily="primary"
-          fontSize="fs14"
-          textAlign="left"
-          spacingStyles="margin-top-XS margin-bottom-XS"
-          text={
-            !totalTax
-              ? `${currencySymbol}${getLabelValue(ordersLabels, 'lbl_orders_freeAmount')}`
-              : `${currencySymbol}${totalTax.toFixed(2)}`
-          }
-        />
-      </StyledRowDataContainer>
-      <LineComp borderColor="gray.600" borderWidth={1} marginTop={10} marginBottom={10} />
       {!!grandTotal && (
-        <StyledRowDataContainer>
-          <BodyCopyWithSpacing
-            fontFamily="primary"
-            fontSize="fs14"
-            textAlign="left"
-            fontWeight="semibold"
-            spacingStyles="margin-top-XS margin-bottom-XS"
-            text={`${getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}:`}
-          />
-          <BodyCopyWithSpacing
-            fontFamily="primary"
-            fontSize="fs14"
-            textAlign="left"
-            fontWeight="semibold"
-            spacingStyles="margin-top-XS margin-bottom-XS"
-            text={`${currencySymbol}${grandTotal.toFixed(2)}`}
-          />
-        </StyledRowDataContainer>
+        <>
+          <StyledRowDataContainer>
+            <BodyCopyWithSpacing
+              fontFamily="primary"
+              fontSize="fs14"
+              textAlign="left"
+              spacingStyles="margin-top-XS "
+              text={`${getLabelValue(ordersLabels, 'lbl_orders_couponsPromotions')}:`}
+            />
+            <BodyCopyWithSpacing
+              fontFamily="primary"
+              fontSize="fs14"
+              textAlign="left"
+              spacingStyles="margin-top-XS "
+              text={formatAmount(couponsTotal, currencySymbol)}
+            />
+          </StyledRowDataContainer>
+          <StyledRowDataContainer>
+            <BodyCopyWithSpacing
+              fontFamily="primary"
+              fontSize="fs14"
+              textAlign="left"
+              text={`${getLabelValue(ordersLabels, 'lbl_orderDetails_shipping')}:`}
+            />
+
+            <BodyCopyWithSpacing
+              fontFamily="primary"
+              fontSize="fs14"
+              textAlign="left"
+              text={
+                shippingTotal > 0
+                  ? formatAmount(shippingTotal, currencySymbol)
+                  : `${getLabelValue(ordersLabels, 'lbl_orders_free')}`
+              }
+            />
+          </StyledRowDataContainer>
+          <StyledRowDataContainer>
+            <BodyCopyWithSpacing
+              fontFamily="primary"
+              fontSize="fs14"
+              textAlign="left"
+              spacingStyles="margin-top-XS "
+              text={`${getLabelValue(ordersLabels, 'lbl_orders_tax')}:`}
+            />
+            <BodyCopyWithSpacing
+              fontFamily="primary"
+              fontSize="fs14"
+              textAlign="left"
+              spacingStyles="margin-top-XS "
+              text={
+                !totalTax
+                  ? `${currencySymbol}${getLabelValue(ordersLabels, 'lbl_orders_freeAmount')}`
+                  : `${currencySymbol}${totalTax.toFixed(2)}`
+              }
+            />
+          </StyledRowDataContainer>
+        </>
       )}
+      <LineComp borderColor="gray.600" borderWidth={1} marginTop={10} marginBottom={10} />
+      <StyledRowDataContainer>
+        <BodyCopyWithSpacing
+          fontFamily="primary"
+          fontSize="fs14"
+          textAlign="left"
+          fontWeight="semibold"
+          spacingStyles="margin-top-XS margin-bottom-XS"
+          text={`${getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}:`}
+        />
+        <BodyCopyWithSpacing
+          fontFamily="primary"
+          fontSize="fs14"
+          textAlign="left"
+          fontWeight="semibold"
+          spacingStyles="margin-top-XS margin-bottom-XS"
+          text={
+            grandTotal
+              ? `${currencySymbol}${grandTotal.toFixed(2)}`
+              : `${currencySymbol}${getLabelValue(ordersLabels, 'lbl_orders_freeAmount')}`
+          }
+        />
+      </StyledRowDataContainer>
     </View>
   );
 };

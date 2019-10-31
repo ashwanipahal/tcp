@@ -5,10 +5,11 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
-import { getLocator } from '@tcp/core/src/utils';
+import { getLocator, isCanada } from '@tcp/core/src/utils';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import LoyaltyBanner from '../../../../LoyaltyBanner';
 
 const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTotal, labels) => {
   return (
@@ -45,7 +46,13 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
   );
 };
 
-const getBody = (className, ledgerSummaryData, labels) => {
+const renderLoyaltyBanner = pageCategory => {
+  return (
+    !isCanada() && pageCategory !== 'confirmation' && <LoyaltyBanner pageCategory={pageCategory} />
+  );
+};
+
+const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
   const {
     itemsCount,
     currencySymbol,
@@ -347,6 +354,7 @@ const getBody = (className, ledgerSummaryData, labels) => {
             </Col>
           </Row>
         ) : null}
+        {renderLoyaltyBanner(pageCategory)}
       </Grid>
       <RenderPerf.Measure name={PRICING_VISIBLE} />
     </React.Fragment>

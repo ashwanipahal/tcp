@@ -849,6 +849,35 @@ export const getStoreHours = (
     return '';
   }
 };
+/**
+ * @summary this is meant to generate a new UID on each API call
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @returns {string} returns generated traceId of User or else not-found string value
+
+ */
+export const generateTraceId = () => {
+  const apiConfigObj = getAPIConfig();
+  let prefix;
+
+  // Setting prefix of trace-id based on platform of user i.e. either mobile, browser, Node
+  if (isMobileApp()) {
+    prefix = 'MOBILE';
+  } else if (isClient()) {
+    prefix = 'CLIENT';
+  } else {
+    prefix = 'NODE';
+  }
+  const timeStamp = `${Date.now()}`;
+
+  // On the Node Server traceIdCount can grow to Infinity, so we will reset it at 10000
+  if (apiConfigObj.traceIdCount > 10000) {
+    apiConfigObj.traceIdCount = 0;
+  }
+
+  const traceIdCount = apiConfigObj.traceIdCount + 1;
+  const traceId = `${prefix}_${traceIdCount}_${timeStamp}`;
+  return traceId || 'not-found';
+};
 
 /**
  * Function to get Order Detail Group Header label and Message
@@ -856,6 +885,11 @@ export const getStoreHours = (
 
  * @returns {object} label and message for order group
  */
+
+export const readCookieMobileApp = () => {
+  return null;
+};
+
 export const getBopisOrderMessageAndLabel = (status, ordersLabels, isBopisOrder) => {
   let label;
   let message;
@@ -965,6 +999,26 @@ export const insertIntoString = (string, idx, rem, str) => {
   return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
 };
 
+/**
+ * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
+ */
+export const enableBodyScroll = () => {
+  if (isClient()) {
+    const [body] = document.getElementsByTagName('body');
+    body.classList.remove('disableBodyScroll');
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = () => {
+  if (isClient()) {
+    const [body] = document.getElementsByTagName('body');
+    body.classList.add('disableBodyScroll');
+  }
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -1000,6 +1054,8 @@ export default {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
+  readCookieMobileApp,
   changeImageURLToDOM,
+  generateTraceId,
   insertIntoString,
 };

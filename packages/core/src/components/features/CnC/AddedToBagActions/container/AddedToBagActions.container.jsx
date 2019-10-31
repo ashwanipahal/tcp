@@ -8,7 +8,7 @@ import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
-
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
@@ -33,6 +33,8 @@ export class AddedToBagContainer extends React.Component<Props> {
       getPayPalSettings,
       containerId,
       hideHeader,
+      checkoutServerError,
+      isPayPalWebViewEnable,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -54,6 +56,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         getPayPalSettings={getPayPalSettings}
         containerId={containerId}
         hideHeader={hideHeader}
+        checkoutServerError={checkoutServerError}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
   }
@@ -88,6 +92,8 @@ const mapStateToProps = state => {
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
     getPayPalSettings: checkoutSelectors.getPayPalSettings(state),
     isUSSite: isUsSite(state),
+    checkoutServerError: checkoutSelectors.getCheckoutServerError(state),
+    isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
   };
 };
 

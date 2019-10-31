@@ -14,9 +14,9 @@ import {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   BannerWrapper,
-  CouponsWrapper,
 } from '../styles/CnCTemplate.style.native';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
+import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 
@@ -29,6 +29,7 @@ const CnCCommonTemplate = ({
   isGuest,
   showAccordian,
   isConfirmationPage,
+  pageCategory,
 }) => {
   return (
     <>
@@ -38,7 +39,7 @@ const CnCCommonTemplate = ({
             <CouponAndPromos isCheckout />
           </CouponAndPromosWrapper>
           <View>
-            <OrderLedgerContainer showAccordian={showAccordian} />
+            <OrderLedgerContainer showAccordian={showAccordian} pageCategory={pageCategory} />
           </View>
           {!isGuest && (
             <BonusPointsWrapper>
@@ -73,7 +74,11 @@ const CnCCommonTemplate = ({
         </>
       ) : (
         <View>
-          <OrderLedgerContainer isConfirmationPage={isConfirmationPage} showAccordian />
+          <OrderLedgerContainer
+            isConfirmationPage={isConfirmationPage}
+            pageCategory={pageCategory}
+            showAccordian
+          />
           <BannerWrapper>
             <BodyCopyWithSpacing
               textAlign="center"
@@ -94,24 +99,7 @@ const CnCCommonTemplate = ({
               />
             </BannerWrapper>
           )}
-          <CouponsWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="COUPONS"
-            />
-          </CouponsWrapper>
-          <CouponsWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="COUPONS"
-            />
-          </CouponsWrapper>
+          <PersonalizedCoupons />
         </View>
       )}
     </>
@@ -127,10 +115,12 @@ CnCCommonTemplate.propTypes = {
   isGuest: PropTypes.func.isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
+  pageCategory: PropTypes.shape({}),
 };
 
 CnCCommonTemplate.defaultProps = {
   isConfirmationPage: false,
+  pageCategory: {},
 };
 
 export default CnCCommonTemplate;

@@ -20,7 +20,7 @@ import {
   getSetOrderProductDetails,
 } from '../../Confirmation/container/Confirmation.actions';
 import { isMobileApp, routerPush } from '../../../../../utils';
-import { resetCheckoutReducer } from '../container/Checkout.action';
+import { resetCheckoutReducer } from '../container/Checkout.action.util';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
 import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
@@ -70,7 +70,7 @@ describe('CheckoutReview saga', () => {
     CheckoutReviewSaga.next(res);
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
-
+    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
@@ -92,6 +92,7 @@ describe('CheckoutReview saga', () => {
     const res = { userDetails: { emailAddress } };
     CheckoutReviewSaga.next({ userDetails: { emailAddress } }, orderId);
     CheckoutReviewSaga.next(res);
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
@@ -148,6 +149,7 @@ describe('CheckoutReview saga', () => {
 describe('submitOrderProcessing saga', () => {
   it('submitOrderProcessing review Page with venmo', () => {
     const orderProcessing = submitOrderProcessing();
+    orderProcessing.next();
     orderProcessing.next(true); // Venmo In-Progress
     orderProcessing.next(true); // Venmo Save Option Selected
     orderProcessing.next({ nonce: 'encrypted-nonce', deviceData: 'test-device-data' }); // Venmo Data

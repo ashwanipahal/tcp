@@ -13,6 +13,7 @@ const PayPalButton = props => {
     navigation,
     paypalEnv,
     setVenmoState,
+    closeModal,
   } = props;
 
   const [showAsModal, setAsModal] = useState(false);
@@ -21,7 +22,6 @@ const PayPalButton = props => {
       case 'payment':
         payPalWebViewHandle(true);
         setAsModal(true);
-        //Here to disable venmo button
         setVenmoState(false);
         break;
       case 'onAuthorize':
@@ -29,10 +29,13 @@ const PayPalButton = props => {
         payPalWebViewHandle(false);
         setAsModal(false);
         setVenmoState(true);
+        closeModal(true);
         break;
       case 'onCancel':
         clearPaypalSettings();
         setVenmoState(true);
+        payPalWebViewHandle(false);
+
         break;
       default:
         payPalWebViewHandle(false);
@@ -49,7 +52,7 @@ const PayPalButton = props => {
   if (showAsModal) {
     styles = {
       position: 'absolute',
-      top: 0,
+      top: 12,
       width: '100%',
       height: 800,
       zIndex: 999,

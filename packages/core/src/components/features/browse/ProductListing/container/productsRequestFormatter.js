@@ -29,6 +29,11 @@ import {
 } from './ProductListing.selectors';
 import { PRODUCTS_PER_LOAD, routingInfoStoreView } from './ProductListing.constants';
 
+/* calculate the total number of products based on the categoriesset to display to customer i.e Phantom categories */
+function getTotalProductsCount(updatedAvailableL3) {
+  return updatedAvailableL3.reduce((total, { count }) => total + count, 0);
+}
+
 export default class ProductsOperator {
   constructor() {
     this.resetBucketingConfig();
@@ -108,7 +113,7 @@ export default class ProductsOperator {
   };
 
   getProductImagePath = (id, excludeExtension) => {
-    const imageName = id.split('_');
+    const imageName = (id && id.split('_')) || [];
     const imagePath = imageName[0];
 
     return {
@@ -520,6 +525,9 @@ export default class ProductsOperator {
       this.bucketingConfig
     );
     ({ ...this.bucketingConfig } = { ...updatedBucketingConfig });
+    if (this.bucketingConfig.availableL3.length) {
+      res.totalProductsCount = getTotalProductsCount(this.bucketingConfig.availableL3);
+    }
   };
 
   getProductsListingMoreProducts(state, location) {

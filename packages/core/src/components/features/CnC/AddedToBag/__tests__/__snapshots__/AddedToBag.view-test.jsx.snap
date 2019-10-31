@@ -23,7 +23,7 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     bottom: 0;
     transform: none;
     box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
-    padding: 7px 20px 20px;
+    padding: 7px 15px 20px 17px;
     width: 350px;
     @media ",
       [Function],
@@ -57,18 +57,60 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
   >
     <ProductInformation
       data={Object {}}
+      inheritedStyles={
+        Array [
+          "
+  .product {
+    margin: 0;
+    width: 100%;
+  }
+",
+        ]
+      }
       labels={Object {}}
       quantity={1}
     />
     <Connect(AddedToBagViewPointsContainer)
       className="added-to-bag-points"
+      inheritedStyles={
+        Array [
+          "
+  .row-padding {
+    margin: 0;
+    width: 100%;
+  }
+  .divided-line {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+",
+        ]
+      }
       labels={Object {}}
     />
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-added-to-bag"
       handleCartCheckout={[MockFunction]}
+      inheritedStyles={
+        Array [
+          "
+  .view-bag-container {
+    margin: 0;
+    width: 100%;
+  }
+  .checkout-button {
+    margin: 0;
+    width: 100%;
+  }
+",
+        ]
+      }
       labels={Object {}}
       showVenmo={false}
+    />
+    <Connect(LoyaltyBannerContainer)
+      pageCategory="isAddedToBagPage"
     />
     <BOSSBanner
       labels={Object {}}

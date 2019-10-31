@@ -5,6 +5,7 @@ import { closeAddedToBag } from './AddedToBag.actions';
 import { getAddedToBagData, isOpenAddedToBag, getQuantityValue } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 
 // @flow
 type Props = {
@@ -37,6 +38,14 @@ export class AddedToBagContainer extends React.Component<Props> {
     this.handleCloseModal();
   }
 
+  hideHeaderWhilePaypalView = hide => {
+    if (hide) {
+      this.props.navigation.setParams({ headerMode: true });
+    } else {
+      this.props.navigation.setParams({ headerMode: false });
+    }
+  };
+
   render() {
     const {
       addedToBagData,
@@ -45,6 +54,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       quantity,
       navigation,
       isInternationalShipping,
+      isPayPalWebViewEnable,
     } = this.props;
     return (
       <AddedToBag
@@ -56,6 +66,8 @@ export class AddedToBagContainer extends React.Component<Props> {
         quantity={quantity}
         handleContinueShopping={this.closeModal}
         navigation={navigation}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
+        hideHeader={this.hideHeaderWhilePaypalView}
       />
     );
   }
@@ -77,6 +89,7 @@ const mapStateToProps = state => {
     isOpenDialog: isOpenAddedToBag(state),
     quantity: getQuantityValue(state),
     isInternationalShipping: getIsInternationalShipping(state),
+    isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
   };
 
   if (state.Labels.global) {
@@ -91,6 +104,7 @@ const mapStateToProps = state => {
           lbl_bossBanner_noRush: noRushText,
           lbl_info_price: price,
           lbl_info_pointYouCanEarn: pointsYouCanEarn,
+          lbl_info_mprPoint: MPRPoints,
           lbl_info_subTotal: bagSubTotal,
           lbl_info_totalRewardsInBag: totalRewardsInPoints,
           lbl_info_totalNextRewards: totalNextRewards,
@@ -113,6 +127,7 @@ const mapStateToProps = state => {
       noRushText,
       price,
       pointsYouCanEarn,
+      MPRPoints,
       bagSubTotal,
       totalRewardsInPoints,
       totalNextRewards,
@@ -140,6 +155,7 @@ const mapStateToProps = state => {
       noRushText: '',
       price: '',
       pointsYouCanEarn: '',
+      MPRPoints: '',
       bagSubTotal: '',
       totalRewardsInPoints: '',
       totalNextRewards: '',

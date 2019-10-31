@@ -32,30 +32,15 @@ const PickUpSummary = ({ className, pickUpStore, ordersLabels }) => {
   }
   return (
     <BodyCopy component="div" className={className}>
-      <BodyCopy
-        className="capitalize"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        fontFamily="secondary"
-      >
+      <BodyCopy className="capitalize" fontSize="fs14" fontWeight="black" fontFamily="secondary">
         {basicInfo.storeName}
       </BodyCopy>
 
-      <BodyCopy
-        className="capitalize"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        fontFamily="secondary"
-      >
+      <BodyCopy className="capitalize" fontSize="fs14" fontWeight="black" fontFamily="secondary">
         {address.addressLine1}
       </BodyCopy>
 
-      <BodyCopy
-        className="capitalize"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        fontFamily="secondary"
-      >
+      <BodyCopy className="capitalize" fontSize="fs14" fontWeight="black" fontFamily="secondary">
         {`${address.city}, ${address.state}, ${address.zipCode}`}
       </BodyCopy>
       <BodyCopy className="margin-wrapper" component="div">
@@ -73,8 +58,10 @@ const PickUpSummary = ({ className, pickUpStore, ordersLabels }) => {
       <Anchor
         fontSizeVariation="large"
         underline
+        noLink
         anchorVariation="primary"
         fontFamily="secondary"
+        href="#"
         onClick={() => getDirections(address)}
         className="margin-wrapper"
       >

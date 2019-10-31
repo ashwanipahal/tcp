@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
-import { Image } from '../../../../../../common/atoms';
+import { Image, RichText } from '../../../../../../common/atoms';
 
 const infoIcon = require('../../../../../../../assets/info-icon.png');
 
@@ -11,8 +11,9 @@ const infoIcon = require('../../../../../../../assets/info-icon.png');
  */
 
 const getCvvInfo = ({ cvvCodeRichText }) => {
+  const tooltip = () => <RichText isNativeView source={cvvCodeRichText} />;
   return (
-    <ReactTooltip withOverlay={false} popover={cvvCodeRichText}>
+    <ReactTooltip withOverlay={false} popover={tooltip()} height={350} width={350}>
       <Image source={infoIcon} height={15} width={15} />
     </ReactTooltip>
   );

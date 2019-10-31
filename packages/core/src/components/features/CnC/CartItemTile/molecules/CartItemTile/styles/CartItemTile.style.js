@@ -15,6 +15,13 @@ export default css`
       display: inline-flex;
     }
   }
+
+  span.was-price {
+    margin-left: 5px;
+    color: ${props => props.theme.colorPalette.gray[800]};
+    text-decoration: line-through;
+  }
+
   .padding-left-6 {
     padding-left: 6px;
   }
@@ -102,7 +109,7 @@ export default css`
     position: absolute;
     top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     right: ${props => props.theme.spacing.ELEM_SPACING.MED};
-
+    z-index: 2;
     img {
       display: block;
     }
@@ -215,6 +222,9 @@ export default css`
         span:not(.list-price) {
           font-size: ${props => props.theme.fonts.fontSize.listmenu.small}px;
         }
+        span.was-price {
+          font-size: ${props => props.theme.typography.fontSizes.fs12};
+        }
         /* stylelint-enable */
       }
 
@@ -289,8 +299,8 @@ export default css`
   }
 
   .productImgBrand {
-    p {
-      margin-right: 35px;
+    h2 {
+      padding-right: 35px;
     }
   }
 

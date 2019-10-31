@@ -55,7 +55,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin: 0 16px;
+      margin: 0 21px;
     }
   }
 
@@ -276,6 +276,7 @@ export default css`
     }
     .stacked-cta-wrapper-class {
       font-size: 14px;
+      color: ${props => props.theme.colorPalette.gray['900']};
     }
 
     &.stacked-button-list-wrapper .stacked-button,

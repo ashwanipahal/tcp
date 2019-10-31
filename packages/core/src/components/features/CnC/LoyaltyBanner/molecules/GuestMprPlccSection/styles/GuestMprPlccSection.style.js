@@ -1,104 +1,261 @@
 import { css } from 'styled-components';
+import CHECKOUT_STAGES, {
+  ADDED_TO_BAG_PAGE,
+} from '../../../../../../../../../web/src/pages/App.constants';
+
+const plccMpr = props =>
+  props.isPlcc ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;
+
+const alignCenter = () => `
+    text-align: center;
+`;
+const paddingTopSm = props => `
+    padding-top: ${props.theme.spacing.ELEM_SPACING.SM};
+`;
+const paddingTopMed = props => `
+    padding-top: ${props.theme.spacing.ELEM_SPACING.MED};
+`;
+const fontSize10 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs10};
+`;
+const fontSize12 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs12};
+`;
+const fontSize14 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs14};
+`;
+const fontSize16 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs16};
+`;
+const fontSize18 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs18};
+`;
+const fontSize20 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs20};
+`;
+const fontSize24 = props => `
+    font-size: ${props.theme.typography.fontSizes.fs24};
+`;
+const colorTheme = props => `
+    color: ${plccMpr(props)};
+`;
 
 const Styles = css`
-  .youCanEarnPoints,
-  .save30Today,
-  .earnDoublePoints,
-  .subtotalPointsSection {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  .mpr-plcc-theme {
+    ${props => colorTheme(props)}
   }
-  .subtotalPointsSection {
+  .heading-val {
+    ${props => paddingTopSm(props)}
+    ${alignCenter()}
+    ${props => {
+      if (props.isPlcc) {
+        return `${fontSize16(props)}${colorTheme(props)}`;
+      }
+      return fontSize12(props);
+    }};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => (props.isPlcc ? `${fontSize14(props)}` : fontSize10(props))};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => paddingTopMed(props)}
+        ${props => (props.isPlcc ? `${fontSize18(props)}` : fontSize16(props))};
+    }
+  }
+  .subheading-val {
+    ${alignCenter()}
+    ${props => colorTheme(props)}
+    ${props => paddingTopSm(props)}
+    ${props => fontSize18(props)}
+
+    .section-symbol{
+      vertical-align: super;
+      ${alignCenter}
+      ${fontSize12}
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => fontSize14(props)}
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => paddingTopMed(props)}
+        ${props => fontSize20(props)}
+    }
+  }
+  .description-val {
+    ${alignCenter()}
+    ${props => paddingTopSm(props)}
+    ${props => fontSize12(props)}
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => fontSize10(props)}
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => paddingTopMed(props)}
+        ${props => fontSize16(props)}
+    }
+  }
+  .remaining-val {
+    ${alignCenter()}
+    ${props => paddingTopSm(props)}
+    ${props => fontSize12(props)}
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => fontSize10(props)}
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => paddingTopMed(props)}
+        ${props => fontSize16(props)}
+    }
+  }
+  .subtotal-section {
+    border-top: 1px solid ${props => props.theme.colorPalette.gray[300]};
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[300]};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  }
-  .youCanEarnPoints,
-  .earnDoublePoints,
-  .currentSubtotalText,
-  .estimatedSubtotalText {
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
-  }
-  .save30Today {
-    font-size: ${props => props.theme.typography.fontSizes.fs18};
-  }
-  .currentSubtotalVal {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-  }
-  .estimatedSubtotalVal {
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
-  }
-
-  @media ${props => props.theme.mediaQuery.medium} {
-    .youCanEarnPoints,
-    .save30Today,
-    .earnDoublePoints,
-    .subtotalPointsSection {
-      padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    }
-    .subtotalPointsSection {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    }
-    .youCanEarnPoints,
-    .earnDoublePoints {
-      font-size: ${props => props.theme.typography.fontSizes.fs10};
-    }
-    .save30Today,
-    .currentSubtotalVal {
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
-    }
-    .currentSubtotalText,
-    .estimatedSubtotalText {
-      font-size: ${props => props.theme.typography.fontSizes.fs12};
-    }
-    .estimatedSubtotalVal {
-      font-size: ${props => props.theme.typography.fontSizes.fs16};
+    ${props => paddingTopSm(props)}
+    @media ${props => props.theme.mediaQuery.large} {
+        margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+        ${props => paddingTopMed(props)}
     }
   }
-
-  @media ${props => props.theme.mediaQuery.large} {
-    .youCanEarnPoints,
-    .save30Today,
-    .earnDoublePoints,
-    .subtotalPointsSection {
-      padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  .current-subtotal-val-col,
+  .estimated-subtotal-val-col {
+    text-align: right;
+  }
+  .current-subtotal-text {
+    color: ${props => props.theme.colorPalette.gray[800]};
+    ${props => fontSize12(props)}
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => fontSize12(props)}
     }
-    .subtotalPointsSection {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => fontSize14(props)}
     }
-    .youCanEarnPoints,
-    .earnDoublePoints,
-    .currentSubtotalVal {
-      font-size: ${props => props.theme.typography.fontSizes.fs16};
+  }
+  .current-subtotal-val {
+    ${props => fontSize14(props)}
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => fontSize14(props)}
     }
-    .save30Today {
-      font-size: ${props => props.theme.typography.fontSizes.fs20};
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => fontSize16(props)}
     }
-    .currentSubtotalText,
-    .estimatedSubtotalText {
-      font-size: ${props => props.theme.typography.fontSizes.fs14};
+  }
+  .estimated-subtotal-text {
+    color: ${props => props.theme.colorPalette.gray[800]};
+    ${props => fontSize12(props)}
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => fontSize12(props)}
     }
-    .estimatedSubtotalVal {
-      font-size: ${props => props.theme.typography.fontSizes.fs18};
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => fontSize14(props)}
+    }
+  }
+  .estimated-subtotal-val {
+    ${props => fontSize16(props)}
+    @media ${props => props.theme.mediaQuery.medium} {
+        ${props => fontSize16(props)}
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+        ${props => fontSize18(props)}
     }
   }
 
   ${props =>
-    props.isProductDetailView
+    props.pageCategory === CHECKOUT_STAGES.REVIEW
       ? `
-    .youCanEarnPoints {
-      color: ${
-        props.isPlcc
-          ? props.theme.colorPalette.userTheme.plcc
-          : props.theme.colorPalette.userTheme.mpr
-      };
-      font-size: ${props.theme.typography.fontSizes.fs20};
-      padding-top: ${props.theme.spacing.ELEM_SPACING.SM};
-    }
-    .save30Today {
-      color: ${props.theme.colorPalette.gray[900]};
-      font-size: ${props.theme.typography.fontSizes.fs12};
-      padding-top: ${props.theme.spacing.ELEM_SPACING.XXS};
-    }
-    `
+        .heading-val {
+          ${paddingTopSm(props)}
+          ${fontSize16(props)}
+          ${colorTheme(props)}
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize14(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize18(props)}
+          }
+        }
+        .subheading-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          color: ${props.theme.colorPalette.gray[900]};
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize10(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize16(props)}
+          }
+        }
+      `
+      : ``};
+
+  ${props =>
+    props.pageCategory === CHECKOUT_STAGES.CONFIRMATION
+      ? `
+        .heading-val {
+          ${paddingTopSm(props)}
+          ${fontSize16(props)}
+          ${
+            props.earnedRewardAvailable
+              ? colorTheme(props)
+              : `color: ${props.theme.colorPalette.gray[900]};`
+          }
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize14(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize24(props)}
+          }
+        }
+        .subheading-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          color: ${props.theme.colorPalette.gray[900]};
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize10(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize16(props)}
+          }
+        }
+      `
+      : ``};
+  ${props =>
+    props.pageCategory === ADDED_TO_BAG_PAGE
+      ? `
+        .heading-val {
+          ${paddingTopSm(props)}
+          ${fontSize16(props)}
+          ${colorTheme(props)}
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize16(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize16(props)}
+          }
+        }
+        .subheading-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          color: ${props.theme.colorPalette.gray[900]};
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize12(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize12(props)}
+          }
+        }
+        .description-val {
+          ${paddingTopSm(props)}
+          ${fontSize12(props)}
+          @media ${props.theme.mediaQuery.medium} {
+            ${fontSize12(props)}
+          }
+          @media ${props.theme.mediaQuery.large} {
+            ${fontSize12(props)}
+          }
+        }
+      `
       : ``};
 `;
 
+// ${props => (props.pageCategory ? `` : ``)};
 export default Styles;

@@ -49,7 +49,7 @@ const PickupSkuSelectionForm = props => {
 
   const currentColorPdpUrl = currentColorEntry && currentColorEntry.pdpUrl;
 
-  const pdpToPath = getProductListToPath(currentColorPdpUrl);
+  const pdpToPath = currentColorPdpUrl && getProductListToPath(currentColorPdpUrl);
 
   const getProductDetailContainer = () => {
     return (
@@ -115,6 +115,7 @@ const PickupSkuSelectionForm = props => {
             selectedColorProductId={generalProductId}
             initialFormValues={initialValues}
             showAddToBagCTA={false}
+            renderReceiveProps
           />
         </div>
       </div>

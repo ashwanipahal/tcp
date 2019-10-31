@@ -1,3 +1,4 @@
+/* eslint max-lines: ["error", 500] */
 import { API_METHODS, PRODUCTS_URI, SAVE_FOR_LATER } from './api.constants';
 
 const endpoints = {
@@ -98,7 +99,6 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: 'v2/account/logout',
   },
-
   getPointsHistory: {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getMyPointHistory',
@@ -168,6 +168,7 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS,
     unbxd: true,
     unbxdCustom: true,
+    authHeaderRequired: true,
   },
   getProductsByOutfits: {
     method: 'GET',
@@ -192,6 +193,7 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS,
     unbxd: true,
     unbxdCustom: true,
+    authHeaderRequired: true,
   },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
@@ -282,7 +284,6 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS_AUTOSUGGEST,
     unbxd: true,
   },
-  // STORE LOCATORS
   getFavoriteStore: {
     method: 'GET',
     URI: 'v2/store/getFavouriteStoreLocation',
@@ -295,12 +296,10 @@ const endpoints = {
     method: 'POST',
     URI: 'v2/store/addFavouriteStoreLocation',
   },
-
   getSocialAccountsInfo: {
     method: 'GET',
     URI: 'v2/account/preferences/socialNew',
   },
-
   saveSocialAccountsInfo: {
     method: 'PUT',
     URI: 'v2/account/preferences/socialNew',
@@ -420,6 +419,10 @@ const endpoints = {
   startExpressCheckout: {
     method: 'POST',
     URI: 'v2/checkout/expressCheckout',
+  },
+  getInstagramAccessToken: {
+    method: 'GET',
+    URI: 'v2/instagram/accessToken',
   },
 };
 export default endpoints;

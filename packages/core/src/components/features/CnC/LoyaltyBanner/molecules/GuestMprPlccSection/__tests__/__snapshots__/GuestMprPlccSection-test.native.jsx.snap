@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestMprPlccSection View Component GuestMprPlccSection should render correctly 1`] = `
+<View>
+  0
+  0
+</View>
+`;
+
+exports[`GuestMprPlccSection View Component GuestMprPlccSection should render correctly 2`] = `
+<View>
+  0
+  <Styled(View)>
+    <Styled(View) />
+    <Styled(View)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs12"
+          fontWeight="semibold"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          textDecoration={null}
+        />
+      </Styled(Text)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs14"
+          fontWeight="semibold"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          text=""
+          textDecoration={null}
+        />
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs14"
+          fontWeight="semibold"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          text="21.00"
+          textDecoration={null}
+        />
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs12"
+          fontWeight="semibold"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          textDecoration={null}
+        />
+      </Styled(Text)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs16"
+          fontWeight="extrabold"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          text=""
+          textDecoration={null}
+        />
+        <Styled(BodyCopy)
+          accessibilityText=""
+          dataLocator=""
+          fontSize="fs16"
+          fontWeight="extrabold"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          text="33.00"
+          textDecoration={null}
+        />
+      </Styled(Text)>
+    </Styled(View)>
+    <Styled(View) />
+  </Styled(View)>
+</View>
+`;

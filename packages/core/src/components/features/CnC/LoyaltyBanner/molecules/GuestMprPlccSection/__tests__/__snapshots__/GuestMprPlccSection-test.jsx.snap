@@ -5,65 +5,21 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
   className=" body"
 >
   <Styled(BodyCopy)
-    className="youCanEarnPoints alignCenter"
+    className="heading-val"
     color="text.primary"
     component="p"
     fontFamily="secondary"
     fontSize={12}
-    fontWeight="extrabold"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  />
-  <Styled(BodyCopy)
-    className="save30Today alignCenter elem-pt-MED"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs20"
-    fontWeight="extrabold"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  />
-  <Styled(BodyCopy)
-    className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="extrabold"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  />
-  <Styled(BodyCopy)
-    className="earnDoublePoints alignCenter"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs16"
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
     textAlign="left"
   >
-    0
+    headingLabel
   </Styled(BodyCopy)>
-  0
-</div>
-`;
-
-exports[`GuestMprPlccSection View Component GuestMprPlccSection should render correctly 2`] = `
-<div
-  className=" body"
->
   <Styled(BodyCopy)
-    className="youCanEarnPoints alignCenter"
+    className="subheading-val"
     color="text.primary"
     component="p"
     fontFamily="secondary"
@@ -73,40 +29,46 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    subHeadingLabel
+  </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="save30Today alignCenter elem-pt-MED"
+    className="description-val"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize="fs20"
+    fontSize={12}
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    descriptionLabel
+  </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="earnDoublePoints alignCenter elem-pt-MED elem-pl-SM elem-pr-SM"
+    className="remaining-val"
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize="fs16"
+    fontSize={12}
     fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
     textAlign="left"
-  />
+  >
+    12
+  </Styled(BodyCopy)>
   <div
-    className="subtotalPointsSection elem-pt-MED elem-mt-MED elem-pl-SM elem-pr-SM"
+    className="subtotal-section"
   >
     <Styled(Row)
-      className="currentSubtotalRow"
+      className="subtotal-row"
       fullBleed={true}
     >
       <Styled(Col)
-        className="currentSubtotalTextCol"
+        className="current-subtotal-text-col"
         colSize={
           Object {
             "large": 7,
@@ -116,7 +78,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="currentSubtotalText"
+          className="current-subtotal-text"
           color="text.primary"
           component="span"
           fontFamily="secondary"
@@ -129,7 +91,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         />
       </Styled(Col)>
       <Styled(Col)
-        className="currentSubtotalValCol"
+        className="current-subtotal-val-col"
         colSize={
           Object {
             "large": 5,
@@ -139,7 +101,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="currentSubtotalVal"
+          className="current-subtotal-val"
           color="text.primary"
           component="span"
           fontFamily="secondary"
@@ -150,16 +112,16 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           link={null}
           textAlign="left"
         >
-          21
+          21.00
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
-      className="estimatedSubtotalRow elem-pt-SM elem-pb-SM"
+      className="estimated-subtotal-row elem-pt-SM elem-pb-SM"
       fullBleed={true}
     >
       <Styled(Col)
-        className="estimatedSubtotalTextCol"
+        className="estimated-subtotal-text-col"
         colSize={
           Object {
             "large": 7,
@@ -169,7 +131,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="estimatedSubtotalText"
+          className="estimated-subtotal-text"
           color="text.primary"
           component="span"
           fontFamily="secondary"
@@ -182,7 +144,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         />
       </Styled(Col)>
       <Styled(Col)
-        className="estimatedSubtotalValCol"
+        className="estimated-subtotal-val-col"
         colSize={
           Object {
             "large": 5,
@@ -192,7 +154,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
         }
       >
         <Styled(BodyCopy)
-          className="estimatedSubtotalVal"
+          className="estimated-subtotal-val"
           color="text.primary"
           component="span"
           fontFamily="secondary"
@@ -203,7 +165,7 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           link={null}
           textAlign="left"
         >
-          33
+          33.00
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>

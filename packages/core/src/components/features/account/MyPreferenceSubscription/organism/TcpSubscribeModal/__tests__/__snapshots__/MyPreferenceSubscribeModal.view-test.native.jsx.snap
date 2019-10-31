@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPreference Subscribe component should render correctly 1`] = `
+<Styled(View)
+  spacingStyles="margin-bottom-XXXL margin-left-MED margin-right-MED"
+>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    data-locator="my-preference-modal_title"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-MED"
+    text="lbl_prefrence_subscribe_text_alerts"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    component="div"
+    data-locator="my-preference-modal_info_text"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-LRG"
+    text="lbl_prefrence_modal_info_text"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    component="div"
+    data-locator="my-preference-modal_sub_info_text"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-MED"
+    text="lbl_prefrence_modal_sub_info_text"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    component="div"
+    data-locator="my-preference-modal_phnumber"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-MED"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="my-preference-modal-phoneNumber"
+    id="phoneNumber"
+    label="lbl_preference_mobileNumber"
+    name="phoneNumber"
+    normalize={[Function]}
+    type="tel"
+  />
+  <Styled(View)>
+    <RichText
+      dataLocator="my-preference-modal_disclaimer_sub_text"
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": "<meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\"><div style=\\"font-size:14px; text-align:center; font-family: Nunito; font-weight: normal;\\">test1test2test3test4 </div>",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    className="submit-button"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    dataLocator="subscribe_modal_submit"
+    disableButton={false}
+    fill="BLUE"
+    fullWidth={true}
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    navigation={Object {}}
+    onPress={[MockFunction]}
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="lbl_prefrence_modal_submit"
+    theme={Object {}}
+    type="submit"
+    url=""
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      className="cancel-button"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      dataLocator="subscribe_modal_cancel"
+      disableButton={false}
+      fill="WHITE"
+      fullWidth={true}
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_prefrence_modal_cancel"
+      theme={Object {}}
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

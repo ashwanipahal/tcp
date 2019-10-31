@@ -29,7 +29,7 @@ export const OrderBillingDetails = ({ orderDetailsData, ordersLabels }) => {
     <>
       {orderDetailsData && (
         <>
-          <ViewWithSpacing spacingStyles="margin-top-MED">
+          <ViewWithSpacing spacingStyles="margin-top-MED margin-bottom-SM">
             <BodyCopyWithSpacing
               fontFamily="primary"
               fontSize="fs14"
@@ -38,14 +38,14 @@ export const OrderBillingDetails = ({ orderDetailsData, ordersLabels }) => {
               text={getLabelValue(ordersLabels, 'lbl_orderDetails_billing')}
             />
             <ImageWrapper>
-              <ImageStyle source={getCardTypeImgUrl(card.cardType)} />
+              <ImageStyle source={getCardTypeImgUrl(card.cardType.toUpperCase())} />
               <BodyCopyWithSpacing
                 fontFamily="primary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                spacingStyles="margin-top-XS margin-bottom-XS"
+                spacingStyles="margin-left-XS margin-right-XS"
                 text={
-                  card.cardType.toUpperCase() !== cardIconMapping.VENMO
+                  card.cardType.toUpperCase() !== 'VENMO'
                     ? `${getLabelValue(
                         ordersLabels,
                         'lbl_orders_ending'
@@ -53,27 +53,28 @@ export const OrderBillingDetails = ({ orderDetailsData, ordersLabels }) => {
                     : card.endingNumbers
                 }
               />
+              {appliedGiftCards &&
+                appliedGiftCards.length > 0 &&
+                appliedGiftCards.map(giftCard => {
+                  return (
+                    <ImageWrapper>
+                      <ImageStyle source={getCardTypeImgUrl(giftCard.cardType.toUpperCase())} />
+                      <BodyCopyWithSpacing
+                        fontFamily="primary"
+                        fontSize="fs12"
+                        fontWeight="semibold"
+                        spacingStyles="margin-left-XS margin-right-XS"
+                        text={`${getLabelValue(
+                          ordersLabels,
+                          'lbl_orders_ending'
+                        )} ${giftCard.endingNumbers.slice(-4)}`}
+                      />
+                    </ImageWrapper>
+                  );
+                })}
             </ImageWrapper>
           </ViewWithSpacing>
-          {appliedGiftCards &&
-            appliedGiftCards.length > 0 &&
-            appliedGiftCards.map(giftCard => {
-              return (
-                <ImageWrapper>
-                  <ImageStyle source={getCardTypeImgUrl(giftCard.cardType)} />
-                  <BodyCopyWithSpacing
-                    fontFamily="primary"
-                    fontSize="fs12"
-                    fontWeight="semibold"
-                    spacingStyles="margin-top-XS margin-bottom-XS"
-                    text={`${getLabelValue(
-                      ordersLabels,
-                      'lbl_orders_ending'
-                    )} ${giftCard.endingNumbers.slice(-4)}`}
-                  />
-                </ImageWrapper>
-              );
-            })}
+
           <Address
             address={billing.billingAddress}
             showCountry={false}

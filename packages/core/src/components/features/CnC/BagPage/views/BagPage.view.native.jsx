@@ -34,7 +34,6 @@ import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialProps
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
-import LoyaltyBanner from '../../LoyaltyBanner';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.container';
 
@@ -329,7 +328,6 @@ export class BagPage extends React.Component {
                 <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
-              {!isCanada() && <LoyaltyBanner />}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}

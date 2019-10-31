@@ -15,6 +15,7 @@ describe('StoreDetail component', () => {
     openStoreDetails: jest.fn(),
     openStoreDirections: jest.fn(),
     routesBack: jest.fn(),
+    fetchRichContent: jest.fn(),
   };
   it('StoreDetail component renders correctly with props', () => {
     const component = shallow(<StoreDetailVanilla {...props} />);

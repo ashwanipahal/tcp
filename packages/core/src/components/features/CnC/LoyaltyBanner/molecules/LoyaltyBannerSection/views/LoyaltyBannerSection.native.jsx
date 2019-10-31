@@ -1,38 +1,16 @@
 import React from 'react';
+import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { LineStyle, LoyaltySectionWrapper } from '../styles/LoyaltyBannerSection.style.native';
 import {
-  LoyaltyBannerContainer,
-  LineStyle,
-  FooterLinksSection,
-  LearnMoreWrapper,
-} from '../styles/LoyaltyBannerSection.style.native';
+  PointsValueText,
+  PointsToNextReward,
+  SectionSymbol,
+} from '../../GuestMprPlccSection/styles/GuestMprPlccSection.style.native';
 import mobileHashValues from '../../../util/utilityNative';
+import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 import GuestMprPlccSection from '../../GuestMprPlccSection';
-import Anchor from '../../../../../../common/atoms/Anchor';
-
-const renderApplyNowLink = labels => {
-  return (
-    <Anchor
-      className="applyNow"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.applyNow}
-      underline
-    />
-  );
-};
-
-const renderLearnMoreLink = labels => {
-  return (
-    <Anchor
-      className="learnMore"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.learnMore}
-      underline
-    />
-  );
-};
+import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 
 const LoyaltyBannerSection = props => {
   const {
@@ -40,80 +18,142 @@ const LoyaltyBannerSection = props => {
     currentSubtotal,
     estimatedSubtotal,
     thresholdValue,
-    isGuest,
     earnedReward,
+    isGuest,
     isPlcc,
     estimatedRewardsVal,
     pointsToNextReward,
     getCurrencySymbol,
+    pageCategory,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
-  let conditionalPointsLabelVal = '';
-  let rewardPointsValue = '';
-  let remainingPlcc = false;
+  let remainingPlcc = '';
+  let subHeadingLabel = '';
+  let descriptionLabel = '';
+  const earnedRewardAvailable = !!earnedReward;
+
+  const pageCategoryArr = getPageCategory(pageCategory);
+  const {
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage,
+    isProductDetailView,
+  } = pageCategoryArr;
+
+  const pageChecksObj = {
+    isGuest,
+    isPlcc,
+    pageCategoryArr,
+    earnedRewardAvailable,
+  };
 
   /* istanbul ignore else */
-  if (currentSubtotal > thresholdValue && !isPlcc) {
+  if (
+    currentSubtotal > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    estimatedSubtotal
+  ) {
     showSubtotal = true;
   }
 
-  if (!earnedReward) {
-    rewardPointsValue = estimatedRewardsVal;
-    if (isGuest) {
-      conditionalPointsLabelVal = labels.youCanEarnPoints;
-    } else if (!isPlcc) {
-      conditionalPointsLabelVal = labels.youllEarnPoints;
-    } else {
-      conditionalPointsLabelVal = labels.youllEarnPointsPlcc;
-      remainingPlcc = mobileHashValues(
-        labels.thatsSomePointsFromReward,
-        '#pointsToNextReward#',
-        pointsToNextReward,
-        ''
-      );
-    }
-  } else {
-    rewardPointsValue = earnedReward;
-    if (isGuest) {
-      conditionalPointsLabelVal = labels.becomeMemberOnThisPurchase;
-    } else if (!isPlcc) {
-      conditionalPointsLabelVal = labels.youllGetWithThisPurchase;
-    } else {
-      conditionalPointsLabelVal = labels.youllGetARewardPlcc;
-    }
-  }
-  headingLabel = mobileHashValues(
-    conditionalPointsLabelVal,
-    '#estimatedRewardsVal#',
-    rewardPointsValue,
-    'mpr-plcc-theme'
+  const LoyaltyLabels = renderLoyaltyLabels(
+    labels,
+    estimatedRewardsVal,
+    earnedReward,
+    isGuest,
+    isPlcc,
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage,
+    isProductDetailView
   );
 
-  const subHeadingLabel = labels.save30Today;
-  const descriptionLabel = labels.earnDoublePoints;
+  const utilArrHeading = [
+    {
+      key: '#estimatedRewardsVal# ',
+      value: (
+        <PointsValueText pageChecksObj={pageChecksObj}>
+          {`${LoyaltyLabels.rewardPointsValueFn} `}
+        </PointsValueText>
+      ),
+    },
+    {
+      key: '#br# ',
+      value: '\n',
+    },
+  ];
+  headingLabel = LoyaltyLabels.headingLabelValFn
+    ? mobileHashValues(LoyaltyLabels.headingLabelValFn, utilArrHeading)
+    : false;
+
+  const utilArrSubHeading = [
+    {
+      key: '#sectionSymbol#',
+      value: (
+        <SectionSymbol pageChecksObj={pageChecksObj}>{`${labels.sectionSymbol} `}</SectionSymbol>
+      ),
+    },
+  ];
+  subHeadingLabel = LoyaltyLabels.subHeadingLabelFn
+    ? mobileHashValues(LoyaltyLabels.subHeadingLabelFn, utilArrSubHeading)
+    : false;
+  const utilArrDescription = [
+    {
+      key: '#br# ',
+      value: '\n',
+    },
+  ];
+  descriptionLabel = LoyaltyLabels.descriptionLabelFn
+    ? mobileHashValues(LoyaltyLabels.descriptionLabelFn, utilArrDescription)
+    : false;
+  const utilArrNextReward = [
+    {
+      key: '#pointsToNextReward# ',
+      value: (
+        <PointsToNextReward pageChecksObj={pageChecksObj}>
+          {`${pointsToNextReward} `}
+        </PointsToNextReward>
+      ),
+    },
+  ];
+  remainingPlcc = LoyaltyLabels.remainingPlccValFn
+    ? mobileHashValues(LoyaltyLabels.remainingPlccValFn, utilArrNextReward)
+    : false;
 
   return (
-    <LoyaltyBannerContainer>
-      <LineStyle />
-      <GuestMprPlccSection
-        labels={labels}
-        headingLabel={headingLabel}
-        subHeadingLabel={subHeadingLabel}
-        descriptionLabel={descriptionLabel}
-        remainingPlcc={remainingPlcc}
-        showSubtotal={showSubtotal}
-        getCurrencySymbol={getCurrencySymbol}
-        currentSubtotal={currentSubtotal}
-        estimatedSubtotal={estimatedSubtotal}
-      />
-      <FooterLinksSection>
-        {!isPlcc && renderApplyNowLink(labels)}
-        <LearnMoreWrapper>{renderLearnMoreLink(labels)}</LearnMoreWrapper>
-      </FooterLinksSection>
-
-      <LineStyle />
-    </LoyaltyBannerContainer>
+    <>
+      <LineStyle isPlcc={isPlcc} />
+      <LoyaltySectionWrapper>
+        <GuestMprPlccSection
+          labels={labels}
+          headingLabel={headingLabel}
+          subHeadingLabel={subHeadingLabel}
+          descriptionLabel={descriptionLabel}
+          remainingPlcc={remainingPlcc}
+          showSubtotal={showSubtotal}
+          getCurrencySymbol={getCurrencySymbol}
+          currentSubtotal={currentSubtotal}
+          estimatedSubtotal={estimatedSubtotal}
+          pageChecksObj={pageChecksObj}
+        />
+        <View className="footer">
+          <LoyaltyFooterSection
+            labels={labels}
+            isPlcc={isPlcc}
+            isProductDetailView={isProductDetailView}
+            isReviewPage={isReviewPage}
+            isConfirmationPage={isConfirmationPage}
+            isGuest={isGuest}
+            isAddedToBagPage={isAddedToBagPage}
+            earnedRewardAvailable={earnedRewardAvailable}
+          />
+        </View>
+      </LoyaltySectionWrapper>
+      <LineStyle isPlcc={isPlcc} />
+    </>
   );
 };
 
@@ -128,6 +168,7 @@ LoyaltyBannerSection.propTypes = {
   getCurrencySymbol: PropTypes.string,
   estimatedRewardsVal: PropTypes.string,
   pointsToNextReward: PropTypes.number,
+  pageCategory: PropTypes.string,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -140,6 +181,7 @@ LoyaltyBannerSection.defaultProps = {
   getCurrencySymbol: '',
   estimatedRewardsVal: '',
   pointsToNextReward: 0,
+  pageCategory: '',
 };
 
 export default LoyaltyBannerSection;

@@ -31,6 +31,7 @@ import RelatedOutfits from '../molecules/RelatedOutfits/views';
 class ProductDetailView extends React.Component {
   constructor(props) {
     super(props);
+    this.formValues = null;
     const {
       productInfo,
       productInfo: { colorFitsSizesMap },
@@ -41,14 +42,24 @@ class ProductDetailView extends React.Component {
         productInfo.generalProductId
       ),
       currentGiftCardValue: productInfo.offerPrice,
+      renderReceiveProps: false,
     };
   }
 
-  onChangeColor = e => {
+  onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     const {
       productInfo: { colorFitsSizesMap },
     } = this.props;
-    this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+    this.setState({
+      currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e),
+      renderReceiveProps: true,
+    });
+    this.formValues = {
+      Fit: selectedFit,
+      Size: selectedSize,
+      color: e,
+      Quantity: selectedQuantity,
+    };
   };
 
   onChangeSize = e => {
@@ -64,7 +75,16 @@ class ProductDetailView extends React.Component {
   };
 
   getProductSummary = () => {
-    const { productDetails, productInfo, currency, pdpLabels, currencyExchange } = this.props;
+    const {
+      productDetails,
+      productInfo,
+      currency,
+      pdpLabels,
+      currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
+    } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
 
@@ -76,6 +96,9 @@ class ProductDetailView extends React.Component {
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
           currencyExchange={currencyExchange}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+          {...otherProps}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -156,7 +179,7 @@ class ProductDetailView extends React.Component {
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
-    const { currentColorEntry } = this.state;
+    const { currentColorEntry, renderReceiveProps } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
 
     if (isProductDataAvailable) {
@@ -218,6 +241,8 @@ class ProductDetailView extends React.Component {
                 customSubmitButtonStyle={customSubmitButtonStyle}
                 onChangeSize={this.onChangeSize}
                 selectedColorProductId={selectedColorProductId}
+                renderReceiveProps={renderReceiveProps}
+                initialFormValues={this.formValues}
                 isPDP
               />
             )}
@@ -314,6 +339,8 @@ ProductDetailView.propTypes = {
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
+  onAddItemToFavorites: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 ProductDetailView.defaultProps = {
@@ -331,6 +358,7 @@ ProductDetailView.defaultProps = {
   pdpLabels: {},
   addToBagError: '',
   currencyExchange: 1,
+  isLoggedIn: false,
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

@@ -5,9 +5,10 @@ import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import StyliticsProductTabList from '../../../organisms/StyliticsProductTabList';
-import moduleQStyle from '../styles/ModuleQ.style';
+import moduleQStyle, { StyledSkeleton } from '../styles/ModuleQ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleQ.config';
+import constant from '../ModuleQ.constant';
 
 /**
  * @class ModuleQ - global reusable component will display a featured content
@@ -23,7 +24,7 @@ class ModuleQ extends React.PureComponent {
 
     this.state = {
       currentCatId: '',
-      currentTabItem: {},
+      currentTabItem: [],
     };
   }
 
@@ -48,12 +49,20 @@ class ModuleQ extends React.PureComponent {
     const { shopThisLookLabel } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
+    const outfitParams = pdpUrl && pdpUrl.split('/');
+    const { RECOMMENDATION } = constant;
     return (
       <div>
         <Anchor
           key={id}
           className="moduleQ-image-link"
-          to={pdpUrl}
+          to={
+            outfitParams &&
+            outfitParams.length > 1 &&
+            `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+              outfitParams[outfitParams.length - 1]
+            }&viaModule=${RECOMMENDATION}`
+          }
           asPath={pdpUrl}
           dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
         >
@@ -94,7 +103,11 @@ class ModuleQ extends React.PureComponent {
   };
 
   getCurrentCtaButton = () => {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+    const { currentTabItem } = this.state;
+    if (!currentTabItem || !currentTabItem.length) {
+      return null;
+    }
+    const { singleCTAButton: currentSingleCTAButton } = currentTabItem.length && currentTabItem[0];
 
     return currentSingleCTAButton ? (
       <Row centered>
@@ -142,6 +155,11 @@ class ModuleQ extends React.PureComponent {
     const bgName = `${className} ${bgClass} moduleQ`;
     // eslint-disable-next-line no-nested-ternary
     const showBg = hideTabs ? (showCarousel ? bgName : '') : bgName;
+    const IconPath = getIconPath('carousel-big-carrot');
+    let dataStatus = true;
+    if (styliticsProductTabList && styliticsProductTabList.completed) {
+      dataStatus = styliticsProductTabList.completed[currentCatId];
+    }
 
     return (
       <Grid className={showBg}>
@@ -198,14 +216,22 @@ class ModuleQ extends React.PureComponent {
               large: 2,
             }}
           >
+            {dataStatus ? (
+              <StyledSkeleton
+                col={3}
+                colSize={{ small: 2, medium: 2, large: 4 }}
+                removeLastMargin
+                showArrows
+              />
+            ) : null}
             {showCarousel ? (
               <Carousel
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
                   autoplay: false,
                   variation: 'big-arrows',
-                  customArrowLeft: getIconPath('carousel-big-carrot'),
-                  customArrowRight: getIconPath('carousel-big-carrot'),
+                  customArrowLeft: IconPath,
+                  customArrowRight: IconPath,
                 }}
               >
                 {selectedProductList.map((item, index) => this.getSlideItem(item, index))}

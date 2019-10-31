@@ -1,8 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddedToBagActions native component AddedToBagActions native component renders correctly 1`] = `
-<Styled(View)>
-  <Styled(View)>
+<View
+  style={
+    Object {
+      "display": "flex",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "marginLeft": 10,
+        "marginRight": 10,
+        "marginTop": 20,
+      }
+    }
+  >
     <Styled(TouchableOpacity)
       onPress={[Function]}
     >
@@ -20,7 +36,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         textTransform="uppercase"
       />
     </Styled(TouchableOpacity)>
-  </Styled(View)>
+  </View>
   <Connect(AddedToBagContainer) />
-</Styled(View)>
+</View>
 `;

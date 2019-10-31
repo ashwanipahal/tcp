@@ -2,13 +2,13 @@
 
 exports[`LoyaltyBanner View Component earnedReward isGuest should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -20,48 +20,35 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
-        earnedReward={1}
+        descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
-        fsPoints="fs18"
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={true}
         isProductDetailView=""
         labels={Object {}}
-        pointsDescription={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        remainingPlcc={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        showSubtotal={true}
-        subHeadingLabel=""
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
-      />
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
+      </div>
     </Styled(BodyCopy)>
   </div>
 </div>
@@ -69,13 +56,13 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
 
 exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -87,48 +74,35 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
-        earnedReward={0}
+        descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
-        fsPoints="fs18"
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={true}
         isProductDetailView=""
         labels={Object {}}
-        pointsDescription={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        remainingPlcc={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        showSubtotal={true}
-        subHeadingLabel=""
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
-      />
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={false}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
+      </div>
     </Styled(BodyCopy)>
   </div>
 </div>
@@ -136,13 +110,13 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
 
 exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -154,44 +128,34 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
-        earnedReward={1}
+        descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
-        fsPoints="fs16"
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={false}
         isProductDetailView=""
         labels={Object {}}
-        remainingPlcc=""
+        pageCategory=""
+        remainingPlcc={false}
         showSubtotal={true}
+        subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
-        <span>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="applyNow"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="learnMore elem-pl-XL"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-        </span>
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
       </div>
     </Styled(BodyCopy)>
   </div>
@@ -200,13 +164,13 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
 
 exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -218,48 +182,35 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
-        earnedReward={1}
+        descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
-        fsPoints="fs18"
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={true}
         isProductDetailView=""
         labels={Object {}}
-        pointsDescription={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        remainingPlcc={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
-        showSubtotal={true}
-        subHeadingLabel=""
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
-      />
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={true}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
+      </div>
     </Styled(BodyCopy)>
   </div>
 </div>
@@ -267,13 +218,13 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
 
 exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -285,44 +236,34 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
-        earnedReward={0}
+        descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
-        fsPoints="fs16"
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={false}
         isProductDetailView=""
         labels={Object {}}
-        remainingPlcc=""
+        pageCategory=""
+        remainingPlcc={false}
         showSubtotal={true}
+        subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
-        <span>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="applyNow"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="learnMore elem-pl-XL"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-        </span>
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={false}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
       </div>
     </Styled(BodyCopy)>
   </div>
@@ -331,13 +272,13 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
 
 exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=""
 >
   <div
-    className="backgroundWhite elem-pt-SM elem-pb-SM loyalty-banner-wrapper"
+    className="loyalty-banner-wrapper"
   >
     <Styled(BodyCopy)
-      className="loyaltyBannerSectionWrapper"
+      className="loyalty-banner-section-wrapper"
       color="text.primary"
       component="div"
       fontFamily="secondary"
@@ -349,44 +290,34 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       textAlign="left"
     >
       <Styled(GuestMprPlccSection)
-        className=""
         currentSubtotal={21}
-        earnedReward={0}
+        descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
-        fsPoints="fs16"
         getCurrencySymbol=""
-        headingLabel={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-          />
-        }
+        headingLabel={false}
         isPlcc={false}
         isProductDetailView=""
         labels={Object {}}
-        remainingPlcc=""
+        pageCategory=""
+        remainingPlcc={false}
         showSubtotal={true}
+        subHeadingLabel={false}
       />
       <div
-        className="footer alignCenter"
+        className="footer"
       >
-        <span>
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="applyNow"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-          <Styled(Anchor)
-            anchorVariation="primary"
-            className="learnMore elem-pl-XL"
-            fontSizeVariation="medium"
-            underline={true}
-          />
-        </span>
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={false}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={true}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+        />
       </div>
     </Styled(BodyCopy)>
   </div>

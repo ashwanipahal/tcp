@@ -29,7 +29,8 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       Object {
         "backgroundColor": "rgba(0, 0, 0, 0.5)",
         "flex": 1,
-        "paddingLeft": 25,
+        "paddingLeft": 0,
+        "paddingRight": 0,
       }
     }
   >
@@ -37,35 +38,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       accessibilityRole="none"
     >
       <Styled(View)>
-        <Styled(SafeAreaView)>
-          <Styled(Text)>
-            <Styled(BodyCopy)
-              accessibilityText=""
-              dataLocator=""
-              fontSize="fs16"
-              fontWeight="semibold"
-              margin={null}
-              mobileFontFamily="secondary"
-              numberOfLines={null}
-              textAlign="left"
-              textDecoration={null}
-            />
-          </Styled(Text)>
-          <Styled(View)>
-            <Styled(TouchableOpacity)
-              accessibilityRole="button"
-              onPress={[Function]}
-            >
-              <Styled(Image)
-                source={
-                  Object {
-                    "testUri": "../../../../core/src/assets/close.png",
-                  }
-                }
-              />
-            </Styled(TouchableOpacity)>
-          </Styled(View)>
-        </Styled(SafeAreaView)>
+        <Styled(SafeAreaView) />
         <Styled(View)>
           <Styled(ProductInformation)
             data={Object {}}
@@ -78,12 +51,24 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
           <Connect(AddedToBagContainer)
             closeModal={[Function]}
             fromAddedToBagModal={true}
+            hideHeader={[Function]}
             labels={Object {}}
-            navigation={null}
+            navigation={
+              Object {
+                "getParam": [Function],
+                "navigate": [MockFunction],
+                "param": Object {
+                  "headerMode": false,
+                },
+              }
+            }
             showAddTobag={true}
           />
           <Styled(BossBanner)
             labels={Object {}}
+          />
+          <Connect(LoyaltyBannerContainer)
+            pageCategory="isAddedToBagPage"
           />
           <Styled(View)>
             <Styled(Anchor)
@@ -96,7 +81,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               locator=""
               margins={null}
               noLink={true}
-              onPress={null}
+              onPress={[Function]}
               text=""
               to=""
               underline={true}

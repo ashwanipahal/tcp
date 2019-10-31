@@ -12,6 +12,7 @@ import {
   getProductInfoForTranslationData,
   startPaypalCheckoutAPI,
   paypalAuthorizationAPI,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -43,6 +44,7 @@ import { getUserInfo } from '../../../account/User/container/User.actions';
 import {
   getIsInternationalShipping,
   getIsRadialInventoryEnabled,
+  getRecalcOrderPointsInterval,
 } from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
@@ -52,6 +54,9 @@ import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
+import { setServerErrorCheckout } from '../../Checkout/container/Checkout.action.util';
+
+const { getOrderPointsRecalcFlag } = utility;
 
 export const filterProductsBrand = (arr, searchedValue) => {
   const obj = [];
@@ -71,10 +76,7 @@ const getProductsTypes = orderItems => {
     tcpProducts = filterProductsBrand(orderItems, 'TCP');
     gymProducts = filterProductsBrand(orderItems, 'GYM');
   }
-  return {
-    tcpProducts,
-    gymProducts,
-  };
+  return { tcpProducts, gymProducts };
 };
 
 export function* getTranslatedProductInfo(cartInfo) {
@@ -101,9 +103,7 @@ export function* getTranslatedProductInfo(cartInfo) {
 
     return [...gymProductsResults, ...tcpProductsResults];
   } catch (err) {
-    gymProductsResults = [];
-    tcpProductsResults = [];
-    return [...gymProductsResults, ...tcpProductsResults];
+    return [];
   }
 }
 
@@ -137,34 +137,37 @@ export function* getOrderDetailSaga(payload) {
   }
 }
 
+function* updateBopisItems(res) {
+  const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
+  if (bopisItems.length) {
+    const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
+    res.orderDetails = {
+      ...res.orderDetails,
+      orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
+    };
+  }
+}
+
 export function* getCartDataSaga(payload = {}) {
   try {
-    const { payload: { isRecalculateTaxes, isCheckoutFlow } = {} } = payload;
-    const { payload: { isCartNotRequired, updateSmsInfo, onCartRes } = {} } = payload;
-    const isCartPage = true;
-    // const recalcOrderPointsInterval = 3000; // TODO change it to coming from AB test
-    const recalcOrderPoints = false; // TODO getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
+    const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
+    const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems } = {} } = payload;
+    const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
+    const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
-    const isCanadaSIte = false; // TODO to get current country
+    const cartProps = { excludeCartItems, recalcRewards: recalcOrderPoints, isRadialInvEnabled };
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
-      excludeCartItems: false,
-      recalcRewards: recalcOrderPoints,
-      isCanadaSIte,
-      isRadialInvEnabled,
+      ...cartProps,
     });
-    const translatedProductInfo = yield call(getTranslatedProductInfo, res);
-    if (!translatedProductInfo.error) {
-      createMatchObject(res, translatedProductInfo);
+    if (translation) {
+      const translatedProductInfo = yield call(getTranslatedProductInfo, res);
+      if (!translatedProductInfo.error) {
+        createMatchObject(res, translatedProductInfo);
+      }
     }
-    const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
-    if (bopisItems.length) {
-      const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
-      res.orderDetails = {
-        ...res.orderDetails,
-        orderItems: updateBopisInventory(res.orderDetails.orderItems, bopisInventoryResponse),
-      };
-    }
+    yield updateBopisItems(res);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
 
     if (res.orderDetails.orderItems.length > 0) {
@@ -221,12 +224,8 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
     } else if (orderHasPickup) {
       yield call(navigateToCheckout, CONSTANTS.PICKUP_DEFAULT_PARAM, navigation, navigationActions);
     } else {
-      yield call(
-        navigateToCheckout,
-        CONSTANTS.SHIPPING_DEFAULT_PARAM,
-        navigation,
-        navigationActions
-      );
+      const params = [CONSTANTS.SHIPPING_DEFAULT_PARAM, navigation, navigationActions];
+      yield call(navigateToCheckout, ...params);
     }
     if (closeModal) {
       closeModal();
@@ -279,23 +278,29 @@ function* confirmStartCheckout() {
 export function* startCartCheckout({
   payload: { isEditingItem, navigation, closeModal, navigationActions } = {},
 } = {}) {
-  if (isEditingItem) {
-    yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
-  } else {
-    // this.store.dispatch(setVenmoPaymentInProgress(false));
-    let res = yield call(getUnqualifiedItems);
-    res = res || [];
-    yield all(
-      res.map(({ orderItemId, isOOS }) =>
-        isOOS
-          ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
-          : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
-      )
-    );
-    const oOSModalOpen = yield call(confirmStartCheckout);
-    if (!oOSModalOpen) {
-      yield call(checkoutCart, false, navigation, closeModal, navigationActions);
+  try {
+    if (isEditingItem) {
+      yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
+    } else {
+      // this.store.dispatch(setVenmoPaymentInProgress(false));
+      let res = yield call(getUnqualifiedItems);
+      res = res || [];
+      yield all(
+        res.map(({ orderItemId, isOOS }) =>
+          isOOS
+            ? put(BAG_PAGE_ACTIONS.setItemOOS(orderItemId))
+            : put(BAG_PAGE_ACTIONS.setItemUnavailable(orderItemId))
+        )
+      );
+      const oOSModalOpen = yield call(confirmStartCheckout);
+      if (!oOSModalOpen) {
+        yield call(checkoutCart, false, navigation, closeModal, navigationActions);
+      }
     }
+  } catch (e) {
+    const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
+    const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'CHECKOUT' }));
   }
 }
 
@@ -330,13 +335,8 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
   const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
     checkoutSelectors.getPaypalPaymentSettings
   );
-  const res = yield call(
-    paypalAuthorizationAPI,
-    tcpOrderId,
-    centinelRequestPage,
-    centinelPayload,
-    centinelOrderId
-  );
+  const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
+  const res = yield call(paypalAuthorizationAPI, ...params);
   if (res) {
     if (isMobileApp()) {
       const navigateAction = navigationActions.navigate({
@@ -398,7 +398,8 @@ export function* addItemToSFL({
       yield put(removeCartItem({ itemId }));
     }
   } catch (err) {
-    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
+    const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(getServerErrorMessage(err, errorsMapping)));
   }
 }
 
@@ -454,7 +455,14 @@ export function* startSflItemMoveToBag({ payload }) {
       fromMoveToBag: true,
     };
     yield put(addToCartEcom(addToCartData));
-    yield put(BAG_PAGE_ACTIONS.getCartData());
+    yield put(
+      BAG_PAGE_ACTIONS.getCartData({
+        isRecalculateTaxes: true,
+        recalcRewards: true,
+        translation: true,
+        excludeCartItems: false,
+      })
+    );
     // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     yield put(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
   } catch (err) {
@@ -466,7 +474,6 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
-
   yield takeLatest(
     BAGPAGE_CONSTANTS.REMOVE_UNQUALIFIED_AND_CHECKOUT,
     removeUnqualifiedItemsAndCheckout

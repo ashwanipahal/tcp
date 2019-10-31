@@ -72,15 +72,15 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
     alt="Girl"
     height={26}
     host=""
-    maxWidth={16}
     position="absolute"
     right={37}
     source={
       Object {
-        "testUri": "../../../../core/src/assets/carrot-small-rights.png",
+        "testUri": "../../../../core/src/assets/caret-large-right-black.png",
       }
     }
     url=""
+    width={13}
   />
 </ForwardRef>
 `;

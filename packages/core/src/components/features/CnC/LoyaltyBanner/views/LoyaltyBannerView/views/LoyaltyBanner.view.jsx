@@ -6,10 +6,12 @@ import Styles from '../styles/LoyaltyBanner.style';
 
 class LoyaltyBanner extends React.PureComponent<Props> {
   static propTypes = {
+    pageCategory: PropTypes.string,
     className: PropTypes.string,
   };
 
   static defaultProps = {
+    pageCategory: '',
     className: '',
   };
 
@@ -26,7 +28,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       isPlcc,
       pointsToNextReward,
       getCurrencySymbol,
-      isProductDetailView,
+      pageCategory,
     } = this.props;
     return (
       <div className={className}>
@@ -41,7 +43,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           isPlcc={isPlcc}
           pointsToNextReward={pointsToNextReward}
           getCurrencySymbol={getCurrencySymbol}
-          isProductDetailView={isProductDetailView}
+          pageCategory={pageCategory}
         />
       </div>
     );

@@ -6,7 +6,7 @@ import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, viewport } from '../../../../../utils';
-import moduleRStyle, { ImageGridCol } from '../styles/ModuleR.style';
+import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
 
 /**
  * @class ModuleR - global reusable component will display featured
@@ -23,7 +23,7 @@ class ModuleR extends React.PureComponent {
 
     this.state = {
       selectedCategoryId: null,
-      currentTabItem: {},
+      currentTabItem: [],
     };
   }
 
@@ -139,7 +139,11 @@ class ModuleR extends React.PureComponent {
   };
 
   getCurrentCTAButton() {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+    const { currentTabItem } = this.state;
+    if (!currentTabItem || !currentTabItem.length) {
+      return null;
+    }
+    const { singleCTAButton: currentSingleCTAButton } = currentTabItem.length && currentTabItem[0];
 
     return currentSingleCTAButton ? (
       <Row centered>
@@ -175,6 +179,10 @@ class ModuleR extends React.PureComponent {
     if (selectedProductList.length) {
       selectedProductList = this.getSelectedProductList(selectedProductList);
     }
+    let dataStatus = true;
+    if (productTabList && productTabList.completed) {
+      dataStatus = productTabList.completed[selectedCategoryId];
+    }
 
     return (
       <Grid className={`${className} moduleR`}>
@@ -197,6 +205,9 @@ class ModuleR extends React.PureComponent {
             dataLocator={getLocator('moduleR_cta_link')}
           />
         </div>
+        {dataStatus ? (
+          <StyledSkeleton col={18} colSize={{ small: 2, medium: 2, large: 2 }} removeLastMargin />
+        ) : null}
         {this.getImageGrid(selectedProductList)}
         {this.getCurrentCTAButton()}
       </Grid>

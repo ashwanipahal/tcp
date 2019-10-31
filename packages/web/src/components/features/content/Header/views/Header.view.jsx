@@ -7,7 +7,10 @@ import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
+import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import { getViewportInfo } from '@tcp/core/src/utils';
+import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
 
@@ -77,8 +80,12 @@ class Header extends React.PureComponent {
       navigationDrawer,
       openNavigationDrawer,
       closeNavigationDrawer,
+      isUserPlcc,
       userName,
+      userPoints,
+      userRewards,
       openOverlay,
+      isOpenOverlay,
       openTrackOrderOverlay,
       isLoggedIn,
       cartItemCount,
@@ -110,8 +117,12 @@ class Header extends React.PureComponent {
           openNavigationDrawer={openNavigationDrawer}
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
+          isUserPlcc={isUserPlcc}
           userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           openOverlay={openOverlay}
+          isOpenOverlay={isOpenOverlay}
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
           totalItems={totalItems}
@@ -125,6 +136,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
+        <LoyaltyPromoBanner />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -132,6 +144,8 @@ class Header extends React.PureComponent {
             closeNavigationDrawer={closeNavigationDrawer}
             navigationDrawer={navigationDrawer}
             userName={userName}
+            userPoints={userPoints}
+            userRewards={userRewards}
             openOverlay={openOverlay}
             isLoggedIn={isLoggedIn}
             cartItemCount={cartItemCount}
@@ -143,6 +157,7 @@ class Header extends React.PureComponent {
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
+        <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
       </header>
     );
   }
@@ -156,8 +171,12 @@ Header.propTypes = {
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  isUserPlcc: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,

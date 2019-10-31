@@ -50,8 +50,8 @@ const formErrorCMSMessage = {
   lbl_err_validexpirationedate: 'Please enter a valid expiration date',
   lbl_err_validstreetaddress: 'Please enter a valid street address',
   lbl_err_year_dob: 'Please select a year',
-  lbl_err_zipcode_required: 'Please enter your zip code.',
-  lbl_err_zipcode_zipcode: 'Please enter a valid zip code.',
+  lbl_err_zipcode_required: 'Please enter your zip code',
+  lbl_err_zipcode_zipcode: 'Please enter a valid zip code',
   lbl_err_email_validemail: 'Email format is invalid',
   lbl_err_state_staterequired_us: 'Please select a state',
   lbl_err_state_staterequired_nonus: 'Please select a province',
@@ -62,6 +62,10 @@ const formErrorCMSMessage = {
   lbl_err_cvvcode_cvvlengththree: 'Security code must be a 3-digit number without any spaces',
   lbl_err_cvvcode_cvvlengthfour: 'Security code must be a 4-digit number without any spaces',
   lbl_storelanding_errorLabel: 'Please re-type address & select location from dropdown suggestions',
+  lbl_storelanding_validErrorLabel: 'Please enter a valid street address',
+  lbl_storelanding_invalidAddressError:
+    'The value entered in the street address has special character.',
+  lbl_err_prefix: 'ERROR:',
 };
 
 export default formErrorCMSMessage;

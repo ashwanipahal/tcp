@@ -135,7 +135,13 @@ BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
-      dispatch(BAG_PAGE_ACTIONS.getCartData());
+      dispatch(
+        BAG_PAGE_ACTIONS.getCartData({
+          isCartPage: true,
+          translation: true,
+          excludeCartItems: false,
+        })
+      );
     },
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));

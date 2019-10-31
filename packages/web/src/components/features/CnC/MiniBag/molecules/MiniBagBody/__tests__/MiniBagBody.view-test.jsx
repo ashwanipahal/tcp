@@ -61,6 +61,7 @@ describe('MiniBagBody component', () => {
       cartItemCount: 1,
       subTotal: 112,
       isCartItemsUpdating: { isDeleting: true, isUpdating: false },
+      addedToBagError: 'something went wrong',
     };
     const component = shallow(<MiniBagBodyVanilla {...props} />);
     expect(component).toMatchSnapshot();
@@ -93,6 +94,7 @@ describe('MiniBagBody component', () => {
       cartItemCount: 12,
       subTotal: 23,
       isCartItemsUpdating: {},
+      addedToBagError: 'something went wrong',
     };
     const tree = shallow(<MiniBagBodyVanilla {...props} />);
     expect(tree.find(EmptyMiniBag)).toBeTruthy();

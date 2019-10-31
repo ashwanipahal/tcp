@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { DamImage } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import endpoints from '../../../../../../../service/endpoint';
 import {
   ProductName,
   ProductDesc,
   OuterContainer,
   ImgWrapper,
-  ImageStyle,
   ProductDescription,
   ImageBrandStyle,
   ImageGymBrandStyle,
@@ -24,7 +23,8 @@ const ProductInformation = ({ data, labels, quantity }) => {
   return (
     <OuterContainer>
       <ImgWrapper>
-        <ImageStyle source={{ uri: endpoints.global.baseURI + data.skuInfo.imageUrl }} />
+        {/* <ImageStyle source={{ uri: endpoints.global.baseURI + data.skuInfo.imageUrl }} /> */}
+        <DamImage isProductImage width={100} height={100} url={data.skuInfo.imageUrl} />
         {!data.isGiftCard &&
           (data.brand === 'tcp' ? (
             <ImageBrandStyle data-locator={getLocator('cart_item_brand_logo')} source={tcpImage} />
@@ -65,10 +65,7 @@ const ProductInformation = ({ data, labels, quantity }) => {
             </ProductSubDetailLabel>
 
             <BodyCopy fontSize="fs12" text={`${data.skuInfo.size} `} />
-            <BodyCopy
-              fontSize="fs12"
-              text={!data.skuInfo.fit || data.skuInfo.fit === 'Regular' ? ' ' : data.skuInfo.fit}
-            />
+            <BodyCopy fontSize="fs12" text={!data.skuInfo.fit ? ' ' : data.skuInfo.fit} />
           </ProductDesc>
           <ProductDesc>
             <ProductSubDetailLabel>

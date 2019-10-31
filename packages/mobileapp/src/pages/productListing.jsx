@@ -13,14 +13,16 @@ import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
 import Navigation from '../components/features/content/Navigation';
+// import CategoryListing from '@tcp/core/src/components/features/browse/CategoryListing'; // @TODO when clp can link to PLP
 import NavMenuLevel2 from '../components/features/content/Navigation/molecules/NavMenuLevel2';
 import NavMenuLevel3 from '../components/features/content/Navigation/molecules/NavMenuLevel3';
 import ROUTE_NAMES from '../reduxStore/routes';
 
 const getNewHeader = (navigation, showSearch, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
+  const capitalizedTitle = title && title.toUpperCase();
   return {
-    header: props => <HeaderNew {...props} title={title} showSearch={showSearch} />,
+    header: props => <HeaderNew {...props} title={capitalizedTitle} showSearch={showSearch} />,
     headerBackground: 'transparent',
   };
 };
@@ -28,7 +30,7 @@ const getNewHeader = (navigation, showSearch, navTitle) => {
 const PlpStack = createStackNavigator(
   {
     [ROUTE_NAMES.NAV_MENU_LEVEL_1]: {
-      screen: Navigation,
+      screen: Navigation, // CategoryListing
     },
     OutfitDetail: {
       screen: OutfitDetail,
@@ -68,7 +70,7 @@ const PlpStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         const title = navigation && navigation.getParam('title');
         const navTitle = (title && `"${title.toUpperCase()}"`) || '';
-        return getNewHeader(navigation, true, navTitle);
+        return getNewHeader(navigation, false, navTitle);
       },
     },
     [ROUTE_NAMES.CONFIRMATION]: {
@@ -77,7 +79,7 @@ const PlpStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => <Header {...props} showSearch />,
       headerBackground: 'transparent',
     },
   }

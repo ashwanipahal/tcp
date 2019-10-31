@@ -19,6 +19,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.changeVenmoState = this.changeVenmoState.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
     this.state = {
       venmoEnable: true,
     };
@@ -47,6 +49,32 @@ class AddedToBagActions extends React.PureComponent<Props> {
     }
   };
 
+  closeModal = close => {
+    if (close) {
+      this.props.closeModal();
+    }
+  };
+
+  getViewStyle(view) {
+    if (!this.state.venmoEnable) {
+      return { position: 'absolute', height: '100%', width: '100%', zIndex: 997 };
+    } else if (view === 'Anchor') {
+      return { display: 'flex' };
+    } else if (view === 'ButtonView') {
+      return { position: 'relative' };
+    } else if (view === 'ButtonWrapper') {
+      return {
+        marginRight: 10,
+        marginLeft: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 20,
+      };
+    } else {
+      return { position: 'relative' };
+    }
+  }
+
   render() {
     const {
       labels,
@@ -59,11 +87,13 @@ class AddedToBagActions extends React.PureComponent<Props> {
       fromAddedToBagModal,
       getPayPalSettings,
       hideHeader,
+      isPayPalWebViewEnable,
     } = this.props;
+
     return (
-      <ActionsWrapper>
+      <View style={this.getViewStyle('Anchor')}>
         {showAddTobag && (
-          <ButtonWrapper>
+          <View style={this.getViewStyle('ButtonWrapper')}>
             <ViewBagButton
               onPress={() => {
                 navigation.navigate(ADDEDTOBAG_CONSTANTS.BAG_PAGE);
@@ -81,15 +111,16 @@ class AddedToBagActions extends React.PureComponent<Props> {
                 text={labels.viewBag && labels.viewBag.toUpperCase()}
               />
             </ViewBagButton>
-          </ButtonWrapper>
+          </View>
         )}
         {(isNoNEmptyBag || fromAddedToBagModal) && (
-          <View>
-            <ButtonWrapper>
+          <View style={this.getViewStyle('ButtonView')}>
+            <View style={this.getViewStyle('ButtonWrapper')}>
               <PayPalButton
                 getPayPalSettings={getPayPalSettings}
                 navigation={navigation}
                 setVenmoState={this.changeVenmoState}
+                closeModal={this.closeModal}
               />
               <CheckoutButton
                 onPress={() => {
@@ -109,7 +140,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                   text={labels.checkout && labels.checkout.toUpperCase()}
                 />
               </CheckoutButton>
-            </ButtonWrapper>
+            </View>
           </View>
         )}
 
@@ -117,7 +148,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           this.state.venmoEnable &&
           this.getVenmoPaymentButton()}
         <CheckoutModals navigation={navigation} />
-      </ActionsWrapper>
+      </View>
     );
   }
 }

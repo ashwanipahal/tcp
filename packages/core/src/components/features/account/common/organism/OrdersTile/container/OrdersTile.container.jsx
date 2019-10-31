@@ -14,9 +14,14 @@ class OrdersTile extends PureComponent {
   }
 
   render() {
-    const { labels, ordersListItems, navigation } = this.props;
+    const { labels, ordersListItems, navigation, handleComponentChange } = this.props;
     return (
-      <OrdersTileComponent labels={labels} ordersList={ordersListItems} navigation={navigation} />
+      <OrdersTileComponent
+        labels={labels}
+        ordersList={ordersListItems}
+        navigation={navigation}
+        handleComponentChange={handleComponentChange}
+      />
     );
   }
 }
@@ -26,6 +31,7 @@ OrdersTile.propTypes = {
   fetchOrders: PropTypes.func,
   ordersListItems: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  handleComponentChange: PropTypes.func.isRequired,
 };
 
 OrdersTile.defaultProps = {

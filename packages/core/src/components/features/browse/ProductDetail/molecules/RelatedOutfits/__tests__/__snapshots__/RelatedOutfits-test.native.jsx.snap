@@ -39,6 +39,12 @@ exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
       </Styled(Anchor)>
     </Styled(View)>
   </Styled(TouchableOpacity)>
-  <RelatedOutfitsSlots />
+  <Connect(ModuleQ)
+    bgClass="yellow-bg"
+    divTabs={Array []}
+    hideTabs={true}
+    hostLazyLoad="lazyload-pdp"
+    navigation={Object {}}
+  />
 </View>
 `;

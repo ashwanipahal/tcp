@@ -19,6 +19,10 @@ import {
   ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
+import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
+import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -80,6 +84,8 @@ class HomePageView extends React.PureComponent<Props> {
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
+        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
+        <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
       </LazyloadScrollView>
     );
   }

@@ -11,6 +11,14 @@ describe('AddedToBag Component', () => {
     addedToBag: {},
     labels: {},
     quantity: '',
+    handleContinueShopping: Function,
+    navigation: {
+      navigate: jest.fn(),
+      param: { headerMode: false },
+      getParam: Function,
+    },
+    isPayPalWebViewEnable: false,
+    hideHeader: false,
   };
 
   beforeEach(() => {

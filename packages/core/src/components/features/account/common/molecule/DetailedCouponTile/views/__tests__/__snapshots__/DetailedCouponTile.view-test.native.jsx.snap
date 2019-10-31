@@ -38,8 +38,10 @@ exports[`DetailedCouponTile should render correctly 1`] = `
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
+          displayValue={true}
           format="CODE128"
           height="50"
+          width="1"
         />
       </Styled(View)>
       <Styled(View)>
@@ -108,8 +110,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}
-        disableButton={false}
-        disabled={true}
+        disableButton={true}
         fill="BLUE"
         fullWidth=""
         iconColor="gray.800"
@@ -204,8 +205,10 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
+          displayValue={true}
           format="CODE128"
           height="50"
+          width="1"
         />
         <Styled(Styled(View)) />
       </Styled(View)>
@@ -354,8 +357,10 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
       </Styled(View)>
       <Styled(View)>
         <BarcodeView
+          displayValue={true}
           format="CODE128"
           height="50"
+          width="1"
         />
       </Styled(View)>
       <Styled(View)>
@@ -424,8 +429,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}
-        disableButton={false}
-        disabled={true}
+        disableButton={true}
         fill="BLUE"
         fullWidth=""
         iconColor="gray.800"

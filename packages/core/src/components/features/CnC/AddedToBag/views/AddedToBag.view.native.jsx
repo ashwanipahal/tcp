@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { isCanada } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -18,15 +19,16 @@ import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import AddedToBagActions from '../../AddedToBagActions';
 import Anchor from '../../../../common/atoms/Anchor';
+import LoyaltyBanner from '../../LoyaltyBanner';
 
 const closeIcon = require('../../../../../assets/close.png');
 
-const styles = {
-  AddedToBagContainer: {
-    flex: 1,
-    paddingLeft: 25,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
+const getContainerStyle = navigation => {
+  if (!navigation.getParam('headerMode', false)) {
+    return { flex: 1, paddingLeft: 25, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
+  } else {
+    return { flex: 1, paddingLeft: 0, paddingRight: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
+  }
 };
 
 const getCloseIcon = (onRequestClose, labels) => {
@@ -43,6 +45,26 @@ const getCloseIcon = (onRequestClose, labels) => {
   );
 };
 
+const getRowWrapper = (labels, onRequestClose, navigation) => {
+  if (!navigation.getParam('headerMode', false)) {
+    return (
+      <RowWrapper>
+        <ModalHeading>
+          <BodyCopy
+            mobileFontFamily="secondary"
+            fontWeight="semibold"
+            fontSize="fs16"
+            text={labels.addedToBag}
+          />
+        </ModalHeading>
+        {getCloseIcon(onRequestClose, labels)}
+      </RowWrapper>
+    );
+  } else {
+    return <RowWrapper />;
+  }
+};
+
 const AddedToBag = ({
   openState,
   onRequestClose,
@@ -51,6 +73,8 @@ const AddedToBag = ({
   quantity,
   handleContinueShopping,
   navigation,
+  isPayPalWebViewEnable,
+  hideHeader,
 }) => {
   return (
     <Modal
@@ -74,22 +98,11 @@ const AddedToBag = ({
         accessibilityLabel={labels.overlayAriaText}
         accessibilityRole="none"
         onPress={onRequestClose}
-        style={styles.AddedToBagContainer}
+        style={getContainerStyle(navigation)}
       >
         <TouchableWithoutFeedback accessibilityRole="none">
           <StyledWrapper>
-            <RowWrapper>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily="secondary"
-                  fontWeight="semibold"
-                  textAlign="left"
-                  fontSize="fs16"
-                  text={labels.addedToBag}
-                />
-              </ModalHeading>
-              {getCloseIcon(onRequestClose, labels)}
-            </RowWrapper>
+            {getRowWrapper(labels, onRequestClose, navigation)}
             {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
             <AddedToBagWrapper>
               <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
@@ -100,8 +113,12 @@ const AddedToBag = ({
                 closeModal={onRequestClose}
                 showAddTobag
                 fromAddedToBagModal
+                hideHeader={hide => {
+                  navigation.setParams({ headerMode: hide });
+                }}
               />
               <BossBanner labels={labels} />
+              {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
               <StyledAnchorWrapper>
                 <Anchor
                   fontSizeVariation="medium"
@@ -130,6 +147,8 @@ AddedToBag.propTypes = {
   quantity: PropTypes.string.isRequired,
   handleContinueShopping: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  isPayPalWebViewEnable: PropTypes.bool.isRequired,
+  hideHeader: PropTypes.bool.isRequired,
 };
 
 AddedToBag.defaultProps = {

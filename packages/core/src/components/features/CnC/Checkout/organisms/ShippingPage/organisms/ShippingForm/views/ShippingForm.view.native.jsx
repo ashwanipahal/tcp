@@ -173,7 +173,8 @@ const ShippingForm = ({
             dispatch={dispatch}
           />
         </FormSection>
-        <FormSection name="giftServices">
+        {/* //TODO : commented as app was crashing , please remove this comment */}
+        {/* <FormSection name="giftServices">
           <GiftServices
             showDefaultCheckbox={false}
             formSection="giftServices"
@@ -181,7 +182,7 @@ const ShippingForm = ({
             isGiftServicesChecked={isGiftServicesChecked}
             dispatch={dispatch}
           />
-        </FormSection>
+        </FormSection> */}
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
