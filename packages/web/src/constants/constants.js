@@ -34,6 +34,11 @@ export const filterParams = {
   FILTER_AGE: 'age_group_uFilter',
 };
 
+export const clearAll = {
+  CLEAR_ALL_SEARCH_FILTER: 'CLEAR_ALL_SEARCH_FILTER',
+  CLEAR_ALL_PLP_FILTER: 'CLEAR_ALL_PLP_FILTER',
+};
+
 export const defaultDeviceType = 'desktop';
 
 const OPTIMIZELY_DECISION_LABEL = 'optimizely_decision';
