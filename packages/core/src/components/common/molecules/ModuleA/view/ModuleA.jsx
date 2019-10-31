@@ -11,7 +11,6 @@ import { PromoBanner, ButtonList } from '../..';
 import { getIconPath, getLocator, isGymboree } from '../../../../../utils';
 
 import config from '../config';
-import HelpTabs from '../../HelpTabs';
 
 const { ctaTypes, CAROUSEL_OPTIONS, IMG_DATA_TCP, IMG_DATA_GYM } = config;
 const bigCarrotIcon = 'carousel-big-carrot';
@@ -114,13 +113,6 @@ class ModuleA extends React.Component {
           }}
         >
           <div>
-            <HelpTabs
-              tabs={[
-                {
-                  text: 'test Tab',
-                },
-              ]}
-            />
             <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
               {largeCompImageCarousel.map((item, i) => {
                 const {
