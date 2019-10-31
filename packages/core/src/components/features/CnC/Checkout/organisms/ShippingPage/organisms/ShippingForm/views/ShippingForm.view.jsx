@@ -225,6 +225,10 @@ class ShippingForm extends React.Component {
     return <ServerErrors />;
   };
 
+  /**
+   * @function handleShipIntClick
+   * function to open country selector popup on shipping page
+   */
   handleShipIntClick = e => {
     const { toggleCountrySelector } = this.props;
     e.preventDefault();
