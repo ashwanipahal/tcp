@@ -15,7 +15,7 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-EHOje",
-        "isStatic": false,
+        "isStatic": true,
         "rules": Array [
           "
   ",
@@ -60,7 +60,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-EHOje",
-        "isStatic": false,
+        "isStatic": true,
         "rules": Array [
           "
   ",
@@ -100,7 +100,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-EHOje",
-        "isStatic": false,
+        "isStatic": true,
         "rules": Array [
           "
   ",
