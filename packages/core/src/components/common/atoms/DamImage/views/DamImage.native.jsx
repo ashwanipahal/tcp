@@ -9,8 +9,6 @@ import { cropImageUrl, getAPIConfig } from '../../../../../utils/index.native';
 
 const placeHolderImg = require('../../../../../assets/img-placeholder.png');
 
-const swatchConfig = 'w_50,h_50,c_thumb,g_auto:0';
-
 /**
  * DamImage returns two types of images
  * 1. Image from react-native
@@ -29,10 +27,10 @@ const DamImage = (props: Props) => {
     alt,
     isProductImage,
     itemBrand,
-    isSwatchImage,
+    swatchConfig,
     ...otherProps
   } = props;
-  const config = isSwatchImage ? swatchConfig : 'w_450';
+  const config = swatchConfig || 'w_450';
   const cropVal = crop || '';
   const urlVal = url || '';
   const ImageComponent = host ? LazyloadImage : Image;
@@ -73,7 +71,7 @@ DamImage.propTypes = {
   host: PropTypes.string,
   alt: PropTypes.string,
   itemBrand: PropTypes.string,
-  isSwatchImage: PropTypes.bool,
+  swatchConfig: PropTypes.string,
 };
 
 DamImage.defaultProps = {
@@ -84,7 +82,7 @@ DamImage.defaultProps = {
   host: '',
   alt: '',
   itemBrand: '',
-  isSwatchImage: false,
+  swatchConfig: '',
 };
 
 export default withStyles(DamImage, style);

@@ -107,10 +107,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -505,10 +505,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -887,10 +887,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -1265,10 +1265,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -1627,10 +1627,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -1990,10 +1990,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -2353,10 +2353,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -2673,10 +2673,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -3036,10 +3036,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -3356,10 +3356,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -3719,10 +3719,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -4102,10 +4102,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -4500,10 +4500,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -4898,10 +4898,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -5276,10 +5276,10 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             host=""
             imgConfig=""
             isProductImage={true}
-            isSwatchImage={false}
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />

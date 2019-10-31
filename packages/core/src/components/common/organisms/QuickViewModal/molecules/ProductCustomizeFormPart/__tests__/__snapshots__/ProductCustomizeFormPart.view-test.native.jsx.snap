@@ -17,10 +17,10 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           host=""
           imgConfig=""
           isProductImage={true}
-          isSwatchImage={false}
           itemBrand=""
           resizeMode="contain"
           source=""
+          swatchConfig=""
           url=""
           width="161px"
         />
