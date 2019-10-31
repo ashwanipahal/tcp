@@ -87,7 +87,6 @@ class ProductDetailContainer extends React.PureComponent {
       currencyAttributes,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
-    console.log('currentProduct', currentProduct);
     return (
       <React.Fragment>
         {isProductDataAvailable ? (
