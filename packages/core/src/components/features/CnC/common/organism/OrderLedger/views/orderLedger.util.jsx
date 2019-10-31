@@ -355,7 +355,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             </Col>
           </Row>
         ) : null}
-        <FreeShippingBanner />
+        {pageCategory === 'bagPage' && <FreeShippingBanner />}
         {renderLoyaltyBanner(pageCategory)}
       </Grid>
       <RenderPerf.Measure name={PRICING_VISIBLE} />
