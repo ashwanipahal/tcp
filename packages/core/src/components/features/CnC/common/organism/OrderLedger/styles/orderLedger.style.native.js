@@ -17,8 +17,9 @@ const LabelContainer = styled.View`
 `;
 
 const IconContainer = styled.View`
+  position: absolute;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  margin-left: 86px;
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
