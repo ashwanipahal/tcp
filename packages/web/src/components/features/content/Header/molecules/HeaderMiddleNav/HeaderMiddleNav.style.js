@@ -51,6 +51,12 @@ const style = css`
       display: inline-flex;
     }
   }
+
+  .header-middle-login-section .headerSearchBox {
+    position: relative;
+    height: 40px;
+  }
+
   .account-info-section {
     cursor: pointer;
     display: inline-block;
@@ -99,8 +105,9 @@ const style = css`
     }
   }
   .product-image {
+    height: 25px;
     padding-left: 12px;
-    vertical-align: baseline;
+    vertical-align: middle;
   }
   #login {
     padding-right: 12px;
@@ -125,6 +132,7 @@ const style = css`
     border-radius: 8px;
     margin: 1px 0px 0px -7px;
     padding: 2px 5px;
+    vertical-align: bottom;
   }
   @media ${props => props.theme.mediaQuery.mediumMax} {
     padding: 16px 0;

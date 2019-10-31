@@ -156,6 +156,7 @@ class QuickViewModal extends React.Component {
         stickyCloseIcon
         fullWidth
         stickyHeader
+        rightAlignCrossIcon
       >
         {isLoading ? (
           <Spinner />

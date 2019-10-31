@@ -3,6 +3,7 @@ export const RIBBON_HEIGHT = '71px';
 export const BUTTON_WIDTH = '225px';
 export const RIBBON_COLOR = '#c9182e';
 export const TEXT_COLOR_WHITE = 'white';
+export const TEXT_COLOR_GYM = '#1a1a1a';
 export const MODULE_TCP_HEIGHT = 356;
 export const MODULE_WITH_RIBBON_HEIGHT = 273;
 export const MODULE_GYM_HEIGHT = 420;

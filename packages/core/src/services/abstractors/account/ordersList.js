@@ -107,6 +107,17 @@ export const getOrderHistory = (siteId, currentSiteId) => {
 };
 
 /**
+ * @function errorHandler function to handle all the server side errors.
+ * @param {object} err - error object in case server side data send server side validation errors.
+ * @returns {object} error object with appropirate error message
+ */
+const errorHandler = err => {
+  if (err && err.errorResponse && err.errorResponse.errorMessage) {
+    throw new Error(err.errorResponse.errorMessage);
+  }
+  throw new Error('genericError');
+};
+/**
  * @function getOrderInfoByOrderId
  * @summary
  * @param {type} paramName -
@@ -119,7 +130,7 @@ export const getOrderInfoByOrderId = updatedPayload => {
   const payload = {
     header: {
       orderId: updatedPayload.orderId,
-      emailId: updatedPayload.email,
+      emailId: updatedPayload.emailAddress,
     },
     webService: endpoints.orderLookUp,
   };
@@ -421,11 +432,22 @@ export const getOrderInfoByOrderId = updatedPayload => {
         };
       }
 
-      return orderDetailsReturn;
+      const trackingNumber =
+        res && res.body && res.body.orderLookupResponse
+          ? res.body.orderLookupResponse.orderDetails.tracking
+          : null;
+      return {
+        trackOrderInfo: {
+          success: true,
+          trackingNumber: trackingNumber === 'N/A' ? null : trackingNumber,
+          orderId: res.body.orderLookupResponse.orderDetails.orderId,
+          encryptedEmailAddress: encodeURIComponent(res.body.orderLookupResponse.encryptedEmailId),
+          pointsEarned: res.body.orderLookupResponse.pointsEarned,
+        },
+        orderDetailsReturn,
+      };
     })
-    .catch(err => {
-      throw err;
-    });
+    .catch(errorHandler);
 };
 
 export default { getOrderHistory };

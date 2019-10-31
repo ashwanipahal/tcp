@@ -27,9 +27,10 @@ const DamImage = (props: Props) => {
     alt,
     isProductImage,
     itemBrand,
+    swatchConfig,
     ...otherProps
   } = props;
-  const config = 'w_450';
+  const config = swatchConfig || 'w_450';
   const cropVal = crop || '';
   const urlVal = url || '';
   const ImageComponent = host ? LazyloadImage : Image;
@@ -70,6 +71,7 @@ DamImage.propTypes = {
   host: PropTypes.string,
   alt: PropTypes.string,
   itemBrand: PropTypes.string,
+  swatchConfig: PropTypes.string,
 };
 
 DamImage.defaultProps = {
@@ -80,6 +82,7 @@ DamImage.defaultProps = {
   host: '',
   alt: '',
   itemBrand: '',
+  swatchConfig: '',
 };
 
 export default withStyles(DamImage, style);

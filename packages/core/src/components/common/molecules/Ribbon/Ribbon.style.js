@@ -1,9 +1,18 @@
 import styled from 'styled-components';
+import { PromoBanner } from '..';
 
 export const RibbonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  ${props => (props.position === 'right' ? 'flex-end;' : 'flex-start')};
+  justify-content: ${props => (props.position === 'right' ? 'flex-end;' : 'flex-start')};
+`;
+
+export const RibbonPromoBanner = styled(PromoBanner)`
+  .style1 {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.typography.fontSizes.fs36};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    color: ${props => props.theme.colorPalette.white};
+  }
 `;
 
 export const RibbonContainer = styled.div`
