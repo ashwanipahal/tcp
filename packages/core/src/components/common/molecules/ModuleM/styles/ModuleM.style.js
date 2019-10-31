@@ -29,6 +29,16 @@ export const ImageRoundFlex = styled.div`
     height: 143px;
     width: 143px;
     border-radius: 100%;
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 137px;
+      width: 137px;
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      height: 115px;
+      width: 103px;
+    }
   }
 `;
 

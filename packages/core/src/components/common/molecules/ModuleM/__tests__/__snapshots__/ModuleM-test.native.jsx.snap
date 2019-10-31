@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleM component ModuleM component renders correctly without props 1`] = `<Styled(View) />`;
