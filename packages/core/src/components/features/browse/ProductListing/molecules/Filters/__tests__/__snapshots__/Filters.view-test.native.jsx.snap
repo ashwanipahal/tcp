@@ -30,6 +30,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
       type="submit"
       url=""
       width="48%"
+      withNoLineHeight={false}
     />
     <Styled(CustomButton)
       accessibilityLabel="Apply"
@@ -58,6 +59,7 @@ exports[`FiltersVanilla is shown should render FiltersVanilla 1`] = `
       type="submit"
       url=""
       width="48%"
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

@@ -25,14 +25,22 @@ const getShape = props => {
 };
 
 const getMobileAppFilterButtonViewStyle = props => {
-  const { theme, selected, buttonVariation, bottomBorderOnly } = props;
+  const {
+    theme,
+    selected,
+    buttonVariation,
+    bottomBorderOnly,
+    textAlignLeft,
+    lightGrayColor,
+  } = props;
   const { colorPalette, spacing } = theme;
   const bgColor = selected ? colorPalette.gray[900] : 'transparent';
-  const borderColor = colorPalette.gray[900];
+  const borderColor = lightGrayColor ? colorPalette.gray[1500] : colorPalette.gray[900];
   const padding = spacing.ELEM_SPACING.XXS;
 
   if (buttonVariation === BUTTON_VARIATION.mobileAppFilter) {
     return `
+      ${textAlignLeft ? `justify-content: flex-start` : `justify-content: center`};
       min-width: 80px;
       border: 1px solid ${borderColor};
       padding: ${padding};
@@ -40,7 +48,6 @@ const getMobileAppFilterButtonViewStyle = props => {
       align-self: center;
       background-color: ${bgColor};
       border-radius: 6px;
-      justify-content: center;
       align-items: center;
       ${
         bottomBorderOnly
@@ -91,7 +98,7 @@ const getMobileAppSelectFieldViewStyle = props => {
 };
 
 const getMobileAppFilterButtonTextStyle = props => {
-  const { theme, selected, buttonVariation } = props;
+  const { theme, selected, buttonVariation, withNoLineHeight } = props;
   const { colorPalette, typography } = theme;
   const { fontSizes, fontWeights, fonts } = typography;
   let fontColor = colorPalette.gray[1100];
@@ -116,7 +123,7 @@ const getMobileAppFilterButtonTextStyle = props => {
       color: ${fontColor};
       text-transform: none;
       padding: 0px;
-      line-height: 12px;
+      ${!withNoLineHeight ? `line-height: 12px` : ''}
     `;
   }
   return `
@@ -192,7 +199,7 @@ const IconContainer = styled.View`
 
 const style = css`
   justify-content: center;
-  min-height: 42px;
+  min-height: 32px;
   border: 1px solid ${props => props.theme.colorPalette.gray[600]};
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   background: ${props => props.theme.colorPalette.white};

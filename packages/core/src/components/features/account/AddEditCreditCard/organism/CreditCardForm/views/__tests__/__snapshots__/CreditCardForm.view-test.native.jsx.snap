@@ -412,6 +412,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         text="lbl_common_saveCTA"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
       <Styled(CustomButton)
         active={false}
@@ -443,6 +444,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -865,6 +867,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         text="lbl_payment_addCard"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
       <Styled(CustomButton)
         active={false}
@@ -896,6 +899,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1314,6 +1318,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         text="lbl_payment_addCard"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
       <Styled(CustomButton)
         active={false}
@@ -1345,6 +1350,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         text="lbl_common_cancelCTA"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

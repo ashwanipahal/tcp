@@ -89,6 +89,7 @@ exports[`RecentOrders component should renders correctly 2`] = `
     text="lbl_orders_trackit"
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </Fragment>
 `;

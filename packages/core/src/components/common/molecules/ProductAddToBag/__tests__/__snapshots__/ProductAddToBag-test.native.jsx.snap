@@ -151,9 +151,11 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       data={Array []}
       heading="undefined: "
       id="quantity"
+      lightGrayColor={true}
       name="Quantity"
       onValueChange={[Function]}
       selectedValue={1}
+      textAlignLeft={true}
     />
   </Styled(View)>
   <ErrorDisplay />
@@ -184,6 +186,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     text=""
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </View>
 `;

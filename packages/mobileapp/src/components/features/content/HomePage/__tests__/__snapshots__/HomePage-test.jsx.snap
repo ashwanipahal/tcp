@@ -110,8 +110,8 @@ exports[`HomePageView should render correctly 1`] = `
         Object {
           "category": Object {
             "cat_id": Array [
-              "47503>47544",
               "47526",
+              "47503>47544",
             ],
           },
           "singleCTAButton": Object {
@@ -138,7 +138,7 @@ exports[`HomePageView should render correctly 1`] = `
           "category": Object {
             "cat_id": Array [
               "47501>47526",
-              "47503>47544",
+              "47501>47526",
             ],
           },
           "singleCTAButton": Object {

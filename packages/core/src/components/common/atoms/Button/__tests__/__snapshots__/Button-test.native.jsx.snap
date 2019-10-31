@@ -25,6 +25,7 @@ exports[`CustomButton should render correctly 1`] = `
     paddings="12px 32px 12px 32px"
     selected={false}
     style={null}
+    withNoLineHeight={false}
   />
 </Styled(TouchableOpacity)>
 `;

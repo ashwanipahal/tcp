@@ -34,6 +34,7 @@ const CONSTANTS = {
   BAGPAGE: 'bag',
   HOME: 'home',
   LOGIN: 'login',
+  FREE_SHIPPING_URL: '/content/free-shipping',
   US_LOCATION_ID: '0180',
   CA_LOCATION_ID: '3180',
   CHECKOUT_STAGES: {

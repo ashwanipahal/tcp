@@ -134,6 +134,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       theme={Object {}}
       type="button"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

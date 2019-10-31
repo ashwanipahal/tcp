@@ -207,6 +207,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         text="SAVE"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
     <Styled(View)>
@@ -233,6 +234,7 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         text="lbl_profile_personal_info_cancelCta"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

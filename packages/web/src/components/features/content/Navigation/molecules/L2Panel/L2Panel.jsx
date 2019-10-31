@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getViewportInfo } from '@tcp/core/src/utils';
+import { getViewportInfo, configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
 import { Heading, Row, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { keyboard } from '../../../../../../constants/constants';
 import { HideDrawerConsumer } from '../L1NavItem/L1NavItem';
@@ -14,19 +14,22 @@ const MAX_ITEMS_IN_COL = 8;
 const FOUR_COL = 4;
 const TWO_COL = 2;
 
-const createShopByLinks = (links, column) => {
+const createShopByLinks = (links, column, hideL2Nav) => {
   return (
     <ul>
       {links.map((link, index) => {
         const { url, text, title, target } = link;
+        const to = configureInternalNavigationFromCMSUrl(url);
         const currentIndex = column > 1 ? index + 5 : index;
         return (
           <li>
             <Anchor
-              to={url}
+              to={to}
+              asPath={url}
               title={title}
               target={target}
               dataLocator={`l2_size_btn_${currentIndex}`}
+              onClick={() => hideL2Nav()}
             >
               <BodyCopy className="l2-circle-link">{text}</BodyCopy>
             </Anchor>
@@ -179,7 +182,8 @@ const createLinks = (
   }
   return ``;
 };
-const createShopBySizeCol = (columns, l1Index) => {
+const createShopBySizeCol = (columns, l1Index, context) => {
+  const { hideL2Nav } = context;
   return columns.map(({ imageBanner, shopBySize }) => {
     const sizes = shopBySize ? shopBySize[0] : {};
     const shopBySizeCol1 = shopBySize ? sizes.linkList.slice(0, 5) : [];
@@ -207,8 +211,8 @@ const createShopBySizeCol = (columns, l1Index) => {
               <span className="l2-nav-category-divider" />
             </div>
             <div className="shop-by-size-links">
-              {createShopByLinks(shopBySizeCol1, 1)}
-              {createShopByLinks(shopBySizeCol2, 2)}
+              {createShopByLinks(shopBySizeCol1, 1, hideL2Nav)}
+              {createShopByLinks(shopBySizeCol2, 2, hideL2Nav)}
             </div>
           </Col>
         )}
@@ -362,7 +366,9 @@ const L2Panel = props => {
                       );
                     })}
                   {categoryLayout &&
-                    categoryLayout.map(({ columns }) => createShopBySizeCol(columns, l1Index))}
+                    categoryLayout.map(({ columns }) =>
+                      createShopBySizeCol(columns, l1Index, context)
+                    )}
                 </Row>
               </Row>
             </div>

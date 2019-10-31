@@ -496,6 +496,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />
@@ -653,6 +654,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />
@@ -991,6 +993,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />

@@ -1,6 +1,7 @@
 const dummyUrl = 'http://www.childrensplace.com';
 const cat1 = '47526';
 const cat2 = '47503>47544';
+const cat3 = '47501>47526';
 const footerlink = 'Shop All Matchables';
 const adTobag = 'add to bag';
 
@@ -80,7 +81,7 @@ export default {
             text: 'GIRL',
           },
           category: {
-            cat_id: [cat2, '47501>47526'],
+            cat_id: [cat2, cat3],
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -128,7 +129,7 @@ export default {
             text: 'BOY',
           },
           category: {
-            cat_id: [cat2, cat1],
+            cat_id: [cat1, cat2],
           },
           singleCTAButton: {
             url: dummyUrl,
@@ -152,7 +153,7 @@ export default {
             text: 'TODDLER BOY',
           },
           category: {
-            cat_id: ['47501>47526', cat2],
+            cat_id: [cat3, cat3],
           },
           singleCTAButton: {
             url: dummyUrl,

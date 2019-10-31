@@ -101,6 +101,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           text="APPLY_TO_BAG"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(Anchor)

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 const PickUpSkUSectionContainer = styled.View`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
-    ${props => props.theme.spacing.ELEM_SPACING.XS} 0px
-    ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 14px 0px 14px;
   margin: 0;
   ${props =>
     props.formEnabled

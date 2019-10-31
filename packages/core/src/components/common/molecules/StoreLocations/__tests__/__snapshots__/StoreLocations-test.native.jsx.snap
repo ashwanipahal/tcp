@@ -25,6 +25,7 @@ exports[`StoreLocations component StoreLocations component renders correctly wit
     theme={Object {}}
     type="button"
     url=""
+    withNoLineHeight={false}
   />
 </Styled(View)>
 `;

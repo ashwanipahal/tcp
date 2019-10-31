@@ -82,6 +82,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -175,6 +176,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

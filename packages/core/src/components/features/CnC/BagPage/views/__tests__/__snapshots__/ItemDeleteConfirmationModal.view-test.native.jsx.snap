@@ -89,6 +89,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
               theme={Object {}}
               type="submit"
               url=""
+              withNoLineHeight={false}
             />
           </Styled(View)>
           <Styled(View)>
@@ -116,6 +117,7 @@ exports[`Bag page Container should render modal when open true 1`] = `
               theme={Object {}}
               type="submit"
               url=""
+              withNoLineHeight={false}
             />
           </Styled(View)>
         </Styled(View)>
@@ -214,6 +216,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
               theme={Object {}}
               type="submit"
               url=""
+              withNoLineHeight={false}
             />
           </Styled(View)>
           <Styled(View)>
@@ -241,6 +244,7 @@ exports[`Bag page Container should render no modal when isOpen is false 1`] = `
               theme={Object {}}
               type="submit"
               url=""
+              withNoLineHeight={false}
             />
           </Styled(View)>
         </Styled(View)>

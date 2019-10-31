@@ -22,6 +22,7 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     iconColor="gray.800"
     iconName="chevron-down"
     iconSize="fs12"
+    lightGrayColor={false}
     locator=""
     navigation={Object {}}
     onPress={[Function]}
@@ -30,9 +31,11 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     selectedIcon="chevron-up"
     showIcon={true}
     text={null}
+    textAlignLeft={false}
     theme={Object {}}
     type="button"
     url=""
+    withNoLineHeight={false}
   />
   <Component
     animationType="slide"
