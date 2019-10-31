@@ -17,6 +17,7 @@ const initialState = {
   fromBagPage: false,
   updateCartItemStore: false,
   alwaysSearchForBOSS: false,
+  openRestrictedModalForBopis: false,
 };
 
 const mergePickupModalState = (state, payload) => {

@@ -289,6 +289,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
       isBossClearanceProductEnabled: true,
       isBopisClearanceProductEnabled: true,
       isRadialInventoryEnabled: true,
+      pickupStoresInCart: {},
     };
   });
 
