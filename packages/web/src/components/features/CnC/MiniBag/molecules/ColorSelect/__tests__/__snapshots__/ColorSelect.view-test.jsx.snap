@@ -9,7 +9,7 @@ exports[`ColorSelectorDropDown component ColorSelectorDropDown component renders
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-EHOje",
-        "isStatic": true,
+        "isStatic": false,
         "rules": Array [
           "
   ",

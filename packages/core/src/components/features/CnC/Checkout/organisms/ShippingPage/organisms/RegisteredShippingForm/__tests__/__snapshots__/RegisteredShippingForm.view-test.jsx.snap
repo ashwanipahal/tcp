@@ -38,7 +38,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
               "content": <div
                 className="address-wrapper"
               >
-                <ForwardRef
+                <ForwardRef(Styled(Address))
                   address={
                     Object {
                       "addressLine": Array [
@@ -59,19 +59,19 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
                   showDefault={false}
                   showPhone={false}
                 />
-                <ForwardRef
+                <ForwardRef(Styled(Badge))
                   className="default-badge"
                   dataLocator="shipping-defshippinglabel"
                   showCheckmark={true}
                 >
                   lbl_shipping_default
-                </ForwardRef>
+                </ForwardRef(Styled(Badge))>
               </div>,
               "title": "test test (Default)",
               "value": undefined,
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 dataLocator="new-addressbtn"
                 disabled={false}
@@ -80,7 +80,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
                 onClick={[Function]}
               >
                 lbl_shipping_addNewAddress
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "Add New Address",
               "value": "",
             },
@@ -227,7 +227,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
               "content": <div
                 className="address-wrapper"
               >
-                <ForwardRef
+                <ForwardRef(Styled(Address))
                   address={
                     Object {
                       "addressLine": Array [
@@ -252,7 +252,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
               "value": undefined,
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 dataLocator="new-addressbtn"
                 disabled={false}
@@ -261,7 +261,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
                 onClick={[Function]}
               >
                 lbl_shipping_addNewAddress
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "Add New Address",
               "value": "",
             },
@@ -458,7 +458,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
               "content": <div
                 className="address-wrapper"
               >
-                <ForwardRef
+                <ForwardRef(Styled(Address))
                   address={
                     Object {
                       "addressId": "123",
@@ -484,7 +484,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
               "value": "123",
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 dataLocator="new-addressbtn"
                 disabled={false}
@@ -493,7 +493,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
                 onClick={[Function]}
               >
                 lbl_shipping_addNewAddress
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "Add New Address",
               "value": "",
             },
@@ -703,7 +703,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
               "content": <div
                 className="address-wrapper"
               >
-                <ForwardRef
+                <ForwardRef(Styled(Address))
                   address={
                     Object {
                       "addressId": "123",
@@ -729,7 +729,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
               "value": "123",
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 dataLocator="new-addressbtn"
                 disabled={false}
@@ -738,7 +738,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
                 onClick={[Function]}
               >
                 lbl_shipping_addNewAddress
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "Add New Address",
               "value": "",
             },
@@ -1124,7 +1124,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
               "content": <div
                 className="address-wrapper"
               >
-                <ForwardRef
+                <ForwardRef(Styled(Address))
                   address={
                     Object {
                       "addressLine": Array [
@@ -1149,7 +1149,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
               "value": undefined,
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 dataLocator="new-addressbtn"
                 disabled={true}
@@ -1158,7 +1158,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 onClick={[Function]}
               >
                 lbl_shipping_addNewAddress
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "Add New Address",
               "value": "",
             },
@@ -1626,7 +1626,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
               "content": <div
                 className="address-wrapper"
               >
-                <ForwardRef
+                <ForwardRef(Styled(Address))
                   address={
                     Object {
                       "addressLine": Array [
@@ -1651,7 +1651,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
               "value": undefined,
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 dataLocator="new-addressbtn"
                 disabled={true}
@@ -1660,7 +1660,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
                 onClick={[Function]}
               >
                 lbl_shipping_addNewAddress
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "Add New Address",
               "value": "",
             },
@@ -2128,7 +2128,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
               "content": <div
                 className="address-wrapper"
               >
-                <ForwardRef
+                <ForwardRef(Styled(Address))
                   address={
                     Object {
                       "addressLine": Array [
@@ -2153,7 +2153,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
               "value": undefined,
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 dataLocator="new-addressbtn"
                 disabled={false}
@@ -2162,7 +2162,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
                 onClick={[Function]}
               >
                 lbl_shipping_addNewAddress
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "Add New Address",
               "value": "",
             },

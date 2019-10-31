@@ -68,23 +68,23 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       creditFieldLabels={Object {}}
       cvvError="error"
       cvvInfo={
-        <ForwardRef
+        <ForwardRef(Styled(ReactTooltip))
           aligned="right"
           fontFamily="secondary"
           message={
-            <ForwardRef
+            <ForwardRef(Styled(RichText))
               className="cvv-code-info"
               dataLocator="cvv-code-info"
               richTextHtml=""
             />
           }
         >
-          <ForwardRef
+          <ForwardRef(Styled(Image))
             height="15"
             src="/static/images/info-icon.png"
             width="15"
           />
-        </ForwardRef>
+        </ForwardRef(Styled(ReactTooltip))>
       }
       editMode={false}
       formName="checkoutBilling"

@@ -8,7 +8,7 @@ exports[`EarnExtraPointsOverview component should render correctly EarnExtraPoin
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-kAzzGY",
-        "isStatic": true,
+        "isStatic": false,
         "rules": Array [
           "
   ",

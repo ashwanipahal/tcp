@@ -111,7 +111,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         options={
           Immutable.List [
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Address))
                 address={
                   Object {
                     "addressId": "12345",
@@ -128,13 +128,13 @@ exports[`CreditCardForm component should renders correctly with address dropdown
               "value": "12345",
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}
               >
                 lbl_payment_addNewAddCta
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "lbl_payment_addNewAddCta",
               "value": "",
             },
@@ -339,7 +339,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         options={
           Immutable.List [
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Address))
                 address={
                   Object {
                     "addressId": "12345",
@@ -356,13 +356,13 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
               "value": "12345",
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}
               >
                 lbl_payment_addNewAddCta
-              </ForwardRef>,
+              </ForwardRef(Styled(Button))>,
               "title": "lbl_payment_addNewAddCta",
               "value": "",
             },
