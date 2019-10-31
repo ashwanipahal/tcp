@@ -78,7 +78,7 @@ class CouponListSection extends React.Component<Props> {
                 fontSizeVariation="small"
                 underline
                 anchorVariation="primary"
-                fontSize="fs10"
+                fontSize="fs12"
                 fontFamily="secondary"
                 dataLocator="couponcard-helpApplyingPlaceCashlink"
                 onClick={this.helpAnchorClick}

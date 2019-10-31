@@ -365,7 +365,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
     unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
-    previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
+    previewToken: processEnv.RWD_WEB_PREVIEW_TOKEN,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,

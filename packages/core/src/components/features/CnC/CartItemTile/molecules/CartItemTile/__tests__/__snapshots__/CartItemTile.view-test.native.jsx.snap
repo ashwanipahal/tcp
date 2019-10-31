@@ -119,6 +119,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -526,6 +527,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -917,6 +919,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -1304,6 +1307,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -1675,6 +1679,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -2047,6 +2052,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -2419,6 +2425,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -2747,6 +2754,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -3119,6 +3127,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -3447,6 +3456,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -3819,6 +3829,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -4211,6 +4222,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -4618,6 +4630,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -5025,6 +5038,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
@@ -5412,6 +5426,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             itemBrand="tcp"
             showOnReviewPage={true}
             source=""
+            swatchConfig=""
             url=""
             width={100}
           />
