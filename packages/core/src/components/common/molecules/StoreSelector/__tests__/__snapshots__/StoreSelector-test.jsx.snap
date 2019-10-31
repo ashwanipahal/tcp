@@ -315,6 +315,7 @@ exports[`StoreSelector component should default set title as value for selected 
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -332,9 +333,11 @@ exports[`StoreSelector component should default set title as value for selected 
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -474,6 +477,13 @@ exports[`StoreSelector component should default set title as value for selected 
           "regular": "400",
           "semibold": "600",
         },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "extrabold": "ExtraBold",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
+        },
         "fonts": Object {
           "primary": "Montserrat",
           "secondary": "Nunito",
@@ -547,6 +557,10 @@ exports[`StoreSelector component should default set title as value for selected 
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -9139,6 +9153,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -9156,9 +9171,11 @@ exports[`StoreSelector component should render correctly 1`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -9298,6 +9315,13 @@ exports[`StoreSelector component should render correctly 1`] = `
           "regular": "400",
           "semibold": "600",
         },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "extrabold": "ExtraBold",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
+        },
         "fonts": Object {
           "primary": "Montserrat",
           "secondary": "Nunito",
@@ -9371,6 +9395,10 @@ exports[`StoreSelector component should render correctly 1`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",

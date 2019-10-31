@@ -327,6 +327,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -344,9 +345,11 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -486,6 +489,13 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "regular": "400",
           "semibold": "600",
         },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "extrabold": "ExtraBold",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
+        },
         "fonts": Object {
           "primary": "Montserrat",
           "secondary": "Nunito",
@@ -559,6 +569,10 @@ exports[`StoreStaticMap component canada specific should mount for canada region
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -4247,6 +4261,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -4264,9 +4279,11 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -4406,6 +4423,13 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "regular": "400",
           "semibold": "600",
         },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "extrabold": "ExtraBold",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
+        },
         "fonts": Object {
           "primary": "Montserrat",
           "secondary": "Nunito",
@@ -4479,6 +4503,10 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -8163,6 +8191,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -8180,9 +8209,11 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -8322,6 +8353,13 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "regular": "400",
           "semibold": "600",
         },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "extrabold": "ExtraBold",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
+        },
         "fonts": Object {
           "primary": "Montserrat",
           "secondary": "Nunito",
@@ -8395,6 +8433,10 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -12083,6 +12125,7 @@ exports[`StoreStaticMap component resize window should update component on windo
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -12100,9 +12143,11 @@ exports[`StoreStaticMap component resize window should update component on windo
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -12242,6 +12287,13 @@ exports[`StoreStaticMap component resize window should update component on windo
           "regular": "400",
           "semibold": "600",
         },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "extrabold": "ExtraBold",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
+        },
         "fonts": Object {
           "primary": "Montserrat",
           "secondary": "Nunito",
@@ -12315,6 +12367,10 @@ exports[`StoreStaticMap component resize window should update component on windo
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -12776,6 +12832,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -12793,9 +12850,11 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -12935,6 +12994,13 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "regular": "400",
           "semibold": "600",
         },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "extrabold": "ExtraBold",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
+        },
         "fonts": Object {
           "primary": "Montserrat",
           "secondary": "Nunito",
@@ -13008,6 +13074,10 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
