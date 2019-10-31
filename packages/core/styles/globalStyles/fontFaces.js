@@ -90,6 +90,15 @@ export default css`
   }
 
   @font-face {
+    font-family: 'Nunito-ExtraBold';
+    font-style: normal;
+    font-weight: 800;
+    src: local('Nunito ExtraBold'), local('Nunito-ExtraBold'),
+      url('/static/fonts/Nunito-800.woff2') format('woff2'),
+      url('/static/fonts/Nunito-800.woff') format('woff');
+  }
+
+  @font-face {
     font-family: 'Nunito-Black';
     font-style: normal;
     font-weight: 900;

@@ -43,7 +43,7 @@ const PointsHistoryList = ({
       <BodyCopyWithSpacing
         text={getLabelValue(labels, 'lbl_common_points_history')}
         fontSize="fs16"
-        fontWeight="extrabold"
+        fontWeight="semibold"
         fontFamily="secondary"
         color="gray.900"
         spacingStyles="margin-bottom-XL margin-top-LRG"

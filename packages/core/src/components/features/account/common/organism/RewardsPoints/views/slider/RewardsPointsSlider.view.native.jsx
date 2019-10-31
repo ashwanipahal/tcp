@@ -30,6 +30,7 @@ const RewardsPointsSlider = ({
           <BodyCopy
             fontSize="fs14"
             fontFamily="secondary"
+            fontWeight="regular"
             text={`${getLabelValue(labels, 'lbl_rewardPoints_currentPoints')}: `}
           />
           <BodyCopy
@@ -44,6 +45,7 @@ const RewardsPointsSlider = ({
             text={`${getLabelValue(labels, 'lbl_rewardPoints_heading')}: `}
             fontFamily="secondary"
             fontSize="fs14"
+            fontWeight="regular"
           />
           {totalRewards && (
             <BodyCopy
@@ -64,6 +66,7 @@ const RewardsPointsSlider = ({
           <BodyCopy
             fontSize="fs14"
             fontFamily="secondary"
+            fontWeight="regular"
             text={`${getLabelValue(labels, 'lbl_rewardPoints_nextReward')}: `}
           />
           <BodyCopy

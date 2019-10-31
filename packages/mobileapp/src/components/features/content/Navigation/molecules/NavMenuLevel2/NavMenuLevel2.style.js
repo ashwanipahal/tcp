@@ -89,8 +89,8 @@ export const ArrowIcon = styled.Image`
 `;
 
 export const ArrowBackIcon = styled.Image`
-  width: 16px;
-  height: 24px;
+  width: 10px;
+  height: 18px;
 `;
 
 export const TouchableOpacityArrow = styled.TouchableOpacity`

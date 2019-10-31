@@ -8,8 +8,6 @@ import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import { getLocator, navigateToNestedRoute } from '@tcp/core/src/utils';
-import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
-import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
   updateCartCount,
@@ -21,6 +19,7 @@ import {
   SafeAreaViewStyle,
   CartIconView,
   Touchable,
+  ArrowBackIcon,
   LeftSection,
   MiddleSection,
   RightSection,
@@ -30,6 +29,7 @@ import {
 import { readCookieMobileApp } from '../../../../utils/utils';
 
 const cartIcon = require('../../../../assets/images/empty-bag.png');
+const BackIcon = require('../../../../../../core/src/assets/carrot-large-left.png');
 
 const CART_ITEM_COUNTER = 'cartItemsCount';
 
@@ -146,7 +146,7 @@ class HeaderNew extends React.PureComponent<Props> {
                 accessibilityRole="button"
                 accessibilityLabel="back button"
               >
-                <CustomIcon name={ICON_NAME.chevronLeft} size="fs20" color="gray.600" />
+                <ArrowBackIcon source={BackIcon} />
               </TouchableOpacity>
             </LeftSection>
 

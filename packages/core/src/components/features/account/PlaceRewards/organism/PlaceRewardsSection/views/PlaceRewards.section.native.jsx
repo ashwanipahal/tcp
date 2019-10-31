@@ -33,7 +33,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
         <StyledView>
           <BodyCopy
             fontSize="fs16"
-            fontWeight="extrabold"
+            fontWeight="semibold"
             text={getLabelValue(commonLabels, 'lbl_common_point_balance')}
           />
           <RewardsPoints />
@@ -42,7 +42,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <StyledHeading>
             <BodyCopy
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="semibold"
               text={getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
             />
           </StyledHeading>

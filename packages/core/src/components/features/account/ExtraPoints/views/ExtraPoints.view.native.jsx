@@ -118,7 +118,7 @@ export class EarnPoints extends React.PureComponent {
           <BodyCopyWithSpacing
             fontFamily="primary"
             fontSize="fs28"
-            fontWeight="extrabold"
+            fontWeight="black"
             text={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_youAreEarning')}
             spacingStyles="margin-top-LRG margin-right-LRG margin-bottom-MED margin-left-LRG"
             textAlign="center"

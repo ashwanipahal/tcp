@@ -33,6 +33,7 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
             text={getLabelValue(labels, 'lbl_common_order_date')}
             fontFamily="secondary"
             fontSize="fs12"
+            fontWeight="semibold"
           />
         </PointView>
         <PointTransView>
@@ -40,6 +41,7 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
             text={getLabelValue(labels, 'lbl_common_transaction')}
             fontFamily="secondary"
             fontSize="fs12"
+            fontWeight="semibold"
           />
         </PointTransView>
         <PointView>
@@ -48,6 +50,7 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
             component="p"
             fontFamily="secondary"
             fontSize="fs12"
+            fontWeight="semibold"
           />
         </PointView>
       </PointHistoryView>

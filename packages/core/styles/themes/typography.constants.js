@@ -12,6 +12,11 @@ export const ANDROID_FONTS = {
   secondary: 'nunito',
 };
 
+export const IOS_FONTS = {
+  primary: 'Montserrat',
+  secondary: 'Nunito',
+};
+
 export const LETTER_SPACINGS = {
   ls400: '4px',
   ls317: '3.17px',
@@ -34,6 +39,14 @@ export const FONT_WEIGHTS = {
   semibold: '600',
   extrabold: '800',
   black: '900',
+};
+
+export const FONT_WEIGHT_NAMES = {
+  regular: 'Regular',
+  semibold: 'SemiBold',
+  semiBold: 'SemiBold',
+  extrabold: 'ExtraBold',
+  black: 'Black',
 };
 
 export const FONT_SIZES = {

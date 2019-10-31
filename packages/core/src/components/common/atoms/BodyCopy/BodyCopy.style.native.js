@@ -5,7 +5,10 @@ import {
   color as colorStyleSystem,
 } from '@tcp/core/styles/rwdStyleSystem';
 
-import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
+import {
+  androidFontStyles,
+  iosFontStyles,
+} from '../../../../../styles/globalStyles/StyledText.style';
 
 const getAdditionalStyle = props => {
   const { margin, textDecoration } = props;
@@ -19,6 +22,7 @@ const BodyCopyText = styled.Text`
   ${typographyStyleSystem}
   ${colorStyleSystem}
   ${androidFontStyles}
+  ${iosFontStyles}
   ${getAdditionalStyle}
 `;
 export default BodyCopyText;
