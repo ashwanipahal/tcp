@@ -216,3 +216,4 @@ LoginSection.defaultProps = {
 };
 
 export default withStyles(LoginSection, FormStyle);
+export { LoginSection as LoginSectionVanilla };

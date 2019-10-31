@@ -1,50 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginSection component should renders correctly 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "labels": Object {
-          "login": Object {
-            "lbl_login_createAccountCTA": "",
-            "lbl_login_createAccountHelp": "",
-            "lbl_login_createAccountHelp_1": "Don't have an account? Create one now to",
-            "lbl_login_createAccountHelp_2": "start earning points!",
-          },
-        },
-        "loginErrorMessage": "",
-        "userplccCardId": "",
-        "userplccCardNumber": "",
-      },
-      "attrs": Array [],
-      "displayName": "Styled(LoginSection)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          "
-  ",
-          [Function],
-          "
-",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  initialValues={Object {}}
-  labels={Object {}}
-  loginErrorMessage=""
-  onSubmit={[Function]}
-  userplccCardId=""
-  userplccCardNumber=""
-/>
+<View>
+  <Styled(LoginTopSection)
+    labels={Object {}}
+    showForgotPasswordForm={[Function]}
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="myLoginForm"
+    getFormState={[Function]}
+    initialValues={Object {}}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    loginErrorMessage=""
+    onSubmit={[Function]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    showForgotPasswordForm={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    userplccCardId=""
+    userplccCardNumber=""
+    validate={[Function]}
+  />
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_login_createAccountHelp_1"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_login_createAccountHelp_2"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="#575757"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator=""
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_login_createAccountCTA"
+      theme={Object {}}
+      type="submit"
+      url=""
+    />
+  </Styled(View)>
+</View>
+`;
+
+exports[`LoginSection component should test change password 1`] = `
+<View>
+  <Connect(ResetPasswordContainer)
+    queryParams={Object {}}
+    showNewPassword={[Function]}
+  />
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_login_createAccountHelp_1"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_login_createAccountHelp_2"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="#575757"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator=""
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_login_createAccountCTA"
+      theme={Object {}}
+      type="submit"
+      url=""
+    />
+  </Styled(View)>
+</View>
 `;
