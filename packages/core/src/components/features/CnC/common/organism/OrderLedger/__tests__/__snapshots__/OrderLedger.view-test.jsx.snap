@@ -100,7 +100,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -126,7 +126,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -145,7 +145,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 5,
                     "small": 3,
                   }
                 }
@@ -171,7 +171,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 3,
                     "small": 3,
                   }
                 }
@@ -441,7 +441,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -466,7 +466,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -496,7 +496,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -521,7 +521,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -551,7 +551,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -577,7 +577,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -708,7 +708,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 5,
                     "small": 3,
                   }
                 }
@@ -734,7 +734,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 3,
                     "small": 3,
                   }
                 }
@@ -765,7 +765,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 5,
                     "small": 3,
                   }
                 }
@@ -776,7 +776,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -801,7 +801,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 3,
                     "small": 3,
                   }
                 }
@@ -812,7 +812,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1071,7 +1071,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1096,7 +1096,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1126,7 +1126,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1152,7 +1152,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1283,7 +1283,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 5,
                     "small": 3,
                   }
                 }
@@ -1309,7 +1309,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 3,
                     "small": 3,
                   }
                 }
@@ -1340,7 +1340,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 5,
                     "small": 3,
                   }
                 }
@@ -1351,7 +1351,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1376,7 +1376,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 3,
                     "small": 3,
                   }
                 }
@@ -1387,7 +1387,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"

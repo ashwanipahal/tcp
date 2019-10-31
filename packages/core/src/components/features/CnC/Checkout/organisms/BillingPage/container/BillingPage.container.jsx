@@ -18,6 +18,13 @@ class BillingPageContainer extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    const { clearCheckoutServerError, checkoutServerError } = this.props;
+    if (checkoutServerError) {
+      clearCheckoutServerError({});
+    }
+  }
+
   render() {
     return <BillingPage {...this.props} />;
   }
@@ -48,6 +55,8 @@ export const mapStateToProps = state => {
 BillingPageContainer.propTypes = {
   cvvCodeInfoContentId: PropTypes.string,
   getCVVCodeInfo: PropTypes.func,
+  clearCheckoutServerError: PropTypes.func.isRequired,
+  checkoutServerError: PropTypes.shape({}).isRequired,
 };
 
 BillingPageContainer.defaultProps = {

@@ -3,6 +3,9 @@ import { createSelector } from 'reselect';
 import constants from '../TrackOrder.constants';
 
 export const getLabels = state => state.Labels.global;
+export const getOrderLabels = state => {
+  return state.Labels.account;
+};
 
 export const getTrackOrderState = state => state.TrackOrderReducer.get('trackOrderInfo');
 

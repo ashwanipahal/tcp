@@ -4,7 +4,6 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
-import Anchor from '../../../atoms/Anchor';
 import Button from '../../../atoms/Button';
 import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage';
 
@@ -192,19 +191,21 @@ class CouponCard extends React.Component<Props> {
                     {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
                       this.RenderValidText(coupon)}
                   </BodyCopy>
-                  <Anchor
+                  <Button
                     dataLocator={`coupon_${coupon.status}_cartDetailsLink`}
                     fontSizeVariation="small"
                     underline
                     anchorVariation="primary"
-                    fontSize="fs10"
-                    to="/#"
+                    fontSize="fs12"
+                    nohover
+                    type="button"
+                    link
                     onClick={this.handleDefaultLinkClick}
                     className="cartDetailsLink"
                     aria-labelledby={coupon.id}
                   >
                     {labels.DETAILS_BUTTON_TEXT}
-                  </Anchor>
+                  </Button>
                 </div>
                 {this.RenderButtons(coupon)}
               </div>

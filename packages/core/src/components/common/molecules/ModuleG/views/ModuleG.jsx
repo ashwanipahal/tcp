@@ -238,7 +238,20 @@ class ModuleG extends React.PureComponent {
     // const promoMediaLinkedList = mediaLinkedList || [];
     // const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     // const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
-    const data = productTabList[currentCatId] || [];
+    let showPlusButton = false;
+    const productTabsCompletionInfo = Object.assign({}, productTabList);
+    // eslint-disable-next-line
+    if (productTabsCompletionInfo && productTabsCompletionInfo.hasOwnProperty('completed')) {
+      currentCatId.forEach(id => {
+        // eslint-disable-next-line
+        if (productTabsCompletionInfo.completed.hasOwnProperty(id)) {
+          showPlusButton = true;
+        } else {
+          showPlusButton = false;
+        }
+      });
+    }
+
     return (
       <Grid className={`${className} moduleG`}>
         <Row>
@@ -259,7 +272,7 @@ class ModuleG extends React.PureComponent {
         </Row>
         <Row className="wrapper" fullBleed={{ small: true, medium: true, large: false }}>
           {this.renderCarousel('top', currentCatId[0])}
-          {data && data.length > 0 ? (
+          {showPlusButton ? (
             <div className="focusAreaView">
               <span className="focusArea-plus">
                 <Image src={getIconPath('plus-icon')} />

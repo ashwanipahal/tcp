@@ -1,9 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import { readCookie } from '../../../../utils/cookie.util';
-import { getSiteId } from '../../../../utils';
+import { getSiteId, isGymboree } from '../../../../utils';
 import { executeUnbxdAPICall, executeExternalAPICall } from '../../../handler';
 import logger from '../../../../utils/loggerInstance';
 import processResponse from '../../productListing/processResponse';
+import endpoints from '../../../endpoints';
 
 const RecommendationsAbstractor = {
   isUSStore: getSiteId() === 'us',
@@ -88,6 +89,7 @@ const RecommendationsAbstractor = {
             'entity.id': itemPartNumber ? `${itemPartNumber}_${siteId.toUpperCase()}` : '',
             'entity.categoryId': categoryName || '',
             pageType: page || '',
+            site: isGymboree() ? 'GYM' : 'TCP',
             ...otherMboxProps,
           },
           success: offer => {
@@ -193,12 +195,7 @@ const RecommendationsAbstractor = {
         fields:
           'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
       },
-      webService: {
-        method: 'GET',
-        URI: 'products',
-        unbxd: true,
-        unbxdCustom: true,
-      },
+      webService: endpoints.getProductDetails,
     };
 
     return executeUnbxdAPICall(payload)

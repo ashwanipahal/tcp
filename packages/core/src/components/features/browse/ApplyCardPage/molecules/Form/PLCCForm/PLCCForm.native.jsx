@@ -332,6 +332,7 @@ class PLCCForm extends React.PureComponent<Props> {
               type="text"
               component={TextBox}
               maxLength={5}
+              keyboardType="numeric"
             />
           </ZipContainerView>
         </ContainerView>
@@ -343,6 +344,7 @@ class PLCCForm extends React.PureComponent<Props> {
             type="tel"
             component={TextBox}
             maxLength={10}
+            keyboardType="numeric"
           />
         </NameFieldContainer>
         <NameFieldContainer>
@@ -353,6 +355,7 @@ class PLCCForm extends React.PureComponent<Props> {
             type="tel"
             component={TextBox}
             maxLength={10}
+            keyboardType="numeric"
           />
         </NameFieldContainer>
         <StyledBodyCopy

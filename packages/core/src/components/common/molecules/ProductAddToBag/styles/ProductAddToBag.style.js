@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  margin-top: 10px;
+  ${props => (!props.marginTopNone ? `margin-top: 10px` : '')};
   .edit-form-css {
     display: flex;
     flex: 1;
@@ -22,7 +22,7 @@ const styles = css`
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
-    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     font-stretch: normal;
     line-height: normal;
     font-style: normal;
@@ -33,8 +33,12 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding-left: 90px;
-      padding-right: 89px;
+      ${props =>
+        !props.quickViewAddToBagActionPadding
+          ? `padding-left: 90px;
+      padding-right: 89px;`
+          : `padding-left: 65px;
+          padding-right: 65px;`};
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
