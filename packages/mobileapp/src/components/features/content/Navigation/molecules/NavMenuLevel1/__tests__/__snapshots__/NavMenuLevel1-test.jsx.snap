@@ -70,7 +70,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
   />
   <ForwardRef
     alt="Girl"
-    height={26}
+    height={29}
     host=""
     position="absolute"
     right={37}
@@ -80,7 +80,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
       }
     }
     url=""
-    width={13}
+    width={16}
   />
 </ForwardRef>
 `;

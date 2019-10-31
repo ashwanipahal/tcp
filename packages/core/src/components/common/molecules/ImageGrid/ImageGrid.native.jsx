@@ -44,7 +44,7 @@ ImageGrid.defaultProps = {
   imgWidth: 164,
   imgHeight: 164,
   column: 2,
-  gutter: 18,
+  gutter: 19,
   dataLocator: 'image_grid',
   navigation: null,
   IMG_DATA: {},

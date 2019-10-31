@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Image } from '@tcp/core/src/components/common/atoms';
 
 export const L1TouchableOpacityNoImage = styled.TouchableOpacity`
   align-items: center;
@@ -28,4 +29,8 @@ export const L1TextView = styled.View`
 
 export const ContainerList = styled.FlatList`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+export const StyledImage = styled(Image)`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;

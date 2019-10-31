@@ -4,10 +4,11 @@ import { setLoginInfo } from '../LoginPage.actions';
 
 describe('LoginPage reducer', () => {
   const initialState = fromJS({
-    loginModalMountedState: false,
     error: null,
+    loginModalMountedState: false,
     checkoutModalMountedState: false,
     loginErrorMessage: null,
+    componentType: 'login',
   });
   it('should return default state', () => {
     expect(LoginPageReducer(undefined, {})).toEqual(initialState);
@@ -22,6 +23,7 @@ describe('LoginPage reducer', () => {
       loginModalMountedState: false,
       checkoutModalMountedState: false,
       loginErrorMessage: null,
+      componentType: 'login',
     });
 
     expect(LoginPageReducer(initialState, setLoginInfo(payload))).toEqual(expectedState);
