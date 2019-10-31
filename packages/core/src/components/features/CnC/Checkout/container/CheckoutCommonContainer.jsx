@@ -195,6 +195,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isHasPickUpAlternatePerson,
       pickUpContactPerson,
       pickUpContactAlternate,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -253,6 +255,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
       />
     );
   }
@@ -384,7 +388,7 @@ const mapStateToProps = state => {
       labels: getReviewLabels(state),
       isPaymentDisabled: getIsPaymentDisabled(state),
     },
-    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
     checkoutServerError: selectors.getCheckoutServerError(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),
@@ -392,6 +396,8 @@ const mapStateToProps = state => {
     isHasPickUpAlternatePerson: isPickupAlt(state),
     pickUpContactPerson: getPickupValues(state),
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
+    isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
+    isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
   };
 };
 

@@ -677,27 +677,31 @@ const getCurrentOrderId = state => {
 const getSmsNumberForBillingOrderUpdates = state =>
   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
 
-const getVenmoData = () => {
-  const venmoDataString = getLocalStorage(venmoConstants.VENMO_STORAGE_KEY);
-  return venmoDataString ? JSON.parse(venmoDataString) : {};
+const getVenmoData = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
+  // const venmoDataString = getLocalStorage(venmoConstants.VENMO_STORAGE_KEY);
+  // return venmoDataString ? JSON.parse(venmoDataString) : {};
 };
 
 const getVenmoClientTokenData = state =>
   state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
 
-const isVenmoPaymentInProgress = () => {
-  const venmoProgressString = getLocalStorage(venmoConstants.VENMO_INPROGRESS_KEY);
-  return venmoProgressString ? venmoProgressString === 'true' : false;
+const isVenmoPaymentInProgress = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
+  // const venmoProgressString = getLocalStorage(venmoConstants.VENMO_INPROGRESS_KEY);
+  // return venmoProgressString ? venmoProgressString === 'true' : false;
 };
 
-const isVenmoPickupBannerDisplayed = () => {
-  const venmoPickupBanner = getLocalStorage(venmoConstants.VENMO_PICKUP_BANNER);
-  return venmoPickupBanner ? venmoPickupBanner === 'true' : false;
+const isVenmoPickupBannerDisplayed = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPickupMessageDisplayed']);
+  // const venmoPickupBanner = getLocalStorage(venmoConstants.VENMO_PICKUP_BANNER);
+  // return venmoPickupBanner ? venmoPickupBanner === 'true' : false;
 };
 
-const isVenmoShippingBannerDisplayed = () => {
-  const venmoShippingBanner = getLocalStorage(venmoConstants.VENMO_SHIPPING_BANNER);
-  return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
+const isVenmoShippingBannerDisplayed = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoShippingMessageDisplayed']);
+  // const venmoShippingBanner = getLocalStorage(venmoConstants.VENMO_SHIPPING_BANNER);
+  // return venmoShippingBanner ? venmoShippingBanner === 'true' : false;
 };
 
 const isVenmoPaymentSaveSelected = state =>
@@ -718,7 +722,7 @@ const getCheckoutServerError = state => {
  * @param state
  */
 const isVenmoNonceNotExpired = state => {
-  const venmoData = getVenmoData();
+  const venmoData = getVenmoData(state);
   const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
   const { nonce, timestamp } = venmoData;
   const venmoClientTokenData = getVenmoClientTokenData(state);
@@ -737,8 +741,8 @@ const isVenmoPaymentToken = state => {
 };
 
 const isVenmoNonceActive = state => {
-  const venmoData = getVenmoData();
-  const venmoPaymentInProgress = isVenmoPaymentInProgress();
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
   return (
     venmoData &&
     (venmoData.nonce || isVenmoPaymentToken(state)) &&
@@ -748,8 +752,8 @@ const isVenmoNonceActive = state => {
 };
 
 function isVenmoPaymentAvailable(state) {
-  const venmoData = getVenmoData();
-  const venmoPaymentInProgress = isVenmoPaymentInProgress();
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
   return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
 }
 
@@ -757,8 +761,8 @@ function isVenmoPaymentAvailable(state) {
  * This method is used to decide if we need to show review page next based on order conditions.
  */
 const hasVenmoReviewPageRedirect = state => {
-  const isVenmoInProgress = isVenmoPaymentInProgress();
-  const isVenmoShippingDisplayed = isVenmoShippingBannerDisplayed();
+  const isVenmoInProgress = isVenmoPaymentInProgress(state);
+  const isVenmoShippingDisplayed = isVenmoShippingBannerDisplayed(state);
   const orderHasShipping = getIsOrderHasShipping(state);
   const orderHasPickup = getIsOrderHasPickup(state);
   const hasPickupValues = isPickupHasValues(state);
@@ -905,8 +909,8 @@ const getShippingSectionLabels = createSelector(
  * @function getVenmoUserName
  * @description Gets the venmo username which is authorized from the app
  */
-export const getVenmoUserName = () => {
-  const venmoData = getVenmoData();
+export const getVenmoUserName = state => {
+  const venmoData = getVenmoData(state);
   const { details: { username } = {} } = venmoData || {};
   return username;
 };

@@ -217,8 +217,10 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
+  debugger;
   if (isMobileApp()) {
-    if (isExpressCheckoutEnabled) {
+    if (hasVenmoReviewPage) {
       yield call(navigateToCheckout, CONSTANTS.REVIEW_DEFAULT_PARAM, navigation, navigationActions);
     } else if (orderHasPickup) {
       yield call(navigateToCheckout, CONSTANTS.PICKUP_DEFAULT_PARAM, navigation, navigationActions);
@@ -231,7 +233,6 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
     }
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
-    const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
     if (hasVenmoReviewPage || isExpressCheckoutEnabled) {
       utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
       return;

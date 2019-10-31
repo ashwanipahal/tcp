@@ -15,18 +15,22 @@ import VenmoPaymentButton from '../../../../common/atoms/VenmoPaymentButton';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getVenmoPaymentButton() {
-    const { isInternationalShipping, handleCartCheckout, isEditingItem } = this.props;
-    if (!isInternationalShipping) {
-      return (
-        <PaymentsButtonWrapper>
-          <VenmoPaymentButton
-            className="venmo-container"
-            onSuccess={() => handleCartCheckout(isEditingItem)}
-          />
-        </PaymentsButtonWrapper>
-      );
-    }
-    return null;
+    const { handleCartCheckout, isEditingItem, navigation, closeModal } = this.props;
+    return (
+      <PaymentsButtonWrapper>
+        <VenmoPaymentButton
+          className="venmo-container"
+          onSuccess={() =>
+            handleCartCheckout({
+              isEditingItem,
+              navigation,
+              closeModal,
+              navigationActions: NavigationActions,
+            })
+          }
+        />
+      </PaymentsButtonWrapper>
+    );
   }
 
   render() {
