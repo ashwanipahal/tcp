@@ -76,7 +76,7 @@ class TCPWebApp extends App {
         document.location.replace(
           `${
             isGymboree() ? 'gym' : 'tcp'
-          }://change-password?logonPasswordOld=${logonPasswordOld}&em=${em}`
+          }://change-password/?logonPasswordOld=${logonPasswordOld}&em=${em}`
         );
       store.dispatch(
         openOverlayModal({
