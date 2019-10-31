@@ -105,7 +105,7 @@ export default {
             text: 'TODDLER GIRL',
           },
           category: {
-            cat_id: [cat2, cat1],
+            cat_id: [cat1, cat1],
           },
           singleCTAButton: {
             url: dummyUrl,
