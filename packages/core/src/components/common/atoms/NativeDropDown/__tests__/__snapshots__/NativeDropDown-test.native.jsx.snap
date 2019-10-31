@@ -25,6 +25,7 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     locator=""
     navigation={Object {}}
     onPress={[Function]}
+    quantityFieldForQuickView={false}
     selected={false}
     selectedIcon="chevron-up"
     showIcon={true}
@@ -32,6 +33,7 @@ exports[`NativeDropDown native should render correctly should match snapshot for
     theme={Object {}}
     type="button"
     url=""
+    withNoLineHeight={false}
   />
   <Component
     animationType="slide"

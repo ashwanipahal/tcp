@@ -186,6 +186,7 @@ exports[`Social component should render with connected 1`] = `
           theme={Object {}}
           type="submit"
           url=""
+          withNoLineHeight={false}
         />
         <Styled(View)
           spacingStyles="margin-top-LRG"
@@ -212,6 +213,7 @@ exports[`Social component should render with connected 1`] = `
             theme={Object {}}
             type="submit"
             url=""
+            withNoLineHeight={false}
           />
         </Styled(View)>
       </Styled(View)>
@@ -418,6 +420,7 @@ exports[`Social component should renders correctly 1`] = `
           theme={Object {}}
           type="submit"
           url=""
+          withNoLineHeight={false}
         />
         <Styled(View)
           spacingStyles="margin-top-LRG"
@@ -444,6 +447,7 @@ exports[`Social component should renders correctly 1`] = `
             theme={Object {}}
             type="submit"
             url=""
+            withNoLineHeight={false}
           />
         </Styled(View)>
       </Styled(View)>

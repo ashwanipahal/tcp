@@ -33,6 +33,7 @@ exports[`Selectbox component renders correctly 1`] = `
     id="test"
     name="test"
     onValueChange={[Function]}
+    quantityFieldForQuickView={false}
     selectedValue="test"
     width="100%"
   />
@@ -72,6 +73,7 @@ exports[`Selectbox component renders correctly for error 1`] = `
     id="test"
     name="test"
     onValueChange={[Function]}
+    quantityFieldForQuickView={false}
     selectedValue="test"
     width="100%"
   />

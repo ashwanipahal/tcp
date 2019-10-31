@@ -227,6 +227,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

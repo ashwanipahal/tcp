@@ -153,6 +153,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       id="quantity"
       name="Quantity"
       onValueChange={[Function]}
+      quantityFieldForQuickView={true}
       selectedValue={1}
     />
   </Styled(View)>
@@ -183,6 +184,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     text=""
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </View>
 `;
