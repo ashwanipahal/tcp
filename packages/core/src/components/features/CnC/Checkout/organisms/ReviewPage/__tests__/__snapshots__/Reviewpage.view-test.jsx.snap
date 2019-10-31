@@ -24,14 +24,14 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
     footerBody={
       Array [
         undefined,
-        <ForwardRef
+        <ForwardRef(Styled(Anchor))
           dataLocator="termAndConditionText"
           onClick={[Function]}
           to="/#"
           underline={true}
         />,
         undefined,
-        <ForwardRef
+        <ForwardRef(Styled(Anchor))
           dataLocator="PrivacyText"
           onClick={[Function]}
           to="/#"

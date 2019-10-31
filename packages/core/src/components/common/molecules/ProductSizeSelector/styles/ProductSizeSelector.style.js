@@ -65,6 +65,7 @@ const styles = css`
       background: ${props => props.theme.colors.PRIMARY.DARK};
       color: ${props => props.theme.colors.WHITE};
       border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
+      font-weight: ${props => props.theme.fonts.fontWeight.bold};
     }
   }
 `;

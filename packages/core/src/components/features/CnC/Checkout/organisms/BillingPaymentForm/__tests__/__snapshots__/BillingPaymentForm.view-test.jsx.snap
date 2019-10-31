@@ -77,7 +77,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           options={
             Immutable.List [
               Object {
-                "content": <ForwardRef
+                "content": <ForwardRef(Styled(Card))
                   card={
                     Object {
                       "accountNo": "************3743",
@@ -123,7 +123,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "value": 82596,
               },
               Object {
-                "content": <ForwardRef
+                "content": <ForwardRef(Styled(Button))
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
                   dataLocator="addCreditCardBtn"
@@ -147,23 +147,23 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       creditFieldLabels={Object {}}
       cvvError="Enter correct code"
       cvvInfo={
-        <ForwardRef
+        <ForwardRef(Styled(ReactTooltip))
           aligned="right"
           fontFamily="secondary"
           message={
-            <ForwardRef
+            <ForwardRef(Styled(RichText))
               className="cvv-code-info"
               dataLocator="cvv-code-info"
               richTextHtml={null}
             />
           }
         >
-          <ForwardRef
+          <ForwardRef(Styled(Image))
             height="15"
             src="/static/images/info-icon.png"
             width="15"
           />
-        </ForwardRef>
+        </ForwardRef(Styled(ReactTooltip))>
       }
       dispatch={
         [MockFunction] {
@@ -444,23 +444,23 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       creditFieldLabels={Object {}}
       cvvError="Enter correct code"
       cvvInfo={
-        <ForwardRef
+        <ForwardRef(Styled(ReactTooltip))
           aligned="right"
           fontFamily="secondary"
           message={
-            <ForwardRef
+            <ForwardRef(Styled(RichText))
               className="cvv-code-info"
               dataLocator="cvv-code-info"
               richTextHtml={null}
             />
           }
         >
-          <ForwardRef
+          <ForwardRef(Styled(Image))
             height="15"
             src="/static/images/info-icon.png"
             width="15"
           />
-        </ForwardRef>
+        </ForwardRef(Styled(ReactTooltip))>
       }
       dispatch={
         [MockFunction] {
@@ -820,7 +820,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           options={
             Immutable.List [
               Object {
-                "content": <ForwardRef
+                "content": <ForwardRef(Styled(Card))
                   card={
                     Object {
                       "accountNo": "************3743",
@@ -866,7 +866,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "value": 82596,
               },
               Object {
-                "content": <ForwardRef
+                "content": <ForwardRef(Styled(Button))
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
                   dataLocator="addCreditCardBtn"
@@ -1143,7 +1143,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               aligned="right"
               fontFamily="secondary"
               message={
-                <ForwardRef
+                <ForwardRef(Styled(RichText))
                   className="cvv-code-info"
                   dataLocator="cvv-code-info"
                   richTextHtml={null}
@@ -1447,7 +1447,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
           options={
             Immutable.List [
               Object {
-                "content": <ForwardRef
+                "content": <ForwardRef(Styled(Card))
                   card={
                     Object {
                       "accountNo": "************3743",
@@ -1493,7 +1493,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "value": 82596,
               },
               Object {
-                "content": <ForwardRef
+                "content": <ForwardRef(Styled(Button))
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
                   dataLocator="addCreditCardBtn"
@@ -1770,7 +1770,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               aligned="right"
               fontFamily="secondary"
               message={
-                <ForwardRef
+                <ForwardRef(Styled(RichText))
                   className="cvv-code-info"
                   dataLocator="cvv-code-info"
                   richTextHtml={null}
