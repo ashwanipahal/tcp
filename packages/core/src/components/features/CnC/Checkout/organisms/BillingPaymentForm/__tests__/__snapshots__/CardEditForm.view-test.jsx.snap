@@ -79,6 +79,7 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
       "expMonth": "2",
       "expYear": undefined,
       "isDefault": undefined,
+      "sameAsShipping": false,
     }
   }
   keepDirtyOnReinitialize={true}
