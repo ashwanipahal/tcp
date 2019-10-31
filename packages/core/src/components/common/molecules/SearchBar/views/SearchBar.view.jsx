@@ -68,6 +68,12 @@ class SearchBar extends React.PureComponent {
     toggleSearchResults(false);
   };
 
+  closeSearchLayover = () => {
+    const { setSearchState, toggleSearchResults } = this.props;
+    setSearchState(false);
+    toggleSearchResults(false);
+  };
+
   closeModalSearch = e => {
     e.preventDefault();
     const { setSearchState, toggleSearchResults } = this.props;
@@ -150,6 +156,7 @@ class SearchBar extends React.PureComponent {
       labels,
       setSearchState,
       startSearch,
+      toggleSearchResults,
     } = this.props;
 
     const getRecentStore = getRecentStoreFromLocalStorage();
@@ -186,6 +193,8 @@ class SearchBar extends React.PureComponent {
             startSearch={startSearch}
             isSearchOpen={isSearchOpen}
             commonCloseClick={this.commonCloseClick}
+            toggleSearchResults={toggleSearchResults}
+            closeSearchLayover={this.closeSearchLayover}
           />
         </BodyCopy>
       </React.Fragment>
