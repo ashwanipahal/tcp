@@ -49,6 +49,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               "viewBag": "",
             }
           }
+          navigation={[MockFunction]}
         />
       </Styled(View)>
       <Connect(QuickViewModalContainer)
@@ -122,6 +123,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           isBagPageSflSection={true}
+          navigation={[MockFunction]}
           sflItems={Object {}}
         />
       </Styled(View)>
@@ -183,6 +185,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           isBagPageSflSection={true}
+          navigation={[MockFunction]}
           sflItems={Object {}}
         />
       </Styled(View)>
@@ -241,6 +244,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               "viewBag": "",
             }
           }
+          navigation={[MockFunction]}
         />
         <Styled(View)>
           <Connect(OrderLedgerContainer) />
