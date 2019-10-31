@@ -289,6 +289,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
     isHasPlcc={false}
     isInternationalShipping={false}
     isModalOpen={false}
+    marginTopNone={true}
     navigation={Object {}}
     onCloseClick={[Function]}
     plpLabels={Object {}}
@@ -465,6 +466,7 @@ exports[`QuickViewModal component should renders correctly 1`] = `
         "unbxdProdId": "2044098_757",
       }
     }
+    quickViewAddToBagActionPadding={true}
     quickViewColorSwatchesCss={
       Array [
         "
@@ -981,6 +983,7 @@ exports[`QuickViewModal component should renders correctly 2`] = `
     isInternationalShipping={false}
     isModalOpen={false}
     isMultiItemQVModal={true}
+    marginTopNone={true}
     navigation={Object {}}
     onCloseClick={[Function]}
     plpLabels={Object {}}
@@ -1157,6 +1160,7 @@ exports[`QuickViewModal component should renders correctly 2`] = `
         "unbxdProdId": "2044098_757",
       }
     }
+    quickViewAddToBagActionPadding={true}
     quickViewColorSwatchesCss={
       Array [
         "
