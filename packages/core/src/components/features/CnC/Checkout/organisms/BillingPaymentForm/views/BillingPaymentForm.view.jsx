@@ -173,6 +173,10 @@ export class BillingPaymentForm extends React.PureComponent {
     dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
   };
 
+  /**
+   * @function onEditCardFocus
+   * @description on edit card number field focus event to clear the field first time only
+   */
   onEditCardFocus = scope => {
     if (!this.cardNumberCleared) {
       this.cardNumberCleared = true;
