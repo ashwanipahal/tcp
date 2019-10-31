@@ -35,7 +35,7 @@ const renderImage = ([{ image, link }]) => {
   return (
     <div className="image-container" data-locator={getLocator('moduleB_image')}>
       <Anchor {...navigationUrl} className="image-link">
-        <DamImage imgData={image} className="image" imageConfig={IMG_DATA.imgOverlayConfig[0]} />
+        <DamImage imgData={image} className="image" imgConfigs={IMG_DATA.imgOverlayConfig} />
       </Anchor>
     </div>
   );
