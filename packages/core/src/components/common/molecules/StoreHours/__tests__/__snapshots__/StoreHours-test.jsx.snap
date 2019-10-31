@@ -116,6 +116,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -747,6 +748,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -1464,6 +1466,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "black": "#000",
           "blue": Object {
             "100": "#dbebf8",
+            "1000": "#439ad4",
             "300": "#93c5ea",
             "50": "#edf5fb",
             "500": "#4b9fdd",
@@ -2095,6 +2098,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "black": "#000",
             "blue": Object {
               "100": "#dbebf8",
+              "1000": "#439ad4",
               "300": "#93c5ea",
               "50": "#edf5fb",
               "500": "#4b9fdd",
@@ -2754,6 +2758,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "black": "#000",
                 "blue": Object {
                   "100": "#dbebf8",
+                  "1000": "#439ad4",
                   "300": "#93c5ea",
                   "50": "#edf5fb",
                   "500": "#4b9fdd",
@@ -3545,6 +3550,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "black": "#000",
                   "blue": Object {
                     "100": "#dbebf8",
+                    "1000": "#439ad4",
                     "300": "#93c5ea",
                     "50": "#edf5fb",
                     "500": "#4b9fdd",
@@ -4204,6 +4210,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "black": "#000",
                     "blue": Object {
                       "100": "#dbebf8",
+                      "1000": "#439ad4",
                       "300": "#93c5ea",
                       "50": "#edf5fb",
                       "500": "#4b9fdd",
@@ -4962,6 +4969,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -5683,6 +5691,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "black": "#000",
           "blue": Object {
             "100": "#dbebf8",
+            "1000": "#439ad4",
             "300": "#93c5ea",
             "50": "#edf5fb",
             "500": "#4b9fdd",
@@ -6317,6 +6326,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "black": "#000",
             "blue": Object {
               "100": "#dbebf8",
+              "1000": "#439ad4",
               "300": "#93c5ea",
               "50": "#edf5fb",
               "500": "#4b9fdd",
@@ -6964,6 +6974,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "black": "#000",
                 "blue": Object {
                   "100": "#dbebf8",
+                  "1000": "#439ad4",
                   "300": "#93c5ea",
                   "50": "#edf5fb",
                   "500": "#4b9fdd",
@@ -7743,6 +7754,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "black": "#000",
                   "blue": Object {
                     "100": "#dbebf8",
+                    "1000": "#439ad4",
                     "300": "#93c5ea",
                     "50": "#edf5fb",
                     "500": "#4b9fdd",
@@ -8390,6 +8402,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "black": "#000",
                     "blue": Object {
                       "100": "#dbebf8",
+                      "1000": "#439ad4",
                       "300": "#93c5ea",
                       "50": "#edf5fb",
                       "500": "#4b9fdd",
