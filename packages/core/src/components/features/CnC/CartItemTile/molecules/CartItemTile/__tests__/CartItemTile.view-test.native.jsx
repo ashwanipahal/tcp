@@ -241,6 +241,19 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should call gotopdp page', () => {
+    props.productDetail.productInfo.pdpUrl = '';
+    props.productDetail.productInfo.productPartNumber = 'IV_24';
+    props.navigation = { navigate: jest.fn() };
+    const component = shallow(<CartItemTile {...props} />);
+    CartItemTileExtension.goToPdpPage(
+      '',
+      { productInfo: { pdpUrl: '', productPartNumber: 'IV_24' } },
+      { navigate: jest.fn() }
+    );
+    expect(component).toMatchSnapshot();
+  });
+
   it('should render the Tile for ECOM Item correctly', () => {
     props.productDetail.miscInfo.orderItemType = 'ECOM';
     const component = shallow(<CartItemTile {...props} />);

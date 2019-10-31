@@ -491,4 +491,5 @@ export default {
   onSwipeComplete,
   renderImage,
   renderTogglingError,
+  goToPdpPage,
 };
