@@ -93,6 +93,7 @@ export const CartItemTileContainer = ({
   toggleError,
   clearToggleError,
   currencyExchange,
+  pickupStoresInCart,
 }) => (
   <CartItemTile
     labels={labels}
@@ -136,6 +137,7 @@ export const CartItemTileContainer = ({
     toggleError={toggleError}
     clearToggleError={clearToggleError}
     currencyExchange={currencyExchange}
+    pickupStoresInCart={pickupStoresInCart}
   />
 );
 
@@ -222,6 +224,7 @@ export function mapStateToProps(state) {
     toggleError: getCartToggleError(state),
     orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state),
     currencyExchange: getCurrencyExchange(state),
+    pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
   };
 }
 

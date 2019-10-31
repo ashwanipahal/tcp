@@ -51,6 +51,8 @@ export default class ShippingPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
     ServerErrors: PropTypes.node.isRequired,
+    clearCheckoutServerError: PropTypes.func.isRequired,
+    checkoutServerError: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -144,6 +146,13 @@ export default class ShippingPage extends React.PureComponent {
       return { defaultAddressId: addEditResponseAddressId };
     }
     return null;
+  }
+
+  componentWillUnmount() {
+    const { clearCheckoutServerError, checkoutServerError } = this.props;
+    if (checkoutServerError) {
+      clearCheckoutServerError({});
+    }
   }
 
   setDefaultAddressId = id => {

@@ -963,6 +963,9 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1074,7 +1077,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           buttonVariation="fixed-width"
           className="save-btn"
           data-locator="edit-shipping-save-btn"
-          fill="BLUE"
           onClick={[Function]}
           type="button"
         >
@@ -1346,6 +1348,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1511,6 +1516,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1848,6 +1856,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2013,6 +2024,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2371,6 +2385,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2482,7 +2499,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           buttonVariation="fixed-width"
           className="save-btn"
           data-locator="edit-shipping-save-btn"
-          fill="BLUE"
           onClick={[Function]}
           type="button"
         >
@@ -2660,6 +2676,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2825,6 +2844,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3068,6 +3090,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3233,6 +3258,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3476,6 +3504,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3641,6 +3672,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -3884,6 +3918,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -4049,6 +4086,9 @@ exports[`RegisteredShippingFormVanilla should render correctly with no addresses
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {

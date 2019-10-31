@@ -72,6 +72,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
     theme={Object {}}
     type="submit"
     url=""
+    withNoLineHeight={false}
   />
   <Styled(View)
     spacingStyles="margin-top-LRG"
@@ -99,6 +100,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
       text="lbl_prefrence_modal_cancel"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

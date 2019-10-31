@@ -564,7 +564,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     }
   >
     <Field
-      autocomplete="off"
+      autocomplete="noautocomplete"
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),

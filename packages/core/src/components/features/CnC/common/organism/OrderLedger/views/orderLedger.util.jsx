@@ -291,7 +291,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
           className="balance-total rowMargin"
           data-locator={getLocator('order_ledger_balance_total_label')}
         >
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <Col colSize={{ large: 6, medium: 5, small: 3 }}>
             <BodyCopy
               bodySize="one"
               tag="span"
@@ -303,7 +303,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
               {giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <Col colSize={{ large: 6, medium: 3, small: 3 }}>
             <BodyCopy
               bodySize="one"
               tag="span"
@@ -322,7 +322,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             className="total-order-savings rowMargin"
             data-locator={getLocator('order_ledger_total_order_savings_label')}
           >
-            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+            <Col colSize={{ large: 6, medium: 5, small: 3 }}>
               <BodyCopy
                 bodySize="one"
                 color="primary"
@@ -341,7 +341,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 </ReactToolTip>
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+            <Col colSize={{ large: 6, medium: 3, small: 3 }}>
               <BodyCopy
                 bodySize="one"
                 color="primary"
@@ -355,7 +355,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             </Col>
           </Row>
         ) : null}
-        <FreeShippingBanner />
+        {pageCategory === 'bagPage' && <FreeShippingBanner />}
         {renderLoyaltyBanner(pageCategory)}
       </Grid>
       <RenderPerf.Measure name={PRICING_VISIBLE} />

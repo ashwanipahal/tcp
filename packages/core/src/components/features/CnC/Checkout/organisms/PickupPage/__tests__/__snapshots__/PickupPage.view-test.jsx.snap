@@ -296,6 +296,9 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {

@@ -360,7 +360,6 @@ class RegisteredShippingForm extends React.Component {
           </Col>
           <Col colSize={{ small: 6, medium: 2, large: 3 }}>
             <Button
-              fill="BLUE"
               type="button"
               buttonVariation="fixed-width"
               data-locator="edit-shipping-save-btn"
