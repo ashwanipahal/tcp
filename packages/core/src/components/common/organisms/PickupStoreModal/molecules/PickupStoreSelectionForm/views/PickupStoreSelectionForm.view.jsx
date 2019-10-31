@@ -46,6 +46,13 @@ class _PickupStoreSelectionForm extends React.Component {
     isBopisEnabled: PropTypes.bool.isRequired,
   };
 
+  componentDidMount() {
+    const { onSearch, openRestrictedModalForBopis } = this.props;
+    if (openRestrictedModalForBopis) {
+      onSearch();
+    }
+  }
+
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
     const {
       isShoppingBag,

@@ -43,6 +43,14 @@ const styles = css`
     }
   }
 
+  .save-btn {
+    background-color: ${props => props.theme.colorPalette.blue.C900};
+    color: ${props => props.theme.colors.WHITE};
+    &:hover {
+      background: ${props => props.theme.colorPalette.blue.C900};
+    }
+  }
+
   .edit-cta {
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
@@ -85,6 +93,10 @@ const styles = css`
   .edit-link-placement {
     @media ${props => props.theme.mediaQuery.large} {
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      display: flex;
+      align-items: center;
     }
   }
   .select__input {
