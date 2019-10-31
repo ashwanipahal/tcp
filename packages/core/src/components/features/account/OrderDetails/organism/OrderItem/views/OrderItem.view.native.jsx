@@ -44,6 +44,7 @@ const OrderItems = ({ className, ...otherProps }) => {
     isCanceledList,
     isShowWriteReview,
     ordersLabels,
+    navigation,
   } = otherProps;
 
   return (
@@ -162,9 +163,18 @@ const OrderItems = ({ className, ...otherProps }) => {
                   url={pdpUrl}
                   text={getLabelValue(ordersLabels, 'lbl_orderDetails_writeReview')}
                   underline
+                  noLink
+                  href="#"
                   anchorVariation="primary"
                   fontSize="fs14"
                   fontWeight="semibold"
+                  onPress={() =>
+                    navigation.navigate('ProductDetail', {
+                      title: name,
+                      pdpUrl,
+                      reset: true,
+                    })
+                  }
                 />
               </OrderContentWrapper>
             )}
