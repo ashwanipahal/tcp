@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import ModalsCheckoutView from '../views/ModalsCheckout.view';
 import { setCheckoutModalMountedState } from '../../../../../account/LoginPage/container/LoginPage.actions';
 import { getSetCheckoutStage } from '../../../../Checkout/container/Checkout.action';
-import { checkoutModalOpenState } from '../../../../../account/LoginPage/container/LoginPage.selectors';
+import {
+  checkoutModalOpenState,
+  checkoutModalComponentType,
+} from '../../../../../account/LoginPage/container/LoginPage.selectors';
 import { getLabelsAddToActions } from '../../../../AddedToBag/container/AddedToBag.selectors';
 import { getUserLoggedInState } from '../../../../../account/User/container/User.selectors';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
@@ -53,6 +56,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       addItemToSflList,
       isExpressCheckoutPage,
       setCheckoutStage,
+      checkoutModalComponent,
     } = this.props;
     return (
       <ModalsCheckoutView
@@ -77,6 +81,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         addItemToSflList={addItemToSflList}
         isExpressCheckoutPage={isExpressCheckoutPage}
         setCheckoutStage={setCheckoutStage}
+        checkoutModalComponentType={checkoutModalComponent}
       />
     );
   }
@@ -128,6 +133,7 @@ const mapStateToProps = state => {
   return {
     labels: getLabelsAddToActions(state),
     checkoutModalMountedState: checkoutModalOpenState(state),
+    checkoutModalComponent: checkoutModalComponentType(state),
     isUserLoggedIn: getUserLoggedInState(state),
     modalInfo: bagPageSelector.getConfirmationModalFlag(state),
     orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),

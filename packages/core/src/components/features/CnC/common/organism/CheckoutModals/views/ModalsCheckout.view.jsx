@@ -37,6 +37,7 @@ class ModalsCheckout extends React.PureComponent<Props> {
       deleteConfirmationModalLabels,
       confirmRemoveCartItem,
       addItemToSflList,
+      checkoutModalComponentType,
     } = this.props;
     const { showModal, isEditingItem: modalEditingItem } = modalInfo;
     if (modalEditingItem) {
@@ -52,13 +53,16 @@ class ModalsCheckout extends React.PureComponent<Props> {
             modalEditingItem ? this.closeModalAndHandleCheckout : removeUnqualifiedItemsAndCheckout
           }
         />
-        <OpenLoginModal
-          variation="checkout"
-          openState={checkoutModalMountedState}
-          setLoginModalMountState={closeCheckoutModalMountState}
-          handleContinueAsGuest={this.routeToCheckout}
-          handleAfterLogin={this.routeToCheckout}
-        />
+        {checkoutModalMountedState && (
+          <OpenLoginModal
+            variation="checkout"
+            openState={checkoutModalMountedState}
+            setLoginModalMountState={closeCheckoutModalMountState}
+            handleContinueAsGuest={this.routeToCheckout}
+            handleAfterLogin={this.routeToCheckout}
+            componentType={checkoutModalComponentType}
+          />
+        )}
         <ItemDeleteConfirmationModal
           isOpen={currentSelectItemInfo.showModal}
           closeCheckoutConfirmationModal={closeItemDeleteModal}
