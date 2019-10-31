@@ -1074,7 +1074,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
           buttonVariation="fixed-width"
           className="save-btn"
           data-locator="edit-shipping-save-btn"
-          fill="BLUE"
           onClick={[Function]}
           type="button"
         >
@@ -2482,7 +2481,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
           buttonVariation="fixed-width"
           className="save-btn"
           data-locator="edit-shipping-save-btn"
-          fill="BLUE"
           onClick={[Function]}
           type="button"
         >

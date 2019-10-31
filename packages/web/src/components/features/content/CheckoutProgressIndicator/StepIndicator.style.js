@@ -12,17 +12,16 @@ export default css`
 
   .checkout-progress-bar {
     margin: 0 auto;
-    padding: 0;
     overflow: hidden;
     width: 100%;
     position: relative;
-    padding-top: 6px;
+    padding: 6px 0 18px;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
       margin: 0px auto;
       width: 500px;
-      padding: 18px 0 14px;
+      padding: 18px 0 20px;
       left: auto;
       position: relative;
     }
@@ -108,8 +107,8 @@ export default css`
       content: '';
       background: url(${checkouttick});
       background-color: ${props => props.theme.colors.WHITE};
-      height: 26px;
-      width: 26px;
+      height: 25px;
+      width: 25px;
       position: inherit;
       display: block;
       z-index: 1;
