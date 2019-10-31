@@ -108,10 +108,11 @@ describe('CheckoutPageVanilla component', () => {
       onPickupSubmit: () => {},
       reviewProps: { labels: {} },
       isVenmoPickupBannerDisplayed: false,
+      isVenmoPaymentInProgress: true,
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();
-    expect(componentInstance.isVenmoPickupDisplayed()).toBeTruthy();
+    expect(componentInstance.isVenmoPickupDisplayed()).toBeFalsy();
   });
 
   it('calling isVenmoShippingDisplayed method', () => {
