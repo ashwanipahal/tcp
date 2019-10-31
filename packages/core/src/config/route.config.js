@@ -59,9 +59,9 @@ const ROUTES_LIST = [
 
   {
     noSlugPath: 'account',
-    path: '/account/:id?/:subSection?/:entityId?',
+    path: '/account/:id?/:subSection?/:orderId?',
     resolver: '/account',
-    params: ['id', 'subSection', 'entityId'],
+    params: ['id', 'subSection', 'orderId'],
   },
   {
     noSlugPath: 'ds',

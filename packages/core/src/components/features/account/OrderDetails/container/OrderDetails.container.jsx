@@ -54,7 +54,7 @@ export const mapDispatchToProps = dispatch => {
 
 export const mapStateToProps = (state, ownProps) => {
   return {
-    orderId: ownProps.router.query.entityId,
+    orderId: ownProps.router.query.orderId,
     emailAddress: ownProps.router.query.emailAddress,
     orderDetailsData: getOrderDetailsDataState(state),
     ordersLabels: getOrdersLabels(state),
