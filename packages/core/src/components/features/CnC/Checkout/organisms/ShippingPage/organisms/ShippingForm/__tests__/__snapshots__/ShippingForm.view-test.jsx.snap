@@ -44,6 +44,7 @@ exports[`Shipping Form should render correctly 1`] = `
           "current": null,
         }
       }
+      handleShipIntClick={[Function]}
       isAddNewAddress={false}
       isEditing={false}
       isGuest={false}
@@ -175,6 +176,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
           addressPhoneNo={null}
           formName="checkoutShipping"
           formSection="address"
+          handleShipIntClick={[Function]}
           showDefaultCheckbox={false}
           variation="secondary"
         />
@@ -504,6 +506,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
           }
           formName="checkoutShipping"
           formSection="address"
+          handleShipIntClick={[Function]}
           showDefaultCheckbox={false}
           variation="secondary"
         />
@@ -1007,6 +1010,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
           }
           formName="checkoutShipping"
           formSection="address"
+          handleShipIntClick={[Function]}
           showDefaultCheckbox={false}
           variation="secondary"
         />
@@ -1487,6 +1491,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
           dispatch={[MockFunction]}
           formName="checkoutShipping"
           formSection="address"
+          handleShipIntClick={[Function]}
           showDefaultCheckbox={false}
           variation="secondary"
         />
