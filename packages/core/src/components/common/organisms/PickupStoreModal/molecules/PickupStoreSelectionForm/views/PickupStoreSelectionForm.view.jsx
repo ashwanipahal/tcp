@@ -5,7 +5,6 @@ import { PropTypes } from 'prop-types';
 import { reduxForm, Field, propTypes as reduxFormPropTypes } from 'redux-form';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import Spinner from '../../../atoms/Spinner';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
@@ -125,21 +124,8 @@ class _PickupStoreSelectionForm extends React.Component {
       submitting,
       className,
       storeSearchError,
-      PickupSkuFormValues,
-      colorFitsSizesMap,
       isSkuResolved,
     } = this.props;
-
-    let disableButton = pristine;
-
-    const formExists = Object.entries(PickupSkuFormValues).length === 0;
-
-    const { color, Fit, Size } = PickupSkuFormValues;
-
-    const enableButton = formExists ? pristine : true;
-
-    const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
 
     return showStoreSearching ? (
       <div className={className}>
@@ -178,7 +164,7 @@ class _PickupStoreSelectionForm extends React.Component {
               type="submit"
               title="search"
               className="button-search-bopis"
-              disabled={pristine || submitting || disableButton}
+              disabled={pristine || submitting}
             >
               Search
             </Button>
