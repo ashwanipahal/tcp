@@ -8,7 +8,7 @@ exports[`Points History List Page View should render Points History Page Correct
     dataLocator="points_history_subheading"
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="extrabold"
+    fontWeight="semibold"
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-bottom-XL margin-top-LRG"
@@ -114,7 +114,7 @@ exports[`Points History List Page View should render Points History Page Correct
     dataLocator="points_history_subheading"
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="extrabold"
+    fontWeight="semibold"
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-bottom-XL margin-top-LRG"

@@ -17,17 +17,12 @@ exports[`HeaderNew Component HeaderNew should render correctly 1`] = `
           activeOpacity={0.2}
           onPress={[Function]}
         >
-          <Styled(CustomIcon)
-            accessibilityLabel=""
-            color="gray.600"
-            dataLocator=""
-            iconFontName="FontAwesome"
-            isButton={false}
-            isDisabled={false}
-            margins={null}
-            name="chevron-left"
-            onPress={[Function]}
-            size="fs20"
+          <Styled(Image)
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/carrot-large-left.png",
+              }
+            }
           />
         </TouchableOpacity>
       </Styled(View)>
