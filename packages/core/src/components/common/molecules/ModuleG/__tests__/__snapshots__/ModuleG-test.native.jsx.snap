@@ -115,7 +115,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
           Object {
             "category": Object {
               "cat_id": Array [
-                "47503>47544",
+                "47526",
                 "47526",
               ],
             },

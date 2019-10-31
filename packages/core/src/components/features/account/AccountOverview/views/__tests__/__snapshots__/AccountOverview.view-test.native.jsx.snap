@@ -59,6 +59,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       type="submit"
       url=""
       width="47%"
+      withNoLineHeight={false}
     />
     <Styled(CustomButton)
       active={false}
@@ -85,6 +86,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       type="submit"
       url=""
       width="47%"
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>

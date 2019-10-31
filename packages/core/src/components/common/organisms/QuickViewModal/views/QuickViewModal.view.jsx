@@ -120,6 +120,8 @@ class QuickViewModal extends React.Component {
           isMultiItemQVModal={isMultiItemQVModal}
           formRef={formRef}
           quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+          quickViewAddToBagActionPadding
+          marginTopNone
           {...otherProps}
         />
       );
@@ -134,6 +136,7 @@ class QuickViewModal extends React.Component {
       quickViewLabels,
       fromBagPage,
     } = this.props;
+
     const [{ product }] = productInfo;
 
     return (

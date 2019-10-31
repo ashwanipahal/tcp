@@ -66,6 +66,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
     <Styled(View)>
@@ -90,6 +91,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
         text=""
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
