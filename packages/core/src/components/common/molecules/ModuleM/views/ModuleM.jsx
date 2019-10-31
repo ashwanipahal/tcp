@@ -121,14 +121,29 @@ export class ModuleM extends React.PureComponent {
               product_name: productName,
             } = productItem;
 
+            /**
+             * Calculating the offset boolean.
+             * The below calculation will determine, whether offset right and ignore gutter props will be passed to the col or not.
+             * This will insure to provide a margin right offset to every last element of the row.
+             * If in a row, we have to show 5 elements, in case of index 4[5th element], if the below calculated below remainder,
+             * is 0, then only apply margin right offset to the element.
+             *
+             * gutterViewportKey - to determine the viewport and it can be only values from [sm, lg, md]
+             */
             const setOffsetsProp =
               (index + 1) %
                 config[`images${selectedProductList.length}`].rowMaxImages[gutterViewportKey] ===
               0;
+            /**
+             * Calculate the row count and every row last item index, so to provide a approx margin offset to it.
+             */
             if (setOffsetsProp) {
               rowCount += 1;
               rowLastElementIndex = index;
             }
+            /**
+             * Create config for last shop all button cta.
+             */
             if (index + 1 === selectedProductList.length) {
               lastElementConfig = {
                 colSize: config[`images${selectedProductList.length}`].colSize,
@@ -193,6 +208,9 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   * Set state based on view port.
+   */
   windowResizeEventHandler = () => {
     const viewportInfo = isClient() ? getViewportInfo() : null;
     this.setState({
