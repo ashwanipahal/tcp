@@ -264,6 +264,7 @@ class Header extends React.PureComponent<Props> {
                 accessibilityRole="button"
                 onPress={() => {
                   // eslint-disable-next-line react/destructuring-assignment
+                  // if labels not null then click work .
                   if (labels) navigation.navigate('BagPage');
                 }}
               >
