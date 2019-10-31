@@ -98,6 +98,10 @@ export const commonSearchBarStyles = css`
   .search-model-wrapper {
     margin-top: 100px;
   }
+
+  .search-image {
+    vertical-align: middle;
+  }
 `;
 
 export const commonStyles = css`

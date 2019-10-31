@@ -16,8 +16,8 @@ import {
 } from '../styles/orderLedger.style.native';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
-
 import LoyaltyBanner from '../../../../LoyaltyBanner';
+import FreeShippingBanner from '../../../../FreeShippingBanner';
 
 const popover = message => {
   return (
@@ -313,6 +313,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) =>
           </Text>
         </StyledRowDataContainer>
       ) : null}
+      <FreeShippingBanner />
       {getLoyaltybanner(isConfirmationPage, pageCategory)}
     </StyledOrderLedger>
   );

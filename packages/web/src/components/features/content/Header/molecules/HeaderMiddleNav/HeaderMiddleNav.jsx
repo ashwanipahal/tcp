@@ -265,7 +265,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className=""
                 onClick={e => this.openMiniBag(e)}
-                fontSizeVariation="small"
+                fontSizeVariation="large"
                 anchorVariation="primary"
                 noLink
               >
