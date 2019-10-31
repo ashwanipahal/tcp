@@ -36,7 +36,7 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import CardEditFrom from './CardEditForm.view';
 import {
-  onEditCardFocus,
+  onEditCardFocus as onCardEditFocus,
   setFormToEditState,
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
@@ -173,6 +173,13 @@ export class BillingPaymentForm extends React.PureComponent {
     dispatch(change(constants.FORM_NAME, 'cvvCode', ''));
   };
 
+  onEditCardFocus = scope => {
+    if (!this.cardNumberCleared) {
+      this.cardNumberCleared = true;
+      onCardEditFocus(scope);
+    }
+  };
+
   /**
    * @function getCCDropDown
    * @description returns the credit card drop down if user has credit cards
@@ -228,7 +235,10 @@ export class BillingPaymentForm extends React.PureComponent {
             fontSizeVariation="medium"
             underline
             noLink
-            onClick={e => setFormToEditState(this, e)}
+            onClick={e => {
+              this.cardNumberCleared = false;
+              setFormToEditState(this, e);
+            }}
             anchorVariation="primary"
             className="billing-payment-edit"
             dataLocator="billing-payment-edit"
@@ -251,7 +261,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { dispatch, updateCardDetail } = this.props;
     const billingPaymentFormWidthCol = { large: 3, small: 4, medium: 4 };
     const cvvCodeColWidth = { large: 3, small: 2, medium: 4 };
-    const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState } = this;
+    const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState, onEditCardFocus } = this;
     return (
       <>
         {renderBillingAddressHeading(labels)}

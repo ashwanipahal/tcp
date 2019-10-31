@@ -63,6 +63,7 @@ export const withCardEditReduxForm = Component => {
           address,
           creditCardId,
           isDefault: defaultInd,
+          sameAsShipping: false,
         }}
         dispatch={dispatch}
         onEditCardFocus={onEditCardFocus}
