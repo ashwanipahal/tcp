@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
+import CHECKOUT_ACTIONS, {
   initCheckoutAction,
   submitShippingSection,
   submitPickupSection,
@@ -195,6 +195,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isHasPickUpAlternatePerson,
       pickUpContactPerson,
       pickUpContactAlternate,
+      clearCheckoutServerError,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -253,6 +254,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        clearCheckoutServerError={clearCheckoutServerError}
       />
     );
   }
@@ -315,6 +317,7 @@ export const mapDispatchToProps = dispatch => {
     },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
+    clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
   };
 };
 

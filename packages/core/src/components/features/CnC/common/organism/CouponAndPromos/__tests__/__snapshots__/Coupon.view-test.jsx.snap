@@ -67,6 +67,9 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
                 }
               }
             />
+            <Measure
+              name="promotion_visible"
+            />
             <ForwardRef
               coupon={Object {}}
               labels={
@@ -169,6 +172,9 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
           <div
             className="coupon_list"
           >
+            <Measure
+              name="promotion_visible"
+            />
             <ForwardRef
               coupon={Object {}}
               labels={

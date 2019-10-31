@@ -45,47 +45,52 @@ class SearchImageWrapper extends React.PureComponent {
     const SEARCH_IMAGE = 'search-icon';
     return (
       <React.Fragment>
-        {!fromCondensedHeader ? (
-          <div className="search-input-wrapper">
-            <div className="searchBar-input-wrapper">
-              <form
-                id="search-input-form"
-                className={`${className} searchBar-input-form`}
-                noValidate
-                onSubmit={initiateSearchBySubmit}
-              >
-                <input
-                  id="search-input"
-                  ref={this.searchBarInput}
-                  onClick={openSearchBar}
-                  className="searchBar-input"
-                  maxLength="50"
-                  autoComplete="off"
-                  placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
-                />
-              </form>
+        {!isSearchOpen && (
+          <div>
+            {!fromCondensedHeader ? (
+              <div id="search-input-wrapper" className="search-input-wrapper">
+                <div className="searchBar-input-wrapper">
+                  <form
+                    id="search-input-form"
+                    className={`${className} searchBar-input-form`}
+                    noValidate
+                    onSubmit={initiateSearchBySubmit}
+                  >
+                    <input
+                      id="search-input"
+                      ref={this.searchBarInput}
+                      onClick={openSearchBar}
+                      className="searchBar-input"
+                      maxLength="50"
+                      autoComplete="off"
+                      placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
+                      readOnly
+                    />
+                  </form>
+                  <Image
+                    alt="search"
+                    id="search-image-typeAhead"
+                    className="searchBar-image-typeAhead icon-small"
+                    src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                    data-locator="search-icon"
+                    height="25px"
+                    onClick={openSearchBar}
+                  />
+                </div>
+              </div>
+            ) : (
               <Image
-                alt="search"
-                id="search-image-typeAhead"
-                className="searchBar-image-typeAhead icon-small"
-                src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                alt="search-image"
+                className="search-image icon"
+                onClick={openSearchBar}
+                src={getIconPath(
+                  fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
+                )}
                 data-locator="search-icon"
                 height="25px"
-                onClick={openSearchBar}
               />
-            </div>
-          </div>
-        ) : (
-          <Image
-            alt="search-image"
-            className="search-image icon"
-            onClick={openSearchBar}
-            src={getIconPath(
-              fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
             )}
-            data-locator="search-icon"
-            height="25px"
-          />
+          </div>
         )}
 
         <div>

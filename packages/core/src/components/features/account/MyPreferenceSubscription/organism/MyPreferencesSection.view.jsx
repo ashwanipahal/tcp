@@ -10,6 +10,7 @@ import withStyles from '../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import InputCheckbox from '../../../../common/atoms/InputCheckbox';
 import { getIconPath } from '../../../../../utils';
+import MyPreferenceSubscriptionConstants from '../MyPreferenceSubscription.constants';
 
 class MyPrefrenceSection extends React.PureComponent {
   onSubscribeHandler = subscribeBrand => {
@@ -22,8 +23,57 @@ class MyPrefrenceSection extends React.PureComponent {
     onUnsubscribe(subscribeBrand);
   };
 
+  onBlurHandler = e => {
+    e.preventDefault();
+  };
+
+  onGymSubscribe = subscribeValue => {
+    const { isGymSubscribe } = this.props;
+    if (isGymSubscribe) {
+      this.onUnsubscribeHandler(subscribeValue);
+    } else {
+      this.onSubscribeHandler(subscribeValue);
+    }
+  };
+
+  onChangeCallback = (e, subscribeValue) => {
+    e.preventDefault();
+    const { isTcpSubscribe, isTcpAppSubscribe, isGymAppSubscribe } = this.props;
+    if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE) {
+      if (isTcpAppSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) {
+      if (isGymAppSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE) {
+      if (isTcpSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) {
+      this.onGymSubscribe(subscribeValue);
+    }
+  };
+
   render() {
-    const { className, labels, isTcpSubscribe, isGymSubscribe } = this.props;
+    const {
+      className,
+      labels,
+      isTcpSubscribe,
+      isTcpAppSubscribe,
+      isGymAppSubscribe,
+      isGymSubscribe,
+    } = this.props;
     return (
       <div className={className}>
         <Row fullBleed className="elem-pt-LRG">
@@ -100,10 +150,15 @@ class MyPrefrenceSection extends React.PureComponent {
                     src={getIconPath('icon-alarm')}
                   />
                   <Field
-                    name="tcpAppSubscribe"
+                    name={MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE}
                     component={InputCheckbox}
                     dataLocator="mypreference-apptcpcheckbox"
                     className="elm-padding-top"
+                    onChange={e =>
+                      this.onChangeCallback(e, MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE)
+                    }
+                    checked={isTcpAppSubscribe || false}
+                    onBlur={this.onBlurHandler}
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -116,10 +171,18 @@ class MyPrefrenceSection extends React.PureComponent {
                     </BodyCopy>
                   </Field>
                   <Field
-                    name="gymboreeAppSubscribe"
+                    name={MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE}
                     component={InputCheckbox}
                     dataLocator="mypreference-appgymcheckbox"
                     className="elm-padding-top"
+                    onChange={e =>
+                      this.onChangeCallback(
+                        e,
+                        MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE
+                      )
+                    }
+                    checked={isGymAppSubscribe || false}
+                    onBlur={this.onBlurHandler}
                   >
                     <BodyCopy
                       fontSize="fs14"
@@ -151,44 +214,33 @@ class MyPrefrenceSection extends React.PureComponent {
                   <Image class="elem-pl-XS" width="17" height="17" src={getIconPath('icon-chat')} />
 
                   <Field
-                    name="tcpWebSubscribe"
+                    name={MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE}
                     component={InputCheckbox}
                     dataLocator="mypreference-texttcpcheckbox"
                     className="elm-padding-top"
-                    onChange={e => {
-                      e.preventDefault();
-                      if (isTcpSubscribe) {
-                        this.onUnsubscribeHandler('tcpWebSubscribe');
-                      } else {
-                        this.onSubscribeHandler('tcpWebSubscribe');
-                      }
-                    }}
+                    onChange={e =>
+                      this.onChangeCallback(e, MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE)
+                    }
                     checked={isTcpSubscribe || false}
-                    onBlur={e => {
-                      e.preventDefault();
-                    }}
+                    onBlur={this.onBlurHandler}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_tcp_label')}
                     </BodyCopy>
                   </Field>
                   <Field
-                    name="gymboreeWebSubscribe"
+                    name={MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE}
                     component={InputCheckbox}
                     dataLocator="mypreference-textgymcheckbox"
                     className="elm-padding-top"
-                    onChange={e => {
-                      e.preventDefault();
-                      if (isGymSubscribe) {
-                        this.onUnsubscribeHandler('gymboreeWebSubscribe');
-                      } else {
-                        this.onSubscribeHandler('gymboreeWebSubscribe');
-                      }
-                    }}
+                    onChange={e =>
+                      this.onChangeCallback(
+                        e,
+                        MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE
+                      )
+                    }
                     checked={isGymSubscribe || false}
-                    onBlur={e => {
-                      e.preventDefault();
-                    }}
+                    onBlur={this.onBlurHandler}
                   >
                     <BodyCopy fontSize="fs14" fontFamily="secondary" component="span">
                       {getLabelValue(labels, 'lbl_prefrence_gym_label')}
@@ -211,6 +263,8 @@ MyPrefrenceSection.propTypes = {
   onSubscribe: PropTypes.func.isRequired,
   onUnsubscribe: PropTypes.func.isRequired,
   isTcpSubscribe: PropTypes.bool,
+  isTcpAppSubscribe: PropTypes.bool,
+  isGymAppSubscribe: PropTypes.bool,
   isGymSubscribe: PropTypes.bool,
 };
 
@@ -218,6 +272,8 @@ MyPrefrenceSection.defaultProps = {
   labels: {},
   isTcpSubscribe: false,
   isGymSubscribe: false,
+  isTcpAppSubscribe: false,
+  isGymAppSubscribe: false,
   urlParams: {},
 };
 

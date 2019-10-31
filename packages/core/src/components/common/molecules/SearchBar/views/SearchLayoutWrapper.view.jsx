@@ -10,7 +10,6 @@ import SearchBarStyle from '../SearchBar.style';
 import CancelSearch from './CancelSearch.view';
 import SuggestionBox from './SuggestionBox.view';
 import LookingForProductDetail from './LookingForProductDetail.view';
-import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
 
 /**
  * This component produces a Search Bar component for Header
@@ -145,18 +144,25 @@ class SearchLayoutWrapper extends React.PureComponent {
       .getElementById(`${CLOSE_IMAGE}`)
       .classList.contains(`${CLOSE_IMAGE_MOBILE}`);
 
-    if (searchText.length > RECENT_SEARCH_CONSTANTS.MIN_SEARCH_CHARS) {
+    const termLength = 1;
+    if (searchText.length <= termLength) {
+      const payload = {
+        searchText: '',
+        slpLabels: labels,
+      };
+      startSearch(payload);
+    } else {
       const payload = {
         searchText,
         slpLabels: labels,
       };
       startSearch(payload);
-    }
 
-    if (searchText.length >= 1 && !searchImage) {
-      document.getElementById(`${CLOSE_IMAGE}`).classList.add(`${CLOSE_IMAGE_MOBILE}`);
-    } else if (searchText.length < 1 && searchImage) {
-      document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
+      if (searchText.length >= 1 && !searchImage) {
+        document.getElementById(`${CLOSE_IMAGE}`).classList.add(`${CLOSE_IMAGE_MOBILE}`);
+      } else if (searchText.length < 1 && searchImage) {
+        document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
+      }
     }
   };
 
@@ -211,6 +217,8 @@ class SearchLayoutWrapper extends React.PureComponent {
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
                 className="search-input"
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
                 maxLength="50"
                 autoComplete="off"
               />
@@ -240,7 +248,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                 hideOverlayAfterClick={hideOverlayAfterClick}
               />
             ) : (
-              <div className="matchBox">
+              <div className="matchBox" id="matchBox-wrapper">
                 <div className="matchLinkBox">
                   <LookingForLabel searchResults={searchResults} />
                   {searchResults &&
