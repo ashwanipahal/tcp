@@ -7,7 +7,11 @@ import {
   getTotalProductsCount,
   getCurrentListingIds,
 } from '../../../components/features/browse/ProductListing/container/ProductListing.selectors';
-import { clearAll } from '../../../../../web/src/constants/constants';
+
+const clearAll = {
+  CLEAR_ALL_SEARCH_FILTER: 'CLEAR_ALL_SEARCH_FILTER',
+  CLEAR_ALL_PLP_FILTER: 'CLEAR_ALL_PLP_FILTER',
+};
 
 const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 

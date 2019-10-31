@@ -33,12 +33,13 @@ export class OrderDetailsContainer extends PureComponent {
    */
 
   render() {
-    const { orderId, orderDetailsData, ordersLabels } = this.props;
+    const { orderId, orderDetailsData, ordersLabels, navigation } = this.props;
     return (
       <OrderDetailsView
         orderDetailsData={orderDetailsData}
         ordersLabels={ordersLabels}
         orderId={orderId}
+        navigation={navigation}
       />
     );
   }
@@ -67,6 +68,7 @@ OrderDetailsContainer.propTypes = {
   orderDetailsData: PropTypes.shape({}),
   ordersLabels: PropTypes.shape({}),
   getOrderDetailsAction: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 OrderDetailsContainer.defaultProps = {
@@ -74,6 +76,7 @@ OrderDetailsContainer.defaultProps = {
   orderId: '',
   ordersLabels: {},
   orderDetailsData: {},
+  navigation: {},
 };
 
 export default connect(
