@@ -5,6 +5,7 @@ import { BodyCopy, LabeledRadioButton, Image, Anchor } from '@tcp/core/src/compo
 import withStyles from '../../../../../../common/hoc/withStyles';
 import style from '../styles/CartItemRadioButtons.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import { maxAllowedStoresInCart } from '../../../../../../common/organisms/PickupStoreModal/PickUpStoreModal.config';
 
 class CartItemRadioButtons extends React.Component {
   /**
@@ -12,14 +13,22 @@ class CartItemRadioButtons extends React.Component {
    * @memberof CartItemRadioButtons
    */
   handleChangeStoreClick = () => {
-    const { openPickUpModal } = this.props;
+    const { openPickUpModal, pickupStoresInCart } = this.props;
     const {
       productDetail: {
         miscInfo: { orderItemType },
       },
     } = this.props;
     const openSkuSelectionForm = false;
-    openPickUpModal(orderItemType, openSkuSelectionForm);
+    let openRestrictedModalForBopis = false;
+    /* istanbul ignore else */
+    if (
+      orderItemType === CARTPAGE_CONSTANTS.BOPIS &&
+      pickupStoresInCart.size === maxAllowedStoresInCart
+    ) {
+      openRestrictedModalForBopis = true;
+    }
+    openPickUpModal(orderItemType, openSkuSelectionForm, openRestrictedModalForBopis);
   };
 
   /**
@@ -360,6 +369,7 @@ CartItemRadioButtons.propTypes = {
   bopisDisabled: PropTypes.bool.isRequired,
   openPickUpModal: PropTypes.bool.isRequired,
   setShipToHome: PropTypes.func.isRequired,
+  pickupStoresInCart: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(CartItemRadioButtons, style);

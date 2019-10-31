@@ -244,7 +244,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 </Modal>
               ) : (
                 <SearchBar
-                  className={!isSearchOpen && 'leftLink'}
+                  className={'headerSearchBox' || (!isSearchOpen && 'leftLink')}
                   setSearchState={this.setSearchState}
                   isSearchOpen={isSearchOpen}
                   onCloseClick={this.onCloseClick}
