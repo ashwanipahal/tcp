@@ -22,7 +22,7 @@ export default css`
       display: block;
       margin: 0px auto;
       width: 500px;
-      padding: 18px 0 14px;
+      padding: 18px 0 20px;
       left: auto;
       position: relative;
     }
