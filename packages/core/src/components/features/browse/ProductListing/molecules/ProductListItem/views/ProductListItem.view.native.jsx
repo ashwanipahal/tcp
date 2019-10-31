@@ -222,7 +222,7 @@ const RenderBadge2 = ({ text }) => {
   return (
     <Badge2Container>
       <Badge2Text accessible={text !== ''} accessibilityRole="text" accessibilityLabel={text}>
-        {text}
+        {text && text.toUpperCase()}
       </Badge2Text>
     </Badge2Container>
   );
