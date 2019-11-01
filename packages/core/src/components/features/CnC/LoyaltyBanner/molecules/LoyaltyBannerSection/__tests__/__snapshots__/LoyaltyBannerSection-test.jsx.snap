@@ -47,6 +47,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -101,6 +102,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -139,7 +141,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
-        showSubtotal={true}
+        showSubtotal={false}
         subHeadingLabel={false}
       />
       <div
@@ -155,6 +157,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -209,6 +212,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -247,7 +251,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
-        showSubtotal={true}
+        showSubtotal={false}
         subHeadingLabel={false}
       />
       <div
@@ -263,6 +267,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -301,7 +306,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
-        showSubtotal={true}
+        showSubtotal={false}
         subHeadingLabel={false}
       />
       <div
@@ -317,6 +322,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>

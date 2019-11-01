@@ -220,6 +220,7 @@ export function* openPickupModalFromBag(payload) {
         isBossCtaEnabled,
         isItemShipToHome,
         alwaysSearchForBOSS,
+        openRestrictedModalForBopis,
       },
     } = payload;
     let itemBrand;
@@ -243,6 +244,7 @@ export function* openPickupModalFromBag(payload) {
         updateCartItemStore: true,
         isItemShipToHome,
         alwaysSearchForBOSS,
+        openRestrictedModalForBopis,
       })
     );
   } catch (err) {

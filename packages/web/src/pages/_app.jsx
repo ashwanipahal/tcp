@@ -15,6 +15,7 @@ import {
   getAPIConfig,
   isDevelopment,
   fetchStoreIdFromUrlPath,
+  isGymboree,
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
@@ -71,6 +72,13 @@ class TCPWebApp extends App {
     const { router, store } = this.props;
     const { em, logonPasswordOld } = (router && router.query) || {};
     if (em && logonPasswordOld) {
+      // eslint-disable-next-line no-unused-expressions
+      'standalone' in window.navigator &&
+        document.location.replace(
+          `${
+            isGymboree() ? 'gym' : 'tcp'
+          }://change-password/?logonPasswordOld=${logonPasswordOld}&em=${em}`
+        );
       store.dispatch(
         openOverlayModal({
           component: 'login',
@@ -146,8 +154,10 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
-      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
-
+      // preview check from akamai header
+      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
+      // preview date if any from the query param
+      apiConfig.previewDate = query.preview_date;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);

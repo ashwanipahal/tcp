@@ -1,7 +1,9 @@
 import React from 'react';
+import { Linking } from 'react-native';
+import queryString from 'query-string';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 
@@ -42,11 +44,29 @@ const modulesMap = {
 };
 
 class HomePageView extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      handeOpenURLRegister: false,
+    };
+  }
+
   componentDidMount() {
     this.loadBootstrapData();
 
     const { loadNavigationData } = this.props;
     loadNavigationData();
+    const { handeOpenURLRegister } = this.state;
+
+    if (!handeOpenURLRegister) {
+      this.setState({ handeOpenURLRegister: true });
+      Linking.addEventListener('url', this.handleOpenURL);
+    }
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this.handleOpenURL);
+    this.setState({ handeOpenURLRegister: false });
   }
 
   /**
@@ -67,6 +87,30 @@ class HomePageView extends React.PureComponent<Props> {
       },
       apiConfig
     );
+  };
+
+  handleOpenURL = event => {
+    this.navigate(event.url);
+  };
+
+  navigate = url => {
+    const { navigation } = this.props;
+    if (url) {
+      const parsedURL = queryString.parseUrl(url);
+      if (parsedURL && parsedURL.url.indexOf('change-password') !== -1) {
+        const {
+          query: { logonPasswordOld, em },
+        } = parsedURL;
+
+        const oldPassword = logonPasswordOld.replace(/\s/g, '+');
+
+        navigateToNestedRoute(navigation, 'AccountStack', 'Account', {
+          component: 'change-password',
+          logonPasswordOld: oldPassword,
+          em,
+        });
+      }
+    }
   };
 
   render() {

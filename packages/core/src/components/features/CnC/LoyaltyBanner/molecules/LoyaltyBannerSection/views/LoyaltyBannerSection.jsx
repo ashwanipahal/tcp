@@ -9,10 +9,6 @@ import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 
-// const concatSectionSymbol = (str, sectionSymbol) => {
-//   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
-// };
-
 const utilArrayHeader = (LoyaltyLabels, className) => {
   return [
     {
@@ -48,12 +44,37 @@ const utilArrayNextReward = (pointsToNextReward, className) => {
   ];
 };
 
+const returnBoolForSubTotal = (
+  estimatedSubtotal,
+  checkThresholdValue,
+  thresholdValue,
+  isPlcc,
+  isReviewPage,
+  isConfirmationPage,
+  isAddedToBagPage
+) => {
+  let showSubtotal = false;
+  /* istanbul ignore else */
+  if (
+    estimatedSubtotal &&
+    checkThresholdValue > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    !isAddedToBagPage
+  ) {
+    showSubtotal = true;
+  }
+  return showSubtotal;
+};
+
 const LoyaltyBannerSection = props => {
   const {
     className,
     labels,
     currentSubtotal,
     estimatedSubtotal,
+    checkThresholdValue,
     thresholdValue,
     isGuest,
     earnedReward,
@@ -63,6 +84,7 @@ const LoyaltyBannerSection = props => {
     getCurrencySymbol,
     pageCategory,
     isProductDetailView,
+    openLoginModal,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -74,16 +96,15 @@ const LoyaltyBannerSection = props => {
   const pageCategoryArr = getPageCategory(pageCategory);
   const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
 
-  /* istanbul ignore else */
-  if (
-    estimatedSubtotal > thresholdValue &&
-    !isPlcc &&
-    !isReviewPage &&
-    !isConfirmationPage &&
-    !isAddedToBagPage
-  ) {
-    showSubtotal = true;
-  }
+  showSubtotal = returnBoolForSubTotal(
+    estimatedSubtotal,
+    checkThresholdValue,
+    thresholdValue,
+    isPlcc,
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage
+  );
 
   const LoyaltyLabels = renderLoyaltyLabels(
     labels,
@@ -156,6 +177,7 @@ const LoyaltyBannerSection = props => {
               className={className}
               labels={labels}
               isPlcc={isPlcc}
+              openLoginModal={openLoginModal}
               isProductDetailView={isProductDetailView}
               isReviewPage={isReviewPage}
               isConfirmationPage={isConfirmationPage}
@@ -177,6 +199,7 @@ LoyaltyBannerSection.propTypes = {
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
   thresholdValue: PropTypes.number,
+  checkThresholdValue: PropTypes.number,
   isGuest: PropTypes.bool,
   earnedReward: PropTypes.number,
   isPlcc: PropTypes.bool,
@@ -184,6 +207,7 @@ LoyaltyBannerSection.propTypes = {
   getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
   pageCategory: PropTypes.string,
+  openLoginModal: PropTypes.string,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -192,10 +216,12 @@ LoyaltyBannerSection.defaultProps = {
   currentSubtotal: 0,
   estimatedSubtotal: 0,
   thresholdValue: 0,
+  checkThresholdValue: 0,
   isGuest: false,
   earnedReward: 0,
   isPlcc: false,
   pageCategory: '',
+  openLoginModal: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',

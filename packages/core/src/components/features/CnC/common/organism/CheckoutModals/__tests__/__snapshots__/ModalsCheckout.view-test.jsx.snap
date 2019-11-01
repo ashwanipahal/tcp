@@ -5,11 +5,6 @@ exports[`ModalsCheckoutVanilla should render correctly 1`] = `
   <Styled(BagConfirmationModal)
     labels={Object {}}
   />
-  <OpenLoginModal
-    handleAfterLogin={[Function]}
-    handleContinueAsGuest={[Function]}
-    variation="checkout"
-  />
   <Styled(ItemDeleteConfirmationModal)
     bagPageServerError={null}
     confirmRemoveCartItem={[Function]}
@@ -27,28 +22,6 @@ exports[`ModalsCheckoutVanilla should render correctly with modalEditingItem 1`]
       }
     }
     removeUnqualifiedItemsAndCheckout={[Function]}
-  />
-  <OpenLoginModal
-    handleAfterLogin={[Function]}
-    handleContinueAsGuest={[Function]}
-    setLoginModalMountState={
-      [MockFunction] {
-        "calls": Array [
-          Array [
-            Object {
-              "state": false,
-            },
-          ],
-        ],
-        "results": Array [
-          Object {
-            "type": "return",
-            "value": undefined,
-          },
-        ],
-      }
-    }
-    variation="checkout"
   />
   <Styled(ItemDeleteConfirmationModal)
     bagPageServerError={null}

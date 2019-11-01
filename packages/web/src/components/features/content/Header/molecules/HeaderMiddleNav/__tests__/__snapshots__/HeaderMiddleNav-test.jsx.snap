@@ -98,7 +98,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         }
       >
         <Connect(Styled(SearchBar))
-          className="leftLink"
+          className="headerSearchBox"
           isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
           onCloseClick={[Function]}
@@ -280,7 +280,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         }
       >
         <Connect(Styled(SearchBar))
-          className="leftLink"
+          className="headerSearchBox"
           isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
           onCloseClick={[Function]}

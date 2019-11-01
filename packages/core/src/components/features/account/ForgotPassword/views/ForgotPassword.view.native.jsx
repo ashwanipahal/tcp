@@ -121,7 +121,7 @@ class ForgotPasswordView extends React.Component<Props> {
 
   render() {
     const { labels, successFullResetEmail, updateHeader } = this.props;
-    updateHeader(); // remove the header and border line of the modal
+    if (updateHeader) updateHeader(); // remove the header and border line of the modal
     return (
       <View>
         <ForgotPasswordWrapper>

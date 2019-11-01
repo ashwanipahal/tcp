@@ -6,8 +6,7 @@ const MyAccountNavLinkStyles = css`
   height: 100%;
   width: 100%;
   @media ${props => props.theme.mediaQuery.large} {
-    border-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid
-      ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    border-right: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   }
   .nav-link-wrapper {
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0 0;

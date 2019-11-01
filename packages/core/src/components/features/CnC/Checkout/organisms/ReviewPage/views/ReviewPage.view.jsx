@@ -39,6 +39,9 @@ class ReviewPage extends React.PureComponent {
     ServerErrors: PropTypes.node.isRequired,
     isPaymentDisabled: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
+    pageCategory: PropTypes.string,
+    checkoutServerError: PropTypes.shape({}).isRequired,
+    clearCheckoutServerError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -47,6 +50,7 @@ class ReviewPage extends React.PureComponent {
     showAccordian: true,
     isExpressCheckout: false,
     isPaymentDisabled: false,
+    pageCategory: '',
   };
 
   componentDidMount() {
@@ -61,6 +65,13 @@ class ReviewPage extends React.PureComponent {
     const { isPaymentDisabled, dispatch } = this.props;
     if (prevPaymentDisabled !== isPaymentDisabled) {
       dispatch(change(formName, 'cvvCode', null));
+    }
+  }
+
+  componentWillUnmount() {
+    const { clearCheckoutServerError, checkoutServerError } = this.props;
+    if (checkoutServerError) {
+      clearCheckoutServerError({});
     }
   }
 
@@ -120,6 +131,7 @@ class ReviewPage extends React.PureComponent {
       shipmentMethods,
       handleSubmit,
       ServerErrors,
+      pageCategory,
     } = this.props;
     const {
       header,
@@ -165,7 +177,12 @@ class ReviewPage extends React.PureComponent {
         </FormSection>
         <BillingSection isExpressCheckout={isExpressCheckout} />
         <CheckoutCartItemList />
-        <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} fullPageInfo />
+        <CheckoutOrderInfo
+          showAccordian={showAccordian}
+          isGuest={isGuest}
+          fullPageInfo
+          pageCategory={pageCategory}
+        />
         <CheckoutFooter
           hideBackLink
           ariaLabelBackLink={ariaLabelBackLink}

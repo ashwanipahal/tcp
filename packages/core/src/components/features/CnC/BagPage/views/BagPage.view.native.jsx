@@ -64,10 +64,10 @@ export class BagPage extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { cartItemSflError, bagPageServerError } = this.props;
-    const {bagPageServerError: prevBagPageServerError} = prevProps;
+    const { bagPageServerError: prevBagPageServerError } = prevProps;
     if (cartItemSflError) {
       this.showToastMessage(cartItemSflError);
-    } else if(bagPageServerError && bagPageServerError !== prevBagPageServerError) {
+    } else if (bagPageServerError && bagPageServerError !== prevBagPageServerError) {
       this.showToastMessage(bagPageServerError.errorMessage);
     }
   }
@@ -221,7 +221,7 @@ export class BagPage extends React.Component {
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <OrderLedgerContainer />
+          <OrderLedgerContainer pageCategory="bagPage" />
         </RowSectionStyle>
       );
     }
@@ -317,9 +317,14 @@ export class BagPage extends React.Component {
             onMomentumScrollEnd={this.handleMomentumScrollEnd}
           >
             <MainSection>
-              {isBagStage && <ProductTileWrapper bagLabels={labels} />}
+              {isBagStage && <ProductTileWrapper bagLabels={labels} navigation={navigation} />}
               {isSFLStage && (
-                <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
+                <ProductTileWrapper
+                  bagLabels={labels}
+                  sflItems={sflItems}
+                  isBagPageSflSection
+                  navigation={navigation}
+                />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
