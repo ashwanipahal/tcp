@@ -82,67 +82,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
-    />
-  </Styled(View)>
-</View>
-`;
-
-exports[`LoginSection component should test change password 1`] = `
-<View>
-  <Connect(ResetPasswordContainer)
-    queryParams={Object {}}
-    showNewPassword={[Function]}
-  />
-  <Styled(View)>
-    <Styled(Text)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="regular"
-        margin={null}
-        numberOfLines={null}
-        text="lbl_login_createAccountHelp_1"
-        textDecoration={null}
-      />
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs12"
-        fontWeight="regular"
-        margin={null}
-        numberOfLines={null}
-        text="lbl_login_createAccountHelp_2"
-        textDecoration={null}
-      />
-    </Styled(Text)>
-    <Styled(CustomButton)
-      active={false}
-      buttonVariation="fixed-width"
-      color="#575757"
-      customStyle={Object {}}
-      customTextStyle={null}
-      data-locator=""
-      disableButton={false}
-      fill="WHITE"
-      fullWidth=""
-      iconColor="gray.800"
-      iconName="chevron-down"
-      iconSize="fs12"
-      locator=""
-      navigation={Object {}}
-      onPress={[Function]}
-      selected={false}
-      selectedIcon="chevron-up"
-      showIcon={false}
-      text="lbl_login_createAccountCTA"
-      theme={Object {}}
-      type="submit"
-      url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </View>

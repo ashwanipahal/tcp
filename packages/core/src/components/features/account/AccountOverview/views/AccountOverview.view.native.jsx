@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
@@ -71,25 +71,26 @@ class AccountOverview extends PureComponent<Props> {
   }
 
   componentDidMount() {
-    this.navigateToChangePassword();
+    const { changePassword } = this.state;
+    if (!changePassword) this.navigateToChangePassword();
   }
 
   componentDidUpdate() {
-    this.navigateToChangePassword();
+    const { changePassword } = this.state;
+    if (!changePassword) this.navigateToChangePassword();
   }
 
   navigateToChangePassword = () => {
-    try {
-      const { labels } = this.props;
-      const { changePassword, showModal } = this.state;
-      if (!isEmpty(labels)) {
-        const { navigation } = this.props;
-        const {
-          state: {
-            params: { component },
-          },
-        } = navigation;
-        if (component === 'change-password' && !changePassword) {
+    const { labels, navigation } = this.props;
+    const { showModal } = this.state;
+    if (!isEmpty(labels) && navigation) {
+      const {
+        state: { params },
+      } = navigation;
+      if (params) {
+        const { component } = params;
+
+        if (component && component === 'change-password') {
           // eslint-disable-next-line react/no-did-update-set-state
           this.setState({ changePassword: true });
           if (showModal) {
@@ -106,8 +107,6 @@ class AccountOverview extends PureComponent<Props> {
           });
         }
       }
-    } catch (e) {
-      // do nothing
     }
   };
 

@@ -19,7 +19,10 @@ const ResetPasswordReducer = (state = initialState, action) => {
         .set('success', null)
         .set('showNotification', true);
     case constants.RESET_STATE:
-      return state.set('error', null).set('success', null);
+      return state
+        .set('error', null)
+        .set('success', null)
+        .set('showNotification', false);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Linking } from 'react-native';
+import queryString from 'query-string';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
@@ -93,26 +94,22 @@ class HomePageView extends React.PureComponent<Props> {
   };
 
   navigate = url => {
-    try {
-      const route = url.substring(url.indexOf('change'));
-      const routeName = route.split('?')[0];
-      const params = route.split('?')[1];
-      if (routeName === 'change-password/') {
-        const password = decodeURIComponent(params.split('&')[0]);
-        const emm = decodeURIComponent(params.split('&')[1]);
+    const { navigation } = this.props;
+    if (url) {
+      const parsedURL = queryString.parseUrl(url);
+      if (parsedURL && parsedURL.url.indexOf('change-password') !== -1) {
+        const {
+          query: { logonPasswordOld, em },
+        } = parsedURL;
 
-        const logonPasswordOld = password.substring(password.indexOf('=') + 1);
-        const em = emm.substring(emm.indexOf('=') + 1);
+        const oldPassword = logonPasswordOld.replace(/\s/g, '+');
 
-        const { navigation } = this.props;
         navigateToNestedRoute(navigation, 'AccountStack', 'Account', {
           component: 'change-password',
-          logonPasswordOld,
+          logonPasswordOld: oldPassword,
           em,
         });
       }
-    } catch (e) {
-      // do nothing
     }
   };
 

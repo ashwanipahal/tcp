@@ -28,27 +28,27 @@ class LoginSection extends PureComponent<Props> {
   }
 
   componentDidUpdate() {
-    this.navigateToResetPassword();
+    const { newPassword } = this.state;
+    if (!newPassword) this.navigateToResetPassword();
   }
 
   navigateToResetPassword = () => {
-    try {
-      const { navigation } = this.props;
+    const { navigation } = this.props;
+    if (navigation) {
       const {
-        state: {
-          params: { component, logonPasswordOld, em },
-        },
+        state: { params },
       } = navigation;
-      if (component && component === 'change-password') {
-        this.showNewPassword();
-        this.queryParams = {
-          logonPasswordOld,
-          em,
-        };
-        navigation.setParams({ component: null, logonPasswordOld: null, em: null }); // reset the params
+      if (params) {
+        const { component, logonPasswordOld, em } = params;
+        if (component && component === 'change-password') {
+          this.showNewPassword();
+          this.queryParams = {
+            logonPasswordOld,
+            em,
+          };
+          navigation.setParams({ component: null, logonPasswordOld: null, em: null }); // reset the params
+        }
       }
-    } catch (e) {
-      // nested variable might not available always
     }
   };
 

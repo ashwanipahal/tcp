@@ -43,9 +43,9 @@ export class ResetPasswordContainer extends PureComponent {
     this.state = { hideShowPwd: false, confirmHideShowPwd: false };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { successMessage } = this.props;
-    if (successMessage) {
+    if (successMessage && !prevProps.successMessage) {
       if (isMobileApp()) {
         setTimeout(() => {
           this.onBackClick();
@@ -59,10 +59,11 @@ export class ResetPasswordContainer extends PureComponent {
   }
 
   componentWillUnmount() {
-    const { resetChangePasswordState } = this.props;
+    const { resetChangePasswordState, resetStateAction } = this.props;
     if (resetChangePasswordState) {
       resetChangePasswordState();
     }
+    resetStateAction();
   }
 
   resetPassword = ({ password, confirmPassword }) => {

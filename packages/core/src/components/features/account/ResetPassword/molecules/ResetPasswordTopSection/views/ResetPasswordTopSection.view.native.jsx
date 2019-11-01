@@ -41,7 +41,7 @@ export const ResetPasswordTopSection = ({ labels, onBackClick }) => {
         text={getLabelValue(labels, 'lbl_resetPassword_heading')}
       />
       <PasswordDescriptionWrapper>
-        <PasswordRequirement labels={labels} resetPassword />
+        <PasswordRequirement labels={labels} alignCenter />
       </PasswordDescriptionWrapper>
     </>
   );
