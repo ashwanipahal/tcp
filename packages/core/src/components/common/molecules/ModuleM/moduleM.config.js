@@ -1,5 +1,7 @@
 export default {
   TOTAL_IMAGES: 8,
+  OFFSET: 28,
+  GUTTER_SPACE: 38,
   images8: {
     colSize: {
       small: 2,
@@ -161,5 +163,8 @@ export default {
       md: 1,
       sm: 2,
     },
+  },
+  IMG_DATA: {
+    productImgConfig: ['t_mod_M_img_product_m', 't_mod_M_img_product_t', 't_mod_M_img_product_d'],
   },
 };

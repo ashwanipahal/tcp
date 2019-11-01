@@ -9,7 +9,7 @@ import { getLocator } from '../../../../../utils';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import style, { ImageGrid, CtaButtonWrapper, ImageRoundFlex } from '../styles/ModuleM.style';
-import mock from '../moduleM.mock';
+import mock from '../../../../../services/abstractors/common/moduleM/mock';
 import config from '../moduleM.config';
 
 export class ModuleM extends React.PureComponent {

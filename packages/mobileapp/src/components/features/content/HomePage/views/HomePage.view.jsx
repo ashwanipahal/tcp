@@ -22,6 +22,8 @@ import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
+import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
@@ -81,6 +83,7 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
+        <ModuleM navigation={navigation} {...mock.moduleM.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />

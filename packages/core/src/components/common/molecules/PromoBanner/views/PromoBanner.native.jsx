@@ -135,6 +135,18 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  small_white_text_semibold: props => (
+    <BodyCopy
+      color="white"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="semibold"
+      textAlign="center"
+      lineHeight="20px"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
   medium_text_semibold: props => (
     <BodyCopy
       color="gray.900"
@@ -153,6 +165,16 @@ export const bodyCopyStyles = {
       fontSize="fs48"
       textAlign="center"
       lineHeight="47px"
+      fontWeight="black"
+      {...props}
+    />
+  ),
+  extra_large_white_text_black: props => (
+    <BodyCopy
+      color="white"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
       fontWeight="black"
       {...props}
     />

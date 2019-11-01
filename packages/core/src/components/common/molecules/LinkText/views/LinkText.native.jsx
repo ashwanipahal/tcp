@@ -78,6 +78,18 @@ export const bodyCopyStyles = {
       />
     );
   },
+  medium_text_subpromo: props => {
+    return (
+      <BodyCopy
+        color="gray.900"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        textAlign="center"
+        {...props}
+      />
+    );
+  },
 };
 
 /**
