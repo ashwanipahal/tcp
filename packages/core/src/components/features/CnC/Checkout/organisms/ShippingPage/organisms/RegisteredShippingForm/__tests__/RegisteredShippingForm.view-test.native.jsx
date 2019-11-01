@@ -8,6 +8,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -32,6 +33,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -62,6 +64,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -95,6 +98,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       dispatch: jest.fn(),
+      setEditState: jest.fn(),
       modalState: false,
       userAddresses: new List([
         {
@@ -126,6 +130,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -143,6 +148,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -172,6 +178,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -221,6 +228,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -239,6 +247,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -257,6 +266,7 @@ describe('RegisteredShippingForm', () => {
     const props = {
       newUserPhoneNo: '',
       isGuest: false,
+      setEditState: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([]),
