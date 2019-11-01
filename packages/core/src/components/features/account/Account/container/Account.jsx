@@ -5,10 +5,11 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import accountPageNameMapping from '../AccountPageNameMapping';
-import utils from '../../../../../utils';
+import utils, { routerPush } from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
+import { openOverlayModal } from '../../OverlayModal/container/OverlayModal.actions';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -41,6 +42,15 @@ export class Account extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const { isUserLoggedIn, openOverlay } = this.props;
+    if (isUserLoggedIn === false) {
+      routerPush('/home', '/home/login');
+      openOverlay({
+        component: 'login',
+        componentProps: 'login',
+      });
+    }
+
     const { componentToLoad } = this.state;
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
@@ -121,6 +131,9 @@ export const mapDispatchToProps = dispatch => {
     getAccountNavigationAction: () => {
       dispatch(getAccountNavigationList());
     },
+    openOverlay: payload => {
+      dispatch(openOverlayModal(payload));
+    },
   };
 };
 
@@ -138,10 +151,12 @@ Account.propTypes = {
   accountNavigation: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}),
   isUserLoggedIn: PropTypes.bool.isRequired,
+  openOverlay: PropTypes.func,
 };
 
 Account.defaultProps = {
   labels: PropTypes.shape({ addressBook: {}, labels: {}, paymentGC: {}, common: {} }),
+  openOverlay: () => {},
 };
 
 export default withRouter(

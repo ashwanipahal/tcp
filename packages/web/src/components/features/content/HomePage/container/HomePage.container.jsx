@@ -1,9 +1,43 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import HomePageView from '../views/HomePage.view';
 import { initActions } from './HomePage.actions';
 
-HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
+export class HomePage extends React.PureComponent {
+  componentDidUpdate() {
+    const { isUserLoggedIn, openOverlay } = this.props;
+    if (isUserLoggedIn === false) {
+      openOverlay({
+        component: 'login',
+        componentProps: 'login',
+      });
+    }
+  }
+
+  /**
+   * @function render  Used to render the JSX of the component
+   * @param    {[Void]} function does not accept anything.
+   * @return   {[Object]} JSX of the component
+   */
+  render() {
+    return <HomePageView {...this.props} />;
+  }
+}
+
+HomePage.propTypes = {
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  openOverlay: PropTypes.func,
+};
+
+HomePage.defaultProps = {
+  openOverlay: () => {},
+};
+
+HomePage.getInitialProps = async ({ store, isServer }, pageProps) => {
   const state = store.getState();
   if (!isServer && !state.Layouts.homepage) {
     store.dispatch(fetchPageLayout('homepage'));
@@ -11,9 +45,9 @@ HomePageView.getInitialProps = async ({ store, isServer }, pageProps) => {
   return pageProps;
 };
 
-HomePageView.getInitActions = () => initActions;
+HomePage.getInitActions = () => initActions;
 
-HomePageView.pageInfo = {
+HomePage.pageInfo = {
   pageId: 'Home',
   name: 'homepage',
   pageData: {
@@ -21,6 +55,14 @@ HomePageView.pageInfo = {
     pageSection: 'homepage',
   },
   modules: ['labels', 'header', 'footer', 'navigation'],
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    openOverlay: payload => {
+      dispatch(openOverlayModal(payload));
+    },
+  };
 };
 
 const mapStateToProps = state => {
@@ -56,7 +98,11 @@ const mapStateToProps = state => {
         data: Modules[slot.contentId],
       };
     }),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 
-export default connect(mapStateToProps)(HomePageView);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePageView);
