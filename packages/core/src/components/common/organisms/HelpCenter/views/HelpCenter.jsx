@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from '../../../atoms';
-import HelpTabs from '../../HelpTabs';
+import HelpTabs from '../../../molecules/HelpTabs';
 import HelpCenterTabMock from '../HelpCenter.mock';
 
 const HelpCenter = () => {

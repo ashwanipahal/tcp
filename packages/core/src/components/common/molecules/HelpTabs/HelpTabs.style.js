@@ -3,7 +3,7 @@ import { Anchor } from '../../atoms';
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 `;
 
