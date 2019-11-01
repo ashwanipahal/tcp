@@ -13,22 +13,21 @@ const DynamicColumns = dynamic({
     moduleB: () => import('@tcp/core/src/components/common/molecules/ModuleB').then(returnModule),
     moduleH: () => import('@tcp/core/src/components/common/molecules/ModuleH').then(returnModule),
     moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
+    moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
   }),
   render: (properties, modules) => {
-    const { className, slot: slots, ...others } = properties;
+    const { className, slot, ...others } = properties;
 
     return (
-      slots &&
-      slots
-        .filter(slot => slot && (slot.moduleName === 'moduleH' || slot.moduleName === 'moduleN'))
-        .map(slotData => {
-          const Module = modules[slotData.moduleName];
-          return (
-            <Col colSize={{ small: 6, medium: 8, large: 6 }}>
-              <Module halfWidth {...slotData} {...others} />
-            </Col>
-          );
-        })
+      slot &&
+      slot.map(slotData => {
+        const Module = modules[slotData.moduleName];
+        return (
+          <Col colSize={{ small: 6, medium: 8, large: 6 }}>
+            <Module halfWidth {...slotData} {...others} />
+          </Col>
+        );
+      })
     );
   },
 });
