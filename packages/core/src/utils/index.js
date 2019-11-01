@@ -49,6 +49,7 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  isUsOnly,
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
