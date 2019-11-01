@@ -125,12 +125,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderAlternateSizes = alternateSizes => {
-    const { className } = this.props;
+    const { className, plpLabels } = this.props;
+    const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
     const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
     return (
       visibleAlternateSizes && (
         <AlternateSizes
-          title="Other Sizes Available:"
+          title={`${sizeAvailable}:`}
           buttonsList={alternateSizes}
           className={className}
         />
