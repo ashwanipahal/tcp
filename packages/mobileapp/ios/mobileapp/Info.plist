@@ -51,7 +51,7 @@
 	<array>
 		<string>twitter</string>
 		<string>twitterauth</string>
-    <string>fbapi</string>
+		<string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
@@ -79,6 +79,8 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Nunito-ExtraBold.ttf</string>
 		<string>FontAwesome.ttf</string>
 		<string>icomoon.ttf</string>
 		<string>Montserrat-Black.ttf</string>

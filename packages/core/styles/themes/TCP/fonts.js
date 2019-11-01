@@ -3,6 +3,8 @@ const PRIMARY_FONT = `Montserrat, ${FALLBACK_FONT}`;
 const SECONDARY_FONT = `Nunito, ${FALLBACK_FONT}`;
 const PRIMARY_FONT_SEMIBOLD = `Montserrat-SemiBold , ${FALLBACK_FONT}`;
 const SECONDARY_FONT_SEMIBOLD = `Nunito-SemiBold, ${FALLBACK_FONT}`;
+const PRIMARY_FONT_EXTRABOLD = `Montserrat-ExtraBold , ${FALLBACK_FONT}`;
+const SECONDARY_FONT_EXTRABOLD = `Nunito-ExtraBold, ${FALLBACK_FONT}`;
 const PRIMARY_FONT_BLACK = `Montserrat-Black, ${FALLBACK_FONT}`;
 const SECONDARY_FONT_BLACK = `Nunito-Black, ${FALLBACK_FONT}`;
 

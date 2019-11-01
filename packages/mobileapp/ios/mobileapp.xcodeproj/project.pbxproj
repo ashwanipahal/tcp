@@ -98,6 +98,26 @@
 		557DAD6C230E61520083E52C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557DAD5B230E60D60083E52C /* libReactNativeConfig.a */; };
 		5D9704442DCB62100F11B043 /* Pods_gymboree_prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97EC720C76CA0AF42E639C8 /* Pods_gymboree_prod.framework */; };
 		6D66792DBE54465ABA2EA17A /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */; };
+		6F7651B0236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B1236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B2236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B3236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B4236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B5236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B6236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B7236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B8236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651B9236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */; };
+		6F7651BA236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651BB236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651BC236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651BD236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651BE236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651BF236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651C0236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651C1236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651C2236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
+		6F7651C3236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */; };
 		74DE318A0518475FA96C5BBA /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B31492B436BA4064AC5AF57E /* libRNCookieManagerIOS.a */; };
 		79538AC8232FBC4F00908A8B /* libRNPrint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F6C9C8232D1F3700795511 /* libRNPrint.a */; };
 		79538AC9232FBC4F00908A8B /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F8EC93232E8A6000143FE8 /* libRNViewShot.a */; };
@@ -905,6 +925,8 @@
 		691F7AA0C031AA2F62BF7502 /* Pods_gymboree_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gymboree_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		698427B30E6ACFCEEE8EA890 /* Pods_mobileapp_uat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileapp_uat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DC9804E52651004E2EF5671 /* Pods-gymboree_dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree_dev.debug.xcconfig"; path = "Target Support Files/Pods-gymboree_dev/Pods-gymboree_dev.debug.xcconfig"; sourceTree = "<group>"; };
+		6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		75F3F78905354C238B4F93B7 /* libReactNativeConfig-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libReactNativeConfig-tvOS.a"; sourceTree = "<group>"; };
 		778BED1FD993AFDE9A660AC5 /* Pods_gymboree_int.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gymboree_int.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7866DC2121B84C7F9D6EABDD /* RNViewShot.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNViewShot.xcodeproj; path = "../node_modules/react-native-view-shot/ios/RNViewShot.xcodeproj"; sourceTree = "<group>"; };
@@ -1761,6 +1783,8 @@
 		D94ECAAD22D70C2600D9D051 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6F765174236BF70A003F3100 /* Montserrat-ExtraBold.ttf */,
+				6F7651AF236BF70A003F3100 /* Nunito-ExtraBold.ttf */,
 				844B12E82301623400A82DAA /* Nunito-Bold.ttf */,
 				D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */,
 				D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */,
@@ -2691,10 +2715,12 @@
 				E6B0C5B123279C35001CC8EF /* mobileapp_prod-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D94ECADD22D70C2600D9D051 /* Nunito.ttf in Resources */,
+				6F7651B0236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				36C9821022E6F96D0002786B /* FontAwesome.ttf in Resources */,
 				D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* TCPLaunchScreen.xib in Resources */,
 				D94ECADC22D70C2600D9D051 /* Nunito-Black.ttf in Resources */,
+				6F7651BA236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2718,9 +2744,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677A14230BC69E001F5301 /* Montserrat-SemiBold.ttf in Resources */,
+				6F7651B1236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677A15230BC69E001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A16230BC69E001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677A17230BC69E001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				6F7651BB236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677A18230BC69E001F5301 /* Images.xcassets in Resources */,
 				84677A19230BC69E001F5301 /* Nunito.ttf in Resources */,
 				84677A1B230BC69E001F5301 /* FontAwesome.ttf in Resources */,
@@ -2736,9 +2764,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677A72230BCD44001F5301 /* Montserrat-SemiBold.ttf in Resources */,
+				6F7651B2236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677A73230BCD44001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677A74230BCD44001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677A75230BCD44001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				6F7651BC236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677A76230BCD44001F5301 /* Images.xcassets in Resources */,
 				84677A77230BCD44001F5301 /* Nunito.ttf in Resources */,
 				84677A79230BCD44001F5301 /* FontAwesome.ttf in Resources */,
@@ -2754,9 +2784,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677A9F230BCDAF001F5301 /* Montserrat-SemiBold.ttf in Resources */,
+				6F7651B3236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677AA0230BCDAF001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677AA1230BCDAF001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677AA2230BCDAF001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				6F7651BD236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677AA3230BCDAF001F5301 /* Images.xcassets in Resources */,
 				84677AA4230BCDAF001F5301 /* Nunito.ttf in Resources */,
 				84677AA6230BCDAF001F5301 /* FontAwesome.ttf in Resources */,
@@ -2772,9 +2804,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677ACC230BCE0A001F5301 /* Montserrat-SemiBold.ttf in Resources */,
+				6F7651B4236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677ACD230BCE0A001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677ACE230BCE0A001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677ACF230BCE0A001F5301 /* Nunito-SemiBold.ttf in Resources */,
+				6F7651BE236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677AD0230BCE0A001F5301 /* Images.xcassets in Resources */,
 				84677AD1230BCE0A001F5301 /* Nunito.ttf in Resources */,
 				84677AD3230BCE0A001F5301 /* FontAwesome.ttf in Resources */,
@@ -2790,9 +2824,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677AF8230BCE94001F5301 /* GymboreeLaunchScreen.xib in Resources */,
+				6F7651B6236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677AFA230BCE94001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677AFC230BCE94001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677AFD230BCE94001F5301 /* FontAwesome.ttf in Resources */,
+				6F7651C0236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677AFE230BCE94001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677AFF230BCE94001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B00230BCE94001F5301 /* Images.xcassets in Resources */,
@@ -2808,9 +2844,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677B25230BCECC001F5301 /* GymboreeLaunchScreen.xib in Resources */,
+				6F7651B7236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B27230BCECC001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677B29230BCECC001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B2A230BCECC001F5301 /* FontAwesome.ttf in Resources */,
+				6F7651C1236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677B2B230BCECC001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677B2C230BCECC001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B2D230BCECC001F5301 /* Images.xcassets in Resources */,
@@ -2826,9 +2864,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677B52230BCF01001F5301 /* GymboreeLaunchScreen.xib in Resources */,
+				6F7651B8236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B54230BCF01001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677B56230BCF01001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B57230BCF01001F5301 /* FontAwesome.ttf in Resources */,
+				6F7651C2236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677B58230BCF01001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677B59230BCF01001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B5A230BCF01001F5301 /* Images.xcassets in Resources */,
@@ -2844,9 +2884,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84677B7F230BCF37001F5301 /* GymboreeLaunchScreen.xib in Resources */,
+				6F7651B9236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				84677B81230BCF37001F5301 /* Montserrat-SemiBold.ttf in Resources */,
 				84677B83230BCF37001F5301 /* Montserrat-Black.ttf in Resources */,
 				84677B84230BCF37001F5301 /* FontAwesome.ttf in Resources */,
+				6F7651C3236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				84677B85230BCF37001F5301 /* Nunito-SemiBold.ttf in Resources */,
 				84677B86230BCF37001F5301 /* Nunito-Bold.ttf in Resources */,
 				84677B87230BCF37001F5301 /* Images.xcassets in Resources */,
@@ -2862,9 +2904,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8480856522D9B52500D7D25B /* GymboreeLaunchScreen.xib in Resources */,
+				6F7651B5236BF70A003F3100 /* Montserrat-ExtraBold.ttf in Resources */,
 				8480856622D9B52500D7D25B /* Montserrat-SemiBold.ttf in Resources */,
 				8480856722D9B52500D7D25B /* Montserrat-Black.ttf in Resources */,
 				844B13382301654300A82DAA /* FontAwesome.ttf in Resources */,
+				6F7651BF236BF70A003F3100 /* Nunito-ExtraBold.ttf in Resources */,
 				8480856822D9B52500D7D25B /* Nunito-SemiBold.ttf in Resources */,
 				844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */,
 				8480856922D9B52500D7D25B /* Images.xcassets in Resources */,
