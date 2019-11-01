@@ -12,6 +12,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="regular"
         margin={null}
         numberOfLines={null}
         text="Current Points: "
@@ -35,6 +36,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="regular"
         margin={null}
         numberOfLines={null}
         text="My rewards: "
@@ -59,6 +61,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
+        fontWeight="regular"
         margin={null}
         numberOfLines={null}
         text="Next Rewards: "

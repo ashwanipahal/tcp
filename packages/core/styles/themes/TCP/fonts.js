@@ -87,6 +87,7 @@ const FONT_WEIGHT = {
   medium: '500',
   semiBold: '600',
   bold: '700',
+  extrabold: '800',
   black: '900',
 };
 
@@ -109,6 +110,8 @@ export default {
   secondaryFontFamily: SECONDARY_FONT,
   primaryFontSemilBoldFamily: PRIMARY_FONT_SEMIBOLD,
   secondaryFontSemilBoldFamily: SECONDARY_FONT_SEMIBOLD,
+  primaryFontExtraBoldFamily: PRIMARY_FONT_EXTRABOLD,
+  secondaryFontExtraBoldFamily: SECONDARY_FONT_EXTRABOLD,
   primaryFontBlackFamily: PRIMARY_FONT_BLACK,
   secondaryFontBlackFamily: SECONDARY_FONT_BLACK,
   fontWeight: FONT_WEIGHT,

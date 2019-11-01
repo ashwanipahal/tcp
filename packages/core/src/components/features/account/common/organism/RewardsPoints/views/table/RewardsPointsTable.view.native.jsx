@@ -23,7 +23,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
         <MyRewardsWrapper>
           <BodyCopy
             fontFamily="secondary"
-            fontSize="fs18"
+            fontSize="fs20"
             fontWeight="black"
             color="gray.900"
             text={`${
@@ -35,7 +35,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <TextWrapper>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs13"
+              fontSize="fs14"
               fontWeight="regular"
               textAlign="center"
               color="black"
@@ -47,7 +47,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
         <CurrentPointsWrapper>
           <BodyCopy
             fontFamily="secondary"
-            fontSize="fs18"
+            fontSize="fs20"
             fontWeight="black"
             color="gray.900"
             text={Math.round(currentPoints || 0)}
@@ -55,7 +55,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <TextWrapper>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs13"
+              fontSize="fs14"
               fontWeight="regular"
               textAlign="center"
               color="black"
@@ -67,7 +67,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
         <NextRewardsWrapper>
           <BodyCopy
             fontFamily="secondary"
-            fontSize="fs18"
+            fontSize="fs20"
             fontWeight="black"
             color="gray.900"
             text={Math.round(pointsToNextReward || 100)}
@@ -75,7 +75,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <TextWrapper>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs13"
+              fontSize="fs14"
               fontWeight="regular"
               textAlign="center"
               color="black"

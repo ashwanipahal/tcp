@@ -6,7 +6,10 @@ import {
 
 import BodyCopy from '../BodyCopy';
 
-import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
+import {
+  androidFontStyles,
+  iosFontStyles,
+} from '../../../../../styles/globalStyles/StyledText.style';
 
 const getAdditionalStyle = props => {
   const { margin, textDecoration } = props;
@@ -81,6 +84,7 @@ export const TextWithSpacing = styled.Text`
   ${typographyStyleSystem}
   ${colorStyleSystem}
   ${androidFontStyles}
+  ${iosFontStyles}
   ${getAdditionalStyle}
 `;
 

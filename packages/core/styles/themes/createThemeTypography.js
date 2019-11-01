@@ -4,8 +4,10 @@ import {
   LINE_HEIGHTS,
   TEXT_ALIGNS,
   FONT_WEIGHTS,
+  FONT_WEIGHT_NAMES,
   FONT_SIZES,
   ANDROID_FONTS,
+  IOS_FONTS,
 } from './typography.constants';
 
 const BASE_HEADING_TYPOGRAPHY = {
@@ -24,6 +26,7 @@ function createThemeTypography(theme = {}) {
     lineHeights = LINE_HEIGHTS,
     textAligns = TEXT_ALIGNS,
     fontWeights = FONT_WEIGHTS,
+    fontWeightsNames = FONT_WEIGHT_NAMES,
     fontSizes = FONT_SIZES,
   } = typography;
 
@@ -83,7 +86,9 @@ function createThemeTypography(theme = {}) {
   return {
     fonts,
     androidFonts: ANDROID_FONTS,
+    iosFonts: IOS_FONTS,
     fontWeights,
+    fontWeightsNames,
     fontSizes,
     letterSpacings,
     lineHeights,

@@ -537,6 +537,7 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 };
 
 export const isAndroid = () => Platform.OS === 'android';
+export const isIOS = () => Platform.OS === 'ios';
 
 /**
  * getPixelRatio
