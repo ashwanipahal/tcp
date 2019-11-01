@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  margin-top: 10px;
+  ${props => (!props.marginTopNone ? `margin-top: 10px` : '')};
   .edit-form-css {
     display: flex;
     flex: 1;
@@ -33,8 +33,12 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding-left: 90px;
-      padding-right: 89px;
+      ${props =>
+        !props.quickViewAddToBagActionPadding
+          ? `padding-left: 90px;
+      padding-right: 89px;`
+          : `padding-left: 65px;
+          padding-right: 65px;`};
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
