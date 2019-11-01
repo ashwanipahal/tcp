@@ -21,7 +21,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "",
             "text": "",
             "title": "",
-            "url": "/banner/url",
+            "url": "https://test6.childrensplace.com/us/c/baby-clothe",
           },
           "text": "
   <style>
