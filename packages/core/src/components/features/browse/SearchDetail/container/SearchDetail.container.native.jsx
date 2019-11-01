@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
@@ -227,6 +228,7 @@ function mapStateToProps(state) {
       state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
+    labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
   };
 }
 

@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { isMobileApp } from '@tcp/core/src/utils/utils';
+import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import Favorites from '../views';
 import {
   getSetWishlistsSummariesAction,
@@ -99,6 +100,7 @@ class FavoritesContainer extends React.PureComponent {
       onQuickViewOpenClick,
       totalProductsCount,
       isDataLoading,
+      labelsPlpTiles,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -126,6 +128,7 @@ class FavoritesContainer extends React.PureComponent {
         selectBrandType={this.selectBrandType}
         totalProductsCount={totalProductsCount}
         isDataLoading={isDataLoading}
+        labelsPlpTiles={labelsPlpTiles}
         {...this.state}
       />
     );
@@ -143,6 +146,7 @@ const mapStateToProps = state => {
     labels: getLabelsFavorites(state),
     totalProductsCount: selectTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
+    labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
   };
 };
 
@@ -182,6 +186,7 @@ FavoritesContainer.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   totalProductsCount: PropTypes.string,
   isDataLoading: PropTypes.bool,
+  labelsPlpTiles: PropTypes.shape({}),
 };
 
 FavoritesContainer.defaultProps = {
@@ -191,6 +196,7 @@ FavoritesContainer.defaultProps = {
   labels: {},
   totalProductsCount: '0',
   isDataLoading: false,
+  labelsPlpTiles: {},
 };
 
 export default connect(

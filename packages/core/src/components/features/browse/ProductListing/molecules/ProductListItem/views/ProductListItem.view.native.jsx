@@ -38,22 +38,33 @@ const TextProps = {
 
 let renderVariation = false;
 
-const handleQuickViewOpenClick = (selectedColorIndex, colorsMap, onQuickViewOpenClick) => {
-  const { colorProductId } = colorsMap && colorsMap[selectedColorIndex];
-  onQuickViewOpenClick({
-    colorProductId,
-  });
+const onCTAHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
+  const { productInfo, colorsMap } = item;
+  const { name, pdpUrl, isGiftCard, bundleProduct } = productInfo;
+  const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
+  const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
+  if (bundleProduct) {
+    onGoToPDPPage(modifiedPdpUrl, colorProductId, name);
+  } else if (!isGiftCard) {
+    onQuickViewOpenClick({
+      colorProductId,
+    });
+  }
 };
 
 const renderAddToBagContainer = (
+  item,
   renderPriceOnly,
   selectedColorIndex,
-  colorMapData,
   onQuickViewOpenClick,
-  isGiftCard,
-  bundleProduct
+  bundleProduct,
+  labelsPlpTiles,
+  onGoToPDPPage
 ) => {
   if (renderVariation && !renderPriceOnly) return null;
+  const buttonLabel = bundleProduct
+    ? labelsPlpTiles.lbl_plpTiles_shop_collection
+    : labelsPlpTiles.lbl_add_to_bag;
   return (
     <AddToBagContainer>
       <CustomButton
@@ -62,14 +73,9 @@ const renderAddToBagContainer = (
         type="button"
         buttonVariation="variable-width"
         data-locator=""
-        text={bundleProduct ? 'SHOP COLLECTION' : 'ADD TO BAG'}
-        onPress={
-          () =>
-            !isGiftCard
-              ? handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick)
-              : () => {} // TODO Quick View for Gift Card
-        }
-        accessibilityLabel="add to bag"
+        text={buttonLabel}
+        onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
+        accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
       />
     </AddToBagContainer>
   );
@@ -96,11 +102,12 @@ const ListItem = props => {
     margins,
     paddings,
     viaModule,
+    labelsPlpTiles,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
-  const { name, isGiftCard, bundleProduct } = productInfo;
+  const { name, bundleProduct } = productInfo;
   const miscInfo = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
 
@@ -162,12 +169,13 @@ const ListItem = props => {
         />
       ) : null}
       {renderAddToBagContainer(
+        item,
         renderPriceOnly,
         selectedColorIndex,
-        colorMapData,
         onQuickViewOpenClick,
-        isGiftCard,
-        bundleProduct
+        bundleProduct,
+        labelsPlpTiles,
+        onGoToPDPPage
       )}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && <RenderMoveToWishlist />}
@@ -230,6 +238,9 @@ const RenderBadge2 = ({ text }) => {
 
 RenderBadge2.propTypes = TextProps;
 
+/**
+ * @description - This method calculate offer price range for the collection products
+ */
 const calculateCollectionOfferPriceRange = (productInfo, currencySymbol, currencyExchange) => {
   const lowOfferPrice = (
     get(productInfo, 'priceRange.lowOfferPrice', 0) * currencyExchange[0].exchangevalue
@@ -243,6 +254,9 @@ const calculateCollectionOfferPriceRange = (productInfo, currencySymbol, currenc
   return `${currencySymbol}${lowOfferPrice}${highOfferPriceFinalValue}`;
 };
 
+/**
+ * @description - This method calculate list price of the product
+ */
 const calculateListPrice = (productInfo, miscInfo, currencySymbol, currencyExchange) => {
   const bundleProduct = get(productInfo, 'bundleProduct', false);
   if (bundleProduct) {
@@ -526,6 +540,7 @@ ListItem.propTypes = {
   margins: PropTypes.string,
   paddings: PropTypes.string,
   viaModule: PropTypes.string,
+  labelsPlpTiles: PropTypes.shape({}),
 };
 
 ListItem.defaultProps = {
@@ -545,6 +560,7 @@ ListItem.defaultProps = {
   margins: null,
   paddings: '12px 0 12px 0',
   viaModule: '',
+  labelsPlpTiles: {},
 };
 
 export default withStyles(ListItem, styles);

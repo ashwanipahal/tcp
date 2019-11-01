@@ -110,7 +110,6 @@ exports[`ProductListItem component should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(CustomButton)
-      accessibilityLabel="add to bag"
       active={false}
       buttonVariation="variable-width"
       color=""
@@ -130,7 +129,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text="ADD TO BAG"
+      text=""
       theme={Object {}}
       type="button"
       url=""
