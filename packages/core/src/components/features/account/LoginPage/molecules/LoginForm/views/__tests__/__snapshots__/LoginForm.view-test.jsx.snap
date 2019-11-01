@@ -365,6 +365,9 @@ exports[`LoginForm component should renders correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -885,6 +888,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {

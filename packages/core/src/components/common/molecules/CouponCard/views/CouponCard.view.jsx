@@ -196,7 +196,6 @@ class CouponCard extends React.Component<Props> {
                     fontSizeVariation="small"
                     underline
                     anchorVariation="primary"
-                    fontSize="fs12"
                     nohover
                     type="button"
                     link

@@ -7,6 +7,7 @@ import {
   getThresholdValue,
   cartOrderDetails,
   getLoyaltyBannerLabels,
+  confirmationDetails,
 } from './LoyaltyBanner.selectors';
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
@@ -26,7 +27,7 @@ export const LoyaltyBannerContainer = ({
   const {
     estimatedRewards,
     subTotal,
-    cartTotalAfterPLCCDiscount,
+    subTotalWithDiscounts,
     earnedReward,
     pointsToNextReward,
   } = orderDetails;
@@ -35,7 +36,7 @@ export const LoyaltyBannerContainer = ({
       labels={labels}
       estimatedRewardsVal={estimatedRewards}
       currentSubtotal={subTotal}
-      estimatedSubtotal={cartTotalAfterPLCCDiscount}
+      estimatedSubtotal={subTotalWithDiscounts}
       thresholdValue={thresholdValue}
       isGuest={isGuestCheck}
       earnedReward={earnedReward}
@@ -73,9 +74,10 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 /* istanbul ignore next */
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state, ownProps) => ({
   labels: getLoyaltyBannerLabels(state),
-  orderDetails: cartOrderDetails(state),
+  orderDetails:
+    ownProps.pageCategory === 'confirmation' ? confirmationDetails(state) : cartOrderDetails(state),
   thresholdValue: getThresholdValue(state),
   isGuestCheck: isGuest(state),
   isPlcc: isPlccUser(state),
