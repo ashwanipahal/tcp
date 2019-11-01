@@ -505,4 +505,9 @@ export const initCheckoutSectionPageAction = payload => ({
   payload,
 });
 
+export const toggleCountrySelectorModal = payload => ({
+  payload,
+  type: constants.COUNTRY_SELECTOR_MODAL_TOGGLE,
+});
+
 export default { setServerErrorCheckout, resetCheckoutReducer };

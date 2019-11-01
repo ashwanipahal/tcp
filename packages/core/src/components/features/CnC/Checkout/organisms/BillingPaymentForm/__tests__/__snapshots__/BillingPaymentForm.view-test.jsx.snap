@@ -77,7 +77,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           options={
             Immutable.List [
               Object {
-                "content": <ForwardRef(Styled(Card))
+                "content": <ForwardRef
                   card={
                     Object {
                       "accountNo": "************3743",
@@ -123,7 +123,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
                 "value": 82596,
               },
               Object {
-                "content": <ForwardRef(Styled(Button))
+                "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
                   dataLocator="addCreditCardBtn"
@@ -147,23 +147,23 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
       creditFieldLabels={Object {}}
       cvvError="Enter correct code"
       cvvInfo={
-        <ForwardRef(Styled(ReactTooltip))
+        <ForwardRef
           aligned="right"
           fontFamily="secondary"
           message={
-            <ForwardRef(Styled(RichText))
+            <ForwardRef
               className="cvv-code-info"
               dataLocator="cvv-code-info"
               richTextHtml={null}
             />
           }
         >
-          <ForwardRef(Styled(Image))
+          <ForwardRef
             height="15"
             src="/static/images/info-icon.png"
             width="15"
           />
-        </ForwardRef(Styled(ReactTooltip))>
+        </ForwardRef>
       }
       dispatch={
         [MockFunction] {
@@ -444,23 +444,23 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
       creditFieldLabels={Object {}}
       cvvError="Enter correct code"
       cvvInfo={
-        <ForwardRef(Styled(ReactTooltip))
+        <ForwardRef
           aligned="right"
           fontFamily="secondary"
           message={
-            <ForwardRef(Styled(RichText))
+            <ForwardRef
               className="cvv-code-info"
               dataLocator="cvv-code-info"
               richTextHtml={null}
             />
           }
         >
-          <ForwardRef(Styled(Image))
+          <ForwardRef
             height="15"
             src="/static/images/info-icon.png"
             width="15"
           />
-        </ForwardRef(Styled(ReactTooltip))>
+        </ForwardRef>
       }
       dispatch={
         [MockFunction] {
@@ -743,6 +743,72 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
 </form>
 `;
 
+exports[`ButtonList component renders correctly with venmoError 1`] = `
+<form
+  className=""
+  name="checkoutBillingPayment"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <div>
+    <Styled(BodyCopy)
+      className="elem-mb-LRG elem-mt-XL"
+      color="text.primary"
+      component="p"
+      dataLocator="paymentMethodLbl"
+      fontFamily="primary"
+      fontSize="fs26"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+    <Styled(PaymentMethods)
+      className="elem-mb-LRG"
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
+    <Styled(ErrorMessage)
+      className="checkout-page-error"
+      error="Authentication Error"
+    />
+  </div>
+  <Styled(CheckoutOrderInfo)
+    isGuest={false}
+    showAccordian={true}
+  />
+  <Styled(CheckoutFooter)
+    backLinkHandler={[Function]}
+    backLinkText=""
+    hideBackLink={true}
+    nextButtonText=""
+    onVenmoSubmit={[MockFunction]}
+    showVenmoSubmit={true}
+    venmoError="Authentication Error"
+  />
+</form>
+`;
+
 exports[`ButtonList component renders correctly without props 1`] = `
 <form
   className=""
@@ -820,7 +886,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
           options={
             Immutable.List [
               Object {
-                "content": <ForwardRef(Styled(Card))
+                "content": <ForwardRef
                   card={
                     Object {
                       "accountNo": "************3743",
@@ -866,7 +932,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "value": 82596,
               },
               Object {
-                "content": <ForwardRef(Styled(Button))
+                "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
                   dataLocator="addCreditCardBtn"
@@ -1143,7 +1209,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               aligned="right"
               fontFamily="secondary"
               message={
-                <ForwardRef(Styled(RichText))
+                <ForwardRef
                   className="cvv-code-info"
                   dataLocator="cvv-code-info"
                   richTextHtml={null}
@@ -1246,6 +1312,9 @@ exports[`ButtonList component renders correctly without props 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1447,7 +1516,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
           options={
             Immutable.List [
               Object {
-                "content": <ForwardRef(Styled(Card))
+                "content": <ForwardRef
                   card={
                     Object {
                       "accountNo": "************3743",
@@ -1493,7 +1562,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "value": 82596,
               },
               Object {
-                "content": <ForwardRef(Styled(Button))
+                "content": <ForwardRef
                   buttonVariation="variable-width"
                   className="addCreditCardBtn"
                   dataLocator="addCreditCardBtn"
@@ -1770,7 +1839,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               aligned="right"
               fontFamily="secondary"
               message={
-                <ForwardRef(Styled(RichText))
+                <ForwardRef
                   className="cvv-code-info"
                   dataLocator="cvv-code-info"
                   richTextHtml={null}
@@ -1873,6 +1942,9 @@ exports[`ButtonList component renders correctly without props 2`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {

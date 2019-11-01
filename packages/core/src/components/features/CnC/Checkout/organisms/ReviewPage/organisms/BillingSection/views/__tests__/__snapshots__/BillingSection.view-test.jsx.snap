@@ -718,7 +718,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
           aligned="right"
           fontFamily="secondary"
           message={
-            <ForwardRef(Styled(RichText))
+            <ForwardRef
               className="cvv-code-info"
               dataLocator="cvv-code-info"
               richTextHtml=""

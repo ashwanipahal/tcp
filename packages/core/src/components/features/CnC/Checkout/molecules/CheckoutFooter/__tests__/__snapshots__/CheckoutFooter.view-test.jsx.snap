@@ -5,26 +5,77 @@ exports[`CheckoutFooterVanilla component should renders correctly 1`] = `
   <div
     className="footer-buttons"
   >
-    <Styled(Button)
-      buttonVariation="variable-width"
-      className="footer-button footer-button-mob"
-      dataLocator="reviewBtn"
-      fill="BLUE"
-      fontSize="fs14"
-      fontWeight="extrabold"
-      type="submit"
+    <Connect(VenmoPaymentButtonContainer)
+      className="footer-venmo-button"
+      continueWithText=""
+      isVenmoBlueButton={true}
+      onSuccess={[Function]}
     />
     <div
       className="back-space"
     />
-    <Styled(Button)
-      buttonVariation="variable-width"
-      className="footer-button footer-button-web"
-      dataLocator="reviewBtn"
-      fill="BLUE"
-      fontSize="fs14"
-      fontWeight="extrabold"
-      type="submit"
+  </div>
+</div>
+`;
+
+exports[`CheckoutFooterVanilla component should renders correctly with footer 1`] = `
+<div>
+  <div
+    className="footer-body-container"
+  >
+    Footer
+  </div>
+  <div
+    className="footer-buttons"
+  >
+    <Connect(VenmoPaymentButtonContainer)
+      className="footer-venmo-button"
+      continueWithText=""
+      isVenmoBlueButton={true}
+      onSuccess={[Function]}
+    />
+    <div
+      className="back-space"
+    />
+  </div>
+</div>
+`;
+
+exports[`CheckoutFooterVanilla component should renders correctly with venmo 1`] = `
+<div>
+  <div
+    className="footer-buttons"
+  >
+    <Connect(VenmoPaymentButtonContainer)
+      className="footer-venmo-button"
+      continueWithText=""
+      isVenmoBlueButton={true}
+      onSuccess={[Function]}
+    />
+    <div
+      className="back-space"
+    />
+  </div>
+</div>
+`;
+
+exports[`CheckoutFooterVanilla component should renders correctly with venmo and error 1`] = `
+<div>
+  <div
+    className="footer-buttons"
+  >
+    <Connect(VenmoPaymentButtonContainer)
+      className="footer-venmo-button"
+      continueWithText=""
+      isVenmoBlueButton={true}
+      onSuccess={[Function]}
+    />
+    <Styled(ErrorMessage)
+      className="checkout-page-error"
+      error="Cannot process your request"
+    />
+    <div
+      className="back-space"
     />
   </div>
 </div>

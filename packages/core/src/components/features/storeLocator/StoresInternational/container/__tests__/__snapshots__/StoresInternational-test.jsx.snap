@@ -657,16 +657,16 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="sc-jTzLTM LXWRp test"
+        className="test sc-jTzLTM LXWRp"
         content="test"
         dataLocator="test"
       >
         <div
-          className="sc-jTzLTM LXWRp test"
+          className="test sc-jTzLTM LXWRp"
         >
           <Styled(Anchor)
             anchorVariation="secondary"
-            className="sc-jTzLTM LXWRp test__backlink"
+            className="test sc-jTzLTM LXWRp__backlink"
             dataLocator="store_USCanadabacklink"
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
@@ -675,7 +675,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           >
             <StyledComponent
               anchorVariation="secondary"
-              className="sc-jTzLTM LXWRp test__backlink"
+              className="test sc-jTzLTM LXWRp__backlink"
               dataLocator="store_USCanadabacklink"
               fontSizeVariation="xlarge"
               forwardedComponent={
@@ -782,7 +782,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               <Anchor
                 anchorVariation="secondary"
                 asPath=""
-                className="sc-bwzfXH eZrbaF sc-jTzLTM LXWRp test__backlink"
+                className="test sc-jTzLTM LXWRp__backlink sc-bwzfXH eZrbaF"
                 dataLocator="store_USCanadabacklink"
                 fontSizeVariation="xlarge"
                 handleLinkClick={[Function]}
@@ -796,7 +796,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               >
                 <a
                   anchorVariation="secondary"
-                  className="sc-bwzfXH eZrbaF sc-jTzLTM LXWRp test__backlink"
+                  className="test sc-jTzLTM LXWRp__backlink sc-bwzfXH eZrbaF"
                   data-locator="store_USCanadabacklink"
                   fontSizeVariation="xlarge"
                   href=""

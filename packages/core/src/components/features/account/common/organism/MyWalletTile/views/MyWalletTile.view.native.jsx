@@ -48,7 +48,7 @@ export const MyWalletTile = ({ labels, commonLabels, coupons, navigation }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_overview_myWalletHeading')}
         color="black"
-        fontWeight="black"
+        fontWeight="extrabold"
       />
       <UnderlineStyle />
       {couponsCount > 0 && (

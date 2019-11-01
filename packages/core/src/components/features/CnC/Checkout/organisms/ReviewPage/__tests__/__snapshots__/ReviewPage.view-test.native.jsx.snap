@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewPageVanilla component should renders correctly props not present 1`] = `
+<Fragment>
+  <CheckoutProgressIndicator
+    activeStage="review"
+    navigation={null}
+  />
+  <ScrollViewMock>
+    <Styled(View)>
+      <CheckoutSectionTitleDisplay />
+      <Connect(BillingSectionContainer)
+        onEdit={[Function]}
+      />
+    </Styled(View)>
+    <Connect(CheckoutCartItemList) />
+    <CnCCommonTemplate
+      footerBody={
+        <ForwardRef>
+          <ForwardRef
+            accessibilityText=""
+            dataLocator=""
+            fontSize="fs12"
+            margin={null}
+            mobilefontFamily={
+              Array [
+                "secondary",
+              ]
+            }
+            numberOfLines={null}
+            textDecoration={null}
+          />
+          <ForwardRef />
+          <ForwardRef
+            accessibilityText=""
+            dataLocator=""
+            fontSize="fs12"
+            margin={null}
+            mobilefontFamily={
+              Array [
+                "secondary",
+              ]
+            }
+            numberOfLines={null}
+            textDecoration={null}
+          />
+          <ForwardRef />
+        </ForwardRef>
+      }
+      isConfirmationPage={false}
+      isReviewPage={true}
+      onBackLinkPress={[Function]}
+      pageCategory="review"
+      routeToPage=""
+      showAccordian={true}
+    />
+  </ScrollViewMock>
+</Fragment>
+`;

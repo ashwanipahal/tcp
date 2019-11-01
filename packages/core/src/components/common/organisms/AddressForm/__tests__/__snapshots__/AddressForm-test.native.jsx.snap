@@ -694,6 +694,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -718,6 +719,7 @@ exports[`AddressForm component should render correctly with default address 1`] 
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -1415,6 +1417,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -1439,6 +1442,7 @@ exports[`AddressForm component should renders correctly 1`] = `
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
