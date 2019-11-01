@@ -47,6 +47,10 @@ class ModuleM extends React.PureComponent {
     this.setState({ currentTabItem: id });
   }
 
+  /*
+    Calculate image dimensions dynamically
+    as per screen width
+  */
   getImageDimension = totalImages => {
     const { OFFSET, GUTTER_SPACE } = config;
     const moduleWidth = MODULE_WIDTH - OFFSET;
