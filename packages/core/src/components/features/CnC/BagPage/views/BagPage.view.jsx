@@ -16,7 +16,7 @@ import QuickViewModal from '../../../../common/organisms/QuickViewModal/containe
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
 
-class BagPageView extends React.Component {
+class BagPageView extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

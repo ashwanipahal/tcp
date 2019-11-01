@@ -40,7 +40,7 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
         fontFamily="secondary"
         fontWeight="regular"
       >
-        {errorMessage}
+        {` ERROR: ${errorMessage}`}
       </BodyCopy>
     </BodyCopy>
   );

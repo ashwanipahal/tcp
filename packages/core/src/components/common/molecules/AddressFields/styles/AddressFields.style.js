@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const styles = css`
   .address-field {
     height: ${props =>
-      props.variation === 'primary' ? props.theme.spacing.FORM_FIELD_HEIGHT : ''};
+      props.variation === 'primary' ? props.theme.spacing.FORM_FIELD_HEIGHT : 'auto'};
   }
   input {
     background-color: ${props =>

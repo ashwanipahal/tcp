@@ -105,12 +105,8 @@ const FooterNavLinksList = ({
   const createNavListItem = (linkItems, index) => {
     const linkAction = linkItems.action;
     const linkUrl = linkItems.url;
-    let dispatchFn = null;
-    if (linkUrl) {
-      dispatchFn = linkConfig[linkUrl];
-    } else {
-      dispatchFn = linkConfig[linkAction];
-    }
+    const dispatchFn = linkConfig[linkUrl] || linkConfig[linkAction] || null;
+
     /*
       hideLogoutMyActLink - true - if linkAction is login-account and user is logged in.
       hideLogoutMyActLink - true - if linkAction is log-out and user is  not logged in.
@@ -124,7 +120,7 @@ const FooterNavLinksList = ({
     */
     const hideLogoutMyActLink = hideLogoutMyActLinkBool(linkItems) || false;
     const onClick =
-      linkAction || linkItems.url ? getOnClickAction(linkAction, dispatchFn, linkItems) : null;
+      linkAction || linkUrl ? getOnClickAction(linkAction, dispatchFn, linkItems) : null;
 
     const { url: ctaUrl, target, title, actualUrl } = linkItems;
 
@@ -135,7 +131,7 @@ const FooterNavLinksList = ({
 
     return !hideLogoutMyActLink ? (
       <li>
-        {linkAction || linkItems.url ? (
+        {dispatchFn ? (
           <Button
             type="button"
             data-locator={`col_${colNum}_link_${index}`}

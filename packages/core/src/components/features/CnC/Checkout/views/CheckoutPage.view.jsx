@@ -210,6 +210,7 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPickupDisplayed={this.isVenmoPickupDisplayed()}
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -238,6 +239,7 @@ class CheckoutPage extends React.PureComponent {
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -250,6 +252,7 @@ class CheckoutPage extends React.PureComponent {
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -281,10 +284,14 @@ class CheckoutPage extends React.PureComponent {
               },
             }}
             clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
-          <Confirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
+          <Confirmation
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            pageCategory={currentSection.toLowerCase()}
+          />
         )}
       </div>
     );
