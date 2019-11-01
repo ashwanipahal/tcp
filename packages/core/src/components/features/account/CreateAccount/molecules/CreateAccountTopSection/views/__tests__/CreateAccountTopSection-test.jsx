@@ -26,15 +26,4 @@ describe('Create Account component', () => {
     const component = shallow(<CreateAccountTopSectionVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
-
-  it('simulate reset password click', () => {
-    const wrapper = shallow(<CreateAccountTopSectionVanilla {...props} />);
-    const fakeEvent = { preventDefault: jest.fn() };
-
-    wrapper
-      .find('Styled(Anchor)')
-      .at(0)
-      .simulate('click', fakeEvent);
-    expect(props.showForgotPasswordForm).toHaveBeenCalled();
-  });
 });

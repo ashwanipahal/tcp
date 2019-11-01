@@ -2,31 +2,32 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { ShopBySizeLink, ShopBySizeContainer } from '../ShopBySize.style';
-
-/**
- * @function navigateFromL2 populates the L3 menu or PLP page for the L1 link that has been clicked
- * @param {object} subCategories Details of the L2 menu item that has been clicked
- * @param {object} hasL3 flag that defines if L3 is present for the L2
- */
-const navigateFromL2 = (navigate, subCategories, hasL3) => {
-  if (hasL3) {
-    return navigate('NavMenuLevel3');
-  }
-  return navigate('ProductListingPage');
-};
+import { navigateFromL2 } from '../../../utils';
 
 /**
  * @function shopBySize populates the circular links for shop by size
  * @param {object} links shop by size links
  */
-const ShopBySize = ({ navigate, links, hasL3 }) => {
+const ShopBySize = ({ navigate, links, hasL3, accessibilityLabels }) => {
+  if (!links) {
+    return null;
+  }
   return (
     <ShopBySizeContainer>
       {links.map(linkItem => {
-        return (
+        return linkItem ? (
           <ShopBySizeLink
             accessibilityRole="button"
-            onPress={() => navigateFromL2(navigate, linkItem.url, hasL3)}
+            onPress={() =>
+              navigateFromL2(
+                navigate,
+                null,
+                linkItem.text,
+                hasL3,
+                accessibilityLabels,
+                linkItem.url
+              )
+            }
           >
             <BodyCopy
               fontFamily="secondary"
@@ -35,7 +36,7 @@ const ShopBySize = ({ navigate, links, hasL3 }) => {
               color="text.primary"
             />
           </ShopBySizeLink>
-        );
+        ) : null;
       })}
     </ShopBySizeContainer>
   );
@@ -45,6 +46,7 @@ ShopBySize.propTypes = {
   navigate: PropTypes.func.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   hasL3: PropTypes.bool,
+  accessibilityLabels: PropTypes.string.isRequired,
 };
 
 ShopBySize.defaultProps = {

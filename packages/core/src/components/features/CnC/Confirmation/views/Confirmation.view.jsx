@@ -9,6 +9,7 @@ import ThankYouComponent from '../organisms/ThankYouComponent';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
 import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
+import LoyaltyBanner from '../../LoyaltyBanner';
 import {
   checkIfShippingFullName,
   checkIfNotShippingFullName,
@@ -46,6 +47,7 @@ const ConfirmationView = ({
   orderNumbersByFullfillmentCenter,
   isVenmoPaymentInProgress,
   venmoUserName,
+  pageCategory,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
   let venmoPayment = {};
@@ -122,7 +124,7 @@ const ConfirmationView = ({
       </Row>
       <Row fullBleed className="placeholder loyalty-banner">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div>LOYALTY BANNER</div>
+          {<LoyaltyBanner pageCategory="confirmation" />}
         </Col>
       </Row>
       {renderAccountForm(isGuest)}
@@ -131,6 +133,7 @@ const ConfirmationView = ({
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         venmoPayment={venmoPayment}
         labels={labels}
+        pageCategory={pageCategory}
       />
     </div>
   );
@@ -165,6 +168,7 @@ ConfirmationView.propTypes = {
   orderShippingDetails: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
   venmoUserName: PropTypes.string,
+  pageCategory: PropTypes.string,
 };
 ConfirmationView.defaultProps = {
   className: '',
@@ -175,6 +179,7 @@ ConfirmationView.defaultProps = {
   orderShippingDetails: null,
   isVenmoPaymentInProgress: false,
   venmoUserName: '',
+  pageCategory: '',
 };
 
 export default withStyles(ConfirmationView, styles);

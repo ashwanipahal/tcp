@@ -98,7 +98,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         }
       >
         <Connect(Styled(SearchBar))
-          className={true}
+          className="headerSearchBox"
           isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
           onCloseClick={[Function]}
@@ -106,6 +106,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         />
         <GuestUserInfo
           createAccount="createAccount"
+          isDrawer={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
@@ -114,7 +115,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           anchorVariation="primary"
           aria-label="undefined undefined item"
           className=""
-          fontSizeVariation="small"
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}
@@ -279,7 +280,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         }
       >
         <Connect(Styled(SearchBar))
-          className={true}
+          className="headerSearchBox"
           isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
           onCloseClick={[Function]}
@@ -287,6 +288,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         />
         <GuestUserInfo
           createAccount="createAccount"
+          isDrawer={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
@@ -295,7 +297,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           anchorVariation="primary"
           aria-label="undefined undefined item"
           className=""
-          fontSizeVariation="small"
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}

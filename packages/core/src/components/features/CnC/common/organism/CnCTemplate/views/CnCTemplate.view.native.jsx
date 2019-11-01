@@ -29,7 +29,7 @@ const CnCCommonTemplate = ({
   isGuest,
   showAccordian,
   isConfirmationPage,
-  isReviewPage,
+  pageCategory,
 }) => {
   return (
     <>
@@ -39,7 +39,7 @@ const CnCCommonTemplate = ({
             <CouponAndPromos isCheckout />
           </CouponAndPromosWrapper>
           <View>
-            <OrderLedgerContainer showAccordian={showAccordian} isReviewPage={isReviewPage} />
+            <OrderLedgerContainer showAccordian={showAccordian} pageCategory={pageCategory} />
           </View>
           {!isGuest && (
             <BonusPointsWrapper>
@@ -74,16 +74,11 @@ const CnCCommonTemplate = ({
         </>
       ) : (
         <View>
-          <OrderLedgerContainer isConfirmationPage={isConfirmationPage} showAccordian />
-          <BannerWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="LOYALTY BANNER"
-            />
-          </BannerWrapper>
+          <OrderLedgerContainer
+            isConfirmationPage={isConfirmationPage}
+            pageCategory={pageCategory}
+            showAccordian
+          />
           {isGuest && (
             <BannerWrapper>
               <BodyCopyWithSpacing
@@ -111,12 +106,12 @@ CnCCommonTemplate.propTypes = {
   isGuest: PropTypes.func.isRequired,
   showAccordian: PropTypes.bool.isRequired,
   isConfirmationPage: PropTypes.bool,
-  isReviewPage: PropTypes.bool,
+  pageCategory: PropTypes.shape({}),
 };
 
 CnCCommonTemplate.defaultProps = {
   isConfirmationPage: false,
-  isReviewPage: false,
+  pageCategory: {},
 };
 
 export default CnCCommonTemplate;

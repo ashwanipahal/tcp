@@ -34,7 +34,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
     };
   }
 
-  onChangeColor = (e, selectedSize, selectedFit) => {
+  onChangeColor = (e, selectedSize, selectedFit, selectedQuantity) => {
     this.generalProductId =
       this.colorFitsSizesMap && getMapSliceForColor(this.colorFitsSizesMap, e);
     this.generalProductId = this.generalProductId && this.generalProductId.colorDisplayId;
@@ -48,6 +48,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
       Fit: selectedFit,
       Size: selectedSize,
       color: e,
+      Quantity: selectedQuantity,
     };
   };
 

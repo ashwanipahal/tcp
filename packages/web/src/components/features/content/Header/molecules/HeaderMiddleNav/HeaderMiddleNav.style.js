@@ -24,7 +24,7 @@ const style = css`
       width: 24%;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 20%;
+      width: 12%;
     }
 
     .storelocatorlink__container,
@@ -37,18 +37,26 @@ const style = css`
     }
   }
   .header-middle-login-section {
-    display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 8px;
+    display: inline-flex;
     @media ${props => props.theme.mediaQuery.mediumMax} {
-      width: 71%;
+      width: 75%;
       margin-top: auto;
+      display: inline-flex;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 74%;
+      width: 88%;
+      display: inline-flex;
     }
   }
+
+  .header-middle-login-section .headerSearchBox {
+    position: relative;
+    height: 40px;
+  }
+
   .account-info-section {
     cursor: pointer;
     display: inline-block;
@@ -75,7 +83,7 @@ const style = css`
     }
   }
   .user-name {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
     text-align: left;
     &:hover {
       color: ${props => props.theme.colorPalette.blue[500]};
@@ -89,15 +97,17 @@ const style = css`
   }
   .usericon {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
     vertical-align: baseline;
+    padding-right: 12px;
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
   }
   .product-image {
-    padding-left: 12px;
-    vertical-align: baseline;
+    height: 25px;
+    width: 23px;
+    vertical-align: middle;
   }
   #login {
     padding-right: 12px;
@@ -113,6 +123,9 @@ const style = css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
+  .header-middle-login-section a {
+    position: relative;
+  }
   .cartCount {
     background: ${props =>
       props.theme.isGymboree
@@ -120,8 +133,11 @@ const style = css`
         : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
-    margin: 1px 0px 0px -7px;
     padding: 2px 5px;
+    vertical-align: bottom;
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
   }
   @media ${props => props.theme.mediaQuery.mediumMax} {
     padding: 16px 0;
@@ -151,6 +167,14 @@ const style = css`
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
+    }
+  }
+
+  .create-account-header-label,
+  .login-header-label {
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline-flex;
     }
   }
 `;

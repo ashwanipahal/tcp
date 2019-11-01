@@ -22,6 +22,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
@@ -46,6 +47,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -75,6 +77,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
@@ -99,6 +102,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -128,6 +132,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
@@ -152,6 +157,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -181,6 +187,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
@@ -205,6 +212,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -234,6 +242,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
@@ -258,6 +267,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>
@@ -287,6 +297,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
@@ -311,6 +322,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
           isProductDetailView=""
           isReviewPage={false}
           labels={Object {}}
+          openLoginModal=""
         />
       </div>
     </Styled(BodyCopy)>

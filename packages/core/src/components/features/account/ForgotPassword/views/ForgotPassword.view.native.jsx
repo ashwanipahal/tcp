@@ -7,7 +7,6 @@ import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPal
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   FormStyle,
-  FormStyleView,
   HeadingStyle,
   SubHeadingStyle,
   SubHeadingSectionStyle,
@@ -15,6 +14,7 @@ import {
   ForgotDescriptionStyle,
   FloatWrapper,
   CustomIconWrapper,
+  ForgotPasswordWrapper,
 } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
@@ -124,7 +124,7 @@ class ForgotPasswordView extends React.Component<Props> {
     updateHeader(); // remove the header and border line of the modal
     return (
       <View>
-        <FormStyleView>
+        <ForgotPasswordWrapper>
           <FloatWrapper>
             <CustomIconWrapper>
               <CustomIcon
@@ -146,7 +146,7 @@ class ForgotPasswordView extends React.Component<Props> {
           </FloatWrapper>
           {successFullResetEmail ? this.showSuccessullEmail() : this.showResetEmailSection()}
           <LineComp marginTop={28} />
-        </FormStyleView>
+        </ForgotPasswordWrapper>
       </View>
     );
   }

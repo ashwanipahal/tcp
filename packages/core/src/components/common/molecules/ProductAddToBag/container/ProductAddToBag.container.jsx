@@ -202,7 +202,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   colorChange = e => {
-    const { selectedSize, selectedFit } = this.state;
+    const { selectedSize, selectedFit, selectedQuantity } = this.state;
     const { onChangeColor } = this.props;
     this.setState({
       selectedColor: { name: e },
@@ -212,7 +212,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
     // props for any custom action to call
     if (onChangeColor) {
-      onChangeColor(e, selectedSize.name, selectedFit.name);
+      onChangeColor(
+        e,
+        selectedSize && selectedSize.name,
+        selectedFit && selectedFit.name,
+        selectedQuantity
+      );
     }
   };
 
@@ -416,6 +421,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       formEnabled,
       quickViewColorSwatchesCss,
       isPDP,
+      isDisableZeroInventoryEntries,
+      ...otherProps
     } = this.props;
     const {
       selectedColor,
@@ -436,6 +443,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return (
       <ProductAddToBag
+        {...otherProps}
         colorList={productColorFitsSizesMap}
         fitList={this.getFitOptions(productColorFitsSizesMap, selectedColor)}
         sizeList={this.getSizeList(productColorFitsSizesMap)}
@@ -470,6 +478,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         formEnabled={formEnabled}
         quickViewColorSwatchesCss={quickViewColorSwatchesCss}
         isPDP={isPDP}
+        isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
       />
     );
   }

@@ -4,8 +4,10 @@ import Button from '../../atoms/Button';
 
 const StyledLinkText = styled(LinkText)`
   .link-text {
-    color: ${props =>
-      props.theme.isGymboree ? props.theme.colors.TEXT.DARK : props.theme.colors.WHITE};
+    span {
+      color: ${props =>
+        props.theme.isGymboree ? props.theme.colors.TEXT.DARK : props.theme.colors.WHITE};
+    }
   }
   @media ${props => props.theme.mediaQuery.smallOnly} {
     &.padding-LR-15 {

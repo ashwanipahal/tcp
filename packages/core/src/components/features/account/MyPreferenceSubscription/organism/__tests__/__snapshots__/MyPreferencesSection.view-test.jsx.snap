@@ -124,6 +124,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               width="17"
             />
             <Field
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -205,6 +206,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -239,6 +243,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                       ";
 ",
@@ -256,6 +263,8 @@ exports[`ProfileInformation component should render correctly 1`] = `
               }
               dataLocator="mypreference-apptcpcheckbox"
               name="tcpAppSubscribe"
+              onBlur={[Function]}
+              onChange={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}
@@ -275,6 +284,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -356,6 +366,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -390,6 +403,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
     margin-right: 4px;
     margin-top: 2px;
   }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
 ",
                       ";
 ",
@@ -407,6 +423,8 @@ exports[`ProfileInformation component should render correctly 1`] = `
               }
               dataLocator="mypreference-appgymcheckbox"
               name="gymboreeAppSubscribe"
+              onBlur={[Function]}
+              onChange={[Function]}
             >
               <Styled(BodyCopy)
                 className={null}
@@ -457,7 +475,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               width="17"
             />
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -539,6 +557,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -572,6 +593,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
                       ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                       ";
@@ -609,7 +633,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
               </Styled(BodyCopy)>
             </Field>
             <Field
-              checked={false}
+              checked={true}
               className="elm-padding-top"
               component={
                 Object {
@@ -691,6 +715,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -724,6 +751,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
                       ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                       ";

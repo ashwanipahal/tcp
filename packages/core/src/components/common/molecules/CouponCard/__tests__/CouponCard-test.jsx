@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CouponCardVanilla } from '../views/CouponCard.view';
-import Anchor from '../../../atoms/Anchor';
+import Button from '../../../atoms/Button';
 
 describe('CouponCard Component', () => {
   let component;
@@ -64,8 +64,10 @@ describe('CouponCard Component', () => {
       couponDetailClick: couponJestDetailClick,
     };
     const componentObj = shallow(<CouponCardVanilla {...propsNew} />);
-    componentObj.find(Anchor).simulate('click', { preventDefault: jest.fn() });
-    expect(componentObj.find(Anchor)).toHaveLength(1);
+    componentObj
+      .find(Button)
+      .first()
+      .simulate('click', { preventDefault: jest.fn() });
     expect(couponJestDetailClick).toHaveBeenCalled();
   });
 });

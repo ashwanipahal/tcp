@@ -53,6 +53,9 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
+    .empty-searched-label {
+      display: block;
+    }
     .search-product-tile:nth-child(2n) {
       padding-right: 0;
     }
@@ -130,6 +133,7 @@ export default css`
     }
     .filter-and-sort-form-container .desktop-dropdown {
       display: flex;
+      position: relative;
     }
     .searched-label {
       padding-bottom: 0;
@@ -212,7 +216,7 @@ export default css`
   }
 
   .matchBox {
-    width: 240px;
+    width: 245px;
     display: table-cell;
     border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border-top: 0px;
@@ -221,8 +225,7 @@ export default css`
     position: absolute;
     background-color: ${props => props.theme.colors.WHITE};
     overflow-y: auto;
-    border-radius: 20px;
-    margin: 45px 10px 0 10px;
+    margin: 40px 10px 0 10px;
   }
 
   .boxHead {
@@ -238,11 +241,6 @@ export default css`
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-  .matchLinkBox .matchLinkBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
-
   .matchProductBox .matchProductBody {
     padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
   }
@@ -256,6 +254,7 @@ export default css`
   li.linkName {
     height: 40px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 8px 14px;
   }
 
   li.productBox {

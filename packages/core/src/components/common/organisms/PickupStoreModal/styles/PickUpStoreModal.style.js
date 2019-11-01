@@ -23,7 +23,8 @@ const styles = css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      padding: 24px 17px;
+      padding: 0 17px;
+      margin: 24px 0;
     }
 
     .search-store {
@@ -152,10 +153,10 @@ const styles = css`
     }
 
     .edit-form-css .qty-selector {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 
       @media ${props => props.theme.mediaQuery.medium} {
-        margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+        margin-top: 14px;
       }
     }
   }

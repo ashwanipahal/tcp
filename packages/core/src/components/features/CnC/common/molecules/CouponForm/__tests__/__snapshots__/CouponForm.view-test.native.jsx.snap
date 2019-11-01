@@ -5,6 +5,8 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
   <ErrorMessage
     bagPage={false}
     error=""
+    fontSize=""
+    fontWeight=""
   />
   <Styled(View)>
     <Styled(View)>
@@ -80,6 +82,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

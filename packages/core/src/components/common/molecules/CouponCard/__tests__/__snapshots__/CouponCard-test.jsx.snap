@@ -98,15 +98,16 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 Use by 8/10/19
               </Styled(BodyCopy)>
             </Styled(BodyCopy)>
-            <Styled(Anchor)
+            <Styled(Button)
               anchorVariation="primary"
               aria-labelledby="Y00105578"
               className="cartDetailsLink"
               dataLocator="coupon_available_cartDetailsLink"
-              fontSize="fs10"
               fontSizeVariation="small"
+              link={true}
+              nohover={true}
               onClick={[Function]}
-              to="/#"
+              type="button"
               underline={true}
             />
           </div>

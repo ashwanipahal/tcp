@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  margin-top: 10px;
+  ${props => (!props.marginTopNone ? `margin-top: 10px` : '')};
   .edit-form-css {
     display: flex;
     flex: 1;
@@ -9,7 +9,7 @@ const styles = css`
     align-items: flex-start;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 25px;
+    margin-top: 26px;
   }
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
@@ -22,7 +22,7 @@ const styles = css`
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
-    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     font-stretch: normal;
     line-height: normal;
     font-style: normal;
@@ -33,8 +33,17 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding-left: 90px;
-      padding-right: 89px;
+      ${props =>
+        !props.isQuickView
+          ? `padding-left: 90px;
+      padding-right: 89px;`
+          : `padding-left: 65px;
+          padding-right: 65px;`};
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-left: 65px;
+      padding-right: 65px;
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -88,7 +97,7 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
-    margin-bottom: 33px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;
@@ -97,6 +106,13 @@ const styles = css`
       .dropdownUlBorder {
         border: none;
       }
+    }
+  }
+
+  .fit-selector {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    .input-radio-title {
+      margin-bottom: 0;
     }
   }
 
@@ -151,11 +167,18 @@ const styles = css`
   }
 
   .qty-selector {
-    display: inline-flex;
+    display: inline-block;
     margin-top: 31px;
     width: 100%;
     #quantity {
       font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 48px;
+    }
+    p {
+      display: inline-block;
+      vertical-align: top;
     }
   }
 
@@ -164,7 +187,6 @@ const styles = css`
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     color: #3b3b3b;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    padding-top: 9px;
     text-transform: uppercase;
   }
 

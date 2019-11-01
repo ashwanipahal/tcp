@@ -47,6 +47,44 @@ exports[`ProductListItem component should render correctly 1`] = `
     setLastDeletedItemId={[MockFunction]}
   />
   <RenderTitle
+    colorsMap={
+      Array [
+        Object {
+          "color": Object {
+            "imagePath": "",
+            "name": "TIDAL",
+          },
+          "colorProductId": "3001084_IV",
+          "imageName": "3001084_IV",
+          "miscInfo": Object {},
+        },
+      ]
+    }
+    item={
+      Object {
+        "colorsMap": Array [
+          Object {
+            "color": Object {
+              "imagePath": "",
+              "name": "TIDAL",
+            },
+            "colorProductId": "3001084_IV",
+            "imageName": "3001084_IV",
+            "miscInfo": Object {},
+          },
+        ],
+        "productInfo": Object {
+          "name": "tcp",
+        },
+      }
+    }
+    onGoToPDPPage={[MockFunction]}
+    productInfo={
+      Object {
+        "name": "tcp",
+      }
+    }
+    selectedColorIndex={0}
     text="tcp"
   />
   <RenderColorSwitch
@@ -90,6 +128,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       theme={Object {}}
       type="button"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

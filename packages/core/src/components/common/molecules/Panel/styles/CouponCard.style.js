@@ -44,7 +44,6 @@ const styles = css`
     text-align: center;
     background: ${props => props.theme.colors.TEXT.DARKERGRAY};
     color: ${props => props.theme.colors.WHITE};
-    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     line-height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .couponCard__body {

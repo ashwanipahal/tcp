@@ -6,7 +6,19 @@ import Drawer from '../molecules/Drawer';
 import NavBar from '../organisms/NavBar';
 import Footer from '../../Footer';
 import style from '../Navigation.style';
+import { filterParams, clearAll } from '../../../../../constants/constants';
 
+const {
+  FILTER_CATAGORY,
+  FILTER_COLOR,
+  FILTER_SIZE,
+  FILTER_PRICE_RANGE,
+  FILTER_FIT,
+  FILTER_GENDER,
+  FILTER_AGE,
+} = filterParams;
+
+const { CLEAR_ALL_SEARCH_FILTER, CLEAR_ALL_PLP_FILTER } = clearAll;
 /**
  * This function closes Navigation Drawer on route change
  * @param {function} closeNavigationDrawer
@@ -21,23 +33,38 @@ const handleRouteChange = (closeNavigationDrawer, isDrawerOpen) => () => {
 /**
  * This function scrolls page to top on route change complete
  */
+// eslint-disable-next-line complexity
 const handleRouteComplete = url => {
+  const clearAllFilter =
+    localStorage.getItem(CLEAR_ALL_SEARCH_FILTER) || localStorage.getItem(CLEAR_ALL_PLP_FILTER);
   const params = new URL(document.location).searchParams;
   const sortParam = params.has('sort');
-  const filterParam = params.has('categoryPath2_uFilter');
+
+  const filterParam =
+    params.has(FILTER_CATAGORY) ||
+    params.has(FILTER_COLOR) ||
+    params.has(FILTER_SIZE) ||
+    params.has(FILTER_PRICE_RANGE) ||
+    params.has(FILTER_FIT) ||
+    params.has(FILTER_GENDER) ||
+    params.has(FILTER_AGE);
 
   /**
    * check if sort or filter param present in PLP page
    */
-  const checkListingPageParam = url.match(/\/c\//g) && (sortParam || filterParam);
+  const checkListingPageParam = url.match(/\/c\//g) && (sortParam || filterParam || clearAllFilter);
 
   /**
    * check if sort or filter param present in Search page
    */
-  const checkSearchPageParam = url.match(/\/search\//g) && (sortParam || filterParam);
+  const checkSearchPageParam =
+    url.match(/\/search\//g) && (sortParam || filterParam || clearAllFilter);
 
   if (!checkListingPageParam && !checkSearchPageParam) {
     window.scrollTo(0, 0);
+  } else {
+    localStorage.removeItem(CLEAR_ALL_SEARCH_FILTER);
+    localStorage.removeItem(CLEAR_ALL_PLP_FILTER);
   }
 };
 
@@ -73,7 +100,9 @@ const Navigation = props => {
     isDrawerOpen,
   } = props;
 
-  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen));
+  useEffect(() => {
+    registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen);
+  }, []);
 
   return (
     <Drawer

@@ -8,14 +8,11 @@ exports[`LoyaltyFooterSection View Component ProductDetailSection true should re
     <span
       className="applyNowLink"
     >
-      <Connect(ApplyNowModalWrapper) />
+      <Connect(ApplyNowModalWrapper)
+        step={2}
+      />
     </span>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
+    <Connect(ApplyNowModalWrapper) />
   </span>
 </div>
 `;
@@ -33,7 +30,9 @@ exports[`LoyaltyFooterSection View Component is not ProductDetailView should ren
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper) />
+        <Connect(ApplyNowModalWrapper)
+          step={2}
+        />
       </span>
       <span
         className="learnSymbolWrapper elem-pl-XL"
@@ -50,12 +49,7 @@ exports[`LoyaltyFooterSection View Component is not ProductDetailView should ren
           link={null}
           textAlign="left"
         />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore"
-          fontSizeVariation="medium"
-          underline={true}
-        />
+        <Connect(ApplyNowModalWrapper) />
       </span>
     </span>
   </div>
@@ -75,7 +69,9 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward tru
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper) />
+        <Connect(ApplyNowModalWrapper)
+          step={2}
+        />
       </span>
       <span
         className="learnSymbolWrapper elem-pl-XL"
@@ -92,12 +88,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward tru
           link={null}
           textAlign="left"
         />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore"
-          fontSizeVariation="medium"
-          underline={true}
-        />
+        <Connect(ApplyNowModalWrapper) />
       </span>
     </span>
   </div>
@@ -119,6 +110,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true sho
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -129,6 +121,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true sho
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -141,16 +134,11 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isPlcc true shou
 <div
   className=" footerWrapper"
 >
-  <div
+  <span
     className="links-wrapper"
   >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
-  </div>
+    <Connect(ApplyNowModalWrapper) />
+  </span>
 </div>
 `;
 
@@ -167,7 +155,9 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper) />
+        <Connect(ApplyNowModalWrapper)
+          step={2}
+        />
       </span>
       <span
         className="learnSymbolWrapper elem-pl-XL"
@@ -184,12 +174,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render
           link={null}
           textAlign="left"
         />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore"
-          fontSizeVariation="medium"
-          underline={true}
-        />
+        <Connect(ApplyNowModalWrapper) />
       </span>
     </span>
   </div>
@@ -211,6 +196,7 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -221,6 +207,7 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
           anchorVariation="primary"
           className="learnMore"
           fontSizeVariation="medium"
+          onClick={[Function]}
           underline={true}
         />
       </span>
@@ -236,12 +223,34 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
   <div
     className="links-wrapper"
   >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Connect(ApplyNowModalWrapper)
+          step={2}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(BodyCopy)
+          className="symbolWrapper"
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs9"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+        <Connect(ApplyNowModalWrapper) />
+      </span>
+    </span>
   </div>
 </div>
 `;
@@ -259,12 +268,7 @@ exports[`LoyaltyFooterSection View Component isPlcc & isReviewPage true should r
   <div
     className="links-wrapper"
   >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
+    <Connect(ApplyNowModalWrapper) />
   </div>
 </div>
 `;
@@ -276,12 +280,7 @@ exports[`LoyaltyFooterSection View Component isPlcc true should render correctly
   <div
     className="links-wrapper"
   >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
+    <Connect(ApplyNowModalWrapper) />
   </div>
 </div>
 `;
@@ -295,12 +294,14 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest shou
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
     <Styled(Anchor)
       anchorVariation="primary"
       className="learnMore"
       fontSizeVariation="medium"
+      onClick={[Function]}
       underline={true}
     />
   </span>
@@ -311,12 +312,7 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
 <div
   className=" footerWrapper"
 >
-  <Styled(Anchor)
-    anchorVariation="primary"
-    className="learnMore"
-    fontSizeVariation="medium"
-    underline={true}
-  />
+  <Connect(ApplyNowModalWrapper) />
 </div>
 `;
 
@@ -328,14 +324,11 @@ exports[`LoyaltyFooterSection View Component isProductDetailView should render c
     <span
       className="applyNowLink"
     >
-      <Connect(ApplyNowModalWrapper) />
+      <Connect(ApplyNowModalWrapper)
+        step={2}
+      />
     </span>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      className="learnMore"
-      fontSizeVariation="medium"
-      underline={true}
-    />
+    <Connect(ApplyNowModalWrapper) />
   </span>
 </div>
 `;
@@ -353,7 +346,9 @@ exports[`LoyaltyFooterSection View Component not isPlcc should render correctly 
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper) />
+        <Connect(ApplyNowModalWrapper)
+          step={2}
+        />
       </span>
       <span
         className="learnSymbolWrapper elem-pl-XL"
@@ -370,12 +365,7 @@ exports[`LoyaltyFooterSection View Component not isPlcc should render correctly 
           link={null}
           textAlign="left"
         />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="learnMore"
-          fontSizeVariation="medium"
-          underline={true}
-        />
+        <Connect(ApplyNowModalWrapper) />
       </span>
     </span>
   </div>

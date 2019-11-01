@@ -22,14 +22,16 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
+import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
-import CHECKOUT_STAGES from './App.constants';
 import createDataLayer from '../analytics/dataLayer';
+import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
 // constants
@@ -90,14 +92,19 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
-    if (isErrorReportingBrowserActive) {
-      initErrorReporter({
-        isServer: false,
-        envId,
-        raygunApiKey,
-        channelId,
-        isDevelopment: isDevelopment(),
-      });
+
+    try {
+      if (isErrorReportingBrowserActive) {
+        initErrorReporter({
+          isServer: false,
+          envId,
+          raygunApiKey,
+          channelId,
+          isDevelopment: isDevelopment(),
+        });
+      }
+    } catch (e) {
+      logger.info('Error occurred in Raygun initialization', e);
     }
 
     /**
@@ -139,8 +146,10 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
-      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
-
+      // preview check from akamai header
+      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
+      // preview date if any from the query param
+      apiConfig.previewDate = query.preview_date;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
@@ -210,12 +219,25 @@ class TCPWebApp extends App {
     return null;
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const { Component, pageProps, store, router } = this.props;
     const componentPageName = Component.pageInfo ? Component.pageInfo.name || '' : '';
     let isNonCheckoutPage = true;
-    const { PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT } = CHECKOUT_STAGES;
-    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW, INTERNATIONAL_CHECKOUT];
+    const {
+      pickupPage,
+      shippingPage,
+      billingPage,
+      reviewPage,
+      internationalCheckout,
+    } = CHECKOUT_ROUTES;
+    const checkoutPageURL = [
+      pickupPage.asPath,
+      shippingPage.asPath,
+      billingPage.asPath,
+      reviewPage.asPath,
+      internationalCheckout.asPath,
+    ];
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -244,6 +266,8 @@ class TCPWebApp extends App {
               <Footer pageName={componentPageName} />
               <CheckoutModals />
             </Grid>
+            {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
+            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}

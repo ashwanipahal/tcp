@@ -233,6 +233,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
           <RichText
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
+            isNativeView={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -322,6 +323,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -561,6 +563,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
+            isNativeView={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -650,6 +653,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1092,6 +1096,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
+            isNativeView={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -1181,6 +1186,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1640,6 +1646,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
+            isNativeView={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -1729,6 +1736,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1972,6 +1980,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           <RichText
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
+            isNativeView={false}
             javaScriptEnabled={false}
             source={
               Object {
@@ -2061,6 +2070,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

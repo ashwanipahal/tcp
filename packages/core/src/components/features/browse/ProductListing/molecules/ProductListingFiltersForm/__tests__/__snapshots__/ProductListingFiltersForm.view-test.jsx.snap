@@ -2615,7 +2615,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
           <Styled(AppliedFiltersList)
             appliedFilters={
               Array [
-                Array [],
                 Array [
                   Object {
                     "displayName": "Shoes & Accessories",
@@ -2623,6 +2622,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     "id": "Shoes & Accessories",
                   },
                 ],
+                Array [],
               ]
             }
             auxColorMap={Object {}}

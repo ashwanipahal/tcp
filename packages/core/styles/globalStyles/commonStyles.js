@@ -151,6 +151,10 @@ export default css`
     margin: 0;
   }
 
+  .line-height-0 {
+    line-height: 0;
+  }
+
   .hide-on-mobile {
     @media ${mediaQuery.smallOnly} {
       display: none !important;

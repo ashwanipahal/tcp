@@ -79,7 +79,7 @@ const PlpStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => <Header {...props} showSearch />,
       headerBackground: 'transparent',
     },
   }
