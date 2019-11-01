@@ -37,8 +37,8 @@ export const StyledAnchor = styled(Anchor)`
   align-items: center;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.12);
   height: 106px;
-  border-bottom: 2px solid #2e6a91;
+  border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.BLUE};
   &:hover {
-    background-color: #f3f3f3;
+    background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   }
 `;
