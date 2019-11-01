@@ -368,6 +368,10 @@ export const resetNavigationStack = navigation => {
   );
 };
 
+const getStyliticsRegion = (configVal, country) => {
+  return configVal && country && country.split('_')[1];
+};
+
 /**
  * function getAPIInfoFromEnv
  * @param {*} apiSiteInfo
@@ -420,6 +424,10 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
     TWITTER_CONSUMER_SECRET: envConfig[`RWD_APP_TWITTER_CONSUMER_SECRET_${appTypeSuffix}`],
     RECOMMENDATIONS_API: recommendationsAPI,
+    styliticsUserNameTCP: envConfig.RWD_APP_STYLITICS_USERNAME_TCP,
+    styliticsUserNameGYM: envConfig.RWD_APP_STYLITICS_USERNAME_GYM,
+    styliticsRegionTCP: getStyliticsRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
+    styliticsRegionGYM: getStyliticsRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
   };
 };
 

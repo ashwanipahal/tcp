@@ -1019,6 +1019,22 @@ export const disableBodyScroll = () => {
   }
 };
 
+export const getStyliticsUserName = () => {
+  const { styliticsUserNameTCP, styliticsUserNameGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsUserNameTCP;
+  }
+  return styliticsUserNameGYM;
+};
+
+export const getStyliticsRegion = () => {
+  const { styliticsRegionTCP, styliticsRegionGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsRegionTCP;
+  }
+  return styliticsRegionGYM;
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
