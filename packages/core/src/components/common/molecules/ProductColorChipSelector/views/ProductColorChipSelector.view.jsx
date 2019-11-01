@@ -25,8 +25,10 @@ const getColorsChipsOptionsMap = (
       const color = colorEntry && colorEntry.get('color');
       const name = color && color.get('name');
       const swatchImagePath = color && color.get('swatchImage');
-      const swatchImageUrl = swatchImagePath.split('_');
-      const imgUrl = `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`;
+      const swatchImageUrl = swatchImagePath && swatchImagePath.split('_');
+      const imgUrl = swatchImageUrl
+        ? `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`
+        : '';
       const imgData = {
         alt: '',
         url: imgUrl,
