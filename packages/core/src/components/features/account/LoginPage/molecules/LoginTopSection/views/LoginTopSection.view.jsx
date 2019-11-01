@@ -26,13 +26,19 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             <BodyCopy
               fontSize={['fs28', 'fs36', 'fs36']}
               fontWeight="black"
-              fontFamily="secondary"
+              fontFamily="primary"
               textAlign="center"
             >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
             </BodyCopy>
 
-            <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
+            <BodyCopy
+              className="checkout_modal_heading_2"
+              component="span"
+              fontSize="fs18"
+              fontFamily="secondary"
+              textAlign="center"
+            >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading_1', 'login')}
             </BodyCopy>
             <BodyCopy
