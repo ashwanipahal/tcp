@@ -338,8 +338,31 @@ class CartItemTile extends React.Component {
       : offerPrice;
   };
 
-  renderEditLink = (isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) => {
-    const { labels, showOnReviewPage, isBagPageSflSection, isEditAllowed } = this.props;
+  renderEditLink = () => {
+    const {
+      labels,
+      showOnReviewPage,
+      isBagPageSflSection,
+      isEditAllowed,
+      productDetail: {
+        miscInfo: { orderItemType, availability },
+        itemInfo: { itemBrand },
+      },
+    } = this.props;
+
+    const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
+    const isBOPISOrder = isBopisOrder(orderItemType);
+    const isBOSSOrder = isBossOrder(orderItemType);
+    const isEcomSoldout = isSoldOut(availability);
+
+    const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
+      this.props,
+      isBossEnabled,
+      isBopisEnabled,
+      isEcomSoldout,
+      isBOSSOrder,
+      isBOPISOrder
+    );
     return (
       <>
         {showOnReviewPage &&
@@ -364,15 +387,7 @@ class CartItemTile extends React.Component {
     );
   };
 
-  getItemDetails = (
-    productDetail,
-    labels,
-    pageView,
-    isBOSSOrder,
-    bossDisabled,
-    isBOPISOrder,
-    bopisDisabled
-  ) => {
+  getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
     const { currencySymbol, currencyExchange } = this.props;
     let { offerPrice } = productDetail.itemInfo;
@@ -411,8 +426,7 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             )}
           {this.renderSflActionsLinks()}
-          {pageView === 'myBag' &&
-            this.renderEditLink(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)}
+          {pageView === 'myBag' && this.renderEditLink()}
         </Col>
         {pageView === 'myBag' && (
           <BodyCopy
@@ -1027,8 +1041,7 @@ class CartItemTile extends React.Component {
                       )}
                       {this.renderReviewPageSection()}
                     </div>
-                    {pageView !== 'myBag' &&
-                      this.renderEditLink(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled)}
+                    {pageView !== 'myBag' && this.renderEditLink()}
                   </Col>
                 </Row>
               </React.Fragment>
@@ -1046,16 +1059,7 @@ class CartItemTile extends React.Component {
               {this.getProductPriceList(productDetail, pageView, currencyExchange)}
             </Row>
             {this.getProductPointsList(productDetail, isBagPageSflSection, showOnReviewPage)}
-            {showOnReviewPage &&
-              this.getItemDetails(
-                productDetail,
-                labels,
-                pageView,
-                isBOSSOrder,
-                bossDisabled,
-                isBOPISOrder,
-                bopisDisabled
-              )}
+            {showOnReviewPage && this.getItemDetails(productDetail, labels, pageView)}
           </Col>
           {showOnReviewPage && this.renderHeartIcon()}
         </Row>
