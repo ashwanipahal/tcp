@@ -144,8 +144,8 @@ class TCPWebApp extends App {
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
       const { locals } = res;
-      const { device = {} } = req;
-      const apiConfig = createAPIConfig(locals);
+      const { device = {}, hostname } = req;
+      const apiConfig = createAPIConfig(locals, hostname);
       apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
 
       // optimizely headers
@@ -172,6 +172,7 @@ class TCPWebApp extends App {
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersObject,
+        hostname,
       };
 
       // Get initial props is getting called twice on server

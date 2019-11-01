@@ -34,6 +34,7 @@ export {
   getUrlParameter,
   scrollToParticularElement,
   getDirections,
+  getCurrentLanguage,
 } from './utils.web';
 
 export {

@@ -42,6 +42,7 @@ function* bootstrap(params) {
       deviceType,
       optimizelyHeadersObject,
       siteConfig,
+      hostname,
     },
   } = params;
 
@@ -95,7 +96,7 @@ function* bootstrap(params) {
       yield put(loadXappConfigDataOtherBrand(xappConfigOtherBrand));
     }
 
-    const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
+    const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData, hostname);
     if (pageName) {
       yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
       yield put(loadModulesData(result.modules));

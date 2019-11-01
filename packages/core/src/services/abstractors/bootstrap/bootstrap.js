@@ -5,7 +5,7 @@ import headerAbstractor from './header';
 import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
-import { getAPIConfig, isMobileApp } from '../../../utils';
+import { getAPIConfig, isMobileApp, getCurrentLanguage, getSiteId } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
 // import { LABELS } from '../../../reduxStore/constants';
 import CACHED_KEYS from '../../../constants/cache.config';
@@ -16,7 +16,10 @@ import { setDataInRedis } from '../../../utils/redis.util';
  * Asynchronous function to fetch data from service for given array of moduleIds
  * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
  */
-const fetchBootstrapData = async ({ page, labels, brand, country, channel }, bootstrapModules) => {
+const fetchBootstrapData = async (
+  { page, labels, brand, country, channel, lang },
+  bootstrapModules
+) => {
   /**
    * Sets up query params for page requests
    */
@@ -28,6 +31,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         },
       }
     : {};
@@ -45,6 +49,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'header':
@@ -53,6 +58,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'footer':
@@ -61,6 +67,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'navigation':
@@ -68,6 +75,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       default:
@@ -89,7 +97,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
 /**
  * Generate base bootstrap parameters
  */
-const createBootstrapParams = () => {
+const createBootstrapParams = hostname => {
   const apiConfig = getAPIConfig();
   const channelName = isMobileApp() ? MobileChannel : defaultChannel;
   return {
@@ -101,6 +109,7 @@ const createBootstrapParams = () => {
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
+    lang: `${getCurrentLanguage(hostname)}_${getSiteId().toUpperCase()}`,
   };
 };
 
@@ -147,10 +156,10 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  * @param {String} pageName
  * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pageName = '', modules, cachedData) => {
+const bootstrap = async (pageName = '', modules, cachedData, hostname) => {
   const response = {};
 
-  const bootstrapParams = { page: pageName, ...createBootstrapParams() };
+  const bootstrapParams = { page: pageName, ...createBootstrapParams(hostname) };
 
   /**
    * Config Responsible for making all the http requests that need to be resolved before loading the application

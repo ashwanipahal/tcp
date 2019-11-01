@@ -332,11 +332,25 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
-  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
 
-  const unbxdApiKeyTCP = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_TCP`];
-  const unbxdApiKeyGYM = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_GYM`];
+/**
+ * This function reads hostname to get language information
+ */
+export const getCurrentLanguage = hostname => {
+  const language = hostname && hostname.split('.');
+  if (language && language[0].length === 2) {
+    return language[0];
+  }
+  return 'en';
+};
+
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, hostname) => {
+  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const language = getCurrentLanguage(hostname);
+  const unbxdApiKeyTCP =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_TCP`];
+  const unbxdApiKeyGYM =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -352,9 +366,13 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
 
-    unboxKeyTCP: `${unbxdApiKeyTCP}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_TCP`]}`,
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_TCP`]
+    }`,
     unbxdApiKeyTCP,
-    unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_GYM`]
+    }`,
     unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
@@ -440,7 +458,8 @@ export const createAPIConfig = resLocals => {
   const basicConfig = getAPIInfoFromEnv(
     apiSiteInfo,
     processEnv,
-    countryConfig && countryConfig.countryKey
+    countryConfig && countryConfig.countryKey,
+    hostname
   );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
@@ -562,4 +581,5 @@ export default {
   canUseDOM,
   scrollToParticularElement,
   getDirections,
+  getCurrentLanguage,
 };
