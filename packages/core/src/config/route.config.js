@@ -59,9 +59,9 @@ const ROUTES_LIST = [
 
   {
     noSlugPath: 'account',
-    path: '/account/:id?/:subSection?',
+    path: '/account/:id?/:subSection?/:orderId?',
     resolver: '/account',
-    params: ['id', 'subSection'],
+    params: ['id', 'subSection', 'orderId'],
   },
   {
     noSlugPath: 'ds',
@@ -165,6 +165,12 @@ const ROUTES_LIST = [
     path: '/track-order/:orderId/:emailAddress',
     resolver: '/TrackOrder',
     params: ['orderId', 'emailAddress'],
+  },
+  {
+    noSlugPath: 'help-center',
+    path: '/help-center/:pageName?',
+    resolver: '/HelpCenter',
+    params: ['pageName'],
   },
 ];
 

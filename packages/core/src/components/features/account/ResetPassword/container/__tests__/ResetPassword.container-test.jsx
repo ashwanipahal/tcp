@@ -6,6 +6,7 @@ import ResetPasswordComponent from '../../views';
 describe('ResetPassword container', () => {
   let resetStateActionSpy;
   let resetPasswordActionSpy;
+  let showLoginSpy;
   const queryParams = {
     em: '1234567890',
     logonPasswordOld: '!@#qwer',
@@ -14,6 +15,7 @@ describe('ResetPassword container', () => {
   beforeEach(() => {
     resetStateActionSpy = jest.fn();
     resetPasswordActionSpy = jest.fn();
+    showLoginSpy = jest.fn();
     const props = {
       successMessage: '',
       errorMessage: '',
@@ -22,6 +24,7 @@ describe('ResetPassword container', () => {
       backToLoginAction: () => {},
       labels: {},
       queryParams,
+      showLogin: showLoginSpy,
     };
     component = shallow(<ResetPasswordContainer {...props} />);
   });
@@ -46,5 +49,20 @@ describe('ResetPassword container', () => {
       preventDefault: () => {},
     });
     expect(resetStateActionSpy).toBeCalled();
+  });
+
+  it('onBackClick should call showLoginSpy', () => {
+    component.instance().onBackClick();
+    expect(showLoginSpy).toBeCalled();
+  });
+
+  it('test onPwdHideShowClick', () => {
+    component.instance().onPwdHideShowClick(true);
+    expect(component.state('hideShowPwd')).toBe(true);
+  });
+
+  it('test onConfirmPwdHideShowClick', () => {
+    component.instance().onConfirmPwdHideShowClick(true);
+    expect(component.state('confirmHideShowPwd')).toBe(true);
   });
 });

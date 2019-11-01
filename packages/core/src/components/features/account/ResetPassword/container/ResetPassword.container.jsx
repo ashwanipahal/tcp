@@ -9,6 +9,7 @@ import {
 } from './ResetPassword.selectors';
 import ResetPasswordComponent from '../views';
 import { resetPassword, resetState } from './ResetPassword.actions';
+import { isMobileApp } from '../../../../../utils';
 
 export class ResetPasswordContainer extends PureComponent {
   static propTypes = {
@@ -24,15 +25,45 @@ export class ResetPasswordContainer extends PureComponent {
     }).isRequired,
     resetPasswordErrorMessage: PropTypes.string.isRequired,
     showNotification: PropTypes.bool.isRequired,
+    showNewPassword: PropTypes.func,
+    showLogin: PropTypes.func,
+    updateHeader: PropTypes.func,
+    resetChangePasswordState: PropTypes.func,
   };
 
-  componentDidUpdate() {
+  static defaultProps = {
+    showNewPassword: () => {},
+    showLogin: () => {},
+    updateHeader: () => {},
+    resetChangePasswordState: () => {},
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = { hideShowPwd: false, confirmHideShowPwd: false };
+  }
+
+  componentDidUpdate(prevProps) {
     const { successMessage } = this.props;
-    if (successMessage) {
-      setTimeout(() => {
-        this.backHandler();
-      }, 2000);
+    if (successMessage && !prevProps.successMessage) {
+      if (isMobileApp()) {
+        setTimeout(() => {
+          this.onBackClick();
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          this.backHandler();
+        }, 2000);
+      }
     }
+  }
+
+  componentWillUnmount() {
+    const { resetChangePasswordState, resetStateAction } = this.props;
+    if (resetChangePasswordState) {
+      resetChangePasswordState();
+    }
+    resetStateAction();
   }
 
   resetPassword = ({ password, confirmPassword }) => {
@@ -53,6 +84,22 @@ export class ResetPasswordContainer extends PureComponent {
     backToLoginAction();
   };
 
+  onBackClick = () => {
+    const { showLogin, showNewPassword } = this.props;
+    if (showLogin && showNewPassword) {
+      showLogin();
+      showNewPassword();
+    }
+  };
+
+  onPwdHideShowClick = value => {
+    this.setState({ hideShowPwd: value });
+  };
+
+  onConfirmPwdHideShowClick = value => {
+    this.setState({ confirmHideShowPwd: value });
+  };
+
   render() {
     const {
       successMessage,
@@ -60,7 +107,11 @@ export class ResetPasswordContainer extends PureComponent {
       labels,
       resetPasswordErrorMessage,
       showNotification,
+      showLogin,
+      showNewPassword,
+      updateHeader,
     } = this.props;
+    const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
       <ResetPasswordComponent
         successMessage={successMessage}
@@ -70,6 +121,14 @@ export class ResetPasswordContainer extends PureComponent {
         labels={labels}
         resetPasswordErrorMessage={resetPasswordErrorMessage}
         showNotification={showNotification}
+        showLogin={showLogin}
+        showNewPassword={showNewPassword}
+        onBackClick={this.onBackClick}
+        updateHeader={updateHeader}
+        onPwdHideShowClick={this.onPwdHideShowClick}
+        onConfirmPwdHideShowClick={this.onConfirmPwdHideShowClick}
+        hideShowPwd={hideShowPwd}
+        confirmHideShowPwd={confirmHideShowPwd}
       />
     );
   }

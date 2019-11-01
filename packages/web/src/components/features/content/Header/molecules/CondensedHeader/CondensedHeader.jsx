@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import { getBrand, getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
@@ -12,6 +13,7 @@ import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import style from './CondensedHeader.style';
 import config from '../../config';
 import { keyboard } from '../../../../../../constants/constants';
+import { customHeaderStyle } from '../HeaderMiddleNav/HeaderMiddleNav.style';
 
 const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isOpen) => () => {
   return isOpen ? closeNavigationDrawer('l1_drawer') : openNavigationDrawer('l1_drawer');
@@ -105,6 +107,7 @@ class CondensedHeader extends React.PureComponent {
       userPoints,
       userRewards,
       labels,
+      isFullSizeSearchModalOpen,
     } = this.props;
     const brand = getBrand();
     const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
@@ -160,13 +163,41 @@ class CondensedHeader extends React.PureComponent {
               />
             </div>
             <div className="condensed-header-icons">
-              <SearchBar
-                className={!isSearchOpen && 'rightLink search-icon'}
-                setSearchState={this.setSearchState}
-                isSearchOpen={isSearchOpen}
-                fromCondensedHeader
-                onCloseClick={this.onCloseClick}
-              />
+              {isFullSizeSearchModalOpen ? (
+                <Modal
+                  isOpen={isFullSizeSearchModalOpen}
+                  onRequestClose={this.handleShowHideFullSizeModalClick}
+                  overlayClassName="TCPModal__Overlay"
+                  className="TCPModal__Content"
+                  widthConfig={{ small: '375px', medium: '765px', large: '1023px' }}
+                  heightConfig={{ height: '99%' }}
+                  fixedWidth
+                  inheritedStyles={customHeaderStyle}
+                  headingAlign="center"
+                  horizontalBar={false}
+                  stickyCloseIcon
+                  fullWidth
+                  stickyHeader
+                >
+                  <SearchBar
+                    className={!isSearchOpen}
+                    setSearchState={this.setSearchState}
+                    isSearchOpen={isSearchOpen}
+                    onCloseClick={this.onCloseClick}
+                    isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                    fromCondensedHeader
+                  />
+                </Modal>
+              ) : (
+                <SearchBar
+                  className={!isSearchOpen && 'rightLink search-icon'}
+                  setSearchState={this.setSearchState}
+                  isSearchOpen={isSearchOpen}
+                  fromCondensedHeader
+                  onCloseClick={this.onCloseClick}
+                  isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
+                />
+              )}
 
               {userName ? (
                 <React.Fragment>
@@ -251,6 +282,7 @@ CondensedHeader.propTypes = {
   userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  isFullSizeSearchModalOpen: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     userNameClick: PropTypes.string.isRequired,

@@ -118,6 +118,7 @@ const addedToBagPageLabelsFn = (labels, earnedReward, estimatedRewardsVal, isGue
       subHeadingLabel = labels.added2bagGuestRewardsSubHeading;
     } else if (!isPlcc) {
       headingLabelVal = labels.added2bagMprRewardsHeading;
+      subHeadingLabel = labels.added2bagMprRewardsSubHeading;
       descriptionLabel = labels.added2bagMprRewardsDescription;
     } else {
       headingLabelVal = labels.added2bagPlccRewardsHeading;
