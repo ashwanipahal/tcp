@@ -19,7 +19,7 @@ export const StyledCol = styled.div`
     &:nth-child(2n + 2) {
       margin-right: 0;
     }
-    margin-bottom: 25px;
+    margin-bottom: 24px;
   }
   @media ${props => props.theme.mediaQuery.large} {
     width: 31.35%;
