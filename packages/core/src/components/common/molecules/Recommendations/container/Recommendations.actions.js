@@ -1,8 +1,9 @@
 import { FETCH_RECOMMENDATIONS_DATA, LOAD_RECOMMENDATIONS_DATA } from './Recommendations.constants';
 
-export const fetchRecommendationsData = () => {
+export const fetchRecommendationsData = payload => {
   return {
     type: FETCH_RECOMMENDATIONS_DATA,
+    payload,
   };
 };
 

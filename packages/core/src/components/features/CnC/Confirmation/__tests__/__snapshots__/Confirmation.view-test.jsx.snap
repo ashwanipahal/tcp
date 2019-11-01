@@ -104,6 +104,10 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(Styled(Recommendations))
+    page="checkout"
+    variations="moduleO"
+  />
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
     isVenmoPaymentInProgress={false}
@@ -214,6 +218,10 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(Styled(Recommendations))
+    page="checkout"
+    variations="moduleO"
+  />
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
     isVenmoPaymentInProgress={true}
@@ -331,6 +339,10 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(Styled(Recommendations))
+    page="checkout"
+    variations="moduleO"
+  />
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
     isVenmoPaymentInProgress={true}

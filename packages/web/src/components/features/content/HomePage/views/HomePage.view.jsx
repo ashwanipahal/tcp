@@ -8,6 +8,7 @@ import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
@@ -34,7 +35,10 @@ const HomePageView = dynamic({
       <HomePageSlots slots={slots} modules={modules} />,
       <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,
-      <Recommendations variations="moduleO,moduleP" />,
+      <Recommendations
+        page={Constants.RECOMMENDATIONS_SECTIONS.HOMEPAGE}
+        variations="moduleO,moduleP"
+      />,
       <ModuleG {...mockG.moduleG.composites} />,
     ];
   },

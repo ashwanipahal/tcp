@@ -16,6 +16,7 @@ const props = {
   ],
   headerLabel: 'You May Also Like',
   className: 'test class',
+  loadRecommendations: jest.fn(),
 };
 
 describe('Recommendations Module O variation', () => {

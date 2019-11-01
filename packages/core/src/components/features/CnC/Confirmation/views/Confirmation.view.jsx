@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isCanada } from '@tcp/core/src/utils';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -128,6 +130,7 @@ const ConfirmationView = ({
         </Col>
       </Row>
       {renderAccountForm(isGuest)}
+      <Recommendations page={Constants.RECOMMENDATIONS_SECTIONS.CHECKOUT} variations="moduleO" />
       <CheckoutOrderInfo
         isConfirmationPage
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}

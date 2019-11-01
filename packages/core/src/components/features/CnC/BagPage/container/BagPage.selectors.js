@@ -27,6 +27,7 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
         lbl_orderledger_total: totalLabel,
+        lbl_recently_viewed: recentlyViewed,
       } = {},
     } = {},
     global: {
@@ -74,6 +75,7 @@ const getBagPageLabels = state => {
     sflSuccess,
     sflDeleteSuccess,
     totalLabel,
+    recentlyViewed,
   };
 };
 

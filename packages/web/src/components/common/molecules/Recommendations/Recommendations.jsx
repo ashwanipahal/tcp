@@ -40,7 +40,12 @@ const { RECOMMENDATION } = constant;
 class Recommendations extends Component {
   componentDidMount() {
     const { loadRecommendations } = this.props;
-    window.addEventListener('load', loadRecommendations);
+    const { page, portalValue } = this.props;
+    const action = { page };
+    if (portalValue) {
+      action.mboxName = portalValue;
+    }
+    window.addEventListener('load', loadRecommendations(action));
   }
 
   componentWillUnmount() {
@@ -220,6 +225,8 @@ Recommendations.propTypes = {
   currency: PropTypes.string,
   currencyAttributes: PropTypes.shape({}),
   onQuickViewOpenClick: PropTypes.func.isRequired,
+  page: PropTypes.string,
+  portalValue: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
@@ -233,6 +240,8 @@ Recommendations.defaultProps = {
   currencyAttributes: {
     exchangevalue: 1,
   },
+  page: '',
+  portalValue: '',
 };
 
 export { Recommendations as RecommendationsVanilla };
