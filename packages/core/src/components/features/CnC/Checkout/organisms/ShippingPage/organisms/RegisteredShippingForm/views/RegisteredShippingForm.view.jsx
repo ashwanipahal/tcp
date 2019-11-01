@@ -142,6 +142,7 @@ class RegisteredShippingForm extends React.Component {
       addressPhoneNo,
       loadShipmentMethods,
       isGuest,
+      handleShipIntClick,
     } = this.props;
     const showAddressFields = getShowAddressFields({ ...this.props });
     return (
@@ -150,6 +151,7 @@ class RegisteredShippingForm extends React.Component {
           <div className="address-form">
             <FormSection name="address">
               <AddressFields
+                handleShipIntClick={handleShipIntClick}
                 addressFormLabels={addressFormLabels}
                 showDefaultCheckbox={false}
                 formName={formName}
@@ -353,6 +355,7 @@ class RegisteredShippingForm extends React.Component {
               type="button"
               buttonVariation="fixed-width"
               data-locator="edit-shipping-cancel-btn"
+              className="cancel-btn"
               onClick={this.toggleEditingMode}
             >
               {getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}

@@ -28,6 +28,7 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 374px;
+      padding: 6px 0 4px;
     }
 
     &.pickup-shipping {
@@ -112,6 +113,11 @@ export default css`
       position: inherit;
       display: block;
       z-index: 1;
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        width: 22px;
+        height: 22px;
+        background-position: center;
+      }
     }
 
     .white-background {

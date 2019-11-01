@@ -49,6 +49,7 @@ export const mapStateToProps = state => {
     labels: getBillingLabels(state),
     addressLabels: getAddEditAddressLabels(state),
     isVenmoEnabled: getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
+    venmoError: CheckoutSelectors.getVenmoError(state),
   };
 };
 

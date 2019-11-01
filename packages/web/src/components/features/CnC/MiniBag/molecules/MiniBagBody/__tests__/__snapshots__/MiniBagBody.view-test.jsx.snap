@@ -180,6 +180,7 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
     />
     <Connect(AirmilesBannerContainer) />
   </div>
+  <Connect(LoyaltyBannerContainer) />
 </div>
 `;
 
