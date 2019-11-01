@@ -30,6 +30,7 @@ class SearchLayoutWrapper extends React.PureComponent {
     this.searchInput = React.createRef();
     this.changeSearchText = this.changeSearchText.bind(this);
     this.initiateSearch = this.initiateSearch.bind(this);
+    this.closeSearchOnBlur = this.closeSearchOnBlur.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -166,6 +167,16 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   };
 
+  closeSearchOnBlur = e => {
+    e.preventDefault();
+    const { setSearchState, isSearchOpen } = this.props;
+    if (isSearchOpen) {
+      setTimeout(() => {
+        setSearchState(false);
+      }, 300);
+    }
+  };
+
   render() {
     const {
       className,
@@ -217,6 +228,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                 id="search-input"
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
+                onBlur={this.closeSearchOnBlur}
                 className="search-input"
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
