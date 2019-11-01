@@ -73,15 +73,18 @@ class LoyaltyPromoBanner extends React.PureComponent {
 
     const { bannerClosed, bannerVisible } = this.state;
 
-    console.info('>>> bannerVisible >>>', bannerVisible);
-
     if (bannerVisible) {
       return (
         <View>
           {bannerClosed ? null : (
             <Anchor navigation={navigation} url={link.url}>
               <Wrapper>
-                <RichText source={{ html: text }} />
+                <RichText
+                  source={{
+                    html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${text}</body></html>`,
+                  }}
+                />
+
                 <Touchable
                   accessibilityRole="button"
                   accessibilityLabels="close"
@@ -238,7 +241,7 @@ ON ALL EASTER DRESS UP & MATCHING FAMILY STYLES
 
 </div>`,
       link: {
-        url: '/banner/url',
+        url: 'https://test6.childrensplace.com/us/c/baby-clothe',
         text: '',
         title: '',
         external: 0,
