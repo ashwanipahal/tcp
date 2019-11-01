@@ -156,6 +156,23 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             width={49}
           />
         </div>
+        <p
+          className="size-unavailable"
+        >
+          <span
+            className="unavailable-text"
+          >
+            Size unavailable online?
+          </span>
+          <span
+            className="size-find-in-store"
+          >
+            <Connect(Styled(FulfillmentSection))
+              isAnchor={true}
+              title="Find In Store"
+            />
+          </span>
+        </p>
         <div
           className="qty-selector"
         >
@@ -364,6 +381,23 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             />
           </Styled(BodyCopy)>
         </div>
+        <p
+          className="size-unavailable"
+        >
+          <span
+            className="unavailable-text"
+          >
+            Size unavailable online?
+          </span>
+          <span
+            className="size-find-in-store"
+          >
+            <Connect(Styled(FulfillmentSection))
+              isAnchor={true}
+              title="Find In Store"
+            />
+          </span>
+        </p>
         <div
           className="qty-selector"
         >

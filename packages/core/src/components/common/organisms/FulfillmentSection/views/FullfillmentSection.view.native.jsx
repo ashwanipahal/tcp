@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Anchor } from '@tcp/core/src/components/common/atoms';
 import Button from '../../../atoms/Button';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/FullfillmentSection.style';
@@ -30,23 +31,38 @@ class FulfillmentSection extends React.Component {
   }
 
   render() {
-    const { buttonLabel } = this.props;
+    const { buttonLabel, isAnchor } = this.props;
     return (
       <React.Fragment>
-        <Button
-          margin="16px 0 0 0"
-          color="white"
-          fill="BLUE"
-          buttonVariation="variable-width"
-          text="Fulmilment Section"
-          fontSize="fs10"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          onPress={this.pickupOpenClick}
-          accessibilityLabel="Add to Bag"
-        >
-          {buttonLabel}
-        </Button>
+        {!isAnchor ? (
+          <Button
+            margin="16px 0 0 0"
+            color="white"
+            fill="BLUE"
+            buttonVariation="variable-width"
+            text="Fulmilment Section"
+            fontSize="fs10"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            onPress={this.pickupOpenClick}
+            accessibilityLabel="Add to Bag"
+          >
+            {buttonLabel}
+          </Button>
+        ) : (
+          <Anchor
+            noLink
+            onPress={this.pickupOpenClick}
+            accessibilityRole="link"
+            accessibilityLabel={buttonLabel}
+            text={buttonLabel}
+            anchorVariation="custom"
+            colorName="gray.900"
+            fontSizeVariation="medium"
+            centered
+            underline
+          />
+        )}
       </React.Fragment>
     );
   }
@@ -57,11 +73,13 @@ FulfillmentSection.propTypes = {
   closeQuickViewClick: PropTypes.func,
   buttonLabel: PropTypes.string,
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
+  isAnchor: PropTypes.bool,
 };
 
 FulfillmentSection.defaultProps = {
   buttonLabel: '',
   closeQuickViewClick: () => {},
+  isAnchor: false,
 };
 
 export default withStyles(FulfillmentSection, styles);

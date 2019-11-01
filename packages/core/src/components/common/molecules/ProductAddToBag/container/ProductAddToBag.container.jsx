@@ -422,6 +422,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       quickViewColorSwatchesCss,
       isPDP,
       isDisableZeroInventoryEntries,
+      alternateSizes,
+      sizeChartLinkVisibility,
+      navigation,
+      isPickup,
     } = this.props;
     const {
       selectedColor,
@@ -477,6 +481,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         quickViewColorSwatchesCss={quickViewColorSwatchesCss}
         isPDP={isPDP}
         isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+        alternateSizes={alternateSizes}
+        sizeChartLinkVisibility={sizeChartLinkVisibility}
+        navigation={navigation}
+        isPickup={isPickup}
       />
     );
   }

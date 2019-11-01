@@ -13,6 +13,10 @@ export const getBreadCrumbs = state => {
   return state.ProductDetail.get('breadCrumbs');
 };
 
+export const getAlternateSizes = state => {
+  return state.ProductDetail.getIn(['currentProduct', 'alternateSizes']);
+};
+
 export const getDescription = state => {
   return state.ProductDetail.getIn(['currentProduct', 'longDescription']);
 };

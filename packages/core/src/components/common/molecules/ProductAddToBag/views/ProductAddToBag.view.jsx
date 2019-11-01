@@ -15,7 +15,14 @@ import FulfillmentSection from '@tcp/core/src/components/common/organisms/Fulfil
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import { getLocator } from '../../../../../utils';
 import ProductSizeSelector from '../../ProductSizeSelector';
+import AlternateSizes from '../molecules/AlternateSizes';
 import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
+import SizeChart from '../molecules/SizeChart/container';
+
+export const SIZE_CHART_LINK_POSITIONS = {
+  AFTER_SIZE: 2,
+  AFTER_QUANTITY: 3,
+};
 
 // to get Error Message displayed in case any error comes on Add To card
 const ErrorComp = (errorMessage, showAddToBagCTA) => {
@@ -117,19 +124,74 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   };
 
+  renderAlternateSizes = alternateSizes => {
+    const { className } = this.props;
+    const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
+    return (
+      visibleAlternateSizes && (
+        <AlternateSizes
+          title="Other Sizes Available:"
+          buttonsList={alternateSizes}
+          className={className}
+        />
+      )
+    );
+  };
+
+  renderUnavailableLink = () => {
+    const { currentProduct } = this.props;
+    return (
+      <p className="size-unavailable">
+        <span className="unavailable-text">Size unavailable online?</span>
+        <span className="size-find-in-store">
+          <FulfillmentSection currentProduct={currentProduct} isAnchor title="Find In Store" />
+        </span>
+      </p>
+    );
+  };
+
+  renderSizeList = (sizeList, colorFitSizeDisplayNames, errorMessage) => {
+    const {
+      sizeChartLinkVisibility,
+      isErrorMessageDisplayed,
+      selectSize,
+      isDisableZeroInventoryEntries,
+    } = this.props;
+    return (
+      sizeList &&
+      sizeList.size > 0 && (
+        <div className="size-selector">
+          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && <SizeChart />}
+          <Field
+            width={49}
+            className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
+            id="size"
+            name="Size"
+            component={ProductSizeSelector}
+            sizesMap={sizeList}
+            onChange={selectSize}
+            dataLocator="addnewaddress-state"
+            title={`${colorFitSizeDisplayNames.size}:`}
+            isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+          />
+          {isErrorMessageDisplayed && ErrorComp(errorMessage)}
+        </div>
+      )
+    );
+  };
+
   render() {
     const {
       plpLabels,
       className,
-      isErrorMessageDisplayed,
       fitChanged,
       quantityList,
-      selectSize,
       displayErrorMessage,
       errorOnHandleSubmit,
       handleFormSubmit,
       showAddToBagCTA,
-      isDisableZeroInventoryEntries,
+      alternateSizes,
+      isPickup,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -155,23 +217,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
             <div className="select-value-wrapper">
               {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
               {this.renderFitList(fitList, fitTitle)}
-              {sizeList && sizeList.size > 0 && (
-                <div className="size-selector">
-                  <Field
-                    width={49}
-                    className={isErrorMessageDisplayed ? 'size-field-error' : 'size-field'}
-                    id="size"
-                    name="Size"
-                    component={ProductSizeSelector}
-                    sizesMap={sizeList}
-                    onChange={selectSize}
-                    dataLocator="addnewaddress-state"
-                    title={`${colorFitSizeDisplayNames.size}:`}
-                    isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
-                  />
-                  {isErrorMessageDisplayed && ErrorComp(errorMessage)}
-                </div>
-              )}
+              {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
+              {!isPickup && this.renderAlternateSizes(alternateSizes)}
+              {!isPickup && this.renderUnavailableLink()}
               <div className="qty-selector">
                 <Field
                   width={32}
