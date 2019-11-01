@@ -26,7 +26,7 @@ const CheckoutHeader = ({
   isExpressCheckoutPage,
 }) => {
   return (
-    <header className={className}>
+    <header className={`${className} content-wrapper`}>
       {itemsCount > 0 && (
         <>
           <Row className="header-topnav__row">
@@ -77,6 +77,7 @@ const CheckoutHeader = ({
                   anchorVariation="primary"
                   to="/bag"
                   dataLocator="checkout-header-returnToBag"
+                  className="return-bag-link"
                 >
                   {labels.returnBagLabel}
                 </Anchor>

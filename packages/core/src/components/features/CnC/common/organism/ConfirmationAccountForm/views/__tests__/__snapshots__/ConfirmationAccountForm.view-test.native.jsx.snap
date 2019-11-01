@@ -323,6 +323,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -652,6 +653,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1184,6 +1186,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -1733,6 +1736,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -2066,6 +2070,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         theme={Object {}}
         type="submit"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

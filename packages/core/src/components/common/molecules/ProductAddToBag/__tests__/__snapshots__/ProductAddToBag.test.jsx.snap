@@ -74,7 +74,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       padding: 5px ",
                     [Function],
                     ";
-      border: solid 1px #e3e3e3;
+      border: 1px solid ",
+                    [Function],
+                    ";
       display: inline-block;
       text-transform: capitalize;
       font-size: ",
@@ -91,6 +93,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     &.item-disabled-option .input-radio-title {
       color: #e3e3e3;
       cursor: initial;
+      border: solid 1px #e3e3e3;
     }
 
     .input-radio-icon-unchecked,
@@ -120,6 +123,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     [Function],
                     ";
       border: solid 1px ",
+                    [Function],
+                    ";
+      font-weight: ",
                     [Function],
                     ";
     }
@@ -251,7 +257,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       padding: 5px ",
                     [Function],
                     ";
-      border: solid 1px #e3e3e3;
+      border: 1px solid ",
+                    [Function],
+                    ";
       display: inline-block;
       text-transform: capitalize;
       font-size: ",
@@ -268,6 +276,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     &.item-disabled-option .input-radio-title {
       color: #e3e3e3;
       cursor: initial;
+      border: solid 1px #e3e3e3;
     }
 
     .input-radio-icon-unchecked,
@@ -297,6 +306,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     [Function],
                     ";
       border: solid 1px ",
+                    [Function],
+                    ";
+      font-weight: ",
                     [Function],
                     ";
     }

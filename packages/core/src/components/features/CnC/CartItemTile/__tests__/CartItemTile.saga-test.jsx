@@ -210,6 +210,7 @@ describe('openPickupModalFromBag', () => {
       isBossCtaEnabled: false,
       isItemShipToHome: false,
       alwaysSearchForBOSS: false,
+      openRestrictedModalForBopis: false,
     },
   };
   const generator = openPickupModalFromBag(payload);

@@ -194,6 +194,7 @@ const ShippingForm = ({
           getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
         }
         onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
+        pageCategory="shippingPage"
         showAccordian
       />
     </>
