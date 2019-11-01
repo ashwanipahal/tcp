@@ -33,7 +33,7 @@ const style = css`
     position: relative;
   }
   .skeleton-col {
-    background-color: rgb(239, 241, 246);
+    background: #d8d8d8;
     overflow: hidden;
     position: relative;
     &:before {

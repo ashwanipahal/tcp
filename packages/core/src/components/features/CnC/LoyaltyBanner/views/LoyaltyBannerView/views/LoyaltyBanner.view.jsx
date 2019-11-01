@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isUsOnly } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import LoyaltyBannerSection from '../../../molecules/LoyaltyBannerSection';
 import Styles from '../styles/LoyaltyBanner.style';
@@ -8,11 +9,13 @@ class LoyaltyBanner extends React.PureComponent<Props> {
   static propTypes = {
     pageCategory: PropTypes.string,
     className: PropTypes.string,
+    isInternationalShipping: PropTypes.string,
   };
 
   static defaultProps = {
     pageCategory: '',
     className: '',
+    isInternationalShipping: false,
   };
 
   render() {
@@ -30,8 +33,10 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       getCurrencySymbol,
       pageCategory,
       openLoginModal,
+      checkThresholdValue,
+      isInternationalShipping,
     } = this.props;
-    return (
+    return !isInternationalShipping && isUsOnly() ? (
       <div className={className}>
         <LoyaltyBannerSection
           labels={labels}
@@ -46,9 +51,11 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           getCurrencySymbol={getCurrencySymbol}
           pageCategory={pageCategory}
           openLoginModal={openLoginModal}
+          checkThresholdValue={checkThresholdValue}
+          isInternationalShipping={isInternationalShipping}
         />
       </div>
-    );
+    ) : null;
   }
 }
 

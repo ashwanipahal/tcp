@@ -286,7 +286,7 @@ class _PickupStoreSelectionForm extends React.Component {
           })}
         {this.displayStoreSearchForm(showStoreSearching)}
         {isLoading ? (
-          <span>searching</span>
+          <Spinner />
         ) : (
           <React.Fragment>
             {isSkuResolved &&

@@ -52,6 +52,7 @@ export default class ShippingPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
     ServerErrors: PropTypes.node.isRequired,
+    pageCategory: PropTypes.string,
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
   };
@@ -77,6 +78,7 @@ export default class ShippingPage extends React.PureComponent {
     saveToAddressBook: false,
     syncErrors: {},
     shippingAddress: null,
+    pageCategory: '',
     isVenmoPaymentInProgress: false,
     isVenmoShippingDisplayed: true,
     setVenmoPickupState: () => {},
@@ -357,6 +359,7 @@ export default class ShippingPage extends React.PureComponent {
       formatPayload,
       ServerErrors,
       toggleCountrySelector,
+      pageCategory,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -413,6 +416,7 @@ export default class ShippingPage extends React.PureComponent {
           isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           isVenmoShippingDisplayed={isVenmoShippingDisplayed}
           ServerErrors={ServerErrors}
+          pageCategory={pageCategory}
         />
         <AddressVerification
           onSuccess={this.submitVerifiedShippingAddressData}
