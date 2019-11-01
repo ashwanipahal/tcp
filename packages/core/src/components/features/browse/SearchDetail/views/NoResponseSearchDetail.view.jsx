@@ -227,7 +227,10 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   noLink
                   className="suggestion-label"
                   to={`/us/search/${searchResultSuggestionsArg}`}
-                  onClick={() => this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`)}
+                  onClick={e => {
+                    e.preventDefault();
+                    this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
+                  }}
                 >
                   {` "${searchResultSuggestionsArg}" ?`}
                 </Anchor>
