@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import { isUsOnly } from '@tcp/core/src/utils';
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
@@ -24,6 +25,7 @@ export const LoyaltyBannerContainer = ({
   currencySymbol,
   pageCategory,
   openLoginModal,
+  isInternationalShipping,
 }) => {
   const {
     estimatedRewards,
@@ -32,7 +34,7 @@ export const LoyaltyBannerContainer = ({
     earnedReward,
     pointsToNextReward,
   } = orderDetails;
-  return isUsOnly() ? (
+  return !isInternationalShipping && isUsOnly() ? (
     <LoyaltyBannerView
       labels={labels}
       estimatedRewardsVal={estimatedRewards}
@@ -46,6 +48,7 @@ export const LoyaltyBannerContainer = ({
       getCurrencySymbol={currencySymbol}
       pageCategory={pageCategory}
       openLoginModal={openLoginModal}
+      isInternationalShipping={isInternationalShipping}
     />
   ) : null;
 };
@@ -59,6 +62,7 @@ LoyaltyBannerContainer.propTypes = {
   isPlcc: PropTypes.bool,
   currencySymbol: PropTypes.string,
   pageCategory: PropTypes.string,
+  isInternationalShipping: PropTypes.bool,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -67,6 +71,7 @@ LoyaltyBannerContainer.defaultProps = {
   isPlcc: false,
   currencySymbol: '',
   pageCategory: '',
+  isInternationalShipping: false,
 };
 
 export const mapDispatchToProps = dispatch => ({
@@ -83,6 +88,7 @@ export const mapStateToProps = (state, ownProps) => ({
   isGuestCheck: isGuest(state),
   isPlcc: isPlccUser(state),
   currencySymbol: getCurrencySymbol(state),
+  isInternationalShipping: getIsInternationalShipping(state),
 });
 
 export default connect(
