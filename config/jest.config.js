@@ -9,6 +9,7 @@ const ignorePsuedoCodeDir = [
   '/OutfitDetails/',
   '/OutfitListing/',
   '/ProductPickup/',
+  '/ProductAddToBag',
   '/bopisInventory/',
   '/SearchBar/',
   '/services/abstractors/productListing/',
