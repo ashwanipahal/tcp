@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormSection, reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -48,7 +48,29 @@ const ShippingForm = ({
   syncErrorsObject,
   newUserPhoneNo,
   setCheckoutStage,
+  emailSignUpLabels,
+  scrollView,
 }) => {
+  const [editMode, setEditMode] = useState(false);
+  const [editShipmentDetailsError, setEditShipmentDetailsError] = useState('');
+
+  const setEditState = state => {
+    if (!state) {
+      setEditShipmentDetailsError('');
+    }
+    setEditMode(state);
+  };
+
+  const handleShippingFormSubmit = e => {
+    if (!editMode) {
+      setEditShipmentDetailsError('');
+      return handleSubmit(submitShippingForm)(e);
+    }
+    scrollView.scrollTo({ x: 0, y: 600, animated: true });
+    setEditShipmentDetailsError(emailSignUpLabels.shippingAddressEditError);
+    return null;
+  };
+
   return (
     <>
       <ShippingFormWrapper>
@@ -71,6 +93,8 @@ const ShippingForm = ({
             defaultAddressId={defaultAddressId}
             syncErrorsObject={syncErrorsObject}
             newUserPhoneNo={newUserPhoneNo}
+            setEditState={setEditState}
+            editShipmentDetailsError={editShipmentDetailsError}
           />
         )}
         {isGuest && (
@@ -187,7 +211,7 @@ const ShippingForm = ({
         navigation={navigation}
         btnText={getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout')}
         routeToPage=""
-        onPress={handleSubmit(submitShippingForm)}
+        onPress={e => handleShippingFormSubmit(e)}
         isGuest={isGuest}
         backLinkText={
           orderHasPickUp &&
@@ -235,6 +259,8 @@ ShippingForm.propTypes = {
   syncErrorsObject: PropTypes.shape({}),
   newUserPhoneNo: PropTypes.string,
   setCheckoutStage: PropTypes.func.isRequired,
+  emailSignUpLabels: PropTypes.shape({}).isRequired,
+  scrollView: PropTypes.shape({}).isRequired,
 };
 
 ShippingForm.defaultProps = {
