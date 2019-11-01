@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { PromoAndArrowContainer, PromoContainer, ArrowIcon, ItemView } from '../MenuItems.style';
 
-const Icon = require('../../../../../../../../../core/src/assets/carrot-large-right.png');
+const Icon = require('../../../../../../../../../core/src/assets/smallright.png');
 
 /**
  * @function MenuItems populates the menu item

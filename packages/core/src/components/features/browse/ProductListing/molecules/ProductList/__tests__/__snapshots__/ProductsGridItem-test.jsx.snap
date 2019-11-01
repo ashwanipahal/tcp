@@ -58,14 +58,12 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
-            "medium": 6,
-            "small": 4,
+            "small": 12,
           }
         }
       >
         <Styled(BodyCopy)
-          className={null}
+          className="extended-sizes-text"
           color="text.primary"
           component="p"
           dataLocator="global-Extended-sizes-text"
@@ -82,15 +80,24 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           lineHeight="normal"
           link={null}
           textAlign="left"
-        >
-          <ProductPricesSection
-            currencySymbol="$"
-            hidePrefixListPrice={true}
-            listPrice={NaN}
-            merchantTag=""
-            offerPrice={NaN}
-          />
-        </Styled(BodyCopy)>
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 6,
+            "small": 4,
+          }
+        }
+      >
+        <ProductPricesSection
+          currencySymbol="$"
+          hidePrefixListPrice={true}
+          listPrice={NaN}
+          merchantTag=""
+          offerPrice={NaN}
+        />
       </Styled(Col)>
       <Styled(Col)
         colSize={

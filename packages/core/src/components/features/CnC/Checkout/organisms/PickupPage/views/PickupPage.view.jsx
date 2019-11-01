@@ -187,6 +187,7 @@ class PickUpFormPart extends React.Component {
       handleSubmit,
       showAccordian,
       ServerErrors,
+      pageCategory,
     } = this.props;
     const { isEditing, pickUpContact, dataUpdated } = this.state;
     if (!dataUpdated) {
@@ -309,7 +310,11 @@ class PickUpFormPart extends React.Component {
           </div>
           {isEditing && !isMobile && this.SaveAndCancelButton()}
         </div>
-        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
+        <CheckoutOrderInfo
+          isGuest={isGuest}
+          showAccordian={showAccordian}
+          pageCategory={pageCategory}
+        />
         <form onSubmit={handleSubmit(this.pickupSubmit)}>
           <CheckoutFooter
             hideBackLink={false}
@@ -343,6 +348,7 @@ PickUpFormPart.propTypes = {
   pickupDidMount: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
+  pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,
 };
@@ -357,6 +363,7 @@ PickUpFormPart.defaultProps = {
   isAlternateUpdateChecked: false,
   pickupError: '',
   currentPhoneNumber: '',
+  pageCategory: '',
   isVenmoPaymentInProgress: false,
   showAccordian: true,
   isVenmoPickupDisplayed: true,

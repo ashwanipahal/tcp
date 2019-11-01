@@ -61,9 +61,9 @@ export default css`
   }
 
   .edit-link {
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-top: 22px;
     @media ${props => props.theme.mediaQuery.large} {
-      padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
   }
 

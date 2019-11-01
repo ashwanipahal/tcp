@@ -244,7 +244,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 </Modal>
               ) : (
                 <SearchBar
-                  className={!isSearchOpen && 'leftLink'}
+                  className={'headerSearchBox' || (!isSearchOpen && 'leftLink')}
                   setSearchState={this.setSearchState}
                   isSearchOpen={isSearchOpen}
                   onCloseClick={this.onCloseClick}
@@ -265,7 +265,7 @@ class HeaderMiddleNav extends React.PureComponent {
                 aria-label={`${cartIconButton} ${cartItemCount} item`}
                 className=""
                 onClick={e => this.openMiniBag(e)}
-                fontSizeVariation="small"
+                fontSizeVariation="large"
                 anchorVariation="primary"
                 noLink
               >

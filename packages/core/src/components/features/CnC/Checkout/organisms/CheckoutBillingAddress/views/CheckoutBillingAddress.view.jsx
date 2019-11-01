@@ -40,7 +40,7 @@ class CheckoutAddress extends React.Component {
   openAddNewAddressMode = () => {
     const { editMode, dispatch, formName } = this.props;
     this.newAddressModeStarted = true;
-    if (!editMode) {
+    if (editMode) {
       dispatch(change(formName, `address.addressId`, ''));
       dispatch(change(formName, `onFileAddressId`, ''));
     }

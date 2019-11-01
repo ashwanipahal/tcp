@@ -23,11 +23,22 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
       <React.Fragment>
         {variation === 'checkout' && (
           <>
-            <BodyCopy fontSize="fs36" fontWeight="black" fontFamily="secondary" textAlign="center">
+            <BodyCopy
+              fontSize={['fs28', 'fs36', 'fs36']}
+              fontWeight="black"
+              fontFamily="primary"
+              textAlign="center"
+            >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
             </BodyCopy>
 
-            <BodyCopy component="span" fontSize="fs18" fontFamily="secondary" textAlign="center">
+            <BodyCopy
+              className="checkout_modal_heading_2"
+              component="span"
+              fontSize="fs18"
+              fontFamily="secondary"
+              textAlign="center"
+            >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading_1', 'login')}
             </BodyCopy>
             <BodyCopy
@@ -39,10 +50,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading_2', 'login')}
             </BodyCopy>
-            <BodyCopy
-              component="div"
-              className="bordered elem-pt-MED elem-pb-LRG checkout-border"
-            />
+            <BodyCopy component="div" className="elem-pt-SM elem-pb-SM checkout-border" />
           </>
         )}
 

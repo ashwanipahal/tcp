@@ -198,7 +198,7 @@ class Header extends React.PureComponent<Props> {
   };
 
   render() {
-    const { favStore, labels, cartVal, isUserLoggedIn, userName } = this.props;
+    const { favStore, labels, cartVal, isUserLoggedIn, userName, navigation } = this.props;
     const { isDownIcon } = this.state;
     const basicInfo = favStore && favStore.basicInfo;
     const storeTime = this.getStoreHours(favStore);
@@ -264,7 +264,8 @@ class Header extends React.PureComponent<Props> {
                 accessibilityRole="button"
                 onPress={() => {
                   // eslint-disable-next-line react/destructuring-assignment
-                  this.props.navigation.navigate('BagPage');
+                  // if labels not null then click work .
+                  if (labels) navigation.navigate('BagPage');
                 }}
               >
                 <CartIconView

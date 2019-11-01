@@ -306,16 +306,27 @@ export const siteRedirect = (newCountry, oldCountry, newSiteId, oldSiteId) => {
   }
 };
 
-export const languageRedirect = (newLanguage, oldLanguage) => {
-  if (newLanguage && newLanguage !== oldLanguage) {
-    const { protocol, host, pathname } = window.location;
-    if (newLanguage === 'fr' && host.indexOf('fr.') === -1) {
-      const href = `${protocol}//fr.${host}${pathname}`;
-      window.location = href;
-    } else if (newLanguage === 'es' && host.indexOf('es.') === -1) {
-      const href = `${protocol}//es.${host}${pathname}`;
-      window.location = href;
-    }
+export const languageRedirect = (newCountry, oldCountry, newSiteId, newLanguage, oldLanguage) => {
+  const { protocol, host } = window.location;
+  const baseDomain = host.replace(`${oldLanguage}.`, '');
+  let hostURL = '';
+  if (newLanguage !== oldLanguage && newCountry === oldCountry) {
+    hostURL = `${protocol}//${newLanguage}.`;
+  }
+
+  /*
+   As per production implementation, if the country and language both get changed at the same time, the language will not append in the URL.
+   By default, the English language will entertain.
+  */
+  if (newCountry !== oldCountry || newLanguage === 'en') {
+    hostURL = `${protocol}//`;
+  }
+
+  if (hostURL && !(newLanguage === oldLanguage && newCountry === oldCountry)) {
+    window.location = `${hostURL}${baseDomain}${getAsPathWithSlug(
+      ROUTE_PATH.home,
+      newSiteId || getSiteId()
+    )}`;
   }
 };
 
@@ -357,7 +368,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
     unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
-    previewEnvId: processEnv.RWD_WEB_STG_ENV_ID,
+    previewToken: processEnv.RWD_WEB_PREVIEW_TOKEN,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
@@ -372,6 +383,10 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
+    styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
+    styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
+    styliticsRegionTCP: processEnv.RWD_WEB_STYLITICS_REGION_TCP && countryKey.split('_')[1],
+    styliticsRegionGYM: processEnv.RWD_WEB_STYLITICS_REGION_GYM,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
