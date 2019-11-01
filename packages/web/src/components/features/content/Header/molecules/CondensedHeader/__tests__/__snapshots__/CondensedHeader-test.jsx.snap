@@ -44,7 +44,6 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         <Connect(Styled(SearchBar))
           className="rightLink search-icon"
           fromCondensedHeader={true}
-          isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
           onCloseClick={[Function]}
           setSearchState={[Function]}
