@@ -1,10 +1,10 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
-import style from '../Skeleton.style';
+import style from '../PLPSkeleton.style';
 import { Row, Col } from '../..';
 
-const Skeleton = ({ className, col, colSize }) => {
+const PLPSkeleton = ({ className, col, colSize }) => {
   return (
     <Row fullBleed className={`${className} skeleton-row`}>
       {Array.from({ length: col }).map((cItem, index) => {
@@ -22,7 +22,7 @@ const Skeleton = ({ className, col, colSize }) => {
   );
 };
 
-Skeleton.propTypes = {
+PLPSkeleton.propTypes = {
   className: PropTypes.string.isRequired,
   rowProps: PropTypes.shape({}),
   colProps: PropTypes.shape({}),
@@ -30,12 +30,12 @@ Skeleton.propTypes = {
   colSize: PropTypes.shape({}),
 };
 
-Skeleton.defaultProps = {
+PLPSkeleton.defaultProps = {
   rowProps: {},
   colProps: {},
   col: 1,
   colSize: { large: 12, medium: 8, small: 6 },
 };
 
-export default withStyles(Skeleton, style);
-export { Skeleton as SkeletonVanilla };
+export default withStyles(PLPSkeleton, style);
+export { PLPSkeleton as PLPSkeletonVanilla };

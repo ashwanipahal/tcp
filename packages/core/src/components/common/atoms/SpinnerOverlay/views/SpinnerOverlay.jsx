@@ -23,3 +23,4 @@ SpinnerOverlay.propTypes = {
 };
 
 export default withStyles(SpinnerOverlay, styles);
+export { SpinnerOverlay as SpinnerOverlayVanilla };

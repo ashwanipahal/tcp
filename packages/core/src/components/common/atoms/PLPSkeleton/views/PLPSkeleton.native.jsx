@@ -9,9 +9,9 @@ import {
   SkeletonTitle,
   SkeletonAddToBag,
   Row,
-} from '../Skeleton.native.style';
+} from '../PLPSkeleton.native.style';
 
-const SkeletonView = () => {
+const PLPSkeletonView = () => {
   return (
     <SkeletonWrapper>
       <SkeletonImage />
@@ -23,24 +23,24 @@ const SkeletonView = () => {
   );
 };
 
-const Skeleton = ({ col }) => {
+const PLPSkeleton = ({ col }) => {
   return (
     <ScrollView>
       <Row>
         {Array.from({ length: col }).map((cItem, index) => {
-          return <SkeletonView key={index.toString()} />;
+          return <PLPSkeletonView key={index.toString()} />;
         })}
       </Row>
     </ScrollView>
   );
 };
 
-Skeleton.propTypes = {
+PLPSkeleton.propTypes = {
   col: PropTypes.number,
 };
 
-Skeleton.defaultProps = {
+PLPSkeleton.defaultProps = {
   col: 1,
 };
 
-export default Skeleton;
+export default PLPSkeleton;
