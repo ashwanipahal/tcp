@@ -376,7 +376,7 @@ export default css`
     }
   }
   .heartIcon {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
   .size-and-item-container {

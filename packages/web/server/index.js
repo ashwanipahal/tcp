@@ -85,18 +85,8 @@ const setSiteDetails = (req, res) => {
   res.locals.language = getLanguageByDomain(req.hostname);
 };
 
-// TODO - To be picked from env config file when Gym build process is done....
 const setBrandId = (req, res) => {
-  const { hostname } = req;
-  let brandId = 'tcp';
-  const reqUrl = hostname.split('.');
-  for (let i = 0; i < reqUrl.length - 1; i++) {
-    if (reqUrl[i].toLowerCase() === 'gymboree') {
-      brandId = 'gym';
-      break;
-    }
-  }
-  res.locals.brandId = brandId;
+  res.locals.brandId = process.env.RWD_WEB_BRANDID;
 };
 
 setErrorReporter();
