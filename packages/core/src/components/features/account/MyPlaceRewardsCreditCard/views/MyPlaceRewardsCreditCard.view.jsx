@@ -1,30 +1,31 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue, getIconPath, getLocator } from '@tcp/core/src/utils/utils';
+import { getLabelValue, getLocator } from '@tcp/core/src/utils/utils';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
-import { Row, Col, BodyCopy, Image, Button, Anchor, RichText } from '../../../../common/atoms';
+import { Row, Col, BodyCopy, Button, Anchor } from '../../../../common/atoms';
 import styles from '../styles/MyPlaceRewardsCreditCard.style';
-import ApplyNowModalWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
 import withStyles from '../../../../common/hoc/withStyles';
+import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal/molecules/ApplyNowPLCCModal/views';
 
 export class MyPlaceRewardsCreditCard extends PureComponent {
+  openManageCreditCardLink = e => {
+    e.preventDefault();
+    const { labels } = this.props;
+    window.open(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'), '_blank');
+  };
 
   render() {
-    const { labels, className } = this.props;
+    const { labels, className, isPLCCModalOpen, openPLCCModal, closePLCCModal } = this.props;
     return (
       <div className={className}>
         <FormPageHeading
-          className="elem-mb-XL myAccountRightView"
           heading={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
           data-locator=""
         />
 
         <div className="Modal__Content__Wrapper">
           <Row fullBleed>
-            <Col
-              ignoreGutter={{ small: true }}
-              colSize={{ large: 12, medium: 8, small: 6 }}
-            >
+            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
               <Row fullBleed centered className="Benefit_Heading_Suffix">
                 <BodyCopy
                   fontFamily="primary"
@@ -41,7 +42,6 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                   fontWeight="black"
                   textAlign="center"
                   component="span"
-
                 >
                   {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderTextSuffix')}
                 </BodyCopy>
@@ -51,10 +51,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             </Col>
           </Row>
           <Row fullBleed>
-            <Col
-              ignoreGutter={{ small: true }}
-              colSize={{ large: 12, medium: 8, small: 6 }}
-            >
+            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
               <BodyCopy
                 component="div"
                 color="gray.900"
@@ -76,7 +73,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 fill="BLUE"
                 type="submit"
                 className="ApplyNow__link"
-                // onClick={openPLCCModal}
+                onClick={openPLCCModal}
                 fontWeight="semibold"
                 data-locator={getLocator('plcc_apply_btn')}
               >
@@ -89,7 +86,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 fill="WHITE"
                 type="submit"
                 className="ApplyNow__link blackFontColor"
-                // onClick={openPLCCModal}
+                onClick={this.openManageCreditCardLink}
                 fontWeight="semibold"
                 data-locator={getLocator('plcc_apply_btn')}
               >
@@ -108,10 +105,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             {getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
           </BodyCopy>
           <Row fullBleed>
-            <Col
-              ignoreGutter={{ small: true }}
-              colSize={{ large: 12, medium: 8, small: 6 }}
-            >
+            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
               <BodyCopy
                 component="div"
                 color="gray.900"
@@ -132,12 +126,8 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
           />
         </div>
 
-
         <Row fullBleed>
-          <Col
-            ignoreGutter={{ small: true }}
-            colSize={{ large: 12, medium: 8, small: 6 }}
-          >
+          <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
             <div className="table-image" />
           </Col>
         </Row>
@@ -179,7 +169,9 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           </Anchor>
         </div>
-        <ApplyNowModalWrapper />
+        {isPLCCModalOpen && (
+          <ApplyNowPLCCModal isPLCCModalOpen={isPLCCModalOpen} closePLCCModal={closePLCCModal} />
+        )}
       </div>
     );
   }
@@ -188,10 +180,14 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
 MyPlaceRewardsCreditCard.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
-}
+  isPLCCModalOpen: PropTypes.bool,
+  closePLCCModal: PropTypes.func.isRequired,
+  openPLCCModal: PropTypes.func.isRequired,
+};
 
 MyPlaceRewardsCreditCard.defaultProps = {
-  labels: {}
-}
+  labels: {},
+  isPLCCModalOpen: false,
+};
 
 export default withStyles(MyPlaceRewardsCreditCard, styles);

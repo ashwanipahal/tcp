@@ -1,25 +1,21 @@
 import { css } from 'styled-components';
 
 export const modalStyles = css`
-
   .Modal__Content__Wrapper {
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0px ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
-
   .Benefit_Heading {
-
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     border: none;
-    margin-bottom: 10px;
     display: block;
     height: auto;
     font-size: ${props => props.theme.typography.fontSizes.fs48};
     padding: 0;
-    margin-top: 47px;
+    margin-top: 40px;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       margin: 6px 0 10px;
@@ -32,7 +28,6 @@ export const modalStyles = css`
   .apply-now-subtext {
     @media ${props => props.theme.mediaQuery.smallMax} {
       font-size: ${props => props.theme.typography.fontSizes.fs18};
-
     }
   }
 
@@ -57,7 +52,7 @@ export const modalStyles = css`
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
-    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};\
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     letter-spacing: 1px;
     text-align: center;
     margin-top: 20px;
@@ -103,7 +98,6 @@ export const modalStyles = css`
       height: 600px;
       margin: 0 auto;
     }
-
   }
 
   .offer_info_icon {
@@ -122,7 +116,7 @@ export const modalStyles = css`
     margin: 23px auto 0;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
-      width: 332px
+      width: 332px;
     }
   }
 
