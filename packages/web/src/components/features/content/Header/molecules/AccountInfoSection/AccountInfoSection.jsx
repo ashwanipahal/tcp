@@ -11,6 +11,7 @@ const AccountInfoSection = ({
   openOverlay,
   userNameClick,
   onLinkClick,
+  closeDrawer,
   triggerLoginCreateAccount,
 }) => {
   return userName ? (
@@ -35,7 +36,7 @@ const AccountInfoSection = ({
           fontSize="fs10"
           textAlign="right"
         >
-          <Anchor underline to="/account?id=account-overview" asPath="/account">
+          <Anchor underline to="/account?id=account-overview" asPath="/account" onClick={() => closeDrawer()}>
             Manage account
           </Anchor>
         </BodyCopy>
@@ -67,6 +68,7 @@ AccountInfoSection.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   userNameClick: PropTypes.bool.isRequired,
   onLinkClick: PropTypes.func.isRequired,
+  closeDrawer: PropTypes.func.isRequired,
   triggerLoginCreateAccount: PropTypes.bool.isRequired,
 };
 export default AccountInfoSection;

@@ -189,6 +189,7 @@ class Drawer extends React.Component {
                   openOverlay={openOverlay}
                   userNameClick={userNameClick}
                   onLinkClick={onLinkClick}
+                  closeDrawer={close}
                   triggerLoginCreateAccount={triggerLoginCreateAccount}
                 />
               </Row>

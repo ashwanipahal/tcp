@@ -1006,6 +1006,7 @@ export const enableBodyScroll = () => {
   if (isClient()) {
     const [body] = document.getElementsByTagName('body');
     body.classList.remove('disableBodyScroll');
+    body.style['overflow-y'] = 'auto';
   }
 };
 
@@ -1016,6 +1017,7 @@ export const disableBodyScroll = () => {
   if (isClient()) {
     const [body] = document.getElementsByTagName('body');
     body.classList.add('disableBodyScroll');
+    body.style['overflow-y'] = 'hidden';
   }
 };
 
