@@ -11,7 +11,7 @@ const initialState = fromJS({
 
 const SocialReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SOCIAL_CONSTANTS.GET_SOCIAL_LOAD:
+    case SOCIAL_CONSTANTS.SHOW_LOADER:
       return state.set('isFetching', true);
     case SOCIAL_CONSTANTS.SET_SOCIAL_LOAD:
       return state

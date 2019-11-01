@@ -37,13 +37,6 @@ const getDefaultState = state => {
   return state;
 };
 
-const setAddressListFetchingState = (state, action) => {
-  if (action.type === ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST) {
-    return state.set('isFetching', true);
-  }
-  return state;
-};
-
 const AddressBookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADDRESS_BOOK_CONSTANTS.SHOW_LOADER:
@@ -88,7 +81,7 @@ const AddressBookReducer = (state = initialState, action) => {
     case ADDRESS_BOOK_CONSTANTS.CLEAR_GET_ADDRESS_LIST_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
     default:
-      return getDefaultState(setAddressListFetchingState(state, action));
+      return getDefaultState(state);
   }
 };
 

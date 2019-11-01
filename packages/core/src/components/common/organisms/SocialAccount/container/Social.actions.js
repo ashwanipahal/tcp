@@ -27,4 +27,7 @@ const showPointModalDetails = payload => {
   };
 };
 
+export const showLoader = () => ({
+  type: SOCIAL_CONSTANTS.SHOW_LOADER,
+});
 export { getSocialAccount, saveSocialAccount, setSocialAccount, showPointModalDetails };
