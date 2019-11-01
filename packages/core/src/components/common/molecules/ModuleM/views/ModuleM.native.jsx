@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getLocator } from '../../../../../utils';
 import { getScreenWidth } from '../../../../../utils/index.native';
-import { Button, DamImage } from '../../../atoms';
+import { Anchor, BodyCopy, DamImage } from '../../../atoms';
 import {
   Container,
   HeaderContainer,
@@ -12,11 +12,13 @@ import {
   ButtonTabsContainer,
   ButtonContainer,
   ImageContainer,
+  Tile,
 } from '../styles/ModuleM.style.native';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import ButtonTabs from '../../ButtonTabs';
 import config from '../moduleM.config';
+import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 const MODULE_WIDTH = getScreenWidth();
 class ModuleM extends React.PureComponent {
@@ -78,9 +80,7 @@ class ModuleM extends React.PureComponent {
       currentTabData = images.find(obj => obj.id === currentTabItem);
     }
     const { smallCompImages } = currentTabData;
-    const { IMG_DATA } = config;
     const imageDimension = this.getImageDimension();
-    console.log(imageDimension);
     return (
       <Container>
         <HeaderContainer>
@@ -118,30 +118,55 @@ class ModuleM extends React.PureComponent {
         </ButtonTabsContainer>
         {smallCompImages && smallCompImages.length > 0 ? (
           <ImageContainer>
-            {smallCompImages.map(({ image, link }, index) => (
-              <DamImage
-                key={index.toString()}
-                className="promo-img"
-                imgConfigs={IMG_DATA.productImgConfig}
-                imgData={image}
-                data-locator={`${getLocator('moduleM_product_img')}${index}`}
-                link={link}
-                width={imageDimension}
-                height={imageDimension}
-              />
-            ))}
+            {smallCompImages.map(({ image, link }, index) => {
+              const { IMG_DATA } = config;
+              const anchorEnable = true;
+              return (
+                <Tile tileIndex={index} key={index.toString()}>
+                  <Anchor url={link.url} navigation={navigation}>
+                    <DamImage
+                      alt={image.alt}
+                      testID={`${getLocator('moduleM_image')}${index}`}
+                      url={image.url}
+                      height={imageDimension}
+                      marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
+                      width={imageDimension}
+                      imgConfig={IMG_DATA.productImgConfig[0]}
+                      link={link}
+                    />
+                  </Anchor>
+                  <Anchor
+                    testID={`${getLocator('moduleM_textlink')}${index}`}
+                    fontSizeVariation="large"
+                    text={link.text}
+                    visible={anchorEnable}
+                    url={link.url}
+                    navigation={navigation}
+                    anchorVariation="primary"
+                  />
+                </Tile>
+              );
+            })}
+            {singleCTAButton ? (
+              <Anchor
+                url={singleCTAButton.url}
+                navigation={navigation}
+                testID={getLocator('moduleM_cta_btn')}
+              >
+                <ButtonContainer imageDimension={imageDimension}>
+                  <BodyCopy
+                    mobileFontFamily="primary"
+                    fontSize="fs20"
+                    fontWeight="extrabold"
+                    color="white"
+                    letterSpacing="ls1"
+                    text={singleCTAButton.text}
+                    textAlign="center"
+                  />
+                </ButtonContainer>
+              </Anchor>
+            ) : null}
           </ImageContainer>
-        ) : null}
-        {singleCTAButton ? (
-          <ButtonContainer>
-            <Button
-              width="225px"
-              text={singleCTAButton.text}
-              url={singleCTAButton.url}
-              navigation={navigation}
-              testID={getLocator('moduleM_cta_btn')}
-            />
-          </ButtonContainer>
         ) : null}
       </Container>
     );

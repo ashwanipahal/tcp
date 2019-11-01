@@ -27,10 +27,23 @@ export const ButtonTabsContainer = styled.View`
 
 export const ButtonContainer = styled.View`
   align-items: center;
+  background-color: ${props => props.theme.colorPalette.blue[500]};
+  padding: 27px 10px;
+  height: ${props => props.imageDimension}px;
+  width: ${props => props.imageDimension}px;
 `;
 
 export const ImageContainer = styled.View`
-  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 14px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
+export const Tile = styled.View`
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export default {
@@ -41,4 +54,5 @@ export default {
   ButtonTabsContainer,
   ButtonContainer,
   ImageContainer,
+  Tile,
 };
