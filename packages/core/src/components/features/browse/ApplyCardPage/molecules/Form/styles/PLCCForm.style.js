@@ -11,7 +11,7 @@ export default styled.div`
   }
 
   .columnWrapper {
-    margin-top:  ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-top:  ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 
   .field_dob {
@@ -20,8 +20,9 @@ export default styled.div`
 
   .classifiedInfo {
     margin-top: 44px;
+    font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
   }
-  
+
   .table_contact_month {
     @media ${props => props.theme.mediaQuery.medium} and ${props =>
   props.theme.mediaQuery.largeMax} {

@@ -87,14 +87,15 @@ class ModuleG extends React.PureComponent {
     const { onQuickViewOpenClick } = this.props;
     const { next = 0 } = this.state;
     const data = this.getImagesData();
-    onQuickViewOpenClick([
-      {
-        colorProductId: data.length && data[0][next].prodpartno,
-      },
-      {
-        colorProductId: data.length && data[1][next].prodpartno,
-      },
-    ]);
+    if (data && data.length === 2)
+      onQuickViewOpenClick([
+        {
+          colorProductId: data[0][next] && data[0][next].prodpartno,
+        },
+        {
+          colorProductId: data[1][next] && data[1][next].prodpartno,
+        },
+      ]);
   };
 
   /**

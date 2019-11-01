@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { importGraphQLQueriesDynamically } from '../../../../utils';
+import { importGraphQLQueriesDynamically, getAPIConfig } from '../../../../utils';
 
 /**
  * Builds query for GraphQL service
@@ -14,13 +14,38 @@ const QueryBuilder = {
     return QueryBuilder.wrapQuery(finalQuery);
   },
   /**
+   * Function to add query meta for preview without individually modifying the module queries
+   * @param {String} query Input GraphQl query
+   * @returns {String}
+   */
+  addPreviewQueryMeta: query => {
+    const apiConfig = getAPIConfig();
+    const { isPreviewEnv, previewToken, previewDate, previewDateEnv } = apiConfig;
+    const isPreview = !!(isPreviewEnv || previewToken);
+    if (isPreview) {
+      let localQuery = query;
+      let previewQueryMeta = `is_preview: "TRUE"`;
+      previewQueryMeta += previewToken ? `, preview_token: "${previewToken}"` : '';
+      previewQueryMeta +=
+        previewDate || previewDateEnv ? `, preview_date: "${previewDate || previewDateEnv}"` : '';
+      // For root components and labels
+      localQuery = localQuery.replace(/(brand\s*:\s*\S*,{1,1})/g, `$1 ${previewQueryMeta},`);
+      // For modules
+      localQuery = localQuery.replace(/(\(\s*id\s*:\s*"\S*")/g, ` $1 ,${previewQueryMeta}`);
+      // For country list
+      localQuery = localQuery.replace(/(countryList\s*\{)/g, `countryList(${previewQueryMeta}) {`);
+      return localQuery;
+    }
+    return query;
+  },
+  /**
    * Async function which dynamically loads query for a module
    * @param {String} module
    * @param {Object} data
    */
   loadModuleQuery: async (module, data) => {
     return importGraphQLQueriesDynamically(module).then(({ default: QueryModule }) => {
-      return QueryModule.getQuery(data);
+      return QueryBuilder.addPreviewQueryMeta(QueryModule.getQuery(data));
     });
   },
   /**

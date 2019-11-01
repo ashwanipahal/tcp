@@ -93,6 +93,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
               fontSize="fs12"
               fontFamily="secondary"
               textAlign="center"
+              textColor="gray.900"
             />
           </OutfitMainTileWrapper>
           <OutfitItemsWrapper>

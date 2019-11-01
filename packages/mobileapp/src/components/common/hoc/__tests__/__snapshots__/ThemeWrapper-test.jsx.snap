@@ -30,6 +30,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -471,6 +472,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",

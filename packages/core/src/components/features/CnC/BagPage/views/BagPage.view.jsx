@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import throttle from 'lodash/throttle';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
 import Heading from '../../../../common/atoms/Heading';
@@ -11,12 +10,12 @@ import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
-import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
+import { isClient } from '../../../../../utils';
 
-class BagPageView extends React.Component {
+class BagPageView extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,14 +53,16 @@ class BagPageView extends React.Component {
 
   componentDidUpdate() {
     /* istanbul ignore else */
+    const { isMobile } = this.props;
     if (!this.bagPageCondenseHeaderBind) {
       const checkoutCta = this.bagActionsContainer;
       const header = this.bagPageHeader;
-      if (checkoutCta) {
+      if (checkoutCta && !isMobile) {
         this.addScrollListener();
         this.bagPageCondenseHeaderBind = true;
-      } else if (header) {
+      } else if (header && isMobile) {
         this.addScrollListenerMobileHeader();
+        this.bagPageCondenseHeaderBind = true;
       }
     }
   }
@@ -88,22 +89,18 @@ class BagPageView extends React.Component {
 
   addScrollListener = () => {
     const checkoutCtaStickyPos = BagPageUtils.getElementStickyPosition(this.bagActionsContainer);
-    BagPageUtils.bindScrollEvent(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos));
+    this.scrollEventLister = this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos);
+    BagPageUtils.bindScrollEvent(this.scrollEventLister);
   };
 
   addScrollListenerMobileHeader = () => {
     const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
-    BagPageUtils.bindScrollEvent(this.handleScroll.bind(this, stickyPos));
+    this.scrollEventLister = this.handleScroll.bind(this, stickyPos);
+    BagPageUtils.bindScrollEvent(this.scrollEventLister);
   };
 
   removeScrollListener = () => {
-    const stickyPos = BagPageUtils.getElementStickyPosition(this.bagPageHeader);
-    const checkoutCtaStickyPos = BagPageUtils.getElementStickyPosition(this.bagActionsContainer);
-    window.removeEventListener('scroll', throttle(this.handleScroll.bind(this, stickyPos), 100));
-    window.removeEventListener(
-      'scroll',
-      throttle(this.handleBagHeaderScroll.bind(this, checkoutCtaStickyPos), 100)
-    );
+    window.removeEventListener('scroll', this.scrollEventLister);
   };
 
   handleScroll = sticky => {
@@ -430,6 +427,7 @@ BagPageView.propTypes = {
   orderItemsCount: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isGuest: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,

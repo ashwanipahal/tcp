@@ -121,6 +121,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
     text="FIND A STORE"
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </Styled(View)>
 `;

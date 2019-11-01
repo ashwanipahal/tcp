@@ -45,6 +45,14 @@ const HeadingLabel = styled.Text`
       font-size: ${props.theme.typography.fontSizes.fs16};
       `
       : ''}
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isAddedToBagPage
+      ? `color: ${plccMpr(props)}
+      font-size: ${props.theme.typography.fontSizes.fs16};
+      `
+      : ''}
 `;
 
 const SubHeadingLabel = styled.Text`
@@ -57,6 +65,14 @@ const SubHeadingLabel = styled.Text`
       ? `color: ${props.theme.colorPalette.gray[900]};
           font-size: ${props.theme.typography.fontSizes.fs12};
           `
+      : ''}
+  ${props =>
+    props.pageChecksObj &&
+    props.pageChecksObj.pageCategoryArr &&
+    props.pageChecksObj.pageCategoryArr.isAddedToBagPage
+      ? `color: ${props.theme.colorPalette.gray[900]};
+        font-size: ${props.theme.typography.fontSizes.fs12};
+      `
       : ''}
 `;
 
@@ -119,6 +135,10 @@ const SectionSymbol = styled.Text`
   color: ${props => plccMpr(props)};
 `;
 
+const MyPlaceRewards = styled.Text`
+  color: ${props => plccMpr(props)};
+`;
+
 export {
   Styles,
   SubTotalLine,
@@ -136,4 +156,5 @@ export {
   EstimatedSubTotalValue,
   PointsToNextReward,
   SectionSymbol,
+  MyPlaceRewards,
 };

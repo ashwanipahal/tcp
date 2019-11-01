@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components/native';
+import { DamImage } from '../../../../../../common/atoms';
 
 const getImageStyle = props => {
   const { selected } = props;
-  const size = 15;
+  const size = 13.5;
   const radius = 7.5;
   const width = selected ? size + 1 : size;
   const height = selected ? size + 1 : size;
@@ -20,7 +21,7 @@ const getImageBorderStyle = props => {
   const { theme, selected } = props;
   const { colorPalette } = theme;
   const borderColor = selected ? colorPalette.gray[900] : colorPalette.gray[600];
-  const size = 16;
+  const size = 14;
   const radius = 8;
   const width = selected ? size + 1 : size;
   const height = selected ? size + 1 : size;
@@ -50,7 +51,7 @@ const ItemSeparatorStyle = styled.View`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const ImageStyle = styled.Image`
+const ImageStyle = styled(DamImage)`
   ${getImageStyle}
 `;
 const styles = css``;

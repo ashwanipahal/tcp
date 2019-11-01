@@ -34,6 +34,13 @@ export default css`
     &:nth-child(n + 5) {
       margin-right: 0;
     }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
     @media ${props => props.theme.mediaQuery.large} {
       width: 38px;
       height: 38px;

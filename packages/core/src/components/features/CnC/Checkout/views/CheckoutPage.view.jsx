@@ -174,6 +174,8 @@ class CheckoutPage extends React.PureComponent {
       pickUpContactPerson,
       pickUpContactAlternate,
       checkoutServerError,
+      clearCheckoutServerError,
+      toggleCountrySelector,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -208,11 +210,13 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPickupDisplayed={this.isVenmoPickupDisplayed()}
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
+            toggleCountrySelector={toggleCountrySelector}
             initShippingPage={initShippingPage}
             isGuest={isGuest}
             isUsSite={isUsSite}
@@ -234,6 +238,8 @@ class CheckoutPage extends React.PureComponent {
             isVenmoShippingDisplayed={this.isVenmoShippingDisplayed()}
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
+            clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -245,6 +251,8 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
+            clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -275,10 +283,15 @@ class CheckoutPage extends React.PureComponent {
                 emailAddress: pickUpAlternatePerson.emailAddress,
               },
             }}
+            clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
-          <Confirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
+          <Confirmation
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            pageCategory={currentSection.toLowerCase()}
+          />
         )}
       </div>
     );
@@ -377,6 +390,7 @@ CheckoutPage.propTypes = {
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
   verifyAddressAction: PropTypes.func.isRequired,
+  toggleCountrySelector: PropTypes.func.isRequired,
   submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
@@ -399,6 +413,7 @@ CheckoutPage.propTypes = {
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
   pickUpContactPerson: PropTypes.shape({}).isRequired,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  clearCheckoutServerError: PropTypes.func.isRequired,
 };
 
 CheckoutPage.defaultProps = {

@@ -45,6 +45,7 @@ exports[`CardEditForm component CardEditFormViewVanilla with error 1`] = `
           text="Save"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(ScrollViewMock)>
       <Styled(View)>
@@ -71,6 +72,7 @@ exports[`CardEditForm component CardEditFormViewVanilla with error 1`] = `
           theme={Object {}}
           type="button"
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
     </View>
@@ -97,6 +99,7 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
       "expMonth": "2",
       "expYear": undefined,
       "isDefault": undefined,
+      "sameAsShipping": false,
     }
   }
   keepDirtyOnReinitialize={true}
@@ -175,6 +178,7 @@ exports[`CardEditForm component should renders componentDidUpdate  correctly 1`]
           text="Save"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(ScrollViewMock)>
       <Styled(View)>
@@ -201,6 +205,7 @@ exports[`CardEditForm component should renders componentDidUpdate  correctly 1`]
           theme={Object {}}
           type="button"
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
     </View>

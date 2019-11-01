@@ -255,11 +255,11 @@
     },
     {
       "name": "RWD_APP_ASSETHOST_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test6.childrensplace.com"
     },
     {
       "name": "RWD_APP_ASSETHOST_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test6.gymboree.com"
     },
     {
       "name": "RWD_APP_TWITTER_CONSUMER_KEY_TCP",

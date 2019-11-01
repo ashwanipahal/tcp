@@ -14,6 +14,12 @@ const styles = css`
   .checkout-border {
     width: 40%;
     margin: 0 auto;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.blue[1000]};
+  }
+  .checkout_modal_heading_2 {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: block;
+    }
   }
 `;
 

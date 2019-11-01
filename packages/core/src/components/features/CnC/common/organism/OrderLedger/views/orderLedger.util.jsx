@@ -5,11 +5,12 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
-import { getLocator, isCanada } from '@tcp/core/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoyaltyBanner from '../../../../LoyaltyBanner';
+import FreeShippingBanner from '../../../../FreeShippingBanner';
 
 const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTotal, labels) => {
   return (
@@ -24,7 +25,7 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
             color="primary"
             fontFamily="secondary"
             fontWeight="semibold"
-            fontSize="fs13"
+            fontSize="fs16"
           >
             {`${labels.giftServiceLabel}:`}
           </BodyCopy>
@@ -35,7 +36,7 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
             color="primary"
             fontFamily="secondary"
             fontWeight="semibold"
-            fontSize="fs13"
+            fontSize="fs16"
             textAlign="right"
           >
             {`${currencySymbol}${giftServiceTotal.toFixed(2)}`}
@@ -47,12 +48,10 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
 };
 
 const renderLoyaltyBanner = pageCategory => {
-  return (
-    !isCanada() && pageCategory !== 'confirmation' && <LoyaltyBanner pageCategory={pageCategory} />
-  );
+  return <LoyaltyBanner pageCategory={pageCategory} />;
 };
 
-const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
+const getBody = (className, ledgerSummaryData, labels, pageCategory, orderLedgerAfterView) => {
   const {
     itemsCount,
     currencySymbol,
@@ -68,7 +67,6 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
     totalOrderSavings,
     isOrderHasShipping,
   } = ledgerSummaryData;
-
   const toolTipMinWidth = '205px';
   return (
     <React.Fragment>
@@ -172,7 +170,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
               >
                 {`${labels.shippingLabel}:`}
               </BodyCopy>
@@ -183,7 +181,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
                 textAlign="right"
               >
                 {/* eslint-disable-next-line no-nested-ternary */}
@@ -208,7 +206,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs13"
+              fontSize="fs16"
             >
               {`${labels.taxLabel}:`}
             </BodyCopy>
@@ -219,7 +217,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs13"
+              fontSize="fs16"
               textAlign="right"
             >
               {`${currencySymbol}${taxesTotal.toFixed(2)}`}
@@ -290,7 +288,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
           className="balance-total rowMargin"
           data-locator={getLocator('order_ledger_balance_total_label')}
         >
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <Col colSize={{ large: 6, medium: 5, small: 3 }}>
             <BodyCopy
               bodySize="one"
               tag="span"
@@ -302,7 +300,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
               {giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+          <Col colSize={{ large: 6, medium: 3, small: 3 }}>
             <BodyCopy
               bodySize="one"
               tag="span"
@@ -321,13 +319,13 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             className="total-order-savings rowMargin"
             data-locator={getLocator('order_ledger_total_order_savings_label')}
           >
-            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+            <Col colSize={{ large: 6, medium: 5, small: 3 }}>
               <BodyCopy
                 bodySize="one"
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
               >
                 {`${labels.totalSavingsLabel}`}
                 <ReactToolTip
@@ -340,13 +338,13 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
                 </ReactToolTip>
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+            <Col colSize={{ large: 6, medium: 3, small: 3 }}>
               <BodyCopy
                 bodySize="one"
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs13"
+                fontSize="fs16"
                 textAlign="right"
               >
                 {`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
@@ -354,6 +352,8 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             </Col>
           </Row>
         ) : null}
+        {orderLedgerAfterView}
+        {pageCategory === 'bagPage' && <FreeShippingBanner />}
         {renderLoyaltyBanner(pageCategory)}
       </Grid>
       <RenderPerf.Measure name={PRICING_VISIBLE} />

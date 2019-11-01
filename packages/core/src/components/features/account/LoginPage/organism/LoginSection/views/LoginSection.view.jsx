@@ -93,7 +93,7 @@ class LoginSection extends React.PureComponent<Props> {
               <LoginTopSection
                 variation={variation}
                 labels={labels}
-                className="elem-mb-LRG"
+                className="elem-mb-LRG logintop-alignment"
                 isCanada={this.isCanada}
                 showForgotPasswordForm={this.showForgotPasswordForm}
               />
@@ -123,7 +123,7 @@ class LoginSection extends React.PureComponent<Props> {
           {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (
             <ResetPassword
               backToLoginAction={this.showLoginForm}
-              labels={getLabelValue(labels, 'password')}
+              labels={labels.password}
               queryParams={queryParams}
             />
           )}
