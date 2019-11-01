@@ -163,7 +163,7 @@ const ROUTES_LIST = [
   {
     noSlugPath: 'changepassword',
     path: '/changepassword',
-    resolver: '/changepassword',
+    resolver: '/ChangePassword',
   },
   {
     noSlugPath: 'track-order',
