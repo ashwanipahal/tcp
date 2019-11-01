@@ -64,8 +64,11 @@ export class BagPage extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { cartItemSflError, bagPageServerError } = this.props;
-    const { bagPageServerError: prevBagPageServerError } = prevProps;
-    if (cartItemSflError) {
+    const {
+      bagPageServerError: prevBagPageServerError,
+      cartItemSflError: prevCartItemSflError,
+    } = prevProps;
+    if (cartItemSflError && cartItemSflError !== prevCartItemSflError) {
       this.showToastMessage(cartItemSflError);
     } else if (bagPageServerError && bagPageServerError !== prevBagPageServerError) {
       this.showToastMessage(bagPageServerError.errorMessage);
