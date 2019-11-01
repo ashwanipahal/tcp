@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormSection, reduxForm, Field, change, resetSection } from 'redux-form';
+import { toggleCountrySelectorModal } from '@tcp/web/src/components/features/content/Header/molecules/CountrySelector/container/CountrySelector.actions';
 import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import { Row, Col } from '../../../../../../../../common/atoms';
 
@@ -230,9 +231,9 @@ class ShippingForm extends React.Component {
    * function to open country selector popup on shipping page
    */
   handleShipIntClick = e => {
-    const { toggleCountrySelector } = this.props;
+    const { dispatch } = this.props;
     e.preventDefault();
-    toggleCountrySelector({ isModalOpen: true });
+    dispatch(toggleCountrySelectorModal({ isModalOpen: true }));
   };
 
   render() {
