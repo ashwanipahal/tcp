@@ -10,8 +10,14 @@ import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
-import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
-import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
+import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
+import {
+  getIconPath,
+  getLocator,
+  isCanada,
+  getAPIConfig,
+  getBrand,
+} from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -33,6 +39,7 @@ import {
   isCurrencyExchangeAvailable,
 } from './CartItemTile.utils';
 import { currencyConversion } from '../../../utils/utils';
+import { getProductListToPath } from '../../../../../browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class CartItemTile extends React.Component {
   constructor(props) {
@@ -863,6 +870,14 @@ class CartItemTile extends React.Component {
     return itemBrand && itemBrand.toLowerCase();
   };
 
+  getPdpToPath = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+    return isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : `${crossDomain}${pdpUrl}`;
+  };
+
+  getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+    return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -871,6 +886,7 @@ class CartItemTile extends React.Component {
       productDetail: {
         miscInfo: { store, orderItemType, availability },
         itemInfo: { itemBrand },
+        productInfo: { pdpUrl },
       },
       labels,
       editableProductInfo,
@@ -888,6 +904,10 @@ class CartItemTile extends React.Component {
     const isBOPISOrder = isBopisOrder(orderItemType);
     const isBOSSOrder = isBossOrder(orderItemType);
     const isEcomSoldout = isSoldOut(availability);
+    const apiConfigObj = getAPIConfig();
+    const { crossDomain } = apiConfigObj;
+    const currentSiteBrand = getBrand();
+    const isProductBrandOfSameDomain = currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
 
     const { noBopisMessage, noBossMessage } = noBossBopisMessage(this.props);
     const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
@@ -905,6 +925,8 @@ class CartItemTile extends React.Component {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
+    const pdpToPath = this.getPdpToPath(isProductBrandOfSameDomain, pdpUrl, crossDomain);
+    const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
     const isBagPage = pageView === 'myBag';
     return (
@@ -942,14 +964,21 @@ class CartItemTile extends React.Component {
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
               /> */}
-              <DamImage
-                imgData={{
-                  alt: labels.productImageAlt,
-                  url: productDetail.itemInfo.imagePath,
-                }}
-                itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
-                isProductImage
-              />
+              <Anchor
+                to={pdpToPath}
+                asPath={pdpAsPathUrl}
+                noLink={!isProductBrandOfSameDomain}
+                IsSlugPathAdded
+              >
+                <DamImage
+                  imgData={{
+                    alt: labels.productImageAlt,
+                    url: productDetail.itemInfo.imagePath,
+                  }}
+                  itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
+                  isProductImage
+                />
+              </Anchor>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
                 <BodyCopy
                   className="soldOutLabel"
@@ -987,15 +1016,22 @@ class CartItemTile extends React.Component {
               this.getBadgeDetails(productDetail)}
             <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="h2"
-                  fontSize="fs14"
-                  fontWeight={['extrabold']}
-                  dataLocator={getLocator('cart_item_title')}
+                <Anchor
+                  to={pdpToPath}
+                  asPath={pdpAsPathUrl}
+                  noLink={!isProductBrandOfSameDomain}
+                  IsSlugPathAdded
                 >
-                  {productDetail.itemInfo.name}
-                </BodyCopy>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    component="h2"
+                    fontSize="fs14"
+                    fontWeight={['extrabold']}
+                    dataLocator={getLocator('cart_item_title')}
+                  >
+                    {productDetail.itemInfo.name}
+                  </BodyCopy>
+                </Anchor>
               </Col>
             </Row>
             {showOnReviewPage && this.getProductItemUpcNumber(productDetail, isBagPage)}
