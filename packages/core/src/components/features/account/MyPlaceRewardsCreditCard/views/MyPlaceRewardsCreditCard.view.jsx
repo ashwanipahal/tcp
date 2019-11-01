@@ -25,15 +25,28 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
               ignoreGutter={{ small: true }}
               colSize={{ large: 12, medium: 8, small: 6 }}
             >
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs48"
-                fontWeight="black"
-                textAlign="center"
-                className="elem-mt-XL"
-              >
-                {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
-              </BodyCopy>
+              <Row fullBleed centered className="Benefit_Heading_Suffix">
+                <BodyCopy
+                  fontFamily="primary"
+                  fontSize="fs48"
+                  fontWeight="black"
+                  textAlign="center"
+                  className="Benefit_Heading"
+                >
+                  {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+                </BodyCopy>
+                <BodyCopy
+                  fontFamily="primary"
+                  fontSize="fs12"
+                  fontWeight="black"
+                  textAlign="center"
+                  component="span"
+
+                >
+                  {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderTextSuffix')}
+                </BodyCopy>
+              </Row>
+
               <div className="header-image" />
             </Col>
           </Row>
@@ -48,6 +61,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 fontFamily="secondary"
                 fontSize="fs22"
                 textAlign="center"
+                className="apply-now-subtext"
                 data-locator={getLocator('ship_to_text_2')}
               >
                 {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
@@ -74,7 +88,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 buttonVariation="fixed-width"
                 fill="WHITE"
                 type="submit"
-                className="ApplyNow__link"
+                className="ApplyNow__link blackFontColor"
                 // onClick={openPLCCModal}
                 fontWeight="semibold"
                 data-locator={getLocator('plcc_apply_btn')}
@@ -89,7 +103,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             fontWeight="black"
             textAlign="center"
             color="text.secondary"
-            className="elem-mt-XL"
+            className="benefits-text elem-mt-XL"
           >
             {getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
           </BodyCopy>
@@ -105,17 +119,65 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 fontSize="fs22"
                 textAlign="center"
                 data-locator={getLocator('ship_to_text_2')}
-                className="elem-mt-XS elem-mb-LRG"
+                className="withMyPlaceRewardText"
               >
                 {getLabelValue(labels, 'lbl_PLCCForm_withMyPlaceRewardsCard')}
               </BodyCopy>
             </Col>
           </Row>
           <div
-            className="offer_info_icon"
+            className="offer_info_icon elem-mt-LRG"
             data-locator="plcc_modal_logo"
             offerType={getLabelValue(labels, 'lbl_PLCCModal_oneEqualsTwoPoints')}
           />
+        </div>
+
+
+        <Row fullBleed>
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ large: 12, medium: 8, small: 6 }}
+          >
+            <div className="table-image" />
+          </Col>
+        </Row>
+
+        <div className="footerLinks">
+          <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
+            {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
+          </BodyCopy>
+          <Anchor
+            className="linkIconSeperator"
+            url={getLabelValue(labels, 'lbl_PLCCModal_detailsLink')}
+            target="_blank"
+            fontSizeVariation="large"
+            anchorVariation="primary"
+            underline
+          >
+            {getLabelValue(labels, 'lbl_PLCCForm_details')}
+          </Anchor>
+          <Anchor
+            className="footerLink"
+            url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
+            target="_blank"
+            data-locator="plcc_faq"
+            fontSizeVariation="large"
+            anchorVariation="primary"
+            underline
+          >
+            {getLabelValue(labels, 'lbl_PLCCModal_faqText')}
+          </Anchor>
+          <Anchor
+            className="footerLink"
+            url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
+            target="_blank"
+            data-locator="plcc_rewards_terms"
+            fontSizeVariation="large"
+            anchorVariation="primary"
+            underline
+          >
+            {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
+          </Anchor>
         </div>
         <ApplyNowModalWrapper />
       </div>

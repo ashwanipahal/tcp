@@ -1,27 +1,6 @@
 import { css } from 'styled-components';
 
 export const modalStyles = css`
-  .close-modal {
-    margin-right: 5px;
-  }
-
-  div.TCPModal__InnerContent.innerContent {
-    padding: 21px;
-  }
-
-  .TCPModal__InnerContent {
-    text-align: center;
-    > h2 {
-      ::after {
-        content: '§';
-        display: inline-block;
-        height: 10px;
-        width: 10px;
-        vertical-align: top;
-        font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
-      }
-    }
-  }
 
   .Modal__Content__Wrapper {
     @media ${props => props.theme.mediaQuery.medium} {
@@ -29,34 +8,48 @@ export const modalStyles = css`
     }
   }
 
-  .Modal_Heading {
+
+  .Benefit_Heading {
+
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     border: none;
     margin-bottom: 10px;
     display: block;
     height: auto;
-    font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
     padding: 0;
     margin-top: 47px;
 
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.smallMax} {
       margin: 6px 0 10px;
       margin-bottom: 6px;
       margin-top: 22px;
+      font-size: ${props => props.theme.typography.fontSizes.fs36};
     }
   }
 
-  .learn_more_link {
-    padding: 14px 0px 28px 0px;
+  .apply-now-subtext {
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+
+    }
   }
 
-  .learn_more_link_wrapper {
-    justify-content: space-around;
+  .benefits-text {
+    margin-top: 40px;
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+      margin-top: 35px;
+    }
+  }
+
+  .Benefit_Heading_Suffix {
+    align-items: center;
   }
 
   .ApplyNow__link__Wrapper {
-    margin-top: 44px;
+    margin-top: 24px;
     text-align: center;
   }
 
@@ -64,12 +57,21 @@ export const modalStyles = css`
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
-    font-weight: ${props => props.theme.fonts.fontWeight.normal};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};\
     letter-spacing: 1px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
     width: 349px;
     height: 51px;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 332px;
+      height: 42px;
+    }
+  }
+
+  .blackFontColor {
+    color: #000000;
   }
 
   .header-image {
@@ -82,6 +84,26 @@ export const modalStyles = css`
     height: 166px;
     object-fit: contain;
     margin: 20px auto;
+  }
+
+  .table-image {
+    display: flex;
+    justify-content: center;
+    background: transparent url('/static/images/BenefitImageH.png') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    width: 920px;
+    height: 370px;
+    object-fit: contain;
+    margin: 20px auto;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      background: transparent url('/static/images/BenefitImageV.png') no-repeat 0 0;
+      width: 331px;
+      height: 600px;
+      margin: 0 auto;
+    }
+
   }
 
   .offer_info_icon {
@@ -97,36 +119,27 @@ export const modalStyles = css`
     width: 400px;
     height: 69px;
     object-fit: contain;
-    margin: auto;
+    margin: 23px auto 0;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 332px
+    }
+  }
+
+  .withMyPlaceRewardText {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
+    }
   }
 
   .linkIconSeperator {
     margin-left: 10px;
   }
 
-  .rewards__benefits {
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-left: 6px;
-    }
-    > li {
-      font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
-      width: 355px;
-      text-align: left;
-      ::before {
-        content: url('/static/images/confirmation_check.svg');
-        display: inline-block;
-        height: 10px;
-        width: 10px;
-        margin-right: 15px;
-        padding-top: 9px;
-        vertical-align: -25%;
-      }
-    }
-  }
-
   .footerLinks {
     display: flex;
-    margin-top: 38px;
     justify-content: center;
     padding-bottom: 33px;
   }
