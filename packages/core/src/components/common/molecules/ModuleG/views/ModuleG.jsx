@@ -53,22 +53,36 @@ class ModuleG extends React.PureComponent {
     const { onQuickViewOpenClick } = this.props;
     const { next } = this.state;
     const data = this.getImagesData();
-    onQuickViewOpenClick({
-      colorProductId: data.length && data[0][next].prodpartno,
-    });
+    onQuickViewOpenClick([
+      {
+        colorProductId: data.length && data[0][next].prodpartno,
+      },
+      {
+        colorProductId: data.length && data[1][next].prodpartno,
+      },
+    ]);
   };
 
   getCurrentCtaButton = () => {
     const { currentCatId, next } = this.state;
-    const { divTabs } = this.props;
+    const { divTabs, productTabList } = this.props;
     let currentSingleCTAButton = {};
     divTabs.forEach(tab => {
       if (JSON.stringify(tab.category.cat_id) === JSON.stringify(currentCatId)) {
         currentSingleCTAButton = tab.singleCTAButtonCart;
       }
     });
+    let productExists = false;
+    if (currentCatId.length) {
+      currentCatId.forEach(id => {
+        productExists =
+          Object.keys(productTabList).length > 2 &&
+          productTabList[id] &&
+          productTabList[id].length > 0;
+      });
+    }
     const data = this.getImagesData();
-    return Object.keys(currentSingleCTAButton).length ? (
+    return productExists && Object.keys(currentSingleCTAButton).length ? (
       <>
         <Row centered>
           <Col
@@ -98,10 +112,16 @@ class ModuleG extends React.PureComponent {
           >
             <Anchor
               noLink
-              to={`${currentSingleCTAButton.url}${data.length && data[0][next].pdpAsPath}`}
+              to={`${currentSingleCTAButton.url}${data &&
+                data.length &&
+                data[0][next] &&
+                data[0][next].pdpAsPath}`}
               target={currentSingleCTAButton.target}
               title={currentSingleCTAButton.title}
-              asPath={`${currentSingleCTAButton.url}${data.length && data[0][next].pdpAsPath}`}
+              asPath={`${currentSingleCTAButton.url}${data &&
+                data.length &&
+                data[0][next] &&
+                data[0][next].pdpAsPath}`}
               dataLocator={getLocator('moduleJ_cta_btn')}
             >
               <span className="shopall_footerlink">{currentSingleCTAButton.text}</span>
