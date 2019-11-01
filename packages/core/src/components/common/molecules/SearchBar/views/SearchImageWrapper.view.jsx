@@ -114,6 +114,7 @@ class SearchImageWrapper extends React.PureComponent {
               commonCloseClick={commonCloseClick}
               toggleSearchResults={toggleSearchResults}
               closeSearchLayover={closeSearchLayover}
+              isSearchOpen={isSearchOpen}
             />
           )}
         </div>
