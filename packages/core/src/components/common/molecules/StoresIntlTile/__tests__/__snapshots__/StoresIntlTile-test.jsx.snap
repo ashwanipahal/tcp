@@ -471,6 +471,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -1160,6 +1161,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",

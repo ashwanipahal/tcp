@@ -373,7 +373,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
               lineHeight="normal"
               link={null}
               textAlign="left"
-            />
+            >
+               ERROR: 
+            </Styled(BodyCopy)>
           </Styled(BodyCopy)>
         </div>
         <div
