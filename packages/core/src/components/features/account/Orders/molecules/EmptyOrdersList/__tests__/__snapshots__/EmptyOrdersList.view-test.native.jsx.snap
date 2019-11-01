@@ -38,6 +38,7 @@ exports[`EmptyOrdersList component should renders correctly 1`] = `
       text="lbl_orders_shopNow"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Fragment>

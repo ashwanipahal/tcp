@@ -24,3 +24,7 @@ export const DiscountedPriceContainer = styled.View`
 export const FavoriteView = styled.View`
   width: 25px;
 `;
+
+export const OutfitProductWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;

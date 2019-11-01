@@ -40,7 +40,10 @@ const { RECOMMENDATION } = constant;
 class Recommendations extends Component {
   componentDidMount() {
     const { loadRecommendations } = this.props;
-    window.addEventListener('load', loadRecommendations);
+    if (window.adobe && window.adobe.target) {
+      return loadRecommendations();
+    }
+    return window.addEventListener('load', loadRecommendations);
   }
 
   componentWillUnmount() {

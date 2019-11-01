@@ -37,10 +37,6 @@ class SearchBar extends React.PureComponent {
 
   openFullSizeSearchModel = () => {
     this.commonCloseClick();
-    const elementExists = document.getElementById('search-input');
-    if (elementExists) {
-      document.getElementById('search-input').focus();
-    }
   };
 
   openSearchBar = e => {
@@ -63,6 +59,12 @@ class SearchBar extends React.PureComponent {
 
   closeSearchBar = e => {
     e.preventDefault();
+    const { setSearchState, toggleSearchResults } = this.props;
+    setSearchState(false);
+    toggleSearchResults(false);
+  };
+
+  closeSearchLayover = () => {
     const { setSearchState, toggleSearchResults } = this.props;
     setSearchState(false);
     toggleSearchResults(false);
@@ -129,15 +131,22 @@ class SearchBar extends React.PureComponent {
     if (searchText) {
       this.setDataInLocalStorage(searchText);
     }
-
+    if (window.innerWidth <= breakpoints.values.lg) {
+      this.commonCloseClick();
+    } else {
+      this.closeSearchLayover();
+    }
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
   hideOverlayAfterClick = searchText => {
     this.setDataInLocalStorage(searchText);
+    if (window.innerWidth <= breakpoints.values.lg) {
+      this.commonCloseClick();
+    } else {
+      this.closeSearchLayover();
+    }
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-    const { toggleSearchResults } = this.props;
-    toggleSearchResults(false);
   };
 
   render() {
@@ -150,6 +159,7 @@ class SearchBar extends React.PureComponent {
       labels,
       setSearchState,
       startSearch,
+      toggleSearchResults,
     } = this.props;
 
     const getRecentStore = getRecentStoreFromLocalStorage();
@@ -186,6 +196,8 @@ class SearchBar extends React.PureComponent {
             startSearch={startSearch}
             isSearchOpen={isSearchOpen}
             commonCloseClick={this.commonCloseClick}
+            toggleSearchResults={toggleSearchResults}
+            closeSearchLayover={this.closeSearchLayover}
           />
         </BodyCopy>
       </React.Fragment>

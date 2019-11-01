@@ -26,6 +26,7 @@ exports[`FilterButtons component should renders FilterButtons correctly 1`] = `
     type="button"
     url=""
     width="48%"
+    withNoLineHeight={false}
   />
   <Styled(CustomButton)
     active={false}
@@ -51,6 +52,7 @@ exports[`FilterButtons component should renders FilterButtons correctly 1`] = `
     type="button"
     url=""
     width="48%"
+    withNoLineHeight={false}
   />
 </Styled(View)>
 `;

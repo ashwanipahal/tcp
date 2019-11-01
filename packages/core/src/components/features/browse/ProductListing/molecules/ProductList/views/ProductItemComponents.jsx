@@ -165,17 +165,6 @@ export function PromotionalMessage(props) {
         className="loyalty-text-container"
       >
         {text && getFormattedLoyaltyText(text)[0]}
-        {text && (
-          <BodyCopy
-            fontSize={['fs9', 'fs12', 'fs14']}
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            component="span"
-            color="gray.900"
-          >
-            {` on${getFormattedLoyaltyText(text)[1]}`}
-          </BodyCopy>
-        )}
       </BodyCopy>
     </Dotdotdot>
   );

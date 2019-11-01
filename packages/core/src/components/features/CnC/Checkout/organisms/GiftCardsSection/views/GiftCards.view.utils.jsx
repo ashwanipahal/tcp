@@ -82,10 +82,38 @@ const renderAppliedGiftCardsProps = {
   },
 };
 
+/**
+ * @function GiftCardSectionHeading
+ * @description returns heading of gift cards
+ *
+ */
+const GiftCardSectionHeading = (
+  giftCardList,
+  labels,
+  isFromReview,
+  isExpressCheckout,
+  getHeading,
+  isGiftCardApplied = false
+) => {
+  let heading;
+  if (isFromReview) {
+    if (isGiftCardApplied) {
+      heading = getHeading(labels, isGiftCardApplied);
+    }
+    if (isExpressCheckout && !isGiftCardApplied && giftCardList && giftCardList.size > 0) {
+      heading = getHeading(labels, isGiftCardApplied);
+    }
+  } else if (giftCardList && giftCardList.size > 0) {
+    heading = getHeading(labels, isGiftCardApplied);
+  }
+  return heading;
+};
+
 export {
   propTypes,
   defaultProps,
   renderAddGiftCardProps,
   renderGiftCardTileProps,
   renderAppliedGiftCardsProps,
+  GiftCardSectionHeading,
 };

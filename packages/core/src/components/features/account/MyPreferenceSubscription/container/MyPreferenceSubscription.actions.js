@@ -1,8 +1,9 @@
 import MY_PREFERENCE_CONSTANTS from '../MyPreferenceSubscription.constants';
 
-export const getSubscribeStore = () => {
+export const getSubscribeStore = payload => {
   return {
     type: MY_PREFERENCE_CONSTANTS.GET_SUBSCRIBE_STORE,
+    payload,
   };
 };
 
