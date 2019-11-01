@@ -530,7 +530,7 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
 
 export const getSiteId = () => {
   const paths = window.location.pathname.split('/', 2);
-  return paths[1];
+  return paths[1] || '';
 };
 // eslint-disable-next-line
 export const parseStoreHours = hoursOfOperation => {

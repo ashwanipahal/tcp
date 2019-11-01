@@ -109,7 +109,7 @@ const createBootstrapParams = hostname => {
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
-    lang: `${getCurrentLanguage(hostname)}_${getSiteId().toUpperCase()}`,
+    lang: getSiteId() ? `${getCurrentLanguage(hostname)}_${getSiteId().toUpperCase()}` : '',
   };
 };
 
