@@ -127,7 +127,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           {checkoutServerError && (
             <ErrorMessage
               error={checkoutServerError.errorMessage}
-              className="checkout-page-error"
+              className="addBagActions-error"
             />
           )}
         </Row>

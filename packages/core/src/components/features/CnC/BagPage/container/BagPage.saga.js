@@ -53,7 +53,7 @@ import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
-import { setServerErrorCheckout } from '../../Checkout/container/Checkout.action.util';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
 
 const { getOrderPointsRecalcFlag } = utility;
 
@@ -297,9 +297,7 @@ export function* startCartCheckout({
       }
     }
   } catch (e) {
-    const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
-    const billingError = getServerErrorMessage(e, errorsMapping);
-    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'CHECKOUT' }));
+    yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
 
@@ -320,13 +318,17 @@ export function* startPaypalCheckout({ payload }) {
 }
 
 export function* authorizePayPalPayment() {
-  const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
-    checkoutSelectors.getPaypalPaymentSettings
-  );
-  const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
-  const res = yield call(paypalAuthorizationAPI, ...params);
-  if (res) {
-    utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+  try {
+    const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
+      checkoutSelectors.getPaypalPaymentSettings
+    );
+    const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
+    const res = yield call(paypalAuthorizationAPI, ...params);
+    if (res) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+    }
+  } catch (e) {
+    yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
 
@@ -414,7 +416,8 @@ export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
       yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(false));
     }
   } catch (err) {
-    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
+    const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(getServerErrorMessage(err, errorsMapping)));
   }
 }
 

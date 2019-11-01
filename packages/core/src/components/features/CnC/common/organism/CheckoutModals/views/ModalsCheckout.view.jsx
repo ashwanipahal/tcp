@@ -37,6 +37,7 @@ class ModalsCheckout extends React.PureComponent<Props> {
       deleteConfirmationModalLabels,
       confirmRemoveCartItem,
       addItemToSflList,
+      bagPageServerError,
     } = this.props;
     const { showModal, isEditingItem: modalEditingItem } = modalInfo;
     if (modalEditingItem) {
@@ -65,6 +66,7 @@ class ModalsCheckout extends React.PureComponent<Props> {
           labels={deleteConfirmationModalLabels}
           moveToSfl={() => addItemToSflList(currentSelectItemInfo)}
           confirmRemoveCartItem={() => confirmRemoveCartItem(currentSelectItemInfo.itemId)}
+          bagPageServerError={bagPageServerError}
         />
       </>
     );
@@ -75,6 +77,11 @@ ModalsCheckout.propTypes = {
   labels: PropTypes.shape.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
   routeForBagCheckout: PropTypes.func.isRequired,
+  bagPageServerError: PropTypes.shape({})
+};
+
+ModalsCheckout.defaultProps = {
+  bagPageServerError: null,
 };
 
 export default withStyles(ModalsCheckout, style);
