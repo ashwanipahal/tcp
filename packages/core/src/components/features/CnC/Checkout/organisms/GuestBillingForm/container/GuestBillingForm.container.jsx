@@ -139,6 +139,7 @@ class GuestBillingContainer extends React.Component {
       shippingOnFileAddressKey,
       isVenmoPaymentInProgress,
       setCheckoutStage,
+      venmoError,
     } = this.props;
     let cardNumber;
     let cardType;
@@ -170,6 +171,7 @@ class GuestBillingContainer extends React.Component {
         onSubmit={this.submitBillingData}
         syncErrorsObj={syncErrors}
         setCheckoutStage={setCheckoutStage}
+        venmoError={venmoError}
       />
     );
   }
@@ -184,6 +186,7 @@ export const mapStateToProps = state => {
     isPayPalEnabled: BagPageSelector.getIsPayPalEnabled(state),
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
+    venmoError: CheckoutSelectors.getVenmoError(state),
   };
 };
 
@@ -206,7 +209,21 @@ GuestBillingContainer.propTypes = {
   paymentMethodId: PropTypes.string,
   shippingAddress: PropTypes.shape({}),
   isSameAsShippingChecked: PropTypes.bool,
-  billingData: PropTypes.shape({}),
+  billingData: PropTypes.shape({
+    address: PropTypes.shape({
+      addressLine1: PropTypes.string,
+      addressLine2: PropTypes.string,
+      city: PropTypes.string,
+      country: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      state: PropTypes.string,
+      zipCode: PropTypes.string,
+      onFileAddressKey: PropTypes.string,
+      onFileAddressId: PropTypes.string,
+    }),
+    billing: PropTypes.shape({}),
+  }),
   orderHasShipping: PropTypes.bool,
   submitBilling: PropTypes.func.isRequired,
   shippingOnFileAddressKey: PropTypes.string,
@@ -214,6 +231,7 @@ GuestBillingContainer.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   setVenmoProgress: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  venmoError: PropTypes.string,
 };
 
 GuestBillingContainer.defaultProps = {
@@ -224,11 +242,12 @@ GuestBillingContainer.defaultProps = {
   paymentMethodId: null,
   shippingAddress: null,
   isSameAsShippingChecked: true,
-  billingData: {},
+  billingData: { billing: {} },
   orderHasShipping: true,
   shippingOnFileAddressKey: null,
   navigation: null,
   isVenmoPaymentInProgress: false,
+  venmoError: '',
 };
 
 export default connect(

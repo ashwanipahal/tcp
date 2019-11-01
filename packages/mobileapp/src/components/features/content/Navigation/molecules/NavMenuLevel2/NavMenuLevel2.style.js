@@ -103,6 +103,11 @@ export const ArrowBackIcon = styled.Image`
   width: 10px;
   height: 18px;
 `;
+export const ArrowBackIconPLP = styled.Image`
+  width: 10px;
+  height: 18px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
 
 export const TouchableOpacityArrow = styled.TouchableOpacity`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};

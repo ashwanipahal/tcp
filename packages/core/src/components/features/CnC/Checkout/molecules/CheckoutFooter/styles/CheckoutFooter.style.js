@@ -57,12 +57,12 @@ const styles = css`
       height: 18px;
     }
     .footer-button {
-      background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+      background-color: ${props => props.theme.colorPalette.blue.C900};
       color: ${props => props.theme.colors.WHITE};
       font-size: ${props => props.theme.typography.fontSizes.fs14};
       font-weight: ${props => props.theme.typography.fontWeights.fontWeights};
       &:hover {
-        background: ${props => props.theme.colors.PRIMARY.BLUE};
+        background: ${props => props.theme.colorPalette.blue.C900};
         display: inline-block;
       }
     }

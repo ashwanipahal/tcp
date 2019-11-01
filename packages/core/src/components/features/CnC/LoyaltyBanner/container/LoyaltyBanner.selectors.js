@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
+import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 
 const getThresholdValue = state => {
   return state.session && state.session.siteDetails.PLCC_MARKETING_BAG_TOTAL_CUT_OFF;
@@ -10,13 +11,26 @@ const cartOrderDetails = createSelector(
   cartOrderDetailsObj => {
     const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
     const subTotal = cartOrderDetailsObj.get('subTotal');
-    const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
+    const subTotalWithDiscounts = cartOrderDetailsObj.get('subTotalWithDiscounts');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
     const pointsToNextReward = cartOrderDetailsObj.get('pointsToNextReward');
     return {
       estimatedRewards,
       subTotal,
-      cartTotalAfterPLCCDiscount,
+      subTotalWithDiscounts,
+      earnedReward,
+      pointsToNextReward,
+    };
+  }
+);
+
+const confirmationDetails = createSelector(
+  ConfirmationSelectors.getConfirmationSummary,
+  ({ estimatedRewards, subTotal, subTotalWithDiscounts, earnedReward, pointsToNextReward }) => {
+    return {
+      estimatedRewards,
+      subTotal,
+      subTotalWithDiscounts,
       earnedReward,
       pointsToNextReward,
     };
@@ -161,4 +175,4 @@ export const getLoyaltyBannerLabels = state => {
   };
 };
 
-export { getThresholdValue, cartOrderDetails };
+export { getThresholdValue, cartOrderDetails, confirmationDetails };

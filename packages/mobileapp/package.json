@@ -9,7 +9,7 @@
     "run:android": "react-native run-android"
   },
   "dependencies": {
-    "@fabulas/astly": "^0.0.12",
+    "@fabulas/astly": "^0.0.13",
     "@react-native-community/async-storage": "^1.6.1",
     "@react-native-community/netinfo": "^3.2.1",
     "@tcp/core": "*",

@@ -15,9 +15,8 @@ import utility from '../../../util/utility';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
-import PayPalButton from '../../../../common/organism/PayPalButton';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/GuestBillingForm.styles';
+import BillingPayPalButton from '../../BillingPayPalButton';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -26,8 +25,15 @@ class GuestBillingForm extends React.Component {
     className: PropTypes.string.isRequired,
     cvvCodeRichText: PropTypes.string,
     cardType: PropTypes.string,
-    syncErrorsObj: PropTypes.shape({}),
-    labels: PropTypes.shape({}),
+    syncErrorsObj: PropTypes.shape({
+      syncError: PropTypes.shape({
+        cvvCode: PropTypes.string,
+      }),
+    }),
+    labels: PropTypes.shape({
+      paymentMethod: PropTypes.string,
+      continueWith: PropTypes.string,
+    }),
     paymentMethodId: PropTypes.string,
     orderHasShipping: PropTypes.bool,
     addressLabels: PropTypes.shape({}).isRequired,
@@ -43,14 +49,22 @@ class GuestBillingForm extends React.Component {
     isPayPalEnabled: PropTypes.bool,
     isVenmoEnabled: PropTypes.bool, // Venmo Kill Switch, if Venmo enabled then true, else false.
     isPaymentDisabled: PropTypes.bool,
+    venmoError: PropTypes.string,
   };
 
   static defaultProps = {
     shippingAddress: null,
     cvvCodeRichText: '',
     cardType: null,
-    syncErrorsObj: null,
-    labels: {},
+    syncErrorsObj: {
+      syncError: {
+        cvvCode: '',
+      },
+    },
+    labels: {
+      paymentMethod: '',
+      continueWith: '',
+    },
     paymentMethodId: null,
     orderHasShipping: true,
     isGuest: true,
@@ -64,6 +78,7 @@ class GuestBillingForm extends React.Component {
     showAccordian: true,
     isVenmoEnabled: false,
     isPaymentDisabled: false,
+    venmoError: '',
   };
 
   componentDidUpdate(prevProp) {
@@ -78,6 +93,13 @@ class GuestBillingForm extends React.Component {
   getExpirationRequiredFlag = () => {
     const { cardType } = this.props;
     return !cardType || cardType !== CREDIT_CARD_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
+  };
+
+  renderBillingPayPalButton = () => {
+    const { isPayPalEnabled, paymentMethodId, labels } = this.props;
+    return isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL ? (
+      <BillingPayPalButton labels={labels} containerId="billing-page-paypal-one" />
+    ) : null;
   };
 
   render() {
@@ -104,6 +126,7 @@ class GuestBillingForm extends React.Component {
       isPayPalEnabled,
       isVenmoEnabled,
       isPaymentDisabled,
+      venmoError,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -124,24 +147,7 @@ class GuestBillingForm extends React.Component {
               {labels.paymentMethod}
             </BodyCopy>
             <PaymentMethods labels={labels} isVenmoEnabled={isVenmoEnabled} />
-            {isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL ? (
-              <div className="payment-paypal-container hide-on-desktop hide-on-tablet">
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  fontWeight="extrabold"
-                  dataLocator="completePurchaseLblÎ"
-                  className="paypal-complete-purchase"
-                >
-                  {labels.continueWithPayPal}
-                </BodyCopy>
-                <PayPalButton
-                  className="billing-payPal-button"
-                  containerId="billing-page-paypal-1"
-                  isBillingPage
-                />
-              </div>
-            ) : null}
+            {this.renderBillingPayPalButton()}
             <div className="elem-mt-LRG elem-pb-XL">
               {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
                 <>
@@ -176,6 +182,7 @@ class GuestBillingForm extends React.Component {
                   isVenmoBlueButton
                 />
               )}
+              {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
             </div>
           </>
         )}
@@ -189,6 +196,7 @@ class GuestBillingForm extends React.Component {
           showPayPalButton={isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
+          venmoError={venmoError}
         />
       </form>
     );
@@ -203,5 +211,5 @@ export default reduxForm({
   form: 'checkoutBilling', // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
-})(withStyles(GuestBillingForm, styles));
+})(GuestBillingForm);
 export { GuestBillingForm as GuestBillingFormVanilla };

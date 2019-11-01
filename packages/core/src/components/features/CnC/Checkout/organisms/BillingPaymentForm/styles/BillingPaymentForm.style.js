@@ -8,13 +8,6 @@ export default css`
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
 
-  .billing-payPal-button {
-    display: none;
-  }
-
-  .payment-paypal-container {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  }
   .disable-drop-down {
     pointer-events: none;
   }
@@ -179,10 +172,6 @@ export default css`
     border-top: 1px solid ${props => props.theme.colors.TEXT.DARKGRAY};
   }
 
-  .paypal-complete-purchase {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    text-align: center;
-  }
   .addCreditCardBtn {
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;

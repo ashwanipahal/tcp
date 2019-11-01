@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fromJS } from 'immutable';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import {
   getNearByStore,
   getCurrentStoreInfo,
@@ -51,7 +52,7 @@ export class StoreDetailContainer extends PureComponent {
         this.mapHandler = mapHandler;
       })
       .catch(error => {
-        console.log('error: ', error);
+        logger.error(error);
       });
   }
 

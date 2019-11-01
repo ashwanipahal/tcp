@@ -178,6 +178,7 @@ class SearchLayoutWrapper extends React.PureComponent {
       hideOverlayAfterClick,
       searchResults,
       redirectToSuggestedUrl,
+      closeSearchLayover,
     } = this.props;
 
     const LookingForLabel = () => {
@@ -217,6 +218,8 @@ class SearchLayoutWrapper extends React.PureComponent {
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
                 className="search-input"
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
                 maxLength="50"
                 autoComplete="off"
               />
@@ -285,7 +288,10 @@ class SearchLayoutWrapper extends React.PureComponent {
                 </div>
                 <div className="matchProductBox">
                   <LookingForProductLabel searchResults={searchResults} />
-                  <LookingForProductDetail searchResults={searchResults} />
+                  <LookingForProductDetail
+                    searchResults={searchResults}
+                    closeSearchLayover={closeSearchLayover}
+                  />
                 </div>
               </div>
             )}
@@ -299,6 +305,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 SearchLayoutWrapper.propTypes = {
   className: PropTypes.string.isRequired,
   closeSearchBar: PropTypes.func.isRequired,
+  closeSearchLayover: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
   hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,

@@ -77,6 +77,7 @@ exports[`Extra Points Details Modal for native should render correctly native co
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Fragment>
