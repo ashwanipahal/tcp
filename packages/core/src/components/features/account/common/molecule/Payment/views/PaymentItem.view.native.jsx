@@ -53,7 +53,7 @@ class PaymentItem extends React.Component<Props> {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs14"
-              fontWeight="regular"
+              fontWeight="extrabold"
               text={paymentInfo.title}
               color="gray.900"
             />
@@ -61,7 +61,7 @@ class PaymentItem extends React.Component<Props> {
               <BodyCopy
                 fontFamily="primary"
                 fontSize="fs13"
-                fontWeight="regular"
+                fontWeight="extrabold"
                 text={paymentInfo.text}
               />
             )}
@@ -73,7 +73,7 @@ class PaymentItem extends React.Component<Props> {
                     style={PaymentDetails}
                     fontFamily="secondary"
                     fontSize="fs12"
-                    fontWeight="regular"
+                    fontWeight="extrabold"
                     text={paymentInfo.text}
                   />
                   <BodyCopy

@@ -41,6 +41,7 @@ const PickupStoreList = props => {
           checkBoxLabel
           execOnChangeByDefault={false}
           input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}
+          isPickUpStoreView
         >
           {BOPIS_FILTER_LABEL}
         </InputCheckbox>

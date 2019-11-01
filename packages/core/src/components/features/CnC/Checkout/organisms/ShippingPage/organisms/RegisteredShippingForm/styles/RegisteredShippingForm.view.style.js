@@ -46,9 +46,14 @@ const styles = css`
   .save-btn {
     background-color: ${props => props.theme.colorPalette.blue.C900};
     color: ${props => props.theme.colors.WHITE};
+    padding: 0;
     &:hover {
       background: ${props => props.theme.colorPalette.blue.C900};
     }
+  }
+
+  .cancel-btn {
+    padding: 0;
   }
 
   .edit-cta {
