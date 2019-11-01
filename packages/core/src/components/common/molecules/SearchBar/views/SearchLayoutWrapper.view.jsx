@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
@@ -30,7 +31,6 @@ class SearchLayoutWrapper extends React.PureComponent {
     this.searchInput = React.createRef();
     this.changeSearchText = this.changeSearchText.bind(this);
     this.initiateSearch = this.initiateSearch.bind(this);
-    this.closeSearchOnBlur = this.closeSearchOnBlur.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -167,15 +167,12 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   };
 
-  closeSearchOnBlur = e => {
-    e.preventDefault();
+  handleClickOutside() {
     const { setSearchState, isSearchOpen } = this.props;
     if (isSearchOpen) {
-      setTimeout(() => {
-        setSearchState(false);
-      }, 300);
+      setSearchState(false);
     }
-  };
+  }
 
   render() {
     const {
@@ -228,7 +225,6 @@ class SearchLayoutWrapper extends React.PureComponent {
                 id="search-input"
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
-                onBlur={this.closeSearchOnBlur}
                 className="search-input"
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
@@ -362,4 +358,4 @@ SearchLayoutWrapper.defaultProps = {
   latestSearchResults: [],
 };
 
-export default connect()(withStyles(SearchLayoutWrapper, SearchBarStyle));
+export default connect()(withStyles(enhanceWithClickOutside(SearchLayoutWrapper), SearchBarStyle));
