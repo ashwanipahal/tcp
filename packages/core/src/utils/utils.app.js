@@ -368,8 +368,8 @@ export const resetNavigationStack = navigation => {
   );
 };
 
-const getStyliticsRegion = (configVal, country) => {
-  return configVal && country && country.split('_')[1];
+const getRegion = (configVal, country) => {
+  return configVal && country;
 };
 
 /**
@@ -426,8 +426,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     RECOMMENDATIONS_API: recommendationsAPI,
     styliticsUserNameTCP: envConfig.RWD_APP_STYLITICS_USERNAME_TCP,
     styliticsUserNameGYM: envConfig.RWD_APP_STYLITICS_USERNAME_GYM,
-    styliticsRegionTCP: getStyliticsRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
-    styliticsRegionGYM: getStyliticsRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
+    styliticsRegionTCP: getRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
+    styliticsRegionGYM: getRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
   };
 };
 
