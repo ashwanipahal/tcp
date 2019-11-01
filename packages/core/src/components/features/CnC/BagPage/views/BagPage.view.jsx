@@ -60,7 +60,7 @@ class BagPageView extends React.PureComponent {
       if (checkoutCta && !isMobile) {
         this.addScrollListener();
         this.bagPageCondenseHeaderBind = true;
-      } else if (header) {
+      } else if (header && isMobile) {
         this.addScrollListenerMobileHeader();
         this.bagPageCondenseHeaderBind = true;
       }
