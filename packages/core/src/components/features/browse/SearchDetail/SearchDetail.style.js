@@ -247,7 +247,7 @@ export default css`
 
   .matchProductBox .matchProductBody ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
 
