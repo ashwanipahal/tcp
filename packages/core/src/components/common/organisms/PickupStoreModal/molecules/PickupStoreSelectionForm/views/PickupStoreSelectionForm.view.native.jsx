@@ -7,6 +7,7 @@ import { reduxForm, Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { Button } from '../../../../../atoms';
@@ -94,12 +95,25 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       pristine,
       submitting,
       storeSearchError,
+      PickupSkuFormValues,
+      colorFitsSizesMap,
       isSkuResolved,
       onCloseClick,
       handleSubmit,
       onSearch,
       selectedValue,
     } = this.props;
+
+    let disableButton = pristine;
+
+    const formExists = Object.entries(PickupSkuFormValues).length === 0;
+
+    const { color, Fit, Size } = PickupSkuFormValues;
+
+    const enableButton = formExists ? pristine : true;
+
+    const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
+    disableButton = sizeAvailable ? !sizeAvailable : enableButton;
 
     return showStoreSearching ? (
       <PickUpModalView>
@@ -146,7 +160,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           onPress={handleSubmit(onSearch)}
           locator="pdp_color_swatch"
           accessibilityLabel="Search"
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || disableButton}
         />
         {isSkuResolved && (
           <BodyCopyWithSpacing
