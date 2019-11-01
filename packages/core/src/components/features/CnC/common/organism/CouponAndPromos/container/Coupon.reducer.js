@@ -17,6 +17,13 @@ const getDefaultState = state => {
   return state;
 };
 
+const setCouponListFetchingState = (state, action) => {
+  if (action.type === COUPON_CONSTANTS.GET_COUPON_LIST) {
+    return state.set('isFetching', true);
+  }
+  return state;
+};
+
 const CouponReducer = (state = initialState, action) => {
   switch (action.type) {
     case COUPON_CONSTANTS.SHOW_LOADER:
@@ -24,6 +31,7 @@ const CouponReducer = (state = initialState, action) => {
     case BAGPAGE_CONSTANTS.SET_COUPONS_DATA:
     case COUPON_CONSTANTS.SET_COUPON_LIST:
       return state
+        .set('isFetching', false)
         .set('couponsAndOffers', List(action.payload))
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(COUPON_CONSTANTS.GET_COUPON_LIST_TTL));
     case COUPON_CONSTANTS.CLEAR_COUPON_TTL:
@@ -53,7 +61,7 @@ const CouponReducer = (state = initialState, action) => {
     case COUPON_CONSTANTS.RESET_COUPON_REDUCER:
       return initialState;
     default:
-      return getDefaultState(state);
+      return getDefaultState(setCouponListFetchingState(state, action));
   }
 };
 

@@ -23,7 +23,10 @@ export class MyWalletTile extends PureComponent {
   render() {
     const { isFetching } = this.props;
 
-    return !isFetching ? <MyWalletTileComponent {...this.props} /> : <MyWalletTileSkelton />;
+    if (isFetching) {
+      return <MyWalletTileSkelton />;
+    }
+    return <MyWalletTileComponent {...this.props} />;
   }
 }
 

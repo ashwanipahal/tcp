@@ -69,6 +69,6 @@ export const getCustomerPreferences = createSelector(
 );
 
 export const getSubscribeStoreFetchingState = createSelector(
-  getState,
-  state => state && state.subscribeStoreData && state.subscribeStoreData.isFetching
+  getCustomerPreferences,
+  state => state && state.isFetching
 );

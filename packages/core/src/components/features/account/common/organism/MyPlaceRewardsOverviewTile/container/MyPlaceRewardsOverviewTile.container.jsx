@@ -22,11 +22,10 @@ export class MyPlaceRewardsOverviewTile extends PureComponent {
 
   render() {
     const { isFetching } = this.props;
-    return !isFetching ? (
-      <MyPlaceRewardsOverviewTileComponent {...this.props} />
-    ) : (
-      <MyPlaceRewardsOverviewTileSkelton />
-    );
+    if (isFetching) {
+      return <MyPlaceRewardsOverviewTileSkelton />;
+    }
+    return <MyPlaceRewardsOverviewTileComponent {...this.props} />;
   }
 }
 

@@ -1,8 +1,6 @@
 import { createSelector } from 'reselect';
 import { SOCIAL_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 
-const getState = state => state[SOCIAL_REDUCER_KEY];
-
 export const getSocialResponse = state => {
   return state[SOCIAL_REDUCER_KEY];
 };
@@ -17,6 +15,7 @@ export const getPointsModal = createSelector(
   resp => resp && resp.get('pointModalMountState')
 );
 
-export const getSocialDataFetchingState = state => {
-  return getState(state).get('isFetching');
-};
+export const getSocialDataFetchingState = createSelector(
+  getSocialResponse,
+  resp => resp && resp.get('isFetching')
+);

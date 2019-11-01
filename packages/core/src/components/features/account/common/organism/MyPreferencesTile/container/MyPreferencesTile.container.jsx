@@ -92,7 +92,10 @@ class MyPreferencesTile extends PureComponent {
     const customerPreferencesValue =
       (customerPreferences && this.getContactPreferencesValues(customerPreferences)) || {};
 
-    return !isFetchingCustomerPreferences || !isFetchingSocialData || !isFetchingUserInfoData ? (
+    if (isFetchingCustomerPreferences || isFetchingSocialData || isFetchingUserInfoData) {
+      return <MyPreferencesTileSkelton />;
+    }
+    return (
       <MyPreferencesTileComponent
         labels={labels}
         defaultStore={defaultStore}
@@ -106,8 +109,6 @@ class MyPreferencesTile extends PureComponent {
         customerPreferences={customerPreferencesValue}
         handleComponentChange={handleComponentChange}
       />
-    ) : (
-      <MyPreferencesTileSkelton />
     );
   }
 }
@@ -145,9 +146,9 @@ MyPreferencesTile.defaultProps = {
   favStorePhone: '',
   socialAccounts: {},
   customerPreferences: {},
-  isFetchingCustomerPreferences: true,
-  isFetchingSocialData: true,
-  isFetchingUserInfoData: true,
+  isFetchingCustomerPreferences: false,
+  isFetchingSocialData: false,
+  isFetchingUserInfoData: false,
 };
 
 export const mapStateToProps = state => ({
@@ -162,7 +163,7 @@ export const mapStateToProps = state => ({
   defaultStore: getDefaultStore(state),
   socialAccounts: getsocialDataOnLoadState(state),
   customerPreferences: getCustomerPreferences(state),
-  isFetchingcustomerPreferences: getSubscribeStoreFetchingState(state),
+  isFetchingCustomerPreferences: getSubscribeStoreFetchingState(state),
   isFetchingSocialData: getSocialDataFetchingState(state),
   isFetchingUserInfoData: getUserInfoFetchingState(state),
 });

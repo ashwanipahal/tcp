@@ -9,13 +9,13 @@ const AccountOverviewTileSkelton = ({ className }) => {
   return (
     <div className={className}>
       <div className="headingWrapper">
-        <LoaderSkelton />
+        <LoaderSkelton width="75%" height="42px" />
       </div>
       <div className="contentWrapper">
-        <LoaderSkelton />
+        <LoaderSkelton width="100%" height="400px" />
       </div>
-      <div className="ctaWrapper">
-        <LoaderSkelton />
+      <div>
+        <LoaderSkelton width="100%" height="42px" />
       </div>
     </div>
   );

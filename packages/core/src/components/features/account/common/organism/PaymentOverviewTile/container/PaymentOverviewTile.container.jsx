@@ -46,15 +46,17 @@ export class PaymentOverviewTile extends React.Component {
     const creditCardDefaultValue = creditCardDefault && creditCardDefault.get(0);
     const giftCardListValue = giftCardList && giftCardList.get(-1);
     const venmoCardListValue = venmoCardList && venmoCardList.get(0);
-    return !isFetching ? (
+
+    if (isFetching) {
+      return <PaymentOverviewTileSkelton />;
+    }
+    return (
       <PaymentOverviewTileComponent
         creditCardDefault={creditCardDefaultValue}
         giftCardList={giftCardListValue}
         venmoCardList={venmoCardListValue}
         labels={labels}
       />
-    ) : (
-      <PaymentOverviewTileSkelton />
     );
   }
 }

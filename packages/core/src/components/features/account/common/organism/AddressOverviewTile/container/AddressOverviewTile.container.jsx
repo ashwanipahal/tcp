@@ -18,14 +18,15 @@ export class AddressOverviewTile extends React.Component {
   render() {
     const { addressList, labels, handleComponentChange, isFetching } = this.props;
 
-    return !isFetching ? (
+    if (isFetching) {
+      return <AddressOverviewTileSkelton />;
+    }
+    return (
       <AddressOverviewTileComponent
         addressList={addressList}
         labels={labels}
         handleComponentChange={handleComponentChange}
       />
-    ) : (
-      <AddressOverviewTileSkelton />
     );
   }
 }
@@ -73,7 +74,7 @@ AddressOverviewTile.defaultProps = {
   },
   addressList: {},
   handleComponentChange: () => {},
-  isFetching: true,
+  isFetching: false,
 };
 
 export default connect(

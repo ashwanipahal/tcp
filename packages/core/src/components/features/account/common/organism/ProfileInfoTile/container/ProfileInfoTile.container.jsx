@@ -6,14 +6,15 @@ import { getProfileInfoTileData } from '../../../../User/container/User.selector
 import ProfileInfoTileSkelton from '../skelton/ProfileInfoTileSkelton.view';
 
 const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo, isFetching }) => {
-  return !isFetching ? (
+  if (isFetching) {
+    return <ProfileInfoTileSkelton />;
+  }
+  return (
     <ProfileInfoTileComponent
       profileInfo={profileInfo}
       labels={labels}
       handleComponentChange={handleComponentChange}
     />
-  ) : (
-    <ProfileInfoTileSkelton />
   );
 };
 

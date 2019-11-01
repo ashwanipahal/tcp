@@ -19,15 +19,17 @@ class OrdersTile extends PureComponent {
 
   render() {
     const { labels, ordersListItems, navigation, handleComponentChange, isFetching } = this.props;
-    return !isFetching ? (
+
+    if (isFetching) {
+      return <OrdersTileSkelton />;
+    }
+    return (
       <OrdersTileComponent
         labels={labels}
         ordersList={ordersListItems}
         navigation={navigation}
         handleComponentChange={handleComponentChange}
       />
-    ) : (
-      <OrdersTileSkelton />
     );
   }
 }
