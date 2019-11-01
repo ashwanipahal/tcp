@@ -50,6 +50,7 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  isUsOnly,
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
@@ -80,4 +81,6 @@ export {
   enableBodyScroll,
   disableBodyScroll,
   readCookieMobileApp,
+  getStyliticsUserName,
+  getStyliticsRegion,
 } from './utils';

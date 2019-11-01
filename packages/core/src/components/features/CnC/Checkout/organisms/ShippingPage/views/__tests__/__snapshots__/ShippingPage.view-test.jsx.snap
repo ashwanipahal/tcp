@@ -45,6 +45,7 @@ exports[`Shipping Page should render correctly 1`] = `
     onFileAddressKey={null}
     onSubmit={[Function]}
     orderHasPickUp={false}
+    pageCategory=""
     persistentSubmitErrors={false}
     pure={true}
     selectedShipmentId={null}
@@ -140,6 +141,7 @@ exports[`Shipping Page should render correctly with component did update and get
     onFileAddressKey={null}
     onSubmit={[Function]}
     orderHasPickUp={false}
+    pageCategory=""
     persistentSubmitErrors={false}
     pure={true}
     selectedShipmentId="336"
@@ -251,6 +253,7 @@ exports[`Shipping Page should render correctly with component did update and get
     onFileAddressKey={null}
     onSubmit={[Function]}
     orderHasPickUp={false}
+    pageCategory=""
     persistentSubmitErrors={false}
     pure={true}
     selectedShipmentId="336"

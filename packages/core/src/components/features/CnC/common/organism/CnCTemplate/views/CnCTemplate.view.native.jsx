@@ -79,15 +79,6 @@ const CnCCommonTemplate = ({
             pageCategory={pageCategory}
             showAccordian
           />
-          <BannerWrapper>
-            <BodyCopyWithSpacing
-              textAlign="center"
-              fontSize="fs16"
-              mobileFontFamily="secondary"
-              spacingStyles="margin-top-LRG margin-bottom-LRG"
-              text="LOYALTY BANNER"
-            />
-          </BannerWrapper>
           {isGuest && (
             <BannerWrapper>
               <BodyCopyWithSpacing

@@ -146,8 +146,10 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {}, hostname } = req;
       const apiConfig = createAPIConfig(locals, hostname);
-      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
-
+      // preview check from akamai header
+      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
+      // preview date if any from the query param
+      apiConfig.previewDate = query.preview_date;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);

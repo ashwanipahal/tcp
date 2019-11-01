@@ -64,6 +64,8 @@ export {
   parseBoolean,
   enableBodyScroll,
   disableBodyScroll,
+  getStyliticsUserName,
+  getStyliticsRegion,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
+import { isUsOnly } from '@tcp/core/src/utils';
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
   getThresholdValue,
   cartOrderDetails,
   getLoyaltyBannerLabels,
+  confirmationDetails,
 } from './LoyaltyBanner.selectors';
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
@@ -22,20 +25,21 @@ export const LoyaltyBannerContainer = ({
   currencySymbol,
   pageCategory,
   openLoginModal,
+  isInternationalShipping,
 }) => {
   const {
     estimatedRewards,
     subTotal,
-    cartTotalAfterPLCCDiscount,
+    subTotalWithDiscounts,
     earnedReward,
     pointsToNextReward,
   } = orderDetails;
-  return (
+  return !isInternationalShipping && isUsOnly() ? (
     <LoyaltyBannerView
       labels={labels}
       estimatedRewardsVal={estimatedRewards}
       currentSubtotal={subTotal}
-      estimatedSubtotal={cartTotalAfterPLCCDiscount}
+      estimatedSubtotal={subTotalWithDiscounts}
       thresholdValue={thresholdValue}
       isGuest={isGuestCheck}
       earnedReward={earnedReward}
@@ -44,8 +48,9 @@ export const LoyaltyBannerContainer = ({
       getCurrencySymbol={currencySymbol}
       pageCategory={pageCategory}
       openLoginModal={openLoginModal}
+      isInternationalShipping={isInternationalShipping}
     />
-  );
+  ) : null;
 };
 
 LoyaltyBannerContainer.propTypes = {
@@ -57,6 +62,7 @@ LoyaltyBannerContainer.propTypes = {
   isPlcc: PropTypes.bool,
   currencySymbol: PropTypes.string,
   pageCategory: PropTypes.string,
+  isInternationalShipping: PropTypes.bool,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -65,6 +71,7 @@ LoyaltyBannerContainer.defaultProps = {
   isPlcc: false,
   currencySymbol: '',
   pageCategory: '',
+  isInternationalShipping: false,
 };
 
 export const mapDispatchToProps = dispatch => ({
@@ -73,13 +80,15 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 /* istanbul ignore next */
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state, ownProps) => ({
   labels: getLoyaltyBannerLabels(state),
-  orderDetails: cartOrderDetails(state),
+  orderDetails:
+    ownProps.pageCategory === 'confirmation' ? confirmationDetails(state) : cartOrderDetails(state),
   thresholdValue: getThresholdValue(state),
   isGuestCheck: isGuest(state),
   isPlcc: isPlccUser(state),
   currencySymbol: getCurrencySymbol(state),
+  isInternationalShipping: getIsInternationalShipping(state),
 });
 
 export default connect(

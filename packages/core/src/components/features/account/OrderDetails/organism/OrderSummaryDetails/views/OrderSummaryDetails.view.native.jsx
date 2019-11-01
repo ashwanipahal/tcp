@@ -42,7 +42,6 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
           fontSize="fs14"
           fontWeight="semibold"
           textAlign="left"
-          spacingStyles="margin-top-SM margin-bottom-XS"
           text={getLabelValue(ordersLabels, 'lbl_orderDetails_orderSummary')}
         />
 
@@ -51,7 +50,6 @@ export const OrderSummaryDetails = ({ ordersLabels, orderDetailsData }) => {
           fontSize="fs14"
           fontWeight="semibold"
           textAlign="left"
-          spacingStyles="margin-top-MED margin-bottom-XS"
           text={getLabelValue(ordersLabels, 'lbl_orders_orderTotal')}
         />
       </HeadRowDataContainer>

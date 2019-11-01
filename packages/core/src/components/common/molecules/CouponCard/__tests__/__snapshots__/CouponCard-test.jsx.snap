@@ -103,7 +103,6 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
               aria-labelledby="Y00105578"
               className="cartDetailsLink"
               dataLocator="coupon_available_cartDetailsLink"
-              fontSize="fs10"
               fontSizeVariation="small"
               link={true}
               nohover={true}
