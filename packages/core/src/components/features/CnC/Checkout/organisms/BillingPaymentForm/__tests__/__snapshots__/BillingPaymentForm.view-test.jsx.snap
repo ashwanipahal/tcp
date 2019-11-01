@@ -2182,7 +2182,7 @@ exports[`ButtonList component renders with payPal enable 1`] = `
       }
     />
     <div
-      className="payment-paypal-container"
+      className="payment-paypal-container hide-on-desktop hide-on-tablet"
     >
       <Styled(BodyCopy)
         className="paypal-complete-purchase"
