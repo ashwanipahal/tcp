@@ -338,20 +338,70 @@ class CartItemTile extends React.Component {
       : offerPrice;
   };
 
+  renderEditLink = () => {
+    const {
+      labels,
+      showOnReviewPage,
+      isBagPageSflSection,
+      isEditAllowed,
+      productDetail: {
+        miscInfo: { orderItemType, availability },
+        itemInfo: { itemBrand },
+      },
+    } = this.props;
+
+    const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
+    const isBOPISOrder = isBopisOrder(orderItemType);
+    const isBOSSOrder = isBossOrder(orderItemType);
+    const isEcomSoldout = isSoldOut(availability);
+
+    const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
+      this.props,
+      isBossEnabled,
+      isBopisEnabled,
+      isEcomSoldout,
+      isBOSSOrder,
+      isBOPISOrder
+    );
+    return (
+      <>
+        {showOnReviewPage &&
+          !isBagPageSflSection &&
+          isEditAllowed &&
+          !hideEditBossBopis(isBOSSOrder, bossDisabled, isBOPISOrder, bopisDisabled) && (
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="div"
+              role="button"
+              tabIndex="0"
+              dataLocator={getLocator('cart_item_edit_link')}
+              className="padding-left-10 responsive-edit-css"
+              onClick={this.callEditMethod}
+              onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
+            >
+              {labels.edit}
+            </BodyCopy>
+          )}
+      </>
+    );
+  };
+
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
     const { currencySymbol, currencyExchange } = this.props;
     let { offerPrice } = productDetail.itemInfo;
     // SFL prices
     offerPrice = this.getOfferPrice(offerPrice, currencyExchange);
+    const isBagPage = pageView === 'myBag';
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
-        {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
+        {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
             <BodyCopy
               fontFamily="secondary"
-              className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
+              className={!isBagPage ? 'updateOOSMiniBag' : 'updateOOSBag'}
               color="error"
               fontSize="fs12"
               component="span"
@@ -366,7 +416,7 @@ class CartItemTile extends React.Component {
             !isEdit && (
               <BodyCopy
                 fontFamily="secondary"
-                className={pageView !== 'myBag' ? 'updateOOSMiniBag' : 'updateOOSBag'}
+                className={!isBagPage ? 'updateOOSMiniBag' : 'updateOOSBag'}
                 color="error"
                 fontSize="fs12"
                 component="span"
@@ -377,8 +427,9 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             )}
           {this.renderSflActionsLinks()}
+          {isBagPage && this.renderEditLink()}
         </Col>
-        {pageView === 'myBag' && (
+        {isBagPage && (
           <BodyCopy
             className="price-label"
             fontFamily="secondary"
@@ -410,8 +461,8 @@ class CartItemTile extends React.Component {
     return 'orange.800';
   };
 
-  getProductItemUpcNumber = (productDetail, pageView) => {
-    if (pageView === 'myBag') {
+  getProductItemUpcNumber = (productDetail, isBagPage) => {
+    if (isBagPage) {
       return (
         <Row className="product-detail-row">
           <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -825,7 +876,6 @@ class CartItemTile extends React.Component {
       editableProductInfo,
       className,
       pageView,
-      isEditAllowed,
       isBagPageSflSection,
       showOnReviewPage,
       setShipToHome,
@@ -856,6 +906,7 @@ class CartItemTile extends React.Component {
       Qty: productDetail.itemInfo.qty,
     };
 
+    const isBagPage = pageView === 'myBag';
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -871,7 +922,7 @@ class CartItemTile extends React.Component {
         })}
         <Row
           fullBleed
-          className={['product', pageView === 'myBag' ? 'product-tile-wrapper' : ''].join(' ')}
+          className={['product', isBagPage ? 'product-tile-wrapper' : ''].join(' ')}
           tabIndex="0"
           aria-label={`${productDetail.itemInfo.name}. ${labels.price} ${
             productDetail.itemInfo.price
@@ -947,17 +998,15 @@ class CartItemTile extends React.Component {
                 </BodyCopy>
               </Col>
             </Row>
-            {showOnReviewPage && this.getProductItemUpcNumber(productDetail, pageView)}
+            {showOnReviewPage && this.getProductItemUpcNumber(productDetail, isBagPage)}
             {!isEdit ? (
               <React.Fragment>
                 <Row className="product-detail-row padding-top-10 color-map-size-fit">
                   <Col
-                    className={
-                      pageView !== 'myBag' ? this.getProductDetailClass() : 'product-detail-bag'
-                    }
-                    colSize={{ small: 10, medium: 10, large: 10 }}
+                    className={!isBagPage ? this.getProductDetailClass() : 'product-detail-bag'}
+                    colSize={{ small: 12, medium: 12, large: 12 }}
                   >
-                    <div>
+                    <div className="product-detail-section">
                       <div className="color-size-fit-label">
                         <BodyCopy
                           fontFamily="secondary"
@@ -990,35 +1039,10 @@ class CartItemTile extends React.Component {
                           |
                         </BodyCopy>
                       )}
+                      {this.renderReviewPageSection()}
                     </div>
-                    {this.renderReviewPageSection()}
+                    {!isBagPage && this.renderEditLink()}
                   </Col>
-                  {showOnReviewPage && (
-                    <Col colSize={{ small: 2, medium: 2, large: 2 }}>
-                      {!isBagPageSflSection &&
-                        isEditAllowed &&
-                        !hideEditBossBopis(
-                          isBOSSOrder,
-                          bossDisabled,
-                          isBOPISOrder,
-                          bopisDisabled
-                        ) && (
-                          <BodyCopy
-                            fontFamily="secondary"
-                            fontSize="fs12"
-                            component="div"
-                            role="button"
-                            tabIndex="0"
-                            dataLocator={getLocator('cart_item_edit_link')}
-                            className="padding-left-10 responsive-edit-css"
-                            onClick={this.callEditMethod}
-                            onKeyDown={e => this.handleKeyDown(e, this.callEditMethod)}
-                          >
-                            {labels.edit}
-                          </BodyCopy>
-                        )}
-                    </Col>
-                  )}
                 </Row>
               </React.Fragment>
             ) : (
@@ -1041,7 +1065,7 @@ class CartItemTile extends React.Component {
         </Row>
         {showOnReviewPage &&
           !isBagPageSflSection &&
-          pageView === 'myBag' &&
+          isBagPage &&
           showRadioButtons({
             isEcomSoldout,
             isECOMOrder,
