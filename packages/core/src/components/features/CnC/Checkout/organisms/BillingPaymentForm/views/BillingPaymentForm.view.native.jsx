@@ -421,6 +421,7 @@ export class BillingPaymentForm extends React.PureComponent {
               ? setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM)
               : setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)
           }
+          pageCategory="billing"
           showAccordian
         />
       </>
