@@ -204,7 +204,12 @@ const moveToBagSflItem = props => {
   return startSflDataMoveToBag({ ...payloadData });
 };
 
-const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false, props) => {
+const handleEditCartItemWithStore = (
+  changeStoreType,
+  openSkuSelectionForm = false,
+  openRestrictedModalForBopis = false,
+  props
+) => {
   const { onPickUpOpenClick, productDetail, orderId, clearToggleError } = props;
   const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
   const { store, orderItemType } = productDetail.miscInfo;
@@ -213,7 +218,9 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
   const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
   const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
   const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
-  clearToggleError();
+  if (clearToggleError) {
+    clearToggleError();
+  }
   onPickUpOpenClick({
     colorProductId: productPartNumber,
     orderInfo: {
@@ -231,6 +238,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
     isBossCtaEnabled,
     isItemShipToHome,
     alwaysSearchForBOSS,
+    openRestrictedModalForBopis,
   });
 };
 
@@ -255,6 +263,7 @@ const getCartRadioButtons = ({
   orderId,
   onPickUpOpenClick,
   setShipToHome,
+  pickupStoresInCart,
 }) => {
   if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
@@ -279,6 +288,7 @@ const getCartRadioButtons = ({
         onPickUpOpenClick={onPickUpOpenClick}
         orderId={orderId}
         setShipToHome={setShipToHome}
+        pickupStoresInCart={pickupStoresInCart}
       />
     );
   }
@@ -306,6 +316,7 @@ getCartRadioButtons.propTypes = {
   orderId: PropTypes.string.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
   setShipToHome: PropTypes.func.isRequired,
+  pickupStoresInCart: PropTypes.shape({}).isRequired,
 };
 
 /**
@@ -390,7 +401,7 @@ const callEditMethod = props => {
     });
   } else {
     const openSkuSelectionForm = true;
-    handleEditCartItemWithStore(orderItemType, openSkuSelectionForm, props);
+    handleEditCartItemWithStore(orderItemType, openSkuSelectionForm, false, props);
   }
 };
 

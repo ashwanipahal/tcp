@@ -281,6 +281,7 @@ class ProductInformation extends React.Component {
       },
       onPickUpOpenClick,
       setShipToHome,
+      pickupStoresInCart,
     } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -415,6 +416,7 @@ class ProductInformation extends React.Component {
               onPickUpOpenClick,
               orderId,
               setShipToHome,
+              pickupStoresInCart,
             })}
         </MainWrapper>
       </Swipeable>
@@ -441,6 +443,7 @@ ProductInformation.propTypes = {
   currencyExchange: PropTypes.func.isRequired,
   clearToggleError: PropTypes.func,
   setShipToHome: PropTypes.func,
+  pickupStoresInCart: PropTypes.shape({}).isRequired,
 };
 
 ProductInformation.defaultProps = {

@@ -348,6 +348,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 "isBopisCtaEnabled": true,
                 "isBossCtaEnabled": false,
                 "isItemShipToHome": true,
+                "openRestrictedModalForBopis": false,
                 "openSkuSelectionForm": false,
                 "orderInfo": Object {
                   "Fit": "regular",

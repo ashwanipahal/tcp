@@ -236,7 +236,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     props.productDetail.miscInfo.clearanceItem = true;
     props.isBopisClearanceProductEnabled = false;
     const component = shallow(<CartItemTile {...props} />);
-    CartItemTileExtension.handleEditCartItemWithStore('BOPIS', false, props);
+    CartItemTileExtension.handleEditCartItemWithStore('BOPIS', false, false, props);
     expect(component).toMatchSnapshot();
   });
 
