@@ -804,6 +804,7 @@ exports[`ButtonList component renders correctly with venmoError 1`] = `
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
+    showPayPalButton={false}
     showVenmoSubmit={true}
     venmoError="Authentication Error"
   />
@@ -2137,6 +2138,30 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
         }
       }
     />
+    <Styled(BillingPayPalButton)
+      containerId="billing-page-paypal-one"
+      labels={
+        Object {
+          "lbl_billing_addCreditBtn": "ADD A NEW CREDIT CARD",
+          "lbl_billing_addCreditHeading": "+ Add a new Credit Card",
+          "lbl_billing_billingAddress": "Billing Address",
+          "lbl_billing_cardDetailsTitle": "Card Details",
+          "lbl_billing_creditCard": "Credit Card",
+          "lbl_billing_creditCardEnd": "ending in ",
+          "lbl_billing_cvvCode": "CVV Code",
+          "lbl_billing_default": "Default",
+          "lbl_billing_defaultPayment": "Set as default payment method",
+          "lbl_billing_default_card": "DEFAULT",
+          "lbl_billing_editBtn": "Edit",
+          "lbl_billing_paymentMethodTitle": "Payment Method",
+          "lbl_billing_paypal": "Pay Pal",
+          "lbl_billing_select": "SELECT",
+          "lbl_billing_selectCardTitle": "SELECT CARD",
+          "lbl_billing_selectFromCard": "Select from card on file",
+          "lbl_billing_venmo": "Venmo",
+        }
+      }
+    />
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
@@ -2148,6 +2173,7 @@ exports[`ButtonList component renders correctly without props with payPal 1`] = 
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
+    showPayPalButton={true}
     showVenmoSubmit={false}
   />
 </form>
@@ -2209,6 +2235,7 @@ exports[`ButtonList component renders correctly without props with venmo 1`] = `
     hideBackLink={true}
     nextButtonText=""
     onVenmoSubmit={[MockFunction]}
+    showPayPalButton={false}
     showVenmoSubmit={true}
   />
 </form>

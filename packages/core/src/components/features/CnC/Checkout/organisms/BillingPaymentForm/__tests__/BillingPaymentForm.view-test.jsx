@@ -72,6 +72,7 @@ describe('ButtonList component', () => {
   });
   it('renders correctly without props with payPal', () => {
     props.paymentMethodId = 'payPal';
+    props.isPayPalEnabled = true;
     const component = shallow(<BillingPaymentForm {...props} />);
     expect(component).toMatchSnapshot();
   });
@@ -147,6 +148,7 @@ describe('ButtonList component', () => {
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
   });
+
   it('renders correctly if  no cards present ', () => {
     const props2 = {
       className: '',
