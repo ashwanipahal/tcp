@@ -93,8 +93,8 @@ class TCPWebApp extends App {
   // it will check for login user
   checkForlogin = () => {
     const { router, store } = this.props;
-    const { params } = (router && router.query) || {};
-    if (params === 'login') {
+    const { target } = (router && router.query) || {};
+    if (target === 'login') {
       const isUserLoggedIn = getUserLoggedInState(store.getState());
       if (isUserLoggedIn !== true) {
         store.dispatch(
