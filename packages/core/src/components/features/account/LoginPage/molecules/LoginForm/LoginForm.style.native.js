@@ -168,6 +168,11 @@ const CustomIconWrapper = styled.TouchableOpacity`
   align-self: center;
 `;
 
+const ForgotPasswordWrapper = styled.View`
+  margin: 0px ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS} 0px
+    ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
+`;
+
 export {
   FormStyle,
   DescriptionStyle,
@@ -182,4 +187,5 @@ export {
   ModalViewWrapper,
   LineWrapper,
   CustomIconWrapper,
+  ForgotPasswordWrapper,
 };

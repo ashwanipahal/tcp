@@ -1,321 +1,333 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Recommendations Module O price only variation Recommendations Module O price only variation renders correctly 1`] = `
-<section
-  className="test class recommendations-tile"
->
-  <Styled(Heading)
-    className="recommendations-header price-only"
-    color="text.primary"
-    component={null}
-    dataLocator="moduleO_header_text"
-    textAlign="center"
-    variant="h4"
-  />
-  <Styled(Row)
-    fullBleed={true}
+<div>
+  <section
+    className="test class recommendations-tile"
   >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      offsetLeft={
-        Object {
-          "large": 1,
-          "medium": 0,
-          "small": 0,
-        }
-      }
+    <Styled(Heading)
+      className="recommendations-header price-only"
+      color="text.primary"
+      component={null}
+      dataLocator="moduleO_header_text"
+      textAlign="center"
+      variant="h4"
+    />
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="no-carousel-container moduleO-variation"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 1,
+            "medium": 0,
+            "small": 0,
+          }
+        }
       >
-        <LoadableComponent
-          className="test class product-list price-only"
-          currencyExchange={1}
-          currencySymbol="USD"
-          isPerfectBlock={true}
-          item={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+        <div
+          className="no-carousel-container moduleO-variation"
+        >
+          <LoadableComponent
+            className="test class product-list price-only"
+            currencyExchange={1}
+            currencySymbol="USD"
+            isPerfectBlock={true}
+            item={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
             }
-          }
-          key="recommended_products_moduleO_undefined"
-          productsBlock={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+            key="recommended_products_moduleO_undefined"
+            productsBlock={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
             }
-          }
-          sequenceNumber={1}
-          variation="moduleO"
-          viaModule="Recommendation"
-        />
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-</section>
+            sequenceNumber={1}
+            variation="moduleO"
+            viaModule="Recommendation"
+          />
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
+  </section>
+  <Connect(QuickViewModalContainer) />
+</div>
 `;
 
 exports[`Recommendations Module O show button variation Recommendations Module O show button variation renders correctly 1`] = `
-<section
-  className="test class recommendations-tile"
->
-  <Styled(Heading)
-    className="recommendations-header "
-    color="text.primary"
-    component={null}
-    dataLocator="moduleO_header_text"
-    textAlign="center"
-    variant="h4"
-  />
-  <Styled(Row)
-    fullBleed={true}
+<div>
+  <section
+    className="test class recommendations-tile"
   >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      offsetLeft={
-        Object {
-          "large": 1,
-          "medium": 0,
-          "small": 0,
-        }
-      }
-    >
-      <div
-        className="no-carousel-container moduleO-variation"
-      >
-        <LoadableComponent
-          className="test class product-list "
-          currencyExchange={1}
-          currencySymbol="USD"
-          isPerfectBlock={true}
-          item={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
-            }
-          }
-          key="recommended_products_moduleO_undefined"
-          productsBlock={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
-            }
-          }
-          sequenceNumber={1}
-          variation="moduleO"
-          viaModule="Recommendation"
-        />
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <div
-    className="recommendation-cta-container"
-  >
-    <ButtonCTA
-      className="recommendation-cta"
-      ctaInfo={
-        Object {
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "text": "",
-            "title": "",
-            "url": "",
-          },
-        }
-      }
-      dataLocator={
-        Object {
-          "cta": "moduleO_cta_btn",
-        }
-      }
-      dataLocatorCTA=""
-      uniqueKey="recommendation-button"
+    <Styled(Heading)
+      className="recommendations-header "
+      color="text.primary"
+      component={null}
+      dataLocator="moduleO_header_text"
+      textAlign="center"
+      variant="h4"
     />
-  </div>
-</section>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 1,
+            "medium": 0,
+            "small": 0,
+          }
+        }
+      >
+        <div
+          className="no-carousel-container moduleO-variation"
+        >
+          <LoadableComponent
+            className="test class product-list "
+            currencyExchange={1}
+            currencySymbol="USD"
+            isPerfectBlock={true}
+            item={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
+            }
+            key="recommended_products_moduleO_undefined"
+            productsBlock={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
+            }
+            sequenceNumber={1}
+            variation="moduleO"
+            viaModule="Recommendation"
+          />
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
+    <div
+      className="recommendation-cta-container"
+    >
+      <ButtonCTA
+        className="recommendation-cta"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "text": "",
+              "title": "",
+              "url": "",
+            },
+          }
+        }
+        dataLocator={
+          Object {
+            "cta": "moduleO_cta_btn",
+          }
+        }
+        dataLocatorCTA=""
+        uniqueKey="recommendation-button"
+      />
+    </div>
+  </section>
+  <Connect(QuickViewModalContainer) />
+</div>
 `;
 
 exports[`Recommendations Module O variation renders correctly 1`] = `
-<section
-  className="test class recommendations-tile"
->
-  <Styled(Heading)
-    className="recommendations-header "
-    color="text.primary"
-    component={null}
-    dataLocator="moduleO_header_text"
-    textAlign="center"
-    variant="h4"
-  />
-  <Styled(Row)
-    fullBleed={true}
+<div>
+  <section
+    className="test class recommendations-tile"
   >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      offsetLeft={
-        Object {
-          "large": 1,
-          "medium": 0,
-          "small": 0,
-        }
-      }
+    <Styled(Heading)
+      className="recommendations-header "
+      color="text.primary"
+      component={null}
+      dataLocator="moduleO_header_text"
+      textAlign="center"
+      variant="h4"
+    />
+    <Styled(Row)
+      fullBleed={true}
     >
-      <div
-        className="no-carousel-container moduleO-variation"
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 1,
+            "medium": 0,
+            "small": 0,
+          }
+        }
       >
-        <LoadableComponent
-          className="test class product-list "
-          currencyExchange={1}
-          currencySymbol="USD"
-          isPerfectBlock={true}
-          item={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+        <div
+          className="no-carousel-container moduleO-variation"
+        >
+          <LoadableComponent
+            className="test class product-list "
+            currencyExchange={1}
+            currencySymbol="USD"
+            isPerfectBlock={true}
+            item={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
             }
-          }
-          key="recommended_products_moduleO_undefined"
-          productsBlock={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+            key="recommended_products_moduleO_undefined"
+            productsBlock={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
             }
-          }
-          sequenceNumber={1}
-          variation="moduleO"
-          viaModule="Recommendation"
-        />
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-</section>
+            sequenceNumber={1}
+            variation="moduleO"
+            viaModule="Recommendation"
+          />
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
+  </section>
+  <Connect(QuickViewModalContainer) />
+</div>
 `;
 
 exports[`Recommendations Module P variation Recommendations Module P variation renders correctly 1`] = `
-<section
-  className="test class recommendations-tile"
->
-  <Styled(Heading)
-    className="recommendations-header "
-    color="text.primary"
-    component={null}
-    dataLocator="moduleP_header_text"
-    textAlign="center"
-    variant="h4"
-  />
-  <Styled(Row)
-    fullBleed={true}
+<div>
+  <section
+    className="test class recommendations-tile"
   >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      offsetLeft={
-        Object {
-          "large": 1,
-          "medium": 0,
-          "small": 0,
-        }
-      }
-    >
-      <div
-        className="no-carousel-container moduleP-variation"
-      >
-        <LoadableComponent
-          className="test class product-list "
-          currencyExchange={1}
-          currencySymbol="USD"
-          isPerfectBlock={true}
-          item={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
-            }
-          }
-          key="recommended_products_moduleP_undefined"
-          productsBlock={
-            Object {
-              "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
-              "listPrice": "74.95",
-              "name": "Girls Sequin Unicorn Parka Jacket",
-              "offerPrice": "74.95",
-              "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
-            }
-          }
-          sequenceNumber={1}
-          variation="moduleP"
-          viaModule="Recommendation"
-        />
-      </div>
-    </Styled(Col)>
-  </Styled(Row)>
-  <div
-    className="recommendation-cta-container"
-  >
-    <ButtonCTA
-      className="recommendation-cta"
-      ctaInfo={
-        Object {
-          "ctaVariation": "fixed-width",
-          "link": Object {
-            "text": "",
-            "title": "",
-            "url": "",
-          },
-        }
-      }
-      dataLocator={
-        Object {
-          "cta": "moduleP_cta_btn",
-        }
-      }
-      dataLocatorCTA=""
-      uniqueKey="recommendation-button"
+    <Styled(Heading)
+      className="recommendations-header "
+      color="text.primary"
+      component={null}
+      dataLocator="moduleP_header_text"
+      textAlign="center"
+      variant="h4"
     />
-  </div>
-</section>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 10,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        offsetLeft={
+          Object {
+            "large": 1,
+            "medium": 0,
+            "small": 0,
+          }
+        }
+      >
+        <div
+          className="no-carousel-container moduleP-variation"
+        >
+          <LoadableComponent
+            className="test class product-list "
+            currencyExchange={1}
+            currencySymbol="USD"
+            isPerfectBlock={true}
+            item={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
+            }
+            key="recommended_products_moduleP_undefined"
+            productsBlock={
+              Object {
+                "imagePath": "https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3003346_32DE.jpg",
+                "listPrice": "74.95",
+                "name": "Girls Sequin Unicorn Parka Jacket",
+                "offerPrice": "74.95",
+                "pdpUrl": "/us/p/Girls-Long-Sleeve-Sequin-Unicorn-Faux-Fur-Lined-Hooded-Parka-Jacket-3003346-32DE",
+              }
+            }
+            sequenceNumber={1}
+            variation="moduleP"
+            viaModule="Recommendation"
+          />
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
+    <div
+      className="recommendation-cta-container"
+    >
+      <ButtonCTA
+        className="recommendation-cta"
+        ctaInfo={
+          Object {
+            "ctaVariation": "fixed-width",
+            "link": Object {
+              "text": "",
+              "title": "",
+              "url": "",
+            },
+          }
+        }
+        dataLocator={
+          Object {
+            "cta": "moduleP_cta_btn",
+          }
+        }
+        dataLocatorCTA=""
+        uniqueKey="recommendation-button"
+      />
+    </div>
+  </section>
+  <Connect(QuickViewModalContainer) />
+</div>
 `;

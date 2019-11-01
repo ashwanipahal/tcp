@@ -88,6 +88,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       showAddToBagCTA,
       showColorChips,
       isGiftCard,
+      isDisableZeroInventoryEntries,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
@@ -149,6 +150,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           itemNameKey="displayName"
           error={sizeError}
           locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
+          isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
         />
         <RowViewContainer style={quantityDropDownStyle}>
           <BodyCopy
@@ -166,6 +168,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onValueChange={this.onQuantityValueChange}
             heading={qunatityText}
             name="Quantity"
+            textAlignLeft
+            lightGrayColor
           />
         </RowViewContainer>
 

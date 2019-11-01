@@ -8,7 +8,7 @@ exports[`OrdersTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="black"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="lbl_ordersTile_heading"
@@ -69,6 +69,7 @@ exports[`OrdersTile component should render correctly 1`] = `
       text="lbl_ordersTile_viewAllOrders"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -82,7 +83,7 @@ exports[`OrdersTile component should render correctly 2`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="black"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="lbl_ordersTile_heading"
@@ -115,6 +116,7 @@ exports[`OrdersTile component should render correctly 2`] = `
       text="lbl_ordersTile_viewAllOrders"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

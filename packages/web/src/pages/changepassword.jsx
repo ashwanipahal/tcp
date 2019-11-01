@@ -13,4 +13,28 @@ const ChangePasswordPage = () => (
   </div>
 );
 
+// const ChangePasswordPage = () => (
+//   <div>
+//     <Row>
+//     <h1>message</h1>
+//     <BodyCopy
+//     className={className}
+//     fontSize="fs10"
+//     component="div"
+//     color="text.primary"
+//     fontFamily="secondary"
+//     fontWeight="extrabold">
+//        {getLabelValue(labels, 'lbl_changePassword_helpText')}
+//     </BodyCopy>
+//     </Row>
+//     <Row>
+//     <Button
+//       buttonVariation="fixed-width"
+//     >
+//       {getLabelValue(labels, 'lbl_changePassword_shopNow')}
+//     </Button>
+//     </Row>
+
+//   </div>
+// );
 export default ChangePasswordPage;

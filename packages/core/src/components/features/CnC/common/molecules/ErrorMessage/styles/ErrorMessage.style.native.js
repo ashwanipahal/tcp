@@ -15,6 +15,7 @@ export const ErrorView = styled.View`
           })}
     15px ${props => (props.showAccordian || props.bagPage ? '0' : '13px')} 12px;
   flex-direction: row;
+  justify-content: center;
   background-color: ${props =>
     props.showAccordian ? props.theme.colors.WHITE : props.theme.colors.PRIMARY.PALEGRAY};
 `;
@@ -23,7 +24,7 @@ export const ErrorIcon = {
   height: 13,
   width: 13,
   marginTop: 3,
-  marginRight: 13,
+  marginRight: 8,
   marginBottom: 0,
   marginLeft: 0,
 };

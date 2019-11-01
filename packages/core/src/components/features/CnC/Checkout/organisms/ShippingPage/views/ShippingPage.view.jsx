@@ -42,6 +42,7 @@ export default class ShippingPage extends React.PureComponent {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
+    toggleCountrySelector: PropTypes.func.isRequired,
     shippingDidMount: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
     syncErrors: PropTypes.shape({}),
@@ -51,6 +52,8 @@ export default class ShippingPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
     ServerErrors: PropTypes.node.isRequired,
+    clearCheckoutServerError: PropTypes.func.isRequired,
+    checkoutServerError: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -144,6 +147,13 @@ export default class ShippingPage extends React.PureComponent {
       return { defaultAddressId: addEditResponseAddressId };
     }
     return null;
+  }
+
+  componentWillUnmount() {
+    const { clearCheckoutServerError, checkoutServerError } = this.props;
+    if (checkoutServerError) {
+      clearCheckoutServerError({});
+    }
   }
 
   setDefaultAddressId = id => {
@@ -346,6 +356,7 @@ export default class ShippingPage extends React.PureComponent {
       isSubmitting,
       formatPayload,
       ServerErrors,
+      toggleCountrySelector,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -357,6 +368,7 @@ export default class ShippingPage extends React.PureComponent {
     return (
       <>
         <ShippingForm
+          toggleCountrySelector={toggleCountrySelector}
           isSubmitting={isSubmitting}
           routeToPickupPage={routeToPickupPage}
           addressLabels={addressLabels}

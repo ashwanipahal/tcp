@@ -84,6 +84,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       margin-bottom: ",
                     [Function],
                     ";
+      text-align: center;
+      width: 54px;
     }
 
     &.item-disabled-option .input-radio-title {
@@ -118,6 +120,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     [Function],
                     ";
       border: solid 1px ",
+                    [Function],
+                    ";
+      font-weight: ",
                     [Function],
                     ";
     }
@@ -259,6 +264,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       margin-bottom: ",
                     [Function],
                     ";
+      text-align: center;
+      width: 54px;
     }
 
     &.item-disabled-option .input-radio-title {
@@ -293,6 +300,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     [Function],
                     ";
       border: solid 1px ",
+                    [Function],
+                    ";
+      font-weight: ",
                     [Function],
                     ";
     }

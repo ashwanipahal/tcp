@@ -2,7 +2,34 @@
 
 exports[`BillingPageContainer should render correctly 1`] = `
 <ReduxForm
-  billingData={Object {}}
+  billingData={
+    Object {
+      "address": Object {
+        "addressLine1": "500 Plaze Drive",
+        "addressLine2": "",
+        "city": "Secaucus",
+        "country": "US",
+        "firstName": "TCP",
+        "lastName": "Place",
+        "onFileAddressId": "",
+        "onFileAddressKey": "",
+        "state": "NJ",
+        "zipCode": "07094",
+      },
+      "billing": Object {
+        "addressLine1": "500 Plaze Drive",
+        "addressLine2": "",
+        "city": "Secaucus",
+        "country": "US",
+        "firstName": "TCP",
+        "lastName": "Place",
+        "onFileAddressId": "",
+        "onFileAddressKey": "",
+        "state": "NJ",
+        "zipCode": "07094",
+      },
+    }
+  }
   cardType={null}
   cvvCodeRichText=""
   destroyOnUnmount={true}
@@ -13,14 +40,23 @@ exports[`BillingPageContainer should render correctly 1`] = `
   initialValues={
     Object {
       "address": Object {
-        "country": undefined,
+        "addressLine1": "500 Plaze Drive",
+        "addressLine2": "",
+        "city": "Secaucus",
+        "country": "US",
+        "firstName": "TCP",
+        "lastName": "Place",
+        "onFileAddressId": "",
+        "onFileAddressKey": "",
+        "state": "NJ",
+        "zipCode": "07094",
       },
       "cardNumber": undefined,
       "cardType": undefined,
       "expMonth": undefined,
       "expYear": undefined,
       "paymentMethodId": "creditCard",
-      "sameAsShipping": true,
+      "sameAsShipping": false,
     }
   }
   isSameAsShippingChecked={true}
@@ -46,6 +82,7 @@ exports[`BillingPageContainer should render correctly 1`] = `
   touchOnChange={false}
   updateUnregisteredFields={false}
   validate={[Function]}
+  venmoError=""
 />
 `;
 
@@ -160,5 +197,6 @@ exports[`BillingPageContainer should render correctly if billing data is present
   touchOnChange={false}
   updateUnregisteredFields={false}
   validate={[Function]}
+  venmoError=""
 />
 `;
