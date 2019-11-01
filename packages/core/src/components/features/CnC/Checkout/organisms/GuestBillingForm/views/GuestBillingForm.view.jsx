@@ -125,7 +125,7 @@ class GuestBillingForm extends React.Component {
             </BodyCopy>
             <PaymentMethods labels={labels} isVenmoEnabled={isVenmoEnabled} />
             {isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL ? (
-              <div className="payment-paypal-container">
+              <div className="payment-paypal-container hide-on-desktop hide-on-tablet">
                 <BodyCopy
                   fontFamily="secondary"
                   fontSize="fs16"

@@ -94,9 +94,13 @@ const styles = css`
 
     .footer-paypal-button {
       position: relative;
-      width: 100%;
+      width: 450px;
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        width: 192px;
+      }
       @media ${props => props.theme.mediaQuery.smallOnly} {
         position: absolute;
+        width: 347px;
       }
     }
   }

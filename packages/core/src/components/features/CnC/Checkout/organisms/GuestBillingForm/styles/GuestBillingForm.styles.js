@@ -7,14 +7,5 @@ export default css`
   }
   .payment-paypal-container {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    @media ${props => props.theme.mediaQuery.large} {
-      display: none;
-    }
-    @media ${props => props.theme.mediaQuery.medium} {
-      display: none;
-    }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      display: block;
-    }
   }
 `;

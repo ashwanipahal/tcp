@@ -423,7 +423,7 @@ export class BillingPaymentForm extends React.PureComponent {
               })}
 
             {isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL ? (
-              <div className="payment-paypal-container">
+              <div className="payment-paypal-container hide-on-desktop hide-on-tablet">
                 <BodyCopy
                   fontFamily="secondary"
                   fontSize="fs16"
