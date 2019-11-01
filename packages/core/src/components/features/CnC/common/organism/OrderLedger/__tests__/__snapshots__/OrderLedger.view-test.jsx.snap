@@ -2,7 +2,7 @@
 
 exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=" elem-mb-MED "
 >
   <Styled(Col)
     colSize={
@@ -227,6 +227,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
       }
       iconLocator="arrowicon"
       isDefaultView={true}
+      showHeaderAlways={false}
     />
   </Styled(Col)>
 </div>
@@ -234,7 +235,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
 
 exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
 <div
-  className=" elem-mb-MED"
+  className=" elem-mb-MED "
 >
   <Styled(Col)
     colSize={
@@ -856,6 +857,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
       }
       iconLocator="arrowicon"
       isDefaultView={true}
+      showHeaderAlways={false}
     />
   </Styled(Col)>
 </div>
@@ -863,7 +865,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
 
 exports[`OrderLedger Component on confirmation page OrderLedger on confirmation page should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=" elem-mb-MED order-confirmation"
 >
   <Styled(Col)
     colSize={
@@ -1431,6 +1433,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
       }
       iconLocator="arrowicon"
       isDefaultView={true}
+      showHeaderAlways={true}
     />
   </Styled(Col)>
 </div>

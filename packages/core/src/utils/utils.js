@@ -107,6 +107,11 @@ export const isCanada = () => {
   return siteId === API_CONFIG.siteIds.ca;
 };
 
+export const isUsOnly = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.us;
+};
+
 export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
   const prototype = Object.getPrototypeOf(obj);
   // eslint-disable-next-line
