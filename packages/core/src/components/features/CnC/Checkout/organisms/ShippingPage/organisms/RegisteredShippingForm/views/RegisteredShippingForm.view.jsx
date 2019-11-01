@@ -353,6 +353,7 @@ class RegisteredShippingForm extends React.Component {
               type="button"
               buttonVariation="fixed-width"
               data-locator="edit-shipping-cancel-btn"
+              className="cancel-btn"
               onClick={this.toggleEditingMode}
             >
               {getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}
