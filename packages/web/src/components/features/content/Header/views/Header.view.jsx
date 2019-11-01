@@ -94,7 +94,9 @@ class Header extends React.PureComponent {
       totalItems,
       favStore,
       isPickupModalOpen,
+      loyaltyPromoBanner,
     } = this.props;
+
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
     return (
@@ -136,7 +138,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        <LoyaltyPromoBanner />
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -165,6 +167,7 @@ class Header extends React.PureComponent {
 
 Header.propTypes = {
   className: PropTypes.string.isRequired,
+  loyaltyPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

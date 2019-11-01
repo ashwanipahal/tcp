@@ -20,6 +20,7 @@ const Abstractor = {
         brandTabs: data.submodules.topNavWrapper.composites.brand_tabs,
         promoMessageWrapper: data.submodules.topNavWrapper.composites.promo_message_wrapper,
         promoTextBannerCarousel: data.submodules.promoTextBannerCarousel.composites.promoTextBanner,
+        loyaltyPromoBanner: data.submodules.loyaltyPromoBannerWrapper.composites.loyaltyPromoBanner,
       };
     } catch (e) {
       return {

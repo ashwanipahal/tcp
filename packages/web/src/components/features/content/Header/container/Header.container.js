@@ -25,7 +25,9 @@ import HeaderView from '../views';
 
 const mapStateToProps = state => {
   const { Header } = state;
+
   return {
+    loyaltyPromoBanner: Header.loyaltyPromoBanner,
     brandTabs: Header.brandTabs,
     promoMessageWrapper: Header.promoMessageWrapper,
     headerPromoArea: Header.promoTextBannerCarousel,
