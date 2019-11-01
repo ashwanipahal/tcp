@@ -1,13 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 import { RichText, Anchor } from '../../../atoms';
 import { Wrapper, StyledImage, Touchable } from '../LoyaltyPromoBanner.style.native';
-import { readCookie, setCookie } from '../../../../../utils/cookie.util';
 
 const crossImage = require('../../../../../../src/assets/close.png');
 
-class LoyaltyPromoBanner extends React.PureComponent<Props> {
+const cookieName = 'tcp-mobile';
+
+const date = new Date();
+const currentDateValue = date.getTime();
+
+class LoyaltyPromoBanner extends React.PureComponent {
   /**
    * To manage the state of icons on the
    * basis of visible & hide .
@@ -15,23 +19,36 @@ class LoyaltyPromoBanner extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      isDownIcon: false,
+      bannerClosed: false,
+      bannerVisible: false,
     };
   }
 
-  /**
-   * Check if required UUID cookie available else return default.
-   */
-  getUUID = uuidCookieString => {
-    const UUID = readCookie(uuidCookieString);
-    return UUID ? UUID.split(',')[0] : '-1002';
+  setDate = () => {
+    const daysAlive = 10;
+    const expiteDateValue = date.setTime(date.getTime() + daysAlive * 24 * 60 * 60 * 1000);
+    try {
+      AsyncStorage.setItem(cookieName, expiteDateValue);
+    } catch (error) {
+      console.info('error', error);
+    }
   };
 
-  closeButtonHandler = () => {
-    const currentDate = new Date();
-    setCookie({
-      value: currentDate.toGMTString(),
-      daysAlive: 10,
+  retrieveDate = () => {
+    return AsyncStorage.getItem(cookieName);
+  };
+
+  isDisplay = () => {
+    this.retrieveDate().then(data => {
+      if (currentDateValue >= data) {
+        this.setState({
+          bannerVisible: true,
+        });
+      } else {
+        this.setState({
+          bannerVisible: false,
+        });
+      }
     });
   };
 
@@ -39,10 +56,11 @@ class LoyaltyPromoBanner extends React.PureComponent<Props> {
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { isDownIcon } = this.state;
+    const { bannerClosed } = this.state;
     this.setState({
-      isDownIcon: !isDownIcon,
+      bannerClosed: !bannerClosed,
     });
+    this.setDate();
   };
 
   render() {
@@ -51,32 +69,39 @@ class LoyaltyPromoBanner extends React.PureComponent<Props> {
       navigation,
     } = this.props;
 
-    const { isDownIcon } = this.state;
+    this.isDisplay();
 
-    return (
-      <View>
-        {isDownIcon ? null : (
-          <Anchor navigation={navigation} url={link.url}>
-            <Wrapper>
-              <RichText source={{ html: text }} />
+    const { bannerClosed, bannerVisible } = this.state;
 
-              <Touchable
-                accessibilityRole="button"
-                accessibilityLabels="close"
-                onPress={this.validateIcon}
-              >
-                <StyledImage source={crossImage} />
-              </Touchable>
-            </Wrapper>
-          </Anchor>
-        )}
-      </View>
-    );
+    console.info('>>> bannerVisible >>>', bannerVisible);
+
+    if (bannerVisible) {
+      return (
+        <View>
+          {bannerClosed ? null : (
+            <Anchor navigation={navigation} url={link.url}>
+              <Wrapper>
+                <RichText source={{ html: text }} />
+                <Touchable
+                  accessibilityRole="button"
+                  accessibilityLabels="close"
+                  onPress={this.validateIcon}
+                >
+                  <StyledImage source={crossImage} />
+                </Touchable>
+              </Wrapper>
+            </Anchor>
+          )}
+        </View>
+      );
+    }
+    return null;
   }
 }
 
 LoyaltyPromoBanner.propTypes = {
   richTextList: PropTypes.arrayOf(PropTypes.object),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 LoyaltyPromoBanner.defaultProps = {
