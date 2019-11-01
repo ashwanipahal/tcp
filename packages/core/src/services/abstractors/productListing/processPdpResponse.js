@@ -89,6 +89,7 @@ const processPdpResponse = ({
       isGiftCard,
       colorFitSizeDisplayNames: getColorFitSizeDisplayNames(isGiftCard),
       listPrice: getListPrice(baseProduct),
+      swatchimage: baseProduct.swatchimage,
       offerPrice: getOfferPrice(baseProduct),
       highListPrice: getHighListPrice(baseProduct),
       highOfferPrice: getHighOfferPrice(baseProduct),
