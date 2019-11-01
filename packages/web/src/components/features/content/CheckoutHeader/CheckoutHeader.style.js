@@ -51,6 +51,9 @@ export default css`
         width: 85px;
         height: auto;
       }
+      @media ${props => props.theme.mediaQuery.smallMax} {
+        height: auto;
+      }
     }
   }
 

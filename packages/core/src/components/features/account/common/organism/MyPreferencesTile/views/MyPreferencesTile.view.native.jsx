@@ -32,7 +32,7 @@ export const MyPreferencesTile = ({
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_prefrence_heading', 'preferences')}
         color="black"
-        fontWeight="black"
+        fontWeight="extrabold"
       />
       <UnderlineStyle />
 

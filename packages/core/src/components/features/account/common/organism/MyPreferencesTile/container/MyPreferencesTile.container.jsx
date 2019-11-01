@@ -33,22 +33,16 @@ class MyPreferencesTile extends PureComponent {
     const {
       favoriteStoreDetails,
       getMyFavoriteStoreDetails,
-      socialAccounts,
       socialLoad,
       getContactPreferences,
-      customerPreferences,
     } = this.props;
-
-    if (!customerPreferences) {
-      getContactPreferences();
-    }
 
     if (!favoriteStoreDetails) {
       getMyFavoriteStoreDetails();
     }
-    if (socialAccounts.size === 0) {
-      socialLoad();
-    }
+
+    getContactPreferences();
+    socialLoad();
   }
 
   getContactPreferencesValues = customerPreferencesObject => {
