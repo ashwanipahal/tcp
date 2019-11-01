@@ -64,7 +64,7 @@ class Drawer extends React.Component {
   }
 
   componentWillUnmount() {
-    enableBodyScroll();
+    enableBodyScroll(this.scrollTargetElement);
   }
 
   /* Set drawer ref */
@@ -82,7 +82,7 @@ class Drawer extends React.Component {
       typeof close === 'function'
     ) {
       close();
-      enableBodyScroll();
+      enableBodyScroll(this.scrollTargetElement);
       e.stopPropagation();
     }
   };
@@ -93,6 +93,14 @@ class Drawer extends React.Component {
 
   handleUserRewards = userRewards => {
     return userRewards % 1 ? userRewards : Math.floor(userRewards);
+  };
+
+  removeScroll = drawer => {
+    const { open } = this.props;
+    this.scrollTargetElement = drawer;
+    if (open && this.scrollTargetElement) {
+      disableBodyScroll(this.scrollTargetElement);
+    }
   };
 
   /* Style for drawer to make it scrollable within */
@@ -126,7 +134,7 @@ class Drawer extends React.Component {
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
         drawer.style.top = `${headerHeight + userInfoHeight}px`;
-        disableBodyScroll();
+        this.removeScroll(drawer);
       }
     }
   };

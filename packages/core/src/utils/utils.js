@@ -1,6 +1,10 @@
 /* eslint-disable max-lines */
 
 import moment from 'moment';
+import {
+  disableBodyScroll as disableBodyScrollLib,
+  enableBodyScroll as enableBodyScrollLib,
+} from 'body-scroll-lock';
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -1005,10 +1009,25 @@ export const insertIntoString = (string, idx, rem, str) => {
 };
 
 /**
+ * To Identify whether the device is ios for web.
+ */
+
+export const isIosWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return true;
+  }
+  return false;
+};
+/**
  * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
  */
-export const enableBodyScroll = () => {
+export const enableBodyScroll = targetElem => {
   if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      enableBodyScrollLib(targetElem);
+      return;
+    }
     const [body] = document.getElementsByTagName('body');
     body.classList.remove('disableBodyScroll');
   }
@@ -1017,8 +1036,12 @@ export const enableBodyScroll = () => {
 /**
  * Disable Body Scroll
  */
-export const disableBodyScroll = () => {
+export const disableBodyScroll = targetElem => {
   if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      disableBodyScrollLib(targetElem);
+      return;
+    }
     const [body] = document.getElementsByTagName('body');
     body.classList.add('disableBodyScroll');
   }
