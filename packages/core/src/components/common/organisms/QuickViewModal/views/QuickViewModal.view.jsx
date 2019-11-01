@@ -4,6 +4,7 @@ import withStyles from '../../../hoc/withStyles';
 import styles, {
   customHeaderStyle,
   quickViewColorSwatchesCss,
+  customSpinnerStyle,
 } from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
 import { getLocator, enableBodyScroll, isMobileApp } from '../../../../../utils';
@@ -161,7 +162,7 @@ class QuickViewModal extends React.Component {
         rightAlignCrossIcon
       >
         {isLoading ? (
-          <Spinner />
+          <Spinner inheritedStyles={customSpinnerStyle} />
         ) : (
           <React.Fragment>
             {this.renderProductCustomizeFormPart()}

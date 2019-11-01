@@ -15,6 +15,7 @@ const styles = css`
     position: relative;
     width: 5px;
     height: 5px;
+    margin-right: 40px;
   }
   .tcp-circle div {
     position: absolute;
@@ -65,6 +66,7 @@ const styles = css`
       transform: translate(19px, 0);
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;
