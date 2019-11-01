@@ -95,7 +95,7 @@ class Drawer extends React.Component {
     return userRewards % 1 ? userRewards : Math.floor(userRewards);
   };
 
-  removeScroll = drawer => {
+  disableScroll = drawer => {
     const { open } = this.props;
     this.scrollTargetElement = drawer;
     if (open && this.scrollTargetElement) {
@@ -134,7 +134,7 @@ class Drawer extends React.Component {
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
         drawer.style.top = `${headerHeight + userInfoHeight}px`;
-        this.removeScroll(drawer);
+        this.disableScroll(drawer);
       }
     }
   };
