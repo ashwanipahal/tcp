@@ -30,7 +30,7 @@ const styles = css`
       display: none;
     }
   }
-  .select__input {
+  .select__input.select__input {
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0

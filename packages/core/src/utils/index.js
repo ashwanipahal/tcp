@@ -79,4 +79,6 @@ export {
   enableBodyScroll,
   disableBodyScroll,
   readCookieMobileApp,
+  getStyliticsUserName,
+  getStyliticsRegion,
 } from './utils';

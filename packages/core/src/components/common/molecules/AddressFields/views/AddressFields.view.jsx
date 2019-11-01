@@ -33,6 +33,7 @@ export class AddressFields extends React.PureComponent {
     className: PropTypes.string,
     variation: PropTypes.string,
     loadShipmentMethods: PropTypes.func.isRequired,
+    handleShipIntClick: PropTypes.func.isRequired,
     isGuest: PropTypes.bool,
   };
 
@@ -79,7 +80,7 @@ export class AddressFields extends React.PureComponent {
   };
 
   renderCountrySelector = () => {
-    const { addressFormLabels, formSection } = this.props;
+    const { addressFormLabels, formSection, handleShipIntClick } = this.props;
     return (
       <>
         <Col
@@ -108,6 +109,7 @@ export class AddressFields extends React.PureComponent {
             dataLocator="shipping internationally"
             target="_self"
             className="change-country-link"
+            onClick={handleShipIntClick}
           >
             {addressFormLabels.shipInternationally}
           </Anchor>
