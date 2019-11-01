@@ -18,6 +18,7 @@ import CHECKOUT_ACTIONS, {
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
   initCheckoutSectionPageAction,
+  toggleCountrySelectorModal,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -320,7 +321,9 @@ export const mapDispatchToProps = dispatch => {
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
-    dispatch,
+    toggleCountrySelector: payload => {
+      dispatch(toggleCountrySelectorModal(payload));
+    },
   };
 };
 

@@ -42,7 +42,7 @@ export default class ShippingPage extends React.PureComponent {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     saveToAddressBook: PropTypes.bool,
     updateShippingAddressData: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    toggleCountrySelector: PropTypes.func.isRequired,
     shippingDidMount: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
     syncErrors: PropTypes.shape({}),
@@ -356,7 +356,7 @@ export default class ShippingPage extends React.PureComponent {
       isSubmitting,
       formatPayload,
       ServerErrors,
-      dispatch,
+      toggleCountrySelector,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -368,7 +368,7 @@ export default class ShippingPage extends React.PureComponent {
     return (
       <>
         <ShippingForm
-          dispatch={dispatch}
+          toggleCountrySelector={toggleCountrySelector}
           isSubmitting={isSubmitting}
           routeToPickupPage={routeToPickupPage}
           addressLabels={addressLabels}
