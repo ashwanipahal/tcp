@@ -94,7 +94,7 @@ class Dropdown extends React.PureComponent {
     return (
       <BodyCopy
         component="div"
-        role="button"
+        role="link"
         textAlign="center"
         tabIndex={-1}
         onClick={e => this.onClickHandler(e, subSection)}
@@ -119,7 +119,7 @@ class Dropdown extends React.PureComponent {
     return (
       <BodyCopy
         component="div"
-        role="button"
+        role="link"
         textAlign="center"
         onClick={e => this.onClickHandler(e, nav)}
         tabIndex={-1}

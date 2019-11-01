@@ -3,6 +3,20 @@
 exports[`FreeShippingBannerSection View Component FreeShippingBannerSection should render correctly 1`] = `
 <Fragment>
   <Styled(View)>
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height={18}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/fast-shipping.png",
+          }
+        }
+        url=""
+        width={20}
+      />
+    </Styled(View)>
     <View>
       <Styled(BodyCopy)
         accessibilityText=""

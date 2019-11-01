@@ -82,6 +82,7 @@ class OutfitDetailsContainer extends React.PureComponent {
       addToBagErrorId,
       isPickupModalOpen,
       isLoggedIn,
+      navigation,
     } = this.props;
     if (outfitProducts) {
       return (
@@ -103,6 +104,7 @@ class OutfitDetailsContainer extends React.PureComponent {
           isPickupModalOpen={isPickupModalOpen}
           addToFavorites={addToFavorites}
           isLoggedIn={isLoggedIn}
+          navigation={navigation}
         />
       );
     }

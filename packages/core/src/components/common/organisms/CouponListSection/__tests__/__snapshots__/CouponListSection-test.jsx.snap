@@ -200,8 +200,7 @@ exports[`CouponList component should renders available list 1`] = `
         anchorVariation="primary"
         dataLocator="couponcard-helpApplyingPlaceCashlink"
         fontFamily="secondary"
-        fontSize="fs12"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         onClick={[Function]}
         underline={true}
       />

@@ -87,6 +87,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isInternationalShipping,
       isBagPageStickyHeader,
       checkoutServerError,
+      venmoError,
     } = this.props;
     return (
       <div className={className}>
@@ -130,6 +131,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
               className="checkout-page-error"
             />
           )}
+          {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
         </Row>
       </div>
     );
@@ -146,12 +148,14 @@ AddedToBagActions.propTypes = {
   isBagPageStickyHeader: PropTypes.bool,
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
+  venmoError: PropTypes.string,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
   showVenmo: true,
   isBagPageStickyHeader: false,
   isUSSite: true,
+  venmoError: '',
 };
 
 export default withStyles(AddedToBagActions, style);
