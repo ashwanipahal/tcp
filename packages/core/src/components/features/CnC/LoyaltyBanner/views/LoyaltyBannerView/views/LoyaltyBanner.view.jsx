@@ -31,6 +31,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       pageCategory,
       openLoginModal,
       checkThresholdValue,
+      isInternationalShipping,
     } = this.props;
     return (
       <div className={className}>
@@ -48,6 +49,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           pageCategory={pageCategory}
           openLoginModal={openLoginModal}
           checkThresholdValue={checkThresholdValue}
+          isInternationalShipping={isInternationalShipping}
         />
       </div>
     );

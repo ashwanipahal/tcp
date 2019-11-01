@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
-import { isUsOnly } from '@tcp/core/src/utils';
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
   getThresholdValue,
@@ -35,7 +34,7 @@ export const LoyaltyBannerContainer = ({
     earnedReward,
     pointsToNextReward,
   } = orderDetails;
-  return !isInternationalShipping && isUsOnly() ? (
+  return (
     <LoyaltyBannerView
       labels={labels}
       estimatedRewardsVal={estimatedRewards}
@@ -52,7 +51,7 @@ export const LoyaltyBannerContainer = ({
       openLoginModal={openLoginModal}
       isInternationalShipping={isInternationalShipping}
     />
-  ) : null;
+  );
 };
 
 LoyaltyBannerContainer.propTypes = {

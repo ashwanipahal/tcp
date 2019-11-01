@@ -104,7 +104,7 @@ const AddedToBag = ({
                   fromAddedToBagModal
                 />
                 <BossBanner labels={labels} />
-                <LoyaltyBanner pageCategory="isAddedToBagPage" />
+                {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
                 <StyledAnchorWrapper>
                   <Anchor
                     fontSizeVariation="medium"
@@ -116,20 +116,6 @@ const AddedToBag = ({
                     dataLocator="addedToBag-continueShopping"
                     text={labels.continueShopping}
                   />
-                  <BossBanner labels={labels} />
-                  <LoyaltyBanner pageCategory="isAddedToBagPage" />
-                  <StyledAnchorWrapper>
-                    <Anchor
-                      fontSizeVariation="medium"
-                      underline
-                      anchorVariation="primary"
-                      onPress={handleContinueShopping}
-                      noLink
-                      to=""
-                      dataLocator="addedToBag-continueShopping"
-                      text={labels.continueShopping}
-                    />
-                  </StyledAnchorWrapper>
                 </StyledAnchorWrapper>
               </ScrollView>
             </AddedToBagWrapper>

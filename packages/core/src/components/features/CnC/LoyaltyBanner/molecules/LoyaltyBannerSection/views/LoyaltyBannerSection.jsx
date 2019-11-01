@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { isUsOnly } from '@tcp/core/src/utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
 import { BodyCopy } from '../../../../../../common/atoms';
@@ -85,6 +86,7 @@ const LoyaltyBannerSection = props => {
     pageCategory,
     isProductDetailView,
     openLoginModal,
+    isInternationalShipping,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -153,7 +155,7 @@ const LoyaltyBannerSection = props => {
 
   remainingPlcc = LoyaltyLabels.remainingPlccValFn ? convertHtml(finalStrRemainingValue) : false;
 
-  return (
+  return !isInternationalShipping && isUsOnly() ? (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
         <BodyCopy className="loyalty-banner-section-wrapper" component="div" fontFamily="secondary">
@@ -189,7 +191,7 @@ const LoyaltyBannerSection = props => {
         </BodyCopy>
       </div>
     </div>
-  );
+  ) : null;
 };
 
 LoyaltyBannerSection.propTypes = {
@@ -208,6 +210,7 @@ LoyaltyBannerSection.propTypes = {
   isProductDetailView: PropTypes.bool,
   pageCategory: PropTypes.string,
   openLoginModal: PropTypes.string,
+  isInternationalShipping: PropTypes.bool,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -224,7 +227,8 @@ LoyaltyBannerSection.defaultProps = {
   openLoginModal: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
-  isProductDetailView: '',
+  isProductDetailView: false,
+  isInternationalShipping: false,
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);
