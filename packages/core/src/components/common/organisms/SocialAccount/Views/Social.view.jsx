@@ -185,7 +185,7 @@ class Socialview extends React.PureComponent {
           hasUserId: accounts[prop].userId,
         });
       }
-      if (prop === 'pointsAwarded') {
+      if (prop === 'pointsAwarded' && accounts[prop] !== null) {
         this.pointsInformation = {
           activity: accounts[prop].activity,
           id: accounts[prop].id,

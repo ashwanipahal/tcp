@@ -1,16 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] = `
-<div
-  className=""
->
-  <Styled(LoyaltyBannerSection)
-    currentSubtotal={21}
-    estimatedRewardsVal={20}
-    estimatedSubtotal={33}
-    labels={Object {}}
-    pageCategory=""
-    thresholdValue={16.66}
-  />
-</div>
-`;
+exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] = `""`;
