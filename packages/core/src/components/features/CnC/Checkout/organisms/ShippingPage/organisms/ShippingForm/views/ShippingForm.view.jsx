@@ -265,6 +265,7 @@ class ShippingForm extends React.Component {
       isVenmoShippingDisplayed,
       showAccordian,
       isMobile,
+      pageCategory,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -373,7 +374,11 @@ class ShippingForm extends React.Component {
             </Col>
             {this.renderGiftServices()}
           </Row>
-          <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
+          <CheckoutOrderInfo
+            showAccordian={showAccordian}
+            isGuest={isGuest}
+            pageCategory={pageCategory}
+          />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}

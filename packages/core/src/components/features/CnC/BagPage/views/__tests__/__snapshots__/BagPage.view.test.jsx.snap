@@ -290,6 +290,8 @@ exports[`Bag page View should render with only SFL condition 1`] = `
                 ";
   }
 
+  margin-bottom: 0px;
+
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
   }
@@ -298,6 +300,23 @@ exports[`Bag page View should render with only SFL condition 1`] = `
     margin-right: ",
                 [Function],
                 ";
+  }
+
+  .checkout-button {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
+    padding: 0 13px 0;
+    box-sizing: border-box;
+    margin-top: 35px;
+  }
+
+  button.checkout {
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding: 16px 0;
   }
 ",
               ]
@@ -475,6 +494,8 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
                 ";
   }
 
+  margin-bottom: 0px;
+
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
   }
@@ -483,6 +504,23 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
     margin-right: ",
                 [Function],
                 ";
+  }
+
+  .checkout-button {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
+    padding: 0 13px 0;
+    box-sizing: border-box;
+    margin-top: 35px;
+  }
+
+  button.checkout {
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding: 16px 0;
   }
 ",
               ]

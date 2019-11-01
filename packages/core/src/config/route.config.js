@@ -171,6 +171,12 @@ const ROUTES_LIST = [
     resolver: '/TrackOrder',
     params: ['orderId', 'emailAddress'],
   },
+  {
+    noSlugPath: 'help-center',
+    path: '/help-center/:pageName?',
+    resolver: '/HelpCenter',
+    params: ['pageName'],
+  },
 ];
 
 const ROUTING_MAP = {};
