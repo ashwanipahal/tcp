@@ -37,10 +37,6 @@ class SearchBar extends React.PureComponent {
 
   openFullSizeSearchModel = () => {
     this.commonCloseClick();
-    const elementExists = document.getElementById('search-input');
-    if (elementExists) {
-      document.getElementById('search-input').focus();
-    }
   };
 
   openSearchBar = e => {
@@ -135,18 +131,22 @@ class SearchBar extends React.PureComponent {
     if (searchText) {
       this.setDataInLocalStorage(searchText);
     }
-
+    if (window.innerWidth <= breakpoints.values.lg) {
+      this.commonCloseClick();
+    } else {
+      this.closeSearchLayover();
+    }
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
-  hideOverlayAfterClick = (e, searchText) => {
-    e.preventDefault();
-    e.stopPropagation();
+  hideOverlayAfterClick = searchText => {
     this.setDataInLocalStorage(searchText);
+    if (window.innerWidth <= breakpoints.values.lg) {
+      this.commonCloseClick();
+    } else {
+      this.closeSearchLayover();
+    }
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-    const { setSearchState, toggleSearchResults } = this.props;
-    setSearchState(false);
-    toggleSearchResults(false);
   };
 
   render() {
