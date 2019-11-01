@@ -20,10 +20,10 @@ import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
-import logger from '@tcp/core/src/utils/loggerInstance';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -88,23 +88,37 @@ class TCPWebApp extends App {
     }
   };
 
+  // this function will check if user not login overlay needs to be displayed on page load
+  // it will check for login user
+  checkForlogin = () => {
+    const { router, store } = this.props;
+    const { params } = (router && router.query) || {};
+    if (params === 'login') {
+      const isUserLoggedIn = getUserLoggedInState(store.getState());
+      if (isUserLoggedIn !== true) {
+        store.dispatch(
+          openOverlayModal({
+            component: 'login',
+            componentProps: 'login',
+          })
+        );
+      }
+    }
+  };
+
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
+    this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
-
-    try {
-      if (isErrorReportingBrowserActive) {
-        initErrorReporter({
-          isServer: false,
-          envId,
-          raygunApiKey,
-          channelId,
-          isDevelopment: isDevelopment(),
-        });
-      }
-    } catch (e) {
-      logger.info('Error occurred in Raygun initialization', e);
+    if (isErrorReportingBrowserActive) {
+      initErrorReporter({
+        isServer: false,
+        envId,
+        raygunApiKey,
+        channelId,
+        isDevelopment: isDevelopment(),
+      });
     }
 
     /**
@@ -146,10 +160,8 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
-      // preview check from akamai header
-      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
-      // preview date if any from the query param
-      apiConfig.previewDate = query.preview_date;
+      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
+
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
