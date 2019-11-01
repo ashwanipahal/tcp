@@ -1,9 +1,10 @@
+/* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import { getLocator } from '../../../../../utils';
 import { getScreenWidth } from '../../../../../utils/index.native';
-import { Anchor, BodyCopy, DamImage } from '../../../atoms';
+import { Anchor, BodyCopy, /* DamImage, */ Image } from '../../../atoms';
 import {
   Container,
   HeaderContainer,
@@ -21,6 +22,15 @@ import config from '../moduleM.config';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 const MODULE_WIDTH = getScreenWidth();
+
+/**
+ * @class ModuleM - global reusable component will display display a featured
+ * category module with category links and featured product images
+ * This component is plug and play at any given slot in layout by passing required data
+ * @param {headerText} headerText the list of data for header
+ * @param {promoBanner} promoBanner promo banner data
+ * @param {divTabs} divTabs division tabs data
+ */
 class ModuleM extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -37,13 +47,16 @@ class ModuleM extends React.PureComponent {
     this.setState({ currentTabItem: id });
   }
 
-  getImageDimension = () => {
+  getImageDimension = totalImages => {
     const { OFFSET, GUTTER_SPACE } = config;
-    return parseInt((MODULE_WIDTH - OFFSET - GUTTER_SPACE) / 3, 10);
+    const moduleWidth = MODULE_WIDTH - OFFSET;
+    const divider = totalImages <= 3 ? 2 : 3;
+    const gutter = totalImages <= 3 ? GUTTER_SPACE : GUTTER_SPACE * 2;
+    return parseInt((moduleWidth - gutter) / divider, 10);
   };
 
-  onTabChange = (catId, tabItem) => {
-    this.setState({ currentTabItem: tabItem });
+  onTabChange = catId => {
+    this.setState({ currentTabItem: catId });
   };
 
   /*
@@ -80,7 +93,8 @@ class ModuleM extends React.PureComponent {
       currentTabData = images.find(obj => obj.id === currentTabItem);
     }
     const { smallCompImages } = currentTabData;
-    const imageDimension = this.getImageDimension();
+    const totalImages = smallCompImages && smallCompImages.length;
+    const imageDimension = this.getImageDimension(totalImages);
     return (
       <Container>
         <HeaderContainer>
@@ -114,36 +128,52 @@ class ModuleM extends React.PureComponent {
           </PromoContainer>
         )}
         <ButtonTabsContainer>
-          <ButtonTabs selectedTabId={1} onTabChange={this.onTabChange} tabs={tabItems} />
+          <ButtonTabs
+            selectedTabId={currentTabItem}
+            onTabChange={this.onTabChange}
+            tabs={tabItems}
+            navigation={navigation}
+          />
         </ButtonTabsContainer>
         {smallCompImages && smallCompImages.length > 0 ? (
           <ImageContainer>
             {smallCompImages.map(({ image, link }, index) => {
-              const { IMG_DATA } = config;
-              const anchorEnable = true;
+              // const { IMG_DATA } = config;
               return (
-                <Tile tileIndex={index} key={index.toString()}>
+                <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
                   <Anchor url={link.url} navigation={navigation}>
-                    <DamImage
-                      alt={image.alt}
-                      testID={`${getLocator('moduleM_image')}${index}`}
-                      url={image.url}
+                    <Image
+                      source={{ uri: image.url }}
                       height={imageDimension}
-                      marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
                       width={imageDimension}
-                      imgConfig={IMG_DATA.productImgConfig[0]}
-                      link={link}
+                      marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
                     />
+                    {/* TODO: Need to use DAM Image Component */}
+                    {/* <DamImage
+                      alt={image.alt}
+                      url={image.url}
+                      testID={`${getLocator('moduleM_image')}${index}`}
+                      marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
+                      height={imageDimension}
+                      width={imageDimension}
+                      imgData={image}
+                      imgConfig={IMG_DATA.productImgConfig[0]}
+                    /> */}
                   </Anchor>
                   <Anchor
-                    testID={`${getLocator('moduleM_textlink')}${index}`}
-                    fontSizeVariation="large"
-                    text={link.text}
-                    visible={anchorEnable}
                     url={link.url}
                     navigation={navigation}
-                    anchorVariation="primary"
-                  />
+                    testID={`${getLocator('moduleM_textlink')}${index}`}
+                  >
+                    <BodyCopy
+                      mobileFontFamily="secondary"
+                      fontSize="fs15"
+                      fontWeight="regular"
+                      color="gray.900"
+                      text={link.text}
+                      textAlign="center"
+                    />
+                  </Anchor>
                 </Tile>
               );
             })}
@@ -153,7 +183,7 @@ class ModuleM extends React.PureComponent {
                 navigation={navigation}
                 testID={getLocator('moduleM_cta_btn')}
               >
-                <ButtonContainer imageDimension={imageDimension}>
+                <ButtonContainer imageCount={totalImages} imageDimension={imageDimension}>
                   <BodyCopy
                     mobileFontFamily="primary"
                     fontSize="fs20"

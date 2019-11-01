@@ -1,7 +1,7 @@
 export default {
   TOTAL_IMAGES: 8,
   OFFSET: 28,
-  GUTTER_SPACE: 38,
+  GUTTER_SPACE: 19,
   images8: {
     colSize: {
       small: 2,

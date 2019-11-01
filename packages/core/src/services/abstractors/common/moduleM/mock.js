@@ -120,7 +120,7 @@ export default {
             {
               image: {
                 url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                 alt: 'Toddler Girl alt',
                 title: 'Toddler Girl title',
                 crop_d: '',
@@ -138,7 +138,7 @@ export default {
             {
               image: {
                 url:
-                  'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                 alt: 'Boy',
                 title: 'Boy',
                 crop_d: '',
@@ -156,7 +156,7 @@ export default {
             {
               image: {
                 url:
-                  'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                 alt: 'Toddler Boy alt',
                 title: 'Toddler Boy title',
                 crop_d: '',
@@ -174,7 +174,7 @@ export default {
             {
               image: {
                 url:
-                  'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                 alt: 'Baby',
                 title: 'Baby',
                 crop_d: '',
@@ -265,7 +265,7 @@ export default {
               },
               link: {
                 url: '/c/',
-                text: 'Dresses',
+                text: 'Dresses 2',
                 title: 'Dresses',
                 target: '',
                 external: 0,
@@ -419,7 +419,7 @@ export default {
               },
               link: {
                 url: '/c/',
-                text: 'Dresses',
+                text: 'Dresses 3',
                 title: 'Dresses',
                 target: '',
                 external: 0,
@@ -573,7 +573,7 @@ export default {
               },
               link: {
                 url: '/c/',
-                text: 'Dresses',
+                text: 'Dresses 4',
                 title: 'Dresses',
                 target: '',
                 external: 0,

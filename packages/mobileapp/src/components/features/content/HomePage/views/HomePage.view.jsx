@@ -83,12 +83,12 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
-        <ModuleM navigation={navigation} {...mock.moduleM.composites} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
+        <ModuleM navigation={navigation} {...mock.moduleM.composites} />
       </LazyloadScrollView>
     );
   }
