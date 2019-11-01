@@ -5,7 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
-import { getLocator, isCanada } from '@tcp/core/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -48,12 +48,10 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
 };
 
 const renderLoyaltyBanner = pageCategory => {
-  return (
-    !isCanada() && pageCategory !== 'confirmation' && <LoyaltyBanner pageCategory={pageCategory} />
-  );
+  return <LoyaltyBanner pageCategory={pageCategory} />;
 };
 
-const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
+const getBody = (className, ledgerSummaryData, labels, pageCategory, orderLedgerAfterView) => {
   const {
     itemsCount,
     currencySymbol,
@@ -69,7 +67,6 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
     totalOrderSavings,
     isOrderHasShipping,
   } = ledgerSummaryData;
-
   const toolTipMinWidth = '205px';
   return (
     <React.Fragment>
@@ -355,6 +352,7 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory) => {
             </Col>
           </Row>
         ) : null}
+        {orderLedgerAfterView}
         {pageCategory === 'bagPage' && <FreeShippingBanner />}
         {renderLoyaltyBanner(pageCategory)}
       </Grid>

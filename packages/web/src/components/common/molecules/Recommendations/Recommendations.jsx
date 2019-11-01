@@ -45,7 +45,10 @@ class Recommendations extends Component {
     if (portalValue) {
       action.mboxName = portalValue;
     }
-    window.addEventListener('load', loadRecommendations(action));
+    if (window.adobe && window.adobe.target) {
+      return loadRecommendations(action);
+    }
+    return window.addEventListener('load', loadRecommendations(action));
   }
 
   componentWillUnmount() {

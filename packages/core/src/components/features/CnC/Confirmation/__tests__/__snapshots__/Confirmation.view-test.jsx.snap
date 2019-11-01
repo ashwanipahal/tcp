@@ -111,6 +111,7 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
     isVenmoPaymentInProgress={false}
+    pageCategory=""
     venmoPayment={Object {}}
   />
 </div>
@@ -225,6 +226,7 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
     isVenmoPaymentInProgress={true}
+    pageCategory=""
     venmoPayment={
       Object {
         "ccBrand": "VENMO",
@@ -346,6 +348,7 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
   <Styled(CheckoutOrderInfo)
     isConfirmationPage={true}
     isVenmoPaymentInProgress={true}
+    pageCategory=""
     venmoPayment={
       Object {
         "ccBrand": "VENMO",
