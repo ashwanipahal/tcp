@@ -33,6 +33,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       getCurrencySymbol,
       pageCategory,
       openLoginModal,
+      checkThresholdValue,
       isInternationalShipping,
     } = this.props;
     return !isInternationalShipping && isUsOnly() ? (
@@ -50,6 +51,8 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           getCurrencySymbol={getCurrencySymbol}
           pageCategory={pageCategory}
           openLoginModal={openLoginModal}
+          checkThresholdValue={checkThresholdValue}
+          isInternationalShipping={isInternationalShipping}
         />
       </div>
     ) : null;
