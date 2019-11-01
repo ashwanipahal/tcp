@@ -160,6 +160,11 @@ const ROUTES_LIST = [
     path: '/stores',
     resolver: '/StoreList',
   },
+  {
+    noSlugPath: 'changepassword',
+    path: '/changepassword',
+    resolver: '/changepassword',
+  },
 ];
 
 const ROUTING_MAP = {};
