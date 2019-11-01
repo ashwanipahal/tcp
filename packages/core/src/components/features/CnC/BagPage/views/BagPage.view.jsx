@@ -14,6 +14,7 @@ import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
 import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
+import { isClient } from '../../../../../utils';
 
 class BagPageView extends React.Component {
   constructor(props) {
@@ -111,7 +112,11 @@ class BagPageView extends React.Component {
     const { bagStickyHeaderInterval } = this.props;
     const condensedBagHeader = this.bagPageHeader;
     const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
-    if (condensedBagHeader && window.pageYOffset > sticky - condensedPageHeaderHeight) {
+    if (
+      isClient() &&
+      condensedBagHeader &&
+      window.pageYOffset > sticky - condensedPageHeaderHeight
+    ) {
       condensedBagHeader.style.top = `${condensedPageHeaderHeight.toString()}px`;
       this.setState({ showStickyHeaderMob: true });
       if (this.timer !== null) {
@@ -128,7 +133,7 @@ class BagPageView extends React.Component {
 
   handleBagHeaderScroll = sticky => {
     const condensedPageHeaderHeight = BagPageUtils.getPageLevelHeaderHeight();
-    if (window.pageYOffset > sticky + 30) {
+    if (isClient() && window.pageYOffset > sticky + 30) {
       this.setState({ showCondensedHeader: true }, () => {
         this.bagCondensedHeader.firstElementChild.style.top = `${condensedPageHeaderHeight.toString()}px`;
       });
