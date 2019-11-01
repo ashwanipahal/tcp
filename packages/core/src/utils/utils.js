@@ -1020,10 +1020,7 @@ export const disableBodyScroll = () => {
 };
 
 export const getStyliticsUserName = () => {
-  console.log('getAPIConfig', getAPIConfig());
   const { styliticsUserNameTCP, styliticsUserNameGYM } = getAPIConfig();
-  console.log('styliticsUserNameTCP', styliticsUserNameTCP);
-  console.log('styliticsUserNameGYM', styliticsUserNameGYM);
   if (isTCP()) {
     return styliticsUserNameTCP;
   }
@@ -1031,10 +1028,7 @@ export const getStyliticsUserName = () => {
 };
 
 export const getStyliticsRegion = () => {
-  console.log('getAPIConfig', getAPIConfig());
   const { styliticsRegionTCP, styliticsRegionGYM } = getAPIConfig();
-  console.log('styliticsRegionTCP', styliticsRegionTCP);
-  console.log('styliticsRegionGYM', styliticsRegionGYM);
   if (isTCP()) {
     return styliticsRegionTCP;
   }
