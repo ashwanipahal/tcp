@@ -11,12 +11,12 @@ import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
-import { isClient } from '../../../../../utils';
 import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
+import { isClient } from '../../../../../utils';
 
-class BagPageView extends React.Component {
+class BagPageView extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,6 +63,7 @@ class BagPageView extends React.Component {
         this.bagPageCondenseHeaderBind = true;
       } else if (header) {
         this.addScrollListenerMobileHeader();
+        this.bagPageCondenseHeaderBind = true;
       }
     }
   }

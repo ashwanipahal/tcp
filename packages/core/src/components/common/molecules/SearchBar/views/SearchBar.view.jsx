@@ -139,10 +139,13 @@ class SearchBar extends React.PureComponent {
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
-  hideOverlayAfterClick = searchText => {
+  hideOverlayAfterClick = (e, searchText) => {
+    e.preventDefault();
+    e.stopPropagation();
     this.setDataInLocalStorage(searchText);
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-    const { toggleSearchResults } = this.props;
+    const { setSearchState, toggleSearchResults } = this.props;
+    setSearchState(false);
     toggleSearchResults(false);
   };
 

@@ -50,7 +50,7 @@ class SuggestionBox extends React.PureComponent {
                         <Anchor
                           noLink
                           className="suggestion-label"
-                          onClick={() => hideOverlayAfterClick(`${item}`)}
+                          onClick={e => hideOverlayAfterClick(e, `${item}`)}
                         >
                           {item.toUpperCase()}
                         </Anchor>
