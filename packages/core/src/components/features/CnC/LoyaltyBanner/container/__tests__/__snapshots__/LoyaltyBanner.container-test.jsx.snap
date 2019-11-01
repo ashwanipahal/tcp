@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `
-<Styled(LoyaltyBanner)
-  getCurrencySymbol=""
-  isGuest={false}
-  isPlcc={false}
-  pageCategory=""
-  thresholdValue={16.66}
-/>
-`;
+exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = `""`;

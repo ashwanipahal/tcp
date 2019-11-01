@@ -558,6 +558,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -1190,6 +1191,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -1908,6 +1910,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           },
           "fontWeights": Object {
             "black": "900",
+            "bold": "700",
             "extrabold": "800",
             "regular": "400",
             "semibold": "600",
@@ -2540,6 +2543,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             },
             "fontWeights": Object {
               "black": "900",
+              "bold": "700",
               "extrabold": "800",
               "regular": "400",
               "semibold": "600",
@@ -3200,6 +3204,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 },
                 "fontWeights": Object {
                   "black": "900",
+                  "bold": "700",
                   "extrabold": "800",
                   "regular": "400",
                   "semibold": "600",
@@ -3992,6 +3997,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   },
                   "fontWeights": Object {
                     "black": "900",
+                    "bold": "700",
                     "extrabold": "800",
                     "regular": "400",
                     "semibold": "600",
@@ -4652,6 +4658,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     },
                     "fontWeights": Object {
                       "black": "900",
+                      "bold": "700",
                       "extrabold": "800",
                       "regular": "400",
                       "semibold": "600",
@@ -5411,6 +5418,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -6133,6 +6141,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           },
           "fontWeights": Object {
             "black": "900",
+            "bold": "700",
             "extrabold": "800",
             "regular": "400",
             "semibold": "600",
@@ -6768,6 +6777,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             },
             "fontWeights": Object {
               "black": "900",
+              "bold": "700",
               "extrabold": "800",
               "regular": "400",
               "semibold": "600",
@@ -7416,6 +7426,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 },
                 "fontWeights": Object {
                   "black": "900",
+                  "bold": "700",
                   "extrabold": "800",
                   "regular": "400",
                   "semibold": "600",
@@ -8196,6 +8207,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   },
                   "fontWeights": Object {
                     "black": "900",
+                    "bold": "700",
                     "extrabold": "800",
                     "regular": "400",
                     "semibold": "600",
@@ -8844,6 +8856,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     },
                     "fontWeights": Object {
                       "black": "900",
+                      "bold": "700",
                       "extrabold": "800",
                       "regular": "400",
                       "semibold": "600",

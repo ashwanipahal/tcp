@@ -59,7 +59,7 @@ exports[`DropdownList component should renders correctly 1`] = `
             link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
-            role="button"
+            role="link"
             textAlign="left"
           >
             <Styled(BodyCopy)
@@ -146,7 +146,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
             link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
-            role="button"
+            role="link"
             textAlign="left"
           >
             <Styled(BodyCopy)
@@ -186,7 +186,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
             link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
-            role="button"
+            role="link"
             textAlign="left"
           >
             <Styled(BodyCopy)
@@ -226,7 +226,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
             link={null}
             onClick={[Function]}
             onKeyPress={[Function]}
-            role="button"
+            role="link"
             textAlign="left"
           >
             <Styled(BodyCopy)

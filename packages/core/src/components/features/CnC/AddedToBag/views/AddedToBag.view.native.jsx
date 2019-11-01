@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { isCanada } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -104,7 +103,7 @@ const AddedToBag = ({
                 fromAddedToBagModal
               />
               <BossBanner labels={labels} />
-              {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
+              {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
               <StyledAnchorWrapper>
                 <Anchor
                   fontSizeVariation="medium"
