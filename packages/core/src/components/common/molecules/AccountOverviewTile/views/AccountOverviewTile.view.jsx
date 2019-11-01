@@ -10,6 +10,7 @@ export const AccountOverviewTile = ({
   ctaTitle,
   ctaLink,
   ctaPath,
+  target,
   children,
   className,
   dataLocatorPrefix,
@@ -39,6 +40,7 @@ export const AccountOverviewTile = ({
           fill="BLUE"
           centered
           className="elem-mb-SM"
+          target={target}
           dataLocator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
         >
           {ctaTitle}
@@ -56,6 +58,7 @@ AccountOverviewTile.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   dataLocatorPrefix: PropTypes.string,
+  target: PropTypes.string,
 };
 
 AccountOverviewTile.defaultProps = {
@@ -65,6 +68,7 @@ AccountOverviewTile.defaultProps = {
   ctaPath: '',
   className: '',
   dataLocatorPrefix: '',
+  target: '_self',
 };
 
 export default withStyles(AccountOverviewTile, styles);

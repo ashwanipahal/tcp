@@ -30,6 +30,11 @@ export const getCreditCardDefault = createSelector(
     )
 );
 
+export const getMyPlaceRewardCreditCard = createSelector(
+  [getCardListState],
+  creditCardList => creditCardList && creditCardList.filter(card => card.ccType === 'PLACE CARD')
+);
+
 export const getCardListFetchingState = state => {
   return state.PaymentReducer.get('isFetching');
 };

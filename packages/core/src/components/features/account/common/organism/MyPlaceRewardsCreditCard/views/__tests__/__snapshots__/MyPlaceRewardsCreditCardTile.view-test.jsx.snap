@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaymentOverviewTile component should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaLink="https://d.comenity.net/childrensplace/?ecid=manageacct"
+  ctaTitle="APPLY OR ACCEPT OFFER"
+  target="new"
+  title="My Place Rewards Credit Card"
+>
+  <Styled(Row)
+    className=" elem-mb-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="container-top"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            Add your card to:
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="list-style"
+            color="text.primary"
+            component="u"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <li>
+              Earn 2 pints for every $1 spent
+            </li>
+            <li>
+              Get 25% off birthday savings
+            </li>
+            <li>
+              Check out even faster
+            </li>
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="elem-mt-LRG"
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="shop-now-btn"
+              color="GRAY"
+              data-locator="orders-shop-now-btn"
+              fill="WHITE"
+            >
+              ADD YOUR CARD
+            </Styled(Button)>
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Don’t have a My Place Rewards Credit Card?
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(AccountOverviewTile)>
+`;

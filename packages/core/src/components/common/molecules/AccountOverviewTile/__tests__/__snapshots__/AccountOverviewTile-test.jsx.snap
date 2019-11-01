@@ -61,6 +61,7 @@ exports[`AccordionList component renders correctly AccountOverviewTile 1`] = `
       dataLocator="accountoverview-test-viewallcta"
       fill="BLUE"
       fullWidth={true}
+      target="_self"
       to=""
     >
       test
@@ -128,6 +129,7 @@ exports[`AccordionList component renders empty correctly AccountOverviewTile 1`]
       dataLocator="accountoverview--viewallcta"
       fill="BLUE"
       fullWidth={true}
+      target="_self"
       to=""
     />
   </Styled(BodyCopy)>
