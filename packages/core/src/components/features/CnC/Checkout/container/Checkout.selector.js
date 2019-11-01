@@ -368,7 +368,7 @@ const getBillingLabels = createSelector(
       lbl_billing_cardEditCancel: cancelButtonText,
       lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
-      lbl_billing_continueWithPayPal: continueWithPayPal = 'Complete Purchase with',
+      lbl_billing_continueWithPayPal: continueWithPayPal,
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
       lbl_billing_addCC: addCreditCard,
     } = labels;
