@@ -134,9 +134,7 @@ class SearchBar extends React.PureComponent {
     if (window.innerWidth <= breakpoints.values.lg) {
       this.commonCloseClick();
     } else {
-      const { setSearchState, toggleSearchResults } = this.props;
-      toggleSearchResults(false);
-      setSearchState(false);
+      this.closeSearchLayover();
     }
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
@@ -146,9 +144,7 @@ class SearchBar extends React.PureComponent {
     if (window.innerWidth <= breakpoints.values.lg) {
       this.commonCloseClick();
     } else {
-      const { setSearchState, toggleSearchResults } = this.props;
-      toggleSearchResults(false);
-      setSearchState(false);
+      this.closeSearchLayover();
     }
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
