@@ -13,6 +13,7 @@ const PayPalButton = props => {
     paypalEnv,
     setVenmoState,
     closeModal,
+    paypalStaticUrl,
   } = props;
 
   const [showAsModal, setAsModal] = useState(false);
@@ -58,7 +59,7 @@ const PayPalButton = props => {
     };
   }
 
-  const webURL = `http://dev.childrensplace.com:3000/static/paypal/index.html?key=${
+  const webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
     getPayPalSettings.paypalInContextToken
   }&paypalEnv=${paypalEnv}`;
   console.log('url=>', webURL);
@@ -93,6 +94,7 @@ PayPalButton.propTypes = {
   paypalEnv: PropTypes.string.isRequired,
   setVenmoState: PropTypes.bool,
   closeModal:PropTypes.bool,
+  paypalStaticUrl: PropTypes.string.isRequired,
 };
 
 export default PayPalButton;

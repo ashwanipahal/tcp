@@ -12,6 +12,8 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
     const apiConfigObj = getAPIConfig();
     const { paypalEnv } = apiConfigObj;
     this.paypalEnv = paypalEnv;
+    const { paypalStaticUrl } = apiConfigObj;
+    this.paypalStaticUrl = paypalStaticUrl;
   }
 
   componentDidMount() {
@@ -79,6 +81,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
           paypalAuthorizationHandle={paypalAuthorizationHandle}
           clearPaypalSettings={clearPaypalSettings}
           paypalEnv={this.paypalEnv}
+          paypalStaticUrl={this.paypalStaticUrl}
           setVenmoState={setVenmoState}
           closeModal={closeModal}
         />
