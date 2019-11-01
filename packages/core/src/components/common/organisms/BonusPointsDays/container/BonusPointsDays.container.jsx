@@ -80,7 +80,6 @@ export class BonusPointsDays extends React.Component {
       isInternationalShipping,
     } = this.props;
     return (
-      !isInternationalShipping &&
       !isCanada() &&
       isBonusPointsEnabled && (
         <BonusPointsView
@@ -95,6 +94,7 @@ export class BonusPointsDays extends React.Component {
           isBagPage={isBagPage}
           isDefaultOpen={isDefaultOpen}
           additionalClassNameModal={additionalClassNameModal}
+          isInternationalShipping={isInternationalShipping}
         />
       )
     );
