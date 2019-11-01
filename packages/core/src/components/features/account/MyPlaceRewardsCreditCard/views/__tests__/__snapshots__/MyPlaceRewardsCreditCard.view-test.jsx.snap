@@ -3,7 +3,6 @@
 exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = `
 <div>
   <Styled(FormPageHeading)
-    className="elem-mb-XL myAccountRightView"
     data-locator=""
     heading="lbl_PLCCForm_rewardsCardHeading"
   />
@@ -27,20 +26,40 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
           }
         }
       >
-        <Styled(BodyCopy)
-          className="Modal_Heading"
-          color="text.primary"
-          component="p"
-          fontFamily="primary"
-          fontSize="fs48"
-          fontWeight="black"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="center"
+        <Styled(Row)
+          centered={true}
+          className="Benefit_Heading_Suffix"
+          fullBleed={true}
         >
-          lbl_PLCCModal_applyNowHeaderText
-        </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="Benefit_Heading"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs48"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="center"
+          >
+            lbl_PLCCModal_applyNowHeaderText
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="primary"
+            fontSize="fs12"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="center"
+          >
+            lbl_PLCCModal_applyNowHeaderTextSuffix
+          </Styled(BodyCopy)>
+        </Styled(Row)>
         <div
           className="header-image"
         />
@@ -64,7 +83,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
         }
       >
         <Styled(BodyCopy)
-          className={null}
+          className="apply-now-subtext"
           color="gray.900"
           component="div"
           data-locator="ship_to_text_2"
@@ -125,10 +144,11 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
       >
         <Styled(Button)
           buttonVariation="fixed-width"
-          className="ApplyNow__link"
+          className="ApplyNow__link blackFontColor"
           data-locator="plcc_apply_btn"
           fill="WHITE"
           fontWeight="semibold"
+          onClick={[Function]}
           type="submit"
         >
           lbl_PLCCForm_manageCreditCardAccount
@@ -136,7 +156,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
       </Styled(Col)>
     </Styled(Row)>
     <Styled(BodyCopy)
-      className="elem-mt-XL"
+      className="benefits-text elem-mt-XL"
       color="text.secondary"
       component="p"
       fontFamily="primary"
@@ -167,7 +187,7 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
         }
       >
         <Styled(BodyCopy)
-          className="elem-mt-XS elem-mb-LRG"
+          className="withMyPlaceRewardText"
           color="gray.900"
           component="div"
           data-locator="ship_to_text_2"
@@ -184,11 +204,33 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
       </Styled(Col)>
     </Styled(Row)>
     <div
-      className="offer_info_icon"
+      className="offer_info_icon elem-mt-LRG"
       data-locator="plcc_modal_logo"
       offerType="lbl_PLCCModal_oneEqualsTwoPoints"
     />
   </div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <div
+        className="table-image"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <div
     className="footerLinks"
   >
@@ -239,6 +281,5 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
       lbl_PLCCModal_rewardsProgramText
     </Styled(Anchor)>
   </div>
-  <Connect(ApplyNowModalWrapper) />
 </div>
 `;
