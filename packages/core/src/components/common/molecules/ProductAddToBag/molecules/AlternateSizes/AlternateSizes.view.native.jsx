@@ -1,8 +1,6 @@
 /** @module AlternateSizes
  * @summary renders a Alternate sizes for products of other category.
  *
- * @author Lalit
- *
  */
 
 import React from 'react';
