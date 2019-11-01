@@ -8,6 +8,11 @@ import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from './styles/AlternateSizes.style';
 
+// @flow
+type Props = {
+  className: string,
+};
+
 export class AlternateSizes extends React.PureComponent<Props> {
   static propTypes = {
     title: PropTypes.string.isRequired,

@@ -139,10 +139,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderUnavailableLink = () => {
-    const { currentProduct } = this.props;
+    const { currentProduct, plpLabels } = this.props;
+    const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     return (
       <p className="size-unavailable">
-        <span className="unavailable-text">Size unavailable online?</span>
+        <span className="unavailable-text">{sizeUnavailable}</span>
         <span className="size-find-in-store">
           <FulfillmentSection currentProduct={currentProduct} isAnchor title="Find In Store" />
         </span>

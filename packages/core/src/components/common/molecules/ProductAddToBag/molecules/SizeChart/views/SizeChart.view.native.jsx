@@ -3,7 +3,6 @@ import { Text } from 'react-native';
 import { Anchor } from '@tcp/core/src/components/common/atoms';
 import Modal from '../../../../Modal';
 import { SizeChartButton } from '../styles/SizeChart.style.native';
-// import modalstyles from '../styles/SizeChart.style';
 
 class SizeChart extends React.Component {
   constructor(props) {

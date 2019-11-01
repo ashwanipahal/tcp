@@ -90,7 +90,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderUnavailableLink = () => {
-    const { currentProduct } = this.props;
+    const { currentProduct, plpLabels } = this.props;
+    const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     return (
       <UnavailableLink>
         <BodyCopyWithSpacing
@@ -98,7 +99,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           fontWeight="semibold"
           fontSize="fs12"
           color="black"
-          text="Size unavailable online?"
+          text={sizeUnavailable}
           spacingStyles="padding-right-XS"
         />
         <FulfillmentSection currentProduct={currentProduct} isAnchor buttonLabel="Find In Store" />

@@ -60,6 +60,4 @@ export class AlternateSizes extends React.PureComponent<Props> {
   }
 }
 
-// export default (withStyles(AlternateSizes, styles));
-
 export default AlternateSizes;

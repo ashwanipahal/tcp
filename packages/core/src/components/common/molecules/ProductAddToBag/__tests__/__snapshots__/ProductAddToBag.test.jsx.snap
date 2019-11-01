@@ -164,9 +164,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         >
           <span
             className="unavailable-text"
-          >
-            Size unavailable online?
-          </span>
+          />
           <span
             className="size-find-in-store"
           >
@@ -392,9 +390,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
         >
           <span
             className="unavailable-text"
-          >
-            Size unavailable online?
-          </span>
+          />
           <span
             className="size-find-in-store"
           >

@@ -48,6 +48,7 @@ export const getPlpLabels = state => {
       fit: '',
       color: '',
       quantity: '',
+      sizeUnavalaible: '',
     };
 
   const {
@@ -60,6 +61,7 @@ export const getPlpLabels = state => {
         lbl_pdp_fit: fit,
         lbl_pdp_color: color,
         lbl_pdp_quantity: quantity,
+        lbl_size_unavailable_online: sizeUnavalaible,
       },
     },
   } = state.Labels;
@@ -72,6 +74,7 @@ export const getPlpLabels = state => {
     color,
     quantity,
     update,
+    sizeUnavalaible,
   };
 };
 
