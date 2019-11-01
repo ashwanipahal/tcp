@@ -2,7 +2,7 @@
 
 exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
 <header
-  className="test"
+  className="test content-wrapper"
 >
   <Styled(Row)
     className="header-topnav__row"
@@ -75,6 +75,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
       >
         <Styled(Anchor)
           anchorVariation="primary"
+          className="return-bag-link"
           dataLocator="checkout-header-returnToBag"
           fontSizeVariation="medium"
           to="/bag"
@@ -131,7 +132,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
 
 exports[`CheckoutHeaderVanilla should render checkout header section 2`] = `
 <header
-  className="test"
+  className="test content-wrapper"
 >
   <Styled(Row)
     className="header-topnav__row"
@@ -204,6 +205,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 2`] = `
       >
         <Styled(Anchor)
           anchorVariation="primary"
+          className="return-bag-link"
           dataLocator="checkout-header-returnToBag"
           fontSizeVariation="medium"
           to="/bag"

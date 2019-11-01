@@ -268,6 +268,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -301,6 +304,9 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -594,6 +600,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -627,6 +636,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -1094,6 +1106,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -1127,6 +1142,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -1571,6 +1589,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -1604,6 +1625,9 @@ exports[`Shipping Form should render correctly with logged in user having addres
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";

@@ -353,6 +353,7 @@ class RegisteredShippingForm extends React.Component {
               type="button"
               buttonVariation="fixed-width"
               data-locator="edit-shipping-cancel-btn"
+              className="cancel-btn"
               onClick={this.toggleEditingMode}
             >
               {getLabelValue(labels, 'lbl_shipping_cancel', 'shipping', 'checkout')}
@@ -360,7 +361,6 @@ class RegisteredShippingForm extends React.Component {
           </Col>
           <Col colSize={{ small: 6, medium: 2, large: 3 }}>
             <Button
-              fill="BLUE"
               type="button"
               buttonVariation="fixed-width"
               data-locator="edit-shipping-save-btn"

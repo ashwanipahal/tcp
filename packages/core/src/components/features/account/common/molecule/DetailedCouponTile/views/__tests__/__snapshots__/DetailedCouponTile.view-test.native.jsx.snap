@@ -102,6 +102,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(CustomButton)
@@ -125,6 +126,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         text="apply"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -271,6 +273,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
         <Styled(Styled(View)) />
       </Styled(View)>
@@ -295,6 +298,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         text="remove from bag"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -421,6 +425,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(CustomButton)
@@ -444,6 +449,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         text="apply"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

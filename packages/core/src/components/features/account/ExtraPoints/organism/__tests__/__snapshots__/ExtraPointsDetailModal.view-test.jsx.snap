@@ -40,12 +40,17 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
-      className="elem-mb-MED"
+      className="earnPointsModal_title"
       color="text.primary"
       component="p"
       data-locator="earnPointsModal_undefined_title"
       fontFamily="primary"
-      fontSize="fs42"
+      fontSize={
+        Array [
+          "fs28",
+          "fs42",
+        ]
+      }
       fontWeight="black"
       letterSpacing="normal"
       lineHeight="normal"

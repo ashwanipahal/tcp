@@ -7,10 +7,12 @@ import {
   getThresholdValue,
   cartOrderDetails,
   getLoyaltyBannerLabels,
+  confirmationDetails,
 } from './LoyaltyBanner.selectors';
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
+import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 
 export const LoyaltyBannerContainer = ({
   labels,
@@ -20,11 +22,12 @@ export const LoyaltyBannerContainer = ({
   isPlcc,
   currencySymbol,
   pageCategory,
+  openLoginModal,
 }) => {
   const {
     estimatedRewards,
     subTotal,
-    cartTotalAfterPLCCDiscount,
+    subTotalWithDiscounts,
     earnedReward,
     pointsToNextReward,
   } = orderDetails;
@@ -33,7 +36,7 @@ export const LoyaltyBannerContainer = ({
       labels={labels}
       estimatedRewardsVal={estimatedRewards}
       currentSubtotal={subTotal}
-      estimatedSubtotal={cartTotalAfterPLCCDiscount}
+      estimatedSubtotal={subTotalWithDiscounts}
       thresholdValue={thresholdValue}
       isGuest={isGuestCheck}
       earnedReward={earnedReward}
@@ -41,13 +44,15 @@ export const LoyaltyBannerContainer = ({
       pointsToNextReward={pointsToNextReward}
       getCurrencySymbol={currencySymbol}
       pageCategory={pageCategory}
+      openLoginModal={openLoginModal}
     />
   );
 };
 
 LoyaltyBannerContainer.propTypes = {
-  labels: PropTypes.shape.isRequired,
-  orderDetails: PropTypes.shape.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  orderDetails: PropTypes.shape({}).isRequired,
+  openLoginModal: PropTypes.func.isRequired,
   thresholdValue: PropTypes.number,
   isGuestCheck: PropTypes.bool,
   isPlcc: PropTypes.bool,
@@ -63,18 +68,23 @@ LoyaltyBannerContainer.defaultProps = {
   pageCategory: '',
 };
 
-/* istanbul ignore next */
-export function mapStateToProps(state) {
-  return {
-    labels: getLoyaltyBannerLabels(state),
-    orderDetails: cartOrderDetails(state),
-    thresholdValue: getThresholdValue(state),
-    isGuestCheck: isGuest(state),
-    isPlcc: isPlccUser(state),
-    // isGuestCheck: false,
-    // isPlcc: true,
-    currencySymbol: getCurrencySymbol(state),
-  };
-}
+export const mapDispatchToProps = dispatch => ({
+  openLoginModal: componentType =>
+    dispatch(setCheckoutModalMountedState({ state: true, componentType })),
+});
 
-export default connect(mapStateToProps)(LoyaltyBannerContainer);
+/* istanbul ignore next */
+export const mapStateToProps = (state, ownProps) => ({
+  labels: getLoyaltyBannerLabels(state),
+  orderDetails:
+    ownProps.pageCategory === 'confirmation' ? confirmationDetails(state) : cartOrderDetails(state),
+  thresholdValue: getThresholdValue(state),
+  isGuestCheck: isGuest(state),
+  isPlcc: isPlccUser(state),
+  currencySymbol: getCurrencySymbol(state),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoyaltyBannerContainer);

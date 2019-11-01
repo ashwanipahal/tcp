@@ -93,7 +93,11 @@ class CartItemTile extends React.Component {
    * @description this method handles edit for cart item for boss/bopis item
    * @memberof CartItemTile
    */
-  handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false) => {
+  handleEditCartItemWithStore = (
+    changeStoreType,
+    openSkuSelectionForm = false,
+    openRestrictedModalForBopis = false
+  ) => {
     const { onPickUpOpenClick, productDetail, orderId } = this.props;
     const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
     const { store, orderItemType } = productDetail.miscInfo;
@@ -119,6 +123,7 @@ class CartItemTile extends React.Component {
       isBossCtaEnabled,
       isItemShipToHome,
       alwaysSearchForBOSS,
+      openRestrictedModalForBopis,
     });
   };
 
@@ -825,6 +830,7 @@ class CartItemTile extends React.Component {
       showOnReviewPage,
       setShipToHome,
       currencyExchange,
+      pickupStoresInCart,
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -1060,6 +1066,7 @@ class CartItemTile extends React.Component {
                 isBopisEnabled={isBopisEnabled}
                 openPickUpModal={this.handleEditCartItemWithStore}
                 setShipToHome={setShipToHome}
+                pickupStoresInCart={pickupStoresInCart}
               />
               <RenderPerf.Measure name={CONTROLS_VISIBLE} />
             </Row>
@@ -1114,6 +1121,7 @@ CartItemTile.propTypes = {
   toggleError: PropTypes.shape({}),
   clearToggleError: PropTypes.func,
   currencyExchange: PropTypes.shape([]),
+  pickupStoresInCart: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(CartItemTile, styles);

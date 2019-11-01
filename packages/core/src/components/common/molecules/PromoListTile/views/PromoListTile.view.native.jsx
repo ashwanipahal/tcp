@@ -25,6 +25,7 @@ const PromoListTile = ({ tileData }) => {
       <BodyCopyWithSpacing
         fontSize="fs16"
         fontFamily="secondary"
+        fontWeight="black"
         textAlign="center"
         text={tileData.headLine[0].text}
         spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"

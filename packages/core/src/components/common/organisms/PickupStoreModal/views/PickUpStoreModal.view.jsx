@@ -90,6 +90,7 @@ class PickUpStoreModalView extends React.Component {
     addItemToCartInPickup: PropTypes.func.isRequired,
     navigation: PropTypes.shape({}),
     alwaysSearchForBOSS: PropTypes.bool.isRequired,
+    openRestrictedModalForBopis: PropTypes.bool.isRequired,
 
     /**
      * Function to call when the item has been successfully added to, or updated
@@ -303,7 +304,10 @@ class PickUpStoreModalView extends React.Component {
     const country = getSiteId() && getSiteId().toUpperCase();
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
     const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
-    const { distance } = formData;
+    let distance;
+    if (formData) {
+      ({ distance } = formData);
+    }
     this.skuId = skuId;
     this.quantity = quantity;
     getUserCartStoresAndSearch({
@@ -406,6 +410,7 @@ class PickUpStoreModalView extends React.Component {
       navigation,
       initialValuesFromBagPage,
       isItemShipToHome,
+      openRestrictedModalForBopis,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -523,6 +528,7 @@ class PickUpStoreModalView extends React.Component {
           initialValuesFromBagPage={initialValuesFromBagPage}
           isItemShipToHome={isItemShipToHome}
           currencyExchange={currencyAttributes.exchangevalue}
+          openRestrictedModalForBopis={openRestrictedModalForBopis}
         />
       </>
     );
