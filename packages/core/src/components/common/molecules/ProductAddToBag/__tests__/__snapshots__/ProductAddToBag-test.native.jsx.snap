@@ -144,7 +144,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       }
       numberOfLines={null}
       spacingStyles="padding-right-XS"
-      text="Size unavailable online?"
+      text=""
       textDecoration={null}
     />
     <Connect(Styled(FulfillmentSection))
