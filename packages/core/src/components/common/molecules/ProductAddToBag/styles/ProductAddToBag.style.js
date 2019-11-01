@@ -9,7 +9,7 @@ const styles = css`
     align-items: flex-start;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 25px;
+    margin-top: 26px;
   }
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
@@ -34,11 +34,16 @@ const styles = css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       ${props =>
-        !props.quickViewAddToBagActionPadding
+        !props.isQuickView
           ? `padding-left: 90px;
       padding-right: 89px;`
           : `padding-left: 65px;
           padding-right: 65px;`};
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-left: 65px;
+      padding-right: 65px;
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {

@@ -17,6 +17,7 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   <Connect(CheckoutCartItemList) />
   <Styled(CheckoutOrderInfo)
     fullPageInfo={true}
+    pageCategory=""
     showAccordian={true}
   />
   <Styled(CheckoutFooter)

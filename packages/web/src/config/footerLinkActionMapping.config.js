@@ -5,8 +5,11 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 
 export const footerLinksActionMappingConfig = {
   'track-order': setTrackOrderModalMountedState,
+  '/track-order': setTrackOrderModalMountedState,
   favorites: setLoginModalMountedState,
+  '/favorites': setLoginModalMountedState,
   'log-out': logout,
+  '/log-out': logout,
   'login-account': openOverlayModal,
   '/login-account': openOverlayModal,
   'create-account': openOverlayModal,
