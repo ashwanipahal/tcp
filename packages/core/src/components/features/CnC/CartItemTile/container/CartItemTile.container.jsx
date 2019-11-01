@@ -94,6 +94,7 @@ export const CartItemTileContainer = ({
   clearToggleError,
   currencyExchange,
   pickupStoresInCart,
+  navigation,
 }) => (
   <CartItemTile
     labels={labels}
@@ -138,6 +139,7 @@ export const CartItemTileContainer = ({
     clearToggleError={clearToggleError}
     currencyExchange={currencyExchange}
     pickupStoresInCart={pickupStoresInCart}
+    navigation={navigation}
   />
 );
 
