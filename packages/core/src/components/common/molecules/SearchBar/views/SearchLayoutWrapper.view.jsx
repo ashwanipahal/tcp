@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
@@ -165,6 +166,13 @@ class SearchLayoutWrapper extends React.PureComponent {
       }
     }
   };
+
+  handleClickOutside() {
+    const { setSearchState, isSearchOpen } = this.props;
+    if (isSearchOpen) {
+      setSearchState(false);
+    }
+  }
 
   render() {
     const {
@@ -350,4 +358,4 @@ SearchLayoutWrapper.defaultProps = {
   latestSearchResults: [],
 };
 
-export default connect()(withStyles(SearchLayoutWrapper, SearchBarStyle));
+export default connect()(withStyles(enhanceWithClickOutside(SearchLayoutWrapper), SearchBarStyle));
