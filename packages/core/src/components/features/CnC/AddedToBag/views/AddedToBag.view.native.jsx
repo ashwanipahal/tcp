@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { isCanada } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -27,8 +26,7 @@ const getContainerStyle = navigation => {
   if (!navigation.getParam('headerMode', false)) {
     return { flex: 1, paddingLeft: 25, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
   }
-    return { flex: 1, paddingLeft: 0, paddingRight: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
-
+  return { flex: 1, paddingLeft: 0, paddingRight: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
 };
 
 const getCloseIcon = (onRequestClose, labels) => {
@@ -61,8 +59,7 @@ const getRowWrapper = (labels, onRequestClose, navigation) => {
       </RowWrapper>
     );
   }
-    return <RowWrapper />;
-
+  return <RowWrapper />;
 };
 
 const AddedToBag = ({
@@ -117,7 +114,7 @@ const AddedToBag = ({
                 }}
               />
               <BossBanner labels={labels} />
-              {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
+              {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
               <StyledAnchorWrapper>
                 <Anchor
                   fontSizeVariation="medium"

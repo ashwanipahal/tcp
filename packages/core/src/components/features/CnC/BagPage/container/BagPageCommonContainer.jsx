@@ -21,6 +21,7 @@ import {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
 } from '../../Checkout/container/Checkout.action';
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 import {
   toastMessageInfo,
   toastMessagePosition,
@@ -94,11 +95,13 @@ export class BagPageContainer extends React.Component<Props> {
       currencySymbol,
       isPayPalWebViewEnable,
       isPickupModalOpen,
+      isMobile,
     } = this.props;
 
     const showAddTobag = false;
     return (
       <BagPage
+        isMobile={isMobile}
         labels={labels}
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
@@ -167,6 +170,7 @@ export const mapDispatchToProps = dispatch => {
 export const mapStateToProps = state => {
   const { size = false } = getCartOrderList(state) || {};
   return {
+    isMobile: checkoutSelectors.getIsMobile(),
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),
     productsTypes: BagPageSelector.getProductsTypes(state),

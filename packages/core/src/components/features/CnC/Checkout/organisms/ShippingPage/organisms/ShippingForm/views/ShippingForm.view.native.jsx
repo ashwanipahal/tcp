@@ -173,8 +173,7 @@ const ShippingForm = ({
             dispatch={dispatch}
           />
         </FormSection>
-        {/* //TODO : commented as app was crashing , please remove this comment */}
-        {/* <FormSection name="giftServices">
+        <FormSection name="giftServices">
           <GiftServices
             showDefaultCheckbox={false}
             formSection="giftServices"
@@ -182,7 +181,7 @@ const ShippingForm = ({
             isGiftServicesChecked={isGiftServicesChecked}
             dispatch={dispatch}
           />
-        </FormSection> */}
+        </FormSection>
       </ShippingFormWrapper>
       <CnCTemplate
         navigation={navigation}
@@ -195,6 +194,7 @@ const ShippingForm = ({
           getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
         }
         onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
+        pageCategory="shippingPage"
         showAccordian
       />
     </>

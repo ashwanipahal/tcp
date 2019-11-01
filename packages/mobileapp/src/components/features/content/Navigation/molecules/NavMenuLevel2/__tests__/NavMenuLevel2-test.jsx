@@ -3,7 +3,73 @@ import { shallow } from 'enzyme';
 import NavMenuLevel2View from '../views/NavMenuLevel2.view';
 
 const LoremIpsum = 'Lorem Ipsum';
-
+const categoryContent = {
+  categoryContent: {
+    description: 'Sizes 4-16',
+    name: 'Girl',
+    id: '47511',
+    seoUrl: null,
+    seoToken: 'girls-clothing',
+    mainCategory: {
+      categoryImage: [
+        {
+          url: 'https://res.cloudinary.com/tcp-dam-test/image/upload/v1565110717/fill_rvnwi1.png',
+          alt: '',
+          title: 'GIRL1',
+          crop_d: '',
+          crop_m: 'c_crop,g_face:center,q_auto:best,w_18',
+          crop_t: '',
+          position: 'left',
+        },
+      ],
+      categoryLayout: [
+        {
+          name: 'shopBySizeTwoColumns',
+          columns: [
+            {
+              imageBanner: null,
+              textBanner: null,
+              shopBySize: [
+                {
+                  text: {
+                    text: 'SHOP BY SIZE',
+                  },
+                  linkList: [
+                    {
+                      url: '/test',
+                      text: '4',
+                      title: '4',
+                      target: '',
+                    },
+                    {
+                      url: '/test',
+                      text: '5',
+                      title: '5',
+                      target: '',
+                    },
+                    {
+                      url: '/test',
+                      text: '6',
+                      title: '6',
+                      target: '',
+                    },
+                    {
+                      url: '/test',
+                      text: '7',
+                      title: '7',
+                      target: '',
+                    },
+                  ],
+                  richText: null,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+};
 const paramFunc = param => {
   if (param === 'navigationObj') {
     return {
@@ -16,6 +82,7 @@ const paramFunc = param => {
             title: 'Categoriess',
           },
         ],
+        ...categoryContent,
       },
     };
   }
@@ -52,6 +119,7 @@ describe('NavMenuLevel2', () => {
                     title: 'Categoriess',
                   },
                 ],
+                ...categoryContent,
               },
             };
           }
@@ -100,6 +168,7 @@ describe('NavMenuLevel2', () => {
                     title: 'Categories',
                   },
                 ],
+                ...categoryContent,
               },
             };
           }

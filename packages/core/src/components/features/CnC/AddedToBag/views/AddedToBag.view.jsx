@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isCanada } from '@tcp/core/src/utils';
 import AddedToBagActions from '../../AddedToBagActions';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
@@ -77,7 +76,7 @@ const AddedToBag = ({
           inheritedStyles={buttonActionStyles}
           hideHeader={hideHeader}
         />
-        {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
+        {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
         {!isInternationalShipping && <BossBannerView labels={labels} />}
         <div className="continue-shopping">
           <Anchor
@@ -99,7 +98,7 @@ const AddedToBag = ({
 AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
-  hideHeader:PropTypes.bool,
+  hideHeader: PropTypes.bool,
 };
 
 export default withStyles(AddedToBag, styles);

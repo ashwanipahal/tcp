@@ -2,13 +2,7 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 import countryListAbstractor from '@tcp/core/src/services/abstractors/bootstrap/countryList';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
-import {
-  getSiteId,
-  getModifiedLanguageCode,
-  siteRedirect,
-  languageRedirect,
-  isGymboree,
-} from '@tcp/core/src/utils';
+import { getModifiedLanguageCode, languageRedirect, isGymboree } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import endpoints from '@tcp/core/src/services/endpoints';
 import {
@@ -77,11 +71,8 @@ export function* submitCountrySelectionData({ payload: data }) {
       state => state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language
     );
     const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
-    const oldSiteId = getSiteId();
     yield put(udpateSiteId(newSiteId));
-
-    siteRedirect(newCountry, oldCountry, newSiteId, oldSiteId);
-    languageRedirect(newLanguage, oldLanguage);
+    languageRedirect(newCountry, oldCountry, newSiteId, newLanguage, oldLanguage);
   } catch (error) {
     yield null;
   }

@@ -227,7 +227,7 @@ export class BagPage extends React.Component {
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <OrderLedgerContainer />
+          <OrderLedgerContainer pageCategory="bagPage" />
         </RowSectionStyle>
       );
     }

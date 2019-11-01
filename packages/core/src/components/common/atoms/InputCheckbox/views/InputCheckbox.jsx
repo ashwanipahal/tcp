@@ -46,7 +46,6 @@ const InputCheckbox = ({
         />
         {children && (
           <BodyCopy
-            fontSize="fs12"
             fontFamily="secondary"
             className={`CheckBox__text ${disabled ? 'disabled' : ''}`}
           >

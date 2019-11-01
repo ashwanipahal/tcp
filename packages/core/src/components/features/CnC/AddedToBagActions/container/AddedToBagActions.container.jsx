@@ -36,6 +36,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       hideHeader,
       checkoutServerError,
       isPayPalWebViewEnable,
+      venmoError,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -59,6 +60,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         hideHeader={hideHeader}
         checkoutServerError={checkoutServerError}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
+        venmoError={venmoError}
       />
     );
   }
@@ -95,6 +97,7 @@ const mapStateToProps = state => {
     isUSSite: isUsSite(state),
     checkoutServerError: checkoutSelectors.getCheckoutServerError(state),
     isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
+    venmoError: checkoutSelectors.getVenmoError(state),
   };
 };
 

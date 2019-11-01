@@ -244,7 +244,9 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           }
         />
         <Styled(View)>
-          <Connect(OrderLedgerContainer) />
+          <Connect(OrderLedgerContainer)
+            pageCategory="bagPage"
+          />
         </Styled(View)>
         <Styled(View)>
           <Styled(View)>

@@ -51,7 +51,7 @@ exports[`Shipping Form should render correctly 1`] = `
     isConfirmationPage={false}
     isGuest={true}
     onBackLinkPress={[Function]}
-    pageCategory={Object {}}
+    pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
   />
@@ -159,7 +159,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
     isConfirmationPage={false}
     isGuest={true}
     onBackLinkPress={[Function]}
-    pageCategory={Object {}}
+    pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
   />
@@ -217,7 +217,7 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
     isConfirmationPage={false}
     isGuest={false}
     onBackLinkPress={[Function]}
-    pageCategory={Object {}}
+    pageCategory="shippingPage"
     routeToPage=""
     showAccordian={true}
   />

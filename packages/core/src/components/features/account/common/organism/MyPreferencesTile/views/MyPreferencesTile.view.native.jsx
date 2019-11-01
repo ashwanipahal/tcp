@@ -32,7 +32,7 @@ export const MyPreferencesTile = ({
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_prefrence_heading', 'preferences')}
         color="black"
-        fontWeight="black"
+        fontWeight="extrabold"
       />
       <UnderlineStyle />
 
@@ -46,20 +46,22 @@ export const MyPreferencesTile = ({
         favStoreZipcode={favStoreZipcode}
         favStorePhone={favStorePhone}
       />
-      <UnderlineStyle />
 
-      <ContactPreferencesTileItem
-        labels={labels}
-        handleComponentChange={handleComponentChange}
-        customerPreferences={customerPreferences}
-      />
-      <UnderlineStyle />
       {!isCanada() ? (
-        <SocialAccountsTileItem
-          labels={labels}
-          handleComponentChange={handleComponentChange}
-          socialAccounts={socialAccounts}
-        />
+        <>
+          <UnderlineStyle />
+          <ContactPreferencesTileItem
+            labels={labels}
+            handleComponentChange={handleComponentChange}
+            customerPreferences={customerPreferences}
+          />
+          <UnderlineStyle />
+          <SocialAccountsTileItem
+            labels={labels}
+            handleComponentChange={handleComponentChange}
+            socialAccounts={socialAccounts}
+          />
+        </>
       ) : null}
 
       <ViewWithSpacing spacingStyles="margin-top-XL">
