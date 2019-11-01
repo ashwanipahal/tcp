@@ -124,15 +124,15 @@ class AddedToBagActions extends React.PureComponent<Props> {
           {this.getCheckoutButton()}
           <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
         </Row>
-        <Row className="elem-mt-MED">
-          {checkoutServerError && (
+        {checkoutServerError && (
+          <Row className="elem-mt-MED">
             <ErrorMessage
               error={checkoutServerError.errorMessage}
               className="checkout-page-error"
             />
-          )}
-          {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
-        </Row>
+            {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
+          </Row>
+        )}
       </div>
     );
   }

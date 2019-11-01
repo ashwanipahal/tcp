@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
@@ -62,23 +63,32 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   };
 
+  changeCaseFirstLetter = params => {
+    if (typeof params === 'string') {
+      return params.charAt(0).toUpperCase() + params.slice(1);
+    }
+    return null;
+  };
+
   highlight = inputTextParam => {
     const text = this.searchInput.current.value;
     let { inputText } = inputTextParam;
     inputText = inputText.toLowerCase();
     const index = inputText.indexOf(text.toLowerCase());
-    if (index >= 0) {
+    inputText = this.changeCaseFirstLetter(inputText);
+    if (index >= 0 && inputText) {
       return (
         <div className="lookingFor-textWrapper-div">
-          {`${inputText.substring(0, index).toUpperCase()}`}
+          {`${inputText.substring(0, index)}`}
           <span className="highlight-search-result">
-            {`${inputText.substring(index, index + text.length).toUpperCase()}`}
+            {`${inputText.substring(index, index + text.length)}`}
           </span>
-          {`${inputText.substring(index + text.length).toUpperCase()}`}
+          {`${inputText.substring(index + text.length)}`}
         </div>
       );
     }
-    return null;
+
+    return <div className="lookingFor-textWrapper-div">{`${inputText}`}</div>;
   };
 
   isLookingForExist = searchResults => {
@@ -165,6 +175,13 @@ class SearchLayoutWrapper extends React.PureComponent {
       }
     }
   };
+
+  handleClickOutside() {
+    const { setSearchState, isSearchOpen } = this.props;
+    if (isSearchOpen) {
+      setSearchState(false);
+    }
+  }
 
   render() {
     const {
@@ -272,9 +289,13 @@ class SearchLayoutWrapper extends React.PureComponent {
                                     <Anchor
                                       noLink
                                       className="suggestion-label"
-                                      onClick={() => redirectToSuggestedUrl(`${itemData.text}`)}
+                                      to={`/search/${itemData.text}`}
+                                      onClick={e => {
+                                        e.preventDefault();
+                                        redirectToSuggestedUrl(`${itemData.text}`);
+                                      }}
                                     >
-                                      {itemData && itemData.text && (
+                                      {itemData.text && (
                                         <HighLightSearch inputText={`${itemData.text}`} />
                                       )}
                                     </Anchor>
@@ -286,13 +307,18 @@ class SearchLayoutWrapper extends React.PureComponent {
                       );
                     })}
                 </div>
-                <div className="matchProductBox">
-                  <LookingForProductLabel searchResults={searchResults} />
-                  <LookingForProductDetail
-                    searchResults={searchResults}
-                    closeSearchLayover={closeSearchLayover}
-                  />
-                </div>
+
+                {searchResults &&
+                  searchResults.autosuggestProducts &&
+                  searchResults.autosuggestProducts.length > 0 && (
+                    <div className="matchProductBox">
+                      <LookingForProductLabel searchResults={searchResults} />
+                      <LookingForProductDetail
+                        searchResults={searchResults}
+                        closeSearchLayover={closeSearchLayover}
+                      />
+                    </div>
+                  )}
               </div>
             )}
           </div>
@@ -350,4 +376,4 @@ SearchLayoutWrapper.defaultProps = {
   latestSearchResults: [],
 };
 
-export default connect()(withStyles(SearchLayoutWrapper, SearchBarStyle));
+export default connect()(withStyles(enhanceWithClickOutside(SearchLayoutWrapper), SearchBarStyle));

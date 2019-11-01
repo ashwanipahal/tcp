@@ -34,9 +34,15 @@ const OrderLedger = ({
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = OrderLedgerUtils.getBody(className, summaryData, labels, pageCategory);
+  const body = OrderLedgerUtils.getBody(
+    className,
+    summaryData,
+    labels,
+    pageCategory,
+    orderLedgerAfterView
+  );
   return (
-    <div className={`${className} elem-mb-MED`}>
+    <div className={`${className} elem-mb-MED ${isConfirmationPage ? 'order-confirmation' : ''}`}>
       <Col
         colSize={{
           large: 12,
@@ -52,9 +58,9 @@ const OrderLedger = ({
           iconLocator="arrowicon"
           defaultOpen={false}
           isDefaultView={!showAccordian}
+          showHeaderAlways={isConfirmationPage}
         />
       </Col>
-      {orderLedgerAfterView}
     </div>
   );
 };
