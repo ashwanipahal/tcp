@@ -1,13 +1,331 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoyaltyBanner View Component earnedReward isGuest should render correctly 1`] = `""`;
+exports[`LoyaltyBanner View Component earnedReward isGuest should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyalty-banner-section-wrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        currentSubtotal={21}
+        descriptionLabel={false}
+        earnedRewardAvailable={true}
+        estimatedSubtotal={33}
+        getCurrencySymbol=""
+        headingLabel={false}
+        isPlcc={true}
+        isProductDetailView=""
+        labels={Object {}}
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
+      />
+      <div
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+          openLoginModal=""
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
 
-exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] = `""`;
+exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyalty-banner-section-wrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        currentSubtotal={21}
+        descriptionLabel={false}
+        earnedRewardAvailable={false}
+        estimatedSubtotal={33}
+        getCurrencySymbol=""
+        headingLabel={false}
+        isPlcc={true}
+        isProductDetailView=""
+        labels={Object {}}
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
+      />
+      <div
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={false}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+          openLoginModal=""
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
 
-exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`] = `""`;
+exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyalty-banner-section-wrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        currentSubtotal={21}
+        descriptionLabel={false}
+        earnedRewardAvailable={true}
+        estimatedSubtotal={33}
+        getCurrencySymbol=""
+        headingLabel={false}
+        isPlcc={false}
+        isProductDetailView=""
+        labels={Object {}}
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
+      />
+      <div
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+          openLoginModal=""
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
 
-exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `""`;
+exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyalty-banner-section-wrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        currentSubtotal={21}
+        descriptionLabel={false}
+        earnedRewardAvailable={true}
+        estimatedSubtotal={33}
+        getCurrencySymbol=""
+        headingLabel={false}
+        isPlcc={true}
+        isProductDetailView=""
+        labels={Object {}}
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
+      />
+      <div
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={true}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={true}
+          isPlcc={true}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+          openLoginModal=""
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
 
-exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `""`;
+exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyalty-banner-section-wrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        currentSubtotal={21}
+        descriptionLabel={false}
+        earnedRewardAvailable={false}
+        estimatedSubtotal={33}
+        getCurrencySymbol=""
+        headingLabel={false}
+        isPlcc={false}
+        isProductDetailView=""
+        labels={Object {}}
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
+      />
+      <div
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={false}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={false}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+          openLoginModal=""
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;
 
-exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `""`;
+exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="loyalty-banner-wrapper"
+  >
+    <Styled(BodyCopy)
+      className="loyalty-banner-section-wrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      <Styled(GuestMprPlccSection)
+        currentSubtotal={21}
+        descriptionLabel={false}
+        earnedRewardAvailable={false}
+        estimatedSubtotal={33}
+        getCurrencySymbol=""
+        headingLabel={false}
+        isPlcc={false}
+        isProductDetailView=""
+        labels={Object {}}
+        pageCategory=""
+        remainingPlcc={false}
+        showSubtotal={false}
+        subHeadingLabel={false}
+      />
+      <div
+        className="footer"
+      >
+        <Styled(LoyaltyFooterSection)
+          className=""
+          earnedRewardAvailable={false}
+          isAddedToBagPage={false}
+          isConfirmationPage={false}
+          isGuest={true}
+          isPlcc={false}
+          isProductDetailView=""
+          isReviewPage={false}
+          labels={Object {}}
+          openLoginModal=""
+        />
+      </div>
+    </Styled(BodyCopy)>
+  </div>
+</div>
+`;

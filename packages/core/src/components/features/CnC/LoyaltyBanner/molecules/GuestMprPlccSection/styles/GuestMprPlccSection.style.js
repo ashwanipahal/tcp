@@ -211,10 +211,10 @@ const Styles = css`
           ${fontSize12(props)}
           color: ${props.theme.colorPalette.gray[900]};
           @media ${props.theme.mediaQuery.medium} {
-            ${fontSize10(props)}
+            ${fontSize12(props)}
           }
           @media ${props.theme.mediaQuery.large} {
-            ${fontSize16(props)}
+            ${fontSize18(props)}
           }
         }
       `
