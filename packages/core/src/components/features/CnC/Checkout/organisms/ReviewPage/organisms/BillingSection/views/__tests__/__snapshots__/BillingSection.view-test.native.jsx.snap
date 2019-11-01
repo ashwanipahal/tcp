@@ -29,6 +29,12 @@ exports[`BillingSection should render correctly for empty state 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
+  <Styled(View)>
+    <Styled(View) />
+  </Styled(View)>
+  <Connect(GiftCardsContainer)
+    isFromReview={true}
+  />
 </Fragment>
 `;
 
@@ -63,68 +69,164 @@ exports[`BillingSection should render correctly without address details 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontSize="fs16"
-        fontWeight="semibold"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        text="Payment Method"
-        textDecoration={null}
-      />
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="gray.900"
+            dataLocator=""
+            fontSize="fs16"
+            fontWeight="semibold"
+            margin={null}
+            mobileFontFamily="secondary"
+            numberOfLines={null}
+            text="Payment Method"
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <CardImage
+          card={
+            Object {
+              "cardNumber": "1234",
+              "ccBrand": "PLACE CASH",
+              "ccType": "PLACE CASH",
+            }
+          }
+          cardNumber="ending in 1234"
+        />
+      </Styled(View)>
     </Styled(View)>
-    <CardImage
-      card={
-        Object {
-          "cardNumber": "1234",
-          "ccBrand": "PLACE CASH",
-          "ccType": "PLACE CASH",
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
         }
-      }
-      cardNumber="ending in 1234"
-    />
+        customStyle={
+          Object {
+            "height": 72,
+          }
+        }
+        dataLocator="cvvTxtBox"
+        id="cvvCode"
+        name="cvvCode"
+        type="text"
+      />
+      <Styled(View)>
+        <ReactTooltip
+          backgroundColor="#fff"
+          height={350}
+          onClose={[Function]}
+          onOpen={[Function]}
+          overlayColor="rgba(250, 250, 250, 0.80)"
+          pointerColor="#fff"
+          popover={
+            <RichText
+              domStorageEnabled={false}
+              isApplyDeviceHeight={false}
+              isNativeView={true}
+              javaScriptEnabled={false}
+              source=""
+              thirdPartyCookiesEnabled={false}
+            />
+          }
+          toggleOnPress={true}
+          width={350}
+          withOverlay={false}
+          withPointer={true}
+        >
+          <Styled(ImageComp)
+            alt=""
+            height={15}
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/info-icon.png",
+              }
+            }
+            url=""
+            width={15}
+          />
+        </ReactTooltip>
+      </Styled(View)>
+    </Styled(View)>
   </Styled(View)>
+  <Connect(GiftCardsContainer)
+    isFromReview={true}
+  />
+</Fragment>
+`;
+
+exports[`BillingSection should render correctly without address details 2`] = `
+<Fragment>
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
-      color="gray.900"
       dataLocator=""
-      fontSize="fs16"
-      fontWeight="semibold"
+      fontSize="fs26"
       margin={null}
-      mobileFontFamily="secondary"
+      mobileFontFamily="primary"
       numberOfLines={null}
-      text="Applied Gift Cards"
+      text="Billing "
       textDecoration={null}
     />
+    <Styled(View)>
+      <Styled(Anchor)
+        accessibilityLabel=""
+        anchorVariation="primary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="large"
+        locator=""
+        margins={null}
+        onPress={null}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
   </Styled(View)>
-  <AppliedGiftCards
-    appliedGiftCards={
-      Immutable.List [
-        Immutable.Map {
-          "id": "1",
-          "endingNumbers": "4321",
-          "remainingBalance": 0,
-        },
-        Immutable.Map {
-          "id": "2",
-          "endingNumbers": "1234",
-          "remainingBalance": 15,
-        },
-      ]
-    }
-    labels={
-      Object {
-        "lbl_review_appliedGiftCards": "Applied Gift Cards",
-        "lbl_review_billingAddress": "Billing Address",
-        "lbl_review_billingSectionTitle": "Billing",
-        "lbl_review_paymentMethod": "Payment Method",
-        "lbl_review_paymentMethodEndingIn": "ending in",
-      }
-    }
+  <Connect(GiftCardsContainer)
+    isFromReview={true}
   />
 </Fragment>
 `;
@@ -159,30 +261,10 @@ exports[`BillingSection should render correctly without card & address details o
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      color="gray.900"
-      dataLocator=""
-      fontSize="fs16"
-      fontWeight="semibold"
-      margin={null}
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      text="Applied Gift Cards"
-      textDecoration={null}
-    />
+    <Styled(View) />
   </Styled(View)>
-  <AppliedGiftCards
-    appliedGiftCards={Immutable.List []}
-    labels={
-      Object {
-        "lbl_review_appliedGiftCards": "Applied Gift Cards",
-        "lbl_review_billingAddress": "Billing Address",
-        "lbl_review_billingSectionTitle": "Billing",
-        "lbl_review_paymentMethod": "Payment Method",
-        "lbl_review_paymentMethodEndingIn": "ending in",
-      }
-    }
+  <Connect(GiftCardsContainer)
+    isFromReview={true}
   />
 </Fragment>
 `;
@@ -217,43 +299,10 @@ exports[`BillingSection should render correctly without card & address details o
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      color="gray.900"
-      dataLocator=""
-      fontSize="fs16"
-      fontWeight="semibold"
-      margin={null}
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      text="Applied Gift Cards"
-      textDecoration={null}
-    />
+    <Styled(View) />
   </Styled(View)>
-  <AppliedGiftCards
-    appliedGiftCards={
-      Immutable.List [
-        Immutable.Map {
-          "id": "1",
-          "endingNumbers": "4321",
-          "remainingBalance": 0,
-        },
-        Immutable.Map {
-          "id": "2",
-          "endingNumbers": "1234",
-          "remainingBalance": 15,
-        },
-      ]
-    }
-    labels={
-      Object {
-        "lbl_review_appliedGiftCards": "Applied Gift Cards",
-        "lbl_review_billingAddress": "Billing Address",
-        "lbl_review_billingSectionTitle": "Billing",
-        "lbl_review_paymentMethod": "Payment Method",
-        "lbl_review_paymentMethodEndingIn": "ending in",
-      }
-    }
+  <Connect(GiftCardsContainer)
+    isFromReview={true}
   />
 </Fragment>
 `;
@@ -289,77 +338,45 @@ exports[`BillingSection should render correctly without card details 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(View)>
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontSize="fs16"
-        fontWeight="semibold"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        text="Billing Address"
-        textDecoration={null}
-      />
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="gray.900"
+            dataLocator=""
+            fontSize="fs16"
+            fontWeight="semibold"
+            margin={null}
+            mobileFontFamily="secondary"
+            numberOfLines={null}
+            text="Billing Address"
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <Address
+          address={
+            Object {
+              "addressLine1": "1234 XYZ",
+              "city": "New York",
+              "country": "US",
+              "firstName": "Test",
+              "lastName": "Test",
+              "state": "NY",
+            }
+          }
+          customStyle={Object {}}
+          fontSize="fs16"
+          regularName={true}
+          showCountry={true}
+          showDefaultText={false}
+          showName={true}
+          showPhone={true}
+        />
+      </Styled(View)>
     </Styled(View)>
-    <Address
-      address={
-        Object {
-          "addressLine1": "1234 XYZ",
-          "city": "New York",
-          "country": "US",
-          "firstName": "Test",
-          "lastName": "Test",
-          "state": "NY",
-        }
-      }
-      customStyle={Object {}}
-      fontSize="fs16"
-      regularName={true}
-      showCountry={true}
-      showDefaultText={false}
-      showName={true}
-      showPhone={true}
-    />
   </Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      accessibilityText=""
-      color="gray.900"
-      dataLocator=""
-      fontSize="fs16"
-      fontWeight="semibold"
-      margin={null}
-      mobileFontFamily="secondary"
-      numberOfLines={null}
-      text="Applied Gift Cards"
-      textDecoration={null}
-    />
-  </Styled(View)>
-  <AppliedGiftCards
-    appliedGiftCards={
-      Immutable.List [
-        Immutable.Map {
-          "id": "1",
-          "endingNumbers": "4321",
-          "remainingBalance": 0,
-        },
-        Immutable.Map {
-          "id": "2",
-          "endingNumbers": "1234",
-          "remainingBalance": 15,
-        },
-      ]
-    }
-    labels={
-      Object {
-        "lbl_review_appliedGiftCards": "Applied Gift Cards",
-        "lbl_review_billingAddress": "Billing Address",
-        "lbl_review_billingSectionTitle": "Billing",
-        "lbl_review_paymentMethod": "Payment Method",
-        "lbl_review_paymentMethodEndingIn": "ending in",
-      }
-    }
+  <Connect(GiftCardsContainer)
+    isFromReview={true}
   />
 </Fragment>
 `;

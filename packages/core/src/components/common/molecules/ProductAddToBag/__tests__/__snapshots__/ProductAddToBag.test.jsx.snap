@@ -122,6 +122,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       border: solid 1px ",
                     [Function],
                     ";
+      font-weight: ",
+                    [Function],
+                    ";
     }
   }
 ",
@@ -314,6 +317,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     [Function],
                     ";
       border: solid 1px ",
+                    [Function],
+                    ";
+      font-weight: ",
                     [Function],
                     ";
     }

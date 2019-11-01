@@ -74,7 +74,7 @@ exports[`SocialAccountsTileItem component should render correctly when coupons a
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mt-XS"
+    className="elem-mt-XS line-height-0"
     fullBleed={true}
   >
     <Styled(Col)
@@ -87,7 +87,7 @@ exports[`SocialAccountsTileItem component should render correctly when coupons a
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="elem-mb-XXXL elem-pb-XS"
         color="text.primary"
         component="p"
         fontFamily="secondary"

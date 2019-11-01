@@ -426,6 +426,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       sizeChartLinkVisibility,
       navigation,
       isPickup,
+      ...otherProps
     } = this.props;
     const {
       selectedColor,
@@ -446,6 +447,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return (
       <ProductAddToBag
+        {...otherProps}
         colorList={productColorFitsSizesMap}
         fitList={this.getFitOptions(productColorFitsSizesMap, selectedColor)}
         sizeList={this.getSizeList(productColorFitsSizesMap)}
