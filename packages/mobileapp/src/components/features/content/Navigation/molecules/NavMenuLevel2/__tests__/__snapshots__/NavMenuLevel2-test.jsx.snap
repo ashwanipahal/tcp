@@ -142,13 +142,54 @@ exports[`NavMenuLevel2 should render correctly 1`] = `
       Array [
         Object {
           "data": Array [],
+          "isShopBySize": undefined,
           "order": NaN,
           "title": undefined,
         },
         Object {
           "data": Array [],
+          "isShopBySize": undefined,
           "order": NaN,
           "title": undefined,
+        },
+        Object {
+          "data": Array [
+            Object {
+              "linkList": Array [
+                Object {
+                  "target": "",
+                  "text": "4",
+                  "title": "4",
+                  "url": "/test",
+                },
+                Object {
+                  "target": "",
+                  "text": "5",
+                  "title": "5",
+                  "url": "/test",
+                },
+                Object {
+                  "target": "",
+                  "text": "6",
+                  "title": "6",
+                  "url": "/test",
+                },
+                Object {
+                  "target": "",
+                  "text": "7",
+                  "title": "7",
+                  "url": "/test",
+                },
+              ],
+              "richText": null,
+              "text": Object {
+                "text": "SHOP BY SIZE",
+              },
+            },
+          ],
+          "isShopBySize": true,
+          "order": 0,
+          "title": "SHOP BY SIZE",
         },
       ]
     }

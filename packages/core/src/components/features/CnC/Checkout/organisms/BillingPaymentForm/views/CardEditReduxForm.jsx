@@ -28,6 +28,7 @@ export const withCardEditReduxForm = Component => {
       errorMessageRef,
       getDefaultPayment,
       toastMessage,
+      cardType,
     } = props;
     const {
       accountNo,
@@ -39,9 +40,8 @@ export const withCardEditReduxForm = Component => {
     } = selectedCard;
     const validateMethod = createValidateMethod({
       address: AddressFields.addressValidationConfig,
-      ...getStandardConfig(['expYear', 'expMonth']),
+      ...getStandardConfig(['cardNumber', 'expYear', 'expMonth']),
     });
-
     const CartEditForm = reduxForm({
       form: constants.EDIT_FORM_NAME, // a unique identifier for this form
       enableReinitialize: true,
@@ -63,7 +63,9 @@ export const withCardEditReduxForm = Component => {
           address,
           creditCardId,
           isDefault: defaultInd,
+          sameAsShipping: false,
         }}
+        cardType={cardType}
         dispatch={dispatch}
         onEditCardFocus={onEditCardFocus}
         AddressForm={AddressForm}
@@ -92,6 +94,7 @@ export const withCardEditReduxForm = Component => {
     onEditCardFocus: PropTypes.func.isRequired,
     updateCardDetail: PropTypes.func.isRequired,
     editModeSubmissionError: PropTypes.string.isRequired,
+    cardType: PropTypes.string.isRequired,
     errorMessageRef: PropTypes.shape({}).isRequired,
     dispatch: PropTypes.func.isRequired,
     selectedCard: PropTypes.shape({

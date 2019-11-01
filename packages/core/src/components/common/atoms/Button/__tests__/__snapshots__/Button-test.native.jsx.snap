@@ -24,6 +24,7 @@ exports[`CustomButton should render correctly 1`] = `
     fullWidth=""
     selected={false}
     style={null}
+    withNoLineHeight={false}
   />
 </Styled(TouchableOpacity)>
 `;

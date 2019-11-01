@@ -132,6 +132,7 @@ const PickupSkuSelectionForm = props => {
         selectedColorProductId={generalProductId}
         initialFormValues={initialValues}
         showAddToBagCTA={false}
+        isDisableZeroInventoryEntries={false}
       />
     </PickUpSkUSectionContainer>
   );

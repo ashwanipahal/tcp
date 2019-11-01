@@ -14,121 +14,106 @@ const ContactPreferencesTileItem = ({ labels, customerPreferences }) => {
       <Row fullBleed>
         <Col
           colSize={{
-            small: 5,
-            large: 10,
-            medium: 6,
+            small: 3,
+            large: 6,
+            medium: 4,
+          }}
+        >
+          <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
+            {getLabelValue(labels, 'lbl_preference_tileContactPreference', 'preferences')}
+          </BodyCopy>
+        </Col>
+        <Col
+          colSize={{
+            small: 3,
+            large: 6,
+            medium: 4,
           }}
         >
           <Row fullBleed>
             <Col
               colSize={{
-                small: 3,
-                large: 6,
-                medium: 5,
+                small: 2,
+                large: 5,
+                medium: 2,
               }}
             >
+              {placeRewardsSms ? (
+                <Image
+                  className="elem-pr-SM"
+                  width="30"
+                  height="30"
+                  src={getIconPath('sms-enabled')}
+                />
+              ) : (
+                <Image
+                  className="elem-pr-SM"
+                  width="30"
+                  height="30"
+                  src={getIconPath('sms-disabled')}
+                />
+              )}
               <BodyCopy
                 component="div"
-                fontSize="fs14"
+                fontSize="fs10"
                 fontWeight="extrabold"
                 fontFamily="secondary"
               >
-                {getLabelValue(labels, 'lbl_preference_tileContactPreference', 'preferences')}
+                {getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
               </BodyCopy>
             </Col>
             <Col
               colSize={{
-                small: 3,
-                large: 6,
-                medium: 3,
+                small: 2,
+                large: 5,
+                medium: 2,
               }}
             >
-              <Row fullBleed>
-                <Col
-                  colSize={{
-                    small: 3,
-                    large: 6,
-                    medium: 4,
-                  }}
+              {placeRewardsPush ? (
+                <Image
+                  className="elem-pr-SM"
+                  width="30"
+                  height="30"
+                  src={getIconPath('push-enabled')}
+                />
+              ) : (
+                <Image
+                  className="elem-pr-SM"
+                  width="30"
+                  height="30"
+                  src={getIconPath('push-disabled')}
+                />
+              )}
+              <BodyCopy
+                className="elem-pl-XXXS"
+                component="div"
+                fontSize="fs10"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
+                {getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
+              </BodyCopy>
+            </Col>
+            <Col
+              colSize={{
+                small: 2,
+                large: 2,
+                medium: 4,
+              }}
+            >
+              <BodyCopy component="div" textAlign="right" fontSize="fs14" fontFamily="secondary">
+                <Anchor
+                  fontSizeVariation="large"
+                  underline
+                  anchorVariation="primary"
+                  to={internalEndpoints.myPreferencesPage.link}
+                  asPath={internalEndpoints.myPreferencesPage.path}
                 >
-                  {placeRewardsSms ? (
-                    <Image
-                      className="elem-pr-SM"
-                      width="30"
-                      height="30"
-                      src={getIconPath('sms-enabled')}
-                    />
-                  ) : (
-                    <Image
-                      className="elem-pr-SM"
-                      width="30"
-                      height="30"
-                      src={getIconPath('sms-disabled')}
-                    />
-                  )}
-                  <BodyCopy
-                    component="span"
-                    fontSize="fs10"
-                    fontWeight="extrabold"
-                    fontFamily="secondary"
-                  >
-                    {getLabelValue(labels, 'lbl_preference_tileTextText', 'preferences')}
-                  </BodyCopy>
-                </Col>
-                <Col
-                  colSize={{
-                    small: 3,
-                    large: 6,
-                    medium: 4,
-                  }}
-                >
-                  {placeRewardsPush ? (
-                    <Image
-                      className="elem-pr-SM"
-                      width="30"
-                      height="30"
-                      src={getIconPath('push-enabled')}
-                    />
-                  ) : (
-                    <Image
-                      className="elem-pr-SM"
-                      width="30"
-                      height="30"
-                      src={getIconPath('push-disabled')}
-                    />
-                  )}
-                  <BodyCopy
-                    className="elem-pl-XXXS"
-                    component="span"
-                    fontSize="fs10"
-                    fontWeight="extrabold"
-                    fontFamily="secondary"
-                  >
-                    {getLabelValue(labels, 'lbl_preference_tileAppText', 'preferences')}
-                  </BodyCopy>
-                </Col>
-              </Row>
+                  {getLabelValue(labels, addEditText, 'preferences')}
+                </Anchor>
+              </BodyCopy>
             </Col>
           </Row>
-        </Col>
-        <Col
-          colSize={{
-            small: 1,
-            large: 2,
-            medium: 2,
-          }}
-        >
-          <BodyCopy component="div" textAlign="right" fontSize="fs14" fontFamily="secondary">
-            <Anchor
-              fontSizeVariation="large"
-              underline
-              anchorVariation="primary"
-              to={internalEndpoints.myPreferencesPage.link}
-              asPath={internalEndpoints.myPreferencesPage.path}
-            >
-              {getLabelValue(labels, addEditText, 'preferences')}
-            </Anchor>
-          </BodyCopy>
         </Col>
       </Row>
     </BodyCopy>

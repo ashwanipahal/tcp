@@ -36,11 +36,12 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import CardEditFrom from './CardEditForm.view';
 import {
-  onEditCardFocus,
+  onEditCardFocus as onCardEditFocus,
   setFormToEditState,
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
 } from './BillingPaymentForm.util';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 /**
  * @class BillingPaymentForm
@@ -174,6 +175,17 @@ export class BillingPaymentForm extends React.PureComponent {
   };
 
   /**
+   * @function onEditCardFocus
+   * @description on edit card number field focus event to clear the field first time only
+   */
+  onEditCardFocus = scope => {
+    if (!this.cardNumberCleared) {
+      this.cardNumberCleared = true;
+      onCardEditFocus(scope);
+    }
+  };
+
+  /**
    * @function getCCDropDown
    * @description returns the credit card drop down if user has credit cards
    */
@@ -228,7 +240,10 @@ export class BillingPaymentForm extends React.PureComponent {
             fontSizeVariation="medium"
             underline
             noLink
-            onClick={e => setFormToEditState(this, e)}
+            onClick={e => {
+              this.cardNumberCleared = false;
+              setFormToEditState(this, e);
+            }}
             anchorVariation="primary"
             className="billing-payment-edit"
             dataLocator="billing-payment-edit"
@@ -248,10 +263,10 @@ export class BillingPaymentForm extends React.PureComponent {
     const { defaultPayment, paymentMethod, creditCardEnd, cvvCode } = labels;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { editMode, editModeSubmissionError } = this.state;
-    const { dispatch, updateCardDetail } = this.props;
+    const { dispatch, updateCardDetail, editFormCardType } = this.props;
     const billingPaymentFormWidthCol = { large: 3, small: 4, medium: 4 };
     const cvvCodeColWidth = { large: 3, small: 2, medium: 4 };
-    const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState } = this;
+    const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState, onEditCardFocus } = this;
     return (
       <>
         {renderBillingAddressHeading(labels)}
@@ -287,7 +302,7 @@ export class BillingPaymentForm extends React.PureComponent {
                         className="field"
                         showSuccessCheck={false}
                         enableSuccessCheck={false}
-                        autoComplete="off"
+                        autocomplete="noautocomplete"
                       />
                       <span className="hide-show show-hide-icons">
                         <span className="info-icon-img-wrapper">
@@ -353,6 +368,7 @@ export class BillingPaymentForm extends React.PureComponent {
             key="cardEditForm"
             addressForm={this.getCheckoutBillingAddress}
             errorMessageRef={this.ediCardErrorRef}
+            cardType={editFormCardType}
           />
         )}
       </>
@@ -384,7 +400,7 @@ export class BillingPaymentForm extends React.PureComponent {
    */
   render() {
     const { className, handleSubmit, cardList, isGuest } = this.props;
-    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled } = this.props;
+    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled, venmoError } = this.props;
     const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
@@ -429,6 +445,7 @@ export class BillingPaymentForm extends React.PureComponent {
                 isVenmoBlueButton
               />
             )}
+            {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
           </div>
         )}
         <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
@@ -440,6 +457,7 @@ export class BillingPaymentForm extends React.PureComponent {
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
+          venmoError={venmoError}
         />
       </form>
     );

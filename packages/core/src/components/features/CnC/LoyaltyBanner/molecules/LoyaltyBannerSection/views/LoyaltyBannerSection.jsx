@@ -9,10 +9,6 @@ import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 
-// const concatSectionSymbol = (str, sectionSymbol) => {
-//   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
-// };
-
 const utilArrayHeader = (LoyaltyLabels, className) => {
   return [
     {
@@ -63,6 +59,7 @@ const LoyaltyBannerSection = props => {
     getCurrencySymbol,
     pageCategory,
     isProductDetailView,
+    openLoginModal,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -80,7 +77,7 @@ const LoyaltyBannerSection = props => {
     !isPlcc &&
     !isReviewPage &&
     !isConfirmationPage &&
-    estimatedSubtotal
+    !isAddedToBagPage
   ) {
     showSubtotal = true;
   }
@@ -156,6 +153,7 @@ const LoyaltyBannerSection = props => {
               className={className}
               labels={labels}
               isPlcc={isPlcc}
+              openLoginModal={openLoginModal}
               isProductDetailView={isProductDetailView}
               isReviewPage={isReviewPage}
               isConfirmationPage={isConfirmationPage}
@@ -184,6 +182,7 @@ LoyaltyBannerSection.propTypes = {
   getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
   pageCategory: PropTypes.string,
+  openLoginModal: PropTypes.string,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -196,6 +195,7 @@ LoyaltyBannerSection.defaultProps = {
   earnedReward: 0,
   isPlcc: false,
   pageCategory: '',
+  openLoginModal: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',

@@ -50,11 +50,11 @@ const LoyaltyBannerSection = props => {
 
   /* istanbul ignore else */
   if (
-    currentSubtotal > thresholdValue &&
+    estimatedSubtotal > thresholdValue &&
     !isPlcc &&
     !isReviewPage &&
     !isConfirmationPage &&
-    estimatedSubtotal
+    !isAddedToBagPage
   ) {
     showSubtotal = true;
   }
@@ -83,6 +83,10 @@ const LoyaltyBannerSection = props => {
     {
       key: '#br# ',
       value: '\n',
+    },
+    {
+      key: '#tagOpen# ',
+      value: 'MyPlaceRewards',
     },
   ];
   headingLabel = LoyaltyLabels.headingLabelValFn
