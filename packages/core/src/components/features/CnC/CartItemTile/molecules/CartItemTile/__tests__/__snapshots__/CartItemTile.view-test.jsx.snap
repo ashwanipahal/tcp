@@ -46,6 +46,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -86,6 +89,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -481,6 +487,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -521,6 +530,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -912,6 +924,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -952,6 +967,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -1361,6 +1379,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -1401,6 +1422,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -1792,6 +1816,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -1832,6 +1859,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -2223,6 +2253,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -2263,6 +2296,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -2668,6 +2704,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -2720,6 +2759,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -3125,6 +3167,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -3165,6 +3210,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -3570,6 +3618,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -3622,6 +3673,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -4027,6 +4081,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -4067,6 +4124,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -4472,6 +4532,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -4512,6 +4575,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -4903,6 +4969,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -4943,6 +5012,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -5352,6 +5424,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -5392,6 +5467,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -5801,6 +5879,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -5841,6 +5922,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -6264,6 +6348,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         className="imageWrapper"
       >
         <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
           to="/p?pid=undefined"
         >
           <WithTheme(DamImage)
@@ -6316,6 +6403,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           }
         >
           <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
             to="/p?pid=undefined"
           >
             <Styled(BodyCopy)
@@ -7174,6 +7264,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "itemInfo": Object {
         "fit": "regular",
         "isGiftItem": true,
+        "itemBrand": "tcp",
         "myPlacePoints": 123,
         "name": "Boys Basic Skinny Jeans 1",
         "price": 123,
@@ -7666,6 +7757,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "itemInfo": Object {
         "fit": "regular",
         "isGiftItem": true,
+        "itemBrand": "tcp",
         "myPlacePoints": 123,
         "name": "Boys Basic Skinny",
         "price": 123,

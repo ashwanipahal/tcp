@@ -11,7 +11,13 @@ import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
-import { getIconPath, getLocator, isCanada } from '../../../../../../../utils';
+import {
+  getIconPath,
+  getLocator,
+  isCanada,
+  getAPIConfig,
+  getBrand,
+} from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -813,6 +819,14 @@ class CartItemTile extends React.Component {
     return itemBrand && itemBrand.toLowerCase();
   };
 
+  getPdpToPath = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+    return isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : `${crossDomain}${pdpUrl}`;
+  };
+
+  getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+    return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -840,6 +854,10 @@ class CartItemTile extends React.Component {
     const isBOPISOrder = isBopisOrder(orderItemType);
     const isBOSSOrder = isBossOrder(orderItemType);
     const isEcomSoldout = isSoldOut(availability);
+    const apiConfigObj = getAPIConfig();
+    const { crossDomain } = apiConfigObj;
+    const currentSiteBrand = getBrand();
+    const isProductBrandOfSameDomain = currentSiteBrand.toUpperCase() === itemBrand.toUpperCase();
 
     const { noBopisMessage, noBossMessage } = noBossBopisMessage(this.props);
     const { bossDisabled, bopisDisabled } = checkBossBopisDisabled(
@@ -857,8 +875,8 @@ class CartItemTile extends React.Component {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
-    const pdpToPath = getProductListToPath(pdpUrl);
-    const pdpAsPathUrl = pdpUrl.split('/us')[1];
+    const pdpToPath = this.getPdpToPath(isProductBrandOfSameDomain, pdpUrl, crossDomain);
+    const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
     return (
       <div className={`${className} tile-header`}>
@@ -895,7 +913,12 @@ class CartItemTile extends React.Component {
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
               /> */}
-              <Anchor to={pdpToPath} asPath={pdpAsPathUrl}>
+              <Anchor
+                to={pdpToPath}
+                asPath={pdpAsPathUrl}
+                noLink={!isProductBrandOfSameDomain}
+                IsSlugPathAdded
+              >
                 <DamImage
                   imgData={{
                     alt: labels.productImageAlt,
@@ -942,7 +965,12 @@ class CartItemTile extends React.Component {
               this.getBadgeDetails(productDetail)}
             <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <Anchor to={pdpToPath} asPath={pdpAsPathUrl}>
+                <Anchor
+                  to={pdpToPath}
+                  asPath={pdpAsPathUrl}
+                  noLink={!isProductBrandOfSameDomain}
+                  IsSlugPathAdded
+                >
                   <BodyCopy
                     fontFamily="secondary"
                     component="h2"
