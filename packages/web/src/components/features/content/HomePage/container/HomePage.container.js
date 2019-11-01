@@ -1,8 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
-import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import HomePageView from '../views/HomePage.view';
 import { initActions } from './HomePage.actions';
 
@@ -25,27 +22,6 @@ HomePageView.pageInfo = {
   },
   modules: ['labels', 'header', 'footer', 'navigation'],
 };
-
-export class HomePage extends React.PureComponent {
-  componentDidUpdate() {
-    const { isUserLoggedIn, openOverlay } = this.props;
-    if (isUserLoggedIn === false) {
-      openOverlay({
-        component: 'login',
-        componentProps: 'login',
-      });
-    }
-  }
-
-  /**
-   * @function render  Used to render the JSX of the component
-   * @param    {[Void]} function does not accept anything.
-   * @return   {[Object]} JSX of the component
-   */
-  render() {
-    return <HomePageView />;
-  }
-}
 
 const mapStateToProps = state => {
   const { Layouts, Modules } = state;
