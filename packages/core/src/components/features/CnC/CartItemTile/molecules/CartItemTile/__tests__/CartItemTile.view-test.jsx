@@ -258,6 +258,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
           itemBrand: 'TCP',
           itemUnitPrice: 12.345,
           offerPrice: 38.85,
+          itemId: '123',
         },
         miscInfo: {
           badge: '',
@@ -290,6 +291,8 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
       isBopisClearanceProductEnabled: true,
       isRadialInventoryEnabled: true,
       pickupStoresInCart: {},
+      onPickUpOpenClick: jest.fn(),
+      toggleBossBopisError: null,
     };
   });
 
@@ -403,5 +406,20 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
     const instance = component.instance();
     instance.componentWillUnmount();
     expect(props.clearToggleError).toHaveBeenCalled();
+  });
+
+  it('should open pickup modal for boss/bopis toggle error', () => {
+    jest.useFakeTimers();
+    props.pageView = 'myBag';
+    props.toggleBossBopisError = {
+      errorMessage: 'errorMessage',
+      itemId: '123',
+      targetOrderType: 'BOPIS',
+    };
+    const component = shallow(<CartItemTileVanilla {...props} />);
+    const instance = component.instance();
+    instance.componentDidUpdate({ toggleBossBopisError: null });
+    jest.runAllTimers();
+    expect(props.onPickUpOpenClick).toHaveBeenCalled();
   });
 });

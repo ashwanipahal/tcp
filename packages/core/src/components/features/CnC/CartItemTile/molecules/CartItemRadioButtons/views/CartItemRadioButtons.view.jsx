@@ -130,10 +130,12 @@ class CartItemRadioButtons extends React.Component {
     const formData = this.createFormData(pickupType);
     const { switchingToBopisOption, switchingToBossOption } = this.getSwitchingOptions(pickupType);
 
+    /* istanbul ignore else */
     // when no stores are seleceted
     if (pickupStoresInCart.size === OPEN_SELECTION_MODAL) {
       return openPickUpModal(pickupType);
     }
+    /* istanbul ignore else */
     if (pickupStoresInCart.size === AUTO_SWITCH) {
       // when one store is selected boss/bopis
       formData.storeId = pickupStoresInCart.getIn([0, 'stLocId']);
@@ -144,6 +146,7 @@ class CartItemRadioButtons extends React.Component {
         formData,
       });
     }
+    /* istanbul ignore else */
     if (pickupStoresInCart.getIn([0, 'orderType']) !== pickupStoresInCart.getIn([1, 'orderType'])) {
       // when 1 boss and 1 bopis stpre is selected
       const { bossStoreIndex, bopisStoreIndex } = this.getBossBopisStoreIndexes();
@@ -158,6 +161,7 @@ class CartItemRadioButtons extends React.Component {
         bossStoreIndex,
       });
     }
+    /* istanbul ignore else */
     if (pickupType === BOSS) {
       // when 2 bopis stores are selected and toggled to boss
       return openPickUpModal(pickupType, false, false, true);

@@ -57,7 +57,6 @@ class CartItemTile extends PureComponent {
       (prevProps.toggleBossBopisError === null ||
         prevProps.toggleBossBopisError.errorMessage !== toggleBossBopisError.errorMessage)
     ) {
-      console.log('toggleBossBopisError', toggleBossBopisError);
       setTimeout(() => {
         this.handleEditCartItemWithStore(toggleBossBopisError.targetOrderType);
       });
