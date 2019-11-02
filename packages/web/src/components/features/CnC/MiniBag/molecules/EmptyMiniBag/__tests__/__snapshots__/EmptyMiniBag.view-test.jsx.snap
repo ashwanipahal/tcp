@@ -30,7 +30,6 @@ exports[`Empty Mini Bag Component should render correctly 1`] = `
       className="continueShoppingText"
       dataLocator="emptyMiniBag-continueShopping"
       onClick={[Function]}
-      to="/home"
       underline={true}
     >
       <Styled(BodyCopy)
@@ -82,7 +81,6 @@ exports[`Empty Mini Bag Component should render correctly with labels name 1`] =
       className="continueShoppingText"
       dataLocator="emptyMiniBag-continueShopping"
       onClick={[Function]}
-      to="/home"
       underline={true}
     >
       <Styled(BodyCopy)
@@ -134,7 +132,6 @@ exports[`Empty Mini Bag Component should render correctly with labels name 2`] =
       className="continueShoppingText"
       dataLocator="emptyMiniBag-continueShopping"
       onClick={[Function]}
-      to="/home"
       underline={true}
     >
       <Styled(BodyCopy)
