@@ -12,7 +12,7 @@ describe('BagPage Reducer', () => {
       isSflItemDeleted: false,
       cartItemSflError: null,
       isCartItemsUpdating: fromJS({}),
-      isPayPalWebViewEnable:false,
+      isPayPalWebViewEnable: undefined,
     },
     openItemDeleteConfirmationModalInfo: { showModal: false },
   };
@@ -173,11 +173,11 @@ describe('BagPage Reducer', () => {
   });
 
   it('PAYPAL_WEBVIEW_ENABLE', () => {
-    const newState = BagPageReducer(initialStateMutated, {
-      type: 'PAYPAL_WEBVIEW_ENABLE',
-      isPayPalWebViewEnable: false,
+    const newStatee = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE,
+      isPayPalWebViewEnable: 'false',
     });
 
-    expect(newState).toEqual(initialStateMutated);
+    expect(newStatee).toEqual(initialStateMutated);
   });
 });
