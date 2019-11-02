@@ -32,7 +32,6 @@ class SearchImageWrapper extends React.PureComponent {
       searchResults,
       isSearchOpen,
       closeSearchBar,
-      hideOverlayAfterClick,
       redirectToSuggestedUrl,
       setSearchState,
       setDataInLocalStorage,
@@ -40,6 +39,8 @@ class SearchImageWrapper extends React.PureComponent {
       startSearch,
       closeModalSearch,
       commonCloseClick,
+      toggleSearchResults,
+      closeSearchLayover,
     } = this.props;
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
     const SEARCH_IMAGE = 'search-icon';
@@ -57,7 +58,7 @@ class SearchImageWrapper extends React.PureComponent {
                     onSubmit={initiateSearchBySubmit}
                   >
                     <input
-                      id="search-input"
+                      id="searchBar-input"
                       ref={this.searchBarInput}
                       onClick={openSearchBar}
                       className="searchBar-input"
@@ -102,7 +103,6 @@ class SearchImageWrapper extends React.PureComponent {
               latestSearchResults={latestSearchResults}
               labels={labels}
               searchResults={searchResults}
-              hideOverlayAfterClick={hideOverlayAfterClick}
               redirectToSuggestedUrl={redirectToSuggestedUrl}
               setSearchState={setSearchState}
               setDataInLocalStorage={setDataInLocalStorage}
@@ -110,6 +110,9 @@ class SearchImageWrapper extends React.PureComponent {
               startSearch={startSearch}
               closeModalSearch={closeModalSearch}
               commonCloseClick={commonCloseClick}
+              toggleSearchResults={toggleSearchResults}
+              closeSearchLayover={closeSearchLayover}
+              isSearchOpen={isSearchOpen}
             />
           )}
         </div>
@@ -123,12 +126,13 @@ SearchImageWrapper.propTypes = {
   initiateSearchBySubmit: PropTypes.func.isRequired,
   openSearchBar: PropTypes.func.isRequired,
   closeSearchBar: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
+  closeSearchLayover: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,
   redirectToSearchPage: PropTypes.func.isRequired,
   startSearch: PropTypes.func.isRequired,
+  toggleSearchResults: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
   commonCloseClick: PropTypes.func.isRequired,
   showProduct: PropTypes.bool,

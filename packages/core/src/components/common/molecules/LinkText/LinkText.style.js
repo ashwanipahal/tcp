@@ -65,6 +65,19 @@ export default css`
     }
   }
 
+  .large_text_black {
+    color: ${props => props.theme.colorPalette.gray['900']};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    letter-spacing: -0.5px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
+  }
+
   /* Module H Heading styles */
   .medium_text_white_black {
     color: ${props => props.theme.colorPalette.white};

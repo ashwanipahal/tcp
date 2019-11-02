@@ -98,6 +98,7 @@ export const CartItemTileContainer = ({
   currencyExchange,
   pickupStoresInCart,
   autoSwitchPickupItemInCart,
+  navigation,
 }) => (
   <CartItemTile
     labels={labels}
@@ -144,6 +145,7 @@ export const CartItemTileContainer = ({
     currencyExchange={currencyExchange}
     pickupStoresInCart={pickupStoresInCart}
     autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
+    navigation={navigation}
   />
 );
 

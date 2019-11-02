@@ -5,12 +5,19 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 
 export const footerLinksActionMappingConfig = {
   'track-order': setTrackOrderModalMountedState,
+  '/track-order': setTrackOrderModalMountedState,
   favorites: setLoginModalMountedState,
+  '/favorites': setLoginModalMountedState,
   'log-out': logout,
+  '/log-out': logout,
   'login-account': openOverlayModal,
   '/login-account': openOverlayModal,
   'create-account': openOverlayModal,
   '/create-account': openOverlayModal,
+  'check-point-balance': openOverlayModal,
+  '/check-point-balance': openOverlayModal,
+  'redeem-rewards': openOverlayModal,
+  '/redeem-rewards': openOverlayModal,
 };
 
 export default footerLinksActionMappingConfig;

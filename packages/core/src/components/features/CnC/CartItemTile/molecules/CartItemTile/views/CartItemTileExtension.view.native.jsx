@@ -19,9 +19,10 @@ import {
   IconHeight,
   IconWidth,
   ToggleError,
+  ImageTouchableOpacity,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
-import { getLocator } from '../../../../../../../utils';
+import { getLocator, getBrand } from '../../../../../../../utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
 import {
@@ -34,7 +35,34 @@ const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const heart = require('../../../../../../../assets/heart.png');
 
-const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
+/**
+ *
+ * @method goToPdpPage
+ * @description navigate to pdp from bag
+ * @param {*} title - header
+ * @param {*} productDetail - details of product for pdp
+ * @param {*} navigation - navigation
+ */
+const goToPdpPage = (title, productDetail, navigation) => {
+  const currentAppBrand = getBrand();
+  const {
+    productInfo: { pdpUrl, productPartNumber },
+    itemInfo: { itemBrand },
+  } = productDetail;
+  const isProductBrandOfSameDomain = currentAppBrand.toUpperCase() === itemBrand.toUpperCase();
+  if (!isProductBrandOfSameDomain) {
+    return;
+  }
+  const pdpAsPathUrl = pdpUrl.split('/p/')[1];
+  navigation.navigate('ProductDetail', {
+    title,
+    pdpUrl: pdpAsPathUrl,
+    selectedColorProductId: productPartNumber,
+    reset: true,
+  });
+};
+
+const CartItemImageWrapper = (productDetail, labels, showOnReviewPage, navigation) => {
   return (
     <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
@@ -43,17 +71,23 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
           source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
           showOnReviewPage={showOnReviewPage}
         /> */}
-        <DamImage
-          width={100}
-          height={100}
-          isProductImage
-          alt={labels.productImageAlt}
-          url={productDetail.itemInfo.imagePath}
-          showOnReviewPage={showOnReviewPage}
-          itemBrand={
-            productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
-          }
-        />
+        <ImageTouchableOpacity
+          onPress={() => {
+            goToPdpPage('', productDetail, navigation);
+          }}
+        >
+          <DamImage
+            width={100}
+            height={100}
+            isProductImage
+            alt={labels.productImageAlt}
+            url={productDetail.itemInfo.imagePath}
+            showOnReviewPage={showOnReviewPage}
+            itemBrand={
+              productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
+            }
+          />
+        </ImageTouchableOpacity>
         {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
           <SoldOutLabel>
             <BodyCopy
@@ -138,7 +172,7 @@ const heartIcon = isBagPageSflSection => {
   );
 };
 
-const getProductName = (productDetail, showOnReviewPage) => {
+const getProductName = (productDetail, showOnReviewPage, navigation) => {
   return (
     <ProductName showOnReviewPage={showOnReviewPage}>
       <BodyCopy
@@ -147,6 +181,9 @@ const getProductName = (productDetail, showOnReviewPage) => {
         dataLocator={getLocator('cart_item_title')}
         fontWeight={['semibold']}
         text={productDetail.itemInfo.name}
+        onPress={() => {
+          goToPdpPage('', productDetail, navigation);
+        }}
       />
     </ProductName>
   );
@@ -468,4 +505,5 @@ export default {
   onSwipeComplete,
   renderImage,
   renderTogglingError,
+  goToPdpPage,
 };

@@ -247,7 +247,7 @@ export default css`
 
   .matchProductBox .matchProductBody ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
 
@@ -266,5 +266,9 @@ export default css`
   .autosuggest-image {
     height: 80px;
     width: 80px;
+  }
+  .empty-search-linkName {
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 5px 14px;
   }
 `;

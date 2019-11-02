@@ -39,6 +39,7 @@ const CARTPAGE_CONSTANTS = {
     AUTO_SWITCH: 1,
     OPEN_RESTRICTED_MODAL: 2,
   },
+  CART_ITEM_TILE: 'CartItemTile',
 };
 
 export default CARTPAGE_CONSTANTS;

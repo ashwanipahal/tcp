@@ -1,5 +1,5 @@
 const getLabels = state => {
-  return state.Labels.global.loyalityBanner;
+  return state.Labels.checkout.bagPage;
 };
 
 export default getLabels;

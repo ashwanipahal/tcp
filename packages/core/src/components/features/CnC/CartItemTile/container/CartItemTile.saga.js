@@ -33,6 +33,7 @@ import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { isItemBossBopisInEligible } from './CartItemTile.selectors';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
@@ -67,6 +68,7 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
     );
   } catch (err) {
     logger.error(err);
+    yield call(handleServerSideErrorAPI, err, CARTPAGE_CONSTANTS.CART_ITEM_TILE);
   }
 }
 

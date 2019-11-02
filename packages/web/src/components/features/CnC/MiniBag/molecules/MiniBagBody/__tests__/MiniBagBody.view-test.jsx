@@ -28,7 +28,7 @@ describe('MiniBagBody component', () => {
     isCanada.mockImplementation(() => true);
     const component = shallow(<MiniBagBodyVanilla {...props} />);
     expect(component).toMatchSnapshot();
-    expect(component.find(LoyaltyBanner).length).toEqual(0);
+    expect(component.find(LoyaltyBanner).length).toEqual(1);
   });
   it('isCanada false for Loyalty Banner', () => {
     const props = {

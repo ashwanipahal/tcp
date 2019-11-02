@@ -8,10 +8,22 @@ exports[`ProductColorChipVanilla component should renders correctly 1`] = `
   title=""
   type="button"
 >
-  <img
-    alt=""
+  <WithTheme(DamImage)
     className="product-color-chip-image"
-    src=""
+    imgConfigs={
+      Array [
+        "w_50,h_50,c_thumb,g_auto:0",
+        "w_50,h_50,c_thumb,g_auto:0",
+        "w_50,h_50,c_thumb,g_auto:0",
+      ]
+    }
+    imgData={
+      Object {
+        "alt": "",
+        "url": "",
+      }
+    }
+    isProductImage={true}
   />
 </button>
 `;

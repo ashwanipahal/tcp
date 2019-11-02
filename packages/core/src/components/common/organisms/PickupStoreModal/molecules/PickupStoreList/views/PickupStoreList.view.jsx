@@ -4,6 +4,7 @@ import { BOPIS_ITEM_AVAILABILITY, BOPIS_FILTER_LABEL } from '../../../PickUpStor
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 import InputCheckbox from '../../../../../atoms/InputCheckbox';
+import StoreListItemSkeleton from '../../../atoms/StoreListItemSkeleton';
 
 const PickupStoreList = props => {
   const {
@@ -30,6 +31,7 @@ const PickupStoreList = props => {
     addItemToCartInPickup,
     onPickupRadioBtnToggle,
     onStoreUpdate,
+    isSearching,
   } = props;
 
   return (
@@ -39,6 +41,7 @@ const PickupStoreList = props => {
           checkBoxLabel
           execOnChangeByDefault={false}
           input={{ value: isOnlyShowAvailable, onChange: handleShowAvailableChange }}
+          isPickUpStoreView
         >
           {BOPIS_FILTER_LABEL}
         </InputCheckbox>
@@ -71,6 +74,7 @@ const PickupStoreList = props => {
           onStoreUpdate={onStoreUpdate}
         />
       ))}
+      {isSearching ? <StoreListItemSkeleton col={20} /> : ''}
     </>
   );
 };
@@ -127,6 +131,7 @@ PickupStoreList.propTypes = {
 
   /** checks if the cart having both same store for BOPIS and BOSS */
   sameStore: PropTypes.bool.isRequired,
+  isSearching: PropTypes.bool.isRequired,
   /** store id that was selected */
   selectedStoreId: PropTypes.number.isRequired,
 
