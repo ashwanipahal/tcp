@@ -86,6 +86,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isNoNEmptyBag,
       fromAddedToBagModal,
       getPayPalSettings,
+      orderId,
     } = this.props;
 
     return (
@@ -114,12 +115,13 @@ class AddedToBagActions extends React.PureComponent<Props> {
         {(isNoNEmptyBag || fromAddedToBagModal) && (
           <View style={this.getViewStyle('ButtonView')}>
             <View style={this.getViewStyle('ButtonWrapper')}>
-              <PayPalButton
+             {orderId && <PayPalButton
                 getPayPalSettings={getPayPalSettings}
                 navigation={navigation}
                 setVenmoState={this.changeVenmoState}
                 closeModal={this.closeModal}
               />
+              }
               <CheckoutButton
                 onPress={() => {
                   handleCartCheckout({

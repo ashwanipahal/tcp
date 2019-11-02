@@ -12,6 +12,7 @@ describe('BagPage Reducer', () => {
       isSflItemDeleted: false,
       cartItemSflError: null,
       isCartItemsUpdating: fromJS({}),
+      isPayPalWebViewEnable:false,
     },
     openItemDeleteConfirmationModalInfo: { showModal: false },
   };

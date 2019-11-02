@@ -20,29 +20,46 @@ const PayPalButton = props => {
   const handleWebViewEvents = event => {
     switch (event.nativeEvent.data) {
       case 'payment':
-        payPalWebViewHandle(true);
-        setAsModal(true);
-        setVenmoState(false);
+        // payPalWebViewHandle(true);
+        // setAsModal(true);
+        // setVenmoState(false);
+
+        triggerEvents(true,false,true);
+
         break;
       case 'onAuthorize':
         paypalAuthorizationHandle({ navigation, navigationActions: NavigationActions });
-        payPalWebViewHandle(false);
-        setAsModal(false);
-        setVenmoState(true);
+        // payPalWebViewHandle(false);
+        // setAsModal(false);
+        // setVenmoState(true);
         closeModal(true);
+
+        triggerEvents(false,true,false);
+
         break;
       case 'onCancel':
         clearPaypalSettings();
-        setVenmoState(true);
-        payPalWebViewHandle(false);
+        // setVenmoState(true);
+        // payPalWebViewHandle(false);
+        // setAsModal(false);
+
+        triggerEvents(false,true,false);
 
         break;
       default:
-        payPalWebViewHandle(false);
-        setAsModal(false);
-        setVenmoState(true);
+        // payPalWebViewHandle(false);
+        // setAsModal(false);
+        // setVenmoState(true);
+        triggerEvents(false,true,false);
     }
   };
+
+  const triggerEvents = (paypalWebView,venmo,modal)=>{
+    payPalWebViewHandle(paypalWebView);
+    setAsModal(modal);
+    setVenmoState(venmo);
+  }
+
   let styles = {
     height: 42,
     width: 150,

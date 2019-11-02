@@ -44,6 +44,15 @@ exports[`Shipping Form should render correctly 1`] = `
         shipmentMethods={null}
       />
     </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
+      />
+    </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
@@ -152,6 +161,15 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
         shipmentMethods={null}
       />
     </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
+      />
+    </FormSection>
   </Styled(View)>
   <CnCCommonTemplate
     backLinkText={false}
@@ -208,6 +226,15 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
         selectedShipmentId={null}
         shipmentHeader="lbl_shipping_shipmentHeader"
         shipmentMethods={null}
+      />
+    </FormSection>
+    <FormSection
+      name="giftServices"
+    >
+      <Connect(GiftServicesContainer)
+        formSection="giftServices"
+        showDefaultCheckbox={false}
+        variation="secondary"
       />
     </FormSection>
   </Styled(View)>

@@ -86,6 +86,8 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               to=""
               underline={true}
               visible={false}
+            />
+          </Styled(View)>
           <ScrollViewMock>
             <Styled(ProductInformation)
               data={Object {}}
@@ -99,7 +101,15 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               closeModal={[Function]}
               fromAddedToBagModal={true}
               labels={Object {}}
-              navigation={null}
+              navigation={
+                Object {
+                  "getParam": [Function],
+                  "navigate": [MockFunction],
+                  "param": Object {
+                    "headerMode": false,
+                  },
+                }
+              }
               showAddTobag={true}
             />
             <Styled(BossBanner)
@@ -119,7 +129,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
                 locator=""
                 margins={null}
                 noLink={true}
-                onPress={null}
+                onPress={[Function]}
                 text=""
                 to=""
                 underline={true}
