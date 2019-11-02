@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PaymentOverviewTile component should render correctly 1`] = `
+exports[`MyPlaceRewardsCreditCardTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
   ctaLink="https://d.comenity.net/childrensplace/?ecid=manageacct"
-  ctaTitle="APPLY OR ACCEPT OFFER"
+  ctaTitle="lbl_overview_applyOrAcceptOffer"
   target="new"
-  title="My Place Rewards Credit Card"
+  title="lbl_overview_myPlaceRewardsCardHeading"
 >
   <Styled(Row)
     className=" elem-mb-XL"
@@ -56,7 +56,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             link={null}
             textAlign="left"
           >
-            Add your card to:
+            lbl_overview_addYourCardTo
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="list-style"
@@ -69,17 +69,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
             lineHeight="normal"
             link={null}
             textAlign="left"
-          >
-            <li>
-              Earn 2 pints for every $1 spent
-            </li>
-            <li>
-              Get 25% off birthday savings
-            </li>
-            <li>
-              Check out even faster
-            </li>
-          </Styled(BodyCopy)>
+          />
           <Styled(BodyCopy)
             className="elem-mt-LRG"
             color="text.primary"
@@ -98,8 +88,9 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
               color="GRAY"
               data-locator="orders-shop-now-btn"
               fill="WHITE"
+              onClick={[Function]}
             >
-              ADD YOUR CARD
+              lbl_overview_addYourCard
             </Styled(Button)>
           </Styled(BodyCopy)>
         </Styled(BodyCopy)>
@@ -115,7 +106,7 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
           link={null}
           textAlign="left"
         >
-          Don’t have a My Place Rewards Credit Card?
+          lbl_overview_dontHaveMyPlaceCard
         </Styled(BodyCopy)>
       </Styled(BodyCopy)>
     </Styled(Col)>

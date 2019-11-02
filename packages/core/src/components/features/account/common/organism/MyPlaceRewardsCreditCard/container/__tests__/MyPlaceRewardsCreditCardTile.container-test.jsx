@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 import { MyPlaceRewardsCreditCardTile } from '../MyPlaceRewardsCreditCardTile.container';
 import MyPlaceRewardsCreditCardTileComponent from '../../views/MyPlaceRewardsCreditCardTile.view';
 
-describe('PaymentOverviewTile container', () => {
-  it('should render PaymentOverviewTile components', () => {
+describe('MyPlaceRewardsCreditCardTile container', () => {
+  it('should render MyPlaceRewardsCreditCardTile components', () => {
     const obj = new List();
     const component = shallow(
       <MyPlaceRewardsCreditCardTile cardList={obj} labels={{ accountOverview: {} }} />

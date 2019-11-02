@@ -4,7 +4,6 @@ const styles = css`
   height: 100%;
   .cardDetailsWrapper {
     display: flex;
-    padding-top: 12px;
   }
   .cardDescriptionWrapper {
     display: flex;
@@ -22,7 +21,7 @@ const styles = css`
     text-decoration: none;
     li {
       list-style-type: disc;
-      line-height: 22px;
+      line-height: ${props => props.theme.fonts.lineHeight.normal};
     }
   }
 `;

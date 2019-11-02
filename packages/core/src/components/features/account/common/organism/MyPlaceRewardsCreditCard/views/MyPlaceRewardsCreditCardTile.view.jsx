@@ -2,31 +2,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import utils from '@tcp/core/src/utils';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import styles from './MyPlaceRewardsCreditCardTile.style';
 import { getIconPath } from '../../../../../../../utils';
 import { Row, Col, BodyCopy, Image } from '../../../../../../common/atoms';
 import Button from '../../../../../../common/atoms/Button';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
+import internalEndpoints from '../../../internalEndpoints';
+import { cardIconMapping } from '../../../molecule/CardTile/views/CardTile.utils';
+import externalEndpoints from '../../../externalEndpoints';
 
-export const MyPlaceRewardsCreditCardTile = ({ className, labels, myPlaceRewardCard }) => {
-  const cardIconMapping = {
-    DISC: 'disc-small',
-    MC: 'mc-small',
-    Amex: 'amex-small',
-    Visa: 'visa-small',
-    GC: 'gift-card-small',
-    'PLACE CARD': 'place-card-small',
-    VENMO: 'venmo-blue-acceptance-mark',
-  };
+const getAddYourCardToLabels = labels => {
+  return Object.keys(labels).filter(labelKey => /lbl_overview_addYourCardToPoint/.test(labelKey));
+};
 
+export const MyPlaceRewardsCreditCardTile = ({
+  className,
+  labels,
+  myPlaceRewardCard,
+  openModal,
+}) => {
   const cardEnrolled = myPlaceRewardCard && myPlaceRewardCard.ccType;
+  const addYourCardLabelKeys = getAddYourCardToLabels(labels);
   return (
     <AccountOverviewTile
       target="new"
-      title="My Place Rewards Credit Card"
-      ctaTitle={cardEnrolled ? 'MANAGE YOUR CARD' : 'APPLY OR ACCEPT OFFER'}
-      ctaLink="https://d.comenity.net/childrensplace/?ecid=manageacct"
+      title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')}
+      ctaTitle={
+        cardEnrolled
+          ? getLabelValue(labels, 'lbl_overview_manageYourCard')
+          : getLabelValue(labels, 'lbl_overview_applyOrAcceptOffer')
+      }
+      ctaLink={externalEndpoints.managePlaceCardPage}
+      linkClick={openModal}
     >
       <Row fullBleed className={`${className} elem-mb-XL`}>
         <Col
@@ -38,7 +47,7 @@ export const MyPlaceRewardsCreditCardTile = ({ className, labels, myPlaceRewardC
         >
           {cardEnrolled ? (
             <>
-              <BodyCopy component="div" className="cardDetailsWrapper">
+              <BodyCopy component="div" className="cardDetailsWrapper elem-pt-SM">
                 <Image
                   className="elem-mr-XS"
                   src={getIconPath(cardIconMapping[myPlaceRewardCard.ccBrand])}
@@ -61,23 +70,29 @@ export const MyPlaceRewardsCreditCardTile = ({ className, labels, myPlaceRewardC
               <BodyCopy component="div">
                 <BodyCopy className="elem-mt-LRG" fontSize="fs14" fontFamily="secondary">
                   <BodyCopy fontWeight="semibold" component="span">
-                    25% OFF
+                    {getLabelValue(labels, 'lbl_overview_25Off')}
                   </BodyCopy>
-                  <BodyCopy component="span"> your kids’ birthdays!</BodyCopy>
+                  <BodyCopy component="span">
+                    {getLabelValue(labels, 'lbl_overview_yourKidsBirthdays')}
+                  </BodyCopy>
                 </BodyCopy>
 
                 <BodyCopy className="elem-mt-LRG" fontSize="fs14" fontFamily="secondary">
                   <BodyCopy fontWeight="semibold" component="span">
-                    EARN DOUBLE POINTS
+                    {getLabelValue(labels, 'lbl_overview_earnDoublePoints')}
                   </BodyCopy>
-                  <BodyCopy component="span"> when you check out using your card</BodyCopy>
+                  <BodyCopy component="span">
+                    {getLabelValue(labels, 'lbl_overview_whenYouCheckout')}
+                  </BodyCopy>
                 </BodyCopy>
 
                 <BodyCopy className="elem-mt-LRG" fontSize="fs14" fontFamily="secondary">
                   <BodyCopy fontWeight="semibold" component="span">
-                    EXCLUSIVE BONUS EVENTS
+                    {getLabelValue(labels, 'lbl_overview_exclusiveBonusEvents')}
                   </BodyCopy>
-                  <BodyCopy>Tripe points, double rewards & more!</BodyCopy>
+                  <BodyCopy>
+                    {getLabelValue(labels, 'lbl_overview_tripePointsDoubleRewards')}
+                  </BodyCopy>
                 </BodyCopy>
               </BodyCopy>
             </>
@@ -85,7 +100,7 @@ export const MyPlaceRewardsCreditCardTile = ({ className, labels, myPlaceRewardC
             <BodyCopy component="div" className="container-top">
               <BodyCopy component="div">
                 <BodyCopy fontSize="fs14" fontFamily="secondary" fontWeight="extrabold">
-                  Add your card to:
+                  {getLabelValue(labels, 'lbl_overview_addYourCardTo')}
                 </BodyCopy>
                 <BodyCopy
                   className="list-style"
@@ -93,24 +108,30 @@ export const MyPlaceRewardsCreditCardTile = ({ className, labels, myPlaceRewardC
                   fontSize="fs14"
                   fontFamily="secondary"
                 >
-                  <li>Earn 2 pints for every $1 spent</li>
-                  <li>Get 25% off birthday savings</li>
-                  <li>Check out even faster</li>
+                  {addYourCardLabelKeys.map(labelKey => {
+                    return <li>{labels[labelKey]}</li>;
+                  })}
                 </BodyCopy>
                 <BodyCopy component="div" className="elem-mt-LRG">
                   <Button
+                    onClick={() =>
+                      utils.routerPush(
+                        internalEndpoints.paymentPage.link,
+                        internalEndpoints.paymentPage.path
+                      )
+                    }
                     buttonVariation="fixed-width"
                     fill="WHITE"
                     color="GRAY"
                     className="shop-now-btn"
                     data-locator="orders-shop-now-btn"
                   >
-                    ADD YOUR CARD
+                    {getLabelValue(labels, 'lbl_overview_addYourCard')}
                   </Button>
                 </BodyCopy>
               </BodyCopy>
               <BodyCopy fontSize="fs14" fontFamily="secondary" fontWeight="extrabold">
-                Don’t have a My Place Rewards Credit Card?
+                {getLabelValue(labels, 'lbl_overview_dontHaveMyPlaceCard')}
               </BodyCopy>
             </BodyCopy>
           )}
@@ -127,6 +148,7 @@ MyPlaceRewardsCreditCardTile.propTypes = {
     lbl_overview_paymentCTA: PropTypes.string,
   }),
   myPlaceRewardCard: PropTypes.shape({}),
+  openModal: PropTypes.func.isRequired,
 };
 
 MyPlaceRewardsCreditCardTile.defaultProps = {

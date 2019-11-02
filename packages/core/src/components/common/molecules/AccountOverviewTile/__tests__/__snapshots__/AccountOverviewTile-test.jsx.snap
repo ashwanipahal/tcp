@@ -61,12 +61,17 @@ exports[`AccordionList component renders correctly AccountOverviewTile 1`] = `
       dataLocator="accountoverview-test-viewallcta"
       fill="BLUE"
       fullWidth={true}
+      onClick={[Function]}
       target="_self"
       to=""
     >
       test
     </Styled(Anchor)>
   </Styled(BodyCopy)>
+  <Connect(ApplyNowModalWrapper)
+    noLink={true}
+    step={2}
+  />
 </Styled(BodyCopy)>
 `;
 
@@ -129,9 +134,14 @@ exports[`AccordionList component renders empty correctly AccountOverviewTile 1`]
       dataLocator="accountoverview--viewallcta"
       fill="BLUE"
       fullWidth={true}
+      onClick={[Function]}
       target="_self"
       to=""
     />
   </Styled(BodyCopy)>
+  <Connect(ApplyNowModalWrapper)
+    noLink={true}
+    step={2}
+  />
 </Styled(BodyCopy)>
 `;

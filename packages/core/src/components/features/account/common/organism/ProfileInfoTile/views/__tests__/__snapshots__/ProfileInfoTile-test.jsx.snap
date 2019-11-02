@@ -7,7 +7,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-fYxtnH",
         "isStatic": true,
         "rules": Array [
           "
@@ -19,7 +19,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       "displayName": "Styled(ProfileInfoTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-fYxtnH",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
