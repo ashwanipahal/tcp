@@ -79,6 +79,7 @@ export {
   generateTraceId,
   enableBodyScroll,
   disableBodyScroll,
+  removeBodyScrollLocks,
   readCookieMobileApp,
   getStyliticsUserName,
   getStyliticsRegion,

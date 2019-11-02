@@ -8,6 +8,7 @@ import logger from '../../../../../utils/loggerInstance';
 import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 import BodyCopy from '../../BodyCopy';
+import ErrorMessage from "../../../../features/CnC/common/molecules/ErrorMessage";
 
 let venmoInstance = null;
 
@@ -17,6 +18,7 @@ export class VenmoPaymentButton extends Component {
     this.venmoButtonRef = null;
     this.state = {
       hasVenmoError: true,
+      venmoErrorMessage: null,
     };
   }
 
@@ -57,6 +59,16 @@ export class VenmoPaymentButton extends Component {
     if (this.venmoButtonRef) {
       this.venmoButtonRef.disable = flag;
     }
+  };
+
+  renderServerError = () => {
+    const { hasVenmoError, venmoErrorMessage } = this.state;
+    if(!hasVenmoError){
+      return null;
+    }
+    return (
+      <ErrorMessage error={venmoErrorMessage} className="error_box minibag-error" />
+    );
   };
 
   /**
@@ -136,6 +148,7 @@ export class VenmoPaymentButton extends Component {
    */
   handleVenmoError = ({ code, message, name }) => {
     const { setVenmoData, onVenmoPaymentButtonError } = this.props;
+    this.setState({ venmoErrorMessage: message });
     const errorData = { nonce: '', error: { code, message, name } };
     if (code !== constants.VENMO_CANCELED) {
       setVenmoData(errorData);
@@ -256,6 +269,7 @@ export class VenmoPaymentButton extends Component {
               </button>
             </div>
           )}
+        {this.renderServerError()}
       </div>
     );
   }

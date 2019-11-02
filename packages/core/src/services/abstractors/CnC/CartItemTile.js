@@ -158,6 +158,9 @@ export const removeItem = orderItemId => {
     return {
       orderId: res && res.body.orderId,
     };
+  })
+  .catch(err => {
+    throw err;
   });
 };
 
@@ -937,7 +940,7 @@ export const getUnqualifiedItems = () => {
       }));
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw err;
     });
 };
 

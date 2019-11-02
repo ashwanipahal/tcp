@@ -6,6 +6,8 @@ import Button from '../../../../common/atoms/Button';
 import Modal from '../../../../common/molecules/Modal';
 
 import styles from '../styles/ItemDeleteConfirmationModal.style';
+import ErrorMessage from "../../common/molecules/ErrorMessage";
+
 
 const ItemDeleteConfirmationModal = ({
   labels,
@@ -14,6 +16,7 @@ const ItemDeleteConfirmationModal = ({
   isOpen,
   moveToSfl,
   confirmRemoveCartItem,
+  bagPageServerError,
 }) => {
   const { modalTitle, modalHeading, modalButtonSFL, modalButtonConfirmDelete } = labels;
   return (
@@ -69,6 +72,9 @@ const ItemDeleteConfirmationModal = ({
             </BodyCopy>
           </Button>
         </div>
+        {bagPageServerError && (
+          <ErrorMessage error={bagPageServerError.errorMessage} className="error_box bag-item-error" />
+        )}
       </div>
     </Modal>
   );
@@ -86,10 +92,12 @@ ItemDeleteConfirmationModal.propTypes = {
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
   moveToSfl: PropTypes.func.isRequired,
   confirmRemoveCartItem: PropTypes.func.isRequired,
+  bagPageServerError: PropTypes.shape({}),
 };
 
 ItemDeleteConfirmationModal.defaultProps = {
   isOpen: false,
+  bagPageServerError: null,
 };
 
 export { ItemDeleteConfirmationModal as ItemDeleteConfirmationModalVanilla };

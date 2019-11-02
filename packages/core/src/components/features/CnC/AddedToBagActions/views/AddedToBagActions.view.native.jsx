@@ -41,33 +41,10 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return null;
   }
 
-  closeModal = close => {
-    if (close) {
-      this.props.closeModal();
-    }
-  };
-
-  // getViewStyle(view) {
-  //   if (!this.state.venmoEnable) {
-  //     return { position: 'absolute', height: '100%', width: '100%', zIndex: 997 };
-  //   } else if (view === 'Anchor') {
-  //     return { display: 'flex' };
-  //   } else if (view === 'ButtonView') {
-  //     return { position: 'relative' };
-  //   } else if (view === 'ButtonWrapper') {
-  //     return {
-  //       marginRight: 10,
-  //       marginLeft: 10,
-  //       display: 'flex',
-  //       flexDirection: 'row',
-  //       marginTop: 20,
-  //     };
-  //   }
-  // }
-
   changeVenmoState = isVenmoEnable => {
     this.setState({ venmoEnable: isVenmoEnable });
-    this.props.hideHeader(!isVenmoEnable);
+    const { hideHeader } = this.props;
+    hideHeader(!isVenmoEnable);
   };
 
   render() {
@@ -83,11 +60,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
       getPayPalSettings,
       orderId,
     } = this.props;
-
+const {venmoEnable,}=this.state;
     return (
-      <ActionsWrapper isPayPalWebViewEnable={!this.state.venmoEnable}>
+      <ActionsWrapper isPayPalWebViewEnable={!venmoEnable}>
         {showAddTobag && (
-          <ButtonWrapper isPayPalWebViewEnable={!this.state.venmoEnable}>
+          <ButtonWrapper isPayPalWebViewEnable={!venmoEnable}>
             <ViewBagButton
               onPress={() => {
                 navigation.navigate(ADDEDTOBAG_CONSTANTS.BAG_PAGE);
@@ -108,8 +85,8 @@ class AddedToBagActions extends React.PureComponent<Props> {
           </ButtonWrapper>
         )}
         {(isNoNEmptyBag || fromAddedToBagModal) && (
-          <ButtonViewWrapper isPayPalWebViewEnable={!this.state.venmoEnable}>
-            <ButtonWrapper isPayPalWebViewEnable={!this.state.venmoEnable}>
+          <ButtonViewWrapper isPayPalWebViewEnable={!venmoEnable}>
+            <ButtonWrapper isPayPalWebViewEnable={!venmoEnable}>
               {orderId && (
                 <PayPalButton
                   getPayPalSettings={getPayPalSettings}
@@ -141,7 +118,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
         )}
 
         {(isNoNEmptyBag || fromAddedToBagModal) &&
-          this.state.venmoEnable &&
+          venmoEnable &&
           this.getVenmoPaymentButton()}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>

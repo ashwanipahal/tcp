@@ -92,8 +92,8 @@ PayPalButton.propTypes = {
   clearPaypalSettings: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   paypalEnv: PropTypes.string.isRequired,
-  setVenmoState: PropTypes.bool,
-  closeModal: PropTypes.bool,
+  setVenmoState: PropTypes.bool.isRequired,
+  closeModal: PropTypes.bool.isRequired,
   paypalStaticUrl: PropTypes.string.isRequired,
 };
 
