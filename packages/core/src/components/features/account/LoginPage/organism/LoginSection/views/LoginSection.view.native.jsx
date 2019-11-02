@@ -9,6 +9,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
 import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
+import ResetPassword from '../../../../ResetPassword';
 import {
   FormStyle,
   FormStyleView,
@@ -21,8 +22,35 @@ class LoginSection extends PureComponent<Props> {
     super(props);
     this.state = {
       resetPassword: false,
+      newPassword: false,
     };
+    this.queryParams = {};
   }
+
+  componentDidUpdate() {
+    const { newPassword } = this.state;
+    if (!newPassword) this.navigateToResetPassword();
+  }
+
+  navigateToResetPassword = () => {
+    const { navigation } = this.props;
+    if (navigation) {
+      const {
+        state: { params },
+      } = navigation;
+      if (params) {
+        const { component, logonPasswordOld, em } = params;
+        if (component && component === 'change-password') {
+          this.showNewPassword();
+          this.queryParams = {
+            logonPasswordOld,
+            em,
+          };
+          navigation.setParams({ component: null, logonPasswordOld: null, em: null }); // reset the params
+        }
+      }
+    }
+  };
 
   toggleCheckoutModal = () => {
     const { showCheckoutModal } = this.props;
@@ -34,6 +62,14 @@ class LoginSection extends PureComponent<Props> {
     this.setState({
       resetPassword: !resetPassword,
     });
+  };
+
+  showNewPassword = () => {
+    const { newPassword, resetPassword } = this.state;
+    this.setState({
+      newPassword: !newPassword,
+    });
+    if (resetPassword) this.showForgotPassword(); // if user is on forgot password then dismiss it
   };
 
   render() {
@@ -62,12 +98,14 @@ class LoginSection extends PureComponent<Props> {
       userplccCardId,
       updateHeader,
       toastMessage,
+      resetChangePasswordState,
     } = this.props;
 
-    const { resetPassword } = this.state;
+    const { resetPassword, newPassword } = this.state;
+
     return (
       <View>
-        {!resetPassword && (
+        {!resetPassword && !newPassword && (
           <Fragment>
             <LoginTopSection
               showForgotPasswordForm={this.showForgotPassword}
@@ -110,6 +148,17 @@ class LoginSection extends PureComponent<Props> {
             showLogin={showLogin}
             updateHeader={updateHeader}
             toastMessage={toastMessage}
+          />
+        )}
+
+        {newPassword && (
+          <ResetPassword
+            labels={labels.password}
+            queryParams={this.queryParams}
+            showLogin={showLogin}
+            showNewPassword={this.showNewPassword}
+            updateHeader={updateHeader}
+            resetChangePasswordState={resetChangePasswordState}
           />
         )}
         <FormStyleView>
@@ -167,3 +216,4 @@ LoginSection.defaultProps = {
 };
 
 export default withStyles(LoginSection, FormStyle);
+export { LoginSection as LoginSectionVanilla };

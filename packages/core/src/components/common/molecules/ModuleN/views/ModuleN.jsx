@@ -19,9 +19,16 @@ const getButtonListVariationProps = ctaType => {
   return buttonTypeProps[ctaType];
 };
 
+const getMappedPromoBanner = promoBanner => {
+  const promoTexts = promoBanner ? promoBanner[0] : { textItems: [] };
+  return promoTexts.textItems.map(item => {
+    return { ...promoTexts, textItems: [item] };
+  });
+};
+
 const ModuleN = props => {
   const { className, ctaItems, headerText, promoBanner, ctaType, expandableTitle } = props;
-  const promoTexts = promoBanner[0];
+
   const buttonListProps = getButtonListVariationProps(ctaType);
   let dualVariation = null;
   const isDropDown =
@@ -29,9 +36,8 @@ const ModuleN = props => {
   if (isDropDown) {
     dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
   }
-  const mappedPromoBanner = promoTexts.textItems.map(item => {
-    return { ...promoTexts, textItems: [item] };
-  });
+  const mappedPromoBanner = getMappedPromoBanner(promoBanner);
+
   return (
     <Row
       className={`${className} moduleN`}

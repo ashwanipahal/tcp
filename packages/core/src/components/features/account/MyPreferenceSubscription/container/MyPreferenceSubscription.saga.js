@@ -23,7 +23,11 @@ export function* setSubscribeStoreSaga(data) {
   const customerPreferencesData = CustomerPreferencesGym || CustomerPreferences;
   try {
     yield call(myPreferenceModalSubmit, mobileNumber, customerPreferencesData, brand);
-    yield put(getSubscribeStore());
+    yield put(
+      getSubscribeStore({
+        ignoreCache: true,
+      })
+    );
   } catch (err) {
     yield null;
   }
