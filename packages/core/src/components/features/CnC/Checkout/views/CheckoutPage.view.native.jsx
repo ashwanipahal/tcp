@@ -63,12 +63,15 @@ class CheckoutPage extends React.PureComponent {
       currentStage,
       setCheckoutStage,
       isExpressCheckout,
+      cartOrderItemsCount,
+      checkoutPageEmptyBagLabels,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
           <PickupPage
+            cartOrderItemsCount={cartOrderItemsCount}
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
@@ -85,12 +88,15 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             availableStages={availableStages}
             setCheckoutStage={setCheckoutStage}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
           />
         );
       case SHIPPING:
         return (
           <ShippingPage
             {...shippingProps}
+            cartOrderItemsCount={cartOrderItemsCount}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
             loadShipmentMethods={loadShipmentMethods}
             navigation={navigation}
             isGuest={isGuest}
@@ -182,7 +188,9 @@ CheckoutPage.propTypes = {
   addNewShippingAddressData: PropTypes.func.isRequired,
   currentStage: PropTypes.string.isRequired,
   checkoutServerError: PropTypes.shape({}).isRequired,
+  checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   toastMessage: PropTypes.func.isRequired,
+  cartOrderItemsCount: PropTypes.number.isRequired,
   isExpressCheckout: PropTypes.bool,
 };
 

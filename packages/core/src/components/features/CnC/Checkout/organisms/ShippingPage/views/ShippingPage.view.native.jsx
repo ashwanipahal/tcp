@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
+import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 import { StyledHeader, HeaderContainer } from '../styles/ShippingPage.style.native';
 import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
@@ -28,12 +29,14 @@ export default class ShippingPage extends React.Component {
     orderHasPickUp: PropTypes.bool,
     shipmentMethods: PropTypes.shape([]),
     defaultShipmentId: PropTypes.number,
+    cartOrderItemsCount: PropTypes.number.isRequired,
     loadShipmentMethods: PropTypes.func.isRequired,
     shippingDidMount: PropTypes.func.isRequired,
     formatPayload: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     navigation: PropTypes.shape({}).isRequired,
+    checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     availableStages: PropTypes.shape([]).isRequired,
     isGiftServicesChecked: PropTypes.bool,
@@ -284,6 +287,8 @@ export default class ShippingPage extends React.Component {
       newUserPhoneNo,
       setCheckoutStage,
       formatPayload,
+      cartOrderItemsCount,
+      checkoutPageEmptyBagLabels,
     } = this.props;
 
     const { defaultAddressId, showAddressVerification } = this.state;
@@ -294,85 +299,101 @@ export default class ShippingPage extends React.Component {
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     return (
       <>
-        {showAddressVerification && (
-          <ModalNative
-            isOpen={showAddressVerification}
-            onRequestClose={this.closeAddAddressVerificationModal}
-            heading={getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout')}
-          >
-            <SafeAreaView>
-              <ScrollView>
-                <AddressVerification
-                  onSuccess={this.submitVerifiedShippingAddressData}
-                  heading={addressLabels.addAddressHeading}
-                  onError={this.submitVerifiedShippingAddressData}
-                  shippingAddress={formatPayload(shippingAddressData)}
-                  toggleAddressModal={this.closeAddAddressVerificationModal}
-                />
-              </ScrollView>
-            </SafeAreaView>
-          </ModalNative>
-        )}
-        <>
-          <CheckoutProgressIndicator
-            activeStage="shipping"
-            navigation={navigation}
-            setCheckoutStage={setCheckoutStage}
-            availableStages={availableStages}
-          />
-          <ScrollView keyboardShouldPersistTaps="handled">
-            <HeaderContainer>
-              <CheckoutSectionTitleDisplay
-                title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
-              />
-            </HeaderContainer>
-            <StyledHeader>
-              <BodyCopy
-                color="black"
-                fontWeight="regular"
-                fontFamily="primary"
-                fontSize="fs28"
-                text={getLabelValue(labels, 'lbl_shipping_sectionHeader', 'shipping', 'checkout')}
-                textAlign="left"
-              />
-            </StyledHeader>
-            {shipmentMethods && shipmentMethods.length > 0 && (
-              <ShippingForm
-                shipmentMethods={shipmentMethods}
-                initialValues={{
-                  address: { country: 'US' },
-                  shipmentMethods: { shippingMethodId: defaultShipmentId },
-                  onFileAddressKey: defaultAddressId,
-                }}
-                selectedShipmentId={selectedShipmentId}
-                isGuest={isGuest}
-                isUsSite={isUsSite}
-                orderHasPickUp={orderHasPickUp}
-                smsSignUpLabels={smsSignUpLabels}
-                isOrderUpdateChecked={isOrderUpdateChecked}
-                emailSignUpLabels={emailSignUpLabels}
-                addressPhoneNo={addressPhoneNumber}
-                addressLabels={addressLabels}
-                loadShipmentMethods={loadShipmentMethods}
-                navigation={navigation}
-                submitShippingForm={this.submitShippingForm}
-                labels={labels}
-                isGiftServicesChecked={isGiftServicesChecked}
-                userAddresses={userAddresses}
-                onFileAddressKey={onFileAddressKey}
-                isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-                updateShippingAddress={this.updateShippingAddress}
-                addNewShippingAddress={this.addNewShippingAddress}
-                address={address}
-                setAsDefaultShipping={setAsDefaultShipping}
-                defaultAddressId={defaultAddressId}
-                syncErrorsObject={syncErrors}
-                newUserPhoneNo={newUserPhoneNo}
-                setCheckoutStage={setCheckoutStage}
-              />
+        {cartOrderItemsCount > 0 ? (
+          <>
+            {showAddressVerification && (
+              <ModalNative
+                isOpen={showAddressVerification}
+                onRequestClose={this.closeAddAddressVerificationModal}
+                heading={getLabelValue(
+                  labels,
+                  'lbl_shipping_addNewAddress',
+                  'shipping',
+                  'checkout'
+                )}
+              >
+                <SafeAreaView>
+                  <ScrollView>
+                    <AddressVerification
+                      onSuccess={this.submitVerifiedShippingAddressData}
+                      heading={addressLabels.addAddressHeading}
+                      onError={this.submitVerifiedShippingAddressData}
+                      shippingAddress={formatPayload(shippingAddressData)}
+                      toggleAddressModal={this.closeAddAddressVerificationModal}
+                    />
+                  </ScrollView>
+                </SafeAreaView>
+              </ModalNative>
             )}
-          </ScrollView>
-        </>
+            <>
+              <CheckoutProgressIndicator
+                activeStage="shipping"
+                navigation={navigation}
+                setCheckoutStage={setCheckoutStage}
+                availableStages={availableStages}
+              />
+              <ScrollView keyboardShouldPersistTaps="handled">
+                <HeaderContainer>
+                  <CheckoutSectionTitleDisplay
+                    title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
+                  />
+                </HeaderContainer>
+                <StyledHeader>
+                  <BodyCopy
+                    color="black"
+                    fontWeight="regular"
+                    fontFamily="primary"
+                    fontSize="fs28"
+                    text={getLabelValue(
+                      labels,
+                      'lbl_shipping_sectionHeader',
+                      'shipping',
+                      'checkout'
+                    )}
+                    textAlign="left"
+                  />
+                </StyledHeader>
+                {shipmentMethods && shipmentMethods.length > 0 && (
+                  <ShippingForm
+                    shipmentMethods={shipmentMethods}
+                    initialValues={{
+                      address: { country: 'US' },
+                      shipmentMethods: { shippingMethodId: defaultShipmentId },
+                      onFileAddressKey: defaultAddressId,
+                    }}
+                    selectedShipmentId={selectedShipmentId}
+                    isGuest={isGuest}
+                    isUsSite={isUsSite}
+                    orderHasPickUp={orderHasPickUp}
+                    smsSignUpLabels={smsSignUpLabels}
+                    isOrderUpdateChecked={isOrderUpdateChecked}
+                    emailSignUpLabels={emailSignUpLabels}
+                    addressPhoneNo={addressPhoneNumber}
+                    addressLabels={addressLabels}
+                    loadShipmentMethods={loadShipmentMethods}
+                    navigation={navigation}
+                    submitShippingForm={this.submitShippingForm}
+                    labels={labels}
+                    isGiftServicesChecked={isGiftServicesChecked}
+                    userAddresses={userAddresses}
+                    onFileAddressKey={onFileAddressKey}
+                    isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+                    updateShippingAddress={this.updateShippingAddress}
+                    addNewShippingAddress={this.addNewShippingAddress}
+                    address={address}
+                    setAsDefaultShipping={setAsDefaultShipping}
+                    defaultAddressId={defaultAddressId}
+                    syncErrorsObject={syncErrors}
+                    newUserPhoneNo={newUserPhoneNo}
+                    setCheckoutStage={setCheckoutStage}
+                  />
+                )}
+              </ScrollView>
+            </>
+          </>
+        ) : (
+          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
+        )}
       </>
     );
   }

@@ -946,6 +946,18 @@ function getVenmoUserEmail(state) {
   return getUserEmail(state) || shippingEmail || pickupEmail;
 }
 
+const getCheckoutPageEmptyBagLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = ['lbl_review_emptyBagText', 'lbl_review_emptyBagSubText'];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
@@ -1033,4 +1045,5 @@ export default {
   getVenmoUserEmail,
   getVenmoError,
   getPickupValues,
+  getCheckoutPageEmptyBagLabels,
 };

@@ -7,7 +7,8 @@ import ItemDeleteConfirmationModal from '../../../../BagPage/views/ItemDeleteCon
 
 class ModalsCheckout extends React.PureComponent {
   navigateToCheckout = stage => {
-    const { setCheckoutStage, navigation } = this.props;
+    const { setCheckoutStage, navigation, closeAddedToBagModal } = this.props;
+    setTimeout(closeAddedToBagModal);
     setCheckoutStage(stage);
     navigation.navigate({ routeName: CheckoutConstants.CHECKOUT_ROOT });
   };
@@ -104,6 +105,7 @@ ModalsCheckout.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   closeModal: PropTypes.func,
   setCheckoutStage: PropTypes.func.isRequired,
+  closeAddedToBagModal: PropTypes.func.isRequired,
   closeCheckoutModalMountState: PropTypes.func.isRequired,
   orderHasPickup: PropTypes.bool,
   isExpressCheckoutPage: PropTypes.bool,
