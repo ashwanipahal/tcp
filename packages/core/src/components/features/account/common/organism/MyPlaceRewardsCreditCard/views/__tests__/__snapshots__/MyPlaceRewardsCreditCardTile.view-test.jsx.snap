@@ -2,7 +2,7 @@
 
 exports[`MyPlaceRewardsCreditCardTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
-  ctaLink="https://d.comenity.net/childrensplace/?ecid=manageacct"
+  ctaLink=""
   ctaTitle="lbl_overview_applyOrAcceptOffer"
   target="new"
   title="lbl_overview_myPlaceRewardsCardHeading"
@@ -61,7 +61,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render correctly 1`] = `
           <Styled(BodyCopy)
             className="list-style"
             color="text.primary"
-            component="u"
+            component="ul"
             fontFamily="secondary"
             fontSize="fs14"
             fontWeight="regular"
