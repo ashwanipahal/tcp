@@ -32,6 +32,7 @@ const CARTPAGE_CONSTANTS = {
     TCP: 'TCP',
     GYM: 'GYM',
   },
+  CART_ITEM_TILE: 'CartItemTile',
 };
 
 export default CARTPAGE_CONSTANTS;
