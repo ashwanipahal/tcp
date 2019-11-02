@@ -33,6 +33,10 @@ const EditFromSeparator = styled.View`
   border-bottom-color: ${props => props.theme.colorPalette.black};
 `;
 
+const ErrorMessageWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
 export {
   AddressFieldsWrapper,
   SaveToAccountWrapper,
@@ -40,4 +44,5 @@ export {
   AddressViewWrapper,
   EditAddressFormHeader,
   EditFromSeparator,
+  ErrorMessageWrapper,
 };
