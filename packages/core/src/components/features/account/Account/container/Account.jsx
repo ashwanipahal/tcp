@@ -46,7 +46,7 @@ export class Account extends React.PureComponent {
     const { componentToLoad } = this.state;
     const { isUserLoggedIn } = this.props;
 
-    if (isUserLoggedIn === false && excludeRouteMapping.includes(componentToLoad)) {
+    if (isUserLoggedIn === false && !excludeRouteMapping.includes(componentToLoad)) {
       routerPush('/home?target=login', '/home/login');
     }
 
