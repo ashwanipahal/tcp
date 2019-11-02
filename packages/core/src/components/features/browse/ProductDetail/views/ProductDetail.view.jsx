@@ -44,6 +44,7 @@ class ProductDetailView extends React.Component {
       ),
       currentGiftCardValue: productInfo.offerPrice,
       renderReceiveProps: false,
+      initialValues: {},
     };
   }
 
@@ -61,6 +62,12 @@ class ProductDetailView extends React.Component {
       color: e,
       Quantity: selectedQuantity,
     };
+  };
+
+  setInitialValues = initialValues => {
+    this.setState({
+      initialValues,
+    });
   };
 
   onChangeSize = e => {
@@ -181,7 +188,7 @@ class ProductDetailView extends React.Component {
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
-    const { currentColorEntry, renderReceiveProps } = this.state;
+    const { currentColorEntry, renderReceiveProps, initialValues } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
 
     if (isProductDataAvailable) {
@@ -223,6 +230,7 @@ class ProductDetailView extends React.Component {
               currentProduct={currentProduct}
               onChangeColor={this.onChangeColor}
               currentColorEntry={currentColorEntry}
+              initialValues={initialValues}
             />
           </Col>
           <Col
@@ -246,6 +254,7 @@ class ProductDetailView extends React.Component {
                 selectedColorProductId={selectedColorProductId}
                 renderReceiveProps={renderReceiveProps}
                 initialFormValues={this.formValues}
+                getProductInitialValues={this.setInitialValues}
                 isPDP
                 alternateSizes={alternateSizes}
                 sizeChartLinkVisibility={sizeChartLinkVisibility}

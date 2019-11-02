@@ -12,6 +12,12 @@ export const getEarnedPointsNotification = () => {
   };
 };
 
+export const showLoader = () => {
+  return {
+    type: EARNEXTRAPOINTS_CONSTANTS.SHOW_LOADER,
+  };
+};
+
 export const setEarnedPointsNotification = earnedPointsNotification => {
   return {
     type: EARNEXTRAPOINTS_CONSTANTS.SET_EARNEDPOINTS_NOTIFICATION,
