@@ -448,3 +448,7 @@ export const isItemBossBopisInEligible = (state, { itemBrand, orderItemType } = 
 export const getCartToggleError = state => {
   return state.CartItemTileReducer.get('toggleError');
 };
+
+export const getCartBossBopisToggleError = state => {
+  return state.CartItemTileReducer.get('toggleBossBopisError');
+};

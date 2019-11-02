@@ -1638,3 +1638,173 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
   />
 </Styled(View)>
 `;
+
+exports[`CartItemRadioButtons native Component should open change store popup for bopis 1`] = `
+<Styled(View)>
+  <CollapsibleContainer
+    arrowPos="20px"
+    body={
+      <React.Fragment>
+        <ForwardRef
+          disabled={false}
+        >
+          <ForwardRef>
+            <LabeledRadioButton
+              buttonInnerColor="#000"
+              buttonOuterColor="#000"
+              buttonOuterSize={20}
+              buttonSize={10}
+              buttonStyle={Object {}}
+              checked={true}
+              disabled={false}
+              disabledWithAlert={false}
+              index={0}
+              labelStyle={
+                Object {
+                  "color": "#1a1a1a",
+                  "fontSize": 14,
+                }
+              }
+              labelWrapStyle={Object {}}
+              obj={
+                Object {
+                  "label": undefined,
+                  "value": true,
+                }
+              }
+              onPress={[Function]}
+            />
+          </ForwardRef>
+          <ForwardRef>
+            <View>
+              <ForwardRef>
+                <ForwardRef
+                  accessibilityText=""
+                  color="gray[800]"
+                  dataLocator=""
+                  fontFamily="secondary"
+                  fontSize="fs10"
+                  margin={null}
+                  numberOfLines={null}
+                  textDecoration={null}
+                />
+                <ForwardRef
+                  accessibilityText=""
+                  color="gray[800]"
+                  dataLocator=""
+                  fontFamily="secondary"
+                  fontSize="fs10"
+                  fontWeight="extrabold"
+                  margin={null}
+                  numberOfLines={null}
+                  spacingStyles="padding-left-XXS"
+                  text="NewPort"
+                  textDecoration={null}
+                />
+              </ForwardRef>
+            </View>
+            <ForwardRef
+              accessibilityLabel=""
+              anchorVariation=""
+              colorName={null}
+              customStyle={Object {}}
+              fontSizeVariation="small"
+              locator=""
+              margins={null}
+              onPress={[Function]}
+              text=""
+              visible={false}
+            >
+              <ForwardRef>
+                <ForwardRef
+                  accessibilityText=""
+                  color="gray[900]"
+                  dataLocator=""
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  margin={null}
+                  numberOfLines={null}
+                  text="undefined"
+                  textDecoration={null}
+                />
+              </ForwardRef>
+            </ForwardRef>
+          </ForwardRef>
+        </ForwardRef>
+        <ForwardRef
+          disabled={false}
+        >
+          <ForwardRef>
+            <LabeledRadioButton
+              buttonInnerColor="#000"
+              buttonOuterColor="#000"
+              buttonOuterSize={20}
+              buttonSize={10}
+              buttonStyle={Object {}}
+              checked={false}
+              disabled={false}
+              disabledWithAlert={false}
+              index={0}
+              labelStyle={
+                Object {
+                  "color": "#1a1a1a",
+                  "fontSize": 14,
+                }
+              }
+              labelWrapStyle={Object {}}
+              obj={
+                Object {
+                  "label": undefined,
+                  "value": false,
+                }
+              }
+              onPress={[Function]}
+            />
+          </ForwardRef>
+        </ForwardRef>
+      </React.Fragment>
+    }
+    defaultOpen={true}
+    getExpandedState={[Function]}
+    header={
+      <React.Fragment>
+        <ForwardRef
+          disabled={false}
+        >
+          <ForwardRef>
+            <LabeledRadioButton
+              buttonInnerColor="#000"
+              buttonOuterColor="#000"
+              buttonOuterSize={20}
+              buttonSize={10}
+              buttonStyle={Object {}}
+              checked={false}
+              disabled={false}
+              disabledWithAlert={false}
+              index={0}
+              labelStyle={
+                Object {
+                  "color": "#1a1a1a",
+                  "fontSize": 14,
+                }
+              }
+              labelWrapStyle={Object {}}
+              obj={
+                Object {
+                  "label": undefined,
+                  "value": false,
+                }
+              }
+              onPress={[Function]}
+            />
+          </ForwardRef>
+        </ForwardRef>
+      </React.Fragment>
+    }
+    height="auto"
+    index={0}
+    isBag={true}
+    openedTile={0}
+  />
+</Styled(View)>
+`;

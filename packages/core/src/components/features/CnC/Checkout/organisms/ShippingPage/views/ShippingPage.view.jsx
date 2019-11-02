@@ -358,6 +358,7 @@ export default class ShippingPage extends React.PureComponent {
       isSubmitting,
       formatPayload,
       ServerErrors,
+      checkoutServerError,
       toggleCountrySelector,
       pageCategory,
     } = this.props;
@@ -416,6 +417,7 @@ export default class ShippingPage extends React.PureComponent {
           isVenmoPaymentInProgress={isVenmoPaymentInProgress}
           isVenmoShippingDisplayed={isVenmoShippingDisplayed}
           ServerErrors={ServerErrors}
+          checkoutServerError={checkoutServerError}
           pageCategory={pageCategory}
         />
         <AddressVerification

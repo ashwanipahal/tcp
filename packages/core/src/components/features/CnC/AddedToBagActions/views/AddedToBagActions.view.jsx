@@ -128,7 +128,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           <Row className="elem-mt-MED">
             <ErrorMessage
               error={checkoutServerError.errorMessage}
-              className="checkout-page-error"
+              className="addBagActions-error"
             />
             {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
           </Row>

@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
@@ -41,12 +41,33 @@ import {
 import { currencyConversion } from '../../../utils/utils';
 import { getProductListToPath } from '../../../../../browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
-class CartItemTile extends React.Component {
+class CartItemTile extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       isEdit: false,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      isBagPageSflSection,
+      toggleBossBopisError,
+      productDetail: {
+        itemInfo: { itemId },
+      },
+    } = this.props;
+    if (
+      !isBagPageSflSection &&
+      toggleBossBopisError &&
+      itemId === toggleBossBopisError.itemId &&
+      (prevProps.toggleBossBopisError === null ||
+        prevProps.toggleBossBopisError.errorMessage !== toggleBossBopisError.errorMessage)
+    ) {
+      setTimeout(() => {
+        this.handleEditCartItemWithStore(toggleBossBopisError.targetOrderType);
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -103,7 +124,8 @@ class CartItemTile extends React.Component {
   handleEditCartItemWithStore = (
     changeStoreType,
     openSkuSelectionForm = false,
-    openRestrictedModalForBopis = false
+    openRestrictedModalForBopis = false,
+    isPickUpWarningModal = false
   ) => {
     const { onPickUpOpenClick, productDetail, orderId } = this.props;
     const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
@@ -131,6 +153,7 @@ class CartItemTile extends React.Component {
       isItemShipToHome,
       alwaysSearchForBOSS,
       openRestrictedModalForBopis,
+      isPickUpWarningModal,
     });
   };
 
@@ -897,6 +920,8 @@ class CartItemTile extends React.Component {
       setShipToHome,
       currencyExchange,
       pickupStoresInCart,
+      autoSwitchPickupItemInCart,
+      orderId,
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -1127,6 +1152,8 @@ class CartItemTile extends React.Component {
                 openPickUpModal={this.handleEditCartItemWithStore}
                 setShipToHome={setShipToHome}
                 pickupStoresInCart={pickupStoresInCart}
+                autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
+                orderId={orderId}
               />
               <RenderPerf.Measure name={CONTROLS_VISIBLE} />
             </Row>
@@ -1146,8 +1173,10 @@ CartItemTile.defaultProps = {
   onQuickViewOpenClick: () => {},
   setShipToHome: () => {},
   toggleError: null,
+  toggleBossBopisError: null,
   clearToggleError: () => {},
   currencyExchange: null,
+  autoSwitchPickupItemInCart: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -1179,9 +1208,13 @@ CartItemTile.propTypes = {
   currencySymbol: PropTypes.string.isRequired,
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
+  toggleBossBopisError: PropTypes.shape({
+    errorMessage: PropTypes.string,
+  }),
   clearToggleError: PropTypes.func,
   currencyExchange: PropTypes.shape([]),
   pickupStoresInCart: PropTypes.shape({}).isRequired,
+  autoSwitchPickupItemInCart: PropTypes.func,
 };
 
 export default withStyles(CartItemTile, styles);

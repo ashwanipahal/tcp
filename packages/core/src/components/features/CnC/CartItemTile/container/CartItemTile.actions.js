@@ -66,8 +66,21 @@ export const setToggleCartItemError = payload => {
   };
 };
 
+export const setBossBopisToggleCartItemError = payload => {
+  return {
+    type: CARTPAGE_CONSTANTS.SET_TOGGLE_BOSS_BOPIS_CART_ITEM_ERROR,
+    payload,
+  };
+};
+
 export const clearToggleCartItemError = () => {
   return {
     type: CARTPAGE_CONSTANTS.CLEAR_TOGGLE_CART_ITEM_ERROR,
+  };
+};
+
+export const clearToggleBossBopisCartItemError = () => {
+  return {
+    type: CARTPAGE_CONSTANTS.CLEAR_TOGGLE_BOSS_BOPIS_CART_ITEM_ERROR,
   };
 };

@@ -96,6 +96,17 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   // }
 }
 
+export function* handleServerSideErrorAPI(e, componentName = CONSTANTS.PAGE) {
+  const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+  const billingError = getServerErrorMessage(e, errorsMapping);
+  yield put(
+    CHECKOUT_ACTIONS.setServerErrorCheckout({
+      errorMessage: billingError,
+      component: componentName,
+    })
+  );
+}
+
 function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
@@ -124,11 +135,7 @@ function* submitPickupSection({ payload }) {
     //   throw getSubmissionError(this.store, 'submitPickupSection', err);
     // });
   } catch (e) {
-    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
-    const billingError = getServerErrorMessage(e, errorsMapping);
-    yield put(
-      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
-    );
+    yield call(handleServerSideErrorAPI, e);
   }
 }
 // function setCartInfo(cartInfo, isSetCartItems) {
