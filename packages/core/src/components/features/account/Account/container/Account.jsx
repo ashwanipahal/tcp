@@ -5,7 +5,7 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import accountPageNameMapping from '../AccountPageNameMapping';
-import utils from '../../../../../utils';
+import utils, { routerPush } from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
@@ -17,6 +17,8 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
  * NOTE: Which ever new component that gets added for left nav, needs an entry in AccountComponentMapping file.
  * @param {router} router Router object to get the query key
  */
+
+const excludeRouteMapping = ['order-details'];
 
 const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
@@ -42,6 +44,12 @@ export class Account extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
+    const { isUserLoggedIn } = this.props;
+
+    if (isUserLoggedIn === false && !excludeRouteMapping.includes(componentToLoad)) {
+      routerPush('/home?target=login', '/home/login');
+    }
+
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
     }
