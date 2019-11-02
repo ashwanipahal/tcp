@@ -22,7 +22,7 @@ import {
   ImageTouchableOpacity,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
-import { getLocator } from '../../../../../../../utils';
+import { getLocator, getBrand } from '../../../../../../../utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemRadioButtons from '../../CartItemRadioButtons';
 import {
@@ -44,9 +44,15 @@ const heart = require('../../../../../../../assets/heart.png');
  * @param {*} navigation - navigation
  */
 const goToPdpPage = (title, productDetail, navigation) => {
+  const currentAppBrand = getBrand();
   const {
     productInfo: { pdpUrl, productPartNumber },
+    itemInfo: { itemBrand },
   } = productDetail;
+  const isProductBrandOfSameDomain = currentAppBrand.toUpperCase() === itemBrand.toUpperCase();
+  if (!isProductBrandOfSameDomain) {
+    return;
+  }
   const pdpAsPathUrl = pdpUrl.split('/p/')[1];
   navigation.navigate('ProductDetail', {
     title,
