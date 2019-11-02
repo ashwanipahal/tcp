@@ -48,7 +48,7 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
 };
 
 const renderLoyaltyBanner = pageCategory => {
-  return <LoyaltyBanner pageCategory={pageCategory} />;
+  return pageCategory !== 'confirmation' && <LoyaltyBanner pageCategory={pageCategory} />;
 };
 
 const getBody = (className, ledgerSummaryData, labels, pageCategory, orderLedgerAfterView) => {
