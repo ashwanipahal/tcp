@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
   getThresholdValue,
@@ -80,6 +81,9 @@ LoyaltyBannerContainer.defaultProps = {
 
 export const mapDispatchToProps = dispatch => ({
   openOverlay: component => dispatch(openOverlayModal(component)),
+  closeAddedToBagModal: () => {
+    dispatch(closeAddedToBag());
+  },
 });
 
 /* istanbul ignore next */
