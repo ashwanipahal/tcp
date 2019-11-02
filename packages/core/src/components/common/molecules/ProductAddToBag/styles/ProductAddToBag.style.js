@@ -113,7 +113,7 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;
