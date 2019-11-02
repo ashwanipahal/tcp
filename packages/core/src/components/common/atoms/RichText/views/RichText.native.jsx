@@ -13,6 +13,8 @@ import { PropTypes } from 'prop-types';
 class RichText extends PureComponent {
   renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
 
+  renderView = ({ children }) => <View>{children}</View>;
+
   renderWebView = () => {
     const {
       javaScriptEnabled,
@@ -37,16 +39,18 @@ class RichText extends PureComponent {
   };
 
   renderNativeView = () => {
-    const { source } = this.props;
+    const { source, navigate } = this.props;
     return (
       <View>
         <RenderTree
           tree={`<div>${source}</div>`}
+          tools={{ navigate }}
           componentMap={{
             ...ComponentMap,
             br: () => <Text> </Text>,
             p: props => this.renderText(props),
             b: props => this.renderText(props),
+            div: props => this.renderView(props),
           }}
         />
       </View>
@@ -66,6 +70,7 @@ RichText.propTypes = {
   domStorageEnabled: PropTypes.bool,
   thirdPartyCookiesEnabled: PropTypes.bool,
   isApplyDeviceHeight: PropTypes.bool,
+  navigate: PropTypes.func,
 };
 
 RichText.defaultProps = {
@@ -75,6 +80,7 @@ RichText.defaultProps = {
   domStorageEnabled: false,
   thirdPartyCookiesEnabled: false,
   isApplyDeviceHeight: false,
+  navigate: () => {},
 };
 
 export default RichText;

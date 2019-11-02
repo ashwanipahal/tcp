@@ -27,6 +27,6 @@ export const getErrorMessages = state => {
 export const getFormValidationErrorMessages = createSelector(
   [getErrorMessages, getLabels],
   (global, account) => {
-    return { ...global.formValidation, ...account.myPlaceRewards };
+    return { ...(global.formValidation || {}), ...account.myPlaceRewards };
   }
 );
