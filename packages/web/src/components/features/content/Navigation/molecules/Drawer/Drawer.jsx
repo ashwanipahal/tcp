@@ -53,6 +53,14 @@ class Drawer extends React.Component {
   }
 
   componentDidUpdate() {
+    this.init();
+  }
+
+  componentWillUnmount() {
+    enableBodyScroll(this.scrollTargetElement);
+  }
+
+  init = () => {
     const { open, renderOverlay } = this.props;
     if (renderOverlay) {
       this.getDrawerStyle();
@@ -63,11 +71,7 @@ class Drawer extends React.Component {
       document.body.removeEventListener('click', this.closeNavOnOverlayClick);
     }
     return null;
-  }
-
-  componentWillUnmount() {
-    enableBodyScroll(this.scrollTargetElement);
-  }
+  };
 
   /* Set drawer ref */
   setDrawerRef = node => {

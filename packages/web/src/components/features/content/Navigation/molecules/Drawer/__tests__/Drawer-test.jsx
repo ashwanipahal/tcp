@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import { DrawerVanilla as Drawer } from '../Drawer';
 
 let DrawerComp;
-
 beforeEach(() => {
   DrawerComp = shallow(
     <Drawer
@@ -36,5 +35,23 @@ describe('Drawer component', () => {
   it('handleUserRewards should get called', () => {
     const instance = DrawerComp.instance();
     expect(instance.handleUserRewards(1)).toEqual(1);
+  });
+  it('handleUserRewards should get called', () => {
+    const shallowDrawerComp = shallow(
+      <Drawer
+        mobile
+        tablet
+        open={false}
+        width={{
+          small: '314px',
+          medium: '314px',
+          large: '100%',
+        }}
+      >
+        Renders correctly
+      </Drawer>
+    );
+    const instance = shallowDrawerComp.instance();
+    expect(instance.init()).toBeNull();
   });
 });
