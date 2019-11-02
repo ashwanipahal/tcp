@@ -19,11 +19,11 @@ const renderLearnMoreLink = labels => {
 
 const onLinkClick = ({ e, componentId, closeAddedToBagModal, openOverlay }) => {
   e.preventDefault();
+  closeAddedToBagModal();
   openOverlay({
     component: componentId,
     variation: 'primary',
   });
-  closeAddedToBagModal();
 };
 
 const renderCreateAccountLink = (labels, closeAddedToBagModal, openOverlay) => {
