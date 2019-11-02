@@ -26,9 +26,7 @@ export default css`
   }
 
   .moduleD_textlink::after {
-    font-size: 23px;
     position: relative;
     top: 3px;
-    margin-left: 8px;
   }
 `;
