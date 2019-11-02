@@ -130,7 +130,7 @@ exports[`AddedToBagActions component AddedToBagActions component with Venmo Erro
       <div
         className="paypal-wrapper-atb"
       >
-        <withRouter(Connect(PayPalButtonContainer))
+        <Connect(PayPalButtonContainer)
           className="payPal-button"
         />
       </div>
