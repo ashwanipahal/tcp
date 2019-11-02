@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountNumberContainer container should render AccountNumberContainer component 1`] = `
+<AccountNumber
+  commonLabels={Object {}}
+  fetchLabels={[Function]}
+  labels={Object {}}
+  myPlaceNumber=""
+/>
+`;

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountNumber view should render AccountNumber component 1`] = `
+<View>
+  <Styled(View)
+    spacingStyles="margin-bottom-LRG margin-top-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="black"
+        margin={null}
+        numberOfLines={null}
+        text="Show My Account Number"
+        textDecoration={null}
+      />
+      <Styled(CustomIcon)
+        accessibilityLabel=""
+        color="gray.900"
+        dataLocator=""
+        iconFontName="FontAwesome"
+        isButton={true}
+        isDisabled={false}
+        margins={null}
+        name="chevron-up"
+        onPress={[Function]}
+        size="fs10"
+      />
+      <Styled(View)>
+        <BarcodeView
+          displayValue={true}
+          format="CODE128"
+          height="50"
+          value="34234324324"
+          width="1"
+        />
+      </Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color="#fff"
+        customStyle={
+          Object {
+            "marginBottom": 49,
+          }
+        }
+        customTextStyle={null}
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={[Function]}
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="ADD TO APPLE WALLET"
+        theme={Object {}}
+        url=""
+        withNoLineHeight={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;

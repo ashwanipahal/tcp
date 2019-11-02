@@ -33,7 +33,7 @@ export class AccountNumberContainer extends React.Component {
   }
 }
 
-export const mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     labels: getGlobalLabels(state),
     commonLabels: getCommonLabels(state),

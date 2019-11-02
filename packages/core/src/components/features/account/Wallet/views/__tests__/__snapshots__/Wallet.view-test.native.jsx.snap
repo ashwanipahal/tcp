@@ -5,31 +5,6 @@ exports[`Wallet should render correctly 1`] = `
   <ScrollViewMock
     keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
-  >
-    <Styled(View)>
-      <Connect(RewardsPointsContainer)
-        tableView={true}
-      />
-      <PageHeadingWithLinks
-        heading="lbl_my_wallet_heading"
-        labels={Object {}}
-        programDetailsCta="lbl_my_rewards_program_details"
-        termsConditionCta="lbl_common_tnc"
-      >
-        <Connect(MyRewardsContainer)
-          heading="test"
-          labels={
-            Object {
-              "common": Object {},
-              "myPlaceRewards": Object {},
-            }
-          }
-          programDetailsCta="test"
-          termsConditionCta="test"
-          view="all"
-        />
-      </PageHeadingWithLinks>
-    </Styled(View)>
-  </ScrollViewMock>
+  />
 </View>
 `;
