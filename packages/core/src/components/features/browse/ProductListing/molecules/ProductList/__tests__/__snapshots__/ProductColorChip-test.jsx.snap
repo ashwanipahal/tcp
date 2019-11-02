@@ -11,7 +11,7 @@ exports[`ProductColorChipVanilla component should renders correctly 1`] = `
   <img
     alt=""
     className="product-color-chip-image"
-    src=""
+    src="undefined/w_50,h_50,c_thumb,g_auto:0/undefined/"
   />
 </button>
 `;

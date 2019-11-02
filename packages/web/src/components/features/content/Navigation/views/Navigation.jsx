@@ -118,9 +118,10 @@ const Navigation = props => {
     isDrawerOpen,
   } = props;
 
-  useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen), []);
+  useEffect(() => {
+    registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen);
+  }, [closeNavigationDrawer, isDrawerOpen]);
   useEffect(registerExtoleScript, [isDrawerOpen]);
-
   return (
     <Drawer
       id="l1_drawer"

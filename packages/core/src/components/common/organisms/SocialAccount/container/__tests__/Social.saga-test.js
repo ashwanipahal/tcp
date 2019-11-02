@@ -13,7 +13,7 @@ describe('getsocialAccounts saga', () => {
 
     it('should dispatch getsocialAccounts action for success resposnse', () => {
       const payload = [{}];
-
+      SocialAccountSagaGeneration.next();
       const putDescriptor = SocialAccountSagaGeneration.next(payload).value;
       expect(putDescriptor).toEqual(put(setSocialAccount(payload)));
     });
