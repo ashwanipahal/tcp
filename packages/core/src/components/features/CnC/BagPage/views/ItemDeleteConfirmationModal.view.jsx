@@ -6,8 +6,7 @@ import Button from '../../../../common/atoms/Button';
 import Modal from '../../../../common/molecules/Modal';
 
 import styles from '../styles/ItemDeleteConfirmationModal.style';
-import ErrorMessage from "../../common/molecules/ErrorMessage";
-
+import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 const ItemDeleteConfirmationModal = ({
   labels,
@@ -73,7 +72,10 @@ const ItemDeleteConfirmationModal = ({
           </Button>
         </div>
         {bagPageServerError && (
-          <ErrorMessage error={bagPageServerError.errorMessage} className="error_box bag-item-error" />
+          <ErrorMessage
+            error={bagPageServerError.errorMessage}
+            className="error_box bag-item-error"
+          />
         )}
       </div>
     </Modal>

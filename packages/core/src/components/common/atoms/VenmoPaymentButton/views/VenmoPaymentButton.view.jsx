@@ -8,7 +8,7 @@ import logger from '../../../../../utils/loggerInstance';
 import { modes, constants, VENMO_USER_STATES } from '../container/VenmoPaymentButton.util';
 import styles from '../styles/VenmoPaymentButton.style';
 import BodyCopy from '../../BodyCopy';
-import ErrorMessage from "../../../../features/CnC/common/molecules/ErrorMessage";
+import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage';
 
 let venmoInstance = null;
 
@@ -63,12 +63,10 @@ export class VenmoPaymentButton extends Component {
 
   renderServerError = () => {
     const { hasVenmoError, venmoErrorMessage } = this.state;
-    if(!hasVenmoError){
+    if (!hasVenmoError) {
       return null;
     }
-    return (
-      <ErrorMessage error={venmoErrorMessage} className="error_box minibag-error" />
-    );
+    return <ErrorMessage error={venmoErrorMessage} className="error_box minibag-error" />;
   };
 
   /**

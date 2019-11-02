@@ -150,18 +150,19 @@ export const removeItem = orderItemId => {
     webService: endpoints.updateMultiSelectItemsToRemove,
   };
 
-  return executeStatefulAPICall(payload).then(res => {
-    if (res && !res.body) {
-      throw new Error('res body is null');
-      // TODO - Set API Helper to filter if error exists in response
-    }
-    return {
-      orderId: res && res.body.orderId,
-    };
-  })
-  .catch(err => {
-    throw err;
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (res && !res.body) {
+        throw new Error('res body is null');
+        // TODO - Set API Helper to filter if error exists in response
+      }
+      return {
+        orderId: res && res.body.orderId,
+      };
+    })
+    .catch(err => {
+      throw err;
+    });
 };
 
 const defaultUpdateItemPayload = payloadData => {
@@ -525,6 +526,7 @@ export const getCurrentOrderFormatter = (
     orderDetailsResponse.mixOrderDetails.data
   ) {
     for (const store of orderDetailsResponse.mixOrderDetails.data) {
+      // store.shippingAddressDetails.isStoreBOSSEligible = "0";
       if (store.orderType !== 'ECOM') {
         usersOrder.stores.push({
           stLocId: store.shippingAddressDetails.stLocId || '',
