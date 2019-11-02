@@ -12,8 +12,9 @@ type Props = {
   className: string,
   userName: any,
   onLinkClick: Function,
+  closeMiniBag: Function,
 };
-const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
+const MiniBagHeader = ({ labels, className, userName, onLinkClick, closeMiniBag }: Props) => {
   const createAccount = 'createAccount';
   const login = 'login';
   return (
@@ -36,6 +37,7 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
           underline
           anchorVariation="primary"
           to="/home"
+          onClick={() => closeMiniBag()}
           dataLocator="emptyMiniBag-continueShopping"
         >
           <BodyCopy component="span" fontSize="fs15" fontFamily="secondary">
