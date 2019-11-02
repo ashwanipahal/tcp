@@ -169,14 +169,14 @@ class BagPageView extends React.PureComponent {
   renderRecommendationsForRecent = () => {
     const { labels } = this.props;
     return (
-      <>
+      <div className="recentlyViewed">
         <Recommendations
           page={Constants.RECOMMENDATIONS_SECTIONS.BAG}
           headerLabel={labels.recentlyViewed}
           variations="moduleO"
           portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
         />
-      </>
+      </div>
     );
   };
 

@@ -128,6 +128,10 @@ const styles = css`
       font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
+
+  .recentlyViewed {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
 `;
 
 export const addedToBagActionsStyles = css`
