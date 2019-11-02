@@ -22,6 +22,7 @@ export const getBasicInfo = store => ({
     },
     phone: store.telephone1 ? formatPhoneNumber(store.telephone1.trim()) : '',
   },
+  isGym: store.brandName.includes('GYM'),
 });
 
 export const getStoresByCountry = country => {
