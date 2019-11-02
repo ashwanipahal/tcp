@@ -72,9 +72,7 @@ export default css`
   }
   .moduleL__tile-link::after {
     position: absolute;
-    font-size: 23px;
     bottom: 0px;
-    margin-left: 8px;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       bottom: -5px;
     }
