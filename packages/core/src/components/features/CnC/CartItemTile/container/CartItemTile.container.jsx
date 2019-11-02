@@ -19,12 +19,14 @@ import {
   getProductSKUInfo,
   openPickupModalWithValuesFromBag,
   clearToggleCartItemError,
+  clearToggleBossBopisCartItemError,
 } from './CartItemTile.actions';
 import CartItemTile from '../molecules/CartItemTile/views/CartItemTile.view';
 import {
   getCartOrderList,
   getEditableProductInfo,
   getCartToggleError,
+  getCartBossBopisToggleError,
   getCurrencyExchange,
 } from './CartItemTile.selectors';
 import {
@@ -91,9 +93,11 @@ export const CartItemTileContainer = ({
   orderId,
   setShipToHome,
   toggleError,
+  toggleBossBopisError,
   clearToggleError,
   currencyExchange,
   pickupStoresInCart,
+  autoSwitchPickupItemInCart,
   navigation,
 }) => (
   <CartItemTile
@@ -136,9 +140,11 @@ export const CartItemTileContainer = ({
     orderId={orderId}
     setShipToHome={setShipToHome}
     toggleError={toggleError}
+    toggleBossBopisError={toggleBossBopisError}
     clearToggleError={clearToggleError}
     currencyExchange={currencyExchange}
     pickupStoresInCart={pickupStoresInCart}
+    autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
     navigation={navigation}
   />
 );
@@ -158,6 +164,39 @@ const createSetShipToHomePayload = (orderItemId, orderItemType) => {
     },
     updateActionType: 'UpdatePickUpItem',
     fromToggling: true,
+  };
+};
+
+const createBossBopisTogglePayload = ({
+  itemId,
+  quantity,
+  skuId,
+  itemPartNumber,
+  variantNo,
+  orderItemType,
+  targetOrderType,
+  orderId,
+  store,
+  storeId,
+}) => {
+  return {
+    apiPayload: {
+      orderId: orderId + '',
+      orderItem: [
+        {
+          orderItemId: itemId,
+          xitem_catEntryId: skuId,
+          quantity: quantity + '',
+          variantNo,
+          itemPartNumber,
+        },
+      ],
+      x_storeLocId: storeId,
+      x_orderitemtype: !store ? CONSTANTS.ORDER_ITEM_TYPE.ECOM : orderItemType, // source type of Item
+      x_updatedItemType: targetOrderType, // target type of Item
+    },
+    updateActionType: 'UpdatePickUpItem',
+    fromTogglingBossBopis: true,
   };
 };
 
@@ -196,8 +235,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     setShipToHome: (orderItemId, orderItemType) => {
       dispatch(updateCartItem(createSetShipToHomePayload(orderItemId, orderItemType)));
     },
+    autoSwitchPickupItemInCart: payload => {
+      dispatch(updateCartItem(createBossBopisTogglePayload(payload)));
+    },
     clearToggleError: () => {
       dispatch(clearToggleCartItemError());
+      dispatch(clearToggleBossBopisCartItemError());
     },
   };
 };
@@ -224,7 +267,7 @@ export function mapStateToProps(state) {
     isRadialInventoryEnabled: getIsRadialInventoryEnabled(state),
     orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state) || '',
     toggleError: getCartToggleError(state),
-    orderId: BAGPAGE_SELECTORS.getCurrentOrderId(state),
+    toggleBossBopisError: getCartBossBopisToggleError(state),
     currencyExchange: getCurrencyExchange(state),
     pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
   };

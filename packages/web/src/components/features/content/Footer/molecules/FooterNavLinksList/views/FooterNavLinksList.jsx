@@ -102,7 +102,7 @@ const FooterNavLinksList = ({
     } else if (action === 'log-out' || linkItems.url === '/log-out') {
       onClick = e => logout(e, dispatchFn);
     } else if (
-    /*
+      /*
       Don't move below or conditions of login-account inside the shouldLoginModalOpen function.
       As this function also used below in this file to decide whether text should work as link or button.
       But for login-account action text will always be button.
