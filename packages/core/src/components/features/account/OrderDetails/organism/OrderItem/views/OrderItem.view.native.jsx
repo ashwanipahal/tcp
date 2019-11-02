@@ -51,7 +51,6 @@ const OrderItems = ({ className, ...otherProps }) => {
     ordersLabels,
     navigation,
   } = otherProps;
-  // const checkBrand = `${itemBrand === 'TCP' ? 'tcp' : 'gym'}`;
   return (
     <>
       <OrderItemContainer>
