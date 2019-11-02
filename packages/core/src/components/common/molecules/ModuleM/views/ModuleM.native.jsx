@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getLocator } from '../../../../../utils';
+import { getLocator, isGymboree } from '../../../../../utils';
 import { getScreenWidth } from '../../../../../utils/index.native';
 import { Anchor, BodyCopy, /* DamImage, */ Image } from '../../../atoms';
 import {
@@ -151,6 +151,7 @@ class ModuleM extends React.PureComponent {
                       height={imageDimension}
                       width={imageDimension}
                       marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
+                      borderRadius={isGymboree() ? 50 : 0}
                     />
                     {/* TODO: Need to use DAM Image Component */}
                     {/* <DamImage
