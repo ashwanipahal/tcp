@@ -5,7 +5,8 @@ import { WalletContainer, mapStateToProps, mapDispatchToProps } from '../Wallet.
 describe('WalletContainer', () => {
   it('should render correctly', () => {
     const labels = {};
-    const tree = shallow(<WalletContainer labels={labels} />);
+    const accountLabels = {};
+    const tree = shallow(<WalletContainer labels={labels} accountLabels={accountLabels} />);
     expect(tree).toMatchSnapshot();
   });
 
