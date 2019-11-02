@@ -63,16 +63,16 @@ export class BagPage extends React.Component {
     });
   }
 
-  hideHeaderWhilePaypalView = hide => {
-    this.props.navigation.setParams({ headerMode: hide });
-  };
-
   componentDidUpdate() {
     const { cartItemSflError } = this.props;
     if (cartItemSflError) {
       this.showToastMessage(cartItemSflError);
     }
   }
+
+  hideHeaderWhilePaypalView = hide => {
+    this.props.navigation.setParams({ headerMode: hide });
+  };
 
   showToastMessage = message => {
     const { toastMessage, toastMessagePositionInfo } = this.props;

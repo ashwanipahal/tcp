@@ -44,12 +44,6 @@ const PayPalButton = props => {
     }
   };
 
-  // const triggerEvents = (paypalWebView,venmo,modal)=>{
-  //   payPalWebViewHandle(paypalWebView);
-  //   setAsModal(modal);
-  //   setVenmoState(venmo);
-  // }
-
   let styles = {
     height: 42,
     width: 150,
