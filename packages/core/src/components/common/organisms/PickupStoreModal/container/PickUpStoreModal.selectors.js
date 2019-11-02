@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import bagSelectors from '../../../../features/CnC/BagPage/container/BagPage.selectors';
 import {
   USER_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
@@ -37,7 +36,7 @@ export const getStoresOnCart = state => {
 };
 
 export const getDefaultStore = state => {
-  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].defaultStore) || null;
+  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].get('defaultStore')) || null;
 };
 
 export const getInitialValues = (state, generalProductId) => {
@@ -55,7 +54,7 @@ export const getCurrentProduct = state => {
 };
 
 export const getGeoDefaultStore = state => {
-  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].geoDefaultStore) || null;
+  return (state[USER_REDUCER_KEY] && state[USER_REDUCER_KEY].get('geoDefaultStore')) || null;
 };
 
 // NOTE: used for store locator to populate store geo-location search
@@ -70,8 +69,9 @@ export const getOrderConfirmation = state => {
   return state.confirmation.orderConfirmation;
 };
 
-export const getItemsCount = state => {
-  return isMobileApp() ? bagSelectors.getTotalItems(state) : getCartItemCount();
+export const getItemsCount = () => {
+  return isMobileApp() ? 1 : getCartItemCount();
+  // TODO - CnC team to provide a selector for getting cart item count in mobile app.
 };
 
 export const getUserIsPlcc = state => {
@@ -106,6 +106,12 @@ export const getOpenSkuSelectionForm = state => {
 
 export const getStoreSearchError = state => {
   return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('storeSearchError');
+};
+
+export const getIsGetUserStoresLoaded = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isGetUserStoresLoaded')
+  );
 };
 
 export const getIsPickupModalOpenFromBagPage = state => {

@@ -151,6 +151,7 @@ class _PickupStoreList extends React.Component {
         handleShowAvailableChange={this.handleShowAvailableChange}
         isOnlyShowAvailable={isOnlyShowAvailable}
         derivedStoresList={derivedStoresList}
+        isBopisEnabled={isBopisEnabled}
         {...otherProps}
       />
     );

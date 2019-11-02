@@ -77,6 +77,7 @@ const mapStateToProps = (state, ownProps) => {
   const isItemShipToHome = PickupSelectors.getIsItemShipToHome(state);
   const alwaysSearchForBOSS = PickupSelectors.getAlwaysSearchForBOSS(state);
   const openRestrictedModalForBopis = PickupSelectors.openRestrictedModalForBopis(state);
+  const isGetUserStoresLoaded = PickupSelectors.getIsGetUserStoresLoaded(state);
   return {
     onAddItemToCartSuccess: isShowAddItemSuccessNotification,
     onSubmit,
@@ -118,6 +119,7 @@ const mapStateToProps = (state, ownProps) => {
     updateCartItemStore,
     initialValuesFromBagPage,
     isItemShipToHome,
+    isGetUserStoresLoaded,
   };
 };
 

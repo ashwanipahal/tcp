@@ -47,10 +47,15 @@ class _PickupStoreSelectionForm extends React.Component {
   };
 
   componentDidMount() {
-    const { onSearch, openRestrictedModalForBopis } = this.props;
-    if (openRestrictedModalForBopis) {
+    const { onSearch, openRestrictedModalForBopis, isSkuResolved } = this.props;
+    if (openRestrictedModalForBopis || isSkuResolved) {
       onSearch();
     }
+  }
+
+  componentDidUpdate() {
+    const { prePopulateZipCodeAndSearch, handleSubmit, change } = this.props;
+    prePopulateZipCodeAndSearch(handleSubmit, change);
   }
 
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
@@ -219,10 +224,13 @@ class _PickupStoreSelectionForm extends React.Component {
       selectedStoreId,
       isBossSelected,
       isShowMessage,
+      isGetUserStoresLoaded,
       getIsBopisAvailable,
     } = this.props;
     return (
       !storeLimitReached &&
+      isGetUserStoresLoaded &&
+      preferredStore &&
       prefStoreWithData && (
         <div className="favorite-store-box">
           <PickupStoreListItem
@@ -253,7 +261,6 @@ class _PickupStoreSelectionForm extends React.Component {
   displayStoreSearchComp() {
     const {
       getPreferredStoreData,
-      isLoading,
       deriveStoreSearchAttributes,
       deriveBossCtaEnabled,
       updateCartItemStore,
@@ -283,9 +290,7 @@ class _PickupStoreSelectionForm extends React.Component {
             isBossCtaEnabled,
           })}
         {this.displayStoreSearchForm(showStoreSearching)}
-        {isLoading ? (
-          <Spinner />
-        ) : (
+        {
           <React.Fragment>
             {isSkuResolved &&
               this.displayStoreListItems({
@@ -295,7 +300,7 @@ class _PickupStoreSelectionForm extends React.Component {
               })}
             {isSkuResolved && this.displayErrorCopy()}
           </React.Fragment>
-        )}
+        }
       </React.Fragment>
     );
   }
