@@ -26,6 +26,13 @@ import styles, {
 import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 
 class PickupStoreSelectionForm extends React.PureComponent<Props> {
+  componentDidMount() {
+    const { onSearch, openRestrictedModalForBopis } = this.props;
+    if (openRestrictedModalForBopis) {
+      onSearch();
+    }
+  }
+
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
     const {
       isShoppingBag,
