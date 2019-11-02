@@ -34,7 +34,7 @@ class LoginSection extends PureComponent<Props> {
 
   navigateToResetPassword = () => {
     const { navigation } = this.props;
-    if (navigation) {
+    if (navigation && navigation.state) {
       const {
         state: { params },
       } = navigation;
