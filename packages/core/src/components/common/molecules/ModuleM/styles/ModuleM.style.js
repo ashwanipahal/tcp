@@ -7,6 +7,7 @@ export const ImageGrid = styled(Col)`
 
   img {
     height: ${props => (props.length === 3 ? '330px' : '210px')};
+    width: 100%;
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       height: 162px;
@@ -192,7 +193,7 @@ export default css`
   .product-tab-list {
     display: flex;
     justify-content: center;
-    margin-top: 12px;
+    margin: 12px 0 32px;
 
     > :not(:last-child) {
       border-right: 1px solid #c3c3c3;

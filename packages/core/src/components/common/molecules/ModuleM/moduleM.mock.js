@@ -8,7 +8,7 @@ export default {
     set: [
       {
         key: 'layout',
-        val: 'flex',
+        val: 'grid',
       },
     ],
     composites: {
