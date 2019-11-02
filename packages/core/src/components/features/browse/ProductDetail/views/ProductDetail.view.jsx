@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
-import { isClient, isCanada } from '@tcp/core/src/utils';
+import { isClient } from '@tcp/core/src/utils';
 import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
 import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -11,6 +11,7 @@ import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import { getLocator, routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
@@ -174,6 +175,7 @@ class ProductDetailView extends React.Component {
       pdpLabels,
       handleAddToBag,
       addToBagError,
+      alternateSizes,
     } = this.props;
     const currentProduct = productDetails && productDetails.get('currentProduct');
     const isWeb = this.isWebEnvironment();
@@ -192,6 +194,7 @@ class ProductDetailView extends React.Component {
     }
 
     const { isGiftCard } = productInfo;
+    const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
 
     return (
       <div className={className}>
@@ -244,6 +247,8 @@ class ProductDetailView extends React.Component {
                 renderReceiveProps={renderReceiveProps}
                 initialFormValues={this.formValues}
                 isPDP
+                alternateSizes={alternateSizes}
+                sizeChartLinkVisibility={sizeChartLinkVisibility}
               />
             )}
 
@@ -263,7 +268,7 @@ class ProductDetailView extends React.Component {
                 currentProduct={currentProduct}
               />
             </div>
-            {!isCanada() && <LoyaltyBanner isProductDetailView />}
+            {<LoyaltyBanner isProductDetailView />}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
@@ -341,6 +346,9 @@ ProductDetailView.propTypes = {
   }),
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  alternateSizes: PropTypes.shape({
+    key: PropTypes.string,
+  }),
 };
 
 ProductDetailView.defaultProps = {
@@ -359,6 +367,7 @@ ProductDetailView.defaultProps = {
   addToBagError: '',
   currencyExchange: 1,
   isLoggedIn: false,
+  alternateSizes: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

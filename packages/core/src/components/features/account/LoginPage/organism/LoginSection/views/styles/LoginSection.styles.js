@@ -15,12 +15,6 @@ const styles = css`
       padding-right: 74px;
     }
   }
-  .logintop-alignment {
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 70%;
-      margin: 0 auto;
-    }
-  }
   .border {
     border-top: 1px solid ${props => props.theme.colors.BORDER.BLUE};
 

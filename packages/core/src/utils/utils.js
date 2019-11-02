@@ -107,6 +107,11 @@ export const isCanada = () => {
   return siteId === API_CONFIG.siteIds.ca;
 };
 
+export const isUsOnly = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.us;
+};
+
 export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
   const prototype = Object.getPrototypeOf(obj);
   // eslint-disable-next-line
@@ -1019,6 +1024,22 @@ export const disableBodyScroll = () => {
   }
 };
 
+export const getStyliticsUserName = () => {
+  const { styliticsUserNameTCP, styliticsUserNameGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsUserNameTCP;
+  }
+  return styliticsUserNameGYM;
+};
+
+export const getStyliticsRegion = () => {
+  const { styliticsRegionTCP, styliticsRegionGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsRegionTCP;
+  }
+  return styliticsRegionGYM;
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -1058,4 +1079,6 @@ export default {
   changeImageURLToDOM,
   generateTraceId,
   insertIntoString,
+  getStyliticsUserName,
+  getStyliticsRegion,
 };

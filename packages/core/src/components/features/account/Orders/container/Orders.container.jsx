@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import getOrdersListState from './Orders.selectors';
+import { getOrdersListState } from './Orders.selectors';
 import { getAllItems } from '../../OrderDetails/container/OrderDetails.selectors';
 import { getSiteId } from '../../../../../utils';
 import OrderListComponent from '../views';

@@ -5,27 +5,16 @@ import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
-const renderApplyNowLink = () => {
+const renderApplyNowLink = labels => {
   return (
     <span className="applyNowLink">
-      <ApplyNowModal />
+      <ApplyNowModal step={2} labelText={labels.applyNow} />
     </span>
   );
 };
 
 const renderLearnMoreLink = labels => {
-  return (
-    <Anchor
-      className="learnMore"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.learnMore}
-      onClick={e => {
-        e.preventDefault();
-      }}
-      underline
-    />
-  );
+  return <ApplyNowModal labelText={labels.learnMore} />;
 };
 
 const renderCreateAccountLink = (labels, openLoginModal) => {
@@ -75,7 +64,7 @@ const applyNowLearnMoreLinks = labels => {
   return (
     <div className="links-wrapper">
       <span className="links-container">
-        {renderApplyNowLink()}
+        {renderApplyNowLink(labels)}
         <span className="learnSymbolWrapper elem-pl-XL">
           <BodyCopy
             className="symbolWrapper"
@@ -101,7 +90,7 @@ const addedToBagPageLinks = (labels, isGuest, isPlcc, openLoginModal) => {
     <>
       {isGuest && createLoginLinks(labels, openLoginModal)}
       {!isGuest && !isPlcc && applyNowLearnMoreLinks(labels)}
-      {!isGuest && isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+      {!isGuest && isPlcc && <span className="links-wrapper">{renderLearnMoreLink(labels)}</span>}
     </>
   );
 };
@@ -143,7 +132,7 @@ const detailViewFooter = (labels, isGuest, isPlcc, openLoginModal) => {
         <>
           {!isPlcc && (
             <span>
-              {renderApplyNowLink()}
+              {renderApplyNowLink(labels)}
               {renderLearnMoreLink(labels)}
             </span>
           )}

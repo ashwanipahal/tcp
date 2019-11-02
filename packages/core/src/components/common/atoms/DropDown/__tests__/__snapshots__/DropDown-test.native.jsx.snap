@@ -23,6 +23,7 @@ exports[`DropDown Test should render correctly 1`] = `
     dropDownItemFontWeight="semibold"
     dropDownStyle={null}
     heading="foo"
+    isSortModal={false}
     itemStyle={
       Object {
         "color": "foo",
@@ -114,6 +115,7 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     dropDownItemFontWeight="semibold"
     dropDownStyle={null}
     heading="foo"
+    isSortModal={false}
     itemStyle={
       Object {
         "color": "foo",

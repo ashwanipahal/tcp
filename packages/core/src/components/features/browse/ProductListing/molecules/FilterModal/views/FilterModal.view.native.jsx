@@ -1,10 +1,10 @@
 import React from 'react';
-import { Modal, Picker, Button, Platform } from 'react-native';
+import { Modal, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import DropDown from '@tcp/core/src/components/common/atoms/SortModalDropdown/views/SortModalDropdown.native';
+import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import {
   styles,
   Container,
@@ -171,9 +171,6 @@ class FilterModal extends React.PureComponent {
       color: 'gray.800',
     };
 
-    const lapsList = sortOptions.map(data => {
-      return <Picker.Item label={data.displayName} value={data.id} />;
-    });
     return (
       <Container>
         <FilterButtons
@@ -223,46 +220,25 @@ class FilterModal extends React.PureComponent {
 
             {showSortModal && (
               <SortContent>
-                {Platform.OS === 'ios' ? (
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.handleClick();
-                    }}
-                  />
-                ) : null}
-                {Platform.OS === 'ios' ? (
-                  <Picker
-                    selectedValue={language}
-                    onValueChange={itemValue => {
-                      this.setState({ language: itemValue });
-                      if (Platform.OS !== 'ios') {
-                        this.handleClick(itemValue);
-                      }
-                    }}
-                  >
-                    {lapsList}
-                  </Picker>
-                ) : (
-                  <DropDown
-                    selectedValue={language}
-                    data={sortOptions}
-                    // eslint-disable-next-line sonarjs/no-identical-functions
-                    onValueChange={itemValue => {
-                      this.setState({ language: itemValue });
-                      if (Platform.OS !== 'ios') {
-                        this.handleClick(itemValue);
-                      }
-                    }}
-                    variation="primary"
-                    dropDownStyle={{ ...dropDownStyle }}
-                    itemStyle={{ ...itemStyle }}
-                    bounces={false}
-                    selectedItemFontWeight="extrabold"
-                    dropDownItemFontWeight="regular"
-                    onPressOut={this.onPressOut}
-                  />
-                )}
+                <DropDown
+                  selectedValue={language}
+                  data={sortOptions}
+                  // eslint-disable-next-line sonarjs/no-identical-functions
+                  onValueChange={itemValue => {
+                    this.setState({ language: itemValue });
+                    setTimeout(() => {
+                      this.handleClick(itemValue);
+                    }, 180);
+                  }}
+                  variation="primary"
+                  dropDownStyle={{ ...dropDownStyle }}
+                  itemStyle={{ ...itemStyle }}
+                  bounces={false}
+                  selectedItemFontWeight="extrabold"
+                  dropDownItemFontWeight="regular"
+                  onPressOut={this.onPressOut}
+                  isSortModal
+                />
               </SortContent>
             )}
           </SafeAreaViewStyle>
