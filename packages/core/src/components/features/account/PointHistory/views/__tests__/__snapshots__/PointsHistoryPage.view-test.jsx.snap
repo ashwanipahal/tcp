@@ -92,5 +92,28 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
   <Styled(HistoryPointsRichText)
     content=""
   />
+  <Styled(BodyCopy)
+    className="elem-mb-XXL elem-mt-XXL"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      asPath="/account/place-rewards/points-claim"
+      data-locator="claim form link"
+      fontSizeVariation="xlarge"
+      to="/account?id=place-rewards&subSection=points-claim"
+      underline={true}
+    >
+      Points Claim Form
+    </Styled(Anchor)>
+  </Styled(BodyCopy)>
 </Styled(BodyCopy)>
 `;
