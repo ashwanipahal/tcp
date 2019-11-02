@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PLP Skeleton Component should match snapshot 1`] = `
+<Styled(Row)
+  className="skeleton skeleton-row"
+  fullBleed={true}
+>
+  <Styled(Col)
+    className="product-tile"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    key="0"
+  >
+    <div
+      className="skeleton-col skeleton-img"
+    />
+    <div
+      className="skeleton-col skeleton-badge"
+    />
+    <div
+      className="skeleton-col skeleton-title"
+    />
+    <div
+      className="skeleton-col skeleton-swatches"
+    />
+    <div
+      className="skeleton-col skeleton-add-to-bag"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="product-tile"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    key="1"
+  >
+    <div
+      className="skeleton-col skeleton-img"
+    />
+    <div
+      className="skeleton-col skeleton-badge"
+    />
+    <div
+      className="skeleton-col skeleton-title"
+    />
+    <div
+      className="skeleton-col skeleton-swatches"
+    />
+    <div
+      className="skeleton-col skeleton-add-to-bag"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="product-tile"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    key="2"
+  >
+    <div
+      className="skeleton-col skeleton-img"
+    />
+    <div
+      className="skeleton-col skeleton-badge"
+    />
+    <div
+      className="skeleton-col skeleton-title"
+    />
+    <div
+      className="skeleton-col skeleton-swatches"
+    />
+    <div
+      className="skeleton-col skeleton-add-to-bag"
+    />
+  </Styled(Col)>
+</Styled(Row)>
+`;

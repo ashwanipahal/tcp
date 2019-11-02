@@ -12,9 +12,9 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .checkout-border {
-    width: 40%;
+    width: 25%;
     margin: 0 auto;
-    border-bottom: 1px solid ${props => props.theme.colorPalette.blue[1000]};
+    border-bottom: 2px solid ${props => props.theme.colorPalette.blue[1000]};
   }
   .checkout_modal_heading_2 {
     @media ${props => props.theme.mediaQuery.smallOnly} {

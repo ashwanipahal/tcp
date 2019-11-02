@@ -4,6 +4,7 @@ import {
   getEarnedPointsNotificationState,
   getCommonLabels,
   getEarnExtraPointsLabels,
+  getEarnExtraPointsFetchingState,
 } from '../EarnExtraPointsTile.selectors';
 
 describe('#earn Extra Points selector', () => {
@@ -18,6 +19,16 @@ describe('#earn Extra Points selector', () => {
     expect(getEarnExtraPointsDataState(state)).toEqual(
       earnExtraPointsDataState.get('earnExtraPointsData')
     );
+  });
+
+  it('#getEarnExtraPointsFetchingState should return earnExtraPointsDataReducer state', () => {
+    const ExtraPointsState = fromJS({
+      isFetching: false,
+    });
+    const state = {
+      earnExtraPointsReducer: ExtraPointsState,
+    };
+    expect(getEarnExtraPointsFetchingState(state)).toEqual(ExtraPointsState.get('isFetching'));
   });
 
   it('#getEarnedPointsNotificationState should return earnExtraPointsDataReducer state', () => {

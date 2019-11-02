@@ -62,10 +62,16 @@ export class BagPage extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    const { cartItemSflError } = this.props;
-    if (cartItemSflError) {
+  componentDidUpdate(prevProps) {
+    const { cartItemSflError, bagPageServerError } = this.props;
+    const {
+      bagPageServerError: prevBagPageServerError,
+      cartItemSflError: prevCartItemSflError,
+    } = prevProps;
+    if (cartItemSflError && cartItemSflError !== prevCartItemSflError) {
       this.showToastMessage(cartItemSflError);
+    } else if (bagPageServerError && bagPageServerError !== prevBagPageServerError) {
+      this.showToastMessage(bagPageServerError.errorMessage);
     }
   }
 
@@ -368,10 +374,12 @@ BagPage.propTypes = {
   toastMessagePositionInfo: PropTypes.func.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
   isPickupModalOpen: PropTypes.bool,
+  bagPageServerError: PropTypes.shape({}),
 };
 
 BagPage.defaultProps = {
   isPickupModalOpen: false,
+  bagPageServerError: null,
 };
 
 export default InitialPropsHOC(BagPage);

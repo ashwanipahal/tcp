@@ -257,3 +257,8 @@ export const isRememberedUser = createSelector(
   getPersonalDataState,
   state => state && state.get('isRemembered')
 );
+
+export const getUserInfoFetchingState = createSelector(
+  getUserState,
+  state => state && state.get('isFetching')
+);

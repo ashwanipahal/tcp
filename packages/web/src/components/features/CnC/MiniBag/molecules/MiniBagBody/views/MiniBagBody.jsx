@@ -216,7 +216,12 @@ class MiniBagBody extends React.PureComponent {
               setHeaderErrorState={this.setHeaderErrorState}
             />
           ) : (
-            <EmptyMiniBag labels={labels} userName={userName} onLinkClick={onLinkClick} />
+            <EmptyMiniBag
+              labels={labels}
+              userName={userName}
+              closeMiniBag={closeMiniBag}
+              onLinkClick={onLinkClick}
+            />
           )}
         </BodyCopy>
         {cartItemCount ? (

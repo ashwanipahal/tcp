@@ -59,9 +59,34 @@ export const getGiftWrappingOptions = () => {
   // });
 };
 
+export const getShippingMethodServerError = (errorBody, errorsMapping) => {
+  let errMsg = false;
+  if (
+    errorBody &&
+    errorBody.updateShippingMethodSelectionResponse &&
+    errorBody.updateShippingMethodSelectionResponse.errors &&
+    errorBody.updateShippingMethodSelectionResponse.errors.length
+  ) {
+    const { errorKey } = errorBody.updateShippingMethodSelectionResponse.errors[0];
+    const errorList = [
+      {
+        errorKey,
+      },
+    ];
+    errMsg = getFormattedErrorFromResponse(
+      { response: { body: errorBody } },
+      errorsMapping,
+      errorList
+    );
+  }
+  return errMsg;
+};
+
 export const getServerErrorMessage = (error, errorsMapping) => {
   let errorMsg;
-  if (error.response && error.response.body && error.response.body.errors) {
+  const errorBody = error.response && error.response.body;
+  errorMsg = getShippingMethodServerError(errorBody, errorsMapping);
+  if (errorBody && errorBody.errors) {
     errorMsg = getFormattedError(error, errorsMapping);
   } else if (error.errorResponse && error.errorResponse.errors) {
     const errorList = [
@@ -72,9 +97,17 @@ export const getServerErrorMessage = (error, errorsMapping) => {
       },
     ];
     errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
+  } else if (typeof error.errorCode !== 'undefined') {
+    const errorList = [
+      {
+        errorCode: error.errorCode,
+      },
+    ];
+    errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
   }
+
   if (typeof errorMsg.errorMessages === 'undefined') {
-    return 'Oops... Something went Wrong !!!!';
+    return errorsMapping.DEFAULT;
   }
   // eslint-disable-next-line
   return errorMsg.errorMessages._error;
@@ -239,8 +272,7 @@ export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
   verifyPrescreen,
-  transVibesSmsPhoneNo,
-  labels
+  transVibesSmsPhoneNo
 ) {
   const payload = {
     body: {
@@ -256,7 +288,14 @@ export function setShippingMethodAndAddressId(
 
   return executeStatefulAPICall(payload)
     .then(res => {
-      if (responseContainsErrors(res)) {
+      const resBody = res && res.body;
+      if (
+        responseContainsErrors(res) ||
+        (resBody &&
+          resBody.updateShippingMethodSelectionResponse &&
+          resBody.updateShippingMethodSelectionResponse.errors &&
+          resBody.updateShippingMethodSelectionResponse.errors.length)
+      ) {
         throw new ServiceResponseError(res);
       } else {
         const rtpsData = extractRtpsEligibleAndCode(res);
@@ -270,7 +309,7 @@ export function setShippingMethodAndAddressId(
     })
     .catch(err => {
       // throw getFormattedError(err, labels);
-      throw getServerErrorMessage(err, labels);
+      throw err;
     });
 }
 
