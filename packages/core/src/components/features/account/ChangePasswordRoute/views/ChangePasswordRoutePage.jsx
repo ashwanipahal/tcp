@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import { Anchor, Row, Col } from '../../../../common/atoms';
+import { Anchor, BodyCopy, Row, Col } from '../../../../common/atoms';
 import internalEndpoints from '../../common/internalEndpoints';
 
 export const ChangePasswordRoutePage = ({ labels }) => {
@@ -9,7 +9,14 @@ export const ChangePasswordRoutePage = ({ labels }) => {
     <React.Fragment>
       <Row>
         <div className="elem-pb-XXXL">
-          {getLabelValue(labels, 'lbl_changePassword_helpText', 'account-common')}
+          <BodyCopy
+            fontSize="fs28"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            className="product-name"
+          >
+            Start shopping to earn my place rewards points
+          </BodyCopy>
         </div>
       </Row>
       <Row>
@@ -24,7 +31,8 @@ export const ChangePasswordRoutePage = ({ labels }) => {
             centered
             target="_blank"
           >
-            {getLabelValue(labels, 'lbl_orders_shopNow', 'orders')}
+            {/* {getLabelValue(labels, 'lbl_orders_shopNow', 'orders')} */}
+            SHOP NOW
           </Anchor>
         </Col>
       </Row>
