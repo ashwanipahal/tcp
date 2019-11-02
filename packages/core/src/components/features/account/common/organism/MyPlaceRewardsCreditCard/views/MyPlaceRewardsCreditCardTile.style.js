@@ -22,6 +22,9 @@ const styles = css`
     li {
       list-style-type: disc;
       line-height: ${props => props.theme.fonts.lineHeight.normal};
+      span {
+        margin: -7px;
+      }
     }
   }
 `;

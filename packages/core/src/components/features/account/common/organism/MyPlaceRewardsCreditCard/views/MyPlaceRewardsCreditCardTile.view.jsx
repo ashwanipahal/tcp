@@ -34,8 +34,8 @@ export const MyPlaceRewardsCreditCardTile = ({
           ? getLabelValue(labels, 'lbl_overview_manageYourCard')
           : getLabelValue(labels, 'lbl_overview_applyOrAcceptOffer')
       }
-      ctaLink={externalEndpoints.managePlaceCardPage}
-      linkClick={openModal}
+      ctaLink={cardEnrolled ? externalEndpoints.managePlaceCardPage : ''}
+      linkClick={cardEnrolled ? null : openModal}
     >
       <Row fullBleed className={`${className} elem-mb-XL`}>
         <Col
@@ -69,28 +69,28 @@ export const MyPlaceRewardsCreditCardTile = ({
               </BodyCopy>
               <BodyCopy component="div">
                 <BodyCopy className="elem-mt-LRG" fontSize="fs14" fontFamily="secondary">
-                  <BodyCopy fontWeight="semibold" component="span">
+                  <BodyCopy fontWeight="semibold" fontFamily="secondary" component="span">
                     {getLabelValue(labels, 'lbl_overview_25Off')}
                   </BodyCopy>
-                  <BodyCopy component="span">
+                  <BodyCopy component="span" fontFamily="secondary">
                     {getLabelValue(labels, 'lbl_overview_yourKidsBirthdays')}
                   </BodyCopy>
                 </BodyCopy>
 
                 <BodyCopy className="elem-mt-LRG" fontSize="fs14" fontFamily="secondary">
-                  <BodyCopy fontWeight="semibold" component="span">
+                  <BodyCopy fontWeight="semibold" component="span" fontFamily="secondary">
                     {getLabelValue(labels, 'lbl_overview_earnDoublePoints')}
                   </BodyCopy>
-                  <BodyCopy component="span">
+                  <BodyCopy component="span" fontFamily="secondary">
                     {getLabelValue(labels, 'lbl_overview_whenYouCheckout')}
                   </BodyCopy>
                 </BodyCopy>
 
                 <BodyCopy className="elem-mt-LRG" fontSize="fs14" fontFamily="secondary">
-                  <BodyCopy fontWeight="semibold" component="span">
+                  <BodyCopy fontWeight="semibold" component="span" fontFamily="secondary">
                     {getLabelValue(labels, 'lbl_overview_exclusiveBonusEvents')}
                   </BodyCopy>
-                  <BodyCopy>
+                  <BodyCopy fontFamily="secondary">
                     {getLabelValue(labels, 'lbl_overview_tripePointsDoubleRewards')}
                   </BodyCopy>
                 </BodyCopy>
@@ -104,12 +104,16 @@ export const MyPlaceRewardsCreditCardTile = ({
                 </BodyCopy>
                 <BodyCopy
                   className="list-style"
-                  component="u"
+                  component="ul"
                   fontSize="fs14"
                   fontFamily="secondary"
                 >
                   {addYourCardLabelKeys.map(labelKey => {
-                    return <li>{labels[labelKey]}</li>;
+                    return (
+                      <li className="elem-ml-MED">
+                        <span>{labels[labelKey]}</span>
+                      </li>
+                    );
                   })}
                 </BodyCopy>
                 <BodyCopy component="div" className="elem-mt-LRG">
