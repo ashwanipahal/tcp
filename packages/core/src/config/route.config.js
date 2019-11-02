@@ -161,6 +161,11 @@ const ROUTES_LIST = [
     resolver: '/StoreList',
   },
   {
+    noSlugPath: 'change-password',
+    path: '/change-password',
+    resolver: '/ChangePassword',
+  },
+  {
     noSlugPath: 'track-order',
     path: '/track-order/:orderId/:emailAddress',
     resolver: '/TrackOrder',
