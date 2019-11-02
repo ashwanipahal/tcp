@@ -7,7 +7,7 @@ exports[`EarnExtraPointsOverview component should render correctly EarnExtraPoin
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-hEsumM",
+        "componentId": "sc-kgoBCf",
         "isStatic": true,
         "rules": Array [
           "
@@ -19,7 +19,7 @@ exports[`EarnExtraPointsOverview component should render correctly EarnExtraPoin
       "displayName": "Styled(EarnExtraPointsOverview)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-hEsumM",
+      "styledComponentId": "sc-kgoBCf",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

@@ -18,6 +18,7 @@ export class EarnExtraPointsTileContainer extends React.PureComponent {
    */
   render() {
     const { labels, waysToEarn, isAccountOverview, ...otherProps } = this.props;
+
     return (
       <EarnExtraPointsTile
         waysToEarn={waysToEarn}

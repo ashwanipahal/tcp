@@ -1,6 +1,11 @@
 /* eslint-disable max-lines */
 
 import moment from 'moment';
+import {
+  disableBodyScroll as disableBodyScrollLib,
+  enableBodyScroll as enableBodyScrollLib,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -979,16 +984,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
   WCS store image path to DAM image for Gymboree
   MUST BE REVERTED
  */
-export const changeImageURLToDOM = (img, cropParams) => {
-  let imageUrl = img;
-  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
-    const imgArr = imageUrl.split('/');
-    const productPartId = imgArr.slice(-1);
-    const productArr = productPartId[0].split('_');
-    const productId = productArr[0];
-    imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
-  }
-  return imageUrl;
+export const changeImageURLToDOM = (imgPath, cropParams) => {
+  const brandName = getBrand();
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+  return `${assetHost}/${cropParams}/${productAssetPath}/${imgPath}`;
 };
 
 /**
@@ -1005,10 +1007,33 @@ export const insertIntoString = (string, idx, rem, str) => {
 };
 
 /**
+ * To Identify whether the device is ios for web.
+ */
+
+export const isIosWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return true;
+  }
+  return false;
+};
+/**
+ * This function will remove all the body scroll locks.
+ */
+export const removeBodyScrollLocks = () => {
+  if (isIosWeb() && isClient()) {
+    clearAllBodyScrollLocks();
+  }
+};
+/**
  * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
  */
-export const enableBodyScroll = () => {
+export const enableBodyScroll = targetElem => {
   if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      enableBodyScrollLib(targetElem);
+      return;
+    }
     const [body] = document.getElementsByTagName('body');
     body.classList.remove('disableBodyScroll');
   }
@@ -1017,8 +1042,12 @@ export const enableBodyScroll = () => {
 /**
  * Disable Body Scroll
  */
-export const disableBodyScroll = () => {
+export const disableBodyScroll = targetElem => {
   if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      disableBodyScrollLib(targetElem);
+      return;
+    }
     const [body] = document.getElementsByTagName('body');
     body.classList.add('disableBodyScroll');
   }

@@ -89,6 +89,7 @@ const StyledModal = css`
     top: ${iconSpacing};
     height: ${iconSpacing};
     width: ${iconSpacing};
+    z-index: 1;
   }
 `;
 

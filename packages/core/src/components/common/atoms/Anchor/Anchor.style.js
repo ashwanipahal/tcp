@@ -88,7 +88,8 @@ const AnchorStyles = css`
       ? `
       &:after {
         content: "›";
-        margin-left: 5px;
+        font-size: 23px;
+        margin-left: 8px;
       }
     `
       : ''};

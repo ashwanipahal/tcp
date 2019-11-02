@@ -1,6 +1,10 @@
 import { fromJS } from 'immutable';
 
-import { getSocialResponse, getsocialDataOnLoadState } from '../Social.selectors';
+import {
+  getSocialResponse,
+  getsocialDataOnLoadState,
+  getSocialDataFetchingState,
+} from '../Social.selectors';
 
 describe('#Social selector', () => {
   const SocialState = fromJS({
@@ -16,4 +20,8 @@ describe('#Social selector', () => {
   });
 
   expect(getsocialDataOnLoadState(state)).toEqual(SocialState.get('socialDataOnLoad'));
+
+  it('#getSocialDataFetchingState should return earnExtraPointsDataReducer state', () => {
+    expect(getSocialDataFetchingState(state)).toEqual(SocialState.get('isFetching'));
+  });
 });
