@@ -117,6 +117,7 @@ const PickupSkuSelectionForm = props => {
             showAddToBagCTA={false}
             renderReceiveProps
             isDisableZeroInventoryEntries={false}
+            isPickup
           />
         </div>
       </div>
