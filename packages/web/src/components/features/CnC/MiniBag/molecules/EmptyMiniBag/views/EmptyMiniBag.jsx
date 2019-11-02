@@ -3,6 +3,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import { routerPush } from '../../../../../../../../../core/src/utils';
 import styles from '../styles/EmptyMiniBag.style';
 
 // @flow
@@ -36,8 +37,11 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick, closeMiniBag 
           className="continueShoppingText"
           underline
           anchorVariation="primary"
-          to="/home"
-          onClick={() => closeMiniBag()}
+          onClick={e => {
+            e.preventDefault();
+            closeMiniBag();
+            routerPush('/home', '/home');
+          }}
           dataLocator="emptyMiniBag-continueShopping"
         >
           <BodyCopy component="span" fontSize="fs15" fontFamily="secondary">
