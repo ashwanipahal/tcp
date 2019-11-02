@@ -1,11 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Field, change, FormSection } from 'redux-form';
-import PropTypes from 'prop-types';
 import AddressDropdown from '../../../../../../../account/AddEditCreditCard/molecule/AddressDropdown';
 import Address from '../../../../../../../../common/molecules/Address';
 import Anchor from '../../../../../../../../common/atoms/Anchor';
-import BodyCopy from '../../../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../../../common/atoms/Button';
 import InputCheckbox from '../../../../../../../../common/atoms/InputCheckbox';
 import ErrorMessage from '../../../../../../../../common/atoms/ErrorDisplay';
@@ -16,7 +14,6 @@ import {
   SaveToAccountWrapper,
   MarginBottom,
   AddressViewWrapper,
-  EditAddressFormHeader,
   EditFromSeparator,
   ErrorMessageWrapper,
 } from '../styles/RegisteredShippingForm.view.style.native';
@@ -26,6 +23,7 @@ import {
   nativeDefaultPropTypes,
   nativePropTypes,
 } from './RegisteredShippingForm.util';
+import AddEditShippingAddress from './RegisteredShippingForm.view.native.util';
 
 const saveToAddressBookConst = 'saveToAddressBook';
 const addressPhoneNumber = 'address.phoneNumber';
@@ -42,47 +40,6 @@ const itemStyle = {
 const CustomAddress = {
   fontWeight: 'regular',
   fontSize: 'fs14',
-};
-
-const AddEditShippingAddress = props => {
-  const { modalType, actionButtons, labels } = props;
-  const { addressFields, defaultOptions } = props;
-  return (
-    <>
-      <EditAddressFormHeader>
-        <BodyCopy
-          color="black"
-          fontWeight="regular"
-          fontFamily="primary"
-          fontSize="fs28"
-          text={
-            modalType === 'add'
-              ? getLabelValue(labels, 'lbl_shipping_addHeading', 'shipping', 'checkout')
-              : getLabelValue(labels, 'lbl_shipping_editHeading', 'shipping', 'checkout')
-          }
-          textAlign="left"
-        />
-      </EditAddressFormHeader>
-      {addressFields()}
-      {defaultOptions()}
-      {actionButtons()}
-    </>
-  );
-};
-
-AddEditShippingAddress.propTypes = {
-  addressFields: PropTypes.func,
-  defaultOptions: PropTypes.func,
-  modalType: PropTypes.string,
-  actionButtons: PropTypes.func,
-  labels: PropTypes.shape({}).isRequired,
-};
-
-AddEditShippingAddress.defaultProps = {
-  addressFields: () => {},
-  defaultOptions: () => {},
-  modalType: null,
-  actionButtons: () => {},
 };
 
 class RegisteredShippingForm extends React.Component {
@@ -104,7 +61,7 @@ class RegisteredShippingForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { defaultAddressId, dispatch, formName } = this.props;
+    const { defaultAddressId, dispatch, formName, setEditModalRef } = this.props;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
     const { modalState, modalType } = this.state;
     if (defaultAddressId && defaultAddressId !== prevDefaultAddressId && modalState) {
@@ -112,6 +69,9 @@ class RegisteredShippingForm extends React.Component {
         this.toggleModal({ type: 'edit', open: false });
       }
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
+    }
+    if (modalState) {
+      setEditModalRef(this.editModalRef);
     }
   }
 
@@ -305,7 +265,11 @@ class RegisteredShippingForm extends React.Component {
     const { labels, editShipmentDetailsError } = this.props;
     const { modalType } = this.state;
     return (
-      <>
+      <View
+        ref={errorBtnRef => {
+          this.editModalRef = errorBtnRef;
+        }}
+      >
         {editShipmentDetailsError ? (
           <ErrorMessageWrapper>
             <ErrorMessage error={editShipmentDetailsError} />
@@ -329,7 +293,7 @@ class RegisteredShippingForm extends React.Component {
           onPress={() => this.toggleModal({ type: modalType, open: false })}
           text={getLabelValue(labels, 'lbl_shipping_cancelCaps', 'shipping', 'checkout')}
         />
-      </>
+      </View>
     );
   };
 
@@ -364,7 +328,9 @@ class RegisteredShippingForm extends React.Component {
           <AddressViewWrapper>
             <Address
               address={defaultAddress}
-              {...{ showCountry: false, showPhone: false, showName: true }}
+              showCountry={false}
+              showPhone={false}
+              showName
               dataLocatorPrefix="address"
               customStyle={CustomAddress}
               className="elem-mb-SM"
@@ -418,7 +384,9 @@ class RegisteredShippingForm extends React.Component {
             dispatch={dispatch}
             addressPhoneNo={addressPhoneNo}
             loadShipmentMethods={loadShipmentMethods}
-            {...{ disableCountry: true, isGuest, showEmailAddress: true }}
+            disableCountry
+            isGuest={isGuest}
+            showEmailAddress
             state={address ? address.state : ''}
             initialValues={modalState && modalType === 'edit' ? { address: { addressLine1 } } : {}}
           />

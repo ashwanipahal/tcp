@@ -53,7 +53,7 @@ const ShippingForm = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [editShipmentDetailsError, setEditShipmentDetailsError] = useState('');
-
+  let editModalRef;
   const setEditState = state => {
     if (!state) {
       setEditShipmentDetailsError('');
@@ -66,7 +66,12 @@ const ShippingForm = ({
       setEditShipmentDetailsError('');
       return handleSubmit(submitShippingForm)(e);
     }
-    scrollView.scrollTo({ x: 0, y: 600, animated: true });
+    if (editModalRef && scrollView) {
+      editModalRef.measure((x, y, width, height) => {
+        const scrollPosition = y - height;
+        scrollView.scrollTo({ x: 0, y: scrollPosition, animated: true });
+      });
+    }
     setEditShipmentDetailsError(emailSignUpLabels.shippingAddressEditError);
     return null;
   };
@@ -95,6 +100,9 @@ const ShippingForm = ({
             newUserPhoneNo={newUserPhoneNo}
             setEditState={setEditState}
             editShipmentDetailsError={editShipmentDetailsError}
+            setEditModalRef={modalRef => {
+              editModalRef = modalRef;
+            }}
           />
         )}
         {isGuest && (
