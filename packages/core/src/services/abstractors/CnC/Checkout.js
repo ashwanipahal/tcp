@@ -83,13 +83,9 @@ export const getShippingMethodServerError = (errorBody, errorsMapping) => {
 
 export const getServerErrorMessage = (error, errorsMapping) => {
   let errorMsg;
-  let genericErrorCode = false;
   const errorBody = error.response && error.response.body;
   errorMsg = getShippingMethodServerError(errorBody, errorsMapping);
   if (errorBody && errorBody.errors) {
-    if (errorBody.errors[0].errorCode === 'CWXFR0221E') {
-      genericErrorCode = true;
-    }
     errorMsg = getFormattedError(error, errorsMapping);
   } else if (error.errorResponse && error.errorResponse.errors) {
     const errorList = [
@@ -109,7 +105,7 @@ export const getServerErrorMessage = (error, errorsMapping) => {
     errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
   }
 
-  if (typeof errorMsg.errorMessages === 'undefined' || genericErrorCode) {
+  if (typeof errorMsg.errorMessages === 'undefined') {
     return errorsMapping.DEFAULT;
   }
   // eslint-disable-next-line
