@@ -22,7 +22,7 @@ export const getBasicInfo = store => ({
     },
     phone: store.telephone1 ? formatPhoneNumber(store.telephone1.trim()) : '',
   },
-  isGym: store.brandName.includes('GYM'),
+  isGym: store.brandName ? store.brandName.includes('GYM') : false,
 });
 
 export const getStoresByCountry = country => {

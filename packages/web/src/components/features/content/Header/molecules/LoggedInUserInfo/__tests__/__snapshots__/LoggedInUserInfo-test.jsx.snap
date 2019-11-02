@@ -13,21 +13,44 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
-    onClick={[Function]}
     textAlign="left"
   >
-    <div
+    <Styled(BodyCopy)
       className="account-info user-name"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      onClick={[Function]}
+      role="button"
+      textAlign="left"
     >
       Hi, vijayendrakumar...
-    </div>
+    </Styled(BodyCopy)>
     <Styled(Image)
       alt="user"
       className="account-info carrot-down-icon"
       height="6px"
+      onClick={[Function]}
       src="/static/images/carrot-small-down.png"
     />
-    <div>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      onClick={[Function]}
+      textAlign="left"
+    >
       <div
         className="account-info user-points"
       >
@@ -38,10 +61,11 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
       >
         $5.51 Rewards
       </span>
-    </div>
+    </Styled(BodyCopy)>
     <Styled(Image)
       alt="user"
       className="usericon"
+      onClick={[Function]}
       src="/static/images/user-icon.png"
     />
   </Styled(BodyCopy)>
