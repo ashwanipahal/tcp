@@ -36,7 +36,7 @@ const HomePageView = dynamic({
       <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,
       <Recommendations
-        page={Constants.RECOMMENDATIONS_SECTIONS.HOMEPAGE}
+        page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
         variations="moduleO,moduleP"
       />,
       <ModuleG {...mockG.moduleG.composites} />,

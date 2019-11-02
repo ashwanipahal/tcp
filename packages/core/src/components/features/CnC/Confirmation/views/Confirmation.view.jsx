@@ -130,7 +130,10 @@ const ConfirmationView = ({
         </Col>
       </Row>
       {renderAccountForm(isGuest)}
-      <Recommendations page={Constants.RECOMMENDATIONS_SECTIONS.CHECKOUT} variations="moduleO" />
+      <Recommendations
+        page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+        variations="moduleO"
+      />
       <CheckoutOrderInfo
         isConfirmationPage
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}

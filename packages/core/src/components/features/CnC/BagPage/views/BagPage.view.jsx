@@ -159,7 +159,10 @@ class BagPageView extends React.PureComponent {
     return (
       <>
         {!hideRec ? (
-          <Recommendations page={Constants.RECOMMENDATIONS_SECTIONS.BAG} variations="moduleO" />
+          <Recommendations
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+            variations="moduleO"
+          />
         ) : null}
         {this.renderRecommendationsForRecent()}
       </>
@@ -171,7 +174,7 @@ class BagPageView extends React.PureComponent {
     return (
       <div className="recentlyViewed">
         <Recommendations
-          page={Constants.RECOMMENDATIONS_SECTIONS.BAG}
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
           headerLabel={labels.recentlyViewed}
           variations="moduleO"
           portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
