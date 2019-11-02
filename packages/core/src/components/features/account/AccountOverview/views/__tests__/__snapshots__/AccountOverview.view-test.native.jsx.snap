@@ -89,6 +89,38 @@ exports[`AccountOverview component should render correctly 1`] = `
       withNoLineHeight={false}
     />
   </Styled(View)>
+  <ModalNative
+    fontSize="fs16"
+    heading=" "
+    headingFontFamily="secondary"
+    horizontalBar={true}
+    inheritedStyles=""
+    isOpen={true}
+    isOverlay={false}
+    onRequestClose={[Function]}
+  >
+    <Styled(View)>
+      <Connect(LoginPageContainer)
+        navigation={
+          Object {
+            "state": Object {
+              "params": Object {
+                "component": "change-password",
+                "em": "coiIGBav4RrUU3tqv8eAB9uZEtUbuUU8bU0hqGLhydw=",
+                "logonPasswordOld": "CI+20YL2b3kMcnvCrlg8nTxw==",
+              },
+            },
+          }
+        }
+        onRequestClose={[Function]}
+        resetChangePasswordState={[Function]}
+        showCheckoutModal={[Function]}
+        showLogin={[Function]}
+        updateHeader={[Function]}
+        variation={false}
+      />
+    </Styled(View)>
+  </ModalNative>
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""

@@ -37,10 +37,6 @@ class SearchBar extends React.PureComponent {
 
   openFullSizeSearchModel = () => {
     this.commonCloseClick();
-    const elementExists = document.getElementById('search-input');
-    if (elementExists) {
-      document.getElementById('search-input').focus();
-    }
   };
 
   openSearchBar = e => {
@@ -131,22 +127,21 @@ class SearchBar extends React.PureComponent {
     return !!(latestSearchResults && latestSearchResults.length > 0);
   };
 
+  clearModalParams = () => {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      this.commonCloseClick();
+      this.closeSearchLayover();
+    } else {
+      this.closeSearchLayover();
+    }
+  };
+
   redirectToSuggestedUrl = searchText => {
     if (searchText) {
       this.setDataInLocalStorage(searchText);
     }
-
+    this.clearModalParams();
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-  };
-
-  hideOverlayAfterClick = (e, searchText) => {
-    e.preventDefault();
-    e.stopPropagation();
-    this.setDataInLocalStorage(searchText);
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-    const { setSearchState, toggleSearchResults } = this.props;
-    setSearchState(false);
-    toggleSearchResults(false);
   };
 
   render() {
@@ -187,7 +182,6 @@ class SearchBar extends React.PureComponent {
             closeModalSearch={this.closeModalSearch}
             isLatestSearchResultsExists={isLatestSearchResultsExists}
             latestSearchResults={latestSearchResults}
-            hideOverlayAfterClick={this.hideOverlayAfterClick}
             searchResults={searchResults}
             redirectToSuggestedUrl={this.redirectToSuggestedUrl}
             setSearchState={setSearchState}
