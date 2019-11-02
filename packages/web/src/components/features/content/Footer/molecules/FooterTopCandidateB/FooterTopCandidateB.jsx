@@ -17,6 +17,7 @@ const FooterTopCandidateB = props => {
     openSmsSignUpModal,
     emailSignup,
     smsSignup,
+    isNavigationFooter,
   } = props;
 
   return (
@@ -80,7 +81,14 @@ const FooterTopCandidateB = props => {
             small: true,
           }}
         >
-          <span id="extole_zone_global_footer" title={referAFriend.title}>
+          <span
+            id={
+              isNavigationFooter
+                ? 'extole_zone_global_navigation_footer'
+                : 'extole_zone_global_footer'
+            }
+            title={referAFriend.title}
+          >
             <Button
               customStyle="shadow-button"
               data-locator={getLocator('refer_friend')}
@@ -138,6 +146,7 @@ FooterTopCandidateB.propTypes = {
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
   openSmsSignUpModal: PropTypes.func,
+  isNavigationFooter: PropTypes.bool,
 };
 
 FooterTopCandidateB.defaultProps = {
@@ -151,6 +160,7 @@ FooterTopCandidateB.defaultProps = {
   referenceID: '',
   openEmailSignUpModal: () => {},
   openSmsSignUpModal: () => {},
+  isNavigationFooter: false,
 };
 
 export default withStyles(FooterTopCandidateB, style);

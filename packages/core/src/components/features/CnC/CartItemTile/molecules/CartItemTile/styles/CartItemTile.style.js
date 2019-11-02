@@ -71,7 +71,9 @@ export default css`
   }
   .imageWrapper {
     position: relative;
-    width: 100px;
+    img {
+      max-height: 100px;
+    }
   }
   .logoWrapper {
     position: relative;
@@ -165,6 +167,30 @@ export default css`
       flex-wrap: wrap;
       width: fit-content;
     }
+
+    .product-detail-section {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      > span {
+        padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+      }
+    }
+
+    .product-detail {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .sflActions {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .responsive-edit-css {
+      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
+    }
   }
 
   .product-tile-wrapper {
@@ -230,20 +256,14 @@ export default css`
 
       .responsive-edit-css {
         text-decoration: underline;
-        padding-top: 4px;
+        padding-top: 0px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
-        padding-left: 15px;
-        left: 155px;
-        bottom: 4px;
-        /* stylelint-disable */
-        @media ${props => props.theme.mediaQuery.large} {
-          position: absolute;
-          left: 110px;
-          bottom: 3px;
-        }
-        /* stylelint-enable */
+      }
+
+      .sflActions {
+        padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
       }
 
       /* stylelint-disable */
@@ -274,9 +294,6 @@ export default css`
       }
       .responsive-edit-css {
         text-decoration: underline;
-        position: absolute;
-        bottom: 0;
-        right: 50%;
         cursor: pointer;
       }
       .bag-product-detail-wrapper {
@@ -327,9 +344,11 @@ export default css`
 
   .parent- {
     padding-bottom: 0px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     .save-for-later-label {
-      position: absolute;
-      right: -10px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 
@@ -359,10 +378,7 @@ export default css`
   .heartIcon {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .sflActions {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+
   .size-and-item-container {
     display: inline-flex;
   }

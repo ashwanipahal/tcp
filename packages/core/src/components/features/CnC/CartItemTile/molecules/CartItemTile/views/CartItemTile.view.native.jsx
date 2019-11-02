@@ -281,6 +281,7 @@ class ProductInformation extends React.Component {
       },
       onPickUpOpenClick,
       setShipToHome,
+      navigation,
     } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -327,7 +328,12 @@ class ProductInformation extends React.Component {
             })}
           </UnavailableView>
           <OuterContainer showOnReviewPage={showOnReviewPage}>
-            {CartItemTileExtension.CartItemImageWrapper(productDetail, labels, showOnReviewPage)}
+            {CartItemTileExtension.CartItemImageWrapper(
+              productDetail,
+              labels,
+              showOnReviewPage,
+              navigation
+            )}
             <ProductDescription>
               {showOnReviewPage && !!productDetail.miscInfo.badge && (
                 <BodyCopy
@@ -337,7 +343,7 @@ class ProductInformation extends React.Component {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              {CartItemTileExtension.getProductName(productDetail, showOnReviewPage)}
+              {CartItemTileExtension.getProductName(productDetail, showOnReviewPage, navigation)}
               {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
@@ -441,6 +447,7 @@ ProductInformation.propTypes = {
   currencyExchange: PropTypes.func.isRequired,
   clearToggleError: PropTypes.func,
   setShipToHome: PropTypes.func,
+  navigation: PropTypes.shape({}),
 };
 
 ProductInformation.defaultProps = {
@@ -453,6 +460,7 @@ ProductInformation.defaultProps = {
   showOnReviewPage: true,
   clearToggleError: () => {},
   setShipToHome: () => {},
+  navigation: {},
 };
 
 export default ProductInformation;

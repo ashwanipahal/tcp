@@ -46,9 +46,10 @@ describe('getsocialAccounts saga', () => {
   describe('SocialAccountSaga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = SocialAccountSaga();
+      generator.next();
       const takeLatestDescriptor = generator.next().value;
       expect(takeLatestDescriptor).toEqual(
-        takeLatest(SOCIAL_CONSTANTS.GET_SOCIAL_LOAD, getsocialAccounts)
+        takeLatest(SOCIAL_CONSTANTS.SAVE_SOCIAL_LOAD, savesocialAccounts)
       );
     });
   });
