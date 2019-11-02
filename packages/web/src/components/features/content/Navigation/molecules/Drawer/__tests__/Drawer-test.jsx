@@ -29,4 +29,12 @@ describe('Drawer component', () => {
   it('Module has header', () => {
     expect(DrawerComp.find('.tcp-drawer')).toHaveLength(1);
   });
+  it('handleUserName should return the user name', () => {
+    const instance = DrawerComp.instance();
+    expect(instance.handleUserName('test')).toEqual('test');
+  });
+  it('handleUserRewards should get called', () => {
+    const instance = DrawerComp.instance();
+    expect(instance.handleUserRewards(1)).toEqual(1);
+  });
 });
