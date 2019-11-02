@@ -11,6 +11,7 @@ import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
 import Product from '../molecules/Product/views/Product.view';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import { getLocator, routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
@@ -43,6 +44,7 @@ class ProductDetailView extends React.Component {
       ),
       currentGiftCardValue: productInfo.offerPrice,
       renderReceiveProps: false,
+      initialValues: {},
     };
   }
 
@@ -60,6 +62,12 @@ class ProductDetailView extends React.Component {
       color: e,
       Quantity: selectedQuantity,
     };
+  };
+
+  setInitialValues = initialValues => {
+    this.setState({
+      initialValues,
+    });
   };
 
   onChangeSize = e => {
@@ -174,12 +182,13 @@ class ProductDetailView extends React.Component {
       pdpLabels,
       handleAddToBag,
       addToBagError,
+      alternateSizes,
     } = this.props;
     const currentProduct = productDetails && productDetails.get('currentProduct');
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
-    const { currentColorEntry, renderReceiveProps } = this.state;
+    const { currentColorEntry, renderReceiveProps, initialValues } = this.state;
     const selectedColorProductId = currentColorEntry.colorProductId;
 
     if (isProductDataAvailable) {
@@ -192,6 +201,7 @@ class ProductDetailView extends React.Component {
     }
 
     const { isGiftCard } = productInfo;
+    const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
 
     return (
       <div className={className}>
@@ -220,6 +230,7 @@ class ProductDetailView extends React.Component {
               currentProduct={currentProduct}
               onChangeColor={this.onChangeColor}
               currentColorEntry={currentColorEntry}
+              initialValues={initialValues}
             />
           </Col>
           <Col
@@ -243,7 +254,10 @@ class ProductDetailView extends React.Component {
                 selectedColorProductId={selectedColorProductId}
                 renderReceiveProps={renderReceiveProps}
                 initialFormValues={this.formValues}
+                getProductInitialValues={this.setInitialValues}
                 isPDP
+                alternateSizes={alternateSizes}
+                sizeChartLinkVisibility={sizeChartLinkVisibility}
               />
             )}
 
@@ -341,6 +355,9 @@ ProductDetailView.propTypes = {
   }),
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  alternateSizes: PropTypes.shape({
+    key: PropTypes.string,
+  }),
 };
 
 ProductDetailView.defaultProps = {
@@ -359,6 +376,7 @@ ProductDetailView.defaultProps = {
   addToBagError: '',
   currencyExchange: 1,
   isLoggedIn: false,
+  alternateSizes: {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);

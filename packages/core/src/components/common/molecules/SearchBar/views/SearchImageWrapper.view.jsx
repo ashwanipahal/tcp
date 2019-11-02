@@ -32,7 +32,6 @@ class SearchImageWrapper extends React.PureComponent {
       searchResults,
       isSearchOpen,
       closeSearchBar,
-      hideOverlayAfterClick,
       redirectToSuggestedUrl,
       setSearchState,
       setDataInLocalStorage,
@@ -59,7 +58,7 @@ class SearchImageWrapper extends React.PureComponent {
                     onSubmit={initiateSearchBySubmit}
                   >
                     <input
-                      id="search-input"
+                      id="searchBar-input"
                       ref={this.searchBarInput}
                       onClick={openSearchBar}
                       className="searchBar-input"
@@ -104,7 +103,6 @@ class SearchImageWrapper extends React.PureComponent {
               latestSearchResults={latestSearchResults}
               labels={labels}
               searchResults={searchResults}
-              hideOverlayAfterClick={hideOverlayAfterClick}
               redirectToSuggestedUrl={redirectToSuggestedUrl}
               setSearchState={setSearchState}
               setDataInLocalStorage={setDataInLocalStorage}
@@ -129,7 +127,6 @@ SearchImageWrapper.propTypes = {
   openSearchBar: PropTypes.func.isRequired,
   closeSearchBar: PropTypes.func.isRequired,
   closeSearchLayover: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,

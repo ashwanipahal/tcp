@@ -129,9 +129,7 @@ class _PickupStoreSelectionForm extends React.Component {
       colorFitsSizesMap,
       isSkuResolved,
     } = this.props;
-
     let disableButton = pristine;
-
     const formExists = Object.entries(PickupSkuFormValues).length === 0;
 
     const { color, Fit, Size } = PickupSkuFormValues;
@@ -139,7 +137,7 @@ class _PickupStoreSelectionForm extends React.Component {
     const enableButton = formExists ? pristine : true;
 
     const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
+    disableButton = sizeAvailable ? !sizeAvailable : enableButton;
 
     return showStoreSearching ? (
       <div className={className}>
