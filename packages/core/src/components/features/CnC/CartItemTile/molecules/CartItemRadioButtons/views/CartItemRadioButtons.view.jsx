@@ -167,7 +167,7 @@ class CartItemRadioButtons extends React.Component {
       return openPickUpModal(pickupType, false, false, true);
     }
     // when 2 bopis stores are selected and toggled to bopis
-    return openPickUpModal(pickupType, true);
+    return openPickUpModal(pickupType, false, true);
   };
 
   /**
