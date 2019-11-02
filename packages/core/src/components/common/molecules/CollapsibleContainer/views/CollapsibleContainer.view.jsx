@@ -66,6 +66,7 @@ class CollapsibleContainer extends React.Component {
           aria-expanded={!!isExpanded}
           onClick={this.toggleCollapseState}
           className="collapsible-header"
+          type="button"
         >
           <Image src={isExpanded ? IconOpen : IconClose} className="collapsible-icon" />
           <div>{header}</div>

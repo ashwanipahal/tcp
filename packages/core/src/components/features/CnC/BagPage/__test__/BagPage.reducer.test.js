@@ -170,4 +170,13 @@ describe('BagPage Reducer', () => {
 
     expect(newState).toEqual(initialStateMutated);
   });
+
+  it('PAYPAL_WEBVIEW_ENABLE', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: 'PAYPAL_WEBVIEW_ENABLE',
+      isPayPalWebViewEnable: false,
+    });
+
+    expect(newState).toEqual(initialStateMutated);
+  });
 });

@@ -86,8 +86,47 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
               to=""
               underline={true}
               visible={false}
+          <ScrollViewMock>
+            <Styled(ProductInformation)
+              data={Object {}}
+              labels={Object {}}
+              quantity=""
             />
-          </Styled(View)>
+            <Connect(AddedToBagViewPointsContainer)
+              labels={Object {}}
+            />
+            <Connect(AddedToBagContainer)
+              closeModal={[Function]}
+              fromAddedToBagModal={true}
+              labels={Object {}}
+              navigation={null}
+              showAddTobag={true}
+            />
+            <Styled(BossBanner)
+              labels={Object {}}
+            />
+            <Connect(LoyaltyBannerContainer)
+              pageCategory="isAddedToBagPage"
+            />
+            <Styled(View)>
+              <Styled(Anchor)
+                accessibilityLabel=""
+                anchorVariation="primary"
+                colorName={null}
+                customStyle={Object {}}
+                dataLocator="addedToBag-continueShopping"
+                fontSizeVariation="medium"
+                locator=""
+                margins={null}
+                noLink={true}
+                onPress={null}
+                text=""
+                to=""
+                underline={true}
+                visible={false}
+              />
+            </Styled(View)>
+          </ScrollViewMock>
         </Styled(View)>
       </Styled(View)>
     </TouchableWithoutFeedback>

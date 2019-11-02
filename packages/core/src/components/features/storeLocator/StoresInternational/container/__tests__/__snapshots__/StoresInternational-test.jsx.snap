@@ -781,6 +781,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               title="lbl_storelist_backLink"
             >
               <Anchor
+                IsSlugPathAdded={false}
                 anchorVariation="secondary"
                 asPath=""
                 className="test sc-jTzLTM LXWRp__backlink sc-bwzfXH eZrbaF"

@@ -123,7 +123,7 @@ class LoginSection extends React.PureComponent<Props> {
           {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (
             <ResetPassword
               backToLoginAction={this.showLoginForm}
-              labels={getLabelValue(labels, 'password')}
+              labels={labels.password}
               queryParams={queryParams}
             />
           )}

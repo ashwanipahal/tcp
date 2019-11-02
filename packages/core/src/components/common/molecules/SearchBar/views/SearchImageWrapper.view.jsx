@@ -59,7 +59,7 @@ class SearchImageWrapper extends React.PureComponent {
                     onSubmit={initiateSearchBySubmit}
                   >
                     <input
-                      id="search-input"
+                      id="searchBar-input"
                       ref={this.searchBarInput}
                       onClick={openSearchBar}
                       className="searchBar-input"
@@ -114,6 +114,7 @@ class SearchImageWrapper extends React.PureComponent {
               commonCloseClick={commonCloseClick}
               toggleSearchResults={toggleSearchResults}
               closeSearchLayover={closeSearchLayover}
+              isSearchOpen={isSearchOpen}
             />
           )}
         </div>
