@@ -18,6 +18,7 @@ export class ModuleM extends React.PureComponent {
       isMobile: viewportInfo && viewportInfo.isMobile,
       isTablet: viewportInfo && viewportInfo.isTablet,
       productCategoryImageList: [],
+      activeTab: 'tablList-0',
     };
   }
 
@@ -26,7 +27,6 @@ export class ModuleM extends React.PureComponent {
     window.addEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
     this.setState({
       productCategoryImageList: divTabs[0].smallCompImages,
-      activeTab: divTabs[0].category.cat_id,
     });
   }
 
@@ -255,11 +255,7 @@ export class ModuleM extends React.PureComponent {
     return (
       tabList &&
       tabList.map(list => {
-        const {
-          text: listItemText,
-          smallCompImages,
-          category: { cat_id: id },
-        } = list;
+        const { text: listItemText, smallCompImages, id } = list;
         const { activeTab } = this.state;
         return (
           <div
@@ -279,6 +275,9 @@ export class ModuleM extends React.PureComponent {
       })
     );
   };
+
+  createTabList = tabList =>
+    tabList.map((list, index) => Object.assign({}, list, { id: `tablList-${index}` }));
 
   render() {
     const { className, headerText, promoBanner, divTabs, type, ctaItems } = this.props;
@@ -305,7 +304,7 @@ export class ModuleM extends React.PureComponent {
             }}
             className="product-tab-list"
           >
-            {divTabs && this.createProductTabList(divTabs)}
+            {divTabs && this.createProductTabList(this.createTabList(divTabs))}
           </Col>
           <Col
             colSize={{
