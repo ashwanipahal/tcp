@@ -4,6 +4,7 @@ import {
   setQuickView,
   setModalState,
   setItemFromBagInfoForQuickView,
+  setLoadingState,
 } from './QuickViewModal.actions';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 
@@ -11,6 +12,7 @@ function* fetchProductDetail({ payload }) {
   try {
     const state = yield select();
     yield put(setModalState({ isModalOpen: true }));
+    yield put(setLoadingState({ isLoading: true }));
     const payloadArray = Array.isArray(payload) ? payload : [payload];
     const { orderInfo } = payloadArray[0];
     let itemBrand;
@@ -24,8 +26,10 @@ function* fetchProductDetail({ payload }) {
     const productDetailArray = yield all(fetchDetailArray);
     yield put(setQuickView(productDetailArray));
     yield put(setItemFromBagInfoForQuickView({ orderInfo }));
+    yield put(setLoadingState({ isLoading: false }));
   } catch (err) {
     console.log(err);
+    yield put(setLoadingState({ isLoading: false }));
   }
 }
 

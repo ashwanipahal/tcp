@@ -245,7 +245,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                                         fontFamily="secondary"
                                         fontSize="fs14"
                                         key={item.id}
-                                        className="linkName"
+                                        className="empty-search-linkName"
                                       >
                                         <Anchor
                                           asPath={`/search/${itemData.text}`}

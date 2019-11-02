@@ -984,16 +984,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
   WCS store image path to DAM image for Gymboree
   MUST BE REVERTED
  */
-export const changeImageURLToDOM = (img, cropParams) => {
-  let imageUrl = img;
-  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
-    const imgArr = imageUrl.split('/');
-    const productPartId = imgArr.slice(-1);
-    const productArr = productPartId[0].split('_');
-    const productId = productArr[0];
-    imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
-  }
-  return imageUrl;
+export const changeImageURLToDOM = (imgPath, cropParams) => {
+  const brandName = getBrand();
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+  return `${assetHost}/${cropParams}/${productAssetPath}/${imgPath}`;
 };
 
 /**

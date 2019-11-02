@@ -7,7 +7,7 @@ exports[`Order Items component should renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jTzLTM",
+        "componentId": "sc-jzJRlG",
         "isStatic": false,
         "rules": Array [
           "
@@ -128,7 +128,7 @@ exports[`Order Items component should renders correctly 1`] = `
       "displayName": "Styled(OrderPreviewItem)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jTzLTM",
+      "styledComponentId": "sc-jzJRlG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
