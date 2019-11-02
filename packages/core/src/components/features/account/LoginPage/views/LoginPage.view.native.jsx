@@ -85,6 +85,7 @@ class LoginView extends React.PureComponent {
       userplccCardId,
       updateHeader,
       toastMessage,
+      resetChangePasswordState,
     } = this.props;
     const { setEmailid, getTouchStatus } = this.state;
     return (
@@ -114,6 +115,7 @@ class LoginView extends React.PureComponent {
           userplccCardId={userplccCardId}
           updateHeader={updateHeader}
           toastMessage={toastMessage}
+          resetChangePasswordState={resetChangePasswordState}
         />
       </ScrollViewStyle>
     );
@@ -142,6 +144,7 @@ LoginView.propTypes = {
   userplccCardId: PropTypes.string,
   updateHeader: PropTypes.func.isRequired,
   toastMessage: PropTypes.func,
+  resetChangePasswordState: PropTypes.func,
 };
 
 LoginView.defaultProps = {
@@ -152,6 +155,7 @@ LoginView.defaultProps = {
   userplccCardNumber: '',
   userplccCardId: '',
   toastMessage: () => {},
+  resetChangePasswordState: () => {},
 };
 
 export default LoginView;

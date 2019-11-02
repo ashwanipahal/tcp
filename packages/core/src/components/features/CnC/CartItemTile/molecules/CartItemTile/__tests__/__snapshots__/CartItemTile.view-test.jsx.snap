@@ -45,16 +45,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -81,25 +88,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -109,13 +123,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -167,110 +183,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -472,16 +479,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -508,25 +522,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -536,13 +557,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -594,110 +617,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -895,16 +909,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -931,25 +952,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -959,13 +987,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -1017,110 +1047,100 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        >
           <Styled(BodyCopy)
             className="padding-left-10 responsive-edit-css"
             color="text.primary"
@@ -1336,16 +1356,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -1372,25 +1399,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -1400,13 +1434,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -1458,110 +1494,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -1759,16 +1786,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -1795,25 +1829,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -1823,13 +1864,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -1881,110 +1924,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -2182,16 +2216,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -2218,25 +2259,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -2246,13 +2294,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -2304,110 +2354,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -2619,16 +2660,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -2667,25 +2715,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -2695,13 +2750,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -2753,110 +2810,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -3068,16 +3116,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -3104,25 +3159,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -3132,13 +3194,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -3190,110 +3254,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -3505,16 +3560,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -3553,25 +3615,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -3581,13 +3650,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -3639,110 +3710,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -3954,16 +4016,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -3990,25 +4059,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4018,13 +4094,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -4076,110 +4154,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -4391,16 +4460,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -4427,25 +4503,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4455,13 +4538,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -4513,110 +4598,101 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
         </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        />
       </Styled(Row)>
       <Styled(Row)
         className="product-detail-row label-responsive-wrapper padding-top-10"
@@ -4814,16 +4890,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -4850,25 +4933,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4878,13 +4968,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -4936,110 +5028,100 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        >
           <Styled(BodyCopy)
             className="padding-left-10 responsive-edit-css"
             color="text.primary"
@@ -5255,16 +5337,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -5291,25 +5380,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5319,13 +5415,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -5377,110 +5475,100 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        >
           <Styled(BodyCopy)
             className="padding-left-10 responsive-edit-css"
             color="text.primary"
@@ -5696,16 +5784,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -5732,25 +5827,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5760,13 +5862,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -5818,110 +5922,100 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        >
           <Styled(BodyCopy)
             className="padding-left-10 responsive-edit-css"
             color="text.primary"
@@ -6151,16 +6245,23 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <WithTheme(DamImage)
-          imgData={
-            Object {
-              "alt": undefined,
-              "url": undefined,
+        <Styled(Anchor)
+          IsSlugPathAdded={true}
+          asPath=""
+          noLink={false}
+          to="/p?pid=undefined"
+        >
+          <WithTheme(DamImage)
+            imgData={
+              Object {
+                "alt": undefined,
+                "url": undefined,
+              }
             }
-          }
-          isProductImage={true}
-          itemBrand="tcp"
-        />
+            isProductImage={true}
+            itemBrand="tcp"
+          />
+        </Styled(Anchor)>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -6199,25 +6300,32 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="h2"
-            dataLocator="cartItemTitle"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
+          <Styled(Anchor)
+            IsSlugPathAdded={true}
+            asPath=""
+            noLink={false}
+            to="/p?pid=undefined"
           >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="h2"
+              dataLocator="cartItemTitle"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight={
+                Array [
+                  "extrabold",
+                ]
+              }
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              Boys Basic Skinny Jeans
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -6227,13 +6335,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           className="product-detail"
           colSize={
             Object {
-              "large": 10,
-              "medium": 10,
-              "small": 10,
+              "large": 12,
+              "medium": 12,
+              "small": 12,
             }
           }
         >
-          <div>
+          <div
+            className="product-detail-section"
+          >
             <div
               className="color-size-fit-label"
             >
@@ -6285,110 +6395,100 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             >
               |
             </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                  undefined:
+                </Styled(BodyCopy)>
+              </div>
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="padding-left-10"
+                color="gray.800"
                 component="span"
+                dataLocator="cartItemSize"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                undefined:
+                1
+                 regular
               </Styled(BodyCopy)>
-            </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="cartItemSize"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-               regular
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="color-fit-size-separator"
-              color="gray.600"
-              component="span"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              |
-            </Styled(BodyCopy)>
-          </div>
-          <div>
-            <div
-              className="color-size-fit-label color-fit-size-desktop"
-            >
               <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
+                className="color-fit-size-separator"
+                color="gray.600"
                 component="span"
                 fontFamily="secondary"
                 fontSize="fs12"
-                fontWeight={
-                  Array [
-                    "extrabold",
-                  ]
-                }
+                fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
                 link={null}
                 textAlign="left"
               >
-                 Qty:
+                |
               </Styled(BodyCopy)>
             </div>
-            <Styled(BodyCopy)
-              className="padding-left-10"
-              color="gray.800"
-              component="span"
-              dataLocator="addedtobag-productqty"
-              fontFamily="secondary"
-              fontSize="fs12"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              1
-            </Styled(BodyCopy)>
+            <div>
+              <div
+                className="color-size-fit-label color-fit-size-desktop"
+              >
+                <Styled(BodyCopy)
+                  className={null}
+                  color="text.primary"
+                  component="span"
+                  fontFamily="secondary"
+                  fontSize="fs12"
+                  fontWeight={
+                    Array [
+                      "extrabold",
+                    ]
+                  }
+                  letterSpacing="normal"
+                  lineHeight="normal"
+                  link={null}
+                  textAlign="left"
+                >
+                   Qty:
+                </Styled(BodyCopy)>
+              </div>
+              <Styled(BodyCopy)
+                className="padding-left-10"
+                color="gray.800"
+                component="span"
+                dataLocator="addedtobag-productqty"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                1
+              </Styled(BodyCopy)>
+            </div>
           </div>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 2,
-              "medium": 2,
-              "small": 2,
-            }
-          }
-        >
           <Styled(BodyCopy)
             className="padding-left-10 responsive-edit-css"
             color="text.primary"
@@ -6668,7 +6768,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .imageWrapper {
     position: relative;
-    width: 100px;
+    img {
+      max-height: 100px;
+    }
   }
   .logoWrapper {
     position: relative;
@@ -6774,6 +6876,36 @@ exports[`CartItemTile common component renders correctly 1`] = `
       flex-wrap: wrap;
       width: fit-content;
     }
+
+    .product-detail-section {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      > span {
+        padding-top: ",
+          [Function],
+          ";
+      }
+    }
+
+    .product-detail {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .sflActions {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media ",
+          [Function],
+          " {
+    .responsive-edit-css {
+      padding-left: ",
+          [Function],
+          ";
+    }
   }
 
   .product-tile-wrapper {
@@ -6847,22 +6979,16 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
       .responsive-edit-css {
         text-decoration: underline;
-        padding-top: 4px;
+        padding-top: 0px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
-        padding-left: 15px;
-        left: 155px;
-        bottom: 4px;
-        /* stylelint-disable */
-        @media ",
+      }
+
+      .sflActions {
+        padding-right: ",
           [Function],
-          " {
-          position: absolute;
-          left: 110px;
-          bottom: 3px;
-        }
-        /* stylelint-enable */
+          ";
       }
 
       /* stylelint-disable */
@@ -6897,9 +7023,6 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
       .responsive-edit-css {
         text-decoration: underline;
-        position: absolute;
-        bottom: 0;
-        right: 50%;
         cursor: pointer;
       }
       .bag-product-detail-wrapper {
@@ -6954,9 +7077,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
 
   .parent- {
     padding-bottom: 0px;
+    padding-left: ",
+          [Function],
+          ";
     .save-for-later-label {
-      position: absolute;
-      right: -10px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 
@@ -6994,10 +7121,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           ";
   }
-  .sflActions {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+
   .size-and-item-container {
     display: inline-flex;
   }
@@ -7054,6 +7178,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "itemInfo": Object {
         "fit": "regular",
         "isGiftItem": true,
+        "itemBrand": "tcp",
         "myPlacePoints": 123,
         "name": "Boys Basic Skinny Jeans 1",
         "price": 123,
@@ -7159,7 +7284,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
   .imageWrapper {
     position: relative;
-    width: 100px;
+    img {
+      max-height: 100px;
+    }
   }
   .logoWrapper {
     position: relative;
@@ -7265,6 +7392,36 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       flex-wrap: wrap;
       width: fit-content;
     }
+
+    .product-detail-section {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      > span {
+        padding-top: ",
+          [Function],
+          ";
+      }
+    }
+
+    .product-detail {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .sflActions {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media ",
+          [Function],
+          " {
+    .responsive-edit-css {
+      padding-left: ",
+          [Function],
+          ";
+    }
   }
 
   .product-tile-wrapper {
@@ -7338,22 +7495,16 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
 
       .responsive-edit-css {
         text-decoration: underline;
-        padding-top: 4px;
+        padding-top: 0px;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;
-        padding-left: 15px;
-        left: 155px;
-        bottom: 4px;
-        /* stylelint-disable */
-        @media ",
+      }
+
+      .sflActions {
+        padding-right: ",
           [Function],
-          " {
-          position: absolute;
-          left: 110px;
-          bottom: 3px;
-        }
-        /* stylelint-enable */
+          ";
       }
 
       /* stylelint-disable */
@@ -7388,9 +7539,6 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       }
       .responsive-edit-css {
         text-decoration: underline;
-        position: absolute;
-        bottom: 0;
-        right: 50%;
         cursor: pointer;
       }
       .bag-product-detail-wrapper {
@@ -7445,9 +7593,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
 
   .parent- {
     padding-bottom: 0px;
+    padding-left: ",
+          [Function],
+          ";
     .save-for-later-label {
-      position: absolute;
-      right: -10px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 
@@ -7485,10 +7637,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           [Function],
           ";
   }
-  .sflActions {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+
   .size-and-item-container {
     display: inline-flex;
   }
@@ -7546,6 +7695,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "itemInfo": Object {
         "fit": "regular",
         "isGiftItem": true,
+        "itemBrand": "tcp",
         "myPlacePoints": 123,
         "name": "Boys Basic Skinny",
         "price": 123,
