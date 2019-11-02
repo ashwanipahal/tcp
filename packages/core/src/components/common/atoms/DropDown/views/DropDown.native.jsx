@@ -42,7 +42,7 @@ class DropDown extends React.PureComponent<Props> {
     bounces: PropTypes.bool,
     selectedItemFontWeight: PropTypes.string,
     dropDownItemFontWeight: PropTypes.string,
-    isSortModal: PropTypes.bool,
+    openDropdownOnLoad: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -56,7 +56,7 @@ class DropDown extends React.PureComponent<Props> {
     bounces: true,
     selectedItemFontWeight: 'semibold',
     dropDownItemFontWeight: 'semibold',
-    isSortModal: false,
+    openDropdownOnLoad: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -159,7 +159,7 @@ class DropDown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
-    const { customDropDownHeight, isSortModal } = this.props;
+    const { customDropDownHeight, openDropdownOnLoad } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
@@ -182,7 +182,7 @@ class DropDown extends React.PureComponent<Props> {
     this.setState({
       flatListHeight: listHeight,
       flatListTop: listMargin,
-      dropDownIsOpen: isSortModal,
+      dropDownIsOpen: openDropdownOnLoad,
     });
   };
 
@@ -219,8 +219,8 @@ class DropDown extends React.PureComponent<Props> {
    * Open the drop down
    */
   openDropDown = () => {
-    const { isSortModal } = this.props;
-    if (isSortModal) return;
+    const { openDropdownOnLoad } = this.props;
+    if (openDropdownOnLoad) return;
     this.setState({
       dropDownIsOpen: true,
     });

@@ -237,7 +237,7 @@ class FilterModal extends React.PureComponent {
                   selectedItemFontWeight="extrabold"
                   dropDownItemFontWeight="regular"
                   onPressOut={this.onPressOut}
-                  isSortModal
+                  openDropdownOnLoad
                 />
               </SortContent>
             )}
