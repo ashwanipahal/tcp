@@ -2,10 +2,14 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import OrdersTileComponent from '../views';
-import getOrdersListState from '../../../../Orders/container/Orders.selectors';
+import {
+  getOrdersListState,
+  getOrderListFetchingState,
+} from '../../../../Orders/container/Orders.selectors';
 import { getOrdersList } from '../../../../Orders/container/Orders.actions';
 import { getSiteId } from '../../../../../../../utils';
 import { getLabels } from '../../../../Account/container/Account.selectors';
+import OrdersTileSkelton from '../skelton/OrdersTileSkelton.view';
 
 class OrdersTile extends PureComponent {
   componentDidMount() {
@@ -14,7 +18,11 @@ class OrdersTile extends PureComponent {
   }
 
   render() {
-    const { labels, ordersListItems, navigation, handleComponentChange } = this.props;
+    const { labels, ordersListItems, navigation, handleComponentChange, isFetching } = this.props;
+
+    if (isFetching) {
+      return <OrdersTileSkelton />;
+    }
     return (
       <OrdersTileComponent
         labels={labels}
@@ -32,14 +40,17 @@ OrdersTile.propTypes = {
   ordersListItems: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   handleComponentChange: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool,
 };
 
 OrdersTile.defaultProps = {
   fetchOrders: () => {},
+  isFetching: false,
 };
 export const mapStateToProps = state => ({
   labels: getLabels(state),
   ordersListItems: getOrdersListState(state),
+  isFetching: getOrderListFetchingState(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
