@@ -22,7 +22,7 @@ class SuggestionBox extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
+      redirectToSuggestedUrl,
     } = this.props;
 
     return (
@@ -53,7 +53,7 @@ class SuggestionBox extends React.PureComponent {
                           to={`/search/${item}`}
                           onClick={e => {
                             e.preventDefault();
-                            hideOverlayAfterClick(`${item}`);
+                            redirectToSuggestedUrl(`${item}`);
                           }}
                         >
                           {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -77,7 +77,7 @@ SuggestionBox.propTypes = {
   }),
   isLatestSearchResultsExists: PropTypes.bool,
   latestSearchResults: PropTypes.arrayOf(PropTypes.shape({})),
-  hideOverlayAfterClick: PropTypes.func.isRequired,
+  redirectToSuggestedUrl: PropTypes.func.isRequired,
 };
 
 SuggestionBox.defaultProps = {
