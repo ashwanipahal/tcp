@@ -150,10 +150,7 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
 const bootstrap = async (pageName = '', modules, cachedData) => {
   const response = {};
 
-  const bootstrapParams = {
-    page: pageName,
-    ...createBootstrapParams(),
-  };
+  const bootstrapParams = { page: pageName, ...createBootstrapParams() };
 
   /**
    * Config Responsible for making all the http requests that need to be resolved before loading the application
@@ -162,7 +159,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
    *  -   Labels
    *  -   Navigation
    */
-  const bootstrapModules = modules || ['labels', 'footer', 'navigation'];
+  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
 
   try {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
@@ -170,10 +167,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
     logger.info('Bootstrap Query Executed Successfully');
     logger.debug('Bootstrap Query Result: ', bootstrapData);
-    const fetchCachedDataParams = {
-      bootstrapData,
-      cachedData,
-    };
+    const fetchCachedDataParams = { bootstrapData, cachedData };
 
     if (pageName) {
       try {
@@ -182,10 +176,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
         response.modules =
           bootstrapData[pageName] &&
           (await layoutAbstractor.getModulesFromLayout(
-            retrieveCachedData({
-              ...fetchCachedDataParams,
-              key: pageName,
-            })
+            retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
           ));
         logger.info('Modules Query Executed Successfully');
         logger.debug('Modules Query Result: ', response.modules);
@@ -195,30 +186,16 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     }
 
     response.header = headerAbstractor.processData(
-      retrieveCachedData({
-        ...fetchCachedDataParams,
-        key: 'header',
-      })
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
     );
     response.footer =
       bootstrapData.footer &&
-      footerAbstractor.processData(
-        retrieveCachedData({
-          ...fetchCachedDataParams,
-          key: 'footer',
-        })
-      );
+      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
     response.labels = labelsAbstractor.processData(
-      retrieveCachedData({
-        ...fetchCachedDataParams,
-        key: 'labels',
-      })
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
     );
     response.navigation = navigationAbstractor.processData(
-      retrieveCachedData({
-        ...fetchCachedDataParams,
-        key: 'navigation',
-      })
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);
