@@ -311,6 +311,7 @@ class CheckoutPage extends React.PureComponent {
 
   render() {
     const { isGuest, router, submitReview, reviewProps, checkoutServerError } = this.props;
+    const { cartOrderItemsCount } = this.props;
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
@@ -318,6 +319,7 @@ class CheckoutPage extends React.PureComponent {
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     return (
       <CnCTemplate
+        showLeftSection={cartOrderItemsCount > 0}
         leftSection={this.renderLeftSection}
         marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
         isGuest={isGuest}

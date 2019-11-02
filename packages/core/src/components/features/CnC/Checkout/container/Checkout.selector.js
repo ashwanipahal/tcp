@@ -950,9 +950,12 @@ const getCheckoutPageEmptyBagLabels = createSelector(
   getReviewPageLabels,
   reviewLabels => {
     const labels = {};
-    const labelKeys = ['lbl_review_emptyBagText', 'lbl_review_emptyBagSubText'];
-    labelKeys.forEach(key => {
-      labels[key] = getLabelValue(reviewLabels, key);
+    const labelKeys = [
+      { keyLabel: 'emptyBagText', key: 'lbl_review_emptyBagText' },
+      { keyLabel: 'emptyBagSubText', key: 'lbl_review_emptyBagSubText' },
+    ];
+    labelKeys.forEach(({ key, keyLabel }) => {
+      labels[keyLabel] = getLabelValue(reviewLabels, key);
     });
     return labels;
   }
