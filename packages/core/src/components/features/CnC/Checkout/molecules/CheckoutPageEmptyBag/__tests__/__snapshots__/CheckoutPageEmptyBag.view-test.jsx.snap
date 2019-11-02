@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutPageEmptyBag Component CheckoutPageEmptyBag should render correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="empty-bag-text"
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+  </div>
+  <div
+    className="empty-bag-subtext"
+  >
+    <Styled(BodyCopy)
+      className="small-text"
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    />
+  </div>
+</div>
+`;

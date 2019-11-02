@@ -27,3 +27,4 @@ CheckoutPageEmptyBag.propTypes = {
 };
 
 export default withStyles(CheckoutPageEmptyBag, styles);
+export { CheckoutPageEmptyBag as CheckoutPageEmptyBagVanilla };

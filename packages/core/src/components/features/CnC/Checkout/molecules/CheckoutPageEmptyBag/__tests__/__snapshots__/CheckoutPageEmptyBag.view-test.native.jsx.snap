@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutPageEmptyBag Component CheckoutPageEmptyBag should render correctly 1`] = `
+<Styled(View)>
+  <Styled(Text)>
+    abc
+  </Styled(Text)>
+  <Styled(Text)>
+    abc
+  </Styled(Text)>
+</Styled(View)>
+`;
