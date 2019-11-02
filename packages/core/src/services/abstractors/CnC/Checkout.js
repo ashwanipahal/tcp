@@ -59,27 +59,36 @@ export const getGiftWrappingOptions = () => {
   // });
 };
 
-export const getShippingMethodServerError = (error, errorsMapping) => {
+export const getShippingMethodServerError = (errorBody, errorsMapping) => {
   let errMsg = false;
-  if (error.response && error.response.body && error.response.body.updateShippingMethodSelectionResponse && error.response.body.updateShippingMethodSelectionResponse.errors.length > 0) {
-
+  if (
+    errorBody &&
+    errorBody.updateShippingMethodSelectionResponse &&
+    errorBody.updateShippingMethodSelectionResponse.errors.length > 0
+  ) {
+    const { errorKey } = errorBody.updateShippingMethodSelectionResponse.errors[0];
     const errorList = [
       {
-        errorKey: error.response.body.updateShippingMethodSelectionResponse.errors[0].errorKey,
+        errorKey,
       },
     ];
-    errMsg =  getFormattedErrorFromResponse(error, errorsMapping, errorList);
+    errMsg = getFormattedErrorFromResponse(
+      { response: { body: errorBody } },
+      errorsMapping,
+      errorList
+    );
   }
   return errMsg;
-}
+};
 
 export const getServerErrorMessage = (error, errorsMapping) => {
   let errorMsg;
-  let genericErrorCode =  false;
-  errorMsg = getShippingMethodServerError(error, errorsMapping);
-  if (error.response && error.response.body && error.response.body.errors) {
-    if(error.response.body.errors[0].errorCode==='CWXFR0221E'){
-      genericErrorCode =  true;
+  let genericErrorCode = false;
+  const errorBody = error.response && error.response.body;
+  errorMsg = getShippingMethodServerError(errorBody, errorsMapping);
+  if (errorBody && errorBody.errors) {
+    if (errorBody.errors[0].errorCode === 'CWXFR0221E') {
+      genericErrorCode = true;
     }
     errorMsg = getFormattedError(error, errorsMapping);
   } else if (error.errorResponse && error.errorResponse.errors) {
@@ -91,7 +100,7 @@ export const getServerErrorMessage = (error, errorsMapping) => {
       },
     ];
     errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
-  } else if(typeof error.errorCode !== 'undefined'){
+  } else if (typeof error.errorCode !== 'undefined') {
     const errorList = [
       {
         errorCode: error.errorCode,
@@ -101,7 +110,7 @@ export const getServerErrorMessage = (error, errorsMapping) => {
   }
 
   if (typeof errorMsg.errorMessages === 'undefined' || genericErrorCode) {
-    return 'Oops... Something went Wrong!! Please try again.';
+    return errorsMapping.DEFAULT;
   }
   // eslint-disable-next-line
   return errorMsg.errorMessages._error;
@@ -266,7 +275,7 @@ export function setShippingMethodAndAddressId(
   shippingTypeId,
   addressId,
   verifyPrescreen,
-  transVibesSmsPhoneNo,
+  transVibesSmsPhoneNo
 ) {
   const payload = {
     body: {
@@ -282,7 +291,12 @@ export function setShippingMethodAndAddressId(
 
   return executeStatefulAPICall(payload)
     .then(res => {
-      if (responseContainsErrors(res) || (res.body && res.body.updateShippingMethodSelectionResponse && res.body.updateShippingMethodSelectionResponse.errors.length > 0)) {
+      if (
+        responseContainsErrors(res) ||
+        (res.body &&
+          res.body.updateShippingMethodSelectionResponse &&
+          res.body.updateShippingMethodSelectionResponse.errors.length > 0)
+      ) {
         throw new ServiceResponseError(res);
       } else {
         const rtpsData = extractRtpsEligibleAndCode(res);

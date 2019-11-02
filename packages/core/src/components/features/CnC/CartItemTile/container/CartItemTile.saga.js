@@ -66,7 +66,7 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
     );
   } catch (err) {
     logger.error(err);
-    yield call(handleServerSideErrorAPI, err, 'CartItemTile');
+    yield call(handleServerSideErrorAPI, err, CARTPAGE_CONSTANTS.CART_ITEM_TILE);
   }
 }
 

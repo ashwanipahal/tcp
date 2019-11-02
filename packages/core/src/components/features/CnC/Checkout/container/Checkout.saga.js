@@ -96,7 +96,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   // }
 }
 
-export function* handleServerSideErrorAPI(e, componentName = 'PAGE') {
+export function* handleServerSideErrorAPI(e, componentName = CONSTANTS.PAGE) {
   const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
   const billingError = getServerErrorMessage(e, errorsMapping);
   yield put(
@@ -558,57 +558,57 @@ function* submitShipping({
   smsInfo,
 }) {
   const giftServicesFormData = yield select(getGiftServicesFormData);
-    yield addAndSetGiftWrappingOptions(giftServicesFormData);
-    yield put(setAddressError(null));
-    const pendingPromises = [
-      // add the requested gift wrap options
-      // giftWrap.hasGiftWrapping && call(addGiftWrappingOption, giftWrap.message, giftWrap.optionId),
-      // remove old gift wrap option (if any)
-      // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
-      // sign up to receive mail newsletter
-      isEmailSignUpAllowed && emailSignup && validateAndSubmitEmailSignup(emailAddress),
-    ];
-    let addOrEditAddressRes;
-    if (isGuestUser) {
-      const oldShippingDestination = yield select(getShippingDestinationValues);
-      addOrEditAddressRes = yield addOrEditGuestUserAddress({
-        oldShippingDestination,
-        address,
-        phoneNumber,
-        emailAddress,
-        saveToAccount,
-        setAsDefault,
-      });
-    } else {
-      addOrEditAddressRes = yield addRegisteredUserAddress({
-        onFileAddressKey,
-        address,
-        phoneNumber,
-        emailAddress,
-        setAsDefault,
-        saveToAccount,
-      });
-    }
-    const {
-      payload: { addressId },
-    } = addOrEditAddressRes;
-    // Retrieve phone number info for sms updates
-    yield saveLocalSmsInfo(smsInfo);
-    yield all(pendingPromises);
-    yield call(
-      setShippingMethodAndAddressId,
-      method.shippingMethodId,
-      addressId,
-      false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
-      smsInfo ? smsInfo.smsUpdateNumber : null,
-      yield select(BagPageSelectors.getErrorMapping)
-    );
-    // return getPlccOperator(store)
-    //   .optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
-    // REVIEW: the true indicates to load the reward data for user.
-    // But how can the reward points change here?
-    yield select(selectors.getSmsNumberForOrderUpdates);
-    yield call(getAddressList);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData);
+  yield put(setAddressError(null));
+  const pendingPromises = [
+    // add the requested gift wrap options
+    // giftWrap.hasGiftWrapping && call(addGiftWrappingOption, giftWrap.message, giftWrap.optionId),
+    // remove old gift wrap option (if any)
+    // !giftWrap.hasGiftWrapping && giftWrappingStoreOptionID && call(removeGiftWrappingOption),
+    // sign up to receive mail newsletter
+    isEmailSignUpAllowed && emailSignup && validateAndSubmitEmailSignup(emailAddress),
+  ];
+  let addOrEditAddressRes;
+  if (isGuestUser) {
+    const oldShippingDestination = yield select(getShippingDestinationValues);
+    addOrEditAddressRes = yield addOrEditGuestUserAddress({
+      oldShippingDestination,
+      address,
+      phoneNumber,
+      emailAddress,
+      saveToAccount,
+      setAsDefault,
+    });
+  } else {
+    addOrEditAddressRes = yield addRegisteredUserAddress({
+      onFileAddressKey,
+      address,
+      phoneNumber,
+      emailAddress,
+      setAsDefault,
+      saveToAccount,
+    });
+  }
+  const {
+    payload: { addressId },
+  } = addOrEditAddressRes;
+  // Retrieve phone number info for sms updates
+  yield saveLocalSmsInfo(smsInfo);
+  yield all(pendingPromises);
+  yield call(
+    setShippingMethodAndAddressId,
+    method.shippingMethodId,
+    addressId,
+    false, // generalStoreView.getIsPrescreenFormEnabled(storeState) && !giftWrap.hasGiftWrapping && !userStoreView.getUserIsPlcc(storeState)
+    smsInfo ? smsInfo.smsUpdateNumber : null,
+    yield select(BagPageSelectors.getErrorMapping)
+  );
+  // return getPlccOperator(store)
+  //   .optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
+  // REVIEW: the true indicates to load the reward data for user.
+  // But how can the reward points change here?
+  yield select(selectors.getSmsNumberForOrderUpdates);
+  yield call(getAddressList);
 }
 
 export function* submitBillingSection(action) {
