@@ -30,6 +30,7 @@ class CondensedHeader extends React.PureComponent {
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
       isFullSizeSearchModalOpen: false,
+      fromCondensedHeader: true,
     };
     this.setSearchState = this.setSearchState.bind(this);
     this.onCloseClick = this.onCloseClick.bind(this);
@@ -107,10 +108,16 @@ class CondensedHeader extends React.PureComponent {
       userPoints,
       userRewards,
       labels,
-      isFullSizeSearchModalOpen,
     } = this.props;
     const brand = getBrand();
-    const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
+    const {
+      isSearchOpen,
+      userNameClick,
+      triggerLoginCreateAccount,
+      cartItemCount,
+      fromCondensedHeader,
+      isFullSizeSearchModalOpen,
+    } = this.state;
     const {
       accessibility: { accountIconButton, cartIconButton, closeIconButton, hamburgerMenu } = {},
     } = labels;
@@ -185,7 +192,7 @@ class CondensedHeader extends React.PureComponent {
                     isSearchOpen={isSearchOpen}
                     onCloseClick={this.onCloseClick}
                     isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
-                    fromCondensedHeader
+                    fromCondensedHeader={fromCondensedHeader}
                   />
                 </Modal>
               ) : (
@@ -193,7 +200,7 @@ class CondensedHeader extends React.PureComponent {
                   className={!isSearchOpen && 'rightLink search-icon'}
                   setSearchState={this.setSearchState}
                   isSearchOpen={isSearchOpen}
-                  fromCondensedHeader
+                  fromCondensedHeader={fromCondensedHeader}
                   onCloseClick={this.onCloseClick}
                   isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
                 />
@@ -282,7 +289,6 @@ CondensedHeader.propTypes = {
   userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  isFullSizeSearchModalOpen: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     userNameClick: PropTypes.string.isRequired,
