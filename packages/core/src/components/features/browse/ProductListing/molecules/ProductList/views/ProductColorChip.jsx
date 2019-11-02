@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
 import { getLocator } from '../../../../../../../utils';
+import DamImage from '../../../../../../common/atoms/DamImage';
 
 export default class ProductColorChip extends React.Component {
   static propTypes = {
@@ -38,11 +38,20 @@ export default class ProductColorChip extends React.Component {
   render() {
     const {
       colorEntry: {
-        color: { name, imagePath },
+        color: { name, swatchimage },
       },
       isActive,
     } = this.props;
-
+    const swatchImageUrl = swatchimage && swatchimage.split('_');
+    const imgUrl = swatchImageUrl
+      ? `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`
+      : '';
+    const imgData = {
+      alt: name,
+      url: imgUrl,
+    };
+    const imgConfig = 'w_50,h_50,c_thumb,g_auto:0';
+    const imgDataConfig = [`${imgConfig}`, `${imgConfig}`, `${imgConfig}`];
     return (
       <button
         data-locator={getLocator('global_ColorSwatch_Swatch_link')}
@@ -51,10 +60,11 @@ export default class ProductColorChip extends React.Component {
         title={name}
         className={['content-colors-button', isActive ? 'active' : null].join(' ')}
       >
-        <img
+        <DamImage
           className="product-color-chip-image"
-          src={changeImageURLToDOM(imagePath, 'w_50,h_50,c_thumb,g_auto:0')}
-          alt={name}
+          imgData={imgData}
+          imgConfigs={imgDataConfig}
+          isProductImage
         />
       </button>
     );

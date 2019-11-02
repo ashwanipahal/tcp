@@ -24,4 +24,11 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
   }
+
+  .moduleD_textlink::after {
+    font-size: 23px;
+    position: relative;
+    top: 3px;
+    margin-left: 8px;
+  }
 `;
