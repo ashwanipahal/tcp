@@ -33,9 +33,5 @@ exports[`PointsClaim View component should renders correctly 1`] = `
     updateUnregisteredFields={false}
     validate={[Function]}
   />
-  <Styled(RewardsFooterLinks)
-    programDetailsCta="lbl_my_rewards_program_details"
-    termsConditionCta="lbl_common_tnc"
-  />
 </Fragment>
 `;

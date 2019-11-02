@@ -36,9 +36,5 @@ exports[`PointsClaimContainer container should not render if site id is ca 1`] =
     updateUnregisteredFields={false}
     validate={[Function]}
   />
-  <Styled(RewardsFooterLinks)
-    programDetailsCta="lbl_my_rewards_program_details"
-    termsConditionCta="lbl_common_tnc"
-  />
 </Fragment>
 `;

@@ -44,7 +44,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     heading="lbl_common_points_history_heading"
   />
   <Styled(BodyCopy)
-    className="elem-mb-XXL elem-mt-XXL elem-pb-MED"
+    className="elem-mb-XXL elem-mt-XXL elem-pb-MED point_history_grid"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -56,7 +56,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
     textAlign="left"
   >
     <Styled(BodyCopy)
-      className="hide-on-desktop hide-on-tablet elem-mb-LRG"
+      className="hide-on-mobile hide-on-tablet elem-mb-LRG"
       color="text.primary"
       component="p"
       dataLocator="points_history_subheading"
@@ -92,72 +92,5 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
   <Styled(HistoryPointsRichText)
     content=""
   />
-  <Styled(BodyCopy)
-    className="elem-mb-XXL elem-mt-XXL"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      asPath="/account/place-rewards/points-claim"
-      data-locator="claim form link"
-      fontSizeVariation="xlarge"
-      to="/account?id=place-rewards&subSection=points-claim"
-      underline={true}
-    >
-      Points Claim Form
-    </Styled(Anchor)>
-  </Styled(BodyCopy)>
-  <Styled(Row)
-    className="elem-pt-XXL"
-  >
-    <Styled(Col)
-      className="anchor-wrapper"
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      offsetLeft={
-        Object {
-          "large": 4,
-          "medium": 2,
-          "small": 1,
-        }
-      }
-    >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        dataLocator="program_details_cta"
-        fontSizeVariation="large"
-        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
-        noLink={true}
-        target="_blank"
-        underline={true}
-      >
-        lbl_points_history_program_details
-      </Styled(Anchor)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        className="elem-ml-XL"
-        dataLocator="terms_condition_cta"
-        fontSizeVariation="large"
-        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
-        noLink={true}
-        underline={true}
-      >
-        lbl_common_tnc
-      </Styled(Anchor)>
-    </Styled(Col)>
-  </Styled(Row)>
 </Styled(BodyCopy)>
 `;
