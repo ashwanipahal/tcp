@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
@@ -122,7 +121,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
       slpLabels,
       searchedText,
       searchResultSuggestions,
-      labels,
       searchResults,
     } = this.props;
 
@@ -132,21 +130,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
       searchResultSuggestions && searchResultSuggestions.length
         ? searchResultSuggestions.map(searchSuggestion => searchSuggestion.suggestion)
         : slpLabels.lbl_no_suggestion;
-
-    const ProductMatchesLabel = () => {
-      if (
-        searchResults &&
-        searchResults.autosuggestProducts &&
-        searchResults.autosuggestProducts.length > 0
-      ) {
-        return (
-          <BodyCopy fontFamily="secondary" className="boxHead matchProductHead">
-            {getLabelValue(labels, 'lbl_search_product_matches')}
-          </BodyCopy>
-        );
-      }
-      return null;
-    };
 
     return (
       <div className={className}>
@@ -191,7 +174,11 @@ class NoResponseSearchDetailView extends React.PureComponent {
                 <Anchor
                   noLink
                   className="suggestion-label"
-                  onClick={() => this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`)}
+                  to={`/us/search/${searchResultSuggestionsArg}`}
+                  onClick={e => {
+                    e.preventDefault();
+                    this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
+                  }}
                 >
                   {` "${searchResultSuggestionsArg}" ?`}
                 </Anchor>
@@ -238,6 +225,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                   <div className="matchLinkBox">
                     {searchResults &&
                       searchResults.autosuggestList &&
+                      searchResults.autosuggestList.length > 0 &&
                       searchResults.autosuggestList.map(item => {
                         return (
                           <div>
@@ -257,7 +245,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                                         fontFamily="secondary"
                                         fontSize="fs14"
                                         key={item.id}
-                                        className="linkName"
+                                        className="empty-search-linkName"
                                       >
                                         <Anchor
                                           asPath={`/search/${itemData.text}`}
@@ -274,34 +262,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
                           </div>
                         );
                       })}
-                  </div>
-                  <div className="matchProductBox">
-                    <ProductMatchesLabel />
-                    <BodyCopy className="matchProductBody" lineHeight="39" component="div">
-                      <ul>
-                        {searchResults &&
-                          searchResults.autosuggestProducts &&
-                          searchResults.autosuggestProducts.map(item => {
-                            return (
-                              <BodyCopy component="li" key={item.id} className="productBox">
-                                <Anchor
-                                  asPath={`${item.productUrl}`}
-                                  to={`${item.productUrl}`}
-                                  className="suggestion-label"
-                                >
-                                  <Image
-                                    alt={`${item.name}`}
-                                    className="autosuggest-image"
-                                    src={`${item.imageUrl[0]}`}
-                                    data-locator={`${item.name}`}
-                                    height="25px"
-                                  />
-                                </Anchor>
-                              </BodyCopy>
-                            );
-                          })}
-                      </ul>
-                    </BodyCopy>
                   </div>
                 </div>
               )}

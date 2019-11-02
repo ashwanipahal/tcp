@@ -32,7 +32,6 @@ class SearchImageWrapper extends React.PureComponent {
       searchResults,
       isSearchOpen,
       closeSearchBar,
-      hideOverlayAfterClick,
       redirectToSuggestedUrl,
       setSearchState,
       setDataInLocalStorage,
@@ -40,53 +39,59 @@ class SearchImageWrapper extends React.PureComponent {
       startSearch,
       closeModalSearch,
       commonCloseClick,
+      toggleSearchResults,
+      closeSearchLayover,
     } = this.props;
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
     const SEARCH_IMAGE = 'search-icon';
     return (
       <React.Fragment>
-        {!fromCondensedHeader ? (
-          <div className="search-input-wrapper">
-            <div className="searchBar-input-wrapper">
-              <form
-                id="search-input-form"
-                className={`${className} searchBar-input-form`}
-                noValidate
-                onSubmit={initiateSearchBySubmit}
-              >
-                <input
-                  id="search-input"
-                  ref={this.searchBarInput}
-                  onClick={openSearchBar}
-                  className="searchBar-input"
-                  maxLength="50"
-                  autoComplete="off"
-                  placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
-                  readOnly
-                />
-              </form>
+        {!isSearchOpen && (
+          <div>
+            {!fromCondensedHeader ? (
+              <div id="search-input-wrapper" className="search-input-wrapper">
+                <div className="searchBar-input-wrapper">
+                  <form
+                    id="search-input-form"
+                    className={`${className} searchBar-input-form`}
+                    noValidate
+                    onSubmit={initiateSearchBySubmit}
+                  >
+                    <input
+                      id="searchBar-input"
+                      ref={this.searchBarInput}
+                      onClick={openSearchBar}
+                      className="searchBar-input"
+                      maxLength="50"
+                      autoComplete="off"
+                      placeHolder={getLabelValue(labels, 'lbl_what_looking_for')}
+                      readOnly
+                    />
+                  </form>
+                  <Image
+                    alt="search"
+                    id="search-image-typeAhead"
+                    className="searchBar-image-typeAhead icon-small"
+                    src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                    data-locator="search-icon"
+                    height="25px"
+                    onClick={openSearchBar}
+                  />
+                </div>
+              </div>
+            ) : (
               <Image
-                alt="search"
-                id="search-image-typeAhead"
-                className="searchBar-image-typeAhead icon-small"
-                src={getIconPath(`${SEARCH_BLUE_IMAGE}`)}
+                alt="search-image"
+                className="search-image icon"
+                onClick={openSearchBar}
+                src={getIconPath(
+                  fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
+                )}
                 data-locator="search-icon"
                 height="25px"
-                onClick={openSearchBar}
               />
-            </div>
-          </div>
-        ) : (
-          <Image
-            alt="search-image"
-            className="search-image icon"
-            onClick={openSearchBar}
-            src={getIconPath(
-              fromCondensedHeader && !isGymboree() ? `${SEARCH_BLUE_IMAGE}` : `${SEARCH_IMAGE}`
             )}
-            data-locator="search-icon"
-            height="25px"
-          />
+          </div>
         )}
 
         <div>
@@ -98,7 +103,6 @@ class SearchImageWrapper extends React.PureComponent {
               latestSearchResults={latestSearchResults}
               labels={labels}
               searchResults={searchResults}
-              hideOverlayAfterClick={hideOverlayAfterClick}
               redirectToSuggestedUrl={redirectToSuggestedUrl}
               setSearchState={setSearchState}
               setDataInLocalStorage={setDataInLocalStorage}
@@ -106,6 +110,9 @@ class SearchImageWrapper extends React.PureComponent {
               startSearch={startSearch}
               closeModalSearch={closeModalSearch}
               commonCloseClick={commonCloseClick}
+              toggleSearchResults={toggleSearchResults}
+              closeSearchLayover={closeSearchLayover}
+              isSearchOpen={isSearchOpen}
             />
           )}
         </div>
@@ -119,12 +126,13 @@ SearchImageWrapper.propTypes = {
   initiateSearchBySubmit: PropTypes.func.isRequired,
   openSearchBar: PropTypes.func.isRequired,
   closeSearchBar: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
+  closeSearchLayover: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,
   redirectToSearchPage: PropTypes.func.isRequired,
   startSearch: PropTypes.func.isRequired,
+  toggleSearchResults: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
   commonCloseClick: PropTypes.func.isRequired,
   showProduct: PropTypes.bool,

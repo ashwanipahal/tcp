@@ -152,6 +152,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
+    pageCategory=""
     showAccordian={true}
   />
   <form>
@@ -296,6 +297,9 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -329,6 +333,9 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
                 ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                 ";
@@ -419,6 +426,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={true}
+    pageCategory=""
     showAccordian={true}
   />
   <form>

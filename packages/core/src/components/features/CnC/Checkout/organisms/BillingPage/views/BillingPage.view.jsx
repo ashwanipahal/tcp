@@ -23,6 +23,7 @@ class BillingPage extends React.PureComponent {
     creditFieldLabels: PropTypes.shape({}),
     isVenmoPaymentInProgress: PropTypes.bool,
     isVenmoEnabled: PropTypes.bool,
+    pageCategory: PropTypes.string,
     ServerErrors: PropTypes.node.isRequired,
   };
 
@@ -34,6 +35,7 @@ class BillingPage extends React.PureComponent {
     billingData: {},
     userAddresses: null,
     creditFieldLabels: {},
+    pageCategory: '',
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
   };
@@ -59,6 +61,7 @@ class BillingPage extends React.PureComponent {
       isVenmoPaymentInProgress,
       isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
       ServerErrors,
+      pageCategory,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     return (
@@ -84,6 +87,7 @@ class BillingPage extends React.PureComponent {
               creditFieldLabels={creditFieldLabels}
               isVenmoPaymentInProgress={isVenmoPaymentInProgress}
               isVenmoEnabled={isVenmoEnabled}
+              pageCategory={pageCategory}
             />
           </div>
         ) : (
@@ -101,6 +105,7 @@ class BillingPage extends React.PureComponent {
             creditFieldLabels={creditFieldLabels}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isVenmoEnabled={isVenmoEnabled}
+            pageCategory={pageCategory}
           />
         )}
       </div>

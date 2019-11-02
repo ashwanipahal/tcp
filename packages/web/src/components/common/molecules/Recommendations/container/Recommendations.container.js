@@ -11,6 +11,7 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.selectors';
+import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import RecommendationsView from '../Recommendations';
 
 const mapStateToProps = (state, ownProps) => {
@@ -37,6 +38,9 @@ const mapDispatchToProps = dispatch => {
     loadRecommendations: () => dispatch(fetchRecommendationsData()),
     onPickUpOpenClick: payload => {
       dispatch(openPickupModalWithValues(payload));
+    },
+    onQuickViewOpenClick: payload => {
+      dispatch(openQuickViewWithValues(payload));
     },
   };
 };

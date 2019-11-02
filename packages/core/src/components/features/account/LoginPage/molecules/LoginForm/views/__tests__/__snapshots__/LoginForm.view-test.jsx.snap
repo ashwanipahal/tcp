@@ -195,7 +195,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-fjdhpX",
+              "componentId": "sc-cSHVUG",
               "isStatic": false,
               "rules": Array [
                 "
@@ -250,7 +250,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-fjdhpX",
+            "styledComponentId": "sc-cSHVUG",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -365,6 +365,9 @@ exports[`LoginForm component should renders correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -398,6 +401,9 @@ exports[`LoginForm component should renders correctly 1`] = `
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -711,7 +717,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-fjdhpX",
+              "componentId": "sc-cSHVUG",
               "isStatic": false,
               "rules": Array [
                 "
@@ -766,7 +772,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-fjdhpX",
+            "styledComponentId": "sc-cSHVUG",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -882,6 +888,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -915,6 +924,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";

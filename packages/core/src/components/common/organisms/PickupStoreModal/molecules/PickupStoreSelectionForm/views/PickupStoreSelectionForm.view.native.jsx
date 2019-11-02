@@ -113,7 +113,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
     const enableButton = formExists ? pristine : true;
 
     const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
+    disableButton = sizeAvailable ? !sizeAvailable : enableButton;
 
     return showStoreSearching ? (
       <PickUpModalView>

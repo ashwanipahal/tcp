@@ -9,65 +9,13 @@ import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommon';
 
-// const concatSectionSymbol = (str, sectionSymbol) => {
-//   return `${str}<sup className="sub-heading-section-symbol">${sectionSymbol}</sup>`;
-// };
-
-const LoyaltyBannerSection = props => {
-  const {
-    className,
-    labels,
-    currentSubtotal,
-    estimatedSubtotal,
-    thresholdValue,
-    isGuest,
-    earnedReward,
-    isPlcc,
-    estimatedRewardsVal,
-    pointsToNextReward,
-    getCurrencySymbol,
-    pageCategory,
-    isProductDetailView,
-  } = props;
-  let showSubtotal = false;
-  let headingLabel = '';
-  let remainingPlcc = '';
-  let subHeadingLabel = '';
-  let descriptionLabel = '';
-  const earnedRewardAvailable = !!earnedReward;
-
-  const pageCategoryArr = getPageCategory(pageCategory);
-  const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
-
-  /* istanbul ignore else */
-  if (
-    currentSubtotal > thresholdValue &&
-    !isPlcc &&
-    !isReviewPage &&
-    !isConfirmationPage &&
-    estimatedSubtotal
-  ) {
-    showSubtotal = true;
-  }
-
-  const LoyaltyLabels = renderLoyaltyLabels(
-    labels,
-    estimatedRewardsVal,
-    earnedReward,
-    isGuest,
-    isPlcc,
-    isReviewPage,
-    isConfirmationPage,
-    isAddedToBagPage,
-    isProductDetailView
-  );
-
-  const utilArrHeader = [
+const utilArrayHeader = (LoyaltyLabels, className) => {
+  return [
     {
       key: '#estimatedRewardsVal#',
-      value: `<span class="${className} mpr-plcc-theme">${
-        LoyaltyLabels.rewardPointsValueFn
-      }</span>`,
+      value: LoyaltyLabels.rewardPointsValueFn
+        ? `<span class="${className} mpr-plcc-theme">${LoyaltyLabels.rewardPointsValueFn}</span>`
+        : false,
     },
     {
       key: '#br#',
@@ -82,6 +30,95 @@ const LoyaltyBannerSection = props => {
       value: `</span>`,
     },
   ];
+};
+
+const utilArrayNextReward = (pointsToNextReward, className) => {
+  return [
+    {
+      key: '#pointsToNextReward#',
+      value:
+        pointsToNextReward && pointsToNextReward > 0
+          ? `<span class="${className} mpr-plcc-theme">${pointsToNextReward}</span>`
+          : '',
+    },
+  ];
+};
+
+const returnBoolForSubTotal = (
+  estimatedSubtotal,
+  checkThresholdValue,
+  thresholdValue,
+  isPlcc,
+  isReviewPage,
+  isConfirmationPage,
+  isAddedToBagPage
+) => {
+  let showSubtotal = false;
+  /* istanbul ignore else */
+  if (
+    estimatedSubtotal &&
+    checkThresholdValue > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    !isAddedToBagPage
+  ) {
+    showSubtotal = true;
+  }
+  return showSubtotal;
+};
+
+const LoyaltyBannerSection = props => {
+  const {
+    className,
+    labels,
+    currentSubtotal,
+    estimatedSubtotal,
+    checkThresholdValue,
+    thresholdValue,
+    isGuest,
+    earnedReward,
+    isPlcc,
+    estimatedRewardsVal,
+    pointsToNextReward,
+    getCurrencySymbol,
+    pageCategory,
+    isProductDetailView,
+    openLoginModal,
+  } = props;
+  let showSubtotal = false;
+  let headingLabel = '';
+  let remainingPlcc = '';
+  let subHeadingLabel = '';
+  let descriptionLabel = '';
+  const earnedRewardAvailable = !!earnedReward;
+
+  const pageCategoryArr = getPageCategory(pageCategory);
+  const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
+
+  showSubtotal = returnBoolForSubTotal(
+    estimatedSubtotal,
+    checkThresholdValue,
+    thresholdValue,
+    isPlcc,
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage
+  );
+
+  const LoyaltyLabels = renderLoyaltyLabels(
+    labels,
+    estimatedRewardsVal,
+    earnedReward,
+    isGuest,
+    isPlcc,
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage,
+    isProductDetailView
+  );
+
+  const utilArrHeader = utilArrayHeader(LoyaltyLabels, className);
   const finalHeaderValue = labelsHashValuesReplace(LoyaltyLabels.headingLabelValFn, utilArrHeader);
   headingLabel = LoyaltyLabels.headingLabelValFn ? convertHtml(finalHeaderValue) : false;
 
@@ -108,12 +145,7 @@ const LoyaltyBannerSection = props => {
   );
   descriptionLabel = LoyaltyLabels.descriptionLabelFn ? convertHtml(finalDescriptionValue) : false;
 
-  const utilArrNextReward = [
-    {
-      key: '#pointsToNextReward#',
-      value: `<span class="${className} mpr-plcc-theme">${pointsToNextReward}</span>`,
-    },
-  ];
+  const utilArrNextReward = utilArrayNextReward(pointsToNextReward, className);
   const finalStrRemainingValue = labelsHashValuesReplace(
     LoyaltyLabels.remainingPlccValFn,
     utilArrNextReward
@@ -145,6 +177,7 @@ const LoyaltyBannerSection = props => {
               className={className}
               labels={labels}
               isPlcc={isPlcc}
+              openLoginModal={openLoginModal}
               isProductDetailView={isProductDetailView}
               isReviewPage={isReviewPage}
               isConfirmationPage={isConfirmationPage}
@@ -166,6 +199,7 @@ LoyaltyBannerSection.propTypes = {
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
   thresholdValue: PropTypes.number,
+  checkThresholdValue: PropTypes.number,
   isGuest: PropTypes.bool,
   earnedReward: PropTypes.number,
   isPlcc: PropTypes.bool,
@@ -173,6 +207,7 @@ LoyaltyBannerSection.propTypes = {
   getCurrencySymbol: PropTypes.string,
   isProductDetailView: PropTypes.bool,
   pageCategory: PropTypes.string,
+  openLoginModal: PropTypes.string,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -181,10 +216,12 @@ LoyaltyBannerSection.defaultProps = {
   currentSubtotal: 0,
   estimatedSubtotal: 0,
   thresholdValue: 0,
+  checkThresholdValue: 0,
   isGuest: false,
   earnedReward: 0,
   isPlcc: false,
   pageCategory: '',
+  openLoginModal: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
   isProductDetailView: '',

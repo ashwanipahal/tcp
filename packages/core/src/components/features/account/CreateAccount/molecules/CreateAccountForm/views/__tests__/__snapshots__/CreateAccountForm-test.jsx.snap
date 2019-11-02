@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-fjdhpX",
+        "componentId": "sc-cSHVUG",
         "isStatic": false,
         "rules": Array [
           "
@@ -19,6 +19,14 @@ exports[`CreateAccountForm should render correctly 1`] = `
           "
   .remember-me-text {
     display: block;
+  }
+  .already-account {
+    font-size: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
   }
   .i-agree-checkbox {
     padding-top: 10px;
@@ -77,7 +85,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
         "userplccCardNumber": [Function],
       },
       "render": [Function],
-      "styledComponentId": "sc-fjdhpX",
+      "styledComponentId": "sc-cSHVUG",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {

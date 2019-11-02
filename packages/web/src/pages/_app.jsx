@@ -15,6 +15,7 @@ import {
   getAPIConfig,
   isDevelopment,
   fetchStoreIdFromUrlPath,
+  isGymboree,
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
@@ -23,6 +24,7 @@ import { getUserInfo } from '@tcp/core/src/components/features/account/User/cont
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import logger from '@tcp/core/src/utils/loggerInstance';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -70,6 +72,13 @@ class TCPWebApp extends App {
     const { router, store } = this.props;
     const { em, logonPasswordOld } = (router && router.query) || {};
     if (em && logonPasswordOld) {
+      // eslint-disable-next-line no-unused-expressions
+      'standalone' in window.navigator &&
+        document.location.replace(
+          `${
+            isGymboree() ? 'gym' : 'tcp'
+          }://change-password/?logonPasswordOld=${logonPasswordOld}&em=${em}`
+        );
       store.dispatch(
         openOverlayModal({
           component: 'login',
@@ -91,14 +100,22 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
-    if (isErrorReportingBrowserActive) {
-      initErrorReporter({
-        isServer: false,
-        envId,
-        raygunApiKey,
-        channelId,
-        isDevelopment: isDevelopment(),
-      });
+
+    try {
+      if (isErrorReportingBrowserActive) {
+        // eslint-disable-next-line global-require
+        const rg4js = require('raygun4js');
+        initErrorReporter({
+          isServer: false,
+          envId,
+          raygunApiKey,
+          channelId,
+          isDevelopment: isDevelopment(),
+          rg4js,
+        });
+      }
+    } catch (e) {
+      logger.info('Error occurred in Raygun initialization', e);
     }
 
     /**
@@ -140,8 +157,10 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {} } = req;
       const apiConfig = createAPIConfig(locals);
-      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_HEADER_KEY];
-
+      // preview check from akamai header
+      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
+      // preview date if any from the query param
+      apiConfig.previewDate = query.preview_date;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);

@@ -1,8 +1,11 @@
+/* eslint-disable max-lines */
+/* TODO to refactor later as per discussion */
 import React from 'react';
 import { View } from 'react-native';
 import { DamImage } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
+import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   ImgWrapper,
@@ -15,6 +18,8 @@ import {
   IconTextMoveToBag,
   IconHeight,
   IconWidth,
+  ToggleError,
+  ImageTouchableOpacity,
 } from '../styles/CartItemTile.style.native';
 import Image from '../../../../../../common/atoms/Image';
 import { getLocator } from '../../../../../../../utils';
@@ -30,7 +35,28 @@ const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 const heart = require('../../../../../../../assets/heart.png');
 
-const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
+/**
+ *
+ * @method goToPdpPage
+ * @description navigate to pdp from bag
+ * @param {*} title - header
+ * @param {*} productDetail - details of product for pdp
+ * @param {*} navigation - navigation
+ */
+const goToPdpPage = (title, productDetail, navigation) => {
+  const {
+    productInfo: { pdpUrl, productPartNumber },
+  } = productDetail;
+  const pdpAsPathUrl = pdpUrl.split('/p/')[1];
+  navigation.navigate('ProductDetail', {
+    title,
+    pdpUrl: pdpAsPathUrl,
+    selectedColorProductId: productPartNumber,
+    reset: true,
+  });
+};
+
+const CartItemImageWrapper = (productDetail, labels, showOnReviewPage, navigation) => {
   return (
     <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
@@ -39,17 +65,23 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage) => {
           source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
           showOnReviewPage={showOnReviewPage}
         /> */}
-        <DamImage
-          width={100}
-          height={100}
-          isProductImage
-          alt={labels.productImageAlt}
-          url={productDetail.itemInfo.imagePath}
-          showOnReviewPage={showOnReviewPage}
-          itemBrand={
-            productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
-          }
-        />
+        <ImageTouchableOpacity
+          onPress={() => {
+            goToPdpPage('', productDetail, navigation);
+          }}
+        >
+          <DamImage
+            width={100}
+            height={100}
+            isProductImage
+            alt={labels.productImageAlt}
+            url={productDetail.itemInfo.imagePath}
+            showOnReviewPage={showOnReviewPage}
+            itemBrand={
+              productDetail.itemInfo.itemBrand && productDetail.itemInfo.itemBrand.toLowerCase()
+            }
+          />
+        </ImageTouchableOpacity>
         {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT && (
           <SoldOutLabel>
             <BodyCopy
@@ -134,7 +166,7 @@ const heartIcon = isBagPageSflSection => {
   );
 };
 
-const getProductName = (productDetail, showOnReviewPage) => {
+const getProductName = (productDetail, showOnReviewPage, navigation) => {
   return (
     <ProductName showOnReviewPage={showOnReviewPage}>
       <BodyCopy
@@ -143,6 +175,9 @@ const getProductName = (productDetail, showOnReviewPage) => {
         dataLocator={getLocator('cart_item_title')}
         fontWeight={['semibold']}
         text={productDetail.itemInfo.name}
+        onPress={() => {
+          goToPdpPage('', productDetail, navigation);
+        }}
       />
     </ProductName>
   );
@@ -158,6 +193,7 @@ const handleMoveItemtoSaveList = props => {
     addItemToSflList,
     setCartItemsSflError,
     labels,
+    clearToggleError,
   } = props;
   const {
     itemInfo: { itemId, isGiftItem },
@@ -166,6 +202,7 @@ const handleMoveItemtoSaveList = props => {
   const catEntryId = isGiftItem ? generalProductId : skuId;
   const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense;
 
+  clearToggleError();
   if (sflItemsCount >= sflMaxCount) {
     return setCartItemsSflError(labels.sflMaxLimitError);
   }
@@ -186,7 +223,7 @@ const removeSflItem = props => {
 };
 
 const moveToBagSflItem = props => {
-  const { productDetail, startSflDataMoveToBag } = props;
+  const { productDetail, startSflDataMoveToBag, clearToggleError } = props;
   const {
     itemInfo: { itemId, isGiftItem },
     productInfo: { skuId, generalProductId },
@@ -194,11 +231,12 @@ const moveToBagSflItem = props => {
   const catEntryId = isGiftItem ? generalProductId : skuId;
 
   const payloadData = { itemId, catEntryId };
+  clearToggleError();
   return startSflDataMoveToBag({ ...payloadData });
 };
 
 const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = false, props) => {
-  const { onPickUpOpenClick, productDetail, orderId } = props;
+  const { onPickUpOpenClick, productDetail, orderId, clearToggleError } = props;
   const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
   const { store, orderItemType } = productDetail.miscInfo;
   const { productPartNumber } = productDetail.productInfo;
@@ -206,6 +244,7 @@ const handleEditCartItemWithStore = (changeStoreType, openSkuSelectionForm = fal
   const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
   const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
   const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+  clearToggleError();
   onPickUpOpenClick({
     colorProductId: productPartNumber,
     orderInfo: {
@@ -246,6 +285,7 @@ const getCartRadioButtons = ({
   isBopisEnabled,
   orderId,
   onPickUpOpenClick,
+  setShipToHome,
 }) => {
   if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
@@ -269,6 +309,7 @@ const getCartRadioButtons = ({
         openPickUpModal={handleEditCartItemWithStore}
         onPickUpOpenClick={onPickUpOpenClick}
         orderId={orderId}
+        setShipToHome={setShipToHome}
       />
     );
   }
@@ -295,6 +336,7 @@ getCartRadioButtons.propTypes = {
   isBopisEnabled: PropTypes.bool.isRequired,
   orderId: PropTypes.string.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
+  setShipToHome: PropTypes.func.isRequired,
 };
 
 /**
@@ -412,6 +454,35 @@ renderImage.defaultProps = {
   iconText: '',
 };
 
+/**
+ * @function renderTogglingError Render Toggling error
+ * @returns {JSX} Error Component with toggling api error.
+ * @memberof CartItemTile
+ */
+const renderTogglingError = props => {
+  const {
+    toggleError,
+    productDetail: {
+      itemInfo: { itemId },
+    },
+  } = props;
+  return toggleError && itemId === toggleError.itemId ? (
+    <ToggleError>
+      <ErrorMessage
+        fontSize="fs12"
+        fontWeight="extrabold"
+        error={toggleError.errorMessage}
+        showAccordian
+      />
+    </ToggleError>
+  ) : null;
+};
+
+renderTogglingError.propTypes = {
+  toggleError: PropTypes.shape({}).isRequired,
+  productDetail: PropTypes.shape({}).isRequired,
+};
+
 export default {
   CartItemImageWrapper,
   heartIcon,
@@ -427,4 +498,6 @@ export default {
   handleEditCartItemWithStore,
   onSwipeComplete,
   renderImage,
+  renderTogglingError,
+  goToPdpPage,
 };

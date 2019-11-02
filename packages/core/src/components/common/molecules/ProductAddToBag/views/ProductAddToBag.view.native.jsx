@@ -4,13 +4,26 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductVariantSelector from '../../ProductVariantSelector';
 import withStyles from '../../../hoc/withStyles';
-import styles, { RowViewContainer } from '../styles/ProductAddToBag.style.native';
+import styles, {
+  RowViewContainer,
+  SizeViewContainer,
+  UnavailableLink,
+} from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
 import ErrorDisplay from '../../../atoms/ErrorDisplay';
+import SizeChart from '../molecules/SizeChart/container';
+import AlternateSizes from '../molecules/AlternateSizes';
+import FulfillmentSection from '../../../organisms/FulfillmentSection';
+
+export const SIZE_CHART_LINK_POSITIONS = {
+  AFTER_SIZE: 2,
+  AFTER_QUANTITY: 3,
+};
 
 class ProductAddToBag extends React.PureComponent<Props> {
   /* Have to define empty constructor because test case fail with error 'TypeError: Cannot read property 'find' of undefined'. So if using PureComponent then mendatory to define constructor */
@@ -61,6 +74,39 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   };
 
+  renderAlternateSizes = alternateSizes => {
+    const { className, navigation } = this.props;
+    const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
+    return (
+      visibleAlternateSizes && (
+        <AlternateSizes
+          title="Other Sizes Available:"
+          buttonsList={alternateSizes}
+          className={className}
+          navigation={navigation}
+        />
+      )
+    );
+  };
+
+  renderUnavailableLink = () => {
+    const { currentProduct, plpLabels } = this.props;
+    const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
+    return (
+      <UnavailableLink>
+        <BodyCopyWithSpacing
+          mobilefontFamily={['secondary']}
+          fontWeight="semibold"
+          fontSize="fs12"
+          color="black"
+          text={sizeUnavailable}
+          spacingStyles="padding-right-XS"
+        />
+        <FulfillmentSection currentProduct={currentProduct} isAnchor buttonLabel="Find In Store" />
+      </UnavailableLink>
+    );
+  };
+
   onQuantityValueChange = selectedQuantity => {
     const { onQuantityChange, form } = this.props;
     if (onQuantityChange) {
@@ -88,6 +134,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
       showAddToBagCTA,
       showColorChips,
       isGiftCard,
+      isDisableZeroInventoryEntries,
+      sizeChartLinkVisibility,
+      alternateSizes,
+      isPickup,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
@@ -136,20 +186,26 @@ class ProductAddToBag extends React.PureComponent<Props> {
           itemNameKey="displayName"
           locators={{ key: 'pdp_fit_label', value: 'pdp_fit_value' }}
         />
-        <Field
-          id="size"
-          name="Size"
-          component={ProductVariantSelector}
-          title={colorFitSizeDisplayNames.size}
-          itemValue={sizeName}
-          renderItem={this.renderSize}
-          data={sizeList}
-          selectedItem={sizeName}
-          selectItem={selectSize}
-          itemNameKey="displayName"
-          error={sizeError}
-          locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
-        />
+        <SizeViewContainer>
+          {sizeChartLinkVisibility === SIZE_CHART_LINK_POSITIONS.AFTER_SIZE && <SizeChart />}
+          <Field
+            id="size"
+            name="Size"
+            component={ProductVariantSelector}
+            title={colorFitSizeDisplayNames.size}
+            itemValue={sizeName}
+            renderItem={this.renderSize}
+            data={sizeList}
+            selectedItem={sizeName}
+            selectItem={selectSize}
+            itemNameKey="displayName"
+            error={sizeError}
+            locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
+            isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+          />
+        </SizeViewContainer>
+        {!isPickup && this.renderAlternateSizes(alternateSizes)}
+        {!isPickup && this.renderUnavailableLink()}
         <RowViewContainer style={quantityDropDownStyle}>
           <BodyCopy
             fontWeight="black"
@@ -166,6 +222,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onValueChange={this.onQuantityValueChange}
             heading={qunatityText}
             name="Quantity"
+            textAlignLeft
+            lightGrayColor
           />
         </RowViewContainer>
 

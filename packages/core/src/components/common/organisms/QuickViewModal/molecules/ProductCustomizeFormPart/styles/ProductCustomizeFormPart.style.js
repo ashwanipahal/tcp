@@ -3,6 +3,9 @@ import { css } from 'styled-components';
 const styles = css`
   flex-direction: column;
   display: flex;
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    padding: 0 8px;
+  }
   .product-customize-form-container {
     padding-right: ${props =>
       props.isMultiItemQVModal ? props.theme.spacing.ELEM_SPACING.XXL : 0};
@@ -39,6 +42,7 @@ const styles = css`
   .image-title-wrapper {
     display: flex;
     flex-direction: row;
+    z-index: 1;
   }
   .price-container {
     display: inline-flex;

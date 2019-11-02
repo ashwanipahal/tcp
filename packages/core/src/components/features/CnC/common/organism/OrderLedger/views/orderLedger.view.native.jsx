@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { isCanada } from '@tcp/core/src/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LineComp from '../../../../../../common/atoms/Line';
 import ImageComp from '../../../../../../common/atoms/Image';
@@ -16,8 +15,8 @@ import {
 } from '../styles/orderLedger.style.native';
 import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
-
 import LoyaltyBanner from '../../../../LoyaltyBanner';
+import FreeShippingBanner from '../../../../FreeShippingBanner';
 
 const popover = message => {
   return (
@@ -31,12 +30,12 @@ const popover = message => {
   );
 };
 
+const renderFreeShippingBanner = pageCategory => {
+  return pageCategory === 'bagPage' && <FreeShippingBanner />;
+};
+
 const getLoyaltybanner = (isConfirmationPage, pageCategory) => {
-  return (
-    !isCanada() && (
-      <LoyaltyBanner isConfirmationPage={isConfirmationPage} pageCategory={pageCategory} />
-    )
-  );
+  return <LoyaltyBanner isConfirmationPage={isConfirmationPage} pageCategory={pageCategory} />;
 };
 
 export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, labels) => {
@@ -313,6 +312,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) =>
           </Text>
         </StyledRowDataContainer>
       ) : null}
+      {renderFreeShippingBanner(pageCategory)}
       {getLoyaltybanner(isConfirmationPage, pageCategory)}
     </StyledOrderLedger>
   );

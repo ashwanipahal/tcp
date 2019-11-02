@@ -51,6 +51,12 @@ const style = css`
       display: inline-flex;
     }
   }
+
+  .header-middle-login-section .headerSearchBox {
+    position: relative;
+    height: 40px;
+  }
+
   .account-info-section {
     cursor: pointer;
     display: inline-block;
@@ -77,7 +83,7 @@ const style = css`
     }
   }
   .user-name {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
     text-align: left;
     &:hover {
       color: ${props => props.theme.colorPalette.blue[500]};
@@ -99,8 +105,9 @@ const style = css`
     }
   }
   .product-image {
-    padding-left: 12px;
-    vertical-align: baseline;
+    height: 25px;
+    width: 23px;
+    vertical-align: middle;
   }
   #login {
     padding-right: 12px;
@@ -116,6 +123,9 @@ const style = css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
+  .header-middle-login-section a {
+    position: relative;
+  }
   .cartCount {
     background: ${props =>
       props.theme.isGymboree
@@ -123,8 +133,11 @@ const style = css`
         : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
-    margin: 1px 0px 0px -7px;
     padding: 2px 5px;
+    vertical-align: bottom;
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
   }
   @media ${props => props.theme.mediaQuery.mediumMax} {
     padding: 16px 0;

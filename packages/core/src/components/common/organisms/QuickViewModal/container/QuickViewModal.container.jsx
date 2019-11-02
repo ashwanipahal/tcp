@@ -14,6 +14,7 @@ import {
   getQuickViewLabels,
   getQuickViewFormValues,
   getProductInfoFromBag,
+  getLoadingState,
 } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
@@ -75,22 +76,17 @@ class QuickViewModalContainer extends React.PureComponent {
       currencyAttributes,
       ...otherProps
     } = this.props;
-    const showModal = productInfo && productInfo.length;
     return (
-      <React.Fragment>
-        {showModal ? (
-          <QuickViewModal
-            isModalOpen={isModalOpen}
-            closeQuickViewModal={closeQuickViewModalAction}
-            productInfo={productInfo}
-            plpLabels={plpLabels}
-            handleAddToBag={this.handleAddToBag}
-            handleUpdateItem={this.handleUpdateItem}
-            currencyExchange={currencyAttributes.exchangevalue}
-            {...otherProps}
-          />
-        ) : null}
-      </React.Fragment>
+      <QuickViewModal
+        isModalOpen={isModalOpen}
+        closeQuickViewModal={closeQuickViewModalAction}
+        productInfo={productInfo}
+        plpLabels={plpLabels}
+        handleAddToBag={this.handleAddToBag}
+        handleUpdateItem={this.handleUpdateItem}
+        currencyExchange={currencyAttributes.exchangevalue}
+        {...otherProps}
+      />
     );
   }
 }
@@ -101,6 +97,7 @@ function mapStateToProps(state) {
 
   return {
     isModalOpen: getModalState(state),
+    isLoading: getLoadingState(state),
     productInfo,
     isMultiItemQVModal,
     plpLabels: getPlpLabels(state),

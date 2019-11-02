@@ -128,6 +128,17 @@ export const getAlwaysSearchForBOSS = state => {
   );
 };
 
+export const openRestrictedModalForBopis = state => {
+  return (
+    state[PICKUP_MODAL_REDUCER_KEY] &&
+    state[PICKUP_MODAL_REDUCER_KEY].get('openRestrictedModalForBopis')
+  );
+};
+
+export const isStoreSearching = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isSearching');
+};
+
 export const getInitialValuesFromBagPage = state => {
   const pickUpModalReducer =
     state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');

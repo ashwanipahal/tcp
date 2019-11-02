@@ -105,6 +105,7 @@ describe('Coupon saga', () => {
     });
 
     it('should dispatch setCouponList on success', () => {
+      gen.next();
       const putDescriptor = gen.next({}).value;
       expect(putDescriptor).toEqual(put(setCouponList({})));
     });

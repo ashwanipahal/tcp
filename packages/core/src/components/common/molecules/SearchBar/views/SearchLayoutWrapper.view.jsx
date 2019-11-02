@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
@@ -10,7 +11,6 @@ import SearchBarStyle from '../SearchBar.style';
 import CancelSearch from './CancelSearch.view';
 import SuggestionBox from './SuggestionBox.view';
 import LookingForProductDetail from './LookingForProductDetail.view';
-import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
 
 /**
  * This component produces a Search Bar component for Header
@@ -63,23 +63,32 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   };
 
+  changeCaseFirstLetter = params => {
+    if (typeof params === 'string') {
+      return params.charAt(0).toUpperCase() + params.slice(1);
+    }
+    return null;
+  };
+
   highlight = inputTextParam => {
     const text = this.searchInput.current.value;
     let { inputText } = inputTextParam;
     inputText = inputText.toLowerCase();
     const index = inputText.indexOf(text.toLowerCase());
-    if (index >= 0) {
+    inputText = this.changeCaseFirstLetter(inputText);
+    if (index >= 0 && inputText) {
       return (
         <div className="lookingFor-textWrapper-div">
-          {`${inputText.substring(0, index).toUpperCase()}`}
+          {`${inputText.substring(0, index)}`}
           <span className="highlight-search-result">
-            {`${inputText.substring(index, index + text.length).toUpperCase()}`}
+            {`${inputText.substring(index, index + text.length)}`}
           </span>
-          {`${inputText.substring(index + text.length).toUpperCase()}`}
+          {`${inputText.substring(index + text.length)}`}
         </div>
       );
     }
-    return null;
+
+    return <div className="lookingFor-textWrapper-div">{`${inputText}`}</div>;
   };
 
   isLookingForExist = searchResults => {
@@ -145,20 +154,34 @@ class SearchLayoutWrapper extends React.PureComponent {
       .getElementById(`${CLOSE_IMAGE}`)
       .classList.contains(`${CLOSE_IMAGE_MOBILE}`);
 
-    if (searchText.length >= RECENT_SEARCH_CONSTANTS.MIN_SEARCH_CHARS) {
+    const termLength = 1;
+    if (searchText.length <= termLength) {
+      const payload = {
+        searchText: '',
+        slpLabels: labels,
+      };
+      startSearch(payload);
+    } else {
       const payload = {
         searchText,
         slpLabels: labels,
       };
       startSearch(payload);
-    }
 
-    if (searchText.length >= 1 && !searchImage) {
-      document.getElementById(`${CLOSE_IMAGE}`).classList.add(`${CLOSE_IMAGE_MOBILE}`);
-    } else if (searchText.length < 1 && searchImage) {
-      document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
+      if (searchText.length >= 1 && !searchImage) {
+        document.getElementById(`${CLOSE_IMAGE}`).classList.add(`${CLOSE_IMAGE_MOBILE}`);
+      } else if (searchText.length < 1 && searchImage) {
+        document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
+      }
     }
   };
+
+  handleClickOutside() {
+    const { setSearchState, isSearchOpen } = this.props;
+    if (isSearchOpen && window.innerWidth > breakpoints.values.lg) {
+      setSearchState(false);
+    }
+  }
 
   render() {
     const {
@@ -169,9 +192,9 @@ class SearchLayoutWrapper extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
       searchResults,
       redirectToSuggestedUrl,
+      closeSearchLayover,
     } = this.props;
 
     const LookingForLabel = () => {
@@ -211,6 +234,8 @@ class SearchLayoutWrapper extends React.PureComponent {
                 ref={this.searchInput}
                 onChange={this.changeSearchText}
                 className="search-input"
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
                 maxLength="50"
                 autoComplete="off"
               />
@@ -237,10 +262,10 @@ class SearchLayoutWrapper extends React.PureComponent {
                 isLatestSearchResultsExists={isLatestSearchResultsExists}
                 latestSearchResults={latestSearchResults}
                 labels={labels}
-                hideOverlayAfterClick={hideOverlayAfterClick}
+                redirectToSuggestedUrl={redirectToSuggestedUrl}
               />
             ) : (
-              <div className="matchBox">
+              <div className="matchBox" id="matchBox-wrapper">
                 <div className="matchLinkBox">
                   <LookingForLabel searchResults={searchResults} />
                   {searchResults &&
@@ -263,9 +288,13 @@ class SearchLayoutWrapper extends React.PureComponent {
                                     <Anchor
                                       noLink
                                       className="suggestion-label"
-                                      onClick={() => redirectToSuggestedUrl(`${itemData.text}`)}
+                                      to={`/search/${itemData.text}`}
+                                      onClick={e => {
+                                        e.preventDefault();
+                                        redirectToSuggestedUrl(`${itemData.text}`);
+                                      }}
                                     >
-                                      {itemData && itemData.text && (
+                                      {itemData.text && (
                                         <HighLightSearch inputText={`${itemData.text}`} />
                                       )}
                                     </Anchor>
@@ -277,10 +306,18 @@ class SearchLayoutWrapper extends React.PureComponent {
                       );
                     })}
                 </div>
-                <div className="matchProductBox">
-                  <LookingForProductLabel searchResults={searchResults} />
-                  <LookingForProductDetail searchResults={searchResults} />
-                </div>
+
+                {searchResults &&
+                  searchResults.autosuggestProducts &&
+                  searchResults.autosuggestProducts.length > 0 && (
+                    <div className="matchProductBox">
+                      <LookingForProductLabel searchResults={searchResults} />
+                      <LookingForProductDetail
+                        searchResults={searchResults}
+                        closeSearchLayover={closeSearchLayover}
+                      />
+                    </div>
+                  )}
               </div>
             )}
           </div>
@@ -293,8 +330,8 @@ class SearchLayoutWrapper extends React.PureComponent {
 SearchLayoutWrapper.propTypes = {
   className: PropTypes.string.isRequired,
   closeSearchBar: PropTypes.func.isRequired,
+  closeSearchLayover: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,
@@ -337,4 +374,4 @@ SearchLayoutWrapper.defaultProps = {
   latestSearchResults: [],
 };
 
-export default connect()(withStyles(SearchLayoutWrapper, SearchBarStyle));
+export default connect()(withStyles(enhanceWithClickOutside(SearchLayoutWrapper), SearchBarStyle));

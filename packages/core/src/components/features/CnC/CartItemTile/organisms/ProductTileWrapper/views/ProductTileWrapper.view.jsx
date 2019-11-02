@@ -158,6 +158,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isCartItemSFL,
       isSflItemRemoved,
       setHeaderErrorState,
+      navigation,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -195,6 +196,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
               swipedElement={swipedElement}
               sflItemsCount={sflItemsCount}
               isBagPageSflSection={isBagPageSflSection}
+              navigation={navigation}
             />
           </>
         );
@@ -202,6 +204,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       return (
         <>
           {!isMobileApp() &&
+            setHeaderErrorState &&
             setHeaderErrorState(true, {
               labels,
               orderItems,
@@ -223,6 +226,21 @@ class ProductTileWrapper extends React.PureComponent<props> {
     }
     return (
       <>
+        {!isMobileApp() &&
+          setHeaderErrorState &&
+          setHeaderErrorState(true, {
+            labels,
+            orderItems,
+            pageView,
+            isUnavailable,
+            isSoldOut,
+            getUnavailableOOSItems,
+            confirmRemoveCartItem,
+            isBagPageSflSection,
+            isCartItemSFL,
+            isCartItemsUpdating,
+            isSflItemRemoved,
+          })}
         {this.renderItemSflSuccessMsg(isBagPage, isCartItemSFL, labels.sflSuccess)}
         {this.renderSflItemRemovedMessage(isSflItemRemoved, labels.sflDeleteSuccess)}
         {this.renderEmptyBag(

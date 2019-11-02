@@ -5,6 +5,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -85,6 +86,7 @@ class Header extends React.PureComponent {
       userPoints,
       userRewards,
       openOverlay,
+      isOpenOverlay,
       openTrackOrderOverlay,
       isLoggedIn,
       cartItemCount,
@@ -121,6 +123,7 @@ class Header extends React.PureComponent {
           userPoints={userPoints}
           userRewards={userRewards}
           openOverlay={openOverlay}
+          isOpenOverlay={isOpenOverlay}
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
           totalItems={totalItems}
@@ -156,6 +159,7 @@ class Header extends React.PureComponent {
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
+        <SpinnerOverlay />
       </header>
     );
   }
@@ -174,6 +178,7 @@ Header.propTypes = {
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,

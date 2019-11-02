@@ -635,6 +635,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -668,6 +671,9 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -1380,6 +1386,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -1413,6 +1422,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -2867,6 +2879,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -2900,6 +2915,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -4477,6 +4495,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -4510,6 +4531,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";
@@ -5221,6 +5245,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                  [Function],
+                  "
   }
 
   & .CheckBox__text a {
@@ -5254,6 +5281,9 @@ exports[`ConfirmationAccountForm component should render component correctly wit
                   ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                   ";

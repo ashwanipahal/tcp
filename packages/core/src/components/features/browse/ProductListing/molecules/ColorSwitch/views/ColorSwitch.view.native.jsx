@@ -28,13 +28,7 @@ const onSelectHandler = (selectedId, index, setSelectedColorId, setSelectedColor
  * @desc This method paint color image with border
  */
 const getImageIcon = imageUrl => {
-  return (
-    <ImageStyle
-      source={{
-        uri: imageUrl,
-      }}
-    />
-  );
+  return <ImageStyle url={imageUrl} swatchConfig="w_50,h_50,c_thumb,g_auto:0" isProductImage />;
 };
 
 /**
@@ -54,13 +48,14 @@ const RenderSeparator = () => {
  */
 const RenderColorItem = (itemObj, selectedColorId, setSelectedColorId, setSelectedColorIndex) => {
   const { item, index } = itemObj;
-  const { color } = item;
-  const imageUrl = color.imagePath;
+  const { color, colorProductId } = item;
   const colorName = get(color, 'name', '').toLowerCase();
-  const { colorProductId } = item;
   const selected =
     (selectedColorId === 'none' && index === 0) || selectedColorId === colorProductId;
   const accState = selected ? 'selected' : '';
+  const splitUrl = colorProductId.split('_')[0];
+  const imageUrl = `${splitUrl}/${colorProductId}`;
+
   return (
     <ImageTouchableOpacity
       // eslint-disable-next-line

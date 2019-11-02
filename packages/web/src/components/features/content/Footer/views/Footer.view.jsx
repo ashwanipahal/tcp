@@ -114,6 +114,7 @@ class Footer extends React.Component {
       isLoggedIn,
       linkConfig,
       footerActionCreator,
+      isNavigationFooter,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -121,9 +122,9 @@ class Footer extends React.Component {
       <footer className={className}>
         <Row className="footer-candidate-wrapper" fullBleed>
           {showFooterTopCandidateB ? (
-            <FooterTopCandidateB {...props} />
+            <FooterTopCandidateB isNavigationFooter={isNavigationFooter} {...props} />
           ) : (
-            <FooterTopCandidateA {...props} />
+            <FooterTopCandidateA isNavigationFooter={isNavigationFooter} {...props} />
           )}
           <EmailSignupModal buttonConfig={emailSignup} />
           <SmsSignupModal buttonConfig={smsSignup} />
@@ -228,10 +229,12 @@ Footer.propTypes = {
     'track-order': PropTypes.func,
     favorites: PropTypes.func,
     'log-out': PropTypes.func,
-    'my-account': PropTypes.func,
+    'login-account': PropTypes.func,
+    'create-account': PropTypes.func,
   }).isRequired,
   footerActionCreator: PropTypes.func.isRequired,
   pageName: PropTypes.string,
+  isNavigationFooter: PropTypes.bool,
 };
 
 Footer.defaultProps = {
@@ -243,6 +246,7 @@ Footer.defaultProps = {
   openSmsSignUpModal: () => {},
   isLoggedIn: false,
   pageName: '',
+  isNavigationFooter: false,
 };
 
 export default withStyles(errorBoundary(Footer), style);

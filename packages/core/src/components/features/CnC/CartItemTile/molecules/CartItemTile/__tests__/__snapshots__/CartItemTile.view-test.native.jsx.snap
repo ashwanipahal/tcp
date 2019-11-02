@@ -1,5 +1,420 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
+<Swipeable
+  leftActionActivationDistance={125}
+  leftActionReleaseAnimationConfig={null}
+  leftActionReleaseAnimationFn={null}
+  leftButtonWidth={75}
+  leftButtons={null}
+  leftButtonsActivationDistance={75}
+  leftButtonsCloseReleaseAnimationConfig={null}
+  leftButtonsCloseReleaseAnimationFn={null}
+  leftButtonsOpenReleaseAnimationConfig={null}
+  leftButtonsOpenReleaseAnimationFn={null}
+  leftContent={null}
+  onLeftActionActivate={[Function]}
+  onLeftActionComplete={[Function]}
+  onLeftActionDeactivate={[Function]}
+  onLeftActionRelease={[Function]}
+  onLeftButtonsActivate={[Function]}
+  onLeftButtonsCloseComplete={[Function]}
+  onLeftButtonsCloseRelease={[Function]}
+  onLeftButtonsDeactivate={[Function]}
+  onLeftButtonsOpenComplete={[Function]}
+  onLeftButtonsOpenRelease={[Function]}
+  onPanAnimatedValueRef={[Function]}
+  onRef={[Function]}
+  onRightActionActivate={[Function]}
+  onRightActionComplete={[Function]}
+  onRightActionDeactivate={[Function]}
+  onRightActionRelease={[Function]}
+  onRightButtonsActivate={[Function]}
+  onRightButtonsCloseComplete={[Function]}
+  onRightButtonsCloseRelease={[Function]}
+  onRightButtonsDeactivate={[Function]}
+  onRightButtonsOpenComplete={[Function]}
+  onRightButtonsOpenRelease={[Function]}
+  onSwipeComplete={[Function]}
+  onSwipeMove={[Function]}
+  onSwipeRelease={[Function]}
+  onSwipeStart={[Function]}
+  rightActionActivationDistance={125}
+  rightActionReleaseAnimationConfig={null}
+  rightActionReleaseAnimationFn={null}
+  rightButtonWidth={240}
+  rightButtons={
+    Array [
+      <ForwardRef>
+        <TouchableOpacity
+          accessibilityRole="link"
+          activeOpacity={0.2}
+          onPress={[Function]}
+        >
+          <ForwardRef
+            alt=""
+            data-locator="cartItemEditLink"
+            height="58px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/edit-icon.png",
+              }
+            }
+            url=""
+            width="58px"
+          />
+          <ForwardRef />
+        </TouchableOpacity>
+        <ForwardRef
+          onPress={[Function]}
+        >
+          <ForwardRef
+            alt=""
+            data-locator="cartItemEditLink"
+            height="58px"
+            host=""
+            source={
+              Object {
+                "testUri": "../../../../core/src/assets/delete.png",
+              }
+            }
+            url=""
+            width="58px"
+          />
+          <ForwardRef />
+        </ForwardRef>
+      </ForwardRef>,
+    ]
+  }
+  rightButtonsActivationDistance={75}
+  rightButtonsCloseReleaseAnimationConfig={null}
+  rightButtonsCloseReleaseAnimationFn={null}
+  rightButtonsOpenReleaseAnimationConfig={null}
+  rightButtonsOpenReleaseAnimationFn={null}
+  rightContent={null}
+  swipeReleaseAnimationConfig={
+    Object {
+      "duration": 250,
+      "easing": [Function],
+      "toValue": Object {
+        "x": 0,
+        "y": 0,
+      },
+    }
+  }
+  swipeReleaseAnimationFn={[Function]}
+  swipeStartMinDistance={15}
+>
+  <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
+    <Styled(View) />
+    <Styled(View)
+      showOnReviewPage={true}
+    >
+      <Styled(View)
+        showOnReviewPage={true}
+      >
+        <View>
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
+        </View>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)
+          showOnReviewPage={true}
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            dataLocator="cartItemTitle"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            margin={null}
+            numberOfLines={null}
+            onPress={[Function]}
+            text="Boys Basic Skinny Jeans"
+            textDecoration={null}
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Design: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator="cartItemColor"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="undefined:"
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator="cartItemSize"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="1 "
+              textDecoration={null}
+            />
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator=""
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="regular"
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)
+              showOnReviewPage={true}
+            >
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Qty:"
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="gray.800"
+              dataLocator=""
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text="1"
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="Price: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              dataLocator="cartItemPrice"
+              fontSize="fs13"
+              fontWeight={
+                Array [
+                  "semibold",
+                ]
+              }
+              margin={null}
+              numberOfLines={null}
+              text="undefinedNaN"
+              textAlign="left"
+              textDecoration={null}
+            />
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText=""
+                dataLocator=""
+                fontSize="fs13"
+                fontWeight={
+                  Array [
+                    "semibold",
+                  ]
+                }
+                margin={null}
+                numberOfLines={null}
+                text="undefined: "
+                textAlign="left"
+                textDecoration={null}
+              />
+            </Styled(View)>
+            <Styled(BodyCopy)
+              accessibilityText=""
+              color="orange.800"
+              dataLocator="cartItemPoints"
+              fontFamily="secondary"
+              fontSize="fs13"
+              margin={null}
+              numberOfLines={null}
+              text={123}
+              textDecoration={null}
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator="cartItemEditLink"
+        fontFamily="secondary"
+        fontSize="fs12"
+        margin={null}
+        numberOfLines={null}
+        textDecoration={null}
+        textDecorationLine="underline"
+      />
+    </Styled(TouchableOpacity)>
+    <CartItemRadioButtons
+      bopisDisabled={true}
+      bossDisabled={false}
+      index={0}
+      isBOPISOrder={false}
+      isBOSSOrder={true}
+      isBopisEnabled={true}
+      isBossEnabled={true}
+      isECOMOrder={false}
+      isEcomSoldout={false}
+      labels={
+        Object {
+          "bopisUnavailable": "bopisUnavailable",
+          "color": "Color",
+          "design": "Design",
+          "price": "Price",
+          "qty": "Qty",
+          "sizeL": "Size",
+        }
+      }
+      noBopisMessage={null}
+      noBossMessage={null}
+      onPickUpOpenClick={[MockFunction]}
+      openPickUpModal={[Function]}
+      openedTile={0}
+      orderId={123}
+      productDetail={
+        Object {
+          "itemInfo": Object {
+            "fit": "regular",
+            "isGiftItem": true,
+            "itemBrand": "TCP",
+            "itemUnitPrice": 12.345,
+            "myPlacePoints": 123,
+            "name": "Boys Basic Skinny Jeans",
+            "price": 123,
+            "qty": "1",
+            "size": "1",
+          },
+          "miscInfo": Object {
+            "availability": "OK",
+            "badge": "",
+            "clearanceItem": false,
+            "isBopisEligible": true,
+            "isBossEligible": true,
+            "isInventoryAvailBOSS": true,
+            "isOnlineOnly": false,
+            "isStoreBOSSEligible": true,
+            "orderItemType": "BOSS",
+          },
+          "productInfo": Object {
+            "pdpUrl": "",
+            "productPartNumber": "IV_24",
+            "upc": "upc",
+          },
+        }
+      }
+      setShipToHome={[Function]}
+    />
+  </Styled(View)>
+</Swipeable>
+`;
+
 exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS Item correctly for clearance item with kill switch 1`] = `
 <Swipeable
   leftActionActivationDistance={125}
@@ -88,6 +503,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
 >
   <Styled(View)>
     <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
+    <Styled(View)>
       <ItemAvailability
         chooseDiff="bopisUnavailable"
         errorMsg=""
@@ -100,19 +524,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -131,6 +560,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -388,10 +818,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "orderItemType": "BOPIS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -485,6 +917,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
 >
   <Styled(View)>
     <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
+    <Styled(View)>
       <ItemAvailability
         chooseDiff="bopisUnavailable"
         errorMsg=""
@@ -497,19 +938,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -528,6 +974,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -754,10 +1201,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "orderItemType": "BOPIS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -870,6 +1319,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -878,19 +1336,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -909,6 +1372,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -1151,10 +1615,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -1247,6 +1713,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -1255,19 +1730,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -1286,6 +1766,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -1512,10 +1993,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -1608,6 +2091,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -1616,19 +2108,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -1647,6 +2144,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -1874,10 +2372,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -1970,6 +2470,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -1978,19 +2487,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -2009,6 +2523,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -2236,10 +2751,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -2332,6 +2849,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -2340,19 +2866,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
           <Styled(View)>
             <Styled(BodyCopy)
               accessibilityText=""
@@ -2384,6 +2915,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -2651,6 +3183,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -2659,19 +3200,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -2690,6 +3236,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -2917,10 +3464,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -3013,6 +3562,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -3021,19 +3579,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
           <Styled(View)>
             <Styled(BodyCopy)
               accessibilityText=""
@@ -3065,6 +3628,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -3332,6 +3896,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -3340,19 +3913,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -3371,6 +3949,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -3598,10 +4177,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -3694,6 +4275,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -3702,19 +4292,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -3733,6 +4328,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -3960,10 +4556,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -4076,6 +4674,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -4084,19 +4691,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -4115,6 +4727,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -4357,10 +4970,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             "orderItemType": "BOSS",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -4473,6 +5088,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -4481,19 +5105,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -4512,6 +5141,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -4754,10 +5384,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             "orderItemType": "ECOM",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -4870,6 +5502,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -4878,19 +5519,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
         </View>
       </Styled(View)>
       <Styled(View)>
@@ -4909,6 +5555,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />
@@ -5151,10 +5798,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             "orderItemType": "ECOM",
           },
           "productInfo": Object {
+            "pdpUrl": "",
             "upc": "upc",
           },
         }
       }
+      setShipToHome={[Function]}
     />
   </Styled(View)>
 </Swipeable>
@@ -5247,6 +5896,15 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
   swipeStartMinDistance={15}
 >
   <Styled(View)>
+    <Styled(View)>
+      <ErrorMessage
+        bagPage={false}
+        error=""
+        fontSize="fs12"
+        fontWeight="extrabold"
+        showAccordian={true}
+      />
+    </Styled(View)>
     <Styled(View) />
     <Styled(View)
       showOnReviewPage={true}
@@ -5255,19 +5913,24 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         showOnReviewPage={true}
       >
         <View>
-          <Styled(DamImage)
-            alt=""
-            crop=""
-            height={100}
-            host=""
-            imgConfig=""
-            isProductImage={true}
-            itemBrand="tcp"
-            showOnReviewPage={true}
-            source=""
-            url=""
-            width={100}
-          />
+          <Styled(TouchableOpacity)
+            onPress={[Function]}
+          >
+            <Styled(DamImage)
+              alt=""
+              crop=""
+              height={100}
+              host=""
+              imgConfig=""
+              isProductImage={true}
+              itemBrand="tcp"
+              showOnReviewPage={true}
+              source=""
+              swatchConfig=""
+              url=""
+              width={100}
+            />
+          </Styled(TouchableOpacity)>
           <Styled(View)>
             <Styled(BodyCopy)
               accessibilityText=""
@@ -5299,6 +5962,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             margin={null}
             numberOfLines={null}
+            onPress={[Function]}
             text="Boys Basic Skinny Jeans"
             textDecoration={null}
           />

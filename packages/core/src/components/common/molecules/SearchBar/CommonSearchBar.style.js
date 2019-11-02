@@ -94,9 +94,18 @@ export const commonSearchBarStyles = css`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    caret-color: ${props => props.theme.colors.TEXTBOX.FOCUS_BORDER};
+  }
+
+  .searchbar input::-ms-clear {
+    display: none;
   }
   .search-model-wrapper {
     margin-top: 100px;
+  }
+
+  .search-image {
+    vertical-align: middle;
   }
 `;
 
@@ -145,12 +154,16 @@ export const commonStyles = css`
   }
 
   .matchProductBox .matchProductBody {
-    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XL}
+      ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 35px;
+    }
   }
 
   .matchProductBox .matchProductBody ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
 
@@ -167,8 +180,12 @@ export const commonStyles = css`
   }
 
   li.recentTag {
-    height: 35px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+  }
+
+  li.recentTag a {
+    line-height: 3.08;
   }
 
   li.linkName {
@@ -177,14 +194,21 @@ export const commonStyles = css`
   }
 
   li.productBox {
-    width: 24%;
-    height: 81px;
-    border: solid 1px ${props => props.theme.colors.PRIMARY.DARK};
-    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+    background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    height: 87px;
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 152px;
+    }
   }
+
   .autosuggest-image {
-    height: 80px;
-    width: 80px;
+    height: 87px;
+    width: 88px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      height: 152px;
+      width: 152px;
+    }
   }
 
   .close-mobile-image {
@@ -273,9 +297,8 @@ export const mediumOnlyStyles = css`
     }
 
     .searchbar input {
-      width: 122px;
+      width: calc(100% - 250px);
       font-size: ${props => props.theme.typography.fontSizes.fs14};
-      padding-right: 172px;
       background-color: ${props => props.theme.colors.WHITE};
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
@@ -337,16 +360,10 @@ export const mediumOnlyStyles = css`
         ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
 
-    .search-close-icon-wrapper {
-      padding-left: 251px;
-    }
-
     .cancel-search-label-wrapper {
-      padding-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
-    }
-    .li.productBox {
-      height: 152px;
-      width: 152px;
+      float: right;
+      padding-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      line-height: 40px;
     }
   }
 `;
