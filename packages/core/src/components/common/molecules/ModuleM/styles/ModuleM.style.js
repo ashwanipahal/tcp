@@ -2,13 +2,11 @@ import styled, { css } from 'styled-components';
 import Col from '../../../atoms/Col';
 
 export const ImageGrid = styled(Col)`
-  margin-top: 24px;
   margin-bottom: 32px;
   border-radius: ${props => (props.round ? '100%' : 0)};
 
   img {
     height: ${props => (props.length === 3 ? '330px' : '210px')};
-    width: ${props => (props.length === 3 ? '330px' : '210px')};
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       height: 162px;
@@ -53,7 +51,6 @@ export const CtaButtonWrapper = styled(Col)`
   justify-content: center;
   align-items: center;
   height: ${props => (props.length === 3 ? '330px' : '210px')};
-  margin-top: 24px;
   margin-bottom: 32px;
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -69,24 +66,21 @@ export const CtaButtonWrapper = styled(Col)`
   .moduleM__shopAllBtn {
     padding: 48px 61px;
     text-align: center;
+    display: flex;
+    justify-content: center;
   }
 `;
 
 export default css`
   .image-items-container {
     justify-content: center;
-    margin: 0;
+    margin: 24px 0 0;
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       margin: auto;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin: auto;
-    }
-
-    > *:last-child {
-      margin-right: auto;
-      display: flex;
     }
   }
   .moduleM__productName {
@@ -127,20 +121,86 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs20};
     }
   }
-  .product-tab-list {
-    margin-top: 12px;
-  }
   .image-items-container-category {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 
-    > *:not(:last-child) {
+    > :not(:last-child) {
       margin-right: 14px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
       margin: 25px 214px;
+    }
+  }
+  .image-items-container__flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .image-items-container__flex--item {
+    margin-bottom: 32px;
+    margin-right: 14px;
+    img {
+      width: 142px;
+      height: 142px;
+
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        height: 137px;
+        width: 137px;
+      }
+
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        height: 115px;
+        width: 103px;
+      }
+    }
+  }
+  .moduleM__shopAllBtnWrapper {
+    background: ${props => props.theme.colorPalette.blue[700]};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs36};
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
+    letter-spacing: ${props => props.theme.typography.letterSpacings.ls222};
+    color: ${props => props.theme.colors.WHITE};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 142px;
+    margin-bottom: 32px;
+    width: 142px;
+
+    .moduleM__shopAllBtn {
+      padding: 48px 61px;
+      text-align: center;
+    }
+
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs26};
+      height: 137px;
+      width: 137px;
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
+      height: 115px;
+      width: 103px;
+    }
+  }
+
+  .product-tab-list {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+
+    > :not(:last-child) {
+      border-right: 1px solid #c3c3c3;
+    }
+
+    .product-tab-list__item {
+      margin-top: 16px;
+      padding: 0px 10px;
     }
   }
 `;

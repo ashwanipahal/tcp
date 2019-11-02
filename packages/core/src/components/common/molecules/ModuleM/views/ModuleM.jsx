@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
-import { getViewportInfo, isClient, isGymboree } from '@tcp/core/src/utils';
+import { getViewportInfo, isClient } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
-import { Anchor, Col, Image, Row, BodyCopy } from '../../../atoms';
+import { Anchor, Col, Image, Row, BodyCopy, Button } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Grid, LinkText, PromoBanner } from '../..';
-import ProductTabList from '../../../organisms/ProductTabList';
 import style, { ImageGrid, CtaButtonWrapper, ImageRoundFlex } from '../styles/ModuleM.style';
-import mock from '../moduleM.mock';
 import config from '../moduleM.config';
 
 export class ModuleM extends React.PureComponent {
@@ -17,22 +15,34 @@ export class ModuleM extends React.PureComponent {
     super(props);
     const viewportInfo = isClient() ? getViewportInfo() : null;
     this.state = {
-      currentCatId: '',
       isMobile: viewportInfo && viewportInfo.isMobile,
       isTablet: viewportInfo && viewportInfo.isTablet,
+      productCategoryImageList: [],
     };
   }
 
   componentDidMount() {
+    const { divTabs } = this.props;
     window.addEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
+    this.setState({
+      productCategoryImageList: divTabs[0].smallCompImages,
+      activeTab: divTabs[0].category.cat_id,
+    });
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
   }
 
-  onTabChange = catId => {
-    this.setState({ currentCatId: catId });
+  /**
++   * Set state based on view port.
++   */
+  windowResizeEventHandler = () => {
+    const viewportInfo = isClient() ? getViewportInfo() : null;
+    this.setState({
+      isMobile: viewportInfo && viewportInfo.isMobile,
+      isTablet: viewportInfo && viewportInfo.isTablet,
+    });
   };
 
   getHeaderText = headerText => {
@@ -60,38 +70,6 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
-  getCTAButton = (singleCTAButton, ctaConfig) => {
-    return (
-      singleCTAButton && (
-        <CtaButtonWrapper
-          colSize={
-            Object.keys(ctaConfig).length > 0
-              ? ctaConfig.colSize
-              : {
-                  small: 2,
-                  medium: 2,
-                  large: 2,
-                }
-          }
-          offsetRight={Object.keys(ctaConfig).length > 0 ? ctaConfig.offsetRight : null}
-          className="moduleM__shopAllBtnWrapper"
-          ignoreGutter={{ large: true, medium: true, small: true }}
-          length={ctaConfig.length}
-        >
-          <Anchor
-            to={singleCTAButton.url}
-            asPath={singleCTAButton.url}
-            title={singleCTAButton.tex}
-            dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
-            className="moduleM__shopAllBtn"
-          >
-            {singleCTAButton.text}
-          </Anchor>
-        </CtaButtonWrapper>
-      )
-    );
-  };
-
   getViewportKey = () => {
     let gutterViewportKey;
     const { isMobile, isTablet } = this.state;
@@ -103,83 +81,55 @@ export class ModuleM extends React.PureComponent {
   };
 
   getProductImageGrid = selectedProductList => {
-    const { singleCTAButton } = mock.Modules.moduleM;
-    const gutterViewportKey = this.getViewportKey();
-    let rowCount = 0;
-    let rowLastElementIndex = 0;
-    let lastElementConfig = {};
+    const { singleCTAButton } = this.props;
+    const viewportKey = this.getViewportKey();
+    const imageData = config[`images${selectedProductList.length}`];
+    const rowMaxImages = imageData ? imageData.rowMaxImages[viewportKey] : 0;
+    let rowFirstElement = 0;
+    let rowLastElement = rowMaxImages - 1;
+    let rows = 1;
 
     return (
-      <Row className="image-items-container">
-        {selectedProductList.map((productItem, index) => {
-          if (productItem.uniqueId) {
-            const {
-              pdpUrl,
-              pdpAsPath,
-              uniqueId,
-              imageUrl: [imageUrl],
-              product_name: productName,
-            } = productItem;
+      <Row className="image-items-container" noLastMargin>
+        {selectedProductList &&
+          selectedProductList.map((productItem, index) => {
+            const { image, link } = productItem;
+            /**
+             * Calculate each row first element and last element and apply margin left and right respectively.
+             */
+            if (index + 1 === rowMaxImages * rows) {
+              rows += 1;
+              rowLastElement = index;
+            }
 
-            /**
-             * Calculating the offset boolean.
-             * The below calculation will determine, whether offset right and ignore gutter props will be passed to the col or not.
-             * This will insure to provide a margin right offset to every last element of the row.
-             * If in a row, we have to show 5 elements, in case of index 4[5th element], if the below calculated below remainder,
-             * is 0, then only apply margin right offset to the element.
-             *
-             * gutterViewportKey - to determine the viewport and it can be only values from [sm, lg, md]
-             */
-            const setOffsetsProp =
-              (index + 1) %
-                config[`images${selectedProductList.length}`].rowMaxImages[gutterViewportKey] ===
-              0;
-            /**
-             * Calculate the row count and every row last item index, so to provide a approx margin offset to it.
-             */
-            if (setOffsetsProp) {
-              rowCount += 1;
-              rowLastElementIndex = index;
+            if (index === rowLastElement + 1) {
+              rowFirstElement = index;
             }
-            /**
-             * Create config for last shop all button cta.
-             */
-            if (index + 1 === selectedProductList.length) {
-              lastElementConfig = {
-                colSize: config[`images${selectedProductList.length}`].colSize,
-                offsetRight: config[`images${selectedProductList.length}`].offsetRight,
-                length: selectedProductList.length,
-              };
-            }
-            const isRowFirstElement = index * rowCount === rowLastElementIndex + 1;
+
             return (
               <ImageGrid
-                key={uniqueId}
-                imageindex={index}
-                colSize={config[`images${selectedProductList.length}`].colSize}
-                offsetRight={
-                  setOffsetsProp ? config[`images${selectedProductList.length}`].offsetRight : null
-                }
-                offsetLeft={
-                  index === 0 || isRowFirstElement
-                    ? config[`images${selectedProductList.length}`].offsetLeft
-                    : null
-                }
-                ignoreGutter={
-                  setOffsetsProp &&
-                  config[`images${selectedProductList.length}`].rows[gutterViewportKey] > 1
-                    ? { large: true, medium: true, small: true }
-                    : null
-                }
-                ignoreNthRule
+                colSize={imageData.colSize}
                 length={selectedProductList.length}
+                offsetLeft={index === rowFirstElement ? imageData.offsetLeft : {}}
+                offsetRight={rowLastElement === index ? imageData.offsetRight : {}}
+                ignoreNthRule
+                ignoreGutter={
+                  rowLastElement === index ? { large: true, medium: true, small: true } : {}
+                }
               >
                 <Anchor
-                  to={pdpUrl}
-                  asPath={pdpAsPath}
+                  to={link.url}
+                  asPath={link.url}
                   dataLocator={`${getLocator('moduleM_product_image')}${index}`}
                 >
-                  <Image alt={productName} src={imageUrl} />
+                  <Image alt={image.title} src={image.url} />
+                  {/* TO DO - Implement Dam image after cms integration */}
+                  {/* <DamImage
+                    imgConfigs={config.IMG_DATA.productImgConfig}
+                    imgData={image}
+                    data-locator={`${getLocator('moduleT_promobanner_img')}${1}`}
+                    link={link}
+                  /> */}
                   <BodyCopy
                     component="div"
                     className="moduleM__productName"
@@ -187,82 +137,152 @@ export class ModuleM extends React.PureComponent {
                     color="text.primary"
                     fontFamily="secondary"
                   >
-                    {productName}
+                    {link.text}
                   </BodyCopy>
                 </Anchor>
               </ImageGrid>
             );
-          }
-          return (
-            <Col
-              key={index.toString()}
-              className="image-item-wrapper"
-              colSize={{ small: 2, medium: 4, large: 4 }}
+          })}
+        {selectedProductList.length > 0 && (
+          <CtaButtonWrapper
+            length={selectedProductList.length}
+            colSize={config[`images${selectedProductList.length}`].colSize}
+            ignoreNthRule
+            offsetRight={imageData.offsetRight}
+            ignoreGutter={{ large: true, medium: true, small: true }}
+            isNotInlineBlock
+          >
+            <Anchor
+              to={singleCTAButton.url}
+              asPath={singleCTAButton.url}
+              title={singleCTAButton.text}
+              dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
+              className="moduleM__shopAllBtn"
             >
-              {productItem}
-            </Col>
-          );
-        })}
-        {this.getCTAButton(singleCTAButton, lastElementConfig)}
+              {singleCTAButton.text}
+            </Anchor>
+          </CtaButtonWrapper>
+        )}
       </Row>
     );
   };
 
-  /**
-   * Set state based on view port.
-   */
-  windowResizeEventHandler = () => {
-    const viewportInfo = isClient() ? getViewportInfo() : null;
-    this.setState({
-      isMobile: viewportInfo && viewportInfo.isMobile,
-      isTablet: viewportInfo && viewportInfo.isTablet,
-    });
+  getProductImageFlex = selectedProductList => {
+    const { singleCTAButton } = this.props;
+
+    return (
+      <div className="image-items-container__flex">
+        {selectedProductList &&
+          selectedProductList.map((product, index) => {
+            const { link, image } = product;
+            return (
+              <div className="image-items-container__flex--item">
+                <Anchor
+                  to={link.url}
+                  asPath={link.url}
+                  dataLocator={`${getLocator('moduleM_product_image')}${index}`}
+                >
+                  <Image alt={image.title} src={image.url} />
+                  <BodyCopy
+                    component="div"
+                    className="moduleM__productName"
+                    fontSize="fs15"
+                    color="text.primary"
+                    fontFamily="secondary"
+                  >
+                    {link.text}
+                  </BodyCopy>
+                </Anchor>
+              </div>
+            );
+          })}
+        <div className="moduleM__shopAllBtnWrapper">
+          <Anchor
+            to={singleCTAButton.url}
+            asPath={singleCTAButton.url}
+            title={singleCTAButton.tex}
+            dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
+            className="moduleM__shopAllBtn"
+          >
+            {singleCTAButton.text}
+          </Anchor>
+        </div>
+      </div>
+    );
   };
 
   getCategoryImageList = ctaItems => {
     return (
       ctaItems && (
         <div className="image-items-container-category">
-          {ctaItems.map((productItem, index) => {
-            const { image, button } = productItem;
-            return (
-              <ImageRoundFlex className="imagecategory__list">
-                <Anchor
-                  to={button.url}
-                  asPath={button.url}
-                  dataLocator={`${getLocator('moduleM_product_image')}${index}`}
-                >
-                  <Image alt={image.alt} src={image.url} />
-                  <BodyCopy
-                    component="div"
-                    className="moduleM__productName"
-                    fontSize="fs15"
-                    color="text.primary"
-                    fontFamily="secondary"
+          {ctaItems &&
+            ctaItems.map((productItem, index) => {
+              const { image, button } = productItem;
+              return (
+                <ImageRoundFlex className="imagecategory__list">
+                  <Anchor
+                    to={button.url}
+                    asPath={button.url}
+                    dataLocator={`${getLocator('moduleM_product_image')}${index}`}
                   >
-                    {button.text}
-                  </BodyCopy>
-                </Anchor>
-              </ImageRoundFlex>
-            );
-          })}
+                    <Image alt={image.alt} src={image.url} />
+                    <BodyCopy
+                      component="div"
+                      className="moduleM__productName"
+                      fontSize="fs15"
+                      color="text.primary"
+                      fontFamily="secondary"
+                    >
+                      {button.text}
+                    </BodyCopy>
+                  </Anchor>
+                </ImageRoundFlex>
+              );
+            })}
         </div>
       )
     );
   };
 
-  render() {
-    // change the below destructuring to this.props
-    // TO DO -- MOCK IMPLEMENTATION REMOVAL
-    const { className } = this.props;
-    const { productTabList, Modules } = mock;
-    const { headerText, promoBanner, divTabs, ctaItems } = Modules.moduleM;
+  getProductImageList = (type, list) =>
+    type === 'flex' ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
 
-    const { currentCatId } = this.state;
-    let data = productTabList[currentCatId] || [];
-    const imageListCtaItems = ctaItems || [];
-    const { TOTAL_IMAGES } = config;
-    data = data.slice(0, TOTAL_IMAGES);
+  onTabChange = (id, imageList) => {
+    this.setState({ productCategoryImageList: imageList, activeTab: id });
+  };
+
+  createProductTabList = tabList => {
+    return (
+      tabList &&
+      tabList.map(list => {
+        const {
+          text: listItemText,
+          smallCompImages,
+          category: { cat_id: id },
+        } = list;
+        const { activeTab } = this.state;
+        return (
+          <div
+            key={`modMTabs-${listItemText.text}`}
+            className="product-tab-list__item"
+            data-locator=""
+          >
+            <Button
+              active={id === activeTab}
+              buttonVariation="mini-nav"
+              onClick={() => this.onTabChange(id, smallCompImages)}
+            >
+              {listItemText.text}
+            </Button>
+          </div>
+        );
+      })
+    );
+  };
+
+  render() {
+    const { className, headerText, promoBanner, divTabs, type, ctaItems } = this.props;
+    const { productCategoryImageList } = this.state;
 
     return (
       <Grid className={`${className} moduleM`}>
@@ -274,8 +294,18 @@ export class ModuleM extends React.PureComponent {
               large: 12,
             }}
           >
-            {this.getHeaderText(headerText)}
-            {this.getPromoBanner(promoBanner)}
+            {headerText && this.getHeaderText(headerText)}
+            {promoBanner && this.getPromoBanner(promoBanner)}
+          </Col>
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 12,
+            }}
+            className="product-tab-list"
+          >
+            {divTabs && this.createProductTabList(divTabs)}
           </Col>
           <Col
             colSize={{
@@ -284,26 +314,9 @@ export class ModuleM extends React.PureComponent {
               large: 12,
             }}
           >
-            {divTabs && (
-              <div className="product-tab-list">
-                <ProductTabList
-                  onProductTabChange={this.onTabChange}
-                  tabItems={divTabs}
-                  dataLocator={getLocator('moduleM_cta_link')}
-                />
-              </div>
-            )}
-          </Col>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-          >
-            {isGymboree()
-              ? this.getCategoryImageList(imageListCtaItems)
-              : this.getProductImageGrid(data)}
+            {ctaItems && ctaItems.length > 0
+              ? this.getCategoryImageList(ctaItems)
+              : this.getProductImageList(type, productCategoryImageList)}
           </Col>
         </Row>
       </Grid>
@@ -313,10 +326,22 @@ export class ModuleM extends React.PureComponent {
 
 ModuleM.propTypes = {
   className: PropTypes.string,
+  headerText: PropTypes.shape([]),
+  promoBanner: PropTypes.shape([]),
+  divTabs: PropTypes.shape([]),
+  type: PropTypes.string,
+  singleCTAButton: PropTypes.shape({}),
+  ctaItems: PropTypes.shape({}),
 };
 
 ModuleM.defaultProps = {
   className: '',
+  headerText: [],
+  promoBanner: [],
+  divTabs: [],
+  type: [],
+  singleCTAButton: [],
+  ctaItems: [],
 };
 
 const styledModuleM = withStyles(errorBoundary(ModuleM), style);
