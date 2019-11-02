@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import WalletView from '../views';
-import { getGlobalLabels, getCommonLabels } from '../../Account/container/Account.selectors';
+import {
+  getGlobalLabels,
+  getCommonLabels,
+  getLabels,
+} from '../../Account/container/Account.selectors';
 import { isMobileApp } from '../../../../../utils/utils';
 
 export class WalletContainer extends React.Component {
@@ -19,15 +23,28 @@ export class WalletContainer extends React.Component {
     }
   }
 
+  getAccountOverviewLabels = labels => {
+    return (labels && labels.accountOverview) || {};
+  };
+
   render() {
-    const { labels, commonLabels, ...props } = this.props;
-    return <WalletView labels={labels} commonLabels={commonLabels} {...props} />;
+    const { labels, commonLabels, accountLabels, ...props } = this.props;
+    const overViewLabels = this.getAccountOverviewLabels(accountLabels);
+    return (
+      <WalletView
+        labels={labels}
+        commonLabels={commonLabels}
+        overViewLabels={overViewLabels}
+        {...props}
+      />
+    );
   }
 }
 
 export const mapStateToProps = state => {
   return {
     labels: getGlobalLabels(state),
+    accountLabels: getLabels(state),
     commonLabels: getCommonLabels(state),
   };
 };
@@ -43,12 +60,14 @@ export const mapDispatchToProps = dispatch => {
 WalletContainer.propTypes = {
   labels: PropTypes.shape({}),
   commonLabels: PropTypes.shape({}),
+  accountLabels: PropTypes.shape({}),
   fetchLabels: PropTypes.func,
 };
 
 WalletContainer.defaultProps = {
   labels: {},
   commonLabels: {},
+  accountLabels: {},
   fetchLabels: () => {},
 };
 
