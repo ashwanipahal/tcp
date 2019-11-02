@@ -9,6 +9,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -34,6 +35,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -65,6 +67,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -99,6 +102,7 @@ describe('RegisteredShippingForm', () => {
       isGuest: false,
       dispatch: jest.fn(),
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       modalState: false,
       userAddresses: new List([
         {
@@ -131,6 +135,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -149,6 +154,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -179,6 +185,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([
@@ -209,6 +216,7 @@ describe('RegisteredShippingForm', () => {
   it('should call getBtnDisabledState', () => {
     const props = {
       syncErrorsObject: { syncError: {} },
+      setEditModalRef: jest.fn(),
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
     tree.setState({ modalState: true, modalType: 'add' });
@@ -217,6 +225,7 @@ describe('RegisteredShippingForm', () => {
   it('should call renderActionBtns', () => {
     const props = {
       labels: {},
+      setEditModalRef: jest.fn(),
       syncErrorsObject: { syncError: {} },
     };
     const tree = shallow(<RegisteredShippingForm {...props} />);
@@ -229,6 +238,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -248,6 +258,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: null,
@@ -267,6 +278,7 @@ describe('RegisteredShippingForm', () => {
       newUserPhoneNo: '',
       isGuest: false,
       setEditState: jest.fn(),
+      setEditModalRef: jest.fn(),
       dispatch: jest.fn(),
       modalState: false,
       userAddresses: new List([]),

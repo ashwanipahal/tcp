@@ -202,6 +202,7 @@ exports[`Shipping Form should render correctly with signed in 1`] = `
       newUserPhoneNo={null}
       onFileAddressKey={null}
       setAsDefaultShipping={null}
+      setEditModalRef={[Function]}
       setEditState={[Function]}
       shippingAddress={null}
       syncErrorsObject={Object {}}
