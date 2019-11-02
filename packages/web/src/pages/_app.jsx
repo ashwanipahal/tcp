@@ -149,6 +149,7 @@ class TCPWebApp extends App {
 
   componentDidUpdate() {
     ReactAxe.runAccessibility();
+    this.checkForlogin();
   }
 
   /**

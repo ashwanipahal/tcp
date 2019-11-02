@@ -42,11 +42,11 @@ export class Account extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     const { isUserLoggedIn } = this.props;
-    if (isUserLoggedIn === false) {
-      routerPush('/home', '/home/login');
+    const componentToLoad = this.state;
+    if (isUserLoggedIn === false && componentToLoad.componentToLoad !== 'order-details') {
+      routerPush('/home?target=login', '/home/login');
     }
 
-    const { componentToLoad } = this.state;
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
     }
