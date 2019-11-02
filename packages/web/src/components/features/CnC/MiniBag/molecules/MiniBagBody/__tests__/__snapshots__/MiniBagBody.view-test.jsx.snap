@@ -39,7 +39,7 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
             to="/bag"
             underline={true}
           >
-            View bag(1)
+            View bag (1)
           </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
@@ -131,7 +131,7 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
             to="/bag"
             underline={true}
           >
-            View bag(1)
+            View bag (1)
           </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
@@ -223,7 +223,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
             to="/bag"
             underline={true}
           >
-            View bag(1)
+            View bag (1)
           </Styled(Anchor)>
         </Styled(BodyCopy)>
       </Styled(Col)>
