@@ -14,7 +14,7 @@ exports[`Order Items component should renders correctly 1`] = `
   textAlign="left"
 >
   <Styled(Row)
-    className="elem-mb-XL"
+    className="elem-mb-XXL"
     fullBleed={true}
   >
     <Styled(Col)

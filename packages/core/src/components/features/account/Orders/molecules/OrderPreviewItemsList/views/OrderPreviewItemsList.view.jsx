@@ -14,7 +14,7 @@ const OrderPreviewItemsList = ({ className, ...otherProps }) => {
   const { orderPage } = internalEndpoints;
   return (
     <BodyCopy component="div" className={className}>
-      <Row fullBleed className="elem-mb-XL">
+      <Row fullBleed className="elem-mb-XXL">
         <Col colSize={{ large: 5, medium: 3, small: 6 }}>
           <Anchor
             to={trackingUrl}
