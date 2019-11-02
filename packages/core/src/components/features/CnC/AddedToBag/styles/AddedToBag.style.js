@@ -69,6 +69,15 @@ const styles = css`
     text-align: center;
     margin: 24px 0;
   }
+  .recommendations-header  {
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+  }
+  .container-price > p {
+    font-size: ${props => props.theme.typography.fontSizes.fs15};
+  }
+  && .product-image-container > a {
+    min-height: 130px;
+  }
 `;
 
 export default styles;

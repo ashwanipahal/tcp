@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import AddedToBagActions from '../../AddedToBagActions';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
@@ -76,6 +78,11 @@ const AddedToBag = ({
         />
         {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
         {!isInternationalShipping && <BossBannerView labels={labels} />}
+        <Recommendations
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
+          variations="moduleO"
+          priceOnly
+        />
         <div className="continue-shopping">
           <Anchor
             fontSizeVariation="medium"
