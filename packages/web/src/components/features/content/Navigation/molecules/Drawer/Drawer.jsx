@@ -7,6 +7,7 @@ import {
   closeOverlay,
   enableBodyScroll,
   disableBodyScroll,
+  removeBodyScrollLocks,
 } from '@tcp/core/src/utils';
 import { Row } from '@tcp/core/src/components/common/atoms';
 import AccountInfoSection from '../../../Header/molecules/AccountInfoSection/AccountInfoSection';
@@ -62,6 +63,9 @@ class Drawer extends React.Component {
 
   init = () => {
     const { open, renderOverlay } = this.props;
+    if (!open) {
+      removeBodyScrollLocks();
+    }
     if (renderOverlay) {
       this.getDrawerStyle();
     }

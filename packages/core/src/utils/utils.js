@@ -4,6 +4,7 @@ import moment from 'moment';
 import {
   disableBodyScroll as disableBodyScrollLib,
   enableBodyScroll as enableBodyScrollLib,
+  clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 import icons from '../config/icons';
 import locators from '../config/locators';
@@ -1018,6 +1019,14 @@ export const isIosWeb = () => {
     return true;
   }
   return false;
+};
+/**
+ * This function will remove all the body scroll locks.
+ */
+export const removeBodyScrollLocks = () => {
+  if (isIosWeb() && isClient()) {
+    clearAllBodyScrollLocks();
+  }
 };
 /**
  * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
