@@ -48,21 +48,13 @@ const buildQuery = ({ type, brand, country, channel }) => `
       loyaltyPromoBannerWrapper {
         composites {
           loyaltyPromoBanner {
-            image {
-              url
-              title
-              alt
-            }
             link {
               url
               title
-              text
               target
-              external
             }
-            styled {
+            richText {
               text
-              style
             }
           }
         }
