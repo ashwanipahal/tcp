@@ -73,7 +73,10 @@ export const getServerErrorMessage = (error, errorsMapping) => {
     ];
     errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
   }
-  if (typeof errorMsg.errorMessages === 'undefined') {
+  if (
+    (errorMsg && typeof errorMsg.errorMessages === 'undefined') ||
+    typeof errorMsg === 'undefined'
+  ) {
     return 'Oops... Something went Wrong !!!!';
   }
   // eslint-disable-next-line
