@@ -218,7 +218,7 @@ export class BagPage extends React.Component {
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <OrderLedgerContainer />
+          <OrderLedgerContainer pageCategory="bagPage" />
         </RowSectionStyle>
       );
     }
@@ -314,9 +314,14 @@ export class BagPage extends React.Component {
             onMomentumScrollEnd={this.handleMomentumScrollEnd}
           >
             <MainSection>
-              {isBagStage && <ProductTileWrapper bagLabels={labels} />}
+              {isBagStage && <ProductTileWrapper bagLabels={labels} navigation={navigation} />}
               {isSFLStage && (
-                <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
+                <ProductTileWrapper
+                  bagLabels={labels}
+                  sflItems={sflItems}
+                  isBagPageSflSection
+                  navigation={navigation}
+                />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}

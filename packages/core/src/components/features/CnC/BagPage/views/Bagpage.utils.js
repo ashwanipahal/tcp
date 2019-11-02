@@ -1,8 +1,20 @@
 import throttle from 'lodash/throttle';
 import { isClient } from '../../../../../utils';
 
+const getOffset = elem => {
+  let x = 0;
+  let y = 0;
+  let el = elem;
+  while (el && !Number.isNaN(el.offsetLeft) && !Number.isNaN(el.offsetTop)) {
+    x += el.offsetLeft - el.scrollLeft;
+    y += el.offsetTop - el.scrollTop;
+    el = el.offsetParent;
+  }
+  return { top: y, left: x };
+};
+
 const getElementStickyPosition = elem => {
-  return elem && elem.offsetTop;
+  return elem && getOffset(elem).top;
 };
 
 const bindScrollEvent = callBack => {

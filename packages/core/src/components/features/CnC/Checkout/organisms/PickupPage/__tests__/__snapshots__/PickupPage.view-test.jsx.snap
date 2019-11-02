@@ -152,6 +152,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={false}
+    pageCategory=""
     showAccordian={true}
   />
   <form>
@@ -425,6 +426,7 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={true}
+    pageCategory=""
     showAccordian={true}
   />
   <form>
