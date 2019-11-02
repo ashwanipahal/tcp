@@ -18,6 +18,8 @@ import { getUserLoggedInState } from '../../User/container/User.selectors';
  * @param {router} router Router object to get the query key
  */
 
+const excludeRouteMapping = ['order-details'];
+
 const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
   constructor(props) {
@@ -41,9 +43,10 @@ export class Account extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const { componentToLoad } = this.state;
     const { isUserLoggedIn } = this.props;
-    const componentToLoad = this.state;
-    if (isUserLoggedIn === false && componentToLoad.componentToLoad !== 'order-details') {
+
+    if (isUserLoggedIn === false && excludeRouteMapping.includes(componentToLoad)) {
       routerPush('/home?target=login', '/home/login');
     }
 
