@@ -20,45 +20,35 @@ const PayPalButton = props => {
   const handleWebViewEvents = event => {
     switch (event.nativeEvent.data) {
       case 'payment':
-        // payPalWebViewHandle(true);
-        // setAsModal(true);
-        // setVenmoState(false);
-
-        triggerEvents(true,false,true);
-
+        payPalWebViewHandle(true);
+        setAsModal(true);
+        setVenmoState(false);
         break;
       case 'onAuthorize':
         paypalAuthorizationHandle({ navigation, navigationActions: NavigationActions });
-        // payPalWebViewHandle(false);
-        // setAsModal(false);
-        // setVenmoState(true);
+        payPalWebViewHandle(false);
+        setAsModal(false);
+        setVenmoState(true);
         closeModal(true);
-
-        triggerEvents(false,true,false);
-
         break;
       case 'onCancel':
         clearPaypalSettings();
-        // setVenmoState(true);
-        // payPalWebViewHandle(false);
-        // setAsModal(false);
-
-        triggerEvents(false,true,false);
-
+        setVenmoState(true);
+        payPalWebViewHandle(false);
+        setAsModal(false);
         break;
       default:
-        // payPalWebViewHandle(false);
-        // setAsModal(false);
-        // setVenmoState(true);
-        triggerEvents(false,true,false);
+        payPalWebViewHandle(false);
+        setAsModal(false);
+        setVenmoState(true);
     }
   };
 
-  const triggerEvents = (paypalWebView,venmo,modal)=>{
-    payPalWebViewHandle(paypalWebView);
-    setAsModal(modal);
-    setVenmoState(venmo);
-  }
+  // const triggerEvents = (paypalWebView,venmo,modal)=>{
+  //   payPalWebViewHandle(paypalWebView);
+  //   setAsModal(modal);
+  //   setVenmoState(venmo);
+  // }
 
   let styles = {
     height: 42,
@@ -79,7 +69,6 @@ const PayPalButton = props => {
   const webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
     getPayPalSettings.paypalInContextToken
   }&paypalEnv=${paypalEnv}`;
-  console.log('url=>', webURL);
   return (
     <View style={{ ...styles }}>
       <WebView
@@ -110,7 +99,7 @@ PayPalButton.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   paypalEnv: PropTypes.string.isRequired,
   setVenmoState: PropTypes.bool,
-  closeModal:PropTypes.bool,
+  closeModal: PropTypes.bool,
   paypalStaticUrl: PropTypes.string.isRequired,
 };
 

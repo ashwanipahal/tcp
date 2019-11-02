@@ -123,8 +123,8 @@ const AddedToBag = ({
                   noLink
                   to=""
                   dataLocator="addedToBag-continueShopping"
-                  text={labels.continueShopping}>
-                </Anchor>
+                  text={labels.continueShopping}
+                />
               </StyledAnchorWrapper>
               <ScrollView>
                 <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
@@ -167,7 +167,6 @@ AddedToBag.propTypes = {
   quantity: PropTypes.string.isRequired,
   handleContinueShopping: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
-  hideHeader: PropTypes.bool.isRequired,
 };
 
 AddedToBag.defaultProps = {

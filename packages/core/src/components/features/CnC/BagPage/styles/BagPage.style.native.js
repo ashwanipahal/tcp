@@ -133,7 +133,7 @@ export const InActiveEstimateTextStyle = styled.Text`
 `;
 
 const applyPositionClassStyle = props => {
-  if (props.isPayPalWebViewEnable === true) {
+  if (props.isPayPalWebViewEnable) {
     return `
     top: 0;
     `;

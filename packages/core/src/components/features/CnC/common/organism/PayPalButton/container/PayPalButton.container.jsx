@@ -67,7 +67,6 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       setVenmoState,
       closeModal,
     } = this.props;
-    console.log('getPayPalSettings', getPayPalSettings, this.paypalEnv);
     return (
       getPayPalSettings &&
       getPayPalSettings.paypalInContextToken && (

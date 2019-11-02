@@ -51,14 +51,6 @@ export class BagPage extends React.Component {
     this.timer = null;
   }
 
-  hideHeaderWhilePaypalView = hide => {
-    if (hide) {
-      this.props.navigation.setParams({ headerMode: true });
-    } else {
-      this.props.navigation.setParams({ headerMode: false });
-    }
-  };
-
   componentDidMount() {
     const { fetchLabels, totalCount, sflItems, isShowSaveForLaterSwitch } = this.props;
     fetchLabels();
@@ -70,6 +62,10 @@ export class BagPage extends React.Component {
           : BAGPAGE_CONSTANTS.BAG_STATE,
     });
   }
+
+  hideHeaderWhilePaypalView = hide => {
+    this.props.navigation.setParams({ headerMode: hide });
+  };
 
   componentDidUpdate() {
     const { cartItemSflError } = this.props;
