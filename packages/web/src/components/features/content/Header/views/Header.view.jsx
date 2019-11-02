@@ -145,8 +145,6 @@ class Header extends React.PureComponent {
             closeNavigationDrawer={closeNavigationDrawer}
             navigationDrawer={navigationDrawer}
             userName={userName}
-            userPoints={userPoints}
-            userRewards={userRewards}
             openOverlay={openOverlay}
             isLoggedIn={isLoggedIn}
             cartItemCount={cartItemCount}
