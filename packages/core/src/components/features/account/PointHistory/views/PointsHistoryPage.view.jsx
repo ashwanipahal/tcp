@@ -54,6 +54,18 @@ export const PointsHistoryPageView = props => {
         data-locator="points_history_separator"
       />
       <HistoryPointsRichTextComponent content={richTextContent} />
+      <BodyCopy component="div" className="elem-mb-XXL elem-mt-XXL">
+        <Anchor
+          to={internalEndpoints.pointsClaimPage.link}
+          asPath={internalEndpoints.pointsClaimPage.path}
+          fontSizeVariation="xlarge"
+          anchorVariation="primary"
+          data-locator="claim form link"
+          underline
+        >
+          Points Claim Form
+        </Anchor>
+      </BodyCopy>
     </BodyCopy>
   );
 };
