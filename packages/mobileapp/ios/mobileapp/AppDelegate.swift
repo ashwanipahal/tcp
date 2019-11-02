@@ -12,13 +12,11 @@ import FBSDKShareKit
 import FBSDKCoreKit
 import TwitterKit
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var bridge: RCTBridge!
-
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -35,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let rootView = RCTRootView(bundleURL:jsCodeLocation, moduleName: "mobileapp", initialProperties: props, launchOptions:launchOptions)
     self.bridge = rootView?.bridge
-
+    
     self.window = UIWindow(frame: UIScreen.main.bounds)
     let rootViewController = UIViewController()
 
@@ -49,8 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    TWTRTwitter.sharedInstance().application(app, open: url, options: options)
-    return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+    let handledTwitter = TWTRTwitter.sharedInstance().application(app, open: url, options: options)
+    let handledDeepLinking = RCTLinkingManager.application(app, open: url, options: options)
+    let handledFacebook = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+    return handledTwitter || handledDeepLinking || handledFacebook
   }
-
 }

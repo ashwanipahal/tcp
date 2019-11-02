@@ -9,7 +9,7 @@ const styles = css`
     align-items: flex-start;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 25px;
+    margin-top: 26px;
   }
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
@@ -34,11 +34,16 @@ const styles = css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       ${props =>
-        !props.quickViewAddToBagActionPadding
+        !props.isQuickView
           ? `padding-left: 90px;
       padding-right: 89px;`
           : `padding-left: 65px;
           padding-right: 65px;`};
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-left: 65px;
+      padding-right: 65px;
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
@@ -86,13 +91,29 @@ const styles = css`
         font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
       }
     }
+
+    .size-unavailable {
+      font-family: ${props => props.theme.typography.fonts.secondary};
+
+      .unavailable-text {
+        color: ${props => props.theme.colorPalette.gray[900]};
+        font-size: ${props => props.theme.typography.fontSizes.fs12};
+        margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      }
+
+      .size-find-in-store {
+        font-size: ${props => props.theme.typography.fontSizes.fs14};
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
 
   .color-selector {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;
@@ -114,6 +135,15 @@ const styles = css`
   .size-selector {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 100%;
+    position: relative;
+
+    .size-chart {
+      position: absolute;
+      right: 0;
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
   .size-error {
