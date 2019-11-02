@@ -81,7 +81,11 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
               {orderNumber}
             </Anchor>
           ) : (
-            <Anchor underline to={orderPage.link} asPath={`${orderPage.path}/${orderNumber}`}>
+            <Anchor
+              underline
+              to={`${orderPage.link}&orderId=${orderNumber}`}
+              asPath={`${orderPage.path}/${orderNumber}`}
+            >
               {orderNumber}
             </Anchor>
           )}

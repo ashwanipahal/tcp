@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -93,29 +93,31 @@ const AddedToBag = ({
             </RowWrapper>
             {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
             <AddedToBagWrapper>
-              <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
-              <AddedToBagViewPoints labels={labels} />
-              <AddedToBagActions
-                labels={labels}
-                navigation={navigation}
-                closeModal={onRequestClose}
-                showAddTobag
-                fromAddedToBagModal
-              />
-              <BossBanner labels={labels} />
-              {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
-              <StyledAnchorWrapper>
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  onPress={handleContinueShopping}
-                  noLink
-                  to=""
-                  dataLocator="addedToBag-continueShopping"
-                  text={labels.continueShopping}
+              <ScrollView>
+                <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
+                <AddedToBagViewPoints labels={labels} />
+                <AddedToBagActions
+                  labels={labels}
+                  navigation={navigation}
+                  closeModal={onRequestClose}
+                  showAddTobag
+                  fromAddedToBagModal
                 />
-              </StyledAnchorWrapper>
+                <BossBanner labels={labels} />
+                {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
+                <StyledAnchorWrapper>
+                  <Anchor
+                    fontSizeVariation="medium"
+                    underline
+                    anchorVariation="primary"
+                    onPress={handleContinueShopping}
+                    noLink
+                    to=""
+                    dataLocator="addedToBag-continueShopping"
+                    text={labels.continueShopping}
+                  />
+                </StyledAnchorWrapper>
+              </ScrollView>
             </AddedToBagWrapper>
           </StyledWrapper>
         </TouchableWithoutFeedback>
