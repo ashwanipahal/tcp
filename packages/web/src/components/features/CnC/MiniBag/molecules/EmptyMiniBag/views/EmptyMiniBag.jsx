@@ -3,6 +3,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import { routerPush } from '../../../../../../../../../core/src/utils';
 import styles from '../styles/EmptyMiniBag.style';
 
 // @flow
@@ -12,8 +13,9 @@ type Props = {
   className: string,
   userName: any,
   onLinkClick: Function,
+  closeMiniBag: Function,
 };
-const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
+const MiniBagHeader = ({ labels, className, userName, onLinkClick, closeMiniBag }: Props) => {
   const createAccount = 'createAccount';
   const login = 'login';
   return (
@@ -35,7 +37,11 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick }: Props) => {
           className="continueShoppingText"
           underline
           anchorVariation="primary"
-          to="/home"
+          onClick={e => {
+            e.preventDefault();
+            closeMiniBag();
+            routerPush('/home', '/home');
+          }}
           dataLocator="emptyMiniBag-continueShopping"
         >
           <BodyCopy component="span" fontSize="fs15" fontFamily="secondary">
