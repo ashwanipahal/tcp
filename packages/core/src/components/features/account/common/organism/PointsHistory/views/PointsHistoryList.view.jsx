@@ -68,7 +68,7 @@ const PointsHistoryList = ({
               fontFamily="secondary"
               className="list-fontsizes"
               fontWeight="semibold"
-              textAlign="center"
+              textAlign={['left', 'left', 'center']}
             >
               {getLabelValue(labels, 'lbl_common_points_earned')}
             </BodyCopy>
@@ -105,7 +105,7 @@ const PointsHistoryList = ({
                 fontFamily="secondary"
                 className="list-fontsizes"
                 fontWeight="regular"
-                textAlign="center"
+                textAlign="left"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>

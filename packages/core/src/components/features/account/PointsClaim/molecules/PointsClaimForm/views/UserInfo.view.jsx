@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import styles from '../styles/PointsClaimForm.style';
 
 export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => {
   return (
@@ -95,6 +97,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
             fontFamily="secondary"
             fontSize="fs14"
             component="span"
+            className="profileinfo-email_value"
           >
             {userInfoData.emailAddress}
           </BodyCopy>
@@ -117,4 +120,4 @@ UserInfo.defaultProps = {
   userInfoData: {},
 };
 
-export default UserInfo;
+export default withStyles(UserInfo, styles);
