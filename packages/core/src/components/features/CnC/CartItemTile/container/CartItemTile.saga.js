@@ -17,6 +17,8 @@ import {
   getProductSKUInfoSuccess,
   setToggleCartItemError,
   clearToggleCartItemError,
+  setBossBopisToggleCartItemError,
+  clearToggleBossBopisCartItemError,
 } from './CartItemTile.actions';
 import {
   AddToPickupError,
@@ -106,6 +108,27 @@ function* updateSagaErrorActions(updateActionType, errorMessage) {
   }
 }
 
+function* setUpdateItemErrorMessages(payload, errorMessage) {
+  if (payload.fromToggling) {
+    yield put(
+      setToggleCartItemError({
+        errorMessage,
+        itemId: payload.apiPayload.orderItem[0].orderItemId,
+      })
+    );
+  } else if (payload.fromTogglingBossBopis) {
+    yield put(
+      setBossBopisToggleCartItemError({
+        errorMessage,
+        itemId: payload.apiPayload.orderItem[0].orderItemId,
+        targetOrderType: payload.apiPayload.x_updatedItemType,
+      })
+    );
+  } else {
+    yield put(AddToPickupError(errorMessage));
+  }
+}
+
 export function* updateCartItemSaga({ payload }) {
   const { updateActionType } = payload;
   try {
@@ -114,6 +137,8 @@ export function* updateCartItemSaga({ payload }) {
     } else {
       yield put(clearAddToPickupErrorState());
     }
+    yield put(clearToggleCartItemError());
+    yield put(clearToggleBossBopisCartItemError());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(updateItem, payload, errorMapping);
     const { callBack } = payload;
@@ -123,8 +148,6 @@ export function* updateCartItemSaga({ payload }) {
     if (callBack) {
       callBack();
     }
-    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-    yield put(clearToggleCartItemError());
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         recalcRewards: true,
@@ -143,16 +166,7 @@ export function* updateCartItemSaga({ payload }) {
       (errorMapping && errorMapping.DEFAULT) ||
       'ERROR';
     yield call(updateSagaErrorActions, updateActionType, errorMessage);
-    if (payload.fromToggling) {
-      yield put(
-        setToggleCartItemError({
-          errorMessage,
-          itemId: payload.apiPayload.orderItem[0].orderItemId,
-        })
-      );
-    } else {
-      yield put(AddToPickupError(errorMessage));
-    }
+    yield setUpdateItemErrorMessages(payload, errorMessage);
   }
 }
 
@@ -219,6 +233,7 @@ export function* openPickupModalFromBag(payload) {
         isItemShipToHome,
         alwaysSearchForBOSS,
         openRestrictedModalForBopis,
+        isPickUpWarningModal,
       },
     } = payload;
     let itemBrand;
@@ -243,6 +258,7 @@ export function* openPickupModalFromBag(payload) {
         isItemShipToHome,
         alwaysSearchForBOSS,
         openRestrictedModalForBopis,
+        isPickUpWarningModal,
       })
     );
   } catch (err) {

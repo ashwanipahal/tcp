@@ -522,6 +522,7 @@ export const getCurrentOrderFormatter = (
     orderDetailsResponse.mixOrderDetails.data
   ) {
     for (const store of orderDetailsResponse.mixOrderDetails.data) {
+      // store.shippingAddressDetails.isStoreBOSSEligible = "0";
       if (store.orderType !== 'ECOM') {
         usersOrder.stores.push({
           stLocId: store.shippingAddressDetails.stLocId || '',
