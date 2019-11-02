@@ -15,12 +15,12 @@ export const ChangePasswordRoutePage = ({ labels }) => {
             fontFamily="secondary"
             className="product-name"
           >
-            Start shopping to earn my place rewards points
+            {getLabelValue(labels, 'lbl_changePassword_helpText', 'common')}
           </BodyCopy>
         </div>
       </Row>
       <Row>
-        <Col colSize={{ small: 0, medium: 2, large: 4 }}>{labels}</Col>
+        <Col colSize={{ small: 0, medium: 2, large: 4 }}>{}</Col>
         <Col colSize={{ small: 6, medium: 4, large: 4 }}>
           <Anchor
             to={internalEndpoints.shopNowPage.link}
@@ -31,8 +31,7 @@ export const ChangePasswordRoutePage = ({ labels }) => {
             centered
             target="_blank"
           >
-            {/* {getLabelValue(labels, 'lbl_orders_shopNow', 'orders')} */}
-            SHOP NOW
+            {getLabelValue(labels, 'lbl_orders_shopNow', 'orders')}
           </Anchor>
         </Col>
       </Row>
