@@ -16,6 +16,7 @@ type Props = {
   quantity: number,
   navigation: object,
   isInternationalShipping: boolean,
+  isPayPalWebViewEnable: boolean,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -34,17 +35,14 @@ export class AddedToBagContainer extends React.Component<Props> {
   };
 
   hideHeaderWhilePaypalView = hide => {
-    if (hide) {
-      this.props.navigation.setParams({ headerMode: true });
-    } else {
-      this.props.navigation.setParams({ headerMode: false });
-    }
+    this.props.navigation.setParams({ headerMode: true });
   };
 
   closeModal(event) {
     if (event) event.preventDefault();
     this.handleCloseModal();
   }
+
   render() {
     const {
       addedToBagData,

@@ -70,7 +70,6 @@ const AddedToBag = ({
   quantity,
   handleContinueShopping,
   navigation,
-  hideHeader,
 }) => {
   return (
     <Modal
@@ -124,8 +123,9 @@ const AddedToBag = ({
                   noLink
                   to=""
                   dataLocator="addedToBag-continueShopping"
-                  text={labels.continueShopping}/>
-                  </StyledAnchorWrapper>
+                  text={labels.continueShopping}>
+                </Anchor>
+              </StyledAnchorWrapper>
               <ScrollView>
                 <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
                 <AddedToBagViewPoints labels={labels} />
@@ -167,7 +167,6 @@ AddedToBag.propTypes = {
   quantity: PropTypes.string.isRequired,
   handleContinueShopping: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
-  isPayPalWebViewEnable: PropTypes.bool.isRequired,
   hideHeader: PropTypes.bool.isRequired,
 };
 

@@ -25,6 +25,7 @@ type Props = {
   quantity: number,
   handleContinueShopping: Function,
   isInternationalShipping: boolean,
+  hideHeader: boolean,
 };
 
 const AddedToBag = ({

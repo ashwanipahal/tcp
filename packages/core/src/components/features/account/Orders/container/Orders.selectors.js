@@ -7,9 +7,11 @@ const getState = state => state[ORDERS_REDUCER_KEY];
  * Selector function to return redux error
  * @param { object } state reduxStore state
  */
-const getOrdersListState = createSelector(
+export const getOrdersListState = createSelector(
   getState,
   state => state && state.get('ordersList')
 );
 
-export default getOrdersListState;
+export const getOrderListFetchingState = state => {
+  return getState(state).get('isFetching');
+};

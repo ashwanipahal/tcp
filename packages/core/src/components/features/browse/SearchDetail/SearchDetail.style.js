@@ -267,4 +267,8 @@ export default css`
     height: 80px;
     width: 80px;
   }
+  .empty-search-linkName {
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 5px 14px;
+  }
 `;
