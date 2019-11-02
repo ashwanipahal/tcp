@@ -20,3 +20,8 @@ export const getEarnedPointsNotificationState = createSelector(
   getState,
   state => state && state.get('earnedPointsNotificationData')
 );
+
+export const getEarnExtraPointsFetchingState = createSelector(
+  getState,
+  state => state && state.get('isFetching')
+);

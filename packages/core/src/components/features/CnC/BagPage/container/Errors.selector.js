@@ -9,6 +9,7 @@ const getErrorList = state => {
       'errorMessages',
       'global'
     ),
+    CWXFR0221E: getLabelValue(state.Labels, 'lbl_errorMessages_DEFAULT', 'errorMessages', 'global'),
     _2270: getLabelValue(state.Labels, 'lbl_errorMessages_2270', 'errorMessages', 'global'),
     _2080: getLabelValue(state.Labels, 'lbl_errorMessages_2080', 'errorMessages', 'global'),
     _2030: getLabelValue(state.Labels, 'lbl_errorMessages_2030', 'errorMessages', 'global'),

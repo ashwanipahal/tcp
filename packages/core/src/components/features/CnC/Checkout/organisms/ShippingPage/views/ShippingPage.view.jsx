@@ -361,6 +361,7 @@ export default class ShippingPage extends React.PureComponent {
       isSubmitting,
       formatPayload,
       ServerErrors,
+      checkoutServerError,
       toggleCountrySelector,
       pageCategory,
       checkoutPageEmptyBagLabels,
@@ -379,6 +380,7 @@ export default class ShippingPage extends React.PureComponent {
           <>
             <ShippingForm
               toggleCountrySelector={toggleCountrySelector}
+              checkoutServerError={checkoutServerError}
               isSubmitting={isSubmitting}
               routeToPickupPage={routeToPickupPage}
               addressLabels={addressLabels}

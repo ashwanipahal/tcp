@@ -310,7 +310,7 @@ class CheckoutPage extends React.PureComponent {
   }
 
   render() {
-    const { isGuest, router, submitReview, reviewProps } = this.props;
+    const { isGuest, router, submitReview, reviewProps, checkoutServerError } = this.props;
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
@@ -364,6 +364,7 @@ class CheckoutPage extends React.PureComponent {
         }
         isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
         pageCategory={currentSection.toLowerCase()}
+        checkoutServerError={checkoutServerError}
       />
     );
   }

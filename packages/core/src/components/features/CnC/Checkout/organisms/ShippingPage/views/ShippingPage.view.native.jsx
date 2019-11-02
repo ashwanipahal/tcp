@@ -332,7 +332,12 @@ export default class ShippingPage extends React.Component {
                 setCheckoutStage={setCheckoutStage}
                 availableStages={availableStages}
               />
-              <ScrollView keyboardShouldPersistTaps="handled">
+              <ScrollView
+                keyboardShouldPersistTaps="handled"
+                ref={scrollView => {
+                  this.scrollView = scrollView;
+                }}
+              >
                 <HeaderContainer>
                   <CheckoutSectionTitleDisplay
                     title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
@@ -362,6 +367,7 @@ export default class ShippingPage extends React.Component {
                       onFileAddressKey: defaultAddressId,
                     }}
                     selectedShipmentId={selectedShipmentId}
+                    scrollView={this.scrollView}
                     isGuest={isGuest}
                     isUsSite={isUsSite}
                     orderHasPickUp={orderHasPickUp}

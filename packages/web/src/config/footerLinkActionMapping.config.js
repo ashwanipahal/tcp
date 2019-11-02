@@ -14,6 +14,10 @@ export const footerLinksActionMappingConfig = {
   '/login-account': openOverlayModal,
   'create-account': openOverlayModal,
   '/create-account': openOverlayModal,
+  'check-point-balance': openOverlayModal,
+  '/check-point-balance': openOverlayModal,
+  'redeem-rewards': openOverlayModal,
+  '/redeem-rewards': openOverlayModal,
 };
 
 export default footerLinksActionMappingConfig;

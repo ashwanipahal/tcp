@@ -15,6 +15,7 @@ import {
   getAPIConfig,
   isDevelopment,
   fetchStoreIdFromUrlPath,
+  isGymboree,
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
@@ -24,6 +25,7 @@ import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLoca
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -71,6 +73,13 @@ class TCPWebApp extends App {
     const { router, store } = this.props;
     const { em, logonPasswordOld } = (router && router.query) || {};
     if (em && logonPasswordOld) {
+      // eslint-disable-next-line no-unused-expressions
+      'standalone' in window.navigator &&
+        document.location.replace(
+          `${
+            isGymboree() ? 'gym' : 'tcp'
+          }://change-password/?logonPasswordOld=${logonPasswordOld}&em=${em}`
+        );
       store.dispatch(
         openOverlayModal({
           component: 'login',
@@ -88,19 +97,41 @@ class TCPWebApp extends App {
     }
   };
 
+  // this function will check if user not login overlay needs to be displayed on page load
+  // it will check for login user
+  checkForlogin = () => {
+    const { router, store } = this.props;
+    const { target } = (router && router.query) || {};
+    if (target === 'login') {
+      const isUserLoggedIn = getUserLoggedInState(store.getState());
+      if (isUserLoggedIn !== true) {
+        store.dispatch(
+          openOverlayModal({
+            component: 'login',
+            componentProps: 'login',
+          })
+        );
+      }
+    }
+  };
+
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
+    this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
 
     try {
       if (isErrorReportingBrowserActive) {
+        // eslint-disable-next-line global-require
+        const rg4js = require('raygun4js');
         initErrorReporter({
           isServer: false,
           envId,
           raygunApiKey,
           channelId,
           isDevelopment: isDevelopment(),
+          rg4js,
         });
       }
     } catch (e) {
@@ -118,6 +149,7 @@ class TCPWebApp extends App {
 
   componentDidUpdate() {
     ReactAxe.runAccessibility();
+    this.checkForlogin();
   }
 
   /**

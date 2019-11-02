@@ -150,15 +150,19 @@ export const removeItem = orderItemId => {
     webService: endpoints.updateMultiSelectItemsToRemove,
   };
 
-  return executeStatefulAPICall(payload).then(res => {
-    if (res && !res.body) {
-      throw new Error('res body is null');
-      // TODO - Set API Helper to filter if error exists in response
-    }
-    return {
-      orderId: res && res.body.orderId,
-    };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (res && !res.body) {
+        throw new Error('res body is null');
+        // TODO - Set API Helper to filter if error exists in response
+      }
+      return {
+        orderId: res && res.body.orderId,
+      };
+    })
+    .catch(err => {
+      throw err;
+    });
 };
 
 const defaultUpdateItemPayload = payloadData => {
@@ -937,7 +941,7 @@ export const getUnqualifiedItems = () => {
       }));
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw err;
     });
 };
 

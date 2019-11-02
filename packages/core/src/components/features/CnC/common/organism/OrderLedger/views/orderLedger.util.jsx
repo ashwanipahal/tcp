@@ -288,31 +288,10 @@ const getBody = (className, ledgerSummaryData, labels, pageCategory, orderLedger
           className="balance-total rowMargin"
           data-locator={getLocator('order_ledger_balance_total_label')}
         >
-          <Col colSize={{ large: 6, medium: 5, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              tag="span"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="extrabold"
-              fontSize="fs18"
-            >
-              {giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}
-            </BodyCopy>
-          </Col>
-          <Col colSize={{ large: 6, medium: 3, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              tag="span"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="extrabold"
-              fontSize="fs18"
-              textAlign="right"
-            >
-              {`${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
-            </BodyCopy>
-          </Col>
+          <div className="balance-total-columns">
+            <span>{giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}</span>
+            <span>{`${currencySymbol}${orderBalanceTotal.toFixed(2)}`}</span>
+          </div>
         </Row>
         {totalOrderSavings ? (
           <Row

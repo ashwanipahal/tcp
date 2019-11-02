@@ -13,8 +13,8 @@ import {
   routeForCartCheckout,
   addItemToSFL,
   getSflDataSaga,
-  startSflItemDelete,
 } from '../container/BagPage.saga';
+import { startSflItemDelete } from '../container/BagPage.saga.util';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BAG_SELECTORS from '../container/BagPage.selectors';

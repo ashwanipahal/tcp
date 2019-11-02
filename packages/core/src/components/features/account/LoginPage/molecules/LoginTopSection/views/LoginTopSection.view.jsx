@@ -24,7 +24,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
         {variation === 'checkout' && (
           <>
             <BodyCopy
-              fontSize={['fs28', 'fs36', 'fs36']}
+              fontSize={['fs28', 'fs28', 'fs36']}
               fontWeight="black"
               fontFamily="primary"
               textAlign="center"
@@ -44,7 +44,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
             <BodyCopy
               component="span"
               fontSize="fs18"
-              fontWeight="black"
+              fontWeight="bold"
               fontFamily="secondary"
               textAlign="center"
             >

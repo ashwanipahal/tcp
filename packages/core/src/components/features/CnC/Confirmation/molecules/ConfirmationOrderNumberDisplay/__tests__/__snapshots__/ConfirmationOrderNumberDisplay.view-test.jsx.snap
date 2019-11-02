@@ -35,8 +35,9 @@ exports[`ConfirmationOrderNumberDisplayVanilla should render correctly 1`] = `
   >
     <Styled(ConfirmationItemDisplay)>
       <Styled(Anchor)
+        asPath="/track-order/undefined/undefined"
+        to="/track-order?id=orders&subSection=order-details&orderId=undefined&email=undefined"
         underline={true}
-        url="/track-order/undefined/undefined"
       />
     </Styled(ConfirmationItemDisplay)>
     <Styled(ConfirmationItemDisplay) />
@@ -87,7 +88,7 @@ exports[`ConfirmationOrderNumberDisplayVanilla should render correctly with BOPI
     <Styled(ConfirmationItemDisplay)>
       <Styled(Anchor)
         asPath="/account/orders/order-details/undefined"
-        to="/account?id=orders&subSection=order-details"
+        to="/account?id=orders&subSection=order-details&orderId=undefined"
         underline={true}
       />
     </Styled(ConfirmationItemDisplay)>
