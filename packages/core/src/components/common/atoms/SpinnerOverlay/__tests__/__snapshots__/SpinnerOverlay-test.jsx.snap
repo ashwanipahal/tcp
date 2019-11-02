@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpinnerOverlay Componenet should match snapshot 1`] = `
+<div
+  className="skeleton"
+>
+  <div
+    className="spinner-overlay"
+    id="default_spinner_overlay"
+  >
+    <Styled(Spinner) />
+  </div>
+</div>
+`;

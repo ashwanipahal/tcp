@@ -13,7 +13,11 @@ const CreateAccountTopSection = props => {
       {!isCanada() && (
         <BodyCopy component="div" className="img-parent align-center">
           <BodyCopy component="div" className="my-rewards-img-wrapper elem-pb-XL">
-            <Image className="tcp_carousel__play" src={getIconPath('my-place-rewards')} />
+            <Image
+              className="tcp_carousel__play"
+              src={getIconPath('my-place-rewards')}
+              alt="My Place Rewards"
+            />
           </BodyCopy>
         </BodyCopy>
       )}

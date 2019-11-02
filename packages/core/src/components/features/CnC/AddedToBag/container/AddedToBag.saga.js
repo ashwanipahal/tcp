@@ -45,6 +45,7 @@ export function* addToCartEcom({ payload }) {
       externalId: wishlistItemId || '',
     };
     yield put(clearAddToBagErrorState());
+    yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addCartEcomItem, params);
     yield put(
       SetAddedToBagData({

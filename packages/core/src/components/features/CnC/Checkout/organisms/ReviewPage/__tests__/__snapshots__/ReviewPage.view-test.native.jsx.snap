@@ -10,6 +10,7 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
     <Styled(View)>
       <CheckoutSectionTitleDisplay />
       <Connect(BillingSectionContainer)
+        isExpressCheckout={false}
         onEdit={[Function]}
       />
     </Styled(View)>
