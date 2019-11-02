@@ -177,6 +177,7 @@ class CheckoutPage extends React.PureComponent {
       clearCheckoutServerError,
       toggleCountrySelector,
       cartOrderItemsCount,
+      checkoutPageEmptyBagLabels,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -217,6 +218,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             cartOrderItemsCount={cartOrderItemsCount}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
             {...shippingProps}
             toggleCountrySelector={toggleCountrySelector}
             initShippingPage={initShippingPage}
@@ -414,6 +416,7 @@ CheckoutPage.propTypes = {
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
   pickUpContactPerson: PropTypes.shape({}).isRequired,
+  checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   clearCheckoutServerError: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
