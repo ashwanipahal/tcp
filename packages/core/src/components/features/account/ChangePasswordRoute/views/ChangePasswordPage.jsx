@@ -4,7 +4,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Anchor, BodyCopy, Row, Col } from '../../../../common/atoms';
 import internalEndpoints from '../../common/internalEndpoints';
 
-export const ChangePasswordRoutePage = ({ labels }) => {
+export const ChangePasswordPage = ({ labels }) => {
   return (
     <React.Fragment>
       <Row>
@@ -31,7 +31,7 @@ export const ChangePasswordRoutePage = ({ labels }) => {
             centered
             target="_blank"
           >
-            {getLabelValue(labels, 'lbl_orders_shopNow', 'orders')}
+            {getLabelValue(labels, 'lbl_changePassword_shopNow', 'common')}
           </Anchor>
         </Col>
       </Row>
@@ -39,8 +39,8 @@ export const ChangePasswordRoutePage = ({ labels }) => {
   );
 };
 
-ChangePasswordRoutePage.propTypes = {
+ChangePasswordPage.propTypes = {
   labels: PropTypes.shape({}).isRequired,
 };
 
-export default ChangePasswordRoutePage;
+export default ChangePasswordPage;

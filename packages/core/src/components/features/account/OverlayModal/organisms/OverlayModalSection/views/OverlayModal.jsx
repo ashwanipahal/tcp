@@ -114,8 +114,7 @@ class OverlayModal extends React.Component {
       modalRectBoundingX &&
       modalTriangle
     ) {
-      //   modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
-      modalTriangle.style.left = `100px`;
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
     } else {
       modalTriangle.style.left = 'auto';
     }

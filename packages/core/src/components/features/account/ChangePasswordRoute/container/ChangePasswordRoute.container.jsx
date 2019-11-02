@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getLabels } from '../../Account/container/Account.selectors';
-import ChangePasswordPage from '../views/ChangePasswordRoutePage';
+import ChangePasswordPageContainer from '../views/ChangePasswordPage';
 
 export class ChangePasswordRouteContainer extends PureComponent {
   static propTypes = {
@@ -11,7 +11,7 @@ export class ChangePasswordRouteContainer extends PureComponent {
 
   render() {
     const { labels } = this.props;
-    return <ChangePasswordPage labels={labels} />;
+    return <ChangePasswordPageContainer labels={labels} />;
   }
 }
 

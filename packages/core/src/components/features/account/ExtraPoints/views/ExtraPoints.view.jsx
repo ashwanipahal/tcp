@@ -267,8 +267,7 @@ const EarnPoints = ({
               {getLabelValue(labels, 'lbl_common_check_here')}
             </Anchor>
             {getLabelValue(labels, 'lbl_common_extra_points_terms_conditions')}
-          </BodyCopy>{' '}
-          */}
+          </BodyCopy>
         </>
       )}
     </div>

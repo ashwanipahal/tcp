@@ -161,8 +161,8 @@ const ROUTES_LIST = [
     resolver: '/StoreList',
   },
   {
-    noSlugPath: 'changepassword',
-    path: '/changepassword',
+    noSlugPath: 'change-password',
+    path: '/change-password',
     resolver: '/ChangePassword',
   },
   {
