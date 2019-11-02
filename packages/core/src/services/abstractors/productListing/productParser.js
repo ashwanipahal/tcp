@@ -246,7 +246,7 @@ const getColorsMap = ({
       color: {
         name: defaultColor,
         imagePath: getImgPath(isBundleProduct ? product.prodpartno : product.imagename).colorSwatch,
-        swatchImagePath: product.swatchimage,
+        swatchimage: product.swatchimage,
       },
     },
   ];
