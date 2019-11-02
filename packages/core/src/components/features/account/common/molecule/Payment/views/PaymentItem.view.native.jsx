@@ -61,7 +61,6 @@ class PaymentItem extends React.Component<Props> {
               <BodyCopy
                 fontFamily="primary"
                 fontSize="fs13"
-                fontWeight="extrabold"
                 text={paymentInfo.text}
               />
             )}
