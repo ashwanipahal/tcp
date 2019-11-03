@@ -35,6 +35,8 @@ export const PromoContainer = styled.View`
 `;
 
 export const ButtonTabsContainer = styled.View`
+  display: flex;
+  align-items: center;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
