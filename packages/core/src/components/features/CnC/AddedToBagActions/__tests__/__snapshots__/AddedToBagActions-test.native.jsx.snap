@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddedToBagActions native component AddedToBagActions native component renders correctly 1`] = `
-<Styled(View)
-  isPayPalWebViewEnable={false}
->
-  <Styled(View)
-    isPayPalWebViewEnable={false}
-  >
+<Styled(View)>
+  <Styled(View)>
     <Styled(TouchableOpacity)
       onPress={[Function]}
     >
