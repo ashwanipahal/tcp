@@ -492,7 +492,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         lbl_login_loginCTA
       </Styled(Button)>
       <Styled(Anchor)
-        anchorVariation="secondary"
+        anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
@@ -1015,7 +1015,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         lbl_login_loginCTA
       </Styled(Button)>
       <Styled(Anchor)
-        anchorVariation="secondary"
+        anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}

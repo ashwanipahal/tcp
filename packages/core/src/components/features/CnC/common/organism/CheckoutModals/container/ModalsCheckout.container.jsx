@@ -56,6 +56,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       addItemToSflList,
       isExpressCheckoutPage,
       setCheckoutStage,
+      bagPageServerError,
       checkoutModalComponent,
     } = this.props;
     return (
@@ -81,6 +82,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         addItemToSflList={addItemToSflList}
         isExpressCheckoutPage={isExpressCheckoutPage}
         setCheckoutStage={setCheckoutStage}
+        bagPageServerError={bagPageServerError}
         checkoutModalComponentType={checkoutModalComponent}
       />
     );
@@ -140,6 +142,7 @@ const mapStateToProps = state => {
     currentSelectItemInfo: bagPageSelector.getCurrentDeleteSelectedItemInfo(state),
     deleteConfirmationModalLabels: bagPageSelector.itemDeleteModalLabels(state),
     isExpressCheckoutPage: isExpressCheckout(state),
+    bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
   };
 };
 

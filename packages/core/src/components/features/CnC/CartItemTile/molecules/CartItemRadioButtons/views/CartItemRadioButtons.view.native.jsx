@@ -16,6 +16,7 @@ import {
   disabledLabelStyle,
 } from '../styles/CartItemRadioButtons.style.native';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import { maxAllowedStoresInCart } from '../../../../../../common/organisms/PickupStoreModal/PickUpStoreModal.config';
 
 class CartItemRadioButtons extends PureComponent {
   constructor(props) {
@@ -49,17 +50,34 @@ class CartItemRadioButtons extends PureComponent {
    * @memberof CartItemRadioButtons
    */
   handleChangeStoreClick = () => {
-    const { openPickUpModal, onPickUpOpenClick, productDetail, orderId } = this.props;
+    const {
+      openPickUpModal,
+      onPickUpOpenClick,
+      productDetail,
+      orderId,
+      pickupStoresInCart,
+      clearToggleError,
+    } = this.props;
     const {
       productDetail: {
         miscInfo: { orderItemType },
       },
     } = this.props;
     const openSkuSelectionForm = false;
-    openPickUpModal(orderItemType, openSkuSelectionForm, {
+    let openRestrictedModalForBopis = false;
+    /* istanbul ignore else */
+    if (
+      orderItemType === CARTPAGE_CONSTANTS.BOPIS &&
+      pickupStoresInCart.size === maxAllowedStoresInCart
+    ) {
+      openRestrictedModalForBopis = true;
+    }
+
+    openPickUpModal(orderItemType, openSkuSelectionForm, openRestrictedModalForBopis, {
       onPickUpOpenClick,
       productDetail,
       orderId,
+      clearToggleError,
     });
   };
 
@@ -385,6 +403,8 @@ CartItemRadioButtons.propTypes = {
   noBossMessage: PropTypes.bool.isRequired,
   noBopisMessage: PropTypes.bool.isRequired,
   setShipToHome: PropTypes.func.isRequired,
+  pickupStoresInCart: PropTypes.shape({}).isRequired,
+  clearToggleError: PropTypes.func.isRequired,
 };
 
 CartItemRadioButtons.defaultProps = {

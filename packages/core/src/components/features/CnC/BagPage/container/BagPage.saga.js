@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, takeLatest, put, all, select, delay } from 'redux-saga/effects';
+import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
@@ -49,11 +49,11 @@ import {
   closeMiniBag,
   updateCartManually,
 } from '../../../../common/organisms/Header/container/Header.actions';
-import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
-import { setServerErrorCheckout } from '../../Checkout/container/Checkout.action.util';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
+import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
 
 const { getOrderPointsRecalcFlag } = utility;
 
@@ -297,9 +297,7 @@ export function* startCartCheckout({
       }
     }
   } catch (e) {
-    const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
-    const billingError = getServerErrorMessage(e, errorsMapping);
-    yield put(setServerErrorCheckout({ errorMessage: billingError, component: 'CHECKOUT' }));
+    yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
 
@@ -320,13 +318,17 @@ export function* startPaypalCheckout({ payload }) {
 }
 
 export function* authorizePayPalPayment() {
-  const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
-    checkoutSelectors.getPaypalPaymentSettings
-  );
-  const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
-  const res = yield call(paypalAuthorizationAPI, ...params);
-  if (res) {
-    utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+  try {
+    const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
+      checkoutSelectors.getPaypalPaymentSettings
+    );
+    const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
+    const res = yield call(paypalAuthorizationAPI, ...params);
+    if (res) {
+      utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+    }
+  } catch (e) {
+    yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
 
@@ -385,62 +387,6 @@ export function* getSflDataSaga() {
     yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
-  }
-}
-
-export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
-  const isRememberedUser = yield select(isRemembered);
-  const isRegistered = yield select(getUserLoggedInState);
-  const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
-  const isCanadaSIte = isCanada();
-  try {
-    const res = yield call(
-      addItemToSflList,
-      catEntryId,
-      isRememberedUser,
-      isRegistered,
-      imageGenerator,
-      countryCurrency,
-      isCanadaSIte,
-      true
-    );
-    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
-    if (res.errorResponse && res.errorMessage) {
-      const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
-      yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
-    } else {
-      yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(true));
-      yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
-      yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(false));
-    }
-  } catch (err) {
-    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
-  }
-}
-
-export function* startSflItemMoveToBag({ payload }) {
-  try {
-    const { itemId } = payload;
-    const addToCartData = {
-      skuInfo: {
-        skuId: itemId,
-      },
-      quantity: 1,
-      fromMoveToBag: true,
-    };
-    yield put(addToCartEcom(addToCartData));
-    yield put(
-      BAG_PAGE_ACTIONS.getCartData({
-        isRecalculateTaxes: true,
-        recalcRewards: true,
-        translation: true,
-        excludeCartItems: false,
-      })
-    );
-    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-    yield put(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
-  } catch (err) {
-    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }
 

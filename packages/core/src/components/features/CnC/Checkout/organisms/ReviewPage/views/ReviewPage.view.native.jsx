@@ -105,6 +105,7 @@ class ReviewPage extends React.PureComponent {
       orderHasPickUp,
       setCheckoutStage,
       handleSubmit,
+      isExpressCheckout,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -138,6 +139,7 @@ class ReviewPage extends React.PureComponent {
               onEdit={() => {
                 setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM);
               }}
+              isExpressCheckout={isExpressCheckout}
             />
           </Container>
           <CheckoutCartItemList />
