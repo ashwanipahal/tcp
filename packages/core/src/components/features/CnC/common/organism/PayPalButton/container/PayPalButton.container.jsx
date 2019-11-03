@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
@@ -27,7 +28,13 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   }
 
   initalizePayPalButton = data => {
-    const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
+    const {
+      startPaypalCheckout,
+      paypalAuthorizationHandle,
+      clearPaypalSettings,
+      isBillingPage,
+    } = this.props;
+
     const { containerId, height } = data;
     const options = {
       locale: CONSTANTS.PAYPAL_LOCATE,
@@ -44,7 +51,9 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       },
       env: this.paypalEnv,
       payment: () => {
-        return new Promise((resolve, reject) => startPaypalCheckout({ resolve, reject }));
+        return new Promise((resolve, reject) =>
+          startPaypalCheckout({ resolve, reject, isBillingPage })
+        );
       },
       onAuthorize: paypalAuthorizationHandle,
       onCancel: clearPaypalSettings,
@@ -118,3 +127,19 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PayPalButtonContainer);
+
+
+PayPalButtonContainer.propTypes = {
+  isBillingPage: PropTypes.bool,
+};
+
+PayPalButtonContainer.defaultProps = {
+  isBillingPage: false,
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PayPalButtonContainer)
+);
