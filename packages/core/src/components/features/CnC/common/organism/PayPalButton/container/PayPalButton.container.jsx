@@ -123,12 +123,6 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PayPalButtonContainer);
-
-
 PayPalButtonContainer.propTypes = {
   isBillingPage: PropTypes.bool,
 };

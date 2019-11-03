@@ -37,7 +37,6 @@ describe('#Added to bag Selectors', () => {
       isPayPalWebViewEnable:false,
     },
       isPayPalEnabled: false,
-    },
   });
 
   const sessionState = {
