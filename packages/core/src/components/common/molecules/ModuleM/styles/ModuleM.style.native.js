@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+  /*
+    This method is responsible to return the last image index
+    of row on the basis of images length
+  */
 const getIndexes = totalImages => {
   const indexes = [];
   if (totalImages === 2 || totalImages === 3) {

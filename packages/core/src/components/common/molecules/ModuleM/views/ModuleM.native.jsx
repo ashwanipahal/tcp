@@ -59,21 +59,20 @@ class ModuleM extends React.PureComponent {
     return parseInt((moduleWidth - gutter) / divider, 10);
   };
 
-  onTabChange = catId => {
-    this.setState({ currentTabItem: catId });
+  onTabChange = id => {
+    this.setState({ currentTabItem: id });
   };
 
   /*
     Create a required data object for the ButtonTabs components
-    which is being used in the ProductTabList view.
   */
   getButtonTabItems = tabItems => {
     return tabItems.map(item => {
       const {
-        category: { cat_id: catId } = {},
+        category: { cat_id: id } = {},
         text: { text },
       } = item;
-      return { label: text, id: catId };
+      return { label: text, id };
     });
   };
 
@@ -82,8 +81,8 @@ class ModuleM extends React.PureComponent {
   */
   getImageItems = data => {
     return data.map(item => {
-      const { category: { cat_id: catId } = {}, smallCompImages } = item;
-      return { id: catId, smallCompImages };
+      const { category: { cat_id: id } = {}, smallCompImages } = item;
+      return { id, smallCompImages };
     });
   };
 
