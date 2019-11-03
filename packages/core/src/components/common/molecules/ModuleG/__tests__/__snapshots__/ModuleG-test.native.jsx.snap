@@ -43,7 +43,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "medium_text_black",
+                    "style": "large_text_black",
                     "text": "60% OFF",
                   },
                 ],

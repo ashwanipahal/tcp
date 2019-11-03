@@ -115,6 +115,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -446,6 +447,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -878,6 +880,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -1429,6 +1432,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -1866,6 +1870,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }

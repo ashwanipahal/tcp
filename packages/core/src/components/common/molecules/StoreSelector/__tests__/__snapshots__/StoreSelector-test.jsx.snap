@@ -471,6 +471,7 @@ exports[`StoreSelector component should default set title as value for selected 
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -1876,9 +1877,9 @@ exports[`StoreSelector component should default set title as value for selected 
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-cSHVUG",
+            "componentId": "sc-chPdSV",
             "isStatic": false,
-            "lastClassName": "RyqIg",
+            "lastClassName": "fcxkFp",
             "rules": Array [
               "
   ",
@@ -1988,7 +1989,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "displayName": "Styled(StoreSelector)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-cSHVUG",
+          "styledComponentId": "sc-chPdSV",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -3249,7 +3250,7 @@ exports[`StoreSelector component should default set title as value for selected 
       titleText="Test Title"
     >
       <StoreSelector
-        className="sc-cSHVUG RyqIg"
+        className="sc-chPdSV fcxkFp"
         dataLocator=""
         defaultSelectText="Test Text"
         options={
@@ -4505,7 +4506,7 @@ exports[`StoreSelector component should default set title as value for selected 
         titleText="Test Title"
       >
         <div
-          className="sc-cSHVUG RyqIg"
+          className="sc-chPdSV fcxkFp"
         >
           <div
             className="store-selector-icon"
@@ -5848,9 +5849,9 @@ exports[`StoreSelector component should default set title as value for selected 
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-jzJRlG",
+                        "componentId": "sc-kAzzGY",
                         "isStatic": false,
-                        "lastClassName": "gwSjzK",
+                        "lastClassName": "ieVlt",
                         "rules": Array [
                           "
   ",
@@ -6098,7 +6099,7 @@ exports[`StoreSelector component should default set title as value for selected 
                         "sc-bxivhb",
                       ],
                       "render": [Function],
-                      "styledComponentId": "sc-jzJRlG",
+                      "styledComponentId": "sc-kAzzGY",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -7360,7 +7361,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     activeTitle="Canada"
                     activeValue="Canada"
                     childrenComp={null}
-                    className="sc-bxivhb sc-jzJRlG gwSjzK"
+                    className="sc-bxivhb sc-kAzzGY ieVlt"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     dataLocatorObj={
@@ -8621,7 +8622,7 @@ exports[`StoreSelector component should default set title as value for selected 
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-bxivhb sc-jzJRlG gwSjzK custom-select "
+                      className="sc-bxivhb sc-kAzzGY ieVlt custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -8633,7 +8634,7 @@ exports[`StoreSelector component should default set title as value for selected 
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-bxivhb sc-jzJRlG gwSjzK custom-select "
+                        className="sc-bxivhb sc-kAzzGY ieVlt custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -8692,7 +8693,7 @@ exports[`StoreSelector component should default set title as value for selected 
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-bxivhb sc-jzJRlG gwSjzK custom-select  sc-bwzfXH fdGFgB"
+                          className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -8704,7 +8705,7 @@ exports[`StoreSelector component should default set title as value for selected 
                           textAlign="left"
                         >
                           <div
-                            className="sc-bxivhb sc-jzJRlG gwSjzK custom-select  sc-bwzfXH fdGFgB"
+                            className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"
@@ -9296,6 +9297,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -10700,9 +10702,9 @@ exports[`StoreSelector component should render correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-cSHVUG",
+            "componentId": "sc-chPdSV",
             "isStatic": false,
-            "lastClassName": "RyqIg",
+            "lastClassName": "fcxkFp",
             "rules": Array [
               "
   ",
@@ -10812,7 +10814,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "displayName": "Styled(StoreSelector)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-cSHVUG",
+          "styledComponentId": "sc-chPdSV",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -12072,7 +12074,7 @@ exports[`StoreSelector component should render correctly 1`] = `
       titleText="Test Title"
     >
       <StoreSelector
-        className="sc-cSHVUG RyqIg"
+        className="sc-chPdSV fcxkFp"
         dataLocator=""
         defaultSelectText="Test Text"
         options={
@@ -13328,7 +13330,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         titleText="Test Title"
       >
         <div
-          className="sc-cSHVUG RyqIg"
+          className="sc-chPdSV fcxkFp"
         >
           <div
             className="store-selector-icon"
@@ -14671,9 +14673,9 @@ exports[`StoreSelector component should render correctly 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "sc-jzJRlG",
+                        "componentId": "sc-kAzzGY",
                         "isStatic": false,
-                        "lastClassName": "gwSjzK",
+                        "lastClassName": "ieVlt",
                         "rules": Array [
                           "
   ",
@@ -14921,7 +14923,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                         "sc-bxivhb",
                       ],
                       "render": [Function],
-                      "styledComponentId": "sc-jzJRlG",
+                      "styledComponentId": "sc-kAzzGY",
                       "target": [Function],
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -16183,7 +16185,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     activeTitle="Test Text"
                     activeValue={null}
                     childrenComp={null}
-                    className="sc-bxivhb sc-jzJRlG gwSjzK"
+                    className="sc-bxivhb sc-kAzzGY ieVlt"
                     clickHandler={[Function]}
                     customSelectClassName=""
                     dataLocatorObj={
@@ -17444,7 +17446,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                     selectListTitle=""
                   >
                     <Styled(BodyCopy)
-                      className="sc-bxivhb sc-jzJRlG gwSjzK custom-select "
+                      className="sc-bxivhb sc-kAzzGY ieVlt custom-select "
                       color="text.primary"
                       component="div"
                       fontFamily="primary"
@@ -17456,7 +17458,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                       textAlign="left"
                     >
                       <StyledComponent
-                        className="sc-bxivhb sc-jzJRlG gwSjzK custom-select "
+                        className="sc-bxivhb sc-kAzzGY ieVlt custom-select "
                         color="text.primary"
                         component="div"
                         fontFamily="primary"
@@ -17515,7 +17517,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-bxivhb sc-jzJRlG gwSjzK custom-select  sc-bwzfXH fdGFgB"
+                          className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -17527,7 +17529,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                           textAlign="left"
                         >
                           <div
-                            className="sc-bxivhb sc-jzJRlG gwSjzK custom-select  sc-bwzfXH fdGFgB"
+                            className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"

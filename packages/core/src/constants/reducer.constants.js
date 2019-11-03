@@ -45,6 +45,7 @@ export const USER_REDUCER_KEY = 'User';
 export const BIRTHDAY_SAVINGS_ACTION_PATTERN = '@@BirthdaySavings';
 export const NAVIGATION_ACTION_PATTERN = '@@Navigation-';
 export const RECOMMENDATIONS_ACTION_PATTERN = '@@Recommendations-';
+export const SOCIAL_ACTION_PATTERN = '@@Social-';
 
 // search listing page reducer
 export const SLP_PAGE_REDUCER_KEY = 'SearchListingPage';
@@ -262,4 +263,5 @@ export const REDUCER_ACTION_MAPPING = {
   [MY_PREFERENCE_REDUCER_KEY]: MY_PREFERENCE_ACTION_PATTERN,
   [BUNDLEPRODUCT_REDUCER_KEY]: BUNDLEPRODUCT_ACTION_PATTERN,
   [COUPON_REDUCER_KEY]: COUPON_ACTION_PATTERN,
+  [SOCIAL_REDUCER_KEY]: SOCIAL_ACTION_PATTERN,
 };

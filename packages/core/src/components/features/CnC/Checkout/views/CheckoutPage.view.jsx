@@ -175,6 +175,7 @@ class CheckoutPage extends React.PureComponent {
       pickUpContactAlternate,
       checkoutServerError,
       clearCheckoutServerError,
+      toggleCountrySelector,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -209,11 +210,13 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPickupDisplayed={this.isVenmoPickupDisplayed()}
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
             {...shippingProps}
+            toggleCountrySelector={toggleCountrySelector}
             initShippingPage={initShippingPage}
             isGuest={isGuest}
             isUsSite={isUsSite}
@@ -236,6 +239,7 @@ class CheckoutPage extends React.PureComponent {
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -248,6 +252,7 @@ class CheckoutPage extends React.PureComponent {
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -279,10 +284,14 @@ class CheckoutPage extends React.PureComponent {
               },
             }}
             clearCheckoutServerError={clearCheckoutServerError}
+            pageCategory={currentSection.toLowerCase()}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
-          <Confirmation isVenmoPaymentInProgress={isVenmoPaymentInProgress} />
+          <Confirmation
+            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            pageCategory={currentSection.toLowerCase()}
+          />
         )}
       </div>
     );
@@ -297,7 +306,7 @@ class CheckoutPage extends React.PureComponent {
   }
 
   render() {
-    const { isGuest, router, submitReview, reviewProps } = this.props;
+    const { isGuest, router, submitReview, reviewProps, checkoutServerError } = this.props;
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
@@ -351,6 +360,7 @@ class CheckoutPage extends React.PureComponent {
         }
         isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
         pageCategory={currentSection.toLowerCase()}
+        checkoutServerError={checkoutServerError}
       />
     );
   }
@@ -381,6 +391,7 @@ CheckoutPage.propTypes = {
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
   verifyAddressAction: PropTypes.func.isRequired,
+  toggleCountrySelector: PropTypes.func.isRequired,
   submitVerifiedShippingAddressData: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,

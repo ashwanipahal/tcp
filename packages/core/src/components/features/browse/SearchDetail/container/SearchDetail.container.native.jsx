@@ -34,6 +34,7 @@ import {
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 import { setRecentSearch } from '../../../../common/organisms/SearchProduct/RecentSearch.actions';
+import { PLPSkeleton } from '../../../../common/atoms/index.native';
 
 class SearchDetailContainer extends React.PureComponent {
   constructor(props) {
@@ -176,7 +177,7 @@ class SearchDetailContainer extends React.PureComponent {
             )}
           </View>
         ) : (
-          <View />
+          <PLPSkeleton col={20} />
         )}
       </React.Fragment>
     );
