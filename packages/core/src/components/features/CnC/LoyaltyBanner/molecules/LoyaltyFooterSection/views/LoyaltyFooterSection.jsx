@@ -5,67 +5,69 @@ import Styles from '../styles/LoyaltyFooterSection.style';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
-const renderApplyNowLink = () => {
+const renderApplyNowLink = labels => {
   return (
     <span className="applyNowLink">
-      <ApplyNowModal />
+      <ApplyNowModal step={2} labelText={labels.applyNow} />
     </span>
   );
 };
 
 const renderLearnMoreLink = labels => {
+  return <ApplyNowModal labelText={labels.learnMore} />;
+};
+
+const onLinkClick = ({ e, componentId, closeAddedToBagModal, openOverlay }) => {
+  e.preventDefault();
+  closeAddedToBagModal();
+  openOverlay({
+    component: componentId,
+    variation: 'primary',
+  });
+};
+
+const renderCreateAccountLink = (labels, closeAddedToBagModal, openOverlay) => {
   return (
     <Anchor
-      className="learnMore"
       fontSizeVariation="medium"
       anchorVariation="primary"
-      text={labels.learnMore}
-      onClick={e => {
-        e.preventDefault();
-      }}
+      noLink
       underline
-    />
+      handleLinkClick={e => {
+        e.preventDefault();
+        onLinkClick({ e, componentId: 'createAccount', closeAddedToBagModal, openOverlay });
+      }}
+    >
+      {labels.createMyPlaceRewardsAccount}
+    </Anchor>
   );
 };
 
-const renderCreateAccountLink = (labels, openLoginModal) => {
+const renderLoginLink = (labels, closeAddedToBagModal, openOverlay) => {
   return (
     <Anchor
-      className="learnMore"
       fontSizeVariation="medium"
       anchorVariation="primary"
-      text={labels.createMyPlaceRewardsAccount}
+      noLink
       underline
-      onClick={e => {
+      handleLinkClick={e => {
         e.preventDefault();
-        openLoginModal('createAccount');
+        onLinkClick({ e, componentId: 'login', closeAddedToBagModal, openOverlay });
       }}
-    />
+    >
+      {labels.logIn}
+    </Anchor>
   );
 };
 
-const renderLoginLink = (labels, openLoginModal) => {
-  return (
-    <Anchor
-      className="learnMore"
-      fontSizeVariation="medium"
-      anchorVariation="primary"
-      text={labels.logIn}
-      underline
-      onClick={e => {
-        e.preventDefault();
-        openLoginModal();
-      }}
-    />
-  );
-};
-
-const createLoginLinks = (labels, openLoginModal) => {
+const createLoginLinks = (labels, closeAddedToBagModal, openOverlay) => {
   return (
     <div className="links-wrapper">
       <span className="links-container">
-        <span>{renderCreateAccountLink(labels, openLoginModal)}</span>
-        <span className="elem-pl-XL">{renderLoginLink(labels, openLoginModal)}</span>
+        <span>{renderCreateAccountLink(labels, closeAddedToBagModal, openOverlay)}</span>
+        <span className="elem-pl-XL">
+          {renderLoginLink(labels, closeAddedToBagModal, openOverlay)}
+        </span>
       </span>
     </div>
   );
@@ -75,7 +77,7 @@ const applyNowLearnMoreLinks = labels => {
   return (
     <div className="links-wrapper">
       <span className="links-container">
-        {renderApplyNowLink()}
+        {renderApplyNowLink(labels)}
         <span className="learnSymbolWrapper elem-pl-XL">
           <BodyCopy
             className="symbolWrapper"
@@ -96,12 +98,12 @@ const applyNowLearnMoreLinks = labels => {
   );
 };
 
-const addedToBagPageLinks = (labels, isGuest, isPlcc, openLoginModal) => {
+const addedToBagPageLinks = (labels, isGuest, isPlcc, closeAddedToBagModal, openOverlay) => {
   return (
     <>
-      {isGuest && createLoginLinks(labels, openLoginModal)}
+      {isGuest && createLoginLinks(labels, closeAddedToBagModal, openOverlay)}
       {!isGuest && !isPlcc && applyNowLearnMoreLinks(labels)}
-      {!isGuest && isPlcc && <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>}
+      {!isGuest && isPlcc && <span className="links-wrapper">{renderLearnMoreLink(labels)}</span>}
     </>
   );
 };
@@ -112,7 +114,8 @@ const renderConfirmationAndBagLinks = (
   isPlcc,
   isGuest,
   earnedRewardAvailable,
-  openLoginModal
+  closeAddedToBagModal,
+  openOverlay
 ) => {
   return (
     <>
@@ -125,25 +128,25 @@ const renderConfirmationAndBagLinks = (
       {isConfirmationPage &&
         isGuest &&
         earnedRewardAvailable &&
-        createLoginLinks(labels, openLoginModal)}
+        createLoginLinks(labels, closeAddedToBagModal, openOverlay)}
     </>
   );
 };
 
-const detailViewFooter = (labels, isGuest, isPlcc, openLoginModal) => {
+const detailViewFooter = (labels, isGuest, isPlcc, closeAddedToBagModal, openOverlay) => {
   return (
     <>
       {isGuest && (
         <span>
-          {renderCreateAccountLink(labels, openLoginModal)}
-          {renderLoginLink(labels, openLoginModal)}
+          {renderCreateAccountLink(labels, closeAddedToBagModal, openOverlay)}
+          {renderLoginLink(labels, closeAddedToBagModal, openOverlay)}
         </span>
       )}
       {!isGuest && (
         <>
           {!isPlcc && (
             <span>
-              {renderApplyNowLink()}
+              {renderApplyNowLink(labels)}
               {renderLearnMoreLink(labels)}
             </span>
           )}
@@ -165,12 +168,15 @@ const LoyaltyFooterSection = props => {
     isConfirmationPage,
     isAddedToBagPage,
     earnedRewardAvailable,
-    openLoginModal,
+    closeAddedToBagModal,
+    openOverlay,
   } = props;
   return (
     <div className={`${className} footerWrapper`}>
-      {isProductDetailView && detailViewFooter(labels, isGuest, isPlcc, openLoginModal)}
-      {isAddedToBagPage && addedToBagPageLinks(labels, isGuest, isPlcc, openLoginModal)}
+      {isProductDetailView &&
+        detailViewFooter(labels, isGuest, isPlcc, closeAddedToBagModal, openOverlay)}
+      {isAddedToBagPage &&
+        addedToBagPageLinks(labels, isGuest, isPlcc, closeAddedToBagModal, openOverlay)}
       {!isProductDetailView && !isAddedToBagPage && (
         <>
           {!isReviewPage &&
@@ -180,7 +186,8 @@ const LoyaltyFooterSection = props => {
               isPlcc,
               isGuest,
               earnedRewardAvailable,
-              openLoginModal
+              closeAddedToBagModal,
+              openOverlay
             )}
           {isReviewPage && isPlcc && (
             <div className="links-wrapper">{renderLearnMoreLink(labels)}</div>
@@ -201,7 +208,8 @@ LoyaltyFooterSection.propTypes = {
   isConfirmationPage: PropTypes.bool,
   earnedRewardAvailable: PropTypes.bool,
   isAddedToBagPage: PropTypes.bool,
-  openLoginModal: PropTypes.string,
+  openOverlay: PropTypes.func.isRequired,
+  closeAddedToBagModal: PropTypes.func.isRequired,
 };
 
 LoyaltyFooterSection.defaultProps = {
@@ -213,7 +221,6 @@ LoyaltyFooterSection.defaultProps = {
   isConfirmationPage: false,
   earnedRewardAvailable: false,
   isAddedToBagPage: false,
-  openLoginModal: '',
 };
 
 export default withStyles(LoyaltyFooterSection, Styles);

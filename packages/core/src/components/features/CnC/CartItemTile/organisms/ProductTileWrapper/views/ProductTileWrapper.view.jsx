@@ -158,6 +158,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isCartItemSFL,
       isSflItemRemoved,
       setHeaderErrorState,
+      navigation,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -195,6 +196,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
               swipedElement={swipedElement}
               sflItemsCount={sflItemsCount}
               isBagPageSflSection={isBagPageSflSection}
+              navigation={navigation}
             />
           </>
         );

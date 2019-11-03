@@ -55,6 +55,10 @@ const ImgWrapper = styled.View`
   align-items: center;
 `;
 
+const ImageTouchableOpacity = styled.TouchableOpacity`
+  justify-content: center;
+`;
+
 const ProductSubDetails = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
@@ -189,4 +193,5 @@ export {
   ProductListPriceOnReview,
   SizeQtyOnReview,
   ToggleError,
+  ImageTouchableOpacity,
 };

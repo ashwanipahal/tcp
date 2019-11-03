@@ -28,7 +28,7 @@ describe('ReviewPageVanilla component', () => {
     },
     pickUpContactAlternate: {},
     orderHasPickUp: true,
-    orderHasShipping: true
+    orderHasShipping: true,
   };
   const data = {
     pickUpAlternateExpress: {

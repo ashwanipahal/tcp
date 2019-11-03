@@ -46,6 +46,7 @@ class GuestBillingForm extends React.Component {
     showAccordian: PropTypes.bool,
     isVenmoEnabled: PropTypes.bool, // Venmo Kill Switch, if Venmo enabled then true, else false.
     isPaymentDisabled: PropTypes.bool,
+    pageCategory: PropTypes.string,
     venmoError: PropTypes.string,
   };
 
@@ -74,6 +75,7 @@ class GuestBillingForm extends React.Component {
     showAccordian: true,
     isVenmoEnabled: false,
     isPaymentDisabled: false,
+    pageCategory: '',
     venmoError: '',
   };
 
@@ -114,6 +116,7 @@ class GuestBillingForm extends React.Component {
       isVenmoEnabled,
       isPaymentDisabled,
       venmoError,
+      pageCategory,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -172,7 +175,11 @@ class GuestBillingForm extends React.Component {
             </div>
           </>
         )}
-        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
+        <CheckoutOrderInfo
+          isGuest={isGuest}
+          showAccordian={showAccordian}
+          pageCategory={pageCategory}
+        />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}

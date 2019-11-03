@@ -30,7 +30,7 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
       Object {
         "alt": "",
         "height": 900,
-        "src": "",
+        "src": "undefined/w_500/undefined/",
         "width": 900,
       }
     }
@@ -41,7 +41,7 @@ exports[`ProductDetailImage component should renders correctly 1`] = `
         "alt": "",
         "isFluidWidth": true,
         "onLoad": [Function],
-        "src": "",
+        "src": "undefined/w_500/undefined/",
       }
     }
   />

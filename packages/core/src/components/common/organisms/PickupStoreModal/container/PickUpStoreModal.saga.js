@@ -6,7 +6,7 @@ import {
   setBopisStores,
   setStoreSearchError,
   setUserCartStores,
-  getBopisStoresActn,
+  setStoreSearchingState,
 } from './PickUpStoreModal.actions';
 import {
   submitGetBopisSearchByLatLng,
@@ -38,7 +38,9 @@ export function* getPickupStores(action) {
         country,
         variantId,
       };
+
       const storesResponse = yield call(getStoresPlusInventorybyLatLng, reqObj);
+
       const { error, stores } = storesResponse;
       if (error) {
         yield put(setStoreSearchError(error));
@@ -59,6 +61,7 @@ export function* getUserCartStores(action) {
     yield put(setUserCartStores({ stores: null }));
     yield put(setStoreSearchError(''));
     let stores = [];
+    yield put(setStoreSearchingState(true));
     if (cartItemsCount > 0) {
       stores = yield call(getCartStoresPlusInventory, payload.apiPayload);
     }
@@ -67,10 +70,12 @@ export function* getUserCartStores(action) {
       yield put(setUserCartStores({ stores }));
     } else {
       yield put(setUserCartStores({ stores }));
-      yield put(getBopisStoresActn(payload.apiPayload));
+      yield call(getPickupStores, { payload: payload.apiPayload });
     }
+    yield put(setStoreSearchingState(false));
   } catch (err) {
     logger.error(err);
+    yield put(setStoreSearchingState(false));
   }
 }
 

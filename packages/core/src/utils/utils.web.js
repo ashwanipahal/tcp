@@ -383,6 +383,10 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
+    styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
+    styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
+    styliticsRegionTCP: processEnv.RWD_WEB_STYLITICS_REGION_TCP && countryKey.split('_')[1],
+    styliticsRegionGYM: processEnv.RWD_WEB_STYLITICS_REGION_GYM,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {

@@ -41,7 +41,7 @@ const ModalStyle = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-top: 0;
     height: 20px;
-    font-weight: 800;
+    font-weight: ${props => props.theme.typography.fontWeights.bold};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;

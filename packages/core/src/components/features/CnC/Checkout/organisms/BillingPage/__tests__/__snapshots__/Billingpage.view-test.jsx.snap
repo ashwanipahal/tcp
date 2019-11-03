@@ -20,6 +20,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
       isVenmoEnabled={false}
       isVenmoPaymentInProgress={false}
       labels={Object {}}
+      pageCategory=""
       shippingAddress={null}
       userAddresses={null}
     />
@@ -44,6 +45,7 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
     isVenmoEnabled={false}
     isVenmoPaymentInProgress={false}
     labels={Object {}}
+    pageCategory=""
     shippingAddress={null}
   />
 </div>

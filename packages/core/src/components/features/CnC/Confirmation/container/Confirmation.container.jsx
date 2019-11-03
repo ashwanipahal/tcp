@@ -45,6 +45,7 @@ class ConfirmationContainer extends React.Component {
     isCanadaSite: PropTypes.bool,
     isUsSiteId: PropTypes.bool,
     venmoUserName: PropTypes.string,
+    pageCategory: PropTypes.string,
     isVenmoPaymentInProgress: PropTypes.bool,
   };
 
@@ -59,6 +60,7 @@ class ConfirmationContainer extends React.Component {
     isCanadaSite: false,
     isUsSiteId: true,
     venmoUserName: '',
+    pageCategory: '',
     isVenmoPaymentInProgress: false,
   };
 
@@ -107,6 +109,7 @@ class ConfirmationContainer extends React.Component {
       orderNumbersByFullfillmentCenter,
       venmoUserName,
       isVenmoPaymentInProgress,
+      pageCategory,
     } = this.props;
     return (
       <ConfirmationView
@@ -123,6 +126,7 @@ class ConfirmationContainer extends React.Component {
         updateOrderDetailsData={updateOrderDetailsData}
         venmoUserName={venmoUserName}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+        pageCategory={pageCategory}
       />
     );
   }

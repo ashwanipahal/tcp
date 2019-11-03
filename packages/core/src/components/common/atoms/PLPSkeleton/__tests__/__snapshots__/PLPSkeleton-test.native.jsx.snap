@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PLP Skeleton Native Componenet should match snapshot 1`] = `
+<ScrollViewMock>
+  <Styled(View)>
+    <PLPSkeletonView
+      key="0"
+    />
+    <PLPSkeletonView
+      key="1"
+    />
+    <PLPSkeletonView
+      key="2"
+    />
+  </Styled(View)>
+</ScrollViewMock>
+`;

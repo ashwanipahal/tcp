@@ -10,11 +10,11 @@ const OrderItemContainer = styled.View`
 const OrderItemImage = styled.View`
   display: flex;
   align-items: center;
-  width: 33%;
+  width: 30%;
 `;
 
 const OrderItemContent = styled(ViewWithSpacing)`
-  width: 67%;
+  width: 70%;
 `;
 
 const OrderContentWrapper = styled.View`
@@ -23,9 +23,8 @@ const OrderContentWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-const ImageStyle = styled.Image`
-  width: 100%;
-  max-height: 130px;
+const ImageStyle = styled.View`
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const ImageBrandStyle = styled.Image`
