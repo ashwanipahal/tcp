@@ -37,6 +37,7 @@ class ImageCarousel extends React.PureComponent {
       activeSlideIndex: 0,
       showModal: false,
       isAddedToFav: false,
+      generalProductId: null,
     };
     const { theme } = props;
     this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
@@ -66,16 +67,28 @@ class ImageCarousel extends React.PureComponent {
     }
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (
+      typeof props.onAddItemToFavorites === 'function' &&
+      props.isLoggedIn &&
+      state.generalProductId !== null
+    ) {
+      props.onAddItemToFavorites({ colorProductId: state.generalProductId });
+    }
+    if (props.isLoggedIn && state.showModal) {
+      return { showModal: false };
+    }
+    return null;
+  }
+
   // this method call when tap on the pagination dots and navigate to clicked image
   onPageChange = dotClickedIndex => {
     this.flatListRef.scrollToIndex({ animated: true, index: dotClickedIndex });
   };
 
   onFavorite = generalProductId => {
-    const { onAddItemToFavorites, isLoggedIn } = this.props;
-
-    onAddItemToFavorites({ colorProductId: generalProductId });
-
+    const { isLoggedIn } = this.props;
+    this.setState({ generalProductId });
     if (!isLoggedIn) {
       this.setState({ showModal: true });
     }
@@ -281,7 +294,6 @@ ImageCarousel.propTypes = {
   ),
   onImageClick: PropTypes.func.isRequired,
   isGiftCard: PropTypes.bool,
-  onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   currentProduct: PropTypes.shape({}),
 };
@@ -290,7 +302,6 @@ ImageCarousel.defaultProps = {
   theme: {},
   imageUrls: [],
   isGiftCard: false,
-  onAddItemToFavorites: null,
   isLoggedIn: false,
   currentProduct: {},
 };

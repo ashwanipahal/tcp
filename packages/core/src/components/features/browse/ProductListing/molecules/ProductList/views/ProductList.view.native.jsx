@@ -20,6 +20,8 @@ class ProductList extends React.PureComponent {
 
     this.state = {
       showModal: false,
+      favorites: true,
+      generalProductId: null,
     };
   }
 
@@ -31,14 +33,27 @@ class ProductList extends React.PureComponent {
     }
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (
+      typeof props.onAddItemToFavorites === 'function' &&
+      props.isLoggedIn &&
+      state.generalProductId !== null
+    ) {
+      props.onAddItemToFavorites({ colorProductId: state.generalProductId });
+    }
+    if (props.isLoggedIn && state.showModal) {
+      return { showModal: false };
+    }
+    return null;
+  }
+
   // eslint-disable-next-line
   onAddToBag = data => {};
 
   // eslint-disable-next-line
   onFavorite = generalProductId => {
-    const { onAddItemToFavorites, isLoggedIn } = this.props;
-
-    onAddItemToFavorites({ colorProductId: generalProductId });
+    const { isLoggedIn } = this.props;
+    this.setState({ generalProductId });
 
     if (!isLoggedIn) {
       this.setState({ showModal: true });
@@ -48,6 +63,7 @@ class ProductList extends React.PureComponent {
   toggleModal = () => {
     this.setState(state => ({
       showModal: !state.showModal,
+      favorites: false,
     }));
   };
 
@@ -71,7 +87,7 @@ class ProductList extends React.PureComponent {
     );
   };
 
-  renderComponent = ({ isUserLoggedIn }) => {
+  renderComponent = ({ isUserLoggedIn, favorites }) => {
     let componentContainer = null;
     if (!isUserLoggedIn) {
       componentContainer = (
@@ -79,7 +95,7 @@ class ProductList extends React.PureComponent {
           onRequestClose={this.toggleModal}
           isUserLoggedIn={isUserLoggedIn}
           showLogin={this.showloginModal}
-          variation="favorites"
+          variation={favorites && 'favorites'}
         />
       );
     }
@@ -100,11 +116,9 @@ class ProductList extends React.PureComponent {
       isFavorite,
       setLastDeletedItemId,
       isLoggedIn,
-      labelsLogin,
     } = this.props;
     const { item } = itemData;
 
-    const { logIn } = labelsLogin;
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -113,6 +127,7 @@ class ProductList extends React.PureComponent {
     // get product color and price info of default zero index item
     const currentColorMiscInfo = (colorsMap && curentColorEntry.miscInfo) || {};
     const { badge1, badge2 } = currentColorMiscInfo;
+
     // get default top badge data
     let topBadge;
     if (colorsMap) {
@@ -122,44 +137,24 @@ class ProductList extends React.PureComponent {
     // get default Loyalty message
     const loyaltyPromotionMessage = this.getLoyaltyPromotionMessage(productInfo, colorsMap);
 
-    const { showModal } = this.state;
     return (
-      <>
-        <ListItem
-          item={item}
-          isMatchingFamily={isMatchingFamily}
-          badge1={topBadge}
-          badge2={badge2}
-          isPlcc={isPlcc}
-          loyaltyPromotionMessage={loyaltyPromotionMessage}
-          onAddToBag={this.onAddToBag}
-          onFavorite={this.onFavorite}
-          currencyExchange={currencyExchange}
-          currencySymbol={currencySymbol}
-          onGoToPDPPage={this.onOpenPDPPageHandler}
-          onQuickViewOpenClick={onQuickViewOpenClick}
-          isFavorite={isFavorite}
-          setLastDeletedItemId={setLastDeletedItemId}
-          isLoggedIn={isLoggedIn}
-        />
-        {showModal && (
-          <ModalNative
-            isOpen={showModal}
-            onRequestClose={this.toggleModal}
-            heading={logIn}
-            headingFontFamily="secondary"
-            fontSize="fs16"
-          >
-            <SafeAreaView>
-              <ModalViewWrapper>
-                {this.renderComponent({
-                  isLoggedIn,
-                })}
-              </ModalViewWrapper>
-            </SafeAreaView>
-          </ModalNative>
-        )}
-      </>
+      <ListItem
+        item={item}
+        isMatchingFamily={isMatchingFamily}
+        badge1={topBadge}
+        badge2={badge2}
+        isPlcc={isPlcc}
+        loyaltyPromotionMessage={loyaltyPromotionMessage}
+        onAddToBag={this.onAddToBag}
+        onFavorite={this.onFavorite}
+        currencyExchange={currencyExchange}
+        currencySymbol={currencySymbol}
+        onGoToPDPPage={this.onOpenPDPPageHandler}
+        onQuickViewOpenClick={onQuickViewOpenClick}
+        isFavorite={isFavorite}
+        setLastDeletedItemId={setLastDeletedItemId}
+        isLoggedIn={isLoggedIn}
+      />
     );
   };
 
@@ -224,22 +219,45 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { products } = this.props;
+    const { products, isLoggedIn, labelsLogin } = this.props;
+
+    const { logIn } = labelsLogin;
+    const { showModal, favorites } = this.state;
     return (
-      <FlatList
-        ref={ref => this.setListRef(ref)}
-        data={products}
-        renderItem={this.renderItemList}
-        keyExtractor={item => item.productInfo.generalProductId}
-        initialNumToRender={4}
-        maxToRenderPerBatch={2}
-        numColumns={2}
-        extraData={this.props}
-        ListFooterComponent={this.renderFooter}
-        ListHeaderComponent={this.renderHeader}
-        stickyHeaderIndices={[0]}
-        columnWrapperStyle={this.getColumnWrapperStyle()}
-      />
+      <>
+        <FlatList
+          ref={ref => this.setListRef(ref)}
+          data={products}
+          renderItem={this.renderItemList}
+          keyExtractor={item => item.productInfo.generalProductId}
+          initialNumToRender={4}
+          maxToRenderPerBatch={2}
+          numColumns={2}
+          extraData={this.props}
+          ListFooterComponent={this.renderFooter}
+          ListHeaderComponent={this.renderHeader}
+          stickyHeaderIndices={[0]}
+          columnWrapperStyle={this.getColumnWrapperStyle()}
+        />
+        {showModal && (
+          <ModalNative
+            isOpen={showModal}
+            onRequestClose={this.toggleModal}
+            heading={logIn}
+            headingFontFamily="secondary"
+            fontSize="fs16"
+          >
+            <SafeAreaView>
+              <ModalViewWrapper>
+                {this.renderComponent({
+                  isLoggedIn,
+                  favorites,
+                })}
+              </ModalViewWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        )}
+      </>
     );
   };
 
