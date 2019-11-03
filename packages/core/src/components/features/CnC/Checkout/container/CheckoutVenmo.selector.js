@@ -61,12 +61,6 @@ export const isVenmoNonceActive = state => {
   );
 };
 
-export function isVenmoPaymentAvailable(state) {
-  const venmoData = getVenmoData(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
-  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
-}
-
 /**
  * @function getVenmoUserName
  * @description Gets the venmo username which is authorized from the app
@@ -76,3 +70,9 @@ export const getVenmoUserName = state => {
   const { details: { username } = {} } = venmoData || {};
   return username;
 };
+
+export function isVenmoPaymentAvailable(state) {
+  const venmoData = getVenmoData(state);
+  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
+  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
+}

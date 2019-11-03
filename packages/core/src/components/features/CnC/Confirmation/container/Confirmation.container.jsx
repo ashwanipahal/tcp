@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ConfirmationView from '../views';
 import selectors from './Confirmation.selectors';
-import { isGuest, isUsSite, getVenmoUserName } from '../../Checkout/container/Checkout.selector';
+import getVenmoUserName, { isGuest, isUsSite } from '../../Checkout/container/Checkout.selector';
 import { fetchUpdateOrderDetailsData } from './Confirmation.actions';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 
