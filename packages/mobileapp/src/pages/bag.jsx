@@ -4,6 +4,10 @@ import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header/BagPageHeader';
 
+const checkNavigation = nav => {
+  return !nav.getParam('headerMode');
+};
+
 const BagStack = createStackNavigator(
   {
     BagPage: {
@@ -25,10 +29,6 @@ BagStack.navigationOptions = {
     <NavBarIcon iconActive="home-active" iconInactive="home-inactive" {...props} />
   ),
   headerVisible: false,
-};
-
-const checkNavigation = nav => {
-  return !nav.getParam('headerMode');
 };
 
 export default BagStack;
