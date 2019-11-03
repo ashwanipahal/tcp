@@ -6,7 +6,6 @@ import {
   CHECKOUT_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
 import CheckoutUtils from '../util/utility';
@@ -27,6 +26,20 @@ import {
   getPaypalPaymentSettings,
   getExpressReviewShippingSectionId,
 } from './Checkout.selector.util';
+import {
+  getVenmoData,
+  getVenmoClientTokenData,
+  isVenmoPaymentInProgress,
+  isVenmoPickupBannerDisplayed,
+  isVenmoShippingBannerDisplayed,
+  isVenmoPaymentSaveSelected,
+  getVenmoError,
+  isVenmoNonceNotExpired,
+  isVenmoPaymentToken,
+  isVenmoNonceActive,
+  isVenmoPaymentAvailable,
+  getVenmoUserName,
+} from './CheckoutVenmo.selector';
 
 // import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 
@@ -676,28 +689,6 @@ const getCurrentOrderId = state => {
 const getSmsNumberForBillingOrderUpdates = state =>
   state.Checkout.getIn(['values', 'smsInfo', 'numberForUpdates']);
 
-const getVenmoData = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData']);
-};
-
-const getVenmoClientTokenData = state =>
-  state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoClientTokenData']);
-
-const isVenmoPaymentInProgress = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentInProgress']);
-};
-
-const isVenmoPickupBannerDisplayed = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPickupMessageDisplayed']);
-};
-
-const isVenmoShippingBannerDisplayed = state => {
-  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoShippingMessageDisplayed']);
-};
-
-const isVenmoPaymentSaveSelected = state =>
-  state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'venmoPaymentOptionSave']);
-
 const getCurrentCheckoutStage = state => state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'stage']);
 
 const isGiftOptionsEnabled = state => {
@@ -707,51 +698,6 @@ const isGiftOptionsEnabled = state => {
 const getCheckoutServerError = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'checkoutServerError']);
 };
-
-const getVenmoError = state => {
-  const error = state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData', 'error']);
-  return error ? error.message : '';
-};
-
-/**
- * Mainly used to check for Venmo nonce expiry
- * @param state
- */
-const isVenmoNonceNotExpired = state => {
-  const venmoData = getVenmoData(state);
-  const expiry = venmoConstants.VENMO_NONCE_EXPIRY_TIMEOUT;
-  const { nonce, timestamp } = venmoData;
-  const venmoClientTokenData = getVenmoClientTokenData(state);
-  const venmoPaymentTokenAvailable = venmoClientTokenData
-    ? venmoClientTokenData.venmoPaymentTokenAvailable
-    : false;
-  return venmoPaymentTokenAvailable === 'TRUE' || (nonce && Date.now() - timestamp <= expiry);
-};
-
-const isVenmoPaymentToken = state => {
-  const venmoClientTokenData = getVenmoClientTokenData(state);
-  const venmoPaymentTokenAvailable = venmoClientTokenData
-    ? venmoClientTokenData.venmoPaymentTokenAvailable
-    : false;
-  return venmoPaymentTokenAvailable === 'TRUE';
-};
-
-const isVenmoNonceActive = state => {
-  const venmoData = getVenmoData(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
-  return (
-    venmoData &&
-    (venmoData.nonce || isVenmoPaymentToken(state)) &&
-    venmoPaymentInProgress &&
-    isVenmoNonceNotExpired(state)
-  );
-};
-
-function isVenmoPaymentAvailable(state) {
-  const venmoData = getVenmoData(state);
-  const venmoPaymentInProgress = isVenmoPaymentInProgress(state);
-  return venmoData && (venmoData.nonce || isVenmoPaymentToken(state)) && venmoPaymentInProgress;
-}
 
 /**
  * This method is used to decide if we need to show review page next based on order conditions.
@@ -900,16 +846,6 @@ const getShippingSectionLabels = createSelector(
     return labels;
   }
 );
-
-/**
- * @function getVenmoUserName
- * @description Gets the venmo username which is authorized from the app
- */
-export const getVenmoUserName = state => {
-  const venmoData = getVenmoData(state);
-  const { details: { username } = {} } = venmoData || {};
-  return username;
-};
 
 const getShippingAddressList = createSelector(
   [getAddressListState, getCurrentSiteId],

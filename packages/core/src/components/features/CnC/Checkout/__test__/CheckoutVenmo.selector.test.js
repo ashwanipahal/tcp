@@ -8,6 +8,36 @@ jest.mock('../../../../../utils', () => ({
 }));
 
 describe('Venmo Checkout Selectors', () => {
+  const venmoData = {
+    nonce: 'fake-venmo-account-nonce',
+    deviceData: '523d2ff2f87421afab351d7447afafab',
+    supportedByBrowser: true,
+    loading: false,
+    timestamp: 1570110984387,
+    error: null,
+    details: {
+      username: 'gagandsb',
+    },
+  };
+  it('#getVenmoData', () => {
+    const { getVenmoData } = CHECKOUT_SELECTORS;
+
+    const Checkout = fromJS({
+      values: {
+        venmoData,
+      },
+    });
+
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoData,
+        },
+      }),
+    };
+    expect(getVenmoData(state)).toEqual(Checkout.getIn(['values', 'venmoData']));
+  });
+
   it('#isVenmoPaymentInProgress', () => {
     const { isVenmoPaymentInProgress } = CHECKOUT_SELECTORS;
     const state = {
@@ -159,5 +189,35 @@ describe('Venmo Checkout Selectors', () => {
     });
     expect(getPickupValues(state)).toEqual(Checkout.getIn(['values', 'pickUpContact']));
     expect(getVenmoUserEmail(state)).toEqual(email);
+  });
+
+  it('#getVenmoUserName', () => {
+    const { getVenmoUserName } = CHECKOUT_SELECTORS;
+    const getVenmoData = jest.fn();
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoData,
+        },
+      }),
+    };
+    getVenmoData.mockImplementation(() => {
+      return {
+        venmoData,
+      };
+    });
+    expect(getVenmoUserName(state)).toBeUndefined();
+  });
+  it('#isVenmoNonceActive', () => {
+    const { isVenmoNonceActive } = CHECKOUT_SELECTORS;
+    const state = {
+      Checkout: fromJS({
+        values: {
+          venmoData,
+        },
+      }),
+    };
+
+    expect(isVenmoNonceActive(state)).toBeFalsy();
   });
 });
