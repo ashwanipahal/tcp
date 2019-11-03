@@ -39,6 +39,7 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
+import { PLPSkeleton } from '../../../../common/atoms/index.native';
 
 class SearchDetailContainer extends React.PureComponent {
   constructor(props) {
@@ -187,7 +188,7 @@ class SearchDetailContainer extends React.PureComponent {
             )}
           </View>
         ) : (
-          <View />
+          <PLPSkeleton col={20} />
         )}
       </React.Fragment>
     );

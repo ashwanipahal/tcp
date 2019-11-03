@@ -86,7 +86,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
       btnText=""
       isConfirmationPage={false}
       onBackLinkPress={[Function]}
-      pageCategory={Object {}}
+      pageCategory="guestBilling"
       routeToPage=""
       showAccordian={true}
     />
@@ -228,7 +228,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       btnText=""
       isConfirmationPage={false}
       onBackLinkPress={[Function]}
-      pageCategory={Object {}}
+      pageCategory="guestBilling"
       routeToPage=""
       showAccordian={true}
     />

@@ -63,6 +63,26 @@ const FooterNavLinksList = ({
   };
 
   /**
+   * @function shouldLoginModalOpen
+   * @param {string} action - link action type
+   * @param {string} URL -  Location to redirect
+   */
+  const shouldLoginModalOpen = (action, URL) => {
+    let response = false;
+    if (
+      action === 'favorites' ||
+      action === 'redeem-rewards' ||
+      action === 'check-point-balance' ||
+      URL === '/redeem-rewards' ||
+      URL === '/check-point-balance' ||
+      URL === '/favorites'
+    ) {
+      response = true;
+    }
+    return response;
+  };
+
+  /**
    * Callback for redux action mapped to link action type
    * @callback dispatchFn
    * @param {Object} payload
@@ -75,23 +95,28 @@ const FooterNavLinksList = ({
    */
   const getOnClickAction = (action, dispatchFn, linkItems) => {
     let onClick = null;
-    if (action === 'track-order' || linkItems.url === '/track-order')
+    if (action === 'track-order' || linkItems.url === '/track-order') {
       onClick = e => trackOrderLink(e, dispatchFn);
-    if (action === 'favorites' || linkItems.url === '/favorites')
+    } else if (action === 'favorites' || linkItems.url === '/favorites') {
       onClick = e => loginModalOpenClick(e, dispatchFn);
-    if (action === 'log-out' || linkItems.url === '/log-out') onClick = e => logout(e, dispatchFn);
-    if (action === 'login-account' || linkItems.url === '/login-account')
+    } else if (action === 'log-out' || linkItems.url === '/log-out') {
+      onClick = e => logout(e, dispatchFn);
+    } else if (
+      /*
+      Don't move below or conditions of login-account inside the shouldLoginModalOpen function.
+      As this function also used below in this file to decide whether text should work as link or button.
+      But for login-account action text will always be button.
+    */
+      action === 'login-account' ||
+      linkItems.url === '/login-account' ||
+      shouldLoginModalOpen(action, linkItems.url)
+    ) {
       onClick = e => myAccountLogin(e, dispatchFn);
+    }
+
     onClick = createAccountOnClick(action, linkItems, dispatchFn, onClick);
     return onClick;
   };
-
-  /**
-   * @function createLink to create footer links.
-   * @param {object} linkItems list of all the footer links.
-   * @param {number} index index number to track all the references.
-   * @returns JSX of the link.
-   */
 
   const hideLogoutMyActLinkBool = linkItems => {
     return (
@@ -102,15 +127,23 @@ const FooterNavLinksList = ({
     );
   };
 
+  /**
+   *
+   * @param {bollean} isModal
+   * @param {boolean} isAlreadyLoggedIn
+   *
+   * For action favorites, check-point-balance, redeem-rewards if user is logged in then user should navigate
+   * to the cms configured location else login modal should open
+   */
+  const shouldLinkOrButton = (isModal, isAlreadyLoggedIn) => {
+    return !(isModal && isAlreadyLoggedIn);
+  };
+
   const createNavListItem = (linkItems, index) => {
     const linkAction = linkItems.action;
     const linkUrl = linkItems.url;
-    let dispatchFn = null;
-    if (linkUrl) {
-      dispatchFn = linkConfig[linkUrl];
-    } else {
-      dispatchFn = linkConfig[linkAction];
-    }
+    let dispatchFn = linkConfig[linkUrl] || linkConfig[linkAction] || null;
+
     /*
       hideLogoutMyActLink - true - if linkAction is login-account and user is logged in.
       hideLogoutMyActLink - true - if linkAction is log-out and user is  not logged in.
@@ -124,18 +157,22 @@ const FooterNavLinksList = ({
     */
     const hideLogoutMyActLink = hideLogoutMyActLinkBool(linkItems) || false;
     const onClick =
-      linkAction || linkItems.url ? getOnClickAction(linkAction, dispatchFn, linkItems) : null;
-
+      linkAction || linkUrl ? getOnClickAction(linkAction, dispatchFn, linkItems) : null;
     const { url: ctaUrl, target, title, actualUrl } = linkItems;
+    const to = actualUrl || configureInternalNavigationFromCMSUrl(ctaUrl);
 
-    let to = actualUrl;
-    if (!actualUrl) {
-      to = configureInternalNavigationFromCMSUrl(ctaUrl);
-    }
+    /**
+     * Resetting again dispatchFn based on user login state and link.
+     * For favorites, check-point-balance, redeem-rewards if user is logged in then user should navigate
+     * to the cms configured location else login modal should open
+     */
+
+    const isModal = shouldLoginModalOpen(linkAction, linkUrl);
+    dispatchFn = isModal ? shouldLinkOrButton(isModal, hideLogoutMyActLink) : dispatchFn;
 
     return !hideLogoutMyActLink ? (
       <li>
-        {linkAction || linkItems.url ? (
+        {dispatchFn ? (
           <Button
             type="button"
             data-locator={`col_${colNum}_link_${index}`}

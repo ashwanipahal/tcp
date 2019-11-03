@@ -81,6 +81,7 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
         text=""
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </ModalNative>

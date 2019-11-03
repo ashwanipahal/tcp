@@ -26,14 +26,22 @@ const getShape = props => {
 };
 
 const getMobileAppFilterButtonViewStyle = props => {
-  const { theme, selected, buttonVariation, bottomBorderOnly } = props;
+  const {
+    theme,
+    selected,
+    buttonVariation,
+    bottomBorderOnly,
+    textAlignLeft,
+    lightGrayColor,
+  } = props;
   const { colorPalette, spacing } = theme;
   const bgColor = selected ? colorPalette.gray[900] : 'transparent';
-  const borderColor = colorPalette.gray[900];
+  const borderColor = lightGrayColor ? colorPalette.gray[1500] : colorPalette.gray[900];
   const padding = spacing.ELEM_SPACING.XXS;
 
   if (buttonVariation === BUTTON_VARIATION.mobileAppFilter) {
     return `
+      ${textAlignLeft ? `justify-content: flex-start` : `justify-content: center`};
       min-width: 80px;
       border: 1px solid ${borderColor};
       padding: ${padding};
@@ -41,7 +49,6 @@ const getMobileAppFilterButtonViewStyle = props => {
       align-self: center;
       background-color: ${bgColor};
       border-radius: 6px;
-      justify-content: center;
       align-items: center;
       ${
         bottomBorderOnly
@@ -92,7 +99,7 @@ const getMobileAppSelectFieldViewStyle = props => {
 };
 
 const getMobileAppFilterButtonTextStyle = props => {
-  const { theme, selected, buttonVariation } = props;
+  const { theme, selected, buttonVariation, withNoLineHeight } = props;
   const { colorPalette, typography } = theme;
   const { fontSizes, fontWeights, fonts } = typography;
   let fontColor = colorPalette.gray[1100];
@@ -117,7 +124,7 @@ const getMobileAppFilterButtonTextStyle = props => {
       color: ${fontColor};
       text-transform: none;
       padding: 0px;
-      line-height: 12px;
+      ${!withNoLineHeight ? `line-height: 12px` : ''}
     `;
   }
   return `

@@ -66,8 +66,8 @@ export default css`
       }
     }
     .focusArea-plus {
-      width: 31px;
-      height: 31px;
+      width: 33px;
+      height: 34px;
       position: absolute;
       top: 50%;
       left: 50%;

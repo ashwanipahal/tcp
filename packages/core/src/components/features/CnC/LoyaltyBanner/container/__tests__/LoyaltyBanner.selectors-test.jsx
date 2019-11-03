@@ -20,14 +20,14 @@ describe('#loyaltyBanner Selectors', () => {
         estimatedRewards: 0,
         subTotalWithDiscounts: 0,
         earnedReward: 0,
-        cartTotalAfterPLCCDiscount: 0,
+        subTotal: 0,
       },
     });
     const cartOrderDetailsObj = fromJS({
       estimatedRewards: 0,
       subTotalWithDiscounts: 0,
       earnedReward: 0,
-      cartTotalAfterPLCCDiscount: 0,
+      subTotal: 0,
     });
     const state = {
       CartPageReducer,
@@ -35,12 +35,12 @@ describe('#loyaltyBanner Selectors', () => {
     const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
     const subTotal = cartOrderDetailsObj.get('subTotal');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
-    const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
+    const subTotalWithDiscounts = cartOrderDetailsObj.get('subTotalWithDiscounts');
     expect(cartOrderDetails(state)).toEqual({
       estimatedRewards,
       subTotal,
       earnedReward,
-      cartTotalAfterPLCCDiscount,
+      subTotalWithDiscounts,
     });
   });
 });

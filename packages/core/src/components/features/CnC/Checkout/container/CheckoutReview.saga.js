@@ -19,7 +19,6 @@ import {
   isCouponApplied,
 } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
 import { isMobileApp } from '../../../../../utils';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
 import {
   getSetCouponsValuesActn,
   getSetRewardPointsOrderConfActn,
@@ -152,7 +151,7 @@ export function* submitOrderProcessing(orderId, smsOrderInfo, currentLanguage) {
   }
   if (isVenmoInProgress && venmoData) {
     const { nonce: venmoNonce, deviceData: venmoDeviceData } = venmoData;
-    const email = yield select(getUserEmail);
+    const email = yield select(selectors.getVenmoUserEmail);
     venmoPayloadData = {
       venmoNonce,
       venmo_device_data: venmoDeviceData,

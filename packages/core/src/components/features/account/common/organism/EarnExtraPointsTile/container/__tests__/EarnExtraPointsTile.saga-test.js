@@ -14,6 +14,7 @@ describe('Earn Extra Points Saga', () => {
 
     it('should dispatch setEarnExtraPointsList action for success resposnse', () => {
       const response = {};
+      earnExtraPointsGen.next();
       const putDescriptor = earnExtraPointsGen.next(response).value;
       expect(putDescriptor).toEqual(put(setEarnExtraPointsList(response)));
     });

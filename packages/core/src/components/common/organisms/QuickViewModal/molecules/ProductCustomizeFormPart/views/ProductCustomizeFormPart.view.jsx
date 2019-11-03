@@ -44,6 +44,7 @@ const ProductCustomizeFormPart = props => {
     fromBagPage,
     productInfoFromBag,
     quickViewColorSwatchesCss,
+    ...otherProps
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
   const currentColorPdpUrl =
@@ -124,6 +125,7 @@ const ProductCustomizeFormPart = props => {
               <ProductPrice {...productPriceProps} />
             </div>
             <ProductAddToBagContainer
+              {...otherProps}
               onChangeColor={onChangeColor}
               showAddToBagCTA={!isMultiItemQVModal}
               showColorChips={!isMultiItemQVModal}

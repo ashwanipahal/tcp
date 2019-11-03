@@ -64,6 +64,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
           fontSize="fs16"
           text={getLabelValue(labels, 'lbl_overview_addressBookHeading')}
           color="black"
+          fontWeight="extrabold"
         />
 
         <UnderlineStyle />

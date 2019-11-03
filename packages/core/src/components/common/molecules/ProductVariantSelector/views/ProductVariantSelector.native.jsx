@@ -95,6 +95,7 @@ class ProductVariantSelector extends React.PureComponent {
         data-locator=""
         accessibilityLabel={itemValue}
         disableButton={isDisabled}
+        withNoLineHeight
       />
     );
   };

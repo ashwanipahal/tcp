@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, isCanada } from '@tcp/core/src/utils';
+import { getIconPath } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -56,7 +56,7 @@ class MiniBagBody extends React.PureComponent {
         className="elem-ml-MED"
         onClick={() => closeMiniBag()}
       >
-        {`${labels.viewSfl}(${savedforLaterQty})`}
+        {`${labels.viewSfl} (${savedforLaterQty})`}
       </Anchor>
     );
   };
@@ -105,7 +105,7 @@ class MiniBagBody extends React.PureComponent {
   };
 
   renderLoyaltyBanner = () => {
-    return !isCanada() && <LoyaltyBanner />;
+    return <LoyaltyBanner />;
   };
 
   getHeaderError = ({
@@ -182,7 +182,7 @@ class MiniBagBody extends React.PureComponent {
                     dataLocator="addressbook-makedefault"
                     onClick={() => closeMiniBag()}
                   >
-                    {`${labels.viewBag}(${cartItemCount})`}
+                    {`${labels.viewBag} (${cartItemCount})`}
                   </Anchor>
                   {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>
@@ -197,7 +197,7 @@ class MiniBagBody extends React.PureComponent {
                     data-locator="addressbook-makedefault"
                     onClick={() => closeMiniBag()}
                   >
-                    {`${labels.viewBag}(${cartItemCount})`}
+                    {`${labels.viewBag} (${cartItemCount})`}
                   </Anchor>
                   {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>
@@ -216,7 +216,12 @@ class MiniBagBody extends React.PureComponent {
               setHeaderErrorState={this.setHeaderErrorState}
             />
           ) : (
-            <EmptyMiniBag labels={labels} userName={userName} onLinkClick={onLinkClick} />
+            <EmptyMiniBag
+              labels={labels}
+              userName={userName}
+              closeMiniBag={closeMiniBag}
+              onLinkClick={onLinkClick}
+            />
           )}
         </BodyCopy>
         {cartItemCount ? (

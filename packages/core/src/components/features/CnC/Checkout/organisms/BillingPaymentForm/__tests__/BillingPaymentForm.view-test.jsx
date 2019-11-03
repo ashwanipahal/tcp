@@ -196,4 +196,10 @@ describe('ButtonList component', () => {
     instance.onCCDropDownChange();
     expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
   });
+  it('renders correctly with venmoError', () => {
+    props.paymentMethodId = 'venmo';
+    const error = 'Authentication Error';
+    const component = shallow(<BillingPaymentForm {...props} venmoError={error} />);
+    expect(component).toMatchSnapshot();
+  });
 });

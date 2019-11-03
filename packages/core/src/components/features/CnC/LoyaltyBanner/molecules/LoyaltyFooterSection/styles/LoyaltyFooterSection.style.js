@@ -11,6 +11,11 @@ const Styles = css`
   }
   .links-container {
     display: flex;
+    .learnSymbolWrapper {
+      > div {
+        display: inline;
+      }
+    }
   }
 `;
 

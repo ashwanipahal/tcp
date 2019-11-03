@@ -14,6 +14,32 @@ describe('BillingPageContainer', () => {
       labels: {},
       paymentMethodId: null,
       shippingAddress: null,
+      billingData: {
+        address: {
+          addressLine1: '500 Plaze Drive',
+          addressLine2: '',
+          city: 'Secaucus',
+          country: 'US',
+          firstName: 'TCP',
+          lastName: 'Place',
+          state: 'NJ',
+          zipCode: '07094',
+          onFileAddressKey: '',
+          onFileAddressId: '',
+        },
+        billing: {
+          addressLine1: '500 Plaze Drive',
+          addressLine2: '',
+          city: 'Secaucus',
+          country: 'US',
+          firstName: 'TCP',
+          lastName: 'Place',
+          state: 'NJ',
+          zipCode: '07094',
+          onFileAddressKey: '',
+          onFileAddressId: '',
+        },
+      },
     };
     const tree = shallow(<GuestBillingContainerVanilla {...props} />);
     expect(tree).toMatchSnapshot();

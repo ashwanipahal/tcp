@@ -105,6 +105,7 @@ exports[`CouponCard Component should renders correctly when addresses are not pr
               theme={Object {}}
               type="submit"
               url=""
+              withNoLineHeight={false}
             />
           </Styled(View)>
         </Styled(View)>

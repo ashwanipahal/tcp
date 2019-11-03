@@ -191,6 +191,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       type="submit"
       url=""
       width="100%"
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -319,6 +320,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
       type="submit"
       url=""
       width="100%"
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>

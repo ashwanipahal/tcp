@@ -91,6 +91,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
           theme={Object {}}
           type="submit"
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(View)>
@@ -117,6 +118,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
             theme={Object {}}
             type="button"
             url=""
+            withNoLineHeight={false}
           />
         </Styled(View)>
         <Styled(View)>
@@ -142,6 +144,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
             theme={Object {}}
             type="button"
             url=""
+            withNoLineHeight={false}
           />
         </Styled(View)>
       </Styled(View)>
@@ -256,6 +259,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
           theme={Object {}}
           type="submit"
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(View)>
@@ -282,6 +286,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             theme={Object {}}
             type="button"
             url=""
+            withNoLineHeight={false}
           />
         </Styled(View)>
         <Styled(View)>
@@ -307,6 +312,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             theme={Object {}}
             type="button"
             url=""
+            withNoLineHeight={false}
           />
         </Styled(View)>
       </Styled(View)>
@@ -484,6 +490,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       theme={Object {}}
       type="button"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -589,6 +596,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       theme={Object {}}
       type="button"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -792,6 +800,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       theme={Object {}}
       type="button"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
