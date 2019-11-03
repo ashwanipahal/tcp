@@ -91,6 +91,18 @@ const styles = css`
         width: 100%;
       }
     }
+
+    .footer-paypal-button {
+      position: relative;
+      width: 450px;
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        width: 192px;
+      }
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        position: absolute;
+        width: 347px;
+      }
+    }
   }
 `;
 
