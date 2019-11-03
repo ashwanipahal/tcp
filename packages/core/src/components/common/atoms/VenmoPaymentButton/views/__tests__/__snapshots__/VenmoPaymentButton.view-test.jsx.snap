@@ -17,6 +17,10 @@ exports[`Venmo Payment Button should render Venmo Button correctly 1`] = `
       />
     </button>
   </div>
+  <Styled(ErrorMessage)
+    className="error_box minibag-error"
+    error={null}
+  />
 </div>
 `;
 
@@ -37,6 +41,10 @@ exports[`Venmo Payment Button should render blue venmo button correctly 1`] = `
       />
     </button>
   </div>
+  <Styled(ErrorMessage)
+    className="error_box minibag-error"
+    error={null}
+  />
 </div>
 `;
 
@@ -57,6 +65,10 @@ exports[`Venmo Payment Button should render correctly 1`] = `
       />
     </button>
   </div>
+  <Styled(ErrorMessage)
+    className="error_box minibag-error"
+    error={null}
+  />
 </div>
 `;
 
@@ -91,5 +103,9 @@ exports[`Venmo Payment Button should render with continueWithText correctly 1`] 
       />
     </button>
   </div>
+  <Styled(ErrorMessage)
+    className="error_box minibag-error"
+    error={null}
+  />
 </div>
 `;

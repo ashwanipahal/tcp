@@ -401,16 +401,9 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description render method to be called of component
    */
   render() {
-    const { className, handleSubmit, cardList, isGuest } = this.props;
-    const {
-      onFileCardKey,
-      labels,
-      cvvCodeRichText,
-      isVenmoEnabled,
-      venmoError,
-      isPayPalEnabled,
-    } = this.props;
-    const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
+    const { className, handleSubmit, cardList, isGuest, pageCategory } = this.props;
+    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled, venmoError } = this.props;
+    const { paymentMethodId, orderHasShipping, backLinkPickup, isPayPalEnabled } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
 
@@ -458,7 +451,11 @@ export class BillingPaymentForm extends React.PureComponent {
             {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
           </div>
         )}
-        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
+        <CheckoutOrderInfo
+          isGuest={isGuest}
+          showAccordian={showAccordian}
+          pageCategory={pageCategory}
+        />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}

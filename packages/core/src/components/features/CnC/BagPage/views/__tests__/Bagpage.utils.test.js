@@ -3,9 +3,18 @@ import BagpageUtil from '../Bagpage.utils';
 describe('Bag page Utils JS', () => {
   it('should match the state getElementStickyPosition', () => {
     const elem = {
-      offsetTop: 50,
+      offsetLeft: 50,
+      scrollLeft: 10,
+      scrollTop: 10,
+      offsetTop: 30,
+      offsetParent: {
+        offsetLeft: 50,
+        scrollLeft: 10,
+        scrollTop: 10,
+        offsetTop: 30,
+      },
     };
-    expect(BagpageUtil.getElementStickyPosition(elem)).toBe(50);
+    expect(BagpageUtil.getElementStickyPosition(elem)).toBe(40);
   });
 
   it('should call getPageLevelHeaderHeight', () => {

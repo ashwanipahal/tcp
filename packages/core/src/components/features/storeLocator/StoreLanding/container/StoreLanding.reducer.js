@@ -13,13 +13,14 @@ export const initialState = fromJS({
   storesSummaryListOthers: [],
   bopisStoresOnCart: [],
   bopisItemInventory: [],
+  searchDone: false,
 });
 
 const StoreLocatorReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case STORE_LOCATOR_CONSTANTS.STORES_SET_SUGGESTED_STORES:
-      return state.set('suggestedStores', payload);
+      return state.set('suggestedStores', payload).set('searchDone', true);
     default:
       if (state instanceof Object) {
         return fromJS(state);

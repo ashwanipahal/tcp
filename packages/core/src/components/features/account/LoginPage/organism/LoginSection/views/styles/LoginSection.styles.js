@@ -10,20 +10,16 @@ const styles = css`
   .checkoutForm {
     padding-left: 0px;
     padding-right: 0px;
+    margin: 0 auto;
     @media ${props => props.theme.mediaQuery.largeOnly} {
       padding-left: 74px;
       padding-right: 74px;
     }
   }
-  .logintop-alignment {
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 70%;
-      margin: 0 auto;
-    }
-  }
   .border {
     border-top: 1px solid ${props => props.theme.colors.BORDER.BLUE};
-
+    width: 91%;
+    margin: 0 auto;
     p {
       max-width: 227px;
       margin: 0 auto;

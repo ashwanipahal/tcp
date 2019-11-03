@@ -17,6 +17,7 @@ describe('ResetPassword Reducer', () => {
   it('should return success state', () => {
     const state = ResetPasswordReducer(initialState, resetPasswordSuccess('success'));
     expect(state.get('success')).toBe('success');
+    expect(state.get('showNotification')).toBe(false);
     expect(state.get('error')).toBeNull();
   });
 

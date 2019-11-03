@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isCanada } from '@tcp/core/src/utils';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -48,6 +47,7 @@ const ConfirmationView = ({
   orderNumbersByFullfillmentCenter,
   isVenmoPaymentInProgress,
   venmoUserName,
+  pageCategory,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
   let venmoPayment = {};
@@ -124,7 +124,7 @@ const ConfirmationView = ({
       </Row>
       <Row fullBleed className="placeholder loyalty-banner">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          {!isCanada() && <LoyaltyBanner pageCategory="confirmation" />}
+          {<LoyaltyBanner pageCategory="confirmation" />}
         </Col>
       </Row>
       {renderAccountForm(isGuest)}
@@ -133,6 +133,7 @@ const ConfirmationView = ({
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         venmoPayment={venmoPayment}
         labels={labels}
+        pageCategory={pageCategory}
       />
     </div>
   );
@@ -167,6 +168,7 @@ ConfirmationView.propTypes = {
   orderShippingDetails: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
   venmoUserName: PropTypes.string,
+  pageCategory: PropTypes.string,
 };
 ConfirmationView.defaultProps = {
   className: '',
@@ -177,6 +179,7 @@ ConfirmationView.defaultProps = {
   orderShippingDetails: null,
   isVenmoPaymentInProgress: false,
   venmoUserName: '',
+  pageCategory: '',
 };
 
 export default withStyles(ConfirmationView, styles);

@@ -13,7 +13,7 @@ const buildQuery = ({ brand, country, channel }) => `
       mainCategory {
         set {
           key
-					value
+					val
         }
         sizesRange {
           text
