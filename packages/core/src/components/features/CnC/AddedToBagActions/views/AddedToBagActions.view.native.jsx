@@ -3,29 +3,17 @@ import PropTypes from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
+  ButtonWrapper,
+  ActionsWrapper,
   ViewBagButton,
   CheckoutButton,
   PaymentsButtonWrapper,
-  ButtonWrapper,
-  ButtonViewWrapper,
-  ActionsWrapper,
 } from '../styles/AddedToBagActions.style.native';
-import PayPalButton from '../../common/organism/PayPalButton';
 import ADDEDTOBAG_CONSTANTS from '../../AddedToBag/AddedToBag.constants';
 import CheckoutModals from '../../common/organism/CheckoutModals';
 import VenmoPaymentButton from '../../../../common/atoms/VenmoPaymentButton';
 
 class AddedToBagActions extends React.PureComponent<Props> {
-  constructor(props) {
-    super(props);
-    this.changeVenmoState = this.changeVenmoState.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-
-    this.state = {
-      venmoEnable: true,
-    };
-  }
-
   getVenmoPaymentButton() {
     const { isInternationalShipping, handleCartCheckout, isEditingItem } = this.props;
     if (!isInternationalShipping) {
@@ -41,12 +29,6 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return null;
   }
 
-  changeVenmoState = isVenmoEnable => {
-    this.setState({ venmoEnable: isVenmoEnable });
-    const { hideHeader } = this.props;
-    hideHeader(!isVenmoEnable);
-  };
-
   render() {
     const {
       labels,
@@ -57,14 +39,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
       closeModal,
       isNoNEmptyBag,
       fromAddedToBagModal,
-      getPayPalSettings,
-      orderId,
     } = this.props;
-const {venmoEnable,}=this.state;
     return (
-      <ActionsWrapper isPayPalWebViewEnable={!venmoEnable}>
+      <ActionsWrapper>
         {showAddTobag && (
-          <ButtonWrapper isPayPalWebViewEnable={!venmoEnable}>
+          <ButtonWrapper>
             <ViewBagButton
               onPress={() => {
                 navigation.navigate(ADDEDTOBAG_CONSTANTS.BAG_PAGE);
@@ -85,41 +64,28 @@ const {venmoEnable,}=this.state;
           </ButtonWrapper>
         )}
         {(isNoNEmptyBag || fromAddedToBagModal) && (
-          <ButtonViewWrapper isPayPalWebViewEnable={!venmoEnable}>
-            <ButtonWrapper isPayPalWebViewEnable={!venmoEnable}>
-              {orderId && (
-                <PayPalButton
-                  getPayPalSettings={getPayPalSettings}
-                  navigation={navigation}
-                  setVenmoState={this.changeVenmoState}
-                  closeModal={this.closeModal}
-                />
-              )}
-              <CheckoutButton
-                onPress={() => {
-                  handleCartCheckout({
-                    isEditingItem,
-                    navigation,
-                    closeModal,
-                    navigationActions: NavigationActions,
-                  });
-                }}
-              >
-                <BodyCopy
-                  color="white"
-                  fontWeight="extrabold"
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  text={labels.checkout && labels.checkout.toUpperCase()}
-                />
-              </CheckoutButton>
-            </ButtonWrapper>
-          </ButtonViewWrapper>
+          <ButtonWrapper>
+            <CheckoutButton
+              onPress={() => {
+                handleCartCheckout({
+                  isEditingItem,
+                  navigation,
+                  closeModal,
+                  navigationActions: NavigationActions,
+                });
+              }}
+            >
+              <BodyCopy
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs13"
+                text={labels.checkout && labels.checkout.toUpperCase()}
+              />
+            </CheckoutButton>
+          </ButtonWrapper>
         )}
-
-        {(isNoNEmptyBag || fromAddedToBagModal) &&
-          venmoEnable &&
-          this.getVenmoPaymentButton()}
+        {(isNoNEmptyBag || fromAddedToBagModal) && this.getVenmoPaymentButton()}
         <CheckoutModals navigation={navigation} />
       </ActionsWrapper>
     );
