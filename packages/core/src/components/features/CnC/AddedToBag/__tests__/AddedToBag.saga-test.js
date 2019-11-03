@@ -27,6 +27,7 @@ describe('Added to bag saga', () => {
     const addToCartEcomGen = addToCartEcom({ payload });
     addToCartEcomGen.next();
     addToCartEcomGen.next();
+    addToCartEcomGen.next();
 
     const response = {
       orderId: '1234',

@@ -151,6 +151,9 @@ exports[`AddNewCCForm should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -317,6 +320,9 @@ exports[`AddNewCCForm should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {

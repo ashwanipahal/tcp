@@ -22,13 +22,14 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { ApplyCardPage = {} } = state;
   return {
     isModalOpen: getIsModalOpen(state),
     labels: getLabels(state),
     isPLCCModalOpen: getIsPLCCModalOpen(state),
     plccBenefitsList: ApplyCardPage.plccData && ApplyCardPage.plccData.plcc_rewards_list,
+    labelText: ownProps.labelText,
   };
 };
 

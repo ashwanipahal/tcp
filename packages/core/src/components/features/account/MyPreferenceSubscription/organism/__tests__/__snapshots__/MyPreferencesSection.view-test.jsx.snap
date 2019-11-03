@@ -206,6 +206,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -363,6 +366,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -551,6 +557,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {
@@ -706,6 +715,9 @@ exports[`ProfileInformation component should render correctly 1`] = `
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                      [Function],
+                      "
   }
 
   & .CheckBox__text a {

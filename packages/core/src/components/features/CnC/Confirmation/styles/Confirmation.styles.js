@@ -13,6 +13,11 @@ const styles = css`
     margin-bottom: 16px;
     text-align: center;
   }
+  .loyalty-banner {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      display: none;
+    }
+  }
 
   .sms-sign-up {
     height: 50px;

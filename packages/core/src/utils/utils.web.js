@@ -1,6 +1,11 @@
 /* eslint-disable max-lines */
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
+import {
+  disableBodyScroll as disableBodyScrollLib,
+  enableBodyScroll as enableBodyScrollLib,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -383,6 +388,10 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
+    styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
+    styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
+    styliticsRegionTCP: processEnv.RWD_WEB_STYLITICS_REGION_TCP && countryKey.split('_')[1],
+    styliticsRegionGYM: processEnv.RWD_WEB_STYLITICS_REGION_GYM,
   };
 };
 const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
@@ -547,6 +556,53 @@ export const getDirections = address => {
   );
 };
 
+/**
+ * To Identify whether the device is ios for web.
+ */
+
+export const isIosWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return true;
+  }
+  return false;
+};
+/**
+ * This function will remove all the body scroll locks.
+ */
+export const removeBodyScrollLocks = () => {
+  if (isIosWeb() && isClient()) {
+    clearAllBodyScrollLocks();
+  }
+};
+/**
+ * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
+ */
+export const enableBodyScroll = targetElem => {
+  if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      enableBodyScrollLib(targetElem);
+      return;
+    }
+    const [body] = document.getElementsByTagName('body');
+    body.classList.remove('disableBodyScroll');
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = targetElem => {
+  if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      disableBodyScrollLib(targetElem);
+      return;
+    }
+    const [body] = document.getElementsByTagName('body');
+    body.classList.add('disableBodyScroll');
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -573,4 +629,8 @@ export default {
   canUseDOM,
   scrollToParticularElement,
   getDirections,
+  isIosWeb,
+  removeBodyScrollLocks,
+  enableBodyScroll,
+  disableBodyScroll,
 };

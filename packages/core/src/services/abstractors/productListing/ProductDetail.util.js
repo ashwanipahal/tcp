@@ -263,6 +263,7 @@ const getColorfitsSizesMap = ({
         name: colorName,
         imagePath: isGiftCard ? productImages[125] : colorSwatch,
         family: familyName,
+        swatchImage: itemColor.swatchimage,
         // Family name can be different from color name, quickViewStoreView using family name to find the initial value of Quick View Form
       },
       pdpUrl: getPdpUrl(isBundleProduct, itemColor),

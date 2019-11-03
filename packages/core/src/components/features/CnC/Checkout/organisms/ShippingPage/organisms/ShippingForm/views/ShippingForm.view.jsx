@@ -225,6 +225,16 @@ class ShippingForm extends React.Component {
     return <ServerErrors />;
   };
 
+  /**
+   * @function handleShipIntClick
+   * function to open country selector popup on shipping page
+   */
+  handleShipIntClick = e => {
+    const { toggleCountrySelector } = this.props;
+    e.preventDefault();
+    toggleCountrySelector({ isModalOpen: true });
+  };
+
   render() {
     const {
       addressLabels: { addressFormLabels },
@@ -255,6 +265,7 @@ class ShippingForm extends React.Component {
       isVenmoShippingDisplayed,
       showAccordian,
       isMobile,
+      pageCategory,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -305,6 +316,7 @@ class ShippingForm extends React.Component {
               syncErrorsObject={syncErrorsObject}
               errorMessageRef={this.editShippingErrorRef}
               editShipmentDetailsError={editShipmentDetailsError}
+              handleShipIntClick={this.handleShipIntClick}
             />
           )}
           {isGuest && (
@@ -319,6 +331,7 @@ class ShippingForm extends React.Component {
                   dispatch={dispatch}
                   addressPhoneNo={addressPhoneNo}
                   loadShipmentMethods={loadShipmentMethods}
+                  handleShipIntClick={this.handleShipIntClick}
                 />
               </FormSection>
             </div>
@@ -361,7 +374,11 @@ class ShippingForm extends React.Component {
             </Col>
             {this.renderGiftServices()}
           </Row>
-          <CheckoutOrderInfo showAccordian={showAccordian} isGuest={isGuest} />
+          <CheckoutOrderInfo
+            showAccordian={showAccordian}
+            isGuest={isGuest}
+            pageCategory={pageCategory}
+          />
           <CheckoutFooter
             hideBackLink={!!orderHasPickUp}
             backLinkHandler={routeToPickupPage}

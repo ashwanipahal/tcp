@@ -108,4 +108,8 @@ export const quickViewColorSwatchesCss = css`
   }
 `;
 
+export const customSpinnerStyle = css`
+  height: 100%;
+`;
+
 export default styles;

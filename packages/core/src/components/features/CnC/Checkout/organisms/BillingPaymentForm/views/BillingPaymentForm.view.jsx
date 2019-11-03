@@ -41,6 +41,7 @@ import {
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
 } from './BillingPaymentForm.util';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 /**
  * @class BillingPaymentForm
@@ -262,7 +263,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { defaultPayment, paymentMethod, creditCardEnd, cvvCode } = labels;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { editMode, editModeSubmissionError } = this.state;
-    const { dispatch, updateCardDetail } = this.props;
+    const { dispatch, updateCardDetail, editFormCardType } = this.props;
     const billingPaymentFormWidthCol = { large: 3, small: 4, medium: 4 };
     const cvvCodeColWidth = { large: 3, small: 2, medium: 4 };
     const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState, onEditCardFocus } = this;
@@ -367,6 +368,7 @@ export class BillingPaymentForm extends React.PureComponent {
             key="cardEditForm"
             addressForm={this.getCheckoutBillingAddress}
             errorMessageRef={this.ediCardErrorRef}
+            cardType={editFormCardType}
           />
         )}
       </>
@@ -397,8 +399,8 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description render method to be called of component
    */
   render() {
-    const { className, handleSubmit, cardList, isGuest } = this.props;
-    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled } = this.props;
+    const { className, handleSubmit, cardList, isGuest, pageCategory } = this.props;
+    const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled, venmoError } = this.props;
     const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
@@ -443,9 +445,14 @@ export class BillingPaymentForm extends React.PureComponent {
                 isVenmoBlueButton
               />
             )}
+            {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
           </div>
         )}
-        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
+        <CheckoutOrderInfo
+          isGuest={isGuest}
+          showAccordian={showAccordian}
+          pageCategory={pageCategory}
+        />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
@@ -454,6 +461,7 @@ export class BillingPaymentForm extends React.PureComponent {
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
+          venmoError={venmoError}
         />
       </form>
     );
