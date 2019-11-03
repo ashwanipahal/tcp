@@ -135,6 +135,10 @@ export const openRestrictedModalForBopis = state => {
   );
 };
 
+export const isStoreSearching = state => {
+  return state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('isSearching');
+};
+
 export const getInitialValuesFromBagPage = state => {
   const pickUpModalReducer =
     state[PICKUP_MODAL_REDUCER_KEY] && state[PICKUP_MODAL_REDUCER_KEY].get('initialValues');

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isCanada } from '@tcp/core/src/utils';
 import AddedToBagActions from '../../AddedToBagActions';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
@@ -75,7 +74,7 @@ const AddedToBag = ({
           containerId="paypal-button-container-added-to-bag"
           inheritedStyles={buttonActionStyles}
         />
-        {!isCanada() && <LoyaltyBanner pageCategory="isAddedToBagPage" />}
+        {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
         {!isInternationalShipping && <BossBannerView labels={labels} />}
         <div className="continue-shopping">
           <Anchor

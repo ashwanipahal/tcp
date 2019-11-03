@@ -364,6 +364,7 @@ class PickUpFormPart extends React.Component {
             routeToPage="ShippingPage"
             isGuest={isGuest}
             onPress={handleSubmit(this.pickupSubmit)}
+            pageCategory="pickupPage"
             showAccordian
           />
         </ScrollView>

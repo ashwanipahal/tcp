@@ -46,6 +46,7 @@ describe('CartItemRadioButtons native Component', () => {
       onPickUpOpenClick: jest.fn(),
       orderId: 123,
       setShipToHome: jest.fn(),
+      pickupStoresInCart: {},
     };
   });
 
@@ -159,6 +160,18 @@ describe('CartItemRadioButtons native Component', () => {
     props.isBOPISOrder = true;
     props.bopisDisabled = true;
     props.noBossMessage = 'Not Available (Online only)';
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    component.instance().handleChangeStoreClick();
+    expect(props.openPickUpModal).toHaveBeenCalled();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should open change store popup for bopis', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    props.orderItemType = 'BOPIS';
+    props.pickupStoresInCart = [{ store1: {} }, { store2: {} }];
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
     component.setState({ currentExpandedState: true });
     component.instance().handleChangeStoreClick();

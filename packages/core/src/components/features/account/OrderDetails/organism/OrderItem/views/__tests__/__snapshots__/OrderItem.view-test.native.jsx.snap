@@ -4,13 +4,22 @@ exports[`Order Items component should renders correctly 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(View)>
-      <Styled(Image)
-        source={
-          Object {
-            "uri": "https://test4.childrensplace.comtest",
-          }
-        }
-      />
+      <Styled(View)>
+        <Styled(DamImage)
+          alt=""
+          checkBrand="tcp"
+          crop=""
+          height="100"
+          host=""
+          imgConfig=""
+          isProductImage={true}
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          url=""
+          width="100"
+        />
+      </Styled(View)>
       <Styled(Image)
         source={
           Object {

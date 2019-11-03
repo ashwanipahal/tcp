@@ -67,7 +67,13 @@ describe('getSubscribeStoreSaga saga', () => {
 
     it('should dispatch setSubscribeStore action for response', () => {
       const putDescriptor = gen.next().value;
-      expect(putDescriptor).toEqual(put(getSubscribeStore()));
+      expect(putDescriptor).toEqual(
+        put(
+          getSubscribeStore({
+            ignoreCache: true,
+          })
+        )
+      );
     });
   });
 

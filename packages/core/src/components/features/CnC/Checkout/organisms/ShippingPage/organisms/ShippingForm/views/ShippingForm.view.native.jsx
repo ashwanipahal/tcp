@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormSection, reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -56,7 +56,34 @@ const ShippingForm = ({
   setCheckoutStage,
   isVenmoPaymentInProgress,
   isVenmoShippingDisplayed,
+  emailSignUpLabels,
+  scrollView,
 }) => {
+  const [editMode, setEditMode] = useState(false);
+  const [editShipmentDetailsError, setEditShipmentDetailsError] = useState('');
+  let editModalRef;
+  const setEditState = state => {
+    if (!state) {
+      setEditShipmentDetailsError('');
+    }
+    setEditMode(state);
+  };
+
+  const handleShippingFormSubmit = e => {
+    if (!editMode) {
+      setEditShipmentDetailsError('');
+      return handleSubmit(submitShippingForm)(e);
+    }
+    if (editModalRef && scrollView) {
+      editModalRef.measure((x, y, width, height) => {
+        const scrollPosition = y - height;
+        scrollView.scrollTo({ x: 0, y: scrollPosition, animated: true });
+      });
+    }
+    setEditShipmentDetailsError(emailSignUpLabels.shippingAddressEditError);
+    return null;
+  };
+
   return (
     <>
       <ShippingFormWrapper>
@@ -79,6 +106,11 @@ const ShippingForm = ({
             defaultAddressId={defaultAddressId}
             syncErrorsObject={syncErrorsObject}
             newUserPhoneNo={newUserPhoneNo}
+            setEditState={setEditState}
+            editShipmentDetailsError={editShipmentDetailsError}
+            setEditModalRef={modalRef => {
+              editModalRef = modalRef;
+            }}
           />
         )}
         {isGuest && (
@@ -195,13 +227,14 @@ const ShippingForm = ({
         navigation={navigation}
         btnText={nextCTAText(labels, isVenmoPaymentInProgress, isVenmoShippingDisplayed)}
         routeToPage=""
-        onPress={handleSubmit(submitShippingForm)}
+        onPress={e => handleShippingFormSubmit(e)}
         isGuest={isGuest}
         backLinkText={
           orderHasPickUp &&
           getLabelValue(labels, 'lbl_shipping_backLinkText', 'shipping', 'checkout')
         }
         onBackLinkPress={() => setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)}
+        pageCategory="shippingPage"
         showAccordian
       />
     </>
@@ -244,6 +277,8 @@ ShippingForm.propTypes = {
   setCheckoutStage: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   isVenmoShippingDisplayed: PropTypes.bool,
+  emailSignUpLabels: PropTypes.shape({}).isRequired,
+  scrollView: PropTypes.shape({}).isRequired,
 };
 
 ShippingForm.defaultProps = {

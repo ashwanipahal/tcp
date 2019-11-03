@@ -133,6 +133,7 @@ const PickupSkuSelectionForm = props => {
         initialFormValues={initialValues}
         showAddToBagCTA={false}
         isDisableZeroInventoryEntries={false}
+        isPickup
       />
     </PickUpSkUSectionContainer>
   );

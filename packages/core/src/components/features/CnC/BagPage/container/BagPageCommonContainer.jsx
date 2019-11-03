@@ -96,6 +96,7 @@ export class BagPageContainer extends React.Component<Props> {
       currencySymbol,
       isPickupModalOpen,
       isMobile,
+      bagPageServerError,
     } = this.props;
 
     const showAddTobag = false;
@@ -127,6 +128,7 @@ export class BagPageContainer extends React.Component<Props> {
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
         isPickupModalOpen={isPickupModalOpen}
+        bagPageServerError={bagPageServerError}
       />
     );
   }
@@ -189,6 +191,7 @@ export const mapStateToProps = state => {
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
+    bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
   };
 };
 

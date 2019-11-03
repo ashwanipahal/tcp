@@ -463,6 +463,7 @@ class PLCCForm extends React.PureComponent<Props> {
             type="tel"
             component={TextBox}
             maxLength={4}
+            keyboardType="numeric"
           />
         </SSNContainer>
 

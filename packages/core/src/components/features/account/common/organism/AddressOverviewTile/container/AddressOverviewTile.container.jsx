@@ -2,8 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddressOverviewTileComponent from '../views';
-import { getAddressListState } from '../../../../AddressBook/container/AddressBook.selectors';
+import {
+  getAddressListState,
+  getAddressListFetchingState,
+} from '../../../../AddressBook/container/AddressBook.selectors';
 import { getAddressList } from '../../../../AddressBook/container/AddressBook.actions';
+import AddressOverviewTileSkelton from '../skelton/AddressOverviewTileSkelton.view';
 
 export class AddressOverviewTile extends React.Component {
   componentDidMount() {
@@ -12,7 +16,11 @@ export class AddressOverviewTile extends React.Component {
   }
 
   render() {
-    const { addressList, labels, handleComponentChange } = this.props;
+    const { addressList, labels, handleComponentChange, isFetching } = this.props;
+
+    if (isFetching) {
+      return <AddressOverviewTileSkelton />;
+    }
     return (
       <AddressOverviewTileComponent
         addressList={addressList}
@@ -26,6 +34,7 @@ export class AddressOverviewTile extends React.Component {
 const mapStateToProps = state => {
   return {
     addressList: getAddressListState(state),
+    isFetching: getAddressListFetchingState(state),
   };
 };
 
@@ -50,6 +59,7 @@ AddressOverviewTile.propTypes = {
   }),
   addressList: PropTypes.shape({}),
   handleComponentChange: PropTypes.func,
+  isFetching: PropTypes.bool,
 };
 
 AddressOverviewTile.defaultProps = {
@@ -64,6 +74,7 @@ AddressOverviewTile.defaultProps = {
   },
   addressList: {},
   handleComponentChange: () => {},
+  isFetching: false,
 };
 
 export default connect(

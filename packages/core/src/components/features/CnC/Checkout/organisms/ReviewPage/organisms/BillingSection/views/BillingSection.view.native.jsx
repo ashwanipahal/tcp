@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
+import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
-import AppliedGiftCards from '../../../molecules/AppliedGiftCards';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import GiftCardsContainer from '../../../../GiftCardsSection';
 
 /* istanbul ignore next */
 import {
@@ -12,7 +14,41 @@ import {
   PaymentMethod,
   BillingAddress,
   EditLink,
+  CvvCode,
+  CvvTextboxStyle,
+  CVVInfo,
+  PaymentMethodWrapper,
+  PaymentMethodImage,
 } from '../styles/BillingSection.style.native';
+
+import getCvvInfo from '../../../../../molecules/CVVInfo';
+import CREDIT_CONSTANTS from '../../../../BillingPaymentForm/container/CreditCard.constants';
+
+const getCvvInfoIcon = cvvCodeRichText => {
+  return <CVVInfo>{getCvvInfo({ cvvCodeRichText })}</CVVInfo>;
+};
+
+const getCvvField = ({ isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited }) => {
+  return (
+    isExpressCheckout &&
+    card &&
+    card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD &&
+    !isBillingVisited && (
+      <CvvCode>
+        <Field
+          label={labels.lbl_review_cvvCode}
+          name="cvvCode"
+          id="cvvCode"
+          type="text"
+          component={TextBox}
+          dataLocator="cvvTxtBox"
+          customStyle={CvvTextboxStyle}
+        />
+        {getCvvInfoIcon(cvvCodeRichText)}
+      </CvvCode>
+    )
+  );
+};
 
 /**
  * @function renderCardNumber
@@ -28,7 +64,16 @@ const renderCardNumber = (card, labels) =>
  * @param {Object} props
  * @description Billing Section functional component
  */
-export const BillingSection = ({ card, address, appliedGiftCards, labels, onEdit }) => {
+export const BillingSection = ({
+  card,
+  address,
+  labels,
+  onEdit,
+  isExpressCheckout,
+  cvvCodeRichText,
+  isBillingVisited,
+  isPaymentDisabled,
+}) => {
   return (
     <Fragment>
       <Heading>
@@ -47,48 +92,43 @@ export const BillingSection = ({ card, address, appliedGiftCards, labels, onEdit
           />
         </EditLink>
       </Heading>
-      {card && (
-        <PaymentMethod>
-          <SubHeading>
-            <BodyCopy
-              fontSize="fs16"
-              fontWeight="semibold"
-              color="gray.900"
-              mobileFontFamily="secondary"
-              text={labels.lbl_review_paymentMethod}
-            />
-          </SubHeading>
-          <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
-        </PaymentMethod>
+      {!isPaymentDisabled && (
+        <PaymentMethodWrapper>
+          <PaymentMethodImage>
+            {card && (
+              <PaymentMethod>
+                <SubHeading>
+                  <BodyCopy
+                    fontSize="fs16"
+                    fontWeight="semibold"
+                    color="gray.900"
+                    mobileFontFamily="secondary"
+                    text={labels.lbl_review_paymentMethod}
+                  />
+                </SubHeading>
+
+                <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+              </PaymentMethod>
+            )}
+            {address && (
+              <BillingAddress>
+                <SubHeading>
+                  <BodyCopy
+                    fontSize="fs16"
+                    fontWeight="semibold"
+                    color="gray.900"
+                    mobileFontFamily="secondary"
+                    text={labels.lbl_review_billingAddress}
+                  />
+                </SubHeading>
+                <Address address={address} fontSize="fs16" regularName />
+              </BillingAddress>
+            )}
+          </PaymentMethodImage>
+          {getCvvField({ isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited })}
+        </PaymentMethodWrapper>
       )}
-      {address && (
-        <BillingAddress>
-          <SubHeading>
-            <BodyCopy
-              fontSize="fs16"
-              fontWeight="semibold"
-              color="gray.900"
-              mobileFontFamily="secondary"
-              text={labels.lbl_review_billingAddress}
-            />
-          </SubHeading>
-          <Address address={address} fontSize="fs16" regularName />
-        </BillingAddress>
-      )}
-      {appliedGiftCards && (
-        <Fragment>
-          <SubHeading>
-            <BodyCopy
-              fontSize="fs16"
-              fontWeight="semibold"
-              color="gray.900"
-              mobileFontFamily="secondary"
-              text={labels.lbl_review_appliedGiftCards}
-            />
-          </SubHeading>
-          <AppliedGiftCards appliedGiftCards={appliedGiftCards} labels={labels} />
-        </Fragment>
-      )}
+      <GiftCardsContainer isFromReview />
     </Fragment>
   );
 };
@@ -96,7 +136,6 @@ export const BillingSection = ({ card, address, appliedGiftCards, labels, onEdit
 BillingSection.propTypes = {
   card: PropTypes.shape({}),
   address: PropTypes.shape({}),
-  appliedGiftCards: PropTypes.shape([]),
   labels: PropTypes.shape({
     lbl_review_billingSectionTitle: PropTypes.string,
     lbl_review_paymentMethod: PropTypes.string,
@@ -105,12 +144,15 @@ BillingSection.propTypes = {
     lbl_review_paymentMethodEndingIn: PropTypes.string,
   }),
   onEdit: PropTypes.func.isRequired,
+  isExpressCheckout: PropTypes.bool,
+  cvvCodeRichText: PropTypes.string,
+  isBillingVisited: PropTypes.bool,
+  isPaymentDisabled: PropTypes.bool,
 };
 
 BillingSection.defaultProps = {
   card: null,
   address: null,
-  appliedGiftCards: [],
   labels: {
     lbl_review_billingSectionTitle: '',
     lbl_review_paymentMethod: '',
@@ -118,6 +160,10 @@ BillingSection.defaultProps = {
     lbl_review_appliedGiftCards: '',
     lbl_review_paymentMethodEndingIn: '',
   },
+  isExpressCheckout: false,
+  cvvCodeRichText: '',
+  isBillingVisited: false,
+  isPaymentDisabled: false,
 };
 
 export default BillingSection;

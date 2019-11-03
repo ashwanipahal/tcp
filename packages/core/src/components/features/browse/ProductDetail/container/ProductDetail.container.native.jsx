@@ -16,6 +16,7 @@ import {
   getDescription,
   getCurrentCurrency,
   getCurrencyAttributes,
+  getAlternateSizes,
 } from './ProductDetail.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -36,8 +37,27 @@ class ProductDetailContainer extends React.PureComponent {
 
   componentDidMount() {
     const { getDetails, navigation } = this.props;
-    const pid = (navigation && navigation.getParam('pdpUrl')) || '';
+    const productId = this.extractPID(navigation);
+    getDetails({ productColorId: productId, ignoreCache: true });
+  }
 
+  componentDidUpdate() {
+    const { navigation, currentProduct: { generalProductId } = {}, getDetails } = this.props;
+    const productId = this.extractPID(navigation);
+    if (generalProductId && productId && productId !== generalProductId) {
+      getDetails({ productColorId: productId, ignoreCache: true });
+    }
+  }
+
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, currentProduct } = this.props;
+    let cartItemInfo = getCartItemInfo(currentProduct, formValues);
+    cartItemInfo = { ...cartItemInfo };
+    addToBagEcom(cartItemInfo);
+  };
+
+  extractPID = navigation => {
+    const pid = (navigation && navigation.getParam('pdpUrl')) || '';
     // TODO - fix this to extract the product ID from the page.
     const id = pid && pid.split('-');
     let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
@@ -47,14 +67,7 @@ class ProductDetailContainer extends React.PureComponent {
     ) {
       productId = 'gift';
     }
-    getDetails({ productColorId: productId, ignoreCache: true });
-  }
-
-  handleAddToBag = () => {
-    const { addToBagEcom, formValues, currentProduct } = this.props;
-    let cartItemInfo = getCartItemInfo(currentProduct, formValues);
-    cartItemInfo = { ...cartItemInfo };
-    addToBagEcom(cartItemInfo);
+    return productId;
   };
 
   render() {
@@ -73,6 +86,7 @@ class ProductDetailContainer extends React.PureComponent {
       itemPartNumber,
       currency,
       currencyAttributes,
+      alternateSizes,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -95,6 +109,7 @@ class ProductDetailContainer extends React.PureComponent {
             longDescription={longDescription}
             currency={currency}
             currencyExchange={currencyAttributes.exchangevalue}
+            alternateSizes={alternateSizes}
           />
         ) : null}
       </React.Fragment>
@@ -117,6 +132,7 @@ function mapStateToProps(state) {
     longDescription: getDescription(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
+    alternateSizes: getAlternateSizes(state),
   };
 }
 
@@ -152,6 +168,9 @@ ProductDetailContainer.propTypes = {
   longDescription: PropTypes.string,
   currency: PropTypes.string,
   currencyAttributes: PropTypes.shape({}),
+  alternateSizes: PropTypes.shape({
+    key: PropTypes.string,
+  }),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -169,6 +188,7 @@ ProductDetailContainer.defaultProps = {
   currencyAttributes: {
     exchangevalue: 1,
   },
+  alternateSizes: {},
 };
 
 export default connect(

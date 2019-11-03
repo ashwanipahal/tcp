@@ -14,6 +14,7 @@ import {
   renderAddGiftCardProps,
   renderGiftCardTileProps,
   renderAppliedGiftCardsProps,
+  GiftCardSectionHeading,
 } from './GiftCards.view.utils';
 
 const getHeading = (labels, isGiftCardApplied) => {
@@ -28,27 +29,6 @@ const getHeading = (labels, isGiftCardApplied) => {
       {`${isGiftCardApplied ? labels.appliedGiftCards : labels.availableGiftCards}`}
     </BodyCopy>
   );
-};
-
-const GiftCardSectionHeading = (
-  giftCardList,
-  labels,
-  isFromReview,
-  isExpressCheckout,
-  isGiftCardApplied = false
-) => {
-  let heading;
-  if (isFromReview) {
-    if (isGiftCardApplied) {
-      heading = getHeading(labels, isGiftCardApplied);
-    }
-    if (isExpressCheckout && !isGiftCardApplied && giftCardList && giftCardList.size > 0) {
-      heading = getHeading(labels, isGiftCardApplied);
-    }
-  } else if (giftCardList && giftCardList.size > 0) {
-    heading = getHeading(labels, isGiftCardApplied);
-  }
-  return heading;
 };
 
 const renderAddGiftCardError = getAddGiftCardError => {
@@ -315,7 +295,14 @@ export const GiftCards = ({
               </BodyCopy>
             </>
           )}
-          {GiftCardSectionHeading(appliedGiftCards, labels, isFromReview, isExpressCheckout, true)}
+          {GiftCardSectionHeading(
+            appliedGiftCards,
+            labels,
+            isFromReview,
+            isExpressCheckout,
+            getHeading,
+            true
+          )}
           {renderAppliedGiftCards({
             appliedGiftCards,
             handleRemoveGiftCard,
@@ -326,7 +313,13 @@ export const GiftCards = ({
             isPaymentDisabled,
           })}
           {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
-          {GiftCardSectionHeading(giftCardList, labels, isFromReview, isExpressCheckout)}
+          {GiftCardSectionHeading(
+            giftCardList,
+            labels,
+            isFromReview,
+            isExpressCheckout,
+            getHeading
+          )}
           {renderGiftCardsList({
             giftCardList,
             applyExistingGiftCardToOrder,

@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/CheckoutFooter.style';
 import { Button } from '../../../../../../common/atoms';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class CheckoutFooter extends React.PureComponent {
   render() {
@@ -23,18 +24,22 @@ class CheckoutFooter extends React.PureComponent {
       showVenmoSubmit, // Show Venmo Submit on billing page on selecting venmo payment method
       continueWithText,
       onVenmoSubmit,
+      venmoError,
     } = this.props;
     return (
       <div className={className}>
         {footerBody && <div className="footer-body-container">{footerBody}</div>}
         <div className="footer-buttons">
           {showVenmoSubmit ? (
-            <VenmoPaymentButton
-              className="footer-venmo-button"
-              continueWithText={continueWithText}
-              onSuccess={onVenmoSubmit}
-              isVenmoBlueButton
-            />
+            <>
+              <VenmoPaymentButton
+                className="footer-venmo-button"
+                continueWithText={continueWithText}
+                onSuccess={onVenmoSubmit}
+                isVenmoBlueButton
+              />
+              {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
+            </>
           ) : (
             <Button
               disabled={disableNext}
@@ -104,6 +109,7 @@ CheckoutFooter.propTypes = {
   disableDesktopOnlyNext: PropTypes.bool,
   continueWithText: PropTypes.string,
   onVenmoSubmit: PropTypes.func, // Venmo Submit for billing page, redirect to review page once already authorized or new authorization with the venmo app.
+  venmoError: PropTypes.string,
 };
 
 CheckoutFooter.defaultProps = {
@@ -112,6 +118,7 @@ CheckoutFooter.defaultProps = {
   disableDesktopOnlyNext: false,
   continueWithText: '',
   onVenmoSubmit: () => {},
+  venmoError: '',
 };
 
 export default withStyles(CheckoutFooter, style);

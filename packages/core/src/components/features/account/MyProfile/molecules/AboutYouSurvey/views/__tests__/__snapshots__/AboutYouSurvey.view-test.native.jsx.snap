@@ -133,6 +133,7 @@ exports[`AboutYouSurvey should render SurveyQuestion correctly 1`] = `
         theme={Object {}}
         type="button"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -272,6 +273,7 @@ exports[`AboutYouSurvey should render correctly 1`] = `
         theme={Object {}}
         type="button"
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

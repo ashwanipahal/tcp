@@ -67,6 +67,7 @@ class CheckoutPage extends React.PureComponent {
       setVenmoShippingState,
       isVenmoPickupBannerDisplayed,
       isVenmoShippingBannerDisplayed,
+      isExpressCheckout,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     const { venmoBannerText } = pickUpLabels;
@@ -149,6 +150,7 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+            isExpressCheckout={isExpressCheckout}
           />
         );
       case CONFIRMATION:
@@ -205,6 +207,7 @@ CheckoutPage.propTypes = {
   setVenmoShippingState: PropTypes.func,
   isVenmoPickupBannerDisplayed: PropTypes.bool,
   isVenmoShippingBannerDisplayed: PropTypes.bool,
+  isExpressCheckout: PropTypes.bool,
 };
 
 CheckoutPage.defaultProps = {
@@ -213,6 +216,7 @@ CheckoutPage.defaultProps = {
   setVenmoShippingState: () => {},
   isVenmoPickupBannerDisplayed: true,
   isVenmoShippingBannerDisplayed: true,
+  isExpressCheckout: false,
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);

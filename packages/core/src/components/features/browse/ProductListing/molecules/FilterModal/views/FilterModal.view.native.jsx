@@ -1,9 +1,10 @@
 import React from 'react';
-import { Modal, Picker, Button, Platform } from 'react-native';
+import { Modal, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import { ICON_NAME } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import {
   styles,
   Container,
@@ -161,9 +162,15 @@ class FilterModal extends React.PureComponent {
     const { showModal, language, showSortModal } = this.state;
     const sortOptions = isFavorite ? sortLabels : getSortOptions(sortLabels);
 
-    const lapsList = sortOptions.map(data => {
-      return <Picker.Item label={data.displayName} value={data.id} />;
-    });
+    const dropDownStyle = {
+      height: 49,
+      border: 1,
+    };
+    const itemStyle = {
+      height: 49,
+      color: 'gray.800',
+    };
+
     return (
       <Container>
         <FilterButtons
@@ -213,25 +220,25 @@ class FilterModal extends React.PureComponent {
 
             {showSortModal && (
               <SortContent>
-                {Platform.OS === 'ios' ? (
-                  <Button
-                    title="Done"
-                    onPress={() => {
-                      this.handleClick();
-                    }}
-                  />
-                ) : null}
-                <Picker
+                <DropDown
                   selectedValue={language}
+                  data={sortOptions}
+                  // eslint-disable-next-line sonarjs/no-identical-functions
                   onValueChange={itemValue => {
                     this.setState({ language: itemValue });
-                    if (Platform.OS !== 'ios') {
+                    setTimeout(() => {
                       this.handleClick(itemValue);
-                    }
+                    }, 180);
                   }}
-                >
-                  {lapsList}
-                </Picker>
+                  variation="primary"
+                  dropDownStyle={{ ...dropDownStyle }}
+                  itemStyle={{ ...itemStyle }}
+                  bounces={false}
+                  selectedItemFontWeight="extrabold"
+                  dropDownItemFontWeight="regular"
+                  onPressOut={this.onPressOut}
+                  openDropdownOnLoad
+                />
               </SortContent>
             )}
           </SafeAreaViewStyle>

@@ -708,6 +708,11 @@ const getCheckoutServerError = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'checkoutServerError']);
 };
 
+const getVenmoError = state => {
+  const error = state[CHECKOUT_REDUCER_KEY].getIn(['values', 'venmoData', 'error']);
+  return error ? error.message : '';
+};
+
 /**
  * Mainly used to check for Venmo nonce expiry
  * @param state
@@ -930,6 +935,12 @@ const getIsBillingVisited = createSelector(
   }
 );
 
+function getVenmoUserEmail(state) {
+  const { emailAddress: shippingEmail } = getShippingPhoneAndEmail(state);
+  const { emailAddress: pickupEmail } = getPickupValues(state);
+  return getUserEmail(state) || shippingEmail || pickupEmail;
+}
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
@@ -1014,4 +1025,7 @@ export default {
   getExpressReviewShippingSectionId,
   getShippingAddressList,
   getIsBillingVisited,
+  getVenmoUserEmail,
+  getVenmoError,
+  getPickupValues,
 };

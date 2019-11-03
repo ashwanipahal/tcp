@@ -83,6 +83,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "dropDownStyle": null,
                 "itemStyle": null,
                 "onValueChange": null,
+                "openDropdownOnLoad": false,
                 "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
@@ -205,6 +206,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "dropDownStyle": null,
                 "itemStyle": null,
                 "onValueChange": null,
+                "openDropdownOnLoad": false,
                 "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
@@ -324,6 +326,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "dropDownStyle": null,
                 "itemStyle": null,
                 "onValueChange": null,
+                "openDropdownOnLoad": false,
                 "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
@@ -625,6 +628,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)
@@ -651,6 +655,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       text="lbl_add_child_cancel"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Fragment>

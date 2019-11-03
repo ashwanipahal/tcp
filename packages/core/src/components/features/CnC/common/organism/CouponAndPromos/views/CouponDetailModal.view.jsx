@@ -23,7 +23,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
 
   componentDidUpdate() {
     const { coupon, handleErrorCoupon } = this.props;
-    if (coupon.error) {
+    if (coupon.error && handleErrorCoupon) {
       handleErrorCoupon(coupon);
     }
   }

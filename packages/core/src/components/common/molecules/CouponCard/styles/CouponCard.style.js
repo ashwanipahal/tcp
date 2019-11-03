@@ -46,7 +46,7 @@ const styles = css`
   }
   .cartDetailsLink {
     position: absolute;
-    font-size: ${props => props.theme.typography.fontSizes.fs10};
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
     color: ${props => props.theme.colors.TEXT.DARK};
   }
   .couponCard__header_expired {

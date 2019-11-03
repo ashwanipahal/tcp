@@ -13,9 +13,8 @@ import {
   routeForCartCheckout,
   addItemToSFL,
   getSflDataSaga,
-  startSflItemDelete,
-  startSflItemMoveToBag,
 } from '../container/BagPage.saga';
+import { startSflItemDelete } from '../container/BagPage.saga.util';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BAG_SELECTORS from '../container/BagPage.selectors';
@@ -104,7 +103,6 @@ describe('Bag page Saga', () => {
     expectValue(BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT, authorizePayPalPayment);
     expectValue(BAGPAGE_CONSTANTS.GET_SFL_DATA, getSflDataSaga);
     expectValue(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);
-    expectValue(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
   });
 });
 
