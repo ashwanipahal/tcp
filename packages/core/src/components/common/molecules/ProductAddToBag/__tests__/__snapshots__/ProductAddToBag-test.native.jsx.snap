@@ -72,61 +72,87 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     name="Fit"
     selectedItem=""
   />
-  <Field
-    component={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "componentWidth": 80,
-          "data": Array [],
-          "error": null,
-          "input": null,
-          "isDisableZeroInventoryEntries": true,
-          "isGiftCard": false,
-          "itemNameKey": "",
-          "itemValue": "",
-          "keyExtractor": null,
-          "locators": null,
-          "renderColorItem": false,
-          "selectColor": null,
-          "selectItem": null,
-          "selectedColor": "",
-          "selectedItem": null,
-          "separatorWidth": 8,
-        },
-        "attrs": Array [],
-        "displayName": "Styled(ProductVariantSelector)",
-        "inlineStyle": InlineStyle {
-          "rules": Array [
-            "
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "componentWidth": 80,
+            "data": Array [],
+            "error": null,
+            "input": null,
+            "isDisableZeroInventoryEntries": true,
+            "isGiftCard": false,
+            "itemNameKey": "",
+            "itemValue": "",
+            "keyExtractor": null,
+            "locators": null,
+            "renderColorItem": false,
+            "selectColor": null,
+            "selectItem": null,
+            "selectedColor": "",
+            "selectedItem": null,
+            "separatorWidth": 8,
+          },
+          "attrs": Array [],
+          "displayName": "Styled(ProductVariantSelector)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
     ",
-            "
+              "
   margin-bottom: 33px;
 ",
-            ";
+              ";
   ",
-          ],
-        },
-        "render": [Function],
-        "styledComponentId": "StyledNativeComponent",
-        "target": [Function],
-        "withComponent": [Function],
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
       }
-    }
-    data={Array []}
-    error=""
-    id="size"
-    itemNameKey="displayName"
-    itemValue=""
-    locators={
-      Object {
-        "key": "pdp_size_label",
-        "value": "pdp_size_value",
+      data={Array []}
+      error=""
+      id="size"
+      itemNameKey="displayName"
+      itemValue=""
+      locators={
+        Object {
+          "key": "pdp_size_label",
+          "value": "pdp_size_value",
+        }
       }
-    }
-    name="Size"
-    selectedItem=""
-  />
+      name="Size"
+      selectedItem=""
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="black"
+      dataLocator=""
+      fontSize="fs12"
+      fontWeight="semibold"
+      margin={null}
+      mobilefontFamily={
+        Array [
+          "secondary",
+        ]
+      }
+      numberOfLines={null}
+      spacingStyles="padding-right-XS"
+      text=""
+      textDecoration={null}
+    />
+    <Connect(Styled(FulfillmentSection))
+      buttonLabel="Find In Store"
+      currentProduct={null}
+      isAnchor={true}
+    />
+  </Styled(View)>
   <Styled(View)
     style={
       Object {

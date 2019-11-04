@@ -35,6 +35,8 @@ import {
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import CardEditFrom from './CardEditForm.view';
+import BillingPayPalButton from '../../BillingPayPalButton';
+
 import {
   onEditCardFocus as onCardEditFocus,
   setFormToEditState,
@@ -399,11 +401,12 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description render method to be called of component
    */
   render() {
-    const { className, handleSubmit, cardList, isGuest } = this.props;
+    const { className, handleSubmit, cardList, isGuest, pageCategory } = this.props;
     const { onFileCardKey, labels, cvvCodeRichText, isVenmoEnabled, venmoError } = this.props;
-    const { paymentMethodId, orderHasShipping, backLinkPickup } = this.props;
+    const { paymentMethodId, orderHasShipping, backLinkPickup, isPayPalEnabled } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
+
     return (
       <form
         name={constants.FORM_NAME}
@@ -434,9 +437,9 @@ export class BillingPaymentForm extends React.PureComponent {
                 cvvCodeRichText,
                 onFileCardKey,
               })}
-            {paymentMethodId === constants.PAYMENT_METHOD_PAYPAL && (
-              <div className="payment-paypal-container" />
-            )}
+            {isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL ? (
+              <BillingPayPalButton labels={labels} containerId="billing-page-paypal-one" />
+            ) : null}
             {paymentMethodId === constants.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
               <VenmoPaymentButton
                 className="venmo-container"
@@ -448,13 +451,18 @@ export class BillingPaymentForm extends React.PureComponent {
             {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
           </div>
         )}
-        <CheckoutOrderInfo isGuest={isGuest} showAccordian={showAccordian} />
+        <CheckoutOrderInfo
+          isGuest={isGuest}
+          showAccordian={showAccordian}
+          pageCategory={pageCategory}
+        />
         <CheckoutFooter
           hideBackLink
           backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}
+          showPayPalButton={isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL}
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
           venmoError={venmoError}

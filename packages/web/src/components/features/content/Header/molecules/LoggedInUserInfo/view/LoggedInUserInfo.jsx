@@ -26,31 +26,40 @@ const LoggedInUserInfo = ({
   onLinkClick,
   isDrawer,
 }) => {
+  const linkClick = e => onLinkClick({ e, openOverlay, userNameClick }, mainId);
   return (
     <React.Fragment>
-      <BodyCopy
-        component="div"
-        id={mainId}
-        className="account-info-section"
-        onClick={e => onLinkClick({ e, openOverlay, userNameClick }, mainId)}
-      >
-        <div className="account-info user-name">{`Hi, ${handleUserName(userName)}`}</div>
+      <BodyCopy component="div" id={mainId} className="account-info-section">
+        <BodyCopy
+          className="account-info user-name"
+          onClick={linkClick}
+          component="div"
+          role="button"
+        >
+          {`Hi, ${handleUserName(userName)}`}
+        </BodyCopy>
         {!isDrawer ? (
           <Image
             alt="user"
             className={`account-info ${handleCarrottoggle(userNameClick, isOpenOverlay)}`}
             src={getIconPath('down_arrow_icon')}
             height="6px"
+            onClick={linkClick}
           />
         ) : null}
-        <div>
+        <BodyCopy onClick={linkClick} component="div">
           <div className="account-info user-points">{`${userPoints} Points`}</div>
           <span className="account-info user-rewards rightLink">
             {`$${handleUserRewards(userRewards)} Rewards`}
           </span>
-        </div>
+        </BodyCopy>
         {!isDrawer ? (
-          <Image alt="user" className="usericon" src={getIconPath('user-icon')} />
+          <Image
+            alt="user"
+            className="usericon"
+            src={getIconPath('user-icon')}
+            onClick={linkClick}
+          />
         ) : null}
       </BodyCopy>
     </React.Fragment>

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPlaceRewardsCreditCardTile component should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaLink=""
+  ctaTitle="lbl_overview_applyOrAcceptOffer"
+  target="new"
+  title="lbl_overview_myPlaceRewardsCardHeading"
+>
+  <Styled(Row)
+    className=" elem-mb-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="container-top"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_overview_addYourCardTo
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="list-style"
+            color="text.primary"
+            component="ul"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          />
+          <Styled(BodyCopy)
+            className="elem-mt-LRG"
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="shop-now-btn"
+              color="GRAY"
+              data-locator="orders-shop-now-btn"
+              fill="WHITE"
+              onClick={[Function]}
+            >
+              lbl_overview_addYourCard
+            </Styled(Button)>
+          </Styled(BodyCopy)>
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_overview_dontHaveMyPlaceCard
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(AccountOverviewTile)>
+`;

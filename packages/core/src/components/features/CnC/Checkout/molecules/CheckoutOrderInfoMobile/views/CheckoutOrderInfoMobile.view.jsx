@@ -23,12 +23,16 @@ class CheckoutOrderInfo extends React.PureComponent {
       venmoPayment,
       labels,
       fullPageInfo,
+      pageCategory,
     } = this.props;
     return (
       <div className={className}>
         {isConfirmationPage ? (
           <>
-            <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+            <OrderLedgerContainer
+              isConfirmationPage={isConfirmationPage}
+              pageCategory={pageCategory}
+            />
             {isVenmoPaymentInProgress && venmoPayment && (
               <section className="venmo-payment-method-wrapper">
                 <BodyCopy
@@ -43,11 +47,6 @@ class CheckoutOrderInfo extends React.PureComponent {
                 <CardImage card={venmoPayment} cardNumber={venmoPayment.userName} />
               </section>
             )}
-            <Row fullBleed className="placeholder ">
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <div>LOYALTY BANNER</div>
-              </Col>
-            </Row>
             <Row fullBleed>
               <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                 <PersonalizedCoupons />
@@ -62,7 +61,7 @@ class CheckoutOrderInfo extends React.PureComponent {
               idPrefix="mobile"
               fullPageInfo={fullPageInfo}
             />
-            <OrderLedgerContainer showAccordian={showAccordian} />
+            <OrderLedgerContainer showAccordian={showAccordian} pageCategory={pageCategory} />
             {!isGuest && (
               <BonusPointsDays
                 showAccordian={showAccordian}
@@ -90,6 +89,7 @@ CheckoutOrderInfo.propTypes = {
     ccBrand: PropTypes.string,
     ccType: PropTypes.string,
   }),
+  pageCategory: PropTypes.string,
   labels: PropTypes.shape({
     paidWithVenmo: PropTypes.string,
   }),
@@ -99,6 +99,7 @@ CheckoutOrderInfo.defaultProps = {
   isConfirmationPage: false,
   isVenmoPaymentInProgress: false,
   fullPageInfo: false,
+  pageCategory: '',
   venmoPayment: {
     userName: '',
     ccBrand: VenmoConstants.VENMO,

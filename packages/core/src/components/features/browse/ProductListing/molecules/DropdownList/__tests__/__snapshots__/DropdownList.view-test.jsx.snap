@@ -12,7 +12,7 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-fjdhpX",
+        "componentId": "sc-cSHVUG",
         "isStatic": false,
         "rules": Array [
           "
@@ -94,7 +94,7 @@ exports[`Drop Down is shown should render Drop Down  1`] = `
       "displayName": "Styled(DropdownList)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-fjdhpX",
+      "styledComponentId": "sc-cSHVUG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

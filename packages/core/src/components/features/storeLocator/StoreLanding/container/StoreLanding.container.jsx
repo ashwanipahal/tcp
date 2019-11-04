@@ -24,7 +24,6 @@ export class StoreLanding extends PureComponent {
   }
 
   state = {
-    searchDone: false,
     geoLocationEnabled: false,
   };
 
@@ -93,12 +92,7 @@ export class StoreLanding extends PureComponent {
   loadStoresByCoordinates = (coordinatesPromise, maxItems, radius) => {
     const { fetchStoresByCoordinates } = this.props;
     coordinatesPromise.then(coordinates => {
-      this.setState(
-        {
-          searchDone: true,
-        },
-        () => fetchStoresByCoordinates({ coordinates, maxItems, radius })
-      );
+      fetchStoresByCoordinates({ coordinates, maxItems, radius });
     });
     return false;
   };
@@ -112,7 +106,7 @@ export class StoreLanding extends PureComponent {
   };
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, searchDone } = this.props;
     const searchIcon = getIconPath('search-icon');
     const markerIcon = getIconPath('marker-icon');
     return (
@@ -125,6 +119,7 @@ export class StoreLanding extends PureComponent {
         openStoreDirections={store => this.constructor.openStoreDirections(store)}
         navigation={navigation}
         getLocationStores={this.getLocationStores}
+        searchDone={searchDone}
         {...this.state}
       />
     );
@@ -137,6 +132,7 @@ StoreLanding.propTypes = {
   favoriteStore: PropTypes.shape(PropTypes.string),
   fetchCurrentStore: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  searchDone: PropTypes.bool.isRequired,
 };
 
 StoreLanding.defaultProps = {
@@ -160,6 +156,7 @@ const mapStateToProps = state => ({
   isStoreSearched:
     state.StoreLocatorReducer && state.StoreLocatorReducer.get('storeSuggestionCompleted'),
   favoriteStore: state.User && state.User.get('defaultStore'),
+  searchDone: state.StoreLocatorReducer && state.StoreLocatorReducer.get('searchDone'),
 });
 
 export default connect(
