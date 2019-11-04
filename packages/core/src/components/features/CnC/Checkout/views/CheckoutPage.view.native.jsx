@@ -63,6 +63,9 @@ class CheckoutPage extends React.PureComponent {
       currentStage,
       setCheckoutStage,
       isExpressCheckout,
+      pickUpContactAlternate,
+      isHasPickUpAlternatePerson,
+      pickUpAlternatePerson,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     switch (currentStage && currentStage.toLowerCase()) {
@@ -132,6 +135,15 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
             isExpressCheckout={isExpressCheckout}
+            pickUpContactAlternate={pickUpContactAlternate}
+            initialValues={{
+              pickUpAlternateExpress: {
+                hasAlternatePickup: isHasPickUpAlternatePerson,
+                firstName: pickUpAlternatePerson.firstName,
+                lastName: pickUpAlternatePerson.lastName,
+                emailAddress: pickUpAlternatePerson.emailAddress,
+              },
+            }}
           />
         );
       case CONFIRMATION:
@@ -184,6 +196,9 @@ CheckoutPage.propTypes = {
   checkoutServerError: PropTypes.shape({}).isRequired,
   toastMessage: PropTypes.func.isRequired,
   isExpressCheckout: PropTypes.bool,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {
