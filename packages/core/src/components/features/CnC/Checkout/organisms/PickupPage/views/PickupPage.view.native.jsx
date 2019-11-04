@@ -44,6 +44,7 @@ class PickUpFormPart extends React.Component {
     this.state = {
       isEditing: false,
       dataUpdated: false,
+      editPickupError: '',
       pickUpContact: {
         firstName: '',
         lastName: '',
@@ -59,9 +60,14 @@ class PickUpFormPart extends React.Component {
   }
 
   handleEditModeChange = (isEditing, pickUpContact) => {
+    let { editPickupError } = this.state;
+    if (isEditing) {
+      editPickupError = '';
+    }
     if (pickUpContact) {
       this.setState({
         isEditing,
+        editPickupError,
         dataUpdated: true,
         pickUpContact: {
           firstName: pickUpContact.firstName,
@@ -73,6 +79,7 @@ class PickUpFormPart extends React.Component {
     } else {
       this.setState({
         isEditing,
+        editPickupError,
       });
     }
   };
@@ -110,28 +117,37 @@ class PickUpFormPart extends React.Component {
   };
 
   pickupSubmit = data => {
-    const { onPickupSubmit, navigation } = this.props;
+    const { onPickupSubmit, navigation, pickUpLabels } = this.props;
+    const { isEditing } = this.state;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
-    const params = {
-      pickUpContact: {
-        firstName,
-        lastName,
-        phoneNumber,
-        emailAddress,
-        smsInfo: {
-          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+    if (!isEditing) {
+      const params = {
+        pickUpContact: {
+          firstName,
+          lastName,
+          phoneNumber,
+          emailAddress,
+          smsInfo: {
+            wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+          },
         },
-      },
-      hasAlternatePickup,
-      pickUpAlternate: {
-        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-      },
-      navigation,
-    };
-    onPickupSubmit(params);
+        hasAlternatePickup,
+        pickUpAlternate: {
+          firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
+          lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
+          emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
+        },
+        navigation,
+      };
+      return onPickupSubmit(params);
+    }
+    this.setState({ editPickupError: pickUpLabels.editFormSubmitError });
+
+    return this.errorMessageRef.measure((x, y, width, height) => {
+      const scrollPosition = y - height;
+      this.scrollView.scrollTo({ x: 0, y: scrollPosition, animated: true });
+    });
   };
 
   updatePickupForm() {
@@ -174,7 +190,7 @@ class PickUpFormPart extends React.Component {
       checkoutPageEmptyBagLabels,
       cartOrderItemsCount,
     } = this.props;
-    const { isEditing, pickUpContact, dataUpdated } = this.state;
+    const { isEditing, pickUpContact, dataUpdated, editPickupError } = this.state;
     if (!dataUpdated) {
       this.updatePickupForm();
     }
@@ -188,7 +204,11 @@ class PickUpFormPart extends React.Component {
               availableStages={availableStages}
               setCheckoutStage={setCheckoutStage}
             />
-            <ScrollView>
+            <ScrollView
+              ref={ref => {
+                this.scrollView = ref;
+              }}
+            >
               <Container>
                 <PickupError>
                   <ErrorMessage
@@ -218,6 +238,10 @@ class PickUpFormPart extends React.Component {
                         />
                       ) : (
                         <PickupMainContactEditForm
+                          errorMessageRef={ref => {
+                            this.errorMessageRef = ref;
+                          }}
+                          editModeSubmissionError={editPickupError}
                           dispatch={dispatch}
                           labels={pickUpLabels}
                           handleSubmit={handleSubmit}
@@ -321,7 +345,7 @@ class PickUpFormPart extends React.Component {
                 btnText={pickUpLabels.nextToBilling}
                 routeToPage="ShippingPage"
                 isGuest={isGuest}
-                onPress={e => !isEditing && handleSubmit(this.pickupSubmit)(e)}
+                onPress={handleSubmit(this.pickupSubmit)}
                 pageCategory="pickupPage"
                 showAccordian
               />

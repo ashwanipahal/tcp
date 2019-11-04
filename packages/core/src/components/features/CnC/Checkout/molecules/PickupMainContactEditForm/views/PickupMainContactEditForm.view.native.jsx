@@ -14,6 +14,7 @@ import {
   PickupEditHeader,
   EditAnchor,
 } from '../styles/PickupMainContactEditForm.style.native';
+import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
 class PickupMainContactEditForm extends React.Component {
   static defaultValidation = getStandardConfig(['firstName', 'lastName', 'phoneNumber']);
@@ -71,18 +72,31 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   render() {
-    const { formData, isEditing, labels, isReset } = this.props;
+    const {
+      formData,
+      isEditing,
+      labels,
+      isReset,
+      errorMessageRef,
+      editModeSubmissionError,
+    } = this.props;
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
     }
     return (
-      <View>
+      <View ref={errorMessageRef}>
         {this.renderSectionTitle()}
         {!isEditing && <PickUpContactDisplay formData={formData} />}
         {isEditing && (
           <>
             <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
+            {editModeSubmissionError ? (
+              <ErrorMessage
+                error={editModeSubmissionError}
+                backgroundColor={props => props.theme.colors.WHITE}
+              />
+            ) : null}
             {this.SaveButton()}
           </>
         )}
@@ -94,6 +108,8 @@ class PickupMainContactEditForm extends React.Component {
 PickupMainContactEditForm.propTypes = {
   isEditing: PropTypes.bool.isRequired,
   onEditModeChange: PropTypes.func.isRequired,
+  editModeSubmissionError: PropTypes.string.isRequired,
+  errorMessageRef: PropTypes.shape({}).isRequired,
   ...reduxFormPropTypes,
 };
 

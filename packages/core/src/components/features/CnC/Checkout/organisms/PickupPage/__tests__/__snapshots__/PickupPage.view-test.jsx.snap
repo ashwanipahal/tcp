@@ -434,7 +434,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props not pres
     <form>
       <Styled(CheckoutFooter)
         backLinkText="undefined undefined"
-        disableNext={false}
         hideBackLink={false}
         nextButtonText="undefined: undefined"
       />
