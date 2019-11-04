@@ -1782,7 +1782,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -1802,7 +1802,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -2122,7 +2122,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -2142,7 +2142,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -2462,7 +2462,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -2482,7 +2482,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -2727,7 +2727,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -2747,7 +2747,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -3067,7 +3067,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -3087,7 +3087,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -3407,7 +3407,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -3427,7 +3427,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -3672,7 +3672,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -3692,7 +3692,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -3937,7 +3937,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -3957,7 +3957,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -4277,7 +4277,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -4297,7 +4297,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -4617,7 +4617,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -4637,7 +4637,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -4882,7 +4882,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -4902,7 +4902,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -5222,7 +5222,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -5242,7 +5242,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -5562,7 +5562,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -5582,7 +5582,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
@@ -5827,7 +5827,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       forwardedRef={null}
                     >
                       <Col
-                        className="store-intl-item sc-bZQynM bfKBuE"
+                        className="sc-bZQynM bfKBuE store-intl-item"
                         colSize={
                           Object {
                             "large": 2,
@@ -5847,7 +5847,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                         tagName="div"
                       >
                         <div
-                          className="store-intl-item sc-bZQynM bfKBuE"
+                          className="sc-bZQynM bfKBuE store-intl-item"
                           colSize={
                             Object {
                               "large": 2,
