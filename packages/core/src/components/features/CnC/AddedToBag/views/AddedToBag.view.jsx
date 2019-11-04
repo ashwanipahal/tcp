@@ -26,6 +26,7 @@ type Props = {
   quantity: number,
   handleContinueShopping: Function,
   isInternationalShipping: boolean,
+  hideHeader: boolean,
 };
 
 const AddedToBag = ({
@@ -38,6 +39,7 @@ const AddedToBag = ({
   handleContinueShopping,
   handleCartCheckout,
   isInternationalShipping,
+  hideHeader,
 }: Props) => {
   return (
     <Modal
@@ -74,6 +76,7 @@ const AddedToBag = ({
           showVenmo={false}
           containerId="paypal-button-container-added-to-bag"
           inheritedStyles={buttonActionStyles}
+          hideHeader={hideHeader}
         />
         <div className="loyaltyAddedToBagWrapper">
           <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
@@ -99,6 +102,7 @@ const AddedToBag = ({
 AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  hideHeader: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);
