@@ -135,6 +135,11 @@ export default css`
       }
     }
   }
+  .refer_a_frient_last_colm{
+    @media ${props => props.theme.mediaQuery.mediumOnly}{
+      margin-left: 4%;
+    }
+  }
 
   &.navigation-footer {
 
@@ -196,7 +201,6 @@ export default css`
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
-
     .hide-in-medium-up {
       display: none;
     }
@@ -274,6 +278,7 @@ export default css`
 
     .candidate_a_inline_container_button .refer_a_friend_button{
       width: 165px;
+      padding: 0px;
         @media ${props => props.theme.mediaQuery.smallMax} {
           width: 192px;
       }
