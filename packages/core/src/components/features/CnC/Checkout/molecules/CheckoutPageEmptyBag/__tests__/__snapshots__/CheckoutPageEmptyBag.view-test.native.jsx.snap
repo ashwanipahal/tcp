@@ -2,11 +2,27 @@
 
 exports[`CheckoutPageEmptyBag Component CheckoutPageEmptyBag should render correctly 1`] = `
 <Styled(View)>
-  <Styled(Text)>
-    abc
-  </Styled(Text)>
-  <Styled(Text)>
-    abc
-  </Styled(Text)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="extrabold"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-bottom-MED margin-left-MED margin-right-MED"
+    text="abc"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs14"
+    margin={null}
+    numberOfLines={null}
+    text="abc"
+    textDecoration={null}
+  />
 </Styled(View)>
 `;
