@@ -7,6 +7,7 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs10};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
+
   .disable-drop-down {
     pointer-events: none;
   }
@@ -170,9 +171,7 @@ export default css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     border-top: 1px solid ${props => props.theme.colors.TEXT.DARKGRAY};
   }
-  .payment-paypal-container {
-    padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
-  }
+
   .addCreditCardBtn {
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.XL};
     min-height: 42px;
