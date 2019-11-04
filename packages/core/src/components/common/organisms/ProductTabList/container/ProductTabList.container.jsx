@@ -18,21 +18,18 @@ class ProductTabListContainer extends React.PureComponent {
     const {
       tabItems: [item = {}],
     } = this.props;
-    debugger;
     const { category = [] } = item;
-    debugger;
     const processedCatId = this.getProcessedCategoryIds(category);
     this.updateCategoryId(processedCatId);
   }
 
-  getProcessedCategoryIds = (catIds) => {
-    debugger;
+  getProcessedCategoryIds = catIds => {
     const processedCatId = [];
-    if(catIds.length) {
-      catIds.forEach(item => processedCatId.push(item.val || item)); 
+    if (catIds.length) {
+      catIds.forEach(item => processedCatId.push(item.val || item));
     }
     return processedCatId;
-  }
+  };
 
   onTabChange = catId => {
     const processedCatId = this.getProcessedCategoryIds(catId);
@@ -63,7 +60,6 @@ class ProductTabListContainer extends React.PureComponent {
     which is being used in the ProductTabList view.
   */
   getButtonTabItems = tabItems => {
-    debugger;
     return tabItems.map(item => {
       const {
         category = {},
@@ -95,7 +91,6 @@ class ProductTabListContainer extends React.PureComponent {
 
   render() {
     const { selectedCategoryId } = this.state;
-    debugger;
     const { tabItems, dataLocator, style } = this.props;
     const buttonTabItems = this.getButtonTabItems(tabItems);
 
