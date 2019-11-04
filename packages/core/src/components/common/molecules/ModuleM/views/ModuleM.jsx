@@ -31,13 +31,6 @@ export class ModuleM extends React.PureComponent {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { productCategoryImageList } = this.state;
-    if (productCategoryImageList.length !== prevState.productCategoryImageList.length) {
-      this.calculateGridImageHeight();
-    }
-  }
-
   componentWillUnmount() {
     window.removeEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
   }
@@ -86,12 +79,6 @@ export class ModuleM extends React.PureComponent {
     else gutterViewportKey = 'lg';
 
     return gutterViewportKey;
-  };
-
-  calculateGridImageHeight = () => {
-    const gridImage = document.querySelector('.moduleM__productImage');
-    const ctButton = document.querySelector('.moduleM__gridButton');
-    ctButton.offsetHeight = gridImage.offsetHeight;
   };
 
   getProductImageGrid = selectedProductList => {
