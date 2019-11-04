@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<div
+  className=""
+>
+  <div
+    className="payment-paypal-container hide-on-desktop hide-on-tablet"
+  >
+    <Styled(BodyCopy)
+      className="paypal-complete-purchase"
+      color="text.primary"
+      component="p"
+      dataLocator="completePurchaseLblÎ"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Payment Method
+    </Styled(BodyCopy)>
+    <withRouter(Connect(PayPalButtonContainer))
+      className="billing-payPal-button"
+      isBillingPage={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`ButtonList component renders correctly without props 2`] = `
+<div
+  className=""
+>
+  <div
+    className="payment-paypal-container hide-on-desktop hide-on-tablet"
+  >
+    <Styled(BodyCopy)
+      className="paypal-complete-purchase"
+      color="text.primary"
+      component="p"
+      dataLocator="completePurchaseLblÎ"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Payment Method
+    </Styled(BodyCopy)>
+    <withRouter(Connect(PayPalButtonContainer))
+      className="billing-payPal-button"
+      isBillingPage={true}
+    />
+  </div>
+</div>
+`;

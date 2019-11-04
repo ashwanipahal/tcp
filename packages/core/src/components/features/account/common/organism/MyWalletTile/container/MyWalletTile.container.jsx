@@ -2,12 +2,17 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCouponList } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
-import { getAllCoupons } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
+import {
+  getAllCoupons,
+  getCouponFetchingState,
+} from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyWalletTileComponent from '../views';
+import MyWalletTileSkelton from '../skelton/MyWalletTileSkelton.view';
 
 export class MyWalletTile extends PureComponent {
   static propTypes = {
     fetchCoupons: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -16,12 +21,26 @@ export class MyWalletTile extends PureComponent {
   }
 
   render() {
+    const { isFetching } = this.props;
+
+    if (isFetching) {
+      return <MyWalletTileSkelton />;
+    }
     return <MyWalletTileComponent {...this.props} />;
   }
 }
 
+MyWalletTile.propTypes = {
+  isFetching: PropTypes.bool,
+};
+
+MyWalletTile.defaultProps = {
+  isFetching: false,
+};
+
 const mapStateToProps = state => ({
   coupons: getAllCoupons(state),
+  isFetching: getCouponFetchingState(state),
 });
 
 const mapDispatchToProps = dispatch => ({

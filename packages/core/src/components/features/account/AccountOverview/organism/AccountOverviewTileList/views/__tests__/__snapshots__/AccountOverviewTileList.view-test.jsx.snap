@@ -121,6 +121,26 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
         "small": true,
       }
     }
+    key="myPlaceRewardsCreditCardTile"
+  >
+    <Connect(MyPlaceRewardsCreditCardTile) />
+  </Styled(Col)>
+  <Styled(Col)
+    className="overviewCol elem-mb-XL"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": false,
+        "medium": false,
+        "small": true,
+      }
+    }
     key="myWalletTile"
   >
     <Connect(MyWalletTile) />
@@ -137,7 +157,7 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     ignoreGutter={
       Object {
         "large": false,
-        "medium": false,
+        "medium": true,
         "small": true,
       }
     }
@@ -156,8 +176,8 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
-        "large": false,
-        "medium": true,
+        "large": true,
+        "medium": false,
         "small": true,
       }
     }

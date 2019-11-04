@@ -205,11 +205,11 @@ class GiftServices extends React.PureComponent {
                     key={GIFT_SERVICES_CONSTANTS.TCP}
                     selectedValue={GIFT_SERVICES_CONSTANTS.TCP}
                     name="brand"
-                    variation="secondary"
                     disabled={false}
                     aria-label={GIFT_SERVICES_CONSTANTS.TCP}
                     className="tcp-radio-button"
                     onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.TCP)}
+                    checked={SelectedBrand === GIFT_SERVICES_CONSTANTS.TCP}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
@@ -244,9 +244,9 @@ class GiftServices extends React.PureComponent {
                     selectedValue={GIFT_SERVICES_CONSTANTS.GYM}
                     aria-label={GIFT_SERVICES_CONSTANTS.GYM}
                     name="brand"
-                    variation="secondary"
                     disabled={false}
                     onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.GYM)}
+                    checked={SelectedBrand === GIFT_SERVICES_CONSTANTS.GYM}
                   >
                     <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
                       <Image
