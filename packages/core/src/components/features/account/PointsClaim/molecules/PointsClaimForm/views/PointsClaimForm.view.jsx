@@ -150,7 +150,7 @@ export class PointsClaimForm extends PureComponent {
 
           {isStore && (
             <>
-              <Row fullBleed className="elem-mb-LRG">
+              <Row fullBleed>
                 <Col colSize={{ small: 6, medium: 4, large: 3 }} ignoreGutter={{ small: true }}>
                   <Field
                     id={fieldNames.STORE_NUMBER}

@@ -17,9 +17,14 @@ exports[`FullSizeImageModal component should renders correctly 1`] = `
       className=" image-zoom "
       onTouchStart={[Function]}
     >
-      <Styled(Image)
-        alt=""
-        src=""
+      <WithTheme(DamImage)
+        imgData={
+          Object {
+            "alt": "",
+            "url": "",
+          }
+        }
+        isProductImage={true}
       />
     </figure>
   </div>

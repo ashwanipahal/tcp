@@ -174,18 +174,13 @@ class LoyaltyFooterSection extends PureComponent<Props> {
     );
   };
 
-  addedToBagPageLinks = (labels, isGuest, isPlcc, earnedRewardAvailable) => {
+  addedToBagPageLinks = (labels, isGuest, isPlcc) => {
     return (
       <>
         {isGuest && this.createAccLogInLinks(labels)}
         {!isGuest && (
           <>
-            {!isPlcc && (
-              <>
-                {!earnedRewardAvailable && this.applyNowLearnMoreLinks(labels)}
-                {earnedRewardAvailable && this.LearnMoreLink(labels)}
-              </>
-            )}
+            {!isPlcc && this.applyNowLearnMoreLinks(labels)}
             {isPlcc && this.LearnMoreLink(labels)}
           </>
         )}
@@ -231,8 +226,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
       <View className={`${className} footerWrapper`}>
         {isProductDetailView &&
           this.productDetailViewFooter(labels, isProductDetailView, isGuest, isPlcc)}
-        {isAddedToBagPage &&
-          this.addedToBagPageLinks(labels, isGuest, isPlcc, earnedRewardAvailable)}
+        {isAddedToBagPage && this.addedToBagPageLinks(labels, isGuest, isPlcc)}
         {!isProductDetailView && !isAddedToBagPage && (
           <>
             {!isReviewPage &&
