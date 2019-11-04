@@ -95,7 +95,7 @@ const LoyaltyBannerSection = props => {
 
   const utilArrSubHeading = [
     {
-      key: '#sectionSymbol#',
+      key: '#sectionSymbol# ',
       value: (
         <SectionSymbol pageChecksObj={pageChecksObj}>{`${labels.sectionSymbol} `}</SectionSymbol>
       ),
