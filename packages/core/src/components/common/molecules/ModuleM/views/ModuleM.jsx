@@ -20,6 +20,7 @@ export class ModuleM extends React.PureComponent {
       productCategoryImageList: [],
       activeTab: 'tablList-0',
     };
+    this.gridImageRef = React.createRef();
   }
 
   componentDidMount() {
@@ -28,6 +29,13 @@ export class ModuleM extends React.PureComponent {
     this.setState({
       productCategoryImageList: divTabs[0].smallCompImages,
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { productCategoryImageList } = this.state;
+    if (productCategoryImageList.length !== prevState.productCategoryImageList.length) {
+      this.calculateGridImageHeight();
+    }
   }
 
   componentWillUnmount() {
@@ -80,6 +88,12 @@ export class ModuleM extends React.PureComponent {
     return gutterViewportKey;
   };
 
+  calculateGridImageHeight = () => {
+    const gridImage = document.querySelector('.moduleM__productImage');
+    const ctButton = document.querySelector('.moduleM__gridButton');
+    ctButton.offsetHeight = gridImage.offsetHeight;
+  };
+
   getProductImageGrid = selectedProductList => {
     const { singleCTAButton } = this.props;
     const viewportKey = this.getViewportKey();
@@ -122,7 +136,9 @@ export class ModuleM extends React.PureComponent {
                   asPath={link.url}
                   dataLocator={`${getLocator('moduleM_product_image')}${index}`}
                 >
-                  <Image alt={image.title} src={image.url} />
+                  <div ref={this.gridImageRef} className="moduleM__productImage">
+                    <Image alt={image.title} src={image.url} />
+                  </div>
                   {/* TO DO - Implement Dam image after cms integration */}
                   {/* <DamImage
                     imgConfigs={config.IMG_DATA.productImgConfig}
@@ -151,6 +167,7 @@ export class ModuleM extends React.PureComponent {
             offsetRight={imageData.offsetRight}
             ignoreGutter={{ large: true, medium: true, small: true }}
             isNotInlineBlock
+            className="moduleM__gridButton"
           >
             <Anchor
               to={singleCTAButton.url}
