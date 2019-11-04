@@ -18,6 +18,8 @@ const initialState = {
   updateCartItemStore: false,
   alwaysSearchForBOSS: false,
   openRestrictedModalForBopis: false,
+  isSearching: false,
+  isGetUserStoresLoaded: false,
 };
 
 const mergePickupModalState = (state, payload) => {
@@ -48,6 +50,10 @@ const PickupModalReducer = (state = fromJS(initialState), action) => {
       return state.set('cartStores', action.payload.stores);
     case PICKUP_MODAL_ACTIONS_CONSTANTS.SET_STORE_SEARCH_ERROR:
       return state.set('storeSearchError', action.payload);
+    case PICKUP_MODAL_ACTIONS_CONSTANTS.SET_STORE_SEARCH_STATE:
+      return state.set('isSearching', action.payload);
+    case PICKUP_MODAL_ACTIONS_CONSTANTS.SET_IS_USER_CART_STORES_LOADED:
+      return state.set('isGetUserStoresLoaded', action.payload);
     default:
       if (state instanceof Object) {
         return fromJS(state);

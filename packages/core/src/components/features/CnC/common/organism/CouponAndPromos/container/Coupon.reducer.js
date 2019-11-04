@@ -24,6 +24,7 @@ const CouponReducer = (state = initialState, action) => {
     case BAGPAGE_CONSTANTS.SET_COUPONS_DATA:
     case COUPON_CONSTANTS.SET_COUPON_LIST:
       return state
+        .set('isFetching', false)
         .set('couponsAndOffers', List(action.payload))
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(COUPON_CONSTANTS.GET_COUPON_LIST_TTL));
     case COUPON_CONSTANTS.CLEAR_COUPON_TTL:

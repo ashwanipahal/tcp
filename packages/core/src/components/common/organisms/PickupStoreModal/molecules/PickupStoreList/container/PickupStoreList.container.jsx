@@ -2,7 +2,11 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import PickupStoreList from '../views/PickupStoreList.view';
-import { getSuggestedStores, getDefaultStore } from '../../../container/PickUpStoreModal.selectors';
+import {
+  getSuggestedStores,
+  getDefaultStore,
+  isStoreSearching,
+} from '../../../container/PickUpStoreModal.selectors';
 import { BOPIS_ITEM_AVAILABILITY } from '../../../PickUpStoreModal.constants';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
 
@@ -147,6 +151,7 @@ class _PickupStoreList extends React.Component {
         handleShowAvailableChange={this.handleShowAvailableChange}
         isOnlyShowAvailable={isOnlyShowAvailable}
         derivedStoresList={derivedStoresList}
+        isBopisEnabled={isBopisEnabled}
         {...otherProps}
       />
     );
@@ -158,6 +163,7 @@ function mapStateToProps(state, ownProps) {
   const defaultStore = getDefaultStore(state);
   return {
     storesList: suggestedStores,
+    isSearching: isStoreSearching(state),
     isShowFilterCheckbox: suggestedStores && suggestedStores.length > 0,
     defaultStoreName: (defaultStore && defaultStore.basicInfo.storeName) || null,
     ...ownProps,

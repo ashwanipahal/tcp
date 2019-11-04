@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ProfileInfoTileComponent from '../views';
 import { getProfileInfoTileData } from '../../../../User/container/User.selectors';
+import ProfileInfoTileSkelton from '../skelton/ProfileInfoTileSkelton.view';
 
-const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
+const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo, isFetching }) => {
+  if (isFetching) {
+    return <ProfileInfoTileSkelton />;
+  }
   return (
     <ProfileInfoTileComponent
       profileInfo={profileInfo}
@@ -18,10 +22,12 @@ ProfileInfoTile.propTypes = {
   labels: PropTypes.shape({}),
   handleComponentChange: PropTypes.func.isRequired,
   profileInfo: PropTypes.shape({}).isRequired,
+  isFetching: PropTypes.bool,
 };
 
 ProfileInfoTile.defaultProps = {
   labels: {},
+  isFetching: false,
 };
 
 export const mapStateToProps = state => ({

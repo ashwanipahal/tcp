@@ -71,7 +71,7 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.removeEventListener('mousedown', this.handleWindowClick);
-      this.body.style['overflow-y'] = 'auto';
+      this.body.style['overflow-y'] = '';
     }
     this.resetBodyScrollStyles();
   }
@@ -140,7 +140,7 @@ class OverlayModal extends React.Component {
     const { closeOverlay } = this.props;
     closeOverlay();
     if (this.body) {
-      this.body.style['overflow-y'] = 'auto';
+      this.body.style['overflow-y'] = '';
     }
     this.resetBodyScrollStyles();
   };
@@ -157,7 +157,7 @@ class OverlayModal extends React.Component {
    */
   resetBodyScrollStyles = () => {
     this.bodyContainer.style.height = '';
-    this.bodyContainer.style.overflow = 'auto';
+    this.bodyContainer.style.overflow = '';
   };
 
   handleWindowClick(e) {

@@ -32,6 +32,16 @@ const LedgerStyle = css`
     }
   }
 
+  .balance-total-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy5}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
+    line-height: ${props => props.theme.fonts.lineHeight.normal};
+  }
+
   .order-ledger-header {
     text-align: left;
   }

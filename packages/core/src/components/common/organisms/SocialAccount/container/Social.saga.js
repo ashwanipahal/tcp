@@ -5,7 +5,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import SOCIAL_CONSTANTS from '../social.constants';
 import { validateReduxCache } from '../../../../../utils/cache.util';
-import { setSocialAccount, showPointModalDetails } from './Social.actions';
+import { setSocialAccount, showPointModalDetails, showLoader } from './Social.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,
@@ -13,6 +13,7 @@ import {
 
 export function* getsocialAccounts(action) {
   try {
+    yield put(showLoader());
     const res = yield call(getSocialAccountsInformation, action);
     /* istanbul ignore else */
     if (res) {

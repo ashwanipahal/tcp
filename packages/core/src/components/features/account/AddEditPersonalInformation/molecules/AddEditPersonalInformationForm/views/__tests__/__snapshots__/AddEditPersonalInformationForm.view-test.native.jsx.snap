@@ -230,8 +230,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
               "data": Array [],
               "dropDownItemFontWeight": "semibold",
               "dropDownStyle": null,
+              "isAnimateList": true,
               "itemStyle": null,
               "onValueChange": null,
+              "openDropdownOnLoad": false,
               "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
@@ -356,8 +358,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
               "data": Array [],
               "dropDownItemFontWeight": "semibold",
               "dropDownStyle": null,
+              "isAnimateList": true,
               "itemStyle": null,
               "onValueChange": null,
+              "openDropdownOnLoad": false,
               "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
@@ -558,6 +562,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       locator=""
       navigation={Object {}}
       onPress={null}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -584,6 +589,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       locator=""
       navigation={Object {}}
       onPress={null}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}

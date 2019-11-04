@@ -37,6 +37,6 @@ const WrappedComponent = styled.div`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-const SkeletonLine = () => <WrappedComponent />;
+const SkeletonLine = props => <WrappedComponent {...props} />;
 
 export default SkeletonLine;

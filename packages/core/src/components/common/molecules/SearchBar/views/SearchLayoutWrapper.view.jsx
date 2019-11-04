@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
@@ -178,7 +178,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   handleClickOutside() {
     const { setSearchState, isSearchOpen } = this.props;
-    if (isSearchOpen) {
+    if (isSearchOpen && window.innerWidth > breakpoints.values.lg) {
       setSearchState(false);
     }
   }
@@ -192,7 +192,6 @@ class SearchLayoutWrapper extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
       searchResults,
       redirectToSuggestedUrl,
       closeSearchLayover,
@@ -263,7 +262,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                 isLatestSearchResultsExists={isLatestSearchResultsExists}
                 latestSearchResults={latestSearchResults}
                 labels={labels}
-                hideOverlayAfterClick={hideOverlayAfterClick}
+                redirectToSuggestedUrl={redirectToSuggestedUrl}
               />
             ) : (
               <div className="matchBox" id="matchBox-wrapper">
@@ -289,7 +288,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                                     <Anchor
                                       noLink
                                       className="suggestion-label"
-                                      to={`/search/${itemData.text}`}
+                                      to={`/${getSiteId()}/search/${itemData.text}`}
                                       onClick={e => {
                                         e.preventDefault();
                                         redirectToSuggestedUrl(`${itemData.text}`);
@@ -333,7 +332,6 @@ SearchLayoutWrapper.propTypes = {
   closeSearchBar: PropTypes.func.isRequired,
   closeSearchLayover: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,
