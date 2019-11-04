@@ -3,10 +3,10 @@
 exports[`AccountNumber view should render AccountNumber component 1`] = `
 <View>
   <Styled(View)
-    spacingStyles="margin-bottom-LRG margin-top-LRG"
+    spacingStyles="margin-bottom-LRG margin-top-XS"
   >
     <Styled(View)>
-      <Styled(BodyCopy)
+      <Styled(Styled(BodyCopy))
         accessibilityText=""
         dataLocator=""
         fontFamily="secondary"
@@ -14,7 +14,8 @@ exports[`AccountNumber view should render AccountNumber component 1`] = `
         fontWeight="black"
         margin={null}
         numberOfLines={null}
-        text="Show My Account Number"
+        spacingStyles="margin-bottom-XS"
+        text="lbl_overview_hide_account_number"
         textDecoration={null}
       />
       <Styled(CustomIcon)
@@ -34,7 +35,7 @@ exports[`AccountNumber view should render AccountNumber component 1`] = `
           displayValue={true}
           format="CODE128"
           height="50"
-          value="34234324324"
+          value=""
           width="1"
         />
       </Styled(View)>
@@ -45,6 +46,7 @@ exports[`AccountNumber view should render AccountNumber component 1`] = `
         customStyle={
           Object {
             "marginBottom": 49,
+            "marginTop": 10,
           }
         }
         customTextStyle={null}
@@ -60,7 +62,7 @@ exports[`AccountNumber view should render AccountNumber component 1`] = `
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
-        text="ADD TO APPLE WALLET"
+        text="lbl_overview_add_to_apple_wallet"
         theme={Object {}}
         url=""
         withNoLineHeight={false}

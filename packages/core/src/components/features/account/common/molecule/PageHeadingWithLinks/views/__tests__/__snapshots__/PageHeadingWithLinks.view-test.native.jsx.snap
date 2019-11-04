@@ -2,7 +2,9 @@
 
 exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
 <View>
-  <Styled(Text)>
+  <Styled(Text)
+    walletPage={false}
+  >
     <Styled(BodyCopy)
       accessibilityText=""
       dataLocator="Page_Heading_link_header"
@@ -58,7 +60,9 @@ exports[`PageHeadingWithLinks native View should empty render correctly 1`] = `
 
 exports[`PageHeadingWithLinks native View should render correctly 1`] = `
 <View>
-  <Styled(Text)>
+  <Styled(Text)
+    walletPage={false}
+  >
     <Styled(BodyCopy)
       accessibilityText=""
       dataLocator="Page_Heading_link_header"
