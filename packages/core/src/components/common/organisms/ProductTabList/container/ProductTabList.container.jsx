@@ -39,18 +39,10 @@ class ProductTabListContainer extends React.PureComponent {
   /* Create a map of category Ids with the items.  */
   getTabItemsMap = tabItems => {
     return tabItems.reduce((map, item) => {
-      const {
-        category: { cat_id: catId },
-      } = item;
+      const { category } = item;
+      const catId = category.map(cat => cat.val).join('_');
       const tabsMap = map;
-      if (Array.isArray(catId)) {
-        catId.forEach(id => {
-          tabsMap[id] = item;
-          return tabsMap;
-        });
-      } else {
-        tabsMap[catId] = item;
-      }
+      tabsMap[catId] = item;
       return tabsMap;
     }, {});
   };
@@ -71,17 +63,11 @@ class ProductTabListContainer extends React.PureComponent {
   };
 
   updateCategoryId(categoryId) {
-    let catId = categoryId;
-    if (catId) {
-      if (!Array.isArray(catId)) {
-        catId = [catId];
-      }
+    if (categoryId) {
       const { productTabList, getProductTabListData, onProductTabChange, tabItems } = this.props;
-      const categoryItem = [];
-      catId.map(id => categoryItem.push(this.getTabItemsMap(tabItems)[id]));
-      this.setState({ selectedCategoryId: catId });
-      onProductTabChange(catId, categoryItem);
-      catId.forEach(id => {
+      this.setState({ selectedCategoryId: categoryId });
+      onProductTabChange(categoryId, this.getTabItemsMap(tabItems)[categoryId.join('_')]);
+      categoryId.forEach(id => {
         if (!productTabList[id]) {
           getProductTabListData({ categoryId: id });
         }
