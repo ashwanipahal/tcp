@@ -13,6 +13,7 @@ import {
   Style,
   PickupEditHeader,
   EditAnchor,
+  ButtonWrapper,
 } from '../styles/PickupMainContactEditForm.style.native';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
@@ -25,15 +26,20 @@ class PickupMainContactEditForm extends React.Component {
     onEditModeChange(false, pickUpContact);
   };
 
-  SaveButton = () => {
-    const { labels, handleSubmit } = this.props;
+  saveAndCancelButton = () => {
+    const { labels, handleSubmit, handleExitEditModeClick } = this.props;
     return (
-      <Button
-        fill="BLUE"
-        color="white"
-        text={labels.btnSaveUpdate}
-        onPress={handleSubmit(this.pickupEditSubmit)}
-      />
+      <>
+        <Button
+          fill="BLUE"
+          color="white"
+          text={labels.btnSaveUpdate}
+          onPress={handleSubmit(this.pickupEditSubmit)}
+        />
+        <ButtonWrapper>
+          <Button text={labels.btnCancel} onPress={handleSubmit(handleExitEditModeClick)} />
+        </ButtonWrapper>
+      </>
     );
   };
 
@@ -44,7 +50,7 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   renderSectionTitle = () => {
-    const { labels } = this.props;
+    const { labels, isEditing } = this.props;
     return (
       <PickupEditHeader>
         <BodyCopy
@@ -54,19 +60,21 @@ class PickupMainContactEditForm extends React.Component {
           color="gray.900"
           text={labels.pickupContactText}
         />
-        <EditAnchor>
-          <Anchor
-            underline
-            anchorVariation="primary"
-            fontSize="fs12"
-            noLink
-            href="#"
-            target="_blank"
-            text={labels.anchorEdit}
-            onPress={this.handleEnterEditModeClick}
-            color="gray.900"
-          />
-        </EditAnchor>
+        {!isEditing && (
+          <EditAnchor>
+            <Anchor
+              underline
+              anchorVariation="primary"
+              fontSize="fs12"
+              noLink
+              href="#"
+              target="_blank"
+              text={labels.anchorEdit}
+              onPress={this.handleEnterEditModeClick}
+              color="gray.900"
+            />
+          </EditAnchor>
+        )}
       </PickupEditHeader>
     );
   };
@@ -97,7 +105,7 @@ class PickupMainContactEditForm extends React.Component {
                 backgroundColor={props => props.theme.colors.WHITE}
               />
             ) : null}
-            {this.SaveButton()}
+            {this.saveAndCancelButton()}
           </>
         )}
       </View>
