@@ -75,7 +75,7 @@ const styles = css`
     text-align: center;
     margin: 24px 0;
   }
-  .recommendations-header  {
+  .recommendations-header {
     font-size: ${props => props.theme.typography.fontSizes.fs16};
   }
   .container-price > p {
