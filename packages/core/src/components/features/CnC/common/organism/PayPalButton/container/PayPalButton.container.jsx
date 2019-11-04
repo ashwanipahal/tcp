@@ -131,9 +131,7 @@ PayPalButtonContainer.defaultProps = {
   isBillingPage: false,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PayPalButtonContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PayPalButtonContainer);
