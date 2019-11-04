@@ -8,7 +8,6 @@ const styles = css`
     display: flex;
     justify-content: center;
     margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
-    font-size: ${props => props.theme.typography.fontSizes.fs22};
   }
   .empty-bag-subtext {
     flex: 1;
