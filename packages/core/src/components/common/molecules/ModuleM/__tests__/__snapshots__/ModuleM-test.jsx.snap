@@ -690,10 +690,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined0"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Girl"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -729,10 +733,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined1"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Toddler Girl title"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Toddler Girl title"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -780,10 +788,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined2"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Boy"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Boy"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -825,10 +837,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined3"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Toddler Boy title"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Toddler Boy title"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -864,10 +880,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined4"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Baby"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Baby"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -915,10 +935,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined5"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Girl"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -960,10 +984,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined6"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Girl"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -999,10 +1027,14 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             dataLocator="undefined7"
             to="/c/"
           >
-            <Styled(Image)
-              alt="Girl"
-              src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
-            />
+            <div
+              className="moduleM__productImage"
+            >
+              <Styled(Image)
+                alt="Girl"
+                src="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
@@ -1020,6 +1052,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           </Styled(Anchor)>
         </Styled(Styled(Col))>
         <Styled(Styled(Col))
+          className="moduleM__gridButton"
           colSize={
             Object {
               "large": 2,

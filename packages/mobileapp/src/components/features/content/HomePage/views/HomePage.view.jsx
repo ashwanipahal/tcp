@@ -85,7 +85,7 @@ class HomePageView extends React.PureComponent<Props> {
     getBootstrapData(
       {
         name: 'homepage',
-        modules: ['labels'],
+        modules: ['labels', 'header'],
       },
       apiConfig
     );

@@ -6,16 +6,8 @@ export const ImageGrid = styled(Col)`
   border-radius: ${props => (props.round ? '100%' : 0)};
 
   img {
-    height: ${props => (props.length === 3 ? '330px' : '210px')};
+    height: 100%;
     width: 100%;
-
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      height: 162px;
-    }
-
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      height: ${props => (props.length === 3 ? '164px' : '103px')};
-    }
   }
 `;
 
@@ -51,17 +43,14 @@ export const CtaButtonWrapper = styled(Col)`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${props => (props.length === 3 ? '330px' : '210px')};
   margin-bottom: 32px;
 
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     font-size: ${props => props.theme.typography.fontSizes.fs26};
-    height: 162px;
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
     font-size: ${props => props.theme.typography.fontSizes.fs20};
-    height: ${props => (props.length === 3 ? '164px' : '103px')};
   }
 
   .moduleM__shopAllBtn {
@@ -75,14 +64,7 @@ export const CtaButtonWrapper = styled(Col)`
 export default css`
   .image-items-container {
     justify-content: center;
-    margin: 24px 0 0;
-
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      margin: auto;
-    }
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      margin: auto;
-    }
+    margin: 24px auto 0;
   }
   .moduleM__productName {
     display: flex;
@@ -92,6 +74,7 @@ export default css`
   .promoBanner {
     background: ${props => props.theme.colorPalette.blue[700]};
     color: ${props => props.theme.colors.WHITE};
+    margin-top: 16px;
 
     .medium_text_semibold {
       font-weight: ${props => props.theme.fonts.fontWeight.medium};
@@ -193,15 +176,21 @@ export default css`
   .product-tab-list {
     display: flex;
     justify-content: center;
-    margin: 12px 0 32px;
+    margin-top: 12px;
 
     > :not(:last-child) {
       border-right: 1px solid #c3c3c3;
     }
 
     .product-tab-list__item {
-      margin-top: 16px;
       padding: 0px 10px;
     }
+  }
+  .promo-header .link-text {
+    margin-bottom: 0;
+  }
+  .moduleM__productImage {
+    height: 100%;
+    width: 100%;
   }
 `;
