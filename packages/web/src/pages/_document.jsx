@@ -52,6 +52,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/static/images/favicon.png" />
           <link href="/static/app.css" rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
+          <script src="/static/TCP_HOTFIX.js" async />
         </Head>
         <body
           /* eslint-disable-next-line react-native/no-inline-styles */

@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 // import { Button } from '../../../../../../common/atoms';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
-import ProductsGridItem from './ProductsGridItem';
+import ProductsGridItemBase from './ProductsGridItem';
+
+const ProductsGridItem = withHotfix(ProductsGridItemBase, 'plp.ProductTile');
 
 const isGridItem = item => {
   let flag = true;
