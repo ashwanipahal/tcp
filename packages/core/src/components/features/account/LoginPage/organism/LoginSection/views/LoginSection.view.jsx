@@ -77,74 +77,81 @@ class LoginSection extends React.PureComponent<Props> {
       userplccCardId,
     } = this.props;
     return (
-      <Row className={className}>
-        <Col
-          colSize={{
-            small: 6,
-            medium: 8,
-            large: 12,
-          }}
-          className={`elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
-            variation === 'checkout' ? 'checkoutForm' : 'loginForm'
-          }`}
-        >
-          {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
-            <React.Fragment>
-              <LoginTopSection
-                variation={variation}
-                labels={labels}
-                className="elem-mb-LRG logintop-alignment"
-                isCanada={this.isCanada}
-                showForgotPasswordForm={this.showForgotPasswordForm}
-              />
-              <LoginForm
-                onSubmit={onSubmit}
-                labels={labels}
-                formErrorMessage={formErrorMessage}
-                loginErrorMessage={loginErrorMessage}
-                initialValues={initialValues}
-                showRecaptcha={showRecaptcha}
-                showForgotPasswordForm={this.showForgotPasswordForm}
-                resetForm={resetForm}
-                className="elem-mb-LRG"
-                onCreateAccountClick={this.showCreateAccountForm}
-                variation={variation}
-                handleContinueAsGuest={handleContinueAsGuest}
-                tooltipContent={tooltipContent}
-                resetLoginState={resetLoginState}
-                userplccCardNumber={userplccCardNumber}
-                userplccCardId={userplccCardId}
-              />
-            </React.Fragment>
-          )}
-          {currentForm === constants.PAGE_TYPE.FORGOT_PASSWORD && (
-            <ForgotPasswordContainer showForgotPasswordForm={this.showLoginForm} labels={labels} />
-          )}
-          {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (
-            <ResetPassword
-              backToLoginAction={this.showLoginForm}
-              labels={getLabelValue(labels, 'password')}
-              queryParams={queryParams}
-            />
-          )}
-
-          <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
-            <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
-              {getLabelValue(labels, 'lbl_login_createAccountHelp', 'login')}
-            </BodyCopy>
-          </BodyCopy>
-          <Button
-            className="create-acc-cta"
-            fill="WHITE"
-            type="submit"
-            buttonVariation="fixed-width"
-            data-locator=""
-            onClick={this.showCreateAccountForm}
+      <>
+        {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
+          <LoginTopSection
+            variation={variation}
+            labels={labels}
+            className="elem-mb-SM logintop-alignment"
+            isCanada={this.isCanada}
+            showForgotPasswordForm={this.showForgotPasswordForm}
+          />
+        )}
+        <Row className={className}>
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: `${variation === 'checkout' ? 7 : 12}`,
+            }}
+            className={`elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+              variation === 'checkout' ? 'checkoutForm' : 'loginForm'
+            }`}
           >
-            {getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
-          </Button>
-        </Col>
-      </Row>
+            {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
+              <React.Fragment>
+                <LoginForm
+                  onSubmit={onSubmit}
+                  labels={labels}
+                  formErrorMessage={formErrorMessage}
+                  loginErrorMessage={loginErrorMessage}
+                  initialValues={initialValues}
+                  showRecaptcha={showRecaptcha}
+                  showForgotPasswordForm={this.showForgotPasswordForm}
+                  resetForm={resetForm}
+                  className="elem-mb-LRG"
+                  onCreateAccountClick={this.showCreateAccountForm}
+                  variation={variation}
+                  handleContinueAsGuest={handleContinueAsGuest}
+                  tooltipContent={tooltipContent}
+                  resetLoginState={resetLoginState}
+                  userplccCardNumber={userplccCardNumber}
+                  userplccCardId={userplccCardId}
+                />
+              </React.Fragment>
+            )}
+            {currentForm === constants.PAGE_TYPE.FORGOT_PASSWORD && (
+              <ForgotPasswordContainer
+                showForgotPasswordForm={this.showLoginForm}
+                labels={labels}
+              />
+            )}
+            {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (
+              <ResetPassword
+                backToLoginAction={this.showLoginForm}
+                labels={labels.password}
+                queryParams={queryParams}
+              />
+            )}
+
+            <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
+              <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
+                {getLabelValue(labels, 'lbl_login_createAccountHelp', 'login')}
+              </BodyCopy>
+            </BodyCopy>
+            <Button
+              className="create-acc-cta"
+              fill="WHITE"
+              type="submit"
+              buttonVariation="fixed-width"
+              data-locator=""
+              onClick={this.showCreateAccountForm}
+            >
+              {getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
+            </Button>
+          </Col>
+        </Row>
+      </>
     );
   }
 }

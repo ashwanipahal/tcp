@@ -26,6 +26,44 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
@@ -471,6 +509,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -629,9 +668,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-chPdSV",
+            "componentId": "sc-kGXeez",
             "isStatic": false,
-            "lastClassName": "fyDNYN",
+            "lastClassName": "UBWCa",
             "rules": Array [
               "
   ",
@@ -659,7 +698,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-chPdSV",
+          "styledComponentId": "sc-kGXeez",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -675,7 +714,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
       title="Test"
     >
       <StoresIntlTile
-        className="sc-chPdSV fyDNYN"
+        className="sc-kGXeez UBWCa"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -715,6 +754,44 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
@@ -1160,6 +1237,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -1392,9 +1470,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-chPdSV",
+            "componentId": "sc-kGXeez",
             "isStatic": false,
-            "lastClassName": "fyDNYN",
+            "lastClassName": "UBWCa",
             "rules": Array [
               "
   ",
@@ -1422,7 +1500,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-chPdSV",
+          "styledComponentId": "sc-kGXeez",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -1512,7 +1590,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
       title="Test"
     >
       <StoresIntlTile
-        className="sc-chPdSV fyDNYN"
+        className="sc-kGXeez UBWCa"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -1595,7 +1673,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         title="Test"
       >
         <div
-          className="sc-chPdSV fyDNYN"
+          className="sc-kGXeez UBWCa"
         >
           <styled.h3>
             <StyledComponent
@@ -1604,9 +1682,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-kAzzGY",
+                    "componentId": "sc-kgoBCf",
                     "isStatic": false,
-                    "lastClassName": "kOWSlF",
+                    "lastClassName": "byzwwl",
                     "rules": Array [
                       "
   position: relative;
@@ -1650,7 +1728,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "styled.h3",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-kAzzGY",
+                  "styledComponentId": "sc-kgoBCf",
                   "target": "h3",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1660,7 +1738,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               forwardedRef={null}
             >
               <h3
-                className="sc-kAzzGY kOWSlF"
+                className="sc-kgoBCf byzwwl"
               >
                 Test
               </h3>

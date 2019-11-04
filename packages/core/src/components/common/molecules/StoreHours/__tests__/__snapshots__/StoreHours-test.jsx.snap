@@ -113,6 +113,44 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
@@ -558,6 +596,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -745,6 +784,44 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
@@ -1190,6 +1267,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -1463,6 +1541,44 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "xlarge": "1440px",
         },
         "colorPalette": Object {
+          "BUTTON": Object {
+            "BLACK": Object {
+              "ALT_FOCUS": "#ffffff",
+              "ALT_HOVER": "#ffffff",
+              "BORDER": "#1a1a1a",
+              "FOCUS": "#595959",
+              "HOVER": "#595959",
+              "NORMAL": "#1a1a1a",
+              "TEXT": "#ffffff",
+            },
+            "BLUE": Object {
+              "ALT_FOCUS": "#1f4862",
+              "ALT_HOVER": "#1f4862",
+              "BORDER": "#2e6a91",
+              "FOCUS": "#1f4862",
+              "HOVER": "#1f4862",
+              "NORMAL": "#2e6a91",
+              "TEXT": "#fff",
+            },
+            "RED": Object {
+              "ALT_FOCUS": "#e19999",
+              "ALT_HOVER": "#e19999",
+              "BORDER": "#c84747",
+              "FOCUS": "#e19999",
+              "HOVER": "#f3d7d7",
+              "NORMAL": "#ffffff",
+              "TEXT": "#c84747",
+            },
+            "WHITE": Object {
+              "ALT_FOCUS": "#e2ecf3",
+              "ALT_HOVER": "#f2f9fe",
+              "BORDER": "#9B9B9B",
+              "FOCUS": "#d8d8d8",
+              "HOVER": "#f3f3f3",
+              "NORMAL": "#ffffff",
+              "TEXT": "#595959",
+            },
+          },
           "black": "#000",
           "blue": Object {
             "100": "#dbebf8",
@@ -1908,6 +2024,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           },
           "fontWeights": Object {
             "black": "900",
+            "bold": "700",
             "extrabold": "800",
             "regular": "400",
             "semibold": "600",
@@ -2095,6 +2212,44 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "xlarge": "1440px",
           },
           "colorPalette": Object {
+            "BUTTON": Object {
+              "BLACK": Object {
+                "ALT_FOCUS": "#ffffff",
+                "ALT_HOVER": "#ffffff",
+                "BORDER": "#1a1a1a",
+                "FOCUS": "#595959",
+                "HOVER": "#595959",
+                "NORMAL": "#1a1a1a",
+                "TEXT": "#ffffff",
+              },
+              "BLUE": Object {
+                "ALT_FOCUS": "#1f4862",
+                "ALT_HOVER": "#1f4862",
+                "BORDER": "#2e6a91",
+                "FOCUS": "#1f4862",
+                "HOVER": "#1f4862",
+                "NORMAL": "#2e6a91",
+                "TEXT": "#fff",
+              },
+              "RED": Object {
+                "ALT_FOCUS": "#e19999",
+                "ALT_HOVER": "#e19999",
+                "BORDER": "#c84747",
+                "FOCUS": "#e19999",
+                "HOVER": "#f3d7d7",
+                "NORMAL": "#ffffff",
+                "TEXT": "#c84747",
+              },
+              "WHITE": Object {
+                "ALT_FOCUS": "#e2ecf3",
+                "ALT_HOVER": "#f2f9fe",
+                "BORDER": "#9B9B9B",
+                "FOCUS": "#d8d8d8",
+                "HOVER": "#f3f3f3",
+                "NORMAL": "#ffffff",
+                "TEXT": "#595959",
+              },
+            },
             "black": "#000",
             "blue": Object {
               "100": "#dbebf8",
@@ -2540,6 +2695,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             },
             "fontWeights": Object {
               "black": "900",
+              "bold": "700",
               "extrabold": "800",
               "regular": "400",
               "semibold": "600",
@@ -2755,6 +2911,44 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "xlarge": "1440px",
               },
               "colorPalette": Object {
+                "BUTTON": Object {
+                  "BLACK": Object {
+                    "ALT_FOCUS": "#ffffff",
+                    "ALT_HOVER": "#ffffff",
+                    "BORDER": "#1a1a1a",
+                    "FOCUS": "#595959",
+                    "HOVER": "#595959",
+                    "NORMAL": "#1a1a1a",
+                    "TEXT": "#ffffff",
+                  },
+                  "BLUE": Object {
+                    "ALT_FOCUS": "#1f4862",
+                    "ALT_HOVER": "#1f4862",
+                    "BORDER": "#2e6a91",
+                    "FOCUS": "#1f4862",
+                    "HOVER": "#1f4862",
+                    "NORMAL": "#2e6a91",
+                    "TEXT": "#fff",
+                  },
+                  "RED": Object {
+                    "ALT_FOCUS": "#e19999",
+                    "ALT_HOVER": "#e19999",
+                    "BORDER": "#c84747",
+                    "FOCUS": "#e19999",
+                    "HOVER": "#f3d7d7",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#c84747",
+                  },
+                  "WHITE": Object {
+                    "ALT_FOCUS": "#e2ecf3",
+                    "ALT_HOVER": "#f2f9fe",
+                    "BORDER": "#9B9B9B",
+                    "FOCUS": "#d8d8d8",
+                    "HOVER": "#f3f3f3",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#595959",
+                  },
+                },
                 "black": "#000",
                 "blue": Object {
                   "100": "#dbebf8",
@@ -3200,6 +3394,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 },
                 "fontWeights": Object {
                   "black": "900",
+                  "bold": "700",
                   "extrabold": "800",
                   "regular": "400",
                   "semibold": "600",
@@ -3547,6 +3742,44 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "xlarge": "1440px",
                 },
                 "colorPalette": Object {
+                  "BUTTON": Object {
+                    "BLACK": Object {
+                      "ALT_FOCUS": "#ffffff",
+                      "ALT_HOVER": "#ffffff",
+                      "BORDER": "#1a1a1a",
+                      "FOCUS": "#595959",
+                      "HOVER": "#595959",
+                      "NORMAL": "#1a1a1a",
+                      "TEXT": "#ffffff",
+                    },
+                    "BLUE": Object {
+                      "ALT_FOCUS": "#1f4862",
+                      "ALT_HOVER": "#1f4862",
+                      "BORDER": "#2e6a91",
+                      "FOCUS": "#1f4862",
+                      "HOVER": "#1f4862",
+                      "NORMAL": "#2e6a91",
+                      "TEXT": "#fff",
+                    },
+                    "RED": Object {
+                      "ALT_FOCUS": "#e19999",
+                      "ALT_HOVER": "#e19999",
+                      "BORDER": "#c84747",
+                      "FOCUS": "#e19999",
+                      "HOVER": "#f3d7d7",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#c84747",
+                    },
+                    "WHITE": Object {
+                      "ALT_FOCUS": "#e2ecf3",
+                      "ALT_HOVER": "#f2f9fe",
+                      "BORDER": "#9B9B9B",
+                      "FOCUS": "#d8d8d8",
+                      "HOVER": "#f3f3f3",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#595959",
+                    },
+                  },
                   "black": "#000",
                   "blue": Object {
                     "100": "#dbebf8",
@@ -3992,6 +4225,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   },
                   "fontWeights": Object {
                     "black": "900",
+                    "bold": "700",
                     "extrabold": "800",
                     "regular": "400",
                     "semibold": "600",
@@ -4207,6 +4441,44 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "xlarge": "1440px",
                   },
                   "colorPalette": Object {
+                    "BUTTON": Object {
+                      "BLACK": Object {
+                        "ALT_FOCUS": "#ffffff",
+                        "ALT_HOVER": "#ffffff",
+                        "BORDER": "#1a1a1a",
+                        "FOCUS": "#595959",
+                        "HOVER": "#595959",
+                        "NORMAL": "#1a1a1a",
+                        "TEXT": "#ffffff",
+                      },
+                      "BLUE": Object {
+                        "ALT_FOCUS": "#1f4862",
+                        "ALT_HOVER": "#1f4862",
+                        "BORDER": "#2e6a91",
+                        "FOCUS": "#1f4862",
+                        "HOVER": "#1f4862",
+                        "NORMAL": "#2e6a91",
+                        "TEXT": "#fff",
+                      },
+                      "RED": Object {
+                        "ALT_FOCUS": "#e19999",
+                        "ALT_HOVER": "#e19999",
+                        "BORDER": "#c84747",
+                        "FOCUS": "#e19999",
+                        "HOVER": "#f3d7d7",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#c84747",
+                      },
+                      "WHITE": Object {
+                        "ALT_FOCUS": "#e2ecf3",
+                        "ALT_HOVER": "#f2f9fe",
+                        "BORDER": "#9B9B9B",
+                        "FOCUS": "#d8d8d8",
+                        "HOVER": "#f3f3f3",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#595959",
+                      },
+                    },
                     "black": "#000",
                     "blue": Object {
                       "100": "#dbebf8",
@@ -4652,6 +4924,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     },
                     "fontWeights": Object {
                       "black": "900",
+                      "bold": "700",
                       "extrabold": "800",
                       "regular": "400",
                       "semibold": "600",
@@ -4803,6 +5076,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   aria-expanded={true}
                   className="collapsible-header"
                   onClick={[Function]}
+                  type="button"
                 >
                   <Styled(Image)
                     className="collapsible-icon"
@@ -4966,6 +5240,44 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "xlarge": "1440px",
       },
       "colorPalette": Object {
+        "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#595959",
+            "HOVER": "#595959",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#9B9B9B",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#595959",
+          },
+        },
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
@@ -5411,6 +5723,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -5688,6 +6001,44 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "xlarge": "1440px",
         },
         "colorPalette": Object {
+          "BUTTON": Object {
+            "BLACK": Object {
+              "ALT_FOCUS": "#ffffff",
+              "ALT_HOVER": "#ffffff",
+              "BORDER": "#1a1a1a",
+              "FOCUS": "#595959",
+              "HOVER": "#595959",
+              "NORMAL": "#1a1a1a",
+              "TEXT": "#ffffff",
+            },
+            "BLUE": Object {
+              "ALT_FOCUS": "#1f4862",
+              "ALT_HOVER": "#1f4862",
+              "BORDER": "#2e6a91",
+              "FOCUS": "#1f4862",
+              "HOVER": "#1f4862",
+              "NORMAL": "#2e6a91",
+              "TEXT": "#fff",
+            },
+            "RED": Object {
+              "ALT_FOCUS": "#e19999",
+              "ALT_HOVER": "#e19999",
+              "BORDER": "#c84747",
+              "FOCUS": "#e19999",
+              "HOVER": "#f3d7d7",
+              "NORMAL": "#ffffff",
+              "TEXT": "#c84747",
+            },
+            "WHITE": Object {
+              "ALT_FOCUS": "#e2ecf3",
+              "ALT_HOVER": "#f2f9fe",
+              "BORDER": "#9B9B9B",
+              "FOCUS": "#d8d8d8",
+              "HOVER": "#f3f3f3",
+              "NORMAL": "#ffffff",
+              "TEXT": "#595959",
+            },
+          },
           "black": "#000",
           "blue": Object {
             "100": "#dbebf8",
@@ -6133,6 +6484,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           },
           "fontWeights": Object {
             "black": "900",
+            "bold": "700",
             "extrabold": "800",
             "regular": "400",
             "semibold": "600",
@@ -6323,6 +6675,44 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "xlarge": "1440px",
           },
           "colorPalette": Object {
+            "BUTTON": Object {
+              "BLACK": Object {
+                "ALT_FOCUS": "#ffffff",
+                "ALT_HOVER": "#ffffff",
+                "BORDER": "#1a1a1a",
+                "FOCUS": "#595959",
+                "HOVER": "#595959",
+                "NORMAL": "#1a1a1a",
+                "TEXT": "#ffffff",
+              },
+              "BLUE": Object {
+                "ALT_FOCUS": "#1f4862",
+                "ALT_HOVER": "#1f4862",
+                "BORDER": "#2e6a91",
+                "FOCUS": "#1f4862",
+                "HOVER": "#1f4862",
+                "NORMAL": "#2e6a91",
+                "TEXT": "#fff",
+              },
+              "RED": Object {
+                "ALT_FOCUS": "#e19999",
+                "ALT_HOVER": "#e19999",
+                "BORDER": "#c84747",
+                "FOCUS": "#e19999",
+                "HOVER": "#f3d7d7",
+                "NORMAL": "#ffffff",
+                "TEXT": "#c84747",
+              },
+              "WHITE": Object {
+                "ALT_FOCUS": "#e2ecf3",
+                "ALT_HOVER": "#f2f9fe",
+                "BORDER": "#9B9B9B",
+                "FOCUS": "#d8d8d8",
+                "HOVER": "#f3f3f3",
+                "NORMAL": "#ffffff",
+                "TEXT": "#595959",
+              },
+            },
             "black": "#000",
             "blue": Object {
               "100": "#dbebf8",
@@ -6768,6 +7158,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             },
             "fontWeights": Object {
               "black": "900",
+              "bold": "700",
               "extrabold": "800",
               "regular": "400",
               "semibold": "600",
@@ -6971,6 +7362,44 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "xlarge": "1440px",
               },
               "colorPalette": Object {
+                "BUTTON": Object {
+                  "BLACK": Object {
+                    "ALT_FOCUS": "#ffffff",
+                    "ALT_HOVER": "#ffffff",
+                    "BORDER": "#1a1a1a",
+                    "FOCUS": "#595959",
+                    "HOVER": "#595959",
+                    "NORMAL": "#1a1a1a",
+                    "TEXT": "#ffffff",
+                  },
+                  "BLUE": Object {
+                    "ALT_FOCUS": "#1f4862",
+                    "ALT_HOVER": "#1f4862",
+                    "BORDER": "#2e6a91",
+                    "FOCUS": "#1f4862",
+                    "HOVER": "#1f4862",
+                    "NORMAL": "#2e6a91",
+                    "TEXT": "#fff",
+                  },
+                  "RED": Object {
+                    "ALT_FOCUS": "#e19999",
+                    "ALT_HOVER": "#e19999",
+                    "BORDER": "#c84747",
+                    "FOCUS": "#e19999",
+                    "HOVER": "#f3d7d7",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#c84747",
+                  },
+                  "WHITE": Object {
+                    "ALT_FOCUS": "#e2ecf3",
+                    "ALT_HOVER": "#f2f9fe",
+                    "BORDER": "#9B9B9B",
+                    "FOCUS": "#d8d8d8",
+                    "HOVER": "#f3f3f3",
+                    "NORMAL": "#ffffff",
+                    "TEXT": "#595959",
+                  },
+                },
                 "black": "#000",
                 "blue": Object {
                   "100": "#dbebf8",
@@ -7416,6 +7845,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 },
                 "fontWeights": Object {
                   "black": "900",
+                  "bold": "700",
                   "extrabold": "800",
                   "regular": "400",
                   "semibold": "600",
@@ -7751,6 +8181,44 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "xlarge": "1440px",
                 },
                 "colorPalette": Object {
+                  "BUTTON": Object {
+                    "BLACK": Object {
+                      "ALT_FOCUS": "#ffffff",
+                      "ALT_HOVER": "#ffffff",
+                      "BORDER": "#1a1a1a",
+                      "FOCUS": "#595959",
+                      "HOVER": "#595959",
+                      "NORMAL": "#1a1a1a",
+                      "TEXT": "#ffffff",
+                    },
+                    "BLUE": Object {
+                      "ALT_FOCUS": "#1f4862",
+                      "ALT_HOVER": "#1f4862",
+                      "BORDER": "#2e6a91",
+                      "FOCUS": "#1f4862",
+                      "HOVER": "#1f4862",
+                      "NORMAL": "#2e6a91",
+                      "TEXT": "#fff",
+                    },
+                    "RED": Object {
+                      "ALT_FOCUS": "#e19999",
+                      "ALT_HOVER": "#e19999",
+                      "BORDER": "#c84747",
+                      "FOCUS": "#e19999",
+                      "HOVER": "#f3d7d7",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#c84747",
+                    },
+                    "WHITE": Object {
+                      "ALT_FOCUS": "#e2ecf3",
+                      "ALT_HOVER": "#f2f9fe",
+                      "BORDER": "#9B9B9B",
+                      "FOCUS": "#d8d8d8",
+                      "HOVER": "#f3f3f3",
+                      "NORMAL": "#ffffff",
+                      "TEXT": "#595959",
+                    },
+                  },
                   "black": "#000",
                   "blue": Object {
                     "100": "#dbebf8",
@@ -8196,6 +8664,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   },
                   "fontWeights": Object {
                     "black": "900",
+                    "bold": "700",
                     "extrabold": "800",
                     "regular": "400",
                     "semibold": "600",
@@ -8399,6 +8868,44 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "xlarge": "1440px",
                   },
                   "colorPalette": Object {
+                    "BUTTON": Object {
+                      "BLACK": Object {
+                        "ALT_FOCUS": "#ffffff",
+                        "ALT_HOVER": "#ffffff",
+                        "BORDER": "#1a1a1a",
+                        "FOCUS": "#595959",
+                        "HOVER": "#595959",
+                        "NORMAL": "#1a1a1a",
+                        "TEXT": "#ffffff",
+                      },
+                      "BLUE": Object {
+                        "ALT_FOCUS": "#1f4862",
+                        "ALT_HOVER": "#1f4862",
+                        "BORDER": "#2e6a91",
+                        "FOCUS": "#1f4862",
+                        "HOVER": "#1f4862",
+                        "NORMAL": "#2e6a91",
+                        "TEXT": "#fff",
+                      },
+                      "RED": Object {
+                        "ALT_FOCUS": "#e19999",
+                        "ALT_HOVER": "#e19999",
+                        "BORDER": "#c84747",
+                        "FOCUS": "#e19999",
+                        "HOVER": "#f3d7d7",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#c84747",
+                      },
+                      "WHITE": Object {
+                        "ALT_FOCUS": "#e2ecf3",
+                        "ALT_HOVER": "#f2f9fe",
+                        "BORDER": "#9B9B9B",
+                        "FOCUS": "#d8d8d8",
+                        "HOVER": "#f3f3f3",
+                        "NORMAL": "#ffffff",
+                        "TEXT": "#595959",
+                      },
+                    },
                     "black": "#000",
                     "blue": Object {
                       "100": "#dbebf8",
@@ -8844,6 +9351,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     },
                     "fontWeights": Object {
                       "black": "900",
+                      "bold": "700",
                       "extrabold": "800",
                       "regular": "400",
                       "semibold": "600",
@@ -8995,6 +9503,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   aria-expanded={true}
                   className="collapsible-header"
                   onClick={[Function]}
+                  type="button"
                 >
                   <Styled(Image)
                     className="collapsible-icon"

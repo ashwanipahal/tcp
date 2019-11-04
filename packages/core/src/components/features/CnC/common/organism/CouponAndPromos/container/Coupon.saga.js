@@ -118,6 +118,7 @@ export function* removeCoupon({ payload }) {
 
 export function* getAllCoupons() {
   try {
+    yield put(showLoader());
     const coupons = yield call(getAllCouponsAbstractor);
     yield put(setCouponList(coupons));
   } catch (e) {

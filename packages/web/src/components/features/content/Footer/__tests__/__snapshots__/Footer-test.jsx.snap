@@ -12,6 +12,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
       className="footer-class"
       copyrightText=""
       isLoggedIn={false}
+      isNavigationFooter={false}
       legalLinks={Array []}
       navLinks={Array []}
       openEmailSignUpModal={[Function]}
@@ -146,6 +147,7 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     <Styled(FooterTopCandidateA)
       copyrightText=""
       isLoggedIn={false}
+      isNavigationFooter={false}
       legalLinks={Array []}
       navLinks={Array []}
       openEmailSignUpModal={[Function]}

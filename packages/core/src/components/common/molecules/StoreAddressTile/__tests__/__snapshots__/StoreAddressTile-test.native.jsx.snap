@@ -84,6 +84,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
@@ -111,6 +112,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
             locator=""
             navigation={Object {}}
             onPress={[Function]}
+            paddings="12px 32px 12px 32px"
             selected={false}
             selectedIcon="chevron-up"
             showIcon={false}
@@ -137,6 +139,7 @@ exports[`StoreAddressTile component Details StoreAddressTile component renders c
             locator=""
             navigation={Object {}}
             onPress={null}
+            paddings="12px 32px 12px 32px"
             selected={false}
             selectedIcon="chevron-up"
             showIcon={false}
@@ -252,6 +255,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
@@ -279,6 +283,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             locator=""
             navigation={Object {}}
             onPress={[Function]}
+            paddings="12px 32px 12px 32px"
             selected={false}
             selectedIcon="chevron-up"
             showIcon={false}
@@ -305,6 +310,7 @@ exports[`StoreAddressTile component Details should render details view with fav 
             locator=""
             navigation={Object {}}
             onPress={null}
+            paddings="12px 32px 12px 32px"
             selected={false}
             selectedIcon="chevron-up"
             showIcon={false}
@@ -483,6 +489,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -589,6 +596,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -793,6 +801,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}

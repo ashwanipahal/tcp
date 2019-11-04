@@ -14,6 +14,7 @@
     "@svgr/webpack": "^4.3.0",
     "@tcp/core": "*",
     "babel-preset-next": "^1.2.0",
+    "body-scroll-lock": "^2.6.4",
     "express": "^4.17.1",
     "helmet": "3.18.0",
     "next": "8.0.3",

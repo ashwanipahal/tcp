@@ -32,6 +32,16 @@ const LedgerStyle = css`
     }
   }
 
+  .balance-total-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy5}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
+    line-height: ${props => props.theme.fonts.lineHeight.normal};
+  }
+
   .order-ledger-header {
     text-align: left;
   }
@@ -55,11 +65,12 @@ const LedgerStyle = css`
   .review-submit-container {
     display: flex;
     flex-direction: column;
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin: 35px ${props => props.theme.spacing.ELEM_SPACING.MED};
+
     .review-submit-button {
       flex: 1;
     }
+
     .submit-disclaimer {
       font-family: ${props => props.theme.typography.fonts.secondary};
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
@@ -80,6 +91,18 @@ const LedgerStyle = css`
       display: inline-block;
       margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    }
+  }
+
+  &.order-confirmation {
+    .order-ledger-header {
+      display: none;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        display: block;
+        border-top: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+        border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.GRAY};
+        padding: 14px 14px;
+      }
     }
   }
 `;

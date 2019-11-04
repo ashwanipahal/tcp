@@ -61,8 +61,9 @@ export {
   getModifiedLanguageCode,
   generateTraceId,
   parseBoolean,
-  enableBodyScroll,
-  disableBodyScroll,
+  getStyliticsUserName,
+  getStyliticsRegion,
+  canUseDOM,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';
