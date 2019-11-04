@@ -65,12 +65,14 @@ class CheckoutPage extends React.PureComponent {
       isExpressCheckout,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      pickupDidMount,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
           <PickupPage
+            pickupDidMount={pickupDidMount}
             cartOrderItemsCount={cartOrderItemsCount}
             isGuest={isGuest}
             isMobile={isMobile}
@@ -179,6 +181,7 @@ CheckoutPage.propTypes = {
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   submitReview: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,

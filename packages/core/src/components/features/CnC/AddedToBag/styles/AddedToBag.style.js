@@ -57,6 +57,12 @@ export const buttonActionStyles = css`
   }
 `;
 
+export const LoyaltyWrapperStyles = css`
+  .loyalty-banner-wrapper {
+    padding: 0;
+  }
+`;
+
 const styles = css`
   .added-to-bg-close {
     top: 21px;
@@ -77,6 +83,9 @@ const styles = css`
   }
   && .product-image-container > a {
     min-height: 130px;
+  }
+  .loyaltyAddedToBagWrapper {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
 

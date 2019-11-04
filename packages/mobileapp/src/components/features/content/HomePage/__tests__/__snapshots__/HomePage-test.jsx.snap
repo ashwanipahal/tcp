@@ -11,6 +11,18 @@ exports[`HomePageView should render correctly 1`] = `
   <Styled(View)>
     <HeaderPromo />
   </Styled(View)>
+  <LoyaltyPromoBanner
+    richTextList={
+      Array [
+        Object {
+          "link": Object {},
+          "richText": Object {
+            "text": "",
+          },
+        },
+      ]
+    }
+  />
   <HomePageSlots
     modules={
       Object {

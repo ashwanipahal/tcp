@@ -11,6 +11,7 @@ import styles, {
   productInfoStyles,
   pointsInfoStyles,
   buttonActionStyles,
+  LoyaltyWrapperStyles,
 } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
@@ -27,6 +28,7 @@ type Props = {
   quantity: number,
   handleContinueShopping: Function,
   isInternationalShipping: boolean,
+  hideHeader: boolean,
 };
 
 const AddedToBag = ({
@@ -39,6 +41,7 @@ const AddedToBag = ({
   handleContinueShopping,
   handleCartCheckout,
   isInternationalShipping,
+  hideHeader,
 }: Props) => {
   return (
     <Modal
@@ -75,11 +78,14 @@ const AddedToBag = ({
           showVenmo={false}
           containerId="paypal-button-container-added-to-bag"
           inheritedStyles={buttonActionStyles}
+          hideHeader={hideHeader}
         />
-        {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
+        <div className="loyaltyAddedToBagWrapper">
+          <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
+        </div>
         {!isInternationalShipping && <BossBannerView labels={labels} />}
         <Recommendations
-          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
           variations="moduleO"
           priceOnly
         />
@@ -103,6 +109,7 @@ const AddedToBag = ({
 AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  hideHeader: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);
