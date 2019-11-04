@@ -121,6 +121,7 @@ class Drawer extends React.Component {
       const middleNav = document.getElementsByClassName('header-middle-nav')[0];
       const condensedHeader = document.getElementById('condensedHeader');
       const userInfo = document.getElementById('sideNavUserInfo');
+      const darkOverlay = document.getElementsByClassName('dark-overlay')[0];
       const userInfoHeight = userInfo ? userInfo.getBoundingClientRect().height : null;
       const wHeight = window.innerHeight;
       const {
@@ -144,6 +145,8 @@ class Drawer extends React.Component {
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
         drawer.style.top = `${headerHeight + userInfoHeight}px`;
+        darkOverlay.style.top = `${headerHeight}px`;
+
         this.disableScroll(drawer);
       }
     }
