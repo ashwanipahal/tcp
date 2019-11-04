@@ -329,7 +329,6 @@ export function* startPaypalNativeCheckout() {
 }
 
 export function* authorizePayPalPayment({ payload: { navigation, navigationActions } = {} } = {}) {
-
   try {
     const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
       checkoutSelectors.getPaypalPaymentSettings
@@ -337,28 +336,21 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
     const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
     const res = yield call(paypalAuthorizationAPI, ...params);
 
-  if (res) {
-
-    if (isMobileApp()) {
-      const navigateAction = navigationActions.navigate({
-        routeName: CONSTANTS.CHECKOUT_ROOT,
-        params: {},
-        action: navigationActions.navigate({
-          routeName: CONSTANTS.CHECKOUT_ROUTES_NAMES.CHECKOUT_REVIEW,
-          params: {
-            routeTo: CONSTANTS.REVIEW_DEFAULT_PARAM,
-          },
-        }),
-      });
-      navigation.dispatch(navigateAction);
-    } else {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+    if (res) {
+      if (isMobileApp()) {
+        yield call(
+          navigateToCheckout,
+          CONSTANTS.REVIEW_DEFAULT_PARAM,
+          navigation,
+          navigationActions
+        );
+      } else {
+        utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+      }
     }
-  }
   } catch (e) {
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
-
 }
 // export function* authorizePayPalPayment() {
 //   try {
