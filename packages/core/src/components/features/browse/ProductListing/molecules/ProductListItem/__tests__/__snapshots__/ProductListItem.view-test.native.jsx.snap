@@ -2,7 +2,6 @@
 
 exports[`ProductListItem component should render correctly 1`] = `
 <Styled(View)
-  accessible={true}
   fullWidth={false}
   margins={null}
   paddings="12px 0 12px 0"
@@ -44,6 +43,11 @@ exports[`ProductListItem component should render correctly 1`] = `
     itemInfo={Object {}}
     miscInfo={Object {}}
     onFavorite={[MockFunction]}
+    productInfo={
+      Object {
+        "name": "tcp",
+      }
+    }
     setLastDeletedItemId={[MockFunction]}
   />
   <RenderTitle
@@ -105,7 +109,6 @@ exports[`ProductListItem component should render correctly 1`] = `
   />
   <Styled(View)>
     <Styled(CustomButton)
-      accessibilityLabel="add to bag"
       active={false}
       buttonVariation="variable-width"
       color=""
@@ -121,10 +124,11 @@ exports[`ProductListItem component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 12px 12px 12px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text="ADD TO BAG"
+      text=""
       theme={Object {}}
       type="button"
       url=""
