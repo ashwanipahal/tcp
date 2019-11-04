@@ -61,11 +61,14 @@ class PayPalButton extends React.PureComponent {
         zIndex: 999,
       };
     }
+    let webURL = '';
+    if (getPayPalSettings && getPayPalSettings.paypalInContextToken) {
+      webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
+        getPayPalSettings.paypalInContextToken
+      }&paypalEnv=${paypalEnv}`;
+    }
 
-    const webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
-      getPayPalSettings.paypalInContextToken
-    }&paypalEnv=${paypalEnv}`;
-    return (
+    return getPayPalSettings && getPayPalSettings.paypalInContextToken ? (
       <View style={{ ...styles }}>
         <WebView
           scalesPageToFit
@@ -84,7 +87,7 @@ class PayPalButton extends React.PureComponent {
           onMessage={this.handleWebViewEvents}
         />
       </View>
-    );
+    ) : null;
   }
 }
 

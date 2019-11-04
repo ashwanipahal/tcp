@@ -77,24 +77,20 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       closeModal,
     } = this.props;
     return (
-      getPayPalSettings &&
-      getPayPalSettings.paypalInContextToken ? (
-        <PayPalButton
-          isQualifedOrder={isQualifedOrder}
-          initalizePayPalButton={this.initalizePayPalButton}
-          containerId={containerId}
-          navigation={navigation}
-          getPayPalSettings={getPayPalSettings}
-          payPalWebViewHandle={payPalWebViewHandle}
-          paypalAuthorizationHandle={paypalAuthorizationHandle}
-          clearPaypalSettings={clearPaypalSettings}
-          paypalEnv={this.paypalEnv}
-          paypalStaticUrl={this.paypalStaticUrl}
-          setVenmoState={setVenmoState}
-          closeModal={closeModal}
-        />
-      )
-     : null
+      <PayPalButton
+        isQualifedOrder={isQualifedOrder}
+        initalizePayPalButton={this.initalizePayPalButton}
+        containerId={containerId}
+        navigation={navigation}
+        getPayPalSettings={getPayPalSettings}
+        payPalWebViewHandle={payPalWebViewHandle}
+        paypalAuthorizationHandle={paypalAuthorizationHandle}
+        clearPaypalSettings={clearPaypalSettings}
+        paypalEnv={this.paypalEnv}
+        paypalStaticUrl={this.paypalStaticUrl}
+        setVenmoState={setVenmoState}
+        closeModal={closeModal}
+      />
     );
   }
 }
