@@ -208,10 +208,15 @@ export const submitGetBopisSearchByLatLng = ({ locationPromise }) => {
       if (location.error === ERROR_MESSAGES_BOPIS.zeroResults) {
         return { errorMessage: ERROR_MESSAGES_BOPIS.noAddressFound };
       }
+      // Validation for scenarios where location is coming as {} and code is breaking
+      if ((location.constructor === Object && Object.keys(location).length) === 0) {
+        return { location, errorMessage: '' };
+      }
       // Validation to check if search is for same country, else show error message.
-      if (location && location.country.toLowerCase() === 'us' && isCanada()) {
+      const country = location && location.country;
+      if (country.toLowerCase() === 'us' && isCanada()) {
         errorMessage = ERROR_MESSAGES_BOPIS.caPostalCode;
-      } else if (location && location.country.toLowerCase() === 'ca' && !isCanada()) {
+      } else if (country.toLowerCase() === 'ca' && !isCanada()) {
         errorMessage = ERROR_MESSAGES_BOPIS.usZipCode;
       }
       return { location, errorMessage };
