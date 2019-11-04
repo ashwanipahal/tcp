@@ -209,11 +209,11 @@ export const submitGetBopisSearchByLatLng = ({ locationPromise }) => {
         return { errorMessage: ERROR_MESSAGES_BOPIS.noAddressFound };
       }
       // Validation for scenarios where location is coming as {} and code is breaking
-      if ((location.constructor === Object && Object.keys(location).length) === 0) {
+      const country = location && location.country;
+      if (typeof country === 'undefined') {
         return { location, errorMessage: '' };
       }
       // Validation to check if search is for same country, else show error message.
-      const country = location && location.country;
       if (country.toLowerCase() === 'us' && isCanada()) {
         errorMessage = ERROR_MESSAGES_BOPIS.caPostalCode;
       } else if (country.toLowerCase() === 'ca' && !isCanada()) {
