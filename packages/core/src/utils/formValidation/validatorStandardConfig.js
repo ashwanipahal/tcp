@@ -192,6 +192,7 @@ export const formValidationMessages = {
   orderDate: {
     required: 'lbl_err_order_date_required',
   },
+  promoId: 'lbl_err_airmilesaccountnumber',
 };
 
 export const formValidationRules = {
@@ -425,6 +426,10 @@ export const formValidationRules = {
   },
   transactionDate: {
     required: true,
+  },
+  promoId: {
+    number: true,
+    exactLength: 11,
   },
 };
 

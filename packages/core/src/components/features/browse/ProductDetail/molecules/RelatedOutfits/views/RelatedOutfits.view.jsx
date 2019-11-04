@@ -12,6 +12,7 @@ class RelatedOutfits extends React.PureComponent {
     super(props);
     this.state = {
       isAccordionOpen: true,
+      showHeader: false,
     };
   }
 
@@ -27,28 +28,39 @@ class RelatedOutfits extends React.PureComponent {
         hideTabs
         divTabs={[]}
         bgClass="yellow-bg"
+        showRelatedOutfitHeader={this.setShowHeader}
       />
     );
+  };
+
+  setShowHeader = value => {
+    const { showHeader } = this.state;
+    if (!showHeader) {
+      this.setState({ showHeader: value });
+    }
   };
 
   render() {
     const { pdpLabels, className } = this.props;
     const { completeTheLook } = pdpLabels;
-    const { isAccordionOpen } = this.state;
+    const { isAccordionOpen, showHeader } = this.state;
     const accordionToggleClass = this.getAccordionClass(isAccordionOpen);
 
     return (
       <div className={`${className} product-description-list`}>
-        <BodyCopy
-          className={`product-desc-heading ${accordionToggleClass}`}
-          fontSize="fs14"
-          component="div"
-          fontFamily="secondary"
-          fontWeight="black"
-          data-locator={getLocator('pdp_anchor_complete_the_look')}
-        >
-          {completeTheLook}
-        </BodyCopy>
+        {showHeader && (
+          <BodyCopy
+            className={`product-desc-heading ${accordionToggleClass}`}
+            fontSize="fs14"
+            component="div"
+            fontFamily="secondary"
+            fontWeight="black"
+            data-locator={getLocator('pdp_anchor_complete_the_look')}
+          >
+            {completeTheLook}
+          </BodyCopy>
+        )}
+
         {this.getRelatedOutfitSlots()}
       </div>
     );

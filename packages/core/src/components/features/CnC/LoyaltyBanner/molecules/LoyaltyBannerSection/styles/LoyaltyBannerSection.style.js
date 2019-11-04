@@ -37,6 +37,8 @@ const Styles = css`
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
+
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default Styles;

@@ -18,9 +18,9 @@ exports[`ModuleH component renders correctly 1`] = `
           [Function],
           "
 
-  > *:last-child {
-    margin-right: 0;
-  }
+  ",
+          [Function],
+          "
   &.content-wrapper {
     margin: 0 auto;
   }

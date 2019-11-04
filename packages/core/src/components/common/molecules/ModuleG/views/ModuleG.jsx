@@ -49,14 +49,6 @@ class ModuleG extends React.PureComponent {
     return [];
   };
 
-  getProcessedCategoryIds = catIds => {
-    const processedCatId = [];
-    if (catIds.length) {
-      catIds.forEach(item => processedCatId.push(item.val || item));
-    }
-    return processedCatId;
-  };
-
   onAddToBagClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { next } = this.state;

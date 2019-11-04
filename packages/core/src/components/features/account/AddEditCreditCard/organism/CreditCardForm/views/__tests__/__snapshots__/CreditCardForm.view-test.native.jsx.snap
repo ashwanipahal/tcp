@@ -398,6 +398,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         locator=""
         navigation={Object {}}
         onPress={[MockFunction]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -428,6 +429,7 @@ exports[`CreditCardForm component should renders correctly in mailingAddress vie
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -851,6 +853,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         locator=""
         navigation={Object {}}
         onPress={[MockFunction]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -881,6 +884,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -1300,6 +1304,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         locator=""
         navigation={Object {}}
         onPress={[MockFunction]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -1330,6 +1335,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
