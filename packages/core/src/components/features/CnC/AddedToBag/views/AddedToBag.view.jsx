@@ -9,6 +9,7 @@ import styles, {
   productInfoStyles,
   pointsInfoStyles,
   buttonActionStyles,
+  LoyaltyWrapperStyles,
 } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
@@ -74,7 +75,9 @@ const AddedToBag = ({
           containerId="paypal-button-container-added-to-bag"
           inheritedStyles={buttonActionStyles}
         />
-        {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
+        <div className="loyaltyAddedToBagWrapper">
+          <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
+        </div>
         {!isInternationalShipping && <BossBannerView labels={labels} />}
         <div className="continue-shopping">
           <Anchor

@@ -65,7 +65,7 @@ const createLoginLinks = (labels, closeAddedToBagModal, openOverlay) => {
     <div className="links-wrapper">
       <span className="links-container">
         <span>{renderCreateAccountLink(labels, closeAddedToBagModal, openOverlay)}</span>
-        <span className="elem-pl-XL">
+        <span className="createLoginSpaceBetween">
           {renderLoginLink(labels, closeAddedToBagModal, openOverlay)}
         </span>
       </span>
