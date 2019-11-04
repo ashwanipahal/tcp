@@ -115,6 +115,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -316,6 +317,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -445,6 +447,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -646,6 +649,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -876,6 +880,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -1179,6 +1184,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -1426,6 +1432,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -1729,6 +1736,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
@@ -1862,6 +1870,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           pointerColor="#fff"
           popover={
             <PasswordRequirement
+              alignCenter={false}
               labels={Object {}}
             />
           }
@@ -2063,6 +2072,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         locator=""
         navigation={Object {}}
         onPress={null}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}

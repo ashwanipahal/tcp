@@ -72,6 +72,11 @@ const SubHeadingLabel = styled.Text`
     props.pageChecksObj.pageCategoryArr.isAddedToBagPage
       ? `color: ${props.theme.colorPalette.gray[900]};
         font-size: ${props.theme.typography.fontSizes.fs12};
+        ${!props.pageChecksObj.isGuest &&
+          !props.pageChecksObj.isPlcc &&
+          `color: ${plccMpr(props)}
+          font-size: ${props.theme.typography.fontSizes.fs16};
+          `}
       `
       : ''}
 `;

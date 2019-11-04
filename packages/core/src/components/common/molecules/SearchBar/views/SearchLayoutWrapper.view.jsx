@@ -63,23 +63,32 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   };
 
+  changeCaseFirstLetter = params => {
+    if (typeof params === 'string') {
+      return params.charAt(0).toUpperCase() + params.slice(1);
+    }
+    return null;
+  };
+
   highlight = inputTextParam => {
     const text = this.searchInput.current.value;
     let { inputText } = inputTextParam;
     inputText = inputText.toLowerCase();
     const index = inputText.indexOf(text.toLowerCase());
-    if (index >= 0) {
+    inputText = this.changeCaseFirstLetter(inputText);
+    if (index >= 0 && inputText) {
       return (
         <div className="lookingFor-textWrapper-div">
-          {`${inputText.substring(0, index).toUpperCase()}`}
+          {`${inputText.substring(0, index)}`}
           <span className="highlight-search-result">
-            {`${inputText.substring(index, index + text.length).toUpperCase()}`}
+            {`${inputText.substring(index, index + text.length)}`}
           </span>
-          {`${inputText.substring(index + text.length).toUpperCase()}`}
+          {`${inputText.substring(index + text.length)}`}
         </div>
       );
     }
-    return null;
+
+    return <div className="lookingFor-textWrapper-div">{`${inputText}`}</div>;
   };
 
   isLookingForExist = searchResults => {
@@ -169,7 +178,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   handleClickOutside() {
     const { setSearchState, isSearchOpen } = this.props;
-    if (isSearchOpen) {
+    if (isSearchOpen && window.innerWidth > breakpoints.values.lg) {
       setSearchState(false);
     }
   }
@@ -183,7 +192,6 @@ class SearchLayoutWrapper extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
       searchResults,
       redirectToSuggestedUrl,
       closeSearchLayover,
@@ -254,7 +262,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                 isLatestSearchResultsExists={isLatestSearchResultsExists}
                 latestSearchResults={latestSearchResults}
                 labels={labels}
-                hideOverlayAfterClick={hideOverlayAfterClick}
+                redirectToSuggestedUrl={redirectToSuggestedUrl}
               />
             ) : (
               <div className="matchBox" id="matchBox-wrapper">
@@ -280,9 +288,13 @@ class SearchLayoutWrapper extends React.PureComponent {
                                     <Anchor
                                       noLink
                                       className="suggestion-label"
-                                      onClick={() => redirectToSuggestedUrl(`${itemData.text}`)}
+                                      to={`/search/${itemData.text}`}
+                                      onClick={e => {
+                                        e.preventDefault();
+                                        redirectToSuggestedUrl(`${itemData.text}`);
+                                      }}
                                     >
-                                      {itemData && itemData.text && (
+                                      {itemData.text && (
                                         <HighLightSearch inputText={`${itemData.text}`} />
                                       )}
                                     </Anchor>
@@ -294,13 +306,18 @@ class SearchLayoutWrapper extends React.PureComponent {
                       );
                     })}
                 </div>
-                <div className="matchProductBox">
-                  <LookingForProductLabel searchResults={searchResults} />
-                  <LookingForProductDetail
-                    searchResults={searchResults}
-                    closeSearchLayover={closeSearchLayover}
-                  />
-                </div>
+
+                {searchResults &&
+                  searchResults.autosuggestProducts &&
+                  searchResults.autosuggestProducts.length > 0 && (
+                    <div className="matchProductBox">
+                      <LookingForProductLabel searchResults={searchResults} />
+                      <LookingForProductDetail
+                        searchResults={searchResults}
+                        closeSearchLayover={closeSearchLayover}
+                      />
+                    </div>
+                  )}
               </div>
             )}
           </div>
@@ -315,7 +332,6 @@ SearchLayoutWrapper.propTypes = {
   closeSearchBar: PropTypes.func.isRequired,
   closeSearchLayover: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,

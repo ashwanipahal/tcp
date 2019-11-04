@@ -23,12 +23,12 @@ export const getLabels = state => state.Labels.global;
 
 export const getResetLabels = createSelector(
   getLabels,
-  labels => labels && labels.login
+  labels => labels && labels.password
 );
 
 export const getResetPasswordErrorMessage = createSelector(
   [getError, getResetLabels],
   (state, labels) => {
-    return getErrorSelector(state, labels, 'lbl_resetpassword_error');
+    return getErrorSelector(state, labels, 'lbl_resetPassword');
   }
 );
