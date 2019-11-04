@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import getOrdersListState from '../Orders.selectors';
+import { getOrdersListState, getOrderListFetchingState } from '../Orders.selectors';
 
 describe('#pointsHistoryData selector', () => {
   it('#getOrdersListState should return OrdersListState state', () => {
@@ -8,8 +8,11 @@ describe('#pointsHistoryData selector', () => {
     });
     const state = {
       Orders: OrdersListState,
+      isFatching: false,
     };
 
     expect(getOrdersListState(state)).toEqual(OrdersListState.get('ordersList'));
+
+    expect(getOrderListFetchingState(state)).toEqual(OrdersListState.get('isFatching'));
   });
 });

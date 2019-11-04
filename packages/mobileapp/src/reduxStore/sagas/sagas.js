@@ -57,6 +57,7 @@ import NavigateXHRSaga from '@tcp/core/src/components/features/account/NavigateX
 import ApplyCreditCardSaga, {
   SubmitInstantCardApplication,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.saga';
+import ResetPasswordSaga from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.saga';
 import SocialAccountSaga from '@tcp/core/src/components/common/organisms/SocialAccount/container/Social.saga';
 import PointsClaimSaga from '@tcp/core/src/components/features/account/PointsClaim/container/PointsClaim.saga';
 import OrdersSaga from '@tcp/core/src/components/features/account/Orders/container/Orders.saga';
@@ -136,5 +137,6 @@ export default function* rootSaga() {
     LayoutSaga(),
     NavigateXHRSaga(),
     SubscribeStoreSaga(),
+    ResetPasswordSaga(),
   ]);
 }

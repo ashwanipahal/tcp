@@ -13,6 +13,10 @@ export const getBreadCrumbs = state => {
   return state.ProductDetail.get('breadCrumbs');
 };
 
+export const getAlternateSizes = state => {
+  return state.ProductDetail.getIn(['currentProduct', 'alternateSizes']);
+};
+
 export const getDescription = state => {
   return state.ProductDetail.getIn(['currentProduct', 'longDescription']);
 };
@@ -44,6 +48,8 @@ export const getPlpLabels = state => {
       fit: '',
       color: '',
       quantity: '',
+      sizeUnavalaible: '',
+      sizeAvailable: '',
     };
 
   const {
@@ -56,6 +62,8 @@ export const getPlpLabels = state => {
         lbl_pdp_fit: fit,
         lbl_pdp_color: color,
         lbl_pdp_quantity: quantity,
+        lbl_size_unavailable_online: sizeUnavalaible,
+        lbl_other_sizes_available: sizeAvailable,
       },
     },
   } = state.Labels;
@@ -68,6 +76,8 @@ export const getPlpLabels = state => {
     color,
     quantity,
     update,
+    sizeUnavalaible,
+    sizeAvailable,
   };
 };
 
