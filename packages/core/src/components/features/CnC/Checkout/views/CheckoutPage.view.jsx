@@ -176,6 +176,8 @@ class CheckoutPage extends React.PureComponent {
       checkoutServerError,
       clearCheckoutServerError,
       toggleCountrySelector,
+      cartOrderItemsCount,
+      checkoutPageEmptyBagLabels,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -211,10 +213,14 @@ class CheckoutPage extends React.PureComponent {
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            cartOrderItemsCount={cartOrderItemsCount}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
+            cartOrderItemsCount={cartOrderItemsCount}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
             {...shippingProps}
             toggleCountrySelector={toggleCountrySelector}
             initShippingPage={initShippingPage}
@@ -307,6 +313,7 @@ class CheckoutPage extends React.PureComponent {
 
   render() {
     const { isGuest, router, submitReview, reviewProps, checkoutServerError } = this.props;
+    const { cartOrderItemsCount } = this.props;
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
@@ -314,6 +321,7 @@ class CheckoutPage extends React.PureComponent {
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     return (
       <CnCTemplate
+        showLeftSection={cartOrderItemsCount > 0}
         leftSection={this.renderLeftSection}
         marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
         isGuest={isGuest}
@@ -413,8 +421,10 @@ CheckoutPage.propTypes = {
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
   pickUpContactPerson: PropTypes.shape({}).isRequired,
+  checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   clearCheckoutServerError: PropTypes.func.isRequired,
+  cartOrderItemsCount: PropTypes.number.isRequired,
 };
 
 CheckoutPage.defaultProps = {

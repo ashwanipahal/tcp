@@ -47,6 +47,7 @@ const CustomButton = props => {
     active,
     selected,
     customTextStyle,
+    paddings,
     withNoLineHeight,
     ...otherProps
   } = props;
@@ -79,6 +80,7 @@ const CustomButton = props => {
         active={active}
         selected={selected}
         style={customTextStyle}
+        paddings={paddings}
         withNoLineHeight={withNoLineHeight}
       >
         {textValue}
@@ -110,6 +112,7 @@ CustomButton.propTypes = {
   iconSize: PropTypes.string,
   withNoLineHeight: PropTypes.bool,
   customTextStyle: PropTypes.shape({}),
+  paddings: PropTypes.string,
 };
 
 CustomButton.defaultProps = {
@@ -133,6 +136,7 @@ CustomButton.defaultProps = {
   showIcon: false,
   selectedIcon: ICON_NAME.chevronUp,
   customTextStyle: null,
+  paddings: '12px 32px 12px 32px',
   withNoLineHeight: false,
 };
 

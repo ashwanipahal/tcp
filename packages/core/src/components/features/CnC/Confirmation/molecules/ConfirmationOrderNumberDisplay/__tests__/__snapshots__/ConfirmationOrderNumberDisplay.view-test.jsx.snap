@@ -36,7 +36,7 @@ exports[`ConfirmationOrderNumberDisplayVanilla should render correctly 1`] = `
     <Styled(ConfirmationItemDisplay)>
       <Styled(Anchor)
         asPath="/track-order/undefined/undefined"
-        to="/track-order?id=orders&subSection=order-details&orderId=undefined&email=undefined"
+        to="/track-order?id=orders&subSection=order-details&orderId=undefined&emailAddress=undefined"
         underline={true}
       />
     </Styled(ConfirmationItemDisplay)>
