@@ -4,22 +4,18 @@ exports[`CheckoutPageEmptyBag Component CheckoutPageEmptyBag should render corre
 <div
   className="container"
 >
-  <div
+  <Styled(BodyCopy)
     className="empty-bag-text"
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray.900"
-      component="p"
-      fontFamily="secondary"
-      fontSize="fs22"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
-    />
-  </div>
+    color="gray.900"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  />
   <div
     className="empty-bag-subtext"
   >
