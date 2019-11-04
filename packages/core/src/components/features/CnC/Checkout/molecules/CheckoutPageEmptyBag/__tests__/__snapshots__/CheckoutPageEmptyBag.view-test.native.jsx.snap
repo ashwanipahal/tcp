@@ -21,6 +21,7 @@ exports[`CheckoutPageEmptyBag Component CheckoutPageEmptyBag should render corre
     fontSize="fs14"
     margin={null}
     numberOfLines={null}
+    spacingStyles="margin-bottom-MED margin-left-MED margin-right-MED"
     text="abc"
     textDecoration={null}
   />
