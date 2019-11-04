@@ -46,7 +46,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       <div
         className="paypal-wrapper-atb"
       >
-        <withRouter(Connect(PayPalButtonContainer))
+        <Connect(PayPalButtonContainer)
           className="payPal-button"
         />
       </div>
@@ -130,7 +130,7 @@ exports[`AddedToBagActions component AddedToBagActions component with Venmo Erro
       <div
         className="paypal-wrapper-atb"
       >
-        <withRouter(Connect(PayPalButtonContainer))
+        <Connect(PayPalButtonContainer)
           className="payPal-button"
         />
       </div>
@@ -162,10 +162,6 @@ exports[`AddedToBagActions component AddedToBagActions component with Venmo Erro
   >
     <Styled(ErrorMessage)
       className="addBagActions-error"
-      error="something went wrong"
-    />
-    <Styled(ErrorMessage)
-      className="checkout-page-error"
       error="Venmo Authentication failed"
     />
   </Styled(Row)>

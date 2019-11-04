@@ -19,6 +19,7 @@ import styles from '../styles/AddressFields.style';
 import Anchor from '../../../atoms/Anchor';
 import { getSiteId } from '../../../../../utils/utils.web';
 import { API_CONFIG } from '../../../../../services/config';
+import { formatPhoneNumber } from '../../../../../utils/formValidation/phoneNumber';
 
 export class AddressFields extends React.PureComponent {
   static propTypes = {
@@ -320,6 +321,7 @@ export class AddressFields extends React.PureComponent {
                 type="tel"
                 className="address-field"
                 enableSuccessCheck={false}
+                normalize={formatPhoneNumber}
               />
             </Col>
             {isGuest && (

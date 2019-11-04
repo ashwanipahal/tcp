@@ -81,4 +81,19 @@ describe('#Bag Page actions', () => {
       type: BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG,
     });
   });
+
+
+  it('startPaypalNativeCheckout', () => {
+    expect(BAG_PAGE_ACTIONS.startPaypalNativeCheckout(true)).toEqual({
+      payload: true,
+      type: BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT,
+    });
+  });
+
+  it('getSetPayPalWebView', () => {
+    expect(BAG_PAGE_ACTIONS.getSetPayPalWebView(true)).toEqual({
+      payload: true,
+      type: BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE,
+    });
+  });
 });
