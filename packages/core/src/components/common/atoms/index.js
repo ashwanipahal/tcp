@@ -16,6 +16,8 @@ import InputCheckBox from './InputCheckbox';
 import StoreStaticMap from './StoreStaticMap';
 import Skeleton from './Skeleton';
 import BackToTop from './BackToTop';
+import PLPSkeleton from './PLPSkeleton';
+import Spinner from './Spinner';
 
 export {
   Anchor,
@@ -36,4 +38,6 @@ export {
   StoreStaticMap,
   Skeleton,
   BackToTop,
+  PLPSkeleton,
+  Spinner,
 };

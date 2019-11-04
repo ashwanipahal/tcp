@@ -18,6 +18,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       currencySymbol="USD"
       isGiftCard={false}
       isPlcc={false}
+      pdpLabels={Object {}}
       productData={
         Object {
           "colorFitsSizesMap": Array [],
@@ -28,6 +29,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       selectedColorProductId=""
     />
     <Connect(ProductAddToBagContainer)
+      alternateSizes={Object {}}
       currentProduct={
         Object {
           "colorFitsSizesMap": Array [],
@@ -38,10 +40,12 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       errorOnHandleSubmit=""
       handleFormSubmit={null}
       handleSubmit={null}
+      navigation={Object {}}
       onChangeColor={[Function]}
       onChangeSize={[Function]}
       plpLabels={null}
       selectedColorProductId=""
+      sizeChartLinkVisibility={2}
     />
     <Connect(Styled(FulfillmentSection))
       btnClassName="added-to-bag"

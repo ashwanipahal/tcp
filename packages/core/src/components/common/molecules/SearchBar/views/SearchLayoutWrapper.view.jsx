@@ -178,7 +178,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   handleClickOutside() {
     const { setSearchState, isSearchOpen } = this.props;
-    if (isSearchOpen) {
+    if (isSearchOpen && window.innerWidth > breakpoints.values.lg) {
       setSearchState(false);
     }
   }
@@ -192,7 +192,6 @@ class SearchLayoutWrapper extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
       searchResults,
       redirectToSuggestedUrl,
       closeSearchLayover,
@@ -263,7 +262,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                 isLatestSearchResultsExists={isLatestSearchResultsExists}
                 latestSearchResults={latestSearchResults}
                 labels={labels}
-                hideOverlayAfterClick={hideOverlayAfterClick}
+                redirectToSuggestedUrl={redirectToSuggestedUrl}
               />
             ) : (
               <div className="matchBox" id="matchBox-wrapper">
@@ -333,7 +332,6 @@ SearchLayoutWrapper.propTypes = {
   closeSearchBar: PropTypes.func.isRequired,
   closeSearchLayover: PropTypes.func.isRequired,
   closeModalSearch: PropTypes.func.isRequired,
-  hideOverlayAfterClick: PropTypes.func.isRequired,
   redirectToSuggestedUrl: PropTypes.func.isRequired,
   setSearchState: PropTypes.func.isRequired,
   setDataInLocalStorage: PropTypes.func.isRequired,

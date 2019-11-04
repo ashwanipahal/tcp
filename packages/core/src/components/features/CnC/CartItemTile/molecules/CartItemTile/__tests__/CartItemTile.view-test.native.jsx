@@ -1,8 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import * as utils from '@tcp/core/src/utils/utils';
 import CartItemTile from '../views/CartItemTile.view.native';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileExtension from '../views/CartItemTileExtension.view.native';
+
+utils.getBrand = jest.fn().mockReturnValue('tcp');
 
 describe('CartItemTile common component', () => {
   it('renders correctly', () => {
@@ -237,7 +240,7 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     props.productDetail.miscInfo.clearanceItem = true;
     props.isBopisClearanceProductEnabled = false;
     const component = shallow(<CartItemTile {...props} />);
-    CartItemTileExtension.handleEditCartItemWithStore('BOPIS', false, props);
+    CartItemTileExtension.handleEditCartItemWithStore('BOPIS', false, false, props);
     expect(component).toMatchSnapshot();
   });
 
@@ -245,10 +248,11 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     props.productDetail.productInfo.pdpUrl = '';
     props.productDetail.productInfo.productPartNumber = 'IV_24';
     props.navigation = { navigate: jest.fn() };
+    props.productDetail.itemInfo.itemBrand = 'TCP';
     const component = shallow(<CartItemTile {...props} />);
     CartItemTileExtension.goToPdpPage(
       '',
-      { productInfo: { pdpUrl: '', productPartNumber: 'IV_24' } },
+      { productInfo: { pdpUrl: '', productPartNumber: 'IV_24' }, itemInfo: { itemBrand: 'TCP' } },
       { navigate: jest.fn() }
     );
     expect(component).toMatchSnapshot();
