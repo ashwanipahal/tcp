@@ -204,6 +204,7 @@ class FooterTopCandidateA extends React.PureComponent {
                     }
                     buttonVariation="variable-width"
                     data-locator={getLocator('refer_friend')}
+                    className="refer_a_friend_button"
                   >
                     {referAFriendButtonLabels.text}
                   </Button>

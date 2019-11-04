@@ -51,7 +51,7 @@ export class StoreLanding extends PureComponent {
       const storeList = document.querySelectorAll(
         '.store__list.store_item_container .address-tile'
       );
-      let storeMaxHeight = 0;
+      let storeMaxHeight = storeList && storeList.length > 0 ? storeList[0].offsetHeight : 0;
       storeList.forEach(list => {
         if (storeMaxHeight < list.offsetHeight) storeMaxHeight = list.offsetHeight;
       });

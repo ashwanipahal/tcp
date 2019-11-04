@@ -30,7 +30,6 @@ exports[`DropDown Test should render correctly 1`] = `
     }
     onPress={[Function]}
     onValueChange={[MockFunction]}
-    openDropdownOnLoad={false}
     pointerEvents="auto"
     selectedItemFontWeight="semibold"
     selectedValue="foo"
@@ -122,7 +121,6 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     }
     onPress={[Function]}
     onValueChange={[MockFunction]}
-    openDropdownOnLoad={false}
     pointerEvents="auto"
     selectedItemFontWeight="semibold"
     selectedValue="foo"

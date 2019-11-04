@@ -379,6 +379,7 @@ exports[`ModuleT component renders correctly 1`] = `
           },
         ]
       }
+      className="button-list-container-alternate"
       dataLocatorDivisionImages="moduleT_cta_image_"
       dataLocatorTextCta="moduleT_cta_links_"
     />

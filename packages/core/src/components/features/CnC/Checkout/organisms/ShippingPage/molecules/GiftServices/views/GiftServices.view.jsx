@@ -205,7 +205,6 @@ class GiftServices extends React.PureComponent {
                     key={GIFT_SERVICES_CONSTANTS.TCP}
                     selectedValue={GIFT_SERVICES_CONSTANTS.TCP}
                     name="brand"
-                    variation="secondary"
                     disabled={false}
                     aria-label={GIFT_SERVICES_CONSTANTS.TCP}
                     className="tcp-radio-button"
@@ -245,7 +244,6 @@ class GiftServices extends React.PureComponent {
                     selectedValue={GIFT_SERVICES_CONSTANTS.GYM}
                     aria-label={GIFT_SERVICES_CONSTANTS.GYM}
                     name="brand"
-                    variation="secondary"
                     disabled={false}
                     onChange={e => handleToggle(e, GIFT_SERVICES_CONSTANTS.GYM)}
                     checked={SelectedBrand === GIFT_SERVICES_CONSTANTS.GYM}
