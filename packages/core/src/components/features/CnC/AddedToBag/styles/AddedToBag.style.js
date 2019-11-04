@@ -57,6 +57,12 @@ export const buttonActionStyles = css`
   }
 `;
 
+export const LoyaltyWrapperStyles = css`
+  .loyalty-banner-wrapper {
+    padding: 0;
+  }
+`;
+
 const styles = css`
   .added-to-bg-close {
     top: 21px;

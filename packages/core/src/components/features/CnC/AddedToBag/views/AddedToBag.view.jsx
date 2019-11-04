@@ -9,6 +9,7 @@ import styles, {
   productInfoStyles,
   pointsInfoStyles,
   buttonActionStyles,
+  LoyaltyWrapperStyles,
 } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
@@ -75,7 +76,7 @@ const AddedToBag = ({
           inheritedStyles={buttonActionStyles}
         />
         <div className="loyaltyAddedToBagWrapper">
-          <LoyaltyBanner pageCategory="isAddedToBagPage" />
+          <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
         </div>
         {!isInternationalShipping && <BossBannerView labels={labels} />}
         <div className="continue-shopping">
