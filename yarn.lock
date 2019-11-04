@@ -4912,48 +4912,63 @@ aws-sdk@2.517.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
+aws-sdk@^2.304.0:
+  version "2.562.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.562.0.tgz#9fdfcd8b6dddf4b7144c0b9a665b3db694a67a99"
+  integrity sha512-Uvt7qUXufjSxWMMfTs62xulGY7wnRut3y3daDtHSUdY62BnGjZGpp0dq/RW/bNi3aAjogEZNjWNZkLdtkHFeiQ==
+  dependencies:
+    buffer "4.9.1"
+    events "1.1.1"
+    ieee754 "1.1.13"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.3.2"
+    xml2js "0.4.19"
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
   integrity sha1-tG6JCTSpWR8tL2+G1+ap8bP+dqg=
 
-aws-xray-sdk-core@^1.1.2:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk-core/-/aws-xray-sdk-core-1.3.0.tgz#84e0e5e96fde0f7d753d420913f93e1d7d637ff9"
-  integrity sha512-VPidfvg42fmRih7WsNHXGDRaqslMOLePs+1JdH66wCpODEBpU0FstXvREKG2pJg2Uy4oz3k/ZJI4AFEIbkrt8Q==
+aws-xray-sdk-core@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/aws-xray-sdk-core/-/aws-xray-sdk-core-2.4.0.tgz#e0822ef6c3d31d08e35273e0d81816504d9f317a"
+  integrity sha512-V9UZg4r3tn7njSOdL55e0GWzV2cPDVvvxmo1y/eOkyWs1cDXtCK7LzE9R+iuFCIQ9kCaxcu8usoF88cGLxXixg==
   dependencies:
     atomic-batcher "^1.0.2"
+    aws-sdk "^2.304.0"
     continuation-local-storage "^3.2.0"
     date-fns "^1.29.0"
-    lodash "^4.17.10"
     pkginfo "^0.4.0"
     semver "^5.3.0"
-    winston "^2.2.0"
+    winston "^2.4.4"
 
-aws-xray-sdk-express@^1.1.2:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk-express/-/aws-xray-sdk-express-1.3.0.tgz#4459089883ac4292d4a26442216c65bb27b7a5e3"
-  integrity sha512-Pz0uw6EJqmMUwxVx4Mjest5gvu+eWUS3HEfw2HTsOzQpUQ+xnlc50Unf9ilK4Xdf3p8nxN0lV9eIyofugOY6Aw==
+aws-xray-sdk-express@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/aws-xray-sdk-express/-/aws-xray-sdk-express-2.4.0.tgz#a13df90acc5ddfac3eefb13ce55dc77b81ee8a38"
+  integrity sha512-NPjkRik2KVD8AAnFYcCGeREshDumGpOIAnxNNmn5MWQS99tNZtQrTbdrZXbvaI/eql808SxMQdNo0/yN5jGqEA==
 
-aws-xray-sdk-mysql@^1.1.2:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk-mysql/-/aws-xray-sdk-mysql-1.3.0.tgz#d08e1e6fbf11e6b2a4009bff3da9841bda801444"
-  integrity sha512-T/nitPlE7ilL99OaZLP5l69Dd9NtasqxMDGlZcV/+vCdSQR4r2fquPYlS+O74BgaH++hEg/hP1y8HvwoxEzpfQ==
+aws-xray-sdk-mysql@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/aws-xray-sdk-mysql/-/aws-xray-sdk-mysql-2.4.0.tgz#e317af5ddf3d735a9129afc10ec684f746bccdcb"
+  integrity sha512-U75s1Uaw/VbNgJhrEGubBEegydlOckl0XHcOOmqpkZiV1BkT2H6kPX0s/o6XeVjdKpQiK/MYmt86Wu/SHErElQ==
 
-aws-xray-sdk-postgres@^1.1.2:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk-postgres/-/aws-xray-sdk-postgres-1.3.0.tgz#e3afd2a8fa3946ec46dd474696d45b5d87bfa043"
-  integrity sha512-bOWmYXwd39g9cP2UBuPX8buEr4lxFmI2dtx1MXpjkieK0GJPYNm82BPIw5k8qX6adTB3hDZQvHoD98AeKYopng==
+aws-xray-sdk-postgres@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/aws-xray-sdk-postgres/-/aws-xray-sdk-postgres-2.4.0.tgz#8dcebbc79f4f6256f899f1f18ababbf10b4360cc"
+  integrity sha512-oKC1bWQR9iHiRoVWtu2f//VnVoIWCxcVqGzXjT4AVjI/gjN74vLAwEppCX2fl5LpfpKTXfIR7H6v5XfDa3EGnA==
 
-aws-xray-sdk@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk/-/aws-xray-sdk-1.1.2.tgz#a5a9e97cffbd7be8ce622d513aa36864682f474d"
-  integrity sha1-panpfP+9e+jOYi1ROqNoZGgvR00=
+aws-xray-sdk@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/aws-xray-sdk/-/aws-xray-sdk-2.4.0.tgz#12fe60e9a2aa0655e5b8511a50302ac47ea95bc9"
+  integrity sha512-h9Us0MDaSQCgW4m7inq3NFwWt+JWmJff4i3DiKvJgHgle7EdeDPwfhTvJ99lXLLgQGtAUwMTiGX0cVqlmXHFXw==
   dependencies:
-    aws-xray-sdk-core "^1.1.2"
-    aws-xray-sdk-express "^1.1.2"
-    aws-xray-sdk-mysql "^1.1.2"
-    aws-xray-sdk-postgres "^1.1.2"
+    aws-xray-sdk-core "^2.4.0"
+    aws-xray-sdk-express "^2.4.0"
+    aws-xray-sdk-mysql "^2.4.0"
+    aws-xray-sdk-postgres "^2.4.0"
     pkginfo "^0.4.0"
 
 aws4@^1.8.0:
@@ -11762,15 +11777,15 @@ icss-utils@^4.0.0, icss-utils@^4.1.1:
   dependencies:
     postcss "^7.0.14"
 
+ieee754@1.1.13, ieee754@^1.1.4:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.13.tgz#ec168558e95aa181fd87d37f55c32bbcb6708b84"
+  integrity sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==
+
 ieee754@1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
   integrity sha1-vjPUCsEO8ZJnAfbwii2G+/0a0+Q=
-
-ieee754@^1.1.4:
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.13.tgz#ec168558e95aa181fd87d37f55c32bbcb6708b84"
-  integrity sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==
 
 ienoopen@1.1.0:
   version "1.1.0"
@@ -23085,7 +23100,7 @@ windows-release@^3.1.0:
   dependencies:
     execa "^1.0.0"
 
-winston@^2.2.0:
+winston@^2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.4.tgz#a01e4d1d0a103cf4eada6fc1f886b3110d71c34b"
   integrity sha512-NBo2Pepn4hK4V01UfcWcDlmiVTs7VTB1h7bgnB0rgP146bYhMxX0ypCz3lBOfNxCO4Zuek7yeT+y/zM1OfMw4Q==
