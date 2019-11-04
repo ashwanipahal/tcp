@@ -54,8 +54,11 @@ class ProductSummary extends React.PureComponent {
     );
   };
 
-  renderBazarVoiceComponent = () => {
-    const { isGiftCard } = this.props;
+  renderBazaarVoiceComponent = () => {
+    const { isGiftCard, pdpLabels } = this.props;
+    const completeTheLook =
+      (pdpLabels.completeTheLook && pdpLabels.completeTheLook.toLowerCase()) ||
+      'Complete The Look1';
     if (!isGiftCard) {
       return (
         <BazarVoiceContainer>
@@ -87,7 +90,7 @@ class ProductSummary extends React.PureComponent {
             locator="pdp_anchor_complete_the_look"
             className="details-link"
             onPress={this.onCompletLook}
-            text="Complete The Look"
+            text={completeTheLook}
           />
         </BazarVoiceContainer>
       );
@@ -162,7 +165,7 @@ class ProductSummary extends React.PureComponent {
       return (
         <Container>
           <LineComp marginTop={10} borderColor="gray.500" />
-          {this.renderBazarVoiceComponent()}
+          {this.renderBazaarVoiceComponent()}
           {!isGiftCard ? <LineComp marginTop={0} borderColor="gray.500" /> : null}
           {this.renderTopBadge(badge1Value)}
           <BodyCopy
@@ -203,6 +206,7 @@ ProductSummary.propTypes = {
   offerPrice: PropTypes.number.isRequired,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
   currencySymbol: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
 };
 
 ProductSummary.defaultProps = {
@@ -210,6 +214,7 @@ ProductSummary.defaultProps = {
   currencyExchange: 1,
   currencySymbol: '$',
   isGiftCard: false,
+  pdpLabels: {},
 };
 
 export default withStyles(ProductSummary, styles);
