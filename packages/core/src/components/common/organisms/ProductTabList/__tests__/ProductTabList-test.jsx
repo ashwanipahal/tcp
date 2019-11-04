@@ -15,12 +15,12 @@ describe('ProductTabList', () => {
             category: [
               {
                 key: 'cat_id',
-                val: '123'
+                val: '123',
               },
               {
                 key: 'cat_id',
-                val: '123'
-              }
+                val: '123',
+              },
             ],
           },
         ]}
@@ -46,12 +46,12 @@ describe('ProductTabList', () => {
             category: [
               {
                 key: 'cat_id',
-                val: '123'
+                val: '123',
               },
               {
                 key: 'cat_id',
-                val: '123'
-              }
+                val: '123',
+              },
             ],
           },
         ]}
@@ -70,6 +70,7 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
+            category: [],
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -86,32 +87,28 @@ describe('ProductTabList', () => {
         text: {
           text: 'test',
         },
-        category: {
-          cat_id: [
-            {
-              key: 'cat_id',
-              val: '2'
-            }
-          ],
-        },
+        category: [
+          {
+            key: 'cat_id',
+            val: '2',
+          },
+        ],
       },
       {
         text: {
           text: 'test 2',
         },
-        category: {
-          cat_id: [
-            {
-              key: 'cat_id',
-              val: '2'
-            }
-          ],
-        },
+        category: [
+          {
+            key: 'cat_id',
+            val: '2',
+          },
+        ],
       },
     ];
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalledWith([], []);
+    expect(onProductTabChangeMock).toHaveBeenCalled();
   });
 });

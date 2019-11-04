@@ -23,12 +23,12 @@ describe('ProductTabList', () => {
             category: [
               {
                 key: 'cat_id',
-                val: '123'
+                val: '123',
               },
               {
                 key: 'cat_id',
-                val: '123'
-              }
+                val: '123',
+              },
             ],
           },
         ]}
@@ -54,15 +54,15 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category:  [
+            category: [
               {
                 key: 'cat_id',
-                val: '123'
+                val: '123',
               },
               {
                 key: 'cat_id',
-                val: '123'
-              }
+                val: '123',
+              },
             ],
           },
         ]}
@@ -85,6 +85,7 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
+            category: [],
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -107,8 +108,8 @@ describe('ProductTabList', () => {
         category: [
           {
             key: 'cat_id',
-            val: '2'
-          }
+            val: '2',
+          },
         ],
       },
       {
@@ -118,8 +119,8 @@ describe('ProductTabList', () => {
         category: [
           {
             key: 'cat_id',
-            val: '2'
-          }
+            val: '2',
+          },
         ],
       },
     ];

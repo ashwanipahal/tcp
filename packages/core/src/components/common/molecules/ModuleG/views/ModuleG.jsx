@@ -294,6 +294,7 @@ class ModuleG extends React.PureComponent {
             }}
           >
             {this.getHeaderText()}
+            {this.getPromoBanner()}
             <ProductTabList
               onProductTabChange={this.onTabChange}
               tabItems={divTabs}
