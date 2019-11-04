@@ -39,7 +39,10 @@ const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosi
   const addressLine1 = capitalize(address.addressLine1);
   const city = capitalize(address.city);
   const { CLOSED_TODAY, CLOSING_TODAY, CLOSING_TOMORROW, CLOSED_TOMORROW } = STORE_DETAILS_LABELS;
-
+  const phoneNum = basicInfo.phone
+    .replace(/\n /g, '')
+    .replace(/ /g, '')
+    .replace(')', ') ');
   return (
     <TooltipContentWrapper>
       <BodyCopy
@@ -65,7 +68,7 @@ const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosi
         fontFamily="secondary"
         color="text.secondary"
         fontSize="fs12"
-        text={`${basicInfo.phone} \n`}
+        text={`${phoneNum} \n`}
       />
       {storeClosingTimeToday ? (
         <BodyCopy
@@ -126,7 +129,7 @@ const displayStoreDetailsAnchor = (
   );
   return (
     <TooltipWrapper>
-      <ReactTooltip withOverlay={false} popover={tooltipContent} width={227} height={170}>
+      <ReactTooltip withOverlay={false} popover={tooltipContent} width={230} height={170}>
         {StoreDetailsAnchor}
       </ReactTooltip>
     </TooltipWrapper>
