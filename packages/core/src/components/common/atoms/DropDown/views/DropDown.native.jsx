@@ -183,18 +183,11 @@ class DropDown extends React.PureComponent<Props> {
     } else {
       listHeight = calculateHeight;
     }
-    if (openDropdownOnLoad) {
-      this.setState({
-        flatListHeight: listHeight,
-        flatListTop: listMargin,
-        dropDownIsOpen: openDropdownOnLoad,
-      });
-    } else {
-      this.setState({
-        flatListHeight: listHeight,
-        flatListTop: listMargin,
-      });
-    }
+    this.setState({
+      flatListHeight: listHeight,
+      flatListTop: listMargin,
+      ...(openDropdownOnLoad && { dropDownIsOpen: openDropdownOnLoad }),
+    });
   };
 
   /**
@@ -259,12 +252,12 @@ class DropDown extends React.PureComponent<Props> {
    * Close the drop down
    */
   closeDropDown = () => {
-    const { onPressOut } = this.props;
     this.setState(
       {
         dropDownIsOpen: false,
       },
       () => {
+        const { onPressOut } = this.props;
         if (onPressOut) {
           onPressOut();
         }
