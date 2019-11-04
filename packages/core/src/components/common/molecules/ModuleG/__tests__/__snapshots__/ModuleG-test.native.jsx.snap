@@ -75,14 +75,14 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             ],
             "singleCTAButton": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "text": Object {
@@ -102,14 +102,14 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             ],
             "singleCTAButton": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "text": Object {
@@ -124,19 +124,19 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
               },
               Object {
                 "key": "cat_id",
-                "val": "47536|489103",
+                "val": "47501>47526",
               },
             ],
             "singleCTAButton": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "text": Object {
@@ -147,7 +147,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             "category": Array [
               Object {
                 "key": "cat_id",
-                "val": "505518",
+                "val": "47526",
               },
               Object {
                 "key": "cat_id",
@@ -156,14 +156,14 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             ],
             "singleCTAButton": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
               "target": "",
-              "text": "shop all matchables",
-              "title": "Add To Bag",
+              "text": "Shop All Matchables",
+              "title": "add to bag",
               "url": "/c/us",
             },
             "text": Object {
