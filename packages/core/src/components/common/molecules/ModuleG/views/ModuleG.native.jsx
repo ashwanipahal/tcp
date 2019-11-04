@@ -123,6 +123,8 @@ class ModuleG extends React.PureComponent {
             }
             navigation={navigation}
             testID={`${getLocator('moduleG_product_image')}${productItemIndex}`}
+            accessibilityRole="image"
+            accessibilityLabel="product image"
           >
             <DamImage url={imageUrl[0]} height={PRODUCT_IMAGE_HEIGHT} width={PRODUCT_IMAGE_WIDTH} />
           </Anchor>

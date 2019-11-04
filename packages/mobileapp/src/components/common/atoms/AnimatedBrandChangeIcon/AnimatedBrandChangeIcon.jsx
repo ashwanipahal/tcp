@@ -138,7 +138,7 @@ class AnimatedBrandChangeIcon extends PureComponent {
         ]}
       >
         <TCPIcon
-          accessibilityLabel="tcpBrand"
+          accessibilityLabel="The Children's Place Link"
           accessibilityTraits="none"
           accessibilityComponentType="none"
           onPress={this.switchToTCP}
@@ -168,7 +168,7 @@ class AnimatedBrandChangeIcon extends PureComponent {
         ]}
       >
         <GymIcon
-          accessibilityLabel="gymboreeBrand"
+          accessibilityLabel="Gymboree Link"
           accessibilityTraits="none"
           accessibilityComponentType="none"
           onPress={this.switchToGymboree}
