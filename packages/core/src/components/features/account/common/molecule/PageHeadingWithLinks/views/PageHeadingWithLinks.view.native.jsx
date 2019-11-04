@@ -14,11 +14,12 @@ export const PageHeadingWithLinks = ({
   termsConditionCta,
   children,
   heading,
+  noTopPadding,
   walletPage,
 }) => {
   return (
     <View>
-      <StyledHeading walletPage={walletPage}>
+      <StyledHeading noTopPadding={noTopPadding}>
         <BodyCopy
           fontSize="fs16"
           fontWeight="extrabold"
@@ -65,11 +66,13 @@ PageHeadingWithLinks.propTypes = {
   termsConditionCta: PropTypes.string.isRequired,
   labels: PropTypes.shape({}),
   children: PropTypes.string.isRequired,
+  noTopPadding: PropTypes.bool,
   walletPage: PropTypes.bool,
 };
 
 PageHeadingWithLinks.defaultProps = {
   labels: {},
+  noTopPadding: false,
   walletPage: false,
 };
 

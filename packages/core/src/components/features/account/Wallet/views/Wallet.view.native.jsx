@@ -326,6 +326,7 @@ class WalletView extends PureComponent {
                     'placeRewards'
                   )}
                   termsConditionCta={getLabelValue(commonLabels, 'lbl_common_tnc')}
+                  noTopPadding
                   walletPage
                 >
                   <AccountNumber />

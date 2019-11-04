@@ -9,6 +9,7 @@ import {
   getCommonLabels,
   getLabels,
 } from '../../Account/container/Account.selectors';
+import getAccountOverviewLabels from './Wallet.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp } from '../../../../../utils/utils';
 
@@ -24,13 +25,9 @@ export class WalletContainer extends React.Component {
     }
   }
 
-  getAccountOverviewLabels = labels => {
-    return (labels && labels.accountOverview) || {};
-  };
-
   render() {
     const { labels, commonLabels, accountLabels, isUserLoggedIn, ...props } = this.props;
-    const overViewLabels = this.getAccountOverviewLabels(accountLabels);
+    const overViewLabels = getAccountOverviewLabels(accountLabels);
     return (
       <WalletView
         labels={labels}
