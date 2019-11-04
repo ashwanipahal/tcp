@@ -1,4 +1,3 @@
-const dummyUrl = 'http://www.childrensplace.com';
 const cat1 = '47526';
 const cat2 = '47503>47544';
 const cat3 = '47501>47526';
@@ -7,168 +6,162 @@ const adTobag = 'add to bag';
 
 export default {
   moduleG: {
-    contentId: "cb2d22f1-310f-4f9b-908c-ad625b1b6af2",
-      name: "moduleG",
-      type: "module",
-      set: [
-        {
-          val: "",
-          key: "moduleClassName"
-        }
-      ],
-      composites: {
+    contentId: 'cb2d22f1-310f-4f9b-908c-ad625b1b6af2',
+    name: 'moduleG',
+    type: 'module',
+    composites: {
       bgColor: '#d8d8d8',
       layout: 'alt',
       headerText: [
         {
-        textItems: [
+          textItems: [
             {
-              text: "ALL MATCHABLES",
-              style: "large_text_bold"
+              text: 'ALL MATCHABLES',
+              style: 'large_text_bold',
             },
             {
-              text: "60% OFF",
-              style: "large_text_bold"
-            }
+              text: '60% OFF',
+              style: 'large_text_bold',
+            },
           ],
-         icon: {
-            placement: "",
-            icon: ""
+          icon: {
+            placement: '',
+            icon: '',
           },
           link: {
-            url: "/c/ab",
-            text: "",
-            title: "",
-            target: ""
-          }
-        }
+            url: '/c/ab',
+            text: '',
+            title: '',
+            target: '',
+          },
+        },
       ],
       promoBanner: [
         {
           link: {
-            url: "/c",
-            title: ""
+            url: '/c',
+            title: '',
           },
           textItems: [
             {
-              text: "60% OFF",
-              style: "extra_large_text_regular"
-            }
-          ]
-        }
+              text: '60% OFF',
+              style: 'extra_large_text_regular',
+            },
+          ],
+        },
       ],
       linkedImage: null,
 
       divTabs: [
-          {
-            text: {
-              text: "GIRL"
-            },
-            category: [
-              {
-                key: "cat_id",
-                val: "47503"
-              },
-              {
-                key: "cat_id",
-                val: "47501"
-              }
-            ],
-            singleCTAButton: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
-            },
-             singleCTAButtonCart: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
-            }
+        {
+          text: {
+            text: 'GIRL',
           },
-          {
-            text: {
-              text: "TODDLER GIRL"
+          category: [
+            {
+              key: 'cat_id',
+              val: '47503',
             },
-            category: [
-              {
-                key: "cat_id",
-                val: "47501"
-              },
-              {
-                key: "cat_id",
-                val: cat2
-              }
-            ],
-            singleCTAButton: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
+            {
+              key: 'cat_id',
+              val: '47501',
             },
-             singleCTAButtonCart: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
-            }
+          ],
+          singleCTAButton: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
           },
-          {
-            text: {
-              text: "BOY"
-            },
-            category: [
-              {
-                key: "cat_id",
-                val: "47503"
-              },
-              {
-                key: "cat_id",
-                val: "47536|489103"
-              }
-            ],
-            singleCTAButton: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
-            },
-             singleCTAButtonCart: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
-            }
+          singleCTAButtonCart: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
           },
-          {
-            text: {
-              text: "TODDLER BOY"
+        },
+        {
+          text: {
+            text: 'TODDLER GIRL',
+          },
+          category: [
+            {
+              key: 'cat_id',
+              val: '47501',
             },
-            category: [
-              {
-                key: "cat_id",
-                val: "505518"
-              },
-              {
-                key: "cat_id",
-                val: "47511|516020"
-              }
-            ],
-            singleCTAButton: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
+            {
+              key: 'cat_id',
+              val: cat2,
             },
-             singleCTAButtonCart: {
-              url: "/c/us",
-              text: "shop all matchables",
-              target: "",
-              title: "Add To Bag"
-            }
-          }
-        ],
+          ],
+          singleCTAButton: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
+          },
+          singleCTAButtonCart: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
+          },
+        },
+        {
+          text: {
+            text: 'BOY',
+          },
+          category: [
+            {
+              key: 'cat_id',
+              val: '47503',
+            },
+            {
+              key: 'cat_id',
+              val: cat3,
+            },
+          ],
+          singleCTAButton: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
+          },
+          singleCTAButtonCart: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
+          },
+        },
+        {
+          text: {
+            text: 'TODDLER BOY',
+          },
+          category: [
+            {
+              key: 'cat_id',
+              val: cat1,
+            },
+            {
+              key: 'cat_id',
+              val: '47511|516020',
+            },
+          ],
+          singleCTAButton: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
+          },
+          singleCTAButtonCart: {
+            url: '/c/us',
+            text: footerlink,
+            target: '',
+            title: adTobag,
+          },
+        },
+      ],
     },
     submodules: {},
     set: [
