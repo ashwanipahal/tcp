@@ -1018,6 +1018,10 @@ export const getStyliticsRegion = () => {
   return styliticsRegionGYM;
 };
 
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -1059,4 +1063,5 @@ export default {
   insertIntoString,
   getStyliticsUserName,
   getStyliticsRegion,
+  canUseDOM,
 };

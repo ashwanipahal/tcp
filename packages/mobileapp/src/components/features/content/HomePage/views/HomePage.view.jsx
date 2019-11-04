@@ -24,6 +24,8 @@ import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
+import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
@@ -130,6 +132,7 @@ class HomePageView extends React.PureComponent<Props> {
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
+        <ModuleM navigation={navigation} {...mock.moduleM.composites} />
       </LazyloadScrollView>
     );
   }

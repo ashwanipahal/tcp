@@ -31,14 +31,6 @@ exports[`<CondensedHeaderVanilla /> Should match snapshot correctly 1`] = `
         imgSrc="/static/images/tcp-logo.svg"
       />
       <div
-        className="condensed-navigation"
-      >
-        <Connect(Styled(Navigation))
-          closeNavigationDrawer={true}
-          openNavigationDrawer={false}
-        />
-      </div>
-      <div
         className="condensed-header-icons"
       >
         <Connect(Styled(SearchBar))

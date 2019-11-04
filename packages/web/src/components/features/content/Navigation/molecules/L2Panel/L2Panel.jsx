@@ -89,12 +89,15 @@ const renderL3Panel = (
   );
 };
 
-const openL3Nav = (id, hasL3, hideL2Nav, openL3Drawer, e) => {
+const openL3Nav = (id, hasL3, hideL2Nav, openL3Drawer, closeNav, e) => {
   if (!getViewportInfo().isDesktop) {
     openL3Drawer(`l3-drawer-${id.toString()}`, hasL3)(e);
     const drawerElement = document.getElementById('tcp-nav-drawer');
     if (drawerElement) {
       drawerElement.scrollTop = 0;
+    }
+    if (!hasL3) {
+      closeNav();
     }
   } else {
     hideL2Nav();
@@ -151,7 +154,7 @@ const createLinks = (
               <Anchor
                 asPath={asPath}
                 to={url}
-                onClick={e => openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, e)}
+                onClick={e => openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)}
               >
                 <BodyCopy
                   className="l2-nav-link"
