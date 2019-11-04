@@ -7,9 +7,9 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import mock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
-import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
+// import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+// import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
@@ -42,7 +42,7 @@ const HomePageView = dynamic({
         page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
         variations="moduleO,moduleP"
       />,
-      <ModuleG {...mockG.moduleG.composites} />,
+      // <ModuleG {...mockG.moduleG.composites} />,
     ];
   },
 });

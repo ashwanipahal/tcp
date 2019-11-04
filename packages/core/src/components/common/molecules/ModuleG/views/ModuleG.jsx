@@ -77,17 +77,19 @@ class ModuleG extends React.PureComponent {
 
     divTabs.forEach((tab, index) => {
       if (JSON.stringify(tabs[index]) === JSON.stringify(currentCatId)) {
-        currentSingleCTAButton = tab.singleCTAButtonCart;
+        currentSingleCTAButton = tab.singleCTAButton;
       }
     });
 
     let productExists = false;
     if (currentCatId.length) {
       currentCatId.forEach(id => {
-        productExists =
-          Object.keys(productTabList).length > 2 &&
-          productTabList[id] &&
-          productTabList[id].length > 0;
+        if (!productExists) {
+          productExists =
+            Object.keys(productTabList).length > 2 &&
+            productTabList[id] &&
+            productTabList[id].length > 0;
+        }
       });
     }
     const data = this.getImagesData();
@@ -106,7 +108,7 @@ class ModuleG extends React.PureComponent {
               buttonVariation="fixed-width"
               className="cta-btn"
             >
-              {currentSingleCTAButton.title}
+              {currentSingleCTAButton.text}
             </Button>
           </Col>
         </Row>
@@ -133,7 +135,7 @@ class ModuleG extends React.PureComponent {
                 data[0][next].pdpAsPath}`}
               dataLocator={getLocator('moduleJ_cta_btn')}
             >
-              <span className="shopall_footerlink">{currentSingleCTAButton.text}</span>
+              <span className="shopall_footerlink">{currentSingleCTAButton.title}</span>
               <span className="right_chevron_arrow">
                 <Image src={getIconPath('smallright')} />
               </span>
@@ -301,13 +303,12 @@ class ModuleG extends React.PureComponent {
         </Row>
         <Row className="wrapper" fullBleed={{ small: true, medium: true, large: false }}>
           {this.renderCarousel('top', currentCatId[0])}
-          {showPlusButton ? (
-            <div className="focusAreaView">
-              <span className="focusArea-plus">
-                <Image src={getIconPath('plus-icon')} />
-              </span>
-            </div>
-          ) : null}
+
+          <div className="focusAreaView">
+            <span className="focusArea-plus">
+              {showPlusButton ? <Image src={getIconPath('plus-icon')} /> : null}
+            </span>
+          </div>
           {/* carousel bottom */}
           {this.renderCarousel('bottom', currentCatId[1])}
         </Row>
