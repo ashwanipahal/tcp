@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Changes as per RWD-9852. Keeping this for future reference.
 // import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 
-import { Row, Col } from '../../../../common/atoms';
+import { Row, Col, PLPSkeleton } from '../../../../common/atoms';
 
 /*
 // Changes as per RWD-9852. Keeping this for future reference.
@@ -57,6 +57,7 @@ const ProductListView = ({
   isFilterBy,
   currencyExchange,
   currency,
+  isLoadingMore,
   ...otherProps
 }) => {
   return (
@@ -122,6 +123,7 @@ const ProductListView = ({
               currencyExchange={currencyExchange}
               {...otherProps}
             />
+            {isLoadingMore ? <PLPSkeleton col={20} /> : null}
           </Col>
 
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -166,6 +168,7 @@ ProductListView.propTypes = {
   isFilterBy: PropTypes.bool.isRequired,
   currencyExchange: PropTypes.string,
   currency: PropTypes.string,
+  isLoadingMore: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -185,6 +188,7 @@ ProductListView.defaultProps = {
   sortLabels: [],
   slpLabels: {},
   isFilterBy: true,
+  isLoadingMore: true,
   currency: 'USD',
 };
 

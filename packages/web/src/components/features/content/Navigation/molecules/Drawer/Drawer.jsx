@@ -7,6 +7,7 @@ import {
   closeOverlay,
   enableBodyScroll,
   disableBodyScroll,
+  removeBodyScrollLocks,
 } from '@tcp/core/src/utils';
 import { Row } from '@tcp/core/src/components/common/atoms';
 import AccountInfoSection from '../../../Header/molecules/AccountInfoSection/AccountInfoSection';
@@ -53,7 +54,18 @@ class Drawer extends React.Component {
   }
 
   componentDidUpdate() {
+    this.init();
+  }
+
+  componentWillUnmount() {
+    enableBodyScroll(this.scrollTargetElement);
+  }
+
+  init = () => {
     const { open, renderOverlay } = this.props;
+    if (!open) {
+      removeBodyScrollLocks();
+    }
     if (renderOverlay) {
       this.getDrawerStyle();
     }
@@ -63,11 +75,7 @@ class Drawer extends React.Component {
       document.body.removeEventListener('click', this.closeNavOnOverlayClick);
     }
     return null;
-  }
-
-  componentWillUnmount() {
-    enableBodyScroll();
-  }
+  };
 
   /* Set drawer ref */
   setDrawerRef = node => {
@@ -84,7 +92,7 @@ class Drawer extends React.Component {
       typeof close === 'function'
     ) {
       close();
-      enableBodyScroll();
+      enableBodyScroll(this.scrollTargetElement);
       e.stopPropagation();
     }
   };
@@ -95,6 +103,14 @@ class Drawer extends React.Component {
 
   handleUserRewards = userRewards => {
     return userRewards % 1 ? userRewards : Math.floor(userRewards);
+  };
+
+  disableScroll = drawer => {
+    const { open } = this.props;
+    this.scrollTargetElement = drawer;
+    if (open && this.scrollTargetElement) {
+      disableBodyScroll(this.scrollTargetElement);
+    }
   };
 
   /* Style for drawer to make it scrollable within */
@@ -128,7 +144,7 @@ class Drawer extends React.Component {
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
         drawer.style.top = `${headerHeight + userInfoHeight}px`;
-        disableBodyScroll();
+        this.disableScroll(drawer);
       }
     }
   };

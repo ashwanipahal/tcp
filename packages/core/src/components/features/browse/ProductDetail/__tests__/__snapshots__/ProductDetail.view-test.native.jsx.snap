@@ -18,6 +18,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       currencySymbol="USD"
       isGiftCard={false}
       isPlcc={false}
+      pdpLabels={Object {}}
       productData={
         Object {
           "colorFitsSizesMap": Array [],

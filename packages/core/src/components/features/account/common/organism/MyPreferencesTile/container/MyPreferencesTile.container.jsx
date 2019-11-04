@@ -13,12 +13,20 @@ import {
   getFavoriteStoreZipcode,
   getFavoriteStoreCity,
   getDefaultStore,
+  getUserInfoFetchingState,
 } from '../../../../User/container/User.selectors';
-import { getsocialDataOnLoadState } from '../../../../../../common/organisms/SocialAccount/container/Social.selectors';
+import {
+  getsocialDataOnLoadState,
+  getSocialDataFetchingState,
+} from '../../../../../../common/organisms/SocialAccount/container/Social.selectors';
 import { getSocialAccount } from '../../../../../../common/organisms/SocialAccount/container/Social.actions';
 import { getMyFavoriteStoreAction } from '../../../../MyProfile/organism/MyFavoriteStore/container/MyFavoriteStore.actions';
-import { getCustomerPreferences } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscription.selectors';
+import {
+  getCustomerPreferences,
+  getSubscribeStoreFetchingState,
+} from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscription.selectors';
 import { getSubscribeStore } from '../../../../MyPreferenceSubscription/container/MyPreferenceSubscription.actions';
+import MyPreferencesTileSkelton from '../skelton/MyPreferencesTileSkelton.view';
 
 class MyPreferencesTile extends PureComponent {
   componentDidMount() {
@@ -70,11 +78,17 @@ class MyPreferencesTile extends PureComponent {
       socialAccounts,
       customerPreferences,
       handleComponentChange,
+      isFetchingCustomerPreferences,
+      isFetchingSocialData,
+      isFetchingUserInfoData,
     } = this.props;
 
     const customerPreferencesValue =
       (customerPreferences && this.getContactPreferencesValues(customerPreferences)) || {};
 
+    if (isFetchingCustomerPreferences || isFetchingSocialData || isFetchingUserInfoData) {
+      return <MyPreferencesTileSkelton />;
+    }
     return (
       <MyPreferencesTileComponent
         labels={labels}
@@ -110,6 +124,9 @@ MyPreferencesTile.propTypes = {
   getContactPreferences: PropTypes.func.isRequired,
   handleComponentChange: PropTypes.func.isRequired,
   customerPreferences: PropTypes.shape({}),
+  isFetchingCustomerPreferences: PropTypes.bool,
+  isFetchingSocialData: PropTypes.bool,
+  isFetchingUserInfoData: PropTypes.bool,
 };
 
 MyPreferencesTile.defaultProps = {
@@ -123,6 +140,9 @@ MyPreferencesTile.defaultProps = {
   favStorePhone: '',
   socialAccounts: {},
   customerPreferences: {},
+  isFetchingCustomerPreferences: false,
+  isFetchingSocialData: false,
+  isFetchingUserInfoData: false,
 };
 
 export const mapStateToProps = state => ({
@@ -137,6 +157,9 @@ export const mapStateToProps = state => ({
   defaultStore: getDefaultStore(state),
   socialAccounts: getsocialDataOnLoadState(state),
   customerPreferences: getCustomerPreferences(state),
+  isFetchingCustomerPreferences: getSubscribeStoreFetchingState(state),
+  isFetchingSocialData: getSocialDataFetchingState(state),
+  isFetchingUserInfoData: getUserInfoFetchingState(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

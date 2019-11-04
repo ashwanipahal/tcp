@@ -178,7 +178,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   handleClickOutside() {
     const { setSearchState, isSearchOpen } = this.props;
-    if (isSearchOpen) {
+    if (isSearchOpen && window.innerWidth > breakpoints.values.lg) {
       setSearchState(false);
     }
   }

@@ -231,7 +231,7 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="profileinfo-email_value"
         color="text.primary"
         component="span"
         dataLocator="profileinfo-email_value"
