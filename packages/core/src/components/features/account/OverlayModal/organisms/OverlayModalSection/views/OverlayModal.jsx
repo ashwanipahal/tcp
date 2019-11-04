@@ -71,7 +71,6 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.removeEventListener('mousedown', this.handleWindowClick);
-      this.body.style['overflow-y'] = 'auto';
     }
     this.resetBodyScrollStyles();
   }
