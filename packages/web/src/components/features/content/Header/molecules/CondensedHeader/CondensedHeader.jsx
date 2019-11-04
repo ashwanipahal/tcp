@@ -5,9 +5,16 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import { getBrand, getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
+import {
+  getBrand,
+  getIconPath,
+  isGymboree,
+  routerPush,
+  getViewportInfo,
+} from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
+import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import style from './CondensedHeader.style';
 import config from '../../config';
@@ -96,6 +103,28 @@ class CondensedHeader extends React.PureComponent {
     }
   };
 
+  getNavigation = () => {
+    const {
+      userName,
+      userPoints,
+      userRewards,
+      closeNavigationDrawer,
+      navigationDrawer,
+    } = this.props;
+    return getViewportInfo().isDesktop ? (
+      <div className="condensed-navigation">
+        <Navigation
+          openNavigationDrawer={navigationDrawer.open}
+          closeNavigationDrawer={!navigationDrawer.open}
+          closeNav={closeNavigationDrawer}
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+        />
+      </div>
+    ) : null;
+  };
+
   render() {
     const {
       className,
@@ -104,6 +133,7 @@ class CondensedHeader extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
+
       labels,
     } = this.props;
     const brand = getBrand();
@@ -156,6 +186,7 @@ class CondensedHeader extends React.PureComponent {
               dataLocator={config[brand].dataLocator}
               imgSrc={config[brand].imgSrc}
             />
+            {this.getNavigation()}
             <div className="condensed-header-icons">
               {isFullSizeSearchModalOpen ? (
                 <Modal
@@ -272,6 +303,8 @@ CondensedHeader.propTypes = {
   openMiniBagDispatch: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
