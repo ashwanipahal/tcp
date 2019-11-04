@@ -61,20 +61,12 @@ const OfferPriceAndBadge3Container = styled.View`
 `;
 
 // Color is hard code as not in the style guide
-const ListPrice = styled.Text`
+const ListOfferPrice = styled.Text`
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-size: ${props => props.theme.typography.fontSizes.fs15};
   color: ${props => props.theme.colorPalette.red[500]};
   line-height: 22;
   font-weight: ${props => props.theme.typography.fontWeights.black};
-`;
-
-const ListOfferPrice = styled.Text`
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs10};
-  color: ${props => props.theme.colorPalette.gray[800]};
-  line-height: 12;
-  text-decoration-line: line-through;
 `;
 
 // Color is hard code as not in the style guide
@@ -119,7 +111,6 @@ export {
   Badge2Text,
   PricesSection,
   OfferPriceAndBadge3Container,
-  ListPrice,
   ListOfferPrice,
   Badge3Text,
   TitleContainer,

@@ -198,8 +198,8 @@ const Styles = css`
           ${colorTheme(props)}
           ${
             props.isGuest && !props.earnedRewardAvailable
-              ? colorTheme(props)
-              : `color: ${props.theme.colorPalette.gray[900]};`
+              ? `color: ${props.theme.colorPalette.gray[900]};`
+              : colorTheme(props)
           }
           @media ${props.theme.mediaQuery.medium} {
             ${fontSize14(props)}
