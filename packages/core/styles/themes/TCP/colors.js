@@ -49,12 +49,12 @@ export default {
   BUTTON: {
     WHITE: {
       NORMAL: '#ffffff',
-      BORDER: '#9B9B9B',
+      BORDER: '#979797',
       HOVER: '#f3f3f3',
       FOCUS: '#d8d8d8',
       ALT_HOVER: '#f2f9fe',
       ALT_FOCUS: '#e2ecf3',
-      TEXT: '#595959',
+      TEXT: '#4a4a4a',
     },
     BLUE: {
       NORMAL: '#2e6a91',

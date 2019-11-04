@@ -77,7 +77,8 @@ const styles = css`
     }
   }
   .applybag-btn {
-    padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+    padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 
