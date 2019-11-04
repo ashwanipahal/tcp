@@ -142,7 +142,7 @@ class PickUpFormPart extends React.Component {
       return onPickupSubmit(params);
     }
     this.setState({ editPickupError: pickUpLabels.editFormSubmitError });
-    return this.editErrorRef && this.editErrorRef.current.scrollIntoView(false);
+    return this.editErrorRef.current && this.editErrorRef.current.scrollIntoView(false);
   };
 
   /**
