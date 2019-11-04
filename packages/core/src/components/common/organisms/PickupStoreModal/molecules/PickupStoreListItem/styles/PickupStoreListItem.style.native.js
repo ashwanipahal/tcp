@@ -12,8 +12,8 @@ export const StoreListItemWrapper = styled.View`
   flex-direction: row;
   border: 1px solid ${props => props.theme.colorPalette.gray['800']};
   padding: 0 15px 12px 10px;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export const FavStoreIcon = styled.View`
