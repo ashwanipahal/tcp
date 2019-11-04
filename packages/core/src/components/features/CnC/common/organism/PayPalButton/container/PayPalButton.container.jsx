@@ -78,7 +78,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
     } = this.props;
     return (
       getPayPalSettings &&
-      getPayPalSettings.paypalInContextToken && (
+      getPayPalSettings.paypalInContextToken ? (
         <PayPalButton
           isQualifedOrder={isQualifedOrder}
           initalizePayPalButton={this.initalizePayPalButton}
@@ -94,6 +94,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
           closeModal={closeModal}
         />
       )
+     : null
     );
   }
 }
