@@ -74,7 +74,9 @@ const AddedToBag = ({
           containerId="paypal-button-container-added-to-bag"
           inheritedStyles={buttonActionStyles}
         />
-        {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
+        <div className="loyaltyAddedToBagWrapper">
+          <LoyaltyBanner pageCategory="isAddedToBagPage" />
+        </div>
         {!isInternationalShipping && <BossBannerView labels={labels} />}
         <div className="continue-shopping">
           <Anchor

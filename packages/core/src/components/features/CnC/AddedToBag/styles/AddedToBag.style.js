@@ -69,6 +69,9 @@ const styles = css`
     text-align: center;
     margin: 24px 0;
   }
+  .loyaltyAddedToBagWrapper {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
 `;
 
 export default styles;
