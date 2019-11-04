@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
 import Heading from '../../../../common/atoms/Heading';
@@ -35,12 +37,8 @@ class BagPageView extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {
-      setVenmoPaymentInProgress,
-      totalCount,
-      sflItems,
-      isShowSaveForLaterSwitch,
-    } = this.props;
+    const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
+    const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
     this.setState({
@@ -155,14 +153,39 @@ class BagPageView extends React.PureComponent {
     return Component;
   };
 
+  renderRecommendations = () => {
+    const { sflItems, orderItemsCount } = this.props;
+    const hideRec = orderItemsCount === 0 && sflItems.size > 0;
+    return (
+      <>
+        {!hideRec ? (
+          <Recommendations
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+            variations="moduleO"
+          />
+        ) : null}
+        {this.renderRecommendationsForRecent()}
+      </>
+    );
+  };
+
+  renderRecommendationsForRecent = () => {
+    const { labels } = this.props;
+    return (
+      <div className="recentlyViewed">
+        <Recommendations
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+          headerLabel={labels.recentlyViewed}
+          variations="moduleO"
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+        />
+      </div>
+    );
+  };
+
   renderLeftSection = () => {
-    const {
-      labels,
-      sflItems,
-      isShowSaveForLaterSwitch,
-      isSflItemRemoved,
-      orderItemsCount,
-    } = this.props;
+    const { labels, sflItems, orderItemsCount } = this.props;
+    const { isShowSaveForLaterSwitch, isSflItemRemoved } = this.props;
     const { activeSection } = this.state;
     const myBag = 'myBag';
     return (
@@ -179,7 +202,6 @@ class BagPageView extends React.PureComponent {
             setHeaderErrorState={this.setHeaderErrorState}
           />
         </div>
-
         {isShowSaveForLaterSwitch &&
           this.wrapSection(
             <div
@@ -205,6 +227,7 @@ class BagPageView extends React.PureComponent {
             </div>,
             orderItemsCount
           )}
+        {this.renderRecommendations()}
       </React.Fragment>
     );
   };
@@ -232,15 +255,8 @@ class BagPageView extends React.PureComponent {
   };
 
   stickyBagCondensedHeader = () => {
-    const {
-      labels,
-      orderBalanceTotal,
-      totalCount,
-      showAddTobag,
-      handleCartCheckout,
-      orderItemsCount,
-      currencySymbol,
-    } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, currencySymbol } = this.props;
+    const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
     return (
@@ -318,25 +334,10 @@ class BagPageView extends React.PureComponent {
   };
 
   render() {
-    const {
-      className,
-      labels,
-      totalCount,
-      orderItemsCount,
-      isUserLoggedIn,
-      isGuest,
-      sflItems,
-      isShowSaveForLaterSwitch,
-      orderBalanceTotal,
-      currencySymbol,
-    } = this.props;
-    const {
-      activeSection,
-      showStickyHeaderMob,
-      showCondensedHeader,
-      headerError,
-      params,
-    } = this.state;
+    const { className, labels, totalCount, orderItemsCount, isUserLoggedIn, isGuest } = this.props;
+    const { sflItems, isShowSaveForLaterSwitch, orderBalanceTotal, currencySymbol } = this.props;
+    const { activeSection, showStickyHeaderMob, showCondensedHeader, headerError } = this.state;
+    const { params } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
@@ -400,8 +401,10 @@ class BagPageView extends React.PureComponent {
               </Col>
             )}
           </Row>
+
           {this.renderHeaderError(headerError, params)}
         </div>
+
         <CnCTemplate
           leftSection={this.renderLeftSection}
           showLeftSection={

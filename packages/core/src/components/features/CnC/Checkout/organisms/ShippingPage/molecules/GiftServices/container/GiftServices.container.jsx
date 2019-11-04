@@ -48,6 +48,7 @@ class GiftServicesContainer extends React.PureComponent {
     if (dispatch) {
       dispatch(change('GiftServices', `brand`, brandName));
       dispatch(change('GiftServices', `optionId`, 'standard'));
+      dispatch(change('GiftServices', `message`, ''));
     }
     this.setState({ brandState: brandName });
   };
