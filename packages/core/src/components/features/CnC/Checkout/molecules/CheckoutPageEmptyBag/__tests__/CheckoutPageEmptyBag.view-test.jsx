@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CheckoutPageEmptyBagVanilla } from '../views/CheckoutPageEmptyBag.view';
 
-describe('CheckoutPageEmptyBag Component', () => {
+describe.only('CheckoutPageEmptyBag Component', () => {
   let component;
   const props = {
     className: 'container',

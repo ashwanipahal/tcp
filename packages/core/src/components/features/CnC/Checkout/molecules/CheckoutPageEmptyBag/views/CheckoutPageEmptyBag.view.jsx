@@ -8,12 +8,12 @@ const CheckoutPageEmptyBag = ({ labels: { emptyBagText, emptyBagSubText } = {}, 
   return (
     <div className={className}>
       <div className="empty-bag-text">
-        <BodyCopy color="gray.900" fontWeight="extrabold" fontFamily="secondary" fontSize="fs22">
+        <BodyCopy color="gray.900" fontWeight="extrabold" fontFamily="secondary">
           {emptyBagText}
         </BodyCopy>
       </div>
       <div className="empty-bag-subtext">
-        <BodyCopy className="small-text" fontFamily="secondary" fontSize="fs14">
+        <BodyCopy className="small-text" fontFamily="secondary">
           {emptyBagSubText}
         </BodyCopy>
       </div>
