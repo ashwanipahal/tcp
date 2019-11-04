@@ -113,7 +113,7 @@ export default css`
   }
 
   .disableBodyScroll {
-    overflow: hidden !important;
+    overflow: hidden;
   }
 
   figure {
