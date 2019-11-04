@@ -53,7 +53,7 @@ const getSpacingStyles = props => {
 
 export const StyledHeading = styled.Text`
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
+  padding: ${props => (props.walletPage ? 0 : props.theme.spacing.ELEM_SPACING.XL)} 0
     ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 

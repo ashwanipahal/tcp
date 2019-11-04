@@ -12,6 +12,7 @@ const BarWrapper = styled.View`
 
 const buttonStyle = {
   marginBottom: 49,
+  marginTop: 10,
 };
 
 export { CouponHeading, BarWrapper, buttonStyle };
