@@ -163,7 +163,7 @@ export const commonStyles = css`
 
   .matchProductBox .matchProductBody ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
 
@@ -196,6 +196,7 @@ export const commonStyles = css`
   li.productBox {
     background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     height: 87px;
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       height: 152px;
     }

@@ -56,6 +56,13 @@ export const setUserCartStores = payload => {
   };
 };
 
+export const setStoreSearchingState = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.SET_STORE_SEARCH_STATE,
+  };
+};
+
 export default {
   togglePickupModal,
   closePickupModal,

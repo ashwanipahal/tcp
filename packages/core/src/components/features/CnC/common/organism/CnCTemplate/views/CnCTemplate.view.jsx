@@ -79,10 +79,10 @@ const CnCTemplate = ({
                 ) : (
                   <>
                     <OrderLedgerContainer
-                      orderLedgerAfterView={orderLedgerAfterView}
+                      orderLedgerAfterView={getBagActions({ BagActions }) || orderLedgerAfterView}
                       pageCategory={pageCategory}
                     />
-                    {getBagActions({ BagActions })}
+
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos

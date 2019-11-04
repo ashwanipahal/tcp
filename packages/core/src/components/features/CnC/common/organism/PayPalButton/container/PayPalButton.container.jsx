@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import PayPalButton from '../organism/PaypalButton';
@@ -12,8 +13,13 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   initalizePayPalButton = data => {
     const apiConfigObj = getAPIConfig();
     const { paypalEnv } = apiConfigObj;
-    console.log('paypalEnv', paypalEnv);
-    const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
+    const {
+      startPaypalCheckout,
+      paypalAuthorizationHandle,
+      clearPaypalSettings,
+      isBillingPage,
+    } = this.props;
+
     const { containerId, height } = data;
     const options = {
       locale: CONSTANTS.PAYPAL_LOCATE,
@@ -30,7 +36,9 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       },
       env: paypalEnv,
       payment: () => {
-        return new Promise((resolve, reject) => startPaypalCheckout({ resolve, reject }));
+        return new Promise((resolve, reject) =>
+          startPaypalCheckout({ resolve, reject, isBillingPage })
+        );
       },
       onAuthorize: paypalAuthorizationHandle,
       onCancel: clearPaypalSettings,
@@ -71,6 +79,14 @@ export const mapDispatchToProps = dispatch => {
       dispatch(getSetIsPaypalPaymentSettings(null));
     },
   };
+};
+
+PayPalButtonContainer.propTypes = {
+  isBillingPage: PropTypes.bool,
+};
+
+PayPalButtonContainer.defaultProps = {
+  isBillingPage: false,
 };
 
 export default withRouter(
