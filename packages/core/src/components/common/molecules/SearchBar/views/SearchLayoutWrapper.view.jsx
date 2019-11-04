@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
@@ -288,7 +288,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                                     <Anchor
                                       noLink
                                       className="suggestion-label"
-                                      to={`/search/${itemData.text}`}
+                                      to={`/${getSiteId()}/search/${itemData.text}`}
                                       onClick={e => {
                                         e.preventDefault();
                                         redirectToSuggestedUrl(`${itemData.text}`);
