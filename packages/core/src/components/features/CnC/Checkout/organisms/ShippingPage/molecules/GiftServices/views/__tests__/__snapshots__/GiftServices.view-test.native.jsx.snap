@@ -132,7 +132,6 @@ exports[`GiftServices component should renders correctly props not present 1`] =
             "isAnimateList": true,
             "itemStyle": null,
             "onValueChange": null,
-            "openDropdownOnLoad": false,
             "selectedItemFontWeight": "semibold",
             "selectedValue": null,
             "variation": "primary",

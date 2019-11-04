@@ -84,7 +84,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "isAnimateList": true,
                 "itemStyle": null,
                 "onValueChange": null,
-                "openDropdownOnLoad": false,
                 "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
@@ -208,7 +207,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "isAnimateList": true,
                 "itemStyle": null,
                 "onValueChange": null,
-                "openDropdownOnLoad": false,
                 "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
@@ -329,7 +327,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "isAnimateList": true,
                 "itemStyle": null,
                 "onValueChange": null,
-                "openDropdownOnLoad": false,
                 "selectedItemFontWeight": "semibold",
                 "selectedValue": null,
                 "variation": "primary",
@@ -624,6 +621,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -652,6 +650,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}

@@ -230,8 +230,6 @@ class DropDown extends React.PureComponent<Props> {
    * Open the drop down
    */
   openDropDown = () => {
-    const { openDropdownOnLoad } = this.props;
-    if (openDropdownOnLoad) return;
     this.setState({
       dropDownIsOpen: true,
     });
