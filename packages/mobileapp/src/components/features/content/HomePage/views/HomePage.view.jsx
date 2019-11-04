@@ -122,13 +122,14 @@ class HomePageView extends React.PureComponent<Props> {
       navigation,
       screenProps: { apiConfig },
       headerPromo,
+      loyaltyPromoBanner,
     } = this.props;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
-        <LoyaltyPromoBanner />
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
