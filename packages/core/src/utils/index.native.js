@@ -24,7 +24,6 @@ export {
   readCookieMobileApp,
   createGoogleMapUrl,
   mapHandler,
-  getCurrentLanguage,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';

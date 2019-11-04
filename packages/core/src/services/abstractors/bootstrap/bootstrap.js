@@ -5,7 +5,7 @@ import headerAbstractor from './header';
 import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
-import { getAPIConfig, isMobileApp, getCurrentLanguage } from '../../../utils';
+import { getAPIConfig, isMobileApp } from '../../../utils';
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
 // import { LABELS } from '../../../reduxStore/constants';
 import CACHED_KEYS from '../../../constants/cache.config';
@@ -158,7 +158,7 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
 const bootstrap = async (pageName = '', modules, cachedData) => {
   const response = {};
   const apiConfig = getAPIConfig();
-  const language = getCurrentLanguage(apiConfig.hostname);
+  const { language } = apiConfig;
   const bootstrapParams = { page: pageName, ...createBootstrapParams(apiConfig, language) };
 
   /**

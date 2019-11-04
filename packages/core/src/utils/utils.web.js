@@ -349,20 +349,8 @@ export const handleGenericKeyDown = (event, key, method) => {
   }
 };
 
-/**
- * This function reads hostname to get language information
- */
-export const getCurrentLanguage = hostname => {
-  const language = hostname && hostname.split('.');
-  if (language && language[0].length === 2) {
-    return language[0];
-  }
-  return 'en';
-};
-
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, hostname) => {
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
-  const language = getCurrentLanguage(hostname);
   const unbxdApiKeyTCP =
     processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_TCP`];
   const unbxdApiKeyGYM =
@@ -479,7 +467,7 @@ export const createAPIConfig = resLocals => {
     apiSiteInfo,
     processEnv,
     countryConfig && countryConfig.countryKey,
-    hostname
+    language
   );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
@@ -649,7 +637,6 @@ export default {
   canUseDOM,
   scrollToParticularElement,
   getDirections,
-  getCurrentLanguage,
   isIosWeb,
   removeBodyScrollLocks,
   enableBodyScroll,

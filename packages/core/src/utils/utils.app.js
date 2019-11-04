@@ -718,7 +718,3 @@ export const getTranslateDateInformation = (date, language) => {
     year: 'YYYY',
   });
 };
-
-export const getCurrentLanguage = () => {
-  return 'en';
-};

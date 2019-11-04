@@ -34,7 +34,6 @@ export {
   getUrlParameter,
   scrollToParticularElement,
   getDirections,
-  getCurrentLanguage,
   enableBodyScroll,
   disableBodyScroll,
   removeBodyScrollLocks,
