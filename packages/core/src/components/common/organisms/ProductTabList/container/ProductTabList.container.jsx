@@ -19,11 +19,11 @@ class ProductTabListContainer extends React.PureComponent {
       tabItems: [item = {}],
     } = this.props;
     const { category = [] } = item;
-    const processedCatId = this.getProcessedCategoryIds(category);
+    const processedCatId = this.getCategoryIds(category);
     this.updateCategoryId(processedCatId);
   }
 
-  getProcessedCategoryIds = catIds => {
+  getCategoryIds = catIds => {
     const processedCatId = [];
     if (catIds.length) {
       catIds.forEach(item => processedCatId.push(item.val || item));
@@ -32,7 +32,7 @@ class ProductTabListContainer extends React.PureComponent {
   };
 
   onTabChange = catId => {
-    const processedCatId = this.getProcessedCategoryIds(catId);
+    const processedCatId = this.getCategoryIds(catId);
     this.updateCategoryId(processedCatId);
   };
 
@@ -65,7 +65,7 @@ class ProductTabListContainer extends React.PureComponent {
         category = {},
         text: { text },
       } = item;
-      const processedCatId = this.getProcessedCategoryIds(category);
+      const processedCatId = this.getCategoryIds(category);
       return { label: text, id: processedCatId };
     });
   };
