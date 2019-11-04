@@ -90,6 +90,47 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex) 
   );
 };
 
+const createTextBanner = (textBanner, l1Index) => {
+  return (
+    textBanner && (
+      <Col
+        className="l2-text-wrapper"
+        colSize={{
+          small: 6,
+          medium: 8,
+          large: 2,
+        }}
+        ignoreNthRule
+      >
+        {textBanner.map(({ link }) => (
+          <React.Fragment>
+            <Anchor
+              className="l2-image-banner-link"
+              to={link.url}
+              title={link.title}
+              dataLocator={`overlay_img_link_${l1Index}`}
+              target={link.target}
+            >
+              <div className="l2-text-container">create Text Div Here</div>
+              <BodyCopy
+                className="l2-nav-link"
+                fontFamily="secondary"
+                fontSize={['fs13', 'fs13', 'fs14']}
+                lineHeight="lh107"
+                color="text.primary"
+                textAlign="right"
+              >
+                <span className="nav-bar-l1-item-label">{link.text}</span>
+                <span className="icon-arrow" />
+              </BodyCopy>
+            </Anchor>
+          </React.Fragment>
+        ))}
+      </Col>
+    )
+  );
+};
+
 const createShopBySize = (shopBySize, hideL2Nav, categoryLayoutColName, colIndex) => {
   const sizes = shopBySize ? shopBySize[0] : {};
   const shopBySizeCol1 = shopBySize ? sizes.linkList.slice(0, 5) : [];
@@ -121,12 +162,13 @@ const createShopBySize = (shopBySize, hideL2Nav, categoryLayoutColName, colIndex
   );
 };
 
-const createShopBySizeCol = (columns, l1Index, hideL2Nav, categoryLayoutColName) => {
-  return columns.map(({ imageBanner, shopBySize }, colIndex) => {
+const createCategoryCol = (columns, l1Index, hideL2Nav, categoryLayoutColName) => {
+  return columns.map(({ imageBanner, shopBySize, textBanner }, colIndex) => {
     return (
       <React.Fragment>
         {createShopBySize(shopBySize, hideL2Nav, categoryLayoutColName, colIndex)}
         {createImgBanner(imageBanner, l1Index, categoryLayoutColName, colIndex)}
+        {createTextBanner(textBanner, l1Index)}
       </React.Fragment>
     );
   });
@@ -134,12 +176,11 @@ const createShopBySizeCol = (columns, l1Index, hideL2Nav, categoryLayoutColName)
 
 const CategoryLayout = props => {
   const { categoryLayout, l1Index, hideL2Nav } = props;
-  console.log(categoryLayout);
   return (
     <React.Fragment>
       {categoryLayout &&
         categoryLayout.map(({ columns, name }) =>
-          createShopBySizeCol(columns, l1Index, hideL2Nav, name)
+          createCategoryCol(columns, l1Index, hideL2Nav, name)
         )}
     </React.Fragment>
   );

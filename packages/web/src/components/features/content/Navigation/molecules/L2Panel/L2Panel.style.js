@@ -60,6 +60,9 @@ export default css`
   .l2-image-banner {
     display: none;
   }
+  .l2-text-wrapper {
+    display: none;
+  }
   .icon-back {
     position: absolute;
     top: 17px;
@@ -242,6 +245,22 @@ export default css`
       }
       span {
         display: inline-block;
+      }
+    }
+    .l2-text-wrapper {
+      display: block;
+      margin-top: 36px;
+    }
+    .l2-text-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 210px;
+      height: 220px;
+      text-align: left;
+      &.l2-half-text-wrapper {
+        height: 89px;
       }
     }
     .sizes-range-background {
