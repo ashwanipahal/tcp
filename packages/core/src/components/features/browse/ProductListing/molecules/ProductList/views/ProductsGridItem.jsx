@@ -414,7 +414,6 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
       viaModule,
       forwardedRef,
-      ...props
     } = this.props;
     logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
@@ -481,7 +480,6 @@ class ProductsGridItem extends React.PureComponent {
         onMouseOut={this.handleCloseAltImages}
         onBlur={this.handleCloseAltImages}
         ref={forwardedRef}
-        {...props}
       >
         <div className="item-container-inner">
           {

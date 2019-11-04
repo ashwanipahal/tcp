@@ -2,7 +2,7 @@
 
 exports[`Module O component renders correctly 1`] = `
 <ul>
-  <Styled(ProductsGridItem)
+  <Styled(Component)
     className="test"
     currencyExchange={
       Array [
