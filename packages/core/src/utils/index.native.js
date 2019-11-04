@@ -63,6 +63,7 @@ export {
   parseBoolean,
   getStyliticsUserName,
   getStyliticsRegion,
+  canUseDOM,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

@@ -113,6 +113,13 @@ const startPaypalCheckout = payload => {
   };
 };
 
+const startPaypalNativeCheckout = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT,
+    payload,
+  };
+};
+
 const paypalAuthorization = payload => {
   return {
     type: BAGPAGE_CONSTANTS.AUTHORIZATION_PAYPAL_CHECKOUT,
@@ -196,6 +203,13 @@ const resetCartReducer = () => {
 
 const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
+const getSetPayPalWebView = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE,
+    payload,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -211,6 +225,7 @@ export default {
   setItemOOS,
   paypalAuthorization,
   startPaypalCheckout,
+  startPaypalNativeCheckout,
   setCartItemsUpdating,
   setItemUnavailable,
   routeForCheckout,
@@ -226,4 +241,5 @@ export default {
   startSflDataMoveToBag,
   setSflItemDeleted,
   resetCartReducer,
+  getSetPayPalWebView,
 };

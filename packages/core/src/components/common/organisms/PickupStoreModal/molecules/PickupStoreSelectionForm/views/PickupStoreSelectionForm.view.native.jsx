@@ -27,10 +27,15 @@ import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 
 class PickupStoreSelectionForm extends React.PureComponent<Props> {
   componentDidMount() {
-    const { onSearch, openRestrictedModalForBopis } = this.props;
-    if (openRestrictedModalForBopis) {
+    const { onSearch, openRestrictedModalForBopis, isSkuResolved } = this.props;
+    if (openRestrictedModalForBopis || isSkuResolved) {
       onSearch();
     }
+  }
+
+  componentDidUpdate() {
+    const { prePopulateZipCodeAndSearch, handleSubmit, change } = this.props;
+    prePopulateZipCodeAndSearch(handleSubmit, change);
   }
 
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
@@ -204,9 +209,12 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       isBossSelected,
       isShowMessage,
       getIsBopisAvailable,
+      isGetUserStoresLoaded,
     } = this.props;
     return (
       !storeLimitReached &&
+      isGetUserStoresLoaded &&
+      preferredStore &&
       prefStoreWithData && (
         <PickupStoreListItem
           sameStore={sameStore}
