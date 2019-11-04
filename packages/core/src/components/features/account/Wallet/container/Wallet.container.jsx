@@ -9,6 +9,7 @@ import {
   getCommonLabels,
   getLabels,
 } from '../../Account/container/Account.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp } from '../../../../../utils/utils';
 
 export class WalletContainer extends React.Component {
@@ -28,13 +29,14 @@ export class WalletContainer extends React.Component {
   };
 
   render() {
-    const { labels, commonLabels, accountLabels, ...props } = this.props;
+    const { labels, commonLabels, accountLabels, isUserLoggedIn, ...props } = this.props;
     const overViewLabels = this.getAccountOverviewLabels(accountLabels);
     return (
       <WalletView
         labels={labels}
         commonLabels={commonLabels}
         overViewLabels={overViewLabels}
+        isUserLoggedIn={isUserLoggedIn}
         {...props}
       />
     );
@@ -46,6 +48,7 @@ export const mapStateToProps = state => {
     labels: getGlobalLabels(state),
     accountLabels: getLabels(state),
     commonLabels: getCommonLabels(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -62,6 +65,7 @@ WalletContainer.propTypes = {
   commonLabels: PropTypes.shape({}),
   accountLabels: PropTypes.shape({}),
   fetchLabels: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
 };
 
 WalletContainer.defaultProps = {
@@ -69,6 +73,7 @@ WalletContainer.defaultProps = {
   commonLabels: {},
   accountLabels: {},
   fetchLabels: () => {},
+  isUserLoggedIn: false,
 };
 
 export default connect(

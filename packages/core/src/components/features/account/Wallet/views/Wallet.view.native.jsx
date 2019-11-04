@@ -19,6 +19,7 @@ import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
 import CustomIcon from '../../../../common/atoms/Icon';
 import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
+import { ViewWithSpacing } from '../../../../common/atoms/styledWrapper/styledWrapper.native';
 
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
 
@@ -37,11 +38,15 @@ class WalletView extends PureComponent {
     });
   };
 
+  renderGuestLinks = () => {
+    return <></>;
+  };
+
   renderFooterLinks = overViewLabels => {
     const { navigation } = this.props;
     const { applyCard } = this.state;
     return (
-      <>
+      <ViewWithSpacing spacingStyles="margin-top-MED">
         <TouchabelContainer onPress={this.toggleApplyNowModal}>
           <FavoritesWrapper>
             <ImageContainer>
@@ -90,7 +95,7 @@ class WalletView extends PureComponent {
           title={getLabelValue(overViewLabels, 'lbl_overview_refer_friend')}
           isVariationTypeLink
         />
-      </>
+      </ViewWithSpacing>
     );
   };
 
@@ -124,6 +129,7 @@ class WalletView extends PureComponent {
               {this.renderFooterLinks(overViewLabels)}
             </WalletLayout>
           )}
+          {!isUserLoggedIn && this.renderGuestLinks()}
         </ScrollView>
       </View>
     );

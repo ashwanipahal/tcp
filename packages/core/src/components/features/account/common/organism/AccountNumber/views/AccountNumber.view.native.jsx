@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import { View, Platform, Linking } from 'react-native';
 import PropTypes from 'prop-types';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { getLabelValue } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import {
+  ViewWithSpacing,
+  BodyCopyWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
 import { CouponHeading, BarWrapper, buttonStyle } from '../styles/AccountNumber.style.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
@@ -39,18 +42,25 @@ class AccountNumber extends PureComponent {
   };
 
   render() {
-    // const { myPlaceNumber } = this.props;
-    const myPlaceNumber = '34234324324';
+    const { myPlaceNumber, labels } = this.props;
     const { toggleArrowDown } = this.state;
+    const url =
+      'https://mp.vibescm.com/p/s5i4q0?unique_identifier=9ebcd5fc-4311-4963-83cc-27c0928deb7b';
+
     return (
       <View>
         <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-LRG">
           <CouponHeading>
-            <BodyCopy
+            <BodyCopyWithSpacing
               fontFamily="secondary"
               fontSize="fs16"
               fontWeight="black"
-              text="Show My Account Number"
+              text={
+                toggleArrowDown
+                  ? getLabelValue(labels, 'lbl_overview_show_account_number')
+                  : getLabelValue(labels, 'lbl_overview_hide_account_number')
+              }
+              spacingStyles="margin-bottom-XS"
             />
             <CustomIcon
               name={toggleArrowDown ? ICON_NAME.chevronDown : ICON_NAME.chevronUp}
@@ -67,13 +77,13 @@ class AccountNumber extends PureComponent {
                 <CustomButton
                   color={colorPallete.white}
                   fill="BLUE"
-                  text={Platform.OS === 'ios' ? 'ADD TO APPLE WALLET' : 'ADD TO GOOGLE PLAY'}
-                  customStyle={buttonStyle}
-                  onPress={() =>
-                    this.addToWalletHandler(
-                      'https://mp.vibescm.com/p/s5i4q0?unique_identifier=9ebcd5fc-4311-4963-83cc-27c0928deb7b'
-                    )
+                  text={
+                    Platform.OS === 'ios'
+                      ? getLabelValue(labels, 'lbl_overview_add_to_apple_wallet')
+                      : getLabelValue(labels, 'lbl_overview_add_to_google_pay')
                   }
+                  customStyle={buttonStyle}
+                  onPress={() => this.addToWalletHandler(url)}
                 />
               </>
             )}
@@ -86,13 +96,11 @@ class AccountNumber extends PureComponent {
 
 AccountNumber.propTypes = {
   labels: PropTypes.shape({}),
-  commonLabels: PropTypes.shape({}),
   myPlaceNumber: PropTypes.string,
 };
 
 AccountNumber.defaultProps = {
   labels: {},
-  commonLabels: {},
   myPlaceNumber: '',
 };
 
