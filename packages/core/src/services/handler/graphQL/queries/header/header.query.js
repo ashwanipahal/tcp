@@ -45,6 +45,20 @@ const buildQuery = ({ type, brand, country, channel }) => `
         }
       }
 
+      loyaltyPromoBannerWrapper {
+        composites {
+          loyaltyPromoBanner {
+            link {
+              url
+              title
+              target
+            }
+            richText {
+              text
+            }
+          }
+        }
+      }
     }
   }
 `;
