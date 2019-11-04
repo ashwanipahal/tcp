@@ -158,7 +158,6 @@ class PickUpFormPart extends React.Component {
   render() {
     const {
       isGuest,
-      isMobile,
       pickupError,
       isUsSite,
       pickUpLabels,
@@ -222,7 +221,6 @@ class PickUpFormPart extends React.Component {
                           dispatch={dispatch}
                           labels={pickUpLabels}
                           handleSubmit={handleSubmit}
-                          isMobile={isMobile}
                           isEditing={isEditing}
                           className="pickup-contact-guest-form"
                           showPhoneNumber
@@ -323,7 +321,7 @@ class PickUpFormPart extends React.Component {
                 btnText={pickUpLabels.nextToBilling}
                 routeToPage="ShippingPage"
                 isGuest={isGuest}
-                onPress={handleSubmit(this.pickupSubmit)}
+                onPress={e => !isEditing && handleSubmit(this.pickupSubmit)(e)}
                 pageCategory="pickupPage"
                 showAccordian
               />
@@ -339,7 +337,6 @@ class PickUpFormPart extends React.Component {
 
 PickUpFormPart.propTypes = {
   isGuest: PropTypes.bool,
-  isMobile: PropTypes.bool,
   isUsSite: PropTypes.bool,
   isSmsUpdatesEnabled: PropTypes.bool,
   isOrderUpdateChecked: PropTypes.bool,
@@ -362,7 +359,6 @@ PickUpFormPart.propTypes = {
 
 PickUpFormPart.defaultProps = {
   isGuest: true,
-  isMobile: false,
   isUsSite: false,
   isSmsUpdatesEnabled: false,
   isOrderUpdateChecked: false,

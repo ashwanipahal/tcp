@@ -8,11 +8,9 @@ import ContactFormFields from '../../ContactFormFields';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
-import Modal from '../../../../../../common/molecules/Modal';
 import Button from '../../../../../../common/atoms/Button';
 import {
   Style,
-  ModalContainer,
   PickupEditHeader,
   EditAnchor,
 } from '../styles/PickupMainContactEditForm.style.native';
@@ -73,8 +71,7 @@ class PickupMainContactEditForm extends React.Component {
   };
 
   render() {
-    const { isMobile, formData, isEditing, labels, isReset, handleExitEditModeClick } = this.props;
-    const headerIconStyle = { position: 'absolute', top: -2, left: -50 };
+    const { formData, isEditing, labels, isReset } = this.props;
     if (isReset) {
       const { dispatch } = this.props;
       dispatch(resetSection('checkoutPickup', 'pickUpContact'));
@@ -83,24 +80,11 @@ class PickupMainContactEditForm extends React.Component {
       <View>
         {this.renderSectionTitle()}
         {!isEditing && <PickUpContactDisplay formData={formData} />}
-        {isEditing && isMobile && (
-          <Modal
-            isOpen={isEditing}
-            onRequestClose={handleExitEditModeClick}
-            heading={labels.titleEditPickup}
-            horizontalBar={false}
-            headingAlign="center"
-            fullWidth
-            headerStyle={headerIconStyle}
-            iconType="arrow"
-            headingFontWeight="semibold"
-            fontSize="fs12"
-          >
-            <ModalContainer>
-              <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
-              {this.SaveButton()}
-            </ModalContainer>
-          </Modal>
+        {isEditing && (
+          <>
+            <ContactFormFields className="pick-up-input toggle" showPhoneNumber labels={labels} />
+            {this.SaveButton()}
+          </>
         )}
       </View>
     );
