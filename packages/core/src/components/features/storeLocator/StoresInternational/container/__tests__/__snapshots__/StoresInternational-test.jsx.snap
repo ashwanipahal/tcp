@@ -211,11 +211,11 @@ exports[`StoresInternational component StoresInternational component renders cor
           "WHITE": Object {
             "ALT_FOCUS": "#e2ecf3",
             "ALT_HOVER": "#f2f9fe",
-            "BORDER": "#9B9B9B",
+            "BORDER": "#979797",
             "FOCUS": "#d8d8d8",
             "HOVER": "#f3f3f3",
             "NORMAL": "#ffffff",
-            "TEXT": "#595959",
+            "TEXT": "#4a4a4a",
           },
         },
         "BUTTON_HOVER": "rgba(24, 24, 24, 0.8)",
