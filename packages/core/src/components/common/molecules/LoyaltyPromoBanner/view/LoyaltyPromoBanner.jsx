@@ -59,8 +59,12 @@ const LoyaltyPromoBanner = props => {
           >
             <RichText richTextHtml={richText.text} />
           </Anchor>
-          <button className="loyalty-promo-close-btn" onClick={closeButtonHandler}>
-            <svg className="loyalty-promo-close-btn-icon" viewBox="0 0 25 25">
+          <button
+            aria-label="close"
+            className="loyalty-promo-close-btn"
+            onClick={closeButtonHandler}
+          >
+            <svg className="loyalty-promo-close-btn-icon" viewBox="0 0 25 25" aria-hidden="true">
               <path
                 fill="#a0a0a0"
                 fillRule="nonzero"
