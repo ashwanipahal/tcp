@@ -28,6 +28,13 @@ export const setModalState = payload => {
   };
 };
 
+export const setLoadingState = payload => {
+  return {
+    payload,
+    type: QUICK_VIEW_CONSTANTS.SET_LOADING_STATE,
+  };
+};
+
 export const closeQuickViewModal = payload => {
   return {
     payload,

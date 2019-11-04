@@ -14,32 +14,37 @@ class PasswordRequirement extends PureComponent<Props> {
 
   keysLabelsMap = labels => {
     const passwordRequirementLabelKeys = this.getPasswordRequirementLabels(labels);
+    const { alignCenter } = this.props;
     return passwordRequirementLabelKeys.map(labelKey => (
       <BodyCopy
-        textAlign="start"
+        textAlign={alignCenter ? 'center' : 'start'}
         style={toolTipStyle}
+        fontFamily="secondary"
         key={labelKey}
         text={`-${labels[labelKey]}`}
+        fontSize={alignCenter ? 'fs10' : 'fs14'}
       />
     ));
   };
 
   render() {
-    const { labels } = this.props;
+    const { labels, alignCenter } = this.props;
     return (
       <>
         <BodyCopyWithSpacing
-          textAlign="left"
+          textAlign={alignCenter ? 'center' : 'left'}
           fontFamily="secondary"
-          fontSize="fs14"
+          fontSize={alignCenter ? 'fs12' : 'fs14'}
           fontWeight="regular"
           text={getLabelValue(labels, 'lbl_resetPassword_requirementHeading')}
           spacingStyles="margin-top-SM margin-bottom-SM"
         />
         {this.keysLabelsMap(labels)}
         <BodyCopyWithSpacing
-          textAlign="start"
+          textAlign={alignCenter ? 'center' : 'start'}
           style={toolTipStyle}
+          fontFamily="secondary"
+          fontSize={alignCenter ? 'fs10' : 'fs14'}
           text={getLabelValue(labels, 'lbl_resetPassword_requirementNote')}
           spacingStyles="margin-top-SM"
         />
@@ -50,6 +55,11 @@ class PasswordRequirement extends PureComponent<Props> {
 
 PasswordRequirement.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  alignCenter: PropTypes.bool,
+};
+
+PasswordRequirement.defaultProps = {
+  alignCenter: false,
 };
 
 export default PasswordRequirement;

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Anchor from '../../../atoms/Anchor';
 import Button from '../../../atoms/Button';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/FullfillmentSection.style';
@@ -33,18 +34,24 @@ class FulfillmentSection extends React.Component {
   }
 
   render() {
-    const { className, buttonLabel, dataLocator, btnClassName } = this.props;
+    const { className, buttonLabel, dataLocator, btnClassName, isAnchor, title } = this.props;
     return (
       <React.Fragment>
-        <Button
-          className={`${className} ${btnClassName} fulfillment-section`}
-          fullWidth
-          buttonVariation="fixed-width"
-          onClick={this.pickupOpenClick}
-          dataLocator={dataLocator}
-        >
-          {'Pick Up In Store'}
-        </Button>
+        {!isAnchor ? (
+          <Button
+            className={`${className} ${btnClassName} fulfillment-section`}
+            fullWidth
+            buttonVariation="fixed-width"
+            onClick={this.pickupOpenClick}
+            dataLocator={dataLocator}
+          >
+            {'Pick Up In Store'}
+          </Button>
+        ) : (
+          <Anchor noLink handleLinkClick={this.pickupOpenClick} title={title}>
+            {title}
+          </Anchor>
+        )}
       </React.Fragment>
     );
   }

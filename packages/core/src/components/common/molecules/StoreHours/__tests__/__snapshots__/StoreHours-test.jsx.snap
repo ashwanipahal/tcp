@@ -4810,6 +4810,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   aria-expanded={true}
                   className="collapsible-header"
                   onClick={[Function]}
+                  type="button"
                 >
                   <Styled(Image)
                     className="collapsible-icon"
@@ -9008,6 +9009,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   aria-expanded={true}
                   className="collapsible-header"
                   onClick={[Function]}
+                  type="button"
                 >
                   <Styled(Image)
                     className="collapsible-icon"

@@ -62,8 +62,6 @@ export {
   getModifiedLanguageCode,
   generateTraceId,
   parseBoolean,
-  enableBodyScroll,
-  disableBodyScroll,
   getStyliticsUserName,
   getStyliticsRegion,
 } from './utils';

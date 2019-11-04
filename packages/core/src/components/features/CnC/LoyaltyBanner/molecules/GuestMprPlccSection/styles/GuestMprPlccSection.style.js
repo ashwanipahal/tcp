@@ -118,7 +118,9 @@ const Styles = css`
   }
   .current-subtotal-val-col,
   .estimated-subtotal-val-col {
-    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
   .current-subtotal-text {
     color: ${props => props.theme.colorPalette.gray[800]};
@@ -193,8 +195,9 @@ const Styles = css`
         .heading-val {
           ${paddingTopSm(props)}
           ${fontSize16(props)}
+          ${colorTheme(props)}
           ${
-            props.earnedRewardAvailable
+            props.isGuest && !props.earnedRewardAvailable
               ? colorTheme(props)
               : `color: ${props.theme.colorPalette.gray[900]};`
           }
@@ -210,10 +213,10 @@ const Styles = css`
           ${fontSize12(props)}
           color: ${props.theme.colorPalette.gray[900]};
           @media ${props.theme.mediaQuery.medium} {
-            ${fontSize10(props)}
+            ${fontSize12(props)}
           }
           @media ${props.theme.mediaQuery.large} {
-            ${fontSize16(props)}
+            ${fontSize18(props)}
           }
         }
       `
@@ -236,11 +239,23 @@ const Styles = css`
           ${paddingTopSm(props)}
           ${fontSize12(props)}
           color: ${props.theme.colorPalette.gray[900]};
+          ${!props.isGuest &&
+            !props.isPlcc &&
+            `${colorTheme(props)}
+            ${fontSize16(props)}`}
           @media ${props.theme.mediaQuery.medium} {
             ${fontSize12(props)}
+            ${!props.isGuest &&
+              !props.isPlcc &&
+              `${colorTheme(props)}
+              ${fontSize16(props)}`}
           }
           @media ${props.theme.mediaQuery.large} {
             ${fontSize12(props)}
+            ${!props.isGuest &&
+              !props.isPlcc &&
+              `${colorTheme(props)}
+              ${fontSize16(props)}`}
           }
         }
         .description-val {

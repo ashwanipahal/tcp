@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 
 import moment from 'moment';
+
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -535,7 +536,7 @@ export const formatPhone = (phoneNum, hyphenFormat) => {
 
 export const getSiteId = () => {
   const paths = window.location.pathname.split('/', 2);
-  return paths[1] || '';
+  return paths[1];
 };
 // eslint-disable-next-line
 export const parseStoreHours = hoursOfOperation => {
@@ -979,16 +980,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
   WCS store image path to DAM image for Gymboree
   MUST BE REVERTED
  */
-export const changeImageURLToDOM = (img, cropParams) => {
-  let imageUrl = img;
-  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
-    const imgArr = imageUrl.split('/');
-    const productPartId = imgArr.slice(-1);
-    const productArr = productPartId[0].split('_');
-    const productId = productArr[0];
-    imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
-  }
-  return imageUrl;
+export const changeImageURLToDOM = (imgPath, cropParams) => {
+  const brandName = getBrand();
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+  return `${assetHost}/${cropParams}/${productAssetPath}/${imgPath}`;
 };
 
 /**
@@ -1002,26 +1000,6 @@ export const changeImageURLToDOM = (img, cropParams) => {
  */
 export const insertIntoString = (string, idx, rem, str) => {
   return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
-};
-
-/**
- * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
- */
-export const enableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.remove('disableBodyScroll');
-  }
-};
-
-/**
- * Disable Body Scroll
- */
-export const disableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.add('disableBodyScroll');
-  }
 };
 
 export const getStyliticsUserName = () => {

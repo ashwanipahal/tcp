@@ -157,7 +157,7 @@ class OverlayModal extends React.Component {
    */
   resetBodyScrollStyles = () => {
     this.bodyContainer.style.height = '';
-    this.bodyContainer.style.overflow = 'auto';
+    this.bodyContainer.style.overflow = '';
   };
 
   handleWindowClick(e) {

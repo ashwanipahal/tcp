@@ -4,14 +4,17 @@ import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor/views/Anchor';
 import styles from '../styles/AccountOverviewTile.style';
+import ApplyNowModal from '../../ApplyNowPLCCModal';
 
 export const AccountOverviewTile = ({
   title,
   ctaTitle,
   ctaLink,
   ctaPath,
+  target,
   children,
   className,
+  linkClick,
   dataLocatorPrefix,
 }) => {
   return (
@@ -33,17 +36,20 @@ export const AccountOverviewTile = ({
         <Anchor
           to={ctaLink}
           asPath={ctaPath}
+          onClick={linkClick}
           anchorVariation="button"
           buttonVariation="fixed-width"
           fullWidth
           fill="BLUE"
           centered
           className="elem-mb-SM"
+          target={target}
           dataLocator={`accountoverview-${dataLocatorPrefix}-viewallcta`}
         >
           {ctaTitle}
         </Anchor>
       </BodyCopy>
+      <ApplyNowModal noLink step={2} />
     </BodyCopy>
   );
 };
@@ -56,6 +62,8 @@ AccountOverviewTile.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   dataLocatorPrefix: PropTypes.string,
+  target: PropTypes.string,
+  linkClick: PropTypes.func,
 };
 
 AccountOverviewTile.defaultProps = {
@@ -65,6 +73,8 @@ AccountOverviewTile.defaultProps = {
   ctaPath: '',
   className: '',
   dataLocatorPrefix: '',
+  target: '_self',
+  linkClick: () => {},
 };
 
 export default withStyles(AccountOverviewTile, styles);

@@ -35,6 +35,9 @@ export {
   scrollToParticularElement,
   getDirections,
   getCurrentLanguage,
+  enableBodyScroll,
+  disableBodyScroll,
+  removeBodyScrollLocks,
 } from './utils.web';
 
 export {
@@ -78,8 +81,6 @@ export {
   getTranslateDateInformation,
   stringify,
   generateTraceId,
-  enableBodyScroll,
-  disableBodyScroll,
   readCookieMobileApp,
   getStyliticsUserName,
   getStyliticsRegion,

@@ -38,6 +38,7 @@ class LookingForProductDetail extends React.PureComponent {
                     <Anchor
                       className="suggestion-label"
                       noLink
+                      to={`${item.productUrl}`}
                       onClick={e => {
                         e.preventDefault();
                         this.redirectToProductUrl(`${item.productUrl}`);
