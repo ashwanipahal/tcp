@@ -1,10 +1,9 @@
-const buildQuery = ({ path, brand, country, channel, lang }) => `
+const buildQuery = ({ path, brand, country, channel }) => `
   ${path}: pageByPath(
     path: "/${path}",
     brand: "${brand}",
     country: "${country}",
-    channel: "${channel}",
-    lang: "${lang}"
+    channel: "${channel}"
   ) {
     items {
       path

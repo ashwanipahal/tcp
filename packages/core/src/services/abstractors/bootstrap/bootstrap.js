@@ -97,8 +97,7 @@ const fetchBootstrapData = async (
 /**
  * Generate base bootstrap parameters
  */
-const createBootstrapParams = () => {
-  const apiConfig = getAPIConfig();
+const createBootstrapParams = (apiConfig, language) => {
   const channelName = isMobileApp() ? MobileChannel : defaultChannel;
   return {
     labels: {
@@ -109,7 +108,7 @@ const createBootstrapParams = () => {
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
-    lang: getCurrentLanguage(apiConfig.hostname),
+    lang: language,
   };
 };
 
@@ -158,8 +157,9 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  */
 const bootstrap = async (pageName = '', modules, cachedData) => {
   const response = {};
-
-  const bootstrapParams = { page: pageName, ...createBootstrapParams() };
+  const apiConfig = getAPIConfig();
+  const language = getCurrentLanguage(apiConfig.hostname);
+  const bootstrapParams = { page: pageName, ...createBootstrapParams(apiConfig, language) };
 
   /**
    * Config Responsible for making all the http requests that need to be resolved before loading the application
@@ -185,7 +185,8 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
         response.modules =
           bootstrapData[pageName] &&
           (await layoutAbstractor.getModulesFromLayout(
-            retrieveCachedData({ ...fetchCachedDataParams, key: pageName })
+            retrieveCachedData({ ...fetchCachedDataParams, key: pageName }),
+            language
           ));
         logger.info('Modules Query Executed Successfully');
         logger.debug('Modules Query Result: ', response.modules);
