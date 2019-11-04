@@ -62,6 +62,7 @@ const SearchListingView = ({
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductListingFiltersForm
+            isFilterBy={products && products.length > 1}
             filtersMaps={filters}
             totalProductsCount={totalProductsCount}
             initialValues={initialValues}
