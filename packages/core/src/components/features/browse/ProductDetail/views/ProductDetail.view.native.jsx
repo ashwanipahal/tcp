@@ -105,7 +105,6 @@ class ProductDetailView extends React.PureComponent {
         isFullSet: true,
       });
     }
-
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
@@ -134,6 +133,7 @@ class ProductDetailView extends React.PureComponent {
             currencySymbol={currency}
             currencyExchange={currencyExchange}
             isGiftCard={currentProduct.isGiftCard}
+            pdpLabels={pdpLabels}
           />
 
           <ProductAddToBagContainer

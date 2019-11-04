@@ -27,6 +27,7 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
         lbl_orderledger_total: totalLabel,
+        lbl_recently_viewed: recentlyViewed,
       } = {},
     } = {},
     global: {
@@ -74,6 +75,7 @@ const getBagPageLabels = state => {
     sflSuccess,
     sflDeleteSuccess,
     totalLabel,
+    recentlyViewed,
   };
 };
 
@@ -83,6 +85,10 @@ const getTotalItems = state => {
 
 const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
+};
+
+const getIsPayPalEnabled = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
 };
 
 const getConfirmationModalFlag = state => {
@@ -246,5 +252,6 @@ export default {
   checkoutIfItemIsUnqualified,
   getCurrentDeleteSelectedItemInfo,
   itemDeleteModalLabels,
+  getIsPayPalEnabled,
   getBagStickyHeaderInterval,
 };

@@ -174,7 +174,6 @@ class PickUpFormPart extends React.Component {
     const {
       className,
       isGuest,
-      isMobile,
       pickupError,
       isUsSite,
       pickUpLabels,
@@ -226,7 +225,6 @@ class PickUpFormPart extends React.Component {
                   dispatch={dispatch}
                   labels={pickUpLabels}
                   handleSubmit={handleSubmit}
-                  isMobile={isMobile}
                   isEditing={isEditing}
                   className="pickup-contact-guest-form"
                   showPhoneNumber
@@ -308,7 +306,7 @@ class PickUpFormPart extends React.Component {
               />
             </FormSection>
           </div>
-          {isEditing && !isMobile && this.SaveAndCancelButton()}
+          {isEditing && this.SaveAndCancelButton()}
         </div>
         <CheckoutOrderInfo
           isGuest={isGuest}
@@ -331,7 +329,6 @@ class PickUpFormPart extends React.Component {
 PickUpFormPart.propTypes = {
   className: PropTypes.string,
   isGuest: PropTypes.bool,
-  isMobile: PropTypes.bool,
   isUsSite: PropTypes.bool,
   isSmsUpdatesEnabled: PropTypes.bool,
   isOrderUpdateChecked: PropTypes.bool,
@@ -356,7 +353,6 @@ PickUpFormPart.propTypes = {
 PickUpFormPart.defaultProps = {
   className: '',
   isGuest: false,
-  isMobile: false,
   isUsSite: false,
   isSmsUpdatesEnabled: false,
   isOrderUpdateChecked: false,

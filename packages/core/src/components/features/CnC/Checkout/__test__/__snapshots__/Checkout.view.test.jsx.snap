@@ -8,6 +8,7 @@ exports[`CheckoutPageVanilla component should renders correctly pickup 1`] = `
   marginTop={true}
   orderLedgerAfterView={false}
   pageCategory="pickup"
+  showLeftSection={false}
 />
 `;
 
@@ -19,5 +20,6 @@ exports[`CheckoutPageVanilla component should renders correctly with shipping 1`
   marginTop={true}
   orderLedgerAfterView={false}
   pageCategory="shipping"
+  showLeftSection={false}
 />
 `;

@@ -134,6 +134,7 @@ const DateInput = css`
 
     &:after {
       top: -10px;
+      box-shadow: 0 0 4px 2px rgba(163, 162, 162, 0.31);
     }
   }
 `;
