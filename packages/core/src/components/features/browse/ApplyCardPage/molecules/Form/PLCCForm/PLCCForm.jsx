@@ -116,7 +116,7 @@ class PLCCForm extends React.PureComponent {
       this.setState({
         isIdleModalActive: true,
       });
-    }, 13 * 60 * 1000);
+    }, 1 * 60 * 1000);
   };
 
   /**

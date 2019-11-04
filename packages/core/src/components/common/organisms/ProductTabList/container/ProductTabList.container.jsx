@@ -18,12 +18,25 @@ class ProductTabListContainer extends React.PureComponent {
     const {
       tabItems: [item = {}],
     } = this.props;
-    const { category: { cat_id: catId } = {} } = item;
-    this.updateCategoryId(catId);
+    debugger;
+    const { category = [] } = item;
+    debugger;
+    const processedCatId = this.getProcessedCategoryIds(category);
+    this.updateCategoryId(processedCatId);
+  }
+
+  getProcessedCategoryIds = (catIds) => {
+    debugger;
+    const processedCatId = [];
+    if(catIds.length) {
+      catIds.forEach(item => processedCatId.push(item.val || item)); 
+    }
+    return processedCatId;
   }
 
   onTabChange = catId => {
-    this.updateCategoryId(catId);
+    const processedCatId = this.getProcessedCategoryIds(catId);
+    this.updateCategoryId(processedCatId);
   };
 
   /* Create a map of category Ids with the items.  */
@@ -50,12 +63,14 @@ class ProductTabListContainer extends React.PureComponent {
     which is being used in the ProductTabList view.
   */
   getButtonTabItems = tabItems => {
+    debugger;
     return tabItems.map(item => {
       const {
-        category: { cat_id: catId } = {},
+        category = {},
         text: { text },
       } = item;
-      return { label: text, id: catId };
+      const processedCatId = this.getProcessedCategoryIds(category);
+      return { label: text, id: processedCatId };
     });
   };
 
@@ -80,6 +95,7 @@ class ProductTabListContainer extends React.PureComponent {
 
   render() {
     const { selectedCategoryId } = this.state;
+    debugger;
     const { tabItems, dataLocator, style } = this.props;
     const buttonTabItems = this.getButtonTabItems(tabItems);
 

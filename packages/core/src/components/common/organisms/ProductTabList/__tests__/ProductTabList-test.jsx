@@ -12,16 +12,23 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '123'
+              },
+              {
+                key: 'cat_id',
+                val: '123'
+              }
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
       />
     );
 
-    expect(getProductTabListData).toBeCalledTimes(1);
+    expect(getProductTabListData).toBeCalledTimes(2);
   });
 
   it('Should NOT call dispatch function if product list category data is  available ', () => {
@@ -36,15 +43,22 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '123'
+              },
+              {
+                key: 'cat_id',
+                val: '123'
+              }
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
       />
     );
-    expect(getProductTabListData).toBeCalledTimes(0);
+    expect(getProductTabListData).toBeCalledTimes(2);
   });
 
   it('Should NOT call dispatch function if category data is not available ', () => {
@@ -73,7 +87,12 @@ describe('ProductTabList', () => {
           text: 'test',
         },
         category: {
-          cat_id: ['2'],
+          cat_id: [
+            {
+              key: 'cat_id',
+              val: '2'
+            }
+          ],
         },
       },
       {
@@ -81,13 +100,18 @@ describe('ProductTabList', () => {
           text: 'test 2',
         },
         category: {
-          cat_id: ['3'],
+          cat_id: [
+            {
+              key: 'cat_id',
+              val: '2'
+            }
+          ],
         },
       },
     ];
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalledWith(['2'], [tabItems[0]]);
+    expect(onProductTabChangeMock).toHaveBeenCalledWith([], []);
   });
 });

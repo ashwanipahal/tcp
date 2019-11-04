@@ -38,7 +38,8 @@ const buildQuery = ({ slot, contentId }) => `
          text
        }
        category{
-         cat_id
+         key
+         val
        }
        singleCTAButton {
          url

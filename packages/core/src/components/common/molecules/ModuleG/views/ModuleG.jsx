@@ -21,6 +21,7 @@ import {
 } from '../../../../../utils';
 import config from '../config';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
+import ProductTabListActions from '../../../organisms/ProductTabList/container/ProductTabList.actions';
 
 class ModuleG extends React.PureComponent {
   constructor(props) {
@@ -49,6 +50,14 @@ class ModuleG extends React.PureComponent {
     return [];
   };
 
+  getProcessedCategoryIds = (catIds) => {
+    const processedCatId = [];
+    if(catIds.length) {
+      catIds.forEach(item => processedCatId.push(item.val || item)); 
+    }
+    return processedCatId;
+  }
+
   onAddToBagClick = () => {
     const { onQuickViewOpenClick } = this.props;
     const { next } = this.state;
@@ -63,15 +72,35 @@ class ModuleG extends React.PureComponent {
     ]);
   };
 
+  getProcessedCategoryIds = (catIds) => {
+    const processedCatId = [];
+    if(catIds.length) {
+      catIds.forEach(item => processedCatId.push(item.val || item)); 
+    }
+    return processedCatId;
+  }
+
   getCurrentCtaButton = () => {
+    debugger;
     const { currentCatId, next } = this.state;
     const { divTabs, productTabList } = this.props;
     let currentSingleCTAButton = {};
-    divTabs.forEach(tab => {
-      if (JSON.stringify(tab.category.cat_id) === JSON.stringify(currentCatId)) {
+
+    const processedDivTabs = Object.assign([], divTabs);
+    const tabs = {};
+    processedDivTabs.forEach((tab, index) => {
+      debugger;
+      const tabList = tab.category.map(cat => cat.val);
+      tabs[index] = tabList;
+    });
+
+    divTabs.forEach((tab, index) => {
+      debugger;
+      if (JSON.stringify(tabs[index]) === JSON.stringify(currentCatId)) {
         currentSingleCTAButton = tab.singleCTAButtonCart;
       }
     });
+
     let productExists = false;
     if (currentCatId.length) {
       currentCatId.forEach(id => {
@@ -97,7 +126,7 @@ class ModuleG extends React.PureComponent {
               buttonVariation="fixed-width"
               className="cta-btn"
             >
-              add to bag
+              {currentSingleCTAButton.title}
             </Button>
           </Col>
         </Row>
@@ -171,6 +200,7 @@ class ModuleG extends React.PureComponent {
   };
 
   renderCarousel = (type, currentCatId) => {
+    debugger;
     const { productTabList } = this.props;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let data = productTabList[currentCatId] || [];
@@ -250,6 +280,7 @@ class ModuleG extends React.PureComponent {
       // layout,
       divTabs,
     } = this.props;
+    debugger;
     const { CAROUSEL_OPTIONS } = config;
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ next });
