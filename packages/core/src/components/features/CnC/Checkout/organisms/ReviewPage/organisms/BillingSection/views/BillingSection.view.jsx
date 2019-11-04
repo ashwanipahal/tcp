@@ -57,6 +57,7 @@ export class BillingSection extends PureComponent {
     return (
       isExpressCheckout &&
       card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD &&
+      card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PAYPAL &&
       !isBillingVisited && (
         <Col colSize={{ small: 3, medium: 2, large: 2 }} className="cvvCode">
           <Field
