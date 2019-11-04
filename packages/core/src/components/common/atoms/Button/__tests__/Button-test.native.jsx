@@ -17,7 +17,7 @@ describe('CustomButton', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should return abc component value one', () => {
+  it('should return styled TouchableOpacity component value one', () => {
     expect(component.find('Styled(TouchableOpacity)')).toHaveLength(1);
   });
 });

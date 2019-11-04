@@ -59,6 +59,7 @@ class ProductList extends React.PureComponent {
       onQuickViewOpenClick,
       isFavorite,
       setLastDeletedItemId,
+      labelsPlpTiles,
     } = this.props;
     const { item } = itemData;
 
@@ -94,6 +95,7 @@ class ProductList extends React.PureComponent {
         onQuickViewOpenClick={onQuickViewOpenClick}
         isFavorite={isFavorite}
         setLastDeletedItemId={setLastDeletedItemId}
+        labelsPlpTiles={labelsPlpTiles}
       />
     );
   };
@@ -226,6 +228,7 @@ ProductList.propTypes = {
   setListRef: PropTypes.func,
   isFavorite: PropTypes.bool,
   setLastDeletedItemId: PropTypes.func.isRequired,
+  labelsPlpTiles: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -251,6 +254,7 @@ ProductList.defaultProps = {
   isPlcc: false,
   currencySymbol: '$',
   isFavorite: false,
+  labelsPlpTiles: {},
 };
 
 export default withStyles(ProductList, styles);
