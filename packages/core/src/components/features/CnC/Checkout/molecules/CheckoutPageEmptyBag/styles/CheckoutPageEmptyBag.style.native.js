@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 const EmptyBagContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   color: ${props => props.theme.colors.BLACK};
-  font-size: ${props => props.theme.typography.fontSizes.fs18};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
 `;
