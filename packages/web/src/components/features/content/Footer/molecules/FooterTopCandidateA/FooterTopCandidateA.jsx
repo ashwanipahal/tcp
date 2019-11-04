@@ -54,6 +54,7 @@ class FooterTopCandidateA extends React.PureComponent {
       smsSubscription,
       openEmailSignUpModal,
       openSmsSignUpModal,
+      isNavigationFooter,
     } = this.props;
 
     return (
@@ -196,9 +197,14 @@ class FooterTopCandidateA extends React.PureComponent {
                   className="candidate_a_inline_container_button col-md-half-width"
                 >
                   <Button
-                    id="extole_zone_global_footer"
+                    id={
+                      isNavigationFooter
+                        ? 'extole_zone_global_navigation_footer'
+                        : 'extole_zone_global_footer'
+                    }
                     buttonVariation="variable-width"
                     data-locator={getLocator('refer_friend')}
+                    className="refer_a_friend_button"
                   >
                     {referAFriendButtonLabels.text}
                   </Button>
@@ -293,6 +299,7 @@ FooterTopCandidateA.propTypes = {
   openSmsSignUpModal: PropTypes.func,
   emailSubscription: PropTypes.shape({}),
   smsSubscription: PropTypes.shape({}),
+  isNavigationFooter: PropTypes.bool,
 };
 
 FooterTopCandidateA.defaultProps = {
@@ -334,6 +341,7 @@ FooterTopCandidateA.defaultProps = {
   openSmsSignUpModal: () => {},
   emailSubscription: {},
   smsSubscription: {},
+  isNavigationFooter: false,
 };
 
 export default withStyles(FooterTopCandidateA, style);

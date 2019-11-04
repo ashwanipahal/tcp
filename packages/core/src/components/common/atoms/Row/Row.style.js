@@ -35,9 +35,14 @@ const StyledRow = css`
       ${key !== 'small' ? `}` : ''}`
     )}
 
-  > *:last-child {
-    margin-right: 0;
-  }
+  ${props =>
+    props.noLastMargin
+      ? ``
+      : `
+        > *:last-child {
+          margin-right: 0;
+        }
+  `}
   &.content-wrapper {
     margin: 0 auto;
   }

@@ -108,9 +108,9 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true sho
       <span>
         <Styled(Anchor)
           anchorVariation="primary"
-          className="learnMore"
           fontSizeVariation="medium"
-          onClick={[Function]}
+          handleLinkClick={[Function]}
+          noLink={true}
           underline={true}
         />
       </span>
@@ -119,9 +119,9 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true sho
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          className="learnMore"
           fontSizeVariation="medium"
-          onClick={[Function]}
+          handleLinkClick={[Function]}
+          noLink={true}
           underline={true}
         />
       </span>
@@ -194,9 +194,9 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
       <span>
         <Styled(Anchor)
           anchorVariation="primary"
-          className="learnMore"
           fontSizeVariation="medium"
-          onClick={[Function]}
+          handleLinkClick={[Function]}
+          noLink={true}
           underline={true}
         />
       </span>
@@ -205,9 +205,9 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          className="learnMore"
           fontSizeVariation="medium"
-          onClick={[Function]}
+          handleLinkClick={[Function]}
+          noLink={true}
           underline={true}
         />
       </span>
@@ -292,16 +292,16 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest shou
   <span>
     <Styled(Anchor)
       anchorVariation="primary"
-      className="learnMore"
       fontSizeVariation="medium"
-      onClick={[Function]}
+      handleLinkClick={[Function]}
+      noLink={true}
       underline={true}
     />
     <Styled(Anchor)
       anchorVariation="primary"
-      className="learnMore"
       fontSizeVariation="medium"
-      onClick={[Function]}
+      handleLinkClick={[Function]}
+      noLink={true}
       underline={true}
     />
   </span>

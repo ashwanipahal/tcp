@@ -1,6 +1,7 @@
 import { MY_PREFERENCE_ACTION_PATTERN } from '../../../../constants/reducer.constants';
 
 export default {
+  GET_SUBSCRIBE_STORE_TTL: 60 * 1000,
   UPDATE_PROFILE_SUCCESS: `${MY_PREFERENCE_ACTION_PATTERN}UPDATE_PROFILE_SUCCESS`,
   MY_PREFERENCE_FORM: 'MyPreference',
   MY_PREFERENCE_FORM_MODAL: 'MyPreferenceFormModal',
