@@ -26,8 +26,9 @@ const ROUTES_LIST = [
   // For ex: ROUTING_MAP.home or ROUTING_MAP.error are being referred
   {
     noSlugPath: 'home',
-    path: '/home',
+    path: '/home/:target?',
     resolver: '/index',
+    params: ['target'],
   },
   {
     noSlugPath: 'store-locator',
@@ -59,9 +60,9 @@ const ROUTES_LIST = [
 
   {
     noSlugPath: 'account',
-    path: '/account/:id?/:subSection?',
+    path: '/account/:id?/:subSection?/:orderId?',
     resolver: '/account',
-    params: ['id', 'subSection'],
+    params: ['id', 'subSection', 'orderId'],
   },
   {
     noSlugPath: 'ds',
@@ -159,6 +160,23 @@ const ROUTES_LIST = [
     noSlugPath: 'stores',
     path: '/stores',
     resolver: '/StoreList',
+  },
+  {
+    noSlugPath: 'change-password',
+    path: '/change-password',
+    resolver: '/ChangePassword',
+  },
+  {
+    noSlugPath: 'track-order',
+    path: '/track-order/:orderId/:emailAddress',
+    resolver: '/TrackOrder',
+    params: ['orderId', 'emailAddress'],
+  },
+  {
+    noSlugPath: 'help-center',
+    path: '/help-center/:pageName?',
+    resolver: '/HelpCenter',
+    params: ['pageName'],
   },
 ];
 

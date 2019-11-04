@@ -22,6 +22,7 @@ export class AddressForm extends React.PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     invalid: PropTypes.bool.isRequired,
+    dirty: PropTypes.bool.isRequired,
     className: PropTypes.string,
     backToAddressBookClick: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -70,6 +71,7 @@ export class AddressForm extends React.PureComponent {
       addressFormLabels,
       isEdit,
       isMakeDefaultDisabled,
+      dirty,
     } = this.props;
     const { country } = this.state;
     return (
@@ -220,7 +222,7 @@ export class AddressForm extends React.PureComponent {
           >
             <Button
               fill="BLUE"
-              disabled={invalid}
+              disabled={invalid || !dirty}
               type="submit"
               buttonVariation="fixed-width"
               data-locator="addnewaddress-addaddress"

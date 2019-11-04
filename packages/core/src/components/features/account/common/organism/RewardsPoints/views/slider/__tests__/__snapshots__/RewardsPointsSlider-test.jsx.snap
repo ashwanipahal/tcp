@@ -41,7 +41,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
               data-locator="slidercurrentpointsvalue"
               fontFamily="secondary"
               fontSize="fs13"
-              fontWeight="black"
+              fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
@@ -73,7 +73,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
               data-locator="slidermyrewardsvalue"
               fontFamily="secondary"
               fontSize="fs13"
-              fontWeight="black"
+              fontWeight="extrabold"
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
@@ -146,7 +146,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           data-locator="slidernextrewardspointsvalue"
           fontFamily="secondary"
           fontSize="fs13"
-          fontWeight="black"
+          fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
           link={null}

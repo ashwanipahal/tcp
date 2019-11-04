@@ -48,6 +48,12 @@ const ConfirmHideShowField = styled.View`
   ${HideShowFieldStyle}
 `;
 
+const IconContainer = styled.View`
+  position: absolute;
+  right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
 export {
   Styles,
   ParentView,
@@ -57,4 +63,5 @@ export {
   HideShowField,
   ConfirmPasswordWrapper,
   ConfirmHideShowField,
+  IconContainer,
 };

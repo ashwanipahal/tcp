@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  .profileinfo-email_value {
+    word-break: break-all;
+  }
   .image_container {
     display: flex;
     align-items: center;

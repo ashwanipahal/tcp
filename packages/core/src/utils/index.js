@@ -34,6 +34,9 @@ export {
   getUrlParameter,
   scrollToParticularElement,
   getDirections,
+  enableBodyScroll,
+  disableBodyScroll,
+  removeBodyScrollLocks,
 } from './utils.web';
 
 export {
@@ -49,6 +52,7 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  isUsOnly,
   getCacheKeyForRedis,
   getAddressFromPlace,
   formatAddress,
@@ -75,7 +79,8 @@ export {
   getModifiedLanguageCode,
   getTranslateDateInformation,
   stringify,
-  enableBodyScroll,
-  disableBodyScroll,
+  generateTraceId,
   readCookieMobileApp,
+  getStyliticsUserName,
+  getStyliticsRegion,
 } from './utils';

@@ -1,7 +1,9 @@
 import React from 'react';
+import { Linking } from 'react-native';
+import queryString from 'query-string';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
+import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
 
@@ -19,6 +21,10 @@ import {
   ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
+import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
+import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -38,11 +44,29 @@ const modulesMap = {
 };
 
 class HomePageView extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      handeOpenURLRegister: false,
+    };
+  }
+
   componentDidMount() {
     this.loadBootstrapData();
 
     const { loadNavigationData } = this.props;
     loadNavigationData();
+    const { handeOpenURLRegister } = this.state;
+
+    if (!handeOpenURLRegister) {
+      this.setState({ handeOpenURLRegister: true });
+      Linking.addEventListener('url', this.handleOpenURL);
+    }
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this.handleOpenURL);
+    this.setState({ handeOpenURLRegister: false });
   }
 
   /**
@@ -65,6 +89,30 @@ class HomePageView extends React.PureComponent<Props> {
     );
   };
 
+  handleOpenURL = event => {
+    this.navigate(event.url);
+  };
+
+  navigate = url => {
+    const { navigation } = this.props;
+    if (url) {
+      const parsedURL = queryString.parseUrl(url);
+      if (parsedURL && parsedURL.url.indexOf('change-password') !== -1) {
+        const {
+          query: { logonPasswordOld, em },
+        } = parsedURL;
+
+        const oldPassword = logonPasswordOld.replace(/\s/g, '+');
+
+        navigateToNestedRoute(navigation, 'AccountStack', 'Account', {
+          component: 'change-password',
+          logonPasswordOld: oldPassword,
+          em,
+        });
+      }
+    }
+  };
+
   render() {
     const {
       slots,
@@ -80,6 +128,8 @@ class HomePageView extends React.PureComponent<Props> {
         <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
+        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
+        <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
       </LazyloadScrollView>
     );
   }

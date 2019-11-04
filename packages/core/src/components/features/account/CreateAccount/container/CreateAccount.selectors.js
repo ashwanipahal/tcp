@@ -25,6 +25,11 @@ export const getLabels = state => {
   return state.Labels.global;
 };
 
+export const getPasswordLabels = createSelector(
+  getLabels,
+  labels => labels && labels.password
+);
+
 export const getCreateAccountLabels = createSelector(
   getLabels,
   labels => labels && labels.registration

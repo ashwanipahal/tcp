@@ -8,6 +8,7 @@ describe('ProductTileWrapper component', () => {
   it('should render ProductTile view section', () => {
     const props = {
       isCartItemsUpdating: { isDeleting: true },
+      setHeaderErrorState: jest.fn(),
       labels: {},
       orderItems: fromJS([
         {
@@ -125,6 +126,7 @@ describe('ProductTileWrapper component', () => {
   it('should render ProductTile view section with bag page sfl section', () => {
     const props = {
       isCartItemsUpdating: { isDeleting: true },
+      setHeaderErrorState: jest.fn(),
       labels: {},
       sflItems: fromJS([
         {

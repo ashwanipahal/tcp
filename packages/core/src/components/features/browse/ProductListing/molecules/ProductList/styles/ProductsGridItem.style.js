@@ -27,10 +27,6 @@ const styles = css`
     height: 18px;
     cursor: pointer;
   }
-  .container-price {
-    margin-top: 0px;
-    min-height: 39px;
-  }
   .list-price {
     text-decoration: line-through;
     padding-right: 10px;
@@ -44,6 +40,17 @@ const styles = css`
   .added-to-bag {
     width: 100%;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    &:hover:not([disabled]) {
+      background: ${props => props.theme.colorPalette.blue.C900};
+      color: white;
+    }
+    &[disabled] {
+      opacity: 0.5;
+    }
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      background: ${props => props.theme.colorPalette.blue.C900};
+      color: white;
+    }
   }
 
   .top-badge-container {
@@ -177,6 +184,17 @@ const styles = css`
     position: relative;
   }
 
+  .extended-sizes-text {
+    display: block;
+    height: 10px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 12px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 14px;
+    }
+  }
+
   .sold-out-section {
     width: 100%;
     height: 100%;
@@ -198,10 +216,8 @@ const styles = css`
 
     .container-price {
       margin-top: 4px;
-      min-height: 43px;
     }
     .product-title-container {
-      padding-top: 11px;
       height: 47px;
     }
   }
@@ -213,10 +229,8 @@ const styles = css`
 
     .container-price {
       margin-top: 0px;
-      min-height: 47px;
     }
     .product-title-container {
-      padding-top: 8px;
       height: 46px;
     }
 

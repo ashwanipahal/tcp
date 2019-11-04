@@ -168,6 +168,7 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS,
     unbxd: true,
     unbxdCustom: true,
+    authHeaderRequired: true,
   },
   getProductsByOutfits: {
     method: 'GET',
@@ -192,6 +193,7 @@ const endpoints = {
     URI: PRODUCTS_URI.PRODUCTS,
     unbxd: true,
     unbxdCustom: true,
+    authHeaderRequired: true,
   },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,

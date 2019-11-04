@@ -42,6 +42,7 @@ class DropDown extends React.PureComponent<Props> {
     bounces: PropTypes.bool,
     selectedItemFontWeight: PropTypes.string,
     dropDownItemFontWeight: PropTypes.string,
+    openDropdownOnLoad: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -55,6 +56,7 @@ class DropDown extends React.PureComponent<Props> {
     bounces: true,
     selectedItemFontWeight: 'semibold',
     dropDownItemFontWeight: 'semibold',
+    openDropdownOnLoad: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -94,10 +96,14 @@ class DropDown extends React.PureComponent<Props> {
       return item.value === selectedValue;
     });
 
-    let selectedLabelState;
+    let selectedLabelState = '';
     if (selectedValue) {
-      if (selectedObject) selectedLabelState = selectedObject.label;
-      else selectedLabelState = selectedValue;
+      if (selectedObject) {
+        selectedLabelState = selectedObject.label;
+      } else if (data && data.length > 0) {
+        // in case selectedValue is not part of data optionSet passed, then it should be the first option label
+        selectedLabelState = data[0].label;
+      }
     } else {
       selectedLabelState = data.label;
     }
@@ -109,6 +115,10 @@ class DropDown extends React.PureComponent<Props> {
       flatListTop: 0,
       flatListHeight: 0,
     };
+  }
+
+  componentDidMount() {
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
   }
 
   componentDidUpdate() {
@@ -149,7 +159,7 @@ class DropDown extends React.PureComponent<Props> {
    * Set drop down position
    */
   setDropDownPosition = (topMargin, dH, showInBottom, calculateHeight, windowHeight) => {
-    const { customDropDownHeight } = this.props;
+    const { customDropDownHeight, openDropdownOnLoad } = this.props;
     this.setState({ top: topMargin.top });
     let listMargin = 0;
     let listHeight = 0;
@@ -169,7 +179,11 @@ class DropDown extends React.PureComponent<Props> {
     } else {
       listHeight = calculateHeight;
     }
-    this.setState({ flatListHeight: listHeight, flatListTop: listMargin });
+    this.setState({
+      flatListHeight: listHeight,
+      flatListTop: listMargin,
+      dropDownIsOpen: openDropdownOnLoad,
+    });
   };
 
   /**
@@ -205,6 +219,8 @@ class DropDown extends React.PureComponent<Props> {
    * Open the drop down
    */
   openDropDown = () => {
+    const { openDropdownOnLoad } = this.props;
+    if (openDropdownOnLoad) return;
     this.setState({
       dropDownIsOpen: true,
     });
@@ -234,9 +250,15 @@ class DropDown extends React.PureComponent<Props> {
    * Close the drop down
    */
   closeDropDown = () => {
+    const { onPressOut } = this.props;
     this.setState({
       dropDownIsOpen: false,
     });
+    if (onPressOut) {
+      setTimeout(() => {
+        onPressOut();
+      }, 180);
+    }
   };
 
   render() {

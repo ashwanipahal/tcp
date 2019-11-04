@@ -65,7 +65,7 @@ export default {
   'user-icon-blue': '/static/images/user-icon-blue.svg',
   'selected-item': '/static/images/selected-item.svg',
   'selected-item-check-no-circle': '/static/images/circle-check-no-circle.svg',
-  'checkout-tick': '/static/images/checkout-tick.svg',
+  'checkout-tick': '/static/images/checkout-step-complete.svg',
   'checkout-white-dot': '/static/images/checkout-white-dot.svg',
   'carrot-large-left': '/static/images/carrot-large-left.png',
   'close-icon': '/static/images/large.png',
@@ -116,4 +116,6 @@ export default {
   'sms-disabled': '/static/images/sms-disabled.svg',
   'push-enabled': '/static/images/push-enabled.svg',
   'sms-enabled': '/static/images/sms-enabled.svg',
+  'app-store': '/static/images/app-store-logo.png',
+  'google-play': '/static/images/google-play-badge.svg',
 };

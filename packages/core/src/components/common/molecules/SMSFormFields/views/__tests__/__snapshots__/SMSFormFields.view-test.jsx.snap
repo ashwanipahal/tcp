@@ -98,6 +98,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -131,6 +134,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
                 ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                 ";
@@ -275,6 +281,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -308,6 +317,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                 ";
@@ -662,6 +674,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -695,6 +710,9 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
                 ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                 ";

@@ -101,7 +101,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-caSCKo",
+              "componentId": "sc-kjoXOD",
               "isStatic": false,
               "rules": Array [
                 "
@@ -136,7 +136,7 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.05;
 
     @media ",
@@ -157,15 +157,18 @@ exports[`ModuleK component renders correctly 1`] = `
     font-weight: ",
                 [Function],
                 ";
-    font-size: 22px;
+    font-size: ",
+                [Function],
+                ";
     line-height: normal;
     letter-spacing: 2px;
 
     @media ",
                 [Function],
                 " {
-      font-size: 42px;
-      letter-spacing: 2.42px;
+      font-size: 64px;
+      letter-spacing: 4px;
+      font-weight: 500;
     }
   }
 
@@ -187,6 +190,36 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
   .medium_text_black {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: -0.5px;
+    margin-bottom: ",
+                [Function],
+                ";
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+
+  .large_text_black {
+    color: ",
+                [Function],
+                ";
     font-family: ",
                 [Function],
                 ";
@@ -285,6 +318,30 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+  /* Module N Heading Styles Gymboree*/
+  .white_large_text_half {
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+    color: ",
+                [Function],
+                ";
+    text-align: center;
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
@@ -299,10 +356,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-eNQAEJ",
+              "sc-kEYyzF",
             ],
             "render": [Function],
-            "styledComponentId": "sc-caSCKo",
+            "styledComponentId": "sc-kjoXOD",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -346,7 +403,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-fAjcbJ",
+              "componentId": "sc-gisBJw",
               "isStatic": false,
               "rules": Array [
                 "
@@ -512,9 +569,7 @@ exports[`ModuleK component renders correctly 1`] = `
 
   .slick-dots {
     position: absolute;
-    bottom: ",
-                [Function],
-                ";
+    bottom: 16px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -638,10 +693,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(Carousel))",
             "foldedComponentIds": Array [
-              "sc-cSHVUG",
+              "sc-chPdSV",
             ],
             "render": [Function],
-            "styledComponentId": "sc-fAjcbJ",
+            "styledComponentId": "sc-gisBJw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

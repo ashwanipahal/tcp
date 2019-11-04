@@ -150,15 +150,19 @@ export const removeItem = orderItemId => {
     webService: endpoints.updateMultiSelectItemsToRemove,
   };
 
-  return executeStatefulAPICall(payload).then(res => {
-    if (res && !res.body) {
-      throw new Error('res body is null');
-      // TODO - Set API Helper to filter if error exists in response
-    }
-    return {
-      orderId: res && res.body.orderId,
-    };
-  });
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (res && !res.body) {
+        throw new Error('res body is null');
+        // TODO - Set API Helper to filter if error exists in response
+      }
+      return {
+        orderId: res && res.body.orderId,
+      };
+    })
+    .catch(err => {
+      throw err;
+    });
 };
 
 const defaultUpdateItemPayload = payloadData => {
@@ -522,6 +526,7 @@ export const getCurrentOrderFormatter = (
     orderDetailsResponse.mixOrderDetails.data
   ) {
     for (const store of orderDetailsResponse.mixOrderDetails.data) {
+      // store.shippingAddressDetails.isStoreBOSSEligible = "0";
       if (store.orderType !== 'ECOM') {
         usersOrder.stores.push({
           stLocId: store.shippingAddressDetails.stLocId || '',
@@ -619,14 +624,25 @@ tomorrowClosingTime
           // This code is misleading - itemPrice and itemDstPrice are not equal to list price/offer price
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
+
           listPrice: flatCurrencyToCents(item.itemPrice),
-          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
-          unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
-          salePrice: isCanada
+          salePrice: isGiftCard
+            ? flatCurrencyToCents(item.itemUnitPrice)
+            : isCanada
             ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
             : flatCurrencyToCents(item.productInfo.offerPrice),
+
+          // listPrice: flatCurrencyToCents(item.itemPrice),
+          // offerPrice: flatCurrencyToCents(item.itemDstPrice),
+          // wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
+          // salePrice: isCanada
+          //   ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
+          //   : flatCurrencyToCents(item.productInfo.offerPrice),
+
+          // listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
+          // unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
         },
         miscInfo: {
           clearanceItem: !isCASite()
@@ -926,7 +942,7 @@ export const getUnqualifiedItems = () => {
       }));
     })
     .catch(err => {
-      throw getFormattedError(err);
+      throw err;
     });
 };
 

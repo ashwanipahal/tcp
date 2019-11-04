@@ -190,6 +190,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       text="lbl_login_loginCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(Anchor)
       accessibilityLabel=""

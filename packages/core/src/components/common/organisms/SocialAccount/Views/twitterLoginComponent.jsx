@@ -25,6 +25,13 @@ class TwitterLoginComponent extends React.Component {
     this.verifierInput = null;
   }
 
+  componentDidMount() {
+    const { urlParams } = this.props;
+    if (urlParams.socialAccount === 'twitter' && urlParams.id === 'my-preference') {
+      this.openChildWindow();
+    }
+  }
+
   /**
    * @method setTokenInput This method sets the ref of the hidden input field used to store auth token
    * @param ele {Object} The DOM object of the hidden input field used to store auth token
@@ -182,6 +189,16 @@ TwitterLoginComponent.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   pointModalClose: PropTypes.func.isRequired,
   loginStatus: PropTypes.shape({}).isRequired,
+  urlParams: PropTypes.shape({
+    socialAccount: PropTypes.string,
+    id: PropTypes.string,
+  }),
+};
+
+TwitterLoginComponent.defaultProps = {
+  urlParams: {
+    socialAccount: '',
+  },
 };
 
 export default TwitterLoginComponent;

@@ -87,7 +87,7 @@ const Badge3Text = styled.Text`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const TitleContainer = styled.View`
+const TitleContainer = styled.TouchableOpacity`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   height: 32;
 `;

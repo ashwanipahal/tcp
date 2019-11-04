@@ -61,6 +61,7 @@ exports[`CardList Component should render correctly 1`] = `
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </View>
@@ -140,6 +141,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <ReduxForm

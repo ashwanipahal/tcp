@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import CustomIcon from '../../../../../common/atoms/Icon';
@@ -18,6 +19,7 @@ import {
   DetailsContainer,
   DiscountedPriceContainer,
   FavoriteView,
+  OutfitProductWrapper,
 } from '../styles/OutfitProduct.native.style';
 import ProductPickupContainer from '../../../../../common/organisms/ProductPickup';
 
@@ -58,6 +60,7 @@ const OutfitDetailsView = ({
   favoriteCount,
   handleAddToBag,
   handleAddToFavorites,
+  navigation,
 }) => {
   const {
     imagesByColor,
@@ -98,7 +101,7 @@ const OutfitDetailsView = ({
     promotionalPLCCMessage,
   });
   return (
-    <>
+    <OutfitProductWrapper>
       <OutfitProductContainer>
         <ImageContainer>
           <BodyCopy
@@ -109,6 +112,26 @@ const OutfitDetailsView = ({
             text={productIndexText}
           />
           <CustomImage url={imagesByColor[color].basicImageUrl} width="100%" height="200" />
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('ProductDetail', {
+                title: outfitProduct.name,
+                pdpUrl: outfitProduct.pdpUrl && outfitProduct.pdpUrl.replace('/p/', ''),
+                reset: true,
+              })
+            }
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel={`${outfitProduct.name}`}
+          >
+            <BodyCopy
+              fontSize="fs14"
+              fontWeight="regular"
+              fontFamily="secondary"
+              textDecoration="underline"
+              text="View Product Details"
+            />
+          </TouchableOpacity>
         </ImageContainer>
         <DetailsContainer>
           {badge1Value !== '' && (
@@ -199,7 +222,7 @@ const OutfitDetailsView = ({
         currentProduct: outfitProduct,
         selectedColorProductId: colorProductId,
       })}
-    </>
+    </OutfitProductWrapper>
   );
 };
 
@@ -214,6 +237,9 @@ OutfitDetailsView.propTypes = {
   favoriteCount: PropTypes.string,
   handleAddToBag: PropTypes.func.isRequired,
   handleAddToFavorites: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -225,6 +251,7 @@ OutfitDetailsView.defaultProps = {
   currencySymbol: '$',
   currencyExchange: [{ exchangevalue: 1 }],
   favoriteCount: 0,
+  navigation: {},
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

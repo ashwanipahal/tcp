@@ -147,13 +147,12 @@ export class AutoCompleteComponent extends PureComponent {
   }
 
   handleOnPlaceSelected() {
-    const { input, onPlaceSelected, meta } = this.props;
-    const { touched, error } = meta;
+    const { input, onPlaceSelected } = this.props;
     const inputValue = this.refToInputElement != null && this.refToInputElement.value;
     if (this.refToInputElement != null && input) {
       input.onChange(this.refToInputElement.value);
     }
-    if (!(touched && error)) onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
+    onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
   }
 
   render() {
@@ -172,10 +171,6 @@ AutoCompleteComponent.propTypes = {
   apiFields: PropTypes.shape({}).isRequired,
   input: PropTypes.shape({}).isRequired,
   onPlaceSelected: PropTypes.func.isRequired,
-  meta: PropTypes.shape({
-    touched: PropTypes.string,
-    error: PropTypes.string,
-  }).isRequired,
 };
 
 export default AutoCompleteComponent;

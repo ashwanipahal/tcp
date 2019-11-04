@@ -24,7 +24,7 @@ const style = css`
       width: 24%;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 20%;
+      width: 12%;
     }
 
     .storelocatorlink__container,
@@ -37,23 +37,83 @@ const style = css`
     }
   }
   .header-middle-login-section {
-    position: absolute;
-    right: 0;
-    margin-top: 30px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 8px;
+    display: inline-flex;
     @media ${props => props.theme.mediaQuery.mediumMax} {
-      width: 71%;
+      width: 75%;
       margin-top: auto;
+      display: inline-flex;
     }
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 74%;
+      width: 88%;
+      display: inline-flex;
     }
   }
-  .username {
+
+  .header-middle-login-section .headerSearchBox {
+    position: relative;
+    height: 40px;
+  }
+
+  .account-info-section {
     cursor: pointer;
     display: inline-block;
+    line-height: normal;
+    padding: 0px 12px;
+  }
+  .carrot-down-icon {
+    margin-left: 9px;
+    transform: rotate(0deg);
+    transition: transform 0.1s linear;
+  }
+  .carrot-up-icon {
+    margin-left: 9px;
+    transform: rotate(180deg);
+    transition: transform 0.15s linear;
+  }
+  .account-info {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    cursor: pointer;
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+  .user-name {
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    text-align: left;
+    &:hover {
+      color: ${props => props.theme.colorPalette.blue[500]};
+    }
+  }
+  .user-points,
+  .user-rewards {
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+    color: ${props =>
+      props.isUserPlcc ? props.theme.colorPalette.blue[500] : props.theme.colorPalette.orange[800]};
+  }
+  .usericon {
+    cursor: pointer;
+    display: inline-flex;
+    vertical-align: baseline;
+    padding-right: 12px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
   }
   .product-image {
-    vertical-align: baseline;
+    height: 25px;
+    width: 23px;
+    vertical-align: middle;
+  }
+  #login {
+    padding-right: 12px;
+  }
+  #createaccount {
+    padding-left: 12px;
   }
 
   .rightLink {
@@ -63,6 +123,9 @@ const style = css`
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
+  .header-middle-login-section a {
+    position: relative;
+  }
   .cartCount {
     background: ${props =>
       props.theme.isGymboree
@@ -70,8 +133,11 @@ const style = css`
         : props.theme.colorPalette.blue['800']};
     color: ${props => props.theme.colors.WHITE};
     border-radius: 8px;
-    margin: 1px 0px 0px -7px;
     padding: 2px 5px;
+    vertical-align: bottom;
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
   }
   @media ${props => props.theme.mediaQuery.mediumMax} {
     padding: 16px 0;
@@ -101,6 +167,14 @@ const style = css`
 
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: none;
+    }
+  }
+
+  .create-account-header-label,
+  .login-header-label {
+    display: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: inline-flex;
     }
   }
 `;

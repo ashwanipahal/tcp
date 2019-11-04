@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-
+import { BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   ViewWithSpacing,
@@ -17,7 +16,6 @@ import {
   OrderItemContent,
   OrderContentWrapper,
 } from '../styles/OrderItem.style.native';
-import endpoints from '../../../../../../../service/endpoint';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
@@ -27,6 +25,13 @@ const tcpImage = require('../../../../../../../assets/tcp-logo.png');
  * can be passed in the component.
  * @param otherProps - otherProps object used pass params to other component
  */
+
+const checkBrand = itemBrand => {
+  if (itemBrand === 'TCP') {
+    return 'tcp';
+  }
+  return 'gym';
+};
 
 const OrderItems = ({ className, ...otherProps }) => {
   /**
@@ -44,13 +49,23 @@ const OrderItems = ({ className, ...otherProps }) => {
     isCanceledList,
     isShowWriteReview,
     ordersLabels,
+    navigation,
   } = otherProps;
-
   return (
     <>
       <OrderItemContainer>
         <OrderItemImage>
-          <ImageStyle source={{ uri: endpoints.global.baseURI + imagePath }} />
+          {imagePath && (
+            <ImageStyle>
+              <DamImage
+                isProductImage
+                checkBrand={checkBrand(itemBrand)}
+                url={`${imagePath}`.split(checkBrand(itemBrand))[1]}
+                height="100"
+                width="100"
+              />
+            </ImageStyle>
+          )}
           {itemBrand === 'TCP' && <ImageBrandTCPStyle source={tcpImage} />}
           {itemBrand === 'GYM' && <ImageBrandStyle source={gymboreeImage} />}
         </OrderItemImage>
@@ -162,9 +177,18 @@ const OrderItems = ({ className, ...otherProps }) => {
                   url={pdpUrl}
                   text={getLabelValue(ordersLabels, 'lbl_orderDetails_writeReview')}
                   underline
+                  noLink
+                  href="#"
                   anchorVariation="primary"
                   fontSize="fs14"
                   fontWeight="semibold"
+                  onPress={() =>
+                    navigation.navigate('ProductDetail', {
+                      title: name,
+                      pdpUrl,
+                      reset: true,
+                    })
+                  }
                 />
               </OrderContentWrapper>
             )}

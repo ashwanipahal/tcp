@@ -77,7 +77,7 @@ class GiftServicesContainer extends React.PureComponent {
       };
       return (
         <>
-          {giftWrapOptions && (
+          {!!giftWrapOptions && (
             <GiftServices
               labels={updateLabels}
               formName={formName}

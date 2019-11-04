@@ -4,7 +4,8 @@
 
 import { call, takeLatest, put } from 'redux-saga/effects';
 import SOCIAL_CONSTANTS from '../social.constants';
-import { setSocialAccount, showPointModalDetails } from './Social.actions';
+import { validateReduxCache } from '../../../../../utils/cache.util';
+import { setSocialAccount, showPointModalDetails, showLoader } from './Social.actions';
 import {
   getSocialAccountsInformation,
   saveSocialAccountsInfo,
@@ -12,6 +13,7 @@ import {
 
 export function* getsocialAccounts(action) {
   try {
+    yield put(showLoader());
     const res = yield call(getSocialAccountsInformation, action);
     /* istanbul ignore else */
     if (res) {
@@ -49,7 +51,8 @@ export function* savesocialAccounts({ payload }) {
   }
 }
 export function* SocialAccountSaga() {
-  yield takeLatest(SOCIAL_CONSTANTS.GET_SOCIAL_LOAD, getsocialAccounts);
+  const cachedSocialAccounts = validateReduxCache(getsocialAccounts);
+  yield takeLatest(SOCIAL_CONSTANTS.GET_SOCIAL_LOAD, cachedSocialAccounts);
   yield takeLatest(SOCIAL_CONSTANTS.SAVE_SOCIAL_LOAD, savesocialAccounts);
 }
 

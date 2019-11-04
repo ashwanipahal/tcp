@@ -81,11 +81,18 @@ export default css`
   margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} 0;
 
   .image-items-container {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: 28px;
   }
 
   .moduleR-promo-header {
     margin-bottom: 0;
+  }
+
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
   }
 
   .promo-wrapper {
@@ -94,7 +101,13 @@ export default css`
   }
 
   .image-item-wrapper {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: 15px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 29px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 55px;
+    }
   }
 
   .button-wrapper {

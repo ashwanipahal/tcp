@@ -17,6 +17,10 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     link={null}
     textAlign="left"
   />
-  <RelatedOutfitsSlots />
+  <Connect(Styled(ModuleQ))
+    bgClass="yellow-bg"
+    divTabs={Array []}
+    hideTabs={true}
+  />
 </div>
 `;

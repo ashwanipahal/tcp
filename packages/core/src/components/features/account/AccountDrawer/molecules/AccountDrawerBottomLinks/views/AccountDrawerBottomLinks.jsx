@@ -61,6 +61,13 @@ const AccountDrawerBottomLinks = props => {
           <Anchor
             fontSizeVariation="large"
             fontFamily="secondary"
+            onClick={e =>
+              onLinkRedirect({
+                e,
+                link: internalEndpoints.myOrderPage.link,
+                path: internalEndpoints.myOrderPage.path,
+              })
+            }
             anchorVariation="primary"
             text={getLabelValue(labels, 'CREATE_ACC_ORDERS')}
           />

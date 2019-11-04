@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 
 import moment from 'moment';
+
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -105,6 +106,11 @@ export const isTCP = () => {
 export const isCanada = () => {
   const { siteId } = getAPIConfig();
   return siteId === API_CONFIG.siteIds.ca;
+};
+
+export const isUsOnly = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.us;
 };
 
 export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
@@ -849,6 +855,35 @@ export const getStoreHours = (
     return '';
   }
 };
+/**
+ * @summary this is meant to generate a new UID on each API call
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @returns {string} returns generated traceId of User or else not-found string value
+
+ */
+export const generateTraceId = () => {
+  const apiConfigObj = getAPIConfig();
+  let prefix;
+
+  // Setting prefix of trace-id based on platform of user i.e. either mobile, browser, Node
+  if (isMobileApp()) {
+    prefix = 'MOBILE';
+  } else if (isClient()) {
+    prefix = 'CLIENT';
+  } else {
+    prefix = 'NODE';
+  }
+  const timeStamp = `${Date.now()}`;
+
+  // On the Node Server traceIdCount can grow to Infinity, so we will reset it at 10000
+  if (apiConfigObj.traceIdCount > 10000) {
+    apiConfigObj.traceIdCount = 0;
+  }
+
+  const traceIdCount = apiConfigObj.traceIdCount + 1;
+  const traceId = `${prefix}_${traceIdCount}_${timeStamp}`;
+  return traceId || 'not-found';
+};
 
 /**
  * Function to get Order Detail Group Header label and Message
@@ -945,16 +980,13 @@ export const getOrderGroupLabelAndMessage = orderProps => {
   WCS store image path to DAM image for Gymboree
   MUST BE REVERTED
  */
-export const changeImageURLToDOM = (img, cropParams) => {
-  let imageUrl = img;
-  if (window && window.location.href.indexOf('gymboree') > -1 && imageUrl) {
-    const imgArr = imageUrl.split('/');
-    const productPartId = imgArr.slice(-1);
-    const productArr = productPartId[0].split('_');
-    const productId = productArr[0];
-    imageUrl = `https://test1.theplace.com/image/upload/${cropParams}/ecom/assets/products/gym/${productId}/${productPartId}`;
-  }
-  return imageUrl;
+export const changeImageURLToDOM = (imgPath, cropParams) => {
+  const brandName = getBrand();
+  const brandId = brandName && brandName.toUpperCase();
+  const apiConfigObj = getAPIConfig();
+  const assetHost = apiConfigObj[`assetHost${brandId}`];
+  const productAssetPath = apiConfigObj[`productAssetPath${brandId}`];
+  return `${assetHost}/${cropParams}/${productAssetPath}/${imgPath}`;
 };
 
 /**
@@ -970,24 +1002,20 @@ export const insertIntoString = (string, idx, rem, str) => {
   return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
 };
 
-/**
- * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
- */
-export const enableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.remove('disableBodyScroll');
+export const getStyliticsUserName = () => {
+  const { styliticsUserNameTCP, styliticsUserNameGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsUserNameTCP;
   }
+  return styliticsUserNameGYM;
 };
 
-/**
- * Disable Body Scroll
- */
-export const disableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.add('disableBodyScroll');
+export const getStyliticsRegion = () => {
+  const { styliticsRegionTCP, styliticsRegionGYM } = getAPIConfig();
+  if (isTCP()) {
+    return styliticsRegionTCP;
   }
+  return styliticsRegionGYM;
 };
 
 export default {
@@ -1027,5 +1055,8 @@ export default {
   stringify,
   readCookieMobileApp,
   changeImageURLToDOM,
+  generateTraceId,
   insertIntoString,
+  getStyliticsUserName,
+  getStyliticsRegion,
 };

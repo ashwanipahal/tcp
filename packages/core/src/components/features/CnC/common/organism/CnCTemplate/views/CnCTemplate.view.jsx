@@ -66,7 +66,10 @@ const CnCTemplate = ({
               <>
                 {isConfirmationPage ? (
                   <>
-                    <OrderLedgerContainer isConfirmationPage={isConfirmationPage} />
+                    <OrderLedgerContainer
+                      isConfirmationPage={isConfirmationPage}
+                      pageCategory="confirmation"
+                    />
                     <Row fullBleed>
                       <Col colSize={{ small: 6, medium: 8, large: 12 }}>
                         <PersonalizedCoupons />
@@ -76,10 +79,10 @@ const CnCTemplate = ({
                 ) : (
                   <>
                     <OrderLedgerContainer
-                      orderLedgerAfterView={orderLedgerAfterView}
+                      orderLedgerAfterView={getBagActions({ BagActions }) || orderLedgerAfterView}
                       pageCategory={pageCategory}
                     />
-                    {getBagActions({ BagActions })}
+
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
                     <AirmilesBanner />
                     <CouponAndPromos

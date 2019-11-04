@@ -26,7 +26,7 @@ const ProfileInfoTile = ({ labels, handleComponentChange, profileInfo }) => {
         fontSize="fs16"
         text={getLabelValue(labels, 'lbl_overview_profileInformationHeading')}
         color="black"
-        fontWeight="black"
+        fontWeight="extrabold"
       />
       <UnderlineStyle />
       <InfoContainer>

@@ -10,35 +10,41 @@ import {
   OrdersListItemView,
 } from '../styles/OrdersListItem.style.native';
 
-const OrdersListItem = ({ labels, orderItem, navigation }) => {
+const OrdersListItem = ({ labels, orderItem, navigation, isPastOrder }) => {
   const { orderDate, orderNumber, orderStatus, orderTotal, isEcomOrder } = orderItem;
   const router = {
     query: {
       orderId: orderNumber,
     },
   };
-
   return (
     <>
-      <OrdersListItemMainView>
+      <OrdersListItemMainView isPastOrder={isPastOrder}>
         <OrdersListItemView>
           <BodyCopy
             text={getLabelValue(labels, 'lbl_orders_orderDate', 'orders')}
             fontFamily="secondary"
-            fontSize="fs12"
+            fontSize="fs14"
+            fontWeight="black"
           />
-          <BodyCopy text={orderDate} fontFamily="secondary" fontSize="fs12" fontWeight="regular" />
+          <BodyCopy
+            text={orderDate}
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+          />
         </OrdersListItemView>
         <OrdersListItemView>
           <BodyCopy
             text={getLabelValue(labels, 'lbl_orders_orderNumber', 'orders')}
             fontFamily="secondary"
-            fontSize="fs12"
+            fontSize="fs14"
+            fontWeight="black"
           />
           <OrdersNumberWrapper>
             <Anchor
               text={orderNumber}
-              fontSizeVariation="medium"
+              fontSizeVariation="large"
               noLink
               underline
               anchorVariation="primary"
@@ -60,7 +66,8 @@ const OrdersListItem = ({ labels, orderItem, navigation }) => {
           <BodyCopy
             text={getLabelValue(labels, 'lbl_orders_orderType', 'orders')}
             fontFamily="secondary"
-            fontSize="fs12"
+            fontSize="fs14"
+            fontWeight="black"
           />
           <BodyCopy
             text={
@@ -68,8 +75,8 @@ const OrdersListItem = ({ labels, orderItem, navigation }) => {
                 ? getLabelValue(labels, 'lbl_orders_online', 'orders')
                 : getLabelValue(labels, 'lbl_orders_pickupStore', 'orders')
             }
-            fontFamily="secondary"
-            fontSize="fs12"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
             fontWeight="regular"
           />
         </OrdersListItemView>
@@ -77,12 +84,12 @@ const OrdersListItem = ({ labels, orderItem, navigation }) => {
           <BodyCopy
             text={getLabelValue(labels, 'lbl_orders_orderStatus', 'orders')}
             fontFamily="secondary"
-            fontSize="fs12"
+            fontSize="fs14"
           />
           <BodyCopy
             text={getLabelValue(labels, orderStatus, 'orders')}
-            fontFamily="secondary"
-            fontSize="fs12"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
             fontWeight="regular"
           />
         </OrdersListItemView>
@@ -90,9 +97,16 @@ const OrdersListItem = ({ labels, orderItem, navigation }) => {
           <BodyCopy
             text={getLabelValue(labels, 'lbl_orders_orderTotal', 'orders')}
             fontFamily="secondary"
-            fontSize="fs12"
+            fontSize="fs14"
+            fontWeight="black"
+            textAlign={isPastOrder ? 'right' : 'left'}
           />
-          <BodyCopy text={orderTotal} fontFamily="secondary" fontSize="fs12" fontWeight="regular" />
+          <BodyCopy
+            text={orderTotal}
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            textAlign={isPastOrder ? 'right' : 'left'}
+          />
         </OrdersListItemView>
         <OrdersListItemView />
       </OrdersListItemMainView>
@@ -104,6 +118,7 @@ OrdersListItem.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderItem: PropTypes.shape([]).isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  isPastOrder: PropTypes.bool.isRequired,
 };
 
 export default OrdersListItem;

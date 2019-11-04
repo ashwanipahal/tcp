@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Items component should renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .product-spacing {
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+  .quantity-spacing {
+    margin-bottom: ",
+          [Function],
+          ";
+    font-weight: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      margin-bottom: ",
+          [Function],
+          ";
+      font-weight: ",
+          [Function],
+          ";
+    }
+  }
+  .status-spacing {
+    margin-bottom: ",
+          [Function],
+          ";
+    font-weight: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      font-weight: ",
+          [Function],
+          ";
+    }
+  }
+  .image-sizing {
+    width: 103px;
+    @media ",
+          [Function],
+          " {
+      width: 162px;
+    }
+    @media ",
+          [Function],
+          " {
+      width: 90px;
+    }
+  }
+  .product-name {
+    padding-bottom: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      margin-bottom: ",
+          [Function],
+          ";
+    }
+  }
+
+  .row-stlyler {
+    padding-bottom: ",
+          [Function],
+          ";
+  }
+  .itemInfo_details {
+    display: flex;
+    flex-flow: column;
+    @media ",
+          [Function],
+          " {
+      flex-flow: row;
+      justify-content: space-between;
+    }
+  }
+  .brand-image {
+    width: 64px;
+    height: 22px;
+  }
+  .itemInfo_details_items {
+    display: flex;
+    flex-flow: row;
+    margin-bottom: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      flex-flow: column;
+      margin-bottom: 0;
+    }
+  }
+
+  .itemInfo_details_items_leftMargin {
+    margin-left: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      margin-left: 0;
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(OrderPreviewItem)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-jzJRlG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isCanceledList={Object {}}
+  item={
+    Object {
+      "itemInfo": Object {
+        "itemBrand": "TCP",
+        "quantity": 1,
+        "quantityCanceled": false,
+      },
+      "productInfo": Object {
+        "imagePath": "test",
+        "name": "test product",
+      },
+    }
+  }
+  ordersLabels={Object {}}
+/>
+`;

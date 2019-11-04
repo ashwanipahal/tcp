@@ -66,6 +66,10 @@ const internalEndpoints = {
     link: '/account?id=orders',
     path: '/account/orders',
   },
+  trackOrder: {
+    link: '/track-order?id=orders&subSection=order-details',
+    path: '/track-order',
+  },
 };
 
 export default internalEndpoints;

@@ -20,7 +20,8 @@ const styles = css`
     padding: 0px;
     display: inline-block;
     vertical-align: middle;
-    margin: 5px 16px 5px 0;
+    margin: 0px ${props => props.theme.spacing.ELEM_SPACING.MED}
+      ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     border-radius: 50%;
     line-height: 25px;
     position: relative;

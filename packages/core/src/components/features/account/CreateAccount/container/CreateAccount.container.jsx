@@ -14,6 +14,7 @@ import {
   getConfirmHideShowPwd,
   getLabels,
   getErrorMessage,
+  getPasswordLabels,
 } from './CreateAccount.selectors';
 import {
   getUserLoggedInState,
@@ -51,6 +52,7 @@ export class CreateAccountContainer extends React.Component {
     userplccCardNumber: PropTypes.string.isRequired,
     userplccCardId: PropTypes.string.isRequired,
     toastMessage: PropTypes.func,
+    passwordLabels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -139,6 +141,7 @@ export class CreateAccountContainer extends React.Component {
       userplccCardNumber,
       userplccCardId,
       toastMessage,
+      passwordLabels,
     } = this.props;
     return (
       <CreateAccountView
@@ -158,6 +161,7 @@ export class CreateAccountContainer extends React.Component {
         userplccCardNumber={userplccCardNumber}
         userplccCardId={userplccCardId}
         toastMessage={toastMessage}
+        passwordLabels={passwordLabels}
       />
     );
   }
@@ -174,6 +178,7 @@ export const mapStateToProps = state => {
     error: getErrorMessage(state),
     labels: getLabels(state),
     formErrorMessage: getFormValidationErrorMessages(state),
+    passwordLabels: getPasswordLabels(state),
   };
 };
 

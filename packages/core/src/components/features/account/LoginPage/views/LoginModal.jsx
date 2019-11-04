@@ -9,7 +9,7 @@ class OpenLoginModal extends React.Component<Props> {
     super(props);
     this.state = {
       currentForm: 'login',
-      component: 'login',
+      component: props.componentType || 'login',
     };
   }
 

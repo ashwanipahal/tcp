@@ -96,7 +96,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
 
     const locationPromise = this.place
       ? Promise.resolve(this.place.geometry.location)
-      : getAddressLocationInfo(formData.addressLocation);
+      : getAddressLocationInfo(formData && formData.addressLocation);
     onSubmit(locationPromise, colorFitsSizesMap, formData);
   };
 
@@ -429,6 +429,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
       bopisChangeStore,
       cartBopisStoresList,
       error,
+      openRestrictedModalForBopis,
     } = this.props;
     const { isLoading, selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
@@ -472,6 +473,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
         selectedValue={selectedValue}
         onQuantityChange={this.quantityChange}
         initialValues={this.initialValues}
+        openRestrictedModalForBopis={openRestrictedModalForBopis}
       />
     );
   }

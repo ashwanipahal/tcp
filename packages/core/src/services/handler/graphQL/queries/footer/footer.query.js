@@ -1,9 +1,9 @@
 const buildQuery = ({ type, brand, country, channel }) => `
   footer: globalModule(
-    type: "${type}"
-    brand: "${brand}"
-    country: "${country}"
-    channel: "${channel}"
+    type: "${type}",
+    brand: "${brand}",
+    country: "${country}",
+    channel: "${channel}",
   ) {
     submodules {
       footerTop {

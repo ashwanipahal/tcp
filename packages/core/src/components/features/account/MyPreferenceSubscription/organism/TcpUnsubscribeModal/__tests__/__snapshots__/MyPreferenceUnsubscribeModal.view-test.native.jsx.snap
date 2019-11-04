@@ -97,6 +97,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     theme={Object {}}
     type="submit"
     url=""
+    withNoLineHeight={false}
   />
   <Styled(View)>
     <Styled(CustomButton)
@@ -115,14 +116,14 @@ exports[`ProfileInformation component should render correctly 1`] = `
       iconSize="fs12"
       locator=""
       navigation={Object {}}
-      onClick={[MockFunction]}
-      onPress={null}
+      onPress={[MockFunction]}
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_prefrence_modal_cancel"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

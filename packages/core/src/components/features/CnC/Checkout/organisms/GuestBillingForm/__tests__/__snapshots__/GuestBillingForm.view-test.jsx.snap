@@ -26,6 +26,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
   />
   <Styled(CheckoutOrderInfo)
     isGuest={true}
+    pageCategory=""
     showAccordian={true}
   />
   <Styled(CheckoutFooter)
@@ -33,7 +34,9 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoError=""
   />
 </form>
 `;
@@ -130,6 +133,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
   </div>
   <Styled(CheckoutOrderInfo)
     isGuest={true}
+    pageCategory=""
     showAccordian={true}
   />
   <Styled(CheckoutFooter)
@@ -137,7 +141,9 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     backLinkText=""
     hideBackLink={true}
     nextButtonText=""
+    showPayPalButton={false}
     showVenmoSubmit={false}
+    venmoError=""
   />
 </form>
 `;

@@ -18,18 +18,10 @@ const styles = css`
     }
   }
 
-  .checkout-button {
-    display: flex;
-    flex: 1;
-    flex-direction: column-reverse;
-    width: 100%;
-    margin: 0;
-  }
-
-  button.checkout {
-    width: 100%;
-    margin: 0 0 10px 0;
-    padding: 16px 0;
+  .information-header {
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 1px;
   }
 
   .bag-header {
@@ -153,12 +145,31 @@ export const addedToBagActionsStyles = css`
       ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
+  margin-bottom: 0px;
+
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
   }
 
   .checkout-sticky-header {
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+
+  .checkout-button {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
+    padding: 0 13px 0;
+    box-sizing: border-box;
+    margin-top: 35px;
+  }
+
+  button.checkout {
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding: 16px 0;
   }
 `;
 

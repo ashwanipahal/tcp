@@ -41,6 +41,8 @@ export default css`
     }
   }
   .moduleL__tile-image {
+    display: flex;
+    align-items: center;
     max-width: 103px;
     max-height: 128px;
 
@@ -68,6 +70,13 @@ export default css`
   .moduleL__tile-link {
     color: ${props => props.theme.colorPalette.gray['900']};
   }
+  .moduleL__tile-link::after {
+    position: absolute;
+    bottom: 0px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      bottom: -5px;
+    }
+  }
   .slick-prev,
   .slick-next {
     background-size: 100%;
@@ -81,6 +90,6 @@ export default css`
     right: -70px;
   }
   .slick-dots {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    bottom: 6px;
   }
 `;

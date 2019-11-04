@@ -23,7 +23,10 @@ export function* logoutSaga() {
       if (!isMobileApp()) {
         setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
-        if (window.location.href.indexOf('account') > 0) {
+        if (
+          window.location.href.includes('account') ||
+          window.location.href.includes('checkout/confirmation')
+        ) {
           routerPush('/', '/home');
           scrollPage();
         } else {

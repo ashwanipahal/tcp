@@ -73,4 +73,21 @@ const HideShowFieldWrapper = styled.View`
   ${HideShowField}
 `;
 
-export { FormStyle, DescriptionStyle, ShowHideWrapper, HideShowFieldWrapper };
+const GuestButtonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+const IconContainer = styled.View`
+  position: absolute;
+  right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  width: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+export {
+  FormStyle,
+  DescriptionStyle,
+  ShowHideWrapper,
+  HideShowFieldWrapper,
+  GuestButtonWrapper,
+  IconContainer,
+};

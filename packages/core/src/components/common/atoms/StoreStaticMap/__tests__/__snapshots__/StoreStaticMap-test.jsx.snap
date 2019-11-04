@@ -41,6 +41,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -482,6 +483,7 @@ exports[`StoreStaticMap component canada specific should mount for canada region
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -3961,6 +3963,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -4402,6 +4405,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -7877,6 +7881,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -8318,6 +8323,7 @@ exports[`StoreStaticMap component mobile viewport and app should mount for mobil
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -11797,6 +11803,7 @@ exports[`StoreStaticMap component resize window should update component on windo
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -12238,6 +12245,7 @@ exports[`StoreStaticMap component resize window should update component on windo
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",
@@ -12490,6 +12498,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
         "black": "#000",
         "blue": Object {
           "100": "#dbebf8",
+          "1000": "#439ad4",
           "300": "#93c5ea",
           "50": "#edf5fb",
           "500": "#4b9fdd",
@@ -12931,6 +12940,7 @@ exports[`StoreStaticMap component should mount with default props 1`] = `
         },
         "fontWeights": Object {
           "black": "900",
+          "bold": "700",
           "extrabold": "800",
           "regular": "400",
           "semibold": "600",

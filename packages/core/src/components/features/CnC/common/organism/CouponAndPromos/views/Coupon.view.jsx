@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
+import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Col from '../../../../../../common/atoms/Col';
@@ -103,6 +105,8 @@ class CouponView extends React.PureComponent<Props> {
               additionalClassNameModal={additionalClassName}
             />
           )}
+          {/* UX timer for coupons list visibility */}
+          <RenderPerf.Measure name={PROMOTION_VISIBLE} />
           <CouponDetailModal
             labels={labels}
             openState={detailStatus}

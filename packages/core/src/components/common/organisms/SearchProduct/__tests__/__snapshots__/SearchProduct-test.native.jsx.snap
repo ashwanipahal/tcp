@@ -96,6 +96,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
           text="Cancel"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <SectionList
@@ -103,7 +104,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
         disableVirtualization={false}
         extraData=""
         horizontal={false}
-        initialNumToRender={10}
+        initialNumToRender={0}
         keyExtractor={[Function]}
         keyboardShouldPersistTaps="handled"
         maxToRenderPerBatch={10}

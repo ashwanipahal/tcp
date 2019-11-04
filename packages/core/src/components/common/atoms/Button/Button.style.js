@@ -22,6 +22,22 @@ const getShape = props => {
   return ``;
 };
 
+const checkHover = props => {
+  return props.nohover
+    ? ''
+    : `&:hover {
+    border-bottom: 2px solid
+     ${
+       props.theme.isGymboree
+         ? props.theme.colorPalette.primary.main
+         : props.theme.colors.ANCHOR.SECONDARY
+     };
+     padding-bottom: ${!props.nohover ? '4px' : ''};
+     text-decoration: none;
+     border-radius: 0;
+   }`;
+};
+
 const ButtonStyles = css`
   border: none;
   border-radius: 0;
@@ -238,7 +254,7 @@ const ButtonStyles = css`
     props.buttonVariation !== darkLinkCategory
       ? getShape(props)
       : ``}
-
+    
   ${props =>
     props.link
       ? `
@@ -249,17 +265,8 @@ const ButtonStyles = css`
         border: 0;
         padding: 0;
         text-transform: none;
-      &:hover {
-        border-bottom: 2px solid
-        ${
-          props.theme.isGymboree
-            ? props.theme.colorPalette.primary.main
-            : props.theme.colors.ANCHOR.SECONDARY
-        };
-        padding-bottom: 4px;
-        text-decoration: none;
-        border-radius: 0;
-      }
+        text-decoration: ${props.underline ? 'underline' : 'none'}
+      ${checkHover}
       &:focus {
         background: none;
       }
@@ -269,6 +276,7 @@ const ButtonStyles = css`
   `
       : ``}
       ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
 `;
 
 export default ButtonStyles;

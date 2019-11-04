@@ -259,7 +259,6 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       display: inline-block;
       font-size: ${props => props.theme.typography.fontSizes.fs26};
-      width: 136px;
       text-align: left;
       margin-left: 10px;
       position: relative;
@@ -305,7 +304,6 @@ export default css`
         font-size: ${props => props.theme.typography.fontSizes.fs64};
         line-height: normal;
         position: static;
-        vertical-align: middle;
       }
     }
   }
@@ -363,13 +361,13 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
     line-height: normal;
     display: inline;
     vertical-align: top;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.typography.fontSizes.fs16};
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
       line-height: normal;
     }
 
@@ -383,7 +381,7 @@ export default css`
     color: ${props => props.theme.colorPalette.text.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
     line-height: normal;
     display: inline;
     vertical-align: top;
@@ -398,16 +396,16 @@ export default css`
   .ribbon_default_text {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.secondary};
-    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    font-weight: ${props => props.theme.typography.fontWeights.normal};
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     display: block;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.typography.fontSizes.fs16};
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs20};
+      font-size: ${props => props.theme.typography.fontSizes.fs18};
     }
   }
 
@@ -505,6 +503,21 @@ export default css`
         font-size: ${props => props.theme.typography.fontSizes.fs18};
         bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
       }
+    }
+  }
+
+  /*
+  * Module N Promo Banner styles Gymboree
+  *********************************/
+  .percentage_inline_promo {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    letter-spacing: 0px;
+    color: ${props => props.theme.colorPalette.white};
+    text-align: center;
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
     }
   }
 `;

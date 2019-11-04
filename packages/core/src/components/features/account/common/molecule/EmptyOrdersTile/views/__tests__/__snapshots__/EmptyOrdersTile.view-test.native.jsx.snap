@@ -39,6 +39,7 @@ exports[`EmptyOrderTile should render correctly 1`] = `
       text="msg"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Fragment>

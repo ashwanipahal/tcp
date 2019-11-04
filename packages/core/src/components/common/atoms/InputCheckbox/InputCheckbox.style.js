@@ -52,6 +52,11 @@ const styles = css`
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ${props =>
+      props.isPickUpStoreView
+        ? `
+    font-size: ${props.theme.typography.fontSizes.fs16};`
+        : `font-size: ${props.theme.typography.fontSizes.fs12};`}
   }
 
   & .CheckBox__text a {
@@ -75,6 +80,9 @@ const styles = css`
     width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 `;
 

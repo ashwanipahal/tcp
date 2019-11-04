@@ -138,21 +138,41 @@ export const getProductSkuId = product => {
   return product.getIn(['productInfo', 'skuId']);
 };
 
-export const getProductItemPrice = product => {
-  return product.getIn(['itemInfo', 'listPrice']);
+export const getPdpUrl = product => {
+  return product.getIn(['productInfo', 'pdpUrl']);
 };
 
 export const getProductItemId = product => {
   return product.getIn(['itemInfo', 'itemId']);
 };
 
-export const getProductItemUnitOfferPrice = product => {
-  return product.getIn(['itemInfo', 'unitOfferPrice']);
+export const getListPrice = product => {
+  return product.getIn(['itemInfo', 'listPrice']);
 };
 
-export const getProductItemUnitPrice = product => {
-  return product.getIn(['itemInfo', 'listUnitPrice']);
+export const getOfferPrice = product => {
+  return product.getIn(['itemInfo', 'offerPrice']);
 };
+
+export const getWasPrice = product => {
+  return product.getIn(['itemInfo', 'wasPrice']);
+};
+
+export const getSalePrice = product => {
+  return product.getIn(['itemInfo', 'salePrice']);
+};
+
+// export const getProductItemUnitOfferPrice = product => {
+//   return product.getIn(['itemInfo', 'unitOfferPrice']);
+// };
+
+// export const getProductItemPrice = product => {
+//   return product.getIn(['itemInfo', 'listPrice']);
+// };
+
+// export const getProductItemUnitPrice = product => {
+//   return product.getIn(['itemInfo', 'listUnitPrice']);
+// };
 
 export const getIsCartItemsUpdating = state => {
   return state.CartPageReducer.getIn(['uiFlags', 'isCartItemsUpdating']);
@@ -344,6 +364,19 @@ export const getLabelsCartItemTile = state => {
   };
 };
 
+function getCurrentCurrency(state) {
+  return state.session.siteDetails.currency;
+}
+
+function getCurrenciesMap(state) {
+  return state.session.siteOptions.currenciesMap;
+}
+
+export function getCurrencyExchange(state) {
+  const selectedCurrency = getCurrentCurrency(state);
+  return getCurrenciesMap(state).filter(currency => currency.id === selectedCurrency);
+}
+
 export const getProductDetails = tile => {
   return {
     itemInfo: {
@@ -358,9 +391,14 @@ export const getProductDetails = tile => {
       itemBrand: getProductBrand(tile),
       imagePath: getProductImage(tile),
       itemId: getOrderItemId(tile),
-      itemPrice: getProductItemPrice(tile),
-      unitOfferPrice: getProductItemUnitOfferPrice(tile),
-      itemUnitPrice: getProductItemUnitPrice(tile),
+      listPrice: getListPrice(tile),
+      offerPrice: getOfferPrice(tile),
+      wasPrice: getWasPrice(tile),
+      salePrice: getSalePrice(tile),
+
+      // itemPrice: getProductItemPrice(tile),
+      // unitOfferPrice: getProductItemUnitOfferPrice(tile),
+      // itemUnitPrice: getProductItemUnitPrice(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),
@@ -369,6 +407,7 @@ export const getProductDetails = tile => {
       upc: getProductItemUpcNumber(tile),
       generalProductId: getGeneralProdId(tile),
       skuId: getProductSkuId(tile),
+      pdpUrl: getPdpUrl(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),
@@ -408,4 +447,8 @@ export const isItemBossBopisInEligible = (state, { itemBrand, orderItemType } = 
 
 export const getCartToggleError = state => {
   return state.CartItemTileReducer.get('toggleError');
+};
+
+export const getCartBossBopisToggleError = state => {
+  return state.CartItemTileReducer.get('toggleBossBopisError');
 };

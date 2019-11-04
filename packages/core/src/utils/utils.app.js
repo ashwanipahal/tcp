@@ -368,6 +368,10 @@ export const resetNavigationStack = navigation => {
   );
 };
 
+const getRegion = (configVal, country) => {
+  return configVal && country;
+};
+
 /**
  * function getAPIInfoFromEnv
  * @param {*} apiSiteInfo
@@ -398,6 +402,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     assetHostTCP: envConfig.RWD_APP_DAM_HOST_TCP || apiSiteInfo.assetHost,
     productAssetPathTCP: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP,
     assetHostGYM: envConfig.RWD_APP_DAM_HOST_GYM || apiSiteInfo.assetHost,
+    assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`],
     productAssetPathGYM: envConfig.RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM,
     domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
     unbxdTCP: envConfig.RWD_APP_UNBXD_DOMAIN_TCP || apiSiteInfo.unbxd,
@@ -406,14 +411,23 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     unbxdApiKeyTCP,
     unboxKeyGYM: `${unbxdApiKeyGYM}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_GYM`]}`,
     unbxdApiKeyGYM,
+    previewToken: envConfig[`RWD_APP_PREVIEW_TOKEN_${appTypeSuffix}`],
+    previewDateEnv: envConfig[`RWD_APP_PREVIEW_DATE_${appTypeSuffix}`],
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
+    RAYGUN_API_KEY: envConfig[`RWD_APP_RAYGUN_API_KEY_${appTypeSuffix}`],
+    RWD_APP_VERSION: envConfig.RWD_APP_VERSION,
+    isErrorReportingActive: envConfig.isErrorReportingActive,
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
     crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
     TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
     TWITTER_CONSUMER_SECRET: envConfig[`RWD_APP_TWITTER_CONSUMER_SECRET_${appTypeSuffix}`],
     RECOMMENDATIONS_API: recommendationsAPI,
+    styliticsUserNameTCP: envConfig.RWD_APP_STYLITICS_USERNAME_TCP,
+    styliticsUserNameGYM: envConfig.RWD_APP_STYLITICS_USERNAME_GYM,
+    styliticsRegionTCP: getRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
+    styliticsRegionGYM: getRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
   };
 };
 

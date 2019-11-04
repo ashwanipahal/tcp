@@ -66,6 +66,13 @@ const ctaStyle = css`
       margin-left: 6px;
     }
   }
+  .addBagActions-error {
+    background: transparent;
+
+    span {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+    }
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ctaStyle;

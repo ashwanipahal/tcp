@@ -4,13 +4,14 @@ exports[`RichText should render correctly 1`] = `
 <WebView
   domStorageEnabled={false}
   isApplyDeviceHeight={false}
+  isNativeView={false}
   javaScriptEnabled={false}
   originWhitelist={
     Array [
       "*",
     ]
   }
-  source=""
+  source="<div><p>Hello <b>World</b></p><br /></div>"
   style={
     Object {
       "backgroundColor": "transparent",

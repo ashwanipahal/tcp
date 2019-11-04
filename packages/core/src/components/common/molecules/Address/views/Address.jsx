@@ -70,7 +70,7 @@ const getUserName = ({ address, isDefault, showDefault }) => {
  * @param {object} address address object
  */
 
-const Address = ({
+export const Address = ({
   address,
   className,
   dataLocatorPrefix,

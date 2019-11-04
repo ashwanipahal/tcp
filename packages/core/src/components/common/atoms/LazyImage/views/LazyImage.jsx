@@ -35,7 +35,16 @@ export class LazyImage extends React.Component {
   // Just render the image with data-src
   render() {
     const { isImgLoaded } = this.state;
-    const { alt, src, srcset, sizes, className, showPlaceHolder, ...otherProps } = this.props;
+    const {
+      alt,
+      src,
+      srcset,
+      sizes,
+      className,
+      showPlaceHolder,
+      forwardedRef,
+      ...otherProps
+    } = this.props;
     return (
       <img
         alt={alt}
@@ -46,6 +55,7 @@ export class LazyImage extends React.Component {
         data-src={src}
         data-srcset={srcset}
         data-sizes={sizes}
+        ref={forwardedRef}
         onLoad={this.setImgLoaded}
         {...otherProps}
       />
@@ -59,6 +69,8 @@ LazyImage.propTypes = {
   sizes: PropTypes.string,
   className: PropTypes.string,
   alt: PropTypes.string.isRequired,
+  // We need this because React.forwardRef doesn't work with class components
+  forwardedRef: PropTypes.shape({ current: PropTypes.any }),
   showPlaceHolder: PropTypes.bool.isRequired,
 };
 
@@ -66,6 +78,7 @@ LazyImage.defaultProps = {
   srcset: '',
   sizes: '',
   className: '',
+  forwardedRef: null,
 };
 
 export default LazyImage;

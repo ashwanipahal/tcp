@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Items component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className=""
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={null}
+  textAlign="left"
+>
+  <Styled(Row)
+    className="elem-mb-SM"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="button"
+        buttonVariation="fixed-width"
+        centered={true}
+        fill="BLUE"
+        target="_blank"
+        to=""
+      >
+        lbl_orders_trackit
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="order-Item"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(OrderPreviewItem)
+        isCanceledList={false}
+        item={
+          Object {
+            "orderGroup": Object {
+              "itemBrand": "TCP",
+              "linePrice": 24.94,
+              "listPrice": 24.94,
+              "offerPrice": 24.94,
+              "quantity": 1,
+              "quantityCanceled": 0,
+              "quantityOOS": 0,
+              "quantityReturned": 0,
+              "quantityShipped": 0,
+            },
+            "productInfo": Object {
+              "color": Object {
+                "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/2044394_627.jpg",
+                "name": "DAYBREAK",
+              },
+              "fit": null,
+              "imagePath": "//uatlive4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044394_627.jpg",
+              "name": "Girls Uniform Long Sleeve Polo Dress",
+              "pdpUrl": "http://uatlive4.childrensplace.com/us/p/Girls-Uniform-Long-Sleeve-Polo-Dress-2044394-627",
+              "size": "XL (14)",
+              "upc": "00889705122527",
+            },
+          }
+        }
+        items={
+          Array [
+            Object {
+              "orderGroup": Object {
+                "itemBrand": "TCP",
+                "linePrice": 24.94,
+                "listPrice": 24.94,
+                "offerPrice": 24.94,
+                "quantity": 1,
+                "quantityCanceled": 0,
+                "quantityOOS": 0,
+                "quantityReturned": 0,
+                "quantityShipped": 0,
+              },
+              "productInfo": Object {
+                "color": Object {
+                  "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/swatches/2044394_627.jpg",
+                  "name": "DAYBREAK",
+                },
+                "fit": null,
+                "imagePath": "//uatlive4.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/125/2044394_627.jpg",
+                "name": "Girls Uniform Long Sleeve Polo Dress",
+                "pdpUrl": "http://uatlive4.childrensplace.com/us/p/Girls-Uniform-Long-Sleeve-Polo-Dress-2044394-627",
+                "size": "XL (14)",
+                "upc": "00889705122527",
+              },
+            },
+          ]
+        }
+        key="0"
+        trackingNumber=""
+        trackingUrl=""
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-SM"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="button"
+        asPath="/account/orders/order-details/undefined"
+        buttonVariation="fixed-width"
+        centered={true}
+        fill="BLUE"
+        target="_blank"
+        to="/account?id=orders&subSection=order-details"
+      >
+        lbl_orders_fullOrderDetail
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(BodyCopy)>
+`;

@@ -232,6 +232,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
               "dropDownStyle": null,
               "itemStyle": null,
               "onValueChange": null,
+              "openDropdownOnLoad": false,
               "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
@@ -358,6 +359,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
               "dropDownStyle": null,
               "itemStyle": null,
               "onValueChange": null,
+              "openDropdownOnLoad": false,
               "selectedItemFontWeight": "semibold",
               "selectedValue": null,
               "variation": "primary",
@@ -565,6 +567,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       theme={Object {}}
       type="submit"
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
   <Styled(View)>
@@ -589,6 +592,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
       text="lbl_profile_personal_info_cancelCta"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

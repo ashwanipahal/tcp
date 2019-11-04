@@ -7,7 +7,7 @@ exports[`ModuleK native component Should renders correctly 1`] = `
       color="text.primary"
       dataLocator="moduleK_header_text"
       fontFamily="primary"
-      fontSize="fs36"
+      fontSize="fs32"
       fontWeight="black"
       headerText={
         Array [

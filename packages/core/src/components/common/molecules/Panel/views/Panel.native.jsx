@@ -13,11 +13,12 @@ import {
   TextWrapper,
 } from '../Panel.style.native';
 import ImageComp from '../../../atoms/Image';
+import CustomIcon from '../../../atoms/Icon';
+import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 
 const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-down-gray.png');
 const upIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-up-gray.png');
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
-const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right-gray.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
 
 class Panel extends React.PureComponent<Props> {
@@ -33,7 +34,7 @@ class Panel extends React.PureComponent<Props> {
       <FavoritesContainer>
         <FavoritesWrapper>
           <ImageWrapper>
-            <ImageComp source={cardIcon} width={50} height={40} />
+            <ImageComp source={cardIcon} width={50} height={40} resizeMode="contain" />
           </ImageWrapper>
           <TextWrapper>
             <BodyCopy
@@ -64,7 +65,7 @@ class Panel extends React.PureComponent<Props> {
             />
           </TextWrapper>
           <ImageWrapper>
-            <ImageComp source={favIcon} width={20} height={18} />
+            <ImageComp source={favIcon} width={20} height={18} resizeMode="contain" />
           </ImageWrapper>
         </FavoritesWrapper>
       </FavoritesContainer>
@@ -111,7 +112,13 @@ class Panel extends React.PureComponent<Props> {
               />
             </TouchableHeader>
             <ImageWrapper onPress={() => this.toggleView()}>
-              <ImageComp customStyle={imgStyle} source={carrotIcon} width={10} height={6} />
+              <ImageComp
+                customStyle={imgStyle}
+                source={carrotIcon}
+                width={10}
+                height={6}
+                resizeMode="contain"
+              />
             </ImageWrapper>
           </TitleContainer>
         )}
@@ -122,9 +129,13 @@ class Panel extends React.PureComponent<Props> {
               {isCardApply && this.getCreditCardApply(title)}
               {isFavorite && this.getFavoriteOverview(title)}
               {!isImageLink && this.getHeaderTitle()}
-              <ImageWrapper onPress={() => this.toggleView()}>
-                <ImageComp customStyle={imgStyle} source={rightIcon} width={7} height={10} />
-              </ImageWrapper>
+              <CustomIcon
+                name={ICON_NAME.chevronRight}
+                size="fs12"
+                color="gray.600"
+                onPress={() => this.toggleView()}
+                isButton
+              />
             </TitleContainer>
           </PanelContainer>
         )}

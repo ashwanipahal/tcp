@@ -9,7 +9,7 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
   </Styled(View)>
   <View>
     <Connect(OrderLedgerContainer)
-      isReviewPage={false}
+      pageCategory={Object {}}
     />
   </View>
   <Styled(View)>
@@ -41,22 +41,9 @@ exports[`CnCCommonTemplate Page should render correctly if on confirmation page 
   <View>
     <Connect(OrderLedgerContainer)
       isConfirmationPage={true}
+      pageCategory={Object {}}
       showAccordian={true}
     />
-    <Styled(View)>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        spacingStyles="margin-top-LRG margin-bottom-LRG"
-        text="LOYALTY BANNER"
-        textAlign="center"
-        textDecoration={null}
-      />
-    </Styled(View)>
     <Styled(View)>
       <Styled(Styled(BodyCopy))
         accessibilityText=""

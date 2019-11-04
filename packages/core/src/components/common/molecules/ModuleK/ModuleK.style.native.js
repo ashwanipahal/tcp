@@ -11,20 +11,34 @@ const HeaderWrapper = styled.View`
 `;
 
 const PromoTextBannerWrapper = styled.View`
-  margin-top: 12px;
-  margin-bottom: 16px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 const WrapperView = styled.View`
-  ${({ width }) => (width ? `width: ${width}` : '')};
+  ${({ width }) =>
+    width
+      ? `
+width: $ {
+  width
+}
+`
+      : ''};
   flex: 1;
   flex-direction: row;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: -3px;
 `;
 
 const StyledBodyCopy = styled(BodyCopy)`
-  ${({ lineHeight }) => (lineHeight ? `line-height: ${lineHeight}` : '')}
+  ${({ lineHeight }) =>
+    lineHeight
+      ? `
+line - height: $ {
+  lineHeight
+}
+`
+      : ''}
 `;
 
 export {

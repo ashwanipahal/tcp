@@ -25,6 +25,7 @@ import {
   getProductDetailFormValues,
   getShortDescription,
   getGeneralProductId,
+  getAlternateSizes,
 } from './ProductDetail.selectors';
 
 import {
@@ -86,6 +87,7 @@ class ProductDetailContainer extends React.PureComponent {
       addToBagError,
       onAddItemToFavorites,
       isLoggedIn,
+      alternateSizes,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -110,6 +112,7 @@ class ProductDetailContainer extends React.PureComponent {
             addToBagError={addToBagError}
             onAddItemToFavorites={onAddItemToFavorites}
             isLoggedIn={isLoggedIn}
+            alternateSizes={alternateSizes}
           />
         ) : null}
       </React.Fragment>
@@ -140,6 +143,7 @@ function mapStateToProps(state) {
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    alternateSizes: getAlternateSizes(state),
   };
 }
 
@@ -187,6 +191,9 @@ ProductDetailContainer.propTypes = {
   }),
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  alternateSizes: PropTypes.shape({
+    key: PropTypes.string,
+  }),
 };
 
 ProductDetailContainer.defaultProps = {
@@ -208,6 +215,7 @@ ProductDetailContainer.defaultProps = {
   itemPartNumber: '',
   pdpLabels: {},
   isLoggedIn: false,
+  alternateSizes: {},
 };
 
 export default withRouter(

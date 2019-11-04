@@ -22,23 +22,24 @@ class RelatedOutfits extends React.PureComponent {
     this.setState({ isAccordionOpen: !isAccordionOpen });
   };
 
+  getRelatedOutfitSlots = () => {
+    const { navigation, selectedColorProductId } = this.props;
+    return (
+      <ModuleQ
+        navigation={navigation}
+        hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
+        selectedColorProductId={selectedColorProductId}
+        hideTabs
+        divTabs={[]}
+        bgClass="yellow-bg"
+      />
+    );
+  };
+
   render() {
-    const { pdpLabels, navigation, selectedColorProductId } = this.props;
+    const { pdpLabels } = this.props;
     const { completeTheLook } = pdpLabels;
     const { isAccordionOpen } = this.state;
-
-    const RelatedOutfitsSlots = () => {
-      return (
-        <ModuleQ
-          navigation={navigation}
-          hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
-          selectedColorProductId={selectedColorProductId}
-          hideTabs
-          divTabs={[]}
-          bgClass="yellow-bg"
-        />
-      );
-    };
 
     return (
       <View>
@@ -58,7 +59,7 @@ class RelatedOutfits extends React.PureComponent {
           </ImageStyleWrapper>
         </StyleRelatedOutfits>
 
-        {isAccordionOpen ? <RelatedOutfitsSlots /> : null}
+        {isAccordionOpen ? this.getRelatedOutfitSlots() : null}
       </View>
     );
   }

@@ -3,7 +3,7 @@
 exports[`ImageGrid native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)
-    width={346}
+    width={347}
   />
 </Styled(View)>
 `;

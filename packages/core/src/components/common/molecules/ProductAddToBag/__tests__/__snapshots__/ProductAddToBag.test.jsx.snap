@@ -30,7 +30,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-jzJRlG",
+                  "componentId": "sc-kAzzGY",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -74,7 +74,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       padding: 5px ",
                     [Function],
                     ";
-      border: solid 1px #e3e3e3;
+      border: 1px solid ",
+                    [Function],
+                    ";
       display: inline-block;
       text-transform: capitalize;
       font-size: ",
@@ -84,11 +86,14 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       margin-bottom: ",
                     [Function],
                     ";
+      text-align: center;
+      width: 54px;
     }
 
     &.item-disabled-option .input-radio-title {
       color: #e3e3e3;
       cursor: initial;
+      border: solid 1px #e3e3e3;
     }
 
     .input-radio-icon-unchecked,
@@ -120,6 +125,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       border: solid 1px ",
                     [Function],
                     ";
+      font-weight: ",
+                    [Function],
+                    ";
     }
   }
 ",
@@ -130,7 +138,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-jzJRlG",
+                "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -154,6 +162,21 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
             width={49}
           />
         </div>
+        <p
+          className="size-unavailable"
+        >
+          <span
+            className="unavailable-text"
+          />
+          <span
+            className="size-find-in-store"
+          >
+            <Connect(Styled(FulfillmentSection))
+              isAnchor={true}
+              title="Find In Store"
+            />
+          </span>
+        </p>
         <div
           className="qty-selector"
         >
@@ -205,7 +228,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-jzJRlG",
+                  "componentId": "sc-kAzzGY",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -249,7 +272,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       padding: 5px ",
                     [Function],
                     ";
-      border: solid 1px #e3e3e3;
+      border: 1px solid ",
+                    [Function],
+                    ";
       display: inline-block;
       text-transform: capitalize;
       font-size: ",
@@ -259,11 +284,14 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       margin-bottom: ",
                     [Function],
                     ";
+      text-align: center;
+      width: 54px;
     }
 
     &.item-disabled-option .input-radio-title {
       color: #e3e3e3;
       cursor: initial;
+      border: solid 1px #e3e3e3;
     }
 
     .input-radio-icon-unchecked,
@@ -295,6 +323,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       border: solid 1px ",
                     [Function],
                     ";
+      font-weight: ",
+                    [Function],
+                    ";
     }
   }
 ",
@@ -305,7 +336,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "displayName": "Styled(ProductSizeSelector)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-jzJRlG",
+                "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -357,9 +388,26 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
               lineHeight="normal"
               link={null}
               textAlign="left"
-            />
+            >
+               ERROR: 
+            </Styled(BodyCopy)>
           </Styled(BodyCopy)>
         </div>
+        <p
+          className="size-unavailable"
+        >
+          <span
+            className="unavailable-text"
+          />
+          <span
+            className="size-find-in-store"
+          >
+            <Connect(Styled(FulfillmentSection))
+              isAnchor={true}
+              title="Find In Store"
+            />
+          </span>
+        </p>
         <div
           className="qty-selector"
         >

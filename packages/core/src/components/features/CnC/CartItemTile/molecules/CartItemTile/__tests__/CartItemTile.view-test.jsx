@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import * as utils from '@tcp/core/src/utils/utils';
 import CartItemTile, { CartItemTileVanilla } from '../views/CartItemTile.view';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+
+utils.getBrand = jest.fn().mockReturnValue('tcp');
 
 describe('CartItemTile common component', () => {
   it('renders correctly', () => {
@@ -15,6 +18,7 @@ describe('CartItemTile common component', () => {
           myPlacePoints: 123,
           isGiftItem: true,
           fit: 'regular',
+          itemBrand: 'tcp',
         },
         miscInfo: {
           badge: '',
@@ -42,9 +46,15 @@ describe('CartItemTile common component', () => {
           myPlacePoints: 123,
           isGiftItem: true,
           fit: 'regular',
+          itemBrand: 'tcp',
         },
         miscInfo: {
           badge: '',
+        },
+        productInfo: {
+          skuId: '3444',
+          generalProductId: '111',
+          pdpUrl: '',
         },
       },
       labels: {
@@ -70,6 +80,7 @@ describe('CartItemTile common component', () => {
           isGiftItem: true,
           fit: 'regular',
           itemId: '123',
+          itemBrand: 'tcp',
         },
         miscInfo: {
           badge: '',
@@ -77,6 +88,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       addItemToSflList: jest.fn(),
@@ -105,6 +117,7 @@ describe('CartItemTile common component', () => {
           myPlacePoints: 123,
           isGiftItem: true,
           fit: 'regular',
+          itemBrand: 'tcp',
         },
         miscInfo: {
           badge: '',
@@ -134,6 +147,7 @@ describe('CartItemTile common component', () => {
           isGiftItem: true,
           fit: 'regular',
           itemId: '123',
+          itemBrand: 'tcp',
         },
         miscInfo: {
           badge: '',
@@ -141,6 +155,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       addItemToSflList: jest.fn(),
@@ -172,6 +187,7 @@ describe('CartItemTile common component', () => {
           isGiftItem: true,
           fit: 'regular',
           itemId: '123',
+          itemBrand: 'tcp',
         },
         miscInfo: {
           badge: '',
@@ -179,6 +195,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       addItemToSflList: jest.fn(),
@@ -209,6 +226,8 @@ describe('CartItemTile common component', () => {
           price: 25,
           qty: 1,
           color: 'blue',
+          offerPrice: 38.85,
+          itemBrand: 'tcp',
         },
         miscInfo: {
           badge: '',
@@ -219,6 +238,7 @@ describe('CartItemTile common component', () => {
         productInfo: {
           skuId: '3444',
           generalProductId: '111',
+          pdpUrl: '',
         },
       },
       onPickUpOpenClick: jest.fn(),
@@ -256,6 +276,8 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
           fit: 'regular',
           itemBrand: 'TCP',
           itemUnitPrice: 12.345,
+          offerPrice: 38.85,
+          itemId: '123',
         },
         miscInfo: {
           badge: '',
@@ -270,6 +292,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
         },
         productInfo: {
           upc: 'upc',
+          pdpUrl: '',
         },
       },
       labels: {
@@ -287,6 +310,9 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
       isBossClearanceProductEnabled: true,
       isBopisClearanceProductEnabled: true,
       isRadialInventoryEnabled: true,
+      pickupStoresInCart: {},
+      onPickUpOpenClick: jest.fn(),
+      toggleBossBopisError: null,
     };
   });
 
@@ -400,5 +426,20 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
     const instance = component.instance();
     instance.componentWillUnmount();
     expect(props.clearToggleError).toHaveBeenCalled();
+  });
+
+  it('should open pickup modal for boss/bopis toggle error', () => {
+    jest.useFakeTimers();
+    props.pageView = 'myBag';
+    props.toggleBossBopisError = {
+      errorMessage: 'errorMessage',
+      itemId: '123',
+      targetOrderType: 'BOPIS',
+    };
+    const component = shallow(<CartItemTileVanilla {...props} />);
+    const instance = component.instance();
+    instance.componentDidUpdate({ toggleBossBopisError: null });
+    jest.runAllTimers();
+    expect(props.onPickUpOpenClick).toHaveBeenCalled();
   });
 });

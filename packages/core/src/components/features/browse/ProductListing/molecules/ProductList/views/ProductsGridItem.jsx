@@ -514,21 +514,25 @@ class ProductsGridItem extends React.PureComponent {
           )}
           {
             <Row fullBleed className="product-wishlist-container">
-              <Col colSize={{ small: 4, medium: 6, large: 10 }}>
+              <Col colSize={{ small: 12 }}>
                 <BodyCopy
                   dataLocator={getLocator('global_Extended_sizes_text')}
                   fontWeight="extrabold"
                   fontFamily="secondary"
                   fontSize={['fs10', 'fs12', 'fs14']}
+                  className="extended-sizes-text"
                 >
-                  {this.getProductPriceSection(
-                    listPriceForColor,
-                    offerPriceForColor,
-                    badge3,
-                    isShowBadges
-                  )}
                   {badge2 && badge2.toUpperCase()}
                 </BodyCopy>
+              </Col>
+
+              <Col colSize={{ small: 4, medium: 6, large: 10 }}>
+                {this.getProductPriceSection(
+                  listPriceForColor,
+                  offerPriceForColor,
+                  badge3,
+                  isShowBadges
+                )}
               </Col>
               {WishListIcon(
                 isFavoriteView,

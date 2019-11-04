@@ -96,6 +96,17 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   // }
 }
 
+export function* handleServerSideErrorAPI(e, componentName = CONSTANTS.PAGE) {
+  const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+  const billingError = getServerErrorMessage(e, errorsMapping);
+  yield put(
+    CHECKOUT_ACTIONS.setServerErrorCheckout({
+      errorMessage: billingError,
+      component: componentName,
+    })
+  );
+}
+
 function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
@@ -124,11 +135,7 @@ function* submitPickupSection({ payload }) {
     //   throw getSubmissionError(this.store, 'submitPickupSection', err);
     // });
   } catch (e) {
-    const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
-    const billingError = getServerErrorMessage(e, errorsMapping);
-    yield put(
-      CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
-    );
+    yield call(handleServerSideErrorAPI, e);
   }
 }
 // function setCartInfo(cartInfo, isSetCartItems) {
@@ -165,7 +172,11 @@ function* loadShipmentMethods(miniAddress, throwError) {
 }
 
 function* loadCartAndCheckoutDetails(...params) {
-  const [recalcRewards, excludeCartItems, translation, updateSmsInfo] = params;
+  const [recalcRewards, excludeItems, translation, updateSmsInfo] = params;
+  let excludeCartItems = excludeItems;
+  if (isMobileApp()) {
+    excludeCartItems = false;
+  }
   yield put(
     BAG_PAGE_ACTIONS.getCartData({
       isRecalculateTaxes: false,
@@ -230,7 +241,6 @@ function* initCheckoutSectionData({
   payload: { recalc, pageName, isPaypalPostBack, initialLoad },
 }) {
   const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
-  const isMobile = isMobileApp();
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
     yield call(initShippingData, pageName, initialLoad, pendingPromises);
@@ -240,7 +250,7 @@ function* initCheckoutSectionData({
       put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: false,
-          excludeCartItems: !isMobile,
+          excludeCartItems: false,
           recalcRewards: recalc,
           updateSmsInfo: false,
           translation: false,

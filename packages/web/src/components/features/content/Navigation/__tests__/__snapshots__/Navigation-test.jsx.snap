@@ -54,6 +54,32 @@ exports[`NavBar component renders correctly 1`] = `
                         "imageBanner": null,
                         "shopBySize": Array [
                           Object {
+                            "linkList": Array [
+                              Object {
+                                "target": "",
+                                "text": "4",
+                                "title": "4",
+                                "url": "/test",
+                              },
+                              Object {
+                                "target": "",
+                                "text": "5",
+                                "title": "5",
+                                "url": "/test",
+                              },
+                              Object {
+                                "target": "",
+                                "text": "6",
+                                "title": "6",
+                                "url": "/test",
+                              },
+                              Object {
+                                "target": "",
+                                "text": "7",
+                                "title": "7",
+                                "url": "/test",
+                              },
+                            ],
                             "richText": null,
                             "text": Object {
                               "text": "SHOP BY SIZE",

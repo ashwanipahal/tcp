@@ -62,6 +62,7 @@ class CheckoutPage extends React.PureComponent {
       submitReview,
       currentStage,
       setCheckoutStage,
+      isExpressCheckout,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     switch (currentStage && currentStage.toLowerCase()) {
@@ -130,6 +131,7 @@ class CheckoutPage extends React.PureComponent {
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
+            isExpressCheckout={isExpressCheckout}
           />
         );
       case CONFIRMATION:
@@ -181,6 +183,11 @@ CheckoutPage.propTypes = {
   currentStage: PropTypes.string.isRequired,
   checkoutServerError: PropTypes.shape({}).isRequired,
   toastMessage: PropTypes.func.isRequired,
+  isExpressCheckout: PropTypes.bool,
+};
+
+CheckoutPage.defaultProps = {
+  isExpressCheckout: false,
 };
 
 export default withKeyboardAvoidingView(CheckoutPage);

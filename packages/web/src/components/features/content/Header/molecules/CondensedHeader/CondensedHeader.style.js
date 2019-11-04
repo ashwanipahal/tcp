@@ -45,6 +45,9 @@ export default css`
       display: none;
     }
   }
+  .product-image{
+    padding-left:12px;
+  }
 
   .condensed-brand-logo {
     height: 25px;
@@ -172,7 +175,6 @@ export default css`
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
     line-height: 28px;
     text-overflow: ellipsis;
-    width: 70px;
     white-space: nowrap;
   }
 

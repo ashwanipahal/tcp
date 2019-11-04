@@ -296,6 +296,7 @@ class SearchProduct extends React.PureComponent {
             {this.renderSearchContainer()}
             <SectionList
               sections={data}
+              initialNumToRender={data.length}
               keyExtractor={this.keyExtractor}
               renderItem={this.renderItem}
               renderSectionHeader={this.renderSectionHeader}
