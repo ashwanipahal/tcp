@@ -89,7 +89,6 @@ exports[`PickUpFormPartVanilla component should renders correctly props  present
             }
           }
           isEditing={true}
-          isMobile={false}
           labels={Object {}}
           onEditModeChange={[Function]}
           showPhoneNumber={true}

@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 
 import moment from 'moment';
+
 import icons from '../config/icons';
 import locators from '../config/locators';
 import flagIcons from '../config/flagIcons';
@@ -1001,26 +1002,6 @@ export const insertIntoString = (string, idx, rem, str) => {
   return string.slice(0, idx) + str + string.slice(idx + Math.abs(rem));
 };
 
-/**
- * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
- */
-export const enableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.remove('disableBodyScroll');
-  }
-};
-
-/**
- * Disable Body Scroll
- */
-export const disableBodyScroll = () => {
-  if (isClient()) {
-    const [body] = document.getElementsByTagName('body');
-    body.classList.add('disableBodyScroll');
-  }
-};
-
 export const getStyliticsUserName = () => {
   const { styliticsUserNameTCP, styliticsUserNameGYM } = getAPIConfig();
   if (isTCP()) {
@@ -1035,6 +1016,10 @@ export const getStyliticsRegion = () => {
     return styliticsRegionTCP;
   }
   return styliticsRegionGYM;
+};
+
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
 export default {
@@ -1078,4 +1063,5 @@ export default {
   insertIntoString,
   getStyliticsUserName,
   getStyliticsRegion,
+  canUseDOM,
 };

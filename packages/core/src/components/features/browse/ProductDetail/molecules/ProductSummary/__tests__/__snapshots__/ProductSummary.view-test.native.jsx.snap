@@ -46,7 +46,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
       locator="pdp_anchor_complete_the_look"
       margins={null}
       onPress={[Function]}
-      text="Complete The Look"
+      text="Complete The Look1"
       underline={true}
       visible={false}
     />

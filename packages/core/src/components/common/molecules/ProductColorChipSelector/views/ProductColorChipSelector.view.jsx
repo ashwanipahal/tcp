@@ -9,7 +9,7 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { changeImageURLToDOM } from '@tcp/core/src/utils/utils';
+import DamImage from '../../../atoms/DamImage';
 import withStyles from '../../../hoc/withStyles';
 import LabeledRadioButtonGroup from '../../LabeledRadioButtonGroup';
 import styles from '../styles/ProductColorChipSelector.style';
@@ -24,17 +24,28 @@ const getColorsChipsOptionsMap = (
     colorFitsSizesMap.map(colorEntry => {
       const color = colorEntry && colorEntry.get('color');
       const name = color && color.get('name');
-      const imagePath = color && color.get('imagePath');
+      const swatchImagePath = color && color.get('swatchImage');
+      const swatchImageUrl = swatchImagePath && swatchImagePath.split('_');
+      const imgUrl = swatchImageUrl
+        ? `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`
+        : '';
+      const imgData = {
+        alt: '',
+        url: imgUrl,
+      };
+      const imgConfig = 'w_50,h_50,c_thumb,g_auto:0';
+      const imgDataConfig = [`${imgConfig}`, `${imgConfig}`, `${imgConfig}`];
       return {
         value: name,
         title: name,
         content: (
           <span className="color-title-container" title={name}>
             <span className="color-name">{name}</span>
-            <img
+            <DamImage
               className="color-image"
-              src={changeImageURLToDOM(imagePath, 'w_50,h_50,c_thumb,g_auto:0')}
-              alt=""
+              imgData={imgData}
+              isProductImage
+              imgConfigs={imgDataConfig}
             />
           </span>
         ),
