@@ -121,12 +121,12 @@ class DropDown extends React.PureComponent<Props> {
 
   componentDidMount() {
     const { isAnimateList } = this.props;
-    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), isAnimateList && 300);
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), isAnimateList ? 300 : 0);
   }
 
   componentDidUpdate() {
     const { isAnimateList } = this.props;
-    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), isAnimateList && 300);
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), isAnimateList ? 300 : 0);
   }
 
   /**
