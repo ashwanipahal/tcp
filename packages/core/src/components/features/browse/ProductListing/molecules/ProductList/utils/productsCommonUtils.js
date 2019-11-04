@@ -300,5 +300,11 @@ export const getProductListToPath = str => {
 };
 
 export const getProductListToPathInMobileApp = str => {
-  return `${str.split('/p/')[1]}`;
+  let searchPath = str;
+  if (str && str.indexOf('/p/') !== -1) {
+    searchPath = `${str.split('/p/')[1]}`;
+  } else if (str && str.indexOf('/b/') !== -1) {
+    searchPath = `${str.split('/b/')[1]}`;
+  }
+  return searchPath;
 };
