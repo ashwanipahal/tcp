@@ -105,8 +105,10 @@ export const getServerErrorMessage = (error, errorsMapping) => {
     ];
     errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
   }
-
-  if (typeof errorMsg.errorMessages === 'undefined') {
+  if (
+    (errorMsg && typeof errorMsg.errorMessages === 'undefined') ||
+    typeof errorMsg === 'undefined'
+  ) {
     return errorsMapping.DEFAULT;
   }
   // eslint-disable-next-line

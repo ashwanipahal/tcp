@@ -14,6 +14,7 @@ class RelatedOutfits extends React.PureComponent {
     super(props);
     this.state = {
       isAccordionOpen: true,
+      showHeader: false,
     };
   }
 
@@ -32,32 +33,42 @@ class RelatedOutfits extends React.PureComponent {
         hideTabs
         divTabs={[]}
         bgClass="yellow-bg"
+        showRelatedOutfitHeader={this.setShowHeader}
       />
     );
+  };
+
+  setShowHeader = value => {
+    const { showHeader } = this.state;
+    if (!showHeader) {
+      this.setState({ showHeader: value });
+    }
   };
 
   render() {
     const { pdpLabels } = this.props;
     const { completeTheLook } = pdpLabels;
-    const { isAccordionOpen } = this.state;
+    const { isAccordionOpen, showHeader } = this.state;
 
     return (
       <View>
-        <StyleRelatedOutfits onPress={this.handleAccordionToggle}>
-          <BodyCopy
-            fontFamily="secondary"
-            fontWeight="black"
-            fontSize="fs14"
-            isAccordionOpen={isAccordionOpen}
-            text={completeTheLook}
-            textAlign="center"
-          />
-          <ImageStyleWrapper>
-            <Anchor onPress={this.handleAccordionToggle}>
-              <Image source={isAccordionOpen ? upIcon : downIcon} />
-            </Anchor>
-          </ImageStyleWrapper>
-        </StyleRelatedOutfits>
+        {showHeader && (
+          <StyleRelatedOutfits onPress={this.handleAccordionToggle}>
+            <BodyCopy
+              fontFamily="secondary"
+              fontWeight="black"
+              fontSize="fs14"
+              isAccordionOpen={isAccordionOpen}
+              text={completeTheLook}
+              textAlign="center"
+            />
+            <ImageStyleWrapper>
+              <Anchor onPress={this.handleAccordionToggle}>
+                <Image source={isAccordionOpen ? upIcon : downIcon} />
+              </Anchor>
+            </ImageStyleWrapper>
+          </StyleRelatedOutfits>
+        )}
 
         {isAccordionOpen ? this.getRelatedOutfitSlots() : null}
       </View>
