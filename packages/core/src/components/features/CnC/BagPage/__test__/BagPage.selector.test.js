@@ -33,6 +33,10 @@ describe('#Added to bag Selectors', () => {
     },
     sfl: [],
     openItemDeleteConfirmationModalInfo: true,
+    uiFlags: {
+      isPayPalWebViewEnable:false,
+    },
+      isPayPalEnabled: false,
   });
 
   const sessionState = {
@@ -108,6 +112,11 @@ describe('#Added to bag Selectors', () => {
   it('#checkoutIfItemIsUnqualified', () => {
     expect(BAGPAGE_SELECTORS.checkoutIfItemIsUnqualified(state, 123)).toEqual(false);
   });
+
+  it('#getIsPayPalEnabled', () => {
+    expect(BAGPAGE_SELECTORS.getIsPayPalEnabled(state)).toEqual(false);
+  });
+
   it('#getCurrentDeleteSelectedItemInfo', () => {
     expect(BAGPAGE_SELECTORS.getCurrentDeleteSelectedItemInfo(state)).toEqual(true);
   });
@@ -123,5 +132,11 @@ describe('#Added to bag Selectors', () => {
     expect(BAGPAGE_SELECTORS.getBagStickyHeaderInterval(state)).toEqual(
       sessionState.siteDetails.BAG_CONDENSE_HEADER_INTERVAL
     );
+  });
+
+
+  it('#getPayPalWebViewStatus should return paypalView enable status', () => {
+    expect(BAGPAGE_SELECTORS.getPayPalWebViewStatus(state)).toEqual(false);
+
   });
 });

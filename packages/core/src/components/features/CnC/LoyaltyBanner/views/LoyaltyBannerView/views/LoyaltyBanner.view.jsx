@@ -32,9 +32,11 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       pointsToNextReward,
       getCurrencySymbol,
       pageCategory,
-      openLoginModal,
       checkThresholdValue,
       isInternationalShipping,
+      openOverlay,
+      closeAddedToBagModal,
+      inheritedStyles,
     } = this.props;
     return !isInternationalShipping && isUsOnly() ? (
       <div className={className}>
@@ -50,9 +52,11 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           pointsToNextReward={pointsToNextReward}
           getCurrencySymbol={getCurrencySymbol}
           pageCategory={pageCategory}
-          openLoginModal={openLoginModal}
           checkThresholdValue={checkThresholdValue}
           isInternationalShipping={isInternationalShipping}
+          openOverlay={openOverlay}
+          closeAddedToBagModal={closeAddedToBagModal}
+          inheritedStyles={inheritedStyles}
         />
       </div>
     ) : null;

@@ -1,6 +1,11 @@
 /* eslint-disable max-lines */
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
+import {
+  disableBodyScroll as disableBodyScrollLib,
+  enableBodyScroll as enableBodyScrollLib,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { breakpoints, mediaQuery } from '../../styles/themes/TCP/mediaQuery';
@@ -343,11 +348,13 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
-  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
 
-  const unbxdApiKeyTCP = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_TCP`];
-  const unbxdApiKeyGYM = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_GYM`];
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
+  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKeyTCP =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_TCP`];
+  const unbxdApiKeyGYM =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -363,9 +370,13 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
 
-    unboxKeyTCP: `${unbxdApiKeyTCP}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_TCP`]}`,
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_TCP`]
+    }`,
     unbxdApiKeyTCP,
-    unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_GYM`]
+    }`,
     unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewToken: processEnv.RWD_WEB_PREVIEW_TOKEN,
@@ -382,6 +393,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    paypalStaticUrl:  processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
     styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
     styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
@@ -455,7 +467,8 @@ export const createAPIConfig = resLocals => {
   const basicConfig = getAPIInfoFromEnv(
     apiSiteInfo,
     processEnv,
-    countryConfig && countryConfig.countryKey
+    countryConfig && countryConfig.countryKey,
+    language
   );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
@@ -469,6 +482,7 @@ export const createAPIConfig = resLocals => {
     country,
     currency,
     language,
+    hostname,
   };
 };
 
@@ -551,6 +565,53 @@ export const getDirections = address => {
   );
 };
 
+/**
+ * To Identify whether the device is ios for web.
+ */
+
+export const isIosWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return true;
+  }
+  return false;
+};
+/**
+ * This function will remove all the body scroll locks.
+ */
+export const removeBodyScrollLocks = () => {
+  if (isIosWeb() && isClient()) {
+    clearAllBodyScrollLocks();
+  }
+};
+/**
+ * Enable Body Scroll, Moving it to common utils and putting a check of Mobile app at one place instead of containers.
+ */
+export const enableBodyScroll = targetElem => {
+  if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      enableBodyScrollLib(targetElem);
+      return;
+    }
+    const [body] = document.getElementsByTagName('body');
+    body.classList.remove('disableBodyScroll');
+  }
+};
+
+/**
+ * Disable Body Scroll
+ */
+export const disableBodyScroll = targetElem => {
+  if (isClient()) {
+    if (isIosWeb() && targetElem) {
+      disableBodyScrollLib(targetElem);
+      return;
+    }
+    const [body] = document.getElementsByTagName('body');
+    body.classList.add('disableBodyScroll');
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -577,4 +638,8 @@ export default {
   canUseDOM,
   scrollToParticularElement,
   getDirections,
+  isIosWeb,
+  removeBodyScrollLocks,
+  enableBodyScroll,
+  disableBodyScroll,
 };

@@ -13,6 +13,7 @@ const initialState = fromJS({
   isEditingItem: false,
   uiFlags: {
     isPayPalEnabled: false,
+    isPayPalWebViewEnable: false,
     lastItemUpdatedId: null,
     isTotalEstimated: true,
     isClosenessQualifier: false,
@@ -109,6 +110,8 @@ const BagPageReducer = (state = initialState, action) => {
       return state.setIn(['orderDetails', 'orderId'], action.orderId);
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
       return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
+    case BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE:
+      return state.setIn(['uiFlags', 'isPayPalWebViewEnable'], action.payload);
     case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
       return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
     case BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED:

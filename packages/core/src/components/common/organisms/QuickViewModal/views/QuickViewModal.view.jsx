@@ -7,7 +7,7 @@ import styles, {
   customSpinnerStyle,
 } from '../styles/QuickViewModal.style';
 import FulfillmentSection from '../../FulfillmentSection';
-import { getLocator, enableBodyScroll, isMobileApp } from '../../../../../utils';
+import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
 import { Spinner } from '../../../atoms';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../features/browse/ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
@@ -22,9 +22,6 @@ class QuickViewModal extends React.Component {
   }
 
   onCloseClick = () => {
-    if (!isMobileApp()) {
-      enableBodyScroll();
-    }
     const { closeQuickViewModal, clearAddToBagError, clearMultipleItemsAddToBagError } = this.props;
     closeQuickViewModal();
     clearAddToBagError();

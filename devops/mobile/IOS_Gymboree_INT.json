@@ -98,6 +98,14 @@
       "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
     },
     {
+      "name": "RWD_APP_PAYPAL_ENV_TCP",
+      "value": "sandbox"
+    },
+    {
+      "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_TCP",
+      "value": "https://test5.childrensplace.com"
+    },
+    {
       "name": "RWD_APP_BRANDID_GYM",
       "value": "gym"
     },
@@ -184,6 +192,14 @@
     {
       "name": "RWD_APP_GOOGLE_MAPS_API_KEY_GYM",
       "value": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw"
+    },
+    {
+      "name": "RWD_APP_PAYPAL_ENV_GYM",
+      "value": "sandbox"
+    },
+    {
+      "name": "RWD_APP_PAYPAL_STATIC_DOMAIN_GYM",
+      "value": "https://test5.gymboree.com"
     },
     {
       "name": "RWD_APP_UNBXD_SITE_KEY_US_EN_TCP",

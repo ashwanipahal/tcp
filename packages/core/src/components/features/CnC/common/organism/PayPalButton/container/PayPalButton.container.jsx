@@ -1,19 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import PayPalButton from '../organism/PaypalButton';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
-import { getSetIsPaypalPaymentSettings } from '../../../../Checkout/container/Checkout.action';
 import { ServiceResponseError } from '../../../../../../../utils/errorMessage.util';
 import CONSTANTS from '../../../../Checkout/Checkout.constants';
-import { getAPIConfig } from '../../../../../../../utils';
+import { getAPIConfig, isMobileApp } from '../../../../../../../utils';
 
 export class PayPalButtonContainer extends React.PureComponent<Props> {
-  initalizePayPalButton = data => {
+  constructor(props) {
+    super(props);
     const apiConfigObj = getAPIConfig();
     const { paypalEnv } = apiConfigObj;
-    console.log('paypalEnv', paypalEnv);
-    const { startPaypalCheckout, paypalAuthorizationHandle, clearPaypalSettings } = this.props;
+    this.paypalEnv = paypalEnv;
+    const { paypalStaticUrl } = apiConfigObj;
+    this.paypalStaticUrl = paypalStaticUrl;
+  }
+
+  componentDidMount() {
+    const { startPaypalNativeCheckoutAction } = this.props;
+    if (isMobileApp()) startPaypalNativeCheckoutAction();
+  }
+
+  componentWillUnmount() {
+    const { payPalWebViewHandle } = this.props;
+    if (isMobileApp()) payPalWebViewHandle(false);
+  }
+
+  initalizePayPalButton = data => {
+    const {
+      startPaypalCheckout,
+      paypalAuthorizationHandle,
+      clearPaypalSettings,
+      isBillingPage,
+    } = this.props;
+
     const { containerId, height } = data;
     const options = {
       locale: CONSTANTS.PAYPAL_LOCATE,
@@ -28,9 +49,11 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       funding: {
         disallowed: [window.paypal && window.paypal.FUNDING.CREDIT],
       },
-      env: paypalEnv,
+      env: this.paypalEnv,
       payment: () => {
-        return new Promise((resolve, reject) => startPaypalCheckout({ resolve, reject }));
+        return new Promise((resolve, reject) =>
+          startPaypalCheckout({ resolve, reject, isBillingPage })
+        );
       },
       onAuthorize: paypalAuthorizationHandle,
       onCancel: clearPaypalSettings,
@@ -42,14 +65,35 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { isQualifedOrder, containerId } = this.props;
-    // const { router } = this.props;
+    const {
+      isQualifedOrder,
+      containerId,
+      navigation,
+      getPayPalSettings,
+      payPalWebViewHandle,
+      paypalAuthorizationHandle,
+      clearPaypalSettings,
+      setVenmoState,
+      closeModal,
+    } = this.props;
     return (
-      <PayPalButton
-        isQualifedOrder={isQualifedOrder}
-        initalizePayPalButton={this.initalizePayPalButton}
-        containerId={containerId}
-      />
+      getPayPalSettings &&
+      getPayPalSettings.paypalInContextToken && (
+        <PayPalButton
+          isQualifedOrder={isQualifedOrder}
+          initalizePayPalButton={this.initalizePayPalButton}
+          containerId={containerId}
+          navigation={navigation}
+          getPayPalSettings={getPayPalSettings}
+          payPalWebViewHandle={payPalWebViewHandle}
+          paypalAuthorizationHandle={paypalAuthorizationHandle}
+          clearPaypalSettings={clearPaypalSettings}
+          paypalEnv={this.paypalEnv}
+          paypalStaticUrl={this.paypalStaticUrl}
+          setVenmoState={setVenmoState}
+          closeModal={closeModal}
+        />
+      )
     );
   }
 }
@@ -64,18 +108,30 @@ export const mapDispatchToProps = dispatch => {
     startPaypalCheckout: payload => {
       dispatch(bagPageActions.startPaypalCheckout(payload));
     },
-    paypalAuthorizationHandle: () => {
-      dispatch(bagPageActions.paypalAuthorization());
+    startPaypalNativeCheckoutAction: () => {
+      dispatch(bagPageActions.startPaypalNativeCheckout());
+    },
+    paypalAuthorizationHandle: payload => {
+      dispatch(bagPageActions.paypalAuthorization(payload));
     },
     clearPaypalSettings: () => {
-      dispatch(getSetIsPaypalPaymentSettings(null));
+      dispatch(bagPageActions.startPaypalNativeCheckout());
+    },
+    payPalWebViewHandle: payload => {
+      dispatch(bagPageActions.getSetPayPalWebView(payload));
     },
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PayPalButtonContainer)
-);
+PayPalButtonContainer.propTypes = {
+  isBillingPage: PropTypes.bool,
+};
+
+PayPalButtonContainer.defaultProps = {
+  isBillingPage: false,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PayPalButtonContainer);
