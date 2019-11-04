@@ -20,38 +20,11 @@ exports[`PickupMainContactEditFormVanilla component should renders correctly whe
       textAlign="left"
     />
   </div>
-  <div>
-    <Styled(Modal)
-      className="TCPModal__Content PickupModal"
-      closeIconDataLocator="coupondetailmodalcrossicon"
-      fixedWidth={true}
-      isOpen={true}
-      maxWidth="616px"
-      minHeight="540px"
-      onRequestClose={[MockFunction]}
-      overlayClassName="pick-up-overlay"
-    >
-      <div
-        className="pickupModalContainer"
-      >
-        <div
-          className="pickupModalHeader"
-        />
-        <Styled(ContactFormFields)
-          className="pick-up-input toggle"
-          labels={Object {}}
-          showPhoneNumber={true}
-        />
-        <Styled(Button)
-          buttonVariation="fixed-width"
-          className="saveUpdateButton"
-          data-locator="pickup-modal-save-btn"
-          fill="BLUE"
-          type="button"
-        />
-      </div>
-    </Styled(Modal)>
-  </div>
+  <Styled(ContactFormFields)
+    className="pick-up-input toggle"
+    labels={Object {}}
+    showPhoneNumber={true}
+  />
 </div>
 `;
 
