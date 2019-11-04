@@ -48,6 +48,7 @@ describe('Store List Abstractor', () => {
         },
         phone: '(012) 345-67899',
       },
+      isGym: false,
     };
     const formattedStore = getBasicInfo(store);
     expect(formattedStore).toEqual(formattedResponse);
