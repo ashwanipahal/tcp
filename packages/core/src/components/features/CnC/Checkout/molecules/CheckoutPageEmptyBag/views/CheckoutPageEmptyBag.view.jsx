@@ -7,11 +7,15 @@ import { BodyCopy } from '../../../../../../common/atoms';
 const CheckoutPageEmptyBag = ({ labels: { emptyBagText, emptyBagSubText } = {}, className }) => {
   return (
     <div className={className}>
-      <div className="empty-bag-text">
-        <BodyCopy color="gray.900" fontWeight="extrabold" fontFamily="secondary" fontSize="fs22">
-          {emptyBagText}
-        </BodyCopy>
-      </div>
+      <BodyCopy
+        className="empty-bag-text"
+        color="gray.900"
+        fontWeight="extrabold"
+        fontFamily="secondary"
+        fontSize="fs22"
+      >
+        {emptyBagText}
+      </BodyCopy>
       <div className="empty-bag-subtext">
         <BodyCopy className="small-text" fontFamily="secondary" fontSize="fs14">
           {emptyBagSubText}
