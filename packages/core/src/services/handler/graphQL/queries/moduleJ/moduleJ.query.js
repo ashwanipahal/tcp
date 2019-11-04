@@ -1,34 +1,30 @@
 const buildQuery = ({ slot, contentId }) => `
   ${slot}: moduleById(id: "${contentId}") {
 
-   contentId
-   name
-   type
-   set {
-     val
-     key
-   }
- 
-   composites {
-    headerText {
-      textItems {
-        text
-        style
-      }
- 
-      icon {
-        placement
-        icon
-      }
- 
-      link {
-        url
-        text
-        title
-        target
-      }
+    contentId
+    name
+    type
+    set {
+      val
+      key
     }
-    promoBanner {
+    composites {
+      headerText {
+        textItems {
+          text
+          style
+        }
+        icon {
+          placement
+          icon
+        }
+        link {
+          url
+          title
+          target
+        }
+      }
+      promoBanner {
         link {
           url
           title
@@ -38,38 +34,39 @@ const buildQuery = ({ slot, contentId }) => `
           style
         }
       }
- 
-    linkedImage {
-      link {
-        url
-        text
-        title
-        target
+      mediaLinkedList {
+        image {
+          url
+          title
+          alt
+          crop_d
+          crop_t
+          crop_m
+        }
+        link {
+         url
+         text
+         target
+         title
+        }
       }
- 
-      image {
-        url
-        alt
-        crop_d
-        crop_t
-        crop_m
-      }
-    }
-    divTabs {
+      divTabs {
+        text {
+          text
+        }
         category {
           key
           val
         }
-      
         singleCTAButton {
           url
           text
           target
           title
         }
+      }
     }
-   }
- } 
+
 }
 `;
 
