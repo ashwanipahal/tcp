@@ -26,8 +26,9 @@ const ROUTES_LIST = [
   // For ex: ROUTING_MAP.home or ROUTING_MAP.error are being referred
   {
     noSlugPath: 'home',
-    path: '/home',
+    path: '/home/:target?',
     resolver: '/index',
+    params: ['target'],
   },
   {
     noSlugPath: 'store-locator',

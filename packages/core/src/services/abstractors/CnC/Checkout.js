@@ -64,7 +64,8 @@ export const getShippingMethodServerError = (errorBody, errorsMapping) => {
   if (
     errorBody &&
     errorBody.updateShippingMethodSelectionResponse &&
-    errorBody.updateShippingMethodSelectionResponse.errors.length > 0
+    errorBody.updateShippingMethodSelectionResponse.errors &&
+    errorBody.updateShippingMethodSelectionResponse.errors.length
   ) {
     const { errorKey } = errorBody.updateShippingMethodSelectionResponse.errors[0];
     const errorList = [
@@ -287,11 +288,13 @@ export function setShippingMethodAndAddressId(
 
   return executeStatefulAPICall(payload)
     .then(res => {
+      const resBody = res && res.body;
       if (
         responseContainsErrors(res) ||
-        (res.body &&
-          res.body.updateShippingMethodSelectionResponse &&
-          res.body.updateShippingMethodSelectionResponse.errors.length > 0)
+        (resBody &&
+          resBody.updateShippingMethodSelectionResponse &&
+          resBody.updateShippingMethodSelectionResponse.errors &&
+          resBody.updateShippingMethodSelectionResponse.errors.length)
       ) {
         throw new ServiceResponseError(res);
       } else {

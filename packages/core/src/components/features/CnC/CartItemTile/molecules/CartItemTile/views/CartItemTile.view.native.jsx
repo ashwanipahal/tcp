@@ -281,6 +281,7 @@ class ProductInformation extends React.Component {
       },
       onPickUpOpenClick,
       setShipToHome,
+      pickupStoresInCart,
       navigation,
     } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
@@ -421,6 +422,7 @@ class ProductInformation extends React.Component {
               onPickUpOpenClick,
               orderId,
               setShipToHome,
+              pickupStoresInCart,
             })}
         </MainWrapper>
       </Swipeable>
@@ -447,6 +449,7 @@ ProductInformation.propTypes = {
   currencyExchange: PropTypes.func.isRequired,
   clearToggleError: PropTypes.func,
   setShipToHome: PropTypes.func,
+  pickupStoresInCart: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
 };
 
