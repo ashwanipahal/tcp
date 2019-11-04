@@ -5,13 +5,13 @@ import RewardsPoints from '@tcp/core/src/components/features/account/common/orga
 import { getLabelValue } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
-  WalletLayout,
+  TextWrapper,
   TouchabelContainer,
-  FavoritesWrapper,
   ImageContainer,
   StyledImage,
-  TextWrapper,
-} from '../styles/Wallet.style.native';
+  FavoritesWrapper,
+} from '../../AccountOverview/styles/AccountOverview.style.native';
+import WalletLayout from '../styles/Wallet.style.native';
 import { ModalViewWrapper } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 import { LoggedinWrapper, LoggedinTextWrapper } from '../../Logout/styles/LoginOut.style.native';
 import MyRewards from '../../common/organism/MyRewards';
