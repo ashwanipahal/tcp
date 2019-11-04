@@ -49,7 +49,7 @@ class AccountNumber extends PureComponent {
 
     return (
       <View>
-        <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-LRG">
+        <ViewWithSpacing spacingStyles="margin-bottom-LRG margin-top-XS">
           <CouponHeading>
             <BodyCopyWithSpacing
               fontFamily="secondary"
