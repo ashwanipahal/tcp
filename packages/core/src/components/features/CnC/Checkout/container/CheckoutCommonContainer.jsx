@@ -203,6 +203,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItemsCount,
       toggleCountrySelector,
       checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -212,6 +213,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        isBagLoaded={isBagLoaded}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
@@ -390,6 +392,7 @@ const mapStateToProps = state => {
       ...getEmailSignUpLabels(state),
     },
     smsSignUpLabels: getSmsSignUpLabels(state),
+    isBagLoaded: BagPageSelector.isBagLoaded(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isGiftServicesChecked: getGiftServicesSend(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),

@@ -2,6 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { ProductTabListContainerVanilla as ProductTabList } from '../container/ProductTabList.container';
 
+function deferred() {
+  return new Promise(resolve => {
+    setTimeout(resolve, 0);
+  });
+}
+
 describe('ProductTabList', () => {
   it('Should call dispatch function if product list category data is not available ', () => {
     const getProductTabListData = jest.fn();
@@ -12,16 +18,21 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '2',
+              },
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
       />
     );
 
-    expect(getProductTabListData).toBeCalledTimes(1);
+    return deferred().then(() => {
+      expect(getProductTabListData).toBeCalledTimes(1);
+    });
   });
 
   it('Should NOT call dispatch function if product list category data is  available ', () => {
@@ -36,9 +47,12 @@ describe('ProductTabList', () => {
             text: {
               text: 'test',
             },
-            category: {
-              cat_id: '2',
-            },
+            category: [
+              {
+                key: 'cat_id',
+                val: '2',
+              },
+            ],
           },
         ]}
         getProductTabListData={getProductTabListData}
@@ -67,27 +81,12 @@ describe('ProductTabList', () => {
 
   it('Should provide selected tab item on tab selection ', () => {
     const onProductTabChangeMock = jest.fn();
-    const tabItems = [
-      {
-        text: {
-          text: 'test',
-        },
-        category: {
-          cat_id: ['2'],
-        },
-      },
-      {
-        text: {
-          text: 'test 2',
-        },
-        category: {
-          cat_id: ['3'],
-        },
-      },
-    ];
+    const tabItems = [{ category: [{ key: 'cat_id', val: '2' }], text: { text: 'test' } }];
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalledWith(['2'], [tabItems[0]]);
+    return deferred().then(() => {
+      expect(onProductTabChangeMock).toHaveBeenCalledWith(['2'], tabItems[0]);
+    });
   });
 });

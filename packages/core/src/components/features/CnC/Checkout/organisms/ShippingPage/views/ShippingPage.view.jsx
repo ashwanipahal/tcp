@@ -6,7 +6,6 @@ import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
-import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -23,6 +22,7 @@ export default class ShippingPage extends React.PureComponent {
     isGuest: PropTypes.bool,
     isUsSite: PropTypes.bool,
     isSubmitting: PropTypes.bool.isRequired,
+    checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
     orderHasPickUp: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
     shipmentMethods: PropTypes.shape([]),
@@ -56,8 +56,6 @@ export default class ShippingPage extends React.PureComponent {
     pageCategory: PropTypes.string,
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
-    cartOrderItemsCount: PropTypes.number.isRequired,
-    checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -364,8 +362,6 @@ export default class ShippingPage extends React.PureComponent {
       checkoutServerError,
       toggleCountrySelector,
       pageCategory,
-      checkoutPageEmptyBagLabels,
-      cartOrderItemsCount,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -376,7 +372,7 @@ export default class ShippingPage extends React.PureComponent {
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     return (
       <>
-        {cartOrderItemsCount > 0 ? (
+        {shipmentMethods && shipmentMethods.length > 0 && (
           <>
             <ShippingForm
               toggleCountrySelector={toggleCountrySelector}
@@ -434,8 +430,6 @@ export default class ShippingPage extends React.PureComponent {
               shippingAddress={formatPayload(shippingAddressData)}
             />
           </>
-        ) : (
-          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
         )}
       </>
     );

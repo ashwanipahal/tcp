@@ -23,7 +23,6 @@ import com.facebook.CallbackManager;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import java.util.Arrays;
 import java.util.List;
-import com.react.rnspinkit.RNSpinkitPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -54,8 +53,7 @@ public class MainApplication extends Application implements ReactApplication {
             new AsyncStoragePackage(),
             new VectorIconsPackage(),
             new FBSDKPackage(mCallbackManager),
-            new RNGestureHandlerPackage(),
-            new RNSpinkitPackage());
+            new RNGestureHandlerPackage());
     }
 
     @Override
