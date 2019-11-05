@@ -51,7 +51,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
           <div
             className="coupon_list"
           >
-            <ForwardRef(Styled(CouponListSection))
+            <ForwardRef
               className="available_coupon"
               couponDetailClick={[Function]}
               couponList={Immutable.List []}
@@ -70,7 +70,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             <Measure
               name="promotion_visible"
             />
-            <ForwardRef(Styled(CouponDetailModal))
+            <ForwardRef
               coupon={Object {}}
               labels={
                 Object {
@@ -102,7 +102,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
         <div
           className="elem-mb-SM rewards-header"
         >
-          <ForwardRef(Styled(BodyCopy))
+          <ForwardRef
             className={null}
             color="text.primary"
             component="span"
@@ -175,7 +175,7 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
             <Measure
               name="promotion_visible"
             />
-            <ForwardRef(Styled(CouponDetailModal))
+            <ForwardRef
               coupon={Object {}}
               labels={
                 Object {
@@ -206,7 +206,7 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
         <div
           className="elem-mb-SM rewards-header"
         >
-          <ForwardRef(Styled(BodyCopy))
+          <ForwardRef
             className={null}
             color="text.primary"
             component="span"
