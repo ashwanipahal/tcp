@@ -35,7 +35,7 @@ export class AddedToBagContainer extends React.Component<Props> {
   };
 
   hideHeaderWhilePaypalView = hide => {
-    const {navigation }=  this.props;
+    const { navigation } = this.props;
     navigation.setParams({ headerMode: hide });
   };
 
