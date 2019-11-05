@@ -12,6 +12,7 @@ import styles, {
   pointsInfoStyles,
   buttonActionStyles,
   LoyaltyWrapperStyles,
+  recommendationStyles,
 } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
@@ -89,6 +90,7 @@ const AddedToBag = ({
             page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
             variations="moduleO"
             priceOnly
+            inheritedStyles={recommendationStyles}
           />
         </div>
         <div className="continue-shopping">
