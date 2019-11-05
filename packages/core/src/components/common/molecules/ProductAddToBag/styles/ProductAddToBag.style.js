@@ -92,6 +92,16 @@ const styles = css`
       }
     }
 
+    .size-find-in-store {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      text-decoration: underline;
+      cursor: pointer;
+
+      @media ${props => props.theme.mediaQuery.large} {
+        font-size: ${props => props.theme.typography.fontSizes.fs14};
+      }
+    }
+
     .size-unavailable {
       font-family: ${props => props.theme.typography.fonts.secondary};
 
@@ -99,12 +109,6 @@ const styles = css`
         color: ${props => props.theme.colorPalette.gray[900]};
         font-size: ${props => props.theme.typography.fontSizes.fs12};
         margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-      }
-
-      .size-find-in-store {
-        font-size: ${props => props.theme.typography.fontSizes.fs14};
-        text-decoration: underline;
-        cursor: pointer;
       }
     }
   }

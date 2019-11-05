@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
 import { isClient } from '@tcp/core/src/utils';
 import { Row, Col, BodyCopy, Image } from '../../../../common/atoms';
-import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductDetailStyle, { customSubmitButtonStyle } from '../ProductDetail.style';
 import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../ProductListing/molecules/ProductList/propTypes/productsAndItemsPropTypes';
@@ -13,7 +12,7 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
-import { getLocator, routerPush, getIconPath } from '../../../../../utils';
+import { routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import ProductPrice from '../molecules/ProductPrice/ProductPrice';
@@ -269,14 +268,6 @@ class ProductDetailView extends React.Component {
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
-            <div className="fulfillment-section">
-              <FulfillmentSection
-                btnClassName="added-to-bag"
-                dataLocator={getLocator('global_addtocart_Button')}
-                buttonLabel={plpLabels.addToBag}
-                currentProduct={currentProduct}
-              />
-            </div>
             {<LoyaltyBanner isProductDetailView />}
             {this.getSendAnEmailComponent()}
           </Col>

@@ -12,6 +12,7 @@ import { getIconPath } from '@tcp/core/src/utils';
 import { CALL_TO_ACTION_VISIBLE, CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import FulfillmentSection from '@tcp/core/src/components/common/organisms/FulfillmentSection';
+import ProductPickupContainer from '@tcp/core/src/components/common/organisms/ProductPickup';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
 import { getLocator } from '../../../../../utils';
 import ProductSizeSelector from '../../ProductSizeSelector';
@@ -146,7 +147,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
       <p className="size-unavailable">
         <span className="unavailable-text">{sizeUnavailable}</span>
         <span className="size-find-in-store">
-          <FulfillmentSection currentProduct={currentProduct} isAnchor title="Find In Store" />
+          <ProductPickupContainer
+            productInfo={currentProduct}
+            formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+            isAnchor
+          />
         </span>
       </p>
     );
