@@ -16,7 +16,6 @@ import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
-import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -328,21 +327,11 @@ class PickUpFormPart extends React.Component {
   };
 
   render() {
-    const { cartOrderItemsCount, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { dataUpdated } = this.state;
     if (!dataUpdated) {
       this.updatePickupForm();
     }
-
-    return (
-      <>
-        {!isBagLoaded || cartOrderItemsCount > 0 ? (
-          this.renderPickupPage()
-        ) : (
-          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
-        )}
-      </>
-    );
+    return <>{this.renderPickupPage()}</>;
   }
 }
 
@@ -363,7 +352,6 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
-  cartOrderItemsCount: PropTypes.number.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,

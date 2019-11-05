@@ -45,7 +45,6 @@ import {
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
-import giftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
 
 const {
   getSmsSignUpLabels,
@@ -373,7 +372,6 @@ const mapStateToProps = state => {
       shippingAddress: getShippingAddress(state),
       syncErrors: getSyncError(state),
       shippingPhoneAndEmail: getShippingPhoneAndEmail(state),
-      isLoadingShippingMethod: giftCardSelector.getIsLoading(state),
     },
     billingProps: {
       labels: getBillingLabels(state),
