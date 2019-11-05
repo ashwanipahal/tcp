@@ -46,7 +46,6 @@
     "react-native-render-html": "^4.1.2",
     "react-native-simple-radio-button": "2.7.3",
     "react-native-snap-carousel": "^3.8.0",
-    "react-native-spinkit": "^1.5.0",
     "react-native-swipeable": "^0.6.0",
     "react-native-touch-id": "4.4.1",
     "react-native-twitter-signin": "git+https://github.com/GoldenOwlAsia/react-native-twitter-signin.git",
@@ -195,9 +194,7 @@
       "**/redux-persist",
       "**/redux-persist/**",
       "**/redux-persist-transform-immutable",
-      "**/redux-persist-transform-immutable/**",
-      "**/react-native-spinkit",
-      "**/react-native-spinkit/**"
+      "**/redux-persist-transform-immutable/**"
     ]
   }
 }
