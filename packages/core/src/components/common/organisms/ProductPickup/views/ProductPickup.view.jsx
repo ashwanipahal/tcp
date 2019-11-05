@@ -152,6 +152,7 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
     }),
     isAnchor: PropTypes.bool,
+    sizeUnavailable: PropTypes.string,
   };
 
   static defaultProps = {
@@ -201,6 +202,7 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
     },
     isAnchor: false,
+    sizeUnavailable: 'Size unavailable online?',
   };
 
   constructor(props) {
@@ -429,7 +431,15 @@ class ProductPickup extends React.PureComponent {
   }
 
   render() {
-    const { className, showPickupInfo, isSubmitting, labels, isAnchor } = this.props;
+    const {
+      className,
+      showPickupInfo,
+      isSubmitting,
+      labels,
+      isAnchor,
+      isBopisEligible,
+      sizeUnavailable,
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -470,7 +480,7 @@ class ProductPickup extends React.PureComponent {
                   <div className="pickup-details">
                     {this.renderPickupTitle()}
                     {showPickupInfo && this.renderPickupInfo()}
-                    {!showPickupInfo && this.renderPickupInfoError()}
+                    {!showPickupInfo && isBopisEligible && this.renderPickupInfoError()}
                   </div>
                 </div>
                 <Button
@@ -488,19 +498,24 @@ class ProductPickup extends React.PureComponent {
             </div>
           </div>
         ) : (
-          <Anchor
-            noLink
-            handleLinkClick={this.handlePickupModalClick}
-            title={
-              showPickupInfo
-                ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                : labels.lbl_Product_pickup_FIND_STORE
-            }
-          >
-            {showPickupInfo
-              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-              : labels.lbl_Product_pickup_FIND_STORE}
-          </Anchor>
+          <p className="size-unavailable">
+            <span className="unavailable-text">{sizeUnavailable}</span>
+            <span className="size-find-in-store">
+              <Anchor
+                noLink
+                handleLinkClick={this.handlePickupModalClick}
+                title={
+                  showPickupInfo
+                    ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                    : labels.lbl_Product_pickup_FIND_STORE
+                }
+              >
+                {showPickupInfo
+                  ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                  : labels.lbl_Product_pickup_FIND_STORE}
+              </Anchor>
+            </span>
+          </p>
         )}
         {/* {this.isBopisEligible && (
           <ContentSlot contentSlotName="pdp_bopis_promo" className="product-details-bopis-promo" />

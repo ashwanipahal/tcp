@@ -104,6 +104,9 @@ const styles = css`
 
     .size-unavailable {
       font-family: ${props => props.theme.typography.fonts.secondary};
+      padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+      border-bottom: solid 1px ${props => props.theme.colorPalette.gray[500]};
+      width: 100%;
 
       .unavailable-text {
         color: ${props => props.theme.colorPalette.gray[900]};

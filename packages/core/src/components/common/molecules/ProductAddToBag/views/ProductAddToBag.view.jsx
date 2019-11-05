@@ -144,16 +144,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { currentProduct, plpLabels } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     return (
-      <p className="size-unavailable">
-        <span className="unavailable-text">{sizeUnavailable}</span>
-        <span className="size-find-in-store">
-          <ProductPickupContainer
-            productInfo={currentProduct}
-            formName={`ProductAddToBag-${currentProduct.generalProductId}`}
-            isAnchor
-          />
-        </span>
-      </p>
+      <ProductPickupContainer
+        productInfo={currentProduct}
+        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        isAnchor
+        sizeUnavailable={sizeUnavailable}
+      />
     );
   };
 

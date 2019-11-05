@@ -173,6 +173,7 @@ class ProductPickupContainer extends React.PureComponent {
     }),
     simplifiedProductPickupView: PropTypes.bool,
     isAnchor: PropTypes.bool,
+    sizeUnavailable: PropTypes.string,
   };
 
   static defaultProps = {
@@ -220,6 +221,7 @@ class ProductPickupContainer extends React.PureComponent {
     },
     simplifiedProductPickupView: false,
     isAnchor: false,
+    sizeUnavailable: 'Size unavailable online?',
   };
 
   constructor(props, context) {
@@ -499,6 +501,7 @@ class ProductPickupContainer extends React.PureComponent {
       labels,
       simplifiedProductPickupView,
       isAnchor,
+      sizeUnavailable,
     } = this.props;
 
     if (this.noBossBopisInfo()) {
@@ -545,6 +548,7 @@ class ProductPickupContainer extends React.PureComponent {
         isSubmitting={isSubmitting}
         simplifiedProductPickupView={simplifiedProductPickupView}
         isAnchor={isAnchor}
+        sizeUnavailable={sizeUnavailable}
       />
     );
   }
