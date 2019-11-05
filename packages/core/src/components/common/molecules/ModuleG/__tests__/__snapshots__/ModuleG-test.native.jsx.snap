@@ -21,12 +21,8 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "large_text_bold",
+                    "style": "medium_text_regular",
                     "text": "ALL MATCHABLES",
-                  },
-                  Object {
-                    "style": "large_text_bold",
-                    "text": "60% OFF",
                   },
                 ],
               },
@@ -46,7 +42,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "extra_large_text_regular",
+                    "style": "large_text_black",
                     "text": "60% OFF",
                   },
                 ],
