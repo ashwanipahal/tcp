@@ -13,6 +13,7 @@ export default css`
       border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
       .content-wrapper {
         padding-bottom: 24px;
+        width: 100%
       }
     }
   }

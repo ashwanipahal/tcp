@@ -18,6 +18,7 @@ import {
 import {
   getSkuId,
   getVariantId,
+  getVariantNo,
   getMapSliceForColor,
   getIconImageForColor,
   getMapSliceForSize,
@@ -126,6 +127,7 @@ class PickUpStoreModalView extends React.Component {
     requestorKey: PropTypes.string,
     pickupModalHeading: PropTypes.string.isRequired,
     isCanada: PropTypes.bool.isRequired,
+    isGetUserStoresLoaded: PropTypes.bool.isRequired,
     isPlcc: PropTypes.bool,
     /* The session currency symbol */
     currencySymbol: PropTypes.string,
@@ -213,7 +215,7 @@ class PickUpStoreModalView extends React.Component {
     };
     this.skuId = null;
     this.quantity = null;
-
+    this.callOnlyStoreSearchAPI = false;
     this.handleSearchAreaStoresSubmit = this.handleSearchAreaStoresSubmit.bind(this);
     this.handleSearchInCurrentCartStoresSubmit = this.handleSearchInCurrentCartStoresSubmit.bind(
       this
@@ -294,34 +296,49 @@ class PickUpStoreModalView extends React.Component {
   /** Handle click of Edit button on Step 2 - which will switch to Step 1 */
   handleEditSkuDetails(e) {
     e.preventDefault();
+    this.callOnlyStoreSearchAPI = false; // when changing from step 2 to 1, this is to ensure getUserBopisStore is called every time we click on search on step-1
     this.setState(oldState => ({ isSkuResolved: !oldState.isSkuResolved }));
   }
 
   deriveSkuInfoAndSearch(locationPromise, colorFitsSizesMap, formData, cartItemsCount) {
     const { SkuSelectedValues } = this.state;
-    const { getUserCartStoresAndSearch, alwaysSearchForBOSS } = this.props;
+    const {
+      getUserCartStoresAndSearch,
+      alwaysSearchForBOSS,
+      onSearchAreaStoresSubmit,
+      defaultStore,
+    } = this.props;
     const { color, Fit, Size, Quantity: quantity } = SkuSelectedValues;
     const country = getSiteId() && getSiteId().toUpperCase();
     const variantId = getVariantId(colorFitsSizesMap, color, Fit, Size);
     const skuId = getSkuId(colorFitsSizesMap, color, Fit, Size);
+    const variantNo = getVariantNo(colorFitsSizesMap, color, Fit, Size);
     let distance;
     if (formData) {
       ({ distance } = formData);
     }
     this.skuId = skuId;
     this.quantity = quantity;
-    getUserCartStoresAndSearch({
-      apiPayload: {
-        skuId,
-        quantity,
-        distance,
-        locationPromise,
-        variantId,
-        cartItemsCount,
-        country,
-      },
-      alwaysSearchForBOSS,
-    });
+    const apiPayload = {
+      skuId,
+      quantity,
+      distance,
+      locationPromise,
+      variantId,
+      cartItemsCount,
+      country,
+      defaultStore,
+      variantNo,
+    };
+    if (this.callOnlyStoreSearchAPI) {
+      onSearchAreaStoresSubmit(apiPayload);
+    } else {
+      this.callOnlyStoreSearchAPI = true;
+      getUserCartStoresAndSearch({
+        apiPayload,
+        alwaysSearchForBOSS,
+      });
+    }
   }
 
   handleSearchAreaStoresSubmit(locationPromise, colorFitsSizesMap, formData) {
@@ -411,6 +428,7 @@ class PickUpStoreModalView extends React.Component {
       initialValuesFromBagPage,
       isItemShipToHome,
       openRestrictedModalForBopis,
+      isGetUserStoresLoaded,
     } = this.props;
     let { colorFitSizeDisplayNames } = this.props;
     let { name } = currentProduct;
@@ -483,6 +501,7 @@ class PickUpStoreModalView extends React.Component {
           navigation={navigation}
         />
         <PickupStoreSelectionFormContainer
+          isGetUserStoresLoaded={isGetUserStoresLoaded}
           colorFitSizeDisplayNames={colorFitSizeDisplayNames}
           maxAllowedStoresInCart={maxAllowedStoresInCart}
           colorFitsSizesMap={colorFitsSizesMap}
