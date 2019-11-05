@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import get from 'lodash/get';
 import {
   getLocator,
   toTimeString,
@@ -41,6 +44,10 @@ import {
   HeaderContainer,
   SearchContainer,
   RoundCircle,
+  ArrowBackIcon,
+  MiddleSection,
+  TitleText,
+  BackContainer,
 } from './Header.style';
 
 const CART_ITEM_COUNTER = 'cartItemsCount';
@@ -49,9 +56,8 @@ const CART_ITEM_COUNTER = 'cartItemsCount';
  * This component creates Mobile Header
  * @param {*} props Props passed from Header screen
  */
-
+const backicon = require('@tcp/core/src/assets/carrot-large-left.png');
 const downIcon = require('../../../../assets/images/carrot-small-down.png');
-const upIcon = require('../../../../assets/images/carrot-small-up.png');
 const cartIcon = require('../../../../assets/images/empty-bag.png');
 
 /**
@@ -198,8 +204,30 @@ class Header extends React.PureComponent<Props> {
     return storeTime;
   };
 
+  onBack = () => {
+    const { navigation } = this.props;
+    const goBackRoute = get(navigation, 'state.params.backTo', false);
+    const isReset = get(navigation, 'state.params.reset', false);
+    if (isReset) {
+      navigation.pop();
+    } else if (goBackRoute) {
+      navigation.navigate(goBackRoute);
+    } else {
+      navigation.goBack(null);
+    }
+  };
+
   render() {
-    const { favStore, labels, cartVal, isUserLoggedIn, userName, navigation } = this.props;
+    const {
+      favStore,
+      labels,
+      cartVal,
+      isUserLoggedIn,
+      userName,
+      navigation,
+      headertype,
+      title,
+    } = this.props;
     const { isDownIcon } = this.state;
     const basicInfo = favStore && favStore.basicInfo;
     const storeTime = this.getStoreHours(favStore);
@@ -219,47 +247,67 @@ class Header extends React.PureComponent<Props> {
       ? `${headerLabels.lbl_header_hiTxt} ${userName}!`
       : headerLabels.lbl_header_welcomeMessage;
 
+    console.info('title===', title);
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
         <Container>
           <HeaderContainer data-locator={getLocator('global_headerpanel')}>
-            <MessageContainer>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                color="black"
-                fontWeight="semibold"
-                text={welcomeMessage}
-                data-locator={getLocator('global_headerpanelwelcometext')}
-              />
-              <StoreContainer onPress={this.validateIcon}>
+            {headertype === 'store' ? (
+              <BackContainer position="row">
+                <TouchableOpacity
+                  accessible
+                  onPress={this.onBack}
+                  accessibilityRole="button"
+                  accessibilityLabel="back button"
+                >
+                  <ArrowBackIcon source={backicon} />
+                </TouchableOpacity>
+                <MiddleSection>
+                  <TitleText numberOfLines={1} accessibilityRole="text" accessibilityLabel={title}>
+                    {title}
+                  </TitleText>
+                </MiddleSection>
+              </BackContainer>
+            ) : (
+              <MessageContainer>
                 <BodyCopy
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs14"
                   textAlign="center"
-                  color="text.primary"
-                  fontWeight="regular"
-                  text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
-                  data-locator={getLocator('global_findastoretext')}
-                  accessibilityText="Drop Down"
+                  color="black"
+                  fontWeight="semibold"
+                  text={welcomeMessage}
+                  data-locator={getLocator('global_headerpanelwelcometext')}
                 />
-                {isDownIcon ? (
-                  <Icon
-                    source={upIcon}
-                    style={ImageColor}
-                    data-locator={getLocator('global_headerpanelexpandedicon')}
+                <StoreContainer onPress={this.validateIcon}>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs12"
+                    textAlign="center"
+                    color="text.primary"
+                    fontWeight="regular"
+                    text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
+                    data-locator={getLocator('global_findastoretext')}
+                    accessibilityText="Drop Down"
                   />
-                ) : (
-                  <Icon
-                    source={downIcon}
-                    style={ImageColor}
-                    data-locator={getLocator('global_headerpanelcollapsedicon')}
-                  />
-                )}
-              </StoreContainer>
-            </MessageContainer>
+                  {isDownIcon ? (
+                    <Icon
+                      source={downIcon}
+                      style={ImageColor}
+                      data-locator={getLocator('global_headerpanelexpandedicon')}
+                    />
+                  ) : (
+                    <Icon
+                      source={downIcon}
+                      style={ImageColor}
+                      data-locator={getLocator('global_headerpanelcollapsedicon')}
+                    />
+                  )}
+                </StoreContainer>
+              </MessageContainer>
+            )}
+
             <CartContainer>
               <Touchable
                 accessibilityRole="button"
@@ -303,12 +351,14 @@ Header.propTypes = {
   loadFavoriteStore: PropTypes.func,
   cartVal: PropTypes.number.isRequired,
   showSearch: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 Header.defaultProps = {
   favStore: {},
   loadFavoriteStore: () => null,
   showSearch: false,
+  title: '',
 };
 
 const mapStateToProps = state => {
