@@ -40,6 +40,7 @@ import {
   Touchable,
   HeaderContainer,
   SearchContainer,
+  RoundCircle,
 } from './Header.style';
 
 const CART_ITEM_COUNTER = 'cartItemsCount';
@@ -273,16 +274,19 @@ class Header extends React.PureComponent<Props> {
                   data-locator={getLocator('global_headerpanelbagicon')}
                   cartVal={cartVal}
                 />
-                <RoundView cartVal={cartVal} />
-                <BodyCopy
-                  text={cartVal}
-                  color="white"
-                  style={TextStyle}
-                  fontSize="fs10"
-                  data-locator={getLocator('global_headerpanelbagitemtext')}
-                  accessibilityText="Mini bag with count"
-                  fontWeight="extrabold"
-                />
+                <RoundCircle cartVal={cartVal}>
+                  <RoundView cartVal={cartVal}>
+                    <BodyCopy
+                      text={cartVal}
+                      color="white"
+                      style={TextStyle}
+                      fontSize="fs10"
+                      data-locator={getLocator('global_headerpanelbagitemtext')}
+                      accessibilityText="Mini bag with count"
+                      fontWeight="extrabold"
+                    />
+                  </RoundView>
+                </RoundCircle>
               </Touchable>
             </CartContainer>
           </HeaderContainer>

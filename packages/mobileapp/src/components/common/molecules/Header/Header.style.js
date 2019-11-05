@@ -15,13 +15,13 @@ const cartItemsWidth = cartItems => {
   let width = '';
   switch (cartItems.toString().length) {
     case 2:
-      width = '25px';
+      width = '20px';
       break;
     case 3:
-      width = '30px';
+      width = '25px';
       break;
     default:
-      width = '20px';
+      width = '15px';
   }
   return width;
 };
@@ -81,11 +81,18 @@ export const Icon = styled.Image`
 export const RoundView = styled.View`
   ${setBackground}
   width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
+  height: 15px;
+  border-radius: 8;
+  margin: 2px;
+`;
+
+export const RoundCircle = styled.View`
+  background-color: ${props => props.theme.colorPalette.white};
+  width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
   height: 20px;
   border-radius: 10;
   position: absolute;
   margin-top: 15px;
-  border: 2px solid ${props => props.theme.colorPalette.white};
 `;
 
 export const CartIconView = styled.Image`
@@ -94,9 +101,8 @@ export const CartIconView = styled.Image`
 `;
 
 export const TextStyle = {
-  position: 'absolute',
-  marginTop: 19,
-  paddingRight: 5.6,
+  paddingLeft: 4,
+  paddingTop: 1.5,
 };
 
 export const ImageColor = {
