@@ -8,6 +8,7 @@ import PickupRadioBtn from '@tcp/core/src/components/common/organisms/PickupStor
 import { parseDate } from '@tcp/core/src/utils/parseDate';
 import { getDateInformation, parseBoolean } from '@tcp/core/src/utils/badge.util';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { formatPhnNumber } from '@tcp/core/src/utils/index.native';
 import {
   STORE_DETAILS_LABELS,
   ITEM_AVAILABILITY_MESSAGES,
@@ -39,10 +40,7 @@ const getTooltipContent = (basicInfo, address, storeClosingTimeToday, storeClosi
   const addressLine1 = capitalize(address.addressLine1);
   const city = capitalize(address.city);
   const { CLOSED_TODAY, CLOSING_TODAY, CLOSING_TOMORROW, CLOSED_TOMORROW } = STORE_DETAILS_LABELS;
-  const phoneNum = basicInfo.phone
-    .replace(/\n /g, '')
-    .replace(/ /g, '')
-    .replace(')', ') ');
+  const phoneNum = formatPhnNumber(basicInfo.phone);
   return (
     <TooltipContentWrapper>
       <BodyCopy
