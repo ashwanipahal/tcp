@@ -919,6 +919,9 @@ export const getVenmoUserName = () => {
   return username;
 };
 
+const getPayPalSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']) || null;
+};
 const getShippingAddressList = createSelector(
   [getAddressListState, getCurrentSiteId],
   (userAddresses, country) => {
@@ -1034,6 +1037,7 @@ export default {
   getInternationalCheckoutApiUrl,
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
+  getPayPalSettings,
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
