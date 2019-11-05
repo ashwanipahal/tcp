@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpCenterTemplate  component renders correctly with props 1`] = `
+<div
+  className="test"
+>
+  <Styled(Row)>
+    <Styled(HelpCenterHeader)
+      labels={Object {}}
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    className="is-hidden-nav__desktop"
+  >
+    <Styled(Col)
+      className="help-center-template__dropdown"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      DROP DOWN CONTAINER
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="help-center-template"
+  >
+    <Styled(Col)
+      className="is-hidden-nav__medSmall"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      Left Side Navigation
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <HelpTabs
+        className=""
+        tabs={
+          Array [
+            Object {
+              "action": "action",
+              "external": 0,
+              "target": "_blank",
+              "text": "Etna",
+              "title": "Etna",
+              "url": "/button/url9",
+            },
+            Object {
+              "action": "action",
+              "external": 0,
+              "target": "_blank",
+              "text": "Etna",
+              "title": "Etna",
+              "url": "/button/url9",
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`HelpCenterTemplate  component renders correctly without props 1`] = `
+<div>
+  <Styled(Row)>
+    <Styled(HelpCenterHeader) />
+  </Styled(Row)>
+  <Styled(Row)
+    className="is-hidden-nav__desktop"
+  >
+    <Styled(Col)
+      className="help-center-template__dropdown"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      DROP DOWN CONTAINER
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="help-center-template"
+  >
+    <Styled(Col)
+      className="is-hidden-nav__medSmall"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      Left Side Navigation
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 1,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Component />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

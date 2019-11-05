@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelpCenterHeader component HelpCenterHeader component renders correctly with props 1`] = `
+<StyledComponent
+  className="test-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  border: 1px solid ",
+          [Function],
+          ";
+  margin-top: ",
+          [Function],
+          ";
+  position: relative;
+  width: 100%;
+
+  .help-center-icon {
+    padding: ",
+          [Function],
+          ";
+    background: #ffffff;
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: ",
+          [Function],
+          ";
+      height: ",
+          [Function],
+          ";
+    }
+  }
+
+  .help-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media ",
+          [Function],
+          " {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  .help-center-title {
+    &__text {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: ",
+          [Function],
+          ";
+      margin-top: ",
+          [Function],
+          ";
+      margin-bottom: ",
+          [Function],
+          ";
+      @media ",
+          [Function],
+          " {
+        font-size: ",
+          [Function],
+          "px;
+      }
+      @media ",
+          [Function],
+          " {
+        font-size: ",
+          [Function],
+          "px;
+      }
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(HelpCenterHeader)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-jzJRlG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+/>
+`;
+
+exports[`HelpCenterHeader component HelpCenterHeader component renders correctly without props 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  border: 1px solid ",
+          [Function],
+          ";
+  margin-top: ",
+          [Function],
+          ";
+  position: relative;
+  width: 100%;
+
+  .help-center-icon {
+    padding: ",
+          [Function],
+          ";
+    background: #ffffff;
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: ",
+          [Function],
+          ";
+      height: ",
+          [Function],
+          ";
+    }
+  }
+
+  .help-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media ",
+          [Function],
+          " {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  .help-center-title {
+    &__text {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: ",
+          [Function],
+          ";
+      margin-top: ",
+          [Function],
+          ";
+      margin-bottom: ",
+          [Function],
+          ";
+      @media ",
+          [Function],
+          " {
+        font-size: ",
+          [Function],
+          "px;
+      }
+      @media ",
+          [Function],
+          " {
+        font-size: ",
+          [Function],
+          "px;
+      }
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(HelpCenterHeader)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-jzJRlG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
