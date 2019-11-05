@@ -31,7 +31,7 @@ export default css`
     min-height: 42px;
 
     &.candidate_a_form_button {
-      width: 162px;
+      width: 100%;
       ${props =>
         props.theme.gridDimensions.gridBreakPointsKeys.map(key =>
           ['small', 'medium'].includes(key)
