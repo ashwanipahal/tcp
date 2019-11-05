@@ -419,6 +419,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     RWD_APP_VERSION: envConfig.RWD_APP_VERSION,
     isErrorReportingActive: envConfig.isErrorReportingActive,
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
+    paypalEnv: envConfig[`RWD_APP_PAYPAL_ENV_${appTypeSuffix}`],
+    paypalStaticUrl: envConfig[`RWD_APP_PAYPAL_STATIC_DOMAIN_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
     crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
     TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
@@ -718,3 +720,14 @@ export const getTranslateDateInformation = (date, language) => {
     year: 'YYYY',
   });
 };
+
+/**
+ * @method formatPhnNumber
+ * @desc returns phone number after stripping space and new line characters
+ * @param {string} phnNumber phone number which needs modification
+ */
+export const formatPhnNumber = phnNumber =>
+  phnNumber
+    .replace(/\n /g, '')
+    .replace(/ /g, '')
+    .replace(')', ') ');

@@ -63,12 +63,17 @@ class CheckoutPage extends React.PureComponent {
       currentStage,
       setCheckoutStage,
       isExpressCheckout,
+      cartOrderItemsCount,
+      checkoutPageEmptyBagLabels,
+      pickupDidMount,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
           <PickupPage
+            pickupDidMount={pickupDidMount}
+            cartOrderItemsCount={cartOrderItemsCount}
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
@@ -85,12 +90,15 @@ class CheckoutPage extends React.PureComponent {
             navigation={navigation}
             availableStages={availableStages}
             setCheckoutStage={setCheckoutStage}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
           />
         );
       case SHIPPING:
         return (
           <ShippingPage
             {...shippingProps}
+            cartOrderItemsCount={cartOrderItemsCount}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
             loadShipmentMethods={loadShipmentMethods}
             navigation={navigation}
             isGuest={isGuest}
@@ -173,6 +181,7 @@ CheckoutPage.propTypes = {
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   submitReview: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,
@@ -182,7 +191,9 @@ CheckoutPage.propTypes = {
   addNewShippingAddressData: PropTypes.func.isRequired,
   currentStage: PropTypes.string.isRequired,
   checkoutServerError: PropTypes.shape({}).isRequired,
+  checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   toastMessage: PropTypes.func.isRequired,
+  cartOrderItemsCount: PropTypes.number.isRequired,
   isExpressCheckout: PropTypes.bool,
 };
 
