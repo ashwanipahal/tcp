@@ -1018,6 +1018,18 @@ export const getStyliticsRegion = () => {
   return styliticsRegionGYM;
 };
 
+/**
+ * The insertIntoString() method changes the content of a string by removing a range of
+ * characters and/or adding new characters.
+ * @param {Object} object of lab
+ * @param {String} string pattern
+ * @return {Array} return string array for labels
+ */
+export const getLabelsBasedOnPattern = (labels, pattern) => {
+  const regex = new RegExp(pattern);
+  return Object.keys(labels).filter(labelKey => regex.test(labelKey));
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -1059,4 +1071,5 @@ export default {
   insertIntoString,
   getStyliticsUserName,
   getStyliticsRegion,
+  getLabelsBasedOnPattern,
 };

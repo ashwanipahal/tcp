@@ -7,8 +7,8 @@ import {
 import { Image, Button, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { cardIconMapping } from '@tcp/core/src/components/features/account/common/molecule/CardTile/views/CardTile.utils';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconCard } from '@tcp/core/src/utils/index.native';
+import { getLabelValue, getLabelsBasedOnPattern } from '@tcp/core/src/utils/utils';
 import externalEndpoints from '../../../externalEndpoints';
 import ApplyNowWrapper from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
@@ -18,10 +18,6 @@ import {
   RowContainer,
   CardDetailContainer,
 } from './MyPlaceRewardsCreditCardTile.style.native';
-
-const getAddYourCardToLabels = labels => {
-  return Object.keys(labels).filter(labelKey => /lbl_overview_addYourCardToPoint/.test(labelKey));
-};
 
 class MyPlaceRewardsCreditCardTile extends React.PureComponent {
   constructor(props) {
@@ -40,7 +36,7 @@ class MyPlaceRewardsCreditCardTile extends React.PureComponent {
     const { labels, myPlaceRewardCard, handleComponentChange } = this.props;
     const cardEnrolled = myPlaceRewardCard && myPlaceRewardCard.ccType;
     const { applyCard } = this.state;
-    const addYourCardLabelKeys = getAddYourCardToLabels(labels);
+    const addYourCardLabelKeys = getLabelsBasedOnPattern(labels, 'lbl_overview_addYourCardToPoint');
     return (
       <TileContainer>
         <BodyCopy
@@ -120,7 +116,7 @@ class MyPlaceRewardsCreditCardTile extends React.PureComponent {
               fontSize="fs14"
               text={getLabelValue(labels, 'lbl_overview_addYourCardTo')}
             />
-            <ViewWithSpacing spacingStyles="margin-top-LRG">
+            <ViewWithSpacing spacingStyles="margin-top-XXXS">
               {addYourCardLabelKeys.map(labelKey => {
                 return (
                   <BodyCopy
@@ -172,8 +168,7 @@ class MyPlaceRewardsCreditCardTile extends React.PureComponent {
 
 MyPlaceRewardsCreditCardTile.propTypes = {
   labels: PropTypes.shape({
-    lbl_overview_paymentHeading: PropTypes.string,
-    lbl_overview_paymentCTA: PropTypes.string,
+    lbl_overview_manageYourCard: PropTypes.string,
   }),
   myPlaceRewardCard: PropTypes.shape({}),
   handleComponentChange: PropTypes.func.isRequired,
@@ -181,8 +176,7 @@ MyPlaceRewardsCreditCardTile.propTypes = {
 
 MyPlaceRewardsCreditCardTile.defaultProps = {
   labels: {
-    lbl_overview_paymentHeading: '',
-    lbl_overview_paymentCTA: '',
+    lbl_overview_manageYourCard: '',
   },
   myPlaceRewardCard: {},
 };
