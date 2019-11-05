@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
 import { Heading, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import style from '../CategoryLayout.style';
+import { StyledPromoBanner } from '../CategoryLayout.style';
 
 const colStructure = {
   shopBySizeTwoColumns: { col: [2, 2], imgClass: '' },
-  oneColumns: { col: [6], imgClass: 'three-col-img' },
+  oneColumn: { col: [6], imgClass: 'three-col-img' },
   threeColumns: { col: [2, 2, 2], imgClass: '' },
   twoColumns67by33: { col: [4, 2], imgClass: 'two-col-img' },
 };
@@ -51,7 +50,7 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex) 
         colSize={{
           small: 6,
           medium: 8,
-          large: colProps[colIndex] ? colProps[colIndex].col : 2,
+          large: colProps.col[colIndex] ? colProps.col[colIndex] : 2,
         }}
         ignoreNthRule
       >
@@ -71,7 +70,7 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex) 
               />
               <BodyCopy
                 className={`l2-nav-link ${
-                  imgBannerLength > 1 && index === 0 ? 'half-img-link' : ''
+                  imgBannerLength > 1 && index === 0 ? 'half-l2-nav-link' : ''
                 }`}
                 fontFamily="secondary"
                 fontSize={['fs13', 'fs13', 'fs14']}
@@ -91,6 +90,10 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex) 
 };
 
 const createTextBanner = (textBanner, l1Index) => {
+  const isSplitView = textBanner && textBanner.length > 1;
+  const textContainerClassName = isSplitView ? 'l2-half-text-container' : '';
+  const promoHalfClass = isSplitView ? 'promo-banner-half' : '';
+  const arrowContainerClassName = isSplitView ? 'half-l2-nav-link' : '';
   return (
     textBanner && (
       <Col
@@ -102,30 +105,39 @@ const createTextBanner = (textBanner, l1Index) => {
         }}
         ignoreNthRule
       >
-        {textBanner.map(({ link }) => (
-          <React.Fragment>
-            <Anchor
-              className="l2-image-banner-link"
-              to={link.url}
-              title={link.title}
-              dataLocator={`overlay_img_link_${l1Index}`}
-              target={link.target}
-            >
-              <div className="l2-text-container">create Text Div Here</div>
-              <BodyCopy
-                className="l2-nav-link"
-                fontFamily="secondary"
-                fontSize={['fs13', 'fs13', 'fs14']}
-                lineHeight="lh107"
-                color="text.primary"
-                textAlign="right"
+        {textBanner.map(item => {
+          const { link, set } = item;
+          const borderColorClass = set && set[0] ? set[0].val : '';
+          const promoTextColorClass = set && set[1] ? set[1].val : '';
+          return (
+            <React.Fragment>
+              <Anchor
+                className="l2-image-banner-link"
+                to={link.url}
+                title={link.title}
+                dataLocator={`overlay_img_link_${l1Index}`}
+                target={link.target}
               >
-                <span className="nav-bar-l1-item-label">{link.text}</span>
-                <span className="icon-arrow" />
-              </BodyCopy>
-            </Anchor>
-          </React.Fragment>
-        ))}
+                <div className={`l2-text-container ${textContainerClassName} ${borderColorClass}`}>
+                  <StyledPromoBanner
+                    promoBanner={textBanner}
+                    className={`promoBanner ${promoTextColorClass} ${promoHalfClass}`}
+                  />
+                </div>
+                <BodyCopy
+                  className={`l2-nav-link ${arrowContainerClassName}`}
+                  fontFamily="secondary"
+                  fontSize={['fs13', 'fs13', 'fs14']}
+                  color="text.primary"
+                  textAlign="right"
+                >
+                  <span className="nav-bar-l1-item-label">{link.text}</span>
+                  <span className="icon-arrow" />
+                </BodyCopy>
+              </Anchor>
+            </React.Fragment>
+          );
+        })}
       </Col>
     )
   );
@@ -198,4 +210,4 @@ CategoryLayout.defaultProps = {
 };
 
 export { CategoryLayout as CategoryLayoutVanilla };
-export default withStyles(CategoryLayout, style);
+export default CategoryLayout;

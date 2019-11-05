@@ -202,7 +202,7 @@ export default css`
       display: block;
       padding: 11px 0 5px 0;
       line-height: 1.11;
-      &.half-img-link {
+      &.half-l2-nav-link {
         padding-bottom: 22px;
       }
     }
@@ -253,14 +253,35 @@ export default css`
     }
     .l2-text-container {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       width: 100%;
       max-width: 210px;
+      box-sizing: border-box;
       height: 220px;
+      padding: 0 7.5%;
       text-align: left;
-      &.l2-half-text-wrapper {
-        height: 89px;
+      border: 3px solid black;
+      &.l2-half-text-container {
+        height: 83px;
+      }
+      &.border-pink {
+        border-color: #ff3db4;
+      }
+      &.border-purple {
+        border-color: #b976cc;
+      }
+      &.border-orange {
+        border-color: #ff6b00;
+      }
+      &.border-blue {
+        border-color: #49a6e0;
+      }
+      &.border-yellow {
+        border-color: #f6d343;
+      }
+      &.border-red {
+        border-color: #ed0505;
       }
     }
     .sizes-range-background {

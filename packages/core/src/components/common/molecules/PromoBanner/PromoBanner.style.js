@@ -520,4 +520,70 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs64};
     }
   }
+
+  /** Global Navigation Clearance Tab Style */
+  .percentage_wrapped_nav {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    color: ${props => props.theme.colorPalette.black};
+    font-size: 81.4px;
+    letter-spacing: 0.13px;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+    line-height: normal;
+    width: 108px;
+    text-align: left;
+    margin: 0 auto;
+    position: relative;
+    .percentage_wrapped_nav-1 {
+      font-size: 42.4px;
+      position: absolute;
+      top: 8px;
+      letter-spacing: 0.09px;
+    }
+    .percentage_wrapped_nav-2 {
+      font-size: 32.6px;
+      position: absolute;
+      bottom: 12px;
+      letter-spacing: 0.07px;
+    }
+  }
+  &.text-pink {
+    span {
+      color: #ff3db4;
+    }
+  }
+  &.text-purple {
+    span {
+      color: #b976cc;
+    }
+  }
+  &.text-orange {
+    span {
+      color: #ff6b00;
+    }
+  }
+  &.text-blue {
+    span {
+      color: #49a6e0;
+    }
+  }
+  &.text-yellow {
+    span {
+      color: #f6d343;
+    }
+  }
+  &.text-red {
+    span {
+      color: #ed0505;
+    }
+  }
+  .percentage_nav_inline {
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    color: ${props => props.theme.colorPalette.black};
+    font-size: 36.5px;
+    letter-spacing: 0.11px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    line-height: normal;
+  }
 `;

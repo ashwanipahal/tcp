@@ -28,6 +28,16 @@ const renderCurrencyUpVariation = (style, text) => {
   );
 };
 
+const isPencentageTab = style => {
+  return (
+    style === 'percentage_wrapped_extra_large' ||
+    style === 'percentage_wrapped_large' ||
+    style === 'percentage_all_wrapped_normal' ||
+    style === 'percentage_all_wrapped_normal_tab' ||
+    style === 'percentage_wrapped_nav' ||
+    style === 'percentage_nav_inline'
+  );
+};
 /**
  * This component produces a Promo Text banner
  * Expects textItems array consisting of objects in below format
@@ -66,14 +76,8 @@ const PromoBanner = props => {
         <Anchor {...navigationUrl} className="promo-text-link">
           {textItems.map(({ text, style }, index) => {
             let promoText;
-
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
-            if (
-              style === 'percentage_wrapped_extra_large' ||
-              style === 'percentage_wrapped_large' ||
-              style === 'percentage_all_wrapped_normal' ||
-              style === 'percentage_all_wrapped_normal_tab'
-            ) {
+            if (isPencentageTab(style)) {
               const percentageTexts = text.split(' ');
               promoText = (
                 <div className={`promo-text ${style}`}>
