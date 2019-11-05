@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyPlaceRewardsCreditCardTile } from '../MyPlaceRewardsCreditCardTile.view';
+import MyPlaceRewardsCreditCardTile from '../MyPlaceRewardsCreditCardTile.view.native';
 
 describe('MyPlaceRewardsCreditCardTile component', () => {
   const labels = {
@@ -31,10 +31,12 @@ describe('MyPlaceRewardsCreditCardTile component', () => {
     nameOnAccount: '.',
     properties: null,
   };
-  it('should render Empty state correctly', () => {
+
+  it('should render empty state correctly', () => {
     const component = shallow(<MyPlaceRewardsCreditCardTile labels={labels} />);
     expect(component).toMatchSnapshot();
   });
+
   it('should render Card tile correctly', () => {
     const component = shallow(
       <MyPlaceRewardsCreditCardTile labels={labels} myPlaceRewardCard={myPlaceRewardCard} />

@@ -45,6 +45,7 @@ import {
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
+import giftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
 
 const {
   getSmsSignUpLabels,
@@ -203,6 +204,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItemsCount,
       toggleCountrySelector,
       checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -212,6 +214,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        isBagLoaded={isBagLoaded}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
@@ -370,6 +373,7 @@ const mapStateToProps = state => {
       shippingAddress: getShippingAddress(state),
       syncErrors: getSyncError(state),
       shippingPhoneAndEmail: getShippingPhoneAndEmail(state),
+      isLoadingShippingMethod: giftCardSelector.getIsLoading(state),
     },
     billingProps: {
       labels: getBillingLabels(state),
@@ -390,6 +394,7 @@ const mapStateToProps = state => {
       ...getEmailSignUpLabels(state),
     },
     smsSignUpLabels: getSmsSignUpLabels(state),
+    isBagLoaded: BagPageSelector.isBagLoaded(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isGiftServicesChecked: getGiftServicesSend(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),

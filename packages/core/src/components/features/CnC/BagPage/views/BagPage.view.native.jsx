@@ -77,7 +77,7 @@ export class BagPage extends React.Component {
   }
 
   hideHeaderWhilePaypalView = hide => {
-    const {navigation}=this.props;
+    const { navigation } = this.props;
     navigation.setParams({ headerMode: hide });
   };
 
