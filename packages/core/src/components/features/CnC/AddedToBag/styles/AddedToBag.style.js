@@ -80,6 +80,7 @@ const styles = css`
   }
   .recommendations-header {
     font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
   .container-price > p {
     font-size: ${props => props.theme.typography.fontSizes.fs15};
