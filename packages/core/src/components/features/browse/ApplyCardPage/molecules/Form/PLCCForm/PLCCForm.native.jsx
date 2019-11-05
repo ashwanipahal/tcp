@@ -28,7 +28,6 @@ import {
   ScrollViewContainer,
   CheckBoxContainerView,
   CheckBoxImage,
-  CheckMessageView,
   ButtonWrapper,
   StyledImage,
   RichTextContainer,
@@ -495,27 +494,14 @@ class PLCCForm extends React.PureComponent<Props> {
 
         <CheckBoxContainerView>
           <CheckBoxImage>
-            <Field id="iAgree" name="iAgree" component={InputCheckbox} enableSuccessCheck={false} />
-          </CheckBoxImage>
-          <CheckMessageView>
-            <StyledBodyCopy
-              text={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
-              fontSize="fs12"
-              color="black"
-              fontFamily="secondary"
-              textAlign="left"
+            <Field
+              id="iAgree"
+              name="iAgree"
+              component={InputCheckbox}
+              enableSuccessCheck={false}
+              rightText={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
             />
-            <FieldContainer>
-              <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
-                id="iAgree"
-                name="iAgree"
-              />
-            </FieldContainer>
-          </CheckMessageView>
+          </CheckBoxImage>
         </CheckBoxContainerView>
 
         <ButtonWrapper>
