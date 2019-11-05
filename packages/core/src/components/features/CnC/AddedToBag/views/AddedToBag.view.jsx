@@ -84,11 +84,13 @@ const AddedToBag = ({
           <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
         </div>
         {!isInternationalShipping && <BossBannerView labels={labels} />}
-        <Recommendations
-          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
-          variations="moduleO"
-          priceOnly
-        />
+        <div className="recommendationWrapper">
+          <Recommendations
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+            variations="moduleO"
+            priceOnly
+          />
+        </div>
         <div className="continue-shopping">
           <Anchor
             fontSizeVariation="medium"

@@ -128,11 +128,15 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     <BOSSBanner
       labels={Object {}}
     />
-    <Connect(Styled(Recommendations))
-      page="cart"
-      priceOnly={true}
-      variations="moduleO"
-    />
+    <div
+      className="recommendationWrapper"
+    >
+      <Connect(Styled(Recommendations))
+        page="cart"
+        priceOnly={true}
+        variations="moduleO"
+      />
+    </div>
     <div
       className="continue-shopping"
     >

@@ -75,6 +75,9 @@ const styles = css`
     text-align: center;
     margin: 24px 0;
   }
+  .recommendationWrapper {
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
   .recommendations-header {
     font-size: ${props => props.theme.typography.fontSizes.fs16};
   }
@@ -83,6 +86,20 @@ const styles = css`
   }
   && .product-image-container > a {
     min-height: 130px;
+  }
+  && .recommendations-tile {
+    .slick-list {
+      margin-right: -33%;
+      margin-left: -33%;
+    }
+  }
+  && .recommendations-tile .slick-arrow {
+    top: 20%;
+  }
+  && .slick-next,
+  .slick-prev {
+    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    top: 20%;
   }
   .loyaltyAddedToBagWrapper {
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
