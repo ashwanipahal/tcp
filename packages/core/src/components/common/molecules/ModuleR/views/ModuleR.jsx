@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Anchor, Button, Col, Row, Image } from '../../../atoms';
+import { Anchor, Button, Col, Row, DamImage } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, viewport } from '../../../../../utils';
 import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
+import moduleRConfig from '../moduleR.config';
 
 /**
  * @class ModuleR - global reusable component will display featured
@@ -95,13 +96,9 @@ class ModuleR extends React.PureComponent {
       <Row className="image-items-container">
         {selectedProductList.map((productItem, index) => {
           if (productItem.uniqueId) {
-            const {
-              pdpUrl,
-              pdpAsPath,
-              uniqueId,
-              imageUrl: [imageUrl],
-              product_name: productName,
-            } = productItem;
+            const { pdpUrl, pdpAsPath, uniqueId, product_name: productName } = productItem;
+            const imgUniqueId = uniqueId.split('_');
+            const imgUrl = `${imgUniqueId[0]}/${uniqueId}`;
             return (
               <ImageGridCol
                 key={uniqueId}
@@ -119,7 +116,11 @@ class ModuleR extends React.PureComponent {
                   asPath={pdpAsPath}
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
-                  <Image alt={productName} src={imageUrl} />
+                  <DamImage
+                    imgData={{ url: imgUrl, alt: productName }}
+                    isProductImage
+                    imgConfigs={moduleRConfig.IMG_DATA.productImgConfig}
+                  />
                 </Anchor>
               </ImageGridCol>
             );
