@@ -19,6 +19,7 @@ import {
   setLanguage,
   storeCountriesMap,
   storeCurrenciesMap,
+  getSetTcpSegment
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
@@ -27,6 +28,7 @@ import GLOBAL_CONSTANTS from '../constants';
 import CACHED_KEYS from '../../constants/cache.config';
 import { isMobileApp, getCurrenciesMap, getCountriesMap } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
+import {readCookie, setCookie} from '../../utils/cookie.util';
 
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.3 - Uncomment these references
 // import GLOBAL_CONSTANTS, { LABELS } from '../constants';
@@ -120,8 +122,25 @@ function* bootstrap(params) {
   }
 }
 
+function* setTcpSegment(tcpSegment) {
+  const tcpSegmentValue = tcpSegment.payload;
+  yield put(getSetTcpSegment(tcpSegmentValue));
+  console.log("readCookie", readCookie, setCookie);
+
+  const tcpSegmentCookieValue = yield call(readCookie, 'tcpSegment');
+
+  if (tcpSegmentValue && (tcpSegmentCookieValue !== tcpSegmentValue) || !tcpSegmentCookieValue) {
+    console.log("setCookie");
+    yield call(setCookie, { key: 'tcpSegment', value: tcpSegmentValue });
+    // return getUserOperator(this.store).setUserGroup();
+  }
+
+  console.log("tcpSegmentCookieValue", tcpSegmentCookieValue);
+};
+
 function* BootstrapSaga() {
   yield takeLatest(GLOBAL_CONSTANTS.BOOTSTRAP_API, bootstrap);
+  yield takeLatest(GLOBAL_CONSTANTS.SET_TCP_SEGMENT_METHOD_CALL, setTcpSegment);
 }
 
 export default BootstrapSaga;

@@ -9,7 +9,7 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
+import { bootstrapData, SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import {
   createAPIConfig,
   getAPIConfig,
@@ -116,10 +116,14 @@ class TCPWebApp extends App {
   };
 
   componentDidMount() {
+    const { store } = this.props;
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
+    window.testApp = ((payload)=> {
+      store.dispatch(SetTcpSegmentMethodCall(payload));
+    });
 
     try {
       if (isErrorReportingBrowserActive) {
