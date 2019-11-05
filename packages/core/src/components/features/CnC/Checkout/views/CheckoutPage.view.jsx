@@ -13,6 +13,7 @@ import Confirmation from '../../Confirmation';
 import { routerPush, scrollToParticularElement } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
+import CheckoutPageEmptyBag from '../molecules/CheckoutPageEmptyBag';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -315,64 +316,78 @@ class CheckoutPage extends React.PureComponent {
   }
 
   render() {
-    const { isGuest, router, submitReview, reviewProps, checkoutServerError } = this.props;
-    const { cartOrderItemsCount } = this.props;
+    const {
+      isGuest,
+      router,
+      submitReview,
+      reviewProps,
+      checkoutServerError,
+      isBagLoaded,
+    } = this.props;
+    const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+
     return (
-      <CnCTemplate
-        showLeftSection={cartOrderItemsCount > 0}
-        leftSection={this.renderLeftSection}
-        marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
-        isGuest={isGuest}
-        isCheckoutView
-        orderLedgerAfterView={
-          currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
-            <div className="review-submit-container">
-              <Button
-                aria-label={ariaLabelSubmitOrderButton}
-                type="button"
-                className="review-submit-button"
-                fontSize="fs13"
-                fontWeight="extrabold"
-                buttonVariation="variable-width"
-                fill="BLUE"
-                onClick={submitReview}
-              >
-                {nextSubmitText}
-              </Button>
-              <div className="submit-disclaimer">
-                {applyConditionPreText}
-                <Anchor
-                  className="submit-disclaimer-link"
-                  underline
-                  to="/#"
-                  dataLocator="termAndConditionText"
-                  onClick={this.handleDefaultLinkClick}
-                >
-                  {applyConditionTermsText}
-                </Anchor>
-                {applyConditionAndText}
-                <Anchor
-                  className="submit-disclaimer-link"
-                  underline
-                  to="/#"
-                  dataLocator="PrivacyText"
-                  onClick={this.handleDefaultLinkClick}
-                >
-                  {applyConditionPolicyText}
-                </Anchor>
-              </div>
-            </div>
-          )
-        }
-        isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
-        pageCategory={currentSection.toLowerCase()}
-        checkoutServerError={checkoutServerError}
-      />
+      <>
+        {!isBagLoaded || cartOrderItemsCount > 0 ? (
+          <CnCTemplate
+            showLeftSection
+            leftSection={this.renderLeftSection}
+            marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
+            isGuest={isGuest}
+            isCheckoutView
+            orderLedgerAfterView={
+              currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
+                <div className="review-submit-container">
+                  <Button
+                    aria-label={ariaLabelSubmitOrderButton}
+                    type="button"
+                    className="review-submit-button"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    buttonVariation="variable-width"
+                    fill="BLUE"
+                    onClick={submitReview}
+                  >
+                    {nextSubmitText}
+                  </Button>
+                  <div className="submit-disclaimer">
+                    {applyConditionPreText}
+                    <Anchor
+                      className="submit-disclaimer-link"
+                      underline
+                      to="/#"
+                      dataLocator="termAndConditionText"
+                      onClick={this.handleDefaultLinkClick}
+                    >
+                      {applyConditionTermsText}
+                    </Anchor>
+                    {applyConditionAndText}
+                    <Anchor
+                      className="submit-disclaimer-link"
+                      underline
+                      to="/#"
+                      dataLocator="PrivacyText"
+                      onClick={this.handleDefaultLinkClick}
+                    >
+                      {applyConditionPolicyText}
+                    </Anchor>
+                  </div>
+                </div>
+              )
+            }
+            isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
+            pageCategory={currentSection.toLowerCase()}
+            checkoutServerError={checkoutServerError}
+          />
+        ) : (
+          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
+        )}
+      </>
     );
   }
 }
