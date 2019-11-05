@@ -19,6 +19,7 @@ export const ShippingReviewContainer = ({
   formSection,
   updateShippingMethodSelection,
   expressReviewShippingSectionId,
+  dispatch,
 }) => {
   return (
     <ShippingReviewSection
@@ -30,6 +31,7 @@ export const ShippingReviewContainer = ({
       giftWrappingDisplayName={giftWrappingDisplayName}
       isExpressCheckout={isExpressCheckout}
       shipmentMethods={shipmentMethods}
+      dispatch={dispatch}
       formName={formName}
       formSection={formSection}
       updateShippingMethodSelection={updateShippingMethodSelection}
@@ -51,6 +53,7 @@ ShippingReviewContainer.propTypes = {
   formSection: PropTypes.string,
   updateShippingMethodSelection: PropTypes.func.isRequired,
   expressReviewShippingSectionId: PropTypes.shape({}),
+  dispatch: PropTypes.func.isRequired,
 };
 
 ShippingReviewContainer.defaultProps = {

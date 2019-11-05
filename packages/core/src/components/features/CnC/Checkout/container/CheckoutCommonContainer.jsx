@@ -394,6 +394,7 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
       isPaymentDisabled: getIsPaymentDisabled(state),
+      defaultShipmentId: getDefaultShipmentID(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     checkoutServerError: selectors.getCheckoutServerError(state),

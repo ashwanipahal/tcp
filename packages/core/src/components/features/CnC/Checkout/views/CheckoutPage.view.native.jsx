@@ -65,6 +65,7 @@ class CheckoutPage extends React.PureComponent {
       isExpressCheckout,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
+    const { shipmentMethods } = shippingProps;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
@@ -132,6 +133,12 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
             isExpressCheckout={isExpressCheckout}
+            shipmentMethods={shipmentMethods}
+            initialValues={{
+              expressReviewShippingSection: {
+                shippingMethodId: reviewProps.defaultShipmentId,
+              },
+            }}
           />
         );
       case CONFIRMATION:

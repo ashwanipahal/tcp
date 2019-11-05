@@ -8,10 +8,29 @@ import ShippingMethodDisplay from '../../ShippingMethodDisplay';
 import GiftWrappingDisplay from '../../GiftWrappingDisplay';
 import TitlePlusEditButton from '../../TitlePlusEditButton';
 import style from '../styles/ShippingReviewSection.style.native';
+import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 
 const { ShippingReviewContainer, AddressSection, AddressTitle, TitlePlusEditSection } = style;
 
 export class ShippingReviewSection extends React.PureComponent {
+  componentDidUpdate(prevProps) {
+    const {
+      updateShippingMethodSelection,
+      expressReviewShippingSectionId,
+      isExpressCheckout,
+    } = this.props;
+    const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
+    if (
+      isExpressCheckout &&
+      prevexpressReviewShippingSectionId.shippingMethodId &&
+      typeof prevexpressReviewShippingSectionId.shippingMethodId !== 'object' &&
+      expressReviewShippingSectionId.shippingMethodId !==
+        prevexpressReviewShippingSectionId.shippingMethodId
+    ) {
+      updateShippingMethodSelection({ id: expressReviewShippingSectionId.shippingMethodId });
+    }
+  }
+
   render() {
     const {
       shippingAddress,
@@ -20,11 +39,18 @@ export class ShippingReviewSection extends React.PureComponent {
       giftWrappingDisplayName,
       labels,
       onEdit,
+      isExpressCheckout,
+      shipmentMethods,
+      formName,
+      formSection,
+      dispatch,
+      expressReviewShippingSectionId,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
       lbl_review_sectionAnchor: edit,
       lbl_review_sectionShippingAddressTitle: addressTitle,
+      lbl_review_sectionShippingMethodTitle: shippingMethodTitle,
     } = labels;
     return (
       <>
@@ -73,11 +99,29 @@ export class ShippingReviewSection extends React.PureComponent {
             </AddressSection>
           </View>
           <View>
-            {shippingMethod && (
+            {!isExpressCheckout && shippingMethod && (
               <ShippingMethodDisplay labels={labels} displayName={shippingMethod.displayName} />
             )}
+            {isExpressCheckout && shippingMethod && (
+              <ShipmentMethods
+                shipmentMethods={shipmentMethods}
+                formName={formName}
+                formSection={formSection}
+                selectedShipmentId={
+                  expressReviewShippingSectionId && expressReviewShippingSectionId.shippingMethodId
+                }
+                shipmentHeader={shippingMethodTitle}
+                dispatch={dispatch}
+              />
+            )}
             {isGiftOptionsEnabled && (
-              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+              <GiftWrappingDisplay
+                labels={labels}
+                displayName={giftWrappingDisplayName}
+                onEdit={onEdit}
+                editTitle={edit}
+                isExpressCheckout={isExpressCheckout}
+              />
             )}
           </View>
         </ShippingReviewContainer>
@@ -99,6 +143,13 @@ ShippingReviewSection.propTypes = {
     isDefault: PropTypes.bool,
   }).isRequired,
   onEdit: PropTypes.func.isRequired,
+  isExpressCheckout: PropTypes.bool.isRequired,
+  shipmentMethods: PropTypes.shape({}).isRequired,
+  formName: PropTypes.string.isRequired,
+  formSection: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  updateShippingMethodSelection: PropTypes.func.isRequired,
+  expressReviewShippingSectionId: PropTypes.func.isRequired,
 };
 
 ShippingReviewSection.defaultProps = {
