@@ -5,6 +5,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   className="demo"
 >
   <Styled(StyledApplyNowModal)
+    className="plcc_modal_content"
     closeModal={[Function]}
     closePLCCModal={[Function]}
     isModalOpen={false}
