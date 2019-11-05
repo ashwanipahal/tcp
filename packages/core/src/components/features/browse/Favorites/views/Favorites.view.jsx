@@ -139,8 +139,8 @@ const FavoritesView = props => {
               },
             }}
             totalProductsCount={!!activeWishList && activeWishList.items.length}
-            initialValues={null}
-            filtersLength={null}
+            initialValues={{}}
+            filtersLength={{}}
             labels={labels}
             isFavoriteView
             favoriteSortingParams={getSortsList(labels)}
