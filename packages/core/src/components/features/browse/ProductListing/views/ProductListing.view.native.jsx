@@ -101,6 +101,7 @@ const ProductListView = ({
   renderBrandFilter,
   margins,
   paddings,
+  isLoadingMore,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -130,6 +131,7 @@ const ProductListView = ({
         isFavorite={isFavorite}
         {...otherProps}
       />
+      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
       <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
@@ -160,6 +162,7 @@ ProductListView.propTypes = {
   renderBrandFilter: PropTypes.func,
   margins: PropTypes.string,
   paddings: PropTypes.string,
+  isLoadingMore: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {

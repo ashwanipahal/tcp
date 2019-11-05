@@ -63,6 +63,13 @@ export const setStoreSearchingState = payload => {
   };
 };
 
+export const setIsGetUserStoresLoaded = payload => {
+  return {
+    payload,
+    type: PICKUP_MODAL_ACTIONS_CONSTANTS.SET_IS_USER_CART_STORES_LOADED,
+  };
+};
+
 export default {
   togglePickupModal,
   closePickupModal,
@@ -70,4 +77,5 @@ export default {
   getBopisStoresActn,
   setBopisStores,
   setStoreSearchError,
+  setIsGetUserStoresLoaded,
 };

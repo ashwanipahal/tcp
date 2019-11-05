@@ -115,7 +115,7 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true sho
         />
       </span>
       <span
-        className="elem-pl-XL"
+        className="createLoginSpaceBetween"
       >
         <Styled(Anchor)
           anchorVariation="primary"
@@ -201,7 +201,7 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
         />
       </span>
       <span
-        className="elem-pl-XL"
+        className="createLoginSpaceBetween"
       >
         <Styled(Anchor)
           anchorVariation="primary"

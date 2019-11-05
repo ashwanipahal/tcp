@@ -129,7 +129,9 @@ const createLinks = (
               <Anchor
                 asPath={asPath}
                 to={url}
-                onClick={e => openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)}
+                onClick={e =>
+                  openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                }
               >
                 <BodyCopy
                   className="l2-nav-link"
