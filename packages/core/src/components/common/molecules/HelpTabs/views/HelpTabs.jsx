@@ -8,7 +8,7 @@ const HelpTabs = props => {
   return (
     <Wrapper className={className}>
       {tabs &&
-        tabs.map(({ button }, index) => {
+        tabs.map((button, index) => {
           return (
             <StyledCol key={index.toString()}>
               <StyledAnchor url={button.url} fullWidth>
