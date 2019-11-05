@@ -39,7 +39,7 @@ const HeadingLabel = styled.Text`
     props.pageChecksObj.pageCategoryArr &&
     props.pageChecksObj.pageCategoryArr.isProductDetailView
       ? `color: ${plccMpr(props)}
-      font-size: 20px;
+      font-size: 16px;
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
       `
