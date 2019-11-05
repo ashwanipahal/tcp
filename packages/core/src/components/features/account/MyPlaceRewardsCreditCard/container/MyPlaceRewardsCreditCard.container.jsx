@@ -5,7 +5,6 @@ import MyPlaceRewardsCreditCard from '../views';
 import gelLabels from './MyPlaceRewardsCreditCard.selectors';
 import { getIsPLCCModalOpen } from '../../../../common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.selectors';
 import { toggleApplyNowModal } from '../../../../common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
-// import { resetPLCCResponse } from '../../../browse/ApplyCardPage/container/ApplyCard.actions';
 
 export class MyPlaceRewardsCreditCardContainer extends PureComponent {
   openPLCCModal = e => {
