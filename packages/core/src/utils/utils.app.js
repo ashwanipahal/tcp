@@ -4,6 +4,7 @@
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import CookieManager from 'react-native-cookies';
+import get from 'lodash/get';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
@@ -720,3 +721,25 @@ export const getTranslateDateInformation = (date, language) => {
     year: 'YYYY',
   });
 };
+
+export const onBack = navigation => {
+  const goBackRoute = get(navigation, 'state.params.backTo', false);
+  const isReset = get(navigation, 'state.params.reset', false);
+  if (isReset) {
+    navigation.pop();
+  } else if (goBackRoute) {
+    navigation.navigate(goBackRoute);
+  } else {
+    navigation.goBack(null);
+  }
+};
+/**
+ * @method formatPhnNumber
+ * @desc returns phone number after stripping space and new line characters
+ * @param {string} phnNumber phone number which needs modification
+ */
+export const formatPhnNumber = phnNumber =>
+  phnNumber
+    .replace(/\n /g, '')
+    .replace(/ /g, '')
+    .replace(')', ') ');
