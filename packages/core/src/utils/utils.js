@@ -1018,10 +1018,14 @@ export const getStyliticsRegion = () => {
   return styliticsRegionGYM;
 };
 
+export const canUseDOM = () => {
+  return typeof window !== 'undefined' && window.document && window.document.createElement;
+};
+
 /**
- * The insertIntoString() method changes the content of a string by removing a range of
- * characters and/or adding new characters.
- * @param {Object} object of lab
+ *
+ * Get labels based on pattern
+ * @param {Object} object of labels
  * @param {String} string pattern
  * @return {Array} return string array for labels
  */
@@ -1071,5 +1075,6 @@ export default {
   insertIntoString,
   getStyliticsUserName,
   getStyliticsRegion,
+  canUseDOM,
   getLabelsBasedOnPattern,
 };

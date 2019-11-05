@@ -36,6 +36,7 @@ class SearchBar extends React.PureComponent {
   }
 
   openFullSizeSearchModel = () => {
+    this.toggleBodyScroll(true);
     this.commonCloseClick();
   };
 
@@ -76,6 +77,9 @@ class SearchBar extends React.PureComponent {
     toggleSearchResults(false);
     setSearchState(false);
     this.commonCloseClick();
+    if (window.innerWidth <= breakpoints.values.lg) {
+      this.toggleBodyScroll(false);
+    }
   };
 
   arrayRemove = (arr, value) => {
@@ -131,6 +135,7 @@ class SearchBar extends React.PureComponent {
     if (window.innerWidth <= breakpoints.values.lg) {
       this.commonCloseClick();
       this.closeSearchLayover();
+      this.toggleBodyScroll(false);
     } else {
       this.closeSearchLayover();
     }
@@ -142,6 +147,20 @@ class SearchBar extends React.PureComponent {
     }
     this.clearModalParams();
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+  };
+
+  toggleBodyScroll = isDisabled => {
+    if (isDisabled) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.height = `100vh`;
+    } else {
+      const scrollY = document.body.style.top || 0;
+      document.body.style.position = 'relative';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY, 10) * -1);
+      document.body.style.height = '';
+    }
   };
 
   render() {

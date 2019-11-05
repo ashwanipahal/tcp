@@ -107,6 +107,7 @@ class FavoritesView extends React.PureComponent {
       gymSelected,
       tcpSelected,
       isDataLoading,
+      labelsPlpTiles,
     } = this.props;
     if (isDataLoading) return getLoading();
     const filtersArray = activeWishListProducts
@@ -178,6 +179,7 @@ class FavoritesView extends React.PureComponent {
           onSortSelection={onSortSelection}
           filteredId={filteredId}
           renderBrandFilter={this.renderBrandFilter}
+          labelsPlpTiles={labelsPlpTiles}
         />
       </PageContainer>
     );
@@ -208,6 +210,7 @@ FavoritesView.propTypes = {
   gymSelected: PropTypes.bool.isRequired,
   tcpSelected: PropTypes.bool.isRequired,
   isDataLoading: PropTypes.bool.isRequired,
+  labelsPlpTiles: PropTypes.shape({}).isRequired,
 };
 
 FavoritesView.defaultProps = {

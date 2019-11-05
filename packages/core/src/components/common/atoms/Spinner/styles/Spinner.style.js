@@ -23,7 +23,7 @@ const styles = css`
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    background: ${applyBrandSpecificColor};
+    background: ${props => applyBrandSpecificColor(props)};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
   .tcp-circle div:nth-child(1) {

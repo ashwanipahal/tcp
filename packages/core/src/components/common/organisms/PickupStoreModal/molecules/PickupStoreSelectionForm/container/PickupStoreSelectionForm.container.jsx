@@ -67,7 +67,6 @@ class PickupStoreSelectionFormContainer extends React.Component {
     this.place = null;
     this.formData = null;
     this.state = {
-      isLoading: false,
       selectedStoreId: null,
       isBossSelected: null,
       isShowMessage: false,
@@ -75,16 +74,41 @@ class PickupStoreSelectionFormContainer extends React.Component {
     };
     this.onSearch = this.onSearch.bind(this);
     this.untouch = this.untouch.bind(this);
-    this.toggleLoader = this.toggleLoader.bind(this);
     this.handleAddTobag = this.handleAddTobag.bind(this);
     this.handlePickupRadioBtn = this.handlePickupRadioBtn.bind(this);
+    this.prePopulateZipCode = this.prePopulateZipCode.bind(this);
+    this.getPreferredStoreData = this.getPreferredStoreData.bind(this);
+    this.getIsBopisAvailable = this.getIsBopisAvailable.bind(this);
     this.preferredStore = null;
-    this.isAutoSearchTrigerred = false;
+    this.isAutoSearchTriggered = false;
     this.initialValues = {
       addressLocation: '',
       distance: 25,
     };
   }
+
+  prePopulateZipCodeAndSearch = (handleSubmit, changeDispatch) => {
+    if (this.prePopulateZipCode()) {
+      /*
+       * If zipcode needs to be prepupulated then this method triggers
+       * store's search automatically from user's default store zipcode
+       */
+      const { defaultStore, isSkuResolved } = this.props;
+      const {
+        basicInfo: {
+          address: { zipCode },
+        },
+      } = defaultStore;
+      changeDispatch('addressLocation', zipCode);
+      // submitting the search form forcefully in case of step-2
+      const autoSearch = isSkuResolved;
+      if (autoSearch) {
+        // Adding setTimeout to handle case when fav store comes on the fly from API, not from redux
+        setTimeout(() => handleSubmit(this.onSearch)(), 1);
+        this.isAutoSearchTriggered = true;
+      }
+    }
+  };
 
   onSearch = formData => {
     const { colorFitsSizesMap, onSubmit } = this.props;
@@ -96,8 +120,9 @@ class PickupStoreSelectionFormContainer extends React.Component {
 
     const locationPromise = this.place
       ? Promise.resolve(this.place.geometry.location)
-      : getAddressLocationInfo(formData && formData.addressLocation);
+      : formData && getAddressLocationInfo(formData.addressLocation);
     onSubmit(locationPromise, colorFitsSizesMap, formData);
+    this.formData = { ...formData };
   };
 
   getDefaultStoreZipcode = () => {
@@ -111,17 +136,17 @@ class PickupStoreSelectionFormContainer extends React.Component {
   };
 
   getIsBopisAvailable = () => {
+    const { defaultStore } = this.props;
     return (
-      this.preferredStore.productAvailability.status === BOPIS_ITEM_AVAILABILITY.AVAILABLE ||
-      this.preferredStore.productAvailability.status === BOPIS_ITEM_AVAILABILITY.LIMITED
+      defaultStore &&
+      defaultStore.productAvailability &&
+      (defaultStore.productAvailability.status === BOPIS_ITEM_AVAILABILITY.AVAILABLE ||
+        defaultStore.productAvailability.status === BOPIS_ITEM_AVAILABILITY.LIMITED)
     );
   };
 
   getPreferredStoreData = defaultStore => {
-    this.preferredStore =
-      defaultStore && defaultStore.basicInfo && defaultStore.basicInfo.isDefault
-        ? defaultStore
-        : null;
+    this.preferredStore = defaultStore;
     return (
       this.preferredStore &&
       this.preferredStore.productAvailability &&
@@ -174,7 +199,10 @@ class PickupStoreSelectionFormContainer extends React.Component {
       // condition checks if the two stores in the cart are same for BOSS and BOPIS
       return SAME_STORE_BOPIS_BOPIS;
     }
-    return SELECT_STORE;
+    if (this.showStoreSearching) {
+      return SELECT_STORE;
+    }
+    return '';
   };
 
   deriveSKUInfo = ({ colorFitsSizesMap } = this.props, { initialValues } = this.props) => {
@@ -325,10 +353,6 @@ class PickupStoreSelectionFormContainer extends React.Component {
     });
   };
 
-  toggleLoader = (isLoading = false) => {
-    this.setState({ isLoading });
-  };
-
   untouch = () => {
     const { untouch } = this.props;
     untouch('color');
@@ -343,7 +367,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
     /** This method validates if zipcode needs to be propulated or not.
      * !this.formData.addressLocation - this check is to ensure that
      * auto search will not overwrite manual search
-     * !this.isAutoSearchTrigerred - this check is to ensure that
+     * !this.isAutoSearchTriggered - this check is to ensure that
      * autosearch should be trigerred only once in componentDidUpdate
      * Since default store is already set till user reaches this modal,
      * prevProps and newProps are always same; thus using this check;
@@ -353,15 +377,17 @@ class PickupStoreSelectionFormContainer extends React.Component {
      * isLoading - This check is for restricted modal scenario to avoid API call till
      * getUserBopisStore API returns data
      */
-    const { allowBossStoreSearch, isSearchOnlyInCartStores, isPickUpWarningModal } = this.props;
-    const { isLoading } = this.state;
+    const { defaultStore } = this.props;
 
-    const showStoreSearchForm =
-      !isPickUpWarningModal && !isLoading && (allowBossStoreSearch || !isSearchOnlyInCartStores);
-    const isValidZipCode = this.getDefaultStoreZipcode();
+    const showStoreSearchForm = this.showStoreSearching;
+    const isValidZipCode =
+      defaultStore &&
+      defaultStore.basicInfo &&
+      defaultStore.basicInfo.address &&
+      defaultStore.basicInfo.address.zipCode;
     return (
       isValidZipCode &&
-      !this.isAutoSearchTrigerred &&
+      !this.isAutoSearchTriggered &&
       showStoreSearchForm &&
       (!this.formData || !this.formData.addressLocation)
     );
@@ -391,14 +417,18 @@ class PickupStoreSelectionFormContainer extends React.Component {
       isSearchOnlyInCartStores,
       allowBossStoreSearch,
       isSkuResolved,
+      isGetUserStoresLoaded,
     } = this.props;
 
     const storeLimitReached = cartBopisStoresList.length === maxAllowedStoresInCart;
     const sameStore =
       storeLimitReached &&
       cartBopisStoresList[0].basicInfo.id === cartBopisStoresList[1].basicInfo.id;
-    const showStoreSearching = !isSkuResolved || allowBossStoreSearch || !isSearchOnlyInCartStores;
-
+    const showStoreSearching =
+      !isSkuResolved ||
+      allowBossStoreSearch ||
+      (isGetUserStoresLoaded && !isSearchOnlyInCartStores);
+    this.showStoreSearching = showStoreSearching;
     return {
       storeLimitReached,
       sameStore,
@@ -428,10 +458,11 @@ class PickupStoreSelectionFormContainer extends React.Component {
       allowBossStoreSearch,
       bopisChangeStore,
       cartBopisStoresList,
+      isGetUserStoresLoaded,
       error,
       openRestrictedModalForBopis,
     } = this.props;
-    const { isLoading, selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
+    const { selectedStoreId, isBossSelected, isShowMessage, selectedValue } = this.state;
 
     return (
       <PickupStoreSelectionForm
@@ -439,10 +470,11 @@ class PickupStoreSelectionFormContainer extends React.Component {
         isPickUpWarningModal={isPickUpWarningModal}
         renderVariationText={this.renderVariationText}
         getPreferredStoreData={this.getPreferredStoreData}
+        isGetUserStoresLoaded={isGetUserStoresLoaded}
         deriveStoreSearchAttributes={this.deriveStoreSearchAttributes}
         deriveBossCtaEnabled={this.deriveBossCtaEnabled}
-        isLoading={isLoading}
         updateCartItemStore={updateCartItemStore}
+        prePopulateZipCodeAndSearch={this.prePopulateZipCodeAndSearch}
         defaultStore={defaultStore}
         isSkuResolved={isSkuResolved}
         isShoppingBag={isShoppingBag}
@@ -451,7 +483,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
         isBossEnabled={isBossEnabled}
         isBopisEnabled={isBopisEnabled}
         isGiftCard={isGiftCard}
-        preferredStore={this.preferredStore}
+        preferredStore={defaultStore}
         handleAddTobag={this.handleAddTobag}
         handlePickupRadioBtn={this.handlePickupRadioBtn}
         handleUpdatePickUpItem={this.handleUpdatePickUpItem}

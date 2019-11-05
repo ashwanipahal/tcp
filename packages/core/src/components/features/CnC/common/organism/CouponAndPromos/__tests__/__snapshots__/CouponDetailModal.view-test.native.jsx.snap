@@ -32,6 +32,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         margin={null}
         numberOfLines={null}
         text="$10 OFF On $80"
+        textAlign="center"
         textDecoration={null}
       />
       <Styled(View)
@@ -79,7 +80,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       >
         <Styled(CustomButton)
           active={false}
-          buttonVariation="fixed-width"
+          buttonVariation="variable-width"
           color=""
           customStyle={Object {}}
           customTextStyle={null}
@@ -94,12 +95,14 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
           text="APPLY_TO_BAG"
           theme={Object {}}
           url=""
+          width={225}
           withNoLineHeight={false}
         />
       </Styled(View)>
@@ -202,7 +205,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           accessibilityText=""
           data-locator="couponDetailModal_applied_ShortDesc"
           dataLocator=""
-          fontFamily="primary"
+          fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
           margin={null}
@@ -230,7 +233,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           accessibilityText=""
           data-locator="couponDetailModal_applied_and"
           dataLocator=""
-          fontFamily="primary"
+          fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
           margin={null}

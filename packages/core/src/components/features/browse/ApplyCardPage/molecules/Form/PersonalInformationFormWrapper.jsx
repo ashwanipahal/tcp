@@ -16,21 +16,20 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
         <BodyCopy component="h2" className="title">
           {getLabelValue(labels, 'lbl_PLCCForm_personalInfo')}
         </BodyCopy>
+        <BodyCopy
+          fontSize="fs10"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          className="free_dropdown_label"
+        >
+          {getLabelValue(labels, 'lbl_PLCCForm_dob')}
+        </BodyCopy>
         <Row fullBleed>
           <Col
             className="contact_information_form"
             key="contact_information_form"
             colSize={{ large: getPageViewGridColumnSize(isPLCCModalFlow), medium: 4, small: 6 }}
           >
-            <BodyCopy
-              component="span"
-              fontSize="fs10"
-              fontFamily="secondary"
-              fontWeight="extrabold"
-              className="free_dropdown_label"
-            >
-              {getLabelValue(labels, 'lbl_PLCCForm_dob')}
-            </BodyCopy>
             <Row fullBleed>
               <Col
                 className="table_contact_month"
@@ -40,6 +39,8 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="month"
                   name="month"
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_month')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_month')}
                   component={SelectBox}
                   options={months}
                   dataLocator={getLocator('plcc_date')}
@@ -55,6 +56,8 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="date"
                   name="date"
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_day')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_day')}
                   component={SelectBox}
                   options={calendarDaysMap()}
                   dataLocator={getLocator('plcc_month')}
@@ -70,6 +73,8 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                 <Field
                   id="year"
                   name="year"
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_year')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_year')}
                   component={SelectBox}
                   options={calendarYearsMap()}
                   dataLocator={getLocator('plcc_year')}
