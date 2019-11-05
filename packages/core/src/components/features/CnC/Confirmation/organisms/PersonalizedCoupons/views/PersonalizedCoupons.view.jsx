@@ -43,7 +43,7 @@ export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }
       couponsList.filter(coupon => coupon.categoryType !== CONSTANTS.LOYALITY_OFFERS);
   }
 
-  return couponsList ? (
+  return couponsList && couponsList.size > 0 ? (
     <div className={className}>
       <BodyCopy className="heading" component="div">
         <BodyCopy
