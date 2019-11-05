@@ -45,7 +45,8 @@ class ProductTabListContainer extends React.PureComponent {
   /* Create a map of category Ids with the items.  */
   getTabItemsMap = tabItems => {
     return tabItems.reduce((map, item) => {
-      const { category } = item;
+      const { category = [] } = item;
+
       const catId = category.map(cat => cat.val).join('_');
       const tabsMap = map;
       tabsMap[catId] = item;
