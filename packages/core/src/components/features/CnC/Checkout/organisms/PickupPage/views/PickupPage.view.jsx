@@ -171,7 +171,7 @@ class PickUpFormPart extends React.Component {
     }
   }
 
-  render() {
+  renderPickupPage = () => {
     const {
       className,
       isGuest,
@@ -188,17 +188,12 @@ class PickUpFormPart extends React.Component {
       showAccordian,
       ServerErrors,
       pageCategory,
-      cartOrderItemsCount,
-      checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
-    const { isEditing, pickUpContact, dataUpdated } = this.state;
-    if (!dataUpdated) {
-      this.updatePickupForm();
-    }
-
+    const { isEditing, pickUpContact } = this.state;
     return (
       <>
-        {cartOrderItemsCount > 0 ? (
+        {isBagLoaded && (
           <div className={className}>
             <div className="container">
               {pickupError && (
@@ -327,6 +322,22 @@ class PickUpFormPart extends React.Component {
               />
             </form>
           </div>
+        )}
+      </>
+    );
+  };
+
+  render() {
+    const { cartOrderItemsCount, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
+    const { dataUpdated } = this.state;
+    if (!dataUpdated) {
+      this.updatePickupForm();
+    }
+
+    return (
+      <>
+        {!isBagLoaded || cartOrderItemsCount > 0 ? (
+          this.renderPickupPage()
         ) : (
           <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
         )}
@@ -355,6 +366,7 @@ PickUpFormPart.propTypes = {
   cartOrderItemsCount: PropTypes.number.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
+  isBagLoaded: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,

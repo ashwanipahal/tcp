@@ -178,6 +178,7 @@ class CheckoutPage extends React.PureComponent {
       toggleCountrySelector,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -191,6 +192,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             pickupDidMount={pickupDidMount}
+            isBagLoaded={isBagLoaded}
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
@@ -219,6 +221,7 @@ class CheckoutPage extends React.PureComponent {
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
+            isBagLoaded={isBagLoaded}
             cartOrderItemsCount={cartOrderItemsCount}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
             {...shippingProps}
@@ -385,6 +388,7 @@ CheckoutPage.propTypes = {
   billingProps: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isGiftServicesChecked: PropTypes.bool.isRequired,
+  isBagLoaded: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
