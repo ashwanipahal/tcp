@@ -138,6 +138,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -233,6 +234,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render empty state correc
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
@@ -272,6 +274,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render empty state correc
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
