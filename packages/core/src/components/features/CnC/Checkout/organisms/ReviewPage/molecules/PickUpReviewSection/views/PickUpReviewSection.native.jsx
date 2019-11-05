@@ -159,7 +159,7 @@ export class PickUpReviewSection extends React.PureComponent {
             />
             <PickUpContactDisplay
               formData={
-                typeof pickUpContactPerson.firstName !== 'undefined'
+                pickUpContactPerson.firstName !== ''
                   ? pickUpContactPerson
                   : pickUpContactAlternate.pickUpContact
               }
