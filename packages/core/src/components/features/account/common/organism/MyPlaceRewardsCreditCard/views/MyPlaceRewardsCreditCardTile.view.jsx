@@ -52,19 +52,10 @@ export const MyPlaceRewardsCreditCardTile = ({
                   className="elem-mr-XS"
                   src={getIconPath(cardIconMapping[myPlaceRewardCard.ccBrand])}
                 />
-                <BodyCopy component="div" className="cardDescriptionWrapper">
-                  <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
-                    <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>
-                    <span> </span>
-                    <span>{myPlaceRewardCard.accountNo.slice(-4)}</span>
-                  </BodyCopy>
-                  <BodyCopy fontSize="fs10" fontFamily="secondary">
-                    <span>{getLabelValue(labels, 'lbl_overview_expires')}</span>
-                    <span> </span>
-                    <span>{`0${myPlaceRewardCard.expMonth.trim()}`.slice(-2)}</span>
-                    <span>/</span>
-                    <span>{myPlaceRewardCard.expYear.slice(-2)}</span>
-                  </BodyCopy>
+                <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="extrabold">
+                  <span>{getLabelValue(labels, 'lbl_overview_card_ending')}</span>
+                  <span> </span>
+                  <span>{myPlaceRewardCard.accountNo.slice(-4)}</span>
                 </BodyCopy>
               </BodyCopy>
               <BodyCopy component="div">
