@@ -7,7 +7,7 @@ import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, viewport } from '../../../../../utils';
 import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
-import moduleRConfig from '../moduleR.config';
+// import moduleRConfig from '../moduleR.config';
 
 /**
  * @class ModuleR - global reusable component will display featured
@@ -97,8 +97,7 @@ class ModuleR extends React.PureComponent {
         {selectedProductList.map((productItem, index) => {
           if (productItem.uniqueId) {
             const { pdpUrl, pdpAsPath, uniqueId, product_name: productName } = productItem;
-            const imgUniqueId = uniqueId.split('_');
-            const imgUrl = `${imgUniqueId[0]}/${uniqueId}`;
+            const imgUrl = `${uniqueId.split('_')[0]}/${uniqueId}`;
             return (
               <ImageGridCol
                 key={uniqueId}
@@ -116,11 +115,7 @@ class ModuleR extends React.PureComponent {
                   asPath={pdpAsPath}
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
-                  <DamImage
-                    imgData={{ url: imgUrl, alt: productName }}
-                    isProductImage
-                    imgConfigs={moduleRConfig.IMG_DATA.productImgConfig}
-                  />
+                  <DamImage imgData={{ url: imgUrl, alt: productName }} isProductImage />
                 </Anchor>
               </ImageGridCol>
             );

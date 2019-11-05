@@ -1,14 +1,7 @@
 /* istanbul ignore file */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Anchor,
-  Button,
-  Col,
-  // DamImage,
-  Image,
-  Row,
-} from '../../../atoms';
+import { Anchor, Button, Col, DamImage, Image, Row } from '../../../atoms';
 import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
@@ -219,7 +212,8 @@ class ModuleG extends React.PureComponent {
                 customArrowRight: getIconPath('carousel-big-carrot'),
               }}
             >
-              {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
+              {data.map(({ pdpUrl, pdpAsPath, product_name: productName, uniqueId }, index) => {
+                const imgUrl = `${uniqueId.split('_')[0]}/${uniqueId}`;
                 return (
                   <div key={index.toString()}>
                     <Anchor
@@ -228,7 +222,7 @@ class ModuleG extends React.PureComponent {
                       asPath={pdpAsPath}
                       dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                     >
-                      <Image alt={productName} src={imageUrl[0]} />
+                      <DamImage imgData={{ url: imgUrl, alt: productName }} isProductImage />
                     </Anchor>
                   </div>
                 );
