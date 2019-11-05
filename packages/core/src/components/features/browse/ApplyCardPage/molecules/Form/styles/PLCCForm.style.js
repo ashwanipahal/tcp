@@ -6,10 +6,6 @@ export default styled.div`
     line-height: 1;
   }
 
-  .free_dropdown_label {
-    position: absolute;
-  }
-
   .columnWrapper {
     margin-top:  ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
