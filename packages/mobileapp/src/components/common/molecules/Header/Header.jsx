@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import get from 'lodash/get';
 import {
   getLocator,
   toTimeString,
@@ -23,6 +22,7 @@ import {
   getUserLoggedInState,
   getUserName,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { onBack } from '@tcp/core/src/utils/utils.app';
 import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
 
@@ -58,6 +58,8 @@ const CART_ITEM_COUNTER = 'cartItemsCount';
 const backicon = require('@tcp/core/src/assets/carrot-large-left.png');
 const downIcon = require('../../../../assets/images/carrot-small-down.png');
 const cartIcon = require('../../../../assets/images/empty-bag.png');
+
+const STORE_TYPE = 'store';
 
 /**
  * This component creates Mobile Header.
@@ -203,19 +205,6 @@ class Header extends React.PureComponent<Props> {
     return storeTime;
   };
 
-  onBack = () => {
-    const { navigation } = this.props;
-    const goBackRoute = get(navigation, 'state.params.backTo', false);
-    const isReset = get(navigation, 'state.params.reset', false);
-    if (isReset) {
-      navigation.pop();
-    } else if (goBackRoute) {
-      navigation.navigate(goBackRoute);
-    } else {
-      navigation.goBack(null);
-    }
-  };
-
   render() {
     const {
       favStore,
@@ -246,17 +235,16 @@ class Header extends React.PureComponent<Props> {
       ? `${headerLabels.lbl_header_hiTxt} ${userName}!`
       : headerLabels.lbl_header_welcomeMessage;
 
-    console.info('title===', title);
     return (
       <SafeAreaViewStyle>
         <ToastContainer />
         <Container>
           <HeaderContainer data-locator={getLocator('global_headerpanel')}>
-            {headertype === 'store' ? (
+            {headertype === STORE_TYPE ? (
               <BackContainer position="row">
                 <TouchableOpacity
                   accessible
-                  onPress={this.onBack}
+                  onPress={() => onBack(navigation)}
                   accessibilityRole="button"
                   accessibilityLabel="back button"
                 >
