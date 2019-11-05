@@ -11,7 +11,6 @@ import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.s
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
 
-
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
