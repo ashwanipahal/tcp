@@ -67,10 +67,15 @@ const style = css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-      transform: none;
+      line-height: 90px;
+      top: 50%;
       left: 120px;
+      transform: translate(0%, -50%);
       width: 470px;
+
+      .link-text-wrapper {
+        width: 100%;
+      }
     }
   }
 

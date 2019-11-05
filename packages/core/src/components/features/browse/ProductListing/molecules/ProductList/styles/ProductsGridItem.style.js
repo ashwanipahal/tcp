@@ -51,6 +51,9 @@ const styles = css`
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+    }
   }
 
   .top-badge-container {

@@ -8,7 +8,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    labels: state.Labels.global && state.Labels.global.accessibility,
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AnimatedBrandChangeIcon);
