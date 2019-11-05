@@ -63,6 +63,12 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     totalProductsCount={0}
   />
   <Connect(QuickViewModalContainer) />
-  <Connect(AddedToBagContainer) />
+  <Connect(AddedToBagContainer)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
 </Styled(View)>
 `;

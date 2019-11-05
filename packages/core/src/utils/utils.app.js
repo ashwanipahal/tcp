@@ -720,3 +720,14 @@ export const getTranslateDateInformation = (date, language) => {
     year: 'YYYY',
   });
 };
+
+/**
+ * @method formatPhnNumber
+ * @desc returns phone number after stripping space and new line characters
+ * @param {string} phnNumber phone number which needs modification
+ */
+export const formatPhnNumber = phnNumber =>
+  phnNumber
+    .replace(/\n /g, '')
+    .replace(/ /g, '')
+    .replace(')', ') ');
