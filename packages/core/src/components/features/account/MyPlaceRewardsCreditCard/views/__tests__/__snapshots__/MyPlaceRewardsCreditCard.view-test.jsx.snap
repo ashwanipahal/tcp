@@ -7,154 +7,89 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
     heading="lbl_PLCCForm_rewardsCardHeading"
   />
   <div
-    className="Modal__Content__Wrapper"
+    className="Content_Wrapper"
   >
-    <Styled(Row)
-      fullBleed={true}
+    <Styled(BodyCopy)
+      className="Benefit_Heading"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs48"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
     >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
+      lbl_PLCCModal_applyNowHeaderText
+      <Styled(BodyCopy)
+        className="Benefit_Heading_Suffix"
+        color="text.primary"
+        component="sup"
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="center"
       >
-        <Styled(Row)
-          centered={true}
-          className="Benefit_Heading_Suffix"
-          fullBleed={true}
-        >
-          <Styled(BodyCopy)
-            className="Benefit_Heading"
-            color="text.primary"
-            component="p"
-            fontFamily="primary"
-            fontSize="fs48"
-            fontWeight="black"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="center"
-          >
-            lbl_PLCCModal_applyNowHeaderText
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="primary"
-            fontSize="fs12"
-            fontWeight="black"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="center"
-          >
-            lbl_PLCCModal_applyNowHeaderTextSuffix
-          </Styled(BodyCopy)>
-        </Styled(Row)>
-        <div
-          className="header-image"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      fullBleed={true}
+        lbl_PLCCModal_applyNowHeaderTextSuffix
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+    <div
+      className="header-image"
+    />
+    <Styled(BodyCopy)
+      className="apply-now-subtext"
+      color="gray.900"
+      component="div"
+      data-locator="ship_to_text_2"
+      fontFamily="secondary"
+      fontSize="fs22"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
     >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          className="apply-now-subtext"
-          color="gray.900"
-          component="div"
-          data-locator="ship_to_text_2"
-          fontFamily="secondary"
-          fontSize="fs22"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="center"
-        >
-          lbl_PLCCModal_applyNowSubText
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
-    <Styled(Row)
-      className="ApplyNow__link__Wrapper"
-      fullBleed={true}
+      lbl_PLCCModal_applyNowSubText
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="button_wrapper"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
     >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="plcc_apply_btn"
+        fill="BLUE"
+        fontSize="fs14"
+        fontWeight="semibold"
+        type="submit"
       >
-        <Styled(Button)
-          buttonVariation="fixed-width"
-          className="ApplyNow__link"
-          data-locator="plcc_apply_btn"
-          fill="BLUE"
-          fontWeight="semibold"
-          type="submit"
-        >
-          lbl_PLCCModal_applyNowCTA
-        </Styled(Button)>
-      </Styled(Col)>
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
+        lbl_PLCCModal_applyNowCTA
+      </Styled(Button)>
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mt-MED"
+        data-locator="plcc_apply_btn"
+        fill="WHITE"
+        fontSize="fs14"
+        fontWeight="semibold"
+        onClick={[Function]}
+        type="submit"
       >
-        <Styled(Button)
-          buttonVariation="fixed-width"
-          className="ApplyNow__link blackFontColor"
-          data-locator="plcc_apply_btn"
-          fill="WHITE"
-          fontWeight="semibold"
-          onClick={[Function]}
-          type="submit"
-        >
-          lbl_PLCCForm_manageCreditCardAccount
-        </Styled(Button)>
-      </Styled(Col)>
-    </Styled(Row)>
+        lbl_PLCCForm_manageCreditCardAccount
+      </Styled(Button)>
+    </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className="benefits-text elem-mt-XL"
       color="text.secondary"
@@ -169,68 +104,30 @@ exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = 
     >
       lbl_PLCCModal_benefitsText
     </Styled(BodyCopy)>
-    <Styled(Row)
-      fullBleed={true}
+    <Styled(BodyCopy)
+      className="withMyPlaceRewardText"
+      color="gray.900"
+      component="div"
+      data-locator="ship_to_text_2"
+      fontFamily="secondary"
+      fontSize="fs22"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
     >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
-      >
-        <Styled(BodyCopy)
-          className="withMyPlaceRewardText"
-          color="gray.900"
-          component="div"
-          data-locator="ship_to_text_2"
-          fontFamily="secondary"
-          fontSize="fs22"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="center"
-        >
-          lbl_PLCCForm_withMyPlaceRewardsCard
-        </Styled(BodyCopy)>
-      </Styled(Col)>
-    </Styled(Row)>
+      lbl_PLCCForm_withMyPlaceRewardsCard
+    </Styled(BodyCopy)>
     <div
       className="offer_info_icon elem-mt-LRG"
       data-locator="plcc_modal_logo"
       offerType="lbl_PLCCModal_oneEqualsTwoPoints"
     />
   </div>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
-        }
-      }
-    >
-      <div
-        className="table-image"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
+  <div
+    className="table-image"
+  />
   <div
     className="footerLinks"
   >
