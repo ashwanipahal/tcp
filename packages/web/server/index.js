@@ -239,7 +239,7 @@ app.prepare().then(() => {
     // server.get('*', redirectToErrorPage);
     return handle(req, res);
   });
-  
+
   if (xrayEnabled) {
     server.use(AWSXRay.express.closeSegment());
   }
