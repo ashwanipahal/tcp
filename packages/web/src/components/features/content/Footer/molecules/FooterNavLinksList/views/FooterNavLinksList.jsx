@@ -170,12 +170,6 @@ const FooterNavLinksList = ({
     const isModal = shouldLoginModalOpen(linkAction, linkUrl);
     dispatchFn = isModal ? shouldLinkOrButton(isModal) : dispatchFn;
 
-    // const getTarget = targetVal => {
-    //   if (isLoggedIn && linkItems.target === '_modal') return '_self';
-
-    //   return targetVal;
-    // };
-
     return !hideLogoutMyActLink ? (
       <li>
         {dispatchFn ? (
