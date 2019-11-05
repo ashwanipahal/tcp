@@ -15,7 +15,7 @@ export const PageHeadingWithLinks = ({
   children,
   heading,
   noTopPadding,
-  walletPage,
+  noCTA,
 }) => {
   return (
     <View>
@@ -29,7 +29,7 @@ export const PageHeadingWithLinks = ({
       </StyledHeading>
       <LineComp marginBottom={28} borderWidth={1} borderColor="black" />
       {children}
-      {!walletPage && (
+      {!noCTA && (
         <StyledAnchorWrapper>
           <Anchor
             fontSizeVariation="medium"
@@ -67,13 +67,13 @@ PageHeadingWithLinks.propTypes = {
   labels: PropTypes.shape({}),
   children: PropTypes.string.isRequired,
   noTopPadding: PropTypes.bool,
-  walletPage: PropTypes.bool,
+  noCTA: PropTypes.bool,
 };
 
 PageHeadingWithLinks.defaultProps = {
   labels: {},
   noTopPadding: false,
-  walletPage: false,
+  noCTA: false,
 };
 
 export default PageHeadingWithLinks;

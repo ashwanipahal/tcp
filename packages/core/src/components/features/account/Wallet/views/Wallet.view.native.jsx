@@ -320,14 +320,8 @@ class WalletView extends PureComponent {
                 <RewardsPoints tableView />
                 <PageHeadingWithLinks
                   heading={getLabelValue(labels, 'lbl_my_wallet_heading', 'placeRewards')}
-                  programDetailsCta={getLabelValue(
-                    labels,
-                    'lbl_my_rewards_program_details',
-                    'placeRewards'
-                  )}
-                  termsConditionCta={getLabelValue(commonLabels, 'lbl_common_tnc')}
                   noTopPadding
-                  walletPage
+                  noCTA
                 >
                   <AccountNumber />
                   <MyRewards labels={labels} view="all" {...props} />

@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AccountNumber from '../views';
 import { getLabels } from '../../../../Account/container/Account.selectors';
+import getAccountOverviewLabels from './AccountNumber.selectors';
 import { getMyPlaceNumber } from '../../../../User/container/User.selectors';
 
 export class AccountNumberContainer extends PureComponent {
-  getAccountOverviewLabels = labels => {
-    return (labels && labels.accountOverview) || {};
-  };
-
   render() {
     const { labels, myPlaceNumber, ...props } = this.props;
-    const overViewLabels = this.getAccountOverviewLabels(labels);
+    const overViewLabels = getAccountOverviewLabels(labels);
     return <AccountNumber labels={overViewLabels} myPlaceNumber={myPlaceNumber} {...props} />;
   }
 }

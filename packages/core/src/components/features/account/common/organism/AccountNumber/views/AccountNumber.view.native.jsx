@@ -3,6 +3,7 @@ import { View, Platform, Linking } from 'react-native';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import endpoints from '@tcp/core/src/components/features/account/common/externalEndpoints';
 import {
   ViewWithSpacing,
   BodyCopyWithSpacing,
@@ -44,8 +45,7 @@ class AccountNumber extends PureComponent {
   render() {
     const { myPlaceNumber, labels } = this.props;
     const { toggleArrowDown } = this.state;
-    const url =
-      'https://mp.vibescm.com/p/s5i4q0?unique_identifier=9ebcd5fc-4311-4963-83cc-27c0928deb7b';
+    const url = endpoints.walletPage;
 
     return (
       <View>
