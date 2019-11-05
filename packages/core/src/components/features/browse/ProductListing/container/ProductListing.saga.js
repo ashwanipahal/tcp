@@ -52,6 +52,9 @@ export function* fetchPlpProducts({ payload }) {
     if (reqObj && reqObj.categoryId) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (plpProducts) {
+        const { layout, modules } = yield call(instanceProductListing.parsedModuleData);
+        yield put(loadLayoutData(layout, 'productListingPage'));
+        yield put(loadModulesData(modules));
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
         const isGuest = !getUserLoggedInState(state);
