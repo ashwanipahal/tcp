@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue, getLocator } from '@tcp/core/src/utils/utils';
 import FormPageHeading from '../../common/molecule/FormPageHeading';
-import { Row, Col, BodyCopy, Button, Anchor } from '../../../../common/atoms';
+import { BodyCopy, Button, Anchor } from '../../../../common/atoms';
 import styles from '../styles/MyPlaceRewardsCreditCard.style';
 import withStyles from '../../../../common/hoc/withStyles';
-import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal/molecules/ApplyNowPLCCModal/views';
+import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal';
 
 export class MyPlaceRewardsCreditCard extends PureComponent {
   openManageCreditCardLink = e => {
@@ -15,7 +15,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
   };
 
   render() {
-    const { labels, className, isPLCCModalOpen, openPLCCModal, closePLCCModal } = this.props;
+    const { labels, className, isPLCCModalOpen, openPLCCModal } = this.props;
     return (
       <div className={className}>
         <FormPageHeading
@@ -23,77 +23,65 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
           data-locator=""
         />
 
-        <div className="Modal__Content__Wrapper">
-          <Row fullBleed>
-            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
-              <Row fullBleed centered className="Benefit_Heading_Suffix">
-                <BodyCopy
-                  fontFamily="primary"
-                  fontSize="fs48"
-                  fontWeight="black"
-                  textAlign="center"
-                  className="Benefit_Heading"
-                >
-                  {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
-                </BodyCopy>
-                <BodyCopy
-                  fontFamily="primary"
-                  fontSize="fs12"
-                  fontWeight="black"
-                  textAlign="center"
-                  component="span"
-                >
-                  {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderTextSuffix')}
-                </BodyCopy>
-              </Row>
+        <div className="Content_Wrapper">
+          <BodyCopy
+            fontFamily="primary"
+            fontSize="fs48"
+            fontWeight="black"
+            textAlign="center"
+            className="Benefit_Heading"
+          >
+            {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+            <BodyCopy
+              fontFamily="primary"
+              fontSize="fs12"
+              fontWeight="black"
+              textAlign="center"
+              component="sup"
+              className="Benefit_Heading_Suffix"
+            >
+              {getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderTextSuffix')}
+            </BodyCopy>
+          </BodyCopy>
 
-              <div className="header-image" />
-            </Col>
-          </Row>
-          <Row fullBleed>
-            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
-              <BodyCopy
-                component="div"
-                color="gray.900"
-                fontFamily="secondary"
-                fontSize="fs22"
-                textAlign="center"
-                className="apply-now-subtext"
-                data-locator={getLocator('ship_to_text_2')}
-              >
-                {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
-              </BodyCopy>
-            </Col>
-          </Row>
+          <div className="header-image" />
 
-          <Row fullBleed className="ApplyNow__link__Wrapper">
-            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
-              <Button
-                buttonVariation="fixed-width"
-                fill="BLUE"
-                type="submit"
-                className="ApplyNow__link"
-                onClick={openPLCCModal}
-                fontWeight="semibold"
-                data-locator={getLocator('plcc_apply_btn')}
-              >
-                {getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
-              </Button>
-            </Col>
-            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
-              <Button
-                buttonVariation="fixed-width"
-                fill="WHITE"
-                type="submit"
-                className="ApplyNow__link blackFontColor"
-                onClick={this.openManageCreditCardLink}
-                fontWeight="semibold"
-                data-locator={getLocator('plcc_apply_btn')}
-              >
-                {getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}
-              </Button>
-            </Col>
-          </Row>
+          <BodyCopy
+            component="div"
+            color="gray.900"
+            fontFamily="secondary"
+            fontSize="fs22"
+            textAlign="center"
+            className="apply-now-subtext"
+            data-locator={getLocator('ship_to_text_2')}
+          >
+            {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
+          </BodyCopy>
+          <BodyCopy component="div" className="button_wrapper">
+            <Button
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              type="submit"
+              fontSize="fs14"
+              onClick={openPLCCModal}
+              fontWeight="semibold"
+              data-locator={getLocator('plcc_apply_btn')}
+            >
+              {getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
+            </Button>
+            <Button
+              buttonVariation="fixed-width"
+              fill="WHITE"
+              type="submit"
+              fontSize="fs14"
+              className="elem-mt-MED"
+              onClick={this.openManageCreditCardLink}
+              fontWeight="semibold"
+              data-locator={getLocator('plcc_apply_btn')}
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}
+            </Button>
+          </BodyCopy>
           <BodyCopy
             fontFamily="primary"
             fontSize="fs48"
@@ -104,21 +92,17 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
           >
             {getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
           </BodyCopy>
-          <Row fullBleed>
-            <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
-              <BodyCopy
-                component="div"
-                color="gray.900"
-                fontFamily="secondary"
-                fontSize="fs22"
-                textAlign="center"
-                data-locator={getLocator('ship_to_text_2')}
-                className="withMyPlaceRewardText"
-              >
-                {getLabelValue(labels, 'lbl_PLCCForm_withMyPlaceRewardsCard')}
-              </BodyCopy>
-            </Col>
-          </Row>
+          <BodyCopy
+            component="div"
+            color="gray.900"
+            fontFamily="secondary"
+            fontSize="fs22"
+            textAlign="center"
+            data-locator={getLocator('ship_to_text_2')}
+            className="withMyPlaceRewardText"
+          >
+            {getLabelValue(labels, 'lbl_PLCCForm_withMyPlaceRewardsCard')}
+          </BodyCopy>
           <div
             className="offer_info_icon elem-mt-LRG"
             data-locator="plcc_modal_logo"
@@ -126,11 +110,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
           />
         </div>
 
-        <Row fullBleed>
-          <Col ignoreGutter={{ small: true }} colSize={{ large: 12, medium: 8, small: 6 }}>
-            <div className="table-image" />
-          </Col>
-        </Row>
+        <div className="table-image" />
 
         <div className="footerLinks">
           <BodyCopy component="span" fontSize="fs12" fontFamily="secondary">
@@ -169,9 +149,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             {getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           </Anchor>
         </div>
-        {isPLCCModalOpen && (
-          <ApplyNowPLCCModal isPLCCModalOpen={isPLCCModalOpen} closePLCCModal={closePLCCModal} />
-        )}
+        {isPLCCModalOpen && <ApplyNowPLCCModal isPLCCModalOpen={isPLCCModalOpen} />}
       </div>
     );
   }
@@ -181,7 +159,6 @@ MyPlaceRewardsCreditCard.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string.isRequired,
   isPLCCModalOpen: PropTypes.bool,
-  closePLCCModal: PropTypes.func.isRequired,
   openPLCCModal: PropTypes.func.isRequired,
 };
 

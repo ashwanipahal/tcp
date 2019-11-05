@@ -1,10 +1,14 @@
 import { css } from 'styled-components';
 
 export const modalStyles = css`
-  .Modal__Content__Wrapper {
+  .Content_Wrapper {
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 0px ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
+  }
+
+  .Benefit_Heading_Suffix {
+    vertical-align: top;
   }
 
   .Benefit_Heading {
@@ -14,13 +18,11 @@ export const modalStyles = css`
     display: block;
     height: auto;
     font-size: ${props => props.theme.typography.fontSizes.fs48};
-    padding: 0;
-    margin-top: 40px;
+    padding: 0px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 
     @media ${props => props.theme.mediaQuery.smallMax} {
-      margin: 6px 0 10px;
-      margin-bottom: 6px;
-      margin-top: 22px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
       font-size: ${props => props.theme.typography.fontSizes.fs36};
     }
   }
@@ -32,41 +34,21 @@ export const modalStyles = css`
   }
 
   .benefits-text {
-    margin-top: 40px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     @media ${props => props.theme.mediaQuery.smallMax} {
       font-size: ${props => props.theme.typography.fontSizes.fs32};
-      margin-top: 35px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
 
-  .Benefit_Heading_Suffix {
-    align-items: center;
-  }
-
-  .ApplyNow__link__Wrapper {
-    margin-top: 24px;
-    text-align: center;
-  }
-
-  .ApplyNow__link {
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
+  .button_wrapper {
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
-    letter-spacing: 1px;
-    text-align: center;
-    margin-top: 20px;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XXL} auto;
     width: 349px;
-    height: 51px;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       width: 332px;
-      height: 42px;
     }
-  }
-
-  .blackFontColor {
-    color: #000000;
   }
 
   .header-image {
@@ -78,7 +60,7 @@ export const modalStyles = css`
     width: 259px;
     height: 166px;
     object-fit: contain;
-    margin: 20px auto;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} auto;
   }
 
   .table-image {
@@ -90,13 +72,13 @@ export const modalStyles = css`
     width: 920px;
     height: 370px;
     object-fit: contain;
-    margin: 20px auto;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} auto;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       background: transparent url('/static/images/BenefitImageV.png') no-repeat 0 0;
       width: 331px;
       height: 600px;
-      margin: 0 auto;
+      margin: 0px auto;
     }
   }
 
@@ -113,7 +95,7 @@ export const modalStyles = css`
     width: 400px;
     height: 69px;
     object-fit: contain;
-    margin: 23px auto 0;
+    margin: ${props => props.theme.spacing.ELEM_SPACING.LRG} auto 0px;
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       width: 332px;
@@ -129,17 +111,17 @@ export const modalStyles = css`
   }
 
   .linkIconSeperator {
-    margin-left: 10px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .footerLinks {
     display: flex;
     justify-content: center;
-    padding-bottom: 33px;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 
   .footerLink {
-    margin-left: 28px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 `;
 

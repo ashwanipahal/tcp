@@ -5,24 +5,13 @@ import MyPlaceRewardsCreditCard from '../views';
 import gelLabels from './MyPlaceRewardsCreditCard.selectors';
 import { getIsPLCCModalOpen } from '../../../../common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.selectors';
 import { toggleApplyNowModal } from '../../../../common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
-import { resetPLCCResponse } from '../../../browse/ApplyCardPage/container/ApplyCard.actions';
+// import { resetPLCCResponse } from '../../../browse/ApplyCardPage/container/ApplyCard.actions';
 
 export class MyPlaceRewardsCreditCardContainer extends PureComponent {
-  componentDidMount() {
-    const { resetPLCCApplicationStatus } = this.props;
-    resetPLCCApplicationStatus({ status: null });
-  }
-
   openPLCCModal = e => {
     e.preventDefault();
     const { toggleModal } = this.props;
     toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
-  };
-
-  closePLCCModal = () => {
-    const { toggleModal, resetPLCCApplicationStatus } = this.props;
-    toggleModal({ isPLCCModalOpen: false });
-    resetPLCCApplicationStatus({ status: null });
   };
 
   render() {
@@ -32,7 +21,6 @@ export class MyPlaceRewardsCreditCardContainer extends PureComponent {
         labels={labels}
         isPLCCModalOpen={isPLCCModalOpen}
         openPLCCModal={this.openPLCCModal}
-        closePLCCModal={this.closePLCCModal}
       />
     );
   }
@@ -42,7 +30,6 @@ MyPlaceRewardsCreditCardContainer.propTypes = {
   labels: PropTypes.shape({}),
   isPLCCModalOpen: PropTypes.bool,
   toggleModal: PropTypes.func.isRequired,
-  resetPLCCApplicationStatus: PropTypes.func.isRequired,
 };
 
 MyPlaceRewardsCreditCardContainer.defaultProps = {
@@ -54,9 +41,6 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleModal: payload => {
       dispatch(toggleApplyNowModal(payload));
-    },
-    resetPLCCApplicationStatus: payload => {
-      dispatch(resetPLCCResponse(payload));
     },
   };
 };
