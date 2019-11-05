@@ -223,7 +223,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
     } = this.props;
     const { showModal, getComponentId, modalHeaderLbl, horizontalBar } = this.state;
     return (
-      <View className={`${className} footerWrapper`}>
+      <View className={`${className} footer-wrapper`}>
         {isProductDetailView &&
           this.productDetailViewFooter(labels, isProductDetailView, isGuest, isPlcc)}
         {isAddedToBagPage && this.addedToBagPageLinks(labels, isGuest, isPlcc)}

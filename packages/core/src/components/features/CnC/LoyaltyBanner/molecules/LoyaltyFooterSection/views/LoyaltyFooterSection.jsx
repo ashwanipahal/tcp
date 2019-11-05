@@ -136,21 +136,11 @@ const renderConfirmationAndBagLinks = (
 const detailViewFooter = (labels, isGuest, isPlcc, closeAddedToBagModal, openOverlay) => {
   return (
     <>
-      {isGuest && (
-        <span>
-          {renderCreateAccountLink(labels, closeAddedToBagModal, openOverlay)}
-          {renderLoginLink(labels, closeAddedToBagModal, openOverlay)}
-        </span>
-      )}
+      {isGuest && createLoginLinks(labels, closeAddedToBagModal, openOverlay)}
       {!isGuest && (
         <>
-          {!isPlcc && (
-            <span>
-              {renderApplyNowLink(labels)}
-              {renderLearnMoreLink(labels)}
-            </span>
-          )}
-          {isPlcc && renderLearnMoreLink(labels)}
+          {!isPlcc && applyNowLearnMoreLinks(labels)}
+          {isPlcc && <span className="links-wrapper">{renderLearnMoreLink(labels)}</span>}
         </>
       )}
     </>
@@ -172,7 +162,7 @@ const LoyaltyFooterSection = props => {
     openOverlay,
   } = props;
   return (
-    <div className={`${className} footerWrapper`}>
+    <div className={`${className} footer-wrapper`}>
       {isProductDetailView &&
         detailViewFooter(labels, isGuest, isPlcc, closeAddedToBagModal, openOverlay)}
       {isAddedToBagPage &&
