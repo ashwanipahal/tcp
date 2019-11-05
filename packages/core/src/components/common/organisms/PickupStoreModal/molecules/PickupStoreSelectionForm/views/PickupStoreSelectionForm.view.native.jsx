@@ -126,7 +126,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
 
     const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
     disableButton = sizeAvailable ? !sizeAvailable : enableButton;
-
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
@@ -151,7 +150,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
               variation="secondary"
-              selectedValue={selectedValue}
+              selectedValue={selectedValue && selectedValue.toString()}
               onValueChange={itemValue => {
                 const { onQuantityChange, form } = this.props;
                 if (onQuantityChange) {
