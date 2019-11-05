@@ -984,18 +984,8 @@ class CartItemTile extends PureComponent {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
-    const pdpToPath = this.getPdpToPath(
-      isProductBrandOfSameDomain,
-      pdpUrl,
-      crossDomain,
-      disableProductRedirect
-    );
-    const pdpAsPathUrl = this.getPdpAsPathurl(
-      isProductBrandOfSameDomain,
-      pdpUrl,
-      crossDomain,
-      disableProductRedirect
-    );
+    const pdpToPath = this.getPdpToPath(isProductBrandOfSameDomain, pdpUrl, crossDomain);
+    const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
     const isBagPage = pageView === 'myBag';
     const disableLink = !isProductBrandOfSameDomain || disableProductRedirect;
