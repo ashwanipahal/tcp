@@ -17,7 +17,7 @@ const BrandSwitchConfig = {
  * kindly use this component only for the bottom tab at the center of the tab
  *
  */
-class AnimatedBrandChangeIcon extends PureComponent {
+class AnimatedBrandChangeIcon extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = { openSwitch: true };
@@ -128,6 +128,8 @@ class AnimatedBrandChangeIcon extends PureComponent {
    */
   renderTCPBrand = () => {
     const { brandContainer } = styles;
+    const { labels } = this.props;
+    const { theChildrensplace = 'The Childrens Place Link' } = labels;
     return (
       <Animated.View
         style={[
@@ -138,7 +140,7 @@ class AnimatedBrandChangeIcon extends PureComponent {
         ]}
       >
         <TCPIcon
-          accessibilityLabel="tcpBrand"
+          accessibilityLabel={theChildrensplace}
           accessibilityTraits="none"
           accessibilityComponentType="none"
           onPress={this.switchToTCP}
@@ -158,6 +160,8 @@ class AnimatedBrandChangeIcon extends PureComponent {
    */
   renderGymboreeBrand = () => {
     const { brandContainer } = styles;
+    const { labels } = this.props;
+    const { gymboreeLink = 'Gymboree Link' } = labels;
     return (
       <Animated.View
         style={[
@@ -168,7 +172,7 @@ class AnimatedBrandChangeIcon extends PureComponent {
         ]}
       >
         <GymIcon
-          accessibilityLabel="gymboreeBrand"
+          accessibilityLabel={gymboreeLink}
           accessibilityTraits="none"
           accessibilityComponentType="none"
           onPress={this.switchToGymboree}

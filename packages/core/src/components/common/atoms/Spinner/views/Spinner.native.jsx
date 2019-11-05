@@ -1,19 +1,22 @@
 import React from 'react';
-import Spinner from 'react-native-spinkit';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import { Text } from 'react-native';
+// import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette'; TODO
 import SpinnerWrapper from '../styles/Spinner.style.native';
-import { isGymboree } from '../../../../../utils';
 
-const colorPalette = createThemeColorPalette();
+// TODO
 
-const applyBrandSpecificColor = () => {
-  return isGymboree() ? colorPalette.orange[800] : colorPalette.blue[500];
-};
+// import { isGymboree } from '../../../../../utils';
+
+// const colorPalette = createThemeColorPalette();
+
+// const applyBrandSpecificColor = () => {
+//   return isGymboree() ? colorPalette.orange[800] : colorPalette.blue[500];
+// };
 
 const SpinnerView = () => {
   return (
     <SpinnerWrapper>
-      <Spinner isVisible size={36} type="ThreeBounce" color={applyBrandSpecificColor()} />
+      <Text>Loading...</Text>
     </SpinnerWrapper>
   );
 };

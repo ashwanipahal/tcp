@@ -10,6 +10,7 @@ import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/c
 import { getLabelValue } from '@tcp/core/src/utils';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
+import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import OrdersTile from '../../common/organism/OrdersTile';
@@ -271,7 +272,12 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
               <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')}>
+              <MyPlaceRewardsCreditCard
+                labels={labels}
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
           </React.Fragment>
         )}
         {!isUserLoggedIn && (
@@ -330,7 +336,6 @@ class AccountOverview extends PureComponent<Props> {
                 }
               />
             </LoggedinWrapper>
-
             {showModal && (
               <ModalNative
                 isOpen={showModal}
@@ -369,66 +374,9 @@ class AccountOverview extends PureComponent<Props> {
               </FavImageWrapper>
             </FavtWrapper>
             <UnderlineStyle />
-            <TouchabelContainer onPress={this.toggleApplyNowModal}>
-              <FavoritesWrapper>
-                <ImageContainer>
-                  <StyledImage source={cardIcon} width={47} height={30} />
-                </ImageContainer>
-                <TextWrapper>
-                  <BodyCopy
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    fontWeight="regular"
-                    text={labels.lbl_overview_apply_today}
-                    color="gray.900"
-                    textAlign="center"
-                  />
-                </TextWrapper>
-              </FavoritesWrapper>
-              <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
-            </TouchabelContainer>
-
-            <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
-
-            <Panel
-              title={getLabelValue(labels, 'lbl_overview_manage_creditCard')}
-              isVariationTypeLink
-            />
-
-            <UnderlineStyle />
-
-            <TouchabelContainer
-              onPress={() => {
-                navigation.navigate('GiftCardPage', {
-                  title: 'Gift Cards',
-                  pdpUrl: 'Gift Card',
-                });
-              }}
-            >
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs13"
-                fontWeight="regular"
-                text={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
-                color="gray.900"
-              />
-              <RightArrowImageContainer>
-                <ImageComp source={rightIcon} width={7} height={10} />
-              </RightArrowImageContainer>
-            </TouchabelContainer>
-
-            <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
-            <Panel
-              title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}
-              isVariationTypeLink
-              handleComponentChange={this.showTrackOrderModal}
-            />
-            <UnderlineStyle />
-            <Panel title={getLabelValue(labels, 'lbl_overview_app_settings')} isVariationTypeLink />
-            <Panel title={getLabelValue(labels, 'lbl_overview_help')} isVariationTypeLink />
-            <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
           </React.Fragment>
         )}
+
         {isUserLoggedIn && (
           <TouchabelContainer onPress={() => handleComponentChange('myFavoritePageMobile')}>
             <BodyCopy
@@ -448,6 +396,61 @@ class AccountOverview extends PureComponent<Props> {
             />
           </TouchabelContainer>
         )}
+        <>
+          <TouchabelContainer onPress={this.toggleApplyNowModal}>
+            <FavoritesWrapper>
+              <ImageContainer>
+                <StyledImage source={cardIcon} width={47} height={30} />
+              </ImageContainer>
+              <TextWrapper>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="regular"
+                  text={labels.lbl_overview_apply_today}
+                  color="gray.900"
+                  textAlign="center"
+                />
+              </TextWrapper>
+            </FavoritesWrapper>
+            <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+          </TouchabelContainer>
+          <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
+          <Panel
+            title={getLabelValue(labels, 'lbl_overview_manage_creditCard')}
+            isVariationTypeLink
+          />
+          <UnderlineStyle />
+          <TouchabelContainer
+            onPress={() => {
+              navigation.navigate('GiftCardPage', {
+                title: 'Gift Cards',
+                pdpUrl: 'Gift Card',
+              });
+            }}
+          >
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              text={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
+              color="gray.900"
+            />
+            <RightArrowImageContainer>
+              <ImageComp source={rightIcon} width={7} height={10} />
+            </RightArrowImageContainer>
+          </TouchabelContainer>
+          <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
+          <Panel
+            title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}
+            isVariationTypeLink
+            handleComponentChange={this.showTrackOrderModal}
+          />
+          <UnderlineStyle />
+          <Panel title={getLabelValue(labels, 'lbl_overview_app_settings')} isVariationTypeLink />
+          <Panel title={getLabelValue(labels, 'lbl_overview_help')} isVariationTypeLink />
+          <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
+        </>
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         <UnderlineStyle />
       </View>

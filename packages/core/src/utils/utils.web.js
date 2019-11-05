@@ -393,7 +393,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
-    paypalStaticUrl:  processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
+    paypalStaticUrl: processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
     styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
     styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
