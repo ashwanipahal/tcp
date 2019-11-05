@@ -135,8 +135,9 @@ class LoyaltyFooterSection extends PureComponent<Props> {
   };
 
   applyNowLearnMoreLinks = labels => {
+    const { isProductDetailView } = this.props;
     return (
-      <FooterLinksSection>
+      <FooterLinksSection isProductDetailView={isProductDetailView}>
         {this.renderApplyNowLink(labels)}
         <LearnMoreWrapper>{this.renderLearnMoreLink(labels)}</LearnMoreWrapper>
       </FooterLinksSection>
@@ -144,12 +145,18 @@ class LoyaltyFooterSection extends PureComponent<Props> {
   };
 
   LearnMoreLink = labels => {
-    return <FooterLinksSection>{this.renderLearnMoreLink(labels)}</FooterLinksSection>;
+    const { isProductDetailView } = this.props;
+    return (
+      <FooterLinksSection isProductDetailView={isProductDetailView}>
+        {this.renderLearnMoreLink(labels)}
+      </FooterLinksSection>
+    );
   };
 
   createAccLogInLinks = labels => {
+    const { isProductDetailView } = this.props;
     return (
-      <FooterLinksSection>
+      <FooterLinksSection isProductDetailView={isProductDetailView}>
         {this.renderCreateAccountLink(labels)}
         <LearnMoreWrapper>{this.renderLoginLink(labels)}</LearnMoreWrapper>
       </FooterLinksSection>
