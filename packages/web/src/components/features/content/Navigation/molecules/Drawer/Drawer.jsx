@@ -223,7 +223,7 @@ class Drawer extends React.Component {
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
             >
-              {this.renderAccountInfoSectionInDrawer}
+              {this.renderAccountInfoSectionInDrawer()}
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
                 {renderDrawerFooter(hideNavigationFooter, drawerFooter)}
