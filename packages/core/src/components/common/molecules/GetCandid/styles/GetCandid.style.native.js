@@ -16,6 +16,7 @@ export const ImageWrapper = styled.View`
 `;
 
 export const Title = styled(BodyCopy)`
+  font-weight: ${props => props.theme.fonts.fontWeight.medium};
   margin-bottom: 12px;
 `;
 

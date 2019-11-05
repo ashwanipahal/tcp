@@ -89,6 +89,8 @@ const PointsHistory = ({ labels, accountlabels, pointHistory, navigation }) => {
         <Anchor
           text={getLabelValue(labels, 'lbl_common_points_history')}
           fontSizeVariation="medium"
+          fontFamily="secondary"
+          fontWeight="regular"
           noLink
           underline
           anchorVariation="primary"

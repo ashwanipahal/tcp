@@ -19,7 +19,6 @@ import {
   SafeAreaViewStyle,
   CartIconView,
   Touchable,
-  ArrowBackIcon,
   LeftSection,
   MiddleSection,
   RightSection,

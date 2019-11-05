@@ -63,7 +63,7 @@ class MyAccountDropdownNav extends React.Component {
           itemStyle={{ ...itemStyle }}
           arrowImageStyle={{ ...arrowImageStyle }}
           bounces={false}
-          selectedItemFontWeight="extrabold"
+          selectedItemFontWeight="black"
           dropDownItemFontWeight="regular"
         />
       </View>

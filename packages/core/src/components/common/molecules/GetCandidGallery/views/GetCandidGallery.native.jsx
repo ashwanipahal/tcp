@@ -253,6 +253,7 @@ class GetCandidGallery extends React.PureComponent {
       return (
         <ButtonContainer>
           <Button
+            fontFamily="secondary"
             width="100%"
             text={labels.lbl_getCandid_btnLoadMore}
             fill="BLUE"

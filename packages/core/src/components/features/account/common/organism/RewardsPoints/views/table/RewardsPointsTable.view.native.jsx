@@ -35,7 +35,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <TextWrapper>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs14"
+              fontSize="fs13"
               fontWeight="regular"
               textAlign="center"
               color="black"
@@ -48,14 +48,14 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs20"
-            fontWeight="black"
+            fontWeight="extrabold"
             color="gray.900"
             text={Math.round(currentPoints || 0)}
           />
           <TextWrapper>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs14"
+              fontSize="fs13"
               fontWeight="regular"
               textAlign="center"
               color="black"
@@ -68,14 +68,14 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs20"
-            fontWeight="black"
+            fontWeight="extrabold"
             color="gray.900"
             text={Math.round(pointsToNextReward || 100)}
           />
           <TextWrapper>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs14"
+              fontSize="fs13"
               fontWeight="regular"
               textAlign="center"
               color="black"
