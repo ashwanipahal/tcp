@@ -319,9 +319,10 @@ class CheckoutPage extends React.PureComponent {
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const isConfirmationPage = currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION;
     return (
       <CnCTemplate
-        showLeftSection={cartOrderItemsCount > 0}
+        showLeftSection={cartOrderItemsCount > 0 || isConfirmationPage}
         leftSection={this.renderLeftSection}
         marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
         isGuest={isGuest}
