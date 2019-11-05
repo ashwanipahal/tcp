@@ -43,26 +43,28 @@ export const PersonalizedCoupons = ({ className, coupons, couponLabels, labels }
       couponsList.filter(coupon => coupon.categoryType !== CONSTANTS.LOYALITY_OFFERS);
   }
 
-  return couponsList && couponsList.size > 0 ? (
+  return couponsList ? (
     <div className={className}>
-      <BodyCopy className="heading" component="div">
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize={['fs12', 'fs10', 'fs12']}
-          color="gray[800]"
-          textAlign="center"
-        >
-          {labels.heading1}
+      {couponsList.size > 0 && (
+        <BodyCopy className="heading" component="div">
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize={['fs12', 'fs10', 'fs12']}
+            color="gray[800]"
+            textAlign="center"
+          >
+            {labels.heading1}
+          </BodyCopy>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize={['fs12', 'fs10', 'fs12']}
+            color="gray[800]"
+            textAlign="center"
+          >
+            {labels.heading2}
+          </BodyCopy>
         </BodyCopy>
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize={['fs12', 'fs10', 'fs12']}
-          color="gray[800]"
-          textAlign="center"
-        >
-          {labels.heading2}
-        </BodyCopy>
-      </BodyCopy>
+      )}
       {couponsList.map(coupon => (
         <PersonalizedCoupon
           key={coupon.code}
