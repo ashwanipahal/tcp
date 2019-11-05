@@ -41,6 +41,39 @@ import {
 import { currencyConversion } from '../../../utils/utils';
 import { getProductListToPath } from '../../../../../browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+/**
+ * LinkWrapper component is to wrap anchor component to decide whether child needs anchor tag or not
+ * @param {object} props
+ */
+const LinkWrapper = props => {
+  LinkWrapper.propTypes = {
+    pdpToPath: PropTypes.string.isRequired,
+    pdpAsPathUrl: PropTypes.string.isRequired,
+    disableLink: PropTypes.bool.isRequired,
+    noWrap: PropTypes.bool.isRequired,
+    IsSlugPathAdded: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+  };
+
+  LinkWrapper.defaultProps = {
+    IsSlugPathAdded: false,
+  };
+
+  const { pdpToPath, pdpAsPathUrl, disableLink, children, noWrap, IsSlugPathAdded } = props;
+  return noWrap ? (
+    children
+  ) : (
+    <Anchor
+      to={pdpToPath}
+      asPath={pdpAsPathUrl}
+      noLink={disableLink}
+      IsSlugPathAdded={IsSlugPathAdded}
+    >
+      {children}
+    </Anchor>
+  );
+};
+
 class CartItemTile extends PureComponent {
   constructor(props) {
     super(props);
@@ -893,17 +926,11 @@ class CartItemTile extends PureComponent {
     return itemBrand && itemBrand.toLowerCase();
   };
 
-  getPdpToPath = (isProductBrandOfSameDomain, pdpUrl, crossDomain, disableProductRedirect) => {
-    if (disableProductRedirect) {
-      return '#0'; // Disable redirect of anchor for review page
-    }
+  getPdpToPath = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
     return isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : `${crossDomain}${pdpUrl}`;
   };
 
-  getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain, disableProductRedirect) => {
-    if (disableProductRedirect) {
-      return '#0'; // Disable redirect of anchor for review page
-    }
+  getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
     return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
   };
 
@@ -1007,7 +1034,12 @@ class CartItemTile extends PureComponent {
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
               /> */}
-              <Anchor to={pdpToPath} asPath={pdpAsPathUrl} noLink={disableLink} IsSlugPathAdded>
+              <LinkWrapper
+                pdpToPath={pdpToPath}
+                pdpAsPathUrl={pdpAsPathUrl}
+                disableLink={disableLink}
+                noWrap={disableLink}
+              >
                 <DamImage
                   imgData={{
                     alt: labels.productImageAlt,
@@ -1016,7 +1048,7 @@ class CartItemTile extends PureComponent {
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
                 />
-              </Anchor>
+              </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
                 <BodyCopy
                   className="soldOutLabel"
@@ -1054,7 +1086,13 @@ class CartItemTile extends PureComponent {
               this.getBadgeDetails(productDetail)}
             <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <Anchor to={pdpToPath} asPath={pdpAsPathUrl} noLink={disableLink} IsSlugPathAdded>
+                <LinkWrapper
+                  pdpToPath={pdpToPath}
+                  pdpAsPathUrl={pdpAsPathUrl}
+                  disableLink={disableLink}
+                  noWrap={disableLink}
+                  IsSlugPathAdded
+                >
                   <BodyCopy
                     fontFamily="secondary"
                     component="h2"
@@ -1064,7 +1102,7 @@ class CartItemTile extends PureComponent {
                   >
                     {productDetail.itemInfo.name}
                   </BodyCopy>
-                </Anchor>
+                </LinkWrapper>
               </Col>
             </Row>
             {showOnReviewPage && this.getProductItemUpcNumber(productDetail, isBagPage)}

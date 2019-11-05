@@ -147,7 +147,7 @@ export const CartItemTileContainer = ({
     pickupStoresInCart={pickupStoresInCart}
     autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
     navigation={navigation}
-    disableProductRedirect
+    disableProductRedirect={disableProductRedirect}
   />
 );
 
