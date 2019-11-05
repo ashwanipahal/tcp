@@ -170,7 +170,7 @@ class PickUpFormPart extends React.Component {
     }
   }
 
-  render() {
+  renderPickupPage = () => {
     const {
       className,
       isGuest,
@@ -187,142 +187,151 @@ class PickUpFormPart extends React.Component {
       showAccordian,
       ServerErrors,
       pageCategory,
+      isBagLoaded,
     } = this.props;
-    const { isEditing, pickUpContact, dataUpdated } = this.state;
+    const { isEditing, pickUpContact } = this.state;
+    return (
+      <>
+        {isBagLoaded && (
+          <div className={className}>
+            <div className="container">
+              {pickupError && (
+                <ErrorMessage
+                  error={pickupError}
+                  className="pickupError"
+                  fontSize="fs14"
+                  fontWeight="black"
+                  dataLocator="pickup-error"
+                />
+              )}
+              <CheckoutSectionTitleDisplay
+                title={pickUpLabels.title}
+                dataLocator="pickup-title"
+                className="summary-title-pick-up"
+              />
+              {ServerErrors && <ServerErrors />}
+              <div className="pickUpContact" dataLocator="pickup-contact">
+                <FormSection name="pickUpContact">
+                  {isGuest ? (
+                    <ContactFormFields
+                      className="pickup-contact-guest-form"
+                      showEmailAddress
+                      showPhoneNumber
+                      labels={pickUpLabels}
+                    />
+                  ) : (
+                    <PickupMainContactEditForm
+                      dispatch={dispatch}
+                      labels={pickUpLabels}
+                      handleSubmit={handleSubmit}
+                      isEditing={isEditing}
+                      className="pickup-contact-guest-form"
+                      showPhoneNumber
+                      formData={pickUpContact}
+                      onEditModeChange={this.handleEditModeChange}
+                      handleExitEditModeClick={this.handleExitEditModeClick}
+                    />
+                  )}
+                </FormSection>
+              </div>
+              {isSmsUpdatesEnabled && (
+                <div className="pick-up-form-container" dataLocator="pickup-sms">
+                  <FormSection name="smsSignUp">
+                    <SMSFormFields
+                      isOrderUpdateChecked={isOrderUpdateChecked}
+                      formName="checkoutPickup"
+                      formSection="smsSignUp"
+                      altInitValue={currentPhoneNumber}
+                      labels={smsSignUpLabels}
+                      showDefaultCheckbox={false}
+                      variation="secondary"
+                      dispatch={dispatch}
+                      addressPhoneNo={currentPhoneNumber}
+                    />
+                  </FormSection>
+                </div>
+              )}
+              {isGuest && !isUsSite && (
+                <div className="email-signup-container">
+                  <Field
+                    dataLocator="signUp-checkbox-field"
+                    name="emailSignup"
+                    component={InputCheckbox}
+                    className="email-signup"
+                  >
+                    <BodyCopy
+                      dataLocator="pickup-email-signUp-heading-lbl"
+                      fontSize="fs16"
+                      fontFamily="secondary"
+                      fontWeight="regular"
+                    >
+                      {pickUpLabels.emailSignupHeading}
+                    </BodyCopy>
+                  </Field>
+                  <div className="emailSignupText">
+                    <BodyCopy
+                      dataLocator="pickup-email-signUp-sub-heading-text"
+                      fontSize="fs12"
+                      fontFamily="secondary"
+                      fontWeight="regular"
+                    >
+                      {pickUpLabels.emailSignupSubHeading}
+                    </BodyCopy>
+                    <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
+                      {pickUpLabels.emailSignupSubSubHeading}
+                    </BodyCopy>
+                    <Anchor
+                      anchorVariation="primary"
+                      fontSizeVariation="small"
+                      noLink
+                      href="#"
+                      target="_blank"
+                      dataLocator="pickup-email-signUp-contact-anchor"
+                    >
+                      {pickUpLabels.emailSignupContact}
+                    </Anchor>
+                  </div>
+                </div>
+              )}
+              <div className="pickUpAlternate-container">
+                <FormSection name="pickUpAlternate">
+                  <PickUpAlternateFormPart
+                    isAlternateUpdateChecked={isAlternateUpdateChecked}
+                    showNoteOnToggle
+                    formName="checkoutPickup"
+                    formSection="pickUpAlternate"
+                    labels={pickUpLabels}
+                    isEditing={isEditing}
+                  />
+                </FormSection>
+              </div>
+              {isEditing && this.SaveAndCancelButton()}
+            </div>
+            <CheckoutOrderInfo
+              isGuest={isGuest}
+              showAccordian={showAccordian}
+              pageCategory={pageCategory}
+            />
+            <form onSubmit={handleSubmit(this.pickupSubmit)}>
+              <CheckoutFooter
+                hideBackLink={false}
+                backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
+                nextButtonText={this.getNextCTAText()}
+                disableNext={isEditing}
+              />
+            </form>
+          </div>
+        )}
+      </>
+    );
+  };
+
+  render() {
+    const { dataUpdated } = this.state;
     if (!dataUpdated) {
       this.updatePickupForm();
     }
-
-    return (
-      <div className={className}>
-        <div className="container">
-          {pickupError && (
-            <ErrorMessage
-              error={pickupError}
-              className="pickupError"
-              fontSize="fs14"
-              fontWeight="black"
-              dataLocator="pickup-error"
-            />
-          )}
-          <CheckoutSectionTitleDisplay
-            title={pickUpLabels.title}
-            dataLocator="pickup-title"
-            className="summary-title-pick-up"
-          />
-          {ServerErrors && <ServerErrors />}
-          <div className="pickUpContact" dataLocator="pickup-contact">
-            <FormSection name="pickUpContact">
-              {isGuest ? (
-                <ContactFormFields
-                  className="pickup-contact-guest-form"
-                  showEmailAddress
-                  showPhoneNumber
-                  labels={pickUpLabels}
-                />
-              ) : (
-                <PickupMainContactEditForm
-                  dispatch={dispatch}
-                  labels={pickUpLabels}
-                  handleSubmit={handleSubmit}
-                  isEditing={isEditing}
-                  className="pickup-contact-guest-form"
-                  showPhoneNumber
-                  formData={pickUpContact}
-                  onEditModeChange={this.handleEditModeChange}
-                  handleExitEditModeClick={this.handleExitEditModeClick}
-                />
-              )}
-            </FormSection>
-          </div>
-          {isSmsUpdatesEnabled && (
-            <div className="pick-up-form-container" dataLocator="pickup-sms">
-              <FormSection name="smsSignUp">
-                <SMSFormFields
-                  isOrderUpdateChecked={isOrderUpdateChecked}
-                  formName="checkoutPickup"
-                  formSection="smsSignUp"
-                  altInitValue={currentPhoneNumber}
-                  labels={smsSignUpLabels}
-                  showDefaultCheckbox={false}
-                  variation="secondary"
-                  dispatch={dispatch}
-                  addressPhoneNo={currentPhoneNumber}
-                />
-              </FormSection>
-            </div>
-          )}
-          {isGuest && !isUsSite && (
-            <div className="email-signup-container">
-              <Field
-                dataLocator="signUp-checkbox-field"
-                name="emailSignup"
-                component={InputCheckbox}
-                className="email-signup"
-              >
-                <BodyCopy
-                  dataLocator="pickup-email-signUp-heading-lbl"
-                  fontSize="fs16"
-                  fontFamily="secondary"
-                  fontWeight="regular"
-                >
-                  {pickUpLabels.emailSignupHeading}
-                </BodyCopy>
-              </Field>
-              <div className="emailSignupText">
-                <BodyCopy
-                  dataLocator="pickup-email-signUp-sub-heading-text"
-                  fontSize="fs12"
-                  fontFamily="secondary"
-                  fontWeight="regular"
-                >
-                  {pickUpLabels.emailSignupSubHeading}
-                </BodyCopy>
-                <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                  {pickUpLabels.emailSignupSubSubHeading}
-                </BodyCopy>
-                <Anchor
-                  anchorVariation="primary"
-                  fontSizeVariation="small"
-                  noLink
-                  href="#"
-                  target="_blank"
-                  dataLocator="pickup-email-signUp-contact-anchor"
-                >
-                  {pickUpLabels.emailSignupContact}
-                </Anchor>
-              </div>
-            </div>
-          )}
-          <div className="pickUpAlternate-container">
-            <FormSection name="pickUpAlternate">
-              <PickUpAlternateFormPart
-                isAlternateUpdateChecked={isAlternateUpdateChecked}
-                showNoteOnToggle
-                formName="checkoutPickup"
-                formSection="pickUpAlternate"
-                labels={pickUpLabels}
-                isEditing={isEditing}
-              />
-            </FormSection>
-          </div>
-          {isEditing && this.SaveAndCancelButton()}
-        </div>
-        <CheckoutOrderInfo
-          isGuest={isGuest}
-          showAccordian={showAccordian}
-          pageCategory={pageCategory}
-        />
-        <form onSubmit={handleSubmit(this.pickupSubmit)}>
-          <CheckoutFooter
-            hideBackLink={false}
-            backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
-            nextButtonText={this.getNextCTAText()}
-            disableNext={isEditing}
-          />
-        </form>
-      </div>
-    );
+    return <>{this.renderPickupPage()}</>;
   }
 }
 
@@ -345,9 +354,11 @@ PickUpFormPart.propTypes = {
   pickupDidMount: PropTypes.func.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
+  isBagLoaded: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,
+  checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
 };
 
 PickUpFormPart.defaultProps = {

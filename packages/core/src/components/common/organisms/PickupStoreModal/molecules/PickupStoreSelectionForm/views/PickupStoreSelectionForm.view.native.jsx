@@ -27,10 +27,15 @@ import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 
 class PickupStoreSelectionForm extends React.PureComponent<Props> {
   componentDidMount() {
-    const { onSearch, openRestrictedModalForBopis } = this.props;
-    if (openRestrictedModalForBopis) {
+    const { onSearch, openRestrictedModalForBopis, isSkuResolved } = this.props;
+    if (openRestrictedModalForBopis || isSkuResolved) {
       onSearch();
     }
+  }
+
+  componentDidUpdate() {
+    const { prePopulateZipCodeAndSearch, handleSubmit, change } = this.props;
+    prePopulateZipCodeAndSearch(handleSubmit, change);
   }
 
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
@@ -121,7 +126,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
 
     const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
     disableButton = sizeAvailable ? !sizeAvailable : enableButton;
-
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
@@ -146,7 +150,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
               variation="secondary"
-              selectedValue={selectedValue}
+              selectedValue={selectedValue && selectedValue.toString()}
               onValueChange={itemValue => {
                 const { onQuantityChange, form } = this.props;
                 if (onQuantityChange) {
@@ -204,9 +208,12 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       isBossSelected,
       isShowMessage,
       getIsBopisAvailable,
+      isGetUserStoresLoaded,
     } = this.props;
     return (
       !storeLimitReached &&
+      isGetUserStoresLoaded &&
+      preferredStore &&
       prefStoreWithData && (
         <PickupStoreListItem
           sameStore={sameStore}

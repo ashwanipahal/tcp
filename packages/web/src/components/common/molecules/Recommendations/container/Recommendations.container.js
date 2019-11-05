@@ -35,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadRecommendations: () => dispatch(fetchRecommendationsData()),
+    loadRecommendations: action => dispatch(fetchRecommendationsData(action)),
     onPickUpOpenClick: payload => {
       dispatch(openPickupModalWithValues(payload));
     },

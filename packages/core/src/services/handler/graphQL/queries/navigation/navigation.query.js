@@ -1,5 +1,5 @@
-const buildQuery = ({ brand, country, channel }) => `
-  navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
+const buildQuery = ({ brand, country, channel, lang }) => `
+  navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
     categoryContent {
       description
       catgroupId

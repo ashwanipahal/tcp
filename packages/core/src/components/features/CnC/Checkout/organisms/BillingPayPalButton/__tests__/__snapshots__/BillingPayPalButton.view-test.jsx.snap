@@ -22,7 +22,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     >
       Payment Method
     </Styled(BodyCopy)>
-    <withRouter(Connect(PayPalButtonContainer))
+    <Connect(PayPalButtonContainer)
       className="billing-payPal-button"
       isBillingPage={true}
     />
@@ -52,7 +52,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
     >
       Payment Method
     </Styled(BodyCopy)>
-    <withRouter(Connect(PayPalButtonContainer))
+    <Connect(PayPalButtonContainer)
       className="billing-payPal-button"
       isBillingPage={true}
     />
