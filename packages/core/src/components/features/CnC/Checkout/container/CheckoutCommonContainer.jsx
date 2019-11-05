@@ -189,6 +189,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setVenmoPickupState,
       verifyAddressAction,
       setVenmoShippingState,
+      getPayPalSettings,
       checkoutServerError,
       currentStage,
       submitVerifiedShippingAddressData,
@@ -253,6 +254,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        getPayPalSettings={getPayPalSettings}
         checkoutServerError={checkoutServerError}
         currentStage={currentStage}
         shippingMethod={shippingMethod}
@@ -403,6 +405,7 @@ const mapStateToProps = state => {
       isPaymentDisabled: getIsPaymentDisabled(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    getPayPalSettings: selectors.getPayPalSettings(state),
     checkoutServerError: selectors.getCheckoutServerError(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),

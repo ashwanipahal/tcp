@@ -203,9 +203,7 @@ app.prepare().then(() => {
       app.render(req, res, route.resolver, params);
     });
   });
-  if (xrayEnabled) {
-    server.use(AWSXRay.express.closeSegment());
-  }
+
   server.get(HEALTH_CHECK_PATH, (req, res) => {
     res.send({
       success: true,
@@ -241,7 +239,10 @@ app.prepare().then(() => {
     // server.get('*', redirectToErrorPage);
     return handle(req, res);
   });
-
+  
+  if (xrayEnabled) {
+    server.use(AWSXRay.express.closeSegment());
+  }
   server.listen(port, err => {
     if (err) throw err;
     logger.info(`> Ready on http://localhost:${port}`);

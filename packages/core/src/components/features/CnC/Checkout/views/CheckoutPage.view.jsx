@@ -213,6 +213,8 @@ class CheckoutPage extends React.PureComponent {
             ServerErrors={this.renderPageErrors}
             checkoutServerError={checkoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            cartOrderItemsCount={cartOrderItemsCount}
+            checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (

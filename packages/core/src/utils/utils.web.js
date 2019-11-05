@@ -348,11 +348,13 @@ export const handleGenericKeyDown = (event, key, method) => {
     method();
   }
 };
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
-  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
 
-  const unbxdApiKeyTCP = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_TCP`];
-  const unbxdApiKeyGYM = processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_EN_GYM`];
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
+  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const unbxdApiKeyTCP =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_TCP`];
+  const unbxdApiKeyGYM =
+    processEnv[`RWD_WEB_UNBXD_API_KEY${countryKey}_${language.toUpperCase()}_GYM`];
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -368,9 +370,13 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     fbkey: processEnv.RWD_WEB_FACEBOOKKEY,
     instakey: processEnv.RWD_WEB_INSTAGRAM,
 
-    unboxKeyTCP: `${unbxdApiKeyTCP}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_TCP`]}`,
+    unboxKeyTCP: `${unbxdApiKeyTCP}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_TCP`]
+    }`,
     unbxdApiKeyTCP,
-    unboxKeyGYM: `${unbxdApiKeyGYM}/${processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_EN_GYM`]}`,
+    unboxKeyGYM: `${unbxdApiKeyGYM}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY${countryKey}_${language.toUpperCase()}_GYM`]
+    }`,
     unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
     previewToken: processEnv.RWD_WEB_PREVIEW_TOKEN,
@@ -387,6 +393,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
+    paypalStaticUrl:  processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
     styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
     styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,
@@ -460,7 +467,8 @@ export const createAPIConfig = resLocals => {
   const basicConfig = getAPIInfoFromEnv(
     apiSiteInfo,
     processEnv,
-    countryConfig && countryConfig.countryKey
+    countryConfig && countryConfig.countryKey,
+    language
   );
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
@@ -474,6 +482,7 @@ export const createAPIConfig = resLocals => {
     country,
     currency,
     language,
+    hostname,
   };
 };
 
