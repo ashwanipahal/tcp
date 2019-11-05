@@ -64,6 +64,7 @@ class ApplyNowModalWrapper extends React.Component {
               closeModal={this.closeModal}
               labels={labels}
               plccBenefitsList={plccBenefitsList}
+              className="plcc_modal_content"
             />
           ) : null}
         </React.Fragment>
