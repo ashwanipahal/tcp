@@ -37,7 +37,7 @@ const createShopByLinks = (links, column, hideL2Nav) => {
   );
 };
 
-const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex) => {
+const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex, hideL2Nav) => {
   const imgBannerLength = imageBanner ? imageBanner.length : 0;
   const colProps = colStructure[categoryLayoutColName];
   const imgClassName = `${imgBannerLength > 1 ? 'half-img' : ''} ${
@@ -58,10 +58,12 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex) 
           <React.Fragment>
             <Anchor
               className="l2-image-banner-link"
-              to={link.url}
+              to={configureInternalNavigationFromCMSUrl(link.url)}
+              asPath={link.url}
               title={link.title}
               dataLocator={`overlay_img_link_${l1Index}`}
               target={link.target}
+              onClick={() => hideL2Nav()}
             >
               <Image
                 className={`l2-image-banner-image ${imgClassName}`}
@@ -89,7 +91,7 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex) 
   );
 };
 
-const createTextBanner = (textBanner, l1Index) => {
+const createTextBanner = (textBanner, l1Index, hideL2Nav) => {
   const isSplitView = textBanner && textBanner.length > 1;
   const textContainerClassName = isSplitView ? 'l2-half-text-container' : '';
   const promoHalfClass = isSplitView ? 'promo-banner-half' : '';
@@ -113,10 +115,12 @@ const createTextBanner = (textBanner, l1Index) => {
             <React.Fragment>
               <Anchor
                 className="l2-image-banner-link"
-                to={link.url}
+                to={configureInternalNavigationFromCMSUrl(link.url)}
+                asPath={link.url}
                 title={link.title}
                 dataLocator={`overlay_img_link_${l1Index}`}
                 target={link.target}
+                onClick={() => hideL2Nav()}
               >
                 <div className={`l2-text-container ${textContainerClassName} ${borderColorClass}`}>
                   <StyledPromoBanner
@@ -179,8 +183,8 @@ const createCategoryCol = (columns, l1Index, hideL2Nav, categoryLayoutColName) =
     return (
       <React.Fragment>
         {createShopBySize(shopBySize, hideL2Nav, categoryLayoutColName, colIndex)}
-        {createImgBanner(imageBanner, l1Index, categoryLayoutColName, colIndex)}
-        {createTextBanner(textBanner, l1Index)}
+        {createImgBanner(imageBanner, l1Index, categoryLayoutColName, colIndex, hideL2Nav)}
+        {createTextBanner(textBanner, l1Index, hideL2Nav)}
       </React.Fragment>
     );
   });
