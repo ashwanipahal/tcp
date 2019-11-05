@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
-import { scrollPage } from '../../../../../../../utils';
 
 const propTypes = {
   component: PropTypes.string,
@@ -51,7 +50,6 @@ class OverlayModal extends React.Component {
     const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
     const modal = document.getElementById('dialogContent');
     if (nextTargetComponent !== prevTargetComponent) {
-      scrollPage();
       modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
     }
