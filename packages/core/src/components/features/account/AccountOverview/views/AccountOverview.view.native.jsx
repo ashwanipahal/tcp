@@ -10,6 +10,7 @@ import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/c
 import { getLabelValue } from '@tcp/core/src/utils';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
+import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import OrdersTile from '../../common/organism/OrdersTile';
@@ -271,7 +272,12 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
               <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')}>
+              <MyPlaceRewardsCreditCard
+                labels={labels}
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
           </React.Fragment>
         )}
         {!isUserLoggedIn && (
