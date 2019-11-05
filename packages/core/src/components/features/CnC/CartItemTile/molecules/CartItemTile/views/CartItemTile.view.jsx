@@ -893,11 +893,17 @@ class CartItemTile extends PureComponent {
     return itemBrand && itemBrand.toLowerCase();
   };
 
-  getPdpToPath = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+  getPdpToPath = (isProductBrandOfSameDomain, pdpUrl, crossDomain, disableProductRedirect) => {
+    if (disableProductRedirect) {
+      return '#0'; // Disable redirect of anchor for review page
+    }
     return isProductBrandOfSameDomain ? getProductListToPath(pdpUrl) : `${crossDomain}${pdpUrl}`;
   };
 
-  getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
+  getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain, disableProductRedirect) => {
+    if (disableProductRedirect) {
+      return '#0'; // Disable redirect of anchor for review page
+    }
     return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
   };
 
@@ -922,6 +928,7 @@ class CartItemTile extends PureComponent {
       pickupStoresInCart,
       autoSwitchPickupItemInCart,
       orderId,
+      disableProductRedirect,
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -950,10 +957,21 @@ class CartItemTile extends PureComponent {
       Size: productDetail.itemInfo.size,
       Qty: productDetail.itemInfo.qty,
     };
-    const pdpToPath = this.getPdpToPath(isProductBrandOfSameDomain, pdpUrl, crossDomain);
-    const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
+    const pdpToPath = this.getPdpToPath(
+      isProductBrandOfSameDomain,
+      pdpUrl,
+      crossDomain,
+      disableProductRedirect
+    );
+    const pdpAsPathUrl = this.getPdpAsPathurl(
+      isProductBrandOfSameDomain,
+      pdpUrl,
+      crossDomain,
+      disableProductRedirect
+    );
 
     const isBagPage = pageView === 'myBag';
+    const disableLink = !isProductBrandOfSameDomain || disableProductRedirect;
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -989,12 +1007,7 @@ class CartItemTile extends PureComponent {
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
               /> */}
-              <Anchor
-                to={pdpToPath}
-                asPath={pdpAsPathUrl}
-                noLink={!isProductBrandOfSameDomain}
-                IsSlugPathAdded
-              >
+              <Anchor to={pdpToPath} asPath={pdpAsPathUrl} noLink={disableLink} IsSlugPathAdded>
                 <DamImage
                   imgData={{
                     alt: labels.productImageAlt,
@@ -1041,12 +1054,7 @@ class CartItemTile extends PureComponent {
               this.getBadgeDetails(productDetail)}
             <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <Anchor
-                  to={pdpToPath}
-                  asPath={pdpAsPathUrl}
-                  noLink={!isProductBrandOfSameDomain}
-                  IsSlugPathAdded
-                >
+                <Anchor to={pdpToPath} asPath={pdpAsPathUrl} noLink={disableLink} IsSlugPathAdded>
                   <BodyCopy
                     fontFamily="secondary"
                     component="h2"
@@ -1177,6 +1185,7 @@ CartItemTile.defaultProps = {
   clearToggleError: () => {},
   currencyExchange: null,
   autoSwitchPickupItemInCart: () => {},
+  disableProductRedirect: false,
 };
 
 CartItemTile.propTypes = {
@@ -1215,6 +1224,7 @@ CartItemTile.propTypes = {
   currencyExchange: PropTypes.shape([]),
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   autoSwitchPickupItemInCart: PropTypes.func,
+  disableProductRedirect: PropTypes.bool,
 };
 
 export default withStyles(CartItemTile, styles);
