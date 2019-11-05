@@ -20,6 +20,7 @@ const fetchBootstrapData = async (
   { page, labels, brand, country, channel, lang },
   bootstrapModules
 ) => {
+  logger.info('bootstrap received language ', lang);
   /**
    * Sets up query params for page requests
    */
@@ -31,7 +32,6 @@ const fetchBootstrapData = async (
           brand,
           country,
           channel,
-          lang,
         },
       }
     : {};
@@ -108,7 +108,7 @@ const createBootstrapParams = (apiConfig, language) => {
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
-    lang: language,
+    lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support as not supported from CMS yet
   };
 };
 
