@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
-import { scrollPage } from '../../../../../../../utils';
 
 const propTypes = {
   component: PropTypes.string,
@@ -21,6 +21,8 @@ const defaultProps = {
   color: '',
 };
 
+const TAB_KEY = 9;
+
 class OverlayModal extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +35,7 @@ class OverlayModal extends React.Component {
     const [body] = document.getElementsByTagName('body');
     this.body = body;
     this.handleWindowClick = this.handleWindowClick.bind(this);
+    this.keydownInOverlay = this.keydownInOverlay.bind(this);
   }
 
   componentDidMount() {
@@ -42,9 +45,11 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.addEventListener('mousedown', this.handleWindowClick);
-      this.body.classList.add('no-scroll');
     }
     this.getCustomStyles({ styleModal: true });
+    if (this.modalRef) {
+      this.modalRef.focus();
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -52,7 +57,6 @@ class OverlayModal extends React.Component {
     const { component: prevTargetComponent, showCondensedHeader: prevCondensedState } = prevProps;
     const modal = document.getElementById('dialogContent');
     if (nextTargetComponent !== prevTargetComponent) {
-      scrollPage();
       modal.scrollTo(0, 0);
       return this.getCustomStyles({ styleModal: false });
     }
@@ -60,6 +64,8 @@ class OverlayModal extends React.Component {
     if (nextCondensedState !== prevCondensedState) {
       this.getCustomStyles({ styleModal: true });
     }
+
+    modal.addEventListener('keydown', this.keydownInOverlay);
 
     return null;
   }
@@ -72,9 +78,10 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.removeEventListener('mousedown', this.handleWindowClick);
-      this.body.classList.remove('no-scroll');
-      this.body.style['overflow-y'] = 'auto';
+      this.body.style['overflow-y'] = '';
     }
+    const modal = document.getElementById('dialogContent');
+    modal.removeEventListener('keydown', this.keydownInOverlay);
     this.resetBodyScrollStyles();
   }
 
@@ -142,7 +149,7 @@ class OverlayModal extends React.Component {
     const { closeOverlay } = this.props;
     closeOverlay();
     if (this.body) {
-      this.body.style['overflow-y'] = 'auto';
+      this.body.style['overflow-y'] = '';
     }
     this.resetBodyScrollStyles();
   };
@@ -159,8 +166,17 @@ class OverlayModal extends React.Component {
    */
   resetBodyScrollStyles = () => {
     this.bodyContainer.style.height = '';
-    this.bodyContainer.style.overflow = 'auto';
+    this.bodyContainer.style.overflow = '';
   };
+
+  /**
+   * Bind Tab key Down
+   */
+  keydownInOverlay(event) {
+    if (event.keyCode === TAB_KEY) {
+      scopeTab(this.modalRef, event);
+    }
+  }
 
   handleWindowClick(e) {
     /* istanbul ignore else */
@@ -184,7 +200,13 @@ class OverlayModal extends React.Component {
     } = this.props;
 
     return (
-      <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
+      <div
+        className={className}
+        id="modalWrapper"
+        color={color}
+        ref={this.setModalRef}
+        tabIndex="-1"
+      >
         <div
           id="dialogContent"
           className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}

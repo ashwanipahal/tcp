@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getSiteId } from '@tcp/core/src/utils/utils';
 import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
+import { routerPush } from '../../../../../utils/index';
 
 /**
  * This component produces a Search Bar component for Header
@@ -16,6 +18,14 @@ import SearchBarStyle from '../SearchBar.style';
  * @param {*} props
  */
 class LookingForProductDetail extends React.PureComponent {
+  redirectToProductUrl = productUrl => {
+    const { closeSearchLayover } = this.props;
+    closeSearchLayover();
+    routerPush(`/${getSiteId()}/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
+      shallow: false,
+    });
+  };
+
   render() {
     const { searchResults } = this.props;
 
@@ -29,9 +39,13 @@ class LookingForProductDetail extends React.PureComponent {
                 return (
                   <BodyCopy component="li" key={item.id} className="productBox">
                     <Anchor
-                      asPath={`${item.productUrl}`}
-                      to={`${item.productUrl}`}
                       className="suggestion-label"
+                      noLink
+                      to={`/${getSiteId()}${item.productUrl}`}
+                      onClick={e => {
+                        e.preventDefault();
+                        this.redirectToProductUrl(`${item.productUrl}`);
+                      }}
                     >
                       <Image
                         alt={`${item.name}`}
@@ -52,6 +66,7 @@ class LookingForProductDetail extends React.PureComponent {
 }
 
 LookingForProductDetail.propTypes = {
+  closeSearchLayover: PropTypes.func.isRequired,
   searchResults: PropTypes.shape({
     trends: PropTypes.shape({}),
     categories: PropTypes.shape({}),

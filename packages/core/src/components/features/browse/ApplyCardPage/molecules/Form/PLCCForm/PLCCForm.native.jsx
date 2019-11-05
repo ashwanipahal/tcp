@@ -28,7 +28,6 @@ import {
   ScrollViewContainer,
   CheckBoxContainerView,
   CheckBoxImage,
-  CheckMessageView,
   ButtonWrapper,
   StyledImage,
   RichTextContainer,
@@ -332,6 +331,7 @@ class PLCCForm extends React.PureComponent<Props> {
               type="text"
               component={TextBox}
               maxLength={5}
+              keyboardType="numeric"
             />
           </ZipContainerView>
         </ContainerView>
@@ -343,6 +343,7 @@ class PLCCForm extends React.PureComponent<Props> {
             type="tel"
             component={TextBox}
             maxLength={10}
+            keyboardType="numeric"
           />
         </NameFieldContainer>
         <NameFieldContainer>
@@ -353,6 +354,7 @@ class PLCCForm extends React.PureComponent<Props> {
             type="tel"
             component={TextBox}
             maxLength={10}
+            keyboardType="numeric"
           />
         </NameFieldContainer>
         <StyledBodyCopy
@@ -460,6 +462,7 @@ class PLCCForm extends React.PureComponent<Props> {
             type="tel"
             component={TextBox}
             maxLength={4}
+            keyboardType="numeric"
           />
         </SSNContainer>
 
@@ -491,27 +494,14 @@ class PLCCForm extends React.PureComponent<Props> {
 
         <CheckBoxContainerView>
           <CheckBoxImage>
-            <Field id="iAgree" name="iAgree" component={InputCheckbox} enableSuccessCheck={false} />
-          </CheckBoxImage>
-          <CheckMessageView>
-            <StyledBodyCopy
-              text={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
-              fontSize="fs12"
-              color="black"
-              fontFamily="secondary"
-              textAlign="left"
+            <Field
+              id="iAgree"
+              name="iAgree"
+              component={InputCheckbox}
+              enableSuccessCheck={false}
+              rightText={getLabelValue(labels, 'lbl_PLCCForm_iAgreeCheckboxText')}
             />
-            <FieldContainer>
-              <Field
-                label=""
-                component={TextBox}
-                title=""
-                type="hidden"
-                id="iAgree"
-                name="iAgree"
-              />
-            </FieldContainer>
-          </CheckMessageView>
+          </CheckBoxImage>
         </CheckBoxContainerView>
 
         <ButtonWrapper>

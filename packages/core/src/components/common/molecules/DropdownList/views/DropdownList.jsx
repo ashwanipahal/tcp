@@ -16,7 +16,7 @@ const itemLists = (item, activeValue, clickHandler) => {
     >
       <BodyCopy
         component="div"
-        role="button"
+        role="link"
         key={item.value}
         onClick={e => clickHandler(e, item.value, item.title)}
         onKeyPress={e => clickHandler(e, item.value, item.title)}

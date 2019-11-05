@@ -73,6 +73,7 @@ export default css`
     justify-content: space-between;
   }
   .sort-selector-wrapper {
+    position: relative;
     display: inline-block;
     .custom-select-common {
       display: flex;

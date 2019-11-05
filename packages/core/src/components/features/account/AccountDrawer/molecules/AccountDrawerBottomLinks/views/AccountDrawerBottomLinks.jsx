@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import internalEndpoints from '@tcp/core/src/components/features/account/common/internalEndpoints';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getLabelValue, isCanada } from '@tcp/core/src/utils/utils';
 import { routerPush } from '@tcp/core/src/utils';
 import LogOutPageContainer from '../../../../Logout/container/LogOut.container';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -33,14 +33,16 @@ const AccountDrawerBottomLinks = props => {
             text={getLabelValue(labels, 'CREATE_ACC_MY_FAV')}
           />
         </div>
-        <div className="elem-pt-MED elem-pb-MED bottomLine">
-          <Anchor
-            fontSizeVariation="large"
-            fontFamily="secondary"
-            anchorVariation="primary"
-            text={getLabelValue(labels, 'CREATE_ACC_MY_PLACE_REWARDS_CC')}
-          />
-        </div>
+        {!isCanada() && (
+          <div className="elem-pt-MED elem-pb-MED bottomLine">
+            <Anchor
+              fontSizeVariation="large"
+              fontFamily="secondary"
+              anchorVariation="primary"
+              text={getLabelValue(labels, 'CREATE_ACC_MY_PLACE_REWARDS_CC')}
+            />
+          </div>
+        )}
         <div className="elem-pt-MED elem-pb-MED bottomLine">
           <Anchor
             fontSizeVariation="large"
@@ -61,6 +63,13 @@ const AccountDrawerBottomLinks = props => {
           <Anchor
             fontSizeVariation="large"
             fontFamily="secondary"
+            onClick={e =>
+              onLinkRedirect({
+                e,
+                link: internalEndpoints.myOrderPage.link,
+                path: internalEndpoints.myOrderPage.path,
+              })
+            }
             anchorVariation="primary"
             text={getLabelValue(labels, 'CREATE_ACC_ORDERS')}
           />

@@ -74,13 +74,14 @@ class LoginForm extends React.PureComponent<Props> {
       const value = get(event, 'nativeEvent.data', '');
       change('recaptchaToken', value);
       handleSubmit(data => {
-        const { emailAddress, password, rememberMe, savePlcc, userTouchId } = data;
+        const { emailAddress, password, rememberMe, savePlcc, useTouchID, useFaceID } = data;
         const LoginData = {
           emailAddress,
           password,
           rememberMe,
           savePlcc,
-          userTouchId,
+          useTouchID,
+          useFaceID,
           recaptchaToken: value,
         };
         onSubmit(LoginData);

@@ -80,7 +80,7 @@ export default css`
     align-items: center;
   }
   .user-name {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
     text-align: left;
   }
   .user-points,

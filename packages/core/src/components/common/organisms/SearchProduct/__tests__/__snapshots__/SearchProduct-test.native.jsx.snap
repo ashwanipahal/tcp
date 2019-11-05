@@ -84,6 +84,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
@@ -96,6 +97,7 @@ exports[`SearchProduct should render correctly should match snapshot 1`] = `
           text="Cancel"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <SectionList

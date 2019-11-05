@@ -44,7 +44,7 @@ export default css`
 
       @media ${props => props.theme.mediaQuery.medium} {
         width: 70px;
-        height: 27px;
+        height: auto;
       }
     }
   }

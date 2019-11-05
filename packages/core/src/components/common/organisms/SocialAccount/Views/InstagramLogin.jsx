@@ -55,7 +55,7 @@ export class InstagramLoginComponent extends React.Component {
       window.open(
         `${config.AUTH_URL.INSTAGRAM}?client_id=${
           apiConfig.instakey
-        }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=token`,
+        }&redirect_uri=${getLocationOrigin()}/${getSiteId()}/instagram&response_type=code`,
         '_blank',
         'toolbar=yes,scrollbars=yes,resizable=yes,top=50,left=50,width=800,height=400'
       );
@@ -70,9 +70,9 @@ export class InstagramLoginComponent extends React.Component {
       getInstagramAccessToken({ code: instagramTokenVal, redirectUrl }).then(res => {
         const socialAccInfo = {
           instagram: this.elem[1].socialAccount,
-          accessToken: res,
+          accessToken: res.accessToken,
           isconnected: false,
-          userId: instagramTokenVal.split('.')[0],
+          userId: res.userId,
         };
         this.saveAccountInfo({ socialAccInfo });
         instagramTokenField.value = '';

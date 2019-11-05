@@ -128,6 +128,8 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
               isAlternateUpdateChecked={false}
               isCondensed={false}
               isEditing={false}
+              isExpressCheckout={false}
+              isHasPickUpAlternatePerson={false}
               labels={Object {}}
               showNoteOnToggle={true}
             />
@@ -138,7 +140,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
     <CnCCommonTemplate
       isConfirmationPage={false}
       isGuest={true}
-      isReviewPage={false}
+      pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
     />
@@ -274,6 +276,8 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
               isAlternateUpdateChecked={false}
               isCondensed={false}
               isEditing={true}
+              isExpressCheckout={false}
+              isHasPickUpAlternatePerson={false}
               labels={Object {}}
               showNoteOnToggle={true}
             />
@@ -284,7 +288,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
     <CnCCommonTemplate
       isConfirmationPage={false}
       isGuest={true}
-      isReviewPage={false}
+      pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
     />
@@ -370,6 +374,8 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
               isAlternateUpdateChecked={false}
               isCondensed={false}
               isEditing={false}
+              isExpressCheckout={false}
+              isHasPickUpAlternatePerson={false}
               labels={Object {}}
               showNoteOnToggle={true}
             />
@@ -380,7 +386,7 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
     <CnCCommonTemplate
       isConfirmationPage={false}
       isGuest={false}
-      isReviewPage={false}
+      pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
     />

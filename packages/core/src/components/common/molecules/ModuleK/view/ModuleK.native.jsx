@@ -82,7 +82,7 @@ class ModuleK extends React.PureComponent {
             <LinkText
               headerText={headerText}
               navigation={navigation}
-              fontSize="fs36"
+              fontSize="fs32"
               fontWeight="black"
               color="text.primary"
               fontFamily="primary"

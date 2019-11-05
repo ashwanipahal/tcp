@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FreeShippingBanner View Component FreeShippingBanner should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(FreeShippingBannerSection)
+    labels={Object {}}
+  />
+</div>
+`;

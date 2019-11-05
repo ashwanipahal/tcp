@@ -37,10 +37,11 @@ export const MyPreferencesTile = ({
         favStorePhone={favStorePhone}
       />
 
-      <ContactPreferencesTileItem labels={labels} customerPreferences={customerPreferences} />
-
       {!isCanada() ? (
-        <SocialAccountsTileItem labels={labels} socialAccounts={socialAccounts} />
+        <>
+          <ContactPreferencesTileItem labels={labels} customerPreferences={customerPreferences} />
+          <SocialAccountsTileItem labels={labels} socialAccounts={socialAccounts} />
+        </>
       ) : null}
     </AccountOverviewTile>
   );

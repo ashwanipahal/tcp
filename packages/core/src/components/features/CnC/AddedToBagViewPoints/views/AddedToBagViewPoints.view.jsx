@@ -30,6 +30,14 @@ const getPointsColor = isPlcc => {
   return 'orange.800';
 };
 
+const getRewardsPointsLabel = (labels, isUserLoggedIn) => {
+  return isUserLoggedIn ? labels.MPRPoints : labels.pointsYouCanEarn;
+};
+
+const getItemPrice = (currencySymbol, itemPrice) => {
+  return `${currencySymbol} ${(itemPrice && itemPrice.toFixed(2)) || 0}`;
+};
+
 const AddedToBagViewPoints = ({
   className,
   pointsSummary,
@@ -37,6 +45,7 @@ const AddedToBagViewPoints = ({
   isPlcc,
   currencySymbol,
   isInternationalShipping,
+  isUserLoggedIn,
 }) => {
   const {
     itemPrice,
@@ -62,14 +71,14 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 3, medium: 3 }}
         >
-          {`${currencySymbol} ${itemPrice || 0}`}
+          {getItemPrice(currencySymbol, itemPrice)}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
-        <Row>
+        <Row className="row-padding">
           <Col colSize={{ large: 8, small: 3, medium: 5 }}>
             <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
-              {labels.pointsYouCanEarn}
+              {getRewardsPointsLabel(labels, isUserLoggedIn)}
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 4, small: 3, medium: 3 }}>
@@ -96,7 +105,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 3, medium: 3 }}
         >
-          {`${currencySymbol} ${bagSubTotal || 0}`}
+          {`${currencySymbol} ${(bagSubTotal && bagSubTotal.toFixed(2)) || 0}`}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -152,6 +161,7 @@ AddedToBagViewPoints.propTypes = {
   isPlcc: PropTypes.bool.isRequired,
   currencySymbol: PropTypes.string.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withStyles(AddedToBagViewPoints, styles);

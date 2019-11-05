@@ -25,6 +25,7 @@ const renderItem = ({
   addToBagEcom,
   currentState,
   labels,
+  navigation,
 }) => {
   return (
     <OutfitProduct
@@ -32,6 +33,7 @@ const renderItem = ({
       outfitProduct={item}
       productIndexText={`Product ${index + 1} of ${productsCount}`}
       labels={labels}
+      navigation={navigation}
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
       }}
@@ -52,6 +54,9 @@ renderItem.propTypes = {
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}),
   labels: PropTypes.shape({}),
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }),
 };
 
 renderItem.defaultProps = {
@@ -61,6 +66,7 @@ renderItem.defaultProps = {
   index: 0,
   currentState: null,
   labels: {},
+  navigation: {},
 };
 
 const OutfitDetailsView = props => {
@@ -94,6 +100,7 @@ const OutfitDetailsView = props => {
             addToBagEcom,
             currentState,
             labels,
+            navigation,
           })
         }
       />

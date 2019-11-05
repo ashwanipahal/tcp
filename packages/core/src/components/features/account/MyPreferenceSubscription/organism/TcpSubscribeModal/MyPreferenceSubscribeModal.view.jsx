@@ -14,7 +14,7 @@ import myPreferenceConst from '../../MyPreferenceSubscription.constants';
 /**
  * This Class component use for return the Extra Points Detail Modal
  * can be passed in the component.
- * @param waysToEarnRow - used for pass data to the modal popup
+ * @param MyPreferenceSubscribeModal - used for pass data to the modal popup
  * * @param onRequestClose - received onRequestClose function as param for closed popup
  * * @param openState - received openState function as param for open popup
  */
@@ -53,11 +53,6 @@ class MyPreferenceSubscribeModal extends React.PureComponent {
       disclaimerText: disclaimerLabels,
     });
   }
-
-  handleSubmitData = data => {
-    const { onSubmit } = this.props;
-    onSubmit(data);
-  };
 
   /**
    * @function render  Used to render the JSX of the component

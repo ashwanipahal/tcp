@@ -1,6 +1,22 @@
 import { css } from 'styled-components';
 
 export default css`
+  *:focus {
+    outline: 0;
+  }
+  .list-item {
+    background: white;
+    border-top: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+    &:last-child {
+      border-bottom: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+    }
+    .accordion {
+      background: white;
+      &.inactive {
+        font-weight: bold;
+      }
+    }
+  }
   .item-common {
     margin-bottom: 8px;
     @media ${props => props.theme.mediaQuery.mediumOnly} {

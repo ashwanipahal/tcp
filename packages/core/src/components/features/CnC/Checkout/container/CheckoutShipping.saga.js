@@ -48,6 +48,7 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
         smsInfo,
         isEmailSignUpAllowed,
         emailAddress,
+        isGuestUser,
       });
     }
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);

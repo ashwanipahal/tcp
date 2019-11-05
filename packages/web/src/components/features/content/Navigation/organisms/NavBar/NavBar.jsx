@@ -51,7 +51,10 @@ const NavBar = props => {
                 sizesRange={sizesRange}
                 onClick={() => {
                   openL2Drawer(`l2-drawer-${stringId}`)();
-                  document.getElementById('tcp-nav-drawer').scrollTop = 0;
+                  const drawerElement = document.getElementById('tcp-nav-drawer');
+                  if (drawerElement) {
+                    drawerElement.scrollTop = 0;
+                  }
                 }}
                 // showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
                 removeL1Focus={removeL1Focus}

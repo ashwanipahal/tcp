@@ -22,6 +22,22 @@ const getShape = props => {
   return ``;
 };
 
+const checkHover = props => {
+  return props.nohover
+    ? ''
+    : `&:hover {
+    border-bottom: 2px solid
+     ${
+       props.theme.isGymboree
+         ? props.theme.colorPalette.primary.main
+         : props.theme.colors.ANCHOR.SECONDARY
+     };
+     padding-bottom: ${!props.nohover ? '4px' : ''};
+     text-decoration: none;
+     border-radius: 0;
+   }`;
+};
+
 const ButtonStyles = css`
   border: none;
   border-radius: 0;
@@ -45,10 +61,10 @@ const ButtonStyles = css`
       ? `
       min-width: 40px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+      color: ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
-      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+      border: 1px solid ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 20px;
       width: 100%;
       &:hover{
@@ -62,10 +78,10 @@ const ButtonStyles = css`
       ? `
       min-width: 64px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+      color: ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-weight: ${props.theme.fonts.fontWeight.black};
-      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+      border: 1px solid ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 32px;
       &:hover{
         border: solid 1px #9b9b9b;
@@ -113,19 +129,19 @@ const ButtonStyles = css`
       ? `
       &:hover, &:focus {
         background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         border-color: ${props.theme.colorPalette.orange[800]};
       }
       &:hover, &:focus {
         background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         border-color: ${props.theme.colorPalette.orange[800]};
       }
 
       /* fixes button flickering on the hover because for font-weight */
       ::after {
         font-family: ${props.theme.typography.fonts.secondary};
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         font-size: ${props.theme.typography.fontSizes.fs14};
         display: block;
         content: attr(data-category-link-label);
@@ -168,7 +184,7 @@ const ButtonStyles = css`
         };
         box-shadow: 4px 4px white inset, 6px 6px ${
           props.theme.isGymboree
-            ? props.theme.colorPalette.orange[50]
+            ? props.theme.colorPalette.orange[800]
             : props.theme.colors.PRIMARY.COLOR1
         };
         border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
@@ -197,8 +213,8 @@ const ButtonStyles = css`
         font-size: ${props.theme.typography.fontSizes.fs14};
         font-weight: ${
           props.active
-            ? props.theme.typography.fontWeights.extrabold
-            : props.theme.typography.fontWeights.regular
+            ? props.theme.typography.fontWeights.semibold
+            : props.theme.typography.fontWeights.normal
         };
         border-bottom: 2px solid ${
           props.active ? props.theme.colorPalette.primary.main : 'transparent'
@@ -215,8 +231,8 @@ const ButtonStyles = css`
           font-size: ${props.theme.typography.fontSizes.fs20};
           font-weight: ${
             props.active
-              ? props.theme.typography.fontWeights.extrabold
-              : props.theme.typography.fontWeights.semibold
+              ? props.theme.typography.fontWeights.semibold
+              : props.theme.typography.fontWeights.normal
           };
         }
       `
@@ -225,11 +241,11 @@ const ButtonStyles = css`
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
       props.buttonVariation === 'fixed-width'
-        ? `min-height: 51px; padding: 16px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `padding: 15px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
     ${props =>
       props.buttonVariation === 'variable-width'
-        ? `min-height: 45px; padding: 16px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `padding: 15px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
   }
   ${props =>
@@ -238,7 +254,7 @@ const ButtonStyles = css`
     props.buttonVariation !== darkLinkCategory
       ? getShape(props)
       : ``}
-
+    
   ${props =>
     props.link
       ? `
@@ -249,17 +265,8 @@ const ButtonStyles = css`
         border: 0;
         padding: 0;
         text-transform: none;
-      &:hover {
-        border-bottom: 2px solid
-        ${
-          props.theme.isGymboree
-            ? props.theme.colorPalette.primary.main
-            : props.theme.colors.ANCHOR.SECONDARY
-        };
-        padding-bottom: 4px;
-        text-decoration: none;
-        border-radius: 0;
-      }
+        text-decoration: ${props.underline ? 'underline' : 'none'}
+      ${checkHover}
       &:focus {
         background: none;
       }
@@ -269,6 +276,7 @@ const ButtonStyles = css`
   `
       : ``}
       ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
 `;
 
 export default ButtonStyles;

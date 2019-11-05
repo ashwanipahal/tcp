@@ -84,7 +84,7 @@ const SmsSignupModalStyle = css`
       display: flex;
       width: 300px;
       margin-right: 0;
-      height: 620px;
+      height: 625px;
     }
     .img-wrapper + div {
       width: calc(100% - 300px);

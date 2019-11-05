@@ -43,7 +43,14 @@ const ExtraEarningHeader = styled.View`
   border: 2px solid ${props => props.theme.colorPalette.orange[800]};
 `;
 const PromoTileWrapper = styled.View`
-  width: 48%;
+  width: 47%;
+`;
+
+const LineBorder = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  border-right-width: 1px;
+  border-right-color: ${props => props.theme.colorPalette.gray[1500]};
 `;
 
 export {
@@ -55,4 +62,5 @@ export {
   MorePointsWrapper,
   ExtraEarningHeader,
   PromoTileWrapper,
+  LineBorder,
 };

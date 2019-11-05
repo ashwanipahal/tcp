@@ -168,6 +168,7 @@ class PLCCForm extends React.PureComponent {
       labels,
       isPLCCModalFlow,
       applicationStatus,
+      invalid,
     } = this.props;
     const { isIdleModalActive, isTimedOutModalActive } = this.state;
     const bagItems = getCartItemCount();
@@ -287,6 +288,8 @@ class PLCCForm extends React.PureComponent {
                     type="submit"
                     className="submit_button_plcc_form"
                     data-locator="plcc_submit_btn"
+                    /* "disabled" disables the submit button until the user fills out all the input fields */
+                    disabled={invalid}
                   >
                     {getLabelValue(labels, 'lbl_PLCCForm_submitButton')}
                   </Button>
@@ -351,6 +354,11 @@ PLCCForm.propTypes = {
     plcc_form_submit_button: PropTypes.string.isRequired,
     plcc_form_nothanks: PropTypes.string.isRequired,
   }).isRequired,
+  invalid: PropTypes.bool,
+};
+
+PLCCForm.defaultProps = {
+  invalid: false,
 };
 
 const validateMethod = createValidateMethod(

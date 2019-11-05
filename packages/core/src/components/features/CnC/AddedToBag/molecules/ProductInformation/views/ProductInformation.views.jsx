@@ -14,10 +14,11 @@ type Props = {
   data: Object,
   labels: any,
   quantity: String,
+  inheritedStyles: Object,
 };
-const ProductInformation = ({ data, labels, quantity }: Props) => {
+const ProductInformation = ({ data, labels, quantity, inheritedStyles }: Props) => {
   return (
-    <ProductInformationStyle>
+    <ProductInformationStyle inheritedStyles={inheritedStyles}>
       <Row tagName="ul" className="product">
         <Col
           tagName="li"
@@ -121,7 +122,7 @@ const ProductInformation = ({ data, labels, quantity }: Props) => {
                 dataLocator="addedtobag-productsize"
               >
                 {`${data.skuInfo.size} `}
-                {!data.skuInfo.fit || data.skuInfo.fit === 'regular' ? ' ' : data.skuInfo.fit}
+                {!data.skuInfo.fit ? ' ' : data.skuInfo.fit}
               </BodyCopy>
             </Col>
           </Row>

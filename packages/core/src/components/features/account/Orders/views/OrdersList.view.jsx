@@ -5,12 +5,13 @@ import FormPageHeading from '../../common/molecule/FormPageHeading';
 import RecentOrders from '../molecules/RecentOrders';
 import OrdersLinks from '../molecules/OrdersLinks';
 import PastOrders from '../molecules/PastOrders';
+import OrderPreviewItemsList from '../molecules/OrderPreviewItemsList';
 
 /**
  * This component will render OrdersList component
  * @param { string, object }
  */
-export const OrdersList = ({ labels, ordersListItems, ...otherprops }) => {
+export const OrdersList = ({ labels, orderItems, ordersListItems, ...otherprops }) => {
   return (
     <React.Fragment>
       <FormPageHeading
@@ -20,6 +21,14 @@ export const OrdersList = ({ labels, ordersListItems, ...otherprops }) => {
       />
       <OrdersLinks labels={labels} {...otherprops} />
       <RecentOrders labels={labels} ordersListItems={ordersListItems} />
+      {orderItems && orderItems.length > 0 ? (
+        <OrderPreviewItemsList
+          labels={labels}
+          items={orderItems.slice(0, 3)}
+          orderNumber={ordersListItems[0].orderNumber}
+          trackingUrl={ordersListItems[0].orderTrackingUrl}
+        />
+      ) : null}
       {ordersListItems && ordersListItems.length > 1 ? (
         <PastOrders labels={labels} ordersListItems={ordersListItems} />
       ) : null}
@@ -30,6 +39,7 @@ export const OrdersList = ({ labels, ordersListItems, ...otherprops }) => {
 OrdersList.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]).isRequired,
+  orderItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default OrdersList;

@@ -27,9 +27,10 @@ import {
   CartCountContainer,
 } from './HeaderNew.style';
 import { readCookieMobileApp } from '../../../../utils/utils';
+import { ArrowBackIconPLP } from '../../../features/content/Navigation/molecules/NavMenuLevel2/NavMenuLevel2.style';
 
 const cartIcon = require('../../../../assets/images/empty-bag.png');
-const BackIcon = require('../../../../../../core/src/assets/carrot-large-left.png');
+const Icon = require('../../../../../../core/src/assets/carrot-large-left.png');
 
 const CART_ITEM_COUNTER = 'cartItemsCount';
 
@@ -146,7 +147,7 @@ class HeaderNew extends React.PureComponent<Props> {
                 accessibilityRole="button"
                 accessibilityLabel="back button"
               >
-                <ArrowBackIcon source={BackIcon} />
+                <ArrowBackIconPLP source={Icon} />
               </TouchableOpacity>
             </LeftSection>
 

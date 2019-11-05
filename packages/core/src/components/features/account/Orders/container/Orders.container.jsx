@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import getOrdersListState from './Orders.selectors';
+import { getOrdersListState } from './Orders.selectors';
 import { getAllItems } from '../../OrderDetails/container/OrderDetails.selectors';
 import { getSiteId } from '../../../../../utils';
 import OrderListComponent from '../views';
 import { getOrdersList } from './Orders.actions';
 import { getOrderDetails } from '../../OrderDetails/container/OrderDetails.actions';
 import { getLabels } from '../../Account/container/Account.selectors';
-import { API_CONFIG } from '../../../../../services/config';
 
 /**
  * This component will render OrdersContainer component
@@ -54,21 +53,18 @@ export class OrdersContainer extends PureComponent {
       componentProps,
       orderItems,
     } = this.props;
-    const siteId = getSiteId();
     const ordersListItemData = ordersListItems && ordersListItems.orders;
 
     return (
-      siteId !== API_CONFIG.siteIds.ca && (
-        <OrderListComponent
-          labels={labels}
-          onFilterLink={this.filterLinkHandler}
-          ordersListItems={ordersListItemData}
-          navigation={navigation}
-          handleComponentChange={handleComponentChange}
-          componentProps={componentProps}
-          orderItems={orderItems}
-        />
-      )
+      <OrderListComponent
+        labels={labels}
+        onFilterLink={this.filterLinkHandler}
+        ordersListItems={ordersListItemData}
+        navigation={navigation}
+        handleComponentChange={handleComponentChange}
+        componentProps={componentProps}
+        orderItems={orderItems}
+      />
     );
   }
 }

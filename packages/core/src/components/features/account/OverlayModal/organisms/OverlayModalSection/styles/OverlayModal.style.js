@@ -25,6 +25,9 @@ const StyledModal = css`
           height: 100%;
           width: 100%;
       }`}
+  &:focus, &:active {
+    outline: 0;
+  }
   .dialog__content {
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
@@ -89,6 +92,7 @@ const StyledModal = css`
     top: ${iconSpacing};
     height: ${iconSpacing};
     width: ${iconSpacing};
+    z-index: 1;
   }
 `;
 

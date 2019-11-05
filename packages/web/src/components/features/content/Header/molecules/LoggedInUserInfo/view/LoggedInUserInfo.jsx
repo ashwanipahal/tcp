@@ -11,8 +11,8 @@ const handleUserRewards = userRewards => {
   return userRewards % 1 ? userRewards : Math.floor(userRewards);
 };
 
-const handleCarrottoggle = userNameClick => {
-  return userNameClick ? 'carrot-down-icon' : 'carrot-up-icon';
+const handleCarrottoggle = (userNameClick, isOpenOverlay) => {
+  return userNameClick || !isOpenOverlay ? 'carrot-down-icon' : 'carrot-up-icon';
 };
 
 const LoggedInUserInfo = ({
@@ -21,35 +21,45 @@ const LoggedInUserInfo = ({
   userPoints,
   userRewards,
   openOverlay,
+  isOpenOverlay,
   userNameClick,
   onLinkClick,
   isDrawer,
 }) => {
+  const linkClick = e => onLinkClick({ e, openOverlay, userNameClick }, mainId);
   return (
     <React.Fragment>
-      <BodyCopy
-        component="div"
-        id={mainId}
-        className="account-info-section"
-        onClick={e => onLinkClick({ e, openOverlay, userNameClick }, mainId)}
-      >
-        <div className="account-info user-name">{`Hi, ${handleUserName(userName)}`}</div>
+      <BodyCopy component="div" id={mainId} className="account-info-section">
+        <BodyCopy
+          className="account-info user-name"
+          onClick={linkClick}
+          component="div"
+          role="button"
+        >
+          {`Hi, ${handleUserName(userName)}`}
+        </BodyCopy>
         {!isDrawer ? (
           <Image
             alt="user"
-            className={`account-info ${handleCarrottoggle(userNameClick)}`}
+            className={`account-info ${handleCarrottoggle(userNameClick, isOpenOverlay)}`}
             src={getIconPath('down_arrow_icon')}
             height="6px"
+            onClick={linkClick}
           />
         ) : null}
-        <div>
+        <BodyCopy onClick={linkClick} component="div">
           <div className="account-info user-points">{`${userPoints} Points`}</div>
           <span className="account-info user-rewards rightLink">
             {`$${handleUserRewards(userRewards)} Rewards`}
           </span>
-        </div>
+        </BodyCopy>
         {!isDrawer ? (
-          <Image alt="user" className="usericon" src={getIconPath('user-icon')} />
+          <Image
+            alt="user"
+            className="usericon"
+            src={getIconPath('user-icon')}
+            onClick={linkClick}
+          />
         ) : null}
       </BodyCopy>
     </React.Fragment>
@@ -61,6 +71,7 @@ LoggedInUserInfo.propTypes = {
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
   userNameClick: PropTypes.bool.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   onLinkClick: PropTypes.func.isRequired,
   mainId: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,

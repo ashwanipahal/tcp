@@ -25,6 +25,7 @@ import config, {
   RIBBON_WIDTH,
   MODULE_WITH_RIBBON_HEIGHT,
   TEXT_COLOR_WHITE,
+  TEXT_COLOR_GYM,
 } from '../ModuleS.config';
 
 /**
@@ -119,7 +120,7 @@ const ButtonView = props => {
 const HeaderView = props => {
   const { navigation, headerText } = props;
 
-  const color = !isGymboree() ? TEXT_COLOR_WHITE : '';
+  const color = !isGymboree() ? TEXT_COLOR_WHITE : TEXT_COLOR_GYM;
 
   return (
     headerText && (

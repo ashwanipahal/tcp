@@ -224,12 +224,14 @@ exports[`Add gift card form component render error message 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="lbl_payment_addCard"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
     <Styled(View)>
@@ -249,12 +251,14 @@ exports[`Add gift card form component render error message 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="lbl_payment_cancelCard"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </View>
@@ -484,12 +488,14 @@ exports[`Add gift card form component should render component correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="lbl_payment_addCard"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
     <Styled(View)>
@@ -509,12 +515,14 @@ exports[`Add gift card form component should render component correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="lbl_payment_cancelCard"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </View>

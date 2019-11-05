@@ -39,8 +39,14 @@ const port = process.env.RWD_WEB_PORT || 3000;
 
 const app = next({ dev, dir: './src' });
 
+const xrayEnabled = process.env.XRAY_ENABLED === 'true';
+
 const server = express();
 
+if (xrayEnabled) {
+  var AWSXRay = require('aws-xray-sdk');
+  server.use(AWSXRay.express.openSegment(process.env.XRAY_ENVIRONMENT));
+}
 const handle = app.getRequestHandler();
 
 settingHelmetConfig(server, helmet);
@@ -85,18 +91,8 @@ const setSiteDetails = (req, res) => {
   res.locals.language = getLanguageByDomain(req.hostname);
 };
 
-// TODO - To be picked from env config file when Gym build process is done....
 const setBrandId = (req, res) => {
-  const { hostname } = req;
-  let brandId = 'tcp';
-  const reqUrl = hostname.split('.');
-  for (let i = 0; i < reqUrl.length - 1; i++) {
-    if (reqUrl[i].toLowerCase() === 'gymboree') {
-      brandId = 'gym';
-      break;
-    }
-  }
-  res.locals.brandId = brandId;
+  res.locals.brandId = process.env.RWD_WEB_BRANDID;
 };
 
 setErrorReporter();
@@ -244,6 +240,9 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
+  if (xrayEnabled) {
+    server.use(AWSXRay.express.closeSegment());
+  }
   server.listen(port, err => {
     if (err) throw err;
     logger.info(`> Ready on http://localhost:${port}`);

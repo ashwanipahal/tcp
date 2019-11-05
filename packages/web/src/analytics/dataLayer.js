@@ -114,6 +114,24 @@ export default function create(store) {
       },
     },
 
+    customerFirstName: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .getIn(['contactInfo', 'firstName']);
+      },
+    },
+
+    customerLastName: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .getIn(['contactInfo', 'lastName']);
+      },
+    },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {

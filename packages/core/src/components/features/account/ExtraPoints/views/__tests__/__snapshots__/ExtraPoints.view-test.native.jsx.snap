@@ -24,13 +24,13 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
       fontWeight="regular"
       margin={null}
       numberOfLines={null}
-      spacingStyles="margin-right-MED margin-bottom-SM margin-left-MED"
+      spacingStyles="margin-right-MED margin-left-MED"
       text="lbl_earnExtraPoints_checkOffers"
       textAlign="center"
       textDecoration={null}
     />
     <Styled(View)
-      spacingStyles="margin-top-MED margin-bottom-XL"
+      spacingStyles="margin-top-SM margin-bottom-XL"
     >
       <Styled(Anchor)
         accessibilityLabel=""
@@ -68,6 +68,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
         }
       />
     </Styled(View)>
+    <Styled(View) />
     <Styled(View)>
       <PromoListTile
         tileData={
@@ -106,6 +107,7 @@ exports[`EarnPointsVanilla component should renders correctly 1`] = `
         }
       />
     </Styled(View)>
+    <Styled(View) />
     <Styled(View)>
       <PromoListTile
         tileData={

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PromoBanner from '../PromoBanner';
 import { getLocator, getIconPath } from '../../../../utils';
-import { RibbonWrapper, RibbonContainer } from './Ribbon.style';
+import { RibbonWrapper, RibbonContainer, RibbonPromoBanner } from './Ribbon.style';
 
 const ribbonLeftImage = getIconPath('modules-s-left-ribbon');
 const ribbonRightImage = getIconPath('modules-s-right-ribbon');
@@ -13,17 +12,16 @@ const getImgPath = ribbonBanner => {
 };
 const RibbonComponent = props => {
   const { ribbonBanner, locator, width, height } = props;
+  let position = 'right';
+  if (ribbonBanner) {
+    const [ribbonDetails] = ribbonBanner;
+    position = ribbonDetails.ribbonPlacement;
+  }
   return (
-    <RibbonWrapper>
+    <RibbonWrapper position={position}>
       {ribbonBanner && (
         <RibbonContainer width={width} height={height} imgPath={getImgPath(ribbonBanner)}>
-          <PromoBanner
-            promoBanner={ribbonBanner}
-            data-locator={getLocator(locator)}
-            color="white"
-            fontFamily="secondary"
-            fontWeight="black"
-          />
+          <RibbonPromoBanner promoBanner={ribbonBanner} data-locator={getLocator(locator)} />
         </RibbonContainer>
       )}
     </RibbonWrapper>

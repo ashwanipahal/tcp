@@ -2,7 +2,9 @@ import { css } from 'styled-components';
 
 export default css`
   .myPreferenceModalWrapper {
-    margin: 0 50px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 0 50px;
+    }
   }
 
   .disclaimer-sub-text {

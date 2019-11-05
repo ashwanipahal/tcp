@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor } from '@tcp/core/src/components/common/atoms';
+import { Image, Button } from '@tcp/core/src/components/common/atoms';
+import { getIconPath } from '@tcp/core/src/utils';
 
 const GuestUserInfo = ({
   createAccount,
@@ -9,14 +10,16 @@ const GuestUserInfo = ({
   triggerLoginCreateAccount,
   onLinkClick,
   userNameClick,
+  isDrawer,
 }) => {
   return (
     <React.Fragment>
-      <Anchor
-        href="#"
-        noLink
+      <Button
+        nohover
+        type="button"
+        link
         id={createAccount}
-        className=""
+        className="create-account-header-label"
         onClick={e =>
           onLinkClick({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, createAccount)
         }
@@ -24,12 +27,13 @@ const GuestUserInfo = ({
         anchorVariation="primary"
       >
         Create Account
-      </Anchor>
-      <Anchor
-        href="#"
-        noLink
+      </Button>
+      <Button
+        nohover
+        type="button"
+        link
         id={login}
-        className="rightLink"
+        className="rightLink login-header-label"
         onClick={e =>
           onLinkClick({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, login)
         }
@@ -37,7 +41,18 @@ const GuestUserInfo = ({
         anchorVariation="primary"
       >
         Login
-      </Anchor>
+      </Button>
+
+      {!isDrawer ? (
+        <Image
+          alt="user"
+          className="usericon"
+          src={getIconPath('user-icon')}
+          onClick={e =>
+            onLinkClick({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, login)
+          }
+        />
+      ) : null}
     </React.Fragment>
   );
 };
@@ -49,5 +64,6 @@ GuestUserInfo.propTypes = {
   userNameClick: PropTypes.bool.isRequired,
   onLinkClick: PropTypes.func.isRequired,
   triggerLoginCreateAccount: PropTypes.bool.isRequired,
+  isDrawer: PropTypes.bool.isRequired,
 };
 export default GuestUserInfo;

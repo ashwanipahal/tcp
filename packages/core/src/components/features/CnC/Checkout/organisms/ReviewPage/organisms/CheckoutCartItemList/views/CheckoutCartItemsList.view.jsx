@@ -49,6 +49,7 @@ class CheckoutCartItemsList extends Component {
     className: PropTypes.string.isRequired,
     gettingSortedItemList: PropTypes.func.isRequired,
     showAccordian: PropTypes.bool,
+    disableProductRedirect: PropTypes.bool,
   };
 
   /**
@@ -59,7 +60,7 @@ class CheckoutCartItemsList extends Component {
    * single order item html.
    */
   getOrderItem = item => {
-    const { labels, currencySymbol } = this.props;
+    const { labels, currencySymbol, disableProductRedirect } = this.props;
     const showOnReviewPage = false;
     return (
       <div className="cart-item-tile-container">
@@ -68,6 +69,7 @@ class CheckoutCartItemsList extends Component {
           labels={labels}
           showOnReviewPage={showOnReviewPage}
           currencySymbol={currencySymbol}
+          disableProductRedirect={disableProductRedirect}
         />
       </div>
     );
@@ -407,6 +409,7 @@ CheckoutCartItemsList.defaultProps = {
   labels: {},
   bagPageLabels: {},
   showAccordian: true,
+  disableProductRedirect: false, // Disable Product Redirect
 };
 
 export default withStyles(CheckoutCartItemsList, styles);

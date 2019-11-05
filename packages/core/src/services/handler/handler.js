@@ -23,6 +23,11 @@ const errorHandler = ({
     'tcp-trace-session-id': 'NO-TRACE-ID',
   },
 } = {}) => {
+  // unbxd-request-id
+  let unbxdReqId = 'N/A';
+  if (err && err.response && err.response.headers) {
+    unbxdReqId = err.response.headers['unbxd-request-id'];
+  }
   trackError({
     error: err,
     errorTags: [`API Handler-${reqObj.webService.URI}`, generateSessionId()],
@@ -30,7 +35,7 @@ const errorHandler = ({
       ...reqObj,
       'trace-request-id': generateTraceId(),
       'trace-session-id': reqHeaders['tcp-trace-session-id'],
-      'unbxd-request-id': err && err.response ? err.response.headers['unbxd-request-id'] : 'N/A',
+      'unbxd-request-id': unbxdReqId,
     },
   });
   throw err;

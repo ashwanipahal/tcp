@@ -10,7 +10,9 @@ exports[`MyPrefrenceSubscribeText container should render MyPrefrenceSubscribeTe
         "tcpWebSubscribe": undefined,
       }
     }
+    isGymAppSubscribe={false}
     isGymSubscribe={false}
+    isTcpAppSubscribe={false}
     isTcpSubscribe={false}
     labels={
       Object {

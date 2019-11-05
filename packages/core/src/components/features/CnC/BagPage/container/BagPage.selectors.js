@@ -27,6 +27,7 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
         lbl_orderledger_total: totalLabel,
+        lbl_recently_viewed: recentlyViewed,
       } = {},
     } = {},
     global: {
@@ -74,6 +75,7 @@ const getBagPageLabels = state => {
     sflSuccess,
     sflDeleteSuccess,
     totalLabel,
+    recentlyViewed,
   };
 };
 
@@ -83,6 +85,10 @@ const getTotalItems = state => {
 
 const getOrderItems = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']) || 0;
+};
+
+const getIsPayPalEnabled = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalEnabled']) || false;
 };
 
 const getConfirmationModalFlag = state => {
@@ -214,6 +220,14 @@ const itemDeleteModalLabels = state => {
   };
 };
 
+const getPayPalWebViewStatus = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false;
+};
+
+const isBagLoaded = state => {
+  return state.CartPageReducer.getIn(['loaded']);
+};
+
 const getBagStickyHeaderInterval = state => {
   return (
     parseInt(state.session.siteDetails.BAG_CONDENSE_HEADER_INTERVAL, 10) ||
@@ -241,10 +255,13 @@ export default {
   getGiftServicesContentGymId,
   getCurrentCurrency,
   getCartStores,
+  isBagLoaded,
   getCartStoresToJs,
   getsflItemsList,
   checkoutIfItemIsUnqualified,
   getCurrentDeleteSelectedItemInfo,
   itemDeleteModalLabels,
+  getIsPayPalEnabled,
   getBagStickyHeaderInterval,
+  getPayPalWebViewStatus,
 };

@@ -21,7 +21,6 @@ const ModalStyle = css`
     overflow-y: auto;
     height: 100%;
     width: ${props => (props.fixedWidth ? '100%' : '')};
-    width: ${props => (props.widthConfig ? props.widthConfig.small : '')};
     @media ${props => props.theme.mediaQuery.medium} {
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};
@@ -41,7 +40,7 @@ const ModalStyle = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     margin-top: 0;
     height: 20px;
-    font-weight: 800;
+    font-weight: ${props => props.theme.typography.fontWeights.bold};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;

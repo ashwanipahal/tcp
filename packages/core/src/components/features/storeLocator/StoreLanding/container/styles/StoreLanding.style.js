@@ -18,12 +18,8 @@ export default css`
     display: none;
   }
 
-  .store_item_container:nth-child(1n) {
-    margin: 0 14px;
-  }
-
   @media ${props => props.theme.mediaQuery.mediumOnly} {
-    .storeView__List {
+    .storeView__ListAndMap {
       flex-direction: row-reverse;
     }
 
@@ -58,7 +54,11 @@ export default css`
 
   .favoriteStore__container {
     width: 100%;
-    margin: 0;
+    margin: 0 0 20px;
+
+    .address-tile {
+      border-bottom: 0;
+    }
   }
 
   .google-map {

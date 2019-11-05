@@ -10,6 +10,8 @@ class OpenLoginModal extends PureComponent<Props> {
     this.state = {
       currentForm: 'login',
       component: 'login',
+      horizontalBar: true,
+      modalHeaderLbl: 'Login',
     };
   }
 
@@ -37,11 +39,23 @@ class OpenLoginModal extends PureComponent<Props> {
     );
   };
 
+  updateHeader = () => {
+    this.setState({
+      modalHeaderLbl: ' ',
+      horizontalBar: false,
+    });
+  };
+
   render() {
     const { openState, variation, handleContinueAsGuest, handleAfterLogin } = this.props;
-    const { currentForm, component } = this.state;
+    const { currentForm, component, modalHeaderLbl, horizontalBar } = this.state;
     return (
-      <ModalNative heading="Login" isOpen={openState} onRequestClose={this.onClose}>
+      <ModalNative
+        heading={modalHeaderLbl}
+        isOpen={openState}
+        onRequestClose={this.onClose}
+        horizontalBar={horizontalBar}
+      >
         {component === 'login' ? (
           <LoginPageContainer
             variation={variation}
@@ -50,6 +64,7 @@ class OpenLoginModal extends PureComponent<Props> {
             setLoginModalMountState={this.openForgotPasswordModal}
             handleContinueAsGuest={handleContinueAsGuest}
             handleAfterLogin={handleAfterLogin}
+            updateHeader={this.updateHeader}
           />
         ) : (
           <CreateAccount

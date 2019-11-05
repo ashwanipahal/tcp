@@ -2,54 +2,70 @@
 
 exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot 1`] = `
 <Fragment>
-  <Styled(Anchor)
+  <Styled(Button)
     anchorVariation="primary"
-    className=""
+    className="create-account-header-label"
     fontSizeVariation="large"
-    href="#"
     id="createAccount"
-    noLink={true}
+    link={true}
+    nohover={true}
     onClick={[Function]}
+    type="button"
   >
     Create Account
-  </Styled(Anchor)>
-  <Styled(Anchor)
+  </Styled(Button)>
+  <Styled(Button)
     anchorVariation="primary"
-    className="rightLink"
+    className="rightLink login-header-label"
     fontSizeVariation="large"
-    href="#"
     id="login"
-    noLink={true}
+    link={true}
+    nohover={true}
     onClick={[Function]}
+    type="button"
   >
     Login
-  </Styled(Anchor)>
+  </Styled(Button)>
+  <Styled(Image)
+    alt="user"
+    className="usericon"
+    onClick={[Function]}
+    src="/static/images/user-icon.png"
+  />
 </Fragment>
 `;
 
 exports[`GuestUserInfo component GuestUserInfo component renders correctly to match snapshot 2`] = `
 <Fragment>
-  <Styled(Anchor)
+  <Styled(Button)
     anchorVariation="primary"
-    className=""
+    className="create-account-header-label"
     fontSizeVariation="large"
-    href="#"
     id="createAccount"
-    noLink={true}
+    link={true}
+    nohover={true}
     onClick={[Function]}
+    type="button"
   >
     Create Account
-  </Styled(Anchor)>
-  <Styled(Anchor)
+  </Styled(Button)>
+  <Styled(Button)
     anchorVariation="primary"
-    className="rightLink"
+    className="rightLink login-header-label"
     fontSizeVariation="large"
-    href="#"
     id="login"
-    noLink={true}
+    link={true}
+    nohover={true}
     onClick={[Function]}
+    type="button"
   >
     Login
-  </Styled(Anchor)>
+  </Styled(Button)>
+  <Styled(Image)
+    alt="user"
+    className="usericon"
+    onClick={[Function]}
+    src="/static/images/user-icon.png"
+  />
 </Fragment>
 `;

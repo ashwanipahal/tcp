@@ -179,9 +179,12 @@ class ProductListingFiltersForm extends React.Component {
    * @param {number} filterId - id to be removed
    */
   handleRemoveFilter(fieldName, filterId) {
-    const { change, initialValues, handleSubmit } = this.props;
-    change(fieldName, initialValues[fieldName].filter(entryId => entryId !== filterId));
-    handleSubmit(this.handleSubmitOnChange);
+    const { change, initialValues } = this.props;
+    const changeParam = initialValues[fieldName]
+      ? initialValues[fieldName].filter(entryId => entryId !== filterId)
+      : [];
+    change(fieldName, changeParam);
+    this.handleSubmitOnChange();
   }
 
   /**
@@ -447,12 +450,13 @@ class ProductListingFiltersForm extends React.Component {
     const { initialValues, filtersMaps } = this.props;
 
     const appliedFilters = [];
+    const keys = Object.keys(initialValues).sort();
 
     // eslint-disable-next-line
-    for (let key in initialValues) {
-      const selectedFacet = filtersMaps[key]
-        ? initialValues[key].map(filterId =>
-            filtersMaps[key].find(filter => filterId === filter.id)
+    for (let index = 0; index < keys.length; index++) {
+      const selectedFacet = filtersMaps[keys[index]]
+        ? initialValues[keys[index]].map(filterId =>
+            filtersMaps[keys[index]].find(filter => filterId === filter.id)
           )
         : [];
       appliedFilters.push(selectedFacet);

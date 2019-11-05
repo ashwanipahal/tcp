@@ -75,12 +75,14 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -167,12 +169,14 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_myPlaceRewardsCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

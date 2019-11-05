@@ -49,6 +49,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               "viewBag": "",
             }
           }
+          navigation={[MockFunction]}
         />
       </Styled(View)>
       <Connect(QuickViewModalContainer)
@@ -58,6 +59,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   </Styled(View)>
   <Styled(View)>
     <Connect(AddedToBagContainer)
+      hideHeader={[Function]}
       isNoNEmptyBag={false}
       labels={
         Object {
@@ -122,6 +124,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           isBagPageSflSection={true}
+          navigation={[MockFunction]}
           sflItems={Object {}}
         />
       </Styled(View)>
@@ -183,6 +186,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           isBagPageSflSection={true}
+          navigation={[MockFunction]}
           sflItems={Object {}}
         />
       </Styled(View)>
@@ -241,9 +245,12 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
               "viewBag": "",
             }
           }
+          navigation={[MockFunction]}
         />
         <Styled(View)>
-          <Connect(OrderLedgerContainer) />
+          <Connect(OrderLedgerContainer)
+            pageCategory="bagPage"
+          />
         </Styled(View)>
         <Styled(View)>
           <Styled(View)>
@@ -266,6 +273,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   </Styled(View)>
   <Styled(View)>
     <Connect(AddedToBagContainer)
+      hideHeader={[Function]}
       isNoNEmptyBag={true}
       labels={
         Object {

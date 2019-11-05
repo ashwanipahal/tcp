@@ -8,6 +8,7 @@ import {
   L1TextView,
   ContainerList,
   L1TouchableOpacityNoImage,
+  StyledImage,
 } from '../NavMenuLevel1.style';
 
 const imageWidth = getScreenWidth() / 2;
@@ -105,11 +106,11 @@ class NavMenuLevel1 extends React.PureComponent {
             numberOfLines={1}
             margin="0 60px 0 0"
           />
-          <Image
+          <StyledImage
             alt={name}
             source={Icon}
-            maxWidth={16}
-            height={26}
+            width={16}
+            height={29}
             position="absolute"
             right={37}
           />

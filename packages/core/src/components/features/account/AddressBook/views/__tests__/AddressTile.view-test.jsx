@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import { AddressBookTileVanilla } from '../AddressTile.view';
 import Badge from '../../../../../common/atoms/Badge';
 import Anchor from '../../../../../common/atoms/Anchor';
+import Button from '../../../../../common/atoms/Button';
 
 const address = {
   firstName: 'test',
@@ -110,7 +111,7 @@ describe('AddressTile component', () => {
     const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(
       component
-        .find(Anchor)
+        .find(Button)
         .first()
         .text()
     ).toBe(labels.common.lbl_common_makeDefault);
@@ -130,7 +131,7 @@ describe('AddressTile component', () => {
     const component = shallow(<AddressBookTileVanilla {...props} />);
     component
       .find(Anchor)
-      .at(2)
+      .at(0)
       .simulate('click', { preventDefault: jest.fn() });
     expect(mockedOpenAccountModalComponent).toHaveBeenCalled();
     expect(mockedSetSelectedAddress).toHaveBeenCalled();

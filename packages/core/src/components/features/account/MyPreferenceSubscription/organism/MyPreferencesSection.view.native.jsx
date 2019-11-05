@@ -13,6 +13,7 @@ import {
   AppAlertWrapper,
   SubscribeCheckWrapper,
 } from '../styles/MyPreferenceSubscription.style.native';
+import MyPreferenceSubscriptionConstants from '../MyPreferenceSubscription.constants';
 
 const alertIcon = require('@tcp/core/src/assets/icon-alarm-gray.png');
 const textIcon = require('@tcp/core/src/assets/icon-chat-gray.png');
@@ -20,23 +21,34 @@ const textIcon = require('@tcp/core/src/assets/icon-chat-gray.png');
 class MyPrefrenceSection extends React.PureComponent {
   constructor(props) {
     super(props);
-    const { isTcpSubscribe, isGymSubscribe } = this.props;
+    const { isTcpSubscribe, isGymSubscribe, isTcpAppSubscribe, isGymAppSubscribe } = this.props;
     this.state = {
       isTcpSubscribeState: isTcpSubscribe,
-    };
-    this.state = {
       isGymSubscribeState: isGymSubscribe,
+      isTcpAppSubscribeState: isTcpAppSubscribe,
+      isGymAppSubscribeState: isGymAppSubscribe,
     };
   }
 
   componentDidUpdate() {
-    const { isTcpSubscribe, isGymSubscribe } = this.props;
-    const { isTcpSubscribeState, isGymSubscribeState } = this.state;
+    const { isTcpSubscribe, isGymSubscribe, isTcpAppSubscribe, isGymAppSubscribe } = this.props;
+    const {
+      isTcpSubscribeState,
+      isGymSubscribeState,
+      isTcpAppSubscribeState,
+      isGymAppSubscribeState,
+    } = this.state;
     if (isTcpSubscribe !== isTcpSubscribeState) {
       this.setTcpSubscribeState(isTcpSubscribe);
     }
     if (isGymSubscribe !== isGymSubscribeState) {
       this.setGymSubscribeState(isGymSubscribe);
+    }
+    if (isTcpAppSubscribe !== isTcpAppSubscribeState) {
+      this.setTcpAppSubscribeState(isTcpAppSubscribe);
+    }
+    if (isGymAppSubscribe !== isGymAppSubscribeState) {
+      this.setGymAppSubscribeState(isGymAppSubscribe);
     }
   }
 
@@ -52,6 +64,18 @@ class MyPrefrenceSection extends React.PureComponent {
     });
   };
 
+  setTcpAppSubscribeState = isTcpAppSubscribe => {
+    this.setState({
+      isTcpAppSubscribeState: isTcpAppSubscribe,
+    });
+  };
+
+  setGymAppSubscribeState = isGymAppSubscribe => {
+    this.setState({
+      isGymAppSubscribeState: isGymAppSubscribe,
+    });
+  };
+
   onSubscribeHandler = subscribeBrand => {
     const { onSubscribe } = this.props;
     onSubscribe(subscribeBrand);
@@ -62,9 +86,51 @@ class MyPrefrenceSection extends React.PureComponent {
     onUnsubscribe(subscribeBrand);
   };
 
+  onGymSubscribe = subscribeValue => {
+    const { isGymSubscribe } = this.props;
+    if (isGymSubscribe) {
+      this.onUnsubscribeHandler(subscribeValue);
+    } else {
+      this.onSubscribeHandler(subscribeValue);
+    }
+  };
+
+  onChangeCallback = subscribeValue => {
+    const { isTcpSubscribe, isTcpAppSubscribe, isGymAppSubscribe } = this.props;
+    if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE) {
+      if (isTcpAppSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE) {
+      if (isGymAppSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE) {
+      if (isTcpSubscribe) {
+        this.onUnsubscribeHandler(subscribeValue);
+      } else {
+        this.onSubscribeHandler(subscribeValue);
+      }
+    }
+    if (subscribeValue === MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE) {
+      this.onGymSubscribe(subscribeValue);
+    }
+  };
+
   render() {
-    const { labels, isTcpSubscribe, isGymSubscribe } = this.props;
-    const { isTcpSubscribeState, isGymSubscribeState } = this.state;
+    const { labels } = this.props;
+    const {
+      isTcpSubscribeState,
+      isGymSubscribeState,
+      isTcpAppSubscribeState,
+      isGymAppSubscribeState,
+    } = this.state;
     return (
       <ViewWithSpacing spacingStyles="margin-bottom-XXXL margin-left-XXS margin-right-XXS">
         <BodyCopyWithSpacing
@@ -107,10 +173,20 @@ class MyPrefrenceSection extends React.PureComponent {
         </AppTextWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="tcpAppSubscribe"
+            name={MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-apptcpcheckbox"
             className="elm-padding-top"
+            execOnChangeByDefault={false}
+            onChange={value => {
+              this.setState(
+                {
+                  isTcpAppSubscribeState: value,
+                },
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.TCP_APP_SUBSCRIBE)
+              );
+            }}
+            isChecked={isTcpAppSubscribeState}
           />
           <BodyCopyWithSpacing
             fontSize="fs14"
@@ -124,10 +200,20 @@ class MyPrefrenceSection extends React.PureComponent {
         </SubscribeCheckWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="gymboreeAppSubscribe"
+            name={MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-appgymcheckbox"
             className="elm-padding-top"
+            execOnChangeByDefault={false}
+            onChange={value => {
+              this.setState(
+                {
+                  isGymAppSubscribeState: value,
+                },
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.GYMBOREE_APP_SUBSCRIBE)
+              );
+            }}
+            isChecked={isGymAppSubscribeState}
           />
           <BodyCopyWithSpacing
             fontSize="fs14"
@@ -153,7 +239,7 @@ class MyPrefrenceSection extends React.PureComponent {
         </AppTextWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="tcpWebSubscribe"
+            name={MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-texttcpcheckbox"
             className="elm-padding-top"
@@ -163,13 +249,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 {
                   isTcpSubscribeState: value,
                 },
-                () => {
-                  if (isTcpSubscribe) {
-                    this.onUnsubscribeHandler('tcpWebSubscribe');
-                  } else {
-                    this.onSubscribeHandler('tcpWebSubscribe');
-                  }
-                }
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.TCP_WEB_SUBSCRIBE)
               );
             }}
             isChecked={isTcpSubscribeState}
@@ -185,7 +265,7 @@ class MyPrefrenceSection extends React.PureComponent {
         </SubscribeCheckWrapper>
         <SubscribeCheckWrapper>
           <Field
-            name="gymboreeWebSubscribe"
+            name={MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE}
             component={InputCheckbox}
             dataLocator="mypreference-textgymcheckbox"
             className="elm-padding-top"
@@ -195,13 +275,7 @@ class MyPrefrenceSection extends React.PureComponent {
                 {
                   isGymSubscribeState: value,
                 },
-                () => {
-                  if (isGymSubscribe) {
-                    this.onUnsubscribeHandler('gymboreeWebSubscribe');
-                  } else {
-                    this.onSubscribeHandler('gymboreeWebSubscribe');
-                  }
-                }
+                this.onChangeCallback(MyPreferenceSubscriptionConstants.GYMBOREE_WEB_SUBSCRIBE)
               );
             }}
             isChecked={isGymSubscribeState}
@@ -226,6 +300,8 @@ MyPrefrenceSection.propTypes = {
   onSubscribe: PropTypes.func.isRequired,
   onUnsubscribe: PropTypes.func.isRequired,
   isTcpSubscribe: PropTypes.bool,
+  isTcpAppSubscribe: PropTypes.bool,
+  isGymAppSubscribe: PropTypes.bool,
   isGymSubscribe: PropTypes.bool,
 };
 
@@ -233,6 +309,8 @@ MyPrefrenceSection.defaultProps = {
   labels: {},
   isTcpSubscribe: false,
   isGymSubscribe: false,
+  isTcpAppSubscribe: false,
+  isGymAppSubscribe: false,
   urlParams: {},
 };
 

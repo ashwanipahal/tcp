@@ -22,9 +22,11 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isGuest={false}
         isPlcc={true}
         isProductDetailView=""
         labels={Object {}}
@@ -75,9 +77,11 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isGuest={false}
         isPlcc={true}
         isProductDetailView=""
         labels={Object {}}
@@ -128,15 +132,17 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isGuest={false}
         isPlcc={false}
         isProductDetailView=""
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
-        showSubtotal={true}
+        showSubtotal={false}
         subHeadingLabel={false}
       />
       <div
@@ -181,9 +187,11 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={true}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isGuest={true}
         isPlcc={true}
         isProductDetailView=""
         labels={Object {}}
@@ -234,15 +242,17 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isGuest={false}
         isPlcc={false}
         isProductDetailView=""
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
-        showSubtotal={true}
+        showSubtotal={false}
         subHeadingLabel={false}
       />
       <div
@@ -287,15 +297,17 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       <Styled(GuestMprPlccSection)
         currentSubtotal={21}
         descriptionLabel={false}
+        earnedRewardAvailable={false}
         estimatedSubtotal={33}
         getCurrencySymbol=""
         headingLabel={false}
+        isGuest={true}
         isPlcc={false}
         isProductDetailView=""
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
-        showSubtotal={true}
+        showSubtotal={false}
         subHeadingLabel={false}
       />
       <div
