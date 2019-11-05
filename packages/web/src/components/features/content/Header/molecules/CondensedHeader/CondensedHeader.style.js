@@ -45,9 +45,6 @@ export default css`
       display: none;
     }
   }
-  .product-image{
-    padding-left:12px;
-  }
 
   .condensed-brand-logo {
     height: 25px;

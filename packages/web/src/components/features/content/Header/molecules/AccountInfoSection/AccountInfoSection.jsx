@@ -36,7 +36,12 @@ const AccountInfoSection = ({
           fontSize="fs10"
           textAlign="right"
         >
-          <Anchor underline to="/account?id=account-overview" asPath="/account" onClick={() => closeDrawer()}>
+          <Anchor
+            underline
+            to="/account?id=account-overview"
+            asPath="/account"
+            onClick={() => closeDrawer()}
+          >
             Manage account
           </Anchor>
         </BodyCopy>
@@ -56,6 +61,7 @@ const AccountInfoSection = ({
         triggerLoginCreateAccount={triggerLoginCreateAccount}
         onLinkClick={onLinkClick}
         openOverlay={openOverlay}
+        isDrawer
       />
     </BodyCopy>
   );

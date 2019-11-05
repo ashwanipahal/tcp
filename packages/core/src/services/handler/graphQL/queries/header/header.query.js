@@ -1,5 +1,5 @@
-const buildQuery = ({ type, brand, country, channel }) => `
-  header: globalModule(type: "${type}", brand: "${brand}", country: "${country}", channel: "${channel}") {
+const buildQuery = ({ type, brand, country, channel, lang }) => `
+  header: globalModule(type: "${type}", brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
     submodules {
       topNavWrapper {
         composites {
