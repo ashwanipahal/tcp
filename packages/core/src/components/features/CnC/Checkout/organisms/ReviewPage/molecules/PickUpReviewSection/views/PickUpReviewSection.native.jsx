@@ -182,6 +182,7 @@ export class PickUpReviewSection extends React.PureComponent {
           {isExpressCheckout && (
             <FormSection name="pickUpAlternateExpress">
               <PickUpAlternateFormPart
+                isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
                 isAlternateUpdateChecked={isAlternateUpdateChecked}
                 showNoteOnToggle
                 formName="checkoutPickup"

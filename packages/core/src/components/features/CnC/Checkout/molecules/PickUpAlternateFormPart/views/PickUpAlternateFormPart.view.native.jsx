@@ -24,6 +24,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
       showNoteOnToggle,
       isAlternateUpdateChecked,
       labels,
+      isHasPickUpAlternatePerson,
       isExpressCheckout,
     } = this.props;
     return (
@@ -34,6 +35,7 @@ class PickUpAlternateFormPart extends React.PureComponent {
             component={InputCheckbox}
             dataLocator="Alternate-checkbox"
             enableSuccessCheck={false}
+            isChecked={isHasPickUpAlternatePerson}
           />
           <BodyCopy
             fontFamily="secondary"
@@ -78,6 +80,7 @@ PickUpAlternateFormPart.propTypes = {
   isCondensed: PropTypes.bool,
   showNoteOnToggle: PropTypes.bool,
   isAlternateUpdateChecked: PropTypes.bool,
+  isHasPickUpAlternatePerson: PropTypes.bool,
   isExpressCheckout: PropTypes.bool,
 };
 PickUpAlternateFormPart.defaultProps = {
@@ -85,6 +88,7 @@ PickUpAlternateFormPart.defaultProps = {
   showNoteOnToggle: false,
   isAlternateUpdateChecked: false,
   isExpressCheckout: false,
+  isHasPickUpAlternatePerson: false,
 };
 
 export default withStyles(PickUpAlternateFormPart, Style);
