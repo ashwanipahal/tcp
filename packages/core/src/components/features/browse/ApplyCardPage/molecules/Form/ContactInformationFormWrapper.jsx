@@ -181,20 +181,12 @@ class ContactInformationFormWrapper extends React.Component {
                 key="container_state"
                 colSize={{ large: 6, medium: 4, small: 3 }}
               >
-                <BodyCopy
-                  component="span"
-                  fontSize="fs12"
-                  fontFamily="secondary"
-                  fontWeight="extrabold"
-                  className="free_dropdown_label columnWrapper"
-                >
-                  {getLabelValue(labels, 'lbl_PLCCForm_state')}
-                </BodyCopy>
                 <Field
                   id="statewocountry"
                   name="statewocountry"
                   component={SelectBox}
-                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_statePlaceholder')}
+                  placeholder={getLabelValue(labels, 'lbl_PLCCForm_state')}
+                  title={getLabelValue(labels, 'lbl_PLCCForm_state')}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
                   dataLocator={getLocator('plcc_state')}
                   className="field stateField"
