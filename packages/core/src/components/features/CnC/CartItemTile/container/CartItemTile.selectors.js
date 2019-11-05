@@ -138,6 +138,10 @@ export const getProductSkuId = product => {
   return product.getIn(['productInfo', 'skuId']);
 };
 
+export const getPdpUrl = product => {
+  return product.getIn(['productInfo', 'pdpUrl']);
+};
+
 export const getProductItemId = product => {
   return product.getIn(['itemInfo', 'itemId']);
 };
@@ -403,6 +407,7 @@ export const getProductDetails = tile => {
       upc: getProductItemUpcNumber(tile),
       generalProductId: getGeneralProdId(tile),
       skuId: getProductSkuId(tile),
+      pdpUrl: getPdpUrl(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),
@@ -442,4 +447,8 @@ export const isItemBossBopisInEligible = (state, { itemBrand, orderItemType } = 
 
 export const getCartToggleError = state => {
   return state.CartItemTileReducer.get('toggleError');
+};
+
+export const getCartBossBopisToggleError = state => {
+  return state.CartItemTileReducer.get('toggleBossBopisError');
 };

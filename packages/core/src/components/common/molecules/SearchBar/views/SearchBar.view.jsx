@@ -127,25 +127,20 @@ class SearchBar extends React.PureComponent {
     return !!(latestSearchResults && latestSearchResults.length > 0);
   };
 
+  clearModalParams = () => {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      this.commonCloseClick();
+      this.closeSearchLayover();
+    } else {
+      this.closeSearchLayover();
+    }
+  };
+
   redirectToSuggestedUrl = searchText => {
     if (searchText) {
       this.setDataInLocalStorage(searchText);
     }
-    if (window.innerWidth <= breakpoints.values.lg) {
-      this.commonCloseClick();
-    } else {
-      this.closeSearchLayover();
-    }
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-  };
-
-  hideOverlayAfterClick = searchText => {
-    this.setDataInLocalStorage(searchText);
-    if (window.innerWidth <= breakpoints.values.lg) {
-      this.commonCloseClick();
-    } else {
-      this.closeSearchLayover();
-    }
+    this.clearModalParams();
     routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
   };
 
@@ -187,7 +182,6 @@ class SearchBar extends React.PureComponent {
             closeModalSearch={this.closeModalSearch}
             isLatestSearchResultsExists={isLatestSearchResultsExists}
             latestSearchResults={latestSearchResults}
-            hideOverlayAfterClick={this.hideOverlayAfterClick}
             searchResults={searchResults}
             redirectToSuggestedUrl={this.redirectToSuggestedUrl}
             setSearchState={setSearchState}

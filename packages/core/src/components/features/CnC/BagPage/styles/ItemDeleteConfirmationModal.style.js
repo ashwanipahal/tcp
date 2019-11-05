@@ -91,6 +91,9 @@ const styles = css`
       background: ${props => props.theme.colors.WHITE};
     }
   }
+  .bag-item-error {
+    background: transparent;
+  }
 `;
 
 export default styles;

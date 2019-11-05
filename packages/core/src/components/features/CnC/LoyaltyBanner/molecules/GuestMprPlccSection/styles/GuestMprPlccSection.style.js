@@ -118,7 +118,9 @@ const Styles = css`
   }
   .current-subtotal-val-col,
   .estimated-subtotal-val-col {
-    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
   .current-subtotal-text {
     color: ${props => props.theme.colorPalette.gray[800]};
@@ -196,8 +198,8 @@ const Styles = css`
           ${colorTheme(props)}
           ${
             props.isGuest && !props.earnedRewardAvailable
-              ? colorTheme(props)
-              : `color: ${props.theme.colorPalette.gray[900]};`
+              ? `color: ${props.theme.colorPalette.gray[900]};`
+              : colorTheme(props)
           }
           @media ${props.theme.mediaQuery.medium} {
             ${fontSize14(props)}

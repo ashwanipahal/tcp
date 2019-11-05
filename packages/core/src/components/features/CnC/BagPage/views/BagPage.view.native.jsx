@@ -42,6 +42,7 @@ const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 export class BagPage extends React.Component {
   constructor(props) {
     super(props);
+    this.hideHeaderWhilePaypalView = this.hideHeaderWhilePaypalView.bind(this);
     this.state = {
       activeSection: null,
       showCondensedHeader: false,
@@ -62,12 +63,23 @@ export class BagPage extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    const { cartItemSflError } = this.props;
-    if (cartItemSflError) {
+  componentDidUpdate(prevProps) {
+    const { cartItemSflError, bagPageServerError } = this.props;
+    const {
+      bagPageServerError: prevBagPageServerError,
+      cartItemSflError: prevCartItemSflError,
+    } = prevProps;
+    if (cartItemSflError && cartItemSflError !== prevCartItemSflError) {
       this.showToastMessage(cartItemSflError);
+    } else if (bagPageServerError && bagPageServerError !== prevBagPageServerError) {
+      this.showToastMessage(bagPageServerError.errorMessage);
     }
   }
+
+  hideHeaderWhilePaypalView = hide => {
+    const {navigation}=this.props;
+    navigation.setParams({ headerMode: hide });
+  };
 
   showToastMessage = message => {
     const { toastMessage, toastMessagePositionInfo } = this.props;
@@ -267,7 +279,7 @@ export class BagPage extends React.Component {
 
   render() {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
-    const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
+    const { handleCartCheckout, isUserLoggedIn, sflItems, isPayPalWebViewEnable } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     const { activeSection, showCondensedHeader, height } = this.state;
     if (!labels.tagLine) {
@@ -314,9 +326,14 @@ export class BagPage extends React.Component {
             onMomentumScrollEnd={this.handleMomentumScrollEnd}
           >
             <MainSection>
-              {isBagStage && <ProductTileWrapper bagLabels={labels} />}
+              {isBagStage && <ProductTileWrapper bagLabels={labels} navigation={navigation} />}
               {isSFLStage && (
-                <ProductTileWrapper bagLabels={labels} sflItems={sflItems} isBagPageSflSection />
+                <ProductTileWrapper
+                  bagLabels={labels}
+                  sflItems={sflItems}
+                  isBagPageSflSection
+                  navigation={navigation}
+                />
               )}
               {this.renderOrderLedgerContainer(isNoNEmptyBag, isBagStage)}
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
@@ -328,13 +345,14 @@ export class BagPage extends React.Component {
           </ScrollViewWrapper>
         </ContainerMain>
         {isBagStage && (
-          <FooterView>
+          <FooterView isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <AddedToBagActions
               handleCartCheckout={handleCartCheckout}
               labels={labels}
               showAddTobag={showAddTobag}
               navigation={navigation}
               isNoNEmptyBag={isNoNEmptyBag}
+              hideHeader={this.hideHeaderWhilePaypalView}
             />
           </FooterView>
         )}
@@ -362,11 +380,14 @@ BagPage.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   toastMessagePositionInfo: PropTypes.func.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
+  isPayPalWebViewEnable: PropTypes.bool.isRequired,
   isPickupModalOpen: PropTypes.bool,
+  bagPageServerError: PropTypes.shape({}),
 };
 
 BagPage.defaultProps = {
   isPickupModalOpen: false,
+  bagPageServerError: null,
 };
 
 export default InitialPropsHOC(BagPage);

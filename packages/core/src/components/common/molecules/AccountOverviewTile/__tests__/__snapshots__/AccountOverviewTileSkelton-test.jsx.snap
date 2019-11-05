@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountOverviewTileSkelton component should renders correctly 1`] = `
+<StyledComponent
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  padding: ",
+          [Function],
+          ";
+  border: 1px solid ",
+          [Function],
+          ";
+  background: ",
+          [Function],
+          ";
+  width: 100%;
+  height: auto;
+
+  .headingWrapper {
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+  .contentWrapper {
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(AccountOverviewTileSkelton)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

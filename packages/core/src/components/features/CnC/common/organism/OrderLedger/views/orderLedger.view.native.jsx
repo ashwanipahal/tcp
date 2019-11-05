@@ -30,6 +30,10 @@ const popover = message => {
   );
 };
 
+const renderFreeShippingBanner = pageCategory => {
+  return pageCategory === 'bagPage' && <FreeShippingBanner />;
+};
+
 const getLoyaltybanner = (isConfirmationPage, pageCategory) => {
   return <LoyaltyBanner isConfirmationPage={isConfirmationPage} pageCategory={pageCategory} />;
 };
@@ -308,7 +312,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) =>
           </Text>
         </StyledRowDataContainer>
       ) : null}
-      <FreeShippingBanner />
+      {renderFreeShippingBanner(pageCategory)}
       {getLoyaltybanner(isConfirmationPage, pageCategory)}
     </StyledOrderLedger>
   );

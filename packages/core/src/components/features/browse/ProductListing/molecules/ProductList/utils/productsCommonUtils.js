@@ -65,6 +65,14 @@ export function getVariantId(colorFitsSizesMap, color, fit, size) {
 }
 
 /**
+ * @return the variant no selected by the user.
+ */
+export function getVariantNo(colorFitsSizesMap, color, fit, size) {
+  const currentSizeEntry = getMapSliceForSize(colorFitsSizesMap, color, fit, size);
+  return currentSizeEntry && currentSizeEntry.variantNo;
+}
+
+/**
  * Returns the list and offer prices corresponding to the sku with the given color, fit and size.
  */
 export function getPrices(productInfo, color, fit, size) {
@@ -300,5 +308,11 @@ export const getProductListToPath = str => {
 };
 
 export const getProductListToPathInMobileApp = str => {
-  return `${str.split('/p/')[1]}`;
+  let searchPath = str;
+  if (str && str.indexOf('/p/') !== -1) {
+    searchPath = `${str.split('/p/')[1]}`;
+  } else if (str && str.indexOf('/b/') !== -1) {
+    searchPath = `${str.split('/b/')[1]}`;
+  }
+  return searchPath;
 };

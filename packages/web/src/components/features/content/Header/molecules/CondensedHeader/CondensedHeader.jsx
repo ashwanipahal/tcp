@@ -5,7 +5,13 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import { getBrand, getIconPath, isGymboree, routerPush } from '@tcp/core/src/utils';
+import {
+  getBrand,
+  getIconPath,
+  isGymboree,
+  routerPush,
+  getViewportInfo,
+} from '@tcp/core/src/utils';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
 import Navigation from '../../../Navigation';
@@ -30,6 +36,7 @@ class CondensedHeader extends React.PureComponent {
       isLoggedIn: isLoggedIn || false,
       cartItemCount,
       isFullSizeSearchModalOpen: false,
+      fromCondensedHeader: true,
     };
     this.setSearchState = this.setSearchState.bind(this);
     this.onCloseClick = this.onCloseClick.bind(this);
@@ -96,6 +103,28 @@ class CondensedHeader extends React.PureComponent {
     }
   };
 
+  getNavigation = () => {
+    const {
+      userName,
+      userPoints,
+      userRewards,
+      closeNavigationDrawer,
+      navigationDrawer,
+    } = this.props;
+    return getViewportInfo().isDesktop ? (
+      <div className="condensed-navigation">
+        <Navigation
+          openNavigationDrawer={navigationDrawer.open}
+          closeNavigationDrawer={!navigationDrawer.open}
+          closeNav={closeNavigationDrawer}
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+        />
+      </div>
+    ) : null;
+  };
+
   render() {
     const {
       className,
@@ -104,13 +133,18 @@ class CondensedHeader extends React.PureComponent {
       navigationDrawer,
       openOverlay,
       userName,
-      userPoints,
-      userRewards,
+
       labels,
-      isFullSizeSearchModalOpen,
     } = this.props;
     const brand = getBrand();
-    const { isSearchOpen, userNameClick, triggerLoginCreateAccount, cartItemCount } = this.state;
+    const {
+      isSearchOpen,
+      userNameClick,
+      triggerLoginCreateAccount,
+      cartItemCount,
+      fromCondensedHeader,
+      isFullSizeSearchModalOpen,
+    } = this.state;
     const {
       accessibility: { accountIconButton, cartIconButton, closeIconButton, hamburgerMenu } = {},
     } = labels;
@@ -152,16 +186,7 @@ class CondensedHeader extends React.PureComponent {
               dataLocator={config[brand].dataLocator}
               imgSrc={config[brand].imgSrc}
             />
-            <div className="condensed-navigation">
-              <Navigation
-                openNavigationDrawer={navigationDrawer.open}
-                closeNavigationDrawer={!navigationDrawer.open}
-                closeNav={closeNavigationDrawer}
-                userName={userName}
-                userPoints={userPoints}
-                userRewards={userRewards}
-              />
-            </div>
+            {this.getNavigation()}
             <div className="condensed-header-icons">
               {isFullSizeSearchModalOpen ? (
                 <Modal
@@ -185,7 +210,7 @@ class CondensedHeader extends React.PureComponent {
                     isSearchOpen={isSearchOpen}
                     onCloseClick={this.onCloseClick}
                     isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
-                    fromCondensedHeader
+                    fromCondensedHeader={fromCondensedHeader}
                   />
                 </Modal>
               ) : (
@@ -193,7 +218,7 @@ class CondensedHeader extends React.PureComponent {
                   className={!isSearchOpen && 'rightLink search-icon'}
                   setSearchState={this.setSearchState}
                   isSearchOpen={isSearchOpen}
-                  fromCondensedHeader
+                  fromCondensedHeader={fromCondensedHeader}
                   onCloseClick={this.onCloseClick}
                   isFullSizeSearchModalOpen={isFullSizeSearchModalOpen}
                 />
@@ -282,7 +307,6 @@ CondensedHeader.propTypes = {
   userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  isFullSizeSearchModalOpen: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     userNameClick: PropTypes.string.isRequired,
