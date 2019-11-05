@@ -4,6 +4,8 @@ exports[`WalletContainer should render correctly 1`] = `
 <WalletView
   commonLabels={Object {}}
   fetchLabels={[Function]}
+  isUserLoggedIn={false}
   labels={Object {}}
+  overViewLabels={Object {}}
 />
 `;
