@@ -47,17 +47,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
     />
-    <Connect(Styled(FulfillmentSection))
-      btnClassName="added-to-bag"
-      buttonLabel="Add To Bag"
-      currentProduct={
-        Object {
-          "colorFitsSizesMap": Array [],
-          "name": "",
-          "shortDescription": "",
-        }
-      }
-    />
     <Connect(AddedToBagContainer)
       navigation={Object {}}
     />
