@@ -68,7 +68,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
       textDecoration={null}
     />
   </Styled(Styled(View))>
-  <Styled(Styled(View))
+  <Styled(View)
     spacingStyles="margin-top-LRG"
   >
     <Styled(BodyCopy)
@@ -92,7 +92,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
       text=" when you check out using your card"
       textDecoration={null}
     />
-  </Styled(Styled(View))>
+  </Styled(View)>
   <Styled(View)
     spacingStyles="margin-bottom-LRG"
   >
@@ -174,13 +174,14 @@ exports[`MyPlaceRewardsCreditCardTile component should render empty state correc
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs14"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="Add your card to:"
     textDecoration={null}
   />
   <Styled(View)
-    spacingStyles="margin-top-LRG"
+    spacingStyles="margin-top-XXXS"
   >
     <Styled(BodyCopy)
       accessibilityText=""

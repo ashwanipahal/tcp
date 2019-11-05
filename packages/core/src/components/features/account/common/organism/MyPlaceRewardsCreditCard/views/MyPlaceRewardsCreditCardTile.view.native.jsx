@@ -80,7 +80,7 @@ class MyPlaceRewardsCreditCardTile extends React.PureComponent {
                 text={getLabelValue(labels, 'lbl_overview_yourKidsBirthdays')}
               />
             </RowContainer>
-            <RowContainer spacingStyles="margin-top-LRG">
+            <ViewWithSpacing spacingStyles="margin-top-LRG">
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs14"
@@ -90,9 +90,9 @@ class MyPlaceRewardsCreditCardTile extends React.PureComponent {
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs14"
-                text={getLabelValue(labels, 'lbl_overview_whenYouCheckout')}
+                text={getLabelValue(labels, 'lbl_overview_whenYouCheckout').trim()}
               />
-            </RowContainer>
+            </ViewWithSpacing>
             <ViewWithSpacing spacingStyles="margin-bottom-LRG">
               <BodyCopyWithSpacing
                 fontFamily="secondary"
@@ -114,6 +114,7 @@ class MyPlaceRewardsCreditCardTile extends React.PureComponent {
             <BodyCopyWithSpacing
               fontFamily="secondary"
               fontSize="fs14"
+              fontWeight="extrabold"
               text={getLabelValue(labels, 'lbl_overview_addYourCardTo')}
             />
             <ViewWithSpacing spacingStyles="margin-top-XXXS">
