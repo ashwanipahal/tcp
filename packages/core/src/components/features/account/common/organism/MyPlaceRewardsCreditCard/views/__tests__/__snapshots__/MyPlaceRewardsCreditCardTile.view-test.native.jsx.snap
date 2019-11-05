@@ -89,7 +89,7 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
       fontSize="fs14"
       margin={null}
       numberOfLines={null}
-      text=" when you check out using your card"
+      text="when you check out using your card"
       textDecoration={null}
     />
   </Styled(View)>
