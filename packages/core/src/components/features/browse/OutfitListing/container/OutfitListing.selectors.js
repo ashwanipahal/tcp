@@ -1,8 +1,8 @@
+/* eslint-disable */
 export const getLabels = state => {
   return state.Labels.Browse && state.Labels.Browse.Outfit;
 };
 
-/* eslint-disable */
 export const divisionTabs = () => {
   return {
     contentId: '<uuid>',
@@ -81,7 +81,8 @@ export const getOutfitModule = () => {
       mediaLinkedList: [
         {
           image: {
-            url: '/static/images/dollar-sign-icon.svg',
+            url:
+              'https://test1.theplace.com/image/upload/v1572953378/ecom/assets/content/gym/us/home/mod/outfits_kid1.png',
             alt: 'Tropical blush1',
             title: 'Tropical blush1',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
@@ -101,7 +102,8 @@ export const getOutfitModule = () => {
         },
         {
           image: {
-            url: 'http://image1.sm/url',
+            url:
+              'https://test1.theplace.com/image/upload/v1572953378/ecom/assets/content/gym/us/home/mod/outfits_kid2.png',
             alt: 'Tropical blush3',
             title: 'Tropical blush3',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
@@ -121,7 +123,8 @@ export const getOutfitModule = () => {
         },
         {
           image: {
-            url: 'http://image1.sm/url',
+            url:
+              'https://test1.theplace.com/image/upload/v1572953378/ecom/assets/content/gym/us/home/mod/outfits_kid1.png',
             alt: 'Tropical blush5',
             title: 'Tropical blush5',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
@@ -141,7 +144,8 @@ export const getOutfitModule = () => {
         },
         {
           image: {
-            url: 'http://image1.sm/url',
+            url:
+              'https://test1.theplace.com/image/upload/v1572953378/ecom/assets/content/gym/us/home/mod/outfits_kid2.png',
             alt: 'Tropical blush7',
             title: 'Tropical blush7',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
@@ -161,7 +165,8 @@ export const getOutfitModule = () => {
         },
         {
           image: {
-            url: 'http://image1.sm/url',
+            url:
+              'https://test1.theplace.com/image/upload/v1572953378/ecom/assets/content/gym/us/home/mod/outfits_kid1.png',
             alt: 'Tropical blush9',
             title: 'Tropical blush9',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
@@ -181,7 +186,8 @@ export const getOutfitModule = () => {
         },
         {
           image: {
-            url: 'http://image1.sm/url',
+            url:
+              'https://test1.theplace.com/image/upload/v1572953378/ecom/assets/content/gym/us/home/mod/outfits_kid1.png',
             alt: 'Tropical blush11',
             title: 'Tropical blush11',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
@@ -201,7 +207,8 @@ export const getOutfitModule = () => {
         },
         {
           image: {
-            url: 'http://image1.sm/url',
+            url:
+              'https://test1.theplace.com/image/upload/v1572953378/ecom/assets/content/gym/us/home/mod/outfits_kid2.png',
             alt: 'Tropical blush13',
             title: 'Tropical blush13',
             crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
