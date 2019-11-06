@@ -51,11 +51,17 @@ export default css`
       margin-right: 0;
     }
   }
-
-  .button-list-container {
-    ${props =>
-      props.theme.isGymboree
-        ? `
+  .stacked-cta-wrapper-class {
+    color: ${props => props.theme.colorPalette.gray[400]};
+  }
+  .button-list-container-alternate a:nth-child(even) button {
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 141px;
+    }
+    .button-list-container {
+      ${props =>
+        props.theme.isGymboree
+          ? `
       background-color: ${props.theme.colorPalette.blue.C900};
       padding: ${props.theme.spacing.ELEM_SPACING.MED} 0;
       margin-top: ${props.theme.spacing.ELEM_SPACING.SM};
@@ -69,14 +75,11 @@ export default css`
         margin: 0;
       }
     `
-        : `
+          : `
       .image-comp {
         color: ${props.theme.colorPalette.black};
       }
     `}
-  }
-
-  .button-list-container-alternate a:nth-child(even) {
-    width: 141px;
+    }
   }
 `;

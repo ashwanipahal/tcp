@@ -195,6 +195,7 @@ class ModuleQ extends React.PureComponent {
           </Col>
           <div>
             <StyliticsProductTabList
+              className="moduleQ-tablist"
               onProductTabChange={this.onProductTabChange}
               tabItems={divTabs}
               selectedColorProductId={selectedColorProductId}

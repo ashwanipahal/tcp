@@ -13,7 +13,9 @@ export default css`
   &.yellow-bg {
     background-image: radial-gradient(circle at 61% 22%, #fff, #f1f4a2);
   }
-
+  .moduleQ-tablist {
+    color: ${props => props.theme.colorPalette.gray[1700]};
+  }
   .moduleQ-promo-header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
@@ -78,10 +80,15 @@ export default css`
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.15);
     margin-bottom: 9px;
-    padding: 16px 16px 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 20px 20px 0;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
+        ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     }
   }
 
@@ -102,7 +109,7 @@ export default css`
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    padding: 7px 6px;
     width: 32%;
     height: 100px;
     text-align: center;
