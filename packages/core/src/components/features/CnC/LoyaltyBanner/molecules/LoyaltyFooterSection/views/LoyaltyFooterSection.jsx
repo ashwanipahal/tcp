@@ -186,21 +186,13 @@ const detailViewFooter = (
 ) => {
   return (
     <>
-      {isGuest && (
-        <span>
-          {renderCreateAccountLink(labels, closeAddedToBagModal, openOverlay)}
-          {renderLoginLink(labels, closeAddedToBagModal, openOverlay)}
-        </span>
-      )}
+      {isGuest && createLoginLinks(labels, closeAddedToBagModal, openOverlay)}
       {!isGuest && (
         <>
-          {!isPlcc && (
-            <span>
-              {renderApplyNowLink(labels, openApplyNowModal)}
-              {renderLearnMoreLink(labels, openApplyNowModal)}
-            </span>
+          {!isPlcc && applyNowLearnMoreLinks(labels, openApplyNowModal)}
+          {isPlcc && (
+            <span className="links-wrapper">{renderLearnMoreLink(labels, openApplyNowModal)}</span>
           )}
-          {isPlcc && renderLearnMoreLink(labels, openApplyNowModal)}
         </>
       )}
     </>
@@ -223,7 +215,7 @@ const LoyaltyFooterSection = props => {
     openApplyNowModal,
   } = props;
   return (
-    <div className={`${className} footerWrapper`}>
+    <div className={`${className} footer-wrapper`}>
       {isProductDetailView &&
         detailViewFooter(
           labels,
