@@ -191,3 +191,147 @@ export default {
 };
 
 export const productRes = {};
+
+export const promoCombinationMock = {
+  cid: '<uuid>',
+  typ: 'promoCombination',
+  sub: 'plp',
+  val: {
+    top: [
+      {
+        typ: 'slot',
+        sub: 'slot_1',
+        val: {
+          cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
+          typ: 'module',
+          sub: 'moduleA',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_6',
+        val: {
+          cid: '27166e47-4fd2-4701-8fb2-bf8e3d09e36d',
+          typ: 'module',
+          sub: 'moduleL',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_8',
+        val: {
+          cid: '8bc56739-de61-42e9-b3ee-f4f54cb17ca7',
+          typ: 'module',
+          sub: 'moduleB',
+          val: '',
+        },
+      },
+    ],
+    grid: [
+      {
+        typ: 'slot',
+        sub: 'slot_9',
+        val: {
+          cid: 'a05dcd62-c869-44da-8927-924cde214b34',
+          typ: 'module',
+          sub: 'moduleS',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_5',
+        val: {
+          cid: '70b877f4-5226-4dcb-80f4-06b42354ffc4',
+          typ: 'module',
+          sub: 'moduleH',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_10',
+        val: {
+          cid: 'c53989d8-29f9-435f-bde1-d11639affbda',
+          typ: 'module',
+          sub: 'moduleD',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_12',
+        val: {
+          cid: '03230ca3-63a0-4de9-9ad5-615c038fd99c',
+          typ: 'module',
+          sub: 'moduleQ',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_13',
+        val: {
+          cid: 'fe0a0bc7-ed11-4838-9d0f-cd7245a82714',
+          typ: 'module',
+          sub: 'moduleN',
+          val: '',
+        },
+      },
+    ],
+    horizontal: [
+      {
+        typ: 'slot',
+        sub: 'slot_1',
+        val: {
+          cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
+          typ: 'module',
+          sub: 'moduleA',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_6',
+        val: {
+          cid: '27166e47-4fd2-4701-8fb2-bf8e3d09e36d',
+          typ: 'module',
+          sub: 'moduleL',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_8',
+        val: {
+          cid: '8bc56739-de61-42e9-b3ee-f4f54cb17ca7',
+          typ: 'module',
+          sub: 'moduleB',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_9',
+        val: {
+          cid: 'a05dcd62-c869-44da-8927-924cde214b34',
+          typ: 'module',
+          sub: 'moduleS',
+          val: '',
+        },
+      },
+      {
+        typ: 'slot',
+        sub: 'slot_5',
+        val: {
+          cid: '70b877f4-5226-4dcb-80f4-06b42354ffc4',
+          typ: 'module',
+          sub: 'moduleH',
+          val: '',
+        },
+      },
+    ],
+  },
+};

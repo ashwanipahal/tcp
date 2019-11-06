@@ -292,6 +292,7 @@ class CheckoutPage extends React.PureComponent {
                 lastName: pickUpAlternatePerson.lastName,
                 emailAddress: pickUpAlternatePerson.emailAddress,
               },
+              cardType: reviewProps.cardType,
             }}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
