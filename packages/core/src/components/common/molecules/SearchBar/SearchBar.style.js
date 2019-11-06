@@ -133,7 +133,7 @@ export default css`
 
       width: 172px;
       height: 30px;
-      background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
+      background-color: transparent;
       border: none;
       outline: none;
       font-size: 12px;
@@ -144,8 +144,8 @@ export default css`
       height: 15px;
       width: 15px;
       position: absolute;
-      top: 8px;
-      right: 5px;
+      top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+      right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
 
     .searchWrapper {

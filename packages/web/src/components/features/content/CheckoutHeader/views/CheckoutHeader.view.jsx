@@ -27,94 +27,90 @@ const CheckoutHeader = ({
 }) => {
   return (
     <header className={`${className} content-wrapper`}>
-      {itemsCount > 0 && (
-        <>
-          <Row className="header-topnav__row">
-            <button
-              onClick={() => {
-                checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
-              }}
-              className="exitFromCheckout"
-            >
-              <Image src={getIconPath('carrot-large-left')} className="collapsible-icon" />
-            </button>
+      <Row className="header-topnav__row">
+        <button
+          onClick={() => {
+            checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+          }}
+          className="exitFromCheckout"
+        >
+          <Image src={getIconPath('carrot-large-left')} className="collapsible-icon" />
+        </button>
 
-            <Col
-              className="header-topnav__brand-tabs"
-              colSize={{
-                small: 4,
-                medium: 4,
-                large: 4,
-              }}
-            >
-              <BrandTabs data={brandTabs} />
-            </Col>
-            <Col
-              className="header-topnav__promo-area"
-              colSize={{
-                small: 1,
-                medium: 3,
-                large: 4,
-              }}
-            >
-              <BodyCopy component="span" fontSize="fs32">
-                {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
-              </BodyCopy>
-            </Col>
+        <Col
+          className="header-topnav__brand-tabs"
+          colSize={{
+            small: 4,
+            medium: 4,
+            large: 4,
+          }}
+        >
+          <BrandTabs data={brandTabs} />
+        </Col>
+        <Col
+          className="header-topnav__promo-area"
+          colSize={{
+            small: 1,
+            medium: 3,
+            large: 4,
+          }}
+        >
+          <BodyCopy component="span" fontSize="fs32">
+            {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
+          </BodyCopy>
+        </Col>
 
-            <Col
-              className="header-topnav__track-order"
-              colSize={{
-                small: 1,
-                medium: 1,
-                large: 4,
-              }}
+        <Col
+          className="header-topnav__track-order"
+          colSize={{
+            small: 1,
+            medium: 1,
+            large: 4,
+          }}
+        >
+          <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
+            <Anchor
+              fontSizeVariation="medium"
+              underline
+              anchorVariation="primary"
+              to="/bag"
+              dataLocator="checkout-header-returnToBag"
+              className="return-bag-link"
             >
-              <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  to="/bag"
-                  dataLocator="checkout-header-returnToBag"
-                  className="return-bag-link"
-                >
-                  {labels.returnBagLabel}
-                </Anchor>
-              </BodyCopy>
-            </Col>
-          </Row>
-          <Row className="checkout-mobile-header" centered>
-            <Col
-              colSize={{
-                small: 6,
-                medium: 8,
-                large: 12,
-              }}
-            >
-              <BodyCopy
-                component="span"
-                fontSize="fs16"
-                fontWeight="semibold"
-                className="checkout-mobile-header-font"
-              >
-                {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
-              </BodyCopy>
-            </Col>
-          </Row>
-          <Row className="header-stepindicator" centered>
-            <Col
-              colSize={{
-                small: 6,
-                medium: 8,
-                large: 12,
-              }}
-            >
-              {!isInternationalShipping && <CheckoutProgressIndicator />}
-            </Col>
-          </Row>
-        </>
-      )}
+              {labels.returnBagLabel}
+            </Anchor>
+          </BodyCopy>
+        </Col>
+      </Row>
+      <Row className="checkout-mobile-header" centered>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          <BodyCopy
+            component="span"
+            fontSize="fs16"
+            fontWeight="semibold"
+            className="checkout-mobile-header-font"
+          >
+            {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
+          </BodyCopy>
+        </Col>
+      </Row>
+      <Row className="header-stepindicator" centered>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          {itemsCount > 0 && !isInternationalShipping && <CheckoutProgressIndicator />}
+        </Col>
+      </Row>
     </header>
   );
 };

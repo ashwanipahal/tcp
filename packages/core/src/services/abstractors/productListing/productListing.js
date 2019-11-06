@@ -1,5 +1,8 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
+import layoutAbstractor from '@tcp/core/src/services/abstractors/bootstrap/layout';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import { executeUnbxdAPICall } from '../../handler';
+import { promoCombinationMock } from './mock';
 
 import endpoints from '../../endpoints';
 import utils, { bindAllClassMethodsToThis, isMobileApp } from '../../../utils';
@@ -142,6 +145,56 @@ class ProductsDynamicAbstractor {
       }
     }
     return true;
+  };
+
+  /**
+   * @function parsedModuleData Parses the module and layout data
+   * @param {Object} promoCombination Promotion Data to be parsed
+   * @return {Object} layout and module parsed data
+   */
+  // eslint-disable-next-line no-unused-vars
+  parsedModuleData = async promoCombinationData => {
+    const promoCombination = promoCombinationMock; // @TODO post data fetch from unbxd key || JSON.parse(promoCombinationData);
+    const moduleObjects = [];
+    const slotsObject = {};
+    let modules = {};
+    try {
+      Object.keys(promoCombination.val).forEach(slotType => {
+        promoCombination.val[slotType].forEach(slot => {
+          if (slot.val.cid) {
+            const moduleData = {
+              name: slot.sub,
+              moduleName: slot.val.sub,
+              contentId: slot.val.cid,
+            };
+            moduleObjects.push({
+              name: moduleData.moduleName,
+              data: {
+                contentId: moduleData.contentId,
+                slot: moduleData.name,
+                lang: getAPIConfig().language,
+              },
+            });
+            if (!Array.isArray(slotsObject[slotType])) {
+              slotsObject[slotType] = [];
+            }
+            slotsObject[slotType].push(moduleData);
+          }
+        });
+      });
+      modules = await this.moduleResolver(moduleObjects);
+    } catch (err) {
+      this.handleValidationError(err);
+    }
+    return {
+      modules,
+      layout: slotsObject,
+    };
+  };
+
+  moduleResolver = async moduleObjects => {
+    const response = await layoutAbstractor.getModulesData(moduleObjects);
+    return layoutAbstractor.processModuleData(response.data);
   };
 
   // eslint-disable-next-line complexity

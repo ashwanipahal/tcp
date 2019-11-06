@@ -65,25 +65,27 @@ exports[`Header Component Header should render correctly 1`] = `
               }
             }
           />
-          <Styled(View) />
-          <Styled(BodyCopy)
-            accessibilityText="Mini bag with count"
-            color="white"
-            data-locator="obal_headerpanelbagicon"
-            dataLocator=""
-            fontSize="fs10"
-            fontWeight="extrabold"
-            margin={null}
-            numberOfLines={null}
-            style={
-              Object {
-                "marginTop": 19,
-                "paddingRight": 5.6,
-                "position": "absolute",
-              }
-            }
-            textDecoration={null}
-          />
+          <Styled(View)>
+            <Styled(View)>
+              <Styled(BodyCopy)
+                accessibilityText="Mini bag with count"
+                color="white"
+                data-locator="obal_headerpanelbagicon"
+                dataLocator=""
+                fontSize="fs10"
+                fontWeight="extrabold"
+                margin={null}
+                numberOfLines={null}
+                style={
+                  Object {
+                    "paddingLeft": 4,
+                    "paddingTop": 1.5,
+                  }
+                }
+                textDecoration={null}
+              />
+            </Styled(View)>
+          </Styled(View)>
         </Styled(TouchableOpacity)>
       </Styled(View)>
     </Styled(View)>

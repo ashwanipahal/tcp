@@ -34,6 +34,10 @@ const getRewardsPointsLabel = (labels, isUserLoggedIn) => {
   return isUserLoggedIn ? labels.MPRPoints : labels.pointsYouCanEarn;
 };
 
+const getItemPrice = (currencySymbol, itemPrice) => {
+  return `${currencySymbol} ${(itemPrice && itemPrice.toFixed(2)) || 0}`;
+};
+
 const AddedToBagViewPoints = ({
   className,
   pointsSummary,
@@ -67,7 +71,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 3, medium: 3 }}
         >
-          {`${currencySymbol} ${itemPrice || 0}`}
+          {getItemPrice(currencySymbol, itemPrice)}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -101,7 +105,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 3, medium: 3 }}
         >
-          {`${currencySymbol} ${bagSubTotal || 0}`}
+          {`${currencySymbol} ${(bagSubTotal && bagSubTotal.toFixed(2)) || 0}`}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
