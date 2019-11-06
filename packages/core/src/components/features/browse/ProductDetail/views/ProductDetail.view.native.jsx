@@ -4,7 +4,7 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
-import PageContainer from '../styles/ProductDetail.style.native';
+import { PageContainer, LoyaltyBannerView } from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
@@ -20,6 +20,7 @@ import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
+import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -157,6 +158,9 @@ class ProductDetailView extends React.PureComponent {
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
+          <LoyaltyBannerView>
+            <LoyaltyBanner pageCategory="isProductDetailView" />
+          </LoyaltyBannerView>
           <ProductDetailDescription
             shortDescription={shortDescription}
             itemPartNumber={itemPartNumber}

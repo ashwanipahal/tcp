@@ -50,6 +50,11 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <Connect(AddedToBagContainer)
       navigation={Object {}}
     />
+    <Styled(View)>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="isProductDetailView"
+      />
+    </Styled(View)>
     <ProductDetailDescription
       isShowMore={false}
       itemPartNumber=""

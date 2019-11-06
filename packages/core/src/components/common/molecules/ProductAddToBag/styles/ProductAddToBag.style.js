@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  ${props => (!props.marginTopNone ? `margin-top: 10px` : '')};
+  margin-top: 10px;
   .edit-form-css {
     display: flex;
     flex: 1;
@@ -9,7 +9,7 @@ const styles = css`
     align-items: flex-start;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 26px;
+    margin-top: 25px;
   }
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
@@ -22,41 +22,38 @@ const styles = css`
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     font-size: ${props => props.theme.fonts.fontSize.listmenu.large}px;
     color: white;
-    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
     font-stretch: normal;
     line-height: normal;
     font-style: normal;
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: 126px;
+    padding-left: 125px;
     padding-right: 125px;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      ${props =>
-        !props.isQuickView
-          ? `padding-left: 90px;
-      padding-right: 89px;`
-          : `padding-left: 65px;
-          padding-right: 65px;`};
-    }
-
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      padding-left: 65px;
-      padding-right: 65px;
+      padding-left: 90px;
+      padding-right: 89px;
     }
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 15px;
+      padding-top: 15px;
     }
 
     &:hover {
       background-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLUE'].HOVER};
     }
     @media ${props => props.theme.mediaQuery.large} {
-      padding-top: 15px;
-      padding-left: 72px;
-      padding-right: 70px;
+      margin-left: 0px;
+      padding-right: 100px;
+      padding-left: 100px;
+      padding-top: 16px;
+
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
@@ -121,7 +118,7 @@ const styles = css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     cursor: pointer;
     width: 100%;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: 33px;
     .dropdownDivOverFlow {
       display: inline-block;
       overflow-y: auto;
@@ -133,25 +130,9 @@ const styles = css`
     }
   }
 
-  .fit-selector {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    .input-radio-title {
-      margin-bottom: 0;
-    }
-  }
-
   .size-selector {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 100%;
-    position: relative;
-
-    .size-chart {
-      position: absolute;
-      right: 0;
-      font-size: ${props => props.theme.typography.fontSizes.fs12};
-      text-decoration: underline;
-      cursor: pointer;
-    }
   }
 
   .size-error {
@@ -200,18 +181,11 @@ const styles = css`
   }
 
   .qty-selector {
-    display: inline-block;
+    display: inline-flex;
     margin-top: 31px;
     width: 100%;
     #quantity {
       font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
-      padding-top: 0;
-      padding-bottom: 0;
-      width: 48px;
-    }
-    p {
-      display: inline-block;
-      vertical-align: top;
     }
   }
 
@@ -220,6 +194,7 @@ const styles = css`
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     color: #3b3b3b;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding-top: 9px;
     text-transform: uppercase;
   }
 

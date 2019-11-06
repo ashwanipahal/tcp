@@ -157,41 +157,45 @@ class QuickViewModal extends React.Component {
     const currentColorEntry =
       product && getMapSliceForColorProductId(product.colorFitsSizesMap, product.generalProductId);
     return (
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={this.onCloseClick}
-        overlayClassName="TCPModal__Overlay"
-        className="TCPModal__Content"
-        dataLocator={getLocator('quick_view_modal')}
-        dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
-        closeIconDataLocator={getLocator('quick_view_icon_btn')}
-        heading={fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag}
-        widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
-        heightConfig={{ height: '95%' }}
-        fixedWidth
-        inheritedStyles={customHeaderStyle}
-        headingAlign="center"
-        horizontalBar={false}
-        stickyCloseIcon
-        fullWidth
-        stickyHeader
-        rightAlignCrossIcon
-      >
-        {isLoading ? (
-          <Spinner inheritedStyles={customSpinnerStyle} />
-        ) : (
-          <React.Fragment>
-            {this.renderProductCustomizeFormPart()}
-            {this.renderFulFilmentSection(
-              isMultiItemQVModal,
-              fromBagPage,
-              product,
-              currentColorEntry
+      <React.Fragment>
+        {isModalOpen ? (
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={this.onCloseClick}
+            overlayClassName="TCPModal__Overlay"
+            className="TCPModal__Content"
+            dataLocator={getLocator('quick_view_modal')}
+            dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
+            closeIconDataLocator={getLocator('quick_view_icon_btn')}
+            heading={fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag}
+            widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
+            heightConfig={{ height: '95%' }}
+            fixedWidth
+            inheritedStyles={customHeaderStyle}
+            headingAlign="center"
+            horizontalBar={false}
+            stickyCloseIcon
+            fullWidth
+            stickyHeader
+            rightAlignCrossIcon
+          >
+            {isLoading ? (
+              <Spinner inheritedStyles={customSpinnerStyle} />
+            ) : (
+              <React.Fragment>
+                {this.renderProductCustomizeFormPart()}
+                {this.renderFulFilmentSection(
+                  isMultiItemQVModal,
+                  fromBagPage,
+                  product,
+                  currentColorEntry
+                )}
+                {isMultiItemQVModal && this.renderAddToBagButton()}
+              </React.Fragment>
             )}
-            {isMultiItemQVModal && this.renderAddToBagButton()}
-          </React.Fragment>
-        )}
-      </Modal>
+          </Modal>
+        ) : null}
+      </React.Fragment>
     );
   }
 }

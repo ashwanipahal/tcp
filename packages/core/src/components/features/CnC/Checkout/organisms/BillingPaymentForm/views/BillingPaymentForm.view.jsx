@@ -406,7 +406,6 @@ export class BillingPaymentForm extends React.PureComponent {
     const { paymentMethodId, orderHasShipping, backLinkPickup, isPayPalEnabled } = this.props;
     const { backLinkShipping, nextSubmitText, isPaymentDisabled, showAccordian } = this.props;
     const creditCardList = getCreditCardList({ cardList });
-
     return (
       <form
         name={constants.FORM_NAME}
