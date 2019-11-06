@@ -58,6 +58,7 @@ const LayoutAbstractor = {
    * @param {Object} data Response object for layout query
    */
   getModulesFromLayout: async (data, language) => {
+    logger.info('module received language ', language);
     // Adding Module 2 columns mock
     const layoutResponse = data.items;
     if (!mockAdded) {
@@ -88,7 +89,7 @@ const LayoutAbstractor = {
                 data: {
                   contentId,
                   slot: `${slot.name}_${index}`,
-                  lang: language,
+                  lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support as not supported from CMS yet
                 },
               });
             });
@@ -98,6 +99,7 @@ const LayoutAbstractor = {
               data: {
                 contentId: slot.contentId,
                 slot: slot.name,
+                lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support as not supported from CMS yet
               },
             });
           }

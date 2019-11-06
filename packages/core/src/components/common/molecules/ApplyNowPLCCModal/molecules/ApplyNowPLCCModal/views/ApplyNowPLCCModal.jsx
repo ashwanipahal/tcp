@@ -4,7 +4,13 @@ import Modal from '../../../../Modal';
 import ApplyCardPage from '../../../../../../features/browse/ApplyCardPage';
 import { getLocator } from '../../../../../../../utils';
 
-const ApplyNowPLCCModal = ({ modalStyles, isPLCCModalOpen, closePLCCModal, className }) => {
+const ApplyNowPLCCModal = ({
+  modalStyles,
+  isPLCCModalOpen,
+  closePLCCModal,
+  className,
+  innerContentClassName,
+}) => {
   return (
     <Modal
       fixedWidth
@@ -18,6 +24,7 @@ const ApplyNowPLCCModal = ({ modalStyles, isPLCCModalOpen, closePLCCModal, class
       minHeight="646px"
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
+      innerContentClassName={innerContentClassName}
     >
       <ApplyCardPage isPLCCModalFlow />
     </Modal>
@@ -29,6 +36,7 @@ ApplyNowPLCCModal.propTypes = {
   isPLCCModalOpen: PropTypes.bool.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
+  innerContentClassName: PropTypes.string.isRequired,
 };
 
 export default ApplyNowPLCCModal;
