@@ -55,7 +55,7 @@ const {
   getDefaultAddress,
   getGiftServicesFormData,
 } = selectors;
-const { hasPOBox } = utility;
+const { hasPOBox, getAvailableStages, routeToStage } = utility;
 let oldHasPOB = {};
 
 function* loadGiftWrappingOptions() {
@@ -276,6 +276,10 @@ function* initCheckoutSectionData({
     }
   }
   yield all(pendingPromises);
+  const cartOrderItems = yield select(BagPageSelectors.getOrderItems);
+  const availableStages = getAvailableStages(cartOrderItems);
+  const requestedStage = availableStages.length > 3 ? PICKUP : SHIPPING;
+  routeToStage(requestedStage, cartOrderItems, false, pageName);
 }
 
 // function* displayPreScreenModal (res) {

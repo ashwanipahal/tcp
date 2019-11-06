@@ -13,6 +13,7 @@ const initialState = fromJS({
   showConfirmationModal: false,
   isEditingItem: false,
   uiFlags: {
+    routingDone: false,
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
     lastItemUpdatedId: null,
@@ -73,6 +74,8 @@ const returnBagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
       return state.set('showConfirmationModal', true).set('isEditingItem', action.payload);
+    case BAGPAGE_CONSTANTS.CHECKOUT_ROUTING_DONE:
+      return state.set('routingDone', action.payload);
     case BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL:
       return state.set('showConfirmationModal', false).set('isEditingItem', false);
     case BAGPAGE_CONSTANTS.CART_ITEMS_SET_UPDATING:

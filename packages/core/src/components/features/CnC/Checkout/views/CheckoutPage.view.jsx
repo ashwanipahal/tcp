@@ -43,19 +43,6 @@ class CheckoutPage extends React.PureComponent {
     }
   }
 
-  // componentDidUpdate() {
-  // const { router, cartOrderItems } = this.props;
-  // const currentStage = router.query.section;
-  // const availableStages = CheckoutProgressUtils.getAvailableStages(cartOrderItems);
-  // let requestedStage = '';
-  // if (availableStages.length > 3) {
-  //   requestedStage = CHECKOUT_STAGES.PICKUP;
-  // } else {
-  //   requestedStage = CHECKOUT_STAGES.SHIPPING;
-  // }
-  // CheckoutProgressUtils.routeToStage(requestedStage, cartOrderItems, false, currentStage);
-  // }
-
   getFormLoad = (pickupInitialValues, isGuest) => {
     return !!(
       isGuest ||

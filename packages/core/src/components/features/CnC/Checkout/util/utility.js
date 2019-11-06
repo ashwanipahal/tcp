@@ -122,18 +122,13 @@ const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
 
-const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
-  const result = [
-    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
-    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
-  ];
-  /* istanbul ignore else */
+const getAvailableStages = cartItems => {
+  const result = [CHECKOUT_STAGES.BILLING, CHECKOUT_STAGES.REVIEW];
   if (isOrderHasShipping(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
+    result.unshift(CHECKOUT_STAGES.SHIPPING);
   }
-  /* istanbul ignore else */
   if (isOrderHasPickup(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
+    result.unshift(CHECKOUT_STAGES.PICKUP);
   }
   return result;
 };
@@ -190,6 +185,34 @@ export const getExpirationRequiredFlag = ({ cardType }) => {
   return !cardType || cardType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
 };
 
+const routeToStage = (requestedStage, cartItems, isAllowForward, currentStageName) => {
+  if (requestedStage === currentStageName) return;
+
+  let currentStage = currentStageName;
+
+  const routeToUrl = CHECKOUT_SECTIONS[currentStage].pathPart;
+  let currentFound = false;
+  let requestedFound = false;
+
+  for (let i = 0; i < availableStages.length; i += 1) {
+    const stage = availableStages[i];
+    currentFound = currentFound || stage === currentStage;
+    if (stage === requestedStage) {
+      requestedFound = true;
+      if (isAllowForward || !currentFound) {
+        moveToStage(requestedStage);
+      } else {
+        moveToStage(routeToUrl);
+      }
+      break;
+    }
+  }
+  if (!requestedFound) {
+    // requested stage is not available (or illegal)
+    moveToStage(routeToUrl);
+  }
+};
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
@@ -199,4 +222,5 @@ export default {
   routeToPage,
   getCreditCardType,
   isOrderHasShipping,
+  routeToStage,
 };
