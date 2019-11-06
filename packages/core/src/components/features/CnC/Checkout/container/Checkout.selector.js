@@ -54,6 +54,10 @@ const getIsOrderHasPickup = createSelector(
   orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
 );
 
+const getCardType = state => {
+  return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
+};
+
 export const isGuest = createSelector(
   getPersonalDataState,
   state => (state == null ? true : !!state.get('isGuest'))
@@ -293,6 +297,12 @@ const getShippingPhoneAndEmail = createSelector(
   }
 );
 
+const getShippingPhoneNo = state => {
+  const shippingFormNumber = getAddressPhoneNo(state);
+  const { phoneNumber } = getShippingPhoneAndEmail(state);
+  return shippingFormNumber || phoneNumber;
+};
+
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
@@ -334,6 +344,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_cvvCode',
       'lbl_billing_continueWith',
       'lbl_billing_continueWithPayPal',
+      'lbl_billing_payPalLongText',
       'lbl_billing_cardEditUnSavedError',
       'lbl_billing_addCC',
     ];
@@ -369,6 +380,7 @@ const getBillingLabels = createSelector(
       lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
       lbl_billing_continueWithPayPal: continueWithPayPal,
+      lbl_billing_payPalLongText: payPalLongText,
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
       lbl_billing_addCC: addCreditCard,
     } = labels;
@@ -402,6 +414,7 @@ const getBillingLabels = createSelector(
       cvvCode,
       continueWith,
       continueWithPayPal,
+      payPalLongText,
       addCreditCard,
     };
   }
@@ -919,6 +932,9 @@ export const getVenmoUserName = () => {
   return username;
 };
 
+const getPayPalSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']) || null;
+};
 const getShippingAddressList = createSelector(
   [getAddressListState, getCurrentSiteId],
   (userAddresses, country) => {
@@ -1034,6 +1050,7 @@ export default {
   getInternationalCheckoutApiUrl,
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
+  getPayPalSettings,
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
@@ -1052,4 +1069,6 @@ export default {
   getVenmoError,
   getPickupValues,
   getCheckoutPageEmptyBagLabels,
+  getCardType,
+  getShippingPhoneNo,
 };

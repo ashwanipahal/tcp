@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { reduxForm, change } from 'redux-form';
+import { reduxForm, change, FormSection } from 'redux-form';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -14,6 +14,7 @@ import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import ContactFormFields from '../../../molecules/ContactFormFields';
 
 const { Container, FooterTextContainer, FooterLink } = style;
 const formName = 'expressReviewPage';
@@ -32,6 +33,8 @@ class ReviewPage extends React.PureComponent {
     dispatch: PropTypes.func.isRequired,
     isExpressCheckout: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
+    shipmentMethods: PropTypes.func.isRequired,
+    selectedShipmentId: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -106,6 +109,9 @@ class ReviewPage extends React.PureComponent {
       setCheckoutStage,
       handleSubmit,
       isExpressCheckout,
+      shipmentMethods,
+      dispatch,
+      selectedShipmentId,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -125,14 +131,24 @@ class ReviewPage extends React.PureComponent {
                 onEdit={() => {
                   setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM);
                 }}
+                isExpressCheckout={isExpressCheckout}
               />
             )}
+
             {!!orderHasShipping && (
-              <ShippingReviewSection
-                onEdit={() => {
-                  setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
-                }}
-              />
+              <FormSection name="expressReviewShippingSection">
+                <ShippingReviewSection
+                  onEdit={() => {
+                    setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
+                  }}
+                  isExpressCheckout={isExpressCheckout}
+                  shipmentMethods={shipmentMethods}
+                  dispatch={dispatch}
+                  formName={formName}
+                  formSection="expressReviewShippingSection"
+                  selectedShipmentId={selectedShipmentId}
+                />
+              </FormSection>
             )}
 
             <BillingSection
@@ -162,6 +178,7 @@ class ReviewPage extends React.PureComponent {
 }
 
 const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
   ...getStandardConfig(['cvvCode']),
 });
 

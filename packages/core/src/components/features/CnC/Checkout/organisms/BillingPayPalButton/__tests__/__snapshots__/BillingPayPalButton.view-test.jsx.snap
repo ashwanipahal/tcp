@@ -5,27 +5,48 @@ exports[`ButtonList component renders correctly without props 1`] = `
   className=""
 >
   <div
-    className="payment-paypal-container hide-on-desktop hide-on-tablet"
+    className="payment-paypal-container"
   >
-    <Styled(BodyCopy)
-      className="paypal-complete-purchase"
-      color="text.primary"
-      component="p"
-      dataLocator="completePurchaseLblÎ"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
+    <div
+      className="hide-on-desktop hide-on-tablet"
     >
-      Payment Method
-    </Styled(BodyCopy)>
-    <withRouter(Connect(PayPalButtonContainer))
-      className="billing-payPal-button"
-      isBillingPage={true}
-    />
+      <Styled(BodyCopy)
+        className="paypal-complete-purchase"
+        color="text.primary"
+        component="p"
+        dataLocator="completePurchaseLbl"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Payment Method
+      </Styled(BodyCopy)>
+      <Connect(PayPalButtonContainer)
+        className="billing-payPal-button"
+        isBillingPage={true}
+      />
+    </div>
+    <div
+      className="hide-on-mobile"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        dataLocator="completePurchaseLbl"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -35,27 +56,48 @@ exports[`ButtonList component renders correctly without props 2`] = `
   className=""
 >
   <div
-    className="payment-paypal-container hide-on-desktop hide-on-tablet"
+    className="payment-paypal-container"
   >
-    <Styled(BodyCopy)
-      className="paypal-complete-purchase"
-      color="text.primary"
-      component="p"
-      dataLocator="completePurchaseLblÎ"
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="left"
+    <div
+      className="hide-on-desktop hide-on-tablet"
     >
-      Payment Method
-    </Styled(BodyCopy)>
-    <withRouter(Connect(PayPalButtonContainer))
-      className="billing-payPal-button"
-      isBillingPage={true}
-    />
+      <Styled(BodyCopy)
+        className="paypal-complete-purchase"
+        color="text.primary"
+        component="p"
+        dataLocator="completePurchaseLbl"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Payment Method
+      </Styled(BodyCopy)>
+      <Connect(PayPalButtonContainer)
+        className="billing-payPal-button"
+        isBillingPage={true}
+      />
+    </div>
+    <div
+      className="hide-on-mobile"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        dataLocator="completePurchaseLbl"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      />
+    </div>
   </div>
 </div>
 `;

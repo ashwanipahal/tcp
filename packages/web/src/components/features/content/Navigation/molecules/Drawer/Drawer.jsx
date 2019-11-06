@@ -113,6 +113,34 @@ class Drawer extends React.Component {
     }
   };
 
+  renderAccountInfoSectionInDrawer = () => {
+    const {
+      id,
+      close,
+      userName,
+      userPoints,
+      userRewards,
+      userNameClick,
+      onLinkClick,
+      triggerLoginCreateAccount,
+      openOverlay,
+    } = this.props;
+    return id === 'l1_drawer' ? (
+      <Row>
+        <AccountInfoSection
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+          openOverlay={openOverlay}
+          userNameClick={userNameClick}
+          onLinkClick={onLinkClick}
+          closeDrawer={close}
+          triggerLoginCreateAccount={triggerLoginCreateAccount}
+        />
+      </Row>
+    ) : null;
+  };
+
   /* Style for drawer to make it scrollable within */
   getDrawerStyle = () => {
     if (window) {
@@ -121,6 +149,7 @@ class Drawer extends React.Component {
       const middleNav = document.getElementsByClassName('header-middle-nav')[0];
       const condensedHeader = document.getElementById('condensedHeader');
       const userInfo = document.getElementById('sideNavUserInfo');
+      const darkOverlay = document.getElementsByClassName('dark-overlay')[0];
       const userInfoHeight = userInfo ? userInfo.getBoundingClientRect().height : null;
       const wHeight = window.innerHeight;
       const {
@@ -144,6 +173,8 @@ class Drawer extends React.Component {
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
         drawer.style.top = `${headerHeight + userInfoHeight}px`;
+        darkOverlay.style.top = `${headerHeight}px`;
+
         this.disableScroll(drawer);
       }
     }
@@ -153,13 +184,6 @@ class Drawer extends React.Component {
     const {
       children,
       className,
-      userName,
-      userPoints,
-      userRewards,
-      userNameClick,
-      onLinkClick,
-      triggerLoginCreateAccount,
-      openOverlay,
       small,
       medium,
       large,
@@ -199,18 +223,7 @@ class Drawer extends React.Component {
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
             >
-              <Row>
-                <AccountInfoSection
-                  userName={userName}
-                  userPoints={userPoints}
-                  userRewards={userRewards}
-                  openOverlay={openOverlay}
-                  userNameClick={userNameClick}
-                  onLinkClick={onLinkClick}
-                  closeDrawer={close}
-                  triggerLoginCreateAccount={triggerLoginCreateAccount}
-                />
-              </Row>
+              {this.renderAccountInfoSectionInDrawer()}
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
                 {renderDrawerFooter(hideNavigationFooter, drawerFooter)}

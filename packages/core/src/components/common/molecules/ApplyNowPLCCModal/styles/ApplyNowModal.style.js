@@ -134,6 +134,10 @@ export const modalStyles = css`
   .footerLink {
     margin-left: 28px;
   }
+
+  div.TCPModal__InnerContent.plcc_modal_content {
+    height: 100vh;
+  }
 `;
 
 export default modalStyles;

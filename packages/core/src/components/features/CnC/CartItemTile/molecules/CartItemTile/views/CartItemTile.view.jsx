@@ -41,6 +41,39 @@ import {
 import { currencyConversion } from '../../../utils/utils';
 import { getProductListToPath } from '../../../../../browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+/**
+ * LinkWrapper component is to wrap anchor component to decide whether child needs anchor tag or not
+ * @param {object} props
+ */
+const LinkWrapper = props => {
+  LinkWrapper.propTypes = {
+    pdpToPath: PropTypes.string.isRequired,
+    pdpAsPathUrl: PropTypes.string.isRequired,
+    disableLink: PropTypes.bool.isRequired,
+    noWrap: PropTypes.bool.isRequired,
+    IsSlugPathAdded: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+  };
+
+  LinkWrapper.defaultProps = {
+    IsSlugPathAdded: false,
+  };
+
+  const { pdpToPath, pdpAsPathUrl, disableLink, children, noWrap, IsSlugPathAdded } = props;
+  return noWrap ? (
+    children
+  ) : (
+    <Anchor
+      to={pdpToPath}
+      asPath={pdpAsPathUrl}
+      noLink={disableLink}
+      IsSlugPathAdded={IsSlugPathAdded}
+    >
+      {children}
+    </Anchor>
+  );
+};
+
 class CartItemTile extends PureComponent {
   constructor(props) {
     super(props);
@@ -657,7 +690,7 @@ class CartItemTile extends PureComponent {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {` ${labels.qty}:`}
@@ -667,7 +700,7 @@ class CartItemTile extends PureComponent {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator="addedtobag-productqty"
         >
@@ -685,7 +718,7 @@ class CartItemTile extends PureComponent {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {this.getSizeLabel(productDetail, labels)}
@@ -695,7 +728,7 @@ class CartItemTile extends PureComponent {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator={getLocator('cart_item_size')}
         >
@@ -851,7 +884,7 @@ class CartItemTile extends PureComponent {
     const { showOnReviewPage } = this.props;
     return (
       <>
-        {!showOnReviewPage ? (
+        {showOnReviewPage ? (
           <div className="size-and-item-container">
             {this.renderSizeAndFit()}
             {this.renderItemQuantity()}
@@ -922,6 +955,7 @@ class CartItemTile extends PureComponent {
       pickupStoresInCart,
       autoSwitchPickupItemInCart,
       orderId,
+      disableProductRedirect,
     } = this.props;
 
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -954,6 +988,7 @@ class CartItemTile extends PureComponent {
     const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
     const isBagPage = pageView === 'myBag';
+    const disableLink = !isProductBrandOfSameDomain || disableProductRedirect;
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -989,11 +1024,11 @@ class CartItemTile extends PureComponent {
                 src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
                 data-locator={getLocator('cart_item_image')}
               /> */}
-              <Anchor
-                to={pdpToPath}
-                asPath={pdpAsPathUrl}
-                noLink={!isProductBrandOfSameDomain}
-                IsSlugPathAdded
+              <LinkWrapper
+                pdpToPath={pdpToPath}
+                pdpAsPathUrl={pdpAsPathUrl}
+                disableLink={disableLink}
+                noWrap={disableLink}
               >
                 <DamImage
                   imgData={{
@@ -1003,7 +1038,7 @@ class CartItemTile extends PureComponent {
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
                 />
-              </Anchor>
+              </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
                 <BodyCopy
                   className="soldOutLabel"
@@ -1041,10 +1076,11 @@ class CartItemTile extends PureComponent {
               this.getBadgeDetails(productDetail)}
             <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
-                <Anchor
-                  to={pdpToPath}
-                  asPath={pdpAsPathUrl}
-                  noLink={!isProductBrandOfSameDomain}
+                <LinkWrapper
+                  pdpToPath={pdpToPath}
+                  pdpAsPathUrl={pdpAsPathUrl}
+                  disableLink={disableLink}
+                  noWrap={disableLink}
                   IsSlugPathAdded
                 >
                   <BodyCopy
@@ -1056,7 +1092,7 @@ class CartItemTile extends PureComponent {
                   >
                     {productDetail.itemInfo.name}
                   </BodyCopy>
-                </Anchor>
+                </LinkWrapper>
               </Col>
             </Row>
             {showOnReviewPage && this.getProductItemUpcNumber(productDetail, isBagPage)}
@@ -1072,7 +1108,7 @@ class CartItemTile extends PureComponent {
                         <BodyCopy
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           fontWeight={['extrabold']}
                           textAlign="left"
                         >
@@ -1083,7 +1119,7 @@ class CartItemTile extends PureComponent {
                         className="padding-left-10"
                         fontFamily="secondary"
                         component="span"
-                        fontSize="fs12"
+                        fontSize="fs13"
                         color="gray.800"
                         dataLocator={getLocator('cart_item_color')}
                       >
@@ -1094,7 +1130,7 @@ class CartItemTile extends PureComponent {
                           className="color-fit-size-separator"
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           color="gray.600"
                         >
                           |
@@ -1177,6 +1213,7 @@ CartItemTile.defaultProps = {
   clearToggleError: () => {},
   currencyExchange: null,
   autoSwitchPickupItemInCart: () => {},
+  disableProductRedirect: false,
 };
 
 CartItemTile.propTypes = {
@@ -1215,6 +1252,7 @@ CartItemTile.propTypes = {
   currencyExchange: PropTypes.shape([]),
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   autoSwitchPickupItemInCart: PropTypes.func,
+  disableProductRedirect: PropTypes.bool,
 };
 
 export default withStyles(CartItemTile, styles);

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getSiteId } from '@tcp/core/src/utils/utils';
 import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
@@ -20,7 +21,9 @@ class LookingForProductDetail extends React.PureComponent {
   redirectToProductUrl = productUrl => {
     const { closeSearchLayover } = this.props;
     closeSearchLayover();
-    routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, { shallow: false });
+    routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
+      shallow: false,
+    });
   };
 
   render() {
@@ -38,7 +41,7 @@ class LookingForProductDetail extends React.PureComponent {
                     <Anchor
                       className="suggestion-label"
                       noLink
-                      to={`${item.productUrl}`}
+                      to={`/${getSiteId()}${item.productUrl}`}
                       onClick={e => {
                         e.preventDefault();
                         this.redirectToProductUrl(`${item.productUrl}`);

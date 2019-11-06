@@ -63,14 +63,20 @@ class CheckoutPage extends React.PureComponent {
       currentStage,
       setCheckoutStage,
       isExpressCheckout,
+      pickUpContactAlternate,
+      isHasPickUpAlternatePerson,
+      pickUpAlternatePerson,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      pickupDidMount,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
+    const { shipmentMethods } = shippingProps;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
           <PickupPage
+            pickupDidMount={pickupDidMount}
             cartOrderItemsCount={cartOrderItemsCount}
             isGuest={isGuest}
             isMobile={isMobile}
@@ -138,6 +144,19 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
             isExpressCheckout={isExpressCheckout}
+            pickUpContactAlternate={pickUpContactAlternate}
+            initialValues={{
+              pickUpAlternateExpress: {
+                hasAlternatePickup: isHasPickUpAlternatePerson,
+                firstName: pickUpAlternatePerson.firstName,
+                lastName: pickUpAlternatePerson.lastName,
+                emailAddress: pickUpAlternatePerson.emailAddress,
+              },
+              expressReviewShippingSection: {
+                shippingMethodId: reviewProps.defaultShipmentId,
+              },
+            }}
+            shipmentMethods={shipmentMethods}
           />
         );
       case CONFIRMATION:
@@ -179,6 +198,7 @@ CheckoutPage.propTypes = {
   orderHasPickUp: PropTypes.bool.isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  pickupDidMount: PropTypes.func.isRequired,
   submitReview: PropTypes.func.isRequired,
   submitBilling: PropTypes.func.isRequired,
   availableStages: PropTypes.shape([]).isRequired,
@@ -192,6 +212,9 @@ CheckoutPage.propTypes = {
   toastMessage: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
   isExpressCheckout: PropTypes.bool,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {

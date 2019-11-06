@@ -59,18 +59,20 @@ const onRenderHeader = data => {
   } = data;
   return (
     <ListHeaderContainer>
-      <FilterModal
-        filters={filters}
-        labelsFilter={labelsFilter}
-        onSubmit={onSubmit}
-        getProducts={getProducts}
-        navigation={navigation}
-        sortLabels={sortLabels}
-        isFavorite={isFavorite}
-        onFilterSelection={onFilterSelection}
-        onSortSelection={onSortSelection}
-        filteredId={filteredId}
-      />
+      {totalProductsCount && totalProductsCount > 1 && (
+        <FilterModal
+          filters={filters}
+          labelsFilter={labelsFilter}
+          onSubmit={onSubmit}
+          getProducts={getProducts}
+          navigation={navigation}
+          sortLabels={sortLabels}
+          isFavorite={isFavorite}
+          onFilterSelection={onFilterSelection}
+          onSortSelection={onSortSelection}
+          filteredId={filteredId}
+        />
+      )}
 
       {renderItemCountView(totalProductsCount)}
       {renderBrandFilter && renderBrandFilter()}
@@ -101,6 +103,7 @@ const ProductListView = ({
   renderBrandFilter,
   margins,
   paddings,
+  isLoadingMore,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -130,6 +133,7 @@ const ProductListView = ({
         isFavorite={isFavorite}
         {...otherProps}
       />
+      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
       <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
@@ -160,6 +164,7 @@ ProductListView.propTypes = {
   renderBrandFilter: PropTypes.func,
   margins: PropTypes.string,
   paddings: PropTypes.string,
+  isLoadingMore: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {

@@ -3,10 +3,8 @@ import { PropTypes } from 'prop-types';
 import { BOPIS_ITEM_AVAILABILITY, BOPIS_FILTER_LABEL } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
-import InputCheckbox from '../../../../../atoms/InputCheckbox';
 import StoreListItemSkeleton from '../../../atoms/StoreListItemSkeleton';
-import StyledInputCheckbox from '../PickupStoreList.style';
-import { canUseDOM } from '../../../../../../../utils';
+import StyledInputCheckbox from '../styles';
 
 const PickupStoreList = props => {
   const {
@@ -35,7 +33,7 @@ const PickupStoreList = props => {
     onStoreUpdate,
     isSearching,
   } = props;
-  const InputCheckBoxComponent = canUseDOM() ? InputCheckbox : StyledInputCheckbox;
+  const InputCheckBoxComponent = StyledInputCheckbox;
   return (
     <>
       {!allowBossStoreSearch && (!isResultOfSearchingInCartStores && isShowFilterCheckbox) && (

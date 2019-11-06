@@ -60,7 +60,7 @@ class EarnExtraPointsTile extends PureComponent {
             <BodyCopy
               component="div"
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="bold"
               fontFamily="secondary"
               text={getLabelValue(labels, 'lbl_common_earnExtraPoints')}
               data-locator="earnExtraPointsHeading"

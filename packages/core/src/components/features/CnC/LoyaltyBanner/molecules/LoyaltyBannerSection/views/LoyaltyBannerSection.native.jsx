@@ -12,6 +12,24 @@ import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommo
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 
+const shouldShowSubtotal = ({
+  estimatedSubtotal,
+  thresholdValue,
+  isPlcc,
+  isReviewPage,
+  isConfirmationPage,
+  isAddedToBagPage,
+  isProductDetailView,
+}) => {
+  return (
+    estimatedSubtotal > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    !isAddedToBagPage &&
+    !isProductDetailView
+  );
+};
 const LoyaltyBannerSection = props => {
   const {
     labels,
@@ -50,11 +68,15 @@ const LoyaltyBannerSection = props => {
 
   /* istanbul ignore else */
   if (
-    estimatedSubtotal > thresholdValue &&
-    !isPlcc &&
-    !isReviewPage &&
-    !isConfirmationPage &&
-    !isAddedToBagPage
+    shouldShowSubtotal({
+      estimatedSubtotal,
+      thresholdValue,
+      isPlcc,
+      isReviewPage,
+      isConfirmationPage,
+      isAddedToBagPage,
+      isProductDetailView,
+    })
   ) {
     showSubtotal = true;
   }
@@ -95,7 +117,7 @@ const LoyaltyBannerSection = props => {
 
   const utilArrSubHeading = [
     {
-      key: '#sectionSymbol#',
+      key: '#sectionSymbol# ',
       value: (
         <SectionSymbol pageChecksObj={pageChecksObj}>{`${labels.sectionSymbol} `}</SectionSymbol>
       ),

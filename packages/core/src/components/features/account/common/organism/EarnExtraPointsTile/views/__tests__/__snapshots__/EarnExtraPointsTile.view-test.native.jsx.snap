@@ -10,7 +10,7 @@ exports[`Earn Extra Points Tile app component  should render Earn Extra Points T
       dataLocator=""
       fontFamily="secondary"
       fontSize="fs16"
-      fontWeight="extrabold"
+      fontWeight="bold"
       margin={null}
       numberOfLines={null}
       text="Earn Extra Points"

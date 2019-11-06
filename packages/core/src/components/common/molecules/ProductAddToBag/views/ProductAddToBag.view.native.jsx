@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
+import ProductPickupContainer from '@tcp/core/src/components/common/organisms/ProductPickup';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
 import ProductVariantSelector from '../../ProductVariantSelector';
@@ -18,7 +19,6 @@ import { NativeDropDown } from '../../../atoms/index.native';
 import ErrorDisplay from '../../../atoms/ErrorDisplay';
 import SizeChart from '../molecules/SizeChart/container';
 import AlternateSizes from '../molecules/AlternateSizes';
-import FulfillmentSection from '../../../organisms/FulfillmentSection';
 
 export const SIZE_CHART_LINK_POSITIONS = {
   AFTER_SIZE: 2,
@@ -75,12 +75,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderAlternateSizes = alternateSizes => {
-    const { className, navigation } = this.props;
+    const { className, navigation, plpLabels } = this.props;
+    const sizeAvailable = plpLabels && plpLabels.sizeAvailable ? plpLabels.sizeAvailable : '';
     const visibleAlternateSizes = alternateSizes && Object.keys(alternateSizes).length > 0;
     return (
       visibleAlternateSizes && (
         <AlternateSizes
-          title="Other Sizes Available:"
+          title={`${sizeAvailable}:`}
           buttonsList={alternateSizes}
           className={className}
           navigation={navigation}
@@ -102,7 +103,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
           text={sizeUnavailable}
           spacingStyles="padding-right-XS"
         />
-        <FulfillmentSection currentProduct={currentProduct} isAnchor buttonLabel="Find In Store" />
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          isAnchor
+        />
       </UnavailableLink>
     );
   };

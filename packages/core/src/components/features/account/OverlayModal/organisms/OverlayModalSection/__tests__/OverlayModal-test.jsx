@@ -40,6 +40,7 @@ describe('OverlayModal', () => {
     document.body.appendChild(bodyContainer);
     mockedRef = {
       contains: jest.fn(),
+      focus: jest.fn(),
     };
   });
 

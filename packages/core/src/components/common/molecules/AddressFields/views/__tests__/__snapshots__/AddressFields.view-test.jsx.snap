@@ -6254,6 +6254,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
         enableSuccessCheck={false}
         id="address.phoneNumber"
         name="phoneNumber"
+        normalize={[Function]}
         type="tel"
       />
     </Styled(Col)>
