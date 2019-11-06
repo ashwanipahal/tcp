@@ -61,7 +61,7 @@ const renderAddToBagContainer = (
   labelsPlpTiles,
   onGoToPDPPage
 ) => {
-  if (renderVariation && !renderPriceOnly) return null;
+  if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
     : labelsPlpTiles.lbl_add_to_bag;

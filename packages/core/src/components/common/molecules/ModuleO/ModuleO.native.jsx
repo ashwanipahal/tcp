@@ -50,10 +50,12 @@ const ModuleO = props => {
   const topBadge = isMatchingFamily && badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
 
   // get default Loyalty message
-  const loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
-    promotionalMessage,
-    promotionalPLCCMessage,
-  });
+  const loyaltyPromotionMessage = isPlcc
+    ? getPromotionalMessage(isPlcc, {
+        promotionalMessage,
+        promotionalPLCCMessage,
+      })
+    : '';
 
   return (
     <View>

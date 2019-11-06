@@ -133,6 +133,7 @@ const Recommendations = props => {
     navigation,
     onPickUpOpenClick,
     isPickupModalOpen,
+    isAddedToBagOpen,
   } = props;
   const variationArray = variation.split(',');
 
@@ -142,7 +143,7 @@ const Recommendations = props => {
     <View>
       {variationArray.map(value => renderRecommendationView(props, value))}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
+      {!isAddedToBagOpen ? <AddedToBagContainer navigation={navigation} /> : null}
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </View>
   );
@@ -154,10 +155,12 @@ Recommendations.propTypes = {
   onPickUpOpenClick: PropTypes.func,
   navigation: PropTypes.shape({}).isRequired,
   isPickupModalOpen: PropTypes.bool.isRequired,
+  isAddedToBagOpen: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
   onPickUpOpenClick: () => {},
+  isAddedToBagOpen: false,
 };
 
 export default Recommendations;
