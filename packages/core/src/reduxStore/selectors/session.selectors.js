@@ -53,7 +53,6 @@ const getCrossBrandFlags = (state, key) => {
 
 export const getIsBossAppEnabled = state => {
   const brand = getBrand();
-  return { isBossEnabledAppTCP: true, isBossEnabledAppGYM: true };
   const { brandFlag, otherBrandFlag } = getCrossBrandFlags(state, 'BOSS_ENABLED_APP');
   if (brand.toUpperCase() === API_CONFIG.TCP_CONFIG_OPTIONS.brandId.toUpperCase()) {
     return { isBossEnabledAppTCP: brandFlag, isBossEnabledAppGYM: otherBrandFlag };
@@ -64,7 +63,6 @@ export const getIsBossAppEnabled = state => {
 
 export const getIsBossEnabled = (state, brand = getBrand()) => {
   const isBOSSEnabled = `isBOSSEnabled_${brand.toUpperCase()}`;
-  return true;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOSSEnabled]
   );
@@ -72,14 +70,12 @@ export const getIsBossEnabled = (state, brand = getBrand()) => {
 
 export const getIsBopisEnabled = (state, brand = getBrand()) => {
   const isBOPISEnabled = `isBOPISEnabled_${brand.toUpperCase()}`;
-  return true;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOPISEnabled]
   );
 };
 
 export const getIsBossClearanceProductEnabled = state => {
-  return true;
   return parseBoolean(
     state[SESSIONCONFIG_REDUCER_KEY] &&
       state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BOSS_ENABLED_CLEARANCE_PRODUCTS
@@ -87,7 +83,6 @@ export const getIsBossClearanceProductEnabled = state => {
 };
 
 export const getIsBopisClearanceProductEnabled = state => {
-  return true;
   return parseBoolean(
     state[SESSIONCONFIG_REDUCER_KEY] &&
       state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BOPIS_ENABLED_CLEARANCE_PRODUCTS
@@ -116,7 +111,6 @@ export const getRecalcOrderPointsInterval = state => {
 
 export const getTcpSegmentValue = state => {
   return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.tcpSegment
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.tcpSegment
   );
 };

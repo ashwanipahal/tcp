@@ -21,19 +21,16 @@ const readCookieMobileApp = () => {
  * @returns {string} Resolves with the key of cookie to return the value or null in case key does not match
  */
 const readCookieWeb = (key, cookieString) => {
-  console.log("2", isClient(), cookieString);
   try {
     if (isClient() || cookieString) {
       const name = `${key}=`;
       const decodedCookie = decodeURIComponent(cookieString || document.cookie).split(';');
-      console.log("decodedCookie", decodedCookie);
       for (let i = 0; i < decodedCookie.length; i += 1) {
         let c = decodedCookie[i];
         while (c.charAt(0) === ' ') {
           c = c.substring(1);
         }
         if (c.indexOf(name) === 0) {
-          console.log("c---->", c);
           return c.substring(name.length, c.length);
         }
       }
@@ -41,7 +38,6 @@ const readCookieWeb = (key, cookieString) => {
     }
     return null;
   } catch (error) {
-    console.log("error", error);
     return null;
   }
 };
@@ -52,7 +48,6 @@ const readCookieWeb = (key, cookieString) => {
  * @param {string} cookieString - Cookie value in string to be used in case of Node
  */
 export const readCookie = (key, cookieString) => {
-  console.log("1 with key - ", key);
   if (isMobileApp()) {
     return readCookieMobileApp();
   }

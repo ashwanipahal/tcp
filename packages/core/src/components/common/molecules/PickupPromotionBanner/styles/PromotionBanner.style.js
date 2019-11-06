@@ -22,23 +22,21 @@ const styles = css`
     display: inline;
     padding-left: 5px;
   }
+
+  .fullBleedBanner {
+    text-align: center;
+
+    .banner {
+      width: 310px;
+      height: 24px;
+      background-color: #ffe700;
+    }
+    .pickUp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
-
-export const fullBleedBannerStyle = css `
-text-align: center;
-
-.banner {
-  width: 310px;
-  height: 24px;
-  background-color: #ffe700;
-}
-.pickUp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.bossText {
-  margin-top: 10px;
-}`
 
 export default styles;

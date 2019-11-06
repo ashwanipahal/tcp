@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
-import styles, { fullBleedBannerStyle } from '../styles/PromotionBanner.style';
-import { BodyCopy, Row, Col } from '../../../atoms';
+import styles from '../styles/PromotionBanner.style';
+import { BodyCopy, Row, Col, RichText } from '../../../atoms';
 import { getBrand } from '../../../../../utils';
 
 class PromotionBanner extends React.PureComponent {
@@ -19,12 +19,12 @@ class PromotionBanner extends React.PureComponent {
   }
 
   render() {
-    const { labels, fullBleed } = this.props;
+    const { labels, fullBleed, className } = this.props;
 
     return (
-      <>
+      <div className={className}>
         {fullBleed ? (
-          <fullBleedBannerStyle>
+          <div className="fullBleedBanner">
             <Row className="banner">
               <Col
                 key="productDetails"
@@ -36,28 +36,42 @@ class PromotionBanner extends React.PureComponent {
                   dataLocator="addedtobag-bossbanner"
                   tag="span"
                   fontSize="fs12"
-                  fontWeight={['semibold']}
                   textAlign="center"
                 >
-                  {this.modifiedBannerText(labels.lbl_fullBleed_banner_boss_text)}
+                  <RichText
+                    richTextHtml={this.modifiedBannerText(labels.lbl_fullBleed_banner_boss_text)}
+                  />
                 </BodyCopy>
               </Col>
             </Row>
-          </fullBleedBannerStyle>
+          </div>
         ) : (
           <div className="banner-wrapper">
             <div className="triangle-left" />
             <div className="promo-wrapper">
-              <BodyCopy fontSize="fs10" fontFamily="primary" fontWeight="black">
-                {this.modifiedBannerText(labels.lbl_banner_boss_text)}
+              <BodyCopy fontSize="fs10" fontFamily="primary">
+                <RichText richTextHtml={this.modifiedBannerText(labels.lbl_banner_boss_text)} />
               </BodyCopy>
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   }
 }
+
+PromotionBanner.propTypes = {
+  bossBanner: PropTypes.bool,
+  labels: PropTypes.shape({}).isRequired,
+  fullBleed: PropTypes.bool,
+  className: PropTypes.string.isRequired,
+  tcpSegmentValue: PropTypes.string.isRequired,
+};
+
+PromotionBanner.defaultProps = {
+  bossBanner: false,
+  fullBleed: false,
+};
 
 export default withStyles(PromotionBanner, styles);
 export { PromotionBanner as PromotionBannerVanilla };
