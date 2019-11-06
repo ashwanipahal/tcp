@@ -4,7 +4,12 @@ const FooterLinksSection = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-top: 12px;
+  ${props =>
+    props.isProductDetailView
+      ? `
+      padding-top: ${props.theme.spacing.ELEM_SPACING.XS};
+      `
+      : `padding-top: 12px;`};
 `;
 
 const LearnMoreWrapper = styled.View`

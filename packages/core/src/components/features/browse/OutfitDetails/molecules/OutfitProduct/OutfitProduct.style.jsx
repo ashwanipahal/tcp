@@ -97,10 +97,14 @@ export default css`
     height: 42px;
     background: ${props => props.theme.colorPalette.black};
     color: ${props => props.theme.colorPalette.white};
+    padding-bottom: 34px;
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       min-width: 213px;
       width: 50%;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 13px;
     }
   }
 
