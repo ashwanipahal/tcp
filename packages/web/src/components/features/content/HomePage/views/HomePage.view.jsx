@@ -9,6 +9,7 @@ import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
@@ -41,6 +42,7 @@ const HomePageView = dynamic({
         variations="moduleO,moduleP"
       />,
       <ModuleG {...mockG.moduleG.composites} />,
+      <AddedToBagContainer />,
     ];
   },
 });
