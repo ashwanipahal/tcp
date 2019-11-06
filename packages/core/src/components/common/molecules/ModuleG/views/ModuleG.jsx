@@ -12,8 +12,8 @@ import {
   getIconPath,
   getLocator,
 } from '../../../../../utils';
-import config from '../config';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
+import moduleGConfig from '../moduleG.config';
 
 class ModuleG extends React.PureComponent {
   constructor(props) {
@@ -32,7 +32,7 @@ class ModuleG extends React.PureComponent {
   getImagesData = () => {
     const { currentCatId } = this.state;
     const { productTabList } = this.props;
-    const { TOTAL_IMAGES } = config;
+    const { TOTAL_IMAGES } = moduleGConfig;
     let data = [];
     data = currentCatId.map(item => [...data, ...(productTabList[item] || [])]);
     data = data.slice(0, TOTAL_IMAGES);
@@ -165,7 +165,7 @@ class ModuleG extends React.PureComponent {
 
   renderCarousel = (type, currentCatId) => {
     const { productTabList } = this.props;
-    const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
+    const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = moduleGConfig;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
     let dataStatus = true;
@@ -222,7 +222,11 @@ class ModuleG extends React.PureComponent {
                       asPath={pdpAsPath}
                       dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                     >
-                      <DamImage imgData={{ url: imgUrl, alt: productName }} isProductImage />
+                      <DamImage
+                        imgData={{ url: imgUrl, alt: productName }}
+                        imgConfigs={moduleGConfig.IMG_DATA.productImgConfig}
+                        isProductImage
+                      />
                     </Anchor>
                   </div>
                 );
@@ -244,7 +248,7 @@ class ModuleG extends React.PureComponent {
       // layout,
       divTabs,
     } = this.props;
-    const { CAROUSEL_OPTIONS } = config;
+    const { CAROUSEL_OPTIONS } = moduleGConfig;
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ next });
     };

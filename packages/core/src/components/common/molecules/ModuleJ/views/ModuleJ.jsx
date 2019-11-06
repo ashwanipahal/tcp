@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, Col, DamImage, Image, Row } from '../../../atoms';
+import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
 import { Carousel, Grid, LinkText, PromoBanner } from '../..';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle, { StyledSkeleton } from '../styles/ModuleJ.style';
 import { getIconPath, getLocator } from '../../../../../utils';
-import config from '../moduleJ.config';
+import moduleJConfig from '../moduleJ.config';
 
 class ModuleJ extends React.PureComponent {
   constructor(props) {
@@ -92,7 +92,7 @@ class ModuleJ extends React.PureComponent {
     const promoMediaLinkedList = mediaLinkedList || [];
     const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
     const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
-    const { CAROUSEL_OPTIONS, IMG_DATA, TOTAL_IMAGES } = config;
+    const { CAROUSEL_OPTIONS, IMG_DATA, TOTAL_IMAGES } = moduleJConfig;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
     const iconPath = getIconPath('carousel-big-carrot');
@@ -238,7 +238,8 @@ class ModuleJ extends React.PureComponent {
                   customArrowRight: iconPath,
                 }}
               >
-                {data.map(({ imageUrl, pdpUrl, pdpAsPath, product_name: productName }, index) => {
+                {data.map(({ uniqueId, pdpUrl, pdpAsPath, product_name: productName }, index) => {
+                  const imgUrl = `${uniqueId.split('_')[0]}/${uniqueId}`;
                   return (
                     <div key={index.toString()}>
                       <Anchor
@@ -247,7 +248,12 @@ class ModuleJ extends React.PureComponent {
                         asPath={pdpAsPath}
                         dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                       >
-                        <Image alt={productName} src={imageUrl[0]} />
+                        {/* <Image alt={productName} src={imageUrl[0]} /> */}
+                        <DamImage
+                          imgData={{ url: imgUrl, alt: productName }}
+                          imgConfigs={moduleJConfig.IMG_DATA.productImgConfig}
+                          isProductImage
+                        />
                       </Anchor>
                     </div>
                   );

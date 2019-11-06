@@ -7,7 +7,7 @@ import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
 import { getLocator, viewport } from '../../../../../utils';
 import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
-// import moduleRConfig from '../moduleR.config';
+import moduleRConfig from '../moduleR.config';
 
 /**
  * @class ModuleR - global reusable component will display featured
@@ -115,7 +115,11 @@ class ModuleR extends React.PureComponent {
                   asPath={pdpAsPath}
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
-                  <DamImage imgData={{ url: imgUrl, alt: productName }} isProductImage />
+                  <DamImage
+                    imgData={{ url: imgUrl, alt: productName }}
+                    imgConfigs={moduleRConfig.IMG_DATA.productImgConfig}
+                    isProductImage
+                  />
                 </Anchor>
               </ImageGridCol>
             );
