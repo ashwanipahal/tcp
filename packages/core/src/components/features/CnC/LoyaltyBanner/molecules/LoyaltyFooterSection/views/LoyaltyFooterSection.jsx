@@ -106,24 +106,25 @@ const createLoginLinks = (labels, closeAddedToBagModal, openOverlay) => {
   );
 };
 
-const applyNowLearnMoreLinks = (labels, openApplyNowModal) => {
+const applyNowLearnMoreLinks = (labels, openApplyNowModal, noShowSpecialCharacter) => {
   return (
     <div className="links-wrapper">
       <span className="links-container">
         {renderApplyNowLink(labels, openApplyNowModal)}
         <span className="learnSymbolWrapper elem-pl-XL">
-          <BodyCopy
-            className="symbolWrapper"
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontWeight="regular"
-            fontSize="fs9"
-          >
-            {labels.sectionSymbol}
-            {labels.asteriskSymbol}
-          </BodyCopy>
-
+          {noShowSpecialCharacter && (
+            <BodyCopy
+              className="symbolWrapper"
+              color="text.primary"
+              component="span"
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs9"
+            >
+              {labels.sectionSymbol}
+              {labels.asteriskSymbol}
+            </BodyCopy>
+          )}
           {renderLearnMoreLink(labels, openApplyNowModal)}
         </span>
       </span>
@@ -182,14 +183,15 @@ const detailViewFooter = (
   isPlcc,
   closeAddedToBagModal,
   openOverlay,
-  openApplyNowModal
+  openApplyNowModal,
+  noShowSpecialCharacter
 ) => {
   return (
     <>
       {isGuest && createLoginLinks(labels, closeAddedToBagModal, openOverlay)}
       {!isGuest && (
         <>
-          {!isPlcc && applyNowLearnMoreLinks(labels, openApplyNowModal)}
+          {!isPlcc && applyNowLearnMoreLinks(labels, openApplyNowModal, noShowSpecialCharacter)}
           {isPlcc && (
             <span className="links-wrapper">{renderLearnMoreLink(labels, openApplyNowModal)}</span>
           )}
@@ -213,6 +215,7 @@ const LoyaltyFooterSection = props => {
     closeAddedToBagModal,
     openOverlay,
     openApplyNowModal,
+    noShowSpecialCharacter,
   } = props;
   return (
     <div className={`${className} footer-wrapper`}>
@@ -223,7 +226,8 @@ const LoyaltyFooterSection = props => {
           isPlcc,
           closeAddedToBagModal,
           openOverlay,
-          openApplyNowModal
+          openApplyNowModal,
+          noShowSpecialCharacter
         )}
       {isAddedToBagPage &&
         addedToBagPageLinks(
@@ -269,6 +273,7 @@ LoyaltyFooterSection.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   closeAddedToBagModal: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
+  noShowSpecialCharacter: PropTypes.bool,
 };
 
 LoyaltyFooterSection.defaultProps = {
@@ -280,6 +285,7 @@ LoyaltyFooterSection.defaultProps = {
   isConfirmationPage: false,
   earnedRewardAvailable: false,
   isAddedToBagPage: false,
+  noShowSpecialCharacter: false,
 };
 
 renderConfirmationAndBagLinks.propTypes = {
