@@ -5,6 +5,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -94,7 +95,9 @@ class Header extends React.PureComponent {
       totalItems,
       favStore,
       isPickupModalOpen,
+      loyaltyPromoBanner,
     } = this.props;
+
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
     return (
@@ -136,7 +139,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        <LoyaltyPromoBanner />
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -158,6 +161,7 @@ class Header extends React.PureComponent {
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
+        <SpinnerOverlay />
       </header>
     );
   }
@@ -165,6 +169,7 @@ class Header extends React.PureComponent {
 
 Header.propTypes = {
   className: PropTypes.string.isRequired,
+  loyaltyPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

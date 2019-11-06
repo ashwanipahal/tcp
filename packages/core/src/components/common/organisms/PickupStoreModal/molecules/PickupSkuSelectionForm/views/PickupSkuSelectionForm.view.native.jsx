@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
-import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, DamImage } from '@tcp/core/src/components/common/atoms';
 import { PRODUCT_SKU_SELECTION_FORM } from '@tcp/core/src/constants/reducer.constants';
 import withStyles from '../../../../../hoc/withStyles';
 import styles from '../../../../QuickViewModal/molecules/ProductCustomizeFormPart/styles/ProductCustomizeFormPart.style';
@@ -61,7 +61,13 @@ const PickupSkuSelectionForm = props => {
     <PickUpSkUSectionContainer>
       <ProductSummaryContainer>
         <ImageWrapper>
-          <Image resizeMode="contain" height="202px" width="164px" url={imageUrl} />
+          <DamImage
+            resizeMode="contain"
+            height="202px"
+            width="164px"
+            url={imageUrl}
+            isProductImage
+          />
         </ImageWrapper>
         <ProductDetailSummary>
           <BodyCopyWithSpacing

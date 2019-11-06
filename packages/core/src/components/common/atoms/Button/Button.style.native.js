@@ -5,11 +5,10 @@ import { StyledText } from '../../../../../styles/globalStyles/StyledText.style'
 import { BUTTON_VARIATION } from '.';
 
 const getAdditionalStyle = props => {
-  const { margin } = props;
+  const { margin, padings } = props;
   return {
-    ...(margin && {
-      margin,
-    }),
+    ...(margin && { margin }),
+    ...(padings && { pading: padings }),
   };
 };
 
@@ -276,14 +275,14 @@ const CustomStyleText = styled(StyledText)`
   opacity: ${props => (props.disableButton ? props.theme.opacity.opacity.medium : '1')};
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   font-family: ${props => props.theme.typography.fonts.secondary};
-  font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-  color: ${props => props.color || props.theme.colorPalette.gray[700]};
-  padding: 12px 20px;
+  font-weight: ${props => props.theme.typography.fontWeights.black};
+  color: ${props => props.color || props.theme.colorPalette.gray[800]};
+  padding: 11px 20px;
 
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-      padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
+      ${getAdditionalStyle};
   `
       : ''};
 
@@ -295,6 +294,7 @@ const CustomStyleText = styled(StyledText)`
     props.buttonVariation === 'cautionary'
       ? `
    color: ${props.theme.colorPalette.secondary.dark};
+   font-weight: ${props.theme.typography.fontWeights.extrabold};
    `
       : ''};
 

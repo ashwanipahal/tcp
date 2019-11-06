@@ -10,6 +10,7 @@ import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/style
 import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { isAndroid } from '../../../../../../../utils/index.native';
 import { Button } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import PickupStoreListContainer from '../../PickupStoreList';
@@ -26,6 +27,18 @@ import styles, {
 import { PICKUP_LABELS } from '../../../PickUpStoreModal.constants';
 
 class PickupStoreSelectionForm extends React.PureComponent<Props> {
+  componentDidMount() {
+    const { onSearch, openRestrictedModalForBopis, isSkuResolved } = this.props;
+    if (openRestrictedModalForBopis || isSkuResolved) {
+      onSearch();
+    }
+  }
+
+  componentDidUpdate() {
+    const { prePopulateZipCodeAndSearch, handleSubmit, change } = this.props;
+    prePopulateZipCodeAndSearch(handleSubmit, change);
+  }
+
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
     const {
       isShoppingBag,
@@ -114,7 +127,6 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
 
     const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
     disableButton = sizeAvailable ? !sizeAvailable : enableButton;
-
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
@@ -139,7 +151,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
               variation="secondary"
-              selectedValue={selectedValue}
+              selectedValue={selectedValue && selectedValue.toString()}
               onValueChange={itemValue => {
                 const { onQuantityChange, form } = this.props;
                 if (onQuantityChange) {
@@ -150,7 +162,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           </DistanceCol>
         </Row>
         <Button
-          margin="16px 0 20px 0"
+          margin={isAndroid() ? '16px 0 35px 0' : '16px 0 25px 0'}
           color="white"
           fill="BLUE"
           text="Search"
@@ -197,9 +209,12 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       isBossSelected,
       isShowMessage,
       getIsBopisAvailable,
+      isGetUserStoresLoaded,
     } = this.props;
     return (
       !storeLimitReached &&
+      isGetUserStoresLoaded &&
+      preferredStore &&
       prefStoreWithData && (
         <PickupStoreListItem
           sameStore={sameStore}

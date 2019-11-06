@@ -54,6 +54,10 @@ const getIsOrderHasPickup = createSelector(
   orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
 );
 
+const getCardType = state => {
+  return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
+};
+
 export const isGuest = createSelector(
   getPersonalDataState,
   state => (state == null ? true : !!state.get('isGuest'))
@@ -333,6 +337,8 @@ const getBillingLabels = createSelector(
       'lbl_billing_cardEditSave',
       'lbl_billing_cvvCode',
       'lbl_billing_continueWith',
+      'lbl_billing_continueWithPayPal',
+      'lbl_billing_payPalLongText',
       'lbl_billing_cardEditUnSavedError',
       'lbl_billing_addCC',
     ];
@@ -367,6 +373,8 @@ const getBillingLabels = createSelector(
       lbl_billing_cardEditCancel: cancelButtonText,
       lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
+      lbl_billing_continueWithPayPal: continueWithPayPal,
+      lbl_billing_payPalLongText: payPalLongText,
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
       lbl_billing_addCC: addCreditCard,
     } = labels;
@@ -399,6 +407,8 @@ const getBillingLabels = createSelector(
       select,
       cvvCode,
       continueWith,
+      continueWithPayPal,
+      payPalLongText,
       addCreditCard,
     };
   }
@@ -916,6 +926,9 @@ export const getVenmoUserName = () => {
   return username;
 };
 
+const getPayPalSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']) || null;
+};
 const getShippingAddressList = createSelector(
   [getAddressListState, getCurrentSiteId],
   (userAddresses, country) => {
@@ -945,6 +958,21 @@ function getVenmoUserEmail(state) {
   const { emailAddress: pickupEmail } = getPickupValues(state);
   return getUserEmail(state) || shippingEmail || pickupEmail;
 }
+
+const getCheckoutPageEmptyBagLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      { keyLabel: 'emptyBagText', key: 'lbl_review_emptyBagText' },
+      { keyLabel: 'emptyBagSubText', key: 'lbl_review_emptyBagSubText' },
+    ];
+    labelKeys.forEach(({ key, keyLabel }) => {
+      labels[keyLabel] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
 
 export default {
   getIsOrderHasShipping,
@@ -1016,6 +1044,7 @@ export default {
   getInternationalCheckoutApiUrl,
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
+  getPayPalSettings,
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
@@ -1033,4 +1062,6 @@ export default {
   getVenmoUserEmail,
   getVenmoError,
   getPickupValues,
+  getCheckoutPageEmptyBagLabels,
+  getCardType,
 };

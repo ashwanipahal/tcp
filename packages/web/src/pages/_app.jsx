@@ -23,8 +23,10 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
+import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -96,9 +98,28 @@ class TCPWebApp extends App {
     }
   };
 
+  // this function will check if user not login overlay needs to be displayed on page load
+  // it will check for login user
+  checkForlogin = () => {
+    const { router, store } = this.props;
+    const { target } = (router && router.query) || {};
+    if (target === 'login') {
+      const isUserLoggedIn = getUserLoggedInState(store.getState());
+      if (isUserLoggedIn !== true) {
+        store.dispatch(
+          openOverlayModal({
+            component: 'login',
+            componentProps: 'login',
+          })
+        );
+      }
+    }
+  };
+
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
+    this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
 
     try {
@@ -129,6 +150,7 @@ class TCPWebApp extends App {
 
   componentDidUpdate() {
     ReactAxe.runAccessibility();
+    this.checkForlogin();
   }
 
   /**
@@ -276,6 +298,7 @@ class TCPWebApp extends App {
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
+              <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
             {process.env.ANALYTICS && <RouteTracker />}

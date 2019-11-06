@@ -1,4 +1,6 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
+import layoutAbstractor from '@tcp/core/src/services/abstractors/bootstrap/layout';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import { executeUnbxdAPICall } from '../../handler';
 
 import endpoints from '../../endpoints';
@@ -144,6 +146,55 @@ class ProductsDynamicAbstractor {
     return true;
   };
 
+  /**
+   * @function parsedModuleData Parses the module and layout data
+   * @param {Object} promoCombination Promotion Data to be parsed
+   * @return {Object} layout and module parsed data
+   */
+  // eslint-disable-next-line no-unused-vars
+  parsedModuleData = async promoCombination => {
+    const moduleObjects = [];
+    const slotsObject = {};
+    let modules = {};
+    try {
+      Object.keys(promoCombination.val).forEach(slotType => {
+        promoCombination.val[slotType].forEach(slot => {
+          if (slot.val.cid) {
+            const moduleData = {
+              name: slot.sub,
+              moduleName: slot.val.sub,
+              contentId: slot.val.cid,
+            };
+            moduleObjects.push({
+              name: moduleData.moduleName,
+              data: {
+                contentId: moduleData.contentId,
+                slot: moduleData.name,
+                lang: getAPIConfig().language,
+              },
+            });
+            if (!Array.isArray(slotsObject[slotType])) {
+              slotsObject[slotType] = [];
+            }
+            slotsObject[slotType].push(moduleData);
+          }
+        });
+      });
+      modules = await this.moduleResolver(moduleObjects);
+    } catch (err) {
+      this.handleValidationError(err);
+    }
+    return {
+      modules,
+      layout: slotsObject,
+    };
+  };
+
+  moduleResolver = async moduleObjects => {
+    const response = await layoutAbstractor.getModulesData(moduleObjects);
+    return layoutAbstractor.processModuleData(response.data);
+  };
+
   // eslint-disable-next-line complexity
   getProducts = (reqObj, state) => {
     const {
@@ -195,7 +246,7 @@ class ProductsDynamicAbstractor {
         'facet.multiselect': true,
         selectedfacet: true,
         fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price, high_offer_price, low_list_price, high_list_price',
+          'alt_img,style_partno,giftcard,swatchimage,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price, high_offer_price, low_list_price, high_list_price',
       },
       webService: this.getPlpOrSlpEndpoint(isSearch),
     };

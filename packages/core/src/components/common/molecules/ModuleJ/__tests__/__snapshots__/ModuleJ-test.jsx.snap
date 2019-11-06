@@ -8,7 +8,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kAzzGY",
+        "componentId": "sc-kgoBCf",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleJ component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kAzzGY",
+      "styledComponentId": "sc-kgoBCf",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -165,9 +165,12 @@ exports[`ModuleJ component renders correctly 1`] = `
         tabItems={
           Array [
             Object {
-              "category": Object {
-                "cat_id": "47526",
-              },
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47526",
+                },
+              ],
               "singleCTAButton": Object {
                 "action": "",
                 "external": 0,
@@ -181,9 +184,12 @@ exports[`ModuleJ component renders correctly 1`] = `
               },
             },
             Object {
-              "category": Object {
-                "cat_id": "47502>47535>54071",
-              },
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47502>47535>54071",
+                },
+              ],
               "singleCTAButton": Object {
                 "action": "",
                 "external": 0,
@@ -197,9 +203,12 @@ exports[`ModuleJ component renders correctly 1`] = `
               },
             },
             Object {
-              "category": Object {
-                "cat_id": "47503>47544",
-              },
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47503>47544",
+                },
+              ],
               "singleCTAButton": Object {
                 "action": "",
                 "external": 0,
@@ -213,9 +222,12 @@ exports[`ModuleJ component renders correctly 1`] = `
               },
             },
             Object {
-              "category": Object {
-                "cat_id": "47501>47526",
-              },
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47501>47526",
+                },
+              ],
               "singleCTAButton": null,
               "text": Object {
                 "text": "TODDLER BOY",

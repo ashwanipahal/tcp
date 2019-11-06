@@ -246,6 +246,7 @@ const getColorsMap = ({
       color: {
         name: defaultColor,
         imagePath: getImgPath(isBundleProduct ? product.prodpartno : product.imagename).colorSwatch,
+        swatchImage: product.swatchimage,
       },
     },
   ];
@@ -284,6 +285,15 @@ const getPdpUrl = (isBundleProduct, product) => {
 
 const checkIfBundleProduct = product => {
   return (product.product_type && product.product_type.toLowerCase() === 'bundle') || false;
+};
+
+const setPriceRange = product => {
+  return {
+    highListPrice: parseFloat(product.high_list_price) || 0,
+    highOfferPrice: parseFloat(product.high_offer_price) || 0,
+    lowListPrice: parseFloat(product.low_list_price) || 0,
+    lowOfferPrice: parseFloat(product.low_offer_price) || 0,
+  };
 };
 
 export const parseProductInfo = (
@@ -419,6 +429,7 @@ export const parseProductInfo = (
       promotionalMessage: getPromotionalMessage(product),
       promotionalPLCCMessage: getPromotionalPLCCMessage(product),
       long_product_title: product.long_product_title || '',
+      priceRange: setPriceRange(product),
     },
     miscInfo: {
       rating: getMiscInfoRating(product),

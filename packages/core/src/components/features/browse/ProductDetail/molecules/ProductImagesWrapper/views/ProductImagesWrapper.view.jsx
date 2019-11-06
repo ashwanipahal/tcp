@@ -9,15 +9,18 @@ import { PRODUCT_INFO_PROP_TYPE_SHAPE } from '../../../../ProductListing/molecul
 class ProductImageWrapper extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isFullSizeModalOpen: false };
+    this.state = {
+      isFullSizeModalOpen: false,
+    };
     this.handleShowHideFullSizeModalClick = this.handleShowHideFullSizeModalClick.bind(this);
   }
 
   colorChange = e => {
     // const { selectedSize } = this.state;
-    const { onChangeColor } = this.props;
+    const { onChangeColor, initialValues } = this.props;
+    const { Fit, Quantity, Size } = initialValues;
     if (onChangeColor) {
-      onChangeColor(e);
+      onChangeColor(e, Size && Size.name, Fit && Fit.name, Quantity);
     }
   };
 
@@ -89,6 +92,7 @@ ProductImageWrapper.defaultProps = {
   onChangeColor: () => {},
   currentProduct: {},
   currentColorEntry: {},
+  initialValues: {},
 };
 
 ProductImageWrapper.propTypes = {
@@ -120,6 +124,7 @@ ProductImageWrapper.propTypes = {
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE,
   currentColorEntry: PropTypes.shape({}),
   isGiftCard: PropTypes.bool.isRequired,
+  initialValues: PropTypes.shape({}),
 };
 
 export default ProductImageWrapper;

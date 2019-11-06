@@ -24,6 +24,7 @@ export {
   readCookieMobileApp,
   createGoogleMapUrl,
   mapHandler,
+  formatPhnNumber,
 } from './utils.app';
 
 export { default, getSiteId } from './utils.app';
@@ -61,10 +62,9 @@ export {
   getModifiedLanguageCode,
   generateTraceId,
   parseBoolean,
-  enableBodyScroll,
-  disableBodyScroll,
   getStyliticsUserName,
   getStyliticsRegion,
+  canUseDOM,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';
