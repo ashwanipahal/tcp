@@ -12,6 +12,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="primary"
         fontSize="fs16"
         fontWeight="extrabold"
         margin={null}
@@ -25,8 +26,9 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
-        fontWeight="semibold"
+        fontWeight="extrabold"
         margin={null}
         numberOfLines={null}
         text="lbl_common_point_balance"
@@ -39,8 +41,9 @@ exports[`MyRewards should render correctly 1`] = `
         <Styled(BodyCopy)
           accessibilityText=""
           dataLocator=""
+          fontFamily="secondary"
           fontSize="fs16"
-          fontWeight="semibold"
+          fontWeight="extrabold"
           margin={null}
           numberOfLines={null}
           text="lbl_my_rewards_points_history"
