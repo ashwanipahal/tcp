@@ -6,7 +6,6 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
-
 import {
   ModuleD,
   ModuleH,
@@ -27,6 +26,7 @@ import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -135,6 +135,7 @@ class HomePageView extends React.PureComponent<Props> {
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
+        <QuickViewModal navigation={navigation} />
       </LazyloadScrollView>
     );
   }

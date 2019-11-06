@@ -5,6 +5,7 @@ import { toastMessageInfo } from '../../../atoms/Toast/container/Toast.actions.n
 import { isMobileApp } from '../../../../../utils';
 import { productTabListDataReq } from './ProductTabList.actions';
 import ProductTabListView from '../views';
+import errorMessage from '../../../../../services/handler/stateful/errorResponseMapping/index.json';
 
 class ProductTabListContainer extends React.PureComponent {
   constructor(props) {
@@ -34,12 +35,11 @@ class ProductTabListContainer extends React.PureComponent {
     const { productTabList, showToast } = this.props;
     let { selectedCategoryId } = this.state;
     selectedCategoryId = selectedCategoryId || [];
-
     const tabsData = selectedCategoryId.map(id => productTabList[id]).filter(item => item);
     if (tabsData.length === selectedCategoryId.length) {
       tabsData.forEach(tabData => {
         if (!tabData.length && isMobileApp()) {
-          showToast('SomeThing Went wrong.');
+          showToast(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException);
         }
       });
     }
