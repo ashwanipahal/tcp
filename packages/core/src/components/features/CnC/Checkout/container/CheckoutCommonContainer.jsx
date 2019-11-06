@@ -406,6 +406,7 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
       isPaymentDisabled: getIsPaymentDisabled(state),
+      cardType: selectors.getCardType(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),
