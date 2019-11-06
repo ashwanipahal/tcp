@@ -16,7 +16,7 @@
 #import <AppCenterReactNativeAnalytics.h>
 #import <AppCenterReactNativeCrashes.h>
 #import <MPulse/MPulse.h>
-#import <raygun4apple/raygun4apple_iOS.h>
+//#import <raygun4apple/raygun4apple_iOS.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
@@ -42,10 +42,10 @@
   // ********************************
   // RAYGUN (Error Reporting)
   // ********************************
-  RaygunClient *rgClient = [RaygunClient sharedInstanceWithApiKey:@"W1Hxa4blNaRqscJ9Y5A0Q"];
-  [rgClient enableCrashReporting];
-  NSException *exception = [NSException exceptionWithName:@"TestException" reason:@"Something went wrong" userInfo:nil];
-  [RaygunClient.sharedInstance sendException:exception withTags:@[@"CustomTag1", @"CustomTag2"]];
+//  RaygunClient *rgClient = [RaygunClient sharedInstanceWithApiKey:@"W1Hxa4blNaRqscJ9Y5A0Q"];
+//  [rgClient enableCrashReporting];
+//  NSException *exception = [NSException exceptionWithName:@"TestException" reason:@"Something went wrong" userInfo:nil];
+//  [RaygunClient.sharedInstance sendException:exception withTags:@[@"CustomTag1", @"CustomTag2"]];
   //  [rgClient enableRealUserMonitoring];
   //  [RaygunClient.sharedInstance enableNetworkPerformanceMonitoring];
   

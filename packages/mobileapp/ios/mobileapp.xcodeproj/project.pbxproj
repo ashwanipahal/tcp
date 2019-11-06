@@ -207,8 +207,6 @@
 		CA0946D72361DAF4004810F7 /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		CA0946D82361DB23004810F7 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		CA0946D92361DB23004810F7 /* raygun4apple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA9E21D223688E9F00365F24 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
-		CA9E21D323688E9F00365F24 /* raygun4apple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA9E21D5236890C100365F24 /* raygun4apple.framework in Sources */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		CA9E21E3236891C900365F24 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		CA9E21E4236891C900365F24 /* raygun4apple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -526,17 +524,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA9E21D423688E9F00365F24 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CA9E21D323688E9F00365F24 /* raygun4apple.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CA9E21E5236891C900365F24 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -721,7 +708,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA9E21D223688E9F00365F24 /* raygun4apple.framework in Frameworks */,
 				A577BC552E4719CE43826911 /* libPods-mobileapp_int.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1214,7 +1200,6 @@
 				84677A7E230BCD44001F5301 /* Bundle React Native code and images */,
 				852DF6F9A8BB2C2DEF74A052 /* [CP] Embed Pods Frameworks */,
 				941F0BC94C693684A2032E5F /* [CP] Copy Pods Resources */,
-				CA9E21D423688E9F00365F24 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
