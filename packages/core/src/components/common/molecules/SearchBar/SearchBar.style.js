@@ -12,7 +12,9 @@ export default css`
 
     .searchWrapper {
       top: 0;
-      height: 50px;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .searchbar {
