@@ -45,7 +45,7 @@ class ImageCarousel extends React.PureComponent {
     const { item, selectedColorIndex, onGoToPDPPage, productImageWidth } = this.props;
     const { activeSlideIndex } = this.state;
     const { colorsMap, imagesByColor, productInfo } = item;
-    const { pdpUrl, name } = productInfo;
+    const { pdpUrl } = productInfo;
     const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
     const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
@@ -76,7 +76,7 @@ class ImageCarousel extends React.PureComponent {
             : `https://test4.childrensplace.com${imgSource.item.imageUrl}`;
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, name)}
+              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}

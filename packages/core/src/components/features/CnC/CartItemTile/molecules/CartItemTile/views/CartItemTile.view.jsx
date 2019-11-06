@@ -690,7 +690,7 @@ class CartItemTile extends PureComponent {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {` ${labels.qty}:`}
@@ -700,7 +700,7 @@ class CartItemTile extends PureComponent {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator="addedtobag-productqty"
         >
@@ -718,7 +718,7 @@ class CartItemTile extends PureComponent {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {this.getSizeLabel(productDetail, labels)}
@@ -728,7 +728,7 @@ class CartItemTile extends PureComponent {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator={getLocator('cart_item_size')}
         >
@@ -884,7 +884,7 @@ class CartItemTile extends PureComponent {
     const { showOnReviewPage } = this.props;
     return (
       <>
-        {!showOnReviewPage ? (
+        {showOnReviewPage ? (
           <div className="size-and-item-container">
             {this.renderSizeAndFit()}
             {this.renderItemQuantity()}
@@ -1108,7 +1108,7 @@ class CartItemTile extends PureComponent {
                         <BodyCopy
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           fontWeight={['extrabold']}
                           textAlign="left"
                         >
@@ -1119,7 +1119,7 @@ class CartItemTile extends PureComponent {
                         className="padding-left-10"
                         fontFamily="secondary"
                         component="span"
-                        fontSize="fs12"
+                        fontSize="fs13"
                         color="gray.800"
                         dataLocator={getLocator('cart_item_color')}
                       >
@@ -1130,7 +1130,7 @@ class CartItemTile extends PureComponent {
                           className="color-fit-size-separator"
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           color="gray.600"
                         >
                           |

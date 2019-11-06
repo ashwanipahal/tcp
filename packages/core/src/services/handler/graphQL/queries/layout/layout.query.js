@@ -17,6 +17,7 @@ const buildQuery = ({ path, brand, country, channel }) => `
           name
           moduleName
           contentId
+          value
         }
       }
     }
