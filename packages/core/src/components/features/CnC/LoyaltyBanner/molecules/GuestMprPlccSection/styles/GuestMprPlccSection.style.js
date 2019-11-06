@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 import CHECKOUT_STAGES, {
   ADDED_TO_BAG_PAGE,
+  PRODUCT_DETAIL_PAGE,
 } from '../../../../../../../../../web/src/pages/App.constants';
 
 const plccMpr = props =>
@@ -14,6 +15,9 @@ const paddingTopSm = props => `
 `;
 const paddingTopMed = props => `
     padding-top: ${props.theme.spacing.ELEM_SPACING.MED};
+`;
+const paddingTopXxs = props => `
+    padding-top: ${props.theme.spacing.ELEM_SPACING.XXS};
 `;
 const fontSize10 = props => `
     font-size: ${props.theme.typography.fontSizes.fs10};
@@ -270,6 +274,25 @@ const Styles = css`
         }
       `
       : ``};
+      ${props =>
+        props.pageCategory === PRODUCT_DETAIL_PAGE
+          ? `
+        .heading-val {
+          ${paddingTopSm(props)}
+          ${fontSize20(props)}
+          ${colorTheme(props)}
+        }
+        .subheading-val {
+          ${paddingTopXxs(props)}
+          ${fontSize12(props)}
+          color: ${props.theme.colorPalette.gray[900]};
+        }
+        .description-val {
+          ${paddingTopXxs(props)}
+          ${fontSize12(props)}
+        }
+      `
+          : ``};
 `;
 
 // ${props => (props.pageCategory ? `` : ``)};

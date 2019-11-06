@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
@@ -42,7 +42,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   startInitiateSearch = () => {
     const { setSearchState, setDataInLocalStorage, redirectToSearchPage } = this.props;
-    const searchText = this.searchInput.current.value;
+    const searchText = this.searchInput ? this.searchInput.current.value : '';
     if (searchText) {
       setDataInLocalStorage(searchText);
       redirectToSearchPage(searchText);
@@ -54,7 +54,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   cancelSearchBar = e => {
     e.preventDefault();
-    const searchText = this.searchInput.current.value;
+    const searchText = this.searchInput ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     if (searchText) {
@@ -71,7 +71,7 @@ class SearchLayoutWrapper extends React.PureComponent {
   };
 
   highlight = inputTextParam => {
-    const text = this.searchInput.current.value;
+    const text = this.searchInput ? this.searchInput.current.value : '';
     let { inputText } = inputTextParam;
     inputText = inputText.toLowerCase();
     const index = inputText.indexOf(text.toLowerCase());
@@ -147,7 +147,7 @@ class SearchLayoutWrapper extends React.PureComponent {
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, labels } = this.props;
-    const searchText = this.searchInput.current.value;
+    const searchText = this.searchInput ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     const searchImage = document
@@ -288,7 +288,7 @@ class SearchLayoutWrapper extends React.PureComponent {
                                     <Anchor
                                       noLink
                                       className="suggestion-label"
-                                      to={`/search/${itemData.text}`}
+                                      to={`/${getSiteId()}/search/${itemData.text}`}
                                       onClick={e => {
                                         e.preventDefault();
                                         redirectToSuggestedUrl(`${itemData.text}`);
