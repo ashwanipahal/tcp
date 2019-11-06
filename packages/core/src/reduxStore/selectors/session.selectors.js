@@ -112,7 +112,6 @@ export const getRecalcOrderPointsInterval = state => {
 export const getIsPayPalEnabled = state => {
   const key = 'BOPIS_MIXCART_PAYPAL_ENABLED';
   return (
-    state[SESSIONCONFIG_REDUCER_KEY] &&
-    state[SESSIONCONFIG_REDUCER_KEY].otherBrandSiteDetails[key] === 'TRUE'
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[key] === 'TRUE'
   );
 };
