@@ -87,6 +87,7 @@ const LoyaltyBannerSection = props => {
     pageCategory,
     openOverlay,
     closeAddedToBagModal,
+    openApplyNowModal,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -193,6 +194,7 @@ const LoyaltyBannerSection = props => {
               earnedRewardAvailable={earnedRewardAvailable}
               openOverlay={openOverlay}
               closeAddedToBagModal={closeAddedToBagModal}
+              openApplyNowModal={openApplyNowModal}
             />
           </div>
         </BodyCopy>
@@ -217,6 +219,7 @@ LoyaltyBannerSection.propTypes = {
   pageCategory: PropTypes.string,
   openOverlay: PropTypes.func.isRequired,
   closeAddedToBagModal: PropTypes.func.isRequired,
+  openApplyNowModal: PropTypes.func.isRequired,
 };
 
 LoyaltyBannerSection.defaultProps = {

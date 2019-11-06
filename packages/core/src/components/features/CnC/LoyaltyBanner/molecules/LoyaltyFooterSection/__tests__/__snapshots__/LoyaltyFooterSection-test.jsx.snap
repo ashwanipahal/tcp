@@ -10,32 +10,22 @@ exports[`LoyaltyFooterSection View Component ProductDetailSection true should re
     <span
       className="links-container"
     >
-      <span
-        className="applyNowLink"
-      >
-        <Connect(ApplyNowModalWrapper)
-          step={2}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Connect(ApplyNowModalWrapper) />
-      </span>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        fontSizeVariation="medium"
+        handleLinkClick={[Function]}
+        noLink={true}
+        underline={true}
+      />
     </span>
-  </div>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    />
+  </span>
 </div>
 `;
 
@@ -52,8 +42,12 @@ exports[`LoyaltyFooterSection View Component is not ProductDetailView should ren
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper)
-          step={2}
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
         />
       </span>
       <span
@@ -71,7 +65,13 @@ exports[`LoyaltyFooterSection View Component is not ProductDetailView should ren
           link={null}
           textAlign="left"
         />
-        <Connect(ApplyNowModalWrapper) />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
       </span>
     </span>
   </div>
@@ -91,8 +91,12 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward tru
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper)
-          step={2}
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
         />
       </span>
       <span
@@ -110,7 +114,13 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward tru
           link={null}
           textAlign="left"
         />
-        <Connect(ApplyNowModalWrapper) />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
       </span>
     </span>
   </div>
@@ -159,7 +169,13 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage & isPlcc true shou
   <span
     className="links-wrapper"
   >
-    <Connect(ApplyNowModalWrapper) />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    />
   </span>
 </div>
 `;
@@ -177,8 +193,12 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper)
-          step={2}
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
         />
       </span>
       <span
@@ -196,7 +216,13 @@ exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render
           link={null}
           textAlign="left"
         />
-        <Connect(ApplyNowModalWrapper) />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
       </span>
     </span>
   </div>
@@ -251,8 +277,12 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper)
-          step={2}
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
         />
       </span>
       <span
@@ -270,7 +300,13 @@ exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardA
           link={null}
           textAlign="left"
         />
-        <Connect(ApplyNowModalWrapper) />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
       </span>
     </span>
   </div>
@@ -290,7 +326,13 @@ exports[`LoyaltyFooterSection View Component isPlcc & isReviewPage true should r
   <div
     className="links-wrapper"
   >
-    <Connect(ApplyNowModalWrapper) />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    />
   </div>
 </div>
 `;
@@ -302,7 +344,13 @@ exports[`LoyaltyFooterSection View Component isPlcc true should render correctly
   <div
     className="links-wrapper"
   >
-    <Connect(ApplyNowModalWrapper) />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    />
   </div>
 </div>
 `;
@@ -346,11 +394,13 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
 <div
   className=" footer-wrapper"
 >
-  <span
-    className="links-wrapper"
-  >
-    <Connect(ApplyNowModalWrapper) />
-  </span>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    fontSizeVariation="medium"
+    handleLinkClick={[Function]}
+    noLink={true}
+    underline={true}
+  />
 </div>
 `;
 
@@ -364,32 +414,22 @@ exports[`LoyaltyFooterSection View Component isProductDetailView should render c
     <span
       className="links-container"
     >
-      <span
-        className="applyNowLink"
-      >
-        <Connect(ApplyNowModalWrapper)
-          step={2}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Connect(ApplyNowModalWrapper) />
-      </span>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        fontSizeVariation="medium"
+        handleLinkClick={[Function]}
+        noLink={true}
+        underline={true}
+      />
     </span>
-  </div>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    />
+  </span>
 </div>
 `;
 
@@ -406,8 +446,12 @@ exports[`LoyaltyFooterSection View Component not isPlcc should render correctly 
       <span
         className="applyNowLink"
       >
-        <Connect(ApplyNowModalWrapper)
-          step={2}
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
         />
       </span>
       <span
@@ -425,7 +469,13 @@ exports[`LoyaltyFooterSection View Component not isPlcc should render correctly 
           link={null}
           textAlign="left"
         />
-        <Connect(ApplyNowModalWrapper) />
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
       </span>
     </span>
   </div>
