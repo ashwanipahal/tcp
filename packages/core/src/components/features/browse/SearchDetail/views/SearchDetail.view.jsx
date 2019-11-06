@@ -99,6 +99,7 @@ const SearchListingView = ({
               currency={currency}
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
+              isLoadingMore={isLoadingMore}
               {...otherProps}
             />
           ) : null}
