@@ -16,6 +16,7 @@ import {
   HeaderContainer,
   UnderlineStyle
 } from '../styles/MyPlaceRewardsCreditCard.style.native';
+const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 
 export class MyPlaceRewardsCreditCard extends PureComponent {
 
@@ -32,6 +33,50 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
         </StyledHeading>
 
         <UnderlineStyle />
+
+        <HeaderContainer>
+          <StyledBodyCopy
+            color="gray.900"
+            mobilefontFamily="primary"
+            fontSize="fs38"
+            textAlign="center"
+            fontWeight="black"
+            text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+            paddingTop="30px"
+          />
+          <StyledBodyCopy
+            color="gray.900"
+            mobilefontFamily="primary"
+            fontSize="fs15"
+            fontWeight="black"
+            text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderTextSuffix')}
+            paddingTop="5px"
+          />
+        </HeaderContainer>
+
+        <ImageContainer>
+          <StyledImage source={headerImage} width="45%" height="112px" />
+        </ImageContainer>
+        <StyledBodyCopy
+          color="gray.900"
+          fontFamily="secondary"
+          fontSize="fs14"
+          textAlign="center"
+          text={getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
+          paddingTop="9px"
+          paddingLeft="12px"
+          paddingRight="12px"
+        />
+        <ButtonWrapper>
+          <Button
+            fill="BLUE"
+            type="submit"
+            color="white"
+            text={getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
+            width="90%"
+            onPress={this.closeModal}
+          />
+        </ButtonWrapper>
       </>
     )
   }
