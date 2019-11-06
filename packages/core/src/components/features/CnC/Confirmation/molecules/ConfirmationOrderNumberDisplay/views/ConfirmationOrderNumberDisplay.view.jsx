@@ -73,7 +73,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
           {isGuest ? (
             <Anchor
               underline
-              to={`${trackOrder.link}&orderId=${orderNumber}&email=${encryptedEmailAddress}`}
+              to={`${trackOrder.link}&orderId=${orderNumber}&emailAddress=${encryptedEmailAddress}`}
               asPath={`${trackOrder.path}/${orderNumber}/${encryptedEmailAddress}`}
             >
               {orderNumber}

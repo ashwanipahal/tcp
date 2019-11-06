@@ -1755,7 +1755,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-dnqmqq",
                     "isStatic": false,
-                    "lastClassName": "fVCHVC",
+                    "lastClassName": "efvruK",
                     "rules": Array [
                       "
   ",
@@ -1764,9 +1764,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       [Function],
                       "
 
-  > *:last-child {
-    margin-right: 0;
-  }
+  ",
+                      [Function],
+                      "
   &.content-wrapper {
     margin: 0 auto;
   }
@@ -1792,13 +1792,13 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               fullBleed={true}
             >
               <Row
-                className="sc-dnqmqq fVCHVC"
+                className="sc-dnqmqq efvruK"
                 fullBleed={true}
                 otherprops={Object {}}
                 tagName="div"
               >
                 <div
-                  className="sc-dnqmqq fVCHVC"
+                  className="sc-dnqmqq efvruK"
                   fullBleed={true}
                   otherprops={Object {}}
                 >

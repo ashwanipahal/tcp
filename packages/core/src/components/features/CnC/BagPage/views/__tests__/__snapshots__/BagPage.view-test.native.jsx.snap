@@ -59,6 +59,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   </Styled(View)>
   <Styled(View)>
     <Connect(AddedToBagContainer)
+      hideHeader={[Function]}
       isNoNEmptyBag={false}
       labels={
         Object {
@@ -272,6 +273,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   </Styled(View)>
   <Styled(View)>
     <Connect(AddedToBagContainer)
+      hideHeader={[Function]}
       isNoNEmptyBag={true}
       labels={
         Object {

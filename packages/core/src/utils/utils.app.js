@@ -4,6 +4,7 @@
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import CookieManager from 'react-native-cookies';
+import get from 'lodash/get';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
@@ -93,6 +94,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
+      break;
+    case 'moduleT':
+      resolve(require('../services/handler/graphQL/queries/moduleT'));
       break;
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
@@ -419,6 +423,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     RWD_APP_VERSION: envConfig.RWD_APP_VERSION,
     isErrorReportingActive: envConfig.isErrorReportingActive,
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
+    paypalEnv: envConfig[`RWD_APP_PAYPAL_ENV_${appTypeSuffix}`],
+    paypalStaticUrl: envConfig[`RWD_APP_PAYPAL_STATIC_DOMAIN_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
     crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
     TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
@@ -480,6 +486,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     isMobile: false,
     cookie: null,
     catalogId,
+    language: '',
   };
 };
 
@@ -718,3 +725,25 @@ export const getTranslateDateInformation = (date, language) => {
     year: 'YYYY',
   });
 };
+
+export const onBack = navigation => {
+  const goBackRoute = get(navigation, 'state.params.backTo', false);
+  const isReset = get(navigation, 'state.params.reset', false);
+  if (isReset) {
+    navigation.pop();
+  } else if (goBackRoute) {
+    navigation.navigate(goBackRoute);
+  } else {
+    navigation.goBack(null);
+  }
+};
+/**
+ * @method formatPhnNumber
+ * @desc returns phone number after stripping space and new line characters
+ * @param {string} phnNumber phone number which needs modification
+ */
+export const formatPhnNumber = phnNumber =>
+  phnNumber
+    .replace(/\n /g, '')
+    .replace(/ /g, '')
+    .replace(')', ') ');

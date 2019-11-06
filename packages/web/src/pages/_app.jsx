@@ -23,6 +23,7 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
+import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
@@ -121,9 +122,9 @@ class TCPWebApp extends App {
     this.checkForResetPassword();
     this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
-    window.testApp = ((payload)=> {
+    window.testApp = payload => {
       store.dispatch(SetTcpSegmentMethodCall(payload));
-    });
+    };
 
     try {
       if (isErrorReportingBrowserActive) {
@@ -301,6 +302,7 @@ class TCPWebApp extends App {
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
+              <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
             {process.env.ANALYTICS && <RouteTracker />}

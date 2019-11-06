@@ -45,11 +45,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -61,7 +61,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -88,11 +88,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -113,7 +114,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -479,11 +480,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -495,7 +496,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -522,11 +523,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -547,7 +549,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -909,11 +911,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -925,7 +927,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -952,11 +954,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -977,7 +980,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -1356,11 +1359,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -1372,7 +1375,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -1399,11 +1402,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -1424,7 +1428,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -1786,11 +1790,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -1802,7 +1806,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -1829,11 +1833,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -1854,7 +1859,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -2216,11 +2221,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -2232,7 +2237,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -2259,11 +2264,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -2284,7 +2290,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -2660,11 +2666,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -2676,7 +2682,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -2715,11 +2721,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -2740,7 +2747,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -3116,11 +3123,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -3132,7 +3139,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -3159,11 +3166,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -3184,7 +3192,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -3560,11 +3568,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -3576,7 +3584,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -3615,11 +3623,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -3640,7 +3649,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4016,11 +4025,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -4032,7 +4041,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -4059,11 +4068,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -4084,7 +4094,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4460,11 +4470,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -4476,7 +4486,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -4503,11 +4513,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -4528,7 +4539,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -4890,11 +4901,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -4906,7 +4917,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -4933,11 +4944,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -4958,7 +4970,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5337,11 +5349,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -5353,7 +5365,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -5380,11 +5392,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -5405,7 +5418,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -5784,11 +5797,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -5800,7 +5813,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -5827,11 +5840,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -5852,7 +5866,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -6245,11 +6259,11 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
       <div
         className="imageWrapper"
       >
-        <Styled(Anchor)
-          IsSlugPathAdded={true}
-          asPath=""
-          noLink={false}
-          to="/p?pid=undefined"
+        <LinkWrapper
+          disableLink={false}
+          noWrap={false}
+          pdpAsPathUrl=""
+          pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
             imgData={
@@ -6261,7 +6275,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             isProductImage={true}
             itemBrand="tcp"
           />
-        </Styled(Anchor)>
+        </LinkWrapper>
         <Styled(BodyCopy)
           className="soldOutLabel"
           color="text.primary"
@@ -6300,11 +6314,12 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
           }
         >
-          <Styled(Anchor)
+          <LinkWrapper
             IsSlugPathAdded={true}
-            asPath=""
-            noLink={false}
-            to="/p?pid=undefined"
+            disableLink={false}
+            noWrap={false}
+            pdpAsPathUrl=""
+            pdpToPath="/p?pid=undefined"
           >
             <Styled(BodyCopy)
               className={null}
@@ -6325,7 +6340,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             >
               Boys Basic Skinny Jeans
             </Styled(BodyCopy)>
-          </Styled(Anchor)>
+          </LinkWrapper>
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)

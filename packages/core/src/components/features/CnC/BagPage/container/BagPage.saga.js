@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
@@ -316,20 +317,55 @@ export function* startPaypalCheckout({ payload }) {
   }
 }
 
-export function* authorizePayPalPayment() {
+export function* startPaypalNativeCheckout() {
+  yield put(getSetIsPaypalPaymentSettings(null));
+  const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
+  // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
+  const fromPage = 'AjaxOrderItemDisplayView';
+  const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
+  if (res) {
+    yield put(getSetIsPaypalPaymentSettings(res));
+  }
+}
+
+export function* authorizePayPalPayment({ payload: { navigation, navigationActions } = {} } = {}) {
   try {
     const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
       checkoutSelectors.getPaypalPaymentSettings
     );
     const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
     const res = yield call(paypalAuthorizationAPI, ...params);
+
     if (res) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+      if (isMobileApp()) {
+        yield call(
+          navigateToCheckout,
+          CONSTANTS.REVIEW_DEFAULT_PARAM,
+          navigation,
+          navigationActions
+        );
+      } else {
+        utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+      }
     }
   } catch (e) {
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
+// export function* authorizePayPalPayment() {
+//   try {
+//     const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
+//       checkoutSelectors.getPaypalPaymentSettings
+//     );
+//     const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
+//     const res = yield call(paypalAuthorizationAPI, ...params);
+//     if (res) {
+//       utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+//     }
+//   } catch (e) {
+//     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
+//   }
+// }
 
 export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
@@ -405,6 +441,7 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_SFL_DATA, getSflDataSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
+  yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT, startPaypalNativeCheckout);
 }
 
 export default BagPageSaga;
