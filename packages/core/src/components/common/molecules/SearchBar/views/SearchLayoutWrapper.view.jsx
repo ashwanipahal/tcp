@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
-import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routerPush, disableBodyScroll, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBarStyle from '../SearchBar.style';
@@ -31,12 +31,25 @@ class SearchLayoutWrapper extends React.PureComponent {
     this.searchInput = React.createRef();
     this.changeSearchText = this.changeSearchText.bind(this);
     this.initiateSearch = this.initiateSearch.bind(this);
+    this.targetElement = React.createRef();
+  }
+
+  componentDidMount() {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      disableBodyScroll(this.targetElement.current);
+    }
   }
 
   componentDidUpdate(prevProps) {
     const currentProp = this.props;
     if (currentProp.isSearchOpen && prevProps.isSearchOpen !== currentProp.isSearchOpen) {
       this.searchInput.current.focus();
+    }
+  }
+
+  componentWillUnmount() {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      enableBodyScroll(this.targetElement.current);
     }
   }
 
@@ -212,7 +225,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <div className="searchWrapper">
+        <div className="searchWrapper" ref={this.targetElement}>
           <div className="searchbar">
             <Image
               alt="search-mobile"
