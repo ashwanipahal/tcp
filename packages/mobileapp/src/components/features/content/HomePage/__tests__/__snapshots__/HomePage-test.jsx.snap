@@ -23,7 +23,7 @@ exports[`HomePageView should render correctly 1`] = `
       ]
     }
   />
-  <HomePageSlots
+  <PageSlots
     modules={
       Object {
         "moduleA": [Function],

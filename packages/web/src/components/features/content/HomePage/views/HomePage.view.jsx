@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
@@ -34,7 +34,7 @@ const HomePageView = dynamic({
   }),
   render: ({ slots }, modules) => {
     return [
-      <HomePageSlots slots={slots} modules={modules} />,
+      <PageSlots slots={slots} modules={modules} />,
       <ModuleT {...mock.moduleT.composites} />,
       <GetCandid />,
       <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />,

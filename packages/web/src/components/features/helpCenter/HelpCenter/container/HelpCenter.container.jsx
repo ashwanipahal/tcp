@@ -1,29 +1,12 @@
-import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 /* eslint-disable no-unused-vars */
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import HelpCenterTemplate from '@tcp/core/src/components/common/organisms/HelpCenterTemplate';
-import HelpTabs from '@tcp/core/src/components/common/molecules/HelpTabs';
+import HelpCenterView from '../views/HelpCenter.view';
 import mock from './mock';
 
-export class HelpCenterContainer extends PureComponent {
-  generateTabs = slots => {
-    const filteredSlots = slots.filter(slot => slot.moduleName === 'helpCenterHome');
-    return filteredSlots[0].data.map(slotData => slotData.leafLink);
-  };
-
-  render() {
-    const { slots, labels } = this.props;
-    const tabProps = {
-      tabs: this.generateTabs(slots),
-    };
-    // TO DO - Implement Left navigation pannel part of another story
-    return <HelpCenterTemplate childProps={tabProps} mainContent={HelpTabs} labels={labels} />;
-  }
-}
 /* eslint-disable no-unused-vars */
-HelpCenterContainer.getInitialProps = async ({ store, isServer }, pageProps) => {
+HelpCenterView.getInitialProps = async ({ store, isServer }, pageProps) => {
   // const state = store.getState();
   // TO DO - UNCOMMENT THE BELOW CODE AFTER CMS INTEGRATION
   // if (!isServer && !state.Layouts.helpCenterPage) {
@@ -33,12 +16,12 @@ HelpCenterContainer.getInitialProps = async ({ store, isServer }, pageProps) => 
   return pageProps;
 };
 
-HelpCenterContainer.propTypes = {
+HelpCenterView.propTypes = {
   slots: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}),
 };
 
-HelpCenterContainer.defaultProps = {
+HelpCenterView.defaultProps = {
   labels: {},
 };
 
@@ -73,4 +56,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(HelpCenterContainer);
+export default connect(mapStateToProps)(HelpCenterView);

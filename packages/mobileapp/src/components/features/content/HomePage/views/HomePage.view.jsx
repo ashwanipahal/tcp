@@ -5,7 +5,7 @@ import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
-import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 
 import {
   ModuleD,
@@ -130,7 +130,7 @@ class HomePageView extends React.PureComponent<Props> {
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
-        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
