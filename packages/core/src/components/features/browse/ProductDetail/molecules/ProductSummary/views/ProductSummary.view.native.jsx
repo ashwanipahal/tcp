@@ -32,7 +32,8 @@ class ProductSummary extends React.PureComponent {
 
   onWriteReview = () => {};
 
-  renderWriteAReviewAnchor = (anchorLabel, isBundleProduct) => {
+  renderWriteAReviewAnchor = anchorLabel => {
+    const { isBundleProduct } = this.props;
     if (isBundleProduct) {
       return (
         <Anchor
@@ -44,15 +45,16 @@ class ProductSummary extends React.PureComponent {
           locator="pdp_lbl_write_review"
           className="details-link"
           onPress={this.onCompleteLook}
-          text="Write A Review"
+          text={anchorLabel}
         />
       );
     }
     return <EmptyView width="30%" />;
   };
 
-  renderCompleteTheLookAnchor = (anchorLabel, isBundleProduct) => {
-    if (!isBundleProduct) {
+  renderCompleteTheLookAnchor = anchorLabel => {
+    const { isBundleProduct, showCompleteTheLook } = this.props;
+    if (showCompleteTheLook && !isBundleProduct) {
       return (
         <Anchor
           fontSizeVariation="medium"
@@ -90,7 +92,7 @@ class ProductSummary extends React.PureComponent {
   };
 
   renderBazaarVoiceComponent = () => {
-    const { isGiftCard, pdpLabels, isBundleProduct } = this.props;
+    const { isGiftCard, pdpLabels } = this.props;
     const { completeTheLook, writeAReview } = pdpLabels;
     if (!isGiftCard) {
       return (
@@ -107,11 +109,8 @@ class ProductSummary extends React.PureComponent {
               text="(0)"
             />
           </ReviewAndRatingContainer>
-          {this.renderWriteAReviewAnchor(writeAReview, isBundleProduct)}
-          {this.renderCompleteTheLookAnchor(
-            completeTheLook && completeTheLook.toLowerCase(),
-            isBundleProduct
-          )}
+          {this.renderWriteAReviewAnchor(writeAReview)}
+          {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
         </BazarVoiceContainer>
       );
     }
@@ -301,6 +300,7 @@ ProductSummary.propTypes = {
   isGiftCard: PropTypes.bool,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
   currencySymbol: PropTypes.string,
+  showCompleteTheLook: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
   isBundleProduct: PropTypes.bool,
 };
@@ -310,6 +310,7 @@ ProductSummary.defaultProps = {
   currencyExchange: 1,
   currencySymbol: '$',
   isGiftCard: false,
+  showCompleteTheLook: false,
   pdpLabels: {},
   isBundleProduct: false,
 };

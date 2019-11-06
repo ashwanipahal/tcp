@@ -109,6 +109,7 @@ const OutfitDetailsView = ({
             plpLabels={plpLabels}
             isOutfitPage
             errorOnHandleSubmit={addToBagError}
+            isPickup
           />
         </div>
       </Col>

@@ -434,6 +434,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       sizeChartLinkVisibility,
       navigation,
       isPickup,
+      onCloseClick,
       ...otherProps
     } = this.props;
     const {
@@ -495,6 +496,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         sizeChartLinkVisibility={sizeChartLinkVisibility}
         navigation={navigation}
         isPickup={isPickup}
+        onCloseClick={onCloseClick}
       />
     );
   }
