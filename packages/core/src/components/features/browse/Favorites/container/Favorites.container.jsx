@@ -72,9 +72,11 @@ class FavoritesContainer extends React.PureComponent {
     );
   };
 
-  onGoToPDPPage = (title, pdpUrl, selectedColorProductId) => {
+  onGoToPDPPage = (title, pdpUrl, selectedColorProductId, productInfo) => {
     const { navigation } = this.props;
-    navigation.navigate('ProductDetail', {
+    const { bundleProduct } = productInfo;
+    const routeName = bundleProduct ? 'BundleDetail' : 'ProductDetail';
+    navigation.navigate(routeName, {
       title,
       pdpUrl,
       selectedColorProductId,
