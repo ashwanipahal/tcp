@@ -1,4 +1,5 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { navigateXHRAction } from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.action';
 import ORDERDETAILS_CONSTANTS from '../OrderDetails.constants';
 import { setOrderDetails } from './OrderDetails.actions';
 import { setOrderDetailInfo, setError } from '../../TrackOrder/container/TrackOrder.actions';
@@ -22,6 +23,7 @@ export function* getOrderDetailsListSaga({ payload }) {
       yield put(setOrderDetailInfo(OrderDetailsList.trackOrderInfo));
     }
     yield put(setOrderDetails(OrderDetailsList.orderDetailsReturn));
+    yield put(navigateXHRAction());
   } catch (err) {
     yield put(setError(err));
   }
