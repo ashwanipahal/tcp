@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /** @module ProductPickup
  * @summary Shows the BOPIS CTA in PDP
  *
@@ -151,6 +152,10 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_PRODUCT_BOPIS: PropTypes.string,
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
     }),
+    isAnchor: PropTypes.bool,
+    sizeUnavailable: PropTypes.string,
+    onPickupClickAddon: PropTypes.func,
+    isOutfitVariant: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -192,13 +197,17 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_BOPIS_ONLY_AVAILABLE: 'Item available for pickup TODAY',
       lbl_Product_pickup_BOSS_AVAILABLE: 'Or choose NO RUSH Pickup ',
       lbl_Product_pickup_BOSS_ONLY_AVAILABLE: 'Choose NO RUSH Pickup ',
-      lbl_Product_pickup_FIND_STORE: 'FIND A STORE',
+      lbl_Product_pickup_FIND_STORE: 'Find In Store',
       lbl_Product_pickup_FREE_SHIPPING: 'FREE Shipping Every Day!',
       lbl_Product_pickup_NO_MIN_PURCHASE: 'No Minimum Purchase Required.',
       lbl_Product_pickup_PICKUP_IN_STORE: 'PICK UP IN STORE',
       lbl_Product_pickup_PRODUCT_BOPIS: 'Buy online - Pick up in store',
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
     },
+    isAnchor: false,
+    sizeUnavailable: 'Size unavailable online?',
+    onPickupClickAddon: () => {},
+    isOutfitVariant: false,
   };
 
   constructor(props) {
@@ -215,19 +224,21 @@ class ProductPickup extends React.PureComponent {
     const {
       onPickUpOpenClick,
       productInfo,
-      itemValues,
+      onPickupClickAddon,
       isBopisEligible,
       isBossEligible,
     } = this.props;
-
     e.preventDefault();
-    return onPickUpOpenClick({
+    onPickUpOpenClick({
       generalProductId: productInfo.generalProductId,
-      initialValues: { color: itemValues && itemValues.color },
       isBopisCtaEnabled: isBopisEligible,
       isBossCtaEnabled: isBossEligible,
+      currentProduct: productInfo,
       colorProductId: productInfo.generalProductId,
     });
+    if (onPickupClickAddon) {
+      onPickupClickAddon();
+    }
   };
 
   /**
@@ -427,64 +438,110 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
+  // eslint-disable-next-line complexity
   render() {
-    const { className, showPickupInfo, isSubmitting, labels } = this.props;
+    const {
+      className,
+      showPickupInfo,
+      isSubmitting,
+      labels,
+      isAnchor,
+      isBopisEligible,
+      sizeUnavailable,
+      isOutfitVariant,
+    } = this.props;
 
     return (
       <React.Fragment>
-        <div className={`${className} pickup-section-container`}>
-          <div className="pickup-sub-container">
-            <div className="pickup-header">
-              <div className="title-pickup-section">
-                <img
-                  className="shipping-icon"
-                  alt="shipping-icon"
-                  src="/static/images/fast-shipping.svg"
-                />
-                <div className="shipping-text-section">
-                  <BodyCopy
-                    fontSize="fs16"
-                    fontWeight="semibold"
-                    fontFamily="secondary"
-                    component="span"
-                  >
-                    {labels.lbl_Product_pickup_FREE_SHIPPING}
-                  </BodyCopy>
-                  <BodyCopy fontSize="fs12" fontFamily="secondary" className="sub-header-pickup">
-                    {labels.lbl_Product_pickup_NO_MIN_PURCHASE}
-                  </BodyCopy>
-                </div>
-              </div>
-            </div>
-            <div className="pickup-content">
-              <div className="pickup-section">
+        {isOutfitVariant && (
+          <Button
+            className="button-find-in-store"
+            buttonVariation="fixed-width"
+            fill="BLACK"
+            disabled={isSubmitting}
+            onClick={this.handlePickupModalClick}
+          >
+            {showPickupInfo
+              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+              : labels.lbl_Product_pickup_FIND_STORE}
+          </Button>
+        )}
+        {!isAnchor && !isOutfitVariant ? (
+          <div className={`${className} pickup-section-container`}>
+            <div className="pickup-sub-container">
+              <div className="pickup-header">
                 <div className="title-pickup-section">
                   <img
-                    className="pickup-icon"
-                    alt="pickup-icon"
-                    src="/static/images/marker-icon.svg"
+                    className="shipping-icon"
+                    alt="shipping-icon"
+                    src="/static/images/fast-shipping.svg"
                   />
-                </div>
-                <div className="pickup-details">
-                  {this.renderPickupTitle()}
-                  {showPickupInfo && this.renderPickupInfo()}
-                  {!showPickupInfo && this.renderPickupInfoError()}
+                  <div className="shipping-text-section">
+                    <BodyCopy
+                      fontSize="fs16"
+                      fontWeight="semibold"
+                      fontFamily="secondary"
+                      component="span"
+                    >
+                      {labels.lbl_Product_pickup_FREE_SHIPPING}
+                    </BodyCopy>
+                    <BodyCopy fontSize="fs12" fontFamily="secondary" className="sub-header-pickup">
+                      {labels.lbl_Product_pickup_NO_MIN_PURCHASE}
+                    </BodyCopy>
+                  </div>
                 </div>
               </div>
-              <Button
-                className="button-find-in-store"
-                buttonVariation="fixed-width"
-                fill="BLACK"
-                disabled={isSubmitting}
-                onClick={this.handlePickupModalClick}
-              >
-                {showPickupInfo
-                  ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                  : labels.lbl_Product_pickup_FIND_STORE}
-              </Button>
+              <div className="pickup-content">
+                <div className="pickup-section">
+                  <div className="title-pickup-section">
+                    <img
+                      className="pickup-icon"
+                      alt="pickup-icon"
+                      src="/static/images/marker-icon.svg"
+                    />
+                  </div>
+                  <div className="pickup-details">
+                    {this.renderPickupTitle()}
+                    {showPickupInfo && this.renderPickupInfo()}
+                    {!showPickupInfo && isBopisEligible && this.renderPickupInfoError()}
+                  </div>
+                </div>
+                <Button
+                  className="button-find-in-store"
+                  buttonVariation="fixed-width"
+                  fill="BLACK"
+                  disabled={isSubmitting}
+                  onClick={this.handlePickupModalClick}
+                >
+                  {showPickupInfo
+                    ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                    : labels.lbl_Product_pickup_FIND_STORE}
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          !isOutfitVariant && (
+            <p className="size-unavailable">
+              <span className="unavailable-text">{sizeUnavailable}</span>
+              <span className="size-find-in-store">
+                <Anchor
+                  noLink
+                  handleLinkClick={this.handlePickupModalClick}
+                  title={
+                    showPickupInfo
+                      ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                      : labels.lbl_Product_pickup_FIND_STORE
+                  }
+                >
+                  {showPickupInfo
+                    ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                    : labels.lbl_Product_pickup_FIND_STORE}
+                </Anchor>
+              </span>
+            </p>
+          )
+        )}
         {/* {this.isBopisEligible && (
           <ContentSlot contentSlotName="pdp_bopis_promo" className="product-details-bopis-promo" />
         )} */}

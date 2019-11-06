@@ -10,7 +10,7 @@ import errorMessage from '../../../../../services/handler/stateful/errorResponse
 function* fetchRecommendationsData() {
   try {
     const result = yield call(RecommendationsAbstractor.getAppData, {
-      pageType: 'pdp',
+      pageType: 'homepageTest',
     });
     yield put(loadRecommendationsData(result));
   } catch (e) {
