@@ -1,25 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckoutPageVanilla component should renders correctly pickup 1`] = `
-<Styled(CnCTemplate)
-  isCheckoutView={true}
-  isConfirmationPage={false}
-  leftSection={[Function]}
-  marginTop={true}
-  orderLedgerAfterView={false}
-  pageCategory="pickup"
-  showLeftSection={false}
-/>
+<Fragment>
+  <Styled(CnCTemplate)
+    isCheckoutView={true}
+    isConfirmationPage={false}
+    leftSection={[Function]}
+    marginTop={true}
+    orderLedgerAfterView={false}
+    pageCategory="pickup"
+    showLeftSection={true}
+  />
+</Fragment>
 `;
 
 exports[`CheckoutPageVanilla component should renders correctly with shipping 1`] = `
-<Styled(CnCTemplate)
-  isCheckoutView={true}
-  isConfirmationPage={false}
-  leftSection={[Function]}
-  marginTop={true}
-  orderLedgerAfterView={false}
-  pageCategory="shipping"
-  showLeftSection={false}
-/>
+<Fragment>
+  <Styled(CnCTemplate)
+    isCheckoutView={true}
+    isConfirmationPage={false}
+    leftSection={[Function]}
+    marginTop={true}
+    orderLedgerAfterView={false}
+    pageCategory="shipping"
+    showLeftSection={true}
+  />
+</Fragment>
 `;
