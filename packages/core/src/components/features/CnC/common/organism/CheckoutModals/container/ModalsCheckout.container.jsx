@@ -17,6 +17,7 @@ import checkoutSelectors, {
 } from '../../../../Checkout/container/Checkout.selector';
 import { closeMiniBag } from '../../../../../../common/organisms/Header/container/Header.actions';
 import { confirmRemoveCartItem } from '../../../../CartItemTile/container/CartItemTile.actions';
+import { closeAddedToBag } from '../../../../AddedToBag/container/AddedToBag.actions';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -30,8 +31,8 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   handleContinueShopping() {
-    const { closeAddedToBag } = this.props;
-    closeAddedToBag();
+    const { closeAddedToBag: closeATB } = this.props;
+    closeATB();
   }
 
   render() {
@@ -58,6 +59,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       setCheckoutStage,
       bagPageServerError,
       checkoutModalComponent,
+      closeAddedToBagModal,
     } = this.props;
     return (
       <ModalsCheckoutView
@@ -76,6 +78,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         closeMiniBagDispatch={closeMiniBagDispatch}
         labels={labels}
         closeItemDeleteModal={closeItemDeleteModal}
+        closeAddedToBagModal={closeAddedToBagModal}
         currentSelectItemInfo={currentSelectItemInfo}
         deleteConfirmationModalLabels={deleteConfirmationModalLabels}
         confirmRemoveCartItem={removeCartItem}
@@ -117,6 +120,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     closeMiniBagDispatch: () => {
       dispatch(closeMiniBag());
+    },
+    closeAddedToBagModal: payload => {
+      dispatch(closeAddedToBag(payload));
     },
     closeItemDeleteModal,
     removeCartItem: payload => {

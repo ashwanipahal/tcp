@@ -48,7 +48,7 @@ class ModuleJ extends React.PureComponent {
 
   onProductTabChange = (catId, tabItem) => {
     this.setState({
-      selectedCategoryId: catId,
+      selectedCategoryId: catId.toString(),
       selectedTabItem: tabItem,
     });
   };
@@ -59,6 +59,7 @@ class ModuleJ extends React.PureComponent {
     const { selectedCategoryId } = this.state;
     let selectedProductList = productTabList[selectedCategoryId];
     selectedProductList = selectedProductList ? selectedProductList.slice(0, TOTAL_IMAGES) : [];
+
     return (
       <ImageSlideWrapper>
         {item.map(productItem => {
@@ -107,6 +108,7 @@ class ModuleJ extends React.PureComponent {
     const { productTabList } = this.props;
     let selectedProductList = productTabList[selectedCategoryId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
+
     const selectedProductCarouselList = selectedProductList.reduce(
       (list, item, index) => {
         const lastList = list[list.length - 1];

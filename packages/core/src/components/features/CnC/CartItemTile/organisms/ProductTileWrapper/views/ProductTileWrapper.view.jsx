@@ -117,7 +117,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
     isUserLoggedIn,
     isBagPageSflSection,
     showPlccApplyNow,
-    isBagPage
+    isBagPage,
+    openModalApplyNowModal
   ) => {
     if (productSectionData.size === 0) {
       return (
@@ -127,6 +128,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isBagPageSflSection={isBagPageSflSection}
           showPlccApplyNow={showPlccApplyNow}
           onLinkClick={this.onLinkClick}
+          openModalApplyNowModal={openModalApplyNowModal}
         />
       );
     }
@@ -159,6 +161,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       isSflItemRemoved,
       setHeaderErrorState,
       navigation,
+      openModalApplyNowModal,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -249,7 +252,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isUserLoggedIn,
           isBagPageSflSection,
           showPlccApplyNow,
-          isBagPage
+          isBagPage,
+          openModalApplyNowModal
         )}
       </>
     );
