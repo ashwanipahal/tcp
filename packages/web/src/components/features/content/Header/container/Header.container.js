@@ -33,7 +33,7 @@ const mapStateToProps = state => {
     navigationDrawer: Header.navigationDrawer,
     isUserPlcc: isPlccUser(state),
     userName: getUserName(state),
-    isRememberedUser: { isRememberedUser },
+    isRememberedUser: isRememberedUser(state),
     userPoints: getCurrentPointsState(state),
     userRewards: getTotalRewardsState(state),
     isLoggedIn: getUserLoggedInState(state),

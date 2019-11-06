@@ -15,6 +15,7 @@ type Props = {
   onLinkClick: Function,
   closeMiniBag: Function,
   isRememberedUser: Boolean,
+  isUserLoggedIn: Boolean,
 };
 const MiniBagHeader = ({
   labels,
@@ -23,6 +24,7 @@ const MiniBagHeader = ({
   onLinkClick,
   closeMiniBag,
   isRememberedUser,
+  isUserLoggedIn,
 }: Props) => {
   const createAccount = 'createAccount';
   const login = 'login';
@@ -57,7 +59,7 @@ const MiniBagHeader = ({
           </BodyCopy>
         </Anchor>
       </div>
-      {!userName ? (
+      {!userName || !isUserLoggedIn ? (
         <>
           <div className="continue-shopping">
             <Button className="logIn" onClick={e => onLinkClick({ e, componentId: login })}>

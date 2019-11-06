@@ -142,7 +142,7 @@ class LoginPageContainer extends React.PureComponent {
         updateHeader={updateHeader}
         navigation={navigation}
         toastMessage={toastMessage}
-        isRememberedUser
+        isRememberedUser={rememberedUserFlag}
         resetChangePasswordState={resetChangePasswordState}
       />
     );

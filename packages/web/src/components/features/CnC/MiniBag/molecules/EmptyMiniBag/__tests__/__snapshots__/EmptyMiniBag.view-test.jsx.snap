@@ -48,6 +48,84 @@ exports[`Empty Mini Bag Component should render correctly 1`] = `
       </Styled(BodyCopy)>
     </Styled(Anchor)>
   </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Button)
+      className="logIn"
+      onClick={[Function]}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        log In
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+  </div>
+  <div
+    className="createAccountWrapper"
+  >
+    <Styled(BodyCopy)
+      className="accountText"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Dont have an account
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="accountText"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Create one now to start earning points!
+    </Styled(BodyCopy)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Button)
+      className="createAccount"
+      onClick={[Function]}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        create Account
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+  </div>
 </div>
 `;
 
@@ -98,6 +176,84 @@ exports[`Empty Mini Bag Component should render correctly with labels name 1`] =
         continue Shopping
       </Styled(BodyCopy)>
     </Styled(Anchor)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Button)
+      className="logIn"
+      onClick={[Function]}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        log In
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+  </div>
+  <div
+    className="createAccountWrapper"
+  >
+    <Styled(BodyCopy)
+      className="accountText"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Dont have an account
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="accountText"
+      color="text.primary"
+      component="p"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Create one now to start earning points!
+    </Styled(BodyCopy)>
+  </div>
+  <div
+    className="continue-shopping"
+  >
+    <Styled(Button)
+      className="createAccount"
+      onClick={[Function]}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        create Account
+      </Styled(BodyCopy)>
+    </Styled(Button)>
   </div>
 </div>
 `;

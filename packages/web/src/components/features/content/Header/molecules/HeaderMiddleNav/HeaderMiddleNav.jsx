@@ -88,9 +88,10 @@ class HeaderMiddleNav extends React.PureComponent {
     isRememberedUser
   ) => {
     const { userNameClick, triggerLoginCreateAccount, isSearchOpen } = this.state;
-    const { isOpenOverlay } = this.props;
+    const { isOpenOverlay, isLoggedIn } = this.props;
     const displayName = userName || readCookie('tcp_firstname');
-    return userName && !isSearchOpen ? (
+
+    return userName && isLoggedIn && !isSearchOpen ? (
       <LoggedInUserInfo
         mainId="accountDrawer"
         userName={userName}

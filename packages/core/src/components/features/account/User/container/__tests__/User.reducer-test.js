@@ -16,7 +16,7 @@ describe('User reducer', () => {
     defaultStore: null,
     isRegisteredUserCallDone: false,
     isFetching: false,
-    isRemembered: true,
+    isRemembered: null,
   });
 
   it('should return default state', () => {
