@@ -22,7 +22,7 @@ class LookingForProductDetail extends React.PureComponent {
     const { closeSearchLayover } = this.props;
     closeSearchLayover();
     routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
-      shallow: true,
+      shallow: false,
     });
   };
 
