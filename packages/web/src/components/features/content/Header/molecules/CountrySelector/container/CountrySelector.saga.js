@@ -72,8 +72,8 @@ export function* submitCountrySelectionData({ payload: data }) {
     );
     const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
     yield put(udpateSiteId(newSiteId));
-    languageRedirect(newCountry, oldCountry, newSiteId, newLanguage, oldLanguage);
     yield put(navigateXHRAction());
+    languageRedirect(newCountry, oldCountry, newSiteId, newLanguage, oldLanguage);
   } catch (error) {
     yield null;
   }

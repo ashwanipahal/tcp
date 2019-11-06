@@ -21,9 +21,9 @@ export function* getOrderDetailsListSaga({ payload }) {
     const OrderDetailsList = yield call(getOrderInfoByOrderId, updatedPayload);
     if (payload.emailAddress) {
       yield put(setOrderDetailInfo(OrderDetailsList.trackOrderInfo));
+      yield put(navigateXHRAction());
     }
     yield put(setOrderDetails(OrderDetailsList.orderDetailsReturn));
-    yield put(navigateXHRAction());
   } catch (err) {
     yield put(setError(err));
   }
