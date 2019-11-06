@@ -163,6 +163,16 @@ const createLinks = (
   return ``;
 };
 
+const getPanelColCount = panelData => {
+  let count = 0;
+  Object.keys(panelData).map(category => {
+    const { items } = panelData[category];
+    count += items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL;
+    return category;
+  });
+  return count;
+};
+
 const L2Panel = props => {
   const {
     className,
@@ -271,6 +281,7 @@ const L2Panel = props => {
                     categoryLayout={categoryLayout}
                     l1Index={l1Index}
                     hideL2Nav={context.hideL2Nav}
+                    panelColCount={getPanelColCount(panelData)}
                   />
                 </Row>
               </Row>

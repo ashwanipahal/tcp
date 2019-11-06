@@ -101,7 +101,7 @@ describe('Category Layout Component', () => {
     ];
     const hideL2Nav = jest.fn();
     const categoryLayoutComp = shallow(
-      <CategoryLayout categoryLayout={mock} l1Index={0} hideL2Nav={hideL2Nav} />
+      <CategoryLayout categoryLayout={mock} l1Index={0} hideL2Nav={hideL2Nav} panelColCount={4} />
     );
     expect(categoryLayoutComp).toMatchSnapshot();
   });

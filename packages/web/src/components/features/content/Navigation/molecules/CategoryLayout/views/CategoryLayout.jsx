@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { configureInternalNavigationFromCMSUrl } from '@tcp/core/src/utils';
+import { configureInternalNavigationFromCMSUrl, getViewportInfo } from '@tcp/core/src/utils';
 import { Heading, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { StyledPromoBanner } from '../CategoryLayout.style';
 
@@ -37,7 +37,7 @@ const createShopByLinks = (links, column, hideL2Nav) => {
   );
 };
 
-const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex, hideL2Nav) => {
+const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colSize, hideL2Nav) => {
   const imgBannerLength = imageBanner ? imageBanner.length : 0;
   const colProps = colStructure[categoryLayoutColName];
   const imgClassName = `${imgBannerLength > 1 ? 'half-img' : ''} ${
@@ -50,7 +50,7 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colIndex, 
         colSize={{
           small: 6,
           medium: 8,
-          large: colProps.col[colIndex] ? colProps.col[colIndex] : 2,
+          large: colSize || 2,
         }}
         ignoreNthRule
       >
@@ -147,11 +147,10 @@ const createTextBanner = (textBanner, l1Index, hideL2Nav) => {
   );
 };
 
-const createShopBySize = (shopBySize, hideL2Nav, categoryLayoutColName, colIndex) => {
+const createShopBySize = (shopBySize, hideL2Nav, categoryLayoutColName, colSize) => {
   const sizes = shopBySize ? shopBySize[0] : {};
   const shopBySizeCol1 = shopBySize ? sizes.linkList.slice(0, 5) : [];
   const shopBySizeCol2 = shopBySize ? sizes.linkList.slice(5) : [];
-  const colProps = colStructure[categoryLayoutColName];
   return (
     shopBySize && (
       <Col
@@ -159,7 +158,7 @@ const createShopBySize = (shopBySize, hideL2Nav, categoryLayoutColName, colIndex
         colSize={{
           small: 6,
           medium: 8,
-          large: colProps[colIndex] ? colProps[colIndex].col : 2,
+          large: colSize || 2,
         }}
         ignoreNthRule
       >
@@ -178,25 +177,35 @@ const createShopBySize = (shopBySize, hideL2Nav, categoryLayoutColName, colIndex
   );
 };
 
-const createCategoryCol = (columns, l1Index, hideL2Nav, categoryLayoutColName) => {
+const createCategoryCol = (columns, l1Index, hideL2Nav, categoryLayoutColName, panelColCount) => {
+  let totalCount = panelColCount;
+  const isDesktopView = getViewportInfo().isDesktop;
+  const colProps = colStructure[categoryLayoutColName];
   return columns.map(({ imageBanner, shopBySize, textBanner }, colIndex) => {
+    const colSize = colProps && colProps.col[colIndex] ? colProps.col[colIndex] : 2;
+    totalCount += colSize;
+    const createElem = isDesktopView ? totalCount <= 12 : true;
     return (
       <React.Fragment>
-        {createShopBySize(shopBySize, hideL2Nav, categoryLayoutColName, colIndex)}
-        {createImgBanner(imageBanner, l1Index, categoryLayoutColName, colIndex, hideL2Nav)}
-        {createTextBanner(textBanner, l1Index, hideL2Nav)}
+        {createElem
+          ? createShopBySize(shopBySize, hideL2Nav, categoryLayoutColName, colSize)
+          : null}
+        {createElem
+          ? createImgBanner(imageBanner, l1Index, categoryLayoutColName, colSize, hideL2Nav)
+          : null}
+        {createElem ? createTextBanner(textBanner, l1Index, hideL2Nav) : null}
       </React.Fragment>
     );
   });
 };
 
 const CategoryLayout = props => {
-  const { categoryLayout, l1Index, hideL2Nav } = props;
+  const { categoryLayout, l1Index, hideL2Nav, panelColCount } = props;
   return (
     <React.Fragment>
       {categoryLayout &&
         categoryLayout.map(({ columns, name }) =>
-          createCategoryCol(columns, l1Index, hideL2Nav, name)
+          createCategoryCol(columns, l1Index, hideL2Nav, name, panelColCount)
         )}
     </React.Fragment>
   );
@@ -206,6 +215,7 @@ CategoryLayout.propTypes = {
   categoryLayout: PropTypes.shape([]),
   l1Index: PropTypes.number,
   hideL2Nav: PropTypes.func.isRequired,
+  panelColCount: PropTypes.number.isRequired,
 };
 
 CategoryLayout.defaultProps = {
