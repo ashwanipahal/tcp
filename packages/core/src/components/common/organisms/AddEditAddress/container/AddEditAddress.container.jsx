@@ -12,6 +12,7 @@ import {
   getAddEditAddressLabels,
   getAddEditErrorMessage,
   getshowNotification,
+  getLoadingState
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
@@ -171,6 +172,7 @@ export const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    isLoading: getLoadingState(state),
     addressResponse: getAddressResponse(state),
     userEmail: getUserEmail(state),
     addressList: getAddressListState(state),

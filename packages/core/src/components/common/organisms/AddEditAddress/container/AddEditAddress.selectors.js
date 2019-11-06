@@ -14,6 +14,9 @@ export const getUserEmail = state => {
   return state[LOGINPAGE_REDUCER_KEY] && state[LOGINPAGE_REDUCER_KEY].get('email1');
 };
 
+export const getLoadingState = state => {
+  return state[ADDEDITADDRESS_REDUCER_KEY].get('isLoading');
+};
 export const getAddressId = (state, props) => {
   return (props.router && props.router.query && props.router.query.addressId) || false;
 };

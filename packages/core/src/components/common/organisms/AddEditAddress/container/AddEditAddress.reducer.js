@@ -3,6 +3,7 @@ import constants from './AddEditAddress.constants';
 
 const initialState = fromJS({
   showNotification: false,
+  isLoading: false,
   error: null,
 });
 
@@ -12,6 +13,8 @@ const AddAddressReducer = (state = initialState, action) => {
       return state.set('error', fromJS(action.payload)).set('showNotification', true);
     case constants.ADD_USER_ADDRESS_SUCCESS:
       return fromJS(action.payload);
+    case constants.SET_LOADING_STATE:
+        return state.set('isLoading', action.payload.isLoading);
     case constants.RESET_ADDRESS_STATE:
       return initialState;
     default:
@@ -21,5 +24,4 @@ const AddAddressReducer = (state = initialState, action) => {
       return state;
   }
 };
-
 export default AddAddressReducer;

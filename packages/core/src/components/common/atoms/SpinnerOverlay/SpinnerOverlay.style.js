@@ -15,13 +15,12 @@ const styles = css`
     cursor: pointer;
     align-items: center;
     justify-content: center;
-  }
-  .show-default-spinner {
     display: flex;
   }
-  .hide-default-spinner {
-    display: none;
+  .show-default-spinner {
+
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;

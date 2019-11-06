@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import CreateAccount from '../../CreateAccount';
 
@@ -39,7 +40,7 @@ class OpenLoginModal extends React.Component<Props> {
   };
 
   render() {
-    const { className, openState, variation, handleContinueAsGuest, handleAfterLogin } = this.props;
+    const { className, openState, variation, handleContinueAsGuest, handleAfterLogin,isLoading } = this.props;
     const { currentForm, component } = this.state;
     return (
       <Modal
@@ -67,6 +68,7 @@ class OpenLoginModal extends React.Component<Props> {
             setLoginModalMountState={this.openForgotPasswordModal}
           />
         )}
+        <SpinnerOverlay />
       </Modal>
     );
   }
@@ -77,6 +79,7 @@ OpenLoginModal.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
   handleAfterLogin: PropTypes.func.isRequired,
+  isLoading :PropTypes.func.isRequired
 };
 
 export default OpenLoginModal;

@@ -21,6 +21,7 @@ import {
   shouldShowRecaptcha,
   getLoginErrorMessage,
   getLabels,
+  getLoadingState,
 } from './LoginPage.selectors';
 import {
   getUserLoggedInState,
@@ -30,6 +31,7 @@ import {
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 import LoginView from '../views';
+
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
@@ -221,6 +223,7 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = state => {
   return {
+    isLoading:getLoadingState(state),
     showNotification: getShowNotificationState(state),
     resetForgotPasswordErrorResponse: getResetEmailResponse(state),
     successFullResetEmail: toggleSuccessfulEmailSection(state),

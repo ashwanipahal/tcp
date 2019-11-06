@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import AddressFormComponent from '../../AddressForm/AddressForm';
 import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
-import styles from '../styles/AddEditAddress.style';
+import styles, { customSpinnerStyle } from '../styles/AddEditAddress.style';
 
 export const AddEditAddress = ({
   className,
   isEdit,
+  isLoading,
   initialValues,
   backToAddressBookClick,
   verifyAddressAction,
@@ -30,7 +32,6 @@ export const AddEditAddress = ({
             message={addEditErrorMessage}
           />
         )}
-
         <AddressVerification
           onSuccess={submitAddressFormAction}
           heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
@@ -46,6 +47,7 @@ export const AddEditAddress = ({
           formErrorMessage={formErrorMessage}
         />
       </Grid>
+      <SpinnerOverlay inheritedStyles={customSpinnerStyle} />
     </div>
   );
 };
@@ -63,6 +65,7 @@ AddEditAddress.propTypes = {
   formErrorMessage: PropTypes.shape({}),
   addEditErrorMessage: PropTypes.string.isRequired,
   showNotification: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 AddEditAddress.defaultProps = {
@@ -77,6 +80,7 @@ AddEditAddress.defaultProps = {
   addressFormLabels: { editAddress: '', addAddressHeading: '' },
   formErrorMessage: {},
   showNotification: false,
+  isLoading: false,
 };
 
 export default withStyles(AddEditAddress, styles);

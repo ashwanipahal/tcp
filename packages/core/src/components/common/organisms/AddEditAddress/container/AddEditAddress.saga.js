@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import constants from './AddEditAddress.constants';
-import { addAddressSuccess, addAddressFail } from './AddEditAddress.actions';
+import { addAddressSuccess, addAddressFail,setLoadingState } from './AddEditAddress.actions';
 import {
   setAddressBookNotification,
   clearGetAddressListTTL,
@@ -12,6 +12,7 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
 
+  yield put(setLoadingState({ isLoading: true }));
   try {
     const res = yield call(addAddress, updatedPayload);
     if (!addToAddressBook) {
@@ -29,8 +30,10 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
     return yield put(addAddressFail(res.body));
   } catch (err) {
     if (!addToAddressBook) {
+      yield put(setLoadingState({ isLoading: false }));
       throw err;
     }
+    yield put(setLoadingState({ isLoading: false }));
     let error = {};
     /* istanbul ignore else */
     error = err;
@@ -41,6 +44,7 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
 export function* updateAddressPut({ payload }, fromCheckout) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
+  yield put(setLoadingState({ isLoading: true }));
   try {
     const res = yield call(
       updateAddress,
@@ -60,12 +64,14 @@ export function* updateAddressPut({ payload }, fromCheckout) {
       }
       return putRes;
     }
+    yield put(setLoadingState({ isLoading: false }));
     return yield put(addAddressFail(res.body));
   } catch (err) {
     let error = {};
     if (err instanceof Error) {
       error = err.response.body;
     }
+    yield put(setLoadingState({ isLoading: false }));
     return yield put(addAddressFail(error));
   }
 }

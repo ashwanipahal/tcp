@@ -20,7 +20,12 @@ export const addAddressFail = (payload: {}) => {
     payload,
   };
 };
-
+export const setLoadingState = payload => {
+  return {
+    payload,
+    type: constants.SET_LOADING_STATE,
+  };
+};
 export const resetState = () => {
   return {
     type: constants.RESET_ADDRESS_STATE,
