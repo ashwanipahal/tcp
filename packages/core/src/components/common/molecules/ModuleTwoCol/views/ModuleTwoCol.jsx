@@ -16,11 +16,11 @@ const DynamicColumns = dynamic({
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
   }),
   render: (properties, modules) => {
-    const { className, slot, ...others } = properties;
+    const { className, slot: slots, ...others } = properties;
 
     return (
-      slot &&
-      slot.map(slotData => {
+      slots &&
+      slots.map(slotData => {
         const Module = modules[slotData.moduleName];
         return (
           <Col colSize={{ small: 6, medium: 8, large: 6 }}>

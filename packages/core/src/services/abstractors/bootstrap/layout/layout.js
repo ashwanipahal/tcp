@@ -60,7 +60,7 @@ const LayoutAbstractor = {
     // Adding Module 2 columns mock
     const layoutResponse = data.items;
 
-    const moduleObjects = LayoutAbstractor.collateModuleObject(layoutResponse);
+    const moduleObjects = LayoutAbstractor.collateModuleObject(layoutResponse, language);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
       return LayoutAbstractor.processModuleData(response.data);
     });
