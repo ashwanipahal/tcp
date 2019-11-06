@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import config from '@tcp/core/src/config/orderConfig';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
@@ -14,6 +16,7 @@ import OrderStatus from '../organism/OrderStatus';
 import OrderGroupHeader from '../organism/OrderGroupHeader';
 import OrderGroupNotification from '../organism/OrderGroupNotification';
 import constants from '../OrderDetails.constants';
+import internalEndpoints from '../../common/internalEndpoints';
 
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 
@@ -127,6 +130,18 @@ class OrderDetailsView extends PureComponent {
       : getLabelValue(ordersLabels, 'lbl_orders_CancelNotification');
     return (
       <div className={className}>
+        <BodyCopy component="div" className="elem-mb-LRG">
+          <Anchor
+            to={internalEndpoints.myOrderPage.link}
+            asPath={internalEndpoints.myOrderPage.path}
+            fontSizeVariation="xlarge"
+            anchorVariation="secondary"
+            data-locator="backLink"
+          >
+            <span className="left-arrow" />
+            {getLabelValue(ordersLabels, 'lbl_orderDetails_back')}
+          </Anchor>
+        </BodyCopy>
         <FormPageHeadingComponent
           heading={getLabelValue(ordersLabels, 'lbl_orderDetails_heading')}
           className="myAccountRightView"
