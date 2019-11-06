@@ -15,6 +15,7 @@ import {
   DownloadContainer,
   ImageTouchableOpacity,
   styles,
+  EmptyView,
 } from '../styles/ImageCarousel.style.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../../common/atoms/Icon/Icon.constants';
@@ -157,6 +158,34 @@ class ImageCarousel extends React.PureComponent {
     );
   };
 
+  renderFavoriteIcon = () => {
+    const { isBundleProduct } = this.props;
+    if (!isBundleProduct) {
+      return (
+        <FavoriteContainer>
+          <CustomIcon
+            name={ICON_NAME.favorite}
+            size={this.favoriteIconSize}
+            color={this.favoriteIconColor}
+            onPress={this.onFavorite}
+            isButton
+            dataLocator="pdp_favorite_icon"
+          />
+          <BodyCopy
+            dataLocator="pdp_favorite_icon_count"
+            margin="0 0 0 8px"
+            mobileFontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            color="gray.600"
+            text="100"
+          />
+        </FavoriteContainer>
+      );
+    }
+    return <EmptyView />;
+  };
+
   render() {
     const {
       imageUrls,
@@ -227,6 +256,7 @@ class ImageCarousel extends React.PureComponent {
                   text={favoritedCount}
                 />
               </FavoriteContainer>
+              {this.renderFavoriteIcon()}
               {imageUrls.length > 1 && (
                 <PaginationDots
                   numberOfDots={imageUrls.length}
@@ -298,6 +328,7 @@ ImageCarousel.propTypes = {
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   currentColorEntry: PropTypes.string,
+  isBundleProduct: PropTypes.bool,
 };
 
 ImageCarousel.defaultProps = {
@@ -310,6 +341,7 @@ ImageCarousel.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   currentColorEntry: '',
+  isBundleProduct: false,
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

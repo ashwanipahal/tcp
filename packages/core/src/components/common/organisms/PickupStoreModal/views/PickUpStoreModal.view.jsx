@@ -15,6 +15,7 @@ import {
   CART_BOPIS_STORE_LIST,
   COLOR_FIT_SIZE_DISPLAY_NAME,
 } from '../PickUpStoreModal.proptypes';
+import { clearAddToPickupErrorState } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import {
   getSkuId,
   getVariantId,
@@ -226,6 +227,7 @@ class PickUpStoreModalView extends React.Component {
 
   onCloseClick() {
     const { closePickupModal } = this.props;
+    clearAddToPickupErrorState();
     closePickupModal({
       isModalOpen: false,
     });

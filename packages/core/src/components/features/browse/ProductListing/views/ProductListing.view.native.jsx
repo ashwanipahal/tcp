@@ -59,18 +59,20 @@ const onRenderHeader = data => {
   } = data;
   return (
     <ListHeaderContainer>
-      <FilterModal
-        filters={filters}
-        labelsFilter={labelsFilter}
-        onSubmit={onSubmit}
-        getProducts={getProducts}
-        navigation={navigation}
-        sortLabels={sortLabels}
-        isFavorite={isFavorite}
-        onFilterSelection={onFilterSelection}
-        onSortSelection={onSortSelection}
-        filteredId={filteredId}
-      />
+      {totalProductsCount && totalProductsCount > 1 && (
+        <FilterModal
+          filters={filters}
+          labelsFilter={labelsFilter}
+          onSubmit={onSubmit}
+          getProducts={getProducts}
+          navigation={navigation}
+          sortLabels={sortLabels}
+          isFavorite={isFavorite}
+          onFilterSelection={onFilterSelection}
+          onSortSelection={onSortSelection}
+          filteredId={filteredId}
+        />
+      )}
 
       {renderItemCountView(totalProductsCount)}
       {renderBrandFilter && renderBrandFilter()}

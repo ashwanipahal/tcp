@@ -59,7 +59,6 @@ const DamImage = (props: Props) => {
       ? `${assetHost}/${config}/${productAssetPath}/${urlVal}`
       : cropImageUrl(urlVal, cropVal, namedTransformation),
   };
-
   return (
     <ImageComponent
       {...otherProps}
