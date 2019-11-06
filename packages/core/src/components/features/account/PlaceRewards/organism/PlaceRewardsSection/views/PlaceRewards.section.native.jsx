@@ -35,7 +35,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs16"
-            fontWeight="extrabold"
+            fontWeight="bold"
             text={getLabelValue(commonLabels, 'lbl_common_point_balance')}
           />
           <RewardsPoints />
@@ -45,7 +45,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="bold"
               text={getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
             />
           </StyledHeading>

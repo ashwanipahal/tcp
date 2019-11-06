@@ -118,7 +118,7 @@ export const RightSection = styled.View`
 export const TitleText = styled.Text`
   color: ${props => props.theme.colorPalette.gray[900]};
   font-family: ${props => props.theme.typography.fonts.primary};
-  font-size: ${props => props.theme.typography.fontSizes.fs15};
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
   font-weight: ${props => props.theme.typography.fontWeights.semibold};
   line-height: 14.5;
 `;

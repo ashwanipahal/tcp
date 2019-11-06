@@ -64,7 +64,6 @@ export const Touchable = styled.TouchableWithoutFeedback``;
 export const ButtonContainer = styled.View`
   padding: 12px 14px 41px;
   align-items: center;
-  font-weight: ${props => props.theme.fonts.fontWeight.extrabold};
 `;
 
 export default {

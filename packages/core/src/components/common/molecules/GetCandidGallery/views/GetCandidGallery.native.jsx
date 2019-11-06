@@ -141,7 +141,7 @@ class GetCandidGallery extends React.PureComponent {
             >
               <Image source={{ uri: ImageUrl }} width={142} height={142} />
               <ShopLookItemCaption
-                mobileFontFamily="secondary"
+                fontFamily="secondary"
                 fontSize="fs14"
                 fontWeight="regular"
                 color="gray.900"
@@ -212,7 +212,7 @@ class GetCandidGallery extends React.PureComponent {
               </ProfileImageWrapper>
               <CaptionTextWrapper>
                 <BodyCopy
-                  mobileFontFamily="secondary"
+                  fontFamily="secondary"
                   fontSize="fs14"
                   fontWeight="regular"
                   color="gray.900"
@@ -223,7 +223,7 @@ class GetCandidGallery extends React.PureComponent {
             <ShopLookWrapper>
               <Divider />
               <Title
-                mobileFontFamily="primary"
+                fontFamily="primary"
                 fontSize="fs20"
                 fontWeight="regular"
                 color="gray.900"

@@ -98,6 +98,8 @@
 		<string>Nunito.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
 		<string>Nunito-Bold.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>TCPLaunchScreen</string>

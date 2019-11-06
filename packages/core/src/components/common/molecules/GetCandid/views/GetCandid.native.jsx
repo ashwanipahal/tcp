@@ -101,16 +101,17 @@ class GetCandid extends React.Component {
           {labels.lbl_getCandid_title && (
             <>
               <Title
-                mobileFontFamily="primary"
+                fontFamily="primary"
                 fontSize="fs20"
                 color="gray.900"
+                fontWeight="medium"
                 marginBottom="12px"
                 text={labels.lbl_getCandid_title}
                 textAlign="center"
                 letterSpacing="ls2"
               />
               <BodyCopy
-                mobileFontFamily="primary"
+                fontFamily="primary"
                 fontSize="fs14"
                 fontWeight="regular"
                 color="gray.900"

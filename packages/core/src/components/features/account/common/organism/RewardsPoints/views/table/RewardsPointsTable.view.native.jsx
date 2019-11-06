@@ -48,7 +48,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs20"
-            fontWeight="extrabold"
+            fontWeight="black"
             color="gray.900"
             text={Math.round(currentPoints || 0)}
           />
@@ -68,7 +68,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs20"
-            fontWeight="extrabold"
+            fontWeight="black"
             color="gray.900"
             text={Math.round(pointsToNextReward || 100)}
           />
