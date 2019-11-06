@@ -106,13 +106,13 @@ const createLoginLinks = (labels, closeAddedToBagModal, openOverlay) => {
   );
 };
 
-const applyNowLearnMoreLinks = (labels, openApplyNowModal, noShowSpecialCharacter) => {
+const applyNowLearnMoreLinks = (labels, openApplyNowModal, isSpecialCharacterVisible) => {
   return (
     <div className="links-wrapper">
       <span className="links-container">
         {renderApplyNowLink(labels, openApplyNowModal)}
         <span className="learnSymbolWrapper elem-pl-XL">
-          {noShowSpecialCharacter && (
+          {isSpecialCharacterVisible && (
             <BodyCopy
               className="symbolWrapper"
               color="text.primary"
@@ -184,14 +184,14 @@ const detailViewFooter = (
   closeAddedToBagModal,
   openOverlay,
   openApplyNowModal,
-  noShowSpecialCharacter
+  isSpecialCharacterVisible
 ) => {
   return (
     <>
       {isGuest && createLoginLinks(labels, closeAddedToBagModal, openOverlay)}
       {!isGuest && (
         <>
-          {!isPlcc && applyNowLearnMoreLinks(labels, openApplyNowModal, noShowSpecialCharacter)}
+          {!isPlcc && applyNowLearnMoreLinks(labels, openApplyNowModal, isSpecialCharacterVisible)}
           {isPlcc && (
             <span className="links-wrapper">{renderLearnMoreLink(labels, openApplyNowModal)}</span>
           )}
@@ -215,7 +215,7 @@ const LoyaltyFooterSection = props => {
     closeAddedToBagModal,
     openOverlay,
     openApplyNowModal,
-    noShowSpecialCharacter,
+    isSpecialCharacterVisible,
   } = props;
   return (
     <div className={`${className} footer-wrapper`}>
@@ -227,7 +227,7 @@ const LoyaltyFooterSection = props => {
           closeAddedToBagModal,
           openOverlay,
           openApplyNowModal,
-          noShowSpecialCharacter
+          isSpecialCharacterVisible
         )}
       {isAddedToBagPage &&
         addedToBagPageLinks(
@@ -273,7 +273,7 @@ LoyaltyFooterSection.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   closeAddedToBagModal: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
-  noShowSpecialCharacter: PropTypes.bool,
+  isSpecialCharacterVisible: PropTypes.bool,
 };
 
 LoyaltyFooterSection.defaultProps = {
@@ -285,7 +285,7 @@ LoyaltyFooterSection.defaultProps = {
   isConfirmationPage: false,
   earnedRewardAvailable: false,
   isAddedToBagPage: false,
-  noShowSpecialCharacter: false,
+  isSpecialCharacterVisible: false,
 };
 
 renderConfirmationAndBagLinks.propTypes = {
