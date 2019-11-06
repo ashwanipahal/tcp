@@ -55,7 +55,7 @@ class ProductSummary extends React.PureComponent {
   };
 
   renderBazaarVoiceComponent = () => {
-    const { isGiftCard, pdpLabels } = this.props;
+    const { isGiftCard, pdpLabels, showCompleteTheLook } = this.props;
     const completeTheLook =
       (pdpLabels.completeTheLook && pdpLabels.completeTheLook.toLowerCase()) ||
       'Complete The Look1';
@@ -81,17 +81,19 @@ class ProductSummary extends React.PureComponent {
               text="(0)"
             />
           </ReviewAndRatingContainer>
-          <Anchor
-            fontSizeVariation="medium"
-            anchorVariation="custom"
-            colorName="gray.900"
-            underline
-            href="#"
-            locator="pdp_anchor_complete_the_look"
-            className="details-link"
-            onPress={this.onCompletLook}
-            text={completeTheLook}
-          />
+          {showCompleteTheLook && (
+            <Anchor
+              fontSizeVariation="medium"
+              anchorVariation="custom"
+              colorName="gray.900"
+              underline
+              href="#"
+              locator="pdp_anchor_complete_the_look"
+              className="details-link"
+              onPress={this.onCompletLook}
+              text={completeTheLook}
+            />
+          )}
         </BazarVoiceContainer>
       );
     }
@@ -206,6 +208,7 @@ ProductSummary.propTypes = {
   offerPrice: PropTypes.number.isRequired,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
   currencySymbol: PropTypes.string,
+  showCompleteTheLook: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
 };
 
@@ -214,6 +217,7 @@ ProductSummary.defaultProps = {
   currencyExchange: 1,
   currencySymbol: '$',
   isGiftCard: false,
+  showCompleteTheLook: false,
   pdpLabels: {},
 };
 
