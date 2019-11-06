@@ -27,6 +27,7 @@ const getUrl = url => {
 };
 export function* fetchPlpProducts({ payload }) {
   try {
+    yield put(loadLayoutData({}, 'productListingPage'));
     const { url, formData, sortBySelected, scrollToTop } = payload;
     const location = getUrl(url);
     let state = yield select();
@@ -42,7 +43,10 @@ export function* fetchPlpProducts({ payload }) {
     );
     if (reqObj.isFetchFiltersAndCountReq) {
       const res = yield call(instanceProductListing.getProducts, reqObj, state);
-      const { layout, modules } = yield call(instanceProductListing.parsedModuleData);
+      const { layout, modules } = yield call(
+        instanceProductListing.parsedModuleData,
+        res.bannerInfo
+      );
       yield put(loadLayoutData(layout, 'productListingPage'));
       yield put(loadModulesData(modules));
       yield put(setListingFirstProductsPage({ ...res }));
@@ -52,7 +56,10 @@ export function* fetchPlpProducts({ payload }) {
     if (reqObj && reqObj.categoryId) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (plpProducts) {
-        const { layout, modules } = yield call(instanceProductListing.parsedModuleData);
+        const { layout, modules } = yield call(
+          instanceProductListing.parsedModuleData,
+          plpProducts.bannerInfo
+        );
         yield put(loadLayoutData(layout, 'productListingPage'));
         yield put(loadModulesData(modules));
         operatorInstance.updateBucketingConfig(plpProducts);
