@@ -71,36 +71,36 @@ describe('PageSlots component', () => {
     expect(component.children()).toMatchInlineSnapshot(
       snapshot,
       `
-      Array [
-        <ModuleC
-          key="id-3"
-          moduleName="moduleC"
-          slotData="slot C Data"
-        >
-          <div>
-            Module C
-          </div>
-        </ModuleC>,
-        <ModuleA
-          key="id-1"
-          moduleName="moduleA"
-          slotData="slot A Data"
-        >
-          <div>
-            Module A
-          </div>
-        </ModuleA>,
-        <ModuleB
-          key="id-2"
-          moduleName="moduleB"
-          slotData="slotB Data"
-        >
-          <div>
-            Module B
-          </div>
-        </ModuleB>,
-      ]
-    `
+            Array [
+              <ModuleC
+                key="id-3"
+                moduleName="moduleC"
+                slotData="slot C Data"
+              >
+                <div>
+                  Module C
+                </div>
+              </ModuleC>,
+              <ModuleA
+                key="id-1"
+                moduleName="moduleA"
+                slotData="slot A Data"
+              >
+                <div>
+                  Module A
+                </div>
+              </ModuleA>,
+              <ModuleB
+                key="id-2"
+                moduleName="moduleB"
+                slotData="slotB Data"
+              >
+                <div>
+                  Module B
+                </div>
+              </ModuleB>,
+            ]
+        `
     );
   });
 
@@ -110,16 +110,15 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-            <ModuleA
-              key="id-1"
-              moduleName="moduleA"
-              slotData="slot A Data"
-            >
-              <div>
-                Module A
-              </div>
-            </ModuleA>
-        `);
+      <ModuleA
+        key="id-1"
+        slotData="slot A Data"
+      >
+        <div>
+          Module A
+        </div>
+      </ModuleA>
+    `);
   });
 
   it('Should render slots even if data does not send required slot', () => {
@@ -138,16 +137,15 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-            <ModuleB
-              key="id-1"
-              moduleName="moduleB"
-              slotData="slot B Data"
-            >
-              <div>
-                Module B
-              </div>
-            </ModuleB>
-        `);
+      <ModuleB
+        key="id-1"
+        slotData="slot B Data"
+      >
+        <div>
+          Module B
+        </div>
+      </ModuleB>
+    `);
   });
 
   it('Should render null if no slot match', () => {
@@ -215,28 +213,26 @@ describe('PageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-            Array [
-              <ModuleA
-                extraProp="extraProp"
-                key="id-1"
-                moduleName="moduleA"
-                slotData="slot B Data"
-              >
-                <div>
-                  Module A
-                </div>
-              </ModuleA>,
-              <ModuleB
-                extraProp="extraProp"
-                key="id-2"
-                moduleName="moduleB"
-                slotData="slot A Data"
-              >
-                <div>
-                  Module B
-                </div>
-              </ModuleB>,
-            ]
-        `);
+      Array [
+        <ModuleA
+          extraProp="extraProp"
+          key="id-1"
+          slotData="slot B Data"
+        >
+          <div>
+            Module A
+          </div>
+        </ModuleA>,
+        <ModuleB
+          extraProp="extraProp"
+          key="id-2"
+          slotData="slot A Data"
+        >
+          <div>
+            Module B
+          </div>
+        </ModuleB>,
+      ]
+    `);
   });
 });
