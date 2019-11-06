@@ -584,4 +584,9 @@ const ProductsGridItemWithRef = forwardRef((props, ref) => {
 
 export { ProductsGridItem as ProductsGridItemVanilla };
 
-export default withStyles(ProductsGridItemWithRef, styles);
+const ProductsGridItemStyled = withStyles(ProductsGridItemWithRef, styles);
+
+// Display name is needed for hotfix mapping capability
+ProductsGridItemStyled.displayName = 'ProductsGridItem';
+
+export default ProductsGridItemStyled;
