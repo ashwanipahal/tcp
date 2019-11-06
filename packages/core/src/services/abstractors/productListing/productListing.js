@@ -215,6 +215,7 @@ class ProductsDynamicAbstractor {
       extraParams,
       shouldApplyUnbxdLogic,
       hasShortImage,
+      isLazyLoading,
     } = reqObj;
 
     const searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
@@ -293,6 +294,7 @@ class ProductsDynamicAbstractor {
           searchTerm,
           sort,
           filterSortView: Object.keys(filtersAndSort).length > 0,
+          isLazyLoading,
         })
       )
       .catch(err => {

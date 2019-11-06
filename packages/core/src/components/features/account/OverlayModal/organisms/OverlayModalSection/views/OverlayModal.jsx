@@ -48,7 +48,7 @@ class OverlayModal extends React.Component {
     }
     this.getCustomStyles({ styleModal: true });
     if (this.modalRef) {
-      this.modalRef.focus();
+      this.modalRef.focus({ preventScroll: true });
     }
   }
 
