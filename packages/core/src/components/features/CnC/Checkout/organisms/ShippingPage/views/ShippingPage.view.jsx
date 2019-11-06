@@ -6,7 +6,6 @@ import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
-import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -24,9 +23,6 @@ export default class ShippingPage extends React.PureComponent {
     isUsSite: PropTypes.bool,
     isSubmitting: PropTypes.bool.isRequired,
     checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
-    cartOrderItemsCount: PropTypes.number.isRequired,
-    isLoadingShippingMethod: PropTypes.bool.isRequired,
-    isBagLoaded: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
     shipmentMethods: PropTypes.shape([]),
@@ -366,10 +362,6 @@ export default class ShippingPage extends React.PureComponent {
       checkoutServerError,
       toggleCountrySelector,
       pageCategory,
-      checkoutPageEmptyBagLabels,
-      cartOrderItemsCount,
-      isLoadingShippingMethod,
-      isBagLoaded,
     } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
@@ -380,70 +372,64 @@ export default class ShippingPage extends React.PureComponent {
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     return (
       <>
-        {isLoadingShippingMethod || !isBagLoaded || cartOrderItemsCount > 0 ? (
+        {shipmentMethods && shipmentMethods.length > 0 && (
           <>
-            {shipmentMethods && shipmentMethods.length > 0 && (
-              <>
-                <ShippingForm
-                  toggleCountrySelector={toggleCountrySelector}
-                  checkoutServerError={checkoutServerError}
-                  isSubmitting={isSubmitting}
-                  routeToPickupPage={routeToPickupPage}
-                  addressLabels={addressLabels}
-                  isOrderUpdateChecked={isOrderUpdateChecked}
-                  isGiftServicesChecked={isGiftServicesChecked}
-                  smsSignUpLabels={smsSignUpLabels}
-                  initialValues={{
-                    address: this.getAddressInitialValues(),
-                    shipmentMethods: { shippingMethodId: defaultShipmentId },
-                    saveToAddressBook: !isGuest,
-                    onFileAddressKey: shippingAddressId || primaryAddressId,
-                  }}
-                  selectedShipmentId={selectedShipmentId}
-                  checkPOBoxAddress={this.checkPOBoxAddress}
-                  addressPhoneNo={addressPhoneNumber}
-                  onSubmit={this.submitShippingData}
-                  emailSignUpLabels={emailSignUpLabels}
-                  isGuest={isGuest}
-                  isUsSite={isUsSite}
-                  orderHasPickUp={orderHasPickUp}
-                  shipmentMethods={shipmentMethods}
-                  loadShipmentMethods={loadShipmentMethods}
-                  defaultShipmentId={defaultShipmentId}
-                  isSaveToAddressBookChecked={isSaveToAddressBookChecked}
-                  userAddresses={userAddresses}
-                  onFileAddressKey={onFileAddressKey}
-                  isMobile={isMobile}
-                  newUserPhoneNo={newUserPhoneNo}
-                  defaultAddressId={defaultAddressId}
-                  shippingAddressId={shippingAddressId}
-                  isAddNewAddress={isAddNewAddress}
-                  isEditing={isEditing}
-                  toggleAddNewAddress={this.toggleAddNewAddress}
-                  updateShippingAddress={this.updateShippingAddress}
-                  setAsDefaultShipping={setAsDefaultShipping}
-                  addNewShippingAddress={this.addNewShippingAddress}
-                  labels={labels}
-                  address={address}
-                  setDefaultAddressId={this.setDefaultAddressId}
-                  syncErrorsObject={syncErrors}
-                  shippingAddress={shippingAddress}
-                  isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-                  isVenmoShippingDisplayed={isVenmoShippingDisplayed}
-                  ServerErrors={ServerErrors}
-                  pageCategory={pageCategory}
-                />
-                <AddressVerification
-                  onSuccess={this.submitVerifiedShippingAddressData}
-                  heading={addressLabels.addAddressHeading}
-                  onError={this.submitVerifiedShippingAddressData}
-                  shippingAddress={formatPayload(shippingAddressData)}
-                />
-              </>
-            )}
+            <ShippingForm
+              toggleCountrySelector={toggleCountrySelector}
+              checkoutServerError={checkoutServerError}
+              isSubmitting={isSubmitting}
+              routeToPickupPage={routeToPickupPage}
+              addressLabels={addressLabels}
+              isOrderUpdateChecked={isOrderUpdateChecked}
+              isGiftServicesChecked={isGiftServicesChecked}
+              smsSignUpLabels={smsSignUpLabels}
+              initialValues={{
+                address: this.getAddressInitialValues(),
+                shipmentMethods: { shippingMethodId: defaultShipmentId },
+                saveToAddressBook: !isGuest,
+                onFileAddressKey: shippingAddressId || primaryAddressId,
+              }}
+              selectedShipmentId={selectedShipmentId}
+              checkPOBoxAddress={this.checkPOBoxAddress}
+              addressPhoneNo={addressPhoneNumber}
+              onSubmit={this.submitShippingData}
+              emailSignUpLabels={emailSignUpLabels}
+              isGuest={isGuest}
+              isUsSite={isUsSite}
+              orderHasPickUp={orderHasPickUp}
+              shipmentMethods={shipmentMethods}
+              loadShipmentMethods={loadShipmentMethods}
+              defaultShipmentId={defaultShipmentId}
+              isSaveToAddressBookChecked={isSaveToAddressBookChecked}
+              userAddresses={userAddresses}
+              onFileAddressKey={onFileAddressKey}
+              isMobile={isMobile}
+              newUserPhoneNo={newUserPhoneNo}
+              defaultAddressId={defaultAddressId}
+              shippingAddressId={shippingAddressId}
+              isAddNewAddress={isAddNewAddress}
+              isEditing={isEditing}
+              toggleAddNewAddress={this.toggleAddNewAddress}
+              updateShippingAddress={this.updateShippingAddress}
+              setAsDefaultShipping={setAsDefaultShipping}
+              addNewShippingAddress={this.addNewShippingAddress}
+              labels={labels}
+              address={address}
+              setDefaultAddressId={this.setDefaultAddressId}
+              syncErrorsObject={syncErrors}
+              shippingAddress={shippingAddress}
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+              isVenmoShippingDisplayed={isVenmoShippingDisplayed}
+              ServerErrors={ServerErrors}
+              pageCategory={pageCategory}
+            />
+            <AddressVerification
+              onSuccess={this.submitVerifiedShippingAddressData}
+              heading={addressLabels.addAddressHeading}
+              onError={this.submitVerifiedShippingAddressData}
+              shippingAddress={formatPayload(shippingAddressData)}
+            />
           </>
-        ) : (
-          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
         )}
       </>
     );

@@ -135,7 +135,7 @@ export const modalStyles = css`
     margin-left: 28px;
   }
 
-  .plcc_modal_content {
+  div.TCPModal__InnerContent.plcc_modal_content {
     height: 100vh;
   }
 `;
