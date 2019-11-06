@@ -12,7 +12,6 @@ import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/Loyalt
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
-import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
 import style from '../Header.style';
 
@@ -163,7 +162,6 @@ class Header extends React.PureComponent {
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
         <SpinnerOverlay />
-        <AddedToBagContainer />
       </header>
     );
   }
