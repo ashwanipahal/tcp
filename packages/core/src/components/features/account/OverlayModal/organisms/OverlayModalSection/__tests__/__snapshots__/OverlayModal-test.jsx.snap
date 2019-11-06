@@ -5,6 +5,7 @@ exports[`OverlayModal should render correctly 1`] = `
   className=""
   color={null}
   id="modalWrapper"
+  tabIndex="-1"
 >
   <div
     className="dialog__content undefined"

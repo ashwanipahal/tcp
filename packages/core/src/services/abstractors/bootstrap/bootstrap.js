@@ -16,7 +16,11 @@ import { setDataInRedis } from '../../../utils/redis.util';
  * Asynchronous function to fetch data from service for given array of moduleIds
  * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
  */
-const fetchBootstrapData = async ({ page, labels, brand, country, channel }, bootstrapModules) => {
+const fetchBootstrapData = async (
+  { page, labels, brand, country, channel, lang },
+  bootstrapModules
+) => {
+  logger.info('bootstrap received language ', lang);
   /**
    * Sets up query params for page requests
    */
@@ -45,6 +49,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'header':
@@ -53,6 +58,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'footer':
@@ -61,6 +67,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       case 'navigation':
@@ -68,6 +75,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
           brand,
           country,
           channel,
+          lang,
         };
         break;
       default:
@@ -89,8 +97,7 @@ const fetchBootstrapData = async ({ page, labels, brand, country, channel }, boo
 /**
  * Generate base bootstrap parameters
  */
-const createBootstrapParams = () => {
-  const apiConfig = getAPIConfig();
+const createBootstrapParams = (apiConfig, language) => {
   const channelName = isMobileApp() ? MobileChannel : defaultChannel;
   return {
     labels: {
@@ -101,6 +108,7 @@ const createBootstrapParams = () => {
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: channelName,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
+    lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support as not supported from CMS yet
   };
 };
 
@@ -149,11 +157,9 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  */
 const bootstrap = async (pageName = '', modules, cachedData) => {
   const response = {};
-
-  const bootstrapParams = {
-    page: pageName,
-    ...createBootstrapParams(),
-  };
+  const apiConfig = getAPIConfig();
+  const { language } = apiConfig;
+  const bootstrapParams = { page: pageName, ...createBootstrapParams(apiConfig, language) };
 
   /**
    * Config Responsible for making all the http requests that need to be resolved before loading the application
@@ -162,7 +168,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
    *  -   Labels
    *  -   Navigation
    */
-  const bootstrapModules = modules || ['labels', 'footer', 'navigation'];
+  const bootstrapModules = modules || ['labels', 'header', 'footer', 'navigation'];
 
   try {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
@@ -170,10 +176,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
     logger.info('Bootstrap Query Executed Successfully');
     logger.debug('Bootstrap Query Result: ', bootstrapData);
-    const fetchCachedDataParams = {
-      bootstrapData,
-      cachedData,
-    };
+    const fetchCachedDataParams = { bootstrapData, cachedData };
 
     if (pageName) {
       try {
@@ -182,10 +185,8 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
         response.modules =
           bootstrapData[pageName] &&
           (await layoutAbstractor.getModulesFromLayout(
-            retrieveCachedData({
-              ...fetchCachedDataParams,
-              key: pageName,
-            })
+            retrieveCachedData({ ...fetchCachedDataParams, key: pageName }),
+            language
           ));
         logger.info('Modules Query Executed Successfully');
         logger.debug('Modules Query Result: ', response.modules);
@@ -195,30 +196,16 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     }
 
     response.header = headerAbstractor.processData(
-      retrieveCachedData({
-        ...fetchCachedDataParams,
-        key: 'header',
-      })
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
     );
     response.footer =
       bootstrapData.footer &&
-      footerAbstractor.processData(
-        retrieveCachedData({
-          ...fetchCachedDataParams,
-          key: 'footer',
-        })
-      );
+      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
     response.labels = labelsAbstractor.processData(
-      retrieveCachedData({
-        ...fetchCachedDataParams,
-        key: 'labels',
-      })
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
     );
     response.navigation = navigationAbstractor.processData(
-      retrieveCachedData({
-        ...fetchCachedDataParams,
-        key: 'navigation',
-      })
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);

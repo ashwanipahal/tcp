@@ -27,6 +27,7 @@ exports[`ProductList component should renders correctly 1`] = `
         "isFavorite": false,
         "isMatchingFamily": true,
         "isPlcc": false,
+        "labelsPlpTiles": Object {},
         "loadedProductCount": 12,
         "onAddItemToFavorites": [MockFunction],
         "onColorChange": [MockFunction],

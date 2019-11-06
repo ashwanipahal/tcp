@@ -102,7 +102,7 @@ const FooterNavLinksList = ({
     } else if (action === 'log-out' || linkItems.url === '/log-out') {
       onClick = e => logout(e, dispatchFn);
     } else if (
-    /*
+      /*
       Don't move below or conditions of login-account inside the shouldLoginModalOpen function.
       As this function also used below in this file to decide whether text should work as link or button.
       But for login-account action text will always be button.
@@ -135,8 +135,8 @@ const FooterNavLinksList = ({
    * For action favorites, check-point-balance, redeem-rewards if user is logged in then user should navigate
    * to the cms configured location else login modal should open
    */
-  const shouldLinkOrButton = (isModal, isAlreadyLoggedIn) => {
-    return !(isModal && isAlreadyLoggedIn);
+  const shouldLinkOrButton = isModal => {
+    return !(isModal && isLoggedIn);
   };
 
   const createNavListItem = (linkItems, index) => {
@@ -168,7 +168,7 @@ const FooterNavLinksList = ({
      */
 
     const isModal = shouldLoginModalOpen(linkAction, linkUrl);
-    dispatchFn = isModal ? shouldLinkOrButton(isModal, hideLogoutMyActLink) : dispatchFn;
+    dispatchFn = isModal ? shouldLinkOrButton(isModal) : dispatchFn;
 
     return !hideLogoutMyActLink ? (
       <li>

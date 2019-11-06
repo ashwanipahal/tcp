@@ -56,7 +56,7 @@ class MiniBagBody extends React.PureComponent {
         className="elem-ml-MED"
         onClick={() => closeMiniBag()}
       >
-        {`${labels.viewSfl}(${savedforLaterQty})`}
+        {`${labels.viewSfl} (${savedforLaterQty})`}
       </Anchor>
     );
   };
@@ -182,7 +182,7 @@ class MiniBagBody extends React.PureComponent {
                     dataLocator="addressbook-makedefault"
                     onClick={() => closeMiniBag()}
                   >
-                    {`${labels.viewBag}(${cartItemCount})`}
+                    {`${labels.viewBag} (${cartItemCount})`}
                   </Anchor>
                   {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>
@@ -197,7 +197,7 @@ class MiniBagBody extends React.PureComponent {
                     data-locator="addressbook-makedefault"
                     onClick={() => closeMiniBag()}
                   >
-                    {`${labels.viewBag}(${cartItemCount})`}
+                    {`${labels.viewBag} (${cartItemCount})`}
                   </Anchor>
                   {this.ViewSaveForLaterLink(savedforLaterQty, isShowSaveForLaterSwitch)}
                 </BodyCopy>

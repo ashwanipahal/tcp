@@ -4,6 +4,7 @@ import { BodyCopy, Row, Col, Anchor } from '@tcp/core/src/components/common/atom
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import OrderPreviewItem from '../../OrderPreviewItem';
 import internalEndpoints from '../../../../common/internalEndpoints';
+import constants from '../../../../OrderDetails/OrderDetails.constants';
 /**
  * This function component use for return the Order item list based on group
  * can be passed in the component.
@@ -14,19 +15,21 @@ const OrderPreviewItemsList = ({ className, ...otherProps }) => {
   const { orderPage } = internalEndpoints;
   return (
     <BodyCopy component="div" className={className}>
-      <Row fullBleed className="elem-mb-SM">
+      <Row fullBleed className="elem-mb-XXL">
         <Col colSize={{ large: 5, medium: 3, small: 6 }}>
-          <Anchor
-            to={trackingUrl}
-            anchorVariation="button"
-            buttonVariation="fixed-width"
-            fill="BLUE"
-            centered
-            dataLocator={items.trackingNumber}
-            target="_blank"
-          >
-            {getLabelValue(labels, 'lbl_orders_trackit', 'orders')}
-          </Anchor>
+          {trackingUrl && trackingUrl !== constants.STATUS_CONSTANTS.NA && (
+            <Anchor
+              to={trackingUrl}
+              anchorVariation="button"
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              centered
+              dataLocator={items.trackingNumber}
+              target="_blank"
+            >
+              {getLabelValue(labels, 'lbl_orders_trackit', 'orders')}
+            </Anchor>
+          )}
         </Col>
       </Row>
       {items && (

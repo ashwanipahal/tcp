@@ -82,7 +82,7 @@ class LoginSection extends React.PureComponent<Props> {
           <LoginTopSection
             variation={variation}
             labels={labels}
-            className="elem-mb-SM logintop-alignment"
+            className="elem-mb-SM elem-mt-XXL"
             isCanada={this.isCanada}
             showForgotPasswordForm={this.showForgotPasswordForm}
           />

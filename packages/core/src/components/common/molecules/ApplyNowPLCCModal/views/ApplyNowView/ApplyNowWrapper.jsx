@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '../../../../../../utils';
-import { Anchor } from '../../../../atoms';
 
 import StyledApplyNowModal from '../../molecules/ApplyNowModal/views/ApplyNowModal.view';
 
@@ -43,14 +41,7 @@ class ApplyNowModalWrapper extends React.Component {
   };
 
   render() {
-    const {
-      className,
-      labels,
-      isModalOpen,
-      isPLCCModalOpen,
-      plccBenefitsList,
-      labelText,
-    } = this.props;
+    const { className, labels, isModalOpen, isPLCCModalOpen, plccBenefitsList } = this.props;
     return (
       <div className={className}>
         <React.Fragment>
@@ -66,13 +57,6 @@ class ApplyNowModalWrapper extends React.Component {
             />
           ) : null}
         </React.Fragment>
-        <Anchor
-          fontSizeVariation="medium"
-          anchorVariation="primary"
-          text={labelText || getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
-          onClick={this.openModal}
-          underline
-        />
       </div>
     );
   }
@@ -89,11 +73,6 @@ ApplyNowModalWrapper.propTypes = {
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   fetchModuleXContent: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,
-  labelText: PropTypes.string,
-};
-
-ApplyNowModalWrapper.defaultProps = {
-  labelText: '',
 };
 
 export default ApplyNowModalWrapper;

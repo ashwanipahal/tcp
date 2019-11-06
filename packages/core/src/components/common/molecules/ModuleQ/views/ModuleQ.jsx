@@ -146,6 +146,7 @@ class ModuleQ extends React.PureComponent {
       styliticsProductTabList,
       hideTabs,
       selectedColorProductId,
+      showRelatedOutfitHeader,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -159,6 +160,10 @@ class ModuleQ extends React.PureComponent {
     let dataStatus = true;
     if (styliticsProductTabList && styliticsProductTabList.completed) {
       dataStatus = styliticsProductTabList.completed[currentCatId];
+    }
+
+    if (showCarousel && showRelatedOutfitHeader) {
+      showRelatedOutfitHeader(true);
     }
 
     return (
@@ -252,6 +257,7 @@ ModuleQ.defaultProps = {
   promoBanner: [],
   hideTabs: false,
   selectedColorProductId: '',
+  showRelatedOutfitHeader: null,
 };
 
 ModuleQ.propTypes = {
@@ -290,6 +296,7 @@ ModuleQ.propTypes = {
   ).isRequired,
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
+  showRelatedOutfitHeader: PropTypes.func,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);

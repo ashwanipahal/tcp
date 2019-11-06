@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
+import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+
+import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
+
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
   getThresholdValue,
@@ -13,7 +18,6 @@ import {
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
-import { setCheckoutModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 
 export const LoyaltyBannerContainer = ({
   labels,
@@ -23,8 +27,11 @@ export const LoyaltyBannerContainer = ({
   isPlcc,
   currencySymbol,
   pageCategory,
-  openLoginModal,
   isInternationalShipping,
+  openOverlay,
+  closeAddedToBagModal,
+  inheritedStyles,
+  openApplyNowModal,
 }) => {
   const {
     estimatedRewards,
@@ -48,8 +55,11 @@ export const LoyaltyBannerContainer = ({
       pointsToNextReward={pointsToNextReward}
       getCurrencySymbol={currencySymbol}
       pageCategory={pageCategory}
-      openLoginModal={openLoginModal}
       isInternationalShipping={isInternationalShipping}
+      openOverlay={openOverlay}
+      closeAddedToBagModal={closeAddedToBagModal}
+      inheritedStyles={inheritedStyles}
+      openApplyNowModal={openApplyNowModal}
     />
   );
 };
@@ -57,13 +67,16 @@ export const LoyaltyBannerContainer = ({
 LoyaltyBannerContainer.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   orderDetails: PropTypes.shape({}).isRequired,
-  openLoginModal: PropTypes.func.isRequired,
+  closeAddedToBagModal: PropTypes.func.isRequired,
+  openOverlay: PropTypes.func.isRequired,
   thresholdValue: PropTypes.number,
   isGuestCheck: PropTypes.bool,
   isPlcc: PropTypes.bool,
   currencySymbol: PropTypes.string,
   pageCategory: PropTypes.string,
   isInternationalShipping: PropTypes.bool,
+  inheritedStyles: PropTypes.string,
+  openApplyNowModal: PropTypes.func.isRequired,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -73,11 +86,17 @@ LoyaltyBannerContainer.defaultProps = {
   currencySymbol: '',
   pageCategory: '',
   isInternationalShipping: false,
+  inheritedStyles: '',
 };
 
 export const mapDispatchToProps = dispatch => ({
-  openLoginModal: componentType =>
-    dispatch(setCheckoutModalMountedState({ state: true, componentType })),
+  openOverlay: component => dispatch(openOverlayModal(component)),
+  closeAddedToBagModal: () => {
+    dispatch(closeAddedToBag());
+  },
+  openApplyNowModal: payload => {
+    dispatch(toggleApplyNowModal(payload));
+  },
 });
 
 /* istanbul ignore next */

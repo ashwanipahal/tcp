@@ -3,6 +3,7 @@ import ModuleD from './ModuleD';
 import ModuleH from './ModuleH';
 import ModuleL from './ModuleL';
 import ModuleK from './ModuleK';
+import ModuleM from './ModuleM';
 import ModuleN from './ModuleN';
 import ModuleS from './ModuleS';
 import ModuleQ from './ModuleQ';
@@ -34,6 +35,7 @@ export {
   PromoBanner,
   ModuleA,
   ModuleB,
+  ModuleM,
   ModuleJ,
   ModuleR,
   ModuleQ,
