@@ -109,7 +109,7 @@ export default css`
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
-    padding: 7px 6px;
+    padding: 5px 4px;
     width: 32%;
     height: 100px;
     text-align: center;
@@ -122,7 +122,6 @@ export default css`
 
   .looks-image-last {
     font-family: ${props => props.theme.typography.fonts.secondary};
-    font-size: ${props => props.theme.fonts.fontSize.fs22};
     font-weight: 800;
     text-align: center;
     color: ${props => props.theme.colorPalette.gray['900']};
@@ -132,6 +131,13 @@ export default css`
     p {
       text-align: center;
       margin: 0 auto;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+      @media ${props => props.theme.mediaQuery.medium} {
+        font-size: ${props => props.theme.typography.fontSizes.fs16};
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        font-size: ${props => props.theme.typography.fontSizes.fs18};
+      }
     }
   }
 
@@ -139,13 +145,19 @@ export default css`
     .looks-image {
       width: 32%;
       height: 86px;
-
+      padding: 7px 6px;
       @media ${props => props.theme.mediaQuery.medium} {
         height: 138px;
       }
 
       @media ${props => props.theme.mediaQuery.large} {
         height: 140px;
+      }
+    }
+    .looks-image-last p {
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
+      @media ${props => props.theme.mediaQuery.large} {
+        font-size: ${props => props.theme.typography.fontSizes.fs24};
       }
     }
   }
