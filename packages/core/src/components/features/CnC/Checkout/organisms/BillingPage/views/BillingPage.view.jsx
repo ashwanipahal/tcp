@@ -41,8 +41,12 @@ class BillingPage extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { billingDidMount } = this.props;
+    const { billingDidMount, isRTPSDataRequired, updateRTPSData } = this.props;
     billingDidMount();
+    if (isRTPSDataRequired) {
+      // not to consume RTPS API in case of any Non-Ecom order type
+      updateRTPSData(true, false);
+    }
   }
 
   render() {

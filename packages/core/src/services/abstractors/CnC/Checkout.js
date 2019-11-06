@@ -1087,6 +1087,28 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
     });
 }
 
+export function updateRTPSData(prescreen, isExpressCheckout) {
+  const payload = {
+    body: {
+      prescreen,
+      fromPage: isExpressCheckout ? 'expressCheckout' : 'normal',
+    },
+    webService: endpoints.updateRTPSdata,
+  };
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      const rtpsData = extractRtpsEligibleAndCode(res);
+      return {
+        success: true,
+        plccEligible: rtpsData.plccEligible,
+        prescreenCode: rtpsData.prescreenCode,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getShippingMethods,

@@ -10,6 +10,7 @@ import {
   getInternationCheckoutSettings,
   startExpressCheckout,
   getServerErrorMessage,
+  updateRTPSData,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
@@ -527,6 +528,15 @@ function* initCheckout({ router }) {
   }
   try {
     yield call(loadStartupData, isPaypalPostBack, recalc);
+  } catch (e) {
+    logger.error(e);
+  }
+}
+
+function* updateUserRTPSData(prescreen, isExpressCheckout) {
+  try {
+    const res = yield updateRTPSData(prescreen, isExpressCheckout);
+    // return getPlccOperator(this.store).optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
   } catch (e) {
     logger.error(e);
   }

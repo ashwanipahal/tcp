@@ -7,6 +7,10 @@ import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddE
 
 import { getCVVCodeInfoContentId, getCVVCodeRichTextSelector } from './BillingPage.selectors';
 import CheckoutSelectors from '../../../container/Checkout.selector';
+import {
+  isPlccUser,
+  getplccCardNumber,
+} from '../../../../../account/User/container/User.selectors';
 import { updateCardData } from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
@@ -42,7 +46,16 @@ export const mapDispatchToProps = dispatch => {
 };
 
 export const mapStateToProps = state => {
-  const { getIsVenmoEnabled, getBillingLabels } = CheckoutSelectors;
+  const {
+    getIsVenmoEnabled,
+    getBillingLabels,
+    getIsOrderHasShipping,
+    getGiftWrappingValues,
+  } = CheckoutSelectors;
+  const isRTPSDataRequired =
+    getIsOrderHasShipping(state) &&
+    !getGiftWrappingValues(state).hasGiftWrapping &&
+    !(isPlccUser(state) || getplccCardNumber(state));
   return {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
@@ -50,6 +63,7 @@ export const mapStateToProps = state => {
     addressLabels: getAddEditAddressLabels(state),
     isVenmoEnabled: getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
     venmoError: CheckoutSelectors.getVenmoError(state),
+    isRTPSDataRequired,
   };
 };
 
