@@ -58,10 +58,11 @@ export default css`
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       width: 141px;
     }
-    .button-list-container {
-      ${props =>
-        props.theme.isGymboree
-          ? `
+  }
+  .button-list-container {
+    ${props =>
+      props.theme.isGymboree
+        ? `
       background-color: ${props.theme.colorPalette.blue.C900};
       padding: ${props.theme.spacing.ELEM_SPACING.MED} 0;
       margin-top: ${props.theme.spacing.ELEM_SPACING.SM};
@@ -75,11 +76,10 @@ export default css`
         margin: 0;
       }
     `
-          : `
+        : `
       .image-comp {
         color: ${props.theme.colorPalette.black};
       }
     `}
-    }
   }
 `;
