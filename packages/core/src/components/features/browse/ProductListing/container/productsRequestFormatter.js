@@ -549,6 +549,7 @@ export default class ProductsOperator {
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
       location,
+      isLazyLoading: true,
     });
   }
 
