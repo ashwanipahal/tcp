@@ -1,5 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
 import {
   setPlpProducts,
@@ -41,6 +42,9 @@ export function* fetchPlpProducts({ payload }) {
     );
     if (reqObj.isFetchFiltersAndCountReq) {
       const res = yield call(instanceProductListing.getProducts, reqObj, state);
+      const { layout, modules } = yield call(instanceProductListing.parsedModuleData);
+      yield put(loadLayoutData(layout, 'productListingPage'));
+      yield put(loadModulesData(modules));
       yield put(setListingFirstProductsPage({ ...res }));
       state = yield select();
       reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
@@ -48,6 +52,9 @@ export function* fetchPlpProducts({ payload }) {
     if (reqObj && reqObj.categoryId) {
       const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
       if (plpProducts) {
+        const { layout, modules } = yield call(instanceProductListing.parsedModuleData);
+        yield put(loadLayoutData(layout, 'productListingPage'));
+        yield put(loadModulesData(modules));
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
         const isGuest = !getUserLoggedInState(state);
