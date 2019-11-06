@@ -83,7 +83,9 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
         textDecoration={null}
       />
     </Styled(View)>
-    <Styled(View) />
+    <Styled(View)
+      width="30%"
+    />
     <Styled(Anchor)
       accessibilityLabel=""
       anchorVariation="custom"
