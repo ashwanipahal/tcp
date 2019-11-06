@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+
 import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
+
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
   getThresholdValue,
@@ -28,6 +31,7 @@ export const LoyaltyBannerContainer = ({
   openOverlay,
   closeAddedToBagModal,
   inheritedStyles,
+  openApplyNowModal,
 }) => {
   const {
     estimatedRewards,
@@ -55,6 +59,7 @@ export const LoyaltyBannerContainer = ({
       openOverlay={openOverlay}
       closeAddedToBagModal={closeAddedToBagModal}
       inheritedStyles={inheritedStyles}
+      openApplyNowModal={openApplyNowModal}
     />
   );
 };
@@ -71,6 +76,7 @@ LoyaltyBannerContainer.propTypes = {
   pageCategory: PropTypes.string,
   isInternationalShipping: PropTypes.bool,
   inheritedStyles: PropTypes.string,
+  openApplyNowModal: PropTypes.func.isRequired,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -87,6 +93,9 @@ export const mapDispatchToProps = dispatch => ({
   openOverlay: component => dispatch(openOverlayModal(component)),
   closeAddedToBagModal: () => {
     dispatch(closeAddedToBag());
+  },
+  openApplyNowModal: payload => {
+    dispatch(toggleApplyNowModal(payload));
   },
 });
 

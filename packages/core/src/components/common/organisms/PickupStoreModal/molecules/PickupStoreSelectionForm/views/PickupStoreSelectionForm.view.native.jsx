@@ -10,6 +10,7 @@ import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/style
 import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { isAndroid } from '../../../../../../../utils/index.native';
 import { Button } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import PickupStoreListContainer from '../../PickupStoreList';
@@ -161,7 +162,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           </DistanceCol>
         </Row>
         <Button
-          margin="16px 0 20px 0"
+          margin={isAndroid() ? '16px 0 35px 0' : '16px 0 25px 0'}
           color="white"
           fill="BLUE"
           text="Search"

@@ -96,9 +96,8 @@ export const CheckBoxContainerView = styled.View`
 `;
 
 export const CheckBoxImage = styled.View`
-  width: 40px;
-  height: 40px;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  width: 80%;
 `;
 
 export const CheckMessageView = styled.View`

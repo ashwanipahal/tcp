@@ -63,6 +63,9 @@ class CheckoutPage extends React.PureComponent {
       currentStage,
       setCheckoutStage,
       isExpressCheckout,
+      pickUpContactAlternate,
+      isHasPickUpAlternatePerson,
+      pickUpAlternatePerson,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       pickupDidMount,
@@ -140,6 +143,15 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
             isExpressCheckout={isExpressCheckout}
+            pickUpContactAlternate={pickUpContactAlternate}
+            initialValues={{
+              pickUpAlternateExpress: {
+                hasAlternatePickup: isHasPickUpAlternatePerson,
+                firstName: pickUpAlternatePerson.firstName,
+                lastName: pickUpAlternatePerson.lastName,
+                emailAddress: pickUpAlternatePerson.emailAddress,
+              },
+            }}
           />
         );
       case CONFIRMATION:
@@ -195,6 +207,9 @@ CheckoutPage.propTypes = {
   toastMessage: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
   isExpressCheckout: PropTypes.bool,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {

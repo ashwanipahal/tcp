@@ -38,11 +38,11 @@ export default class ProductColorChip extends React.Component {
   render() {
     const {
       colorEntry: {
-        color: { name, swatchimage },
+        color: { name, swatchImage },
       },
       isActive,
     } = this.props;
-    const swatchImageUrl = swatchimage && swatchimage.split('_');
+    const swatchImageUrl = swatchImage && swatchImage.split('_');
     const imgUrl = swatchImageUrl
       ? `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`
       : '';

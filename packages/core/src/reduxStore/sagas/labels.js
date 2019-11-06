@@ -18,12 +18,14 @@ function* fetchComponentLabel(action) {
   const isLabelsExist = yield select(labelsSelector);
   if (!isLabelsExist) {
     const apiConfig = getAPIConfig();
+    const { language } = apiConfig;
     const labelParams = {
       category,
       subCategory,
       brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
       channel: defaultChannel,
       country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
+      lang: language,
     };
     const data = yield call(labelAbstractor.getData, LABELS.labels, labelParams);
     yield put(
