@@ -7,7 +7,7 @@ import ImageCarousel from '../molecules/ImageCarousel';
 import { PageContainer, LoyaltyBannerView } from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
-import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
+import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -35,6 +35,7 @@ class ProductDetailView extends React.PureComponent {
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
       currentGiftCardValue: currentProduct.offerPrice,
       selectedColorProductId,
+      showCompleteTheLook: false,
     };
   }
 
@@ -69,13 +70,23 @@ class ProductDetailView extends React.PureComponent {
 
   renderFulfilmentSection = () => {
     const { currentProduct } = this.props;
+    const { currentColorEntry } = this.state;
     return (
-      <FulfillmentSection
-        btnClassName="added-to-bag"
-        buttonLabel="Add To Bag"
-        currentProduct={currentProduct}
-      />
+      currentProduct &&
+      currentColorEntry && (
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          miscInfo={currentColorEntry.miscInfo}
+        />
+      )
     );
+  };
+
+  setShowCompleteTheLook = value => {
+    if (value) {
+      this.setState({ showCompleteTheLook: value });
+    }
   };
 
   render() {
@@ -96,7 +107,12 @@ class ProductDetailView extends React.PureComponent {
       currencyExchange,
       alternateSizes,
     } = this.props;
-    const { currentColorEntry, currentGiftCardValue, selectedColorProductId } = this.state;
+    const {
+      currentColorEntry,
+      currentGiftCardValue,
+      selectedColorProductId,
+      showCompleteTheLook,
+    } = this.state;
     let imageUrls = [];
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
@@ -134,6 +150,7 @@ class ProductDetailView extends React.PureComponent {
             currencySymbol={currency}
             currencyExchange={currencyExchange}
             isGiftCard={currentProduct.isGiftCard}
+            showCompleteTheLook={showCompleteTheLook}
             pdpLabels={pdpLabels}
           />
 
@@ -169,6 +186,7 @@ class ProductDetailView extends React.PureComponent {
               pdpLabels={pdpLabels}
               navigation={navigation}
               selectedColorProductId={selectedColorProductId}
+              setShowCompleteTheLook={this.setShowCompleteTheLook}
             />
           ) : null}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}

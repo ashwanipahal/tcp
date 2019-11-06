@@ -12,7 +12,9 @@ export default css`
 
     .searchWrapper {
       top: 0;
-      height: 50px;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .searchbar {
@@ -152,6 +154,9 @@ export default css`
       position: absolute;
       top: 0;
       left:0;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
       ${props =>
         props.fromCondensedHeader
           ? `

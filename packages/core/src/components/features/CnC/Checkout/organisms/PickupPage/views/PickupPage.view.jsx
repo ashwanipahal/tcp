@@ -20,8 +20,10 @@ import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
+    this.editErrorRef = React.createRef();
     this.state = {
       isEditing: false,
+      editPickupError: '',
       dataUpdated: false,
       pickUpContact: {
         firstName: '',
@@ -50,8 +52,13 @@ class PickUpFormPart extends React.Component {
         },
       });
     } else {
+      let { editPickupError } = this.state;
+      if (isEditing) {
+        editPickupError = '';
+      }
       this.setState({
         isEditing,
+        editPickupError,
       });
     }
   };
@@ -72,26 +79,30 @@ class PickUpFormPart extends React.Component {
 
   SaveAndCancelButton = () => {
     const { pickUpLabels, handleSubmit } = this.props;
+    const { editPickupError } = this.state;
     return (
-      <div className="buttonContainer">
-        <Button
-          onClick={this.handleExitEditModeClick}
-          buttonVariation="variable-width"
-          type="button"
-          data-locator="pickup-cancelbtn"
-        >
-          {pickUpLabels.btnCancel}
-        </Button>
-        <Button
-          onClick={handleSubmit(this.pickupEditSubmit)}
-          className="updateButton"
-          fill="BLUE"
-          type="button"
-          buttonVariation="variable-width"
-          data-locator="pickup-addcardbtn"
-        >
-          {pickUpLabels.btnUpdate}
-        </Button>
+      <div className="editFormActionsContainer" ref={this.editErrorRef}>
+        {editPickupError && <ErrorMessage error={editPickupError} className="edit-pickup-error" />}
+        <div className="buttonContainer">
+          <Button
+            onClick={this.handleExitEditModeClick}
+            buttonVariation="variable-width"
+            type="button"
+            data-locator="pickup-cancelbtn"
+          >
+            {pickUpLabels.btnCancel}
+          </Button>
+          <Button
+            onClick={handleSubmit(this.pickupEditSubmit)}
+            className="updateButton"
+            fill="BLUE"
+            type="button"
+            buttonVariation="variable-width"
+            data-locator="pickup-addcardbtn"
+          >
+            {pickUpLabels.btnUpdate}
+          </Button>
+        </div>
       </div>
     );
   };
@@ -105,27 +116,32 @@ class PickUpFormPart extends React.Component {
   };
 
   pickupSubmit = data => {
-    const { onPickupSubmit } = this.props;
+    const { onPickupSubmit, pickUpLabels } = this.props;
+    const { isEditing } = this.state;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
-    const params = {
-      pickUpContact: {
-        firstName,
-        lastName,
-        phoneNumber,
-        emailAddress,
-        smsInfo: {
-          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+    if (!isEditing) {
+      const params = {
+        pickUpContact: {
+          firstName,
+          lastName,
+          phoneNumber,
+          emailAddress,
+          smsInfo: {
+            wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+          },
         },
-      },
-      hasAlternatePickup,
-      pickUpAlternate: {
-        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-      },
-    };
-    onPickupSubmit(params);
+        hasAlternatePickup,
+        pickUpAlternate: {
+          firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
+          lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
+          emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
+        },
+      };
+      return onPickupSubmit(params);
+    }
+    this.setState({ editPickupError: pickUpLabels.editFormSubmitError });
+    return this.editErrorRef.current && this.editErrorRef.current.scrollIntoView(false);
   };
 
   /**
@@ -317,7 +333,6 @@ class PickUpFormPart extends React.Component {
                 hideBackLink={false}
                 backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
                 nextButtonText={this.getNextCTAText()}
-                disableNext={isEditing}
               />
             </form>
           </div>

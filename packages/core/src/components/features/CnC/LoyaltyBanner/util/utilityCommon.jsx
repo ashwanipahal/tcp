@@ -149,14 +149,14 @@ const productDetailPageLabelsFn = (labels, isGuest, isPlcc) => {
   let subHeadingLabel = '';
   let descriptionLabel = '';
   if (isGuest) {
-    headingLabelVal = labels.productDescriptionGetRewardedShoppingHeading;
-    subHeadingLabel = labels.productDescriptionLoyaltyPayPointsSubHeading;
+    headingLabelVal = labels.pdpGuestRewardsHeading;
+    subHeadingLabel = labels.pdpGuestRewardsSubHeading;
   } else if (!isPlcc) {
-    headingLabelVal = labels.productDescriptionEarnDoublePointsHeading;
-    descriptionLabel = labels.productDescriptionMyPlaceCreditCardDescription;
+    headingLabelVal = labels.pdpMprRewardsHeading;
+    descriptionLabel = labels.pdpMprRewardsDescription;
   } else {
-    headingLabelVal = labels.productDescriptionGetDoublePointsPLCCHeading;
-    descriptionLabel = labels.productDescriptionCheckoutMyPlaceCreditCardDescription;
+    headingLabelVal = labels.pdpPlccRewardsHeading;
+    descriptionLabel = labels.pdpPlccRewardsDescription;
   }
   return {
     headingLabelVal,
