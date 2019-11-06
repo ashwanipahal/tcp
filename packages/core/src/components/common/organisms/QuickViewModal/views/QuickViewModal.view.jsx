@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getMapSliceForColorProductId } from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import ProductPickupContainer from '../../ProductPickup';
 import withStyles from '../../../hoc/withStyles';
 import styles, {
   customHeaderStyle,
   quickViewColorSwatchesCss,
   customSpinnerStyle,
 } from '../styles/QuickViewModal.style';
-import FulfillmentSection from '../../FulfillmentSection';
 import { getLocator } from '../../../../../utils';
 import Modal from '../../../molecules/Modal';
 import { Spinner } from '../../../atoms';
@@ -126,6 +127,22 @@ class QuickViewModal extends React.Component {
     );
   }
 
+  renderFulFilmentSection = (isMultiItemQVModal, fromBagPage, product, currentColorEntry) => {
+    return (
+      !isMultiItemQVModal &&
+      !fromBagPage &&
+      product &&
+      currentColorEntry && (
+        <ProductPickupContainer
+          productInfo={product}
+          formName={`ProductAddToBag-${product.generalProductId}`}
+          miscInfo={currentColorEntry.miscInfo}
+          onPickupClickAddon={this.onCloseClick}
+        />
+      )
+    );
+  };
+
   render() {
     const {
       isModalOpen,
@@ -137,6 +154,8 @@ class QuickViewModal extends React.Component {
     } = this.props;
 
     const product = productInfo && productInfo.length && productInfo[0].product;
+    const currentColorEntry =
+      product && getMapSliceForColorProductId(product.colorFitsSizesMap, product.generalProductId);
     return (
       <React.Fragment>
         {isModalOpen ? (
@@ -165,14 +184,11 @@ class QuickViewModal extends React.Component {
             ) : (
               <React.Fragment>
                 {this.renderProductCustomizeFormPart()}
-                {!isMultiItemQVModal && !fromBagPage && (
-                  <FulfillmentSection
-                    btnClassName="added-to-bag"
-                    dataLocator={getLocator('global_addtocart_Button')}
-                    buttonLabel="Pickup In Store"
-                    currentProduct={product}
-                    closeQuickViewClick={this.onCloseClick}
-                  />
+                {this.renderFulFilmentSection(
+                  isMultiItemQVModal,
+                  fromBagPage,
+                  product,
+                  currentColorEntry
                 )}
                 {isMultiItemQVModal && this.renderAddToBagButton()}
               </React.Fragment>
