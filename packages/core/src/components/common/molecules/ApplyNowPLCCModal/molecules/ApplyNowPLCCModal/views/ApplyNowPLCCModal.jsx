@@ -17,7 +17,7 @@ const ApplyNowPLCCModal = ({ modalStyles, isPLCCModalOpen, closePLCCModal, class
       maxWidth="724px"
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
-      heightConfig={{ heightConfig: '100vh' }}
+      heightConfig={{ height: '100vh' }}
     >
       <ApplyCardPage isPLCCModalFlow />
     </Modal>
