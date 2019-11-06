@@ -6,18 +6,10 @@ const PageSlots = props => {
 
   return slots.map(slot => {
     const Module = modules[slot.moduleName];
-    const { data: slotData, contentId, accessibility, moduleName } = slot;
+    const { data: slotData, contentId, accessibility } = slot;
     return (
       Module &&
-      slotData && (
-        <Module
-          key={contentId}
-          accessibility={accessibility}
-          {...slotData}
-          {...others}
-          moduleName={moduleName}
-        />
-      )
+      slotData && <Module key={contentId} accessibility={accessibility} {...slotData} {...others} />
     );
   });
 };
