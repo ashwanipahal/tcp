@@ -1,8 +1,11 @@
 import styled from 'styled-components';
-import InputCheckbox from '../../../../atoms/InputCheckbox';
+import InputCheckbox from '../../../../../atoms/InputCheckbox';
 
 const StyledInputCheckbox = styled(InputCheckbox)`
-  margin: 0 14px;
+  p {
+    margin: 0 3px;
+    padding: 3px 0 0;
+  }
 `;
 
 export default StyledInputCheckbox;
