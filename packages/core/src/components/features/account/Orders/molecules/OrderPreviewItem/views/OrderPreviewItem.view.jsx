@@ -107,7 +107,7 @@ const OrderPreviewItem = ({ ...otherProps }) => {
                     className="itemInfo_details_items_leftMargin"
                     fontFamily="secondary"
                   >
-                    {trackingInfo[0].status}
+                    {trackingInfo && trackingInfo[0].status}
                   </BodyCopy>
                 </span>
               </BodyCopy>
