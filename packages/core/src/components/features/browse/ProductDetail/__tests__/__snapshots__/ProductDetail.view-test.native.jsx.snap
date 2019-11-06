@@ -10,17 +10,28 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 >
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
+      AddToFavoriteErrorMsg=""
+      currentColorEntry={
+        Object {
+          "favoritedCount": 0,
+        }
+      }
       currentProduct={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
       }
-      imageUrls={null}
+      imageUrls={Array []}
       isLoggedIn={false}
       onAddItemToFavorites={null}
       onImageClick={[Function]}
+      removeAddToFavoritesErrorMsg={[Function]}
     />
     <Styled(ProductSummary)
       currencyExchange={1}
@@ -30,7 +41,11 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       pdpLabels={Object {}}
       productData={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
@@ -42,7 +57,11 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       alternateSizes={Object {}}
       currentProduct={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
@@ -56,6 +75,20 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       plpLabels={null}
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
+    />
+    <Connect(ProductPickupContainer)
+      formName="ProductAddToBag-undefined"
+      productInfo={
+        Object {
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
     />
     <Connect(AddedToBagContainer)
       navigation={Object {}}

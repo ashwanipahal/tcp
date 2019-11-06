@@ -20,6 +20,7 @@ exports[`ProductList component should renders correctly 1`] = `
     disableVirtualization={false}
     extraData={
       Object {
+        "AddToFavoriteErrorMsg": "",
         "currencyExchange": Array [],
         "currencySymbol": "",
         "isBopisEnabled": false,
@@ -47,6 +48,7 @@ exports[`ProductList component should renders correctly 1`] = `
             "productInfo": "",
           },
         ],
+        "removeAddToFavoritesErrorMsg": [Function],
         "setLastDeletedItemId": [MockFunction],
         "setListRef": [MockFunction],
         "showQuickViewForProductId": "",
