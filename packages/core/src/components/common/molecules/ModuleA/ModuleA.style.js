@@ -69,6 +69,8 @@ const style = css`
     @media ${props => props.theme.mediaQuery.medium} {
       left: 14px;
       width: 255px;
+      top: 50%;
+      transform: translate(0%, -50%);
     }
 
     @media ${props => props.theme.mediaQuery.large} {
