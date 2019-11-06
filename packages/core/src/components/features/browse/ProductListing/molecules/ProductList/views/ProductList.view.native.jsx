@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
@@ -21,7 +22,6 @@ class ProductList extends React.PureComponent {
     this.state = {
       showModal: false,
       favorites: true,
-      generalProductId: null,
     };
   }
 
@@ -33,14 +33,12 @@ class ProductList extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    const { removeAddToFavoritesErrorMsg } = this.props;
+    removeAddToFavoritesErrorMsg('');
+  }
+
   static getDerivedStateFromProps(props, state) {
-    if (
-      typeof props.onAddItemToFavorites === 'function' &&
-      props.isLoggedIn &&
-      state.generalProductId !== null
-    ) {
-      props.onAddItemToFavorites({ colorProductId: state.generalProductId });
-    }
     if (props.isLoggedIn && state.showModal) {
       return { showModal: false };
     }
@@ -52,8 +50,9 @@ class ProductList extends React.PureComponent {
 
   // eslint-disable-next-line
   onFavorite = generalProductId => {
-    const { isLoggedIn } = this.props;
-    this.setState({ generalProductId });
+    const { isLoggedIn, onAddItemToFavorites } = this.props;
+
+    onAddItemToFavorites({ colorProductId: generalProductId, page: 'PLP' });
 
     if (!isLoggedIn) {
       this.setState({ showModal: true });
@@ -221,12 +220,15 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { products, isLoggedIn, labelsLogin } = this.props;
+    const { products, isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
 
     const { logIn } = labelsLogin;
     const { showModal, favorites } = this.state;
     return (
       <>
+        {AddToFavoriteErrorMsg !== '' && (
+          <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+        )}
         <FlatList
           ref={ref => this.setListRef(ref)}
           data={products}
@@ -241,6 +243,7 @@ class ProductList extends React.PureComponent {
           stickyHeaderIndices={[0]}
           columnWrapperStyle={this.getColumnWrapperStyle()}
         />
+
         {showModal && (
           <ModalNative
             isOpen={showModal}
@@ -314,6 +317,8 @@ ProductList.propTypes = {
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   labelsPlpTiles: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -344,6 +349,8 @@ ProductList.defaultProps = {
     logIn: '',
   },
   labelsPlpTiles: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductList, styles);

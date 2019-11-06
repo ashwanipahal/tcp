@@ -6,6 +6,7 @@ import { FlatList, Text, Dimensions, Share, SafeAreaView } from 'react-native';
 import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -36,12 +37,15 @@ class ImageCarousel extends React.PureComponent {
     this.state = {
       activeSlideIndex: 0,
       showModal: false,
-      isAddedToFav: false,
-      generalProductId: null,
     };
     const { theme } = props;
     this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
     this.favoriteIconSize = get(theme, 'typography.fontSizes.fs25', 25);
+  }
+
+  componentWillUnmount() {
+    const { removeAddToFavoritesErrorMsg } = this.props;
+    removeAddToFavoritesErrorMsg('');
   }
 
   // this method set current visible image
@@ -68,13 +72,6 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (
-      typeof props.onAddItemToFavorites === 'function' &&
-      props.isLoggedIn &&
-      state.generalProductId !== null
-    ) {
-      props.onAddItemToFavorites({ colorProductId: state.generalProductId });
-    }
     if (props.isLoggedIn && state.showModal) {
       return { showModal: false };
     }
@@ -86,9 +83,9 @@ class ImageCarousel extends React.PureComponent {
     this.flatListRef.scrollToIndex({ animated: true, index: dotClickedIndex });
   };
 
-  onFavorite = generalProductId => {
-    const { isLoggedIn } = this.props;
-    this.setState({ generalProductId });
+  onFavorite = colorProductId => {
+    const { isLoggedIn, onAddItemToFavorites } = this.props;
+    onAddItemToFavorites({ colorProductId, page: 'PDP' });
     if (!isLoggedIn) {
       this.setState({ showModal: true });
     }
@@ -98,14 +95,6 @@ class ImageCarousel extends React.PureComponent {
     this.setState(state => ({
       showModal: !state.showModal,
     }));
-  };
-
-  setIsAddedToFav = isLoggedIn => {
-    if (isLoggedIn) {
-      this.setState(() => ({
-        isAddedToFav: true,
-      }));
-    }
   };
 
   onShare = async () => {
@@ -169,14 +158,23 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { imageUrls, isLoggedIn, currentProduct, isGiftCard } = this.props;
+    const {
+      imageUrls,
+      isLoggedIn,
+      isGiftCard,
+      AddToFavoriteErrorMsg,
+      currentColorEntry,
+    } = this.props;
 
-    const { generalProductId } = currentProduct;
-    const { activeSlideIndex, showModal, isAddedToFav } = this.state;
+    const { favoritedCount, colorProductId, isFavorite } = currentColorEntry;
+    const { activeSlideIndex, showModal } = this.state;
 
     if (imageUrls && imageUrls.length > 0) {
       return (
         <Container>
+          {AddToFavoriteErrorMsg !== '' && (
+            <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+          )}
           <FlatList
             ref={ref => {
               this.flatListRef = ref;
@@ -198,12 +196,13 @@ class ImageCarousel extends React.PureComponent {
           {!isGiftCard ? (
             <FavoriteAndPaginationContainer>
               <FavoriteContainer>
-                {isAddedToFav ? (
+                {isFavorite !== undefined ? (
                   <CustomIcon
                     isButton
                     name={ICON_NAME.favorite}
                     size={this.favoriteIconSize}
                     color="gray.500"
+                    fill="gray.500"
                     dataLocator="pdp_favorite_icon"
                   />
                 ) : (
@@ -214,8 +213,7 @@ class ImageCarousel extends React.PureComponent {
                     color={this.favoriteIconColor}
                     dataLocator="pdp_favorite_icon"
                     onPress={() => {
-                      this.onFavorite(generalProductId);
-                      this.setIsAddedToFav(isLoggedIn);
+                      this.onFavorite(colorProductId);
                     }}
                   />
                 )}
@@ -226,7 +224,7 @@ class ImageCarousel extends React.PureComponent {
                   fontSize="fs10"
                   fontWeight="regular"
                   color="gray.600"
-                  text="100"
+                  text={favoritedCount}
                 />
               </FavoriteContainer>
               {imageUrls.length > 1 && (
@@ -296,6 +294,10 @@ ImageCarousel.propTypes = {
   isGiftCard: PropTypes.bool,
   isLoggedIn: PropTypes.bool,
   currentProduct: PropTypes.shape({}),
+  onAddItemToFavorites: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
+  currentColorEntry: PropTypes.string,
 };
 
 ImageCarousel.defaultProps = {
@@ -304,6 +306,10 @@ ImageCarousel.defaultProps = {
   isGiftCard: false,
   isLoggedIn: false,
   currentProduct: {},
+  onAddItemToFavorites: () => {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
+  currentColorEntry: '',
 };
 
 export default withStyles(withTheme(ImageCarousel), styles);

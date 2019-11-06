@@ -105,6 +105,8 @@ const ProductListView = ({
   onAddItemToFavorites,
   isLoggedIn,
   isLoadingMore,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -135,6 +137,8 @@ const ProductListView = ({
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
         labelsLogin={labelsLogin}
+        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         {...otherProps}
       />
       {isLoadingMore ? <PLPSkeleton col={20} /> : null}
@@ -172,6 +176,8 @@ ProductListView.propTypes = {
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoadingMore: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -192,6 +198,8 @@ ProductListView.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductListView, styles);

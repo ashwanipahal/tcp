@@ -30,7 +30,12 @@ import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  addItemsToWishlist,
+  removeAddToFavoriteErrorState,
+} from '../../Favorites/container/Favorites.actions';
+
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
 class ProductDetailContainer extends React.PureComponent {
   selectedColorProductId;
@@ -38,6 +43,7 @@ class ProductDetailContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     const { navigation } = props;
+    // eslint-disable-next-line react/prop-types
     this.selectedColorProductId = navigation && navigation.getParam('selectedColorProductId');
   }
 
@@ -95,6 +101,8 @@ class ProductDetailContainer extends React.PureComponent {
       currency,
       currencyAttributes,
       alternateSizes,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -120,6 +128,8 @@ class ProductDetailContainer extends React.PureComponent {
             currency={currency}
             currencyExchange={currencyAttributes.exchangevalue}
             alternateSizes={alternateSizes}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
           />
         ) : (
           <Spinner />
@@ -146,6 +156,7 @@ function mapStateToProps(state) {
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
     alternateSizes: getAlternateSizes(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
   };
 }
 
@@ -162,6 +173,9 @@ function mapDispatchToProps(dispatch) {
     },
     onAddItemToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
   };
 }
@@ -185,10 +199,14 @@ ProductDetailContainer.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   currency: PropTypes.string,
-  currencyAttributes: PropTypes.shape({}),
+  currencyAttributes: PropTypes.shape({
+    exchangevalue: PropTypes.string,
+  }),
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -209,6 +227,8 @@ ProductDetailContainer.defaultProps = {
     exchangevalue: 1,
   },
   alternateSizes: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default connect(

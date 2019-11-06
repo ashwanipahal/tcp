@@ -102,6 +102,7 @@ const ListItem = props => {
     margins,
     paddings,
     viaModule,
+    isLoggedIn,
     labelsPlpTiles,
   } = props;
   logger.info(viaModule);
@@ -150,7 +151,6 @@ const ListItem = props => {
         item={item}
         isLoggedIn={isLoggedIn}
         accessibilityLabel="Price Section"
-        productInfo={productInfo}
       />
       <RenderTitle
         text={name}
@@ -337,27 +337,23 @@ const RenderPricesSection = values => {
     itemInfo,
     hideFavorite,
     productInfo,
-    isLoggedIn,
   } = values;
 
   const { badge3, listPrice, offerPrice } = miscInfo;
   const { itemId } = itemInfo;
   const { generalProductId } = productInfo || '';
+  const bundleProduct = get(productInfo, 'bundleProduct', false);
 
   // calculate default offer price
   const offerPriceForColor = bundleProduct
     ? calculateCollectionOfferPriceRange(productInfo, currencySymbol, currencyExchange)
     : `${currencySymbol}${(offerPrice * currencyExchange[0].exchangevalue).toFixed(2)}`;
 
-  const [isAddedToFav, setIsAddedToFav] = useState(
-    (item.miscInfo && item.miscInfo.isInDefaultWishlist) || false
-  );
-
   // calculate default list price
   const listPriceForColor = `${currencySymbol}${(
     listPrice * currencyExchange[0].exchangevalue
   ).toFixed(2)}`;
-
+  const isAddedToFav = item.miscInfo && item.miscInfo.isInDefaultWishlist;
   return (
     <PricesSection>
       <OfferPriceAndFavoriteIconContainer>
@@ -386,7 +382,6 @@ const RenderPricesSection = values => {
                 color="gray.600"
                 onPress={() => {
                   onFavorite(generalProductId);
-                  setIsAddedToFav(!!isLoggedIn);
                 }}
               />
             )}
@@ -459,7 +454,12 @@ const RenderSizeFit = ({ item }) => {
 };
 
 RenderSizeFit.propTypes = {
-  item: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    skuInfo: PropTypes.shape({
+      fit: PropTypes.string,
+      size: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const RenderPurchasedQuantity = ({ item }) => {
@@ -479,10 +479,6 @@ const RenderPurchasedQuantity = ({ item }) => {
   );
 };
 
-RenderPurchasedQuantity.propTypes = {
-  item: PropTypes.shape({}).isRequired,
-};
-
 const RenderMoveToWishlist = () => {
   return (
     <RowContainer margins="8px 0 0 0">
@@ -499,7 +495,12 @@ const RenderMoveToWishlist = () => {
 };
 
 RenderPurchasedQuantity.propTypes = {
-  item: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    quantityPurchased: PropTypes.string,
+    itemInfo: PropTypes.shape({
+      quantity: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 RenderTitle.propTypes = {
@@ -534,7 +535,15 @@ RenderTitle.defaultProps = {
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
-  item: PropTypes.shape({}),
+  item: PropTypes.shape({
+    productInfo: PropTypes.shape({
+      name: PropTypes.string,
+      bundleProduct: PropTypes.shape({}),
+    }),
+    colorsMap: PropTypes.shape({}),
+    itemInfo: PropTypes.shape({}),
+    skuInfo: PropTypes.string,
+  }),
   badge1: PropTypes.string,
   badge2: PropTypes.string,
   loyaltyPromotionMessage: PropTypes.string,
@@ -559,7 +568,15 @@ ListItem.propTypes = {
 
 ListItem.defaultProps = {
   theme: {},
-  item: {},
+  item: {
+    productInfo: {
+      name: '',
+      bundleProduct: {},
+    },
+    colorsMap: {},
+    itemInfo: {},
+    skuInfo: '',
+  },
   badge1: '',
   badge2: '',
   loyaltyPromotionMessage: '',
