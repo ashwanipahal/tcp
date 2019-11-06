@@ -16,7 +16,6 @@ import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
-import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -171,7 +170,7 @@ class PickUpFormPart extends React.Component {
     }
   }
 
-  render() {
+  renderPickupPage = () => {
     const {
       className,
       isGuest,
@@ -188,17 +187,12 @@ class PickUpFormPart extends React.Component {
       showAccordian,
       ServerErrors,
       pageCategory,
-      cartOrderItemsCount,
-      checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
-    const { isEditing, pickUpContact, dataUpdated } = this.state;
-    if (!dataUpdated) {
-      this.updatePickupForm();
-    }
-
+    const { isEditing, pickUpContact } = this.state;
     return (
       <>
-        {cartOrderItemsCount > 0 ? (
+        {isBagLoaded && (
           <div className={className}>
             <div className="container">
               {pickupError && (
@@ -327,11 +321,17 @@ class PickUpFormPart extends React.Component {
               />
             </form>
           </div>
-        ) : (
-          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
         )}
       </>
     );
+  };
+
+  render() {
+    const { dataUpdated } = this.state;
+    if (!dataUpdated) {
+      this.updatePickupForm();
+    }
+    return <>{this.renderPickupPage()}</>;
   }
 }
 
@@ -352,9 +352,9 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
-  cartOrderItemsCount: PropTypes.number.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
+  isBagLoaded: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,

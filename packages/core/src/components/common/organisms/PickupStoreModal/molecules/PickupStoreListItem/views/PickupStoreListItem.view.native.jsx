@@ -344,7 +344,7 @@ class PickupStoreListItem extends React.Component {
         <Button
           buttonVariation="fixed-width"
           onPress={updateCartItemStore ? this.handleStoreUpdate : this.handleStoreSelect}
-          fill="BLACK"
+          fill="BLUE"
           disableButton={!isBossSelected && !isBopisSelected}
           text={buttonLabel}
         />

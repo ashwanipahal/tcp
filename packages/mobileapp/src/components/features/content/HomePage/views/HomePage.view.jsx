@@ -23,7 +23,6 @@ import {
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
-import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
@@ -44,6 +43,7 @@ const modulesMap = {
   moduleR: ModuleR,
   moduleS: ModuleS,
   moduleQ: ModuleQ,
+  moduleT: ModuleT,
 };
 
 class HomePageView extends React.PureComponent<Props> {
@@ -134,7 +134,6 @@ class HomePageView extends React.PureComponent<Props> {
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
-        <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
       </LazyloadScrollView>
     );

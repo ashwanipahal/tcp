@@ -1,6 +1,8 @@
 /* istanbul ignore file */
 import { call, put, takeEvery } from 'redux-saga/effects';
 import styliticsProductListing from '@tcp/core/src/services/abstractors/styliticsProductListing';
+import ProductAbstractor from '@tcp/core/src/services/abstractors/productListing';
+import { loadLayoutData, loadModulesData } from '@tcp/core/src/reduxStore/actions';
 
 import constants from './StyliticsProductTabList.constants';
 import {
@@ -8,11 +10,16 @@ import {
   styliticsProductTabListDataSuccess,
 } from './StyliticsProductTabList.actions';
 
+const instanceProductListing = new ProductAbstractor();
+
 export function* fetchStyliticsProductTabListData({ payload }) {
   const { categoryId } = payload;
   try {
     const res = yield call(styliticsProductListing.getData, payload);
     if (res) {
+      const { layout, modules } = yield call(instanceProductListing.parsedModuleData);
+      yield put(loadLayoutData(layout, 'outfitListingPage'));
+      yield put(loadModulesData(modules));
       return yield put(
         styliticsProductTabListDataSuccess({
           [categoryId]: res,

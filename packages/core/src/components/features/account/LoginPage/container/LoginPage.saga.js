@@ -37,7 +37,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       return yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: true,
-          excludeCartItems: true,
+          excludeCartItems: false,
           recalcRewards: true,
           translation: true,
         })
