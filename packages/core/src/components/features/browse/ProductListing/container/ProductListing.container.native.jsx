@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+
 import {
   getNavigationTree,
   getLoadedProductsCount,
@@ -170,6 +172,7 @@ function mapStateToProps(state) {
     totalProductsCount: getTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
   };
 }
 

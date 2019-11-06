@@ -239,8 +239,7 @@ export const updateAppliedFiltersInState = state => {
   return filters;
 };
 
-export const getIsFilterBy = state => {
-  const filterMaps = state.ProductListing.get('filtersMaps');
+export const isFiltersAvailable = filterMaps => {
   const filterKeys =
     filterMaps && filterMaps.unbxdDisplayName && Object.keys(filterMaps.unbxdDisplayName);
   return (
@@ -253,6 +252,11 @@ export const getIsFilterBy = state => {
         return filterMaps[facets].length > 0;
       })
   );
+};
+
+export const getIsFilterBy = state => {
+  const filterMaps = state.ProductListing.get('filtersMaps');
+  return isFiltersAvailable(filterMaps);
 };
 
 export const getIsDataLoading = state => {

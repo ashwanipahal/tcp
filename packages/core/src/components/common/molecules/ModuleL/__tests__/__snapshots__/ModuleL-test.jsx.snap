@@ -18,9 +18,9 @@ exports[`ModuleL component renders correctly 1`] = `
           [Function],
           "
 
-  > *:last-child {
-    margin-right: 0;
-  }
+  ",
+          [Function],
+          "
   &.content-wrapper {
     margin: 0 auto;
   }
@@ -38,6 +38,7 @@ exports[`ModuleL component renders correctly 1`] = `
       "styledComponentId": "sc-EHOje",
       "target": [Function],
       "toString": [Function],
+      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

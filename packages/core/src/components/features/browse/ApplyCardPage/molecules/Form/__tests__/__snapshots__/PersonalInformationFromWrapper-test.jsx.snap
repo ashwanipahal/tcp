@@ -16,6 +16,20 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   >
     personal information
   </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="free_dropdown_label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs10"
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    Date of Birth
+  </Styled(BodyCopy)>
   <Styled(Row)
     fullBleed={true}
   >
@@ -30,20 +44,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
       }
       key="contact_information_form"
     >
-      <Styled(BodyCopy)
-        className="free_dropdown_label"
-        color="text.primary"
-        component="span"
-        fontFamily="secondary"
-        fontSize="fs10"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        Date of Birth
-      </Styled(BodyCopy)>
       <Styled(Row)
         fullBleed={true}
       >
@@ -157,6 +157,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -167,10 +168,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             name="month"
             options={
               Array [
-                Object {
-                  "displayName": "Mm",
-                  "id": "Mm",
-                },
                 Object {
                   "displayName": "Jan",
                   "id": "1",
@@ -221,6 +218,8 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 },
               ]
             }
+            placeholder="lbl_PLCCForm_month"
+            title="lbl_PLCCForm_month"
           />
         </Styled(Col)>
         <Styled(Col)
@@ -333,6 +332,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -343,10 +343,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             name="date"
             options={
               Array [
-                Object {
-                  "displayName": "Dd",
-                  "id": "Dd",
-                },
                 Object {
                   "displayName": "01",
                   "id": "01",
@@ -473,6 +469,8 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 },
               ]
             }
+            placeholder="lbl_PLCCForm_day"
+            title="lbl_PLCCForm_day"
           />
         </Styled(Col)>
         <Styled(Col)
@@ -585,6 +583,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -595,10 +594,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             name="year"
             options={
               Array [
-                Object {
-                  "displayName": "Yyyy",
-                  "id": "Yyyy",
-                },
                 Object {
                   "displayName": "2002",
                   "id": "2002",
@@ -977,6 +972,8 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 },
               ]
             }
+            placeholder="lbl_PLCCForm_year"
+            title="lbl_PLCCForm_year"
           />
         </Styled(Col)>
       </Styled(Row)>
@@ -1144,6 +1141,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

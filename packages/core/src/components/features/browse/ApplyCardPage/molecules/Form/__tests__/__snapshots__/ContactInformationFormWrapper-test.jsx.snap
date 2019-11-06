@@ -196,6 +196,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -371,6 +372,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -548,6 +550,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -756,6 +759,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -935,6 +939,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -969,20 +974,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
           }
           key="container_state"
         >
-          <Styled(BodyCopy)
-            className="free_dropdown_label columnWrapper"
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            state
-          </Styled(BodyCopy)>
           <Field
             className="field stateField"
             component={
@@ -1082,6 +1073,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1158,7 +1150,8 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 },
               ]
             }
-            placeholder="state select"
+            placeholder="state"
+            title="state"
           />
         </Styled(Col)>
         <Styled(Col)
@@ -1325,6 +1318,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1506,6 +1500,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1680,6 +1675,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1859,6 +1855,7 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

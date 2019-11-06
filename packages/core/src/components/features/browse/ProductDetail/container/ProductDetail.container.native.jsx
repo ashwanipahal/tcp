@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
+import { Spinner } from '../../../../common/atoms';
 import { getProductDetails } from './ProductDetail.actions';
 
 import {
@@ -120,7 +121,9 @@ class ProductDetailContainer extends React.PureComponent {
             currencyExchange={currencyAttributes.exchangevalue}
             alternateSizes={alternateSizes}
           />
-        ) : null}
+        ) : (
+          <Spinner />
+        )}
       </React.Fragment>
     );
   }

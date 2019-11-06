@@ -57,6 +57,7 @@ const style = css`
     padding-right: 20px;
     padding-bottom: 16px;
     padding-left: 20px;
+    color: ${props => props.theme.colorPalette.gray[800]};
   }
 
   &.gymboree-module-a .banner-content {
@@ -66,10 +67,15 @@ const style = css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-      transform: none;
+      line-height: 90px;
+      top: 50%;
       left: 120px;
+      transform: translate(0%, -50%);
       width: 470px;
+
+      .link-text-wrapper {
+        width: 100%;
+      }
     }
   }
 
@@ -111,7 +117,6 @@ const style = css`
       props.theme.isGymboree
         ? props.theme.colors.BUTTON.WHITE
         : props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -151,7 +156,6 @@ const style = css`
   &.gymboree-module-a .imageCTAList .image-comp,
   &.gymboree-module-a .linkCTAList .link-button-wrapper-class {
     color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
-    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
   }
 
   &.gymboree-module-a .slick-dots {

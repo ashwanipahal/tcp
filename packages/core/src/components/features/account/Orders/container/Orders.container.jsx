@@ -8,7 +8,6 @@ import OrderListComponent from '../views';
 import { getOrdersList } from './Orders.actions';
 import { getOrderDetails } from '../../OrderDetails/container/OrderDetails.actions';
 import { getLabels } from '../../Account/container/Account.selectors';
-import { API_CONFIG } from '../../../../../services/config';
 
 /**
  * This component will render OrdersContainer component
@@ -54,21 +53,18 @@ export class OrdersContainer extends PureComponent {
       componentProps,
       orderItems,
     } = this.props;
-    const siteId = getSiteId();
     const ordersListItemData = ordersListItems && ordersListItems.orders;
 
     return (
-      siteId !== API_CONFIG.siteIds.ca && (
-        <OrderListComponent
-          labels={labels}
-          onFilterLink={this.filterLinkHandler}
-          ordersListItems={ordersListItemData}
-          navigation={navigation}
-          handleComponentChange={handleComponentChange}
-          componentProps={componentProps}
-          orderItems={orderItems}
-        />
-      )
+      <OrderListComponent
+        labels={labels}
+        onFilterLink={this.filterLinkHandler}
+        ordersListItems={ordersListItemData}
+        navigation={navigation}
+        handleComponentChange={handleComponentChange}
+        componentProps={componentProps}
+        orderItems={orderItems}
+      />
     );
   }
 }

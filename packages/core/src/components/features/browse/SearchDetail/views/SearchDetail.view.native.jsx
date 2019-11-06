@@ -85,7 +85,7 @@ class SearchDetail extends React.PureComponent {
           {...otherProps}
         />
         <QuickViewModal />
-        <AddedToBagContainer />
+        <AddedToBagContainer navigation={navigation} />
       </PageContainer>
     );
   }

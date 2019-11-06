@@ -231,6 +231,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "styledComponentId": "sc-gZMcBi",
                   "target": [Function],
                   "toString": [Function],
+                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -399,6 +400,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "styledComponentId": "sc-gZMcBi",
                   "target": [Function],
                   "toString": [Function],
+                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }

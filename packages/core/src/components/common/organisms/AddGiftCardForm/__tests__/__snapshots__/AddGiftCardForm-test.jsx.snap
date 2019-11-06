@@ -175,6 +175,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -354,6 +355,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -677,6 +679,7 @@ exports[`Add gift card form component should render component correctly when isF
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -849,6 +852,7 @@ exports[`Add gift card form component should render component correctly when isF
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

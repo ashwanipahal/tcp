@@ -244,6 +244,7 @@ exports[`AirmilesBanner form component should call componentWillRecieveProps 1`]
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -526,6 +527,7 @@ exports[`AirmilesBanner form component should render component correctly 1`] = `
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -753,6 +755,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -932,6 +935,7 @@ exports[`AirmilesBanner form component should render correctly with expanded cas
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1214,6 +1218,7 @@ exports[`AirmilesBanner form component should render correctly with promofield 1
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
+                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }

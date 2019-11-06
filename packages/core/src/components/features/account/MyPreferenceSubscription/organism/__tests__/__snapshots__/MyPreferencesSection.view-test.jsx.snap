@@ -257,6 +257,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "styledComponentId": "sc-EHOje",
                   "target": [Function],
                   "toString": [Function],
+                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -417,6 +418,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "styledComponentId": "sc-EHOje",
                   "target": [Function],
                   "toString": [Function],
+                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -608,6 +610,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "styledComponentId": "sc-EHOje",
                   "target": [Function],
                   "toString": [Function],
+                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -766,6 +769,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
                   "styledComponentId": "sc-EHOje",
                   "target": [Function],
                   "toString": [Function],
+                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }

@@ -202,6 +202,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -371,6 +372,7 @@ exports[`AddNewCCForm should render correctly 1`] = `
             "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

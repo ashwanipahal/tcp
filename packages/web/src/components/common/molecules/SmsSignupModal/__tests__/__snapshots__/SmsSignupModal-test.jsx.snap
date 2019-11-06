@@ -21,8 +21,8 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "620px",
-        "maxHeight": "620px",
+        "height": "625px",
+        "maxHeight": "625px",
         "minHeight": "500px",
       }
     }
@@ -262,6 +262,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "styledComponentId": "sc-gzVnrw",
                     "target": [Function],
                     "toString": [Function],
+                    "usesTheme": true,
                     "warnTooManyClasses": [Function],
                     "withComponent": [Function],
                   }
@@ -339,8 +340,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "620px",
-        "maxHeight": "620px",
+        "height": "625px",
+        "maxHeight": "625px",
         "minHeight": "500px",
       }
     }
@@ -469,8 +470,8 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     contentRef={[Function]}
     heightConfig={
       Object {
-        "height": "620px",
-        "maxHeight": "620px",
+        "height": "625px",
+        "maxHeight": "625px",
         "minHeight": "500px",
       }
     }
@@ -710,6 +711,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "styledComponentId": "sc-gzVnrw",
                     "target": [Function],
                     "toString": [Function],
+                    "usesTheme": true,
                     "warnTooManyClasses": [Function],
                     "withComponent": [Function],
                   }

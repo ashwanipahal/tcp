@@ -1,3 +1,4 @@
+import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
 import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
@@ -181,6 +182,7 @@ const processResponse = (
     searchTerm,
     sort,
     filterSortView,
+    isLazyLoading,
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
@@ -194,7 +196,7 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp() && filterSortView) {
+  if (!isMobileApp() && filterSortView && !isLazyLoading) {
     getPlpUrlQueryValues(filtersAndSort);
   }
 
@@ -234,6 +236,7 @@ const processResponse = (
   // TODO - fix this - this.setUnbxdId(unbxdId);
   let entityCategory;
   let categoryNameTop = '';
+  let bannerInfo = {};
   // Taking the first product in plp to get the categoryID to be sent to adobe
   if (processHelpers.hasProductsInResponse(res.body.response)) {
     const firstProduct = res.body.response.products[0];
@@ -289,8 +292,14 @@ const processResponse = (
       })
     );
   }
+
+  try {
+    bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+  } catch (error) {
+    logger.error(error);
+  }
   return Promise.all(pendingPromises).then(() => {
-    return response;
+    return { ...response, bannerInfo };
   });
 };
 

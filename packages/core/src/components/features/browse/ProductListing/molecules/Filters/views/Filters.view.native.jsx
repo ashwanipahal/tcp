@@ -130,11 +130,16 @@ class Filters extends React.PureComponent {
   };
 
   renderColorSwitchItem = ({ item }) => {
-    const { imagePath, isSelected, displayName } = item;
+    const { isSelected, displayName, swatchImage } = item;
     const name = displayName || '';
+
+    const swatchImageUrl = swatchImage && swatchImage.split('_');
+    const imageUrl =
+      swatchImageUrl && `${swatchImageUrl[0]}/${swatchImageUrl[0]}_${swatchImageUrl[1]}`;
+
     return (
       <LinkImageIcon
-        uri={imagePath}
+        uri={imageUrl}
         selected={isSelected}
         onPress={() => this.onSelectFilter(item)}
         name={name}

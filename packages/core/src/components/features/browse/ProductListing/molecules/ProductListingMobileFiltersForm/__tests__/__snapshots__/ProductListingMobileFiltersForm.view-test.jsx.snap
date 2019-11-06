@@ -196,6 +196,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                         "styledComponentId": "sc-kAzzGY",
                         "target": [Function],
                         "toString": [Function],
+                        "usesTheme": true,
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -581,6 +582,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                         "styledComponentId": "sc-kAzzGY",
                         "target": [Function],
                         "toString": [Function],
+                        "usesTheme": true,
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -597,7 +599,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="BLUE"
                               className="color-chip"
                               data-colorname="blue"
@@ -605,7 +607,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLUE.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -621,7 +623,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               BLUE
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "BLUE",
                           "value": "BLUE",
@@ -630,7 +632,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="WHITE"
                               className="color-chip"
                               data-colorname="white"
@@ -638,7 +640,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/WHITE.gif"
                               width="18px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -654,7 +656,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               WHITE
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "WHITE",
                           "value": "WHITE",
@@ -663,7 +665,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="BLACK"
                               className="color-chip"
                               data-colorname="black"
@@ -671,7 +673,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLACK.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -687,7 +689,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               BLACK
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "BLACK",
                           "value": "BLACK",
@@ -696,7 +698,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="GRAY"
                               className="color-chip"
                               data-colorname="gray"
@@ -704,7 +706,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GRAY.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -720,7 +722,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               GRAY
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "GRAY",
                           "value": "GRAY",
@@ -729,7 +731,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="PINK"
                               className="color-chip"
                               data-colorname="pink"
@@ -737,7 +739,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PINK.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -753,7 +755,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               PINK
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "PINK",
                           "value": "PINK",
@@ -762,7 +764,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="TAN"
                               className="color-chip"
                               data-colorname="tan"
@@ -770,7 +772,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/TAN.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -786,7 +788,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               TAN
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "TAN",
                           "value": "TAN",
@@ -795,7 +797,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="RED"
                               className="color-chip"
                               data-colorname="red"
@@ -803,7 +805,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/RED.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -819,7 +821,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               RED
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "RED",
                           "value": "RED",
@@ -828,7 +830,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="MULTI"
                               className="color-chip"
                               data-colorname="multi"
@@ -836,7 +838,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/MULTI.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -852,7 +854,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               MULTI
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "MULTI",
                           "value": "MULTI",
@@ -861,7 +863,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="DENIM"
                               className="color-chip"
                               data-colorname="denim"
@@ -869,7 +871,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/DENIM.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -885,7 +887,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               DENIM
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "DENIM",
                           "value": "DENIM",
@@ -894,7 +896,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="GREEN"
                               className="color-chip"
                               data-colorname="green"
@@ -902,7 +904,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GREEN.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -918,7 +920,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               GREEN
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "GREEN",
                           "value": "GREEN",
@@ -927,7 +929,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="PURPLE"
                               className="color-chip"
                               data-colorname="purple"
@@ -935,7 +937,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PURPLE.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -951,7 +953,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               PURPLE
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "PURPLE",
                           "value": "PURPLE",
@@ -960,7 +962,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="YELLOW"
                               className="color-chip"
                               data-colorname="yellow"
@@ -968,7 +970,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/YELLOW.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -984,7 +986,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               YELLOW
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "YELLOW",
                           "value": "YELLOW",
@@ -993,7 +995,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                           "content": <div
                             className="color-title"
                           >
-                            <ForwardRef
+                            <ForwardRef(Styled(Image))
                               alt="BROWN"
                               className="color-chip"
                               data-colorname="brown"
@@ -1001,7 +1003,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BROWN.gif"
                               width="19px"
                             />
-                            <ForwardRef
+                            <ForwardRef(Styled(BodyCopy))
                               className="color-name"
                               color="gray.900"
                               component="span"
@@ -1017,7 +1019,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                               textAlign="center"
                             >
                               BROWN
-                            </ForwardRef>
+                            </ForwardRef(Styled(BodyCopy))>
                           </div>,
                           "title": "BROWN",
                           "value": "BROWN",
@@ -1107,6 +1109,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                         "styledComponentId": "sc-kAzzGY",
                         "target": [Function],
                         "toString": [Function],
+                        "usesTheme": true,
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1412,6 +1415,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                         "styledComponentId": "sc-kAzzGY",
                         "target": [Function],
                         "toString": [Function],
+                        "usesTheme": true,
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1527,6 +1531,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                         "styledComponentId": "sc-kAzzGY",
                         "target": [Function],
                         "toString": [Function],
+                        "usesTheme": true,
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1632,6 +1637,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                         "styledComponentId": "sc-kAzzGY",
                         "target": [Function],
                         "toString": [Function],
+                        "usesTheme": true,
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1747,6 +1753,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                         "styledComponentId": "sc-kAzzGY",
                         "target": [Function],
                         "toString": [Function],
+                        "usesTheme": true,
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }

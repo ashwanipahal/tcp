@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import logger from '@tcp/core/src/utils/loggerInstance';
@@ -15,7 +16,6 @@ import {
   Badge2Text,
   PricesSection,
   OfferPriceAndBadge3Container,
-  ListPrice,
   ListOfferPrice,
   Badge3Text,
   TitleContainer,
@@ -38,36 +38,44 @@ const TextProps = {
 
 let renderVariation = false;
 
-const handleQuickViewOpenClick = (selectedColorIndex, colorsMap, onQuickViewOpenClick) => {
-  const { colorProductId } = colorsMap && colorsMap[selectedColorIndex];
-  onQuickViewOpenClick({
-    colorProductId,
-  });
+const onCTAHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
+  const { productInfo, colorsMap } = item;
+  const { name, pdpUrl, isGiftCard, bundleProduct } = productInfo;
+  const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
+  const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
+  if (bundleProduct) {
+    onGoToPDPPage(modifiedPdpUrl, colorProductId, name);
+  } else if (!isGiftCard) {
+    onQuickViewOpenClick({
+      colorProductId,
+    });
+  }
 };
 
 const renderAddToBagContainer = (
+  item,
   renderPriceOnly,
   selectedColorIndex,
-  colorMapData,
   onQuickViewOpenClick,
-  isGiftCard
+  bundleProduct,
+  labelsPlpTiles,
+  onGoToPDPPage
 ) => {
   if (renderVariation && !renderPriceOnly) return null;
+  const buttonLabel = bundleProduct
+    ? labelsPlpTiles.lbl_plpTiles_shop_collection
+    : labelsPlpTiles.lbl_add_to_bag;
   return (
     <AddToBagContainer>
       <CustomButton
+        paddings="12px 12px 12px 12px"
         fill="BLUE"
         type="button"
         buttonVariation="variable-width"
         data-locator=""
-        text="ADD TO BAG"
-        onPress={
-          () =>
-            !isGiftCard
-              ? handleQuickViewOpenClick(selectedColorIndex, colorMapData, onQuickViewOpenClick)
-              : () => {} // TODO Quick View for Gift Card
-        }
-        accessibilityLabel="add to bag"
+        text={buttonLabel}
+        onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
+        accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
       />
     </AddToBagContainer>
   );
@@ -94,12 +102,12 @@ const ListItem = props => {
     margins,
     paddings,
     viaModule,
-    isLoggedIn,
+    labelsPlpTiles,
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const { productInfo, colorsMap, itemInfo } = item;
-  const { name, isGiftCard } = productInfo;
+  const { name, bundleProduct } = productInfo;
   const miscInfo = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
 
@@ -109,7 +117,6 @@ const ListItem = props => {
     <ListContainer
       fullWidth={fullWidth}
       renderPriceAndBagOnly={renderVariation}
-      accessible
       margins={margins}
       paddings={paddings}
     >
@@ -143,6 +150,7 @@ const ListItem = props => {
         item={item}
         isLoggedIn={isLoggedIn}
         accessibilityLabel="Price Section"
+        productInfo={productInfo}
       />
       <RenderTitle
         text={name}
@@ -163,11 +171,13 @@ const ListItem = props => {
         />
       ) : null}
       {renderAddToBagContainer(
+        item,
         renderPriceOnly,
         selectedColorIndex,
-        colorMapData,
         onQuickViewOpenClick,
-        isGiftCard
+        bundleProduct,
+        labelsPlpTiles,
+        onGoToPDPPage
       )}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
       {isFavorite && <RenderMoveToWishlist />}
@@ -230,6 +240,91 @@ const RenderBadge2 = ({ text }) => {
 
 RenderBadge2.propTypes = TextProps;
 
+/**
+ * @description - This method calculate offer price range for the collection products
+ */
+const calculateCollectionOfferPriceRange = (productInfo, currencySymbol, currencyExchange) => {
+  const lowOfferPrice = (
+    get(productInfo, 'priceRange.lowOfferPrice', 0) * currencyExchange[0].exchangevalue
+  ).toFixed(2);
+
+  const highOfferPrice = (
+    get(productInfo, 'priceRange.highOfferPrice', 0) * currencyExchange[0].exchangevalue
+  ).toFixed(2);
+  const highOfferPriceFinalValue = highOfferPrice.toString() === '0' ? '' : ` - ${highOfferPrice}`;
+
+  return `${currencySymbol}${lowOfferPrice}${highOfferPriceFinalValue}`;
+};
+
+/**
+ * @description - This method calculate list price of the product
+ */
+const calculateListPrice = (productInfo, miscInfo, currencySymbol, currencyExchange) => {
+  const bundleProduct = get(productInfo, 'bundleProduct', false);
+  if (bundleProduct) {
+    const lowListPrice = (
+      get(productInfo, 'priceRange.lowListPrice', 0) * currencyExchange[0].exchangevalue
+    ).toFixed(2);
+
+    const highListPrice = (
+      get(productInfo, 'priceRange.highListPrice', 0) * currencyExchange[0].exchangevalue
+    ).toFixed(2);
+    return (
+      <RowContainer>
+        <BodyCopy
+          dataLocator="plp_filter_size_range"
+          textDecoration="line-through"
+          mobileFontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          color="gray.800"
+          text={lowListPrice}
+          accessibilityLabel="list low price"
+        />
+        {highListPrice !== 0 && (
+          <BodyCopy
+            mobileFontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            color="gray.800"
+            text=" - "
+          />
+        )}
+        {highListPrice !== 0 && (
+          <BodyCopy
+            dataLocator="plp_filter_size_range"
+            textDecoration="line-through"
+            mobileFontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="regular"
+            color="gray.800"
+            text={highListPrice}
+            accessibilityLabel="list high price"
+          />
+        )}
+      </RowContainer>
+    );
+  }
+
+  // calculate default list price
+  const { listPrice } = miscInfo;
+  const listPriceForColor = `${currencySymbol}${(
+    listPrice * currencyExchange[0].exchangevalue
+  ).toFixed(2)}`;
+  return (
+    <BodyCopy
+      dataLocator="plp_filter_size_range"
+      textDecoration="line-through"
+      mobileFontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="regular"
+      color="gray.800"
+      text={listPriceForColor}
+      accessibilityLabel={`offer price ${listPriceForColor}`}
+    />
+  );
+};
+
 const RenderPricesSection = values => {
   const {
     item,
@@ -244,28 +339,35 @@ const RenderPricesSection = values => {
     productInfo,
     isLoggedIn,
   } = values;
+
   const { badge3, listPrice, offerPrice } = miscInfo;
   const { itemId } = itemInfo;
   const { generalProductId } = productInfo || '';
-  // calculate default list price
-  const listPriceForColor = `${currencySymbol}${(
-    listPrice * currencyExchange[0].exchangevalue
-  ).toFixed(2)}`;
+
   // calculate default offer price
-  const offerPriceForColor = `${currencySymbol}${(
-    offerPrice * currencyExchange[0].exchangevalue
-  ).toFixed(2)}`;
+  const offerPriceForColor = bundleProduct
+    ? calculateCollectionOfferPriceRange(productInfo, currencySymbol, currencyExchange)
+    : `${currencySymbol}${(offerPrice * currencyExchange[0].exchangevalue).toFixed(2)}`;
 
   const [isAddedToFav, setIsAddedToFav] = useState(
     (item.miscInfo && item.miscInfo.isInDefaultWishlist) || false
   );
+
+  // calculate default list price
+  const listPriceForColor = `${currencySymbol}${(
+    listPrice * currencyExchange[0].exchangevalue
+  ).toFixed(2)}`;
+
   return (
     <PricesSection>
       <OfferPriceAndFavoriteIconContainer>
-        <ListPrice accessibilityRole="text" accessibilityLabel={`list price ${offerPriceForColor}`}>
+        <ListOfferPrice
+          accessibilityRole="text"
+          accessibilityLabel={`list price ${offerPriceForColor}`}
+        >
           {offerPriceForColor}
-        </ListPrice>
-        {!hideFavorite && (
+        </ListOfferPrice>
+        {!hideFavorite && !bundleProduct && (
           <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
             {isFavorite || isAddedToFav ? (
               <CustomIcon
@@ -292,14 +394,8 @@ const RenderPricesSection = values => {
         )}
       </OfferPriceAndFavoriteIconContainer>
       <OfferPriceAndBadge3Container>
-        {listPriceForColor !== offerPriceForColor && (
-          <ListOfferPrice
-            accessibilityRole="text"
-            accessibilityLabel={`offer price ${listPriceForColor}`}
-          >
-            {listPriceForColor}
-          </ListOfferPrice>
-        )}
+        {listPriceForColor !== offerPriceForColor &&
+          calculateListPrice(productInfo, miscInfo, currencySymbol, currencyExchange)}
         <Badge3Text accessible={badge3 !== ''} accessibilityRole="text" accessibilityLabel={badge3}>
           {badge3}
         </Badge3Text>
@@ -458,6 +554,7 @@ ListItem.propTypes = {
   paddings: PropTypes.string,
   viaModule: PropTypes.string,
   isLoggedIn: PropTypes.bool,
+  labelsPlpTiles: PropTypes.shape({}),
 };
 
 ListItem.defaultProps = {
@@ -478,6 +575,7 @@ ListItem.defaultProps = {
   paddings: '12px 0 12px 0',
   viaModule: '',
   isLoggedIn: false,
+  labelsPlpTiles: {},
 };
 
 export default withStyles(ListItem, styles);

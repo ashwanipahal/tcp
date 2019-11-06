@@ -175,6 +175,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -253,6 +254,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "styledComponentId": "sc-cSHVUG",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -416,6 +418,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
+              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -697,6 +700,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -775,6 +779,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "styledComponentId": "sc-cSHVUG",
             "target": [Function],
             "toString": [Function],
+            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -939,6 +944,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
+              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }

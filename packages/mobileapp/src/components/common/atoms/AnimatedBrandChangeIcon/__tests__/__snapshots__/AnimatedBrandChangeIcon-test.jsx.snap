@@ -33,7 +33,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
   >
     <Styled(TouchableOpacity)
       accessibilityComponentType="none"
-      accessibilityLabel="tcpBrand"
+      accessibilityLabel="The Childrens Place Link"
       accessibilityTraits="none"
       name="tcpBrand"
       onPress={[Function]}
@@ -76,7 +76,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
   >
     <Styled(TouchableOpacity)
       accessibilityComponentType="none"
-      accessibilityLabel="gymboreeBrand"
+      accessibilityLabel="Gymboree Link"
       accessibilityTraits="none"
       name="gymboreeBrand"
       onPress={[Function]}

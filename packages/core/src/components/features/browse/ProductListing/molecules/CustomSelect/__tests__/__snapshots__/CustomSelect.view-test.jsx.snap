@@ -87,6 +87,7 @@ exports[`Custom Select is shown should render Custom Select  1`] = `
       "styledComponentId": "sc-kAzzGY",
       "target": [Function],
       "toString": [Function],
+      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

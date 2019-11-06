@@ -104,6 +104,7 @@ const ProductListView = ({
   paddings,
   onAddItemToFavorites,
   isLoggedIn,
+  isLoadingMore,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -136,6 +137,7 @@ const ProductListView = ({
         labelsLogin={labelsLogin}
         {...otherProps}
       />
+      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
       <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
@@ -169,6 +171,7 @@ ProductListView.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  isLoadingMore: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {

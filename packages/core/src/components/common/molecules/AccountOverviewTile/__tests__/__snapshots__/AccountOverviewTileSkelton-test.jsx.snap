@@ -51,6 +51,7 @@ exports[`AccountOverviewTileSkelton component should renders correctly 1`] = `
       "styledComponentId": "sc-bwzfXH",
       "target": [Function],
       "toString": [Function],
+      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

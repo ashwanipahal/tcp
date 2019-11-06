@@ -4,10 +4,10 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
-import PageContainer from '../styles/ProductDetail.style.native';
+import { PageContainer, LoyaltyBannerView } from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
-import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
+import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -20,6 +20,7 @@ import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
+import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -34,6 +35,7 @@ class ProductDetailView extends React.PureComponent {
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
       currentGiftCardValue: currentProduct.offerPrice,
       selectedColorProductId,
+      showCompleteTheLook: false,
     };
   }
 
@@ -68,13 +70,23 @@ class ProductDetailView extends React.PureComponent {
 
   renderFulfilmentSection = () => {
     const { currentProduct } = this.props;
+    const { currentColorEntry } = this.state;
     return (
-      <FulfillmentSection
-        btnClassName="added-to-bag"
-        buttonLabel="Add To Bag"
-        currentProduct={currentProduct}
-      />
+      currentProduct &&
+      currentColorEntry && (
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          miscInfo={currentColorEntry.miscInfo}
+        />
+      )
     );
+  };
+
+  setShowCompleteTheLook = value => {
+    if (value) {
+      this.setState({ showCompleteTheLook: value });
+    }
   };
 
   render() {
@@ -97,7 +109,12 @@ class ProductDetailView extends React.PureComponent {
       isLoggedIn,
       alternateSizes,
     } = this.props;
-    const { currentColorEntry, currentGiftCardValue, selectedColorProductId } = this.state;
+    const {
+      currentColorEntry,
+      currentGiftCardValue,
+      selectedColorProductId,
+      showCompleteTheLook,
+    } = this.state;
     let imageUrls = [];
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
@@ -107,7 +124,6 @@ class ProductDetailView extends React.PureComponent {
         isFullSet: true,
       });
     }
-
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
@@ -139,6 +155,8 @@ class ProductDetailView extends React.PureComponent {
             currencySymbol={currency}
             currencyExchange={currencyExchange}
             isGiftCard={currentProduct.isGiftCard}
+            showCompleteTheLook={showCompleteTheLook}
+            pdpLabels={pdpLabels}
           />
 
           <ProductAddToBagContainer
@@ -158,6 +176,9 @@ class ProductDetailView extends React.PureComponent {
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
+          <LoyaltyBannerView>
+            <LoyaltyBanner pageCategory="isProductDetailView" />
+          </LoyaltyBannerView>
           <ProductDetailDescription
             shortDescription={shortDescription}
             itemPartNumber={itemPartNumber}
@@ -170,6 +191,7 @@ class ProductDetailView extends React.PureComponent {
               pdpLabels={pdpLabels}
               navigation={navigation}
               selectedColorProductId={selectedColorProductId}
+              setShowCompleteTheLook={this.setShowCompleteTheLook}
             />
           ) : null}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}

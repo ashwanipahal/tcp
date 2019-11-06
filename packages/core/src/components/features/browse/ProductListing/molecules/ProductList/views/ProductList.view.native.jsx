@@ -116,6 +116,7 @@ class ProductList extends React.PureComponent {
       isFavorite,
       setLastDeletedItemId,
       isLoggedIn,
+      labelsPlpTiles,
     } = this.props;
     const { item } = itemData;
 
@@ -154,6 +155,7 @@ class ProductList extends React.PureComponent {
         isFavorite={isFavorite}
         setLastDeletedItemId={setLastDeletedItemId}
         isLoggedIn={isLoggedIn}
+        labelsPlpTiles={labelsPlpTiles}
       />
     );
   };
@@ -311,6 +313,7 @@ ProductList.propTypes = {
   setLastDeletedItemId: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  labelsPlpTiles: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -340,6 +343,7 @@ ProductList.defaultProps = {
   labelsLogin: {
     logIn: '',
   },
+  labelsPlpTiles: {},
 };
 
 export default withStyles(ProductList, styles);
