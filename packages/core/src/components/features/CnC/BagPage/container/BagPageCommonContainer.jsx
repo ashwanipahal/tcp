@@ -21,6 +21,7 @@ import {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
 } from '../../Checkout/container/Checkout.action';
+import checkoutSelectors from '../../Checkout/container/Checkout.selector';
 import {
   toastMessageInfo,
   toastMessagePosition,
@@ -92,12 +93,16 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessagePositionInfo,
       cartItemSflError,
       currencySymbol,
+      isPayPalWebViewEnable,
       isPickupModalOpen,
+      isMobile,
+      bagPageServerError,
     } = this.props;
 
     const showAddTobag = false;
     return (
       <BagPage
+        isMobile={isMobile}
         labels={labels}
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
@@ -122,7 +127,9 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
+        bagPageServerError={bagPageServerError}
       />
     );
   }
@@ -165,6 +172,7 @@ export const mapDispatchToProps = dispatch => {
 export const mapStateToProps = state => {
   const { size = false } = getCartOrderList(state) || {};
   return {
+    isMobile: checkoutSelectors.getIsMobile(),
     labels: { ...BagPageSelector.getBagPageLabels(state), ...getLabelsCartItemTile(state) },
     totalCount: BagPageSelector.getTotalItems(state),
     productsTypes: BagPageSelector.getProductsTypes(state),
@@ -181,9 +189,11 @@ export const mapStateToProps = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
+    bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
   };
 };
 

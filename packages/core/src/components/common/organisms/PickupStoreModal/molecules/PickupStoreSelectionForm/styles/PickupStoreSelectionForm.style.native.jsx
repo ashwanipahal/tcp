@@ -27,6 +27,7 @@ export const ModalCloseTouchable = styled.TouchableOpacity`
 
 export const PickUpModalView = styled.View`
   flex: 1;
+  margin: 0 14px 0;
 `;
 
 export const PickUpHeaderText = styled.Text`

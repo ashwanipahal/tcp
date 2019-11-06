@@ -7,10 +7,9 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import styles from '../styles/ConfirmationOrderNumberDisplay.styles';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { ROUTE_PATH } from '../../../../../../../config/route.config';
 import internalEndpoints from '../../../../../account/common/internalEndpoints';
 
-const { orderPage } = internalEndpoints;
+const { orderPage, trackOrder } = internalEndpoints;
 
 /**
  * @function ConfirmationOrderNumberDisplay
@@ -34,8 +33,8 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
   const bossEndDate = bossMaxDate ? getDateInformation(bossMaxDate) : '';
   const bossDate =
     !!(bossStartDate && bossEndDate) &&
-    `${bossStartDate.day}. ${bossStartDate.month}
-   ${bossStartDate.date} - ${bossEndDate.day}. ${bossEndDate.month} ${bossEndDate.date}`;
+    `${bossStartDate.day}, ${bossStartDate.month}
+   ${bossStartDate.date} - ${bossEndDate.day}, ${bossEndDate.month} ${bossEndDate.date}`;
   const bopisDate = `${labels.bopisDate} ${today.month} ${today.date}`;
   return (
     <div className={className}>
@@ -74,14 +73,17 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
           {isGuest ? (
             <Anchor
               underline
-              url={ROUTE_PATH.guestOrderDetails({
-                pathSuffix: `${orderNumber}/${encryptedEmailAddress}`,
-              })}
+              to={`${trackOrder.link}&orderId=${orderNumber}&emailAddress=${encryptedEmailAddress}`}
+              asPath={`${trackOrder.path}/${orderNumber}/${encryptedEmailAddress}`}
             >
               {orderNumber}
             </Anchor>
           ) : (
-            <Anchor underline to={orderPage.link} asPath={`${orderPage.path}/${orderNumber}`}>
+            <Anchor
+              underline
+              to={`${orderPage.link}&orderId=${orderNumber}`}
+              asPath={`${orderPage.path}/${orderNumber}`}
+            >
               {orderNumber}
             </Anchor>
           )}

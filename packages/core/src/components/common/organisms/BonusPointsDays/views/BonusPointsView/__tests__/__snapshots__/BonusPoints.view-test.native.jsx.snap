@@ -36,6 +36,7 @@ exports[`BonusPointsView should render correctly 1`] = `
         dataLocator="bonus-points-details"
         domStorageEnabled={false}
         isApplyDeviceHeight={false}
+        isNativeView={false}
         javaScriptEnabled={false}
         source={
           Object {

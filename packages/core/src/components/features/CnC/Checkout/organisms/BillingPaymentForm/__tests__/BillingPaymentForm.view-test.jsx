@@ -72,6 +72,7 @@ describe('ButtonList component', () => {
   });
   it('renders correctly without props with payPal', () => {
     props.paymentMethodId = 'payPal';
+    props.isPayPalEnabled = true;
     const component = shallow(<BillingPaymentForm {...props} />);
     expect(component).toMatchSnapshot();
   });
@@ -147,6 +148,7 @@ describe('ButtonList component', () => {
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
   });
+
   it('renders correctly if  no cards present ', () => {
     const props2 = {
       className: '',
@@ -164,16 +166,18 @@ describe('ButtonList component', () => {
       nextSubmitText: '',
       syncErrorsObj: {
         syncError: {
-          cvvCode: 'Enter correct code',
+          cvvCode: 'Correct code',
         },
       },
       dispatch: jest.fn(),
       change: jest.fn(),
+      isPayPalEnabled: false,
     };
     const component = shallow(<BillingPaymentForm {...props2} />);
     component.setState({ addNewCCState: true });
     expect(component).toMatchSnapshot();
   });
+
   it('renders correctly with method onAddNewCreditCardClick', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();
@@ -195,5 +199,11 @@ describe('ButtonList component', () => {
     const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onCCDropDownChange');
     instance.onCCDropDownChange();
     expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
+  });
+  it('renders correctly with venmoError', () => {
+    props.paymentMethodId = 'venmo';
+    const error = 'Authentication Error';
+    const component = shallow(<BillingPaymentForm {...props} venmoError={error} />);
+    expect(component).toMatchSnapshot();
   });
 });

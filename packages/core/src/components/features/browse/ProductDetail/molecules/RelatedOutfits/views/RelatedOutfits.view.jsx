@@ -12,6 +12,7 @@ class RelatedOutfits extends React.PureComponent {
     super(props);
     this.state = {
       isAccordionOpen: true,
+      showHeader: false,
     };
   }
 
@@ -19,36 +20,48 @@ class RelatedOutfits extends React.PureComponent {
     return isAccordionOpen ? 'show-accordion-toggle' : '';
   };
 
-  render() {
-    const { pdpLabels, className, selectedColorProductId } = this.props;
-    const { completeTheLook } = pdpLabels;
-    const { isAccordionOpen } = this.state;
-    const accordionToggleClass = this.getAccordionClass(isAccordionOpen);
+  getRelatedOutfitSlots = () => {
+    const { selectedColorProductId } = this.props;
+    return (
+      <ModuleQ
+        selectedColorProductId={selectedColorProductId}
+        hideTabs
+        divTabs={[]}
+        bgClass="yellow-bg"
+        showRelatedOutfitHeader={this.setShowHeader}
+      />
+    );
+  };
 
-    const RelatedOutfitsSlots = () => {
-      return (
-        <ModuleQ
-          selectedColorProductId={selectedColorProductId}
-          hideTabs
-          divTabs={[]}
-          bgClass="yellow-bg"
-        />
-      );
-    };
+  setShowHeader = value => {
+    const { showHeader } = this.state;
+    if (!showHeader) {
+      this.setState({ showHeader: value });
+    }
+  };
+
+  render() {
+    const { pdpLabels, className } = this.props;
+    const { completeTheLook } = pdpLabels;
+    const { isAccordionOpen, showHeader } = this.state;
+    const accordionToggleClass = this.getAccordionClass(isAccordionOpen);
 
     return (
       <div className={`${className} product-description-list`}>
-        <BodyCopy
-          className={`product-desc-heading ${accordionToggleClass}`}
-          fontSize="fs14"
-          component="div"
-          fontFamily="secondary"
-          fontWeight="black"
-          data-locator={getLocator('pdp_anchor_complete_the_look')}
-        >
-          {completeTheLook}
-        </BodyCopy>
-        {isAccordionOpen ? <RelatedOutfitsSlots /> : null}
+        {showHeader && (
+          <BodyCopy
+            className={`product-desc-heading ${accordionToggleClass}`}
+            fontSize="fs14"
+            component="div"
+            fontFamily="secondary"
+            fontWeight="black"
+            data-locator={getLocator('pdp_anchor_complete_the_look')}
+          >
+            {completeTheLook}
+          </BodyCopy>
+        )}
+
+        {this.getRelatedOutfitSlots()}
       </div>
     );
   }
@@ -57,7 +70,7 @@ class RelatedOutfits extends React.PureComponent {
 RelatedOutfits.propTypes = {
   className: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
-  selectedColorProductId: PropTypes.number.isRequired,
+  selectedColorProductId: PropTypes.string.isRequired,
 };
 
 RelatedOutfits.defaultProps = {

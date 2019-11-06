@@ -489,12 +489,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />
@@ -645,12 +647,14 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />
@@ -982,12 +986,14 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_payment_checkBalance"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
     <Styled(View)>
       <Styled(View) />

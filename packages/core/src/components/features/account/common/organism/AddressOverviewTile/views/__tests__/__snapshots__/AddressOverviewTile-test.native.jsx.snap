@@ -8,6 +8,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="Address Book"
@@ -154,12 +155,14 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="View Address Book"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -173,6 +176,7 @@ exports[`AddressOverviewTile render empty address component should render correc
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_addressBookHeading"
@@ -319,12 +323,14 @@ exports[`AddressOverviewTile render empty address component should render correc
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_addressBookCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

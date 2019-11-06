@@ -9,6 +9,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       component={[Function]}
       dataLocator="Alternate-checkbox"
       enableSuccessCheck={false}
+      isChecked={false}
       name="hasAlternatePickup"
     />
     <Styled(BodyCopy)
@@ -39,6 +40,7 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
       component={[Function]}
       dataLocator="Alternate-checkbox"
       enableSuccessCheck={false}
+      isChecked={false}
       name="hasAlternatePickup"
     />
     <Styled(BodyCopy)
@@ -87,6 +89,7 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
     <Styled(ContactFormFields)
       className="pick-up-alternate-input"
       isCondensed={false}
+      isExpressCheckout={false}
       labels={Object {}}
       showEmailAddress={true}
       showPhoneNumber={false}

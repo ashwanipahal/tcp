@@ -8,6 +8,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
+import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 
 class ContactFormFields extends React.Component {
   static ContactValidationConfig = getStandardConfig([
@@ -84,6 +85,7 @@ class ContactFormFields extends React.Component {
                 maxLength={50}
                 dataLocator="pickup-phone-number"
                 enableSuccessCheck={false}
+                normalize={formatPhoneNumber}
               />
             </Col>
           )}

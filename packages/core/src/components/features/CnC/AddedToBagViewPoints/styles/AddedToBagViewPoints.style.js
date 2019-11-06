@@ -17,6 +17,7 @@ const styles = css`
   .promo-color {
     color: ${props => props.theme.colors.PROMO.YELLOW};
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;

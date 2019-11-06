@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
+import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 
 const getThresholdValue = state => {
   return state.session && state.session.siteDetails.PLCC_MARKETING_BAG_TOTAL_CUT_OFF;
@@ -10,12 +11,35 @@ const cartOrderDetails = createSelector(
   cartOrderDetailsObj => {
     const estimatedRewards = cartOrderDetailsObj.get('estimatedRewards');
     const subTotal = cartOrderDetailsObj.get('subTotal');
+    const subTotalWithDiscounts = cartOrderDetailsObj.get('subTotalWithDiscounts');
     const cartTotalAfterPLCCDiscount = cartOrderDetailsObj.get('cartTotalAfterPLCCDiscount');
     const earnedReward = cartOrderDetailsObj.get('earnedReward');
     const pointsToNextReward = cartOrderDetailsObj.get('pointsToNextReward');
     return {
       estimatedRewards,
       subTotal,
+      subTotalWithDiscounts,
+      cartTotalAfterPLCCDiscount,
+      earnedReward,
+      pointsToNextReward,
+    };
+  }
+);
+
+const confirmationDetails = createSelector(
+  ConfirmationSelectors.getConfirmationSummary,
+  ({
+    estimatedRewards,
+    subTotal,
+    subTotalWithDiscounts,
+    cartTotalAfterPLCCDiscount,
+    earnedReward,
+    pointsToNextReward,
+  }) => {
+    return {
+      estimatedRewards,
+      subTotal,
+      subTotalWithDiscounts,
       cartTotalAfterPLCCDiscount,
       earnedReward,
       pointsToNextReward,
@@ -45,7 +69,8 @@ export const getLoyaltyBannerLabels = state => {
         lbl_banner_added2bag_mpr_points_label2: added2bagMprPointsSubHeading,
         lbl_banner_added2bag_mpr_points_label3: added2bagMprPointsDescription,
         lbl_banner_added2bag_mpr_rewards_label1: added2bagMprRewardsHeading,
-        lbl_banner_added2bag_mpr_rewards_label2: added2bagMprRewardsDescription,
+        lbl_banner_added2bag_mpr_rewards_label2: added2bagMprRewardsSubHeading,
+        lbl_banner_added2bag_mpr_rewards_label3: added2bagMprRewardsDescription,
         lbl_banner_added2bag_plcc_points_label1: added2bagPlccPointsHeading,
         lbl_banner_added2bag_plcc_points_label2: added2bagPlccPointsDescription,
         lbl_banner_added2bag_plcc_rewards_label1: added2bagPlccRewardsHeading,
@@ -113,6 +138,7 @@ export const getLoyaltyBannerLabels = state => {
     added2bagMprPointsSubHeading,
     added2bagMprPointsDescription,
     added2bagMprRewardsHeading,
+    added2bagMprRewardsSubHeading,
     added2bagMprRewardsDescription,
     added2bagPlccPointsHeading,
     added2bagPlccPointsDescription,
@@ -161,4 +187,4 @@ export const getLoyaltyBannerLabels = state => {
   };
 };
 
-export { getThresholdValue, cartOrderDetails };
+export { getThresholdValue, cartOrderDetails, confirmationDetails };

@@ -57,12 +57,12 @@ const styles = css`
       height: 18px;
     }
     .footer-button {
-      background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+      background-color: ${props => props.theme.colorPalette.blue.C900};
       color: ${props => props.theme.colors.WHITE};
       font-size: ${props => props.theme.typography.fontSizes.fs14};
       font-weight: ${props => props.theme.typography.fontWeights.fontWeights};
       &:hover {
-        background: ${props => props.theme.colors.PRIMARY.BLUE};
+        background: ${props => props.theme.colorPalette.blue.C900};
         display: inline-block;
       }
     }
@@ -89,6 +89,18 @@ const styles = css`
       @media ${props => props.theme.mediaQuery.smallOnly} {
         display: block;
         width: 100%;
+      }
+    }
+
+    .footer-paypal-button {
+      position: relative;
+      width: 450px;
+      @media ${props => props.theme.mediaQuery.mediumOnly} {
+        width: 192px;
+      }
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        position: absolute;
+        width: 347px;
       }
     }
   }

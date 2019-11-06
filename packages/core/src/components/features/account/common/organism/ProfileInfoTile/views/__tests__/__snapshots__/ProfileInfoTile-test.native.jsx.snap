@@ -8,7 +8,7 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="black"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text=""
@@ -221,12 +221,14 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text=""
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

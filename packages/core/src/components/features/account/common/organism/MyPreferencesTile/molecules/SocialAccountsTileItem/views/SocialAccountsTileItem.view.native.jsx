@@ -71,12 +71,12 @@ class SocialAccountsTileItem extends React.PureComponent {
                   <ImageComp source={FacebookIcon} width={30} height={30} />
                 </ImageWrapper>
               )}
-              {socialAccountsObject.isTwitterConnected && (
+              {socialAccountsObject.twitter && (
                 <ImageWrapper>
                   <ImageComp source={TwitterIcon} width={30} height={30} />
                 </ImageWrapper>
               )}
-              {socialAccountsObject.isInstagramConnected && (
+              {socialAccountsObject.instagram && (
                 <ImageWrapper>
                   <ImageComp source={InstagramIcon} width={30} height={30} />
                 </ImageWrapper>

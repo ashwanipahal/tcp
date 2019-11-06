@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { WebView } from 'react-native-webview';
-import { Dimensions } from 'react-native';
+import { Dimensions, View, Text } from 'react-native';
+import { RenderTree, ComponentMap } from '@fabulas/astly';
 import { PropTypes } from 'prop-types';
 
 /**
@@ -10,16 +11,10 @@ import { PropTypes } from 'prop-types';
  * Note that static HTML will require setting originWhitelist to ["*"]
  */
 
-// type Props = {
-//   source?: string,
-//   javaScriptEnabled?: boolean,
-//   domStorageEnabled?: boolean,
-//   thirdPartyCookiesEnabled?: boolean,
-//   isApplyDeviceHeight?: boolean,
-// };
+class RichText extends PureComponent {
+  renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
 
-class RichText extends React.PureComponent {
-  render() {
+  renderWebView = () => {
     const {
       javaScriptEnabled,
       domStorageEnabled,
@@ -40,10 +35,33 @@ class RichText extends React.PureComponent {
         {...this.props}
       />
     );
+  };
+
+  renderNativeView = () => {
+    const { source } = this.props;
+    return (
+      <View>
+        <RenderTree
+          tree={`<div>${source}</div>`}
+          componentMap={{
+            ...ComponentMap,
+            br: () => <Text> </Text>,
+            p: props => this.renderText(props),
+            b: props => this.renderText(props),
+          }}
+        />
+      </View>
+    );
+  };
+
+  render() {
+    const { isNativeView } = this.props;
+    return isNativeView ? this.renderNativeView() : this.renderWebView();
   }
 }
 
 RichText.propTypes = {
+  isNativeView: PropTypes.bool,
   source: PropTypes.string,
   javaScriptEnabled: PropTypes.bool,
   domStorageEnabled: PropTypes.bool,
@@ -52,6 +70,7 @@ RichText.propTypes = {
 };
 
 RichText.defaultProps = {
+  isNativeView: false,
   source: '',
   javaScriptEnabled: false,
   domStorageEnabled: false,

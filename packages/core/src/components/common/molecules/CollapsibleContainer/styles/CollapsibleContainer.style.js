@@ -28,7 +28,7 @@ const styles = css`
   .collapsible-icon {
     position: absolute;
     right: 0;
-    display: none;
+    display: ${props => (props.isAccordionTablet ? 'block' : 'none')};
     top: 30px;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       display: ${props => (props.showHeaderAlways && props.isDefaultView ? 'none' : 'block')};
@@ -42,7 +42,7 @@ const styles = css`
   .item-closed {
     display: ${props => (props.isDefaultView ? 'block' : 'none')};
     @media ${props => props.theme.mediaQuery.medium} {
-      display: block;
+      display: ${props => (props.isAccordionTablet ? 'none' : 'block')};
     }
   }
 `;

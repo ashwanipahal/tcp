@@ -15,10 +15,10 @@
     "postinstall": "npx jetify"
   },
   "dependencies": {
-    "@fabulas/astly": "^0.0.12",
     "@react-native-community/async-storage": "^1.6.2",
     "@react-native-community/cli": "^2.9.0",
     "@react-native-community/netinfo": "^4.4.0",
+    "@fabulas/astly": "^0.0.13",
     "@tcp/core": "*",
     "apisauce": "^1.0.2",
     "apollo-cache-inmemory": "^1.6.3",

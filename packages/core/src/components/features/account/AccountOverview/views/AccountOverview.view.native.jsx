@@ -1,6 +1,8 @@
+/* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import isEmpty from 'lodash/isEmpty';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
@@ -8,13 +10,13 @@ import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/c
 import { getLabelValue } from '@tcp/core/src/utils';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
+import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import OrdersTile from '../../common/organism/OrdersTile';
 import MyPreferencesTile from '../../common/organism/MyPreferencesTile';
 import {
   UnderlineStyle,
-  ImageWrapper,
   FavtWrapper,
   FavoritesWrapper,
   TextWrapper,
@@ -22,6 +24,7 @@ import {
   ImageContainer,
   RightArrowImageContainer,
   StyledImage,
+  FavImageWrapper,
 } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
@@ -55,6 +58,9 @@ class AccountOverview extends PureComponent<Props> {
         createAccount: '',
         favorites: '',
       },
+      horizontalBar: true,
+      modalHeaderLbl: ' ',
+      changePassword: false,
     };
   }
 
@@ -64,6 +70,46 @@ class AccountOverview extends PureComponent<Props> {
     }
     return null;
   }
+
+  componentDidMount() {
+    const { changePassword } = this.state;
+    if (!changePassword) this.navigateToChangePassword();
+  }
+
+  componentDidUpdate() {
+    const { changePassword } = this.state;
+    if (!changePassword) this.navigateToChangePassword();
+  }
+
+  navigateToChangePassword = () => {
+    const { labels, navigation } = this.props;
+    const { showModal } = this.state;
+    if (!isEmpty(labels) && navigation) {
+      const {
+        state: { params },
+      } = navigation;
+      if (params) {
+        const { component } = params;
+
+        if (component && component === 'change-password') {
+          // eslint-disable-next-line react/no-did-update-set-state
+          this.setState({ changePassword: true });
+          if (showModal) {
+            // if login modal is already opened
+            this.setState({ showModal: false });
+          }
+          // using set timeout as labels doesn't load sometime just after opening app
+          this.toggleModal({
+            getComponentId: {
+              login: true,
+              createAccount: false,
+              favorites: false,
+            },
+          });
+        }
+      }
+    }
+  };
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
     let componentContainer = null;
@@ -76,6 +122,8 @@ class AccountOverview extends PureComponent<Props> {
           variation={getComponentId.favorites && 'favorites'}
           showLogin={this.showloginModal}
           showCheckoutModal={this.showCheckoutModal}
+          updateHeader={this.updateHeader}
+          resetChangePasswordState={this.resetChangePasswordState}
         />
       );
     }
@@ -148,20 +196,39 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   getModalHeader = (getComponentId, labels) => {
-    let header = null;
+    let header = ' ';
     if (getComponentId.login || getComponentId.favorites) {
       header = getLabelValue(labels, 'lbl_overview_login_text');
+      this.setState({
+        horizontalBar: true,
+      });
     }
     if (getComponentId.createAccount) {
       header = getLabelValue(labels, 'lbl_overview_createAccount');
+      this.setState({
+        horizontalBar: true,
+      });
     }
-    return header;
+    this.setState({ modalHeaderLbl: header });
+  };
+
+  updateHeader = () => {
+    this.setState({
+      modalHeaderLbl: ' ',
+      horizontalBar: false,
+    });
+  };
+
+  resetChangePasswordState = () => {
+    this.setState({
+      changePassword: false,
+    });
   };
 
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId, applyCard } = this.state;
-    const modalHeaderLbl = this.getModalHeader(getComponentId, labels);
+    const { showModal, getComponentId, applyCard, modalHeaderLbl, horizontalBar } = this.state;
+    this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
     return (
@@ -205,20 +272,25 @@ class AccountOverview extends PureComponent<Props> {
             <Panel title={getLabelValue(labels, 'lbl_overview_myPreferencesHeading')}>
               <MyPreferencesTile labels={labels} handleComponentChange={handleComponentChange} />
             </Panel>
-            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')} />
+            <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsCardHeading')}>
+              <MyPlaceRewardsCreditCard
+                labels={labels}
+                handleComponentChange={handleComponentChange}
+              />
+            </Panel>
           </React.Fragment>
         )}
         {!isUserLoggedIn && (
           <React.Fragment>
             <LoggedinTextWrapper>
               <BodyCopy
-                mobileFontFamily={['primary']}
+                fontFamily="secondary"
                 fontSize="fs14"
                 textAlign="center"
                 text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_1')}
               />
               <BodyCopy
-                mobileFontFamily={['primary']}
+                fontFamily="secondary"
                 fontSize="fs14"
                 textAlign="center"
                 text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_2')}
@@ -230,7 +302,7 @@ class AccountOverview extends PureComponent<Props> {
                 color={colorPallete.text.secondary}
                 id="createAccount"
                 type="submit"
-                width="150px"
+                width="47%"
                 data-locator=""
                 text={getLabelValue(labels, 'lbl_overview_join_text')}
                 onPress={e =>
@@ -250,7 +322,7 @@ class AccountOverview extends PureComponent<Props> {
                 id="login"
                 type="submit"
                 data-locator=""
-                width="150px"
+                width="47%"
                 text={getLabelValue(labels, 'lbl_overview_login_text')}
                 onPress={e =>
                   this.toggleModal({
@@ -264,7 +336,6 @@ class AccountOverview extends PureComponent<Props> {
                 }
               />
             </LoggedinWrapper>
-
             {showModal && (
               <ModalNative
                 isOpen={showModal}
@@ -272,25 +343,24 @@ class AccountOverview extends PureComponent<Props> {
                 heading={modalHeaderLbl}
                 headingFontFamily="secondary"
                 fontSize="fs16"
+                horizontalBar={horizontalBar}
               >
-                <SafeAreaView>
-                  <ModalViewWrapper>
-                    {this.renderComponent({
-                      navigation,
-                      getComponentId,
-                      isUserLoggedIn,
-                    })}
-                  </ModalViewWrapper>
-                </SafeAreaView>
+                <ModalViewWrapper>
+                  {this.renderComponent({
+                    navigation,
+                    getComponentId,
+                    isUserLoggedIn,
+                  })}
+                </ModalViewWrapper>
               </ModalNative>
             )}
             <FavtWrapper>
               <BodyCopy
                 color="gray.900"
-                mobileFontFamily={['primary']}
+                fontFamily="secondary"
                 fontSize="fs13"
                 textAlign="left"
-                fontWeight="semibold"
+                fontWeight="regular"
                 text={getLabelValue(labels, 'lbl_overview_myFavoritesHeading')}
                 onPress={e =>
                   this.toggleModal({
@@ -299,73 +369,14 @@ class AccountOverview extends PureComponent<Props> {
                   })
                 }
               />
-              <ImageWrapper>
-                <ImageComp source={favIcon} width={20} height={18} />
-              </ImageWrapper>
+              <FavImageWrapper>
+                <ImageComp source={favIcon} width={15} height={13} />
+              </FavImageWrapper>
             </FavtWrapper>
             <UnderlineStyle />
-            <TouchabelContainer onPress={this.toggleApplyNowModal}>
-              <FavoritesWrapper>
-                <ImageContainer>
-                  <StyledImage source={cardIcon} width={47} height={30} />
-                </ImageContainer>
-                <TextWrapper>
-                  <BodyCopy
-                    fontFamily="secondary"
-                    fontSize="fs13"
-                    fontWeight="regular"
-                    text={labels.lbl_overview_apply_today}
-                    color="gray.900"
-                    textAlign="center"
-                  />
-                </TextWrapper>
-              </FavoritesWrapper>
-              <ImageContainer>
-                <ImageComp source={rightIcon} width={7} height={10} />
-              </ImageContainer>
-            </TouchabelContainer>
-
-            <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
-
-            <Panel
-              title={getLabelValue(labels, 'lbl_overview_manage_creditCard')}
-              isVariationTypeLink
-            />
-
-            <UnderlineStyle />
-
-            <TouchabelContainer
-              onPress={() => {
-                navigation.navigate('GiftCardPage', {
-                  title: 'Gift Cards',
-                  pdpUrl: 'Gift Card',
-                });
-              }}
-            >
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs13"
-                fontWeight="regular"
-                text={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
-                color="gray.900"
-              />
-              <RightArrowImageContainer>
-                <ImageComp source={rightIcon} width={7} height={10} />
-              </RightArrowImageContainer>
-            </TouchabelContainer>
-
-            <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
-            <Panel
-              title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}
-              isVariationTypeLink
-              handleComponentChange={this.showTrackOrderModal}
-            />
-            <UnderlineStyle />
-            <Panel title={getLabelValue(labels, 'lbl_overview_app_settings')} isVariationTypeLink />
-            <Panel title={getLabelValue(labels, 'lbl_overview_help')} isVariationTypeLink />
-            <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
           </React.Fragment>
         )}
+
         {isUserLoggedIn && (
           <TouchabelContainer onPress={() => handleComponentChange('myFavoritePageMobile')}>
             <BodyCopy
@@ -385,6 +396,61 @@ class AccountOverview extends PureComponent<Props> {
             />
           </TouchabelContainer>
         )}
+        <>
+          <TouchabelContainer onPress={this.toggleApplyNowModal}>
+            <FavoritesWrapper>
+              <ImageContainer>
+                <StyledImage source={cardIcon} width={47} height={30} />
+              </ImageContainer>
+              <TextWrapper>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="regular"
+                  text={labels.lbl_overview_apply_today}
+                  color="gray.900"
+                  textAlign="center"
+                />
+              </TextWrapper>
+            </FavoritesWrapper>
+            <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+          </TouchabelContainer>
+          <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
+          <Panel
+            title={getLabelValue(labels, 'lbl_overview_manage_creditCard')}
+            isVariationTypeLink
+          />
+          <UnderlineStyle />
+          <TouchabelContainer
+            onPress={() => {
+              navigation.navigate('GiftCardPage', {
+                title: 'Gift Cards',
+                pdpUrl: 'Gift Card',
+              });
+            }}
+          >
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              text={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
+              color="gray.900"
+            />
+            <RightArrowImageContainer>
+              <ImageComp source={rightIcon} width={7} height={10} />
+            </RightArrowImageContainer>
+          </TouchabelContainer>
+          <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
+          <Panel
+            title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}
+            isVariationTypeLink
+            handleComponentChange={this.showTrackOrderModal}
+          />
+          <UnderlineStyle />
+          <Panel title={getLabelValue(labels, 'lbl_overview_app_settings')} isVariationTypeLink />
+          <Panel title={getLabelValue(labels, 'lbl_overview_help')} isVariationTypeLink />
+          <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
+        </>
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         <UnderlineStyle />
       </View>

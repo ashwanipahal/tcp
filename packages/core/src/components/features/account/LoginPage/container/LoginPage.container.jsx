@@ -98,6 +98,10 @@ class LoginPageContainer extends React.PureComponent {
       showLogin,
       userplccCardNumber,
       userplccCardId,
+      updateHeader,
+      navigation,
+      toastMessage,
+      resetChangePasswordState,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -130,6 +134,10 @@ class LoginPageContainer extends React.PureComponent {
         showLogin={showLogin}
         userplccCardNumber={userplccCardNumber}
         userplccCardId={userplccCardId}
+        updateHeader={updateHeader}
+        navigation={navigation}
+        toastMessage={toastMessage}
+        resetChangePasswordState={resetChangePasswordState}
       />
     );
   }
@@ -165,6 +173,8 @@ LoginPageContainer.propTypes = {
   resetAccountOverViewState: PropTypes.func,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  updateHeader: PropTypes.func.isRequired,
+  resetChangePasswordState: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -180,6 +190,7 @@ LoginPageContainer.defaultProps = {
   currentForm: '',
   queryParams: {},
   resetAccountOverViewState: () => {},
+  resetChangePasswordState: () => {},
 };
 
 const mapDispatchToProps = (dispatch, props) => {

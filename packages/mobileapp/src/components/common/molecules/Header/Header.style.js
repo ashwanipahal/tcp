@@ -15,13 +15,13 @@ const cartItemsWidth = cartItems => {
   let width = '';
   switch (cartItems.toString().length) {
     case 2:
-      width = '25px';
+      width = '20px';
       break;
     case 3:
-      width = '30px';
+      width = '25px';
       break;
     default:
-      width = '20px';
+      width = '15px';
   }
   return width;
 };
@@ -33,6 +33,7 @@ export const SafeAreaViewStyle = styled.SafeAreaView`
 export const Container = styled.View`
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 export const SearchContainer = styled.View`
@@ -50,12 +51,20 @@ export const HeaderContainer = styled.View`
 `;
 
 export const MessageContainer = styled.View`
+  ${props => (props.position === 'store' ? `flex-direction: row;` : null)};
   align-items: flex-start;
   position: absolute;
   z-index: ${props => props.theme.zindex.zOverlay};
   justify-content: space-between;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+export const BackContainer = styled.View`
+  flex-direction: row;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  width: 60%;
+  position: absolute;
 `;
 
 export const CartContainer = styled.View`
@@ -81,11 +90,18 @@ export const Icon = styled.Image`
 export const RoundView = styled.View`
   ${setBackground}
   width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
+  height: 15px;
+  border-radius: 8;
+  margin: 2px;
+`;
+
+export const RoundCircle = styled.View`
+  background-color: ${props => props.theme.colorPalette.white};
+  width: ${props => cartItemsWidth(props.cartVal ? props.cartVal : 0)};
   height: 20px;
   border-radius: 10;
   position: absolute;
   margin-top: 15px;
-  border: 2px solid ${props => props.theme.colorPalette.white};
 `;
 
 export const CartIconView = styled.Image`
@@ -94,9 +110,8 @@ export const CartIconView = styled.Image`
 `;
 
 export const TextStyle = {
-  position: 'absolute',
-  marginTop: 19,
-  paddingRight: 5.6,
+  paddingLeft: 4,
+  paddingTop: 1.5,
 };
 
 export const ImageColor = {
@@ -184,7 +199,38 @@ export const BagPageContainer = styled.View`
   flex-direction: row;
 `;
 
+export const LeftSection = styled.View`
+  justify-content: center;
+  align-items: center;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  width: 20%;
+  height: 100%;
+`;
+
+export const ArrowBackIcon = styled.Image`
+  width: 10px;
+  height: 18px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+`;
+
+export const MiddleSection = styled.View`
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
+export const TitleText = styled.Text`
+  color: ${props => props.theme.colorPalette.gray[900]};
+  font-family: ${props => props.theme.typography.fonts.primary};
+  font-size: ${props => props.theme.typography.fontSizes.fs12};
+  font-weight: ${props => props.theme.typography.fontWeights.semibold};
+  line-height: 14.5;
+  margin-left: 120px;
+`;
+
 export default {
+  BackContainer,
   Container,
   MessageContainer,
   StoreContainer,
@@ -206,4 +252,7 @@ export default {
   CloseIcon,
   CloseContainer,
   BagPageContainer,
+  LeftSection,
+  MiddleSection,
+  TitleText,
 };

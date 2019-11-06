@@ -94,7 +94,7 @@ const ConfirmationView = ({
         />
       </InnerWrapper>
       {renderAccountForm(isGuest)}
-      <CnCTemplate isConfirmationPage isGuest={isGuest} />
+      <CnCTemplate isConfirmationPage isGuest={isGuest} pageCategory="confirmation" />
     </Wrapper>
   );
 };

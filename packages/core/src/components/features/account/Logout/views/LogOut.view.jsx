@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import Anchor from '../../../../common/atoms/Anchor';
+import Button from '../../../../common/atoms/Button';
 
 class LogOutView extends React.Component {
   constructor(props) {
@@ -25,15 +25,17 @@ class LogOutView extends React.Component {
     const { className, labels } = this.props;
     return (
       <React.Fragment className={className}>
-        <Anchor
+        <Button
           onClick={this.logoutApp}
-          noLink
+          nohover
+          type="button"
+          link
           className="elem-pb-SM"
           fontSizeVariation="large"
           anchorVariation="primary"
         >
           {getLabelValue(labels, 'CREATE_ACC_SIGN_OUT')}
-        </Anchor>
+        </Button>
       </React.Fragment>
     );
   }

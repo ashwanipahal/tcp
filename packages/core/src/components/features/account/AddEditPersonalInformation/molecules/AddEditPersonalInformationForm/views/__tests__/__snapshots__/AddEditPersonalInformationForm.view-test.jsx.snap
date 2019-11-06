@@ -1137,6 +1137,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -1170,6 +1173,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                 ";
@@ -2388,6 +2394,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   & .CheckBox__text {
     width: calc(100% - 45px);
     display: inline-block;
+    ",
+                [Function],
+                "
   }
 
   & .CheckBox__text a {
@@ -2421,6 +2430,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 ";
     margin-right: 4px;
     margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
   }
 ",
                 ";

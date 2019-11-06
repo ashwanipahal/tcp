@@ -43,7 +43,15 @@ class ApplyNowModalWrapper extends React.Component {
   };
 
   render() {
-    const { className, labels, isModalOpen, isPLCCModalOpen, plccBenefitsList } = this.props;
+    const {
+      className,
+      labels,
+      isModalOpen,
+      isPLCCModalOpen,
+      plccBenefitsList,
+      labelText,
+      noLink,
+    } = this.props;
     return (
       <div className={className}>
         <React.Fragment>
@@ -59,13 +67,15 @@ class ApplyNowModalWrapper extends React.Component {
             />
           ) : null}
         </React.Fragment>
-        <Anchor
-          fontSizeVariation="medium"
-          anchorVariation="primary"
-          text={getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
-          onClick={this.openModal}
-          underline
-        />
+        {!noLink && (
+          <Anchor
+            fontSizeVariation="medium"
+            anchorVariation="primary"
+            text={labelText || getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
+            onClick={this.openModal}
+            underline
+          />
+        )}
       </div>
     );
   }
@@ -82,6 +92,13 @@ ApplyNowModalWrapper.propTypes = {
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   fetchModuleXContent: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,
+  labelText: PropTypes.string,
+  noLink: PropTypes.bool,
+};
+
+ApplyNowModalWrapper.defaultProps = {
+  labelText: '',
+  noLink: false,
 };
 
 export default ApplyNowModalWrapper;

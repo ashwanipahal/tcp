@@ -200,12 +200,14 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="SAVE"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
     <Styled(View)>
@@ -225,12 +227,14 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[MockFunction]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="lbl_profile_personal_info_cancelCta"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

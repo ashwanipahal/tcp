@@ -115,12 +115,14 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
     margin="12px 12px 0 12px"
     navigation={Object {}}
     onPress={[Function]}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}
     text="FIND A STORE"
     theme={Object {}}
     url=""
+    withNoLineHeight={false}
   />
 </Styled(View)>
 `;

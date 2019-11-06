@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { reduxForm, change } from 'redux-form';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -11,8 +12,12 @@ import { BodyCopy } from '../../../../../../common/atoms';
 import BillingSection from '../organisms/BillingSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import ContactFormFields from '../../../molecules/ContactFormFields';
 
 const { Container, FooterTextContainer, FooterLink } = style;
+const formName = 'expressReviewPage';
 
 class ReviewPage extends React.PureComponent {
   static propTypes = {
@@ -24,12 +29,53 @@ class ReviewPage extends React.PureComponent {
     reviewDidMount: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
     setCheckoutStage: PropTypes.func.isRequired,
+    isPaymentDisabled: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
+    isExpressCheckout: PropTypes.bool,
+    handleSubmit: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    isPaymentDisabled: false,
+    isExpressCheckout: false,
   };
 
   componentDidMount() {
     const { reviewDidMount } = this.props;
     reviewDidMount();
   }
+
+  componentDidUpdate(prevProps) {
+    const { isPaymentDisabled: prevPaymentDisabled } = prevProps;
+    const { isPaymentDisabled, dispatch } = this.props;
+    if (prevPaymentDisabled !== isPaymentDisabled) {
+      dispatch(change(formName, 'cvvCode', null));
+    }
+  }
+
+  /**
+   * @function reviewFormSubmit
+   * @description returns form submit data
+   *
+   */
+  reviewFormSubmit = data => {
+    const { submitReview, isExpressCheckout, navigation } = this.props;
+    const { cvvCode } = data;
+
+    if (isExpressCheckout && cvvCode) {
+      const formDataSubmission = {
+        formData: {
+          billing: {
+            cvv: cvvCode,
+          },
+        },
+        navigation,
+      };
+      submitReview(formDataSubmission);
+    } else {
+      submitReview({ navigation });
+    }
+  };
 
   renderFooter = () => {
     const {
@@ -55,11 +101,12 @@ class ReviewPage extends React.PureComponent {
     const {
       navigation,
       labels,
-      submitReview,
       availableStages,
       orderHasShipping,
       orderHasPickUp,
       setCheckoutStage,
+      handleSubmit,
+      isExpressCheckout,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -79,6 +126,7 @@ class ReviewPage extends React.PureComponent {
                 onEdit={() => {
                   setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM);
                 }}
+                isExpressCheckout={isExpressCheckout}
               />
             )}
             {!!orderHasShipping && (
@@ -93,6 +141,7 @@ class ReviewPage extends React.PureComponent {
               onEdit={() => {
                 setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM);
               }}
+              isExpressCheckout={isExpressCheckout}
             />
           </Container>
           <CheckoutCartItemList />
@@ -101,11 +150,12 @@ class ReviewPage extends React.PureComponent {
             navigation={navigation}
             btnText={nextSubmitText}
             routeToPage=""
-            onPress={() => submitReview({ navigation })}
+            onPress={handleSubmit(this.reviewFormSubmit)}
             backLinkText={backLinkBilling}
             onBackLinkPress={() => setCheckoutStage(CONSTANTS.BILLING_DEFAULT_PARAM)}
             footerBody={this.renderFooter()}
             showAccordian
+            pageCategory="review"
           />
         </ScrollView>
       </>
@@ -113,6 +163,15 @@ class ReviewPage extends React.PureComponent {
   }
 }
 
-export default ReviewPage;
+const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
+  ...getStandardConfig(['cvvCode']),
+});
+
+export default reduxForm({
+  form: formName, // a unique identifier for this form
+  ...validateMethod,
+  enableReinitialize: true,
+})(ReviewPage);
 
 export { ReviewPage as ReviewPageVanilla };

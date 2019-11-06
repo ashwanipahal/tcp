@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { change } from 'redux-form';
 import { connect } from 'react-redux';
@@ -12,8 +13,11 @@ import ProductAddToBag from '../views/ProductAddToBag.view';
 class ProductAddToBagContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { currentProduct, selectedColorProductId } = props;
+    const { currentProduct, selectedColorProductId, getProductInitialValues } = props;
     this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
+
+    if (getProductInitialValues && typeof getProductInitialValues === 'function')
+      getProductInitialValues(this.initialValuesForm);
 
     this.state = {
       selectedColor: this.initialValuesForm && this.initialValuesForm.color,
@@ -202,7 +206,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   colorChange = e => {
-    const { selectedSize, selectedFit } = this.state;
+    const { selectedSize, selectedFit, selectedQuantity } = this.state;
     const { onChangeColor } = this.props;
     this.setState({
       selectedColor: { name: e },
@@ -212,7 +216,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
     // props for any custom action to call
     if (onChangeColor) {
-      onChangeColor(e, selectedSize.name, selectedFit.name);
+      onChangeColor(
+        e,
+        selectedSize && selectedSize.name,
+        selectedFit && selectedFit.name,
+        selectedQuantity
+      );
     }
   };
 
@@ -384,10 +393,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   setPreSelectedValuesForProduct = productInfoFromBag => {
     const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
+    const { getProductInitialValues } = this.props;
     this.initialValuesForm.Fit = selectedFit;
     this.initialValuesForm.Quantity = selectedQty || 1;
     this.initialValuesForm.Size = selectedSize;
     this.initialValuesForm.color = selectedColor;
+
+    if (getProductInitialValues && typeof getProductInitialValues === 'function')
+      getProductInitialValues(this.initialValuesForm);
   };
 
   /**
@@ -416,6 +429,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       formEnabled,
       quickViewColorSwatchesCss,
       isPDP,
+      isDisableZeroInventoryEntries,
+      alternateSizes,
+      sizeChartLinkVisibility,
+      navigation,
+      isPickup,
+      ...otherProps
     } = this.props;
     const {
       selectedColor,
@@ -436,6 +455,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return (
       <ProductAddToBag
+        {...otherProps}
         colorList={productColorFitsSizesMap}
         fitList={this.getFitOptions(productColorFitsSizesMap, selectedColor)}
         sizeList={this.getSizeList(productColorFitsSizesMap)}
@@ -470,6 +490,11 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         formEnabled={formEnabled}
         quickViewColorSwatchesCss={quickViewColorSwatchesCss}
         isPDP={isPDP}
+        isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+        alternateSizes={alternateSizes}
+        sizeChartLinkVisibility={sizeChartLinkVisibility}
+        navigation={navigation}
+        isPickup={isPickup}
       />
     );
   }

@@ -20,7 +20,7 @@ exports[`EmptyOrdersList component should renders correctly 1`] = `
     dataLocator="orders-no-order-info"
     fontFamily="secondary"
     fontSize="fs14"
-    fontWeight="regular"
+    fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
@@ -31,7 +31,7 @@ exports[`EmptyOrdersList component should renders correctly 1`] = `
   <Styled(Col)
     colSize={
       Object {
-        "large": 2,
+        "large": 3,
         "medium": 3,
         "small": 6,
       }

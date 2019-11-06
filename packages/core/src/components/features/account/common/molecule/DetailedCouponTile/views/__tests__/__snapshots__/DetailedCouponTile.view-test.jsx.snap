@@ -434,6 +434,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         </Styled(Button)>
         <Styled(Button)
           buttonVariation="fixed-width"
+          className="applybag-btn"
           data-locator="myrewards-applytobagbtn"
           disabled={true}
           fill="BLUE"
@@ -931,6 +932,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         </Styled(Button)>
         <Styled(Button)
           buttonVariation="fixed-width"
+          className="applybag-btn"
           data-locator="myrewards-applytobagbtn"
           disabled={true}
           fill="BLUE"

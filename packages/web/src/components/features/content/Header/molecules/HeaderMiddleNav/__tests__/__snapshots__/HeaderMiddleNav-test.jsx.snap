@@ -97,40 +97,25 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           }
         }
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="leftLink"
-          fontSizeVariation="large"
-          href="#"
-          id="createAccount"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Create Account
-        </Styled(Anchor)>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="rightLink"
-          fontSizeVariation="large"
-          href="#"
-          id="login"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Login
-        </Styled(Anchor)>
         <Connect(Styled(SearchBar))
-          className="rightLink"
+          className="headerSearchBox"
           isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
           onCloseClick={[Function]}
           setSearchState={[Function]}
         />
+        <GuestUserInfo
+          createAccount="createAccount"
+          isDrawer={false}
+          login="login"
+          onLinkClick={[Function]}
+          triggerLoginCreateAccount={true}
+        />
         <Styled(Anchor)
           anchorVariation="primary"
           aria-label="undefined undefined item"
-          className="rightLink"
-          fontSizeVariation="small"
+          className=""
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}
@@ -184,7 +169,10 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}
+        onLinkClick={[Function]}
         openNavigationDrawer={false}
+        triggerLoginCreateAccount={true}
+        userNameClick={true}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -291,40 +279,25 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
           }
         }
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="leftLink"
-          fontSizeVariation="large"
-          href="#"
-          id="createAccount"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Create Account
-        </Styled(Anchor)>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          className="rightLink"
-          fontSizeVariation="large"
-          href="#"
-          id="login"
-          noLink={true}
-          onClick={[Function]}
-        >
-          Login
-        </Styled(Anchor)>
         <Connect(Styled(SearchBar))
-          className="rightLink"
+          className="headerSearchBox"
           isFullSizeSearchModalOpen={false}
           isSearchOpen={false}
           onCloseClick={[Function]}
           setSearchState={[Function]}
         />
+        <GuestUserInfo
+          createAccount="createAccount"
+          isDrawer={false}
+          login="login"
+          onLinkClick={[Function]}
+          triggerLoginCreateAccount={true}
+        />
         <Styled(Anchor)
           anchorVariation="primary"
           aria-label="undefined undefined item"
-          className="rightLink"
-          fontSizeVariation="small"
+          className=""
+          fontSizeVariation="large"
           id="cartIcon"
           noLink={true}
           onClick={[Function]}
@@ -378,7 +351,10 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
     >
       <Connect(Styled(Navigation))
         closeNavigationDrawer={true}
+        onLinkClick={[Function]}
         openNavigationDrawer={false}
+        triggerLoginCreateAccount={true}
+        userNameClick={true}
       />
     </Styled(Col)>
   </Styled(Row)>

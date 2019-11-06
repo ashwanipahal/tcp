@@ -117,6 +117,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
       dataLocator="my-preference-modal_disclaimer_sub_text"
       domStorageEnabled={false}
       isApplyDeviceHeight={false}
+      isNativeView={false}
       javaScriptEnabled={false}
       source={
         Object {
@@ -143,6 +144,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
     locator=""
     navigation={Object {}}
     onPress={[MockFunction]}
+    paddings="12px 32px 12px 32px"
     selected={false}
     selectedIcon="chevron-up"
     showIcon={false}
@@ -150,6 +152,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
     theme={Object {}}
     type="submit"
     url=""
+    withNoLineHeight={false}
   />
   <Styled(View)>
     <Styled(CustomButton)
@@ -169,12 +172,14 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
       locator=""
       navigation={Object {}}
       onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_prefrence_modal_cancel"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

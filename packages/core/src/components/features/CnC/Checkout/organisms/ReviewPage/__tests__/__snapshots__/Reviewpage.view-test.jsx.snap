@@ -14,9 +14,12 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   <Connect(BillingSectionContainer)
     isExpressCheckout={false}
   />
-  <Connect(CheckoutCartItemList) />
+  <Connect(CheckoutCartItemList)
+    disableProductRedirect={true}
+  />
   <Styled(CheckoutOrderInfo)
     fullPageInfo={true}
+    pageCategory=""
     showAccordian={true}
   />
   <Styled(CheckoutFooter)

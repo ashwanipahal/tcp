@@ -4,37 +4,41 @@ const updateFormField = (dispatch, formName, fieldName, value) => {
   dispatch(change(formName, fieldName, value));
 };
 
-const updateAddress = (shippingAddress, editMode, dispatch, formName, update) => {
-  const {
-    firstName,
-    lastName,
-    addressLine1,
-    addressLine2,
-    state,
-    city,
-    zipCode,
-    country,
-    addressId,
-  } = shippingAddress;
+const updateAddress = (shippingAddress, editMode, dispatch, formName, update, addNewAddress) => {
   let fieldsToUpdate = [];
-  if (editMode) {
-    fieldsToUpdate.push({ fieldName: `address.addressId`, value: addressId });
-  }
-  if (update) {
-    fieldsToUpdate.push({ fieldName: `onFileAddressId`, value: addressId });
-  }
+  if (addNewAddress) {
+    fieldsToUpdate.push({ fieldName: `address.addressId`, value: '' });
+  } else {
+    const {
+      firstName,
+      lastName,
+      addressLine1,
+      addressLine2,
+      state,
+      city,
+      zipCode,
+      country,
+      addressId,
+    } = shippingAddress;
+    if (editMode) {
+      fieldsToUpdate.push({ fieldName: `address.addressId`, value: addressId });
+    }
+    if (update) {
+      fieldsToUpdate.push({ fieldName: `onFileAddressId`, value: addressId });
+    }
 
-  const fields = [
-    { fieldName: `address.firstName`, value: firstName },
-    { fieldName: `address.lastName`, value: lastName },
-    { fieldName: `address.addressLine1`, value: addressLine1 },
-    { fieldName: `address.addressLine2`, value: addressLine2 },
-    { fieldName: `address.state`, value: state },
-    { fieldName: `address.city`, value: city },
-    { fieldName: `address.zipCode`, value: zipCode },
-    { fieldName: `address.country`, value: country },
-  ];
-  fieldsToUpdate = [...fieldsToUpdate, ...fields];
+    const fields = [
+      { fieldName: `address.firstName`, value: firstName },
+      { fieldName: `address.lastName`, value: lastName },
+      { fieldName: `address.addressLine1`, value: addressLine1 },
+      { fieldName: `address.addressLine2`, value: addressLine2 },
+      { fieldName: `address.state`, value: state },
+      { fieldName: `address.city`, value: city },
+      { fieldName: `address.zipCode`, value: zipCode },
+      { fieldName: `address.country`, value: country },
+    ];
+    fieldsToUpdate = [...fieldsToUpdate, ...fields];
+  }
   fieldsToUpdate.forEach(({ fieldName, value: fieldValue }) => {
     updateFormField(dispatch, formName, fieldName, fieldValue);
   });

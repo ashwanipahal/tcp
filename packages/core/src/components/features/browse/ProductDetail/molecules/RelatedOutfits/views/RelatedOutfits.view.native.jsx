@@ -14,6 +14,7 @@ class RelatedOutfits extends React.PureComponent {
     super(props);
     this.state = {
       isAccordionOpen: true,
+      showHeader: false,
     };
   }
 
@@ -22,43 +23,54 @@ class RelatedOutfits extends React.PureComponent {
     this.setState({ isAccordionOpen: !isAccordionOpen });
   };
 
-  render() {
-    const { pdpLabels, navigation, selectedColorProductId } = this.props;
-    const { completeTheLook } = pdpLabels;
-    const { isAccordionOpen } = this.state;
+  getRelatedOutfitSlots = () => {
+    const { navigation, selectedColorProductId } = this.props;
+    return (
+      <ModuleQ
+        navigation={navigation}
+        hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
+        selectedColorProductId={selectedColorProductId}
+        hideTabs
+        divTabs={[]}
+        bgClass="yellow-bg"
+        showRelatedOutfitHeader={this.setShowHeader}
+      />
+    );
+  };
 
-    const RelatedOutfitsSlots = () => {
-      return (
-        <ModuleQ
-          navigation={navigation}
-          hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
-          selectedColorProductId={selectedColorProductId}
-          hideTabs
-          divTabs={[]}
-          bgClass="yellow-bg"
-        />
-      );
-    };
+  setShowHeader = value => {
+    const { showHeader } = this.state;
+    if (!showHeader) {
+      this.setState({ showHeader: value });
+    }
+  };
+
+  render() {
+    const { pdpLabels } = this.props;
+    const { completeTheLook } = pdpLabels;
+    const { isAccordionOpen, showHeader } = this.state;
 
     return (
       <View>
-        <StyleRelatedOutfits onPress={this.handleAccordionToggle}>
-          <BodyCopy
-            fontFamily="secondary"
-            fontWeight="black"
-            fontSize="fs14"
-            isAccordionOpen={isAccordionOpen}
-            text={completeTheLook}
-            textAlign="center"
-          />
-          <ImageStyleWrapper>
-            <Anchor onPress={this.handleAccordionToggle}>
-              <Image source={isAccordionOpen ? upIcon : downIcon} />
-            </Anchor>
-          </ImageStyleWrapper>
-        </StyleRelatedOutfits>
+        {showHeader && (
+          <StyleRelatedOutfits onPress={this.handleAccordionToggle}>
+            <BodyCopy
+              fontFamily="secondary"
+              fontWeight="black"
+              fontSize="fs14"
+              isAccordionOpen={isAccordionOpen}
+              text={completeTheLook}
+              textAlign="center"
+            />
+            <ImageStyleWrapper>
+              <Anchor onPress={this.handleAccordionToggle}>
+                <Image source={isAccordionOpen ? upIcon : downIcon} />
+              </Anchor>
+            </ImageStyleWrapper>
+          </StyleRelatedOutfits>
+        )}
 
-        {isAccordionOpen ? <RelatedOutfitsSlots /> : null}
+        {isAccordionOpen ? this.getRelatedOutfitSlots() : null}
       </View>
     );
   }

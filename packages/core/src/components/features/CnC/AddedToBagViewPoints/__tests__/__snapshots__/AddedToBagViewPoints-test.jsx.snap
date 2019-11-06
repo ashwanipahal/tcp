@@ -38,10 +38,12 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       }
       data-locator="addedtobag-productprice"
     >
-      undefined 12
+      undefined 12.00
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)>
+  <Styled(Row)
+    className="row-padding"
+  >
     <Styled(Col)
       colSize={
         Object {

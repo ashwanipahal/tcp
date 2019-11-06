@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { getLoading } from '@tcp/core/src/utils';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
@@ -14,6 +13,7 @@ import {
 import FilterModal from '../molecules/FilterModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
 
 const renderItemCountView = itemCount => {
   if (itemCount === undefined) {
@@ -101,10 +101,11 @@ const ProductListView = ({
   renderBrandFilter,
   margins,
   paddings,
+  isLoadingMore,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
-  if (isDataLoading) return getLoading();
+  if (isDataLoading) return <PLPSkeleton col={20} />;
   const headerData = {
     filters,
     labelsFilter,
@@ -130,6 +131,7 @@ const ProductListView = ({
         isFavorite={isFavorite}
         {...otherProps}
       />
+      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
       <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
@@ -160,6 +162,7 @@ ProductListView.propTypes = {
   renderBrandFilter: PropTypes.func,
   margins: PropTypes.string,
   paddings: PropTypes.string,
+  isLoadingMore: PropTypes.bool.isRequired,
 };
 
 ProductListView.defaultProps = {

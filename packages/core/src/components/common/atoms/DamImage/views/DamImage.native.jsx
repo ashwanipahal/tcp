@@ -17,6 +17,14 @@ const placeHolderImg = require('../../../../../assets/img-placeholder.png');
  *                  - it needs "host" as props
  *                  - value of host prop should be same as parent LazyLoadScrollView
  */
+
+const brandNameCheck = (checkBrand, brandId) => {
+  if (checkBrand) {
+    return checkBrand.toUpperCase();
+  }
+  return brandId && brandId.toUpperCase();
+};
+
 const DamImage = (props: Props) => {
   const {
     url,
@@ -27,9 +35,11 @@ const DamImage = (props: Props) => {
     alt,
     isProductImage,
     itemBrand,
+    checkBrand,
+    swatchConfig,
     ...otherProps
   } = props;
-  const config = 'w_450';
+  const config = swatchConfig || 'w_768';
   const cropVal = crop || '';
   const urlVal = url || '';
   // const ImageComponent = host ? Image : Image;
@@ -42,7 +52,7 @@ const DamImage = (props: Props) => {
     brandId = itemBrand;
   }
 
-  const brandName = brandId && brandId.toUpperCase();
+  const brandName = brandNameCheck(checkBrand, brandId);
   const assetHost = apiConfigObj[`assetHost${brandName}`];
   const productAssetPath = apiConfigObj[`productAssetPath${brandName}`];
   const uri = {
@@ -71,6 +81,7 @@ DamImage.propTypes = {
   host: PropTypes.string,
   alt: PropTypes.string,
   itemBrand: PropTypes.string,
+  swatchConfig: PropTypes.string,
 };
 
 DamImage.defaultProps = {
@@ -81,6 +92,7 @@ DamImage.defaultProps = {
   host: '',
   alt: '',
   itemBrand: '',
+  swatchConfig: '',
 };
 
 export default withStyles(DamImage, style);

@@ -156,7 +156,7 @@ class LoginForm extends React.PureComponent<Props> {
                 buttonVariation="fixed-width"
                 dataLocator="login-logincta"
                 fullWidth
-                className="elem-mb-XS"
+                className="elem-mb-XS elem-mt-SM"
                 onClick={handleContinueAsGuest}
               >
                 {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
@@ -165,7 +165,7 @@ class LoginForm extends React.PureComponent<Props> {
             <Anchor
               underline
               fontSizeVariation="xlarge"
-              anchorVariation="secondary"
+              anchorVariation="primary"
               dataLocator="login-forgotpasswordlnk"
               onClick={this.showForgotPasswordForm}
             >

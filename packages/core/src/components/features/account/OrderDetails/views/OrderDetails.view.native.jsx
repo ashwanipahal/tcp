@@ -22,7 +22,7 @@ import constants from '../OrderDetails.constants';
  * @param orderDetailsData - orderDetailsData object used for showing Order Details
  */
 
-const renderBopisAndBossOrder = (orderDetailsData, ordersLabels) => {
+const renderBopisAndBossOrder = (orderDetailsData, ordersLabels, navigation) => {
   const {
     pickUpExpirationDate,
     summary,
@@ -52,6 +52,7 @@ const renderBopisAndBossOrder = (orderDetailsData, ordersLabels) => {
           message={summary.purchasedItems}
         />
         <OrderItemsList
+          navigation={navigation}
           ordersLabels={ordersLabels}
           items={purchasedItems[0].items}
           currencySymbol={currencySymbol}
@@ -93,7 +94,7 @@ const renderCancelledAndOutOfStockOrders = (
     )
   );
 };
-export const OrderDetailsView = ({ orderDetailsData, ordersLabels }) => {
+export const OrderDetailsView = ({ orderDetailsData, ordersLabels, navigation }) => {
   const {
     summary,
     orderStatus,
@@ -145,7 +146,7 @@ export const OrderDetailsView = ({ orderDetailsData, ordersLabels }) => {
               </>
             ))}
 
-          {renderBopisAndBossOrder(orderDetailsData, ordersLabels)}
+          {renderBopisAndBossOrder(orderDetailsData, ordersLabels, navigation)}
           {renderCancelledAndOutOfStockOrders(
             outOfStockItems,
             ordersLabels,
@@ -170,11 +171,13 @@ export const OrderDetailsView = ({ orderDetailsData, ordersLabels }) => {
 OrderDetailsView.propTypes = {
   orderDetailsData: PropTypes.shape({}),
   ordersLabels: PropTypes.shape({}),
+  navigation: PropTypes.shape({}),
 };
 
 OrderDetailsView.defaultProps = {
   ordersLabels: {},
   orderDetailsData: {},
+  navigation: {},
 };
 
 export default OrderDetailsView;

@@ -57,6 +57,13 @@ const styles = css`
 
     &.active {
       border: 1px solid ${props => props.theme.colors.DARK};
+      padding: 1px;
+      .product-color-chip-image {
+        border-radius: 50%;
+      }
+    }
+    &:focus {
+      outline: 0;
     }
     &:hover {
       cursor: pointer;

@@ -67,9 +67,9 @@ class StoresCountryTile extends PureComponent {
       onToggleCallback,
     } = this.props;
     return (
-      <div className={className}>
+      <div className={className} id={`scroll-${title}`}>
         {children}
-        <div className="storemodule__lg" id={`scroll-${title}`}>
+        <div className="storemodule__lg">
           <CountryName data-locator={getLocator(`store_${dataLocatorKey}statelabel`)}>
             {title}
           </CountryName>
@@ -83,8 +83,9 @@ class StoresCountryTile extends PureComponent {
             iconClose="plus-icon"
             iconOpen="minus-icon"
             defaultOpen={isDefaultOpen}
-            id={`scroll-${title}`}
             onToggleCallback={onToggleCallback}
+            showHeaderAlways
+            isAccordionTablet
           />
         </div>
       </div>

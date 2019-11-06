@@ -24,7 +24,7 @@ class ModuleQ extends React.PureComponent {
 
     this.state = {
       currentCatId: '',
-      currentTabItem: {},
+      currentTabItem: [],
     };
   }
 
@@ -103,7 +103,11 @@ class ModuleQ extends React.PureComponent {
   };
 
   getCurrentCtaButton = () => {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+    const { currentTabItem } = this.state;
+    if (!currentTabItem || !currentTabItem.length) {
+      return null;
+    }
+    const { singleCTAButton: currentSingleCTAButton } = currentTabItem.length && currentTabItem[0];
 
     return currentSingleCTAButton ? (
       <Row centered>
@@ -142,6 +146,7 @@ class ModuleQ extends React.PureComponent {
       styliticsProductTabList,
       hideTabs,
       selectedColorProductId,
+      showRelatedOutfitHeader,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -155,6 +160,10 @@ class ModuleQ extends React.PureComponent {
     let dataStatus = true;
     if (styliticsProductTabList && styliticsProductTabList.completed) {
       dataStatus = styliticsProductTabList.completed[currentCatId];
+    }
+
+    if (showCarousel && showRelatedOutfitHeader) {
+      showRelatedOutfitHeader(true);
     }
 
     return (
@@ -248,6 +257,7 @@ ModuleQ.defaultProps = {
   promoBanner: [],
   hideTabs: false,
   selectedColorProductId: '',
+  showRelatedOutfitHeader: null,
 };
 
 ModuleQ.propTypes = {
@@ -286,6 +296,7 @@ ModuleQ.propTypes = {
   ).isRequired,
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
+  showRelatedOutfitHeader: PropTypes.func,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);

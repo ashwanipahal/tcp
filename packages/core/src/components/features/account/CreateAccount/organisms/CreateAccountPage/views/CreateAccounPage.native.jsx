@@ -24,6 +24,7 @@ class CreateAccounPage extends React.Component {
     userplccCardNumber: PropTypes.string,
     userplccCardId: PropTypes.string,
     toastMessage: PropTypes.func,
+    passwordLabels: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -86,6 +87,7 @@ class CreateAccounPage extends React.Component {
       showLogin,
       userplccCardNumber,
       userplccCardId,
+      passwordLabels,
     } = this.props;
     const { hideShowPwd, confirmHideShowPwd, getTouchStatus } = this.state;
     return (
@@ -114,6 +116,7 @@ class CreateAccounPage extends React.Component {
             showLogin={showLogin}
             userplccCardNumber={userplccCardNumber}
             userplccCardId={userplccCardId}
+            passwordLabels={passwordLabels}
           />
         </View>
       </ScrollView>

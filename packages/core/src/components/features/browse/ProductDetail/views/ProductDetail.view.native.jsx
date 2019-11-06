@@ -15,6 +15,7 @@ import {
   getMapSliceForColorProductId,
   getMapSliceForColor,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view.native';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
@@ -34,6 +35,7 @@ class ProductDetailView extends React.PureComponent {
       showCarousel: false,
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
       currentGiftCardValue: currentProduct.offerPrice,
+      selectedColorProductId,
     };
   }
 
@@ -46,7 +48,8 @@ class ProductDetailView extends React.PureComponent {
     const {
       currentProduct: { colorFitsSizesMap },
     } = this.props;
-    this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+    const currentColorEntry = getMapSliceForColor(colorFitsSizesMap, e);
+    this.setState({ currentColorEntry, selectedColorProductId: currentColorEntry.colorDisplayId });
   };
 
   onChangeSize = e => {
@@ -80,7 +83,6 @@ class ProductDetailView extends React.PureComponent {
     const {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
-      selectedColorProductId,
       plpLabels,
       handleFormSubmit,
       navigation,
@@ -93,8 +95,9 @@ class ProductDetailView extends React.PureComponent {
       pdpLabels,
       currency,
       currencyExchange,
+      alternateSizes,
     } = this.props;
-    const { currentColorEntry, currentGiftCardValue } = this.state;
+    const { currentColorEntry, currentGiftCardValue, selectedColorProductId } = this.state;
     let imageUrls = [];
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
@@ -104,6 +107,9 @@ class ProductDetailView extends React.PureComponent {
         isFullSet: true,
       });
     }
+    const sizeChartLinkVisibility = !currentProduct.isGiftCard
+      ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
+      : null;
 
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
@@ -129,6 +135,7 @@ class ProductDetailView extends React.PureComponent {
             currencySymbol={currency}
             currencyExchange={currencyExchange}
             isGiftCard={currentProduct.isGiftCard}
+            pdpLabels={pdpLabels}
           />
 
           <ProductAddToBagContainer
@@ -140,6 +147,9 @@ class ProductDetailView extends React.PureComponent {
             onChangeColor={this.onChangeColor}
             handleSubmit={handleSubmit}
             onChangeSize={this.onChangeSize}
+            sizeChartLinkVisibility={sizeChartLinkVisibility}
+            alternateSizes={alternateSizes}
+            navigation={navigation}
           />
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
@@ -182,6 +192,9 @@ ProductDetailView.propTypes = {
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.number,
+  alternateSizes: PropTypes.shape({
+    key: PropTypes.string,
+  }),
 };
 
 ProductDetailView.defaultProps = {
@@ -198,6 +211,7 @@ ProductDetailView.defaultProps = {
   pdpLabels: {},
   currency: 'USD',
   currencyExchange: 1,
+  alternateSizes: {},
 };
 
 export default withStyles(ProductDetailView);

@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { call, takeLatest, put, select, delay } from 'redux-saga/effects';
 import GIFTCARD_CONSTANTS from '../GiftCards.constants';
 import {
   addGiftCardPaymentToOrder,
@@ -16,6 +16,7 @@ import {
   resetAddGiftCard,
   setIsLoadingShippingMethods,
 } from '../../../container/Checkout.action';
+import BAGPAGE_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
@@ -29,21 +30,24 @@ export function* applyGiftCard(payloadData) {
         [payload.creditCardId]: resErr,
       };
       yield put(setGiftCardError(errorObject));
-    } else
+    } else {
       yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: true,
-          excludeCartItems: true,
+          excludeCartItems: false,
           recalcRewards: true,
           isCheckoutFlow: true,
           translation: false,
         })
       );
+    }
   } catch (err) {
     const errorObject = {
       [payload.creditCardId]: err,
     };
     yield put(setGiftCardError(errorObject));
+    yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
+    yield put(resetGiftCardError());
   }
 }
 
@@ -56,7 +60,7 @@ export function* removeGiftCardFromOrder(payloadData) {
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
-        excludeCartItems: true,
+        excludeCartItems: false,
         recalcRewards: true,
         isCheckoutFlow: true,
         translation: false,
@@ -78,7 +82,7 @@ export function* addGiftCardFromBilling(payloadData) {
       yield put(
         BAG_PAGE_ACTIONS.getCartData({
           isRecalculateTaxes: true,
-          excludeCartItems: true,
+          excludeCartItems: false,
           recalcRewards: true,
           isCheckoutFlow: true,
           translation: false,

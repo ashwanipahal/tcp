@@ -37,6 +37,8 @@ class ModalsCheckout extends React.PureComponent<Props> {
       deleteConfirmationModalLabels,
       confirmRemoveCartItem,
       addItemToSflList,
+      bagPageServerError,
+      checkoutModalComponentType,
     } = this.props;
     const { showModal, isEditingItem: modalEditingItem } = modalInfo;
     if (modalEditingItem) {
@@ -52,19 +54,23 @@ class ModalsCheckout extends React.PureComponent<Props> {
             modalEditingItem ? this.closeModalAndHandleCheckout : removeUnqualifiedItemsAndCheckout
           }
         />
-        <OpenLoginModal
-          variation="checkout"
-          openState={checkoutModalMountedState}
-          setLoginModalMountState={closeCheckoutModalMountState}
-          handleContinueAsGuest={this.routeToCheckout}
-          handleAfterLogin={this.routeToCheckout}
-        />
+        {checkoutModalMountedState && (
+          <OpenLoginModal
+            variation="checkout"
+            openState={checkoutModalMountedState}
+            setLoginModalMountState={closeCheckoutModalMountState}
+            handleContinueAsGuest={this.routeToCheckout}
+            handleAfterLogin={this.routeToCheckout}
+            componentType={checkoutModalComponentType}
+          />
+        )}
         <ItemDeleteConfirmationModal
           isOpen={currentSelectItemInfo.showModal}
           closeCheckoutConfirmationModal={closeItemDeleteModal}
           labels={deleteConfirmationModalLabels}
           moveToSfl={() => addItemToSflList(currentSelectItemInfo)}
           confirmRemoveCartItem={() => confirmRemoveCartItem(currentSelectItemInfo.itemId)}
+          bagPageServerError={bagPageServerError}
         />
       </>
     );
@@ -75,6 +81,11 @@ ModalsCheckout.propTypes = {
   labels: PropTypes.shape.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
   routeForBagCheckout: PropTypes.func.isRequired,
+  bagPageServerError: PropTypes.shape({}),
+};
+
+ModalsCheckout.defaultProps = {
+  bagPageServerError: null,
 };
 
 export default withStyles(ModalsCheckout, style);

@@ -7,7 +7,10 @@ import {
   closeOverlay,
   enableBodyScroll,
   disableBodyScroll,
+  removeBodyScrollLocks,
 } from '@tcp/core/src/utils';
+import { Row } from '@tcp/core/src/components/common/atoms';
+import AccountInfoSection from '../../../Header/molecules/AccountInfoSection/AccountInfoSection';
 import style from './Drawer.style';
 
 /**
@@ -38,7 +41,9 @@ const renderDrawerFooter = (hideNavigationFooter, drawerFooter) => {
   if (hideNavigationFooter) {
     classToHide = 'is-hidden';
   }
-  return drawerFooter && <Footer className={`navigation-footer ${classToHide}`} />;
+  return (
+    drawerFooter && <Footer className={`navigation-footer ${classToHide}`} isNavigationFooter />
+  );
 };
 
 class Drawer extends React.Component {
@@ -49,7 +54,18 @@ class Drawer extends React.Component {
   }
 
   componentDidUpdate() {
+    this.init();
+  }
+
+  componentWillUnmount() {
+    enableBodyScroll(this.scrollTargetElement);
+  }
+
+  init = () => {
     const { open, renderOverlay } = this.props;
+    if (!open) {
+      removeBodyScrollLocks();
+    }
     if (renderOverlay) {
       this.getDrawerStyle();
     }
@@ -59,11 +75,7 @@ class Drawer extends React.Component {
       document.body.removeEventListener('click', this.closeNavOnOverlayClick);
     }
     return null;
-  }
-
-  componentWillUnmount() {
-    enableBodyScroll();
-  }
+  };
 
   /* Set drawer ref */
   setDrawerRef = node => {
@@ -80,9 +92,53 @@ class Drawer extends React.Component {
       typeof close === 'function'
     ) {
       close();
-      enableBodyScroll();
+      enableBodyScroll(this.scrollTargetElement);
       e.stopPropagation();
     }
+  };
+
+  handleUserName = userName => {
+    return userName.length <= 15 ? userName : userName.substring(0, 15).concat('...');
+  };
+
+  handleUserRewards = userRewards => {
+    return userRewards % 1 ? userRewards : Math.floor(userRewards);
+  };
+
+  disableScroll = drawer => {
+    const { open } = this.props;
+    this.scrollTargetElement = drawer;
+    if (open && this.scrollTargetElement) {
+      disableBodyScroll(this.scrollTargetElement);
+    }
+  };
+
+  renderAccountInfoSectionInDrawer = () => {
+    const {
+      id,
+      close,
+      userName,
+      userPoints,
+      userRewards,
+      userNameClick,
+      onLinkClick,
+      triggerLoginCreateAccount,
+      openOverlay,
+    } = this.props;
+    return id === 'l1_drawer' ? (
+      <Row>
+        <AccountInfoSection
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+          openOverlay={openOverlay}
+          userNameClick={userNameClick}
+          onLinkClick={onLinkClick}
+          closeDrawer={close}
+          triggerLoginCreateAccount={triggerLoginCreateAccount}
+        />
+      </Row>
+    ) : null;
   };
 
   /* Style for drawer to make it scrollable within */
@@ -92,6 +148,9 @@ class Drawer extends React.Component {
       const headerTopNav = document.getElementsByClassName('header-topnav')[0];
       const middleNav = document.getElementsByClassName('header-middle-nav')[0];
       const condensedHeader = document.getElementById('condensedHeader');
+      const userInfo = document.getElementById('sideNavUserInfo');
+      const darkOverlay = document.getElementsByClassName('dark-overlay')[0];
+      const userInfoHeight = userInfo ? userInfo.getBoundingClientRect().height : null;
       const wHeight = window.innerHeight;
       const {
         values: { lg },
@@ -109,12 +168,14 @@ class Drawer extends React.Component {
         if (condensedHeader) {
           headerHeight = condensedHeader.getBoundingClientRect().height;
         }
-
-        drawer.style.height = `${wHeight - headerHeight}px`;
+        userInfo.style.top = `${headerHeight}px`;
+        drawer.style.height = `${wHeight - (headerHeight + userInfoHeight)}px`;
         drawer.style.position = 'fixed';
         drawer.style.overflowY = 'scroll';
-        drawer.style.top = `${headerHeight}px`;
-        disableBodyScroll();
+        drawer.style.top = `${headerHeight + userInfoHeight}px`;
+        darkOverlay.style.top = `${headerHeight}px`;
+
+        this.disableScroll(drawer);
       }
     }
   };
@@ -162,6 +223,7 @@ class Drawer extends React.Component {
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
             >
+              {this.renderAccountInfoSectionInDrawer()}
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
                 {renderDrawerFooter(hideNavigationFooter, drawerFooter)}
@@ -187,6 +249,13 @@ Drawer.propTypes = {
   drawerFooter: PropTypes.element,
   hideNavigationFooter: PropTypes.bool,
   showCondensedHeader: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
+  userNameClick: PropTypes.bool.isRequired,
+  onLinkClick: PropTypes.func.isRequired,
+  triggerLoginCreateAccount: PropTypes.bool.isRequired,
+  openOverlay: PropTypes.func.isRequired,
 };
 
 Drawer.defaultProps = {

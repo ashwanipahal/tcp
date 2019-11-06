@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/Confirmation.styles';
 import Row from '../../../../common/atoms/Row';
@@ -9,6 +11,7 @@ import ThankYouComponent from '../organisms/ThankYouComponent';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
 import VenmoConfirmation from '../../common/molecules/VenmoConfirmation';
 import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
+import LoyaltyBanner from '../../LoyaltyBanner';
 import {
   checkIfShippingFullName,
   checkIfNotShippingFullName,
@@ -46,6 +49,7 @@ const ConfirmationView = ({
   orderNumbersByFullfillmentCenter,
   isVenmoPaymentInProgress,
   venmoUserName,
+  pageCategory,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
   let venmoPayment = {};
@@ -122,15 +126,20 @@ const ConfirmationView = ({
       </Row>
       <Row fullBleed className="placeholder loyalty-banner">
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div>LOYALTY BANNER</div>
+          {<LoyaltyBanner pageCategory="confirmation" />}
         </Col>
       </Row>
       {renderAccountForm(isGuest)}
+      <Recommendations
+        page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+        variations="moduleO"
+      />
       <CheckoutOrderInfo
         isConfirmationPage
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         venmoPayment={venmoPayment}
         labels={labels}
+        pageCategory={pageCategory}
       />
     </div>
   );
@@ -165,6 +174,7 @@ ConfirmationView.propTypes = {
   orderShippingDetails: PropTypes.shape({}),
   isVenmoPaymentInProgress: PropTypes.bool,
   venmoUserName: PropTypes.string,
+  pageCategory: PropTypes.string,
 };
 ConfirmationView.defaultProps = {
   className: '',
@@ -175,6 +185,7 @@ ConfirmationView.defaultProps = {
   orderShippingDetails: null,
   isVenmoPaymentInProgress: false,
   venmoUserName: '',
+  pageCategory: '',
 };
 
 export default withStyles(ConfirmationView, styles);

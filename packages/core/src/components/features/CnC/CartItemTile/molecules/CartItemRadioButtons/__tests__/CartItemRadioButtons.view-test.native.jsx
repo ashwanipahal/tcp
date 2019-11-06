@@ -45,6 +45,8 @@ describe('CartItemRadioButtons native Component', () => {
       openPickUpModal: jest.fn(),
       onPickUpOpenClick: jest.fn(),
       orderId: 123,
+      setShipToHome: jest.fn(),
+      pickupStoresInCart: {},
     };
   });
 
@@ -125,11 +127,51 @@ describe('CartItemRadioButtons native Component', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should toggle to STH', () => {
+    props.isECOMOrder = false;
+    props.isBOSSOrder = true;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    component.instance().handleToggleShipToHome();
+    expect(props.setShipToHome).toHaveBeenCalled();
+  });
+
+  it('should not toggle to STH for Ecom Order', () => {
+    props.isECOMOrder = true;
+    props.isBOSSOrder = false;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    component.instance().handleToggleShipToHome();
+    expect(props.setShipToHome).not.toHaveBeenCalled();
+  });
+
+  it('should not toggle to STH for Ecom Soldout', () => {
+    props.isECOMOrder = false;
+    props.isBOSSOrder = true;
+    props.isEcomSoldout = true;
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    component.instance().handleToggleShipToHome();
+    expect(props.setShipToHome).not.toHaveBeenCalled();
+  });
+
   it('CartItemRadioButtons native should render correctly in expanded state with BOPIS Order and Online only product', () => {
     props.isECOMOrder = false;
     props.isBOPISOrder = true;
     props.bopisDisabled = true;
     props.noBossMessage = 'Not Available (Online only)';
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    component.setState({ currentExpandedState: true });
+    component.instance().handleChangeStoreClick();
+    expect(props.openPickUpModal).toHaveBeenCalled();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should open change store popup for bopis', () => {
+    props.isECOMOrder = false;
+    props.isBOPISOrder = true;
+    props.orderItemType = 'BOPIS';
+    props.pickupStoresInCart = [{ store1: {} }, { store2: {} }];
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
     component.setState({ currentExpandedState: true });
     component.instance().handleChangeStoreClick();

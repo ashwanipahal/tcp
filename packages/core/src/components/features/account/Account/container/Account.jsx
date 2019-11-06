@@ -5,11 +5,10 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import accountPageNameMapping from '../AccountPageNameMapping';
-import utils from '../../../../../utils';
+import utils, { routerPush } from '../../../../../utils';
 import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList, initActions } from './Account.actions';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
-import RouteTracker from '../../../../../../../web/src/components/common/atoms/RouteTracker';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -18,6 +17,8 @@ import RouteTracker from '../../../../../../../web/src/components/common/atoms/R
  * NOTE: Which ever new component that gets added for left nav, needs an entry in AccountComponentMapping file.
  * @param {router} router Router object to get the query key
  */
+
+const excludeRouteMapping = ['/TrackOrder'];
 
 const DEFAULT_ACTIVE_COMPONENT = 'account-overview';
 export class Account extends React.PureComponent {
@@ -43,6 +44,12 @@ export class Account extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState) {
     const { componentToLoad } = this.state;
+    const { isUserLoggedIn, router } = this.props;
+
+    if (isUserLoggedIn === false && !excludeRouteMapping.includes(router.route)) {
+      routerPush('/home?target=login', '/home/login');
+    }
+
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
     }
@@ -84,17 +91,15 @@ export class Account extends React.PureComponent {
     // _app.jsx itself.
     if (typeof labels === 'object' && isUserLoggedIn !== null) {
       return (
-        <>
-          <MyAccountLayout
-            mainContent={AccountComponentMapping[componentToLoad]}
-            active={activeComponent}
-            activeSubComponent={componentToLoad}
-            navData={navData}
-            router={router}
-            labels={labels}
-          />
-          {process.env.ANALYTICS && <RouteTracker />}
-        </>
+        <MyAccountLayout
+          mainContent={AccountComponentMapping[componentToLoad]}
+          active={activeComponent}
+          activeSubComponent={componentToLoad}
+          navData={navData}
+          router={router}
+          labels={labels}
+          isUserLoggedIn={isUserLoggedIn}
+        />
       );
     }
 

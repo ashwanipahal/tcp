@@ -65,10 +65,7 @@ const ProductInformation = ({ data, labels, quantity }) => {
             </ProductSubDetailLabel>
 
             <BodyCopy fontSize="fs12" text={`${data.skuInfo.size} `} />
-            <BodyCopy
-              fontSize="fs12"
-              text={!data.skuInfo.fit || data.skuInfo.fit === 'Regular' ? ' ' : data.skuInfo.fit}
-            />
+            <BodyCopy fontSize="fs12" text={!data.skuInfo.fit ? ' ' : data.skuInfo.fit} />
           </ProductDesc>
           <ProductDesc>
             <ProductSubDetailLabel>

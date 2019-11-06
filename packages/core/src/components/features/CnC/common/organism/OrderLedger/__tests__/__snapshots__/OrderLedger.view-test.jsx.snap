@@ -2,7 +2,7 @@
 
 exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=" elem-mb-MED "
 >
   <Styled(Col)
     colSize={
@@ -100,7 +100,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -126,7 +126,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -141,62 +141,24 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
               className="balance-total rowMargin"
               data-locator="orderLedgerBalanceTotalLbl"
             >
-              <ForwardRef
-                colSize={
-                  Object {
-                    "large": 6,
-                    "medium": 4,
-                    "small": 3,
-                  }
-                }
+              <div
+                className="balance-total-columns"
               >
-                <ForwardRef
-                  bodySize="one"
-                  className={null}
-                  color="primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize="fs18"
-                  fontWeight="extrabold"
-                  letterSpacing="normal"
-                  lineHeight="normal"
-                  link={null}
-                  tag="span"
-                  textAlign="left"
-                >
+                <span>
                   undefined:
-                </ForwardRef>
-              </ForwardRef>
-              <ForwardRef
-                colSize={
-                  Object {
-                    "large": 6,
-                    "medium": 4,
-                    "small": 3,
-                  }
-                }
-              >
-                <ForwardRef
-                  bodySize="one"
-                  className={null}
-                  color="primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize="fs18"
-                  fontWeight="extrabold"
-                  letterSpacing="normal"
-                  lineHeight="normal"
-                  link={null}
-                  tag="span"
-                  textAlign="right"
-                >
+                </span>
+                <span>
                   0.00
-                </ForwardRef>
-              </ForwardRef>
+                </span>
+              </div>
             </ForwardRef>
-            <Connect(LoyaltyBannerContainer)
-              pageCategory=""
-            />
+            <div
+              className="orderLedgerLoyalty"
+            >
+              <Connect(LoyaltyBannerContainer)
+                pageCategory=""
+              />
+            </div>
           </ForwardRef>
           <Measure
             name="pricing_visible"
@@ -227,6 +189,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
       }
       iconLocator="arrowicon"
       isDefaultView={true}
+      showHeaderAlways={false}
     />
   </Styled(Col)>
 </div>
@@ -234,7 +197,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
 
 exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
 <div
-  className=" elem-mb-MED"
+  className=" elem-mb-MED "
 >
   <Styled(Col)
     colSize={
@@ -441,7 +404,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -466,7 +429,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -496,7 +459,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -521,7 +484,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -551,7 +514,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -577,7 +540,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -704,58 +667,16 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
               className="balance-total rowMargin"
               data-locator="orderLedgerBalanceTotalLbl"
             >
-              <ForwardRef
-                colSize={
-                  Object {
-                    "large": 6,
-                    "medium": 4,
-                    "small": 3,
-                  }
-                }
+              <div
+                className="balance-total-columns"
               >
-                <ForwardRef
-                  bodySize="one"
-                  className={null}
-                  color="primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize="fs18"
-                  fontWeight="extrabold"
-                  letterSpacing="normal"
-                  lineHeight="normal"
-                  link={null}
-                  tag="span"
-                  textAlign="left"
-                >
+                <span>
                   undefined:
-                </ForwardRef>
-              </ForwardRef>
-              <ForwardRef
-                colSize={
-                  Object {
-                    "large": 6,
-                    "medium": 4,
-                    "small": 3,
-                  }
-                }
-              >
-                <ForwardRef
-                  bodySize="one"
-                  className={null}
-                  color="primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize="fs18"
-                  fontWeight="extrabold"
-                  letterSpacing="normal"
-                  lineHeight="normal"
-                  link={null}
-                  tag="span"
-                  textAlign="right"
-                >
+                </span>
+                <span>
                   1.00
-                </ForwardRef>
-              </ForwardRef>
+                </span>
+              </div>
             </ForwardRef>
             <ForwardRef
               className="total-order-savings rowMargin"
@@ -765,7 +686,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 5,
                     "small": 3,
                   }
                 }
@@ -776,7 +697,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -801,7 +722,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 3,
                     "small": 3,
                   }
                 }
@@ -812,7 +733,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -823,9 +744,13 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
-            <Connect(LoyaltyBannerContainer)
-              pageCategory=""
-            />
+            <div
+              className="orderLedgerLoyalty"
+            >
+              <Connect(LoyaltyBannerContainer)
+                pageCategory=""
+              />
+            </div>
           </ForwardRef>
           <Measure
             name="pricing_visible"
@@ -856,6 +781,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
       }
       iconLocator="arrowicon"
       isDefaultView={true}
+      showHeaderAlways={false}
     />
   </Styled(Col)>
 </div>
@@ -863,7 +789,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
 
 exports[`OrderLedger Component on confirmation page OrderLedger on confirmation page should render correctly 1`] = `
 <div
-  className=" elem-mb-MED"
+  className=" elem-mb-MED order-confirmation"
 >
   <Styled(Col)
     colSize={
@@ -1071,7 +997,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1096,7 +1022,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1126,7 +1052,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1152,7 +1078,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1279,58 +1205,16 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
               className="balance-total rowMargin"
               data-locator="orderLedgerBalanceTotalLbl"
             >
-              <ForwardRef
-                colSize={
-                  Object {
-                    "large": 6,
-                    "medium": 4,
-                    "small": 3,
-                  }
-                }
+              <div
+                className="balance-total-columns"
               >
-                <ForwardRef
-                  bodySize="one"
-                  className={null}
-                  color="primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize="fs18"
-                  fontWeight="extrabold"
-                  letterSpacing="normal"
-                  lineHeight="normal"
-                  link={null}
-                  tag="span"
-                  textAlign="left"
-                >
+                <span>
                   undefined:
-                </ForwardRef>
-              </ForwardRef>
-              <ForwardRef
-                colSize={
-                  Object {
-                    "large": 6,
-                    "medium": 4,
-                    "small": 3,
-                  }
-                }
-              >
-                <ForwardRef
-                  bodySize="one"
-                  className={null}
-                  color="primary"
-                  component="p"
-                  fontFamily="secondary"
-                  fontSize="fs18"
-                  fontWeight="extrabold"
-                  letterSpacing="normal"
-                  lineHeight="normal"
-                  link={null}
-                  tag="span"
-                  textAlign="right"
-                >
+                </span>
+                <span>
                   1.00
-                </ForwardRef>
-              </ForwardRef>
+                </span>
+              </div>
             </ForwardRef>
             <ForwardRef
               className="total-order-savings rowMargin"
@@ -1340,7 +1224,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 5,
                     "small": 3,
                   }
                 }
@@ -1351,7 +1235,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1376,7 +1260,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 colSize={
                   Object {
                     "large": 6,
-                    "medium": 4,
+                    "medium": 3,
                     "small": 3,
                   }
                 }
@@ -1387,7 +1271,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   color="primary"
                   component="p"
                   fontFamily="secondary"
-                  fontSize="fs13"
+                  fontSize="fs16"
                   fontWeight="semibold"
                   letterSpacing="normal"
                   lineHeight="normal"
@@ -1398,9 +1282,13 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
-            <Connect(LoyaltyBannerContainer)
-              pageCategory=""
-            />
+            <div
+              className="orderLedgerLoyalty"
+            >
+              <Connect(LoyaltyBannerContainer)
+                pageCategory=""
+              />
+            </div>
           </ForwardRef>
           <Measure
             name="pricing_visible"
@@ -1431,6 +1319,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
       }
       iconLocator="arrowicon"
       isDefaultView={true}
+      showHeaderAlways={true}
     />
   </Styled(Col)>
 </div>

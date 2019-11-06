@@ -24,7 +24,7 @@ const StyledCarousel = styled(Carousel)`
     left: 36px;
   }
   .slick-dots {
-    bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     z-index: 1;
   }
 `;
@@ -34,7 +34,7 @@ const style = css`
   margin-bottom: 40px;
 
   &.gymboree-module-a {
-    background-color: #003057;
+    background-color: ${props => props.theme.colorPalette.blue.C900};
   }
 
   .banner-slide {
@@ -46,10 +46,18 @@ const style = css`
 
   .banner-content {
     position: absolute;
-    top: 50%;
     transform: translateY(-50%);
+    top: 50%;
     left: 0;
     width: 100%;
+  }
+
+  .stacked-cta-wrapper-class {
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    color: ${props => props.theme.colorPalette.gray[800]};
   }
 
   &.gymboree-module-a .banner-content {
@@ -59,10 +67,15 @@ const style = css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
-      transform: none;
+      line-height: 90px;
+      top: 50%;
       left: 120px;
+      transform: translate(0%, -50%);
       width: 470px;
+
+      .link-text-wrapper {
+        width: 100%;
+      }
     }
   }
 
@@ -104,7 +117,6 @@ const style = css`
       props.theme.isGymboree
         ? props.theme.colors.BUTTON.WHITE
         : props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -118,11 +130,11 @@ const style = css`
   }
 
   .ribbon-container {
-    background: transparent url('/static/images/module-a-ribbon-right.png') no-repeat 0 0;
+    background: transparent url('/static/images/module-a-ribbon-right.png') no-repeat right 0;
     background-size: contain;
     position: absolute;
     right: 0;
-    bottom: 15px;
+    bottom: 12px;
     width: 168px;
     height: 48px;
     display: flex;
@@ -136,23 +148,22 @@ const style = css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      width: 272px;
-      height: 77px;
+      width: 266px;
+      height: 71px;
     }
   }
 
   &.gymboree-module-a .imageCTAList .image-comp,
   &.gymboree-module-a .linkCTAList .link-button-wrapper-class {
     color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
-    border-color: ${props => props.theme.colors.BUTTON[props.fill || 'BLACK'].TEXT};
   }
 
   &.gymboree-module-a .slick-dots {
-    bottom: 26px;
+    bottom: 16px;
     left: 15px;
     justify-content: flex-start;
     @media ${props => props.theme.mediaQuery.medium} {
-      left: 54px;
+      left: 24px;
     }
   }
 

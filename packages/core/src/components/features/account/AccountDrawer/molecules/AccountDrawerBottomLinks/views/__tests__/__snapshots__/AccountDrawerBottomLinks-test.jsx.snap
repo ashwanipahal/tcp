@@ -46,6 +46,7 @@ exports[`AccountDrawerBottomLinks should render correctly 1`] = `
         anchorVariation="primary"
         fontFamily="secondary"
         fontSizeVariation="large"
+        onClick={[Function]}
         text="Orders"
       />
     </div>

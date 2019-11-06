@@ -48,6 +48,7 @@ class GiftServicesContainer extends React.PureComponent {
     if (dispatch) {
       dispatch(change('GiftServices', `brand`, brandName));
       dispatch(change('GiftServices', `optionId`, 'standard'));
+      dispatch(change('GiftServices', `message`, ''));
     }
     this.setState({ brandState: brandName });
   };
@@ -77,7 +78,7 @@ class GiftServicesContainer extends React.PureComponent {
       };
       return (
         <>
-          {giftWrapOptions && (
+          {!!giftWrapOptions && (
             <GiftServices
               labels={updateLabels}
               formName={formName}

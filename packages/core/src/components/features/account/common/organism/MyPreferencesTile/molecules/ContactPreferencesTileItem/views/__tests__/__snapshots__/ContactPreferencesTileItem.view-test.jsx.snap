@@ -19,121 +19,9 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
-          "medium": 6,
-          "small": 5,
-        }
-      }
-    >
-      <Styled(Row)
-        fullBleed={true}
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 6,
-              "medium": 5,
-              "small": 3,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="div"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            link={null}
-            textAlign="left"
-          >
-            lbl_preference_tileContactPreference
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 6,
-              "medium": 3,
-              "small": 3,
-            }
-          }
-        >
-          <Styled(Row)
-            fullBleed={true}
-          >
-            <Styled(Col)
-              colSize={
-                Object {
-                  "large": 6,
-                  "medium": 4,
-                  "small": 3,
-                }
-              }
-            >
-              <Styled(Image)
-                className="elem-pr-SM"
-                height="30"
-                src="/static/images/sms-disabled.svg"
-                width="30"
-              />
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="span"
-                fontFamily="secondary"
-                fontSize="fs10"
-                fontWeight="extrabold"
-                letterSpacing="normal"
-                lineHeight="normal"
-                link={null}
-                textAlign="left"
-              >
-                lbl_preference_tileTextText
-              </Styled(BodyCopy)>
-            </Styled(Col)>
-            <Styled(Col)
-              colSize={
-                Object {
-                  "large": 6,
-                  "medium": 4,
-                  "small": 3,
-                }
-              }
-            >
-              <Styled(Image)
-                className="elem-pr-SM"
-                height="30"
-                src="/static/images/push-disabled.svg"
-                width="30"
-              />
-              <Styled(BodyCopy)
-                className="elem-pl-XXXS"
-                color="text.primary"
-                component="span"
-                fontFamily="secondary"
-                fontSize="fs10"
-                fontWeight="extrabold"
-                letterSpacing="normal"
-                lineHeight="normal"
-                link={null}
-                textAlign="left"
-              >
-                lbl_preference_tileAppText
-              </Styled(BodyCopy)>
-            </Styled(Col)>
-          </Styled(Row)>
-        </Styled(Col)>
-      </Styled(Row)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 2,
-          "small": 1,
+          "large": 6,
+          "medium": 4,
+          "small": 3,
         }
       }
     >
@@ -143,22 +31,120 @@ exports[`ContactPreferencesTileItem component should render correctly when coupo
         component="div"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="regular"
+        fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
         link={null}
-        textAlign="right"
+        textAlign="left"
       >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          asPath="/account/my-preference"
-          fontSizeVariation="large"
-          to="/account?id=my-preference"
-          underline={true}
-        >
-          lbl_preference_tileAdd
-        </Styled(Anchor)>
+        lbl_preference_tileContactPreference
       </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 5,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(Image)
+            className="elem-pr-SM"
+            height="30"
+            src="/static/images/sms-disabled.svg"
+            width="30"
+          />
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_preference_tileTextText
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 5,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(Image)
+            className="elem-pr-SM"
+            height="30"
+            src="/static/images/push-disabled.svg"
+            width="30"
+          />
+          <Styled(BodyCopy)
+            className="elem-pl-XXXS"
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_preference_tileAppText
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 4,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="right"
+          >
+            <Styled(Anchor)
+              anchorVariation="primary"
+              asPath="/account/my-preference"
+              fontSizeVariation="large"
+              to="/account?id=my-preference"
+              underline={true}
+            >
+              lbl_preference_tileAdd
+            </Styled(Anchor)>
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
 </Styled(BodyCopy)>

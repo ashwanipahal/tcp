@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator, toTimeString, capitalize, navigateToNestedRoute } from '@tcp/core/src/utils';
+import {
+  getLocator,
+  toTimeString,
+  capitalize,
+  navigateToNestedRoute,
+  getLabelValue,
+} from '@tcp/core/src/utils';
 import { parseDate, compareDate } from '@tcp/core/src/utils/parseDate';
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
@@ -15,6 +22,7 @@ import {
   getUserLoggedInState,
   getUserName,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { onBack } from '@tcp/core/src/utils/utils.app';
 import { SearchBar } from '@tcp/core/src/components/common/molecules';
 import SearchProduct from '@tcp/core/src/components/common/organisms/SearchProduct';
 
@@ -34,6 +42,11 @@ import {
   Touchable,
   HeaderContainer,
   SearchContainer,
+  RoundCircle,
+  ArrowBackIcon,
+  MiddleSection,
+  TitleText,
+  BackContainer,
 } from './Header.style';
 
 const CART_ITEM_COUNTER = 'cartItemsCount';
@@ -42,10 +55,11 @@ const CART_ITEM_COUNTER = 'cartItemsCount';
  * This component creates Mobile Header
  * @param {*} props Props passed from Header screen
  */
-
+const backicon = require('@tcp/core/src/assets/carrot-large-left.png');
 const downIcon = require('../../../../assets/images/carrot-small-down.png');
-const upIcon = require('../../../../assets/images/carrot-small-up.png');
 const cartIcon = require('../../../../assets/images/empty-bag.png');
+
+const STORE_TYPE = 'store';
 
 /**
  * This component creates Mobile Header.
@@ -100,7 +114,7 @@ class Header extends React.PureComponent {
     navigation.navigate({
       routeName: 'StoreLanding',
       params: {
-        title: labels.lbl_header_storeDefaultTitle.toUpperCase(),
+        title: getLabelValue(labels, 'lbl_header_storeDefaultTitle').toUpperCase(),
       },
     });
     this.setState({
@@ -192,7 +206,16 @@ class Header extends React.PureComponent {
   };
 
   render() {
-    const { favStore, labels, cartVal, isUserLoggedIn, userName } = this.props;
+    const {
+      favStore,
+      labels,
+      cartVal,
+      isUserLoggedIn,
+      userName,
+      navigation,
+      headertype,
+      title,
+    } = this.props;
     const { isDownIcon } = this.state;
     const basicInfo = favStore && favStore.basicInfo;
     const storeTime = this.getStoreHours(favStore);
@@ -217,48 +240,68 @@ class Header extends React.PureComponent {
         <ToastContainer />
         <Container>
           <HeaderContainer data-locator={getLocator('global_headerpanel')}>
-            <MessageContainer>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                color="black"
-                fontWeight="semibold"
-                text={welcomeMessage}
-                data-locator={getLocator('global_headerpanelwelcometext')}
-              />
-              <StoreContainer onPress={this.validateIcon}>
+            {headertype === STORE_TYPE ? (
+              <BackContainer position="row">
+                <TouchableOpacity
+                  accessible
+                  onPress={() => onBack(navigation)}
+                  accessibilityRole="button"
+                  accessibilityLabel="back button"
+                >
+                  <ArrowBackIcon source={backicon} />
+                </TouchableOpacity>
+                <MiddleSection>
+                  <TitleText numberOfLines={1} accessibilityRole="text" accessibilityLabel={title}>
+                    {title}
+                  </TitleText>
+                </MiddleSection>
+              </BackContainer>
+            ) : (
+              <MessageContainer>
                 <BodyCopy
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs14"
                   textAlign="center"
-                  color="text.primary"
-                  fontWeight="regular"
-                  text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
-                  data-locator={getLocator('global_findastoretext')}
-                  accessibilityText="Drop Down"
+                  color="black"
+                  fontWeight="semibold"
+                  text={welcomeMessage}
+                  data-locator={getLocator('global_headerpanelwelcometext')}
                 />
-                {isDownIcon ? (
-                  <Icon
-                    source={upIcon}
-                    style={ImageColor}
-                    data-locator={getLocator('global_headerpanelexpandedicon')}
+                <StoreContainer onPress={this.validateIcon}>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs12"
+                    textAlign="center"
+                    color="text.primary"
+                    fontWeight="regular"
+                    text={favStoreTxt || headerLabels.lbl_header_storeDefaultTitle}
+                    data-locator={getLocator('global_findastoretext')}
+                    accessibilityText="Drop Down"
                   />
-                ) : (
-                  <Icon
-                    source={downIcon}
-                    style={ImageColor}
-                    data-locator={getLocator('global_headerpanelcollapsedicon')}
-                  />
-                )}
-              </StoreContainer>
-            </MessageContainer>
+                  {isDownIcon ? (
+                    <Icon
+                      source={downIcon}
+                      style={ImageColor}
+                      data-locator={getLocator('global_headerpanelexpandedicon')}
+                    />
+                  ) : (
+                    <Icon
+                      source={downIcon}
+                      style={ImageColor}
+                      data-locator={getLocator('global_headerpanelcollapsedicon')}
+                    />
+                  )}
+                </StoreContainer>
+              </MessageContainer>
+            )}
+
             <CartContainer>
               <Touchable
                 accessibilityRole="button"
                 onPress={() => {
                   // eslint-disable-next-line react/destructuring-assignment
-                  this.props.navigation.navigate('BagPage');
+                  // if labels not null then click work .
+                  if (labels) navigation.navigate('BagPage');
                 }}
               >
                 <CartIconView
@@ -266,16 +309,19 @@ class Header extends React.PureComponent {
                   data-locator={getLocator('global_headerpanelbagicon')}
                   cartVal={cartVal}
                 />
-                <RoundView cartVal={cartVal} />
-                <BodyCopy
-                  text={cartVal}
-                  color="white"
-                  style={TextStyle}
-                  fontSize="fs10"
-                  data-locator={getLocator('global_headerpanelbagitemtext')}
-                  accessibilityText="Mini bag with count"
-                  fontWeight="extrabold"
-                />
+                <RoundCircle cartVal={cartVal}>
+                  <RoundView cartVal={cartVal}>
+                    <BodyCopy
+                      text={cartVal}
+                      color="white"
+                      style={TextStyle}
+                      fontSize="fs10"
+                      data-locator={getLocator('global_headerpanelbagitemtext')}
+                      accessibilityText="Mini bag with count"
+                      fontWeight="extrabold"
+                    />
+                  </RoundView>
+                </RoundCircle>
               </Touchable>
             </CartContainer>
           </HeaderContainer>
@@ -292,12 +338,14 @@ Header.propTypes = {
   loadFavoriteStore: PropTypes.func,
   cartVal: PropTypes.number.isRequired,
   showSearch: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 Header.defaultProps = {
   favStore: {},
   loadFavoriteStore: () => null,
   showSearch: false,
+  title: '',
 };
 
 const mapStateToProps = state => {

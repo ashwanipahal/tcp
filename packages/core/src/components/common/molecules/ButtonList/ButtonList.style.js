@@ -46,16 +46,15 @@ export default css`
     flex-wrap: nowrap;
   }
   .link-button-wrapper-class {
-    border-bottom-color: ${props => props.theme.colorPalette.white};
     white-space: nowrap;
     letter-spacing: 0.3px;
     margin: 0 8px;
     &:hover {
-      border-bottom-color: ${props => props.theme.colorPalette.white};
+      border-bottom-color: ${props => props.theme.colorPalette.primary.main};
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin: 0 16px;
+      margin: 0 21px;
     }
   }
 
@@ -276,6 +275,7 @@ export default css`
     }
     .stacked-cta-wrapper-class {
       font-size: 14px;
+      color: ${props => props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].TEXT};
     }
 
     &.stacked-button-list-wrapper .stacked-button,

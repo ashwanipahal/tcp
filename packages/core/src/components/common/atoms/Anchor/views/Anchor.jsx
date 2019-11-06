@@ -7,6 +7,10 @@ import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
 
+const getAsLinkPath = (IsSlugPathAdded, asPath, incomingUrl) => {
+  return IsSlugPathAdded ? asPath || incomingUrl : getAsPathWithSlug(asPath || incomingUrl);
+};
+
 /**
  * @param {object} props : Props for Anchor
  * @desc This is an anchor component. The prop anchorVariation determines the color of the anchor.
@@ -31,11 +35,12 @@ const Anchor = ({
   url,
   text,
   dataLocator,
+  IsSlugPathAdded,
   ...other
 }) => {
   const targetVal = target || '_self';
   let incomingUrl = to || url;
-  const asLinkPath = getAsPathWithSlug(asPath || incomingUrl);
+  const asLinkPath = getAsLinkPath(IsSlugPathAdded, asPath, incomingUrl);
   if (!noLink) {
     incomingUrl = getMappedPageHref(incomingUrl);
   }
@@ -86,6 +91,7 @@ Anchor.propTypes = {
   url: PropTypes.string,
   text: PropTypes.string,
   dataLocator: PropTypes.string,
+  IsSlugPathAdded: PropTypes.bool,
 };
 
 Anchor.defaultProps = {
@@ -99,6 +105,7 @@ Anchor.defaultProps = {
   url: '',
   text: '',
   dataLocator: '',
+  IsSlugPathAdded: false,
 };
 
 export default withStyles(Anchor, styles);

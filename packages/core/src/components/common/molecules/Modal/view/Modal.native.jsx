@@ -36,6 +36,7 @@ type CloseIconProps = {
   headerStyle: Object,
   iconType: String,
   isOverlay: Boolean,
+  rightAlignCrossIcon: Boolean,
   stickyCloseIcon: Boolean,
 };
 
@@ -45,6 +46,7 @@ const getCloseIcon = ({
   headerStyle,
   iconType,
   isOverlay,
+  rightAlignCrossIcon,
 }: CloseIconProps) => {
   return (
     <ImageWrapper stickyCloseIcon={stickyCloseIcon} style={headerStyle}>
@@ -54,7 +56,10 @@ const getCloseIcon = ({
         accessibilityLabel="close"
         isOverlay={isOverlay}
       >
-        <StyledCrossImage source={iconType === 'arrow' ? arrowIcon : closeIcon} />
+        <StyledCrossImage
+          rightAlignCrossIcon={rightAlignCrossIcon}
+          source={iconType === 'arrow' ? arrowIcon : closeIcon}
+        />
       </StyledTouchableOpacity>
     </ImageWrapper>
   );
@@ -89,6 +94,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
     transparentModal,
     horizontalBar = true,
     borderColor = 'black',
+    rightAlignCrossIcon,
   } = otherProps;
   let behavior = null;
   let keyboardVerticalOffset = 0;
@@ -136,6 +142,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
                     iconType,
                     isOverlay,
                     stickyCloseIcon,
+                    rightAlignCrossIcon,
                   })}
                 </RowWrapper>
                 {geLine(horizontalBar, borderColor)}

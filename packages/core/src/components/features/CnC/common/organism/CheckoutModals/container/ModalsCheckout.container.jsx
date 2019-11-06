@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import ModalsCheckoutView from '../views/ModalsCheckout.view';
 import { setCheckoutModalMountedState } from '../../../../../account/LoginPage/container/LoginPage.actions';
 import { getSetCheckoutStage } from '../../../../Checkout/container/Checkout.action';
-import { checkoutModalOpenState } from '../../../../../account/LoginPage/container/LoginPage.selectors';
+import {
+  checkoutModalOpenState,
+  checkoutModalComponentType,
+} from '../../../../../account/LoginPage/container/LoginPage.selectors';
 import { getLabelsAddToActions } from '../../../../AddedToBag/container/AddedToBag.selectors';
 import { getUserLoggedInState } from '../../../../../account/User/container/User.selectors';
 import bagPageActions from '../../../../BagPage/container/BagPage.actions';
@@ -14,6 +17,7 @@ import checkoutSelectors, {
 } from '../../../../Checkout/container/Checkout.selector';
 import { closeMiniBag } from '../../../../../../common/organisms/Header/container/Header.actions';
 import { confirmRemoveCartItem } from '../../../../CartItemTile/container/CartItemTile.actions';
+import { closeAddedToBag } from '../../../../AddedToBag/container/AddedToBag.actions';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -27,8 +31,8 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   handleContinueShopping() {
-    const { closeAddedToBag } = this.props;
-    closeAddedToBag();
+    const { closeAddedToBag: closeATB } = this.props;
+    closeATB();
   }
 
   render() {
@@ -53,6 +57,9 @@ export class AddedToBagContainer extends React.Component<Props> {
       addItemToSflList,
       isExpressCheckoutPage,
       setCheckoutStage,
+      bagPageServerError,
+      checkoutModalComponent,
+      closeAddedToBagModal,
     } = this.props;
     return (
       <ModalsCheckoutView
@@ -71,12 +78,15 @@ export class AddedToBagContainer extends React.Component<Props> {
         closeMiniBagDispatch={closeMiniBagDispatch}
         labels={labels}
         closeItemDeleteModal={closeItemDeleteModal}
+        closeAddedToBagModal={closeAddedToBagModal}
         currentSelectItemInfo={currentSelectItemInfo}
         deleteConfirmationModalLabels={deleteConfirmationModalLabels}
         confirmRemoveCartItem={removeCartItem}
         addItemToSflList={addItemToSflList}
         isExpressCheckoutPage={isExpressCheckoutPage}
         setCheckoutStage={setCheckoutStage}
+        bagPageServerError={bagPageServerError}
+        checkoutModalComponentType={checkoutModalComponent}
       />
     );
   }
@@ -111,6 +121,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     closeMiniBagDispatch: () => {
       dispatch(closeMiniBag());
     },
+    closeAddedToBagModal: payload => {
+      dispatch(closeAddedToBag(payload));
+    },
     closeItemDeleteModal,
     removeCartItem: payload => {
       dispatch(confirmRemoveCartItem(payload, closeItemDeleteModal));
@@ -128,12 +141,14 @@ const mapStateToProps = state => {
   return {
     labels: getLabelsAddToActions(state),
     checkoutModalMountedState: checkoutModalOpenState(state),
+    checkoutModalComponent: checkoutModalComponentType(state),
     isUserLoggedIn: getUserLoggedInState(state),
     modalInfo: bagPageSelector.getConfirmationModalFlag(state),
     orderHasPickup: checkoutSelectors.getIsOrderHasPickup(state),
     currentSelectItemInfo: bagPageSelector.getCurrentDeleteSelectedItemInfo(state),
     deleteConfirmationModalLabels: bagPageSelector.itemDeleteModalLabels(state),
     isExpressCheckoutPage: isExpressCheckout(state),
+    bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
   };
 };
 

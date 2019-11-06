@@ -8,7 +8,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="black"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myWalletHeading"
@@ -65,12 +65,14 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_viewMyWalletCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -84,7 +86,7 @@ exports[`MyWalletTile component should render correctly when coupons are present
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="black"
+    fontWeight="extrabold"
     margin={null}
     numberOfLines={null}
     text="lbl_overview_myWalletHeading"
@@ -138,12 +140,14 @@ exports[`MyWalletTile component should render correctly when coupons are present
       locator=""
       navigation={Object {}}
       onPress={[Function]}
+      paddings="12px 32px 12px 32px"
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
       text="lbl_overview_walletViewAllCTA"
       theme={Object {}}
       url=""
+      withNoLineHeight={false}
     />
   </Styled(View)>
 </Styled(View)>

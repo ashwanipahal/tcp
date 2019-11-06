@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 
@@ -22,7 +22,7 @@ class SuggestionBox extends React.PureComponent {
       isLatestSearchResultsExists,
       latestSearchResults,
       labels,
-      hideOverlayAfterClick,
+      redirectToSuggestedUrl,
     } = this.props;
 
     return (
@@ -50,9 +50,13 @@ class SuggestionBox extends React.PureComponent {
                         <Anchor
                           noLink
                           className="suggestion-label"
-                          onClick={() => hideOverlayAfterClick(`${item}`)}
+                          to={`/${getSiteId()}/search/${item}`}
+                          onClick={e => {
+                            e.preventDefault();
+                            redirectToSuggestedUrl(`${item}`);
+                          }}
                         >
-                          {item.toUpperCase()}
+                          {item.charAt(0).toUpperCase() + item.slice(1)}
                         </Anchor>
                       </BodyCopy>
                     );
@@ -73,7 +77,7 @@ SuggestionBox.propTypes = {
   }),
   isLatestSearchResultsExists: PropTypes.bool,
   latestSearchResults: PropTypes.arrayOf(PropTypes.shape({})),
-  hideOverlayAfterClick: PropTypes.func.isRequired,
+  redirectToSuggestedUrl: PropTypes.func.isRequired,
 };
 
 SuggestionBox.defaultProps = {

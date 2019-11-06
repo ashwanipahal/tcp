@@ -29,6 +29,7 @@ const styles = css`
   }
   .ProductReview {
     background-image: url('/static/images/review.png');
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .FacebookLink {
     background-image: url('/static/images/facebook.png');

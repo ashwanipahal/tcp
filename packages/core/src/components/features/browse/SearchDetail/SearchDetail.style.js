@@ -53,6 +53,9 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.smallOnly} {
+    .empty-searched-label {
+      display: block;
+    }
     .search-product-tile:nth-child(2n) {
       padding-right: 0;
     }
@@ -130,6 +133,7 @@ export default css`
     }
     .filter-and-sort-form-container .desktop-dropdown {
       display: flex;
+      position: relative;
     }
     .searched-label {
       padding-bottom: 0;
@@ -167,27 +171,37 @@ export default css`
   .item-title {
     width: 100%;
   }
+
+  .empty-search-inputBox-col {
+    position: relative;
+    width: initial;
+  }
+
   .empty-search-inputBox-container {
     position: relative;
     width: 240px;
     height: 40px;
   }
+
   .empty-search-input {
     position: absolute;
     width: 240px;
     height: 40px;
     padding-left: 20px;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     border-radius: 20px;
     background-color: ${props => props.theme.colorPalette.gray[300]};
     border: 1px solid ${props => props.theme.colorPalette.gray[300]};
+    box-sizing: border-box;
   }
+
   .empty-search-image {
     position: absolute;
     float: none;
     top: calc(0% - -12px);
     width: 20px;
     height: 20px;
-    right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .suggestion-label {
@@ -201,9 +215,7 @@ export default css`
   .empty-searched-label {
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
   }
-  .empty-search-inputBox-col {
-    width: 240px;
-  }
+
   .empty-search-tips-title {
     margin-bottom: 8px;
   }
@@ -212,7 +224,7 @@ export default css`
   }
 
   .matchBox {
-    width: 240px;
+    width: 245px;
     display: table-cell;
     border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     border-top: 0px;
@@ -221,8 +233,7 @@ export default css`
     position: absolute;
     background-color: ${props => props.theme.colors.WHITE};
     overflow-y: auto;
-    border-radius: 20px;
-    margin: 45px 10px 0 10px;
+    margin: 40px 10px 0 10px;
   }
 
   .boxHead {
@@ -238,24 +249,20 @@ export default css`
     padding: 0px ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-  .matchLinkBox .matchLinkBoxBody {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  }
-
   .matchProductBox .matchProductBody {
     padding: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
   }
 
   .matchProductBox .matchProductBody ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
   }
 
   li.linkName {
     height: 40px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 8px 14px;
   }
 
   li.productBox {
@@ -267,5 +274,9 @@ export default css`
   .autosuggest-image {
     height: 80px;
     width: 80px;
+  }
+  .empty-search-linkName {
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
+    padding: 5px 14px;
   }
 `;

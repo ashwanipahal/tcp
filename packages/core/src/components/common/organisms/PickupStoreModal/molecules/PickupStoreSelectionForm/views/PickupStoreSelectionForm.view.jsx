@@ -46,6 +46,18 @@ class _PickupStoreSelectionForm extends React.Component {
     isBopisEnabled: PropTypes.bool.isRequired,
   };
 
+  componentDidMount() {
+    const { onSearch, openRestrictedModalForBopis, isSkuResolved } = this.props;
+    if (openRestrictedModalForBopis || isSkuResolved) {
+      onSearch();
+    }
+  }
+
+  componentDidUpdate() {
+    const { prePopulateZipCodeAndSearch, handleSubmit, change } = this.props;
+    prePopulateZipCodeAndSearch(handleSubmit, change);
+  }
+
   displayStoreListItems({ isBossCtaEnabled, buttonLabel, sameStore }) {
     const {
       isShoppingBag,
@@ -122,9 +134,7 @@ class _PickupStoreSelectionForm extends React.Component {
       colorFitsSizesMap,
       isSkuResolved,
     } = this.props;
-
     let disableButton = pristine;
-
     const formExists = Object.entries(PickupSkuFormValues).length === 0;
 
     const { color, Fit, Size } = PickupSkuFormValues;
@@ -132,7 +142,7 @@ class _PickupStoreSelectionForm extends React.Component {
     const enableButton = formExists ? pristine : true;
 
     const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable && sizeAvailable.maxAvailable > 0 ? !sizeAvailable : enableButton;
+    disableButton = sizeAvailable ? !sizeAvailable : enableButton;
 
     return showStoreSearching ? (
       <div className={className}>
@@ -214,10 +224,13 @@ class _PickupStoreSelectionForm extends React.Component {
       selectedStoreId,
       isBossSelected,
       isShowMessage,
+      isGetUserStoresLoaded,
       getIsBopisAvailable,
     } = this.props;
     return (
       !storeLimitReached &&
+      isGetUserStoresLoaded &&
+      preferredStore &&
       prefStoreWithData && (
         <div className="favorite-store-box">
           <PickupStoreListItem
@@ -248,7 +261,6 @@ class _PickupStoreSelectionForm extends React.Component {
   displayStoreSearchComp() {
     const {
       getPreferredStoreData,
-      isLoading,
       deriveStoreSearchAttributes,
       deriveBossCtaEnabled,
       updateCartItemStore,
@@ -278,9 +290,7 @@ class _PickupStoreSelectionForm extends React.Component {
             isBossCtaEnabled,
           })}
         {this.displayStoreSearchForm(showStoreSearching)}
-        {isLoading ? (
-          <Spinner />
-        ) : (
+        {
           <React.Fragment>
             {isSkuResolved &&
               this.displayStoreListItems({
@@ -290,7 +300,7 @@ class _PickupStoreSelectionForm extends React.Component {
               })}
             {isSkuResolved && this.displayErrorCopy()}
           </React.Fragment>
-        )}
+        }
       </React.Fragment>
     );
   }

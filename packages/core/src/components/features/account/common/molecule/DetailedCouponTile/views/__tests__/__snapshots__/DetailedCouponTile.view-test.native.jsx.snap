@@ -96,12 +96,14 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(CustomButton)
@@ -110,8 +112,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}
-        disableButton={false}
-        disabled={true}
+        disableButton={true}
         fill="BLUE"
         fullWidth=""
         iconColor="gray.800"
@@ -120,12 +121,14 @@ exports[`DetailedCouponTile should render correctly 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="apply"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -266,12 +269,14 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
         <Styled(Styled(View)) />
       </Styled(View)>
@@ -290,12 +295,14 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="remove from bag"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>
@@ -416,12 +423,14 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           locator=""
           navigation={Object {}}
           onPress={[Function]}
+          paddings="12px 32px 12px 32px"
           selected={false}
           selectedIcon="chevron-up"
           showIcon={false}
           text="view & print"
           theme={Object {}}
           url=""
+          withNoLineHeight={false}
         />
       </Styled(View)>
       <Styled(CustomButton)
@@ -430,8 +439,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         color="#fff"
         customStyle={Object {}}
         customTextStyle={null}
-        disableButton={false}
-        disabled={true}
+        disableButton={true}
         fill="BLUE"
         fullWidth=""
         iconColor="gray.800"
@@ -440,12 +448,14 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
         locator=""
         navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
         text="apply"
         theme={Object {}}
         url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </Styled(View)>

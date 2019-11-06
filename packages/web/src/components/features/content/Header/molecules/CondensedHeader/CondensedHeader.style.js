@@ -81,6 +81,7 @@ export default css`
     left: 50%;
     transform: translateX(-50%);
     width: 70%;
+    max-width: 1010px;
 
     .nav-bar-l1-item {
       color: ${props => props.theme.colorPalette.gray[900]};
@@ -172,7 +173,6 @@ export default css`
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
     line-height: 28px;
     text-overflow: ellipsis;
-    width: 70px;
     white-space: nowrap;
   }
 

@@ -20,6 +20,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           itemBrand=""
           resizeMode="contain"
           source=""
+          swatchConfig=""
           url=""
           width="161px"
         />

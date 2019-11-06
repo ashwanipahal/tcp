@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/FullSizeImageModal.style';
-import { Image } from '../../../../../../common/atoms';
+import { DamImage } from '../../../../../../common/atoms';
 import Modal from '../../../../../../common/molecules/Modal';
 import onDoubleTap from '../util';
 import { getLocator } from '../../../../../../../utils';
@@ -35,6 +35,10 @@ class FullSizeImageModal extends React.Component {
   render() {
     const { onCloseClick, className, name, image } = this.props;
     const { isZoomIn } = this.state;
+    const imgData = {
+      alt: name,
+      url: image,
+    };
     return (
       <Modal
         isOpen
@@ -50,7 +54,7 @@ class FullSizeImageModal extends React.Component {
             className={[className, 'image-zoom', isZoomIn ? 'active-zoom-in' : ''].join(' ')}
             onTouchStart={this.handleTouchStart}
           >
-            <Image src={image} alt={name} />
+            <DamImage imgData={imgData} isProductImage />
           </figure>
         </div>
       </Modal>

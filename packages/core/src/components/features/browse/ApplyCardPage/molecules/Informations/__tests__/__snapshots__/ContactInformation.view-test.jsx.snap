@@ -4,10 +4,12 @@ exports[`ContactInformation component should renders correctly 1`] = `
 <div
   className="contact-info-message-content"
 >
-  <Styled(RichText)
-    dataLocator="contact_disclaimer_info"
-    richTextHtml="<h1>Account Information</h1>"
-  />
+  <styled.div>
+    <Styled(RichText)
+      dataLocator="contact_disclaimer_info"
+      richTextHtml="<h1>Account Information</h1>"
+    />
+  </styled.div>
 </div>
 `;
 
@@ -15,9 +17,11 @@ exports[`ContactInformation component should renders correctly when no arguments
 <div
   className="contact-info-message-content"
 >
-  <Styled(RichText)
-    dataLocator="contact_disclaimer_info"
-    richTextHtml=""
-  />
+  <styled.div>
+    <Styled(RichText)
+      dataLocator="contact_disclaimer_info"
+      richTextHtml=""
+    />
+  </styled.div>
 </div>
 `;

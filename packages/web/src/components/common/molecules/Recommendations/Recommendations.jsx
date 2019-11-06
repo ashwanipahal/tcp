@@ -7,6 +7,7 @@ import ButtonCTA from '@tcp/core/src/components/common/molecules/ButtonCTA';
 import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import config from './config';
 import constant from './Recommendations.constant';
 import style from './Recommendations.style';
@@ -39,7 +40,15 @@ const { RECOMMENDATION } = constant;
 class Recommendations extends Component {
   componentDidMount() {
     const { loadRecommendations } = this.props;
-    window.addEventListener('load', loadRecommendations);
+    const { page, portalValue } = this.props;
+    const action = { page };
+    if (portalValue) {
+      action.mboxName = portalValue;
+    }
+    if (window.adobe && window.adobe.target) {
+      return loadRecommendations(action);
+    }
+    return window.addEventListener('load', loadRecommendations(action));
   }
 
   componentWillUnmount() {
@@ -57,6 +66,7 @@ class Recommendations extends Component {
       priceOnly,
       currency,
       currencyAttributes,
+      onQuickViewOpenClick,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -73,6 +83,7 @@ class Recommendations extends Component {
           isPerfectBlock
           productsBlock={product}
           onPickUpOpenClick={onPickUpOpenClick}
+          onQuickViewOpenClick={onQuickViewOpenClick}
           className={`${className} product-list ${priceOnlyClass}`}
           labels={labels}
           sequenceNumber={index + 1}
@@ -184,13 +195,18 @@ class Recommendations extends Component {
 
     const variation = variations.split(',');
 
-    return variation.map(value => {
-      return (
-        <section className={`${className} recommendations-tile`}>
-          {this.renderRecommendationView(value)}
-        </section>
-      );
-    });
+    return (
+      <div>
+        {variation.map(value => {
+          return (
+            <section className={`${className} recommendations-tile`}>
+              {this.renderRecommendationView(value)}
+            </section>
+          );
+        })}
+        <QuickViewModal />
+      </div>
+    );
   }
 }
 
@@ -211,6 +227,9 @@ Recommendations.propTypes = {
   variations: PropTypes.string,
   currency: PropTypes.string,
   currencyAttributes: PropTypes.shape({}),
+  onQuickViewOpenClick: PropTypes.func.isRequired,
+  page: PropTypes.string,
+  portalValue: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
@@ -224,6 +243,8 @@ Recommendations.defaultProps = {
   currencyAttributes: {
     exchangevalue: 1,
   },
+  page: '',
+  portalValue: '',
 };
 
 export { Recommendations as RecommendationsVanilla };

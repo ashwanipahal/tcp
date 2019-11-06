@@ -18,7 +18,7 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
           "height": 13,
           "marginBottom": 0,
           "marginLeft": 0,
-          "marginRight": 13,
+          "marginRight": 8,
           "marginTop": 3,
           "width": 13,
         }
@@ -32,6 +32,100 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs10"
       fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      style={
+        Object {
+          "flex": 1,
+          "flexWrap": "wrap",
+        }
+      }
+      text="This is test error"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`ErrorMessage Component ErrorMessage should render correctly from bag page 1`] = `
+<Fragment>
+  <Styled(View)
+    bagPage={true}
+  >
+    <Styled(ImageComp)
+      alt=""
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/alert-triangle.png",
+        }
+      }
+      style={
+        Object {
+          "height": 13,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 8,
+          "marginTop": 3,
+          "width": 13,
+        }
+      }
+      url=""
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="error"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      style={
+        Object {
+          "flex": 1,
+          "flexWrap": "wrap",
+        }
+      }
+      text="This is test error"
+      textDecoration={null}
+    />
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`ErrorMessage Component ErrorMessage should render correctly with fontsize and fontweight 1`] = `
+<Fragment>
+  <Styled(View)
+    bagPage={false}
+  >
+    <Styled(ImageComp)
+      alt=""
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/alert-triangle.png",
+        }
+      }
+      style={
+        Object {
+          "height": 13,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 8,
+          "marginTop": 3,
+          "width": 13,
+        }
+      }
+      url=""
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="error"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
       margin={null}
       numberOfLines={null}
       style={

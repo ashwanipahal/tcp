@@ -3,7 +3,8 @@ import { Platform } from 'react-native';
 
 const StyledCrossImage = styled.Image`
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  ${props =>
+    !props.rightAlignCrossIcon ? `margin-right: ${props.theme.spacing.ELEM_SPACING.XS}` : ''};
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
@@ -45,9 +46,7 @@ const LineWrapper = styled.View`
 `;
 
 const RowWrapper = styled.View`
-  margin: ${Platform.OS === 'ios'
-      ? props => props.theme.spacing.ELEM_SPACING.XXXL
-      : props => props.theme.spacing.ELEM_SPACING.MED}
+  margin: ${Platform.OS === 'ios' ? '0' : props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG};
   flex-direction: row;

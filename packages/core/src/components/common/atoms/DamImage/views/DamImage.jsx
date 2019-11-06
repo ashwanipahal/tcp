@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 import Anchor from '../../Anchor';
@@ -60,7 +60,7 @@ const getBreakpointImgUrl = (type, props) => {
     : `${basePath}/${config}/${imgPath}`;
 };
 
-const renderImage = imgProps => {
+const RenderImage = forwardRef((imgProps, ref) => {
   const {
     breakpoints,
     imgConfigs,
@@ -89,17 +89,18 @@ const renderImage = imgProps => {
 
       {lazyLoad ? (
         <LazyLoadImage
+          forwardedRef={ref}
           src={getBreakpointImgUrl('xs', imgProps)}
           alt={alt}
           {...other}
           showPlaceHolder={showPlaceHolder}
         />
       ) : (
-        <img src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
+        <img ref={ref} src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
       )}
     </picture>
   );
-};
+});
 
 const DamImage = props => {
   const {
@@ -111,6 +112,7 @@ const DamImage = props => {
     lazyLoad,
     link,
     dataLocator,
+    forwardedRef,
     itemBrand,
     showPlaceHolder,
     ...other
@@ -130,7 +132,7 @@ const DamImage = props => {
   };
 
   if (!link) {
-    return renderImage(imgProps);
+    return <RenderImage {...imgProps} ref={forwardedRef} />;
   }
 
   const { url: ctaUrl, target, title, actualUrl, className: ctaClassName } = link;
@@ -149,7 +151,7 @@ const DamImage = props => {
       title={title}
       dataLocator="image-link"
     >
-      {renderImage(imgProps)}
+      <RenderImage {...imgProps} ref={forwardedRef} />
     </Anchor>
   );
 };
@@ -168,6 +170,7 @@ DamImage.defaultProps = {
   link: null,
   dataLocator: '',
   dataLocatorLink: '',
+  forwardedRef: null,
   itemBrand: '',
   showPlaceHolder: true,
 };
@@ -213,6 +216,7 @@ DamImage.propTypes = {
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
   }),
+  forwardedRef: PropTypes.shape({ current: PropTypes.any }),
   itemBrand: PropTypes.string,
   showPlaceHolder: PropTypes.bool,
 };

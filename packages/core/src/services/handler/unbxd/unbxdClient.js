@@ -17,9 +17,10 @@ const modifyUnbxdUrl = unboxKey => {
  */
 const getRequestParams = (apiConfig, reqObj) => {
   const {
-    webService: { URI, unbxdCustom },
+    webService: { URI, unbxdCustom, authHeaderRequired },
   } = reqObj;
   let { brand } = reqObj;
+  let reqHeaders;
   if (!brand) {
     const brandID = getBrand();
     brand = brandID && brandID.toUpperCase();
@@ -30,9 +31,13 @@ const getRequestParams = (apiConfig, reqObj) => {
   const requestUrl = `${unbxdKey}/${unboxKey}/${URI}`;
   const unbxdAPIKey = apiConfig[`unbxdApiKey${brand}`];
 
-  const reqHeaders = {
-    Authorization: unbxdAPIKey,
-  };
+  if (authHeaderRequired) {
+    reqHeaders = {
+      Authorization: unbxdAPIKey,
+    };
+  } else {
+    reqHeaders = {};
+  }
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
     reqHeaders.Cookie = apiConfig.cookie;
