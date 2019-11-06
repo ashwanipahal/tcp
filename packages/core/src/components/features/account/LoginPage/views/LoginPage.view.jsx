@@ -25,6 +25,7 @@ const LoginView = ({
   handleContinueAsGuest,
   userplccCardNumber,
   userplccCardId,
+  isRememberedUser,
 }) => {
   return (
     <LoginSection
@@ -36,6 +37,7 @@ const LoginView = ({
       showRecaptcha={showRecaptcha}
       resetLoginState={resetLoginState}
       SubmitForgot={SubmitForgot}
+      isRememberedUser={isRememberedUser}
       showNotification={showNotification}
       successFullResetEmail={successFullResetEmail}
       resetForm={resetForm}
@@ -74,12 +76,14 @@ LoginView.propTypes = {
   formErrorMessage: PropTypes.shape({}).isRequired,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  isRememberedUser: PropTypes.bool,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   openModal: () => {},
+  isRememberedUser: false,
 };
 
 export default LoginView;

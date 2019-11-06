@@ -31,6 +31,7 @@ exports[`LoginSection component should renders correctly 1`] = `
         form="LoginForm"
         getFormState={[Function]}
         initialValues={Object {}}
+        isRememberedUser={false}
         keepDirtyOnReinitialize={false}
         labels={
           Object {

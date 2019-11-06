@@ -5,6 +5,7 @@ import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.uti
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
   personalData: null,
+  isRemembered: true,
   airmiles: null,
   rewards: null,
   survey: null,

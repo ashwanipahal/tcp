@@ -26,6 +26,7 @@ import {
 import {
   getCurrentPointsState,
   getTotalRewardsState,
+  isRememberedUser,
 } from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
 import BAG_ACTIONS from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.actions';
 
@@ -49,6 +50,7 @@ export class MiniBagContainer extends React.PureComponent {
     isPlcc: PropTypes.bool.isRequired,
     addedToBagError: PropTypes.string.isRequired,
     isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+    rememberedUserFlag: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -82,6 +84,7 @@ export class MiniBagContainer extends React.PureComponent {
       isPlcc,
       addedToBagError,
       isShowSaveForLaterSwitch,
+      rememberedUserFlag,
     } = this.props;
     return (
       <MiniBagView
@@ -103,6 +106,7 @@ export class MiniBagContainer extends React.PureComponent {
         isPlcc={isPlcc}
         addedToBagError={addedToBagError}
         isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
+        isRememberedUser={rememberedUserFlag}
       />
     );
   }
@@ -122,6 +126,7 @@ const mapStateToProps = state => {
     isPlcc: isPlccUser(state),
     addedToBagError: getAddedToBagError(state),
     isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
+    rememberedUserFlag: isRememberedUser(state),
   };
 };
 

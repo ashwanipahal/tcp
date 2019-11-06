@@ -14,8 +14,16 @@ type Props = {
   userName: any,
   onLinkClick: Function,
   closeMiniBag: Function,
+  isRememberedUser: Boolean,
 };
-const MiniBagHeader = ({ labels, className, userName, onLinkClick, closeMiniBag }: Props) => {
+const MiniBagHeader = ({
+  labels,
+  className,
+  userName,
+  onLinkClick,
+  closeMiniBag,
+  isRememberedUser,
+}: Props) => {
   const createAccount = 'createAccount';
   const login = 'login';
   return (
@@ -64,30 +72,34 @@ const MiniBagHeader = ({ labels, className, userName, onLinkClick, closeMiniBag 
               </BodyCopy>
             </Button>
           </div>
-          <div className="createAccountWrapper">
-            <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
-              {labels.dontHaveAccount}
-            </BodyCopy>
-            <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
-              {labels.createOne}
-            </BodyCopy>
-          </div>
-          <div className="continue-shopping">
-            <Button
-              className="createAccount"
-              onClick={e => onLinkClick({ e, componentId: createAccount })}
-            >
-              <BodyCopy
-                component="span"
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs14"
-              >
-                {labels.createAccount}
-              </BodyCopy>
-            </Button>
-          </div>
+          {!isRememberedUser && (
+            <>
+              <div className="createAccountWrapper">
+                <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
+                  {labels.dontHaveAccount}
+                </BodyCopy>
+                <BodyCopy className="accountText" component="p" fontSize="fs14" textAlign="left">
+                  {labels.createOne}
+                </BodyCopy>
+              </div>
+              <div className="continue-shopping">
+                <Button
+                  className="createAccount"
+                  onClick={e => onLinkClick({ e, componentId: createAccount })}
+                >
+                  <BodyCopy
+                    component="span"
+                    color="white"
+                    fontWeight="extrabold"
+                    fontFamily="secondary"
+                    fontSize="fs14"
+                  >
+                    {labels.createAccount}
+                  </BodyCopy>
+                </Button>
+              </div>
+            </>
+          )}
         </>
       ) : (
         ``

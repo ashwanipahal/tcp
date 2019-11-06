@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
-import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getCartItemCount, readCookie } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
@@ -79,9 +79,17 @@ class HeaderMiddleNav extends React.PureComponent {
     return isUserPlcc ? 'blue.500' : 'orange.800';
   };
 
-  renderAccountInfoSection = (userName, openOverlay, isUserPlcc, userPoints, userRewards) => {
+  renderAccountInfoSection = (
+    userName,
+    openOverlay,
+    isUserPlcc,
+    userPoints,
+    userRewards,
+    isRememberedUser
+  ) => {
     const { userNameClick, triggerLoginCreateAccount, isSearchOpen } = this.state;
     const { isOpenOverlay } = this.props;
+    const displayName = userName || readCookie('tcp_firstname');
     return userName && !isSearchOpen ? (
       <LoggedInUserInfo
         mainId="accountDrawer"
@@ -102,6 +110,8 @@ class HeaderMiddleNav extends React.PureComponent {
           triggerLoginCreateAccount={triggerLoginCreateAccount}
           onLinkClick={this.onLinkClick}
           openOverlay={openOverlay}
+          isRememberedUser={isRememberedUser}
+          userName={displayName}
           isDrawer={false}
         />
       )
@@ -145,6 +155,7 @@ class HeaderMiddleNav extends React.PureComponent {
       userRewards,
       store,
       labels,
+      isRememberedUser,
     } = this.props;
     const { userNameClick, triggerLoginCreateAccount } = this.state;
     const brand = getBrand();
@@ -257,7 +268,8 @@ class HeaderMiddleNav extends React.PureComponent {
                 openOverlay,
                 isUserPlcc,
                 userPoints,
-                userRewards
+                userRewards,
+                isRememberedUser
               )}
               <Anchor
                 to=""
@@ -348,6 +360,7 @@ HeaderMiddleNav.propTypes = {
     features: PropTypes.shape({}),
   }),
   labels: PropTypes.shape({}).isRequired,
+  isRememberedUser: PropTypes.bool,
 };
 
 HeaderMiddleNav.defaultProps = {
@@ -369,6 +382,7 @@ HeaderMiddleNav.defaultProps = {
     },
     features: {},
   },
+  isRememberedUser: false,
 };
 
 export { HeaderMiddleNav as HeaderMiddleNavVanilla };

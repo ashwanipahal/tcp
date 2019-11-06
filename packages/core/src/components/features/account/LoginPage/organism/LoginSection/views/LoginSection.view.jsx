@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { Anchor } from '@tcp/core/src/components/common/atoms';
+import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import LogOutPageContainer from '../../../../Logout/container/LogOut.container';
 import LoginForm from '../../../molecules/LoginForm';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginTopSection from '../../../molecules/LoginTopSection';
@@ -13,6 +16,8 @@ import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
 import { isCanada, scrollPage, scrollTopElement } from '../../../../../../../utils';
+
+const displayName = readCookie('tcp_firstname');
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -57,6 +62,24 @@ class LoginSection extends React.PureComponent<Props> {
     scrollTopElement('dialogContent');
   };
 
+  getSignOutSection = ({ isRememberedUser, logoutlabels }) => {
+    return isRememberedUser ? (
+      <BodyCopy component="div" className="elem-pt-SM elem-pb-LRG">
+        <BodyCopy fontFamily="primary" fontSize="fs14">
+          {`Not ${displayName} ? `}
+          <Anchor
+            underline
+            fontSizeVariation="medium"
+            anchorVariation="primary"
+            onClick={this.showForgotPasswordForm}
+          >
+            <LogOutPageContainer labels={logoutlabels} />
+          </Anchor>
+        </BodyCopy>
+      </BodyCopy>
+    ) : null;
+  };
+
   render() {
     const {
       onSubmit,
@@ -75,6 +98,7 @@ class LoginSection extends React.PureComponent<Props> {
       resetLoginState,
       userplccCardNumber,
       userplccCardId,
+      isRememberedUser,
     } = this.props;
     return (
       <>
@@ -107,6 +131,7 @@ class LoginSection extends React.PureComponent<Props> {
                   loginErrorMessage={loginErrorMessage}
                   initialValues={initialValues}
                   showRecaptcha={showRecaptcha}
+                  isRememberedUser={isRememberedUser}
                   showForgotPasswordForm={this.showForgotPasswordForm}
                   resetForm={resetForm}
                   className="elem-mb-LRG"
@@ -133,22 +158,27 @@ class LoginSection extends React.PureComponent<Props> {
                 queryParams={queryParams}
               />
             )}
+            {!isRememberedUser && (
+              <>
+                <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
+                  <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
+                    {getLabelValue(labels, 'lbl_login_createAccountHelp', 'login')}
+                  </BodyCopy>
+                </BodyCopy>
+                <Button
+                  className="create-acc-cta"
+                  fill="WHITE"
+                  type="submit"
+                  buttonVariation="fixed-width"
+                  data-locator=""
+                  onClick={this.showCreateAccountForm}
+                >
+                  {getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
+                </Button>
+              </>
+            )}
 
-            <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
-              <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
-                {getLabelValue(labels, 'lbl_login_createAccountHelp', 'login')}
-              </BodyCopy>
-            </BodyCopy>
-            <Button
-              className="create-acc-cta"
-              fill="WHITE"
-              type="submit"
-              buttonVariation="fixed-width"
-              data-locator=""
-              onClick={this.showCreateAccountForm}
-            >
-              {getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
-            </Button>
+            {this.getSignOutSection(this.props)}
           </Col>
         </Row>
       </>
@@ -169,6 +199,7 @@ LoginSection.propTypes = {
   formErrorMessage: PropTypes.shape({}).isRequired,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  logoutlabels: PropTypes.shape({}),
 };
 
 LoginSection.defaultProps = {
@@ -176,6 +207,9 @@ LoginSection.defaultProps = {
   showRecaptcha: false,
   openModal: () => {},
   currentForm: constants.PAGE_TYPE.LOGIN,
+  logoutlabels: {
+    CREATE_ACC_SIGN_OUT: 'Sign Out',
+  },
 };
 
 export default withStyles(LoginSection, styles);
