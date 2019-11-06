@@ -50,7 +50,7 @@ const {
   getSmsSignUpLabels,
   getSelectedShipmentId,
   getAddressFields,
-  getAddressPhoneNo,
+  getShippingPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
   getBillingLabels,
@@ -358,7 +358,7 @@ const mapStateToProps = state => {
       smsSignUpLabels: getSmsSignUpLabels(state),
       selectedShipmentId: getSelectedShipmentId(state), // selected shipment radio button
       address: getAddressFields(state), // address for fields data
-      addressPhoneNumber: getAddressPhoneNo(state), // phone field inside address for section
+      addressPhoneNumber: getShippingPhoneNo(state), // phone field inside address for section
       emailSignUpLabels: getEmailSignUpLabels(state),
       shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
       defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
