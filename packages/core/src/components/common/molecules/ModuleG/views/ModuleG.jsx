@@ -11,6 +11,7 @@ import {
   // configureInternalNavigationFromCMSUrl,
   getIconPath,
   getLocator,
+  splitUniqueIDForDAM,
 } from '../../../../../utils';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import moduleGConfig from '../moduleG.config';
@@ -213,7 +214,6 @@ class ModuleG extends React.PureComponent {
               }}
             >
               {data.map(({ pdpUrl, pdpAsPath, product_name: productName, uniqueId }, index) => {
-                const imgUrl = `${uniqueId.split('_')[0]}/${uniqueId}`;
                 return (
                   <div key={index.toString()}>
                     <Anchor
@@ -223,7 +223,7 @@ class ModuleG extends React.PureComponent {
                       dataLocator={`${getLocator('moduleJ_product_image')}${index}`}
                     >
                       <DamImage
-                        imgData={{ url: imgUrl, alt: productName }}
+                        imgData={{ url: splitUniqueIDForDAM(uniqueId), alt: productName }}
                         imgConfigs={moduleGConfig.IMG_DATA.productImgConfig}
                         isProductImage
                       />

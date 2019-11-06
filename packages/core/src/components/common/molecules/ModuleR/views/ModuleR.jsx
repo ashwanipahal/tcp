@@ -5,7 +5,7 @@ import { Anchor, Button, Col, Row, DamImage } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
-import { getLocator, viewport } from '../../../../../utils';
+import { getLocator, viewport, splitUniqueIDForDAM } from '../../../../../utils';
 import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
 import moduleRConfig from '../moduleR.config';
 
@@ -97,7 +97,6 @@ class ModuleR extends React.PureComponent {
         {selectedProductList.map((productItem, index) => {
           if (productItem.uniqueId) {
             const { pdpUrl, pdpAsPath, uniqueId, product_name: productName } = productItem;
-            const imgUrl = `${uniqueId.split('_')[0]}/${uniqueId}`;
             return (
               <ImageGridCol
                 key={uniqueId}
@@ -116,7 +115,7 @@ class ModuleR extends React.PureComponent {
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
                   <DamImage
-                    imgData={{ url: imgUrl, alt: productName }}
+                    imgData={{ url: splitUniqueIDForDAM(uniqueId), alt: productName }}
                     imgConfigs={moduleRConfig.IMG_DATA.productImgConfig}
                     isProductImage
                   />

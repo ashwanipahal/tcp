@@ -6,7 +6,7 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle, { StyledSkeleton } from '../styles/ModuleJ.style';
-import { getIconPath, getLocator } from '../../../../../utils';
+import { getIconPath, getLocator, splitUniqueIDForDAM } from '../../../../../utils';
 import moduleJConfig from '../moduleJ.config';
 
 class ModuleJ extends React.PureComponent {
@@ -239,7 +239,6 @@ class ModuleJ extends React.PureComponent {
                 }}
               >
                 {data.map(({ uniqueId, pdpUrl, pdpAsPath, product_name: productName }, index) => {
-                  const imgUrl = `${uniqueId.split('_')[0]}/${uniqueId}`;
                   return (
                     <div key={index.toString()}>
                       <Anchor
@@ -250,7 +249,7 @@ class ModuleJ extends React.PureComponent {
                       >
                         {/* <Image alt={productName} src={imageUrl[0]} /> */}
                         <DamImage
-                          imgData={{ url: imgUrl, alt: productName }}
+                          imgData={{ url: splitUniqueIDForDAM(uniqueId), alt: productName }}
                           imgConfigs={moduleJConfig.IMG_DATA.productImgConfig}
                           isProductImage
                         />
