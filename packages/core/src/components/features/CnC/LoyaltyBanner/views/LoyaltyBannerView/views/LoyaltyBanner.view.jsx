@@ -37,6 +37,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       openOverlay,
       closeAddedToBagModal,
       inheritedStyles,
+      openApplyNowModal,
     } = this.props;
     return !isInternationalShipping && isUsOnly() ? (
       <div className={className}>
@@ -57,6 +58,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           openOverlay={openOverlay}
           closeAddedToBagModal={closeAddedToBagModal}
           inheritedStyles={inheritedStyles}
+          openApplyNowModal={openApplyNowModal}
         />
       </div>
     ) : null;

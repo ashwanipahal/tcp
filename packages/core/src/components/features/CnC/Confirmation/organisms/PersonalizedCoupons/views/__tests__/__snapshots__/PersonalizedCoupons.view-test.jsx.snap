@@ -4,59 +4,6 @@ exports[`PersonalizedCoupon View should not render loyality offers for canada 1`
 <div
   className="className"
 >
-  <Styled(BodyCopy)
-    className="heading"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      Special Coupons just for you!
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      (Coupon(s) will also he included in your oder emails.)
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
   <Styled(PersonalizedCoupon)
     coupon={
       Object {
@@ -92,59 +39,6 @@ exports[`PersonalizedCoupon View should render correctly for full filled state 1
 <div
   className="className"
 >
-  <Styled(BodyCopy)
-    className="heading"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      Special Coupons just for you!
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      (Coupon(s) will also he included in your oder emails.)
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
   <Styled(PersonalizedCoupon)
     coupon={
       Object {
@@ -204,59 +98,6 @@ exports[`PersonalizedCoupon View should simulate details modal open click 1`] = 
 <div
   className="className"
 >
-  <Styled(BodyCopy)
-    className="heading"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      Special Coupons just for you!
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      (Coupon(s) will also he included in your oder emails.)
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
   <Styled(PersonalizedCoupon)
     coupon={
       Object {
@@ -290,59 +131,6 @@ exports[`PersonalizedCoupon View should simulate print modal open click 1`] = `
 <div
   className="className"
 >
-  <Styled(BodyCopy)
-    className="heading"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      Special Coupons just for you!
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className={null}
-      color="gray[800]"
-      component="p"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs12",
-          "fs10",
-          "fs12",
-        ]
-      }
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      link={null}
-      textAlign="center"
-    >
-      (Coupon(s) will also he included in your oder emails.)
-    </Styled(BodyCopy)>
-  </Styled(BodyCopy)>
   <Styled(PersonalizedCoupon)
     coupon={
       Object {

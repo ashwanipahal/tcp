@@ -50,7 +50,7 @@ const {
   getSmsSignUpLabels,
   getSelectedShipmentId,
   getAddressFields,
-  getAddressPhoneNo,
+  getShippingPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
   getBillingLabels,
@@ -203,6 +203,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItemsCount,
       toggleCountrySelector,
       checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -212,6 +213,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        isBagLoaded={isBagLoaded}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
@@ -356,7 +358,7 @@ const mapStateToProps = state => {
       smsSignUpLabels: getSmsSignUpLabels(state),
       selectedShipmentId: getSelectedShipmentId(state), // selected shipment radio button
       address: getAddressFields(state), // address for fields data
-      addressPhoneNumber: getAddressPhoneNo(state), // phone field inside address for section
+      addressPhoneNumber: getShippingPhoneNo(state), // phone field inside address for section
       emailSignUpLabels: getEmailSignUpLabels(state),
       shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
       defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
@@ -390,6 +392,7 @@ const mapStateToProps = state => {
       ...getEmailSignUpLabels(state),
     },
     smsSignUpLabels: getSmsSignUpLabels(state),
+    isBagLoaded: BagPageSelector.isBagLoaded(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isGiftServicesChecked: getGiftServicesSend(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
@@ -403,6 +406,8 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
       isPaymentDisabled: getIsPaymentDisabled(state),
+      defaultShipmentId: getDefaultShipmentID(state),
+      cardType: selectors.getCardType(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),
