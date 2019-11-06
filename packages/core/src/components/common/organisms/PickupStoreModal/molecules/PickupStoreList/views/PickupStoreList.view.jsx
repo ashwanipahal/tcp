@@ -3,10 +3,8 @@ import { PropTypes } from 'prop-types';
 import { BOPIS_ITEM_AVAILABILITY, BOPIS_FILTER_LABEL } from '../../../PickUpStoreModal.constants';
 import PickupStoreListItem from '../../PickupStoreListItem';
 import { STORE_SUMMARY_PROP_TYPES } from '../../../PickUpStoreModal.proptypes';
-// import InputCheckbox from '../../../../../atoms/InputCheckbox';
 import StoreListItemSkeleton from '../../../atoms/StoreListItemSkeleton';
 import StyledInputCheckbox from '../styles';
-// import { canUseDOM } from '../../../../../../../utils';
 
 const PickupStoreList = props => {
   const {
