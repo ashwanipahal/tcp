@@ -95,6 +95,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
       break;
+    case 'moduleT':
+      resolve(require('../services/handler/graphQL/queries/moduleT'));
+      break;
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
       break;
