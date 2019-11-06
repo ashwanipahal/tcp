@@ -82,7 +82,6 @@ describe('#Bag Page actions', () => {
     });
   });
 
-
   it('startPaypalNativeCheckout', () => {
     expect(BAG_PAGE_ACTIONS.startPaypalNativeCheckout(true)).toEqual({
       payload: true,

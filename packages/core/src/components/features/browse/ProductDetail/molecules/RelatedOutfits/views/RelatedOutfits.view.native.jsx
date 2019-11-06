@@ -39,9 +39,10 @@ class RelatedOutfits extends React.PureComponent {
   };
 
   setShowHeader = value => {
+    const { setShowCompleteTheLook } = this.props;
     const { showHeader } = this.state;
     if (!showHeader) {
-      this.setState({ showHeader: value });
+      this.setState({ showHeader: value }, () => setShowCompleteTheLook(value));
     }
   };
 
@@ -80,11 +81,13 @@ RelatedOutfits.propTypes = {
   pdpLabels: PropTypes.shape({}),
   navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
+  setShowCompleteTheLook: PropTypes.func,
 };
 
 RelatedOutfits.defaultProps = {
   pdpLabels: {},
   navigation: {},
+  setShowCompleteTheLook: null,
 };
 
 export default RelatedOutfits;

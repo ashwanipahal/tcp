@@ -44,6 +44,7 @@ const ProductCustomizeFormPart = props => {
     fromBagPage,
     productInfoFromBag,
     quickViewColorSwatchesCss,
+    onCloseClick,
     ...otherProps
   } = props;
   const prices = productInfo && getPrices(productInfo, currentColorEntry.color.name);
@@ -140,6 +141,7 @@ const ProductCustomizeFormPart = props => {
               formRef={formRef}
               formEnabled={formEnabled}
               quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+              onCloseClick={onCloseClick}
             />
           </div>
         </div>
@@ -177,6 +179,7 @@ ProductCustomizeFormPart.propTypes = {
   fromBagPage: PropTypes.bool.isRequired,
   quickViewColorSwatchesCss: PropTypes.string,
   productInfoFromBag: PropTypes.shape({}).isRequired,
+  onCloseClick: PropTypes.func,
 };
 
 ProductCustomizeFormPart.defaultProps = {
@@ -192,6 +195,7 @@ ProductCustomizeFormPart.defaultProps = {
   addToBagError: '',
   imageUrl: '',
   quickViewColorSwatchesCss: '',
+  onCloseClick: () => {},
 };
 
 export default withStyles(ProductCustomizeFormPart, styles);

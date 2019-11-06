@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { PRODUCT_DETAIL_PAGE } from '../../../../../../../../../web/src/pages/App.constants';
 
 const plccMpr = props =>
   props.isPlcc ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;
@@ -36,6 +37,14 @@ const Styles = css`
       padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
+
+    ${props =>
+      props.pageCategory === PRODUCT_DETAIL_PAGE
+        ? `
+    .loyalty-banner-section-wrapper {
+      padding-bottom: ${props.theme.spacing.ELEM_SPACING.SM};
+    }`
+        : ``};
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

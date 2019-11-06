@@ -27,6 +27,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
       }
       selectedColorProductId=""
+      showCompleteTheLook={false}
     />
     <Connect(ProductAddToBagContainer)
       alternateSizes={Object {}}
@@ -47,20 +48,14 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
     />
-    <Connect(Styled(FulfillmentSection))
-      btnClassName="added-to-bag"
-      buttonLabel="Add To Bag"
-      currentProduct={
-        Object {
-          "colorFitsSizesMap": Array [],
-          "name": "",
-          "shortDescription": "",
-        }
-      }
-    />
     <Connect(AddedToBagContainer)
       navigation={Object {}}
     />
+    <Styled(View)>
+      <Connect(LoyaltyBannerContainer)
+        pageCategory="isProductDetailView"
+      />
+    </Styled(View)>
     <ProductDetailDescription
       isShowMore={false}
       itemPartNumber=""
@@ -72,6 +67,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       navigation={Object {}}
       pdpLabels={Object {}}
       selectedColorProductId=""
+      setShowCompleteTheLook={[Function]}
     />
   </Styled(View)>
 </LazyloadScrollView>

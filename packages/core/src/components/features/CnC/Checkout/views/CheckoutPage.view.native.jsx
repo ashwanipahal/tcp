@@ -63,11 +63,15 @@ class CheckoutPage extends React.PureComponent {
       currentStage,
       setCheckoutStage,
       isExpressCheckout,
+      pickUpContactAlternate,
+      isHasPickUpAlternatePerson,
+      pickUpAlternatePerson,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       pickupDidMount,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
+    const { shipmentMethods } = shippingProps;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
@@ -140,6 +144,19 @@ class CheckoutPage extends React.PureComponent {
             orderHasShipping={orderHasShipping}
             setCheckoutStage={setCheckoutStage}
             isExpressCheckout={isExpressCheckout}
+            pickUpContactAlternate={pickUpContactAlternate}
+            initialValues={{
+              pickUpAlternateExpress: {
+                hasAlternatePickup: isHasPickUpAlternatePerson,
+                firstName: pickUpAlternatePerson.firstName,
+                lastName: pickUpAlternatePerson.lastName,
+                emailAddress: pickUpAlternatePerson.emailAddress,
+              },
+              expressReviewShippingSection: {
+                shippingMethodId: reviewProps.defaultShipmentId,
+              },
+            }}
+            shipmentMethods={shipmentMethods}
           />
         );
       case CONFIRMATION:
@@ -195,6 +212,9 @@ CheckoutPage.propTypes = {
   toastMessage: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
   isExpressCheckout: PropTypes.bool,
+  pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {
