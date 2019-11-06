@@ -15,6 +15,7 @@ export default css`
   }
 
   .stacked-button-list-wrapper {
+    margin-top: 16px;
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 24px;
     }
