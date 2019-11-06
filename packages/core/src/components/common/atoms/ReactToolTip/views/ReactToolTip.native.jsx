@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import { TouchableOpacity, Modal, View, StatusBar, Platform, Dimensions } from 'react-native';
+import { TouchableOpacity, Modal, View, Platform, Dimensions } from 'react-native';
 import Triangle from './Triangle';
+import OutfitMainTileWrapper from '../styles/ReactToolTip.style.native';
 import getTooltipCoordinate, { getElementVisibleWidth } from './getTooltipCoordinate';
 
 const Screen = Dimensions.get('window');
@@ -30,13 +31,6 @@ const styles = {
     width: elementWidth,
     height: elementHeight,
   }),
-  shadowBox: {
-    shadowColor: colorPalette.black,
-    shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 10,
-  },
 };
 class ReactTooltip extends React.PureComponent {
   state = {
@@ -51,7 +45,7 @@ class ReactTooltip extends React.PureComponent {
 
   componentDidMount() {
     // wait to compute onLayout values.
-    setTimeout(this.getElementPosition, 500);
+    setTimeout(this.getElementPosition, 1000);
   }
 
   toggleTooltip = () => {
@@ -106,51 +100,49 @@ class ReactTooltip extends React.PureComponent {
       justifyContent: 'center',
       flex: 1,
       padding: 10,
-      borderWidth: isIOS ? 0 : 1,
-      borderColor: colorPalette.black,
     };
   };
 
   renderPointer = tooltipY => {
     const { yOffset, xOffset, elementHeight, elementWidth } = this.state;
-    const { backgroundColor, pointerColor } = this.props;
+    const { pointerColor } = this.props;
     const pastMiddleLine = yOffset > tooltipY;
 
     return (
       <View style={styles.Pointer(pastMiddleLine, yOffset, elementHeight, xOffset, elementWidth)}>
-        <Triangle
-          style={{ borderBottomColor: pointerColor || backgroundColor }}
-          isDown={pastMiddleLine}
-        />
+        <Triangle style={{ borderBottomColor: pointerColor }} isDown={pastMiddleLine} />
       </View>
     );
   };
 
   renderContent = withTooltip => {
     const { popover, withPointer, toggleOnPress, children } = this.props;
-
     if (!withTooltip) {
       return this.wrapWithPress(toggleOnPress, children);
     }
 
     const tooltipStyle = this.getTooltipStyle();
     return (
-      <View style={styles.shadowBox}>
+      <>
         {withPointer && this.renderPointer(tooltipStyle.top)}
         <View style={tooltipStyle} testID="tooltipPopoverContainer">
-          {popover}
+          <OutfitMainTileWrapper tooltipStyle={tooltipStyle}>{popover}</OutfitMainTileWrapper>
         </View>
-      </View>
+      </>
     );
   };
 
   getElementPosition = () => {
+    const { yOffset } = this.state;
+    const tooltipStyle = this.getTooltipStyle();
+    const pastMiddleLine = yOffset > tooltipStyle.top;
+
     if (this.renderedElement) {
       this.renderedElement.measure(
         (frameOffsetX, frameOffsetY, width, height, pageOffsetX, pageOffsetY) => {
           this.setState({
             xOffset: pageOffsetX,
-            yOffset: isIOS ? pageOffsetY : pageOffsetY - StatusBar.currentHeight,
+            yOffset: isIOS ? pageOffsetY : pageOffsetY - (pastMiddleLine ? 0 : 5),
             elementWidth: width,
             elementHeight: height,
           });
