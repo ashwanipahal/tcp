@@ -26,6 +26,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
       }
       selectedColorProductId=""
+      showCompleteTheLook={false}
     />
     <Connect(ProductAddToBagContainer)
       alternateSizes={Object {}}
@@ -71,6 +72,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       navigation={Object {}}
       pdpLabels={Object {}}
       selectedColorProductId=""
+      setShowCompleteTheLook={[Function]}
     />
   </Styled(View)>
 </LazyloadScrollView>

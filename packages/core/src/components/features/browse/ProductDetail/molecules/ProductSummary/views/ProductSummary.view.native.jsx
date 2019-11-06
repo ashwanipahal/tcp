@@ -64,6 +64,7 @@ class ProductSummary extends React.PureComponent {
       listPrice,
       offerPrice,
       isGiftCard,
+      showCompleteTheLook,
     } = this.props;
     if (JSON.stringify(productData) !== '{}') {
       const colorFitsSizesMap = get(productData, 'colorFitsSizesMap', null);
@@ -116,17 +117,19 @@ class ProductSummary extends React.PureComponent {
                   text="(0)"
                 />
               </ReviewAndRatingContainer>
-              <Anchor
-                fontSizeVariation="medium"
-                anchorVariation="custom"
-                colorName="gray.900"
-                underline
-                href="#"
-                locator="pdp_anchor_complete_the_look"
-                className="details-link"
-                onPress={this.onCompletLook}
-                text="Complete The Look"
-              />
+              {showCompleteTheLook && (
+                <Anchor
+                  fontSizeVariation="medium"
+                  anchorVariation="custom"
+                  colorName="gray.900"
+                  underline
+                  href="#"
+                  locator="pdp_anchor_complete_the_look"
+                  className="details-link"
+                  onPress={this.onCompletLook}
+                  text="Complete The Look"
+                />
+              )}
             </BazarVoiceContainer>
           ) : null}
           {!isGiftCard ? <LineComp marginTop={0} borderColor="gray.500" /> : null}
@@ -187,6 +190,7 @@ ProductSummary.propTypes = {
   offerPrice: PropTypes.number.isRequired,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
   currencySymbol: PropTypes.string,
+  showCompleteTheLook: PropTypes.bool,
 };
 
 ProductSummary.defaultProps = {
@@ -194,6 +198,7 @@ ProductSummary.defaultProps = {
   currencyExchange: 1,
   currencySymbol: '$',
   isGiftCard: false,
+  showCompleteTheLook: false,
 };
 
 export default withStyles(ProductSummary, styles);
