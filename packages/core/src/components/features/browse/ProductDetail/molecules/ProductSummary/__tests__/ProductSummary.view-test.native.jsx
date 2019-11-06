@@ -191,8 +191,4 @@ describe('ProductSummaryVanilla', () => {
   it('should return styled PromotionalMessage component value one', () => {
     expect(component.find('Styled(PromotionalMessage)')).toHaveLength(1);
   });
-
-  it('should return styled Anchor component value one', () => {
-    expect(component.find('Styled(Anchor)')).toHaveLength(1);
-  });
 });

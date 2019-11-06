@@ -7,7 +7,7 @@ import logger from '../../../../../utils/loggerInstance';
 function* fetchRecommendationsData() {
   try {
     const result = yield call(RecommendationsAbstractor.getAppData, {
-      pageType: 'pdp',
+      pageType: 'homepageTest',
     });
 
     yield put(loadRecommendationsData(result));
