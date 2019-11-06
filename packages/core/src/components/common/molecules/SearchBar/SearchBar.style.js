@@ -152,6 +152,9 @@ export default css`
       position: absolute;
       top: 0;
       left:0;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
       ${props =>
         props.fromCondensedHeader
           ? `
