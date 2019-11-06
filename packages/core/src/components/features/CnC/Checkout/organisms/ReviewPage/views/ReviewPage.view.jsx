@@ -176,7 +176,7 @@ class ReviewPage extends React.PureComponent {
           )}
         </FormSection>
         <BillingSection isExpressCheckout={isExpressCheckout} />
-        <CheckoutCartItemList />
+        <CheckoutCartItemList disableProductRedirect />
         <CheckoutOrderInfo
           showAccordian={showAccordian}
           isGuest={isGuest}
