@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { withRouter } from 'next/router';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
@@ -11,6 +12,22 @@ import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import Recommendations from '../../../../common/molecules/Recommendations';
+
+class HomePageWrapper extends React.Component {
+  componentDidMount() {
+    const { openCountrySelectorModal, router } = this.props;
+    if (router.query.target === 'ship-to') {
+      openCountrySelectorModal();
+    }
+  }
+
+  render() {
+    const { children } = this.props;
+    return [children];
+  }
+}
+
+const HomePageWithRouter = withRouter(HomePageWrapper);
 
 const returnModule = mod => mod.default;
 const HomePageView = dynamic({
@@ -31,15 +48,19 @@ const HomePageView = dynamic({
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
   }),
-  render: ({ slots }, modules) => {
-    return [
-      <HomePageSlots slots={slots} modules={modules} />,
-      <ModuleT {...mock.moduleT.composites} />,
-      <GetCandid />,
-      <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />,
-      <Recommendations variations="moduleO,moduleP" />,
-      <ModuleG {...mockG.moduleG.composites} />,
-    ];
+  render: (compProps, modules) => {
+    const { slots, openCountrySelectorModal } = compProps;
+
+    return (
+      <HomePageWithRouter openCountrySelectorModal={openCountrySelectorModal}>
+        <HomePageSlots slots={slots} modules={modules} />
+        <ModuleT {...mock.moduleT.composites} />
+        <GetCandid />
+        <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />
+        <Recommendations variations="moduleO,moduleP" />
+        <ModuleG {...mockG.moduleG.composites} />
+      </HomePageWithRouter>
+    );
   },
 });
 
@@ -47,8 +68,16 @@ HomePageView.defaultProps = {
   name: null,
 };
 
+HomePageWrapper.propTypes = {
+  children: PropTypes.element.isRequired,
+  openCountrySelectorModal: PropTypes.func.isRequired,
+  router: PropTypes.element.isRequired,
+};
+
 HomePageView.propTypes = {
   name: PropTypes.string,
+  slots: PropTypes.arrayOf(PropTypes.object),
+  openCountrySelectorModal: PropTypes.func.isRequired,
 };
 
 export default errorBoundary(HomePageView);

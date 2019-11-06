@@ -26,7 +26,6 @@ import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organis
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
-import { toggleCountrySelectorModal } from '../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.actions';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -116,19 +115,10 @@ class TCPWebApp extends App {
     }
   };
 
-  checkForShipTo = () => {
-    const { router, store } = this.props;
-    const { target } = (router && router.query) || {};
-    if (target === 'ship-to') {
-      store.dispatch(toggleCountrySelectorModal({ isModalOpen: true }));
-    }
-  };
-
   componentDidMount() {
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     this.checkForlogin();
-    this.checkForShipTo();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
 
     try {
