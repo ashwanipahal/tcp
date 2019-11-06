@@ -203,7 +203,10 @@ export default css`
       padding: 11px 0 5px 0;
       line-height: 1.11;
       &.half-l2-nav-link {
-        padding-bottom: 22px;
+        padding: 13px 0 22px 0;
+      }
+      &.text-banner-link {
+        padding: 12px 0 15px 0;
       }
     }
     .shop-by-size-links {
@@ -219,6 +222,7 @@ export default css`
     .l2-image-banner {
       display: block;
       margin-top: 36px;
+      margin-bottom: 36px;
     }
     .l2-image-banner-image {
       width: 100%;
@@ -250,6 +254,7 @@ export default css`
     .l2-text-wrapper {
       display: block;
       margin-top: 36px;
+      margin-bottom: 36px;
     }
     .l2-text-container {
       display: flex;
@@ -263,7 +268,7 @@ export default css`
       text-align: left;
       border: 3px solid black;
       &.l2-half-text-container {
-        height: 83px;
+        height: 89px;
       }
       &.border-pink {
         border-color: #ff3db4;

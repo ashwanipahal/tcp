@@ -95,7 +95,7 @@ const createTextBanner = (textBanner, l1Index, hideL2Nav) => {
   const isSplitView = textBanner && textBanner.length > 1;
   const textContainerClassName = isSplitView ? 'l2-half-text-container' : '';
   const promoHalfClass = isSplitView ? 'promo-banner-half' : '';
-  const arrowContainerClassName = isSplitView ? 'half-l2-nav-link' : '';
+  const arrowContainerClassName = isSplitView ? 'half-l2-nav-link text-banner-link' : '';
   return (
     textBanner && (
       <Col
@@ -107,7 +107,7 @@ const createTextBanner = (textBanner, l1Index, hideL2Nav) => {
         }}
         ignoreNthRule
       >
-        {textBanner.map(item => {
+        {textBanner.map((item, index) => {
           const { link, set } = item;
           const borderColorClass = set && set[0] ? set[0].val : '';
           const promoTextColorClass = set && set[1] ? set[1].val : '';
@@ -129,7 +129,7 @@ const createTextBanner = (textBanner, l1Index, hideL2Nav) => {
                   />
                 </div>
                 <BodyCopy
-                  className={`l2-nav-link ${arrowContainerClassName}`}
+                  className={`l2-nav-link ${index === 0 ? arrowContainerClassName : ''}`}
                   fontFamily="secondary"
                   fontSize={['fs13', 'fs13', 'fs14']}
                   color="text.primary"
