@@ -28,4 +28,8 @@ const EditAnchor = styled.View`
   font-size: ${props => props.theme.typography.fontSizes.fs12};
 `;
 
-export { Style, ModalContainer, ModalHeading, PickupEditHeader, EditAnchor };
+const ButtonWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+export { Style, ModalContainer, ModalHeading, PickupEditHeader, EditAnchor, ButtonWrapper };
