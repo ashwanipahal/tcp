@@ -483,6 +483,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     isMobile: false,
     cookie: null,
     catalogId,
+    language: '',
   };
 };
 
