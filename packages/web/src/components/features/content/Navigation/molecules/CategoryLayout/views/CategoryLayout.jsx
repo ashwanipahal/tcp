@@ -109,8 +109,8 @@ const createTextBanner = (textBanner, l1Index, hideL2Nav) => {
       >
         {textBanner.map((item, index) => {
           const { link, set } = item;
-          const borderColorClass = set && set[0] ? set[0].val : '';
-          const promoTextColorClass = set && set[1] ? set[1].val : '';
+          const borderColorClass = set && set[0] ? set[0].val : 'border-pink';
+          const promoTextColorClass = set && set[1] ? set[1].val : 'text-pink';
           return (
             <React.Fragment>
               <Anchor
