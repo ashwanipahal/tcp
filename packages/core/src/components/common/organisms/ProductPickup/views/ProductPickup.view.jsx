@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /** @module ProductPickup
  * @summary Shows the BOPIS CTA in PDP
  *
@@ -127,7 +128,7 @@ class ProductPickup extends React.PureComponent {
      */
     bopisItemInventory: PropTypes.arrayOf(PropTypes.object),
     isBopisEligible: PropTypes.bool,
-    // isBossEligible: PropTypes.bool,
+    isBossEligible: PropTypes.bool,
     isSkuResolved: PropTypes.bool,
     showChangeStore: PropTypes.bool,
     pickupTitleText: PropTypes.string,
@@ -153,6 +154,8 @@ class ProductPickup extends React.PureComponent {
     }),
     isAnchor: PropTypes.bool,
     sizeUnavailable: PropTypes.string,
+    onPickupClickAddon: PropTypes.func,
+    isOutfitVariant: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -177,7 +180,7 @@ class ProductPickup extends React.PureComponent {
     bopisItemInventory: [],
     className: '',
     isBopisEligible: false,
-    // isBossEligible: false,
+    isBossEligible: false,
     isSkuResolved: false,
     showChangeStore: false,
     pickupTitleText: '',
@@ -203,6 +206,8 @@ class ProductPickup extends React.PureComponent {
     },
     isAnchor: false,
     sizeUnavailable: 'Size unavailable online?',
+    onPickupClickAddon: () => {},
+    isOutfitVariant: false,
   };
 
   constructor(props) {
@@ -219,18 +224,21 @@ class ProductPickup extends React.PureComponent {
     const {
       onPickUpOpenClick,
       productInfo,
-      // itemValues,
-      // isBopisEligible,
-      // isBossEligible,
+      onPickupClickAddon,
+      isBopisEligible,
+      isBossEligible,
     } = this.props;
     e.preventDefault();
-    return onPickUpOpenClick({
+    onPickUpOpenClick({
       generalProductId: productInfo.generalProductId,
-      // isBopisCtaEnabled: isBopisEligible,
-      // isBossCtaEnabled: isBossEligible,
+      isBopisCtaEnabled: isBopisEligible,
+      isBossCtaEnabled: isBossEligible,
       currentProduct: productInfo,
       colorProductId: productInfo.generalProductId,
     });
+    if (onPickupClickAddon) {
+      onPickupClickAddon();
+    }
   };
 
   /**
@@ -430,6 +438,7 @@ class ProductPickup extends React.PureComponent {
     );
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       className,
@@ -439,11 +448,25 @@ class ProductPickup extends React.PureComponent {
       isAnchor,
       isBopisEligible,
       sizeUnavailable,
+      isOutfitVariant,
     } = this.props;
 
     return (
       <React.Fragment>
-        {!isAnchor ? (
+        {isOutfitVariant && (
+          <Button
+            className="button-find-in-store"
+            buttonVariation="fixed-width"
+            fill="BLACK"
+            disabled={isSubmitting}
+            onClick={this.handlePickupModalClick}
+          >
+            {showPickupInfo
+              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+              : labels.lbl_Product_pickup_FIND_STORE}
+          </Button>
+        )}
+        {!isAnchor && !isOutfitVariant ? (
           <div className={`${className} pickup-section-container`}>
             <div className="pickup-sub-container">
               <div className="pickup-header">
@@ -498,24 +521,26 @@ class ProductPickup extends React.PureComponent {
             </div>
           </div>
         ) : (
-          <p className="size-unavailable">
-            <span className="unavailable-text">{sizeUnavailable}</span>
-            <span className="size-find-in-store">
-              <Anchor
-                noLink
-                handleLinkClick={this.handlePickupModalClick}
-                title={
-                  showPickupInfo
+          !isOutfitVariant && (
+            <p className="size-unavailable">
+              <span className="unavailable-text">{sizeUnavailable}</span>
+              <span className="size-find-in-store">
+                <Anchor
+                  noLink
+                  handleLinkClick={this.handlePickupModalClick}
+                  title={
+                    showPickupInfo
+                      ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                      : labels.lbl_Product_pickup_FIND_STORE
+                  }
+                >
+                  {showPickupInfo
                     ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                    : labels.lbl_Product_pickup_FIND_STORE
-                }
-              >
-                {showPickupInfo
-                  ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-                  : labels.lbl_Product_pickup_FIND_STORE}
-              </Anchor>
-            </span>
-          </p>
+                    : labels.lbl_Product_pickup_FIND_STORE}
+                </Anchor>
+              </span>
+            </p>
+          )
         )}
         {/* {this.isBopisEligible && (
           <ContentSlot contentSlotName="pdp_bopis_promo" className="product-details-bopis-promo" />
