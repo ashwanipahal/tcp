@@ -4,11 +4,10 @@ import { loadRecommendationsData } from './Recommendations.actions';
 import { FETCH_RECOMMENDATIONS_DATA } from './Recommendations.constants';
 import logger from '../../../../../utils/loggerInstance';
 
-function* fetchRecommendationsData() {
+function* fetchRecommendationsData(action) {
+  const { payload } = action;
   try {
-    const result = yield call(RecommendationsAbstractor.getAppData, {
-      pageType: 'homepageTest',
-    });
+    const result = yield call(RecommendationsAbstractor.getAppData, payload);
 
     yield put(loadRecommendationsData(result));
   } catch (e) {

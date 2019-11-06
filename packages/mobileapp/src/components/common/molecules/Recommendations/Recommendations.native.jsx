@@ -121,8 +121,8 @@ const renderRecommendationView = (props, variation) => {
   );
 };
 
-const fetchRecommendations = loadRecommendations => () => {
-  loadRecommendations();
+const fetchRecommendations = (loadRecommendations, action) => () => {
+  loadRecommendations(action);
   return () => {};
 };
 
@@ -136,8 +136,12 @@ const Recommendations = props => {
     isAddedToBagOpen,
   } = props;
   const variationArray = variation.split(',');
-
-  useEffect(fetchRecommendations(loadRecommendations), []);
+  const { page, portalValue } = props;
+  const action = { pageType: page };
+  if (portalValue) {
+    action.mbox = portalValue;
+  }
+  useEffect(fetchRecommendations(loadRecommendations, action), []);
 
   return (
     <View>
@@ -156,11 +160,14 @@ Recommendations.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   isPickupModalOpen: PropTypes.bool.isRequired,
   isAddedToBagOpen: PropTypes.bool,
+  page: PropTypes.string.isRequired,
+  portalValue: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
   onPickUpOpenClick: () => {},
   isAddedToBagOpen: false,
+  portalValue: '',
 };
 
 export default Recommendations;
