@@ -23,10 +23,10 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
           data-locator=""
         />
 
-        <div className="Content_Wrapper">
+        <div>
           <BodyCopy
             fontFamily="primary"
-            fontSize="fs48"
+            fontSize="fs36"
             fontWeight="black"
             textAlign="center"
             className="Benefit_Heading"
@@ -50,14 +50,14 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             component="div"
             color="gray.900"
             fontFamily="secondary"
-            fontSize="fs22"
+            fontSize="fs18"
             textAlign="center"
             className="apply-now-subtext"
             data-locator={getLocator('ship_to_text_2')}
           >
             {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
           </BodyCopy>
-          <BodyCopy component="div" className="button_wrapper">
+          <BodyCopy component="div" className="button_wrapper elem-mt-XL elem-mb-XL">
             <Button
               buttonVariation="fixed-width"
               fill="BLUE"
@@ -84,11 +84,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
           </BodyCopy>
           <BodyCopy
             fontFamily="primary"
-            fontSize="fs48"
+            fontSize="fs32"
             fontWeight="black"
             textAlign="center"
             color="text.secondary"
-            className="benefits-text elem-mt-XL"
+            className="benefits-text"
           >
             {getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
           </BodyCopy>
@@ -96,10 +96,10 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             component="div"
             color="gray.900"
             fontFamily="secondary"
-            fontSize="fs22"
+            fontSize="fs18"
             textAlign="center"
             data-locator={getLocator('ship_to_text_2')}
-            className="withMyPlaceRewardText"
+            className="withMyPlaceRewardText elem-mt-XS"
           >
             {getLabelValue(labels, 'lbl_PLCCForm_withMyPlaceRewardsCard')}
           </BodyCopy>
@@ -117,7 +117,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             {getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
           </BodyCopy>
           <Anchor
-            className="linkIconSeperator"
+            className="elem-ml-SM"
             url={getLabelValue(labels, 'lbl_PLCCModal_detailsLink')}
             target="_blank"
             fontSizeVariation="large"
@@ -127,7 +127,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             {getLabelValue(labels, 'lbl_PLCCForm_details')}
           </Anchor>
           <Anchor
-            className="footerLink"
+            className="elem-ml-XL"
             url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
             target="_blank"
             data-locator="plcc_faq"
@@ -138,7 +138,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             {getLabelValue(labels, 'lbl_PLCCModal_faqText')}
           </Anchor>
           <Anchor
-            className="footerLink"
+            className="elem-ml-XL"
             url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
             target="_blank"
             data-locator="plcc_rewards_terms"
