@@ -54,6 +54,10 @@ const getIsOrderHasPickup = createSelector(
   orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
 );
 
+const getCardType = state => {
+  return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
+};
+
 export const isGuest = createSelector(
   getPersonalDataState,
   state => (state == null ? true : !!state.get('isGuest'))
@@ -919,6 +923,9 @@ export const getVenmoUserName = () => {
   return username;
 };
 
+const getPayPalSettings = state => {
+  return state.Checkout.getIn(['options', 'paypalPaymentSettings']) || null;
+};
 const getShippingAddressList = createSelector(
   [getAddressListState, getCurrentSiteId],
   (userAddresses, country) => {
@@ -948,6 +955,21 @@ function getVenmoUserEmail(state) {
   const { emailAddress: pickupEmail } = getPickupValues(state);
   return getUserEmail(state) || shippingEmail || pickupEmail;
 }
+
+const getCheckoutPageEmptyBagLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      { keyLabel: 'emptyBagText', key: 'lbl_review_emptyBagText' },
+      { keyLabel: 'emptyBagSubText', key: 'lbl_review_emptyBagSubText' },
+    ];
+    labelKeys.forEach(({ key, keyLabel }) => {
+      labels[keyLabel] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
 
 export default {
   getIsOrderHasShipping,
@@ -1019,6 +1041,7 @@ export default {
   getInternationalCheckoutApiUrl,
   getInternationalCheckoutUrl,
   getIsVenmoEnabled,
+  getPayPalSettings,
   getCurrentLanguage,
   isVenmoShippingBannerDisplayed,
   isVenmoPickupBannerDisplayed,
@@ -1036,4 +1059,6 @@ export default {
   getVenmoUserEmail,
   getVenmoError,
   getPickupValues,
+  getCheckoutPageEmptyBagLabels,
+  getCardType,
 };

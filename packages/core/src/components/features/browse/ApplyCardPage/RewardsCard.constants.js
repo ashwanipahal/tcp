@@ -1,13 +1,7 @@
 import { APPLY_PLCC_ACTION_PATTERN } from '../../../../constants/reducer.constants';
 import { getBirthDateOptionMap } from '../../../../utils/utils';
 
-export const MONTH_OPTIONS_MAP_WITH_EMPTY = [
-  {
-    id: 'Mm',
-    displayName: 'Mm',
-  },
-  ...getBirthDateOptionMap().monthsMap,
-];
+export const MONTH_OPTIONS_MAP_WITH_EMPTY = [...getBirthDateOptionMap().monthsMap];
 
 export const ERR_CONFIG = ['PENDING', 'APPROVED', 'EXISTING'];
 

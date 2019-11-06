@@ -75,6 +75,7 @@ const {
   getCurrentCheckoutStage,
   getShippingAddressList,
   getIsPaymentDisabled,
+  getCheckoutPageEmptyBagLabels,
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -188,6 +189,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setVenmoPickupState,
       verifyAddressAction,
       setVenmoShippingState,
+      getPayPalSettings,
       checkoutServerError,
       currentStage,
       submitVerifiedShippingAddressData,
@@ -198,7 +200,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpContactAlternate,
       toastMessage,
       clearCheckoutServerError,
+      cartOrderItemsCount,
       toggleCountrySelector,
+      checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -208,6 +213,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        isBagLoaded={isBagLoaded}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
@@ -250,6 +256,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
+        getPayPalSettings={getPayPalSettings}
         checkoutServerError={checkoutServerError}
         currentStage={currentStage}
         shippingMethod={shippingMethod}
@@ -260,6 +267,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         toastMessage={toastMessage}
         clearCheckoutServerError={clearCheckoutServerError}
         toggleCountrySelector={toggleCountrySelector}
+        cartOrderItemsCount={cartOrderItemsCount}
+        checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
       />
     );
   }
@@ -340,6 +349,7 @@ const mapStateToProps = state => {
     isExpressCheckoutPage: isExpressCheckout(state),
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
+    checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
@@ -382,10 +392,12 @@ const mapStateToProps = state => {
       ...getEmailSignUpLabels(state),
     },
     smsSignUpLabels: getSmsSignUpLabels(state),
+    isBagLoaded: BagPageSelector.isBagLoaded(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isGiftServicesChecked: getGiftServicesSend(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
+    cartOrderItemsCount: BagPageSelector.getTotalItems(state),
     labels: selectors.getLabels(state),
     checkoutProgressBarLabels: getCheckoutProgressBarLabels(state),
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
@@ -395,8 +407,10 @@ const mapStateToProps = state => {
       labels: getReviewLabels(state),
       isPaymentDisabled: getIsPaymentDisabled(state),
       defaultShipmentId: getDefaultShipmentID(state),
+      cardType: selectors.getCardType(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    getPayPalSettings: selectors.getPayPalSettings(state),
     checkoutServerError: selectors.getCheckoutServerError(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     currentStage: getCurrentCheckoutStage(state),

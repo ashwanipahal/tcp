@@ -11,4 +11,6 @@ export default {
   googlePlayTcpAppPage:
     'https://play.google.com/store/apps/details?id=com.childrensplace.tcpmobileapp&hl=en_US',
   managePlaceCardPage: 'https://d.comenity.net/childrensplace/?ecid=manageacct',
+  walletPage:
+    'https://mp.vibescm.com/p/s5i4q0?unique_identifier=9ebcd5fc-4311-4963-83cc-27c0928deb7b',
 };
