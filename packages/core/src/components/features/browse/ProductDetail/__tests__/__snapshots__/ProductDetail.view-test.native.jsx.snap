@@ -16,6 +16,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     <Styled(ProductSummary)
       currencyExchange={1}
       currencySymbol="USD"
+      isBundleProduct={false}
       isGiftCard={false}
       isPlcc={false}
       pdpLabels={Object {}}
@@ -70,6 +71,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       isShowMore={false}
       itemPartNumber=""
       longDescription=""
+      margins={null}
       pdpLabels={Object {}}
       shortDescription=""
     />
