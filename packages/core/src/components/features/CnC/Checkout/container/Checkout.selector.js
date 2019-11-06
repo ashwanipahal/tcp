@@ -297,6 +297,12 @@ const getShippingPhoneAndEmail = createSelector(
   }
 );
 
+const getShippingPhoneNo = state => {
+  const shippingFormNumber = getAddressPhoneNo(state);
+  const { phoneNumber } = getShippingPhoneAndEmail(state);
+  return shippingFormNumber || phoneNumber;
+};
+
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
@@ -1064,4 +1070,5 @@ export default {
   getPickupValues,
   getCheckoutPageEmptyBagLabels,
   getCardType,
+  getShippingPhoneNo,
 };
