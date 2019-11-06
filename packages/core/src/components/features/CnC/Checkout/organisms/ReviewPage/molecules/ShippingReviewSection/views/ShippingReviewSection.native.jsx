@@ -13,24 +13,6 @@ import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods'
 const { ShippingReviewContainer, AddressSection, AddressTitle, TitlePlusEditSection } = style;
 
 export class ShippingReviewSection extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    const {
-      updateShippingMethodSelection,
-      expressReviewShippingSectionId,
-      isExpressCheckout,
-    } = this.props;
-    const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
-    if (
-      isExpressCheckout &&
-      prevexpressReviewShippingSectionId.shippingMethodId &&
-      typeof prevexpressReviewShippingSectionId.shippingMethodId !== 'object' &&
-      expressReviewShippingSectionId.shippingMethodId !==
-        prevexpressReviewShippingSectionId.shippingMethodId
-    ) {
-      updateShippingMethodSelection({ id: expressReviewShippingSectionId.shippingMethodId });
-    }
-  }
-
   render() {
     const {
       shippingAddress,
@@ -148,7 +130,6 @@ ShippingReviewSection.propTypes = {
   formName: PropTypes.string.isRequired,
   formSection: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
-  updateShippingMethodSelection: PropTypes.func.isRequired,
   expressReviewShippingSectionId: PropTypes.func.isRequired,
 };
 
