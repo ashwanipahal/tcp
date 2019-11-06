@@ -11,7 +11,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         accessibilityText=""
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs14"
+        fontSize="fs13"
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
@@ -22,8 +22,8 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         accessibilityText=""
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
+        fontSize="fs13"
+        fontWeight="bold"
         margin={null}
         numberOfLines={null}
         text=""
@@ -35,7 +35,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         accessibilityText=""
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs14"
+        fontSize="fs13"
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
@@ -60,7 +60,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         accessibilityText=""
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs14"
+        fontSize="fs13"
         fontWeight="regular"
         margin={null}
         numberOfLines={null}
@@ -71,8 +71,8 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         accessibilityText=""
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="black"
+        fontSize="fs13"
+        fontWeight="bold"
         margin={null}
         numberOfLines={null}
         text="10"

@@ -17,7 +17,7 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="extrabold"
+    fontWeight="bold"
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"
@@ -77,7 +77,7 @@ exports[`PromoListTile component should renders correctly withot anchor 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="extrabold"
+    fontWeight="bold"
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"
