@@ -152,9 +152,13 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                 </span>
               </div>
             </ForwardRef>
-            <Connect(LoyaltyBannerContainer)
-              pageCategory=""
-            />
+            <div
+              className="orderLedgerLoyalty"
+            >
+              <Connect(LoyaltyBannerContainer)
+                pageCategory=""
+              />
+            </div>
           </ForwardRef>
           <Measure
             name="pricing_visible"
@@ -740,9 +744,13 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
-            <Connect(LoyaltyBannerContainer)
-              pageCategory=""
-            />
+            <div
+              className="orderLedgerLoyalty"
+            >
+              <Connect(LoyaltyBannerContainer)
+                pageCategory=""
+              />
+            </div>
           </ForwardRef>
           <Measure
             name="pricing_visible"
@@ -1274,9 +1282,13 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 </ForwardRef>
               </ForwardRef>
             </ForwardRef>
-            <Connect(LoyaltyBannerContainer)
-              pageCategory=""
-            />
+            <div
+              className="orderLedgerLoyalty"
+            >
+              <Connect(LoyaltyBannerContainer)
+                pageCategory=""
+              />
+            </div>
           </ForwardRef>
           <Measure
             name="pricing_visible"

@@ -54,6 +54,10 @@ const getIsOrderHasPickup = createSelector(
   orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
 );
 
+const getCardType = state => {
+  return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
+};
+
 export const isGuest = createSelector(
   getPersonalDataState,
   state => (state == null ? true : !!state.get('isGuest'))
@@ -1056,4 +1060,5 @@ export default {
   getVenmoError,
   getPickupValues,
   getCheckoutPageEmptyBagLabels,
+  getCardType,
 };
