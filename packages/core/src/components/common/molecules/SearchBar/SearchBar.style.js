@@ -276,7 +276,7 @@ export default css`
       position: absolute;
       right: 10px;
       top:0;
-
+      overflow: unset;
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
       }
