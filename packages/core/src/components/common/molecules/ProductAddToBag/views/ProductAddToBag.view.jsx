@@ -11,9 +11,8 @@ import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
 import { CALL_TO_ACTION_VISIBLE, CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
-import FulfillmentSection from '@tcp/core/src/components/common/organisms/FulfillmentSection';
+import ProductPickupContainer from '@tcp/core/src/components/common/organisms/ProductPickup';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
-import { getLocator } from '../../../../../utils';
 import ProductSizeSelector from '../../ProductSizeSelector';
 import AlternateSizes from '../molecules/AlternateSizes';
 import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
@@ -64,11 +63,10 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { isOutfitPage, currentProduct } = this.props;
     return isOutfitPage ? (
       <div className="outfit-pickup">
-        <FulfillmentSection
-          btnClassName="added-to-bag"
-          dataLocator={getLocator('global_addtocart_Button')}
-          buttonLabel="Fulfilment Section"
-          currentProduct={currentProduct}
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          isOutfitVariant
         />
       </div>
     ) : null;
@@ -140,15 +138,16 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderUnavailableLink = () => {
-    const { currentProduct, plpLabels } = this.props;
+    const { currentProduct, plpLabels, onCloseClick } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     return (
-      <p className="size-unavailable">
-        <span className="unavailable-text">{sizeUnavailable}</span>
-        <span className="size-find-in-store">
-          <FulfillmentSection currentProduct={currentProduct} isAnchor title="Find In Store" />
-        </span>
-      </p>
+      <ProductPickupContainer
+        productInfo={currentProduct}
+        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        isAnchor
+        sizeUnavailable={sizeUnavailable}
+        onPickupClickAddon={onCloseClick}
+      />
     );
   };
 
