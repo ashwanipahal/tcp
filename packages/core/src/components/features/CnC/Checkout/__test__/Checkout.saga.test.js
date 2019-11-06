@@ -5,7 +5,7 @@ import { handleServerSideErrorAPI } from '../container/Checkout.saga';
 
 describe('CheckoutBilling saga', () => {
   it('handleServerSideErrorAPI', () => {
-    const CheckoutSaga = handleServerSideErrorAPI({ body: { error: {} } });
+    const CheckoutSaga = handleServerSideErrorAPI({ response: { body: { errors: [] } } });
     CheckoutSaga.next();
     const putDescriptor = CheckoutSaga.next({}).value;
     expect(putDescriptor).toEqual(

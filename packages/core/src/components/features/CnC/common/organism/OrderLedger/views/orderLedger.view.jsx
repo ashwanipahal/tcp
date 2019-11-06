@@ -96,6 +96,7 @@ OrderLedger.propTypes = {
     giftCardsTotal: PropTypes.number,
     currencySymbol: PropTypes.string.isRequired,
     orderBalanceTotal: PropTypes.number,
+    totalOrderSavings: PropTypes.number,
   }),
 };
 

@@ -9,6 +9,23 @@ const Styles = css`
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
+  ${props =>
+    props.isProductDetailView
+      ? `
+      .links-wrapper {
+        padding-top: ${props.theme.spacing.ELEM_SPACING.XS};
+      }
+      .footer-wrapper {
+        text-align: center;
+      }`
+      : ``};
+
+  .createLoginSpaceBetween {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+  }
   .links-container {
     display: flex;
     .learnSymbolWrapper {

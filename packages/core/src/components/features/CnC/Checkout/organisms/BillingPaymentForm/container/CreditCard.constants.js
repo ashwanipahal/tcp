@@ -9,6 +9,7 @@ export default {
     PLACE_CARD: 'PLACE CARD',
     VENMO: 'VENMO',
     GIFT_CARD: 'GiftCard',
+    PAYPAL: 'PayPal',
   },
   PAYMENT_METHOD_PAY_PAL: 'payPal',
   PAYMENT_METHOD_VENMO: 'venmo',
