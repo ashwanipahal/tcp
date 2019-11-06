@@ -14,6 +14,7 @@ import ShippingReviewSection from '../organisms/ShippingReviewSection';
 import CheckoutCartItemList from '../organisms/CheckoutCartItemList';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import ContactFormFields from '../../../molecules/ContactFormFields';
 
 const { Container, FooterTextContainer, FooterLink } = style;
 const formName = 'expressReviewPage';
@@ -125,6 +126,7 @@ class ReviewPage extends React.PureComponent {
                 onEdit={() => {
                   setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM);
                 }}
+                isExpressCheckout={isExpressCheckout}
               />
             )}
             {!!orderHasShipping && (
@@ -162,6 +164,7 @@ class ReviewPage extends React.PureComponent {
 }
 
 const validateMethod = createValidateMethod({
+  pickUpAlternateExpress: ContactFormFields.ContactValidationConfig,
   ...getStandardConfig(['cvvCode']),
 });
 

@@ -82,4 +82,5 @@ export default css`
       }
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
