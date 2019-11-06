@@ -105,12 +105,15 @@ class ReactTooltip extends React.PureComponent {
 
   renderPointer = tooltipY => {
     const { yOffset, xOffset, elementHeight, elementWidth } = this.state;
-    const { pointerColor } = this.props;
+    const { backgroundColor, pointerColor } = this.props;
     const pastMiddleLine = yOffset > tooltipY;
 
     return (
       <View style={styles.Pointer(pastMiddleLine, yOffset, elementHeight, xOffset, elementWidth)}>
-        <Triangle style={{ borderBottomColor: pointerColor }} isDown={pastMiddleLine} />
+        <Triangle
+          style={{ borderBottomColor: pointerColor || backgroundColor }}
+          isDown={pastMiddleLine}
+        />
       </View>
     );
   };
