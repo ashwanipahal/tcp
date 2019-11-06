@@ -1,5 +1,5 @@
 <resources>
-    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">spClHqj4L07OjWqQEy1iPmC4RMZ5SkveJ0SIQQ</string>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">4sDykUpVqqTSYHFuk4Nn7AEqiEiRY93AVL1Si</string>
     <string name="app_name">My Place</string>
     <string name="splash_name">My Place</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
