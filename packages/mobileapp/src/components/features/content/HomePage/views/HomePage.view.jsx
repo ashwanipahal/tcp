@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Linking } from 'react-native';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
@@ -49,6 +49,12 @@ const modulesMap = {
 
 const buttonMargin = { margin: 30 };
 class HomePageView extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      handeOpenURLRegister: false,
+    };
+  }
   componentDidMount() {
     this.loadBootstrapData();
 
@@ -88,7 +94,7 @@ class HomePageView extends React.PureComponent {
   };
 
   handleOpenURL = event => {
-    this.navigate(event.url);
+    // this.navigate(event.url);
   };
 
   navigate = url => {

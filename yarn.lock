@@ -5451,10 +5451,10 @@ aws-sdk@2.518.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.518.0:
-  version "2.554.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.554.0.tgz#7a58cbaec5f9e4c2780910b458a77022557c2fc8"
-  integrity sha512-23EQhz4pCRwzCRRc40deQgoO2ddCT4ylfoVPAuQKOQA8SZqMCWYGkntHjtNWVMd5zIJzHYt26qo8s8zsorc7Rg==
+aws-sdk@^2.304.0:
+  version "2.562.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.562.0.tgz#9fdfcd8b6dddf4b7144c0b9a665b3db694a67a99"
+  integrity sha512-Uvt7qUXufjSxWMMfTs62xulGY7wnRut3y3daDtHSUdY62BnGjZGpp0dq/RW/bNi3aAjogEZNjWNZkLdtkHFeiQ==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -5466,10 +5466,10 @@ aws-sdk@^2.518.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.304.0:
-  version "2.562.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.562.0.tgz#9fdfcd8b6dddf4b7144c0b9a665b3db694a67a99"
-  integrity sha512-Uvt7qUXufjSxWMMfTs62xulGY7wnRut3y3daDtHSUdY62BnGjZGpp0dq/RW/bNi3aAjogEZNjWNZkLdtkHFeiQ==
+aws-sdk@^2.518.0:
+  version "2.554.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.554.0.tgz#7a58cbaec5f9e4c2780910b458a77022557c2fc8"
+  integrity sha512-23EQhz4pCRwzCRRc40deQgoO2ddCT4ylfoVPAuQKOQA8SZqMCWYGkntHjtNWVMd5zIJzHYt26qo8s8zsorc7Rg==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -7807,6 +7807,11 @@ colorette@^1.0.7:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.1.0.tgz#1f943e5a357fac10b4e0f5aaef3b14cdc1af6ec7"
   integrity sha512-6S062WDQUXi6hOfkO/sBPVwE5ASXY4G2+b4atvhJfSsuUUhIaUKlkjLe9692Ipyt5/a+IPF5aVTu3V5gvXq5cg==
+
+colors@1.0.x:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
+  integrity sha1-BDP0TYCWgP3rYO0mDxsMJi6CpAs=
 
 colors@^1.0.3, colors@^1.3.2:
   version "1.3.3"
