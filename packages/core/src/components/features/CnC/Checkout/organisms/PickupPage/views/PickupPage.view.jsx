@@ -81,9 +81,9 @@ class PickUpFormPart extends React.Component {
     const { pickUpLabels, handleSubmit } = this.props;
     const { editPickupError } = this.state;
     return (
-      <div className="editFormActionsContainer">
+      <div className="editFormActionsContainer" ref={this.editErrorRef}>
         {editPickupError && <ErrorMessage error={editPickupError} className="edit-pickup-error" />}
-        <div className="buttonContainer" ref={this.editErrorRef}>
+        <div className="buttonContainer">
           <Button
             onClick={this.handleExitEditModeClick}
             buttonVariation="variable-width"
