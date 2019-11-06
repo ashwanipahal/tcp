@@ -1,7 +1,9 @@
 const buildQuery = ({ category, subCategory, brand, country, channel, lang }) => `
   labels(${category ? `category: "${category}",` : ``} ${
   subCategory ? `subCategory: "${subCategory}",` : ``
-} brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
+} brand: "${brand}", country: "${country}", channel: "${channel}" ${
+  lang ? `lang: "${lang}",` : ``
+}) {
     name
     subcategories {
       name
