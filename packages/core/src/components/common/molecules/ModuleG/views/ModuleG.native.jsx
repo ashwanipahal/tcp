@@ -345,7 +345,7 @@ class ModuleG extends React.PureComponent {
             visible
           />
         ) : null}
-        <QuickViewModal />
+        <QuickViewModal navigation={navigation} />
       </Container>
     );
   };

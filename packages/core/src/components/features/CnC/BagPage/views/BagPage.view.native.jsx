@@ -341,7 +341,7 @@ export class BagPage extends React.Component {
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
             </MainSection>
-            <QuickViewModal fromBagPage={isBagPage} />
+            <QuickViewModal navigation={navigation} fromBagPage={isBagPage} />
             {this.renderPickupModal()}
           </ScrollViewWrapper>
         </ContainerMain>
