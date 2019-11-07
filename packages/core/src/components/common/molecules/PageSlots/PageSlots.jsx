@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const HomePageSlots = props => {
+const PageSlots = props => {
   const { slots = [], modules, ...others } = props;
 
   return slots.map(slot => {
@@ -14,7 +14,7 @@ const HomePageSlots = props => {
   });
 };
 
-HomePageSlots.propTypes = {
+PageSlots.propTypes = {
   modules: PropTypes.shape({}).isRequired,
   slots: PropTypes.arrayOf(
     PropTypes.shape({
@@ -26,4 +26,4 @@ HomePageSlots.propTypes = {
   ).isRequired,
 };
 
-export default HomePageSlots;
+export default PageSlots;

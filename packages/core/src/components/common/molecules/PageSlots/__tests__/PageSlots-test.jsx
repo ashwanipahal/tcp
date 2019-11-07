@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import HomePageSlots from '..';
+import PageSlots from '..';
 
 const slotsCmsDataMock = [
   {
@@ -64,33 +64,66 @@ const snapshot = `
       ]
     `;
 
-describe('HomePageSlots component', () => {
+describe('PageSlots component', () => {
   it('Should renders slots according to the data', () => {
-    const component = mount(<HomePageSlots slots={slotsCmsDataMock} modules={modulesDataMock} />);
+    const component = mount(<PageSlots slots={slotsCmsDataMock} modules={modulesDataMock} />);
 
-    expect(component.children()).toMatchInlineSnapshot(snapshot);
-  });
-
-  it('Should render slots even if the component is not available', () => {
-    const component = mount(
-      <HomePageSlots slots={slotsCmsDataMock} modules={{ moduleX: ModuleX, moduleA: ModuleA }} />
-    );
-
-    expect(component.children()).toMatchInlineSnapshot(`
+    expect(component.children()).toMatchInlineSnapshot(
+      snapshot,
+      `
+            Array [
+              <ModuleC
+                key="id-3"
+                moduleName="moduleC"
+                slotData="slot C Data"
+              >
+                <div>
+                  Module C
+                </div>
+              </ModuleC>,
               <ModuleA
                 key="id-1"
+                moduleName="moduleA"
                 slotData="slot A Data"
               >
                 <div>
                   Module A
                 </div>
-              </ModuleA>
-            `);
+              </ModuleA>,
+              <ModuleB
+                key="id-2"
+                moduleName="moduleB"
+                slotData="slotB Data"
+              >
+                <div>
+                  Module B
+                </div>
+              </ModuleB>,
+            ]
+        `
+    );
+  });
+
+  it('Should render slots even if the component is not available', () => {
+    const component = mount(
+      <PageSlots slots={slotsCmsDataMock} modules={{ moduleX: ModuleX, moduleA: ModuleA }} />
+    );
+
+    expect(component.children()).toMatchInlineSnapshot(`
+      <ModuleA
+        key="id-1"
+        slotData="slot A Data"
+      >
+        <div>
+          Module A
+        </div>
+      </ModuleA>
+    `);
   });
 
   it('Should render slots even if data does not send required slot', () => {
     const component = mount(
-      <HomePageSlots
+      <PageSlots
         slots={[
           {
             contentId: 'id-1',
@@ -104,20 +137,20 @@ describe('HomePageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-            <ModuleB
-              key="id-1"
-              slotData="slot B Data"
-            >
-              <div>
-                Module B
-              </div>
-            </ModuleB>
-          `);
+      <ModuleB
+        key="id-1"
+        slotData="slot B Data"
+      >
+        <div>
+          Module B
+        </div>
+      </ModuleB>
+    `);
   });
 
   it('Should render null if no slot match', () => {
     const component = mount(
-      <HomePageSlots
+      <PageSlots
         slots={[
           {
             contentId: 'id-1',
@@ -136,7 +169,7 @@ describe('HomePageSlots component', () => {
   it('Should render not render component if data is null or undefined', () => {
     //  data prop is undefined in slots
     const component = mount(
-      <HomePageSlots
+      <PageSlots
         slots={[
           {
             contentId: 'id-1',
@@ -152,14 +185,14 @@ describe('HomePageSlots component', () => {
   });
 
   it('Should render null if there is blank slots data', () => {
-    const component = mount(<HomePageSlots slots={[]} modules={modulesDataMock} />);
+    const component = mount(<PageSlots slots={[]} modules={modulesDataMock} />);
 
     expect(component.children()).toMatchInlineSnapshot(`null`);
   });
 
   it('Should verify if other props getting render in component', () => {
     const component = mount(
-      <HomePageSlots
+      <PageSlots
         extraProp="extraProp"
         slots={[
           {
@@ -180,26 +213,26 @@ describe('HomePageSlots component', () => {
     );
 
     expect(component.children()).toMatchInlineSnapshot(`
-            Array [
-              <ModuleA
-                extraProp="extraProp"
-                key="id-1"
-                slotData="slot B Data"
-              >
-                <div>
-                  Module A
-                </div>
-              </ModuleA>,
-              <ModuleB
-                extraProp="extraProp"
-                key="id-2"
-                slotData="slot A Data"
-              >
-                <div>
-                  Module B
-                </div>
-              </ModuleB>,
-            ]
-          `);
+      Array [
+        <ModuleA
+          extraProp="extraProp"
+          key="id-1"
+          slotData="slot B Data"
+        >
+          <div>
+            Module A
+          </div>
+        </ModuleA>,
+        <ModuleB
+          extraProp="extraProp"
+          key="id-2"
+          slotData="slot A Data"
+        >
+          <div>
+            Module B
+          </div>
+        </ModuleB>,
+      ]
+    `);
   });
 });
