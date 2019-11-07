@@ -21,7 +21,7 @@ class LookingForProductDetail extends React.PureComponent {
   redirectToProductUrl = productUrl => {
     const { closeSearchLayover } = this.props;
     closeSearchLayover();
-    routerPush(`/${getSiteId()}/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
+    routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
       shallow: false,
     });
   };

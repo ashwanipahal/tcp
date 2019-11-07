@@ -155,7 +155,7 @@ export function BadgeItem(props) {
 
 export function PromotionalMessage(props) {
   const { text } = props;
-  return (
+  return text ? (
     <Dotdotdot clamp={2}>
       <BodyCopy
         fontSize={['fs9', 'fs12', 'fs14']}
@@ -164,10 +164,12 @@ export function PromotionalMessage(props) {
         data-locator={getLocator('global_loyalty_text')}
         className="loyalty-text-container"
       >
-        {text && <RichText richTextHtml={getFormattedLoyaltyText(text)} />}
+        {text && (
+          <RichText className="rewards__benefits" richTextHtml={getFormattedLoyaltyText(text)} />
+        )}
       </BodyCopy>
     </Dotdotdot>
-  );
+  ) : null;
 }
 
 const renderWishListItem = (item, labels) => (
