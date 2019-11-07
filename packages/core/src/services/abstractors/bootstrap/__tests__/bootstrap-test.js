@@ -12,7 +12,6 @@ jest.mock('../../../handler/handler');
 describe('abstractor - bootstrap', () => {
   const abstractorBootstrap = () =>
     bootstrap('homepage', null, {}).then(data => {
-      console.log(data);
       expect(data.homepage.items[0].layout.slots[0]).toHaveProperty(
         'name',
         'moduleName',
