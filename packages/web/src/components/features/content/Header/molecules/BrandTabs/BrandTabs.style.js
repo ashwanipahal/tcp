@@ -10,7 +10,7 @@ export default css`
     position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: 8px 16px;
+      padding: 8px 9px 16px;
     }
 
     &.header-topnav__brand-tabs--activeTab {

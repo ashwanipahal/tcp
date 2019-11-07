@@ -5,12 +5,33 @@ export default css`
   margin-bottom: 40px;
 
   .heading-wrapper {
-    padding: 16px 0;
+    padding: ${props => (props.theme.isGymboree ? '24px 0' : '16px 0')};
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
       padding-top: 16px;
       padding-bottom: 24px;
+    }
+  }
+
+  .button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      padding-bottom: ${props => (props.theme.isGymboree ? '24px' : 'inherit')};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding-bottom: ${props => (props.theme.isGymboree ? '32px' : 'inherit')};
+    }
+  }
+
+  .link-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => (props.theme.isGymboree ? '24px' : 'inherit')};
+    }
+  }
+
+  .scroll-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: ${props => (props.theme.isGymboree ? '32px' : 'inherit')};
     }
   }
 
