@@ -46,7 +46,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       <Button
         data-locator={getLocator('addedtobag_btncheckout')}
         className="checkout"
-        onClick={() => handleCartCheckout(isEditingItem)}
+        onClick={() => handleCartCheckout({ isEditingItem })}
       >
         <BodyCopy
           component="span"

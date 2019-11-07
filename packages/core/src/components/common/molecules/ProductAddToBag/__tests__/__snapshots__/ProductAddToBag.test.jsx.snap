@@ -165,6 +165,20 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         <Connect(ProductPickupContainer)
           formName="ProductAddToBag-3000935_IV"
           isAnchor={true}
+          miscInfo={
+            Object {
+              "badge1": Object {
+                "defaultBadge": "ONLINE EXCLUSIVE",
+              },
+              "badge2": "",
+              "hasOnModelAltImages": "",
+              "isBopisEligible": false,
+              "isBossEligible": true,
+              "isClearance": "",
+              "keepAlive": false,
+              "videoUrl": "",
+            }
+          }
           productInfo={
             Object {
               "colorFitsSizesMap": Array [
@@ -541,6 +555,20 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
         <Connect(ProductPickupContainer)
           formName="ProductAddToBag-3000935_IV"
           isAnchor={true}
+          miscInfo={
+            Object {
+              "badge1": Object {
+                "defaultBadge": "ONLINE EXCLUSIVE",
+              },
+              "badge2": "",
+              "hasOnModelAltImages": "",
+              "isBopisEligible": false,
+              "isBossEligible": true,
+              "isClearance": "",
+              "keepAlive": false,
+              "videoUrl": "",
+            }
+          }
           productInfo={
             Object {
               "colorFitsSizesMap": Array [

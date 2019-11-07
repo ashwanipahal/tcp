@@ -874,7 +874,7 @@ class CartItemTile extends PureComponent {
     const { showOnReviewPage } = this.props;
     return (
       <>
-        {showOnReviewPage ? (
+        {!showOnReviewPage ? (
           <div className="size-and-item-container">
             {this.renderSizeAndFit()}
             {this.renderItemQuantity()}

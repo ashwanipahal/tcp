@@ -48,6 +48,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       >
         <Connect(PayPalButtonContainer)
           className="payPal-button"
+          height={48}
         />
       </div>
     </div>
@@ -132,6 +133,7 @@ exports[`AddedToBagActions component AddedToBagActions component with Venmo Erro
       >
         <Connect(PayPalButtonContainer)
           className="payPal-button"
+          height={48}
         />
       </div>
     </div>
