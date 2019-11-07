@@ -5,6 +5,7 @@ import { isPlccUser } from '@tcp/core/src/components/features/account/User/conta
 import { openQuickViewWithValues } from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { getProducts } from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.selector';
 import { getIsPickupModalOpen } from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
+import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import RecommendationsView from '../Recommendations.native';
 
 const mapStateToProps = (state, ownProps) => {
@@ -21,6 +22,7 @@ const mapStateToProps = (state, ownProps) => {
     ctaUrl: getLabelValue(state.Labels, 'CTA_URL', 'recommendations', 'global'),
     isPlcc: isPlccUser(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
+    labels: labelsSelectors.getPlpTilesLabels(state),
   };
 };
 

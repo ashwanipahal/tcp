@@ -32,6 +32,7 @@ const ModuleO = props => {
     item,
     priceOnly,
     viaModule,
+    labels,
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -78,6 +79,7 @@ const ModuleO = props => {
         renderPriceOnly={priceOnly}
         productImageWidth={PRODUCT_IMAGE_WIDTH}
         viaModule={viaModule}
+        labelsPlpTiles={labels}
       />
     </View>
   );
@@ -92,6 +94,10 @@ ModuleO.propTypes = {
   item: PropTypes.shape({}).isRequired,
   priceOnly: PropTypes.bool,
   viaModule: PropTypes.string,
+  labels: PropTypes.shape({
+    lbl_plpTiles_shop_collection: PropTypes.string,
+    lbl_add_to_bag: PropTypes.string,
+  }).isRequired,
 };
 
 ModuleO.defaultProps = {
