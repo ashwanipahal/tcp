@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Dimensions } from 'react-native';
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
-import { getLocator } from '../../../../../utils/index.native';
+import { getLocator, splitUniqueIDForDAM } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
-import config from '../../ModuleJ/moduleJ.config';
+import moduleGConfig from '../ModuleG/moduleG.config';
 
 import {
   Container,
@@ -35,7 +35,7 @@ const PRODUCT_IMAGE_GUTTER = 1;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 256;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE + 60;
-const { TOTAL_IMAGES } = config;
+const { TOTAL_IMAGES } = moduleGConfig;
 const { width: screenWidth } = Dimensions.get('window');
 
 const LOOP_CLONES_PER_SIDE = 7;
@@ -108,7 +108,7 @@ class ModuleG extends React.PureComponent {
     if (itemValue) {
       [itemData] = itemValue;
     }
-    const { imageUrl, productItemIndex, product_name: productName, uniqueId } = itemData;
+    const { productItemIndex, product_name: productName, uniqueId } = itemData;
     return (
       <ImageSlideWrapper>
         <View style={{ width: screenWidth, height: PRODUCT_IMAGE_HEIGHT }}>
@@ -125,10 +125,12 @@ class ModuleG extends React.PureComponent {
             testID={`${getLocator('moduleG_product_image')}${productItemIndex}`}
           >
             <DamImage
-              url={imageUrl[0]}
+              url={splitUniqueIDForDAM(uniqueId)}
               height={PRODUCT_IMAGE_HEIGHT}
               width={PRODUCT_IMAGE_WIDTH}
               alt={productName}
+              imageConfig={moduleGConfig.IMG_DATA.productImgConfig[0]}
+              isProductImage
             />
           </Anchor>
         </View>
@@ -355,7 +357,7 @@ class ModuleG extends React.PureComponent {
     const { selectedCategoryId = [] } = this.state;
 
     const { divTabs, productTabList = {} } = this.props;
-    const { CAROUSEL_OPTIONS } = config;
+    const { CAROUSEL_OPTIONS } = moduleGConfig;
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ next });
     };
