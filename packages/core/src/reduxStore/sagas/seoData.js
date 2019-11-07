@@ -15,13 +15,11 @@ function* fetchPageSEOData(action) {
   const isSEODataExist = yield select(seoDataSelector);
   if (!isSEODataExist) {
     const apiConfig = getAPIConfig();
-    const { language } = apiConfig;
     const seoDataParams = {
       page,
       brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
       channel: defaultChannel,
       country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
-      lang: language,
     };
     const data = yield call(seoDataAbstractor.getData, SEO_DATA.seoData, seoDataParams);
     yield put(

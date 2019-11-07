@@ -5,6 +5,7 @@ const buildQuery = ({ category, subCategory, brand, country, channel, lang }) =>
   lang ? `lang: "${lang}",` : ``
 }) {
     name
+    errorMessage
     subcategories {
       name
       labels {

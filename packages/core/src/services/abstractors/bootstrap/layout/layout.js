@@ -6,6 +6,7 @@ import handler from '../../../handler';
  * Abstractor layer for loading data from API for Layout
  */
 const LayoutAbstractor = {
+  slotModuleMap: {},
   /**
    * This function loads data from graphQL service
    * @param {Object} params Object containing {page, brand, country, channel}
@@ -73,6 +74,7 @@ const LayoutAbstractor = {
     const moduleIds = [];
     items.forEach(({ layout: { slots } }) => {
       slots.forEach(slot => {
+        LayoutAbstractor.slotModuleMap[slot.name] = slot.moduleName;
         if (slot.contentId) {
           const contentIds = slot.contentId.split(',');
           if (contentIds.length > 1) {
@@ -84,7 +86,7 @@ const LayoutAbstractor = {
                 data: {
                   contentId,
                   slot: `${slot.name}_${index}`,
-                  lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support as not supported from CMS yet
+                  lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support, as not supported from CMS yet
                 },
               });
             });
@@ -94,7 +96,7 @@ const LayoutAbstractor = {
               data: {
                 contentId: slot.contentId,
                 slot: slot.name,
-                lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support as not supported from CMS yet
+                lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support, as not supported from CMS yet
               },
             });
           }
@@ -103,10 +105,22 @@ const LayoutAbstractor = {
     });
     return moduleIds;
   },
+  checkForErrors: (data, slotKey) => {
+    const { errorMessage } = data;
+    if (errorMessage) {
+      logger.error(
+        `Error occurred in ${LayoutAbstractor.slotModuleMap[slotKey]}-> ${errorMessage}`
+      );
+    }
+  },
   processModuleData: moduleData => {
     const modulesObject = {};
     Object.keys(moduleData).forEach(slotKey => {
-      const { set = [] } = moduleData[slotKey];
+      LayoutAbstractor.checkForErrors(moduleData[slotKey], slotKey);
+      let { set } = moduleData[slotKey];
+      if (!set) {
+        set = [];
+      }
       modulesObject[moduleData[slotKey].contentId] = {
         ...moduleData[slotKey].composites,
         moduleName: moduleData[slotKey].name,

@@ -147,6 +147,96 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
 };
 
 /**
+ * This function parses Error out of response
+ * @param {*} bootstrapData Response from API call
+ * @param {*} pageName Page Name
+ */
+const checkForErrors = (bootstrapData, pageName) => {
+  const { labels, header, footer, navigation } = bootstrapData;
+  const { errorMessage: headerErrorMessage } = header;
+  const errorObject = {
+    header_error: 0,
+    footer_error: 0,
+    navigation_error: 0,
+    labels_error: 0,
+    layout_error: 0,
+  };
+  if (headerErrorMessage) {
+    errorObject.header_error = 1;
+    errorObject.header_error_message = headerErrorMessage;
+    logger.error(`Error occurred in header ${headerErrorMessage}`);
+  }
+  const { errorMessage: footerErrorMessage } = footer;
+  if (footerErrorMessage) {
+    errorObject.footer_error = 1;
+    errorObject.footer_error_message = footerErrorMessage;
+    logger.error(`Error occurred in footer ${footerErrorMessage}`);
+  }
+  const [{ errorMessage: navigationErrorMessage }] = navigation;
+  if (navigationErrorMessage) {
+    errorObject.navigation_error = 1;
+    errorObject.navigation_error_message = navigationErrorMessage;
+    logger.error(`Error occurred in navigation ${navigationErrorMessage}`);
+  }
+  const [{ errorMessage: labelsErrorMessage }] = labels;
+  if (labelsErrorMessage) {
+    errorObject.labels_error = 1;
+    errorObject.labels_error_message = labelsErrorMessage;
+    logger.error(`Error occurred in labels ${labelsErrorMessage}`);
+  }
+  const { errorMessage: layoutErrorMessage } = bootstrapData[pageName];
+  if (layoutErrorMessage) {
+    errorObject.layout_error = 1;
+    errorObject.layout_error_message = layoutErrorMessage;
+    logger.error(`Error occurred in labels ${layoutErrorMessage}`);
+  }
+
+  return errorObject;
+};
+
+/**
+ * This function returns parsed response from the bootstrap API
+ * @param {*} response
+ * @param {*} fetchCachedDataParams
+ * @param {*} bootstrapData
+ */
+const parsedResponse = (response, fetchCachedDataParams, bootstrapData) => {
+  try {
+    response.header = headerAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
+    );
+  } catch (e) {
+    logger.error(`Error occurred while processing header data: ${e}`);
+  }
+
+  try {
+    response.footer =
+      bootstrapData.footer &&
+      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
+  } catch (e) {
+    logger.error(`Error occurred while processing footer data: ${e}`);
+  }
+
+  try {
+    response.labels = labelsAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
+    );
+  } catch (e) {
+    logger.error(`Error occurred while processing labels data: ${e}`);
+  }
+
+  try {
+    response.navigation = navigationAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
+    );
+  } catch (e) {
+    logger.error(`Error occurred while processing navigation data: ${e}`);
+  }
+
+  return response;
+};
+
+/**
  * Responsible for making all the http requests that need to be resolved before loading the application
  *  -   Layout
  *  -   Header
@@ -174,11 +264,12 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
     logger.debug('Executing Bootstrap Query with params: ', bootstrapParams, pageName);
     const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
+    const errorObject = checkForErrors(bootstrapData, pageName);
     logger.info('Bootstrap Query Executed Successfully');
     logger.debug('Bootstrap Query Result: ', bootstrapData);
     const fetchCachedDataParams = { bootstrapData, cachedData };
 
-    if (pageName) {
+    if (pageName && !errorObject.layout_error) {
       try {
         response[pageName] = bootstrapData[pageName];
         logger.info('Executing Modules Query with params: ', bootstrapData[pageName], pageName);
@@ -195,18 +286,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       }
     }
 
-    response.header = headerAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
-    );
-    response.footer =
-      bootstrapData.footer &&
-      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
-    response.labels = labelsAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
-    );
-    response.navigation = navigationAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
-    );
+    return parsedResponse(response, fetchCachedDataParams, bootstrapData);
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);
   }
