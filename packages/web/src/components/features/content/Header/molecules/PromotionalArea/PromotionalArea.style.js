@@ -42,7 +42,7 @@ export default css`
     height: 40px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      height: 45px;
+      height: 54px;
     }
   }
 `;
