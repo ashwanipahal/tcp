@@ -1,22 +1,30 @@
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 let navigator;
 
-function setTopLevelNavigator(navigatorRef) {
+const setTopLevelNavigator = navigatorRef => {
   navigator = navigatorRef;
-}
+};
 
-function navigate(routeName, params) {
-  navigator.dispatch(
-    NavigationActions.navigate({
-      routeName: 'Bag',
-      params: {},
-      action: NavigationActions.navigate({ routeName, params }),
-    })
-  );
-}
+const navigateToProductPage = params => {
+  setTimeout(() => {
+    navigator.dispatch(
+      StackActions.reset({
+        index: 2,
+        actions: [
+          NavigationActions.navigate({ routeName: 'Home' }),
+          NavigationActions.navigate({ routeName: 'Bag' }),
+          NavigationActions.navigate({
+            routeName: 'Bag',
+            action: NavigationActions.navigate({ routeName: 'BagProductDetail', params }),
+          }),
+        ],
+      })
+    );
+  }, 10000);
+};
 
 export default {
-  navigate,
+  navigateToProductPage,
   setTopLevelNavigator,
 };

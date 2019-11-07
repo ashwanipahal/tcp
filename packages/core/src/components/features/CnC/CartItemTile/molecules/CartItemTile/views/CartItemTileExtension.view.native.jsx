@@ -52,9 +52,9 @@ const goToPdpPage = (title, productDetail, navigation, updateAppTypeHandler) => 
   } = productDetail;
   const isProductBrandOfSameDomain = currentAppBrand.toUpperCase() === itemBrand.toUpperCase();
   const pdpAsPathUrl = pdpUrl.split('/p/')[1];
-  if (isProductBrandOfSameDomain) {
+  if (!isProductBrandOfSameDomain) {
     updateAppTypeHandler({
-      type: !isProductBrandOfSameDomain ? APP_TYPE.TCP : APP_TYPE.GYMBOREE,
+      type: currentAppBrand.toLowerCase() === APP_TYPE.TCP ? APP_TYPE.GYMBOREE : APP_TYPE.TCP,
       params: {
         title,
         pdpUrl: pdpAsPathUrl,

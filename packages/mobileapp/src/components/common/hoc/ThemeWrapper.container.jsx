@@ -24,19 +24,21 @@ export class ThemeWrapper extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
-    const { appType, appParms, switchBrand, resetReduxStoreData, updateAppTypeHandler } = nextProps;
+    const {
+      appType,
+      pageParam,
+      isLoaded,
+      switchBrand,
+      resetReduxStoreData,
+      updateAppTypeHandler,
+    } = nextProps;
 
     // update brand name in utils when app type is changed
     if (appType !== prevAppType && switchBrand) {
       // brand switch with product redirect
-      setTimeout(() => {
-        NavigationService.navigate('ProductDetail', {
-          title: appParms.title,
-          pdpUrl: appParms.pdpUrl,
-          selectedColorProductId: appParms.selectedColorProductId,
-          reset: appParms.reset,
-        });
-      }, 3000);
+      if (isLoaded) {
+        NavigationService.navigateToProductPage(pageParam);
+      }
       resetReduxStoreData();
       updateAppTypeHandler(appType);
       switchBrand(appType);
@@ -72,19 +74,16 @@ ThemeWrapper.propTypes = {
   updateAppTypeHandler: PropTypes.func,
   switchBrand: PropTypes.func,
   resetReduxStoreData: PropTypes.func,
-  appParms: PropTypes.shape({}),
+  pageParam: PropTypes.shape({}),
+  isLoaded: PropTypes.bool,
 };
 
 ThemeWrapper.defaultProps = {
   updateAppTypeHandler: () => {},
   switchBrand: null,
   resetReduxStoreData: null,
-  appParms: {
-    title: null,
-    pdpUrl: null,
-    selectedColorProductId: null,
-    reset: false,
-  },
+  pageParam: {},
+  isLoaded: false,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -94,6 +93,13 @@ const mapStateToProps = (state, ownProps) => {
   return {
     appType: appTypeValue,
     appParms: getAppTypeParams(state),
+    isLoaded:
+      state.Labels &&
+      state.Labels.global &&
+      state.Labels.global.accessibility &&
+      state.Labels.global.minibag &&
+      state.Labels.global.addedToBagModal &&
+      state.Labels.global.addedToBagModal.lbl_header_addedToBag,
   };
 };
 
