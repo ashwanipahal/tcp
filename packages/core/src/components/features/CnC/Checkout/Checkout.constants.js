@@ -3,6 +3,7 @@ import { COUNTRY_SELECTOR_ACTION_PATTERN } from '../../../../constants/reducer.c
 const CONSTANTS = {
   INIT_CHECKOUT: 'INIT_CHECKOUT',
   INIT_CHECKOUT_SECTION_PAGE: 'INIT_CHECKOUT_SECTION_PAGE',
+  CHECKOUT_ROUTING_DONE: 'CHECKOUT_ROUTING_DONE',
   ROUTING_CONST: {
     siteIds: {
       // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)

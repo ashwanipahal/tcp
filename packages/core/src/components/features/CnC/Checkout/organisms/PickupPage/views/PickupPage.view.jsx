@@ -39,6 +39,14 @@ class PickUpFormPart extends React.Component {
     pickupDidMount();
   }
 
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { pickupDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      pickupDidMount();
+    }
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -370,6 +378,7 @@ PickUpFormPart.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,

@@ -180,6 +180,7 @@ class CheckoutPage extends React.PureComponent {
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       isBagLoaded,
+      isRegisteredUserCallDone,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -193,6 +194,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             pickupDidMount={pickupDidMount}
+            isRegisteredUserCallDone={isRegisteredUserCallDone}
             isBagLoaded={isBagLoaded}
             isGuest={isGuest}
             isMobile={isMobile}
@@ -415,6 +417,7 @@ CheckoutPage.propTypes = {
   reviewProps: PropTypes.shape({}).isRequired,
   submitReview: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,

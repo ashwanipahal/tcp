@@ -20,6 +20,7 @@ import {
   checkoutSetCartData,
   getSetIsPaypalPaymentSettings,
   getSetCheckoutStage,
+  toggleCheckoutRouting,
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
@@ -53,7 +54,7 @@ import {
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
-import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
 import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
 
 const { getOrderPointsRecalcFlag } = utility;
@@ -152,7 +153,7 @@ export function* getCartDataSaga(payload = {}) {
   try {
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
-    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems = true } = {} } = payload;
     const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
@@ -168,7 +169,7 @@ export function* getCartDataSaga(payload = {}) {
       }
     }
     yield updateBopisItems(res);
-    yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails, excludeCartItems));
 
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
@@ -178,6 +179,8 @@ export function* getCartDataSaga(payload = {}) {
     }
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
+    } else {
+      yield put(toggleCheckoutRouting(true));
     }
     yield put(BAG_PAGE_ACTIONS.setCouponsData(res.coupons));
     if (onCartRes) {

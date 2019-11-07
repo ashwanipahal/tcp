@@ -14,6 +14,7 @@ class BillingPage extends React.PureComponent {
     orderHasShipping: PropTypes.bool.isRequired,
     submitBilling: PropTypes.func.isRequired,
     billingDidMount: PropTypes.func.isRequired,
+    isRegisteredUserCallDone: PropTypes.bool.isRequired,
     isGuest: PropTypes.bool.isRequired,
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.string,
@@ -43,6 +44,14 @@ class BillingPage extends React.PureComponent {
   componentDidMount() {
     const { billingDidMount } = this.props;
     billingDidMount();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { billingDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      billingDidMount();
+    }
   }
 
   render() {

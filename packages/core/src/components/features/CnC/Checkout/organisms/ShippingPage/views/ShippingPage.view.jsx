@@ -53,6 +53,7 @@ export default class ShippingPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
     ServerErrors: PropTypes.node.isRequired,
+    isRegisteredUserCallDone: PropTypes.bool.isRequired,
     pageCategory: PropTypes.string,
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
@@ -101,27 +102,24 @@ export default class ShippingPage extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     const {
-      address,
       selectedShipmentId,
       updateShippingMethodSelection,
       shippingAddressId,
+      shippingDidMount,
+      isRegisteredUserCallDone,
     } = this.props;
-    const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
-    if (address && prevAddress) {
-      const {
-        address: { addressLine1, addressLine2 },
-        loadShipmentMethods,
-      } = this.props;
-      const {
-        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
-      } = prevProps;
-      if (
-        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
-        hasPOBox(addressLine1, addressLine2)
-      ) {
-        loadShipmentMethods({ formName: 'checkoutShipping' });
-      }
+
+    const {
+      selectedShipmentId: prevSelectedShipmentId,
+      isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+    } = prevProps;
+
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      shippingDidMount();
     }
+
+    this.loadShipmentMethodData(prevProps);
+
     if (
       shippingAddressId &&
       prevSelectedShipmentId &&
@@ -158,6 +156,26 @@ export default class ShippingPage extends React.PureComponent {
       clearCheckoutServerError({});
     }
   }
+
+  loadShipmentMethodData = prevProps => {
+    const { address } = this.props;
+    const { address: prevAddress } = prevProps;
+    if (address && prevAddress) {
+      const {
+        address: { addressLine1, addressLine2 },
+        loadShipmentMethods,
+      } = this.props;
+      const {
+        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
+      } = prevProps;
+      if (
+        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
+        hasPOBox(addressLine1, addressLine2)
+      ) {
+        loadShipmentMethods({ formName: 'checkoutShipping' });
+      }
+    }
+  };
 
   setDefaultAddressId = id => {
     this.setState({ defaultAddressId: id });

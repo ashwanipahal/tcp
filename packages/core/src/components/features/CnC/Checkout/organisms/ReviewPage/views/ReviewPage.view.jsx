@@ -26,6 +26,7 @@ class ReviewPage extends React.PureComponent {
     reviewDidMount: PropTypes.func.isRequired,
     submitReview: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
+    isRegisteredUserCallDone: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
     setVenmoShippingState: PropTypes.func,
     setVenmoPickupState: PropTypes.func,
@@ -61,8 +62,14 @@ class ReviewPage extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { isPaymentDisabled: prevPaymentDisabled } = prevProps;
-    const { isPaymentDisabled, dispatch } = this.props;
+    const {
+      isPaymentDisabled: prevPaymentDisabled,
+      isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+    } = prevProps;
+    const { isPaymentDisabled, dispatch, reviewDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      reviewDidMount();
+    }
     if (prevPaymentDisabled !== isPaymentDisabled) {
       dispatch(change(formName, 'cvvCode', null));
     }

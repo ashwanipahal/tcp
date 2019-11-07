@@ -17,10 +17,11 @@ const getCartData = payload => {
   };
 };
 
-const getOrderDetailsComplete = payload => {
+const getOrderDetailsComplete = (payload, excludeCartItems) => {
   return {
     type: BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE,
     payload,
+    excludeCartItems,
   };
 };
 

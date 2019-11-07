@@ -1,6 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import queryString from 'query-string';
-import { getLabelValue } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -29,6 +28,7 @@ import CardConstants from '../../../account/AddEditCreditCard/container/AddEditC
 import { routerPush } from '../../../../../utils';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 import { getLocalStorage } from '../../../../../utils/localStorageManagement';
+import CheckoutConstants from '../Checkout.constants';
 
 const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
@@ -122,27 +122,27 @@ const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
 
-const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
-  const result = [
-    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
-    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
-  ];
-  /* istanbul ignore else */
+const getAvailableStages = cartItems => {
+  const { PICKUP, SHIPPING, BILLING, REVIEW } = CheckoutConstants.CHECKOUT_STAGES;
+  const stages = [BILLING, REVIEW];
   if (isOrderHasShipping(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
+    stages.unshift(SHIPPING);
   }
   /* istanbul ignore else */
   if (isOrderHasPickup(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
+    stages.unshift(PICKUP);
   }
-  return result;
+  return stages;
 };
 
 const routeToPage = (dataObj, queryParams, ...others) => {
   const { asPath } = dataObj;
   let { to } = dataObj;
   if (queryParams) {
-    to += `?${queryString.stringify(queryParams)}`;
+    if (to.indexOf('?') !== -1) {
+      to += '&';
+    }
+    to += `${queryString.stringify(queryParams)}`;
   }
   routerPush(to, asPath, ...others);
 };
