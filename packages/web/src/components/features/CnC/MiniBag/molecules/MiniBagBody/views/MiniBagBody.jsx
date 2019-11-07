@@ -164,7 +164,10 @@ class MiniBagBody extends React.PureComponent {
       closeMiniBag,
       onLinkClick,
       isShowSaveForLaterSwitch,
+      isRememberedUser,
+      isUserLoggedIn,
     } = this.props;
+
     const { headerError, params } = this.state;
     return (
       <div className={className}>
@@ -221,6 +224,8 @@ class MiniBagBody extends React.PureComponent {
               userName={userName}
               closeMiniBag={closeMiniBag}
               onLinkClick={onLinkClick}
+              isRememberedUser={isRememberedUser}
+              isUserLoggedIn={isUserLoggedIn}
             />
           )}
         </BodyCopy>
@@ -275,6 +280,8 @@ MiniBagBody.propTypes = {
   resetSuccessMessage: PropTypes.func.isRequired,
   addedToBagError: PropTypes.string.isRequired,
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  isRememberedUser: PropTypes.bool.isRequired,
 };
 
 export default withStyles(MiniBagBody, styles);

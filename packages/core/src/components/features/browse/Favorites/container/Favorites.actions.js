@@ -14,6 +14,20 @@ export const setWishlistState = payload => {
   };
 };
 
+export const setAddToFavoriteErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.SET_FAVORITES_ERROR,
+    payload,
+  };
+};
+
+export const removeAddToFavoriteErrorState = payload => {
+  return {
+    type: FAVORITES_CONSTANTS.REMOVE_FAVORITES_ERROR,
+    payload,
+  };
+};
+
 export const getSetWishlistsSummariesAction = payload => {
   return {
     type: FAVORITES_CONSTANTS.GET_FAVORITES_WISHLIST,
