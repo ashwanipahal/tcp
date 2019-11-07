@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Anchor } from '@tcp/core/src/components/common/atoms';
-import { readCookie } from '@tcp/core/src/utils/cookie.util';
 import LogOutPageContainer from '../../../../Logout/container/LogOut.container';
 import LoginForm from '../../../molecules/LoginForm';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -16,8 +15,6 @@ import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
 import { isCanada, scrollPage, scrollTopElement } from '../../../../../../../utils';
-
-const displayName = readCookie('tcp_firstname');
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -62,11 +59,11 @@ class LoginSection extends React.PureComponent<Props> {
     scrollTopElement('dialogContent');
   };
 
-  getSignOutSection = ({ labels, isRememberedUser, logoutlabels }) => {
+  getSignOutSection = ({ labels, isRememberedUser, logoutlabels, userName }) => {
     return isRememberedUser ? (
       <BodyCopy component="div" className="elem-pb-LRG">
         <BodyCopy fontFamily="primary" fontSize="fs14">
-          {`${getLabelValue(labels, 'lbl_login_not', 'login')} ${displayName} ? `}
+          {`${getLabelValue(labels, 'lbl_login_not', 'login')} ${userName} ? `}
           <Anchor
             underline
             fontSizeVariation="medium"

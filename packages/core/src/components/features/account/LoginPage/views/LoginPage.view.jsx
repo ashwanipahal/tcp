@@ -26,6 +26,7 @@ const LoginView = ({
   userplccCardNumber,
   userplccCardId,
   isRememberedUser,
+  userName,
 }) => {
   return (
     <LoginSection
@@ -51,6 +52,7 @@ const LoginView = ({
       tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
       userplccCardNumber={userplccCardNumber}
       userplccCardId={userplccCardId}
+      userName={userName}
     />
   );
 };
@@ -77,6 +79,7 @@ LoginView.propTypes = {
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
   isRememberedUser: PropTypes.bool,
+  userName: PropTypes.string,
 };
 
 LoginView.defaultProps = {
@@ -84,6 +87,7 @@ LoginView.defaultProps = {
   showRecaptcha: false,
   openModal: () => {},
   isRememberedUser: false,
+  userName: '',
 };
 
 export default LoginView;

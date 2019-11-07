@@ -21,6 +21,22 @@ describe('LoginSection component', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should renders correctly if remmemberme user', () => {
+    const props = {
+      onSubmit: () => {},
+      labels: {
+        login: {},
+      },
+      logoutlabels: {
+        CREATE_ACC_SIGN_OUT: 'Sign Out',
+      },
+      isRememberedUser: true,
+      initialValues: {},
+    };
+    const component = shallow(<LoginSectionVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
   it('should render ForgotPasswordContainer if currentForm prop is forgotPassword', () => {
     const props = {
       onSubmit: () => {},

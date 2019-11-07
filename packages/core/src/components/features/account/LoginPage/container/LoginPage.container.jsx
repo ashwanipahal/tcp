@@ -28,6 +28,7 @@ import {
   getplccCardNumber,
   isRememberedUser,
   getUserEmail,
+  getUserName,
 } from '../../User/container/User.selectors';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
@@ -106,6 +107,7 @@ class LoginPageContainer extends React.PureComponent {
       resetChangePasswordState,
       rememberedUserFlag,
       userEmail,
+      userName,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -144,6 +146,7 @@ class LoginPageContainer extends React.PureComponent {
         toastMessage={toastMessage}
         isRememberedUser={rememberedUserFlag}
         resetChangePasswordState={resetChangePasswordState}
+        userName={userName}
       />
     );
   }
@@ -183,6 +186,7 @@ LoginPageContainer.propTypes = {
   resetChangePasswordState: PropTypes.func,
   rememberedUserFlag: PropTypes.bool,
   userEmail: PropTypes.string,
+  userName: PropTypes.string,
 };
 
 LoginPageContainer.defaultProps = {
@@ -201,6 +205,7 @@ LoginPageContainer.defaultProps = {
   resetChangePasswordState: () => {},
   rememberedUserFlag: false,
   userEmail: '',
+  userName: '',
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -244,6 +249,7 @@ const mapStateToProps = state => {
     userplccCardId: getplccCardId(state),
     rememberedUserFlag: isRememberedUser(state),
     userEmail: getUserEmail(state),
+    userName: getUserName(state),
   };
 };
 
