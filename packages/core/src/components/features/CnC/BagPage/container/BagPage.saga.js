@@ -32,7 +32,7 @@ import checkoutSelectors, {
   isRemembered,
   isExpressCheckout,
 } from '../../Checkout/container/Checkout.selector';
-import { isMobileApp, isCanada } from '../../../../../utils';
+import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 
 import {
   addItemToSflList,
@@ -355,6 +355,11 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
     }
   } catch (e) {
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
+    if (!isMobileApp()) {
+      yield put(closeMiniBag());
+      yield put(BAG_PAGE_ACTIONS.setIsPaypalBtnHidden(true));
+      routerPush('/bag', '/bag');
+    }
   }
 }
 // export function* authorizePayPalPayment() {
