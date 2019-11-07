@@ -88,7 +88,7 @@ describe('Checkout Selectors', () => {
     const State = {
       CartPageReducer: fromJS({ orderItems: [] }),
     };
-    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(0);
+    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(false);
   });
 
   it('#getShippingPhoneAndEmail', () => {
@@ -292,11 +292,11 @@ describe('Checkout Selectors', () => {
   it('#getIsOrderHasPickup', () => {
     const State = {
       CartPageReducer: fromJS({
-        orderDetails: { orderItems: [] },
+        orderDetails: { isPickupOrder: true, orderItems: [] },
       }),
     };
 
-    expect(CHECKOUT_SELECTORS.getIsOrderHasPickup(State)).toEqual(0);
+    expect(CHECKOUT_SELECTORS.getIsOrderHasPickup(State)).toEqual(true);
   });
 
   it('should get checkout state', () => {
@@ -309,6 +309,7 @@ describe('Checkout Selectors', () => {
     const state = {
       CartPageReducer: fromJS({
         orderDetails: {
+          isShippingOrder: true,
           orderItems: [{ miscInfo: {} }],
         },
       }),
