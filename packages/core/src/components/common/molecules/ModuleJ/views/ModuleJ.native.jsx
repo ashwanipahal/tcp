@@ -87,7 +87,7 @@ class ModuleJ extends React.PureComponent {
                   url={splitUniqueIDForDAM(uniqueId)}
                   height={PRODUCT_IMAGE_HEIGHT}
                   width={PRODUCT_IMAGE_WIDTH}
-                  imageConfig={IMG_DATA.productImgConfig[0]}
+                  imgConfig={IMG_DATA.productImgConfig[0]}
                   isProductImage
                 />
               </Anchor>

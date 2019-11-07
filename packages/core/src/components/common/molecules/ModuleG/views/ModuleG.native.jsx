@@ -129,7 +129,7 @@ class ModuleG extends React.PureComponent {
               height={PRODUCT_IMAGE_HEIGHT}
               width={PRODUCT_IMAGE_WIDTH}
               alt={productName}
-              imageConfig={moduleGConfig.IMG_DATA.productImgConfig[0]}
+              imgConfig={moduleGConfig.IMG_DATA.productImgConfig[0]}
               isProductImage
             />
           </Anchor>
