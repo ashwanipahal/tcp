@@ -75,10 +75,7 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('isGuest')
+        return store.getState().User.getIn(['personalData', 'isGuest'])
           ? 'no rewards:guest'
           : 'rewards member:logged in';
       },
@@ -104,10 +101,7 @@ export default function create(store) {
 
     customerId: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('userId');
+        return store.getState().User.getIn(['personalData', 'userId'], '');
       },
     },
 
