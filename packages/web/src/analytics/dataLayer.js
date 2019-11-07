@@ -86,10 +86,7 @@ export default function create(store) {
 
     userEmailAddress: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'emailAddress']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'emailAddress'], '');
       },
     },
 
@@ -116,19 +113,13 @@ export default function create(store) {
 
     customerFirstName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'firstName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'firstName'], '');
       },
     },
 
     customerLastName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'lastName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'lastName'], '');
       },
     },
 
