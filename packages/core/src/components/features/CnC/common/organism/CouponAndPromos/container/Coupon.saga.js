@@ -91,7 +91,6 @@ export function* applyCoupon({ payload }) {
           customEvents: ['event27'],
           products: productsData,
           eventName: 'invalid coupon code used',
-          couponCode: coupon.id,
         })
       );
       yield put(trackClick('invalid coupon applied'));
