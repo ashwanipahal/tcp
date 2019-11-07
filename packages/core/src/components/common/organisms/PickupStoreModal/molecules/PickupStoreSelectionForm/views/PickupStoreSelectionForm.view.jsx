@@ -132,8 +132,7 @@ class _PickupStoreSelectionForm extends React.Component {
       PickupSkuFormValues,
       isSkuResolved,
     } = this.props;
-    let disableButton = pristine;
-    disableButton = Object.values(PickupSkuFormValues).includes('');
+    const disableButton = Object.values(PickupSkuFormValues).includes('');
 
     return showStoreSearching ? (
       <div className={className}>

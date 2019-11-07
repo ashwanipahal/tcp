@@ -113,8 +113,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       PickupSkuFormValues,
       selectedValue,
     } = this.props;
-    let disableButton = pristine;
-    disableButton = Object.values(PickupSkuFormValues).includes('');
+    const disableButton = Object.values(PickupSkuFormValues).includes('');
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
