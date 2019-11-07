@@ -20,8 +20,6 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import {
-  getIsBossEnabled,
-  getIsBopisEnabled,
   getIsInternationalShipping,
   getCurrentCurrency,
 } from '../../../../../reduxStore/selectors/session.selectors';
@@ -85,8 +83,6 @@ class OutfitDetailsContainer extends React.PureComponent {
       isPickupModalOpen,
       isLoggedIn,
       navigation,
-      isBopisEnabled,
-      isBossEnabled,
     } = this.props;
     if (outfitProducts) {
       return (
@@ -109,8 +105,6 @@ class OutfitDetailsContainer extends React.PureComponent {
           addToFavorites={addToFavorites}
           isLoggedIn={isLoggedIn}
           navigation={navigation}
-          isBossEnabled={isBossEnabled}
-          isBopisEnabled={isBopisEnabled}
         />
       );
     }
@@ -138,8 +132,6 @@ const mapStateToProps = state => {
     currentState: state,
     isPickupModalOpen: getIsPickupModalOpen(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
-    isBossEnabled: getIsBossEnabled(state),
-    isBopisEnabled: getIsBopisEnabled(state),
   };
 };
 
@@ -181,8 +173,6 @@ OutfitDetailsContainer.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
-  isBossEnabled: PropTypes.bool.isRequired,
-  isBopisEnabled: PropTypes.bool.isRequired,
 };
 
 OutfitDetailsContainer.defaultProps = {
