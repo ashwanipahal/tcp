@@ -76,7 +76,7 @@ const createImgBanner = (
               <DamImage
                 imgData={image}
                 data-locator={`overlay_img_${l1Index}`}
-                imgConfigs={imgConfig.props}
+                imgConfigs={imgConfig.crops}
                 className={`l2-image-banner-image ${imgClassName}`}
               />
 

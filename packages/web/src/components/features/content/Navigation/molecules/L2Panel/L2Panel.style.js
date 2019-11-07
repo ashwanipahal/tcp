@@ -163,6 +163,9 @@ export default css`
     .l2-nav-category.shop-by-size-category {
       border-right: 0;
     }
+    .l2-nav-category.no-border {
+      border-right: 0;
+    }
     .l2-nav-category-header {
       margin-bottom: 24px;
     }

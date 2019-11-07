@@ -36,6 +36,17 @@ const renderPromoBadge = (promoBadge, currentIndex) => {
     )
   );
 };
+const isNextColShopBySize = categoryLayout => {
+  let nextColName = '';
+  if (categoryLayout) {
+    categoryLayout.map(item => {
+      const { name } = item;
+      nextColName = name;
+      return item;
+    });
+  }
+  return nextColName === 'shopBySizeTwoColumns';
+};
 
 const renderL3Panel = (
   hasSubCategories,
@@ -173,6 +184,23 @@ const getPanelColCount = panelData => {
   return count;
 };
 
+const getHeader = (label, hideOnMobileClass, categoryIndex) => {
+  return label ? (
+    <div className="l2-nav-category-header">
+      <Heading
+        variant="h6"
+        className={`l2-nav-category-heading ${hideOnMobileClass}`}
+        dataLocator={`l2_col_heading_${categoryIndex}`}
+      >
+        {label}
+      </Heading>
+      <span className="l2-nav-category-divider" />
+    </div>
+  ) : (
+    <div className="l2-nav-category-empty-header" />
+  );
+};
+
 const L2Panel = props => {
   const {
     className,
@@ -188,7 +216,9 @@ const L2Panel = props => {
     closeNav,
   } = props;
   const { previousButton } = accessibilityLabels;
-
+  const isShopBySizeCol = isNextColShopBySize(categoryLayout);
+  const panelDataCount = getPanelColCount(panelData);
+  let tempPanelDataCount = 0;
   return (
     <HideDrawerConsumer>
       {context => (
@@ -228,29 +258,21 @@ const L2Panel = props => {
                       };
                       const firstCol = items.slice(0, MAX_ITEMS_IN_COL);
                       const secondCol = items.slice(MAX_ITEMS_IN_COL);
-                      let columnClass = '';
-                      if (firstCol.length && secondCol.length) {
-                        columnClass = 'half-width';
-                      }
+                      const columnClass = firstCol.length && secondCol.length ? 'half-width' : '';
+                      tempPanelDataCount += items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL;
+                      const isLastPanelCol = tempPanelDataCount === panelDataCount;
+                      tempPanelDataCount = isLastPanelCol ? 0 : tempPanelDataCount;
                       const hideOnMobileClass =
                         category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
+                      const noBorderClass = isLastPanelCol && !isShopBySizeCol ? 'no-border' : '';
                       return (
                         <React.Fragment>
-                          <Col colSize={colSize} ignoreNthRule className="l2-nav-category">
-                            {label ? (
-                              <div className="l2-nav-category-header">
-                                <Heading
-                                  variant="h6"
-                                  className={`l2-nav-category-heading ${hideOnMobileClass}`}
-                                  dataLocator={`l2_col_heading_${categoryIndex}`}
-                                >
-                                  {label}
-                                </Heading>
-                                <span className="l2-nav-category-divider" />
-                              </div>
-                            ) : (
-                              <div className="l2-nav-category-empty-header" />
-                            )}
+                          <Col
+                            colSize={colSize}
+                            ignoreNthRule
+                            className={`l2-nav-category ${noBorderClass}`}
+                          >
+                            {getHeader(label, hideOnMobileClass, categoryIndex)}
                             <div className="l2-nav-category-links">
                               {createLinks(firstCol, 1, categoryIndex, {
                                 openL3Drawer,
