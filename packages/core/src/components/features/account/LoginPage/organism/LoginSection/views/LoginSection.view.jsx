@@ -73,7 +73,7 @@ class LoginSection extends React.PureComponent<Props> {
             anchorVariation="primary"
             onClick={this.showForgotPasswordForm}
           >
-            <LogOutPageContainer labels={logoutlabels} />
+            <LogOutPageContainer labels={logoutlabels} underline />
           </Anchor>
         </BodyCopy>
       </BodyCopy>
