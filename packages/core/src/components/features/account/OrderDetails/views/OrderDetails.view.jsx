@@ -109,7 +109,7 @@ const renderCancelledAndOutOfStockOrders = (
 
 class OrderDetailsView extends PureComponent {
   render() {
-    const { orderDetailsData, className, ordersLabels } = this.props;
+    const { orderDetailsData, className, ordersLabels, isLoggedIn } = this.props;
 
     const {
       summary,
@@ -130,18 +130,21 @@ class OrderDetailsView extends PureComponent {
       : getLabelValue(ordersLabels, 'lbl_orders_CancelNotification');
     return (
       <div className={className}>
-        <BodyCopy component="div" className="elem-mb-LRG">
-          <Anchor
-            to={internalEndpoints.myOrderPage.link}
-            asPath={internalEndpoints.myOrderPage.path}
-            fontSizeVariation="xlarge"
-            anchorVariation="secondary"
-            data-locator="backLink"
-          >
-            <span className="left-arrow" />
-            {getLabelValue(ordersLabels, 'lbl_orderDetails_back')}
-          </Anchor>
-        </BodyCopy>
+        {isLoggedIn && (
+          <BodyCopy component="div" className="elem-mb-LRG">
+            <Anchor
+              to={internalEndpoints.myOrderPage.link}
+              asPath={internalEndpoints.myOrderPage.path}
+              fontSizeVariation="xlarge"
+              anchorVariation="secondary"
+              data-locator="backLink"
+            >
+              <span className="left-arrow" />
+              {getLabelValue(ordersLabels, 'lbl_orderDetails_back')}
+            </Anchor>
+          </BodyCopy>
+        )}
+
         <FormPageHeadingComponent
           heading={getLabelValue(ordersLabels, 'lbl_orderDetails_heading')}
           className="myAccountRightView"
@@ -240,12 +243,14 @@ OrderDetailsView.propTypes = {
   className: PropTypes.string,
   orderDetailsData: PropTypes.shape({}),
   ordersLabels: PropTypes.shape({}),
+  isLoggedIn: PropTypes.bool,
 };
 
 OrderDetailsView.defaultProps = {
   className: '',
   ordersLabels: {},
   orderDetailsData: {},
+  isLoggedIn: false,
 };
 
 export default withStyles(OrderDetailsView, styles);
