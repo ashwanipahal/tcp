@@ -55,6 +55,17 @@ const style = css`
   .header-middle-login-section .headerSearchBox {
     position: relative;
     height: 40px;
+    flex-grow: unset;
+  }
+
+  .search-input-wrapper {
+    margin-right: 30px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-right: 54px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-right: 37px;
+    }
   }
 
   .account-info-section {
@@ -122,6 +133,7 @@ const style = css`
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     min-width: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    border-radius: 0px;
   }
   .header-middle-login-section a {
     position: relative;
