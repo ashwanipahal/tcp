@@ -41,7 +41,7 @@ export const formValidationMessages = {
     required: 'lbl_err_country_required',
   },
   userBirthMonth: {
-    userBirthday: 'lbl_err_userbirthdaymonth_required',
+    required: 'lbl_err_userbirthdaymonth_required',
   },
   userBirthYear: {
     userBirthday: 'lbl_err_userbirthdayyear_required',
@@ -237,9 +237,7 @@ export const formValidationRules = {
   },
 
   userBirthMonth: {
-    userBirthday: {
-      linkedProps: ['values'],
-    },
+    required: true,
   },
   userBirthYear: {
     userBirthday: {
