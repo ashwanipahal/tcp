@@ -158,15 +158,19 @@ exports[`Category Layout Component renders correctly 1`] = `
       title="Shop Big & Lil Sis"
       to="/Shop-Big-Lil-Sis"
     >
-      <Styled(Image)
-        alt="Shop Bsig & Lil Sis"
+      <WithTheme(DamImage)
         className="l2-image-banner-image  "
-        crop_d=""
-        crop_m=""
-        crop_t=""
         data-locator="overlay_img_0"
-        title="Shop Big & Lil Sis"
-        url="https://test5.childrensplace.com/image/upload/v1565180960/navigation_teaser_seesk1.jpg"
+        imgData={
+          Object {
+            "alt": "Shop Bsig & Lil Sis",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Shop Big & Lil Sis",
+            "url": "https://test5.childrensplace.com/image/upload/v1565180960/navigation_teaser_seesk1.jpg",
+          }
+        }
       />
       <Styled(BodyCopy)
         className="l2-nav-link "

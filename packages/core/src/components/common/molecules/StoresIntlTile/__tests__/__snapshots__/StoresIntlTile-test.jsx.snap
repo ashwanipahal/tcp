@@ -145,6 +145,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "secondary": "#575757",
         },
         "userTheme": Object {
+          "bagde": "#c25621",
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
@@ -890,6 +891,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "secondary": "#575757",
         },
         "userTheme": Object {
+          "bagde": "#c25621",
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",

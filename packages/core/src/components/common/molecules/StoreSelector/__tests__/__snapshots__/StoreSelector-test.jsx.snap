@@ -145,6 +145,7 @@ exports[`StoreSelector component should default set title as value for selected 
           "secondary": "#575757",
         },
         "userTheme": Object {
+          "bagde": "#c25621",
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
@@ -9026,6 +9027,7 @@ exports[`StoreSelector component should render correctly 1`] = `
           "secondary": "#575757",
         },
         "userTheme": Object {
+          "bagde": "#c25621",
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",

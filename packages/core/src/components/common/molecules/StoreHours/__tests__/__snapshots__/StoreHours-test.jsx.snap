@@ -232,6 +232,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "secondary": "#575757",
         },
         "userTheme": Object {
+          "bagde": "#c25621",
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
@@ -920,6 +921,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "secondary": "#575757",
         },
         "userTheme": Object {
+          "bagde": "#c25621",
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
@@ -1694,6 +1696,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "secondary": "#575757",
           },
           "userTheme": Object {
+            "bagde": "#c25621",
             "mpr": "#f7971f",
             "mprLight": "#fdead2",
             "mprPrimary": "#fbd5a5",
@@ -2382,6 +2385,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "secondary": "#575757",
             },
             "userTheme": Object {
+              "bagde": "#c25621",
               "mpr": "#f7971f",
               "mprLight": "#fdead2",
               "mprPrimary": "#fbd5a5",
@@ -3098,6 +3102,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "secondary": "#575757",
                 },
                 "userTheme": Object {
+                  "bagde": "#c25621",
                   "mpr": "#f7971f",
                   "mprLight": "#fdead2",
                   "mprPrimary": "#fbd5a5",
@@ -3946,6 +3951,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "secondary": "#575757",
                   },
                   "userTheme": Object {
+                    "bagde": "#c25621",
                     "mpr": "#f7971f",
                     "mprLight": "#fdead2",
                     "mprPrimary": "#fbd5a5",
@@ -4662,6 +4668,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "secondary": "#575757",
                     },
                     "userTheme": Object {
+                      "bagde": "#c25621",
                       "mpr": "#f7971f",
                       "mprLight": "#fdead2",
                       "mprPrimary": "#fbd5a5",
@@ -5478,6 +5485,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "secondary": "#575757",
         },
         "userTheme": Object {
+          "bagde": "#c25621",
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
           "mprPrimary": "#fbd5a5",
@@ -6256,6 +6264,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "secondary": "#575757",
           },
           "userTheme": Object {
+            "bagde": "#c25621",
             "mpr": "#f7971f",
             "mprLight": "#fdead2",
             "mprPrimary": "#fbd5a5",
@@ -6947,6 +6956,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "secondary": "#575757",
             },
             "userTheme": Object {
+              "bagde": "#c25621",
               "mpr": "#f7971f",
               "mprLight": "#fdead2",
               "mprPrimary": "#fbd5a5",
@@ -7651,6 +7661,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "secondary": "#575757",
                 },
                 "userTheme": Object {
+                  "bagde": "#c25621",
                   "mpr": "#f7971f",
                   "mprLight": "#fdead2",
                   "mprPrimary": "#fbd5a5",
@@ -8487,6 +8498,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "secondary": "#575757",
                   },
                   "userTheme": Object {
+                    "bagde": "#c25621",
                     "mpr": "#f7971f",
                     "mprLight": "#fdead2",
                     "mprPrimary": "#fbd5a5",
@@ -9191,6 +9203,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "secondary": "#575757",
                     },
                     "userTheme": Object {
+                      "bagde": "#c25621",
                       "mpr": "#f7971f",
                       "mprLight": "#fdead2",
                       "mprPrimary": "#fbd5a5",
