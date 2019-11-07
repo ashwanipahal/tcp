@@ -56,11 +56,11 @@ export default {
           category: [
             {
               key: 'cat_id',
-              val: '47503',
+              val: cat2,
             },
             {
               key: 'cat_id',
-              val: '47501',
+              val: cat2,
             },
           ],
           singleCTAButton: {
