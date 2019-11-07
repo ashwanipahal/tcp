@@ -1,62 +1,40 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
-import ApplyNowPLCCModal from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 
-class Espot extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showPlccModal: false,
-    };
-  }
+export class Espot extends PureComponent {
+  static propTypes = {
+    richTextHtml: PropTypes.string,
+    togglePlccModal: PropTypes.func.isRequired,
+    navigation: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    richTextHtml: '',
+  };
 
   onPressHandler = action => {
+    const { togglePlccModal, navigation } = this.props;
     switch (action) {
       case 'plccModal':
-        this.togglePlccModal();
+        navigation.navigate('ApplyNow');
+        togglePlccModal(true);
         break;
       default:
         break;
     }
   };
 
-  togglePlccModal() {
-    const { showPlccModal } = this.state;
-    this.setState({
-      showPlccModal: !showPlccModal,
-    });
-  }
-
   render() {
     const { richTextHtml } = this.props;
-    const { showPlccModal } = this.state;
     return (
       <View>
-        <RichText
-          source={richTextHtml.replace(/(\d+)px;/g, '$1')}
-          isNativeView
-          actionHandler={this.onPressHandler}
-        />
-        <ApplyNowPLCCModal
-          applyNow={showPlccModal}
-          toggleModalWrapper={() => {
-            this.togglePlccModal();
-          }}
-        />
+        <RichText source={richTextHtml} isNativeView actionHandler={this.onPressHandler} />
       </View>
     );
   }
 }
 
-Espot.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
-  richTextHtml: PropTypes.func,
-};
-
-Espot.defaultProps = {
-  richTextHtml: '',
-};
-
-export default Espot;
+export default withNavigation(Espot);
