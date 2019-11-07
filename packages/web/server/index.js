@@ -105,6 +105,7 @@ connectRedis({
 
 const setHostname = (req, res) => {
   const { hostname } = req;
+  logger.info('hostname: ', hostname);
   res.locals.hostname = hostname;
 };
 
@@ -239,7 +240,7 @@ app.prepare().then(() => {
     // server.get('*', redirectToErrorPage);
     return handle(req, res);
   });
-  
+
   if (xrayEnabled) {
     server.use(AWSXRay.express.closeSegment());
   }

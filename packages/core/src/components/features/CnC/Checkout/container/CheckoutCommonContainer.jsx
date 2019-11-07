@@ -45,12 +45,13 @@ import {
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
+import { getCVVCodeInfoContentId } from '../organisms/BillingPage/container/BillingPage.selectors';
 
 const {
   getSmsSignUpLabels,
   getSelectedShipmentId,
   getAddressFields,
-  getAddressPhoneNo,
+  getShippingPhoneNo,
   getIsOrderHasPickup,
   getIsOrderHasShipping,
   getBillingLabels,
@@ -88,6 +89,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isRegisteredUserCallDone,
       initCheckout,
       router,
+      cvvCodeInfoContentId,
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
@@ -97,6 +99,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       needHelpContentId,
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
+      cvvCodeInfoContentId,
     ]);
   }
 
@@ -203,6 +206,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItemsCount,
       toggleCountrySelector,
       checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -212,6 +216,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
+        isBagLoaded={isBagLoaded}
         initialValues={initialValues}
         onEditModeChange={onEditModeChange}
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
@@ -356,7 +361,7 @@ const mapStateToProps = state => {
       smsSignUpLabels: getSmsSignUpLabels(state),
       selectedShipmentId: getSelectedShipmentId(state), // selected shipment radio button
       address: getAddressFields(state), // address for fields data
-      addressPhoneNumber: getAddressPhoneNo(state), // phone field inside address for section
+      addressPhoneNumber: getShippingPhoneNo(state), // phone field inside address for section
       emailSignUpLabels: getEmailSignUpLabels(state),
       shipmentMethods: getShipmentMethods(state), // all the shipment methods from api
       defaultShipmentId: getDefaultShipmentID(state), // default shipment to be shown as selected
@@ -390,6 +395,7 @@ const mapStateToProps = state => {
       ...getEmailSignUpLabels(state),
     },
     smsSignUpLabels: getSmsSignUpLabels(state),
+    isBagLoaded: BagPageSelector.isBagLoaded(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     isGiftServicesChecked: getGiftServicesSend(state),
     isAlternateUpdateChecked: getAlternateFormUpdate(state),
@@ -403,6 +409,8 @@ const mapStateToProps = state => {
     reviewProps: {
       labels: getReviewLabels(state),
       isPaymentDisabled: getIsPaymentDisabled(state),
+      defaultShipmentId: getDefaultShipmentID(state),
+      cardType: selectors.getCardType(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),
@@ -413,6 +421,7 @@ const mapStateToProps = state => {
     isHasPickUpAlternatePerson: isPickupAlt(state),
     pickUpContactPerson: getPickupValues(state),
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
+    cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
   };
 };
 

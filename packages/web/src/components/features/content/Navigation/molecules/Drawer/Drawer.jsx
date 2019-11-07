@@ -113,6 +113,34 @@ class Drawer extends React.Component {
     }
   };
 
+  renderAccountInfoSectionInDrawer = () => {
+    const {
+      id,
+      close,
+      userName,
+      userPoints,
+      userRewards,
+      userNameClick,
+      onLinkClick,
+      triggerLoginCreateAccount,
+      openOverlay,
+    } = this.props;
+    return id === 'l1_drawer' ? (
+      <Row>
+        <AccountInfoSection
+          userName={userName}
+          userPoints={userPoints}
+          userRewards={userRewards}
+          openOverlay={openOverlay}
+          userNameClick={userNameClick}
+          onLinkClick={onLinkClick}
+          closeDrawer={close}
+          triggerLoginCreateAccount={triggerLoginCreateAccount}
+        />
+      </Row>
+    ) : null;
+  };
+
   /* Style for drawer to make it scrollable within */
   getDrawerStyle = () => {
     if (window) {
@@ -156,13 +184,6 @@ class Drawer extends React.Component {
     const {
       children,
       className,
-      userName,
-      userPoints,
-      userRewards,
-      userNameClick,
-      onLinkClick,
-      triggerLoginCreateAccount,
-      openOverlay,
       small,
       medium,
       large,
@@ -202,18 +223,7 @@ class Drawer extends React.Component {
             <aside
               className={`tcp-drawer ${classToOpen} ${condensedHeader} ${classToHideOnViewports}`}
             >
-              <Row>
-                <AccountInfoSection
-                  userName={userName}
-                  userPoints={userPoints}
-                  userRewards={userRewards}
-                  openOverlay={openOverlay}
-                  userNameClick={userNameClick}
-                  onLinkClick={onLinkClick}
-                  closeDrawer={close}
-                  triggerLoginCreateAccount={triggerLoginCreateAccount}
-                />
-              </Row>
+              {this.renderAccountInfoSectionInDrawer()}
               <div id="tcp-nav-drawer" className="tcp-drawer-content">
                 {children}
                 {renderDrawerFooter(hideNavigationFooter, drawerFooter)}

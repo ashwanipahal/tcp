@@ -57,6 +57,7 @@ export class BillingSection extends PureComponent {
     return (
       isExpressCheckout &&
       card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD &&
+      card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PAYPAL &&
       !isBillingVisited && (
         <Col colSize={{ small: 3, medium: 2, large: 2 }} className="cvvCode">
           <Field
@@ -119,7 +120,7 @@ export class BillingSection extends PureComponent {
       <Grid className={`${className}`}>
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy component="span" fontSize="fs28" fontFamily="primary">
+            <BodyCopy component="span" fontSize="fs26" fontFamily="primary">
               {`${labels.lbl_review_billingSectionTitle} `}
             </BodyCopy>
             <Anchor

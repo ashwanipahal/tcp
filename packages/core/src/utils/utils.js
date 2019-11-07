@@ -1022,6 +1022,18 @@ export const canUseDOM = () => {
   return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
+/**
+ *
+ * Get labels based on pattern
+ * @param {Object} object of labels
+ * @param {String} string pattern
+ * @return {Array} return string array for labels
+ */
+export const getLabelsBasedOnPattern = (labels, pattern) => {
+  const regex = new RegExp(pattern);
+  return Object.keys(labels).filter(labelKey => regex.test(labelKey));
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -1064,4 +1076,5 @@ export default {
   getStyliticsUserName,
   getStyliticsRegion,
   canUseDOM,
+  getLabelsBasedOnPattern,
 };

@@ -135,8 +135,8 @@ const FooterNavLinksList = ({
    * For action favorites, check-point-balance, redeem-rewards if user is logged in then user should navigate
    * to the cms configured location else login modal should open
    */
-  const shouldLinkOrButton = (isModal, isAlreadyLoggedIn) => {
-    return !(isModal && isAlreadyLoggedIn);
+  const shouldLinkOrButton = isModal => {
+    return !(isModal && isLoggedIn);
   };
 
   const createNavListItem = (linkItems, index) => {
@@ -168,7 +168,7 @@ const FooterNavLinksList = ({
      */
 
     const isModal = shouldLoginModalOpen(linkAction, linkUrl);
-    dispatchFn = isModal ? shouldLinkOrButton(isModal, hideLogoutMyActLink) : dispatchFn;
+    dispatchFn = isModal ? shouldLinkOrButton(isModal) : dispatchFn;
 
     return !hideLogoutMyActLink ? (
       <li>

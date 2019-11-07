@@ -6,6 +6,7 @@ const initialState = fromJS({
   orderDetails: {},
   sfl: [],
   errors: false,
+  loaded: false,
   openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,
   moduleXContent: [],
@@ -101,7 +102,7 @@ const returnBagPageReducer = (state = initialState, action) => {
 const BagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
-      return state.set('orderDetails', fromJS(action.payload));
+      return state.set('loaded', true).set('orderDetails', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS:
       return state.set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:

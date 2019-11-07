@@ -246,7 +246,7 @@ const getColorsMap = ({
       color: {
         name: defaultColor,
         imagePath: getImgPath(isBundleProduct ? product.prodpartno : product.imagename).colorSwatch,
-        swatchimage: product.swatchimage,
+        swatchImage: product.swatchimage,
       },
     },
   ];
@@ -291,8 +291,8 @@ const setPriceRange = product => {
   return {
     highListPrice: parseFloat(product.high_list_price) || 0,
     highOfferPrice: parseFloat(product.high_offer_price) || 0,
-    lowListPrice: parseFloat(product.low_list_price) || 0,
-    lowOfferPrice: parseFloat(product.low_offer_price) || 0,
+    lowListPrice: parseFloat(product.low_list_price) || parseFloat(product.min_list_price) || 0,
+    lowOfferPrice: parseFloat(product.low_offer_price) || parseFloat(product.min_offer_price) || 0,
   };
 };
 

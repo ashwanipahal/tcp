@@ -284,17 +284,24 @@ export const scrollTopElement = elem => {
   }
 };
 
+/**
+ * 2019-11-05: Hotfix PR needed to address issue with this
+ * array of countries increasing in size with each call
+ * (up to over 400k items in some pages).
+ *
+ * @TODO RCA is re-rendering of the App component itself.
+ * Need to fix that. This is just a symptom.
+ */
 export const getCountriesMap = data => {
-  const countries = defaultCountries;
-  data.map(value =>
-    countries.push(
+  return [
+    ...defaultCountries,
+    ...data.map(value =>
       Object.assign({}, value.country, {
         siteId: 'us',
         currencyId: value.currency.id,
       })
-    )
-  );
-  return countries;
+    ),
+  ];
 };
 
 export const getCurrenciesMap = data => {
@@ -393,7 +400,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     borderFree: processEnv.BORDERS_FREE,
     borderFreeComm: processEnv.BORDERS_FREE_COMM,
     paypalEnv: processEnv.RWD_WEB_PAYPAL_ENV,
-    paypalStaticUrl:  processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
+    paypalStaticUrl: processEnv.RWD_APP_PAYPAL_STATIC_DOMAIN,
     crossDomain: processEnv.RWD_WEB_CROSS_DOMAIN,
     styliticsUserNameTCP: processEnv.RWD_WEB_STYLITICS_USERNAME_TCP,
     styliticsUserNameGYM: processEnv.RWD_WEB_STYLITICS_USERNAME_GYM,

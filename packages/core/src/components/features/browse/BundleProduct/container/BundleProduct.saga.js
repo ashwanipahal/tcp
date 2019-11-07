@@ -19,8 +19,8 @@ function* fetchBundleProductDetail({ payload: { productId } }) {
   }
 }
 
-function* BundleProductDetailSaga() {
+function* BundleProductSaga() {
   yield takeLatest(BUNDLEPRODUCT_CONSTANTS.FETCH_BUNDLE_DETAILS, fetchBundleProductDetail);
 }
 
-export default BundleProductDetailSaga;
+export default BundleProductSaga;

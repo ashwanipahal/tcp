@@ -161,6 +161,7 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: PropTypes.string,
     }),
     simplifiedProductPickupView: PropTypes.bool,
+    isAnchor: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -209,6 +210,7 @@ class ProductPickup extends React.PureComponent {
       lbl_Product_pickup_TITLE_DEFAULT_NOSTORE: 'Select Store',
     },
     simplifiedProductPickupView: false,
+    isAnchor: false,
   };
 
   constructor(props) {
@@ -475,81 +477,119 @@ class ProductPickup extends React.PureComponent {
         fontSize="fs10"
         fontWeight="black"
         color="red.500"
-        text={`${labels.lbl_Product_pickup_UNAVAILABLE_IN_STORES} UNAVAILABLE IN STORES`}
+        text={labels.lbl_Product_pickup_UNAVAILABLE_IN_STORES}
+      />
+    );
+  }
+
+  renderPickUpInStoreAnchorButton() {
+    const { showPickupInfo, labels } = this.props;
+    return (
+      <Anchor
+        noLink
+        onPress={this.handlePickupModalClick}
+        accessibilityRole="link"
+        accessibilityLabel={
+          showPickupInfo
+            ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+            : labels.lbl_Product_pickup_FIND_STORE
+        }
+        text={
+          showPickupInfo
+            ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+            : labels.lbl_Product_pickup_FIND_STORE
+        }
+        anchorVariation="custom"
+        colorName="gray.900"
+        fontSizeVariation="medium"
+        centered
+        underline
       />
     );
   }
 
   render() {
-    const { showPickupInfo, isSubmitting, labels, simplifiedProductPickupView } = this.props;
+    const {
+      showPickupInfo,
+      isSubmitting,
+      labels,
+      simplifiedProductPickupView,
+      isAnchor,
+    } = this.props;
     return (
-      <Container
-        margins={!simplifiedProductPickupView ? '40px 0 0 0' : '0'}
-        borderWidth={simplifiedProductPickupView ? 0 : 1}
-      >
-        {!simplifiedProductPickupView && (
-          <>
-            <FastShippingContainer>
-              <CustomIcon
-                iconFontName={ICON_FONT_CLASS.Icomoon}
-                name={ICON_NAME.fastShipping}
-                size="fs25"
-                color="gray.900"
-                dataLocator="pdp_fast_shipping_icon"
-              />
-              <FastShippingTextContainer>
-                <BodyCopy
-                  dataLocator="pdp_free_shipping_label"
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  fontWeight="semibold"
-                  color="gray.900"
-                  text={labels.lbl_Product_pickup_FREE_SHIPPING}
-                />
-                <BodyCopy
-                  dataLocator="pdp_free_shipping_label"
-                  fontFamily="secondary"
-                  fontSize="fs12"
-                  fontWeight="regular"
-                  color="gray.900"
-                  text={labels.lbl_Product_pickup_NO_MIN_PURCHASE}
-                />
-              </FastShippingTextContainer>
-            </FastShippingContainer>
-            <LineComp marginTop={16} borderColor="gray.1600" />
-            <StoreContainer>
-              <CustomIcon
-                iconFontName={ICON_FONT_CLASS.Icomoon}
-                name={ICON_NAME.markerIcon}
-                size="fs24"
-                color="gray.900"
-                dataLocator="pdp_store_marker_icon"
-              />
-              <ColumnContainer margins="0 0 0 20px">
-                <RowContainer>{this.renderPickupTitle()}</RowContainer>
-                {showPickupInfo && this.renderPickupInfo()}
-                {!showPickupInfo && this.renderPickupInfoError()}
-              </ColumnContainer>
-            </StoreContainer>
-          </>
+      <>
+        {!isAnchor ? (
+          <Container
+            margins={!simplifiedProductPickupView ? '40px 0 0 0' : '0'}
+            borderWidth={simplifiedProductPickupView ? 0 : 1}
+          >
+            {!simplifiedProductPickupView && (
+              <>
+                <FastShippingContainer>
+                  <CustomIcon
+                    iconFontName={ICON_FONT_CLASS.Icomoon}
+                    name={ICON_NAME.fastShipping}
+                    size="fs25"
+                    color="gray.900"
+                    dataLocator="pdp_fast_shipping_icon"
+                  />
+                  <FastShippingTextContainer>
+                    <BodyCopy
+                      dataLocator="pdp_free_shipping_label"
+                      fontFamily="secondary"
+                      fontSize="fs16"
+                      fontWeight="semibold"
+                      color="gray.900"
+                      text={labels.lbl_Product_pickup_FREE_SHIPPING}
+                    />
+                    <BodyCopy
+                      dataLocator="pdp_free_shipping_label"
+                      fontFamily="secondary"
+                      fontSize="fs12"
+                      fontWeight="regular"
+                      color="gray.900"
+                      text={labels.lbl_Product_pickup_NO_MIN_PURCHASE}
+                    />
+                  </FastShippingTextContainer>
+                </FastShippingContainer>
+                <LineComp marginTop={16} borderColor="gray.1600" />
+                <StoreContainer>
+                  <CustomIcon
+                    iconFontName={ICON_FONT_CLASS.Icomoon}
+                    name={ICON_NAME.markerIcon}
+                    size="fs24"
+                    color="gray.900"
+                    dataLocator="pdp_store_marker_icon"
+                  />
+                  <ColumnContainer margins="0 0 0 20px">
+                    <RowContainer>{this.renderPickupTitle()}</RowContainer>
+                    {showPickupInfo && this.renderPickupInfo()}
+                    {!showPickupInfo && this.renderPickupInfoError()}
+                  </ColumnContainer>
+                </StoreContainer>
+              </>
+            )}
+            <Button
+              margin={!simplifiedProductPickupView ? '12px 12px 0 12px' : '0'}
+              color="white"
+              fill="BLACK"
+              text={
+                showPickupInfo
+                  ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+                  : labels.lbl_Product_pickup_FIND_STORE
+              }
+              fontSize="fs12"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              onPress={this.handlePickupModalClick}
+              locator="pdp_pick_up_in_store_btn"
+              disabled={isSubmitting}
+            />
+          </Container>
+        ) : (
+          this.renderPickUpInStoreAnchorButton()
         )}
-        <Button
-          margin={!simplifiedProductPickupView ? '12px 12px 0 12px' : '0'}
-          color="white"
-          fill="BLACK"
-          text={
-            showPickupInfo
-              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-              : labels.lbl_Product_pickup_FIND_STORE
-          }
-          fontSize="fs12"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          onPress={this.handlePickupModalClick}
-          locator="pdp_pick_up_in_store_btn"
-          disabled={isSubmitting}
-        />
-      </Container>
+      </>
     );
   }
 }

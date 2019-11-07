@@ -167,10 +167,6 @@ function uiFlagReducer(checkout, action) {
     //   return merge(uiFlags, { isPLCCPaymentEnabled: action.isPLCCPaymentEnabled });
     case CheckoutConstants.CHECKOUT_FLAGS_SET_LOAD_METHODS:
       return checkout.setIn(['uiFlags', 'isLoadingShippingMethods'], action.isLoading);
-    // case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
-    //   return merge(uiFlags, { isEditingSubform: action.isEditingSubform });
-    // case 'CHECKOUT_FLAGS_SET_LOAD_METHODS':
-    //   return merge(uiFlags, { isLoadingShippingMethods: action.isLoading });
     case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':
