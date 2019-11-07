@@ -43,6 +43,7 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
     getCurrencySymbol,
     pageCategory,
+    footerLabels,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -167,14 +168,15 @@ const LoyaltyBannerSection = props => {
         />
         <View className="footer">
           <LoyaltyFooterSection
-            labels={labels}
-            isPlcc={isPlcc}
-            isProductDetailView={isProductDetailView}
-            isReviewPage={isReviewPage}
-            isConfirmationPage={isConfirmationPage}
-            isGuest={isGuest}
-            isAddedToBagPage={isAddedToBagPage}
-            earnedRewardAvailable={earnedRewardAvailable}
+            footerLabels={footerLabels}
+            // labels={labels}
+            // isPlcc={isPlcc}
+            // isProductDetailView={isProductDetailView}
+            // isReviewPage={isReviewPage}
+            // isConfirmationPage={isConfirmationPage}
+            // isGuest={isGuest}
+            // isAddedToBagPage={isAddedToBagPage}
+            // earnedRewardAvailable={earnedRewardAvailable}
           />
         </View>
       </LoyaltySectionWrapper>
@@ -185,6 +187,7 @@ const LoyaltyBannerSection = props => {
 
 LoyaltyBannerSection.propTypes = {
   labels: PropTypes.shape.isRequired,
+  footerLabels: PropTypes.shape.isRequired,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
   thresholdValue: PropTypes.number,

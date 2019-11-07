@@ -14,6 +14,7 @@ import {
   cartOrderDetails,
   getLoyaltyBannerLabels,
   confirmationDetails,
+  getFooterLabels,
 } from './LoyaltyBanner.selectors';
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
@@ -32,6 +33,7 @@ export const LoyaltyBannerContainer = ({
   closeAddedToBagModal,
   inheritedStyles,
   openApplyNowModal,
+  footerLabels,
 }) => {
   const {
     estimatedRewards,
@@ -60,6 +62,7 @@ export const LoyaltyBannerContainer = ({
       closeAddedToBagModal={closeAddedToBagModal}
       inheritedStyles={inheritedStyles}
       openApplyNowModal={openApplyNowModal}
+      footerLabels={footerLabels}
     />
   );
 };
@@ -77,6 +80,7 @@ LoyaltyBannerContainer.propTypes = {
   isInternationalShipping: PropTypes.bool,
   inheritedStyles: PropTypes.string,
   openApplyNowModal: PropTypes.func.isRequired,
+  footerLabels: PropTypes.shape({}).isRequired,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -100,16 +104,24 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 /* istanbul ignore next */
-export const mapStateToProps = (state, ownProps) => ({
-  labels: getLoyaltyBannerLabels(state),
-  orderDetails:
-    ownProps.pageCategory === 'confirmation' ? confirmationDetails(state) : cartOrderDetails(state),
-  thresholdValue: getThresholdValue(state),
-  isGuestCheck: isGuest(state),
-  isPlcc: isPlccUser(state),
-  currencySymbol: getCurrencySymbol(state),
-  isInternationalShipping: getIsInternationalShipping(state),
-});
+export const mapStateToProps = (state, ownProps) => {
+  const isGuestState = isGuest(state);
+  const isPlccState = isPlccUser(state);
+  const loyaltyLabels = getLoyaltyBannerLabels(state);
+  return {
+    labels: loyaltyLabels,
+    orderDetails:
+      ownProps.pageCategory === 'confirmation'
+        ? confirmationDetails(state)
+        : cartOrderDetails(state),
+    thresholdValue: getThresholdValue(state),
+    isGuestCheck: isGuest(state),
+    isPlcc: isPlccUser(state),
+    currencySymbol: getCurrencySymbol(state),
+    isInternationalShipping: getIsInternationalShipping(state),
+    footerLabels: getFooterLabels(state, ownProps.pageCategory, isGuestState, isPlccState),
+  };
+};
 
 export default connect(
   mapStateToProps,

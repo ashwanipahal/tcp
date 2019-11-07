@@ -1,377 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoyaltyFooterSection View Component ProductDetailSection true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span
-        className="applyNowLink"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
 exports[`LoyaltyFooterSection View Component is not ProductDetailView should render correctly 1`] = `
 <div
   className=" footer-wrapper"
 >
   <div
     className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span
-        className="applyNowLink"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span
-        className="applyNowLink"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="createLoginSpaceBetween"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isAddedToBagPage & isPlcc true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <span
-    className="links-wrapper"
-  >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      fontSizeVariation="medium"
-      handleLinkClick={[Function]}
-      noLink={true}
-      underline={true}
-    />
-  </span>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span
-        className="applyNowLink"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardAvailable should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="createLoginSpaceBetween"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardAvailable should render correctly 2`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <span
-      className="links-container"
-    >
-      <span
-        className="applyNowLink"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isConfirmationPage true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
-/>
-`;
-
-exports[`LoyaltyFooterSection View Component isPlcc & isReviewPage true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      fontSizeVariation="medium"
-      handleLinkClick={[Function]}
-      noLink={true}
-      underline={true}
-    />
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component isPlcc true should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
-    <Styled(Anchor)
-      anchorVariation="primary"
-      fontSizeVariation="medium"
-      handleLinkClick={[Function]}
-      noLink={true}
-      underline={true}
-    />
-  </div>
+  />
 </div>
 `;
 
@@ -382,30 +17,55 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest shou
   <div
     className="links-wrapper"
   >
-    <span
-      className="links-container"
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
     >
-      <span>
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="createLoginSpaceBetween"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
+      abc
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    >
+      CreateAccountAction
+    </Styled(Anchor)>
+    <span
+      className="space-between"
+    />
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    >
+      loginAction
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -414,17 +74,59 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
 <div
   className=" footer-wrapper"
 >
-  <span
+  <div
     className="links-wrapper"
   >
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
     <Styled(Anchor)
       anchorVariation="primary"
       fontSizeVariation="medium"
       handleLinkClick={[Function]}
       noLink={true}
       underline={true}
+    >
+      ApplyNowAction
+    </Styled(Anchor)>
+    <span
+      className="space-between"
     />
-  </span>
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      abc
+    </Styled(BodyCopy)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      handleLinkClick={[Function]}
+      noLink={true}
+      underline={true}
+    >
+      LearnMoreAction
+    </Styled(Anchor)>
+  </div>
 </div>
 `;
 
@@ -435,93 +137,37 @@ exports[`LoyaltyFooterSection View Component isProductDetailView should render c
   <div
     className="links-wrapper"
   >
-    <span
-      className="links-container"
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
     >
-      <span
-        className="applyNowLink"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
-  </div>
-</div>
-`;
-
-exports[`LoyaltyFooterSection View Component not isPlcc should render correctly 1`] = `
-<div
-  className=" footer-wrapper"
->
-  <div
-    className="links-wrapper"
-  >
+      abc
+    </Styled(BodyCopy)>
     <span
-      className="links-container"
+      className="space-between"
+    />
+    <Styled(BodyCopy)
+      className="symbolWrapper"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs9"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
     >
-      <span
-        className="applyNowLink"
-      >
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-      <span
-        className="learnSymbolWrapper elem-pl-XL"
-      >
-        <Styled(BodyCopy)
-          className="symbolWrapper"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs9"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-        <Styled(Anchor)
-          anchorVariation="primary"
-          fontSizeVariation="medium"
-          handleLinkClick={[Function]}
-          noLink={true}
-          underline={true}
-        />
-      </span>
-    </span>
+      abc
+    </Styled(BodyCopy)>
   </div>
 </div>
 `;
