@@ -5,8 +5,8 @@ import Espot from '@tcp/core/src/components/common/molecules/Espot';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { ParentContainerStyle } from '../OffersSection.style.native';
 
-const OffersSection = ({ labels }) => (
-  <View>
+const OffersSection = ({ labels, ...otherProps }) => (
+  <View {...otherProps}>
     <Espot richTextHtml={labels.ACC_PAYMNET_BANNER_LABEL} />
   </View>
 );
