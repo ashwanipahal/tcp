@@ -172,7 +172,7 @@ class HeaderMiddleNav extends React.PureComponent {
           <Row className={`${className} header-middle-nav`}>
             <Col
               colSize={{
-                large: 4,
+                large: 5,
                 medium: 8,
                 small: 6,
               }}
@@ -183,7 +183,7 @@ class HeaderMiddleNav extends React.PureComponent {
             <Col
               className="header-middle-nav-search"
               colSize={{
-                large: 4,
+                large: 2,
                 medium: 8,
                 small: 6,
               }}
@@ -224,7 +224,7 @@ class HeaderMiddleNav extends React.PureComponent {
             </Col>
             <Col
               colSize={{
-                large: 4,
+                large: 5,
                 medium: 8,
                 small: 6,
               }}
