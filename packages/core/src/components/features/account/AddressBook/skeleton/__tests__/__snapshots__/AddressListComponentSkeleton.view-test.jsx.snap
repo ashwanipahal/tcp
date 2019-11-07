@@ -8,7 +8,7 @@ exports[`AddressListComponentSkeleton component should renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ifAKCX",
+        "componentId": "sc-bxivhb",
         "isStatic": false,
         "rules": Array [
           "
@@ -27,7 +27,7 @@ exports[`AddressListComponentSkeleton component should renders correctly 1`] = `
       "displayName": "Styled(AddressListComponentSkeleton)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ifAKCX",
+      "styledComponentId": "sc-bxivhb",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

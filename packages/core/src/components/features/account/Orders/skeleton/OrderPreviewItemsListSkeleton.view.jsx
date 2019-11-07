@@ -4,18 +4,16 @@ import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelt
 
 const OrderPreviewItemsListSkeleton = () => {
   return (
-    <div>
-      <Row>
-        <Col colSize={{ large: 2, medium: 2, small: 2 }}>
-          <LoaderSkelton width="100%" height="300px" />
-        </Col>
-        <Col colSize={{ large: 3, medium: 5, small: 4 }} className="elem-ml-MED">
-          <LoaderSkelton width="100%" height="40px" className="elem-mb-MED" />
-          <LoaderSkelton width="50%" height="20px" className="elem-mb-XS" />
-          <LoaderSkelton width="75%" height="20px" />
-        </Col>
-      </Row>
-    </div>
+    <Row>
+      <Col colSize={{ large: 2, medium: 2, small: 2 }}>
+        <LoaderSkelton width="100%" height="300px" />
+      </Col>
+      <Col colSize={{ large: 3, medium: 5, small: 4 }} className="elem-ml-MED">
+        <LoaderSkelton width="100%" height="40px" className="elem-mb-MED" />
+        <LoaderSkelton width="50%" height="20px" className="elem-mb-XS" />
+        <LoaderSkelton width="75%" height="20px" />
+      </Col>
+    </Row>
   );
 };
 
