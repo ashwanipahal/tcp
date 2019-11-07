@@ -95,6 +95,7 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
           "large": 4,
@@ -276,6 +277,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
           "large": 4,
@@ -508,6 +510,7 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
           "large": 4,
@@ -773,6 +776,7 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
           "large": 4,
@@ -1176,6 +1180,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
           "large": 4,
@@ -1684,6 +1689,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
           "large": 4,
@@ -2212,6 +2218,7 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
     fullBleed={true}
   >
     <Styled(Col)
+      className="shipping-section-header"
       colSize={
         Object {
           "large": 4,

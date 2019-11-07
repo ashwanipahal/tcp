@@ -13,24 +13,6 @@ import GiftWrappingDisplay from '../../GiftWrappingDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 
 export class ShippingReviewSection extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    const {
-      updateShippingMethodSelection,
-      expressReviewShippingSectionId,
-      isExpressCheckout,
-    } = this.props;
-    const { expressReviewShippingSectionId: prevexpressReviewShippingSectionId } = prevProps;
-    if (
-      isExpressCheckout &&
-      prevexpressReviewShippingSectionId.shippingMethodId &&
-      typeof prevexpressReviewShippingSectionId.shippingMethodId !== 'object' &&
-      expressReviewShippingSectionId.shippingMethodId !==
-        prevexpressReviewShippingSectionId.shippingMethodId
-    ) {
-      updateShippingMethodSelection({ id: expressReviewShippingSectionId.shippingMethodId });
-    }
-  }
-
   render() {
     const {
       className,
@@ -147,7 +129,6 @@ ShippingReviewSection.propTypes = {
   shipmentMethods: PropTypes.shape({}).isRequired,
   formName: PropTypes.string.isRequired,
   formSection: PropTypes.string.isRequired,
-  updateShippingMethodSelection: PropTypes.func.isRequired,
   expressReviewShippingSectionId: PropTypes.shape({}),
 };
 

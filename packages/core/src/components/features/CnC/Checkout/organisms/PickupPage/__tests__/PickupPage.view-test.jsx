@@ -84,7 +84,7 @@ describe('PickUpFormPartVanilla component', () => {
       isEditing: true,
     });
     component.setState({
-      isEditing: true,
+      isEditing: false,
       pickUpContact: {
         firstName: '',
         lastName: '',

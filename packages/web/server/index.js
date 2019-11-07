@@ -105,6 +105,7 @@ connectRedis({
 
 const setHostname = (req, res) => {
   const { hostname } = req;
+  logger.info('hostname: ', hostname);
   res.locals.hostname = hostname;
 };
 

@@ -8,7 +8,7 @@ import {
   getOrdersLabels,
   getOrderDetailsDataFetchingState,
 } from './OrderDetails.selectors';
-
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 /**
  * This Class component use for return the Order Details data
  * can be passed in the component.
@@ -37,7 +37,14 @@ export class OrderDetailsContainer extends PureComponent {
    */
 
   render() {
-    const { orderId, orderDetailsData, ordersLabels, navigation, isFetching } = this.props;
+    const {
+      orderId,
+      orderDetailsData,
+      ordersLabels,
+      navigation,
+      isFetching,
+      isLoggedIn,
+    } = this.props;
     return (
       <OrderDetailsView
         orderDetailsData={orderDetailsData}
@@ -45,6 +52,7 @@ export class OrderDetailsContainer extends PureComponent {
         orderId={orderId}
         navigation={navigation}
         isFetching={isFetching}
+        isLoggedIn={isLoggedIn}
       />
     );
   }
@@ -65,6 +73,7 @@ export const mapStateToProps = (state, ownProps) => {
     orderDetailsData: getOrderDetailsDataState(state),
     ordersLabels: getOrdersLabels(state),
     isFetching: getOrderDetailsDataFetchingState(state),
+    isLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -76,6 +85,7 @@ OrderDetailsContainer.propTypes = {
   getOrderDetailsAction: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
   isFetching: PropTypes.bool,
+  isLoggedIn: PropTypes.bool,
 };
 
 OrderDetailsContainer.defaultProps = {
@@ -85,6 +95,7 @@ OrderDetailsContainer.defaultProps = {
   orderDetailsData: {},
   navigation: {},
   isFetching: false,
+  isLoggedIn: false,
 };
 
 export default connect(

@@ -106,7 +106,7 @@ class AddressBookTile extends React.Component {
                       link
                       underline
                       anchorVariation="primary"
-                      handleLinkClick={this.handleDefaultLinkClick}
+                      onClick={this.handleDefaultLinkClick}
                       noLink
                       to=""
                       dataLocator="addressbook-makedefault"

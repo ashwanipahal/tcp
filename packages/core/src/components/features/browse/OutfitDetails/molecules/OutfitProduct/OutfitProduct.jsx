@@ -33,6 +33,8 @@ const OutfitDetailsView = ({
   const colorProduct =
     outfitProduct && getMapSliceForColorProductId(colorFitsSizesMap, colorProductId);
   const prices = outfitProduct && getPrices(outfitProduct, colorProduct.color.name);
+  const badges = colorProduct.miscInfo.badge1;
+  const badge1 = badges && badges.defaultBadge ? badges.defaultBadge : badges.matchBadge;
 
   // TODO - this is temporary - just for the display - once the form values are fetched, it would be updated
   const color = Object.keys(imagesByColor)[0];
@@ -92,6 +94,7 @@ const OutfitDetailsView = ({
             isInternationalShipping={isInternationalShipping}
             onAddItemToFavorites={addToFavorites}
             isLoggedIn={isLoggedIn}
+            badge={badge1}
           />
           <ProductPrice
             currencySymbol={currencySymbol}
@@ -109,6 +112,7 @@ const OutfitDetailsView = ({
             plpLabels={plpLabels}
             isOutfitPage
             errorOnHandleSubmit={addToBagError}
+            isPickup
           />
         </div>
       </Col>

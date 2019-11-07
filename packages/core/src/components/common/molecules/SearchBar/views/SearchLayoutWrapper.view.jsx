@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
-import { getIconPath, routerPush } from '@tcp/core/src/utils';
+import { getIconPath, routerPush, disableBodyScroll, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBarStyle from '../SearchBar.style';
@@ -31,6 +31,13 @@ class SearchLayoutWrapper extends React.PureComponent {
     this.searchInput = React.createRef();
     this.changeSearchText = this.changeSearchText.bind(this);
     this.initiateSearch = this.initiateSearch.bind(this);
+    this.targetElement = React.createRef();
+  }
+
+  componentDidMount() {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      disableBodyScroll(this.targetElement.current);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -40,9 +47,16 @@ class SearchLayoutWrapper extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    if (window.innerWidth <= breakpoints.values.lg) {
+      enableBodyScroll(this.targetElement.current);
+    }
+  }
+
   startInitiateSearch = () => {
     const { setSearchState, setDataInLocalStorage, redirectToSearchPage } = this.props;
-    const searchText = this.searchInput ? this.searchInput.current.value : '';
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     if (searchText) {
       setDataInLocalStorage(searchText);
       redirectToSearchPage(searchText);
@@ -53,14 +67,21 @@ class SearchLayoutWrapper extends React.PureComponent {
   };
 
   cancelSearchBar = e => {
+    const { startSearch, labels } = this.props;
     e.preventDefault();
-    const searchText = this.searchInput ? this.searchInput.current.value : '';
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     if (searchText) {
       document.getElementById('searchBar-input-form').reset();
       document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
     }
+    const payload = {
+      searchText: '',
+      slpLabels: labels,
+    };
+    startSearch(payload);
   };
 
   changeCaseFirstLetter = params => {
@@ -71,7 +92,7 @@ class SearchLayoutWrapper extends React.PureComponent {
   };
 
   highlight = inputTextParam => {
-    const text = this.searchInput ? this.searchInput.current.value : '';
+    const text = this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     let { inputText } = inputTextParam;
     inputText = inputText.toLowerCase();
     const index = inputText.indexOf(text.toLowerCase());
@@ -147,7 +168,8 @@ class SearchLayoutWrapper extends React.PureComponent {
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, labels } = this.props;
-    const searchText = this.searchInput ? this.searchInput.current.value : '';
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     const searchImage = document
@@ -212,7 +234,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <div className="searchWrapper">
+        <div className="searchWrapper" ref={this.targetElement}>
           <div className="searchbar">
             <Image
               alt="search-mobile"
