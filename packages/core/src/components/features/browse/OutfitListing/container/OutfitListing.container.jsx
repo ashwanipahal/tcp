@@ -31,6 +31,7 @@ class OutfitListingContainer extends React.PureComponent {
 
     const outfitPath = asPath || (navigation && navigation.getParam('outfitPath'));
 
+    console.log('jeansModule #### ', jeansModule);
     return (
       <OutfitListing
         labels={labels}

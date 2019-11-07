@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/JeansModule.style';
 import { Carousel } from '../..';
-import { Anchor, DamImage } from '../../../atoms';
+import { Anchor, DamImage, BodyCopy } from '../../../atoms';
 import theme from '../../../../../../styles/themes/TCP';
 import { getIconPath } from '../../../../../utils';
 
@@ -12,21 +12,21 @@ const { breakpoints } = theme;
 const CAROUSEL_OPTIONS = {
   autoplay: false,
   arrows: true,
-  centerMode: false,
-  centerPadding: '0px',
+  centerPadding: '16px',
   fade: false,
   speed: 1000,
   lazyLoad: false,
   dots: false,
   swipe: true,
-  slidesToShow: 4,
+  slidesToShow: 6,
   slidesToScroll: 1,
+  infinite: false,
   responsive: [
     {
       breakpoint: parseInt(breakpoints.medium, 10) - 1,
       settings: {
-        slidesToShow: 2,
-        arrows: true,
+        slidesToShow: 2.5,
+        arrows: false,
         swipeToSlide: true,
         centerPadding: '18%',
       },
@@ -34,7 +34,7 @@ const CAROUSEL_OPTIONS = {
     {
       breakpoint: parseInt(breakpoints.large, 10) - 1,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 4.25,
         arrows: true,
         swipeToSlide: true,
         centerPadding: '13%',
@@ -45,19 +45,19 @@ const CAROUSEL_OPTIONS = {
 
 export class JeansModule extends PureComponent {
   static propTypes = {
-    jeanModule: PropTypes.shape({}),
-    className: PropTypes.string,
+    jeansModule: PropTypes.shape({}),
+    className: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
-    jeanModule: {},
-    className: '',
+    jeansModule: {},
   };
 
   render() {
-    const { jeanModule, className } = this.props;
+    const { jeansModule, className } = this.props;
     return (
       <div className={className}>
+        <div className="title-section">{jeansModule.composites.headLine[0].text}</div>
         <Carousel
           options={CAROUSEL_OPTIONS}
           carouselConfig={{
@@ -66,31 +66,25 @@ export class JeansModule extends PureComponent {
             customArrowRight: getIconPath('carousel-big-carrot'),
           }}
         >
-          {jeanModule.composites.imageTileWrapper.map(({ imageStyled, link }, index) => {
+          {jeansModule.composites.imageTileWrapper.map(({ imageStyled }, index) => {
             return (
-              <div key={index.toString()}>
+              <div className="jeans-carousel" key={index.toString()}>
                 <Anchor
                   className="image-link"
-                  to={imageStyled[0].url}
-                  asPath={imageStyled[0].url}
+                  to={imageStyled[0].image.alt}
+                  asPath={imageStyled[0].image.url}
                   dataLocator="dummy-datalocator"
                 >
                   <DamImage
-                    className={`${className} carousel-image`}
+                    className="carousel-image"
                     imgData={{
-                      alt: imageStyled[0].title,
-                      url: imageStyled[0].url,
+                      alt: imageStyled[0].image.alt,
+                      url: imageStyled[0].image.url,
                     }}
                   />
-                </Anchor>
-                <Anchor
-                  className="image-link"
-                  to={link.url}
-                  asPath={link.url}
-                  fontSizeVariation="small"
-                  dataLocator="dummy-datalocator"
-                >
-                  {link.text}
+                  <BodyCopy className="image-text" fontSize="fs12">
+                    {imageStyled[0].styled.text}
+                  </BodyCopy>
                 </Anchor>
               </div>
             );

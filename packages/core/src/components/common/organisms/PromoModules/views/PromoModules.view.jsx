@@ -5,7 +5,7 @@ import { Col } from '../../../atoms';
 import DivisionTabModule from '../../../molecules/DivisionTabModule';
 import OutfitModule from '../../../molecules/OutfitCarouselModule';
 import styles from '../styles/PromoModules.style';
-import { JeansModule } from '../../../molecules/JeansModule/views/JeansModule.view';
+import JeansModule from '../../../molecules/JeansModule';
 
 export class PromoModules extends PureComponent {
   static propTypes = {
@@ -13,7 +13,7 @@ export class PromoModules extends PureComponent {
     onTabChange: PropTypes.func,
     className: PropTypes.string,
     outfitModule: PropTypes.shape({}),
-    jeanModule: PropTypes.shape({}),
+    jeansModule: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -21,14 +21,14 @@ export class PromoModules extends PureComponent {
     onTabChange: () => {},
     className: '',
     outfitModule: {},
-    jeanModule: {},
+    jeansModule: {},
   };
 
   render() {
-    const { divisionTab, onTabChange, outfitModule, className, jeanModule } = this.props;
+    const { divisionTab, onTabChange, outfitModule, className, jeansModule } = this.props;
     return (
       <Col className={className} colSize={{ small: 6, medium: 8, desktop: 12 }}>
-        <JeansModule jeanModule={jeanModule} />
+        <JeansModule jeansModule={jeansModule} />
         <OutfitModule outfitModule={outfitModule} />
         <DivisionTabModule divisionTab={divisionTab} onTabChange={onTabChange} />
       </Col>

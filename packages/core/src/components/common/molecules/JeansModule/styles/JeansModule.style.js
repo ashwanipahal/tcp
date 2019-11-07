@@ -1,31 +1,54 @@
 import { css } from 'styled-components';
 
-const DivisionTabStyles = css`
-  .heading {
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+const JeansModuleStyles = css`
+  position: relative;
+  height: 312px;
+
+  .jeans-carousel {
+    background: ${props => props.theme.colorPalette.gray[300]};
   }
-  .heading:before,
-  .heading:after {
+  .image-link {
+    img {
+      margin: 0 auto;
+      height: 276px;
+    }
+  }
+  .title-section {
+    width: 312px;
+    height: 30px;
+    background: #1a1a1a;
     position: absolute;
-    top: 51%;
-    overflow: hidden;
-    width: 50%;
-    height: 1px;
-    content: '\a0';
-    background-color: ${props => props.theme.colorPalette.gray[600]};
+    bottom: -30px;
+    left: 0;
+    margin-left: 14px;
+    transform: rotate(270deg);
+    transform-origin: 0 0;
+    color: white;
+    text-align: center;
+    line-height: 30px;
   }
-  .heading:after {
-    margin-left: 12px;
+  .image-text {
+    height: 36px;
+    border-top: 1px solid #1a1a1a;
+    background: transparent;
+    text-align: center;
+    line-height: 36px;
+    width: 80%;
+    margin-left: 10%;
+    text-transform: uppercase;
   }
-  .heading:before {
-    margin-left: calc(-50% - 12px);
+  .tcp_carousel_wrapper {
+    margin-left: 44px;
   }
 
-  .button-tabs {
-    flex-wrap: wrap;
+  @media ${props => props.theme.mediaQuery.large} {
+    .title-section {
+      margin-left: 0;
+    }
+    .tcp_carousel_wrapper {
+      margin-left: 30px;
+    }
   }
 `;
 
-export default DivisionTabStyles;
+export default JeansModuleStyles;

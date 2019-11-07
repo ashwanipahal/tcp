@@ -28,6 +28,7 @@ const OutfitListingView = ({
   asPath,
   divisionTab,
   outfitModule,
+  jeansModule,
 }) => {
   return (
     <>
@@ -56,11 +57,14 @@ const OutfitListingView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-            <PromoModules
-              divisionTab={divisionTab}
-              onTabChange={onTabChange}
-              outfitModule={outfitModule}
-            />
+            <Row fullBleed>
+              <PromoModules
+                divisionTab={divisionTab}
+                onTabChange={onTabChange}
+                outfitModule={outfitModule}
+                jeansModule={jeansModule}
+              />
+            </Row>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <OutfitTileSection asPath={asPath} labels={labels} outfitDetails={outfitDetails} />
               {/* <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} /> */}
