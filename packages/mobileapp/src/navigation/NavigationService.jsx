@@ -9,8 +9,9 @@ function setTopLevelNavigator(navigatorRef) {
 function navigate(routeName, params) {
   navigator.dispatch(
     NavigationActions.navigate({
-      routeName,
-      params,
+      routeName: 'Bag',
+      params: {},
+      action: NavigationActions.navigate({ routeName, params }),
     })
   );
 }

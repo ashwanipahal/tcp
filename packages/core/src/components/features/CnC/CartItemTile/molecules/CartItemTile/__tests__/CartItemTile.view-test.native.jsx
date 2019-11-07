@@ -253,7 +253,8 @@ describe.only('CartItemTile - Boss Bopis Scenarios', () => {
     CartItemTileExtension.goToPdpPage(
       '',
       { productInfo: { pdpUrl: '', productPartNumber: 'IV_24' }, itemInfo: { itemBrand: 'TCP' } },
-      { navigate: jest.fn() }
+      { navigate: jest.fn() },
+      jest.fn()
     );
     expect(component).toMatchSnapshot();
   });
