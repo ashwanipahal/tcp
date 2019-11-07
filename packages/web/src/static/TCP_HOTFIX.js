@@ -1,3 +1,5 @@
+/* eslint-disable extra-rules/no-commented-out-code */
+
 /**
  * This script would be authored and deployed independantly
  * from the main app. The global functions could come from anywhere,
@@ -36,11 +38,14 @@ window.TCP_HOTFIX_PROPS = {
 window.TCP_HOTFIX_BROWSER = {
   ProductsGridItem(element, props) {
     console.log('TCP_HOTFIX_BROWSER > ProductsGridItem', element, props);
+    // element.style.setProperty('background', 'yellow');
   },
   ProductListingPage(element, props) {
     console.log('TCP_HOTFIX_BROWSER > ProductListingPage', element, props);
+    // element.style.setProperty('background', 'lightblue');
   },
   ProductDetailPage(element, props) {
     console.log('TCP_HOTFIX_BROWSER > ProductDetailPage', element, props);
+    // element.style.setProperty('background', 'lightgreen');
   },
 };
