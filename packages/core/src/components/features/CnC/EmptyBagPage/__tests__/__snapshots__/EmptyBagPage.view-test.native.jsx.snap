@@ -29,10 +29,6 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     underline={true}
     visible={false}
   />
-  <Connect(ApplyNowModalWrapper)
-    applyNow={false}
-    toggleModalWrapper={[Function]}
-  />
   <Styled(TouchableOpacity)
     onPress={[Function]}
   >

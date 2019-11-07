@@ -10,6 +10,7 @@ exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] 
   isGuest={false}
   isPlcc={false}
   labels={Object {}}
+  navigation={null}
   pageCategory=""
   pointsToNextReward={0}
   thresholdValue={16.66}
