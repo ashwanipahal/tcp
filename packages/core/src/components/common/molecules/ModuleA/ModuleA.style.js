@@ -61,9 +61,16 @@ const style = css`
   }
 
   &.gymboree-module-a .banner-content {
+    transform: translate(-50%, 0);
+    top: 8.7%;
+    left: 50%;
+    width: 60%;
+
     @media ${props => props.theme.mediaQuery.medium} {
       left: 14px;
-      width: 280px;
+      width: 255px;
+      top: 50%;
+      transform: translate(0%, -50%);
     }
 
     @media ${props => props.theme.mediaQuery.large} {

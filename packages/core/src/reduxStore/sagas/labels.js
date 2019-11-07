@@ -25,7 +25,7 @@ function* fetchComponentLabel(action) {
       brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
       channel: defaultChannel,
       country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
-      lang: language,
+      lang: language !== 'en' ? language : '',
     };
     const data = yield call(labelAbstractor.getData, LABELS.labels, labelParams);
     yield put(

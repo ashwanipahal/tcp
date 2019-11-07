@@ -16,4 +16,5 @@ export const Col = styled.View`
   margin-right: 5px;
   background: #d8d8d8;
   position: relative;
+  ${props => (props.outFitSkeleton ? `margin:12px 12px; ` : '')}
 `;
