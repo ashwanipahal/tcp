@@ -178,6 +178,8 @@ class QuickViewModal extends React.Component {
             fullWidth
             stickyHeader
             rightAlignCrossIcon
+            headingFontWeight="bold"
+            fontSize="fs22"
           >
             {isLoading ? (
               <Spinner inheritedStyles={customSpinnerStyle} />
