@@ -16,7 +16,7 @@ import {
   HeaderContainer,
 } from '../styles/MyPlaceRewardsCreditCard.style.native';
 
-import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal';
+// import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal';
 
 const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../../core/src/assets/PLCC_lockup_2_points.png');
@@ -29,7 +29,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
   };
 
   render() {
-    const { labels, isPLCCModalOpen, openPLCCModal } = this.props;
+    const { labels, navigation, openApplyNowModal } = this.props;
 
     return (
       <>
@@ -74,7 +74,10 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
               color="white"
               text={getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
               width="100%"
-              onPress={openPLCCModal}
+              onPress={() => {
+                navigation.navigate('ApplyNow');
+                openApplyNowModal({ isModalOpen: false, isPLCCModalOpen: true });
+              }}
             />
           </ButtonWrapper>
           <ButtonWrapper>
@@ -152,8 +155,6 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             text={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
           />
         </BottomContainer>
-
-        {isPLCCModalOpen && <ApplyNowPLCCModal isPLCCModalOpen={isPLCCModalOpen} />}
       </>
     );
   }
@@ -161,13 +162,12 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
 
 MyPlaceRewardsCreditCard.propTypes = {
   labels: PropTypes.shape({}),
-  isPLCCModalOpen: PropTypes.bool,
-  openPLCCModal: PropTypes.func.isRequired,
+  openApplyNowModal: PropTypes.func.isRequired,
+  navigation: PropTypes.func.isRequired,
 };
 
 MyPlaceRewardsCreditCard.defaultProps = {
   labels: {},
-  isPLCCModalOpen: false,
 };
 
 export default MyPlaceRewardsCreditCard;
