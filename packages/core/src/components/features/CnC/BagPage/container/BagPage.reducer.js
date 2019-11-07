@@ -69,6 +69,19 @@ function setCartItemsSflError(state, isCartItemSflError) {
   return state.setIn(['uiFlags', 'cartItemSflError'], isCartItemSflError);
 }
 
+const returnBagPageReducerExtension = (state = initialState, action) => {
+  switch (action.type) {
+    case BAGPAGE_CONSTANTS.PAYPAL_BUTTON_HIDDEN:
+      return state.set('paypalBtnHidden', action.payload);
+    default:
+      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
+
 const returnBagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
@@ -91,11 +104,7 @@ const returnBagPageReducer = (state = initialState, action) => {
         showModal: true,
       });
     default:
-      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return returnBagPageReducerExtension(state, action);
   }
 };
 

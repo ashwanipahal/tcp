@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
-import { getLocator, validateColor } from '../../../../../utils/index.native';
+import { getLocator, validateColor, splitUniqueIDForDAM } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-import config from '../moduleJ.config';
+import moduleJConfig from '../moduleJ.config';
 
 import {
   Container,
@@ -35,7 +35,7 @@ const PRODUCT_IMAGE_GUTTER = 16;
 const PRODUCT_IMAGE_PER_SLIDE = 4;
 const MODULE_HEIGHT = 142;
 const MODULE_WIDTH = (PRODUCT_IMAGE_WIDTH + PRODUCT_IMAGE_GUTTER) * PRODUCT_IMAGE_PER_SLIDE;
-const { IMG_DATA, TOTAL_IMAGES } = config;
+const { IMG_DATA, TOTAL_IMAGES } = moduleJConfig;
 class ModuleJ extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -63,13 +63,7 @@ class ModuleJ extends React.PureComponent {
     return (
       <ImageSlideWrapper>
         {item.map(productItem => {
-          const {
-            imageUrl: [imageUrl],
-            uniqueId,
-            product_name: productName,
-            productItemIndex,
-          } = productItem;
-
+          const { uniqueId, product_name: productName, productItemIndex } = productItem;
           return (
             <ImageItemWrapper
               key={uniqueId}
@@ -90,10 +84,11 @@ class ModuleJ extends React.PureComponent {
                 <StyledImage
                   alt={productName}
                   host={LAZYLOAD_HOST_NAME.HOME}
-                  url={imageUrl}
+                  url={splitUniqueIDForDAM(uniqueId)}
                   height={PRODUCT_IMAGE_HEIGHT}
                   width={PRODUCT_IMAGE_WIDTH}
-                  imageConfig={IMG_DATA.productImgConfig[0]}
+                  imgConfig={IMG_DATA.productImgConfig[0]}
+                  isProductImage
                 />
               </Anchor>
             </ImageItemWrapper>

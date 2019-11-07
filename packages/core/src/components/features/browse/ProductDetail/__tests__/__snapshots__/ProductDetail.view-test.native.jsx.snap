@@ -10,18 +10,43 @@ exports[`ProductDetailView component should renders correctly 1`] = `
 >
   <Styled(View)>
     <Styled(WithTheme(ImageCarousel))
-      imageUrls={null}
+      AddToFavoriteErrorMsg=""
+      currentColorEntry={
+        Object {
+          "favoritedCount": 0,
+        }
+      }
+      currentProduct={
+        Object {
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
+      imageUrls={Array []}
+      isLoggedIn={false}
+      onAddItemToFavorites={null}
       onImageClick={[Function]}
+      removeAddToFavoritesErrorMsg={[Function]}
     />
     <Styled(ProductSummary)
       currencyExchange={1}
       currencySymbol="USD"
+      isBundleProduct={false}
       isGiftCard={false}
       isPlcc={false}
       pdpLabels={Object {}}
       productData={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
@@ -33,7 +58,11 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       alternateSizes={Object {}}
       currentProduct={
         Object {
-          "colorFitsSizesMap": Array [],
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
           "name": "",
           "shortDescription": "",
         }
@@ -48,6 +77,20 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
     />
+    <Connect(ProductPickupContainer)
+      formName="ProductAddToBag-undefined"
+      productInfo={
+        Object {
+          "colorFitsSizesMap": Array [
+            Object {
+              "favoritedCount": 0,
+            },
+          ],
+          "name": "",
+          "shortDescription": "",
+        }
+      }
+    />
     <Connect(AddedToBagContainer)
       navigation={Object {}}
     />
@@ -60,6 +103,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       isShowMore={false}
       itemPartNumber=""
       longDescription=""
+      margins={null}
       pdpLabels={Object {}}
       shortDescription=""
     />

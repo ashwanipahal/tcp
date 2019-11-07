@@ -44,6 +44,7 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
         isProductDetailView={false}
         isReviewPage={false}
         labels={Object {}}
+        navigation={null}
       />
     </View>
   </Styled(View)>

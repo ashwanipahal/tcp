@@ -15,6 +15,7 @@ export {
   createAPIConfig,
   switchAPIConfig,
   isAndroid,
+  isIOS,
   getPixelRatio,
   LAZYLOAD_HOST_NAME,
   setTestId,
@@ -65,6 +66,7 @@ export {
   getStyliticsUserName,
   getStyliticsRegion,
   canUseDOM,
+  splitUniqueIDForDAM,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

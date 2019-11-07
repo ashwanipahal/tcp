@@ -8,6 +8,7 @@ import OutfitDetail from '@tcp/core/src/components/features/browse/OutfitDetails
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import SearchDetail from '@tcp/core/src/components/features/browse/SearchDetail';
 import Confirmation from '@tcp/core/src/components/features/CnC/Confirmation';
+import ProductBundleContainer from '@tcp/core/src/components/features/browse/BundleProduct';
 
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
@@ -75,6 +76,12 @@ const PlpStack = createStackNavigator(
     },
     [ROUTE_NAMES.CONFIRMATION]: {
       screen: Confirmation,
+    },
+    [ROUTE_NAMES.BUNDLE_DETAIL]: {
+      screen: ProductBundleContainer,
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation, false);
+      },
     },
   },
   {
