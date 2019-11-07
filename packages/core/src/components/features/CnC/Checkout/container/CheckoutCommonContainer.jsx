@@ -90,6 +90,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       initCheckout,
       router,
       cvvCodeInfoContentId,
+      checkoutServerError,
+      clearCheckoutServerError,
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
@@ -101,6 +103,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       getGiftServicesContentGymId,
       cvvCodeInfoContentId,
     ]);
+    if (checkoutServerError) {
+      clearCheckoutServerError({});
+    }
   }
 
   componentDidUpdate(prevProps) {
