@@ -1,6 +1,6 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import ORDERDETAILS_CONSTANTS from '../OrderDetails.constants';
-import { setOrderDetails } from './OrderDetails.actions';
+import { setOrderDetails, showLoader } from './OrderDetails.actions';
 import { setOrderDetailInfo, setError } from '../../TrackOrder/container/TrackOrder.actions';
 
 import { getOrderInfoByOrderId } from '../../../../../services/abstractors/account/ordersList';
@@ -17,6 +17,7 @@ export function* getOrderDetailsListSaga({ payload }) {
   }
 
   try {
+    yield put(showLoader());
     const OrderDetailsList = yield call(getOrderInfoByOrderId, updatedPayload);
     if (payload.emailAddress) {
       yield put(setOrderDetailInfo(OrderDetailsList.trackOrderInfo));

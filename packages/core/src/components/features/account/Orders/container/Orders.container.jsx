@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getOrdersListState } from './Orders.selectors';
-import { getAllItems } from '../../OrderDetails/container/OrderDetails.selectors';
+import { getOrdersListState, getOrderListFetchingState } from './Orders.selectors';
+import {
+  getAllItems,
+  getOrderDetailsDataFetchingState,
+} from '../../OrderDetails/container/OrderDetails.selectors';
 import { getSiteId } from '../../../../../utils';
 import OrderListComponent from '../views';
 import { getOrdersList } from './Orders.actions';
@@ -52,6 +55,8 @@ export class OrdersContainer extends PureComponent {
       handleComponentChange,
       componentProps,
       orderItems,
+      isMostRecentOrderFetching,
+      isMostRecentOrderDetailFetching,
     } = this.props;
     const ordersListItemData = ordersListItems && ordersListItems.orders;
 
@@ -64,6 +69,8 @@ export class OrdersContainer extends PureComponent {
         handleComponentChange={handleComponentChange}
         componentProps={componentProps}
         orderItems={orderItems}
+        isMostRecentOrderFetching={isMostRecentOrderFetching}
+        isMostRecentOrderDetailFetching={isMostRecentOrderDetailFetching}
       />
     );
   }
@@ -73,6 +80,8 @@ export const mapStateToProps = state => ({
   labels: getLabels(state),
   ordersListItems: getOrdersListState(state),
   orderItems: getAllItems(state),
+  isMostRecentOrderFetching: getOrderListFetchingState(state),
+  isMostRecentOrderDetailFetching: getOrderDetailsDataFetchingState(state),
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -93,6 +102,8 @@ OrdersContainer.propTypes = {
   componentProps: PropTypes.shape({}),
   orderItems: PropTypes.shape([]),
   getOrderDetailsAction: PropTypes.func.isRequired,
+  isMostRecentOrderFetching: PropTypes.bool,
+  isMostRecentOrderDetailFetching: PropTypes.bool,
 };
 
 OrdersContainer.defaultProps = {
@@ -101,6 +112,8 @@ OrdersContainer.defaultProps = {
   handleComponentChange: () => {},
   componentProps: {},
   orderItems: [],
+  isMostRecentOrderFetching: false,
+  isMostRecentOrderDetailFetching: false,
 };
 
 export default connect(
