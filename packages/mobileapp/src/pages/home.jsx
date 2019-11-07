@@ -33,6 +33,14 @@ const getDefaultHeaderWithSearch = navigation => {
   };
 };
 
+const getDefaultHeaderForStore = (navigation, navTitle) => {
+  const title = navTitle || (navigation && navigation.getParam('title'));
+  return {
+    header: props => <Header {...props} title={title} navigation={navigation} headertype="store" />,
+    headerBackground: 'transparent',
+  };
+};
+
 const HomeStack = createStackNavigator(
   {
     Home: {
@@ -74,14 +82,19 @@ const HomeStack = createStackNavigator(
       screen: StoreDetails,
       path: 'store-details/:storeId',
       navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation);
+        const title = navigation && navigation.getParam('title');
+        const navTitle = (title && `${title.toUpperCase()}`) || '';
+        return getDefaultHeaderForStore(navigation, navTitle);
       },
     },
     StoreLanding: {
       screen: StoreLanding,
       path: 'store-landing',
+      // eslint-disable-next-line sonarjs/no-identical-functions
       navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation);
+        const title = navigation && navigation.getParam('title');
+        const navTitle = (title && `${title.toUpperCase()}`) || '';
+        return getDefaultHeaderForStore(navigation, navTitle);
       },
     },
     SearchDetail: {

@@ -134,11 +134,8 @@ function* setUpdateItemErrorMessages(payload, errorMessage) {
 export function* updateCartItemSaga({ payload }) {
   const { updateActionType } = payload;
   try {
-    if (updateActionType) {
-      yield put(clearAddToBagErrorState());
-    } else {
-      yield put(clearAddToPickupErrorState());
-    }
+    yield put(clearAddToBagErrorState());
+    yield put(clearAddToPickupErrorState());
     yield put(clearToggleCartItemError());
     yield put(clearToggleBossBopisCartItemError());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);

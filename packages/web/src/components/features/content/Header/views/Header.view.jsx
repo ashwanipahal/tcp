@@ -82,6 +82,7 @@ class Header extends React.PureComponent {
       openNavigationDrawer,
       closeNavigationDrawer,
       isUserPlcc,
+      isRememberedUser,
       userName,
       userPoints,
       userRewards,
@@ -95,9 +96,12 @@ class Header extends React.PureComponent {
       totalItems,
       favStore,
       isPickupModalOpen,
+      loyaltyPromoBanner,
     } = this.props;
+
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
+
     return (
       <header className={className}>
         <HeaderTopNav
@@ -119,6 +123,7 @@ class Header extends React.PureComponent {
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
           isUserPlcc={isUserPlcc}
+          isRememberedUser={isRememberedUser}
           userName={userName}
           userPoints={userPoints}
           userRewards={userRewards}
@@ -137,7 +142,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        <LoyaltyPromoBanner />
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -167,6 +172,7 @@ class Header extends React.PureComponent {
 
 Header.propTypes = {
   className: PropTypes.string.isRequired,
+  loyaltyPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -196,6 +202,7 @@ Header.propTypes = {
   }),
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
+  isRememberedUser: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -219,6 +226,7 @@ Header.defaultProps = {
     features: {},
   },
   isPickupModalOpen: false,
+  isRememberedUser: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

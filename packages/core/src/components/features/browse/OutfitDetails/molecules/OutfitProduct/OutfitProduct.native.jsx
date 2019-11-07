@@ -1,5 +1,5 @@
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { TouchableOpacity, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import CustomIcon from '../../../../../common/atoms/Icon';
@@ -22,6 +22,10 @@ import {
   OutfitProductWrapper,
 } from '../styles/OutfitProduct.native.style';
 import ProductPickupContainer from '../../../../../common/organisms/ProductPickup';
+
+import { ModalViewWrapper } from '../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
+import ModalNative from '../../../../../common/molecules/Modal/index';
+import LoginPageContainer from '../../../../account/LoginPage/index';
 
 const renderPickUpStore = props => {
   const { currentProduct, selectedColorProductId } = props;
@@ -59,8 +63,9 @@ const OutfitDetailsView = ({
   currencyExchange,
   favoriteCount,
   handleAddToBag,
-  handleAddToFavorites,
   navigation,
+  isLoggedIn,
+  addToFavorites,
 }) => {
   const {
     imagesByColor,
@@ -95,6 +100,19 @@ const OutfitDetailsView = ({
 
   // TODO - this is temporary - just for the display - once the form values are fetched, it would be updated
   const color = Object.keys(imagesByColor)[0];
+
+  const [showModal, setShowModal] = useState(false);
+  const [isAddedToFav, setIsAddedToFav] = useState(false);
+
+  const handleAddToFavorites = () => {
+    if (isLoggedIn) {
+      addToFavorites({ colorProductId: outfitProduct.generalProductId });
+    } else {
+      setShowModal(true);
+    }
+
+    setIsAddedToFav(!!isLoggedIn);
+  };
 
   const loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
     promotionalMessage,
@@ -153,13 +171,37 @@ const OutfitDetailsView = ({
             margin="0 0 4px 0"
           />
           <FavoriteView accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
-            <CustomIcon
-              name={ICON_NAME.favorite}
-              size="fs25"
-              color="gray.600"
-              isButton
-              onPress={handleAddToFavorites}
-            />
+            {isAddedToFav ? (
+              <CustomIcon name={ICON_NAME.favorite} size="fs25" color="gray.500" isButton />
+            ) : (
+              <CustomIcon
+                name={ICON_NAME.favorite}
+                size="fs25"
+                color="gray.600"
+                isButton
+                onPress={() => handleAddToFavorites}
+              />
+            )}
+            {showModal && (
+              <ModalNative
+                isOpen={showModal}
+                onRequestClose={() => setShowModal(!showModal)}
+                heading="LOG IN"
+                headingFontFamily="secondary"
+                fontSize="fs16"
+              >
+                <SafeAreaView>
+                  <ModalViewWrapper>
+                    <LoginPageContainer
+                      onRequestClose={() => setShowModal(!showModal)}
+                      isUserLoggedIn={isLoggedIn}
+                      variation="favorites"
+                      showLogin={showModal}
+                    />
+                  </ModalViewWrapper>
+                </SafeAreaView>
+              </ModalNative>
+            )}
             <BodyCopy
               mobileFontFamily="secondary"
               fontSize="fs10"
@@ -236,10 +278,11 @@ OutfitDetailsView.propTypes = {
   currencyExchange: PropTypes.string,
   favoriteCount: PropTypes.string,
   handleAddToBag: PropTypes.func.isRequired,
-  handleAddToFavorites: PropTypes.func.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }),
+  addToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -252,6 +295,8 @@ OutfitDetailsView.defaultProps = {
   currencyExchange: [{ exchangevalue: 1 }],
   favoriteCount: 0,
   navigation: {},
+  isLoggedIn: false,
+  addToFavorites: null,
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

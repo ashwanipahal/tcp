@@ -163,7 +163,7 @@ class FilterModal extends React.PureComponent {
     const sortOptions = isFavorite ? sortLabels : getSortOptions(sortLabels);
 
     const dropDownStyle = {
-      height: 49,
+      height: Platform.OS === 'ios' ? 0 : 49,
       border: 1,
     };
     const itemStyle = {
@@ -225,10 +225,7 @@ class FilterModal extends React.PureComponent {
                   data={sortOptions}
                   // eslint-disable-next-line sonarjs/no-identical-functions
                   onValueChange={itemValue => {
-                    this.setState({ language: itemValue });
-                    setTimeout(() => {
-                      this.handleClick(itemValue);
-                    }, 180);
+                    this.setState({ language: itemValue }, () => this.handleClick(itemValue));
                   }}
                   variation="primary"
                   dropDownStyle={{ ...dropDownStyle }}
@@ -238,6 +235,7 @@ class FilterModal extends React.PureComponent {
                   dropDownItemFontWeight="regular"
                   onPressOut={this.onPressOut}
                   openDropdownOnLoad
+                  isAnimateList={false}
                 />
               </SortContent>
             )}

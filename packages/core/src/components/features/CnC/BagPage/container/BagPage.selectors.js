@@ -27,6 +27,8 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
         lbl_orderledger_total: totalLabel,
+        lbl_recently_viewed: recentlyViewed,
+        lbl_emptyBag_applyNow: applyNow,
       } = {},
     } = {},
     global: {
@@ -74,6 +76,8 @@ const getBagPageLabels = state => {
     sflSuccess,
     sflDeleteSuccess,
     totalLabel,
+    recentlyViewed,
+    applyNow,
   };
 };
 
@@ -218,11 +222,23 @@ const itemDeleteModalLabels = state => {
   };
 };
 
+const getPayPalWebViewStatus = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false;
+};
+
+const isBagLoaded = state => {
+  return state.CartPageReducer.getIn(['loaded']);
+};
+
 const getBagStickyHeaderInterval = state => {
   return (
     parseInt(state.session.siteDetails.BAG_CONDENSE_HEADER_INTERVAL, 10) ||
     BAGPAGE_CONSTANTS.BAG_PAGE_STICKY_HEADER_INTERVAL
   );
+};
+
+const getIsPayPalHidden = state => {
+  return state.CartPageReducer.getIn(['paypalBtnHidden']);
 };
 
 export default {
@@ -245,6 +261,7 @@ export default {
   getGiftServicesContentGymId,
   getCurrentCurrency,
   getCartStores,
+  isBagLoaded,
   getCartStoresToJs,
   getsflItemsList,
   checkoutIfItemIsUnqualified,
@@ -252,4 +269,6 @@ export default {
   itemDeleteModalLabels,
   getIsPayPalEnabled,
   getBagStickyHeaderInterval,
+  getPayPalWebViewStatus,
+  getIsPayPalHidden,
 };

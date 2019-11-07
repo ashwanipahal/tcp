@@ -42,7 +42,6 @@ const styles = css`
   .image-title-wrapper {
     display: flex;
     flex-direction: row;
-    z-index: 1;
   }
   .price-container {
     display: inline-flex;
@@ -157,7 +156,7 @@ export const customPriceStyles = css`
 export const customSubmitButtonStyle = css`
   @media ${props => props.theme.mediaQuery.large} {
     .add-to-bag-button {
-      width: 243px;
+      width: 343px;
     }
   }
 `;

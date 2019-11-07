@@ -51,6 +51,9 @@ const styles = css`
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+    }
   }
 
   .top-badge-container {
@@ -174,8 +177,12 @@ const styles = css`
         : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
     overflow: hidden;
+    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
-
+  .promotionText {
+    visibility: visible;
+  }
   .empty-color-chips-container {
     min-height: 35px;
   }

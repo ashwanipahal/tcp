@@ -33,6 +33,7 @@ const getCvvField = ({ isExpressCheckout, labels, cvvCodeRichText, card, isBilli
     isExpressCheckout &&
     card &&
     card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD &&
+    card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PAYPAL &&
     !isBillingVisited && (
       <CvvCode>
         <Field

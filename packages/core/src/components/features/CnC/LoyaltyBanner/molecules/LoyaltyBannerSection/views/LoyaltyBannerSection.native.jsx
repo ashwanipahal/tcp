@@ -12,6 +12,24 @@ import { renderLoyaltyLabels, getPageCategory } from '../../../util/utilityCommo
 import GuestMprPlccSection from '../../GuestMprPlccSection';
 import LoyaltyFooterSection from '../../LoyaltyFooterSection';
 
+const shouldShowSubtotal = ({
+  estimatedSubtotal,
+  thresholdValue,
+  isPlcc,
+  isReviewPage,
+  isConfirmationPage,
+  isAddedToBagPage,
+  isProductDetailView,
+}) => {
+  return (
+    estimatedSubtotal > thresholdValue &&
+    !isPlcc &&
+    !isReviewPage &&
+    !isConfirmationPage &&
+    !isAddedToBagPage &&
+    !isProductDetailView
+  );
+};
 const LoyaltyBannerSection = props => {
   const {
     labels,
@@ -25,6 +43,8 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
     getCurrencySymbol,
     pageCategory,
+    openApplyNowModal,
+    navigation,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -50,11 +70,15 @@ const LoyaltyBannerSection = props => {
 
   /* istanbul ignore else */
   if (
-    estimatedSubtotal > thresholdValue &&
-    !isPlcc &&
-    !isReviewPage &&
-    !isConfirmationPage &&
-    !isAddedToBagPage
+    shouldShowSubtotal({
+      estimatedSubtotal,
+      thresholdValue,
+      isPlcc,
+      isReviewPage,
+      isConfirmationPage,
+      isAddedToBagPage,
+      isProductDetailView,
+    })
   ) {
     showSubtotal = true;
   }
@@ -95,7 +119,7 @@ const LoyaltyBannerSection = props => {
 
   const utilArrSubHeading = [
     {
-      key: '#sectionSymbol#',
+      key: '#sectionSymbol# ',
       value: (
         <SectionSymbol pageChecksObj={pageChecksObj}>{`${labels.sectionSymbol} `}</SectionSymbol>
       ),
@@ -153,6 +177,8 @@ const LoyaltyBannerSection = props => {
             isGuest={isGuest}
             isAddedToBagPage={isAddedToBagPage}
             earnedRewardAvailable={earnedRewardAvailable}
+            openApplyNowModal={openApplyNowModal}
+            navigation={navigation}
           />
         </View>
       </LoyaltySectionWrapper>
@@ -173,6 +199,8 @@ LoyaltyBannerSection.propTypes = {
   estimatedRewardsVal: PropTypes.string,
   pointsToNextReward: PropTypes.number,
   pageCategory: PropTypes.string,
+  openApplyNowModal: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -186,6 +214,7 @@ LoyaltyBannerSection.defaultProps = {
   estimatedRewardsVal: '',
   pointsToNextReward: 0,
   pageCategory: '',
+  navigation: null,
 };
 
 export default LoyaltyBannerSection;

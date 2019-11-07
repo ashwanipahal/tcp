@@ -57,18 +57,57 @@ export const buttonActionStyles = css`
   }
 `;
 
+export const LoyaltyWrapperStyles = css`
+  .loyalty-banner-wrapper {
+    padding: 0;
+  }
+`;
+
+export const recommendationStyles = css`
+  .recommendations-header {
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+  }
+  .container-price > p {
+    font-size: ${props => props.theme.typography.fontSizes.fs15};
+  }
+  && .product-image-container > a {
+    min-height: 130px;
+  }
+  && .recommendations-tile {
+    .slick-list {
+      margin-right: -33%;
+      margin-left: -33%;
+    }
+  }
+  && .recommendations-tile .slick-arrow {
+    top: 20%;
+  }
+  && .slick-next,
+  .slick-prev {
+    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    top: 20%;
+  }
+`;
+
 const styles = css`
   .added-to-bg-close {
     top: 21px;
   }
   .addedToBagWrapper {
     overflow-y: auto;
+    overflow-x: hidden;
     height: calc(100% - 43px);
   }
   .continue-shopping {
     text-align: center;
     margin: 24px 0;
   }
+  .recommendationWrapper {
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
+  .loyaltyAddedToBagWrapper {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
 `;
-
 export default styles;

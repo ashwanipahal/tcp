@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import { resetPLCCResponse } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
+
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
   getThresholdValue,
@@ -27,6 +30,9 @@ export const LoyaltyBannerContainer = ({
   isInternationalShipping,
   openOverlay,
   closeAddedToBagModal,
+  inheritedStyles,
+  openApplyNowModal,
+  navigation,
 }) => {
   const {
     estimatedRewards,
@@ -53,6 +59,9 @@ export const LoyaltyBannerContainer = ({
       isInternationalShipping={isInternationalShipping}
       openOverlay={openOverlay}
       closeAddedToBagModal={closeAddedToBagModal}
+      inheritedStyles={inheritedStyles}
+      openApplyNowModal={openApplyNowModal}
+      navigation={navigation}
     />
   );
 };
@@ -68,6 +77,9 @@ LoyaltyBannerContainer.propTypes = {
   currencySymbol: PropTypes.string,
   pageCategory: PropTypes.string,
   isInternationalShipping: PropTypes.bool,
+  inheritedStyles: PropTypes.string,
+  openApplyNowModal: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -77,12 +89,18 @@ LoyaltyBannerContainer.defaultProps = {
   currencySymbol: '',
   pageCategory: '',
   isInternationalShipping: false,
+  inheritedStyles: '',
+  navigation: null,
 };
 
 export const mapDispatchToProps = dispatch => ({
   openOverlay: component => dispatch(openOverlayModal(component)),
   closeAddedToBagModal: () => {
     dispatch(closeAddedToBag());
+  },
+  openApplyNowModal: payload => {
+    dispatch(toggleApplyNowModal(payload));
+    dispatch(resetPLCCResponse(payload));
   },
 });
 

@@ -159,6 +159,7 @@ const ModuleQ = props => {
     hostLazyLoad,
     hideTabs,
     selectedColorProductId,
+    showRelatedOutfitHeader,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -170,6 +171,10 @@ const ModuleQ = props => {
   const selectedProductCarouselList = selectedProductList.map((item, index) => {
     return { ...item, productItemIndex: index };
   });
+
+  if (selectedProductList && selectedProductList.length && showRelatedOutfitHeader) {
+    showRelatedOutfitHeader(true);
+  }
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
@@ -289,6 +294,7 @@ ModuleQ.defaultProps = {
   hideTabs: false,
   selectedColorProductId: '',
   headerText: [],
+  showRelatedOutfitHeader: null,
 };
 
 ModuleQ.propTypes = {
@@ -331,6 +337,7 @@ ModuleQ.propTypes = {
   hostLazyLoad: PropTypes.string,
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
+  showRelatedOutfitHeader: PropTypes.func,
 };
 
 export default ModuleQ;

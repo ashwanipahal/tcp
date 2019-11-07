@@ -354,6 +354,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -371,9 +372,11 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -511,8 +514,18 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -587,6 +600,10 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -1082,6 +1099,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -1099,9 +1117,11 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -1239,8 +1259,18 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -1315,6 +1345,10 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -1755,7 +1789,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "componentStyle": ComponentStyle {
                     "componentId": "sc-dnqmqq",
                     "isStatic": false,
-                    "lastClassName": "fVCHVC",
+                    "lastClassName": "efvruK",
                     "rules": Array [
                       "
   ",
@@ -1764,9 +1798,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                       [Function],
                       "
 
-  > *:last-child {
-    margin-right: 0;
-  }
+  ",
+                      [Function],
+                      "
   &.content-wrapper {
     margin: 0 auto;
   }
@@ -1792,13 +1826,13 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               fullBleed={true}
             >
               <Row
-                className="sc-dnqmqq fVCHVC"
+                className="sc-dnqmqq efvruK"
                 fullBleed={true}
                 otherprops={Object {}}
                 tagName="div"
               >
                 <div
-                  className="sc-dnqmqq fVCHVC"
+                  className="sc-dnqmqq efvruK"
                   fullBleed={true}
                   otherprops={Object {}}
                 >

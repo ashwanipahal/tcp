@@ -6,6 +6,7 @@ const initialState = fromJS({
   orderDetails: {},
   sfl: [],
   errors: false,
+  loaded: false,
   openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,
   moduleXContent: [],
@@ -13,6 +14,7 @@ const initialState = fromJS({
   isEditingItem: false,
   uiFlags: {
     isPayPalEnabled: false,
+    isPayPalWebViewEnable: false,
     lastItemUpdatedId: null,
     isTotalEstimated: true,
     isClosenessQualifier: false,
@@ -67,6 +69,19 @@ function setCartItemsSflError(state, isCartItemSflError) {
   return state.setIn(['uiFlags', 'cartItemSflError'], isCartItemSflError);
 }
 
+const returnBagPageReducerExtension = (state = initialState, action) => {
+  switch (action.type) {
+    case BAGPAGE_CONSTANTS.PAYPAL_BUTTON_HIDDEN:
+      return state.set('paypalBtnHidden', action.payload);
+    default:
+      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
+
 const returnBagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
@@ -89,18 +104,14 @@ const returnBagPageReducer = (state = initialState, action) => {
         showModal: true,
       });
     default:
-      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return returnBagPageReducerExtension(state, action);
   }
 };
 
 const BagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
-      return state.set('orderDetails', fromJS(action.payload));
+      return state.set('loaded', true).set('orderDetails', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS:
       return state.set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
@@ -109,6 +120,8 @@ const BagPageReducer = (state = initialState, action) => {
       return state.setIn(['orderDetails', 'orderId'], action.orderId);
     case BAGPAGE_CONSTANTS.SET_ITEM_OOS:
       return updateItem(state, action.payload, AVAILABILITY.SOLDOUT);
+    case BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE:
+      return state.setIn(['uiFlags', 'isPayPalWebViewEnable'], action.payload);
     case BAGPAGE_CONSTANTS.SET_ITEM_UNAVAILABLE:
       return updateItem(state, action.payload, AVAILABILITY.UNAVAILABLE);
     case BAGPAGE_CONSTANTS.SFL_ITEMS_SET_DELETED:

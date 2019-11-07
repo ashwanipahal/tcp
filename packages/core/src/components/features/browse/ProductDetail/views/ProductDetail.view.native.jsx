@@ -4,10 +4,10 @@ import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
-import PageContainer from '../styles/ProductDetail.style.native';
+import { PageContainer, LoyaltyBannerView } from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
-import FulfillmentSection from '../../../../common/organisms/FulfillmentSection';
+import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -20,6 +20,7 @@ import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
+import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -34,7 +35,30 @@ class ProductDetailView extends React.PureComponent {
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
       currentGiftCardValue: currentProduct.offerPrice,
       selectedColorProductId,
+      showCompleteTheLook: false,
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const { currentProduct } = props;
+
+    const { currentColorEntry, selectedColorProductId } = state;
+
+    const colorDetails = getMapSliceForColorProductId(
+      currentProduct.colorFitsSizesMap,
+      selectedColorProductId
+    );
+
+    if (
+      colorDetails.favoritedCount !== currentColorEntry.favoritedCount &&
+      colorDetails.color.name === currentColorEntry.color.name
+    ) {
+      return {
+        currentColorEntry: colorDetails,
+      };
+    }
+
+    return null;
   }
 
   componentWillUnmount = () => {
@@ -68,13 +92,23 @@ class ProductDetailView extends React.PureComponent {
 
   renderFulfilmentSection = () => {
     const { currentProduct } = this.props;
+    const { currentColorEntry } = this.state;
     return (
-      <FulfillmentSection
-        btnClassName="added-to-bag"
-        buttonLabel="Add To Bag"
-        currentProduct={currentProduct}
-      />
+      currentProduct &&
+      currentColorEntry && (
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          miscInfo={currentColorEntry.miscInfo}
+        />
+      )
     );
+  };
+
+  setShowCompleteTheLook = value => {
+    if (value) {
+      this.setState({ showCompleteTheLook: value });
+    }
   };
 
   render() {
@@ -93,9 +127,18 @@ class ProductDetailView extends React.PureComponent {
       pdpLabels,
       currency,
       currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
       alternateSizes,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
-    const { currentColorEntry, currentGiftCardValue, selectedColorProductId } = this.state;
+    const {
+      currentColorEntry,
+      currentGiftCardValue,
+      selectedColorProductId,
+      showCompleteTheLook,
+    } = this.state;
     let imageUrls = [];
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({
@@ -115,7 +158,13 @@ class ProductDetailView extends React.PureComponent {
           <ImageCarousel
             isGiftCard={currentProduct.isGiftCard}
             imageUrls={imageUrls}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
+            currentProduct={currentProduct}
             onImageClick={this.onImageClick}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            currentColorEntry={currentColorEntry}
           />
           <ProductSummary
             productData={currentProduct}
@@ -133,6 +182,7 @@ class ProductDetailView extends React.PureComponent {
             currencySymbol={currency}
             currencyExchange={currencyExchange}
             isGiftCard={currentProduct.isGiftCard}
+            showCompleteTheLook={showCompleteTheLook}
             pdpLabels={pdpLabels}
           />
 
@@ -153,6 +203,9 @@ class ProductDetailView extends React.PureComponent {
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
+          <LoyaltyBannerView>
+            <LoyaltyBanner pageCategory="isProductDetailView" />
+          </LoyaltyBannerView>
           <ProductDetailDescription
             shortDescription={shortDescription}
             itemPartNumber={itemPartNumber}
@@ -165,6 +218,7 @@ class ProductDetailView extends React.PureComponent {
               pdpLabels={pdpLabels}
               navigation={navigation}
               selectedColorProductId={selectedColorProductId}
+              setShowCompleteTheLook={this.setShowCompleteTheLook}
             />
           ) : null}
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
@@ -175,7 +229,14 @@ class ProductDetailView extends React.PureComponent {
 }
 
 ProductDetailView.propTypes = {
-  currentProduct: PropTypes.shape({}),
+  currentProduct: PropTypes.shape({
+    colorFitsSizesMap: PropTypes.shape({}),
+    offerPrice: PropTypes.string,
+    listPrice: PropTypes.string,
+    generalProductId: PropTypes.string,
+    imagesByColor: PropTypes.shape({}),
+    isGiftCard: PropTypes.bool,
+  }),
   navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
   clearAddToBagError: PropTypes.func.isRequired,
@@ -190,13 +251,24 @@ ProductDetailView.propTypes = {
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.number,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
-  currentProduct: {},
+  currentProduct: {
+    colorFitsSizesMap: {},
+    offerPrice: '',
+    listPrice: '',
+    generalProductId: '',
+    imagesByColor: {},
+    isGiftCard: false,
+  },
   navigation: {},
   plpLabels: null,
   handleSubmit: null,
@@ -209,7 +281,11 @@ ProductDetailView.defaultProps = {
   pdpLabels: {},
   currency: 'USD',
   currencyExchange: 1,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
   alternateSizes: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductDetailView);

@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { call, takeLatest, put, select, delay } from 'redux-saga/effects';
 import GIFTCARD_CONSTANTS from '../GiftCards.constants';
 import {
   addGiftCardPaymentToOrder,
@@ -16,6 +16,7 @@ import {
   resetAddGiftCard,
   setIsLoadingShippingMethods,
 } from '../../../container/Checkout.action';
+import BAGPAGE_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
@@ -45,6 +46,8 @@ export function* applyGiftCard(payloadData) {
       [payload.creditCardId]: err,
     };
     yield put(setGiftCardError(errorObject));
+    yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
+    yield put(resetGiftCardError());
   }
 }
 

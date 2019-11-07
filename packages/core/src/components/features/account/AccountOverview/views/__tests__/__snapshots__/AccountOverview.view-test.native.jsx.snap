@@ -200,10 +200,6 @@ exports[`AccountOverview component should render correctly 1`] = `
       size="fs12"
     />
   </Styled(TouchableOpacity)>
-  <Connect(ApplyNowModalWrapper)
-    applyNow={false}
-    toggleModalWrapper={[Function]}
-  />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}

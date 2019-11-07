@@ -9,7 +9,7 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
+import { bootstrapData, SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import {
   createAPIConfig,
   getAPIConfig,
@@ -23,6 +23,7 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
+import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
@@ -116,10 +117,14 @@ class TCPWebApp extends App {
   };
 
   componentDidMount() {
+    const { store } = this.props;
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
     this.checkForlogin();
     const { envId, raygunApiKey, channelId, isErrorReportingBrowserActive } = getAPIConfig();
+    window.testApp = payload => {
+      store.dispatch(SetTcpSegmentMethodCall(payload));
+    };
 
     try {
       if (isErrorReportingBrowserActive) {
@@ -297,6 +302,7 @@ class TCPWebApp extends App {
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
+              <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
             {process.env.ANALYTICS && <RouteTracker />}

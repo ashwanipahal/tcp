@@ -105,6 +105,20 @@ const LedgerStyle = css`
       }
     }
   }
+
+  .orderLedgerLoyalty {
+    ${props =>
+      props.pageCategory === 'confirmation'
+        ? `
+        @media ${props.theme.mediaQuery.medium} {
+          display: none;
+        }
+        @media ${props.theme.mediaQuery.large} {
+          display: none;
+        }
+        `
+        : ''}
+  }
 `;
 
 export default LedgerStyle;

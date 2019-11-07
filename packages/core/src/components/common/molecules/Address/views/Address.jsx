@@ -29,7 +29,7 @@ const getAddressfromDiffLines = (address, dataLocatorPrefix) => {
 
 const getAddessLines = ({ address, dataLocatorPrefix }) => {
   return address.addressLine
-    .filter(al => al.trim() !== '')
+    .filter(al => al && al.trim() !== '')
     .map((addressLine, index) => (
       <BodyCopy
         component="p"
