@@ -137,13 +137,15 @@ export class BagPageContainer extends React.Component<Props> {
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 
-BagPageContainer.getInitialProps = pageProps => {
+BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
+  const DEFAULT_ACTIVE_COMPONENT = 'shipping bag';
+  const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
   return {
     ...pageProps,
     ...{
       pageData: {
-        pageName: 'shopping bag',
-        pageSection: 'shopping bag',
+        pageName: 'shipping bag',
+        pageSection: loadedComponent,
       },
     },
   };
