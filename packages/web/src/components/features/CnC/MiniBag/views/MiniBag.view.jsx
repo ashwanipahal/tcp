@@ -44,7 +44,10 @@ class MiniBag extends React.Component {
       onRequestClose,
       openOverlay,
       isPlcc,
+      isUserLoggedIn,
+      isRememberedUser,
     } = this.props;
+
     return (
       <MiniBagHeader
         labels={labels}
@@ -55,6 +58,8 @@ class MiniBag extends React.Component {
         onRequestClose={onRequestClose}
         openOverlay={openOverlay}
         isPlcc={isPlcc}
+        isUserLoggedIn={isUserLoggedIn}
+        isRememberedUser={isRememberedUser}
       />
     );
   };
@@ -74,6 +79,8 @@ class MiniBag extends React.Component {
       resetSuccessMessage,
       addedToBagError,
       isShowSaveForLaterSwitch,
+      isUserLoggedIn,
+      isRememberedUser,
     } = this.props;
     const { country } = this.state;
     const cartItemCount = getCartItemCount();
@@ -109,6 +116,8 @@ class MiniBag extends React.Component {
           resetSuccessMessage={resetSuccessMessage}
           addedToBagError={addedToBagError}
           isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
+          isUserLoggedIn={isUserLoggedIn}
+          isRememberedUser={isRememberedUser}
         />
       </Modal>
     );
@@ -135,6 +144,8 @@ MiniBag.propTypes = {
   isPlcc: PropTypes.bool.isRequired,
   addedToBagError: PropTypes.string.isRequired,
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  isRememberedUser: PropTypes.bool.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));
