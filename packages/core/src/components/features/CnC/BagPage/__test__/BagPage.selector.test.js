@@ -34,9 +34,9 @@ describe('#Added to bag Selectors', () => {
     sfl: [],
     openItemDeleteConfirmationModalInfo: true,
     uiFlags: {
-      isPayPalWebViewEnable:false,
+      isPayPalWebViewEnable: false,
     },
-      isPayPalEnabled: false,
+    isPayPalEnabled: false,
   });
 
   const sessionState = {
@@ -134,9 +134,7 @@ describe('#Added to bag Selectors', () => {
     );
   });
 
-
   it('#getPayPalWebViewStatus should return paypalView enable status', () => {
     expect(BAGPAGE_SELECTORS.getPayPalWebViewStatus(state)).toEqual(false);
-
   });
 });

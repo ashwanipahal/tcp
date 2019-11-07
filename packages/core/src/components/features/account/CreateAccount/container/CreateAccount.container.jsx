@@ -102,8 +102,8 @@ export class CreateAccountContainer extends React.Component {
   }
 
   onAlreadyHaveAnAccountClick = e => {
-    const { openOverlay, setLoginModalMountState } = this.props;
     e.preventDefault();
+    const { openOverlay, setLoginModalMountState } = this.props;
     if (setLoginModalMountState) {
       setLoginModalMountState({
         component: 'login',

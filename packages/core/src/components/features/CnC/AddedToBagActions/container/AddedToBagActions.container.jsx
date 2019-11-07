@@ -11,7 +11,6 @@ import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.s
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
 
-
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
     utility.routeToPage(CHECKOUT_ROUTES.bagPage);
@@ -40,6 +39,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isPayPalWebViewEnable,
       venmoError,
       orderId,
+      isPayPalHidden,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -65,6 +65,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         venmoError={venmoError}
         orderId={orderId}
+        isPayPalHidden={isPayPalHidden}
       />
     );
   }
@@ -103,6 +104,7 @@ const mapStateToProps = state => {
     isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
     orderId: getCartOrderId(state),
     venmoError: checkoutSelectors.getVenmoError(state),
+    isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
   };
 };
 

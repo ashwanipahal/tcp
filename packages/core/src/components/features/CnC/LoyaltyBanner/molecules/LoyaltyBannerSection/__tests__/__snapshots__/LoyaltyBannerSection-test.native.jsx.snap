@@ -21,6 +21,7 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
           "pageCategoryArr": Object {
             "isAddedToBagPage": false,
             "isConfirmationPage": false,
+            "isProductDetailView": false,
             "isReviewPage": false,
             "ischeckoutPage": true,
           },
@@ -43,6 +44,7 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
         isProductDetailView={false}
         isReviewPage={false}
         labels={Object {}}
+        navigation={null}
       />
     </View>
   </Styled(View)>

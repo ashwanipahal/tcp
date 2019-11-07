@@ -5,6 +5,7 @@ exports[`OverlayModal should render correctly 1`] = `
   className=""
   color={null}
   id="modalWrapper"
+  tabIndex="-1"
 >
   <div
     className="dialog__content undefined"
@@ -15,11 +16,11 @@ exports[`OverlayModal should render correctly 1`] = `
       onClick={[Function]}
     />
     <div
-      className="modal__triangle hide-on-mobile undefined"
+      className="triangle-theme modal__triangle hide-on-mobile undefined"
       id="modalTriangle"
     />
     <div
-      className="modal__bar hide-on-mobile"
+      className="mpr-plcc-theme modal__bar hide-on-mobile"
     />
     <ModalContent
       className="modal__content"

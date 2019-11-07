@@ -394,7 +394,7 @@ export const getCurrentOrderFormatter = (
 
   const usersOrder = {
     orderId: orderDetailsResponse.parentOrderId,
-    totalItems: excludeCartItems ? null : 0,
+    totalItems: excludeCartItems ? orderDetailsResponse.cartCount : 0,
     appliedGiftCards: [],
     giftWrappingTotal: 0,
     savingsTotal: Math.abs(flatCurrencyToCents(orderDetailsResponse.orderDiscountAmount) || 0),

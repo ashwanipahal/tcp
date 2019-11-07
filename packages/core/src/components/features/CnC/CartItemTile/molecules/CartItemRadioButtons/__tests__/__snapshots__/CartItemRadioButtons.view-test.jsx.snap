@@ -40,43 +40,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render for o
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -208,43 +174,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render for o
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -376,43 +308,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -544,43 +442,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -712,43 +576,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -880,43 +710,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -1048,43 +844,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -1216,43 +978,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -1384,43 +1112,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -1545,43 +1239,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -1713,43 +1373,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>
@@ -1881,43 +1507,9 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render with 
           link={null}
           textAlign="left"
         />
-        <div
-          className="banner-wrapper"
-        >
-          <div
-            className="triangle-left"
-          />
-          <div
-            className="promo-wrapper"
-          >
-            <Styled(BodyCopy)
-              className={null}
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            >
-              undefined 5%
-            </Styled(BodyCopy)>
-            <Styled(BodyCopy)
-              className="off-label"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize="fs10"
-              fontWeight="regular"
-              letterSpacing="normal"
-              lineHeight="normal"
-              link={null}
-              textAlign="left"
-            />
-          </div>
-        </div>
+        <Connect(PromotionBannerContainer)
+          bossBanner={true}
+        />
       </Styled(BodyCopy)>
     </div>
   </Styled(LabeledRadioButton)>

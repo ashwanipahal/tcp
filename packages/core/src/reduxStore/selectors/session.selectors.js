@@ -108,3 +108,15 @@ export const getRecalcOrderPointsInterval = state => {
     state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BRIERLEY_ORD_RECALC_CACHING_INTERVAL
   );
 };
+
+export const getTcpSegmentValue = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.tcpSegment
+  );
+};
+export const getIsPayPalEnabled = state => {
+  const key = 'BOPIS_MIXCART_PAYPAL_ENABLED';
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[key] === 'TRUE'
+  );
+};
