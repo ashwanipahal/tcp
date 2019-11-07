@@ -188,7 +188,17 @@ export default css`
     max-height: 100%;
     max-width: 100%;
   }
-
+  .lazyLoadImage.error {
+    @media ${mediaQuery.smallOnly} {
+      height: 200px;
+    }
+    @media ${mediaQuery.medium} {
+      height: 230px;
+    }
+    height: 320px;
+    background: ${props => props.theme.colorPalette.gray[500]};
+    display: block;
+  }
   .capFirstLetter {
     text-transform: capitalize;
   }

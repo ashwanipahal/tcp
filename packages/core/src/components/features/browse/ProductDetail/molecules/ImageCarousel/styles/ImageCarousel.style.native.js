@@ -14,6 +14,7 @@ const FavoriteAndPaginationContainer = styled.View`
   flex-direction: row;
   align-items: center;
   width: 100%;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const FavoriteContainer = styled.View`
@@ -39,6 +40,8 @@ const ShareDialog = styled.View`
   background-color: #fff;
 `;
 
+const EmptyView = styled.View``;
+
 const styles = css``;
 
 export {
@@ -49,4 +52,5 @@ export {
   DownloadContainer,
   ImageTouchableOpacity,
   ShareDialog,
+  EmptyView,
 };
