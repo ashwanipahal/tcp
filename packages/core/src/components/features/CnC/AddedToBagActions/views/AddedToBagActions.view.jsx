@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import { getViewportInfo } from '@tcp/core/src/utils';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -22,7 +23,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
     }
     return (
       <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-        <PayPalButton className="payPal-button" containerId={containerID} />
+        <PayPalButton
+          className="payPal-button"
+          containerId={containerID}
+          height={isBagPageStickyHeader || getViewportInfo().isMobile ? 42 : 48}
+        />
       </div>
     );
   }
