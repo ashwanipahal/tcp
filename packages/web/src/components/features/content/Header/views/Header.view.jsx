@@ -82,6 +82,7 @@ class Header extends React.PureComponent {
       openNavigationDrawer,
       closeNavigationDrawer,
       isUserPlcc,
+      isRememberedUser,
       userName,
       userPoints,
       userRewards,
@@ -100,6 +101,7 @@ class Header extends React.PureComponent {
 
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
+
     return (
       <header className={className}>
         <HeaderTopNav
@@ -121,6 +123,7 @@ class Header extends React.PureComponent {
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
           isUserPlcc={isUserPlcc}
+          isRememberedUser={isRememberedUser}
           userName={userName}
           userPoints={userPoints}
           userRewards={userRewards}
@@ -199,6 +202,7 @@ Header.propTypes = {
   }),
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
+  isRememberedUser: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -222,6 +226,7 @@ Header.defaultProps = {
     features: {},
   },
   isPickupModalOpen: false,
+  isRememberedUser: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

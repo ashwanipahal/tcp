@@ -46,6 +46,7 @@ class LoginForm extends React.PureComponent<Props> {
       tooltipContent,
       userplccCardNumber,
       userplccCardId,
+      isRememberedUser,
     } = this.props;
     return (
       <div className={className}>
@@ -56,18 +57,33 @@ class LoginForm extends React.PureComponent<Props> {
             </BodyCopy>
           )}
           <BodyCopy component="div" className="elem-mb-LRG">
-            <Field
-              id="emailAddress"
-              placeholder={getLabelValue(labels, 'lbl_login_email', 'login')}
-              name="emailAddress"
-              component={TextBox}
-              dataLocator="login-emailfield"
-              errorDataLocator="login-emailerror"
-              showSuccessCheck={false}
-              enableSuccessCheck={false}
-              className="elem-mb-SM"
-              onChange={this.resetError}
-            />
+            {!isRememberedUser && (
+              <Field
+                id="emailAddress"
+                placeholder={getLabelValue(labels, 'lbl_login_email', 'login')}
+                name="emailAddress"
+                component={TextBox}
+                dataLocator="login-emailfield"
+                errorDataLocator="login-emailerror"
+                showSuccessCheck={false}
+                enableSuccessCheck={false}
+                className="elem-mb-SM"
+                onChange={this.resetError}
+              />
+            )}
+            {isRememberedUser && (
+              <Field
+                id="emailAddress"
+                placeholder={getLabelValue(labels, 'lbl_login_email', 'login')}
+                name="emailAddress"
+                component={TextBox}
+                dataLocator="login-emailfield"
+                className="elem-mb-SM"
+                props={{
+                  readOnly: true,
+                }}
+              />
+            )}
             <Field
               labels={labels}
               id="password"
@@ -162,15 +178,17 @@ class LoginForm extends React.PureComponent<Props> {
                 {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
               </Button>
             )}
-            <Anchor
-              underline
-              fontSizeVariation="xlarge"
-              anchorVariation="primary"
-              dataLocator="login-forgotpasswordlnk"
-              onClick={this.showForgotPasswordForm}
-            >
-              {getLabelValue(labels, 'lbl_login_forgetPasswordCTA', 'login')}
-            </Anchor>
+            {!isRememberedUser && (
+              <Anchor
+                underline
+                fontSizeVariation="xlarge"
+                anchorVariation="primary"
+                dataLocator="login-forgotpasswordlnk"
+                onClick={this.showForgotPasswordForm}
+              >
+                {getLabelValue(labels, 'lbl_login_forgetPasswordCTA', 'login')}
+              </Anchor>
+            )}
           </BodyCopy>
         </form>
       </div>
