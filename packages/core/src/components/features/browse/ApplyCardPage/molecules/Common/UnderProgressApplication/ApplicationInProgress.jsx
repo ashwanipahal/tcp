@@ -61,7 +61,7 @@ const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse }) =
             type="submit"
             className="underprogress_continue_button"
             data-locator="submit-plcc-btn"
-            onClick={() => redirectToHome(resetPLCCResponse)}
+            onClick={redirectToHome}
           >
             {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
           </Button>

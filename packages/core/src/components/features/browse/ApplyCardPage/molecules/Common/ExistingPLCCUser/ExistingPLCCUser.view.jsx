@@ -55,7 +55,7 @@ const ExistingPLCCUserView = ({
             fill={!bagItems ? 'BLUE' : 'WHITE'}
             type="submit"
             className="existing_continue_button"
-            onClick={() => redirectToHome(resetPLCCResponse)}
+            onClick={redirectToHome}
           >
             {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
           </Button>

@@ -7,9 +7,12 @@ export const modalStyles = css`
 
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 70vh;
+    }
   }
 
-  .TCPModal__InnerContent {
+  div.TCPModal__InnerContent {
     text-align: center;
     > h2 {
       ::after {
