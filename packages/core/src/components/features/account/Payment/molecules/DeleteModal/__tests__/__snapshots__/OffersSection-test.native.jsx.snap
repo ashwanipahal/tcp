@@ -1,40 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Offers Component should render correctly 1`] = `
-<View
-  className="abc"
-  labels={
-    Object {
-      "common": Object {},
-      "offersMessage": "<p>offers</p>",
-      "paymentGC": Object {},
-    }
-  }
->
-  <Styled(View)>
-    <Styled(View)>
-      <Styled(Image)
-        source={
-          Object {
-            "testUri": "../../../src/assets/images/card-smile.png",
-          }
-        }
-      />
-    </Styled(View)>
-    <Styled(View)>
-      <RichText
-        domStorageEnabled={false}
-        isApplyDeviceHeight={false}
-        isNativeView={false}
-        javaScriptEnabled={false}
-        source={
-          Object {
-            "html": "lbl_payment_offersMessageMobile",
-          }
-        }
-        thirdPartyCookiesEnabled={false}
-      />
-    </Styled(View)>
-  </Styled(View)>
+<View>
+  <Connect(withNavigation(Espot)) />
 </View>
 `;

@@ -232,6 +232,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -564,6 +565,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1099,6 +1101,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1651,6 +1654,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1987,6 +1991,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}

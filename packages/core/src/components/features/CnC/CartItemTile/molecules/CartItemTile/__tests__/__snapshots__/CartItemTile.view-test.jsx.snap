@@ -6699,7 +6699,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKJlTe",
+        "componentId": "sc-ckVGcZ",
         "isStatic": false,
         "rules": Array [
           "
@@ -7171,7 +7171,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKJlTe",
+      "styledComponentId": "sc-ckVGcZ",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -7215,7 +7215,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKJlTe",
+        "componentId": "sc-ckVGcZ",
         "isStatic": false,
         "rules": Array [
           "
@@ -7687,7 +7687,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKJlTe",
+      "styledComponentId": "sc-ckVGcZ",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

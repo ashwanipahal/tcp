@@ -374,6 +374,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           pointerColor="#fff"
           popover={
             <RichText
+              actionHandler={[Function]}
               domStorageEnabled={false}
               isApplyDeviceHeight={false}
               isNativeView={true}
@@ -768,6 +769,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           pointerColor="#fff"
           popover={
             <RichText
+              actionHandler={[Function]}
               domStorageEnabled={false}
               isApplyDeviceHeight={false}
               isNativeView={true}
@@ -1348,6 +1350,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               pointerColor="#fff"
               popover={
                 <RichText
+                  actionHandler={[Function]}
                   domStorageEnabled={false}
                   isApplyDeviceHeight={false}
                   isNativeView={true}
@@ -1722,6 +1725,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               pointerColor="#fff"
               popover={
                 <RichText
+                  actionHandler={[Function]}
                   domStorageEnabled={false}
                   isApplyDeviceHeight={false}
                   isNativeView={true}

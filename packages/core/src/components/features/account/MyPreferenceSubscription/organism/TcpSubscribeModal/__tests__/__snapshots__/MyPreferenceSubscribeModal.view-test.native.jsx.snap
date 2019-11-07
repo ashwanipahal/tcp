@@ -114,6 +114,7 @@ exports[`MyPreference Subscribe component should render correctly 1`] = `
   />
   <Styled(View)>
     <RichText
+      actionHandler={[Function]}
       dataLocator="my-preference-modal_disclaimer_sub_text"
       domStorageEnabled={false}
       isApplyDeviceHeight={false}

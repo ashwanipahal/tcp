@@ -6,13 +6,9 @@ import RichText from '@tcp/core/src/components/common/atoms/RichText';
 
 export class Espot extends PureComponent {
   static propTypes = {
-    richTextHtml: PropTypes.string,
+    richTextHtml: PropTypes.string.isRequired,
     togglePlccModal: PropTypes.func.isRequired,
     navigation: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    richTextHtml: '',
   };
 
   onPressHandler = action => {

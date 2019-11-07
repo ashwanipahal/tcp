@@ -25,13 +25,8 @@ class Espot extends PureComponent {
 }
 
 Espot.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
   togglePlccModal: PropTypes.func.isRequired,
-  richTextHtml: PropTypes.func,
-};
-
-Espot.defaultProps = {
-  richTextHtml: '',
+  richTextHtml: PropTypes.string.isRequired,
 };
 
 export default Espot;
