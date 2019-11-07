@@ -107,7 +107,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         formName={`ProductAddToBag-${currentProduct.generalProductId}`}
         sizeUnavailable={sizeUnavailable}
         isAnchor
-        miscInfo={currentColorEntry.miscInfo}
+        miscInfo={currentColorEntry && currentColorEntry.miscInfo}
       />
     );
   };
