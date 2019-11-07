@@ -10,7 +10,7 @@ describe('HelpCenterViewVanilla', () => {
   beforeEach(() => {
     const props = {
       slot_1: { className: 'test' },
-      slot_2: { className: 'test' },
+      slot_2: { className: 'test1' },
       getBootstrapData,
       appType: 'tcp',
       navigation: {
