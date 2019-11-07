@@ -95,7 +95,7 @@ const StyledModal = css`
       top: 61px;
     }
   }
-  . .modal__closeIcon {
+  .modal__closeIcon {
     background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;
     border: none;
     cursor: pointer;
