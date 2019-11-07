@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import { APP_TYPE } from '../../../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.constants';
 import {
   ImgWrapper,
   ImageBrandStyle,
@@ -43,26 +44,41 @@ const heart = require('../../../../../../../assets/heart.png');
  * @param {*} productDetail - details of product for pdp
  * @param {*} navigation - navigation
  */
-const goToPdpPage = (title, productDetail, navigation) => {
+const goToPdpPage = (title, productDetail, navigation, updateAppTypeHandler) => {
   const currentAppBrand = getBrand();
   const {
     productInfo: { pdpUrl, productPartNumber },
     itemInfo: { itemBrand },
   } = productDetail;
   const isProductBrandOfSameDomain = currentAppBrand.toUpperCase() === itemBrand.toUpperCase();
-  if (!isProductBrandOfSameDomain) {
-    return;
-  }
   const pdpAsPathUrl = pdpUrl.split('/p/')[1];
-  navigation.navigate('ProductDetail', {
-    title,
-    pdpUrl: pdpAsPathUrl,
-    selectedColorProductId: productPartNumber,
-    reset: true,
-  });
+  if (isProductBrandOfSameDomain) {
+    updateAppTypeHandler({
+      type: !isProductBrandOfSameDomain ? APP_TYPE.TCP : APP_TYPE.GYMBOREE,
+      params: {
+        title,
+        pdpUrl: pdpAsPathUrl,
+        selectedColorProductId: productPartNumber,
+        reset: true,
+      },
+    });
+  } else {
+    navigation.navigate('ProductDetail', {
+      title,
+      pdpUrl: pdpAsPathUrl,
+      selectedColorProductId: productPartNumber,
+      reset: true,
+    });
+  }
 };
 
-const CartItemImageWrapper = (productDetail, labels, showOnReviewPage, navigation) => {
+const CartItemImageWrapper = (
+  productDetail,
+  labels,
+  showOnReviewPage,
+  navigation,
+  updateAppTypeHandler
+) => {
   return (
     <ImgWrapper showOnReviewPage={showOnReviewPage}>
       <View>
@@ -73,7 +89,7 @@ const CartItemImageWrapper = (productDetail, labels, showOnReviewPage, navigatio
         /> */}
         <ImageTouchableOpacity
           onPress={() => {
-            goToPdpPage('', productDetail, navigation);
+            goToPdpPage('', productDetail, navigation, updateAppTypeHandler);
           }}
         >
           <DamImage
@@ -172,7 +188,7 @@ const heartIcon = isBagPageSflSection => {
   );
 };
 
-const getProductName = (productDetail, showOnReviewPage, navigation) => {
+const getProductName = (productDetail, showOnReviewPage, navigation, updateAppTypeHandler) => {
   return (
     <ProductName showOnReviewPage={showOnReviewPage}>
       <BodyCopy
@@ -182,7 +198,7 @@ const getProductName = (productDetail, showOnReviewPage, navigation) => {
         fontWeight={['semibold']}
         text={productDetail.itemInfo.name}
         onPress={() => {
-          goToPdpPage('', productDetail, navigation);
+          goToPdpPage('', productDetail, navigation, updateAppTypeHandler);
         }}
       />
     </ProductName>

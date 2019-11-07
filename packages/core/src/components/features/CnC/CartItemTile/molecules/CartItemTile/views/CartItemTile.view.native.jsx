@@ -283,6 +283,7 @@ class ProductInformation extends React.Component {
       setShipToHome,
       pickupStoresInCart,
       navigation,
+      updateAppTypeHandler,
     } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -333,7 +334,8 @@ class ProductInformation extends React.Component {
               productDetail,
               labels,
               showOnReviewPage,
-              navigation
+              navigation,
+              updateAppTypeHandler
             )}
             <ProductDescription>
               {showOnReviewPage && !!productDetail.miscInfo.badge && (
@@ -344,7 +346,12 @@ class ProductInformation extends React.Component {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              {CartItemTileExtension.getProductName(productDetail, showOnReviewPage, navigation)}
+              {CartItemTileExtension.getProductName(
+                productDetail,
+                showOnReviewPage,
+                navigation,
+                updateAppTypeHandler
+              )}
               {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
@@ -451,6 +458,7 @@ ProductInformation.propTypes = {
   setShipToHome: PropTypes.func,
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
+  updateAppTypeHandler: PropTypes.func,
 };
 
 ProductInformation.defaultProps = {
@@ -464,6 +472,7 @@ ProductInformation.defaultProps = {
   clearToggleError: () => {},
   setShipToHome: () => {},
   navigation: {},
+  updateAppTypeHandler: () => {},
 };
 
 export default ProductInformation;

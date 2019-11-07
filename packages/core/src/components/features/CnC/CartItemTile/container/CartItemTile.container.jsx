@@ -29,6 +29,7 @@ import {
   getCartBossBopisToggleError,
   getCurrencyExchange,
 } from './CartItemTile.selectors';
+import { updateAppTypeWithParams } from '../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.actions';
 import {
   getSaveForLaterSwitch,
   getSflMaxCount,
@@ -99,6 +100,7 @@ export const CartItemTileContainer = ({
   pickupStoresInCart,
   autoSwitchPickupItemInCart,
   navigation,
+  updateAppTypeHandler,
   disableProductRedirect,
 }) => (
   <CartItemTile
@@ -147,6 +149,7 @@ export const CartItemTileContainer = ({
     pickupStoresInCart={pickupStoresInCart}
     autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
     navigation={navigation}
+    updateAppTypeHandler={updateAppTypeHandler}
     disableProductRedirect={disableProductRedirect}
   />
 );
@@ -243,6 +246,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     clearToggleError: () => {
       dispatch(clearToggleCartItemError());
       dispatch(clearToggleBossBopisCartItemError());
+    },
+    updateAppTypeHandler: payload => {
+      dispatch(updateAppTypeWithParams(payload));
     },
   };
 };

@@ -4,10 +4,11 @@ import { PropTypes } from 'prop-types';
 import { ThemeProvider } from 'styled-components/native';
 import themeTcp from '@tcp/core/styles/themes/TCP';
 import themeGymboree from '@tcp/core/styles/themes/Gymboree';
-import updateAppType from './ThemeWrapper.actions';
+import { updateAppType } from './ThemeWrapper.actions';
 import { APP_TYPE } from './ThemeWrapper.constants';
-import { getAppType } from './ThemeWrapper.selectors';
+import { getAppType, getAppTypeParams } from './ThemeWrapper.selectors';
 import resetReduxStore from '../../../reduxStore/actions';
+import NavigationService from '../../../navigation/NavigationService';
 
 /**
  * @param {string} appType : Props for app type
@@ -23,10 +24,19 @@ export class ThemeWrapper extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
-    const { appType, switchBrand, resetReduxStoreData, updateAppTypeHandler } = nextProps;
+    const { appType, appParms, switchBrand, resetReduxStoreData, updateAppTypeHandler } = nextProps;
 
     // update brand name in utils when app type is changed
     if (appType !== prevAppType && switchBrand) {
+      // brand switch with product redirect
+      setTimeout(() => {
+        NavigationService.navigate('ProductDetail', {
+          title: appParms.title,
+          pdpUrl: appParms.pdpUrl,
+          selectedColorProductId: appParms.selectedColorProductId,
+          reset: appParms.reset,
+        });
+      }, 3000);
       resetReduxStoreData();
       updateAppTypeHandler(appType);
       switchBrand(appType);
@@ -62,12 +72,19 @@ ThemeWrapper.propTypes = {
   updateAppTypeHandler: PropTypes.func,
   switchBrand: PropTypes.func,
   resetReduxStoreData: PropTypes.func,
+  appParms: PropTypes.shape({}),
 };
 
 ThemeWrapper.defaultProps = {
   updateAppTypeHandler: () => {},
   switchBrand: null,
   resetReduxStoreData: null,
+  appParms: {
+    title: null,
+    pdpUrl: null,
+    selectedColorProductId: null,
+    reset: false,
+  },
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -76,6 +93,7 @@ const mapStateToProps = (state, ownProps) => {
   const appTypeValue = appTypeStoreValue === '' ? appType : appTypeStoreValue;
   return {
     appType: appTypeValue,
+    appParms: getAppTypeParams(state),
   };
 };
 
