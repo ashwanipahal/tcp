@@ -100,6 +100,7 @@ const OutfitDetailsView = ({
             isCanada={isCanada}
             isPlcc={isPlcc}
             isInternationalShipping={isInternationalShipping}
+            promotionalMessage={outfitProduct.promotionalMessage}
           />
         </div>
         <div className="outfit-sku">
