@@ -51,14 +51,6 @@ export default css`
       margin-right: 0;
     }
   }
-  .stacked-cta-wrapper-class {
-    color: ${props => props.theme.colorPalette.gray[400]};
-  }
-  .button-list-container-alternate a:nth-child(even) button {
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      width: 141px;
-    }
-  }
   .button-list-container {
     ${props =>
       props.theme.isGymboree
