@@ -92,6 +92,10 @@
 		<string>Nunito.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
 		<string>Nunito-Bold.ttf</string>
+		<string>Nunito-ExtraBold.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Montserrat-Bold</string>
+		<string>Montserrat-Medium</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>GymboreeLaunchScreen</string>

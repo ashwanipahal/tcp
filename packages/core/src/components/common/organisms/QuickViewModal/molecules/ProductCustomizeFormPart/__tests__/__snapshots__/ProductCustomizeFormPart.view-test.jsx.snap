@@ -428,6 +428,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
             ]
           }
           errorOnHandleSubmit=""
+          onCloseClick={[Function]}
           plpLabels={Object {}}
           quickViewColorSwatchesCss=""
           showAddToBagCTA={true}

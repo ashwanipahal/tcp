@@ -83,4 +83,9 @@ describe('GiftCardsVanilla', () => {
     );
     expect(giftCardSectionHeading).toMatch('Applied');
   });
+  it('should render gift card tile with getDerivedStateFromProps ', () => {
+    const component = shallow(<GiftCardsVanilla orderBalanceTotal={100} {...props} />);
+    component.setState({ orderBalanceTotal: 200 });
+    expect(component).toMatchSnapshot();
+  });
 });

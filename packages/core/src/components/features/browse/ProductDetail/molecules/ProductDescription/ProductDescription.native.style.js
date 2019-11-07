@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-// import { BodyCopy } from '../../../../../common/atoms';
+const getAdditionalStyle = props => {
+  const { margins } = props;
+  return {
+    ...(margins && { margin: margins }),
+  };
+};
 
 export const StyleProductDescription = styled.TouchableOpacity`
   display: flex;
@@ -24,4 +29,8 @@ export const StyleLongDescription = styled.View`
   flex-direction: row;
 `;
 
-export default { StyleProductDescription, ImageStyleWrapper, StyleLongDescription };
+export const PageContainer = styled.View`
+  ${getAdditionalStyle}
+`;
+
+export default { PageContainer, StyleProductDescription, ImageStyleWrapper, StyleLongDescription };

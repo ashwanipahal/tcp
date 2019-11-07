@@ -46,7 +46,7 @@ export const commonSearchBarStyles = css`
     width: 100%;
     height: 40px;
     display: inline-block;
-
+    overflow: unset;
     ${props =>
       props.fromCondensedHeader
         ? `
