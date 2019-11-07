@@ -5,10 +5,10 @@ import EspotComponent from '../views/Espot.view';
 
 export const mapDispatchToProps = dispatch => {
   return {
-    openApplyNowModal: () => {
+    togglePlccModal: payload => {
       dispatch(
         toggleApplyNowModal({
-          isModalOpen: true,
+          isModalOpen: payload || false,
         })
       );
     },

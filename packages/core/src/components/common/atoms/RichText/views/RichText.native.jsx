@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { WebView, Dimensions, View, Text } from 'react-native';
 import { RenderTree, ComponentMap } from '@fabulas/astly';
+import Image from '@tcp/core/src/components/common/atoms/Image';
+
 import { PropTypes } from 'prop-types';
 
 /**
@@ -11,9 +13,11 @@ import { PropTypes } from 'prop-types';
  */
 
 class RichText extends PureComponent {
-  renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
+  renderImage = ({ style, source, ...otherProps }) => {
+    return <Image url={source} {...otherProps} />;
+  };
 
-  renderView = ({ children }) => <View>{children}</View>;
+  renderText = ({ style, children }) => <Text style={{ ...style }}>{children}</Text>;
 
   renderWebView = () => {
     const {
@@ -38,19 +42,26 @@ class RichText extends PureComponent {
     );
   };
 
+  handleNativeNavigation = node => {
+    const { actionHandler } = this.props;
+    if (node.properties && node.properties.dataTarget) {
+      actionHandler(node.properties.dataTarget);
+    }
+  };
+
   renderNativeView = () => {
-    const { source, navigate } = this.props;
+    const { source } = this.props;
     return (
       <View>
         <RenderTree
           tree={`<div>${source}</div>`}
-          tools={{ navigate }}
+          tools={{ navigate: this.handleNativeNavigation }}
           componentMap={{
             ...ComponentMap,
             br: () => <Text> </Text>,
             p: props => this.renderText(props),
             b: props => this.renderText(props),
-            div: props => this.renderView(props),
+            img: props => this.renderImage(props),
           }}
         />
       </View>
@@ -70,7 +81,7 @@ RichText.propTypes = {
   domStorageEnabled: PropTypes.bool,
   thirdPartyCookiesEnabled: PropTypes.bool,
   isApplyDeviceHeight: PropTypes.bool,
-  navigate: PropTypes.func,
+  actionHandler: PropTypes.func,
 };
 
 RichText.defaultProps = {
@@ -80,7 +91,7 @@ RichText.defaultProps = {
   domStorageEnabled: false,
   thirdPartyCookiesEnabled: false,
   isApplyDeviceHeight: false,
-  navigate: () => {},
+  actionHandler: () => {},
 };
 
 export default RichText;

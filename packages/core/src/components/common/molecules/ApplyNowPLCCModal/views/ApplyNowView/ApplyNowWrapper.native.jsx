@@ -81,6 +81,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
     const { applyCard } = this.state;
 
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
+    console.log(`-------props----------applyCard: ${applyCard} and applyNow: ${applyNow}`);
     return (
       <View>
         <ApplyCardLayoutView toggleModal={this.toggleApplyCardModal} applyCard={applyCard} />

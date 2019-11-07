@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
-import ApplyNowPLCCModal from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 
 class Espot extends PureComponent {
   onClickHandler = action => {
-    const { openApplyNowModal } = this.props;
+    const { togglePlccModal } = this.props;
     switch (action) {
-      case 'applyNow':
-        openApplyNowModal();
+      case 'plccModal':
+        togglePlccModal(true);
         break;
       default:
         break;
@@ -20,7 +19,6 @@ class Espot extends PureComponent {
     return (
       <div>
         <RichText richTextHtml={richTextHtml} isNativeView actionHandler={this.onClickHandler} />
-        <ApplyNowPLCCModal noLink />
       </div>
     );
   }
@@ -28,7 +26,7 @@ class Espot extends PureComponent {
 
 Espot.propTypes = {
   labels: PropTypes.shape({}).isRequired,
-  openApplyNowModal: PropTypes.func.isRequired,
+  togglePlccModal: PropTypes.func.isRequired,
   richTextHtml: PropTypes.func,
 };
 

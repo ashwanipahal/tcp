@@ -8,15 +8,15 @@ import styles from '../RichText.style';
 // This accepts an HTML and inserts it wherever the component is added.
 const RichText = ({ className, richTextHtml, dataLocator, isNativeView, actionHandler }) => {
   if (isNativeView) {
-    const navigate = node => {
-      if (node.properties && node.properties.className.indexOf('offers__link') > -1) {
-        actionHandler('applyNow');
+    const handleNativeNavigation = node => {
+      if (node.properties && node.properties.dataTarget) {
+        actionHandler(node.properties.dataTarget);
       }
     };
 
     return (
       <RenderTree
-        tools={{ navigate }}
+        tools={{ navigate: handleNativeNavigation }}
         tree={`<div>${richTextHtml}</div>`}
         componentMap={ComponentMap}
       />
