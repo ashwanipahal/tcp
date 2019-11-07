@@ -31,6 +31,9 @@ class ProductTabListContainer extends React.PureComponent {
     }, 0);
   }
 
+  /*
+      To manage the error message Toast in mobile app
+    */
   componentDidUpdate() {
     const { productTabList, showToast } = this.props;
     let { selectedCategoryId } = this.state;

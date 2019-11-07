@@ -208,6 +208,5 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       <View />
     </Styled(View)>
   </View>
-  <Connect(QuickViewModalContainer) />
 </Styled(View)>
 `;
