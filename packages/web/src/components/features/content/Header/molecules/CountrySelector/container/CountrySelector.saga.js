@@ -11,7 +11,7 @@ import {
 } from '@tcp/core/src/constants/reducer.constants';
 import GLOBAL_CONSTANT from '@tcp/core/src/reduxStore/constants';
 import { validateReduxCache } from '@tcp/core/src/utils/cache.util';
-
+import { navigateXHRAction } from '@tcp/core/src/components/features/account/NavigateXHR/container/NavigateXHR.action';
 import COUNTRY_SELECTOR_CONSTANTS from './CountrySelector.constants';
 import { sites } from '../../../../../../../constants';
 import { udpateSiteId, setModuleXContent } from './CountrySelector.actions';
@@ -72,6 +72,7 @@ export function* submitCountrySelectionData({ payload: data }) {
     );
     const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
     yield put(udpateSiteId(newSiteId));
+    yield put(navigateXHRAction());
     languageRedirect(newCountry, oldCountry, newSiteId, newLanguage, oldLanguage);
   } catch (error) {
     yield null;

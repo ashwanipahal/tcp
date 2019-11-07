@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import outFitTileCss from './OutfitTile.style';
 
 export default css`
   .outfit-title {
@@ -15,5 +16,21 @@ export default css`
   }
   .outfit-section-wrapper {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
+`;
+
+export const outFitSkeletonCss = css`
+  .skeleton-col {
+    ${outFitTileCss};
+    margin-top: 10px;
+    height: 350px;
+    background: ${props => props.theme.colorPalette.gray[500]};
+    @media ${props => props.theme.mediaQuery.medium} {
+      height: 211px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 330px;
+      margin-top: 30px;
+    }
   }
 `;

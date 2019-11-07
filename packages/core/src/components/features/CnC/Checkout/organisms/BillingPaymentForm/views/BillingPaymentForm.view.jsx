@@ -304,7 +304,7 @@ export class BillingPaymentForm extends React.PureComponent {
                         className="field"
                         showSuccessCheck={false}
                         enableSuccessCheck={false}
-                        autocomplete="noautocomplete"
+                        autoComplete="off"
                       />
                       <span className="hide-show show-hide-icons">
                         <span className="info-icon-img-wrapper">
@@ -478,6 +478,7 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: constants.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
+  shouldValidate: () => true,
   ...validateMethod,
 })(withStyles(BillingPaymentForm, styles));
 export { BillingPaymentForm as BillingPaymentFormVanilla };

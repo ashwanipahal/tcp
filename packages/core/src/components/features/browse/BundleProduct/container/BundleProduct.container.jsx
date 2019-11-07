@@ -38,6 +38,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     getDetails: payload => {
+      console.log('payload: ', payload);
       dispatch(getProductDetails(payload));
     },
   };
