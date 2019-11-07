@@ -2,8 +2,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { UrlHandler } from '@tcp/core/src/utils/utils.app';
-import { ViewWithSpacing, BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import { BodyCopy, Button, Anchor, Image } from '../../../../common/atoms';
+import {
+  ViewWithSpacing,
+  BodyCopyWithSpacing,
+} from '@tcp/core/src/components/common/atoms/styledWrapper';
+import { Button, Image } from '../../../../common/atoms';
 import {
   ImageContainer,
   ButtonWrapper,
@@ -20,10 +23,9 @@ const PLCC_LOOKUP_2_POINTS = require('../../../../../../../core/src/assets/PLCC_
 const BenefitImage = require('../../../../../../../core/src/assets/BenefitImageV.png');
 
 export class MyPlaceRewardsCreditCard extends PureComponent {
-
   openManageCreditCardLink = () => {
     const { labels } = this.props;
-    UrlHandler(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'))
+    UrlHandler(getLabelValue(labels, 'lbl_PLCCModal_applyAcceptOfferLink'));
   };
 
   render() {
@@ -107,19 +109,11 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
         />
 
         <ImageContainer>
-          <Image
-            source={PLCC_LOOKUP_2_POINTS}
-            width="100%"
-            height="60px"
-          />
+          <Image source={PLCC_LOOKUP_2_POINTS} width="100%" height="60px" />
         </ImageContainer>
 
         <ImageContainer>
-          <Image
-            source={BenefitImage}
-            width="100%"
-            height="600px"
-          />
+          <Image source={BenefitImage} width="100%" height="600px" />
         </ImageContainer>
 
         <BottomContainer>
@@ -136,7 +130,6 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             anchorVariation="primary"
             underline
             text={getLabelValue(labels, 'lbl_PLCCForm_details')}
-
           />
 
           <StyledAnchor
@@ -147,7 +140,6 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             anchorVariation="primary"
             underline
             text={getLabelValue(labels, 'lbl_PLCCModal_faqText')}
-
           />
 
           <StyledAnchor
@@ -163,7 +155,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
 
         {isPLCCModalOpen && <ApplyNowPLCCModal isPLCCModalOpen={isPLCCModalOpen} />}
       </>
-    )
+    );
   }
 }
 
