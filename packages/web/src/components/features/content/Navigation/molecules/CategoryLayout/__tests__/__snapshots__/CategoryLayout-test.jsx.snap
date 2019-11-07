@@ -165,7 +165,7 @@ exports[`Category Layout Component renders correctly 1`] = `
           Array [
             "",
             "",
-            "nav_one_col_img_d",
+            "t_nav_one_col_img_d",
           ]
         }
         imgData={
