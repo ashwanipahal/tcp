@@ -29,6 +29,7 @@ export function* getPickupStores(action) {
   // Reset error message
   yield put(setStoreSearchError(''));
   try {
+    yield put(setStoreSearchingState(true));
     const locationRes = yield call(submitGetBopisSearchByLatLng, payload);
     const { errorMessage, location } = locationRes;
     if (errorMessage) {
@@ -53,8 +54,10 @@ export function* getPickupStores(action) {
         yield put(setBopisStores({ stores }));
       }
     }
+    yield put(setStoreSearchingState(false));
   } catch (err) {
     logger.error(err);
+    yield put(setStoreSearchingState(false));
   }
 }
 
@@ -116,11 +119,11 @@ export function* getUserCartStores(action) {
   try {
     const { alwaysSearchForBOSS, apiPayload } = payload;
     const { cartItemsCount } = apiPayload;
+    yield put(setBopisStores({ stores: [] }));
     yield put(setUserCartStores({ stores: null }));
     yield put(setStoreSearchError(''));
     yield put(setIsGetUserStoresLoaded(false));
     let stores = [];
-    yield put(setStoreSearchingState(true));
     if (cartItemsCount > 0) {
       stores = yield call(getCartStoresPlusInventory, apiPayload);
     }
@@ -134,10 +137,8 @@ export function* getUserCartStores(action) {
       yield call(getFavStoreDetails, stores, apiPayload);
     }
     yield put(setIsGetUserStoresLoaded(true));
-    yield put(setStoreSearchingState(false));
   } catch (err) {
     logger.error(err);
-    yield put(setStoreSearchingState(false));
   }
 }
 
