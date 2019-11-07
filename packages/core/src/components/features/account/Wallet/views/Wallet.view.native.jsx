@@ -20,7 +20,6 @@ import CreateAccount from '../../CreateAccount';
 import LoginPageContainer from '../../LoginPage';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
 import Panel from '../../../../common/molecules/Panel';
-import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
 import ModalNative from '../../../../common/molecules/Modal';
 import CustomIcon from '../../../../common/atoms/Icon';
 import CustomButton from '../../../../common/atoms/Button';
@@ -35,7 +34,6 @@ class WalletView extends PureComponent {
     super(props);
     this.state = {
       showModal: false,
-      applyCard: false,
       getComponentId: {
         login: '',
         createAccount: '',
@@ -54,10 +52,9 @@ class WalletView extends PureComponent {
   }
 
   toggleApplyNowModal = () => {
-    const { applyCard } = this.state;
-    this.setState({
-      applyCard: !applyCard,
-    });
+    const { navigation, openApplyNowModal } = this.props;
+    navigation.navigate('ApplyNow');
+    openApplyNowModal({ isModalOpen: true });
   };
 
   showloginModal = () => {
@@ -134,7 +131,6 @@ class WalletView extends PureComponent {
 
   renderFooterLinks = overViewLabels => {
     const { navigation } = this.props;
-    const { applyCard } = this.state;
     return (
       <>
         <TouchabelContainer onPress={this.toggleApplyNowModal}>
@@ -156,7 +152,6 @@ class WalletView extends PureComponent {
           <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
         </TouchabelContainer>
 
-        <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
         <Panel
           title={getLabelValue(overViewLabels, 'lbl_overview_manage_creditCard')}
           isVariationTypeLink
@@ -354,6 +349,7 @@ WalletView.propTypes = {
   overViewLabels: PropTypes.shape({}),
   navigation: PropTypes.func,
   isUserLoggedIn: PropTypes.string.isRequired,
+  openApplyNowModal: PropTypes.func.isRequired,
 };
 
 WalletView.defaultProps = {
