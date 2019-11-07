@@ -161,6 +161,13 @@ exports[`Category Layout Component renders correctly 1`] = `
       <WithTheme(DamImage)
         className="l2-image-banner-image  "
         data-locator="overlay_img_0"
+        imgConfigs={
+          Array [
+            "",
+            "",
+            "nav_one_col_img_d",
+          ]
+        }
         imgData={
           Object {
             "alt": "Shop Bsig & Lil Sis",
