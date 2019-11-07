@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GiftServices from '../GiftServices.view';
+import GiftServices from '../GiftServices.container';
 
 describe('GiftServices component', () => {
   it('renders correctly', () => {
