@@ -34,7 +34,7 @@ import selectors, {
   getPickupValues,
 } from './Checkout.selector';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
-import checkoutUtil from '../util/utility';
+import checkoutUtil,{getPayPalFlag} from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -46,6 +46,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
 import { getCVVCodeInfoContentId } from '../organisms/BillingPage/container/BillingPage.selectors';
+import { isMobileApp } from '../../../../../utils';
 
 const {
   getSmsSignUpLabels,
@@ -80,6 +81,7 @@ const {
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
+
   componentDidMount() {
     const {
       needHelpContentId,
@@ -93,7 +95,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
-      initCheckout(router);
+      initCheckout(router, getPayPalFlag());
     }
     fetchNeedHelpContent([
       needHelpContentId,
@@ -108,7 +110,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     const { isRegisteredUserCallDone, router, initCheckout } = this.props;
     /* istanbul ignore else */
     if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
-      initCheckout(router);
+      initCheckout(router, getPayPalFlag());
     }
   }
 
@@ -130,6 +132,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     let isPaypalPostBack;
     if (router && router.query) {
       ({ recalc, isPaypalPostBack } = router.query);
+    }
+    if(isMobileApp()){
+      isPaypalPostBack = getPayPalFlag();
     }
     initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
   };
@@ -281,8 +286,8 @@ CheckoutContainer.getInitActions = () => initActions;
 
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: router => {
-      dispatch(initCheckoutAction(router));
+    initCheckout: (router, isPaypalFlow) => {
+      dispatch(initCheckoutAction(router, isPaypalFlow));
     },
     initCheckoutSectionPage: payload => {
       dispatch(initCheckoutSectionPageAction(payload));

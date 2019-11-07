@@ -190,6 +190,19 @@ export const getExpirationRequiredFlag = ({ cardType }) => {
   return !cardType || cardType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
 };
 
+export const   getPayPalFlag = (navigation) =>{
+  if (navigation && navigation.state) {
+    const {
+      state: { params },
+    } = navigation;
+    if (params) {
+      const {isPayPalFlow}=params
+      return isPayPalFlow;
+    }
+  }
+  return false;
+}
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
