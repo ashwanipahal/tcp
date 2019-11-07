@@ -534,6 +534,8 @@ export default css`
     text-align: left;
     margin: 0 auto;
     position: relative;
+    display: inline-block;
+    margin-top: -10px;
     .percentage_wrapped_nav-1 {
       font-size: 42.4px;
       position: absolute;

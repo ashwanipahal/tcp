@@ -60,8 +60,13 @@ export default css`
   .l2-image-banner {
     display: none;
   }
-  .l2-text-wrapper {
+  .l2-text-container {
     display: none;
+  }
+  .l2-image-banner-link {
+    .icon-arrow {
+      display: none;
+    }
   }
   .icon-back {
     position: absolute;
