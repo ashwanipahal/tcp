@@ -49,7 +49,6 @@ class PayPalButton extends React.PureComponent {
       height: 42,
       width: 150,
       flex: 1,
-      overflow: 'hidden',
     };
 
     const { showAsModal } = this.state;
@@ -60,7 +59,6 @@ class PayPalButton extends React.PureComponent {
         width: '100%',
         height: 800,
         zIndex: 999,
-        overflow: 'hidden',
       };
     }
     let webURL = '';

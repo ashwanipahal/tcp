@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLocator, getIconPath } from '@tcp/core/src/utils';
 import { BodyCopy, LabeledRadioButton, Image, Anchor } from '@tcp/core/src/components/common/atoms';
-import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import style from '../styles/CartItemRadioButtons.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -194,7 +193,20 @@ class CartItemRadioButtons extends React.Component {
    * @memberof CartItemRadioButtons
    */
   renderBossBanner = (isBossItem, onlineClearanceMessage) => {
-    return isBossItem && !onlineClearanceMessage ? <PickupPromotionBanner bossBanner /> : null;
+    const { labels } = this.props;
+    return isBossItem && !onlineClearanceMessage ? (
+      <div className="banner-wrapper">
+        <div className="triangle-left" />
+        <div className="promo-wrapper">
+          <BodyCopy fontSize="fs10" fontFamily="primary" fontWeight="black">
+            {`${labels.extra} ${labels.bossOffValue || '5%'}`}
+          </BodyCopy>
+          <BodyCopy className="off-label" fontSize="fs10" fontFamily="primary">
+            {labels.off}
+          </BodyCopy>
+        </div>
+      </div>
+    ) : null;
   };
 
   /**

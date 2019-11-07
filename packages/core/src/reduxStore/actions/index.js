@@ -157,16 +157,6 @@ export const fetchPageLayout = (payload, layoutName) => {
   };
 };
 
-export const getSetTcpSegment = payload => ({
-  payload,
-  type: GLOBAL_CONSTANTS.GET_SET_TCP_SEGMENT,
-});
-
-export const SetTcpSegmentMethodCall = payload => ({
-  payload,
-  type: GLOBAL_CONSTANTS.SET_TCP_SEGMENT_METHOD_CALL,
-});
-
 export default {
   loadLayoutData,
   loadLabelsData,
@@ -181,6 +171,4 @@ export default {
   setCurrency,
   setLanguage,
   setBossBopisFlags,
-  getSetTcpSegment,
-  SetTcpSegmentMethodCall,
 };
