@@ -34,6 +34,25 @@ const ProductListingReducer = (state = initialState, action) => {
       return state;
     case PRODUCTLISTINGPAGE_CONSTANTS.RESET_PRODUCTS:
       return { ...state };
+    case PRODUCTLISTINGPAGE_CONSTANTS.SET_ADD_TO_FAVORITE:
+      state.set(
+        'loadedProductsPages',
+        state.get('loadedProductsPages')[0].forEach(item => {
+          if (
+            item.miscInfo &&
+            item.productInfo &&
+            item.productInfo.generalProductId === action.payload.colorProductId
+          ) {
+            // eslint-disable-next-line no-param-reassign
+            item.miscInfo = {
+              ...item.miscInfo,
+              isInDefaultWishlist: true,
+              favoriteCounter: action.payload.res && action.payload.res.favoritedCount,
+            };
+          }
+        })
+      );
+      return state;
     default:
       return getDefaultState(state);
   }

@@ -3,7 +3,7 @@ import { withRouter } from 'next/router';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
@@ -54,7 +54,7 @@ const HomePageView = dynamic({
 
     return (
       <HomePageWithRouter openCountrySelectorModal={openCountrySelectorModal}>
-        <HomePageSlots slots={slots} modules={modules} />
+        <PageSlots slots={slots} modules={modules} />
         <GetCandid />
         <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />
         <Recommendations

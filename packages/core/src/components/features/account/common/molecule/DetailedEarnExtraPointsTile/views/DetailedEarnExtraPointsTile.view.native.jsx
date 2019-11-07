@@ -62,7 +62,7 @@ export class DetailedEarnExtraPointsTile extends React.PureComponent {
             <BodyCopy
               component="p"
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="bold"
               color="gray.900"
               fontFamily="secondary"
               textAlign="center"

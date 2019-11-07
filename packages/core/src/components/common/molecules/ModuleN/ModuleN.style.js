@@ -5,16 +5,24 @@ export default css`
   margin-bottom: 40px;
 
   .heading-wrapper {
-    padding: 16px 0;
+    padding-top: 32px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: 24px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding-top: 16px;
-      padding-bottom: 24px;
     }
   }
 
+  .button-list-wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
   .stacked-button-list-wrapper {
+    margin-top: 16px;
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 24px;
     }
@@ -84,7 +92,7 @@ export default css`
       align-items: center;
       justify-content: center;
       padding-bottom: 0px;
-      padding-top: ${props => (props.theme.isGymboree ? '32px' : '16px')};
+      padding-top: 24px;
     }
     .heading,
     .moduleN__promo-banner {
