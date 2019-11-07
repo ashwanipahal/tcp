@@ -2,31 +2,8 @@ import styled from 'styled-components/native';
 import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
 
 export const ImageContainer = styled.View`
-  margin-top: ${props => props.marginTop || props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   align-items: center;
-`;
-
-export const Container = styled.View`
-  width: 85%;
-  margin: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
-    ${props => props.theme.spacing.LAYOUT_SPACING.XS} 0
-    ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-`;
-
-export const TextBoxContainer = styled.View`
-  width: 100%;
-  padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
-    ${props => props.theme.spacing.LAYOUT_SPACING.XXS} 0
-    ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-`;
-
-export const StyledBodyCopy = styled(BodyCopy)`
-  padding: ${props => props.paddingTop || '0px'} ${props => props.paddingRight || '0px'}
-    ${props => props.paddingBottom || '0px'} ${props => props.paddingLeft || '0px'};
-`;
-
-export const ScrollViewContainer = styled.ScrollView`
-  height: 900px;
 `;
 
 export const ButtonWrapper = styled.View`
@@ -51,11 +28,8 @@ export const BottomContainer = styled.View`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-`;
-
-export const RichTextContainer = styled.View`
-  width: 100%;
-  height: 143px;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED}
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED}
 `;
 
 export const StyledImage = styled(Image)`
@@ -68,25 +42,16 @@ export const HeaderContainer = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-`;
-
-export const UnderlineStyle = styled.View`
-  height: 3px;
-  background-color: ${props => props.theme.colorPalette.black};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL}
 `;
 
 export default {
   ImageContainer,
-  StyledBodyCopy,
-  ScrollViewContainer,
   ButtonWrapper,
   StyledAnchor,
   BottomContainer,
-  RichTextContainer,
-  Container,
   StyledImage,
   HeaderContainer,
-  UnderlineStyle
 };
 
 
