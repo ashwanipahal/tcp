@@ -15,6 +15,7 @@ export {
   createAPIConfig,
   switchAPIConfig,
   isAndroid,
+  isIOS,
   getPixelRatio,
   LAZYLOAD_HOST_NAME,
   setTestId,

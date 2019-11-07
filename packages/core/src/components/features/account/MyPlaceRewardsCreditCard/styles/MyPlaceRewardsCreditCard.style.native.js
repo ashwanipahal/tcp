@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
 
 export const ImageContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
@@ -10,31 +10,27 @@ export const ButtonWrapper = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export const StyledAnchor = styled(Anchor)`
-  padding: ${props => props.paddingTop || '0px'} ${props => props.paddingRight || '0px'}
-    ${props => props.paddingBottom || '0px'} ${props => props.paddingLeft || '0px'};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
   align-items: center;
   justify-content: center;
 `;
 
 export const BottomContainer = styled.View`
   width: 100%;
-  padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS}
-    ${props => props.theme.spacing.LAYOUT_SPACING.XXS} 0
-    ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED}
-  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED}
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL}
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL}
 `;
 
 export const StyledImage = styled(Image)`
   /* stylelint-disable-next-line */
-  resize-mode: stretch;
+  resize-mode: contain;
 `;
 
 export const HeaderContainer = styled.View`
@@ -42,7 +38,7 @@ export const HeaderContainer = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL}
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM}
 `;
 
 export default {

@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPlaceRewardsCreditCard View component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs38"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="padding-top-LRG"
+      text="lbl_PLCCModal_applyNowHeaderText"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs12"
+      fontWeight="black"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="padding-top-XXXS"
+      text="lbl_PLCCModal_applyNowHeaderTextSuffix"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(ImageComp))
+      alt=""
+      height="166px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/tcp-cc.png",
+        }
+      }
+      url=""
+      width="70%"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-SM margin-left-XXXL margin-right-XXXL"
+    text="lbl_PLCCModal_applyNowSubText"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)
+    spacingStyles="margin-top-LRG margin-bottom-LRG"
+  >
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={null}
+        paddings="12px 32px 12px 32px"
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="lbl_PLCCModal_applyNowCTA"
+        theme={Object {}}
+        type="submit"
+        url=""
+        width="100%"
+        withNoLineHeight={false}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
+        customStyle={Object {}}
+        customTextStyle={null}
+        disableButton={false}
+        fill="WHITE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={[Function]}
+        paddings="12px 32px 12px 32px"
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="lbl_PLCCForm_manageCreditCardAccount"
+        theme={Object {}}
+        type="submit"
+        url=""
+        width="100%"
+        withNoLineHeight={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="text.secondary"
+    dataLocator=""
+    fontFamily="primary"
+    fontSize="fs32"
+    fontWeight="black"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-SM"
+    text="lbl_PLCCModal_benefitsText"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="regular"
+    margin={null}
+    numberOfLines={null}
+    spacingStyles="margin-top-XS margin-left-XXXL margin-right-XXXL"
+    text="lbl_PLCCForm_withMyPlaceRewardsCard"
+    textAlign="center"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="60px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/PLCC_lockup_2_points.png",
+        }
+      }
+      url=""
+      width="100%"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(ImageComp)
+      alt=""
+      height="600px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/BenefitImageV.png",
+        }
+      }
+      url=""
+      width="100%"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs10"
+      margin={null}
+      numberOfLines={null}
+      spacingStyles="margin-right-XS"
+      text="lbl_PLCCModal_linksTextPrefix"
+      textDecoration={null}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      locator=""
+      margins={null}
+      onPress={null}
+      text="lbl_PLCCForm_details"
+      underline={true}
+      url="lbl_PLCCModal_detailsLink"
+      visible={false}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      locator="plcc_faq"
+      margins={null}
+      onPress={null}
+      target="_blank"
+      text="lbl_PLCCModal_faqText"
+      underline={true}
+      url="lbl_PLCCModal_faqLink"
+      visible={false}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation="primary"
+      colorName={null}
+      customStyle={Object {}}
+      data-locator="plcc_rewards_terms"
+      fontSizeVariation="medium"
+      locator=""
+      margins={null}
+      onPress={null}
+      target="_blank"
+      text="lbl_PLCCModal_rewardsProgramText"
+      underline={true}
+      url="lbl_PLCCModal_rewardsProgramLink"
+      visible={false}
+    />
+  </Styled(View)>
+</Fragment>
+`;

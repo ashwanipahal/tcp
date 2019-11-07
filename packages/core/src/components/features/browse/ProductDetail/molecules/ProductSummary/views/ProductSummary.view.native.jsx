@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
+import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
+import {
+  ICON_NAME,
+  ICON_FONT_CLASS,
+} from '@tcp/core/src/components/common//atoms/Icon/Icon.constants';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-// import { getLabelValue } from '@tcp/core/src/utils/utils';
 import {
   Container,
+  RowContainer,
   BazarVoiceContainer,
   ReviewAndRatingContainer,
-  OfferPriceAndBadge3Container,
   styles,
+  EmptyView,
 } from '../styles/ProductSummary.style.native';
 import LineComp from '../../../../../../common/atoms/Line';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -23,56 +28,79 @@ class ProductSummary extends React.PureComponent {
     this.loyaltyPromotionMessage = '';
   }
 
-  onCompletLook = () => {};
+  onCompleteLook = () => {};
 
-  getBadgeAndListPrice = (offerPriceForColor, listPriceForColor, badge2) => {
-    return (
-      <OfferPriceAndBadge3Container>
-        {listPriceForColor !== offerPriceForColor && (
-          <BodyCopy
-            dataLocator="pdp_discounted_product_price"
-            textDecoration="line-through"
-            mobileFontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="regular"
-            color="gray.800"
-            text={listPriceForColor}
-          />
-        )}
-        {badge2 ? (
-          <BodyCopy
-            dataLocator="pdp_discounted_percentage"
-            margin="0 0 0 10px"
-            mobileFontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="regular"
-            color="red.600"
-            text={badge2}
-          />
-        ) : null}
-      </OfferPriceAndBadge3Container>
-    );
+  onWriteReview = () => {};
+
+  renderWriteAReviewAnchor = anchorLabel => {
+    const { isBundleProduct } = this.props;
+    if (isBundleProduct) {
+      return (
+        <Anchor
+          fontSizeVariation="medium"
+          anchorVariation="custom"
+          colorName="gray.900"
+          underline
+          href="#"
+          locator="pdp_lbl_write_review"
+          className="details-link"
+          onPress={this.onCompleteLook}
+          text={anchorLabel}
+        />
+      );
+    }
+    return <EmptyView width="30%" />;
+  };
+
+  renderCompleteTheLookAnchor = anchorLabel => {
+    const { isBundleProduct, showCompleteTheLook } = this.props;
+    if (showCompleteTheLook && !isBundleProduct) {
+      return (
+        <Anchor
+          fontSizeVariation="medium"
+          anchorVariation="custom"
+          colorName="gray.900"
+          underline
+          href="#"
+          locator="pdp_anchor_complete_the_look"
+          className="details-link"
+          onPress={this.onCompleteLook}
+          text={anchorLabel}
+        />
+      );
+    }
+    return <EmptyView width="30%" />;
+  };
+
+  /**
+   * @description - This method render star rating icons
+   */
+  renderStarRating = () => {
+    const arr = [1, 2, 3, 4, 5];
+    return arr.map((item, index) => {
+      const margins = index === 0 ? '0 0 0 0' : '0 0 0 4px';
+      return (
+        <CustomIcon
+          margins={margins}
+          iconFontName={ICON_FONT_CLASS.Icomoon}
+          name={ICON_NAME.starFilled}
+          size="fs14"
+          color="gray.500"
+        />
+      );
+    });
   };
 
   renderBazaarVoiceComponent = () => {
-    const { isGiftCard, pdpLabels, showCompleteTheLook } = this.props;
-    const completeTheLook =
-      (pdpLabels.completeTheLook && pdpLabels.completeTheLook.toLowerCase()) ||
-      'Complete The Look1';
+    const { isGiftCard, pdpLabels } = this.props;
+    const { completeTheLook, writeAReview } = pdpLabels;
     if (!isGiftCard) {
       return (
         <BazarVoiceContainer>
           <ReviewAndRatingContainer>
+            {this.renderStarRating()}
             <BodyCopy
-              dataLocator="pdp_write_review_icon"
-              mobileFontFamily="secondary"
-              fontSize="fs22"
-              fontWeight="regular"
-              color="gray.500"
-              text="* * * * *"
-            />
-            <BodyCopy
-              margin="0 0 0 20px"
+              margin="0 0 0 12px"
               dataLocator="pdp_write_review_icon"
               mobileFontFamily="secondary"
               fontSize="fs12"
@@ -81,19 +109,8 @@ class ProductSummary extends React.PureComponent {
               text="(0)"
             />
           </ReviewAndRatingContainer>
-          {showCompleteTheLook && (
-            <Anchor
-              fontSizeVariation="medium"
-              anchorVariation="custom"
-              colorName="gray.900"
-              underline
-              href="#"
-              locator="pdp_anchor_complete_the_look"
-              className="details-link"
-              onPress={this.onCompletLook}
-              text={completeTheLook}
-            />
-          )}
+          {this.renderWriteAReviewAnchor(writeAReview)}
+          {this.renderCompleteTheLookAnchor(completeTheLook && completeTheLook.toLowerCase())}
         </BazarVoiceContainer>
       );
     }
@@ -138,16 +155,104 @@ class ProductSummary extends React.PureComponent {
     return null;
   };
 
+  renderOfferPrice = () => {
+    const { productData } = this.props;
+    const { highOfferPrice, offerPrice } = productData;
+    const offerPriceValue = this.calculatePriceValue(offerPrice);
+    const highOfferPriceValue = this.calculatePriceValue(highOfferPrice, null);
+    return (
+      <BodyCopy
+        margin="4px 0 0 0"
+        dataLocator="pdp_current_product_price"
+        mobileFontFamily="secondary"
+        fontSize="fs22"
+        fontWeight="black"
+        color="red.600"
+        text={highOfferPriceValue ? `${offerPriceValue} - ${highOfferPriceValue}` : offerPriceValue}
+      />
+    );
+  };
+
+  renderPricePercentageDiscountLabel = value => {
+    if (value) {
+      return (
+        <BodyCopy
+          dataLocator="pdp_discounted_percentage"
+          margin="0 0 0 10px"
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          color="red.600"
+          text={value}
+        />
+      );
+    }
+    return null;
+  };
+
+  renderListPriceDash = value => {
+    if (value) {
+      return (
+        <BodyCopy
+          dataLocator="pdp_discounted_product_price"
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          color="gray.800"
+          text=" - "
+        />
+      );
+    }
+    return null;
+  };
+
+  renderListPriceLabels = value => {
+    if (value) {
+      return (
+        <BodyCopy
+          dataLocator="pdp_discounted_product_price"
+          textDecoration="line-through"
+          mobileFontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          color="gray.800"
+          text={value}
+        />
+      );
+    }
+    return null;
+  };
+
+  calculatePriceValue = (price, defaultReturn = 0) => {
+    let priceValue = defaultReturn;
+    const { currencySymbol, currencyExchange } = this.props;
+    const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
+    if (price && price > 0) {
+      priceValue = `${currency}${(price * currencyExchange).toFixed(2)}`;
+    }
+    return priceValue;
+  };
+
+  renderListPrice = badge2 => {
+    const { productData } = this.props;
+    const { listPrice, offerPrice, highListPrice } = productData;
+    const listPriceValue = this.calculatePriceValue(listPrice);
+    const highListPriceValue = this.calculatePriceValue(highListPrice, null);
+    if (listPrice && offerPrice && listPrice > offerPrice) {
+      return (
+        <RowContainer>
+          {this.renderListPriceLabels(listPriceValue)}
+          {this.renderListPriceDash(highListPriceValue)}
+          {this.renderListPriceLabels(highListPriceValue)}
+          {this.renderPricePercentageDiscountLabel(badge2)}
+        </RowContainer>
+      );
+    }
+    return null;
+  };
+
   render() {
-    const {
-      productData,
-      selectedColorProductId,
-      currencySymbol,
-      currencyExchange,
-      listPrice,
-      offerPrice,
-      isGiftCard,
-    } = this.props;
+    const { productData, selectedColorProductId, isGiftCard } = this.props;
 
     if (JSON.stringify(productData) !== '{}') {
       const colorFitsSizesMap = get(productData, 'colorFitsSizesMap', null);
@@ -161,9 +266,6 @@ class ProductSummary extends React.PureComponent {
         badge1Value = badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
       }
       const { name } = productData;
-      const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
-      const listPriceForColor = `${currency}${(listPrice * currencyExchange).toFixed(2)}`;
-      const offerPriceForColor = `${currency}${(offerPrice * currencyExchange).toFixed(2)}`;
       return (
         <Container>
           <LineComp marginTop={10} borderColor="gray.500" />
@@ -180,16 +282,8 @@ class ProductSummary extends React.PureComponent {
             text={name}
             numberOfLines={2}
           />
-          <BodyCopy
-            dataLocator="pdp_current_product_price"
-            margin="4px 0 0 0"
-            mobileFontFamily="secondary"
-            fontSize="fs22"
-            fontWeight="black"
-            color="red.600"
-            text={offerPriceForColor}
-          />
-          {this.getBadgeAndListPrice(offerPriceForColor, listPriceForColor, badge2)}
+          {this.renderOfferPrice()}
+          {this.renderListPrice(badge2)}
           {this.renderPromotionalMessage()}
           <LineComp marginTop={12} borderColor="gray.500" />
         </Container>
@@ -204,12 +298,11 @@ ProductSummary.propTypes = {
   selectedColorProductId: PropTypes.number.isRequired,
   isPlcc: PropTypes.bool,
   isGiftCard: PropTypes.bool,
-  listPrice: PropTypes.number.isRequired,
-  offerPrice: PropTypes.number.isRequired,
   currencyExchange: PropTypes.arrayOf(PropTypes.shape({})),
   currencySymbol: PropTypes.string,
   showCompleteTheLook: PropTypes.bool,
   pdpLabels: PropTypes.shape({}),
+  isBundleProduct: PropTypes.bool,
 };
 
 ProductSummary.defaultProps = {
@@ -219,6 +312,7 @@ ProductSummary.defaultProps = {
   isGiftCard: false,
   showCompleteTheLook: false,
   pdpLabels: {},
+  isBundleProduct: false,
 };
 
 export default withStyles(ProductSummary, styles);

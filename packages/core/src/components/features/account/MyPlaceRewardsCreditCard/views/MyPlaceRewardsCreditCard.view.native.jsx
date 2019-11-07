@@ -32,26 +32,27 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
     return (
       <>
         <HeaderContainer>
-          <BodyCopy
+          <BodyCopyWithSpacing
             color="gray.900"
             fontFamily="primary"
             fontSize="fs38"
             textAlign="center"
             fontWeight="black"
             text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
-
+            spacingStyles="padding-top-LRG"
           />
-          <BodyCopy
+          <BodyCopyWithSpacing
             color="gray.900"
             fontFamily="primary"
             fontSize="fs12"
             fontWeight="black"
             text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderTextSuffix')}
+            spacingStyles="padding-top-XXXS"
           />
         </HeaderContainer>
 
         <ImageContainer>
-          <StyledImage source={headerImage} width="65%" height="166px" />
+          <StyledImage source={headerImage} width="70%" height="166px" />
         </ImageContainer>
 
         <BodyCopyWithSpacing
@@ -135,7 +136,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             anchorVariation="primary"
             underline
             text={getLabelValue(labels, 'lbl_PLCCForm_details')}
-            paddingRight="28px"
+
           />
 
           <StyledAnchor
@@ -146,7 +147,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
             anchorVariation="primary"
             underline
             text={getLabelValue(labels, 'lbl_PLCCModal_faqText')}
-            paddingRight="28px"
+
           />
 
           <StyledAnchor
