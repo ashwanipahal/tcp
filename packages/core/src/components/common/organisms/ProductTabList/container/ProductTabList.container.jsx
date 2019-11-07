@@ -31,21 +31,8 @@ class ProductTabListContainer extends React.PureComponent {
     }, 0);
   }
 
-  /*
-      To manage the error message Toast in mobile app
-    */
   componentDidUpdate() {
-    const { productTabList, showToast } = this.props;
-    let { selectedCategoryId } = this.state;
-    selectedCategoryId = selectedCategoryId || [];
-    const tabsData = selectedCategoryId.map(id => productTabList[id]).filter(item => item);
-    if (tabsData.length === selectedCategoryId.length) {
-      tabsData.forEach(tabData => {
-        if (!tabData.length && isMobileApp()) {
-          showToast(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException);
-        }
-      });
-    }
+    this.manageErrorToast();
   }
 
   getCategoryIds = catIds => {
@@ -88,6 +75,23 @@ class ProductTabListContainer extends React.PureComponent {
     });
   };
 
+  /*
+      To manage the error message Toast in mobile app
+    */
+  manageErrorToast() {
+    const { productTabList, showToast } = this.props;
+    let { selectedCategoryId } = this.state;
+    selectedCategoryId = selectedCategoryId || [];
+    const tabsData = selectedCategoryId.map(id => productTabList[id]).filter(item => item);
+    if (tabsData.length === selectedCategoryId.length) {
+      tabsData.forEach(tabData => {
+        if (!tabData.length && isMobileApp()) {
+          showToast(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException);
+        }
+      });
+    }
+  }
+
   updateCategoryId(categoryId) {
     if (categoryId) {
       const { productTabList, getProductTabListData, onProductTabChange, tabItems } = this.props;
@@ -98,6 +102,7 @@ class ProductTabListContainer extends React.PureComponent {
           getProductTabListData({ categoryId: id });
         }
       });
+      this.manageErrorToast();
     }
   }
 
