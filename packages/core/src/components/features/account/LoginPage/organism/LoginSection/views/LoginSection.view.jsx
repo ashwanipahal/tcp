@@ -62,11 +62,11 @@ class LoginSection extends React.PureComponent<Props> {
     scrollTopElement('dialogContent');
   };
 
-  getSignOutSection = ({ isRememberedUser, logoutlabels }) => {
+  getSignOutSection = ({ labels, isRememberedUser, logoutlabels }) => {
     return isRememberedUser ? (
-      <BodyCopy component="div" className="elem-pt-SM elem-pb-LRG">
+      <BodyCopy component="div" className="elem-pb-LRG">
         <BodyCopy fontFamily="primary" fontSize="fs14">
-          {`Not ${displayName} ? `}
+          {`${getLabelValue(labels, 'lbl_login_not', 'login')} ${displayName} ? `}
           <Anchor
             underline
             fontSizeVariation="medium"
