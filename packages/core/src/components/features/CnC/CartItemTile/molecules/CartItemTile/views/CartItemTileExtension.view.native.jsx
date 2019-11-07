@@ -241,67 +241,32 @@ const moveToBagSflItem = props => {
   return startSflDataMoveToBag({ ...payloadData });
 };
 
-const handleEditCartItemWithStore = (
-  changeStoreType,
-  openSkuSelectionForm = false,
-  openRestrictedModalForBopis = false,
-  props
+const getCartRadioButtons = (
+  {
+    productDetail,
+    labels,
+    itemIndex,
+    openedTile,
+    setSelectedProductTile,
+    isBagPageSflSection,
+    showOnReviewPage,
+    isEcomSoldout,
+    isECOMOrder,
+    isBOSSOrder,
+    isBOPISOrder,
+    noBopisMessage,
+    noBossMessage,
+    bossDisabled,
+    bopisDisabled,
+    isBossEnabled,
+    isBopisEnabled,
+    orderId,
+    setShipToHome,
+    pickupStoresInCart,
+    autoSwitchPickupItemInCart,
+  },
+  handleEditCartItemWithStore
 ) => {
-  const { onPickUpOpenClick, productDetail, orderId, clearToggleError } = props;
-  const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
-  const { store, orderItemType } = productDetail.miscInfo;
-  const { productPartNumber } = productDetail.productInfo;
-  const isItemShipToHome = !store;
-  const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
-  const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
-  const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
-  if (clearToggleError) {
-    clearToggleError();
-  }
-  onPickUpOpenClick({
-    colorProductId: productPartNumber,
-    orderInfo: {
-      orderItemId: itemId,
-      Quantity: qty,
-      color,
-      Size: size,
-      Fit: fit,
-      orderId,
-      orderItemType,
-      itemBrand,
-    },
-    openSkuSelectionForm,
-    isBopisCtaEnabled,
-    isBossCtaEnabled,
-    isItemShipToHome,
-    alwaysSearchForBOSS,
-    openRestrictedModalForBopis,
-  });
-};
-
-const getCartRadioButtons = ({
-  productDetail,
-  labels,
-  itemIndex,
-  openedTile,
-  setSelectedProductTile,
-  isBagPageSflSection,
-  showOnReviewPage,
-  isEcomSoldout,
-  isECOMOrder,
-  isBOSSOrder,
-  isBOPISOrder,
-  noBopisMessage,
-  noBossMessage,
-  bossDisabled,
-  bopisDisabled,
-  isBossEnabled,
-  isBopisEnabled,
-  orderId,
-  onPickUpOpenClick,
-  setShipToHome,
-  pickupStoresInCart,
-}) => {
   if (isBagPageSflSection || !showOnReviewPage) return null;
   if (productDetail.miscInfo.availability !== CARTPAGE_CONSTANTS.AVAILABILITY_SOLDOUT) {
     return (
@@ -322,10 +287,10 @@ const getCartRadioButtons = ({
         isBossEnabled={isBossEnabled}
         isBopisEnabled={isBopisEnabled}
         openPickUpModal={handleEditCartItemWithStore}
-        onPickUpOpenClick={onPickUpOpenClick}
-        orderId={orderId}
         setShipToHome={setShipToHome}
         pickupStoresInCart={pickupStoresInCart}
+        autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
+        orderId={orderId}
       />
     );
   }
@@ -350,10 +315,10 @@ getCartRadioButtons.propTypes = {
   bopisDisabled: PropTypes.bool.isRequired,
   isBossEnabled: PropTypes.bool.isRequired,
   isBopisEnabled: PropTypes.bool.isRequired,
-  orderId: PropTypes.string.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
   setShipToHome: PropTypes.func.isRequired,
   pickupStoresInCart: PropTypes.shape({}).isRequired,
+  autoSwitchPickupItemInCart: PropTypes.func.isRequired,
+  orderId: PropTypes.number.isRequired,
 };
 
 /**
@@ -417,7 +382,7 @@ renderUnavailableErrorMessage.propTypes = {
   availability: PropTypes.string.isRequired,
 };
 
-const callEditMethod = props => {
+const callEditMethod = (props, handleEditCartItemWithStore) => {
   const { productDetail, onQuickViewOpenClick } = props;
   const {
     miscInfo: { orderItemType },
@@ -438,7 +403,7 @@ const callEditMethod = props => {
     });
   } else {
     const openSkuSelectionForm = true;
-    handleEditCartItemWithStore(orderItemType, openSkuSelectionForm, false, props);
+    handleEditCartItemWithStore(orderItemType, openSkuSelectionForm, false);
   }
 };
 
@@ -512,7 +477,6 @@ export default {
   getCartRadioButtons,
   renderUnavailableErrorMessage,
   callEditMethod,
-  handleEditCartItemWithStore,
   onSwipeComplete,
   renderImage,
   renderTogglingError,
