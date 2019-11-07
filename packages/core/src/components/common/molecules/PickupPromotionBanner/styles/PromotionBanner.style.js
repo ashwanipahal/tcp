@@ -29,7 +29,7 @@ const styles = css`
     .banner {
       width: 310px;
       height: 24px;
-      background-color: #ffe700;
+      background-color: ${props => props.theme.colorPalette.yellow[500]};
     }
     .pickUp {
       display: flex;
