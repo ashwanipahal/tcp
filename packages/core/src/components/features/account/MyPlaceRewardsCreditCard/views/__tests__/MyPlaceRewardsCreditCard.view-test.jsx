@@ -5,7 +5,7 @@ import { MyPlaceRewardsCreditCard } from '../MyPlaceRewardsCreditCard.view';
 describe('MyPlaceRewardsCreditCard View component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {}
+      labels: {},
     };
     const component = shallow(<MyPlaceRewardsCreditCard {...props} />);
     expect(component).toMatchSnapshot();
