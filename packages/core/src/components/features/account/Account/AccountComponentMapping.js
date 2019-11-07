@@ -45,7 +45,7 @@ const AccountComponentMapping = {
   orders: Orders,
   favorites: FavoritesContainer,
   'order-details': OrderDetails,
-  'rewardsCreditCard': MyPlaceRewardsCreditCardContainer,
+  rewardsCreditCard: MyPlaceRewardsCreditCardContainer,
 };
 
 export default AccountComponentMapping;

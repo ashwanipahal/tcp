@@ -55,6 +55,7 @@ import RecentSearchReducer from '@tcp/core/src/components/common/organisms/Searc
 import AsyncStorage from '@react-native-community/async-storage';
 import MyPreferenceSubscriptionReducer from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.reducer';
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
+import BundleProductReducer from '@tcp/core/src/components/features/browse/BundleProduct/container/BundleProduct.reducer';
 
 import {
   SESSIONCONFIG_REDUCER_KEY,
@@ -119,6 +120,7 @@ import {
   RECENT_SEARCH_REDUCER_KEY,
   MY_PREFERENCE_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
+  BUNDLEPRODUCT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -237,6 +239,7 @@ const rootReducer = combineReducers({
   [RECENT_SEARCH_REDUCER_KEY]: RecentSearchReducer,
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
+  [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
 });
 
 const rootPersistConfig = {

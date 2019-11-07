@@ -30,14 +30,16 @@ class ApplyNowModalWrapper extends React.Component {
 
   openModal = e => {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, resetPLCCApplicationStatus } = this.props;
     toggleModal({ isModalOpen: true });
+    resetPLCCApplicationStatus({ status: null });
   };
 
   openPLCCModal = e => {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, resetPLCCApplicationStatus } = this.props;
     toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
+    resetPLCCApplicationStatus({ status: null });
   };
 
   render() {

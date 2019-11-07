@@ -61,7 +61,6 @@ const CustomButton = props => {
       navigateToPage(cmsValidatedUrl, navigation);
     }
   };
-
   return (
     <TouchableOpacityComponent
       accessibilityRole="button"
