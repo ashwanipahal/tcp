@@ -28,16 +28,10 @@ exports[`ConfirmationView should render correctly 1`] = `
     />
   </Styled(View)>
   <Connect(ConfirmationAccountFormContainer) />
-  <Styled(View)>
-    <Connect(Recommendations)
-      navigation={null}
-      page="checkout"
-      variation="moduleO"
-    />
-  </Styled(View)>
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    navigation={null}
     pageCategory="confirmation"
   />
 </Styled(ScrollViewMock)>
@@ -97,16 +91,10 @@ exports[`ConfirmationView should render correctly 2`] = `
     />
   </Styled(View)>
   <Connect(ConfirmationAccountFormContainer) />
-  <Styled(View)>
-    <Connect(Recommendations)
-      navigation={null}
-      page="checkout"
-      variation="moduleO"
-    />
-  </Styled(View)>
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    navigation={null}
     pageCategory="confirmation"
   />
 </Styled(ScrollViewMock)>
@@ -161,16 +149,10 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
     />
   </Styled(View)>
   <Connect(ConfirmationAccountFormContainer) />
-  <Styled(View)>
-    <Connect(Recommendations)
-      navigation={null}
-      page="checkout"
-      variation="moduleO"
-    />
-  </Styled(View)>
   <CnCCommonTemplate
     isConfirmationPage={true}
     isGuest={true}
+    navigation={null}
     pageCategory="confirmation"
   />
 </Styled(ScrollViewMock)>

@@ -122,6 +122,7 @@ exports[`ProductListItem component should render correctly 1`] = `
       iconName="chevron-down"
       iconSize="fs12"
       locator=""
+      margin="0 6px 0 0"
       navigation={Object {}}
       onPress={[Function]}
       paddings="12px 12px 12px 12px"
