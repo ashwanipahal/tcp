@@ -129,8 +129,11 @@ class _PickupStoreSelectionForm extends React.Component {
       submitting,
       className,
       storeSearchError,
+      PickupSkuFormValues,
       isSkuResolved,
     } = this.props;
+    let disableButton = pristine;
+    disableButton = Object.values(PickupSkuFormValues).includes('');
 
     return showStoreSearching ? (
       <div className={className}>
@@ -169,7 +172,7 @@ class _PickupStoreSelectionForm extends React.Component {
               type="submit"
               title="search"
               className="button-search-bopis"
-              disabled={pristine || submitting}
+              disabled={pristine || submitting || disableButton}
             >
               Search
             </Button>

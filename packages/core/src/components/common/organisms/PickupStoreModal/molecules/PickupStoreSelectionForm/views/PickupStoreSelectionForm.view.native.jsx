@@ -110,8 +110,11 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       onCloseClick,
       handleSubmit,
       onSearch,
+      PickupSkuFormValues,
       selectedValue,
     } = this.props;
+    let disableButton = pristine;
+    disableButton = Object.values(PickupSkuFormValues).includes('');
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
@@ -157,7 +160,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           onPress={handleSubmit(onSearch)}
           locator="pdp_color_swatch"
           accessibilityLabel="Search"
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || disableButton}
         />
         {isSkuResolved && (
           <BodyCopyWithSpacing
