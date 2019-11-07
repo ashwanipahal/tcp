@@ -78,6 +78,10 @@ class ProductListingContainer extends React.PureComponent {
         isOutfit: true,
         asPath: path,
       });
+    } else {
+      this.setState({
+        isOutfit: false,
+      });
     }
     const url = navigation && navigation.getParam('url');
     getProducts({ URI: 'category', url, ignoreCache: true });
