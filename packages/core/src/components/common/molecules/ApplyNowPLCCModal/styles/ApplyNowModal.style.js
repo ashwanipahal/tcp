@@ -14,7 +14,7 @@ export const modalStyles = css`
 
   div.TCPModal__InnerContent {
     text-align: center;
-    > h2 {
+    div > h2 {
       ::after {
         content: '§';
         display: inline-block;
