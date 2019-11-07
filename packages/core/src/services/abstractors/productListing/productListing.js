@@ -2,7 +2,6 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import layoutAbstractor from '@tcp/core/src/services/abstractors/bootstrap/layout';
 import { getAPIConfig } from '@tcp/core/src/utils';
 import { executeUnbxdAPICall } from '../../handler';
-import { promoCombinationMock } from './mock';
 
 import endpoints from '../../endpoints';
 import utils, { bindAllClassMethodsToThis, isMobileApp } from '../../../utils';
@@ -153,8 +152,7 @@ class ProductsDynamicAbstractor {
    * @return {Object} layout and module parsed data
    */
   // eslint-disable-next-line no-unused-vars
-  parsedModuleData = async promoCombinationData => {
-    const promoCombination = promoCombinationMock; // @TODO post data fetch from unbxd key || JSON.parse(promoCombinationData);
+  parsedModuleData = async promoCombination => {
     const moduleObjects = [];
     const slotsObject = {};
     let modules = {};
@@ -217,6 +215,7 @@ class ProductsDynamicAbstractor {
       extraParams,
       shouldApplyUnbxdLogic,
       hasShortImage,
+      isLazyLoading,
     } = reqObj;
 
     const searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
@@ -295,6 +294,7 @@ class ProductsDynamicAbstractor {
           searchTerm,
           sort,
           filterSortView: Object.keys(filtersAndSort).length > 0,
+          isLazyLoading,
         })
       )
       .catch(err => {

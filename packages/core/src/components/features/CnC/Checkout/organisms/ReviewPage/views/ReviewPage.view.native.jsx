@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { reduxForm, change } from 'redux-form';
+import { reduxForm, change, FormSection } from 'redux-form';
 import PropTypes from 'prop-types';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
@@ -33,6 +33,8 @@ class ReviewPage extends React.PureComponent {
     dispatch: PropTypes.func.isRequired,
     isExpressCheckout: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
+    shipmentMethods: PropTypes.func.isRequired,
+    selectedShipmentId: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -107,6 +109,9 @@ class ReviewPage extends React.PureComponent {
       setCheckoutStage,
       handleSubmit,
       isExpressCheckout,
+      shipmentMethods,
+      dispatch,
+      selectedShipmentId,
     } = this.props;
     const { header, backLinkBilling, nextSubmitText } = labels;
 
@@ -129,12 +134,21 @@ class ReviewPage extends React.PureComponent {
                 isExpressCheckout={isExpressCheckout}
               />
             )}
+
             {!!orderHasShipping && (
-              <ShippingReviewSection
-                onEdit={() => {
-                  setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
-                }}
-              />
+              <FormSection name="expressReviewShippingSection">
+                <ShippingReviewSection
+                  onEdit={() => {
+                    setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM);
+                  }}
+                  isExpressCheckout={isExpressCheckout}
+                  shipmentMethods={shipmentMethods}
+                  dispatch={dispatch}
+                  formName={formName}
+                  formSection="expressReviewShippingSection"
+                  selectedShipmentId={selectedShipmentId}
+                />
+              </FormSection>
             )}
 
             <BillingSection

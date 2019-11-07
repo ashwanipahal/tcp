@@ -17,7 +17,7 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="black"
+    fontWeight="bold"
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"
@@ -28,7 +28,9 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs14"
+    fontWeight="regular"
     margin={null}
     numberOfLines={null}
     text="Earn 10 points"
@@ -43,7 +45,9 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
       anchorVariation="primary"
       colorName={null}
       customStyle={Object {}}
+      fontFamily="secondary"
       fontSizeVariation="large"
+      fontWeight="regular"
       locator=""
       margins={null}
       noLink={true}
@@ -73,7 +77,7 @@ exports[`PromoListTile component should renders correctly withot anchor 1`] = `
     dataLocator=""
     fontFamily="secondary"
     fontSize="fs16"
-    fontWeight="black"
+    fontWeight="bold"
     margin={null}
     numberOfLines={null}
     spacingStyles="margin-top-MED margin-right-SM margin-bottom-SM margin-left-SM"
@@ -84,7 +88,9 @@ exports[`PromoListTile component should renders correctly withot anchor 1`] = `
   <Styled(BodyCopy)
     accessibilityText=""
     dataLocator=""
+    fontFamily="secondary"
     fontSize="fs14"
+    fontWeight="regular"
     margin={null}
     numberOfLines={null}
     text="Earn 10 points"

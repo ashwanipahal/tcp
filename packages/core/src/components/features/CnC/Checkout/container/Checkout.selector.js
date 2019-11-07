@@ -297,6 +297,12 @@ const getShippingPhoneAndEmail = createSelector(
   }
 );
 
+const getShippingPhoneNo = state => {
+  const shippingFormNumber = getAddressPhoneNo(state);
+  const { phoneNumber } = getShippingPhoneAndEmail(state);
+  return shippingFormNumber || phoneNumber;
+};
+
 const getCurrentPickupFormNumber = createSelector(
   getShippingPickupFields,
   pickUpContact => pickUpContact && pickUpContact.phoneNumber
@@ -338,6 +344,7 @@ const getBillingLabels = createSelector(
       'lbl_billing_cvvCode',
       'lbl_billing_continueWith',
       'lbl_billing_continueWithPayPal',
+      'lbl_billing_payPalLongText',
       'lbl_billing_cardEditUnSavedError',
       'lbl_billing_addCC',
     ];
@@ -373,6 +380,7 @@ const getBillingLabels = createSelector(
       lbl_billing_cardEditSave: saveButtonText,
       lbl_billing_continueWith: continueWith,
       lbl_billing_continueWithPayPal: continueWithPayPal,
+      lbl_billing_payPalLongText: payPalLongText,
       lbl_billing_cardEditUnSavedError: cardEditUnSavedError,
       lbl_billing_addCC: addCreditCard,
     } = labels;
@@ -406,6 +414,7 @@ const getBillingLabels = createSelector(
       cvvCode,
       continueWith,
       continueWithPayPal,
+      payPalLongText,
       addCreditCard,
     };
   }
@@ -1061,4 +1070,5 @@ export default {
   getPickupValues,
   getCheckoutPageEmptyBagLabels,
   getCardType,
+  getShippingPhoneNo,
 };
