@@ -25,6 +25,7 @@ const styles = css`
     border-radius: 50%;
     line-height: 25px;
     position: relative;
+    cursor: pointer;
 
     .input-radio-title {
       line-height: 0px;
