@@ -68,7 +68,7 @@ export class BillingSection extends PureComponent {
             dataLocator="cvvTxtBox"
             maxLength="4"
             enableSuccessCheck={false}
-            autocomplete="noautocomplete"
+            autoComplete="off"
           />
           <span className="cvv-icon">{getCvvInfo({ cvvCodeRichText })}</span>
         </Col>

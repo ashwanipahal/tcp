@@ -104,8 +104,8 @@ class PickupStoreSelectionFormContainer extends React.Component {
       const autoSearch = isSkuResolved;
       if (autoSearch) {
         // Adding setTimeout to handle case when fav store comes on the fly from API, not from redux
-        setTimeout(() => handleSubmit(this.onSearch)(), 1);
         this.isAutoSearchTriggered = true;
+        setTimeout(() => handleSubmit(this.onSearch)(), 1);
       }
     }
   };
