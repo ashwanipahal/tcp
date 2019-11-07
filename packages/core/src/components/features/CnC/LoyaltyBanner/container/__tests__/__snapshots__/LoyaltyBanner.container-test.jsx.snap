@@ -7,6 +7,7 @@ exports[`LoyaltyBanner View Component OrderLedger should render correctly 1`] = 
   isGuest={false}
   isInternationalShipping={false}
   isPlcc={false}
+  navigation={null}
   pageCategory=""
   thresholdValue={16.66}
 />
