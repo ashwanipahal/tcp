@@ -24,18 +24,6 @@ const OutfitListingView = ({
   return (
     <>
       <div className={className}>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area-0">{labels.lbl_outfit_title}</div>
-          </Col>
-        </Row>
-        <Row className="placeholder">
-          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <div className="promo-area-1">{labels.lbl_outfit_breadcrumb}</div>
-          </Col>
-        </Row>
-      </div>
-      <div className={className}>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="bread-crumb">
