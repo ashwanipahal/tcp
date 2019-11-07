@@ -34,8 +34,14 @@ const renderFreeShippingBanner = pageCategory => {
   return pageCategory === 'bagPage' && <FreeShippingBanner />;
 };
 
-const getLoyaltybanner = (isConfirmationPage, pageCategory) => {
-  return <LoyaltyBanner isConfirmationPage={isConfirmationPage} pageCategory={pageCategory} />;
+const getLoyaltybanner = (isConfirmationPage, pageCategory, navigation) => {
+  return (
+    <LoyaltyBanner
+      isConfirmationPage={isConfirmationPage}
+      pageCategory={pageCategory}
+      navigation={navigation}
+    />
+  );
 };
 
 export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, labels) => {
@@ -65,7 +71,7 @@ export const createRowForGiftServiceTotal = (currencySymbol, giftServiceTotal, l
   ) : null;
 };
 
-const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) => {
+const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory, navigation) => {
   const {
     itemsCount,
     currencySymbol,
@@ -313,7 +319,7 @@ const getBody = (ledgerSummaryData, labels, isConfirmationPage, pageCategory) =>
         </StyledRowDataContainer>
       ) : null}
       {renderFreeShippingBanner(pageCategory)}
-      {getLoyaltybanner(isConfirmationPage, pageCategory)}
+      {getLoyaltybanner(isConfirmationPage, pageCategory, navigation)}
     </StyledOrderLedger>
   );
 };
@@ -343,13 +349,14 @@ const OrderLedger = ({
   confirmationPageLedgerSummaryData,
   isConfirmationPage,
   pageCategory,
+  navigation,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
     summaryData = confirmationPageLedgerSummaryData;
   }
   const header = getHeader(labels, summaryData);
-  const body = getBody(summaryData, labels, isConfirmationPage, pageCategory);
+  const body = getBody(summaryData, labels, isConfirmationPage, pageCategory, navigation);
   return (
     <View>
       {showAccordian ? (
@@ -456,11 +463,14 @@ OrderLedger.propTypes = {
 
     /** This is used to display the balance total */
     orderBalanceTotal: PropTypes.number,
+
+    navigation: PropTypes.shape({}),
   }),
 
   /** Flag to identify if the current page is confirmation page */
   isConfirmationPage: PropTypes.bool,
   pageCategory: PropTypes.shape({}),
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 OrderLedger.defaultProps = {

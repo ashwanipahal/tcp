@@ -32,4 +32,5 @@ export const ICON_NAME = {
   qrcode: 'scan',
   large: 'large',
   filledHeart: 'filled-heart',
+  starFilled: 'star-filled',
 };

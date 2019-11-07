@@ -4,27 +4,16 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
 <View
   collapsable={false}
 >
-  <View
+  <TouchableOpacity
     accessibilityRole="link"
-    accessible={true}
-    isTVSelectable={true}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "opacity": 1,
-      }
-    }
+    activeOpacity={1}
+    onPress={[Function]}
   >
     <Text>
       Press me
     </Text>
-  </View>
-  <Modal
+  </TouchableOpacity>
+  <Component
     animationType="fade"
     hardwareAccelerated={false}
     onDismiss={[Function]}
@@ -33,71 +22,58 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
     transparent={true}
     visible={true}
   >
-    <View
+    <TouchableOpacity
       accessibilityRole="link"
-      accessible={true}
-      isTVSelectable={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      activeOpacity={1}
+      onPress={[Function]}
       style={
         Object {
           "backgroundColor": "rgba(250, 250, 250, 0.80)",
           "flex": 1,
-          "opacity": 1,
         }
       }
     >
       <View
         style={
           Object {
-            "elevation": 10,
-            "shadowColor": "#000",
-            "shadowOffset": Object {
-              "height": 1,
-              "width": 1,
-            },
-            "shadowOpacity": 0.3,
-            "shadowRadius": 4,
+            "left": -7.5,
+            "position": "absolute",
+            "top": -2,
           }
         }
       >
-        <View
+        <Triangle
+          isDown={false}
           style={
             Object {
-              "left": -7.5,
-              "position": "absolute",
-              "top": -2,
+              "borderBottomColor": "#fff",
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#fff",
-                "borderBottomWidth": 15,
-                "borderLeftColor": "transparent",
-                "borderLeftWidth": 8,
-                "borderRightColor": "transparent",
-                "borderRightWidth": 8,
-                "borderStyle": "solid",
-                "height": 0,
-                "width": 0,
-              }
-            }
-          />
-        </View>
-        <View
-          style={
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#fff",
+            "display": "flex",
+            "flex": 1,
+            "height": 100,
+            "justifyContent": "center",
+            "left": -17.999,
+            "padding": 10,
+            "position": "absolute",
+            "top": 10,
+            "width": 200,
+          }
+        }
+        testID="tooltipPopoverContainer"
+      >
+        <Styled(View)
+          tooltipStyle={
             Object {
               "alignItems": "center",
               "backgroundColor": "#fff",
-              "borderColor": "#000",
-              "borderWidth": 0,
               "display": "flex",
               "flex": 1,
               "height": 100,
@@ -109,15 +85,12 @@ exports[`Tooltip component should display ReactTooltip 1`] = `
               "width": 200,
             }
           }
-          testID="tooltipPopoverContainer"
         >
-          <Text>
-            Info here
-          </Text>
-        </View>
+          <Info />
+        </Styled(View)>
       </View>
-    </View>
-  </Modal>
+    </TouchableOpacity>
+  </Component>
 </View>
 `;
 
@@ -125,27 +98,16 @@ exports[`Tooltip component should render without issues 1`] = `
 <View
   collapsable={false}
 >
-  <View
+  <TouchableOpacity
     accessibilityRole="link"
-    accessible={true}
-    isTVSelectable={true}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "opacity": 1,
-      }
-    }
+    activeOpacity={1}
+    onPress={[Function]}
   >
     <Text>
       Press me
     </Text>
-  </View>
-  <Modal
+  </TouchableOpacity>
+  <Component
     animationType="fade"
     hardwareAccelerated={false}
     onDismiss={[Function]}
@@ -154,71 +116,58 @@ exports[`Tooltip component should render without issues 1`] = `
     transparent={true}
     visible={false}
   >
-    <View
+    <TouchableOpacity
       accessibilityRole="link"
-      accessible={true}
-      isTVSelectable={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      activeOpacity={1}
+      onPress={[Function]}
       style={
         Object {
           "backgroundColor": "rgba(250, 250, 250, 0.80)",
           "flex": 1,
-          "opacity": 1,
         }
       }
     >
       <View
         style={
           Object {
-            "elevation": 10,
-            "shadowColor": "#000",
-            "shadowOffset": Object {
-              "height": 1,
-              "width": 1,
-            },
-            "shadowOpacity": 0.3,
-            "shadowRadius": 4,
+            "left": -7.5,
+            "position": "absolute",
+            "top": -2,
           }
         }
       >
-        <View
+        <Triangle
+          isDown={false}
           style={
             Object {
-              "left": -7.5,
-              "position": "absolute",
-              "top": -2,
+              "borderBottomColor": "#fff",
             }
           }
-        >
-          <View
-            style={
-              Object {
-                "backgroundColor": "transparent",
-                "borderBottomColor": "#fff",
-                "borderBottomWidth": 15,
-                "borderLeftColor": "transparent",
-                "borderLeftWidth": 8,
-                "borderRightColor": "transparent",
-                "borderRightWidth": 8,
-                "borderStyle": "solid",
-                "height": 0,
-                "width": 0,
-              }
-            }
-          />
-        </View>
-        <View
-          style={
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#fff",
+            "display": "flex",
+            "flex": 1,
+            "height": 96,
+            "justifyContent": "center",
+            "left": -17.999,
+            "padding": 10,
+            "position": "absolute",
+            "top": 10,
+            "width": 240,
+          }
+        }
+        testID="tooltipPopoverContainer"
+      >
+        <Styled(View)
+          tooltipStyle={
             Object {
               "alignItems": "center",
               "backgroundColor": "#fff",
-              "borderColor": "#000",
-              "borderWidth": 0,
               "display": "flex",
               "flex": 1,
               "height": 96,
@@ -230,14 +179,13 @@ exports[`Tooltip component should render without issues 1`] = `
               "width": 240,
             }
           }
-          testID="tooltipPopoverContainer"
         >
           <Text>
             Info here
           </Text>
-        </View>
+        </Styled(View)>
       </View>
-    </View>
-  </Modal>
+    </TouchableOpacity>
+  </Component>
 </View>
 `;

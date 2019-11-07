@@ -132,6 +132,7 @@ describe('Order Summary Details component', () => {
         },
         isBopisOrder: false,
         ordersLabels: {},
+        isLoggedIn: true,
       },
     };
 

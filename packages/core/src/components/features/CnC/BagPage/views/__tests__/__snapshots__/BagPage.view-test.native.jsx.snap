@@ -294,6 +294,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         />
         <Styled(View)>
           <Connect(OrderLedgerContainer)
+            navigation={[MockFunction]}
             pageCategory="bagPage"
           />
         </Styled(View)>

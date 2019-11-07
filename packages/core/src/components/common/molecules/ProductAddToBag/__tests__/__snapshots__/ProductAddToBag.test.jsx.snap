@@ -62,6 +62,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     font-family: ",
                     [Function],
                     ";
+    display: flex;
+    flex-flow: wrap;
   }
 
   /* Radio Button for size */
@@ -83,9 +85,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     [Function],
                     "px;
       border-radius: 6px;
-      margin-bottom: ",
-                    [Function],
-                    ";
       text-align: center;
       width: 54px;
     }
@@ -165,6 +164,20 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         <Connect(ProductPickupContainer)
           formName="ProductAddToBag-3000935_IV"
           isAnchor={true}
+          miscInfo={
+            Object {
+              "badge1": Object {
+                "defaultBadge": "ONLINE EXCLUSIVE",
+              },
+              "badge2": "",
+              "hasOnModelAltImages": "",
+              "isBopisEligible": false,
+              "isBossEligible": true,
+              "isClearance": "",
+              "keepAlive": false,
+              "videoUrl": "",
+            }
+          }
           productInfo={
             Object {
               "colorFitsSizesMap": Array [
@@ -405,6 +418,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     font-family: ",
                     [Function],
                     ";
+    display: flex;
+    flex-flow: wrap;
   }
 
   /* Radio Button for size */
@@ -426,9 +441,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     [Function],
                     "px;
       border-radius: 6px;
-      margin-bottom: ",
-                    [Function],
-                    ";
       text-align: center;
       width: 54px;
     }
@@ -541,6 +553,20 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
         <Connect(ProductPickupContainer)
           formName="ProductAddToBag-3000935_IV"
           isAnchor={true}
+          miscInfo={
+            Object {
+              "badge1": Object {
+                "defaultBadge": "ONLINE EXCLUSIVE",
+              },
+              "badge2": "",
+              "hasOnModelAltImages": "",
+              "isBopisEligible": false,
+              "isBossEligible": true,
+              "isClearance": "",
+              "keepAlive": false,
+              "videoUrl": "",
+            }
+          }
           productInfo={
             Object {
               "colorFitsSizesMap": Array [

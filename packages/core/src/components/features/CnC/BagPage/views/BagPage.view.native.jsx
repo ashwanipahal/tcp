@@ -231,10 +231,11 @@ export class BagPage extends React.Component {
   }
 
   renderOrderLedgerContainer = (isNoNEmptyBag, isBagStage) => {
+    const { navigation } = this.props;
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <OrderLedgerContainer pageCategory="bagPage" />
+          <OrderLedgerContainer pageCategory="bagPage" navigation={navigation} />
         </RowSectionStyle>
       );
     }
