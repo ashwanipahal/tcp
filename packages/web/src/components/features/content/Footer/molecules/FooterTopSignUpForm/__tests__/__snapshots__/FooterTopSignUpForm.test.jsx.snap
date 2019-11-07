@@ -176,7 +176,6 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
               "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }

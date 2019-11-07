@@ -91,7 +91,6 @@ exports[`Select Item is shown should render select item  1`] = `
       "styledComponentId": "sc-bdVaJa",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

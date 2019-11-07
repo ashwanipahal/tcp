@@ -196,7 +196,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -372,7 +371,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -550,7 +548,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -759,7 +756,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -939,7 +935,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1073,7 +1068,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-dnqmqq",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1318,7 +1312,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                 "styledComponentId": "sc-gzVnrw",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1500,7 +1493,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1675,7 +1667,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1855,7 +1846,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

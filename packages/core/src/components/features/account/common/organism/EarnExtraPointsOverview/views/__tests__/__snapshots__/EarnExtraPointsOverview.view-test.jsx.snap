@@ -8,7 +8,7 @@ exports[`EarnExtraPointsOverview component should render correctly EarnExtraPoin
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-kgoBCf",
-        "isStatic": false,
+        "isStatic": true,
         "rules": Array [
           "
   ",
@@ -22,7 +22,6 @@ exports[`EarnExtraPointsOverview component should render correctly EarnExtraPoin
       "styledComponentId": "sc-kgoBCf",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": false,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

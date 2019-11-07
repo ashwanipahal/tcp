@@ -169,7 +169,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -354,7 +353,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -538,7 +536,6 @@ exports[`Coupon component should renders correctly with express checkout 1`] = `
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -723,7 +720,6 @@ exports[`Coupon component should renders correctly with express checkout 1`] = `
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

@@ -111,7 +111,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -126,7 +125,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             optionsMap={
               Array [
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -142,13 +141,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Essentials Shop
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Essentials Shop",
                   "value": "Essentials Shop",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -164,13 +163,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Baby Girl
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Baby Girl",
                   "value": "Baby Girl",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -186,13 +185,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Bottoms
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Bottoms",
                   "value": "Bottoms",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -208,13 +207,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Tops
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Tops",
                   "value": "Tops",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -230,13 +229,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Shoes & Accessories
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Shoes & Accessories",
                   "value": "Shoes & Accessories",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -252,13 +251,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Leggings
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Leggings",
                   "value": "Leggings",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -274,13 +273,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Polos
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Polos",
                   "value": "Polos",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -296,13 +295,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Socks, Tights & Underwear
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Socks, Tights & Underwear",
                   "value": "Socks, Tights & Underwear",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -318,13 +317,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Online Only
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Online Only",
                   "value": "Online Only",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -340,13 +339,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Baby Boy
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Baby Boy",
                   "value": "Baby Boy",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -362,13 +361,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Socks & Underwear
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Socks & Underwear",
                   "value": "Socks & Underwear",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -384,13 +383,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Unisex
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Unisex",
                   "value": "Unisex",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -406,13 +405,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Active
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Active",
                   "value": "Active",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -428,13 +427,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Skorts & Shorts
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Skorts & Shorts",
                   "value": "Skorts & Shorts",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -450,13 +449,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Jeggings & Chinos
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Jeggings & Chinos",
                   "value": "Jeggings & Chinos",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -472,13 +471,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Shoes
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Shoes",
                   "value": "Shoes",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -494,13 +493,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Dresses & Jumpers
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Dresses & Jumpers",
                   "value": "Dresses & Jumpers",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -516,13 +515,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Dresses
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Dresses",
                   "value": "Dresses",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -538,13 +537,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Shorts
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Shorts",
                   "value": "Shorts",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -560,13 +559,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Activewear
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Activewear",
                   "value": "Activewear",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -582,13 +581,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     All Easter Dress Up
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "All Easter Dress Up",
                   "value": "All Easter Dress Up",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -604,13 +603,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Easter Dress Up
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Easter Dress Up",
                   "value": "Easter Dress Up",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -626,13 +625,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Sibling Shop
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Sibling Shop",
                   "value": "Sibling Shop",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -648,13 +647,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Big & Lil Sister
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Big & Lil Sister",
                   "value": "Big & Lil Sister",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -670,13 +669,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Big & Little Sister
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Big & Little Sister",
                   "value": "Big & Little Sister",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -692,13 +691,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Flower Girl Shop
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Flower Girl Shop",
                   "value": "Flower Girl Shop",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -714,13 +713,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Jackets
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Jackets",
                   "value": "Jackets",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -736,13 +735,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Matching Family Collections
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Matching Family Collections",
                   "value": "Matching Family Collections",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -758,7 +757,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Accessories
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Accessories",
                   "value": "Accessories",
@@ -848,7 +847,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -865,7 +863,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="BLUE"
                       className="color-chip"
                       data-colorname="blue"
@@ -873,7 +871,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLUE.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -889,7 +887,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       BLUE
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "BLUE",
                   "value": "BLUE",
@@ -898,7 +896,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="WHITE"
                       className="color-chip"
                       data-colorname="white"
@@ -906,7 +904,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/WHITE.gif"
                       width="18px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -922,7 +920,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       WHITE
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "WHITE",
                   "value": "WHITE",
@@ -931,7 +929,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="BLACK"
                       className="color-chip"
                       data-colorname="black"
@@ -939,7 +937,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BLACK.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -955,7 +953,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       BLACK
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "BLACK",
                   "value": "BLACK",
@@ -964,7 +962,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="GRAY"
                       className="color-chip"
                       data-colorname="gray"
@@ -972,7 +970,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GRAY.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -988,7 +986,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       GRAY
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "GRAY",
                   "value": "GRAY",
@@ -997,7 +995,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="PINK"
                       className="color-chip"
                       data-colorname="pink"
@@ -1005,7 +1003,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PINK.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1021,7 +1019,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       PINK
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "PINK",
                   "value": "PINK",
@@ -1030,7 +1028,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="TAN"
                       className="color-chip"
                       data-colorname="tan"
@@ -1038,7 +1036,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/TAN.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1054,7 +1052,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       TAN
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "TAN",
                   "value": "TAN",
@@ -1063,7 +1061,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="RED"
                       className="color-chip"
                       data-colorname="red"
@@ -1071,7 +1069,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/RED.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1087,7 +1085,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       RED
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "RED",
                   "value": "RED",
@@ -1096,7 +1094,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="MULTI"
                       className="color-chip"
                       data-colorname="multi"
@@ -1104,7 +1102,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/MULTI.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1120,7 +1118,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       MULTI
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "MULTI",
                   "value": "MULTI",
@@ -1129,7 +1127,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="DENIM"
                       className="color-chip"
                       data-colorname="denim"
@@ -1137,7 +1135,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/DENIM.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1153,7 +1151,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       DENIM
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "DENIM",
                   "value": "DENIM",
@@ -1162,7 +1160,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="GREEN"
                       className="color-chip"
                       data-colorname="green"
@@ -1170,7 +1168,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/GREEN.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1186,7 +1184,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       GREEN
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "GREEN",
                   "value": "GREEN",
@@ -1195,7 +1193,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="PURPLE"
                       className="color-chip"
                       data-colorname="purple"
@@ -1203,7 +1201,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/PURPLE.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1219,7 +1217,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       PURPLE
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "PURPLE",
                   "value": "PURPLE",
@@ -1228,7 +1226,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="YELLOW"
                       className="color-chip"
                       data-colorname="yellow"
@@ -1236,7 +1234,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/YELLOW.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1252,7 +1250,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       YELLOW
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "YELLOW",
                   "value": "YELLOW",
@@ -1261,7 +1259,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "content": <div
                     className="color-title"
                   >
-                    <ForwardRef(Styled(Image))
+                    <ForwardRef
                       alt="BROWN"
                       className="color-chip"
                       data-colorname="brown"
@@ -1269,7 +1267,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/category/color-swatches/BROWN.gif"
                       width="19px"
                     />
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       className="color-name"
                       color="gray.900"
                       component="span"
@@ -1285,7 +1283,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                       textAlign="center"
                     >
                       BROWN
-                    </ForwardRef(Styled(BodyCopy))>
+                    </ForwardRef>
                   </div>,
                   "title": "BROWN",
                   "value": "BROWN",
@@ -1375,7 +1373,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1390,7 +1387,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             optionsMap={
               Array [
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1406,13 +1403,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     6-9 M
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "6-9 M",
                   "value": "EF_6-9 M",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1428,13 +1425,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     6-12 M
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "6-12 M",
                   "value": "EG_6-12 M",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1450,13 +1447,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     9-12 M
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "9-12 M",
                   "value": "EJ_9-12 M",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1472,13 +1469,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     12-18 M
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "12-18 M",
                   "value": "EM_12-18 M",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1494,13 +1491,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     12-24 M
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "12-24 M",
                   "value": "EN_12-24 M",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1516,13 +1513,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     18-24 M
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "18-24 M",
                   "value": "EP_18-24 M",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1538,13 +1535,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     2T
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "2T",
                   "value": "ET_2T",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1560,13 +1557,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     2T - 3T
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "2T - 3T",
                   "value": "EV_2T - 3T",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1582,13 +1579,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     3T
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "3T",
                   "value": "EX_3T",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1604,13 +1601,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     3T-4T
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "3T-4T",
                   "value": "EY_3T-4T",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1626,13 +1623,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     4T
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "4T",
                   "value": "EZ_4T",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1648,13 +1645,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     5T
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "5T",
                   "value": "FB_5T",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1670,13 +1667,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 4
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 4",
                   "value": "IW_TODDLER 4",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1692,13 +1689,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 5
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 5",
                   "value": "IZ_TODDLER 5",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1714,13 +1711,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 6
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 6",
                   "value": "JC_TODDLER 6",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1736,13 +1733,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 7
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 7",
                   "value": "JF_TODDLER 7",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1758,13 +1755,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 8
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 8",
                   "value": "JI_TODDLER 8",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1780,13 +1777,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 9
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 9",
                   "value": "JL_TODDLER 9",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1802,13 +1799,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 10
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 10",
                   "value": "JO_TODDLER 10",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1824,13 +1821,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     TODDLER 11
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "TODDLER 11",
                   "value": "JR_TODDLER 11",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1846,7 +1843,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     ONE SIZE
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "ONE SIZE",
                   "value": "LA_ONE SIZE",
@@ -1936,7 +1933,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1951,7 +1947,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             optionsMap={
               Array [
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1967,13 +1963,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     $10 and Under
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "$10 and Under",
                   "value": "$10 and Under",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -1989,7 +1985,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     $10 - $19.99
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "$10 - $19.99",
                   "value": "$10 - $19.99",
@@ -2079,7 +2075,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -2094,7 +2089,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             optionsMap={
               Array [
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -2110,7 +2105,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Regular
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Regular",
                   "value": "Regular",
@@ -2200,7 +2195,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -2215,7 +2209,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             optionsMap={
               Array [
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -2231,13 +2225,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Girl
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Girl",
                   "value": "Girl",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -2253,7 +2247,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Unisex
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Unisex",
                   "value": "Unisex",
@@ -2343,7 +2337,6 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -2358,7 +2351,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             optionsMap={
               Array [
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -2374,13 +2367,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Big Kid (4 - 18)
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Big Kid (4 - 18)",
                   "value": "AB_Big Kid (4 - 18)",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -2396,13 +2389,13 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Toddler (6M - 5T)
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Toddler (6M - 5T)",
                   "value": "AC_Toddler (6M - 5T)",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="size-title"
                     color="gray.900"
                     component="span"
@@ -2418,7 +2411,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     textAlign="center"
                   >
                     Baby (0 - 18M)
-                  </ForwardRef(Styled(BodyCopy))>,
+                  </ForwardRef>,
                   "disabled": undefined,
                   "title": "Baby (0 - 18M)",
                   "value": "AD_Baby (0 - 18M)",
@@ -2440,7 +2433,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
             sortSelectOptions={
               Array [
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="sort-title"
                     color="text.primary"
                     component="span"
@@ -2452,7 +2445,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     link={null}
                     textAlign="left"
                   />,
-                  "title": <ForwardRef(Styled(BodyCopy))
+                  "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
                     component="span"
@@ -2467,7 +2460,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "value": "",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="sort-title"
                     color="text.primary"
                     component="span"
@@ -2479,7 +2472,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     link={null}
                     textAlign="left"
                   />,
-                  "title": <ForwardRef(Styled(BodyCopy))
+                  "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
                     component="span"
@@ -2494,7 +2487,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "value": "min_offer_price desc",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="sort-title"
                     color="text.primary"
                     component="span"
@@ -2506,7 +2499,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     link={null}
                     textAlign="left"
                   />,
-                  "title": <ForwardRef(Styled(BodyCopy))
+                  "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
                     component="span"
@@ -2521,7 +2514,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "value": "min_offer_price asc",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="sort-title"
                     color="text.primary"
                     component="span"
@@ -2533,7 +2526,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     link={null}
                     textAlign="left"
                   />,
-                  "title": <ForwardRef(Styled(BodyCopy))
+                  "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
                     component="span"
@@ -2548,7 +2541,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "value": "newest_score desc",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="sort-title"
                     color="text.primary"
                     component="span"
@@ -2560,7 +2553,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     link={null}
                     textAlign="left"
                   />,
-                  "title": <ForwardRef(Styled(BodyCopy))
+                  "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
                     component="span"
@@ -2575,7 +2568,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                   "value": "favoritedcount desc",
                 },
                 Object {
-                  "content": <ForwardRef(Styled(BodyCopy))
+                  "content": <ForwardRef
                     className="sort-title"
                     color="text.primary"
                     component="span"
@@ -2587,7 +2580,7 @@ exports[`ProductListingFiltersForm is shown should render ProductListingFiltersF
                     link={null}
                     textAlign="left"
                   />,
-                  "title": <ForwardRef(Styled(BodyCopy))
+                  "title": <ForwardRef
                     className="sort-item-selected"
                     color="text.primary"
                     component="span"

@@ -15,7 +15,7 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-EHOje",
-        "isStatic": false,
+        "isStatic": true,
         "rules": Array [
           "
   ",
@@ -37,7 +37,6 @@ exports[`MyFavoriteStore Component MyFavoriteStore should render correctly 1`] =
       "styledComponentId": "sc-EHOje",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": false,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }
@@ -61,7 +60,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-EHOje",
-        "isStatic": false,
+        "isStatic": true,
         "rules": Array [
           "
   ",
@@ -83,7 +82,6 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
       "styledComponentId": "sc-EHOje",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": false,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }
@@ -102,7 +100,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-EHOje",
-        "isStatic": false,
+        "isStatic": true,
         "rules": Array [
           "
   ",
@@ -124,7 +122,6 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
       "styledComponentId": "sc-EHOje",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": false,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

@@ -321,7 +321,6 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -655,7 +654,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -1163,7 +1161,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -1648,7 +1645,6 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }

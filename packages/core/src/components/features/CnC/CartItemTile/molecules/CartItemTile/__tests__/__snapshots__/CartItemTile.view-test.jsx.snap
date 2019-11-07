@@ -7234,7 +7234,6 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "styledComponentId": "sc-ckVGcZ",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }
@@ -7751,7 +7750,6 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "styledComponentId": "sc-ckVGcZ",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

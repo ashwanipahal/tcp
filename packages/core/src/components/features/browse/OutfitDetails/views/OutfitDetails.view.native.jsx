@@ -109,7 +109,7 @@ const OutfitDetailsView = props => {
         }
       />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-      <AddedToBagContainer />
+      <AddedToBagContainer navigation={navigation} />
     </ScrollViewContainer>
   );
 };

@@ -701,7 +701,6 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
             "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -719,7 +718,7 @@ exports[`BillingSection should render cvv if express checkout 1`] = `
           aligned="right"
           fontFamily="secondary"
           message={
-            <ForwardRef(Styled(RichText))
+            <ForwardRef
               className="cvv-code-info"
               dataLocator="cvv-code-info"
               richTextHtml=""

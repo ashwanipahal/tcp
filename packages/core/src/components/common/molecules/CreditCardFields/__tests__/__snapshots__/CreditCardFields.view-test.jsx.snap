@@ -53,7 +53,6 @@ exports[`CreditCardFields component should renders correctly when cardNumberWrap
               "styledComponentId": "sc-jzJRlG",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -123,7 +122,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "styledComponentId": "sc-jzJRlG",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -199,7 +197,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "styledComponentId": "sc-jzJRlG",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -323,7 +320,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "styledComponentId": "sc-dnqmqq",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -497,7 +493,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "styledComponentId": "sc-dnqmqq",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -721,7 +716,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "styledComponentId": "sc-gzVnrw",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -885,7 +879,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           "styledComponentId": "sc-gzVnrw",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }

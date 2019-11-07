@@ -141,7 +141,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -485,7 +484,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                 "styledComponentId": "sc-kAzzGY",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }

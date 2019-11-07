@@ -354,6 +354,7 @@ exports[`StoreSelector component should default set title as value for selected 
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -371,9 +372,11 @@ exports[`StoreSelector component should default set title as value for selected 
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -511,8 +514,18 @@ exports[`StoreSelector component should default set title as value for selected 
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -587,6 +600,10 @@ exports[`StoreSelector component should default set title as value for selected 
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -2030,7 +2047,6 @@ exports[`StoreSelector component should default set title as value for selected 
           "styledComponentId": "sc-chPdSV",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -4582,7 +4598,6 @@ exports[`StoreSelector component should default set title as value for selected 
                     "styledComponentId": "sc-bZQynM",
                     "target": [Function],
                     "toString": [Function],
-                    "usesTheme": false,
                     "warnTooManyClasses": [Function],
                     "withComponent": [Function],
                   }
@@ -6142,7 +6157,6 @@ exports[`StoreSelector component should default set title as value for selected 
                       "styledComponentId": "sc-kAzzGY",
                       "target": [Function],
                       "toString": [Function],
-                      "usesTheme": true,
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -8684,19 +8698,6 @@ exports[`StoreSelector component should default set title as value for selected 
                         forwardedComponent={
                           Object {
                             "$$typeof": Symbol(react.forward_ref),
-                            "_foldedDefaultProps": Object {
-                              "children": null,
-                              "className": null,
-                              "color": "text.primary",
-                              "component": "p",
-                              "fontFamily": "primary",
-                              "fontSize": 12,
-                              "fontWeight": "regular",
-                              "letterSpacing": "normal",
-                              "lineHeight": "normal",
-                              "link": null,
-                              "textAlign": "left",
-                            },
                             "attrs": Array [],
                             "componentStyle": ComponentStyle {
                               "componentId": "sc-bwzfXH",
@@ -8717,13 +8718,25 @@ exports[`StoreSelector component should default set title as value for selected 
 ",
                               ],
                             },
+                            "defaultProps": Object {
+                              "children": null,
+                              "className": null,
+                              "color": "text.primary",
+                              "component": "p",
+                              "fontFamily": "primary",
+                              "fontSize": 12,
+                              "fontWeight": "regular",
+                              "letterSpacing": "normal",
+                              "lineHeight": "normal",
+                              "link": null,
+                              "textAlign": "left",
+                            },
                             "displayName": "Styled(BodyCopy)",
                             "foldedComponentIds": Array [],
                             "render": [Function],
                             "styledComponentId": "sc-bwzfXH",
                             "target": [Function],
                             "toString": [Function],
-                            "usesTheme": false,
                             "warnTooManyClasses": [Function],
                             "withComponent": [Function],
                           }
@@ -8735,7 +8748,7 @@ exports[`StoreSelector component should default set title as value for selected 
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-bwzfXH fdGFgB sc-bxivhb sc-kAzzGY ieVlt custom-select "
+                          className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -8747,7 +8760,7 @@ exports[`StoreSelector component should default set title as value for selected 
                           textAlign="left"
                         >
                           <div
-                            className="sc-bwzfXH fdGFgB sc-bxivhb sc-kAzzGY ieVlt custom-select "
+                            className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"
@@ -8775,19 +8788,6 @@ exports[`StoreSelector component should default set title as value for selected 
                                 forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
-                                    "_foldedDefaultProps": Object {
-                                      "children": null,
-                                      "className": null,
-                                      "color": "text.primary",
-                                      "component": "p",
-                                      "fontFamily": "primary",
-                                      "fontSize": 12,
-                                      "fontWeight": "regular",
-                                      "letterSpacing": "normal",
-                                      "lineHeight": "normal",
-                                      "link": null,
-                                      "textAlign": "left",
-                                    },
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
                                       "componentId": "sc-bwzfXH",
@@ -8808,13 +8808,25 @@ exports[`StoreSelector component should default set title as value for selected 
 ",
                                       ],
                                     },
+                                    "defaultProps": Object {
+                                      "children": null,
+                                      "className": null,
+                                      "color": "text.primary",
+                                      "component": "p",
+                                      "fontFamily": "primary",
+                                      "fontSize": 12,
+                                      "fontWeight": "regular",
+                                      "letterSpacing": "normal",
+                                      "lineHeight": "normal",
+                                      "link": null,
+                                      "textAlign": "left",
+                                    },
                                     "displayName": "Styled(BodyCopy)",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "sc-bwzfXH",
                                     "target": [Function],
                                     "toString": [Function],
-                                    "usesTheme": false,
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                   }
@@ -8828,7 +8840,7 @@ exports[`StoreSelector component should default set title as value for selected 
                                 textAlign="left"
                               >
                                 <BodyCopy
-                                  className="sc-bwzfXH fdGFgB customSelectTitle"
+                                  className="customSelectTitle sc-bwzfXH fdGFgB"
                                   color="text.primary"
                                   component="div"
                                   data-locator="Canada"
@@ -8843,7 +8855,7 @@ exports[`StoreSelector component should default set title as value for selected 
                                   textAlign="left"
                                 >
                                   <div
-                                    className="sc-bwzfXH fdGFgB customSelectTitle"
+                                    className="customSelectTitle sc-bwzfXH fdGFgB"
                                     data-locator="Canada"
                                     onClick={[Function]}
                                     tabIndex="0"
@@ -9223,6 +9235,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -9240,9 +9253,11 @@ exports[`StoreSelector component should render correctly 1`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -9380,8 +9395,18 @@ exports[`StoreSelector component should render correctly 1`] = `
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -9456,6 +9481,10 @@ exports[`StoreSelector component should render correctly 1`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -10898,7 +10927,6 @@ exports[`StoreSelector component should render correctly 1`] = `
           "styledComponentId": "sc-chPdSV",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -13449,7 +13477,6 @@ exports[`StoreSelector component should render correctly 1`] = `
                     "styledComponentId": "sc-bZQynM",
                     "target": [Function],
                     "toString": [Function],
-                    "usesTheme": false,
                     "warnTooManyClasses": [Function],
                     "withComponent": [Function],
                   }
@@ -15009,7 +15036,6 @@ exports[`StoreSelector component should render correctly 1`] = `
                       "styledComponentId": "sc-kAzzGY",
                       "target": [Function],
                       "toString": [Function],
-                      "usesTheme": true,
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -17551,19 +17577,6 @@ exports[`StoreSelector component should render correctly 1`] = `
                         forwardedComponent={
                           Object {
                             "$$typeof": Symbol(react.forward_ref),
-                            "_foldedDefaultProps": Object {
-                              "children": null,
-                              "className": null,
-                              "color": "text.primary",
-                              "component": "p",
-                              "fontFamily": "primary",
-                              "fontSize": 12,
-                              "fontWeight": "regular",
-                              "letterSpacing": "normal",
-                              "lineHeight": "normal",
-                              "link": null,
-                              "textAlign": "left",
-                            },
                             "attrs": Array [],
                             "componentStyle": ComponentStyle {
                               "componentId": "sc-bwzfXH",
@@ -17584,13 +17597,25 @@ exports[`StoreSelector component should render correctly 1`] = `
 ",
                               ],
                             },
+                            "defaultProps": Object {
+                              "children": null,
+                              "className": null,
+                              "color": "text.primary",
+                              "component": "p",
+                              "fontFamily": "primary",
+                              "fontSize": 12,
+                              "fontWeight": "regular",
+                              "letterSpacing": "normal",
+                              "lineHeight": "normal",
+                              "link": null,
+                              "textAlign": "left",
+                            },
                             "displayName": "Styled(BodyCopy)",
                             "foldedComponentIds": Array [],
                             "render": [Function],
                             "styledComponentId": "sc-bwzfXH",
                             "target": [Function],
                             "toString": [Function],
-                            "usesTheme": false,
                             "warnTooManyClasses": [Function],
                             "withComponent": [Function],
                           }
@@ -17602,7 +17627,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                         textAlign="left"
                       >
                         <BodyCopy
-                          className="sc-bwzfXH fdGFgB sc-bxivhb sc-kAzzGY ieVlt custom-select "
+                          className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           color="text.primary"
                           component="div"
                           fontFamily="primary"
@@ -17614,7 +17639,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                           textAlign="left"
                         >
                           <div
-                            className="sc-bwzfXH fdGFgB sc-bxivhb sc-kAzzGY ieVlt custom-select "
+                            className="sc-bxivhb sc-kAzzGY ieVlt custom-select  sc-bwzfXH fdGFgB"
                           >
                             <Styled(BodyCopy)
                               className="customSelectTitle"
@@ -17642,19 +17667,6 @@ exports[`StoreSelector component should render correctly 1`] = `
                                 forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
-                                    "_foldedDefaultProps": Object {
-                                      "children": null,
-                                      "className": null,
-                                      "color": "text.primary",
-                                      "component": "p",
-                                      "fontFamily": "primary",
-                                      "fontSize": 12,
-                                      "fontWeight": "regular",
-                                      "letterSpacing": "normal",
-                                      "lineHeight": "normal",
-                                      "link": null,
-                                      "textAlign": "left",
-                                    },
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
                                       "componentId": "sc-bwzfXH",
@@ -17675,13 +17687,25 @@ exports[`StoreSelector component should render correctly 1`] = `
 ",
                                       ],
                                     },
+                                    "defaultProps": Object {
+                                      "children": null,
+                                      "className": null,
+                                      "color": "text.primary",
+                                      "component": "p",
+                                      "fontFamily": "primary",
+                                      "fontSize": 12,
+                                      "fontWeight": "regular",
+                                      "letterSpacing": "normal",
+                                      "lineHeight": "normal",
+                                      "link": null,
+                                      "textAlign": "left",
+                                    },
                                     "displayName": "Styled(BodyCopy)",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "sc-bwzfXH",
                                     "target": [Function],
                                     "toString": [Function],
-                                    "usesTheme": false,
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                   }
@@ -17695,7 +17719,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                                 textAlign="left"
                               >
                                 <BodyCopy
-                                  className="sc-bwzfXH fdGFgB customSelectTitle"
+                                  className="customSelectTitle sc-bwzfXH fdGFgB"
                                   color="text.primary"
                                   component="div"
                                   data-locator="Test Text"
@@ -17710,7 +17734,7 @@ exports[`StoreSelector component should render correctly 1`] = `
                                   textAlign="left"
                                 >
                                   <div
-                                    className="sc-bwzfXH fdGFgB customSelectTitle"
+                                    className="customSelectTitle sc-bwzfXH fdGFgB"
                                     data-locator="Test Text"
                                     onClick={[Function]}
                                     tabIndex="0"

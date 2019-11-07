@@ -262,7 +262,6 @@ exports[`SMSSignupModal component renders correctly 1`] = `
                     "styledComponentId": "sc-gzVnrw",
                     "target": [Function],
                     "toString": [Function],
-                    "usesTheme": true,
                     "warnTooManyClasses": [Function],
                     "withComponent": [Function],
                   }
@@ -711,7 +710,6 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
                     "styledComponentId": "sc-gzVnrw",
                     "target": [Function],
                     "toString": [Function],
-                    "usesTheme": true,
                     "warnTooManyClasses": [Function],
                     "withComponent": [Function],
                   }

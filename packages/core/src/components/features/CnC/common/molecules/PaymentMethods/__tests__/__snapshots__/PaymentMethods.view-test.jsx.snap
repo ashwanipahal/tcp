@@ -165,7 +165,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -327,7 +326,6 @@ exports[`ButtonList component renders correctly without props 1`] = `
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

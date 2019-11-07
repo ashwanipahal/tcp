@@ -84,7 +84,6 @@ exports[`StoreHours component StoreHours component renders correctly without pro
       "styledComponentId": "sc-ifAKCX",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }
@@ -442,6 +441,7 @@ exports[`StoreHours component StoreHours component renders correctly without pro
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -459,9 +459,11 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -599,8 +601,18 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -675,6 +687,10 @@ exports[`StoreHours component StoreHours component renders correctly without pro
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -1113,6 +1129,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -1130,9 +1147,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -1270,8 +1289,18 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -1346,6 +1375,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -1499,7 +1532,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
         "styledComponentId": "sc-ifAKCX",
         "target": [Function],
         "toString": [Function],
-        "usesTheme": true,
         "warnTooManyClasses": [Function],
         "withComponent": [Function],
       }
@@ -1871,6 +1903,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
           "fontWeight": Object {
             "black": "900",
             "bold": "700",
+            "extrabold": "800",
             "light": "300",
             "medium": "500",
             "normal": "400",
@@ -1888,9 +1921,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "tight": 1.07,
           },
           "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+          "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
           "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
           "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
           "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+          "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
           "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
           "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
         },
@@ -2028,8 +2063,18 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "black": "900",
             "bold": "700",
             "extrabold": "800",
+            "medium": "500",
             "regular": "400",
             "semibold": "600",
+          },
+          "fontWeightsNames": Object {
+            "black": "Black",
+            "bold": "Bold",
+            "extrabold": "ExtraBold",
+            "medium": "Medium",
+            "regular": "Regular",
+            "semiBold": "SemiBold",
+            "semibold": "SemiBold",
           },
           "fonts": Object {
             "primary": "Montserrat",
@@ -2104,6 +2149,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontWeight": "semibold",
             "letterSpacing": "normal",
             "lineHeight": "normal",
+          },
+          "iosFonts": Object {
+            "primary": "Montserrat",
+            "secondary": "Nunito",
           },
           "letterSpacings": Object {
             "ls071": "0.71px",
@@ -2542,6 +2591,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
             "fontWeight": Object {
               "black": "900",
               "bold": "700",
+              "extrabold": "800",
               "light": "300",
               "medium": "500",
               "normal": "400",
@@ -2559,9 +2609,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "tight": 1.07,
             },
             "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+            "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
             "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
             "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
             "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+            "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
             "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
             "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
           },
@@ -2699,8 +2751,18 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "black": "900",
               "bold": "700",
               "extrabold": "800",
+              "medium": "500",
               "regular": "400",
               "semibold": "600",
+            },
+            "fontWeightsNames": Object {
+              "black": "Black",
+              "bold": "Bold",
+              "extrabold": "ExtraBold",
+              "medium": "Medium",
+              "regular": "Regular",
+              "semiBold": "SemiBold",
+              "semibold": "SemiBold",
             },
             "fonts": Object {
               "primary": "Montserrat",
@@ -2775,6 +2837,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
               "fontWeight": "semibold",
               "letterSpacing": "normal",
               "lineHeight": "normal",
+            },
+            "iosFonts": Object {
+              "primary": "Montserrat",
+              "secondary": "Nunito",
             },
             "letterSpacings": Object {
               "ls071": "0.71px",
@@ -3241,6 +3307,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "fontWeight": Object {
                   "black": "900",
                   "bold": "700",
+                  "extrabold": "800",
                   "light": "300",
                   "medium": "500",
                   "normal": "400",
@@ -3258,9 +3325,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "tight": 1.07,
                 },
                 "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                 "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                 "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                 "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                 "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                 "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
               },
@@ -3398,8 +3467,18 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "black": "900",
                   "bold": "700",
                   "extrabold": "800",
+                  "medium": "500",
                   "regular": "400",
                   "semibold": "600",
+                },
+                "fontWeightsNames": Object {
+                  "black": "Black",
+                  "bold": "Bold",
+                  "extrabold": "ExtraBold",
+                  "medium": "Medium",
+                  "regular": "Regular",
+                  "semiBold": "SemiBold",
+                  "semibold": "SemiBold",
                 },
                 "fonts": Object {
                   "primary": "Montserrat",
@@ -3474,6 +3553,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontWeight": "semibold",
                   "letterSpacing": "normal",
                   "lineHeight": "normal",
+                },
+                "iosFonts": Object {
+                  "primary": "Montserrat",
+                  "secondary": "Nunito",
                 },
                 "letterSpacings": Object {
                   "ls071": "0.71px",
@@ -3708,7 +3791,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
                 "styledComponentId": "sc-bxivhb",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -4073,6 +4155,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                   "fontWeight": Object {
                     "black": "900",
                     "bold": "700",
+                    "extrabold": "800",
                     "light": "300",
                     "medium": "500",
                     "normal": "400",
@@ -4090,9 +4173,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "tight": 1.07,
                   },
                   "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                  "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                   "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                   "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                   "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                  "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                   "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                   "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                 },
@@ -4230,8 +4315,18 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "black": "900",
                     "bold": "700",
                     "extrabold": "800",
+                    "medium": "500",
                     "regular": "400",
                     "semibold": "600",
+                  },
+                  "fontWeightsNames": Object {
+                    "black": "Black",
+                    "bold": "Bold",
+                    "extrabold": "ExtraBold",
+                    "medium": "Medium",
+                    "regular": "Regular",
+                    "semiBold": "SemiBold",
+                    "semibold": "SemiBold",
                   },
                   "fonts": Object {
                     "primary": "Montserrat",
@@ -4306,6 +4401,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontWeight": "semibold",
                     "letterSpacing": "normal",
                     "lineHeight": "normal",
+                  },
+                  "iosFonts": Object {
+                    "primary": "Montserrat",
+                    "secondary": "Nunito",
                   },
                   "letterSpacings": Object {
                     "ls071": "0.71px",
@@ -4772,6 +4871,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                     "fontWeight": Object {
                       "black": "900",
                       "bold": "700",
+                      "extrabold": "800",
                       "light": "300",
                       "medium": "500",
                       "normal": "400",
@@ -4789,9 +4889,11 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "tight": 1.07,
                     },
                     "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                    "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                     "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                     "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                     "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                    "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                     "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                     "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                   },
@@ -4929,8 +5031,18 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "black": "900",
                       "bold": "700",
                       "extrabold": "800",
+                      "medium": "500",
                       "regular": "400",
                       "semibold": "600",
+                    },
+                    "fontWeightsNames": Object {
+                      "black": "Black",
+                      "bold": "Bold",
+                      "extrabold": "ExtraBold",
+                      "medium": "Medium",
+                      "regular": "Regular",
+                      "semiBold": "SemiBold",
+                      "semibold": "SemiBold",
                     },
                     "fonts": Object {
                       "primary": "Montserrat",
@@ -5005,6 +5117,10 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       "fontWeight": "semibold",
                       "letterSpacing": "normal",
                       "lineHeight": "normal",
+                    },
+                    "iosFonts": Object {
+                      "primary": "Montserrat",
+                      "secondary": "Nunito",
                     },
                     "letterSpacings": Object {
                       "ls071": "0.71px",
@@ -5113,7 +5229,6 @@ exports[`StoreHours component should render component with timing data 1`] = `
                           "styledComponentId": "sc-bwzfXH",
                           "target": [Function],
                           "toString": [Function],
-                          "usesTheme": false,
                           "warnTooManyClasses": [Function],
                           "withComponent": [Function],
                         }
@@ -5122,7 +5237,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                       src="/static/images/carrot-small-up.png"
                     >
                       <Image
-                        className="sc-bwzfXH cFBjof collapsible-icon"
+                        className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
                         ref={[Function]}
@@ -5132,7 +5247,7 @@ exports[`StoreHours component should render component with timing data 1`] = `
                         url=""
                       >
                         <img
-                          className="sc-bwzfXH cFBjof collapsible-icon"
+                          className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
                           sizes={null}
                           src="/static/images/carrot-small-up.png"
@@ -5572,6 +5687,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -5589,9 +5705,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -5729,8 +5847,18 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -5805,6 +5933,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -5958,7 +6090,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
         "styledComponentId": "sc-ifAKCX",
         "target": [Function],
         "toString": [Function],
-        "usesTheme": true,
         "warnTooManyClasses": [Function],
         "withComponent": [Function],
       }
@@ -6334,6 +6465,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
           "fontWeight": Object {
             "black": "900",
             "bold": "700",
+            "extrabold": "800",
             "light": "300",
             "medium": "500",
             "normal": "400",
@@ -6351,9 +6483,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "tight": 1.07,
           },
           "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+          "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
           "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
           "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
           "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+          "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
           "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
           "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
         },
@@ -6491,8 +6625,18 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "black": "900",
             "bold": "700",
             "extrabold": "800",
+            "medium": "500",
             "regular": "400",
             "semibold": "600",
+          },
+          "fontWeightsNames": Object {
+            "black": "Black",
+            "bold": "Bold",
+            "extrabold": "ExtraBold",
+            "medium": "Medium",
+            "regular": "Regular",
+            "semiBold": "SemiBold",
+            "semibold": "SemiBold",
           },
           "fonts": Object {
             "primary": "Montserrat",
@@ -6567,6 +6711,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontWeight": "semibold",
             "letterSpacing": "normal",
             "lineHeight": "normal",
+          },
+          "iosFonts": Object {
+            "primary": "Montserrat",
+            "secondary": "Nunito",
           },
           "letterSpacings": Object {
             "ls071": "0.71px",
@@ -7008,6 +7156,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
             "fontWeight": Object {
               "black": "900",
               "bold": "700",
+              "extrabold": "800",
               "light": "300",
               "medium": "500",
               "normal": "400",
@@ -7025,9 +7174,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "tight": 1.07,
             },
             "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+            "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
             "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
             "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
             "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+            "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
             "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
             "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
           },
@@ -7165,8 +7316,18 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "black": "900",
               "bold": "700",
               "extrabold": "800",
+              "medium": "500",
               "regular": "400",
               "semibold": "600",
+            },
+            "fontWeightsNames": Object {
+              "black": "Black",
+              "bold": "Bold",
+              "extrabold": "ExtraBold",
+              "medium": "Medium",
+              "regular": "Regular",
+              "semiBold": "SemiBold",
+              "semibold": "SemiBold",
             },
             "fonts": Object {
               "primary": "Montserrat",
@@ -7241,6 +7402,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
               "fontWeight": "semibold",
               "letterSpacing": "normal",
               "lineHeight": "normal",
+            },
+            "iosFonts": Object {
+              "primary": "Montserrat",
+              "secondary": "Nunito",
             },
             "letterSpacings": Object {
               "ls071": "0.71px",
@@ -7695,6 +7860,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "fontWeight": Object {
                   "black": "900",
                   "bold": "700",
+                  "extrabold": "800",
                   "light": "300",
                   "medium": "500",
                   "normal": "400",
@@ -7712,9 +7878,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "tight": 1.07,
                 },
                 "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                 "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                 "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                 "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                 "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                 "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
               },
@@ -7852,8 +8020,18 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "black": "900",
                   "bold": "700",
                   "extrabold": "800",
+                  "medium": "500",
                   "regular": "400",
                   "semibold": "600",
+                },
+                "fontWeightsNames": Object {
+                  "black": "Black",
+                  "bold": "Bold",
+                  "extrabold": "ExtraBold",
+                  "medium": "Medium",
+                  "regular": "Regular",
+                  "semiBold": "SemiBold",
+                  "semibold": "SemiBold",
                 },
                 "fonts": Object {
                   "primary": "Montserrat",
@@ -7928,6 +8106,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontWeight": "semibold",
                   "letterSpacing": "normal",
                   "lineHeight": "normal",
+                },
+                "iosFonts": Object {
+                  "primary": "Montserrat",
+                  "secondary": "Nunito",
                 },
                 "letterSpacings": Object {
                   "ls071": "0.71px",
@@ -8150,7 +8332,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
                 "styledComponentId": "sc-bxivhb",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -8515,6 +8696,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                   "fontWeight": Object {
                     "black": "900",
                     "bold": "700",
+                    "extrabold": "800",
                     "light": "300",
                     "medium": "500",
                     "normal": "400",
@@ -8532,9 +8714,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "tight": 1.07,
                   },
                   "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                  "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                   "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                   "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                   "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                  "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                   "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                   "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                 },
@@ -8672,8 +8856,18 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "black": "900",
                     "bold": "700",
                     "extrabold": "800",
+                    "medium": "500",
                     "regular": "400",
                     "semibold": "600",
+                  },
+                  "fontWeightsNames": Object {
+                    "black": "Black",
+                    "bold": "Bold",
+                    "extrabold": "ExtraBold",
+                    "medium": "Medium",
+                    "regular": "Regular",
+                    "semiBold": "SemiBold",
+                    "semibold": "SemiBold",
                   },
                   "fonts": Object {
                     "primary": "Montserrat",
@@ -8748,6 +8942,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontWeight": "semibold",
                     "letterSpacing": "normal",
                     "lineHeight": "normal",
+                  },
+                  "iosFonts": Object {
+                    "primary": "Montserrat",
+                    "secondary": "Nunito",
                   },
                   "letterSpacings": Object {
                     "ls071": "0.71px",
@@ -9202,6 +9400,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                     "fontWeight": Object {
                       "black": "900",
                       "bold": "700",
+                      "extrabold": "800",
                       "light": "300",
                       "medium": "500",
                       "normal": "400",
@@ -9219,9 +9418,11 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "tight": 1.07,
                     },
                     "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+                    "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
                     "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
                     "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
                     "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+                    "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
                     "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
                     "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
                   },
@@ -9359,8 +9560,18 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "black": "900",
                       "bold": "700",
                       "extrabold": "800",
+                      "medium": "500",
                       "regular": "400",
                       "semibold": "600",
+                    },
+                    "fontWeightsNames": Object {
+                      "black": "Black",
+                      "bold": "Bold",
+                      "extrabold": "ExtraBold",
+                      "medium": "Medium",
+                      "regular": "Regular",
+                      "semiBold": "SemiBold",
+                      "semibold": "SemiBold",
                     },
                     "fonts": Object {
                       "primary": "Montserrat",
@@ -9435,6 +9646,10 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       "fontWeight": "semibold",
                       "letterSpacing": "normal",
                       "lineHeight": "normal",
+                    },
+                    "iosFonts": Object {
+                      "primary": "Montserrat",
+                      "secondary": "Nunito",
                     },
                     "letterSpacings": Object {
                       "ls071": "0.71px",
@@ -9543,7 +9758,6 @@ exports[`StoreHours component should render component with timing data 2`] = `
                           "styledComponentId": "sc-bwzfXH",
                           "target": [Function],
                           "toString": [Function],
-                          "usesTheme": false,
                           "warnTooManyClasses": [Function],
                           "withComponent": [Function],
                         }
@@ -9552,7 +9766,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                       src="/static/images/carrot-small-up.png"
                     >
                       <Image
-                        className="sc-bwzfXH cFBjof collapsible-icon"
+                        className="collapsible-icon sc-bwzfXH cFBjof"
                         link={null}
                         placeholderSrc=""
                         ref={[Function]}
@@ -9562,7 +9776,7 @@ exports[`StoreHours component should render component with timing data 2`] = `
                         url=""
                       >
                         <img
-                          className="sc-bwzfXH cFBjof collapsible-icon"
+                          className="collapsible-icon sc-bwzfXH cFBjof"
                           onError={null}
                           sizes={null}
                           src="/static/images/carrot-small-up.png"

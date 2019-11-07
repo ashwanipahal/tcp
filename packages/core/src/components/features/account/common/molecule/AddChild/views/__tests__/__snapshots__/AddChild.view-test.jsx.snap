@@ -222,7 +222,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "styledComponentId": "sc-EHOje",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -370,7 +369,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "styledComponentId": "sc-htpNat",
                   "target": [Function],
                   "toString": [Function],
-                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -540,7 +538,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                   "styledComponentId": "sc-htpNat",
                   "target": [Function],
                   "toString": [Function],
-                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -757,7 +754,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "styledComponentId": "sc-htpNat",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1002,7 +998,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "styledComponentId": "sc-EHOje",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1182,7 +1177,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "styledComponentId": "sc-EHOje",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -1363,7 +1357,6 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "styledComponentId": "sc-bxivhb",
                 "target": [Function],
                 "toString": [Function],
-                "usesTheme": true,
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }

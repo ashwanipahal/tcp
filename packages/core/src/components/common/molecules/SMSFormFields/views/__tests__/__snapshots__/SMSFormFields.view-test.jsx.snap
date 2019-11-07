@@ -149,7 +149,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as fals
             "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -333,7 +332,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -536,7 +534,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -729,7 +726,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -932,7 +928,6 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
             "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

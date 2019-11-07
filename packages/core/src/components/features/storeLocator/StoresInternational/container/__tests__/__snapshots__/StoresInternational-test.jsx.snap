@@ -354,6 +354,7 @@ exports[`StoresInternational component StoresInternational component renders cor
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -371,9 +372,11 @@ exports[`StoresInternational component StoresInternational component renders cor
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -511,8 +514,18 @@ exports[`StoresInternational component StoresInternational component renders cor
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -587,6 +600,10 @@ exports[`StoresInternational component StoresInternational component renders cor
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -689,7 +706,6 @@ exports[`StoresInternational component StoresInternational component renders cor
           "styledComponentId": "sc-jzJRlG",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -697,16 +713,16 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="sc-jzJRlG dYYPUA test"
+        className="test sc-jzJRlG dYYPUA"
         content="test"
         dataLocator="test"
       >
         <div
-          className="sc-jzJRlG dYYPUA test"
+          className="test sc-jzJRlG dYYPUA"
         >
           <Styled(Anchor)
             anchorVariation="secondary"
-            className="sc-jzJRlG dYYPUA test__backlink"
+            className="test sc-jzJRlG dYYPUA__backlink"
             dataLocator="store_USCanadabacklink"
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
@@ -715,7 +731,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           >
             <StyledComponent
               anchorVariation="secondary"
-              className="sc-jzJRlG dYYPUA test__backlink"
+              className="test sc-jzJRlG dYYPUA__backlink"
               dataLocator="store_USCanadabacklink"
               fontSizeVariation="xlarge"
               forwardedComponent={
@@ -810,7 +826,6 @@ exports[`StoresInternational component StoresInternational component renders cor
                   "styledComponentId": "sc-bwzfXH",
                   "target": [Function],
                   "toString": [Function],
-                  "usesTheme": true,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -824,7 +839,7 @@ exports[`StoresInternational component StoresInternational component renders cor
                 IsSlugPathAdded={false}
                 anchorVariation="secondary"
                 asPath=""
-                className="sc-bwzfXH eZrbaF sc-jzJRlG dYYPUA test__backlink"
+                className="test sc-jzJRlG dYYPUA__backlink sc-bwzfXH eZrbaF"
                 dataLocator="store_USCanadabacklink"
                 fontSizeVariation="xlarge"
                 handleLinkClick={[Function]}
@@ -838,7 +853,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               >
                 <a
                   anchorVariation="secondary"
-                  className="sc-bwzfXH eZrbaF sc-jzJRlG dYYPUA test__backlink"
+                  className="test sc-jzJRlG dYYPUA__backlink sc-bwzfXH eZrbaF"
                   data-locator="store_USCanadabacklink"
                   fontSizeVariation="xlarge"
                   href=""
@@ -886,7 +901,6 @@ exports[`StoresInternational component StoresInternational component renders cor
                   "styledComponentId": "sc-bdVaJa",
                   "target": [Function],
                   "toString": [Function],
-                  "usesTheme": false,
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -945,7 +959,6 @@ exports[`StoresInternational component StoresInternational component renders cor
       "styledComponentId": "sc-jzJRlG",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

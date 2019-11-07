@@ -171,7 +171,6 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
           "styledComponentId": "sc-bZQynM",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -337,7 +336,6 @@ exports[`TrackOrderForm component should renders correctly 1`] = `
           "styledComponentId": "sc-bZQynM",
           "target": [Function],
           "toString": [Function],
-          "usesTheme": true,
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }

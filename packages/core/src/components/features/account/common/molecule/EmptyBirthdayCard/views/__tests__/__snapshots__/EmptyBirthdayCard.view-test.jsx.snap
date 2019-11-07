@@ -42,7 +42,6 @@ exports[`EmptyBirthdayCard should render correctly for edit view 1`] = `
       "styledComponentId": "sc-htpNat",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }
@@ -95,7 +94,6 @@ exports[`EmptyBirthdayCard should render correctly for read view as well 1`] = `
       "styledComponentId": "sc-htpNat",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }
@@ -149,7 +147,6 @@ exports[`EmptyBirthdayCard should render correctly for selected box 1`] = `
       "styledComponentId": "sc-htpNat",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

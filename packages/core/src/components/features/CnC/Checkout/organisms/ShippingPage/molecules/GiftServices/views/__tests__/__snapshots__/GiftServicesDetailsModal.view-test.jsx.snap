@@ -220,7 +220,6 @@ exports[`GiftServices component renders correctly 1`] = `
       "styledComponentId": "sc-kGXeez",
       "target": [Function],
       "toString": [Function],
-      "usesTheme": true,
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }

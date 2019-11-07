@@ -149,7 +149,6 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
             "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -331,7 +330,6 @@ exports[`Coupon component should renders correctly when data is present 1`] = `
             "styledComponentId": "sc-bZQynM",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

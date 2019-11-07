@@ -181,7 +181,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -363,7 +362,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -545,7 +543,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -727,7 +724,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-iwsKbI",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -928,7 +924,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1102,7 +1097,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1276,7 +1270,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1450,7 +1443,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1624,7 +1616,6 @@ exports[`AboutYouInformationForm should render correctly 1`] = `
             "styledComponentId": "sc-gZMcBi",
             "target": [Function],
             "toString": [Function],
-            "usesTheme": true,
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }

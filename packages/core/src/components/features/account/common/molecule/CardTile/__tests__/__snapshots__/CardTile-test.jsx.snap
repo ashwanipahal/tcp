@@ -708,7 +708,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -1170,7 +1169,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -1859,7 +1857,6 @@ exports[`CardTile should show loading 1`] = `
               "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
@@ -2152,7 +2149,6 @@ exports[`CardTile should show remining balance 1`] = `
               "styledComponentId": "sc-htoDjs",
               "target": [Function],
               "toString": [Function],
-              "usesTheme": true,
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
