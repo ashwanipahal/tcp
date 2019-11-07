@@ -1038,7 +1038,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
         }
       >
         <Field
-          autocomplete="noautocomplete"
+          autoComplete="off"
           className="field"
           component={
             Object {
@@ -1668,7 +1668,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
         }
       >
         <Field
-          autocomplete="noautocomplete"
+          autoComplete="off"
           className="field"
           component={
             Object {
