@@ -161,34 +161,39 @@ const checkForErrors = (bootstrapData, pageName) => {
     labels_error: 0,
     layout_error: 0,
   };
-  if (headerErrorMessage) {
-    errorObject.header_error = 1;
-    errorObject.header_error_message = headerErrorMessage;
-    logger.error(`Error occurred in header ${headerErrorMessage}`);
-  }
-  const { errorMessage: footerErrorMessage } = footer;
-  if (footerErrorMessage) {
-    errorObject.footer_error = 1;
-    errorObject.footer_error_message = footerErrorMessage;
-    logger.error(`Error occurred in footer ${footerErrorMessage}`);
-  }
-  const [{ errorMessage: navigationErrorMessage }] = navigation;
-  if (navigationErrorMessage) {
-    errorObject.navigation_error = 1;
-    errorObject.navigation_error_message = navigationErrorMessage;
-    logger.error(`Error occurred in navigation ${navigationErrorMessage}`);
-  }
-  const [{ errorMessage: labelsErrorMessage }] = labels;
-  if (labelsErrorMessage) {
-    errorObject.labels_error = 1;
-    errorObject.labels_error_message = labelsErrorMessage;
-    logger.error(`Error occurred in labels ${labelsErrorMessage}`);
-  }
-  const { errorMessage: layoutErrorMessage } = bootstrapData[pageName];
-  if (layoutErrorMessage) {
-    errorObject.layout_error = 1;
-    errorObject.layout_error_message = layoutErrorMessage;
-    logger.error(`Error occurred in labels ${layoutErrorMessage}`);
+
+  try {
+    if (headerErrorMessage) {
+      errorObject.header_error = 1;
+      errorObject.header_error_message = headerErrorMessage;
+      logger.error(`Error occurred in header ${headerErrorMessage}`);
+    }
+    const { errorMessage: footerErrorMessage } = footer;
+    if (footerErrorMessage) {
+      errorObject.footer_error = 1;
+      errorObject.footer_error_message = footerErrorMessage;
+      logger.error(`Error occurred in footer ${footerErrorMessage}`);
+    }
+    const [{ errorMessage: navigationErrorMessage }] = navigation;
+    if (navigationErrorMessage) {
+      errorObject.navigation_error = 1;
+      errorObject.navigation_error_message = navigationErrorMessage;
+      logger.error(`Error occurred in navigation ${navigationErrorMessage}`);
+    }
+    const [{ errorMessage: labelsErrorMessage }] = labels;
+    if (labelsErrorMessage) {
+      errorObject.labels_error = 1;
+      errorObject.labels_error_message = labelsErrorMessage;
+      logger.error(`Error occurred in labels ${labelsErrorMessage}`);
+    }
+    const { errorMessage: layoutErrorMessage } = bootstrapData[pageName];
+    if (layoutErrorMessage) {
+      errorObject.layout_error = 1;
+      errorObject.layout_error_message = layoutErrorMessage;
+      logger.error(`Error occurred in labels ${layoutErrorMessage}`);
+    }
+  } catch (e) {
+    logger.error(`Error Occured While Parsing error`);
   }
 
   return errorObject;
