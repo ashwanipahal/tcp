@@ -65,7 +65,7 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
         aligned="right"
         fontFamily="secondary"
         message={
-          <ForwardRef
+          <ForwardRef(Styled(BodyCopy))
             className={null}
             color="text.primary"
             component="p"
@@ -96,7 +96,7 @@ exports[`ConfirmationItemTitleDisplayVanilla should render correctly 1`] = `
             <br />
             <em />
             23456789023
-          </ForwardRef>
+          </ForwardRef(Styled(BodyCopy))>
         }
       >
         <Styled(Image)
