@@ -5,7 +5,7 @@ import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
 import { getLocator, splitUniqueIDForDAM } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
-import moduleGConfig from '../ModuleG/moduleG.config';
+import moduleGConfig from '../moduleG.config';
 
 import {
   Container,
