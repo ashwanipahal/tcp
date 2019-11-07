@@ -67,6 +67,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   cancelSearchBar = e => {
     e.preventDefault();
+    const { startSearch, labels } = this.props;
     const searchText = this.searchInput ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
@@ -74,6 +75,11 @@ class SearchLayoutWrapper extends React.PureComponent {
       document.getElementById('searchBar-input-form').reset();
       document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
     }
+    const payload = {
+      searchText: '',
+      slpLabels: labels,
+    };
+    startSearch(payload);
   };
 
   changeCaseFirstLetter = params => {
