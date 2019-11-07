@@ -62,6 +62,7 @@ export class App extends React.PureComponent {
     this.store.dispatch(getUserInfo());
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
+    codePush.sync({ installMode: codePush.InstallMode.ON_NEXT_RESUME });
 
     // if (isErrorReportingActive) {
     //   initAppErrorReporter({
@@ -138,6 +139,8 @@ App.propTypes = {
 App.defaultProps = {
   appType: APP_TYPE.TCP,
 };
+
+App = codePush(App);
 
 function RenderApp(props) {
   const info = useInfoState();

@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { ScrollView, Linking } from 'react-native';
+// import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
