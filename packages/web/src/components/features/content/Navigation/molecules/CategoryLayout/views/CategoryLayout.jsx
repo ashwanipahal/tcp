@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { configureInternalNavigationFromCMSUrl, getViewportInfo } from '@tcp/core/src/utils';
-import { Heading, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { Heading, Col, Anchor, BodyCopy, DamImage } from '@tcp/core/src/components/common/atoms';
 import { StyledPromoBanner } from '../CategoryLayout.style';
 
-const colStructure = {
-  shopBySizeTwoColumns: { col: [2, 2], imgClass: '' },
-  oneColumn: { col: [6], imgClass: 'three-col-img' },
-  threeColumns: { col: [2, 2, 2], imgClass: '' },
-  twoColumns67by33: { col: [4, 2], imgClass: 'two-col-img' },
-};
+import { imageConfig, colStructure } from '../CategoryLayout.config';
 
 const createShopByLinks = (links, column, hideL2Nav) => {
   return (
@@ -37,12 +32,25 @@ const createShopByLinks = (links, column, hideL2Nav) => {
   );
 };
 
-const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colSize, hideL2Nav) => {
+const createImgBanner = (
+  imageBanner,
+  l1Index,
+  categoryLayoutColName,
+  colSize,
+  colIndex,
+  hideL2Nav
+) => {
   const imgBannerLength = imageBanner ? imageBanner.length : 0;
   const colProps = colStructure[categoryLayoutColName];
   const imgClassName = `${imgBannerLength > 1 ? 'half-img' : ''} ${
-    colProps ? colProps.imgClass : ''
+    colProps && colIndex === 0 ? colProps.imgClass : ''
   }`;
+  let imgConfig = imageConfig['one-col-img'];
+  if (imageConfig[colProps.imgClass] && colIndex === 0) {
+    imgConfig = imageConfig[colProps.imgClass];
+  } else if (imgBannerLength > 1) {
+    imgConfig = imageConfig['half-img'];
+  }
   return (
     imageBanner && (
       <Col
@@ -65,11 +73,13 @@ const createImgBanner = (imageBanner, l1Index, categoryLayoutColName, colSize, h
               target={link.target}
               onClick={() => hideL2Nav()}
             >
-              <Image
-                className={`l2-image-banner-image ${imgClassName}`}
+              <DamImage
+                imgData={image}
                 data-locator={`overlay_img_${l1Index}`}
-                {...image}
+                imgConfigs={imgConfig.props}
+                className={`l2-image-banner-image ${imgClassName}`}
               />
+
               <BodyCopy
                 className={`l2-nav-link ${
                   imgBannerLength > 1 && index === 0 ? 'half-l2-nav-link' : ''
@@ -191,7 +201,14 @@ const createCategoryCol = (columns, l1Index, hideL2Nav, categoryLayoutColName, p
           ? createShopBySize(shopBySize, hideL2Nav, categoryLayoutColName, colSize)
           : null}
         {createElem
-          ? createImgBanner(imageBanner, l1Index, categoryLayoutColName, colSize, hideL2Nav)
+          ? createImgBanner(
+              imageBanner,
+              l1Index,
+              categoryLayoutColName,
+              colSize,
+              colIndex,
+              hideL2Nav
+            )
           : null}
         {createElem ? createTextBanner(textBanner, l1Index, hideL2Nav) : null}
       </React.Fragment>
