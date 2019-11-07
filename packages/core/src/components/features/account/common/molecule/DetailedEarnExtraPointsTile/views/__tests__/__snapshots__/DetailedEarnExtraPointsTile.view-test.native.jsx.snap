@@ -50,7 +50,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
         dataLocator=""
         fontFamily="secondary"
         fontSize="fs16"
-        fontWeight="extrabold"
+        fontWeight="bold"
         margin={null}
         numberOfLines={null}
         text="Earn 5 Points"

@@ -58,5 +58,6 @@ const style = css`
       display: block;
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default style;

@@ -32,6 +32,7 @@ const PickupStoreList = props => {
     onPickupRadioBtnToggle,
     onStoreUpdate,
     isSearching,
+    isUserCartStoreLoaded,
   } = props;
   const InputCheckBoxComponent = StyledInputCheckbox;
   return (
@@ -74,7 +75,7 @@ const PickupStoreList = props => {
           onStoreUpdate={onStoreUpdate}
         />
       ))}
-      {isSearching ? <StoreListItemSkeleton col={20} /> : null}
+      {isSearching || !isUserCartStoreLoaded ? <StoreListItemSkeleton col={20} /> : null}
     </>
   );
 };
@@ -147,6 +148,7 @@ PickupStoreList.propTypes = {
   isBopisCtaEnabled: PropTypes.bool.isRequired,
   isBossCtaEnabled: PropTypes.bool.isRequired,
   defaultStoreName: PropTypes.string,
+  isUserCartStoreLoaded: PropTypes.bool.isRequired,
 };
 
 PickupStoreList.defaultProps = {
