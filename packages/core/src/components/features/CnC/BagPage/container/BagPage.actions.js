@@ -210,6 +210,13 @@ const getSetPayPalWebView = payload => {
   };
 };
 
+const setIsPaypalBtnHidden = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.PAYPAL_BUTTON_HIDDEN,
+    payload,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -242,4 +249,5 @@ export default {
   setSflItemDeleted,
   resetCartReducer,
   getSetPayPalWebView,
+  setIsPaypalBtnHidden,
 };

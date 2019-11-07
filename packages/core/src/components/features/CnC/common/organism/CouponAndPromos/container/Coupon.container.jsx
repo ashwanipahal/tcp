@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+
 import { applyCoupon, removeCoupon, setError } from './Coupon.actions';
 import {
   getCouponFetchingState,
@@ -35,6 +37,8 @@ export class CouponContainer extends React.PureComponent {
       closedOverlay,
       idPrefix,
       additionalClassNameModal,
+      openApplyNowModal,
+      navigation,
     } = this.props;
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
@@ -53,6 +57,8 @@ export class CouponContainer extends React.PureComponent {
             showAccordian={showAccordian}
             additionalClassNameModal={additionalClassNameModal}
             idPrefix={idPrefix}
+            openApplyNowModal={openApplyNowModal}
+            navigation={navigation}
           />
         )}
 
@@ -97,12 +103,16 @@ CouponContainer.propTypes = {
   isCarouselView: PropTypes.bool,
   closedOverlay: PropTypes.func,
   idPrefix: PropTypes.string,
+  openApplyNowModal: PropTypes.func,
+  navigation: PropTypes.shape({}),
 };
 
 CouponContainer.defaultProps = {
   closedOverlay: () => {},
   isCarouselView: false,
   idPrefix: '',
+  navigation: null,
+  openApplyNowModal: () => {},
 };
 
 export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
@@ -144,6 +154,9 @@ export const mapDispatchToProps = (dispatch, { fullPageInfo }) => ({
     setTimeout(() => {
       dispatch(setError({ msg: null, couponCode: coupon.id }));
     }, 5000);
+  },
+  openApplyNowModal: payload => {
+    dispatch(toggleApplyNowModal(payload));
   },
 });
 

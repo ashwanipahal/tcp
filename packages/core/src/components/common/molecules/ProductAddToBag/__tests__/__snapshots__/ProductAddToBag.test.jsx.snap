@@ -62,6 +62,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     font-family: ",
                     [Function],
                     ";
+    display: flex;
+    flex-flow: wrap;
   }
 
   /* Radio Button for size */
@@ -83,9 +85,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
                     [Function],
                     "px;
       border-radius: 6px;
-      margin-bottom: ",
-                    [Function],
-                    ";
       text-align: center;
       width: 54px;
     }
@@ -419,6 +418,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     font-family: ",
                     [Function],
                     ";
+    display: flex;
+    flex-flow: wrap;
   }
 
   /* Radio Button for size */
@@ -440,9 +441,6 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
                     [Function],
                     "px;
       border-radius: 6px;
-      margin-bottom: ",
-                    [Function],
-                    ";
       text-align: center;
       width: 54px;
     }
