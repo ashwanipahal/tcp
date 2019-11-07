@@ -39,12 +39,18 @@ class SearchProduct extends React.PureComponent {
       const lookingForData = autosuggestList.find(data => data.heading === lookingForLabel);
       const { suggestions } = lookingForData;
 
+      const suggestionsCapitalize = suggestions.map(obj => {
+        const newObj = { ...obj };
+        newObj.text = obj.text.charAt(0).toUpperCase() + obj.text.slice(1).toLowerCase();
+        return newObj;
+      });
+
       const listData =
-        suggestions.length > 0
+        suggestionsCapitalize.length > 0
           ? [
               {
                 title: lookingForLabel,
-                data: suggestions,
+                data: suggestionsCapitalize,
               },
             ]
           : [];
