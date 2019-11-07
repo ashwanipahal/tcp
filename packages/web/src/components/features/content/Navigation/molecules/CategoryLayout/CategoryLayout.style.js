@@ -11,6 +11,36 @@ export const StyledPromoBanner = styled(PromoBanner)`
       letter-spacing: 0.15px;
     }
   }
+  &.text-pink {
+    span {
+      color: #ff3db4;
+    }
+  }
+  &.text-purple {
+    span {
+      color: #b976cc;
+    }
+  }
+  &.text-orange {
+    span {
+      color: #ff6b00;
+    }
+  }
+  &.text-blue {
+    span {
+      color: #49a6e0;
+    }
+  }
+  &.text-yellow {
+    span {
+      color: #f6d343;
+    }
+  }
+  &.text-red {
+    span {
+      color: #ed0505;
+    }
+  }
   &.promo-banner-half {
     .small_text_bold {
       font-size: 16.2px;

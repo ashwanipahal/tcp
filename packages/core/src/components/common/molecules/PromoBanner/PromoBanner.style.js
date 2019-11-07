@@ -549,36 +549,6 @@ export default css`
       letter-spacing: 0.07px;
     }
   }
-  &.text-pink {
-    span {
-      color: #ff3db4;
-    }
-  }
-  &.text-purple {
-    span {
-      color: #b976cc;
-    }
-  }
-  &.text-orange {
-    span {
-      color: #ff6b00;
-    }
-  }
-  &.text-blue {
-    span {
-      color: #49a6e0;
-    }
-  }
-  &.text-yellow {
-    span {
-      color: #f6d343;
-    }
-  }
-  &.text-red {
-    span {
-      color: #ed0505;
-    }
-  }
   .percentage_nav_inline {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
