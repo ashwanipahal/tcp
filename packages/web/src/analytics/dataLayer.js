@@ -1,5 +1,9 @@
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
-import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
+import {
+  generateBrowseDataLayer,
+  generateHomePageDataLayer,
+  generateClickHandlerDataLayer,
+} from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -21,10 +25,12 @@ import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
   const homepageDataLayer = generateHomePageDataLayer(store);
+  const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
+    ...clickHandlerDataLayer,
     pageName: {
       get() {
         return `gl:${store.getState().pageData.pageName}`;
@@ -81,6 +87,17 @@ export default function create(store) {
           .get('isGuest')
           ? 'no rewards:guest'
           : 'rewards member:logged in';
+      },
+    },
+
+    checkoutType: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('isGuest')
+          ? 'guest'
+          : 'registered';
       },
     },
 

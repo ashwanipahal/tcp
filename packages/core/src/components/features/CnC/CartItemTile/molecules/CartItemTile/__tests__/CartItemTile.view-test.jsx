@@ -93,6 +93,7 @@ describe('CartItemTile common component', () => {
       },
       addItemToSflList: jest.fn(),
       setCartItemsSflError: jest.fn(),
+      setClickAnalyticsData: jest.fn(),
       labels: {
         color: 'Color',
         sizeL: 'Size',
@@ -202,6 +203,7 @@ describe('CartItemTile common component', () => {
       setCartItemsSflError: jest.fn(),
       startSflItemDelete: jest.fn(),
       startSflDataMoveToBag: jest.fn(),
+      setClickAnalyticsData: jest.fn(),
       labels: {
         color: 'Color',
         sizeL: 'Size',

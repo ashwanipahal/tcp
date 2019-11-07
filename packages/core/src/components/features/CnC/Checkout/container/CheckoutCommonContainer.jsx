@@ -45,6 +45,7 @@ import {
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
+import utils from '../../../../../utils';
 
 const {
   getSmsSignUpLabels,
@@ -275,6 +276,20 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 }
 
 CheckoutContainer.getInitActions = () => initActions;
+
+CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
+  const DEFAULT_ACTIVE_COMPONENT = 'shipping';
+  const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'checkout',
+        pageSection: loadedComponent,
+      },
+    },
+  };
+};
 
 export const mapDispatchToProps = dispatch => {
   return {

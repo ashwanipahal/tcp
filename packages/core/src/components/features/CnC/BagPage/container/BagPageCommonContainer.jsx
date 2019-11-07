@@ -137,6 +137,18 @@ export class BagPageContainer extends React.Component<Props> {
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
 
+BagPageContainer.getInitialProps = pageProps => {
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'shopping bag',
+        pageSection: 'shopping bag',
+      },
+    },
+  };
+};
+
 export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
