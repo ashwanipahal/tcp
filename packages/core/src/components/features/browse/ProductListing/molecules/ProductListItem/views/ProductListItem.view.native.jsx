@@ -356,7 +356,6 @@ const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) 
 
 const RenderPricesSection = values => {
   const {
-    item,
     miscInfo,
     currencyExchange,
     currencySymbol,
