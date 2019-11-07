@@ -185,14 +185,6 @@ const LoyaltyBannerSection = props => {
             <LoyaltyFooterSection
               className={className}
               footerLabels={footerLabels}
-              // labels={labels}
-              // isPlcc={isPlcc}
-              // isProductDetailView={isProductDetailView}
-              // isReviewPage={isReviewPage}
-              // isConfirmationPage={isConfirmationPage}
-              // isGuest={isGuest}
-              // isAddedToBagPage={isAddedToBagPage}
-              // earnedRewardAvailable={earnedRewardAvailable}
               openOverlay={openOverlay}
               closeAddedToBagModal={closeAddedToBagModal}
               openApplyNowModal={openApplyNowModal}
