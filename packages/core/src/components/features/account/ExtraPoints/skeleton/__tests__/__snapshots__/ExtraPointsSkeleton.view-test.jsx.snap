@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExtraPointsSkeleton component should renders correctly 1`] = `
+<div
+  className="sample-class"
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="col-border-color elem-pt-MED elem-pr-SM elem-pb-MED elem-pl-SM"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <SkeletonLine
+        height="200px"
+        width="100%"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="col-border-color elem-pt-MED elem-pr-SM elem-pb-MED elem-pl-SM"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <SkeletonLine
+        height="200px"
+        width="100%"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="col-border-color elem-pt-MED elem-pr-SM elem-pb-MED elem-pl-SM"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <SkeletonLine
+        height="200px"
+        width="100%"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
