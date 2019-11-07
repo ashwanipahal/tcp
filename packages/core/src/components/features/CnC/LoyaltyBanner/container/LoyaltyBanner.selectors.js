@@ -158,12 +158,12 @@ export const getLoyaltyBannerLabels = state => {
         lbl_banner_confirmation_plcc_points_label2: confirmationPlccPointsRemaining,
         lbl_banner_confirmation_plcc_rewards_label1: confirmationPlccRewardsHeading,
 
-        lbl_loyaltyBanner_getRewardedShopping: productDescriptionGetRewardedShoppingHeading,
-        lbl_loyaltyBanner_loyaltyPayPoints: productDescriptionLoyaltyPayPointsSubHeading,
-        lbl_loyaltyBanner_earnDoublePointsPDP: productDescriptionEarnDoublePointsHeading,
-        lbl_loyaltyBanner_myPlaceCreditCard: productDescriptionMyPlaceCreditCardDescription,
-        lbl_loyaltyBanner_getDoublePointsPLCCPDP: productDescriptionGetDoublePointsPLCCHeading,
-        lbl_loyaltyBanner_checkoutMyPlaceCreditCard: productDescriptionCheckoutMyPlaceCreditCardDescription,
+        lbl_banner_pdp_guest_rewards_label1: pdpGuestRewardsHeading,
+        lbl_banner_pdp_guest_rewards_label2: pdpGuestRewardsSubHeading,
+        lbl_banner_pdp_mpr_rewards_label1: pdpMprRewardsHeading,
+        lbl_banner_pdp_mpr_rewards_label3: pdpMprRewardsDescription,
+        lbl_banner_pdp_plcc_rewards_label1: pdpPlccRewardsHeading,
+        lbl_banner_pdp_plcc_rewards_label2: pdpPlccRewardsDescription,
       } = {},
     } = {},
   } = state.Labels;
@@ -234,12 +234,12 @@ export const getLoyaltyBannerLabels = state => {
     confirmationPlccPointsRemaining,
     confirmationPlccRewardsHeading,
 
-    productDescriptionGetRewardedShoppingHeading,
-    productDescriptionLoyaltyPayPointsSubHeading,
-    productDescriptionEarnDoublePointsHeading,
-    productDescriptionMyPlaceCreditCardDescription,
-    productDescriptionGetDoublePointsPLCCHeading,
-    productDescriptionCheckoutMyPlaceCreditCardDescription,
+    pdpGuestRewardsHeading,
+    pdpGuestRewardsSubHeading,
+    pdpMprRewardsHeading,
+    pdpMprRewardsDescription,
+    pdpPlccRewardsHeading,
+    pdpPlccRewardsDescription,
   };
 };
 

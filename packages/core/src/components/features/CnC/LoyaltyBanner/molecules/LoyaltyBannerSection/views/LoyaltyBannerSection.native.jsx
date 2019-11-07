@@ -44,6 +44,8 @@ const LoyaltyBannerSection = props => {
     getCurrencySymbol,
     pageCategory,
     footerLabels,
+    openApplyNowModal,
+    navigation,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -169,14 +171,8 @@ const LoyaltyBannerSection = props => {
         <View className="footer">
           <LoyaltyFooterSection
             footerLabels={footerLabels}
-            // labels={labels}
-            // isPlcc={isPlcc}
-            // isProductDetailView={isProductDetailView}
-            // isReviewPage={isReviewPage}
-            // isConfirmationPage={isConfirmationPage}
-            // isGuest={isGuest}
-            // isAddedToBagPage={isAddedToBagPage}
-            // earnedRewardAvailable={earnedRewardAvailable}
+            openApplyNowModal={openApplyNowModal}
+            navigation={navigation}
           />
         </View>
       </LoyaltySectionWrapper>
@@ -198,6 +194,8 @@ LoyaltyBannerSection.propTypes = {
   estimatedRewardsVal: PropTypes.string,
   pointsToNextReward: PropTypes.number,
   pageCategory: PropTypes.string,
+  openApplyNowModal: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -211,6 +209,7 @@ LoyaltyBannerSection.defaultProps = {
   estimatedRewardsVal: '',
   pointsToNextReward: 0,
   pageCategory: '',
+  navigation: null,
 };
 
 export default LoyaltyBannerSection;

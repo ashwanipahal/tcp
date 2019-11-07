@@ -16,6 +16,8 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       getCurrencySymbol,
       pageCategory,
       footerLabels,
+      openApplyNowModal,
+      navigation,
     } = this.props;
     return (
       <LoyaltyBannerSection
@@ -31,6 +33,8 @@ class LoyaltyBanner extends React.PureComponent<Props> {
         getCurrencySymbol={getCurrencySymbol}
         pageCategory={pageCategory}
         footerLabels={footerLabels}
+        openApplyNowModal={openApplyNowModal}
+        navigation={navigation}
       />
     );
   }

@@ -5,7 +5,7 @@ import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/s
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
-
+import { resetPLCCResponse } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
 
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
@@ -34,6 +34,7 @@ export const LoyaltyBannerContainer = ({
   inheritedStyles,
   openApplyNowModal,
   footerLabels,
+  navigation,
 }) => {
   const {
     estimatedRewards,
@@ -63,6 +64,7 @@ export const LoyaltyBannerContainer = ({
       inheritedStyles={inheritedStyles}
       openApplyNowModal={openApplyNowModal}
       footerLabels={footerLabels}
+      navigation={navigation}
     />
   );
 };
@@ -81,6 +83,7 @@ LoyaltyBannerContainer.propTypes = {
   inheritedStyles: PropTypes.string,
   openApplyNowModal: PropTypes.func.isRequired,
   footerLabels: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -91,6 +94,7 @@ LoyaltyBannerContainer.defaultProps = {
   pageCategory: '',
   isInternationalShipping: false,
   inheritedStyles: '',
+  navigation: null,
 };
 
 export const mapDispatchToProps = dispatch => ({
@@ -100,6 +104,7 @@ export const mapDispatchToProps = dispatch => ({
   },
   openApplyNowModal: payload => {
     dispatch(toggleApplyNowModal(payload));
+    dispatch(resetPLCCResponse(payload));
   },
 });
 

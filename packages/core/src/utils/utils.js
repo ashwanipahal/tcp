@@ -1022,6 +1022,10 @@ export const canUseDOM = () => {
   return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
+export const splitUniqueIDForDAM = uniqueId => {
+  return `${uniqueId.split('_')[0]}/${uniqueId}`;
+};
+
 /**
  *
  * Get labels based on pattern
@@ -1077,4 +1081,5 @@ export default {
   getStyliticsRegion,
   canUseDOM,
   getLabelsBasedOnPattern,
+  splitUniqueIDForDAM,
 };

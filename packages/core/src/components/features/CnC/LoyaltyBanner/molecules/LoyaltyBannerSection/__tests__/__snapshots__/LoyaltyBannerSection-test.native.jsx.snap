@@ -36,6 +36,15 @@ exports[`LoyaltyBanner Section Component LoyaltyBanner Section should render cor
     >
       <Styled(LoyaltyFooterSection)
         className=""
+        earnedRewardAvailable={false}
+        isAddedToBagPage={false}
+        isConfirmationPage={false}
+        isGuest={true}
+        isPlcc={false}
+        isProductDetailView={false}
+        isReviewPage={false}
+        labels={Object {}}
+        navigation={null}
       />
     </View>
   </Styled(View)>

@@ -83,4 +83,5 @@ export {
   readCookieMobileApp,
   getStyliticsUserName,
   getStyliticsRegion,
+  splitUniqueIDForDAM,
 } from './utils';

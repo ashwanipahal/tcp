@@ -7,9 +7,9 @@ import { BodyCopy, Anchor } from '../../../../../../common/atoms';
 const openModalApplyNowModal = (openApplyNowModal, step = 1) => {
   if (openApplyNowModal) {
     if (step === 1) {
-      return openApplyNowModal({ isModalOpen: true });
+      return openApplyNowModal({ isModalOpen: true, status: null });
     }
-    return openApplyNowModal({ isModalOpen: false, isPLCCModalOpen: true });
+    return openApplyNowModal({ isModalOpen: false, isPLCCModalOpen: true, status: null });
   }
   return null;
 };

@@ -46,7 +46,7 @@ class LoginPageContainer extends React.PureComponent {
       toastMessage(loginErrorMessage);
     }
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (variation === 'checkout' || variation === 'favorites') {
+      if (variation === 'checkout') {
         closeModal();
       }
 

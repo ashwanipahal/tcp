@@ -1,16 +1,117 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LoyaltyFooterSection View Component ProductDetailSection true should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
 exports[`LoyaltyFooterSection View Component is not ProductDetailView should render correctly 1`] = `
 <div
   className=" footer-wrapper"
 >
   <div
     className="links-wrapper"
-  />
+  >
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+    </span>
+  </div>
 </div>
 `;
 
-exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest should render correctly 1`] = `
+exports[`LoyaltyFooterSection View Component isAddedToBagPage & earnedReward true should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isAddedToBagPage & isGuest true should render correctly 1`] = `
 <div
   className=" footer-wrapper"
 >
@@ -37,6 +138,57 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest shou
       handleLinkClick={[Function]}
       noLink={true}
       underline={true}
+    />
+  </span>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isAddedToBagPage true should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <span
+      className="links-container"
+    >
+      <span
+        className="applyNowLink"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isConfirmationPage && earnedRewardAvailable should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
+    <span
+      className="links-container"
     >
       CreateAccountAction
     </Styled(Anchor)>
@@ -55,8 +207,46 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && isGuest shou
       link={null}
       textAlign="left"
     >
-      abc
-    </Styled(BodyCopy)>
+      <span
+        className="applyNowLink"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`LoyaltyFooterSection View Component isConfirmationPage true should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+/>
+`;
+
+exports[`LoyaltyFooterSection View Component isPlcc & isReviewPage true should render correctly 1`] = `
+<div
+  className=" footer-wrapper"
+>
+  <div
+    className="links-wrapper"
+  >
     <Styled(Anchor)
       anchorVariation="primary"
       fontSizeVariation="medium"
@@ -124,8 +314,29 @@ exports[`LoyaltyFooterSection View Component isProductDetailView && plcc && isGu
       noLink={true}
       underline={true}
     >
-      LearnMoreAction
-    </Styled(Anchor)>
+      <span
+        className="applyNowLink"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+    </span>
   </div>
 </div>
 `;
@@ -166,8 +377,29 @@ exports[`LoyaltyFooterSection View Component isProductDetailView should render c
       link={null}
       textAlign="left"
     >
-      abc
-    </Styled(BodyCopy)>
+      <span
+        className="applyNowLink"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+      <span
+        className="learnSymbolWrapper elem-pl-XL"
+      >
+        <Styled(Anchor)
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          handleLinkClick={[Function]}
+          noLink={true}
+          underline={true}
+        />
+      </span>
+    </span>
   </div>
 </div>
 `;

@@ -68,6 +68,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
   };
 
   renderApplyNowLink = text => {
+    const { openApplyNowModal, navigation } = this.props;
     return (
       <Anchor
         className="applyNow"
@@ -75,11 +76,16 @@ class LoyaltyFooterSection extends PureComponent<Props> {
         anchorVariation="primary"
         text={text}
         underline
+        onPress={() => {
+          navigation.navigate('ApplyNow');
+          openApplyNowModal({ isModalOpen: false, isPLCCModalOpen: true });
+        }}
       />
     );
   };
 
   renderLearnMoreLink = text => {
+    const { openApplyNowModal, navigation } = this.props;
     return (
       <Anchor
         className="learnMore"
@@ -87,6 +93,10 @@ class LoyaltyFooterSection extends PureComponent<Props> {
         anchorVariation="primary"
         text={text}
         underline
+        onPress={() => {
+          navigation.navigate('ApplyNow');
+          openApplyNowModal({ isModalOpen: true });
+        }}
       />
     );
   };
@@ -175,7 +185,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
           )}
           {!!footerLabels.link1Action &&
             this.getLinkWithName(this.props, footerLabels.link1Action, footerLabels.link1Text)}
-          {!!footerLabels.link1Action && footerLabels.link2Action && <SizeBetweenWrapper />}
+          {!!footerLabels.link1Action && !!footerLabels.link2Action && <SizeBetweenWrapper />}
           {!!footerLabels.link2Prefix && (
             <BodyCopy
               fontWeight="regular"

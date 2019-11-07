@@ -2,13 +2,14 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
-import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const returnModule = mod => mod.default;
@@ -33,7 +34,7 @@ const HomePageView = dynamic({
   }),
   render: ({ slots }, modules) => {
     return [
-      <HomePageSlots slots={slots} modules={modules} />,
+      <PageSlots slots={slots} modules={modules} />,
       <GetCandid />,
       <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />,
       <Recommendations
@@ -41,6 +42,7 @@ const HomePageView = dynamic({
         variations="moduleO,moduleP"
       />,
       <ModuleG {...mockG.moduleG.composites} />,
+      <AddedToBagContainer />,
     ];
   },
 });

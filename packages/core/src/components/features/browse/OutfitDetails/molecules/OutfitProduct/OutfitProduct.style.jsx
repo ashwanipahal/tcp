@@ -35,6 +35,7 @@ export default css`
   }
 
   .outfit-button-wrapper {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     @media ${props => props.theme.mediaQuery.medium} {
       display: flex;
 

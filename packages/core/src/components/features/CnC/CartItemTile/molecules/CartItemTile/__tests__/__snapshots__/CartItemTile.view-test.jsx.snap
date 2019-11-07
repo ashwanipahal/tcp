@@ -141,7 +141,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -161,7 +161,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -175,7 +175,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -193,7 +193,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -213,7 +213,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -247,7 +247,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -267,7 +267,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -576,7 +576,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -596,7 +596,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -610,7 +610,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -628,7 +628,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -648,7 +648,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -682,7 +682,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -702,7 +702,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1007,7 +1007,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -1027,7 +1027,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1041,7 +1041,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1059,7 +1059,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1079,7 +1079,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1113,7 +1113,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1133,7 +1133,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1455,7 +1455,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -1475,7 +1475,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1489,7 +1489,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1507,7 +1507,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1527,7 +1527,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1561,7 +1561,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1581,7 +1581,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1886,7 +1886,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -1906,7 +1906,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1920,7 +1920,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1938,7 +1938,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1958,7 +1958,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1992,7 +1992,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2012,7 +2012,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2317,7 +2317,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -2337,7 +2337,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2351,7 +2351,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2369,7 +2369,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2389,7 +2389,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2423,7 +2423,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2443,7 +2443,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2774,7 +2774,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -2794,7 +2794,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2808,7 +2808,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2826,7 +2826,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2846,7 +2846,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2880,7 +2880,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2900,7 +2900,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3219,7 +3219,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -3239,7 +3239,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3253,7 +3253,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3271,7 +3271,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3291,7 +3291,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3325,7 +3325,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3345,7 +3345,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3676,7 +3676,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -3696,7 +3696,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3710,7 +3710,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3728,7 +3728,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3748,7 +3748,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3782,7 +3782,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3802,7 +3802,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4121,7 +4121,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -4141,7 +4141,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4155,7 +4155,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4173,7 +4173,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4193,7 +4193,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4227,7 +4227,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4247,7 +4247,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4566,7 +4566,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -4586,7 +4586,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4600,7 +4600,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4618,7 +4618,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4638,7 +4638,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4672,7 +4672,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4692,7 +4692,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4997,7 +4997,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -5017,7 +5017,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5031,7 +5031,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5049,7 +5049,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5069,7 +5069,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5103,7 +5103,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5123,7 +5123,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5445,7 +5445,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -5465,7 +5465,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5479,7 +5479,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5497,7 +5497,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5517,7 +5517,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5551,7 +5551,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5571,7 +5571,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5893,7 +5893,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -5913,7 +5913,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5927,7 +5927,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5945,7 +5945,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5965,7 +5965,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5999,7 +5999,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -6019,7 +6019,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -6367,7 +6367,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -6387,7 +6387,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -6401,7 +6401,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -6419,7 +6419,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -6439,7 +6439,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -6473,7 +6473,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -6493,7 +6493,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
