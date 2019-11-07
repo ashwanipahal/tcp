@@ -249,6 +249,7 @@ export default css`
         width: auto;
       }
       .icon-arrow {
+        display: inline-block;
         margin-left: 10px;
         width: 10px;
       }
