@@ -936,9 +936,7 @@ class CartItemTile extends PureComponent {
 
   closeMiniBagMethod = () => {
     const { closeMiniBag } = this.props;
-    if (closeMiniBag) {
-      closeMiniBag();
-    }
+    closeMiniBag();
   };
 
   // eslint-disable-next-line complexity
@@ -1224,6 +1222,7 @@ CartItemTile.defaultProps = {
   currencyExchange: null,
   autoSwitchPickupItemInCart: () => {},
   disableProductRedirect: false,
+  closeMiniBag: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -1263,7 +1262,7 @@ CartItemTile.propTypes = {
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   autoSwitchPickupItemInCart: PropTypes.func,
   disableProductRedirect: PropTypes.bool,
-  closeMiniBag: PropTypes.func.isRequired,
+  closeMiniBag: PropTypes.func,
 };
 
 export default withStyles(CartItemTile, styles);
