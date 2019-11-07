@@ -4,8 +4,8 @@ import { awsConfig } from './aws-cred-exports';
 
 export default class AwsAppSyncClient {
   static getClient() {
-    // if (AwsAppSyncClient.client) return AwsAppSyncClient.client;
-    // return AwsAppSyncClient.createClient();
+    if (AwsAppSyncClient.client) return AwsAppSyncClient.client;
+    return AwsAppSyncClient.createClient();
   }
 
   static createClient() {

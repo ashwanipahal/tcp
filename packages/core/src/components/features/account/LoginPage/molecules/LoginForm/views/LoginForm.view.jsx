@@ -14,7 +14,8 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
-import styles from '../styles/LoginForm.styles';
+import styles, { customSpinnerStyle } from '../styles/LoginForm.styles';
+import SpinnerOverlay from '../../../../../../common/atoms/SpinnerOverlay';
 
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
@@ -46,6 +47,7 @@ class LoginForm extends React.PureComponent<Props> {
       tooltipContent,
       userplccCardNumber,
       userplccCardId,
+      isLoading,
     } = this.props;
     return (
       <div className={className}>
@@ -173,6 +175,7 @@ class LoginForm extends React.PureComponent<Props> {
             </Anchor>
           </BodyCopy>
         </form>
+        {isLoading && <SpinnerOverlay inheritedStyles={customSpinnerStyle} />}
       </div>
     );
   }

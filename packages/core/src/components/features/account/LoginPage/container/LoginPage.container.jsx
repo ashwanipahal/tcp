@@ -32,7 +32,6 @@ import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast
 
 import LoginView from '../views';
 
-
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
@@ -104,6 +103,7 @@ class LoginPageContainer extends React.PureComponent {
       navigation,
       toastMessage,
       resetChangePasswordState,
+      isLoading,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -140,6 +140,7 @@ class LoginPageContainer extends React.PureComponent {
         navigation={navigation}
         toastMessage={toastMessage}
         resetChangePasswordState={resetChangePasswordState}
+        isLoading={isLoading}
       />
     );
   }
@@ -177,6 +178,7 @@ LoginPageContainer.propTypes = {
   userplccCardId: PropTypes.string.isRequired,
   updateHeader: PropTypes.func.isRequired,
   resetChangePasswordState: PropTypes.func,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -223,7 +225,7 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = state => {
   return {
-    isLoading:getLoadingState(state),
+    isLoading: getLoadingState(state),
     showNotification: getShowNotificationState(state),
     resetForgotPasswordErrorResponse: getResetEmailResponse(state),
     successFullResetEmail: toggleSuccessfulEmailSection(state),

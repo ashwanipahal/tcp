@@ -3,6 +3,7 @@
  */
 
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import SOCIAL_CONSTANTS from '../social.constants';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import { setSocialAccount, showPointModalDetails, showLoader } from './Social.actions';
@@ -25,6 +26,7 @@ export function* getsocialAccounts(action) {
 }
 
 export function* savesocialAccounts({ payload }) {
+  yield put(setLoaderState(true));
   try {
     const body = {
       token: payload.socialAccInfo.accessToken,
@@ -39,6 +41,7 @@ export function* savesocialAccounts({ payload }) {
 
     const res = yield call(saveSocialAccountsInfo, body);
     /* istanbul ignore else */
+    yield put(setLoaderState(false));
     if (res) {
       yield put(setSocialAccount(res));
     }
@@ -47,6 +50,7 @@ export function* savesocialAccounts({ payload }) {
       yield put(showPointModalDetails({ state: !isConnected }));
     }
   } catch (err) {
+    yield put(setLoaderState(false));
     console.log('err', err);
   }
 }

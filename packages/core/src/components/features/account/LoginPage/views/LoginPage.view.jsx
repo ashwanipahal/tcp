@@ -25,9 +25,11 @@ const LoginView = ({
   handleContinueAsGuest,
   userplccCardNumber,
   userplccCardId,
+  isLoading,
 }) => {
   return (
     <LoginSection
+      isLoading={isLoading}
       onSubmit={onSubmit}
       labels={labels}
       formErrorMessage={formErrorMessage}
@@ -74,6 +76,7 @@ LoginView.propTypes = {
   formErrorMessage: PropTypes.shape({}).isRequired,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 LoginView.defaultProps = {

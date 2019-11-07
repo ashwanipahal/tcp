@@ -3,7 +3,6 @@ import { css } from 'styled-components';
 const styles = css`
   .spinner-overlay {
     position: fixed;
-    display: none;
     width: 100%;
     height: 100%;
     top: 0;
@@ -11,14 +10,11 @@ const styles = css`
     right: 0;
     bottom: 0;
     background-color: ${props => props.theme.colors.MODAL_OVERLAY};
-    z-index: 2;
+    z-index: 1400;
     cursor: pointer;
     align-items: center;
     justify-content: center;
     display: flex;
-  }
-  .show-default-spinner {
-
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

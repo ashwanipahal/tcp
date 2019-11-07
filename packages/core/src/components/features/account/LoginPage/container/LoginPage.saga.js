@@ -2,7 +2,7 @@ import { call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import { setLoginInfo, setCheckoutModalMountedState,setLoadingState} from './LoginPage.actions';
+import { setLoginInfo, setCheckoutModalMountedState, setLoadingState } from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
@@ -22,6 +22,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
+      yield put(setLoadingState({ isLoading: false }));
       yield put(getUserInfo());
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
@@ -44,7 +45,6 @@ export function* loginSaga({ payload, afterLoginHandler }) {
         })
       );
     }
-    yield put(setLoadingState({ isLoading: false }));
     return yield put(setLoginInfo(response));
   } catch (err) {
     yield put(setLoadingState({ isLoading: false }));

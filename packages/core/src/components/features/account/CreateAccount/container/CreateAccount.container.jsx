@@ -15,6 +15,7 @@ import {
   getLabels,
   getErrorMessage,
   getPasswordLabels,
+  getLoadingState,
 } from './CreateAccount.selectors';
 import {
   getUserLoggedInState,
@@ -53,6 +54,7 @@ export class CreateAccountContainer extends React.Component {
     userplccCardId: PropTypes.string.isRequired,
     toastMessage: PropTypes.func,
     passwordLabels: PropTypes.shape({}).isRequired,
+    isLoading: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -142,6 +144,7 @@ export class CreateAccountContainer extends React.Component {
       userplccCardId,
       toastMessage,
       passwordLabels,
+      isLoading,
     } = this.props;
     return (
       <CreateAccountView
@@ -162,6 +165,7 @@ export class CreateAccountContainer extends React.Component {
         userplccCardId={userplccCardId}
         toastMessage={toastMessage}
         passwordLabels={passwordLabels}
+        isLoading={isLoading}
       />
     );
   }
@@ -179,6 +183,7 @@ export const mapStateToProps = state => {
     labels: getLabels(state),
     formErrorMessage: getFormValidationErrorMessages(state),
     passwordLabels: getPasswordLabels(state),
+    isLoading: getLoadingState(state),
   };
 };
 

@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import {
   setDefaultShippingAddressSuccess,
@@ -7,10 +8,13 @@ import {
 import { defaultShippingAddressApi } from '../../../../../services/abstractors/account';
 
 export function* updateDefaultShippingAddress({ payload }) {
+  yield put(setLoaderState(true));
   try {
     const res = yield call(defaultShippingAddressApi, payload);
+    yield put(setLoaderState(false));
     yield put(setDefaultShippingAddressSuccess(res.body));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(setDefaultShippingAddressFailure(err));
   }
 }

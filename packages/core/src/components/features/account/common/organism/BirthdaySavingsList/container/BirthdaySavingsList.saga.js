@@ -1,4 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import CONSTANTS from '../BirthdaySavingsList.constants';
 import { setUserChildren, getUserInfo } from '../../../../User/container/User.actions';
 import {
@@ -17,14 +18,17 @@ import {
  * @description This function will call getChildren Abstractor to get children birthday saving list
  */
 export function* getChildrenSaga() {
+  yield put(setLoaderState(true));
   try {
     const response = yield call(getChildren);
+    yield put(setLoaderState(false));
     yield put(
       setUserChildren({
         children: response,
       })
     );
   } catch (err) {
+    yield put(setLoaderState(false));
     console.log("Error: error in fetching user's children birthday savings list");
   }
 }
@@ -34,11 +38,14 @@ export function* getChildrenSaga() {
  * @description This function will call getChildren Abstractor to get children birthday saving list
  */
 export function* removeChildSaga({ payload }) {
+  yield put(setLoaderState(true));
   try {
     const response = yield call(deleteChild, payload);
+    yield put(setLoaderState(false));
     yield put(getChildrenAction());
     yield put(updateBirthdaySavingSuccess(response));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(updateBirthdaySavingError(err));
   }
 }
@@ -48,12 +55,15 @@ export function* removeChildSaga({ payload }) {
  * @description This function will call addChildBirthday Abstractor to add children birthday saving list
  */
 export function* addChildrenSaga({ payload }) {
+  yield put(setLoaderState(true));
   try {
     const response = yield call(addChildBirthday, payload);
+    yield put(setLoaderState(false));
     yield put(getUserInfo());
     yield put(getChildrenAction());
     yield put(updateBirthdaySavingSuccess(response));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(updateBirthdaySavingError(err));
   }
 }

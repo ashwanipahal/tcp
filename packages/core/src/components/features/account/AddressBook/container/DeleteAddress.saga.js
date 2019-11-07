@@ -1,4 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import {
   updateAddressListOnDelete,
@@ -8,8 +9,10 @@ import {
 import { deleteAddressApi } from '../../../../../services/abstractors/account';
 
 export function* deleteAddress({ payload }) {
+  yield put(setLoaderState(true));
   try {
     const res = yield call(deleteAddressApi, payload);
+    yield put(setLoaderState(false));
     if (res.statusCode === 200) {
       yield put(updateAddressListOnDelete(res.body || ''));
       yield put(setDeleteModalMountedState({ state: false }));
@@ -17,6 +20,7 @@ export function* deleteAddress({ payload }) {
       yield put(updateAddressListOnDeleteErr(res.error));
     }
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(updateAddressListOnDeleteErr(err));
   }
 }

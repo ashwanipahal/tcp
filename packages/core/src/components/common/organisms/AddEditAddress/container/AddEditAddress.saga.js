@@ -1,6 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import constants from './AddEditAddress.constants';
-import { addAddressSuccess, addAddressFail,setLoadingState } from './AddEditAddress.actions';
+import { addAddressSuccess, addAddressFail, setLoadingState } from './AddEditAddress.actions';
 import {
   setAddressBookNotification,
   clearGetAddressListTTL,
@@ -11,10 +12,10 @@ import { getUserEmail } from '../../../../features/account/User/container/User.s
 export function* addAddressGet({ payload }, addToAddressBook = true) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
-
-  yield put(setLoadingState({ isLoading: true }));
+  yield put(setLoaderState(true));
   try {
     const res = yield call(addAddress, updatedPayload);
+    yield put(setLoaderState(false));
     if (!addToAddressBook) {
       return res;
     }
@@ -30,10 +31,10 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
     return yield put(addAddressFail(res.body));
   } catch (err) {
     if (!addToAddressBook) {
-      yield put(setLoadingState({ isLoading: false }));
+      yield put(setLoaderState(false));
       throw err;
     }
-    yield put(setLoadingState({ isLoading: false }));
+    yield put(setLoaderState(false));
     let error = {};
     /* istanbul ignore else */
     error = err;
@@ -44,13 +45,14 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
 export function* updateAddressPut({ payload }, fromCheckout) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
-  yield put(setLoadingState({ isLoading: true }));
+  yield put(setLoaderState(true));
   try {
     const res = yield call(
       updateAddress,
       updatedPayload,
       fromCheckout && fromCheckout.profileUpdate
     );
+    yield put(setLoaderState(false));
     if (res) {
       yield put(
         setAddressBookNotification({
@@ -64,14 +66,14 @@ export function* updateAddressPut({ payload }, fromCheckout) {
       }
       return putRes;
     }
-    yield put(setLoadingState({ isLoading: false }));
     return yield put(addAddressFail(res.body));
   } catch (err) {
     let error = {};
+    yield put(setLoaderState(false));
     if (err instanceof Error) {
       error = err.response.body;
     }
-    yield put(setLoadingState({ isLoading: false }));
+    yield put(setLoadingState(false));
     return yield put(addAddressFail(error));
   }
 }
