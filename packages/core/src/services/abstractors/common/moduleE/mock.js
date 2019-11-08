@@ -1,147 +1,199 @@
-const totalImageSlides = 4;
-const imageSlides = [];
-const images = [
-  'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
-  'https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg',
-  'https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg',
-  'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
-  'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
-];
+const dummyUrl = 'http://www.childrensplace.com';
 const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
+const carouselCtaType = ['button', 'link'];
+const divCtaTitle1 = 'Big & Little Sis';
+const divCtaTitle2 = 'Big & Little Bro';
+const shopTheCollectionTitle = 'Shop The Collection';
 
-// eslint-disable-next-line no-plusplus
-for (let i = 1; i <= totalImageSlides; i++) {
-  const gymboreeHeaderTextItems = [
-    {
-      text: 'Spring is Every Wear',
-      style: 'style1',
-    },
-  ];
+// https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-large-1.jpg
+// https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-2.jpg
+// https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-1.jpg
+// https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg
+// https://test5.childrensplace.com/image/upload/v1573197073/Screenshot_2019-11-08_at_12.40.10_PM.png
 
-  // eslint-disable-next-line no-unused-vars
-  const gymboreePromoTextItems = [
-    {
-      text: 'The whole bunch is blooming',
-      style: 'gymboree_description',
-    },
-  ];
+/*
+Without EyeBrow Image Variation (Default)
+large_text_black --- "MATCHING FAMILY" Header Text -- ALREADY EXIST;
+spaced_text_only_mobile -- "ALL SPRING DRESSES UP" Promo Text -- NEW ONE;
+percentage_inline_promo_black -- "40% OFF" Promo Text -- NEW ONE
+spaced_text_regular_black --  "BIG & LITTLE BRO" Small Image Text -- NEW ONE
 
-  // eslint-disable-next-line no-unused-vars
-  const tcpHeaderTextItems = [
-    {
-      text: `ENTER SITE ${i}`,
-      style: 'style1',
-    },
-  ];
-  // eslint-disable-next-line no-unused-vars
-  const tcpPromoTextItems = [
-    {
-      text: '60 % OFF',
-      style: 'percentage_wrapped_extra_large',
-    },
-    {
-      text: '50 % Off',
-      style: 'small_text_bold',
-    },
-    {
-      text: ' All Shoes & Select Accessories',
-      style: 'small_text_normal',
-    },
-  ];
-
-  imageSlides.push({
-    headerText: [
-      {
-        textItems: gymboreeHeaderTextItems,
-        link: {
-          url: '/c/',
-          text: '',
-          title: '',
-          target: '',
-          external: 0,
-        },
-        icon: {
-          icon: '',
-          placement: '',
-        },
-      },
-    ],
-    promoBanner: [
-      {
-        link: {
-          url: '/c/',
-          text: '',
-          title: '',
-          target: '',
-          external: 0,
-        },
-        textItems: gymboreePromoTextItems,
-      },
-    ],
-    linkedImage: [
-      {
-        image: {
-          url: images[i],
-          alt: `Family Tees Image ${i}`,
-          title: 'Family Tees title',
-          crop_d: '',
-          crop_t: '',
-          crop_m: '',
-        },
-        link: {
-          url: '/c/image/url',
-          text: 'Family Tees',
-          title: 'Family Tees',
-          target: '',
-          external: 0,
-        },
-      },
-    ],
-    ribbonBanner: [
-      {
-        ribbonPlacement: 'right',
-        textItems: [
-          {
-            text: 'Order By XX/XX',
-            style: 'ribbon_default_text',
-          },
-          {
-            text: 'For Easter Delivery!',
-            style: 'ribbon_default_text',
-          },
-        ],
-        link: {
-          url: '/c/',
-          text: '',
-          title: '',
-          target: '',
-          external: 0,
-        },
-      },
-    ],
-  });
-}
+With EyeBrow Image Variation (Alt)
+small_text_normal -- "Cue The Photos" Promo Text -- ALREADY EXIST;
+medium_text_black -- "THE DRESS UP SHOP" HEADER Text -- ALREADY EXIST;
+spaced_text_regular_black -- "BALL MATCHING FAMILY" Promo Text -- NEW ONE
+percentage_all_wrapped_normal_tab -- "60% OFF"(Wrapped) Promo Text -- ALREADY EXIST;
+spaced_text_regular_black --  "BIG & LITTLE BRO" Small Image Text -- NEW ONE
+*/
 
 export default {
   moduleE: {
     contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
-    name: 'moduleA',
+    name: 'moduleE',
     type: 'module',
     composites: {
-      largeCompImageCarousel: imageSlides,
-      ctaItems: [
+      eyebrow: [
+        {
+          mediaLinkedList: [
+            {
+              image: {
+                url:
+                  'https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg',
+                alt: 'Left Image',
+                title: 'Left Image',
+                crop_d: '',
+                crop_t: '',
+                crop_m: '',
+              },
+              link: {
+                url: dummyUrl,
+                text: 'Left Image Link',
+                title: 'Left Image Link',
+                target: '',
+                external: 0,
+              },
+            },
+            {
+              image: {
+                url:
+                  'https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg',
+                alt: 'Right Image',
+                title: 'Right Image',
+                crop_d: '',
+                crop_t: '',
+                crop_m: '',
+              },
+              link: {
+                url: dummyUrl,
+                text: 'Right Image Link',
+                title: 'Right Image Link',
+                target: '',
+                external: 0,
+              },
+            },
+          ],
+          promoBanner: [
+            {
+              link: {
+                url: '/banner/url',
+                text: '',
+                title: '',
+                target: '',
+              },
+              textItems: [
+                {
+                  text: 'Cue the photos',
+                  style: 'small_text_normal',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      headerText: [
+        {
+          textItems: [
+            {
+              text: 'THE DRESS UP SHOP',
+              // v2Text: 'MATCHING FAMILY',
+              style: 'large_text_black',
+              // v2Style: 'medium_text_black',
+            },
+          ],
+          link: {
+            url: '/node/pdp/<uuid>',
+            text: '',
+            title: '',
+            target: '',
+            external: 0,
+          },
+          icon: {
+            icon: '',
+            placement: '',
+          },
+        },
+      ],
+      promoBanner: [
+        {
+          link: {
+            url: '/banner/url',
+            text: '',
+            title: '',
+            target: '',
+            external: 0,
+          },
+          textItems: [
+            {
+              text: 'ALL SPRING DRESSES UP',
+              // v2Text: 'THE DRESS UP SHOP',
+              style: 'medium_text_black',
+              // v2Style: 'spaced_text_only_mobile',
+            },
+          ],
+        },
+      ],
+      linkedImage: [
         {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            alt: 'Girl',
-            title: 'Girl',
+              'https://test5.childrensplace.com/image/upload/v1573197073/Screenshot_2019-11-08_at_12.40.10_PM.png',
+            alt: 'Promo Area',
+            title: 'Promo Area',
             crop_d: '',
             crop_t: '',
             crop_m: '',
           },
+          link: {
+            url: dummyUrl,
+            text: '',
+            title: '',
+            target: '',
+            external: 0,
+          },
+        },
+      ],
+      largeCompImageSimpleCarousel: [
+        {
+          image: {
+            url:
+              'https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-large-1.jpg',
+            alt: 'Family Tees2',
+            title: 'Family Tees2',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          singleCTAButton: {
+            url: dummyUrl,
+            text: shopTheCollectionTitle,
+            title: shopTheCollectionTitle,
+            target: '',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url:
+              'https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-large-1.jpg',
+            alt: 'Family Tees',
+            title: 'Family Tees',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          singleCTAButton: {
+            url: dummyUrl,
+            text: shopTheCollectionTitle,
+            title: shopTheCollectionTitle,
+            target: '',
+            external: 0,
+          },
+        },
+      ],
+      ctaItems: [
+        {
           button: {
-            url: '/c/',
+            url: '/girl',
             text: 'Girl',
             title: 'Girl',
             target: '',
@@ -149,17 +201,8 @@ export default {
           },
         },
         {
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            alt: 'Toddler Girl alt',
-            title: 'Toddler Girl title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
           button: {
-            url: '/c/',
+            url: '/toddler-girl',
             text: 'Toddler Girl',
             title: 'Toddler Girl',
             target: '',
@@ -167,17 +210,8 @@ export default {
           },
         },
         {
-          image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
-            alt: 'Boy',
-            title: 'Boy',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
           button: {
-            url: '/c/',
+            url: '/boy',
             text: 'Boy',
             title: 'Boy',
             target: '',
@@ -185,17 +219,8 @@ export default {
           },
         },
         {
-          image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
-            alt: 'Toddler Boy alt',
-            title: 'Toddler Boy title',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
           button: {
-            url: '/c/',
+            url: '/toddler-boy',
             text: 'Toddler Boy',
             title: 'Toddler Boy',
             target: '',
@@ -203,17 +228,8 @@ export default {
           },
         },
         {
-          image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
-            alt: 'Baby',
-            title: 'Baby',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
           button: {
-            url: '/c/',
+            url: '/baby',
             text: 'Baby',
             title: 'Baby',
             target: '',
@@ -221,12 +237,59 @@ export default {
           },
         },
       ],
+      divCTALinks: [
+        {
+          image: {
+            url: dummyUrl,
+            alt: divCtaTitle1,
+            title: divCtaTitle1,
+            crop_d: 'crop_value1',
+            crop_t: 'crop_value2',
+            crop_m: 'crop_value3',
+          },
+          styled: {
+            text: divCtaTitle1,
+            style: 'style1',
+          },
+          link: {
+            url: '/link/url',
+            text: divCtaTitle1,
+            title: divCtaTitle1,
+            external: 1,
+            target: '_blank',
+          },
+        },
+        {
+          image: {
+            url: dummyUrl,
+            alt: divCtaTitle2,
+            title: divCtaTitle2,
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          styled: {
+            text: divCtaTitle2,
+            style: 'style1',
+          },
+          link: {
+            url: '/link/url',
+            text: divCtaTitle2,
+            title: divCtaTitle2,
+            external: 1,
+            target: '_blank',
+          },
+        },
+      ],
     },
-    submodules: {},
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[1],
+        val: ctaTypes[0],
+      },
+      {
+        key: 'carouselCtaType',
+        val: carouselCtaType[0],
       },
     ],
   },
