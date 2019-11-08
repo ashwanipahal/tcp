@@ -15,7 +15,7 @@ import {
   WishListIcon,
 } from '../../../ProductListing/molecules/ProductList/views/ProductItemComponents';
 
-class ProductBasicInfo extends React.PureComponent {
+class ProductBasicInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

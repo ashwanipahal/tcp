@@ -16,7 +16,7 @@ const StyledCarousal = styled(Carousel)`
     width: 13px;
   }
   .slick-dots {
-    bottom: -12px;
+    bottom: -20px;
   }
 `;
 const StyledLinkText = styled(LinkText)`
