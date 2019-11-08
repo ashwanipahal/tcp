@@ -8,6 +8,7 @@ import { getLabelValue } from '@tcp/core/src/utils';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
@@ -223,10 +224,11 @@ class CartItemTile extends PureComponent {
       addItemToSflList,
       setCartItemsSflError,
       labels,
+      setClickAnalyticsData,
     } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem },
-      productInfo: { skuId, generalProductId },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
+      productInfo: { skuId, generalProductId, upc, productPartNumber },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
@@ -237,6 +239,24 @@ class CartItemTile extends PureComponent {
       return setCartItemsSflError(labels.sflMaxLimitError);
     }
     const payloadData = { itemId, catEntryId, userInfoRequired };
+    const productsData = {
+      color,
+      id: itemId,
+      name,
+      price: offerPrice,
+      extPrice: offerPrice,
+      sflExtPrice: offerPrice,
+      listPrice,
+      partNumber: productPartNumber,
+      size,
+      upc,
+      sku: skuId.toString(),
+    };
+    setClickAnalyticsData({
+      customEvents: ['event134', 'event136'],
+      products: [productsData],
+      eventName: 'Save for Later',
+    });
     return addItemToSflList({ ...payloadData });
   };
 
@@ -254,15 +274,33 @@ class CartItemTile extends PureComponent {
   };
 
   moveToBagSflItem = () => {
-    const { productDetail, startSflDataMoveToBag } = this.props;
+    const { productDetail, startSflDataMoveToBag, setClickAnalyticsData } = this.props;
     const {
-      itemInfo: { itemId, isGiftItem },
-      productInfo: { skuId, generalProductId },
+      itemInfo: { itemId, isGiftItem, color, name, offerPrice, size, listPrice },
+      productInfo: { skuId, generalProductId, upc, productPartNumber },
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
 
     const payloadData = { itemId, catEntryId };
     this.clearToggleErrorState();
+    const productsData = {
+      color,
+      id: itemId,
+      name,
+      price: offerPrice,
+      extPrice: offerPrice,
+      sflExtPrice: offerPrice,
+      listPrice,
+      partNumber: productPartNumber,
+      size,
+      upc,
+      sku: skuId.toString(),
+    };
+    setClickAnalyticsData({
+      customEvents: ['event135', 'event137'],
+      products: [productsData],
+      eventName: 'Move to Bag',
+    });
     return startSflDataMoveToBag({ ...payloadData });
   };
 
@@ -325,19 +363,21 @@ class CartItemTile extends PureComponent {
       isShowSaveForLater
     ) {
       return (
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs12"
-          component="p"
-          fontWeight={['semibold']}
-          dataLocator="saveForLaterLink"
-          className="sflActions"
-          onClick={() => {
-            this.handleMoveItemtoSaveList();
-          }}
-        >
-          {labels.saveForLaterLink}
-        </BodyCopy>
+        <ClickTracker name="Save_for_Later">
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs12"
+            component="p"
+            fontWeight={['semibold']}
+            dataLocator="saveForLaterLink"
+            className="sflActions"
+            onClick={() => {
+              this.handleMoveItemtoSaveList();
+            }}
+          >
+            {labels.saveForLaterLink}
+          </BodyCopy>
+        </ClickTracker>
       );
     }
     if (
@@ -345,19 +385,21 @@ class CartItemTile extends PureComponent {
       productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.OK
     ) {
       return (
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs12"
-          component="p"
-          fontWeight={['semibold']}
-          dataLocator="moveToBagLink"
-          className="sflActions"
-          onClick={() => {
-            this.moveToBagSflItem();
-          }}
-        >
-          {labels.moveToBagLink}
-        </BodyCopy>
+        <ClickTracker name="Move_to_Bag">
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs12"
+            component="p"
+            fontWeight={['semibold']}
+            dataLocator="moveToBagLink"
+            className="sflActions"
+            onClick={() => {
+              this.moveToBagSflItem();
+            }}
+          >
+            {labels.moveToBagLink}
+          </BodyCopy>
+        </ClickTracker>
       );
     }
     return null;
@@ -924,6 +966,11 @@ class CartItemTile extends PureComponent {
     return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
   };
 
+  closeMiniBagMethod = () => {
+    const { closeMiniBag } = this.props;
+    closeMiniBag();
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -978,7 +1025,7 @@ class CartItemTile extends PureComponent {
     const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
     const isBagPage = pageView === 'myBag';
-    const disableLink = !isProductBrandOfSameDomain || disableProductRedirect;
+    const disableLink = disableProductRedirect;
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -1019,6 +1066,7 @@ class CartItemTile extends PureComponent {
                 pdpAsPathUrl={pdpAsPathUrl}
                 disableLink={disableLink}
                 noWrap={disableLink}
+                IsSlugPathAdded
               >
                 <DamImage
                   imgData={{
@@ -1027,6 +1075,7 @@ class CartItemTile extends PureComponent {
                   }}
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
+                  onClick={this.closeMiniBagMethod}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -1079,6 +1128,7 @@ class CartItemTile extends PureComponent {
                     fontSize="fs14"
                     fontWeight={['extrabold']}
                     dataLocator={getLocator('cart_item_title')}
+                    onClick={this.closeMiniBagMethod}
                   >
                     {productDetail.itemInfo.name}
                   </BodyCopy>
@@ -1204,6 +1254,7 @@ CartItemTile.defaultProps = {
   currencyExchange: null,
   autoSwitchPickupItemInCart: () => {},
   disableProductRedirect: false,
+  closeMiniBag: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -1243,6 +1294,8 @@ CartItemTile.propTypes = {
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   autoSwitchPickupItemInCart: PropTypes.func,
   disableProductRedirect: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  closeMiniBag: PropTypes.func,
 };
 
 export default withStyles(CartItemTile, styles);

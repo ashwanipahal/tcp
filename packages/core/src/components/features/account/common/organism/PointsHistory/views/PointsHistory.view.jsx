@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
+import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view';
 
 /**
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const PointsHistory = ({ className, labels, pointHistory }) => {
+const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
   let pointHistoryData = [];
 
   if (pointHistory && pointHistory.length > 3) {
@@ -54,8 +55,9 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
           </BodyCopy>
         </Col>
       </Row>
-
-      {pointHistoryData &&
+      {isFetching && <PointHistoryViewSkeleton />}
+      {!isFetching &&
+        pointHistoryData &&
         pointHistoryData.length &&
         pointHistoryData.map(pointHistoryRow => (
           <Row fullBleed className="elem-mb-SM">
@@ -120,6 +122,7 @@ PointsHistory.propTypes = {
     lbl_common_points_earned: PropTypes.string,
     lbl_common_points_history: PropTypes.string,
   }),
+  isFetching: PropTypes.bool,
 };
 
 PointsHistory.defaultProps = {
@@ -130,6 +133,7 @@ PointsHistory.defaultProps = {
     lbl_common_points_earned: '',
     lbl_common_points_history: '',
   },
+  isFetching: false,
 };
 
 export default PointsHistory;
