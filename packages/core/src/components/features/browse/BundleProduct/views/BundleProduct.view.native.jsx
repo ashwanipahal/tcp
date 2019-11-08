@@ -11,6 +11,7 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
+import BundleProductListing from '../molecules/BundleProductListing';
 
 class ProductDetailView extends React.PureComponent {
   currentColorEntry;
@@ -30,13 +31,20 @@ class ProductDetailView extends React.PureComponent {
   render() {
     const {
       currentProduct,
+      currentBundle,
       selectedColorProductId,
       pdpLabels,
       shortDescription,
       itemPartNumber,
       longDescription,
+      plpLabels,
+      navigation,
+      handleAddToBag,
+      addToFavorites,
+      addToBagEcom,
+      currentState,
     } = this.props;
-    if (JSON.stringify(currentProduct) !== '{}') {
+    if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
       this.currentColorEntry = getMapSliceForColorProductId(
         colorFitsSizesMap,
@@ -69,6 +77,15 @@ class ProductDetailView extends React.PureComponent {
               isShowMore={false}
               pdpLabels={pdpLabels}
             />
+            <BundleProductListing
+              currentBundle={currentBundle}
+              plpLabels={plpLabels}
+              navigation={navigation}
+              handleAddToBag={handleAddToBag}
+              addToFavorites={addToFavorites}
+              addToBagEcom={addToBagEcom}
+              currentState={currentState}
+            />
           </PageContainer>
         </LazyloadScrollView>
       );
@@ -78,7 +95,7 @@ class ProductDetailView extends React.PureComponent {
 }
 
 ProductDetailView.propTypes = {
-  currentProduct: PropTypes.shape({}),
+  currentProduct: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
   plpLabels: PropTypes.shape({}),
@@ -86,10 +103,14 @@ ProductDetailView.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  currentState: PropTypes.bool.isRequired,
 };
 
 ProductDetailView.defaultProps = {
-  currentProduct: {},
   navigation: {},
   plpLabels: null,
   shortDescription: '',
