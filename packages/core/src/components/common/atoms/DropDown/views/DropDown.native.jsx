@@ -202,7 +202,13 @@ class DropDown extends React.PureComponent<Props> {
     }
 
     return (
-      <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
+      <DropDownItemContainer
+        onPress={() => this.onDropDownItemClick(item)}
+        style={itemStyle}
+        accessibilityRole="text"
+        accessibilityLabel={label}
+        accessible
+      >
         {typeof label !== 'function' ? (
           <BodyCopy
             mobileFontFamily="secondary"
