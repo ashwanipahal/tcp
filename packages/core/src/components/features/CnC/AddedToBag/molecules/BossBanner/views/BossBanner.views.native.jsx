@@ -12,14 +12,6 @@ const getItemLabel = labels => {
 const BossBanner = ({ labels }) => {
   return (
     <MainWrapper>
-      {/* <StyledHeading>
-        <BodyCopy
-          fontSize="fs12"
-          fontWeight={['semibold']}
-          textAlign="center"
-          text={getModifiedHeaderText(labels)}
-        />
-      </StyledHeading> */}
       <PickupPromotionBanner bossBanner fullBleed />
       <SubHeading>
         <BodyCopy fontSize="fs10" textAlign="center" text={getItemLabel(labels)} />
