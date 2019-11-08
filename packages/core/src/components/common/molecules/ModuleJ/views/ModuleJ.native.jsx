@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
-import { getLocator, validateColor, splitUniqueIDForDAM } from '../../../../../utils/index.native';
+import { getLocator, validateColor, getProductUrlForDAM } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import moduleJConfig from '../moduleJ.config';
 
@@ -84,7 +84,7 @@ class ModuleJ extends React.PureComponent {
                 <StyledImage
                   alt={productName}
                   host={LAZYLOAD_HOST_NAME.HOME}
-                  url={splitUniqueIDForDAM(uniqueId)}
+                  url={getProductUrlForDAM(uniqueId)}
                   height={PRODUCT_IMAGE_HEIGHT}
                   width={PRODUCT_IMAGE_WIDTH}
                   imgConfig={IMG_DATA.productImgConfig[0]}

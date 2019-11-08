@@ -64,6 +64,9 @@ const StyledModuleK = css`
     }
   }
   .image-col {
+    img {
+      width: 100%;
+    }
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: 0px;

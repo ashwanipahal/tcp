@@ -29,4 +29,7 @@ export default css`
     position: relative;
     top: 3px;
   }
+  .moduleD_image {
+    width: 100%;
+  }
 `;

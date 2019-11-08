@@ -54,7 +54,6 @@ const style = css`
 
   .header-middle-login-section .headerSearchBox {
     position: relative;
-    height: 40px;
     flex-grow: unset;
   }
 
