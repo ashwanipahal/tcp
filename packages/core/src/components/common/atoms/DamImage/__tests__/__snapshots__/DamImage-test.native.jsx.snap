@@ -18,7 +18,7 @@ exports[`DamImageCompVanilla should pass source value 1`] = `
 />
 `;
 
-exports[`DamImageCompVanilla should render correctly 1`] = `
+exports[`DamImageCompVanilla should render correctly  1`] = `
 <Image
   accessibilityLabel=""
   accessibilityRole="image"
