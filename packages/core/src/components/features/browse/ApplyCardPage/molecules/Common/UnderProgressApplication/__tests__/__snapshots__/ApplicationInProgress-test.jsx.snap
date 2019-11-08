@@ -52,16 +52,16 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
         }
       }
     >
-      <Styled(Button)
+      <Styled(Anchor)
+        anchorVariation="button"
         buttonVariation="fixed-width"
-        className="underprogress_continue_button"
-        data-locator="submit-plcc-btn"
+        centered={true}
+        className="existing_continue_button"
         fill="BLUE"
-        onClick={[Function]}
-        type="submit"
+        fontSizeVariation="large"
       >
         continue shopping
-      </Styled(Button)>
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
 </styled.div>
