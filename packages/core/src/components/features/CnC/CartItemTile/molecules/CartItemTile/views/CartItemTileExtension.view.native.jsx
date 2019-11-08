@@ -435,6 +435,7 @@ const callEditMethod = props => {
         selectedFit: fit,
         itemBrand,
       },
+      fromBagPage: true,
     });
   } else {
     const openSkuSelectionForm = true;
