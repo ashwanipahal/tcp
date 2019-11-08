@@ -78,7 +78,7 @@ export default css`
 
     .medium_text_semibold {
       font-weight: ${props => props.theme.fonts.fontWeight.medium};
-
+      padding-top: 8px;
       @media ${props => props.theme.mediaQuery.mediumOnly} {
         display: block;
         font-size: ${props => props.theme.typography.fontSizes.fs20};
@@ -96,13 +96,15 @@ export default css`
       }
       @media ${props => props.theme.mediaQuery.smallOnly} {
         display: block;
-        font-size: ${props => props.theme.typography.fontSizes.fs20};
+        font-size: ${props => props.theme.typography.fontSizes.fs48};
       }
     }
   }
   .promo-header {
     .medium_text_subpromo {
       font-size: ${props => props.theme.typography.fontSizes.fs20};
+      padding: 0 75px;
+      display: flex;
     }
   }
   .image-items-container-category {
