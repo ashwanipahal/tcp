@@ -58,7 +58,6 @@ class ProductDetailContainer extends React.PureComponent {
     } = this.props;
 
     if (prevProps.router.query.pid !== pid) {
-      console.log('hello');
       const productId = this.extractPID();
       getDetails({ productColorId: productId });
       window.scrollTo(0, 100);
