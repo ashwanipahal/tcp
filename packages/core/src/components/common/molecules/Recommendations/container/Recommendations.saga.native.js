@@ -7,11 +7,11 @@ import { toastMessageInfo } from '../../../atoms/Toast/container/Toast.actions.n
 import { isMobileApp } from '../../../../../utils';
 import errorMessage from '../../../../../services/handler/stateful/errorResponseMapping/index.json';
 
-function* fetchRecommendationsData() {
+function* fetchRecommendationsData(action) {
+  const { payload } = action;
   try {
-    const result = yield call(RecommendationsAbstractor.getAppData, {
-      pageType: 'homepageTest',
-    });
+    const result = yield call(RecommendationsAbstractor.getAppData, payload);
+
     yield put(loadRecommendationsData(result));
   } catch (e) {
     if (isMobileApp())

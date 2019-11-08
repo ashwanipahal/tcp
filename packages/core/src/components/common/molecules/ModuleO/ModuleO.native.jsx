@@ -32,6 +32,8 @@ const ModuleO = props => {
     item,
     priceOnly,
     viaModule,
+    labels,
+    showLoyaltyPromotionMessage,
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -50,10 +52,12 @@ const ModuleO = props => {
   const topBadge = isMatchingFamily && badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
 
   // get default Loyalty message
-  const loyaltyPromotionMessage = getPromotionalMessage(isPlcc, {
-    promotionalMessage,
-    promotionalPLCCMessage,
-  });
+  const loyaltyPromotionMessage = showLoyaltyPromotionMessage
+    ? getPromotionalMessage(isPlcc, {
+        promotionalMessage,
+        promotionalPLCCMessage,
+      })
+    : '';
 
   return (
     <View>
@@ -76,6 +80,7 @@ const ModuleO = props => {
         renderPriceOnly={priceOnly}
         productImageWidth={PRODUCT_IMAGE_WIDTH}
         viaModule={viaModule}
+        labelsPlpTiles={labels}
       />
     </View>
   );
@@ -90,6 +95,11 @@ ModuleO.propTypes = {
   item: PropTypes.shape({}).isRequired,
   priceOnly: PropTypes.bool,
   viaModule: PropTypes.string,
+  labels: PropTypes.shape({
+    lbl_plpTiles_shop_collection: PropTypes.string,
+    lbl_add_to_bag: PropTypes.string,
+  }).isRequired,
+  showLoyaltyPromotionMessage: PropTypes.bool,
 };
 
 ModuleO.defaultProps = {
@@ -100,6 +110,7 @@ ModuleO.defaultProps = {
   currencySymbol: '$',
   priceOnly: false,
   viaModule: '',
+  showLoyaltyPromotionMessage: true,
 };
 
 export default ModuleO;

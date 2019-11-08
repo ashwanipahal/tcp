@@ -39,12 +39,13 @@ const { RECOMMENDATION } = constant;
 
 class Recommendations extends Component {
   componentDidMount() {
-    const { loadRecommendations } = this.props;
-    const { page, portalValue } = this.props;
-    const action = { page };
-    if (portalValue) {
-      action.mboxName = portalValue;
-    }
+    const { loadRecommendations, page, portalValue, partNumber, categoryName } = this.props;
+    const action = {
+      page: page || 'homepageTest',
+      ...(partNumber && { itemPartNumber: partNumber }),
+      ...(portalValue && { mboxName: portalValue }),
+      ...(categoryName && { categoryName }),
+    };
     if (window.adobe && window.adobe.target) {
       return loadRecommendations(action);
     }
@@ -230,6 +231,8 @@ Recommendations.propTypes = {
   onQuickViewOpenClick: PropTypes.func.isRequired,
   page: PropTypes.string,
   portalValue: PropTypes.string,
+  partNumber: PropTypes.string,
+  categoryName: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
@@ -245,6 +248,8 @@ Recommendations.defaultProps = {
   },
   page: '',
   portalValue: '',
+  partNumber: '',
+  categoryName: '',
 };
 
 export { Recommendations as RecommendationsVanilla };
