@@ -638,6 +638,10 @@ export const orderDetailsResponse = {
 export const response = {
   orderId: 3000284778,
   totalItems: 15,
+  isBopisOrder: false,
+  isBossOrder: false,
+  isPickupOrder: false,
+  isShippingOrder: true,
   appliedGiftCards: [],
   giftWrappingTotal: 0,
   savingsTotal: 0,

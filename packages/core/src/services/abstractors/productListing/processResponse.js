@@ -1,6 +1,6 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
-import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
+import { isClient, routerPush, getSiteId, isMobileApp, isCanada } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
 import { FACETS_FIELD_KEY } from './productListing.utils';
 import {
@@ -275,8 +275,7 @@ const processResponse = (
     categoryNameTop,
   };
   if (res.body.response) {
-    // TODO - fix this - let isUSStore = this.apiHelper.configOptions.isUSStore;
-    const isUSStore = true;
+    const isUSStore = !isCanada();
     res.body.response.products.forEach(product =>
       parseProductInfo(product, {
         isUSStore,

@@ -1,5 +1,9 @@
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
-import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
+import {
+  generateBrowseDataLayer,
+  generateHomePageDataLayer,
+  generateClickHandlerDataLayer,
+} from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -21,15 +25,19 @@ import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
   const homepageDataLayer = generateHomePageDataLayer(store);
+  const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
+    ...clickHandlerDataLayer,
     pageName: {
       get() {
         return `gl:${store.getState().pageData.pageName}`;
       },
     },
+
+    isCurrentRoute: () => false,
 
     pageshortName: {
       get() {
@@ -81,6 +89,17 @@ export default function create(store) {
           .get('isGuest')
           ? 'no rewards:guest'
           : 'rewards member:logged in';
+      },
+    },
+
+    checkoutType: {
+      get() {
+        return store
+          .getState()
+          .User.get('personalData')
+          .get('isGuest')
+          ? 'guest'
+          : 'registered';
       },
     },
 
@@ -136,6 +155,24 @@ export default function create(store) {
     listingCount: {
       get() {
         return store.getState().ProductListing.get('totalProductsCount');
+      },
+    },
+    cartType: {
+      get() {
+        const orderDetails = store.getState().CartPageReducer.get('orderDetails');
+        let typeCart = 'standard';
+        const isBopisOrder = orderDetails.get('isBopisOrder');
+        const isBossOrder = orderDetails.get('isBossOrder');
+        const isPickupOrder = orderDetails.get('isPickupOrder');
+        const isShippingOrder = orderDetails.get('isShippingOrder');
+        if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
+          typeCart = 'mix';
+        } else if (isBopisOrder && !isBossOrder) {
+          typeCart = 'bopis';
+        } else if (isBossOrder && !isBopisOrder) {
+          typeCart = 'boss';
+        }
+        return typeCart;
       },
     },
   });

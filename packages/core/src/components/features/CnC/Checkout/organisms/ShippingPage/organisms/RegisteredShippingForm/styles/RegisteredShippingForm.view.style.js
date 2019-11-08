@@ -112,7 +112,7 @@ const styles = css`
   }
 
   .shipping-section-header {
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
+    @media ${props => props.theme.mediaQuery.medium} {
       width: auto;
     }
   }
