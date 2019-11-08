@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map } from 'immutable';
 import { shallow } from 'enzyme';
-import GiftCardTile from '../../GiftCardTile/views/GiftCardTile.view.native';
+import GiftCardTile from '../GiftCardTile.view.native';
 
 describe('GiftCardTileVanilla', () => {
   const props = {
@@ -40,7 +40,7 @@ describe('GiftCardTileVanilla', () => {
       applyExistingGiftCardToOrder: jest.fn(),
       handleRemoveGiftCard: jest.fn(),
       className: 'test',
-      cardData: Map({ accountNo: '*******2123', name: 'test' }),
+      cardData: Map({ accountNo: '*******2123', name: 'test', remainingBalance: 0.25 }),
     };
     const component = shallow(<GiftCardTile isGiftCardApplied {...appliedProps} />);
     expect(component).toMatchSnapshot();
