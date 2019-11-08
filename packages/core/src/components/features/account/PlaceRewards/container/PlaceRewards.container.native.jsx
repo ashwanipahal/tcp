@@ -26,3 +26,4 @@ PlaceRewardsContainer.defaultProps = {
 };
 
 export default connect(mapStateToProps)(PlaceRewardsContainer);
+export { PlaceRewardsContainer as PlaceRewardsContainerVanilla };

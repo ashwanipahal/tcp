@@ -15,6 +15,7 @@ import {
   getQuickViewFormValues,
   getProductInfoFromBag,
   getLoadingState,
+  getFromBagPage,
 } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
@@ -108,6 +109,7 @@ function mapStateToProps(state) {
     addToBagError: getAddedToBagError(state) || '',
     addToBagMultipleItemError: getMultipleItemsAddedToBagError(state) || {},
     productInfoFromBag: getProductInfoFromBag(state),
+    fromBagPage: getFromBagPage(state),
   };
 }
 
