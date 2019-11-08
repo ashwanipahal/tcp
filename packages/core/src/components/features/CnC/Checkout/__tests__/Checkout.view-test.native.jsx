@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { CheckoutPageVanilla } from '../views/CheckoutPage.view';
 
 describe('CheckoutPageVanilla component', () => {
-  it('should renders correctly pickup', () => {
+  it.skip('should renders correctly pickup', () => {
     const props = {
       className: 'className',
       backLinkText: 'backLinkText',
@@ -24,7 +24,7 @@ describe('CheckoutPageVanilla component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should renders correctly with shipping', () => {
+  it.skip('should renders correctly with shipping', () => {
     const props = {
       className: 'className',
       backLinkText: 'backLinkText',

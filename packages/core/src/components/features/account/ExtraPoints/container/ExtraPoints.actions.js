@@ -13,3 +13,9 @@ export const setPromoList = payload => {
     type: EXTRA_POINTS_CONSTANTS.SET_PROMO_LIST_CONTENT,
   };
 };
+
+export const showLoader = () => {
+  return {
+    type: EXTRA_POINTS_CONSTANTS.SHOW_LOADER,
+  };
+};
