@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const OutfitCarouselStyle = css`
-  margin-bottom: 32px;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   .heading {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     text-align: center;

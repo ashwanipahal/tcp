@@ -67,7 +67,6 @@ const loadGraphQLInterface = () => {
  * @returns {Promise} Resolves with data or rejects with error object
  */
 export const executeGraphQLQuery = query => {
-  console.log('query', query);
   return loadGraphQLInterface()
     .then(client => executeQuery(query, client))
     .catch(err => {
@@ -99,11 +98,8 @@ export const resetGraphQLClient = () => {
  * @returns {Promise} Resolves with data or rejects with error object
  */
 export const fetchModuleDataFromGraphQL = async modules => {
-  console.log(' fetchModuleDataFromGraphQL modules ', modules);
   const query = await QueryBuilder.getQuery(modules);
-  const abcd = executeGraphQLQuery(query);
-  console.log('abcd === ', abcd);
-  return abcd;
+  return executeGraphQLQuery(query);
 };
 
 /**

@@ -104,7 +104,6 @@ const LayoutAbstractor = {
     return moduleIds;
   },
   processModuleData: moduleData => {
-    console.log('moduleData processModuleData', moduleData);
     const modulesObject = {};
     Object.keys(moduleData).forEach(slotKey => {
       const { set = [] } = moduleData[slotKey];

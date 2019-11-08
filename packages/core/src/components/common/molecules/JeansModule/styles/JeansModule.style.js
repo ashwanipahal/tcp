@@ -44,13 +44,42 @@ const JeansModuleStyles = css`
     margin-left: 44px;
   }
 
-  .overlapping-section {
+  .overlapping-section,
+  .plus-button {
     display: none;
+  }
+  .slick-slide > div {
+    padding: 0 6px;
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    height: 407px;
+    .image-link {
+      .carousel-image {
+        height: 370px;
+      }
+    }
+    .title-section {
+      width: 408px;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
+    height: 457px;
+    .plus-button {
+      display: block;
+      position: absolute;
+      bottom: 167px;
+      left: 17px;
+    }
+    .image-link {
+      .carousel-image {
+        height: 420px;
+      }
+    }
     .title-section {
       margin-left: 0;
+      width: 458px;
     }
     .tcp_carousel_wrapper {
       margin-left: 30px;
@@ -66,7 +95,7 @@ const JeansModuleStyles = css`
         width: 100%;
       }
       .carousel-image {
-        opacity: 0.2;
+        opacity: 0.05;
       }
     }
     .text-container {

@@ -6,6 +6,7 @@ const DivisionTabStyles = css`
     position: relative;
     overflow: hidden;
     text-align: center;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .heading:before,
   .heading:after {

@@ -180,13 +180,10 @@ class ProductsDynamicAbstractor {
           }
         });
       });
-      console.log('moduleObjects', moduleObjects);
       modules = await this.moduleResolver(moduleObjects);
     } catch (err) {
       this.handleValidationError(err);
     }
-    console.log('productListing modules', modules);
-    console.log('slotsObject', slotsObject);
     return {
       modules,
       layout: slotsObject,
@@ -194,9 +191,7 @@ class ProductsDynamicAbstractor {
   };
 
   moduleResolver = async moduleObjects => {
-    console.log('moduleResolver moduleObjects', moduleObjects);
     const response = await layoutAbstractor.getModulesData(moduleObjects);
-    console.log('response @@@@ ', response && response.data);
     return layoutAbstractor.processModuleData(response.data);
   };
 

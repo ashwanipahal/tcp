@@ -115,6 +115,7 @@ class ProductListingContainer extends React.PureComponent {
       currencyAttributes,
       currency,
       plpTopPromos,
+      router: { asPath: asPathVal },
       ...otherProps
     } = this.props;
     const { isOutfit, asPath } = this.state;
@@ -145,11 +146,13 @@ class ProductListingContainer extends React.PureComponent {
         currency={currency}
         currencyExchange={currencyAttributes.exchangevalue}
         plpTopPromos={plpTopPromos}
+        asPathVal={asPathVal}
         {...otherProps}
       />
     ) : (
       <OutfitListingContainer
         asPath={asPath}
+        asPathVal={asPathVal}
         breadCrumbs={breadCrumbs}
         navTree={navTree}
         currentNavIds={currentNavIds}

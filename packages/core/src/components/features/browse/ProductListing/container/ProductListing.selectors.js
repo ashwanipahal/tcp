@@ -265,13 +265,12 @@ export const getIsDataLoading = state => {
 
 export const getPLPTopPromos = state => {
   const topPromos = state.ProductListing.getIn(['bannerInfo', 'val', 'top']);
-  const topPromoModules =
+  return (
     (topPromos &&
       topPromos.map(promoItem => {
         return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
       })) ||
-    {};
-  console.log('topPromoModules', topPromoModules);
-  return topPromoModules;
+    {}
+  );
   // return state.ProductListing.bannerInfo.val.top;
 };

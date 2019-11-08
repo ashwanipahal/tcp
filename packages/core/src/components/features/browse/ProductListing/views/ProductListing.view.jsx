@@ -60,6 +60,7 @@ const ProductListView = ({
   currency,
   isLoadingMore,
   plpTopPromos,
+  asPathVal,
   ...otherProps
 }) => {
   return (
@@ -81,7 +82,7 @@ const ProductListView = ({
           </div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-          <PromoModules plpTopPromos={plpTopPromos} />
+          <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
               {/*
@@ -173,6 +174,7 @@ ProductListView.propTypes = {
   currency: PropTypes.string,
   isLoadingMore: PropTypes.bool,
   plpTopPromos: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
 };
 
 ProductListView.defaultProps = {
@@ -195,6 +197,7 @@ ProductListView.defaultProps = {
   isLoadingMore: true,
   currency: 'USD',
   plpTopPromos: {},
+  asPathVal: '',
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

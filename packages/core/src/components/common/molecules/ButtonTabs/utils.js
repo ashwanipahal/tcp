@@ -10,8 +10,6 @@ const getActiveStatus = (id, selectedTabId = []) => {
   if (Array.isArray(id) && JSON.stringify(id) === JSON.stringify(selectedTabId)) {
     return true;
   }
-  console.log('id', id);
-  console.log('selectedTab', selectedTab);
   if (id === selectedTab) {
     return true;
   }

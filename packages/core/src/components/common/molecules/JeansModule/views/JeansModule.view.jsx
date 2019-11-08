@@ -57,6 +57,7 @@ export class JeansModule extends PureComponent {
       <div className={className}>
         <div className="title-section">{jeansModule.headLine[0].text}</div>
         <Carousel
+          className="carousel-item"
           options={CAROUSEL_OPTIONS}
           carouselConfig={{
             autoplay: false,
@@ -118,6 +119,7 @@ export class JeansModule extends PureComponent {
                             </div>
                           );
                         })}
+                        <Image className="plus-icon" src="/static/images/plus.png" />
                       </div>
                       <Anchor
                         className="shop-now-link"

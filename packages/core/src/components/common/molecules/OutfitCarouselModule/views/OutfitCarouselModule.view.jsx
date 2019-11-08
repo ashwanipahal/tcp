@@ -97,6 +97,35 @@ export class OutfitCarouselModule extends PureComponent {
                   fontSizeVariation="small"
                   dataLocator="dummy-datalocator"
                 >
+                  {`${link.text} >`}
+                </Anchor>
+              </div>
+            );
+          })}
+          {outfitModule.mediaLinkedList.map(({ image, link }, index) => {
+            return (
+              <div key={index.toString()}>
+                <Anchor
+                  className="image-link"
+                  to={image.url}
+                  asPath={image.url}
+                  dataLocator="dummy-datalocator"
+                >
+                  <DamImage
+                    className={`${className} carousel-image`}
+                    imgData={{
+                      alt: image.title,
+                      url: image.url,
+                    }}
+                  />
+                </Anchor>
+                <Anchor
+                  className="image-link"
+                  to={link.url}
+                  asPath={link.url}
+                  fontSizeVariation="small"
+                  dataLocator="dummy-datalocator"
+                >
                   {link.text}
                 </Anchor>
               </div>

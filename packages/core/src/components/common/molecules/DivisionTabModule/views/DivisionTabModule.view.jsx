@@ -4,36 +4,39 @@ import withStyles from '../../../hoc/withStyles';
 import ButtonTabs from '../../ButtonTabs';
 import { BodyCopy } from '../../../atoms';
 import styles from '../styles/DivisionTabModule.style';
+import { routerPush } from '../../../../../utils';
+
+const onTabChange = url => {
+  routerPush(url && url.replace('/c/', '/c?cid='), url, { shallow: true });
+};
 
 export class DivisionTabModule extends PureComponent {
   static propTypes = {
     divisionTab: PropTypes.shape({}),
-    onTabChange: PropTypes.func,
     className: PropTypes.string,
     asPath: PropTypes.string,
   };
 
   static defaultProps = {
     divisionTab: {},
-    onTabChange: () => {},
     className: '',
     asPath: '',
   };
 
   render() {
-    const { divisionTab, onTabChange, className, asPath } = this.props;
+    const { divisionTab, className, asPath } = this.props;
     return (
       <div className={className}>
         <BodyCopy
-          className={`${className} heading`}
-          fontSize="fs16"
+          className="heading"
+          fontSize={['fs16', 'fs16', 'fs20']}
           fontFamily="secondary"
-          fontWeight="semiBold"
+          fontWeight="semibold"
         >
           {divisionTab.headLine[0].text}
         </BodyCopy>
         <ButtonTabs
-          className={`${className} button-tabs`}
+          className="button-tabs"
           selectedTabId={asPath}
           onTabChange={onTabChange}
           tabs={divisionTab.buttonList}

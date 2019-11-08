@@ -30,13 +30,12 @@ export class PromoModules extends PureComponent {
 
   render() {
     const { onTabChange, className, asPath, plpTopPromos } = this.props;
-    console.log('plpTopPromos ############################# ', plpTopPromos);
 
+    // TODO - Replace this with dynamic loading with story for promo module component - RWD-12792
     const divisionTab = plpTopPromos[2];
     const outfitModule = plpTopPromos[0];
     const jeansModule = plpTopPromos[1];
 
-    console.log('jeansModule', jeansModule);
     return (
       <Col className={className} colSize={{ small: 6, medium: 8, desktop: 12 }}>
         {jeansModule && <JeansModule jeansModule={jeansModule} />}
