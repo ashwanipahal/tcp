@@ -112,7 +112,7 @@ class CouponListSection extends React.Component<Props> {
             })}
           </Col>
         </Row>
-        <div>
+        <div className="cart-show-more-btn">
           {couponList.size >= 5 && (
             <Anchor
               fontSizeVariation="small"

@@ -63,6 +63,7 @@ class PayPalButton extends React.PureComponent {
         width: '100%',
         height: isIOS ? screenHeight - top : screenHeight,
         zIndex: 999,
+        overflow: 'hidden',
       };
     }
     let webURL = '';

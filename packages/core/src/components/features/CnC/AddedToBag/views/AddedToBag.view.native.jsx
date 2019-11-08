@@ -13,6 +13,7 @@ import {
   StyledTouchableOpacity,
   StyledCrossImage,
   StyledBodyWrapper,
+  LoyaltyBannerWrapper,
 } from '../styles/AddedToBag.style.native';
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
@@ -104,33 +105,7 @@ const AddedToBag = ({
         <StyledWrapper>
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
-          <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
-            <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
-            <AddedToBagViewPoints labels={labels} />
-            <AddedToBagActions
-              labels={labels}
-              navigation={navigation}
-              closeModal={onRequestClose}
-              showAddTobag
-              fromAddedToBagModal
-              hideHeader={hide => {
-                navigation.setParams({ headerMode: hide });
-              }}
-            />
-            <BossBanner labels={labels} />
-            {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
-            <StyledAnchorWrapper>
-              <Anchor
-                fontSizeVariation="medium"
-                underline
-                anchorVariation="primary"
-                onPress={handleContinueShopping}
-                noLink
-                to=""
-                dataLocator="addedToBag-continueShopping"
-                text={labels.continueShopping}
-              />
-            </StyledAnchorWrapper>
+          <AddedToBagWrapper>
             <ScrollView>
               <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
               <AddedToBagViewPoints labels={labels} />
@@ -142,7 +117,9 @@ const AddedToBag = ({
                 fromAddedToBagModal
               />
               <BossBanner labels={labels} />
-              {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
+              <LoyaltyBannerWrapper>
+                <LoyaltyBanner pageCategory="isAddedToBagPage" />
+              </LoyaltyBannerWrapper>
               <StyledAnchorWrapper>
                 <Anchor
                   fontSizeVariation="medium"
