@@ -148,10 +148,6 @@ exports[`MyPlaceRewardsCreditCardTile component should render Card tile correctl
       withNoLineHeight={false}
     />
   </Styled(View)>
-  <Connect(ApplyNowModalWrapper)
-    applyNow={false}
-    toggleModalWrapper={[Function]}
-  />
 </Styled(View)>
 `;
 
@@ -284,9 +280,5 @@ exports[`MyPlaceRewardsCreditCardTile component should render empty state correc
       withNoLineHeight={false}
     />
   </Styled(View)>
-  <Connect(ApplyNowModalWrapper)
-    applyNow={false}
-    toggleModalWrapper={[Function]}
-  />
 </Styled(View)>
 `;

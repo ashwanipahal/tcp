@@ -55,7 +55,8 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   startInitiateSearch = () => {
     const { setSearchState, setDataInLocalStorage, redirectToSearchPage } = this.props;
-    const searchText = this.searchInput ? this.searchInput.current.value : '';
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     if (searchText) {
       setDataInLocalStorage(searchText);
       redirectToSearchPage(searchText);
@@ -66,14 +67,21 @@ class SearchLayoutWrapper extends React.PureComponent {
   };
 
   cancelSearchBar = e => {
+    const { startSearch, labels } = this.props;
     e.preventDefault();
-    const searchText = this.searchInput ? this.searchInput.current.value : '';
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     if (searchText) {
       document.getElementById('searchBar-input-form').reset();
       document.getElementById(`${CLOSE_IMAGE}`).classList.remove(`${CLOSE_IMAGE_MOBILE}`);
     }
+    const payload = {
+      searchText: '',
+      slpLabels: labels,
+    };
+    startSearch(payload);
   };
 
   changeCaseFirstLetter = params => {
@@ -84,7 +92,7 @@ class SearchLayoutWrapper extends React.PureComponent {
   };
 
   highlight = inputTextParam => {
-    const text = this.searchInput ? this.searchInput.current.value : '';
+    const text = this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     let { inputText } = inputTextParam;
     inputText = inputText.toLowerCase();
     const index = inputText.indexOf(text.toLowerCase());
@@ -160,7 +168,8 @@ class SearchLayoutWrapper extends React.PureComponent {
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, labels } = this.props;
-    const searchText = this.searchInput ? this.searchInput.current.value : '';
+    const searchText =
+      this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
     const CLOSE_IMAGE_MOBILE = 'close-image-mobile';
     const searchImage = document

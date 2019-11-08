@@ -37,6 +37,8 @@ class MiniBagHeader extends React.Component {
       currentPoints,
       totalRewards,
       isPlcc,
+      isRememberedUser,
+      isUserLoggedIn,
     } = this.props;
 
     const createAccount = 'createAccount';
@@ -49,7 +51,7 @@ class MiniBagHeader extends React.Component {
             className={!userName ? 'subHeaderTextLogin' : 'subHeaderText'}
             colSize={{ small: 4, medium: 6, large: 9 }}
           >
-            {!userName ? (
+            {!userName && !isUserLoggedIn ? (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
                 <Anchor
                   fontSizeVariation="large"
@@ -86,19 +88,21 @@ class MiniBagHeader extends React.Component {
                 >
                   {`${labels.hi}, ${userName} `}
                 </BodyCopy>
-                <BodyCopy
-                  className="pointsRewards"
-                  color={getPointsColor(isPlcc)}
-                  component="span"
-                  fontSize="fs13"
-                  fontFamily="secondary"
-                  fontWeight="semibold"
-                  textAlign="left"
-                >
-                  {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
-                    labels.inRewards
-                  })`}
-                </BodyCopy>
+                {!isRememberedUser && (
+                  <BodyCopy
+                    className="pointsRewards"
+                    color={getPointsColor(isPlcc)}
+                    component="span"
+                    fontSize="fs13"
+                    fontFamily="secondary"
+                    fontWeight="semibold"
+                    textAlign="left"
+                  >
+                    {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
+                      labels.inRewards
+                    })`}
+                  </BodyCopy>
+                )}
               </>
             )}
           </Col>
@@ -145,6 +149,8 @@ MiniBagHeader.propTypes = {
   onRequestClose: PropTypes.func.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isPlcc: PropTypes.bool.isRequired,
+  isRememberedUser: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withStyles(MiniBagHeader, styles);

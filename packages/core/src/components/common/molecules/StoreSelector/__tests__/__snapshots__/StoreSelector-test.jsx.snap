@@ -1951,7 +1951,9 @@ exports[`StoreSelector component should default set title as value for selected 
     padding: ",
               [Function],
               ";
-    background: #ffffff;
+    background: ",
+              [Function],
+              ";
     position: absolute;
     top: -24px;
     left: 50%;
@@ -10831,7 +10833,9 @@ exports[`StoreSelector component should render correctly 1`] = `
     padding: ",
               [Function],
               ";
-    background: #ffffff;
+    background: ",
+              [Function],
+              ";
     position: absolute;
     top: -24px;
     left: 50%;
