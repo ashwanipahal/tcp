@@ -319,7 +319,6 @@ export class BagPage extends React.Component {
     const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
     const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
     const viewHeight = showCondensedHeader ? '74%' : '65%';
-    const isBagPage = true;
     return (
       <>
         <ContainerMain>
@@ -372,7 +371,7 @@ export class BagPage extends React.Component {
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
               {this.renderRecommendations()}
             </MainSection>
-            <QuickViewModal fromBagPage={isBagPage} />
+            <QuickViewModal />
             {this.renderPickupModal()}
           </ScrollViewWrapper>
         </ContainerMain>
