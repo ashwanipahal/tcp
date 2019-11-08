@@ -99,7 +99,7 @@ export class OutfitCarouselModule extends PureComponent {
               </div>
             );
           })}
-          {outfitModule.mediaLinkedList.map(({ image, link }, index) => {
+          {/* {outfitModule.mediaLinkedList.map(({ image, link }, index) => { => TODO - Remove this - it was added just to get more items in carousel
             return (
               <div key={index.toString()}>
                 <Anchor
@@ -127,7 +127,7 @@ export class OutfitCarouselModule extends PureComponent {
                 </Anchor>
               </div>
             );
-          })}
+          })} */}
         </Carousel>
       </div>
     );

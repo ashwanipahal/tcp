@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import OutfitListing from '../views/index';
-import { getLabels, divisionTabs, getOutfitModule, getJeanModule } from './OutfitListing.selectors';
+import getLabels from './OutfitListing.selectors';
 import { getStyliticsProductTabListSelector } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.selector';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
@@ -24,9 +24,8 @@ class OutfitListingContainer extends React.PureComponent {
       longDescription,
       categoryId,
       navigation,
-      divisionTabsModule,
-      outfitModule,
-      jeansModule,
+      plpTopPromos,
+      asPathVal,
     } = this.props;
 
     const outfitPath = asPath || (navigation && navigation.getParam('outfitPath'));
@@ -42,9 +41,8 @@ class OutfitListingContainer extends React.PureComponent {
         categoryId={categoryId}
         asPath={outfitPath}
         navigation={navigation}
-        divisionTab={divisionTabsModule}
-        outfitModule={outfitModule}
-        jeansModule={jeansModule}
+        plpTopPromos={plpTopPromos}
+        asPathVal={asPathVal}
       />
     );
   }
@@ -54,9 +52,6 @@ const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     styliticsProductTabList: getStyliticsProductTabListSelector(state),
-    divisionTabsModule: divisionTabs(state),
-    outfitModule: getOutfitModule(state),
-    jeansModule: getJeanModule(state),
   };
 };
 
@@ -79,9 +74,8 @@ OutfitListingContainer.propTypes = {
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
   navigation: PropTypes.instanceOf(Object),
-  divisionTabsModule: PropTypes.shape({}),
-  outfitModule: PropTypes.shape({}),
-  jeansModule: PropTypes.shape({}),
+  plpTopPromos: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
 };
 
 OutfitListingContainer.defaultProps = {
@@ -93,9 +87,8 @@ OutfitListingContainer.defaultProps = {
   longDescription: '',
   categoryId: '',
   navigation: null,
-  divisionTabsModule: {},
-  outfitModule: {},
-  jeansModule: {},
+  plpTopPromos: {},
+  asPathVal: '',
 };
 
 export default connect(

@@ -162,7 +162,7 @@ class HeaderMiddleNav extends React.PureComponent {
       isRememberedUser,
     } = this.props;
     const { userNameClick, triggerLoginCreateAccount } = this.state;
-    const brand = getBrand() || 'tcp';
+    const brand = getBrand();
     const { cartItemCount, isSearchOpen, isFullSizeSearchModalOpen } = this.state;
     const {
       accessibility: { cartIconButton, closeIconButton, hamburgerMenu } = {},

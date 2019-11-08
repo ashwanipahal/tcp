@@ -295,6 +295,7 @@ const processResponse = (
   try {
     if (res.body.banner) {
       bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+      // TODO - Remove this hardcoding once the real values are available from unbxd
       bannerInfo.val.top[0].val.sub = 'outfitCarousel';
       bannerInfo.val.top[0].val.cid = 'ef8e1162-41eb-4ca0-ad62-cb0833d344c3';
       bannerInfo.val.top[1].val.sub = 'moduleJeans';

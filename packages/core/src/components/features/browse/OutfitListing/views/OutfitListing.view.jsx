@@ -9,11 +9,6 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import ReadMore from '../../ProductListing/molecules/ReadMore/views';
 import SpotlightContainer from '../../ProductListing/molecules/Spotlight/container/Spotlight.container';
 import OutfitTileSection from '../OutfitTileSection.view';
-import { routerPush } from '../../../../../utils';
-
-const onTabChange = url => {
-  routerPush(url && url.replace('/c/', '/c?cid='), url, { shallow: true });
-};
 
 const OutfitListingView = ({
   className,
@@ -26,9 +21,8 @@ const OutfitListingView = ({
   longDescription,
   categoryId,
   asPath,
-  divisionTab,
-  outfitModule,
-  jeansModule,
+  plpTopPromos,
+  asPathVal,
 }) => {
   return (
     <>
@@ -58,13 +52,7 @@ const OutfitListingView = ({
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 10 }}>
             <Row fullBleed>
-              <PromoModules
-                divisionTab={divisionTab}
-                onTabChange={onTabChange}
-                outfitModule={outfitModule}
-                jeansModule={jeansModule}
-                asPath={asPath}
-              />
+              <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
             </Row>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <OutfitTileSection asPath={asPath} labels={labels} outfitDetails={outfitDetails} />
@@ -97,9 +85,8 @@ OutfitListingView.propTypes = {
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
   asPath: PropTypes.string,
-  divisionTab: PropTypes.shape({}),
-  outfitModule: PropTypes.shape({}),
-  jeansModule: PropTypes.shape({}),
+  plpTopPromos: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
 };
 
 OutfitListingView.defaultProps = {
@@ -111,9 +98,8 @@ OutfitListingView.defaultProps = {
   longDescription: '',
   categoryId: '',
   asPath: '',
-  divisionTab: {},
-  outfitModule: {},
-  jeansModule: {},
+  plpTopPromos: {},
+  asPathVal: '',
 };
 
 export default withStyles(OutfitListingView, OutfitListingStyle);
