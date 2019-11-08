@@ -713,16 +713,16 @@ exports[`StoresInternational component StoresInternational component renders cor
       forwardedRef={null}
     >
       <StoresInternational
-        className="sc-jzJRlG dYYPUA test"
+        className="test sc-jzJRlG dYYPUA"
         content="test"
         dataLocator="test"
       >
         <div
-          className="sc-jzJRlG dYYPUA test"
+          className="test sc-jzJRlG dYYPUA"
         >
           <Styled(Anchor)
             anchorVariation="secondary"
-            className="sc-jzJRlG dYYPUA test__backlink"
+            className="test sc-jzJRlG dYYPUA__backlink"
             dataLocator="store_USCanadabacklink"
             fontSizeVariation="xlarge"
             handleLinkClick={[Function]}
@@ -731,7 +731,7 @@ exports[`StoresInternational component StoresInternational component renders cor
           >
             <StyledComponent
               anchorVariation="secondary"
-              className="sc-jzJRlG dYYPUA test__backlink"
+              className="test sc-jzJRlG dYYPUA__backlink"
               dataLocator="store_USCanadabacklink"
               fontSizeVariation="xlarge"
               forwardedComponent={
@@ -839,7 +839,7 @@ exports[`StoresInternational component StoresInternational component renders cor
                 IsSlugPathAdded={false}
                 anchorVariation="secondary"
                 asPath=""
-                className="sc-bwzfXH eZrbaF sc-jzJRlG dYYPUA test__backlink"
+                className="test sc-jzJRlG dYYPUA__backlink sc-bwzfXH eZrbaF"
                 dataLocator="store_USCanadabacklink"
                 fontSizeVariation="xlarge"
                 handleLinkClick={[Function]}
@@ -853,7 +853,7 @@ exports[`StoresInternational component StoresInternational component renders cor
               >
                 <a
                   anchorVariation="secondary"
-                  className="sc-bwzfXH eZrbaF sc-jzJRlG dYYPUA test__backlink"
+                  className="test sc-jzJRlG dYYPUA__backlink sc-bwzfXH eZrbaF"
                   data-locator="store_USCanadabacklink"
                   fontSizeVariation="xlarge"
                   href=""
