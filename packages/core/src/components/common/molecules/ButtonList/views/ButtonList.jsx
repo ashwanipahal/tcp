@@ -133,15 +133,11 @@ const ButtonList = props => {
     dataLocatorDivisionImages,
     dataLocatorTextCta,
     fill,
-    overwriteCtaVariation,
+    btnCompClass,
   } = props;
 
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
   const { compClassName, ctaInfo, compWrapper, noCurveMobile } = buttonListConfig;
-
-  if (overwriteCtaVariation) {
-    ctaInfo.ctaVariation = overwriteCtaVariation;
-  }
 
   let Component = ButtonCTA;
   let dataLocator = dataLocatorTextCta;
@@ -161,7 +157,7 @@ const ButtonList = props => {
         {buttonsData.map((item, index) => {
           const { button = {}, image } = item;
           const compProps = {
-            className: `${compClassName}-class`,
+            className: `${compClassName}-class ${btnCompClass}`,
             ctaInfo: {
               ...ctaInfo,
               link: button,
@@ -205,7 +201,7 @@ ButtonList.defaultProps = {
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',
   fill: '',
-  overwriteCtaVariation: '',
+  btnCompClass: '',
 };
 
 ButtonList.propTypes = {
@@ -228,7 +224,7 @@ ButtonList.propTypes = {
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,
   fill: PropTypes.string,
-  overwriteCtaVariation: PropTypes.string,
+  btnCompClass: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ButtonList), ButtonListStyle);
