@@ -7,13 +7,17 @@ import { Image, BodyCopy } from '../../../../../../common/atoms';
 import Styles from '../styles/CreateAccountTopSection.style';
 import { getIconPath, isCanada } from '../../../../../../../utils';
 
+/**
+ * @param {string} props : props for CustomIcon
+ * @return {JSX} IconClass : Return jsx icon component
+ * @desc This method based on the props generate icon component.
+ */
+const showForgotPassword = showForgotPasswordForm => {
+  showForgotPasswordForm();
+};
+
 const CreateAccountTopSection = props => {
-  const { labels } = props;
-  const showForgotPasswordFormFn = e => {
-    e.preventDefault();
-    const { showForgotPasswordForm } = props;
-    showForgotPasswordForm();
-  };
+  const { labels, showForgotPasswordForm } = props;
   return (
     <BodyCopy component="div" className="elem-pr-XS elem-pl-XS">
       {!isCanada() && (
@@ -69,7 +73,14 @@ const CreateAccountTopSection = props => {
           <p>{getLabelValue(labels, 'lbl_createAccount_signedUp', 'registration')}</p>
           <p>{getLabelValue(labels, 'lbl_createAccount_onlineAccCreated', 'registration')}</p>
           <BodyCopy component="div" fontFamily="secondary" fontSize="fs12" textAlign="center">
-            <Anchor underline className="reset-password" onClick={showForgotPasswordFormFn}>
+            <Anchor
+              underline
+              className="reset-password"
+              onClick={e => {
+                e.preventDefault();
+                showForgotPassword(showForgotPasswordForm);
+              }}
+            >
               {getLabelValue(labels, 'lbl_createAccount_resetPassword', 'registration')}
             </Anchor>
           </BodyCopy>
