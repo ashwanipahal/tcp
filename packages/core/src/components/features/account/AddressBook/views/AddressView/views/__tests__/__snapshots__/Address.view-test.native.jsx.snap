@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressView should render correctly 1`] = `
+<View
+  addressLabels={
+    Object {
+      "addNewAddress": "",
+      "verifyAddress": "",
+    }
+  }
+  addresses={
+    Immutable.List [
+      Immutable.Map {
+        "addressId": "12345",
+      },
+    ]
+  }
+  deleteModalMountedState={false}
+  labels={
+    Object {
+      "addressBook": Object {
+        "ACC_LBL_ADDRESS_BOOK_HEADING": "",
+        "ACC_LBL_ADD_NEW_ADDRESS_CTA": "",
+        "ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG": "",
+        "ACC_LBL_CREATE_ADDRESS_BOOK_MSG": "",
+      },
+    }
+  }
+  onDefaultShippingAddressClick={[Function]}
+  setDeleteModalMountState={[Function]}
+  verificationResult=""
+>
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(Text) />
+    <Styled(View) />
+    <Styled(View) />
+    <AddressList
+      addresses={
+        Immutable.List [
+          Immutable.Map {
+            "addressId": "12345",
+          },
+        ]
+      }
+      labels={
+        Object {
+          "addressBook": Object {
+            "ACC_LBL_ADDRESS_BOOK_HEADING": "",
+            "ACC_LBL_ADD_NEW_ADDRESS_CTA": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG": "",
+            "ACC_LBL_CREATE_ADDRESS_BOOK_MSG": "",
+          },
+        }
+      }
+      onDefaultShippingAddressClick={[Function]}
+      setDeleteModalMountState={[Function]}
+      setSelectedAddress={[Function]}
+      toggleAddAddressModal={[Function]}
+    />
+  </ScrollViewMock>
+</View>
+`;
+
+exports[`AddressView should render correctly without any address 1`] = `
+<View
+  addressLabels={
+    Object {
+      "addNewAddress": "",
+      "verifyAddress": "",
+    }
+  }
+  addresses={Immutable.List []}
+  deleteModalMountedState={false}
+  labels={
+    Object {
+      "addressBook": Object {
+        "ACC_LBL_ADDRESS_BOOK_HEADING": "address book",
+        "ACC_LBL_ADD_NEW_ADDRESS_CTA": "add new address",
+      },
+    }
+  }
+  onDefaultShippingAddressClick={[Function]}
+  setDeleteModalMountState={[Function]}
+  verificationResult=""
+>
+  <ScrollViewMock
+    keyboardShouldPersistTaps="handled"
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text="address book"
+        textDecoration={null}
+      />
+    </Styled(Text)>
+    <Styled(View) />
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="black"
+          dataLocator=""
+          fontSize="fs14"
+          fontWeight="semibold"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          text="ACC_LBL_CREATE_ADDRESS_BOOK_MSG"
+          textDecoration={null}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="black"
+          dataLocator=""
+          fontSize="fs13"
+          fontWeight="regular"
+          margin={null}
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+          numberOfLines={null}
+          text="ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG"
+          textDecoration={null}
+        />
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color="white"
+        customStyle={Object {}}
+        customTextStyle={null}
+        data-locator="addressbook-addnewaddress"
+        disableButton={false}
+        fill="BLUE"
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
+        locator=""
+        navigation={Object {}}
+        onPress={[Function]}
+        paddings="12px 32px 12px 32px"
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
+        text="add new address"
+        theme={Object {}}
+        url=""
+        withNoLineHeight={false}
+      />
+    </Styled(View)>
+  </ScrollViewMock>
+</View>
+`;
