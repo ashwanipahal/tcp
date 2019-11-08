@@ -50,6 +50,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           navigation={[MockFunction]}
+          pageView="myBag"
         />
       </Styled(View)>
       <Connect(QuickViewModalContainer)
@@ -246,6 +247,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           navigation={[MockFunction]}
+          pageView="myBag"
         />
         <Styled(View)>
           <Connect(OrderLedgerContainer)
