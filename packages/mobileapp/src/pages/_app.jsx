@@ -12,7 +12,7 @@ import {
   switchAPIConfig,
   resetApiConfig,
   isAndroid,
-  isGymboree,
+  getAPIConfig,
 } from '@tcp/core/src/utils';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
@@ -26,6 +26,7 @@ import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon.container';
 import { updateBrandName } from '../utils/utils';
+import constants from '../constants/config.constants';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
@@ -80,10 +81,9 @@ export class App extends React.PureComponent {
 
   setCooKies = () => {
     const date = new Date();
-
-    const daysAlive = 365;
+    const daysAlive = constants.DAYS_ALIVE;
     const expiration = date.setTime(date.getTime() + daysAlive * 24 * 60 * 60 * 1000);
-    const host = isGymboree() ? '.gymboree.com' : '.childrensplace.com';
+    const { host } = getAPIConfig();
 
     AsyncStorage.getAllKeys().then(keys => {
       AsyncStorage.multiGet(keys).then(items => {
