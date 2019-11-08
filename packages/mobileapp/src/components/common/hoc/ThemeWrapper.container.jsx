@@ -26,22 +26,21 @@ export class ThemeWrapper extends React.PureComponent {
     const { appType: prevAppType } = this.props;
     const {
       appType,
-      pageParam,
+      appParms,
       isLoaded,
       switchBrand,
       resetReduxStoreData,
       updateAppTypeHandler,
     } = nextProps;
-
     // update brand name in utils when app type is changed
     if (appType !== prevAppType && switchBrand) {
       // brand switch with product redirect
-      if (isLoaded) {
-        NavigationService.navigateToProductPage(pageParam);
-      }
       resetReduxStoreData();
       updateAppTypeHandler(appType);
       switchBrand(appType);
+      if (isLoaded) {
+        NavigationService.navigateToProductPage(appParms);
+      }
     }
   }
 
@@ -74,7 +73,7 @@ ThemeWrapper.propTypes = {
   updateAppTypeHandler: PropTypes.func,
   switchBrand: PropTypes.func,
   resetReduxStoreData: PropTypes.func,
-  pageParam: PropTypes.shape({}),
+  appParms: PropTypes.shape({}),
   isLoaded: PropTypes.bool,
 };
 
@@ -82,7 +81,7 @@ ThemeWrapper.defaultProps = {
   updateAppTypeHandler: () => {},
   switchBrand: null,
   resetReduxStoreData: null,
-  pageParam: {},
+  appParms: {},
   isLoaded: false,
 };
 

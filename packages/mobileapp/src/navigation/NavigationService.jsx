@@ -21,7 +21,7 @@ const navigateToProductPage = params => {
         ],
       })
     );
-  }, 10000);
+  }, 1000);
 };
 
 export default {
