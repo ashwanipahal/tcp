@@ -155,5 +155,23 @@ export default function create(store) {
         return store.getState().ProductListing.get('totalProductsCount');
       },
     },
+    cartType: {
+      get() {
+        const orderDetails = store.getState().CartPageReducer.get('orderDetails');
+        let typeCart = 'standard';
+        const isBopisOrder = orderDetails.get('isBopisOrder');
+        const isBossOrder = orderDetails.get('isBossOrder');
+        const isPickupOrder = orderDetails.get('isPickupOrder');
+        const isShippingOrder = orderDetails.get('isShippingOrder');
+        if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
+          typeCart = 'mix';
+        } else if (isBopisOrder && !isBossOrder) {
+          typeCart = 'bopis';
+        } else if (isBossOrder && !isBopisOrder) {
+          typeCart = 'boss';
+        }
+        return typeCart;
+      },
+    },
   });
 }
