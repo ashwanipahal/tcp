@@ -100,6 +100,7 @@ export const CartItemTileContainer = ({
   autoSwitchPickupItemInCart,
   navigation,
   disableProductRedirect,
+  closeMiniBag,
 }) => (
   <CartItemTile
     labels={labels}
@@ -148,6 +149,7 @@ export const CartItemTileContainer = ({
     autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
     navigation={navigation}
     disableProductRedirect={disableProductRedirect}
+    closeMiniBag={closeMiniBag}
   />
 );
 
