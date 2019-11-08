@@ -12,20 +12,6 @@ const isAnalyzeBundles = process.env.ANALYZE_BUNDLES === 'true';
 
 let buildConfig = withTM({
   generateBuildId: () => nextBuildId({ dir: __dirname }),
-  analyzeServer: process.env.NODE_ENV === 'production',
-  analyzeBrowser: process.env.NODE_ENV === 'production',
-  bundleAnalyzerConfig: {
-    server: {
-      analyzerMode: 'static',
-      reportFilename: './bundle-sizes/bundles/server.html',
-      openAnalyzer: false,
-    },
-    browser: {
-      analyzerMode: 'static',
-      reportFilename: './bundle-sizes/bundles/client.html',
-      openAnalyzer: false,
-    },
-  },
   transpileModules: ['@tcp', '../core/+/*.+.js'],
   useFileSystemPublicRoutes: false,
   // This is to supply build-time environment vars to both server and client files:
@@ -80,7 +66,23 @@ let buildConfig = withTM({
 });
 
 if (isProductionBuild && isSourceMapsEnabled) {
-  buildConfig = withSourceMaps(buildConfig);
+  buildConfig = withSourceMaps({
+    analyzeServer: process.env.NODE_ENV === 'production',
+    analyzeBrowser: process.env.NODE_ENV === 'production',
+    bundleAnalyzerConfig: {
+      server: {
+        analyzerMode: 'static',
+        reportFilename: './bundle-sizes/bundles/server.html',
+        openAnalyzer: false,
+      },
+      browser: {
+        analyzerMode: 'static',
+        reportFilename: './bundle-sizes/bundles/client.html',
+        openAnalyzer: false,
+      },
+    },
+    ...buildConfig,
+  });
 }
 
 if (isAnalyzeBundles) {
