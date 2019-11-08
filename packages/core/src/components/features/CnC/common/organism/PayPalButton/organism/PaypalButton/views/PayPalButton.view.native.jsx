@@ -49,7 +49,7 @@ class PayPalButton extends React.PureComponent {
       height: 42,
       width: 150,
       flex: 1,
-      overflow:'hidden',
+      overflow: 'hidden',
     };
 
     const { showAsModal } = this.state;
@@ -60,7 +60,7 @@ class PayPalButton extends React.PureComponent {
         width: '100%',
         height: 800,
         zIndex: 999,
-        overflow:'hidden',
+        overflow: 'hidden',
       };
     }
     let webURL = '';
@@ -73,7 +73,7 @@ class PayPalButton extends React.PureComponent {
     return getPayPalSettings && getPayPalSettings.paypalInContextToken ? (
       <View style={{ ...styles }}>
         <WebView
-          scalesPageToFit
+          scalesPageToFit={false}
           originWhitelist={['*']}
           source={{
             uri: webURL,
