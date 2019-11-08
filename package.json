@@ -131,6 +131,7 @@
     "@fabulas/astly": "^0.0.12",
     "@sitespeed.io/plugin-lighthouse": "sitespeedio/plugin-lighthouse",
     "@zeit/next-bundle-analyzer": "^0.1.2",
+    "@zeit/next-source-maps": "^0.0.3",
     "babel-cli": "^6.26.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
