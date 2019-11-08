@@ -18,6 +18,10 @@ const buildQuery = ({ brand, country, channel, lang }) => `
         sizesRange {
           text
         }
+        promoBadge {
+          text
+          style
+        }
         categoryLayout {
           name
           columns {
@@ -46,6 +50,20 @@ const buildQuery = ({ brand, country, channel, lang }) => `
                 title
                 text
                 target
+              }
+            }
+            textBanner {
+              link {
+                url
+                text
+                title
+                target
+                external
+                action
+              }
+              textItems {
+                text
+                style
               }
             }
           }
