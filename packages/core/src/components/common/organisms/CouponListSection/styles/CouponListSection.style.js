@@ -23,6 +23,9 @@ const styles = css`
     width: ${props => props.theme.spacing.ELEM_SPACING.MED};
     height: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+  .cart-show-more-btn {
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  }
 `;
 
 export default styles;

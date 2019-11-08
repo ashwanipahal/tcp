@@ -12,6 +12,7 @@ describe('getOrderDetailsListSaga saga', () => {
       gen.next();
       gen.next();
       gen.next();
+      gen.next();
 
       const OrderDetailsList = {
         getOrderInfoByOrderId: '',
@@ -24,6 +25,7 @@ describe('getOrderDetailsListSaga saga', () => {
 
     it('should dispatch setOrderDetailInfo action for response if action is track order', () => {
       gen = getOrderDetailsListSaga({ payload: { emailAddress: 'test@test.com' } });
+      gen.next();
       gen.next();
       gen.next();
       gen.next();

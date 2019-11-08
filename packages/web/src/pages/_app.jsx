@@ -27,10 +27,7 @@ import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModa
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
-import {
-  HotfixPropsContext,
-  HotfixBrowserContext,
-} from '@tcp/core/src/components/common/context/HotfixContext';
+import { HotfixBrowserContext } from '@tcp/core/src/components/common/context/HotfixContext';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -66,7 +63,7 @@ class TCPWebApp extends App {
     } catch (e) {
       globalProps = {};
     }
-    const pageProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
+    const pageProps = await TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
       pageProps,
     };
@@ -297,16 +294,15 @@ class TCPWebApp extends App {
               <Header />
               <CheckoutHeader />
               <Loader />
-              <div className="content-wrapper">
-                <div id="overlayWrapper">
-                  <div id="overlayComponent" />
-                  <HotfixPropsContext.Provider value={global.TCP_HOTFIX_PROPS || {}}>
-                    <HotfixBrowserContext.Provider value={global.TCP_HOTFIX_BROWSER || {}}>
-                      <Component {...pageProps} />
-                    </HotfixBrowserContext.Provider>
-                  </HotfixPropsContext.Provider>
+              {/* Provider for global hotfixes object */}
+              <HotfixBrowserContext.Provider value={global.TCP_HOTFIX_BROWSER || {}}>
+                <div className="content-wrapper">
+                  <div id="overlayWrapper">
+                    <div id="overlayComponent" />
+                    <Component {...pageProps} pageName={componentPageName} />
+                  </div>
                 </div>
-              </div>
+              </HotfixBrowserContext.Provider>
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />

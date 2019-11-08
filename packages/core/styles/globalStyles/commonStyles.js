@@ -192,13 +192,13 @@ export default css`
     @media ${mediaQuery.smallOnly} {
       height: 200px;
     }
-    @media${mediaQuery.medium} and ${mediaQuery.mediumMax} {
+    @media ${mediaQuery.medium} and ${mediaQuery.mediumMax} {
       height: 230px;
     }
-    @media ${mediaQuery.medium} and ${mediaQuery.mediumMax}  and (orientation : landscape) {
+    @media ${mediaQuery.medium} and ${mediaQuery.mediumMax}  and (orientation: landscape) {
       height: 340px;
     }
-    
+
     height: 320px;
     background: ${props => props.theme.colorPalette.gray[500]};
     display: block;

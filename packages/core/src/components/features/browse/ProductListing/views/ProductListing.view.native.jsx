@@ -205,3 +205,4 @@ ProductListView.defaultProps = {
 };
 
 export default withStyles(ProductListView, styles);
+export { ProductListView as ProductListViewVanilla };
