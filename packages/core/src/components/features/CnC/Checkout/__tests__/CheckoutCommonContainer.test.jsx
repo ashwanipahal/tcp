@@ -29,7 +29,6 @@ describe('Bag page Container', () => {
     componentInstance.componentDidMount();
     componentInstance.componentDidUpdate({ isRegisteredUserCallDone: 'false' });
     componentInstance.formatPayload({});
-    componentInstance.intiSectionPage();
     componentInstance.shippingDidMount();
     componentInstance.billingDidMount();
     componentInstance.reviewDidMount();
