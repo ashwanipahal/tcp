@@ -29,6 +29,14 @@ class QuickViewModal extends React.Component {
     clearMultipleItemsAddToBagError();
   };
 
+  getHeadingText = () => {
+    const { quickViewLabels, fromBagPage, isLoading } = this.props;
+    if (isLoading) {
+      return ' ';
+    }
+    return fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag;
+  };
+
   handleMultipleItemsAddToBagClick(e) {
     e.preventDefault();
     const productItemsInfo = [];
@@ -144,14 +152,7 @@ class QuickViewModal extends React.Component {
   };
 
   render() {
-    const {
-      isModalOpen,
-      productInfo,
-      isMultiItemQVModal,
-      quickViewLabels,
-      fromBagPage,
-      isLoading,
-    } = this.props;
+    const { isModalOpen, productInfo, isMultiItemQVModal, fromBagPage, isLoading } = this.props;
 
     const product = productInfo && productInfo.length && productInfo[0].product;
     const currentColorEntry =
@@ -167,7 +168,7 @@ class QuickViewModal extends React.Component {
             dataLocator={getLocator('quick_view_modal')}
             dataLocatorHeader={getLocator('quick_view_add_to_bag_header')}
             closeIconDataLocator={getLocator('quick_view_icon_btn')}
-            heading={fromBagPage ? quickViewLabels.editItem : quickViewLabels.addToBag}
+            heading={this.getHeadingText()}
             widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
             heightConfig={{ height: '95%' }}
             fixedWidth
