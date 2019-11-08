@@ -65,6 +65,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
   };
 
   renderApplyNowLink = labels => {
+    const { openApplyNowModal, navigation } = this.props;
     return (
       <Anchor
         className="applyNow"
@@ -72,11 +73,16 @@ class LoyaltyFooterSection extends PureComponent<Props> {
         anchorVariation="primary"
         text={labels.applyNow}
         underline
+        onPress={() => {
+          navigation.navigate('ApplyNow');
+          openApplyNowModal({ isModalOpen: false, isPLCCModalOpen: true });
+        }}
       />
     );
   };
 
   renderLearnMoreLink = labels => {
+    const { openApplyNowModal, navigation } = this.props;
     return (
       <Anchor
         className="learnMore"
@@ -84,6 +90,10 @@ class LoyaltyFooterSection extends PureComponent<Props> {
         anchorVariation="primary"
         text={labels.learnMore}
         underline
+        onPress={() => {
+          navigation.navigate('ApplyNow');
+          openApplyNowModal({ isModalOpen: true });
+        }}
       />
     );
   };
@@ -135,8 +145,9 @@ class LoyaltyFooterSection extends PureComponent<Props> {
   };
 
   applyNowLearnMoreLinks = labels => {
+    const { isProductDetailView } = this.props;
     return (
-      <FooterLinksSection>
+      <FooterLinksSection isProductDetailView={isProductDetailView}>
         {this.renderApplyNowLink(labels)}
         <LearnMoreWrapper>{this.renderLearnMoreLink(labels)}</LearnMoreWrapper>
       </FooterLinksSection>
@@ -144,12 +155,18 @@ class LoyaltyFooterSection extends PureComponent<Props> {
   };
 
   LearnMoreLink = labels => {
-    return <FooterLinksSection>{this.renderLearnMoreLink(labels)}</FooterLinksSection>;
+    const { isProductDetailView } = this.props;
+    return (
+      <FooterLinksSection isProductDetailView={isProductDetailView}>
+        {this.renderLearnMoreLink(labels)}
+      </FooterLinksSection>
+    );
   };
 
   createAccLogInLinks = labels => {
+    const { isProductDetailView } = this.props;
     return (
-      <FooterLinksSection>
+      <FooterLinksSection isProductDetailView={isProductDetailView}>
         {this.renderCreateAccountLink(labels)}
         <LearnMoreWrapper>{this.renderLoginLink(labels)}</LearnMoreWrapper>
       </FooterLinksSection>
@@ -223,7 +240,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
     } = this.props;
     const { showModal, getComponentId, modalHeaderLbl, horizontalBar } = this.state;
     return (
-      <View className={`${className} footerWrapper`}>
+      <View className={`${className} footer-wrapper`}>
         {isProductDetailView &&
           this.productDetailViewFooter(labels, isProductDetailView, isGuest, isPlcc)}
         {isAddedToBagPage && this.addedToBagPageLinks(labels, isGuest, isPlcc)}

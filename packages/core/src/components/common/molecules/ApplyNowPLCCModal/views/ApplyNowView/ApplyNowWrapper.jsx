@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '../../../../../../utils';
-import { Anchor } from '../../../../atoms';
 
 import StyledApplyNowModal from '../../molecules/ApplyNowModal/views/ApplyNowModal.view';
 
@@ -32,26 +30,20 @@ class ApplyNowModalWrapper extends React.Component {
 
   openModal = e => {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, resetPLCCApplicationStatus } = this.props;
     toggleModal({ isModalOpen: true });
+    resetPLCCApplicationStatus({ status: null });
   };
 
   openPLCCModal = e => {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, resetPLCCApplicationStatus } = this.props;
     toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
+    resetPLCCApplicationStatus({ status: null });
   };
 
   render() {
-    const {
-      className,
-      labels,
-      isModalOpen,
-      isPLCCModalOpen,
-      plccBenefitsList,
-      labelText,
-      noLink,
-    } = this.props;
+    const { className, labels, isModalOpen, isPLCCModalOpen, plccBenefitsList } = this.props;
     return (
       <div className={className}>
         <React.Fragment>
@@ -67,15 +59,6 @@ class ApplyNowModalWrapper extends React.Component {
             />
           ) : null}
         </React.Fragment>
-        {!noLink && (
-          <Anchor
-            fontSizeVariation="medium"
-            anchorVariation="primary"
-            text={labelText || getLabelValue(labels, 'lbl_PLCCModal_applyNowLink')}
-            onClick={this.openModal}
-            underline
-          />
-        )}
       </div>
     );
   }
@@ -92,13 +75,6 @@ ApplyNowModalWrapper.propTypes = {
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   fetchModuleXContent: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,
-  labelText: PropTypes.string,
-  noLink: PropTypes.bool,
-};
-
-ApplyNowModalWrapper.defaultProps = {
-  labelText: '',
-  noLink: false,
 };
 
 export default ApplyNowModalWrapper;

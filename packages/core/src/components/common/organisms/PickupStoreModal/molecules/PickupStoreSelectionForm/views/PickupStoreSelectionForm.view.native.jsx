@@ -7,9 +7,9 @@ import { reduxForm, Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { isAndroid } from '../../../../../../../utils/index.native';
 import { Button } from '../../../../../atoms';
 import withStyles from '../../../../../hoc/withStyles';
 import PickupStoreListContainer from '../../PickupStoreList';
@@ -107,25 +107,14 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       pristine,
       submitting,
       storeSearchError,
-      PickupSkuFormValues,
-      colorFitsSizesMap,
       isSkuResolved,
       onCloseClick,
       handleSubmit,
       onSearch,
+      PickupSkuFormValues,
       selectedValue,
     } = this.props;
-
-    let disableButton = pristine;
-
-    const formExists = Object.entries(PickupSkuFormValues).length === 0;
-
-    const { color, Fit, Size } = PickupSkuFormValues;
-
-    const enableButton = formExists ? pristine : true;
-
-    const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable ? !sizeAvailable : enableButton;
+    const disableButton = Object.values(PickupSkuFormValues).includes('');
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
@@ -161,7 +150,7 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
           </DistanceCol>
         </Row>
         <Button
-          margin="16px 0 20px 0"
+          margin={isAndroid() ? '16px 0 35px 0' : '16px 0 25px 0'}
           color="white"
           fill="BLUE"
           text="Search"

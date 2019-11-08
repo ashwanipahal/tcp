@@ -129,8 +129,8 @@ const RecommendationsAbstractor = {
         mbox: 'target-global-mbox',
         requestLocation,
         mboxParameters: {
-          'entity.categoryId': categoryName || 'boysskinnychinopants', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
-          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '2057032_NN_US', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
+          'entity.categoryId': categoryName || '',
+          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '',
           pageType,
           region,
         },

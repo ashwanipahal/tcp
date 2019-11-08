@@ -28,6 +28,7 @@ const getBagPageLabels = state => {
         lbl_emptyBag_helperMsg: helperMsg,
         lbl_orderledger_total: totalLabel,
         lbl_recently_viewed: recentlyViewed,
+        lbl_emptyBag_applyNow: applyNow,
       } = {},
     } = {},
     global: {
@@ -76,6 +77,7 @@ const getBagPageLabels = state => {
     sflDeleteSuccess,
     totalLabel,
     recentlyViewed,
+    applyNow,
   };
 };
 
@@ -235,6 +237,10 @@ const getBagStickyHeaderInterval = state => {
   );
 };
 
+const getIsPayPalHidden = state => {
+  return state.CartPageReducer.getIn(['paypalBtnHidden']);
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -264,4 +270,5 @@ export default {
   getIsPayPalEnabled,
   getBagStickyHeaderInterval,
   getPayPalWebViewStatus,
+  getIsPayPalHidden,
 };

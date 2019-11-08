@@ -9,7 +9,6 @@ export const commonSearchBarStyles = css`
     background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
     color: ${props => props.theme.colorPalette.gray[800]};
     border-color: unset;
-    margin-right: 5px;
   }
 
   .searchBar-input-wrapper {
@@ -46,7 +45,7 @@ export const commonSearchBarStyles = css`
     width: 100%;
     height: 40px;
     display: inline-block;
-
+    overflow: unset;
     ${props =>
       props.fromCondensedHeader
         ? `
@@ -228,7 +227,6 @@ export const mediumOnlyStyles = css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: ${props => props.theme.colorPalette.gray[800]};
       border-color: unset;
-      margin-right: 10px;
       margin-left: 53px;
     }
 

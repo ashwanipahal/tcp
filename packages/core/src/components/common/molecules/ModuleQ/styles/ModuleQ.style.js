@@ -13,7 +13,6 @@ export default css`
   &.yellow-bg {
     background-image: radial-gradient(circle at 61% 22%, #fff, #f1f4a2);
   }
-
   .moduleQ-promo-header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
@@ -78,10 +77,15 @@ export default css`
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.15);
     margin-bottom: 9px;
-    padding: 16px 16px 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
       padding: 20px 20px 0;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
+        ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
     }
   }
 
@@ -102,7 +106,7 @@ export default css`
     box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    padding: 5px 4px;
     width: 32%;
     height: 100px;
     text-align: center;
@@ -115,7 +119,6 @@ export default css`
 
   .looks-image-last {
     font-family: ${props => props.theme.typography.fonts.secondary};
-    font-size: ${props => props.theme.fonts.fontSize.fs22};
     font-weight: 800;
     text-align: center;
     color: ${props => props.theme.colorPalette.gray['900']};
@@ -125,6 +128,13 @@ export default css`
     p {
       text-align: center;
       margin: 0 auto;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
+      @media ${props => props.theme.mediaQuery.medium} {
+        font-size: ${props => props.theme.typography.fontSizes.fs16};
+      }
+      @media ${props => props.theme.mediaQuery.large} {
+        font-size: ${props => props.theme.typography.fontSizes.fs18};
+      }
     }
   }
 
@@ -132,13 +142,19 @@ export default css`
     .looks-image {
       width: 32%;
       height: 86px;
-
+      padding: 7px 6px;
       @media ${props => props.theme.mediaQuery.medium} {
         height: 138px;
       }
 
       @media ${props => props.theme.mediaQuery.large} {
         height: 140px;
+      }
+    }
+    .looks-image-last p {
+      font-size: ${props => props.theme.typography.fontSizes.fs22};
+      @media ${props => props.theme.mediaQuery.large} {
+        font-size: ${props => props.theme.typography.fontSizes.fs24};
       }
     }
   }

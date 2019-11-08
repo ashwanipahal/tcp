@@ -38,11 +38,11 @@ export default css`
             ? `
           @media ${props.theme.mediaQuery[`${key}Only`]} {
             padding: 0;
-            margin-bottom: 12px;
+            margin-top: 10px;
           }`
             : `
             padding: 0;
-            margin-bottom: 12px;`
+            margin-top: 10px;`
         )}
     }
   }
@@ -81,7 +81,7 @@ export default css`
       margin-bottom: 10px;
     }
     .footer_top__signup_form_row{
-      align-items: center;
+      align-items: normal;
     }
   }
 

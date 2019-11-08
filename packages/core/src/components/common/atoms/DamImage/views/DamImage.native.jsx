@@ -39,7 +39,7 @@ const DamImage = (props: Props) => {
     swatchConfig,
     ...otherProps
   } = props;
-  const config = swatchConfig || 'w_768';
+  const config = swatchConfig || imgConfig || 'w_768';
   const cropVal = crop || '';
   const urlVal = url || '';
   const ImageComponent = host ? LazyloadImage : Image;
@@ -59,7 +59,6 @@ const DamImage = (props: Props) => {
       ? `${assetHost}/${config}/${productAssetPath}/${urlVal}`
       : cropImageUrl(urlVal, cropVal, namedTransformation),
   };
-
   return (
     <ImageComponent
       {...otherProps}

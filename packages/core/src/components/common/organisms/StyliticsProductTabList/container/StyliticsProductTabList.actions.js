@@ -28,6 +28,13 @@ export const styliticsProductTabListDataFail = (payload = {}) => {
   };
 };
 
+export const isFetchingDataForOutfit = (payload = false) => {
+  return {
+    type: constants.IS_FETCHING_DATA_FOR_OUTFIT,
+    payload,
+  };
+};
+
 export default {
   styliticsProductTabListDataReq,
   styliticsProductTabListDataReqforOutfit,
