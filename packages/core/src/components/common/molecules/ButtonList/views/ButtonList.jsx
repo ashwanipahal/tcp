@@ -139,7 +139,9 @@ const ButtonList = props => {
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
   const { compClassName, ctaInfo, compWrapper, noCurveMobile } = buttonListConfig;
 
-  ctaInfo.ctaVariation = overwriteCtaVariation || ctaInfo.ctaVariation;
+  if (overwriteCtaVariation) {
+    ctaInfo.ctaVariation = overwriteCtaVariation;
+  }
 
   let Component = ButtonCTA;
   let dataLocator = dataLocatorTextCta;
