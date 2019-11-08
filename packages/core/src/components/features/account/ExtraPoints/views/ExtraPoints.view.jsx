@@ -13,6 +13,8 @@ import internalEndpoints from '../../common/internalEndpoints';
 import FormPageHeadingComponent from '../../common/molecule/FormPageHeading';
 import DetailedEarnExtraPointsTile from '../../common/molecule/DetailedEarnExtraPointsTile';
 import DetailedEarnExtraPointsSingleTileComponent from '../../common/molecule/DetailedEarnExtraPointsTile/views/DetailedEarnExtraPointsSingleTile.view';
+import ExtraPointsSkeleton from '../skeleton/ExtraPointsSkeleton.view';
+import PromoBannerSkeleton from '../skeleton/PromoBannerSkeleton.view';
 /**
  * This function getNotificationMarkup use for return the notification message
  * can be passed in the component.
@@ -67,7 +69,10 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
  * @param    {[Object]}  promoListData tile data from graphQL
  * @return   {[Object]} JSX of the component
  */
-const getPromoTileData = promoListData => {
+const getPromoTileData = (promoListData, isPromoListFetching) => {
+  if (isPromoListFetching) {
+    return <PromoBannerSkeleton />;
+  }
   return promoListData ? (
     <Row fullBleed>
       {promoListData.map((item, index) => {
@@ -98,6 +103,100 @@ const getPromoTileData = promoListData => {
     ''
   );
 };
+
+/**
+ * @function return  Used to render the promolist tiles
+ * @param    {[Object]}  waysToEarn tile data from graphQL
+ * @param    {[Object]}  onViewActivityDetails activity data
+ * @param    {[Object]}  fistRowItem tile data from first row
+ * @param    {[Object]}  secondRowItem tile data from second row
+ * @param    {[Object]}  labels tile data from graphQL
+ * @param    {[Boolean]}  isEarnExtraPointsFetching fetching state
+ * @return   {[Object]} JSX of the component
+ */
+const getEarnExtraPointTile = (
+  waysToEarn,
+  onViewActivityDetails,
+  fistRowItem,
+  secondRowItem,
+  labels,
+  isEarnExtraPointsFetching
+) => {
+  if (isEarnExtraPointsFetching) {
+    return <ExtraPointsSkeleton />;
+  }
+  return (
+    waysToEarn &&
+    waysToEarn.length && (
+      <>
+        <BodyCopy
+          fontSize="fs18"
+          fontWeight="semibold"
+          textAlign="center"
+          fontFamily="secondary"
+          className="morePointsWrapper"
+          data-locator="earnextrapoints-morePointsText"
+        >
+          {getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
+        </BodyCopy>
+        <Row fullBleed className="elem-mt-LRG">
+          {fistRowItem &&
+            fistRowItem.map((item, index) => {
+              return (
+                <>
+                  {item && index === 0 && (
+                    <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+                      <DetailedEarnExtraPointsSingleTileComponent
+                        key={index.toString()}
+                        waysToEarnRow={item}
+                        onViewActivityDetails={onViewActivityDetails}
+                        labels={labels}
+                        viewAll
+                      />
+                    </Col>
+                  )}
+                  {item && index > 0 && (
+                    <Col
+                      colSize={{ small: 3, medium: 2, large: 3 }}
+                      className={`${index === 1 ? 'extraPointsTileCol' : ''}`}
+                    >
+                      <DetailedEarnExtraPointsTile
+                        key={index.toString()}
+                        waysToEarnRow={item}
+                        onViewActivityDetails={onViewActivityDetails}
+                        labels={labels}
+                        viewAll
+                      />
+                    </Col>
+                  )}
+                </>
+              );
+            })}
+        </Row>
+        <Row fullBleed>
+          {secondRowItem &&
+            secondRowItem.map((item, index) => {
+              let ignoreGutter = '';
+              if ((index + 1) % 4 === 0) {
+                ignoreGutter = { large: true, medium: true, small: true };
+              }
+              return (
+                <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={ignoreGutter}>
+                  <DetailedEarnExtraPointsTile
+                    key={index.toString()}
+                    waysToEarnRow={item}
+                    onViewActivityDetails={onViewActivityDetails}
+                    labels={labels}
+                    viewAll
+                  />
+                </Col>
+              );
+            })}
+        </Row>
+      </>
+    )
+  );
+};
 /**
  * This function component use for return the EarnPoints
  * can be passed in the component.
@@ -112,6 +211,8 @@ const EarnPoints = ({
   earnedPointsNotification,
   onViewActivityDetails,
   promoListData,
+  isEarnExtraPointsFetching,
+  isPromoListFetching,
 }) => {
   let fistRowItem = [];
   let secondRowItem = [];
@@ -179,74 +280,14 @@ const EarnPoints = ({
               </Anchor>
             </BodyCopy>
           </div>
-          {getPromoTileData(promoListData)}
-          {waysToEarn && waysToEarn.length && (
-            <>
-              <BodyCopy
-                fontSize="fs18"
-                fontWeight="semibold"
-                textAlign="center"
-                fontFamily="secondary"
-                className="morePointsWrapper"
-                data-locator="earnextrapoints-morePointsText"
-              >
-                {getLabelValue(labels, 'lbl_extraExtraPoints_more_points')}
-              </BodyCopy>
-              <Row fullBleed className="elem-mt-LRG">
-                {fistRowItem &&
-                  fistRowItem.map((item, index) => {
-                    return (
-                      <>
-                        {item && index === 0 && (
-                          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-                            <DetailedEarnExtraPointsSingleTileComponent
-                              key={index.toString()}
-                              waysToEarnRow={item}
-                              onViewActivityDetails={onViewActivityDetails}
-                              labels={labels}
-                              viewAll
-                            />
-                          </Col>
-                        )}
-                        {item && index > 0 && (
-                          <Col
-                            colSize={{ small: 3, medium: 2, large: 3 }}
-                            className={`${index === 1 ? 'extraPointsTileCol' : ''}`}
-                          >
-                            <DetailedEarnExtraPointsTile
-                              key={index.toString()}
-                              waysToEarnRow={item}
-                              onViewActivityDetails={onViewActivityDetails}
-                              labels={labels}
-                              viewAll
-                            />
-                          </Col>
-                        )}
-                      </>
-                    );
-                  })}
-              </Row>
-              <Row fullBleed>
-                {secondRowItem &&
-                  secondRowItem.map((item, index) => {
-                    let ignoreGutter = '';
-                    if ((index + 1) % 4 === 0) {
-                      ignoreGutter = { large: true, medium: true, small: true };
-                    }
-                    return (
-                      <Col colSize={{ small: 3, medium: 2, large: 3 }} ignoreGutter={ignoreGutter}>
-                        <DetailedEarnExtraPointsTile
-                          key={index.toString()}
-                          waysToEarnRow={item}
-                          onViewActivityDetails={onViewActivityDetails}
-                          labels={labels}
-                          viewAll
-                        />
-                      </Col>
-                    );
-                  })}
-              </Row>
-            </>
+          {getPromoTileData(promoListData, isPromoListFetching)}
+          {getEarnExtraPointTile(
+            waysToEarn,
+            onViewActivityDetails,
+            fistRowItem,
+            secondRowItem,
+            labels,
+            isEarnExtraPointsFetching
           )}
           <BodyCopy
             fontSize="fs14"
@@ -288,6 +329,8 @@ EarnPoints.propTypes = {
     lbl_earnExtraPoints_view_points_history: PropTypes.string,
   }),
   promoListData: PropTypes.shape([]),
+  isEarnExtraPointsFetching: PropTypes.bool,
+  isPromoListFetching: PropTypes.bool,
 };
 
 EarnPoints.defaultProps = {
@@ -304,6 +347,8 @@ EarnPoints.defaultProps = {
     lbl_earnExtraPoints_view_points_history: '',
   },
   promoListData: [],
+  isEarnExtraPointsFetching: false,
+  isPromoListFetching: false,
 };
 
 export default withStyles(EarnPoints, styles);
