@@ -97,6 +97,7 @@ class ProductDetailView extends React.Component {
     return (
       <div className="product-summary-wrapper">
         <Product
+          {...otherProps}
           isGiftCard={productInfo.isGiftCard}
           productDetails={productDetails}
           currencySymbol={currency}
@@ -104,7 +105,6 @@ class ProductDetailView extends React.Component {
           currencyExchange={currencyExchange}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
-          {...otherProps}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
