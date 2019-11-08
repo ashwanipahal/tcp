@@ -400,6 +400,7 @@ const callEditMethod = (props, handleEditCartItemWithStore) => {
         selectedFit: fit,
         itemBrand,
       },
+      fromBagPage: true,
     });
   } else {
     const openSkuSelectionForm = true;
