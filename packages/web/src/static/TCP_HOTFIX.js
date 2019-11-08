@@ -1,41 +1,30 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 
 /**
- * This script would be authored and deployed independantly
- * from the main app. The global functions could come from anywhere,
- * such as analytics, split testing, etc.
+ * EXAMPLE FILE FOR REFERENCE ONLY
+ * ===============================
  */
 
 /**
- * Used in the withHotfix HOC render()
- * This should be universal (no DOM stuff)
+ * This script would be authored and deployed independently from
+ * the main app. The global functions could come from anywhere,
+ * such as scripts injected through analytics, split testing, etc.
  */
-window.TCP_HOTFIX_PROPS = {
-  ProductsGridItem(props) {
-    console.log('TCP_HOTFIX_PROPS > ProductsGridItem', props);
-    return {
-      // Props values here will be merged in
-    };
-  },
-  ProductListingPage(props) {
-    console.log('TCP_HOTFIX_PROPS > ProductListingPage', props);
-    return {
-      // Props values here will be merged in
-    };
-  },
-  ProductDetailPage(props) {
-    console.log('TCP_HOTFIX_PROPS > ProductDetailPage', props);
-    return {
-      // Props values here will be merged in
-    };
-  },
-};
 
 /**
- * Used within the withHotfix HOC useLayoutEffect()
- * For DOM stuff only
+ * These functions are used within the `withHotfix()` HOC's `useLayoutEffect()`.
+ * They are for DOM override stuff only. They typically don't need to return
+ * any value, but they can return a function if needed, which will be used
+ * by React's effect hook to perform cleanup when the component unmounts.
+ *
+ * @example
+ * ProductsGridItem(element) {
+ *   const eventHandler = () => null;
+ *   element.addEventListner('eventType', eventHandler);
+ *   return () => element.removeEventListner('eventType', eventHandler);
+ * }
  */
-window.TCP_HOTFIX_BROWSER = {
+Object.assign(window.TCP_HOTFIX_BROWSER, {
   ProductsGridItem(element, props) {
     console.log('TCP_HOTFIX_BROWSER > ProductsGridItem', element, props);
     // element.style.setProperty('background', 'yellow');
@@ -48,4 +37,4 @@ window.TCP_HOTFIX_BROWSER = {
     console.log('TCP_HOTFIX_BROWSER > ProductDetailPage', element, props);
     // element.style.setProperty('background', 'lightgreen');
   },
-};
+});

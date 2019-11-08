@@ -11,7 +11,7 @@ function displayName(Component) {
  * @param {React.Component} Component component
  * @param {Object} props props
  */
-function usePropsHotfix(Component, props) {
+export function usePropsHotfix(Component, props) {
   const key = displayName(Component);
   const context = useContext(HotfixPropsContext);
   const hotfixFunction = context[key];
@@ -30,7 +30,7 @@ function usePropsHotfix(Component, props) {
  * @param {React.Component} Component component
  * @param {Object} props props
  */
-function useBrowserHotfix(Component, props) {
+export function useBrowserHotfix(Component, props) {
   const key = displayName(Component);
   const context = useContext(HotfixBrowserContext);
   const hotfixFunction = context[key];
@@ -55,10 +55,11 @@ function useBrowserHotfix(Component, props) {
  */
 export default function withHotfix(Component) {
   const HOC = props => {
-    const hotfixProps = usePropsHotfix(Component, props);
-    const combinedProps = { ...props, ...hotfixProps };
-    const ref = useBrowserHotfix(Component, combinedProps);
-    return <Component ref={ref} {...combinedProps} />;
+    // NOTE: We are leaving the props hotfixes disabled for now.
+    // const hotfixProps = usePropsHotfix(Component, props);
+    // const combinedProps = { ...props, ...hotfixProps };
+    const ref = useBrowserHotfix(Component, props);
+    return <Component ref={ref} {...props} />;
   };
 
   HOC.displayName = `withHotfix(${displayName(Component)})`;
