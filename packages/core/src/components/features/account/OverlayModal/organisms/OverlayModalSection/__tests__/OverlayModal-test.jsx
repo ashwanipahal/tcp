@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getViewportInfo, isIosWeb, isAndroidWeb } from '@tcp/core/src/utils';
+import { getViewportInfo, isIosWeb, isAndroidWeb, isCanada } from '@tcp/core/src/utils';
 import { OverlayModalVanilla } from '../views/OverlayModal';
 
 jest.mock('@tcp/core/src/utils', () => ({
@@ -9,6 +9,7 @@ jest.mock('@tcp/core/src/utils', () => ({
   isAndroidWeb: jest.fn(),
   isClient: jest.fn(),
   getIconPath: jest.fn(),
+  isCanada: jest.fn(),
 }));
 
 describe('OverlayModal', () => {
@@ -78,6 +79,7 @@ describe('OverlayModal', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: false }));
     isIosWeb.mockImplementation(() => false);
     isAndroidWeb.mockImplementation(() => false);
+    isCanada.mockImplementation(() => false);
     const props = {
       component: 'login',
       ModalContent: () => {},
