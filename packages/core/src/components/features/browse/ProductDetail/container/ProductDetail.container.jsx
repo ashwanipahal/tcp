@@ -6,6 +6,10 @@ import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import {
+  getIsShowPriceRange,
+  getIsKeepAliveProduct,
+} from '../../../../../reduxStore/selectors/session.selectors';
+import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
@@ -88,6 +92,7 @@ class ProductDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       alternateSizes,
+      isShowPriceRangeKillSwitch,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -95,6 +100,7 @@ class ProductDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isProductDataAvailable ? (
           <ProductDetail
+            {...otherProps}
             productDetails={productDetails}
             breadCrumbs={breadCrumbs}
             itemPartNumber={itemPartNumber}
@@ -113,6 +119,7 @@ class ProductDetailContainer extends React.PureComponent {
             onAddItemToFavorites={onAddItemToFavorites}
             isLoggedIn={isLoggedIn}
             alternateSizes={alternateSizes}
+            isShowPriceRangeKillSwitch={isShowPriceRangeKillSwitch}
           />
         ) : null}
       </React.Fragment>
@@ -144,6 +151,8 @@ function mapStateToProps(state) {
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     alternateSizes: getAlternateSizes(state),
+    isShowPriceRangeKillSwitch: getIsShowPriceRange(state),
+    isKeepAliveProduct: getIsKeepAliveProduct(state),
   };
 }
 
@@ -178,6 +187,7 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   ratingsProductId: PropTypes.string,
+  isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
   router: PropTypes.shape({
     query: PropTypes.shape({
       pid: PropTypes.string,

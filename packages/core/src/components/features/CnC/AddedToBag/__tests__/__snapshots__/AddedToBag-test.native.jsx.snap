@@ -52,7 +52,6 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
             <Connect(AddedToBagContainer)
               closeModal={[Function]}
               fromAddedToBagModal={true}
-              hideHeader={[Function]}
               labels={Object {}}
               navigation={
                 Object {
@@ -68,9 +67,11 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
             <Styled(BossBanner)
               labels={Object {}}
             />
-            <Connect(LoyaltyBannerContainer)
-              pageCategory="isAddedToBagPage"
-            />
+            <Styled(View)>
+              <Connect(LoyaltyBannerContainer)
+                pageCategory="isAddedToBagPage"
+              />
+            </Styled(View)>
             <Styled(View)>
               <Connect(Recommendations)
                 isAddedToBagOpen={true}

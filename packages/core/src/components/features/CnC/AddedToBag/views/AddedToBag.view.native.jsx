@@ -15,6 +15,7 @@ import {
   StyledTouchableOpacity,
   StyledCrossImage,
   RecommendationWrapper,
+  LoyaltyBannerWrapper,
 } from '../styles/AddedToBag.style.native';
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
@@ -112,12 +113,11 @@ const AddedToBag = ({
                   closeModal={onRequestClose}
                   showAddTobag
                   fromAddedToBagModal
-                  hideHeader={hide => {
-                    navigation.setParams({ headerMode: hide });
-                  }}
                 />
                 <BossBanner labels={labels} />
-                {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
+                <LoyaltyBannerWrapper>
+                  <LoyaltyBanner pageCategory="isAddedToBagPage" />
+                </LoyaltyBannerWrapper>
                 <RecommendationWrapper>
                   <Recommendations
                     navigation={navigation}
@@ -127,6 +127,7 @@ const AddedToBag = ({
                     isAddedToBagOpen
                   />
                 </RecommendationWrapper>
+
                 <StyledAnchorWrapper>
                   <Anchor
                     fontSizeVariation="medium"
