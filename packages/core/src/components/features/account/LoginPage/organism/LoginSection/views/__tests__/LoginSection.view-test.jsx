@@ -11,6 +11,26 @@ describe('LoginSection component', () => {
       labels: {
         login: {},
       },
+      logoutlabels: {
+        CREATE_ACC_SIGN_OUT: 'Sign Out',
+      },
+      isRememberedUser: false,
+      initialValues: {},
+    };
+    const component = shallow(<LoginSectionVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should renders correctly if remmemberme user', () => {
+    const props = {
+      onSubmit: () => {},
+      labels: {
+        login: {},
+      },
+      logoutlabels: {
+        CREATE_ACC_SIGN_OUT: 'Sign Out',
+      },
+      isRememberedUser: true,
       initialValues: {},
     };
     const component = shallow(<LoginSectionVanilla {...props} />);
@@ -25,6 +45,10 @@ describe('LoginSection component', () => {
       },
       initialValues: {},
       currentForm: 'forgotPassword',
+      logoutlabels: {
+        CREATE_ACC_SIGN_OUT: 'Sign Out',
+      },
+      isRememberedUser: false,
     };
     const component = shallow(<LoginSectionVanilla {...props} />);
     expect(component.find(ForgotPasswordContainer)).toHaveLength(1);
@@ -38,6 +62,10 @@ describe('LoginSection component', () => {
       },
       initialValues: {},
       currentForm: 'resetPassword',
+      logoutlabels: {
+        CREATE_ACC_SIGN_OUT: 'Sign Out',
+      },
+      isRememberedUser: false,
     };
     const component = shallow(<LoginSectionVanilla {...props} />);
     expect(component.find(ResetPassword)).toHaveLength(1);

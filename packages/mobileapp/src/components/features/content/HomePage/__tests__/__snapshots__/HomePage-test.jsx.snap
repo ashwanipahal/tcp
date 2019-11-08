@@ -19,7 +19,7 @@ exports[`HomePageView should render correctly 1`] = `
       ]
     }
   />
-  <HomePageSlots
+  <PageSlots
     modules={
       Object {
         "moduleA": [Function],
@@ -33,6 +33,7 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleQ": [Function],
         "moduleR": [Function],
         "moduleS": [Function],
+        "moduleT": [Function],
       }
     }
     navigation={

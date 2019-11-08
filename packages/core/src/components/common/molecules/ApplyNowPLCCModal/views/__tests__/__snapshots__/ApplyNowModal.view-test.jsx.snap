@@ -16,11 +16,16 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
+    @media ",
+      [Function],
+      " {
+      height: 70vh;
+    }
   }
 
-  .TCPModal__InnerContent {
+  div.TCPModal__InnerContent {
     text-align: center;
-    > h2 {
+    div > h2 {
       ::after {
         content: '§';
         display: inline-block;

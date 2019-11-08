@@ -46,6 +46,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -60,6 +61,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -110,6 +112,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -141,7 +144,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -161,7 +164,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -175,7 +178,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -193,7 +196,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -213,7 +216,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -247,7 +250,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -267,7 +270,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -481,6 +484,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -495,6 +499,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -545,6 +550,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -576,7 +582,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -596,7 +602,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -610,7 +616,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -628,7 +634,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -648,7 +654,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -682,7 +688,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -702,7 +708,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -912,6 +918,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -926,6 +933,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -976,6 +984,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -1007,7 +1016,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -1027,7 +1036,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1041,7 +1050,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1059,7 +1068,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1079,7 +1088,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1113,7 +1122,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1133,7 +1142,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1360,6 +1369,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -1374,6 +1384,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -1424,6 +1435,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -1455,7 +1467,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -1475,7 +1487,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1489,7 +1501,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1507,7 +1519,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1527,7 +1539,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1561,7 +1573,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1581,7 +1593,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1791,6 +1803,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -1805,6 +1818,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -1855,6 +1869,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -1886,7 +1901,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -1906,7 +1921,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1920,7 +1935,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -1938,7 +1953,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -1958,7 +1973,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -1992,7 +2007,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2012,7 +2027,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2222,6 +2237,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -2236,6 +2252,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -2286,6 +2303,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -2317,7 +2335,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -2337,7 +2355,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2351,7 +2369,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2369,7 +2387,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2389,7 +2407,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2423,7 +2441,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2443,7 +2461,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2667,6 +2685,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -2681,6 +2700,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
         <Styled(BodyCopy)
@@ -2743,6 +2763,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -2774,7 +2795,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -2794,7 +2815,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2808,7 +2829,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -2826,7 +2847,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2846,7 +2867,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -2880,7 +2901,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -2900,7 +2921,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3124,6 +3145,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -3138,6 +3160,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -3188,6 +3211,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -3219,7 +3243,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -3239,7 +3263,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3253,7 +3277,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3271,7 +3295,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3291,7 +3315,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3325,7 +3349,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3345,7 +3369,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3569,6 +3593,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -3583,6 +3608,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
         <Styled(BodyCopy)
@@ -3645,6 +3671,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -3676,7 +3703,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -3696,7 +3723,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3710,7 +3737,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -3728,7 +3755,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3748,7 +3775,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -3782,7 +3809,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -3802,7 +3829,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4026,6 +4053,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -4040,6 +4068,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -4090,6 +4119,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -4121,7 +4151,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -4141,7 +4171,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4155,7 +4185,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4173,7 +4203,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4193,7 +4223,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4227,7 +4257,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4247,7 +4277,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4471,6 +4501,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -4485,6 +4516,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -4535,6 +4567,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -4566,7 +4599,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -4586,7 +4619,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4600,7 +4633,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -4618,7 +4651,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4638,7 +4671,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4672,7 +4705,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -4692,7 +4725,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -4902,6 +4935,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -4916,6 +4950,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -4966,6 +5001,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -4997,7 +5033,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -5017,7 +5053,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5031,7 +5067,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5049,7 +5085,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5069,7 +5105,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5103,7 +5139,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5123,7 +5159,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5350,6 +5386,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -5364,6 +5401,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -5414,6 +5452,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -5445,7 +5484,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -5465,7 +5504,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5479,7 +5518,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5497,7 +5536,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5517,7 +5556,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5551,7 +5590,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5571,7 +5610,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5798,6 +5837,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -5812,6 +5852,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
       </div>
@@ -5862,6 +5903,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -5893,7 +5935,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -5913,7 +5955,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5927,7 +5969,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -5945,7 +5987,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -5965,7 +6007,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -5999,7 +6041,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -6019,7 +6061,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -6260,6 +6302,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
         className="imageWrapper"
       >
         <LinkWrapper
+          IsSlugPathAdded={true}
           disableLink={false}
           noWrap={false}
           pdpAsPathUrl=""
@@ -6274,6 +6317,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             }
             isProductImage={true}
             itemBrand="tcp"
+            onClick={[Function]}
           />
         </LinkWrapper>
         <Styled(BodyCopy)
@@ -6336,6 +6380,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               letterSpacing="normal"
               lineHeight="normal"
               link={null}
+              onClick={[Function]}
               textAlign="left"
             >
               Boys Basic Skinny Jeans
@@ -6367,7 +6412,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 color="text.primary"
                 component="span"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight={
                   Array [
                     "extrabold",
@@ -6387,7 +6432,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               component="span"
               dataLocator="cartItemColor"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -6401,7 +6446,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               color="gray.600"
               component="span"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs13"
               fontWeight="regular"
               letterSpacing="normal"
               lineHeight="normal"
@@ -6419,7 +6464,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -6439,7 +6484,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="cartItemSize"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -6473,7 +6518,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                   color="text.primary"
                   component="span"
                   fontFamily="secondary"
-                  fontSize="fs12"
+                  fontSize="fs13"
                   fontWeight={
                     Array [
                       "extrabold",
@@ -6493,7 +6538,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
                 component="span"
                 dataLocator="addedtobag-productqty"
                 fontFamily="secondary"
-                fontSize="fs12"
+                fontSize="fs13"
                 fontWeight="regular"
                 letterSpacing="normal"
                 lineHeight="normal"
@@ -6699,7 +6744,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ckVGcZ",
+        "componentId": "sc-jKJlTe",
         "isStatic": false,
         "rules": Array [
           "
@@ -7171,7 +7216,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ckVGcZ",
+      "styledComponentId": "sc-jKJlTe",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -7215,7 +7260,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-ckVGcZ",
+        "componentId": "sc-jKJlTe",
         "isStatic": false,
         "rules": Array [
           "
@@ -7687,7 +7732,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-ckVGcZ",
+      "styledComponentId": "sc-jKJlTe",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

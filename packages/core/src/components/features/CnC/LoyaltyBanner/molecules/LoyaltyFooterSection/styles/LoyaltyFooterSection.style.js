@@ -9,7 +9,8 @@ const Styles = css`
       padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
-  .createLoginSpaceBetween {
+
+  .space-between {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
@@ -17,11 +18,6 @@ const Styles = css`
   }
   .links-container {
     display: flex;
-    .learnSymbolWrapper {
-      > div {
-        display: inline;
-      }
-    }
   }
 `;
 

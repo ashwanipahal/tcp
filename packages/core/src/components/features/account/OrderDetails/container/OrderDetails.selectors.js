@@ -32,3 +32,8 @@ export const getAllItems = createSelector(
     return items;
   }
 );
+
+export const getOrderDetailsDataFetchingState = createSelector(
+  getState,
+  state => state && state.isFetching
+);

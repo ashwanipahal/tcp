@@ -18,6 +18,11 @@ const StyliticsProductTabListReducer = (state = initialState, action = {}) => {
         errors: { ...state.errors, ...payload.errors },
         completed: { ...state.completed, ...payload.completed },
       };
+    case constants.IS_FETCHING_DATA_FOR_OUTFIT:
+      return {
+        ...state,
+        isFetchingDataForOutfit: payload,
+      };
     default:
       return state;
   }

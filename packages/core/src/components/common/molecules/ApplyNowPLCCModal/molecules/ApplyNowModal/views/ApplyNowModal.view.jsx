@@ -160,7 +160,6 @@ const StyledApplyNowModal = ({
       className={className}
       isPLCCModalOpen={isPLCCModalOpen}
       closePLCCModal={closePLCCModal}
-      innerContentClassName="plcc_inner_content"
     />
   );
 };

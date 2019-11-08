@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 import { getIsInternationalShipping } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getCurrencySymbol } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import { resetPLCCResponse } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
+
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
   getThresholdValue,
   cartOrderDetails,
   getLoyaltyBannerLabels,
   confirmationDetails,
+  getFooterLabels,
 } from './LoyaltyBanner.selectors';
 
 import { isGuest } from '../../Checkout/container/Checkout.selector';
@@ -28,6 +32,9 @@ export const LoyaltyBannerContainer = ({
   openOverlay,
   closeAddedToBagModal,
   inheritedStyles,
+  openApplyNowModal,
+  footerLabels,
+  navigation,
 }) => {
   const {
     estimatedRewards,
@@ -55,6 +62,9 @@ export const LoyaltyBannerContainer = ({
       openOverlay={openOverlay}
       closeAddedToBagModal={closeAddedToBagModal}
       inheritedStyles={inheritedStyles}
+      openApplyNowModal={openApplyNowModal}
+      footerLabels={footerLabels}
+      navigation={navigation}
     />
   );
 };
@@ -71,6 +81,9 @@ LoyaltyBannerContainer.propTypes = {
   pageCategory: PropTypes.string,
   isInternationalShipping: PropTypes.bool,
   inheritedStyles: PropTypes.string,
+  openApplyNowModal: PropTypes.func.isRequired,
+  footerLabels: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -81,6 +94,7 @@ LoyaltyBannerContainer.defaultProps = {
   pageCategory: '',
   isInternationalShipping: false,
   inheritedStyles: '',
+  navigation: null,
 };
 
 export const mapDispatchToProps = dispatch => ({
@@ -88,19 +102,31 @@ export const mapDispatchToProps = dispatch => ({
   closeAddedToBagModal: () => {
     dispatch(closeAddedToBag());
   },
+  openApplyNowModal: payload => {
+    dispatch(toggleApplyNowModal(payload));
+    dispatch(resetPLCCResponse(payload));
+  },
 });
 
 /* istanbul ignore next */
-export const mapStateToProps = (state, ownProps) => ({
-  labels: getLoyaltyBannerLabels(state),
-  orderDetails:
-    ownProps.pageCategory === 'confirmation' ? confirmationDetails(state) : cartOrderDetails(state),
-  thresholdValue: getThresholdValue(state),
-  isGuestCheck: isGuest(state),
-  isPlcc: isPlccUser(state),
-  currencySymbol: getCurrencySymbol(state),
-  isInternationalShipping: getIsInternationalShipping(state),
-});
+export const mapStateToProps = (state, ownProps) => {
+  const isGuestState = isGuest(state);
+  const isPlccState = isPlccUser(state);
+  const loyaltyLabels = getLoyaltyBannerLabels(state);
+  return {
+    labels: loyaltyLabels,
+    orderDetails:
+      ownProps.pageCategory === 'confirmation'
+        ? confirmationDetails(state)
+        : cartOrderDetails(state),
+    thresholdValue: getThresholdValue(state),
+    isGuestCheck: isGuest(state),
+    isPlcc: isPlccUser(state),
+    currencySymbol: getCurrencySymbol(state),
+    isInternationalShipping: getIsInternationalShipping(state),
+    footerLabels: getFooterLabels(state, ownProps.pageCategory, isGuestState, isPlccState),
+  };
+};
 
 export default connect(
   mapStateToProps,

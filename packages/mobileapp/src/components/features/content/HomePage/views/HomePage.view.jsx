@@ -7,7 +7,7 @@ import { Button } from '@tcp/core/src/components/common/atoms';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
-import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 
 import {
   ModuleD,
@@ -25,11 +25,11 @@ import {
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
-import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -46,6 +46,7 @@ const modulesMap = {
   moduleR: ModuleR,
   moduleS: ModuleS,
   moduleQ: ModuleQ,
+  moduleT: ModuleT,
 };
 
 const buttonMargin = { margin: 30 };
@@ -132,7 +133,7 @@ class HomePageView extends React.PureComponent {
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
-        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
         {/* <Button
           fullWidth
@@ -141,6 +142,11 @@ class HomePageView extends React.PureComponent {
           onPress={() => navigation.navigate('ProductListingPageContainer')}
           style={buttonMargin}
         /> */}
+
+        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
+        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
+        <ModuleM navigation={navigation} {...mock.moduleM.composites} />
+        <QuickViewModal navigation={navigation} />
       </ScrollView>
     );
   }

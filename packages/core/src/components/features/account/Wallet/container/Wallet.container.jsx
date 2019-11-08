@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import WalletView from '../views';
 import {
@@ -53,6 +54,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     fetchLabels: payload => {
       dispatch(loadComponentLabelsData(payload));
+    },
+    openApplyNowModal: payload => {
+      dispatch(toggleApplyNowModal(payload));
     },
   };
 };

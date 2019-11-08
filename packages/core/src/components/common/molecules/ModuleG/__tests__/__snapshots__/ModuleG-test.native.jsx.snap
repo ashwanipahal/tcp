@@ -62,11 +62,11 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             "category": Array [
               Object {
                 "key": "cat_id",
-                "val": "47503",
+                "val": "47503>47544",
               },
               Object {
                 "key": "cat_id",
-                "val": "47501",
+                "val": "47503>47544",
               },
             ],
             "singleCTAButton": Object {
@@ -208,6 +208,5 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       <View />
     </Styled(View)>
   </View>
-  <Connect(QuickViewModalContainer) />
 </Styled(View)>
 `;

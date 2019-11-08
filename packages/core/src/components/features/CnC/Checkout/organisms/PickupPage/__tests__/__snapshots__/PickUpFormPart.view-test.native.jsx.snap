@@ -325,6 +325,8 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
             <Styled(PickupMainContactEditForm)
               className="pickup-contact-guest-form"
               dispatch={[MockFunction]}
+              editModeSubmissionError=""
+              errorMessageRef={[Function]}
               formData={
                 Object {
                   "emailAddress": "",
@@ -357,7 +359,6 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
                 }
               }
               isEditing={false}
-              isMobile={false}
               labels={Object {}}
               onEditModeChange={[Function]}
               showPhoneNumber={true}

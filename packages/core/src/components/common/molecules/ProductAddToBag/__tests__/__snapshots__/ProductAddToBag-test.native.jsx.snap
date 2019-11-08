@@ -3,7 +3,11 @@
 exports[`ProductAddToBagVanilla native should render correctly should match snapshot 1`] = `
 <View
   colorList={Array []}
-  currentProduct={null}
+  currentProduct={
+    Object {
+      "generalProductId": "",
+    }
+  }
   fitList={Array []}
   fromBagPage={true}
   handleFormSubmit={null}
@@ -147,10 +151,14 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       text=""
       textDecoration={null}
     />
-    <Connect(Styled(FulfillmentSection))
-      buttonLabel="Find In Store"
-      currentProduct={null}
+    <Connect(ProductPickupContainer)
+      formName="ProductAddToBag-"
       isAnchor={true}
+      productInfo={
+        Object {
+          "generalProductId": "",
+        }
+      }
     />
   </Styled(View)>
   <Styled(View)
