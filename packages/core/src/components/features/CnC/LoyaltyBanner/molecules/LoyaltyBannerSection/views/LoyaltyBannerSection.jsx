@@ -188,6 +188,7 @@ const LoyaltyBannerSection = props => {
               openOverlay={openOverlay}
               closeAddedToBagModal={closeAddedToBagModal}
               openApplyNowModal={openApplyNowModal}
+              isProductDetailView={isProductDetailView}
             />
           </div>
         </BodyCopy>
