@@ -1,9 +1,9 @@
 import { FACETS_FIELD_KEY, FACETS_OPTIONS } from './productListing.utils';
-import utils from '../../../utils';
+import utils, { isCanada } from '../../../utils';
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };
