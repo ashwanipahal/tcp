@@ -141,8 +141,19 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId
       );
 
-    const { initialFormValues } =
-      nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
+    let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
+
+    const { fromBagPage } = this.props;
+
+    if (fromBagPage) {
+      const { productInfoFromBag } = this.props;
+      initialFormValues = {
+        color: productInfoFromBag.selectedColor,
+        Size: productInfoFromBag.selectedSize,
+        Fit: productInfoFromBag.selectedFit,
+        Quantity: productInfoFromBag.selectedQty,
+      };
+    }
 
     return {
       color: {
