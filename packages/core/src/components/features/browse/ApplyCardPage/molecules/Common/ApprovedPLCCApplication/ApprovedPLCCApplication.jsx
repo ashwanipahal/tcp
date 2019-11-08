@@ -158,15 +158,17 @@ const totalSavingsFooterContainer = (
           ignoreGutter={{ small: true }}
           colSize={{ large: 3, medium: 4, small: 12 }}
         >
-          <Button
+          <Anchor
+            url={redirectToHome()}
+            fontSizeVariation="large"
             buttonVariation="fixed-width"
+            anchorVariation="button"
             fill={!bagItems ? 'BLUE' : 'WHITE'}
-            type="submit"
+            centered
             className="existing_continue_button"
-            onClick={redirectToHome}
           >
             {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          </Button>
+          </Anchor>
         </Col>
       </Row>
     </React.Fragment>
