@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bag page Container should render Added to Bag view section 1`] = `
+<CheckoutPage
+  availableStages={
+    Array [
+      "billingLabel",
+      "reviewLabel",
+    ]
+  }
+  billingProps={
+    Object {
+      "billingDidMount": [Function],
+    }
+  }
+  formatPayload={[Function]}
+  isExpressCheckout={false}
+  isVenmoPaymentInProgress={false}
+  labels={Object {}}
+  pickupDidMount={[Function]}
+  reviewProps={
+    Object {
+      "reviewDidMount": [Function],
+    }
+  }
+  setVenmoPickupState={[MockFunction]}
+  setVenmoShippingState={[MockFunction]}
+  shippingMethod={Object {}}
+  shippingProps={
+    Object {
+      "shippingDidMount": [Function],
+    }
+  }
+/>
+`;
