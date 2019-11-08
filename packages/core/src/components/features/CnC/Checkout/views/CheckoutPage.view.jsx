@@ -252,6 +252,7 @@ class CheckoutPage extends React.PureComponent {
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            pickUpContactPerson={pickUpContactPerson}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
