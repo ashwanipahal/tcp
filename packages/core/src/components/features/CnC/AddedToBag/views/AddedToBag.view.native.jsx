@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback, ScrollView, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -12,6 +12,7 @@ import {
   ImageWrapper,
   StyledTouchableOpacity,
   StyledCrossImage,
+  StyledBodyWrapper,
 } from '../styles/AddedToBag.style.native';
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
@@ -24,9 +25,9 @@ const closeIcon = require('../../../../../assets/close.png');
 
 const getContainerStyle = navigation => {
   if (!navigation.getParam('headerMode', false)) {
-    return { flex: 1, paddingLeft: 25, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
+    return { width: 25, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
   }
-  return { flex: 1, paddingLeft: 0, paddingRight: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' };
+  return { width: 0, backgroundColor: 'rgb(0, 0, 0)' };
 };
 
 const getCloseIcon = (onRequestClose, labels) => {
@@ -89,17 +90,48 @@ const AddedToBag = ({
       }}
       customTransparent
     >
-      <TouchableOpacity
-        accessibilityLabel={labels.overlayAriaText}
-        accessibilityRole="none"
-        onPress={onRequestClose}
-        style={getContainerStyle(navigation)}
-      >
-        <TouchableWithoutFeedback accessibilityRole="none">
-          <StyledWrapper>
-            {getRowWrapper(labels, onRequestClose, navigation)}
-            {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
-            <AddedToBagWrapper>
+      <StyledBodyWrapper>
+        <TouchableOpacity
+          accessibilityLabel={labels.overlayAriaText}
+          accessibilityRole="none"
+          onPress={onRequestClose}
+          style={getContainerStyle(navigation)}
+        >
+          <TouchableWithoutFeedback accessibilityRole="none">
+            <Text> </Text>
+          </TouchableWithoutFeedback>
+        </TouchableOpacity>
+        <StyledWrapper>
+          {getRowWrapper(labels, onRequestClose, navigation)}
+          {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
+          <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
+            <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
+            <AddedToBagViewPoints labels={labels} />
+            <AddedToBagActions
+              labels={labels}
+              navigation={navigation}
+              closeModal={onRequestClose}
+              showAddTobag
+              fromAddedToBagModal
+              hideHeader={hide => {
+                navigation.setParams({ headerMode: hide });
+              }}
+            />
+            <BossBanner labels={labels} />
+            {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
+            <StyledAnchorWrapper>
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                anchorVariation="primary"
+                onPress={handleContinueShopping}
+                noLink
+                to=""
+                dataLocator="addedToBag-continueShopping"
+                text={labels.continueShopping}
+              />
+            </StyledAnchorWrapper>
+            <ScrollView>
               <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
               <AddedToBagViewPoints labels={labels} />
               <AddedToBagActions
@@ -108,9 +140,6 @@ const AddedToBag = ({
                 closeModal={onRequestClose}
                 showAddTobag
                 fromAddedToBagModal
-                hideHeader={hide => {
-                  navigation.setParams({ headerMode: hide });
-                }}
               />
               <BossBanner labels={labels} />
               {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
@@ -126,35 +155,10 @@ const AddedToBag = ({
                   text={labels.continueShopping}
                 />
               </StyledAnchorWrapper>
-              <ScrollView>
-                <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
-                <AddedToBagViewPoints labels={labels} />
-                <AddedToBagActions
-                  labels={labels}
-                  navigation={navigation}
-                  closeModal={onRequestClose}
-                  showAddTobag
-                  fromAddedToBagModal
-                />
-                <BossBanner labels={labels} />
-                {<LoyaltyBanner pageCategory="isAddedToBagPage" />}
-                <StyledAnchorWrapper>
-                  <Anchor
-                    fontSizeVariation="medium"
-                    underline
-                    anchorVariation="primary"
-                    onPress={handleContinueShopping}
-                    noLink
-                    to=""
-                    dataLocator="addedToBag-continueShopping"
-                    text={labels.continueShopping}
-                  />
-                </StyledAnchorWrapper>
-              </ScrollView>
-            </AddedToBagWrapper>
-          </StyledWrapper>
-        </TouchableWithoutFeedback>
-      </TouchableOpacity>
+            </ScrollView>
+          </AddedToBagWrapper>
+        </StyledWrapper>
+      </StyledBodyWrapper>
     </Modal>
   );
 };

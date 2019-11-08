@@ -22,13 +22,28 @@ export const StyledText = styled.Text`
 export const AddedToBagWrapper = styled.View`
   display: flex;
   flex: 1;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+  ${props => {
+    if (props.payPalView) {
+      return `
+      margin-top: 0;
+      padding: 0;
+      `;
+    }
+    return `margin-top: ${props.theme.spacing.ELEM_SPACING.LRG};
+      padding: 0 ${props.theme.spacing.ELEM_SPACING.XS};`;
+  }}
+`;
+
+export const StyledBodyWrapper = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
 `;
 
 export const StyledWrapper = styled.View`
   height: 100%;
   background-color: ${props => props.theme.colors.WHITE};
+  flex: 1;
 `;
 
 export const RowWrapper = styled.SafeAreaView`
