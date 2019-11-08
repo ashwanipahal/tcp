@@ -6,6 +6,9 @@ import {
   getMapSliceForSize,
 } from '../../../browse/ProductListingPage/util/utility';
 
+import { getIsGuest } from '../../../account/User/container/User.selectors';
+import { getCartItemCount } from '../../../../../utils/cookie.util';
+
 export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) => {
   let obj = {};
   if (productInfoOrWishlistItem.productInfo) {
@@ -54,4 +57,10 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
     };
   }
   return obj;
+};
+
+export const makeBrandToggling = () => {
+  const isGuest = getIsGuest();
+  const cartItemCount = getCartItemCount();
+  return isGuest && !cartItemCount;
 };
