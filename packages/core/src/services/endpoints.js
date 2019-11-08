@@ -424,5 +424,9 @@ const endpoints = {
     method: 'GET',
     URI: 'v2/instagram/accessToken',
   },
+  userGroup: {
+    method: 'PUT',
+    URI: 'v2/account/userGroup',
+  },
 };
 export default endpoints;

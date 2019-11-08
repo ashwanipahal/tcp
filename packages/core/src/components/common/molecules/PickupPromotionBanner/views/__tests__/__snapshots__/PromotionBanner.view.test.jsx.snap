@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`] = `
+<div
+  className=""
+>
+  <div
+    className="banner-wrapper"
+  >
+    <div
+      className="triangle-left"
+    />
+    <div
+      className="promo-wrapper"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize="fs10"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(RichText)
+          richTextHtml="EXTRA undefined% OFF"
+        />
+      </Styled(BodyCopy)>
+    </div>
+  </div>
+</div>
+`;

@@ -36,9 +36,7 @@ import {
   getBOPISUnavailabilityMessage,
   getSTHUnavailabilityMessage,
   getPrices,
-  isCurrencyExchangeAvailable,
 } from './CartItemTile.utils';
-import { currencyConversion } from '../../../utils/utils';
 import { getProductListToPath } from '../../../../../browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 /**
@@ -394,13 +392,6 @@ class CartItemTile extends PureComponent {
     });
   };
 
-  getOfferPrice = (offerPrice, currencyExchange) => {
-    const isCurrencyExchange = isCurrencyExchangeAvailable(currencyExchange);
-    return isCurrencyExchange && offerPrice
-      ? currencyConversion(offerPrice, currencyExchange[0])
-      : offerPrice;
-  };
-
   renderEditLink = () => {
     const {
       labels,
@@ -452,10 +443,9 @@ class CartItemTile extends PureComponent {
 
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol, currencyExchange } = this.props;
-    let { offerPrice } = productDetail.itemInfo;
+    const { currencySymbol } = this.props;
+    const { offerPrice } = productDetail.itemInfo;
     // SFL prices
-    offerPrice = this.getOfferPrice(offerPrice, currencyExchange);
     const isBagPage = pageView === 'myBag';
     return (
       <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
@@ -690,7 +680,7 @@ class CartItemTile extends PureComponent {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {` ${labels.qty}:`}
@@ -700,7 +690,7 @@ class CartItemTile extends PureComponent {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator="addedtobag-productqty"
         >
@@ -718,7 +708,7 @@ class CartItemTile extends PureComponent {
           <BodyCopy
             fontFamily="secondary"
             component="span"
-            fontSize="fs12"
+            fontSize="fs13"
             fontWeight={['extrabold']}
           >
             {this.getSizeLabel(productDetail, labels)}
@@ -728,7 +718,7 @@ class CartItemTile extends PureComponent {
           className="padding-left-10"
           fontFamily="secondary"
           component="span"
-          fontSize="fs12"
+          fontSize="fs13"
           color="gray.800"
           dataLocator={getLocator('cart_item_size')}
         >
@@ -934,6 +924,11 @@ class CartItemTile extends PureComponent {
     return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
   };
 
+  closeMiniBagMethod = () => {
+    const { closeMiniBag } = this.props;
+    closeMiniBag();
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -988,7 +983,7 @@ class CartItemTile extends PureComponent {
     const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
     const isBagPage = pageView === 'myBag';
-    const disableLink = !isProductBrandOfSameDomain || disableProductRedirect;
+    const disableLink = disableProductRedirect;
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -1029,6 +1024,7 @@ class CartItemTile extends PureComponent {
                 pdpAsPathUrl={pdpAsPathUrl}
                 disableLink={disableLink}
                 noWrap={disableLink}
+                IsSlugPathAdded
               >
                 <DamImage
                   imgData={{
@@ -1037,6 +1033,7 @@ class CartItemTile extends PureComponent {
                   }}
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
+                  onClick={this.closeMiniBagMethod}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -1089,6 +1086,7 @@ class CartItemTile extends PureComponent {
                     fontSize="fs14"
                     fontWeight={['extrabold']}
                     dataLocator={getLocator('cart_item_title')}
+                    onClick={this.closeMiniBagMethod}
                   >
                     {productDetail.itemInfo.name}
                   </BodyCopy>
@@ -1108,7 +1106,7 @@ class CartItemTile extends PureComponent {
                         <BodyCopy
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           fontWeight={['extrabold']}
                           textAlign="left"
                         >
@@ -1119,7 +1117,7 @@ class CartItemTile extends PureComponent {
                         className="padding-left-10"
                         fontFamily="secondary"
                         component="span"
-                        fontSize="fs12"
+                        fontSize="fs13"
                         color="gray.800"
                         dataLocator={getLocator('cart_item_color')}
                       >
@@ -1130,7 +1128,7 @@ class CartItemTile extends PureComponent {
                           className="color-fit-size-separator"
                           fontFamily="secondary"
                           component="span"
-                          fontSize="fs12"
+                          fontSize="fs13"
                           color="gray.600"
                         >
                           |
@@ -1214,6 +1212,7 @@ CartItemTile.defaultProps = {
   currencyExchange: null,
   autoSwitchPickupItemInCart: () => {},
   disableProductRedirect: false,
+  closeMiniBag: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -1253,6 +1252,7 @@ CartItemTile.propTypes = {
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   autoSwitchPickupItemInCart: PropTypes.func,
   disableProductRedirect: PropTypes.bool,
+  closeMiniBag: PropTypes.func,
 };
 
 export default withStyles(CartItemTile, styles);

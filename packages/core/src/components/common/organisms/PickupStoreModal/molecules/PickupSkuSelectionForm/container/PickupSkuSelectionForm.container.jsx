@@ -52,6 +52,13 @@ class PickupSkuSelectionFormContainer extends React.Component {
     };
   };
 
+  onChangeSize = e => {
+    this.formValues = {
+      ...this.formValues,
+      Size: e,
+    };
+  };
+
   navigateToPDP = () => {
     const { onCloseClick } = this.props;
     onCloseClick();
@@ -114,6 +121,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
         generalProductId={this.generalProductId}
         navigateToPDP={this.navigateToPDP}
         onChangeColor={this.onChangeColor}
+        onChangeSize={this.onChangeSize}
         imageUrl={imageUrl}
         currentColorEntry={currentColorEntry}
         currencyExchange={currencyExchange}

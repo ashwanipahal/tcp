@@ -1,6 +1,6 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
-import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
+import { isClient, routerPush, getSiteId, isMobileApp, isCanada } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
 import { FACETS_FIELD_KEY } from './productListing.utils';
 import {
@@ -182,6 +182,7 @@ const processResponse = (
     searchTerm,
     sort,
     filterSortView,
+    isLazyLoading,
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
@@ -195,7 +196,7 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp() && filterSortView) {
+  if (!isMobileApp() && filterSortView && !isLazyLoading) {
     getPlpUrlQueryValues(filtersAndSort);
   }
 
@@ -274,8 +275,7 @@ const processResponse = (
     categoryNameTop,
   };
   if (res.body.response) {
-    // TODO - fix this - let isUSStore = this.apiHelper.configOptions.isUSStore;
-    const isUSStore = true;
+    const isUSStore = !isCanada();
     res.body.response.products.forEach(product =>
       parseProductInfo(product, {
         isUSStore,

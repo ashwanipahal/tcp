@@ -11,6 +11,7 @@ import { getOpenState } from '@tcp/core/src/components/features/account/OverlayM
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import {
   isPlccUser,
+  isRememberedUser,
   getUserName,
   getUserLoggedInState,
   getCurrentPointsState,
@@ -34,6 +35,7 @@ const mapStateToProps = state => {
     navigationDrawer: Header.navigationDrawer,
     isUserPlcc: isPlccUser(state),
     userName: getUserName(state),
+    isRememberedUser: isRememberedUser(state),
     userPoints: getCurrentPointsState(state),
     userRewards: getTotalRewardsState(state),
     isLoggedIn: getUserLoggedInState(state),

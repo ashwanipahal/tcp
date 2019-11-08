@@ -70,8 +70,10 @@ function setCartItemsSflError(state, isCartItemSflError) {
   return state.setIn(['uiFlags', 'cartItemSflError'], isCartItemSflError);
 }
 
-const extendedBagPageReducer = (state = initialState, action) => {
+const returnBagPageReducerExtension = (state = initialState, action) => {
   switch (action.type) {
+    case BAGPAGE_CONSTANTS.PAYPAL_BUTTON_HIDDEN:
+      return state.set('paypalBtnHidden', action.payload);
     case BAGPAGE_CONSTANTS.FETCHING_CART_DATA:
       return state.set('bagLoading', true);
     default:
@@ -105,7 +107,7 @@ const returnBagPageReducer = (state = initialState, action) => {
         showModal: true,
       });
     default:
-      return extendedBagPageReducer(state, action);
+      return returnBagPageReducerExtension(state, action);
   }
 };
 

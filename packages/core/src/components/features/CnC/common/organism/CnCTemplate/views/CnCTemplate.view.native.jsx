@@ -30,16 +30,21 @@ const CnCCommonTemplate = ({
   showAccordian,
   isConfirmationPage,
   pageCategory,
+  navigation,
 }) => {
   return (
     <>
       {!isConfirmationPage ? (
         <>
           <CouponAndPromosWrapper>
-            <CouponAndPromos isCheckout />
+            <CouponAndPromos isCheckout navigation={navigation} />
           </CouponAndPromosWrapper>
           <View>
-            <OrderLedgerContainer showAccordian={showAccordian} pageCategory={pageCategory} />
+            <OrderLedgerContainer
+              showAccordian={showAccordian}
+              pageCategory={pageCategory}
+              navigation={navigation}
+            />
           </View>
           {!isGuest && (
             <BonusPointsWrapper>

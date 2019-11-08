@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
 import { getFormattedLoyaltyText, getProductListToPath } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
-import { Image, BodyCopy, Anchor, Button, Col } from '../../../../../../common/atoms';
+import { Image, BodyCopy, Anchor, Button, Col, RichText } from '../../../../../../common/atoms';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
 
@@ -155,7 +155,7 @@ export function BadgeItem(props) {
 
 export function PromotionalMessage(props) {
   const { text } = props;
-  return (
+  return text ? (
     <Dotdotdot clamp={2}>
       <BodyCopy
         fontSize={['fs9', 'fs12', 'fs14']}
@@ -164,10 +164,12 @@ export function PromotionalMessage(props) {
         data-locator={getLocator('global_loyalty_text')}
         className="loyalty-text-container"
       >
-        {text && getFormattedLoyaltyText(text)[0]}
+        {text && (
+          <RichText className="rewards__benefits" richTextHtml={getFormattedLoyaltyText(text)} />
+        )}
       </BodyCopy>
     </Dotdotdot>
-  );
+  ) : null;
 }
 
 const renderWishListItem = (item, labels) => (
