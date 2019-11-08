@@ -12,6 +12,7 @@ jest.mock('@tcp/core/src/utils', () => {
     isAndroidWeb: jest.fn(),
     isClient: jest.fn(),
     getIconPath: jest.fn(),
+    isCanada: jest.fn(),
   };
 });
 
