@@ -365,7 +365,6 @@ exports[`BillingSection should render correctly without card details 1`] = `
               "state": "NY",
             }
           }
-          customStyle={Object {}}
           fontSize="fs16"
           regularName={true}
           showCountry={true}
