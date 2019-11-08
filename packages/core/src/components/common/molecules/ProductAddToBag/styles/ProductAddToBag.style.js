@@ -28,8 +28,8 @@ const styles = css`
     font-style: normal;
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: 125px;
-    padding-right: 125px;
+    padding-left: 123px;
+    padding-right: 124px;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.medium} {
@@ -125,7 +125,7 @@ const styles = css`
 
   .color-selector {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    cursor: pointer;
+    cursor: auto;
     width: 100%;
     margin-bottom: 33px;
     .dropdownDivOverFlow {

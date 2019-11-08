@@ -24,7 +24,7 @@ class ReviewPage extends React.PureComponent {
     className: PropTypes.string.isRequired,
     labels: PropTypes.shape({}).isRequired,
     reviewDidMount: PropTypes.func.isRequired,
-    submitReview: PropTypes.func.isRequired,
+    reviewFormSubmit: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
     isRegisteredUserCallDone: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
@@ -86,46 +86,6 @@ class ReviewPage extends React.PureComponent {
     e.preventDefault();
   };
 
-  reviewFormSubmit = data => {
-    const {
-      submitReview,
-      pickUpContactPerson,
-      pickUpContactAlternate,
-      isExpressCheckout,
-    } = this.props;
-    const { firstName, lastName, hasAlternatePickup, emailAddress } = data.pickUpAlternateExpress;
-    const { cvvCode } = data;
-    const pickupContactData =
-      typeof pickUpContactPerson.firstName !== 'undefined'
-        ? pickUpContactPerson
-        : pickUpContactAlternate.pickUpContact;
-
-    if (isExpressCheckout) {
-      const formDataSubmission = {
-        formData: {
-          hasAlternatePickup,
-          pickUpAlternate: {
-            emailAddress,
-            firstName,
-            lastName,
-          },
-          pickUpContact: {
-            firstName: pickupContactData.firstName,
-            lastName: pickupContactData.lastName,
-            phoneNumber: pickupContactData.phoneNumber,
-            emailAddress: pickupContactData.emailAddress,
-          },
-          billing: {
-            cvv: cvvCode,
-          },
-        },
-      };
-      submitReview(formDataSubmission);
-    } else {
-      submitReview({});
-    }
-  };
-
   render() {
     const {
       className,
@@ -139,6 +99,7 @@ class ReviewPage extends React.PureComponent {
       handleSubmit,
       ServerErrors,
       pageCategory,
+      reviewFormSubmit,
     } = this.props;
     const {
       header,
@@ -154,7 +115,7 @@ class ReviewPage extends React.PureComponent {
 
     const expressReviewShippingSection = 'expressReviewShippingSection';
     return (
-      <form name={formName} className={className} onSubmit={handleSubmit(this.reviewFormSubmit)}>
+      <form name={formName} className={className} onSubmit={handleSubmit(reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
         {ServerErrors && <ServerErrors />}
         {!!orderHasPickUp && (

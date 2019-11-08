@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { submit } from 'redux-form';
 import CHECKOUT_ACTIONS, {
   initCheckoutAction,
   submitShippingSection,
@@ -46,7 +47,8 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
 import { getCVVCodeInfoContentId } from '../organisms/BillingPage/container/BillingPage.selectors';
-import { isMobileApp } from '../../../../../utils';
+import utils from '../../../../../utils';
+import { intiSectionPage, formatPayload } from './CheckoutCommonContainer.util';
 
 const {
   getSmsSignUpLabels,
@@ -79,21 +81,15 @@ const {
   getIsPaymentDisabled,
   getCheckoutPageEmptyBagLabels,
 } = selectors;
-
 export class CheckoutContainer extends React.PureComponent<Props> {
   componentDidMount() {
+    const { needHelpContentId, fetchNeedHelpContent, router, initCheckout } = this.props;
     const {
-      needHelpContentId,
-      fetchNeedHelpContent,
-      getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
       isRegisteredUserCallDone,
-      initCheckout,
-      router,
-      cvvCodeInfoContentId,
-      checkoutServerError,
-      clearCheckoutServerError,
+      getGiftServicesContentTcpId,
     } = this.props;
+    const { cvvCodeInfoContentId, checkoutServerError, clearCheckoutServerError } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
       initCheckout(router);
@@ -130,33 +126,20 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     };
   };
 
-  intiSectionPage = (pageName, extraProps = {}) => {
-    const { initCheckoutSectionPage, router, isRegisteredUserCallDone } = this.props;
-    let recalc;
-    let isPaypalPostBack;
-    let appRouting;
-    if (router && router.query) {
-      ({ recalc, isPaypalPostBack, appRouting } = router.query);
-    }
-    if (isRegisteredUserCallDone || isMobileApp()) {
-      initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
-    }
-  };
-
   shippingDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, { initialLoad: true });
+    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this.props, { initialLoad: true });
   };
 
   billingDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.BILLING);
+    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this.props);
   };
 
   reviewDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.REVIEW);
+    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this.props);
   };
 
   pickupDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.PICKUP);
+    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this.props);
   };
 
   render() {
@@ -215,6 +198,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItemsCount,
       toggleCountrySelector,
       checkoutPageEmptyBagLabels,
+      dispatchReviewReduxForm,
       isBagLoaded,
       isRegisteredUserCallDone,
     } = this.props;
@@ -238,6 +222,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
           billingDidMount: this.billingDidMount,
           isRegisteredUserCallDone,
         }}
+        dispatchReviewReduxForm={dispatchReviewReduxForm}
         isMobile={isMobile}
         isExpressCheckout={isExpressCheckoutPage}
         activeStage={activeStage}
@@ -278,7 +263,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
           reviewDidMount: this.reviewDidMount,
           isRegisteredUserCallDone,
         }}
-        formatPayload={this.formatPayload}
+        formatPayload={formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
@@ -302,6 +287,20 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 
 CheckoutContainer.getInitActions = () => initActions;
 
+CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
+  const DEFAULT_ACTIVE_COMPONENT = 'shipping';
+  const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'checkout',
+        pageSection: loadedComponent,
+      },
+    },
+  };
+};
+
 export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: router => dispatch(initCheckoutAction(router)),
@@ -309,9 +308,7 @@ export const mapDispatchToProps = dispatch => {
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
     },
-    onPickupSubmit: data => {
-      dispatch(submitPickupSection(data));
-    },
+    onPickupSubmit: data => dispatch(submitPickupSection(data)),
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
     },
@@ -337,6 +334,7 @@ export const mapDispatchToProps = dispatch => {
     fetchNeedHelpContent: contentIds => dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds)),
     submitReview: payload => dispatch(submitReviewSection(payload)),
     verifyAddressAction: payload => dispatch(verifyAddress(payload)),
+    dispatchReviewReduxForm: () => dispatch(submit(constants.REVIEW_FORM_NAME)),
     submitVerifiedShippingAddressData: payload => {
       dispatch(submitVerifiedAddressData(payload));
     },
