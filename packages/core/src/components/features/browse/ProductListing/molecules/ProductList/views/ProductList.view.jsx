@@ -8,7 +8,8 @@ import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItemBase from './ProductsGridItem';
 
-const ProductsGridItem = withHotfix(ProductsGridItemBase, 'plp.ProductTile');
+// Adding hotfix capability to grid item in this component to make if specific to PLP
+const ProductsGridItem = withHotfix(ProductsGridItemBase);
 
 const isGridItem = item => {
   let flag = true;
