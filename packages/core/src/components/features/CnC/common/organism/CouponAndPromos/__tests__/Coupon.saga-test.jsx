@@ -40,6 +40,7 @@ describe('Coupon saga', () => {
       source: '',
     };
     const applyCouponSaga = applyCoupon({ payload });
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
     applyCouponSaga.next();
@@ -57,6 +58,7 @@ describe('Coupon saga', () => {
       source: 'data',
     };
     const applyCouponSaga = applyCoupon({ payload });
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();
     applyCouponSaga.next();

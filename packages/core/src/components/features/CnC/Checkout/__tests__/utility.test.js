@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import Router from 'next/router';
+import { fromJS } from 'immutable';
 import Utility from '../util/utility';
 // import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
 import {
@@ -26,7 +27,6 @@ import {
   getSetAirmilesPromoIdActn,
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
-import { fromJS } from '../../../../../../../../node_modules/immutable';
 
 jest.mock('next/router', () => ({ push: jest.fn() }));
 
