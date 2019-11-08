@@ -21,7 +21,7 @@ const QuickViewReducer = (state = initialState, action) => {
       return state.set('quickViewProducts', action.payload);
     case QUICK_VIEW_CONSTANT.SET_ITEM_FROM_BAG_INFO:
       return state
-        .set('fromBagPage', true)
+        .set('fromBagPage', action.payload.fromBagPage)
         .set('quickViewProductFromBag', action.payload.orderInfo);
     case QUICK_VIEW_CONSTANT.SET_LOADING_STATE:
       return state.set('isLoading', action.payload.isLoading);
