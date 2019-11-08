@@ -194,9 +194,7 @@ class CartItemRadioButtons extends React.Component {
    * @memberof CartItemRadioButtons
    */
   renderBossBanner = (isBossItem, onlineClearanceMessage) => {
-    return isBossItem && !onlineClearanceMessage ? (
-      <PickupPromotionBanner bossBanner />
-    ) : null;
+    return isBossItem && !onlineClearanceMessage ? <PickupPromotionBanner bossBanner /> : null;
   };
 
   /**
