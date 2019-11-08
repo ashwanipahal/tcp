@@ -3,8 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Anchor, Skeleton } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { getLocator, splitUniqueIDForDAM } from '../../../../../utils';
 import { LAZYLOAD_HOST_NAME } from '../../../../../utils/utils.app';
+import moduleRConfig from '../moduleR.config';
 
 import {
   Container,
@@ -60,12 +61,7 @@ class ModuleR extends React.PureComponent {
         {selectedProductList.map(productItem => {
           // check if productItem is not a PromoBanner component. Else render the promon banner
           if (productItem.uniqueId) {
-            const {
-              uniqueId,
-              imageUrl: [imageUrl],
-              productItemIndex,
-              product_name: productName,
-            } = productItem;
+            const { uniqueId, productItemIndex, product_name: productName } = productItem;
 
             return (
               <ImageItemWrapper
@@ -88,9 +84,11 @@ class ModuleR extends React.PureComponent {
                   <StyledImage
                     alt={productName}
                     host={LAZYLOAD_HOST_NAME.HOME}
-                    url={imageUrl}
+                    url={splitUniqueIDForDAM(uniqueId)}
                     height={PRODUCT_IMAGE_HEIGHT}
                     width={PRODUCT_IMAGE_WIDTH}
+                    imgConfig={moduleRConfig.IMG_DATA.productImgConfig[0]}
+                    isProductImage
                   />
                 </Anchor>
               </ImageItemWrapper>

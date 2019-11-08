@@ -29,6 +29,7 @@ const PickupSkuSelectionForm = props => {
     isHasPlcc,
     className,
     onChangeColor,
+    onChangeSize,
     currentColorEntry,
     imageUrl,
     generalProductId,
@@ -109,6 +110,7 @@ const PickupSkuSelectionForm = props => {
 
           <ProductAddToBagContainer
             onChangeColor={onChangeColor}
+            onChangeSize={onChangeSize}
             plpLabels={SKU_DETAILS}
             currentProduct={currentProduct}
             customFormName={PRODUCT_SKU_SELECTION_FORM}
@@ -168,6 +170,7 @@ PickupSkuSelectionForm.propTypes = {
   generalProductId: PropTypes.string.isRequired,
 
   onChangeColor: PropTypes.func,
+  onChangeSize: PropTypes.func,
   currentColorEntry: PropTypes.shape({}),
   imageUrl: PropTypes.string.isRequired,
   navigateToPDP: PropTypes.func.isRequired,
@@ -179,6 +182,7 @@ PickupSkuSelectionForm.defaultProps = {
   isHasPlcc: false,
   className: '',
   onChangeColor: () => {},
+  onChangeSize: () => {},
   currentColorEntry: {},
   currencyExchange: 1,
 };

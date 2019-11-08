@@ -114,7 +114,6 @@ export default css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: #575757;
       border-color: unset;
-      margin-right: 10px;
     }
 
     .searchBar-input-wrapper{
