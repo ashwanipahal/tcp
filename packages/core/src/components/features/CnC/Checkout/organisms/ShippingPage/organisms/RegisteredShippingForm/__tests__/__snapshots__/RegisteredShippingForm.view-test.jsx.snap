@@ -98,8 +98,6 @@ exports[`RegisteredShippingFormVanilla should render correctly  1`] = `
       className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -280,8 +278,6 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType add 1`]
       className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -513,8 +509,6 @@ exports[`RegisteredShippingFormVanilla should render correctly modalType edit 1`
       className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -779,8 +773,6 @@ exports[`RegisteredShippingFormVanilla should render correctly onAddressDropDown
       className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -1183,8 +1175,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
       className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -1692,8 +1682,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isAddNewAddr
       className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
@@ -2221,8 +2209,6 @@ exports[`RegisteredShippingFormVanilla should render correctly with isEditing tr
       className="shipping-section-header"
       colSize={
         Object {
-          "large": 4,
-          "medium": 6,
           "small": 6,
         }
       }
