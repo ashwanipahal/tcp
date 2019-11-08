@@ -182,5 +182,5 @@ export default {
   setLanguage,
   setBossBopisFlags,
   getSetTcpSegment,
-  SetTcpSegmentMethodCall
+  SetTcpSegmentMethodCall,
 };

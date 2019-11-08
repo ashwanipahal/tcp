@@ -31,6 +31,8 @@ export default function create(store) {
       },
     },
 
+    isCurrentRoute: () => false,
+
     pageshortName: {
       get() {
         return store.getState().pageData.pageName;

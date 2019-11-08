@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressListComponentSkeleton component should renders correctly 1`] = `
+<StyledComponent
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bxivhb",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .col-border-color {
+    border: 1px solid ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(AddressListComponentSkeleton)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bxivhb",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
