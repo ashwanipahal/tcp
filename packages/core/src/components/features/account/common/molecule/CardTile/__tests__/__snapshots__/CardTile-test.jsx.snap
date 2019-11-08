@@ -132,11 +132,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -275,11 +275,11 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -435,11 +435,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -885,11 +885,11 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -1329,11 +1329,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
@@ -1589,11 +1589,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       aria-describedby={8977328}
-      asPath="/account/address-book/edit-credit-card/8977328"
+      asPath="/account/payment/edit-credit-card/8977328"
       className="cardTile__anchor"
       dataLocator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/account?id=edit-credit-card&creditCardId=8977328"
+      to="/account?id=payment&subSection=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       lbl_common_edit
