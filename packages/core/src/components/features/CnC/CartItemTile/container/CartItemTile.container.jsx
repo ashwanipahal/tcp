@@ -11,6 +11,7 @@ import {
   getIsBossAppEnabled,
 } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { isMobileApp } from '@tcp/core/src/utils';
+import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BAGPAGE_SELECTORS from '../../BagPage/container/BagPage.selectors';
 import {
@@ -102,6 +103,7 @@ export const CartItemTileContainer = ({
   navigation,
   updateAppTypeHandler,
   disableProductRedirect,
+  setClickAnalyticsData,
   closeMiniBag,
 }) => (
   <CartItemTile
@@ -152,6 +154,7 @@ export const CartItemTileContainer = ({
     navigation={navigation}
     updateAppTypeHandler={updateAppTypeHandler}
     disableProductRedirect={disableProductRedirect}
+    setClickAnalyticsData={setClickAnalyticsData}
     closeMiniBag={closeMiniBag}
   />
 );
@@ -251,6 +254,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     updateAppTypeHandler: payload => {
       dispatch(updateAppTypeWithParams(payload));
+    },
+    setClickAnalyticsData: payload => {
+      dispatch(setClickAnalyticsData(payload));
     },
   };
 };
