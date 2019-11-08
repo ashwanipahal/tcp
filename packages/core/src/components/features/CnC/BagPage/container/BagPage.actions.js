@@ -210,6 +210,10 @@ const getSetPayPalWebView = payload => {
   };
 };
 
+const setBagPageLoading = () => ({
+  type: BAGPAGE_CONSTANTS.FETCHING_CART_DATA,
+});
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -242,4 +246,5 @@ export default {
   setSflItemDeleted,
   resetCartReducer,
   getSetPayPalWebView,
+  setBagPageLoading,
 };

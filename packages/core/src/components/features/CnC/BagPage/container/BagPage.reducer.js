@@ -7,6 +7,7 @@ const initialState = fromJS({
   sfl: [],
   errors: false,
   loaded: false,
+  bagLoading: false,
   openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,
   moduleXContent: [],
@@ -69,6 +70,19 @@ function setCartItemsSflError(state, isCartItemSflError) {
   return state.setIn(['uiFlags', 'cartItemSflError'], isCartItemSflError);
 }
 
+const extendedBagPageReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case BAGPAGE_CONSTANTS.FETCHING_CART_DATA:
+      return state.set('bagLoading', true);
+    default:
+      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
+};
+
 const returnBagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL:
@@ -91,18 +105,17 @@ const returnBagPageReducer = (state = initialState, action) => {
         showModal: true,
       });
     default:
-      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return extendedBagPageReducer(state, action);
   }
 };
 
 const BagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
-      return state.set('loaded', true).set('orderDetails', fromJS(action.payload));
+      return state
+        .set('loaded', true)
+        .set('bagLoading', false)
+        .set('orderDetails', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS:
       return state.set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
