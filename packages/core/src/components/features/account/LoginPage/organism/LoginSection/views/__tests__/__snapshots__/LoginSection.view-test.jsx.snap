@@ -100,7 +100,7 @@ exports[`LoginSection component should renders correctly 1`] = `
 exports[`LoginSection component should renders correctly if remmemberme user 1`] = `
 <Fragment>
   <Styled(LoginTopSection)
-    className="elem-mb-SM logintop-alignment"
+    className="elem-mb-SM elem-mt-XXL"
     isCanada={false}
     labels={
       Object {
