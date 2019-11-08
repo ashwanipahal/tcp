@@ -19,15 +19,8 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { removeItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getAPIConfig } from '../../../../../utils';
-import { getIsGuest } from '../../../account/User/container/User.selectors';
-import { getCartItemCount } from '../../../../../utils/cookie.util';
 import { navigateXHRAction } from '../../../account/NavigateXHR/container/NavigateXHR.action';
-
-const makeBrandToggling = () => {
-  const isGuest = getIsGuest();
-  const cartItemCount = getCartItemCount();
-  return isGuest && !cartItemCount;
-};
+import { makeBrandToggling } from '../util/utility';
 
 const getErrorMessage = (err, errorMapping) => {
   return (
@@ -61,10 +54,10 @@ export function* addToCartEcom({ payload }) {
       'calculationUsage[]': '-7',
       externalId: wishlistItemId || '',
     };
+    if (makeBrandToggling()) yield put(navigateXHRAction());
     yield put(clearAddToBagErrorState());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addCartEcomItem, params);
-    if (makeBrandToggling()) yield put(navigateXHRAction());
     yield put(
       SetAddedToBagData({
         ...payload,
@@ -112,10 +105,11 @@ export function* addItemToCartBopis({ payload }) {
       variantNo,
       itemPartNumber: variantId,
     };
+    if (makeBrandToggling()) yield put(navigateXHRAction());
     yield put(clearAddToPickupErrorState());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addCartBopisItem, params, errorMapping);
-    if (makeBrandToggling()) yield put(navigateXHRAction());
+
     if (callback) {
       callback();
     }
@@ -162,9 +156,10 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
       };
     });
 
+    if (makeBrandToggling()) yield put(navigateXHRAction());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addMultipleProductsInEcom, paramsArray);
-    if (makeBrandToggling()) yield put(navigateXHRAction());
+
     if (callBack) {
       callBack();
     }
