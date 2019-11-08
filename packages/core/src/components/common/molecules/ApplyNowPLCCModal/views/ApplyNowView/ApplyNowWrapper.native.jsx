@@ -1,8 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import BagPageHeader from '../../../../../../../../mobileapp/src/components/common/molecules/Header/BagPageHeader';
+
 import { Button, RichText } from '../../../../atoms';
-import ModalNative from '../../../Modal/view/Modal.native';
 import {
   ImageContainer,
   StyledBodyCopy,
@@ -28,11 +29,6 @@ const PLCC_LOOKUP_1_POINTS = require('../../../../../../assets/PLCC_lockup_1_poi
  * @description - used for showing the apply now modal for plcc application flow
  */
 class ApplyNowModalWrapper extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { applyCard: false };
-  }
-
   componentDidMount() {
     const { labels, fetchModuleXContent } = this.props;
     if (labels && labels.referred) {
@@ -47,11 +43,8 @@ class ApplyNowModalWrapper extends React.PureComponent {
    */
 
   toggleApplyCardModal = () => {
-    const { applyCard } = this.state;
-    const { resetPLCCApplicationStatus } = this.props;
-    this.setState({
-      applyCard: !applyCard,
-    });
+    const { resetPLCCApplicationStatus, toggleModal } = this.props;
+    toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
     resetPLCCApplicationStatus({ status: null });
   };
 
@@ -61,9 +54,16 @@ class ApplyNowModalWrapper extends React.PureComponent {
    * @description - closing the apply card modal and finalizing the call.
    */
   closeModal = () => {
-    const { toggleModalWrapper } = this.props;
-    toggleModalWrapper();
-    this.toggleApplyCardModal();
+    const { toggleModal, resetPLCCApplicationStatus, navigation } = this.props;
+    navigation.goBack();
+    toggleModal({ isModalOpen: false });
+    resetPLCCApplicationStatus({ status: null });
+  };
+
+  closePlccModal = () => {
+    const { toggleModal, navigation } = this.props;
+    navigation.goBack();
+    toggleModal({ isPLCCModalOpen: false });
   };
 
   /**
@@ -73,26 +73,25 @@ class ApplyNowModalWrapper extends React.PureComponent {
    */
 
   render() {
-    const fullWidth = {
-      width: '100%',
-    };
     // eslint-disable-next-line react/prop-types
-    const { labels, applyNow, toggleModalWrapper, plccBenefitsList } = this.props;
-    const { applyCard } = this.state;
+    const { labels, plccBenefitsList, isPLCCModalOpen, isModalOpen, navigation } = this.props;
 
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
-    return (
+    return isPLCCModalOpen || isModalOpen ? (
       <View>
-        <ApplyCardLayoutView toggleModal={this.toggleApplyCardModal} applyCard={applyCard} />
-        <ModalNative
-          onRequestClose={toggleModalWrapper}
-          horizontalBar={false}
-          headingAlign="center"
-          headingFontFamily="secondary"
-          fontSize="fs22"
-          headerStyle={fullWidth}
-          isOpen={applyNow}
-        >
+        <BagPageHeader
+          navigation={navigation}
+          closeModal={isPLCCModalOpen ? this.closePlccModal : this.closeModal}
+          isApplyNowModal
+        />
+        {isPLCCModalOpen && (
+          <ApplyCardLayoutView
+            toggleModal={this.toggleApplyCardModal}
+            applyCard={isPLCCModalOpen}
+            closeModal={this.closePlccModal}
+          />
+        )}
+        {isModalOpen && (
           <ScrollViewContainer>
             <HeaderContainer>
               <StyledBodyCopy
@@ -134,7 +133,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
                 color="white"
                 text={getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
                 width="90%"
-                onPress={this.closeModal}
+                onPress={this.toggleApplyCardModal}
               />
             </ButtonWrapper>
 
@@ -206,9 +205,9 @@ class ApplyNowModalWrapper extends React.PureComponent {
               />
             </BottomContainer>
           </ScrollViewContainer>
-        </ModalNative>
+        )}
       </View>
-    );
+    ) : null;
   }
 }
 
@@ -216,9 +215,10 @@ ApplyNowModalWrapper.propTypes = {
   labels: PropTypes.shape({
     apply_now_link_modal: PropTypes.string,
   }).isRequired,
-  toggleModalWrapper: PropTypes.func.isRequired,
   fetchModuleXContent: PropTypes.func.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default ApplyNowModalWrapper;
