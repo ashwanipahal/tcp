@@ -125,3 +125,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProductBundleContainer);
+
+export { ProductBundleContainer as ProductBundleContainerVanilla };

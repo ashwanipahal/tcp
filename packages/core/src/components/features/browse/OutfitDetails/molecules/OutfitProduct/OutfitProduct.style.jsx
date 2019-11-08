@@ -148,5 +148,10 @@ export default css`
     .tablet-image-section {
       display: none;
     }
+    .outfit-button-wrapper {
+      .outfit-pickup:empty {
+        height: 51px;
+      }
+    }
   }
 `;
