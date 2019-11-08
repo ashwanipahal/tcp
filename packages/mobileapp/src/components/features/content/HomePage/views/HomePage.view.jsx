@@ -23,10 +23,12 @@ import {
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
+import moduleEMock from '@tcp/core/src/services/abstractors/common/moduleE/mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
+import ModuleE from '@tcp/core/src/components/common/molecules/ModuleE/views/ModuleE.native';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -129,6 +131,7 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
+        <ModuleE navigation={navigation} {...moduleEMock.moduleE.composites} />
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
