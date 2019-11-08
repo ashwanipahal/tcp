@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import LoyaltyBannerSkeleton from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/skelton/LoyaltyBannerSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
 import { BodyCopy } from '../../../../../../common/atoms';
@@ -160,44 +161,56 @@ const LoyaltyBannerSection = props => {
   );
 
   remainingPlcc = LoyaltyLabels.remainingPlccValFn ? convertHtml(finalStrRemainingValue) : false;
-
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
-        <BodyCopy className="loyalty-banner-section-wrapper" component="div" fontFamily="secondary">
-          <GuestMprPlccSection
-            labels={labels}
-            headingLabel={headingLabel}
-            subHeadingLabel={subHeadingLabel}
-            descriptionLabel={descriptionLabel}
-            remainingPlcc={remainingPlcc}
-            showSubtotal={showSubtotal}
-            getCurrencySymbol={getCurrencySymbol}
-            currentSubtotal={currentSubtotal}
-            estimatedSubtotal={estimatedSubtotal}
-            isPlcc={isPlcc}
-            isGuest={isGuest}
-            pageCategory={pageCategory}
-            isProductDetailView={isProductDetailView}
-            earnedRewardAvailable={earnedRewardAvailable}
-          />
-          <div className="footer">
-            <LoyaltyFooterSection
-              className={className}
+        {currentSubtotal ? (
+          <BodyCopy
+            className="loyalty-banner-section-wrapper"
+            component="div"
+            fontFamily="secondary"
+          >
+            <GuestMprPlccSection
               labels={labels}
+              headingLabel={headingLabel}
+              subHeadingLabel={subHeadingLabel}
+              descriptionLabel={descriptionLabel}
+              remainingPlcc={remainingPlcc}
+              showSubtotal={showSubtotal}
+              getCurrencySymbol={getCurrencySymbol}
+              currentSubtotal={currentSubtotal}
+              estimatedSubtotal={estimatedSubtotal}
               isPlcc={isPlcc}
-              isProductDetailView={isProductDetailView}
-              isReviewPage={isReviewPage}
-              isConfirmationPage={isConfirmationPage}
               isGuest={isGuest}
-              isAddedToBagPage={isAddedToBagPage}
+              pageCategory={pageCategory}
+              isProductDetailView={isProductDetailView}
               earnedRewardAvailable={earnedRewardAvailable}
               openOverlay={openOverlay}
               closeAddedToBagModal={closeAddedToBagModal}
               openApplyNowModal={openApplyNowModal}
             />
-          </div>
-        </BodyCopy>
+
+            <div className="footer">
+              <LoyaltyFooterSection
+                className={className}
+                labels={labels}
+                isPlcc={isPlcc}
+                isProductDetailView={isProductDetailView}
+                isReviewPage={isReviewPage}
+                isConfirmationPage={isConfirmationPage}
+                isGuest={isGuest}
+                isAddedToBagPage={isAddedToBagPage}
+                earnedRewardAvailable={earnedRewardAvailable}
+                openOverlay={openOverlay}
+                closeAddedToBagModal={closeAddedToBagModal}
+              />
+            </div>
+          </BodyCopy>
+        ) : (
+          <>
+            <LoyaltyBannerSkeleton />
+          </>
+        )}
       </div>
     </div>
   );

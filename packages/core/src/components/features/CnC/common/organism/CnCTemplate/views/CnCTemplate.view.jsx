@@ -38,7 +38,6 @@ const CnCTemplate = ({
   isCheckoutView,
   showAccordian,
   isConfirmationPage,
-  isNotLoaded,
   orderLedgerAfterView,
   pageCategory,
 }) => {
@@ -62,7 +61,7 @@ const CnCTemplate = ({
             colSize={{ small: 6, medium: 3, large: 4 }}
             className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            {!!isNotLoaded && (
+            {
               <>
                 {isConfirmationPage ? (
                   <>
@@ -94,7 +93,7 @@ const CnCTemplate = ({
                   </>
                 )}
               </>
-            )}
+            }
           </Col>
         )}
       </Row>
@@ -114,7 +113,6 @@ CnCTemplate.propTypes = {
   showAccordian: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
-  isNotLoaded: PropTypes.bool,
   pageCategory: PropTypes.string,
 };
 
@@ -125,7 +123,6 @@ CnCTemplate.defaultProps = {
   showAccordian: true,
   isCheckoutView: false,
   isConfirmationPage: false,
-  isNotLoaded: true,
   pageCategory: '',
 };
 
