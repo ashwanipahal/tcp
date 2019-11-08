@@ -34,7 +34,7 @@ export const ImageRoundFlex = styled.div`
 `;
 
 export const CtaButtonWrapper = styled(Col)`
-  background: ${props => props.theme.colorPalette.blue[700]};
+  background: ${props => props.theme.colorPalette.blue[500]};
   font-family: ${props => props.theme.typography.fonts.primary};
   font-size: ${props => props.theme.typography.fontSizes.fs36};
   font-weight: ${props => props.theme.fonts.fontWeight.black};
@@ -72,13 +72,13 @@ export default css`
   }
 
   .promoBanner {
-    background: ${props => props.theme.colorPalette.blue[700]};
+    background: ${props => props.theme.colorPalette.blue[500]};
     color: ${props => props.theme.colors.WHITE};
     margin-top: 16px;
 
     .medium_text_semibold {
       font-weight: ${props => props.theme.fonts.fontWeight.medium};
-
+      padding-top: 8px;
       @media ${props => props.theme.mediaQuery.mediumOnly} {
         display: block;
         font-size: ${props => props.theme.typography.fontSizes.fs20};
@@ -96,13 +96,15 @@ export default css`
       }
       @media ${props => props.theme.mediaQuery.smallOnly} {
         display: block;
-        font-size: ${props => props.theme.typography.fontSizes.fs20};
+        font-size: ${props => props.theme.typography.fontSizes.fs48};
       }
     }
   }
   .promo-header {
     .medium_text_subpromo {
       font-size: ${props => props.theme.typography.fontSizes.fs20};
+      padding: 0 75px;
+      display: flex;
     }
   }
   .image-items-container-category {
@@ -142,7 +144,7 @@ export default css`
     }
   }
   .moduleM__shopAllBtnWrapper {
-    background: ${props => props.theme.colorPalette.blue[700]};
+    background: ${props => props.theme.colorPalette.blue[500]};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-size: ${props => props.theme.typography.fontSizes.fs36};
     font-weight: ${props => props.theme.fonts.fontWeight.black};
@@ -187,10 +189,14 @@ export default css`
     }
   }
   .promo-header .link-text {
-    margin-bottom: 0;
+    margin-bottom: 8px;
   }
   .moduleM__productImage {
     height: 100%;
     width: 100%;
+  }
+
+  .header-container {
+    margin-right: 0;
   }
 `;

@@ -45,7 +45,10 @@ export class PaymentContainer extends React.Component {
   }
 
   addNewCreditCard = () => {
-    utils.routerPush('/account?id=add-credit-card', '/account/payment/add-credit-card');
+    utils.routerPush(
+      '/account?id=payment&subSection=add-credit-card',
+      '/account/payment/add-credit-card'
+    );
   };
 
   render() {
