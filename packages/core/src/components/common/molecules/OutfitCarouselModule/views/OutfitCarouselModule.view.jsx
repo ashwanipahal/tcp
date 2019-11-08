@@ -56,10 +56,10 @@ export class OutfitCarouselModule extends PureComponent {
     const { outfitModule, className } = this.props;
     return (
       <div className={className}>
-        <BodyCopy fontSize="fs16" fontWeight="black" className="heading">
+        <BodyCopy fontSize={['fs16', 'fs16', 'fs28']} fontWeight="black" className="heading">
           {outfitModule.headLine[0].text}
         </BodyCopy>
-        <BodyCopy fontSize="fs12" fontWeight="regular" className="subheading">
+        <BodyCopy fontSize={['fs15', 'fs15', 'fs22']} fontWeight="regular" className="subheading">
           {outfitModule.subHeadLine[0].text}
         </BodyCopy>
         <Carousel
