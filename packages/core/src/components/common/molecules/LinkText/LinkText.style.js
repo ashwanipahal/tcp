@@ -129,4 +129,17 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs32};
     }
   }
+
+  .spaced_text_regular_black {
+    display: block;
+    color: ${props => props.theme.colorPalette.primary};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    letter-spacing: 2px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
 `;

@@ -29,6 +29,7 @@ export default css`
       url('/static/fonts/Montserrat-600.woff') format('woff');
   }
 
+  /*
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
@@ -37,6 +38,7 @@ export default css`
       url('/static/fonts/Montserrat-700.woff2') format('woff2'),
       url('/static/fonts/Montserrat-700.woff') format('woff');
   }
+  */
 
   @font-face {
     font-family: 'Montserrat';
@@ -74,6 +76,7 @@ export default css`
       url('/static/fonts/Nunito-600.woff') format('woff');
   }
 
+  /*
   @font-face {
     font-family: 'Nunito';
     font-style: normal;
@@ -82,6 +85,7 @@ export default css`
       url('/static/fonts/Nunito-700.woff2') format('woff2'),
       url('/static/fonts/Nunito-700.woff') format('woff');
   }
+  */
 
   @font-face {
     font-family: 'Nunito';
