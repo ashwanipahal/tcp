@@ -26,3 +26,9 @@ export const setModuleX = payload => {
     type: POINTSHISTORY_CONSTANTS.SET_MODULEX_CONTENT,
   };
 };
+
+export const showLoader = () => {
+  return {
+    type: POINTSHISTORY_CONSTANTS.SHOW_LOADER,
+  };
+};

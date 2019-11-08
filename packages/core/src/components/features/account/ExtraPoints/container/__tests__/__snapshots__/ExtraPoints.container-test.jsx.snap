@@ -6,6 +6,8 @@ exports[`ExtraPointsContainer View should render ExtraPointsContainer Correctly 
     earnExtraPointsLabels={Object {}}
     earnedPointsNotification={Array []}
     handleComponentChange={[Function]}
+    isEarnExtraPointsFetching={false}
+    isPromoListFetching={false}
     labels={Object {}}
     onViewActivityDetails={[Function]}
     promoListData={Array []}
