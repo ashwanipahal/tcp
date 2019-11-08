@@ -1,6 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { getViewportInfo, isIosWeb, isAndroidWeb } from '@tcp/core/src/utils';
 import { OverlayModalVanilla } from '../views/OverlayModal';
+
+jest.mock('@tcp/core/src/utils', () => {
+  const originalModule = jest.requireActual('@tcp/core/src/utils');
+  return {
+    ...originalModule,
+    getViewportInfo: jest.fn(),
+    isIosWeb: jest.fn(),
+    isAndroidWeb: jest.fn(),
+    isClient: jest.fn(),
+    getIconPath: jest.fn(),
+    isCanada: jest.fn(),
+  };
+});
 
 describe('OverlayModal', () => {
   let mockedRef = null;
@@ -65,7 +79,33 @@ describe('OverlayModal', () => {
     }
   });
 
-  it('should render correctly', () => {
+  it('should render Overlay correctly', () => {
+    getViewportInfo.mockImplementation(() => ({ isMobile: false }));
+    isIosWeb.mockImplementation(() => false);
+    isAndroidWeb.mockImplementation(() => false);
+    const props = {
+      component: 'login',
+      ModalContent: () => {},
+      variation: 'primary',
+      color: null,
+      openState: false,
+    };
+    const mockedcloseOverlay = jest.fn();
+    const mockedEvent = {
+      target: {
+        closest: jest.fn(),
+      },
+    };
+    const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
+    tree.instance().setModalRef();
+    tree.instance().modalRef = mockedRef;
+    tree.instance().handleWindowClick(mockedEvent);
+    expect(mockedcloseOverlay).toBeCalled();
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render Modal correctly', () => {
+    getViewportInfo.mockImplementation(() => ({ isMobile: true }));
+    isIosWeb.mockImplementation(() => true);
     const props = {
       component: 'login',
       ModalContent: () => {},

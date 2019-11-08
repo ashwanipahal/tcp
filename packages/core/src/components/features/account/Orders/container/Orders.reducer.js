@@ -8,6 +8,7 @@ const initialState = fromJS({
 
 const OrdersReducer = (state = initialState, action) => {
   switch (action.type) {
+    case constants.SHOW_LOADER:
     case constants.GET_ORDERS_LIST:
       return state.set('isFetching', true);
     case constants.SET_ORDERS_LIST:

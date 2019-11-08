@@ -102,6 +102,7 @@ export const CartItemTileContainer = ({
   navigation,
   updateAppTypeHandler,
   disableProductRedirect,
+  closeMiniBag,
 }) => (
   <CartItemTile
     labels={labels}
@@ -151,6 +152,7 @@ export const CartItemTileContainer = ({
     navigation={navigation}
     updateAppTypeHandler={updateAppTypeHandler}
     disableProductRedirect={disableProductRedirect}
+    closeMiniBag={closeMiniBag}
   />
 );
 

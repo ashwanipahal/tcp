@@ -96,6 +96,7 @@ const styles = css`
   }
   .addedToBagWrapper {
     overflow-y: auto;
+    overflow-x: hidden;
     height: calc(100% - 43px);
   }
   .continue-shopping {

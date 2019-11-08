@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 /* TODO to refactor later as per discussion */
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import Swipeable from '../../../../../../common/atoms/Swipeable/Swipeable.native';
@@ -46,8 +46,66 @@ const deleteIcon = require('../../../../../../../assets/delete.png');
 const moveToBagIcon = require('../../../../../../../assets/moveToBag-icon.png');
 const sflIcon = require('../../../../../../../assets/sfl-icon.png');
 
-class ProductInformation extends React.Component {
+class ProductInformation extends PureComponent {
   swipeable = React.createRef();
+
+  componentDidUpdate(prevProps) {
+    const {
+      isBagPageSflSection,
+      toggleBossBopisError,
+      productDetail: {
+        itemInfo: { itemId },
+      },
+    } = this.props;
+    if (
+      !isBagPageSflSection &&
+      toggleBossBopisError &&
+      itemId === toggleBossBopisError.itemId &&
+      (prevProps.toggleBossBopisError === null ||
+        prevProps.toggleBossBopisError.errorMessage !== toggleBossBopisError.errorMessage)
+    ) {
+      setTimeout(() => {
+        this.handleEditCartItemWithStore(toggleBossBopisError.targetOrderType);
+      });
+    }
+  }
+
+  handleEditCartItemWithStore = (
+    changeStoreType,
+    openSkuSelectionForm = false,
+    openRestrictedModalForBopis = false,
+    isPickUpWarningModal = false
+  ) => {
+    const { onPickUpOpenClick, productDetail, orderId, clearToggleError } = this.props;
+    const { itemId, qty, color, size, fit, itemBrand } = productDetail.itemInfo;
+    const { store, orderItemType } = productDetail.miscInfo;
+    const { productPartNumber } = productDetail.productInfo;
+    const isItemShipToHome = !store;
+    const isBopisCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOPIS;
+    const isBossCtaEnabled = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+    const alwaysSearchForBOSS = changeStoreType === CARTPAGE_CONSTANTS.BOSS;
+    clearToggleError();
+    onPickUpOpenClick({
+      colorProductId: productPartNumber,
+      orderInfo: {
+        orderItemId: itemId,
+        Quantity: qty,
+        color,
+        Size: size,
+        Fit: fit,
+        orderId,
+        orderItemType,
+        itemBrand,
+      },
+      openSkuSelectionForm,
+      isBopisCtaEnabled,
+      isBossCtaEnabled,
+      isItemShipToHome,
+      alwaysSearchForBOSS,
+      openRestrictedModalForBopis,
+      isPickUpWarningModal,
+    });
+  };
 
   renderSflActionsLinks = () => {
     const { productDetail, isShowSaveForLater, labels, isBagPageSflSection } = this.props;
@@ -232,7 +290,7 @@ class ProductInformation extends React.Component {
             <TouchableOpacity
               accessibilityRole="link"
               onPress={() => {
-                CartItemTileExtension.callEditMethod(this.props);
+                CartItemTileExtension.callEditMethod(this.props, this.handleEditCartItemWithStore);
                 CartItemTileExtension.onSwipeComplete(this.props, this.swipeable);
                 return this.swipeable.toggle('right');
               }}
@@ -284,6 +342,7 @@ class ProductInformation extends React.Component {
       pickupStoresInCart,
       navigation,
       updateAppTypeHandler,
+      autoSwitchPickupItemInCart,
     } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
     const { isBossEnabled, isBopisEnabled } = getBossBopisFlags(this.props, itemBrand);
@@ -408,29 +467,33 @@ class ProductInformation extends React.Component {
             isBopisEnabled,
             store,
           }) &&
-            CartItemTileExtension.getCartRadioButtons({
-              productDetail,
-              labels,
-              itemIndex,
-              openedTile,
-              setSelectedProductTile,
-              isBagPageSflSection,
-              showOnReviewPage,
-              isEcomSoldout,
-              isECOMOrder,
-              isBOSSOrder,
-              isBOPISOrder,
-              noBopisMessage,
-              noBossMessage,
-              bossDisabled,
-              bopisDisabled,
-              isBossEnabled,
-              isBopisEnabled,
-              onPickUpOpenClick,
-              orderId,
-              setShipToHome,
-              pickupStoresInCart,
-            })}
+            CartItemTileExtension.getCartRadioButtons(
+              {
+                productDetail,
+                labels,
+                itemIndex,
+                openedTile,
+                setSelectedProductTile,
+                isBagPageSflSection,
+                showOnReviewPage,
+                isEcomSoldout,
+                isECOMOrder,
+                isBOSSOrder,
+                isBOPISOrder,
+                noBopisMessage,
+                noBossMessage,
+                bossDisabled,
+                bopisDisabled,
+                isBossEnabled,
+                isBopisEnabled,
+                onPickUpOpenClick,
+                orderId,
+                setShipToHome,
+                pickupStoresInCart,
+                autoSwitchPickupItemInCart,
+              },
+              this.handleEditCartItemWithStore
+            )}
         </MainWrapper>
       </Swipeable>
     );
@@ -459,6 +522,10 @@ ProductInformation.propTypes = {
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   updateAppTypeHandler: PropTypes.func,
+  autoSwitchPickupItemInCart: PropTypes.func.isRequired,
+  toggleBossBopisError: PropTypes.shape({
+    errorMessage: PropTypes.string,
+  }),
 };
 
 ProductInformation.defaultProps = {
@@ -473,6 +540,7 @@ ProductInformation.defaultProps = {
   setShipToHome: () => {},
   navigation: {},
   updateAppTypeHandler: () => {},
+  toggleBossBopisError: null,
 };
 
 export default ProductInformation;

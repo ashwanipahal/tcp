@@ -61,6 +61,9 @@ const addItemToWishlist = wishlistDetails => {
     })
     .catch(err => {
       logger.error('err', err);
+      return {
+        errorMessage: err && err.errorResponse && err.errorResponse.errorMessage,
+      };
     });
 };
 

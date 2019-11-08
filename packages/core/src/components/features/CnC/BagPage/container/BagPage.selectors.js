@@ -235,6 +235,10 @@ const getBagStickyHeaderInterval = state => {
   );
 };
 
+const getIsPayPalHidden = state => {
+  return state.CartPageReducer.getIn(['paypalBtnHidden']);
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
@@ -264,4 +268,5 @@ export default {
   getIsPayPalEnabled,
   getBagStickyHeaderInterval,
   getPayPalWebViewStatus,
+  getIsPayPalHidden,
 };

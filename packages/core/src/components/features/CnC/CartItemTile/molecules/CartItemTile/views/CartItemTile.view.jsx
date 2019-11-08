@@ -874,7 +874,7 @@ class CartItemTile extends PureComponent {
     const { showOnReviewPage } = this.props;
     return (
       <>
-        {showOnReviewPage ? (
+        {!showOnReviewPage ? (
           <div className="size-and-item-container">
             {this.renderSizeAndFit()}
             {this.renderItemQuantity()}
@@ -922,6 +922,11 @@ class CartItemTile extends PureComponent {
 
   getPdpAsPathurl = (isProductBrandOfSameDomain, pdpUrl, crossDomain) => {
     return isProductBrandOfSameDomain ? pdpUrl : `${crossDomain}${pdpUrl}`;
+  };
+
+  closeMiniBagMethod = () => {
+    const { closeMiniBag } = this.props;
+    closeMiniBag();
   };
 
   // eslint-disable-next-line complexity
@@ -978,7 +983,7 @@ class CartItemTile extends PureComponent {
     const pdpAsPathUrl = this.getPdpAsPathurl(isProductBrandOfSameDomain, pdpUrl, crossDomain);
 
     const isBagPage = pageView === 'myBag';
-    const disableLink = !isProductBrandOfSameDomain || disableProductRedirect;
+    const disableLink = disableProductRedirect;
     return (
       <div className={`${className} tile-header`}>
         {this.renderTogglingError()}
@@ -1019,6 +1024,7 @@ class CartItemTile extends PureComponent {
                 pdpAsPathUrl={pdpAsPathUrl}
                 disableLink={disableLink}
                 noWrap={disableLink}
+                IsSlugPathAdded
               >
                 <DamImage
                   imgData={{
@@ -1027,6 +1033,7 @@ class CartItemTile extends PureComponent {
                   }}
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
+                  onClick={this.closeMiniBagMethod}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -1079,6 +1086,7 @@ class CartItemTile extends PureComponent {
                     fontSize="fs14"
                     fontWeight={['extrabold']}
                     dataLocator={getLocator('cart_item_title')}
+                    onClick={this.closeMiniBagMethod}
                   >
                     {productDetail.itemInfo.name}
                   </BodyCopy>
@@ -1204,6 +1212,7 @@ CartItemTile.defaultProps = {
   currencyExchange: null,
   autoSwitchPickupItemInCart: () => {},
   disableProductRedirect: false,
+  closeMiniBag: () => {},
 };
 
 CartItemTile.propTypes = {
@@ -1243,6 +1252,7 @@ CartItemTile.propTypes = {
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   autoSwitchPickupItemInCart: PropTypes.func,
   disableProductRedirect: PropTypes.bool,
+  closeMiniBag: PropTypes.func,
 };
 
 export default withStyles(CartItemTile, styles);

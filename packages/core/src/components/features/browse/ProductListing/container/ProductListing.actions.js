@@ -41,3 +41,10 @@ export const setPlpLoadingState = payload => {
     payload,
   };
 };
+
+export const setAddToFavorite = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.SET_ADD_TO_FAVORITE,
+    payload,
+  };
+};

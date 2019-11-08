@@ -39,6 +39,28 @@ class ProductDetailView extends React.PureComponent {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const { currentProduct } = props;
+
+    const { currentColorEntry, selectedColorProductId } = state;
+
+    const colorDetails = getMapSliceForColorProductId(
+      currentProduct.colorFitsSizesMap,
+      selectedColorProductId
+    );
+
+    if (
+      colorDetails.favoritedCount !== currentColorEntry.favoritedCount &&
+      colorDetails.color.name === currentColorEntry.color.name
+    ) {
+      return {
+        currentColorEntry: colorDetails,
+      };
+    }
+
+    return null;
+  }
+
   componentWillUnmount = () => {
     const { clearAddToBagError } = this.props;
     clearAddToBagError();
@@ -105,7 +127,11 @@ class ProductDetailView extends React.PureComponent {
       pdpLabels,
       currency,
       currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
       alternateSizes,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     const {
       currentColorEntry,
@@ -131,7 +157,13 @@ class ProductDetailView extends React.PureComponent {
           <ImageCarousel
             isGiftCard={currentProduct.isGiftCard}
             imageUrls={imageUrls}
+            onAddItemToFavorites={onAddItemToFavorites}
+            isLoggedIn={isLoggedIn}
+            currentProduct={currentProduct}
             onImageClick={this.onImageClick}
+            AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+            removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            currentColorEntry={currentColorEntry}
           />
           <ProductSummary
             productData={currentProduct}
@@ -196,7 +228,14 @@ class ProductDetailView extends React.PureComponent {
 }
 
 ProductDetailView.propTypes = {
-  currentProduct: PropTypes.shape({}),
+  currentProduct: PropTypes.shape({
+    colorFitsSizesMap: PropTypes.shape({}),
+    offerPrice: PropTypes.string,
+    listPrice: PropTypes.string,
+    generalProductId: PropTypes.string,
+    imagesByColor: PropTypes.shape({}),
+    isGiftCard: PropTypes.bool,
+  }),
   navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
   clearAddToBagError: PropTypes.func.isRequired,
@@ -211,13 +250,24 @@ ProductDetailView.propTypes = {
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.number,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
-  currentProduct: {},
+  currentProduct: {
+    colorFitsSizesMap: {},
+    offerPrice: '',
+    listPrice: '',
+    generalProductId: '',
+    imagesByColor: {},
+    isGiftCard: false,
+  },
   navigation: {},
   plpLabels: null,
   handleSubmit: null,
@@ -230,7 +280,11 @@ ProductDetailView.defaultProps = {
   pdpLabels: {},
   currency: 'USD',
   currencyExchange: 1,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
   alternateSizes: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductDetailView);
