@@ -1,6 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 // import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { ScrollView as LazyloadScrollView } from 'react-native';
 import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
