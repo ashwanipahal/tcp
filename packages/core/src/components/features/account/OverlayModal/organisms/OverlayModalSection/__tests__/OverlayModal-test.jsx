@@ -3,13 +3,17 @@ import { shallow } from 'enzyme';
 import { getViewportInfo, isIosWeb, isAndroidWeb } from '@tcp/core/src/utils';
 import { OverlayModalVanilla } from '../views/OverlayModal';
 
-jest.mock('@tcp/core/src/utils', () => ({
-  getViewportInfo: jest.fn(),
-  isIosWeb: jest.fn(),
-  isAndroidWeb: jest.fn(),
-  isClient: jest.fn(),
-  getIconPath: jest.fn(),
-}));
+jest.mock('@tcp/core/src/utils', () => {
+  const originalModule = jest.requireActual('@tcp/core/src/utils');
+  return {
+    ...originalModule,
+    getViewportInfo: jest.fn(),
+    isIosWeb: jest.fn(),
+    isAndroidWeb: jest.fn(),
+    isClient: jest.fn(),
+    getIconPath: jest.fn(),
+  };
+});
 
 describe('OverlayModal', () => {
   let mockedRef = null;
