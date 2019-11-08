@@ -7,7 +7,6 @@ import ModuleP from '@tcp/core/src/components/common/molecules/ModuleP';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import { getScreenWidth, getLocator } from '@tcp/core/src/utils/index.native';
 import { Button } from '@tcp/core/src/components/common/atoms';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import { CarouselContainer, ButtonContainer } from './Recommendations.style';
@@ -127,13 +126,7 @@ const fetchRecommendations = loadRecommendations => () => {
 };
 
 const Recommendations = props => {
-  const {
-    variation,
-    loadRecommendations,
-    navigation,
-    onPickUpOpenClick,
-    isPickupModalOpen,
-  } = props;
+  const { variation, loadRecommendations, navigation, isPickupModalOpen } = props;
   const variationArray = variation.split(',');
 
   useEffect(fetchRecommendations(loadRecommendations), []);
@@ -141,7 +134,6 @@ const Recommendations = props => {
   return (
     <View>
       {variationArray.map(value => renderRecommendationView(props, value))}
-      <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
       <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </View>
@@ -151,13 +143,10 @@ const Recommendations = props => {
 Recommendations.propTypes = {
   variation: PropTypes.string.isRequired,
   loadRecommendations: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func,
   navigation: PropTypes.shape({}).isRequired,
   isPickupModalOpen: PropTypes.bool.isRequired,
 };
 
-Recommendations.defaultProps = {
-  onPickUpOpenClick: () => {},
-};
+Recommendations.defaultProps = {};
 
 export default Recommendations;
