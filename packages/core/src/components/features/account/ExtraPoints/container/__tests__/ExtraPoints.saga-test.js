@@ -11,6 +11,7 @@ describe('Promo List Saga', () => {
   });
   describe('fetchmoduleX', () => {
     it('should dispatch setPromoList action for success response', () => {
+      promoListGen.next();
       const response = promoListGen.next().value;
       expect(promoListGen.next(response).value).toEqual(put(setPromoList(response)));
     });
