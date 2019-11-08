@@ -58,6 +58,30 @@ class ProductDetailContainer extends React.PureComponent {
     window.scrollTo(0, 100);
   }
 
+  componentDidUpdate(prevProps) {
+    const {
+      getDetails,
+      router: {
+        query: { pid },
+      },
+    } = this.props;
+
+    if (prevProps.router.query.pid !== pid) {
+      console.log('hello');
+      const id = pid && pid.split('-');
+      let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
+      if (
+        (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
+        (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
+      ) {
+        productId = 'gift';
+      }
+
+      getDetails({ productColorId: productId });
+      window.scrollTo(0, 100);
+    }
+  }
+
   componentWillUnmount = () => {
     const { clearAddToBagError } = this.props;
     clearAddToBagError();
