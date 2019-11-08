@@ -52,9 +52,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
         />
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        fromBagPage={true}
-      />
+      <Connect(QuickViewModalContainer) />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>
@@ -128,9 +126,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           sflItems={Object {}}
         />
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        fromBagPage={true}
-      />
+      <Connect(QuickViewModalContainer) />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -190,9 +186,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           sflItems={Object {}}
         />
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        fromBagPage={true}
-      />
+      <Connect(QuickViewModalContainer) />
     </Styled(ScrollViewMock)>
   </Styled(View)>
 </Fragment>
@@ -267,9 +261,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           />
         </Styled(View)>
       </Styled(View)>
-      <Connect(QuickViewModalContainer)
-        fromBagPage={true}
-      />
+      <Connect(QuickViewModalContainer) />
     </Styled(ScrollViewMock)>
   </Styled(View)>
   <Styled(View)>
