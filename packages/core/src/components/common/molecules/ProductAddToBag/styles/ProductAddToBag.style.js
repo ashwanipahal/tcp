@@ -125,7 +125,7 @@ const styles = css`
 
   .color-selector {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    cursor: pointer;
+    cursor: auto;
     width: 100%;
     margin-bottom: 33px;
     .dropdownDivOverFlow {
