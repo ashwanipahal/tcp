@@ -211,11 +211,15 @@ function* initShippingData(pageName, initialLoad, pendingPromises) {
 }
 
 function* handleCheckoutInitRouting(pageName, isExpress) {
+  let isExpressCheckoutEnabled = isExpress;
+  if (!isExpressCheckoutEnabled) {
+    isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  }
   const { PICKUP, SHIPPING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
   const cartOrderItems = yield select(BagPageSelectors.getOrderItems);
   const availableStages = utility.getAvailableStages(cartOrderItems);
   let requestedStage;
-  if (isExpress) {
+  if (isExpressCheckoutEnabled) {
     requestedStage = REVIEW;
   } else {
     requestedStage = availableStages.length > 3 ? PICKUP : SHIPPING;
@@ -266,10 +270,10 @@ function* initCheckoutSectionData({
     }
   }
   yield all(pendingPromises);
-  if (!isExpressCheckoutEnabled) {
-    isExpressCheckoutEnabled = yield select(isExpressCheckout);
+
+  if (!appRouting) {
+    yield call(handleCheckoutInitRouting, pageName, isExpressCheckoutEnabled);
   }
-  yield call(handleCheckoutInitRouting, pageName, isExpressCheckoutEnabled);
 }
 
 // function* displayPreScreenModal (res) {
