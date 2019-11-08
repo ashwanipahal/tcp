@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { submit } from 'redux-form';
 import CHECKOUT_ACTIONS, {
   initCheckoutAction,
   submitShippingSection,
@@ -211,6 +212,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItemsCount,
       toggleCountrySelector,
       checkoutPageEmptyBagLabels,
+      dispatchReviewReduxForm,
       isBagLoaded,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
@@ -227,6 +229,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isSmsUpdatesEnabled={isSmsUpdatesEnabled}
         currentPhoneNumber={currentPhoneNumber}
         isGuest={isGuest}
+        dispatchReviewReduxForm={dispatchReviewReduxForm}
         billingProps={{ ...billingProps, billingDidMount: this.billingDidMount }}
         isMobile={isMobile}
         isExpressCheckout={isExpressCheckoutPage}
@@ -295,9 +298,7 @@ export const mapDispatchToProps = dispatch => {
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
     },
-    onPickupSubmit: data => {
-      dispatch(submitPickupSection(data));
-    },
+    onPickupSubmit: data => dispatch(submitPickupSection(data)),
     onEditModeChange: data => {
       dispatch(onEditModeChangeAction(data));
     },
@@ -330,6 +331,9 @@ export const mapDispatchToProps = dispatch => {
     },
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
+    },
+    dispatchReviewReduxForm: () => {
+      dispatch(submit(constants.REVIEW_FORM_NAME));
     },
     submitVerifiedShippingAddressData: payload => {
       dispatch(submitVerifiedAddressData(payload));
