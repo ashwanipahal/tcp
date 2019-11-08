@@ -29,7 +29,7 @@ const LoggedInUserInfo = ({
   const linkClick = e => onLinkClick({ e, openOverlay, userNameClick }, mainId);
   return (
     <React.Fragment>
-      <BodyCopy component="div" id={mainId} className="account-info-section">
+      <BodyCopy component="div" id={mainId} className="account-info-section" tabIndex="0">
         <BodyCopy
           className="account-info user-name"
           onClick={linkClick}

@@ -13,6 +13,7 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
+    tabIndex="0"
     textAlign="left"
   >
     <Styled(BodyCopy)

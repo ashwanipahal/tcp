@@ -72,6 +72,12 @@ class OverlayModal extends React.Component {
       modal.addEventListener('keydown', this.keydownInOverlay);
     }
 
+    if (this.isMobile && nextTargetComponent === 'accountDrawer') {
+      document
+        .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
+        .forEach(element => element.setAttribute('aria-hidden', 'true'));
+    }
+
     return null;
   }
 
@@ -88,6 +94,9 @@ class OverlayModal extends React.Component {
     const modal = document.getElementById('dialogContent');
     modal.removeEventListener('keydown', this.keydownInOverlay);
     this.resetBodyScrollStyles();
+    document
+      .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
+      .forEach(element => element.removeAttribute('aria-hidden'));
   }
 
   /**
@@ -97,8 +106,8 @@ class OverlayModal extends React.Component {
 
   // eslint-disable-next-line complexity
   styleModalTriangle = ({ comp }) => {
-    if (this.isMobile) return;
-    const { showCondensedHeader } = this.props;
+    const { showCondensedHeader, component } = this.props;
+    if (this.isMobile && component !== 'accountDrawer') return;
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
@@ -136,8 +145,8 @@ class OverlayModal extends React.Component {
   };
 
   getCustomStyles = ({ styleModal }) => {
-    if (this.isMobile) return;
     const { component } = this.props;
+    if (this.isMobile && component !== 'accountDrawer') return;
     const comp = document.getElementById(component);
     /* istanbul ignore else */
     if (comp && window) {
