@@ -6,14 +6,19 @@ import LogOutView from '../views/LogOut.view';
 
 class LogOutPageContainer extends React.PureComponent {
   render() {
-    const { triggerLogout, labels } = this.props;
-    return <LogOutView triggerLogout={triggerLogout} labels={labels} />;
+    const { triggerLogout, underline, labels } = this.props;
+    return <LogOutView underline={underline} triggerLogout={triggerLogout} labels={labels} />;
   }
 }
 
 LogOutPageContainer.propTypes = {
   triggerLogout: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
+  underline: PropTypes.bool,
+};
+
+LogOutPageContainer.defaultProps = {
+  underline: false,
 };
 
 export const mapDispatchToProps = dispatch => {

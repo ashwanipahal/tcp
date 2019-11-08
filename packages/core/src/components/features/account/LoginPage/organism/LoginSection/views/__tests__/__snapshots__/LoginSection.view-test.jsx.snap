@@ -31,6 +31,7 @@ exports[`LoginSection component should renders correctly 1`] = `
         form="LoginForm"
         getFormState={[Function]}
         initialValues={Object {}}
+        isRememberedUser={false}
         keepDirtyOnReinitialize={false}
         labels={
           Object {
@@ -91,6 +92,108 @@ exports[`LoginSection component should renders correctly 1`] = `
       >
         lbl_login_createAccountCTA
       </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;
+
+exports[`LoginSection component should renders correctly if remmemberme user 1`] = `
+<Fragment>
+  <Styled(LoginTopSection)
+    className="elem-mb-SM logintop-alignment"
+    isCanada={false}
+    labels={
+      Object {
+        "login": Object {},
+      }
+    }
+    showForgotPasswordForm={[Function]}
+  />
+  <Styled(Row)>
+    <Styled(Col)
+      className="elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG loginForm"
+      colSize={
+        Object {
+          "large": "12",
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <ReduxForm
+        className="elem-mb-LRG"
+        destroyOnUnmount={true}
+        enableReinitialize={true}
+        forceUnregisterOnUnmount={false}
+        form="LoginForm"
+        getFormState={[Function]}
+        initialValues={Object {}}
+        isRememberedUser={true}
+        keepDirtyOnReinitialize={false}
+        labels={
+          Object {
+            "login": Object {},
+          }
+        }
+        loginErrorMessage=""
+        onCreateAccountClick={[Function]}
+        onSubmit={[Function]}
+        persistentSubmitErrors={false}
+        pure={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        showForgotPasswordForm={[Function]}
+        showRecaptcha={false}
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+        validate={[Function]}
+      />
+      <Styled(BodyCopy)
+        className="elem-pb-LRG"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          fontFamily="primary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_login_not undefined ? 
+          <Styled(Anchor)
+            anchorVariation="primary"
+            fontSizeVariation="medium"
+            onClick={[Function]}
+            underline={true}
+          >
+            <Connect(LogOutPageContainer)
+              labels={
+                Object {
+                  "CREATE_ACC_SIGN_OUT": "Sign Out",
+                }
+              }
+              underline={true}
+            />
+          </Styled(Anchor)>
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
 </Fragment>

@@ -5,6 +5,8 @@ import {
   createBottomTabNavigator,
 } from 'react-navigation';
 import React from 'react';
+import ApplyNowWrapper from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
+
 import NavBar from '../components/common/molecules/NavBar';
 import HomeStack from '../pages/home';
 import PlpStack from '../pages/productListing';
@@ -39,6 +41,9 @@ const RootStack = createStackNavigator(
     },
     Checkout: {
       screen: CheckoutStack,
+    },
+    ApplyNow: {
+      screen: ApplyNowWrapper,
     },
   },
   {
