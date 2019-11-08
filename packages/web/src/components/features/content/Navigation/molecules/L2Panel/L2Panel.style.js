@@ -60,7 +60,7 @@ export default css`
   .l2-image-banner {
     display: none;
   }
-  .l2-text-container {
+  .l2-promo-box {
     display: none;
   }
   .l2-image-banner-link {
@@ -210,10 +210,10 @@ export default css`
       display: block;
       padding: 11px 0 5px 0;
       line-height: 1.11;
-      &.half-l2-nav-link {
+      &.l2-nav-split-nav-link {
         padding: 13px 0 22px 0;
       }
-      &.text-banner-link {
+      &.promo-box-link {
         padding: 12px 0 15px 0;
       }
     }
@@ -232,21 +232,6 @@ export default css`
       margin-top: 36px;
       margin-bottom: 36px;
     }
-    .l2-image-banner-image {
-      width: 100%;
-      max-width: 210px;
-      height: 100%;
-      max-height: 330px;
-      &.half-img {
-        max-height: 138px;
-      }
-      &.two-col-img {
-        max-width: 450px;
-      }
-      &.three-col-img {
-        max-width: 690px;
-      }
-    }
     .l2-image-banner-link {
       .nav-bar-l1-item-label {
         width: auto;
@@ -260,12 +245,12 @@ export default css`
         display: inline-block;
       }
     }
-    .l2-text-wrapper {
+    .l2-promo-box-wrapper {
       display: block;
       margin-top: 36px;
       margin-bottom: 36px;
     }
-    .l2-text-container {
+    .l2-promo-box {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -275,8 +260,10 @@ export default css`
       height: 220px;
       padding: 0 7.5%;
       text-align: left;
-      border: 3px solid black;
-      &.l2-half-text-container {
+      border-style: solid;
+      border-width: 3px;
+      &.l2-half-promo-box {
+        padding: 0 4%;
         height: 89px;
       }
       &.border-pink {

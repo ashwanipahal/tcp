@@ -7,7 +7,7 @@ export const StyledPromoBanner = styled(PromoBanner)`
     .small_text_bold {
       display: inline-block;
       width: 100%;
-      line-height: 1.3;
+      line-height: 1;
       letter-spacing: 0.15px;
     }
   }
@@ -43,6 +43,8 @@ export const StyledPromoBanner = styled(PromoBanner)`
   }
   &.promo-banner-half {
     .small_text_bold {
+      display: inline-block;
+      width: 100%;
       font-size: 16.2px;
       line-height: 1.3;
       letter-spacing: 0.12px;

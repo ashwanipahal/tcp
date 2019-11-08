@@ -530,7 +530,6 @@ export default css`
     letter-spacing: 0.13px;
     text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
     line-height: normal;
-    width: 108px;
     text-align: left;
     margin: 0 auto;
     position: relative;

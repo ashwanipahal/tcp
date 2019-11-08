@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import { Heading, Row, Col, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import CategoryLayout from '../CategoryLayout';
+import PromoLayout from '../PromoLayout';
 import { keyboard } from '../../../../../../constants/constants';
 import { HideDrawerConsumer } from '../L1NavItem/L1NavItem';
 import PromoBadge from '../PromoBadge';
@@ -36,16 +36,18 @@ const renderPromoBadge = (promoBadge, currentIndex) => {
     )
   );
 };
+
+/**
+ * This function will return whether the next column after unbxd data is shop by size or not.
+ * @param {*} categoryLayout
+ */
 const isNextColShopBySize = categoryLayout => {
-  let nextColName = '';
   if (categoryLayout) {
-    categoryLayout.map(item => {
-      const { name } = item;
-      nextColName = name;
-      return item;
-    });
+    const [categoryData] = categoryLayout;
+    const { name } = categoryData;
+    return name === 'shopBySizeTwoColumns';
   }
-  return nextColName === 'shopBySizeTwoColumns';
+  return false;
 };
 
 const renderL3Panel = (
@@ -174,6 +176,10 @@ const createLinks = (
   return ``;
 };
 
+/**
+ * This function will return the total column used by unbxd data.
+ * @param {*} panelData
+ */
 const getPanelColCount = panelData => {
   let count = 0;
   Object.keys(panelData).map(category => {
@@ -184,6 +190,12 @@ const getPanelColCount = panelData => {
   return count;
 };
 
+/**
+ * This function will be used create the unbxd columns header.
+ * @param {*} label
+ * @param {*} hideOnMobileClass
+ * @param {*} categoryIndex
+ */
 const getHeader = (label, hideOnMobileClass, categoryIndex) => {
   return label ? (
     <div className="l2-nav-category-header">
@@ -259,8 +271,10 @@ const L2Panel = props => {
                       const firstCol = items.slice(0, MAX_ITEMS_IN_COL);
                       const secondCol = items.slice(MAX_ITEMS_IN_COL);
                       const columnClass = firstCol.length && secondCol.length ? 'half-width' : '';
+                      // tempPanelDataCount will be used to identify the last unbxd column
                       tempPanelDataCount += items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL;
                       const isLastPanelCol = tempPanelDataCount === panelDataCount;
+                      // setting tempPanelDataCount to 0 because it will be equal to totalpanel data count and is last column
                       tempPanelDataCount = isLastPanelCol ? 0 : tempPanelDataCount;
                       const hideOnMobileClass =
                         category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
@@ -299,7 +313,7 @@ const L2Panel = props => {
                         </React.Fragment>
                       );
                     })}
-                  <CategoryLayout
+                  <PromoLayout
                     categoryLayout={categoryLayout}
                     l1Index={l1Index}
                     hideL2Nav={context.hideL2Nav}

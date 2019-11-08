@@ -34,8 +34,7 @@ const isPencentageTab = style => {
     style === 'percentage_wrapped_large' ||
     style === 'percentage_all_wrapped_normal' ||
     style === 'percentage_all_wrapped_normal_tab' ||
-    style === 'percentage_wrapped_nav' ||
-    style === 'percentage_nav_inline'
+    style === 'percentage_wrapped_nav'
   );
 };
 /**

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { shallow } from 'enzyme';
-import { CategoryLayoutVanilla as CategoryLayout } from '../views/CategoryLayout';
+import { PromoLayoutVanilla as PromoLayout } from '../views/PromoLayout';
 
 describe('Category Layout Component', () => {
   it('renders correctly', () => {
@@ -101,7 +101,7 @@ describe('Category Layout Component', () => {
     ];
     const hideL2Nav = jest.fn();
     const categoryLayoutComp = shallow(
-      <CategoryLayout categoryLayout={mock} l1Index={0} hideL2Nav={hideL2Nav} panelColCount={4} />
+      <PromoLayout categoryLayout={mock} l1Index={0} hideL2Nav={hideL2Nav} panelColCount={4} />
     );
     expect(categoryLayoutComp).toMatchSnapshot();
   });
