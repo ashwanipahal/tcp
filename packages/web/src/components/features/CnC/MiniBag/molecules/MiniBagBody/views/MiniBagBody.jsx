@@ -217,6 +217,7 @@ class MiniBagBody extends React.PureComponent {
               sflItemsCount={savedforLaterQty}
               onItemEdit={this.handleItemEdit}
               setHeaderErrorState={this.setHeaderErrorState}
+              closeMiniBag={closeMiniBag}
             />
           ) : (
             <EmptyMiniBag
