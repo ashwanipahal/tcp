@@ -146,6 +146,7 @@ class RegisteredShippingForm extends React.Component {
   toggleModal = ({ type, open }) => {
     const { setEditState } = this.props;
     this.setState({ modalState: open, modalType: type });
+    // type: edit/add address form flag
     setEditState(open, type);
   };
 
