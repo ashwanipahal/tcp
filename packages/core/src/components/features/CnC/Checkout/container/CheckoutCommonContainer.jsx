@@ -45,7 +45,9 @@ import {
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
+import utils from '../../../../../utils';
 import { getCVVCodeInfoContentId } from '../organisms/BillingPage/container/BillingPage.selectors';
+import { intiSectionPage, formatPayload } from './CheckoutCommonContainer.util';
 
 const {
   getSmsSignUpLabels,
@@ -78,7 +80,6 @@ const {
   getIsPaymentDisabled,
   getCheckoutPageEmptyBagLabels,
 } = selectors;
-
 export class CheckoutContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const {
@@ -117,42 +118,20 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     }
   }
 
-  formatPayload = payload => {
-    const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
-    return {
-      ...otherPayload,
-      ...{
-        address1: addressLine1,
-        address2: addressLine2,
-        zip: zipCode,
-      },
-    };
-  };
-
-  intiSectionPage = (pageName, extraProps = {}) => {
-    const { initCheckoutSectionPage, router } = this.props;
-    let recalc;
-    let isPaypalPostBack;
-    if (router && router.query) {
-      ({ recalc, isPaypalPostBack } = router.query);
-    }
-    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
-  };
-
   shippingDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, { initialLoad: true });
+    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this.props, { initialLoad: true });
   };
 
   billingDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.BILLING);
+    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this.props);
   };
 
   reviewDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.REVIEW);
+    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this.props);
   };
 
   pickupDidMount = () => {
-    this.intiSectionPage(constants.CHECKOUT_STAGES.PICKUP);
+    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this.props);
   };
 
   render() {
@@ -260,7 +239,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         submitBilling={submitBilling}
         submitReview={submitReview}
         reviewProps={{ ...reviewProps, reviewDidMount: this.reviewDidMount }}
-        formatPayload={this.formatPayload}
+        formatPayload={formatPayload}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         setVenmoPickupState={setVenmoPickupState}
         setVenmoShippingState={setVenmoShippingState}
@@ -283,6 +262,20 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 }
 
 CheckoutContainer.getInitActions = () => initActions;
+
+CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
+  const DEFAULT_ACTIVE_COMPONENT = 'shipping';
+  const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'checkout',
+        pageSection: loadedComponent,
+      },
+    },
+  };
+};
 
 export const mapDispatchToProps = dispatch => {
   return {
