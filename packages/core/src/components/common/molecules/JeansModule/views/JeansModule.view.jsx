@@ -56,7 +56,13 @@ export class JeansModule extends PureComponent {
     return (
       <div className={className}>
         <div className="title-section">
-          <BodyCopy fontSize="fs24" fontWeight="semibold" fontFamily="secondary">
+          <BodyCopy
+            fontSize="fs20"
+            fontWeight="semibold"
+            fontFamily="secondary"
+            color="white"
+            textAlign="center"
+          >
             {jeansModule.headLine[0].text}
           </BodyCopy>
         </div>

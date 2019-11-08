@@ -4,8 +4,7 @@ const JeansModuleStyles = css`
   position: relative;
   height: 313px;
   border: 1px solid ${props => props.theme.colorPalette.gray[400]};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-
+  margin: 0 -14px ${props => props.theme.spacing.ELEM_SPACING.XL} -14px;
   .jeans-carousel {
     background: ${props => props.theme.colorPalette.gray[300]};
     overflow: hidden;
@@ -26,8 +25,6 @@ const JeansModuleStyles = css`
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
     transform: rotate(270deg);
     transform-origin: 0 0;
-    color: white;
-    text-align: center;
     line-height: 30px;
     text-decoration: uppercase;
   }
@@ -55,6 +52,7 @@ const JeansModuleStyles = css`
 
   @media ${props => props.theme.mediaQuery.medium} {
     height: 407px;
+    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
     .image-link {
       .carousel-image {
         height: 370px;
