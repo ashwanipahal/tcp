@@ -56,7 +56,11 @@ exports[`Shipping Page should render correctly 1`] = `
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId={null}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -152,7 +156,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
@@ -264,7 +272,11 @@ exports[`Shipping Page should render correctly with component did update and get
         Object {},
       ]
     }
-    shippingAddress={null}
+    shippingAddress={
+      Object {
+        "addressLine1": "",
+      }
+    }
     shippingAddressId="123"
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
