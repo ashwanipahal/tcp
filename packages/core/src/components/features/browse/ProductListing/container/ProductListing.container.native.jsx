@@ -253,3 +253,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProductListingContainer);
+export { ProductListingContainer as ProductListingContainerVanilla };
