@@ -21,6 +21,7 @@ const CAROUSEL_OPTIONS = {
   swipe: true,
   slidesToShow: 4,
   slidesToScroll: 1,
+  infinite: false,
   responsive: [
     {
       breakpoint: parseInt(breakpoints.medium, 10) - 1,
@@ -59,10 +60,10 @@ export class OutfitCarouselModule extends PureComponent {
     return (
       <div className={className}>
         <BodyCopy fontSize="fs16" fontWeight="black" className="heading">
-          {outfitModule.composites.headLine[0].text}
+          {outfitModule.headLine[0].text}
         </BodyCopy>
         <BodyCopy fontSize="fs12" fontWeight="regular" className="subheading">
-          {outfitModule.composites.subHeadLine[0].text}
+          {outfitModule.subHeadLine[0].text}
         </BodyCopy>
         <Carousel
           options={CAROUSEL_OPTIONS}
@@ -72,7 +73,7 @@ export class OutfitCarouselModule extends PureComponent {
             customArrowRight: getIconPath('carousel-big-carrot'),
           }}
         >
-          {outfitModule.composites.mediaLinkedList.map(({ image, link }, index) => {
+          {outfitModule.mediaLinkedList.map(({ image, link }, index) => {
             return (
               <div key={index.toString()}>
                 <Anchor

@@ -1,5 +1,5 @@
-const buildQuery = ({ slot, contentId, lang }) => `
-  ${slot}: moduleById(id: "${contentId}", lang: "${lang}") {
+const buildQuery = ({ slot, contentId }) => `
+  ${slot}: moduleById(id: "${contentId}") {
     contentId
     name
     type

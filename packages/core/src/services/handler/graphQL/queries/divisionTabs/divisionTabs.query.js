@@ -1,5 +1,5 @@
-const buildQuery = ({ slot, contentId, lang }) => `
-  ${slot}: moduleById(id: "${contentId}", lang: "${lang}") {
+const buildQuery = ({ slot, contentId }) => `
+  ${slot}: moduleById(id: "${contentId}") {
 		contentId
 		name
 		type
@@ -13,8 +13,8 @@ const buildQuery = ({ slot, contentId, lang }) => `
 				style
 			}
 			buttonList {
-				url
-				text
+				id: url
+				label: text
 				external
 				title
 				action

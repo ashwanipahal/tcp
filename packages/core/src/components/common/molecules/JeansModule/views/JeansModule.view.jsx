@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/JeansModule.style';
 import { Carousel } from '../..';
-import { Anchor, DamImage, BodyCopy } from '../../../atoms';
+import { Anchor, DamImage, BodyCopy, Image } from '../../../atoms';
 import theme from '../../../../../../styles/themes/TCP';
 import { getIconPath } from '../../../../../utils';
 
@@ -55,9 +55,10 @@ export class JeansModule extends PureComponent {
 
   render() {
     const { jeansModule, className } = this.props;
+
     return (
       <div className={className}>
-        <div className="title-section">{jeansModule.composites.headLine[0].text}</div>
+        <div className="title-section">{jeansModule.headLine[0].text}</div>
         <Carousel
           options={CAROUSEL_OPTIONS}
           carouselConfig={{
@@ -66,29 +67,51 @@ export class JeansModule extends PureComponent {
             customArrowRight: getIconPath('carousel-big-carrot'),
           }}
         >
-          {jeansModule.composites.imageTileWrapper.map(({ imageStyled }, index) => {
-            return (
-              <div className="jeans-carousel" key={index.toString()}>
-                <Anchor
-                  className="image-link"
-                  to={imageStyled[0].image.alt}
-                  asPath={imageStyled[0].image.url}
-                  dataLocator="dummy-datalocator"
-                >
-                  <DamImage
-                    className="carousel-image"
-                    imgData={{
-                      alt: imageStyled[0].image.alt,
-                      url: imageStyled[0].image.url,
-                    }}
-                  />
-                  <BodyCopy className="image-text" fontSize="fs12">
-                    {imageStyled[0].styled.text}
-                  </BodyCopy>
-                </Anchor>
-              </div>
-            );
-          })}
+          {jeansModule.imageTileWrapper.map(
+            ({ imageStyled, headLine, subHeadLine, textList, singleCTAButton }, index) => {
+              return (
+                <div className="jeans-carousel" key={index.toString()}>
+                  <Anchor
+                    className="image-link"
+                    to={imageStyled[0].image.alt}
+                    asPath={imageStyled[0].image.url}
+                    dataLocator="dummy-datalocator"
+                  >
+                    <DamImage
+                      className="carousel-image"
+                      imgData={{
+                        alt: imageStyled[0].image.alt,
+                        url: imageStyled[0].image.url,
+                      }}
+                    />
+                    <BodyCopy fontSize="fs12">{imageStyled[0].styled.text}</BodyCopy>
+                    <div className="overlapping-section">
+                      <div className="text-container">
+                        <BodyCopy fontSize="fs20">{headLine[0].text}</BodyCopy>
+                        <BodyCopy fontSize="fs12">{subHeadLine[0].text}</BodyCopy>
+                        {textList.map(textItem => {
+                          return (
+                            <>
+                              <Image src="/static/images/done.png" />
+                              <BodyCopy fontSize="fs14">{textItem.text}</BodyCopy>
+                            </>
+                          );
+                        })}
+                      </div>
+                      <Anchor
+                        className="shop-now-link"
+                        to={singleCTAButton.url}
+                        asPath={singleCTAButton.url}
+                        dataLocator="dummy-datalocator"
+                      >
+                        {singleCTAButton.text}
+                      </Anchor>
+                    </div>
+                  </Anchor>
+                </div>
+              );
+            }
+          )}
         </Carousel>
       </div>
     );

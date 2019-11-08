@@ -63,6 +63,7 @@ const OutfitListingView = ({
                 onTabChange={onTabChange}
                 outfitModule={outfitModule}
                 jeansModule={jeansModule}
+                asPath={asPath}
               />
             </Row>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>

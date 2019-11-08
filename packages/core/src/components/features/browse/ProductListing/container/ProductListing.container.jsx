@@ -26,6 +26,7 @@ import {
   getAppliedSortId,
   getLabels,
   getIsFilterBy,
+  getPLPTopPromos,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -113,6 +114,7 @@ class ProductListingContainer extends React.PureComponent {
       isLoggedIn,
       currencyAttributes,
       currency,
+      plpTopPromos,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath } = this.state;
@@ -142,6 +144,7 @@ class ProductListingContainer extends React.PureComponent {
         isLoggedIn={isLoggedIn}
         currency={currency}
         currencyExchange={currencyAttributes.exchangevalue}
+        plpTopPromos={plpTopPromos}
         {...otherProps}
       />
     ) : (
@@ -152,6 +155,7 @@ class ProductListingContainer extends React.PureComponent {
         currentNavIds={currentNavIds}
         longDescription={longDescription}
         categoryId={categoryId}
+        plpTopPromos={plpTopPromos}
       />
     );
   }
@@ -210,6 +214,7 @@ function mapStateToProps(state) {
     isFilterBy: getIsFilterBy(state),
     currencyAttributes: getCurrencyAttributes(state),
     currency: getCurrentCurrency(state),
+    plpTopPromos: getPLPTopPromos(state),
   };
 }
 
@@ -262,6 +267,7 @@ ProductListingContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
+  plpTopPromos: PropTypes.shape({}),
 };
 
 ProductListingContainer.defaultProps = {
@@ -286,6 +292,7 @@ ProductListingContainer.defaultProps = {
     exchangevalue: 1,
   },
   currency: 'USD',
+  plpTopPromos: {},
 };
 
 export default withRouter(

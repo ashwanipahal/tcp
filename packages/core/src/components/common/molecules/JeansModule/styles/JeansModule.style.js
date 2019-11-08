@@ -8,7 +8,7 @@ const JeansModuleStyles = css`
     background: ${props => props.theme.colorPalette.gray[300]};
   }
   .image-link {
-    img {
+    .carousel-image {
       margin: 0 auto;
       height: 276px;
     }
@@ -41,12 +41,37 @@ const JeansModuleStyles = css`
     margin-left: 44px;
   }
 
+  .overlapping-section {
+    display: none;
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     .title-section {
       margin-left: 0;
     }
     .tcp_carousel_wrapper {
       margin-left: 30px;
+    }
+
+    .jeans-carousel:hover {
+      position: relative;
+      .overlapping-section {
+        display: block;
+        position: absolute;
+        top: 0;
+      }
+      .carousel-image {
+        opacity: 0.2;
+      }
+    }
+    .text-container {
+      img {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      p {
+        display: inline;
+      }
     }
   }
 `;

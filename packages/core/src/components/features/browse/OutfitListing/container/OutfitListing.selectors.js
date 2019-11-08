@@ -17,7 +17,7 @@ export const divisionTabs = () => {
       ],
       buttonList: [
         {
-          id: '/button/url1',
+          id: '/c/boys-outfits',
           label: 'Etna',
           title: 'Etna',
           external: 0,
@@ -25,7 +25,7 @@ export const divisionTabs = () => {
           action: '<action_value>',
         },
         {
-          id: '/button/url',
+          id: '/c/girl-outfits',
           label: 'LorumIpsum1',
           title: 'LorumIpsum1',
           external: 0,
@@ -33,7 +33,7 @@ export const divisionTabs = () => {
           action: '<action_value>',
         },
         {
-          id: '/button/url',
+          id: '/c/toddler-girl-outfits',
           label: 'LorumIpsum2',
           title: 'LorumIpsum2',
           external: 0,
@@ -41,7 +41,7 @@ export const divisionTabs = () => {
           action: '<action_value>',
         },
         {
-          id: '/button/url',
+          id: '/c/toddler-boy-outfits',
           label: 'LorumIpsum3',
           title: 'LorumIpsum3',
           external: 0,

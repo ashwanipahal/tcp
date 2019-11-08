@@ -262,3 +262,16 @@ export const getIsFilterBy = state => {
 export const getIsDataLoading = state => {
   return state.ProductListing.get('isDataLoading');
 };
+
+export const getPLPTopPromos = state => {
+  const topPromos = state.ProductListing.getIn(['bannerInfo', 'val', 'top']);
+  const topPromoModules =
+    (topPromos &&
+      topPromos.map(promoItem => {
+        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+      })) ||
+    {};
+  console.log('topPromoModules', topPromoModules);
+  return topPromoModules;
+  // return state.ProductListing.bannerInfo.val.top;
+};

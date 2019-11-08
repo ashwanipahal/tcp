@@ -10,16 +10,18 @@ export class DivisionTabModule extends PureComponent {
     divisionTab: PropTypes.shape({}),
     onTabChange: PropTypes.func,
     className: PropTypes.string,
+    asPath: PropTypes.string,
   };
 
   static defaultProps = {
     divisionTab: {},
     onTabChange: () => {},
     className: '',
+    asPath: '',
   };
 
   render() {
-    const { divisionTab, onTabChange, className } = this.props;
+    const { divisionTab, onTabChange, className, asPath } = this.props;
     return (
       <div className={className}>
         <BodyCopy
@@ -28,13 +30,13 @@ export class DivisionTabModule extends PureComponent {
           fontFamily="secondary"
           fontWeight="semiBold"
         >
-          {divisionTab.composites.headLine[0].text}
+          {divisionTab.headLine[0].text}
         </BodyCopy>
         <ButtonTabs
           className={`${className} button-tabs`}
-          selectedTabId="0"
+          selectedTabId={asPath}
           onTabChange={onTabChange}
-          tabs={divisionTab.composites.buttonList}
+          tabs={divisionTab.buttonList}
           dataLocator=""
         />
       </div>
