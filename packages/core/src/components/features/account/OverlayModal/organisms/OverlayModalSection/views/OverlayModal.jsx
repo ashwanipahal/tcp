@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { isCanada } from '@tcp/core/src/utils';
 import styles from '../styles/OverlayModal.style';
 
 const propTypes = {
@@ -48,7 +49,7 @@ class OverlayModal extends React.Component {
     }
     this.getCustomStyles({ styleModal: true });
     if (this.modalRef) {
-      this.modalRef.focus();
+      this.modalRef.focus({ preventScroll: true });
     }
   }
 
@@ -218,11 +219,14 @@ class OverlayModal extends React.Component {
             onClick={this.closeModal}
           />
           <div
-            className={`modal__triangle hide-on-mobile ${showCondensedHeader &&
-              'condensed-modal-triangle'}`}
+            className={`${
+              isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
+            } modal__triangle hide-on-mobile ${showCondensedHeader && 'condensed-modal-triangle'}`}
             id="modalTriangle"
           />
-          <div className="modal__bar hide-on-mobile" />
+          <div
+            className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar hide-on-mobile`}
+          />
           <ModalContent className="modal__content" {...componentProps} />
         </div>
       </div>

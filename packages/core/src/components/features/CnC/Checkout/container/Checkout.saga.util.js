@@ -107,7 +107,7 @@ export function* updateShipmentMethodSelection({ payload }) {
     yield put(
       BAG_PAGE_ACTIONS.getCartData({
         isRecalculateTaxes: true,
-        excludeCartItems: true,
+        excludeCartItems: false,
         recalcRewards: false,
         isCheckoutFlow: true,
         translation: false,

@@ -5,6 +5,7 @@ import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.sele
 import ProductListing from '../views';
 import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 
 import {
@@ -13,6 +14,7 @@ import {
   getUnbxdId,
   getCategoryId,
   getLabelsProductListing,
+  getLabelsAccountOverView,
   getLongDescription,
   getIsLoadingMore,
   getLastLoadedPageNumber,
@@ -25,7 +27,11 @@ import {
   getIsDataLoading,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
-import { isPlccUser } from '../../../account/User/container/User.selectors';
+import {
+  isPlccUser,
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import getSortLabels from '../molecules/SortSelector/views/Sort.selectors';
 
@@ -48,9 +54,11 @@ class ProductListingContainer extends React.PureComponent {
     getProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
   };
 
-  onGoToPDPPage = (title, pdpUrl, selectedColorProductId) => {
+  onGoToPDPPage = (title, pdpUrl, selectedColorProductId, productInfo) => {
     const { navigation } = this.props;
-    navigation.navigate('ProductDetail', {
+    const { bundleProduct } = productInfo;
+    const routeName = bundleProduct ? 'BundleDetail' : 'ProductDetail';
+    navigation.navigate(routeName, {
       title,
       pdpUrl,
       selectedColorProductId,
@@ -83,6 +91,9 @@ class ProductListingContainer extends React.PureComponent {
       getProducts,
       navigation,
       sortLabels,
+      onAddItemToFavorites,
+      isLoggedIn,
+      labelsLogin,
       ...otherProps
     } = this.props;
     return (
@@ -101,6 +112,7 @@ class ProductListingContainer extends React.PureComponent {
         longDescription={longDescription}
         labelsFilter={labelsFilter}
         labels={labels}
+        labelsLogin={labelsLogin}
         isLoadingMore={isLoadingMore}
         lastLoadedPageNumber={lastLoadedPageNumber}
         onSubmit={submitProductListingFiltersForm}
@@ -109,6 +121,8 @@ class ProductListingContainer extends React.PureComponent {
         onGoToPDPPage={this.onGoToPDPPage}
         sortLabels={sortLabels}
         onLoadMoreProducts={this.onLoadMoreProducts}
+        onAddItemToFavorites={onAddItemToFavorites}
+        isLoggedIn={isLoggedIn}
         {...otherProps}
       />
     );
@@ -150,6 +164,7 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    labelsLogin: getLabelsAccountOverView(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     isPlcc: isPlccUser(state),
@@ -158,6 +173,7 @@ function mapStateToProps(state) {
     isPickupModalOpen: getIsPickupModalOpen(state),
     totalProductsCount: getTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
   };
 }
@@ -174,6 +190,9 @@ function mapDispatchToProps(dispatch) {
     addItemToCartBopis: () => {},
     resetProducts: () => {
       dispatch(resetPlpProducts());
+    },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
     },
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
@@ -203,6 +222,9 @@ ProductListingContainer.propTypes = {
   router: PropTypes.shape({}).isRequired,
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   resetProducts: PropTypes.func,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 ProductListingContainer.defaultProps = {
@@ -222,6 +244,9 @@ ProductListingContainer.defaultProps = {
   lastLoadedPageNumber: 0,
   sortLabels: [],
   resetProducts: () => {},
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
+  labelsLogin: {},
 };
 
 export default connect(
