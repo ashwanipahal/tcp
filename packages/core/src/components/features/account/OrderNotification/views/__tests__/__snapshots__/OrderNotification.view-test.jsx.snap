@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderNotification component should renders correctly  1`] = `
+<Fragment>
+  <Styled(Row)
+    className=""
+    component="div"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-ml-MED elem-mr-MED elem-pt-LRG elem-pb-LRG separator-line"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs18"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          order expired
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="elem-mt-SM"
+          color="text.primary"
+          component="div"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="white"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_global_order
+          </Styled(BodyCopy)>
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/orders/order-details/7000050054"
+            className="view-order-link"
+            dataLocator="order-number-value"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontSizeVariation="medium"
+            to="/account?id=orders&subSection=order-details&orderId=7000050054"
+            underline={true}
+          >
+            7000050054
+          </Styled(Anchor)>
+          <Styled(Anchor)
+            anchorVariation="secondary"
+            asPath="/account/orders/order-details/7000050054"
+            className="view-order-link elem-ml-LRG"
+            fontSizeVariation="medium"
+            to="/account?id=orders&subSection=order-details&orderId=7000050054"
+            underline={true}
+          >
+            lbl_global_viewOrderDetails
+          </Styled(Anchor)>
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="elem-mt-SM"
+          color="white"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_global_orderedOn Oct 16, 2019
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;
+
+exports[`OrderNotification component should renders empty state correctly  1`] = `<Fragment />`;
