@@ -7,7 +7,6 @@ import { reduxForm, Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
-import { getMapSliceForSize } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { isAndroid } from '../../../../../../../utils/index.native';
@@ -108,25 +107,14 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
       pristine,
       submitting,
       storeSearchError,
-      PickupSkuFormValues,
-      colorFitsSizesMap,
       isSkuResolved,
       onCloseClick,
       handleSubmit,
       onSearch,
+      PickupSkuFormValues,
       selectedValue,
     } = this.props;
-
-    let disableButton = pristine;
-
-    const formExists = Object.entries(PickupSkuFormValues).length === 0;
-
-    const { color, Fit, Size } = PickupSkuFormValues;
-
-    const enableButton = formExists ? pristine : true;
-
-    const sizeAvailable = !formExists && getMapSliceForSize(colorFitsSizesMap, color, Fit, Size);
-    disableButton = sizeAvailable ? !sizeAvailable : enableButton;
+    const disableButton = Object.values(PickupSkuFormValues).includes('');
     return showStoreSearching ? (
       <PickUpModalView>
         <PickUpHeaderText>{PICKUP_LABELS.FIND_STORE}</PickUpHeaderText>
