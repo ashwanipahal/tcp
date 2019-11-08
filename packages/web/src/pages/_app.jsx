@@ -62,7 +62,7 @@ class TCPWebApp extends App {
     } catch (e) {
       globalProps = {};
     }
-    const pageProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
+    const pageProps = await TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
       pageProps,
     };
@@ -296,7 +296,7 @@ class TCPWebApp extends App {
               <div className="content-wrapper">
                 <div id="overlayWrapper">
                   <div id="overlayComponent" />
-                  <Component {...pageProps} />
+                  <Component {...pageProps} pageName={componentPageName} />
                 </div>
               </div>
               <BackToTop />

@@ -29,4 +29,8 @@ export default css`
     position: relative;
     top: 3px;
   }
+
+  .moduleD__promo-banner {
+    margin-bottom: 16px;
+  }
 `;
