@@ -9,11 +9,11 @@ describe('DamImageCompVanilla', () => {
     component = shallow(<DamImageCompVanilla />);
   });
 
-  it('should be defined', () => {
+  it('should be defined  ', () => {
     expect(component).toBeDefined();
   });
 
-  it('should render correctly', () => {
+  it('should render correctly ', () => {
     expect(component).toMatchSnapshot();
   });
 
