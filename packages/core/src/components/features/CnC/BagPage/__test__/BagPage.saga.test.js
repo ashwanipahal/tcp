@@ -64,7 +64,7 @@ describe('Cart Item saga', () => {
     getCartDataSagaGen.next(res);
     getCartDataSagaGen.next([{ prodpartno: '123' }]);
     expect(getCartDataSagaGen.next(res).value).toEqual(
-      put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails, true))
+      put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );
     getCartDataSagaGen.next(res);
     const putDescriptor = getCartDataSagaGen.next(res).value;

@@ -53,13 +53,6 @@ function updateItem(state, itemId, status) {
   return state;
 }
 
-function getOrderDetailData(state, { payload, excludeCartItems }) {
-  if (!excludeCartItems) {
-    return fromJS(payload);
-  }
-  return fromJS({ ...payload, orderItems: state.getIn(['orderDetails', 'orderItems']) });
-}
-
 function setCartItemsUpdating(state, isCartItemUpdating) {
   return state.setIn(['uiFlags', 'isCartItemsUpdating'], isCartItemUpdating);
 }
@@ -118,7 +111,7 @@ const returnBagPageReducer = (state = initialState, action) => {
 const BagPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
-      return state.set('loaded', true).set('orderDetails', getOrderDetailData(state, action));
+      return state.set('loaded', true).set('orderDetails', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS:
       return state.set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
