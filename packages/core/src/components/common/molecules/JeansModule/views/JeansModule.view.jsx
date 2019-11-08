@@ -12,7 +12,6 @@ const { breakpoints } = theme;
 const CAROUSEL_OPTIONS = {
   autoplay: false,
   arrows: true,
-  centerPadding: '16px',
   fade: false,
   speed: 1000,
   lazyLoad: false,
@@ -28,7 +27,6 @@ const CAROUSEL_OPTIONS = {
         slidesToShow: 2.5,
         arrows: false,
         swipeToSlide: true,
-        centerPadding: '18%',
       },
     },
     {
@@ -37,7 +35,6 @@ const CAROUSEL_OPTIONS = {
         slidesToShow: 4.25,
         arrows: true,
         swipeToSlide: true,
-        centerPadding: '13%',
       },
     },
   ],
@@ -84,17 +81,41 @@ export class JeansModule extends PureComponent {
                         url: imageStyled[0].image.url,
                       }}
                     />
-                    <BodyCopy fontSize="fs12">{imageStyled[0].styled.text}</BodyCopy>
+                    <BodyCopy className="image-text" fontSize="fs12">
+                      {imageStyled[0].styled.text}
+                    </BodyCopy>
                     <div className="overlapping-section">
                       <div className="text-container">
-                        <BodyCopy fontSize="fs20">{headLine[0].text}</BodyCopy>
-                        <BodyCopy fontSize="fs12">{subHeadLine[0].text}</BodyCopy>
+                        <BodyCopy
+                          className="text-header"
+                          textAlign="center"
+                          fontSize="fs20"
+                          fontWeight="black"
+                        >
+                          {headLine[0].text}
+                        </BodyCopy>
+                        <BodyCopy
+                          className="text-subheader"
+                          textAlign="center"
+                          fontWeight="semibold"
+                          fontSize="fs12"
+                        >
+                          {subHeadLine[0].text}
+                        </BodyCopy>
                         {textList.map(textItem => {
                           return (
-                            <>
-                              <Image src="/static/images/done.png" />
-                              <BodyCopy fontSize="fs14">{textItem.text}</BodyCopy>
-                            </>
+                            <div className="text-line">
+                              <Image className="done-button" src="/static/images/done.png" />
+                              <BodyCopy
+                                className="text-item"
+                                fontSize="fs14"
+                                fontWeight="extrabold"
+                                textAlign="center"
+                                fontFamily="secondary"
+                              >
+                                {textItem.text}
+                              </BodyCopy>
+                            </div>
                           );
                         })}
                       </div>

@@ -2,10 +2,13 @@ import { css } from 'styled-components';
 
 const JeansModuleStyles = css`
   position: relative;
-  height: 312px;
+  height: 313px;
+  border: 1px solid ${props => props.theme.colorPalette.gray[400]};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 
   .jeans-carousel {
     background: ${props => props.theme.colorPalette.gray[300]};
+    overflow: hidden;
   }
   .image-link {
     .carousel-image {
@@ -14,13 +17,13 @@ const JeansModuleStyles = css`
     }
   }
   .title-section {
-    width: 312px;
+    width: 313px;
     height: 30px;
-    background: #1a1a1a;
+    background: ${props => props.jeansModule.set[1].val};
     position: absolute;
     bottom: -30px;
     left: 0;
-    margin-left: 14px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
     transform: rotate(270deg);
     transform-origin: 0 0;
     color: white;
@@ -29,7 +32,7 @@ const JeansModuleStyles = css`
   }
   .image-text {
     height: 36px;
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid ${props => props.theme.colorPalette.gray[900]};
     background: transparent;
     text-align: center;
     line-height: 36px;
@@ -59,6 +62,8 @@ const JeansModuleStyles = css`
         display: block;
         position: absolute;
         top: 0;
+        height: 100%;
+        width: 100%;
       }
       .carousel-image {
         opacity: 0.2;
@@ -69,9 +74,33 @@ const JeansModuleStyles = css`
         display: inline-block;
         vertical-align: middle;
       }
-      p {
+      .text-item {
         display: inline;
       }
+    }
+    .done-button {
+      width: 20px;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    }
+    .shop-now-link {
+      position: absolute;
+      bottom: 0;
+      background: ${props => props.jeansModule.set[1].val};
+      color: white;
+      width: 100%;
+      height: 38px;
+      line-height: 36px;
+      left: 0;
+    }
+    .text-header {
+      margin: 19px 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+    .text-subheader {
+      margin-bottom: 27px;
+    }
+    .text-line {
+      text-align: left;
+      margin: 0 ${props => props.theme.spacing.ELEM_SPACING.MED} 20px;
     }
   }
 `;
