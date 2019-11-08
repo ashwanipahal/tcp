@@ -94,6 +94,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cvvCodeInfoContentId,
       checkoutServerError,
       clearCheckoutServerError,
+      couponHelpContentId,
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
@@ -104,6 +105,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       getGiftServicesContentTcpId,
       getGiftServicesContentGymId,
       cvvCodeInfoContentId,
+      couponHelpContentId,
     ]);
     if (checkoutServerError) {
       clearCheckoutServerError({});
@@ -424,6 +426,7 @@ const mapStateToProps = state => {
     pickUpContactPerson: getPickupValues(state),
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
+    couponHelpContentId: BagPageSelector.getNeedHelpContentId(state),
   };
 };
 
