@@ -13,7 +13,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="header-middle-nav-storelocator"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -44,7 +44,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="header-middle-nav-search"
         colSize={
           Object {
-            "large": 4,
+            "large": 2,
             "medium": 8,
             "small": 6,
           }
@@ -91,7 +91,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         className="textRight header-middle-login-section false"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -107,9 +107,11 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         <GuestUserInfo
           createAccount="createAccount"
           isDrawer={false}
+          isRememberedUser={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
+          userName={null}
         />
         <Styled(Anchor)
           anchorVariation="primary"
@@ -195,7 +197,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="header-middle-nav-storelocator"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -226,7 +228,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="header-middle-nav-search"
         colSize={
           Object {
-            "large": 4,
+            "large": 2,
             "medium": 8,
             "small": 6,
           }
@@ -273,7 +275,7 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         className="textRight header-middle-login-section false"
         colSize={
           Object {
-            "large": 4,
+            "large": 5,
             "medium": 8,
             "small": 6,
           }
@@ -289,9 +291,11 @@ exports[`HeaderMiddleNav component renders correctly when props dont change 1`] 
         <GuestUserInfo
           createAccount="createAccount"
           isDrawer={false}
+          isRememberedUser={false}
           login="login"
           onLinkClick={[Function]}
           triggerLoginCreateAccount={true}
+          userName={null}
         />
         <Styled(Anchor)
           anchorVariation="primary"
