@@ -43,6 +43,45 @@ class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       getDetails,
+      
+    } = this.props;
+
+    // TODO - fix this to extract the product ID from the page.
+    const productId = this.extractPID();
+
+    getDetails({ productColorId: productId });
+    window.scrollTo(0, 100);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      getDetails,
+      router: {
+        query: { pid },
+      },
+    } = this.props;
+
+    if (prevProps.router.query.pid !== pid) {
+      const productId = this.extractPID();
+      getDetails({ productColorId: productId });
+      window.scrollTo(0, 100);
+    }
+  }
+
+  componentWillUnmount = () => {
+    const { clearAddToBagError } = this.props;
+    clearAddToBagError();
+  };
+
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, productInfo } = this.props;
+    let cartItemInfo = getCartItemInfo(productInfo, formValues);
+    cartItemInfo = { ...cartItemInfo };
+    addToBagEcom(cartItemInfo);
+  };
+
+  extractPID = () => {
+    const {
       router: {
         query: { pid },
       },
@@ -58,21 +97,9 @@ class ProductDetailContainer extends React.PureComponent {
       productId = 'gift';
     }
 
-    getDetails({ productColorId: productId });
-    window.scrollTo(0, 100);
-  }
-
-  componentWillUnmount = () => {
-    const { clearAddToBagError } = this.props;
-    clearAddToBagError();
+    return productId
   };
 
-  handleAddToBag = () => {
-    const { addToBagEcom, formValues, productInfo } = this.props;
-    let cartItemInfo = getCartItemInfo(productInfo, formValues);
-    cartItemInfo = { ...cartItemInfo };
-    addToBagEcom(cartItemInfo);
-  };
 
   render() {
     const {
