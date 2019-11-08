@@ -1,7 +1,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import constants from '../Orders.constants';
-import { setOrdersList } from './Orders.actions';
+import { setOrdersList, showLoader } from './Orders.actions';
 import { getOrderHistory } from '../../../../../services/abstractors/account';
 
 /**
@@ -10,6 +10,7 @@ import { getOrderHistory } from '../../../../../services/abstractors/account';
  */
 export function* getMyOrders({ payload }) {
   try {
+    yield put(showLoader());
     const orders = yield call(getOrderHistory, payload.siteId, payload.currentSiteId);
     yield put(setOrdersList(orders));
   } catch (e) {
