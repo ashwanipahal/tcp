@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ImageCompVanilla should pass source value 1`] = `
+exports[`DamImageCompVanilla should pass source value 1`] = `
 <Image
   accessibilityLabel=""
   accessibilityRole="image"
@@ -18,7 +18,7 @@ exports[`ImageCompVanilla should pass source value 1`] = `
 />
 `;
 
-exports[`ImageCompVanilla should render correctly 1`] = `
+exports[`DamImageCompVanilla should render correctly 1`] = `
 <Image
   accessibilityLabel=""
   accessibilityRole="image"
