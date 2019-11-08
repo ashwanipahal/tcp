@@ -210,7 +210,7 @@ ReactTooltip.defaultProps = {
   toggleOnPress: true,
   height: 96,
   width: 240,
-  pointerColor: colorPalette.white,
+  pointerColor: colorPalette.gray[300],
   backgroundColor: colorPalette.white,
   onClose: () => {},
   onOpen: () => {},

@@ -2,11 +2,18 @@ import React from 'react';
 import { StatusBar, StyleSheet, UIManager, Platform } from 'react-native';
 import { Box } from '@fabulas/astly';
 import { Provider } from 'react-redux';
-
+import CookieManager from 'react-native-cookies';
+import AsyncStorage from '@react-native-community/async-storage';
 import { PropTypes } from 'prop-types';
 import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
 import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.native';
-import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tcp/core/src/utils';
+import {
+  createAPIConfig,
+  switchAPIConfig,
+  resetApiConfig,
+  isAndroid,
+  isGymboree,
+} from '@tcp/core/src/utils';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
 // eslint-disable-next-line
@@ -52,7 +59,12 @@ export class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.store.dispatch(getUserInfo());
+    if (Platform.OS === 'ios') {
+      this.setCooKies();
+    } else {
+      this.store.dispatch(getUserInfo());
+    }
+
     const { apiConfig } = this.state;
     const { RAYGUN_API_KEY, brandId, RWD_APP_VERSION, isErrorReportingActive } = apiConfig;
 
@@ -65,6 +77,40 @@ export class App extends React.PureComponent {
       });
     }
   }
+
+  setCooKies = () => {
+    const date = new Date();
+
+    const daysAlive = 365;
+    const expiration = date.setTime(date.getTime() + daysAlive * 24 * 60 * 60 * 1000);
+    const host = isGymboree() ? '.gymboree.com' : '.childrensplace.com';
+
+    AsyncStorage.getAllKeys().then(keys => {
+      AsyncStorage.multiGet(keys).then(items => {
+        const promises = [];
+        // eslint-disable-next-line no-plusplus
+        for (let index = 0; index < items.length; index++) {
+          const item = items[index];
+          if (item[0].startsWith('WC_')) {
+            const cookie = {
+              path: '/',
+              value: item[1],
+              domain: host,
+              name: item[0],
+              origin: host,
+              version: '1',
+              expiration,
+            };
+            promises.push(CookieManager.set(cookie));
+          }
+        }
+
+        Promise.all(promises).then(() => {
+          this.store.dispatch(getUserInfo());
+        });
+      });
+    });
+  };
 
   removeSplash = () => {
     this.setState({ isSplashVisible: false });
@@ -79,7 +125,11 @@ export class App extends React.PureComponent {
   toggleBrandAction = () => {
     const { showBrands } = this.state;
     this.setState({ showBrands: !showBrands }, () => {
-      this.store.dispatch(getUserInfo());
+      if (Platform.OS === 'ios') {
+        this.setCooKies();
+      } else {
+        this.store.dispatch(getUserInfo());
+      }
     });
   };
   /**

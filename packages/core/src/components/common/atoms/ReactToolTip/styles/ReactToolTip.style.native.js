@@ -13,7 +13,7 @@ const OutfitMainTileWrapper = styled.View`
     `${props.theme.spacing.ELEM_SPACING.XS} ${props.theme.spacing.ELEM_SPACING.MED} ${
       props.theme.spacing.ELEM_SPACING.XS
     }`};
-  background-color: ${props => props.theme.colorPalette.white};
+  background-color: ${props => props.theme.colorPalette.gray[300]};
   ${props =>
     props.tooltipStyle
       ? `width: ${props.tooltipStyle.width}px;

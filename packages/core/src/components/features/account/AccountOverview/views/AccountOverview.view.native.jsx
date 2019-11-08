@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
@@ -8,6 +8,8 @@ import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/accoun
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
 import { getLabelValue } from '@tcp/core/src/utils';
+import AsyncStorage from '@react-native-community/async-storage';
+import CookieManager from 'react-native-cookies';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
@@ -76,9 +78,20 @@ class AccountOverview extends PureComponent<Props> {
     if (!changePassword) this.navigateToChangePassword();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevPops) {
     const { changePassword } = this.state;
     if (!changePassword) this.navigateToChangePassword();
+
+    const { isUserLoggedIn } = this.props;
+    if (prevPops.isUserLoggedIn !== isUserLoggedIn && isUserLoggedIn && Platform.OS === 'ios')
+      // save cookies in the async storage for ios
+      CookieManager.getAll().then(res => {
+        Object.keys(res).forEach(key => {
+          if (key.startsWith('WC_')) {
+            AsyncStorage.setItem(key, res[key].value);
+          }
+        });
+      });
   }
 
   navigateToChangePassword = () => {
@@ -231,6 +244,7 @@ class AccountOverview extends PureComponent<Props> {
     this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
+
     return (
       <View style={viewContainerStyle}>
         {isUserLoggedIn && (
