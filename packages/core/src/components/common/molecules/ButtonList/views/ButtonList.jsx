@@ -133,10 +133,13 @@ const ButtonList = props => {
     dataLocatorDivisionImages,
     dataLocatorTextCta,
     fill,
+    overwriteCtaVariation,
   } = props;
 
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
   const { compClassName, ctaInfo, compWrapper, noCurveMobile } = buttonListConfig;
+
+  ctaInfo.ctaVariation = overwriteCtaVariation || ctaInfo.ctaVariation;
 
   let Component = ButtonCTA;
   let dataLocator = dataLocatorTextCta;
@@ -200,6 +203,7 @@ ButtonList.defaultProps = {
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',
   fill: '',
+  overwriteCtaVariation: '',
 };
 
 ButtonList.propTypes = {
@@ -222,6 +226,7 @@ ButtonList.propTypes = {
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,
   fill: PropTypes.string,
+  overwriteCtaVariation: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ButtonList), ButtonListStyle);

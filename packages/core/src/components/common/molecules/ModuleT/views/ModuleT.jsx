@@ -139,6 +139,7 @@ class ModuleT extends React.PureComponent {
               dataLocatorDivisionImages={getLocator('moduleT_cta_image')}
               dataLocatorTextCta={getLocator('moduleT_cta_links')}
               className="button-list-container-alternate"
+              overwriteCtaVariation="category-links-light"
             />
           )}
         </div>
