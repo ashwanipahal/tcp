@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
+import { Modal } from '@tcp/core/src/components/common/molecules';
+import { getViewportInfo, isIosWeb, isAndroidWeb } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { isCanada } from '@tcp/core/src/utils';
 import styles from '../styles/OverlayModal.style';
@@ -35,6 +37,7 @@ class OverlayModal extends React.Component {
     this.bodyContainer = bodyContainer;
     const [body] = document.getElementsByTagName('body');
     this.body = body;
+    this.isMobile = getViewportInfo().isMobile && (isIosWeb() || isAndroidWeb());
     this.handleWindowClick = this.handleWindowClick.bind(this);
     this.keydownInOverlay = this.keydownInOverlay.bind(this);
   }
@@ -66,7 +69,9 @@ class OverlayModal extends React.Component {
       this.getCustomStyles({ styleModal: true });
     }
 
-    modal.addEventListener('keydown', this.keydownInOverlay);
+    if (!this.isMobile) {
+      modal.addEventListener('keydown', this.keydownInOverlay);
+    }
 
     return null;
   }
@@ -93,6 +98,7 @@ class OverlayModal extends React.Component {
 
   // eslint-disable-next-line complexity
   styleModalTriangle = ({ comp }) => {
+    if (this.isMobile) return;
     const { showCondensedHeader } = this.props;
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
@@ -131,6 +137,7 @@ class OverlayModal extends React.Component {
   };
 
   getCustomStyles = ({ styleModal }) => {
+    if (this.isMobile) return;
     const { component } = this.props;
     const comp = document.getElementById(component);
     /* istanbul ignore else */
@@ -200,7 +207,28 @@ class OverlayModal extends React.Component {
       showCondensedHeader,
     } = this.props;
 
-    return (
+    return this.isMobile && component !== 'accountDrawer' ? (
+      <div>
+        <Modal
+          contentRef={this.setModalRef}
+          isOpen
+          className={className}
+          overlayClassName="TCPModal__Overlay"
+          onRequestClose={this.closeModal}
+          noPadding
+          id="modalWrapper"
+          widthConfig={{ small: '100%' }}
+          heightConfig={{ minHeight: '500px' }}
+        >
+          <div
+            id="dialogContent"
+            className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
+          >
+            <ModalContent className="modal__content" {...componentProps} />
+          </div>
+        </Modal>
+      </div>
+    ) : (
       <div
         className={className}
         id="modalWrapper"
