@@ -31,6 +31,7 @@ const ModuleP = props => {
     onQuickViewOpenClick,
     item,
     viaModule,
+    labels,
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -73,6 +74,7 @@ const ModuleP = props => {
         fullWidth
         productImageWidth={PRODUCT_IMAGE_WIDTH}
         viaModule={viaModule}
+        labelsPlpTiles={labels}
       />
     </View>
   );
@@ -86,6 +88,10 @@ ModuleP.propTypes = {
   onQuickViewOpenClick: PropTypes.func,
   item: PropTypes.shape({}).isRequired,
   viaModule: PropTypes.string,
+  labels: PropTypes.shape({
+    lbl_plpTiles_shop_collection: PropTypes.string,
+    lbl_add_to_bag: PropTypes.string,
+  }).isRequired,
 };
 
 ModuleP.defaultProps = {

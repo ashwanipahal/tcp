@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { BodyCopyWithSpacing } from '../../../../common/atoms/styledWrapper';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import { Wrapper, SMSWrapper, InnerWrapper } from '../styles/Confirmation.styles.native';
@@ -31,6 +32,7 @@ const ConfirmationView = ({
   orderDetails,
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
+  navigation,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -94,7 +96,13 @@ const ConfirmationView = ({
         />
       </InnerWrapper>
       {renderAccountForm(isGuest)}
-      <CnCTemplate isConfirmationPage isGuest={isGuest} pageCategory="confirmation" />
+
+      <CnCTemplate
+        isConfirmationPage
+        isGuest={isGuest}
+        navigation={navigation}
+        pageCategory="confirmation"
+      />
     </Wrapper>
   );
 };
@@ -134,10 +142,12 @@ ConfirmationView.propTypes = {
     orderTotal: PropTypes.number,
     itemsCount: PropTypes.number,
   }).isRequired,
+  navigation: PropTypes.shape({}),
 };
 ConfirmationView.defaultProps = {
   isGuest: true,
   isOrderPending: false,
   encryptedEmailAddress: '',
+  navigation: null,
 };
 export default ConfirmationView;
