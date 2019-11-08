@@ -16,19 +16,21 @@ import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getPaypalButton() {
-    const { showAddTobag, containerId, isBagPageStickyHeader } = this.props;
+    const { showAddTobag, containerId, isBagPageStickyHeader, isPayPalHidden } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
       containerID = 'paypal-button-container-bag-header';
     }
     return (
-      <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-        <PayPalButton
-          className="payPal-button"
-          containerId={containerID}
-          height={isBagPageStickyHeader || getViewportInfo().isMobile ? 42 : 48}
-        />
-      </div>
+      !isPayPalHidden && (
+        <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
+          <PayPalButton
+            className="payPal-button"
+            containerId={containerID}
+            height={isBagPageStickyHeader || getViewportInfo().isMobile ? 42 : 48}
+          />
+        </div>
+      )
     );
   }
 

@@ -32,6 +32,7 @@ export const LoyaltyBannerContainer = ({
   closeAddedToBagModal,
   inheritedStyles,
   openApplyNowModal,
+  navigation,
 }) => {
   const {
     estimatedRewards,
@@ -60,6 +61,7 @@ export const LoyaltyBannerContainer = ({
       closeAddedToBagModal={closeAddedToBagModal}
       inheritedStyles={inheritedStyles}
       openApplyNowModal={openApplyNowModal}
+      navigation={navigation}
     />
   );
 };
@@ -77,6 +79,7 @@ LoyaltyBannerContainer.propTypes = {
   isInternationalShipping: PropTypes.bool,
   inheritedStyles: PropTypes.string,
   openApplyNowModal: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -87,6 +90,7 @@ LoyaltyBannerContainer.defaultProps = {
   pageCategory: '',
   isInternationalShipping: false,
   inheritedStyles: '',
+  navigation: null,
 };
 
 export const mapDispatchToProps = dispatch => ({
