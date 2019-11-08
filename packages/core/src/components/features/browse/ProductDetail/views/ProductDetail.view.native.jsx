@@ -132,6 +132,7 @@ class ProductDetailView extends React.PureComponent {
       alternateSizes,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      toastMessage,
     } = this.props;
     const {
       currentColorEntry,
@@ -198,6 +199,7 @@ class ProductDetailView extends React.PureComponent {
             sizeChartLinkVisibility={sizeChartLinkVisibility}
             alternateSizes={alternateSizes}
             navigation={navigation}
+            toastMessage={toastMessage}
           />
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
@@ -258,6 +260,7 @@ ProductDetailView.propTypes = {
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  toastMessage: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -286,6 +289,7 @@ ProductDetailView.defaultProps = {
   alternateSizes: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  toastMessage: () => {},
 };
 
 export default withStyles(ProductDetailView);

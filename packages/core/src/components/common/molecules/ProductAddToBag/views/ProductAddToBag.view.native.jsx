@@ -30,6 +30,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      showToastMessage: true,
+    };
   }
 
   /**
@@ -119,6 +122,17 @@ class ProductAddToBag extends React.PureComponent<Props> {
     }
   };
 
+  onToastMessage = errorMessage => {
+    const { toastMessage, isErrorMessageDisplayed } = this.props;
+    const { showToastMessage } = this.state;
+    if (showToastMessage && isErrorMessageDisplayed) {
+      toastMessage(errorMessage);
+      this.setState({
+        showToastMessage: false,
+      });
+    }
+  };
+
   render() {
     const {
       colorList,
@@ -148,7 +162,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { name: colorName } = selectedColor || {};
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
-    const sizeError = isErrorMessageDisplayed ? errorMessage : '';
+    const sizeError = isErrorMessageDisplayed ? this.onToastMessage(errorMessage) : '';
+
     const quantityDropDownStyle = {
       width: 200,
     };
@@ -255,6 +270,7 @@ ProductAddToBag.propTypes = {
   selectedQuantity: PropTypes.number,
   currentProduct: PropTypes.shape({}).isRequired,
   selectedColorProductId: PropTypes.number.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 ProductAddToBag.defaultProps = {
@@ -270,6 +286,7 @@ ProductAddToBag.defaultProps = {
   handleFormSubmit: null,
   selectedQuantity: 1,
   showAddToBagCTA: true,
+  toastMessage: () => {},
 };
 
 /* export view with redux form */
