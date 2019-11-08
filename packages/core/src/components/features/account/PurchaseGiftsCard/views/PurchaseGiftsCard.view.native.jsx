@@ -9,7 +9,7 @@ import {
   RightArrowImageContainer,
 } from '../styles/PurchaseGiftsCard.view.style.native';
 
-const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right-gray.png');
+const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right.png');
 
 export const PurchaseGiftsCard = ({ labels, navigation }) => {
   return (
@@ -22,7 +22,7 @@ export const PurchaseGiftsCard = ({ labels, navigation }) => {
         }}
       >
         <BodyCopy
-          fontFamily="primary"
+          fontFamily="secondary"
           fontSize="fs13"
           fontWeight="regular"
           text={getLabelValue(labels, 'lbl_purchaseGiftsCard_animatedGiftCards', 'common')}
@@ -39,7 +39,7 @@ export const PurchaseGiftsCard = ({ labels, navigation }) => {
         }}
       >
         <BodyCopy
-          fontFamily="primary"
+          fontFamily="secondary"
           fontSize="fs13"
           fontWeight="regular"
           text={getLabelValue(labels, 'lbl_purchaseGiftsCard_eGiftCard', 'common')}
@@ -59,7 +59,7 @@ export const PurchaseGiftsCard = ({ labels, navigation }) => {
         }}
       >
         <BodyCopy
-          fontFamily="primary"
+          fontFamily="secondary"
           fontSize="fs13"
           fontWeight="regular"
           text={getLabelValue(labels, 'lbl_purchaseGiftsCard_physicalGiftCard', 'common')}
