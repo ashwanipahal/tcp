@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import { LabeledRadioButton, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
@@ -120,6 +121,16 @@ class CartItemRadioButtons extends PureComponent {
     ) : null;
   };
 
+  /**
+   * @function renderBossBanner
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @param {string} onlineClearanceMessage Represents the Online only message
+   * @memberof CartItemRadioButtons
+   */
+  renderBossBanner = (isBossItem, onlineClearanceMessage) => {
+    return isBossItem && !onlineClearanceMessage ? <PickupPromotionBanner bossBanner /> : null;
+  };
+
   renderStore = () => {
     const {
       labels,
@@ -230,6 +241,7 @@ class CartItemRadioButtons extends PureComponent {
               text={onlineClearanceMessage}
             />
           )}
+          {this.renderBossBanner(isBossItem, onlineClearanceMessage)}
         </StyledTopRow>
         {!isEcomItem && isSelected && !onlineClearanceMessage && (
           <StyledBottomRow>
