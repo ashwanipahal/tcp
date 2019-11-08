@@ -19,6 +19,23 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { removeItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getAPIConfig } from '../../../../../utils';
+import { getIsGuest } from '../../../account/User/container/User.selectors';
+import { getCartItemCount } from '../../../../../utils/cookie.util';
+import { navigateXHRAction } from '../../../account/NavigateXHR/container/NavigateXHR.action';
+
+const makeBrandToggling = () => {
+  const isGuest = getIsGuest();
+  const cartItemCount = getCartItemCount();
+  return isGuest && !cartItemCount;
+};
+
+const getErrorMessage = (err, errorMapping) => {
+  return (
+    (err && err.errorResponse && err.errorResponse.errorMessage) ||
+    (errorMapping && errorMapping.DEFAULT) ||
+    'ERROR'
+  );
+};
 
 export function* addToCartEcom({ payload }) {
   try {
@@ -47,6 +64,7 @@ export function* addToCartEcom({ payload }) {
     yield put(clearAddToBagErrorState());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addCartEcomItem, params);
+    if (makeBrandToggling()) yield put(navigateXHRAction());
     yield put(
       SetAddedToBagData({
         ...payload,
@@ -63,10 +81,8 @@ export function* addToCartEcom({ payload }) {
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
-    const errMsg =
-      (err && err.errorResponse && err.errorResponse.errorMessage) ||
-      (errorMapping && errorMapping.DEFAULT) ||
-      'ERROR';
+    const errMsg = getErrorMessage(err, errorMapping);
+
     yield put(AddToCartError(errMsg, payload.skuInfo.unbxdProdId));
   }
 }
@@ -99,6 +115,7 @@ export function* addItemToCartBopis({ payload }) {
     yield put(clearAddToPickupErrorState());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addCartBopisItem, params, errorMapping);
+    if (makeBrandToggling()) yield put(navigateXHRAction());
     if (callback) {
       callback();
     }
@@ -147,6 +164,7 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
 
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addMultipleProductsInEcom, paramsArray);
+    if (makeBrandToggling()) yield put(navigateXHRAction());
     if (callBack) {
       callBack();
     }
