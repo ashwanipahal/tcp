@@ -55,7 +55,11 @@ export class JeansModule extends PureComponent {
 
     return (
       <div className={className}>
-        <div className="title-section">{jeansModule.headLine[0].text}</div>
+        <div className="title-section">
+          <BodyCopy fontSize="fs24" fontWeight="semibold" fontFamily="secondary">
+            {jeansModule.headLine[0].text}
+          </BodyCopy>
+        </div>
         <Carousel
           className="carousel-item"
           options={CAROUSEL_OPTIONS}
@@ -119,7 +123,10 @@ export class JeansModule extends PureComponent {
                             </div>
                           );
                         })}
-                        <Image className="plus-icon" src="/static/images/plus.png" />
+                        <Image
+                          className={`${imageStyled[0].styled.style} plus-icon`}
+                          src="/static/images/plus.png"
+                        />
                       </div>
                       <Anchor
                         className="shop-now-link"

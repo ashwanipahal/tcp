@@ -29,6 +29,7 @@ const JeansModuleStyles = css`
     color: white;
     text-align: center;
     line-height: 30px;
+    text-decoration: uppercase;
   }
   .image-text {
     height: 36px;
@@ -66,12 +67,16 @@ const JeansModuleStyles = css`
 
   @media ${props => props.theme.mediaQuery.large} {
     height: 457px;
-    .plus-button {
+    .plus-icon {
       display: block;
       position: absolute;
       bottom: 167px;
-      left: 17px;
+      .left {
+        left: 17px;
+      }
+      right: 17px;
     }
+
     .image-link {
       .carousel-image {
         height: 420px;

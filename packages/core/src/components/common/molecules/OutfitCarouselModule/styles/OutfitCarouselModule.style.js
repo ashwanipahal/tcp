@@ -13,6 +13,9 @@ const OutfitCarouselStyle = css`
   .carousel-image {
     margin: 0 auto ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
+  .slick-slide > div {
+    padding: 0 15px;
+  }
 `;
 
 export default OutfitCarouselStyle;

@@ -13,7 +13,6 @@ const CAROUSEL_OPTIONS = {
   autoplay: false,
   arrows: true,
   centerMode: false,
-  centerPadding: '0px',
   fade: false,
   speed: 1000,
   lazyLoad: false,
@@ -29,7 +28,6 @@ const CAROUSEL_OPTIONS = {
         slidesToShow: 2,
         arrows: true,
         swipeToSlide: true,
-        centerPadding: '18%',
       },
     },
     {
@@ -38,7 +36,6 @@ const CAROUSEL_OPTIONS = {
         slidesToShow: 4,
         arrows: true,
         swipeToSlide: true,
-        centerPadding: '13%',
       },
     },
   ],
