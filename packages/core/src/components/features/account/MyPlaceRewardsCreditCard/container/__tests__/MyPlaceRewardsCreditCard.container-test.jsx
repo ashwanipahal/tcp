@@ -1,16 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyPlaceRewardsCreditCardContainer } from '../MyPlaceRewardsCreditCard.container';
+import { MyPlaceRewardsCreditCardContainerVanilla } from '../MyPlaceRewardsCreditCard.container';
+import MyPlaceRewardsCreditCard from '../../views';
 
 describe('MyPlaceRewardsCreditCardContainer component', () => {
   it('should renders correctly', () => {
-    const props = {
-      labels: {},
-      isPLCCModalOpen: false,
-      openPLCCModal: () => {},
-      openApplyNowModal: () => {},
-    };
-    const component = shallow(<MyPlaceRewardsCreditCardContainer {...props} />);
-    expect(component).toMatchSnapshot();
+    const component = shallow(
+      <MyPlaceRewardsCreditCardContainerVanilla
+        labels={{}}
+        isPLCCModalOpen={false}
+        openPLCCModal={jest.fn()}
+        openApplyNowModal={jest.fn()}
+      />
+    );
+    expect(component.is(MyPlaceRewardsCreditCard)).toBeTruthy();
   });
 });

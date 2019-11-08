@@ -53,7 +53,8 @@ const mapDispatchToProps = dispatch => {
     },
   };
 };
-const mapStateToProps = state => {
+
+export const mapStateToProps = state => {
   return {
     labels: gelLabels(state),
     isPLCCModalOpen: getIsPLCCModalOpen(state),
@@ -64,3 +65,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(MyPlaceRewardsCreditCardContainer);
+
+export { MyPlaceRewardsCreditCardContainer as MyPlaceRewardsCreditCardContainerVanilla };

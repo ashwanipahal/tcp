@@ -16,8 +16,6 @@ import {
   HeaderContainer,
 } from '../styles/MyPlaceRewardsCreditCard.style.native';
 
-// import ApplyNowPLCCModal from '../../../../common/molecules/ApplyNowPLCCModal';
-
 const headerImage = require('../../../../../../../core/src/assets/tcp-cc.png');
 const PLCC_LOOKUP_2_POINTS = require('../../../../../../../core/src/assets/PLCC_lockup_2_points.png');
 const BenefitImage = require('../../../../../../../core/src/assets/BenefitImageV.png');
