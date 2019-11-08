@@ -146,7 +146,7 @@ class RegisteredShippingForm extends React.Component {
   toggleModal = ({ type, open }) => {
     const { setEditState } = this.props;
     this.setState({ modalState: open, modalType: type });
-    setEditState(open);
+    setEditState(open, type);
   };
 
   onAddressDropDownChange = itemValue => {
@@ -317,6 +317,9 @@ class RegisteredShippingForm extends React.Component {
             itemStyle={{ ...itemStyle }}
             onValueChange={itemValue => {
               this.onAddressDropDownChange(itemValue);
+            }}
+            addAddress={() => {
+              this.onAddressDropDownChange('');
             }}
             variation="secondary"
             showButton={false}
