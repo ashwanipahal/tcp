@@ -6,13 +6,16 @@ import { CheckoutPageVanilla } from '../views/CheckoutPage.view';
 describe('Bag page Container', () => {
   const props = {
     labels: {},
-    initialActions: jest.fn(),
+    initCheckout: jest.fn(),
+    clearCheckoutServerError: jest.fn(),
     fetchNeedHelpContent: jest.fn(),
-    fetchSflData: jest.fn(),
     setVenmoPickupState: jest.fn(),
     setVenmoShippingState: jest.fn(),
     getUserInformation: jest.fn(),
     isPickupModalOpen: jest.fn(),
+    isRegisteredUserCallDone: true,
+    initCheckoutSectionPage: jest.fn(),
+    router: { query: {} },
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);
@@ -22,6 +25,15 @@ describe('Bag page Container', () => {
   it('should render Added to Bag view section', () => {
     const component = shallow(<CheckoutContainer {...props} />);
     expect(component).toMatchSnapshot();
+    const componentInstance = component.instance();
+    componentInstance.componentDidMount();
+    componentInstance.componentDidUpdate({ isRegisteredUserCallDone: 'false' });
+    componentInstance.formatPayload({});
+    componentInstance.intiSectionPage();
+    componentInstance.shippingDidMount();
+    componentInstance.billingDidMount();
+    componentInstance.reviewDidMount();
+    componentInstance.pickupDidMount();
   });
 
   describe('#mapDispatchToProps', () => {

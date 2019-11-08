@@ -13,6 +13,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
       "billingDidMount": [Function],
     }
   }
+  clearCheckoutServerError={[MockFunction]}
   formatPayload={[Function]}
   isExpressCheckout={false}
   isVenmoPaymentInProgress={false}
@@ -21,6 +22,11 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   reviewProps={
     Object {
       "reviewDidMount": [Function],
+    }
+  }
+  router={
+    Object {
+      "query": Object {},
     }
   }
   setVenmoPickupState={[MockFunction]}
