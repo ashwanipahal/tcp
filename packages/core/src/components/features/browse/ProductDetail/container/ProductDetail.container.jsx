@@ -39,20 +39,11 @@ class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
     const {
       getDetails,
-      router: {
-        query: { pid },
-      },
+      
     } = this.props;
 
     // TODO - fix this to extract the product ID from the page.
-    const id = pid && pid.split('-');
-    let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
-    if (
-      (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
-      (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
-    ) {
-      productId = 'gift';
-    }
+    const productId = this.extractPID();
 
     getDetails({ productColorId: productId });
     window.scrollTo(0, 100);
@@ -68,15 +59,7 @@ class ProductDetailContainer extends React.PureComponent {
 
     if (prevProps.router.query.pid !== pid) {
       console.log('hello');
-      const id = pid && pid.split('-');
-      let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
-      if (
-        (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
-        (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
-      ) {
-        productId = 'gift';
-      }
-
+      const productId = this.extractPID();
       getDetails({ productColorId: productId });
       window.scrollTo(0, 100);
     }
@@ -93,6 +76,27 @@ class ProductDetailContainer extends React.PureComponent {
     cartItemInfo = { ...cartItemInfo };
     addToBagEcom(cartItemInfo);
   };
+
+  extractPID = () => {
+    const {
+      router: {
+        query: { pid },
+      },
+    } = this.props;
+
+    // TODO - fix this to extract the product ID from the page.
+    const id = pid && pid.split('-');
+    let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
+    if (
+      (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
+      (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
+    ) {
+      productId = 'gift';
+    }
+
+    return productId
+  };
+
 
   render() {
     const {
