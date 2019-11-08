@@ -21,6 +21,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   selectedSize={null}
   showAddToBagCTA={true}
   sizeList={Array []}
+  toastMessage={[Function]}
 >
   <Field
     component={
