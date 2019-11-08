@@ -102,6 +102,7 @@ export const CartItemTileContainer = ({
   navigation,
   disableProductRedirect,
   setClickAnalyticsData,
+  closeMiniBag,
 }) => (
   <CartItemTile
     labels={labels}
@@ -151,6 +152,7 @@ export const CartItemTileContainer = ({
     navigation={navigation}
     disableProductRedirect={disableProductRedirect}
     setClickAnalyticsData={setClickAnalyticsData}
+    closeMiniBag={closeMiniBag}
   />
 );
 

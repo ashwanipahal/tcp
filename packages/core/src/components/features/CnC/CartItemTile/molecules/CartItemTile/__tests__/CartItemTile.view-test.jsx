@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { shallow } from 'enzyme';
 import * as utils from '@tcp/core/src/utils/utils';
@@ -443,5 +444,12 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
     instance.componentDidUpdate({ toggleBossBopisError: null });
     jest.runAllTimers();
     expect(props.onPickUpOpenClick).toHaveBeenCalled();
+  });
+
+  it('should close mini bag', () => {
+    props.closeMiniBag = jest.fn();
+    const component = shallow(<CartItemTileVanilla {...props} />);
+    component.instance().closeMiniBagMethod();
+    expect(props.closeMiniBag).toHaveBeenCalled();
   });
 });
