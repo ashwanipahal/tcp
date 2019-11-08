@@ -66,7 +66,11 @@ let buildConfig = withTM({
 });
 
 if (isProductionBuild && isSourceMapsEnabled) {
-  buildConfig = withSourceMaps({
+  buildConfig = withSourceMaps(buildConfig);
+}
+
+if (isAnalyzeBundles) {
+  buildConfig = withBundleAnalyzer({
     analyzeServer: process.env.NODE_ENV === 'production',
     analyzeBrowser: process.env.NODE_ENV === 'production',
     bundleAnalyzerConfig: {
@@ -83,10 +87,6 @@ if (isProductionBuild && isSourceMapsEnabled) {
     },
     ...buildConfig,
   });
-}
-
-if (isAnalyzeBundles) {
-  buildConfig = withBundleAnalyzer(buildConfig);
 }
 
 module.exports = buildConfig;
