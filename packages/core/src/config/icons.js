@@ -40,6 +40,8 @@ export default {
   'circle-check-fill': '/static/images/circle-check-fill.png',
   'circle-error-fill': '/static/images/circle-error-fill.png',
   'circle-info-fill': '/static/images/circle-info-fill.svg',
+  'circle-info-blue': '/static/images/circle-info-blue.svg',
+  'circle-info-orange': '/static/images/circle-info-orange.svg',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
   smallright: '/static/images/smallright.svg',
   'carousel-big-carrot-left': '/static/images/left-carousel-carrot.svg',
