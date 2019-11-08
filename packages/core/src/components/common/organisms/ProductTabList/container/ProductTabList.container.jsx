@@ -32,7 +32,7 @@ class ProductTabListContainer extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    this.manageErrorToast();
+    if (isMobileApp()) this.manageErrorToast();
   }
 
   getCategoryIds = catIds => {
