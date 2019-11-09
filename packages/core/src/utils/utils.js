@@ -1038,6 +1038,22 @@ export const getLabelsBasedOnPattern = (labels, pattern) => {
   return Object.keys(labels).filter(labelKey => regex.test(labelKey));
 };
 
+/**
+ * @description - This method calculate Price based on the given value
+ */
+export const calculatePriceValue = (
+  price,
+  currencySymbol = '$',
+  currencyExchangeValue = 1,
+  defaultReturn = 0
+) => {
+  let priceValue = defaultReturn;
+  if (price && price > 0) {
+    priceValue = `${currencySymbol}${(price * currencyExchangeValue).toFixed(2)}`;
+  }
+  return priceValue;
+};
+
 export default {
   getPromotionalMessage,
   getIconPath,
@@ -1081,5 +1097,6 @@ export default {
   getStyliticsRegion,
   canUseDOM,
   getLabelsBasedOnPattern,
+  calculatePriceValue,
   getProductUrlForDAM,
 };
