@@ -111,7 +111,7 @@ function cardNumberForTypeValidator(value, param, linkedProps) {
 
 function plccEnabledValidator(value, param, linkedProps) {
   const cleanValue = (value || '').replace(/\D/g, '');
-  return !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]);
+  return cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1];
 }
 
 // TODO - Add test case (Ajay Saini)
