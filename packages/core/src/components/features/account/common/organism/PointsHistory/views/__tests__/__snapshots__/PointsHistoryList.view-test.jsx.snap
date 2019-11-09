@@ -32,7 +32,9 @@ exports[`Points History List Page View should render Points History Page Correct
           [Function],
           ";
     }
+    word-wrap: break-word;
   }
+  
 ",
           ";
 ",
