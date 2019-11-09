@@ -87,6 +87,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         }
       }
       navigation={[MockFunction]}
+      payPalTop={30}
     />
   </Styled(View)>
 </Fragment>
@@ -348,6 +349,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
         }
       }
       navigation={[MockFunction]}
+      payPalTop={30}
       showAddTobag={true}
     />
   </Styled(View)>

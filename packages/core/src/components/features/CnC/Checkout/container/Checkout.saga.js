@@ -518,14 +518,14 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   //   }
 }
 
-function* initCheckout({ router ,isPaypalFlow}) {
+function* initCheckout({ router, isPaypalFlow }) {
   let isPaypalPostBack;
   let recalc;
   if (router && router.query) {
     const { query } = router;
     ({ isPaypalPostBack, recalc } = query);
   }
-  if(isMobileApp() && isPaypalFlow){
+  if (isMobileApp() && isPaypalFlow) {
     isPaypalPostBack = isPaypalFlow;
   }
 
