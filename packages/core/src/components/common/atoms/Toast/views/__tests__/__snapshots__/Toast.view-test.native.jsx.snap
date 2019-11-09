@@ -9,6 +9,7 @@ exports[`Toast msg view render should render correctly 1`] = `
   }
 >
   <Toast
+    defaultCloseDelay={250}
     fadeInDuration={750}
     fadeOutDuration={5000}
     opacity={1}
@@ -40,6 +41,7 @@ exports[`Toast msg view render should renders componentDidUpdate  correctly 1`] 
   }
 >
   <Toast
+    defaultCloseDelay={250}
     fadeInDuration={750}
     fadeOutDuration={5000}
     opacity={1}
@@ -64,6 +66,7 @@ exports[`Toast msg view render should renders componentDidUpdate  correctly 1`] 
 
 exports[`Toast msg view render test toast with without safearea 1`] = `
 <Toast
+  defaultCloseDelay={250}
   fadeInDuration={750}
   fadeOutDuration={5000}
   opacity={1}

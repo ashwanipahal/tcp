@@ -35,6 +35,7 @@ const navConfigMap = {
   orders: 'myOrdersPageMobile',
   'address-book': 'addressBookMobile',
   favorites: 'myFavoritePageMobile',
+  'rewards-credit-card': 'myPlaceRewardsCCPageMobile'
 };
 
 export class Account extends React.PureComponent {
@@ -118,6 +119,7 @@ export class Account extends React.PureComponent {
       addressBookMobile: 'addressBookMobile',
       orderDetailsPageMobile: 'orderDetailsPageMobile',
       myFavoritePageMobile: 'myFavoritePageMobile',
+      myPlaceRewardsCCPageMobile: 'myPlaceRewardsCCPageMobile',
     };
     if (componentObject[component]) {
       return componentObject[component];
