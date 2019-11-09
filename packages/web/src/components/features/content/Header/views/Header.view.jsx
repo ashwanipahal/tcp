@@ -136,6 +136,7 @@ class Header extends React.PureComponent {
           store={favStore}
           labels={labels}
         />
+        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"
@@ -160,7 +161,6 @@ class Header extends React.PureComponent {
             labels={labels}
           />
         )}
-        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
