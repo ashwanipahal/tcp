@@ -45,7 +45,3 @@ export const getResetPasswordFail = payload => {
     payload,
   };
 };
-
-export const resetState = () => ({
-  type: FORGOTPASSWORD_CONSTANTS.RESET_STATE,
-});

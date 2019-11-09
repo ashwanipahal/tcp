@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 
-import { resetPassword, resetLoginForgotPasswordState, resetState } from './ForgotPassword.actions';
+import { resetPassword, resetLoginForgotPasswordState } from './ForgotPassword.actions';
 import {
   getShowNotificationState,
   getResetEmailResponse,
@@ -21,8 +21,8 @@ import ForgotPasswordView from '../views/ForgotPassword.view';
 
 class ForgotPasswordContainer extends React.PureComponent {
   componentWillUnmount() {
-    const { resetStateAction } = this.props;
-    if (resetStateAction) resetStateAction();
+    const { resetForm } = this.props;
+    if (resetForm) resetForm();
   }
 
   render() {
@@ -77,14 +77,12 @@ ForgotPasswordContainer.propTypes = {
   forgotPasswordErrorMessage: PropTypes.shape({}).isRequired,
   toastMessage: PropTypes.string.isRequired,
   updateHeader: PropTypes.func,
-  resetStateAction: PropTypes.func,
 };
 
 ForgotPasswordContainer.defaultProps = {
   resetLoginState: () => {},
   showLogin: () => {},
   updateHeader: () => {},
-  resetStateAction: () => {},
 };
 
 const mapDispatchToProps = dispatch => {
@@ -106,9 +104,6 @@ const mapDispatchToProps = dispatch => {
     },
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
-    },
-    resetStateAction: () => {
-      dispatch(resetState());
     },
   };
 };
