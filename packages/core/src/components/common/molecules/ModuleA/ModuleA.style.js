@@ -60,6 +60,10 @@ const style = css`
     color: ${props => props.theme.colorPalette.gray[800]};
   }
 
+  .large_text_normal {
+    color: ${props => props.theme.colorPalette.gray[900]};
+  }
+
   &.gymboree-module-a .banner-content {
     transform: translate(-50%, 0);
     top: 8.7%;

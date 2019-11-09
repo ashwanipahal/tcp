@@ -171,16 +171,17 @@ const styles = css`
   }
 
   .loyalty-text-container {
+    visibility: hidden;
     color: ${props =>
       props.isPlcc
         ? props.theme.colorPalette.userTheme.plcc
         : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
-    overflow: hidden;
-    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    span {
+      visibility: visible;
+    }
   }
-
   .empty-color-chips-container {
     min-height: 35px;
   }

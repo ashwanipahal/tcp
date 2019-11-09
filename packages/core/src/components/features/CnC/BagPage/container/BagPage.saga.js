@@ -32,7 +32,7 @@ import checkoutSelectors, {
   isRemembered,
   isExpressCheckout,
 } from '../../Checkout/container/Checkout.selector';
-import { isMobileApp, isCanada } from '../../../../../utils';
+import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 
 import {
   addItemToSflList,
@@ -198,10 +198,13 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-function* navigateToCheckout(stage, navigation, navigationActions) {
+function* navigateToCheckout(stage, navigation, navigationActions, isPayPalFlow = false) {
   yield put(getSetCheckoutStage(stage));
   const navigateAction = navigationActions.navigate({
     routeName: CONSTANTS.CHECKOUT_ROOT,
+    params: {
+      isPayPalFlow,
+    },
   });
   navigation.dispatch(navigateAction);
 }
@@ -342,7 +345,8 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
           navigateToCheckout,
           CONSTANTS.REVIEW_DEFAULT_PARAM,
           navigation,
-          navigationActions
+          navigationActions,
+          true
         );
       } else {
         utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
@@ -350,6 +354,11 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
     }
   } catch (e) {
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
+    if (!isMobileApp()) {
+      yield put(closeMiniBag());
+      yield put(BAG_PAGE_ACTIONS.setIsPaypalBtnHidden(true));
+      routerPush('/bag', '/bag');
+    }
   }
 }
 // export function* authorizePayPalPayment() {

@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { isClient, getIconPath, getLocator } from '../../../../../../../utils';
 import { getFormattedLoyaltyText, getProductListToPath } from '../utils/productsCommonUtils';
 // import { labels } from '../labels/labels';
-import { Image, BodyCopy, Anchor, Button, Col } from '../../../../../../common/atoms';
+import { Image, BodyCopy, Anchor, Button, Col, RichText } from '../../../../../../common/atoms';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
 
@@ -49,15 +49,17 @@ export function ProductTitle(values) {
   );
 }
 
-/* NOTE: This issue (DT-28867) added isMobile condition. */
-/* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
-/* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
-export function ProductPricesSection(props) {
-  const { currencySymbol, listPrice, offerPrice, merchantTag } = props;
-
+const renderBundlePriceSection = (
+  highListPrice,
+  highOfferPrice,
+  lowListPrice,
+  lowOfferPrice,
+  currencySymbol,
+  merchantTag
+) => {
   return (
     <div className="container-price">
-      {offerPrice && (
+      {!!highOfferPrice && !!lowOfferPrice && highOfferPrice !== lowOfferPrice ? (
         <BodyCopy
           dataLocator={getLocator('global_Price_text')}
           color="red.500"
@@ -65,10 +67,22 @@ export function ProductPricesSection(props) {
           fontFamily="secondary"
           fontSize={['fs15', 'fs18', 'fs20']}
         >
-          {currencySymbol + offerPrice.toFixed(2)}
+          {`${currencySymbol} ${lowOfferPrice.toFixed(
+            2
+          )} - ${currencySymbol} ${highOfferPrice.toFixed(2)}`}
+        </BodyCopy>
+      ) : (
+        <BodyCopy
+          dataLocator={getLocator('global_Price_text')}
+          color="red.500"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize={['fs15', 'fs18', 'fs20']}
+        >
+          {`${currencySymbol} ${lowOfferPrice.toFixed(2)}`}
         </BodyCopy>
       )}
-      {offerPrice && offerPrice !== listPrice && (
+      {!!highListPrice && !!lowListPrice && highListPrice !== lowListPrice ? (
         <BodyCopy
           component="span"
           color="gray.700"
@@ -77,10 +91,26 @@ export function ProductPricesSection(props) {
           fontSize={['fs10', 'fs12', 'fs14']}
           className="list-price"
         >
-          {currencySymbol + listPrice.toFixed(2)}
+          {`${currencySymbol} ${lowListPrice.toFixed(
+            2
+          )} - ${currencySymbol} ${highListPrice.toFixed(2)}`}
         </BodyCopy>
+      ) : (
+        lowListPrice &&
+        lowListPrice !== lowOfferPrice && (
+          <BodyCopy
+            component="span"
+            color="gray.700"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            fontSize={['fs10', 'fs12', 'fs14']}
+            className="list-price"
+          >
+            {currencySymbol + lowListPrice.toFixed(2)}
+          </BodyCopy>
+        )
       )}
-      {merchantTag && (
+      {!!merchantTag && (
         <BodyCopy
           component="span"
           color="red.500"
@@ -93,6 +123,71 @@ export function ProductPricesSection(props) {
         </BodyCopy>
       )}
     </div>
+  );
+};
+
+/* NOTE: This issue (DT-28867) added isMobile condition. */
+/* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
+/* NOTE: DT-27216, if offerPrice and listPrice are the same, just offerPrice should be shown (and will be black) */
+export function ProductPricesSection(props) {
+  const { currencySymbol, listPrice, offerPrice, merchantTag, bundleProduct, priceRange } = props;
+
+  const highListPrice = priceRange && priceRange.highListPrice;
+  const highOfferPrice = priceRange && priceRange.highOfferPrice;
+  const lowListPrice = priceRange && priceRange.lowListPrice;
+  const lowOfferPrice = priceRange && priceRange.lowOfferPrice;
+
+  return (
+    <>
+      {!bundleProduct ? (
+        <div className="container-price">
+          {offerPrice && (
+            <BodyCopy
+              dataLocator={getLocator('global_Price_text')}
+              color="red.500"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              fontSize={['fs15', 'fs18', 'fs20']}
+            >
+              {currencySymbol + offerPrice.toFixed(2)}
+            </BodyCopy>
+          )}
+          {offerPrice && offerPrice !== listPrice && (
+            <BodyCopy
+              component="span"
+              color="gray.700"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              fontSize={['fs10', 'fs12', 'fs14']}
+              className="list-price"
+            >
+              {currencySymbol + listPrice.toFixed(2)}
+            </BodyCopy>
+          )}
+          {merchantTag && (
+            <BodyCopy
+              component="span"
+              color="red.500"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              className="merchant-tag"
+              fontSize={['fs10', 'fs12', 'fs14']}
+            >
+              {merchantTag}
+            </BodyCopy>
+          )}
+        </div>
+      ) : (
+        renderBundlePriceSection(
+          highListPrice,
+          highOfferPrice,
+          lowListPrice,
+          lowOfferPrice,
+          currencySymbol,
+          merchantTag
+        )
+      )}
+    </>
   );
 }
 
@@ -164,7 +259,9 @@ export function PromotionalMessage(props) {
         data-locator={getLocator('global_loyalty_text')}
         className="loyalty-text-container"
       >
-        {text && getFormattedLoyaltyText(text)[0]}
+        {text && (
+          <RichText className="rewards__benefits" richTextHtml={getFormattedLoyaltyText(text)} />
+        )}
       </BodyCopy>
     </Dotdotdot>
   ) : null;
@@ -349,6 +446,8 @@ ProductPricesSection.defaultProps = {
   listPrice: 0,
   offerPrice: 0,
   merchantTag: '',
+  bundleProduct: false,
+  priceRange: {},
 };
 
 ProductPricesSection.propTypes = {
@@ -356,4 +455,6 @@ ProductPricesSection.propTypes = {
   listPrice: PropTypes.number,
   offerPrice: PropTypes.number,
   merchantTag: PropTypes.string,
+  bundleProduct: PropTypes.bool,
+  priceRange: PropTypes.shape({}),
 };

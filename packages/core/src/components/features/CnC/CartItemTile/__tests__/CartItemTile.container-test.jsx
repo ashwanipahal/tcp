@@ -55,4 +55,13 @@ describe('CartItemTile Container', () => {
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });
+
+  describe(mapDispatchToPropsConstant, () => {
+    it('should return an action updateAppTypeHandler which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.updateAppTypeHandler();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+  });
 });

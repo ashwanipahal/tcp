@@ -12,8 +12,8 @@ const placeHolderImg = require('../../../../../assets/img-placeholder.png');
 /**
  * DamImage returns two types of images
  * 1. Image from react-native
- * 2. LazyLoadImage - A image to be loaded only when it is visible on screen
- *                  - For an image to be lazy loaded, parent scrollview should be LazyLoadScrollView from react-native-lazyload-deux
+ * 2. LazyLoadImage - A image to be  loaded only when it is visible on screen
+ *                  - For an image to be  lazy loaded, parent scrollview should be LazyLoadScrollView from react-native-lazyload-deux
  *                  - it needs "host" as props
  *                  - value of host prop should be same as parent LazyLoadScrollView
  */
@@ -39,7 +39,7 @@ const DamImage = (props: Props) => {
     swatchConfig,
     ...otherProps
   } = props;
-  const config = swatchConfig || 'w_768';
+  const config = swatchConfig || imgConfig || 'w_768';
   const cropVal = crop || '';
   const urlVal = url || '';
   const ImageComponent = host ? LazyloadImage : Image;

@@ -125,6 +125,12 @@ class CondensedHeader extends React.PureComponent {
     ) : null;
   };
 
+  getImgSrc = navigationDrawer => {
+    return navigationDrawer.open
+      ? '/static/images/mobile-close-dark.svg'
+      : '/static/images/grey-menu.svg';
+  };
+
   render() {
     const {
       className,
@@ -144,6 +150,7 @@ class CondensedHeader extends React.PureComponent {
       cartItemCount,
       fromCondensedHeader,
       isFullSizeSearchModalOpen,
+      isLoggedIn,
     } = this.state;
     const {
       accessibility: { accountIconButton, cartIconButton, closeIconButton, hamburgerMenu } = {},
@@ -154,11 +161,7 @@ class CondensedHeader extends React.PureComponent {
           <div className="content-wrapper">
             <div className="condensed-hamburger-menu">
               <Image
-                src={
-                  navigationDrawer.open
-                    ? '/static/images/mobile-close-dark.svg'
-                    : '/static/images/grey-menu.svg'
-                }
+                src={this.getImgSrc(navigationDrawer)}
                 alt={hamburgerMenu}
                 tabIndex="0"
                 role="button"
@@ -224,7 +227,7 @@ class CondensedHeader extends React.PureComponent {
                 />
               )}
 
-              {userName ? (
+              {userName && isLoggedIn ? (
                 <React.Fragment>
                   <BodyCopy
                     id="accountDrawer"

@@ -15,6 +15,7 @@ import {
   StyledLabel,
   SelectedLabelView,
   HeaderItemContainer,
+  FlatListWrapper,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -337,16 +338,18 @@ class DropDown extends React.PureComponent<Props> {
                 width: this.rowFrame.width,
               }}
             >
-              {dropDownIsOpen && (
-                <FlatList
-                  data={data}
-                  renderItem={this.dropDownLayout}
-                  keyExtractor={item => item.key}
-                  bounces={bounces}
-                  style={{ height: flatListHeight }}
-                  ItemSeparatorComponent={() => <Separator />}
-                />
-              )}
+              <FlatListWrapper width={this.rowFrame.width} height={flatListHeight}>
+                {dropDownIsOpen && (
+                  <FlatList
+                    data={data}
+                    renderItem={this.dropDownLayout}
+                    keyExtractor={item => item.key}
+                    bounces={bounces}
+                    style={{ height: flatListHeight }}
+                    ItemSeparatorComponent={() => <Separator />}
+                  />
+                )}
+              </FlatListWrapper>
             </OverLayView>
           </TouchableOpacity>
         </Modal>

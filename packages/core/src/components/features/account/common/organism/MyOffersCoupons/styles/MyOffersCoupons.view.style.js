@@ -20,6 +20,12 @@ const styles = css`
     background-color: ${props => props.theme.colors.BLACK};
     color: ${props => props.theme.colors.WHITE};
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+
+    &.shop-btn {
+      width: 150px;
+      padding: 14px;
+      border: none;
+    }
   }
   .couponList_helpIcon {
     text-align: center;

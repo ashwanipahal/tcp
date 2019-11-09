@@ -66,6 +66,7 @@ export {
   getStyliticsUserName,
   getStyliticsRegion,
   canUseDOM,
+  getProductUrlForDAM,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';
