@@ -187,14 +187,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpContactAlternate,
       isVenmoPickupBannerDisplayed,
       isVenmoShippingBannerDisplayed,
-      toastMessage,
-      clearCheckoutServerError,
-      cartOrderItemsCount,
-      toggleCountrySelector,
-      checkoutPageEmptyBagLabels,
       dispatchReviewReduxForm,
-      isBagLoaded,
     } = this.props;
+    const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
+    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
       checkoutProgressBarLabels

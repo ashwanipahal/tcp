@@ -15,7 +15,6 @@ import styles, {
 } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
-import ErrorDisplay from '../../../atoms/ErrorDisplay';
 import SizeChart from '../molecules/SizeChart/container';
 import AlternateSizes from '../molecules/AlternateSizes';
 
@@ -44,6 +43,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { fromBagPage, plpLabels } = this.props;
     const { addToBag, update } = plpLabels;
     return fromBagPage ? update : addToBag;
+  };
+
+  componentDidUpdate = () => {
+    const { errorOnHandleSubmit } = this.props;
+    if (errorOnHandleSubmit) {
+      this.onToastMessage(errorOnHandleSubmit);
+    }
   };
 
   /**
@@ -123,9 +129,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   onToastMessage = errorMessage => {
-    const { toastMessage, isErrorMessageDisplayed } = this.props;
+    const { toastMessage } = this.props;
     const { showToastMessage } = this.state;
-    if (showToastMessage && isErrorMessageDisplayed) {
+    if (showToastMessage) {
       toastMessage(errorMessage);
       this.setState({
         showToastMessage: false,
@@ -144,7 +150,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectFit,
       selectSize,
       isErrorMessageDisplayed,
-      errorOnHandleSubmit,
       plpLabels: { errorMessage, size, fit, color },
       quantityList,
       plpLabels: { quantity },
@@ -247,7 +252,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </RowViewContainer>
 
-        <ErrorDisplay error={errorOnHandleSubmit} />
         {showAddToBagCTA && this.renderAddToBagButton()}
       </View>
     );
