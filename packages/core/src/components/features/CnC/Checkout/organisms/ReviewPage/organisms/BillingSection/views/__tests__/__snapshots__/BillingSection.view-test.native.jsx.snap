@@ -162,6 +162,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
           pointerColor="#fff"
           popover={
             <RichText
+              actionHandler={[Function]}
               domStorageEnabled={false}
               isApplyDeviceHeight={false}
               isNativeView={true}

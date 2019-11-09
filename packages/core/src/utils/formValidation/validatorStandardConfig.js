@@ -46,6 +46,12 @@ export const formValidationMessages = {
   userBirthYear: {
     userBirthday: 'lbl_err_userbirthdayyear_required',
   },
+  childBirthMonth: {
+    required: 'lbl_err_userbirthdaymonth_required',
+  },
+  childBirthYear: {
+    required: 'lbl_err_userbirthdayyear_required',
+  },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
       linkedFieldsValues[0] === 'US'
@@ -245,6 +251,12 @@ export const formValidationRules = {
     userBirthday: {
       linkedProps: ['values'],
     },
+  },
+  childBirthMonth: {
+    required: true,
+  },
+  childBirthYear: {
+    required: true,
   },
   firstName: {
     nonEmpty: true,
