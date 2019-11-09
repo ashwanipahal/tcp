@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OutfitCarouselModule component should default variant correctly 1`] = `
+exports[`DivisionTabModule component should default variant correctly 1`] = `
 <div
   className=""
 >

@@ -134,6 +134,27 @@ const JeansModuleStyles = css`
       text-align: left;
       margin: 0 ${props => props.theme.spacing.ELEM_SPACING.MED} 20px;
     }
+    .slick-prev,
+    .slick-next {
+      width: 48px;
+      height: 48px;
+      z-index: 1;
+      border-radius: 30px;
+      margin-left: 6px;
+      background-color: white;
+      background-image: url(/static/images/carrot-left-light-gray.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      align-content: center;
+    }
+    .slick-prev {
+      margin-left: 6px;
+      transform: rotate(0deg) translate(0, -50%);
+    }
+    .slick-next {
+      transform: rotate(180deg) translate(0, -50%);
+      transform-origin: 24px 0;
+    }
   }
 `;
 
