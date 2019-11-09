@@ -176,7 +176,6 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       textAlignLeft={true}
     />
   </Styled(View)>
-  <ErrorDisplay />
   <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
     active={false}

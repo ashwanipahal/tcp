@@ -386,6 +386,7 @@ export class BagPage extends React.Component {
               navigation={navigation}
               isNoNEmptyBag={isNoNEmptyBag}
               hideHeader={this.hideHeaderWhilePaypalView}
+              payPalTop={30}
             />
           </FooterView>
         )}
