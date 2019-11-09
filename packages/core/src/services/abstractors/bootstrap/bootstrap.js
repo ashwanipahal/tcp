@@ -196,6 +196,15 @@ const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl,
       }
     }
 
+    response.header = headerAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
+    );
+    response.footer =
+      bootstrapData.footer &&
+      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
+    response.labels = labelsAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
+    );
     response.navigation = navigationAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
@@ -207,15 +216,6 @@ const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl,
         state,
       });
     }
-    response.header = headerAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
-    );
-    response.footer =
-      bootstrapData.footer &&
-      footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
-    response.labels = labelsAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
-    );
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);
   }

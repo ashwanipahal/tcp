@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 export default function({ WrappedComponent, mapStateToProps, mapDispatchToProps }) {
   class IsomorphicRenderer extends Component {
-    // eslint-disable-next-line complexity
     static async getInitialProps({ store, query, req, isServer }) {
       const props = { ...mapStateToProps(store.getState()), ...mapDispatchToProps(store.dispatch) };
       const intialProps = { props, query, isServer, req };
@@ -16,12 +15,12 @@ export default function({ WrappedComponent, mapStateToProps, mapDispatchToProps 
       }
     }
 
-    // componentDidMount() {
-    //   const { deviceType, ...props } = this.props;
-    //   if (deviceType !== 'bot') {
-    //     WrappedComponent.initiateApiCall({ props });
-    //   }
-    // }
+    componentDidMount() {
+      const { deviceType, ...props } = this.props;
+      if (deviceType !== 'bot') {
+        WrappedComponent.initiateApiCall({ props });
+      }
+    }
 
     render() {
       return <WrappedComponent {...this.props} />;

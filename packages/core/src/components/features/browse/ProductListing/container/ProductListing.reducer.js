@@ -3,7 +3,7 @@ import PRODUCTLISTINGPAGE_CONSTANTS from './ProductListing.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
 const initialState = {
-  [DEFAULT_REDUCER_KEY]: 'xyz',
+  [DEFAULT_REDUCER_KEY]: null,
 };
 
 const ProductListingReducer = (state = initialState, action) => {
