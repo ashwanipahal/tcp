@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
@@ -11,6 +10,7 @@ import SMSFormFields from '../../../../../../common/molecules/SMSFormFields';
 import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart';
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getNextCTAText from './PickupPage.view.utils';
 
 import {
   FormStyle,
@@ -151,27 +151,6 @@ class PickUpFormPart extends React.Component {
       const scrollPosition = y - height;
       this.scrollView.scrollTo({ x: 0, y: scrollPosition, animated: true });
     });
-  };
-
-  /**
-   * This method is to return the label text based on venmo or normal checkout
-   */
-  getNextCTAText = () => {
-    const {
-      isVenmoPaymentInProgress,
-      orderHasShipping,
-      pickUpLabels,
-      isVenmoPickupDisplayed,
-    } = this.props;
-    let nextButtonText;
-    if (isVenmoPaymentInProgress && !isVenmoPickupDisplayed && !orderHasShipping) {
-      nextButtonText = `${pickUpLabels.nextText}: ${pickUpLabels.reviewText}`;
-    } else {
-      nextButtonText = !orderHasShipping
-        ? `${pickUpLabels.nextText}: ${pickUpLabels.billingText}`
-        : `${pickUpLabels.nextText}: ${pickUpLabels.shippingText}`;
-    }
-    return nextButtonText;
   };
 
   /**
@@ -388,7 +367,7 @@ class PickUpFormPart extends React.Component {
               </Container>
               <CnCTemplate
                 navigation={navigation}
-                btnText={this.getNextCTAText()}
+                btnText={getNextCTAText(this.props)}
                 routeToPage="ShippingPage"
                 isGuest={isGuest}
                 onPress={handleSubmit(this.pickupSubmit)}
@@ -426,7 +405,6 @@ PickUpFormPart.propTypes = {
   isVenmoPaymentInProgress: PropTypes.bool,
   isVenmoPickupDisplayed: PropTypes.bool,
   isVenmoShippingDisplayed: PropTypes.bool,
-  orderHasShipping: PropTypes.bool.isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
 };

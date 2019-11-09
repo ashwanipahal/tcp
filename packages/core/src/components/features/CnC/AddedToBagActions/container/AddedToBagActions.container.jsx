@@ -18,8 +18,8 @@ export class AddedToBagContainer extends React.Component<Props> {
   };
 
   /**
-   * onCartCheckout method will check for selected checkout method
-   * {params} payload - checkout payload for app and web
+   * @description - onCartCheckout method will check for selected checkout method
+   * @param {object} payload - checkout payload for app and web
    */
   onCartCheckout = payload => {
     const { handleCartCheckout, setVenmoInProgress } = this.props;

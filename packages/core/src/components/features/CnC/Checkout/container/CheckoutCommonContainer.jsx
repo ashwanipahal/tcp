@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
@@ -128,13 +127,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this.props);
   };
 
-  reviewDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this.props);
-  };
+  reviewDidMount = () => intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this.props);
 
-  pickupDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this.props);
-  };
+  pickupDidMount = () => intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this.props);
 
   render() {
     const {

@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 import React from 'react';
 import { ScrollView, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
@@ -14,6 +13,7 @@ import AddressVerification from '../../../../../../common/organisms/AddressVerif
 import ModalNative from '../../../../../../common/molecules/Modal';
 import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
 import CONSTANTS from '../../../Checkout.constants';
+import { isShowVenmoBanner } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
@@ -56,7 +56,6 @@ export default class ShippingPage extends React.Component {
     setCheckoutStage: PropTypes.func.isRequired,
     isVenmoPaymentInProgress: PropTypes.bool,
     isVenmoShippingDisplayed: PropTypes.bool,
-    isVenmoPickupDisplayed: PropTypes.bool,
     setVenmoPickupState: PropTypes.func,
     venmoBannerLabel: PropTypes.shape({
       venmoBannerText: PropTypes.string,
@@ -85,7 +84,6 @@ export default class ShippingPage extends React.Component {
     newUserPhoneNo: null,
     isVenmoPaymentInProgress: false,
     isVenmoShippingDisplayed: true,
-    isVenmoPickupDisplayed: true,
     setVenmoPickupState: () => {},
     venmoBannerLabel: {
       venmoBannerText: '',
@@ -152,25 +150,6 @@ export default class ShippingPage extends React.Component {
       }
     }
   }
-
-  /**
-   * This function is to validate if we need to show venmo banner or not.
-   * Only if user comes on pickup or shipping page, but not on coming back from navigation
-   * @params {string} currentSection - current checkout section name
-   */
-  isShowVenmoBanner = currentSection => {
-    const {
-      isVenmoPaymentInProgress,
-      isVenmoPickupDisplayed,
-      isVenmoShippingDisplayed,
-    } = this.props;
-    const { CHECKOUT_STAGES } = CONSTANTS;
-    return (
-      isVenmoPaymentInProgress &&
-      ((currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && !isVenmoPickupDisplayed) ||
-        (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && !isVenmoShippingDisplayed))
-    );
-  };
 
   submitShippingForm = data => {
     const {
@@ -376,7 +355,7 @@ export default class ShippingPage extends React.Component {
                 scrollView={this.scrollView}
                 availableStages={availableStages}
               />
-              {this.isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING) && (
+              {isShowVenmoBanner(CHECKOUT_STAGES.SHIPPING, this.props) && (
                 <VenmoBanner labels={venmoBannerLabel} />
               )}
               <ScrollView
