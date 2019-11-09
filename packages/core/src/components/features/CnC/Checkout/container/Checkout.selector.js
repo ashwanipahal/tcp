@@ -43,13 +43,11 @@ export const getCheckoutValuesState = createSelector(
   state => state && state.get('values')
 );
 
-const getIsOrderHasShipping = state => {
-  return state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isShippingOrder']);
-};
+const getIsOrderHasShipping = state =>
+  !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isShippingOrder']);
 
-const getIsOrderHasPickup = state => {
-  return state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
-};
+const getIsOrderHasPickup = state =>
+  !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
 
 const getIfCheckoutRoutingDone = state => {
   return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'routingDone']);

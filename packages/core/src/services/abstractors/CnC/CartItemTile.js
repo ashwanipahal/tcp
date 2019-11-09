@@ -760,7 +760,7 @@ export const getOrderDetailsData = () => {
   });
 };
 
-export const getProductInfoForTranslationData = query => {
+export const getProductInfoForTranslationData = (query, brand) => {
   return executeUnbxdAPICall({
     body: {
       rows: 20,
@@ -776,6 +776,7 @@ export const getProductInfoForTranslationData = query => {
         'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
     },
     webService: endpoints.getProductInfoForTranslationByPartNumber,
+    brand,
   });
 };
 
