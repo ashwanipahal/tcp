@@ -201,10 +201,13 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-function* navigateToCheckout(stage, navigation, navigationActions) {
+function* navigateToCheckout(stage, navigation, navigationActions, isPayPalFlow = false) {
   yield put(getSetCheckoutStage(stage));
   const navigateAction = navigationActions.navigate({
     routeName: CONSTANTS.CHECKOUT_ROOT,
+    params: {
+      isPayPalFlow,
+    },
   });
   navigation.dispatch(navigateAction);
 }
@@ -345,7 +348,8 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
           navigateToCheckout,
           CONSTANTS.REVIEW_DEFAULT_PARAM,
           navigation,
-          navigationActions
+          navigationActions,
+          true
         );
       } else {
         utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);

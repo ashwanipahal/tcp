@@ -164,11 +164,10 @@ class CheckoutPage extends React.PureComponent {
       pickUpContactPerson,
       pickUpContactAlternate,
       checkoutServerError,
-      clearCheckoutServerError,
       toggleCountrySelector,
-      cartOrderItemsCount,
-      checkoutPageEmptyBagLabels,
+      clearCheckoutServerError,
     } = this.props;
+    const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
@@ -241,6 +240,7 @@ class CheckoutPage extends React.PureComponent {
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            pickUpContactPerson={pickUpContactPerson}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (

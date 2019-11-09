@@ -102,6 +102,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -223,6 +224,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -277,6 +279,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -333,6 +336,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -500,6 +504,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -621,6 +626,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -675,6 +681,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -731,6 +738,7 @@ exports[`CreditCardFields native Component CreditCardFields to render correctly 
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",

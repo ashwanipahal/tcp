@@ -1,11 +1,11 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
-import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
+import setPickupInitialValues from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -58,6 +58,7 @@ export default class ShippingPage extends React.PureComponent {
     pageCategory: PropTypes.string,
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
+    pickUpContactPerson: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -310,8 +311,16 @@ export default class ShippingPage extends React.PureComponent {
   };
 
   getAddressInitialValues = () => {
-    const { shippingAddress, shippingPhoneAndEmail, userAddresses, isGuest } = this.props;
-    if (!isEmpty(shippingAddress) && (isGuest || !userAddresses || userAddresses.size === 0)) {
+    const {
+      shippingAddress,
+      shippingPhoneAndEmail,
+      userAddresses,
+      isGuest,
+      pickUpContactPerson,
+      orderHasPickUp,
+    } = this.props;
+    const emptyShippingAddress = !shippingAddress.addressLine1;
+    if (!emptyShippingAddress && (isGuest || !userAddresses || userAddresses.size === 0)) {
       return {
         addressLine1: shippingAddress.addressLine1,
         addressLine2: shippingAddress.addressLine2,
@@ -324,6 +333,9 @@ export default class ShippingPage extends React.PureComponent {
         country: getSiteId() && getSiteId().toUpperCase(),
         emailAddress: shippingPhoneAndEmail.emailAddress,
       };
+    }
+    if (emptyShippingAddress && isGuest && orderHasPickUp) {
+      return setPickupInitialValues(pickUpContactPerson);
     }
     return {
       country: getSiteId() && getSiteId().toUpperCase(),
@@ -348,9 +360,6 @@ export default class ShippingPage extends React.PureComponent {
 
   render() {
     const {
-      addressLabels,
-      isOrderUpdateChecked,
-      isGiftServicesChecked,
       smsSignUpLabels,
       addressPhoneNumber,
       selectedShipmentId,
@@ -365,21 +374,12 @@ export default class ShippingPage extends React.PureComponent {
       isSaveToAddressBookChecked,
       userAddresses,
       onFileAddressKey,
-      isMobile,
-      newUserPhoneNo,
-      shippingAddressId,
-      setAsDefaultShipping,
-      labels,
-      address,
-      syncErrors,
-      shippingAddress,
-      isVenmoPaymentInProgress,
-      isVenmoShippingDisplayed,
-      isSubmitting,
-      formatPayload,
-      ServerErrors,
-      checkoutServerError,
     } = this.props;
+    const { isMobile, newUserPhoneNo, shippingAddressId } = this.props;
+    const { setAsDefaultShipping, labels, address, syncErrors } = this.props;
+    const { isSubmitting, formatPayload, ServerErrors, checkoutServerError } = this.props;
+    const { shippingAddress, isVenmoPaymentInProgress, isVenmoShippingDisplayed } = this.props;
+    const { addressLabels, isOrderUpdateChecked, isGiftServicesChecked } = this.props;
     const { toggleCountrySelector, pageCategory, checkoutRoutingDone } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;

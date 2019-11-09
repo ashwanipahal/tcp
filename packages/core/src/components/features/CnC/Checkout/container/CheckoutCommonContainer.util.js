@@ -1,3 +1,4 @@
+import { getPayPalFlag } from '../util/utility';
 import { isMobileApp } from '../../../../../utils';
 
 export const formatPayload = payload => {
@@ -13,7 +14,7 @@ export const formatPayload = payload => {
 };
 
 export const intiSectionPage = (pageName, props, extraProps = {}) => {
-  const { initCheckoutSectionPage, router, isRegisteredUserCallDone } = props;
+  const { initCheckoutSectionPage, router, isRegisteredUserCallDone, navigation } = props;
   let recalc;
   let isPaypalPostBack;
   let appRouting;
@@ -22,5 +23,8 @@ export const intiSectionPage = (pageName, props, extraProps = {}) => {
   }
   if (isRegisteredUserCallDone || isMobileApp()) {
     initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
+  }
+  if (isMobileApp()) {
+    isPaypalPostBack = getPayPalFlag(navigation);
   }
 };
