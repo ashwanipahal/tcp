@@ -747,6 +747,13 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
+  <Connect(QuickViewModalContainer)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
   <Connect(QuickViewModalContainer) />
 </LazyloadScrollView>
 `;
