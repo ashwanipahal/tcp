@@ -27,6 +27,7 @@ import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -132,9 +133,15 @@ class HomePageView extends React.PureComponent<Props> {
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
+        <Recommendations
+          navigation={navigation}
+          showButton
+          variation="moduleO,moduleP"
+          page="homepageTest"
+        />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
+        <QuickViewModal navigation={navigation} />
       </LazyloadScrollView>
     );
   }

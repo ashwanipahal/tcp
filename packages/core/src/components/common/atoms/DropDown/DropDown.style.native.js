@@ -82,6 +82,21 @@ const SelectedLabelView = styled.View`
   justify-content: space-between;
 `;
 
+const SHADOW = `
+  shadow-opacity: 0.15;
+  shadow-radius: 2px;
+  shadow-color: ${props => props.theme.colorPalette.black};
+  shadow-offset: 0px 4px;
+  elevation: 2;
+`;
+
+const FlatListWrapper = styled.View`
+  ${SHADOW}
+  width: ${props => props.width};
+  height: ${props => props.height};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+`;
+
 export {
   DropDownStyle,
   HeaderContainer,
@@ -92,5 +107,6 @@ export {
   FlatList,
   StyledLabel,
   SelectedLabelView,
+  FlatListWrapper,
   HeaderItemContainer,
 };

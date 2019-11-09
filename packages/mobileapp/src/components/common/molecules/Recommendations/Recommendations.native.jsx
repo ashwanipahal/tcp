@@ -7,7 +7,6 @@ import ModuleP from '@tcp/core/src/components/common/molecules/ModuleP';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import { getScreenWidth, getLocator } from '@tcp/core/src/utils/index.native';
 import { Button } from '@tcp/core/src/components/common/atoms';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import { CarouselContainer, ButtonContainer } from './Recommendations.style';
@@ -121,28 +120,25 @@ const renderRecommendationView = (props, variation) => {
   );
 };
 
-const fetchRecommendations = loadRecommendations => () => {
-  loadRecommendations();
+const fetchRecommendations = (loadRecommendations, action) => () => {
+  loadRecommendations(action);
   return () => {};
 };
 
 const Recommendations = props => {
-  const {
-    variation,
-    loadRecommendations,
-    navigation,
-    onPickUpOpenClick,
-    isPickupModalOpen,
-  } = props;
+  const { variation, loadRecommendations, navigation, isPickupModalOpen, isAddedToBagOpen } = props;
   const variationArray = variation.split(',');
-
-  useEffect(fetchRecommendations(loadRecommendations), []);
+  const { page, portalValue } = props;
+  const action = { pageType: page };
+  if (portalValue) {
+    action.mbox = portalValue;
+  }
+  useEffect(fetchRecommendations(loadRecommendations, action), []);
 
   return (
     <View>
       {variationArray.map(value => renderRecommendationView(props, value))}
-      <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
+      {!isAddedToBagOpen ? <AddedToBagContainer navigation={navigation} /> : null}
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </View>
   );
@@ -151,13 +147,17 @@ const Recommendations = props => {
 Recommendations.propTypes = {
   variation: PropTypes.string.isRequired,
   loadRecommendations: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func,
   navigation: PropTypes.shape({}).isRequired,
   isPickupModalOpen: PropTypes.bool.isRequired,
+  isAddedToBagOpen: PropTypes.bool,
+  page: PropTypes.string.isRequired,
+  portalValue: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
-  onPickUpOpenClick: () => {},
+  isAddedToBagOpen: false,
+  portalValue: '',
 };
+Recommendations.defaultProps = {};
 
 export default Recommendations;

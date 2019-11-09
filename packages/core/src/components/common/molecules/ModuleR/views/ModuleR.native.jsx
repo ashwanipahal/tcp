@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Anchor, Skeleton } from '../../../atoms';
-import { getLocator, splitUniqueIDForDAM } from '../../../../../utils';
+import { getLocator, getProductUrlForDAM } from '../../../../../utils';
 import { LAZYLOAD_HOST_NAME } from '../../../../../utils/utils.app';
 import moduleRConfig from '../moduleR.config';
 
@@ -84,7 +84,7 @@ class ModuleR extends React.PureComponent {
                   <StyledImage
                     alt={productName}
                     host={LAZYLOAD_HOST_NAME.HOME}
-                    url={splitUniqueIDForDAM(uniqueId)}
+                    url={getProductUrlForDAM(uniqueId)}
                     height={PRODUCT_IMAGE_HEIGHT}
                     width={PRODUCT_IMAGE_WIDTH}
                     imgConfig={moduleRConfig.IMG_DATA.productImgConfig[0]}

@@ -11,6 +11,7 @@ import DetailedCouponTile from '../../../molecule/DetailedCouponTile';
 import EmptyRewards from '../../../molecule/EmptyRewards';
 import EmptyWalletRewards from '../../../molecule/EmptyWalletRewards';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+import MyRewardsSkeleton from '../skeleton/MyRewardsSkeleton.view';
 
 const MyRewards = ({
   labels,
@@ -25,6 +26,7 @@ const MyRewards = ({
   isMobile,
   view,
   showLink,
+  isFetching,
 }) => {
   const heading =
     view === 'all'
@@ -68,35 +70,37 @@ const MyRewards = ({
             large: true,
           }}
         >
-          {coupons.size > 0 ? (
-            <BodyCopy component="div" className="rewards-container elem-mb-XXL">
-              {coupons.map(coupon => {
-                return (
-                  <DetailedCouponTile
-                    key={coupon.id}
-                    labels={commonLabels}
-                    coupon={coupon}
-                    onViewCouponDetails={onViewCouponDetails}
-                    onApplyCouponToBagFromList={onApplyCouponToBagFromList}
-                    onRemove={onRemove}
-                    handleErrorCoupon={handleErrorCoupon}
-                    isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
-                    isMobile={isMobile}
-                    view={view}
-                    className="elem-mb-LRG"
-                  />
-                );
-              })}
-            </BodyCopy>
-          ) : (
-            <>
-              {view === 'all' ? (
-                <EmptyWalletRewards labels={labels} />
-              ) : (
-                <EmptyRewards labels={labels} />
-              )}
-            </>
-          )}
+          {isFetching && <MyRewardsSkeleton />}
+          {!isFetching &&
+            (coupons.size > 0 ? (
+              <BodyCopy component="div" className="rewards-container elem-mb-XXL">
+                {coupons.map(coupon => {
+                  return (
+                    <DetailedCouponTile
+                      key={coupon.id}
+                      labels={commonLabels}
+                      coupon={coupon}
+                      onViewCouponDetails={onViewCouponDetails}
+                      onApplyCouponToBagFromList={onApplyCouponToBagFromList}
+                      onRemove={onRemove}
+                      handleErrorCoupon={handleErrorCoupon}
+                      isDisabled={isApplyingOrRemovingCoupon || isApplyingCoupon}
+                      isMobile={isMobile}
+                      view={view}
+                      className="elem-mb-LRG"
+                    />
+                  );
+                })}
+              </BodyCopy>
+            ) : (
+              <>
+                {view === 'all' ? (
+                  <EmptyWalletRewards labels={labels} />
+                ) : (
+                  <EmptyRewards labels={labels} />
+                )}
+              </>
+            ))}
         </Col>
         {showLink && (
           <Col
@@ -150,6 +154,7 @@ MyRewards.propTypes = {
   isMobile: PropTypes.bool,
   view: PropTypes.string,
   showLink: PropTypes.bool,
+  isFetching: PropTypes.bool,
 };
 
 MyRewards.defaultProps = {
@@ -173,6 +178,7 @@ MyRewards.defaultProps = {
   isMobile: true,
   view: '',
   showLink: false,
+  isFetching: false,
 };
 
 export default withStyles(MyRewards, styles);

@@ -43,6 +43,7 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
     getCurrencySymbol,
     pageCategory,
+    footerLabels,
     openApplyNowModal,
     navigation,
   } = props;
@@ -169,14 +170,7 @@ const LoyaltyBannerSection = props => {
         />
         <View className="footer">
           <LoyaltyFooterSection
-            labels={labels}
-            isPlcc={isPlcc}
-            isProductDetailView={isProductDetailView}
-            isReviewPage={isReviewPage}
-            isConfirmationPage={isConfirmationPage}
-            isGuest={isGuest}
-            isAddedToBagPage={isAddedToBagPage}
-            earnedRewardAvailable={earnedRewardAvailable}
+            footerLabels={footerLabels}
             openApplyNowModal={openApplyNowModal}
             navigation={navigation}
           />
@@ -189,6 +183,7 @@ const LoyaltyBannerSection = props => {
 
 LoyaltyBannerSection.propTypes = {
   labels: PropTypes.shape.isRequired,
+  footerLabels: PropTypes.shape.isRequired,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
   thresholdValue: PropTypes.number,
