@@ -160,7 +160,7 @@ class CheckoutPage extends React.PureComponent {
           />
         );
       case CONFIRMATION:
-        return <Confirmation />;
+        return <Confirmation navigation={navigation} />;
       default:
         return null;
     }
