@@ -69,6 +69,7 @@ class CheckoutPage extends React.PureComponent {
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       pickupDidMount,
+      isPayPalWebViewEnable,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     const { shipmentMethods } = shippingProps;
@@ -131,6 +132,7 @@ class CheckoutPage extends React.PureComponent {
             availableStages={availableStages}
             submitBilling={submitBilling}
             setCheckoutStage={setCheckoutStage}
+            isPayPalWebViewEnable={isPayPalWebViewEnable}
           />
         );
       case REVIEW:
@@ -215,6 +217,7 @@ CheckoutPage.propTypes = {
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isPayPalWebViewEnable: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {

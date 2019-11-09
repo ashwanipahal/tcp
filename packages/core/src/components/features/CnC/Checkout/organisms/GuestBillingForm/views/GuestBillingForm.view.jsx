@@ -51,6 +51,7 @@ class GuestBillingForm extends React.Component {
     isPaymentDisabled: PropTypes.bool,
     pageCategory: PropTypes.string,
     venmoError: PropTypes.string,
+    isPayPalWebViewEnable: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -81,6 +82,7 @@ class GuestBillingForm extends React.Component {
     isPaymentDisabled: false,
     pageCategory: '',
     venmoError: '',
+    isPayPalWebViewEnable: false,
   };
 
   componentDidUpdate(prevProp) {
@@ -130,6 +132,7 @@ class GuestBillingForm extends React.Component {
       isPaymentDisabled,
       venmoError,
       pageCategory,
+      isPayPalWebViewEnable,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -204,6 +207,7 @@ class GuestBillingForm extends React.Component {
           continueWithText={labels.continueWith}
           onVenmoSubmit={handleSubmit}
           venmoError={venmoError}
+          isPayPalWebViewEnable={isPayPalWebViewEnable}
         />
       </form>
     );

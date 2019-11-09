@@ -1,12 +1,5 @@
 import styled from 'styled-components/native';
 
-export const ButtonWrapper = styled.View`
-  margin: 0 10px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-`;
-
 export const BackLinkText = styled.Text`
   color: ${props => props.theme.colors.PRIMARY.BLUE};
   font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
@@ -55,10 +48,46 @@ export const CouponAndPromosWrapper = styled.View`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
+const applyPositionClassStyle = props => {
+  if (props.isPayPalWebViewEnable) {
+    return `
+    top: 0px;
+    position: absolute;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    `;
+  }
+  return 'position: relative;';
+};
+
+export const PayPalButtonContainer = styled.View`
+  margin-bottom: 20px;
+  ${applyPositionClassStyle}
+`;
+
 export const BannerWrapper = styled.View`
   background-color: ${props => props.theme.colorPalette.gray[500]};
   margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
   height: 100px;
+  ${applyPositionClassStyle}
+`;
+
+export const CnContainer = styled.View`
+  ${applyPositionClassStyle}
+  margin-bottom: 60px;
+`;
+
+export const CnContent = styled.View`
+  ${applyPositionClassStyle}
+`;
+
+export const ButtonWrapper = styled.View`
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  ${applyPositionClassStyle}
 `;
 
 export default {
@@ -70,4 +99,7 @@ export default {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   BannerWrapper,
+  CnContainer,
+  CnContent,
+  PayPalButtonContainer,
 };

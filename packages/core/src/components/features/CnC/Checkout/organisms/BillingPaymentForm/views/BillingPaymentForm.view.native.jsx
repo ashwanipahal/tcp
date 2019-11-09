@@ -365,6 +365,7 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
       isPaymentDisabled,
       setCheckoutStage,
+      isPayPalWebViewEnable,
     } = this.props;
     const paymentMethods = [
       { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
@@ -423,6 +424,7 @@ export class BillingPaymentForm extends React.PureComponent {
           }
           pageCategory="billing"
           showAccordian
+          isPayPalWebViewEnable={isPayPalWebViewEnable}
         />
       </>
     );

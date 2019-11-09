@@ -187,6 +187,7 @@ export const mapStateToProps = state => {
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
     venmoError: CheckoutSelectors.getVenmoError(state),
+    getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
   };
 };
 

@@ -48,7 +48,7 @@ class PayPalButton extends React.PureComponent {
 
     let styles = {
       height: 42,
-      width: 150,
+      width: 340,
       flex: 1,
       overflow: 'hidden',
     };

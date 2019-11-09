@@ -190,6 +190,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpContactPerson,
       pickUpContactAlternate,
       dispatchReviewReduxForm,
+      isPayPalWebViewEnable,
     } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
@@ -197,7 +198,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItems,
       checkoutProgressBarLabels
     );
-
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
@@ -258,6 +258,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         toggleCountrySelector={toggleCountrySelector}
         cartOrderItemsCount={cartOrderItemsCount}
         checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
   }
@@ -424,6 +425,7 @@ const mapStateToProps = state => {
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     couponHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
   };
 };
 
