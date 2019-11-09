@@ -57,6 +57,7 @@ const {
   getShippingDestinationValues,
   getDefaultAddress,
   getGiftServicesFormData,
+  getIfCheckoutRoutingDone,
 } = selectors;
 const { hasPOBox } = utility;
 let oldHasPOB = {};
@@ -210,7 +211,8 @@ function* initShippingData(pageName, initialLoad) {
 }
 
 function* handleCheckoutInitRouting(pageName, appRouting) {
-  if (!appRouting && !isMobileApp()) {
+  const checkoutRoutingDone = yield select(getIfCheckoutRoutingDone);
+  if (!checkoutRoutingDone && !appRouting && !isMobileApp()) {
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
     const { PICKUP, SHIPPING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
     let requestedStage;
