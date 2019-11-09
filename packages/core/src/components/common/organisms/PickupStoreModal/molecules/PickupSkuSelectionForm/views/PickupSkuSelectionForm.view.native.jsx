@@ -46,7 +46,9 @@ const PickupSkuSelectionForm = props => {
     currentColorEntry,
     imageUrl,
     onChangeColor,
+    onChangeSize,
     generalProductId,
+    toastMessage,
   } = props;
 
   const badge2 = prices && prices.badge2;
@@ -132,12 +134,14 @@ const PickupSkuSelectionForm = props => {
 
       <ProductAddToBagContainer
         onChangeColor={onChangeColor}
+        onChangeSize={onChangeSize}
         plpLabels={SKU_DETAILS}
         currentProduct={currentProduct}
         customFormName={PRODUCT_SKU_SELECTION_FORM}
         selectedColorProductId={generalProductId}
         initialFormValues={initialValues}
         showAddToBagCTA={false}
+        toastMessage={toastMessage}
         isDisableZeroInventoryEntries={false}
         isPickup
       />
@@ -175,8 +179,10 @@ PickupSkuSelectionForm.propTypes = {
   onCloseClick: PropTypes.func,
   navigation: PropTypes.func,
   onChangeColor: PropTypes.func,
+  onChangeSize: PropTypes.func,
   currentColorEntry: PropTypes.shape({}),
   imageUrl: PropTypes.string.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 PickupSkuSelectionForm.defaultProps = {
@@ -184,8 +190,10 @@ PickupSkuSelectionForm.defaultProps = {
   currency: 'USD',
   onCloseClick: () => {},
   onChangeColor: null,
+  onChangeSize: () => {},
   currentColorEntry: {},
   generalProductId: '',
+  toastMessage: () => {},
 };
 
 export default withStyles(PickupSkuSelectionForm, styles);

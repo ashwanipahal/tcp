@@ -33,7 +33,6 @@ import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
-import createDataLayer from '../analytics/dataLayer';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 
@@ -63,7 +62,7 @@ class TCPWebApp extends App {
     } catch (e) {
       globalProps = {};
     }
-    const pageProps = TCPWebApp.loadComponentData(Component, ctx, globalProps);
+    const pageProps = await TCPWebApp.loadComponentData(Component, ctx, globalProps);
     return {
       pageProps,
     };
@@ -142,14 +141,6 @@ class TCPWebApp extends App {
       }
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
-    }
-
-    /**
-     * This is where we assign window._dataLayer for analytics logic
-     */
-    if (process.env.ANALYTICS) {
-      // eslint-disable-next-line
-      global._dataLayer = createDataLayer(this.props.store);
     }
   }
 
@@ -297,7 +288,7 @@ class TCPWebApp extends App {
               <div className="content-wrapper">
                 <div id="overlayWrapper">
                   <div id="overlayComponent" />
-                  <Component {...pageProps} />
+                  <Component {...pageProps} pageName={componentPageName} />
                 </div>
               </div>
               <BackToTop />

@@ -40,3 +40,44 @@ exports[`SearchBar native should render correctly should match snapshot 1`] = `
   showCustomizedSearch={false}
 />
 `;
+
+exports[`SearchBar native should render correctly with showCustomizedSearch should match snapshot 1`] = `
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "labels": [Function],
+        "openSearchProductPage": null,
+        "showCustomizedSearch": false,
+      },
+      "attrs": Array [],
+      "displayName": "Styled(SearchBar)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  margin: -",
+          [Function],
+          " 0px ",
+          [Function],
+          ";
+  justify-content: center;
+",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={[Function]}
+  openSearchProductPage={null}
+  showCustomizedSearch={true}
+/>
+`;

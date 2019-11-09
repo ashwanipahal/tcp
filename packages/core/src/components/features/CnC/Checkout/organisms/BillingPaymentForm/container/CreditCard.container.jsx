@@ -76,6 +76,17 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
   };
 
   /**
+   * @function getSelectedPaymentMethod
+   * @description returns the initial payment method selected during billing page load.
+   */
+  getSelectedPaymentMethod = () => {
+    const { billingData } = this.props;
+    return billingData.paymentMethod === constants.ACCEPTED_CREDIT_CARDS.PAYPAL
+      ? constants.PAYMENT_METHOD_PAY_PAL
+      : constants.PAYMENT_METHOD_CREDIT_CARD;
+  };
+
+  /**
    * @function getPaymentMethodId
    * @description returns the initial payment method selected during billing page load.
    */
@@ -83,7 +94,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
     const { isVenmoPaymentInProgress } = this.props;
     return isVenmoPaymentInProgress
       ? constants.PAYMENT_METHOD_VENMO
-      : constants.PAYMENT_METHOD_CREDIT_CARD;
+      : this.getSelectedPaymentMethod();
   };
 
   /**

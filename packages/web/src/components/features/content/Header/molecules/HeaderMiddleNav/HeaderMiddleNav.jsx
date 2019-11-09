@@ -73,6 +73,9 @@ class HeaderMiddleNav extends React.PureComponent {
         variation: 'primary',
       });
     }
+    this.setState({
+      userNameClick: !userNameClick,
+    });
   };
 
   handleUserTypeColor = isUserPlcc => {

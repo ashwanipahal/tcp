@@ -203,7 +203,9 @@ class ProductsGridItem extends React.PureComponent {
 
   /* function to get product price section */
   getProductPriceSection = (listPriceForColor, offerPriceForColor, badge3, isShowBadges) => {
-    const { currencySymbol } = this.props;
+    const { currencySymbol, item } = this.props;
+    const bundleProduct = item && item.productInfo && item.productInfo.bundleProduct;
+    const priceRange = item && item.productInfo && item.productInfo.priceRange;
     const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
     return (
       <ProductPricesSection
@@ -213,6 +215,8 @@ class ProductsGridItem extends React.PureComponent {
         noMerchantBadge={badge3}
         merchantTag={isShowBadges ? badge3 : null}
         hidePrefixListPrice
+        bundleProduct={bundleProduct}
+        priceRange={priceRange}
       />
     );
   };
@@ -367,6 +371,13 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  renderFavouriteIcon = (bundleProduct, isFavoriteView, isInDefaultWishlist, itemNotAvailable) => {
+    return (
+      !bundleProduct &&
+      WishListIcon(isFavoriteView, isInDefaultWishlist, this.handleAddToWishlist, itemNotAvailable)
+    );
+  };
+
   render() {
     const {
       onQuickViewOpenClick,
@@ -380,6 +391,7 @@ class ProductsGridItem extends React.PureComponent {
       //  isBossEnabled,
       item: {
         productInfo: {
+          bundleProduct,
           promotionalMessage,
           promotionalPLCCMessage,
           generalProductId,
@@ -534,10 +546,10 @@ class ProductsGridItem extends React.PureComponent {
                   isShowBadges
                 )}
               </Col>
-              {WishListIcon(
+              {this.renderFavouriteIcon(
+                bundleProduct,
                 isFavoriteView,
                 isInDefaultWishlist,
-                this.handleAddToWishlist,
                 itemNotAvailable
               )}
             </Row>
