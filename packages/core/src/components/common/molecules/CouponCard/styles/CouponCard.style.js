@@ -69,9 +69,7 @@ const styles = css`
   }
   .couponCard__col {
     flex: 1;
-    padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    ${props =>
-      props.isCarouselView ? `padding-right: ${props.theme.spacing.ELEM_SPACING.SM};` : ''}
+    padding-right: ${props => (props.isCarouselView ? '0' : props.theme.spacing.ELEM_SPACING.SM)};
   }
   .coupon__button_black {
     background-color: ${props => props.theme.colors.BLACK};
