@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PromoModules from '../../../../common/organisms/PromoModules';
 
 // Changes as per RWD-9852. Keeping this for future reference.
 // import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
@@ -58,6 +59,8 @@ const ProductListView = ({
   currencyExchange,
   currency,
   isLoadingMore,
+  plpTopPromos,
+  asPathVal,
   ...otherProps
 }) => {
   return (
@@ -79,6 +82,7 @@ const ProductListView = ({
           </div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
+          <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
               {/*
@@ -169,6 +173,8 @@ ProductListView.propTypes = {
   currencyExchange: PropTypes.string,
   currency: PropTypes.string,
   isLoadingMore: PropTypes.bool,
+  plpTopPromos: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
 };
 
 ProductListView.defaultProps = {
@@ -190,6 +196,8 @@ ProductListView.defaultProps = {
   isFilterBy: true,
   isLoadingMore: true,
   currency: 'USD',
+  plpTopPromos: {},
+  asPathVal: '',
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
