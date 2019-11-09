@@ -242,6 +242,25 @@ export const handleReviewFormSubmit = (scope, data) => {
   }
 };
 
+const flattenObject = (obj, prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? `${prefix}.` : '';
+    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+
+export const scrollToFirstError = errors => {
+  const errorEl = document.querySelector(
+    Object.keys(flattenObject(errors))
+      .map(fieldName => `[name="${fieldName}"]`)
+      .join(',')
+  );
+  if (errorEl && errorEl.focus) {
+    errorEl.focus(); // this scrolls without visible scroll
+  }
+};
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
