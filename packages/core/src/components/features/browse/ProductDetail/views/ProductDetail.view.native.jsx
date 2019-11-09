@@ -152,7 +152,6 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
-
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>

@@ -54,9 +54,9 @@ describe('#Added to bag Selectors', () => {
 
   it('#getAddedToBagData should return itemInfo', () => {
     expect(BAGPAGE_SELECTORS.getBagPageLabels(state)).toEqual({
-      addedToBag: 'AddedToBag',
+      addedToBag: 'lbl_header_addedToBag',
       bagHeading: 'bagHeading',
-      checkout: 'Checkout',
+      checkout: 'lbl_cta_checkout',
       guestUserMsg: 'guestUserMsg',
       helperMsg: 'helperMsg',
       loggedInMsg: 'loggedInMsg',
