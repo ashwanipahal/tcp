@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; // eslint-disable-line
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
@@ -39,19 +38,44 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
+import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 class ProductListingContainer extends React.PureComponent {
+  static initiateApiCall = ({ isServer, props, req }) => {
+    const {
+      getProducts,
+      navigation,
+      routerParam,
+      router = {},
+      getStyliticsProductTabListData,
+    } = props;
+    let { asPath = '' } = routerParam || router;
+    asPath = asPath || req.originalUrl;
+    const path = asPath.substring(asPath.lastIndexOf('/') + 1);
+    if (!isServer) {
+      const url = (navigation && navigation.getParam('url')) || asPath;
+      getProducts({ URI: 'category', url, ignoreCache: true });
+    } else if (path.indexOf('-outfits') > -1) {
+      // OutfitListingContainer.initiateApiCall({ isServer, props });
+      const categoryId = (navigation && navigation.getParam('outfitPath')) || path;
+      getStyliticsProductTabListData({ categoryId, count: 20 });
+    }
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      router: { asPath },
+    } = nextProps;
+    const path = asPath.substring(asPath.lastIndexOf('/') + 1);
+    return { ...prevState, isOutfit: path.indexOf('-outfits') > -1, asPath: path };
+  }
+
   constructor(props) {
     super(props);
-
     this.state = {
       isOutfit: false,
       asPath: '',
     };
-  }
-
-  componentDidMount() {
-    this.makeApiCall();
   }
 
   componentDidUpdate(prevProps) {
@@ -73,13 +97,11 @@ class ProductListingContainer extends React.PureComponent {
       router: { asPath },
     } = this.props;
     const path = asPath.substring(asPath.lastIndexOf('/') + 1);
-    if (path.indexOf('-outfits') > -1) {
-      this.setState({
-        isOutfit: true,
-        asPath: path,
-      });
-    }
-    const url = navigation && navigation.getParam('url');
+    this.setState({
+      isOutfit: path.indexOf('-outfits') > -1,
+      asPath: path,
+    });
+    const url = (navigation && navigation.getParam('url')) || asPath;
     getProducts({ URI: 'category', url, ignoreCache: true });
   };
 
@@ -175,12 +197,10 @@ function mapStateToProps(state) {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(
-      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
-    ),
+    breadCrumbs: processBreadCrumbs(state.ProductListing && state.ProductListing.breadCrumbTrail),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     totalProductsCount: getTotalProductsCount(state),
@@ -206,6 +226,8 @@ function mapStateToProps(state) {
     isFilterBy: getIsFilterBy(state),
     currencyAttributes: getCurrencyAttributes(state),
     currency: getCurrentCurrency(state),
+    deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+    routerParam: state.routerParam,
   };
 }
 
@@ -222,6 +244,9 @@ function mapDispatchToProps(dispatch) {
     },
     onAddItemToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
+    },
+    getStyliticsProductTabListData: payload => {
+      dispatch(styliticsProductTabListDataReqforOutfit(payload));
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
@@ -284,9 +309,15 @@ ProductListingContainer.defaultProps = {
   currency: 'USD',
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProductListingContainer)
-);
+// export default withRouter(
+//   connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(ProductListingContainer)
+// );
+
+export default withIsomorphicRenderer({
+  WrappedComponent: ProductListingContainer,
+  mapStateToProps,
+  mapDispatchToProps,
+});

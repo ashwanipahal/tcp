@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
 import {
@@ -35,13 +35,8 @@ import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
-  componentDidMount() {
-    const {
-      getOutfit,
-      router: { query },
-      navigation,
-    } = this.props;
-
+  static initiateApiCall = ({ props, query, isServer }) => {
+    const { getOutfit, navigation } = props;
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
@@ -50,10 +45,20 @@ class OutfitDetailsContainer extends React.PureComponent {
       // const outfitId = '138548';
       getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
-      const { vendorColorProductIdsList, outfitId } = query;
+      let vendorColorProductIdsList;
+      let outfitId;
+      if (isServer) {
+        ({ vendorColorProductIdsList, outfitId } = query);
+      } else {
+        ({
+          router: {
+            query: { vendorColorProductIdsList, outfitId },
+          },
+        } = props);
+      }
       getOutfit({ outfitId, vendorColorProductIdsList });
     }
-  }
+  };
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
     const formValues = getAddedToBagFormValues(
@@ -153,7 +158,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 OutfitDetailsContainer.propTypes = {
-  getOutfit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   outfitImageUrl: PropTypes.string,
   outfitProducts: PropTypes.shape({}),
@@ -194,7 +198,13 @@ OutfitDetailsContainer.defaultProps = {
   isLoggedIn: false,
 };
 
-export default connect(
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(OutfitDetailsContainer);
+
+export default withIsomorphicRenderer({
+  WrappedComponent: OutfitDetailsContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(OutfitDetailsContainer);
+  mapDispatchToProps,
+});

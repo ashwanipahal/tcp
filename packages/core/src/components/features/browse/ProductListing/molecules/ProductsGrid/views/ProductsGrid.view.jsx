@@ -72,12 +72,10 @@ class ProductsGrid extends React.Component {
     this.handleLoadNextPage = this.handleLoadNextPage.bind(this);
   }
 
-  componentWillMount() {
-    if (isClient()) {
-      document.addEventListener('scroll', this.handleLoadNextPage, true);
-      document.addEventListener('mousewheel', this.handleLoadNextPage, true);
-      document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
-    }
+  componentDidMount() {
+    document.addEventListener('scroll', this.handleLoadNextPage, true);
+    document.addEventListener('mousewheel', this.handleLoadNextPage, true);
+    document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
   }
 
   componentDidUpdate() {

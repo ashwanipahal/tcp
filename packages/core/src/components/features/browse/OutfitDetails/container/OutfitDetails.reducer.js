@@ -8,16 +8,16 @@ const initialState = fromJS({
 
 const getDefaultState = state => {
   // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-  if (state instanceof Object) {
-    return fromJS(state);
-  }
+  // if (state instanceof Object) {
+  //   return fromJS(state);
+  // }
   return state;
 };
 
 const OutfitDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case OUTFIT_DETAIL_CONSTANTS.SET_OUTFIT_PRODUCTS:
-      return state.set('currentOutfit', action.currentOutfit);
+      return { ...state, currentOutfit: action.currentOutfit };
     default:
       return getDefaultState(state);
   }

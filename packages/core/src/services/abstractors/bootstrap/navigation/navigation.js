@@ -33,7 +33,15 @@ const Abstractor = {
       ''
     );
   },
-  getData: (module, data) => {
+  getData: (
+    module,
+    data = {
+      brand: 'TCP',
+      country: 'US',
+      channel: 'Desktop',
+      lang: '',
+    }
+  ) => {
     return handler
       .fetchModuleDataFromGraphQL({ name: module, data })
       .then(response => {

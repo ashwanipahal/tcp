@@ -1,4 +1,5 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
+import ProductListingAbstractor from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListingApiHandler';
 import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
@@ -155,7 +156,7 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  * @param {String} pageName
  * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pageName = '', modules, cachedData) => {
+const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl, deviceType) => {
   const response = {};
   const apiConfig = getAPIConfig();
   const { language } = apiConfig;
@@ -195,6 +196,17 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       }
     }
 
+    response.navigation = navigationAbstractor.processData(
+      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
+    );
+
+    if (originalUrl.includes('/c/') && deviceType === 'bot' && typeof window === 'undefined') {
+      response.PLP = await ProductListingAbstractor({
+        navigationData: response.navigation,
+        location: { pathname: originalUrl },
+        state,
+      });
+    }
     response.header = headerAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
     );
@@ -203,9 +215,6 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       footerAbstractor.processData(retrieveCachedData({ ...fetchCachedDataParams, key: 'footer' }));
     response.labels = labelsAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'labels' })
-    );
-    response.navigation = navigationAbstractor.processData(
-      retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);

@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; //eslint-disable-line
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import SearchDetail from '../views/SearchDetail.view';
@@ -46,15 +45,21 @@ import {
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
 class SearchDetailContainer extends React.PureComponent {
-  componentDidMount() {
-    const {
-      router: {
-        query: { searchQuery },
-        asPath,
-      },
-      getProducts,
-      formValues,
-    } = this.props;
+  static initiateApiCall = ({ props, query, req, isServer }) => {
+    const { getProducts, formValues } = props;
+    let searchQuery;
+    let asPath = '';
+    if (isServer) {
+      ({ searchQuery } = query);
+      ({ originalUrl: asPath } = req);
+    } else {
+      ({
+        router: {
+          query: { searchQuery },
+          asPath,
+        },
+      } = props);
+    }
     const splitAsPathBy = `/search/${searchQuery}?`;
     const queryString = asPath.split(splitAsPathBy);
     const filterSortString = (queryString.length && queryString[1]) || '';
@@ -64,8 +69,9 @@ class SearchDetailContainer extends React.PureComponent {
       searchQuery,
       ignoreCache: true,
       formValues,
+      url: asPath,
     });
-  }
+  };
 
   componentDidUpdate(prevProps) {
     const {
@@ -92,6 +98,7 @@ class SearchDetailContainer extends React.PureComponent {
         searchQuery,
         ignoreCache: true,
         formValues,
+        url: asPath,
       });
     }
   }
@@ -124,7 +131,6 @@ class SearchDetailContainer extends React.PureComponent {
       isSearchResultsAvailable,
       router: {
         query: { searchQuery },
-        asPath,
       },
       currency,
       currencyAttributes,
@@ -247,14 +253,15 @@ function mapStateToProps(state) {
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
     onSubmit: submitProductListingFiltersForm,
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     slpLabels: getLabels(state),
     searchResultSuggestions:
-      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
+      state.SearchListingPage && state.SearchListingPage.searchResultSuggestions,
     sortLabels: getSortLabels(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
   };
 }
 
@@ -304,9 +311,15 @@ SearchDetailContainer.defaultProps = {
   isSearchResultsAvailable: false,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SearchDetailContainer)
-);
+// export default withRouter(
+//   connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(SearchDetailContainer)
+// );
+
+export default withIsomorphicRenderer({
+  WrappedComponent: SearchDetailContainer,
+  mapStateToProps,
+  mapDispatchToProps,
+});

@@ -222,16 +222,15 @@ class Product extends React.Component {
       isLoggedIn,
       ...otherProps
     } = this.props;
-    const productInfo = productDetails.get('currentProduct');
+    const productInfo = productDetails.currentProduct;
     if (!productInfo) {
       return <div />; // TODO - maybe add loader later
     }
     const { promotionalMessage, promotionalPLCCMessage } = productInfo;
     const colorProduct =
-      productInfo &&
-      getMapSliceForColorProductId(productInfo.colorFitsSizesMap, selectedColorProductId);
-    const prices = productInfo && getPrices(productInfo, colorProduct.color.name);
-    const badges = colorProduct.miscInfo.badge1;
+      getMapSliceForColorProductId(productInfo.colorFitsSizesMap, selectedColorProductId) || {};
+    const prices = getPrices(productInfo, colorProduct.color && colorProduct.color.name);
+    const badges = colorProduct.miscInfo ? colorProduct.miscInfo.badge1 : {};
     const badge1 = isMatchingFamily && badges.matchBadge ? badges.matchBadge : badges.defaultBadge;
     // if(isShowPriceRange) {
     //   const { fit, size } = addToBagFormValues;

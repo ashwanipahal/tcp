@@ -1,39 +1,35 @@
 import React, { PureComponent, Fragment } from 'react';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import CategoryListing from './views/CategoryListing';
 
 export class CategoryListingContainer extends PureComponent {
-  pageInfo = {
-    name: 'categoryListingPage',
+  static initiateApiCall = ({ props }) => {
+    const { getLayout } = props;
+    getLayout('boy', 'categoryListingPage');
   };
 
   render() {
-    const { getLayout } = this.props;
     return (
       <Fragment>
-        <CategoryListing getLayout={getLayout} />
+        <CategoryListing />
       </Fragment>
     );
   }
 }
 
-CategoryListingContainer.propTypes = {
-  getLayout: PropTypes.func.isRequired,
-};
-
-CategoryListingContainer.defaultProps = {};
-
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = state => {
+  return {
+    deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+  };
 };
 
 export const mapDispatchToProps = dispatch => ({
   getLayout: (pageName, layoutName) => dispatch(fetchPageLayout(pageName, layoutName)),
 });
 
-export default connect(
+export default withIsomorphicRenderer({
+  WrappedComponent: CategoryListingContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(CategoryListingContainer);
+  mapDispatchToProps,
+});

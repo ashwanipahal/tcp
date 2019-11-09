@@ -215,8 +215,9 @@ class ProductsDynamicAbstractor {
       extraParams,
       shouldApplyUnbxdLogic,
       hasShortImage,
+      location,
+      filterMaps,
     } = reqObj;
-
     const searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
     const { sort = null } = filtersAndSort;
     const facetsPayload = this.extractFilters(filtersAndSort);
@@ -292,7 +293,9 @@ class ProductsDynamicAbstractor {
           isOutfitPage,
           searchTerm,
           sort,
+          location,
           filterSortView: Object.keys(filtersAndSort).length > 0,
+          filterMaps,
         })
       )
       .catch(err => {

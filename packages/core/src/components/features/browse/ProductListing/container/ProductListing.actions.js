@@ -41,3 +41,10 @@ export const setPlpLoadingState = payload => {
     payload,
   };
 };
+
+export const setPlpProductsDataOnServer = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.SET_FIRST_PRODUCTS_PAGE_SSR,
+    payload,
+  };
+};

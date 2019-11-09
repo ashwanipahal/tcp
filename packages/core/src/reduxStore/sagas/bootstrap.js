@@ -1,5 +1,7 @@
-import { all, call, put, putResolve, takeLatest } from 'redux-saga/effects';
+/* eslint-disable complexity */
+import { all, call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { setPlpProductsDataOnServer } from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.actions';
 import { getAPIConfig } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
@@ -42,9 +44,9 @@ function* bootstrap(params) {
       deviceType,
       optimizelyHeadersObject,
       siteConfig,
+      originalUrl,
     },
   } = params;
-
   const cachedData = {};
   let modulesList = modules;
 
@@ -94,8 +96,22 @@ function* bootstrap(params) {
       );
       yield put(loadXappConfigDataOtherBrand(xappConfigOtherBrand));
     }
-
-    const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
+    const state = yield select();
+    const result = yield call(
+      bootstrapAbstractor,
+      pageName,
+      modulesList,
+      cachedData,
+      state,
+      originalUrl,
+      deviceType
+    );
+    if (result.PLP) {
+      const { layout, modules: plpModules, pageName: layoutName, res } = result.PLP;
+      yield put(loadLayoutData(layout, layoutName));
+      yield put(loadModulesData(plpModules));
+      yield put(setPlpProductsDataOnServer(res));
+    }
     if (pageName) {
       yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
       yield put(loadModulesData(result.modules));

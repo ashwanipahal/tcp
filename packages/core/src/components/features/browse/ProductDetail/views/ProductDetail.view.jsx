@@ -34,15 +34,11 @@ class ProductDetailView extends React.Component {
     super(props);
     this.formValues = null;
     const {
-      productInfo,
-      productInfo: { colorFitsSizesMap },
+      productInfo: { colorFitsSizesMap, generalProductId, offerPrice },
     } = this.props;
     this.state = {
-      currentColorEntry: getMapSliceForColorProductId(
-        colorFitsSizesMap,
-        productInfo.generalProductId
-      ),
-      currentGiftCardValue: productInfo.offerPrice,
+      currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, generalProductId) || {},
+      currentGiftCardValue: offerPrice,
       renderReceiveProps: false,
       initialValues: {},
     };
@@ -94,12 +90,13 @@ class ProductDetailView extends React.Component {
       ...otherProps
     } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
-    const selectedColorProductId = currentColorEntry.colorProductId;
+    const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
+    const { isGiftCard } = productInfo;
 
     return (
       <div className="product-summary-wrapper">
         <Product
-          isGiftCard={productInfo.isGiftCard}
+          isGiftCard={isGiftCard}
           productDetails={productDetails}
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
@@ -108,18 +105,18 @@ class ProductDetailView extends React.Component {
           isLoggedIn={isLoggedIn}
           {...otherProps}
         />
-        {productInfo.isGiftCard ? (
+        {isGiftCard ? (
           <div className="product-price-desktop-view">
             <ProductPrice
               offerPrice={parseInt(currentGiftCardValue, 10)}
               listPrice={parseInt(currentGiftCardValue, 10)}
               currencySymbol={currency}
               currencyExchange={currencyExchange}
-              isGiftCard={productInfo.isGiftCard}
+              isGiftCard={isGiftCard}
             />
           </div>
         ) : null}
-        {productInfo.isGiftCard ? (
+        {isGiftCard ? (
           <Row fullBleed className="placeholder">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="product-detail-section">{pdpLabels.promoArea}</div>
@@ -170,6 +167,7 @@ class ProductDetailView extends React.Component {
     ) : null;
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       className,
@@ -184,16 +182,16 @@ class ProductDetailView extends React.Component {
       addToBagError,
       alternateSizes,
     } = this.props;
-    const currentProduct = productDetails && productDetails.get('currentProduct');
+    const currentProduct = { productDetails };
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     const { currentColorEntry, renderReceiveProps, initialValues } = this.state;
-    const selectedColorProductId = currentColorEntry.colorProductId;
-
+    const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
+    const { imagesByColor } = productInfo;
     if (isProductDataAvailable) {
       imagesToDisplay = getImagesToDisplay({
-        imagesByColor: productInfo.imagesByColor,
+        imagesByColor,
         curentColorEntry: currentColorEntry,
         isAbTestActive: false,
         isFullSet: true,

@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; // eslint-disable-line
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { PropTypes } from 'prop-types';
 import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
@@ -36,16 +35,20 @@ import {
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
 class ProductDetailContainer extends React.PureComponent {
-  componentDidMount() {
-    const {
-      getDetails,
-      router: {
-        query: { pid },
-      },
-    } = this.props;
-
+  static initiateApiCall = ({ props, query, isServer }) => {
+    const { getDetails } = props;
+    let pid;
+    if (isServer) {
+      ({ pid } = query);
+    } else {
+      ({
+        router: {
+          query: { pid },
+        },
+      } = props);
+    }
     // TODO - fix this to extract the product ID from the page.
-    const id = pid && pid.split('-');
+    const id = pid ? pid.split('-') : '';
     let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
     if (
       (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
@@ -53,8 +56,10 @@ class ProductDetailContainer extends React.PureComponent {
     ) {
       productId = 'gift';
     }
-
     getDetails({ productColorId: productId });
+  };
+
+  componentDidMount() {
     window.scrollTo(0, 100);
   }
 
@@ -218,9 +223,15 @@ ProductDetailContainer.defaultProps = {
   alternateSizes: {},
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProductDetailContainer)
-);
+// export default withRouter(
+//   connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(ProductDetailContainer)
+// );
+
+export default withIsomorphicRenderer({
+  WrappedComponent: ProductDetailContainer,
+  mapStateToProps,
+  mapDispatchToProps,
+});
