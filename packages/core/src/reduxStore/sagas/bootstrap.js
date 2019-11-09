@@ -5,6 +5,7 @@ import { setPlpProductsDataOnServer } from '@tcp/core/src/components/features/br
 import { getAPIConfig } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
+import setUserGroup from '../../services/abstractors/common/setUserGroup';
 import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
 import countryListAbstractor from '../../services/abstractors/bootstrap/countryList';
 import {
@@ -21,6 +22,7 @@ import {
   setLanguage,
   storeCountriesMap,
   storeCurrenciesMap,
+  getSetTcpSegment,
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
@@ -29,6 +31,7 @@ import GLOBAL_CONSTANTS from '../constants';
 import CACHED_KEYS from '../../constants/cache.config';
 import { isMobileApp, getCurrenciesMap, getCountriesMap } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
+import { readCookie, setCookie } from '../../utils/cookie.util';
 
 // TODO - GLOBAL-LABEL-CHANGE - STEP 1.3 - Uncomment these references
 // import GLOBAL_CONSTANTS, { LABELS } from '../constants';
@@ -136,8 +139,21 @@ function* bootstrap(params) {
   }
 }
 
+function* setTcpSegment(tcpSegment) {
+  const tcpSegmentValue = tcpSegment.payload;
+  yield put(getSetTcpSegment(tcpSegmentValue));
+  const tcpSegmentCookieValue = yield call(readCookie, 'tcpSegment');
+
+  if ((tcpSegmentValue && tcpSegmentCookieValue !== tcpSegmentValue) || !tcpSegmentCookieValue) {
+    yield call(setCookie, { key: 'tcpSegment', value: tcpSegmentValue });
+    return yield call(setUserGroup);
+  }
+  return null;
+}
+
 function* BootstrapSaga() {
   yield takeLatest(GLOBAL_CONSTANTS.BOOTSTRAP_API, bootstrap);
+  yield takeLatest(GLOBAL_CONSTANTS.SET_TCP_SEGMENT_METHOD_CALL, setTcpSegment);
 }
 
 export default BootstrapSaga;

@@ -87,6 +87,8 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Nunito-ExtraBold.ttf</string>
 		<string>FontAwesome.ttf</string>
 		<string>icomoon.ttf</string>
 		<string>Montserrat-Black.ttf</string>
@@ -96,6 +98,8 @@
 		<string>Nunito.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
 		<string>Nunito-Bold.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>TCPLaunchScreen</string>

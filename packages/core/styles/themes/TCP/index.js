@@ -3,6 +3,7 @@ import createThemeTypography from '../createThemeTypography';
 import colors from './colors';
 import green from '../colors/green';
 import blue from '../colors/blue';
+import yellow from '../colors/yellow';
 import fonts from './fonts';
 import zindex from './zindex';
 import spacing from './spacing';
@@ -18,7 +19,7 @@ const theme = {
   brand: 'tcp',
   isGymboree: false,
   /* add required colors other than default as per theme requirement */
-  colorPalette: { ...colorPalette, green, blue },
+  colorPalette: { ...colorPalette, green, blue, yellow },
   /* colors object has been deprecated and, will be removed in the future release.
    Please use colorPalette instead */
   colors,

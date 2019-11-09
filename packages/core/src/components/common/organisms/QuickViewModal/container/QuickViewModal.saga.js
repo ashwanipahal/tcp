@@ -25,10 +25,9 @@ function* fetchProductDetail({ payload }) {
     });
     const productDetailArray = yield all(fetchDetailArray);
     yield put(setQuickView(productDetailArray));
-    yield put(setItemFromBagInfoForQuickView({ orderInfo }));
+    yield put(setItemFromBagInfoForQuickView({ orderInfo, fromBagPage: !!payload.fromBagPage }));
     yield put(setLoadingState({ isLoading: false }));
   } catch (err) {
-    console.log(err);
     yield put(setLoadingState({ isLoading: false }));
   }
 }

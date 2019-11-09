@@ -78,6 +78,7 @@ export function* fetchMoreProducts({ payload = {} }) {
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
       location,
+      isLazyLoading: true,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     if (res) {

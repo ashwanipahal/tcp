@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BundleProductDetail should render correctly 1`] = `
+<BundleProduct
+  AddToFavoriteErrorMsg=""
+  addToBagEcom={[MockFunction]}
+  addToBagError=""
+  addToBagErrorId=""
+  addToFavorites={[MockFunction]}
+  currency="USD"
+  currencyExchange={1}
+  currentProduct={Object {}}
+  currentState={Object {}}
+  handleAddToBag={[Function]}
+  isLoggedIn={false}
+  isPickupModalOpen={false}
+  isPlcc={false}
+  itemPartNumber=""
+  longDescription=""
+  navigation={
+    Object {
+      "getParam": [MockFunction] {
+        "calls": Array [
+          Array [
+            "selectedColorProductId",
+          ],
+          Array [
+            "pdpUrl",
+          ],
+          Array [
+            "selectedColorProductId",
+          ],
+          Array [
+            "pdpUrl",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+    }
+  }
+  pdpLabels={Object {}}
+  plpLabels={Object {}}
+  removeAddToFavoritesErrorMsg={[MockFunction]}
+  selectedColorProductId=""
+  shortDescription=""
+/>
+`;

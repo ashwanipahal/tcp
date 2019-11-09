@@ -458,6 +458,7 @@ export default class ProductsOperator {
     numberOfProducts,
     categoryPathMap,
     catNameL3,
+    isLazyLoading,
   }) => {
     const isSearchPage = this.isPageSearch(location);
     const searchTerm = location.pathname.substr(11);
@@ -516,6 +517,7 @@ export default class ProductsOperator {
       shouldApplyUnbxdLogic: this.checkUnbxdLogic(isSearchPage),
       hasShortImage,
       categoryNameList,
+      isLazyLoading,
     };
   };
 
@@ -547,6 +549,7 @@ export default class ProductsOperator {
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
       location,
+      isLazyLoading: true,
     });
   }
 
@@ -585,6 +588,7 @@ export default class ProductsOperator {
         startProductCount: this.bucketingConfig.start,
         numberOfProducts: this.bucketingConfig.productsToFetchPerLoad,
         categoryPathMap,
+        isLazyLoading: true,
       });
     }
     return this.getProductsListingMoreProducts(state, location);

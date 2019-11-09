@@ -60,6 +60,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -159,6 +160,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -232,6 +234,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -251,6 +254,7 @@ exports[`ConfirmationAccountForm component should render component correctly 1`]
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -392,6 +396,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -491,6 +496,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -564,6 +570,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -583,6 +590,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -723,6 +731,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -773,6 +782,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -825,6 +835,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -924,6 +935,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -988,6 +1000,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1040,6 +1053,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1099,6 +1113,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1118,6 +1133,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1225,6 +1241,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1275,6 +1292,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1325,6 +1343,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1377,6 +1396,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1476,6 +1496,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1540,6 +1561,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1592,6 +1614,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -1651,6 +1674,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -1670,6 +1694,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1815,6 +1840,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1914,6 +1940,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -1987,6 +2014,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
         </Styled(View)>
         <Styled(View)>
           <RichText
+            actionHandler={[Function]}
             domStorageEnabled={false}
             isApplyDeviceHeight={false}
             isNativeView={false}
@@ -2006,6 +2034,7 @@ exports[`ConfirmationAccountForm component should render component correctly wit
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",

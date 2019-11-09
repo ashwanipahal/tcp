@@ -354,6 +354,7 @@ exports[`StoresInternational component StoresInternational component renders cor
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -371,9 +372,11 @@ exports[`StoresInternational component StoresInternational component renders cor
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -511,8 +514,18 @@ exports[`StoresInternational component StoresInternational component renders cor
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -587,6 +600,10 @@ exports[`StoresInternational component StoresInternational component renders cor
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
+        },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
         },
         "letterSpacings": Object {
           "ls071": "0.71px",
@@ -892,8 +909,10 @@ exports[`StoresInternational component StoresInternational component renders cor
               richTextHtml="test"
             >
               <RichText
+                actionHandler={[Function]}
                 className="sc-bdVaJa fBlCFx"
                 dataLocator="test"
+                isNativeView={false}
                 richTextHtml="test"
               >
                 <div

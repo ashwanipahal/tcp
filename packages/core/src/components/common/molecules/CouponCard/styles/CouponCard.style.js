@@ -37,7 +37,7 @@ const styles = css`
       ${props => props.theme.spacing.ELEM_SPACING.XXS}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
     color: ${props => props.theme.colors.WHITE};
-    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
   .couponCard__text_style {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
@@ -45,9 +45,13 @@ const styles = css`
     color: ${props => props.theme.colors.TEXT.DARK};
   }
   .cartDetailsLink {
-    position: absolute;
-    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    position: ${props => (props.isCarouselView ? 'static' : 'absolute')};
+    font-size: ${props =>
+      props.isCarouselView
+        ? props.theme.typography.fontSizes.fs10
+        : props.theme.typography.fontSizes.fs12};
     color: ${props => props.theme.colors.TEXT.DARK};
+    ${props => (props.isCarouselView ? 'float: left;' : '')}
   }
   .couponCard__header_expired {
     flex: 1;
@@ -69,9 +73,7 @@ const styles = css`
   }
   .couponCard__col {
     flex: 1;
-    padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    ${props =>
-      props.isCarouselView ? `padding-right: ${props.theme.spacing.ELEM_SPACING.SM};` : ''}
+    padding-right: ${props => (props.isCarouselView ? '0' : props.theme.spacing.ELEM_SPACING.SM)};
   }
   .coupon__button_black {
     background-color: ${props => props.theme.colors.BLACK};
@@ -110,7 +112,7 @@ const styles = css`
       ${props => props.theme.spacing.ELEM_SPACING.LRG};
     .couponCard__row {
       margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0
-        ${props => props.theme.spacing.ELEM_SPACING.SM};
+        ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
   }
 

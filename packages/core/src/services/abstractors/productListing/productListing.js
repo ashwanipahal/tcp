@@ -4,14 +4,14 @@ import { getAPIConfig } from '@tcp/core/src/utils';
 import { executeUnbxdAPICall } from '../../handler';
 
 import endpoints from '../../endpoints';
-import utils, { bindAllClassMethodsToThis, isMobileApp } from '../../../utils';
+import utils, { bindAllClassMethodsToThis, isMobileApp, isCanada } from '../../../utils';
 import processHelpers from './processHelpers';
 import { PRODUCTS_PER_LOAD } from '../../../components/features/browse/ProductListing/container/ProductListing.constants';
 import processResponse from './processResponse';
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };
@@ -157,6 +157,7 @@ class ProductsDynamicAbstractor {
     const slotsObject = {};
     let modules = {};
     try {
+      const { language } = getAPIConfig();
       Object.keys(promoCombination.val).forEach(slotType => {
         promoCombination.val[slotType].forEach(slot => {
           if (slot.val.cid) {
@@ -170,7 +171,7 @@ class ProductsDynamicAbstractor {
               data: {
                 contentId: moduleData.contentId,
                 slot: moduleData.name,
-                lang: getAPIConfig().language,
+                lang: language !== 'en' ? language : '',
               },
             });
             if (!Array.isArray(slotsObject[slotType])) {
@@ -217,6 +218,7 @@ class ProductsDynamicAbstractor {
       hasShortImage,
       location,
       filterMaps,
+      isLazyLoading,
     } = reqObj;
     const searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
     const { sort = null } = filtersAndSort;
@@ -296,6 +298,7 @@ class ProductsDynamicAbstractor {
           location,
           filterSortView: Object.keys(filtersAndSort).length > 0,
           filterMaps,
+          isLazyLoading,
         })
       )
       .catch(err => {

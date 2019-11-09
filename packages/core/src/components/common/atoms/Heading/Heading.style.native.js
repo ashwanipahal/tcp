@@ -3,7 +3,10 @@ import {
   typography as typographyStyleSystem,
   color as colorStyleSystem,
 } from '@tcp/core/styles/rwdStyleSystem';
-import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
+import {
+  androidFontStyles,
+  iosFontStyles,
+} from '../../../../../styles/globalStyles/StyledText.style';
 
 function getHeadingStyle(props) {
   const {
@@ -20,6 +23,7 @@ const HeadingStyles = css`
   ${getHeadingStyle}
   ${colorStyleSystem}
   ${androidFontStyles}
+  ${iosFontStyles}
 `;
 
 export default HeadingStyles;

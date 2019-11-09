@@ -11,9 +11,9 @@ import { Row, Button, Image, Col } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
 import { CALL_TO_ACTION_VISIBLE, CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
-import FulfillmentSection from '@tcp/core/src/components/common/organisms/FulfillmentSection';
+import ProductPickupContainer from '@tcp/core/src/components/common/organisms/ProductPickup';
+import { getMapSliceForColorProductId } from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductColorChipsSelector from '../../ProductColorChipSelector';
-import { getLocator } from '../../../../../utils';
 import ProductSizeSelector from '../../ProductSizeSelector';
 import AlternateSizes from '../molecules/AlternateSizes';
 import styles, { giftCardDesignStyle } from '../styles/ProductAddToBag.style';
@@ -61,14 +61,23 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderOutfitButton = () => {
-    const { isOutfitPage, currentProduct } = this.props;
+    const {
+      currentProduct,
+      currentProduct: { colorFitsSizesMap },
+      selectedColorProductId,
+      isOutfitPage,
+    } = this.props;
+    const currentColorEntry = getMapSliceForColorProductId(
+      colorFitsSizesMap,
+      selectedColorProductId
+    );
     return isOutfitPage ? (
       <div className="outfit-pickup">
-        <FulfillmentSection
-          btnClassName="added-to-bag"
-          dataLocator={getLocator('global_addtocart_Button')}
-          buttonLabel="Fulfilment Section"
-          currentProduct={currentProduct}
+        <ProductPickupContainer
+          productInfo={currentProduct}
+          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+          miscInfo={currentColorEntry.miscInfo}
+          isOutfitVariant
         />
       </div>
     ) : null;
@@ -92,6 +101,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             id="color"
             name="color"
             component={ProductColorChipsSelector}
+            isGiftCard={isGiftCard}
             colorFitsSizesMap={colorList}
             onChange={selectColor}
             dataLocator="addnewaddress-state"
@@ -140,15 +150,27 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderUnavailableLink = () => {
-    const { currentProduct, plpLabels } = this.props;
+    const {
+      currentProduct,
+      currentProduct: { colorFitsSizesMap },
+      plpLabels,
+      onCloseClick,
+      selectedColorProductId,
+    } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
+    const currentColorEntry = getMapSliceForColorProductId(
+      colorFitsSizesMap,
+      selectedColorProductId
+    );
     return (
-      <p className="size-unavailable">
-        <span className="unavailable-text">{sizeUnavailable}</span>
-        <span className="size-find-in-store">
-          <FulfillmentSection currentProduct={currentProduct} isAnchor title="Find In Store" />
-        </span>
-      </p>
+      <ProductPickupContainer
+        productInfo={currentProduct}
+        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        isAnchor
+        sizeUnavailable={sizeUnavailable}
+        onPickupClickAddon={onCloseClick}
+        miscInfo={currentColorEntry.miscInfo}
+      />
     );
   };
 

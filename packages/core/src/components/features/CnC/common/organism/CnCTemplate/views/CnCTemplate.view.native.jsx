@@ -2,6 +2,8 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import OrderLedgerContainer from '../../OrderLedger';
 import CouponAndPromos from '../../CouponAndPromos';
 import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
@@ -30,16 +32,21 @@ const CnCCommonTemplate = ({
   showAccordian,
   isConfirmationPage,
   pageCategory,
+  navigation,
 }) => {
   return (
     <>
       {!isConfirmationPage ? (
         <>
           <CouponAndPromosWrapper>
-            <CouponAndPromos isCheckout />
+            <CouponAndPromos isCheckout navigation={navigation} />
           </CouponAndPromosWrapper>
           <View>
-            <OrderLedgerContainer showAccordian={showAccordian} pageCategory={pageCategory} />
+            <OrderLedgerContainer
+              showAccordian={showAccordian}
+              pageCategory={pageCategory}
+              navigation={navigation}
+            />
           </View>
           {!isGuest && (
             <BonusPointsWrapper>
@@ -91,6 +98,11 @@ const CnCCommonTemplate = ({
             </BannerWrapper>
           )}
           <PersonalizedCoupons />
+          <Recommendations
+            navigation={navigation}
+            variation="moduleO"
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+          />
         </View>
       )}
     </>

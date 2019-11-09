@@ -1,6 +1,7 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
-import { isClient, routerPush, getSiteId, isMobileApp } from '../../../utils';
+import { isClient, routerPush, getSiteId, isMobileApp, isCanada } from '../../../utils';
 import { getCategoryId, parseProductInfo } from './productParser';
 import { FACETS_FIELD_KEY } from './productListing.utils';
 import {
@@ -184,6 +185,7 @@ const processResponse = (
     filterSortView,
     location,
     filterMaps = {},
+    isLazyLoading,
   }
 ) => {
   const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
@@ -197,7 +199,7 @@ const processResponse = (
     window.location.href = res.body.redirect.value;
   }
 
-  if (!isMobileApp() && filterSortView) {
+  if (!isMobileApp() && filterSortView && !isLazyLoading) {
     getPlpUrlQueryValues(filtersAndSort, location);
   }
 
@@ -276,8 +278,7 @@ const processResponse = (
     categoryNameTop,
   };
   if (res.body.response) {
-    // TODO - fix this - let isUSStore = this.apiHelper.configOptions.isUSStore;
-    const isUSStore = true;
+    const isUSStore = !isCanada();
     res.body.response.products.forEach(product =>
       parseProductInfo(product, {
         isUSStore,
@@ -295,7 +296,26 @@ const processResponse = (
   }
 
   try {
-    bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+    if (res.body.banner) {
+      bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+      // TODO - Remove this hardcoding once the real values are available from unbxd
+      bannerInfo.val.top[0].val.sub = 'outfitCarousel';
+      bannerInfo.val.top[0].val.cid = 'ef8e1162-41eb-4ca0-ad62-cb0833d344c3';
+      bannerInfo.val.top[1].val.sub = 'moduleJeans';
+      bannerInfo.val.top[1].val.cid = '94d9997f-b7d2-4e1a-ab5c-2983f6bca3f4';
+
+      // Adding extra slot though not configured
+      bannerInfo.val.top[2] = {
+        sub: 'slot_3',
+        typ: 'slot',
+        val: {
+          cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
+          sub: 'divisionTabs',
+          typ: 'module',
+          val: '',
+        },
+      };
+    }
   } catch (error) {
     logger.error(error);
   }

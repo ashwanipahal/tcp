@@ -16,14 +16,13 @@ import {
   Badge2Text,
   PricesSection,
   OfferPriceAndBadge3Container,
-  ListOfferPrice,
-  Badge3Text,
   TitleContainer,
   TitleText,
   AddToBagContainer,
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -40,11 +39,11 @@ let renderVariation = false;
 
 const onCTAHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
   const { productInfo, colorsMap } = item;
-  const { name, pdpUrl, isGiftCard, bundleProduct } = productInfo;
+  const { pdpUrl, isGiftCard, bundleProduct } = productInfo;
   const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
   const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
   if (bundleProduct) {
-    onGoToPDPPage(modifiedPdpUrl, colorProductId, name);
+    onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo);
   } else if (!isGiftCard) {
     onQuickViewOpenClick({
       colorProductId,
@@ -61,7 +60,7 @@ const renderAddToBagContainer = (
   labelsPlpTiles,
   onGoToPDPPage
 ) => {
-  if (renderVariation && !renderPriceOnly) return null;
+  if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
     : labelsPlpTiles.lbl_add_to_bag;
@@ -76,6 +75,7 @@ const renderAddToBagContainer = (
         text={buttonLabel}
         onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
+        margin="0 6px 0 0"
       />
     </AddToBagContainer>
   );
@@ -102,6 +102,7 @@ const ListItem = props => {
     margins,
     paddings,
     viaModule,
+    isLoggedIn,
     labelsPlpTiles,
   } = props;
   logger.info(viaModule);
@@ -146,8 +147,10 @@ const ListItem = props => {
         setLastDeletedItemId={setLastDeletedItemId}
         isFavorite={isFavorite}
         itemInfo={isFavorite ? itemInfo : {}}
-        accessibilityLabel="Price Section"
         productInfo={productInfo}
+        item={item}
+        isLoggedIn={isLoggedIn}
+        accessibilityLabel="Price Section"
       />
       <RenderTitle
         text={name}
@@ -238,88 +241,119 @@ const RenderBadge2 = ({ text }) => {
 RenderBadge2.propTypes = TextProps;
 
 /**
- * @description - This method calculate offer price range for the collection products
+ * @description - This method calculate Price based on the given value
  */
-const calculateCollectionOfferPriceRange = (productInfo, currencySymbol, currencyExchange) => {
-  const lowOfferPrice = (
-    get(productInfo, 'priceRange.lowOfferPrice', 0) * currencyExchange[0].exchangevalue
-  ).toFixed(2);
-
-  const highOfferPrice = (
-    get(productInfo, 'priceRange.highOfferPrice', 0) * currencyExchange[0].exchangevalue
-  ).toFixed(2);
-  const highOfferPriceFinalValue = highOfferPrice.toString() === '0' ? '' : ` - ${highOfferPrice}`;
-
-  return `${currencySymbol}${lowOfferPrice}${highOfferPriceFinalValue}`;
+const calculatePriceValue = (price, currencySymbol, currencyExchange, defaultReturn = 0) => {
+  let priceValue = defaultReturn;
+  if (price && price > 0) {
+    priceValue = `${currencySymbol}${(price * currencyExchange[0].exchangevalue).toFixed(2)}`;
+  }
+  return priceValue;
 };
 
-/**
- * @description - This method calculate list price of the product
- */
-const calculateListPrice = (productInfo, miscInfo, currencySymbol, currencyExchange) => {
-  const bundleProduct = get(productInfo, 'bundleProduct', false);
-  if (bundleProduct) {
-    const lowListPrice = (
-      get(productInfo, 'priceRange.lowListPrice', 0) * currencyExchange[0].exchangevalue
-    ).toFixed(2);
-
-    const highListPrice = (
-      get(productInfo, 'priceRange.highListPrice', 0) * currencyExchange[0].exchangevalue
-    ).toFixed(2);
-    return (
-      <RowContainer>
-        <BodyCopy
-          dataLocator="plp_filter_size_range"
-          textDecoration="line-through"
-          mobileFontFamily="secondary"
-          fontSize="fs10"
-          fontWeight="regular"
-          color="gray.800"
-          text={lowListPrice}
-          accessibilityLabel="list low price"
-        />
-        {highListPrice !== 0 && (
-          <BodyCopy
-            mobileFontFamily="secondary"
-            fontSize="fs10"
-            fontWeight="regular"
-            color="gray.800"
-            text=" - "
-          />
-        )}
-        {highListPrice !== 0 && (
-          <BodyCopy
-            dataLocator="plp_filter_size_range"
-            textDecoration="line-through"
-            mobileFontFamily="secondary"
-            fontSize="fs10"
-            fontWeight="regular"
-            color="gray.800"
-            text={highListPrice}
-            accessibilityLabel="list high price"
-          />
-        )}
-      </RowContainer>
-    );
-  }
-
-  // calculate default list price
-  const { listPrice } = miscInfo;
-  const listPriceForColor = `${currencySymbol}${(
-    listPrice * currencyExchange[0].exchangevalue
-  ).toFixed(2)}`;
+const renderOfferPrice = (productInfo, currencySymbol, currencyExchange) => {
+  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', 0);
+  const highOfferPrice = get(productInfo, 'priceRange.highOfferPrice', 0);
+  const offerPriceValue = calculatePriceValue(
+    lowOfferPrice,
+    currencySymbol,
+    currencyExchange,
+    null
+  );
+  const highOfferPriceValue = calculatePriceValue(
+    highOfferPrice,
+    currencySymbol,
+    currencyExchange,
+    null
+  );
   return (
     <BodyCopy
-      dataLocator="plp_filter_size_range"
-      textDecoration="line-through"
+      margin="4px 0 0 0"
+      dataLocator="plp_offer_price"
       mobileFontFamily="secondary"
-      fontSize="fs10"
-      fontWeight="regular"
-      color="gray.800"
-      text={listPriceForColor}
-      accessibilityLabel={`offer price ${listPriceForColor}`}
+      fontSize="fs15"
+      fontWeight="semibold"
+      color="red.500"
+      text={highOfferPriceValue ? `${offerPriceValue} - ${highOfferPriceValue}` : offerPriceValue}
     />
   );
+};
+
+const renderListPriceLabels = value => {
+  if (value) {
+    return (
+      <BodyCopy
+        dataLocator="plp_filter_size_range"
+        textDecoration="line-through"
+        mobileFontFamily="secondary"
+        fontSize="fs10"
+        fontWeight="regular"
+        color="gray.800"
+        text={value}
+        accessibilityLabel="list low price"
+      />
+    );
+  }
+  return null;
+};
+
+const renderListPriceDash = value => {
+  if (value) {
+    return (
+      <BodyCopy
+        dataLocator="plp_filter_size_range"
+        mobileFontFamily="secondary"
+        fontSize="fs10"
+        fontWeight="regular"
+        color="gray.800"
+        text=" - "
+        accessibilityLabel="to"
+      />
+    );
+  }
+  return null;
+};
+
+const renderPricePercentageDiscountLabel = value => {
+  if (value) {
+    return (
+      <BodyCopy
+        margin="8px 0 0 0"
+        dataLocator="plp_filter_size_range"
+        mobileFontFamily="secondary"
+        fontSize="fs10"
+        fontWeight="regular"
+        color="red.500"
+        text={value}
+        accessibilityLabel={`discount ${value}`}
+      />
+    );
+  }
+  return null;
+};
+
+const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) => {
+  const lowListPrice = get(productInfo, 'priceRange.lowListPrice', 0);
+  const highListPrice = get(productInfo, 'priceRange.highListPrice', 0);
+  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', 0);
+  const listPriceValue = calculatePriceValue(lowListPrice, currencySymbol, currencyExchange, null);
+  const highListPriceValue = calculatePriceValue(
+    highListPrice,
+    currencySymbol,
+    currencyExchange,
+    null
+  );
+  if (lowListPrice && lowOfferPrice && lowListPrice > lowOfferPrice) {
+    return (
+      <OfferPriceAndBadge3Container>
+        {renderListPriceLabels(listPriceValue)}
+        {renderListPriceDash(highListPriceValue)}
+        {renderListPriceLabels(highListPriceValue)}
+        {renderPricePercentageDiscountLabel(badge3)}
+      </OfferPriceAndBadge3Container>
+    );
+  }
+  return <OfferPriceAndBadge3View />;
 };
 
 const RenderPricesSection = values => {
@@ -334,28 +368,14 @@ const RenderPricesSection = values => {
     hideFavorite,
     productInfo,
   } = values;
-  const { badge3, listPrice, offerPrice } = miscInfo;
+  const { badge3 } = miscInfo;
   const { itemId } = itemInfo;
+  const { generalProductId } = productInfo || '';
   const bundleProduct = get(productInfo, 'bundleProduct', false);
-
-  // calculate default offer price
-  const offerPriceForColor = bundleProduct
-    ? calculateCollectionOfferPriceRange(productInfo, currencySymbol, currencyExchange)
-    : `${currencySymbol}${(offerPrice * currencyExchange[0].exchangevalue).toFixed(2)}`;
-
-  // calculate default list price
-  const listPriceForColor = `${currencySymbol}${(
-    listPrice * currencyExchange[0].exchangevalue
-  ).toFixed(2)}`;
   return (
     <PricesSection>
       <OfferPriceAndFavoriteIconContainer>
-        <ListOfferPrice
-          accessibilityRole="text"
-          accessibilityLabel={`list price ${offerPriceForColor}`}
-        >
-          {offerPriceForColor}
-        </ListOfferPrice>
+        {renderOfferPrice(productInfo, currencySymbol, currencyExchange)}
         {!hideFavorite && !bundleProduct && (
           <FavoriteIconContainer accessibilityRole="imagebutton" accessibilityLabel="favorite icon">
             {isFavorite ? (
@@ -373,19 +393,15 @@ const RenderPricesSection = values => {
                 name={ICON_NAME.favorite}
                 size="fs21"
                 color="gray.600"
-                onPress={onFavorite}
+                onPress={() => {
+                  onFavorite(generalProductId);
+                }}
               />
             )}
           </FavoriteIconContainer>
         )}
       </OfferPriceAndFavoriteIconContainer>
-      <OfferPriceAndBadge3Container>
-        {listPriceForColor !== offerPriceForColor &&
-          calculateListPrice(productInfo, miscInfo, currencySymbol, currencyExchange)}
-        <Badge3Text accessible={badge3 !== ''} accessibilityRole="text" accessibilityLabel={badge3}>
-          {badge3}
-        </Badge3Text>
-      </OfferPriceAndBadge3Container>
+      {renderListPrice(productInfo, currencySymbol, currencyExchange, badge3)}
     </PricesSection>
   );
 };
@@ -397,7 +413,7 @@ const RenderTitle = ({ text, onGoToPDPPage, colorsMap, productInfo, selectedColo
 
   if (renderVariation) return null;
   return (
-    <TitleContainer onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, text)}>
+    <TitleContainer onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}>
       <TitleText accessibilityRole="text" accessibilityLabel={text} numberOfLines={2}>
         {text}
       </TitleText>
@@ -445,7 +461,12 @@ const RenderSizeFit = ({ item }) => {
 };
 
 RenderSizeFit.propTypes = {
-  item: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    skuInfo: PropTypes.shape({
+      fit: PropTypes.string,
+      size: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const RenderPurchasedQuantity = ({ item }) => {
@@ -465,10 +486,6 @@ const RenderPurchasedQuantity = ({ item }) => {
   );
 };
 
-RenderPurchasedQuantity.propTypes = {
-  item: PropTypes.shape({}).isRequired,
-};
-
 const RenderMoveToWishlist = () => {
   return (
     <RowContainer margins="8px 0 0 0">
@@ -485,7 +502,12 @@ const RenderMoveToWishlist = () => {
 };
 
 RenderPurchasedQuantity.propTypes = {
-  item: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    quantityPurchased: PropTypes.string,
+    itemInfo: PropTypes.shape({
+      quantity: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 RenderTitle.propTypes = {
@@ -520,7 +542,15 @@ RenderTitle.defaultProps = {
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
-  item: PropTypes.shape({}),
+  item: PropTypes.shape({
+    productInfo: PropTypes.shape({
+      name: PropTypes.string,
+      bundleProduct: PropTypes.shape({}),
+    }),
+    colorsMap: PropTypes.shape({}),
+    itemInfo: PropTypes.shape({}),
+    skuInfo: PropTypes.string,
+  }),
   badge1: PropTypes.string,
   badge2: PropTypes.string,
   loyaltyPromotionMessage: PropTypes.string,
@@ -539,12 +569,21 @@ ListItem.propTypes = {
   margins: PropTypes.string,
   paddings: PropTypes.string,
   viaModule: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
 };
 
 ListItem.defaultProps = {
   theme: {},
-  item: {},
+  item: {
+    productInfo: {
+      name: '',
+      bundleProduct: {},
+    },
+    colorsMap: {},
+    itemInfo: {},
+    skuInfo: '',
+  },
   badge1: '',
   badge2: '',
   loyaltyPromotionMessage: '',
@@ -559,6 +598,7 @@ ListItem.defaultProps = {
   margins: null,
   paddings: '12px 0 12px 0',
   viaModule: '',
+  isLoggedIn: false,
   labelsPlpTiles: {},
 };
 

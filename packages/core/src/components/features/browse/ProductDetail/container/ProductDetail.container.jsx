@@ -5,6 +5,10 @@ import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import {
+  getIsShowPriceRange,
+  getIsKeepAliveProduct,
+} from '../../../../../reduxStore/selectors/session.selectors';
+import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
@@ -35,6 +39,26 @@ import {
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
 class ProductDetailContainer extends React.PureComponent {
+  static extractPID = props => {
+    const {
+      router: {
+        query: { pid },
+      },
+    } = props;
+
+    // TODO - fix this to extract the product ID from the page.
+    const id = pid && pid.split('-');
+    let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
+    if (
+      (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
+      (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
+    ) {
+      productId = 'gift';
+    }
+
+    return productId;
+  };
+
   static initiateApiCall = ({ props, query, isServer }) => {
     const { getDetails } = props;
     let pid;
@@ -48,19 +72,27 @@ class ProductDetailContainer extends React.PureComponent {
       } = props);
     }
     // TODO - fix this to extract the product ID from the page.
-    const id = pid ? pid.split('-') : '';
-    let productId = id && id.length > 1 ? `${id[id.length - 2]}_${id[id.length - 1]}` : pid;
-    if (
-      (id.indexOf('Gift') > -1 || id.indexOf('gift') > -1) &&
-      (id.indexOf('Card') > -1 || id.indexOf('card') > -1)
-    ) {
-      productId = 'gift';
-    }
+    const productId = ProductDetailContainer.extractPID({ ...props, router: { query: pid } });
     getDetails({ productColorId: productId });
   };
 
   componentDidMount() {
     window.scrollTo(0, 100);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      getDetails,
+      router: {
+        query: { pid },
+      },
+    } = this.props;
+
+    if (prevProps.router.query.pid !== pid) {
+      const productId = ProductDetailContainer.extractPID(this.props);
+      getDetails({ productColorId: productId });
+      window.scrollTo(0, 100);
+    }
   }
 
   componentWillUnmount = () => {
@@ -93,6 +125,7 @@ class ProductDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       alternateSizes,
+      isShowPriceRangeKillSwitch,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -100,6 +133,7 @@ class ProductDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isProductDataAvailable ? (
           <ProductDetail
+            {...otherProps}
             productDetails={productDetails}
             breadCrumbs={breadCrumbs}
             itemPartNumber={itemPartNumber}
@@ -118,6 +152,7 @@ class ProductDetailContainer extends React.PureComponent {
             onAddItemToFavorites={onAddItemToFavorites}
             isLoggedIn={isLoggedIn}
             alternateSizes={alternateSizes}
+            isShowPriceRangeKillSwitch={isShowPriceRangeKillSwitch}
           />
         ) : null}
       </React.Fragment>
@@ -149,6 +184,8 @@ function mapStateToProps(state) {
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     alternateSizes: getAlternateSizes(state),
+    isShowPriceRangeKillSwitch: getIsShowPriceRange(state),
+    isKeepAliveProduct: getIsKeepAliveProduct(state),
   };
 }
 
@@ -183,6 +220,7 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   ratingsProductId: PropTypes.string,
+  isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
   router: PropTypes.shape({
     query: PropTypes.shape({
       pid: PropTypes.string,

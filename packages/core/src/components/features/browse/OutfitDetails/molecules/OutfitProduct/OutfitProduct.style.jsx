@@ -35,6 +35,7 @@ export default css`
   }
 
   .outfit-button-wrapper {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     @media ${props => props.theme.mediaQuery.medium} {
       display: flex;
 
@@ -146,6 +147,11 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     .tablet-image-section {
       display: none;
+    }
+    .outfit-button-wrapper {
+      .outfit-pickup:empty {
+        height: 51px;
+      }
     }
   }
 `;

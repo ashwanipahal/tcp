@@ -32,7 +32,7 @@ import checkoutSelectors, {
   isRemembered,
   isExpressCheckout,
 } from '../../Checkout/container/Checkout.selector';
-import { isMobileApp, isCanada } from '../../../../../utils';
+import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 
 import {
   addItemToSflList,
@@ -45,6 +45,7 @@ import {
   getIsInternationalShipping,
   getIsRadialInventoryEnabled,
   getRecalcOrderPointsInterval,
+  getCurrentSiteLanguage,
 } from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
@@ -89,13 +90,15 @@ export function* getTranslatedProductInfo(cartInfo) {
     if (tcpProdpartNumberList.length) {
       tcpProductsResults = yield call(
         getProductInfoForTranslationData,
-        tcpProdpartNumberList.join()
+        tcpProdpartNumberList.join(),
+        'TCP'
       );
     }
     if (gymProdpartNumberList.length) {
       gymProductsResults = yield call(
         getProductInfoForTranslationData,
-        gymProdpartNumberList.join()
+        gymProdpartNumberList.join(),
+        'GYM'
       );
     }
     gymProductsResults = (gymProductsResults && gymProductsResults.body.response.products) || [];
@@ -119,14 +122,23 @@ function createMatchObject(res, translatedProductInfo) {
   });
 }
 
+function* shouldTranslate(translation) {
+  const currentLanguage = yield select(getCurrentSiteLanguage);
+  const allowLanguageTranslation = currentLanguage !== 'en';
+  return translation && allowLanguageTranslation;
+}
+
 export function* getOrderDetailSaga(payload) {
   const { payload: { after } = {} } = payload;
   try {
     yield put(updateCartManually(true));
     const res = yield call(getOrderDetailsData);
-    const translatedProductInfo = yield call(getTranslatedProductInfo, res);
-
-    createMatchObject(res, translatedProductInfo);
+    if (yield call(shouldTranslate, true)) {
+      const translatedProductInfo = yield call(getTranslatedProductInfo, res);
+      if (!translatedProductInfo.error) {
+        createMatchObject(res, translatedProductInfo);
+      }
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
 
     if (after) {
@@ -161,7 +173,8 @@ export function* getCartDataSaga(payload = {}) {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       ...cartProps,
     });
-    if (translation) {
+
+    if (yield call(shouldTranslate, translation)) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
       if (!translatedProductInfo.error) {
         createMatchObject(res, translatedProductInfo);
@@ -198,10 +211,13 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-function* navigateToCheckout(stage, navigation, navigationActions) {
+function* navigateToCheckout(stage, navigation, navigationActions, isPayPalFlow = false) {
   yield put(getSetCheckoutStage(stage));
   const navigateAction = navigationActions.navigate({
     routeName: CONSTANTS.CHECKOUT_ROOT,
+    params: {
+      isPayPalFlow,
+    },
   });
   navigation.dispatch(navigateAction);
 }
@@ -342,7 +358,8 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
           navigateToCheckout,
           CONSTANTS.REVIEW_DEFAULT_PARAM,
           navigation,
-          navigationActions
+          navigationActions,
+          true
         );
       } else {
         utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
@@ -350,6 +367,11 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
     }
   } catch (e) {
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
+    if (!isMobileApp()) {
+      yield put(closeMiniBag());
+      yield put(BAG_PAGE_ACTIONS.setIsPaypalBtnHidden(true));
+      routerPush('/bag', '/bag');
+    }
   }
 }
 // export function* authorizePayPalPayment() {

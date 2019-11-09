@@ -71,6 +71,7 @@ class CheckoutPage extends React.PureComponent {
       pickupDidMount,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
+    const { shipmentMethods } = shippingProps;
     switch (currentStage && currentStage.toLowerCase()) {
       case PICKUP:
         return (
@@ -151,11 +152,15 @@ class CheckoutPage extends React.PureComponent {
                 lastName: pickUpAlternatePerson.lastName,
                 emailAddress: pickUpAlternatePerson.emailAddress,
               },
+              expressReviewShippingSection: {
+                shippingMethodId: reviewProps.defaultShipmentId,
+              },
             }}
+            shipmentMethods={shipmentMethods}
           />
         );
       case CONFIRMATION:
-        return <Confirmation />;
+        return <Confirmation navigation={navigation} />;
       default:
         return null;
     }

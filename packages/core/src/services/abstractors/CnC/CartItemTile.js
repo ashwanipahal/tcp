@@ -298,16 +298,22 @@ export const getCurrentOrderFormatter = (
   const EMPTY_OBJECT = Object.create(null);
   let pickUpContact = {};
   let pickUpAlternative = {};
+  let isPickupOrder = false;
+  let isShippingOrder = false;
   // replaced "BOPIS" with a config variable
   // Check if order is of pickup type instead of just BOPIS
-  const pickupOrder =
-    orderDetailsResponse.mixOrderDetails &&
-    orderDetailsResponse.mixOrderDetails.data &&
-    orderDetailsResponse.mixOrderDetails.data.find(
-      store => store.orderType === 'BOPIS' || store.orderType === 'BOSS'
-    );
+  const mixOrderData =
+    orderDetailsResponse.mixOrderDetails && orderDetailsResponse.mixOrderDetails.data;
+  const isBossOrder = !!(
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOSS)
+  );
+  const isBopisOrder = !!(
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOPIS)
+  );
+  const pickupOrder = isBopisOrder || isBossOrder;
   // show pickup address for both BOSS and BOPIS
   if (pickupOrder) {
+    isPickupOrder = true;
     const address = pickupOrder.shippingAddressDetails || {};
     pickUpContact = {
       firstName: address.firstName,
@@ -331,6 +337,9 @@ export const getCurrentOrderFormatter = (
       // replaced "ECOM" with a config variable
       element => element.orderType === 'ECOM'
     );
+    if (orderShippingElement) {
+      isShippingOrder = true;
+    }
     if (orderShippingElement && orderShippingElement.shippingAddressDetails) {
       const orderShippingInfo = orderShippingElement.shippingAddressDetails;
       if (orderShippingInfo.addressId) {
@@ -393,8 +402,12 @@ export const getCurrentOrderFormatter = (
   }
 
   const usersOrder = {
+    isShippingOrder,
+    isPickupOrder,
+    isBossOrder,
+    isBopisOrder,
     orderId: orderDetailsResponse.parentOrderId,
-    totalItems: excludeCartItems ? null : 0,
+    totalItems: excludeCartItems ? orderDetailsResponse.cartCount : 0,
     appliedGiftCards: [],
     giftWrappingTotal: 0,
     savingsTotal: Math.abs(flatCurrencyToCents(orderDetailsResponse.orderDiscountAmount) || 0),
@@ -746,7 +759,7 @@ export const getOrderDetailsData = () => {
   });
 };
 
-export const getProductInfoForTranslationData = query => {
+export const getProductInfoForTranslationData = (query, brand) => {
   return executeUnbxdAPICall({
     body: {
       rows: 20,
@@ -762,12 +775,13 @@ export const getProductInfoForTranslationData = query => {
         'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
     },
     webService: endpoints.getProductInfoForTranslationByPartNumber,
+    brand,
   });
 };
 
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems = true,
+  excludeCartItems,
   recalcRewards,
   isCheckoutFlow,
   isRadialInvEnabled,
