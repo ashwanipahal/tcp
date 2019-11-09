@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { formatPayload } from '../container/CheckoutCommonContainer.util';
 import { CheckoutContainer, mapDispatchToProps } from '../container/CheckoutCommonContainer';
 import { CheckoutPageVanilla } from '../views/CheckoutPage.view';
 
@@ -61,6 +62,29 @@ describe('Bag page Container', () => {
       dispatchProps.clearCheckoutServerError();
       dispatchProps.toggleCountrySelector();
       expect(dispatch.mock.calls).toHaveLength(21);
+    });
+  });
+
+  describe('#util methods', () => {
+    it('formatPayload', () => {
+      expect(
+        formatPayload({
+          addressLine1: 'test',
+          addressLine2: 'test',
+          zipCode: 123,
+          a: 1,
+        })
+      ).toEqual(false);
+    });
+    it('formatPayload', () => {
+      expect(
+        formatPayload({
+          addressLine1: 'test',
+          addressLine2: 'test',
+          zipCode: 123,
+          a: 1,
+        })
+      ).toEqual({ a: 1, address1: 'test', address2: 'test', zip: 123 });
     });
   });
 });
