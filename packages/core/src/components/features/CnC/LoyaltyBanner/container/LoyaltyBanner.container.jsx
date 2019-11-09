@@ -7,6 +7,7 @@ import { openOverlayModal } from '@tcp/core/src/components/features/account/Over
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { resetPLCCResponse } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
+import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 
 import LoyaltyBannerView from '../views/LoyaltyBannerView';
 import {
@@ -20,6 +21,7 @@ import { isGuest } from '../../Checkout/container/Checkout.selector';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
 
 export const LoyaltyBannerContainer = ({
+  bagLoading,
   labels,
   orderDetails,
   thresholdValue,
@@ -62,6 +64,7 @@ export const LoyaltyBannerContainer = ({
       inheritedStyles={inheritedStyles}
       openApplyNowModal={openApplyNowModal}
       navigation={navigation}
+      bagLoading={bagLoading}
     />
   );
 };
@@ -80,6 +83,7 @@ LoyaltyBannerContainer.propTypes = {
   inheritedStyles: PropTypes.string,
   openApplyNowModal: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  bagLoading: PropTypes.bool,
 };
 
 LoyaltyBannerContainer.defaultProps = {
@@ -91,6 +95,7 @@ LoyaltyBannerContainer.defaultProps = {
   isInternationalShipping: false,
   inheritedStyles: '',
   navigation: null,
+  bagLoading: false,
 };
 
 export const mapDispatchToProps = dispatch => ({
@@ -114,6 +119,7 @@ export const mapStateToProps = (state, ownProps) => ({
   isPlcc: isPlccUser(state),
   currencySymbol: getCurrencySymbol(state),
   isInternationalShipping: getIsInternationalShipping(state),
+  bagLoading: BagPageSelector.isBagLoading(state),
 });
 
 export default connect(

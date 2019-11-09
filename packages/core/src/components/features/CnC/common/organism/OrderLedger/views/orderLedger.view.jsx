@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Col from '@tcp/core/src/components/common/atoms/Col';
-import OrderSummarySkeleton from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/skelton/OrderSummarySkeleton.view';
 
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -30,6 +29,7 @@ const OrderLedger = ({
   isConfirmationPage,
   orderLedgerAfterView,
   pageCategory,
+  bagLoading,
 }) => {
   let summaryData = ledgerSummaryData;
   if (isConfirmationPage) {
@@ -41,42 +41,37 @@ const OrderLedger = ({
     summaryData,
     labels,
     pageCategory,
-    orderLedgerAfterView
+    orderLedgerAfterView,
+    bagLoading
   );
+
   return (
-    <>
-      {ledgerSummaryData && ledgerSummaryData.itemsCount > 0 ? (
-        <div
-          className={`${className} elem-mb-MED ${isConfirmationPage ? 'order-confirmation' : ''}`}
-        >
-          <Col
-            colSize={{
-              large: 12,
-              medium: 8,
-              small: 6,
-            }}
-            ignoreGutter={{ small: true }}
-          >
-            <CollapsibleContainer
-              className={`${showAccordian ? 'orderLedgerAccordian' : ''}`}
-              header={header}
-              body={body}
-              iconLocator="arrowicon"
-              defaultOpen={false}
-              isDefaultView={!showAccordian}
-              showHeaderAlways={isConfirmationPage}
-            />
-          </Col>
-        </div>
-      ) : (
-        <OrderSummarySkeleton />
-      )}
-    </>
+    <div className={`${className} elem-mb-MED ${isConfirmationPage ? 'order-confirmation' : ''}`}>
+      <Col
+        colSize={{
+          large: 12,
+          medium: 8,
+          small: 6,
+        }}
+        ignoreGutter={{ small: true }}
+      >
+        <CollapsibleContainer
+          className={`${showAccordian ? 'orderLedgerAccordian' : ''}`}
+          header={header}
+          body={body}
+          iconLocator="arrowicon"
+          defaultOpen={false}
+          isDefaultView={!showAccordian}
+          showHeaderAlways={isConfirmationPage}
+        />
+      </Col>
+    </div>
   );
 };
 
 OrderLedger.propTypes = {
   className: PropTypes.string.isRequired,
+  bagLoading: PropTypes.bool,
   ledgerSummaryData: PropTypes.shape({
     itemsCount: PropTypes.number.isRequired,
     grandTotal: PropTypes.number,
@@ -116,6 +111,7 @@ OrderLedger.defaultProps = {
   confirmationPageLedgerSummaryData: {},
   isConfirmationPage: false,
   pageCategory: '',
+  bagLoading: false,
 };
 export default withStyles(OrderLedger, styles);
 export { OrderLedger as OrderLedgerVanilla };

@@ -11,52 +11,52 @@ const OrderSummarySkeleton = ({ className }) => {
     <div className={`${className}`}>
       <Row>
         <Col colSize={{ small: 4, medium: 6, large: 10 }}>
-          <div className="div1">
+          <div className="order-item-details">
             <LoaderSkelton />
           </div>
-          <div className="div1">
+          <div className="order-item-details">
             <LoaderSkelton />
           </div>
-          <div className="div3">
+          <div className="applied-coupon-details">
             <LoaderSkelton />
           </div>
-          <div className="div4">
+          <div className="applied-offer-details">
             <LoaderSkelton />
           </div>
         </Col>
 
         <Col colSize={{ small: 2, medium: 2, large: 2 }} className="column-end">
-          <div className="div5">
+          <div className="right-section-values">
             <LoaderSkelton />
           </div>
-          <div className="div5">
+          <div className="right-section-values">
             <LoaderSkelton />
           </div>
-          <div className="div5">
+          <div className="right-section-values">
             <LoaderSkelton />
           </div>
-          <div className="div5">
+          <div className="right-section-values">
             <LoaderSkelton />
           </div>
         </Col>
       </Row>
 
-      <Row className="div8" />
+      <Row className="ledger-divider" />
       <Row>
         <Col colSize={{ small: 4, medium: 6, large: 10 }}>
-          <div className="div6">
+          <div className="total-savings">
             <LoaderSkelton />
           </div>
-          <div className="div7">
+          <div className="estimated-total-price">
             <LoaderSkelton />
           </div>
         </Col>
 
         <Col colSize={{ small: 2, medium: 2, large: 2 }} className="column-end">
-          <div className="div9">
+          <div className="total-price">
             <LoaderSkelton />
           </div>
-          <div className="div5">
+          <div className="right-section-values">
             <LoaderSkelton />
           </div>
         </Col>

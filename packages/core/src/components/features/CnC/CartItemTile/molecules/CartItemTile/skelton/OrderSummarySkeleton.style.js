@@ -4,28 +4,29 @@ export default css`
   padding: 25px 0px 13px 0px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   background: ${props => props.theme.colors.WHITE};
-  .div1 {
+
+  .order-item-details {
     width: 57px;
     height: 20px;
     display: block;
     margin-bottom: 10px;
   }
 
-  .div3 {
+  .applied-coupon-details {
     width: 73px;
     height: 20px;
     display: block;
     margin-bottom: 10px;
   }
 
-  .div4 {
+  .applied-offer-details {
     width: 89px;
     height: 20px;
     display: block;
     margin-bottom: 10px;
   }
 
-  .div5 {
+  .right-section-values {
     margin-left: 10px;
     width: 49px;
     height: 15px;
@@ -33,27 +34,27 @@ export default css`
     margin-bottom: 15px;
   }
 
-  .div6 {
+  .total-savings {
     width: 89px;
     height: 18px;
     display: block;
     margin-bottom: 10px;
   }
 
-  .div7 {
+  .estimated-total-price {
     width: 106px;
     height: 20px;
     display: block;
   }
 
-  .div8 {
+  .ledger-divider {
     margin-left: 15px;
     margin-bottom: 10px;
     border-bottom: 1px solid rgba(163, 162, 162, 0.5);
     box-shadow: 0 1px 0 0 rgba(163, 162, 162, 0.5);
   }
 
-  .div9 {
+  .total-price {
     width: 67px;
     height: 18px;
     display: block;

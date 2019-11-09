@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import LoyaltyBannerSkeleton from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/skelton/LoyaltyBannerSkeleton.view';
+import LoyaltyBannerSkeleton from '../../LoyaltyBannerSkeleton';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
 import { BodyCopy } from '../../../../../../common/atoms';
@@ -89,6 +89,7 @@ const LoyaltyBannerSection = props => {
     openOverlay,
     closeAddedToBagModal,
     openApplyNowModal,
+    bagLoading,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -164,7 +165,7 @@ const LoyaltyBannerSection = props => {
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
-        {currentSubtotal ? (
+        {!bagLoading && currentSubtotal ? (
           <BodyCopy
             className="loyalty-banner-section-wrapper"
             component="div"
@@ -233,6 +234,7 @@ LoyaltyBannerSection.propTypes = {
   openOverlay: PropTypes.func.isRequired,
   closeAddedToBagModal: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -248,6 +250,7 @@ LoyaltyBannerSection.defaultProps = {
   pageCategory: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
+  bagLoading: false,
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);

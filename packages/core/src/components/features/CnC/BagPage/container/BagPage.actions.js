@@ -217,6 +217,10 @@ const setIsPaypalBtnHidden = payload => {
   };
 };
 
+const setBagPageLoading = () => ({
+  type: BAGPAGE_CONSTANTS.FETCHING_CART_DATA,
+});
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -250,4 +254,5 @@ export default {
   resetCartReducer,
   getSetPayPalWebView,
   setIsPaypalBtnHidden,
+  setBagPageLoading,
 };

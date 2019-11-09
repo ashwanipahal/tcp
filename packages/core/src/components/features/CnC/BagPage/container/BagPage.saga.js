@@ -157,10 +157,12 @@ export function* getCartDataSaga(payload = {}) {
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const cartProps = { excludeCartItems, recalcRewards: recalcOrderPoints, isRadialInvEnabled };
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       ...cartProps,
     });
+
     if (translation) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
       if (!translatedProductInfo.error) {

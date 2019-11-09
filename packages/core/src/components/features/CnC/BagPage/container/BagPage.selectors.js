@@ -229,7 +229,6 @@ const getPayPalWebViewStatus = state => {
 const isBagLoaded = state => {
   return state.CartPageReducer.getIn(['loaded']);
 };
-
 const getBagStickyHeaderInterval = state => {
   return (
     parseInt(state.session.siteDetails.BAG_CONDENSE_HEADER_INTERVAL, 10) ||
@@ -239,6 +238,10 @@ const getBagStickyHeaderInterval = state => {
 
 const getIsPayPalHidden = state => {
   return state.CartPageReducer.getIn(['paypalBtnHidden']);
+};
+
+const isBagLoading = state => {
+  return state.CartPageReducer.getIn(['bagLoading']);
 };
 
 export default {
@@ -271,4 +274,5 @@ export default {
   getBagStickyHeaderInterval,
   getPayPalWebViewStatus,
   getIsPayPalHidden,
+  isBagLoading,
 };

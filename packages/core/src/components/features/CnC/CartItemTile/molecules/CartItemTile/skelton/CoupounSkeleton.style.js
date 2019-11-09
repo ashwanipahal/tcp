@@ -6,7 +6,7 @@ export default css`
 
   .skeletonStyle {
     margin-top: 16px;
-    width: 258px;
+    width: 95%;
     height: 96px;
     margin-bottom: 20px;
   }

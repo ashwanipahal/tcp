@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+// import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import OrderDetailsView from '../views';
 import { getOrderDetails } from './OrderDetails.actions';
 import { getOrderDetailsDataState, getOrdersLabels } from './OrderDetails.selectors';
