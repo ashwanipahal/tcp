@@ -85,5 +85,6 @@ export {
   readCookieMobileApp,
   getStyliticsUserName,
   getStyliticsRegion,
+  calculatePriceValue,
   getProductUrlForDAM,
 } from './utils';

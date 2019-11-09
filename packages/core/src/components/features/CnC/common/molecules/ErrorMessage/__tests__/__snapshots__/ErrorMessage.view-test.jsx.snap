@@ -5,9 +5,9 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
   <div
     className=""
   >
-    <Styled(Image)
-      alt="error"
-      src="/static/images/alert-triangle.png"
+    <div
+      aria-disabled="true"
+      className="warning-icon"
     />
     <Styled(BodyCopy)
       aria-live="assertive"
