@@ -5,7 +5,6 @@ import AddressFields from '../../../../../../common/molecules/AddressFields';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../container/CreditCard.constants';
-import { scrollToFirstError } from '../../../util/utility';
 
 export const handleEditFromSubmit = updateCardDetail => data => {
   const formData = data;
@@ -52,7 +51,6 @@ export const withCardEditReduxForm = Component => {
       onSubmitSuccess: () => {
         unsetFormEditState();
       },
-      onSubmitFail: errors => scrollToFirstError(errors),
     })(Component);
 
     return (
