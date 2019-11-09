@@ -133,6 +133,7 @@ export default css`
     .searchBar-input{
 
       width: 172px;
+      padding: 0;
       height: 30px;
       background-color: transparent;
       border: none;

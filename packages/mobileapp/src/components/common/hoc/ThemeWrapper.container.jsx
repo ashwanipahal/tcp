@@ -4,10 +4,11 @@ import { PropTypes } from 'prop-types';
 import { ThemeProvider } from 'styled-components/native';
 import themeTcp from '@tcp/core/styles/themes/TCP';
 import themeGymboree from '@tcp/core/styles/themes/Gymboree';
-import updateAppType from './ThemeWrapper.actions';
+import { updateAppType } from './ThemeWrapper.actions';
 import { APP_TYPE } from './ThemeWrapper.constants';
-import { getAppType } from './ThemeWrapper.selectors';
+import { getAppType, getAppTypeParams } from './ThemeWrapper.selectors';
 import resetReduxStore from '../../../reduxStore/actions';
+import NavigationService from '../../../navigation/NavigationService';
 
 /**
  * @param {string} appType : Props for app type
@@ -23,13 +24,23 @@ export class ThemeWrapper extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { appType: prevAppType } = this.props;
-    const { appType, switchBrand, resetReduxStoreData, updateAppTypeHandler } = nextProps;
-
+    const {
+      appType,
+      appParms,
+      isLoaded,
+      switchBrand,
+      resetReduxStoreData,
+      updateAppTypeHandler,
+    } = nextProps;
     // update brand name in utils when app type is changed
     if (appType !== prevAppType && switchBrand) {
+      // brand switch with product redirect
       resetReduxStoreData();
       updateAppTypeHandler(appType);
       switchBrand(appType);
+      if (isLoaded) {
+        NavigationService.navigateToProductPage(appParms);
+      }
     }
   }
 
@@ -62,12 +73,16 @@ ThemeWrapper.propTypes = {
   updateAppTypeHandler: PropTypes.func,
   switchBrand: PropTypes.func,
   resetReduxStoreData: PropTypes.func,
+  appParms: PropTypes.shape({}),
+  isLoaded: PropTypes.bool,
 };
 
 ThemeWrapper.defaultProps = {
   updateAppTypeHandler: () => {},
   switchBrand: null,
   resetReduxStoreData: null,
+  appParms: {},
+  isLoaded: false,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -76,6 +91,14 @@ const mapStateToProps = (state, ownProps) => {
   const appTypeValue = appTypeStoreValue === '' ? appType : appTypeStoreValue;
   return {
     appType: appTypeValue,
+    appParms: getAppTypeParams(state),
+    isLoaded:
+      state.Labels &&
+      state.Labels.global &&
+      state.Labels.global.accessibility &&
+      state.Labels.global.minibag &&
+      state.Labels.global.addedToBagModal &&
+      state.Labels.global.addedToBagModal.lbl_header_addedToBag,
   };
 };
 

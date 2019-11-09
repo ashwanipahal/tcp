@@ -15,4 +15,8 @@ const buttonStyle = {
   marginTop: 10,
 };
 
-export { CouponHeading, BarWrapper, buttonStyle };
+const arrowStyle = {
+  padding: 5,
+};
+
+export { CouponHeading, BarWrapper, buttonStyle, arrowStyle };

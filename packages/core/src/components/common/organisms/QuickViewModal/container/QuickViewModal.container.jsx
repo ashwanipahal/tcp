@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import QuickViewModal from '../views';
 import { closeQuickViewModal } from './QuickViewModal.actions';
 import {
@@ -75,6 +76,7 @@ class QuickViewModalContainer extends React.PureComponent {
       productInfo,
       plpLabels,
       currencyAttributes,
+      toastMessage,
       ...otherProps
     } = this.props;
     return (
@@ -86,6 +88,7 @@ class QuickViewModalContainer extends React.PureComponent {
         handleAddToBag={this.handleAddToBag}
         handleUpdateItem={this.handleUpdateItem}
         currencyExchange={currencyAttributes.exchangevalue}
+        toastMessage={toastMessage}
         {...otherProps}
       />
     );
@@ -133,6 +136,9 @@ function mapDispatchToProps(dispatch) {
     updateCartItemAction: payload => {
       dispatch(updateCartItem(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
   };
 }
 
@@ -147,6 +153,7 @@ QuickViewModalContainer.propTypes = {
   productInfo: PropTypes.shape([PRODUCT_INFO_PROP_TYPE_SHAPE]).isRequired,
   productInfoFromBag: PropTypes.shape({}),
   currencyAttributes: PropTypes.shape({}),
+  toastMessage: PropTypes.func,
 };
 
 QuickViewModalContainer.defaultProps = {
@@ -155,6 +162,7 @@ QuickViewModalContainer.defaultProps = {
   currencyAttributes: {
     exchangevalue: 1,
   },
+  toastMessage: () => {},
 };
 
 export default connect(

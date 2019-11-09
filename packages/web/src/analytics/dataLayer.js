@@ -83,10 +83,7 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('isGuest')
+        return store.getState().User.getIn(['personalData', 'isGuest'])
           ? 'no rewards:guest'
           : 'rewards member:logged in';
       },
@@ -105,10 +102,7 @@ export default function create(store) {
 
     userEmailAddress: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'emailAddress']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'emailAddress'], '');
       },
     },
 
@@ -126,28 +120,19 @@ export default function create(store) {
 
     customerId: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('userId');
+        return store.getState().User.getIn(['personalData', 'userId'], '');
       },
     },
 
     customerFirstName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'firstName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'firstName'], '');
       },
     },
 
     customerLastName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'lastName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'lastName'], '');
       },
     },
 
