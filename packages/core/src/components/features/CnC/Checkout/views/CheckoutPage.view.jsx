@@ -211,7 +211,7 @@ class CheckoutPage extends React.PureComponent {
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
-            getIfCheckoutRoutingDone={checkoutRoutingDone}
+            checkoutRoutingDone={checkoutRoutingDone}
             isBagLoaded={isBagLoaded}
             cartOrderItemsCount={cartOrderItemsCount}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
@@ -328,9 +328,6 @@ class CheckoutPage extends React.PureComponent {
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
-    // if (!getIfCheckoutRoutingDone) {
-    //   return <div />;
-    // }
 
     return (
       <>
