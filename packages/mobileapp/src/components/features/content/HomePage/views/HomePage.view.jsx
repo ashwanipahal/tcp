@@ -11,6 +11,7 @@ import {
 } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
+import { ENV_PREVIEW } from '@tcp/core/src/constants/env.config';
 
 import {
   ModuleD,
@@ -167,7 +168,7 @@ class HomePageView extends React.PureComponent<Props> {
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
         <QuickViewModal navigation={navigation} />
-        {apiConfig.previewEnvId ? (
+        {apiConfig.previewEnvId === ENV_PREVIEW ? (
           <>
             <TextComponent>Select scheduled preview date</TextComponent>
             <TextInputComponent
