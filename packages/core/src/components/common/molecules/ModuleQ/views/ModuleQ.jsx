@@ -25,11 +25,12 @@ class ModuleQ extends React.PureComponent {
     this.state = {
       currentCatId: '',
       currentTabItem: [],
+      resetSliderDots: false,
     };
   }
 
   onProductTabChange = (catId, tabItem) => {
-    this.setState({ currentCatId: catId, currentTabItem: tabItem });
+    this.setState({ currentCatId: catId, currentTabItem: tabItem, resetSliderDots: true });
   };
 
   /** This method is to add protocol to image url
@@ -148,7 +149,7 @@ class ModuleQ extends React.PureComponent {
       selectedColorProductId,
       showRelatedOutfitHeader,
     } = this.props;
-    const { currentCatId } = this.state;
+    const { currentCatId, resetSliderDots } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
     let selectedProductList = styliticsProductTabList[currentCatId] || [];
     selectedProductList = selectedProductList.slice(0, TOTAL_IMAGES);
@@ -238,6 +239,7 @@ class ModuleQ extends React.PureComponent {
                   customArrowLeft: IconPath,
                   customArrowRight: IconPath,
                 }}
+                resetSliderDots={resetSliderDots}
               >
                 {selectedProductList.map((item, index) => this.getSlideItem(item, index))}
               </Carousel>
