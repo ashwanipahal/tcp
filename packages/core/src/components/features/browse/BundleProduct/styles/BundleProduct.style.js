@@ -1,16 +1,30 @@
 import { css } from 'styled-components';
 
 export default css`
-  .placeholder {
+  .placeholder-large {
     background: #d8d8d8;
     padding: 10px 0;
-    margin: 0 13px 5px;
     text-align: center;
+    width: calc(100% - 26px);
+    margin: 0 13px 5px;
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 13px ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
     @media ${props => props.theme.mediaQuery.large} {
       margin: 0 13px ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+  }
+  .placeholder-small {
+    background: #d8d8d8;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    margin: 0 0px 5px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
 
@@ -27,9 +41,6 @@ export default css`
     flex: 1;
     margin: 0;
   }
-  .product-desc-row {
-    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
-  }
   .product-image-wrapper {
     margin-right: 0;
   }
@@ -40,14 +51,13 @@ export default css`
     display: flex;
     flex-direction: column;
     flex: 1;
-    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+  }
+  .bundle-social-wrapper {
+    justify-content: right;
   }
   .product-summary-section {
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  }
-  .product-detail-footer {
-    flex-direction: column;
   }
   .product-price-container {
     margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};

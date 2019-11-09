@@ -1,47 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExecutionEnvironment from 'exenv';
-import { Row, Col, Button } from '@tcp/core/src/components/common/atoms';
+import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import Carousel from '../../../../common/molecules/Carousel';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BundleProduct.style';
 import ProductDescription from '../../ProductDetail/molecules/ProductDescription/views';
 import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/views';
-import ProductImagesWrapper from '../../ProductDetail/molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
+import SocialConnect from '../../../../common/organisms/ProductImages/views/SocialConnect.view';
 import Product from '../../ProductDetail/molecules/Product/views/Product.view';
-import { breakpoints } from '../../../../../../styles/themes/TCP/mediaQuery';
+import ProductDetailImage from '../../../../common/molecules/ProductDetailImage';
+import config from './config';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 class BundleProduct extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('----11111-----');
-  }
-
-  scrollToChildrens = () => {
-    console.log('------2222------');
-  };
-
-  renderChooseItemBtn = chooseItemBtnLbl => {
-    return (
-      <div className="button-container">
-        <Button
-          onClick={this.scrollToChildrens}
-          buttonVariation="fixed-width"
-          className="choose-child-btn"
-          data-locator=""
-        >
-          {chooseItemBtnLbl}
-        </Button>
-      </div>
-    );
-  };
-
   getBreadCrumb = () => {
     const { breadCrumbs } = this.props;
     return breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />;
+  };
+
+  getSocialConnectWidget = () => {
+    return (
+      <SocialConnect
+        className="bundle-social-wrapper"
+        isFacebookEnabled
+        isPinterestEnabled
+        isTwitterEnabled
+      />
+    );
   };
 
   getProductSummary = currentColorEntry => {
@@ -53,11 +41,10 @@ class BundleProduct extends React.Component {
       currencyExchange,
       ...otherProps
     } = this.props;
-
     const selectedColorProductId = currentColorEntry.colorProductId;
 
     return (
-      <Row className="product-desc-row">
+      <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="product-summary-wrapper">
             <Product
@@ -69,31 +56,63 @@ class BundleProduct extends React.Component {
               isBundleProduct
               {...otherProps}
             />
-            {this.renderChooseItemBtn(pdpLabels.chooseItemBtnLbl)}
           </div>
+          <Row className="placeholder-small">
+            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+              <div className="promo-area-1">{pdpLabels.promoArea1}</div>
+            </Col>
+          </Row>
         </Col>
       </Row>
     );
   };
 
-  isWebEnvironment = () => {
-    return ExecutionEnvironment.canUseDOM && document.body.offsetWidth >= breakpoints.values.lg;
+  getProductDescription = () => {
+    const { itemPartNumber, pdpLabels, shortDescription, longDescription } = this.props;
+    return (
+      <Row>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <ProductDescription
+            productId={itemPartNumber}
+            isShowMore={false}
+            pdpLabels={pdpLabels}
+            shortDescription={shortDescription}
+            longDescription={longDescription}
+          />
+        </Col>
+        <Col colSize={{ small: 2, medium: 2, large: 3 }}>{this.getSocialConnectWidget()}</Col>
+      </Row>
+    );
+  };
+
+  getMainImageCarousel = imagesToDisplay => {
+    const { currentProduct } = this.props;
+    return (
+      <Carousel
+        options={config.CAROUSEL_OPTIONS}
+        carouselConfig={{
+          autoplay: false,
+        }}
+      >
+        {imagesToDisplay &&
+          imagesToDisplay.map(image => {
+            return (
+              <ProductDetailImage
+                imageUrl={image && image.bigSizeImageUrl}
+                imageName={currentProduct.name}
+                isZoomEnabled={false}
+              />
+            );
+          })}
+      </Carousel>
+    );
   };
 
   render() {
-    const {
-      longDescription,
-      shortDescription,
-      itemPartNumber,
-      pdpLabels,
-      className,
-      currentProduct,
-    } = this.props;
+    const { className, currentProduct, pdpLabels } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       let imagesToDisplay = [];
       const { colorFitsSizesMap, generalProductId } = currentProduct;
-
-      const isWeb = this.isWebEnvironment();
       const currentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
       if (colorFitsSizesMap) {
         imagesToDisplay = getImagesToDisplay({
@@ -111,35 +130,26 @@ class BundleProduct extends React.Component {
               {this.getBreadCrumb()}
             </Col>
           </Row>
-          <Row className="placeholder">
+          <Row className="placeholder-large">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="promo-area-1">{pdpLabels.promoArea1}</div>
             </Col>
           </Row>
-          <Row className="product-summary-section">
-            <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
-              <ProductImagesWrapper
-                isThumbnailListVisible={isWeb}
-                images={imagesToDisplay}
-                pdpLabels={pdpLabels}
-                currentProduct={currentProduct}
-              />
+          <Row>
+            <Col colSize={{ small: 6, medium: 3, large: 6 }}>
+              {this.getMainImageCarousel(imagesToDisplay)}
             </Col>
-            <Col
-              id="productDetailsSection"
-              className="product-detail-section"
-              colSize={{ small: 6, medium: 4, large: 5 }}
-            >
-              <div>{this.getProductSummary(currentColorEntry)}</div>
-              <div>
-                <ProductDescription
-                  productId={itemPartNumber}
-                  isShowMore={false}
-                  pdpLabels={pdpLabels}
-                  shortDescription={shortDescription}
-                  longDescription={longDescription}
-                />
-              </div>
+            <Col colSize={{ small: 6, medium: 5, large: 6 }}>
+              <Row className="product-summary-section">
+                <Col
+                  id="productDetailsSection"
+                  className="product-detail-section"
+                  colSize={{ small: 6, medium: 8, large: 12 }}
+                >
+                  {this.getProductSummary(currentColorEntry)}
+                  {this.getProductDescription()}
+                </Col>
+              </Row>
             </Col>
           </Row>
         </div>
