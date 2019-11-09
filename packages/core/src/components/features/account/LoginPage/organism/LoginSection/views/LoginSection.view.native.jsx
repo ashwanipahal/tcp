@@ -8,7 +8,7 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
-import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
+import ForgotPasswordContainer from '../../../../ForgotPassword';
 import ResetPassword from '../../../../ResetPassword';
 import {
   FormStyle,
@@ -134,7 +134,7 @@ class LoginSection extends PureComponent<Props> {
         )}
 
         {resetPassword && (
-          <ForgotPasswordView
+          <ForgotPasswordContainer
             SubmitForgot={SubmitForgot}
             loginInfo={loginInfo}
             getUserInfo={getUserInfo}

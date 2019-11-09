@@ -6,7 +6,7 @@ import errorBoundary from '../../../hoc/withErrorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import ProductTabList from '../../../organisms/ProductTabList';
 import moduleJStyle, { StyledSkeleton } from '../styles/ModuleJ.style';
-import { getIconPath, getLocator, splitUniqueIDForDAM } from '../../../../../utils';
+import { getIconPath, getLocator, getProductUrlForDAM } from '../../../../../utils';
 import moduleJConfig from '../moduleJ.config';
 
 class ModuleJ extends React.PureComponent {
@@ -100,6 +100,7 @@ class ModuleJ extends React.PureComponent {
     if (productTabList && productTabList.completed) {
       dataStatus = productTabList.completed[currentCatId];
     }
+
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
@@ -249,7 +250,7 @@ class ModuleJ extends React.PureComponent {
                       >
                         {/* <Image alt={productName} src={imageUrl[0]} /> */}
                         <DamImage
-                          imgData={{ url: splitUniqueIDForDAM(uniqueId), alt: productName }}
+                          imgData={{ url: getProductUrlForDAM(uniqueId), alt: productName }}
                           imgConfigs={moduleJConfig.IMG_DATA.productImgConfig}
                           isProductImage
                         />

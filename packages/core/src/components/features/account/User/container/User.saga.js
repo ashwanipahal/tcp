@@ -28,7 +28,7 @@ export function* getUserInfoSaga() {
 
     yield all([
       put(setUserInfo(response)),
-      put(setAddressList(response.contactList)),
+      put(setAddressList(response.contactList, true)),
       put(setIsRegisteredUserCallDone()),
     ]);
     const { country, currency, language, bossBopisFlags } = response;

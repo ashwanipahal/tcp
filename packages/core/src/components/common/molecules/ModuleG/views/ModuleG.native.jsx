@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Dimensions } from 'react-native';
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
-import { getLocator, splitUniqueIDForDAM } from '../../../../../utils/index.native';
+import { getLocator, getProductUrlForDAM } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import moduleGConfig from '../moduleG.config';
 
@@ -124,7 +124,7 @@ class ModuleG extends React.PureComponent {
             testID={`${getLocator('moduleG_product_image')}${productItemIndex}`}
           >
             <DamImage
-              url={splitUniqueIDForDAM(uniqueId)}
+              url={getProductUrlForDAM(uniqueId)}
               height={PRODUCT_IMAGE_HEIGHT}
               width={PRODUCT_IMAGE_WIDTH}
               alt={productName}

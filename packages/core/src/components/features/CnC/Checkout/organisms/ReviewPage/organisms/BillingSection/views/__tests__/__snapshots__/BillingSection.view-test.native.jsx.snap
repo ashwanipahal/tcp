@@ -103,6 +103,7 @@ exports[`BillingSection should render correctly without address details 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -364,7 +365,6 @@ exports[`BillingSection should render correctly without card details 1`] = `
               "state": "NY",
             }
           }
-          customStyle={Object {}}
           fontSize="fs16"
           regularName={true}
           showCountry={true}
