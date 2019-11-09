@@ -44,6 +44,7 @@ exports[`Shipping Page should render correctly 1`] = `
     newUserPhoneNo={null}
     onFileAddressKey={null}
     onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -144,6 +145,7 @@ exports[`Shipping Page should render correctly with component did update and get
     newUserPhoneNo={null}
     onFileAddressKey={null}
     onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
@@ -260,6 +262,7 @@ exports[`Shipping Page should render correctly with component did update and get
     newUserPhoneNo={null}
     onFileAddressKey={null}
     onSubmit={[Function]}
+    onSubmitFail={[Function]}
     orderHasPickUp={false}
     pageCategory=""
     persistentSubmitErrors={false}
