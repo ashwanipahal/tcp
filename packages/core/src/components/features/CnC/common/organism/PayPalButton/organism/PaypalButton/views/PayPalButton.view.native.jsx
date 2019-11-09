@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { View, WebView, Platform } from 'react-native';
+import { getScreenHeight } from '@tcp/core/src/utils';
 
 class PayPalButton extends React.PureComponent {
   state = { showAsModal: false };
@@ -43,7 +44,7 @@ class PayPalButton extends React.PureComponent {
   };
 
   render() {
-    const { getPayPalSettings, paypalEnv, paypalStaticUrl } = this.props;
+    const { getPayPalSettings, paypalEnv, paypalStaticUrl, top } = this.props;
 
     let styles = {
       height: 42,
@@ -54,11 +55,13 @@ class PayPalButton extends React.PureComponent {
 
     const { showAsModal } = this.state;
     if (showAsModal) {
+      const isIOS = Platform.OS === 'ios';
+      const screenHeight = getScreenHeight();
       styles = {
         position: 'absolute',
-        top: 12,
+        top: isIOS && top ? top : 0,
         width: '100%',
-        height: 800,
+        height: isIOS ? screenHeight - top : screenHeight,
         zIndex: 999,
         overflow: 'hidden',
       };
@@ -73,7 +76,7 @@ class PayPalButton extends React.PureComponent {
     return getPayPalSettings && getPayPalSettings.paypalInContextToken ? (
       <View style={{ ...styles }}>
         <WebView
-          scalesPageToFit
+          scalesPageToFit={false}
           originWhitelist={['*']}
           source={{
             uri: webURL,
@@ -103,6 +106,11 @@ PayPalButton.propTypes = {
   setVenmoState: PropTypes.bool.isRequired,
   closeModal: PropTypes.bool.isRequired,
   paypalStaticUrl: PropTypes.string.isRequired,
+  top: PropTypes.number,
+};
+
+PayPalButton.defaultProps = {
+  top: 0,
 };
 
 export default PayPalButton;
