@@ -47,4 +47,5 @@ export class DivisionTabModule extends PureComponent {
   }
 }
 
+export { DivisionTabModule as DivisionTabModuleVanilla };
 export default withStyles(DivisionTabModule, styles);

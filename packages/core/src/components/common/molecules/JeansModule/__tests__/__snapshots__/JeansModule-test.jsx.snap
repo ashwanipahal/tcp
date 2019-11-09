@@ -1,0 +1,643 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JeanModule component should default variant correctly 1`] = `
+<div>
+  <div
+    className="title-section"
+  >
+    <ForwardRef
+      className={null}
+      color="white"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="center"
+    >
+      Your Denim Place
+    </ForwardRef>
+  </div>
+  <ForwardRef
+    carouselConfig={
+      Object {
+        "autoplay": false,
+        "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+        "customArrowRight": "/static/images/right-carousel-carrot.svg",
+      }
+    }
+    className="carousel-item"
+    options={
+      Object {
+        "arrows": true,
+        "autoplay": false,
+        "dots": false,
+        "fade": false,
+        "infinite": false,
+        "lazyLoad": false,
+        "responsive": Array [
+          Object {
+            "breakpoint": 767,
+            "settings": Object {
+              "arrows": false,
+              "slidesToShow": 2.5,
+              "swipeToSlide": true,
+            },
+          },
+          Object {
+            "breakpoint": 1199,
+            "settings": Object {
+              "arrows": true,
+              "slidesToShow": 4.25,
+              "swipeToSlide": true,
+            },
+          },
+        ],
+        "slidesToScroll": 1,
+        "slidesToShow": 6,
+        "speed": 1000,
+        "swipe": true,
+      }
+    }
+  >
+    <div
+      className="jeans-carousel"
+    >
+      <ForwardRef
+        asPath="http://image1.sm/url"
+        className="image-link"
+        dataLocator="dummy-datalocator"
+        to="Fashion"
+      >
+        <ForwardRef
+          className="carousel-image"
+          imgData={
+            Object {
+              "alt": "Fashion",
+              "url": "http://image1.sm/url",
+            }
+          }
+        />
+        <ForwardRef
+          className="image-text"
+          color="text.primary"
+          component="p"
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Fashion
+        </ForwardRef>
+        <div
+          className="overlapping-section"
+        >
+          <div
+            className="text-container"
+          >
+            <ForwardRef
+              className="text-header"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize="fs20"
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            >
+              Text Item 1
+            </ForwardRef>
+            <ForwardRef
+              className="text-subheader"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize="fs12"
+              fontWeight="semibold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            >
+              Text Item 1
+            </ForwardRef>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 1
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 2
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 3
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 4
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 5
+              </ForwardRef>
+            </div>
+            <ForwardRef
+              className="style1 plus-icon"
+              src="/static/images/plus.png"
+            />
+          </div>
+          <ForwardRef
+            asPath="/node/pdp"
+            className="shop-now-link"
+            dataLocator="dummy-datalocator"
+            to="/node/pdp"
+          >
+            SHOP NOW
+          </ForwardRef>
+        </div>
+      </ForwardRef>
+    </div>
+    <div
+      className="jeans-carousel"
+    >
+      <ForwardRef
+        asPath="http://image1.sm/url"
+        className="image-link"
+        dataLocator="dummy-datalocator"
+        to="Distressed"
+      >
+        <ForwardRef
+          className="carousel-image"
+          imgData={
+            Object {
+              "alt": "Distressed",
+              "url": "http://image1.sm/url",
+            }
+          }
+        />
+        <ForwardRef
+          className="image-text"
+          color="text.primary"
+          component="p"
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Distressed
+        </ForwardRef>
+        <div
+          className="overlapping-section"
+        >
+          <div
+            className="text-container"
+          >
+            <ForwardRef
+              className="text-header"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize="fs20"
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            >
+              Distressed
+            </ForwardRef>
+            <ForwardRef
+              className="text-subheader"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize="fs12"
+              fontWeight="semibold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            >
+              Perfectly ripped and washed
+            </ForwardRef>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 1
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 2
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 3
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 4
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 5
+              </ForwardRef>
+            </div>
+            <ForwardRef
+              className="style1 plus-icon"
+              src="/static/images/plus.png"
+            />
+          </div>
+          <ForwardRef
+            asPath="/node/pdp"
+            className="shop-now-link"
+            dataLocator="dummy-datalocator"
+            to="/node/pdp"
+          >
+            SHOP NOW
+          </ForwardRef>
+        </div>
+      </ForwardRef>
+    </div>
+    <div
+      className="jeans-carousel"
+    >
+      <ForwardRef
+        asPath="http://image1.sm/url"
+        className="image-link"
+        dataLocator="dummy-datalocator"
+        to="Super Skiny"
+      >
+        <ForwardRef
+          className="carousel-image"
+          imgData={
+            Object {
+              "alt": "Super Skiny",
+              "url": "http://image1.sm/url",
+            }
+          }
+        />
+        <ForwardRef
+          className="image-text"
+          color="text.primary"
+          component="p"
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          Super Skiny
+        </ForwardRef>
+        <div
+          className="overlapping-section"
+        >
+          <div
+            className="text-container"
+          >
+            <ForwardRef
+              className="text-header"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize="fs20"
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            >
+              Super Skiny
+            </ForwardRef>
+            <ForwardRef
+              className="text-subheader"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize="fs12"
+              fontWeight="semibold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            >
+              Perfectly ripped and washed
+            </ForwardRef>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 1
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 2
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 3
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 4
+              </ForwardRef>
+            </div>
+            <div
+              className="text-line"
+            >
+              <ForwardRef
+                className="done-button"
+                src="/static/images/done.png"
+              />
+              <ForwardRef
+                className="text-item"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="center"
+              >
+                Text Item 5
+              </ForwardRef>
+            </div>
+            <ForwardRef
+              className="style1 plus-icon"
+              src="/static/images/plus.png"
+            />
+          </div>
+          <ForwardRef
+            asPath="/node/pdp"
+            className="shop-now-link"
+            dataLocator="dummy-datalocator"
+            to="/node/pdp"
+          >
+            SHOP NOW
+          </ForwardRef>
+        </div>
+      </ForwardRef>
+    </div>
+  </ForwardRef>
+</div>
+`;

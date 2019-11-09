@@ -105,4 +105,5 @@ export class OutfitCarouselModule extends PureComponent {
   }
 }
 
+export { OutfitCarouselModule as OutfitCarouselModuleVanilla };
 export default withStyles(OutfitCarouselModule, styles);

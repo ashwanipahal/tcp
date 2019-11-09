@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OutfitCarouselModule component should default variant correctly 1`] = `
+<div
+  className=""
+>
+  <ForwardRef
+    className="heading"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs16",
+        "fs16",
+        "fs20",
+      ]
+    }
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={null}
+    textAlign="left"
+  >
+    First Day Outfits
+  </ForwardRef>
+  <ForwardRef
+    className="button-tabs"
+    dataLocator=""
+    onTabChange={[Function]}
+    selectedTabId=""
+    tabs={
+      Array [
+        Object {
+          "action": "<action_value>",
+          "external": 0,
+          "id": "/button/url",
+          "label": "Etna",
+          "target": "|_blank|_modal",
+          "title": "Etna",
+        },
+        Object {
+          "action": "<action_value>",
+          "external": 0,
+          "id": "/button/url",
+          "label": "LorumIpsum1",
+          "target": "|_blank|_modal",
+          "title": "LorumIpsum1",
+        },
+        Object {
+          "action": "<action_value>",
+          "external": 0,
+          "id": "/button/url",
+          "label": "LorumIpsum2",
+          "target": "|_blank|_modal",
+          "title": "LorumIpsum2",
+        },
+        Object {
+          "action": "<action_value>",
+          "external": 0,
+          "id": "/button/url",
+          "label": "LorumIpsum3",
+          "target": "|_blank|_modal",
+          "title": "LorumIpsum3",
+        },
+      ]
+    }
+  />
+</div>
+`;

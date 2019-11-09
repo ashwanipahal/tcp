@@ -154,4 +154,5 @@ export class JeansModule extends PureComponent {
   }
 }
 
+export { JeansModule as JeansModuleVanilla };
 export default withStyles(JeansModule, styles);
