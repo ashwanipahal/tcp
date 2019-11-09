@@ -6,6 +6,7 @@ import { setStoreRef } from '@tcp/core/src/utils/store.utils';
 import globalSagas from '../sagas';
 import globalReducers from '../reducers';
 import createAnalyticsMiddleware from '../middlewares/analytics';
+import createDataLayer from '../../analytics/dataLayer';
 
 const configureStore = preloadedState => {
   /**
@@ -43,6 +44,14 @@ const configureStore = preloadedState => {
 
   // Need to save the store in a separate variable as there is no easy way of getting the store in Non-saga file like util.js
   setStoreRef(store);
+
+  /**
+   * This is where we assign window._dataLayer for analytics logic
+   */
+  if (process.env.ANALYTICS && typeof window !== 'undefined') {
+    // eslint-disable-next-line
+    window._dataLayer = createDataLayer(store);
+  }
 
   return store;
 };

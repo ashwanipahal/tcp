@@ -30,7 +30,7 @@ const navConfigMap = {
   wallet: 'myWalletPageMobile',
   'extra-points': 'earnExtraPointsPageMobile',
   'points-history': 'pointHistoryPageMobile',
-  preferernces: 'myPreferencePageMobile',
+  'my-preference': 'myPreferencePageMobile',
   'points-claim': 'PointsClaimPageMobile',
   orders: 'myOrdersPageMobile',
   'address-book': 'addressBookMobile',

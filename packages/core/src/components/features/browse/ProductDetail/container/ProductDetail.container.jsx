@@ -6,6 +6,10 @@ import ProductDetail from '../views';
 import { getProductDetails } from './ProductDetail.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import {
+  getIsShowPriceRange,
+  getIsKeepAliveProduct,
+} from '../../../../../reduxStore/selectors/session.selectors';
+import {
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
@@ -37,8 +41,44 @@ import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
 class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
+    const { getDetails } = this.props;
+
+    // TODO - fix this to extract the product ID from the page.
+    const productId = this.extractPID();
+
+    getDetails({ productColorId: productId });
+    window.scrollTo(0, 100);
+  }
+
+  componentDidUpdate(prevProps) {
     const {
       getDetails,
+      router: {
+        query: { pid },
+      },
+    } = this.props;
+
+    if (prevProps.router.query.pid !== pid) {
+      const productId = this.extractPID();
+      getDetails({ productColorId: productId });
+      window.scrollTo(0, 100);
+    }
+  }
+
+  componentWillUnmount = () => {
+    const { clearAddToBagError } = this.props;
+    clearAddToBagError();
+  };
+
+  handleAddToBag = () => {
+    const { addToBagEcom, formValues, productInfo } = this.props;
+    let cartItemInfo = getCartItemInfo(productInfo, formValues);
+    cartItemInfo = { ...cartItemInfo };
+    addToBagEcom(cartItemInfo);
+  };
+
+  extractPID = () => {
+    const {
       router: {
         query: { pid },
       },
@@ -54,20 +94,7 @@ class ProductDetailContainer extends React.PureComponent {
       productId = 'gift';
     }
 
-    getDetails({ productColorId: productId });
-    window.scrollTo(0, 100);
-  }
-
-  componentWillUnmount = () => {
-    const { clearAddToBagError } = this.props;
-    clearAddToBagError();
-  };
-
-  handleAddToBag = () => {
-    const { addToBagEcom, formValues, productInfo } = this.props;
-    let cartItemInfo = getCartItemInfo(productInfo, formValues);
-    cartItemInfo = { ...cartItemInfo };
-    addToBagEcom(cartItemInfo);
+    return productId;
   };
 
   render() {
@@ -88,6 +115,7 @@ class ProductDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       alternateSizes,
+      isShowPriceRangeKillSwitch,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -95,6 +123,7 @@ class ProductDetailContainer extends React.PureComponent {
       <React.Fragment>
         {isProductDataAvailable ? (
           <ProductDetail
+            {...otherProps}
             productDetails={productDetails}
             breadCrumbs={breadCrumbs}
             itemPartNumber={itemPartNumber}
@@ -113,6 +142,7 @@ class ProductDetailContainer extends React.PureComponent {
             onAddItemToFavorites={onAddItemToFavorites}
             isLoggedIn={isLoggedIn}
             alternateSizes={alternateSizes}
+            isShowPriceRangeKillSwitch={isShowPriceRangeKillSwitch}
           />
         ) : null}
       </React.Fragment>
@@ -144,6 +174,8 @@ function mapStateToProps(state) {
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     alternateSizes: getAlternateSizes(state),
+    isShowPriceRangeKillSwitch: getIsShowPriceRange(state),
+    isKeepAliveProduct: getIsKeepAliveProduct(state),
   };
 }
 
@@ -178,6 +210,7 @@ ProductDetailContainer.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   ratingsProductId: PropTypes.string,
+  isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
   router: PropTypes.shape({
     query: PropTypes.shape({
       pid: PropTypes.string,
