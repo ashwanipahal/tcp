@@ -19,7 +19,7 @@ describe('User saga', () => {
       expect(putDescriptor).toEqual(
         all([
           put(setUserInfo(response)),
-          put(setAddressList(response.contactList)),
+          put(setAddressList(response.contactList, true)),
           put(setIsRegisteredUserCallDone()),
         ])
       );

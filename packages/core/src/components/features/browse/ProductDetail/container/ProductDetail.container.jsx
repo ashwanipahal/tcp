@@ -41,10 +41,7 @@ import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
 class ProductDetailContainer extends React.PureComponent {
   componentDidMount() {
-    const {
-      getDetails,
-      
-    } = this.props;
+    const { getDetails } = this.props;
 
     // TODO - fix this to extract the product ID from the page.
     const productId = this.extractPID();
@@ -97,9 +94,8 @@ class ProductDetailContainer extends React.PureComponent {
       productId = 'gift';
     }
 
-    return productId
+    return productId;
   };
-
 
   render() {
     const {
