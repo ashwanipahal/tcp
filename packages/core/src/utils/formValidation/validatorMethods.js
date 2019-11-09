@@ -111,7 +111,12 @@ function cardNumberForTypeValidator(value, param, linkedProps) {
 
 function plccEnabledValidator(value, param, linkedProps) {
   const cleanValue = (value || '').replace(/\D/g, '');
-  return cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1];
+  // For PLCC card it was returning false and then UI shows the error, which should not happen.
+  // Added PLCC card option for this.
+  return (
+    !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]) ||
+    linkedProps[0] === 'PLACE CARD'
+  );
 }
 
 // TODO - Add test case (Ajay Saini)
