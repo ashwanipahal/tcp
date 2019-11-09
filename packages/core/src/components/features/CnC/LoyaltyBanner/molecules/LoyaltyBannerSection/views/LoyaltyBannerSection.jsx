@@ -90,6 +90,7 @@ const LoyaltyBannerSection = props => {
     closeAddedToBagModal,
     openApplyNowModal,
     bagLoading,
+    footerLabels,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -186,24 +187,16 @@ const LoyaltyBannerSection = props => {
               pageCategory={pageCategory}
               isProductDetailView={isProductDetailView}
               earnedRewardAvailable={earnedRewardAvailable}
-              openOverlay={openOverlay}
-              closeAddedToBagModal={closeAddedToBagModal}
-              openApplyNowModal={openApplyNowModal}
             />
 
             <div className="footer">
               <LoyaltyFooterSection
+                footerLabels={footerLabels}
                 className={className}
-                labels={labels}
-                isPlcc={isPlcc}
-                isProductDetailView={isProductDetailView}
-                isReviewPage={isReviewPage}
-                isConfirmationPage={isConfirmationPage}
-                isGuest={isGuest}
-                isAddedToBagPage={isAddedToBagPage}
-                earnedRewardAvailable={earnedRewardAvailable}
                 openOverlay={openOverlay}
                 closeAddedToBagModal={closeAddedToBagModal}
+                openApplyNowModal={openApplyNowModal}
+                isProductDetailView={isProductDetailView}
               />
             </div>
           </BodyCopy>
@@ -219,7 +212,8 @@ const LoyaltyBannerSection = props => {
 
 LoyaltyBannerSection.propTypes = {
   className: PropTypes.string,
-  labels: PropTypes.shape.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  footerLabels: PropTypes.shape({}).isRequired,
   estimatedRewardsVal: PropTypes.number,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,

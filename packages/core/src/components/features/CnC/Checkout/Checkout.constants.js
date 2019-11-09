@@ -11,6 +11,7 @@ const CONSTANTS = {
     },
   },
   EMAIL_REGISTRATION_TYPE_CONSTANT: '10',
+  REVIEW_FORM_NAME: 'expressReviewPage',
   CHECKOUT: 'checkout',
   PAYPAL_REDIRECT_PARAM: 'isPaypalPostBack',
   PAYMENT_METHOD_VENMO: 'venmo',

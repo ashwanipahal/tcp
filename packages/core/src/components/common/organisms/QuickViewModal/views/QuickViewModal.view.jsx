@@ -95,6 +95,7 @@ class QuickViewModal extends React.Component {
       addToBagError,
       addToBagMultipleItemError,
       currencyExchange,
+      toastMessage,
       ...otherProps
     } = this.props;
     this.skuFormRefs = [];
@@ -126,6 +127,7 @@ class QuickViewModal extends React.Component {
             isMultiItemQVModal={isMultiItemQVModal}
             formRef={formRef}
             quickViewColorSwatchesCss={quickViewColorSwatchesCss}
+            toastMessage={toastMessage}
             isQuickView
             marginTopNone
             {...otherProps}
@@ -223,10 +225,12 @@ QuickViewModal.propTypes = {
   selectedColorProductId: PropTypes.string.isRequired,
   currencyExchange: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 QuickViewModal.defaultProps = {
   currencyExchange: 1,
+  toastMessage: () => {},
 };
 export default withStyles(QuickViewModal, styles);
 export { QuickViewModal as QuickViewModalVanilla };

@@ -1,6 +1,9 @@
 import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import setLoaderState from '../../../../../../../../../web/src/components/features/content/Loader/container/Loader.actions';
+
 import COUPON_CONSTANTS from '../Coupon.constants';
 import { validateReduxCache } from '../../../../../../../utils/cache.util';
 import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
@@ -31,6 +34,33 @@ export function* applyCoupon({ payload }) {
     } else if (coupon.status === COUPON_STATUS.APPLIED) {
       oldStatus = BUTTON_LABEL_STATUS.REMOVE;
     }
+    const cartOrderItems = yield select(BagPageSelectors.getOrderItems);
+    const productsData = [];
+    if (cartOrderItems) {
+      cartOrderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        const {
+          itemInfo: { itemId, color, name, offerPrice, size, listPrice },
+          productInfo: { skuId, upc, productPartNumber },
+        } = productDetail;
+
+        const prodData = {
+          color,
+          id: itemId,
+          name,
+          price: offerPrice,
+          extPrice: offerPrice,
+          sflExtPrice: offerPrice,
+          listPrice,
+          partNumber: productPartNumber,
+          size,
+          upc,
+          sku: skuId.toString(),
+        };
+        productsData.push(prodData);
+        return prodData;
+      });
+    }
 
     try {
       yield put(setLoaderState(true));
@@ -39,6 +69,15 @@ export function* applyCoupon({ payload }) {
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
+      yield put(
+        setClickAnalyticsData({
+          customEvents: ['event28'],
+          products: productsData,
+          eventName: 'coupon applied',
+          couponCode: coupon.id,
+        })
+      );
+      yield put(trackClick('coupon applied'));
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield call(getCartDataSaga, {
         payload: {
@@ -51,6 +90,14 @@ export function* applyCoupon({ payload }) {
       yield put(setLoaderState(false));
       resolve();
     } catch (e) {
+      yield put(
+        setClickAnalyticsData({
+          customEvents: ['event27'],
+          products: productsData,
+          eventName: 'invalid coupon code used',
+        })
+      );
+      yield put(trackClick('invalid coupon applied'));
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
       yield put(setLoaderState(false));
       yield put(hideLoader());

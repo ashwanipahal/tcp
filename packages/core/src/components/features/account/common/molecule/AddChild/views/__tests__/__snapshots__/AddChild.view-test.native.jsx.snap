@@ -24,6 +24,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -146,6 +147,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
+                  "autoCapitalize": "sentences",
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
@@ -266,6 +268,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -391,6 +394,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
+                  "autoCapitalize": "sentences",
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
@@ -457,6 +461,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -508,6 +513,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",

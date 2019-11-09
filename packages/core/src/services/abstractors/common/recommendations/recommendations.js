@@ -109,7 +109,7 @@ const RecommendationsAbstractor = {
       }
     });
   },
-  getAppData: ({ pageType, categoryName, partNumber }) => {
+  getAppData: ({ pageType, categoryName, partNumber, mbox = 'target-global-mbox' }) => {
     const ADOBE_RECOMMENDATIONS_URL = 'https://tcp.tt.omtrdc.net/rest/v1/mbox?client=tcp';
     const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
     const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
@@ -126,7 +126,7 @@ const RecommendationsAbstractor = {
       },
       body: {
         marketingCloudVisitorId: '',
-        mbox: 'target-global-mbox',
+        mbox,
         requestLocation,
         mboxParameters: {
           'entity.categoryId': categoryName || '',

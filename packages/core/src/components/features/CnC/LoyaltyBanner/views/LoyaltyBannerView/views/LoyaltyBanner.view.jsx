@@ -38,6 +38,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       closeAddedToBagModal,
       inheritedStyles,
       openApplyNowModal,
+      footerLabels,
       bagLoading,
     } = this.props;
     return !isInternationalShipping && isUsOnly() ? (
@@ -60,6 +61,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
           closeAddedToBagModal={closeAddedToBagModal}
           inheritedStyles={inheritedStyles}
           openApplyNowModal={openApplyNowModal}
+          footerLabels={footerLabels}
           bagLoading={bagLoading}
         />
       </div>

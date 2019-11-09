@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -24,6 +26,19 @@ const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
         enableApplyCta
         additionalClassNameModal="bonus-modal-web"
       />
+    )
+  );
+};
+
+const getRecommendationSection = isConfirmationPage => {
+  return (
+    isConfirmationPage && (
+      <div className="recommendationsWrapper">
+        <Recommendations
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+          variations="moduleO"
+        />
+      </div>
     )
   );
 };
@@ -97,6 +112,7 @@ const CnCTemplate = ({
           </Col>
         )}
       </Row>
+      {getRecommendationSection(isConfirmationPage)}
     </section>
   );
 };

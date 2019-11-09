@@ -5,7 +5,11 @@ export default css`
   margin-bottom: 40px;
 
   .heading-wrapper {
-    padding-top: 24px;
+    padding-top: 32px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: 24px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;

@@ -11,6 +11,7 @@ import {
   getIsBossAppEnabled,
 } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { isMobileApp } from '@tcp/core/src/utils';
+import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import BAGPAGE_SELECTORS from '../../BagPage/container/BagPage.selectors';
 import {
@@ -29,6 +30,7 @@ import {
   getCartBossBopisToggleError,
   getCurrencyExchange,
 } from './CartItemTile.selectors';
+import { updateAppTypeWithParams } from '../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.actions';
 import {
   getSaveForLaterSwitch,
   getSflMaxCount,
@@ -99,7 +101,10 @@ export const CartItemTileContainer = ({
   pickupStoresInCart,
   autoSwitchPickupItemInCart,
   navigation,
+  updateAppTypeHandler,
   disableProductRedirect,
+  setClickAnalyticsData,
+  closeMiniBag,
 }) => (
   <CartItemTile
     labels={labels}
@@ -147,7 +152,10 @@ export const CartItemTileContainer = ({
     pickupStoresInCart={pickupStoresInCart}
     autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
     navigation={navigation}
+    updateAppTypeHandler={updateAppTypeHandler}
     disableProductRedirect={disableProductRedirect}
+    setClickAnalyticsData={setClickAnalyticsData}
+    closeMiniBag={closeMiniBag}
   />
 );
 
@@ -243,6 +251,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     clearToggleError: () => {
       dispatch(clearToggleCartItemError());
       dispatch(clearToggleBossBopisCartItemError());
+    },
+    updateAppTypeHandler: payload => {
+      dispatch(updateAppTypeWithParams(payload));
+    },
+    setClickAnalyticsData: payload => {
+      dispatch(setClickAnalyticsData(payload));
     },
   };
 };

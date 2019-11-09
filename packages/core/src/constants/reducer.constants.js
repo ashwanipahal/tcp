@@ -222,6 +222,8 @@ export const CATEGORY_LIST_ACTION_PATTERN = '@@CategoryList-';
 export const MY_PREFERENCE_REDUCER_KEY = 'MyPreference';
 export const MY_PREFERENCE_ACTION_PATTERN = '@@MyPreference-';
 
+export const ANALYTICS_DATA_KEY = 'AnalyticsDataKey';
+
 export const REDUCER_ACTION_MAPPING = {
   [APPLY_PLCC_REDUCER_KEY]: APPLY_PLCC_ACTION_PATTERN,
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
