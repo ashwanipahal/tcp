@@ -39,6 +39,7 @@ const initialState = {
   },
 };
 
+// eslint-disable-next-line complexity
 const SessionConfigReducer = (state = initialState, action) => {
   switch (action.type) {
     case GLOBAL_CONSTANTS.SET_XAPP_CONFIG:

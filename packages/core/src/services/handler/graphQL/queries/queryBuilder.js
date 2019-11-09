@@ -23,6 +23,7 @@ const QueryBuilder = {
     const apiConfig = getAPIConfig();
     const { isPreviewEnv, previewDate, previewDateEnv, previewEnvId } = apiConfig;
     const isPreview = !!(isPreviewEnv || previewEnvId === ENV_PREVIEW);
+    console.log('previewDate', previewDate);
     if (isPreview) {
       let localQuery = query;
       let previewQueryMeta = `is_preview: "true"`;

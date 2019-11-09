@@ -12,6 +12,8 @@ import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
+import { getStoreRef } from './store.utils';
+import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import googleMapConstants from '../constants/googleMap.constants';
 
 let currentAppAPIConfig = null;
@@ -383,6 +385,7 @@ const getRegion = (configVal, country) => {
  * @param {*} appTypeSuffix
  * @returns
  */
+// eslint-disable-next-line complexity
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();
@@ -486,6 +489,13 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     cookie: null,
     catalogId,
     language: '',
+  };
+};
+
+export const updateAPIConfigForApp = () => {
+  const updatedAPIConfig = getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY];
+  return {
+    ...updatedAPIConfig,
   };
 };
 

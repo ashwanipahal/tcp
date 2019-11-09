@@ -16,7 +16,6 @@ import BrandSwitchStack from '../pages/brandSwitch';
 import Header from '../components/common/molecules/Header';
 import CheckoutStack from '../pages/checkout';
 import BagStack from '../pages/bag';
-import PreviewScreen from './PreviewScreen';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -45,9 +44,6 @@ const RootStack = createStackNavigator(
     },
     ApplyNow: {
       screen: ApplyNowWrapper,
-    },
-    Preview: {
-      screen: PreviewScreen,
     },
   },
   {
