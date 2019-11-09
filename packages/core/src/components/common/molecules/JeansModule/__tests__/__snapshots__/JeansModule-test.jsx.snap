@@ -133,7 +133,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -155,7 +155,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -177,7 +177,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -199,7 +199,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -221,7 +221,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -325,7 +325,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -347,7 +347,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -369,7 +369,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -391,7 +391,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -413,7 +413,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -517,7 +517,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -539,7 +539,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -561,7 +561,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -583,7 +583,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
@@ -605,7 +605,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
             >
               <ForwardRef
                 className="done-button"
-                src="/static/images/done.png"
+                src="/static/images/confirmation_check.svg"
               />
               <ForwardRef
                 className="text-item"
