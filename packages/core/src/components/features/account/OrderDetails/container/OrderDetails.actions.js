@@ -13,3 +13,9 @@ export const setOrderDetails = orderDetailsData => {
     payload: orderDetailsData,
   };
 };
+
+export const showLoader = () => {
+  return {
+    type: ORDERDETAILS_CONSTANTS.SHOW_LOADER,
+  };
+};

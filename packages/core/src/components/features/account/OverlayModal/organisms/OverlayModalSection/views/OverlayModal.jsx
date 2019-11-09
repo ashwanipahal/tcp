@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
 import { Modal } from '@tcp/core/src/components/common/molecules';
-import { getViewportInfo, isIosWeb, isAndroidWeb } from '@tcp/core/src/utils';
+import { getViewportInfo, isIosWeb, isAndroidWeb, isCanada } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { isCanada } from '@tcp/core/src/utils';
 import styles from '../styles/OverlayModal.style';
 
 const propTypes = {

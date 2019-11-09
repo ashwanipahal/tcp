@@ -296,6 +296,7 @@ export class ModuleM extends React.PureComponent {
               medium: 8,
               large: 12,
             }}
+            className="header-container"
           >
             {headerText && this.getHeaderText(headerText)}
             {promoBanner && this.getPromoBanner(promoBanner)}

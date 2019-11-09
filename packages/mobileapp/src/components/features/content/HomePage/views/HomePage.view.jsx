@@ -6,7 +6,7 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
-
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   ModuleD,
   ModuleH,
@@ -22,8 +22,6 @@ import {
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
@@ -96,6 +94,10 @@ class HomePageView extends React.PureComponent<Props> {
     this.navigate(event.url);
   };
 
+  renderGlobalModal = navigation => {
+    return <QuickViewModal navigation={navigation} />;
+  };
+
   navigate = url => {
     const { navigation } = this.props;
     if (url) {
@@ -132,9 +134,14 @@ class HomePageView extends React.PureComponent<Props> {
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
-        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
+        <Recommendations
+          navigation={navigation}
+          showButton
+          variation="moduleO,moduleP"
+          page="homepageTest"
+        />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
+        {this.renderGlobalModal()}
       </LazyloadScrollView>
     );
   }

@@ -88,6 +88,7 @@ const LoyaltyBannerSection = props => {
     openOverlay,
     closeAddedToBagModal,
     openApplyNowModal,
+    footerLabels,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -160,7 +161,6 @@ const LoyaltyBannerSection = props => {
   );
 
   remainingPlcc = LoyaltyLabels.remainingPlccValFn ? convertHtml(finalStrRemainingValue) : false;
-
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
@@ -184,17 +184,11 @@ const LoyaltyBannerSection = props => {
           <div className="footer">
             <LoyaltyFooterSection
               className={className}
-              labels={labels}
-              isPlcc={isPlcc}
-              isProductDetailView={isProductDetailView}
-              isReviewPage={isReviewPage}
-              isConfirmationPage={isConfirmationPage}
-              isGuest={isGuest}
-              isAddedToBagPage={isAddedToBagPage}
-              earnedRewardAvailable={earnedRewardAvailable}
+              footerLabels={footerLabels}
               openOverlay={openOverlay}
               closeAddedToBagModal={closeAddedToBagModal}
               openApplyNowModal={openApplyNowModal}
+              isProductDetailView={isProductDetailView}
             />
           </div>
         </BodyCopy>
@@ -205,7 +199,8 @@ const LoyaltyBannerSection = props => {
 
 LoyaltyBannerSection.propTypes = {
   className: PropTypes.string,
-  labels: PropTypes.shape.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  footerLabels: PropTypes.shape({}).isRequired,
   estimatedRewardsVal: PropTypes.number,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,

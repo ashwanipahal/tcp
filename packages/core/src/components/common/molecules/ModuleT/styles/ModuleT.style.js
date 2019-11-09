@@ -74,4 +74,8 @@ export default css`
       }
     `}
   }
+
+  .btn-list-color {
+    color: ${props => props.theme.colorPalette.text.primary};
+  }
 `;

@@ -23,6 +23,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <Field
+        autoComplete="off"
         className="giftCardNumber"
         component={
           Object {
@@ -203,6 +204,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <Field
+        autoComplete="off"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -525,6 +527,7 @@ exports[`Add gift card form component should render component correctly when isF
       }
     >
       <Field
+        autoComplete="off"
         className="giftCardNumber"
         component={
           Object {
@@ -698,6 +701,7 @@ exports[`Add gift card form component should render component correctly when isF
       }
     >
       <Field
+        autoComplete="off"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),

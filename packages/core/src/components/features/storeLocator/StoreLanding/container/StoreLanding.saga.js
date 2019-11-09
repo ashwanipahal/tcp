@@ -8,6 +8,9 @@ import {
 import { setDefaultStore as setDefaultStoreUserAction } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import STORE_LOCATOR_CONSTANTS from './StoreLanding.constants';
 import { setStoresByCoordinates } from './StoreLanding.actions';
+import { isMobileApp } from '../../../../../utils';
+import errorMessage from '../../../../../services/handler/stateful/errorResponseMapping/index.json';
+import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
 export function* fetchLocationStoresSaga({ payload }) {
   try {
@@ -20,6 +23,8 @@ export function* fetchLocationStoresSaga({ payload }) {
     }
   } catch (err) {
     yield put(setStoresByCoordinates([]));
+    if (isMobileApp())
+      yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
   }
 }
 
@@ -33,7 +38,8 @@ export function* getFavoriteStoreSaga({ payload }) {
       throw res;
     }
   } catch (err) {
-    yield null;
+    if (isMobileApp())
+      yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
   }
 }
 
@@ -45,7 +51,8 @@ export function* setFavoriteStoreSaga({ payload }) {
       yield put(setDefaultStoreUserAction(payload));
     }
   } catch (err) {
-    yield null;
+    if (isMobileApp())
+      yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
   }
 }
 
