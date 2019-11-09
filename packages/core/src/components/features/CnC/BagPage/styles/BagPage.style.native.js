@@ -154,6 +154,15 @@ export const ContainerMain = styled.View`
   margin-bottom: 100px;
 `;
 
+export const RecommendationView = styled.View`
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
+export const RecommendationWrapper = styled.View`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
+    ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
+`;
+
 export default {
   HeadingViewStyle,
   MainSection,
@@ -177,4 +186,6 @@ export default {
   BagHeaderMain,
   FooterView,
   ContainerMain,
+  RecommendationWrapper,
+  RecommendationView,
 };

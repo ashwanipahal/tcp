@@ -132,6 +132,7 @@ class ProductDetailView extends React.PureComponent {
       alternateSizes,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      toastMessage,
     } = this.props;
     const {
       currentColorEntry,
@@ -151,7 +152,6 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
-
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
@@ -198,13 +198,14 @@ class ProductDetailView extends React.PureComponent {
             sizeChartLinkVisibility={sizeChartLinkVisibility}
             alternateSizes={alternateSizes}
             navigation={navigation}
+            toastMessage={toastMessage}
           />
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
           <LoyaltyBannerView>
-            <LoyaltyBanner pageCategory="isProductDetailView" />
+            <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
           </LoyaltyBannerView>
           <ProductDetailDescription
             shortDescription={shortDescription}
@@ -258,6 +259,7 @@ ProductDetailView.propTypes = {
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  toastMessage: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -286,6 +288,7 @@ ProductDetailView.defaultProps = {
   alternateSizes: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  toastMessage: () => {},
 };
 
 export default withStyles(ProductDetailView);

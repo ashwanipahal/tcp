@@ -50,7 +50,23 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           navigation={[MockFunction]}
+          pageView="myBag"
         />
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
         navigation={[MockFunction]}
@@ -127,6 +143,21 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
         navigation={[MockFunction]}
@@ -189,6 +220,21 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           navigation={[MockFunction]}
           sflItems={Object {}}
         />
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
+        </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
         navigation={[MockFunction]}
@@ -246,6 +292,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
             }
           }
           navigation={[MockFunction]}
+          pageView="myBag"
         />
         <Styled(View)>
           <Connect(OrderLedgerContainer)
@@ -265,6 +312,21 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
           <Connect(CouponContainer)
             showAccordian={false}
           />
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              variation="moduleO"
+            />
+            <Connect(Recommendations)
+              navigation={[MockFunction]}
+              page="cart"
+              portalValue="recently-viewed-products"
+              variation="moduleO"
+            />
+          </Styled(View)>
         </Styled(View)>
       </Styled(View)>
       <Connect(QuickViewModalContainer)
