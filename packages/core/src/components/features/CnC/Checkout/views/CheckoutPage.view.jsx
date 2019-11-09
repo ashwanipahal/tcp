@@ -14,6 +14,7 @@ import { routerPush, scrollToParticularElement } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
 import CheckoutPageEmptyBag from '../molecules/CheckoutPageEmptyBag';
+import checkoutUtil from '../util/utility';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -311,6 +312,8 @@ class CheckoutPage extends React.PureComponent {
   handleDefaultLinkClick = e => {
     e.preventDefault();
   };
+
+  reviewFormSubmit = data => checkoutUtil.handleReviewFormSubmit.bind(this, data);
 
   pageServerErrorRef(ref) {
     this.pageServerError = ref;
