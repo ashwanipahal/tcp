@@ -5,14 +5,13 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import ProductPickupContainer from '@tcp/core/src/components/common/organisms/ProductPickup';
-import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
+import { getMapSliceForColorProductId } from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductVariantSelector from '../../ProductVariantSelector';
 import withStyles from '../../../hoc/withStyles';
 import styles, {
   RowViewContainer,
   SizeViewContainer,
-  UnavailableLink,
 } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
@@ -91,24 +90,25 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderUnavailableLink = () => {
-    const { currentProduct, plpLabels } = this.props;
+    const {
+      currentProduct,
+      currentProduct: { colorFitsSizesMap },
+      plpLabels,
+      selectedColorProductId,
+    } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
+    const currentColorEntry = getMapSliceForColorProductId(
+      colorFitsSizesMap,
+      selectedColorProductId
+    );
     return (
-      <UnavailableLink>
-        <BodyCopyWithSpacing
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
-          fontSize="fs12"
-          color="black"
-          text={sizeUnavailable}
-          spacingStyles="padding-right-XS"
-        />
-        <ProductPickupContainer
-          productInfo={currentProduct}
-          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
-          isAnchor
-        />
-      </UnavailableLink>
+      <ProductPickupContainer
+        productInfo={currentProduct}
+        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        sizeUnavailable={sizeUnavailable}
+        isAnchor
+        miscInfo={currentColorEntry && currentColorEntry.miscInfo}
+      />
     );
   };
 

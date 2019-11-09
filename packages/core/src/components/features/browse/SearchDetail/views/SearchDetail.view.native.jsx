@@ -84,7 +84,7 @@ class SearchDetail extends React.PureComponent {
           labelsLogin={labelsLogin}
           {...otherProps}
         />
-        <QuickViewModal />
+        <QuickViewModal navigation={navigation} />
         <AddedToBagContainer navigation={navigation} />
       </PageContainer>
     );
