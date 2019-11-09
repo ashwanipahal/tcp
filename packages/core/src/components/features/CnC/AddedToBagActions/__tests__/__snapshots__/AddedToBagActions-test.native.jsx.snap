@@ -30,8 +30,12 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
 `;
 
 exports[`AddedToBagActions native component AddedToBagActions renders correctly with Venmo Button 1`] = `
-<Styled(View)>
-  <Styled(View)>
+<Styled(View)
+  isPayPalWebViewEnable={false}
+>
+  <Styled(View)
+    isPayPalWebViewEnable={false}
+  >
     <Styled(TouchableOpacity)
       onPress={[Function]}
     >
@@ -50,23 +54,29 @@ exports[`AddedToBagActions native component AddedToBagActions renders correctly 
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>
-  <Styled(View)>
-    <Styled(TouchableOpacity)
-      onPress={[Function]}
+  <Styled(View)
+    isPayPalWebViewEnable={false}
+  >
+    <Styled(View)
+      isPayPalWebViewEnable={false}
     >
-      <Styled(BodyCopy)
-        accessibilityText=""
-        color="white"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs13"
-        fontWeight="extrabold"
-        margin={null}
-        numberOfLines={null}
-        text="CHECKOUT"
-        textDecoration={null}
-      />
-    </Styled(TouchableOpacity)>
+      <Styled(TouchableOpacity)
+        onPress={[Function]}
+      >
+        <Styled(BodyCopy)
+          accessibilityText=""
+          color="white"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="extrabold"
+          margin={null}
+          numberOfLines={null}
+          text="CHECKOUT"
+          textDecoration={null}
+        />
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
   </Styled(View)>
   <Styled(View)>
     <Connect(VenmoPaymentButtonContainer)
