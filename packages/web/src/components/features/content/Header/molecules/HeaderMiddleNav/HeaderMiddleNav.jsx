@@ -78,10 +78,6 @@ class HeaderMiddleNav extends React.PureComponent {
     });
   };
 
-  handleUserTypeColor = isUserPlcc => {
-    return isUserPlcc ? 'blue.500' : 'orange.800';
-  };
-
   renderAccountInfoSection = (
     userName,
     openOverlay,

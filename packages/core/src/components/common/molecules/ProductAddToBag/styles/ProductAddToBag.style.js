@@ -161,8 +161,7 @@ const styles = css`
   }
 
   .size-error {
-    position: absolute;
-    margin-top: -5px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
