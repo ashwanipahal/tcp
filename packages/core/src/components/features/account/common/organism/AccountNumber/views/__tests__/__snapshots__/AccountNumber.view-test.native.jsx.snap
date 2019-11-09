@@ -29,6 +29,11 @@ exports[`AccountNumber view should render AccountNumber component 1`] = `
         name="chevron-up"
         onPress={[Function]}
         size="fs10"
+        style={
+          Object {
+            "padding": 5,
+          }
+        }
       />
       <Styled(View)>
         <BarcodeView

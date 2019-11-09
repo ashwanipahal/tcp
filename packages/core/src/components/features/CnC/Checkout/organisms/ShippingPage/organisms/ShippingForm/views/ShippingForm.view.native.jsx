@@ -60,17 +60,20 @@ const ShippingForm = ({
   scrollView,
 }) => {
   const [editMode, setEditMode] = useState(false);
+  const [editType, setEditType] = useState('');
   const [editShipmentDetailsError, setEditShipmentDetailsError] = useState('');
   let editModalRef;
-  const setEditState = state => {
+  // Type added for address update. edit when updating address and add when selected 'Add' from dropdown
+  const setEditState = (state, type) => {
     if (!state) {
       setEditShipmentDetailsError('');
     }
     setEditMode(state);
+    setEditType(type);
   };
 
   const handleShippingFormSubmit = e => {
-    if (!editMode) {
+    if (!editMode || editType === 'add') {
       setEditShipmentDetailsError('');
       return handleSubmit(submitShippingForm)(e);
     }
