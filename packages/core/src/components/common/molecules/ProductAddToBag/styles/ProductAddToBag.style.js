@@ -267,7 +267,7 @@ export const giftCardDesignStyle = css`
 
     /* Image color of item */
     .color-image {
-      border: 0;
+      border-radius: 0;
       height: auto;
       width: 100%;
     }
@@ -278,6 +278,7 @@ export const giftCardDesignStyle = css`
     }
 
     .input-radio-icon-checked + .input-radio-title .color-image {
+      border-radius: 0;
       border: 0;
       height: auto;
       width: 100%;
