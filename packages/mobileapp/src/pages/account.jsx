@@ -5,6 +5,7 @@ import PointsHistory from '@tcp/core/src/components/features/account/PointHistor
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import OrderDetail from '@tcp/core/src/components/features/account/OrderDetails';
+import PurchaseGiftsCard from '@tcp/core/src/components/features/account/PurchaseGiftsCard';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Account from '../components/features/account/account';
@@ -32,7 +33,7 @@ const AccountStack = createStackNavigator(
       },
     },
     GiftCardPage: {
-      screen: ProductDetail,
+      screen: PurchaseGiftsCard,
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },

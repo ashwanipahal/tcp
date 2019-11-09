@@ -36,6 +36,16 @@ export default css`
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      .product-details-header-container {
+        margin-top: 13px;
+      }
+
+      .price-item {
+        font-size: ${props => props.theme.typography.fontSizes.fs22};
+      }
+    }
   }
   .clear-button {
     border: none;

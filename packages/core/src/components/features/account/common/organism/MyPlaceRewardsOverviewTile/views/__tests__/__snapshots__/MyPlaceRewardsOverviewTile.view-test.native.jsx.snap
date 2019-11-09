@@ -33,23 +33,29 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       textDecoration={null}
     />
     <Styled(View)>
-      <Styled(Anchor)
-        accessibilityLabel="lbl_overview_myPlaceRewardsShopNow"
-        accessibilityRole="link"
-        anchorVariation="button"
-        borderColor="black"
-        borderWidth="1"
-        centered={true}
-        colorName={null}
+      <Styled(CustomButton)
+        active={false}
+        buttonVariation="fixed-width"
+        color=""
         customStyle={Object {}}
-        dataLocator="accountoverview-myplacerewardstile-startshopbtn"
-        fill="WHITE"
-        fullWidth={true}
+        customTextStyle={null}
+        disableButton={false}
+        fill=""
+        fullWidth=""
+        iconColor="gray.800"
+        iconName="chevron-down"
+        iconSize="fs12"
         locator=""
-        margins={null}
+        navigation={Object {}}
         onPress={[Function]}
+        paddings="12px 32px 12px 32px"
+        selected={false}
+        selectedIcon="chevron-up"
+        showIcon={false}
         text="lbl_overview_myPlaceRewardsShopNow"
-        visible={false}
+        theme={Object {}}
+        url=""
+        withNoLineHeight={false}
       />
     </Styled(View)>
   </View>

@@ -25,9 +25,7 @@ export class MailingInformationContainer extends PureComponent {
 
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    getAddressListAction({
-      ignoreCache: true,
-    });
+    getAddressListAction();
   }
 
   componentDidUpdate() {

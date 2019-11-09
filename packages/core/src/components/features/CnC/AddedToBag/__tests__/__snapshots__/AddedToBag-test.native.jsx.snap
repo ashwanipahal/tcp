@@ -77,6 +77,23 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
             />
           </Styled(View)>
           <Styled(View)>
+            <Connect(Recommendations)
+              isAddedToBagOpen={true}
+              navigation={
+                Object {
+                  "getParam": [Function],
+                  "navigate": [MockFunction],
+                  "param": Object {
+                    "headerMode": false,
+                  },
+                }
+              }
+              page="cart"
+              priceOnly={true}
+              variation="moduleO"
+            />
+          </Styled(View)>
+          <Styled(View)>
             <Styled(Anchor)
               accessibilityLabel=""
               anchorVariation="primary"
