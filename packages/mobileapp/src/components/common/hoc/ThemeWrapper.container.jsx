@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { ThemeProvider } from 'styled-components/native';
 import themeTcp from '@tcp/core/styles/themes/TCP';
 import themeGymboree from '@tcp/core/styles/themes/Gymboree';
-import { updateAppType } from './ThemeWrapper.actions';
+import updateAppType from './ThemeWrapper.actions';
 import { APP_TYPE } from './ThemeWrapper.constants';
 import { getAppType, getAppTypeParams } from './ThemeWrapper.selectors';
 import resetReduxStore from '../../../reduxStore/actions';
