@@ -7,7 +7,7 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
       "flex": 1,
       "height": 42,
       "overflow": "hidden",
-      "width": 150,
+      "width": 340,
     }
   }
 >
