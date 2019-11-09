@@ -184,7 +184,6 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
             " {
       margin-right: -8%;
     }
-
   }
   && .recommendations-tile .slick-arrow {
     top: 35%;
@@ -213,14 +212,17 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
             ";
   }
   && .slick-prev::after {
-    content:'';
-    border: solid black;border-width: 0 ",
+    content: '';
+    border: solid black;
+    border-width: 0 ",
             [Function],
-            " ",
+            "
+      ",
             [Function],
-            " 0;border-width: 0 4px 4px 0;
+            " 0;
+    border-width: 0 4px 4px 0;
     display: inline-block;
-    padding:  ",
+    padding: ",
             [Function],
             ";
     transform: rotate(135deg);
@@ -248,14 +250,14 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     border-bottom-left-radius: ",
             [Function],
             ";
-
   }
   && .slick-next::after {
-    content:'';
+    content: '';
     border: solid black;
     border-width: 0 ",
             [Function],
-            " ",
+            "
+      ",
             [Function],
             " 0;
     display: inline-block;
@@ -264,16 +266,16 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
             ";
     transform: rotate(-45deg);
     background-color: transparent;
-    background:none;
+    background: none;
   }
   && .product-list {
-    margin 0 ",
+    margin: 0 ",
             [Function],
             ";
     @media ",
             [Function],
             " {
-      margin 0 ",
+      margin: 0 ",
             [Function],
             ";
     }
