@@ -36,7 +36,7 @@ import {
 } from '../../../account/User/container/User.selectors';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
-class ProductBundleContainer extends React.PureComponent {
+export class ProductBundleContainer extends React.PureComponent {
   selectedColorProductId;
 
   constructor(props) {

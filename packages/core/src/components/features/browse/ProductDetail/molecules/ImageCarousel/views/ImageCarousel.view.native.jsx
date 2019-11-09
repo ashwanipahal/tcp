@@ -254,13 +254,6 @@ class ImageCarousel extends React.PureComponent {
             </FavoriteAndPaginationContainer>
           ) : null}
           <FavoriteAndPaginationContainer>
-            {imageUrls.length > 1 && (
-              <PaginationDots
-                numberOfDots={imageUrls.length}
-                selectedIndex={activeSlideIndex}
-                onPress={this.onPageChange}
-              />
-            )}
             {showModal && (
               <ModalNative
                 isOpen={showModal}

@@ -13,11 +13,8 @@ import ProductAddToBag from '../views/ProductAddToBag.view';
 class ProductAddToBagContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { currentProduct, selectedColorProductId, getProductInitialValues } = props;
+    const { currentProduct, selectedColorProductId } = props;
     this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
-
-    if (getProductInitialValues && typeof getProductInitialValues === 'function')
-      getProductInitialValues(this.initialValuesForm);
 
     this.state = {
       selectedColor: this.initialValuesForm && this.initialValuesForm.color,
@@ -382,7 +379,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   sizeChange = e => {
-    const { selectedFit } = this.state;
+    const { selectedColor, selectedFit, selectedQuantity } = this.state;
     const { onChangeSize } = this.props;
     this.setState({
       persistSelectedFit: selectedFit,
@@ -393,7 +390,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       this.displayErrorMessage(false);
     }
     if (onChangeSize) {
-      onChangeSize(e);
+      onChangeSize(
+        selectedColor && selectedColor.name,
+        e,
+        selectedFit && selectedFit.name,
+        selectedQuantity
+      );
     }
   };
 
@@ -405,14 +407,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   setPreSelectedValuesForProduct = productInfoFromBag => {
     const { selectedFit, selectedQty, selectedSize, selectedColor } = productInfoFromBag;
-    const { getProductInitialValues } = this.props;
     this.initialValuesForm.Fit = selectedFit;
     this.initialValuesForm.Quantity = selectedQty || 1;
     this.initialValuesForm.Size = selectedSize;
     this.initialValuesForm.color = selectedColor;
-
-    if (getProductInitialValues && typeof getProductInitialValues === 'function')
-      getProductInitialValues(this.initialValuesForm);
   };
 
   /**

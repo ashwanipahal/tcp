@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PurchaseGiftsCard View component should renders correctly 1`] = `
+<Fragment>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_purchaseGiftsCard_animatedGiftCards"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height={10}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-right.png",
+          }
+        }
+        url=""
+        width={7}
+      />
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_purchaseGiftsCard_eGiftCard"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height={10}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-right.png",
+          }
+        }
+        url=""
+        width={7}
+      />
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_purchaseGiftsCard_physicalGiftCard"
+      textDecoration={null}
+    />
+    <Styled(View)>
+      <Styled(ImageComp)
+        alt=""
+        height={10}
+        host=""
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-right.png",
+          }
+        }
+        url=""
+        width={7}
+      />
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+</Fragment>
+`;

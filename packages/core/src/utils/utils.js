@@ -1022,7 +1022,7 @@ export const canUseDOM = () => {
   return typeof window !== 'undefined' && window.document && window.document.createElement;
 };
 
-export const splitUniqueIDForDAM = uniqueId => {
+export const getProductUrlForDAM = uniqueId => {
   return `${uniqueId.split('_')[0]}/${uniqueId}`;
 };
 
@@ -1097,6 +1097,6 @@ export default {
   getStyliticsRegion,
   canUseDOM,
   getLabelsBasedOnPattern,
-  splitUniqueIDForDAM,
   calculatePriceValue,
+  getProductUrlForDAM,
 };
