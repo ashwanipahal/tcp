@@ -22,8 +22,6 @@ import {
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
@@ -142,7 +140,6 @@ class HomePageView extends React.PureComponent<Props> {
           variation="moduleO,moduleP"
           page="homepageTest"
         />
-        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
         {this.renderGlobalFunction()}
       </LazyloadScrollView>
