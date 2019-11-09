@@ -247,6 +247,15 @@ class TCPWebApp extends App {
     return null;
   };
 
+  checkLoadAnalyticsOnload = pageProps => {
+    const isLoadAnalyticsOnload =
+      pageProps && pageProps.pageData && pageProps.pageData.loadAnalyticsOnload;
+    if (typeof isLoadAnalyticsOnload === 'undefined') {
+      return true;
+    }
+    return isLoadAnalyticsOnload;
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { Component, pageProps, store, router } = this.props;
@@ -266,6 +275,7 @@ class TCPWebApp extends App {
       reviewPage.asPath,
       internationalCheckout.asPath,
     ];
+    const isCheckAnalyticsOnload = this.checkLoadAnalyticsOnload(pageProps);
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -296,7 +306,7 @@ class TCPWebApp extends App {
               <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && <RouteTracker />}
+            {process.env.ANALYTICS && isCheckAnalyticsOnload && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}
