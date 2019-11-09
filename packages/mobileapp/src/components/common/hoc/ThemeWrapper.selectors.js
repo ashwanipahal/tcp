@@ -7,3 +7,7 @@ export const getAddressResponse = state => {
 export const getAppType = state => {
   return state[THEME_WRAPPER_REDUCER_KEY].get('APP_TYPE');
 };
+
+export const getAppTypeParams = state => {
+  return state[THEME_WRAPPER_REDUCER_KEY].get('APP_PARAMS');
+};
