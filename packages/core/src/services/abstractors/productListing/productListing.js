@@ -157,6 +157,7 @@ class ProductsDynamicAbstractor {
     const slotsObject = {};
     let modules = {};
     try {
+      const { language } = getAPIConfig();
       Object.keys(promoCombination.val).forEach(slotType => {
         promoCombination.val[slotType].forEach(slot => {
           if (slot.val.cid) {
@@ -170,7 +171,7 @@ class ProductsDynamicAbstractor {
               data: {
                 contentId: moduleData.contentId,
                 slot: moduleData.name,
-                lang: getAPIConfig().language,
+                lang: language !== 'en' ? language : '',
               },
             });
             if (!Array.isArray(slotsObject[slotType])) {
