@@ -136,7 +136,12 @@ class HomePageView extends React.PureComponent<Props> {
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
+        <Recommendations
+          navigation={navigation}
+          showButton
+          variation="moduleO,moduleP"
+          page="homepageTest"
+        />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
         <QuickViewModal navigation={navigation} />

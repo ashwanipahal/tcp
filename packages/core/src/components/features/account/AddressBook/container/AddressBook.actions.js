@@ -5,9 +5,10 @@ export const getAddressList = payload => ({
   payload,
 });
 
-export const setAddressList = addressList => ({
+export const setAddressList = (addressList, fromProfile) => ({
   type: ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_LIST,
   addressList,
+  fromProfile,
 });
 
 export const loadAddAddressComponent = () => ({

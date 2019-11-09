@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SafeAreaView } from 'react-native';
-import Toast from 'react-native-easy-toast';
 import colors from '@tcp/core/styles/themes/TCP/colors';
 import { ToastWrapper, ToastCross, ToastText } from './ToastMsg.style.native';
 import { DEFAULT_TOAST_ERROR_MESSAGE_TTL } from '../../../../../config/site.config';
+import Toast from './Toast.native';
 
 /**
  * @param {object} props : Props for FPO
@@ -48,7 +48,7 @@ class ToastView extends React.PureComponent {
         <SafeAreaView>
           <ToastWrapper>
             <ToastText>{errorMessage}</ToastText>
-            <ToastCross>X</ToastCross>
+            <ToastCross onPress={this.cancelToast}>X</ToastCross>
           </ToastWrapper>
         </SafeAreaView>,
         500,
@@ -58,6 +58,10 @@ class ToastView extends React.PureComponent {
       );
     }
   }
+
+  cancelToast = () => {
+    this.toastRef.current.closeImmediately();
+  };
 
   toast = () => {
     const { positionValue } = this.props;
