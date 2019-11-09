@@ -52,9 +52,14 @@ class ProductDetailView extends React.Component {
     const {
       productInfo: { colorFitsSizesMap },
     } = this.props;
+    const { currentGiftCardValue } = this.state;
     this.setState({
       currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e),
       renderReceiveProps: true,
+      currentGiftCardValue:
+        (getMapSliceForColor(colorFitsSizesMap, e) &&
+          getMapSliceForColor(colorFitsSizesMap, e).offerPrice) ||
+        currentGiftCardValue,
     });
     this.formValues = {
       Fit: selectedFit,
