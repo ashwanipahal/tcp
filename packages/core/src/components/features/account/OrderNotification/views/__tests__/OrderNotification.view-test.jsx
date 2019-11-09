@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrderNotificationVanilla } from '../OrderNotification.view';
+import OrderNotification from '../OrderNotification.view';
 
 describe('OrderNotification component', () => {
   it('should renders correctly ', () => {
@@ -22,13 +22,13 @@ describe('OrderNotification component', () => {
       limitOfDaysToDisplayNotification: 30,
       isTransactionNotificationsInMyAccountEnabled: true,
     };
-    const component = shallow(<OrderNotificationVanilla {...props} />);
+    const component = shallow(<OrderNotification {...props} />);
     expect(component).toMatchSnapshot();
   });
 
   it('should renders empty state correctly ', () => {
     const component = shallow(
-      <OrderNotificationVanilla
+      <OrderNotification
         limitOfDaysToDisplayNotification={30}
         isTransactionNotificationsInMyAccountEnabled={false}
         labels={{}}

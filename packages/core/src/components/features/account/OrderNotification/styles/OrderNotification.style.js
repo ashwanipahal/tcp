@@ -9,6 +9,10 @@ const styles = css`
   .separator-line {
     border-bottom: solid 1px ${props => props.theme.colors.WHITE};
   }
+
+  .parent-container div:last-child {
+    border: none;
+  }
 `;
 
 export default styles;

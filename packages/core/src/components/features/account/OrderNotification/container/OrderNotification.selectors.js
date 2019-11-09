@@ -27,13 +27,16 @@ export const getLastSTHOrder = createSelector(
 
 export const getLastBoss = createSelector(
   getOrdersListState,
-  state => (state.orders.length > 0 ? state.orders.find(order => order.isBOSSOrder) : null)
+  state =>
+    state && state.orders && state.orders.length > 0
+      ? state.orders.find(order => order.isBOSSOrder)
+      : null
 );
 
 export const getLastBopis = createSelector(
   getOrdersListState,
   state =>
-    state.orders.length > 0
+    state && state.orders && state.orders.length > 0
       ? state.orders.find(order => !order.isEcomOrder && !order.isBOSSOrder)
       : null
 );

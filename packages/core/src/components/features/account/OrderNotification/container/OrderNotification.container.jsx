@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import styles from '../styles/OrderNotification.style';
 import { getOrdersListState } from '../../Orders/container/Orders.selectors';
 import { getSiteId, isCanada } from '../../../../../utils';
 import { getOrdersList } from '../../Orders/container/Orders.actions';
@@ -22,13 +25,15 @@ export class OrderNotification extends PureComponent {
   }
 
   render() {
-    const { labels } = this.props;
+    const { labels, className } = this.props;
     return (
-      <>
-        <OrderNotificationSTH labels={labels} />
-        <OrderNotificationBOPIS labels={labels} />
-        {!isCanada() && <OrderNotificationBOSS labels={labels} />}
-      </>
+      <Row fullBleed className={className}>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }} className="parent-container">
+          <OrderNotificationSTH labels={labels} />
+          <OrderNotificationBOPIS labels={labels} />
+          {!isCanada() && <OrderNotificationBOSS labels={labels} />}
+        </Col>
+      </Row>
     );
   }
 }
@@ -45,12 +50,14 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 OrderNotification.propTypes = {
+  className: PropTypes.string,
   fetchOrders: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
   ordersListItems: PropTypes.shape([]),
 };
 
 OrderNotification.defaultProps = {
+  className: '',
   fetchOrders: () => {},
   ordersListItems: [],
 };
@@ -58,4 +65,5 @@ OrderNotification.defaultProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrderNotification);
+)(withStyles(OrderNotification, styles));
+export { OrderNotification as OrderNotificationVanilla };
