@@ -583,6 +583,18 @@ export const isIosWeb = () => {
   }
   return false;
 };
+
+/**
+ * To Identify whether the device is Android for web.
+ */
+
+export const isAndroidWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/Android/.test(userAgent)) {
+    return true;
+  }
+  return false;
+};
 /**
  * This function will remove all the body scroll locks.
  */
@@ -646,6 +658,7 @@ export default {
   scrollToParticularElement,
   getDirections,
   isIosWeb,
+  isAndroidWeb,
   removeBodyScrollLocks,
   enableBodyScroll,
   disableBodyScroll,

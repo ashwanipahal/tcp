@@ -4,7 +4,6 @@ import { View, Dimensions } from 'react-native';
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
 import { getLocator, getProductUrlForDAM } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
-import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import moduleGConfig from '../moduleG.config';
 
 import {
@@ -345,7 +344,6 @@ class ModuleG extends React.PureComponent {
             visible
           />
         ) : null}
-        <QuickViewModal />
       </Container>
     );
   };

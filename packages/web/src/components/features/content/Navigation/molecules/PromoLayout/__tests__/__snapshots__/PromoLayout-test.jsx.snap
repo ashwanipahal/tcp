@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category Layout Component renders correctly 1`] = `
+<Fragment>
+  <Styled(Col)
+    className="l2-nav-category shop-by-size-category"
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreNthRule={true}
+  >
+    <div
+      className="l2-nav-category-header"
+    >
+      <Styled(Heading)
+        className="l2-nav-category-heading"
+        color="text.primary"
+        component={null}
+        dataLocator="l2_col_heading_3"
+        textAlign="left"
+        variant="h6"
+      >
+        SHOP BY SIZE
+      </Styled(Heading)>
+      <span
+        className="l2-nav-category-divider"
+      />
+    </div>
+    <div
+      className="shop-by-size-links"
+    >
+      <ul>
+        <li>
+          <Styled(Anchor)
+            asPath="/test"
+            dataLocator="l2_size_btn_0"
+            onClick={[Function]}
+            target=""
+            title="4"
+            to="/test"
+          >
+            <Styled(BodyCopy)
+              className="l2-circle-link"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              4
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </li>
+        <li>
+          <Styled(Anchor)
+            asPath="/test"
+            dataLocator="l2_size_btn_1"
+            onClick={[Function]}
+            target=""
+            title="5"
+            to="/test"
+          >
+            <Styled(BodyCopy)
+              className="l2-circle-link"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              5
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </li>
+        <li>
+          <Styled(Anchor)
+            asPath="/test"
+            dataLocator="l2_size_btn_2"
+            onClick={[Function]}
+            target=""
+            title="6"
+            to="/test"
+          >
+            <Styled(BodyCopy)
+              className="l2-circle-link"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              6
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </li>
+        <li>
+          <Styled(Anchor)
+            asPath="/test"
+            dataLocator="l2_size_btn_3"
+            onClick={[Function]}
+            target=""
+            title="7"
+            to="/test"
+          >
+            <Styled(BodyCopy)
+              className="l2-circle-link"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              7
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
+        </li>
+      </ul>
+      <ul />
+    </div>
+  </Styled(Col)>
+  <Styled(Col)
+    className="l2-image-banner"
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreNthRule={true}
+  >
+    <Styled(Anchor)
+      asPath="/Shop-Big-Lil-Sis"
+      className="l2-image-banner-link"
+      dataLocator="overlay_img_link_0"
+      onClick={[Function]}
+      target="_blank"
+      title="Shop Big & Lil Sis"
+      to="/Shop-Big-Lil-Sis"
+    >
+      <WithTheme(DamImage)
+        className="l2-image-banner-image"
+        data-locator="overlay_img_0"
+        imgConfigs={
+          Array [
+            "",
+            "",
+            "t_nav_one_col_img_d",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Shop Bsig & Lil Sis",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Shop Big & Lil Sis",
+            "url": "https://test5.childrensplace.com/image/upload/v1565180960/navigation_teaser_seesk1.jpg",
+          }
+        }
+      />
+      <Styled(BodyCopy)
+        className="l2-nav-link "
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs13",
+            "fs13",
+            "fs14",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="lh107"
+        link={null}
+        textAlign="center"
+      >
+        <span
+          className="nav-bar-l1-item-label"
+        >
+          Shop Bifg & Lil Sis
+        </span>
+        <span
+          className="icon-arrow"
+        />
+      </Styled(BodyCopy)>
+    </Styled(Anchor)>
+  </Styled(Col)>
+  <Styled(Col)
+    className="l2-promo-box-wrapper"
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    ignoreNthRule={true}
+  >
+    <Styled(Anchor)
+      asPath="http://rwd-int1.childrensplace.com/us/home?true"
+      className="l2-image-banner-link"
+      dataLocator="overlay_img_link_0"
+      onClick={[Function]}
+      target=""
+      title=""
+      to="http://rwd-int1.childrensplace.com/us/home?true"
+    >
+      <div
+        className="l2-promo-box  border-pink"
+      >
+        <Styled(Styled(PromoBanner))
+          className="promoBanner text-pink "
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://rwd-int1.childrensplace.com/us/home?true",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "",
+                    "text": "ALL DAY",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <Styled(BodyCopy)
+        className="l2-nav-link "
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs13",
+            "fs13",
+            "fs14",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="right"
+      >
+        <span
+          className="nav-bar-l1-item-label"
+        />
+        <span
+          className="icon-arrow"
+        />
+      </Styled(BodyCopy)>
+    </Styled(Anchor)>
+  </Styled(Col)>
+</Fragment>
+`;
