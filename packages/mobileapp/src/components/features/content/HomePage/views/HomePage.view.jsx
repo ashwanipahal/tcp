@@ -94,7 +94,7 @@ class HomePageView extends React.PureComponent<Props> {
     this.navigate(event.url);
   };
 
-  renderGlobalFunction = navigation => {
+  renderGlobalModal = navigation => {
     return <QuickViewModal navigation={navigation} />;
   };
 
@@ -141,7 +141,7 @@ class HomePageView extends React.PureComponent<Props> {
           page="homepageTest"
         />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
-        {this.renderGlobalFunction()}
+        {this.renderGlobalModal()}
       </LazyloadScrollView>
     );
   }
