@@ -1065,7 +1065,7 @@ export const orderStatusMapperForNotification = {
  * @return orderStatus
  */
 export const getOrderStatusForNotification = status => {
-  return orderStatusMapperForNotification[status] || status;
+  return orderStatusMapperForNotification[status.toLowerCase()] || status;
 };
 
 /**

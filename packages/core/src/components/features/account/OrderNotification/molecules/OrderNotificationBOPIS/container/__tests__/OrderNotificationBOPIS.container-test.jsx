@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrderNotificationBOPIS } from '../OrderNotificationBOPIS.container';
+import { OrderNotificationVanilla } from '../OrderNotificationBOPIS.container';
 import OrderNotification from '../../../../views';
 
 describe('OrderNotificationBOPIS Container', () => {
@@ -20,7 +20,7 @@ describe('OrderNotificationBOPIS Container', () => {
 
   it('should render OrderNotificationContainerBOPIS', () => {
     const tree = shallow(
-      <OrderNotificationBOPIS
+      <OrderNotificationVanilla
         order={order}
         limitOfDaysToDisplayNotification={30}
         isTransactionNotificationsInMyAccountEnabled
@@ -32,7 +32,7 @@ describe('OrderNotificationBOPIS Container', () => {
 
   it('should render OrderNotificationContainerBOPIS in empty state', () => {
     const tree = shallow(
-      <OrderNotificationBOPIS
+      <OrderNotificationVanilla
         limitOfDaysToDisplayNotification={30}
         isTransactionNotificationsInMyAccountEnabled={false}
         labels={{}}

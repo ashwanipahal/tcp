@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import OrderNotification from '../../../views';
@@ -9,28 +9,23 @@ import {
 } from '../../../container/OrderNotification.selectors';
 
 /**
- * This component will render OrderNotification component
- * @param { object, Array }
+ * This component will render OrderNotificationBOSS component
  */
-export class OrderNotificationBOSS extends PureComponent {
-  render() {
-    const {
-      labels,
-      order,
-      limitOfDaysToDisplayNotification,
-      isTransactionNotificationsInMyAccountEnabled,
-    } = this.props;
-
-    return (
-      <OrderNotification
-        order={order}
-        limitOfDaysToDisplayNotification={limitOfDaysToDisplayNotification}
-        isTransactionNotificationsInMyAccountEnabled={isTransactionNotificationsInMyAccountEnabled}
-        labels={labels}
-      />
-    );
-  }
-}
+const OrderNotificationBOSS = ({
+  labels,
+  order,
+  limitOfDaysToDisplayNotification,
+  isTransactionNotificationsInMyAccountEnabled,
+}) => {
+  return (
+    <OrderNotification
+      order={order}
+      limitOfDaysToDisplayNotification={limitOfDaysToDisplayNotification}
+      isTransactionNotificationsInMyAccountEnabled={isTransactionNotificationsInMyAccountEnabled}
+      labels={labels}
+    />
+  );
+};
 
 export const mapStateToProps = state => ({
   order: getLastBoss(state),
@@ -52,3 +47,4 @@ OrderNotificationBOSS.defaultProps = {
 };
 
 export default connect(mapStateToProps)(OrderNotificationBOSS);
+export { OrderNotificationBOSS as OrderNotificationVanilla };

@@ -83,7 +83,7 @@ export const getOrderHistory = (siteId, currentSiteId) => {
           orderDate: getTranslatedDate(order.orderDate),
           orderNumber: order.orderNumber,
           orderStatus: getOrderStatus(order.orderStatus),
-          status: order.orderStatus.toLowerCase(),
+          status: order.orderStatus,
           currencySymbol: order.orderTotal.replace(/[0-9]|\.|,/gi, ''),
           orderTotal: order.orderTotal.replace(/[0-9]|\.|,/gi, '') + extractFloat(order.orderTotal),
           orderTracking: order.orderTrackingNumber,

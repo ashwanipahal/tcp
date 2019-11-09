@@ -4,13 +4,13 @@ const styles = css`
   background-color: black;
 
   .view-order-link {
-    color: white;
+    color: ${props => props.theme.colorPalette.white};
   }
   .separator-line {
-    border-bottom: solid 1px ${props => props.theme.colors.WHITE};
+    border-bottom: solid 1px ${props => props.theme.colorPalette.white};
   }
 
-  .parent-container div:last-child {
+  div:last-child {
     border: none;
   }
 `;

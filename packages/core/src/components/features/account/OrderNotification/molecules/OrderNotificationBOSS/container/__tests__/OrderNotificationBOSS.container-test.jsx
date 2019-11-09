@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrderNotificationBOSS } from '../OrderNotificationBOSS.container';
+import { OrderNotificationVanilla } from '../OrderNotificationBOSS.container';
 import OrderNotification from '../../../../views';
 
 describe('OrderNotificationBOSS Container', () => {
@@ -20,7 +20,7 @@ describe('OrderNotificationBOSS Container', () => {
 
   it('should render OrderNotificationContainerBOSS', () => {
     const tree = shallow(
-      <OrderNotificationBOSS
+      <OrderNotificationVanilla
         order={order}
         limitOfDaysToDisplayNotification={30}
         isTransactionNotificationsInMyAccountEnabled
@@ -32,7 +32,7 @@ describe('OrderNotificationBOSS Container', () => {
 
   it('should render OrderNotificationContainerBOSS in empty state', () => {
     const tree = shallow(
-      <OrderNotificationBOSS
+      <OrderNotificationVanilla
         limitOfDaysToDisplayNotification={30}
         isTransactionNotificationsInMyAccountEnabled={false}
         labels={{}}

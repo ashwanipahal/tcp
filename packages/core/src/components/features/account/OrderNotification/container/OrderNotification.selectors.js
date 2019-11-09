@@ -1,19 +1,6 @@
 import { createSelector } from 'reselect';
-import {
-  ORDERS_REDUCER_KEY,
-  APICONFIG_REDUCER_KEY,
-} from '../../../../../constants/reducer.constants';
-
-const getState = state => state[ORDERS_REDUCER_KEY];
-
-/**
- * Selector function to return redux error
- * @param { object } state reduxStore state
- */
-export const getOrdersListState = createSelector(
-  getState,
-  state => state && state.get('ordersList')
-);
+import { APICONFIG_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import { getOrdersListState } from '../../Orders/container/Orders.selectors';
 
 export const getLabels = state => state.Labels.global;
 
