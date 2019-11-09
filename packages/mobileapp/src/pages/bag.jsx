@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
+import { ProductDetailPage } from './home';
 import Header from '../components/common/molecules/Header/BagPageHeader';
 
 const checkNavigation = nav => {
@@ -13,6 +14,7 @@ const BagStack = createStackNavigator(
     BagPage: {
       screen: BagPage,
     },
+    BagProductDetail: ProductDetailPage,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

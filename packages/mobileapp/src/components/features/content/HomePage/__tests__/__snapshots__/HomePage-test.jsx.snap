@@ -59,6 +59,7 @@ exports[`HomePageView should render correctly 1`] = `
         "getParam": [Function],
       }
     }
+    page="homepageTest"
     showButton={true}
     variation="moduleO,moduleP"
   />

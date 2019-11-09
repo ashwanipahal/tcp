@@ -190,18 +190,57 @@ export const getExpirationRequiredFlag = ({ cardType }) => {
   return !cardType || cardType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
 };
 
-export const   getPayPalFlag = (navigation) =>{
+export const getPayPalFlag = navigation => {
   if (navigation && navigation.state) {
     const {
       state: { params },
     } = navigation;
     if (params) {
-      const {isPayPalFlow}=params
+      const { isPayPalFlow } = params;
       return isPayPalFlow;
     }
   }
   return false;
-}
+};
+export const handleReviewFormSubmit = (scope, data) => {
+  const {
+    submitReview,
+    pickUpContactPerson,
+    pickUpContactAlternate,
+    isExpressCheckout,
+  } = scope.props;
+  const { firstName, lastName, hasAlternatePickup, emailAddress } = data.pickUpAlternateExpress;
+  const { cvvCode } = data;
+  const pickupContactData =
+    typeof pickUpContactPerson.firstName !== 'undefined'
+      ? pickUpContactPerson
+      : pickUpContactAlternate.pickUpContact;
+
+  if (isExpressCheckout) {
+    const formDataSubmission = {
+      formData: {
+        hasAlternatePickup,
+        pickUpAlternate: {
+          emailAddress,
+          firstName,
+          lastName,
+        },
+        pickUpContact: {
+          firstName: pickupContactData.firstName,
+          lastName: pickupContactData.lastName,
+          phoneNumber: pickupContactData.phoneNumber,
+          emailAddress: pickupContactData.emailAddress,
+        },
+        billing: {
+          cvv: cvvCode,
+        },
+      },
+    };
+    submitReview(formDataSubmission);
+  } else {
+    submitReview({});
+  }
+};
 
 export default {
   getOrderPointsRecalcFlag,

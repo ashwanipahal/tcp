@@ -1,6 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
@@ -12,6 +14,7 @@ import {
   ImageWrapper,
   StyledTouchableOpacity,
   StyledCrossImage,
+  RecommendationWrapper,
   LoyaltyBannerWrapper,
 } from '../styles/AddedToBag.style.native';
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
@@ -115,6 +118,16 @@ const AddedToBag = ({
                 <LoyaltyBannerWrapper>
                   <LoyaltyBanner pageCategory="isAddedToBagPage" />
                 </LoyaltyBannerWrapper>
+                <RecommendationWrapper>
+                  <Recommendations
+                    navigation={navigation}
+                    priceOnly
+                    variation="moduleO"
+                    page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+                    isAddedToBagOpen
+                  />
+                </RecommendationWrapper>
+
                 <StyledAnchorWrapper>
                   <Anchor
                     fontSizeVariation="medium"

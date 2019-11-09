@@ -106,7 +106,12 @@ class ModuleM extends React.PureComponent {
               navigation={navigation}
               headerText={[headerText[0]]}
               testID={getLocator('moduleM_header_text_0')}
-              useStyle
+              fontFamily="primary"
+              fontSize="fs32"
+              textAlign="center"
+              color="text.primary"
+              fontWeight="black"
+              type="heading"
             />
           )}
         </HeaderContainer>
