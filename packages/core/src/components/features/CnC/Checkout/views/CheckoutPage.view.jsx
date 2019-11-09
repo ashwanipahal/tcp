@@ -317,7 +317,7 @@ class CheckoutPage extends React.PureComponent {
     e.preventDefault();
   };
 
-  reviewFormSubmit = data => checkoutUtil.handleReviewFormSubmit.bind(this)(data);
+  reviewFormSubmit = data => checkoutUtil.handleReviewFormSubmit(this, data);
 
   pageServerErrorRef(ref) {
     this.pageServerError = ref;
