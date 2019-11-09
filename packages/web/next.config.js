@@ -76,8 +76,8 @@ if (isAnalyzeBundles) {
     openAnalyzer: false,
   };
   buildConfig = withBundleAnalyzer({
-    analyzeServer: isProductionBuild,
-    analyzeBrowser: isProductionBuild,
+    analyzeServer: true,
+    analyzeBrowser: true,
     bundleAnalyzerConfig: {
       server: {
         ...analyzerCommonOptions,
