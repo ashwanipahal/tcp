@@ -70,19 +70,22 @@ if (isProductionBuild && isSourceMapsEnabled) {
 }
 
 if (isAnalyzeBundles) {
+  const BUNDLE_ANALYZER_PATH = './bundle-sizes/bundles';
+  const analyzerCommonOptions = {
+    analyzerMode: 'static',
+    openAnalyzer: false,
+  };
   buildConfig = withBundleAnalyzer({
-    analyzeServer: process.env.NODE_ENV === 'production',
-    analyzeBrowser: process.env.NODE_ENV === 'production',
+    analyzeServer: isProductionBuild,
+    analyzeBrowser: isProductionBuild,
     bundleAnalyzerConfig: {
       server: {
-        analyzerMode: 'static',
-        reportFilename: './bundle-sizes/bundles/server.html',
-        openAnalyzer: false,
+        ...analyzerCommonOptions,
+        reportFilename: `${BUNDLE_ANALYZER_PATH}/server.html`,
       },
       browser: {
-        analyzerMode: 'static',
-        reportFilename: './bundle-sizes/bundles/client.html',
-        openAnalyzer: false,
+        ...analyzerCommonOptions,
+        reportFilename: `${BUNDLE_ANALYZER_PATH}/client.html`,
       },
     },
     ...buildConfig,
