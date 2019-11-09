@@ -25,6 +25,24 @@ exports[`OutfitDetail component should renders correctly 1`] = `
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />
+  <Styled(View)>
+    <Connect(Recommendations)
+      isHeaderAccordion={true}
+      navigation=""
+      page="outfit"
+      partNumber=""
+      variation="moduleO"
+    />
+    <Connect(Recommendations)
+      isHeaderAccordion={true}
+      isRecentlyViewed={true}
+      navigation=""
+      page="outfit"
+      partNumber=""
+      portalValue="recently-viewed-products"
+      variation="moduleO"
+    />
+  </Styled(View)>
   <Connect(Styled(ErrorBoundary))
     navigation=""
   />
