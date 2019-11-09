@@ -90,7 +90,6 @@ exports[`CardEditForm component CardEditReduxForm 1`] = `
     }
   }
   onSubmit={[Function]}
-  onSubmitFail={[Function]}
   onSubmitSuccess={[Function]}
   persistentSubmitErrors={false}
   pure={true}
