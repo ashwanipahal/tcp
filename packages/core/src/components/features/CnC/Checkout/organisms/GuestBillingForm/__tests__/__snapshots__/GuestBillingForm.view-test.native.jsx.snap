@@ -31,6 +31,7 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
           pointerColor="#fff"
           popover={
             <RichText
+              actionHandler={[Function]}
               domStorageEnabled={false}
               isApplyDeviceHeight={false}
               isNativeView={true}
@@ -125,6 +126,7 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
           pointerColor="#fff"
           popover={
             <RichText
+              actionHandler={[Function]}
               domStorageEnabled={false}
               isApplyDeviceHeight={false}
               isNativeView={true}

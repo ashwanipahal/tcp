@@ -121,7 +121,7 @@ const AddedToBag = ({
               />
               <BossBanner labels={labels} />
               <LoyaltyBannerWrapper>
-                <LoyaltyBanner pageCategory="isAddedToBagPage" />
+                <LoyaltyBanner pageCategory="isAddedToBagPage" navigation={navigation} />
               </LoyaltyBannerWrapper>
               <RecommendationWrapper>
                 <Recommendations

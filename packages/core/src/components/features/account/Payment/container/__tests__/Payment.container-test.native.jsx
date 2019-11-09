@@ -5,7 +5,9 @@ import PaymentView from '../../views/PaymentView';
 
 describe('Payment & Gift Cards', () => {
   it('should render payment view section', () => {
-    const tree = shallow(<PaymentContainer getCardListAction={jest.fn()} />);
+    const tree = shallow(
+      <PaymentContainer getCardListAction={jest.fn()} getPaymentBannerRichText={() => {}} />
+    );
     expect(tree.is(PaymentView)).toBeTruthy();
   });
   describe('#mapDispatchToProps', () => {
@@ -19,6 +21,12 @@ describe('Payment & Gift Cards', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.setDefaultPaymentMethod();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+    it('should return an action getPaymentBannerRichText which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.getPaymentBannerRichText();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });

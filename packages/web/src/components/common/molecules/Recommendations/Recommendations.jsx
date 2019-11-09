@@ -39,12 +39,13 @@ const { RECOMMENDATION } = constant;
 
 class Recommendations extends Component {
   componentDidMount() {
-    const { loadRecommendations } = this.props;
-    const { page, portalValue } = this.props;
-    const action = { page };
-    if (portalValue) {
-      action.mboxName = portalValue;
-    }
+    const { loadRecommendations, page, portalValue, partNumber, categoryName } = this.props;
+    const action = {
+      page: page || 'homepageTest',
+      ...(partNumber && { itemPartNumber: partNumber }),
+      ...(portalValue && { mboxName: portalValue }),
+      ...(categoryName && { categoryName }),
+    };
     if (window.adobe && window.adobe.target) {
       return loadRecommendations(action);
     }
@@ -107,6 +108,7 @@ class Recommendations extends Component {
       ctaTitle,
       ctaUrl,
       carouselConfigProps,
+      headerAlignment,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -121,7 +123,7 @@ class Recommendations extends Component {
           <Heading
             variant="h4"
             className={`recommendations-header ${priceOnlyClass}`}
-            textAlign="center"
+            textAlign={headerAlignment || 'center'}
             dataLocator={params.dataLocator}
           >
             {headerLabel}
@@ -232,6 +234,9 @@ Recommendations.propTypes = {
   page: PropTypes.string,
   portalValue: PropTypes.string,
   carouselConfigProps: PropTypes.shape({}),
+  partNumber: PropTypes.string,
+  categoryName: PropTypes.string,
+  headerAlignment: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
@@ -248,6 +253,9 @@ Recommendations.defaultProps = {
   page: '',
   portalValue: '',
   carouselConfigProps: null,
+  partNumber: '',
+  categoryName: '',
+  headerAlignment: '',
 };
 
 export { Recommendations as RecommendationsVanilla };

@@ -43,7 +43,7 @@ const PointsHistoryList = ({
       )}
       {pointHistory && pointHistory.length && (
         <Row fullBleed className="elem-mb-SM elem-mt-SM">
-          <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+          <Col colSize={{ large: 4, medium: 2, small: 2 }}>
             <BodyCopy
               data-locator="pointshistoryorderdatelbl"
               fontFamily="secondary"
@@ -83,7 +83,7 @@ const PointsHistoryList = ({
         pointHistory.length &&
         pointHistory.map(pointHistoryRow => (
           <Row fullBleed className="elem-mb-SM">
-            <Col colSize={{ large: 3, medium: 2, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 2, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistoryorderdate"
                 fontFamily="secondary"
