@@ -24,8 +24,8 @@ export const BottomContainer = styled.View`
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL}
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL}
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 export const StyledImage = styled(Image)`
@@ -38,7 +38,7 @@ export const HeaderContainer = styled.View`
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM}
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 export default {
@@ -49,7 +49,3 @@ export default {
   StyledImage,
   HeaderContainer,
 };
-
-
-
-
