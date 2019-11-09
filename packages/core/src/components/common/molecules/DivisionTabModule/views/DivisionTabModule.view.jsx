@@ -4,7 +4,7 @@ import withStyles from '../../../hoc/withStyles';
 import ButtonTabs from '../../ButtonTabs';
 import { BodyCopy } from '../../../atoms';
 import styles from '../styles/DivisionTabModule.style';
-import { routerPush } from '../../../../../utils';
+import { routerPush, getSiteId } from '../../../../../utils';
 
 const onTabChange = url => {
   routerPush(url && url.replace('/c/', '/c?cid='), url, { shallow: true });
@@ -25,6 +25,8 @@ export class DivisionTabModule extends PureComponent {
 
   render() {
     const { divisionTab, className, asPath } = this.props;
+    const siteId = getSiteId();
+    const pathWithoutSiteId = asPath.replace(`/${siteId}`, '');
     return (
       <div className={className}>
         <BodyCopy
@@ -37,7 +39,7 @@ export class DivisionTabModule extends PureComponent {
         </BodyCopy>
         <ButtonTabs
           className="button-tabs"
-          selectedTabId={asPath}
+          selectedTabId={pathWithoutSiteId}
           onTabChange={onTabChange}
           tabs={divisionTab.buttonList}
           dataLocator=""

@@ -116,7 +116,10 @@ export class JeansModule extends PureComponent {
                         {textList.map(textItem => {
                           return (
                             <div className="text-line">
-                              <Image className="done-button" src="/static/images/done.png" />
+                              <Image
+                                className="done-button"
+                                src="/static/images/confirmation_check.svg"
+                              />
                               <BodyCopy
                                 className="text-item"
                                 fontSize="fs14"
