@@ -7,6 +7,7 @@ import {
   getOutfitImage,
   getOutfitProducts,
   getAddedToBagErrorCatId,
+  getPDPLabels,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import {
@@ -35,13 +36,20 @@ import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      outfitIdLocal: '',
+    };
+  }
+
   componentDidMount() {
     const {
       getOutfit,
       router: { query },
       navigation,
     } = this.props;
-
+    let selectedOutfitId = '';
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
@@ -49,9 +57,15 @@ class OutfitDetailsContainer extends React.PureComponent {
       // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
       // const outfitId = '138548';
       getOutfit({ outfitId, vendorColorProductIdsList });
+      selectedOutfitId = outfitId;
     } else {
       const { vendorColorProductIdsList, outfitId } = query;
       getOutfit({ outfitId, vendorColorProductIdsList });
+      selectedOutfitId = outfitId;
+    }
+
+    if (selectedOutfitId) {
+      this.setState({ outfitIdLocal: selectedOutfitId });
     }
   }
 
@@ -83,7 +97,9 @@ class OutfitDetailsContainer extends React.PureComponent {
       isPickupModalOpen,
       isLoggedIn,
       navigation,
+      pdpLabels,
     } = this.props;
+    const { outfitIdLocal } = this.state;
     if (outfitProducts) {
       return (
         <OutfitDetails
@@ -105,6 +121,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           addToFavorites={addToFavorites}
           isLoggedIn={isLoggedIn}
           navigation={navigation}
+          outfitId={outfitIdLocal}
+          pdpLabels={pdpLabels}
         />
       );
     }
@@ -132,6 +150,7 @@ const mapStateToProps = state => {
     currentState: state,
     isPickupModalOpen: getIsPickupModalOpen(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    pdpLabels: getPDPLabels(state),
   };
 };
 
@@ -173,6 +192,7 @@ OutfitDetailsContainer.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  pdpLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -192,6 +212,7 @@ OutfitDetailsContainer.defaultProps = {
   addToBagErrorId: '',
   isPickupModalOpen: false,
   isLoggedIn: false,
+  pdpLabels: {},
 };
 
 export default connect(

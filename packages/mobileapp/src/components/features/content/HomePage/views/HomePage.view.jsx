@@ -3,9 +3,15 @@ import { Linking } from 'react-native';
 import queryString from 'query-string';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
-import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
+import {
+  LAZYLOAD_HOST_NAME,
+  navigateToNestedRoute,
+  resetNavigationStack,
+  updateAPIConfigForApp,
+} from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
+import { ENV_PREVIEW } from '@tcp/core/src/constants/env.config';
 import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   ModuleD,
@@ -26,7 +32,12 @@ import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
-import { HeaderPromoContainer } from '../HomePage.style';
+import {
+  HeaderPromoContainer,
+  TextComponent,
+  TextInputComponent,
+  ButtonComponent,
+} from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
@@ -47,8 +58,10 @@ const modulesMap = {
 class HomePageView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
+    this.submitDate = this.submitDate.bind(this);
     this.state = {
       handeOpenURLRegister: false,
+      value: '',
     };
   }
 
@@ -118,6 +131,23 @@ class HomePageView extends React.PureComponent<Props> {
     }
   };
 
+  /**
+   * @function submitDate
+   * Submit date for scheduled preview and it
+   * will be submitted to graphql along with query
+   *
+   * @memberof HomePageView
+   */
+  submitDate = () => {
+    const { loadNavigationData, navigation, updatePreviewDate } = this.props;
+    const { value } = this.state;
+    updatePreviewDate(value);
+    updateAPIConfigForApp();
+    this.loadBootstrapData();
+    loadNavigationData();
+    resetNavigationStack(navigation);
+  };
+
   render() {
     const {
       slots,
@@ -126,6 +156,7 @@ class HomePageView extends React.PureComponent<Props> {
       headerPromo,
       loyaltyPromoBanner,
     } = this.props;
+    const { value } = this.state;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HeaderPromoContainer>
@@ -141,6 +172,26 @@ class HomePageView extends React.PureComponent<Props> {
           page="homepageTest"
         />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
+        <QuickViewModal navigation={navigation} />
+        {apiConfig.previewEnvId === ENV_PREVIEW ? (
+          <>
+            <TextComponent>Select scheduled preview date</TextComponent>
+            <TextInputComponent
+              placeholder="Type date here"
+              onChangeText={text => this.setState({ value: text })}
+              value={value}
+              keyboardType="default"
+            />
+            <ButtonComponent
+              fill="BLUE"
+              type="submit"
+              color="white"
+              text="Submit"
+              width="40%"
+              onPress={this.submitDate}
+            />
+          </>
+        ) : null}
         {this.renderGlobalModal()}
       </LazyloadScrollView>
     );
