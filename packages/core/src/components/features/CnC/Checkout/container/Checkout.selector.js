@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
 import { List } from 'immutable';
 import {
   CHECKOUT_REDUCER_KEY,
+  CARTPAGE_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
@@ -43,11 +44,15 @@ export const getCheckoutValuesState = createSelector(
 );
 
 const getIsOrderHasShipping = state => {
-  return !!state.CartPageReducer.getIn(['orderDetails', 'isShippingOrder']);
+  return state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isShippingOrder']);
 };
 
 const getIsOrderHasPickup = state => {
-  return !!state.CartPageReducer.getIn(['orderDetails', 'isPickupOrder']);
+  return state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
+};
+
+const getIfCheckoutRoutingDone = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'routingDone']);
 };
 
 const getCardType = state => {
@@ -1067,4 +1072,5 @@ export default {
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
+  getIfCheckoutRoutingDone,
 };

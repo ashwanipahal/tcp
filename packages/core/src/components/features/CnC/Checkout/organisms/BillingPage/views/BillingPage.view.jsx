@@ -15,6 +15,7 @@ class BillingPage extends React.PureComponent {
     submitBilling: PropTypes.func.isRequired,
     billingDidMount: PropTypes.func.isRequired,
     isRegisteredUserCallDone: PropTypes.bool.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
     isGuest: PropTypes.bool.isRequired,
     shippingAddress: PropTypes.shape({}),
     cvvCodeRichText: PropTypes.string,
@@ -71,8 +72,12 @@ class BillingPage extends React.PureComponent {
       isVenmoEnabled, // Venmo Kill Switch, if Venmo enabled then true, else false.
       ServerErrors,
       pageCategory,
+      checkoutRoutingDone,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
+    if (!checkoutRoutingDone) {
+      return <div />;
+    }
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />

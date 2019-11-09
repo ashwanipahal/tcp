@@ -189,6 +189,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       dispatchReviewReduxForm,
       isBagLoaded,
       isRegisteredUserCallDone,
+      checkoutRoutingDone,
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -233,6 +234,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
           isRegisteredUserCallDone,
         }}
         orderHasPickUp={orderHasPickUp}
+        checkoutRoutingDone={checkoutRoutingDone}
         submitShippingSection={submitShipping}
         loadShipmentMethods={loadShipmentMethods}
         cartOrderItems={cartOrderItems}
@@ -339,6 +341,7 @@ export const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     initialValues: selectors.getPickupInitialPickupSectionValues(state),
+    checkoutRoutingDone: selectors.getIfCheckoutRoutingDone(state),
     pickupInitialValues: selectors.getPickupInitialPickupSectionValues(state),
     isSmsUpdatesEnabled: selectors.isSmsUpdatesEnabled(),
     currentPhoneNumber: selectors.getCurrentPickupFormNumber(state),

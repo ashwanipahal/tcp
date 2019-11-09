@@ -168,10 +168,8 @@ class CheckoutPage extends React.PureComponent {
       toggleCountrySelector,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
-      isBagLoaded,
-      isRegisteredUserCallDone,
     } = this.props;
-
+    const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
@@ -182,6 +180,7 @@ class CheckoutPage extends React.PureComponent {
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
+            checkoutRoutingDone={checkoutRoutingDone}
             pickupDidMount={pickupDidMount}
             isRegisteredUserCallDone={isRegisteredUserCallDone}
             isBagLoaded={isBagLoaded}
@@ -213,6 +212,7 @@ class CheckoutPage extends React.PureComponent {
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
+            getIfCheckoutRoutingDone={checkoutRoutingDone}
             isBagLoaded={isBagLoaded}
             cartOrderItemsCount={cartOrderItemsCount}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
@@ -246,6 +246,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
           <BillingPage
             {...billingProps}
+            checkoutRoutingDone={checkoutRoutingDone}
             orderHasShipping={orderHasShipping}
             isGuest={isGuest}
             submitBilling={submitBilling}
@@ -260,6 +261,7 @@ class CheckoutPage extends React.PureComponent {
           <ReviewPage
             {...reviewProps}
             submitReview={submitReview}
+            checkoutRoutingDone={checkoutRoutingDone}
             navigation={navigation}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
@@ -326,6 +328,9 @@ class CheckoutPage extends React.PureComponent {
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    // if (!getIfCheckoutRoutingDone) {
+    //   return <div />;
+    // }
 
     return (
       <>
@@ -425,6 +430,8 @@ CheckoutPage.propTypes = {
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
+  getIfCheckoutRoutingDone: PropTypes.bool.isRequired,
+  checkoutRoutingDone: PropTypes.bool.isRequired,
   submitBilling: PropTypes.func.isRequired,
   initShippingPage: PropTypes.func.isRequired,
   formatPayload: PropTypes.func.isRequired,

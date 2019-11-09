@@ -37,6 +37,7 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
     formatPayload: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
@@ -378,9 +379,8 @@ export default class ShippingPage extends React.PureComponent {
       formatPayload,
       ServerErrors,
       checkoutServerError,
-      toggleCountrySelector,
-      pageCategory,
     } = this.props;
+    const { toggleCountrySelector, pageCategory, checkoutRoutingDone } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     let { submitData } = this;
@@ -388,6 +388,9 @@ export default class ShippingPage extends React.PureComponent {
       submitData = this.submitShippingAddressData;
     }
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
+    if (!checkoutRoutingDone) {
+      return <div />;
+    }
     return (
       <>
         {shipmentMethods && shipmentMethods.length > 0 && (

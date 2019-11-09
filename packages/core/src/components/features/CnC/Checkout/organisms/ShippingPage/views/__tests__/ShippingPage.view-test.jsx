@@ -18,6 +18,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
       handleSubmit: () => {},
@@ -89,6 +90,8 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
+
       shipmentMethods: [{}],
       addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
@@ -171,6 +174,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
       addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},

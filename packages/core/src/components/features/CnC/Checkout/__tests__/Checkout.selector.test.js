@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { fromJS } from 'immutable';
 import CHECKOUT_SELECTORS, {
   isGuest,
@@ -86,9 +87,9 @@ describe('Checkout Selectors', () => {
 
   it('#igetIsOrderHasShipping', () => {
     const State = {
-      CartPageReducer: fromJS({ orderItems: [] }),
+      CartPageReducer: fromJS({ orderDetails: { isShippingOrder: true } }),
     };
-    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(false);
+    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(true);
   });
 
   it('#getShippingPhoneAndEmail', () => {
@@ -245,6 +246,21 @@ describe('Checkout Selectors', () => {
       }),
     };
     expect(getUserContactInfo(State)).toEqual(UserState.getIn(['personalData', 'contactInfo']));
+  });
+
+  it('#getIfCheckoutRoutingDone', () => {
+    const Checkout = fromJS({
+      uiFlags: {
+        routingDone: true,
+      },
+    });
+
+    const State = {
+      Checkout,
+    };
+    expect(CHECKOUT_SELECTORS.getIfCheckoutRoutingDone(State)).toEqual(
+      Checkout.getIn(['uiFlags', 'routingDone'])
+    );
   });
 
   it('#getIsMobile', () => {

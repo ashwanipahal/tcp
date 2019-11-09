@@ -32,6 +32,7 @@ class ReviewPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     showAccordian: PropTypes.bool,
     isGuest: PropTypes.bool.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
     isExpressCheckout: PropTypes.bool,
     shipmentMethods: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -100,6 +101,7 @@ class ReviewPage extends React.PureComponent {
       ServerErrors,
       pageCategory,
       reviewFormSubmit,
+      checkoutRoutingDone,
     } = this.props;
     const {
       header,
@@ -114,6 +116,9 @@ class ReviewPage extends React.PureComponent {
     } = labels;
 
     const expressReviewShippingSection = 'expressReviewShippingSection';
+    if (!checkoutRoutingDone) {
+      return <div />;
+    }
     return (
       <form name={formName} className={className} onSubmit={handleSubmit(reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
