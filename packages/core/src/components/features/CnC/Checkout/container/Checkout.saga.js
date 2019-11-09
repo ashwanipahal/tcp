@@ -189,6 +189,7 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 }
 
 function* initShippingData(pageName, initialLoad) {
+  console.log({ pageName });
   if (pageName === CONSTANTS.CHECKOUT_STAGES.SHIPPING) {
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;

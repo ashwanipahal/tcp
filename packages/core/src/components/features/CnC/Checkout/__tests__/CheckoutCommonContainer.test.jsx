@@ -74,16 +74,6 @@ describe('Bag page Container', () => {
           zipCode: 123,
           a: 1,
         })
-      ).toEqual(false);
-    });
-    it('formatPayload', () => {
-      expect(
-        formatPayload({
-          addressLine1: 'test',
-          addressLine2: 'test',
-          zipCode: 123,
-          a: 1,
-        })
       ).toEqual({ a: 1, address1: 'test', address2: 'test', zip: 123 });
     });
   });
