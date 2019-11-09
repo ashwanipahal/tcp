@@ -41,6 +41,13 @@ const getDefaultHeaderForStore = (navigation, navTitle) => {
   };
 };
 
+export const ProductDetailPage = {
+  screen: ProductDetail,
+  navigationOptions: ({ navigation }) => {
+    return getNewHeader(navigation);
+  },
+};
+
 const HomeStack = createStackNavigator(
   {
     Home: {
@@ -60,12 +67,7 @@ const HomeStack = createStackNavigator(
         return getNewHeader(navigation);
       },
     },
-    ProductDetail: {
-      screen: ProductDetail,
-      navigationOptions: ({ navigation }) => {
-        return getNewHeader(navigation);
-      },
-    },
+    ProductDetail: ProductDetailPage,
     OutfitDetail: {
       screen: OutfitDetail,
       navigationOptions: ({ navigation }) => {

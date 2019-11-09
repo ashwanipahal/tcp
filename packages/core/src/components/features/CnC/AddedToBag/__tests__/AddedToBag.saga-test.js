@@ -15,11 +15,6 @@ import {
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
-jest.mock('../util/utility', () => {
-  return {
-    makeBrandToggling: () => false,
-  };
-});
 describe('Added to bag saga', () => {
   it('should dispatch addToCartEcomGen action for success resposnse', () => {
     const payload = {
