@@ -71,11 +71,11 @@ exports[`HomePageView should render correctly 1`] = `
           "category": Array [
             Object {
               "key": "cat_id",
-              "val": "47503>47544",
+              "val": "47503",
             },
             Object {
               "key": "cat_id",
-              "val": "47503>47544",
+              "val": "47501",
             },
           ],
           "singleCTAButton": Object {
@@ -192,8 +192,12 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "medium_text_regular",
+              "style": "large_text_bold",
               "text": "ALL MATCHABLES",
+            },
+            Object {
+              "style": "large_text_bold",
+              "text": "60% OFF",
             },
           ],
         },
@@ -215,7 +219,7 @@ exports[`HomePageView should render correctly 1`] = `
           },
           "textItems": Array [
             Object {
-              "style": "large_text_black",
+              "style": "extra_large_text_regular",
               "text": "60% OFF",
             },
           ],

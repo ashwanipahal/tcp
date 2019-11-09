@@ -127,6 +127,8 @@ const getProductAttributes = () => {
         matchingCategory: 'TCPProductFlagUSStore',
         matchingFamily: 'TCPMatchingFamilyUSStore',
         keepAlive: 'TCPOutOfStockFlagUSStore',
+        bundleChecklist: 'TCPKitUSStore',
+        bundleGrouping: 'TCPGroupingUSStore',
       }
     : {
         merchant: 'TCPMerchantTagCanadaStore',
@@ -143,6 +145,8 @@ const getProductAttributes = () => {
         matchingCategory: 'TCPProductFlagCAStore',
         matchingFamily: 'TCPMatchingFamilyCAStore',
         keepAlive: 'TCPOutOfStockFlagCanadaStore',
+        bundleChecklist: 'TCPKitCanadaStore',
+        bundleGrouping: 'TCPGroupingCanadaStore',
       };
 };
 const indexBasedOnShopByColor = (
