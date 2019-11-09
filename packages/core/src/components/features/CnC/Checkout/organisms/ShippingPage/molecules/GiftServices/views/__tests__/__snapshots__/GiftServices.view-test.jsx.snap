@@ -1,7 +1,725 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GiftServices component renders correctly 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<form
+  className=""
+  noValidate={true}
+>
+  <div
+    className=""
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <div
+          className="checkbox-header"
+        >
+          <Connect(Component)
+            name="Gift_Services"
+          >
+            <Field
+              className="giftServicesField"
+              component={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-ifAKCX",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+  ",
+                      "
+  display: block;
+  align-items: ",
+                      [Function],
+                      ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+                      "25px",
+                      ";
+    width: ",
+                      "25px",
+                      ";
+    margin: 0;
+    margin-right: ",
+                      [Function],
+                      ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+                      [Function],
+                      ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+                      [Function],
+                      ";
+    border: 1px solid ",
+                      [Function],
+                      ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+                      [Function],
+                      ";
+    font-size: ",
+                      [Function],
+                      "px;
+    width: ",
+                      [Function],
+                      ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+                      [Function],
+                      "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+                      [Function],
+                      ";
+  }
+
+  & .disabled {
+    opacity: ",
+                      [Function],
+                      ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+                      [Function],
+                      ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+                      [Function],
+                      ";
+    width: ",
+                      [Function],
+                      ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(InputCheckbox)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-ifAKCX",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              dataLocator="gift-service"
+              enableSuccessCheck={false}
+              name="hasGiftWrapping"
+              onChange={[Function]}
+            >
+              <Styled(BodyCopy)
+                className="elem-mb-XXS"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="extrabold"
+                letterSpacing="normal"
+                lineHeight="normal"
+                link={null}
+                textAlign="left"
+              >
+                giftServices
+              </Styled(BodyCopy)>
+            </Field>
+          </Connect(Component)>
+          <Styled(BodyCopy)
+            className="giftServicesDetailsLink"
+            color="text.primary"
+            component="span"
+            dataLocator="gift-service"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            onClick={[Function]}
+            textAlign="left"
+          >
+            details
+          </Styled(BodyCopy)>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(BodyCopy)
+      className="addReceipt"
+      color="text.primary"
+      component="p"
+      dataLocator="addMessage-txt"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      addAGift
+    </Styled(BodyCopy)>
+    <Styled(Row)
+      className="giftServicesContainer"
+      fullBleed={true}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        selectBrand
+      </Styled(BodyCopy)>
+      <Styled(Col)
+        className="phone-field-wrapper"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+      >
+        <Field
+          aria-label="TCP"
+          checked={false}
+          className="tcp-radio-button"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-EHOje",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+",
+                  [Function],
+                  ";
+
+  @media ",
+                  [Function],
+                  "{
+    padding-left: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                  [Function],
+                  "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                  [Function],
+                  "
+
+    @media ",
+                  [Function],
+                  "{
+    ",
+                  [Function],
+                  "
+    }
+    @media ",
+                  [Function],
+                  "{
+      ",
+                  [Function],
+                  "
+      }
+  }
+
+  .radio-button-checked:after {
+    ",
+                  [Function],
+                  "
+
+    @media ",
+                  [Function],
+                  "{
+      ",
+                  [Function],
+                  "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                  [Function],
+                  "
+
+    @media ",
+                  [Function],
+                  " {
+      border: 1px solid ",
+                  [Function],
+                  ";
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                  [Function],
+                  ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                  [Function],
+                  ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  .input-subtitle {
+    display: ",
+                  [Function],
+                  ";
+    @media ",
+                  [Function],
+                  " {
+      display: block;
+    }
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(LabeledRadioButton)",
+              "foldedComponentIds": Array [],
+              "labeledRadioButtonCounter": 0,
+              "render": [Function],
+              "styledComponentId": "sc-EHOje",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          disabled={false}
+          key="TCP"
+          name="brand"
+          onChange={[Function]}
+          selectedValue="TCP"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray.900"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Brand"
+              className="brand-image"
+              data-locator="logo-TCP"
+              src="/static/images/tcp-logo.svg"
+            />
+          </Styled(BodyCopy)>
+        </Field>
+      </Styled(Col)>
+      <Styled(Col)
+        className="phone-field-wrapper"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+      >
+        <Field
+          aria-label="GYM"
+          checked={false}
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-EHOje",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+",
+                  [Function],
+                  ";
+
+  @media ",
+                  [Function],
+                  "{
+    padding-left: ",
+                  [Function],
+                  ";
+    padding-top: ",
+                  [Function],
+                  ";
+  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  ",
+                  [Function],
+                  "
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .radio-button,
+  .radio-button-checked {
+    ",
+                  [Function],
+                  "
+
+    @media ",
+                  [Function],
+                  "{
+    ",
+                  [Function],
+                  "
+    }
+    @media ",
+                  [Function],
+                  "{
+      ",
+                  [Function],
+                  "
+      }
+  }
+
+  .radio-button-checked:after {
+    ",
+                  [Function],
+                  "
+
+    @media ",
+                  [Function],
+                  "{
+      ",
+                  [Function],
+                  "
+    }
+  }
+
+.radio-button-checked{
+  ",
+                  [Function],
+                  "
+
+    @media ",
+                  [Function],
+                  " {
+      border: 1px solid ",
+                  [Function],
+                  ";
+      background-color: ",
+                  [Function],
+                  ";
+    }
+
+    }
+  .input-radio-title {
+  ",
+                  [Function],
+                  ";
+  }
+  .radio-button-checked + .input-radio-title {
+    ",
+                  [Function],
+                  ";
+  }
+
+  .radio-button-checked:focus-within {
+    outline: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  .input-subtitle {
+    display: ",
+                  [Function],
+                  ";
+    @media ",
+                  [Function],
+                  " {
+      display: block;
+    }
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(LabeledRadioButton)",
+              "foldedComponentIds": Array [],
+              "labeledRadioButtonCounter": 0,
+              "render": [Function],
+              "styledComponentId": "sc-EHOje",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          disabled={false}
+          key="GYM"
+          name="brand"
+          onChange={[Function]}
+          selectedValue="GYM"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="gray.900"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            <Styled(Image)
+              alt="Brand"
+              className="brand-image"
+              data-locator="logo-gymboree"
+              src="/static/images/gymboree-logo.svg"
+            />
+          </Styled(BodyCopy)>
+        </Field>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="edit-form-css"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <div
+          className="select-value-wrapper"
+        >
+          <div
+            className="color-selector"
+          >
+            <Field
+              clickHandler={[Function]}
+              component={[Function]}
+              dataLocator="giftService-list"
+              id="optionId"
+              name="optionId"
+              width={87}
+            />
+          </div>
+        </div>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="messageTextWrapper"
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="gray.900"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          addMessage
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 4,
+            "small": 3,
+          }
+        }
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="gray.900"
+          component="p"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="right"
+        >
+          charLimit
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="edit-form-css"
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          className="gift-message"
+          component="textarea"
+          dataLocator="gift-message"
+          id="message"
+          name="message"
+          normalize={[Function]}
+          value="test"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(GiftServicesDetailsModal)
+      dataLocator="details-modal"
+      heading="giftServices"
+      labels={
+        Object {
+          "addAGift": "addAGift",
+          "addMessage": "addMessage",
+          "charLimit": "charLimit",
+          "details": "details",
+          "giftServices": "giftServices",
+          "selectBrand": "selectBrand",
+        }
+      }
+      onRequestClose={[Function]}
+      openState={false}
+    />
+  </div>
+</form>
 `;

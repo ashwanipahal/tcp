@@ -69,24 +69,24 @@ const style = css`
   }
 
   .account-info-section {
-    cursor: pointer;
     display: inline-block;
     line-height: normal;
     padding: 0px 12px;
   }
   .carrot-down-icon {
+    cursor: pointer;
     margin-left: 9px;
     transform: rotate(0deg);
     transition: transform 0.1s linear;
   }
   .carrot-up-icon {
+    cursor: pointer;
     margin-left: 9px;
     transform: rotate(180deg);
     transition: transform 0.15s linear;
   }
   .account-info {
     font-family: ${props => props.theme.typography.fonts.secondary};
-    cursor: pointer;
     display: none;
     @media ${props => props.theme.mediaQuery.medium} {
       display: inline-flex;
@@ -94,6 +94,7 @@ const style = css`
     }
   }
   .user-name {
+    cursor: pointer;
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     text-align: left;
     &:hover {
@@ -102,6 +103,7 @@ const style = css`
   }
   .user-points,
   .user-rewards {
+    cursor: pointer;
     font-size: ${props => props.theme.typography.fontSizes.fs10};
     color: ${props =>
       props.isUserPlcc ? props.theme.colorPalette.blue[500] : props.theme.colorPalette.orange[800]};

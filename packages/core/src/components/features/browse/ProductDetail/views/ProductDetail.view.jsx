@@ -268,7 +268,7 @@ class ProductDetailView extends React.Component {
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
-            {<LoyaltyBanner isProductDetailView />}
+            {<LoyaltyBanner pageCategory="isProductDetailView" />}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
