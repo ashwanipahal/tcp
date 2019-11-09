@@ -17,6 +17,7 @@ exports[`PointHistoryPage component should renders correctly 1`] = `
       dataLocator="points_history_rte"
     >
       <RichText
+        actionHandler={[Function]}
         domStorageEnabled={false}
         isApplyDeviceHeight={false}
         isNativeView={false}

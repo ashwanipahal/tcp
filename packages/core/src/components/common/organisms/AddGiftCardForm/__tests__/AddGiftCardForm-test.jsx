@@ -94,4 +94,10 @@ describe('Add gift card form component', () => {
     instance.handleSubmit(data);
     expect(spyHandleSubmit).toHaveBeenCalled();
   });
+  it('should render component correctly when saveToAccountEnabled props is passed', () => {
+    props.saveToAccountEnabled = true;
+    const component = shallow(<AddGiftCardFormVanilla {...props} />);
+    component.setProps({ addGiftCardError: 'test' });
+    expect(component).toMatchSnapshot();
+  });
 });

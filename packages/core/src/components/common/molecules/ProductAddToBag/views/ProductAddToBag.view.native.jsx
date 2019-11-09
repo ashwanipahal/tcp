@@ -59,7 +59,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
    * @memberof ProductAddToBag
    */
   renderAddToBagButton = () => {
-    const { handleFormSubmit, fitChanged, displayErrorMessage } = this.props;
+    const {
+      handleFormSubmit,
+      fitChanged,
+      displayErrorMessage,
+      plpLabels: { errorMessage },
+      toastMessage,
+    } = this.props;
     return (
       <Button
         margin="16px 0 0 0"
@@ -72,6 +78,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         onPress={() => {
           if (fitChanged) {
             displayErrorMessage(fitChanged);
+            toastMessage(errorMessage);
           } else {
             handleFormSubmit();
           }
@@ -149,8 +156,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedSize,
       selectFit,
       selectSize,
-      isErrorMessageDisplayed,
-      plpLabels: { errorMessage, size, fit, color },
+      plpLabels: { size, fit, color },
       quantityList,
       plpLabels: { quantity },
       selectedQuantity,
@@ -167,7 +173,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { name: colorName } = selectedColor || {};
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
-    const sizeError = isErrorMessageDisplayed ? this.onToastMessage(errorMessage) : '';
 
     const quantityDropDownStyle = {
       width: 200,
@@ -224,7 +229,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
             selectedItem={sizeName}
             selectItem={selectSize}
             itemNameKey="displayName"
-            error={sizeError}
             locators={{ key: 'pdp_size_label', value: 'pdp_size_value' }}
             isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
           />
