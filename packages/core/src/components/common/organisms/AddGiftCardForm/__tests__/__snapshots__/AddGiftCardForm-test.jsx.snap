@@ -1024,6 +1024,7 @@ exports[`Add gift card form component should render component correctly when sav
       }
     >
       <Field
+        autoComplete="off"
         className="giftCardNumber"
         component={
           Object {
@@ -1209,6 +1210,7 @@ exports[`Add gift card form component should render component correctly when sav
       }
     >
       <Field
+        autoComplete="off"
         className="cardPin"
         component={
           Object {
