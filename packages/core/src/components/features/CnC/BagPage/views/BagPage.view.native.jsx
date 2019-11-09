@@ -356,7 +356,9 @@ export class BagPage extends React.Component {
             onMomentumScrollEnd={this.handleMomentumScrollEnd}
           >
             <MainSection>
-              {isBagStage && <ProductTileWrapper bagLabels={labels} navigation={navigation} />}
+              {isBagStage && (
+                <ProductTileWrapper bagLabels={labels} navigation={navigation} pageView="myBag" />
+              )}
               {isSFLStage && (
                 <ProductTileWrapper
                   bagLabels={labels}

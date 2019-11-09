@@ -152,7 +152,6 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
-
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
@@ -206,7 +205,7 @@ class ProductDetailView extends React.PureComponent {
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
           <LoyaltyBannerView>
-            <LoyaltyBanner pageCategory="isProductDetailView" />
+            <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
           </LoyaltyBannerView>
           <ProductDetailDescription
             shortDescription={shortDescription}
