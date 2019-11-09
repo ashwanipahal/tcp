@@ -4,6 +4,7 @@ exports[`ProductAddToBagVanilla should render correctly should call modifiedBann
 <Fragment>
   <Styled(View)>
     <RichText
+      actionHandler={[Function]}
       domStorageEnabled={false}
       isApplyDeviceHeight={false}
       isNativeView={false}
@@ -25,6 +26,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     <Styled(View) />
     <Styled(View)>
       <RichText
+        actionHandler={[Function]}
         domStorageEnabled={false}
         isApplyDeviceHeight={false}
         isNativeView={false}
