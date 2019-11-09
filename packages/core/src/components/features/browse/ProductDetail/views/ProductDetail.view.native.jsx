@@ -205,7 +205,7 @@ class ProductDetailView extends React.PureComponent {
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
           <LoyaltyBannerView>
-            <LoyaltyBanner pageCategory="isProductDetailView" />
+            <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
           </LoyaltyBannerView>
           <ProductDetailDescription
             shortDescription={shortDescription}
