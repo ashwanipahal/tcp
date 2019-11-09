@@ -147,6 +147,7 @@ class LoginForm extends React.PureComponent<Props> {
             name="emailAddress"
             id="emailAddress"
             type="text"
+            keyboardType="email-address"
             autoCapitalize="none"
             component={TextBox}
             dataLocator="emailAddress"
