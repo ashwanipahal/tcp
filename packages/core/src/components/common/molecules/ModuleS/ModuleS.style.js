@@ -29,8 +29,6 @@ const StyledLinkText = styled(LinkText)`
 const ColWrapper = styled.div`
   position: relative;
   padding: 32px 0;
-  width: 100%;
-  overflow: hidden;
   @media ${props => props.theme.mediaQuery.large} {
     padding: 48px 15px;
   }
@@ -45,6 +43,7 @@ const ImgContainer = styled.div`
     max-height: 100%;
   }
   height: ${props => (props.theme.isGymboree ? '420px' : '356px')};
+  overflow: hidden;
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     height: ${props => (props.theme.isGymboree ? '480px' : '356px')};
   }
