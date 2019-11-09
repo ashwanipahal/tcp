@@ -11,7 +11,7 @@ const isSourceMapsEnabled = process.env.SOURCE_MAPS_ENABLED === 'true';
 const isAnalyzeBundles = process.env.ANALYZE_BUNDLES === 'true';
 
 let buildConfig = withTM({
-  generateBuildId: () => nextBuildId({ dir: __dirname }),
+  generateBuildId: () => process.env.RWD_WEB_BUILD_ID || nextBuildId({ dir: __dirname }),
   transpileModules: ['@tcp', '../core/+/*.+.js'],
   useFileSystemPublicRoutes: false,
   // This is to supply build-time environment vars to both server and client files:
