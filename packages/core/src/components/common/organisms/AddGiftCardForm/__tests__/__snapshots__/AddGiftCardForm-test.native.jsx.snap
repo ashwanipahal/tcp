@@ -29,6 +29,7 @@ exports[`Add gift card form component render error message 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -81,6 +82,7 @@ exports[`Add gift card form component render error message 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -134,6 +136,7 @@ exports[`Add gift card form component render error message 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -294,6 +297,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -346,6 +350,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
+            "autoCapitalize": "sentences",
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -399,6 +404,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
+              "autoCapitalize": "sentences",
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",

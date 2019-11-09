@@ -22,11 +22,7 @@ import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actio
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    // addresslist can be updated from User profile info API call but that contains only US profile addresses
-    // but in addressList page we need to show all the addresses so need to make fresh API call
-    getAddressListAction({
-      ignoreCache: true,
-    });
+    getAddressListAction();
   }
 
   componentWillUnmount() {
