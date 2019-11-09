@@ -151,9 +151,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         onRequestClose={onRequestClose}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
-        maxWidth="616px"
-        minHeight="540px"
-        fixedWidth
+        heightConfig={{ height: '90%' }}
         closeIconDataLocator="coupondetailmodalcrossicon"
         customWrapperClassName={additionalClassNameModal}
       >

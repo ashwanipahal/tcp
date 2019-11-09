@@ -20,7 +20,7 @@ class ProductImageWrapper extends React.Component {
     const { onChangeColor, initialValues } = this.props;
     const { Fit, Quantity, Size } = initialValues;
     if (onChangeColor) {
-      onChangeColor(e, Size && Size.name, Fit && Fit.name, Quantity);
+      onChangeColor(e, Size, Fit, Quantity);
     }
   };
 

@@ -22,6 +22,10 @@ const styles = css`
     display: inline;
     padding-left: 5px;
   }
+  .richtextCss {
+    margin-top: 4px;
+    margin-left: 3px;
+  }
 
   .fullBleedBanner {
     text-align: center;
@@ -35,6 +39,9 @@ const styles = css`
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .addedtobag-bossbanner {
+      line-height: 2.9;
     }
   }
 `;
