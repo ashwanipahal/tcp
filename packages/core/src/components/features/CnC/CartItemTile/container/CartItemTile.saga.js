@@ -8,6 +8,10 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/SaveForLater/container/SaveForLater.selectors';
+import {
+  setLoaderState,
+  setSectionLoaderState,
+} from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 import fetchData from '../../../../../service/API';
@@ -38,6 +42,7 @@ import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 
 export function* afterRemovingCartItem() {
+  yield put(setLoaderState(false));
   yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: true }));
   yield delay(3000);
   yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false }));
@@ -50,8 +55,13 @@ export function* afterRemovingCartItem() {
  * @export
  * @param {*} { payload, afterHandler }
  */
-export function* confirmRemoveItem({ payload, afterHandler }) {
+export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
   try {
+    if (isMiniBag) {
+      yield put(setSectionLoaderState(true, 'minibag'));
+    } else {
+      yield put(setLoaderState(true));
+    }
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
     if (afterHandler) {
@@ -66,6 +76,8 @@ export function* confirmRemoveItem({ payload, afterHandler }) {
         excludeCartItems: false,
       })
     );
+    yield put(setLoaderState(false));
+    yield put(setSectionLoaderState(false, 'minibag'));
   } catch (err) {
     logger.error(err);
     yield call(handleServerSideErrorAPI, err, CARTPAGE_CONSTANTS.CART_ITEM_TILE);
@@ -91,7 +103,7 @@ export function* removeCartItem({ payload }) {
     }
     yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
   } else {
-    yield call(confirmRemoveItem, { payload: itemId });
+    yield call(confirmRemoveItem, { payload: itemId, isMiniBag: true });
   }
 }
 
@@ -134,6 +146,7 @@ function* setUpdateItemErrorMessages(payload, errorMessage) {
 export function* updateCartItemSaga({ payload }) {
   const { updateActionType } = payload;
   try {
+    yield put(setSectionLoaderState(true, 'minibag'));
     yield put(clearAddToBagErrorState());
     yield put(clearAddToPickupErrorState());
     yield put(clearToggleCartItemError());
@@ -157,7 +170,9 @@ export function* updateCartItemSaga({ payload }) {
     );
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
+    yield put(setSectionLoaderState(false, 'minibag'));
   } catch (err) {
+    yield put(setSectionLoaderState(false, 'minibag'));
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const errorMessage =
       // eslint-disable-next-line no-underscore-dangle

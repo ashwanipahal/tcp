@@ -97,6 +97,7 @@ export class BagPageContainer extends React.Component<Props> {
       isPickupModalOpen,
       isMobile,
       bagPageServerError,
+      isBagPage,
     } = this.props;
 
     const showAddTobag = false;
@@ -130,6 +131,7 @@ export class BagPageContainer extends React.Component<Props> {
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
         bagPageServerError={bagPageServerError}
+        isBagPage={isBagPage}
       />
     );
   }

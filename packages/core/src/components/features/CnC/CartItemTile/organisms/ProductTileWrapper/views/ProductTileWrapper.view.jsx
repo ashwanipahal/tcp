@@ -8,6 +8,7 @@ import {
 import { getIconPath, isMobileApp } from '@tcp/core/src/utils';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
+import MiniBagTileSkeleton from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/skelton/MiniBagTileSkeleton.view';
 import productTileCss, { miniBagCSS } from '../styles/ProductTileWrapper.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
 import CartItemTileSkelton from '../../../molecules/CartItemTile/skelton/CartItemTileSkelton.view';
@@ -120,6 +121,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
     isBagPage,
     openModalApplyNowModal
   ) => {
+    const { isMiniBag } = this.props;
     if (productSectionData.size === 0) {
       return (
         <EmptyBag
@@ -137,6 +139,14 @@ class ProductTileWrapper extends React.PureComponent<props> {
         <>
           <CartItemTileSkelton />
           <CartItemTileSkelton />
+        </>
+      );
+    }
+    if (isMiniBag) {
+      return (
+        <>
+          <MiniBagTileSkeleton />
+          <MiniBagTileSkeleton />
         </>
       );
     }
@@ -162,6 +172,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       setHeaderErrorState,
       navigation,
       openModalApplyNowModal,
+      isMiniBag,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -253,7 +264,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
           isBagPageSflSection,
           showPlccApplyNow,
           isBagPage,
-          openModalApplyNowModal
+          openModalApplyNowModal,
+          isMiniBag
         )}
       </>
     );
@@ -280,6 +292,7 @@ ProductTileWrapper.propTypes = {
   showPlccApplyNow: PropTypes.bool.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
+  isMiniBag: PropTypes.bool.isRequired,
 };
 
 export default ProductTileWrapper;

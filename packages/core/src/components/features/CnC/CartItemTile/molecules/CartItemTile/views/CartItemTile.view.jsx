@@ -223,6 +223,7 @@ class CartItemTile extends PureComponent {
       addItemToSflList,
       setCartItemsSflError,
       labels,
+      pageView,
     } = this.props;
     const {
       itemInfo: { itemId, isGiftItem },
@@ -230,13 +231,13 @@ class CartItemTile extends PureComponent {
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
-
+    const isMiniBag = pageView !== 'myBag';
     this.clearToggleErrorState();
 
     if (sflItemsCount >= sflMaxCount) {
       return setCartItemsSflError(labels.sflMaxLimitError);
     }
-    const payloadData = { itemId, catEntryId, userInfoRequired };
+    const payloadData = { itemId, catEntryId, userInfoRequired, isMiniBag };
     return addItemToSflList({ ...payloadData });
   };
 

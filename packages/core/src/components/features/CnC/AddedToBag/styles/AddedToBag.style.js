@@ -110,4 +110,11 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
+
+export const customStyles = css`
+  .spinner-overlay {
+    position: absolute;
+  }
+`;
+
 export default styles;

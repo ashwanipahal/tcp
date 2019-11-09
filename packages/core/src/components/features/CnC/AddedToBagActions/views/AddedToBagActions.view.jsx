@@ -38,12 +38,19 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getCheckoutButton() {
-    const { labels, handleCartCheckout, isEditingItem } = this.props;
+    const {
+      labels,
+      handleCartCheckout,
+      isEditingItem,
+      isAddedToBag,
+      isBagPage,
+      isMiniBag,
+    } = this.props;
     return (
       <Button
         data-locator={getLocator('addedtobag_btncheckout')}
         className="checkout"
-        onClick={() => handleCartCheckout({ isEditingItem })}
+        onClick={() => handleCartCheckout({ isEditingItem, isAddedToBag, isBagPage, isMiniBag })}
       >
         <BodyCopy
           component="span"
@@ -150,6 +157,9 @@ AddedToBagActions.propTypes = {
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
   venmoError: PropTypes.string,
+  isAddedToBag: PropTypes.bool,
+  isBagPage: PropTypes.bool,
+  isMiniBag: PropTypes.bool,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
@@ -157,6 +167,9 @@ AddedToBagActions.defaultProps = {
   isBagPageStickyHeader: false,
   isUSSite: true,
   venmoError: '',
+  isAddedToBag: false,
+  isBagPage: false,
+  isMiniBag: false,
 };
 
 export default withStyles(AddedToBagActions, style);
