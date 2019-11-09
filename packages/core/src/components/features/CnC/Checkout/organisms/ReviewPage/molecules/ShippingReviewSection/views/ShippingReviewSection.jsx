@@ -94,7 +94,7 @@ export class ShippingReviewSection extends React.PureComponent {
                 shipmentHeader={shippingMethodTitle}
               />
             )}
-            {isGiftOptionsEnabled && (
+            {isGiftOptionsEnabled && !isExpressCheckout && (
               <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
             )}
           </Col>
