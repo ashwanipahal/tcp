@@ -121,10 +121,6 @@ describe('ProductTabList', () => {
             key: 'cat_id',
             val: '2',
           },
-          {
-            key: 'cat_id',
-            val: '2',
-          },
         ],
       },
     ];
