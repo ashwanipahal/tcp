@@ -304,7 +304,7 @@ function* triggerExpressCheckout(recalcRewards, shouldPreScreenUser = false, sou
     yield call(getCartDataSaga, {
       payload: {
         isRecalculateTaxes: false,
-        excludeCartItems: excludeCartItems && !isMobileApp(),
+        excludeCartItems: false,
         recalcRewards,
         isCheckoutFlow: true,
         translation: true,
