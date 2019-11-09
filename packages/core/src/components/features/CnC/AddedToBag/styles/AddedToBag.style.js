@@ -80,7 +80,6 @@ export const recommendationStyles = css`
     @media ${props => props.theme.mediaQuery.large} {
       margin-right: -8%;
     }
-
   }
   && .recommendations-tile .slick-arrow {
     top: 35%;
@@ -99,11 +98,13 @@ export const recommendationStyles = css`
     border-bottom-right-radius: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
   }
   && .slick-prev::after {
-    content:'';
-    border: solid black;border-width: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS} ${props =>
-  props.theme.spacing.ELEM_SPACING.XXS} 0;border-width: 0 4px 4px 0;
+    content: '';
+    border: solid black;
+    border-width: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXS} 0;
+    border-width: 0 4px 4px 0;
     display: inline-block;
-    padding:  ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
   }
@@ -119,23 +120,22 @@ export const recommendationStyles = css`
     background-color: ${props => props.theme.colors.WHITE};
     border-top-left-radius: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     border-bottom-left-radius: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
-
   }
   && .slick-next::after {
-    content:'';
+    content: '';
     border: solid black;
-    border-width: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS} ${props =>
-  props.theme.spacing.ELEM_SPACING.XXS} 0;
+    border-width: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXS} 0;
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
     transform: rotate(-45deg);
     background-color: transparent;
-    background:none;
+    background: none;
   }
   && .product-list {
-    margin 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin: 0 ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
-      margin 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+      margin: 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
   }
 `;
