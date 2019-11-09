@@ -248,12 +248,10 @@ class OverlayModal extends React.Component {
           <div
             className={`${
               isCanada() ? 'triangle-ca-no-theme ' : 'triangle-theme'
-            } modal__triangle hide-on-mobile ${showCondensedHeader && 'condensed-modal-triangle'}`}
+            } modal__triangle ${showCondensedHeader && 'condensed-modal-triangle'}`}
             id="modalTriangle"
           />
-          <div
-            className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar hide-on-mobile`}
-          />
+          <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />
           <ModalContent className="modal__content" {...componentProps} />
         </div>
       </div>
