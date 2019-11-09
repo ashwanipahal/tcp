@@ -5,7 +5,7 @@ import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
-import setPickupInitialValues from './ShippingPage.view.utils';
+import setPickupInitialValues, { setShippingAddress } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -300,22 +300,11 @@ export default class ShippingPage extends React.PureComponent {
       pickUpContactPerson,
       orderHasPickUp,
     } = this.props;
-    const emptyShippingAddress = !shippingAddress.addressLine1;
-    if (!emptyShippingAddress && (isGuest || !userAddresses || userAddresses.size === 0)) {
-      return {
-        addressLine1: shippingAddress.addressLine1,
-        addressLine2: shippingAddress.addressLine2,
-        firstName: shippingAddress.firstName,
-        lastName: shippingAddress.lastName,
-        city: shippingAddress.city,
-        state: shippingAddress.state,
-        zipCode: shippingAddress.zipCode,
-        phoneNumber: shippingPhoneAndEmail.phoneNumber,
-        country: getSiteId() && getSiteId().toUpperCase(),
-        emailAddress: shippingPhoneAndEmail.emailAddress,
-      };
+    const shippingAddressLine1 = shippingAddress && shippingAddress.addressLine1;
+    if (!!shippingAddressLine1 && (isGuest || !userAddresses || userAddresses.size === 0)) {
+      return setShippingAddress(shippingAddress, shippingPhoneAndEmail);
     }
-    if (emptyShippingAddress && isGuest && orderHasPickUp) {
+    if (!shippingAddressLine1 && isGuest && orderHasPickUp) {
       return setPickupInitialValues(pickUpContactPerson);
     }
     return {

@@ -19,7 +19,6 @@ import { getUserInfo } from '@tcp/core/src/components/features/account/User/cont
 import env from 'react-native-config';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
-
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import NavigationService from '../navigation/NavigationService';
@@ -180,6 +179,7 @@ export class App extends React.PureComponent {
 
 App.propTypes = {
   appType: PropTypes.string,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 App.defaultProps = {
