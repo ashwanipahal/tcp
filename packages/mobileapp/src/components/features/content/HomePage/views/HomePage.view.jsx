@@ -6,7 +6,7 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
-
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   ModuleD,
   ModuleH,
@@ -96,6 +96,10 @@ class HomePageView extends React.PureComponent<Props> {
     this.navigate(event.url);
   };
 
+  renderGlobalFunction = navigation => {
+    return <QuickViewModal navigation={navigation} />;
+  };
+
   navigate = url => {
     const { navigation } = this.props;
     if (url) {
@@ -135,6 +139,7 @@ class HomePageView extends React.PureComponent<Props> {
         <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
+        {this.renderGlobalFunction()}
       </LazyloadScrollView>
     );
   }

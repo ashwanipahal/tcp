@@ -9,7 +9,6 @@ import { initAppErrorReporter } from '@tcp/core/src/utils/errorReporter.util.nat
 import { createAPIConfig, switchAPIConfig, resetApiConfig, isAndroid } from '@tcp/core/src/utils';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import env from 'react-native-config';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 // eslint-disable-next-line
 import ReactotronConfig from './Reactotron';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
@@ -96,12 +95,8 @@ export class App extends React.PureComponent {
     this.setState({ apiConfig });
   };
 
-  renderGlobalFunction = navigation => {
-    return <QuickViewModal navigation={navigation} />;
-  };
-
   render() {
-    const { appType, navigation } = this.props;
+    const { appType } = this.props;
     const { isSplashVisible, showBrands, apiConfig } = this.state;
     return (
       <Provider store={this.store}>
@@ -120,7 +115,6 @@ export class App extends React.PureComponent {
               {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
               {showBrands && <AnimatedBrandChangeIcon toggleBrandAction={this.toggleBrandAction} />}
             </Box>
-            {this.renderGlobalFunction(navigation)}
           </ThemeWrapperHOC>
         </NetworkProvider>
       </Provider>
