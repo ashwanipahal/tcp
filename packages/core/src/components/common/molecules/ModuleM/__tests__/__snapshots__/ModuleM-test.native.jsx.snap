@@ -4,6 +4,10 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
 <Styled(View)>
   <Styled(View)>
     <LinkText
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs32"
+      fontWeight="black"
       headerText={
         Array [
           Object {
@@ -31,7 +35,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           },
         ]
       }
-      useStyle={true}
+      textAlign="center"
+      type="heading"
     />
   </Styled(View)>
   <Styled(View)>
