@@ -388,7 +388,6 @@ const getRegion = (configVal, country) => {
  * @param {*} appTypeSuffix
  * @returns
  */
-// eslint-disable-next-line complexity
 const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
   const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
   const country = envConfig[siteIdKey] && envConfig[siteIdKey].toUpperCase();

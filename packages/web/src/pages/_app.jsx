@@ -56,7 +56,6 @@ class TCPWebApp extends App {
 
   static async getInitialProps({ Component, ctx }) {
     let globalProps;
-
     try {
       globalProps = await TCPWebApp.loadGlobalData(Component, ctx, {});
     } catch (e) {

@@ -198,6 +198,7 @@ export default css`
     @media ${mediaQuery.medium} and ${mediaQuery.mediumMax}  and (orientation: landscape) {
       height: 340px;
     }
+
     height: 320px;
     background: ${props => props.theme.colorPalette.gray[500]};
     display: block;
