@@ -116,7 +116,7 @@ class AddGiftCardForm extends React.PureComponent {
   }
 
   render() {
-    const { labels, toggleModal, isRow } = this.props;
+    const { labels, toggleModal, isRow, saveToAccountEnabled } = this.props;
     const { setRecaptchaModalMountedState } = this.state;
     return (
       <ScrollView
@@ -187,7 +187,7 @@ class AddGiftCardForm extends React.PureComponent {
             </MessageWrapper>
           )}
 
-          {isRow && this.renderSaveToAccount()}
+          {isRow && saveToAccountEnabled && this.renderSaveToAccount()}
           {isRow && (
             <FooterButtonsWrapper>
               <CustomButton
@@ -256,6 +256,7 @@ AddGiftCardForm.propTypes = {
   onClearError: PropTypes.func,
   isRow: PropTypes.bool,
   isRecapchaEnabled: PropTypes.bool,
+  saveToAccountEnabled: PropTypes.bool,
 };
 
 AddGiftCardForm.defaultProps = {
@@ -277,6 +278,7 @@ AddGiftCardForm.defaultProps = {
   onClearError: () => {},
   isRow: false,
   isRecapchaEnabled: true,
+  saveToAccountEnabled: false,
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));
