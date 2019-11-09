@@ -96,6 +96,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
     />
     <Styled(View)>
       <Connect(LoyaltyBannerContainer)
+        navigation={Object {}}
         pageCategory="isProductDetailView"
       />
     </Styled(View)>
