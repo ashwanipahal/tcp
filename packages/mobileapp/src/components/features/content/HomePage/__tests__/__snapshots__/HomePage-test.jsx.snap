@@ -47,6 +47,11 @@ exports[`HomePageView should render correctly 1`] = `
     }
   />
   <Connect(GetCandid)
+    apiConfig={
+      Object {
+        "previewEnvId": "STAGING",
+      }
+    }
     navigation={
       Object {
         "getParam": [Function],
