@@ -11,7 +11,6 @@ function* fetchRecommendationsData(action) {
   const { payload } = action;
   try {
     const result = yield call(RecommendationsAbstractor.getAppData, payload);
-
     yield put(loadRecommendationsData(result));
   } catch (e) {
     if (isMobileApp())

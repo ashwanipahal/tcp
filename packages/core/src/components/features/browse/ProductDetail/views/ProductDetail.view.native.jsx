@@ -138,6 +138,7 @@ class ProductDetailView extends React.PureComponent {
       alternateSizes,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      toastMessage,
     } = this.props;
     const {
       currentColorEntry,
@@ -158,14 +159,12 @@ class ProductDetailView extends React.PureComponent {
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
     const { categoryId } = currentProduct;
-    const recommendationsAttributes = {
+    const recommendationAttributes = {
       variation: 'moduleO',
       navigation,
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
       categoryName: categoryId,
       partNumber: selectedColorProductId,
-      priceOnly: true,
-      showLoyaltyPromotionMessage: false,
       isHeaderAccordion: true,
     };
 
@@ -215,6 +214,7 @@ class ProductDetailView extends React.PureComponent {
             sizeChartLinkVisibility={sizeChartLinkVisibility}
             alternateSizes={alternateSizes}
             navigation={navigation}
+            toastMessage={toastMessage}
           />
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
@@ -239,12 +239,12 @@ class ProductDetailView extends React.PureComponent {
             />
           ) : null}
           <RecommendationWrapper>
-            <Recommendations {...recommendationsAttributes} />
+            <Recommendations {...recommendationAttributes} />
             <Recommendations
               isRecentlyViewed
-              {...recommendationsAttributes}
+              {...recommendationAttributes}
               headerLabel={pdpLabels.recentlyViewed}
-              // portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+              portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
             />
           </RecommendationWrapper>
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
@@ -284,6 +284,7 @@ ProductDetailView.propTypes = {
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  toastMessage: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -312,6 +313,7 @@ ProductDetailView.defaultProps = {
   alternateSizes: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  toastMessage: () => {},
 };
 
 export default withStyles(ProductDetailView);

@@ -76,6 +76,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       plpLabels={null}
       selectedColorProductId=""
       sizeChartLinkVisibility={2}
+      toastMessage={[Function]}
     />
     <Connect(ProductPickupContainer)
       formName="ProductAddToBag-undefined"
@@ -119,8 +120,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         navigation={Object {}}
         page="pdp"
         partNumber=""
-        priceOnly={true}
-        showLoyaltyPromotionMessage={false}
         variation="moduleO"
       />
       <Connect(Recommendations)
@@ -129,8 +128,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         navigation={Object {}}
         page="pdp"
         partNumber=""
-        priceOnly={true}
-        showLoyaltyPromotionMessage={false}
+        portalValue="recently-viewed-products"
         variation="moduleO"
       />
     </Styled(View)>

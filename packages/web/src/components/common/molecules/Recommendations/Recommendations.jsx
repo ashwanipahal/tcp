@@ -107,6 +107,7 @@ class Recommendations extends Component {
       ctaText,
       ctaTitle,
       ctaUrl,
+      headerAlignment,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -121,7 +122,7 @@ class Recommendations extends Component {
           <Heading
             variant="h4"
             className={`recommendations-header ${priceOnlyClass}`}
-            textAlign="center"
+            textAlign={headerAlignment || 'center'}
             dataLocator={params.dataLocator}
           >
             {headerLabel}
@@ -233,6 +234,7 @@ Recommendations.propTypes = {
   portalValue: PropTypes.string,
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
+  headerAlignment: PropTypes.string,
 };
 
 Recommendations.defaultProps = {
@@ -250,6 +252,7 @@ Recommendations.defaultProps = {
   portalValue: '',
   partNumber: '',
   categoryName: '',
+  headerAlignment: '',
 };
 
 export { Recommendations as RecommendationsVanilla };

@@ -5,14 +5,13 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import ProductPickupContainer from '@tcp/core/src/components/common/organisms/ProductPickup';
-import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { PRODUCT_ADD_TO_BAG } from '@tcp/core/src/constants/reducer.constants';
+import { getMapSliceForColorProductId } from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductVariantSelector from '../../ProductVariantSelector';
 import withStyles from '../../../hoc/withStyles';
 import styles, {
   RowViewContainer,
   SizeViewContainer,
-  UnavailableLink,
 } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
@@ -30,6 +29,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      showToastMessage: true,
+    };
   }
 
   /**
@@ -91,24 +93,25 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderUnavailableLink = () => {
-    const { currentProduct, plpLabels } = this.props;
+    const {
+      currentProduct,
+      currentProduct: { colorFitsSizesMap },
+      plpLabels,
+      selectedColorProductId,
+    } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
+    const currentColorEntry = getMapSliceForColorProductId(
+      colorFitsSizesMap,
+      selectedColorProductId
+    );
     return (
-      <UnavailableLink>
-        <BodyCopyWithSpacing
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
-          fontSize="fs12"
-          color="black"
-          text={sizeUnavailable}
-          spacingStyles="padding-right-XS"
-        />
-        <ProductPickupContainer
-          productInfo={currentProduct}
-          formName={`ProductAddToBag-${currentProduct.generalProductId}`}
-          isAnchor
-        />
-      </UnavailableLink>
+      <ProductPickupContainer
+        productInfo={currentProduct}
+        formName={`ProductAddToBag-${currentProduct.generalProductId}`}
+        sizeUnavailable={sizeUnavailable}
+        isAnchor
+        miscInfo={currentColorEntry && currentColorEntry.miscInfo}
+      />
     );
   };
 
@@ -116,6 +119,17 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { onQuantityChange, form } = this.props;
     if (onQuantityChange) {
       onQuantityChange(selectedQuantity, form);
+    }
+  };
+
+  onToastMessage = errorMessage => {
+    const { toastMessage, isErrorMessageDisplayed } = this.props;
+    const { showToastMessage } = this.state;
+    if (showToastMessage && isErrorMessageDisplayed) {
+      toastMessage(errorMessage);
+      this.setState({
+        showToastMessage: false,
+      });
     }
   };
 
@@ -148,7 +162,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { name: colorName } = selectedColor || {};
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
-    const sizeError = isErrorMessageDisplayed ? errorMessage : '';
+    const sizeError = isErrorMessageDisplayed ? this.onToastMessage(errorMessage) : '';
+
     const quantityDropDownStyle = {
       width: 200,
     };
@@ -255,6 +270,7 @@ ProductAddToBag.propTypes = {
   selectedQuantity: PropTypes.number,
   currentProduct: PropTypes.shape({}).isRequired,
   selectedColorProductId: PropTypes.number.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 ProductAddToBag.defaultProps = {
@@ -270,6 +286,7 @@ ProductAddToBag.defaultProps = {
   handleFormSubmit: null,
   selectedQuantity: 1,
   showAddToBagCTA: true,
+  toastMessage: () => {},
 };
 
 /* export view with redux form */

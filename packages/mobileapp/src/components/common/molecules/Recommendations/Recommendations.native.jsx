@@ -180,6 +180,7 @@ const Recommendations = props => {
     portalValue,
     partNumber,
     categoryName,
+    isAddedToBagOpen,
   } = props;
   const variationArray = variation.split(',');
   const action = {
@@ -193,7 +194,7 @@ const Recommendations = props => {
   return (
     <View>
       {variationArray.map(value => renderRecommendationView(props, value))}
-      <AddedToBagContainer navigation={navigation} />
+      {!isAddedToBagOpen ? <AddedToBagContainer navigation={navigation} /> : null}
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </View>
   );
@@ -208,12 +209,14 @@ Recommendations.propTypes = {
   portalValue: PropTypes.string,
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
+  isAddedToBagOpen: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
   portalValue: '',
   partNumber: '',
   categoryName: '',
+  isAddedToBagOpen: false,
 };
 
 export default Recommendations;

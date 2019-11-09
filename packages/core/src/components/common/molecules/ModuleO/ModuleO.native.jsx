@@ -33,7 +33,6 @@ const ModuleO = props => {
     priceOnly,
     viaModule,
     labels,
-    showLoyaltyPromotionMessage,
   } = props;
 
   const { colorsMap, productInfo } = item;
@@ -52,7 +51,7 @@ const ModuleO = props => {
   const topBadge = isMatchingFamily && badge1.matchBadge ? badge1.matchBadge : badge1.defaultBadge;
 
   // get default Loyalty message
-  const loyaltyPromotionMessage = showLoyaltyPromotionMessage
+  const loyaltyPromotionMessage = isPlcc
     ? getPromotionalMessage(isPlcc, {
         promotionalMessage,
         promotionalPLCCMessage,
@@ -99,7 +98,6 @@ ModuleO.propTypes = {
     lbl_plpTiles_shop_collection: PropTypes.string,
     lbl_add_to_bag: PropTypes.string,
   }).isRequired,
-  showLoyaltyPromotionMessage: PropTypes.bool,
 };
 
 ModuleO.defaultProps = {
@@ -110,7 +108,6 @@ ModuleO.defaultProps = {
   currencySymbol: '$',
   priceOnly: false,
   viaModule: '',
-  showLoyaltyPromotionMessage: true,
 };
 
 export default ModuleO;

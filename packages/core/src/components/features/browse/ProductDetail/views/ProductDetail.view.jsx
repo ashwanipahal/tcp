@@ -100,6 +100,7 @@ class ProductDetailView extends React.Component {
     return (
       <div className="product-summary-wrapper">
         <Product
+          {...otherProps}
           isGiftCard={productInfo.isGiftCard}
           productDetails={productDetails}
           currencySymbol={currency}
@@ -107,7 +108,6 @@ class ProductDetailView extends React.Component {
           currencyExchange={currencyExchange}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
-          {...otherProps}
         />
         {productInfo.isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -205,13 +205,14 @@ class ProductDetailView extends React.Component {
     const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
 
     const { categoryId } = currentProduct;
-    const recommendationsAttributes = {
+    const recommendationAttributes = {
       variations: 'moduleO',
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
       categoryName: categoryId,
       partNumber: selectedColorProductId,
       priceOnly: true,
       showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
     };
 
     return (
@@ -280,7 +281,7 @@ class ProductDetailView extends React.Component {
                 // onPickUpOpenClick={onPickUpOpenClick}
               />
             )}
-            {<LoyaltyBanner isProductDetailView />}
+            {<LoyaltyBanner pageCategory="isProductDetailView" />}
             {this.getSendAnEmailComponent()}
           </Col>
         </Row>
@@ -312,7 +313,7 @@ class ProductDetailView extends React.Component {
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className={`${className} product-description-list`}>
-              <Recommendations {...recommendationsAttributes} />
+              <Recommendations {...recommendationAttributes} />
             </div>
           </Col>
         </Row>
@@ -322,7 +323,7 @@ class ProductDetailView extends React.Component {
               <Recommendations
                 headerLabel={pdpLabels.recentlyViewed}
                 portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
-                {...recommendationsAttributes}
+                {...recommendationAttributes}
               />
             </div>
           </Col>
