@@ -21,6 +21,7 @@ import ReactotronConfig from './Reactotron';
 
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
+import NavigationService from '../navigation/NavigationService';
 import AppSplash from '../navigation/AppSplash';
 import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
@@ -162,6 +163,9 @@ export class App extends React.PureComponent {
 
               <AppNavigator
                 screenProps={{ toggleBrandAction: this.toggleBrandAction, apiConfig }}
+                ref={navigatorRef => {
+                  NavigationService.setTopLevelNavigator(navigatorRef);
+                }}
               />
               {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
               {showBrands && <AnimatedBrandChangeIcon toggleBrandAction={this.toggleBrandAction} />}

@@ -99,5 +99,4 @@ ProductDetailView.defaultProps = {
 };
 
 export default withStyles(ProductDetailView);
-
 export { ProductDetailView as ProductDetailViewVanilla };

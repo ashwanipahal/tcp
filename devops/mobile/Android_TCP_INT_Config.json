@@ -55,7 +55,7 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_API_IDENTIFIER_TCP",
@@ -139,7 +139,7 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_API_DOMAIN_GYM",

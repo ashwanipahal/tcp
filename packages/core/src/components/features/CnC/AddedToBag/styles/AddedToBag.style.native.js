@@ -64,3 +64,11 @@ export const ModalHeading = styled.Text`
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   width: 80%;
 `;
+
+export const RecommendationWrapper = styled.View`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0 0 0;
+`;
+
+export const LoyaltyBannerWrapper = styled.View`
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
