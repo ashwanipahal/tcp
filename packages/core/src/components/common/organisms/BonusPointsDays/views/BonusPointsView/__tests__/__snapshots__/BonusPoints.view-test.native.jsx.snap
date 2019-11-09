@@ -33,6 +33,7 @@ exports[`BonusPointsView should render correctly 1`] = `
   >
     <Styled(View)>
       <RichText
+        actionHandler={[Function]}
         dataLocator="bonus-points-details"
         domStorageEnabled={false}
         isApplyDeviceHeight={false}
