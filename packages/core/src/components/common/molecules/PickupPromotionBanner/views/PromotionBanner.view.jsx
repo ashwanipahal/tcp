@@ -48,6 +48,7 @@ const PromotionBanner = props => {
                 tag="span"
                 fontSize="fs12"
                 textAlign="center"
+                className="addedtobag-bossbanner"
               >
                 <RichText
                   richTextHtml={modifiedBannerText(labels.lbl_fullBleed_banner_boss_text, props)}
@@ -60,9 +61,9 @@ const PromotionBanner = props => {
         <div className="banner-wrapper">
           <div className="triangle-left" />
           <div className="promo-wrapper">
-            <BodyCopy fontSize="fs10" fontFamily="primary">
+            <div className="richtextCss">
               <RichText richTextHtml={modifiedBannerText(labels.lbl_banner_boss_text, props)} />
-            </BodyCopy>
+            </div>
           </div>
         </div>
       )}

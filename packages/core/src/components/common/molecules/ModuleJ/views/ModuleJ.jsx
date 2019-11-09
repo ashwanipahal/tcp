@@ -100,6 +100,7 @@ class ModuleJ extends React.PureComponent {
     if (productTabList && productTabList.completed) {
       dataStatus = productTabList.completed[currentCatId];
     }
+
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
