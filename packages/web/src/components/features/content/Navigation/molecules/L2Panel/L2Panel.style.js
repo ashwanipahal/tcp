@@ -258,12 +258,12 @@ export default css`
       max-width: 210px;
       box-sizing: border-box;
       height: 220px;
-      padding: 0 7.5%;
+      padding: 0 5.5%;
       text-align: left;
       border-style: solid;
       border-width: 3px;
       &.l2-half-promo-box {
-        padding: 0 4%;
+        padding: 0 6%;
         height: 89px;
       }
       &.border-pink {

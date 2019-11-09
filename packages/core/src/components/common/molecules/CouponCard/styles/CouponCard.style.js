@@ -37,7 +37,7 @@ const styles = css`
       ${props => props.theme.spacing.ELEM_SPACING.XXS}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
     color: ${props => props.theme.colors.WHITE};
-    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
   .couponCard__text_style {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};

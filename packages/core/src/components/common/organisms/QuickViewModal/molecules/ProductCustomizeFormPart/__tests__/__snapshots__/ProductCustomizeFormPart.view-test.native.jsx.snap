@@ -278,6 +278,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
       plpLabels={Object {}}
       showAddToBagCTA={true}
       showColorChips={true}
+      toastMessage={[Function]}
     />
   </Styled(View)>
 </Styled(View)>

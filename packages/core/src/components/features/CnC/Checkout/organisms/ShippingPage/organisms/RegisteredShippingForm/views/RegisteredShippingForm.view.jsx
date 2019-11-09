@@ -250,7 +250,7 @@ class RegisteredShippingForm extends React.Component {
           </Row>
         )}
         <Row fullBleed className="hide-on-mobile">
-          <Col colSize={{ small: 6, medium: 6, large: 4 }} className="shipping-section-header">
+          <Col colSize={{ small: 6 }} className="shipping-section-header">
             <BodyCopy
               fontFamily="primary"
               fontSize="fs28"

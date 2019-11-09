@@ -141,3 +141,4 @@ OutfitDetailsView.defaultProps = {
 };
 
 export default OutfitDetailsView;
+export { OutfitDetailsView as OutfitDetailsViewVanilla };

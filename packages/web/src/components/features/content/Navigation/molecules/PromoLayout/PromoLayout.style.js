@@ -9,6 +9,7 @@ export const StyledPromoBanner = styled(PromoBanner)`
       width: 100%;
       line-height: 1;
       letter-spacing: 0.15px;
+      font-weight: ${props => props.theme.fonts.fontWeight.black};
     }
   }
   &.text-pink {
@@ -46,8 +47,9 @@ export const StyledPromoBanner = styled(PromoBanner)`
       display: inline-block;
       width: 100%;
       font-size: 16.2px;
-      line-height: 1.3;
+      line-height: 1;
       letter-spacing: 0.12px;
+      font-weight: ${props => props.theme.fonts.fontWeight.black};
     }
   }
 `;
