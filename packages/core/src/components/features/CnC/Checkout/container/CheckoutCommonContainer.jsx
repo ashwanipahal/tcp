@@ -288,6 +288,7 @@ CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
   };
 };
 
+/* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: (router, isPaypalFlow) => dispatch(initCheckoutAction(router, isPaypalFlow)),
@@ -335,6 +336,7 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
+/* istanbul ignore next */
 const mapStateToProps = state => {
   return {
     initialValues: selectors.getPickupInitialPickupSectionValues(state),

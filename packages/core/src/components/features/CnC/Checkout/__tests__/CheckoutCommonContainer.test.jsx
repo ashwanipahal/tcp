@@ -16,6 +16,7 @@ describe('Bag page Container', () => {
     isRegisteredUserCallDone: true,
     initCheckoutSectionPage: jest.fn(),
     router: { query: {} },
+    checkoutServerError: true,
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);
@@ -38,8 +39,28 @@ describe('Bag page Container', () => {
     it('should return an action closeModal which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.initCheckoutSectionPage();
+      dispatchProps.submitReview();
       dispatchProps.initCheckout();
-      expect(dispatch.mock.calls).toHaveLength(1);
+      dispatchProps.submitShipping();
+      dispatchProps.onPickupSubmit();
+      dispatchProps.loadShipmentMethods();
+      dispatchProps.routeToPickupPage();
+      dispatchProps.setCheckoutStage();
+      dispatchProps.updateShippingMethodSelection();
+      dispatchProps.updateShippingAddressData();
+      dispatchProps.addNewShippingAddressData();
+      dispatchProps.submitBilling();
+      dispatchProps.fetchNeedHelpContent();
+      dispatchProps.verifyAddressAction();
+      dispatchProps.dispatchReviewReduxForm();
+      dispatchProps.submitVerifiedShippingAddressData();
+      dispatchProps.toastMessage();
+      dispatchProps.setVenmoPickupState();
+      dispatchProps.setVenmoShippingState();
+      dispatchProps.clearCheckoutServerError();
+      dispatchProps.toggleCountrySelector();
+      expect(dispatch.mock.calls).toHaveLength(21);
     });
   });
 });

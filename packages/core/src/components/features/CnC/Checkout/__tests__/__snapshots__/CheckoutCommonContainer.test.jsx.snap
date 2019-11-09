@@ -14,7 +14,29 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
       "isRegisteredUserCallDone": true,
     }
   }
-  clearCheckoutServerError={[MockFunction]}
+  checkoutServerError={true}
+  clearCheckoutServerError={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {},
+        ],
+        Array [
+          Object {},
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   formatPayload={[Function]}
   isExpressCheckout={false}
   isRegisteredUserCallDone={true}
