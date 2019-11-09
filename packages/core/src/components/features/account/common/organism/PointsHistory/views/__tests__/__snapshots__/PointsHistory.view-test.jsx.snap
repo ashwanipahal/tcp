@@ -11,7 +11,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 2,
           "small": 2,
         }
@@ -36,7 +36,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 2,
           "small": 2,
         }
@@ -91,7 +91,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 2,
           "small": 2,
         }
@@ -116,7 +116,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 2,
           "small": 2,
         }
