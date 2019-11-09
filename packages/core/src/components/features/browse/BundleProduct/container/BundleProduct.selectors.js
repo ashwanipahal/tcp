@@ -106,6 +106,10 @@ export const getCurrentProduct = state => {
   return state.BundleProduct.get('currentProduct');
 };
 
+export const getCurrentBundle = state => {
+  return state.BundleProduct.get('currentBundle');
+};
+
 export const getPDPLabels = state => {
   return {
     fullSize: getLabelValue(state.Labels, 'lbl_full_size', 'PDP', 'Browse'),
@@ -154,4 +158,8 @@ export const getPDPLabels = state => {
     back: getLabelValue(state.Labels, 'lbl_back', 'PDP', 'Browse'),
     eGiftCardLink: getLabelValue(state.Labels, 'eGiftCardLink', 'PDP', 'Browse'),
   };
+};
+
+export const getAddedToBagErrorCatId = state => {
+  return state.AddedToBagReducer.get('errorCatId');
 };
