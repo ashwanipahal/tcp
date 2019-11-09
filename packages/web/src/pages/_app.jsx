@@ -177,7 +177,7 @@ class TCPWebApp extends App {
       // preview check from akamai header
       apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
       // preview date if any from the query param
-      apiConfig.previewDate = query.preview_date;
+      apiConfig.previewDate = req.query.preview_date;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
