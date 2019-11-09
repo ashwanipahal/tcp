@@ -1,3 +1,4 @@
+// This is library code so didn't write test cases of it.
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
