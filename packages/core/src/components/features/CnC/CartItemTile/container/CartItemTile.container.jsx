@@ -30,13 +30,15 @@ import {
   getCartBossBopisToggleError,
   getCurrencyExchange,
 } from './CartItemTile.selectors';
-import { updateAppTypeWithParams } from '../../../../../../../mobileapp/src/components/common/hoc/ThemeWrapper.actions';
 import {
   getSaveForLaterSwitch,
   getSflMaxCount,
 } from '../../SaveForLater/container/SaveForLater.selectors';
 import { getPersonalDataState } from '../../../account/User/container/User.selectors';
-import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import {
+  openQuickViewWithValues,
+  updateAppTypeWithParams,
+} from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import CONSTANTS from '../../Checkout/Checkout.constants';
 

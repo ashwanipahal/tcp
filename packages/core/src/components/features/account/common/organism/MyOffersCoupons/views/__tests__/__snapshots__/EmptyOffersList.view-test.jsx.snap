@@ -42,7 +42,7 @@ exports[`EmptyOffersList should render correctly 1`] = `
   >
     <Styled(Button)
       buttonVariation="variable-width"
-      className="coupon_button_black"
+      className="coupon_button_black shop-btn"
       data-locator="my-rewards-shop-now-btn"
       onClick={[Function]}
       type="submit"
