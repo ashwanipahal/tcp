@@ -213,14 +213,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }
   };
 
-  colorChange = e => {
+  colorChange = (e, colorIndex) => {
     const { selectedSize, selectedFit, selectedQuantity } = this.state;
     const { onChangeColor } = this.props;
     this.setState({
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
-      fitChanged: true,
+      fitChanged: selectedSize.name === '',
     });
     // props for any custom action to call
     if (onChangeColor) {
@@ -228,7 +228,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         e,
         selectedSize && selectedSize.name,
         selectedFit && selectedFit.name,
-        selectedQuantity
+        selectedQuantity,
+        colorIndex
       );
     }
   };
