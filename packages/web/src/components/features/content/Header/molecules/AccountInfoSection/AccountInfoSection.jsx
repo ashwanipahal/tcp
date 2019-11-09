@@ -61,6 +61,7 @@ const AccountInfoSection = ({
         triggerLoginCreateAccount={triggerLoginCreateAccount}
         onLinkClick={onLinkClick}
         openOverlay={openOverlay}
+        isDrawer
       />
     </BodyCopy>
   );

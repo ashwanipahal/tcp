@@ -284,17 +284,24 @@ export const scrollTopElement = elem => {
   }
 };
 
+/**
+ * 2019-11-05: Hotfix PR needed to address issue with this
+ * array of countries increasing in size with each call
+ * (up to over 400k items in some pages).
+ *
+ * @TODO RCA is re-rendering of the App component itself.
+ * Need to fix that. This is just a symptom.
+ */
 export const getCountriesMap = data => {
-  const countries = defaultCountries;
-  data.map(value =>
-    countries.push(
+  return [
+    ...defaultCountries,
+    ...data.map(value =>
       Object.assign({}, value.country, {
         siteId: 'us',
         currencyId: value.currency.id,
       })
-    )
-  );
-  return countries;
+    ),
+  ];
 };
 
 export const getCurrenciesMap = data => {
@@ -576,6 +583,18 @@ export const isIosWeb = () => {
   }
   return false;
 };
+
+/**
+ * To Identify whether the device is Android for web.
+ */
+
+export const isAndroidWeb = () => {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  if (/Android/.test(userAgent)) {
+    return true;
+  }
+  return false;
+};
 /**
  * This function will remove all the body scroll locks.
  */
@@ -639,6 +658,7 @@ export default {
   scrollToParticularElement,
   getDirections,
   isIosWeb,
+  isAndroidWeb,
   removeBodyScrollLocks,
   enableBodyScroll,
   disableBodyScroll,

@@ -143,6 +143,7 @@ class AddGiftCardForm extends React.PureComponent {
             dataLocator="gift-card-pinnumberfield"
             onChange={this.handleChange}
             keyboardType="numeric"
+            autoComplete="off"
           />
 
           <View>

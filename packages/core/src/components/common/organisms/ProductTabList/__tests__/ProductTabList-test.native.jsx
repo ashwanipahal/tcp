@@ -127,6 +127,6 @@ describe('ProductTabList', () => {
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalled();
+    expect(onProductTabChangeMock).not.toHaveBeenCalled();
   });
 });

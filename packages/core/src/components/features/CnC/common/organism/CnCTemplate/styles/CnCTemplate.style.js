@@ -39,6 +39,10 @@ const styles = css`
       font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     }
   }
+
+  .recommendationsWrapper {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
 `;
 
 export default styles;

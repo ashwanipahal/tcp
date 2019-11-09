@@ -6,7 +6,10 @@ import {
 
 import BodyCopy from '../BodyCopy';
 
-import { androidFontStyles } from '../../../../../styles/globalStyles/StyledText.style';
+import {
+  androidFontStyles,
+  iosFontStyles,
+} from '../../../../../styles/globalStyles/StyledText.style';
 
 const getAdditionalStyle = props => {
   const { margin, textDecoration } = props;
@@ -53,7 +56,7 @@ const getSpacingStyles = props => {
 
 export const StyledHeading = styled.Text`
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-  padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
+  padding: ${props => (props.noTopPadding ? 0 : props.theme.spacing.ELEM_SPACING.XL)} 0
     ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
@@ -81,6 +84,7 @@ export const TextWithSpacing = styled.Text`
   ${typographyStyleSystem}
   ${colorStyleSystem}
   ${androidFontStyles}
+  ${iosFontStyles}
   ${getAdditionalStyle}
 `;
 

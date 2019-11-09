@@ -230,11 +230,7 @@ export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap)
 };
 
 export const getFormattedLoyaltyText = text => {
-  return text
-    .replace(/<[^>]*>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .split('on');
+  return text.replace(/\s+/g, ' ').trim();
 };
 
 export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {

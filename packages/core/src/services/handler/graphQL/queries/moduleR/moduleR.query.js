@@ -38,8 +38,8 @@ const buildQuery = ({ slot, contentId, lang }) => `
          text
        }
        category{
-         key
          val
+         key
        }
        singleCTAButton {
          url

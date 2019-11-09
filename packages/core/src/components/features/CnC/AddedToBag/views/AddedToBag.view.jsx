@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import AddedToBagActions from '../../AddedToBagActions';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
@@ -10,6 +12,7 @@ import styles, {
   pointsInfoStyles,
   buttonActionStyles,
   LoyaltyWrapperStyles,
+  recommendationStyles,
 } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
@@ -82,6 +85,14 @@ const AddedToBag = ({
           <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
         </div>
         {!isInternationalShipping && <BossBannerView labels={labels} />}
+        <div className="recommendationWrapper">
+          <Recommendations
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+            variations="moduleO"
+            priceOnly
+            inheritedStyles={recommendationStyles}
+          />
+        </div>
         <div className="continue-shopping">
           <Anchor
             fontSizeVariation="medium"

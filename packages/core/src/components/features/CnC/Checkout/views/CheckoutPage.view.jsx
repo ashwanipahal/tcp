@@ -13,6 +13,8 @@ import Confirmation from '../../Confirmation';
 import { routerPush, scrollToParticularElement } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
+import CheckoutPageEmptyBag from '../molecules/CheckoutPageEmptyBag';
+import { handleReviewFormSubmit } from '../util/utility';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -21,6 +23,7 @@ class CheckoutPage extends React.PureComponent {
 
     this.pageServerError = null;
     this.pageServerErrorRef = this.pageServerErrorRef.bind(this);
+    this.reviewFormRef = React.createRef();
   }
 
   componentDidMount() {
@@ -178,6 +181,7 @@ class CheckoutPage extends React.PureComponent {
       toggleCountrySelector,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      isBagLoaded,
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -191,6 +195,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
             pickupDidMount={pickupDidMount}
+            isBagLoaded={isBagLoaded}
             isGuest={isGuest}
             isMobile={isMobile}
             isUsSite={isUsSite}
@@ -219,6 +224,7 @@ class CheckoutPage extends React.PureComponent {
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
+            isBagLoaded={isBagLoaded}
             cartOrderItemsCount={cartOrderItemsCount}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
             {...shippingProps}
@@ -246,6 +252,7 @@ class CheckoutPage extends React.PureComponent {
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            pickUpContactPerson={pickUpContactPerson}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -273,7 +280,9 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isGuest={isGuest}
             isExpressCheckout={isExpressCheckout}
+            onSubmit={this.reviewFormSubmit}
             shipmentMethods={shipmentMethods}
+            reviewFormSubmit={this.reviewFormSubmit}
             pickUpContactPerson={pickUpContactPerson}
             pickUpContactAlternate={pickUpContactAlternate}
             ServerErrors={this.renderPageErrors}
@@ -288,6 +297,7 @@ class CheckoutPage extends React.PureComponent {
                 lastName: pickUpAlternatePerson.lastName,
                 emailAddress: pickUpAlternatePerson.emailAddress,
               },
+              cardType: reviewProps.cardType,
             }}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
@@ -307,69 +317,85 @@ class CheckoutPage extends React.PureComponent {
     e.preventDefault();
   };
 
+  reviewFormSubmit = data => handleReviewFormSubmit.bind(this, data);
+
   pageServerErrorRef(ref) {
     this.pageServerError = ref;
   }
 
   render() {
-    const { isGuest, router, submitReview, reviewProps, checkoutServerError } = this.props;
-    const { cartOrderItemsCount } = this.props;
+    const {
+      isGuest,
+      router,
+      dispatchReviewReduxForm,
+      reviewProps,
+      checkoutServerError,
+      isBagLoaded,
+    } = this.props;
+    const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { ariaLabelSubmitOrderButton, applyConditionPreText } = reviewProps.labels;
     const { applyConditionTermsText, nextSubmitText } = reviewProps.labels;
     const { applyConditionPolicyText, applyConditionAndText } = reviewProps.labels;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+
     return (
-      <CnCTemplate
-        showLeftSection={cartOrderItemsCount > 0}
-        leftSection={this.renderLeftSection}
-        marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
-        isGuest={isGuest}
-        isCheckoutView
-        orderLedgerAfterView={
-          currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
-            <div className="review-submit-container">
-              <Button
-                aria-label={ariaLabelSubmitOrderButton}
-                type="button"
-                className="review-submit-button"
-                fontSize="fs13"
-                fontWeight="extrabold"
-                buttonVariation="variable-width"
-                fill="BLUE"
-                onClick={submitReview}
-              >
-                {nextSubmitText}
-              </Button>
-              <div className="submit-disclaimer">
-                {applyConditionPreText}
-                <Anchor
-                  className="submit-disclaimer-link"
-                  underline
-                  to="/#"
-                  dataLocator="termAndConditionText"
-                  onClick={this.handleDefaultLinkClick}
-                >
-                  {applyConditionTermsText}
-                </Anchor>
-                {applyConditionAndText}
-                <Anchor
-                  className="submit-disclaimer-link"
-                  underline
-                  to="/#"
-                  dataLocator="PrivacyText"
-                  onClick={this.handleDefaultLinkClick}
-                >
-                  {applyConditionPolicyText}
-                </Anchor>
-              </div>
-            </div>
-          )
-        }
-        isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
-        pageCategory={currentSection.toLowerCase()}
-        checkoutServerError={checkoutServerError}
-      />
+      <>
+        {!isBagLoaded || cartOrderItemsCount > 0 ? (
+          <CnCTemplate
+            showLeftSection
+            leftSection={this.renderLeftSection}
+            marginTop={currentSection.toLowerCase() !== CHECKOUT_STAGES.CONFIRMATION}
+            isGuest={isGuest}
+            isCheckoutView
+            orderLedgerAfterView={
+              currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
+                <div className="review-submit-container">
+                  <Button
+                    aria-label={ariaLabelSubmitOrderButton}
+                    type="button"
+                    className="review-submit-button"
+                    fontSize="fs13"
+                    fontWeight="extrabold"
+                    buttonVariation="variable-width"
+                    fill="BLUE"
+                    onClick={dispatchReviewReduxForm}
+                  >
+                    {nextSubmitText}
+                  </Button>
+                  <div className="submit-disclaimer">
+                    {applyConditionPreText}
+                    <Anchor
+                      className="submit-disclaimer-link"
+                      underline
+                      to="/#"
+                      dataLocator="termAndConditionText"
+                      onClick={this.handleDefaultLinkClick}
+                    >
+                      {applyConditionTermsText}
+                    </Anchor>
+                    {applyConditionAndText}
+                    <Anchor
+                      className="submit-disclaimer-link"
+                      underline
+                      to="/#"
+                      dataLocator="PrivacyText"
+                      onClick={this.handleDefaultLinkClick}
+                    >
+                      {applyConditionPolicyText}
+                    </Anchor>
+                  </div>
+                </div>
+              )
+            }
+            isConfirmationPage={currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION}
+            pageCategory={currentSection.toLowerCase()}
+            checkoutServerError={checkoutServerError}
+          />
+        ) : (
+          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
+        )}
+      </>
     );
   }
 }
@@ -385,6 +411,7 @@ CheckoutPage.propTypes = {
   billingProps: PropTypes.shape({}).isRequired,
   isOrderUpdateChecked: PropTypes.bool.isRequired,
   isGiftServicesChecked: PropTypes.bool.isRequired,
+  isBagLoaded: PropTypes.bool.isRequired,
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   pickupInitialValues: PropTypes.shape({}).isRequired,
   pickUpLabels: PropTypes.shape({}).isRequired,
@@ -419,6 +446,7 @@ CheckoutPage.propTypes = {
   isExpressCheckout: PropTypes.bool,
   shippingMethod: PropTypes.shape({}),
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  dispatchReviewReduxForm: PropTypes.func.isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
   pickUpContactPerson: PropTypes.shape({}).isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,

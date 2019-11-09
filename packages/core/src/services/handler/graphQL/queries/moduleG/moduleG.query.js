@@ -8,19 +8,19 @@ const buildQuery = ({ slot, contentId }) => `
       val
       key
     }
-  
+
     composites {
      headerText {
        textItems {
          text
          style
        }
-  
+
        icon {
          placement
          icon
        }
-  
+
        link {
          url
          text
@@ -38,7 +38,7 @@ const buildQuery = ({ slot, contentId }) => `
            style
          }
        }
-  
+
      linkedImage {
        link {
          url
@@ -46,7 +46,7 @@ const buildQuery = ({ slot, contentId }) => `
          title
          target
        }
-  
+
        image {
          url
          alt
@@ -63,7 +63,7 @@ const buildQuery = ({ slot, contentId }) => `
            key
            val
          }
-       
+
          singleCTAButton {
            url
            text
@@ -71,8 +71,8 @@ const buildQuery = ({ slot, contentId }) => `
            title
          }
      }
-    }
- 
+  }
+
  }
 `;
 

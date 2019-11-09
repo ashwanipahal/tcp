@@ -63,6 +63,7 @@ import StoresInternationalReducer from '@tcp/core/src/components/features/storeL
 import StoreListReducer from '@tcp/core/src/components/features/storeLocator/StoreList/container/StoreList.reducer';
 import MyPreferenceSubscriptionReducer from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.reducer';
 import BundleProductReducer from '@tcp/core/src/components/features/browse/BundleProduct/container/BundleProduct.reducer';
+import AnalyticsReducer from '@tcp/core/src/analytics/Analytics.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -137,6 +138,7 @@ import {
   STORE_LIST_REDUCER_KEY,
   MY_PREFERENCE_REDUCER_KEY,
   BUNDLEPRODUCT_REDUCER_KEY,
+  ANALYTICS_DATA_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -267,4 +269,5 @@ export default combineReducers({
   [STORE_LIST_REDUCER_KEY]: StoreListReducer,
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
   [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
+  [ANALYTICS_DATA_KEY]: AnalyticsReducer,
 });

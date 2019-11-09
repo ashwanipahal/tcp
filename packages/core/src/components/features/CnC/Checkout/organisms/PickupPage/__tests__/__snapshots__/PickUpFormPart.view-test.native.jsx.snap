@@ -128,6 +128,8 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
               isAlternateUpdateChecked={false}
               isCondensed={false}
               isEditing={false}
+              isExpressCheckout={false}
+              isHasPickUpAlternatePerson={false}
               labels={Object {}}
               showNoteOnToggle={true}
             />
@@ -274,6 +276,8 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
               isAlternateUpdateChecked={false}
               isCondensed={false}
               isEditing={true}
+              isExpressCheckout={false}
+              isHasPickUpAlternatePerson={false}
               labels={Object {}}
               showNoteOnToggle={true}
             />
@@ -321,6 +325,8 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
             <Styled(PickupMainContactEditForm)
               className="pickup-contact-guest-form"
               dispatch={[MockFunction]}
+              editModeSubmissionError=""
+              errorMessageRef={[Function]}
               formData={
                 Object {
                   "emailAddress": "",
@@ -353,7 +359,6 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
                 }
               }
               isEditing={false}
-              isMobile={false}
               labels={Object {}}
               onEditModeChange={[Function]}
               showPhoneNumber={true}
@@ -370,6 +375,8 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
               isAlternateUpdateChecked={false}
               isCondensed={false}
               isEditing={false}
+              isExpressCheckout={false}
+              isHasPickUpAlternatePerson={false}
               labels={Object {}}
               showNoteOnToggle={true}
             />

@@ -30,6 +30,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     />
   </Styled(View)>
   <Styled(ProductListView)
+    AddToFavoriteErrorMsg=""
     breadCrumbs={Array []}
     filteredId="ALL"
     filters={null}
@@ -37,8 +38,10 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     getProducts={[MockFunction]}
     isFavorite={false}
     isLoadingMore={false}
+    isLoggedIn={false}
     labels={Object {}}
     labelsFilter={Object {}}
+    labelsLogin={Object {}}
     lastLoadedPageNumber={0}
     margins={null}
     navigation={
@@ -46,12 +49,14 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
         "getParam": [Function],
       }
     }
+    onAddItemToFavorites={null}
     onFilterSelection={[Function]}
     onPickUpOpenClick={[Function]}
     onSortSelection={[Function]}
     onSubmit={[MockFunction]}
     paddings={null}
     products={Array []}
+    removeAddToFavoritesErrorMsg={[Function]}
     renderBrandFilter={null}
     setListRef={[Function]}
     slpLabels={
@@ -62,7 +67,19 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     sortLabels={Object {}}
     totalProductsCount={0}
   />
-  <Connect(QuickViewModalContainer) />
-  <Connect(AddedToBagContainer) />
+  <Connect(QuickViewModalContainer)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
+  <Connect(AddedToBagContainer)
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+  />
 </Styled(View)>
 `;

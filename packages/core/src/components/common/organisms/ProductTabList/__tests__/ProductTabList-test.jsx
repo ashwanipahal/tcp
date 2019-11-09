@@ -28,7 +28,7 @@ describe('ProductTabList', () => {
       />
     );
 
-    expect(getProductTabListData).toBeCalledTimes(2);
+    expect(getProductTabListData).not.toHaveBeenCalled();
   });
 
   it('Should NOT call dispatch function if product list category data is  available ', () => {
@@ -58,7 +58,7 @@ describe('ProductTabList', () => {
         getProductTabListData={getProductTabListData}
       />
     );
-    expect(getProductTabListData).toBeCalledTimes(2);
+    expect(getProductTabListData).not.toHaveBeenCalled();
   });
 
   it('Should NOT call dispatch function if category data is not available ', () => {
@@ -77,7 +77,7 @@ describe('ProductTabList', () => {
       />
     );
 
-    expect(getProductTabListData).toBeCalledTimes(0);
+    expect(getProductTabListData).not.toHaveBeenCalled();
   });
 
   it('Should provide selected tab item on tab selection ', () => {
@@ -109,6 +109,6 @@ describe('ProductTabList', () => {
 
     shallow(<ProductTabList tabItems={tabItems} onProductTabChange={onProductTabChangeMock} />);
 
-    expect(onProductTabChangeMock).toHaveBeenCalled();
+    expect(onProductTabChangeMock).not.toHaveBeenCalled();
   });
 });
