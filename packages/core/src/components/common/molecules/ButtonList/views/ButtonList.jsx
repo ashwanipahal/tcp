@@ -133,6 +133,7 @@ const ButtonList = props => {
     dataLocatorDivisionImages,
     dataLocatorTextCta,
     fill,
+    btnCompClass,
   } = props;
 
   const buttonListConfig = getButtonListConfig(buttonListVariation, buttonsData.length);
@@ -156,7 +157,7 @@ const ButtonList = props => {
         {buttonsData.map((item, index) => {
           const { button = {}, image } = item;
           const compProps = {
-            className: `${compClassName}-class`,
+            className: `${compClassName}-class ${btnCompClass}`,
             ctaInfo: {
               ...ctaInfo,
               link: button,
@@ -200,6 +201,7 @@ ButtonList.defaultProps = {
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',
   fill: '',
+  btnCompClass: '',
 };
 
 ButtonList.propTypes = {
@@ -222,6 +224,7 @@ ButtonList.propTypes = {
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,
   fill: PropTypes.string,
+  btnCompClass: PropTypes.string,
 };
 
 export default withStyles(errorBoundary(ButtonList), ButtonListStyle);

@@ -341,6 +341,7 @@ class ProductInformation extends PureComponent {
       setShipToHome,
       pickupStoresInCart,
       navigation,
+      updateAppTypeHandler,
       autoSwitchPickupItemInCart,
     } = this.props;
     const { openedTile, setSelectedProductTile, isBagPageSflSection, orderId } = this.props;
@@ -392,7 +393,8 @@ class ProductInformation extends PureComponent {
               productDetail,
               labels,
               showOnReviewPage,
-              navigation
+              navigation,
+              updateAppTypeHandler
             )}
             <ProductDescription>
               {showOnReviewPage && !!productDetail.miscInfo.badge && (
@@ -403,7 +405,12 @@ class ProductInformation extends PureComponent {
                   text={productDetail.miscInfo.badge}
                 />
               )}
-              {CartItemTileExtension.getProductName(productDetail, showOnReviewPage, navigation)}
+              {CartItemTileExtension.getProductName(
+                productDetail,
+                showOnReviewPage,
+                navigation,
+                updateAppTypeHandler
+              )}
               {showOnReviewPage && CartItemTileExtension.heartIcon(isBagPageSflSection)}
               <ProductSubDetails>
                 <ProductDesc>
@@ -514,6 +521,7 @@ ProductInformation.propTypes = {
   setShipToHome: PropTypes.func,
   pickupStoresInCart: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
+  updateAppTypeHandler: PropTypes.func,
   autoSwitchPickupItemInCart: PropTypes.func.isRequired,
   toggleBossBopisError: PropTypes.shape({
     errorMessage: PropTypes.string,
@@ -531,6 +539,7 @@ ProductInformation.defaultProps = {
   clearToggleError: () => {},
   setShipToHome: () => {},
   navigation: {},
+  updateAppTypeHandler: () => {},
   toggleBossBopisError: null,
 };
 

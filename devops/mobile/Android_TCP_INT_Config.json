@@ -280,6 +280,14 @@
     {
       "name": "RWD_APP_TWITTER_CONSUMER_SECRET_GYM",
       "value": "OxdTAylJ5DDw8BRk48KkViwmNDWdwfgTxNMhWWzaXQXKApoL2E"
+    },
+    {
+      "name": "RWD_APP_HOST_TCP",
+      "value": ".childrensplace.com"
+    },
+    {
+      "name": "RWD_APP_HOST_GYM",
+      "value": ".gymboree.com"
     }
   ],
   "signed": true,
