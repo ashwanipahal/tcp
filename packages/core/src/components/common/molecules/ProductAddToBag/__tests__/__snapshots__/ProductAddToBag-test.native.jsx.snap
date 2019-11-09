@@ -21,6 +21,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
   selectedSize={null}
   showAddToBagCTA={true}
   sizeList={Array []}
+  toastMessage={[Function]}
 >
   <Field
     component={
@@ -175,7 +176,6 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       textAlignLeft={true}
     />
   </Styled(View)>
-  <ErrorDisplay />
   <Styled(CustomButton)
     accessibilityLabel="Add to Bag"
     active={false}

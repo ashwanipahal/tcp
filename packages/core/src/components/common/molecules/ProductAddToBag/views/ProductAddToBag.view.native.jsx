@@ -15,7 +15,6 @@ import styles, {
 } from '../styles/ProductAddToBag.style.native';
 import { Button, BodyCopy } from '../../../atoms';
 import { NativeDropDown } from '../../../atoms/index.native';
-import ErrorDisplay from '../../../atoms/ErrorDisplay';
 import SizeChart from '../molecules/SizeChart/container';
 import AlternateSizes from '../molecules/AlternateSizes';
 
@@ -29,6 +28,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      showToastMessage: true,
+    };
   }
 
   /**
@@ -41,6 +43,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { fromBagPage, plpLabels } = this.props;
     const { addToBag, update } = plpLabels;
     return fromBagPage ? update : addToBag;
+  };
+
+  componentDidUpdate = () => {
+    const { errorOnHandleSubmit } = this.props;
+    if (errorOnHandleSubmit) {
+      this.onToastMessage(errorOnHandleSubmit);
+    }
   };
 
   /**
@@ -119,6 +128,17 @@ class ProductAddToBag extends React.PureComponent<Props> {
     }
   };
 
+  onToastMessage = errorMessage => {
+    const { toastMessage } = this.props;
+    const { showToastMessage } = this.state;
+    if (showToastMessage) {
+      toastMessage(errorMessage);
+      this.setState({
+        showToastMessage: false,
+      });
+    }
+  };
+
   render() {
     const {
       colorList,
@@ -130,7 +150,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectFit,
       selectSize,
       isErrorMessageDisplayed,
-      errorOnHandleSubmit,
       plpLabels: { errorMessage, size, fit, color },
       quantityList,
       plpLabels: { quantity },
@@ -148,7 +167,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
     const { name: colorName } = selectedColor || {};
     const { name: fitName = '' } = selectedFit || {};
     const { name: sizeName = '' } = selectedSize || {};
-    const sizeError = isErrorMessageDisplayed ? errorMessage : '';
+    const sizeError = isErrorMessageDisplayed ? this.onToastMessage(errorMessage) : '';
+
     const quantityDropDownStyle = {
       width: 200,
     };
@@ -232,7 +252,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </RowViewContainer>
 
-        <ErrorDisplay error={errorOnHandleSubmit} />
         {showAddToBagCTA && this.renderAddToBagButton()}
       </View>
     );
@@ -255,6 +274,7 @@ ProductAddToBag.propTypes = {
   selectedQuantity: PropTypes.number,
   currentProduct: PropTypes.shape({}).isRequired,
   selectedColorProductId: PropTypes.number.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 ProductAddToBag.defaultProps = {
@@ -270,6 +290,7 @@ ProductAddToBag.defaultProps = {
   handleFormSubmit: null,
   selectedQuantity: 1,
   showAddToBagCTA: true,
+  toastMessage: () => {},
 };
 
 /* export view with redux form */

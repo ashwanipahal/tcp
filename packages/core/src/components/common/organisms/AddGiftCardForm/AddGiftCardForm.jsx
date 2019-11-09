@@ -231,6 +231,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               className="giftCardNumber"
               onChange={this.handleChange}
               id="giftCardNumber"
+              autoComplete="off"
             />
           </Col>
           {!isRow && (
@@ -243,6 +244,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 dataLocator="gift-card-pinnumberfield"
                 onChange={this.handleChange}
                 id="cardPin"
+                autoComplete="off"
               />
             </Col>
           )}
@@ -259,6 +261,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
                 className="cardPin"
                 onChange={this.handleChange}
                 id="cardPin"
+                autoComplete="off"
               />
             </Col>
           </Row>
