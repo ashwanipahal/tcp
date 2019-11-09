@@ -40,7 +40,6 @@ const CnCCommonTemplate = ({
   isPayPalWebViewEnable,
   showPayPalButton,
 }) => {
-  console.log('getPayPalSettings', getPayPalSettings, isPayPalWebViewEnable, showPayPalButton);
   return (
     <CnContainer isPayPalWebViewEnable={isPayPalWebViewEnable}>
       {!isConfirmationPage ? (
