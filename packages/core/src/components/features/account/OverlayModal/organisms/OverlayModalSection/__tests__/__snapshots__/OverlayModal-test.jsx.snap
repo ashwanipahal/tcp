@@ -1,10 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OverlayModal should render correctly 1`] = `
+exports[`OverlayModal should render Modal correctly 1`] = `
+<div>
+  <Styled(Modal)
+    className=""
+    contentRef={[Function]}
+    heightConfig={
+      Object {
+        "minHeight": "500px",
+      }
+    }
+    id="modalWrapper"
+    isOpen={true}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "small": "100%",
+      }
+    }
+  >
+    <div
+      className="dialog__content undefined"
+      id="dialogContent"
+    >
+      <ModalContent
+        className="modal__content"
+      />
+    </div>
+  </Styled(Modal)>
+</div>
+`;
+
+exports[`OverlayModal should render Overlay correctly 1`] = `
 <div
   className=""
   color={null}
   id="modalWrapper"
+  tabIndex="-1"
 >
   <div
     className="dialog__content undefined"
@@ -15,11 +49,11 @@ exports[`OverlayModal should render correctly 1`] = `
       onClick={[Function]}
     />
     <div
-      className="modal__triangle hide-on-mobile undefined"
+      className="triangle-theme modal__triangle hide-on-mobile undefined"
       id="modalTriangle"
     />
     <div
-      className="modal__bar hide-on-mobile"
+      className="mpr-plcc-theme modal__bar hide-on-mobile"
     />
     <ModalContent
       className="modal__content"

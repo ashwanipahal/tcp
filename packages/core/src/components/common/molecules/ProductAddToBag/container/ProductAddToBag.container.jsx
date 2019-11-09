@@ -16,7 +16,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     const { currentProduct, selectedColorProductId, getProductInitialValues } = props;
     this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
 
-    if (typeof getProductInitialValues === 'function')
+    if (getProductInitialValues && typeof getProductInitialValues === 'function')
       getProductInitialValues(this.initialValuesForm);
 
     this.state = {
@@ -141,8 +141,19 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         selectedColorProductId
       );
 
-    const { initialFormValues } =
-      nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
+    let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
+
+    const { fromBagPage } = this.props;
+
+    if (fromBagPage) {
+      const { productInfoFromBag } = this.props;
+      initialFormValues = {
+        color: productInfoFromBag.selectedColor,
+        Size: productInfoFromBag.selectedSize,
+        Fit: productInfoFromBag.selectedFit,
+        Quantity: productInfoFromBag.selectedQty,
+      };
+    }
 
     return {
       color: {
@@ -398,7 +409,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     this.initialValuesForm.Quantity = selectedQty || 1;
     this.initialValuesForm.Size = selectedSize;
     this.initialValuesForm.color = selectedColor;
-    getProductInitialValues(this.initialValuesForm);
+
+    if (getProductInitialValues && typeof getProductInitialValues === 'function')
+      getProductInitialValues(this.initialValuesForm);
   };
 
   /**
@@ -432,6 +445,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       sizeChartLinkVisibility,
       navigation,
       isPickup,
+      onCloseClick,
       ...otherProps
     } = this.props;
     const {
@@ -493,6 +507,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         sizeChartLinkVisibility={sizeChartLinkVisibility}
         navigation={navigation}
         isPickup={isPickup}
+        onCloseClick={onCloseClick}
       />
     );
   }

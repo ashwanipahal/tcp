@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import { toastMessageInfo } from '../../../atoms/Toast/container/Toast.actions.native';
+import { isMobileApp } from '../../../../../utils';
 import { productTabListDataReq } from './ProductTabList.actions';
 import ProductTabListView from '../views';
+import errorMessage from '../../../../../services/handler/stateful/errorResponseMapping/index.json';
 
 class ProductTabListContainer extends React.PureComponent {
   constructor(props) {
@@ -18,29 +20,42 @@ class ProductTabListContainer extends React.PureComponent {
     const {
       tabItems: [item = {}],
     } = this.props;
-    const { category: { cat_id: catId } = {} } = item;
-    this.updateCategoryId(catId);
+    const { category = [] } = item;
+    const processedCatId = this.getCategoryIds(category);
+    /*
+      Need to deferred the request because in app there is an issue while making request
+      immediately on load.
+     */
+    setTimeout(() => {
+      this.updateCategoryId(processedCatId);
+    }, 0);
   }
 
+  componentDidUpdate() {
+    if (isMobileApp()) this.manageErrorToast();
+  }
+
+  getCategoryIds = catIds => {
+    const processedCatId = [];
+    if (catIds.length) {
+      catIds.forEach(item => processedCatId.push(item.val || item));
+    }
+    return processedCatId;
+  };
+
   onTabChange = catId => {
-    this.updateCategoryId(catId);
+    const processedCatId = this.getCategoryIds(catId);
+    this.updateCategoryId(processedCatId);
   };
 
   /* Create a map of category Ids with the items.  */
   getTabItemsMap = tabItems => {
     return tabItems.reduce((map, item) => {
-      const {
-        category: { cat_id: catId },
-      } = item;
+      const { category = [] } = item;
+
+      const catId = category.map(cat => cat.val).join('_');
       const tabsMap = map;
-      if (Array.isArray(catId)) {
-        catId.forEach(id => {
-          tabsMap[id] = item;
-          return tabsMap;
-        });
-      } else {
-        tabsMap[catId] = item;
-      }
+      tabsMap[catId] = item;
       return tabsMap;
     }, {});
   };
@@ -52,29 +67,42 @@ class ProductTabListContainer extends React.PureComponent {
   getButtonTabItems = tabItems => {
     return tabItems.map(item => {
       const {
-        category: { cat_id: catId } = {},
+        category = {},
         text: { text },
       } = item;
-      return { label: text, id: catId };
+      const processedCatId = this.getCategoryIds(category);
+      return { label: text, id: processedCatId };
     });
   };
 
+  /*
+      To manage the error message Toast in mobile app
+    */
+  manageErrorToast() {
+    const { productTabList, showToast } = this.props;
+    let { selectedCategoryId } = this.state;
+    selectedCategoryId = selectedCategoryId || [];
+    const tabsData = selectedCategoryId.map(id => productTabList[id]).filter(item => item);
+    if (tabsData.length === selectedCategoryId.length) {
+      tabsData.forEach(tabData => {
+        if (!tabData.length && isMobileApp()) {
+          showToast(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException);
+        }
+      });
+    }
+  }
+
   updateCategoryId(categoryId) {
-    let catId = categoryId;
-    if (catId) {
-      if (!Array.isArray(catId)) {
-        catId = [catId];
-      }
+    if (categoryId) {
       const { productTabList, getProductTabListData, onProductTabChange, tabItems } = this.props;
-      const categoryItem = [];
-      catId.map(id => categoryItem.push(this.getTabItemsMap(tabItems)[id]));
-      this.setState({ selectedCategoryId: catId });
-      onProductTabChange(catId, categoryItem);
-      catId.forEach(id => {
+      this.setState({ selectedCategoryId: categoryId });
+      onProductTabChange(categoryId, this.getTabItemsMap(tabItems)[categoryId.join('_')]);
+      categoryId.forEach(id => {
         if (!productTabList[id]) {
           getProductTabListData({ categoryId: id });
         }
       });
+      this.manageErrorToast();
     }
   }
 
@@ -106,6 +134,7 @@ ProductTabListContainer.defaultProps = {
 
 ProductTabListContainer.propTypes = {
   getProductTabListData: PropTypes.func,
+  showToast: PropTypes.func.isRequired,
   tabItems: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -138,6 +167,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     getProductTabListData: payload => {
       dispatch(productTabListDataReq(payload));
+    },
+    showToast: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 };

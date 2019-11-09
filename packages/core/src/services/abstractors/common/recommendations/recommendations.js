@@ -109,7 +109,7 @@ const RecommendationsAbstractor = {
       }
     });
   },
-  getAppData: ({ pageType, categoryName, partNumber }) => {
+  getAppData: ({ pageType, categoryName, partNumber, mbox = 'target-global-mbox' }) => {
     const ADOBE_RECOMMENDATIONS_URL = 'https://tcp.tt.omtrdc.net/rest/v1/mbox?client=tcp';
     const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
     const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
@@ -126,11 +126,11 @@ const RecommendationsAbstractor = {
       },
       body: {
         marketingCloudVisitorId: '',
-        mbox: 'target-global-mbox',
+        mbox,
         requestLocation,
         mboxParameters: {
-          'entity.categoryId': categoryName || 'boysskinnychinopants', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
-          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '2057032_NN_US', // Hardcoded value present since API not providing data as of now for homepage, would be dynamic for PDP and Checkout page
+          'entity.categoryId': categoryName || '',
+          'entity.id': partNumber ? `${partNumber}_${region.toUpperCase()}` : '',
           pageType,
           region,
         },

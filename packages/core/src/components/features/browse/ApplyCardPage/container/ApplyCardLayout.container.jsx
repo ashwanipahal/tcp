@@ -100,6 +100,7 @@ class ApplyCardLayoutContainer extends React.Component {
       applyCard,
       toggleModal,
       resetPLCCApplicationStatus,
+      closeModal,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
 
@@ -122,6 +123,7 @@ class ApplyCardLayoutContainer extends React.Component {
           showAddEditAddressForm={showAddEditAddressForm}
           submitForm={this.submitForm}
           closeAddressVerificationModal={this.closeAddressVerificationModal}
+          closeModal={closeModal}
         />
         {!isMobileApp() && showAddEditAddressForm ? (
           <AddressVerification onSuccess={this.submitForm} />
@@ -147,6 +149,11 @@ ApplyCardLayoutContainer.propTypes = {
   applyCard: PropTypes.bool.isRequired,
   toggleModal: PropTypes.shape({}).isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  closeModal: PropTypes.func,
+};
+
+ApplyCardLayoutContainer.defaultProps = {
+  closeModal: () => {},
 };
 
 export const mapStateToProps = state => {

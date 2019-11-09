@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "height": 42,
+      "overflow": "hidden",
+      "width": 150,
+    }
+  }
+>
+  <WebView
+    allowUniversalAccessFromFileURLs={true}
+    domStorageEnabled={true}
+    javaScriptEnabled={true}
+    mixedContentMode="always"
+    onMessage={[Function]}
+    originWhitelist={
+      Array [
+        "*",
+      ]
+    }
+    scalesPageToFit={true}
+    scrollEnabled={true}
+    source={
+      Object {
+        "uri": "/abc/static/paypal/index.html?key=abcd&paypalEnv=sandbox",
+      }
+    }
+    startInLoadingState={true}
+    thirdPartyCookiesEnabled={true}
+    useWebKit={true}
+  />
+</View>
+`;

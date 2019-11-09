@@ -22,8 +22,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 8,
-          "medium": 5,
-          "small": 3,
+          "medium": 6,
+          "small": 4,
         }
       }
     />
@@ -32,13 +32,13 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 4,
-          "medium": 3,
-          "small": 3,
+          "medium": 2,
+          "small": 2,
         }
       }
       data-locator="addedtobag-productprice"
     >
-      undefined 12
+      undefined 12.00
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -48,8 +48,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 8,
-          "medium": 5,
-          "small": 3,
+          "medium": 6,
+          "small": 5,
         }
       }
     >
@@ -70,8 +70,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 4,
-          "medium": 3,
-          "small": 3,
+          "medium": 2,
+          "small": 1,
         }
       }
     >
@@ -103,8 +103,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 8,
-          "medium": 5,
-          "small": 3,
+          "medium": 6,
+          "small": 4,
         }
       }
     >
@@ -121,8 +121,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 4,
-          "medium": 3,
-          "small": 3,
+          "medium": 2,
+          "small": 2,
         }
       }
       data-locator="addedtobag-bagsubtotal"
@@ -138,8 +138,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 8,
-          "medium": 5,
-          "small": 3,
+          "medium": 6,
+          "small": 5,
         }
       }
     >
@@ -160,8 +160,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 4,
-          "medium": 3,
-          "small": 3,
+          "medium": 2,
+          "small": 1,
         }
       }
     >
@@ -190,8 +190,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 8,
-          "medium": 5,
-          "small": 3,
+          "medium": 6,
+          "small": 5,
         }
       }
     >
@@ -212,8 +212,8 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       colSize={
         Object {
           "large": 4,
-          "medium": 3,
-          "small": 3,
+          "medium": 2,
+          "small": 1,
         }
       }
     >

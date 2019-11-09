@@ -47,6 +47,7 @@ class ConfirmationContainer extends React.Component {
     venmoUserName: PropTypes.string,
     pageCategory: PropTypes.string,
     isVenmoPaymentInProgress: PropTypes.bool,
+    navigation: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {
@@ -110,6 +111,7 @@ class ConfirmationContainer extends React.Component {
       venmoUserName,
       isVenmoPaymentInProgress,
       pageCategory,
+      navigation,
     } = this.props;
     return (
       <ConfirmationView
@@ -127,6 +129,7 @@ class ConfirmationContainer extends React.Component {
         venmoUserName={venmoUserName}
         isVenmoPaymentInProgress={isVenmoPaymentInProgress}
         pageCategory={pageCategory}
+        navigation={navigation}
       />
     );
   }

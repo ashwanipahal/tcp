@@ -5,7 +5,7 @@ import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
 import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
-import HomePageSlots from '@tcp/core/src/components/common/molecules/HomePageSlots';
+import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 
 import {
   ModuleD,
@@ -21,10 +21,13 @@ import {
   ModuleS,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
+import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
-import moduleTMock from '@tcp/core/src/services/abstractors/common/moduleT/mock';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
+import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import { HeaderPromoContainer } from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -41,6 +44,7 @@ const modulesMap = {
   moduleR: ModuleR,
   moduleS: ModuleS,
   moduleQ: ModuleQ,
+  moduleT: ModuleT,
 };
 
 class HomePageView extends React.PureComponent<Props> {
@@ -119,17 +123,25 @@ class HomePageView extends React.PureComponent<Props> {
       navigation,
       screenProps: { apiConfig },
       headerPromo,
+      loyaltyPromoBanner,
     } = this.props;
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
-        <HomePageSlots slots={slots} modules={modulesMap} navigation={navigation} />
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
+        <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
+        <Recommendations
+          navigation={navigation}
+          showButton
+          variation="moduleO,moduleP"
+          page="homepageTest"
+        />
         <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
-        <ModuleT navigation={navigation} {...moduleTMock.moduleT.composites} />
+        <ModuleM navigation={navigation} {...mock.moduleM.composites} />
+        <QuickViewModal navigation={navigation} />
       </LazyloadScrollView>
     );
   }

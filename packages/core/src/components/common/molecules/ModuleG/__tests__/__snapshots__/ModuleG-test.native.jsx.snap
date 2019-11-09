@@ -14,37 +14,15 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
                   "placement": "",
                 },
                 "link": Object {
-                  "action": "",
-                  "external": 0,
                   "target": "",
                   "text": "",
                   "title": "",
-                  "url": "/p/",
+                  "url": "/c/ab",
                 },
                 "textItems": Array [
                   Object {
                     "style": "medium_text_regular",
                     "text": "ALL MATCHABLES",
-                  },
-                ],
-              },
-              Object {
-                "icon": Object {
-                  "icon": "",
-                  "placement": "",
-                },
-                "link": Object {
-                  "action": "",
-                  "external": 0,
-                  "target": "",
-                  "text": "",
-                  "title": "",
-                  "url": "/p/",
-                },
-                "textItems": Array [
-                  Object {
-                    "style": "large_text_black",
-                    "text": "60% OFF",
                   },
                 ],
               },
@@ -59,17 +37,12 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
             Array [
               Object {
                 "link": Object {
-                  "class": "",
-                  "external": 0,
-                  "target": "",
-                  "text": "",
                   "title": "",
-                  "url": "/c/",
+                  "url": "/c",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "extrabold_text_regular",
-                    "style2": "style2",
+                    "style": "large_text_black",
                     "text": "60% OFF",
                   },
                 ],
@@ -86,108 +59,108 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       tabItems={
         Array [
           Object {
-            "category": Object {
-              "cat_id": Array [
-                "47503>47544",
-                "47501>47526",
-              ],
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "47503>47544",
+              },
+              Object {
+                "key": "cat_id",
+                "val": "47503>47544",
+              },
+            ],
             "singleCTAButton": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "http://www.childrensplace.com",
+              "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "http://www.childrensplace.com",
+              "url": "/c/us",
             },
             "text": Object {
               "text": "GIRL",
             },
           },
           Object {
-            "category": Object {
-              "cat_id": Array [
-                "47526",
-                "47526",
-              ],
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "47501",
+              },
+              Object {
+                "key": "cat_id",
+                "val": "47503>47544",
+              },
+            ],
             "singleCTAButton": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "http://www.childrensplace.com",
+              "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "http://www.childrensplace.com",
+              "url": "/c/us",
             },
             "text": Object {
               "text": "TODDLER GIRL",
             },
           },
           Object {
-            "category": Object {
-              "cat_id": Array [
-                "47526",
-                "47503>47544",
-              ],
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "47503",
+              },
+              Object {
+                "key": "cat_id",
+                "val": "47501>47526",
+              },
+            ],
             "singleCTAButton": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "http://www.childrensplace.com",
+              "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "http://www.childrensplace.com",
+              "url": "/c/us",
             },
             "text": Object {
               "text": "BOY",
             },
           },
           Object {
-            "category": Object {
-              "cat_id": Array [
-                "47501>47526",
-                "47501>47526",
-              ],
-            },
+            "category": Array [
+              Object {
+                "key": "cat_id",
+                "val": "47526",
+              },
+              Object {
+                "key": "cat_id",
+                "val": "47511|516020",
+              },
+            ],
             "singleCTAButton": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "http://www.childrensplace.com",
+              "url": "/c/us",
             },
             "singleCTAButtonCart": Object {
-              "action": "",
-              "external": 0,
               "target": "",
               "text": "Shop All Matchables",
               "title": "add to bag",
-              "url": "/us",
+              "url": "/c/us",
             },
             "text": Object {
               "text": "TODDLER BOY",
@@ -235,6 +208,5 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       <View />
     </Styled(View)>
   </View>
-  <Connect(QuickViewModalContainer) />
 </Styled(View)>
 `;

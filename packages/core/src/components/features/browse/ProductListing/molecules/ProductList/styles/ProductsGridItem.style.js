@@ -51,6 +51,9 @@ const styles = css`
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
     }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+    }
   }
 
   .top-badge-container {
@@ -168,14 +171,17 @@ const styles = css`
   }
 
   .loyalty-text-container {
+    visibility: hidden;
     color: ${props =>
       props.isPlcc
         ? props.theme.colorPalette.userTheme.plcc
         : props.theme.colorPalette.userTheme.mpr};
     box-sizing: border-box;
-    overflow: hidden;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    span {
+      visibility: visible;
+    }
   }
-
   .empty-color-chips-container {
     min-height: 35px;
   }

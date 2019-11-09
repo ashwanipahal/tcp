@@ -15,15 +15,17 @@ import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getPaypalButton() {
-    const { showAddTobag, containerId, isBagPageStickyHeader } = this.props;
+    const { showAddTobag, containerId, isBagPageStickyHeader, isPayPalHidden } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
       containerID = 'paypal-button-container-bag-header';
     }
     return (
-      <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-        <PayPalButton className="payPal-button" containerId={containerID} />
-      </div>
+      !isPayPalHidden && (
+        <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
+          <PayPalButton className="payPal-button" containerId={containerID} />
+        </div>
+      )
     );
   }
 
@@ -41,7 +43,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       <Button
         data-locator={getLocator('addedtobag_btncheckout')}
         className="checkout"
-        onClick={() => handleCartCheckout(isEditingItem)}
+        onClick={() => handleCartCheckout({ isEditingItem })}
       >
         <BodyCopy
           component="span"
@@ -124,13 +126,12 @@ class AddedToBagActions extends React.PureComponent<Props> {
           {this.getCheckoutButton()}
           <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
         </Row>
-        {checkoutServerError && (
+        {(checkoutServerError || venmoError) && (
           <Row className="elem-mt-MED">
             <ErrorMessage
-              error={checkoutServerError.errorMessage}
+              error={venmoError || checkoutServerError.errorMessage}
               className="addBagActions-error"
             />
-            {venmoError && <ErrorMessage error={venmoError} className="checkout-page-error" />}
           </Row>
         )}
       </div>

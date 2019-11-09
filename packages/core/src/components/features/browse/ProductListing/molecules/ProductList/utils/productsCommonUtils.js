@@ -65,6 +65,14 @@ export function getVariantId(colorFitsSizesMap, color, fit, size) {
 }
 
 /**
+ * @return the variant no selected by the user.
+ */
+export function getVariantNo(colorFitsSizesMap, color, fit, size) {
+  const currentSizeEntry = getMapSliceForSize(colorFitsSizesMap, color, fit, size);
+  return currentSizeEntry && currentSizeEntry.variantNo;
+}
+
+/**
  * Returns the list and offer prices corresponding to the sku with the given color, fit and size.
  */
 export function getPrices(productInfo, color, fit, size) {
@@ -222,11 +230,7 @@ export const checkAndGetDefaultFitName = (fitName, colorName, colorFitsSizesMap)
 };
 
 export const getFormattedLoyaltyText = text => {
-  return text
-    .replace(/<[^>]*>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .split('on');
+  return text.replace(/\s+/g, ' ').trim();
 };
 
 export const getDefaultSizes = (formValues, productInfo, isShowDefaultSize) => {

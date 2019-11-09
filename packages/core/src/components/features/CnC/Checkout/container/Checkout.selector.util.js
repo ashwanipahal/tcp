@@ -30,6 +30,7 @@ const getPickUpContactFormLabels = state => {
     lbl_pickup_returnTo: returnTo,
     lbl_pickup_venmo_banner: venmoBannerText,
     lbl_pickup_nextToBilling: nextToBilling,
+    lbl_pickup_editFormSubmitError: editFormSubmitError,
   } = state.Labels.global && state.Labels.checkout.pickup;
   const { lbl_shipping_header: shippingText } =
     state.Labels.checkout && state.Labels.checkout.shipping;
@@ -63,6 +64,7 @@ const getPickUpContactFormLabels = state => {
     venmoBannerText,
     reviewText,
     nextToBilling,
+    editFormSubmitError,
   };
 };
 

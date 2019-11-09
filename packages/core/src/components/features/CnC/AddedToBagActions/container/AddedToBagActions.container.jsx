@@ -9,6 +9,8 @@ import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
 import { setVenmoPaymentInProgress } from '../../Checkout/container/Checkout.action';
+import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
 
 export class AddedToBagContainer extends React.Component<Props> {
   onClickViewBag = () => {
@@ -42,9 +44,14 @@ export class AddedToBagContainer extends React.Component<Props> {
       isBagPageStickyHeader,
       closeModal,
       isUSSite,
+      getPayPalSettings,
       containerId,
+      hideHeader,
       checkoutServerError,
+      isPayPalWebViewEnable,
       venmoError,
+      orderId,
+      isPayPalHidden,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -63,9 +70,14 @@ export class AddedToBagContainer extends React.Component<Props> {
         closeModal={closeModal}
         isUSSite={isUSSite}
         inheritedStyles={inheritedStyles}
+        getPayPalSettings={getPayPalSettings}
         containerId={containerId}
+        hideHeader={hideHeader}
         checkoutServerError={checkoutServerError}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
         venmoError={venmoError}
+        orderId={orderId}
+        isPayPalHidden={isPayPalHidden}
       />
     );
   }
@@ -99,9 +111,13 @@ const mapStateToProps = state => {
     labels: getLabelsAddToActions(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isVenmoEnabled: checkoutSelectors.getIsVenmoEnabled(state),
+    getPayPalSettings: checkoutSelectors.getPayPalSettings(state),
     isUSSite: isUsSite(state),
     checkoutServerError: checkoutSelectors.getCheckoutServerError(state),
+    isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
+    orderId: getCartOrderId(state),
     venmoError: checkoutSelectors.getVenmoError(state),
+    isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
   };
 };
 

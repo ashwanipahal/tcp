@@ -35,6 +35,7 @@ export default css`
   }
 
   .outfit-button-wrapper {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     @media ${props => props.theme.mediaQuery.medium} {
       display: flex;
 
@@ -97,10 +98,14 @@ export default css`
     height: 42px;
     background: ${props => props.theme.colorPalette.black};
     color: ${props => props.theme.colorPalette.white};
+    padding-bottom: 34px;
 
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       min-width: 213px;
       width: 50%;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 13px;
     }
   }
 
@@ -142,6 +147,11 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     .tablet-image-section {
       display: none;
+    }
+    .outfit-button-wrapper {
+      .outfit-pickup:empty {
+        height: 51px;
+      }
     }
   }
 `;

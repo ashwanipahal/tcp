@@ -1,7 +1,8 @@
+/* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
+import CONSTANTS, { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
 import {
   getOrderDetailsData,
@@ -18,6 +19,7 @@ import BAG_PAGE_ACTIONS from './BagPage.actions';
 import {
   checkoutSetCartData,
   getSetIsPaypalPaymentSettings,
+  getSetCheckoutStage,
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
@@ -30,7 +32,7 @@ import checkoutSelectors, {
   isRemembered,
   isExpressCheckout,
 } from '../../Checkout/container/Checkout.selector';
-import { isMobileApp, isCanada } from '../../../../../utils';
+import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 
 import {
   addItemToSflList,
@@ -200,6 +202,14 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+function* navigateToCheckout(stage, navigation, navigationActions) {
+  yield put(getSetCheckoutStage(stage));
+  const navigateAction = navigationActions.navigate({
+    routeName: CONSTANTS.CHECKOUT_ROOT,
+  });
+  navigation.dispatch(navigateAction);
+}
+
 /**
  * routeForCartCheckout component. This is responsible for routing our web to specific page of checkout journey.
  * @param {Boolean} recalc query parameter for recalculation of points
@@ -308,20 +318,60 @@ export function* startPaypalCheckout({ payload }) {
   }
 }
 
-export function* authorizePayPalPayment() {
+export function* startPaypalNativeCheckout() {
+  yield put(getSetIsPaypalPaymentSettings(null));
+  const orderId = yield select(BAG_SELECTORS.getCurrentOrderId);
+  // const fromPage = false ? 'AjaxOrderItemDisplayView' : 'OrderBillingView';
+  const fromPage = 'AjaxOrderItemDisplayView';
+  const res = yield call(startPaypalCheckoutAPI, orderId, fromPage);
+  if (res) {
+    yield put(getSetIsPaypalPaymentSettings(res));
+  }
+}
+
+export function* authorizePayPalPayment({ payload: { navigation, navigationActions } = {} } = {}) {
   try {
     const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
       checkoutSelectors.getPaypalPaymentSettings
     );
     const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
     const res = yield call(paypalAuthorizationAPI, ...params);
+
     if (res) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+      if (isMobileApp()) {
+        yield call(
+          navigateToCheckout,
+          CONSTANTS.REVIEW_DEFAULT_PARAM,
+          navigation,
+          navigationActions
+        );
+      } else {
+        utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+      }
     }
   } catch (e) {
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
+    if (!isMobileApp()) {
+      yield put(closeMiniBag());
+      yield put(BAG_PAGE_ACTIONS.setIsPaypalBtnHidden(true));
+      routerPush('/bag', '/bag');
+    }
   }
 }
+// export function* authorizePayPalPayment() {
+//   try {
+//     const { tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId } = yield select(
+//       checkoutSelectors.getPaypalPaymentSettings
+//     );
+//     const params = [tcpOrderId, centinelRequestPage, centinelPayload, centinelOrderId];
+//     const res = yield call(paypalAuthorizationAPI, ...params);
+//     if (res) {
+//       utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
+//     }
+//   } catch (e) {
+//     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
+//   }
+// }
 
 export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
   const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
@@ -397,6 +447,7 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_SFL_DATA, getSflDataSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
+  yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT, startPaypalNativeCheckout);
 }
 
 export default BagPageSaga;

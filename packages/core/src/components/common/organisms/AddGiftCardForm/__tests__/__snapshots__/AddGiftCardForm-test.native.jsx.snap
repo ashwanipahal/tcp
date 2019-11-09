@@ -75,6 +75,7 @@ exports[`Add gift card form component render error message 1`] = `
       type="tel"
     />
     <Field
+      autoComplete="off"
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -339,6 +340,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       type="tel"
     />
     <Field
+      autoComplete="off"
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),

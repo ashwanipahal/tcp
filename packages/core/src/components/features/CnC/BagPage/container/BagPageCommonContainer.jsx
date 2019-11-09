@@ -94,6 +94,7 @@ export class BagPageContainer extends React.Component<Props> {
       toastMessagePositionInfo,
       cartItemSflError,
       currencySymbol,
+      isPayPalWebViewEnable,
       isPickupModalOpen,
       isMobile,
       bagPageServerError,
@@ -127,6 +128,7 @@ export class BagPageContainer extends React.Component<Props> {
         toastMessagePositionInfo={toastMessagePositionInfo}
         cartItemSflError={cartItemSflError}
         currencySymbol={currencySymbol}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
         bagPageServerError={bagPageServerError}
       />
@@ -135,6 +137,20 @@ export class BagPageContainer extends React.Component<Props> {
 }
 
 BagPageContainer.getInitActions = () => BAG_PAGE_ACTIONS.initActions;
+
+BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
+  const DEFAULT_ACTIVE_COMPONENT = 'shipping bag';
+  const loadedComponent = utils.getObjectValue(reduxProps, DEFAULT_ACTIVE_COMPONENT, 'query', 'id');
+  return {
+    ...pageProps,
+    ...{
+      pageData: {
+        pageName: 'shipping bag',
+        pageSection: loadedComponent,
+      },
+    },
+  };
+};
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -188,6 +204,7 @@ export const mapStateToProps = state => {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     bagStickyHeaderInterval: BagPageSelector.getBagStickyHeaderInterval(state),
     cartItemSflError: getCartItemsSflError(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     currencySymbol: BagPageSelector.getCurrentCurrency(state) || '$',
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     isPickupModalOpen: getIsPickupModalOpen(state),

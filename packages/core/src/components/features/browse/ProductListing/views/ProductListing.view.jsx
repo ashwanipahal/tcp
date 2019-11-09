@@ -81,7 +81,6 @@ const ProductListView = ({
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
-              <img src="/static/images/dummy-banner.bmp" alt="dummy-banner" />
               {/*
               // Changes as per RWD-9852. Keeping this for future reference.
               <ModuleA {...moduleAMock.moduleA.composites} ctaType="linkList" fullBleed />
@@ -121,6 +120,7 @@ const ProductListView = ({
               labels={labels}
               currency={currency}
               currencyExchange={currencyExchange}
+              isLoadingMore={isLoadingMore}
               {...otherProps}
             />
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}

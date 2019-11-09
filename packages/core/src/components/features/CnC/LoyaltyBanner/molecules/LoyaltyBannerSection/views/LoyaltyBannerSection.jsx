@@ -44,15 +44,16 @@ const utilArrayNextReward = (pointsToNextReward, className) => {
   ];
 };
 
-const returnBoolForSubTotal = (
+const returnBoolForSubTotal = ({
   estimatedSubtotal,
   checkThresholdValue,
   thresholdValue,
   isPlcc,
   isReviewPage,
   isConfirmationPage,
-  isAddedToBagPage
-) => {
+  isAddedToBagPage,
+  isProductDetailView,
+}) => {
   let showSubtotal = false;
   /* istanbul ignore else */
   if (
@@ -61,7 +62,8 @@ const returnBoolForSubTotal = (
     !isPlcc &&
     !isReviewPage &&
     !isConfirmationPage &&
-    !isAddedToBagPage
+    !isAddedToBagPage &&
+    !isProductDetailView
   ) {
     showSubtotal = true;
   }
@@ -83,9 +85,10 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
     getCurrencySymbol,
     pageCategory,
-    isProductDetailView,
     openOverlay,
     closeAddedToBagModal,
+    openApplyNowModal,
+    footerLabels,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -93,19 +96,24 @@ const LoyaltyBannerSection = props => {
   let subHeadingLabel = '';
   let descriptionLabel = '';
   const earnedRewardAvailable = !!earnedReward;
-
   const pageCategoryArr = getPageCategory(pageCategory);
-  const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
+  const {
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage,
+    isProductDetailView,
+  } = pageCategoryArr;
 
-  showSubtotal = returnBoolForSubTotal(
+  showSubtotal = returnBoolForSubTotal({
     estimatedSubtotal,
     checkThresholdValue,
     thresholdValue,
     isPlcc,
     isReviewPage,
     isConfirmationPage,
-    isAddedToBagPage
-  );
+    isAddedToBagPage,
+    isProductDetailView,
+  });
 
   const LoyaltyLabels = renderLoyaltyLabels(
     labels,
@@ -153,7 +161,6 @@ const LoyaltyBannerSection = props => {
   );
 
   remainingPlcc = LoyaltyLabels.remainingPlccValFn ? convertHtml(finalStrRemainingValue) : false;
-
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
@@ -177,16 +184,11 @@ const LoyaltyBannerSection = props => {
           <div className="footer">
             <LoyaltyFooterSection
               className={className}
-              labels={labels}
-              isPlcc={isPlcc}
-              isProductDetailView={isProductDetailView}
-              isReviewPage={isReviewPage}
-              isConfirmationPage={isConfirmationPage}
-              isGuest={isGuest}
-              isAddedToBagPage={isAddedToBagPage}
-              earnedRewardAvailable={earnedRewardAvailable}
+              footerLabels={footerLabels}
               openOverlay={openOverlay}
               closeAddedToBagModal={closeAddedToBagModal}
+              openApplyNowModal={openApplyNowModal}
+              isProductDetailView={isProductDetailView}
             />
           </div>
         </BodyCopy>
@@ -197,7 +199,8 @@ const LoyaltyBannerSection = props => {
 
 LoyaltyBannerSection.propTypes = {
   className: PropTypes.string,
-  labels: PropTypes.shape.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  footerLabels: PropTypes.shape({}).isRequired,
   estimatedRewardsVal: PropTypes.number,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
@@ -208,10 +211,10 @@ LoyaltyBannerSection.propTypes = {
   isPlcc: PropTypes.bool,
   pointsToNextReward: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
-  isProductDetailView: PropTypes.bool,
   pageCategory: PropTypes.string,
   openOverlay: PropTypes.func.isRequired,
   closeAddedToBagModal: PropTypes.func.isRequired,
+  openApplyNowModal: PropTypes.func.isRequired,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -227,7 +230,6 @@ LoyaltyBannerSection.defaultProps = {
   pageCategory: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
-  isProductDetailView: '',
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);

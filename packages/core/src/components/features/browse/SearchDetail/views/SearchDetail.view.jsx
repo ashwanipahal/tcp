@@ -7,6 +7,7 @@ import { Row, Col, PLPSkeleton } from '../../../../common/atoms';
 import LoadedProductsCount from '../../ProductListing/molecules/LoadedProductsCount/views';
 import errorBoundary from '../../../../common/hoc/withErrorBoundary';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
+import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
@@ -62,6 +63,7 @@ const SearchListingView = ({
       <Row>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductListingFiltersForm
+            isFilterBy={isFiltersAvailable(filters)}
             filtersMaps={filters}
             totalProductsCount={totalProductsCount}
             initialValues={initialValues}
@@ -97,6 +99,7 @@ const SearchListingView = ({
               currency={currency}
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
+              isLoadingMore={isLoadingMore}
               {...otherProps}
             />
           ) : null}
