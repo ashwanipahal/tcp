@@ -67,6 +67,7 @@ export {
   getStyliticsRegion,
   canUseDOM,
   splitUniqueIDForDAM,
+  calculatePriceValue,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

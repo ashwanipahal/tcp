@@ -3,6 +3,7 @@
 exports[`BundleProductItemsVanilla should render correctly 1`] = `
 <Styled(View)>
   <FlatList
+    data={Array []}
     disableVirtualization={false}
     horizontal={false}
     initialNumToRender={10}

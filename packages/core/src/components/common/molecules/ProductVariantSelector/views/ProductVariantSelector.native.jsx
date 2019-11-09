@@ -41,7 +41,7 @@ class ProductVariantSelector extends React.PureComponent {
     }
   }
 
-  renderColor = ({ item }) => {
+  renderColor = ({ item, index }) => {
     const {
       color: { name, swatchImage },
     } = item;
@@ -66,7 +66,7 @@ class ProductVariantSelector extends React.PureComponent {
             name,
           };
           this.handleItemChange(value);
-          selectColor(name);
+          selectColor(name, index);
         }}
         width={componentWidth}
         height={componentHeight}

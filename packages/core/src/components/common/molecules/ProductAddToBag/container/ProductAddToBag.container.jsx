@@ -216,7 +216,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }
   };
 
-  colorChange = e => {
+  colorChange = (e, colorIndex) => {
     const { selectedSize, selectedFit, selectedQuantity } = this.state;
     const { onChangeColor } = this.props;
     this.setState({
@@ -231,7 +231,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         e,
         selectedSize && selectedSize.name,
         selectedFit && selectedFit.name,
-        selectedQuantity
+        selectedQuantity,
+        colorIndex
       );
     }
   };

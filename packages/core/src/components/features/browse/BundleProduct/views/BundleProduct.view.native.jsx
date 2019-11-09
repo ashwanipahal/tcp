@@ -11,9 +11,9 @@ import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
-import BundleProductListing from '../molecules/BundleProductListing';
+import BundleProductItems from '../molecules/BundleProductItems';
 
-class ProductDetailView extends React.PureComponent {
+class ProductBundle extends React.PureComponent {
   currentColorEntry;
 
   constructor(props) {
@@ -43,6 +43,9 @@ class ProductDetailView extends React.PureComponent {
       addToFavorites,
       addToBagEcom,
       currentState,
+      isLoggedIn,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -62,7 +65,19 @@ class ProductDetailView extends React.PureComponent {
       return (
         <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
           <PageContainer>
-            <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} isBundleProduct />
+            {/* <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} isBundleProduct /> */}
+            <ImageCarousel
+              isGiftCard={currentProduct.isGiftCard}
+              imageUrls={imageUrls}
+              addToFavorites={addToFavorites}
+              isLoggedIn={isLoggedIn}
+              currentProduct={currentProduct}
+              onImageClick={this.onImageClick}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+              currentColorEntry={this.currentColorEntry}
+              isBundleProduct
+            />
             <ProductSummary
               productData={currentProduct}
               selectedColorProductId={selectedColorProductId}
@@ -77,7 +92,7 @@ class ProductDetailView extends React.PureComponent {
               isShowMore={false}
               pdpLabels={pdpLabels}
             />
-            <BundleProductListing
+            <BundleProductItems
               currentBundle={currentBundle}
               plpLabels={plpLabels}
               navigation={navigation}
@@ -85,6 +100,7 @@ class ProductDetailView extends React.PureComponent {
               addToFavorites={addToFavorites}
               addToBagEcom={addToBagEcom}
               currentState={currentState}
+              isLoggedIn={isLoggedIn}
             />
           </PageContainer>
         </LazyloadScrollView>
@@ -94,7 +110,7 @@ class ProductDetailView extends React.PureComponent {
   }
 }
 
-ProductDetailView.propTypes = {
+ProductBundle.propTypes = {
   currentProduct: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}),
   selectedColorProductId: PropTypes.number.isRequired,
@@ -108,17 +124,21 @@ ProductDetailView.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   addToBagEcom: PropTypes.func.isRequired,
   currentState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string.isRequired,
+  removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
 };
 
-ProductDetailView.defaultProps = {
+ProductBundle.defaultProps = {
   navigation: {},
   plpLabels: null,
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
   pdpLabels: {},
+  isLoggedIn: false,
 };
 
-export default withStyles(ProductDetailView);
+export default withStyles(ProductBundle);
 
-export { ProductDetailView as ProductDetailViewVanilla };
+export { ProductBundle as ProductBundleVanilla };

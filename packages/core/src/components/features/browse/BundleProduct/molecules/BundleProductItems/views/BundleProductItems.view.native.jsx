@@ -19,6 +19,7 @@ class BundleProductItems extends React.PureComponent {
       currentState,
       labels,
       navigation,
+      isLoggedIn,
     } = this.props;
     const productItem = item.products;
     return (
@@ -28,12 +29,14 @@ class BundleProductItems extends React.PureComponent {
         productIndexText={`Product ${index + 1} of ${currentBundle.length}`}
         labels={labels}
         navigation={navigation}
+        isLoggedIn={isLoggedIn}
         handleAddToBag={() => {
           handleAddToBag(addToBagEcom, productItem, productItem.generalProductId, currentState);
         }}
-        handleAddToFavorites={() => {
+        addToFavorites={() => {
           addToFavorites({ colorProductId: productItem.generalProductId });
         }}
+        isBundleProduct
       />
     );
   };
@@ -66,6 +69,7 @@ BundleProductItems.propTypes = {
   currentState: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}),
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 BundleProductItems.defaultProps = {

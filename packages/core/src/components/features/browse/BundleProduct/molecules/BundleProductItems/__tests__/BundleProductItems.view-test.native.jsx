@@ -5,23 +5,15 @@ import { BundleProductItemsVanilla } from '../views/BundleProductItems.view.nati
 describe('BundleProductItemsVanilla', () => {
   let component;
   const props = {
+    currentBundle: [],
     plpLabels: {},
-    pdpLabels: {},
-    shortDescription: '',
-    itemPartNumber: '',
-    longDescription: '',
-    currency: 'USD',
-    currencyAttributes: {
-      exchangevalue: 1,
-    },
+    handleAddToBag: () => {},
+    addToFavorites: () => {},
     addToBagEcom: () => {},
     currentState: {},
-    addToBagError: '',
-    addToBagErrorId: '',
-    isPickupModalOpen: false,
-    addToFavorites: () => {},
+    navigation: {},
+    labels: {},
     isLoggedIn: false,
-    isPlcc: false,
   };
 
   beforeEach(() => {

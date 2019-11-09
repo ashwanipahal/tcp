@@ -84,4 +84,5 @@ export {
   getStyliticsUserName,
   getStyliticsRegion,
   splitUniqueIDForDAM,
+  calculatePriceValue,
 } from './utils';

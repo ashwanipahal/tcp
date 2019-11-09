@@ -25,12 +25,16 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 import { getAddedToBagError } from '../../../CnC/AddedToBag/container/AddedToBag.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  addItemsToWishlist,
+  removeAddToFavoriteErrorState,
+} from '../../Favorites/container/Favorites.actions';
 import {
   isPlccUser,
   getUserLoggedInState,
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 
 class ProductBundleContainer extends React.PureComponent {
   selectedColorProductId;
@@ -97,6 +101,8 @@ class ProductBundleContainer extends React.PureComponent {
       addToFavorites,
       isLoggedIn,
       isPlcc,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
     } = this.props;
     return (
       <ProductBundle
@@ -120,6 +126,8 @@ class ProductBundleContainer extends React.PureComponent {
         addToFavorites={addToFavorites}
         isLoggedIn={isLoggedIn}
         isPlcc={isPlcc}
+        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
       />
     );
   }
@@ -146,6 +154,7 @@ function mapStateToProps(state) {
     isPickupModalOpen: getIsPickupModalOpen(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     isPlcc: isPlccUser(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
   };
 }
 
@@ -162,6 +171,9 @@ function mapDispatchToProps(dispatch) {
     },
     addToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
   };
 }
@@ -187,6 +199,8 @@ ProductBundleContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   isPlcc: PropTypes.bool,
   router: PropTypes.shape({}).isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductBundleContainer.defaultProps = {
@@ -207,6 +221,8 @@ ProductBundleContainer.defaultProps = {
   addToFavorites: () => {},
   isLoggedIn: false,
   isPlcc: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default connect(
