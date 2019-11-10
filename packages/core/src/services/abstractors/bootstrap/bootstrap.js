@@ -147,7 +147,7 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   return bootstrapData[key];
 };
 
-const shouldInitiateSSRCall = (originalUrl, deviceType) =>
+export const shouldInitiateSSRCall = (originalUrl, deviceType) =>
   originalUrl.includes('/c/') && deviceType === 'bot' && typeof window === 'undefined';
 
 /**
