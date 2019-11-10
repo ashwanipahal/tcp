@@ -42,16 +42,17 @@ const CAROUSEL_OPTIONS = {
 
 export class JeansModule extends PureComponent {
   static propTypes = {
-    jeansModule: PropTypes.shape({}),
-    className: PropTypes.string.isRequired,
+    data: PropTypes.shape({}),
+    className: PropTypes.string,
   };
 
   static defaultProps = {
-    jeansModule: {},
+    data: {},
+    className: '',
   };
 
   render() {
-    const { jeansModule, className } = this.props;
+    const { data, className } = this.props;
 
     return (
       <div className={className}>
@@ -63,7 +64,7 @@ export class JeansModule extends PureComponent {
             color="white"
             textAlign="center"
           >
-            {jeansModule.headLine[0].text}
+            {data.headLine[0].text}
           </BodyCopy>
         </div>
         <Carousel
@@ -75,7 +76,7 @@ export class JeansModule extends PureComponent {
             customArrowRight: getIconPath('carousel-big-carrot'),
           }}
         >
-          {jeansModule.imageTileWrapper.map(
+          {data.imageTileWrapper.map(
             ({ imageStyled, headLine, subHeadLine, textList, singleCTAButton }, index) => {
               return (
                 <div className="jeans-carousel" key={index.toString()}>

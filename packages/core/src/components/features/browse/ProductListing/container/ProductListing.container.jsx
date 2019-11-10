@@ -295,7 +295,7 @@ ProductListingContainer.defaultProps = {
     exchangevalue: 1,
   },
   currency: 'USD',
-  plpTopPromos: {},
+  plpTopPromos: [],
 };
 
 export default withRouter(

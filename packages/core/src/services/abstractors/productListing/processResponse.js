@@ -164,7 +164,7 @@ const getPlpUrlQueryValues = filtersAndSort => {
   return true;
 };
 
-// eslint-disable-next-line complexity
+// eslint-disable-next-line
 const processResponse = (
   res,
   state,
@@ -308,6 +308,61 @@ const processResponse = (
         val: {
           cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
           sub: 'divisionTabs',
+          typ: 'module',
+          val: '',
+        },
+      };
+
+      bannerInfo.val.top[3] = {
+        sub: 'slot_4',
+        typ: 'slot',
+        val: {
+          cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
+          sub: 'moduleA',
+          typ: 'module',
+          val: '',
+        },
+      };
+
+      bannerInfo.val.top[4] = {
+        sub: 'slot_5',
+        typ: 'slot',
+        val: {
+          cid: 'c53989d8-29f9-435f-bde1-d11639affbda',
+          sub: 'moduleD',
+          typ: 'module',
+          val: '',
+        },
+      };
+
+      // bannerInfo.val.top[5] = {
+      //   sub: 'slot_6',
+      //   typ: 'slot',
+      //   val: {
+      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
+      //     sub: 'moduleG',
+      //     typ: 'module',
+      //     val: '',
+      //   },
+      // };
+
+      // bannerInfo.val.top[6] = {
+      //   sub: 'slot_7',
+      //   typ: 'slot',
+      //   val: {
+      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
+      //     sub: 'moduleM',
+      //     typ: 'module',
+      //     val: '',
+      //   },
+      // };
+
+      bannerInfo.val.top[5] = {
+        sub: 'slot_8',
+        typ: 'slot',
+        val: {
+          cid: 'c716a1b9-0ad7-4125-85fb-f3ba31257587',
+          sub: 'moduleQ',
           typ: 'module',
           val: '',
         },
