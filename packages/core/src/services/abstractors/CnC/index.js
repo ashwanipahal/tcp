@@ -29,6 +29,6 @@ export {
   startExpressCheckout,
   getServerErrorMessage,
   updateRTPSData,
-  acceptOrDeclinePreScreenOffer
+  acceptOrDeclinePreScreenOffer,
 } from './Checkout';
 export { getVenmoToken } from './venmo';

@@ -430,15 +430,15 @@ const endpoints = {
   },
   updateRTPSdata: {
     method: 'POST',
-    URI: 'v2/ads_dms/constructOLPS'
+    URI: 'v2/ads_dms/constructOLPS',
   },
   prescreenApplication: {
     method: 'POST',
-    URI: 'v2/ads_dms/processPreScreenAcceptance'
+    URI: 'v2/ads_dms/processPreScreenAcceptance',
   },
   processPreScreenOffer: {
     method: 'POST',
-    URI: 'v2/ads_dms/processMadeOffer'
+    URI: 'v2/ads_dms/processMadeOffer',
   },
 };
 export default endpoints;
