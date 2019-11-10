@@ -22,6 +22,8 @@ const getApplyCardLayoutView = (
         existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
         isPLCCModalFlow={isPLCCModalFlow}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
       />
     );
   }
@@ -31,6 +33,8 @@ const getApplyCardLayoutView = (
         labels={labels}
         isPLCCModalFlow={isPLCCModalFlow}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
       />
     );
   }
@@ -43,6 +47,8 @@ const getApplyCardLayoutView = (
         isPLCCModalFlow={isPLCCModalFlow}
         approvedPLCCData={renderViewInfo.approvedPLCCData}
         resetPLCCResponse={renderViewInfo.resetPLCCApplicationStatus}
+        isRtpsFlow={renderViewInfo.isRtpsFlow}
+        togglePLCCModal={renderViewInfo.togglePLCCModal}
       />
     );
   }
@@ -54,6 +60,8 @@ const getApplyCardLayoutView = (
       onSubmit={submitPLCCForm}
       initialValues={renderViewInfo.profileInfo}
       applicationStatus={applicationStatus}
+      isRtpsFlow={renderViewInfo.isRtpsFlow}
+      togglePLCCModal={renderViewInfo.togglePLCCModal}
     />
   );
 };
@@ -69,6 +77,8 @@ const ApplyCardLayoutView = ({
   profileInfo,
   approvedPLCCData,
   resetPLCCApplicationStatus,
+  isRtpsFlow,
+  togglePLCCModal
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
@@ -84,6 +94,8 @@ const ApplyCardLayoutView = ({
           profileInfo,
           approvedPLCCData,
           resetPLCCApplicationStatus,
+          isRtpsFlow,
+          togglePLCCModal
         }
       )}
     </ApplyRewardsCreditCardStyle>
@@ -101,6 +113,8 @@ ApplyCardLayoutView.propTypes = {
   approvedPLCCData: PropTypes.shape({}).isRequired,
   isGuest: PropTypes.bool.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired
 };
 
 export default ApplyCardLayoutView;

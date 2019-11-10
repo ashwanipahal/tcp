@@ -25,6 +25,8 @@ const LoginView = ({
   handleContinueAsGuest,
   userplccCardNumber,
   userplccCardId,
+  isRememberedUser,
+  userName,
 }) => {
   return (
     <LoginSection
@@ -36,6 +38,7 @@ const LoginView = ({
       showRecaptcha={showRecaptcha}
       resetLoginState={resetLoginState}
       SubmitForgot={SubmitForgot}
+      isRememberedUser={isRememberedUser}
       showNotification={showNotification}
       successFullResetEmail={successFullResetEmail}
       resetForm={resetForm}
@@ -49,6 +52,7 @@ const LoginView = ({
       tooltipContent={<PasswordRequirement labels={getLabelValue(labels, 'password')} />}
       userplccCardNumber={userplccCardNumber}
       userplccCardId={userplccCardId}
+      userName={userName}
     />
   );
 };
@@ -74,12 +78,16 @@ LoginView.propTypes = {
   formErrorMessage: PropTypes.shape({}).isRequired,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  isRememberedUser: PropTypes.bool,
+  userName: PropTypes.string,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   openModal: () => {},
+  isRememberedUser: false,
+  userName: '',
 };
 
 export default LoginView;

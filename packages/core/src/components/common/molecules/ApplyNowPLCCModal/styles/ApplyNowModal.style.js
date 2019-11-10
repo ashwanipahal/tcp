@@ -3,10 +3,12 @@ import { css } from 'styled-components';
 export const modalStyles = css`
   .close-modal {
     margin-right: 5px;
+    ${props => props.isRtpsFlow ? 'display:none' : ""};
   }
 
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
+    ${props => props.isRtpsFlow ? 'height:100%' : ''};
   }
 
   .TCPModal__InnerContent {
@@ -88,9 +90,9 @@ export const modalStyles = css`
     display: flex;
     justify-content: center;
     background: ${props =>
-      props.offerType
-        ? `transparent url('/static/images/PLCC_lockup_1_points.svg') no-repeat 0 0;`
-        : `transparent url('/static/images/PLCC_lockup_2_points.svg') no-repeat 0 0;`};
+    props.offerType
+      ? `transparent url('/static/images/PLCC_lockup_1_points.svg') no-repeat 0 0;`
+      : `transparent url('/static/images/PLCC_lockup_2_points.svg') no-repeat 0 0;`};
 
     background-size: contain;
     border: none;

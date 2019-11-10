@@ -61,6 +61,7 @@ const initialState = fromJS({
     paymentError: null,
     addressError: null,
     checkoutServerError: null,
+    isRTPSFlow: false,
   },
 });
 
@@ -116,6 +117,8 @@ function paypalReducer(checkout, action) {
   switch (action.type) {
     case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
       return checkout.setIn(['options', 'paypalPaymentSettings'], action.paypalPaymentSettings);
+    case CheckoutConstants.SET_IS_RTPS_FLOW:
+      return checkout.setIn(['uiFlags', 'isRTPSFlow'], action.payload);
     default:
       return venmoFlagReducer(checkout, action);
   }

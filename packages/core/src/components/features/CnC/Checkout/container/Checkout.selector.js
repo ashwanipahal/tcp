@@ -980,6 +980,14 @@ const getCheckoutPageEmptyBagLabels = createSelector(
   }
 );
 
+const getIsRtpsFlow = createSelector(
+  getCheckoutUiFlagState,
+  uiFlags => uiFlags && uiFlags.get('isRTPSFlow')
+)
+
+const getIsRTPSEnabled = state => state[SESSIONCONFIG_REDUCER_KEY] &&
+  state[SESSIONCONFIG_REDUCER_KEY].siteDetails.ADS_OLPS_ENABLED === 'TRUE'
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
@@ -1065,10 +1073,12 @@ export default {
   getExpressReviewShippingSectionId,
   getShippingAddressList,
   getIsBillingVisited,
+  getIsRtpsFlow,
   getVenmoUserEmail,
   getVenmoError,
   getPickupValues,
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
+  getIsRTPSEnabled
 };

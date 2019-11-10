@@ -2,6 +2,9 @@
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
+import { setPlccEligible, setPlccPrescreenCode } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
 import CONSTANTS from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
@@ -11,6 +14,7 @@ import {
   startExpressCheckout,
   getServerErrorMessage,
   updateRTPSData,
+  acceptOrDeclinePreScreenOffer
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
@@ -76,7 +80,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   const actions = [
     resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
     resCheckoutValues.pickUpAlternative &&
-      getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
+    getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
     //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
@@ -533,10 +537,30 @@ function* initCheckout({ router }) {
   }
 }
 
-function* updateUserRTPSData(prescreen, isExpressCheckout) {
+function* updateUserRTPSData({ payload }) {
+  const { prescreen, isExpressCheckoutEnabled } = payload;
   try {
-    const res = yield updateRTPSData(prescreen, isExpressCheckout);
-    // return getPlccOperator(this.store).optionalPlccOfferModal(res.plccEligible, res.prescreenCode)
+    const res = yield updateRTPSData(prescreen, isExpressCheckoutEnabled);
+    yield put(setPlccEligible(res.plccEligible));
+    yield put(setPlccPrescreenCode(res.prescreenCode));
+    if (res.plccEligible) {
+      // offer not yet shown, show it
+      yield put(CHECKOUT_ACTIONS.setIsRTPSFlow(true));
+      yield put(toggleApplyNowModal({ isModalOpen: true }));
+    }
+  } catch (e) {
+    logger.error(e);
+  }
+}
+
+function* submitAcceptOrDeclinePlccData({ payload }) {
+  const preScreenData = yield select(getRtpsPreScreenData);
+  const { preScreenCode } = preScreenData;
+  console.log('preScreenData111111', preScreenData);
+  console.log('payload2222 === submitAcceptOrDeclinePlccData', payload)
+  const accepted = payload;
+  try {
+    yield acceptOrDeclinePreScreenOffer(preScreenCode, accepted);
   } catch (e) {
     logger.error(e);
   }
@@ -661,5 +685,7 @@ export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.SUBMIT_REVIEW_SECTION, submitOrderForProcessing);
   yield takeLatest(CONSTANTS.GET_VENMO_CLIENT_TOKEN, getVenmoClientTokenSaga);
   yield takeLatest(CONSTANTS.UPDATE_CARD_DATA, updateCardDetails);
+  yield takeLatest(CONSTANTS.UPDATE_RTPS_DATA, updateUserRTPSData);
+  yield takeLatest(CONSTANTS.SUBMIT_ACCEPT_DECLINE_PLCC_OFFER, submitAcceptOrDeclinePlccData);
 }
 export default CheckoutSaga;

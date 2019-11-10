@@ -11,6 +11,8 @@ import {
   isPlccUser,
   getplccCardNumber,
 } from '../../../../../account/User/container/User.selectors';
+import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
+
 import { updateCardData } from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
@@ -23,8 +25,8 @@ class BillingPageContainer extends React.Component {
   }
 
   componentWillUnmount() {
-    const { clearCheckoutServerError, checkoutServerError } = this.props;
-    if (checkoutServerError) {
+    const { clearCheckoutServerError, checkoutServerError, isPayPalHidden } = this.props;
+    if (checkoutServerError && !isPayPalHidden) {
       clearCheckoutServerError({});
     }
   }
@@ -51,11 +53,12 @@ export const mapStateToProps = state => {
     getBillingLabels,
     getIsOrderHasShipping,
     getGiftWrappingValues,
+    getIsRTPSEnabled
   } = CheckoutSelectors;
   const isRTPSDataRequired =
     getIsOrderHasShipping(state) &&
     !getGiftWrappingValues(state).hasGiftWrapping &&
-    !(isPlccUser(state) || getplccCardNumber(state));
+    !(isPlccUser(state) || getplccCardNumber(state)) && getIsRTPSEnabled(state);
   return {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
@@ -64,6 +67,7 @@ export const mapStateToProps = state => {
     isVenmoEnabled: getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
     venmoError: CheckoutSelectors.getVenmoError(state),
     isRTPSDataRequired,
+    isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
   };
 };
 
@@ -72,11 +76,13 @@ BillingPageContainer.propTypes = {
   getCVVCodeInfo: PropTypes.func,
   clearCheckoutServerError: PropTypes.func.isRequired,
   checkoutServerError: PropTypes.shape({}).isRequired,
+  isPayPalHidden: PropTypes.bool,
 };
 
 BillingPageContainer.defaultProps = {
   cvvCodeInfoContentId: null,
   getCVVCodeInfo: null,
+  isPayPalHidden: false,
 };
 
 export default connect(

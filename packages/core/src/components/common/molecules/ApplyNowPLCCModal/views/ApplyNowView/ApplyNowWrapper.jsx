@@ -17,31 +17,45 @@ class ApplyNowModalWrapper extends React.Component {
     resetPLCCApplicationStatus({ status: null });
   }
 
+  setRTPSFlow = () => {
+    const { setIsRTPSFlow, isRtpsFlow } = this.props;
+    if (isRtpsFlow && setIsRTPSFlow) {
+      setIsRTPSFlow(false);
+    }
+  }
+
   closeModal = () => {
-    const { toggleModal } = this.props;
+    const { toggleModal, } = this.props;
     toggleModal({ isModalOpen: false });
+    this.setRTPSFlow();
   };
 
   closePLCCModal = () => {
     const { toggleModal, resetPLCCApplicationStatus } = this.props;
     toggleModal({ isPLCCModalOpen: false });
     resetPLCCApplicationStatus({ status: null });
+    this.setRTPSFlow();
   };
 
   openModal = e => {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, resetPLCCApplicationStatus } = this.props;
     toggleModal({ isModalOpen: true });
+    resetPLCCApplicationStatus({ status: null });
   };
 
   openPLCCModal = e => {
     e.preventDefault();
-    const { toggleModal } = this.props;
+    const { toggleModal, isRtpsFlow, submitAcceptOrDeclinePlcc, resetPLCCApplicationStatus } = this.props;
     toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
+    resetPLCCApplicationStatus({ status: null });
+    if (isRtpsFlow) {
+      submitAcceptOrDeclinePlcc(true);
+    }
   };
 
   render() {
-    const { className, labels, isModalOpen, isPLCCModalOpen, plccBenefitsList } = this.props;
+    const { className, labels, isModalOpen, isPLCCModalOpen, plccBenefitsList, isRtpsFlow, rtpsCongratsMsg, rtpsOptOutMsg, rtpsTextTerms, submitAcceptOrDeclinePlcc } = this.props;
     return (
       <div className={className}>
         <React.Fragment>
@@ -54,6 +68,11 @@ class ApplyNowModalWrapper extends React.Component {
               closeModal={this.closeModal}
               labels={labels}
               plccBenefitsList={plccBenefitsList}
+              isRtpsFlow={isRtpsFlow}
+              rtpsCongratsMsg={rtpsCongratsMsg}
+              rtpsOptOutMsg={rtpsOptOutMsg}
+              rtpsTextTerms={rtpsTextTerms}
+              submitAcceptOrDeclinePlcc={submitAcceptOrDeclinePlcc}
             />
           ) : null}
         </React.Fragment>
@@ -73,6 +92,16 @@ ApplyNowModalWrapper.propTypes = {
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   fetchModuleXContent: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,
+  rtpsCongratsMsg: PropTypes.string.isRequired,
+  rtpsOptOutMsg: PropTypes.string.isRequired,
+  rtpsTextTerms: PropTypes.string.isRequired,
+  setIsRTPSFlow: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool,
+  submitAcceptOrDeclinePlcc: PropTypes.func.isRequired,
 };
+
+ApplyNowModalWrapper.defaultProps = {
+  isRtpsFlow: false,
+}
 
 export default ApplyNowModalWrapper;

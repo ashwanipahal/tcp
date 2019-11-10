@@ -11,8 +11,8 @@ const handleUserRewards = userRewards => {
   return userRewards % 1 ? userRewards : Math.floor(userRewards);
 };
 
-const handleCarrottoggle = (userNameClick, isOpenOverlay) => {
-  return userNameClick || !isOpenOverlay ? 'carrot-down-icon' : 'carrot-up-icon';
+const handleCarrottoggle = isOpenOverlay => {
+  return !isOpenOverlay ? 'carrot-down-icon' : 'carrot-up-icon';
 };
 
 const LoggedInUserInfo = ({
@@ -41,7 +41,7 @@ const LoggedInUserInfo = ({
         {!isDrawer ? (
           <Image
             alt="user"
-            className={`account-info ${handleCarrottoggle(userNameClick, isOpenOverlay)}`}
+            className={`account-info ${handleCarrottoggle(isOpenOverlay)}`}
             src={getIconPath('down_arrow_icon')}
             height="6px"
             onClick={linkClick}

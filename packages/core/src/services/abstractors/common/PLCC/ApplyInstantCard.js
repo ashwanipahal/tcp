@@ -64,13 +64,13 @@ const getStatusCodeRes = (returnCode, body, args, errorsMapping) => {
   return false;
 };
 
-const applyInstantCard = (args, errorsMapping) => {
+const applyInstantCard = (args, errorsMapping, preScreenCode, isExpressCheckout) => {
   const payload = {
     // Overriding 'application/json' - specific to processWIC
     header: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    webService: endpoints.instantCreditApplication,
+    webService: preScreenCode ? endpoints.prescreenApplication : endpoints.instantCreditApplication,
     body: {
       firstName: args.firstName,
       lastName: args.lastName,
@@ -83,13 +83,17 @@ const applyInstantCard = (args, errorsMapping) => {
       emailAddress: args.emailAddress,
       country: getSiteId(),
       ssn: args.ssNumber,
-      prescreenId: args.preScreenCode,
+      prescreenId: preScreenCode,
       mobilePhoneNumber: args.phoneNumberWithAlt,
       phoneNumber: args.altPhoneNumber,
       birthdayDate: `${args.month}${args.date}${args.year}`,
       userId: -1002,
     },
   };
+  // We now have pre-screening on express checkout flow. We are to inform backend of this so that can auto apply any promos to the order
+  if (isExpressCheckout) {
+    payload.body.fromPage = 'expressCheckout';
+  }
   return executeStatefulAPICall(payload)
     .then(res => {
       const response = res.body;

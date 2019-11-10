@@ -28,5 +28,7 @@ export {
   getInternationCheckoutSettings,
   startExpressCheckout,
   getServerErrorMessage,
+  updateRTPSData,
+  acceptOrDeclinePreScreenOffer
 } from './Checkout';
 export { getVenmoToken } from './venmo';

@@ -27,12 +27,12 @@ const ApplyCardReducer = (state = initialState, action) => {
     case constants.SET_PLCC_ELIGIBLE:
       return {
         ...state,
-        pre_screen_code: action.payload,
+        plccEligible: action.payload,
       };
     case constants.SET_PLCC_PRESCREEN_CODE:
       return {
         ...state,
-        plccEligible: action.payload,
+        pre_screen_code: action.payload,
       };
     default:
       return state;

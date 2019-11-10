@@ -1,7 +1,7 @@
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
-import { setServerErrorCheckout, resetCheckoutReducer } from './Checkout.action.util';
+import { setServerErrorCheckout, resetCheckoutReducer, updateRTPSData, setIsRTPSFlow, submitAcceptOrDeclinePlccOffer } from './Checkout.action.util';
 
 /**
  * @function initCheckoutAction
@@ -510,4 +510,5 @@ export const toggleCountrySelectorModal = payload => ({
   type: constants.COUNTRY_SELECTOR_MODAL_TOGGLE,
 });
 
-export default { setServerErrorCheckout, resetCheckoutReducer };
+
+export default { setServerErrorCheckout, resetCheckoutReducer, submitAcceptOrDeclinePlccOffer, setIsRTPSFlow, updateRTPSData };

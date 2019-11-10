@@ -26,6 +26,9 @@ import {
   getUserLoggedInState,
   getplccCardId,
   getplccCardNumber,
+  isRememberedUser,
+  getUserEmail,
+  getUserName,
 } from '../../User/container/User.selectors';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 
@@ -46,7 +49,7 @@ class LoginPageContainer extends React.PureComponent {
       toastMessage(loginErrorMessage);
     }
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (variation === 'checkout' || variation === 'favorites') {
+      if (variation === 'checkout') {
         closeModal();
       }
 
@@ -102,11 +105,15 @@ class LoginPageContainer extends React.PureComponent {
       navigation,
       toastMessage,
       resetChangePasswordState,
+      rememberedUserFlag,
+      userEmail,
+      userName,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
+      emailAddress: rememberedUserFlag ? userEmail : '',
     };
     return (
       <LoginView
@@ -137,7 +144,9 @@ class LoginPageContainer extends React.PureComponent {
         updateHeader={updateHeader}
         navigation={navigation}
         toastMessage={toastMessage}
+        isRememberedUser={rememberedUserFlag}
         resetChangePasswordState={resetChangePasswordState}
+        userName={userName}
       />
     );
   }
@@ -175,6 +184,9 @@ LoginPageContainer.propTypes = {
   userplccCardId: PropTypes.string.isRequired,
   updateHeader: PropTypes.func.isRequired,
   resetChangePasswordState: PropTypes.func,
+  rememberedUserFlag: PropTypes.bool,
+  userEmail: PropTypes.string,
+  userName: PropTypes.string,
 };
 
 LoginPageContainer.defaultProps = {
@@ -191,6 +203,9 @@ LoginPageContainer.defaultProps = {
   queryParams: {},
   resetAccountOverViewState: () => {},
   resetChangePasswordState: () => {},
+  rememberedUserFlag: false,
+  userEmail: '',
+  userName: '',
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -232,6 +247,9 @@ const mapStateToProps = state => {
     formErrorMessage: getFormValidationErrorMessages(state),
     userplccCardNumber: getplccCardNumber(state),
     userplccCardId: getplccCardId(state),
+    rememberedUserFlag: isRememberedUser(state),
+    userEmail: getUserEmail(state),
+    userName: getUserName(state),
   };
 };
 

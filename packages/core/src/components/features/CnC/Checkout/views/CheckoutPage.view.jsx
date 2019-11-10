@@ -25,9 +25,10 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router } = this.props;
+    const { router, setCheckoutStage } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    setCheckoutStage(currentSection);
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
       routerPush('/', '/');
     }
@@ -180,6 +181,7 @@ class CheckoutPage extends React.PureComponent {
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       isBagLoaded,
+      updateRTPS
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -263,6 +265,7 @@ class CheckoutPage extends React.PureComponent {
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            updateRTPS={updateRTPS}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -296,6 +299,7 @@ class CheckoutPage extends React.PureComponent {
             }}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            updateRTPS={updateRTPS}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
@@ -386,8 +390,8 @@ class CheckoutPage extends React.PureComponent {
             checkoutServerError={checkoutServerError}
           />
         ) : (
-          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
-        )}
+            <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
+          )}
       </>
     );
   }
@@ -449,8 +453,8 @@ CheckoutPage.propTypes = {
 
 CheckoutPage.defaultProps = {
   isVenmoPaymentInProgress: false,
-  setVenmoPickupState: () => {},
-  setVenmoShippingState: () => {},
+  setVenmoPickupState: () => { },
+  setVenmoShippingState: () => { },
   isExpressCheckout: false,
   shippingMethod: {},
 };

@@ -41,11 +41,11 @@ class BillingPage extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { billingDidMount, isRTPSDataRequired, updateRTPSData } = this.props;
+    const { billingDidMount, isRTPSDataRequired, updateRTPS } = this.props;
     billingDidMount();
     if (isRTPSDataRequired) {
       // not to consume RTPS API in case of any Non-Ecom order type
-      updateRTPSData(true, false);
+      updateRTPS({ prescreen: true, isExpressCheckoutEnabled: false });
     }
   }
 
@@ -96,22 +96,22 @@ class BillingPage extends React.PureComponent {
           </div>
         ) : (
           <GuestBillingForm
-            shippingAddress={shippingAddress}
-            cvvCodeRichText={cvvCodeRichText}
-            labels={labels}
-            isGuest={isGuest}
-            addressLabels={addressLabels}
-            backLinkPickup={backLinkPickup}
-            backLinkShipping={backLinkShipping}
-            nextSubmitText={nextSubmitText}
-            orderHasShipping={orderHasShipping}
-            billingData={billingData}
-            creditFieldLabels={creditFieldLabels}
-            isVenmoPaymentInProgress={isVenmoPaymentInProgress}
-            isVenmoEnabled={isVenmoEnabled}
-            pageCategory={pageCategory}
-          />
-        )}
+              shippingAddress={shippingAddress}
+              cvvCodeRichText={cvvCodeRichText}
+              labels={labels}
+              isGuest={isGuest}
+              addressLabels={addressLabels}
+              backLinkPickup={backLinkPickup}
+              backLinkShipping={backLinkShipping}
+              nextSubmitText={nextSubmitText}
+              orderHasShipping={orderHasShipping}
+              billingData={billingData}
+              creditFieldLabels={creditFieldLabels}
+              isVenmoPaymentInProgress={isVenmoPaymentInProgress}
+              isVenmoEnabled={isVenmoEnabled}
+              pageCategory={pageCategory}
+            />
+          )}
       </div>
     );
   }

@@ -13,7 +13,7 @@ import { getCartItemCount } from '../../../../../../../utils/cookie.util';
  * @description - showcases application in progress screen.
  */
 
-const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse }) => {
+const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse, isRtpsFlow, togglePLCCModal }) => {
   const bagItems = getCartItemCount();
   return (
     <ApplicationInProgressWrapper isPLCCModalFlow={isPLCCModalFlow}>
@@ -42,31 +42,33 @@ const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse }) =
               type="submit"
               className="underprogress_checkout_button"
               data-locator="submit-plcc-btn"
-              onClick={() => redirectToBag(resetPLCCResponse)}
+              onClick={() => isRtpsFlow ? togglePLCCModal({ isPLCCModalOpen: false, status: null }) : redirectToBag(resetPLCCResponse)}
             >
               {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
             </Button>
           </Col>
         </Row>
       ) : null}
-      <Row fullBleed className="submit_plcc_form">
-        <Col
-          ignoreGutter={{ small: true }}
-          colSize={{ large: 4, medium: 4, small: 12 }}
-          className="underprogress_continue_button"
-        >
-          <Button
-            buttonVariation="fixed-width"
-            fill={!bagItems ? 'BLUE' : 'WHITE'}
-            type="submit"
+      {!isRtpsFlow && (
+        <Row fullBleed className="submit_plcc_form">
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ large: 4, medium: 4, small: 12 }}
             className="underprogress_continue_button"
-            data-locator="submit-plcc-btn"
-            onClick={() => redirectToHome(resetPLCCResponse)}
           >
-            {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          </Button>
-        </Col>
-      </Row>
+            <Button
+              buttonVariation="fixed-width"
+              fill={!bagItems ? 'BLUE' : 'WHITE'}
+              type="submit"
+              className="underprogress_continue_button"
+              data-locator="submit-plcc-btn"
+              onClick={() => redirectToHome(resetPLCCResponse)}
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            </Button>
+          </Col>
+        </Row>
+      )}
     </ApplicationInProgressWrapper>
   );
 };

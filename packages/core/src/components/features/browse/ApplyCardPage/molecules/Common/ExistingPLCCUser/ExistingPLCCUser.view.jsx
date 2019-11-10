@@ -19,6 +19,8 @@ const ExistingPLCCUserView = ({
   labels,
   isPLCCModalFlow,
   resetPLCCResponse,
+  isRtpsFlow,
+  togglePLCCModal
 }) => {
   const bagItems = getCartItemCount();
   return (
@@ -37,30 +39,32 @@ const ExistingPLCCUserView = ({
               fill="BLUE"
               type="submit"
               className="existing_checkout_button"
-              onClick={() => redirectToBag(resetPLCCResponse)}
+              onClick={() => isRtpsFlow ? togglePLCCModal({ isPLCCModalOpen: false, status: null }) : redirectToBag(resetPLCCResponse)}
             >
               {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
             </Button>
           </Col>
         </Row>
       ) : null}
-      <Row fullBleed className="submit_buttons_set">
-        <Col
-          ignoreGutter={{ small: true }}
-          colSize={{ large: 3, medium: 4, small: 12 }}
-          className="existing_continue_button"
-        >
-          <Button
-            buttonVariation="fixed-width"
-            fill={!bagItems ? 'BLUE' : 'WHITE'}
-            type="submit"
+      {!isRtpsFlow && (
+        <Row fullBleed className="submit_buttons_set">
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ large: 3, medium: 4, small: 12 }}
             className="existing_continue_button"
-            onClick={() => redirectToHome(resetPLCCResponse)}
           >
-            {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          </Button>
-        </Col>
-      </Row>
+            <Button
+              buttonVariation="fixed-width"
+              fill={!bagItems ? 'BLUE' : 'WHITE'}
+              type="submit"
+              className="existing_continue_button"
+              onClick={() => redirectToHome(resetPLCCResponse)}
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            </Button>
+          </Col>
+        </Row>
+      )}
     </ExistingPLCCUserStyle>
   );
 };

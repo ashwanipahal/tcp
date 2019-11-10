@@ -622,57 +622,57 @@ const getOrderConfirmationDetails = ({
     totalsByFullfillmentCenterMap:
       orderSummary.mixOrderDetails.mixCart !== CheckoutConstants.ECOM
         ? orderSummary.mixOrderDetails.data
-            .filter(
-              store =>
-                store.orderType === ORDER_ITEM_TYPE.BOPIS ||
-                store.orderType === ORDER_ITEM_TYPE.BOSS
-            )
-            .map(store => {
-              const summary = store;
-              const bopisOrderTrackLink = `${trackingLinkPrefix}&shipmentTypeId=1&forSearch=1&orderId=${
-                summary.subOrderId
+          .filter(
+            store =>
+              store.orderType === ORDER_ITEM_TYPE.BOPIS ||
+              store.orderType === ORDER_ITEM_TYPE.BOSS
+          )
+          .map(store => {
+            const summary = store;
+            const bopisOrderTrackLink = `${trackingLinkPrefix}&shipmentTypeId=1&forSearch=1&orderId=${
+              summary.subOrderId
               }&emailId=${encodeURIComponent(summary.shippingAddressDetails.encryptedEmail1) ||
-                ''}`;
+              ''}`;
 
-              const {
-                todayOpeningTime,
-                todayClosingTime,
-                tomorrowOpeningTime,
-                tomorrowClosingTime,
-              } = parseStoreOpeningAndClosingTimes(store);
+            const {
+              todayOpeningTime,
+              todayClosingTime,
+              tomorrowOpeningTime,
+              tomorrowClosingTime,
+            } = parseStoreOpeningAndClosingTimes(store);
 
-              return {
-                id: store.shippingAddressDetails.stLocId.toString(),
-                storeName: capitalize(store.shippingAddressDetails.storeName),
-                address: {
-                  addressLine1: store.shippingAddressDetails.addressLine1,
-                  addressLine2: store.shippingAddressDetails.addressLine2,
-                  city: store.shippingAddressDetails.city,
-                  state: store.shippingAddressDetails.state,
-                  zipCode: (store.shippingAddressDetails.zipCode || '').trim(),
-                  country: store.shippingAddressDetails.country,
-                },
-                phoneNumber: (store.shippingAddressDetails.phone1 || '').trim(),
-                productsCount: parseInt(summary.itemsCount, 10),
+            return {
+              id: store.shippingAddressDetails.stLocId.toString(),
+              storeName: capitalize(store.shippingAddressDetails.storeName),
+              address: {
+                addressLine1: store.shippingAddressDetails.addressLine1,
+                addressLine2: store.shippingAddressDetails.addressLine2,
+                city: store.shippingAddressDetails.city,
+                state: store.shippingAddressDetails.state,
+                zipCode: (store.shippingAddressDetails.zipCode || '').trim(),
+                country: store.shippingAddressDetails.country,
+              },
+              phoneNumber: (store.shippingAddressDetails.phone1 || '').trim(),
+              productsCount: parseInt(summary.itemsCount, 10),
 
-                todayOpenRange: `${todayOpeningTime} - ${todayClosingTime}`,
-                tomorrowOpenRange: `${tomorrowOpeningTime} - ${tomorrowClosingTime}`,
+              todayOpenRange: `${todayOpeningTime} - ${todayClosingTime}`,
+              tomorrowOpenRange: `${tomorrowOpeningTime} - ${tomorrowClosingTime}`,
 
-                orderDate: parseDate(orderDetails.placedOrderTime),
-                orderNumber: summary.subOrderId,
-                // TODO: legacy link, remove
-                orderLink: bopisOrderTrackLink,
-                orderTotal: flatCurrencyToCents(summary.piAmount),
+              orderDate: parseDate(orderDetails.placedOrderTime),
+              orderNumber: summary.subOrderId,
+              // TODO: legacy link, remove
+              orderLink: bopisOrderTrackLink,
+              orderTotal: flatCurrencyToCents(summary.piAmount),
 
-                emailAddress: summary.shippingAddressDetails.email1,
-                encryptedEmailAddress: encodeURIComponent(
-                  summary.shippingAddressDetails.encryptedEmail1
-                ),
-                bossMaxDate: store.shippingAddressDetails.bossMaxDate || null,
-                bossMinDate: store.shippingAddressDetails.bossMinDate || null,
-                orderType: store.orderType,
-              };
-            })
+              emailAddress: summary.shippingAddressDetails.email1,
+              encryptedEmailAddress: encodeURIComponent(
+                summary.shippingAddressDetails.encryptedEmail1
+              ),
+              bossMaxDate: store.shippingAddressDetails.bossMaxDate || null,
+              bossMinDate: store.shippingAddressDetails.bossMinDate || null,
+              orderType: store.orderType,
+            };
+          })
         : null,
 
     orderDetails: {
@@ -775,12 +775,12 @@ const handleSubmitOrderResponse = res => {
   const apiConfig = getAPIConfig();
   const trackingLinkPrefix = `${CheckoutConstants.TRACKING_LINK_PREFIX_CONSTANT}?catalogId=${
     apiConfig.catalogId
-  }&langId=${apiConfig.langId}&storeId=${apiConfig.storeId}`;
+    }&langId=${apiConfig.langId}&storeId=${apiConfig.storeId}`;
   const sthLinkOrder = `${trackingLinkPrefix}&shipmentTypeId=${
     CheckoutConstants.SHIPMENT_TYPE_ID
-  }&forSearch=${CheckoutConstants.FOR_SEARCH}&orderId=${sthOrderId}&emailId=${encodeURIComponent(
-    (shipping || addressDetails).encryptedEmail1
-  ) || ''}`;
+    }&forSearch=${CheckoutConstants.FOR_SEARCH}&orderId=${sthOrderId}&emailId=${encodeURIComponent(
+      (shipping || addressDetails).encryptedEmail1
+    ) || ''}`;
 
   const stateTax = getStateTax(orderSummary);
   const paymentList = getPaymentList(orderDetails);
@@ -1107,6 +1107,25 @@ export function updateRTPSData(prescreen, isExpressCheckout) {
     .catch(err => {
       throw getFormattedError(err);
     });
+}
+
+export function acceptOrDeclinePreScreenOffer(preScreenCode, accepted) {
+  const payload = {
+    body: {
+      preScreenId: preScreenCode,
+      madeOffer: accepted ? 'true' : 'false'
+    },
+    webService: endpoints.processPreScreenOffer
+  };
+
+  return executeStatefulAPICall(payload).then((res) => {
+    if (responseContainsErrors(res)) {
+      throw new ServiceResponseError(res);
+    }
+    return res.body;
+  }).catch((err) => {
+    throw getFormattedError(err);
+  });
 }
 
 export default {

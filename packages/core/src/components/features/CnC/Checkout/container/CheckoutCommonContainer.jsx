@@ -41,6 +41,8 @@ import { getAddressListState } from '../../../account/AddressBook/container/Addr
 import {
   getUserPhoneNumber,
   getIsRegisteredUserCallDone,
+  isPlccUser,
+  getplccCardNumber,
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
@@ -77,6 +79,7 @@ const {
   getShippingAddressList,
   getIsPaymentDisabled,
   getCheckoutPageEmptyBagLabels,
+  getIsRTPSEnabled
 } = selectors;
 
 export class CheckoutContainer extends React.PureComponent<Props> {
@@ -90,6 +93,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       initCheckout,
       router,
       cvvCodeInfoContentId,
+      checkoutServerError,
+      clearCheckoutServerError,
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
@@ -101,6 +106,9 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       getGiftServicesContentGymId,
       cvvCodeInfoContentId,
     ]);
+    if (checkoutServerError) {
+      clearCheckoutServerError({});
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -207,6 +215,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       toggleCountrySelector,
       checkoutPageEmptyBagLabels,
       isBagLoaded,
+      updateRTPS
     } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
@@ -272,6 +281,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         toggleCountrySelector={toggleCountrySelector}
         cartOrderItemsCount={cartOrderItemsCount}
         checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
+        updateRTPS={updateRTPS}
       />
     );
   }
@@ -338,6 +348,7 @@ export const mapDispatchToProps = dispatch => {
     toggleCountrySelector: payload => {
       dispatch(toggleCountrySelectorModal(payload));
     },
+    updateRTPS: payload => dispatch(CHECKOUT_ACTIONS.updateRTPSData(payload))
   };
 };
 
@@ -411,6 +422,7 @@ const mapStateToProps = state => {
       isPaymentDisabled: getIsPaymentDisabled(state),
       defaultShipmentId: getDefaultShipmentID(state),
       cardType: selectors.getCardType(state),
+      isRTPSDataRequired: !(isPlccUser(state) || getplccCardNumber(state)) && getIsRTPSEnabled(state)
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),
