@@ -5,14 +5,6 @@ const initialState = {
   [DEFAULT_REDUCER_KEY]: null,
 };
 
-const getDefaultState = state => {
-  // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-  // if (state instanceof Object) {
-  //   return fromJS(state);
-  // }
-  return state;
-};
-
 const ProductDetailReducer = (state = initialState, action) => {
   const { payload: { product, breadCrumbs } = {}, type } = action;
   switch (type) {
@@ -35,7 +27,7 @@ const ProductDetailReducer = (state = initialState, action) => {
       });
       return { ...state, currentProduct: { ...productDetailsMap } };
     default:
-      return getDefaultState(state);
+      return { ...state };
   }
 };
 

@@ -5,14 +5,6 @@ const initialState = {
   [DEFAULT_REDUCER_KEY]: null,
 };
 
-const getDefaultState = state => {
-  // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-  // if (state instanceof Object) {
-  //   return fromJS(state);
-  // }
-  return state;
-};
-
 const SearchDetailReducer = (state = initialState, action) => {
   switch (action.type) {
     case SLP_CONSTANTS.SET_PRODUCTS:
@@ -31,7 +23,7 @@ const SearchDetailReducer = (state = initialState, action) => {
     case SLP_CONSTANTS.RESET_PRODUCTS:
       return { ...state };
     default:
-      return getDefaultState(state);
+      return { ...state };
   }
 };
 
