@@ -71,6 +71,7 @@ export default css`
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: ${props => props.theme.typography.fontSizes.fs48};
     letter-spacing: -0.5px;
+    line-height: 46px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.large} {

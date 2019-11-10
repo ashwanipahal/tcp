@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Col, DamImage, Row, Button } from '../../../atoms';
+import { Col, DamImage, Row, Button, Anchor } from '../../../atoms';
 import { ButtonList, LinkText, PromoBanner } from '../..';
 
 import withStyles from '../../../hoc/withStyles';
@@ -12,6 +12,26 @@ import config from '../moduleE.config';
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
 
+const CarouselArrow = ({ arrowType, label, onClick }) => {
+  return (
+    <button
+      type="button"
+      tabIndex="0"
+      aria-label={label}
+      data-locator={`moduleE_${arrowType}_arrow`}
+      className={`carousel-nav-arrow-button carousel-nav-${arrowType}-button`}
+      onClick={onClick}
+    >
+      <svg width="15" height="52">
+        <path
+          fill="#1A1A1A"
+          d="M.113 50.539a1 1 0 001.774.923l13-25a1 1 0 000-.923l-13-25a1 1 0 10-1.774.923L12.873 26 .113 50.54z"
+        />
+      </svg>
+    </button>
+  );
+};
+
 const ModuleE = props => {
   const {
     className,
@@ -21,15 +41,18 @@ const ModuleE = props => {
     largeCompImageSimpleCarousel,
     ctaItems,
     ctaType,
+    carouselCtaType,
     divCTALinks,
     linkedImage: [linkedImage] = [],
     accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
   } = props;
   const { mediaLinkedList: eyebrowMediaLinkedList, promoBanner: eyebrowPromoBanner } =
     eyebrow || {};
+
   const { ctaTypes, IMG_DATA, CAROUSEL_OPTIONS } = config;
   const buttonListCtaType = ctaTypes[ctaType];
   const carouselIcon = isGymboree() ? bigCarrotIconGym : bigCarrotIcon;
+  const [curCarouselSlideIndex, setCurCarouselSlideIndex] = useState(0);
 
   const carouselConfig = {
     autoplay: true,
@@ -40,33 +63,61 @@ const ModuleE = props => {
     dataLocatorCarousel: 'carousel_banner',
   };
 
-  CAROUSEL_OPTIONS.prevArrow = (
-    <button
-      type="button"
-      tabIndex="0"
-      aria-label={previousButton}
-      data-locator="moduleE_left_arrow"
-      className="slick-prev"
-    />
-  );
-  CAROUSEL_OPTIONS.nextArrow = (
-    <button
-      type="button"
-      tabIndex="0"
-      aria-label={nextIconButton}
-      data-locator="moduleE_right_arrow"
-      className="slick-prev"
-    />
-  );
+  CAROUSEL_OPTIONS.prevArrow = <CarouselArrow arrowType="prev" label={previousButton} />;
+  CAROUSEL_OPTIONS.nextArrow = <CarouselArrow arrowType="next" label={nextIconButton} />;
   carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageSimpleCarousel.length > 1;
   carouselConfig.pauseIconButtonLabel = pauseIconButton;
   carouselConfig.playIconButtonLabel = playIconButton;
 
+  CAROUSEL_OPTIONS.afterChange = index => {
+    setCurCarouselSlideIndex(index);
+  };
+
   return (
-    <Row className={className}>
+    <Row
+      className={className}
+      fullBleed={{
+        small: true,
+        medium: true,
+      }}
+    >
+      {/* ------- To Divider Start ------ */}
       <Col
         colSize={{
-          small: 4,
+          small: 6,
+          medium: 8,
+          large: 12,
+        }}
+        ignoreGutter={{
+          small: true,
+          medium: true,
+          large: true,
+        }}
+      >
+        <Row
+          fullBleed={{
+            small: false,
+            medium: false,
+            large: true,
+          }}
+        >
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 12,
+            }}
+            ignoreGutter
+          >
+            {eyebrow ? null : <div className="module-e-divider module-e-divider-top" />}
+          </Col>
+        </Row>
+      </Col>
+      {/* -------  To Divider End ------- */}
+
+      <Col
+        colSize={{
+          small: 6,
           medium: 8,
           large: 12,
         }}
@@ -74,11 +125,11 @@ const ModuleE = props => {
       >
         {/* ---------- Eyebrow Image Start ----------- */}
         {eyebrow && (
-          <Row>
+          <Row fullBleed>
             <Col
               colSize={{
-                small: 4,
-                medium: 8,
+                small: 2,
+                medium: 3,
                 large: 5,
               }}
               ignoreGutter
@@ -88,12 +139,13 @@ const ModuleE = props => {
                 imgData={eyebrowMediaLinkedList[0].image}
                 data-locator={`${getLocator('moduleE_eyebrowImage_img')}_left`}
                 link={eyebrowMediaLinkedList[0].link}
+                className="module-e-img-full-width"
               />
             </Col>
             <Col
               colSize={{
-                small: 4,
-                medium: 8,
+                small: 2,
+                medium: 2,
                 large: 2,
               }}
               ignoreGutter
@@ -105,8 +157,8 @@ const ModuleE = props => {
             </Col>
             <Col
               colSize={{
-                small: 4,
-                medium: 8,
+                small: 2,
+                medium: 3,
                 large: 5,
               }}
               ignoreGutter
@@ -116,6 +168,7 @@ const ModuleE = props => {
                 imgData={eyebrowMediaLinkedList[1].image}
                 data-locator={`${getLocator('moduleE_eyebrowImage_img')}_right`}
                 link={eyebrowMediaLinkedList[1].link}
+                className="module-e-img-full-width"
               />
             </Col>
           </Row>
@@ -123,7 +176,11 @@ const ModuleE = props => {
         {/* ---------- Eyebrow Image End ----------- */}
 
         {/* ---------- Header Text Start ----------- */}
-        <LinkText headerText={headerText} dataLocator={getLocator('moduleE_header_text')} />
+        <LinkText
+          className="module-e-header-text"
+          headerText={headerText}
+          dataLocator={getLocator('moduleE_header_text')}
+        />
         {/* ---------- Header Text End ----------- */}
 
         {/* ---------- Promo Text Start ----------- */}
@@ -134,77 +191,126 @@ const ModuleE = props => {
 
         {/* ----------- Promo Image Area Start----------- */}
         {linkedImage && (
-          <DamImage
-            imgConfigs={IMG_DATA.promoAreaImgConfig}
-            imgData={linkedImage.image}
-            link={linkedImage.link}
-            data-locator={`${getLocator('moduleE_promo_area_img')}`}
-          />
+          <Anchor
+            dataLocator={`${getLocator('moduleE_promo_area_img_cta')}`}
+            className={`promo-area-image-link ${
+              carouselCtaType === 'button' ? 'promo-area-image-link-spaced' : ''
+            }`}
+            url={linkedImage.link.url}
+          >
+            <DamImage
+              imgConfigs={IMG_DATA.promoAreaImgConfig}
+              imgData={linkedImage.image}
+              data-locator={`${getLocator('moduleE_promo_area_img')}`}
+              className="module-e-img-full-width"
+            />
+          </Anchor>
         )}
         {/* ----------- Promo Image Area End----------- */}
 
         {/* ---------- Carousel Image layout Start ----------- */}
-        <Row>
+        <Row fullBleed>
           <Col
             colSize={{
-              small: 4,
+              small: 6,
               medium: 8,
               large: 8,
             }}
           >
             <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
               {largeCompImageSimpleCarousel.map(({ image, singleCTAButton }, index) => {
+                const { url, text } = singleCTAButton || {};
                 return (
                   <div>
                     <DamImage
                       imgConfigs={IMG_DATA.carouselImgConfig}
                       imgData={image}
                       data-locator={`${getLocator('moduleE_small_image_img')}${index + 1}`}
+                      className="module-e-img-full-width"
                     />
-                    {/* {singleCTAButton && (
-                      <Button
-                        buttonVariation="fixed-width"
+                    {carouselCtaType === 'link' && singleCTAButton && (
+                      <Anchor
                         dataLocator={`${getLocator('moduleE_small_image_cta')}${index + 1}`}
-                        className="carousal-cta"
-                        cta={singleCTAButton}
+                        className="carousel-cta-link"
+                        url={url}
+                        title={text}
+                        underline
                       >
-                        {singleCTAButton.text}
-                      </Button>
-                    )} */}
+                        {text}
+                      </Anchor>
+                    )}
                   </div>
                 );
               })}
             </Carousel>
 
-            {/* TODO: UPDATE THE INDEX AS THE CAROUSEL IMAGE CHANGE */}
-            {largeCompImageSimpleCarousel[0].singleCTAButton && (
-              <Button
-                buttonVariation="fixed-width"
-                dataLocator={`${getLocator('moduleE_small_image_cta')}${0}`}
-                className="carousal-cta"
-                cta={largeCompImageSimpleCarousel[0].singleCTAButton}
-              >
-                {largeCompImageSimpleCarousel[0].singleCTAButton.text}
-              </Button>
+            {carouselCtaType === 'button' &&
+              largeCompImageSimpleCarousel[curCarouselSlideIndex].singleCTAButton && (
+                <Row
+                  fullBleed={{
+                    small: eyebrow ? true : false,
+                    medium: false,
+                    large: true,
+                  }}
+                >
+                  <Col
+                    colSize={{
+                      small: 6,
+                      medium: 8,
+                      large: 12,
+                    }}
+                  >
+                    <Button
+                      buttonVariation="fixed-width"
+                      dataLocator={`${getLocator(
+                        'moduleE_small_image_cta'
+                      )}${curCarouselSlideIndex}`}
+                      className={`carousel-cta-button ${
+                        eyebrow ? 'carousel-cta-button-with-eybrow-img' : ''
+                      }`}
+                      cta={largeCompImageSimpleCarousel[curCarouselSlideIndex].singleCTAButton}
+                    >
+                      {largeCompImageSimpleCarousel[curCarouselSlideIndex].singleCTAButton.text}
+                    </Button>
+                  </Col>
+                </Row>
+              )}
+
+            {/* ---------- Cta Button List Start ----------- */}
+            {ctaItems && (
+              <ButtonList
+                buttonsData={ctaItems}
+                buttonListVariation={buttonListCtaType}
+                dataLocatorDivisionImages={getLocator('moduleE_cta_image')}
+                dataLocatorTextCta={getLocator('moduleE_cta_links')}
+                className="button-list-container-alternate"
+              />
             )}
+            {/* ---------- Cta Button List End ----------- */}
           </Col>
 
           {/* ---------- Small Composite Image Start ----------- */}
           <Col
             colSize={{
-              small: 4,
+              small: 6,
               medium: 8,
               large: 4,
             }}
           >
-            <Row>
+            <Row
+              fullBleed={{
+                small: false,
+                medium: false,
+                large: true,
+              }}
+            >
               {divCTALinks.map(({ image, link, styled }, index) => {
                 const divCtaLinkHeaderText = [{ textItems: [{ ...styled }], link }];
 
                 return (
                   <Col
                     colSize={{
-                      small: 2,
+                      small: 3,
                       medium: 4,
                       large: 12,
                     }}
@@ -212,22 +318,25 @@ const ModuleE = props => {
                       large: true,
                     }}
                   >
-                    <div className="small-composite-image">
+                    <div className={`small-composite-image small-composite-image-${index}`}>
                       <DamImage
                         imgConfigs={IMG_DATA.smallImgConfig}
                         imgData={image}
                         data-locator={`${getLocator('moduleE_small_img')}${index + 1}`}
+                        className="module-e-img-full-width"
                       />
 
                       <LinkText
+                        className="small-composite-image-header"
                         headerText={divCtaLinkHeaderText}
                         dataLocator={`${getLocator('moduleE_small_img_header_text')}${index + 1}`}
                       />
 
                       <Button
-                        buttonVariation="fixed-width"
+                        buttonVariation="variable-width"
                         dataLocator={`${getLocator('moduleE_small_img_cta')}${index + 1}`}
-                        className="carousal-cta"
+                        className="carousel-cta"
+                        cta={link}
                       >
                         {link.text}
                       </Button>
@@ -241,17 +350,40 @@ const ModuleE = props => {
           {/* ---------- Small Composite Image End ----------- */}
         </Row>
         {/* ---------- Carousel Image layout End ----------- */}
-
-        {ctaItems && (
-          <ButtonList
-            buttonsData={ctaItems}
-            buttonListVariation={buttonListCtaType}
-            dataLocatorDivisionImages={getLocator('moduleE_cta_image')}
-            dataLocatorTextCta={getLocator('moduleE_cta_links')}
-            className="button-list-container-alternate"
-          />
-        )}
       </Col>
+
+      {/* ------- To Divider Start ------ */}
+      <Col
+        colSize={{
+          small: 6,
+          medium: 8,
+          large: 12,
+        }}
+        ignoreGutter={{
+          small: true,
+          medium: true,
+          large: true,
+        }}
+      >
+        <Row
+          fullBleed={{
+            small: false,
+            medium: false,
+            large: true,
+          }}
+        >
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: 12,
+            }}
+          >
+            {eyebrow ? null : <div className="module-e-divider module-e-divider-bottom" />}
+          </Col>
+        </Row>
+      </Col>
+      {/* -------  To Divider End ------- */}
     </Row>
   );
 };
@@ -259,10 +391,10 @@ const ModuleE = props => {
 ModuleE.defaultProps = {
   className: '',
   promoBanner: null,
-  eyebrow: null,
+  eyebrow: [],
   ctaType: 'stackedCTAButtons',
   ctaItems: [],
-  linkedImage: null,
+  linkedImage: [],
 };
 
 ModuleE.propTypes = {

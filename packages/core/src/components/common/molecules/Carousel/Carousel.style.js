@@ -185,12 +185,14 @@ const CarouselStyle = css`
       width: 6px;
       height: 6px;
       display: block;
-      cursor: pointer;
+      cursor: default;
       color: transparent;
       border: 0;
       outline: none;
       background: transparent;
       padding: 0;
+      pointer-events: none;
+
       &:before {
         content: '';
         box-sizing: border-box;

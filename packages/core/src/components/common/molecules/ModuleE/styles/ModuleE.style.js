@@ -3,32 +3,145 @@ import styled, { css } from 'styled-components';
 import { Carousel } from '../..';
 
 const StyledCarousal = styled(Carousel)`
-  .slick-arrow {
+  .carousel-nav-arrow-button {
+    position: absolute;
+    background: transparent;
+    border: 0;
+    z-index: 1;
     top: 50%;
+    transform: translate(0, -50%);
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: ${props => `${props.theme.spacing.ELEM_SPACING.LRG} 14px`};
+    background-color: ${props => props.theme.colorPalette.white};
+    cursor: pointer;
   }
-  .slick-next {
-    height: 50px;
+  .carousel-nav-next-button {
     right: 0;
-    width: 13px;
-    background-color: ${props => props.theme.colorPalette.white};
   }
-  .slick-prev {
-    height: 50px;
+  .carousel-nav-prev-button {
     left: 0;
-    width: 13px;
-    background-color: ${props => props.theme.colorPalette.white};
+    transform: rotate(180deg) translate(0, 50%);
   }
   .slick-dots {
-    bottom: -12px;
+    bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  .slick-slide {
+    position: relative;
+  }
+
+  .slick-list img {
+    min-height: 200px;
+    max-height: 311px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      min-height: 300px;
+      max-height: 406px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      min-height: 300px;
+      max-height: 661px;
+    }
   }
 `;
 
 export default css`
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+
+  .carousel-cta-button {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
+  .carousel-cta-button-with-eybrow-img {
+    margin-bottom: 0;
+  }
+
+  .carousel-cta-link {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 54px;
+  }
   .button-list-container-alternate {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .small-composite-image-header {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .small-composite-image {
+    text-align: center;
+  }
+  .promo-area-image-link {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    line-height: 0;
+    display: block;
+  }
+
+  .promo-area-image-link-spaced {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
+  .module-e-divider {
+    width: 100%;
+    height: 3px;
+    background-color: ${props => props.theme.colorPalette.gray[500]};
+  }
+  .module-e-divider-top {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .module-e-divider-bottom {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .module-e-img-full-width {
+    width: 100%;
+  }
+
+  .module-e-header-text .link-text {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .carousel-cta-button-with-eybrow-img {
+      border-bottom: 0;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.medium} {
+    .button-list-container-alternate {
+      padding-bottom: 0;
+    }
+    .carousel-cta-button-with-eybrow-img {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.large} {
+    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+
+    .promo-area-image-link {
+      margin: ${props => props.theme.spacing.ELEM_SPACING.MED} 0;
+    }
+
+    .button-list-container-alternate {
+      margin-bottom: 0;
+    }
+
+    .small-composite-image-0 {
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+
+    .stacked-button-list-wrapper .stacked-button,
+    .scroll-button-list-wrapper .scroll-button {
+      min-width: 174px;
+      margin: 0 8px;
+      button {
+        width: 174px;
+      }
+    }
   }
 `;
 

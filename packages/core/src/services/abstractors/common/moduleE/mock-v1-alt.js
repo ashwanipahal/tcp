@@ -141,7 +141,7 @@ export default {
           ],
         },
       ],
-      linkedImage: [
+      linkedImage1: [
         {
           image: {
             url:
