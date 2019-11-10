@@ -44,7 +44,7 @@ class BundleProduct extends React.Component {
     const selectedColorProductId = currentColorEntry.colorProductId;
 
     return (
-      <Row>
+      <Row fullBleed>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <div className="product-summary-wrapper">
             <Product
@@ -70,7 +70,7 @@ class BundleProduct extends React.Component {
   getProductDescription = () => {
     const { itemPartNumber, pdpLabels, shortDescription, longDescription } = this.props;
     return (
-      <Row>
+      <Row fullBleed>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
           <ProductDescription
             productId={itemPartNumber}
@@ -140,7 +140,7 @@ class BundleProduct extends React.Component {
               {this.getMainImageCarousel(imagesToDisplay)}
             </Col>
             <Col colSize={{ small: 6, medium: 5, large: 6 }}>
-              <Row className="product-summary-section">
+              <Row fullBleed className="product-summary-section">
                 <Col
                   id="productDetailsSection"
                   className="product-detail-section"

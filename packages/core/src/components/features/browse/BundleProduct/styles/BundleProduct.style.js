@@ -6,7 +6,8 @@ export default css`
     padding: 10px 0;
     text-align: center;
     width: calc(100% - 26px);
-    margin: 0 13px 5px;
+    margin: 0 13px ${props => props.theme.spacing.ELEM_SPACING.MED};
+
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 13px ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
@@ -19,7 +20,8 @@ export default css`
     padding: 20px 0;
     text-align: center;
     width: 100%;
-    margin: 0 0px 5px;
+    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
@@ -29,6 +31,8 @@ export default css`
   }
 
   .breadcrum-wrapper {
+    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
