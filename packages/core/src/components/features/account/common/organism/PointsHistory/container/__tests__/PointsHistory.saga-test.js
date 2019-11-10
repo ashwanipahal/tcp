@@ -15,6 +15,7 @@ describe('Point history saga', () => {
     // TODO - Rewrite Test cases to include Integration testing of Saga and Abstractor
     it('should dispatch getPointsHistoryList action for success resposnse', () => {
       const response = {};
+      pointsHistoryGen.next();
       const putDescriptor = pointsHistoryGen.next(response).value;
       expect(putDescriptor).toEqual(put(setPointsHistoryList(response)));
     });

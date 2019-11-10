@@ -7,9 +7,10 @@ import { setServerErrorCheckout, resetCheckoutReducer, updateRTPSData, setIsRTPS
  * @function initCheckoutAction
  * action creator for type: INIT_CHECKOUT
  */
-export const initCheckoutAction = router => ({
+export const initCheckoutAction = (router, isPaypalFlow) => ({
   type: constants.INIT_CHECKOUT,
   router,
+  isPaypalFlow,
 });
 
 export const submitPickupSection = payload => ({

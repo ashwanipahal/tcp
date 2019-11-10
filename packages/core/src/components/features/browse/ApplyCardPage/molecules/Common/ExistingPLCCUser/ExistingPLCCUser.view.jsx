@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RichText, Button, Col, Row } from '../../../../../../common/atoms';
+import { Anchor, RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ExistingPLCCUserStyle from './style/ExistingPLCCUser.view.style';
 import { getLabelValue } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome } from '../../../utils/utility';
@@ -53,15 +53,17 @@ const ExistingPLCCUserView = ({
             colSize={{ large: 3, medium: 4, small: 12 }}
             className="existing_continue_button"
           >
-            <Button
+            <Anchor
+              url={redirectToHome()}
+              fontSizeVariation="large"
               buttonVariation="fixed-width"
+              anchorVariation="button"
               fill={!bagItems ? 'BLUE' : 'WHITE'}
-              type="submit"
+              centered
               className="existing_continue_button"
-              onClick={() => redirectToHome(resetPLCCResponse)}
             >
               {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Button>
+            </Anchor>
           </Col>
         </Row>
       )}
@@ -74,6 +76,8 @@ ExistingPLCCUserView.propTypes = {
   existingCustomerDetails: PropTypes.string.isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ExistingPLCCUserView;

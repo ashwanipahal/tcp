@@ -161,15 +161,17 @@ const totalSavingsFooterContainer = (
             ignoreGutter={{ small: true }}
             colSize={{ large: 3, medium: 4, small: 12 }}
           >
-            <Button
+            <Anchor
+              url={redirectToHome()}
+              fontSizeVariation="large"
               buttonVariation="fixed-width"
+              anchorVariation="button"
               fill={!bagItems ? 'BLUE' : 'WHITE'}
-              type="submit"
+              centered
               className="existing_continue_button"
-              onClick={() => redirectToHome(resetPLCCResponse)}
             >
               {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Button>
+            </Anchor>
           </Col>
         </Row>
       )}
@@ -262,8 +264,9 @@ const ApprovedPLCCApplicationView = ({
         >
           {!isGuest ? (
             <RichText richTextHtml={plccData && plccData.plcc_shipping_info} />
-          ) : (
-            <RichText richTextHtml={plccData && plccData.guest_shipping_info} />
+          ) :
+            (
+              <RichText richTextHtml={plccData && plccData.guest_shipping_info} />
             )}
         </Col>
       </Row>
@@ -309,6 +312,8 @@ ApprovedPLCCApplicationView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApprovedPLCCApplicationView;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
+import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import ApplicationInProgressWrapper from './style/ApplicationInProgress.style';
 import { getLabelValue } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome } from '../../../utils/utility';
@@ -56,16 +56,17 @@ const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse, isR
             colSize={{ large: 4, medium: 4, small: 12 }}
             className="underprogress_continue_button"
           >
-            <Button
+            <Anchor
+              url={redirectToHome()}
+              fontSizeVariation="large"
               buttonVariation="fixed-width"
+              anchorVariation="button"
               fill={!bagItems ? 'BLUE' : 'WHITE'}
-              type="submit"
-              className="underprogress_continue_button"
-              data-locator="submit-plcc-btn"
-              onClick={() => redirectToHome(resetPLCCResponse)}
+              centered
+              className="existing_continue_button"
             >
               {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-            </Button>
+            </Anchor>
           </Col>
         </Row>
       )}
@@ -77,6 +78,8 @@ ApplicationInProgress.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApplicationInProgress;
