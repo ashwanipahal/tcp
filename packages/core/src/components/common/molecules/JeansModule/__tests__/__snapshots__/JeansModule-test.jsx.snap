@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`JeanModule component should default variant correctly 1`] = `
-<div>
+<div
+  className=""
+>
   <div
     className="title-section"
   >
