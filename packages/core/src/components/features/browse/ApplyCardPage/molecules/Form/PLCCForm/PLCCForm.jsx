@@ -359,6 +359,8 @@ PLCCForm.propTypes = {
     plcc_form_nothanks: PropTypes.string.isRequired,
   }).isRequired,
   invalid: PropTypes.bool,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired
 };
 
 PLCCForm.defaultProps = {

@@ -25,6 +25,8 @@ class BillingPage extends React.PureComponent {
     isVenmoEnabled: PropTypes.bool,
     pageCategory: PropTypes.string,
     ServerErrors: PropTypes.node.isRequired,
+    isRTPSDataRequired: PropTypes.bool.isRequired,
+    updateRTPS: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -94,8 +96,9 @@ class BillingPage extends React.PureComponent {
               pageCategory={pageCategory}
             />
           </div>
-        ) : (
-          <GuestBillingForm
+        ) :
+          (
+            <GuestBillingForm
               shippingAddress={shippingAddress}
               cvvCodeRichText={cvvCodeRichText}
               labels={labels}

@@ -281,6 +281,7 @@ class TCPWebApp extends App {
               {Component.pageInfo && Component.pageInfo.pageId
                 ? this.getSEOTags(Component.pageInfo.pageId, store, router)
                 : null}
+              <Header />
               <CheckoutHeader />
               <Loader />
               <div className="content-wrapper">

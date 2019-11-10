@@ -396,7 +396,8 @@ class CheckoutPage extends React.PureComponent {
             pageCategory={currentSection.toLowerCase()}
             checkoutServerError={checkoutServerError}
           />
-        ) : (
+        ) :
+          (
             <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
           )}
       </>
@@ -457,6 +458,8 @@ CheckoutPage.propTypes = {
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   clearCheckoutServerError: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  updateRTPS: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 CheckoutPage.defaultProps = {

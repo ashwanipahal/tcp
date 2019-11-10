@@ -25,3 +25,16 @@ export const intiSectionPage = (pageName, props, extraProps = {}) => {
   }
   initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
 };
+
+export const callNeedHelpContent = (props) => {
+  const { fetchNeedHelpContent, needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId, } = props;
+  fetchNeedHelpContent([needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId])
+}

@@ -211,6 +211,11 @@ StyledApplyNowModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   plccBenefitsList: PropTypes.string.isRequired,
+  rtpsCongratsMsg: PropTypes.string.isRequired,
+  rtpsOptOutMsg: PropTypes.string.isRequired,
+  rtpsTextTerms: PropTypes.string.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  submitAcceptOrDeclinePlcc: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     apply_now_header: PropTypes.string.isRequired,
     apply_now_subheader: PropTypes.string.isRequired,

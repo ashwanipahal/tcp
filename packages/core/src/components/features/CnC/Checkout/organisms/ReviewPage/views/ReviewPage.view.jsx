@@ -42,6 +42,8 @@ class ReviewPage extends React.PureComponent {
     pageCategory: PropTypes.string,
     checkoutServerError: PropTypes.shape({}).isRequired,
     clearCheckoutServerError: PropTypes.func.isRequired,
+    isRTPSDataRequired: PropTypes.bool.isRequired,
+    updateRTPS: PropTypes.func.isRequired,
   };
 
   static defaultProps = {

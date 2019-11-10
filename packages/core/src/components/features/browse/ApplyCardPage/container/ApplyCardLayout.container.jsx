@@ -156,6 +156,8 @@ ApplyCardLayoutContainer.propTypes = {
   toggleModal: PropTypes.shape({}).isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   closeModal: PropTypes.func,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired
 };
 
 ApplyCardLayoutContainer.defaultProps = {
