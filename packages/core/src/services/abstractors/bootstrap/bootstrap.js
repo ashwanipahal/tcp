@@ -147,6 +147,9 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   return bootstrapData[key];
 };
 
+const shouldInitiateSSRCall = (originalUrl, deviceType) =>
+  originalUrl.includes('/c/') && deviceType === 'bot' && typeof window === 'undefined';
+
 /**
  * Responsible for making all the http requests that need to be resolved before loading the application
  *  -   Layout
@@ -209,7 +212,7 @@ const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl,
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
 
-    if (originalUrl.includes('/c/') && deviceType === 'bot' && typeof window === 'undefined') {
+    if (shouldInitiateSSRCall(originalUrl, deviceType)) {
       response.PLP = await ProductListingAbstractor({
         navigationData: response.navigation,
         location: { pathname: originalUrl },

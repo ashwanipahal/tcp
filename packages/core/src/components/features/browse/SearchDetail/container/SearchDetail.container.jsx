@@ -45,7 +45,7 @@ import {
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
 class SearchDetailContainer extends React.PureComponent {
-  static initiateApiCall = ({ props, query, req, isServer }) => {
+  static getInitialProps = ({ props, query, req, isServer }) => {
     const { getProducts, formValues } = props;
     let searchQuery;
     let asPath = '';
@@ -310,13 +310,6 @@ SearchDetailContainer.defaultProps = {
   isLoadingMore: false,
   isSearchResultsAvailable: false,
 };
-
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-//   )(SearchDetailContainer)
-// );
 
 export default withIsomorphicRenderer({
   WrappedComponent: SearchDetailContainer,

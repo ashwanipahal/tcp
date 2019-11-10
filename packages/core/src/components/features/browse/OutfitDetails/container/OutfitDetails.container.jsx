@@ -36,9 +36,8 @@ import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
-  static initiateApiCall = ({ props, query, isServer }) => {
+  static getInitialProps = ({ props, query, isServer }) => {
     const { getOutfit, navigation } = props;
-    let selectedOutfitId = '';
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
@@ -46,7 +45,6 @@ class OutfitDetailsContainer extends React.PureComponent {
       // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
       // const outfitId = '138548';
       getOutfit({ outfitId, vendorColorProductIdsList });
-      selectedOutfitId = outfitId;
     } else {
       let vendorColorProductIdsList;
       let outfitId;
@@ -60,13 +58,17 @@ class OutfitDetailsContainer extends React.PureComponent {
         } = props);
       }
       getOutfit({ outfitId, vendorColorProductIdsList });
-      selectedOutfitId = outfitId;
-    }
-
-    if (selectedOutfitId) {
-      this.setState({ outfitIdLocal: selectedOutfitId });
     }
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      router: {
+        query: { outfitId: selectedOutfitId },
+      },
+    } = nextProps;
+    return selectedOutfitId ? { ...prevState, outfitIdLocal: selectedOutfitId } : { ...prevState };
+  }
 
   constructor(props) {
     super(props);
@@ -219,11 +221,6 @@ OutfitDetailsContainer.defaultProps = {
   isLoggedIn: false,
   pdpLabels: {},
 };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(OutfitDetailsContainer);
 
 export default withIsomorphicRenderer({
   WrappedComponent: OutfitDetailsContainer,

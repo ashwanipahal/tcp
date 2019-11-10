@@ -261,7 +261,7 @@ export const getIsDataLoading = state => {
 };
 
 export const getPLPTopPromos = state => {
-  const topPromos = state.ProductListing.getIn(['bannerInfo', 'val', 'top']);
+  const { bannerInfo: { val: { top: topPromos } = {} } = {} } = state.ProductListing;
   return (
     (topPromos &&
       topPromos.map(promoItem => {

@@ -4,7 +4,7 @@ import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsom
 import CategoryListing from './views/CategoryListing';
 
 export class CategoryListingContainer extends PureComponent {
-  static initiateApiCall = ({ props }) => {
+  static getInitialProps = ({ props }) => {
     const { getLayout } = props;
     getLayout('boy', 'categoryListingPage');
   };

@@ -7,7 +7,7 @@ import { getStyliticsProductTabListSelector } from '../../../../common/organisms
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 class OutfitListingContainer extends React.PureComponent {
-  static initiateApiCall = ({ props }) => {
+  static getInitialProps = ({ props }) => {
     const { getStyliticsProductTabListData, asPath, navigation } = props;
     const categoryId = (navigation && navigation.getParam('outfitPath')) || asPath;
     getStyliticsProductTabListData({ categoryId, count: 20 });
@@ -89,11 +89,6 @@ OutfitListingContainer.defaultProps = {
   plpTopPromos: {},
   asPathVal: '',
 };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(OutfitListingContainer);
 
 export default withIsomorphicRenderer({
   WrappedComponent: OutfitListingContainer,

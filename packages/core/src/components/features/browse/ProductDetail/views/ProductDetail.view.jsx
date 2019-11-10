@@ -187,7 +187,7 @@ class ProductDetailView extends React.Component {
       addToBagError,
       alternateSizes,
     } = this.props;
-    const currentProduct = { productDetails };
+    const { currentProduct } = productDetails;
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
     const isProductDataAvailable = Object.keys(productInfo).length > 0;

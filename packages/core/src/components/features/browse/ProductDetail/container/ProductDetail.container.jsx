@@ -59,7 +59,7 @@ class ProductDetailContainer extends React.PureComponent {
     return productId;
   };
 
-  static initiateApiCall = ({ props, query, isServer }) => {
+  static getInitialProps = ({ props, query, isServer }) => {
     const { getDetails } = props;
     let pid;
     if (isServer) {
@@ -72,7 +72,7 @@ class ProductDetailContainer extends React.PureComponent {
       } = props);
     }
     // TODO - fix this to extract the product ID from the page.
-    const productId = ProductDetailContainer.extractPID({ ...props, router: { query: pid } });
+    const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
     getDetails({ productColorId: productId });
   };
 
@@ -260,13 +260,6 @@ ProductDetailContainer.defaultProps = {
   isLoggedIn: false,
   alternateSizes: {},
 };
-
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-//   )(ProductDetailContainer)
-// );
 
 export default withIsomorphicRenderer({
   WrappedComponent: ProductDetailContainer,

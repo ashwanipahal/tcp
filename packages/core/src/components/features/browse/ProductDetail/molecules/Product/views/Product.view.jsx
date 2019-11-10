@@ -30,7 +30,7 @@ const Product = props => {
     isKeepAliveProduct,
   } = props;
 
-  const productInfo = productDetails.get('currentProduct');
+  const productInfo = productDetails.currentProduct;
   if (!productInfo) {
     return <div />; // TODO - maybe add loader later
   }

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { withRouter } from 'next/router'; // eslint-disable-line
@@ -11,14 +10,14 @@ export default function({ WrappedComponent, mapStateToProps, mapDispatchToProps 
       const intialProps = { props, query, isServer, req };
       const deviceBot = req && req.device && req.device.type === 'bot';
       if (isServer && !deviceBot) {
-        WrappedComponent.initiateApiCall(intialProps);
+        WrappedComponent.getInitialProps(intialProps);
       }
     }
 
     componentDidMount() {
       const { deviceType, ...props } = this.props;
       if (deviceType !== 'bot') {
-        WrappedComponent.initiateApiCall({ props });
+        WrappedComponent.getInitialProps({ props });
       }
     }
 
