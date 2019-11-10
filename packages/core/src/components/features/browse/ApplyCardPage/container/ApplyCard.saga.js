@@ -50,7 +50,6 @@ export function* submitCreditCardForm({ payload = '' }) {
     const labels = yield select(getErrorMapping);
     const { preScreenCode } = yield select(getRtpsPreScreenData);
     const isRTPSFlow = yield select(getIsRtpsFlow);
-    console.log('isRTPSFlow11111', isRTPSFlow);
     // NOTE: we can't use checkoutStoreView.isExpressCheckout(). Users can navigate back to shipping and trigger RTPS from there.
     const currentCheckoutStage = yield select(getCurrentCheckoutStage);
     const res = yield call(applyInstantCard, payload, labels, preScreenCode, currentCheckoutStage === 'review');

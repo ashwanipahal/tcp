@@ -560,8 +560,6 @@ function* updateUserRTPSData({ payload }) {
 function* submitAcceptOrDeclinePlccData({ payload }) {
   const preScreenData = yield select(getRtpsPreScreenData);
   const { preScreenCode } = preScreenData;
-  console.log('preScreenData111111', preScreenData);
-  console.log('payload2222 === submitAcceptOrDeclinePlccData', payload)
   const accepted = payload;
   try {
     yield acceptOrDeclinePreScreenOffer(preScreenCode, accepted);

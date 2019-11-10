@@ -128,11 +128,13 @@ const StyledApplyNowModal = ({
               </Col>
             )}
         </Row>
-        <Row>
-          <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-            <RichText className="opt_out_msg" richTextHtml={rtpsOptOutMsg} />
-          </Col>
-        </Row>
+        {isRtpsFlow && (
+          <Row>
+            <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+              <RichText className="opt_out_msg" richTextHtml={rtpsOptOutMsg} />
+            </Col>
+          </Row>
+        )}
         <div
           className="offer_info_icon"
           data-locator="plcc_modal_logo"

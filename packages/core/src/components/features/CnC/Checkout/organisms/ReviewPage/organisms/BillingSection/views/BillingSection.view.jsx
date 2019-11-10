@@ -54,7 +54,6 @@ export class BillingSection extends PureComponent {
 
   getCvvField = () => {
     const { isExpressCheckout, labels, cvvCodeRichText, card, isBillingVisited } = this.props;
-    console.log('card1234', card);
     return (
       isExpressCheckout &&
       card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD &&
