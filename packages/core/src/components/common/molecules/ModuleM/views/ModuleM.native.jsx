@@ -36,7 +36,7 @@ class ModuleM extends React.PureComponent {
     super(props);
 
     this.state = {
-      currentTabItem: '',
+      currentTabItem: 'tablList-0',
     };
   }
 
@@ -67,12 +67,11 @@ class ModuleM extends React.PureComponent {
     Create a required data object for the ButtonTabs components
   */
   getButtonTabItems = tabItems => {
-    return tabItems.map(item => {
+    return tabItems.map((item, index) => {
       const {
-        category: { cat_id: id } = {},
         text: { text },
       } = item;
-      return { label: text, id };
+      return { label: text, id: `tablList-${index}` };
     });
   };
 
@@ -80,9 +79,9 @@ class ModuleM extends React.PureComponent {
     Create a required data object for the Image list
   */
   getImageItems = data => {
-    return data.map(item => {
-      const { category: { cat_id: id } = {}, smallCompImages } = item;
-      return { id, smallCompImages };
+    return data.map((item, index) => {
+      const { smallCompImages } = item;
+      return { id: `tablList-${index}`, smallCompImages };
     });
   };
 
@@ -135,14 +134,17 @@ class ModuleM extends React.PureComponent {
             />
           </PromoContainer>
         )}
-        <ButtonTabsContainer>
-          <ButtonTabs
-            selectedTabId={currentTabItem}
-            onTabChange={this.onTabChange}
-            tabs={tabItems}
-            navigation={navigation}
-          />
-        </ButtonTabsContainer>
+        {tabItems.length > 1 ? (
+          <ButtonTabsContainer>
+            <ButtonTabs
+              selectedTabId={currentTabItem}
+              onTabChange={this.onTabChange}
+              tabs={tabItems}
+              navigation={navigation}
+            />
+          </ButtonTabsContainer>
+        ) : null}
+
         {smallCompImages && smallCompImages.length > 0 ? (
           <ImageContainer>
             {smallCompImages.map(({ image, link }, index) => {
