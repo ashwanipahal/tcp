@@ -418,7 +418,7 @@ class BagPageView extends React.PureComponent {
           isNonEmptySFL={isNonEmptySFL}
           pageCategory="bagPage"
         />
-        <QuickViewModal fromBagPage />
+        <QuickViewModal />
       </div>
     );
   }

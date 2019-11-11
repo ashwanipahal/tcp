@@ -11,6 +11,11 @@ describe('HomePageView', () => {
     const props = {
       slot_1: { className: 'moduleD' },
       slot_2: { className: 'moduleH' },
+      screenProps: {
+        apiConfig: {
+          previewEnvId: 'STAGING',
+        },
+      },
       getBootstrapData,
       appType: 'tcp',
       navigation: {
@@ -33,6 +38,11 @@ describe('HomePageView', () => {
     component.setProps({
       navigation: {
         getParam: () => true,
+      },
+      screenProps: {
+        apiConfig: {
+          previewEnvId: 'STAGING',
+        },
       },
       getBootstrapData,
     });

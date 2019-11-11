@@ -39,9 +39,11 @@ const ColWrapper = styled.div`
 const ImgContainer = styled.div`
   text-align: center;
   img {
+    width: 100%;
     max-height: 100%;
   }
   height: ${props => (props.theme.isGymboree ? '420px' : '356px')};
+  overflow: hidden;
   @media ${props => props.theme.mediaQuery.mediumOnly} {
     height: ${props => (props.theme.isGymboree ? '480px' : '356px')};
   }

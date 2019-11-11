@@ -29,4 +29,10 @@ export default css`
     position: relative;
     top: 3px;
   }
+  .moduleD_image {
+    width: 100%;
+  }
+  .moduleD__promo-banner {
+    margin-bottom: 16px;
+  }
 `;

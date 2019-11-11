@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
+import { Modal } from '@tcp/core/src/components/common/molecules';
+import { getViewportInfo, isIosWeb, isAndroidWeb, isCanada } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { isCanada } from '@tcp/core/src/utils';
 import styles from '../styles/OverlayModal.style';
 
 const propTypes = {
@@ -35,6 +36,7 @@ class OverlayModal extends React.Component {
     this.bodyContainer = bodyContainer;
     const [body] = document.getElementsByTagName('body');
     this.body = body;
+    this.isMobile = getViewportInfo().isMobile && (isIosWeb() || isAndroidWeb());
     this.handleWindowClick = this.handleWindowClick.bind(this);
     this.keydownInOverlay = this.keydownInOverlay.bind(this);
   }
@@ -66,7 +68,15 @@ class OverlayModal extends React.Component {
       this.getCustomStyles({ styleModal: true });
     }
 
-    modal.addEventListener('keydown', this.keydownInOverlay);
+    if (!this.isMobile) {
+      modal.addEventListener('keydown', this.keydownInOverlay);
+    }
+
+    if (this.isMobile && nextTargetComponent === 'accountDrawer') {
+      document
+        .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
+        .forEach(element => element.setAttribute('aria-hidden', 'true'));
+    }
 
     return null;
   }
@@ -84,6 +94,9 @@ class OverlayModal extends React.Component {
     const modal = document.getElementById('dialogContent');
     modal.removeEventListener('keydown', this.keydownInOverlay);
     this.resetBodyScrollStyles();
+    document
+      .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
+      .forEach(element => element.removeAttribute('aria-hidden'));
   }
 
   /**
@@ -93,7 +106,8 @@ class OverlayModal extends React.Component {
 
   // eslint-disable-next-line complexity
   styleModalTriangle = ({ comp }) => {
-    const { showCondensedHeader } = this.props;
+    const { showCondensedHeader, component } = this.props;
+    if (this.isMobile && component !== 'accountDrawer') return;
     const compRectBoundingX = comp.getBoundingClientRect().x;
     const compWidth = comp.getBoundingClientRect().width / 2;
     const modal = document.getElementById('dialogContent');
@@ -132,6 +146,7 @@ class OverlayModal extends React.Component {
 
   getCustomStyles = ({ styleModal }) => {
     const { component } = this.props;
+    if (this.isMobile && component !== 'accountDrawer') return;
     const comp = document.getElementById(component);
     /* istanbul ignore else */
     if (comp && window) {
@@ -200,7 +215,28 @@ class OverlayModal extends React.Component {
       showCondensedHeader,
     } = this.props;
 
-    return (
+    return this.isMobile && component !== 'accountDrawer' ? (
+      <div>
+        <Modal
+          contentRef={this.setModalRef}
+          isOpen
+          className={className}
+          overlayClassName="TCPModal__Overlay"
+          onRequestClose={this.closeModal}
+          noPadding
+          id="modalWrapper"
+          widthConfig={{ small: '100%' }}
+          heightConfig={{ minHeight: '500px' }}
+        >
+          <div
+            id="dialogContent"
+            className={`dialog__content ${showCondensedHeader && 'condensed-overlay'}`}
+          >
+            <ModalContent className="modal__content" {...componentProps} />
+          </div>
+        </Modal>
+      </div>
+    ) : (
       <div
         className={className}
         id="modalWrapper"
@@ -224,9 +260,7 @@ class OverlayModal extends React.Component {
             } modal__triangle hide-on-mobile ${showCondensedHeader && 'condensed-modal-triangle'}`}
             id="modalTriangle"
           />
-          <div
-            className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar hide-on-mobile`}
-          />
+          <div className={`${isCanada() ? 'ca-no-theme' : 'mpr-plcc-theme'} modal__bar`} />
           <ModalContent className="modal__content" {...componentProps} />
         </div>
       </div>

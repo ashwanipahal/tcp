@@ -4,13 +4,13 @@ import { createSelector } from 'reselect';
 import { List } from 'immutable';
 import {
   CHECKOUT_REDUCER_KEY,
+  CARTPAGE_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { constants as venmoConstants } from '@tcp/core/src/components/common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import { getLocalStorage } from '@tcp/core/src/utils/localStorageManagement';
 import { getAPIConfig, isMobileApp, getViewportInfo, getLabelValue } from '../../../../../utils';
 /* eslint-disable extra-rules/no-commented-out-code */
-import CheckoutUtils from '../util/utility';
 import {
   getPersonalDataState,
   getUserName,
@@ -19,7 +19,6 @@ import {
   getUserEmail,
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
-import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
   getPickUpContactFormLabels,
@@ -44,15 +43,15 @@ export const getCheckoutValuesState = createSelector(
   state => state && state.get('values')
 );
 
-const getIsOrderHasShipping = createSelector(
-  BagPageSelector.getOrderItems,
-  cartItems => cartItems && cartItems.findIndex(item => !item.getIn(['miscInfo', 'store'])) > -1
-);
+const getIsOrderHasShipping = state =>
+  !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isShippingOrder']);
 
-const getIsOrderHasPickup = createSelector(
-  BagPageSelector.getOrderItems,
-  orderItems => orderItems && CheckoutUtils.isOrderHasPickup(orderItems)
-);
+const getIsOrderHasPickup = state =>
+  !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
+
+const getIfCheckoutRoutingDone = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'routingDone']);
+};
 
 const getCardType = state => {
   return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
@@ -1071,4 +1070,5 @@ export default {
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
+  getIfCheckoutRoutingDone,
 };

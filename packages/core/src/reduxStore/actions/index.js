@@ -167,6 +167,13 @@ export const SetTcpSegmentMethodCall = payload => ({
   type: GLOBAL_CONSTANTS.SET_TCP_SEGMENT_METHOD_CALL,
 });
 
+export const setPreviewDate = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_PREVIEW_DATE,
+  };
+};
+
 export default {
   loadLayoutData,
   loadLabelsData,
@@ -182,5 +189,6 @@ export default {
   setLanguage,
   setBossBopisFlags,
   getSetTcpSegment,
-  SetTcpSegmentMethodCall
+  SetTcpSegmentMethodCall,
+  setPreviewDate,
 };

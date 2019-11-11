@@ -6,7 +6,7 @@ exports[`ButtonList component renders correctly 1`] = `
     className=" button-list-wrapper link-button-list-wrapper "
   >
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
@@ -39,7 +39,7 @@ exports[`ButtonList component renders correctly 1`] = `
       uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
@@ -72,7 +72,7 @@ exports[`ButtonList component renders correctly 1`] = `
       uniqueKey="BOY"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
@@ -105,7 +105,7 @@ exports[`ButtonList component renders correctly 1`] = `
       uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="link-button-wrapper-class"
+      className="link-button-wrapper-class "
       ctaInfo={
         Object {
           "className": "link-button",
@@ -147,7 +147,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
     className=" button-list-wrapper stacked-button-list-wrapper  is-tablet-hidden"
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -181,7 +181,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -215,7 +215,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       uniqueKey="BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -249,7 +249,7 @@ exports[`ButtonList component renders correctly for Dual Variation 1`] = `
       uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -365,7 +365,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     className=" button-list-wrapper scroll-button-list-wrapper   "
   >
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -396,7 +396,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       uniqueKey="GIRL"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -427,7 +427,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       uniqueKey="BOY"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -458,7 +458,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       uniqueKey="TODDLER_BOY"
     />
     <ImageTextCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "image-cta",
@@ -498,7 +498,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     className=" button-list-wrapper scroll-button-list-wrapper   "
   >
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -531,7 +531,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
       uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -564,7 +564,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
       uniqueKey="BOY"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -597,7 +597,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
       uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="scroll-cta-wrapper-class"
+      className="scroll-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "scroll-button",
@@ -639,7 +639,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     className=" button-list-wrapper stacked-button-list-wrapper  "
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -673,7 +673,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -707,7 +707,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       uniqueKey="BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -741,7 +741,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
       uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -784,7 +784,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
     className=" button-list-wrapper stacked-button-list-wrapper  "
   >
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -818,7 +818,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       uniqueKey="GIRL"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -852,7 +852,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       uniqueKey="BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",
@@ -886,7 +886,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
       uniqueKey="TODDLER_BOY"
     />
     <ButtonCTA
-      className="stacked-cta-wrapper-class"
+      className="stacked-cta-wrapper-class "
       ctaInfo={
         Object {
           "className": "stacked-button",

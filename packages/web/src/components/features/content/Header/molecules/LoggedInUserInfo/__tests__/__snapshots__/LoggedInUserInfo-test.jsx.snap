@@ -13,6 +13,8 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
     letterSpacing="normal"
     lineHeight="normal"
     link={null}
+    onClick={[Function]}
+    tabIndex="0"
     textAlign="left"
   >
     <Styled(BodyCopy)
@@ -25,7 +27,6 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
-      onClick={[Function]}
       role="button"
       textAlign="left"
     >
@@ -35,7 +36,6 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
       alt="user"
       className="account-info carrot-down-icon"
       height="6px"
-      onClick={[Function]}
       src="/static/images/carrot-small-down.png"
     />
     <Styled(BodyCopy)
@@ -48,7 +48,6 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
       letterSpacing="normal"
       lineHeight="normal"
       link={null}
-      onClick={[Function]}
       textAlign="left"
     >
       <div
