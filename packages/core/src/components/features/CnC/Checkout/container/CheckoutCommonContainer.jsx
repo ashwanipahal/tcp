@@ -18,8 +18,6 @@ import CHECKOUT_ACTIONS, {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
-  initCheckoutSectionPageAction,
-  toggleCountrySelectorModal,
 } from './Checkout.action';
 import CheckoutPage from '../views/CheckoutPage.view';
 import selectors, {
@@ -42,15 +40,17 @@ import { getAddressListState } from '../../../account/AddressBook/container/Addr
 import {
   getUserPhoneNumber,
   getIsRegisteredUserCallDone,
-  isPlccUser,
-  getplccCardNumber,
 } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { toastMessageInfo } from '../../../../common/atoms/Toast/container/Toast.actions.native';
 import constants from '../Checkout.constants';
 import utils from '../../../../../utils';
 import { getCVVCodeInfoContentId } from '../organisms/BillingPage/container/BillingPage.selectors';
-import { intiSectionPage, formatPayload, callNeedHelpContent } from './CheckoutCommonContainer.util';
+import {
+  intiSectionPage,
+  formatPayload,
+  callNeedHelpContent,
+} from './CheckoutCommonContainer.util';
 
 const {
   getSmsSignUpLabels,
@@ -82,7 +82,6 @@ const {
   getShippingAddressList,
   getIsPaymentDisabled,
   getCheckoutPageEmptyBagLabels,
-  getIsRTPSEnabled
 } = selectors;
 export class CheckoutContainer extends React.PureComponent<Props> {
   componentDidMount() {
@@ -106,9 +105,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 
   componentDidUpdate(prevProps) {
     const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-    const { isRegisteredUserCallDone, router, initCheckout, navigation } = this.props;
+    const { isRegisteredUserCallDone, router, initCheckout, navigation, isRTPSFlow } = this.props;
     /* istanbul ignore else */
-    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+    if (
+      prevIsRegisteredUserCallDone !== isRegisteredUserCallDone &&
+      isRegisteredUserCallDone &&
+      !isRTPSFlow
+    ) {
       initCheckout(router, getPayPalFlag(navigation));
     }
   }
@@ -181,7 +184,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpContactPerson,
       pickUpContactAlternate,
       dispatchReviewReduxForm,
-      updateRTPS
+      updateRTPS,
     } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
@@ -272,13 +275,14 @@ CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
   };
 };
 
+/* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: (router, isPaypalFlow) => {
       dispatch(initCheckoutAction(router, isPaypalFlow));
     },
     initCheckoutSectionPage: payload => {
-      dispatch(initCheckoutSectionPageAction(payload));
+      dispatch(CHECKOUT_ACTIONS.initCheckoutSectionPageAction(payload));
     },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
@@ -330,12 +334,12 @@ export const mapDispatchToProps = dispatch => {
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
     toggleCountrySelector: payload => {
-      dispatch(toggleCountrySelectorModal(payload));
+      dispatch(CHECKOUT_ACTIONS.toggleCountrySelectorModal(payload));
     },
-    updateRTPS: payload => dispatch(CHECKOUT_ACTIONS.updateRTPSData(payload))
   };
 };
 
+/* istanbul ignore next */
 const mapStateToProps = state => {
   return {
     initialValues: selectors.getPickupInitialPickupSectionValues(state),
@@ -406,7 +410,6 @@ const mapStateToProps = state => {
       isPaymentDisabled: getIsPaymentDisabled(state),
       defaultShipmentId: getDefaultShipmentID(state),
       cardType: selectors.getCardType(state),
-      isRTPSDataRequired: !(isPlccUser(state) || getplccCardNumber(state)) && getIsRTPSEnabled(state)
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),
@@ -419,6 +422,7 @@ const mapStateToProps = state => {
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     couponHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    isRTPSFlow: selectors.getIsRtpsFlow(state),
   };
 };
 

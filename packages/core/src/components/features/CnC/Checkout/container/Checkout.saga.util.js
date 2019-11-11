@@ -1,23 +1,33 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
+import {
+  setPlccEligible,
+  setPlccPrescreenCode,
+} from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import logger from '../../../../../utils/loggerInstance';
-import selectors, { isGuest } from './Checkout.selector';
+import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
   briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
+  updateRTPSData,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
-import { getUserEmail } from '../../../account/User/container/User.selectors';
+import {
+  getUserEmail,
+  isPlccUser,
+  getplccCardNumber,
+} from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
   addAddressGet,
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import {
+import actions, {
   setOnFileAddressKey,
   setGiftWrap,
   getVenmoClientTokenSuccess,
@@ -334,5 +344,38 @@ export function* redirectToBilling() {
     utility.routeToPage(CHECKOUT_ROUTES.billingPage);
   } else {
     yield put(getSetCheckoutStage(constants.BILLING_DEFAULT_PARAM));
+  }
+}
+
+function* updateUserRTPSData(payload) {
+  const { prescreen, isExpressCheckoutEnabled } = payload;
+  try {
+    const res = yield updateRTPSData(prescreen, isExpressCheckoutEnabled);
+    yield put(setPlccEligible(res.plccEligible));
+    yield put(setPlccPrescreenCode(res.prescreenCode));
+    if (res.plccEligible) {
+      // offer not yet shown, show it
+      yield put(actions.setIsRTPSFlow(true));
+      yield put(toggleApplyNowModal({ isModalOpen: true }));
+    }
+  } catch (e) {
+    logger.error(e);
+  }
+}
+
+export function* callUpdateRTPS(pageName) {
+  const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
+  const isPLCCUSer = yield select(isPlccUser);
+  const hasPLCCCard = yield select(getplccCardNumber);
+  const hasPLCC = isPLCCUSer || hasPLCCCard;
+  const isRTPSEnabled = yield select(selectors.getIsRTPSEnabled);
+  const isOrderHasShipping = yield select(selectors.getIsOrderHasShipping);
+  const { hasGiftWrapping } = yield select(selectors.getGiftWrappingValues);
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const showPLCC = !hasPLCC && isRTPSEnabled;
+  if (pageName === BILLING && isOrderHasShipping && !hasGiftWrapping && showPLCC) {
+    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: false });
+  } else if (pageName === REVIEW && showPLCC && isExpressCheckoutEnabled) {
+    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: true });
   }
 }

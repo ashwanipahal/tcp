@@ -183,7 +183,6 @@ class CheckoutPage extends React.PureComponent {
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       isBagLoaded,
-      updateRTPS
     } = this.props;
 
     const section = router.query.section || router.query.subSection;
@@ -268,7 +267,6 @@ class CheckoutPage extends React.PureComponent {
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
-            updateRTPS={updateRTPS}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.REVIEW && (
@@ -304,7 +302,6 @@ class CheckoutPage extends React.PureComponent {
             }}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
-            updateRTPS={updateRTPS}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (
@@ -396,10 +393,9 @@ class CheckoutPage extends React.PureComponent {
             pageCategory={currentSection.toLowerCase()}
             checkoutServerError={checkoutServerError}
           />
-        ) :
-          (
-            <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
-          )}
+        ) : (
+          <CheckoutPageEmptyBag labels={checkoutPageEmptyBagLabels} />
+        )}
       </>
     );
   }
@@ -464,8 +460,8 @@ CheckoutPage.propTypes = {
 
 CheckoutPage.defaultProps = {
   isVenmoPaymentInProgress: false,
-  setVenmoPickupState: () => { },
-  setVenmoShippingState: () => { },
+  setVenmoPickupState: () => {},
+  setVenmoShippingState: () => {},
   isExpressCheckout: false,
   shippingMethod: {},
 };

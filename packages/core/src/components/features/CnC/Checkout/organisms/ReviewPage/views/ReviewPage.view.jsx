@@ -42,13 +42,11 @@ class ReviewPage extends React.PureComponent {
     pageCategory: PropTypes.string,
     checkoutServerError: PropTypes.shape({}).isRequired,
     clearCheckoutServerError: PropTypes.func.isRequired,
-    isRTPSDataRequired: PropTypes.bool.isRequired,
-    updateRTPS: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    setVenmoShippingState: () => { },
-    setVenmoPickupState: () => { },
+    setVenmoShippingState: () => {},
+    setVenmoPickupState: () => {},
     showAccordian: true,
     isExpressCheckout: false,
     isPaymentDisabled: false,
@@ -56,14 +54,10 @@ class ReviewPage extends React.PureComponent {
   };
 
   componentDidMount() {
-    const { setVenmoShippingState, setVenmoPickupState, reviewDidMount, isRTPSDataRequired, updateRTPS, isExpressCheckout } = this.props;
+    const { setVenmoShippingState, setVenmoPickupState, reviewDidMount } = this.props;
     setVenmoShippingState(true);
     setVenmoPickupState(true);
     reviewDidMount();
-    if (isExpressCheckout && isRTPSDataRequired) {
-      // not to consume RTPS API in case of any Non-Ecom order type
-      updateRTPS({ prescreen: true, isExpressCheckoutEnabled: true });
-    }
   }
 
   componentDidUpdate(prevProps) {

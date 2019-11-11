@@ -19,13 +19,14 @@ class ApplyNowModalWrapper extends React.Component {
 
   setRTPSFlow = () => {
     const { setIsRTPSFlow, isRtpsFlow } = this.props;
+    /* istanbul ignore else */
     if (isRtpsFlow && setIsRTPSFlow) {
       setIsRTPSFlow(false);
     }
-  }
+  };
 
   closeModal = () => {
-    const { toggleModal, } = this.props;
+    const { toggleModal } = this.props;
     toggleModal({ isModalOpen: false });
     this.setRTPSFlow();
   };
@@ -46,16 +47,33 @@ class ApplyNowModalWrapper extends React.Component {
 
   openPLCCModal = e => {
     e.preventDefault();
-    const { toggleModal, isRtpsFlow, submitAcceptOrDeclinePlcc, resetPLCCApplicationStatus } = this.props;
+    const {
+      toggleModal,
+      isRtpsFlow,
+      submitAcceptOrDeclinePlcc,
+      resetPLCCApplicationStatus,
+    } = this.props;
     toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
     resetPLCCApplicationStatus({ status: null });
+    /* istanbul ignore else */
     if (isRtpsFlow) {
       submitAcceptOrDeclinePlcc(true);
     }
   };
 
   render() {
-    const { className, labels, isModalOpen, isPLCCModalOpen, plccBenefitsList, isRtpsFlow, rtpsCongratsMsg, rtpsOptOutMsg, rtpsTextTerms, submitAcceptOrDeclinePlcc } = this.props;
+    const {
+      className,
+      labels,
+      isModalOpen,
+      isPLCCModalOpen,
+      plccBenefitsList,
+      isRtpsFlow,
+      rtpsCongratsMsg,
+      rtpsOptOutMsg,
+      rtpsTextTerms,
+      submitAcceptOrDeclinePlcc,
+    } = this.props;
     return (
       <div className={className}>
         <React.Fragment>
@@ -102,6 +120,6 @@ ApplyNowModalWrapper.propTypes = {
 
 ApplyNowModalWrapper.defaultProps = {
   isRtpsFlow: false,
-}
+};
 
 export default ApplyNowModalWrapper;

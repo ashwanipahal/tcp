@@ -104,7 +104,7 @@ class ApplyCardLayoutContainer extends React.Component {
       resetPLCCApplicationStatus,
       closeModal,
       isRtpsFlow,
-      togglePLCCModal
+      togglePLCCModal,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
 
@@ -157,13 +157,14 @@ ApplyCardLayoutContainer.propTypes = {
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   closeModal: PropTypes.func,
   isRtpsFlow: PropTypes.bool.isRequired,
-  togglePLCCModal: PropTypes.func.isRequired
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 ApplyCardLayoutContainer.defaultProps = {
-  closeModal: () => { },
+  closeModal: () => {},
 };
 
+/* istanbul ignore next */
 export const mapStateToProps = state => {
   const { ApplyCardPage, Labels } = state;
   return {
@@ -179,6 +180,7 @@ export const mapStateToProps = state => {
   };
 };
 
+/* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
     submitApplication: payload => {

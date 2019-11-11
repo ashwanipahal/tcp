@@ -2,8 +2,6 @@
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
-import { setPlccEligible, setPlccPrescreenCode } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
-import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
 import CONSTANTS from '../Checkout.constants';
 import {
@@ -13,8 +11,7 @@ import {
   getInternationCheckoutSettings,
   startExpressCheckout,
   getServerErrorMessage,
-  updateRTPSData,
-  acceptOrDeclinePreScreenOffer
+  acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import { setIsExpressEligible } from '../../../account/User/container/User.actions';
@@ -28,7 +25,6 @@ import CHECKOUT_ACTIONS, {
   setIsLoadingShippingMethods,
   setShippingOptions,
   setAddressError,
-  getSetIntlUrl,
   getSetCheckoutStage,
 } from './Checkout.action';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
@@ -49,6 +45,7 @@ import {
   addOrEditGuestUserAddress,
   pickUpRouting,
   callPickupSubmitMethod,
+  callUpdateRTPS,
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -80,7 +77,7 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
   const actions = [
     resCheckoutValues.pickUpContact && getSetPickupValuesActn(resCheckoutValues.pickUpContact),
     resCheckoutValues.pickUpAlternative &&
-    getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
+      getSetPickupAltValuesActn(resCheckoutValues.pickUpAlternative),
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
     //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
@@ -281,6 +278,7 @@ function* initCheckoutSectionData({
     }
   }
   yield all(pendingPromises);
+  yield call(callUpdateRTPS, pageName);
 }
 
 // function* displayPreScreenModal (res) {
@@ -541,22 +539,6 @@ function* initCheckout({ router, isPaypalFlow }) {
   }
 }
 
-function* updateUserRTPSData({ payload }) {
-  const { prescreen, isExpressCheckoutEnabled } = payload;
-  try {
-    const res = yield updateRTPSData(prescreen, isExpressCheckoutEnabled);
-    yield put(setPlccEligible(res.plccEligible));
-    yield put(setPlccPrescreenCode(res.prescreenCode));
-    if (res.plccEligible) {
-      // offer not yet shown, show it
-      yield put(CHECKOUT_ACTIONS.setIsRTPSFlow(true));
-      yield put(toggleApplyNowModal({ isModalOpen: true }));
-    }
-  } catch (e) {
-    logger.error(e);
-  }
-}
-
 function* submitAcceptOrDeclinePlccData({ payload }) {
   const preScreenData = yield select(getRtpsPreScreenData);
   const { preScreenCode } = preScreenData;
@@ -574,7 +556,7 @@ function* submitAcceptOrDeclinePlccData({ payload }) {
 function* initIntlCheckout() {
   try {
     const res = yield call(getInternationCheckoutSettings);
-    yield put(getSetIntlUrl(res.checkoutUrl));
+    yield put(CHECKOUT_ACTIONS.getSetIntlUrl(res.checkoutUrl));
   } catch (e) {
     logger.error(`initIntlCheckout:${e}`);
   }
@@ -687,7 +669,6 @@ export function* CheckoutSaga() {
   yield takeLatest(CONSTANTS.SUBMIT_REVIEW_SECTION, submitOrderForProcessing);
   yield takeLatest(CONSTANTS.GET_VENMO_CLIENT_TOKEN, getVenmoClientTokenSaga);
   yield takeLatest(CONSTANTS.UPDATE_CARD_DATA, updateCardDetails);
-  yield takeLatest(CONSTANTS.UPDATE_RTPS_DATA, updateUserRTPSData);
   yield takeLatest(CONSTANTS.SUBMIT_ACCEPT_DECLINE_PLCC_OFFER, submitAcceptOrDeclinePlccData);
 }
 export default CheckoutSaga;

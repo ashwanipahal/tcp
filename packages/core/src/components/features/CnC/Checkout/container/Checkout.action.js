@@ -1,7 +1,17 @@
 import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import constants from '../Checkout.constants';
-import { setServerErrorCheckout, resetCheckoutReducer, updateRTPSData, setIsRTPSFlow, submitAcceptOrDeclinePlccOffer } from './Checkout.action.util';
+import {
+  setServerErrorCheckout,
+  resetCheckoutReducer,
+  setIsRTPSFlow,
+  submitAcceptOrDeclinePlccOffer,
+  updateCardData,
+  initCheckoutSectionPageAction,
+  toggleCountrySelectorModal,
+  initIntlCheckoutAction,
+  getSetIntlUrl,
+} from './Checkout.action.util';
 
 /**
  * @function initCheckoutAction
@@ -473,43 +483,15 @@ export const resetAddGiftCardSuccess = payload => {
     payload,
   };
 };
-/**
- * @function initIntlCheckoutAction
- *  @param { object } payload
- * action creator for type: INIT_INTL_CHECKOUT
- */
-export const initIntlCheckoutAction = payload => ({
-  type: constants.INIT_INTL_CHECKOUT,
-  payload,
-});
-/**
- * @function getSetIntlUrl
- *  @param { object } internationalUrl
- * action creator for type: CHECKOUT_ORDER_OPTIONS_SET_INTL_URL
- */
-export const getSetIntlUrl = internationalUrl => {
-  return {
-    internationalUrl,
-    type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
-  };
+
+export default {
+  setServerErrorCheckout,
+  resetCheckoutReducer,
+  submitAcceptOrDeclinePlccOffer,
+  setIsRTPSFlow,
+  updateCardData,
+  initCheckoutSectionPageAction,
+  toggleCountrySelectorModal,
+  initIntlCheckoutAction,
+  getSetIntlUrl,
 };
-
-/**
- * @function updateCardData
- *  @param { object } payload
- * action creator for type: UPDATE_CARD_DATA
- */
-export const updateCardData = payload => ({ payload, type: constants.UPDATE_CARD_DATA });
-
-export const initCheckoutSectionPageAction = payload => ({
-  type: constants.INIT_CHECKOUT_SECTION_PAGE,
-  payload,
-});
-
-export const toggleCountrySelectorModal = payload => ({
-  payload,
-  type: constants.COUNTRY_SELECTOR_MODAL_TOGGLE,
-});
-
-
-export default { setServerErrorCheckout, resetCheckoutReducer, submitAcceptOrDeclinePlccOffer, setIsRTPSFlow, updateRTPSData };
