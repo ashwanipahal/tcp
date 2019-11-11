@@ -56,7 +56,6 @@ class TCPWebApp extends App {
   }
 
   static async getInitialProps({ Component, ctx }) {
-    return;
     let globalProps;
     try {
       globalProps = await TCPWebApp.loadGlobalData(Component, ctx, {});
@@ -117,7 +116,7 @@ class TCPWebApp extends App {
     }
   };
 
-  componentDidMount_disabled() {
+  componentDidMount() {
     const { store } = this.props;
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
@@ -153,7 +152,7 @@ class TCPWebApp extends App {
     }
   }
 
-  componentDidUpdate_disabled() {
+  componentDidUpdate() {
     ReactAxe.runAccessibility();
     this.checkForlogin();
   }
@@ -174,7 +173,6 @@ class TCPWebApp extends App {
   };
 
   static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
-    return;
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
     let payload = { siteConfig: false };
@@ -234,7 +232,6 @@ class TCPWebApp extends App {
   }
 
   static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
-    return;
     let compProps = {};
     if (Component.getInitialProps) {
       try {
@@ -290,31 +287,31 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid wrapperClass={isNonCheckoutPage ? 'non-checkout-pages' : 'checkout-pages'}>
-              {/* {Component.pageInfo && Component.pageInfo.pageId
+              {Component.pageInfo && Component.pageInfo.pageId
                 ? this.getSEOTags(Component.pageInfo.pageId, store, router)
-                : null} */}
-              {/* <Header /> */}
-              {/* <CheckoutHeader /> */}
-              {/* <Loader /> */}
+                : null}
+              <Header />
+              <CheckoutHeader />
+              <Loader />
               <div className="content-wrapper">
                 <div id="overlayWrapper">
                   <div id="overlayComponent" />
                   <Component {...pageProps} />
                 </div>
               </div>
-              {/* <BackToTop /> */}
-              {/* <Footer pageName={componentPageName} /> */}
-              {/* <CheckoutModals /> */}
-              {/* <ApplyNow /> */}
+              <BackToTop />
+              <Footer pageName={componentPageName} />
+              <CheckoutModals />
+              <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {/* {process.env.ANALYTICS && <RouteTracker />} */}
+            {process.env.ANALYTICS && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}
-        {/* {process.env.PERF_TIMING && <UserTimingRouteHandler />} */}
+        {process.env.PERF_TIMING && <UserTimingRouteHandler />}
         {/* Inject analytics script if analytics is enabled. */}
-        {/* {process.env.ANALYTICS && <AnalyticsScript />} */}
+        {process.env.ANALYTICS && <AnalyticsScript />}
       </Container>
     );
   }
