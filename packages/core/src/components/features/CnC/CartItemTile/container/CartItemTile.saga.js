@@ -33,7 +33,7 @@ import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { isItemBossBopisInEligible } from './CartItemTile.selectors';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
-import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
 
 const { checkoutIfItemIsUnqualified } = BagPageSelectors;
 

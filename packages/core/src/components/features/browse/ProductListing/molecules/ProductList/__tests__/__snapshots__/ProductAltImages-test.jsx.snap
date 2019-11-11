@@ -29,11 +29,15 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
     unbxdparam_prank={1}
     unbxdparam_sku={1}
   >
-    <img
-      alt=""
-      data-locator="global-productimg-imagelink"
-      itemProp="contentUrl"
-      src={1}
+    <WithTheme(DamImage)
+      dataLocator="global-productimg-imagelink"
+      imgData={
+        Object {
+          "alt": "",
+          "url": 1,
+        }
+      }
+      isProductImage={true}
     />
   </Styled(Anchor)>
   <button
