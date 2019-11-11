@@ -61,6 +61,9 @@ const style = css`
     @media ${props => props.theme.mediaQuery.smallOnly} {
       height: 100%;
     }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 40px;
+    }
   }
   .search-input-wrapper {
     margin-right: 30px;
