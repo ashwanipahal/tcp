@@ -33,7 +33,7 @@ const StyledCarousal = styled(Carousel)`
 
   .slick-list img {
     min-height: 200px;
-    max-height: 311px;
+    max-height: 373px;
 
     @media ${props => props.theme.mediaQuery.medium} {
       min-height: 300px;

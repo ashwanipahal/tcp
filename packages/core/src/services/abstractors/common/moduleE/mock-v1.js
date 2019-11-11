@@ -13,7 +13,7 @@ export default {
     type: 'module',
     composites: {
       ctaType: ctaTypes[0],
-      carouselCtaType: carouselCtaType[0],
+      carouselCtaType: carouselCtaType[1],
       headerText: [
         {
           textItems: [
@@ -62,7 +62,7 @@ export default {
           ],
         },
       ],
-      linkedImage1: [
+      linkedImage: [
         {
           image: {
             url:

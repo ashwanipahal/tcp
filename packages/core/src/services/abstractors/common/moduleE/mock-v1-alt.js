@@ -35,64 +35,6 @@ export default {
     composites: {
       ctaType: ctaTypes[0],
       carouselCtaType: carouselCtaType[0],
-      eyebrow: [
-        {
-          mediaLinkedList: [
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg',
-                alt: 'Left Image',
-                title: 'Left Image',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: dummyUrl,
-                text: 'Left Image Link',
-                title: 'Left Image Link',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg',
-                alt: 'Right Image',
-                title: 'Right Image',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: dummyUrl,
-                text: 'Right Image Link',
-                title: 'Right Image Link',
-                target: '',
-                external: 0,
-              },
-            },
-          ],
-          promoBanner: [
-            {
-              link: {
-                url: '/banner/url',
-                text: '',
-                title: '',
-                target: '',
-              },
-              textItems: [
-                {
-                  text: 'Cue the photos',
-                  style: 'small_text_normal',
-                },
-              ],
-            },
-          ],
-        },
-      ],
       headerText: [
         {
           textItems: [
@@ -141,7 +83,7 @@ export default {
           ],
         },
       ],
-      linkedImage1: [
+      linkedImage: [
         {
           image: {
             url:
