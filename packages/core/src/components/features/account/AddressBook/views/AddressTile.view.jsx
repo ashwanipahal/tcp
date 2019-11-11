@@ -100,7 +100,7 @@ class AddressBookTile extends React.Component {
                 {address.primary !== 'true' && (
                   <div className="textRight">
                     <Button
-                      fontSize="fs10"
+                      fontSizeVariation="small"
                       nohover
                       type="button"
                       smallLink
