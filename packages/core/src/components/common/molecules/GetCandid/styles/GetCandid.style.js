@@ -10,22 +10,19 @@ export default css`
   }
 
   .get-candid-main-heading {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    }
-
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 
   .get-candid-heading-desc {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 

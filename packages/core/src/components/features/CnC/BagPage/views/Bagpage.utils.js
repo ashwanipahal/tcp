@@ -1,4 +1,5 @@
 import throttle from 'lodash/throttle';
+import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { isClient } from '../../../../../utils';
 
 const getOffset = elem => {
@@ -29,8 +30,48 @@ const getPageLevelHeaderHeight = () => {
     : 0;
 };
 
+const formatBagProductsData = cartOrderItems => {
+  const productsData = [];
+  if (cartOrderItems) {
+    cartOrderItems.map(tile => {
+      const productDetail = getProductDetails(tile);
+      const {
+        itemInfo: { itemId, color, name, offerPrice, size, listPrice },
+        productInfo: { skuId, upc, productPartNumber },
+      } = productDetail;
+
+      const prodData = {
+        color,
+        id: itemId,
+        name,
+        price: offerPrice,
+        extPrice: offerPrice,
+        sflExtPrice: offerPrice,
+        listPrice,
+        partNumber: productPartNumber,
+        size,
+        upc,
+        sku: skuId.toString(),
+      };
+      productsData.push(prodData);
+      return prodData;
+    });
+  }
+  return productsData;
+};
+
+const setBagPageAnalyticsData = (setClickAnalyticsDataBag, cartOrderItems) => {
+  const productsData = formatBagProductsData(cartOrderItems);
+  setClickAnalyticsDataBag({
+    customEvents: ['scView', 'scOpen', 'event80'],
+    products: productsData,
+  });
+};
+
 export default {
   getElementStickyPosition,
   bindScrollEvent,
   getPageLevelHeaderHeight,
+  setBagPageAnalyticsData,
+  formatBagProductsData,
 };

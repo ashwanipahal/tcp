@@ -25,17 +25,18 @@ export function* getUserInfoSaga() {
     const siteId = getSiteId();
     const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
     const getCurrenciesMap = state => state.session.siteOptions.currenciesMap;
-
-    yield all([
+    const { country, currency, language, bossBopisFlags } = response;
+    const dataSetActions = [];
+    if (country) {
+      dataSetActions.push(put(setCountry(country)));
+    }
+    dataSetActions.push(
       put(setUserInfo(response)),
       put(setAddressList(response.contactList, true)),
-      put(setIsRegisteredUserCallDone()),
-    ]);
-    const { country, currency, language, bossBopisFlags } = response;
-    yield put(setBossBopisFlags(bossBopisFlags));
-    if (country) {
-      yield put(setCountry(country));
-    }
+      put(setBossBopisFlags(bossBopisFlags)),
+      put(setIsRegisteredUserCallDone())
+    );
+    yield all(dataSetActions);
     if (currency) {
       const setCurrenciesMap = yield select(getCurrenciesMap);
       const currencyAttributes = setCurrenciesMap.find(item => item.id === currency);
