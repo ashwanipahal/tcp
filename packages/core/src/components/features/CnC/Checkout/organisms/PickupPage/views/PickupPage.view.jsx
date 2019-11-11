@@ -40,6 +40,14 @@ class PickUpFormPart extends React.Component {
     pickupDidMount();
   }
 
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { pickupDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      pickupDidMount();
+    }
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -205,8 +213,12 @@ class PickUpFormPart extends React.Component {
       ServerErrors,
       pageCategory,
       isBagLoaded,
+      checkoutRoutingDone,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
+    if (!checkoutRoutingDone) {
+      return <div />;
+    }
     return (
       <>
         {isBagLoaded && (
@@ -368,9 +380,11 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
+  checkoutRoutingDone: PropTypes.bool.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,

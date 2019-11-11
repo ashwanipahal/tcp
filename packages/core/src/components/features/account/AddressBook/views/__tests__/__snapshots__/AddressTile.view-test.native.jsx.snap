@@ -32,6 +32,8 @@ exports[`AddressTile component should renders correctly 1`] = `
     <View>
       <Badge
         dataLocator="addressbook-defshippinglabel"
+        lightGrayColor={false}
+        primary={false}
         showCheckmark={true}
       >
         ACC_LBL_DEFAULT_SHIPPING
