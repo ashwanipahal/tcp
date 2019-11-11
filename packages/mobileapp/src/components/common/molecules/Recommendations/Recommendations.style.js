@@ -10,3 +10,16 @@ export const ButtonContainer = styled.View`
   display: flex;
   margin-bottom: 32px;
 `;
+
+export const AccordionContainer = styled.TouchableOpacity`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+export const ImageStyleWrapper = styled.View`
+  justify-content: center;
+  align-items: center;
+`;

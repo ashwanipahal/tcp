@@ -14,6 +14,7 @@ import { routerPush, scrollToParticularElement } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
 import CheckoutPageEmptyBag from '../molecules/CheckoutPageEmptyBag';
+import checkoutUtil from '../util/utility';
 // import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
 
 class CheckoutPage extends React.PureComponent {
@@ -22,6 +23,7 @@ class CheckoutPage extends React.PureComponent {
 
     this.pageServerError = null;
     this.pageServerErrorRef = this.pageServerErrorRef.bind(this);
+    this.reviewFormRef = React.createRef();
   }
 
   componentDidMount() {
@@ -250,6 +252,7 @@ class CheckoutPage extends React.PureComponent {
             checkoutServerError={checkoutServerError}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            pickUpContactPerson={pickUpContactPerson}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
@@ -277,7 +280,9 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isGuest={isGuest}
             isExpressCheckout={isExpressCheckout}
+            onSubmit={this.reviewFormSubmit}
             shipmentMethods={shipmentMethods}
+            reviewFormSubmit={this.reviewFormSubmit}
             pickUpContactPerson={pickUpContactPerson}
             pickUpContactAlternate={pickUpContactAlternate}
             ServerErrors={this.renderPageErrors}
@@ -312,6 +317,8 @@ class CheckoutPage extends React.PureComponent {
     e.preventDefault();
   };
 
+  reviewFormSubmit = data => checkoutUtil.handleReviewFormSubmit(this, data);
+
   pageServerErrorRef(ref) {
     this.pageServerError = ref;
   }
@@ -320,7 +327,7 @@ class CheckoutPage extends React.PureComponent {
     const {
       isGuest,
       router,
-      submitReview,
+      dispatchReviewReduxForm,
       reviewProps,
       checkoutServerError,
       isBagLoaded,
@@ -352,7 +359,7 @@ class CheckoutPage extends React.PureComponent {
                     fontWeight="extrabold"
                     buttonVariation="variable-width"
                     fill="BLUE"
-                    onClick={submitReview}
+                    onClick={dispatchReviewReduxForm}
                   >
                     {nextSubmitText}
                   </Button>
@@ -439,6 +446,7 @@ CheckoutPage.propTypes = {
   isExpressCheckout: PropTypes.bool,
   shippingMethod: PropTypes.shape({}),
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  dispatchReviewReduxForm: PropTypes.func.isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
   pickUpContactPerson: PropTypes.shape({}).isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,

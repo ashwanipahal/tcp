@@ -40,6 +40,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       venmoError,
       orderId,
       isPayPalHidden,
+      payPalTop,
       isAddedToBag,
       isBagPage,
       isMiniBag,
@@ -69,6 +70,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         venmoError={venmoError}
         orderId={orderId}
         isPayPalHidden={isPayPalHidden}
+        payPalTop={payPalTop}
         isAddedToBag={isAddedToBag}
         isBagPage={isBagPage}
         isMiniBag={isMiniBag}

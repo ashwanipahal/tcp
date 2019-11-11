@@ -92,12 +92,12 @@ class PickupStoreSelectionForm extends React.PureComponent<Props> {
   displayErrorCopy() {
     const { error, onCloseClick } = this.props;
     return error ? (
-      <div className="error-box-bopis">
+      <>
         <BodyCopyWithSpacing fontSize="fs14" fontWeight="semibold" color="red.500" text={error} />
         <Button onPress={onCloseClick} type="button" className="button-cancel">
           Cancel
         </Button>
-      </div>
+      </>
     ) : null;
   }
 

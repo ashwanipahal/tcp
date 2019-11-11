@@ -22,6 +22,7 @@ import {
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -59,7 +60,7 @@ const renderAddToBagContainer = (
   labelsPlpTiles,
   onGoToPDPPage
 ) => {
-  if (renderVariation && !renderPriceOnly) return null;
+  if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
     : labelsPlpTiles.lbl_add_to_bag;
@@ -74,6 +75,7 @@ const renderAddToBagContainer = (
         text={buttonLabel}
         onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
+        margin="0 6px 0 0"
       />
     </AddToBagContainer>
   );
@@ -351,7 +353,7 @@ const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) 
       </OfferPriceAndBadge3Container>
     );
   }
-  return null;
+  return <OfferPriceAndBadge3View />;
 };
 
 const RenderPricesSection = values => {

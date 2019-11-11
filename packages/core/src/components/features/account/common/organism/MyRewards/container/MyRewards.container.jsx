@@ -30,6 +30,7 @@ export class MyRewardsContainer extends PureComponent {
     onApplyCouponToBagFromList: PropTypes.func,
     handleErrorCoupon: PropTypes.func,
     toastMessage: PropTypes.func,
+    isApplyingOrRemovingCoupon: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -37,6 +38,7 @@ export class MyRewardsContainer extends PureComponent {
     onApplyCouponToBagFromList: () => {},
     handleErrorCoupon: () => {},
     toastMessage: () => {},
+    isApplyingOrRemovingCoupon: false,
   };
 
   constructor(props) {
@@ -82,6 +84,7 @@ export class MyRewardsContainer extends PureComponent {
       handleErrorCoupon,
       onApplyCouponToBagFromList,
       toastMessage,
+      isApplyingOrRemovingCoupon,
       ...otherProps
     } = this.props;
     const { selectedCoupon } = this.state;
@@ -98,6 +101,7 @@ export class MyRewardsContainer extends PureComponent {
           selectedCoupon={selectedCoupon}
           couponsLabels={couponsLabels}
           onRequestClose={this.onCloseCouponDetails}
+          isFetching={isApplyingOrRemovingCoupon}
           {...otherProps}
         />
         {selectedCoupon && (

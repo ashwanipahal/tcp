@@ -8,7 +8,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import { getViewportInfo } from '@tcp/core/src/utils';
+import { getViewportInfo, isCanada } from '@tcp/core/src/utils';
 import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
@@ -135,13 +135,19 @@ class Header extends React.PureComponent {
           store={favStore}
           labels={labels}
         />
+        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
+        {!isCanada() ? (
+          <LoyaltyPromoBanner
+            richTextList={loyaltyPromoBanner}
+            className="header-promo__container"
+          />
+        ) : null}
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -159,7 +165,6 @@ class Header extends React.PureComponent {
             labels={labels}
           />
         )}
-        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />

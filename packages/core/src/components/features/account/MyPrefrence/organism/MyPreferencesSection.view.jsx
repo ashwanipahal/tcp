@@ -21,26 +21,19 @@ class MyPrefrenceSection extends React.PureComponent {
           <Col
             colSize={{
               small: 6,
-              medium: 5,
-              large: 5,
+              medium: 4,
+              large: 6,
             }}
             className="profileInfoCol"
           >
-            <BodyCopy
-              className="elem-mb-MED"
-              fontFamily="secondary"
-              fontSize="fs16"
-              fontWeight="extrabold"
-            >
-              <MyFavoriteStore isMyPreferences />
-            </BodyCopy>
+            <MyFavoriteStore isMyPreferences />
           </Col>
           {!isCanada() && (
             <Col
               colSize={{
                 small: 6,
                 medium: 4,
-                large: 7,
+                large: 6,
               }}
               className="profileInfoCol"
             >
@@ -63,6 +56,7 @@ class MyPrefrenceSection extends React.PureComponent {
             <Row fullBleed className="hide-on-mobile elem-pt-LRG elem-pb-LRG">
               <Col
                 colSize={{
+                  medium: 4,
                   large: 12,
                 }}
                 className="profileInfoSeparator"

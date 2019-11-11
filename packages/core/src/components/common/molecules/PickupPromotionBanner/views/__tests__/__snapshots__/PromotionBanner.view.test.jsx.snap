@@ -13,22 +13,13 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     <div
       className="promo-wrapper"
     >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        fontFamily="primary"
-        fontSize="fs10"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
+      <div
+        className="richtextCss"
       >
         <Styled(RichText)
           richTextHtml="EXTRA undefined% OFF"
         />
-      </Styled(BodyCopy)>
+      </div>
     </div>
   </div>
 </div>

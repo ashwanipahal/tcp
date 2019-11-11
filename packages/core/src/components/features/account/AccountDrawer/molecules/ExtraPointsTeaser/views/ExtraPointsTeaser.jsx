@@ -24,7 +24,7 @@ const ExtraPointsTeaser = props => {
 
   return (
     <div className={`${className} elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL`}>
-      <div className={`extraPointsWrapper${plccUser ? '_plcc' : ''} elem-pt-LRG elem-pb-SM`}>
+      <div className={`extraPointsWrapper${plccUser ? '_plcc' : ''} elem-pt-SM elem-pb-SM`}>
         <div className="earnExtra alignCenter">
           <BodyCopy fontFamily="secondary" fontWeight="extrabold" fontSize="fs14">
             {getLabelValue(globalLabels, 'lbl_drawer_earn_extra', 'accountDrawer')}
