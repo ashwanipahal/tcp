@@ -9,7 +9,7 @@ export default function({ WrappedComponent, mapStateToProps, mapDispatchToProps 
       const props = { ...mapStateToProps(store.getState()), ...mapDispatchToProps(store.dispatch) };
       const intialProps = { props, query, isServer, req };
       const deviceBot = req && req.device && req.device.type === 'bot';
-      if (isServer && !deviceBot) {
+      if (isServer && deviceBot) {
         WrappedComponent.getInitialProps(intialProps);
       }
     }
