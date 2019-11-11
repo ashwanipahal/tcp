@@ -35,6 +35,7 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
+import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
 
 // constants
 import constants from '../constants';
@@ -293,6 +294,7 @@ class TCPWebApp extends App {
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
+              <AddedToBagContainer />
               <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
