@@ -1,9 +1,10 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import { navigateToNestedRoute, resetNavigationStack } from '@tcp/core/src/utils/utils.app';
 import walletPage from '../screens/walletPage';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const Login = createStackNavigator(
   {
@@ -11,7 +12,11 @@ const Login = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+          <Header {...props} />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }

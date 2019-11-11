@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import ProductListingPageContainer from '@tcp/core/src/components/features/browse/ProductListingPage';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import GetCandidGallery from '@tcp/core/src/components/common/molecules/GetCandidGallery/views/GetCandidGallery.native';
@@ -17,18 +17,27 @@ import Header from '../components/common/molecules/Header';
 import Navigation from '../components/features/content/Navigation';
 import ProductLanding from '../components/features/browse/ProductLanding/ProductLanding';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const getNewHeader = (navigation, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
   return {
-    header: props => <HeaderNew {...props} title={title} />,
+    header: props => (
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <HeaderNew {...props} title={title} />
+      </SafeAreaView>
+    ),
     headerBackground: 'transparent',
   };
 };
 
 const getDefaultHeaderWithSearch = navigation => {
   return {
-    header: props => <Header {...props} showSearch navigation={navigation} />,
+    header: props => (
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <Header {...props} showSearch navigation={navigation} />
+      </SafeAreaView>
+    ),
     headerBackground: 'transparent',
   };
 };
@@ -36,7 +45,11 @@ const getDefaultHeaderWithSearch = navigation => {
 const getDefaultHeaderForStore = (navigation, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
   return {
-    header: props => <Header {...props} title={title} navigation={navigation} headertype="store" />,
+    header: props => (
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <Header {...props} title={title} navigation={navigation} headertype="store" />
+      </SafeAreaView>
+    ),
     headerBackground: 'transparent',
   };
 };
@@ -110,7 +123,11 @@ const HomeStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+          <Header {...props} />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }

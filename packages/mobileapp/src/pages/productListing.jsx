@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import ProductListingPage from '@tcp/core/src/components/features/browse/ProductListingPage';
 import ProductListing from '@tcp/core/src/components/features/browse/ProductListing';
 import OutfitListing from '@tcp/core/src/components/features/browse/OutfitListing';
@@ -18,12 +18,17 @@ import Navigation from '../components/features/content/Navigation';
 import NavMenuLevel2 from '../components/features/content/Navigation/molecules/NavMenuLevel2';
 import NavMenuLevel3 from '../components/features/content/Navigation/molecules/NavMenuLevel3';
 import ROUTE_NAMES from '../reduxStore/routes';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const getNewHeader = (navigation, showSearch, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
   const capitalizedTitle = title && title.toUpperCase();
   return {
-    header: props => <HeaderNew {...props} title={capitalizedTitle} showSearch={showSearch} />,
+    header: props => (
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <HeaderNew {...props} title={capitalizedTitle} showSearch={showSearch} />
+      </SafeAreaView>
+    ),
     headerBackground: 'transparent',
   };
 };
@@ -86,7 +91,11 @@ const PlpStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} showSearch />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+          <Header {...props} showSearch />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }
