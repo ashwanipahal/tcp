@@ -2,6 +2,8 @@
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
+import setLoaderState from '../../../../../../../web/src/components/features/content/Loader/container/Loader.actions';
+
 import CONSTANTS from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
@@ -112,6 +114,7 @@ function* submitPickupSection({ payload }) {
     const formData = { ...payload };
     const { navigation } = payload;
     const result = yield call(callPickupSubmitMethod, formData);
+    yield put(setLoaderState(true));
     if (result.addressId) {
       yield call(getAddressList);
       yield call(getCardList);
@@ -120,8 +123,10 @@ function* submitPickupSection({ payload }) {
         const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
         const isVenmoPickupDisplayed = yield select(selectors.isVenmoPickupBannerDisplayed);
         pickUpRouting({ getIsShippingRequired, isVenmoInProgress, isVenmoPickupDisplayed });
+        yield put(setLoaderState(false));
       } else if (navigation) {
         yield put(getSetCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM));
+        yield put(setLoaderState(false));
       }
     }
     /* In the future I imagine us sending the SMS to backend for them to
@@ -136,6 +141,7 @@ function* submitPickupSection({ payload }) {
     // });
   } catch (e) {
     yield call(handleServerSideErrorAPI, e);
+    yield put(setLoaderState(false));
   }
 }
 // function setCartInfo(cartInfo, isSetCartItems) {
@@ -518,14 +524,14 @@ function* loadStartupData(isPaypalPostBack, isRecalcRewards /* isVenmo */) {
   //   }
 }
 
-function* initCheckout({ router ,isPaypalFlow}) {
+function* initCheckout({ router, isPaypalFlow }) {
   let isPaypalPostBack;
   let recalc;
   if (router && router.query) {
     const { query } = router;
     ({ isPaypalPostBack, recalc } = query);
   }
-  if(isMobileApp() && isPaypalFlow){
+  if (isMobileApp() && isPaypalFlow) {
     isPaypalPostBack = isPaypalFlow;
   }
 
@@ -617,11 +623,13 @@ function* submitShipping({
 
 export function* submitBillingSection(action) {
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  yield put(setLoaderState(true));
   if (isVenmoInProgress) {
     yield call(submitVenmoBilling, action);
   } else {
     yield call(submitBilling, action);
   }
+  yield put(setLoaderState(false));
 }
 
 export function* submitShippingSection(action) {

@@ -9,9 +9,11 @@ import { isCanada } from '../../../../../utils/utils';
 import { redirectToBilling } from './Checkout.saga.util';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/index';
+import setLoaderState from '../../../../../../../web/src/components/features/content/Loader/container/Loader.actions';
 
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {
+    yield put(setLoaderState(true));
     yield put(setShippingLoadingState(true));
     const {
       // giftWrap,
@@ -59,8 +61,10 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
       yield call(redirectToBilling);
     }
     yield put(setShippingLoadingState(false));
+    yield put(setLoaderState(false));
   } catch (err) {
     yield put(setShippingLoadingState(false));
+    yield put(setLoaderState(false));
     // throw getSubmissionError(store, 'submitShippingSection', err);
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(err, errorsMapping);
