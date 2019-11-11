@@ -216,7 +216,7 @@ class PickUpFormPart extends React.Component {
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
     if (!checkoutRoutingDone) {
-      return <div />;
+      return <div>Loading....</div>;
     }
     return (
       <>
