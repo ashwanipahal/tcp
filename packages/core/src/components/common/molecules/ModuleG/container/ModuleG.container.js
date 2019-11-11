@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import { openQuickViewWithValues } from '../../../organisms/QuickViewModal/container/QuickViewModal.actions';
+import { getLabel } from './ModuleG.selector';
 
 import ModuleG from '../views';
 
 export const mapStateToProps = state => {
   const { ProductTabList } = state;
-
   return {
     productTabList: ProductTabList,
+    addtoBagLabel: getLabel(state),
   };
 };
 

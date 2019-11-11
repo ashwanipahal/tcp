@@ -158,7 +158,12 @@ class ModuleG extends React.PureComponent {
               navigation={navigation}
               headerText={headerText}
               locator={getLocator('moduleG_header_text')}
-              useStyle
+              color="gray.900"
+              fontFamily="primary"
+              fontSize="fs20"
+              fontWeight="medium"
+              textAlign="center"
+              letterSpacing="ls2"
             />
           )}
         </Wrapper>
@@ -168,6 +173,11 @@ class ModuleG extends React.PureComponent {
               testID={getLocator('moduleG_promobanner_text')}
               promoBanner={promoBanner}
               navigation={navigation}
+              color="gray.900"
+              fontFamily="primary"
+              fontSize="fs48"
+              fontWeight="black"
+              textAlign="center"
             />
           </PromoContainer>
         )}
@@ -259,24 +269,26 @@ class ModuleG extends React.PureComponent {
   };
 
   renderbuttonContainer = (productExists, selectedSingleCTAButton) => {
-    const { navigation } = this.props;
-    return productExists && Object.keys(selectedSingleCTAButton).length ? (
+    const { navigation, addtoBagLabel } = this.props;
+    return productExists ? (
       <ButtonContainer>
         <Button
           width="225px"
-          text={selectedSingleCTAButton.text}
+          text={addtoBagLabel}
           onPress={this.onAddToBagClick}
           navigation={navigation}
           testID={getLocator('moduleG_cta_btn')}
         />
-        <StyledAnchor
-          anchorVariation="primary"
-          text={selectedSingleCTAButton.title}
-          fontSizeVariation="xlarge"
-          url={selectedSingleCTAButton.url}
-          navigation={navigation}
-          visible
-        />
+        {selectedSingleCTAButton && Object.keys(selectedSingleCTAButton).length ? (
+          <StyledAnchor
+            anchorVariation="primary"
+            text={selectedSingleCTAButton.text}
+            fontSizeVariation="xlarge"
+            url={selectedSingleCTAButton.url}
+            navigation={navigation}
+            visible
+          />
+        ) : null}
       </ButtonContainer>
     ) : null;
   };
@@ -380,6 +392,7 @@ class ModuleG extends React.PureComponent {
 
 ModuleG.defaultProps = {
   promoBanner: [],
+  addtoBagLabel: '',
 };
 
 ModuleG.propTypes = {
@@ -415,6 +428,7 @@ ModuleG.propTypes = {
       singleCTAButton: PropTypes.object,
     })
   ).isRequired,
+  addtoBagLabel: PropTypes.string,
 };
 
 export default ModuleG;
