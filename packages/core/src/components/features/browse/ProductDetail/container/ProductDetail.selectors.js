@@ -1,6 +1,6 @@
 import { getLabelValue } from '../../../../../utils';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
-import { processBreadCrumbs } from './ProductDetail.util';
+import { processBreadCrumbs } from '../../ProductListing/container/ProductListing.util';
 
 export const getNavTree = state => {
   return state.Navigation.navigationData;
