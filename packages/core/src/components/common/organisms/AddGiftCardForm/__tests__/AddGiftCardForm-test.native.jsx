@@ -58,4 +58,9 @@ describe('Add gift card form component', () => {
     instance.onMessage(event);
     expect(spyHandleSubmit).toHaveBeenCalled();
   });
+  it('render saveToAccountEnabled', () => {
+    const component = shallow(<AddGiftCardFormVanilla {...props} />);
+    component.setProps({ saveToAccountEnabled: true });
+    expect(component).toMatchSnapshot();
+  });
 });

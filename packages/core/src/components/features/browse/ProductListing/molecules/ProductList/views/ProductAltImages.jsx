@@ -241,7 +241,6 @@ class ProductAltImages extends React.PureComponent {
       analyticsData,
       className,
     } = this.props;
-    const { currentIndex } = this.state;
     const unbxdData = analyticsData || {};
     const pdpToPath = getProductListToPath(pdpUrl);
     const imgData = {
@@ -268,6 +267,7 @@ class ProductAltImages extends React.PureComponent {
             dataLocator={getLocator('global_productimg_imagelink')}
             imgData={imgData}
             isProductImage
+            lazyLoad={false}
           />
         </Anchor>
         {this.renderSoldOutSection()}
@@ -299,11 +299,11 @@ class ProductAltImages extends React.PureComponent {
           unbxdparam_prank={unbxdData && unbxdData.prank}
           inheritedStyles={imageAnchorInheritedStyles}
         >
-          <img
-            src={imageUrls[currentIndex]}
-            data-locator={getLocator('global_productimg_imagelink')}
-            alt={productName}
-            itemProp="contentUrl"
+          <DamImage
+            dataLocator={getLocator('global_productimg_imagelink')}
+            imgData={imgData}
+            isProductImage
+            lazyLoad={false}
           />
         </Anchor>
         <button

@@ -17,4 +17,11 @@ describe('Orders Container', () => {
     dispatchProps.fetchOrders();
     expect(dispatch.mock.calls).toHaveLength(1);
   });
+
+  it('should return getOrderDetailsAction to call dispatch function on execution', () => {
+    const dispatch = jest.fn();
+    const dispatchProps = mapDispatchToProps(dispatch);
+    dispatchProps.getOrderDetailsAction();
+    expect(dispatch.mock.calls).toHaveLength(1);
+  });
 });

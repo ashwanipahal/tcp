@@ -6,7 +6,6 @@ import {
   getMapSliceForSize,
 } from '../../../browse/ProductListingPage/util/utility';
 
-import { getIsGuest } from '../../../account/User/container/User.selectors';
 import { getCartItemCount } from '../../../../../utils/cookie.util';
 
 export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) => {
@@ -59,8 +58,7 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
   return obj;
 };
 
-export const makeBrandToggling = () => {
-  const isGuest = getIsGuest();
+export const makeBrandToggling = isGuestUser => {
   const cartItemCount = getCartItemCount();
-  return isGuest && !cartItemCount;
+  return isGuestUser && !cartItemCount;
 };

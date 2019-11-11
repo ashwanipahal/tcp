@@ -16,6 +16,7 @@ import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import { scrollToFirstError } from '../../../util/utility';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -37,6 +38,14 @@ class PickUpFormPart extends React.Component {
   componentDidMount() {
     const { pickupDidMount } = this.props;
     pickupDidMount();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { pickupDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      pickupDidMount();
+    }
   }
 
   handleEditModeChange = (isEditing, pickUpContact) => {
@@ -204,8 +213,12 @@ class PickUpFormPart extends React.Component {
       ServerErrors,
       pageCategory,
       isBagLoaded,
+      checkoutRoutingDone,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
+    if (!checkoutRoutingDone) {
+      return <div>Loading....</div>;
+    }
     return (
       <>
         {isBagLoaded && (
@@ -367,9 +380,11 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
+  checkoutRoutingDone: PropTypes.bool.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,
@@ -401,5 +416,6 @@ export default reduxForm({
   form: 'checkoutPickup', // a unique identifier for this form
   ...validateMethod,
   destroyOnUnmount: false,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(PickUpFormPart, styles));
 export { PickUpFormPart as PickUpFormPartVanilla };

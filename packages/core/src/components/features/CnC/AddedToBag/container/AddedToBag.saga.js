@@ -19,6 +19,7 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { removeItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getAPIConfig } from '../../../../../utils';
+import { getIsGuest } from '../../../account/User/container/User.selectors';
 import { navigateXHRAction } from '../../../account/NavigateXHR/container/NavigateXHR.action';
 import { makeBrandToggling } from '../util/utility';
 
@@ -54,7 +55,8 @@ export function* addToCartEcom({ payload }) {
       'calculationUsage[]': '-7',
       externalId: wishlistItemId || '',
     };
-    if (makeBrandToggling()) yield put(navigateXHRAction());
+    const isGuestUser = yield select(getIsGuest);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToBagErrorState());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addCartEcomItem, params);
@@ -105,11 +107,11 @@ export function* addItemToCartBopis({ payload }) {
       variantNo,
       itemPartNumber: variantId,
     };
-    if (makeBrandToggling()) yield put(navigateXHRAction());
+    const isGuestUser = yield select(getIsGuest);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToPickupErrorState());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addCartBopisItem, params, errorMapping);
-
     if (callback) {
       callback();
     }
@@ -156,10 +158,10 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
       };
     });
 
-    if (makeBrandToggling()) yield put(navigateXHRAction());
+    const isGuestUser = yield select(getIsGuest);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addMultipleProductsInEcom, paramsArray);
-
     if (callBack) {
       callBack();
     }

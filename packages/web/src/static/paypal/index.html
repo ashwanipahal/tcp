@@ -3,55 +3,60 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
   </head>
   <body style="margin: 0px; padding:0px;">
     <div id="paypal-button"></div>
     <script>
       function getUrlVars() {
-          var vars = {};
-          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-              vars[key] = value;
-          });
-          return vars;
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+          m,
+          key,
+          value
+        ) {
+          vars[key] = value;
+        });
+        return vars;
       }
-      const paypalEnv = getUrlVars()["paypalEnv"];
+      const paypalEnv = getUrlVars()['paypalEnv'];
+      const paypalColor = getUrlVars()["paypalColor"];
       paypal.Button.render(
         {
           style: {
-            size: "responsive",
-            color: "blue",
-            shape: "rect",
+            size: 'responsive',
+            color: paypalColor,
+            shape: 'rect',
             tagline: false,
             height: 42,
             label: 'paypal',
           },
           env: paypalEnv,
           funding: {
-            disallowed: [paypal && paypal.FUNDING.CREDIT]
+            disallowed: [paypal && paypal.FUNDING.CREDIT],
           },
           payment: function() {
-            window.postMessage("payment");
+            window.postMessage('payment');
             return new Promise(resolve => {
-              const key = getUrlVars()["key"];
+              const key = getUrlVars()['key'];
               resolve(key);
             });
           },
           onAuthorize: function(data, actions) {
-            window.postMessage("onAuthorize");
+            window.postMessage('onAuthorize');
           },
           onCancel: function(data, actions) {
-            return new Promise((resolve) => {
-              window.postMessage("onCancel");
+            return new Promise(resolve => {
+              window.postMessage('onCancel');
               resolve(true);
             });
           },
           onError: function() {
-            window.postMessage("onError");
-          }
+            window.postMessage('onError');
+          },
         },
-        "#paypal-button"
+        '#paypal-button'
       );
     </script>
   </body>

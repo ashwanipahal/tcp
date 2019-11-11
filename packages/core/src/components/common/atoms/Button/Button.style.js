@@ -225,6 +225,7 @@ const ButtonStyles = css`
 
         &:hover, &:focus, &:active {
           background-color: transparent;
+          outline-width: 0;
         }
 
         @media ${props.theme.mediaQuery.large} {
