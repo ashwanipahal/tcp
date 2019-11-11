@@ -14,14 +14,17 @@ export const formatPayload = payload => {
 };
 
 export const intiSectionPage = (pageName, props, extraProps = {}) => {
-  const { initCheckoutSectionPage, router, navigation } = props;
+  const { initCheckoutSectionPage, router, isRegisteredUserCallDone, navigation } = props;
   let recalc;
   let isPaypalPostBack;
+  let appRouting;
   if (router && router.query) {
-    ({ recalc, isPaypalPostBack } = router.query);
+    ({ recalc, isPaypalPostBack, appRouting } = router.query);
+  }
+  if (isRegisteredUserCallDone || isMobileApp()) {
+    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
   }
   if (isMobileApp()) {
     isPaypalPostBack = getPayPalFlag(navigation);
   }
-  initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
 };

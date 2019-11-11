@@ -7,7 +7,6 @@ import {
   LAZYLOAD_HOST_NAME,
   navigateToNestedRoute,
   resetNavigationStack,
-  updateAPIConfigForApp,
 } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
@@ -144,7 +143,6 @@ class HomePageView extends React.PureComponent<Props> {
     const { loadNavigationData, navigation, updatePreviewDate } = this.props;
     const { value } = this.state;
     updatePreviewDate(value);
-    updateAPIConfigForApp();
     this.loadBootstrapData();
     loadNavigationData();
     resetNavigationStack(navigation);
