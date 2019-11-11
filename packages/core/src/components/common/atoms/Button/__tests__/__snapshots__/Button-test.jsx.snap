@@ -5,6 +5,7 @@ exports[`Button component renders correctly 1`] = `
   className="sample-button"
   data-category-link-label=""
   disabled=""
+  fontSize=""
   fullWidth={true}
   type="button"
 >
@@ -17,6 +18,7 @@ exports[`Button component renders disabled button correctly 1`] = `
   className="sample-button"
   data-category-link-label=""
   disabled={true}
+  fontSize=""
   fullWidth={true}
   type="button"
 >
