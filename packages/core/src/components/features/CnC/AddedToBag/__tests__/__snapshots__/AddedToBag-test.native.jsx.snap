@@ -73,6 +73,15 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
           />
           <Styled(View)>
             <Connect(LoyaltyBannerContainer)
+              navigation={
+                Object {
+                  "getParam": [Function],
+                  "navigate": [MockFunction],
+                  "param": Object {
+                    "headerMode": false,
+                  },
+                }
+              }
               pageCategory="isAddedToBagPage"
             />
           </Styled(View)>

@@ -20,7 +20,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
       <div className={className}>
         <FormPageHeading
           heading={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
-          data-locator=""
+          data-locator="mprcc-header"
         />
         <Row fullBleed>
           <Col
@@ -54,7 +54,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 </BodyCopy>
               </BodyCopy>
 
-              <div className="header-image" />
+              <div className="header-image" data-locator="mprcc-tcpgymimage" />
 
               <BodyCopy
                 component="div"
@@ -75,7 +75,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                   fontSize="fs14"
                   onClick={openPLCCModal}
                   fontWeight="semibold"
-                  data-locator={getLocator('plcc_apply_btn')}
+                  data-locator="mprcc-applyCTA"
                 >
                   {getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
                 </Button>
@@ -87,7 +87,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                   className="elem-mt-MED"
                   onClick={this.openManageCreditCardLink}
                   fontWeight="semibold"
-                  data-locator={getLocator('plcc_apply_btn')}
+                  data-locator="mprcc-managecreditcardCTA"
                 >
                   {getLabelValue(labels, 'lbl_PLCCForm_manageCreditCardAccount')}
                 </Button>
@@ -133,6 +133,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 fontSizeVariation="large"
                 anchorVariation="primary"
                 underline
+                data-locator="mprcc-detailslnk"
               >
                 {getLabelValue(labels, 'lbl_PLCCForm_details')}
               </Anchor>
@@ -140,7 +141,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 className="elem-ml-XL"
                 url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
                 target="_blank"
-                data-locator="plcc_faq"
+                data-locator="mprcc-FAQlnk"
                 fontSizeVariation="large"
                 anchorVariation="primary"
                 underline
@@ -151,7 +152,7 @@ export class MyPlaceRewardsCreditCard extends PureComponent {
                 className="elem-ml-XL"
                 url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
                 target="_blank"
-                data-locator="plcc_rewards_terms"
+                data-locator="mprcc-rewardteemlnk"
                 fontSizeVariation="large"
                 anchorVariation="primary"
                 underline

@@ -20,13 +20,13 @@ const Badge = ({ children, dataLocator, primary }: Props) => {
     <BadgeViewWrapper data-locator={dataLocator}>
       <BadgeView>
         {!primary && (
-          <ViewWithSpacing spacingStyles="margin-right-XXS">
-            <CustomIcon name={ICON_NAME.checkmark} size="fs10" color="white" />
+          <ViewWithSpacing spacingStyles="margin-right-XXS margin-top-XXXS margin-bottom-XXXS">
+            <CustomIcon name={ICON_NAME.checkmark} size="fs9" color="white" />
           </ViewWithSpacing>
         )}
         <BodyCopy
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
+          fontFamily="secondary"
+          fontWeight="extrabold"
           fontSize="fs10"
           color="white"
           text={children}

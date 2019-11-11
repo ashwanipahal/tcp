@@ -304,8 +304,12 @@ export const getCurrentOrderFormatter = (
   // Check if order is of pickup type instead of just BOPIS
   const mixOrderData =
     orderDetailsResponse.mixOrderDetails && orderDetailsResponse.mixOrderDetails.data;
-  const isBossOrder = !!(mixOrderData && mixOrderData.find(store => store.orderType === 'BOSS'));
-  const isBopisOrder = !!(mixOrderData && mixOrderData.find(store => store.orderType === 'BOPIS'));
+  const isBossOrder = !!(
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOSS)
+  );
+  const isBopisOrder = !!(
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOPIS)
+  );
   const pickupOrder = isBopisOrder || isBossOrder;
   // show pickup address for both BOSS and BOPIS
   if (pickupOrder) {
@@ -755,7 +759,7 @@ export const getOrderDetailsData = () => {
   });
 };
 
-export const getProductInfoForTranslationData = query => {
+export const getProductInfoForTranslationData = (query, brand) => {
   return executeUnbxdAPICall({
     body: {
       rows: 20,
@@ -771,6 +775,7 @@ export const getProductInfoForTranslationData = query => {
         'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
     },
     webService: endpoints.getProductInfoForTranslationByPartNumber,
+    brand,
   });
 };
 

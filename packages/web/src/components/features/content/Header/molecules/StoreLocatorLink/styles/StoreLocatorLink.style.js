@@ -14,6 +14,9 @@ export default css`
   .storelocatorlink__detail {
     .storelocatorlink__detail__storename {
       text-transform: capitalize;
+      &:hover {
+        color: ${props => props.theme.colorPalette.blue[500]};
+      }
     }
   }
 `;
