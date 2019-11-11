@@ -25,7 +25,7 @@ const getNewHeader = (navigation, showSearch, navTitle) => {
   const capitalizedTitle = title && title.toUpperCase();
   return {
     header: props => (
-      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
         <HeaderNew {...props} title={capitalizedTitle} showSearch={showSearch} />
       </SafeAreaView>
     ),
@@ -92,7 +92,7 @@ const PlpStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       header: props => (
-        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
           <Header {...props} showSearch />
         </SafeAreaView>
       ),

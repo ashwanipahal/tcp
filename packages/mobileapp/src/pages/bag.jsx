@@ -21,7 +21,7 @@ const BagStack = createStackNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       header: props =>
         checkNavigation(navigation) === true ? (
-          <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+          <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
             <Header {...props} />
           </SafeAreaView>
         ) : null,

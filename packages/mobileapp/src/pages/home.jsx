@@ -23,7 +23,7 @@ const getNewHeader = (navigation, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
   return {
     header: props => (
-      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
         <HeaderNew {...props} title={title} />
       </SafeAreaView>
     ),
@@ -34,7 +34,7 @@ const getNewHeader = (navigation, navTitle) => {
 const getDefaultHeaderWithSearch = navigation => {
   return {
     header: props => (
-      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
         <Header {...props} showSearch navigation={navigation} />
       </SafeAreaView>
     ),
@@ -46,7 +46,7 @@ const getDefaultHeaderForStore = (navigation, navTitle) => {
   const title = navTitle || (navigation && navigation.getParam('title'));
   return {
     header: props => (
-      <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
         <Header {...props} title={title} navigation={navigation} headertype="store" />
       </SafeAreaView>
     ),
@@ -124,7 +124,7 @@ const HomeStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       header: props => (
-        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
           <Header {...props} />
         </SafeAreaView>
       ),

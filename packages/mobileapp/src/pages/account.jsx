@@ -20,7 +20,7 @@ const getNewHeader = navigation => {
   return {
     header: props =>
       !showHeader ? (
-        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
           <HeaderNew {...props} title={title} />
         </SafeAreaView>
       ) : null,
@@ -80,7 +80,7 @@ const AccountStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       header: props => (
-        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
           <Header {...props} />
         </SafeAreaView>
       ),
