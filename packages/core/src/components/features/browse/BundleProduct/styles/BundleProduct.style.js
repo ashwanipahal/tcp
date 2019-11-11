@@ -66,6 +66,18 @@ export default css`
   .product-price-container {
     margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
+  .actual-price {
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy8}px;
+    }
+  }
+  .original-price {
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+    }
+  }
   .choose-child-btn {
     max-width: 450px;
     text-align: center;
