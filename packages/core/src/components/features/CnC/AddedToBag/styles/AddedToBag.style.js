@@ -85,7 +85,6 @@ export const recommendationStyles = css`
     top: 35%;
   }
   && .slick-prev {
-    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     top: 18%;
     margin-left: 13%;
 
@@ -109,7 +108,6 @@ export const recommendationStyles = css`
     -webkit-transform: rotate(135deg);
   }
   && .slick-next {
-    height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     top: 18%;
     margin-right: 13%;
 
@@ -129,7 +127,6 @@ export const recommendationStyles = css`
     display: inline-block;
     padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
     transform: rotate(-45deg);
-    background-color: transparent;
     background: none;
   }
   && .product-list {
