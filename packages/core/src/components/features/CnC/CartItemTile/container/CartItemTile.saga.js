@@ -11,7 +11,7 @@ import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/Sav
 import {
   setLoaderState,
   setSectionLoaderState,
-} from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
+} from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';

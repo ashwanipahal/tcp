@@ -1,5 +1,5 @@
 import { call, put, select, delay } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import { isRemembered } from '../../Checkout/container/Checkout.selector';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';

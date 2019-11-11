@@ -4,7 +4,7 @@ import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import {
   setLoaderState,
   setSectionLoaderState,
-} from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
+} from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
