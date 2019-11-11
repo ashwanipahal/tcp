@@ -355,7 +355,6 @@ class ProductPickup extends React.PureComponent {
       labels,
       isStoreAndProductBossEligible,
     } = this.props;
-    debugger;
     const bopisItemInventoryRes =
       bopisItemInventory &&
       bopisItemInventory.inventoryResponse &&
