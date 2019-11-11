@@ -276,7 +276,7 @@ class ProductPickupContainer extends React.PureComponent {
       isBopisClearanceProductEnabled,
       isBopisEnabled,
     };
-    this.isSkuResolved = false;
+
     this.isBopisEligible = validateBopisEligibility({ ...bopisValidatingParams, miscInfo });
     this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
     this.isGeoStoreAPIRequested = false;
@@ -327,10 +327,19 @@ class ProductPickupContainer extends React.PureComponent {
   };
 
   getIsStoreBopisEligible = bopisItemInventory => {
-    return bopisItemInventory.length > 0 && bopisItemInventory[0].quantity > 0;
+    return (
+      this.isBopisEligible &&
+      bopisItemInventory &&
+      bopisItemInventory.inventoryResponse &&
+      bopisItemInventory.inventoryResponse.length > 0 &&
+      bopisItemInventory.inventoryResponse[0].quantity > 0
+    );
   };
 
-  getIsStoreAndProductBossEligible = (isBOSSInventoryAvailable, isStoreAndProductBossEligible) => {
+  getIsStoreAndProductBossEligibleWithInventory = (
+    isBOSSInventoryAvailable,
+    isStoreAndProductBossEligible
+  ) => {
     return isBOSSInventoryAvailable && isStoreAndProductBossEligible;
   };
 
@@ -353,7 +362,6 @@ class ProductPickupContainer extends React.PureComponent {
       isRadialInventoryEnabled,
       labels,
     } = this.props;
-
     let isStoreBossEligible = false;
     if (userDefaultStore) {
       isStoreBossEligible = numericStringToBool(
@@ -438,7 +446,7 @@ class ProductPickupContainer extends React.PureComponent {
     if (isRadialInventoryEnabled) {
       // kill switch RAD-171 RAD-74
       const isBOSSInventoryAvailable = !isBOSSProductOOS(productInfo.colorFitsSizesMap, itemValues);
-      isStoreAndProductBossEligible = this.getIsStoreAndProductBossEligible(
+      isStoreAndProductBossEligible = this.getIsStoreAndProductBossEligibleWithInventory(
         isBOSSInventoryAvailable,
         isStoreAndProductBossEligible
       );
@@ -446,6 +454,7 @@ class ProductPickupContainer extends React.PureComponent {
     return {
       showPickupDetails: this.pickupRenderCondition(isStoreAndProductBossEligible),
       isStoreBopisEligible,
+      isStoreAndProductBossEligible,
     };
   }
 
@@ -513,10 +522,8 @@ class ProductPickupContainer extends React.PureComponent {
     if (this.noBossBopisInfo()) {
       return null;
     }
-
     this.isSkuResolved = validateSkuDetails(productInfo, itemValues);
     const { isSubmitting } = this.state;
-
     // RAD-74 Replace Outbound1 Inventory check to Outbound2(Radial/Boss Inventory)
     let showPickupInfo;
     if (isRadialInventoryEnabled) {
@@ -532,7 +539,11 @@ class ProductPickupContainer extends React.PureComponent {
     }
 
     const { showChangeStore, pickupTitleText, isBossEligBossInvAvail } = this.setPickupTitle();
-    const { showPickupDetails, isStoreBopisEligible } = this.getPickupInfo();
+    const {
+      showPickupDetails,
+      isStoreBopisEligible,
+      isStoreAndProductBossEligible,
+    } = this.getPickupInfo();
 
     return (
       <ProductPickup
@@ -557,6 +568,7 @@ class ProductPickupContainer extends React.PureComponent {
         sizeUnavailable={sizeUnavailable}
         onPickupClickAddon={onPickupClickAddon}
         isOutfitVariant={isOutfitVariant}
+        isStoreAndProductBossEligible={isStoreAndProductBossEligible}
       />
     );
   }
