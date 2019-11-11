@@ -1,8 +1,10 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
-import { View, WebView, Platform } from 'react-native';
+import { View, WebView, Platform, KeyboardAvoidingView } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
+
+const containerStyle = { flex: 1 };
 
 class PayPalButton extends React.PureComponent {
   state = { showAsModal: false };
@@ -75,22 +77,28 @@ class PayPalButton extends React.PureComponent {
 
     return getPayPalSettings && getPayPalSettings.paypalInContextToken ? (
       <View style={{ ...styles }}>
-        <WebView
-          scalesPageToFit={false}
-          originWhitelist={['*']}
-          source={{
-            uri: webURL,
-          }}
-          mixedContentMode="always"
-          useWebKit={Platform.OS === 'ios'}
-          scrollEnabled
-          domStorageEnabled
-          thirdPartyCookiesEnabled
-          startInLoadingState
-          allowUniversalAccessFromFileURLs
-          javaScriptEnabled
-          onMessage={this.handleWebViewEvents}
-        />
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : null}
+          style={containerStyle}
+        >
+          <WebView
+            scalesPageToFit={false}
+            originWhitelist={['*']}
+            source={{
+              uri: webURL,
+            }}
+            mixedContentMode="always"
+            useWebKit={Platform.OS === 'ios'}
+            scrollEnabled
+            domStorageEnabled
+            thirdPartyCookiesEnabled
+            startInLoadingState
+            allowUniversalAccessFromFileURLs
+            javaScriptEnabled
+            onMessage={this.handleWebViewEvents}
+            automaticallyAdjustContentInsets={false}
+          />
+        </KeyboardAvoidingView>
       </View>
     ) : null;
   }
