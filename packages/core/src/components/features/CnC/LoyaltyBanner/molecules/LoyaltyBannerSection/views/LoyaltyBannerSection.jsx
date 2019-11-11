@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import LoyaltyBannerSkeleton from '../../LoyaltyBannerSkeleton';
+import LoyaltyBannerSkeleton from '../../../skeleton/LoyaltyBannerSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
 import { BodyCopy } from '../../../../../../common/atoms';

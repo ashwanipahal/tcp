@@ -51,6 +51,7 @@ describe('Cart Item saga', () => {
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
+    getCartDataSagaGen.next();
 
     const res = {
       orderDetails: {

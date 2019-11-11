@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { PRODUCT_DETAIL_PAGE } from '../../../../../../../../../web/src/pages/App.constants';
+import { PRODUCT_DETAIL_PAGE } from '../../../../../../../web/src/pages/App.constants';
 
 const plccMpr = props =>
   props.isPlcc ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;

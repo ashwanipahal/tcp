@@ -7,7 +7,7 @@ import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { getLocator } from '@tcp/core/src/utils';
-import OrderSummarySkeleton from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/skelton/OrderSummarySkeleton.view';
+import OrderSummarySkeleton from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/skeleton/OrderSummarySkeleton.view';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
