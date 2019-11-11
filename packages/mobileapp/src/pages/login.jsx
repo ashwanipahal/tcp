@@ -13,7 +13,7 @@ const Login = createStackNavigator(
   {
     defaultNavigationOptions: {
       header: props => (
-        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
           <Header {...props} />
         </SafeAreaView>
       ),

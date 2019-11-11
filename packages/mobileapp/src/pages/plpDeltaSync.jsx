@@ -13,7 +13,7 @@ const PlpDeltaSyncStack = createStackNavigator(
   {
     defaultNavigationOptions: {
       header: props => (
-        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', vertical: 'always' }}>
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
           <Header {...props} />
         </SafeAreaView>
       ),
