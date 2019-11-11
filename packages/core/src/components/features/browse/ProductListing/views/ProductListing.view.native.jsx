@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import {
-  styles,
-  PageContainer,
-  ItemCountContainer,
-  ListHeaderContainer,
-} from '../styles/ProductListing.style.native';
+import { styles, PageContainer, ListHeaderContainer } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
 
@@ -20,26 +13,7 @@ const renderItemCountView = itemCount => {
     return itemCount;
   }
 
-  return (
-    <ItemCountContainer>
-      <BodyCopy
-        dataLocator="pdp_product_badges"
-        mobileFontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        color="gray.900"
-        text={`${itemCount} `}
-      />
-      <BodyCopy
-        dataLocator="pdp_product_badges"
-        mobileFontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        color="gray.900"
-        text="Items"
-      />
-    </ItemCountContainer>
-  );
+  return itemCount;
 };
 
 const onRenderHeader = data => {
@@ -59,7 +33,7 @@ const onRenderHeader = data => {
   } = data;
   return (
     <ListHeaderContainer>
-      {totalProductsCount && totalProductsCount > 1 && (
+      {totalProductsCount > 1 && (
         <FilterModal
           filters={filters}
           labelsFilter={labelsFilter}
@@ -74,7 +48,6 @@ const onRenderHeader = data => {
         />
       )}
 
-      {renderItemCountView(totalProductsCount)}
       {renderBrandFilter && renderBrandFilter()}
     </ListHeaderContainer>
   );
@@ -135,6 +108,7 @@ const ProductListView = ({
         scrollToTop={scrollToTop}
         totalProductsCount={totalProductsCount}
         onRenderHeader={() => onRenderHeader(headerData)}
+        onrenderItemCountView={() => renderItemCountView(totalProductsCount)}
         isFavorite={isFavorite}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
@@ -145,7 +119,6 @@ const ProductListView = ({
       />
       {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </PageContainer>
   );

@@ -27,10 +27,10 @@ import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModa
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
-import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
