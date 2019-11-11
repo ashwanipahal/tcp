@@ -6,7 +6,11 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
+import ModuleE from '@tcp/core/src/components/common/molecules/ModuleE';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
+import mockEV1 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1';
+import mockEV1Alt from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1-alt';
+import mockEV2 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v2';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import { isTCP } from '@tcp/core/src/utils/utils';
@@ -93,6 +97,7 @@ const HomePageView = dynamic({
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
     moduleT: () => import('@tcp/core/src/components/common/molecules/ModuleT').then(returnModule),
+    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
@@ -113,6 +118,9 @@ const HomePageView = dynamic({
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
       >
+        <ModuleE {...mockEV1.moduleE.composites} />
+        <ModuleE {...mockEV1Alt.moduleE.composites} />
+        <ModuleE {...mockEV2.moduleE.composites} />
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
         <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />
