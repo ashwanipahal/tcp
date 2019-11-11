@@ -236,7 +236,22 @@ const processResponse = (
   // TODO - fix this - this.setUnbxdId(unbxdId);
   let entityCategory;
   let categoryNameTop = '';
-  let bannerInfo = {};
+  let bannerInfo = {
+    val: {
+      top: [
+        {
+          sub: 'slot_1',
+          typ: 'slot',
+          val: {
+            cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
+            sub: 'divisionTabs',
+            typ: 'module',
+            val: '',
+          },
+        },
+      ],
+    },
+  };
   // Taking the first product in plp to get the categoryID to be sent to adobe
   if (processHelpers.hasProductsInResponse(res.body.response)) {
     const firstProduct = res.body.response.products[0];

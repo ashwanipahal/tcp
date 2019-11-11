@@ -146,6 +146,15 @@ export const importGraphQLQueriesDynamically = query => {
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/xappConfig'));
         break;
+      case 'divisionTabs':
+        resolve(require('../services/handler/graphQL/queries/divisionTabs'));
+        break;
+      case 'outfitCarousel':
+        resolve(require('../services/handler/graphQL/queries/outfitCarousel'));
+        break;
+      case 'jeans':
+        resolve(require('../services/handler/graphQL/queries/moduleJeans'));
+        break;
       default:
         importMoreGraphQLQueries({
           query,

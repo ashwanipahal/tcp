@@ -14,6 +14,7 @@ import FilterModal from '../molecules/FilterModal';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
+import PromoModules from '../../../../common/organisms/PromoModules';
 
 const renderItemCountView = itemCount => {
   if (itemCount === undefined) {
@@ -56,9 +57,11 @@ const onRenderHeader = data => {
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    plpTopPromos,
   } = data;
   return (
     <ListHeaderContainer>
+      <PromoModules plpTopPromos={plpTopPromos} />
       {totalProductsCount && totalProductsCount > 1 && (
         <FilterModal
           filters={filters}
@@ -109,6 +112,7 @@ const ProductListView = ({
   isLoadingMore,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  plpTopPromos,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -126,6 +130,7 @@ const ProductListView = ({
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    plpTopPromos,
   };
   return (
     <PageContainer margins={margins} paddings={paddings}>
@@ -180,6 +185,7 @@ ProductListView.propTypes = {
   isLoadingMore: PropTypes.bool.isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListView.defaultProps = {
@@ -202,6 +208,7 @@ ProductListView.defaultProps = {
   labelsLogin: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  plpTopPromos: [],
 };
 
 export default withStyles(ProductListView, styles);
