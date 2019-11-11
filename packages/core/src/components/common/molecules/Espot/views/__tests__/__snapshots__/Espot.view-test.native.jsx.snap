@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Espot component should renders correctly 1`] = `
+<View>
+  <RichText
+    actionHandler={[Function]}
+    domStorageEnabled={false}
+    isApplyDeviceHeight={false}
+    isNativeView={true}
+    javaScriptEnabled={false}
+    source="<b>test</b>"
+    thirdPartyCookiesEnabled={false}
+  />
+</View>
+`;

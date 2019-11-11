@@ -38,6 +38,7 @@ describe('Cart Item saga', () => {
       },
     };
     getOrderDetailSagaGen.next(res);
+    getOrderDetailSagaGen.next(res);
     expect(getOrderDetailSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );
@@ -63,6 +64,7 @@ describe('Cart Item saga', () => {
     };
     getCartDataSagaGen.next(res);
     getCartDataSagaGen.next([{ prodpartno: '123' }]);
+    getCartDataSagaGen.next(res);
     expect(getCartDataSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );

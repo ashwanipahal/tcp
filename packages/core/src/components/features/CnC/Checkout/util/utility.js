@@ -202,7 +202,8 @@ export const getPayPalFlag = navigation => {
   }
   return false;
 };
-export const handleReviewFormSubmit = (scope, data) => {
+
+const handleReviewFormSubmit = (scope, data) => {
   const {
     submitReview,
     pickUpContactPerson,
@@ -251,4 +252,5 @@ export default {
   routeToPage,
   getCreditCardType,
   isOrderHasShipping,
+  handleReviewFormSubmit,
 };

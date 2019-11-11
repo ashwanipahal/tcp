@@ -12,6 +12,8 @@ import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
+import { getStoreRef } from './store.utils';
+import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import googleMapConstants from '../constants/googleMap.constants';
 
 let currentAppAPIConfig = null;
@@ -97,6 +99,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleT':
       resolve(require('../services/handler/graphQL/queries/moduleT'));
+      break;
+    case 'moduleG':
+      resolve(require('../services/handler/graphQL/queries/moduleG'));
       break;
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
@@ -415,8 +420,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     unbxdApiKeyTCP,
     unboxKeyGYM: `${unbxdApiKeyGYM}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_GYM`]}`,
     unbxdApiKeyGYM,
-    previewToken: envConfig[`RWD_APP_PREVIEW_TOKEN_${appTypeSuffix}`],
-    previewDateEnv: envConfig[`RWD_APP_PREVIEW_DATE_${appTypeSuffix}`],
+    previewEnvId: envConfig[`RWD_APP_PREVIEW_ENV_${appTypeSuffix}`],
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     RAYGUN_API_KEY: envConfig[`RWD_APP_RAYGUN_API_KEY_${appTypeSuffix}`],
@@ -488,6 +492,13 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     cookie: null,
     catalogId,
     language: '',
+  };
+};
+
+export const updateAPIConfigForApp = () => {
+  const updatedAPIConfig = getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY];
+  return {
+    ...updatedAPIConfig,
   };
 };
 
