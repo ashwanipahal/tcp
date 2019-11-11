@@ -10,14 +10,9 @@ export default css`
   }
 
   .get-candid-main-heading {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    }
-
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 
