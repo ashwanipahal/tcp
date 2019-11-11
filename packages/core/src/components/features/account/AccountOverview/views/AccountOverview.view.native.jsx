@@ -144,6 +144,7 @@ class AccountOverview extends PureComponent<Props> {
           showCheckoutModal={this.showCheckoutModal}
           showLogin={this.showloginModal}
           navigation={navigation}
+          updateHeader={this.updateHeader}
           onRequestClose={this.toggleModal}
         />
       );
