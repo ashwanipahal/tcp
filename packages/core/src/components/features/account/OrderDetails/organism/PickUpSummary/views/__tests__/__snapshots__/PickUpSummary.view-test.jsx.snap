@@ -77,6 +77,20 @@ exports[`Order Summary Details component should renders correctly 1`] = `
       link={null}
       textAlign="left"
     >
+      lbl_orders_openToday: 10:00 am - 9:00 pm
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
       lbl_orders_phone: (813) 994-2076
     </Styled(BodyCopy)>
   </Styled(BodyCopy)>
