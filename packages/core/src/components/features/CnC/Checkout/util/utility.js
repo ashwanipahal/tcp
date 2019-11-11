@@ -25,7 +25,7 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
-import { routerPush } from '../../../../../utils';
+import { routerPush, isMobileApp } from '../../../../../utils';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 import { getLocalStorage } from '../../../../../utils/localStorageManagement';
 import CheckoutConstants from '../Checkout.constants';
@@ -144,7 +144,9 @@ const routeToPage = (dataObj, queryParams, ...others) => {
     }
     to += `${queryString.stringify(queryParams)}`;
   }
-  routerPush(to, asPath, ...others);
+  if (!isMobileApp()) {
+    routerPush(to, asPath, ...others);
+  }
 };
 
 function getCreditCardType({ cardNumber = '', cardType } = {}) {

@@ -210,7 +210,7 @@ function* initShippingData(pageName, initialLoad) {
   }
 }
 
-function* handleCheckoutInitRouting(pageName, appRouting) {
+function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouting) {
   const checkoutRoutingDone = yield select(getIfCheckoutRoutingDone);
   if (!checkoutRoutingDone && !appRouting && !isMobileApp()) {
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
@@ -223,7 +223,10 @@ function* handleCheckoutInitRouting(pageName, appRouting) {
       const orderHasPickup = yield select(getIsOrderHasPickup);
       requestedStage = orderHasPickup ? PICKUP : SHIPPING;
     }
-    utility.routeToPage(CHECKOUT_ROUTES[`${requestedStage}Page`], { appRouting: pageName });
+    utility.routeToPage(CHECKOUT_ROUTES[`${requestedStage}Page`], {
+      appRouting: pageName,
+      ...otherProps,
+    });
     yield put(toggleCheckoutRouting(true));
     return requestedStage;
   }
@@ -272,8 +275,7 @@ function* initCheckoutSectionData({
     }
   }
   yield all(pendingPromises);
-  console.log({ handleCheckoutInitRouting });
-  const requestedStage = yield call(handleCheckoutInitRouting, pageName, appRouting);
+  const requestedStage = yield call(handleCheckoutInitRouting, { pageName }, appRouting);
   return yield call(initShippingData, requestedStage, initialLoad);
 }
 
