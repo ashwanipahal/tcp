@@ -35,7 +35,7 @@ const CarouselArrow = ({ arrowType, label, onClick }) => {
   );
 };
 
-const Divider = ({ isBottom }) => {
+const Divider = ({ position }) => {
   return (
     <Col
       colSize={{
@@ -63,7 +63,7 @@ const Divider = ({ isBottom }) => {
             large: 12,
           }}
         >
-          <div className={`module-e-divider ${isBottom ? 'module-e-divider-bottom' : ''}`} />
+          <div className={`module-e-divider module-e-divider-${position}`} />
         </Col>
       </Row>
     </Col>
@@ -119,7 +119,7 @@ const ModuleE = props => {
         medium: true,
       }}
     >
-      {eyebrow ? null : <Divider />}
+      {eyebrow ? null : <Divider position="top" />}
 
       <Col
         colSize={{
@@ -358,7 +358,7 @@ const ModuleE = props => {
         {/* ---------- Carousel Image layout End ----------- */}
       </Col>
 
-      {eyebrow ? null : <Divider isBottom />}
+      {eyebrow ? null : <Divider position="bottom" />}
     </Row>
   );
 };
