@@ -45,6 +45,7 @@ const ProductCustomizeFormPart = props => {
     formRef,
     formEnabled,
     onInputSelectionChange,
+    toastMessage,
     ...otherProps
   } = props;
 
@@ -155,6 +156,7 @@ const ProductCustomizeFormPart = props => {
           productInfoFromBag={productInfoFromBag}
           formRef={formRef}
           formEnabled={formEnabled}
+          toastMessage={toastMessage}
         />
       </MultiItemQVWrapper>
     </PickUpSkUSectionContainer>
@@ -182,12 +184,14 @@ ProductCustomizeFormPart.propTypes = {
   formRef: PropTypes.shape({}).isRequired,
   formEnabled: PropTypes.bool.isRequired,
   onInputSelectionChange: PropTypes.func.isRequired,
+  toastMessage: PropTypes.func,
 };
 
 ProductCustomizeFormPart.defaultProps = {
   currency: 'USD',
   addToBagError: '',
   navigation: {},
+  toastMessage: () => {},
 };
 
 export default ProductCustomizeFormPart;

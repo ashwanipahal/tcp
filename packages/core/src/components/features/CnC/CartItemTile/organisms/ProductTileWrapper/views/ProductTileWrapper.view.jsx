@@ -162,6 +162,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
       setHeaderErrorState,
       navigation,
       openModalApplyNowModal,
+      closeMiniBag,
     } = this.props;
     const productSectionData = isBagPageSflSection ? sflItems : orderItems;
     let isUnavailable;
@@ -200,6 +201,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
               sflItemsCount={sflItemsCount}
               isBagPageSflSection={isBagPageSflSection}
               navigation={navigation}
+              closeMiniBag={closeMiniBag}
             />
           </>
         );

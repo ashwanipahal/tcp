@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import { LabeledRadioButton, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
@@ -15,7 +16,9 @@ import {
   labelStyle,
   disabledLabelStyle,
 } from '../styles/CartItemRadioButtons.style.native';
+import { handleShipToHome, handlePickupToggle } from './CartItemRadioButtons.utils';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
+import CONSTANTS from '../../../../Checkout/Checkout.constants';
 import { maxAllowedStoresInCart } from '../../../../../../common/organisms/PickupStoreModal/PickUpStoreModal.config';
 
 class CartItemRadioButtons extends PureComponent {
@@ -26,38 +29,22 @@ class CartItemRadioButtons extends PureComponent {
     };
   }
 
-  handleToggleShipToHome = () => {
-    const {
-      setShipToHome,
-      isECOMOrder,
-      isEcomSoldout,
-      productDetail: {
-        itemInfo: { itemId },
-        miscInfo: { orderItemType },
-      },
-    } = this.props;
-
-    /* istanbul ignore else */
-    if (!isECOMOrder && !isEcomSoldout) {
-      setShipToHome(itemId, orderItemType);
-    }
+  handlePickupToToggleClick = isBossItem => {
+    const { BOSS, BOPIS } = CONSTANTS.ORDER_ITEM_TYPE;
+    const pickupType = isBossItem ? BOSS : BOPIS;
+    handlePickupToggle(this.props, pickupType);
   };
 
-  handlePickupToToggle = () => {};
+  handleToggleClick = (isEcomItem, isBossItem) => {
+    return isEcomItem ? handleShipToHome(this.props) : this.handlePickupToToggleClick(isBossItem);
+  };
 
   /**
    * @function handleChangeStoreClick Handle click event for change store
    * @memberof CartItemRadioButtons
    */
   handleChangeStoreClick = () => {
-    const {
-      openPickUpModal,
-      onPickUpOpenClick,
-      productDetail,
-      orderId,
-      pickupStoresInCart,
-      clearToggleError,
-    } = this.props;
+    const { openPickUpModal, pickupStoresInCart } = this.props;
     const {
       productDetail: {
         miscInfo: { orderItemType },
@@ -73,12 +60,7 @@ class CartItemRadioButtons extends PureComponent {
       openRestrictedModalForBopis = true;
     }
 
-    openPickUpModal(orderItemType, openSkuSelectionForm, openRestrictedModalForBopis, {
-      onPickUpOpenClick,
-      productDetail,
-      orderId,
-      clearToggleError,
-    });
+    openPickUpModal(orderItemType, openSkuSelectionForm, openRestrictedModalForBopis);
   };
 
   getExpandedState = ({ state, index }) => {
@@ -118,6 +100,16 @@ class CartItemRadioButtons extends PureComponent {
         />
       </StyledDatesWrapper>
     ) : null;
+  };
+
+  /**
+   * @function renderBossBanner
+   * @param {bool} isBossItem Represents if the current item is Boss Item or not
+   * @param {string} onlineClearanceMessage Represents the Online only message
+   * @memberof CartItemRadioButtons
+   */
+  renderBossBanner = (isBossItem, onlineClearanceMessage) => {
+    return isBossItem && !onlineClearanceMessage ? <PickupPromotionBanner bossBanner /> : null;
   };
 
   renderStore = () => {
@@ -215,7 +207,7 @@ class CartItemRadioButtons extends PureComponent {
             index={0}
             labelStyle={disabled ? disabledLabelStyle : labelStyle}
             onPress={() =>
-              isEcomItem ? this.handleToggleShipToHome() : this.handlePickupToToggle()
+              !isSelected && !disabled && this.handleToggleClick(isEcomItem, isBossItem)
             }
             checked={isSelected}
             disabled={disabled}
@@ -230,6 +222,7 @@ class CartItemRadioButtons extends PureComponent {
               text={onlineClearanceMessage}
             />
           )}
+          {this.renderBossBanner(isBossItem, onlineClearanceMessage)}
         </StyledTopRow>
         {!isEcomItem && isSelected && !onlineClearanceMessage && (
           <StyledBottomRow>
@@ -389,8 +382,6 @@ CartItemRadioButtons.propTypes = {
   index: PropTypes.number,
   openedTile: PropTypes.number,
   setSelectedProductTile: PropTypes.func.isRequired,
-  onPickUpOpenClick: PropTypes.func.isRequired,
-  orderId: PropTypes.string,
   openPickUpModal: PropTypes.func.isRequired,
   isECOMOrder: PropTypes.bool.isRequired,
   isBOSSOrder: PropTypes.bool.isRequired,
@@ -402,15 +393,12 @@ CartItemRadioButtons.propTypes = {
   isEcomSoldout: PropTypes.bool.isRequired,
   noBossMessage: PropTypes.bool.isRequired,
   noBopisMessage: PropTypes.bool.isRequired,
-  setShipToHome: PropTypes.func.isRequired,
   pickupStoresInCart: PropTypes.shape({}).isRequired,
-  clearToggleError: PropTypes.func.isRequired,
 };
 
 CartItemRadioButtons.defaultProps = {
   index: 0,
   openedTile: 0,
-  orderId: '',
 };
 
 export default CartItemRadioButtons;

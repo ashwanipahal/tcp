@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, isCanada } from '@tcp/core/src/utils';
 
 const handleUserName = userName => {
   return userName.length <= 15 ? userName : userName.substring(0, 15).concat('...');
@@ -29,13 +29,14 @@ const LoggedInUserInfo = ({
   const linkClick = e => onLinkClick({ e, openOverlay, userNameClick }, mainId);
   return (
     <React.Fragment>
-      <BodyCopy component="div" id={mainId} className="account-info-section" tabIndex="0">
-        <BodyCopy
-          className="account-info user-name"
-          onClick={linkClick}
-          component="div"
-          role="button"
-        >
+      <BodyCopy
+        component="div"
+        id={mainId}
+        className="account-info-section"
+        onClick={linkClick}
+        tabIndex="0"
+      >
+        <BodyCopy className="account-info user-name" component="div" role="button">
           {`Hi, ${handleUserName(userName)}`}
         </BodyCopy>
         {!isDrawer ? (
@@ -44,15 +45,16 @@ const LoggedInUserInfo = ({
             className={`account-info ${handleCarrottoggle(isOpenOverlay)}`}
             src={getIconPath('down_arrow_icon')}
             height="6px"
-            onClick={linkClick}
           />
         ) : null}
-        <BodyCopy onClick={linkClick} component="div">
-          <div className="account-info user-points">{`${userPoints} Points`}</div>
-          <span className="account-info user-rewards rightLink">
-            {`$${handleUserRewards(userRewards)} Rewards`}
-          </span>
-        </BodyCopy>
+        {!isCanada() ? (
+          <BodyCopy component="div">
+            <div className="account-info user-points">{`${userPoints} Points`}</div>
+            <span className="account-info user-rewards rightLink">
+              {`$${handleUserRewards(userRewards)} Rewards`}
+            </span>
+          </BodyCopy>
+        ) : null}
         {!isDrawer ? (
           <Image
             alt="user"
