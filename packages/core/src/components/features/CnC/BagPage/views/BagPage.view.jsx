@@ -16,6 +16,7 @@ import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
+import BagPageAnalytics from './BagPageAnalytics.view';
 
 class BagPageView extends React.PureComponent {
   constructor(props) {
@@ -137,18 +138,9 @@ class BagPageView extends React.PureComponent {
 
   wrapSection = (Component, orderItemsCount) => {
     const isNoNEmptyBag = orderItemsCount > 0;
+    const colSizes = { small: 6, medium: 5, large: 8 };
     if (!isNoNEmptyBag) {
-      return (
-        <Col
-          colSize={{
-            small: 6,
-            medium: 5,
-            large: 8,
-          }}
-        >
-          {Component}
-        </Col>
-      );
+      return <Col colSize={colSizes}>{Component}</Col>;
     }
     return Component;
   };
@@ -228,6 +220,7 @@ class BagPageView extends React.PureComponent {
             orderItemsCount
           )}
         {this.renderRecommendations()}
+        <BagPageAnalytics {...this.props} />
       </React.Fragment>
     );
   };
