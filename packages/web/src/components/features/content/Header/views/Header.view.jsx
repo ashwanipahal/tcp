@@ -143,7 +143,12 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        {!isCanada() ? <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} /> : null}
+        {!isCanada() ? (
+          <LoyaltyPromoBanner
+            richTextList={loyaltyPromoBanner}
+            className="header-promo__container"
+          />
+        ) : null}
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
