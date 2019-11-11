@@ -44,11 +44,11 @@ export const getStoresByCountry = country => {
            * Checking config brand name on client and then check if the response also have
            * the same brand name then only push into the array otherwise skip
            *
-           * Note: Checking configured brand name inside response brand name as it coming as array more than
+           * Note: Checking configured brand name inside response brand names array as it coming as array more than
            * one brand can reside.
            */
-          const responseBrandName = store.brandName || '';
-          if (responseBrandName.includes(configBrandName)) {
+          const responseBrandNames = store.brandName || [];
+          if (responseBrandNames.find(brand => brand.toLowerCase() === configBrandName)) {
             if (!stateMapping[store.stateOrProvinceName]) {
               stateMapping[store.stateOrProvinceName] = [];
             }
