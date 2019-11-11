@@ -139,7 +139,7 @@ export const mapStateToProps = state => ({
   giftWrapOptions: getGiftWrapOptions(state),
   giftWrap: getInitialGiftWrapOptions(state),
   currencySymbol: getCurrencySymbol(state),
-  cartOrderItems: BagPageSelector.getOrderItems(state),
+  cartOrderItems: BagPageSelector.getOrderItems(state) || [],
 });
 
 export default connect(
