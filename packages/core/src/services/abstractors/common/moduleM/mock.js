@@ -95,9 +95,6 @@ export default {
           text: {
             text: 'GIRL',
           },
-          category: {
-            cat_id: '47511',
-          },
           smallCompImages: [
             {
               image: {
@@ -245,468 +242,468 @@ export default {
             },
           ],
         },
-        {
-          text: {
-            text: 'TODDLER GIRL',
-          },
-          category: {
-            cat_id: '47512',
-          },
-          smallCompImages: [
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses 2',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Toddler Girl alt',
-                title: 'Toddler Girl title',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Skorts',
-                title: 'Skorts',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
-                alt: 'Boy',
-                title: 'Boy',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Sweaters',
-                title: 'Sweaters',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
-                alt: 'Toddler Boy alt',
-                title: 'Toddler Boy title',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Shorts',
-                title: 'Shorts',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
-                alt: 'Baby',
-                title: 'Baby',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Polos',
-                title: 'Polos',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-          ],
-        },
-        {
-          text: {
-            text: 'BOY',
-          },
-          category: {
-            cat_id: '47513',
-          },
-          smallCompImages: [
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses 3',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Toddler Girl alt',
-                title: 'Toddler Girl title',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Skorts',
-                title: 'Skorts',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
-                alt: 'Boy',
-                title: 'Boy',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Sweaters',
-                title: 'Sweaters',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
-                alt: 'Toddler Boy alt',
-                title: 'Toddler Boy title',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Shorts',
-                title: 'Shorts',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
-                alt: 'Baby',
-                title: 'Baby',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Polos',
-                title: 'Polos',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-          ],
-        },
-        {
-          text: {
-            text: 'TODDLER BOY',
-          },
-          category: {
-            cat_id: '47514',
-          },
-          smallCompImages: [
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses 4',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Toddler Girl alt',
-                title: 'Toddler Girl title',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Skorts',
-                title: 'Skorts',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
-                alt: 'Boy',
-                title: 'Boy',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Sweaters',
-                title: 'Sweaters',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
-                alt: 'Toddler Boy alt',
-                title: 'Toddler Boy title',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Shorts',
-                title: 'Shorts',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
-                alt: 'Baby',
-                title: 'Baby',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Polos',
-                title: 'Polos',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-            {
-              image: {
-                url:
-                  'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-                alt: 'Girl',
-                title: 'Girl',
-                crop_d: '',
-                crop_t: '',
-                crop_m: '',
-              },
-              link: {
-                url: '/c/',
-                text: 'Dresses',
-                title: 'Dresses',
-                target: '',
-                external: 0,
-              },
-            },
-          ],
-        },
+        // {
+        //   text: {
+        //     text: 'TODDLER GIRL',
+        //   },
+        //   category: {
+        //     cat_id: '47512',
+        //   },
+        //   smallCompImages: [
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses 2',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Toddler Girl alt',
+        //         title: 'Toddler Girl title',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Skorts',
+        //         title: 'Skorts',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
+        //         alt: 'Boy',
+        //         title: 'Boy',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Sweaters',
+        //         title: 'Sweaters',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
+        //         alt: 'Toddler Boy alt',
+        //         title: 'Toddler Boy title',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Shorts',
+        //         title: 'Shorts',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
+        //         alt: 'Baby',
+        //         title: 'Baby',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Polos',
+        //         title: 'Polos',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //   ],
+        // },
+        // {
+        //   text: {
+        //     text: 'BOY',
+        //   },
+        //   category: {
+        //     cat_id: '47513',
+        //   },
+        //   smallCompImages: [
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses 3',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Toddler Girl alt',
+        //         title: 'Toddler Girl title',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Skorts',
+        //         title: 'Skorts',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
+        //         alt: 'Boy',
+        //         title: 'Boy',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Sweaters',
+        //         title: 'Sweaters',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
+        //         alt: 'Toddler Boy alt',
+        //         title: 'Toddler Boy title',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Shorts',
+        //         title: 'Shorts',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
+        //         alt: 'Baby',
+        //         title: 'Baby',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Polos',
+        //         title: 'Polos',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //   ],
+        // },
+        // {
+        //   text: {
+        //     text: 'TODDLER BOY',
+        //   },
+        //   category: {
+        //     cat_id: '47514',
+        //   },
+        //   smallCompImages: [
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses 4',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Toddler Girl alt',
+        //         title: 'Toddler Girl title',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Skorts',
+        //         title: 'Skorts',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
+        //         alt: 'Boy',
+        //         title: 'Boy',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Sweaters',
+        //         title: 'Sweaters',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
+        //         alt: 'Toddler Boy alt',
+        //         title: 'Toddler Boy title',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Shorts',
+        //         title: 'Shorts',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
+        //         alt: 'Baby',
+        //         title: 'Baby',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Polos',
+        //         title: 'Polos',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //     {
+        //       image: {
+        //         url:
+        //           'https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+        //         alt: 'Girl',
+        //         title: 'Girl',
+        //         crop_d: '',
+        //         crop_t: '',
+        //         crop_m: '',
+        //       },
+        //       link: {
+        //         url: '/c/',
+        //         text: 'Dresses',
+        //         title: 'Dresses',
+        //         target: '',
+        //         external: 0,
+        //       },
+        //     },
+        //   ],
+        // },
       ],
       singleCTAButton: {
         url: '/c/baby-clothes',
