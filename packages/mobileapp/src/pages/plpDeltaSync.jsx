@@ -1,9 +1,10 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import PLPDeltaSync from '../screens/PLPDeltaSyncScreen';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const PlpDeltaSyncStack = createStackNavigator(
   {
@@ -11,7 +12,11 @@ const PlpDeltaSyncStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always' }}>
+          <Header {...props} />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }

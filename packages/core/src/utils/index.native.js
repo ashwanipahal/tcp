@@ -69,4 +69,4 @@ export {
   getProductUrlForDAM,
 } from './utils';
 
-export { getLoading } from './JsxUtils.app';
+export { getLoading, getNewHeader } from './JsxUtils.app';
