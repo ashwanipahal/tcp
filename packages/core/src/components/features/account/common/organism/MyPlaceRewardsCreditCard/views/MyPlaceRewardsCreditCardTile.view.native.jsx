@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withNavigation } from 'react-navigation';
 import {
   BodyCopyWithSpacing,
   ViewWithSpacing,
@@ -18,9 +19,9 @@ import {
   CardDetailContainer,
 } from './MyPlaceRewardsCreditCardTile.style.native';
 
-class MyPlaceRewardsCreditCardTile extends React.PureComponent {
+export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
   toggleApplyNowModal = () => {
-    const { toggleModal, navigation } = this.state;
+    const { toggleModal, navigation } = this.props;
     navigation.navigate('ApplyNow');
     toggleModal({ isModalOpen: true });
   };
@@ -164,6 +165,8 @@ MyPlaceRewardsCreditCardTile.propTypes = {
   }),
   myPlaceRewardCard: PropTypes.shape({}),
   handleComponentChange: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 MyPlaceRewardsCreditCardTile.defaultProps = {
@@ -173,4 +176,4 @@ MyPlaceRewardsCreditCardTile.defaultProps = {
   myPlaceRewardCard: {},
 };
 
-export default MyPlaceRewardsCreditCardTile;
+export default withNavigation(MyPlaceRewardsCreditCardTile);
