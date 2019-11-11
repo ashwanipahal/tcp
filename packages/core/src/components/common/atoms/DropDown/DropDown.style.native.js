@@ -75,7 +75,9 @@ const StyledLabel = styled.Text`
     !props.isFocused
       ? props.theme.typography.fontWeights.regular
       : props.theme.typography.fontWeights.extrabold};
+  font-family: ${props => props.theme.typography.fonts.secondary};
 `;
+
 const SelectedLabelView = styled.View`
   display: flex;
   flex-direction: row;

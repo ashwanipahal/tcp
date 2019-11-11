@@ -12,6 +12,7 @@ const setFormToEditState = (scope, e) => {
 };
 
 const unsetPaymentFormEditState = (scope, e) => {
+  /* istanbul ignore else */
   if (e) {
     e.preventDefault();
   }
@@ -24,6 +25,7 @@ const handleBillingFormSubmit = (scope, e, isMobile) => {
   const { handleSubmit, labels, scrollView } = scope.props;
   const { editMode } = scope.state;
   if (editMode) {
+    /* istanbul ignore else */
     if (e && e.preventDefault) {
       e.preventDefault();
     }

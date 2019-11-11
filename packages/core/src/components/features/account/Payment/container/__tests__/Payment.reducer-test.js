@@ -1,4 +1,5 @@
 import { Map, fromJS } from 'immutable';
+import { logout } from '@tcp/core/src/components/features/account/Logout/container/LogOut.actions';
 import PaymentReducer from '../Payment.reducer';
 import { setCardList } from '../Payment.actions';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
@@ -125,5 +126,11 @@ describe('Payment Reducer', () => {
         },
       })
     ).toEqual(updatedState);
+  });
+
+  it('should return initial state in case of LOGOUT action', () => {
+    const state = PaymentReducer(undefined, setCardList(payload));
+    const loggedOutState = PaymentReducer(state, logout());
+    expect(loggedOutState.get('cardList')).toBeNull();
   });
 });
