@@ -11,7 +11,6 @@ import {
   ListHeaderContainer,
 } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
 
@@ -145,7 +144,6 @@ const ProductListView = ({
       />
       {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </PageContainer>
   );
