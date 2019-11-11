@@ -59,7 +59,7 @@ const onRenderHeader = data => {
   } = data;
   return (
     <ListHeaderContainer>
-      {totalProductsCount && totalProductsCount > 1 && (
+      {totalProductsCount > 1 && (
         <FilterModal
           filters={filters}
           labelsFilter={labelsFilter}
