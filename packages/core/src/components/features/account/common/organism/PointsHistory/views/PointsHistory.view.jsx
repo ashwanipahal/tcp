@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
+import styles from '../styles/PointsHistoryList.view.style';
 import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view';
 
 /**
@@ -33,7 +35,7 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
             {getLabelValue(labels, 'lbl_common_order_date')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 4, medium: 2, small: 2 }}>
+        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <BodyCopy
             data-locator="pointshistorytransactionslbl"
             fontFamily="secondary"
@@ -67,17 +69,18 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="pointsHistoryTextWrap"
               >
                 {pointHistoryRow.transactionDate}
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 4, medium: 2, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistorytransctionmsg"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                className="elem-pr-XXS"
+                className="elem-pr-XXS pointsHistoryTextWrap"
               >
                 {pointHistoryRow.transactionTypeName}
               </BodyCopy>
@@ -88,6 +91,7 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="pointsHistoryTextWrap"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
@@ -136,4 +140,4 @@ PointsHistory.defaultProps = {
   isFetching: false,
 };
 
-export default PointsHistory;
+export default withStyles(PointsHistory, styles);

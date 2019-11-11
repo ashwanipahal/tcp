@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PointsHistoryContainer View should render PointsHistory container Correctly 1`] = `
-<PointsHistory
-  className=""
+<Styled(PointsHistory)
   getPointsHistoryAction={[Function]}
   isFetching={false}
   labels={[Function]}
@@ -22,8 +21,7 @@ exports[`PointsHistoryContainer View should render PointsHistory container Corre
 `;
 
 exports[`PointsHistoryContainer View should render PointsHistoryContainer Correctly 1`] = `
-<PointsHistory
-  className=""
+<Styled(PointsHistory)
   getPointsHistoryAction={[Function]}
   isFetching={false}
   labels={[Function]}

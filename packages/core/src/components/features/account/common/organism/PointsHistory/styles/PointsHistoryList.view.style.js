@@ -11,6 +11,10 @@ const styles = css`
     }
     word-wrap: break-word;
   }
+
+  .pointsHistoryTextWrap {
+    word-wrap: break-word;
+  }
 `;
 
 export default styles;

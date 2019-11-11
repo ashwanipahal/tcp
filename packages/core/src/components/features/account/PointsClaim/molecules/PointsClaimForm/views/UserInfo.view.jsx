@@ -91,7 +91,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
             {getLabelValue(labels, 'lbl_points_claim_email', 'myPlaceRewards')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ small: 4, medium: 4, large: 3 }}>
+        <Col colSize={{ small: 4, medium: 4, large: 5 }}>
           <BodyCopy
             dataLocator="profileinfo-email_value"
             fontFamily="secondary"
