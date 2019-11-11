@@ -75,7 +75,6 @@ const style = css`
   .account-info-section {
     display: inline-block;
     line-height: normal;
-    margin-right: 25px;
   }
   .carrot-down-icon {
     cursor: pointer;
@@ -123,6 +122,7 @@ const style = css`
   .product-image {
     height: 25px;
     width: 20px;
+    margin-left: 25px;
     @media ${props => props.theme.mediaQuery.medium} {
       width: 23px;
     }
