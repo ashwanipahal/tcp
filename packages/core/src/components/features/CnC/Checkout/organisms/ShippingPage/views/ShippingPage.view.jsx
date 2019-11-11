@@ -321,7 +321,7 @@ export default class ShippingPage extends React.PureComponent {
     return submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
   };
 
-  extendedComponentDidUpdate(prevProps) {
+  extendedComponentDidUpdate = prevProps => {
     const {
       selectedShipmentId,
       updateShippingMethodSelection,
@@ -357,7 +357,7 @@ export default class ShippingPage extends React.PureComponent {
     ) {
       updateShippingMethodSelection({ id: selectedShipmentId });
     }
-  }
+  };
 
   render() {
     const {
@@ -390,7 +390,7 @@ export default class ShippingPage extends React.PureComponent {
     }
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     if (!checkoutRoutingDone) {
-      return <div />;
+      return <div>Loading....</div>;
     }
     return (
       <>

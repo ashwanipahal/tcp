@@ -117,7 +117,7 @@ class ReviewPage extends React.PureComponent {
 
     const expressReviewShippingSection = 'expressReviewShippingSection';
     if (!checkoutRoutingDone) {
-      return <div />;
+      return <div>Loading....</div>;
     }
     return (
       <form name={formName} className={className} onSubmit={handleSubmit(reviewFormSubmit)}>
