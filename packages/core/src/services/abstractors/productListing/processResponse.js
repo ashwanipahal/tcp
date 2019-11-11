@@ -164,7 +164,7 @@ const getPlpUrlQueryValues = filtersAndSort => {
   return true;
 };
 
-// eslint-disable-next-line
+// eslint-disable-next-line complexity
 const processResponse = (
   res,
   state,
@@ -237,6 +237,7 @@ const processResponse = (
   let entityCategory;
   let categoryNameTop = '';
   let bannerInfo = {
+    // TODO - this is hard coded for app - remove it when dependency is resolved
     val: {
       top: [
         {
@@ -328,27 +329,27 @@ const processResponse = (
         },
       };
 
-      bannerInfo.val.top[3] = {
-        sub: 'slot_4',
-        typ: 'slot',
-        val: {
-          cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
-          sub: 'moduleA',
-          typ: 'module',
-          val: '',
-        },
-      };
+      // bannerInfo.val.top[3] = {
+      //   sub: 'slot_4',
+      //   typ: 'slot',
+      //   val: {
+      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
+      //     sub: 'moduleA',
+      //     typ: 'module',
+      //     val: '',
+      //   },
+      // };
 
-      bannerInfo.val.top[4] = {
-        sub: 'slot_5',
-        typ: 'slot',
-        val: {
-          cid: 'c53989d8-29f9-435f-bde1-d11639affbda',
-          sub: 'moduleD',
-          typ: 'module',
-          val: '',
-        },
-      };
+      // bannerInfo.val.top[4] = {
+      //   sub: 'slot_5',
+      //   typ: 'slot',
+      //   val: {
+      //     cid: 'c53989d8-29f9-435f-bde1-d11639affbda',
+      //     sub: 'moduleD',
+      //     typ: 'module',
+      //     val: '',
+      //   },
+      // };
 
       // bannerInfo.val.top[5] = {
       //   sub: 'slot_6',
@@ -372,16 +373,16 @@ const processResponse = (
       //   },
       // };
 
-      bannerInfo.val.top[5] = {
-        sub: 'slot_8',
-        typ: 'slot',
-        val: {
-          cid: 'c716a1b9-0ad7-4125-85fb-f3ba31257587',
-          sub: 'moduleQ',
-          typ: 'module',
-          val: '',
-        },
-      };
+      //   bannerInfo.val.top[7] = {
+      //     sub: 'slot_8',
+      //     typ: 'slot',
+      //     val: {
+      //       cid: 'c716a1b9-0ad7-4125-85fb-f3ba31257587',
+      //       sub: 'moduleQ',
+      //       typ: 'module',
+      //       val: '',
+      //     },
+      //   };
     }
   } catch (error) {
     logger.error(error);
