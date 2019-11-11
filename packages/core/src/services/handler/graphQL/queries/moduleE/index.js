@@ -1,1 +1,1 @@
-export { default } from './moduleQ.query';
+export { default } from './moduleE.query';

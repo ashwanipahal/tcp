@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable complexity */
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -29,6 +32,41 @@ const CarouselArrow = ({ arrowType, label, onClick }) => {
         />
       </svg>
     </button>
+  );
+};
+
+const Divider = ({ isBottom }) => {
+  return (
+    <Col
+      colSize={{
+        small: 6,
+        medium: 8,
+        large: 12,
+      }}
+      ignoreGutter={{
+        small: true,
+        medium: true,
+        large: true,
+      }}
+    >
+      <Row
+        fullBleed={{
+          small: false,
+          medium: false,
+          large: true,
+        }}
+      >
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          <div className={`module-e-divider ${isBottom ? 'module-e-divider-bottom' : ''}`} />
+        </Col>
+      </Row>
+    </Col>
   );
 };
 
@@ -81,39 +119,7 @@ const ModuleE = props => {
         medium: true,
       }}
     >
-      {/* ------- To Divider Start ------ */}
-      <Col
-        colSize={{
-          small: 6,
-          medium: 8,
-          large: 12,
-        }}
-        ignoreGutter={{
-          small: true,
-          medium: true,
-          large: true,
-        }}
-      >
-        <Row
-          fullBleed={{
-            small: false,
-            medium: false,
-            large: true,
-          }}
-        >
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-            ignoreGutter
-          >
-            {eyebrow ? null : <div className="module-e-divider module-e-divider-top" />}
-          </Col>
-        </Row>
-      </Col>
-      {/* -------  To Divider End ------- */}
+      {eyebrow ? null : <Divider />}
 
       <Col
         colSize={{
@@ -248,7 +254,7 @@ const ModuleE = props => {
               largeCompImageSimpleCarousel[curCarouselSlideIndex].singleCTAButton && (
                 <Row
                   fullBleed={{
-                    small: eyebrow ? true : false,
+                    small: !!eyebrow,
                     medium: false,
                     large: true,
                   }}
@@ -352,38 +358,7 @@ const ModuleE = props => {
         {/* ---------- Carousel Image layout End ----------- */}
       </Col>
 
-      {/* ------- To Divider Start ------ */}
-      <Col
-        colSize={{
-          small: 6,
-          medium: 8,
-          large: 12,
-        }}
-        ignoreGutter={{
-          small: true,
-          medium: true,
-          large: true,
-        }}
-      >
-        <Row
-          fullBleed={{
-            small: false,
-            medium: false,
-            large: true,
-          }}
-        >
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-          >
-            {eyebrow ? null : <div className="module-e-divider module-e-divider-bottom" />}
-          </Col>
-        </Row>
-      </Col>
-      {/* -------  To Divider End ------- */}
+      {eyebrow ? null : <Divider isBottom />}
     </Row>
   );
 };
