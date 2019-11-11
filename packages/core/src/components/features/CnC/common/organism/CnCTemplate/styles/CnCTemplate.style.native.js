@@ -85,10 +85,10 @@ export const CnContent = styled.View`
 const payPalSpace = props => {
   if (props.showPayPalButton) {
     return `
-    margin:0px;
+    margin:20px 0px;
     `;
   }
-  return 'margin: 0 20px;';
+  return 'margin: 20px 10px;';
 };
 
 export const ButtonWrapper = styled.View`

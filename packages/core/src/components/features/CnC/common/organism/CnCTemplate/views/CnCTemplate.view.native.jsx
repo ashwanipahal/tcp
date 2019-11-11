@@ -75,6 +75,7 @@ const CnCCommonTemplate = ({
                   navigation={navigation}
                   isBillingPage
                   setVenmoState={() => {}}
+                  closeModal={() => {}}
                 />
               </PayPalButtonContainer>
             )}
