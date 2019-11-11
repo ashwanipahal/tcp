@@ -181,6 +181,7 @@ const Recommendations = props => {
     partNumber,
     categoryName,
     isAddedToBagOpen,
+    reduxKey,
   } = props;
   const variationArray = variation.split(',');
   const action = {
@@ -188,6 +189,7 @@ const Recommendations = props => {
     ...(partNumber && { partNumber }),
     ...(portalValue && { mbox: portalValue }),
     ...(categoryName && { categoryName }),
+    reduxKey,
   };
   useEffect(fetchRecommendations(loadRecommendations, action), []);
 
@@ -210,6 +212,7 @@ Recommendations.propTypes = {
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
   isAddedToBagOpen: PropTypes.bool,
+  reduxKey: PropTypes.string.isRequired,
 };
 
 Recommendations.defaultProps = {
