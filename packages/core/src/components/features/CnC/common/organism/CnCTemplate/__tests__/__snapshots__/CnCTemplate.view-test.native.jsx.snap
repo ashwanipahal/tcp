@@ -24,6 +24,7 @@ exports[`CnCCommonTemplate Page should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)
       isPayPalWebViewEnable={false}
+      showPayPalButton={false}
     >
       <Styled(TouchableOpacity)
         onPress={[MockFunction]}
