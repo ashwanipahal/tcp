@@ -270,8 +270,8 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
 export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
   const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
   const isLoggedIn = yield select(getUserLoggedInState);
-  yield put(setSectionLoaderState(false, 'addedtobag'));
-  yield put(setSectionLoaderState(false, 'minibag'));
+  yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+  yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
   yield put(setLoaderState(false));
   if (!isLoggedIn && !isVenmoPaymentInProgress) {
     return yield put(setCheckoutModalMountedState({ state: true }));
@@ -292,8 +292,8 @@ function* confirmStartCheckout() {
     [BAG_SELECTORS.getOOSCount, BAG_SELECTORS.getUnavailableCount].map(val => select(val))
   );
   if (OOSCount > 0 || unavailableCount > 0) {
-    yield put(setSectionLoaderState(false, 'addedtobag'));
-    yield put(setSectionLoaderState(false, 'minibag'));
+    yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setLoaderState(false));
     yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal());
     return yield true;
@@ -317,10 +317,10 @@ export function* startCartCheckout({
       yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
     } else {
       if (isMiniBag) {
-        yield put(setSectionLoaderState(true, 'minibag'));
+        yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
       }
       if (isAddedToBag) {
-        yield put(setSectionLoaderState(true, 'addedtobag'));
+        yield put(setSectionLoaderState({ addedToBagLoaderState: true, section: 'addedtobag' }));
       }
       if (isBagPage) {
         yield put(setLoaderState(true));
@@ -341,6 +341,9 @@ export function* startCartCheckout({
       }
     }
   } catch (e) {
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+    yield put(setLoaderState(false));
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
@@ -430,7 +433,7 @@ export function* addItemToSFL({
   payload: { itemId, catEntryId, userInfoRequired, afterHandler, isMiniBag } = {},
 } = {}) {
   if (isMiniBag) {
-    yield put(setSectionLoaderState(true, 'minibag'));
+    yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
   } else {
     yield put(setLoaderState(true));
   }
@@ -463,6 +466,8 @@ export function* addItemToSFL({
       yield put(removeCartItem({ itemId }));
     }
   } catch (err) {
+    yield put(setSectionLoaderState(false, 'minibag'));
+    yield put(setLoaderState(false));
     const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(getServerErrorMessage(err, errorsMapping)));
   }

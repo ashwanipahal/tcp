@@ -58,7 +58,7 @@ export function* afterRemovingCartItem() {
 export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
   try {
     if (isMiniBag) {
-      yield put(setSectionLoaderState(true, 'minibag'));
+      yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
     } else {
       yield put(setLoaderState(true));
     }
@@ -77,8 +77,10 @@ export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
       })
     );
     yield put(setLoaderState(false));
-    yield put(setSectionLoaderState(false, 'minibag'));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
   } catch (err) {
+    yield put(setLoaderState(false));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     logger.error(err);
     yield call(handleServerSideErrorAPI, err, CARTPAGE_CONSTANTS.CART_ITEM_TILE);
   }
@@ -146,7 +148,7 @@ function* setUpdateItemErrorMessages(payload, errorMessage) {
 export function* updateCartItemSaga({ payload }) {
   const { updateActionType } = payload;
   try {
-    yield put(setSectionLoaderState(true, 'minibag'));
+    yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
     yield put(clearAddToBagErrorState());
     yield put(clearAddToPickupErrorState());
     yield put(clearToggleCartItemError());
@@ -170,9 +172,10 @@ export function* updateCartItemSaga({ payload }) {
     );
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
-    yield put(setSectionLoaderState(false, 'minibag'));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
   } catch (err) {
-    yield put(setSectionLoaderState(false, 'minibag'));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const errorMessage =
       // eslint-disable-next-line no-underscore-dangle

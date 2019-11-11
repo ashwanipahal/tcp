@@ -7,10 +7,9 @@ export const setLoaderState = payload => {
   };
 };
 
-export const setSectionLoaderState = (payload, section) => {
+export const setSectionLoaderState = payload => {
   return {
     payload,
-    section,
     type: LOADER_CONSTANTS.SET_SECTION_LOADER_STATE,
   };
 };
