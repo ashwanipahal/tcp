@@ -101,8 +101,8 @@ export class AddChildBirthdayForm extends React.PureComponent {
                       addChildBirthdayLabels,
                       'lbl_add_child_birthday_month'
                     )}
-                    name="userBirthMonth"
-                    id="userBirthMonth"
+                    name="childBirthMonth"
+                    id="childBirthMonth"
                     component={SelectBox}
                     options={birthMonthOptionsMap}
                     dataLocator="childBirthdayMonthDD"
@@ -114,8 +114,8 @@ export class AddChildBirthdayForm extends React.PureComponent {
                       addChildBirthdayLabels,
                       'lbl_add_child_birthday_year'
                     )}
-                    name="userBirthYear"
-                    id="userBirthYear"
+                    name="childBirthYear"
+                    id="childBirthYear"
                     component={SelectBox}
                     options={birthYearOptionsMap}
                     dataLocator="childBirthdayYearDD"
@@ -287,8 +287,8 @@ const validateMethod = createValidateMethod(
     'childName',
     'firstName',
     'lastName',
-    'userBirthMonth',
-    'userBirthYear',
+    'childBirthMonth',
+    'childBirthYear',
     'gender',
   ])
 );
