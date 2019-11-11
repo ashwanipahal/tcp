@@ -47,6 +47,23 @@ const Styles = css`
         : ``};
   }
 
+  ${props =>
+    props.pageCategory && props.pageCategory === 'isProductDetailView'
+      ? `
+      .loyalty-banner-wrapper {
+        padding: 0 0 14px;
+      }
+      .loyalty-banner-section-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      @media ${props.theme.mediaQuery.medium} {
+        .loyalty-banner-wrapper {
+          padding: 0 0  ${props.theme.spacing.ELEM_SPACING.SM};
+        }`
+      : ``};
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

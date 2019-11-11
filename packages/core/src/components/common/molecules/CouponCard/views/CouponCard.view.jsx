@@ -127,9 +127,8 @@ class CouponCard extends React.Component<Props> {
   };
 
   RenderButtons = coupon => {
-    const { isCarouselView } = this.props;
     return (
-      <div className={!isCarouselView ? 'couponCard__col' : ''}>
+      <div className="couponCard__col">
         {coupon.status === 'available' && coupon.isStarted && this.RenderApplyButton()}
         {coupon.status === 'applied' && this.RenderRemoveButton()}
       </div>
@@ -171,7 +170,7 @@ class CouponCard extends React.Component<Props> {
             <div className="couponCard__body">
               <div className="couponCard__row">
                 <div className="couponCard__col">
-                  <BodyCopy component="div" color="text.primary">
+                  <BodyCopy className="elem-pr-SM" component="div" color="text.primary">
                     <BodyCopy
                       component="p"
                       fontSize="fs12"

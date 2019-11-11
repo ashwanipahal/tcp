@@ -2,9 +2,14 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
-import { PageContainer, LoyaltyBannerView } from '../styles/ProductDetail.style.native';
+import {
+  PageContainer,
+  LoyaltyBannerView,
+  RecommendationWrapper,
+} from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
@@ -21,6 +26,7 @@ import ProductDetailDescription from '../molecules/ProductDescription/views/Prod
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -132,6 +138,7 @@ class ProductDetailView extends React.PureComponent {
       alternateSizes,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      toastMessage,
     } = this.props;
     const {
       currentColorEntry,
@@ -151,6 +158,15 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
+    const { categoryId } = currentProduct;
+    const recommendationAttributes = {
+      variation: 'moduleO',
+      navigation,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
+      categoryName: categoryId,
+      partNumber: selectedColorProductId,
+      isHeaderAccordion: true,
+    };
 
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
@@ -198,13 +214,14 @@ class ProductDetailView extends React.PureComponent {
             sizeChartLinkVisibility={sizeChartLinkVisibility}
             alternateSizes={alternateSizes}
             navigation={navigation}
+            toastMessage={toastMessage}
           />
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
           <AddedToBagContainer navigation={navigation} />
           <LoyaltyBannerView>
-            <LoyaltyBanner pageCategory="isProductDetailView" />
+            <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
           </LoyaltyBannerView>
           <ProductDetailDescription
             shortDescription={shortDescription}
@@ -221,6 +238,15 @@ class ProductDetailView extends React.PureComponent {
               setShowCompleteTheLook={this.setShowCompleteTheLook}
             />
           ) : null}
+          <RecommendationWrapper>
+            <Recommendations {...recommendationAttributes} />
+            <Recommendations
+              isRecentlyViewed
+              {...recommendationAttributes}
+              headerLabel={pdpLabels.recentlyViewed}
+              portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+            />
+          </RecommendationWrapper>
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </LazyloadScrollView>
@@ -258,6 +284,7 @@ ProductDetailView.propTypes = {
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  toastMessage: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -286,6 +313,7 @@ ProductDetailView.defaultProps = {
   alternateSizes: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  toastMessage: () => {},
 };
 
 export default withStyles(ProductDetailView);

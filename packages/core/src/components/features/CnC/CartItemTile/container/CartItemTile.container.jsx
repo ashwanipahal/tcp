@@ -35,7 +35,10 @@ import {
   getSflMaxCount,
 } from '../../SaveForLater/container/SaveForLater.selectors';
 import { getPersonalDataState } from '../../../account/User/container/User.selectors';
-import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import {
+  openQuickViewWithValues,
+  updateAppTypeWithParams,
+} from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import CONSTANTS from '../../Checkout/Checkout.constants';
 
@@ -100,6 +103,7 @@ export const CartItemTileContainer = ({
   pickupStoresInCart,
   autoSwitchPickupItemInCart,
   navigation,
+  updateAppTypeHandler,
   disableProductRedirect,
   setClickAnalyticsData,
   closeMiniBag,
@@ -150,6 +154,7 @@ export const CartItemTileContainer = ({
     pickupStoresInCart={pickupStoresInCart}
     autoSwitchPickupItemInCart={autoSwitchPickupItemInCart}
     navigation={navigation}
+    updateAppTypeHandler={updateAppTypeHandler}
     disableProductRedirect={disableProductRedirect}
     setClickAnalyticsData={setClickAnalyticsData}
     closeMiniBag={closeMiniBag}
@@ -248,6 +253,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     clearToggleError: () => {
       dispatch(clearToggleCartItemError());
       dispatch(clearToggleBossBopisCartItemError());
+    },
+    updateAppTypeHandler: payload => {
+      dispatch(updateAppTypeWithParams(payload));
     },
     setClickAnalyticsData: payload => {
       dispatch(setClickAnalyticsData(payload));

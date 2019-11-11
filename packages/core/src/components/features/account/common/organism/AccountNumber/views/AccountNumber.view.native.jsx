@@ -9,7 +9,12 @@ import {
   BodyCopyWithSpacing,
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import Barcode from '@tcp/core/src/components/common/molecules/Barcode';
-import { CouponHeading, BarWrapper, buttonStyle } from '../styles/AccountNumber.style.native';
+import {
+  CouponHeading,
+  BarWrapper,
+  buttonStyle,
+  arrowStyle,
+} from '../styles/AccountNumber.style.native';
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_NAME } from '../../../../../../common/atoms/Icon/Icon.constants';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -68,6 +73,7 @@ class AccountNumber extends PureComponent {
               color="gray.900"
               isButton
               onPress={() => this.toggleArrowDownState()}
+              style={arrowStyle}
             />
             {!toggleArrowDown && (
               <>
