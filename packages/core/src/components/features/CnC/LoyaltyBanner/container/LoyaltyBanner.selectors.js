@@ -62,7 +62,7 @@ const getFooterLabels = (state, pageCategory, isGuest, isPlcc) => {
     bagPage: 'bag',
     review: 'review',
     confirmation: 'confirmation',
-    isProductDetailView: 'productDetail',
+    isProductDetailView: 'pdp',
   };
   const currentPage = MAPPINGPAGETYPE[pageCategory] || 'bag';
   const labelKeys = [

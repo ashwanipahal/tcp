@@ -23,51 +23,53 @@ exports[`ProductItemComponents component BadgeItem render Text 1`] = `
 `;
 
 exports[`ProductItemComponents component ProductPricesSection called correctly 1`] = `
-<div
-  className="container-price"
->
-  <ForwardRef
-    className={null}
-    color="red.500"
-    component="p"
-    dataLocator="global-Price-text"
-    fontFamily="secondary"
-    fontSize={
-      Array [
-        "fs15",
-        "fs18",
-        "fs20",
-      ]
-    }
-    fontWeight="extrabold"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
+<React.Fragment>
+  <div
+    className="container-price"
   >
-    12.00
-  </ForwardRef>
-  <ForwardRef
-    className="merchant-tag"
-    color="red.500"
-    component="span"
-    fontFamily="secondary"
-    fontSize={
-      Array [
-        "fs10",
-        "fs12",
-        "fs14",
-      ]
-    }
-    fontWeight="semibold"
-    letterSpacing="normal"
-    lineHeight="normal"
-    link={null}
-    textAlign="left"
-  >
-    Badge2
-  </ForwardRef>
-</div>
+    <ForwardRef
+      className={null}
+      color="red.500"
+      component="p"
+      dataLocator="global-Price-text"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs15",
+          "fs18",
+          "fs20",
+        ]
+      }
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      12.00
+    </ForwardRef>
+    <ForwardRef
+      className="merchant-tag"
+      color="red.500"
+      component="span"
+      fontFamily="secondary"
+      fontSize={
+        Array [
+          "fs10",
+          "fs12",
+          "fs14",
+        ]
+      }
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={null}
+      textAlign="left"
+    >
+      Badge2
+    </ForwardRef>
+  </div>
+</React.Fragment>
 `;
 
 exports[`ProductItemComponents component ProductTitle called correctly 1`] = `

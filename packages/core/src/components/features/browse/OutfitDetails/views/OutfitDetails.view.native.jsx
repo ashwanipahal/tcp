@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
-import { ScrollViewContainer } from '../styles/OutfitDetails.native.style';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { ScrollViewContainer, RecommendationWrapper } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
@@ -84,7 +86,16 @@ const OutfitDetailsView = props => {
     isPickupModalOpen,
     navigation,
     isLoggedIn,
+    outfitId,
+    pdpLabels,
   } = props;
+  const recommendationAttributes = {
+    variation: 'moduleO',
+    navigation,
+    page: Constants.RECOMMENDATIONS_PAGES_MAPPING.OUTFIT,
+    partNumber: outfitId,
+    isHeaderAccordion: true,
+  };
   return (
     <ScrollViewContainer>
       <CustomImage url={outfitImageUrl} width="100%" />
@@ -108,6 +119,17 @@ const OutfitDetailsView = props => {
           })
         }
       />
+
+      <RecommendationWrapper>
+        <Recommendations {...recommendationAttributes} />
+        <Recommendations
+          isRecentlyViewed
+          {...recommendationAttributes}
+          headerLabel={pdpLabels.recentlyViewed}
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+        />
+      </RecommendationWrapper>
+
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
       <AddedToBagContainer navigation={navigation} />
     </ScrollViewContainer>
@@ -127,6 +149,8 @@ OutfitDetailsView.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   navigation: PropTypes.shape({}),
   isLoggedIn: PropTypes.bool,
+  outfitId: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -138,6 +162,8 @@ OutfitDetailsView.defaultProps = {
   isPickupModalOpen: false,
   navigation: {},
   isLoggedIn: false,
+  outfitId: '',
+  pdpLabels: {},
 };
 
 export default OutfitDetailsView;

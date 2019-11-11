@@ -485,6 +485,19 @@ export default css`
     ${props => mediumTextRegular(props, 'tab')};
   }
 
+  .large_text_bold {
+    color: ${props => props.theme.colorPalette.gray['900']};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    letter-spacing: -0.5px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
+  }
+
   .percentage_all_wrapped_normal_tab {
     ${props => percentageAllWrappedNormal(props, '_tab')};
 

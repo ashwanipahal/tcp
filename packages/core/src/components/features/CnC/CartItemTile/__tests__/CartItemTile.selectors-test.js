@@ -187,7 +187,7 @@ describe('#CartItemTile selector', () => {
             lbl_cartTile_productBrandAlt: 'Brand',
             lbl_cartTile_productImageAlt: 'Product',
             lbl_cartTile_update: 'update',
-            lbl_cartTile_remove: 'removeEdit',
+            lbl_cartTile_remove: 'minibag',
             lbl_cartTile_bopis: 'bopis',
             lbl_cartTile_boss: 'boss',
             lbl_cartTile_noRushPickup: 'boss',

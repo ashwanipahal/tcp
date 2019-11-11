@@ -53,7 +53,10 @@ const StyledModal = css`
     }
   }
   .modal__bar {
-    position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
+    position: absolute;
+    @media ${props => props.theme.mediaQuery.medium} {
+      position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
+    }
     height: 8px;
     margin-top: -8px;
     width: 100%;

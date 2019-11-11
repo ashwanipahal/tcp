@@ -5,7 +5,7 @@ import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
-import setPickupInitialValues from './ShippingPage.view.utils';
+import setPickupInitialValues, { setShippingAddress } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -106,22 +106,28 @@ export default class ShippingPage extends React.PureComponent {
       selectedShipmentId,
       updateShippingMethodSelection,
       shippingAddressId,
+      onFileAddressKey,
     } = this.props;
-    const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
+    const {
+      address: prevAddress,
+      selectedShipmentId: prevSelectedShipmentId,
+      onFileAddressKey: prevFileAddressKey,
+      address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
+    } = prevProps;
     if (address && prevAddress) {
       const {
         address: { addressLine1, addressLine2 },
         loadShipmentMethods,
       } = this.props;
-      const {
-        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
-      } = prevProps;
       if (
         (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
         hasPOBox(addressLine1, addressLine2)
       ) {
         loadShipmentMethods({ formName: 'checkoutShipping' });
       }
+    }
+    if (onFileAddressKey !== prevFileAddressKey) {
+      this.getShipmentMethods(prevProps);
     }
     if (
       shippingAddressId &&
@@ -159,6 +165,19 @@ export default class ShippingPage extends React.PureComponent {
       clearCheckoutServerError({});
     }
   }
+
+  /**
+   * @description - get shipment methods with the updated address state
+   */
+  getShipmentMethods = () => {
+    const { loadShipmentMethods, onFileAddressKey, userAddresses } = this.props;
+    if (userAddresses && userAddresses.size > 0) {
+      const address = userAddresses.find(add => add.addressId === onFileAddressKey);
+      if (address && address.state) {
+        loadShipmentMethods({ state: address.state, formName: 'checkoutShipping' });
+      }
+    }
+  };
 
   setDefaultAddressId = id => {
     this.setState({ defaultAddressId: id });
@@ -300,22 +319,11 @@ export default class ShippingPage extends React.PureComponent {
       pickUpContactPerson,
       orderHasPickUp,
     } = this.props;
-    const emptyShippingAddress = !shippingAddress.addressLine1;
-    if (!emptyShippingAddress && (isGuest || !userAddresses || userAddresses.size === 0)) {
-      return {
-        addressLine1: shippingAddress.addressLine1,
-        addressLine2: shippingAddress.addressLine2,
-        firstName: shippingAddress.firstName,
-        lastName: shippingAddress.lastName,
-        city: shippingAddress.city,
-        state: shippingAddress.state,
-        zipCode: shippingAddress.zipCode,
-        phoneNumber: shippingPhoneAndEmail.phoneNumber,
-        country: getSiteId() && getSiteId().toUpperCase(),
-        emailAddress: shippingPhoneAndEmail.emailAddress,
-      };
+    const shippingAddressLine1 = shippingAddress && shippingAddress.addressLine1;
+    if (!!shippingAddressLine1 && (isGuest || !userAddresses || userAddresses.size === 0)) {
+      return setShippingAddress(shippingAddress, shippingPhoneAndEmail);
     }
-    if (emptyShippingAddress && isGuest && orderHasPickUp) {
+    if (!shippingAddressLine1 && isGuest && orderHasPickUp) {
       return setPickupInitialValues(pickUpContactPerson);
     }
     return {

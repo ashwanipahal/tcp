@@ -6,9 +6,7 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
-import mockG from '@tcp/core/src/services/abstractors/common/moduleG/mock';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import { isTCP } from '@tcp/core/src/utils/utils';
@@ -122,7 +120,6 @@ const HomePageView = dynamic({
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
         />
-        <ModuleG {...mockG.moduleG.composites} />
         <AddedToBagContainer />
       </HomePageWithRouter>
     );
