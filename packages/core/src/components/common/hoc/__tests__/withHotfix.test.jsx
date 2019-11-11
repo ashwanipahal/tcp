@@ -1,15 +1,31 @@
 import React, { forwardRef } from 'react';
 import { shallow } from 'enzyme';
-import withHotfix from '../withHotfix';
+import { renderHook } from '@testing-library/react-hooks';
+import withHotfix, { usePropsHotfix, useBrowserHotfix } from '../withHotfix';
 
 describe(__filename, () => {
-  it('renders even with no hotfixes defined', () => {
-    const BaseComponent = forwardRef((props, ref) => <div ref={ref}>Hello</div>);
+  let BaseComponent;
+  beforeEach(() => {
+    BaseComponent = forwardRef((props, ref) => <div ref={ref}>Hello</div>);
     BaseComponent.displayName = 'BaseComponent';
-    const Component = withHotfix(BaseComponent);
-    const tree = shallow(<Component />);
+  });
+  it('renders even with no hotfixes defined', () => {
+    const HotfixedComponent = withHotfix(BaseComponent);
+    const tree = shallow(<HotfixedComponent />);
     expect(tree).toMatchSnapshot();
   });
-  describe.skip('useBrowserHotfix', () => {});
-  describe.skip('usePropsHotfix', () => {});
+  describe('useBrowserHotfix', () => {
+    it('executes even with no hotfixes defined', () => {
+      const HotfixedComponent = withHotfix(BaseComponent);
+      const { result } = renderHook(() => useBrowserHotfix(HotfixedComponent, {}));
+      expect(result.current).toBeDefined();
+    });
+  });
+  describe('usePropsHotfix', () => {
+    it('executes even with no hotfixes defined', () => {
+      const HotfixedComponent = withHotfix(BaseComponent);
+      const { result } = renderHook(() => usePropsHotfix(HotfixedComponent, {}));
+      expect(result.current).toBeDefined();
+    });
+  });
 });
