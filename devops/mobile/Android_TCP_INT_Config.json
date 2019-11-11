@@ -142,6 +142,14 @@
       "value": "https://test1.theplace.com/image/upload"
     },
     {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP",
+      "value": "ecom/v1/assets/products/tcp"
+    },
+    {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM",
+      "value": "ecom/v1/assets/products/gym"
+    },
+    {
       "name": "RWD_APP_API_DOMAIN_GYM",
       "value": "https://test5.gymboree.com"
     },
