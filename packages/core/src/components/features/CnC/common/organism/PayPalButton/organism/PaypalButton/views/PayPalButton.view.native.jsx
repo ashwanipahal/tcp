@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
 import { View, WebView, Platform } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
+import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
 
 class PayPalButton extends React.PureComponent {
   state = { showAsModal: false };
@@ -44,7 +45,7 @@ class PayPalButton extends React.PureComponent {
   };
 
   render() {
-    const { getPayPalSettings, paypalEnv, paypalStaticUrl, top } = this.props;
+    const { getPayPalSettings, paypalEnv, paypalStaticUrl, top, isBillingPage } = this.props;
 
     let styles = {
       height: 42,
@@ -66,13 +67,15 @@ class PayPalButton extends React.PureComponent {
         overflow: 'hidden',
       };
     }
+    const paypalColor = isBillingPage
+      ? CONSTANTS.PAYPAL_CTA_COLOR.BLUE
+      : CONSTANTS.PAYPAL_CTA_COLOR.DEFAULT;
     let webURL = '';
     if (getPayPalSettings && getPayPalSettings.paypalInContextToken) {
       webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
         getPayPalSettings.paypalInContextToken
-      }&paypalEnv=${paypalEnv}`;
+      }&paypalEnv=${paypalEnv}&paypalColor=${paypalColor}`;
     }
-
     return getPayPalSettings && getPayPalSettings.paypalInContextToken ? (
       <View style={{ ...styles }}>
         <WebView
@@ -107,6 +110,7 @@ PayPalButton.propTypes = {
   closeModal: PropTypes.bool.isRequired,
   paypalStaticUrl: PropTypes.string.isRequired,
   top: PropTypes.number,
+  isBillingPage: PropTypes.bool.isRequired,
 };
 
 PayPalButton.defaultProps = {

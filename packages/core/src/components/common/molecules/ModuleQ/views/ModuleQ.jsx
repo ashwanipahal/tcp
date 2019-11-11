@@ -231,6 +231,7 @@ class ModuleQ extends React.PureComponent {
             ) : null}
             {showCarousel ? (
               <Carousel
+                key={currentCatId.toString()}
                 options={CAROUSEL_OPTIONS}
                 carouselConfig={{
                   autoplay: false,
