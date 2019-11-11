@@ -54,7 +54,7 @@ const OutfitListingContainer = dynamic(() =>
 );
 
 class ProductListingContainer extends React.PureComponent {
-  static getInitialProps = ({ isServer, props, req }) => {
+  static getInitialProps = async ({ isServer, props, req }) => {
     const {
       getProducts,
       navigation,
@@ -67,11 +67,11 @@ class ProductListingContainer extends React.PureComponent {
     const path = asPath.substring(asPath.lastIndexOf('/') + 1);
     if (!isServer) {
       const url = (navigation && navigation.getParam('url')) || asPath;
-      getProducts({ URI: 'category', url, ignoreCache: true });
+      await getProducts({ URI: 'category', url, ignoreCache: true });
     } else if (path.indexOf('-outfits') > -1) {
       // OutfitListingContainer.getInitialProps({ isServer, props });
       const categoryId = (navigation && navigation.getParam('outfitPath')) || path;
-      getStyliticsProductTabListData({ categoryId, count: 20 });
+      await getStyliticsProductTabListData({ categoryId, count: 20 });
     }
   };
 

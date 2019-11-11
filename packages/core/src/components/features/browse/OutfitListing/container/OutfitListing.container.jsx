@@ -7,10 +7,10 @@ import { getStyliticsProductTabListSelector } from '../../../../common/organisms
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 class OutfitListingContainer extends React.PureComponent {
-  static getInitialProps = ({ props }) => {
+  static getInitialProps = async ({ props }) => {
     const { getStyliticsProductTabListData, asPath, navigation } = props;
     const categoryId = (navigation && navigation.getParam('outfitPath')) || asPath;
-    getStyliticsProductTabListData({ categoryId, count: 20 });
+    await getStyliticsProductTabListData({ categoryId, count: 20 });
   };
 
   render() {

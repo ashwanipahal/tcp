@@ -45,7 +45,7 @@ import {
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
 class SearchDetailContainer extends React.PureComponent {
-  static getInitialProps = ({ props, query, req, isServer }) => {
+  static getInitialProps = async ({ props, query, req, isServer }) => {
     const { getProducts, formValues } = props;
     let searchQuery;
     let asPath = '';
@@ -63,7 +63,7 @@ class SearchDetailContainer extends React.PureComponent {
     const splitAsPathBy = `/search/${searchQuery}?`;
     const queryString = asPath.split(splitAsPathBy);
     const filterSortString = (queryString.length && queryString[1]) || '';
-    getProducts({
+    await getProducts({
       URI: 'search',
       asPath: filterSortString,
       searchQuery,

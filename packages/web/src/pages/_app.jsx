@@ -141,17 +141,6 @@ class TCPWebApp extends App {
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
     }
-    try {
-      /**
-       * This is where we assign window._dataLayer for analytics logic
-       */
-      if (process.env.ANALYTICS) {
-        // eslint-disable-next-line
-        global._dataLayer = createDataLayer(this.props.store);
-      }
-    } catch (err) {
-      logger.info('Error occurred in Analytics initialization', err);
-    }
   }
 
   componentDidUpdate() {

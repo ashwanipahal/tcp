@@ -1,4 +1,3 @@
-// import { fromJS } from 'immutable';
 import PRODUCTLISTINGPAGE_CONSTANTS from './ProductListing.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 

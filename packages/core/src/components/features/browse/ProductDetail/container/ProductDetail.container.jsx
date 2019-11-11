@@ -59,7 +59,7 @@ class ProductDetailContainer extends React.PureComponent {
     return productId;
   };
 
-  static getInitialProps = ({ props, query, isServer }) => {
+  static getInitialProps = async ({ props, query, isServer }) => {
     const { getDetails } = props;
     let pid;
     if (isServer) {
@@ -73,7 +73,7 @@ class ProductDetailContainer extends React.PureComponent {
     }
     // TODO - fix this to extract the product ID from the page.
     const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
-    getDetails({ productColorId: productId });
+    await getDetails({ productColorId: productId });
   };
 
   componentDidMount() {
