@@ -189,7 +189,6 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
 }
 
 function* initShippingData(pageName, initialLoad) {
-  console.log({ pageName });
   if (pageName === CONSTANTS.CHECKOUT_STAGES.SHIPPING) {
     let shippingAddress = yield select(getShippingDestinationValues);
     shippingAddress = shippingAddress.address;
@@ -258,22 +257,21 @@ function* initCheckoutSectionData({
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
     if ((!isExpressCheckoutEnabled || isPaypalPostBack) && !appRouting) {
       pendingPromises.push(
-        put(
-          call(getCartDataSaga, {
-            payload: {
-              isRecalculateTaxes: true,
-              excludeCartItems: false,
-              recalcRewards: recalc,
-              updateSmsInfo: false,
-              translation: true,
-              isCheckoutFlow: true,
-            },
-          })
-        )
+        call(getCartDataSaga, {
+          payload: {
+            isRecalculateTaxes: true,
+            excludeCartItems: false,
+            recalcRewards: recalc,
+            updateSmsInfo: false,
+            translation: true,
+            isCheckoutFlow: true,
+          },
+        })
       );
     }
   }
   yield all(pendingPromises);
+  console.log({ handleCheckoutInitRouting });
   const requestedStage = yield call(handleCheckoutInitRouting, pageName, appRouting);
   return yield call(initShippingData, requestedStage, initialLoad);
 }
