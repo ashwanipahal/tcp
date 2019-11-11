@@ -11,27 +11,39 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
     }
   }
 >
-  <WebView
-    allowUniversalAccessFromFileURLs={true}
-    domStorageEnabled={true}
-    javaScriptEnabled={true}
-    mixedContentMode="always"
-    onMessage={[Function]}
-    originWhitelist={
-      Array [
-        "*",
-      ]
-    }
-    scalesPageToFit={false}
-    scrollEnabled={true}
-    source={
+  <KeyboardAvoidingView
+    behavior="padding"
+    enabled={true}
+    keyboardVerticalOffset={0}
+    style={
       Object {
-        "uri": "/abc/static/paypal/index.html?key=abcd&paypalEnv=sandbox",
+        "flex": 1,
       }
     }
-    startInLoadingState={true}
-    thirdPartyCookiesEnabled={true}
-    useWebKit={true}
-  />
+  >
+    <WebView
+      allowUniversalAccessFromFileURLs={true}
+      automaticallyAdjustContentInsets={false}
+      domStorageEnabled={true}
+      javaScriptEnabled={true}
+      mixedContentMode="always"
+      onMessage={[Function]}
+      originWhitelist={
+        Array [
+          "*",
+        ]
+      }
+      scalesPageToFit={false}
+      scrollEnabled={true}
+      source={
+        Object {
+          "uri": "/abc/static/paypal/index.html?key=abcd&paypalEnv=sandbox&paypalColor=white",
+        }
+      }
+      startInLoadingState={true}
+      thirdPartyCookiesEnabled={true}
+      useWebKit={true}
+    />
+  </KeyboardAvoidingView>
 </View>
 `;

@@ -6,13 +6,14 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   activeStep="shipping"
   availableStages={
     Array [
-      "billingLabel",
-      "reviewLabel",
+      "billing",
+      "review",
     ]
   }
   billingProps={
     Object {
       "billingDidMount": [Function],
+      "isRegisteredUserCallDone": true,
     }
   }
   currentPhoneNumber=""
@@ -22,6 +23,7 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   isGuest={true}
   isMobile={false}
   isPayPalWebViewEnable={false}
+  isRegisteredUserCallDone={true}
   isSmsUpdatesEnabled={true}
   isUsSite={false}
   isVenmoPaymentInProgress={false}
@@ -29,6 +31,7 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   pickupDidMount={[Function]}
   reviewProps={
     Object {
+      "isRegisteredUserCallDone": true,
       "reviewDidMount": [Function],
     }
   }
@@ -44,6 +47,7 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   shippingMethod={Object {}}
   shippingProps={
     Object {
+      "isRegisteredUserCallDone": true,
       "shippingDidMount": [Function],
     }
   }
@@ -56,13 +60,14 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   activeStep="shipping"
   availableStages={
     Array [
-      "billingLabel",
-      "reviewLabel",
+      "billing",
+      "review",
     ]
   }
   billingProps={
     Object {
       "billingDidMount": [Function],
+      "isRegisteredUserCallDone": true,
     }
   }
   currentPhoneNumber=""
@@ -72,6 +77,7 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   isGuest={true}
   isMobile={false}
   isPayPalWebViewEnable={false}
+  isRegisteredUserCallDone={true}
   isSmsUpdatesEnabled={true}
   isUsSite={false}
   isVenmoPaymentInProgress={false}
@@ -79,6 +85,7 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   pickupDidMount={[Function]}
   reviewProps={
     Object {
+      "isRegisteredUserCallDone": true,
       "reviewDidMount": [Function],
     }
   }
@@ -94,6 +101,7 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   shippingMethod={Object {}}
   shippingProps={
     Object {
+      "isRegisteredUserCallDone": true,
       "shippingDidMount": [Function],
     }
   }

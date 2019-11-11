@@ -1,3 +1,4 @@
+import LOGOUT_CONSTANTS from '@tcp/core/src/components/features/account/Logout/LogOut.constants';
 import ORDERDETAILS_CONSTANTS from '../OrderDetails.constants';
 
 const initialState = {
@@ -18,6 +19,8 @@ const OrderDetailsDataReducer = (state = initialState, action) => {
         isFetching: false,
       });
       return { ...state, ...{ orderDetailsData: action.payload } };
+    case LOGOUT_CONSTANTS.LOGOUT_APP:
+      return { ...initialState };
     default:
       return state;
   }
