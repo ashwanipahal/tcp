@@ -13,6 +13,7 @@ export {
   validateExternalUrl,
   resetNavigationStack,
   createAPIConfig,
+  updateAPIConfigForApp,
   switchAPIConfig,
   isAndroid,
   isIOS,
@@ -66,6 +67,7 @@ export {
   getStyliticsUserName,
   getStyliticsRegion,
   canUseDOM,
+  calculatePriceValue,
   getProductUrlForDAM,
 } from './utils';
 

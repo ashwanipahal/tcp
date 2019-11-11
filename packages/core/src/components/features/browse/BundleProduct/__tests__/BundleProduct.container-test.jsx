@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductBundleContainerVanilla } from '../container/BundleProduct.container.native';
+import { ProductBundleContainer } from '../container/BundleProduct.container';
 
 describe('BundleProductDetail', () => {
   let component;
@@ -19,10 +19,20 @@ describe('BundleProductDetail', () => {
     currencyAttributes: {
       exchangevalue: 1,
     },
+    addToBagEcom: jest.fn(),
+    currentState: {},
+    addToBagError: '',
+    addToBagErrorId: '',
+    isPickupModalOpen: false,
+    addToFavorites: jest.fn(),
+    isLoggedIn: false,
+    isPlcc: false,
+    AddToFavoriteErrorMsg: '',
+    removeAddToFavoritesErrorMsg: jest.fn(),
   };
 
   beforeEach(() => {
-    component = shallow(<ProductBundleContainerVanilla {...props} />);
+    component = shallow(<ProductBundleContainer {...props} />);
   });
 
   it('should be defined', () => {

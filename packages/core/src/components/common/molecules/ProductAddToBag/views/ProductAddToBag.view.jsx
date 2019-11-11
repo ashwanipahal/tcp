@@ -101,6 +101,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             id="color"
             name="color"
             component={ProductColorChipsSelector}
+            isGiftCard={isGiftCard}
             colorFitsSizesMap={colorList}
             onChange={selectColor}
             dataLocator="addnewaddress-state"
