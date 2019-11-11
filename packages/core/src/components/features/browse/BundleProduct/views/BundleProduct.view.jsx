@@ -15,7 +15,32 @@ import {
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
-class BundleProduct extends React.Component {
+class BundleProduct extends React.PureComponent {
+  state = {
+    imagesToDisplay: [],
+  };
+
+  static getDerivedStateFromProps(props) {
+    const { currentProduct } = props;
+    if (currentProduct) {
+      let imagesToDisplay = [];
+      const { colorFitsSizesMap, generalProductId } = currentProduct;
+
+      if (colorFitsSizesMap) {
+        imagesToDisplay = getImagesToDisplay({
+          imagesByColor: currentProduct.imagesByColor,
+          curentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, generalProductId),
+          isAbTestActive: false,
+          isFullSet: true,
+        });
+      }
+      return {
+        imagesToDisplay,
+      };
+    }
+    return null;
+  }
+
   getBreadCrumb = () => {
     const { breadCrumbs } = this.props;
     return breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />;
@@ -85,8 +110,9 @@ class BundleProduct extends React.Component {
     );
   };
 
-  getMainImageCarousel = imagesToDisplay => {
+  getMainImageCarousel = () => {
     const { currentProduct } = this.props;
+    const { imagesToDisplay } = this.state;
     return (
       <Carousel
         options={config.CAROUSEL_OPTIONS}
@@ -111,17 +137,8 @@ class BundleProduct extends React.Component {
   render() {
     const { className, currentProduct, pdpLabels } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
-      let imagesToDisplay = [];
       const { colorFitsSizesMap, generalProductId } = currentProduct;
       const currentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
-      if (colorFitsSizesMap) {
-        imagesToDisplay = getImagesToDisplay({
-          imagesByColor: currentProduct.imagesByColor,
-          curentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, generalProductId),
-          isAbTestActive: false,
-          isFullSet: true,
-        });
-      }
 
       return (
         <div className={className}>
@@ -136,9 +153,7 @@ class BundleProduct extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col colSize={{ small: 6, medium: 3, large: 6 }}>
-              {this.getMainImageCarousel(imagesToDisplay)}
-            </Col>
+            <Col colSize={{ small: 6, medium: 3, large: 6 }}>{this.getMainImageCarousel()}</Col>
             <Col colSize={{ small: 6, medium: 5, large: 6 }}>
               <Row fullBleed className="product-summary-section">
                 <Col
