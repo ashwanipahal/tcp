@@ -132,7 +132,11 @@ class HomePageView extends React.PureComponent<Props> {
         <HeaderPromoContainer>
           <HeaderPromo headerPromo={headerPromo} />
         </HeaderPromoContainer>
-        <ModuleE navigation={navigation} {...moduleEMock.moduleE.composites} />
+        <ModuleE
+          navigation={navigation}
+          {...moduleEMock.moduleE.composites}
+          {...moduleEMock.moduleE.set}
+        />
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />

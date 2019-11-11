@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Anchor } from '../../../atoms';
@@ -232,6 +233,18 @@ export const bodyCopyStyles = {
       mobilefontFamily="secondary"
       fontWeight="black"
       textAlign="center"
+      {...props}
+    />
+  ),
+  medium_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontSize="fs20"
+      textAlign="center"
+      lineHeight="20px"
+      fontWeight="medium"
+      letterSpacing="ls2"
       {...props}
     />
   ),

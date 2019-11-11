@@ -1,23 +1,20 @@
 import styled from 'styled-components/native';
+import { Anchor, DamImage, Button, BodyCopy } from '../../../atoms';
 
 export const Container = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const HeaderWrapper = styled.View`
-  position: absolute;
-  z-index: ${props => props.theme.zindex.zOverlay};
   align-items: center;
   width: 100%;
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export const PromoTextBannerWrapper = styled.View``;
 
-export const PromoBannerWrapper = styled.View`
-  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
-`;
+export const PromoBannerWrapper = styled.View``;
 
 export const ButtonContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -60,7 +57,7 @@ export const MessageContainer = styled.View`
 export const HeaderView = styled.View`
   justify-content: center;
   align-items: center;
-  width: 65%;
+  width: 100%;
 `;
 
 /**
@@ -71,6 +68,52 @@ export const HeaderView = styled.View`
 
 export const RibbonBannerHeight = '200px';
 export const RibbonBannerWidth = '54px';
+
+export const EyeBrowContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+`;
+
+export const StyledImage = styled(DamImage)``;
+
+export const StyledAnchor = styled(Anchor)`
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+export const TopPromoWrapper = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: ${props => props.width};
+`;
+
+export const StyledButton = styled(Button)``;
+
+export const ButtonWrapper = styled.View`
+  margin-top: ${props => props.marginTop || '8px'};
+`;
+
+export const StyledBodyCopy = styled(BodyCopy)`
+  margin-top: ${props => props.marginTop || '1px'};
+  margin-bottom: ${props => props.marginBottom || '1px'};
+  width: ${props => props.width || '1px'};
+`;
+
+export const ImageContainer = styled.View`
+  flex-direction: row;
+  width: 100%;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ImageWrapper = styled.View`
+  ${props => (props.tileIndex % 2 === 0 ? null : `margin-left: 19px`)};
+`;
 
 export default {
   Container,
@@ -87,4 +130,13 @@ export default {
   PromoBannerWrapper,
   HeaderView,
   PromoRibbonWrapper,
+  EyeBrowContainer,
+  StyledImage,
+  StyledAnchor,
+  TopPromoWrapper,
+  StyledButton,
+  ImageContainer,
+  ImageWrapper,
+  StyledBodyCopy,
+  ButtonWrapper,
 };

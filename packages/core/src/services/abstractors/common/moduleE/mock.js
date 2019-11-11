@@ -4,6 +4,7 @@ const carouselCtaType = ['button', 'link'];
 const divCtaTitle1 = 'Big & Little Sis';
 const divCtaTitle2 = 'Big & Little Bro';
 const shopTheCollectionTitle = 'Shop The Collection';
+const URL = 'https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-large-1.jpg';
 
 // https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-large-1.jpg
 // https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-2.jpg
@@ -15,13 +16,13 @@ const shopTheCollectionTitle = 'Shop The Collection';
 Without EyeBrow Image Variation (Default)
 large_text_black --- "MATCHING FAMILY" Header Text -- ALREADY EXIST;
 spaced_text_only_mobile -- "ALL SPRING DRESSES UP" Promo Text -- NEW ONE;
-percentage_inline_promo_black -- "40% OFF" Promo Text -- NEW ONE
+percentage_inline_promo_black -- "40 % OFF" Promo Text -- NEW ONE
 spaced_text_regular_black --  "BIG & LITTLE BRO" Small Image Text -- NEW ONE
 
 With EyeBrow Image Variation (Alt)
 small_text_normal -- "Cue The Photos" Promo Text -- ALREADY EXIST;
 medium_text_black -- "THE DRESS UP SHOP" HEADER Text -- ALREADY EXIST;
-spaced_text_regular_black -- "BALL MATCHING FAMILY" Promo Text -- NEW ONE
+spaced_text_regular_black -- "ALL MATCHING FAMILY" Promo Text -- NEW ONE
 percentage_all_wrapped_normal_tab -- "60% OFF"(Wrapped) Promo Text -- ALREADY EXIST;
 spaced_text_regular_black --  "BIG & LITTLE BRO" Small Image Text -- NEW ONE
 */
@@ -95,9 +96,9 @@ export default {
           textItems: [
             {
               text: 'THE DRESS UP SHOP',
-              // v2Text: 'MATCHING FAMILY',
+              // text: 'MATCHING FAMILY',
               style: 'large_text_black',
-              // v2Style: 'medium_text_black',
+              // Style: 'medium_text_black',
             },
           ],
           link: {
@@ -113,6 +114,7 @@ export default {
           },
         },
       ],
+
       promoBanner: [
         {
           link: {
@@ -128,6 +130,10 @@ export default {
               // v2Text: 'THE DRESS UP SHOP',
               style: 'medium_text_black',
               // v2Style: 'spaced_text_only_mobile',
+            },
+            {
+              text: '60 % OFF',
+              style: 'percentage_all_wrapped_normal_tab',
             },
           ],
         },
@@ -173,8 +179,7 @@ export default {
         },
         {
           image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-large-1.jpg',
+            url: URL,
             alt: 'Family Tees',
             title: 'Family Tees',
             crop_d: '',
@@ -240,7 +245,7 @@ export default {
       divCTALinks: [
         {
           image: {
-            url: dummyUrl,
+            url: URL,
             alt: divCtaTitle1,
             title: divCtaTitle1,
             crop_d: 'crop_value1',
@@ -261,7 +266,7 @@ export default {
         },
         {
           image: {
-            url: dummyUrl,
+            url: URL,
             alt: divCtaTitle2,
             title: divCtaTitle2,
             crop_d: '',
