@@ -78,10 +78,6 @@ class HeaderMiddleNav extends React.PureComponent {
     });
   };
 
-  handleUserTypeColor = isUserPlcc => {
-    return isUserPlcc ? 'blue.500' : 'orange.800';
-  };
-
   renderAccountInfoSection = (
     userName,
     openOverlay,
@@ -219,7 +215,7 @@ class HeaderMiddleNav extends React.PureComponent {
               />
               <StoreLocatorLink store={store} labels={storeLabel} />
               <BrandLogo
-                alt={config[brand].alt}
+                alt={config[brand] && config[brand].alt}
                 className="header-brand__home-logo--brand"
                 dataLocator={config[brand].dataLocator}
                 imgSrc={config[brand].imgSrc}

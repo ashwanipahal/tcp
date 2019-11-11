@@ -42,8 +42,12 @@ export default css`
         margin-top: 13px;
       }
 
-      .price-item {
+      .actual-price {
         font-size: ${props => props.theme.typography.fontSizes.fs22};
+      }
+
+      .original-price {
+        font-size: ${props => props.theme.typography.fontSizes.fs13};
       }
     }
   }

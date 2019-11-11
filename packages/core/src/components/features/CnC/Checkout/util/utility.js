@@ -190,7 +190,20 @@ export const getExpirationRequiredFlag = ({ cardType }) => {
   return !cardType || cardType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
 };
 
-export const handleReviewFormSubmit = (scope, data) => {
+export const getPayPalFlag = navigation => {
+  if (navigation && navigation.state) {
+    const {
+      state: { params },
+    } = navigation;
+    if (params) {
+      const { isPayPalFlow } = params;
+      return isPayPalFlow;
+    }
+  }
+  return false;
+};
+
+const handleReviewFormSubmit = (scope, data) => {
   const {
     submitReview,
     pickUpContactPerson,
@@ -239,4 +252,5 @@ export default {
   routeToPage,
   getCreditCardType,
   isOrderHasShipping,
+  handleReviewFormSubmit,
 };

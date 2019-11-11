@@ -35,7 +35,7 @@ import selectors, {
   getPickupValues,
 } from './Checkout.selector';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
-import checkoutUtil from '../util/utility';
+import checkoutUtil, { getPayPalFlag } from '../util/utility';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -94,11 +94,12 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cvvCodeInfoContentId,
       checkoutServerError,
       clearCheckoutServerError,
+      navigation,
       couponHelpContentId,
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
-      initCheckout(router);
+      initCheckout(router, getPayPalFlag(navigation));
     }
     fetchNeedHelpContent([
       needHelpContentId,
@@ -114,10 +115,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 
   componentDidUpdate(prevProps) {
     const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-    const { isRegisteredUserCallDone, router, initCheckout } = this.props;
+    const { isRegisteredUserCallDone, router, initCheckout, navigation } = this.props;
     /* istanbul ignore else */
     if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
-      initCheckout(router);
+      initCheckout(router, getPayPalFlag(navigation));
     }
   }
 
@@ -188,14 +189,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isHasPickUpAlternatePerson,
       pickUpContactPerson,
       pickUpContactAlternate,
-      toastMessage,
-      clearCheckoutServerError,
-      cartOrderItemsCount,
-      toggleCountrySelector,
-      checkoutPageEmptyBagLabels,
       dispatchReviewReduxForm,
-      isBagLoaded,
     } = this.props;
+    const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
+    const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(
       cartOrderItems,
       checkoutProgressBarLabels
@@ -284,8 +281,8 @@ CheckoutContainer.getInitialProps = (reduxProps, pageProps) => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: router => {
-      dispatch(initCheckoutAction(router));
+    initCheckout: (router, isPaypalFlow) => {
+      dispatch(initCheckoutAction(router, isPaypalFlow));
     },
     initCheckoutSectionPage: payload => {
       dispatch(initCheckoutSectionPageAction(payload));

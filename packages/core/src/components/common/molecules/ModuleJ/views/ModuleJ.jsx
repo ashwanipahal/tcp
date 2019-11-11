@@ -20,7 +20,7 @@ class ModuleJ extends React.PureComponent {
   }
 
   onTabChange = (catId, tabItem) => {
-    this.setState({ currentCatId: catId, currentTabItem: tabItem });
+    this.setState({ currentCatId: catId, currentTabItem: [tabItem] });
   };
 
   getCurrentCtaButton = () => {
@@ -100,6 +100,7 @@ class ModuleJ extends React.PureComponent {
     if (productTabList && productTabList.completed) {
       dataStatus = productTabList.completed[currentCatId];
     }
+
     return (
       <Grid className={`${className} moduleJ layout-${layout}`}>
         {layout !== 'alt' ? (
@@ -261,7 +262,6 @@ class ModuleJ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-
         {this.getCurrentCtaButton()}
       </Grid>
     );

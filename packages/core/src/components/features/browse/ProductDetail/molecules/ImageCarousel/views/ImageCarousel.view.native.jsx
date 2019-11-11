@@ -85,8 +85,8 @@ class ImageCarousel extends React.PureComponent {
   };
 
   onFavorite = colorProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
-    onAddItemToFavorites({ colorProductId, page: 'PDP' });
+    const { isLoggedIn, addToFavorites } = this.props;
+    addToFavorites({ colorProductId, page: 'PDP' });
     if (!isLoggedIn) {
       this.setState({ showModal: true });
     }
@@ -158,8 +158,8 @@ class ImageCarousel extends React.PureComponent {
     );
   };
 
-  renderFavoriteIcon = currentColorEntry => {
-    const { isBundleProduct } = this.props;
+  renderFavoriteIcon = () => {
+    const { currentColorEntry, isBundleProduct } = this.props;
     const { favoritedCount, colorProductId, isFavorite } = currentColorEntry;
     if (!isBundleProduct) {
       return (
@@ -201,13 +201,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const {
-      imageUrls,
-      isLoggedIn,
-      isGiftCard,
-      AddToFavoriteErrorMsg,
-      currentColorEntry,
-    } = this.props;
+    const { imageUrls, isLoggedIn, isGiftCard, AddToFavoriteErrorMsg } = this.props;
 
     const { activeSlideIndex, showModal } = this.state;
 
@@ -237,7 +231,7 @@ class ImageCarousel extends React.PureComponent {
           />
           {!isGiftCard ? (
             <FavoriteAndPaginationContainer>
-              {this.renderFavoriteIcon(currentColorEntry)}
+              {this.renderFavoriteIcon()}
               {imageUrls.length > 1 && (
                 <PaginationDots
                   numberOfDots={imageUrls.length}
@@ -298,7 +292,7 @@ ImageCarousel.propTypes = {
   isGiftCard: PropTypes.bool,
   isLoggedIn: PropTypes.bool,
   currentProduct: PropTypes.shape({}),
-  onAddItemToFavorites: PropTypes.func,
+  addToFavorites: PropTypes.func,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
   currentColorEntry: PropTypes.string,
@@ -311,7 +305,7 @@ ImageCarousel.defaultProps = {
   isGiftCard: false,
   isLoggedIn: false,
   currentProduct: {},
-  onAddItemToFavorites: () => {},
+  addToFavorites: () => {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   currentColorEntry: '',

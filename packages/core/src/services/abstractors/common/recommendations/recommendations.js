@@ -110,7 +110,8 @@ const RecommendationsAbstractor = {
     });
   },
   getAppData: ({ pageType, categoryName, partNumber, mbox = 'target-global-mbox' }) => {
-    const ADOBE_RECOMMENDATIONS_URL = 'https://tcp.tt.omtrdc.net/rest/v1/mbox?client=tcp';
+    const ADOBE_CLIENT = isGymboree() ? 'gym' : 'tcp';
+    const ADOBE_RECOMMENDATIONS_URL = `https://tcp.tt.omtrdc.net/rest/v1/mbox?client=${ADOBE_CLIENT}`;
     const ADOBE_RECOMMENDATIONS_IMPRESSION_ID = 1;
     const ADOBE_RECOMMENDATIONS_HOST = 'thechildrensplace';
     const region = getSiteId(); // TODO use `CA` for Canada
