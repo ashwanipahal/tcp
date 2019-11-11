@@ -58,6 +58,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",
@@ -174,6 +175,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
               "$$typeof": Symbol(react.forward_ref),
               "_foldedDefaultProps": Object {
                 "ariaLabel": "input",
+                "autoCapitalize": "sentences",
                 "dataLocator": "input-field",
                 "enableSuccessCheck": false,
                 "id": "input",

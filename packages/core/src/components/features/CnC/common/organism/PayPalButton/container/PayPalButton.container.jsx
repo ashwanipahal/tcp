@@ -76,6 +76,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       clearPaypalSettings,
       setVenmoState,
       closeModal,
+      top,
     } = this.props;
     return (
       <PayPalButton
@@ -92,6 +93,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
         paypalStaticUrl={this.paypalStaticUrl}
         setVenmoState={setVenmoState}
         closeModal={closeModal}
+        top={top}
       />
     );
   }

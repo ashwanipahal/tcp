@@ -5,7 +5,11 @@ export default css`
   margin-bottom: 40px;
 
   .heading-wrapper {
-    padding-top: 24px;
+    padding-top: 32px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: 24px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
@@ -17,18 +21,11 @@ export default css`
     padding-bottom: 24px;
   }
 
-  .stacked-button-list-wrapper {
-    margin-top: 16px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 24px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      padding-bottom: ${props => (props.theme.isGymboree ? '32px' : '24px')};
-    }
-  }
-
   .text_normal {
-    margin-top: -14px;
+    margin-top: 0px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -14px;
+    }
   }
 
   .stacked-cta-wrapper-class {

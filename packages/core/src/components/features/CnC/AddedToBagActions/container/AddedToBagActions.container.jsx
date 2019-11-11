@@ -40,6 +40,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       venmoError,
       orderId,
       isPayPalHidden,
+      payPalTop,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -66,6 +67,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         venmoError={venmoError}
         orderId={orderId}
         isPayPalHidden={isPayPalHidden}
+        payPalTop={payPalTop}
       />
     );
   }

@@ -147,7 +147,6 @@ exports[`ProfileInfoTile component should render correctly 1`] = `
           "zipCode": "12345",
         }
       }
-      customStyle={Object {}}
       fontSize="fs14"
       regularName={false}
       showCountry={false}
