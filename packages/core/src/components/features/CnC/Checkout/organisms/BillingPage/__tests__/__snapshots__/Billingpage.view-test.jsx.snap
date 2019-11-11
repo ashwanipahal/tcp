@@ -1,27 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckoutProgressIndicator component should renders correctly if routing not done 1`] = `
-<div
-  className=""
->
-  <Styled(CheckoutSectionTitleDisplay)
-    dataLocator="billing-title"
-  />
-  <Connect(GiftCardsContainer) />
-  <Connect(GuestBillingContainer)
-    addressLabels={null}
-    billingData={Object {}}
-    creditFieldLabels={Object {}}
-    cvvCodeRichText={null}
-    isGuest={true}
-    isVenmoEnabled={false}
-    isVenmoPaymentInProgress={false}
-    labels={Object {}}
-    pageCategory=""
-    shippingAddress={null}
-  />
-</div>
-`;
+exports[`CheckoutProgressIndicator component should renders correctly if routing not done 1`] = `<div />`;
 
 exports[`CheckoutProgressIndicator component should renders correctly props not present 1`] = `
 <div

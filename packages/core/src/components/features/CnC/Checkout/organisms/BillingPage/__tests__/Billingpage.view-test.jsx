@@ -25,12 +25,14 @@ describe('CheckoutProgressIndicator component', () => {
 
   it('should renders correctly if routing not done', () => {
     const props = {
+      checkoutRoutingDone: false,
       labels: {},
-      isGuest: true,
       billingDidMount: () => {},
-      checkoutRoutingDone: true,
+      isRegisteredUserCallDone: false,
     };
     const component = shallow(<BillingPageVanilla {...props} />);
+    const instance = component.instance();
+    instance.componentDidUpdate({ isRegisteredUserCallDone: true });
     expect(component).toMatchSnapshot();
   });
 });

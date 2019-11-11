@@ -216,7 +216,8 @@ function* handleCheckoutInitRouting(pageName, appRouting) {
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
     const { PICKUP, SHIPPING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
     let requestedStage;
-    if (isExpressCheckoutEnabled) {
+    const itemsCount = yield select(BagPageSelectors.getTotalItems);
+    if (isExpressCheckoutEnabled && itemsCount > 0) {
       requestedStage = REVIEW;
     } else {
       const orderHasPickup = yield select(getIsOrderHasPickup);
