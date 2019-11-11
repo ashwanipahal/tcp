@@ -6,6 +6,18 @@ export default styled.div`
     line-height: 1;
   }
 
+  .select__label {
+    padding-top: 8px;
+  }
+
+  .Checkbox__error {
+    padding-left: 12px;
+  }
+
+  .TCPModal__InnerContent {
+    padding: 24px 14px;
+  }
+
   .columnWrapper {
     margin-top:  ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
