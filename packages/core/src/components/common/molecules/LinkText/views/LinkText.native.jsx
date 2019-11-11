@@ -15,6 +15,8 @@ type Props = {
   useStyle: boolean,
 };
 
+const Style = { lineHeight: 47 };
+
 export const bodyCopyStyles = {
   // small text with regular font
   style1: props => (
@@ -47,10 +49,11 @@ export const bodyCopyStyles = {
     <BodyCopy
       color="gray.900"
       fontFamily="primary"
-      fontSize="fs20"
+      fontSize="fs48"
       fontWeight="regular"
       textAlign="center"
       letterSpacing="ls2"
+      style={Style}
       {...props}
     />
   ),

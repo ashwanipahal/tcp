@@ -22,7 +22,7 @@ spaced_text_regular_black --  "BIG & LITTLE BRO" Small Image Text -- NEW ONE
 With EyeBrow Image Variation (Alt)
 small_text_normal -- "Cue The Photos" Promo Text -- ALREADY EXIST;
 medium_text_black -- "THE DRESS UP SHOP" HEADER Text -- ALREADY EXIST;
-spaced_text_regular_black -- "ALL MATCHING FAMILY" Promo Text -- NEW ONE
+spaced_text_regular_black -- "BALL MATCHING FAMILY" Promo Text -- NEW ONE
 percentage_all_wrapped_normal_tab -- "60% OFF"(Wrapped) Promo Text -- ALREADY EXIST;
 spaced_text_regular_black --  "BIG & LITTLE BRO" Small Image Text -- NEW ONE
 */
@@ -126,37 +126,13 @@ export default {
           textItems: [
             {
               text: 'ALL MATCHING FAMILY',
-              // text: 'ALL SPRING DRESSES UP',
               style: 'spaced_text_regular_black',
-              // style: 'spaced_text_only_mobile',
             },
             {
               text: '60 % OFF',
-              // text: '40% OFF',
               style: 'percentage_all_wrapped_normal_tab',
-              // style: 'percentage_inline_promo_black',
             },
           ],
-        },
-      ],
-      linkedImage: [
-        {
-          image: {
-            url:
-              'https://test5.childrensplace.com/image/upload/v1573246605/module-E-promo-area.jpg',
-            alt: 'Promo Area',
-            title: 'Promo Area',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-          },
-          link: {
-            url: dummyUrl,
-            text: '',
-            title: '',
-            target: '',
-            external: 0,
-          },
         },
       ],
       largeCompImageSimpleCarousel: [

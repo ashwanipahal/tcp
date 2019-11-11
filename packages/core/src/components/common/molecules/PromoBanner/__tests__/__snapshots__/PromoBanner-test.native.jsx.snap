@@ -1543,6 +1543,151 @@ exports[`PromoTextBanner native component renders all style correctly 30`] = `
 />
 `;
 
+exports[`PromoTextBanner native component renders all style correctly 31`] = `
+<StyledNativeComponent
+  accessibilityText=""
+  color="gray.900"
+  dataLocator=""
+  fontFamily="primary"
+  fontSize="fs20"
+  fontWeight="medium"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "accessibilityText": "",
+        "dataLocator": "",
+        "margin": null,
+        "numberOfLines": null,
+        "textDecoration": null,
+      },
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  letterSpacing="ls2"
+  margin={null}
+  numberOfLines={null}
+  textAlign="center"
+  textDecoration={null}
+/>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 32`] = `
+<StyledNativeComponent
+  accessibilityText=""
+  color="gray.900"
+  dataLocator=""
+  fontFamily="primary"
+  fontSize="fs48"
+  fontWeight="black"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "accessibilityText": "",
+        "dataLocator": "",
+        "margin": null,
+        "numberOfLines": null,
+        "textDecoration": null,
+      },
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  margin={null}
+  numberOfLines={null}
+  textAlign="center"
+  textDecoration={null}
+/>
+`;
+
+exports[`PromoTextBanner native component renders all style correctly 33`] = `
+<StyledNativeComponent
+  accessibilityText=""
+  color="gray.900"
+  dataLocator=""
+  fontFamily="primary"
+  fontSize="fs20"
+  fontWeight="medium"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "accessibilityText": "",
+        "dataLocator": "",
+        "margin": null,
+        "numberOfLines": null,
+        "textDecoration": null,
+      },
+      "attrs": Array [],
+      "displayName": "Styled(Styled(BodyCopy))",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+          "
+  ",
+          [Function],
+          "
+  text-align: center;
+",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  margin={null}
+  numberOfLines={null}
+  textAlign="center"
+  textDecoration={null}
+/>
+`;
+
 exports[`PromoTextBanner native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(Anchor)

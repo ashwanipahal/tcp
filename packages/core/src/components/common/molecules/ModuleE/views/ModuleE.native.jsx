@@ -24,6 +24,10 @@ import {
   ImageWrapper,
   StyledBodyCopy,
   ButtonWrapper,
+  PromoAreaWrapper,
+  BorderTopAndBottom,
+  AnchorWrapper,
+  Wrapper,
 } from '../styles/ModuleE.style.native';
 import config from '../config';
 
@@ -47,7 +51,8 @@ const buttonWidth = 164;
 // TODO: keys will be changed once we get the actual data from CMS
 const { ctaTypes } = config;
 
-const ctaType = 'stackedCTAButtons';
+const BUTTON_VARIATION_FULLWIDTH = 'fullwidth';
+const BUTTON_VARIATION_HALFWIDTH = 'halfwidth';
 
 /**
  * @param {object} props : Props for Module E multi type of banner list, button list, header text.
@@ -66,13 +71,37 @@ class ModuleE extends React.PureComponent {
     };
   }
 
-  renderButton = navigation => {
+  renderAnchor = navigation => {
     const { shopNowText, shopNowUrl } = this.state;
     return (
-      <ButtonWrapper marginTop="8px">
-        <Border />
+      <AnchorWrapper>
+        <StyledAnchor
+          text={shopNowText}
+          url={shopNowUrl}
+          navigation={navigation}
+          underline
+          centered
+          fontSizeVariation="large"
+        />
+      </AnchorWrapper>
+    );
+  };
+
+  renderButton = (navigation, buttonVariation) => {
+    const { shopNowText, shopNowUrl } = this.state;
+    if (buttonVariation === BUTTON_VARIATION_FULLWIDTH) {
+      return (
+        <ButtonWrapper>
+          <Border />
+          <StyledButton text={shopNowText} url={shopNowUrl} navigation={navigation} />
+        </ButtonWrapper>
+      );
+    }
+
+    return (
+      <Wrapper>
         <StyledButton text={shopNowText} url={shopNowUrl} navigation={navigation} />
-      </ButtonWrapper>
+      </Wrapper>
     );
   };
 
@@ -87,7 +116,7 @@ class ModuleE extends React.PureComponent {
     });
 
     return (
-      <ContainerView>
+      <View>
         <DamImage
           width={MODULE_WIDTH}
           height={MODULE_DEFAULT_HEIGHT}
@@ -95,11 +124,11 @@ class ModuleE extends React.PureComponent {
           host={LAZYLOAD_HOST_NAME.HOME}
           crop={image.crop_m}
         />
-      </ContainerView>
+      </View>
     );
   };
 
-  renderCarousel = largeCompImageSimpleCarousel => {
+  renderCarousel = (largeCompImageSimpleCarousel, navigation, carouselCtaType) => {
     return (
       <ContainerView>
         {largeCompImageSimpleCarousel && largeCompImageSimpleCarousel.length > 1 ? (
@@ -117,6 +146,7 @@ class ModuleE extends React.PureComponent {
         ) : (
           <View>{this.renderView({ item: largeCompImageSimpleCarousel[0] })}</View>
         )}
+        {carouselCtaType === 'link' ? this.renderAnchor(navigation) : null}
       </ContainerView>
     );
   };
@@ -129,6 +159,7 @@ class ModuleE extends React.PureComponent {
   renderButtonList = (ctaTypeValue, navigation, ctaItems, locator, color) => {
     return (
       <View>
+        <Border />
         <ButtonList
           buttonListVariation={ctaTypeValue}
           navigation={navigation}
@@ -178,15 +209,15 @@ class ModuleE extends React.PureComponent {
         <StyledImage
           width={MODULE_EYEBROW_WIDTH}
           height={MODULE_EYEBROW_HEIGHT}
-          url={eyebrow[0].mediaLinkedList[0].image.url}
+          url={eyebrow.mediaLinkedList[0].image.url}
         />
         <TopPromoWrapper width={MODULE_PROMO_EYEBROW_WIDTH}>
-          <PromoBanner naviagtion={naviagtion} promoBanner={eyebrow[0].promoBanner} />
+          <PromoBanner naviagtion={naviagtion} promoBanner={eyebrow.promoBanner} />
         </TopPromoWrapper>
         <StyledImage
           width={MODULE_EYEBROW_WIDTH}
           height={MODULE_EYEBROW_HEIGHT}
-          url={eyebrow[0].mediaLinkedList[0].image.url}
+          url={eyebrow.mediaLinkedList[0].image.url}
         />
       </EyeBrowContainer>
     );
@@ -237,28 +268,80 @@ class ModuleE extends React.PureComponent {
     );
   };
 
+  renderPromoArea = (linkedImage, navigation) => {
+    if (linkedImage && linkedImage.length > 0) {
+      return (
+        <PromoAreaWrapper>
+          {linkedImage.map(({ image, link }, index) => {
+            return (
+              <View>
+                <StyledAnchor
+                  url={link ? link.url : ''}
+                  navigation={navigation}
+                  key={index.toString()}
+                >
+                  <StyledImage
+                    url={image && image.url}
+                    height="67px"
+                    width={MODULE_WIDTH}
+                    testID={`${getLocator('moduleE_promoarea_img')}${index}`}
+                    alt={image && image.alt}
+                  />
+                </StyledAnchor>
+              </View>
+            );
+          })}
+        </PromoAreaWrapper>
+      );
+    }
+    return null;
+  };
+
+  renderTopAndBottomBorder = pos => {
+    return <BorderTopAndBottom pos={pos} />;
+  };
+
+  renderTopView = (eyebrow, headerText, promoBanner, navigation) => {
+    return (
+      <View>
+        {!eyebrow && this.renderTopAndBottomBorder('bottom')}
+        {eyebrow && this.renderEyeBrow(eyebrow, navigation)}
+        {this.renderHeaderPromo(navigation, headerText, promoBanner)}
+      </View>
+    );
+  };
+
   render() {
     const {
       navigation,
       largeCompImageSimpleCarousel,
       ctaItems,
-      eyebrow,
+      eyebrow: [eyebrow],
       headerText,
       promoBanner,
       divCTALinks,
+      linkedImage,
+      ctaType,
+      carouselCtaType,
     } = this.props;
 
     const ctaTypeValue = ctaTypes[ctaType];
 
     return (
       <Container>
-        {eyebrow && this.renderEyeBrow(eyebrow, navigation)}
-        {this.renderHeaderPromo(navigation, headerText, promoBanner)}
+        {this.renderTopView(eyebrow, headerText, promoBanner, navigation)}
+        {linkedImage && this.renderPromoArea(linkedImage, navigation)}
         {largeCompImageSimpleCarousel &&
-          this.renderCarousel(largeCompImageSimpleCarousel, navigation)}
-        {navigation && this.renderButton(navigation)}
+          this.renderCarousel(largeCompImageSimpleCarousel, navigation, carouselCtaType)}
+        {carouselCtaType === 'button' && !eyebrow
+          ? this.renderButton(navigation, BUTTON_VARIATION_HALFWIDTH)
+          : null}
+        {carouselCtaType === 'button' && eyebrow
+          ? this.renderButton(navigation, BUTTON_VARIATION_FULLWIDTH)
+          : null}
         {ctaItems && this.renderButtonList(ctaTypeValue, navigation, ctaItems)}
         {this.renderMediaLinkedImage(divCTALinks, navigation)}
+        {!eyebrow && this.renderTopAndBottomBorder('top')}
       </Container>
     );
   }
@@ -272,6 +355,9 @@ ModuleE.defaultProps = {
   ctaItems: [],
   largeCompImageSimpleCarousel: [],
   divCTALinks: [],
+  linkedImage: [],
+  ctaType: '',
+  carouselCtaType: '',
 };
 
 ModuleE.propTypes = {
@@ -282,6 +368,9 @@ ModuleE.propTypes = {
   navigation: PropTypes.shape({}),
   eyebrow: PropTypes.shape([]),
   divCTALinks: PropTypes.shape([]),
+  linkedImage: PropTypes.shape([]),
+  ctaType: PropTypes.string,
+  carouselCtaType: PropTypes.string,
 };
 
 export default ModuleE;

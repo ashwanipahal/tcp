@@ -248,6 +248,39 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+
+  spaced_text_only_mobile: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontWeight="medium"
+      fontSize="fs20"
+      textAlign="center"
+      letterSpacing="ls2"
+      {...props}
+    />
+  ),
+  percentage_inline_promo_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontWeight="black"
+      fontSize="fs48"
+      textAlign="center"
+      {...props}
+    />
+  ),
+
+  spaced_text_regular_black: props => (
+    <BodyCopy
+      color="gray.900"
+      fontFamily="primary"
+      fontWeight="medium"
+      fontSize="fs20"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**

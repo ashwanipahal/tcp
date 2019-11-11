@@ -20,7 +20,9 @@ export const ButtonContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
-export const ContainerView = styled.View``;
+export const ContainerView = styled.View`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
 export const Border = styled.View`
   height: 0.5px;
   background: ${props =>
@@ -60,15 +62,6 @@ export const HeaderView = styled.View`
   width: 100%;
 `;
 
-/**
- * RibbonBanner height and width.
- * Height is fixed for mobile : TCP & Gymb
- * Width can vary as per deign.
- */
-
-export const RibbonBannerHeight = '200px';
-export const RibbonBannerWidth = '54px';
-
 export const EyeBrowContainer = styled.View`
   justify-content: center;
   align-items: center;
@@ -76,7 +69,10 @@ export const EyeBrowContainer = styled.View`
   flex-direction: row;
 `;
 
-export const StyledImage = styled(DamImage)``;
+export const StyledImage = styled(DamImage)`
+  /* stylelint-disable-next-line */
+  resize-mode: stretch;
+`;
 
 export const StyledAnchor = styled(Anchor)`
   justify-content: center;
@@ -115,6 +111,34 @@ export const ImageWrapper = styled.View`
   ${props => (props.tileIndex % 2 === 0 ? null : `margin-left: 19px`)};
 `;
 
+export const PromoAreaWrapper = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  height: 67px;
+  width: 100%;
+`;
+
+export const BorderTopAndBottom = styled.View`
+  height: 3px;
+  background: ${props => props.theme.colorPalette.gray[500]};
+  margin-left: 14px;
+  margin-right: 14px;
+  ${props => (props.pos === 'bottom' ? `margin-bottom: 24px` : `margin-top: 24px`)};
+`;
+
+export const AnchorWrapper = styled.View`
+  margin-top: 10px;
+  position: absolute;
+  margin-bottom: 50px;
+  bottom: 0;
+`;
+
+export const Wrapper = styled.View`
+  margin-left: 14px;
+  margin-right: 14px;
+  margin-bottom: 12px;
+`;
+
 export default {
   Container,
   HeaderWrapper,
@@ -125,8 +149,6 @@ export default {
   DivImageCTAContainer,
   ButtonLinksContainer,
   MessageContainer,
-  RibbonBannerHeight,
-  RibbonBannerWidth,
   PromoBannerWrapper,
   HeaderView,
   PromoRibbonWrapper,
@@ -139,4 +161,8 @@ export default {
   ImageWrapper,
   StyledBodyCopy,
   ButtonWrapper,
+  PromoAreaWrapper,
+  BorderTopAndBottom,
+  AnchorWrapper,
+  Wrapper,
 };
