@@ -1,4 +1,5 @@
 import { Map, fromJS, List } from 'immutable';
+import { logout } from '@tcp/core/src/components/features/account/Logout/container/LogOut.actions';
 import AddressBookReducer from '../AddressBook.reducer';
 import { setAddressList, setAddressBookNotification } from '../AddressBook.actions';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
@@ -177,5 +178,10 @@ describe('Address List reducer', () => {
         showUpdatedNotification: 'success',
       })
     );
+  });
+  it('should return initial state in case of LOGOUT action', () => {
+    const state = AddressBookReducer(undefined, setAddressList(addressList));
+    const loggedOutState = AddressBookReducer(state, logout());
+    expect(loggedOutState.get('list')).toBeNull();
   });
 });

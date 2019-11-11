@@ -29,7 +29,13 @@ const LoggedInUserInfo = ({
   const linkClick = e => onLinkClick({ e, openOverlay, userNameClick }, mainId);
   return (
     <React.Fragment>
-      <BodyCopy component="div" id={mainId} className="account-info-section" onClick={linkClick}>
+      <BodyCopy
+        component="div"
+        id={mainId}
+        className="account-info-section"
+        onClick={linkClick}
+        tabIndex="0"
+      >
         <BodyCopy className="account-info user-name" component="div" role="button">
           {`Hi, ${handleUserName(userName)}`}
         </BodyCopy>

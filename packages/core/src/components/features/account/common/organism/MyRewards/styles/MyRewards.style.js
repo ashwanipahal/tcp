@@ -53,7 +53,7 @@ const styles = css`
     grid-template-columns: 100%;
     grid-row-gap: 24px;
     grid-auto-rows: minmax(345px, auto);
-    align-items: baseline;
+    align-items: stretch;
 
     @media ${props => props.theme.mediaQuery.medium} {
       grid-template-columns: repeat(2, calc(50% - 15px));

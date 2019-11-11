@@ -44,6 +44,7 @@ const initialState = fromJS({
   },
   uiFlags: {
     stage: CheckoutConstants.CHECKOUT_STAGES.SHIPPING,
+    routingDone: false,
     stageChangeCount: 0,
     isGiftOptionsEnabled: true,
     isPLCCPaymentEnabled: false,
@@ -119,6 +120,8 @@ function paypalReducer(checkout, action) {
       return checkout.setIn(['options', 'paypalPaymentSettings'], action.paypalPaymentSettings);
     case CheckoutConstants.SET_IS_RTPS_FLOW:
       return checkout.setIn(['uiFlags', 'isRTPSFlow'], action.payload);
+    case CheckoutConstants.CHECKOUT_ROUTING_DONE:
+      return checkout.setIn(['uiFlags', 'routingDone'], action.payload);
     default:
       return venmoFlagReducer(checkout, action);
   }

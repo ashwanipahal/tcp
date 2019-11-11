@@ -107,6 +107,7 @@ class Recommendations extends Component {
       ctaText,
       ctaTitle,
       ctaUrl,
+      carouselConfigProps,
       headerAlignment,
     } = this.props;
 
@@ -114,7 +115,7 @@ class Recommendations extends Component {
     const params = config.params[variation];
     const headerLabel =
       variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
-
+    const carouselProps = { ...config.CAROUSEL_OPTIONS, ...carouselConfigProps };
     return (
       products &&
       products.length > 0 && (
@@ -143,7 +144,7 @@ class Recommendations extends Component {
               {products.length >= 4 ? (
                 <Carousel
                   className={`${variation}-variation`}
-                  options={config.CAROUSEL_OPTIONS}
+                  options={carouselProps}
                   inheritedStyles={Carousel}
                   carouselConfig={{
                     variation: 'big-arrows',
@@ -232,6 +233,7 @@ Recommendations.propTypes = {
   onQuickViewOpenClick: PropTypes.func.isRequired,
   page: PropTypes.string,
   portalValue: PropTypes.string,
+  carouselConfigProps: PropTypes.shape({}),
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
   headerAlignment: PropTypes.string,
@@ -250,6 +252,7 @@ Recommendations.defaultProps = {
   },
   page: '',
   portalValue: '',
+  carouselConfigProps: null,
   partNumber: '',
   categoryName: '',
   headerAlignment: '',

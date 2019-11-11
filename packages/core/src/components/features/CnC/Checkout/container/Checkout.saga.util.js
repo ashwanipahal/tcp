@@ -13,6 +13,7 @@ import {
   getVenmoToken,
   addPickupPerson,
   updateRTPSData,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
@@ -27,7 +28,8 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import actions, {
+
+import CHECKOUT_ACTIONS, {
   setOnFileAddressKey,
   setGiftWrap,
   getVenmoClientTokenSuccess,
@@ -355,7 +357,7 @@ function* updateUserRTPSData(payload) {
     yield put(setPlccPrescreenCode(res.prescreenCode));
     if (res.plccEligible) {
       // offer not yet shown, show it
-      yield put(actions.setIsRTPSFlow(true));
+      yield put(CHECKOUT_ACTIONS.setIsRTPSFlow(true));
       yield put(toggleApplyNowModal({ isModalOpen: true }));
     }
   } catch (e) {
@@ -378,4 +380,14 @@ export function* callUpdateRTPS(pageName) {
   } else if (pageName === REVIEW && showPLCC && isExpressCheckoutEnabled) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: true });
   }
+}
+export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
+  const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+  const billingError = getServerErrorMessage(e, errorsMapping);
+  yield put(
+    CHECKOUT_ACTIONS.setServerErrorCheckout({
+      errorMessage: billingError,
+      component: componentName,
+    })
+  );
 }

@@ -9,10 +9,10 @@ const getSubCategory = store => {
   return categoryListing[1].displayName;
 };
 
-const getNavigationText = store => {
-  const state = store.getState();
-  return state.ProductListing && state.ProductListing.currentListingSeoKey;
-};
+// const getNavigationText = store => {
+//   const state = store.getState();
+//   return state.ProductListing && state.ProductListing.currentListingSeoKey;
+// };
 
 const getStoreId = store => {
   const state = store.getState();
@@ -34,7 +34,7 @@ export const generateHomePageDataLayer = store => {
     },
     pageNavigationText: {
       get() {
-        return getNavigationText(store) || '';
+        return store.getState().pageData.pageNavigationText || '';
       },
     },
     storeId: {

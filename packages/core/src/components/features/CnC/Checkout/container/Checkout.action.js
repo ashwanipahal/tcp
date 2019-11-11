@@ -45,12 +45,10 @@ export function getSetGiftWrapOptionsActn(giftWrapOptions) {
   };
 }
 
-export function getSetPickupValuesActn(pickup) {
-  return {
-    pickUpContact: pickup,
-    type: 'CHECKOUT_VALUES_SET_PICKUP',
-  };
-}
+export const getSetPickupValuesActn = pickup => ({
+  pickUpContact: pickup,
+  type: 'CHECKOUT_VALUES_SET_PICKUP',
+});
 
 export function getSetPickupAltValuesActn(pickup) {
   return {
@@ -320,12 +318,10 @@ export function submitBillingSection(payload) {
 
 export const setGiftCardError = payload => ({ type: constants.SET_GIFTCARD_ERROR, payload });
 
-export const addNewShippingAddress = payload => {
-  return {
-    type: constants.ADD_NEW_SHIPPING_ADDRESS,
-    payload,
-  };
-};
+export const addNewShippingAddress = payload => ({
+  type: constants.ADD_NEW_SHIPPING_ADDRESS,
+  payload,
+});
 
 export const setOnFileAddressKey = payload => {
   // when edit on desktop/mobile and add new address on mobile, response address Id needs to be set on onFileAddreskey so that while submitting we get this addressId, not the previous one
@@ -483,6 +479,11 @@ export const resetAddGiftCardSuccess = payload => {
     payload,
   };
 };
+
+export const toggleCheckoutRouting = payload => ({
+  payload,
+  type: constants.CHECKOUT_ROUTING_DONE,
+});
 
 export default {
   setServerErrorCheckout,

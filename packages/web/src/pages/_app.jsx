@@ -35,6 +35,7 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
+import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
 
 // constants
 import constants from '../constants';
@@ -77,7 +78,7 @@ class TCPWebApp extends App {
       'standalone' in window.navigator &&
         document.location.replace(
           `${
-          isGymboree() ? 'gym' : 'tcp'
+            isGymboree() ? 'gym' : 'tcp'
           }://change-password/?logonPasswordOld=${logonPasswordOld}&em=${em}`
         );
       store.dispatch(
@@ -247,6 +248,15 @@ class TCPWebApp extends App {
     return null;
   };
 
+  checkLoadAnalyticsOnload = pageProps => {
+    const isLoadAnalyticsOnload =
+      pageProps && pageProps.pageData && pageProps.pageData.loadAnalyticsOnload;
+    if (typeof isLoadAnalyticsOnload === 'undefined') {
+      return true;
+    }
+    return isLoadAnalyticsOnload;
+  };
+
   // eslint-disable-next-line complexity
   render() {
     const { Component, pageProps, store, router } = this.props;
@@ -266,6 +276,7 @@ class TCPWebApp extends App {
       reviewPage.asPath,
       internationalCheckout.asPath,
     ];
+    const isCheckAnalyticsOnload = this.checkLoadAnalyticsOnload(pageProps);
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -293,10 +304,11 @@ class TCPWebApp extends App {
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
+              <AddedToBagContainer />
               <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && <RouteTracker />}
+            {process.env.ANALYTICS && isCheckAnalyticsOnload && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}

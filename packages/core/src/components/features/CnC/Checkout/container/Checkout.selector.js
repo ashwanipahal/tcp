@@ -49,6 +49,10 @@ const getIsOrderHasShipping = state =>
 const getIsOrderHasPickup = state =>
   !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
 
+const getIfCheckoutRoutingDone = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'routingDone']);
+};
+
 const getCardType = state => {
   return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
 };
@@ -978,10 +982,11 @@ const getCheckoutPageEmptyBagLabels = createSelector(
 const getIsRtpsFlow = createSelector(
   getCheckoutUiFlagState,
   uiFlags => uiFlags && uiFlags.get('isRTPSFlow')
-)
+);
 
-const getIsRTPSEnabled = state => state[SESSIONCONFIG_REDUCER_KEY] &&
-  state[SESSIONCONFIG_REDUCER_KEY].siteDetails.ADS_OLPS_ENABLED === 'TRUE'
+const getIsRTPSEnabled = state =>
+  state[SESSIONCONFIG_REDUCER_KEY] &&
+  state[SESSIONCONFIG_REDUCER_KEY].siteDetails.ADS_OLPS_ENABLED === 'TRUE';
 
 export default {
   getIsOrderHasShipping,
@@ -1075,5 +1080,6 @@ export default {
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
-  getIsRTPSEnabled
+  getIsRTPSEnabled,
+  getIfCheckoutRoutingDone,
 };
