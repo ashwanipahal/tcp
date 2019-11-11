@@ -96,6 +96,7 @@ const style = css`
       align-items: center;
     }
   }
+
   .user-name {
     cursor: pointer;
     font-size: ${props => props.theme.typography.fontSizes.fs13};
