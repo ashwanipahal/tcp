@@ -134,7 +134,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       margin={null}
       numberOfLines={null}
       onPress={[Function]}
-      text="lbl_overview_myFavoritesHeading"
+      text="My Favorites"
       textAlign="left"
       textDecoration={null}
     />
@@ -182,6 +182,7 @@ exports[`AccountOverview component should render correctly 1`] = `
           fontWeight="regular"
           margin={null}
           numberOfLines={null}
+          text="APPLY TODAY TO SAVE 30%"
           textAlign="center"
           textDecoration={null}
         />
@@ -205,7 +206,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
-    title="lbl_overview_manage_creditCard"
+    title="Manage Credit Account"
   />
   <Styled(View) />
   <Styled(TouchableOpacity)
@@ -220,7 +221,7 @@ exports[`AccountOverview component should render correctly 1`] = `
       fontWeight="regular"
       margin={null}
       numberOfLines={null}
-      text="lbl_overview_purchase_giftCards"
+      text="Purchase Gift Cards"
       textDecoration={null}
     />
     <Styled(View)>
@@ -243,14 +244,14 @@ exports[`AccountOverview component should render correctly 1`] = `
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
-    title="lbl_overview_refer_friend"
+    title="Find a Store"
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
-    title="lbl_overview_trackYourOrder"
+    title="Track Your Order"
   />
   <Styled(View) />
   <Panel
@@ -258,23 +259,83 @@ exports[`AccountOverview component should render correctly 1`] = `
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
-    title="lbl_overview_app_settings"
+    key="true"
+    title="App Settings"
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
-    title="lbl_overview_help"
+    title="Help"
   />
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
     isVariationTypeLink={true}
-    title="lbl_overview_messages"
+    key=""
+    title="Messages"
   />
   <Styled(View) />
   <Styled(View) />
+  <View
+    style={
+      Object {
+        "height": 100,
+        "paddingTop": 15,
+      }
+    }
+  >
+    <LegalLinks
+      links={
+        Array [
+          Object {
+            "leafLink": Object {
+              "external": 0,
+              "target": "_modal",
+              "text": "Terms & Conditions",
+              "title": "terms",
+              "url": "https://www.childrensplace.com/us/help-center/#termsAndConditionsli",
+            },
+            "subSections": null,
+          },
+          Object {
+            "leafLink": Object {
+              "external": 0,
+              "target": "_modal",
+              "text": "Privacy Policy",
+              "title": "policyA",
+              "url": "https://www.childrensplace.com/us/help-center/#privacyPolicySectionli",
+            },
+            "subSections": null,
+          },
+          Object {
+            "leafLink": Object {
+              "external": 0,
+              "target": "_modal",
+              "text": "Cookie Policy",
+              "title": "policyB",
+              "url": "https://www.childrensplace.com/us/help-center/#cookiePolicySectionli",
+            },
+            "subSections": null,
+          },
+          Object {
+            "leafLink": Object {
+              "external": 1,
+              "target": "_blank",
+              "text": "California Supply Chains Act",
+              "title": "supplyAct",
+              "url": "https://www.childrensplace.com/us/content/supply-chain",
+            },
+            "subSections": null,
+          },
+        ]
+      }
+    />
+  </View>
+  <Styled(Text)>
+    lbl_overview_copyrightTxt
+  </Styled(Text)>
 </View>
 `;

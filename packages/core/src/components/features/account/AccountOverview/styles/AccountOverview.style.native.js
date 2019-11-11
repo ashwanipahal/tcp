@@ -68,6 +68,17 @@ const StyledImage = styled(Image)`
   resize-mode: stretch;
 `;
 
+const LegalStyleLinkStyles = {
+  height: 100,
+  paddingTop: 15,
+};
+
+const CopyrightText = styled.Text`
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  color: ${props => props.theme.colorPalette.gray[600]};
+  font-size: ${props => props.theme.fonts.fontSize.anchor.medium}px;
+`;
+
 export {
   UnderlineStyle,
   ImageWrapper,
@@ -80,4 +91,6 @@ export {
   StyledImage,
   FavImageWrapper,
   RightArrowImageContainer,
+  LegalStyleLinkStyles,
+  CopyrightText,
 };

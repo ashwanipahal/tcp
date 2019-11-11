@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import CookieManager from 'react-native-cookies';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
+import LegalLinks from '../../../../common/molecules/LegalLinks';
 import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
 import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
@@ -27,6 +28,8 @@ import {
   RightArrowImageContainer,
   StyledImage,
   FavImageWrapper,
+  LegalStyleLinkStyles,
+  CopyrightText,
 } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
 import ModalNative from '../../../../common/molecules/Modal';
@@ -43,6 +46,7 @@ import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import CustomIcon from '../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.constants';
+import mock from './mock';
 
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
@@ -241,6 +245,8 @@ class AccountOverview extends PureComponent<Props> {
     this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
+    const { legalLinks } = mock;
+    const accountFooterLinks = mock.accountFooterNavLegalLinks;
 
     return (
       <View style={viewContainerStyle}>
@@ -365,104 +371,142 @@ class AccountOverview extends PureComponent<Props> {
                 </ModalViewWrapper>
               </ModalNative>
             )}
-            <FavtWrapper>
-              <BodyCopy
-                color="gray.900"
-                fontFamily="secondary"
-                fontSize="fs13"
-                textAlign="left"
-                fontWeight="regular"
-                text={getLabelValue(labels, 'lbl_overview_myFavoritesHeading')}
-                onPress={e =>
-                  this.toggleModal({
-                    e,
-                    getComponentId: { favorites: true },
-                  })
-                }
-              />
-              <FavImageWrapper>
-                <ImageComp source={favIcon} width={15} height={13} />
-              </FavImageWrapper>
-            </FavtWrapper>
-            <UnderlineStyle />
           </React.Fragment>
         )}
-
-        {isUserLoggedIn && (
-          <TouchabelContainer onPress={() => handleComponentChange('myFavoritePageMobile')}>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs13"
-              fontWeight="regular"
-              text={getLabelValue(labels, 'lbl_overview_myFavoritesHeading')}
-              color="gray.900"
-              textAlign="center"
-            />
-            <CustomIcon
-              margins="0 0 0 8px"
-              iconFontName={ICON_FONT_CLASS.Icomoon}
-              name={ICON_NAME.filledHeart}
-              size="fs20"
-              color="red.500"
-            />
-          </TouchabelContainer>
-        )}
-        <>
-          <TouchabelContainer onPress={this.toggleApplyNowModal}>
-            <FavoritesWrapper>
-              <ImageContainer>
-                <StyledImage source={cardIcon} width={47} height={30} />
-              </ImageContainer>
-              <TextWrapper>
+        {/* eslint-disable-next-line complexity */}
+        {accountFooterLinks.map((link, index) => {
+          let linkMarkup = null;
+          const { leafLink } = link;
+          if (leafLink.url.includes('favorite')) {
+            linkMarkup = !isUserLoggedIn ? (
+              <FavtWrapper>
+                <BodyCopy
+                  color="gray.900"
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  textAlign="left"
+                  fontWeight="regular"
+                  text={leafLink.text}
+                  onPress={e =>
+                    this.toggleModal({
+                      e,
+                      getComponentId: { favorites: true },
+                    })
+                  }
+                />
+                <FavImageWrapper>
+                  <ImageComp source={favIcon} width={15} height={13} />
+                </FavImageWrapper>
+              </FavtWrapper>
+            ) : (
+              <TouchabelContainer onPress={() => handleComponentChange('myFavoritePageMobile')}>
                 <BodyCopy
                   fontFamily="secondary"
                   fontSize="fs13"
                   fontWeight="regular"
-                  text={labels.lbl_overview_apply_today}
+                  text={leafLink.text}
                   color="gray.900"
                   textAlign="center"
                 />
-              </TextWrapper>
-            </FavoritesWrapper>
-            <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
-          </TouchabelContainer>
-          <Panel
-            title={getLabelValue(labels, 'lbl_overview_manage_creditCard')}
-            isVariationTypeLink
-          />
-          <UnderlineStyle />
-          <TouchabelContainer
-            onPress={() => {
-              navigation.navigate('GiftCardPage', {
-                title: 'Gift Cards',
-                pdpUrl: 'Gift Card',
-              });
-            }}
-          >
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs13"
-              fontWeight="regular"
-              text={getLabelValue(labels, 'lbl_overview_purchase_giftCards')}
-              color="gray.900"
-            />
-            <RightArrowImageContainer>
-              <ImageComp source={rightIcon} width={7} height={10} />
-            </RightArrowImageContainer>
-          </TouchabelContainer>
-          <Panel title={getLabelValue(labels, 'lbl_overview_refer_friend')} isVariationTypeLink />
-          <Panel
-            title={getLabelValue(labels, 'lbl_overview_trackYourOrder')}
-            isVariationTypeLink
-            handleComponentChange={this.showTrackOrderModal}
-          />
-          <UnderlineStyle />
-          <Panel title={getLabelValue(labels, 'lbl_overview_app_settings')} isVariationTypeLink />
-          <Panel title={getLabelValue(labels, 'lbl_overview_help')} isVariationTypeLink />
-          <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
-        </>
+                <CustomIcon
+                  margins="0 0 0 8px"
+                  iconFontName={ICON_FONT_CLASS.Icomoon}
+                  name={ICON_NAME.filledHeart}
+                  size="fs20"
+                  color="red.500"
+                />
+              </TouchabelContainer>
+            );
+          } else if (leafLink.url.includes('plcc')) {
+            linkMarkup = (
+              <TouchabelContainer onPress={this.toggleApplyNowModal}>
+                <FavoritesWrapper>
+                  <ImageContainer>
+                    <StyledImage source={cardIcon} width={47} height={30} />
+                  </ImageContainer>
+                  <TextWrapper>
+                    <BodyCopy
+                      fontFamily="secondary"
+                      fontSize="fs13"
+                      fontWeight="regular"
+                      text={leafLink.text}
+                      color="gray.900"
+                      textAlign="center"
+                    />
+                  </TextWrapper>
+                </FavoritesWrapper>
+                <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+              </TouchabelContainer>
+            );
+          } else if (leafLink.url.includes('credit-account')) {
+            linkMarkup = (
+              <>
+                <Panel title={leafLink.text} isVariationTypeLink />
+              </>
+            );
+          } else if (leafLink.url.includes('gift-card')) {
+            linkMarkup = (
+              <TouchabelContainer
+                onPress={() => {
+                  navigation.navigate('GiftCardPage', {
+                    title: 'Gift Cards',
+                    pdpUrl: 'Gift Card',
+                  });
+                }}
+              >
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="regular"
+                  text={leafLink.text}
+                  color="gray.900"
+                />
+                <RightArrowImageContainer>
+                  <ImageComp source={rightIcon} width={7} height={10} />
+                </RightArrowImageContainer>
+              </TouchabelContainer>
+            );
+          } else if (leafLink.url.includes('track-order') && !isUserLoggedIn) {
+            linkMarkup = (
+              <Panel
+                title={leafLink.text}
+                isVariationTypeLink
+                handleComponentChange={this.showTrackOrderModal}
+              />
+            );
+          } else if (leafLink.url.includes('settings')) {
+            linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key />;
+          } else if (leafLink.url.includes('helpCenter')) {
+            linkMarkup = <Panel title={leafLink.text} isVariationTypeLink />;
+          } else if (leafLink.url.includes('messages')) {
+            linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key="" />;
+          } else if (leafLink.url.includes('store-locator')) {
+            linkMarkup = (
+              <Panel
+                title={leafLink.text}
+                isVariationTypeLink
+                handleComponentChange={() => {
+                  navigation.navigate('StoreLanding', {
+                    title: getLabelValue(labels, 'lbl_header_storeDefaultTitle').toUpperCase(),
+                  });
+                }}
+              />
+            );
+          }
+          return (
+            <>
+              {linkMarkup}
+              {index === 0 || index === 2 || index === 5 ? <UnderlineStyle /> : null}
+            </>
+          );
+        })}
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         <UnderlineStyle />
+        <View style={LegalStyleLinkStyles}>
+          <LegalLinks links={legalLinks} />
+        </View>
+        {/* Replace with copyright label */}
+        <CopyrightText>{getLabelValue(labels, 'lbl_overview_copyrightTxt')}</CopyrightText>
       </View>
     );
   }

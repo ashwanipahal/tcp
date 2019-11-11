@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Wallet should render correctly 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "height": 1334,
+    }
+  }
+>
   <ScrollViewMock
     keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
@@ -121,7 +127,7 @@ exports[`Wallet should render correctly 1`] = `
                 fontWeight="regular"
                 margin={null}
                 numberOfLines={null}
-                text="lbl_overview_apply_today"
+                text="APPLY TODAY TO SAVE 30%"
                 textAlign="center"
                 textDecoration={null}
               />
@@ -145,7 +151,7 @@ exports[`Wallet should render correctly 1`] = `
           isCardApply={false}
           isFavorite={false}
           isVariationTypeLink={true}
-          title="lbl_overview_manage_creditCard"
+          title="Manage Credit Account"
         />
         <Styled(TouchableOpacity)
           onPress={[Function]}
@@ -160,7 +166,7 @@ exports[`Wallet should render correctly 1`] = `
               fontWeight="regular"
               margin={null}
               numberOfLines={null}
-              text="lbl_overview_purchase_giftCards"
+              text="Purchase Gift Cards"
               textDecoration={null}
             />
           </Styled(View)>
@@ -177,13 +183,6 @@ exports[`Wallet should render correctly 1`] = `
             size="fs12"
           />
         </Styled(TouchableOpacity)>
-        <Panel
-          handleComponentChange={[Function]}
-          isCardApply={false}
-          isFavorite={false}
-          isVariationTypeLink={true}
-          title="lbl_overview_refer_friend"
-        />
       </Styled(View)>
     </Styled(View)>
   </ScrollViewMock>

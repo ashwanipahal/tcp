@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { View, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import RewardsPoints from '@tcp/core/src/components/features/account/common/organism/RewardsPoints';
-import { getLabelValue } from '@tcp/core/src/utils';
+import { getLabelValue, getScreenHeight } from '@tcp/core/src/utils';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   TextWrapper,
@@ -26,6 +26,7 @@ import CustomButton from '../../../../common/atoms/Button';
 import { ICON_NAME } from '../../../../common/atoms/Icon/Icon.constants';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { ViewWithSpacing } from '../../../../common/atoms/styledWrapper/styledWrapper.native';
+import mock from './mock';
 
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
 
@@ -129,59 +130,61 @@ class WalletView extends PureComponent {
     });
   };
 
-  renderFooterLinks = overViewLabels => {
+  renderFooterLinks = () => {
+    const accountFooterLinks = mock.walletFooterNavLegalLinks;
     const { navigation } = this.props;
-    return (
-      <>
-        <TouchabelContainer onPress={this.toggleApplyNowModal}>
-          <FavoritesWrapper>
-            <ImageContainer>
-              <StyledImage source={cardIcon} width={47} height={30} />
-            </ImageContainer>
-            <TextWrapper>
+    return accountFooterLinks.map(link => {
+      let linkMarkup = null;
+      const { leafLink } = link;
+      if (leafLink.url.includes('plcc')) {
+        linkMarkup = (
+          <TouchabelContainer onPress={this.toggleApplyNowModal}>
+            <FavoritesWrapper>
+              <ImageContainer>
+                <StyledImage source={cardIcon} width={47} height={30} />
+              </ImageContainer>
+              <TextWrapper>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs13"
+                  fontWeight="regular"
+                  text={leafLink.text}
+                  color="gray.900"
+                  textAlign="center"
+                />
+              </TextWrapper>
+            </FavoritesWrapper>
+            <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+          </TouchabelContainer>
+        );
+      } else if (leafLink.url.includes('credit-account')) {
+        linkMarkup = <Panel title={leafLink.text} isVariationTypeLink />;
+      } else if (leafLink.url.includes('gift-card')) {
+        linkMarkup = (
+          <TouchabelContainer
+            onPress={() => {
+              navigation.navigate('GiftCardPage', {
+                title: 'Gift Cards',
+                pdpUrl: 'Gift Card',
+              });
+            }}
+          >
+            <FavoritesWrapper>
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs13"
                 fontWeight="regular"
-                text={getLabelValue(overViewLabels, 'lbl_overview_apply_today')}
+                text={leafLink.text}
                 color="gray.900"
-                textAlign="center"
               />
-            </TextWrapper>
-          </FavoritesWrapper>
-          <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
-        </TouchabelContainer>
+            </FavoritesWrapper>
 
-        <Panel
-          title={getLabelValue(overViewLabels, 'lbl_overview_manage_creditCard')}
-          isVariationTypeLink
-        />
-        <TouchabelContainer
-          onPress={() => {
-            navigation.navigate('GiftCardPage', {
-              title: 'Gift Cards',
-              pdpUrl: 'Gift Card',
-            });
-          }}
-        >
-          <FavoritesWrapper>
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs13"
-              fontWeight="regular"
-              text={getLabelValue(overViewLabels, 'lbl_overview_purchase_giftCards')}
-              color="gray.900"
-            />
-          </FavoritesWrapper>
-
-          <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
-        </TouchabelContainer>
-        <Panel
-          title={getLabelValue(overViewLabels, 'lbl_overview_refer_friend')}
-          isVariationTypeLink
-        />
-      </>
-    );
+            <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
+          </TouchabelContainer>
+        );
+      }
+      return linkMarkup;
+    });
   };
 
   renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
@@ -306,8 +309,9 @@ class WalletView extends PureComponent {
       navigation,
       ...props
     } = this.props;
+    const viewContainerStyle = { height: getScreenHeight() };
     return (
-      <View>
+      <View style={viewContainerStyle}>
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <WalletLayout>
             {isUserLoggedIn ? (
@@ -326,7 +330,7 @@ class WalletView extends PureComponent {
               this.renderGuestView(overViewLabels)
             )}
             <ViewWithSpacing spacingStyles={isUserLoggedIn ? 'margin-top-XXS' : 'margin-top-XXXS'}>
-              {this.renderFooterLinks(overViewLabels)}
+              {this.renderFooterLinks()}
             </ViewWithSpacing>
           </WalletLayout>
         </ScrollView>
