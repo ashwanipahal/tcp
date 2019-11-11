@@ -18,6 +18,7 @@ import ProductInformationView from '../molecules/ProductInformation/views/Produc
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
 import Anchor from '../../../../common/atoms/Anchor';
 import LoyaltyBanner from '../../LoyaltyBanner';
+import config from './config';
 
 // @flow
 type Props = {
@@ -91,6 +92,7 @@ const AddedToBag = ({
             variations="moduleO"
             priceOnly
             inheritedStyles={recommendationStyles}
+            carouselConfigProps={config.CAROUSEL_OPTIONS}
           />
         </div>
         <div className="continue-shopping">

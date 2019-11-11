@@ -56,7 +56,9 @@ const CheckoutHeader = ({
           }}
         >
           <BodyCopy component="span" fontSize="fs32">
-            {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
+            {isExpressCheckoutPage && itemsCount > 0
+              ? labels.expressCheckoutLbl
+              : labels.checkoutHeaderLabel}
           </BodyCopy>
         </Col>
 
