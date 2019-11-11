@@ -13,7 +13,6 @@ export {
   validateExternalUrl,
   resetNavigationStack,
   createAPIConfig,
-  updateAPIConfigForApp,
   switchAPIConfig,
   isAndroid,
   isIOS,
