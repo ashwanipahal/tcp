@@ -131,6 +131,7 @@ class ProductPickup extends React.PureComponent {
      * method responsible for triggering the operator method for BopisQuickViewModal
      */
     onPickUpOpenClick: PropTypes.func,
+    onPickupClickAddon: PropTypes.func,
     /**
      * carries the inventory information of the bopis item selected
      */
@@ -184,6 +185,7 @@ class ProductPickup extends React.PureComponent {
       Quantity: null,
     },
     onPickUpOpenClick: null,
+    onPickupClickAddon: () => {},
     bopisItemInventory: [],
     isBopisEligible: false,
     // isBossEligible: false,
@@ -226,7 +228,7 @@ class ProductPickup extends React.PureComponent {
    */
 
   handlePickupModalClick = () => {
-    const { productInfo, onPickUpOpenClick } = this.props;
+    const { productInfo, onPickUpOpenClick, onPickupClickAddon } = this.props;
     const { /* colorFitsSizesMap, */ generalProductId } = productInfo;
     // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
     onPickUpOpenClick({
@@ -236,8 +238,10 @@ class ProductPickup extends React.PureComponent {
       // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
       currentProduct: productInfo,
     });
-    // if (closeQuickViewClick) {
-    // }
+
+    if (onPickupClickAddon) {
+      onPickupClickAddon();
+    }
   };
 
   handleChangeStoreOnKeyPress = event =>

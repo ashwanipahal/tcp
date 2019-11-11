@@ -61,6 +61,9 @@ const style = css`
     @media ${props => props.theme.mediaQuery.smallOnly} {
       height: 100%;
     }
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 40px;
+    }
   }
   .search-input-wrapper {
     margin-right: 30px;
@@ -75,7 +78,6 @@ const style = css`
   .account-info-section {
     display: inline-block;
     line-height: normal;
-    margin-right: 25px;
   }
   .carrot-down-icon {
     cursor: pointer;
@@ -97,6 +99,7 @@ const style = css`
       align-items: center;
     }
   }
+
   .user-name {
     cursor: pointer;
     font-size: ${props => props.theme.typography.fontSizes.fs13};
@@ -123,6 +126,7 @@ const style = css`
   .product-image {
     height: 25px;
     width: 20px;
+    margin-left: 25px;
     @media ${props => props.theme.mediaQuery.medium} {
       width: 23px;
     }
