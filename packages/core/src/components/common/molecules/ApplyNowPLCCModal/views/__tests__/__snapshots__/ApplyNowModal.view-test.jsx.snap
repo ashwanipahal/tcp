@@ -25,7 +25,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     @media ",
       [Function],
       " {
-      height: props.isRtpsFlow? 100% : 70vh;
+      height: ",
+      [Function],
+      ";
     }
   }
 
@@ -453,7 +455,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
     @media ",
       [Function],
       " {
-      height: props.isRtpsFlow? 100% : 70vh;
+      height: ",
+      [Function],
+      ";
     }
   }
 
