@@ -46,6 +46,8 @@ export const getStoresByCountry = country => {
            *
            * Note: Checking configured brand name inside response brand names array as it coming as array more than
            * one brand can reside.
+           *
+           *
            */
           const responseBrandNames = store.brandName || [];
           if (responseBrandNames.find(brand => brand.toLowerCase() === configBrandName)) {
