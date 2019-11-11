@@ -374,8 +374,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 }
               }
               dataLocator="childBirthdayMonthDD"
-              id="userBirthMonth"
-              name="userBirthMonth"
+              id="childBirthMonth"
+              name="childBirthMonth"
               options={
                 Array [
                   Object {
@@ -543,8 +543,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 }
               }
               dataLocator="childBirthdayYearDD"
-              id="userBirthYear"
-              name="userBirthYear"
+              id="childBirthYear"
+              name="childBirthYear"
               options={
                 Array [
                   Object {

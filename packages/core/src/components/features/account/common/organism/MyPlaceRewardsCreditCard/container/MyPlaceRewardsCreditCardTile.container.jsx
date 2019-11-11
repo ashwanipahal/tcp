@@ -15,7 +15,6 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
     cardList: PropTypes.shape({}),
     toggleModal: PropTypes.func,
     handleComponentChange: PropTypes.func,
-    navigation: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -26,7 +25,6 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
     cardList: {},
     toggleModal: () => {},
     handleComponentChange: () => {},
-    navigation: null,
   };
 
   componentDidMount() {
@@ -41,7 +39,7 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
   };
 
   render() {
-    const { cardList, labels, handleComponentChange, navigation } = this.props;
+    const { cardList, labels, handleComponentChange, toggleModal } = this.props;
     const cardListValue = cardList && cardList.get(0);
     return (
       <MyPlaceRewardsCreditCardComponent
@@ -49,7 +47,7 @@ export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
         labels={labels}
         openModal={this.openModal}
         handleComponentChange={handleComponentChange}
-        navigation={navigation}
+        toggleModal={toggleModal}
       />
     );
   }

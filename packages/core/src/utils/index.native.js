@@ -66,6 +66,7 @@ export {
   getStyliticsUserName,
   getStyliticsRegion,
   canUseDOM,
+  calculatePriceValue,
   getProductUrlForDAM,
 } from './utils';
 
