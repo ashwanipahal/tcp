@@ -7,6 +7,7 @@ import {
   briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
+  getServerErrorMessage,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
@@ -17,7 +18,7 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
-import {
+import CHECKOUT_ACTIONS, {
   setOnFileAddressKey,
   setGiftWrap,
   getVenmoClientTokenSuccess,
@@ -335,4 +336,15 @@ export function* redirectToBilling() {
   } else {
     yield put(getSetCheckoutStage(constants.BILLING_DEFAULT_PARAM));
   }
+}
+
+export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
+  const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
+  const billingError = getServerErrorMessage(e, errorsMapping);
+  yield put(
+    CHECKOUT_ACTIONS.setServerErrorCheckout({
+      errorMessage: billingError,
+      component: componentName,
+    })
+  );
 }

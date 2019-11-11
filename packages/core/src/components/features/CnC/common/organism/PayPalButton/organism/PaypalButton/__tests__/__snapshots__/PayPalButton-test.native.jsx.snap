@@ -26,7 +26,7 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
     scrollEnabled={true}
     source={
       Object {
-        "uri": "/abc/static/paypal/index.html?key=abcd&paypalEnv=sandbox",
+        "uri": "/abc/static/paypal/index.html?key=abcd&paypalEnv=sandbox&paypalColor=white",
       }
     }
     startInLoadingState={true}

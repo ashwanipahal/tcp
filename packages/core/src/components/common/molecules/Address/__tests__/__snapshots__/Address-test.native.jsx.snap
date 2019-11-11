@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Address component should renders correctly 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "maxWidth": 375,
+    }
+  }
+>
   <Styled(BodyCopy)
     accessibilityText=""
     color="gray.900"
@@ -11,7 +17,8 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="semibold"
     margin={null}
     numberOfLines={null}
-    text="test test "
+    style={true}
+    text="test test test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -78,7 +85,13 @@ exports[`Address component should renders correctly 1`] = `
 `;
 
 exports[`Address component should renders correctly when address Line 1 and 2 are not present 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "maxWidth": 375,
+    }
+  }
+>
   <Styled(BodyCopy)
     accessibilityText=""
     color="gray.900"
@@ -88,7 +101,8 @@ exports[`Address component should renders correctly when address Line 1 and 2 ar
     fontWeight="semibold"
     margin={null}
     numberOfLines={null}
-    text="test test "
+    style={true}
+    text="test test test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -131,7 +145,13 @@ exports[`Address component should renders correctly when address Line 1 and 2 ar
 `;
 
 exports[`Address component should renders correctly when city & state are not present 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "maxWidth": 375,
+    }
+  }
+>
   <Styled(BodyCopy)
     accessibilityText=""
     color="gray.900"
@@ -141,7 +161,8 @@ exports[`Address component should renders correctly when city & state are not pr
     fontWeight="semibold"
     margin={null}
     numberOfLines={null}
-    text="test test "
+    style={true}
+    text="test test test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -208,7 +229,13 @@ exports[`Address component should renders correctly when city & state are not pr
 `;
 
 exports[`Address component should renders correctly when city is not present 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "maxWidth": 375,
+    }
+  }
+>
   <Styled(BodyCopy)
     accessibilityText=""
     color="gray.900"
@@ -218,7 +245,8 @@ exports[`Address component should renders correctly when city is not present 1`]
     fontWeight="semibold"
     margin={null}
     numberOfLines={null}
-    text="test test "
+    style={true}
+    text="test test test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -285,7 +313,13 @@ exports[`Address component should renders correctly when city is not present 1`]
 `;
 
 exports[`Address component should renders correctly when optional fields are not present 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "maxWidth": 375,
+    }
+  }
+>
   <Styled(BodyCopy)
     accessibilityText=""
     color="gray.900"
@@ -295,7 +329,8 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="semibold"
     margin={null}
     numberOfLines={null}
-    text="test test "
+    style={true}
+    text="test test test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -362,7 +397,13 @@ exports[`Address component should renders correctly when optional fields are not
 `;
 
 exports[`Address component should renders correctly when showName is switched off 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "maxWidth": 375,
+    }
+  }
+>
   <Styled(BodyCopy)
     accessibilityText=""
     color="gray.900"

@@ -1,4 +1,5 @@
 import { fromJS, List } from 'immutable';
+import LOGOUT_CONSTANTS from '@tcp/core/src/components/features/account/Logout/LogOut.constants';
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
@@ -29,7 +30,10 @@ const updateAddressList = (state, action) => {
   return updatedAddressList;
 };
 
-const getDefaultState = state => {
+const getDefaultState = (state, action) => {
+  if (action.type === LOGOUT_CONSTANTS.LOGOUT_APP) {
+    return initialState;
+  }
   // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
   if (state instanceof Object) {
     return fromJS(state);
@@ -47,6 +51,23 @@ const setAddressList = (state, action) => {
     );
 };
 
+const setDefaultShippingAddress = (state, action) => {
+  return state
+    .set(
+      'list',
+      List(
+        state.get('list').map(item => {
+          return Object.assign({}, item, {
+            primary: item.nickName === action.payload.nickName ? 'true' : 'false',
+            addressId:
+              item.nickName === action.payload.nickName ? action.payload.addressId : item.addressId,
+          });
+        })
+      )
+    )
+    .set('showUpdatedNotification', 'success');
+};
+
 const AddressBookReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADDRESS_BOOK_CONSTANTS.SHOW_LOADER:
@@ -54,22 +75,7 @@ const AddressBookReducer = (state = initialState, action) => {
     case ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_LIST:
       return setAddressList(state, action);
     case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS:
-      return state
-        .set(
-          'list',
-          List(
-            state.get('list').map(item => {
-              return Object.assign({}, item, {
-                primary: item.nickName === action.payload.nickName ? 'true' : 'false',
-                addressId:
-                  item.nickName === action.payload.nickName
-                    ? action.payload.addressId
-                    : item.addressId,
-              });
-            })
-          )
-        )
-        .set('showUpdatedNotification', 'success');
+      return setDefaultShippingAddress(state, action);
     case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED:
       return state.set('error', action.payload).set('showUpdatedNotification', 'error');
     case ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE:
@@ -88,7 +94,7 @@ const AddressBookReducer = (state = initialState, action) => {
     case ADDRESS_BOOK_CONSTANTS.CLEAR_GET_ADDRESS_LIST_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
     default:
-      return getDefaultState(state);
+      return getDefaultState(state, action);
   }
 };
 
