@@ -19,7 +19,6 @@ type Props = {
   playIconButtonLabel: String,
   pauseIconButtonLabel: String,
   sliderImageIndex: number,
-  resetSliderDots: Boolean,
 };
 
 type State = {
