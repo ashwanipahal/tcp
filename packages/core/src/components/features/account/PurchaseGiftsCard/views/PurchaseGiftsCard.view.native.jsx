@@ -53,7 +53,7 @@ export const PurchaseGiftsCard = ({ labels, navigation }) => {
       <TouchabelContainer
         onPress={() => {
           navigation.navigate('ProductDetail', {
-            title: getLabelValue(labels, 'lbl_purchaseGiftsCard_giftCardsTitle', 'common'),
+            title: 'Gift Cards',
             pdpUrl: 'Gift Card',
           });
         }}

@@ -434,7 +434,7 @@ class AccountOverview extends PureComponent<Props> {
           <TouchabelContainer
             onPress={() => {
               navigation.navigate('GiftCardPage', {
-                title: getLabelValue(commonLabels, 'lbl_common_giftCards'),
+                title: 'Gift Cards',
                 pdpUrl: 'Gift Card',
               });
             }}
