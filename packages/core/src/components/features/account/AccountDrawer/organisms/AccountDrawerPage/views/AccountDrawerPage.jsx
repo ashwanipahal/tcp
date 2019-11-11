@@ -8,12 +8,14 @@ import ExtraPointsTeaser from '../../../molecules/ExtraPointsTeaser';
 import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLinks';
 import MyOffersCoupons from '../../../../common/organism/MyOffersCoupons';
 import { isCanada } from '../../../../../../../utils';
+import OrderNotification from '../../../../OrderNotification';
 
 const AccountDrawerPage = props => {
   const { className, plccUser, userName, closedOverlay, labels, globalLabels } = props;
   const isCA = isCanada();
   return (
     <div className={className}>
+      <OrderNotification />
       <AccountDrawerHeading userName={userName} closedOverlay={closedOverlay} />
       {!isCA && (
         <>
