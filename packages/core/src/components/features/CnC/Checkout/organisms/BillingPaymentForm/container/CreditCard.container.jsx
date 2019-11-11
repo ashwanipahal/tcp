@@ -334,7 +334,6 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       getPayPalSettings,
       isPayPalWebViewEnable,
     } = this.props;
-
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
       <BillingPaymentForm

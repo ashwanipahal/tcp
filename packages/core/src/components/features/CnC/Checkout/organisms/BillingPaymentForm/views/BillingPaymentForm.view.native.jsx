@@ -29,6 +29,7 @@ import {
   SubHeader,
   CreditCardHeader,
   CreditCardWrapper,
+  PayPalTextContainer,
   PaymentMethodMainWrapper,
   PaymentMethodImage,
 } from '../styles/BillingPaymentForm.style.native';
@@ -365,6 +366,7 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
       isPaymentDisabled,
       setCheckoutStage,
+      getPayPalSettings,
       isPayPalWebViewEnable,
       isPayPalEnabled,
     } = this.props;
@@ -399,15 +401,17 @@ export class BillingPaymentForm extends React.PureComponent {
               />
             </FormSection>
             {isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL ? (
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs16"
-                fontWeight="regular"
-                spacingStyles="margin-bottom-MED"
-                color="gray.900"
-                dataLocator="paymentMethodLbl"
-                text={labels.payPalLongText}
-              />
+              <PayPalTextContainer>
+                <BodyCopy
+                  fontFamily="primary"
+                  fontSize="fs16"
+                  fontWeight="regular"
+                  spacingStyles="margin-bottom-MED"
+                  color="gray.900"
+                  dataLocator="paymentMethodLbl"
+                  text={labels.payPalLongText}
+                />
+              </PayPalTextContainer>
             ) : null}
             {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
               this.getCreditCardWrapper({
@@ -435,6 +439,7 @@ export class BillingPaymentForm extends React.PureComponent {
           }
           pageCategory="billing"
           showAccordian
+          getPayPalSettings={getPayPalSettings}
           showPayPalButton={isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL}
           isPayPalWebViewEnable={isPayPalWebViewEnable}
         />

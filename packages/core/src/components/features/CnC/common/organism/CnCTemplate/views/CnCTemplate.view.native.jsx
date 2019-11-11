@@ -64,7 +64,10 @@ const CnCCommonTemplate = ({
             </BonusPointsWrapper>
           )}
 
-          <ButtonWrapper isPayPalWebViewEnable={isPayPalWebViewEnable}>
+          <ButtonWrapper
+            showPayPalButton={showPayPalButton}
+            isPayPalWebViewEnable={isPayPalWebViewEnable}
+          >
             {showPayPalButton && (
               <PayPalButtonContainer>
                 <PayPalButton

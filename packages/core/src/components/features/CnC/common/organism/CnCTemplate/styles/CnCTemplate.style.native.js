@@ -82,11 +82,20 @@ export const CnContent = styled.View`
   ${applyPositionClassStyle}
 `;
 
+const payPalSpace = props => {
+  if (props.showPayPalButton) {
+    return `
+    margin:0px;
+    `;
+  }
+  return 'margin: 0 20px;';
+};
+
 export const ButtonWrapper = styled.View`
-  margin: 0 10px;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  ${payPalSpace}
   ${applyPositionClassStyle}
 `;
 
