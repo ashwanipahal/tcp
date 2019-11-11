@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
-import { getViewportInfo } from '@tcp/core/src/utils';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -16,7 +15,13 @@ import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getPaypalButton() {
-    const { showAddTobag, containerId, isBagPageStickyHeader, isPayPalHidden } = this.props;
+    const {
+      showAddTobag,
+      containerId,
+      isBagPageStickyHeader,
+      isPayPalHidden,
+      paypalButtonHeight,
+    } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
       containerID = 'paypal-button-container-bag-header';
@@ -27,7 +32,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
           <PayPalButton
             className="payPal-button"
             containerId={containerID}
-            height={isBagPageStickyHeader || getViewportInfo().isMobile ? 42 : 48}
+            height={paypalButtonHeight}
           />
         </div>
       )
@@ -155,6 +160,7 @@ AddedToBagActions.propTypes = {
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
   venmoError: PropTypes.string,
+  paypalButtonHeight: PropTypes.number,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
@@ -162,6 +168,7 @@ AddedToBagActions.defaultProps = {
   isBagPageStickyHeader: false,
   isUSSite: true,
   venmoError: '',
+  paypalButtonHeight: 48,
 };
 
 export default withStyles(AddedToBagActions, style);

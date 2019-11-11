@@ -41,6 +41,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       orderId,
       isPayPalHidden,
       payPalTop,
+      paypalButtonHeight,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -68,6 +69,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         orderId={orderId}
         isPayPalHidden={isPayPalHidden}
         payPalTop={payPalTop}
+        paypalButtonHeight={paypalButtonHeight}
       />
     );
   }
