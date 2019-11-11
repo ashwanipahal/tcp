@@ -267,6 +267,7 @@ class ProductAltImages extends React.PureComponent {
             dataLocator={getLocator('global_productimg_imagelink')}
             imgData={imgData}
             isProductImage
+            lazyLoad={false}
           />
         </Anchor>
         {this.renderSoldOutSection()}
@@ -302,6 +303,7 @@ class ProductAltImages extends React.PureComponent {
             dataLocator={getLocator('global_productimg_imagelink')}
             imgData={imgData}
             isProductImage
+            lazyLoad={false}
           />
         </Anchor>
         <button
