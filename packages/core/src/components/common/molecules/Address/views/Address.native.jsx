@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import BodyCopy from '../../../atoms/BodyCopy';
+import { getScreenWidth } from '../../../../../utils/index.native';
 
 // @flow
 
@@ -17,8 +18,6 @@ type Props = {
     phone1: ?string,
   },
   dataLocatorPrefix: ?string,
-  className: string,
-  fontWeight: string,
   showPhone?: boolean,
   showCountry?: boolean,
 };
@@ -37,7 +36,11 @@ type GetAddressLineProps = {
   },
 };
 
-const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle, fontSize }) => {
+const style = {
+  maxWidth: getScreenWidth() / 2,
+};
+
+const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { fontSize }) => {
   return (
     <React.Fragment>
       {address.addressLine1 ? (
@@ -47,7 +50,6 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
           fontWeight="regular"
           text={address.addressLine1}
           color="gray.900"
-          {...customStyle}
         />
       ) : null}
       {address.addressLine2 ? (
@@ -57,14 +59,13 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
           fontWeight="regular"
           text={address.addressLine2}
           color="gray.900"
-          {...customStyle}
         />
       ) : null}
     </React.Fragment>
   );
 };
 
-const getAddessLines = ({ address, customStyle, fontSize }) => {
+const getAddessLines = ({ address, fontSize }) => {
   return address.addressLine
     .filter(al => al && al.trim() !== '')
     .map(addressLine => (
@@ -74,21 +75,20 @@ const getAddessLines = ({ address, customStyle, fontSize }) => {
         fontWeight="regular"
         text={addressLine}
         color="gray.900"
-        {...customStyle}
       />
     ));
 };
 
-const getNameFromAddress = (address, customStyle, showDefaultText, regularName) => {
+const getNameFromAddress = (address, showDefaultText, regularName) => {
   const name = `${address.firstName} ${address.lastName} ${showDefaultText ? '(Default)' : ''}`;
   return (
     <BodyCopy
       fontSize="fs14"
       fontFamily="secondary"
       fontWeight={regularName ? 'regular' : 'semibold'}
-      text={name}
+      text={`${name}${name}`}
       color="gray.900"
-      {...customStyle}
+      style
     />
   );
 };
@@ -105,18 +105,17 @@ const Address = ({
   dataLocatorPrefix,
   showPhone,
   showCountry,
-  customStyle,
   showName,
   showDefaultText,
   fontSize,
   regularName,
 }: Props) => {
   return address ? (
-    <View>
-      {showName && getNameFromAddress(address, customStyle, showDefaultText, regularName)}
+    <View style={style}>
+      {showName && getNameFromAddress(address, showDefaultText, regularName)}
       {address.addressLine
-        ? getAddessLines({ address, dataLocatorPrefix, customStyle, fontSize })
-        : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle, fontSize })}
+        ? getAddessLines({ address, dataLocatorPrefix, fontSize })
+        : getAddressfromDiffLines({ address, dataLocatorPrefix }, { fontSize })}
       <BodyCopy
         fontSize={fontSize}
         fontFamily="secondary"
@@ -125,7 +124,6 @@ const Address = ({
           address.state ? `${address.state} ` : ''
         }${address.zipCode}`}
         color="gray.900"
-        {...customStyle}
       />
       {showCountry && !!address.country && (
         <BodyCopy
@@ -134,7 +132,6 @@ const Address = ({
           fontWeight="regular"
           text={address.country}
           color="gray.900"
-          {...customStyle}
         />
       )}
       {showPhone && !!address.phone1 && (
@@ -144,7 +141,6 @@ const Address = ({
           fontWeight="regular"
           text={address.phone1}
           color="gray.900"
-          {...customStyle}
         />
       )}
     </View>
@@ -153,7 +149,6 @@ const Address = ({
 
 Address.propTypes = {
   showName: PropTypes.bool,
-  customStyle: PropTypes.shape({}),
   showDefaultText: PropTypes.bool,
   fontSize: PropTypes.string,
   regularName: PropTypes.bool,
@@ -163,7 +158,6 @@ Address.defaultProps = {
   showPhone: true,
   showCountry: true,
   showName: true,
-  customStyle: {},
   showDefaultText: false,
   fontSize: 'fs14',
   regularName: false,

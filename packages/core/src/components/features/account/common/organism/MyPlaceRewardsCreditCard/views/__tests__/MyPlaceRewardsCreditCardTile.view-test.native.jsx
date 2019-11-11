@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MyPlaceRewardsCreditCardTile from '../MyPlaceRewardsCreditCardTile.view.native';
+import { MyPlaceRewardsCreditCardTile } from '../MyPlaceRewardsCreditCardTile.view.native';
 
 describe('MyPlaceRewardsCreditCardTile component', () => {
   const labels = {

@@ -54,7 +54,7 @@ const getCrossBrandFlags = (state, key) => {
 export const getIsBossAppEnabled = state => {
   const brand = getBrand();
   const { brandFlag, otherBrandFlag } = getCrossBrandFlags(state, 'BOSS_ENABLED_APP');
-  if (brand.toUpperCase() === API_CONFIG.TCP_CONFIG_OPTIONS.brandId.toUpperCase()) {
+  if (brand && brand.toUpperCase() === API_CONFIG.TCP_CONFIG_OPTIONS.brandId.toUpperCase()) {
     return { isBossEnabledAppTCP: brandFlag, isBossEnabledAppGYM: otherBrandFlag };
   }
 
@@ -62,14 +62,14 @@ export const getIsBossAppEnabled = state => {
 };
 
 export const getIsBossEnabled = (state, brand = getBrand()) => {
-  const isBOSSEnabled = `isBOSSEnabled_${brand.toUpperCase()}`;
+  const isBOSSEnabled = brand && `isBOSSEnabled_${brand.toUpperCase()}`;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOSSEnabled]
   );
 };
 
 export const getIsBopisEnabled = (state, brand = getBrand()) => {
-  const isBOPISEnabled = `isBOPISEnabled_${brand.toUpperCase()}`;
+  const isBOPISEnabled = brand && `isBOPISEnabled_${brand.toUpperCase()}`;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOPISEnabled]
   );
@@ -126,6 +126,10 @@ export const getIsKeepAliveProduct = state => {
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].siteDetails.KEEPALIVE_PRODUCTFLAG
   );
+};
+
+export const getCurrentSiteLanguage = state => {
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language;
 };
 
 export const getIsPayPalEnabled = state => {

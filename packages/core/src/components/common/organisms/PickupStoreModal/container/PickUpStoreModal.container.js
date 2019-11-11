@@ -3,6 +3,7 @@ import {
   PRODUCT_ADD_TO_BAG,
   PRODUCT_SKU_SELECTION_FORM,
 } from '@tcp/core/src/constants/reducer.constants';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import PickUpStoreModalView from '../views/PickUpStoreModal.view';
 import * as PickupSelectors from './PickUpStoreModal.selectors';
 import * as sessionSelectors from '../../../../../reduxStore/selectors/session.selectors';
@@ -42,6 +43,9 @@ export const mapDispatchToProps = dispatch => {
     },
     updatePickUpCartItem: payload => {
       dispatch(updateCartItem(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 };

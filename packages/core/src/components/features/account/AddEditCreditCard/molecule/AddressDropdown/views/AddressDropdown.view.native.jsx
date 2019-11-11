@@ -92,10 +92,14 @@ export class AddressDropdown extends React.PureComponent<Props> {
   componentDidUpdate(prevProps) {
     if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
     const { selectedValue, data } = this.props;
+    let selectedLabelState;
     if (prevProps.selectedValue !== selectedValue) {
-      const selectedAddress = data.filter(item => item.id === selectedValue);
-      const selectedLabelState =
-        selectedAddress && selectedAddress.length && selectedAddress[0].label;
+      // Added empty check for 'Add New Address CTA', as it doesn't have any key/id.
+      let selectedAddress = data.filter(item => item.id === selectedValue);
+      if (selectedAddress && !selectedAddress.length) {
+        selectedAddress = data.filter(item => item.id === '');
+      }
+      selectedLabelState = selectedAddress && selectedAddress.length && selectedAddress[0].label;
       this.updateState({ selectedLabelState });
     }
   }
