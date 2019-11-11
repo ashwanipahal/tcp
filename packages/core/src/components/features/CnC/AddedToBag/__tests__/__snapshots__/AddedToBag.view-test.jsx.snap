@@ -189,9 +189,6 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     top: 35%;
   }
   && .slick-prev {
-    height: ",
-            [Function],
-            ";
     top: 18%;
     margin-left: 13%;
 
@@ -229,9 +226,6 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     -webkit-transform: rotate(135deg);
   }
   && .slick-next {
-    height: ",
-            [Function],
-            ";
     top: 18%;
     margin-right: 13%;
 
@@ -265,7 +259,6 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
             [Function],
             ";
     transform: rotate(-45deg);
-    background-color: transparent;
     background: none;
   }
   && .product-list {
