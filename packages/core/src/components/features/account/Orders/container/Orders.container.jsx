@@ -28,6 +28,21 @@ export class OrdersContainer extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { ordersListItems, getOrderDetailsAction } = this.props;
+    if (
+      !prevProps.ordersListItems &&
+      ordersListItems &&
+      ordersListItems.orders &&
+      ordersListItems.orders.length > 0
+    ) {
+      const payload = {
+        orderId: ordersListItems.orders[0].orderNumber,
+      };
+      getOrderDetailsAction(payload);
+    }
+  }
+
   /**
    * This function will trigger the to get country specific orders
    * @param {string, string} - siteId companyId
