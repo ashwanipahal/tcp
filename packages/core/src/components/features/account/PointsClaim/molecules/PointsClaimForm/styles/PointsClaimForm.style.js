@@ -6,6 +6,9 @@ const styles = css`
   }
   .profileinfo-rewardsId_value {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: 0;
+    }
   }
   .image_container {
     display: flex;
