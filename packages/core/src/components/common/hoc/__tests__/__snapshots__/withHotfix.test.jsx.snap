@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/Users/erijung1/Projects/tcp/tcp-unified-experience/packages/core/src/components/common/hoc/__tests__/withHotfix.test.jsx renders even with no hotfixes defined 1`] = `<BaseComponent />`;
