@@ -4,6 +4,7 @@ exports[`AccountDrawerPage should render correctly 1`] = `
 <div
   className=""
 >
+  <Connect(Styled(OrderNotification)) />
   <Styled(AccountDrawerHeading)
     userName=""
   />
@@ -30,6 +31,7 @@ exports[`should not render RewardsPoints should renders correctly when addresses
 <div
   className=""
 >
+  <Connect(Styled(OrderNotification)) />
   <Styled(AccountDrawerHeading)
     userName=""
   />
