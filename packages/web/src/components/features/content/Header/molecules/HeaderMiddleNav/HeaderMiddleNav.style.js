@@ -15,7 +15,11 @@ const style = css`
     width: 22px;
     height: 22px;
   }
-
+  .header-middle-nav {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      margin: 14px 0;
+    }
+  }
   .header-middle-nav-search {
     @media ${props => props.theme.mediaQuery.mediumMax} {
       display: flex;
@@ -39,7 +43,6 @@ const style = css`
   .header-middle-login-section {
     justify-content: flex-end;
     align-items: center;
-    margin-top: 8px;
     display: inline-flex;
     @media ${props => props.theme.mediaQuery.mediumMax} {
       width: 75%;
@@ -55,8 +58,10 @@ const style = css`
   .header-middle-login-section .headerSearchBox {
     position: relative;
     flex-grow: unset;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      height: 100%;
+    }
   }
-
   .search-input-wrapper {
     margin-right: 30px;
     @media ${props => props.theme.mediaQuery.medium} {
@@ -70,7 +75,7 @@ const style = css`
   .account-info-section {
     display: inline-block;
     line-height: normal;
-    padding: 0px 12px;
+    margin-right: 25px;
   }
   .carrot-down-icon {
     cursor: pointer;
@@ -111,21 +116,23 @@ const style = css`
     cursor: pointer;
     display: inline-flex;
     vertical-align: baseline;
-    padding-right: 12px;
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
   }
   .product-image {
     height: 25px;
-    width: 23px;
+    width: 20px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 23px;
+    }
     vertical-align: middle;
   }
   #login {
-    padding-right: 12px;
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
   #createaccount {
-    padding-left: 12px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .rightLink {
