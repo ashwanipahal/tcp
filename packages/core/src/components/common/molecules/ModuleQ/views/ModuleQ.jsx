@@ -239,7 +239,6 @@ class ModuleQ extends React.PureComponent {
                   customArrowLeft: IconPath,
                   customArrowRight: IconPath,
                 }}
-                tabItems={divTabs}
               >
                 {selectedProductList.map((item, index) => this.getSlideItem(item, index))}
               </Carousel>
