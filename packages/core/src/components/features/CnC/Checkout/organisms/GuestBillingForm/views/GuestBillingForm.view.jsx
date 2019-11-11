@@ -11,7 +11,7 @@ import CONSTANTS, { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
-import utility from '../../../util/utility';
+import utility, { scrollToFirstError } from '../../../util/utility';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
 import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButton';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
@@ -222,5 +222,6 @@ export default reduxForm({
   form: 'checkoutBilling', // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(GuestBillingForm);
 export { GuestBillingForm as GuestBillingFormVanilla };
