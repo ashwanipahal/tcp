@@ -38,7 +38,7 @@ export class ThemeWrapper extends React.PureComponent {
       resetReduxStoreData();
       updateAppTypeHandler(appType);
       switchBrand(appType);
-      if (isLoaded) {
+      if (isLoaded && appParms && appParms.pdpUrl != null) {
         NavigationService.navigateToProductPage(appParms);
       }
     }
