@@ -536,15 +536,15 @@ export default css`
   }
 
   .percentage_inline_promo_black {
-    color: ${props => props.theme.colorPalette.black};
+    color: ${props => props.theme.colorPalette.gray[900]};
   }
 
   .spaced_text_regular_black {
     display: block;
-    color: ${props => props.theme.colorPalette.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
     font-size: ${props => props.theme.typography.fontSizes.fs20};
+    color: ${props => props.theme.colorPalette.gray[900]};
     letter-spacing: 2px;
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -554,10 +554,10 @@ export default css`
 
   .spaced_text_only_mobile {
     display: block;
-    color: ${props => props.theme.colorPalette.primary};
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
     font-size: ${props => props.theme.typography.fontSizes.fs20};
+    color: ${props => props.theme.colorPalette.gray[900]};
     letter-spacing: 2px;
 
     @media ${props => props.theme.mediaQuery.large} {

@@ -10,7 +10,6 @@ const StyledCarousal = styled(Carousel)`
     z-index: 1;
     top: 50%;
     transform: translate(0, -50%);
-    background-color: white;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: ${props => `${props.theme.spacing.ELEM_SPACING.LRG} 14px`};
@@ -31,6 +30,7 @@ const StyledCarousal = styled(Carousel)`
     position: relative;
   }
 
+  .slick-list,
   .slick-list img {
     min-height: 200px;
     max-height: 373px;
@@ -42,7 +42,7 @@ const StyledCarousal = styled(Carousel)`
 
     @media ${props => props.theme.mediaQuery.large} {
       min-height: 300px;
-      max-height: 661px;
+      max-height: 695px;
     }
   }
 `;
@@ -55,8 +55,8 @@ export default css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-   .tcp_carousel_wrapper {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  .tcp_carousel_wrapper {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .carousel-cta-button-with-eybrow-img {
@@ -73,7 +73,7 @@ export default css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .small-composite-image-header {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .small-composite-image {
     text-align: center;
@@ -82,6 +82,18 @@ export default css`
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     line-height: 0;
     display: block;
+  }
+
+  .small-composite-image img {
+    max-height: 164px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-height: 225px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 250px;
+    }
   }
 
   .promo-area-image-link-spaced {
@@ -119,6 +131,19 @@ export default css`
     .carousel-cta-button-with-eybrow-img {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
+    .stacked-button-list-wrapper .stacked-button,
+    .scroll-button-list-wrapper .scroll-button {
+      min-width: 134px;
+      margin-left: 15px;
+      &:nth-child(1) {
+        margin-left: 0;
+      }
+      button {
+        width: 134px;
+        padding-right: 4px;
+        padding-left: 4px;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -139,8 +164,23 @@ export default css`
 
     .stacked-button-list-wrapper .stacked-button,
     .scroll-button-list-wrapper .scroll-button {
+      min-width: 142px;
+      margin-left: 15px;
+      margin-right: 0;
+      padding: 0;
+      &:nth-child(1) {
+        margin-left: 0;
+      }
+      button {
+        width: 142px;
+      }
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.xlarge} {
+    .stacked-button-list-wrapper .stacked-button,
+    .scroll-button-list-wrapper .scroll-button {
       min-width: 174px;
-      margin: 0 8px;
       button {
         width: 174px;
       }

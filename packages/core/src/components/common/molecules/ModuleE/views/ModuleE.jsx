@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable complexity */
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,6 +12,7 @@ import config from '../moduleE.config';
 const bigCarrotIcon = 'carousel-big-carrot';
 const bigCarrotIconGym = 'carousel-big-carrot-white';
 
+// Carousel Next and Prev Arrows
 const CarouselArrow = ({ arrowType, label, onClick }) => {
   return (
     <button
@@ -35,8 +33,15 @@ const CarouselArrow = ({ arrowType, label, onClick }) => {
   );
 };
 
-const Divider = ({ position }) => {
-  return (
+CarouselArrow.propTypes = {
+  arrowType: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+// Build Top and Bottom divider
+const Divider = ({ position, disabled }) => {
+  return disabled ? null : (
     <Col
       colSize={{
         small: 6,
@@ -67,6 +72,33 @@ const Divider = ({ position }) => {
         </Col>
       </Row>
     </Col>
+  );
+};
+
+Divider.propTypes = {
+  position: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+};
+
+/* Returns Promo Area Image */
+const getLinkedImage = (linkedImage, carouselCtaType, IMG_DATA) => {
+  return (
+    linkedImage && (
+      <Anchor
+        dataLocator={`${getLocator('moduleE_promo_area_img_cta')}`}
+        className={`promo-area-image-link ${
+          carouselCtaType === 'button' ? 'promo-area-image-link-spaced' : ''
+        }`}
+        url={linkedImage.link.url}
+      >
+        <DamImage
+          imgConfigs={IMG_DATA.promoAreaImgConfig}
+          imgData={linkedImage.image}
+          data-locator={`${getLocator('moduleE_promo_area_img')}`}
+          className="module-e-img-full-width"
+        />
+      </Anchor>
+    )
   );
 };
 
@@ -119,7 +151,7 @@ const ModuleE = props => {
         medium: true,
       }}
     >
-      {eyebrow ? null : <Divider position="top" />}
+      <Divider disabled={!!eyebrow} position="top" />
 
       <Col
         colSize={{
@@ -196,22 +228,7 @@ const ModuleE = props => {
         {/* ---------- Promo Text End ----------- */}
 
         {/* ----------- Promo Image Area Start----------- */}
-        {linkedImage && (
-          <Anchor
-            dataLocator={`${getLocator('moduleE_promo_area_img_cta')}`}
-            className={`promo-area-image-link ${
-              carouselCtaType === 'button' ? 'promo-area-image-link-spaced' : ''
-            }`}
-            url={linkedImage.link.url}
-          >
-            <DamImage
-              imgConfigs={IMG_DATA.promoAreaImgConfig}
-              imgData={linkedImage.image}
-              data-locator={`${getLocator('moduleE_promo_area_img')}`}
-              className="module-e-img-full-width"
-            />
-          </Anchor>
-        )}
+        {getLinkedImage(linkedImage, carouselCtaType, IMG_DATA)}
         {/* ----------- Promo Image Area End----------- */}
 
         {/* ---------- Carousel Image layout Start ----------- */}
@@ -225,7 +242,7 @@ const ModuleE = props => {
           >
             <Carousel options={CAROUSEL_OPTIONS} carouselConfig={carouselConfig}>
               {largeCompImageSimpleCarousel.map(({ image, singleCTAButton }, index) => {
-                const { url, text } = singleCTAButton || {};
+                const { url, text, target } = singleCTAButton || {};
                 return (
                   <div>
                     <DamImage
@@ -240,7 +257,10 @@ const ModuleE = props => {
                         className="carousel-cta-link"
                         url={url}
                         title={text}
+                        target={target}
                         underline
+                        anchorVariation="primary"
+                        fontSizeVariation="large"
                       >
                         {text}
                       </Anchor>
@@ -342,6 +362,7 @@ const ModuleE = props => {
                         buttonVariation="variable-width"
                         dataLocator={`${getLocator('moduleE_small_img_cta')}${index + 1}`}
                         className="carousel-cta"
+                        fullWidth={false}
                         cta={link}
                       >
                         {link.text}
@@ -358,7 +379,7 @@ const ModuleE = props => {
         {/* ---------- Carousel Image layout End ----------- */}
       </Col>
 
-      {eyebrow ? null : <Divider position="bottom" />}
+      <Divider disabled={eyebrow} position="bottom" />
     </Row>
   );
 };

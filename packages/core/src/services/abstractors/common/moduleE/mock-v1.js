@@ -94,7 +94,7 @@ export default {
             crop_m: '',
           },
           singleCTAButton: {
-            url: dummyUrl,
+            url: 'https://google.com/u/shop-the-collection',
             text: shopTheCollectionTitle,
             title: shopTheCollectionTitle,
             target: '_blank',
@@ -112,7 +112,7 @@ export default {
             crop_m: '',
           },
           singleCTAButton: {
-            url: `${dummyUrl}/2`,
+            url: 'https://google.com/u/shop-the-collection-2',
             text: shopTheCollectionTitle,
             title: shopTheCollectionTitle,
             target: '_blank',
