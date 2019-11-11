@@ -1,23 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BodyCopy from '../../BodyCopy';
 import CustomIcon from '../../Icon';
 import { ICON_NAME } from '../../Icon/Icon.constants';
 import { ViewWithSpacing } from '../../styledWrapper/styledWrapper.native';
 import { BadgeView, DefaultBadgeView, PrimaryBadgeView } from '../Badge.style.native';
 
-// @flow
-
-type Props = {
-  children: string,
-  dataLocator: ?string,
-  primary: ?boolean,
-};
-
-const Badge = ({ children, dataLocator, primary }: Props) => {
-  const BadgeViewWrapper = primary ? PrimaryBadgeView : DefaultBadgeView;
+const Badge = ({ children, dataLocator, primary, lightGrayColor }) => {
+  const BadgeViewWrapper = primary || lightGrayColor ? PrimaryBadgeView : DefaultBadgeView;
 
   return (
-    <BadgeViewWrapper data-locator={dataLocator}>
+    <BadgeViewWrapper data-locator={dataLocator} lightGrayColor={lightGrayColor}>
       <BadgeView>
         {!primary && (
           <ViewWithSpacing spacingStyles="margin-right-XXS margin-top-XXXS margin-bottom-XXXS">
@@ -34,6 +27,20 @@ const Badge = ({ children, dataLocator, primary }: Props) => {
       </BadgeView>
     </BadgeViewWrapper>
   );
+};
+
+Badge.propTypes = {
+  children: PropTypes.string,
+  dataLocator: PropTypes.string,
+  primary: PropTypes.bool,
+  lightGrayColor: PropTypes.bool,
+};
+
+Badge.defaultProps = {
+  children: '',
+  dataLocator: '',
+  primary: false,
+  lightGrayColor: false,
 };
 
 export default Badge;

@@ -9,7 +9,7 @@ import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import { getViewportInfo, isCanada } from '@tcp/core/src/utils';
+import { getViewportInfo } from '@tcp/core/src/utils';
 import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
@@ -143,7 +143,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        {!isCanada() ? <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} /> : null}
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} className="header-promo__container" />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}

@@ -289,8 +289,8 @@ export default css`
         props.fromCondensedHeader
           ? `
           width: 437px;
-          right: 130px;
-          top: ${props.theme.spacing.ELEM_SPACING.XS};
+          right: 120px;
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
         `
           : ``};
     }

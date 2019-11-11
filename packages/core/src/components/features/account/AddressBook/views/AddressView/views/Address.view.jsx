@@ -62,7 +62,7 @@ export class AddressView extends React.PureComponent<Props> {
             <Heading
               fontFamily="secondaryFontFamily"
               HeadingLarge="six"
-              tag="h4"
+              tag="h2"
               className="addressBook__separator"
             >
               {getLabelValue(labels, 'ACC_LBL_ADDRESS_BOOK_HEADING', 'addressBook')}

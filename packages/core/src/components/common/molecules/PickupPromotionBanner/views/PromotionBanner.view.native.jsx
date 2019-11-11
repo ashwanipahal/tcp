@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '../../../hoc/withStyles';
 import { RichText } from '../../../atoms';
-import { getBrand } from '../../../../../utils';
 import CONSTANTS from '../../../../features/CnC/Checkout/Checkout.constants';
 import {
   FullBleedBannerStyle,
@@ -21,8 +20,8 @@ import {
  * @memberof PromotionBanner
  */
 export const modifiedBannerText = (label, props) => {
-  const brandName = getBrand();
-  const { bossBanner, labels, tcpSegmentValue } = props;
+  const { bossBanner, labels, tcpSegmentValue, itemBrand } = props;
+  const brandName = itemBrand.toLowerCase();
   const pickupType = bossBanner
     ? CONSTANTS.ORDER_ITEM_TYPE.BOSS.toLowerCase()
     : CONSTANTS.ORDER_ITEM_TYPE.BOPIS.toLowerCase();

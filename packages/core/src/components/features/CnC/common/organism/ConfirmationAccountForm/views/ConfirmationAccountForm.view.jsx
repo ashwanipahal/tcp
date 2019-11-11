@@ -20,6 +20,7 @@ import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStand
 import { getIconPath } from '@tcp/core/src/utils';
 import PasswordRequirement from '@tcp/core/src/components/features/account/ResetPassword/molecules/PasswordRequirement';
 import styles from '../styles/ConfirmationAccountForm.style';
+import { scrollToFirstError } from '../../../../Checkout/util/utility';
 
 /**
  * @function renderTooltip
@@ -367,6 +368,7 @@ const withReduxForm = reduxForm({
   form: 'ConfirmationCreateAccountForm', // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(ConfirmationCreateAccountForm);
 
 export default withStyles(withReduxForm, styles);
