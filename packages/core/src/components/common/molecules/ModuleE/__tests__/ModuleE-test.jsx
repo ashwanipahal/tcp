@@ -7,7 +7,7 @@ describe('ModuleE component', () => {
   it('Should render component', () => {
     const wrapper = shallow(
       <ModuleE
-        {...mock.moduleA.composites}
+        {...mock.moduleE.composites}
         accessibility={{ playIconButton: 'Play', pauseIconButton: 'Pause' }}
       />
     );

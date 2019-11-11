@@ -230,6 +230,7 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
     letter-spacing: -0.5px;
+    line-height: 46px;
     margin-bottom: ",
                 [Function],
                 ";
@@ -334,6 +335,31 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
     text-align: center;
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+
+  .spaced_text_regular_black {
+    display: block;
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+
     @media ",
                 [Function],
                 " {
@@ -597,12 +623,14 @@ exports[`ModuleK component renders correctly 1`] = `
       width: 6px;
       height: 6px;
       display: block;
-      cursor: pointer;
+      cursor: default;
       color: transparent;
       border: 0;
       outline: none;
       background: transparent;
       padding: 0;
+      pointer-events: none;
+
       &:before {
         content: '';
         box-sizing: border-box;
