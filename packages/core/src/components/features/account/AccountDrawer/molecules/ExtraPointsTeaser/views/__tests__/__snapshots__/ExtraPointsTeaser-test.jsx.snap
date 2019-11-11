@@ -5,7 +5,7 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
   className=" elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL"
 >
   <div
-    className="extraPointsWrapper elem-pt-LRG elem-pb-SM"
+    className="extraPointsWrapper elem-pt-SM elem-pb-SM"
   >
     <div
       className="earnExtra alignCenter"

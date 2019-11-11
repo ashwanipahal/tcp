@@ -1,3 +1,4 @@
+import LOGOUT_CONSTANTS from '@tcp/core/src/components/features/account/Logout/LogOut.constants';
 import MY_PREFERENCE_CONSTANTS from '../MyPreferenceSubscription.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
@@ -19,7 +20,6 @@ const MyPreferenceSubscriptionReducer = (state = initialState, action) => {
       Object.assign({}, state, {
         isFetching: false,
       });
-
       return {
         ...state,
         ...{
@@ -27,6 +27,8 @@ const MyPreferenceSubscriptionReducer = (state = initialState, action) => {
           [DEFAULT_REDUCER_KEY]: setCacheTTL(MY_PREFERENCE_CONSTANTS.GET_SUBSCRIBE_STORE_TTL),
         },
       };
+    case LOGOUT_CONSTANTS.LOGOUT_APP:
+      return { ...initialState };
     default:
       return state;
   }

@@ -21,11 +21,12 @@
         return vars;
       }
       const paypalEnv = getUrlVars()['paypalEnv'];
+      const paypalColor = getUrlVars()["paypalColor"];
       paypal.Button.render(
         {
           style: {
             size: 'responsive',
-            color: 'blue',
+            color: paypalColor,
             shape: 'rect',
             tagline: false,
             height: 42,
