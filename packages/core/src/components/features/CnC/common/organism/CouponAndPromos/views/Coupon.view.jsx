@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import CouponSkeleton from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/skeleton/CouponSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Col from '../../../../../../common/atoms/Col';
@@ -11,7 +12,6 @@ import CouponHelpModal from './CouponHelpModal.view';
 import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
-import CouponSkeleton from '../../../../CartItemTile/molecules/CartItemTile/skelton/CoupounSkeleton.view';
 
 // import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 

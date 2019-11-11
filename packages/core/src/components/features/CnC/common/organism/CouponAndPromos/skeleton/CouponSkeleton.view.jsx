@@ -4,7 +4,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
-import styles from './CoupounSkeleton.style';
+import styles from './CouponSkeleton.style';
 
 const CouponSkeleton = ({ className, heading, couponList, labels }) => {
   return (
