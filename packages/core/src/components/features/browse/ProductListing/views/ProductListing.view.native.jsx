@@ -61,7 +61,7 @@ const onRenderHeader = data => {
   } = data;
   return (
     <ListHeaderContainer>
-      <PromoModules plpTopPromos={plpTopPromos} />
+      <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />
       {totalProductsCount && totalProductsCount > 1 && (
         <FilterModal
           filters={filters}

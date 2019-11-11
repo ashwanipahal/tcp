@@ -49,6 +49,15 @@ class ProductListingContainer extends React.PureComponent {
     this.makeApiCall();
   }
 
+  componentDidUpdate({ navigation: oldNavigation }) {
+    const { getProducts, navigation } = this.props;
+    const oldNavigationUrl = oldNavigation.getParam('url');
+    const newNavigationUrl = navigation.getParam('url');
+    if (navigation && oldNavigationUrl !== newNavigationUrl) {
+      getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
+    }
+  }
+
   makeApiCall = () => {
     const { getProducts, navigation } = this.props;
     this.categoryUrl = navigation && navigation.getParam('url');

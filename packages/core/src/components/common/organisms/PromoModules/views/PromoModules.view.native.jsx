@@ -24,7 +24,9 @@ const modules = {
   moduleQ: ModuleQ,
 };
 
-const PromoModules = ({ categoryPath, plpTopPromos }) => {
+const PromoModules = ({ plpTopPromos, navigation }) => {
+  const asPath = navigation.getParam('url').split('?cid=');
+  const navAsPath = `${asPath[0]}/${asPath[1]}`;
   return (
     plpTopPromos &&
     plpTopPromos.map(promo => {
@@ -33,7 +35,14 @@ const PromoModules = ({ categoryPath, plpTopPromos }) => {
       return (
         Module &&
         promo && (
-          <Module key={contentId} data={promo} asPath={categoryPath} {...slotData} {...others} />
+          <Module
+            key={contentId}
+            data={promo}
+            asPath={navAsPath}
+            navigation={navigation}
+            {...slotData}
+            {...others}
+          />
         )
       );
     })
