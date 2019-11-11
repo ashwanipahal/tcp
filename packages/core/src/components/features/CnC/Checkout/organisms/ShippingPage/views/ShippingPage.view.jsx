@@ -37,6 +37,7 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
     formatPayload: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
@@ -53,6 +54,7 @@ export default class ShippingPage extends React.PureComponent {
     setVenmoPickupState: PropTypes.func,
     shippingPhoneAndEmail: PropTypes.shape({}),
     ServerErrors: PropTypes.node.isRequired,
+    isRegisteredUserCallDone: PropTypes.bool.isRequired,
     pageCategory: PropTypes.string,
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
@@ -101,35 +103,13 @@ export default class ShippingPage extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      address,
-      selectedShipmentId,
-      updateShippingMethodSelection,
-      shippingAddressId,
-    } = this.props;
-    const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
-    if (address && prevAddress) {
-      const {
-        address: { addressLine1, addressLine2 },
-        loadShipmentMethods,
-      } = this.props;
-      const {
-        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
-      } = prevProps;
-      if (
-        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
-        hasPOBox(addressLine1, addressLine2)
-      ) {
-        loadShipmentMethods({ formName: 'checkoutShipping' });
-      }
+    const { shippingDidMount, isRegisteredUserCallDone } = this.props;
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      shippingDidMount();
     }
-    if (
-      shippingAddressId &&
-      prevSelectedShipmentId &&
-      selectedShipmentId !== prevSelectedShipmentId
-    ) {
-      updateShippingMethodSelection({ id: selectedShipmentId });
-    }
+    this.extendedComponentDidUpdate(prevProps);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -159,6 +139,19 @@ export default class ShippingPage extends React.PureComponent {
       clearCheckoutServerError({});
     }
   }
+
+  /**
+   * @description - get shipment methods with the updated address state
+   */
+  getShipmentMethods = () => {
+    const { loadShipmentMethods, onFileAddressKey, userAddresses } = this.props;
+    if (userAddresses && userAddresses.size > 0) {
+      const address = userAddresses.find(add => add.addressId === onFileAddressKey);
+      if (address && address.state) {
+        loadShipmentMethods({ state: address.state, formName: 'checkoutShipping' });
+      }
+    }
+  };
 
   setDefaultAddressId = id => {
     this.setState({ defaultAddressId: id });
@@ -328,11 +321,46 @@ export default class ShippingPage extends React.PureComponent {
     return submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
   };
 
+  extendedComponentDidUpdate(prevProps) {
+    const {
+      selectedShipmentId,
+      updateShippingMethodSelection,
+      shippingAddressId,
+      onFileAddressKey,
+      address,
+    } = this.props;
+    const {
+      address: prevAddress,
+      onFileAddressKey: prevFileAddressKey,
+      address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
+      selectedShipmentId: prevSelectedShipmentId,
+    } = prevProps;
+    if (address && prevAddress) {
+      const {
+        address: { addressLine1, addressLine2 },
+        loadShipmentMethods,
+      } = this.props;
+      if (
+        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
+        hasPOBox(addressLine1, addressLine2)
+      ) {
+        loadShipmentMethods({ formName: 'checkoutShipping' });
+      }
+    }
+    if (onFileAddressKey !== prevFileAddressKey) {
+      this.getShipmentMethods(prevProps);
+    }
+    if (
+      shippingAddressId &&
+      prevSelectedShipmentId &&
+      selectedShipmentId !== prevSelectedShipmentId
+    ) {
+      updateShippingMethodSelection({ id: selectedShipmentId });
+    }
+  }
+
   render() {
     const {
-      addressLabels,
-      isOrderUpdateChecked,
-      isGiftServicesChecked,
       smsSignUpLabels,
       addressPhoneNumber,
       selectedShipmentId,
@@ -347,23 +375,13 @@ export default class ShippingPage extends React.PureComponent {
       isSaveToAddressBookChecked,
       userAddresses,
       onFileAddressKey,
-      isMobile,
-      newUserPhoneNo,
-      shippingAddressId,
-      setAsDefaultShipping,
-      labels,
-      address,
-      syncErrors,
-      shippingAddress,
-      isVenmoPaymentInProgress,
-      isVenmoShippingDisplayed,
-      isSubmitting,
-      formatPayload,
-      ServerErrors,
-      checkoutServerError,
-      toggleCountrySelector,
-      pageCategory,
     } = this.props;
+    const { isMobile, newUserPhoneNo, shippingAddressId } = this.props;
+    const { setAsDefaultShipping, labels, address, syncErrors } = this.props;
+    const { isSubmitting, formatPayload, ServerErrors, checkoutServerError } = this.props;
+    const { shippingAddress, isVenmoPaymentInProgress, isVenmoShippingDisplayed } = this.props;
+    const { addressLabels, isOrderUpdateChecked, isGiftServicesChecked } = this.props;
+    const { toggleCountrySelector, pageCategory, checkoutRoutingDone } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     let { submitData } = this;
@@ -371,6 +389,9 @@ export default class ShippingPage extends React.PureComponent {
       submitData = this.submitShippingAddressData;
     }
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
+    if (!checkoutRoutingDone) {
+      return <div />;
+    }
     return (
       <>
         {shipmentMethods && shipmentMethods.length > 0 && (
