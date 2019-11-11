@@ -9,5 +9,13 @@ export const getAppType = state => {
 };
 
 export const getAppTypeParams = state => {
-  return state[THEME_WRAPPER_REDUCER_KEY].get('APP_PARAMS');
+  return {
+    title: state[THEME_WRAPPER_REDUCER_KEY].getIn(['APP_PARAMS', 'title']),
+    pdpUrl: state[THEME_WRAPPER_REDUCER_KEY].getIn(['APP_PARAMS', 'pdpUrl']),
+    selectedColorProductId: state[THEME_WRAPPER_REDUCER_KEY].getIn([
+      'APP_PARAMS',
+      'selectedColorProductId',
+    ]),
+    reset: state[THEME_WRAPPER_REDUCER_KEY].getIn(['APP_PARAMS', 'reset']),
+  };
 };
