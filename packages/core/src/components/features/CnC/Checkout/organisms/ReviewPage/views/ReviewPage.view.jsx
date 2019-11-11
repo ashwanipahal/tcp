@@ -7,7 +7,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
-import utility from '../../../util/utility';
+import utility, { scrollToFirstError } from '../../../util/utility';
 import { Anchor } from '../../../../../../common/atoms';
 import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
@@ -198,5 +198,6 @@ export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(ReviewPage, styles));
 export { ReviewPage as ReviewPageVanilla };

@@ -18,7 +18,7 @@ exports[`Address component should renders correctly 1`] = `
     margin={null}
     numberOfLines={null}
     style={true}
-    text="test test test test "
+    text="test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -102,7 +102,7 @@ exports[`Address component should renders correctly when address Line 1 and 2 ar
     margin={null}
     numberOfLines={null}
     style={true}
-    text="test test test test "
+    text="test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -162,7 +162,7 @@ exports[`Address component should renders correctly when city & state are not pr
     margin={null}
     numberOfLines={null}
     style={true}
-    text="test test test test "
+    text="test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -246,7 +246,7 @@ exports[`Address component should renders correctly when city is not present 1`]
     margin={null}
     numberOfLines={null}
     style={true}
-    text="test test test test "
+    text="test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
@@ -330,7 +330,7 @@ exports[`Address component should renders correctly when optional fields are not
     margin={null}
     numberOfLines={null}
     style={true}
-    text="test test test test "
+    text="test test "
     textDecoration={null}
   />
   <Styled(BodyCopy)
