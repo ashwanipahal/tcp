@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CheckoutProgressIndicator component should renders correctly if routing not done 1`] = `
+<div>
+  Loading....
+</div>
+`;
+
 exports[`CheckoutProgressIndicator component should renders correctly props not present 1`] = `
 <div
   className=""
@@ -7,7 +13,6 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="billing-title"
   />
-  <[object Object] />
   <Connect(GiftCardsContainer) />
   <div
     className="payment-container"

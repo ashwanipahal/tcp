@@ -46,3 +46,9 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
   />
 </form>
 `;
+
+exports[`ReviewPageVanilla component should renders correctly when not routing done  1`] = `
+<div>
+  Loading....
+</div>
+`;
