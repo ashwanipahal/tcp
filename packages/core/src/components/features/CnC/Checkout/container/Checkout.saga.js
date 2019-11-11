@@ -233,13 +233,18 @@ function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouting) {
   return pageName;
 }
 
+function* triggerInternationalCheckoutIfRequired() {
+  const isInternationalShipping = yield select(getIsInternationalShipping);
+  if (isInternationalShipping && !isMobileApp()) {
+    return utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout);
+  }
+  return null;
+}
+
 function* initCheckoutSectionData({
   payload: { recalc, pageName, isPaypalPostBack, initialLoad, appRouting },
 }) {
-  const isInternationalShipping = yield select(getIsInternationalShipping);
-  if (isInternationalShipping) {
-    return utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout);
-  }
+  yield call(triggerInternationalCheckoutIfRequired);
   const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
