@@ -22,7 +22,7 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
         "*",
       ]
     }
-    scalesPageToFit={true}
+    scalesPageToFit={false}
     scrollEnabled={true}
     source={
       Object {

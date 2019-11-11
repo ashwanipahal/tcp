@@ -24,6 +24,8 @@ class OutfitListingContainer extends React.PureComponent {
       longDescription,
       categoryId,
       navigation,
+      plpTopPromos,
+      asPathVal,
     } = this.props;
 
     const outfitPath = asPath || (navigation && navigation.getParam('outfitPath'));
@@ -39,6 +41,8 @@ class OutfitListingContainer extends React.PureComponent {
         categoryId={categoryId}
         asPath={outfitPath}
         navigation={navigation}
+        plpTopPromos={plpTopPromos}
+        asPathVal={asPathVal}
       />
     );
   }
@@ -70,6 +74,8 @@ OutfitListingContainer.propTypes = {
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
   navigation: PropTypes.instanceOf(Object),
+  plpTopPromos: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
 };
 
 OutfitListingContainer.defaultProps = {
@@ -81,6 +87,8 @@ OutfitListingContainer.defaultProps = {
   longDescription: '',
   categoryId: '',
   navigation: null,
+  plpTopPromos: {},
+  asPathVal: '',
 };
 
 export default connect(

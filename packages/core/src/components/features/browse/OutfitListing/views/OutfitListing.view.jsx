@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '../../../../common/atoms';
+import PromoModules from '../../../../common/organisms/PromoModules';
 import withStyles from '../../../../common/hoc/withStyles';
 import OutfitListingStyle from '../OutfitListing.style';
 import GlobalNavigationMenuDesktopL2 from '../../ProductListing/molecules/GlobalNavigationMenuDesktopL2/views';
@@ -20,9 +21,18 @@ const OutfitListingView = ({
   longDescription,
   categoryId,
   asPath,
+  plpTopPromos,
+  asPathVal,
 }) => {
   return (
     <>
+      <div className={className}>
+        <Row className="placeholder">
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <div className="promo-area-0">{labels.lbl_outfit_title}</div>
+          </Col>
+        </Row>
+      </div>
       <div className={className}>
         <Row>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
@@ -41,6 +51,9 @@ const OutfitListingView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 10 }}>
+            <Row fullBleed>
+              <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+            </Row>
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <OutfitTileSection asPath={asPath} labels={labels} outfitDetails={outfitDetails} />
               {/* <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} /> */}
@@ -72,6 +85,8 @@ OutfitListingView.propTypes = {
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
   asPath: PropTypes.string,
+  plpTopPromos: PropTypes.shape({}),
+  asPathVal: PropTypes.string,
 };
 
 OutfitListingView.defaultProps = {
@@ -83,6 +98,8 @@ OutfitListingView.defaultProps = {
   longDescription: '',
   categoryId: '',
   asPath: '',
+  plpTopPromos: {},
+  asPathVal: '',
 };
 
 export default withStyles(OutfitListingView, OutfitListingStyle);
