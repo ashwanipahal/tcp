@@ -35,7 +35,6 @@ const modules = {
 };
 
 const PromoModules = ({ asPath, plpTopPromos }) => {
-  console.log('plpTopPromos', plpTopPromos);
   return (
     <Col colSize={{ small: 6, medium: 8, desktop: 12 }}>
       {plpTopPromos &&
@@ -51,23 +50,6 @@ const PromoModules = ({ asPath, plpTopPromos }) => {
         })}
     </Col>
   );
-  // return (
-  //   plpTopPromos && plpTopPromos.map(promo => {
-  //     const { contentId, moduleName } = promo;
-  //     const Module = modules[moduleName];
-  //     return (
-  //       Module &&
-  //       promo && <Module key={contentId} data={promo} asPath={asPath} />
-  //     );
-  //   })
-  // )
-  // <Col className={className} colSize={{ small: 6, medium: 8, desktop: 12 }}>
-  //   {jeansModule && <JeansModule jeansModule={jeansModule} />}
-  //   {outfitModule && <OutfitModule outfitModule={outfitModule} />}
-  //   {divisionTab && (
-  //     <DivisionTabModule divisionTab={divisionTab} onTabChange={onTabChange} asPath={asPath} />
-  //   )}
-  // </Col>
 };
 
 PromoModules.propTypes = {
