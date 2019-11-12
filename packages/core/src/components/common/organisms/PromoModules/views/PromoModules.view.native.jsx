@@ -18,7 +18,7 @@ const modules = {
 };
 
 const PromoModules = ({ plpTopPromos, navigation }) => {
-  const asPath = navigation.getParam('url').split('?cid=');
+  const asPath = navigation && navigation.getParam('url').split('?cid=');
   const navAsPath = `${asPath[0]}/${asPath[1]}`;
   return (
     plpTopPromos &&
