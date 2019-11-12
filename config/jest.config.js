@@ -46,6 +46,9 @@ const ignorePsuedoCodeDir = [
   '/LabeledRadioButton/',
   '/ReactToolTip/',
   '/ModuleQ/',
+  '/ListingPage/',
+  '/PromoModules/',
+  '/Navigation/',
 ];
 
 module.exports = {

@@ -1,8 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
-import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/PromoModules.style';
 import { Col } from '../../../atoms';
 
 const defaultResolver = mod => mod.default;
@@ -62,4 +60,4 @@ PromoModules.defaultProps = {
   plpTopPromos: [],
 };
 
-export default withStyles(PromoModules, styles);
+export default PromoModules;
