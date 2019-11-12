@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { closeMiniBag } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import { closeAddedToBag } from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.actions';
+
 import {
   resetPassword,
   resetLoginForgotPasswordState,
@@ -77,6 +80,13 @@ class LoginPageContainer extends React.PureComponent {
     }
   };
 
+  closeBagModal = e => {
+    if (e) e.preventDefault();
+    const { closeMiniBagDispatch, closeAddedToBagModal } = this.props;
+    closeMiniBagDispatch();
+    closeAddedToBagModal();
+  };
+
   render() {
     const {
       onSubmit,
@@ -108,6 +118,8 @@ class LoginPageContainer extends React.PureComponent {
       rememberedUserFlag,
       userEmail,
       userName,
+      openOverlay,
+      closeModal,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage : '';
     const initialValues = {
@@ -147,6 +159,9 @@ class LoginPageContainer extends React.PureComponent {
         isRememberedUser={rememberedUserFlag}
         resetChangePasswordState={resetChangePasswordState}
         userName={userName}
+        openOverlay={openOverlay}
+        onClose={this.closeBagModal}
+        closeModal={closeModal}
       />
     );
   }
@@ -187,6 +202,8 @@ LoginPageContainer.propTypes = {
   rememberedUserFlag: PropTypes.bool,
   userEmail: PropTypes.string,
   userName: PropTypes.string,
+  closeMiniBagDispatch: PropTypes.func,
+  closeAddedToBagModal: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -206,6 +223,8 @@ LoginPageContainer.defaultProps = {
   rememberedUserFlag: false,
   userEmail: '',
   userName: '',
+  closeMiniBagDispatch: () => {},
+  closeAddedToBagModal: () => {},
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -230,6 +249,12 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));
+    },
+    closeMiniBagDispatch: () => {
+      dispatch(closeMiniBag());
+    },
+    closeAddedToBagModal: () => {
+      dispatch(closeAddedToBag());
     },
   };
 };

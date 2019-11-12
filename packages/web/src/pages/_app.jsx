@@ -244,7 +244,7 @@ class TCPWebApp extends App {
     // Just a sample - any store specific data should be set in this
     if (pageId) {
       const seoConfig = deriveSEOTags(pageId, store, router);
-      return <SEOTags seoConfig={seoConfig} />;
+      return seoConfig ? <SEOTags seoConfig={seoConfig} /> : null;
     }
     return null;
   };

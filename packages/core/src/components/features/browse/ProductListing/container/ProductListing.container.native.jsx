@@ -25,6 +25,7 @@ import {
   getScrollToTopValue,
   getTotalProductsCount,
   getIsDataLoading,
+  getPLPTopPromos,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -94,6 +95,7 @@ class ProductListingContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       labelsLogin,
+      plpTopPromos,
       ...otherProps
     } = this.props;
     return (
@@ -123,6 +125,7 @@ class ProductListingContainer extends React.PureComponent {
         onLoadMoreProducts={this.onLoadMoreProducts}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
+        plpTopPromos={plpTopPromos}
         {...otherProps}
       />
     );
@@ -173,6 +176,7 @@ function mapStateToProps(state) {
     isDataLoading: getIsDataLoading(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    plpTopPromos: getPLPTopPromos(state),
   };
 }
 
@@ -223,6 +227,7 @@ ProductListingContainer.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingContainer.defaultProps = {
@@ -245,6 +250,7 @@ ProductListingContainer.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  plpTopPromos: [],
 };
 
 export default connect(
