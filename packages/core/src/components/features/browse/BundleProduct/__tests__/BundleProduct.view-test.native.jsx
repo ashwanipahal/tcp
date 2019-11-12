@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductDetailViewVanilla } from '../views/BundleProduct.view.native';
+import { ProductBundleVanilla } from '../views/BundleProduct.view.native';
 
 describe('BundleProductDetail', () => {
   let component;
@@ -16,7 +16,7 @@ describe('BundleProductDetail', () => {
   };
 
   beforeEach(() => {
-    component = shallow(<ProductDetailViewVanilla {...props} />);
+    component = shallow(<ProductBundleVanilla {...props} />);
   });
 
   it('should be defined', () => {
@@ -24,5 +24,8 @@ describe('BundleProductDetail', () => {
   });
   it('should render correctly', () => {
     expect(component).toMatchSnapshot();
+  });
+  it('should return styled bodycopy component value one', () => {
+    expect(component.find('Styled(BodyCopy)')).toHaveLength(1);
   });
 });

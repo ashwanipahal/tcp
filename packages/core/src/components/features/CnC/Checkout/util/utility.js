@@ -1,6 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import queryString from 'query-string';
-import { getLabelValue } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -26,9 +25,10 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
-import { routerPush } from '../../../../../utils';
+import { routerPush, isMobileApp } from '../../../../../utils';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 import { getLocalStorage } from '../../../../../utils/localStorageManagement';
+import CheckoutConstants from '../Checkout.constants';
 
 const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
@@ -122,29 +122,31 @@ const isOrderHasPickup = cartItems => {
   return cartItems && cartItems.filter(item => !!item.getIn(['miscInfo', 'store'])).size;
 };
 
-const getAvailableStages = (cartItems, checkoutProgressBarLabels) => {
-  const result = [
-    getLabelValue(checkoutProgressBarLabels, 'billingLabel'),
-    getLabelValue(checkoutProgressBarLabels, 'reviewLabel'),
-  ];
-  /* istanbul ignore else */
+const getAvailableStages = cartItems => {
+  const { PICKUP, SHIPPING, BILLING, REVIEW } = CheckoutConstants.CHECKOUT_STAGES;
+  const stages = [BILLING, REVIEW];
   if (isOrderHasShipping(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'shippingLabel'));
+    stages.unshift(SHIPPING);
   }
   /* istanbul ignore else */
   if (isOrderHasPickup(cartItems)) {
-    result.unshift(getLabelValue(checkoutProgressBarLabels, 'pickupLabel'));
+    stages.unshift(PICKUP);
   }
-  return result;
+  return stages;
 };
 
 const routeToPage = (dataObj, queryParams, ...others) => {
   const { asPath } = dataObj;
   let { to } = dataObj;
   if (queryParams) {
-    to += `?${queryString.stringify(queryParams)}`;
+    if (to.indexOf('?') !== -1) {
+      to += '&';
+    }
+    to += `${queryString.stringify(queryParams)}`;
   }
-  routerPush(to, asPath, ...others);
+  if (!isMobileApp()) {
+    routerPush(to, asPath, ...others);
+  }
 };
 
 function getCreditCardType({ cardNumber = '', cardType } = {}) {
@@ -190,7 +192,20 @@ export const getExpirationRequiredFlag = ({ cardType }) => {
   return !cardType || cardType !== CreditCardConstants.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
 };
 
-export const handleReviewFormSubmit = (scope, data) => {
+export const getPayPalFlag = navigation => {
+  if (navigation && navigation.state) {
+    const {
+      state: { params },
+    } = navigation;
+    if (params) {
+      const { isPayPalFlow } = params;
+      return isPayPalFlow;
+    }
+  }
+  return false;
+};
+
+const handleReviewFormSubmit = (scope, data) => {
   const {
     submitReview,
     pickUpContactPerson,
@@ -230,6 +245,25 @@ export const handleReviewFormSubmit = (scope, data) => {
   }
 };
 
+const flattenObject = (obj, prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? `${prefix}.` : '';
+    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+
+export const scrollToFirstError = errors => {
+  const errorEl = document.querySelector(
+    Object.keys(flattenObject(errors))
+      .map(fieldName => `[name="${fieldName}"]`)
+      .join(',')
+  );
+  if (errorEl && errorEl.focus) {
+    errorEl.focus(); // this scrolls without visible scroll
+  }
+};
+
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
@@ -239,4 +273,5 @@ export default {
   routeToPage,
   getCreditCardType,
   isOrderHasShipping,
+  handleReviewFormSubmit,
 };

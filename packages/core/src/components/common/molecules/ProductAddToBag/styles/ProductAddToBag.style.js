@@ -161,8 +161,7 @@ const styles = css`
   }
 
   .size-error {
-    position: absolute;
-    margin-top: -5px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
@@ -267,7 +266,7 @@ export const giftCardDesignStyle = css`
 
     /* Image color of item */
     .color-image {
-      border: 0;
+      border-radius: 0;
       height: auto;
       width: 100%;
     }
@@ -275,9 +274,11 @@ export const giftCardDesignStyle = css`
     /* When the input is checked, the image color has black border (selected) */
     .input-radio-icon-checked + .input-radio-title {
       border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+      padding: 2px 2px;
     }
 
     .input-radio-icon-checked + .input-radio-title .color-image {
+      border-radius: 0;
       border: 0;
       height: auto;
       width: 100%;

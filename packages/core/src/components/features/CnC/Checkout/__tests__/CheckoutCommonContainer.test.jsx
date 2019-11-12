@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { formatPayload } from '../container/CheckoutCommonContainer.util';
 import { CheckoutContainer, mapDispatchToProps } from '../container/CheckoutCommonContainer';
 import { CheckoutPageVanilla } from '../views/CheckoutPage.view';
 
@@ -16,6 +17,7 @@ describe('Bag page Container', () => {
     isRegisteredUserCallDone: true,
     initCheckoutSectionPage: jest.fn(),
     router: { query: {} },
+    checkoutServerError: true,
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<CheckoutContainer {...props} />);
@@ -28,8 +30,6 @@ describe('Bag page Container', () => {
     const componentInstance = component.instance();
     componentInstance.componentDidMount();
     componentInstance.componentDidUpdate({ isRegisteredUserCallDone: 'false' });
-    componentInstance.formatPayload({});
-    componentInstance.intiSectionPage();
     componentInstance.shippingDidMount();
     componentInstance.billingDidMount();
     componentInstance.reviewDidMount();
@@ -40,8 +40,41 @@ describe('Bag page Container', () => {
     it('should return an action closeModal which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.initCheckoutSectionPage();
+      dispatchProps.submitReview();
       dispatchProps.initCheckout();
-      expect(dispatch.mock.calls).toHaveLength(1);
+      dispatchProps.submitShipping();
+      dispatchProps.onPickupSubmit();
+      dispatchProps.loadShipmentMethods();
+      dispatchProps.routeToPickupPage();
+      dispatchProps.setCheckoutStage();
+      dispatchProps.updateShippingMethodSelection();
+      dispatchProps.updateShippingAddressData();
+      dispatchProps.addNewShippingAddressData();
+      dispatchProps.submitBilling();
+      dispatchProps.fetchNeedHelpContent();
+      dispatchProps.verifyAddressAction();
+      dispatchProps.dispatchReviewReduxForm();
+      dispatchProps.submitVerifiedShippingAddressData();
+      dispatchProps.toastMessage();
+      dispatchProps.setVenmoPickupState();
+      dispatchProps.setVenmoShippingState();
+      dispatchProps.clearCheckoutServerError();
+      dispatchProps.toggleCountrySelector();
+      expect(dispatch.mock.calls).toHaveLength(21);
+    });
+  });
+
+  describe('#util methods', () => {
+    it('formatPayload', () => {
+      expect(
+        formatPayload({
+          addressLine1: 'test',
+          addressLine2: 'test',
+          zipCode: 123,
+          a: 1,
+        })
+      ).toEqual({ a: 1, address1: 'test', address2: 'test', zip: 123 });
     });
   });
 });

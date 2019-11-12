@@ -10,6 +10,8 @@ import {
   getStoreHours,
   parseUTCDate,
   getOrderGroupLabelAndMessage,
+  validateDiffInDaysNotification,
+  getOrderStatusForNotification,
 } from '../utils';
 import storesMock from '../../components/common/molecules/StoreAddressTile/__mocks__/store.mock';
 import constants from '../../components/features/account/OrderDetails/OrderDetails.constants';
@@ -306,5 +308,74 @@ describe('parseUTCDate', () => {
   it('default', () => {
     const returnDateValue = parseUTCDate('2019-10-15 20:00:00');
     expect(returnDateValue).toStrictEqual(new Date('2019-10-15T20:00:00.000Z'));
+  });
+});
+
+describe('validateDiffInDaysNotification', () => {
+  it('return true if order date is falls with in limit', () => {
+    const returnValue = validateDiffInDaysNotification('Oct 16, 2019', 30);
+    expect(returnValue).toEqual(true);
+  });
+
+  it('return false if order date is not falls with in limit', () => {
+    const returnValue = validateDiffInDaysNotification('Oct 16, 2019', 15);
+    expect(returnValue).toEqual(false);
+  });
+});
+
+describe('getOrderStatusForNotification', () => {
+  it('return Order Status', () => {
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_RECEIVED)).toEqual(
+      'lbl_orders_statusOrderReceived'
+    );
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_PROCESSING)).toEqual(
+      'lbl_global_yourOrderIsProcessing'
+    );
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_SHIPPED)).toEqual(
+      'lbl_orders_statusOrderShipped'
+    );
+    expect(
+      getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED)
+    ).toEqual('lbl_orders_statusOrderPartiallyShipped');
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_CANCELED)).toEqual(
+      'lbl_orders_statusOrderCancelled'
+    );
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ITEMS_RECEIVED)).toEqual(
+      'lbl_orders_statusOrderReceived'
+    );
+    expect(
+      getOrderStatusForNotification(constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP)
+    ).toEqual('lbl_orders_statusItemsReadyForPickup');
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ITEMS_PICKED_UP)).toEqual(
+      'lbl_orders_statusItemsPickedUp'
+    );
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_EXPIRED)).toEqual(
+      'lbl_orders_statusOrderExpired'
+    );
+    expect(
+      getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED)
+    ).toEqual('lbl_orders_statusOrderReceived');
+    expect(
+      getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY)
+    ).toEqual('lbl_global_yourOrderIsBeingProcessed');
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED)).toEqual(
+      'lbl_global_yourOrderHasBeenExpiredRefunded'
+    );
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_CANCELLED)).toEqual(
+      'lbl_global_yourOrderWasCanceled'
+    );
+    expect(
+      getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_CONTACT_CUSTOMER_SERVICE)
+    ).toEqual('lbl_global_yourOrderWasReceived');
+    expect(
+      getOrderStatusForNotification(constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP)
+    ).toEqual('lbl_global_yourOrderWasPickedUp');
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_IN_PROCESS)).toEqual(
+      'lbl_global_yourOrderWasReceived'
+    );
+  });
+  it('status Not Matched', () => {
+    const returnValue = getOrderStatusForNotification('Not Matched');
+    expect(returnValue).toEqual(returnValue);
   });
 });

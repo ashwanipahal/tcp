@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import ProductDetail from '../views';
 import { Spinner } from '../../../../common/atoms';
 import { getProductDetails } from './ProductDetail.actions';
-
 import {
   getNavTree,
   getBreadCrumbs,
@@ -103,6 +103,7 @@ class ProductDetailContainer extends React.PureComponent {
       alternateSizes,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      toastMessage,
     } = this.props;
     const isProductDataAvailable = Object.keys(currentProduct).length > 0;
     return (
@@ -130,6 +131,7 @@ class ProductDetailContainer extends React.PureComponent {
             alternateSizes={alternateSizes}
             AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
             removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+            toastMessage={toastMessage}
           />
         ) : (
           <Spinner />
@@ -177,6 +179,9 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
   };
 }
 
@@ -207,6 +212,7 @@ ProductDetailContainer.propTypes = {
   }),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  toastMessage: PropTypes.func,
 };
 
 ProductDetailContainer.defaultProps = {
@@ -229,6 +235,7 @@ ProductDetailContainer.defaultProps = {
   alternateSizes: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  toastMessage: () => {},
 };
 
 export default connect(

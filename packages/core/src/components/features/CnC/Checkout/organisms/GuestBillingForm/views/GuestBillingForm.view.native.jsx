@@ -8,7 +8,9 @@ import cvvInfo from '../../../molecules/CVVInfo';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
-import GuestBillingFormWrapper from '../styles/GuestBillingForm.styles.native';
+import GuestBillingFormWrapper, {
+  GuestBillingConatiner,
+} from '../styles/GuestBillingForm.styles.native';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
@@ -40,6 +42,10 @@ class GuestBillingForm extends React.Component {
     onSubmit: PropTypes.func.isRequired,
     creditFieldLabels: PropTypes.shape({}),
     setCheckoutStage: PropTypes.func.isRequired,
+    getPayPalSettings: PropTypes.shape({}),
+    paymentMethodId: PropTypes.string,
+    isPayPalEnabled: PropTypes.bool,
+    isPayPalWebViewEnable: PropTypes.func,
   };
 
   static defaultProps = {
@@ -56,6 +62,10 @@ class GuestBillingForm extends React.Component {
     backLinkShipping: '',
     backLinkPickup: '',
     creditFieldLabels: {},
+    getPayPalSettings: {},
+    paymentMethodId: null,
+    isPayPalEnabled: false,
+    isPayPalWebViewEnable: false,
   };
 
   /**
@@ -107,6 +117,10 @@ class GuestBillingForm extends React.Component {
       creditFieldLabels,
       isPaymentDisabled,
       setCheckoutStage,
+      paymentMethodId,
+      getPayPalSettings,
+      isPayPalEnabled,
+      isPayPalWebViewEnable,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
@@ -114,9 +128,9 @@ class GuestBillingForm extends React.Component {
     }
     const isExpirationRequired = this.getExpirationRequiredFlag();
     return (
-      <>
+      <GuestBillingConatiner isPayPalWebViewEnable={isPayPalWebViewEnable}>
         <GuestBillingFormWrapper>
-          {!isPaymentDisabled && (
+          {!isPayPalWebViewEnable && !isPaymentDisabled && (
             <>
               <BodyCopy
                 mobileFontFamily="primary"
@@ -164,9 +178,14 @@ class GuestBillingForm extends React.Component {
             }
             pageCategory="guestBilling"
             showAccordian
+            isPayPalWebViewEnable={isPayPalWebViewEnable}
+            getPayPalSettings={getPayPalSettings}
+            showPayPalButton={
+              isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL
+            }
           />
         </GuestBillingFormWrapper>
-      </>
+      </GuestBillingConatiner>
     );
   }
 }

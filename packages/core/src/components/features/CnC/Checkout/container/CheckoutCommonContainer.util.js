@@ -1,3 +1,6 @@
+import { getPayPalFlag } from '../util/utility';
+import { isMobileApp } from '../../../../../utils';
+
 export const formatPayload = payload => {
   const { addressLine1, addressLine2, zipCode, ...otherPayload } = payload;
   return {
@@ -10,12 +13,20 @@ export const formatPayload = payload => {
   };
 };
 
-export const intiSectionPage = (pageName, props, extraProps = {}) => {
-  const { initCheckoutSectionPage, router } = props;
+export const intiSectionPage = (pageName, scope, extraProps = {}) => {
+  const scopeValue = scope;
+  const { initCheckoutSectionPage, router, isRegisteredUserCallDone, navigation } = scope.props;
   let recalc;
   let isPaypalPostBack;
+  let appRouting;
   if (router && router.query) {
-    ({ recalc, isPaypalPostBack } = router.query);
+    ({ recalc, isPaypalPostBack, appRouting } = router.query);
   }
-  initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
+  if (isRegisteredUserCallDone || isMobileApp()) {
+    scopeValue.initialLoad = false;
+    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
+  }
+  if (isMobileApp()) {
+    isPaypalPostBack = getPayPalFlag(navigation);
+  }
 };

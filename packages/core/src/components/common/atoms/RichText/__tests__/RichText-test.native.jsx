@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import { shallow } from 'enzyme';
 import { RenderTree } from '@fabulas/astly';
 import RichText from '../views/RichText.native';
+import Image from '../../Image';
 
 describe('RichText', () => {
   let component;
@@ -12,7 +13,7 @@ describe('RichText', () => {
   beforeEach(() => {
     props = {
       isNativeView: false,
-      source: '<div><p>Hello <b>World</b></p><br /></div>',
+      source: '<div><p>Hello <b>World</b></p><br /><img source="/" /></div>',
       javaScriptEnabled: false,
       domStorageEnabled: false,
       thirdPartyCookiesEnabled: false,
@@ -73,5 +74,29 @@ describe('RichText', () => {
       .props()
       .componentMap.br();
     expect(renderedComp).toEqual(<Text> </Text>);
+  });
+
+  it('should render img tag as Image Component', () => {
+    props.isNativeView = true;
+    const source = '/';
+    component = shallow(<RichText {...props} />);
+    const renderedComp = component
+      .find(RenderTree)
+      .first()
+      .props()
+      .componentMap.img({ source });
+    expect(renderedComp).toEqual(<Image url="/" />);
+  });
+
+  it('handleNativeNavigation should call actionHandler node has dataTarget prop', () => {
+    props.isNativeView = true;
+    const actionHandlerSpy = jest.fn();
+    component = shallow(<RichText {...props} actionHandler={actionHandlerSpy} />);
+    component.instance().handleNativeNavigation({
+      properties: {
+        dataTarget: 'applyNow',
+      },
+    });
+    expect(actionHandlerSpy).toBeCalled();
   });
 });

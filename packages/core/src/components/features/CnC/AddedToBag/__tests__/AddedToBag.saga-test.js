@@ -20,6 +20,7 @@ jest.mock('../util/utility', () => {
     makeBrandToggling: () => false,
   };
 });
+
 describe('Added to bag saga', () => {
   it('should dispatch addToCartEcomGen action for success resposnse', () => {
     const payload = {
@@ -30,6 +31,7 @@ describe('Added to bag saga', () => {
       wishlistItemId: '333',
     };
     const addToCartEcomGen = addToCartEcom({ payload });
+    addToCartEcomGen.next();
     addToCartEcomGen.next();
     addToCartEcomGen.next();
     addToCartEcomGen.next();
@@ -74,6 +76,7 @@ describe('Added to bag saga', () => {
       },
     };
     const addItemToCartBopisGen = addItemToCartBopis({ payload });
+    addItemToCartBopisGen.next();
     addItemToCartBopisGen.next();
     addItemToCartBopisGen.next();
     addItemToCartBopisGen.next();

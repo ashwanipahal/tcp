@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
@@ -8,6 +8,8 @@ import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/accoun
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
 import { getLabelValue } from '@tcp/core/src/utils';
+import AsyncStorage from '@react-native-community/async-storage';
+import CookieManager from 'react-native-cookies';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
@@ -41,6 +43,7 @@ import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import CustomIcon from '../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.constants';
+import OrderNotification from '../../OrderNotification';
 
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
@@ -74,9 +77,20 @@ class AccountOverview extends PureComponent<Props> {
     if (!changePassword) this.navigateToChangePassword();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevPops) {
     const { changePassword } = this.state;
     if (!changePassword) this.navigateToChangePassword();
+
+    const { isUserLoggedIn } = this.props;
+    if (prevPops.isUserLoggedIn !== isUserLoggedIn && isUserLoggedIn && Platform.OS === 'ios')
+      // save cookies in the async storage for ios
+      CookieManager.getAll().then(res => {
+        Object.keys(res).forEach(key => {
+          if (key.startsWith('WC_')) {
+            AsyncStorage.setItem(key, res[key].value);
+          }
+        });
+      });
   }
 
   navigateToChangePassword = () => {
@@ -131,6 +145,7 @@ class AccountOverview extends PureComponent<Props> {
           showCheckoutModal={this.showCheckoutModal}
           showLogin={this.showloginModal}
           navigation={navigation}
+          updateHeader={this.updateHeader}
           onRequestClose={this.toggleModal}
         />
       );
@@ -228,8 +243,10 @@ class AccountOverview extends PureComponent<Props> {
     this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
+
     return (
       <View style={viewContainerStyle}>
+        <OrderNotification />
         {isUserLoggedIn && (
           <React.Fragment>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}>
@@ -420,7 +437,7 @@ class AccountOverview extends PureComponent<Props> {
           <TouchabelContainer
             onPress={() => {
               navigation.navigate('GiftCardPage', {
-                title: 'Gift Cards',
+                title: getLabelValue(commonLabels, 'lbl_purchaseGiftsCard_pageTitle'),
                 pdpUrl: 'Gift Card',
               });
             }}

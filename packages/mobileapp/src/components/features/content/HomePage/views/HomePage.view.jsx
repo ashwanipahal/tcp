@@ -1,14 +1,22 @@
 // @flow
 import React from 'react';
-import { ScrollView, Linking } from 'react-native';
+import { ScrollView, Linking, View } from 'react-native';
 // import { Box, Text } from '@fabulas/astly';
 // import {LazyloadScrollView} from 'react-native-lazyload-deux';
 import { Button } from '@tcp/core/src/components/common/atoms';
+
+import queryString from 'query-string';
+
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
-import { LAZYLOAD_HOST_NAME, navigateToNestedRoute } from '@tcp/core/src/utils';
+import {
+  LAZYLOAD_HOST_NAME,
+  navigateToNestedRoute,
+  resetNavigationStack,
+} from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
-
+import { ENV_PREVIEW } from '@tcp/core/src/constants/env.config';
+import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
 import {
   ModuleD,
   ModuleH,
@@ -24,14 +32,17 @@ import {
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import moduleGMock from '@tcp/core/src/services/abstractors/common/moduleG/mock';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
-import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
-import { HeaderPromoContainer } from '../HomePage.style';
+import {
+  HeaderPromoContainer,
+  TextComponent,
+  TextInputComponent,
+  ButtonComponent,
+} from '../HomePage.style';
 import Recommendations from '../../../../common/molecules/Recommendations';
 
 const modulesMap = {
@@ -53,8 +64,10 @@ const buttonMargin = { margin: 30 };
 class HomePageView extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.submitDate = this.submitDate.bind(this);
     this.state = {
       handeOpenURLRegister: false,
+      value: '',
     };
   }
   componentDidMount() {
@@ -99,6 +112,15 @@ class HomePageView extends React.PureComponent {
     // this.navigate(event.url);
   };
 
+  renderGlobalModal = navigation => {
+    return (
+      <View>
+        <QuickViewModal navigation={navigation} />
+        <AddedToBagContainer navigation={navigation} />
+      </View>
+    );
+  };
+
   navigate = url => {
     const { navigation } = this.props;
     if (url) {
@@ -119,6 +141,22 @@ class HomePageView extends React.PureComponent {
     }
   };
 
+  /**
+   * @function submitDate
+   * Submit date for scheduled preview and it
+   * will be submitted to graphql along with query
+   *
+   * @memberof HomePageView
+   */
+  submitDate = () => {
+    const { loadNavigationData, navigation, updatePreviewDate } = this.props;
+    const { value } = this.state;
+    updatePreviewDate(value);
+    this.loadBootstrapData();
+    loadNavigationData();
+    resetNavigationStack(navigation);
+  };
+
   render() {
     const {
       slots,
@@ -127,6 +165,7 @@ class HomePageView extends React.PureComponent {
       headerPromo,
       loyaltyPromoBanner,
     } = this.props;
+    const { value } = this.state;
     return (
       <ScrollView name={LAZYLOAD_HOST_NAME.HOME}>
         <HeaderPromoContainer>
@@ -135,18 +174,34 @@ class HomePageView extends React.PureComponent {
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
         <PageSlots slots={slots} modules={modulesMap} navigation={navigation} />
         <GetCandid apiConfig={apiConfig} navigation={navigation} />
-        {/* <Button
-          fullWidth
-          buttonVariation="variable-width"
-          text="PLP Page"
-          onPress={() => navigation.navigate('ProductListingPageContainer')}
-          style={buttonMargin}
-        /> */}
-
-        <Recommendations navigation={navigation} showButton variation="moduleO,moduleP" />
-        <ModuleG navigation={navigation} {...moduleGMock.moduleG.composites} />
+        <Recommendations
+          navigation={navigation}
+          showButton
+          variation="moduleO,moduleP"
+          page="homepageTest"
+        />
         <ModuleM navigation={navigation} {...mock.moduleM.composites} />
         <QuickViewModal navigation={navigation} />
+        {apiConfig.previewEnvId === ENV_PREVIEW ? (
+          <>
+            <TextComponent>Select scheduled preview date</TextComponent>
+            <TextInputComponent
+              placeholder="Type date here"
+              onChangeText={text => this.setState({ value: text })}
+              value={value}
+              keyboardType="default"
+            />
+            <ButtonComponent
+              fill="BLUE"
+              type="submit"
+              color="white"
+              text="Submit"
+              width="40%"
+              onPress={this.submitDate}
+            />
+          </>
+        ) : null}
+        {this.renderGlobalModal(navigation)}
       </ScrollView>
     );
   }

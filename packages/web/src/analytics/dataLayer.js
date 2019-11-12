@@ -1,3 +1,5 @@
+import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
 import {
   generateBrowseDataLayer,
@@ -27,10 +29,17 @@ export default function create(store) {
   const homepageDataLayer = generateHomePageDataLayer(store);
   const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
+  const { pageCountCookieKey } = API_CONFIG;
+
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
     ...clickHandlerDataLayer,
+    pageCount: {
+      get() {
+        return readCookie(pageCountCookieKey);
+      },
+    },
     pageName: {
       get() {
         return `gl:${store.getState().pageData.pageName}`;
@@ -83,10 +92,7 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('isGuest')
+        return store.getState().User.getIn(['personalData', 'isGuest'])
           ? 'no rewards:guest'
           : 'rewards member:logged in';
       },
@@ -105,10 +111,7 @@ export default function create(store) {
 
     userEmailAddress: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'emailAddress']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'emailAddress'], '');
       },
     },
 
@@ -126,28 +129,19 @@ export default function create(store) {
 
     customerId: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('userId');
+        return store.getState().User.getIn(['personalData', 'userId'], '');
       },
     },
 
     customerFirstName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'firstName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'firstName'], '');
       },
     },
 
     customerLastName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'lastName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'lastName'], '');
       },
     },
 

@@ -66,6 +66,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       fromAddedToBagModal,
       getPayPalSettings,
       orderId,
+      payPalTop,
     } = this.props;
 
     const { venmoEnable } = this.state;
@@ -101,6 +102,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                   navigation={navigation}
                   setVenmoState={this.changeVenmoState}
                   closeModal={this.closeModal}
+                  top={payPalTop}
                 />
               )}
               <CheckoutButton
@@ -138,12 +140,16 @@ AddedToBagActions.propTypes = {
   closeModal: PropTypes.func,
   isNoNEmptyBag: PropTypes.number.isRequired,
   fromAddedToBagModal: PropTypes.bool,
+  payPalTop: PropTypes.number,
+  hideHeader: PropTypes.func,
 };
 
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
   closeModal: () => {},
   fromAddedToBagModal: false,
+  payPalTop: 0,
+  hideHeader: () => {},
 };
 
 export default AddedToBagActions;

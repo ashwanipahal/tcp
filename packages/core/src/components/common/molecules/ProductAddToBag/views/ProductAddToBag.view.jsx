@@ -67,10 +67,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedColorProductId,
       isOutfitPage,
     } = this.props;
-    const currentColorEntry = getMapSliceForColorProductId(
-      colorFitsSizesMap,
-      selectedColorProductId
-    );
+    const currentColorEntry =
+      getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId) || {};
     return isOutfitPage ? (
       <div className="outfit-pickup">
         <ProductPickupContainer
@@ -101,6 +99,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             id="color"
             name="color"
             component={ProductColorChipsSelector}
+            isGiftCard={isGiftCard}
             colorFitsSizesMap={colorList}
             onChange={selectColor}
             dataLocator="addnewaddress-state"

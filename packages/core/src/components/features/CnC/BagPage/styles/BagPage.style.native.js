@@ -136,9 +136,10 @@ const applyPositionClassStyle = props => {
   if (props.isPayPalWebViewEnable) {
     return `
     top: 0;
+    height:100%;
     `;
   }
-  return 'bottom: 0;';
+  return 'bottom: 0; height: 160px;';
 };
 
 export const FooterView = styled.View`
@@ -152,6 +153,15 @@ export const FooterView = styled.View`
 export const ContainerMain = styled.View`
   flex: 1;
   margin-bottom: 100px;
+`;
+
+export const RecommendationView = styled.View`
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
+export const RecommendationWrapper = styled.View`
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
+    ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
 `;
 
 export default {
@@ -177,4 +187,6 @@ export default {
   BagHeaderMain,
   FooterView,
   ContainerMain,
+  RecommendationWrapper,
+  RecommendationView,
 };

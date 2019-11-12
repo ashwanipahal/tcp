@@ -3,6 +3,7 @@
 exports[`RichText should render correctly 1`] = `
 <WebView
   cacheEnabled={true}
+  actionHandler={[Function]}
   domStorageEnabled={false}
   isApplyDeviceHeight={false}
   isNativeView={false}
@@ -12,7 +13,7 @@ exports[`RichText should render correctly 1`] = `
       "*",
     ]
   }
-  source="<div><p>Hello <b>World</b></p><br /></div>"
+  source="<div><p>Hello <b>World</b></p><br /><img source=\\"/\\" /></div>"
   style={
     Object {
       "backgroundColor": "transparent",

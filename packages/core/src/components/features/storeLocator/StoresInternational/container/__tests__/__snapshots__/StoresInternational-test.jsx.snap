@@ -662,6 +662,7 @@ exports[`StoresInternational component StoresInternational component renders cor
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
+        "zIndexQuickView": 10000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,
@@ -909,8 +910,10 @@ exports[`StoresInternational component StoresInternational component renders cor
               richTextHtml="test"
             >
               <RichText
+                actionHandler={[Function]}
                 className="sc-bdVaJa fBlCFx"
                 dataLocator="test"
+                isNativeView={false}
                 richTextHtml="test"
               >
                 <div

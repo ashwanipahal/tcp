@@ -103,8 +103,10 @@ export default css`
   .promo-header {
     .medium_text_subpromo {
       font-size: ${props => props.theme.typography.fontSizes.fs20};
-      padding: 0 75px;
-      display: flex;
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        padding: 0 75px;
+        display: flex;
+      }
     }
   }
   .image-items-container-category {

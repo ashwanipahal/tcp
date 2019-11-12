@@ -16,7 +16,6 @@ import {
 import {
   Container,
   HeaderContainer,
-  SafeAreaViewStyle,
   CartIconView,
   Touchable,
   LeftSection,
@@ -24,6 +23,7 @@ import {
   RightSection,
   TitleText,
   CartCountContainer,
+  SafeAreaViewStyle,
 } from './HeaderNew.style';
 import { readCookieMobileApp } from '../../../../utils/utils';
 import { ArrowBackIconPLP } from '../../../features/content/Navigation/molecules/NavMenuLevel2/NavMenuLevel2.style';
