@@ -20,8 +20,10 @@ describe('Cart Item saga remove', () => {
       payload: {
         itemId: '3001545548',
       },
+      isMiniBag: false,
     };
     const removeCartItemGen = confirmRemoveItem(payload);
+    removeCartItemGen.next();
     removeCartItemGen.next();
 
     const res = {
@@ -37,6 +39,7 @@ it('should dispatch afterRemovingCartItem action for success resposnse', () => {
   const removeCartItemGen = afterRemovingCartItem();
   removeCartItemGen.next();
   removeCartItemGen.next();
+  removeCartItemGen.next();
 
   const putDescriptor = removeCartItemGen.next().value;
   expect(putDescriptor).toEqual(put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isDeleting: false })));
@@ -48,10 +51,11 @@ describe('Cart Item saga remove', () => {
       payload: {
         itemId: '3001545548',
       },
+      isMiniBag: true,
     };
     const removeCartItemGen = removeCartItem(payload);
     expect(removeCartItemGen.next().value).toEqual(
-      call(confirmRemoveItem, { payload: '3001545548' })
+      call(confirmRemoveItem, { payload: '3001545548', isMiniBag: true })
     );
   });
 

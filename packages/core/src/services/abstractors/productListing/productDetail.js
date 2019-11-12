@@ -160,7 +160,8 @@ const getProductInfoById = (productColorId, state, brand, isBundleProduct) => {
 
   const breadCrumb = processHelperUtil.breadCrumbFactory(state);
   // eslint-disable-next-line
-  const categoryId = breadCrumb[breadCrumb.length - 1].categoryId;
+  const categoryId =
+    breadCrumb[breadCrumb.length - 1] && breadCrumb[breadCrumb.length - 1].categoryId;
   const navigationTree = getNavTree(state);
   const excludeBage = categoryId
     ? processHelperUtil.getNavAttributes(navigationTree, categoryId, 'excludeAttribute')
