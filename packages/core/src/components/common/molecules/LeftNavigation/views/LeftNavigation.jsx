@@ -22,9 +22,7 @@ const getNavLink = (data = {}) => {
 };
 
 /**
- * @function LeftNavigation The AccountLayout component will provide a list of left
- * navigationLinks and the component associated with it
- * The main component will include this Layout and pass the component to render on the right panel
+ * @function LeftNavigation left navigation to form a pane component containing links to redirect specific path
  * @param {className} className Class name for the left navigation.
  * @param {active} active name of active element from the list
  * @param {data} data navigation data
@@ -35,16 +33,16 @@ const LeftNavigation = ({ className }) => {
     data: { subnavigation: navData = [] },
   } = mockLeftSideNavigation;
   const navDropDown = navData.length && navData.map(nav => nav.leafLink);
-  const activeComponent = useState(navDropDown[0].component || null);
+  const activeLink = useState(navDropDown[0].component || null);
 
   return (
     <React.Fragment>
-      <Row className="is-hidden-nav">
+      <Row className="showonlyInMobile">
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <Dropdown options={navDropDown} active={activeComponent[0]} isUpperCase />
+          <Dropdown options={navDropDown} active={activeLink[0]} isUpperCase />
         </Col>
       </Row>
-      <Row className="is-visible-nav">
+      <Row className="showonlyInDesktop">
         <Col colSize={{ large: 12, medium: 8, small: 6 }} offsetLeft={{ medium: 2 }}>
           <ul className={className}>
             {navData.length &&
