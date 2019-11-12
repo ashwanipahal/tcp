@@ -11,7 +11,7 @@ const productPriceStyle = css`
     display: flex;
   }
   .loyalty-text-container {
-    color: #000;
+    color: ${props => props.theme.colors.BLACK};
     span {
       color: ${props =>
       props.isPlcc
