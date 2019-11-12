@@ -183,7 +183,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpContactPerson,
       pickUpContactAlternate,
       dispatchReviewReduxForm,
-      updateRTPS,
       isPayPalWebViewEnable,
     } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -267,7 +266,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         toggleCountrySelector={toggleCountrySelector}
         cartOrderItemsCount={cartOrderItemsCount}
         checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
-        updateRTPS={updateRTPS}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
