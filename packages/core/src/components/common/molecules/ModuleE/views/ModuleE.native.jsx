@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import ButtonList from '../../ButtonList';
 import Carousel from '../../Carousel';
-import { DamImage } from '../../../atoms';
+import { DamImage, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import { getLocator } from '../../../../../utils';
@@ -49,15 +49,19 @@ const MODULE_PROMO_EYEBROW_WIDTH = getScreenWidth() - 234;
 const buttonWidth = 164;
 
 // TODO: keys will be changed once we get the actual data from CMS
-const { ctaTypes } = config;
+const { ctaTypes, IMG_DATA } = config;
+
+/**
+ * These are button width.
+ */
 
 const BUTTON_VARIATION_FULLWIDTH = 'fullwidth';
 const BUTTON_VARIATION_HALFWIDTH = 'halfwidth';
 
 /**
  * @param {object} props : Props for Module E multi type of banner list, button list, header text.
- * @desc This is Module A global component. It has capability to display
- * featured content module with 1 backckground color tiles ,links and a CTA Button list.
+ * @desc This is Module E global component. It has capability to display
+ * featured content module with  tiles ,links and a CTA Button list.
  * Author can surface teaser content leading to corresponding pages.
  * To manage the TCP And Gymboree View .
  */
@@ -71,6 +75,10 @@ class ModuleE extends React.PureComponent {
     };
   }
 
+  /**
+   * This renderAnchor method return the Anchor  .
+   *  @naviagtion is used to navigate the page.
+   */
   renderAnchor = navigation => {
     const { shopNowText, shopNowUrl } = this.state;
     return (
@@ -82,11 +90,17 @@ class ModuleE extends React.PureComponent {
           underline
           centered
           fontSizeVariation="large"
+          anchorVariation="custom"
+          colorName="gray.900"
         />
       </AnchorWrapper>
     );
   };
 
+  /**
+   * This renderButton method return the button according button variation .
+   *  @naviagtion is used to navigate the page.
+   */
   renderButton = (navigation, buttonVariation) => {
     const { shopNowText, shopNowUrl } = this.state;
     if (buttonVariation === BUTTON_VARIATION_FULLWIDTH) {
@@ -105,7 +119,12 @@ class ModuleE extends React.PureComponent {
     );
   };
 
-  renderView = item => {
+  /**
+   * This renderView method return the images .
+   *  @naviagtion is used to navigate the page.
+   *  @carouselCtaType is used to manage the type of carouselCtabuttons .
+   */
+  renderView = (item, naviagtion) => {
     const {
       item: { image, singleCTAButton },
     } = item;
@@ -117,16 +136,25 @@ class ModuleE extends React.PureComponent {
 
     return (
       <View>
-        <DamImage
-          width={MODULE_WIDTH}
-          height={MODULE_DEFAULT_HEIGHT}
-          url={image.url}
-          host={LAZYLOAD_HOST_NAME.HOME}
-          crop={image.crop_m}
-        />
+        <Anchor naviagation={naviagtion} url={singleCTAButton.url}>
+          <DamImage
+            width={MODULE_WIDTH}
+            height={MODULE_DEFAULT_HEIGHT}
+            url={image.url}
+            host={LAZYLOAD_HOST_NAME.HOME}
+            crop={image.crop_m}
+            imgConfig={IMG_DATA.carouselImgConfig[0]}
+          />
+        </Anchor>
       </View>
     );
   };
+
+  /**
+   * This method return the largeCompImageSimpleCarousel .
+   *  @naviagtion is used to navigate the page.
+   *  @carouselCtaType is used to manage the type of carouselCtabuttons .
+   */
 
   renderCarousel = (largeCompImageSimpleCarousel, navigation, carouselCtaType) => {
     return (
@@ -135,7 +163,7 @@ class ModuleE extends React.PureComponent {
           <Carousel
             height={MODULE_DEFAULT_HEIGHT}
             data={largeCompImageSimpleCarousel}
-            renderItem={item => this.renderView(item)}
+            renderItem={item => this.renderView(item, navigation)}
             width={MODULE_WIDTH}
             carouselConfig={{
               autoplay: true,
@@ -172,6 +200,11 @@ class ModuleE extends React.PureComponent {
     );
   };
 
+  /**
+   * This method return the headerText and promoBanner .
+   *  @naviagtion is used to navigate the page.
+   */
+
   renderHeaderPromo = (navigation, headerText, promoBanner) => {
     return (
       <HeaderWrapper>
@@ -203,6 +236,10 @@ class ModuleE extends React.PureComponent {
     );
   };
 
+  /**
+   * This method return the renderEyeBrow method to manage all image .
+   *  @naviagtion is used to navigate the page.
+   */
   renderEyeBrow = (eyebrow, naviagtion) => {
     return (
       <EyeBrowContainer>
@@ -210,6 +247,7 @@ class ModuleE extends React.PureComponent {
           width={MODULE_EYEBROW_WIDTH}
           height={MODULE_EYEBROW_HEIGHT}
           url={eyebrow.mediaLinkedList[0].image.url}
+          imgConfig={IMG_DATA.eyeBrowImgConfig[0]}
         />
         <TopPromoWrapper width={MODULE_PROMO_EYEBROW_WIDTH}>
           <PromoBanner naviagtion={naviagtion} promoBanner={eyebrow.promoBanner} />
@@ -218,6 +256,7 @@ class ModuleE extends React.PureComponent {
           width={MODULE_EYEBROW_WIDTH}
           height={MODULE_EYEBROW_HEIGHT}
           url={eyebrow.mediaLinkedList[0].image.url}
+          imgConfig={IMG_DATA.eyeBrowImgConfig[0]}
         />
       </EyeBrowContainer>
     );
@@ -244,6 +283,7 @@ class ModuleE extends React.PureComponent {
                   width={`${buttonWidth}px`}
                   testID={`${getLocator('moduleE_product_img')}${index}`}
                   alt={image && image.alt}
+                  imgConfig={IMG_DATA.smallImgConfig[0]}
                 />
               </StyledAnchor>
 
@@ -254,7 +294,7 @@ class ModuleE extends React.PureComponent {
                 fontFamily="primary"
                 fontSize="fs20"
                 textAlign="center"
-                marginTop="16px"
+                marginTop="8px"
                 marginBottom="16px"
                 letterSpacing="ls2"
                 width="160px"
@@ -268,10 +308,13 @@ class ModuleE extends React.PureComponent {
     );
   };
 
-  renderPromoArea = (linkedImage, navigation) => {
+  /**
+   * This method return the PromoArea .
+   */
+  renderPromoArea = (linkedImage, navigation, carouselCtaType) => {
     if (linkedImage && linkedImage.length > 0) {
       return (
-        <PromoAreaWrapper>
+        <PromoAreaWrapper type={carouselCtaType}>
           {linkedImage.map(({ image, link }, index) => {
             return (
               <View>
@@ -286,6 +329,7 @@ class ModuleE extends React.PureComponent {
                     width={MODULE_WIDTH}
                     testID={`${getLocator('moduleE_promoarea_img')}${index}`}
                     alt={image && image.alt}
+                    imgConfig={IMG_DATA.promoAreaImgConfig[0]}
                   />
                 </StyledAnchor>
               </View>
@@ -297,10 +341,17 @@ class ModuleE extends React.PureComponent {
     return null;
   };
 
+  /**
+   * This method return the renderTopAndBottomBorder according to pos.
+   */
   renderTopAndBottomBorder = pos => {
     return <BorderTopAndBottom pos={pos} />;
   };
 
+  /**
+   * This method return the renderTopView method to manage all renderHeaderPromo, renderEyeBrow, renderTopAndBottomBorder .
+   *  @naviagtion is used to navigate the page.
+   */
   renderTopView = (eyebrow, headerText, promoBanner, navigation) => {
     return (
       <View>
@@ -330,7 +381,7 @@ class ModuleE extends React.PureComponent {
     return (
       <Container>
         {this.renderTopView(eyebrow, headerText, promoBanner, navigation)}
-        {linkedImage && this.renderPromoArea(linkedImage, navigation)}
+        {linkedImage && this.renderPromoArea(linkedImage, navigation, carouselCtaType)}
         {largeCompImageSimpleCarousel &&
           this.renderCarousel(largeCompImageSimpleCarousel, navigation, carouselCtaType)}
         {carouselCtaType === 'button' && !eyebrow

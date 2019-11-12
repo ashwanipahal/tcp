@@ -21,7 +21,7 @@ export const ButtonContainer = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 export const ContainerView = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 export const Border = styled.View`
   height: 0.5px;
@@ -102,7 +102,6 @@ export const ImageContainer = styled.View`
   flex-direction: row;
   width: 100%;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   justify-content: center;
   align-items: center;
 `;
@@ -112,8 +111,9 @@ export const ImageWrapper = styled.View`
 `;
 
 export const PromoAreaWrapper = styled.View`
+  ${props =>
+    props.type === 'link' ? null : `margin-bottom: ${props.theme.spacing.ELEM_SPACING.SM};`};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   height: 67px;
   width: 100%;
 `;

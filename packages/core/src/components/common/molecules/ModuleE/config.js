@@ -25,10 +25,18 @@ export default {
       },
     ],
   },
-  IMG_DATA_TCP: {
-    crops: ['t_mod_A_img_m', 't_mod_A_img_t', 't_mod_A_img_d'],
-  },
-  IMG_DATA_GYM: {
-    crops: ['t_mod_A_GYM_img_m', 't_mod_A_GYM_img_t', 't_mod_A_GYM_img_d'],
+  IMG_DATA: {
+    eyeBrowImgConfig: ['t_mod_E_eyebrow_img_m', 't_mod_E_eyebrow_img_t', 't_mod_E_eyebrow_img_d'],
+    carouselImgConfig: [
+      't_mod_E_carousel_img_m',
+      't_mod_E_carousel_img_t',
+      't_mod_E_carousel_img_d',
+    ],
+    smallImgConfig: ['t_mod_E_small_img_m', 't_mod_E_small_img_t', 't_mod_E_small_img_d'],
+    promoAreaImgConfig: [
+      't_mod_E_promo_area_img_m',
+      't_mod_E_promo_area_img_t',
+      't_mod_E_promo_area_img_d',
+    ],
   },
 };
