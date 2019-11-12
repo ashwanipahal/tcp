@@ -18,7 +18,7 @@ const JeansModuleStyles = css`
   .title-section {
     width: 313px;
     height: 30px;
-    background: ${props => props.jeansModule.set[1].val};
+    background: ${props => props.data.set[1].val};
     position: absolute;
     bottom: -30px;
     left: 0;
@@ -117,7 +117,7 @@ const JeansModuleStyles = css`
     .shop-now-link {
       position: absolute;
       bottom: 0;
-      background: ${props => props.jeansModule.set[1].val};
+      background: ${props => props.data.set[1].val};
       color: white;
       width: 100%;
       height: 38px;

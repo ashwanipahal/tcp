@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import ButtonTabs from '../../ButtonTabs';
 import { BodyCopy } from '../../../atoms';
 import styles from '../styles/DivisionTabModule.style';
-import { routerPush, getSiteId } from '../../../../../utils';
+import { getSiteId } from '../../../../../utils';
 
-const onTabChange = url => {
-  routerPush(url && url.replace('/c/', '/c?cid='), url, { shallow: true });
-};
+const onTabChange = () => {};
 
 export class DivisionTabModule extends PureComponent {
   static propTypes = {
@@ -28,15 +27,14 @@ export class DivisionTabModule extends PureComponent {
     const siteId = getSiteId();
     const pathWithoutSiteId = asPath.replace(`/${siteId}`, '');
     return (
-      <div className={className}>
+      <View className={className}>
         <BodyCopy
           className="heading"
           fontSize={['fs16', 'fs16', 'fs20']}
           fontFamily="secondary"
           fontWeight="semibold"
-        >
-          {data.headLine[0].text}
-        </BodyCopy>
+          text={data.headLine[0].text}
+        />
         <ButtonTabs
           className="button-tabs"
           selectedTabId={pathWithoutSiteId}
@@ -44,7 +42,7 @@ export class DivisionTabModule extends PureComponent {
           tabs={data.buttonList}
           dataLocator=""
         />
-      </div>
+      </View>
     );
   }
 }
