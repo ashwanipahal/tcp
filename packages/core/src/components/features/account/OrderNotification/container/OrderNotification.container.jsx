@@ -1,34 +1,108 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import styles from '../styles/OrderNotification.style';
+import { validateDiffInDaysNotification } from '@tcp/core/src/utils/utils';
+import {
+  getLastBopis,
+  getLastSTHOrder,
+  getLastBoss,
+  getLimitToDisplayBossOrder,
+  getLimitToDisplayLastOrderNotification,
+  getTransactionNotificationsInMyAccountEnabled,
+  getLabels,
+} from './OrderNotification.selectors';
 import { getOrdersListState } from '../../Orders/container/Orders.selectors';
 import { getSiteId, isCanada } from '../../../../../utils';
 import { getOrdersList } from '../../Orders/container/Orders.actions';
-import { getLabels } from './OrderNotification.selectors';
-import OrderNotificationSTH from '../molecules/OrderNotificationSTH';
-import OrderNotificationBOSS from '../molecules/OrderNotificationBOSS';
-import OrderNotificationBOPIS from '../molecules/OrderNotificationBOPIS';
+import OrderNotificationComponent from '../views';
 
 /**
  * This component will render OrderNotification container component
  */
 export class OrderNotification extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { STHEnabled: false, BOSSEnabled: false, BOPISEnabled: false };
+  }
+
   componentDidMount() {
     const { fetchOrders } = this.props;
     fetchOrders(getSiteId());
   }
 
+  componentDidUpdate() {
+    const {
+      orderSTH,
+      orderBOPIS,
+      orderBOSS,
+      limitOfDaysToDisplayNotification,
+      limitOfDaysToDisplayBossNotification,
+    } = this.props;
+
+    if (
+      orderBOPIS &&
+      validateDiffInDaysNotification(orderBOPIS.orderDate, limitOfDaysToDisplayNotification)
+    ) {
+      this.updateState('BOPISEnabled');
+    }
+
+    if (
+      !isCanada() &&
+      orderBOSS &&
+      validateDiffInDaysNotification(orderBOSS.orderDate, limitOfDaysToDisplayBossNotification)
+    ) {
+      this.updateState('BOSSEnabled');
+    }
+
+    if (
+      orderSTH &&
+      validateDiffInDaysNotification(orderSTH.orderDate, limitOfDaysToDisplayNotification)
+    ) {
+      this.updateState('STHEnabled');
+    }
+  }
+
+  updateState = key => {
+    this.setState({
+      [key]: true,
+    });
+  };
+
   render() {
-    const { labels, className } = this.props;
+    const {
+      labels,
+      isTransactionNotificationsInMyAccountEnabled,
+      orderSTH,
+      orderBOPIS,
+      orderBOSS,
+    } = this.props;
+
+    const { STHEnabled, BOSSEnabled, BOPISEnabled } = this.state;
     return (
-      <BodyCopy className={className}>
-        <OrderNotificationSTH labels={labels} />
-        <OrderNotificationBOPIS labels={labels} />
-        {!isCanada() && <OrderNotificationBOSS labels={labels} />}
-      </BodyCopy>
+      <>
+        {isTransactionNotificationsInMyAccountEnabled && (
+          <>
+            {BOPISEnabled && (
+              <OrderNotificationComponent
+                order={orderBOPIS}
+                labels={labels}
+                separator={BOSSEnabled || STHEnabled}
+              />
+            )}
+
+            {BOSSEnabled && (
+              <OrderNotificationComponent
+                order={orderBOSS}
+                labels={labels}
+                separator={STHEnabled}
+              />
+            )}
+            {STHEnabled && (
+              <OrderNotificationComponent order={orderSTH} labels={labels} separator={false} />
+            )}
+          </>
+        )}
+      </>
     );
   }
 }
@@ -36,6 +110,14 @@ export class OrderNotification extends PureComponent {
 export const mapStateToProps = state => ({
   labels: getLabels(state),
   ordersListItems: getOrdersListState(state),
+  orderSTH: getLastSTHOrder(state),
+  orderBOSS: getLastBoss(state),
+  orderBOPIS: getLastBopis(state),
+  limitOfDaysToDisplayNotification: getLimitToDisplayLastOrderNotification(state),
+  limitOfDaysToDisplayBossNotification: getLimitToDisplayBossOrder(state),
+  isTransactionNotificationsInMyAccountEnabled: getTransactionNotificationsInMyAccountEnabled(
+    state
+  ),
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -45,18 +127,24 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 OrderNotification.propTypes = {
-  className: PropTypes.string,
   fetchOrders: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
+  orderSTH: PropTypes.shape({}),
+  orderBOSS: PropTypes.shape({}),
+  orderBOPIS: PropTypes.shape({}),
+  limitOfDaysToDisplayNotification: PropTypes.number.isRequired,
+  limitOfDaysToDisplayBossNotification: PropTypes.number.isRequired,
+  isTransactionNotificationsInMyAccountEnabled: PropTypes.bool.isRequired,
 };
 
 OrderNotification.defaultProps = {
-  className: '',
   fetchOrders: () => {},
+  orderSTH: {},
+  orderBOSS: {},
+  orderBOPIS: {},
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(OrderNotification, styles));
-export { OrderNotification as OrderNotificationVanilla };
+)(OrderNotification);

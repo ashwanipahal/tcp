@@ -98,7 +98,6 @@ class Header extends React.PureComponent {
       isPickupModalOpen,
       loyaltyPromoBanner,
     } = this.props;
-
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
 
