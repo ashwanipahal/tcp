@@ -12,19 +12,19 @@ const onTabChange = url => {
 
 export class DivisionTabModule extends PureComponent {
   static propTypes = {
-    divisionTab: PropTypes.shape({}),
+    data: PropTypes.shape({}),
     className: PropTypes.string,
     asPath: PropTypes.string,
   };
 
   static defaultProps = {
-    divisionTab: {},
+    data: {},
     className: '',
     asPath: '',
   };
 
   render() {
-    const { divisionTab, className, asPath } = this.props;
+    const { data, className, asPath } = this.props;
     const siteId = getSiteId();
     const pathWithoutSiteId = asPath.replace(`/${siteId}`, '');
     return (
@@ -35,13 +35,13 @@ export class DivisionTabModule extends PureComponent {
           fontFamily="secondary"
           fontWeight="semibold"
         >
-          {divisionTab.headLine[0].text}
+          {data.headLine[0].text}
         </BodyCopy>
         <ButtonTabs
           className="button-tabs"
           selectedTabId={pathWithoutSiteId}
           onTabChange={onTabChange}
-          tabs={divisionTab.buttonList}
+          tabs={data.buttonList}
           dataLocator=""
         />
       </div>
