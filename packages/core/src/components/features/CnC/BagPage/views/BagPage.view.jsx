@@ -11,7 +11,7 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
+import styles, { addedToBagActionsStyles, recommendationStyles } from '../styles/BagPage.style';
 import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
@@ -163,6 +163,7 @@ class BagPageView extends React.PureComponent {
           <Recommendations
             page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
             variations="moduleO"
+            inheritedStyles={recommendationStyles}
           />
         ) : null}
         {this.renderRecommendationsForRecent()}
@@ -179,6 +180,7 @@ class BagPageView extends React.PureComponent {
           headerLabel={labels.recentlyViewed}
           variations="moduleO"
           portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+          inheritedStyles={recommendationStyles}
         />
       </div>
     );
