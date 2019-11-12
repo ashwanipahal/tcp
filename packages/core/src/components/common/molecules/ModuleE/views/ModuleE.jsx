@@ -122,7 +122,7 @@ const ModuleE = props => {
     accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
   } = props;
 
-  const [linkedImage] = linkedImages && [];
+  const linkedImage = linkedImages ? linkedImages[0] : [];
   const {
     mediaLinkedList: eyebrowMediaLinkedList,
     promoBanner: eyebrowPromoBanner,
@@ -396,10 +396,10 @@ const ModuleE = props => {
 ModuleE.defaultProps = {
   className: '',
   promoBanner: null,
-  eyebrow: [],
+  eyebrow: null,
   ctaType: 'stackedCTAButtons',
   ctaItems: [],
-  linkedImage: [],
+  linkedImage: null,
 };
 
 ModuleE.propTypes = {
