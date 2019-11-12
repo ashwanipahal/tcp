@@ -6,10 +6,10 @@ const initialState = {
 };
 
 const ProductDetailReducer = (state = initialState, action) => {
-  const { payload: { product, breadCrumbs } = {}, type } = action;
+  const { payload = {}, type } = action;
   switch (type) {
     case PRODUCTDETAIL_CONSTANTS.SET_PRODUCT_DETAILS:
-      return { ...state, currentProduct: { ...product }, breadCrumbs };
+      return { ...state, currentProduct: { ...payload.product }, breadCrumbs: payload.breadCrumbs };
     case PRODUCTDETAIL_CONSTANTS.SET_ADD_TO_FAVORITE:
       // eslint-disable-next-line no-case-declarations
       const productDetailsMap = state.currentProduct;

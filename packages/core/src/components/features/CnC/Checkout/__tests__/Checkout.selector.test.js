@@ -559,6 +559,6 @@ describe('Checkout Selectors', () => {
       }),
       User: fromJS({}),
     };
-    expect(getDefaultShipmentID(state)).toEqual(undefined);
+    expect(getDefaultShipmentID(state)).toEqual(false);
   });
 });
