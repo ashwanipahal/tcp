@@ -102,10 +102,15 @@ const getLinkedImage = (linkedImage, carouselCtaType, IMG_DATA) => {
   );
 };
 
+/* Null check for eyebrow object  */
+const getEyebrowObj = eyebrow => {
+  return (eyebrow && eyebrow[0]) || {};
+};
+
 const ModuleE = props => {
   const {
     className,
-    eyebrow: [eyebrow] = [],
+    eyebrow,
     headerText,
     promoBanner,
     largeCompImageSimpleCarousel,
@@ -113,11 +118,15 @@ const ModuleE = props => {
     ctaType,
     carouselCtaType,
     divCTALinks,
-    linkedImage: [linkedImage] = [],
+    linkedImage: linkedImages,
     accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
   } = props;
-  const { mediaLinkedList: eyebrowMediaLinkedList, promoBanner: eyebrowPromoBanner } =
-    eyebrow || {};
+
+  const [linkedImage] = linkedImages && [];
+  const {
+    mediaLinkedList: eyebrowMediaLinkedList,
+    promoBanner: eyebrowPromoBanner,
+  } = getEyebrowObj(eyebrow);
 
   const { ctaTypes, IMG_DATA, CAROUSEL_OPTIONS } = config;
   const buttonListCtaType = ctaTypes[ctaType];

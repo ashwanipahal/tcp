@@ -92,7 +92,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      max-height: 250px;
+      max-height: 248px;
     }
   }
 
