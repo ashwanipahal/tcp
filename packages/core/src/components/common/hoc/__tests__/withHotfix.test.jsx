@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { renderHook } from '@testing-library/react-hooks';
 import withHotfix, { usePropsHotfix, useBrowserHotfix } from '../withHotfix';
 
-describe(__filename, () => {
+describe('withHotfix', () => {
   let BaseComponent;
   beforeEach(() => {
     BaseComponent = forwardRef((props, ref) => <div ref={ref}>Hello</div>);
