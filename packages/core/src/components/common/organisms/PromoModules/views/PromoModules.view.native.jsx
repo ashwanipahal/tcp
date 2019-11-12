@@ -5,8 +5,6 @@ import DivisionTabModule from '@tcp/core/src/components/common/molecules/Divisio
 import OutfitCarouselModule from '@tcp/core/src/components/common/molecules/OutfitCarouselModule';
 import JeansModule from '@tcp/core/src/components/common/molecules/JeansModule';
 import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
-import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/PromoModules.style';
 
 const modules = {
   divisionTabs: DivisionTabModule,
@@ -52,4 +50,4 @@ PromoModules.defaultProps = {
   plpTopPromos: [],
 };
 
-export default withStyles(PromoModules, styles);
+export default PromoModules;
