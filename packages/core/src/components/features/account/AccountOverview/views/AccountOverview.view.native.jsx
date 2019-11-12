@@ -43,6 +43,7 @@ import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import CustomIcon from '../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.constants';
+import OrderNotification from '../../OrderNotification';
 
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
@@ -144,6 +145,7 @@ class AccountOverview extends PureComponent<Props> {
           showCheckoutModal={this.showCheckoutModal}
           showLogin={this.showloginModal}
           navigation={navigation}
+          updateHeader={this.updateHeader}
           onRequestClose={this.toggleModal}
         />
       );
@@ -244,6 +246,7 @@ class AccountOverview extends PureComponent<Props> {
 
     return (
       <View style={viewContainerStyle}>
+        <OrderNotification />
         {isUserLoggedIn && (
           <React.Fragment>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}>
@@ -434,7 +437,7 @@ class AccountOverview extends PureComponent<Props> {
           <TouchabelContainer
             onPress={() => {
               navigation.navigate('GiftCardPage', {
-                title: 'Gift Cards',
+                title: getLabelValue(commonLabels, 'lbl_purchaseGiftsCard_pageTitle'),
                 pdpUrl: 'Gift Card',
               });
             }}

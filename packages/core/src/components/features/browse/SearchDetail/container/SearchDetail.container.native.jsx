@@ -238,10 +238,10 @@ function mapStateToProps(state) {
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     slpLabels: getLabels(state),
     searchResultSuggestions:
-      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
+      state.SearchListingPage && state.SearchListingPage.searchResultSuggestions,
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),

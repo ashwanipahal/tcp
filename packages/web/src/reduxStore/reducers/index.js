@@ -141,13 +141,13 @@ import {
   ANALYTICS_DATA_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
+import LoaderReducer from '@tcp/core/src/components/common/molecules/Loader/container/Loader.reducer';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
-import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';

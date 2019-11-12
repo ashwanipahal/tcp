@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CheckoutProgressIndicator component should renders correctly if routing not done 1`] = `<div />`;
+exports[`CheckoutProgressIndicator component should renders correctly if routing not done 1`] = `
+<div>
+  Loading....
+</div>
+`;
 
 exports[`CheckoutProgressIndicator component should renders correctly props not present 1`] = `
 <div

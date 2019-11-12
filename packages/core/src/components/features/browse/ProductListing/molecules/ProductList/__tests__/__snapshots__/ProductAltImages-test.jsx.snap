@@ -38,6 +38,7 @@ exports[`ProductAltImages component should renders renderVideoContent correctly 
         }
       }
       isProductImage={true}
+      lazyLoad={false}
     />
   </Styled(Anchor)>
   <button

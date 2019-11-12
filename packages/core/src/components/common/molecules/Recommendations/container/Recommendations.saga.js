@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import RecommendationsAbstractor from '../../../../../services/abstractors/common/recommendations';
 import { loadRecommendationsData } from './Recommendations.actions';
 import { FETCH_RECOMMENDATIONS_DATA } from './Recommendations.constants';
@@ -9,14 +9,14 @@ function* fetchRecommendationsData(action) {
   try {
     const result = yield call(RecommendationsAbstractor.getData, payload);
 
-    yield put(loadRecommendationsData(result));
+    yield put(loadRecommendationsData({ reduxKey: payload.reduxKey, result }));
   } catch (e) {
     logger.log(e);
   }
 }
 
 function* RecommendationsSaga() {
-  yield takeLatest(FETCH_RECOMMENDATIONS_DATA, fetchRecommendationsData);
+  yield takeEvery(FETCH_RECOMMENDATIONS_DATA, fetchRecommendationsData);
 }
 
 export default RecommendationsSaga;

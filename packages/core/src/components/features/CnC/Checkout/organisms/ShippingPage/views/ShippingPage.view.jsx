@@ -321,18 +321,13 @@ export default class ShippingPage extends React.PureComponent {
     return submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
   };
 
-  extendedComponentDidUpdate(prevProps) {
-    const {
-      selectedShipmentId,
-      updateShippingMethodSelection,
-      shippingAddressId,
-      onFileAddressKey,
-      address,
-    } = this.props;
+  extendedComponentDidUpdate = prevProps => {
+    const { onFileAddressKey, address } = this.props;
+    const { selectedShipmentId, updateShippingMethodSelection, shippingAddressId } = this.props;
+
     const {
       address: prevAddress,
       onFileAddressKey: prevFileAddressKey,
-      address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
       selectedShipmentId: prevSelectedShipmentId,
     } = prevProps;
     if (address && prevAddress) {
@@ -340,6 +335,9 @@ export default class ShippingPage extends React.PureComponent {
         address: { addressLine1, addressLine2 },
         loadShipmentMethods,
       } = this.props;
+      const {
+        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
+      } = prevProps;
       if (
         (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
         hasPOBox(addressLine1, addressLine2)
@@ -357,7 +355,7 @@ export default class ShippingPage extends React.PureComponent {
     ) {
       updateShippingMethodSelection({ id: selectedShipmentId });
     }
-  }
+  };
 
   render() {
     const {
@@ -390,7 +388,7 @@ export default class ShippingPage extends React.PureComponent {
     }
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
     if (!checkoutRoutingDone) {
-      return <div />;
+      return <div>Loading....</div>;
     }
     return (
       <>

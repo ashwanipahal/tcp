@@ -59,7 +59,6 @@ const ProductList = props => {
         } else if (isGridItem(item)) {
           gridIndex += 1;
         }
-        window.gridIndex = gridIndex;
         return typeof item === 'string' ? (
           <Heading
             key={item}

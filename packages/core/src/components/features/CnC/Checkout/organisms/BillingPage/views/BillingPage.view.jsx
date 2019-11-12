@@ -76,7 +76,7 @@ class BillingPage extends React.PureComponent {
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     if (!checkoutRoutingDone) {
-      return <div />;
+      return <div>Loading....</div>;
     }
     return (
       <div className={className}>

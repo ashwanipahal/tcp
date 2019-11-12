@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -38,23 +40,41 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getCheckoutButton() {
-    const { labels, handleCartCheckout, isEditingItem } = this.props;
+    const {
+      labels,
+      handleCartCheckout,
+      isEditingItem,
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
+      isAddedToBag,
+      isBagPage,
+      isMiniBag,
+    } = this.props;
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
-      <Button
-        data-locator={getLocator('addedtobag_btncheckout')}
-        className="checkout"
-        onClick={() => handleCartCheckout({ isEditingItem })}
-      >
-        <BodyCopy
-          component="span"
-          color="white"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          fontSize="fs14"
+      <ClickTracker name="Gift_Services" className="checkoutBtnTracker">
+        <Button
+          data-locator={getLocator('addedtobag_btncheckout')}
+          className="checkout"
+          onClick={() => {
+            setClickAnalyticsDataCheckout({
+              customEvents: ['event8'],
+              products: productsData,
+            });
+            handleCartCheckout({ isEditingItem, isAddedToBag, isBagPage, isMiniBag });
+          }}
         >
-          {labels.checkout}
-        </BodyCopy>
-      </Button>
+          <BodyCopy
+            component="span"
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs14"
+          >
+            {labels.checkout}
+          </BodyCopy>
+        </Button>
+      </ClickTracker>
     );
   }
 
@@ -150,6 +170,11 @@ AddedToBagActions.propTypes = {
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
   venmoError: PropTypes.string,
+  isAddedToBag: PropTypes.bool,
+  isBagPage: PropTypes.bool,
+  isMiniBag: PropTypes.bool,
+  setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,
@@ -157,6 +182,9 @@ AddedToBagActions.defaultProps = {
   isBagPageStickyHeader: false,
   isUSSite: true,
   venmoError: '',
+  isAddedToBag: false,
+  isBagPage: false,
+  isMiniBag: false,
 };
 
 export default withStyles(AddedToBagActions, style);
