@@ -51,7 +51,7 @@ export const ButtonContainer = styled.View`
   padding: 0
     ${props =>
       props.imageCount === 3
-        ? props.theme.spacing.ELEM_SPACING.XL
+        ? props.theme.spacing.ELEM_SPACING.XXL
         : props.theme.spacing.ELEM_SPACING.SM};
   background-color: ${props => props.theme.colorPalette.blue[500]};
   height: ${props => props.imageDimension}px;

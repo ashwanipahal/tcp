@@ -80,13 +80,13 @@ class ModuleM extends React.PureComponent {
   */
   getImageItems = data => {
     return data.map((item, index) => {
-      const { smallCompImages } = item;
-      return { id: `tablList-${index}`, smallCompImages };
+      const { smallCompImage, linkClass } = item;
+      return { id: `tablList-${index}`, smallCompImage, linkClass };
     });
   };
 
   render() {
-    const { headerText, promoBanner, divTabs, navigation, singleCTAButton } = this.props;
+    const { headerText, promoBanner, divTabs, navigation } = this.props;
     const { currentTabItem } = this.state;
     const tabItems = this.getButtonTabItems(divTabs);
     const images = this.getImageItems(divTabs);
@@ -94,8 +94,9 @@ class ModuleM extends React.PureComponent {
     if (currentTabItem) {
       currentTabData = images.find(obj => obj.id === currentTabItem);
     }
-    const { smallCompImages } = currentTabData;
-    const totalImages = smallCompImages && smallCompImages.length;
+    const { smallCompImage, linkClass } = currentTabData;
+    console.log(smallCompImage, linkClass);
+    const totalImages = smallCompImage && smallCompImage.length;
     const imageDimension = this.getImageDimension(totalImages);
     return (
       <Container>
@@ -145,9 +146,9 @@ class ModuleM extends React.PureComponent {
           </ButtonTabsContainer>
         ) : null}
 
-        {smallCompImages && smallCompImages.length > 0 ? (
+        {smallCompImage && smallCompImage.length > 0 ? (
           <ImageContainer>
-            {smallCompImages.map(({ image, link }, index) => {
+            {smallCompImage.map(({ image, link }, index) => {
               // const { IMG_DATA } = config;
               return (
                 <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
@@ -188,9 +189,9 @@ class ModuleM extends React.PureComponent {
                 </Tile>
               );
             })}
-            {singleCTAButton ? (
+            {linkClass ? (
               <Anchor
-                url={singleCTAButton.url}
+                url={linkClass.url}
                 navigation={navigation}
                 testID={getLocator('moduleM_cta_btn')}
               >
@@ -201,7 +202,7 @@ class ModuleM extends React.PureComponent {
                     fontWeight="extrabold"
                     color="white"
                     letterSpacing="ls1"
-                    text={singleCTAButton.text}
+                    text={linkClass.text}
                     textAlign="center"
                   />
                 </ButtonContainer>
@@ -236,7 +237,7 @@ ModuleM.propTypes = {
     PropTypes.shape({
       text: PropTypes.object,
       category: PropTypes.object,
-      smallCompImages: PropTypes.array,
+      smallCompImage: PropTypes.array,
     })
   ).isRequired,
   singleCTAButton: PropTypes.shape({}).isRequired,

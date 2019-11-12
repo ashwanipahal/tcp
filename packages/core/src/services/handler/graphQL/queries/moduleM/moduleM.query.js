@@ -50,14 +50,22 @@ const buildQuery = ({ slot, contentId, lang }) => `
         smallCompImage {
           link {
             url
+            text
+            title
+            target
           }
           image {
             url
+            alt
+            title
           }
         }
         linkClass {
           class
           url
+          text
+          title
+          target
         }
       }
 
