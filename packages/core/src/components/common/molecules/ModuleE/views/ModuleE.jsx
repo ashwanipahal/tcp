@@ -80,7 +80,7 @@ Divider.propTypes = {
   disabled: PropTypes.bool.isRequired,
 };
 
-/* Returns Promo Area Image */
+/* Returns Promo Area Image. Extracting this due to eslint complexity */
 const getLinkedImage = (linkedImage, carouselCtaType, IMG_DATA) => {
   return (
     linkedImage && (
@@ -90,6 +90,8 @@ const getLinkedImage = (linkedImage, carouselCtaType, IMG_DATA) => {
           carouselCtaType === 'button' ? 'promo-area-image-link-spaced' : ''
         }`}
         url={linkedImage.link.url}
+        target={linkedImage.link.target}
+        title={linkedImage.link.title}
       >
         <DamImage
           imgConfigs={IMG_DATA.promoAreaImgConfig}
@@ -122,7 +124,7 @@ const ModuleE = props => {
     accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
   } = props;
 
-  const linkedImage = linkedImages ? linkedImages[0] : [];
+  const linkedImage = linkedImages && linkedImages[0];
   const {
     mediaLinkedList: eyebrowMediaLinkedList,
     promoBanner: eyebrowPromoBanner,
