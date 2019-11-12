@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Animated } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { isGymboree } from '@tcp/core/src/utils';
+import { isGymboree, getLabelValue } from '@tcp/core/src/utils';
 
 import { Container, TCPIcon, GymIcon, styles } from './AnimatedBrandChangeIcon.style';
 import { APP_TYPE } from '../../hoc/ThemeWrapper.constants';
@@ -129,7 +129,7 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
   renderTCPBrand = () => {
     const { brandContainer } = styles;
     const { labels } = this.props;
-    const { theChildrensplace = 'The Childrens Place Link' } = labels;
+    const theChildrensplace = getLabelValue(labels, 'theChildrensplace');
     return (
       <Animated.View
         style={[
@@ -161,7 +161,7 @@ class AnimatedBrandChangeIcon extends PureComponent<Props> {
   renderGymboreeBrand = () => {
     const { brandContainer } = styles;
     const { labels } = this.props;
-    const { gymboreeLink = 'Gymboree Link' } = labels;
+    const gymboreeLink = getLabelValue(labels, 'gymboreeLink');
     return (
       <Animated.View
         style={[
