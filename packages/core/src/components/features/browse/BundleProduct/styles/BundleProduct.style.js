@@ -62,6 +62,18 @@ export default css`
   .product-summary-section {
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .bundle-product-item {
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+  .product-container {
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .product-price-container {
     margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
@@ -76,6 +88,15 @@ export default css`
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
     @media ${props => props.theme.mediaQuery.medium} {
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+    }
+  }
+
+  .outfiting-list-details {
+    .actual-price {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+    }
+    .original-price {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
     }
   }
 

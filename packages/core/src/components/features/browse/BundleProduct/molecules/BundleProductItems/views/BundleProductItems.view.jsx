@@ -9,7 +9,7 @@ class BundleProductItems extends React.PureComponent {
    * @function renderItem populates the L1 menu item from the data passed to it
    * @param {object} item Details of the L1 menu item passed from the loop
    */
-  renderItem = () => {
+  renderItems = () => {
     const {
       labels,
       currentBundle,
@@ -23,38 +23,37 @@ class BundleProductItems extends React.PureComponent {
       isLoggedIn,
       currencySymbol,
       currencyExchange,
+      className,
     } = this.props;
     return (
-      <div className="xxxx">
-        <ul className="outfiting-list-container">
-          {currentBundle &&
-            currentBundle.map((product, index) => (
-              <li key={product.generalProductId}>
-                <OutfitProduct
-                  plpLabels={plpLabels}
-                  labels={labels}
-                  outfitProduct={product.products}
-                  productIndexText={`Product ${index + 1} of ${currentBundle.length}`}
-                  handleAddToBag={() => {
-                    handleAddToBag(addToBagEcom, product, product.generalProductId, currentState);
-                  }}
-                  className="outfiting-list-details"
-                  addToBagError={addToBagErrorId === product.generalProductId && addToBagError}
-                  isLoggedIn={isLoggedIn}
-                  addToFavorites={addToFavorites}
-                  currencySymbol={currencySymbol}
-                  currencyExchange={currencyExchange}
-                  isBundleProduct
-                />
-              </li>
-            ))}
-        </ul>
-      </div>
+      <ul className="outfiting-list-container">
+        {currentBundle &&
+          currentBundle.map(product => (
+            <li key={product.generalProductId} className="bundle-product-item">
+              <OutfitProduct
+                plpLabels={plpLabels}
+                labels={labels}
+                outfitProduct={product.products}
+                productIndexText=""
+                handleAddToBag={() => {
+                  handleAddToBag(addToBagEcom, product, product.generalProductId, currentState);
+                }}
+                className={`${className} outfiting-list-details`}
+                addToBagError={addToBagErrorId === product.generalProductId && addToBagError}
+                isLoggedIn={isLoggedIn}
+                addToFavorites={addToFavorites}
+                currencySymbol={currencySymbol}
+                currencyExchange={currencyExchange}
+                isBundleProduct
+              />
+            </li>
+          ))}
+      </ul>
     );
   };
 
   render() {
-    return <div className="container-xxxx">{this.renderItem()}</div>;
+    return <div className="bundle-productsList-container">{this.renderItems()}</div>;
   }
 }
 
@@ -72,6 +71,7 @@ BundleProductItems.propTypes = {
   currencyExchange: PropTypes.string,
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  className: PropTypes.string,
 };
 
 BundleProductItems.defaultProps = {
@@ -84,6 +84,7 @@ BundleProductItems.defaultProps = {
   currencyExchange: 1,
   currencySymbol: 'USD',
   pdpLabels: {},
+  className: '',
 };
 
 export default withStyles(BundleProductItems, styles);

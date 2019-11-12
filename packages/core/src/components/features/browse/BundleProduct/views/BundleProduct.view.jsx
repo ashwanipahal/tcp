@@ -44,7 +44,16 @@ class BundleProduct extends React.PureComponent {
 
   getBreadCrumb = () => {
     const { breadCrumbs } = this.props;
-    return breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />;
+    if (breadCrumbs) {
+      return (
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="breadcrum-wrapper">
+            <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
+          </Col>
+        </Row>
+      );
+    }
+    return '';
   };
 
   getSocialConnectWidget = () => {
@@ -93,6 +102,34 @@ class BundleProduct extends React.PureComponent {
     );
   };
 
+  getBundleProductsList = () => {
+    const {
+      currentBundle,
+      plpLabels,
+      handleAddToBag,
+      addToFavorites,
+      addToBagEcom,
+      currentState,
+      isLoggedIn,
+    } = this.props;
+    return (
+      <Row fullBleed className="product-items-section">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <BundleProductItems
+            currentBundle={currentBundle}
+            plpLabels={plpLabels}
+            handleAddToBag={handleAddToBag}
+            addToFavorites={addToFavorites}
+            addToBagEcom={addToBagEcom}
+            currentState={currentState}
+            isLoggedIn={isLoggedIn}
+            className="bundle-products-list"
+          />
+        </Col>
+      </Row>
+    );
+  };
+
   getProductDescription = () => {
     const { itemPartNumber, pdpLabels, shortDescription, longDescription } = this.props;
     return (
@@ -136,35 +173,20 @@ class BundleProduct extends React.PureComponent {
   };
 
   render() {
-    const {
-      className,
-      currentProduct,
-      currentBundle,
-      pdpLabels,
-      plpLabels,
-      handleAddToBag,
-      addToFavorites,
-      addToBagEcom,
-      currentState,
-      isLoggedIn,
-    } = this.props;
+    const { className, currentProduct, pdpLabels } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap, generalProductId } = currentProduct;
       const currentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
 
       return (
         <div className={className}>
-          <Row>
-            <Col colSize={{ small: 6, medium: 8, large: 12 }} className="breadcrum-wrapper">
-              {this.getBreadCrumb()}
-            </Col>
-          </Row>
+          {this.getBreadCrumb()}
           <Row className="placeholder-large">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="promo-area-1">{pdpLabels.promoArea1}</div>
             </Col>
           </Row>
-          <Row>
+          <Row className="product-container">
             <Col colSize={{ small: 6, medium: 3, large: 6 }}>{this.getMainImageCarousel()}</Col>
             <Col colSize={{ small: 6, medium: 5, large: 6 }}>
               <Row fullBleed className="product-summary-section">
@@ -177,19 +199,7 @@ class BundleProduct extends React.PureComponent {
                   {this.getProductDescription()}
                 </Col>
               </Row>
-              <Row fullBleed className="product-items-section">
-                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                  <BundleProductItems
-                    currentBundle={currentBundle}
-                    plpLabels={plpLabels}
-                    handleAddToBag={handleAddToBag}
-                    addToFavorites={addToFavorites}
-                    addToBagEcom={addToBagEcom}
-                    currentState={currentState}
-                    isLoggedIn={isLoggedIn}
-                  />
-                </Col>
-              </Row>
+              {this.getBundleProductsList()}
             </Col>
           </Row>
         </div>
