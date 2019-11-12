@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getCartItemCount, getSflItemCount } from '@tcp/core/src/utils/cookie.util';
-import styles, { modalStyles } from '../styles/MiniBag.style';
+import { getSflItemCount } from '@tcp/core/src/utils/cookie.util';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
+import styles, { modalStyles, customStyles } from '../styles/MiniBag.style';
 import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
 import { getSiteId } from '../../../../../../../core/src/utils/utils.web';
@@ -81,9 +82,12 @@ class MiniBag extends React.Component {
       isShowSaveForLaterSwitch,
       isUserLoggedIn,
       isRememberedUser,
+      miniBagLoaderState,
+      isMiniBag,
+      cartOrderItemsCount,
     } = this.props;
     const { country } = this.state;
-    const cartItemCount = getCartItemCount();
+    const cartItemCount = cartOrderItemsCount;
     const sflItemsCount = getSflItemCount(country);
     return (
       <Modal
@@ -100,6 +104,7 @@ class MiniBag extends React.Component {
         inheritedStyles={modalStyles}
         closeIconLeftAligned
       >
+        {miniBagLoaderState && <SpinnerOverlay inheritedStyles={customStyles} />}
         {this.renderMiniBagHeader(cartItemCount)}
         <MiniBagBody
           closeMiniBag={onRequestClose}
@@ -118,6 +123,7 @@ class MiniBag extends React.Component {
           isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
           isUserLoggedIn={isUserLoggedIn}
           isRememberedUser={isRememberedUser}
+          isMiniBag={isMiniBag}
         />
       </Modal>
     );
@@ -146,6 +152,9 @@ MiniBag.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isRememberedUser: PropTypes.bool.isRequired,
+  miniBagLoaderState: PropTypes.bool.isRequired,
+  isMiniBag: PropTypes.bool.isRequired,
+  cartOrderItemsCount: PropTypes.number.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));

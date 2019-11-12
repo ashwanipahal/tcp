@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import AddedToBagActions from '../../AddedToBagActions';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
@@ -13,11 +14,13 @@ import styles, {
   buttonActionStyles,
   LoyaltyWrapperStyles,
   recommendationStyles,
+  customStyles,
 } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
 import Anchor from '../../../../common/atoms/Anchor';
 import LoyaltyBanner from '../../LoyaltyBanner';
+import config from './config';
 
 // @flow
 type Props = {
@@ -30,6 +33,7 @@ type Props = {
   handleContinueShopping: Function,
   isInternationalShipping: boolean,
   hideHeader: boolean,
+  addedToBagLoaderState: boolean,
 };
 
 const AddedToBag = ({
@@ -43,6 +47,7 @@ const AddedToBag = ({
   handleCartCheckout,
   isInternationalShipping,
   hideHeader,
+  addedToBagLoaderState,
 }: Props) => {
   return (
     <Modal
@@ -61,6 +66,7 @@ const AddedToBag = ({
       inheritedStyles={modalStyles}
       innerContentClassName="atb-innerContent"
     >
+      {addedToBagLoaderState && <SpinnerOverlay inheritedStyles={customStyles} />}
       <div className="addedToBagWrapper">
         <ProductInformationView
           data={addedToBagData}
@@ -80,6 +86,7 @@ const AddedToBag = ({
           containerId="paypal-button-container-added-to-bag"
           inheritedStyles={buttonActionStyles}
           hideHeader={hideHeader}
+          isAddedToBag
         />
         <div className="loyaltyAddedToBagWrapper">
           <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
@@ -91,6 +98,7 @@ const AddedToBag = ({
             variations="moduleO"
             priceOnly
             inheritedStyles={recommendationStyles}
+            carouselConfigProps={config.CAROUSEL_OPTIONS}
           />
         </div>
         <div className="continue-shopping">

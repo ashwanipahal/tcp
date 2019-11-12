@@ -53,7 +53,7 @@ exports[`OverlayModal should render Overlay correctly 1`] = `
       id="modalTriangle"
     />
     <div
-      className="mpr-plcc-theme modal__bar hide-on-mobile"
+      className="mpr-plcc-theme modal__bar"
     />
     <ModalContent
       className="modal__content"

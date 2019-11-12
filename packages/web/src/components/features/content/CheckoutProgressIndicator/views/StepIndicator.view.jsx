@@ -66,3 +66,4 @@ StepIndicator.defaultProps = {
 };
 
 export default withStyles(StepIndicator, style);
+export { StepIndicator as StepIndicatorVanilla };

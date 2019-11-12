@@ -2,7 +2,7 @@ import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
-import setLoaderState from '../../../../../../../../../web/src/components/features/content/Loader/container/Loader.actions';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 
 import COUPON_CONSTANTS from '../Coupon.constants';
 import { validateReduxCache } from '../../../../../../../utils/cache.util';

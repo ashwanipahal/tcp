@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import BodyCopy from '../../../atoms/BodyCopy';
+import { getScreenWidth } from '../../../../../utils/index.native';
 
 // @flow
 
@@ -33,6 +34,10 @@ type GetAddressLineProps = {
     country: ?string,
     phone1: ?string,
   },
+};
+
+const style = {
+  maxWidth: getScreenWidth() / 2,
 };
 
 const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { fontSize }) => {
@@ -83,6 +88,7 @@ const getNameFromAddress = (address, showDefaultText, regularName) => {
       fontWeight={regularName ? 'regular' : 'semibold'}
       text={name}
       color="gray.900"
+      style
     />
   );
 };
@@ -105,7 +111,7 @@ const Address = ({
   regularName,
 }: Props) => {
   return address ? (
-    <View>
+    <View style={style}>
       {showName && getNameFromAddress(address, showDefaultText, regularName)}
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix, fontSize })

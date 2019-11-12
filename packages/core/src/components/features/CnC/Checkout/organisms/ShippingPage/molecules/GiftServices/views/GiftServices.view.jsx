@@ -66,6 +66,7 @@ class GiftServices extends React.PureComponent {
       eventName: 'select gift option',
       products: orderItems,
     });
+    /* istanbul ignore else */
     if (!isChecked && dispatch) {
       dispatch(change('GiftServices', `message`, ''));
       dispatch(change('GiftServices', `optionId`, 'standard'));
@@ -127,6 +128,7 @@ class GiftServices extends React.PureComponent {
 
   giftServiceChanged = (e, value) => {
     const { dispatch } = this.props;
+    /* istanbul ignore else */
     if (dispatch) {
       dispatch(change('GiftServices', `optionId`, value));
     }

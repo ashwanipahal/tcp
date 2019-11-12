@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniBagTileSkelton common component renders correctly 1`] = `
+<div
+  className="className tile-header"
+>
+  <Styled(Row)
+    className="product product-tile-wrapper"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="align-product-img product-brand-img-wrapper"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+      key="productDetails"
+    >
+      <div
+        className="imageWrapper"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="logoWrapper"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="bag-product-detail-wrapper"
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+      key="productDetails"
+    >
+      <div
+        className="badge-wrapper"
+      >
+        <SkeletonLine />
+      </div>
+      <Styled(Row)
+        className="product-detail-row"
+      >
+        <Styled(Col)
+          className="productImgBrand"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <SkeletonLine />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="product-detail-row label-responsive-wrapper"
+      >
+        <SkeletonLine />
+      </Styled(Row)>
+      <div
+        className="product-price"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="product-points"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="save-for-later"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
