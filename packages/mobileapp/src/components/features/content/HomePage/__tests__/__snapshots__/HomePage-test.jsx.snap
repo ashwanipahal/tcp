@@ -868,7 +868,7 @@ exports[`HomePageView should render correctly 1`] = `
         },
       ]
     }
-    eyebrow={Array []}
+    eyebrow={null}
     headerText={
       Array [
         Object {
@@ -1078,7 +1078,7 @@ exports[`HomePageView should render correctly 1`] = `
         },
       ]
     }
-    eyebrow={Array []}
+    eyebrow={null}
     headerText={
       Array [
         Object {
