@@ -17,18 +17,18 @@ import { MainContainer, RowContainer, Container } from '../styles/OrderNotificat
  * can be passed in the component.
  */
 
-const navigateToOrderDetail = (orderNumber, navigation, labels) => {
+const navigateToOrderDetail = (orderNumber, navigation, orderLabels) => {
   const router = {
     query: {
       orderId: orderNumber,
     },
   };
   navigation.navigate('OrderDetailPage', {
-    title: `${getLabelValue(labels, 'lbl_orderDetail_heading', 'orders')} #${orderNumber}`,
+    title: `${getLabelValue(orderLabels, 'lbl_orderDetail_heading', 'orders')} #${orderNumber}`,
     router,
   });
 };
-const OrderNotification = ({ labels, order, navigation, separator }) => {
+const OrderNotification = ({ labels, orderLabels, order, navigation, separator }) => {
   return (
     <MainContainer>
       <Container
@@ -42,7 +42,7 @@ const OrderNotification = ({ labels, order, navigation, separator }) => {
           fontFamily="secondary"
           text={getLabelValue(
             labels,
-            getOrderStatusForNotification(order.status),
+            getOrderStatusForNotification(order.orderStatus),
             'OrderNotification'
           )}
         />
@@ -57,14 +57,14 @@ const OrderNotification = ({ labels, order, navigation, separator }) => {
 
           <Anchor
             fontSizeVariation="medium"
-            underline
+            underlineWhite
             noLink
             color="white"
             anchorVariation="white"
             fontSize="fs12"
             dataLocator="order-number-value"
             fontFamily="secondary"
-            onPress={() => navigateToOrderDetail(order.orderNumber, navigation)}
+            onPress={() => navigateToOrderDetail(order.orderNumber, navigation, orderLabels)}
             text={order.orderNumber}
           />
 
@@ -73,13 +73,13 @@ const OrderNotification = ({ labels, order, navigation, separator }) => {
               fontSize="fs12"
               fontSizeVariation="medium"
               anchorVariation="white"
-              underline
-              onPress={() => navigateToOrderDetail(order.orderNumber, navigation)}
+              underlineWhite
+              onPress={() => navigateToOrderDetail(order.orderNumber, navigation, orderLabels)}
               text={getLabelValue(labels, 'lbl_global_viewOrderDetails', 'OrderNotification')}
             />
           </ViewWithSpacing>
         </RowContainer>
-        {order.trackingUrl && order.trackingUrl !== constants.STATUS_CONSTANTS.NA && (
+        {order.orderTrackingUrl && !order.isBOSSOrder && (
           <RowContainer spacingStyles="margin-top-SM">
             <BodyCopy
               color="white"
@@ -87,15 +87,23 @@ const OrderNotification = ({ labels, order, navigation, separator }) => {
               fontFamily="secondary"
               text={getLabelValue(labels, 'lbl_global_tracking', 'OrderNotification')}
             />
-
-            <Anchor
-              fontSizeVariation="medium"
-              anchorVariation="white"
-              fontSize="fs12"
-              underline
-              onPress={() => UrlHandler(order.trackingUrl)}
-              texgt={order.orderTracking}
-            />
+            {order.orderTrackingUrl !== constants.STATUS_CONSTANTS.NA ? (
+              <Anchor
+                fontSizeVariation="medium"
+                anchorVariation="white"
+                fontSize="fs12"
+                underlineWhite
+                onPress={() => UrlHandler(order.trackingUrl)}
+                text={order.orderTracking}
+              />
+            ) : (
+              <BodyCopy
+                color="white"
+                fontSize="fs12"
+                fontFamily="secondary"
+                text={order.orderTracking}
+              />
+            )}
           </RowContainer>
         )}
 
@@ -115,6 +123,7 @@ const OrderNotification = ({ labels, order, navigation, separator }) => {
 OrderNotification.propTypes = {
   order: PropTypes.shape({}),
   labels: PropTypes.shape({}).isRequired,
+  orderLabels: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   separator: PropTypes.bool.isRequired,
 };

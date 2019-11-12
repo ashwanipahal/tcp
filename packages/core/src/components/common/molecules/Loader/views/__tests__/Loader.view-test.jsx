@@ -12,3 +12,14 @@ describe('Loader Component', () => {
     expect(tree).toMatchSnapshot();
   });
 });
+
+describe('Loader Component', () => {
+  const props = {
+    loaderState: false,
+  };
+
+  it('should render correctly', () => {
+    const tree = shallow(<Loader {...props} />);
+    expect(tree).toMatchSnapshot();
+  });
+});

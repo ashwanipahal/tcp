@@ -22,6 +22,7 @@ import {
   getIsCartItemsSFL,
   getCartItemsSflError,
   getIsMiniBagOpen,
+  getMiniBagLoaderState,
 } from './MiniBag.selectors';
 import {
   getCurrentPointsState,
@@ -54,6 +55,7 @@ export class MiniBagContainer extends React.PureComponent {
     isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
     rememberedUserFlag: PropTypes.bool.isRequired,
     isUserLoggedIn: PropTypes.bool.isRequired,
+    miniBagLoaderState: PropTypes.bool.isRequired,
     cartOrderItemsCount: PropTypes.number.isRequired,
   };
 
@@ -90,6 +92,7 @@ export class MiniBagContainer extends React.PureComponent {
       isShowSaveForLaterSwitch,
       rememberedUserFlag,
       isUserLoggedIn,
+      miniBagLoaderState,
       cartOrderItemsCount,
     } = this.props;
 
@@ -115,6 +118,7 @@ export class MiniBagContainer extends React.PureComponent {
         isShowSaveForLaterSwitch={isShowSaveForLaterSwitch}
         isRememberedUser={rememberedUserFlag}
         isUserLoggedIn={isUserLoggedIn}
+        miniBagLoaderState={miniBagLoaderState}
         cartOrderItemsCount={cartOrderItemsCount}
       />
     );
@@ -137,6 +141,7 @@ const mapStateToProps = state => {
     isShowSaveForLaterSwitch: getSaveForLaterSwitch(state),
     rememberedUserFlag: isRememberedUser(state),
     isUserLoggedIn: getUserLoggedInState(state),
+    miniBagLoaderState: getMiniBagLoaderState(state),
     cartOrderItemsCount: BagPageSelector.getTotalItems(state),
   };
 };

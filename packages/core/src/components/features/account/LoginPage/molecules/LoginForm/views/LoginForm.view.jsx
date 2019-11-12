@@ -184,7 +184,7 @@ class LoginForm extends React.PureComponent<Props> {
             {!isRememberedUser && (
               <Anchor
                 underline
-                fontSizeVariation="xlarge"
+                fontSizeVariation="large"
                 anchorVariation="primary"
                 dataLocator="login-forgotpasswordlnk"
                 onClick={this.showForgotPasswordForm}

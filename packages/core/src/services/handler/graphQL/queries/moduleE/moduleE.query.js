@@ -35,7 +35,7 @@ const buildQuery = ({ slot, contentId, lang }) => `
 					text
 					style
 				}
-			}
+			   }
 			}
 			headerText {
 				textItems {

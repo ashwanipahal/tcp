@@ -19,6 +19,7 @@ import {
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
@@ -30,7 +31,6 @@ import { getUserLoggedInState } from '@tcp/core/src/components/features/account/
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
-import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
@@ -244,7 +244,7 @@ class TCPWebApp extends App {
     // Just a sample - any store specific data should be set in this
     if (pageId) {
       const seoConfig = deriveSEOTags(pageId, store, router);
-      return <SEOTags seoConfig={seoConfig} />;
+      return seoConfig ? <SEOTags seoConfig={seoConfig} /> : null;
     }
     return null;
   };

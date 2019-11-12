@@ -106,6 +106,7 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
 ",
         ]
       }
+      isAddedToBag={true}
       labels={Object {}}
       showVenmo={false}
     />
