@@ -4,8 +4,8 @@ import throttle from 'lodash/throttle';
 import { getViewportInfo, isClient } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
-import { Anchor, Col, Image, Row, BodyCopy, Button } from '../../../atoms';
-import { getLocator } from '../../../../../utils';
+import { Anchor, Col, DamImage, Row, BodyCopy, Button } from '../../../atoms';
+import { getLocator, isGymboree } from '../../../../../utils';
 import { Grid, LinkText, PromoBanner } from '../..';
 import style, { ImageGrid, CtaButtonWrapper, ImageRoundFlex } from '../styles/ModuleM.style';
 import config from '../moduleM.config';
@@ -146,15 +146,12 @@ export class ModuleM extends React.PureComponent {
                   dataLocator={`${getLocator('moduleM_product_image')}${index}`}
                 >
                   <div ref={this.gridImageRef} className="moduleM__productImage">
-                    <Image alt={image.title} src={image.url} />
+                    <DamImage
+                      imgConfigs={config.IMG_DATA.productImgConfig}
+                      imgData={image}
+                      link={link}
+                    />
                   </div>
-                  {/* TO DO - Implement Dam image after cms integration */}
-                  {/* <DamImage
-                    imgConfigs={config.IMG_DATA.productImgConfig}
-                    imgData={image}
-                    data-locator={`${getLocator('moduleT_promobanner_img')}${1}`}
-                    link={link}
-                  /> */}
                   <BodyCopy
                     component="div"
                     className="moduleM__productName"
@@ -210,7 +207,11 @@ export class ModuleM extends React.PureComponent {
                   asPath={link.url}
                   dataLocator={`${getLocator('moduleM_product_image')}${index}`}
                 >
-                  <Image alt={image.title} src={image.url} />
+                  <DamImage
+                    imgConfigs={config.IMG_DATA.productImgConfig}
+                    imgData={image}
+                    link={link}
+                  />
                   <BodyCopy
                     component="div"
                     className="moduleM__productName"
@@ -257,7 +258,11 @@ export class ModuleM extends React.PureComponent {
                     asPath={button.url}
                     dataLocator={`${getLocator('moduleM_product_image')}${index}`}
                   >
-                    <Image alt={image.alt} src={image.url} />
+                    <DamImage
+                      imgConfigs={config.IMG_DATA.productImgConfig}
+                      imgData={image}
+                      link={button}
+                    />
                     <BodyCopy
                       component="div"
                       className="moduleM__productName"
@@ -325,7 +330,7 @@ export class ModuleM extends React.PureComponent {
     tabList.map((list, index) => Object.assign({}, list, { id: `tablList-${index}` }));
 
   render() {
-    const { className, headerText, promoBanner, divTabs, flexbox, ctaItems } = this.props;
+    const { className, headerText, promoBanner, divTabs, flexbox } = this.props;
     const { productCategoryImageList } = this.state;
 
     return (
@@ -359,8 +364,8 @@ export class ModuleM extends React.PureComponent {
               large: 12,
             }}
           >
-            {ctaItems && ctaItems.length > 0
-              ? this.getCategoryImageList(ctaItems)
+            {isGymboree()
+              ? this.getCategoryImageList(productCategoryImageList)
               : this.getProductImageList(flexbox, productCategoryImageList)}
           </Col>
         </Row>

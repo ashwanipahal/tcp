@@ -95,7 +95,6 @@ class ModuleM extends React.PureComponent {
       currentTabData = images.find(obj => obj.id === currentTabItem);
     }
     const { smallCompImage, linkClass } = currentTabData;
-    console.log(smallCompImage, linkClass);
     const totalImages = smallCompImage && smallCompImage.length;
     const imageDimension = this.getImageDimension(totalImages);
     return (
@@ -153,13 +152,6 @@ class ModuleM extends React.PureComponent {
               return (
                 <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
                   <Anchor url={link.url} navigation={navigation}>
-                    {/* <Image
-                      source={{ uri: image.url }}
-                      height={imageDimension}
-                      width={imageDimension}
-                      marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
-                      borderRadius={isGymboree() ? 50 : 0}
-                    /> */}
                     <DamImage
                       alt={image.alt}
                       url={image.url}

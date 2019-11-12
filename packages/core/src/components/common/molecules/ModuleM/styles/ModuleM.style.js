@@ -142,6 +142,7 @@ export default css`
     width: 142px;
 
     .moduleM__shopAllBtn {
+      font-family: ${props => props.theme.typography.fonts.primary};
       padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 61px;
       text-align: center;
     }

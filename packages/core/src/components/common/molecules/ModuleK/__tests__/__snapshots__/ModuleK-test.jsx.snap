@@ -342,6 +342,29 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
     }
   }
+
+  /* Module M Heading Styles */
+  .medium_text_subpromo {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    font-weight: normal;
+    text-align: center;
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
 ",
                 ";
 ",
