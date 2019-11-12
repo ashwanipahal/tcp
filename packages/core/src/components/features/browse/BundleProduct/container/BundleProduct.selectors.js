@@ -157,6 +157,7 @@ export const getPDPLabels = state => {
     ),
     back: getLabelValue(state.Labels, 'lbl_back', 'PDP', 'Browse'),
     eGiftCardLink: getLabelValue(state.Labels, 'eGiftCardLink', 'PDP', 'Browse'),
+    chooseItemBtnLbl: getLabelValue(state.Labels, 'lbl_bundleproduct_choosecta', 'PDP', 'Browse'),
   };
 };
 

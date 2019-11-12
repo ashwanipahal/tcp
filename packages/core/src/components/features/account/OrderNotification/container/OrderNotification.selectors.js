@@ -29,11 +29,11 @@ export const getLastBopis = createSelector(
 );
 
 export const getLimitToDisplayLastOrderNotification = state => {
-  return state[APICONFIG_REDUCER_KEY].ordersNotificationsThreshold || 30; // Todo : need to change
+  return state[APICONFIG_REDUCER_KEY].ordersNotificationsThreshold || 6;
 };
 
 export const getLimitToDisplayBossOrder = state => {
-  return state[APICONFIG_REDUCER_KEY].bossOrdersNotificationsThreshold || 30; // Todo : need to change
+  return state[APICONFIG_REDUCER_KEY].bossOrdersNotificationsThreshold || 15;
 };
 
 export const getTransactionNotificationsInMyAccountEnabled = state => {
