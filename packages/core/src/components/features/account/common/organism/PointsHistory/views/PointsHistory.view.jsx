@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../common/atoms';
 import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
-import styles from '../styles/PointsHistoryList.view.style';
 import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view';
 
 /**
@@ -69,7 +67,7 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                className="pointsHistoryTextWrap"
+                className="text-break"
               >
                 {pointHistoryRow.transactionDate}
               </BodyCopy>
@@ -80,7 +78,7 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                className="elem-pr-XXS pointsHistoryTextWrap"
+                className="elem-pr-XXS text-break"
               >
                 {pointHistoryRow.transactionTypeName}
               </BodyCopy>
@@ -91,7 +89,7 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                className="pointsHistoryTextWrap"
+                className="text-break"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
@@ -140,4 +138,4 @@ PointsHistory.defaultProps = {
   isFetching: false,
 };
 
-export default withStyles(PointsHistory, styles);
+export default PointsHistory;

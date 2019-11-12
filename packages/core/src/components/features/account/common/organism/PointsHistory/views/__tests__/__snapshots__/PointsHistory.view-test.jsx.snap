@@ -1,78 +1,193 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Points History Slider View should render Points History Correctly 1`] = `
-<StyledComponent
+<div
   className="className"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-kAzzGY",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .list-fontsizes {
-    font-size: ",
-          [Function],
-          ";
-    @media ",
-          [Function],
-          " {
-      font-size: ",
-          [Function],
-          ";
-    }
-    @media ",
-          [Function],
-          " {
-      font-size: ",
-          [Function],
-          ";
-    }
-    word-wrap: break-word;
-  }
-
-  .pointsHistoryTextWrap {
-    word-wrap: break-word;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(PointsHistory)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-kAzzGY",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  labels={
-    Object {
-      "lbl_common_order_date": "08/08/19",
-      "lbl_common_points_earned": "5",
-      "lbl_common_points_history": "Points History",
-      "lbl_common_transaction": "Credit",
-    }
-  }
-  pointHistory={
-    Array [
-      Object {
-        "pointAwardedDate": "08/08/19",
-        "pointTransactionType": "Credit",
-        "pointsEarned": 5,
-        "transactionDate": "08/08/19",
-        "transactionType": "non-transactional",
-        "transactionTypeName": "AddBirthDate",
-      },
-    ]
-  }
-/>
+>
+  <Styled(Row)
+    className="elem-mb-SM elem-mt-SM"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        data-locator="pointshistoryorderdatelbl"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        08/08/19
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        data-locator="pointshistorytransactionslbl"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        Credit
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        data-locator="pointshistorypointsearnedlbl"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        5
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-SM"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="text-break"
+        color="text.primary"
+        component="p"
+        data-locator="pointshistoryorderdate"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        08/08/19
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="elem-pr-XXS text-break"
+        color="text.primary"
+        component="p"
+        data-locator="pointshistorytransctionmsg"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        AddBirthDate
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="text-break"
+        color="text.primary"
+        component="p"
+        data-locator="pointshistorypoints"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        5
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-XXL elem-mt-XXS"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        asPath="/account/place-rewards/points-history"
+        dataLocator="pointshistorylnk"
+        fontSizeVariation="medium"
+        to="/account?id=place-rewards&&subSection=points-history"
+        underline={true}
+      >
+        Points History
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
 `;
