@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BundleProductDetail should render correctly 1`] = `
-<BundleProduct
+<Styled(BundleProduct)
   AddToFavoriteErrorMsg=""
   addToBagEcom={[MockFunction]}
   addToBagError=""
   addToBagErrorId=""
   addToFavorites={[MockFunction]}
+  breadCrumbs={Array []}
   currency="USD"
   currencyExchange={1}
   currentProduct={Object {}}
@@ -57,6 +58,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
   }
   pdpLabels={Object {}}
   plpLabels={Object {}}
+  productDetails={Array []}
   removeAddToFavoritesErrorMsg={[MockFunction]}
   selectedColorProductId=""
   shortDescription=""

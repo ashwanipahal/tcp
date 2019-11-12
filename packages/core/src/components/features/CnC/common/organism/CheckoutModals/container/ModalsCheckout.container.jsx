@@ -63,6 +63,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       closeAddedToBagModal,
       setClickAnalyticsDataCheckout,
       cartOrderItems,
+      handleCartCheckout,
     } = this.props;
     return (
       <ModalsCheckoutView
@@ -92,6 +93,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         checkoutModalComponentType={checkoutModalComponent}
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         cartOrderItems={cartOrderItems}
+        handleCartCheckout={handleCartCheckout}
       />
     );
   }
@@ -141,6 +143,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     setClickAnalyticsDataCheckout: payload => {
       dispatch(setClickAnalyticsData(payload));
+    },
+    handleCartCheckout: payload => {
+      dispatch(bagPageActions.startCheckout(payload));
     },
   };
 };

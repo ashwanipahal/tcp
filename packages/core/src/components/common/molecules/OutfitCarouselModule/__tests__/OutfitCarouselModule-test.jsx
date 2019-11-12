@@ -5,9 +5,7 @@ import { OutfitCarouselModuleVanilla as OutfitCarouselModule } from '../views/Ou
 
 describe('OutfitCarouselModule component', () => {
   it('should default variant correctly', () => {
-    const wrapper = shallow(<OutfitCarouselModule outfitModule={mock.OutfitCarouselModule} />).get(
-      0
-    );
+    const wrapper = shallow(<OutfitCarouselModule data={mock.OutfitCarouselModule} />).get(0);
     expect(wrapper).toMatchSnapshot();
   });
 });

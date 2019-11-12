@@ -58,6 +58,11 @@ const ignorePsuedoCodeDir = [
   '/services/handler',
   '/services/handler/external',
   '/abstractors/bootstrap/xappConfig',
+  '/ListingPage/',
+  '/PromoModules/',
+  '/Logout/container',
+  '/ChangePasswordRoute/views/',
+  'CheckoutSectionTitleDisplay/styles',
 ];
 
 module.exports = {
