@@ -74,12 +74,5 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
       }
     }
   />
-  <Connect(AddedToBagContainer)
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
 </Styled(View)>
 `;

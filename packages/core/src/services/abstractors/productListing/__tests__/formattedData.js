@@ -71,10 +71,7 @@ export const formattedPdpRes = {
         miscInfo: {
           isBopisEligible: true,
           isBossEligible: true,
-          badge1: {
-            matchBadge: false,
-            defaultBadge: '',
-          },
+          badge1: {},
           badge2: '50% OFF',
           keepAlive: false,
         },

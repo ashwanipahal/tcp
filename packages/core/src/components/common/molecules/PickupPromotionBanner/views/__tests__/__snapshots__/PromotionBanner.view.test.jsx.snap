@@ -17,7 +17,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         className="richtextCss"
       >
         <Styled(RichText)
-          richTextHtml="EXTRA undefined% OFF"
+          richTextHtml="EXTRA 5% OFF"
         />
       </div>
     </div>
