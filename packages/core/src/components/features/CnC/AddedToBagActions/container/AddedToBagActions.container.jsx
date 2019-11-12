@@ -9,6 +9,7 @@ import utility from '../../Checkout/util/utility';
 import bagPageActions from '../../BagPage/container/BagPage.actions';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import checkoutSelectors, { isUsSite } from '../../Checkout/container/Checkout.selector';
+import CHECKOUT_ACTIONS from '../../Checkout/container/Checkout.action';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getCartOrderId } from '../../CartItemTile/container/CartItemTile.selectors';
 
@@ -48,6 +49,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isMiniBag,
       setClickAnalyticsDataCheckout,
       cartOrderItems,
+      clearCheckoutServerError,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -81,6 +83,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         isMiniBag={isMiniBag}
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         cartOrderItems={cartOrderItems}
+        clearCheckoutServerError={clearCheckoutServerError}
       />
     );
   }
@@ -110,6 +113,7 @@ const mapDispatchToProps = dispatch => {
     setClickAnalyticsDataCheckout: payload => {
       dispatch(setClickAnalyticsData(payload));
     },
+    clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
   };
 };
 

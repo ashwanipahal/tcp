@@ -16,6 +16,18 @@ import { getLocator } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+  componentDidMount() {
+    const {
+      isPayPalHidden,
+      showAddTobag,
+      checkoutServerError,
+      clearCheckoutServerError,
+    } = this.props;
+    if (isPayPalHidden && showAddTobag && checkoutServerError) {
+      clearCheckoutServerError({});
+    }
+  }
+
   getPaypalButton() {
     const {
       showAddTobag,
@@ -29,7 +41,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       containerID = 'paypal-button-container-bag-header';
     }
     return (
-      !isPayPalHidden && (
+      (!isPayPalHidden || showAddTobag) && (
         <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
           <PayPalButton
             className="payPal-button"

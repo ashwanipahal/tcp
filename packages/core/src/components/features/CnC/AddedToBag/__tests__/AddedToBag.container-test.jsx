@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddedToBagContainer, mapDispatchToProps } from '../container/AddedToBag.container';
+import { AddedToBagContainer, mapDispatchToProps } from '../container/AddedToBagCommonContainer';
 import AddedToBag from '../views/AddedToBag.view';
 
 jest.mock('@tcp/core/src/utils', () => ({
