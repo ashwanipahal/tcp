@@ -313,17 +313,16 @@ const ModuleE = props => {
                 </Row>
               )}
 
-            {/* ---------- Cta Button List Start ----------- */}
             {ctaItems && (
               <ButtonList
                 buttonsData={ctaItems}
                 buttonListVariation={buttonListCtaType}
                 dataLocatorDivisionImages={getLocator('moduleE_cta_image')}
                 dataLocatorTextCta={getLocator('moduleE_cta_links')}
+                dataLocatorDropDown={getLocator('moduleE_dropdown')}
                 className="button-list-container-alternate"
               />
             )}
-            {/* ---------- Cta Button List End ----------- */}
           </Col>
 
           {/* ---------- Small Composite Image Start ----------- */}

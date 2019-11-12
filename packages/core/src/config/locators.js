@@ -115,6 +115,9 @@ export default {
   moduleE_small_img_cta: 'moduleE_small_img_cta_',
   moduleE_promo_area_img: 'moduleE_promo_area_img',
   moduleE_promo_area_img_cta: 'moduleE_promo_area_img_cta',
+  moduleE_cta_image: 'moduleE_cta_image_',
+  moduleE_cta_links: 'moduleE_cta_links_',
+  moduleE_dropdown: 'moduleE_shop_now_dropdown',
 
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
