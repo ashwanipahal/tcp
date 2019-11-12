@@ -5,6 +5,8 @@ const mapStateToProps = state => {
   const { PageLoader } = state;
   return {
     loaderState: PageLoader.loaderState,
+    miniBagLoaderState: PageLoader.miniBagLoaderState,
+    addedToBagLoaderState: PageLoader.addedToBagLoaderState,
   };
 };
 
