@@ -36,7 +36,7 @@ import {
 import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
-// import setLoaderState from '../../../../../../../web/src/components/features/content/Loader/container/Loader.actions'
+import setLoaderState from '../../../../../../../web/src/components/features/content/Loader/container/Loader.actions';
 
 const {
   // isVenmoPaymentAvailable,
@@ -227,7 +227,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     const currentLanguage = yield select(getCurrentLanguage);
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
     const pendingPromises = [];
-    // yield put(setLoaderState(true));
+    yield put(setLoaderState(true));
     if (isExpressCheckoutEnabled && formData) {
       yield call(expressCheckoutSubmit, formData);
     }
@@ -370,11 +370,11 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     // .catch(err => {
     //   logErrorAndServerThrow(this.store, 'loadSflItemsCount', err);
     // });
-    // yield put(setLoaderState(false));
+    yield put(setLoaderState(false));
   } catch (e) {
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(e, errorsMapping);
-    // yield put(setLoaderState(false));
+    yield put(setLoaderState(false));
     yield put(
       CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
     );

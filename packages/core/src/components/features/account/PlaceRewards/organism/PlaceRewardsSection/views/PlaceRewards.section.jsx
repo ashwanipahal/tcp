@@ -30,7 +30,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
             fontFamily="primary"
             fontSize="fs16"
             fontWeight="extrabold"
-            component="h4"
+            component="h2"
             className="place-rewards__heading myAccountRightView"
             data-locator="place-rewards-heading"
           >

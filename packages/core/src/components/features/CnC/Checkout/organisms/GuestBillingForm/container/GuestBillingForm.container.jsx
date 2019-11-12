@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import { connect } from 'react-redux';
+import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import GuestBillingPage from '../views';
 import CONSTANTS from '../../../Checkout.constants';
 import {
@@ -140,6 +141,8 @@ class GuestBillingContainer extends React.Component {
       isVenmoPaymentInProgress,
       setCheckoutStage,
       venmoError,
+      isPayPalWebViewEnable,
+      bagLoading,
     } = this.props;
     let cardNumber;
     let cardType;
@@ -172,6 +175,8 @@ class GuestBillingContainer extends React.Component {
         syncErrorsObj={syncErrors}
         setCheckoutStage={setCheckoutStage}
         venmoError={venmoError}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
+        bagLoading={bagLoading}
       />
     );
   }
@@ -187,6 +192,8 @@ export const mapStateToProps = state => {
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
     venmoError: CheckoutSelectors.getVenmoError(state),
+    getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
   };
 };
 
@@ -232,6 +239,8 @@ GuestBillingContainer.propTypes = {
   setVenmoProgress: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
   venmoError: PropTypes.string,
+  isPayPalWebViewEnable: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 GuestBillingContainer.defaultProps = {
@@ -248,6 +257,7 @@ GuestBillingContainer.defaultProps = {
   navigation: null,
   isVenmoPaymentInProgress: false,
   venmoError: '',
+  bagLoading: false,
 };
 
 export default connect(

@@ -8,6 +8,7 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
+  fetchModuleX,
 } from './Payment.actions';
 import {
   getCreditDebitCards,
@@ -21,6 +22,8 @@ import {
   checkbalanceValue,
   getShowNotificationCaptchaState,
   getLabels,
+  getPaymentBannerRichTextSelector,
+  getPaymentBannerContentId,
 } from './Payment.selectors';
 import PaymentView from '../views/PaymentView';
 
@@ -64,8 +67,9 @@ export class PaymentContainer extends React.Component<Props> {
   };
 
   componentDidMount() {
-    const { getCardListAction } = this.props;
+    const { getCardListAction, paymentBannerContentId, getPaymentBannerRichText } = this.props;
     getCardListAction();
+    getPaymentBannerRichText(paymentBannerContentId);
   }
 
   componentWillUnmount() {
@@ -94,7 +98,9 @@ export class PaymentContainer extends React.Component<Props> {
       setDefaultPaymentMethod,
       showNotificationCaptcha,
       labels,
+      paymentBannerRichText,
     } = this.props;
+    const updatedLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
@@ -103,7 +109,7 @@ export class PaymentContainer extends React.Component<Props> {
         showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-        labels={labels}
+        labels={updatedLabels}
         creditCardList={creditCardList}
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
@@ -141,6 +147,9 @@ export const mapDispatchToProps = dispatch => {
         })
       );
     },
+    getPaymentBannerRichText: cid => {
+      dispatch(fetchModuleX(cid));
+    },
   };
 };
 
@@ -157,6 +166,8 @@ const mapStateToProps = state => {
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
     labels: getLabels(state),
+    paymentBannerContentId: getPaymentBannerContentId(state),
+    paymentBannerRichText: getPaymentBannerRichTextSelector(state),
   };
 };
 

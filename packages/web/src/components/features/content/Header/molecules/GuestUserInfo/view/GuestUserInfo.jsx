@@ -53,7 +53,7 @@ const GuestUserInfo = ({
       )}
 
       {isRememberedUser && (
-        <BodyCopy component="div" className="account-info-section">
+        <BodyCopy component="div" className="account-info-section" tabIndex="0">
           <BodyCopy
             className="account-info user-name"
             component="div"

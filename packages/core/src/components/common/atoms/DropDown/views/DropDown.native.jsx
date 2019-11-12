@@ -208,7 +208,7 @@ class DropDown extends React.PureComponent<Props> {
           <BodyCopy
             mobileFontFamily="secondary"
             fontSize="fs13"
-            textAlign={variation === 'primary' ? 'center' : ''}
+            textAlign={variation === 'primary' || variation === 'secondary' ? 'center' : ''}
             color={itemStyle.color}
             fontWeight={dropDownItemFontWeight}
             text={label}

@@ -1,10 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BundleProductDetail should render correctly 1`] = `
-<Styled(ProductDetailView)
+<Styled(BundleProduct)
+  AddToFavoriteErrorMsg=""
+  addToBagEcom={[MockFunction]}
+  addToBagError=""
+  addToBagErrorId=""
+  addToFavorites={[MockFunction]}
+  breadCrumbs={Array []}
   currency="USD"
   currencyExchange={1}
   currentProduct={Object {}}
+  currentState={Object {}}
+  handleAddToBag={[Function]}
+  isLoggedIn={false}
+  isPickupModalOpen={false}
+  isPlcc={false}
   itemPartNumber=""
   longDescription=""
   navigation={
@@ -47,6 +58,9 @@ exports[`BundleProductDetail should render correctly 1`] = `
   }
   pdpLabels={Object {}}
   plpLabels={Object {}}
+  productDetails={Array []}
+  removeAddToFavoritesErrorMsg={[MockFunction]}
+  selectedColorProductId=""
   shortDescription=""
 />
 `;

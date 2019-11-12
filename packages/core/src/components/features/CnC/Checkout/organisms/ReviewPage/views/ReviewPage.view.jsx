@@ -7,7 +7,7 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import styles from '../styles/ReviewPage.style';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
-import utility from '../../../util/utility';
+import utility, { scrollToFirstError } from '../../../util/utility';
 import { Anchor } from '../../../../../../common/atoms';
 import PickUpReviewSectionContainer from '../organisms/PickUpReviewSection';
 import ShippingReviewSection from '../organisms/ShippingReviewSection';
@@ -26,11 +26,13 @@ class ReviewPage extends React.PureComponent {
     reviewDidMount: PropTypes.func.isRequired,
     reviewFormSubmit: PropTypes.func.isRequired,
     orderHasShipping: PropTypes.bool.isRequired,
+    isRegisteredUserCallDone: PropTypes.bool.isRequired,
     orderHasPickUp: PropTypes.bool.isRequired,
     setVenmoShippingState: PropTypes.func,
     setVenmoPickupState: PropTypes.func,
     showAccordian: PropTypes.bool,
     isGuest: PropTypes.bool.isRequired,
+    checkoutRoutingDone: PropTypes.bool.isRequired,
     isExpressCheckout: PropTypes.bool,
     shipmentMethods: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -61,8 +63,14 @@ class ReviewPage extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { isPaymentDisabled: prevPaymentDisabled } = prevProps;
-    const { isPaymentDisabled, dispatch } = this.props;
+    const {
+      isPaymentDisabled: prevPaymentDisabled,
+      isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+    } = prevProps;
+    const { isPaymentDisabled, dispatch, reviewDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      reviewDidMount();
+    }
     if (prevPaymentDisabled !== isPaymentDisabled) {
       dispatch(change(formName, 'cvvCode', null));
     }
@@ -70,6 +78,7 @@ class ReviewPage extends React.PureComponent {
 
   componentWillUnmount() {
     const { clearCheckoutServerError, checkoutServerError } = this.props;
+
     if (checkoutServerError) {
       clearCheckoutServerError({});
     }
@@ -93,6 +102,7 @@ class ReviewPage extends React.PureComponent {
       ServerErrors,
       pageCategory,
       reviewFormSubmit,
+      checkoutRoutingDone,
     } = this.props;
     const {
       header,
@@ -107,6 +117,9 @@ class ReviewPage extends React.PureComponent {
     } = labels;
 
     const expressReviewShippingSection = 'expressReviewShippingSection';
+    if (!checkoutRoutingDone) {
+      return <div>Loading....</div>;
+    }
     return (
       <form name={formName} className={className} onSubmit={handleSubmit(reviewFormSubmit)}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="review-title" />
@@ -186,5 +199,6 @@ export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(ReviewPage, styles));
 export { ReviewPage as ReviewPageVanilla };

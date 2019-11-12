@@ -2,9 +2,14 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ImageCarousel from '../molecules/ImageCarousel';
-import { PageContainer, LoyaltyBannerView } from '../styles/ProductDetail.style.native';
+import {
+  PageContainer,
+  LoyaltyBannerView,
+  RecommendationWrapper,
+} from '../styles/ProductDetail.style.native';
 import ProductAddToBagContainer from '../../../../common/molecules/ProductAddToBag';
 import ProductSummary from '../molecules/ProductSummary';
 import ProductPickupContainer from '../../../../common/organisms/ProductPickup';
@@ -16,11 +21,11 @@ import {
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view.native';
 import { FullScreenImageCarousel } from '../../../../common/molecules/index.native';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductDetailDescription from '../molecules/ProductDescription/views/ProductDescription.view.native';
 import RelatedOutfits from '../molecules/RelatedOutfits/views';
 import SendAnEmailGiftCard from '../molecules/SendAnEmailGiftCard';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 class ProductDetailView extends React.PureComponent {
   constructor(props) {
@@ -152,6 +157,16 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
+    const { categoryId } = currentProduct;
+    const recommendationAttributes = {
+      variation: 'moduleO',
+      navigation,
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
+      categoryName: categoryId,
+      partNumber: selectedColorProductId,
+      isHeaderAccordion: true,
+    };
+
     return (
       <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
         <PageContainer>
@@ -203,7 +218,6 @@ class ProductDetailView extends React.PureComponent {
           {currentProduct.isGiftCard ? <SendAnEmailGiftCard pdpLabels={pdpLabels} /> : null}
           {this.renderFulfilmentSection()}
           {this.renderCarousel(imageUrls)}
-          <AddedToBagContainer navigation={navigation} />
           <LoyaltyBannerView>
             <LoyaltyBanner pageCategory="isProductDetailView" navigation={navigation} />
           </LoyaltyBannerView>
@@ -222,6 +236,15 @@ class ProductDetailView extends React.PureComponent {
               setShowCompleteTheLook={this.setShowCompleteTheLook}
             />
           ) : null}
+          <RecommendationWrapper>
+            <Recommendations {...recommendationAttributes} />
+            <Recommendations
+              isRecentlyViewed
+              {...recommendationAttributes}
+              headerLabel={pdpLabels.recentlyViewed}
+              portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+            />
+          </RecommendationWrapper>
           {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
         </PageContainer>
       </LazyloadScrollView>

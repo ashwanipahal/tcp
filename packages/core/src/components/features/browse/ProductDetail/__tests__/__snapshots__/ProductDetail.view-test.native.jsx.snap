@@ -92,9 +92,6 @@ exports[`ProductDetailView component should renders correctly 1`] = `
         }
       }
     />
-    <Connect(AddedToBagContainer)
-      navigation={Object {}}
-    />
     <Styled(View)>
       <Connect(LoyaltyBannerContainer)
         navigation={Object {}}
@@ -115,6 +112,24 @@ exports[`ProductDetailView component should renders correctly 1`] = `
       selectedColorProductId=""
       setShowCompleteTheLook={[Function]}
     />
+    <Styled(View)>
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        navigation={Object {}}
+        page="pdp"
+        partNumber=""
+        variation="moduleO"
+      />
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        isRecentlyViewed={true}
+        navigation={Object {}}
+        page="pdp"
+        partNumber=""
+        portalValue="recently-viewed-products"
+        variation="moduleO"
+      />
+    </Styled(View)>
   </Styled(View)>
 </LazyloadScrollView>
 `;
