@@ -285,6 +285,17 @@ exports[`Bag page View should render with only SFL condition 1`] = `
 
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
+    margin-top: 7px;
+    .checkout {
+      height: 42px;
+      padding: 12px 0;
+    }
+    .paypal-venmo {
+      margin-bottom: 7px;
+      .venmo-button {
+        height: 42px;
+      }
+    }
   }
 
   .checkout-sticky-header {
@@ -302,6 +313,19 @@ exports[`Bag page View should render with only SFL condition 1`] = `
     padding: 0 13px 0;
     box-sizing: border-box;
     margin-top: 35px;
+    @media ",
+                [Function],
+                " {
+      margin-top: 0;
+      padding: 0;
+      .checkout {
+        height: 42px;
+        padding: 12px 0;
+      }
+      .venmo-button {
+        height: 42px;
+      }
+    }
   }
 
   button.checkout {
@@ -315,6 +339,7 @@ exports[`Bag page View should render with only SFL condition 1`] = `
             isBagPage={true}
             isBagPageStickyHeader={true}
             labels={Object {}}
+            paypalButtonHeight={42}
             showAddTobag={true}
           />
         </Styled(Col)>
@@ -487,6 +512,17 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
 
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
+    margin-top: 7px;
+    .checkout {
+      height: 42px;
+      padding: 12px 0;
+    }
+    .paypal-venmo {
+      margin-bottom: 7px;
+      .venmo-button {
+        height: 42px;
+      }
+    }
   }
 
   .checkout-sticky-header {
@@ -504,6 +540,19 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
     padding: 0 13px 0;
     box-sizing: border-box;
     margin-top: 35px;
+    @media ",
+                [Function],
+                " {
+      margin-top: 0;
+      padding: 0;
+      .checkout {
+        height: 42px;
+        padding: 12px 0;
+      }
+      .venmo-button {
+        height: 42px;
+      }
+    }
   }
 
   button.checkout {
@@ -517,6 +566,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
             isBagPage={true}
             isBagPageStickyHeader={true}
             labels={Object {}}
+            paypalButtonHeight={42}
             showAddTobag={true}
           />
         </Styled(Col)>
