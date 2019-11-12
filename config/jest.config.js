@@ -48,10 +48,6 @@ const ignorePsuedoCodeDir = [
   '/ModuleQ/',
   '/ListingPage/',
   '/PromoModules/',
-  '/Navigation/',
-  '/Logout/container',
-  '/ChangePasswordRoute/views/',
-  'CheckoutSectionTitleDisplay/styles',
 ];
 
 module.exports = {
