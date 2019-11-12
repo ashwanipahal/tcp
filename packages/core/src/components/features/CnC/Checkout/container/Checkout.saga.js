@@ -299,7 +299,6 @@ function* initCheckoutSectionData({
 function* triggerExpressCheckout(
   recalcRewards,
   section,
-  navigation,
   shouldPreScreenUser = false,
   source = null
 ) {
