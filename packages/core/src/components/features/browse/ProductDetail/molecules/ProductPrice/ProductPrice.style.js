@@ -11,13 +11,12 @@ const productPriceStyle = css`
     display: flex;
   }
   .loyalty-text-container {
-    visibility: hidden;
-    color: ${props =>
+    color: #000;
+    span {
+      color: ${props =>
       props.isPlcc
         ? props.theme.colorPalette.userTheme.plcc
         : props.theme.colorPalette.userTheme.mpr};
-    span {
-      visibility: visible;
     }
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
