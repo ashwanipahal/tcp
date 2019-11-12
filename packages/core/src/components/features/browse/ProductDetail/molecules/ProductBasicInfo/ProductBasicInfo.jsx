@@ -56,7 +56,7 @@ class ProductBasicInfo extends React.Component {
 
   render() {
     const {
-      // isBundleProduct,
+      isBundleProduct,
       pdpUrl,
       badge,
       isGiftCard,
@@ -87,12 +87,13 @@ class ProductBasicInfo extends React.Component {
             )}
             {
               <div className="wishlist-container">
-                {WishListIcon(
-                  isFavoriteView,
-                  isInDefaultWishlist,
-                  this.handleAddToWishlist
-                  // itemNotAvailable
-                )}
+                {!isBundleProduct &&
+                  WishListIcon(
+                    isFavoriteView,
+                    isInDefaultWishlist,
+                    this.handleAddToWishlist
+                    // itemNotAvailable
+                  )}
               </div>
             }
           </div>
@@ -121,6 +122,7 @@ ProductBasicInfo.propTypes = {
   isGiftCard: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  isBundleProduct: PropTypes.bool,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -128,6 +130,7 @@ ProductBasicInfo.defaultProps = {
   pdpUrl: null,
   badge: '',
   isLoggedIn: false,
+  isBundleProduct: false,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);
