@@ -16,6 +16,7 @@ import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import { scrollToFirstError } from '../../../util/utility';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -216,7 +217,7 @@ class PickUpFormPart extends React.Component {
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
     if (!checkoutRoutingDone) {
-      return <div />;
+      return <div>Loading....</div>;
     }
     return (
       <>
@@ -415,5 +416,6 @@ export default reduxForm({
   form: 'checkoutPickup', // a unique identifier for this form
   ...validateMethod,
   destroyOnUnmount: false,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(PickUpFormPart, styles));
 export { PickUpFormPart as PickUpFormPartVanilla };

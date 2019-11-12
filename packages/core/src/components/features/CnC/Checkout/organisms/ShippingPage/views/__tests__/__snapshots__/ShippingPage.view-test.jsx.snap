@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Shipping Page should render correctly 1`] = `<div />`;
+exports[`Shipping Page should render correctly 1`] = `
+<div>
+  Loading....
+</div>
+`;
 
-exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `<div />`;
+exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops  with addeditaddressresponse 1`] = `
+<div>
+  Loading....
+</div>
+`;
 
-exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `<div />`;
+exports[`Shipping Page should render correctly with component did update and getDerivedStateFromprops 1`] = `
+<div>
+  Loading....
+</div>
+`;

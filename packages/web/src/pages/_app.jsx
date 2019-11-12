@@ -35,6 +35,7 @@ import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
+import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
 
 // constants
 import constants from '../constants';
@@ -172,7 +173,7 @@ class TCPWebApp extends App {
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
       const { locals } = res;
-      const { device = {} } = req;
+      const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
       // preview check from akamai header
       apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
@@ -202,6 +203,7 @@ class TCPWebApp extends App {
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersObject,
+        originalUrl,
       };
 
       // Get initial props is getting called twice on server
@@ -222,11 +224,11 @@ class TCPWebApp extends App {
     return initialProps;
   }
 
-  static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
+  static async loadComponentData(Component, { store, isServer, req = {}, query = '' }, pageProps) {
     let compProps = {};
     if (Component.getInitialProps) {
       try {
-        compProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+        compProps = await Component.getInitialProps({ store, isServer, query, req }, pageProps);
       } catch (e) {
         compProps = {};
       }
@@ -245,6 +247,15 @@ class TCPWebApp extends App {
       return <SEOTags seoConfig={seoConfig} />;
     }
     return null;
+  };
+
+  checkLoadAnalyticsOnload = pageProps => {
+    const isLoadAnalyticsOnload =
+      pageProps && pageProps.pageData && pageProps.pageData.loadAnalyticsOnload;
+    if (typeof isLoadAnalyticsOnload === 'undefined') {
+      return true;
+    }
+    return isLoadAnalyticsOnload;
   };
 
   // eslint-disable-next-line complexity
@@ -266,6 +277,7 @@ class TCPWebApp extends App {
       reviewPage.asPath,
       internationalCheckout.asPath,
     ];
+    const isCheckAnalyticsOnload = this.checkLoadAnalyticsOnload(pageProps);
     for (let i = 0; i < checkoutPageURL.length; i += 1) {
       if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
@@ -293,10 +305,11 @@ class TCPWebApp extends App {
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />
+              <AddedToBagContainer />
               <ApplyNow />
             </Grid>
             {/* Inject route tracker if analytics is enabled. Must be within store provider. */}
-            {process.env.ANALYTICS && <RouteTracker />}
+            {process.env.ANALYTICS && isCheckAnalyticsOnload && <RouteTracker />}
           </Provider>
         </ThemeProvider>
         {/* Inject UX timer reporting if enabled. */}
