@@ -6,6 +6,7 @@ import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
+import { DELAY_TO_OPEN } from './L1NavItem.config';
 
 const HideDrawerContext = React.createContext({});
 const HideDrawerProvider = HideDrawerContext.Provider;
@@ -20,24 +21,41 @@ const highlightContent = id => {
 };
 
 class L1NavItem extends React.PureComponent {
-  state = {
-    hovered: false,
-  };
+  constructor() {
+    super();
+    this.state = {
+      hovered: false,
+    };
+    this.timedOutHovered = null;
+  }
 
-  onHover = e => {
+  /**
+   * This function will be used to open the l2 link items
+   */
+  onHover = () => {
     if (getViewportInfo().isDesktop) {
-      this.setState({
-        hovered: !e.target.classList.contains('l1-overlay'),
-      });
+      this.timedOutHovered = setTimeout(() => {
+        this.setState({
+          hovered: true,
+        });
+      }, DELAY_TO_OPEN);
     }
   };
+
+  /**
+   * This function will be used to close the l2 links wrapper when user click on any link inside it.
+   */
 
   hideL2Nav = () => {
     this.setState({ hovered: false });
   };
 
+  /**
+   * This function will be used to close the l2 link items
+   */
   onMouseLeave = () => {
     if (getViewportInfo().isDesktop) {
+      clearTimeout(this.timedOutHovered);
       this.setState({
         hovered: false,
       });
@@ -116,9 +134,9 @@ class L1NavItem extends React.PureComponent {
             color="text.hint"
             lineHeight="lh115"
             data-locator={dataLocator}
-            onMouseOver={this.onHover}
+            onMouseEnter={this.onHover}
+            onMouseLeave={this.onMouseLeave}
             onFocus={this.onHover}
-            onMouseOut={this.onMouseLeave}
             onBlur={this.onMouseLeave}
             {...others}
           >
@@ -137,7 +155,10 @@ class L1NavItem extends React.PureComponent {
               </div>
             </Anchor>
             {(hovered || this.childRendered) && children}
-            <div className={`${className} l1-overlay ${classForHovered}`} />
+            <div
+              className={`${className} l1-overlay ${classForHovered}`}
+              onMouseEnter={this.onMouseLeave}
+            />
           </BodyCopy>
         </HideDrawerProvider>
       </React.Fragment>
