@@ -177,4 +177,10 @@ export const addedToBagActionsStyles = css`
   }
 `;
 
+export const recommendationStyles = css`
+  && .slick-list {
+    margin-right: 0;
+  }
+`;
+
 export default styles;
