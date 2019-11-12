@@ -70,7 +70,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       <Button
         margin="16px 0 0 0"
         color="white"
-        fill="BLUE"
+        fill="BLUE.900"
         text={this.getButtonLabel()}
         fontSize="fs10"
         fontWeight="extrabold"
@@ -239,7 +239,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           <BodyCopy
             fontWeight="black"
             color="gray.900"
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs14"
             text={qunatityText}
           />
@@ -253,6 +253,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             name="Quantity"
             textAlignLeft
             lightGrayColor
+            borderRadiusNone
           />
         </RowViewContainer>
 

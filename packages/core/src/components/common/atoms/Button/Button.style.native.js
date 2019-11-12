@@ -31,6 +31,7 @@ const getMobileAppFilterButtonViewStyle = props => {
     buttonVariation,
     bottomBorderOnly,
     textAlignLeft,
+    borderRadiusNone,
     lightGrayColor,
   } = props;
   const { colorPalette, spacing } = theme;
@@ -47,7 +48,7 @@ const getMobileAppFilterButtonViewStyle = props => {
       min-height: 23px;
       align-self: center;
       background-color: ${bgColor};
-      border-radius: 6px;
+      ${borderRadiusNone ? `border-radius: 0` : `border-radius: 6px`};
       align-items: center;
       ${
         bottomBorderOnly
@@ -222,6 +223,12 @@ const style = css`
     props.fill === 'BLUE'
       ? ` background: ${props.theme.colorPalette.blue[700]}; border: 1px solid ${
           props.theme.colorPalette.blue[700]
+        }; `
+      : ''};
+  ${props =>
+    props.fill === 'BLUE.900'
+      ? ` background: ${props.theme.colorPalette.blue.C900}; border: 1px solid ${
+          props.theme.colorPalette.blue.C900
         }; `
       : ''};
   ${props =>

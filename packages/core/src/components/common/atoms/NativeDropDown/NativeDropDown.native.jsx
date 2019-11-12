@@ -93,6 +93,7 @@ class NativeDropDown extends React.PureComponent {
       disabled,
       textAlignLeft,
       lightGrayColor,
+      borderRadiusNone,
     } = this.props;
     const itemList = data.map(item => {
       const label = (item.displayName && item.displayName.toString()) || item.displayName;
@@ -131,6 +132,7 @@ class NativeDropDown extends React.PureComponent {
           customTextStyle={iOSPickerButtonStyle}
           disabled={disabled}
           textAlignLeft={textAlignLeft}
+          borderRadiusNone={borderRadiusNone}
           lightGrayColor={lightGrayColor}
         />
         <Modal visible={showPicker} transparent animationType="slide">
@@ -177,6 +179,7 @@ NativeDropDown.propTypes = {
   buttonVariation: PropTypes.string,
   disabled: PropTypes.bool,
   textAlignLeft: PropTypes.bool,
+  borderRadiusNone: PropTypes.bool,
   lightGrayColor: PropTypes.bool,
 };
 
@@ -190,6 +193,7 @@ NativeDropDown.defaultProps = {
   buttonVariation: 'mobileApp-filter',
   disabled: false,
   textAlignLeft: false,
+  borderRadiusNone: false,
   lightGrayColor: false,
 };
 
