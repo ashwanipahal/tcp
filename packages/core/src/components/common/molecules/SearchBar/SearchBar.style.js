@@ -14,6 +14,7 @@ export default css`
       top: 0;
       height: 100%;
       overflow: auto;
+      z-index:10000;
       -webkit-overflow-scrolling: touch;
     }
 
