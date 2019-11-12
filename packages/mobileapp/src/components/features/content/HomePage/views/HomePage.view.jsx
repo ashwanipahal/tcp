@@ -27,9 +27,6 @@ import {
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import moduleEMockv1 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1';
-import moduleEMockv1alt from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1-alt';
-import moduleEMockv2 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v2';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
@@ -57,6 +54,7 @@ const modulesMap = {
   moduleS: ModuleS,
   moduleQ: ModuleQ,
   moduleT: ModuleT,
+  moduleE: ModuleE,
 };
 
 class HomePageView extends React.PureComponent<Props> {
@@ -201,12 +199,6 @@ class HomePageView extends React.PureComponent<Props> {
           </>
         ) : null}
         {this.renderGlobalModal(navigation)}
-
-        <ModuleE navigation={navigation} {...moduleEMockv1.moduleE.composites} />
-
-        <ModuleE navigation={navigation} {...moduleEMockv1alt.moduleE.composites} />
-
-        <ModuleE navigation={navigation} {...moduleEMockv2.moduleE.composites} />
       </LazyloadScrollView>
     );
   }

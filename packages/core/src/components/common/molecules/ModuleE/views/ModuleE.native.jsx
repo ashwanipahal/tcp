@@ -407,7 +407,7 @@ class ModuleE extends React.PureComponent {
 ModuleE.defaultProps = {
   eyebrow: null,
   headerText: [],
-  promoBanner: [],
+  promoBanner: null,
   navigation: {},
   ctaItems: [],
   largeCompImageSimpleCarousel: [],
