@@ -1,17 +1,23 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import { navigateToNestedRoute, resetNavigationStack } from '@tcp/core/src/utils/utils.app';
-import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
+import PurchaseGiftsCard from '@tcp/core/src/components/features/account/PurchaseGiftsCard';
+import HeaderNew from '../components/common/molecules/Header/HeaderNew';
 import walletPage from '../screens/walletPage';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
-import HeaderNew from '../components/common/molecules/Header/HeaderNew';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const getNewHeader = navigation => {
   const title = navigation && navigation.getParam('title');
   const showHeader = navigation && navigation.getParam('noHeader');
   return {
-    header: props => (!showHeader ? <HeaderNew {...props} title={title} /> : null),
+    header: props =>
+      !showHeader ? (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+          <HeaderNew {...props} title={title} />
+        </SafeAreaView>
+      ) : null,
     headerBackground: 'transparent',
   };
 };
@@ -20,7 +26,7 @@ const Login = createStackNavigator(
   {
     walletPage,
     GiftCardPage: {
-      screen: ProductDetail,
+      screen: PurchaseGiftsCard,
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },
@@ -28,7 +34,11 @@ const Login = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+          <Header {...props} />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }

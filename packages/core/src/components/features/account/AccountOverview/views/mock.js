@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   accountFooterNavLegalLinks: [
     {
@@ -94,37 +95,37 @@ export default {
     {
       subSections: null,
       leafLink: {
-        url: 'https://www.childrensplace.com/us/help-center/#termsAndConditionsli',
+        url: 'https://test6.childrensplace.com/us/home?token=tcprwd',
         text: 'Terms & Conditions',
         title: 'terms',
-        target: '_modal',
+        target: '_self',
         external: 0,
       },
     },
     {
       subSections: null,
       leafLink: {
-        url: 'https://www.childrensplace.com/us/help-center/#privacyPolicySectionli',
+        url: 'https://test6.childrensplace.com/us/home?token=tcprwd',
         text: 'Privacy Policy',
         title: 'policyA',
-        target: '_modal',
+        target: '_self',
         external: 0,
       },
     },
     {
       subSections: null,
       leafLink: {
-        url: 'https://www.childrensplace.com/us/help-center/#cookiePolicySectionli',
+        url: 'https://test6.childrensplace.com/us/home?token=tcprwd',
         text: 'Cookie Policy',
         title: 'policyB',
-        target: '_modal',
+        target: '_self',
         external: 0,
       },
     },
     {
       subSections: null,
       leafLink: {
-        url: 'https://www.childrensplace.com/us/content/supply-chain',
+        url: 'https://test6.childrensplace.com/us/home?token=tcprwd',
         text: 'California Supply Chains Act',
         title: 'supplyAct',
         target: '_blank',

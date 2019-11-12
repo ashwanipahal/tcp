@@ -86,7 +86,7 @@ const getNameFromAddress = (address, showDefaultText, regularName) => {
       fontSize="fs14"
       fontFamily="secondary"
       fontWeight={regularName ? 'regular' : 'semibold'}
-      text={`${name}${name}`}
+      text={name}
       color="gray.900"
       style
     />

@@ -20,7 +20,6 @@ import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import ProductPrice from '../molecules/ProductPrice/ProductPrice';
 
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
@@ -214,7 +213,6 @@ class ProductDetailView extends React.Component {
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
       categoryName: categoryId,
       partNumber: selectedColorProductId,
-      priceOnly: true,
       showLoyaltyPromotionMessage: false,
       headerAlignment: 'left',
     };
@@ -346,7 +344,6 @@ class ProductDetailView extends React.Component {
             />
           </Col>
         </Row>
-        <AddedToBagContainer />
       </div>
     );
   }

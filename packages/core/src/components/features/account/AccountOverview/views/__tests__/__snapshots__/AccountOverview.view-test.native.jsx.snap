@@ -8,6 +8,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     }
   }
 >
+  <Connect(OrderNotification) />
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
@@ -293,30 +294,30 @@ exports[`AccountOverview component should render correctly 1`] = `
           Object {
             "leafLink": Object {
               "external": 0,
-              "target": "_modal",
+              "target": "_self",
               "text": "Terms & Conditions",
               "title": "terms",
-              "url": "https://www.childrensplace.com/us/help-center/#termsAndConditionsli",
+              "url": "https://test6.childrensplace.com/us/home?token=tcprwd",
             },
             "subSections": null,
           },
           Object {
             "leafLink": Object {
               "external": 0,
-              "target": "_modal",
+              "target": "_self",
               "text": "Privacy Policy",
               "title": "policyA",
-              "url": "https://www.childrensplace.com/us/help-center/#privacyPolicySectionli",
+              "url": "https://test6.childrensplace.com/us/home?token=tcprwd",
             },
             "subSections": null,
           },
           Object {
             "leafLink": Object {
               "external": 0,
-              "target": "_modal",
+              "target": "_self",
               "text": "Cookie Policy",
               "title": "policyB",
-              "url": "https://www.childrensplace.com/us/help-center/#cookiePolicySectionli",
+              "url": "https://test6.childrensplace.com/us/home?token=tcprwd",
             },
             "subSections": null,
           },
@@ -326,7 +327,7 @@ exports[`AccountOverview component should render correctly 1`] = `
               "target": "_blank",
               "text": "California Supply Chains Act",
               "title": "supplyAct",
-              "url": "https://www.childrensplace.com/us/content/supply-chain",
+              "url": "https://test6.childrensplace.com/us/home?token=tcprwd",
             },
             "subSections": null,
           },

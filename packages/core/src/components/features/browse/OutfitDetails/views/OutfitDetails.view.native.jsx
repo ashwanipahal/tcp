@@ -5,7 +5,6 @@ import Constants from '@tcp/core/src/components/common/molecules/Recommendations
 import { ScrollViewContainer, RecommendationWrapper } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
@@ -131,7 +130,6 @@ const OutfitDetailsView = props => {
       </RecommendationWrapper>
 
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-      <AddedToBagContainer navigation={navigation} />
     </ScrollViewContainer>
   );
 };

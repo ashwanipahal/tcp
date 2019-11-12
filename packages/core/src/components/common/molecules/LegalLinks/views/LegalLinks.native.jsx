@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '../../../atoms/Anchor';
 import WebViewModal from '../../WebViewModal';
-import LegalLinksRoot, { AnchorStyles } from '../styles/LegalLinks.style.native';
+import LegalLinksContainer, { AnchorStyles } from '../styles/LegalLinks.style.native';
 import withStyles from '../../../hoc/withStyles';
 
 const AnchorView = withStyles(Anchor, AnchorStyles);
 
-class LegalLinks extends React.Component {
+class LegalLinks extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,7 @@ class LegalLinks extends React.Component {
     const { toggleModal, webUrl } = this.state;
 
     return (
-      <LegalLinksRoot>
+      <LegalLinksContainer>
         {links.length > 0 &&
           links.map(link => {
             const {
@@ -40,10 +40,9 @@ class LegalLinks extends React.Component {
             return (
               <AnchorView
                 text={text}
-                anchorVariation="primary"
+                anchorVariation="grayed"
                 fontSizeVariation="medium"
-                url={target === '_blank' ? webUri : null}
-                {...(target === '_modal' ? onClickProps : {})}
+                {...(target === '_self' ? onClickProps : { url: webUri })}
               />
             );
           })}
@@ -58,7 +57,7 @@ class LegalLinks extends React.Component {
             }}
           />
         )}
-      </LegalLinksRoot>
+      </LegalLinksContainer>
     );
   }
 }

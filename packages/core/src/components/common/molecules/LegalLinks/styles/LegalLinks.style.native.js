@@ -9,5 +9,4 @@ export default styled.View`
 
 export const AnchorStyles = css`
   margin-bottom: 14px;
-  color: ${props => props.theme.colorPalette.gray[600]};
 `;
