@@ -42,6 +42,7 @@ describe('Cart Item saga', () => {
     expect(getOrderDetailSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );
+    getOrderDetailSagaGen.next();
     expect(getOrderDetailSagaGen.next().value).toEqual(call(afterFunc));
   });
 

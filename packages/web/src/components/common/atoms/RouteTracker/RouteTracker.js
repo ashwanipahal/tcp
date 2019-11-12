@@ -10,6 +10,8 @@ import Router from 'next/router';
 
 // TODO: Remove connect once react-redux@7 is in use
 import { connect } from 'react-redux';
+import { readCookie, setCookie } from '@tcp/core/src/utils/cookie.util';
+import { API_CONFIG } from '@tcp/core/src/services/config';
 
 /**
  * Get the component properties of the current route.
@@ -30,6 +32,15 @@ function getRouteProps() {
   return props;
 }
 
+function setPageCountCookie() {
+  const { pageCountCookieKey } = API_CONFIG;
+  const pageCount = parseInt(readCookie(pageCountCookieKey) || '0', 10) + 1;
+  setCookie({
+    key: pageCountCookieKey,
+    value: pageCount,
+  });
+}
+
 /**
  * A component that sets up event handlers for when the
  * route changes, and dispatches Redux actions with
@@ -38,11 +49,13 @@ function getRouteProps() {
  */
 function RouteTracker({ dispatch }) {
   const track = usePageTracking(dispatch);
-  const handleChange = url =>
+  const handleChange = url => {
+    setPageCountCookie();
     track({
       path: url,
       props: getRouteProps(),
     });
+  };
 
   useEffect(() => {
     // Track current route on mount
