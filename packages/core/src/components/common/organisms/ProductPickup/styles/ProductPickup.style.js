@@ -63,5 +63,14 @@ const styles = css`
   .error-pickup-info {
     padding-top: 8px;
   }
+  .boss-message {
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
+    display: inline-flex;
+    font-family: 'Nunito';
+
+    .banner-wrapper {
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
+  }
 `;
 export default styles;
