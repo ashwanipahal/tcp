@@ -115,27 +115,26 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     const { isRegisteredUserCallDone, router, initCheckout, navigation } = this.props;
     /* istanbul ignore else */
     if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
-      this.initialLoad = false;
       initCheckout(router, getPayPalFlag(navigation));
     }
   }
 
   shippingDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this.props, {
+    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this, {
       initialLoad: this.initialLoad,
     });
   };
 
   billingDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this);
   };
 
   reviewDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this);
   };
 
   pickupDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this);
   };
 
   render() {
