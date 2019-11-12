@@ -53,7 +53,4 @@ const styles = css`
     }
   }
 `;
-export const customSpinnerStyle = css`
-  position: absolute;
-`;
 export default styles;
