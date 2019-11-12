@@ -21,16 +21,16 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef(Styled(Grid))
+          <ForwardRef
             className=" elem-mb-MED"
             data-locator="orderLedgerBox"
           >
             <React.Fragment>
-              <ForwardRef(Styled(Row))
+              <ForwardRef
                 className="items-total rowMargin"
                 data-locator="orderLedgerItemLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -39,7 +39,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -54,9 +54,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     textAlign="left"
                   >
                     undefined (1):
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -65,7 +65,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -79,14 +79,14 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     textAlign="right"
                   >
                     0.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="tax-total rowMargin"
                 data-locator="orderLedgerTaxLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -95,7 +95,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -110,9 +110,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -121,7 +121,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -135,10 +135,10 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     textAlign="right"
                   >
                     0.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="balance-total rowMargin"
                 data-locator="orderLedgerBalanceTotalLbl"
               >
@@ -152,7 +152,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     0.00
                   </span>
                 </div>
-              </ForwardRef(Styled(Row))>
+              </ForwardRef>
             </React.Fragment>
             <div
               className="orderLedgerLoyalty"
@@ -161,7 +161,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                 pageCategory=""
               />
             </div>
-          </ForwardRef(Styled(Grid))>
+          </ForwardRef>
           <Measure
             name="pricing_visible"
           />
@@ -173,7 +173,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
         <div
           className="elem-mb-SM order-ledger-header"
         >
-          <ForwardRef(Styled(BodyCopy))
+          <ForwardRef
             className={null}
             color="text.primary"
             component="span"
@@ -186,7 +186,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
             textAlign="left"
           >
             undefined (0)
-          </ForwardRef(Styled(BodyCopy))>
+          </ForwardRef>
         </div>
       }
       iconLocator="arrowicon"
@@ -218,16 +218,16 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef(Styled(Grid))
+          <ForwardRef
             className=" elem-mb-MED"
             data-locator="orderLedgerBox"
           >
             <React.Fragment>
-              <ForwardRef(Styled(Row))
+              <ForwardRef
                 className="items-total rowMargin"
                 data-locator="orderLedgerItemLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -236,7 +236,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -251,9 +251,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="left"
                   >
                     undefined (1):
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -262,7 +262,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -276,14 +276,14 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="coupons-total rowMargin"
                 data-locator="orderLedgerCouponsLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -292,7 +292,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -306,9 +306,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -317,7 +317,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -331,14 +331,14 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     -1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="promotions-total rowMargin"
                 data-locator="orderLedgerPromotionLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -347,7 +347,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -361,9 +361,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -372,7 +372,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -386,13 +386,13 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     -1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="shipping-total rowMargin"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -401,7 +401,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -415,9 +415,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -426,7 +426,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -440,14 +440,14 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="shipping-total rowMargin"
                 data-locator="orderLedgerShippingLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -456,7 +456,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -470,9 +470,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -481,7 +481,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -495,14 +495,14 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="tax-total rowMargin"
                 data-locator="orderLedgerTaxLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -511,7 +511,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -526,9 +526,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -537,7 +537,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -551,15 +551,15 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
               <React.Fragment>
-                <ForwardRef(Styled(Row))
+                <ForwardRef
                   className="estimated-total rowMargin"
                   data-locator="orderLedgerTotalLbl"
                 >
-                  <ForwardRef(Styled(Col))
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -568,7 +568,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -582,9 +582,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       textAlign="left"
                     >
                       undefined:
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                  <ForwardRef(Styled(Col))
+                    </ForwardRef>
+                  </ForwardRef>
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -593,7 +593,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -607,14 +607,14 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       textAlign="right"
                     >
                       1.00
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                </ForwardRef(Styled(Row))>
-                <ForwardRef(Styled(Row))
+                    </ForwardRef>
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   className="giftCard-total rowMargin"
                   data-locator="orderLedgerGiftCardLbl"
                 >
-                  <ForwardRef(Styled(Col))
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -623,7 +623,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -637,9 +637,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       textAlign="left"
                     >
                       undefined:
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                  <ForwardRef(Styled(Col))
+                    </ForwardRef>
+                  </ForwardRef>
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -648,7 +648,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -662,11 +662,11 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       textAlign="right"
                     >
                       -1.00
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                </ForwardRef(Styled(Row))>
+                    </ForwardRef>
+                  </ForwardRef>
+                </ForwardRef>
               </React.Fragment>
-              <ForwardRef(Styled(Row))
+              <ForwardRef
                 className="balance-total rowMargin"
                 data-locator="orderLedgerBalanceTotalLbl"
               >
@@ -680,12 +680,12 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     1.00
                   </span>
                 </div>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+              </ForwardRef>
+              <ForwardRef
                 className="total-order-savings rowMargin"
                 data-locator="orderLedgerTotalOrderSavingsLabel"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -694,7 +694,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -708,20 +708,20 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="left"
                   >
                     undefined
-                    <ForwardRef(Styled(ReactTooltip))
+                    <ForwardRef
                       direction="top"
                       id="tool"
                       minWidth="205px"
                     >
-                      <ForwardRef(Styled(Image))
+                      <ForwardRef
                         alt="info"
                         className="circle-info-image"
                         src="/static/images/info-icon.png"
                       />
-                    </ForwardRef(Styled(ReactTooltip))>
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                    </ForwardRef>
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -730,7 +730,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -744,9 +744,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
             </React.Fragment>
             <div
               className="orderLedgerLoyalty"
@@ -755,7 +755,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                 pageCategory=""
               />
             </div>
-          </ForwardRef(Styled(Grid))>
+          </ForwardRef>
           <Measure
             name="pricing_visible"
           />
@@ -767,7 +767,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
         <div
           className="elem-mb-SM order-ledger-header"
         >
-          <ForwardRef(Styled(BodyCopy))
+          <ForwardRef
             className={null}
             color="text.primary"
             component="span"
@@ -780,7 +780,7 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
             textAlign="left"
           >
             undefined (1.00)
-          </ForwardRef(Styled(BodyCopy))>
+          </ForwardRef>
         </div>
       }
       iconLocator="arrowicon"
@@ -812,16 +812,16 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef(Styled(Grid))
+          <ForwardRef
             className=" elem-mb-MED"
             data-locator="orderLedgerBox"
           >
             <React.Fragment>
-              <ForwardRef(Styled(Row))
+              <ForwardRef
                 className="items-total rowMargin"
                 data-locator="orderLedgerItemLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -830,7 +830,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -845,9 +845,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="left"
                   >
                     undefined (1):
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -856,7 +856,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -870,14 +870,14 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="coupons-total rowMargin"
                 data-locator="orderLedgerCouponsLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -886,7 +886,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -900,9 +900,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -911,7 +911,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -925,14 +925,14 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     -1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="promotions-total rowMargin"
                 data-locator="orderLedgerPromotionLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -941,7 +941,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -955,9 +955,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -966,7 +966,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -980,14 +980,14 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     -1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="shipping-total rowMargin"
                 data-locator="orderLedgerShippingLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -996,7 +996,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -1010,9 +1010,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -1021,7 +1021,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -1035,14 +1035,14 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
+              <ForwardRef
                 className="tax-total rowMargin"
                 data-locator="orderLedgerTaxLbl"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -1051,7 +1051,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -1066,9 +1066,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="left"
                   >
                     undefined:
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -1077,7 +1077,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -1091,15 +1091,15 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
               <React.Fragment>
-                <ForwardRef(Styled(Row))
+                <ForwardRef
                   className="estimated-total rowMargin"
                   data-locator="orderLedgerTotalLbl"
                 >
-                  <ForwardRef(Styled(Col))
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -1108,7 +1108,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -1122,9 +1122,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       textAlign="left"
                     >
                       undefined:
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                  <ForwardRef(Styled(Col))
+                    </ForwardRef>
+                  </ForwardRef>
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -1133,7 +1133,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -1147,14 +1147,14 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       textAlign="right"
                     >
                       1.00
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                </ForwardRef(Styled(Row))>
-                <ForwardRef(Styled(Row))
+                    </ForwardRef>
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   className="giftCard-total rowMargin"
                   data-locator="orderLedgerGiftCardLbl"
                 >
-                  <ForwardRef(Styled(Col))
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -1163,7 +1163,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -1177,9 +1177,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       textAlign="left"
                     >
                       undefined:
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                  <ForwardRef(Styled(Col))
+                    </ForwardRef>
+                  </ForwardRef>
+                  <ForwardRef
                     colSize={
                       Object {
                         "large": 6,
@@ -1188,7 +1188,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       }
                     }
                   >
-                    <ForwardRef(Styled(BodyCopy))
+                    <ForwardRef
                       bodySize="one"
                       className={null}
                       color="primary"
@@ -1202,11 +1202,11 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       textAlign="right"
                     >
                       -1.00
-                    </ForwardRef(Styled(BodyCopy))>
-                  </ForwardRef(Styled(Col))>
-                </ForwardRef(Styled(Row))>
+                    </ForwardRef>
+                  </ForwardRef>
+                </ForwardRef>
               </React.Fragment>
-              <ForwardRef(Styled(Row))
+              <ForwardRef
                 className="balance-total rowMargin"
                 data-locator="orderLedgerBalanceTotalLbl"
               >
@@ -1220,12 +1220,12 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     1.00
                   </span>
                 </div>
-              </ForwardRef(Styled(Row))>
-              <ForwardRef(Styled(Row))
+              </ForwardRef>
+              <ForwardRef
                 className="total-order-savings rowMargin"
                 data-locator="orderLedgerTotalOrderSavingsLabel"
               >
-                <ForwardRef(Styled(Col))
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -1234,7 +1234,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -1248,20 +1248,20 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="left"
                   >
                     undefined
-                    <ForwardRef(Styled(ReactTooltip))
+                    <ForwardRef
                       direction="top"
                       id="tool"
                       minWidth="205px"
                     >
-                      <ForwardRef(Styled(Image))
+                      <ForwardRef
                         alt="info"
                         className="circle-info-image"
                         src="/static/images/info-icon.png"
                       />
-                    </ForwardRef(Styled(ReactTooltip))>
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-                <ForwardRef(Styled(Col))
+                    </ForwardRef>
+                  </ForwardRef>
+                </ForwardRef>
+                <ForwardRef
                   colSize={
                     Object {
                       "large": 6,
@@ -1270,7 +1270,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     }
                   }
                 >
-                  <ForwardRef(Styled(BodyCopy))
+                  <ForwardRef
                     bodySize="one"
                     className={null}
                     color="primary"
@@ -1284,9 +1284,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     1.00
-                  </ForwardRef(Styled(BodyCopy))>
-                </ForwardRef(Styled(Col))>
-              </ForwardRef(Styled(Row))>
+                  </ForwardRef>
+                </ForwardRef>
+              </ForwardRef>
             </React.Fragment>
             <div
               className="orderLedgerLoyalty"
@@ -1295,7 +1295,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                 pageCategory=""
               />
             </div>
-          </ForwardRef(Styled(Grid))>
+          </ForwardRef>
           <Measure
             name="pricing_visible"
           />
@@ -1307,7 +1307,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
         <div
           className="elem-mb-SM order-ledger-header"
         >
-          <ForwardRef(Styled(BodyCopy))
+          <ForwardRef
             className={null}
             color="text.primary"
             component="span"
@@ -1320,7 +1320,7 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
             textAlign="left"
           >
             undefined (1.00)
-          </ForwardRef(Styled(BodyCopy))>
+          </ForwardRef>
         </div>
       }
       iconLocator="arrowicon"

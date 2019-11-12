@@ -4,7 +4,7 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
 <div
   className=""
 >
-  <ForwardRef(Styled(BodyCopy))
+  <ForwardRef
     className="heading"
     color="text.primary"
     component="p"
@@ -23,8 +23,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
     textAlign="left"
   >
     Daffodil garden
-  </ForwardRef(Styled(BodyCopy))>
-  <ForwardRef(Styled(BodyCopy))
+  </ForwardRef>
+  <ForwardRef
     className="subheading"
     color="text.primary"
     component="p"
@@ -43,8 +43,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
     textAlign="left"
   >
     Build her head-to-toe party outfit sprinkled with all the extra-sweet details!
-  </ForwardRef(Styled(BodyCopy))>
-  <ForwardRef(Styled(Carousel))
+  </ForwardRef>
+  <ForwardRef
     carouselConfig={
       Object {
         "autoplay": false,
@@ -87,7 +87,7 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
     }
   >
     <div>
-      <ForwardRef(Styled(Anchor))
+      <ForwardRef
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -102,8 +102,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
             }
           }
         />
-      </ForwardRef(Styled(Anchor))>
-      <ForwardRef(Styled(Anchor))
+      </ForwardRef>
+      <ForwardRef
         asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -111,10 +111,10 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         to="/node/product/<uuid>"
       >
         Tropical blush &gt;
-      </ForwardRef(Styled(Anchor))>
+      </ForwardRef>
     </div>
     <div>
-      <ForwardRef(Styled(Anchor))
+      <ForwardRef
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -129,8 +129,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
             }
           }
         />
-      </ForwardRef(Styled(Anchor))>
-      <ForwardRef(Styled(Anchor))
+      </ForwardRef>
+      <ForwardRef
         asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -138,10 +138,10 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         to="/node/product/<uuid>"
       >
         Tropical blush &gt;
-      </ForwardRef(Styled(Anchor))>
+      </ForwardRef>
     </div>
     <div>
-      <ForwardRef(Styled(Anchor))
+      <ForwardRef
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -156,8 +156,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
             }
           }
         />
-      </ForwardRef(Styled(Anchor))>
-      <ForwardRef(Styled(Anchor))
+      </ForwardRef>
+      <ForwardRef
         asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -165,10 +165,10 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         to="/node/product/<uuid>"
       >
         Tropical blush &gt;
-      </ForwardRef(Styled(Anchor))>
+      </ForwardRef>
     </div>
     <div>
-      <ForwardRef(Styled(Anchor))
+      <ForwardRef
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -183,8 +183,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
             }
           }
         />
-      </ForwardRef(Styled(Anchor))>
-      <ForwardRef(Styled(Anchor))
+      </ForwardRef>
+      <ForwardRef
         asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
@@ -192,8 +192,8 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         to="/node/product/<uuid>"
       >
         Tropical blush &gt;
-      </ForwardRef(Styled(Anchor))>
+      </ForwardRef>
     </div>
-  </ForwardRef(Styled(Carousel))>
+  </ForwardRef>
 </div>
 `;

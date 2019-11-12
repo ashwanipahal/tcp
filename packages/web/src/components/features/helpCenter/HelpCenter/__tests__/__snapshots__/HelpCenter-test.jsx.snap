@@ -1,85 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HelpCenterViewVanilla should render correctly 1`] = `
-<PageSlots
-  modules={
-    Object {
-      "helpCenterBottomModule": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": Array [],
-        "componentStyle": ComponentStyle {
-          "componentId": "sc-bwzfXH",
-          "isStatic": false,
-          "rules": Array [
-            "
-  ",
-            "
-  margin: 0 15px;
-",
-            ";
-",
-          ],
-        },
-        "displayName": "Styled(HelpCenterTopBottomModule)",
-        "foldedComponentIds": Array [],
-        "render": [Function],
-        "styledComponentId": "sc-bwzfXH",
-        "target": [Function],
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      },
-      "helpCenterTopModule": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": Array [],
-        "componentStyle": ComponentStyle {
-          "componentId": "sc-bwzfXH",
-          "isStatic": false,
-          "rules": Array [
-            "
-  ",
-            "
-  margin: 0 15px;
-",
-            ";
-",
-          ],
-        },
-        "displayName": "Styled(HelpCenterTopBottomModule)",
-        "foldedComponentIds": Array [],
-        "render": [Function],
-        "styledComponentId": "sc-bwzfXH",
-        "target": [Function],
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      },
-      "module2columns": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": Array [],
-        "componentStyle": ComponentStyle {
-          "componentId": "sc-cSHVUG",
-          "isStatic": false,
-          "rules": Array [
-            "
-  ",
-            "
-  margin: 0 15px;
-",
-            ";
-",
-          ],
-        },
-        "displayName": "Styled(HelpCenterModuleTwoCol)",
-        "foldedComponentIds": Array [],
-        "render": [Function],
-        "styledComponentId": "sc-cSHVUG",
-        "target": [Function],
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      },
-    }
-  }
+<loading
+  error={[Error: Not supported]}
+  isLoading={false}
+  pastDelay={false}
+  retry={[Function]}
+  timedOut={false}
 />
 `;
