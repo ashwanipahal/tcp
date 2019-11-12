@@ -5,6 +5,7 @@ import {
   setPlccPrescreenCode,
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
@@ -14,6 +15,7 @@ import {
   addPickupPerson,
   updateRTPSData,
   getServerErrorMessage,
+  acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
@@ -365,7 +367,11 @@ function* updateUserRTPSData(payload) {
   }
 }
 
-export function* callUpdateRTPS(pageName) {
+const showOnReview = (showPLCC, isExpressCheckoutEnabled, fromExpress) => {
+  return showPLCC && isExpressCheckoutEnabled && fromExpress;
+};
+
+export function* callUpdateRTPS(pageName, fromExpress = false) {
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const isPLCCUSer = yield select(isPlccUser);
   const hasPLCCCard = yield select(getplccCardNumber);
@@ -377,7 +383,7 @@ export function* callUpdateRTPS(pageName) {
   const showPLCC = !hasPLCC && isRTPSEnabled;
   if (pageName === BILLING && isOrderHasShipping && !hasGiftWrapping && showPLCC) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: false });
-  } else if (pageName === REVIEW && showPLCC && isExpressCheckoutEnabled) {
+  } else if (showOnReview(showPLCC, isExpressCheckoutEnabled, fromExpress) && pageName === REVIEW) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: true });
   }
 }
@@ -390,4 +396,15 @@ export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
       component: componentName,
     })
   );
+}
+
+export function* submitAcceptOrDeclinePlccData({ payload }) {
+  const preScreenData = yield select(getRtpsPreScreenData);
+  const { preScreenCode } = preScreenData;
+  const accepted = payload;
+  try {
+    yield acceptOrDeclinePreScreenOffer(preScreenCode, accepted);
+  } catch (e) {
+    logger.error(e);
+  }
 }

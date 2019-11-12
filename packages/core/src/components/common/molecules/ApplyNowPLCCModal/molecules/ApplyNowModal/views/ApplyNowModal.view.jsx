@@ -25,7 +25,6 @@ const StyledApplyNowModal = ({
   rtpsCongratsMsg,
   rtpsOptOutMsg,
   rtpsTextTerms,
-  submitAcceptOrDeclinePlcc,
 }) => {
   return !isPLCCModalOpen ? (
     <Modal
@@ -126,7 +125,6 @@ const StyledApplyNowModal = ({
                 target="_blank"
                 handleLinkClick={e => {
                   e.preventDefault();
-                  submitAcceptOrDeclinePlcc(false);
                   closeModal();
                 }}
               >
@@ -225,7 +223,6 @@ StyledApplyNowModal.propTypes = {
   rtpsOptOutMsg: PropTypes.string.isRequired,
   rtpsTextTerms: PropTypes.string.isRequired,
   isRtpsFlow: PropTypes.bool.isRequired,
-  submitAcceptOrDeclinePlcc: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     apply_now_header: PropTypes.string.isRequired,
     apply_now_subheader: PropTypes.string.isRequired,

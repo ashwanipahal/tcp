@@ -18,9 +18,10 @@ class ApplyNowModalWrapper extends React.Component {
   }
 
   setRTPSFlow = () => {
-    const { setIsRTPSFlow, isRtpsFlow } = this.props;
+    const { setIsRTPSFlow, isRtpsFlow, submitAcceptOrDeclinePlcc } = this.props;
     /* istanbul ignore else */
     if (isRtpsFlow && setIsRTPSFlow) {
+      submitAcceptOrDeclinePlcc(false);
       setIsRTPSFlow(false);
     }
   };

@@ -61,7 +61,7 @@ const getApplyCardLayoutView = (
       initialValues={renderViewInfo.profileInfo}
       applicationStatus={applicationStatus}
       isRtpsFlow={renderViewInfo.isRtpsFlow}
-      togglePLCCModal={renderViewInfo.togglePLCCModal}
+      closePLCCModal={renderViewInfo.closePLCCModal}
     />
   );
 };
@@ -78,7 +78,8 @@ const ApplyCardLayoutView = ({
   approvedPLCCData,
   resetPLCCApplicationStatus,
   isRtpsFlow,
-  togglePLCCModal
+  togglePLCCModal,
+  closePLCCModal,
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
@@ -95,7 +96,8 @@ const ApplyCardLayoutView = ({
           approvedPLCCData,
           resetPLCCApplicationStatus,
           isRtpsFlow,
-          togglePLCCModal
+          togglePLCCModal,
+          closePLCCModal,
         }
       )}
     </ApplyRewardsCreditCardStyle>
@@ -114,7 +116,8 @@ ApplyCardLayoutView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool.isRequired,
-  togglePLCCModal: PropTypes.func.isRequired
+  togglePLCCModal: PropTypes.func.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApplyCardLayoutView;

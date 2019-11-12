@@ -2,13 +2,18 @@ import { createSelector } from 'reselect';
 import {
   USER_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
-  APPLY_PLCC_REDUCER_KEY
+  APPLY_PLCC_REDUCER_KEY,
 } from '../../../../../constants/reducer.constants';
 import { fetchBillingOrShippingAddress } from '../utils/utility';
 import getErrorList from '../../../CnC/BagPage/container/Errors.selector';
 import CheckoutSelectors from '../../../CnC/Checkout/container/Checkout.selector';
 
-const { getIsRtpsFlow, getCurrentCheckoutStage, getShippingDestinationValues, getBillingValues } = CheckoutSelectors;
+const {
+  getIsRtpsFlow,
+  getCurrentCheckoutStage,
+  getShippingDestinationValues,
+  getBillingValues,
+} = CheckoutSelectors;
 
 export const getPersonalDataState = state => {
   return state[USER_REDUCER_KEY].get('personalData');
@@ -38,26 +43,19 @@ export const getUserId = state => {
 };
 
 export const getRtpsPreScreenData = state => {
-  const preScreenCode = state[APPLY_PLCC_REDUCER_KEY] && state[APPLY_PLCC_REDUCER_KEY].pre_screen_code;
-  const preeScreenEligible = state[APPLY_PLCC_REDUCER_KEY] && state[APPLY_PLCC_REDUCER_KEY].plccEligible;
+  const preScreenCode =
+    state[APPLY_PLCC_REDUCER_KEY] && state[APPLY_PLCC_REDUCER_KEY].pre_screen_code;
+  const preeScreenEligible =
+    state[APPLY_PLCC_REDUCER_KEY] && state[APPLY_PLCC_REDUCER_KEY].plccEligible;
 
   return {
     preScreenCode,
-    preeScreenEligible
-  }
-}
+    preeScreenEligible,
+  };
+};
 
 const getPlccAddress = (plccAddress, address = {}) => {
-  const {
-    addressLine,
-    city,
-    email1,
-    firstName,
-    lastName,
-    phone1,
-    state,
-    zipCode,
-  } = plccAddress;
+  const { addressLine, city, email1, firstName, lastName, phone1, state, zipCode } = plccAddress;
   const noCountryZip = zipCode;
   const addressLine1 = addressLine && addressLine[0];
   const addressLine2 = addressLine && addressLine[1];
@@ -76,20 +74,12 @@ const getPlccAddress = (plccAddress, address = {}) => {
     phoneNumberWithAlt,
     noCountryZip,
   };
-}
+};
 
 const getRTPSPlccAddress = checkoutValues => {
   const { address, phoneNumber, emailAddress } = checkoutValues;
   if (address) {
-    const {
-      addressLine1,
-      addressLine2,
-      city,
-      firstName,
-      lastName,
-      state,
-      zipCode,
-    } = address;
+    const { addressLine1, addressLine2, city, firstName, lastName, state, zipCode } = address;
     const noCountryZip = zipCode;
     const phoneNumberWithAlt = phoneNumber;
     const statewocountry = state;
@@ -104,15 +94,28 @@ const getRTPSPlccAddress = checkoutValues => {
       statewocountry,
       phoneNumberWithAlt,
       noCountryZip,
-    }
+    };
   }
   return null;
-
-}
+};
 
 const getEmailAddress = personalInformation =>
-  personalInformation.get('emailAddress') &&
-  personalInformation.get('emailAddress').toLowerCase();
+  personalInformation.get('emailAddress') && personalInformation.get('emailAddress').toLowerCase();
+
+const getPhoneNumber = personalInformation =>
+  personalInformation && personalInformation.get('phoneNumber');
+
+const getUpdatedBillingValues = (shippingValues, billingValues, personalInformation) => {
+  const emailAddress = getEmailAddress(personalInformation);
+  let phoneNumber = getPhoneNumber(personalInformation);
+  const updatedBillingValues = billingValues;
+  if (shippingValues && shippingValues.phoneNumber) {
+    ({ phoneNumber } = shippingValues);
+  }
+  updatedBillingValues.phoneNumber = phoneNumber;
+  updatedBillingValues.emailAddress = emailAddress;
+  return updatedBillingValues;
+};
 
 export const getUserProfileData = createSelector(
   getUserContactInfo,
@@ -122,16 +125,27 @@ export const getUserProfileData = createSelector(
   getCurrentCheckoutStage,
   getShippingDestinationValues,
   getBillingValues,
-  (personalInformation, userTypeInformation, mailingAddress, isRtps, currentCheckoutStage, shippingValues, billingValues) => {
-    let initalAddress;
+  (
+    personalInformation,
+    userTypeInformation,
+    mailingAddress,
+    isRtps,
+    currentCheckoutStage,
+    shippingValues,
+    billingValues
+  ) => {
+    let initialAddress;
     if (isRtps) {
       if (currentCheckoutStage === 'review') {
-        initalAddress = getRTPSPlccAddress(billingValues);
-      }
-      initalAddress = getRTPSPlccAddress(shippingValues);
+        const updatedBillingValues = getUpdatedBillingValues(
+          shippingValues,
+          billingValues,
+          personalInformation
+        );
+        initialAddress = getRTPSPlccAddress(updatedBillingValues);
+      } else initialAddress = getRTPSPlccAddress(shippingValues);
     }
-    if (!initalAddress && userTypeInformation && !userTypeInformation.get('isGuest')) {
-
+    if (!initialAddress && userTypeInformation && !userTypeInformation.get('isGuest')) {
       const add = mailingAddress.get('list');
       const address = [];
       let i = 0;
@@ -147,10 +161,10 @@ export const getUserProfileData = createSelector(
           return getPlccAddress(plccAddress, address);
         }
       }
-      const emailAddress = getEmailAddress(personalInformation)
+      const emailAddress = getEmailAddress(personalInformation);
 
       return { emailAddress };
     }
-    return initalAddress;
+    return initialAddress;
   }
 );

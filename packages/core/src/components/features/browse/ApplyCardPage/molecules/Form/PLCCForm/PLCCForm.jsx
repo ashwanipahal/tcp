@@ -170,7 +170,7 @@ class PLCCForm extends React.PureComponent {
       applicationStatus,
       invalid,
       isRtpsFlow,
-      togglePLCCModal
+      closePLCCModal,
     } = this.props;
     const { isIdleModalActive, isTimedOutModalActive } = this.state;
     const bagItems = getCartItemCount();
@@ -308,7 +308,7 @@ class PLCCForm extends React.PureComponent {
                   <BodyCopy
                     fontFamily="secondary"
                     component="div"
-                    onClick={() => isRtpsFlow ? togglePLCCModal({ isPLCCModalOpen: false, status: null }) : backToHome}
+                    onClick={() => (isRtpsFlow ? closePLCCModal() : backToHome)}
                     textAlign="center"
                     tabIndex="0"
                   >
@@ -360,7 +360,7 @@ PLCCForm.propTypes = {
   }).isRequired,
   invalid: PropTypes.bool,
   isRtpsFlow: PropTypes.bool.isRequired,
-  togglePLCCModal: PropTypes.func.isRequired
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
 PLCCForm.defaultProps = {
