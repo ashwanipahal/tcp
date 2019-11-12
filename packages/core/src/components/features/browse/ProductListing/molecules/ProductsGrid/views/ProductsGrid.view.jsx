@@ -70,6 +70,7 @@ class ProductsGrid extends React.Component {
       this.containerDivRef = ref;
     };
     this.handleLoadNextPage = this.handleLoadNextPage.bind(this);
+    this.loadEnable = false;
   }
 
   componentWillMount() {
@@ -77,6 +78,7 @@ class ProductsGrid extends React.Component {
       document.addEventListener('scroll', this.handleLoadNextPage, true);
       document.addEventListener('mousewheel', this.handleLoadNextPage, true);
       document.addEventListener('DOMMouseScroll', this.handleLoadNextPage, true);
+      this.loadEnable = false;
     }
   }
 
@@ -126,13 +128,16 @@ class ProductsGrid extends React.Component {
 
   handleLoadNextPage() {
     const { isLoadingMore, productsBlock, getMoreProducts } = this.props;
-    if (!isLoadingMore && this.containerDivRef && productsBlock.length) {
-      const offsetY =
-        findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
+    const offsetY =
+      findElementPosition(this.containerDivRef).top + this.containerDivRef.offsetHeight;
 
+    if (this.loadEnable && !isLoadingMore && this.containerDivRef && productsBlock.length) {
       if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET > offsetY) {
+        this.loadEnable = false;
         getMoreProducts();
       }
+    } else if (window.pageYOffset + window.innerHeight + NEXT_PAGE_LOAD_OFFSET < offsetY) {
+      this.loadEnable = true;
     }
   }
 
