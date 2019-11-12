@@ -2,6 +2,10 @@
 import { getLabelValue } from '@tcp/core/src/utils';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 
+export const getAddedToBagLoaderState = state => {
+  return state.PageLoader && state.PageLoader.addedToBagLoaderState;
+};
+
 export const getAddedToBagData = state => {
   return state.AddedToBagReducer.get('itemInfo');
 };

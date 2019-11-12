@@ -16,6 +16,18 @@ import { getLocator } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
+  componentDidMount() {
+    const {
+      isPayPalHidden,
+      showAddTobag,
+      checkoutServerError,
+      clearCheckoutServerError,
+    } = this.props;
+    if (isPayPalHidden && showAddTobag && checkoutServerError) {
+      clearCheckoutServerError({});
+    }
+  }
+
   getPaypalButton() {
     const { showAddTobag, containerId, isBagPageStickyHeader, isPayPalHidden } = this.props;
     let containerID = containerId;
@@ -23,7 +35,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
       containerID = 'paypal-button-container-bag-header';
     }
     return (
-      !isPayPalHidden && (
+      (!isPayPalHidden || showAddTobag) && (
         <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
           <PayPalButton className="payPal-button" containerId={containerID} />
         </div>
@@ -46,10 +58,13 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isEditingItem,
       setClickAnalyticsDataCheckout,
       cartOrderItems,
+      isAddedToBag,
+      isBagPage,
+      isMiniBag,
     } = this.props;
     const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
-      <ClickTracker name="Gift_Services">
+      <ClickTracker name="Gift_Services" className="checkoutBtnTracker">
         <Button
           data-locator={getLocator('addedtobag_btncheckout')}
           className="checkout"
@@ -58,7 +73,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
               customEvents: ['event8'],
               products: productsData,
             });
-            handleCartCheckout({ isEditingItem });
+            handleCartCheckout({ isEditingItem, isAddedToBag, isBagPage, isMiniBag });
           }}
         >
           <BodyCopy
@@ -167,6 +182,9 @@ AddedToBagActions.propTypes = {
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
   venmoError: PropTypes.string,
+  isAddedToBag: PropTypes.bool,
+  isBagPage: PropTypes.bool,
+  isMiniBag: PropTypes.bool,
   setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
   cartOrderItems: PropTypes.shape([]).isRequired,
 };
@@ -176,6 +194,9 @@ AddedToBagActions.defaultProps = {
   isBagPageStickyHeader: false,
   isUSSite: true,
   venmoError: '',
+  isAddedToBag: false,
+  isBagPage: false,
+  isMiniBag: false,
 };
 
 export default withStyles(AddedToBagActions, style);

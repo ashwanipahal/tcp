@@ -279,6 +279,7 @@ export default css`
       overflow: unset;
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
+        z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
       }
 
       @media ${props => props.theme.mediaQuery.smallOnly} {

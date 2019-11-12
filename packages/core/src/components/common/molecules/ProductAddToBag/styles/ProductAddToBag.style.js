@@ -274,6 +274,7 @@ export const giftCardDesignStyle = css`
     /* When the input is checked, the image color has black border (selected) */
     .input-radio-icon-checked + .input-radio-title {
       border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+      padding: 2px 2px;
     }
 
     .input-radio-icon-checked + .input-radio-title .color-image {

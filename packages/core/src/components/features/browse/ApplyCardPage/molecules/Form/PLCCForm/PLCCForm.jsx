@@ -70,6 +70,10 @@ class PLCCForm extends React.PureComponent {
 
   componentDidMount() {
     this.bindIdleVerification();
+    const { isPLCCModalFlow } = this.props;
+    if (!isPLCCModalFlow) {
+      window.scrollTo(0, 0);
+    }
   }
 
   componentDidUpdate() {

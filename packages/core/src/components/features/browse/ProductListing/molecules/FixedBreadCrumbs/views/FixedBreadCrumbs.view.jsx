@@ -34,44 +34,49 @@ const asPathConstructor = url => {
 const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {
   return (
     <div className={`${className} breadcrum-container`}>
-      {crumbs.map((crumb, index) => {
-        const {
-          displayName,
-          destinationUrl,
-          destination,
-          pathSuffix,
-          ...otherHyperLinkProps
-        } = crumb;
+      {crumbs &&
+        crumbs.map((crumb, index) => {
+          const {
+            displayName,
+            destinationUrl,
+            destination,
+            pathSuffix,
+            ...otherHyperLinkProps
+          } = crumb;
 
-        // for PLP breadcrumb new field categoryKey is added So, if categoryKey exist then  pathSuffix will be updated by SeoUrl
-        if (otherHyperLinkProps && otherHyperLinkProps.pathSuffix && otherHyperLinkProps.linkUrl) {
-          otherHyperLinkProps.pathSuffix = otherHyperLinkProps.categoryKey;
-        }
-        const itemClassName =
-          index === crumbs.length - 1 ? 'breadcrum-last-item' : 'breadcrum-item';
-        return (
-          <span key={`${displayName}`} className="breadcrum-item-container">
-            {destinationUrl ? (
-              <a className={itemClassName} href={destinationUrl}>
-                {displayName}
-              </a>
-            ) : (
-              <Anchor
-                className={itemClassName}
-                to={`/c?cid=${pathSuffix}`}
-                asPath={`/${asPathConstructor(pathSuffix)}`}
-                data-locator={`${getLocator(`breadCrumb_L${index + 1}_Category`)}`}
-                {...otherHyperLinkProps}
-              >
-                {displayName}
-              </Anchor>
-            )}
-            {index !== crumbs.length - 1 && (
-              <span className="breadcrum-separation">{separationChar}</span>
-            )}
-          </span>
-        );
-      })}
+          // for PLP breadcrumb new field categoryKey is added So, if categoryKey exist then  pathSuffix will be updated by SeoUrl
+          if (
+            otherHyperLinkProps &&
+            otherHyperLinkProps.pathSuffix &&
+            otherHyperLinkProps.linkUrl
+          ) {
+            otherHyperLinkProps.pathSuffix = otherHyperLinkProps.categoryKey;
+          }
+          const itemClassName =
+            index === crumbs.length - 1 ? 'breadcrum-last-item' : 'breadcrum-item';
+          return (
+            <span key={`${displayName}`} className="breadcrum-item-container">
+              {destinationUrl ? (
+                <a className={itemClassName} href={destinationUrl}>
+                  {displayName}
+                </a>
+              ) : (
+                <Anchor
+                  className={itemClassName}
+                  to={`/c?cid=${pathSuffix}`}
+                  asPath={`/${asPathConstructor(pathSuffix)}`}
+                  data-locator={`${getLocator(`breadCrumb_L${index + 1}_Category`)}`}
+                  {...otherHyperLinkProps}
+                >
+                  {displayName}
+                </Anchor>
+              )}
+              {index !== crumbs.length - 1 && (
+                <span className="breadcrum-separation">{separationChar}</span>
+              )}
+            </span>
+          );
+        })}
     </div>
   );
 };
