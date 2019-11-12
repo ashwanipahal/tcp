@@ -124,12 +124,16 @@ class CartItemTile extends PureComponent {
     toggleEditAllowance();
   };
 
+  handleEditCartItemMiniBag = (pageView, itemBrand, productNumber) => {
+    const productNum = productNumber.slice(0, productNumber.indexOf('_'));
+    this.toggleFormVisibility();
+    const { getProductSKUInfo } = this.props;
+    getProductSKUInfo({ productNum, itemBrand });
+  };
+
   handleEditCartItem = (pageView, itemBrand, productNumber) => {
     if (pageView !== 'myBag') {
-      const productNum = productNumber.slice(0, productNumber.indexOf('_'));
-      this.toggleFormVisibility();
-      const { getProductSKUInfo } = this.props;
-      getProductSKUInfo({ productNum, itemBrand });
+      this.handleEditCartItemMiniBag(pageView, itemBrand, productNumber);
     } else {
       const { onQuickViewOpenClick, productDetail } = this.props;
       const { itemId, qty, color, size, fit } = productDetail.itemInfo;
@@ -203,6 +207,12 @@ class CartItemTile extends PureComponent {
     } else if (pageView === 'myBag') {
       const openSkuSelectionForm = true;
       this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
+    } else {
+      this.handleEditCartItemMiniBag(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
     }
   };
 
@@ -224,6 +234,7 @@ class CartItemTile extends PureComponent {
       addItemToSflList,
       setCartItemsSflError,
       labels,
+      pageView,
       setClickAnalyticsData,
     } = this.props;
     const {
@@ -232,13 +243,13 @@ class CartItemTile extends PureComponent {
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
-
+    const isMiniBag = pageView !== 'myBag';
     this.clearToggleErrorState();
 
     if (sflItemsCount >= sflMaxCount) {
       return setCartItemsSflError(labels.sflMaxLimitError);
     }
-    const payloadData = { itemId, catEntryId, userInfoRequired };
+    const payloadData = { itemId, catEntryId, userInfoRequired, isMiniBag };
     const productsData = {
       color,
       id: itemId,

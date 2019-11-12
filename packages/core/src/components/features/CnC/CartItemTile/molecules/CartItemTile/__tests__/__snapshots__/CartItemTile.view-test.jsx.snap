@@ -7159,9 +7159,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
           [Function],
           ";
     .save-for-later-label {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 
@@ -7693,9 +7697,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           [Function],
           ";
     .save-for-later-label {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 

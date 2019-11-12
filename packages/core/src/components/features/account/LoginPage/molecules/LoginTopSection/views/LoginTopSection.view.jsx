@@ -28,6 +28,7 @@ const LoginTopSection = ({ labels, className, isCanada, variation, showForgotPas
               fontWeight="black"
               fontFamily="primary"
               textAlign="center"
+              className="checkout_modal_heading_margin"
             >
               {getLabelValue(labels, 'lbl_login_checkout_modal_heading', 'login')}
             </BodyCopy>

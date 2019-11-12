@@ -360,9 +360,13 @@ export default css`
     padding-bottom: 0px;
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     .save-for-later-label {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 

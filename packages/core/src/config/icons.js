@@ -43,6 +43,7 @@ export default {
   'circle-info-blue': '/static/images/circle-info-blue.svg',
   'circle-info-orange': '/static/images/circle-info-orange.svg',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
+  'right-disable-carousel-carrot': '/static/images/right-disable-carousel-carrot.svg',
   smallright: '/static/images/smallright.svg',
   'carousel-big-carrot-left': '/static/images/left-carousel-carrot.svg',
   'carousel-big-carrot-white': '/static/images/right-carousel-carrot-white.svg',

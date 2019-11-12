@@ -34,19 +34,19 @@ const getSortParams = store => {
 
 const getDepartmentList = store => {
   const state = store.getState();
-  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  const departmentListing = state.ProductListing && state.ProductListing.breadCrumbTrail;
   return departmentListing[0].displayName;
 };
 
 const getCategoryList = store => {
   const state = store.getState();
-  const departmentListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  const departmentListing = state.ProductListing && state.ProductListing.breadCrumbTrail;
   return departmentListing[1].displayName;
 };
 
 const getListingCount = store => {
   const state = store.getState();
-  return state.ProductListing && state.ProductListing.get('totalProductsCount');
+  return state.ProductListing && state.ProductListing.totalProductsCount;
 };
 
 const getStoreId = store => {

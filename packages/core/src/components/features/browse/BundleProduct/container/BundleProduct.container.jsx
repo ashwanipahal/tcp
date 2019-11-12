@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getProductDetails } from './BundleProduct.actions';
-import ProductBundle from '../views';
+import BundleProduct from '../views';
 import {
   getCurrentProduct,
   getPlpLabels,
@@ -15,6 +15,8 @@ import {
   getAlternateSizes,
   getCurrentBundle,
   getAddedToBagErrorCatId,
+  getBreadCrumbs,
+  prodDetails,
 } from './BundleProduct.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
@@ -103,9 +105,11 @@ export class ProductBundleContainer extends React.PureComponent {
       isPlcc,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      breadCrumbs,
+      productDetails,
     } = this.props;
     return (
-      <ProductBundle
+      <BundleProduct
         currentProduct={currentProduct}
         selectedColorProductId={this.selectedColorProductId}
         plpLabels={plpLabels}
@@ -128,6 +132,8 @@ export class ProductBundleContainer extends React.PureComponent {
         isPlcc={isPlcc}
         AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+        breadCrumbs={breadCrumbs}
+        productDetails={productDetails}
       />
     );
   }
@@ -139,6 +145,7 @@ ProductBundleContainer.pageInfo = {
 function mapStateToProps(state) {
   return {
     currentProduct: getCurrentProduct(state),
+    productDetails: prodDetails(state),
     plpLabels: getPlpLabels(state),
     pdpLabels: getPDPLabels(state),
     shortDescription: getShortDescription(state),
@@ -155,6 +162,7 @@ function mapStateToProps(state) {
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     isPlcc: isPlccUser(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
+    breadCrumbs: getBreadCrumbs(state),
   };
 }
 
@@ -201,6 +209,8 @@ ProductBundleContainer.propTypes = {
   router: PropTypes.shape({}).isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  breadCrumbs: PropTypes.shape({}),
+  productDetails: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductBundleContainer.defaultProps = {
@@ -223,6 +233,8 @@ ProductBundleContainer.defaultProps = {
   isPlcc: false,
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  breadCrumbs: [],
+  productDetails: [],
 };
 
 export default connect(
