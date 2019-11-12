@@ -123,7 +123,7 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": "lbl_shipping_addNewAddress",
             "primary": false,
           },
         ]
@@ -153,7 +153,6 @@ exports[`RegisteredShippingForm should call save Btn click handler 1`] = `
       onValueChange={[Function]}
       selectListTitle="Select from address book"
       selectedValue="12345"
-      showButton={false}
       variation="secondary"
     />
   </View>
@@ -233,7 +232,7 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": "lbl_shipping_addNewAddress",
             "primary": false,
           },
         ]
@@ -263,7 +262,6 @@ exports[`RegisteredShippingForm should call save to account change 1`] = `
       onValueChange={[Function]}
       selectListTitle="Select from address book"
       selectedValue="12345"
-      showButton={false}
       variation="secondary"
     />
   </View>
@@ -545,7 +543,7 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": "lbl_shipping_addNewAddress",
             "primary": false,
           },
         ]
@@ -575,7 +573,6 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
       onValueChange={[Function]}
       selectListTitle="Select from address book"
       selectedValue={null}
-      showButton={false}
       variation="secondary"
     />
   </View>
@@ -661,7 +658,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": "lbl_shipping_addNewAddress",
             "primary": false,
           },
         ]
@@ -691,7 +688,6 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       onValueChange={[Function]}
       selectListTitle="Select from address book"
       selectedValue={null}
-      showButton={false}
       variation="secondary"
     />
   </View>
@@ -737,7 +733,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": "lbl_shipping_addNewAddress",
             "primary": false,
           },
         ]
@@ -767,7 +763,6 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       onValueChange={[Function]}
       selectListTitle="Select from address book"
       selectedValue="1234"
-      showButton={false}
       variation="secondary"
     />
   </View>
@@ -813,7 +808,7 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
           Object {
             "content": "",
             "id": "",
-            "label": "+Add New Address",
+            "label": "lbl_shipping_addNewAddress",
             "primary": false,
           },
         ]
@@ -843,7 +838,6 @@ exports[`RegisteredShippingForm should render correctly with  addresses and call
       onValueChange={[Function]}
       selectListTitle="Select from address book"
       selectedValue="12345"
-      showButton={false}
       variation="secondary"
     />
   </View>

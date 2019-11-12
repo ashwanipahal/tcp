@@ -140,6 +140,7 @@ class GuestBillingContainer extends React.Component {
       isVenmoPaymentInProgress,
       setCheckoutStage,
       venmoError,
+      isPayPalWebViewEnable,
     } = this.props;
     let cardNumber;
     let cardType;
@@ -172,6 +173,7 @@ class GuestBillingContainer extends React.Component {
         syncErrorsObj={syncErrors}
         setCheckoutStage={setCheckoutStage}
         venmoError={venmoError}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
   }
@@ -187,6 +189,7 @@ export const mapStateToProps = state => {
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
     venmoError: CheckoutSelectors.getVenmoError(state),
+    getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
   };
 };
 
@@ -232,6 +235,7 @@ GuestBillingContainer.propTypes = {
   setVenmoProgress: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
   venmoError: PropTypes.string,
+  isPayPalWebViewEnable: PropTypes.shape({}).isRequired,
 };
 
 GuestBillingContainer.defaultProps = {

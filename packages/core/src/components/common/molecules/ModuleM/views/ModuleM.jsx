@@ -32,7 +32,7 @@ export class ModuleM extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
+    window.removeEventListener('resize', this.windowResizeEventHandler.bind(this));
   }
 
   /**

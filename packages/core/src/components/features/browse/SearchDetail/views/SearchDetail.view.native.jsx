@@ -5,7 +5,6 @@ import withStyles from '../../../../common/hoc/withStyles.native';
 import { styles, PageContainer, Container } from '../SearchDetail.style.native';
 import ProductListing from '../../ProductListing/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 class SearchDetail extends React.PureComponent {
   listRef;
@@ -85,7 +84,6 @@ class SearchDetail extends React.PureComponent {
           {...otherProps}
         />
         <QuickViewModal navigation={navigation} />
-        <AddedToBagContainer navigation={navigation} />
       </PageContainer>
     );
   }

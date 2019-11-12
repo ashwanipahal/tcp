@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linking } from 'react-native';
+import { Linking, View } from 'react-native';
 import queryString from 'query-string';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
@@ -30,6 +30,7 @@ import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/Loyalt
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import {
   HeaderPromoContainer,
@@ -107,7 +108,12 @@ class HomePageView extends React.PureComponent<Props> {
   };
 
   renderGlobalModal = navigation => {
-    return <QuickViewModal navigation={navigation} />;
+    return (
+      <View>
+        <QuickViewModal navigation={navigation} />
+        <AddedToBagContainer navigation={navigation} />
+      </View>
+    );
   };
 
   navigate = url => {
@@ -190,7 +196,7 @@ class HomePageView extends React.PureComponent<Props> {
             />
           </>
         ) : null}
-        {this.renderGlobalModal()}
+        {this.renderGlobalModal(navigation)}
       </LazyloadScrollView>
     );
   }
