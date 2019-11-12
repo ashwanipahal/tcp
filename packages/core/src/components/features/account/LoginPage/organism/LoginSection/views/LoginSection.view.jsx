@@ -14,7 +14,7 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
-import { isCanada, scrollPage, scrollTopElement } from '../../../../../../../utils';
+import { isCanada, scrollPage } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -51,12 +51,14 @@ class LoginSection extends React.PureComponent<Props> {
   };
 
   showCreateAccountForm = () => {
-    const { openModal } = this.props;
-    openModal({
+    const { onClose, openOverlay, closeModal } = this.props;
+
+    openOverlay({
       component: 'createAccount',
       variation: 'primary',
     });
-    scrollTopElement('dialogContent');
+    onClose();
+    closeModal();
   };
 
   getSignOutSection = ({ labels, isRememberedUser, logoutlabels, userName }) => {
