@@ -73,6 +73,10 @@ const ctaStyle = css`
       font-size: ${props => props.theme.typography.fontSizes.fs12};
     }
   }
+  .checkoutBtnTracker {
+    display: inline-flex;
+    flex: 1;
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ctaStyle;
