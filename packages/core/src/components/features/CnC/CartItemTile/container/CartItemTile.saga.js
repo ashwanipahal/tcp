@@ -8,6 +8,8 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import { parseProductFromAPI } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.dataMassage';
 import { getImgPath } from '@tcp/core/src/components/features/browse/ProductListingPage/util/utility';
 import { getSaveForLaterSwitch } from '@tcp/core/src/components/features/CnC/SaveForLater/container/SaveForLater.selectors';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 import fetchData from '../../../../../service/API';
@@ -140,6 +142,16 @@ export function* updateCartItemSaga({ payload }) {
     yield put(clearToggleBossBopisCartItemError());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(updateItem, payload, errorMapping);
+    const cartOrderItems = yield select(BagPageSelectors.getOrderItems);
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+    yield put(
+      setClickAnalyticsData({
+        customEvents: ['event68'],
+        products: productsData,
+        eventName: 'cart update',
+      })
+    );
+    yield put(trackClick('cart update'));
     const { callBack } = payload;
     yield put(updateCartItemComplete(res));
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: true }));

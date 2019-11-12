@@ -12,7 +12,6 @@ import mockEV1 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1';
 import mockEV1Alt from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1-alt';
 import mockEV2 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v2';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import { isTCP } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
@@ -128,7 +127,6 @@ const HomePageView = dynamic({
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
         />
-        <AddedToBagContainer />
       </HomePageWithRouter>
     );
   },

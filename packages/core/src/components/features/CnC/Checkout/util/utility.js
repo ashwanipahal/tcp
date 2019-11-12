@@ -25,7 +25,7 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
-import { routerPush } from '../../../../../utils';
+import { routerPush, isMobileApp } from '../../../../../utils';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 import { getLocalStorage } from '../../../../../utils/localStorageManagement';
 import CheckoutConstants from '../Checkout.constants';
@@ -144,7 +144,9 @@ const routeToPage = (dataObj, queryParams, ...others) => {
     }
     to += `${queryString.stringify(queryParams)}`;
   }
-  routerPush(to, asPath, ...others);
+  if (!isMobileApp()) {
+    routerPush(to, asPath, ...others);
+  }
 };
 
 function getCreditCardType({ cardNumber = '', cardType } = {}) {
@@ -240,6 +242,25 @@ const handleReviewFormSubmit = (scope, data) => {
     submitReview(formDataSubmission);
   } else {
     submitReview({});
+  }
+};
+
+const flattenObject = (obj, prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? `${prefix}.` : '';
+    if (typeof obj[k] === 'object') Object.assign(acc, flattenObject(obj[k], pre + k));
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+
+export const scrollToFirstError = errors => {
+  const errorEl = document.querySelector(
+    Object.keys(flattenObject(errors))
+      .map(fieldName => `[name="${fieldName}"]`)
+      .join(',')
+  );
+  if (errorEl && errorEl.focus) {
+    errorEl.focus(); // this scrolls without visible scroll
   }
 };
 

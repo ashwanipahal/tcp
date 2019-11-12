@@ -4,7 +4,6 @@ import {
   createSwitchNavigator,
   createBottomTabNavigator,
 } from 'react-navigation';
-import React from 'react';
 import ApplyNowWrapper from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 
 import NavBar from '../components/common/molecules/NavBar';
@@ -13,7 +12,6 @@ import PlpStack from '../pages/productListing';
 import AccountStack from '../pages/account';
 import WalletStack from '../pages/login';
 import BrandSwitchStack from '../pages/brandSwitch';
-import Header from '../components/common/molecules/Header';
 import CheckoutStack from '../pages/checkout';
 import BagStack from '../pages/bag';
 
@@ -26,7 +24,6 @@ const TabNavigator = createBottomTabNavigator(
     WalletStack,
   },
   {
-    header: props => <Header {...props} />,
     tabBarComponent: NavBar,
   }
 );
