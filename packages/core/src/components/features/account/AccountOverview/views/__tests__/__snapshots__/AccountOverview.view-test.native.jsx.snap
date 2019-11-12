@@ -8,6 +8,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     }
   }
 >
+  <Connect(OrderNotification) />
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""

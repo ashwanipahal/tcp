@@ -73,9 +73,11 @@ const FooterNavLinksList = ({
       action === 'favorites' ||
       action === 'redeem-rewards' ||
       action === 'check-point-balance' ||
+      action === 'track-order' ||
       URL === '/redeem-rewards' ||
       URL === '/check-point-balance' ||
-      URL === '/favorites'
+      URL === '/favorites' ||
+      URL === '/track-order'
     ) {
       response = true;
     }

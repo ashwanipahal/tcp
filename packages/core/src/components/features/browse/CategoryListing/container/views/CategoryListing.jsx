@@ -6,11 +6,6 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../styles/CategoryListing.style';
 
 class CategoryListing extends PureComponent {
-  componentDidMount() {
-    const { getLayout } = this.props;
-    getLayout('boy', 'categoryListingPage');
-  }
-
   render() {
     const { className } = this.props;
     return (
@@ -45,7 +40,6 @@ class CategoryListing extends PureComponent {
 
 CategoryListing.propTypes = {
   className: PropTypes.string.isRequired,
-  getLayout: PropTypes.func.isRequired,
 };
 
 CategoryListing.defaultProps = {};

@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import RecommendationsAbstractor from '../../../../../services/abstractors/common/recommendations';
 import { loadRecommendationsData } from './Recommendations.actions';
 import { FETCH_RECOMMENDATIONS_DATA } from './Recommendations.constants';
@@ -11,16 +11,16 @@ function* fetchRecommendationsData(action) {
   const { payload } = action;
   try {
     const result = yield call(RecommendationsAbstractor.getAppData, payload);
-    yield put(loadRecommendationsData(result));
+    yield put(loadRecommendationsData({ reduxKey: payload.reduxKey, result }));
   } catch (e) {
+    logger.log(e);
     if (isMobileApp())
       yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
-    logger.log(e);
   }
 }
 
 function* RecommendationsSaga() {
-  yield takeLatest(FETCH_RECOMMENDATIONS_DATA, fetchRecommendationsData);
+  yield takeEvery(FETCH_RECOMMENDATIONS_DATA, fetchRecommendationsData);
 }
 
 export default RecommendationsSaga;
