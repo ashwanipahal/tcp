@@ -128,7 +128,7 @@ export const AnchorView = styled.TouchableOpacity`
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: ${props => props.justifyContent || `center`};
 `;
 
 export const AnchorIcon = styled.Image`
