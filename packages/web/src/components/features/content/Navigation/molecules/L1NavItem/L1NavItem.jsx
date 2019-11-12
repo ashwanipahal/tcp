@@ -26,7 +26,7 @@ class L1NavItem extends React.PureComponent {
     this.state = {
       hovered: false,
     };
-    this.timedOutHovered = null;
+    this.timeOutHandler = null;
   }
 
   /**
@@ -34,7 +34,8 @@ class L1NavItem extends React.PureComponent {
    */
   onHover = () => {
     if (getViewportInfo().isDesktop) {
-      this.timedOutHovered = setTimeout(() => {
+      clearTimeout(this.timeOutHandler);
+      this.timeOutHandler = setTimeout(() => {
         this.setState({
           hovered: true,
         });
@@ -55,7 +56,7 @@ class L1NavItem extends React.PureComponent {
    */
   onMouseLeave = () => {
     if (getViewportInfo().isDesktop) {
-      clearTimeout(this.timedOutHovered);
+      clearTimeout(this.timeOutHandler);
       this.setState({
         hovered: false,
       });
