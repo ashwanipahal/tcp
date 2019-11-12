@@ -4,6 +4,7 @@ exports[`NativeDropDown native should render correctly should match snapshot for
 <View>
   <Styled(CustomButton)
     active={false}
+    borderRadiusNone={false}
     bottomBorderOnly={true}
     buttonVariation="mobileApp-filter"
     color=""

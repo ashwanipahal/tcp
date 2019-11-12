@@ -15,6 +15,7 @@ exports[`Selectbox component renders correctly 1`] = `
   />
   <NativeDropDown
     androidPickerStyle={null}
+    borderRadiusNone={false}
     bottomBorderOnly={true}
     buttonVariation="mobileApp-select"
     data={
@@ -56,6 +57,7 @@ exports[`Selectbox component renders correctly for error 1`] = `
   />
   <NativeDropDown
     androidPickerStyle={null}
+    borderRadiusNone={false}
     bottomBorderOnly={true}
     buttonVariation="mobileApp-select"
     data={
