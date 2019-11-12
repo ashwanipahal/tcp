@@ -8,8 +8,6 @@ import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 import Espot from '../../../../../../common/molecules/Espot';
 
 const CopyToClipboard = e => {
-  // eslint-disable-next-line no-debugger
-  debugger;
   e.preventDefault();
   if (document.selection) {
     const range = document.body.createTextRange();
