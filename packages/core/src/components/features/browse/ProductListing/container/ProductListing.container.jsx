@@ -6,7 +6,10 @@ import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
-import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import {
+  openQuickViewWithValues,
+  closeQuickViewModal,
+} from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import {
   getProductsSelect,
@@ -108,6 +111,11 @@ class ProductListingContainer extends React.PureComponent {
     if (asPath !== currentAsPath) {
       this.makeApiCall();
     }
+  }
+
+  componentWillUnmount() {
+    const { closeQuickViewModalAction } = this.props;
+    closeQuickViewModalAction();
   }
 
   makeApiCall = () => {
@@ -275,6 +283,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    closeQuickViewModalAction: () => {
+      dispatch(closeQuickViewModal({ isModalOpen: false }));
+    },
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
     },
@@ -326,6 +337,7 @@ ProductListingContainer.propTypes = {
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
   plpTopPromos: PropTypes.shape({}),
+  closeQuickViewModalAction: PropTypes.func,
   navigationData: PropTypes.shape({}),
 };
 
@@ -351,7 +363,8 @@ ProductListingContainer.defaultProps = {
     exchangevalue: 1,
   },
   currency: 'USD',
-  plpTopPromos: {},
+  plpTopPromos: [],
+  closeQuickViewModalAction: () => {},
   navigationData: null,
 };
 
