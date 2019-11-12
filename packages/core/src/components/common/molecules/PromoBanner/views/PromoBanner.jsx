@@ -50,14 +50,11 @@ const isPencentageTab = style => {
 const PromoBanner = props => {
   const {
     headerText,
-    promoBanner: promoBanners,
+    promoBanner: [{ textItems, link }],
     className,
     dataLocatorHeader,
     ...otherProps
   } = props;
-
-  const [promoBanner] = promoBanners || [];
-  const { textItems = [], link = {} } = promoBanner;
 
   const navigationUrl = link;
   navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
