@@ -52,7 +52,10 @@ exports[`ProductImages component should renders correctly 1`] = `
     width: 19px;
   }
   .slick-disabled {
-    display: none !important;
+    pointer-events: none;
+    background-image: url(",
+            "/static/images/right-disable-carousel-carrot.svg",
+            ");
   }
   @media ",
             [Function],
