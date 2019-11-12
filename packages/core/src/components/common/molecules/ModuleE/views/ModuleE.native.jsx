@@ -376,7 +376,7 @@ class ModuleE extends React.PureComponent {
       carouselCtaType,
     } = this.props;
 
-    const [eyebrow] = eyebrows && [];
+    const eyebrow = eyebrows ? eyebrows[0] : [];
 
     const ctaTypeValue = ctaTypes[ctaType];
 
@@ -401,7 +401,7 @@ class ModuleE extends React.PureComponent {
 }
 
 ModuleE.defaultProps = {
-  eyebrow: [],
+  eyebrow: null,
   headerText: [],
   promoBanner: [],
   navigation: {},
