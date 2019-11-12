@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import { getLabelValue } from '@tcp/core/src/utils';
 import { closeAddedToBag } from './AddedToBag.actions';
 import {
@@ -196,9 +195,7 @@ const mapStateToProps = state => {
   return newState;
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(AddedToBagContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddedToBagContainer);
