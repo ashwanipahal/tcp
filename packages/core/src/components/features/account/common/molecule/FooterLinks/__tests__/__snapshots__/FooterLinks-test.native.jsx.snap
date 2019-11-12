@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterLinks component FooterLinks component renders correctly without props 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_overview_logout_heading_Text_1"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs14"
+      margin={null}
+      numberOfLines={null}
+      text="lbl_overview_logout_heading_Text_2"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      className="classBtn"
+      color="#575757"
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator=""
+      disableButton={false}
+      fill=""
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      id="createAccount"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_overview_join_text"
+      theme={Object {}}
+      type="submit"
+      url=""
+      width="47%"
+      withNoLineHeight={false}
+    />
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color=""
+      customStyle={Object {}}
+      customTextStyle={null}
+      data-locator=""
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      id="login"
+      locator=""
+      navigation={Object {}}
+      onPress={[Function]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_overview_login_text"
+      theme={Object {}}
+      type="submit"
+      url=""
+      width="47%"
+      withNoLineHeight={false}
+    />
+  </Styled(View)>
+</Fragment>
+`;

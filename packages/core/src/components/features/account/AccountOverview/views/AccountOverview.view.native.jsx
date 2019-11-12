@@ -1,9 +1,6 @@
-/* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/account/common/organism/MyPlaceRewardsOverviewTile';
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
@@ -14,77 +11,23 @@ import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import LegalLinks from '../../../../common/molecules/LegalLinks';
 import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
-import CustomButton from '../../../../common/atoms/Button';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
 import OrdersTile from '../../common/organism/OrdersTile';
 import MyPreferencesTile from '../../common/organism/MyPreferencesTile';
 import {
-  UnderlineStyle,
-  FavtWrapper,
-  FavoritesWrapper,
-  TextWrapper,
-  TouchabelContainer,
-  ImageContainer,
-  RightArrowImageContainer,
-  StyledImage,
-  FavImageWrapper,
   LegalStyleLinkStyles,
   CopyrightText,
+  UnderlineStyle,
 } from '../styles/AccountOverview.style.native';
 import LogOutPageContainer from '../../Logout/container/LogOut.container';
-import ModalNative from '../../../../common/molecules/Modal';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
-import { ModalViewWrapper } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
-import {
-  LogoutWrapper,
-  LoggedinWrapper,
-  LoggedinTextWrapper,
-} from '../../Logout/styles/LoginOut.style.native';
-import ImageComp from '../../../../common/atoms/Image';
-import CreateAccount from '../../CreateAccount';
-import LoginPageContainer from '../../LoginPage';
+import { LogoutWrapper } from '../../Logout/styles/LoginOut.style.native';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
-import CustomIcon from '../../../../common/atoms/Icon';
-import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.constants';
 import OrderNotification from '../../OrderNotification';
+import FooterLinks from '../../common/molecule/FooterLinks';
 import mock from './mock';
 
-const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
-const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
-const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right-gray.png');
-
 class AccountOverview extends PureComponent<Props> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: false,
-      getComponentId: {
-        login: '',
-        createAccount: '',
-        favorites: '',
-      },
-      horizontalBar: true,
-      modalHeaderLbl: ' ',
-      changePassword: false,
-    };
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (props.isUserLoggedIn && state.showModal) {
-      return { showModal: false };
-    }
-    return null;
-  }
-
-  componentDidMount() {
-    const { changePassword } = this.state;
-    if (!changePassword) this.navigateToChangePassword();
-  }
-
   componentDidUpdate(prevPops) {
-    const { changePassword } = this.state;
-    if (!changePassword) this.navigateToChangePassword();
-
     const { isUserLoggedIn } = this.props;
     if (prevPops.isUserLoggedIn !== isUserLoggedIn && isUserLoggedIn && Platform.OS === 'ios')
       // save cookies in the async storage for ios
@@ -97,155 +40,16 @@ class AccountOverview extends PureComponent<Props> {
       });
   }
 
-  navigateToChangePassword = () => {
-    const { labels, navigation } = this.props;
-    const { showModal } = this.state;
-    if (!isEmpty(labels) && navigation) {
-      const {
-        state: { params },
-      } = navigation;
-      if (params) {
-        const { component } = params;
-
-        if (component && component === 'change-password') {
-          // eslint-disable-next-line react/no-did-update-set-state
-          this.setState({ changePassword: true });
-          if (showModal) {
-            // if login modal is already opened
-            this.setState({ showModal: false });
-          }
-          // using set timeout as labels doesn't load sometime just after opening app
-          this.toggleModal({
-            getComponentId: {
-              login: true,
-              createAccount: false,
-              favorites: false,
-            },
-          });
-        }
-      }
-    }
-  };
-
-  renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
-    let componentContainer = null;
-    if (getComponentId.login || getComponentId.favorites) {
-      componentContainer = (
-        <LoginPageContainer
-          onRequestClose={this.toggleModal}
-          navigation={navigation}
-          isUserLoggedIn={isUserLoggedIn}
-          variation={getComponentId.favorites && 'favorites'}
-          showLogin={this.showloginModal}
-          showCheckoutModal={this.showCheckoutModal}
-          updateHeader={this.updateHeader}
-          resetChangePasswordState={this.resetChangePasswordState}
-        />
-      );
-    }
-    if (getComponentId.createAccount) {
-      componentContainer = (
-        <CreateAccount
-          showCheckoutModal={this.showCheckoutModal}
-          showLogin={this.showloginModal}
-          navigation={navigation}
-          onRequestClose={this.toggleModal}
-        />
-      );
-    }
-    return <React.Fragment>{componentContainer}</React.Fragment>;
-  };
-
-  showloginModal = () => {
-    this.setState({
-      getComponentId: {
-        login: true,
-      },
-    });
-  };
-
-  showCheckoutModal = () => {
-    this.setState({
-      getComponentId: {
-        createAccount: true,
-      },
-    });
-  };
-
-  toggleApplyNowModal = () => {
-    const { navigation, openApplyNowModal } = this.props;
-    navigation.navigate('ApplyNow');
-    openApplyNowModal({ isModalOpen: true });
-  };
-
-  toggleModal = ({ getComponentId }) => {
-    this.setState(state => ({
-      showModal: !state.showModal,
-      getComponentId: getComponentId
-        ? {
-            login: getComponentId.login,
-            createAccount: getComponentId.createAccount,
-            favorites: getComponentId.favorites,
-          }
-        : '',
-    }));
-  };
-
-  resetAccountOverViewState = () => {
-    this.setState({
-      showModal: false,
-      getComponentId: {
-        login: '',
-        createAccount: '',
-        favorites: '',
-      },
-    });
-  };
-
-  showTrackOrderModal = () => {
-    const { navigation } = this.props;
-    navigation.navigate('TrackOrder', {
-      handleToggle: this.toggleModal,
-      noHeader: true,
-    });
-  };
-
-  getModalHeader = (getComponentId, labels) => {
-    let header = ' ';
-    if (getComponentId.login || getComponentId.favorites) {
-      header = getLabelValue(labels, 'lbl_overview_login_text');
-      this.setState({
-        horizontalBar: true,
-      });
-    }
-    if (getComponentId.createAccount) {
-      header = getLabelValue(labels, 'lbl_overview_createAccount');
-      this.setState({
-        horizontalBar: true,
-      });
-    }
-    this.setState({ modalHeaderLbl: header });
-  };
-
-  updateHeader = () => {
-    this.setState({
-      modalHeaderLbl: ' ',
-      horizontalBar: false,
-    });
-  };
-
-  resetChangePasswordState = () => {
-    this.setState({
-      changePassword: false,
-    });
-  };
-
   render() {
-    const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId, modalHeaderLbl, horizontalBar } = this.state;
-    this.getModalHeader(getComponentId, labels);
+    const {
+      isUserLoggedIn,
+      labels,
+      commonLabels,
+      handleComponentChange,
+      navigation,
+      openApplyNowModal,
+    } = this.props;
     const viewContainerStyle = { marginTop: 15 };
-    const colorPallete = createThemeColorPalette();
     const { legalLinks } = mock;
     const accountFooterLinks = mock.accountFooterNavLegalLinks;
 
@@ -299,209 +103,17 @@ class AccountOverview extends PureComponent<Props> {
             </Panel>
           </React.Fragment>
         )}
-        {!isUserLoggedIn && (
-          <React.Fragment>
-            <LoggedinTextWrapper>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_1')}
-              />
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_2')}
-              />
-            </LoggedinTextWrapper>
-            <LoggedinWrapper>
-              <CustomButton
-                className="classBtn"
-                color={colorPallete.text.secondary}
-                id="createAccount"
-                type="submit"
-                width="47%"
-                data-locator=""
-                text={getLabelValue(labels, 'lbl_overview_join_text')}
-                onPress={e =>
-                  this.toggleModal({
-                    e,
-                    getComponentId: {
-                      login: false,
-                      createAccount: true,
-                      favorites: false,
-                    },
-                  })
-                }
-              />
-
-              <CustomButton
-                fill="BLUE"
-                id="login"
-                type="submit"
-                data-locator=""
-                width="47%"
-                text={getLabelValue(labels, 'lbl_overview_login_text')}
-                onPress={e =>
-                  this.toggleModal({
-                    e,
-                    getComponentId: {
-                      login: true,
-                      createAccount: false,
-                      favorites: false,
-                    },
-                  })
-                }
-              />
-            </LoggedinWrapper>
-            {showModal && (
-              <ModalNative
-                isOpen={showModal}
-                onRequestClose={this.toggleModal}
-                heading={modalHeaderLbl}
-                headingFontFamily="secondary"
-                fontSize="fs16"
-                horizontalBar={horizontalBar}
-              >
-                <ModalViewWrapper>
-                  {this.renderComponent({
-                    navigation,
-                    getComponentId,
-                    isUserLoggedIn,
-                  })}
-                </ModalViewWrapper>
-              </ModalNative>
-            )}
-          </React.Fragment>
-        )}
-        {/* eslint-disable-next-line complexity */}
-        {accountFooterLinks.map((link, index) => {
-          let linkMarkup = null;
-          const { leafLink } = link;
-          if (leafLink.url.includes('favorite')) {
-            linkMarkup = !isUserLoggedIn ? (
-              <FavtWrapper>
-                <BodyCopy
-                  color="gray.900"
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  textAlign="left"
-                  fontWeight="regular"
-                  text={leafLink.text}
-                  onPress={e =>
-                    this.toggleModal({
-                      e,
-                      getComponentId: { favorites: true },
-                    })
-                  }
-                />
-                <FavImageWrapper>
-                  <ImageComp source={favIcon} width={15} height={13} />
-                </FavImageWrapper>
-              </FavtWrapper>
-            ) : (
-              <TouchabelContainer onPress={() => handleComponentChange('myFavoritePageMobile')}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  fontWeight="regular"
-                  text={leafLink.text}
-                  color="gray.900"
-                  textAlign="center"
-                />
-                <CustomIcon
-                  margins="0 0 0 8px"
-                  iconFontName={ICON_FONT_CLASS.Icomoon}
-                  name={ICON_NAME.filledHeart}
-                  size="fs20"
-                  color="red.500"
-                />
-              </TouchabelContainer>
-            );
-          } else if (leafLink.url.includes('plcc')) {
-            linkMarkup = (
-              <TouchabelContainer onPress={this.toggleApplyNowModal}>
-                <FavoritesWrapper>
-                  <ImageContainer>
-                    <StyledImage source={cardIcon} width={47} height={30} />
-                  </ImageContainer>
-                  <TextWrapper>
-                    <BodyCopy
-                      fontFamily="secondary"
-                      fontSize="fs13"
-                      fontWeight="regular"
-                      text={leafLink.text}
-                      color="gray.900"
-                      textAlign="center"
-                    />
-                  </TextWrapper>
-                </FavoritesWrapper>
-                <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
-              </TouchabelContainer>
-            );
-          } else if (leafLink.url.includes('credit-account')) {
-            linkMarkup = (
-              <>
-                <Panel title={leafLink.text} isVariationTypeLink />
-              </>
-            );
-          } else if (leafLink.url.includes('gift-card')) {
-            linkMarkup = (
-              <TouchabelContainer
-                onPress={() => {
-                  navigation.navigate('GiftCardPage', {
-                    title: 'Gift Cards',
-                    pdpUrl: 'Gift Card',
-                  });
-                }}
-              >
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs13"
-                  fontWeight="regular"
-                  text={leafLink.text}
-                  color="gray.900"
-                />
-                <RightArrowImageContainer>
-                  <ImageComp source={rightIcon} width={7} height={10} />
-                </RightArrowImageContainer>
-              </TouchabelContainer>
-            );
-          } else if (leafLink.url.includes('track-order') && !isUserLoggedIn) {
-            linkMarkup = (
-              <Panel
-                title={leafLink.text}
-                isVariationTypeLink
-                handleComponentChange={this.showTrackOrderModal}
-              />
-            );
-          } else if (leafLink.url.includes('settings')) {
-            linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key />;
-          } else if (leafLink.url.includes('helpCenter')) {
-            linkMarkup = <Panel title={leafLink.text} isVariationTypeLink />;
-          } else if (leafLink.url.includes('messages')) {
-            linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key="" />;
-          } else if (leafLink.url.includes('store-locator')) {
-            linkMarkup = (
-              <Panel
-                title={leafLink.text}
-                isVariationTypeLink
-                handleComponentChange={() => {
-                  navigation.navigate('StoreLanding', {
-                    title: getLabelValue(labels, 'lbl_header_storeDefaultTitle').toUpperCase(),
-                  });
-                }}
-              />
-            );
-          }
-          return (
-            <>
-              {linkMarkup}
-              {index === 0 || index === 2 || index === 5 ? <UnderlineStyle /> : null}
-            </>
-          );
-        })}
+        {accountFooterLinks && accountFooterLinks.length > 0 ? (
+          <FooterLinks
+            isUserLoggedIn={isUserLoggedIn}
+            labels={labels}
+            navigation={navigation}
+            handleComponentChange={handleComponentChange}
+            openApplyNowModal={openApplyNowModal}
+            footerLinks={accountFooterLinks}
+            showDivider
+          />
+        ) : null}
         <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         <UnderlineStyle />
         <View style={LegalStyleLinkStyles}>
