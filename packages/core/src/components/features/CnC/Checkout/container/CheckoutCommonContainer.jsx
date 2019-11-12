@@ -82,6 +82,8 @@ const {
   getCheckoutPageEmptyBagLabels,
 } = selectors;
 export class CheckoutContainer extends React.PureComponent<Props> {
+  initialLoad = false;
+
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent, router, initCheckout } = this.props;
     const {
@@ -113,12 +115,15 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     const { isRegisteredUserCallDone, router, initCheckout, navigation } = this.props;
     /* istanbul ignore else */
     if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      this.initialLoad = false;
       initCheckout(router, getPayPalFlag(navigation));
     }
   }
 
   shippingDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this.props, { initialLoad: true });
+    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this.props, {
+      initialLoad: this.initialLoad,
+    });
   };
 
   billingDidMount = () => {
