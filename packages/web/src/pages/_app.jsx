@@ -28,6 +28,7 @@ import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModa
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { HotfixBrowserContext } from '@tcp/core/src/components/common/context/HotfixContext';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
@@ -244,7 +245,7 @@ class TCPWebApp extends App {
     // Just a sample - any store specific data should be set in this
     if (pageId) {
       const seoConfig = deriveSEOTags(pageId, store, router);
-      return <SEOTags seoConfig={seoConfig} />;
+      return seoConfig ? <SEOTags seoConfig={seoConfig} /> : null;
     }
     return null;
   };
@@ -296,12 +297,15 @@ class TCPWebApp extends App {
               <Header />
               <CheckoutHeader />
               <Loader />
-              <div className="content-wrapper">
-                <div id="overlayWrapper">
-                  <div id="overlayComponent" />
-                  <Component {...pageProps} pageName={componentPageName} />
+              {/* Provider for global hotfixes object */}
+              <HotfixBrowserContext.Provider value={global.TCP_HOTFIX_BROWSER || {}}>
+                <div className="content-wrapper">
+                  <div id="overlayWrapper">
+                    <div id="overlayComponent" />
+                    <Component {...pageProps} pageName={componentPageName} />
+                  </div>
                 </div>
-              </div>
+              </HotfixBrowserContext.Provider>
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />

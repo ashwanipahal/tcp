@@ -68,6 +68,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
     const {
       isQualifedOrder,
       containerId,
+      height,
       navigation,
       getPayPalSettings,
       payPalWebViewHandle,
@@ -77,10 +78,12 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       isBillingPage,
       closeModal,
       top,
+      fullWidth,
     } = this.props;
     return (
       <PayPalButton
         isQualifedOrder={isQualifedOrder}
+        height={height}
         initalizePayPalButton={this.initalizePayPalButton}
         containerId={containerId}
         navigation={navigation}
@@ -94,6 +97,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
         closeModal={closeModal}
         top={top}
         isBillingPage={isBillingPage}
+        fullWidth={fullWidth}
       />
     );
   }
