@@ -5,7 +5,6 @@ import ProductList from '../molecules/ProductList/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import { styles, PageContainer, ListHeaderContainer } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
 
@@ -34,7 +33,7 @@ const onRenderHeader = data => {
   } = data;
   return (
     <ListHeaderContainer>
-      {totalProductsCount && totalProductsCount > 1 && (
+      {totalProductsCount > 1 && (
         <FilterModal
           filters={filters}
           labelsFilter={labelsFilter}
@@ -120,7 +119,6 @@ const ProductListView = ({
       />
       {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </PageContainer>
   );
