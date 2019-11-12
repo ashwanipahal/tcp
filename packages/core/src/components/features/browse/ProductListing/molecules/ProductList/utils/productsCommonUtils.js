@@ -158,7 +158,7 @@ export function getDefaultSizeForProduct(colorFitsSizesMap) {
 }
 
 const getIsColorOnModelLegible = curentColorEntry =>
-  curentColorEntry && curentColorEntry.miscInfo.hasOnModelAltImages;
+  curentColorEntry && curentColorEntry.miscInfo && curentColorEntry.miscInfo.hasOnModelAltImages;
 
 /**
  * @summary This function will return an array of image paths to display

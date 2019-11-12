@@ -1,10 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; // eslint-disable-line
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
+import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
-import ProductListing from '../views';
-import OutfitListingContainer from '../../OutfitListing/container';
+import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
@@ -40,19 +39,63 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
+import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
+
+const defaultResolver = mod => mod.default;
+
+const CategoryListing = dynamic(() =>
+  import('@tcp/core/src/components/features/browse/CategoryListing').then(defaultResolver)
+);
+
+const ProductListing = dynamic(() => import('../views').then(defaultResolver));
+
+const OutfitListingContainer = dynamic(() =>
+  import('../../OutfitListing/container').then(defaultResolver)
+);
 
 class ProductListingContainer extends React.PureComponent {
+  static getInitialProps = async ({ isServer, props, req }) => {
+    const {
+      getProducts,
+      navigation,
+      routerParam,
+      router = {},
+      getStyliticsProductTabListData,
+    } = props;
+    let { asPath = '' } = routerParam || router;
+    asPath = asPath || req.originalUrl;
+    const path = asPath.substring(asPath.lastIndexOf('/') + 1);
+    if (!isServer) {
+      const url = (navigation && navigation.getParam('url')) || asPath;
+      await getProducts({ URI: 'category', url, ignoreCache: true });
+    } else if (path.indexOf('-outfits') > -1) {
+      // OutfitListingContainer.getInitialProps({ isServer, props });
+      const categoryId = (navigation && navigation.getParam('outfitPath')) || path;
+      await getStyliticsProductTabListData({ categoryId, count: 20 });
+    }
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      router: { asPath },
+      navigationData,
+    } = nextProps;
+    const { siteId } = getAPIConfig();
+    const isCLP =
+      navigationData &&
+      navigationData.find(item => {
+        return item.categoryContent && `/${siteId}${item.categoryContent.asPath}` === asPath;
+      });
+    const path = asPath.substring(asPath.lastIndexOf('/') + 1);
+    return { ...prevState, isOutfit: path.indexOf('-outfits') > -1, asPath: path, isCLP };
+  }
+
   constructor(props) {
     super(props);
-
     this.state = {
       isOutfit: false,
       asPath: '',
     };
-  }
-
-  componentDidMount() {
-    this.makeApiCall();
   }
 
   componentDidUpdate(prevProps) {
@@ -71,6 +114,7 @@ class ProductListingContainer extends React.PureComponent {
     const {
       getProducts,
       navigation,
+      navigationData,
       router: { asPath },
     } = this.props;
     const path = asPath.substring(asPath.lastIndexOf('/') + 1);
@@ -85,7 +129,12 @@ class ProductListingContainer extends React.PureComponent {
       });
     }
     const url = navigation && navigation.getParam('url');
-    getProducts({ URI: 'category', url, ignoreCache: true });
+    const isCLP = navigationData.find(
+      item => item.categoryContent && item.categoryContent.asPath === asPath
+    );
+    if (!isCLP) {
+      getProducts({ URI: 'category', url, ignoreCache: true });
+    }
   };
 
   render() {
@@ -118,7 +167,10 @@ class ProductListingContainer extends React.PureComponent {
       router: { asPath: asPathVal },
       ...otherProps
     } = this.props;
-    const { isOutfit, asPath } = this.state;
+    const { isOutfit, asPath, isCLP } = this.state;
+    if (isCLP) {
+      return <CategoryListing />;
+    }
     return !isOutfit ? (
       <ProductListing
         productsBlock={productsBlock}
@@ -186,12 +238,10 @@ function mapStateToProps(state) {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getProductsSelect(state),
     filters: getProductsFilters(state),
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(
-      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
-    ),
+    breadCrumbs: processBreadCrumbs(state.ProductListing && state.ProductListing.breadCrumbTrail),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     totalProductsCount: getTotalProductsCount(state),
@@ -217,7 +267,9 @@ function mapStateToProps(state) {
     isFilterBy: getIsFilterBy(state),
     currencyAttributes: getCurrencyAttributes(state),
     currency: getCurrentCurrency(state),
+    routerParam: state.routerParam,
     plpTopPromos: getPLPTopPromos(state),
+    navigationData: state.Navigation && state.Navigation.navigationData,
   };
 }
 
@@ -234,6 +286,9 @@ function mapDispatchToProps(dispatch) {
     },
     onAddItemToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
+    },
+    getStyliticsProductTabListData: payload => {
+      dispatch(styliticsProductTabListDataReqforOutfit(payload));
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
@@ -271,6 +326,7 @@ ProductListingContainer.propTypes = {
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
   plpTopPromos: PropTypes.shape({}),
+  navigationData: PropTypes.shape({}),
 };
 
 ProductListingContainer.defaultProps = {
@@ -296,11 +352,11 @@ ProductListingContainer.defaultProps = {
   },
   currency: 'USD',
   plpTopPromos: [],
+  navigationData: null,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProductListingContainer)
-);
+export default withIsomorphicRenderer({
+  WrappedComponent: ProductListingContainer,
+  mapStateToProps,
+  mapDispatchToProps,
+});

@@ -152,12 +152,10 @@ function mapStateToProps(state) {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getAllProductsSelect(state),
     filters,
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(
-      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
-    ),
+    breadCrumbs: processBreadCrumbs(state.ProductListing && state.ProductListing.breadCrumbTrail),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     filtersLength,

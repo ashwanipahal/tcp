@@ -11,27 +11,27 @@ export const prodDetails = state => {
 };
 
 export const getBreadCrumbs = state => {
-  return processBreadCrumbs(state.ProductDetail && state.ProductDetail.get('breadCrumbs'));
+  return processBreadCrumbs(state.ProductDetail && state.ProductDetail.breadCrumbs);
 };
 
 export const getAlternateSizes = state => {
-  return state.ProductDetail.getIn(['currentProduct', 'alternateSizes']);
+  return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.alternateSizes;
 };
 
 export const getDescription = state => {
-  return state.ProductDetail.getIn(['currentProduct', 'longDescription']);
+  return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.longDescription;
 };
 
 export const getRatingsProductId = state => {
-  return state.ProductDetail.getIn(['currentProduct', 'ratingsProductId']);
+  return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.ratingsProductId;
 };
 
 export const getGeneralProductId = state => {
-  return state.ProductDetail.getIn(['currentProduct', 'generalProductId']);
+  return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.generalProductId;
 };
 
 export const getShortDescription = state => {
-  return state.ProductDetail.getIn(['currentProduct', 'shortDescription']);
+  return state.ProductDetail.currentProduct && state.ProductDetail.currentProduct.shortDescription;
 };
 
 export const getProductDetailFormValues = state => {
@@ -84,16 +84,14 @@ export const getPlpLabels = state => {
 
 // TODO - This is temporary - fix it by introducing the image carousel and zoom
 export const getDefaultImage = state => {
-  const firstColor = state.ProductDetail.getIn([
-    'currentProduct',
-    'colorFitsSizesMap',
-    0,
-    'color',
-    'name',
-  ]);
+  const firstColor =
+    state.ProductDetail.currentProduct &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap &&
+    state.ProductDetail.currentProduct.colorFitsSizesMap[0].color.name;
   return (
     firstColor &&
-    state.ProductDetail.getIn(['currentProduct', 'imagesByColor', firstColor, 'basicImageUrl'])
+    state.ProductDetail.currentProduct &&
+    state.ProductDetail.currentProduct.imagesByColor[firstColor].basicImageUrl
   );
 };
 
@@ -110,7 +108,7 @@ export const getCurrencyAttributes = state => {
 };
 
 export const getCurrentProduct = state => {
-  return state.ProductDetail.get('currentProduct');
+  return state.ProductDetail.currentProduct;
 };
 
 export const getPDPLabels = state => {
