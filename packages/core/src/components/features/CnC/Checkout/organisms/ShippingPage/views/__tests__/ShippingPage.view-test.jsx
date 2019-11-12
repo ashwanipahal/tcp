@@ -18,6 +18,7 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
       shipmentMethods: [{}],
       loadShipmentMethods: () => {},
       handleSubmit: () => {},
@@ -26,6 +27,9 @@ describe('Shipping Page', () => {
       verifyAddressAction: () => {},
       formatPayload: () => {},
       shippingDidMount: () => {},
+      shippingAddress: {
+        addressLine1: '',
+      },
     };
     const tree = shallow(<ShippingPage {...props} />);
     tree.instance().submitShippingData({ address, shipmentMethods: {}, smsSignUp: {} });
@@ -48,6 +52,9 @@ describe('Shipping Page', () => {
       handleSubmit: () => {},
       selectedShipmentId: '334',
       shippingAddressId: '123',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',
@@ -89,11 +96,16 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
+
       shipmentMethods: [{}],
       addressLabels: {},
       loadShipmentMethods: mockedloadShipmentMethods,
       handleSubmit: () => {},
       selectedShipmentId: '334',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',
@@ -139,6 +151,9 @@ describe('Shipping Page', () => {
       shipmentMethods: [{}],
       handleSubmit: () => {},
       selectedShipmentId: '334',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',
@@ -171,11 +186,15 @@ describe('Shipping Page', () => {
     };
     const props = {
       address,
+      checkoutRoutingDone: false,
       addressLabels: {},
       shipmentMethods: [{}],
       handleSubmit: () => {},
       formatPayload: () => {},
       selectedShipmentId: '334',
+      shippingAddress: {
+        addressLine1: '',
+      },
       userAddresses: new List([
         {
           addressId: '123',

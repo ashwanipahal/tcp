@@ -288,6 +288,10 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   height: 70px;
 
   .select__input {
+    position: absolute;
+    top: ",
+                      "26px",
+                      ";
     appearance: none;
     background: url(",
                       "/static/images/carrot-small-down.png",
@@ -314,9 +318,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                       [Function],
                       ";
     outline: 0;
-    padding: ",
-                      "26px",
-                      " 0 ",
+    padding: 0px 0 ",
                       [Function],
                       ";
     width: 100%;
@@ -344,6 +346,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
     padding-bottom: ",
                       [Function],
                       ";
+    position: absolute;
+    top: 58px;
   }
 
   .warning-icon {
@@ -374,8 +378,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 }
               }
               dataLocator="childBirthdayMonthDD"
-              id="userBirthMonth"
-              name="userBirthMonth"
+              id="childBirthMonth"
+              name="childBirthMonth"
               options={
                 Array [
                   Object {
@@ -457,6 +461,10 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   height: 70px;
 
   .select__input {
+    position: absolute;
+    top: ",
+                      "26px",
+                      ";
     appearance: none;
     background: url(",
                       "/static/images/carrot-small-down.png",
@@ -483,9 +491,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                       [Function],
                       ";
     outline: 0;
-    padding: ",
-                      "26px",
-                      " 0 ",
+    padding: 0px 0 ",
                       [Function],
                       ";
     width: 100%;
@@ -513,6 +519,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
     padding-bottom: ",
                       [Function],
                       ";
+    position: absolute;
+    top: 58px;
   }
 
   .warning-icon {
@@ -543,8 +551,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                 }
               }
               dataLocator="childBirthdayYearDD"
-              id="userBirthYear"
-              name="userBirthYear"
+              id="childBirthYear"
+              name="childBirthYear"
               options={
                 Array [
                   Object {
@@ -673,6 +681,10 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
   height: 70px;
 
   .select__input {
+    position: absolute;
+    top: ",
+                    "26px",
+                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -699,9 +711,7 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
                     [Function],
                     ";
     outline: 0;
-    padding: ",
-                    "26px",
-                    " 0 ",
+    padding: 0px 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -729,6 +739,8 @@ exports[`AddChildBirthday component should renders correctly 1`] = `
     padding-bottom: ",
                     [Function],
                     ";
+    position: absolute;
+    top: 58px;
   }
 
   .warning-icon {

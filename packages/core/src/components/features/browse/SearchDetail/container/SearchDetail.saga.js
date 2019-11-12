@@ -67,9 +67,8 @@ export function* fetchMoreProducts({ payload = {} }) {
     yield put(setSlpLoadingState({ isLoadingMore: true }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
-    const appliedFiltersIds = state[SLP_PAGE_REDUCER_KEY].get('appliedFiltersIds');
-    const sort =
-      (state[SLP_PAGE_REDUCER_KEY] && state[SLP_PAGE_REDUCER_KEY].get('appliedSortId')) || '';
+    const { appliedFiltersIds } = state[SLP_PAGE_REDUCER_KEY];
+    const sort = (state[SLP_PAGE_REDUCER_KEY] && state[SLP_PAGE_REDUCER_KEY].appliedSortId) || '';
 
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
 
@@ -79,6 +78,7 @@ export function* fetchMoreProducts({ payload = {} }) {
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
       location,
+      isLazyLoading: true,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
     if (res) {

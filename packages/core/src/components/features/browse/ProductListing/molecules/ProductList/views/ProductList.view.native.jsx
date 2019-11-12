@@ -1,16 +1,30 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, SafeAreaView, View } from 'react-native';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import ListItem from '../../ProductListItem';
 import { getMapSliceForColorProductId } from '../utils/productsCommonUtils';
 import { getPromotionalMessage } from '../utils/utility';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { styles, PageContainer } from '../styles/ProductList.style.native';
+import { styles, PageContainer, ItemCountContainer } from '../styles/ProductList.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
+import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
+import ModalNative from '../../../../../../common/molecules/Modal/index';
+import LoginPageContainer from '../../../../../account/LoginPage/index';
 
 class ProductList extends React.PureComponent {
   flatListRef = null;
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: false,
+      favorites: true,
+    };
+  }
 
   componentDidUpdate(prevProps) {
     const isScrollToTopValue = get(this.props, 'scrollToTop');
@@ -20,17 +34,45 @@ class ProductList extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    const { removeAddToFavoritesErrorMsg } = this.props;
+    removeAddToFavoritesErrorMsg('');
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.isLoggedIn && state.showModal) {
+      return { showModal: false };
+    }
+    return null;
+  }
+
   // eslint-disable-next-line
   onAddToBag = data => {};
 
   // eslint-disable-next-line
-  onFavorite = item => {};
+  onFavorite = generalProductId => {
+    const { isLoggedIn, onAddItemToFavorites } = this.props;
 
-  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, name) => {
+    onAddItemToFavorites({ colorProductId: generalProductId, page: 'PLP' });
+
+    if (!isLoggedIn) {
+      this.setState({ showModal: true });
+    }
+  };
+
+  toggleModal = () => {
+    this.setState(state => ({
+      showModal: !state.showModal,
+      favorites: false,
+    }));
+  };
+
+  onOpenPDPPageHandler = (pdpUrl, selectedColorIndex, productInfo) => {
     const { title, onGoToPDPPage, isFavorite } = this.props;
+    const { name } = productInfo;
     const productTitle = isFavorite ? name : title;
     if (onGoToPDPPage) {
-      onGoToPDPPage(productTitle, pdpUrl, selectedColorIndex);
+      onGoToPDPPage(productTitle, pdpUrl, selectedColorIndex, productInfo);
     }
   };
 
@@ -46,6 +88,21 @@ class ProductList extends React.PureComponent {
     );
   };
 
+  renderComponent = ({ isUserLoggedIn, favorites }) => {
+    let componentContainer = null;
+    if (!isUserLoggedIn) {
+      componentContainer = (
+        <LoginPageContainer
+          onRequestClose={this.toggleModal}
+          isUserLoggedIn={isUserLoggedIn}
+          showLogin={this.showloginModal}
+          variation={favorites && 'favorites'}
+        />
+      );
+    }
+    return <React.Fragment>{componentContainer}</React.Fragment>;
+  };
+
   /**
    * @param {Object} itemData : product list item
    * @desc This is renderer method of the product tile list
@@ -59,10 +116,11 @@ class ProductList extends React.PureComponent {
       onQuickViewOpenClick,
       isFavorite,
       setLastDeletedItemId,
+      isLoggedIn,
       labelsPlpTiles,
+      onrenderItemCountView,
     } = this.props;
-    const { item } = itemData;
-
+    const { item, index } = itemData;
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -71,6 +129,7 @@ class ProductList extends React.PureComponent {
     // get product color and price info of default zero index item
     const currentColorMiscInfo = (colorsMap && curentColorEntry.miscInfo) || {};
     const { badge1, badge2 } = currentColorMiscInfo;
+
     // get default top badge data
     let topBadge;
     if (colorsMap) {
@@ -79,6 +138,32 @@ class ProductList extends React.PureComponent {
 
     // get default Loyalty message
     const loyaltyPromotionMessage = this.getLoyaltyPromotionMessage(productInfo, colorsMap);
+
+    if (index === 0) {
+      return (
+        <ItemCountContainer>
+          <BodyCopy
+            dataLocator="pdp_product_badges"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            color="gray.900"
+            text={`${onrenderItemCountView()} `}
+          />
+          <BodyCopy
+            dataLocator="pdp_product_badges"
+            mobileFontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            color="gray.900"
+            text="Items"
+          />
+        </ItemCountContainer>
+      );
+    }
+    if (index === 1) {
+      return <View />;
+    }
     return (
       <ListItem
         item={item}
@@ -95,6 +180,7 @@ class ProductList extends React.PureComponent {
         onQuickViewOpenClick={onQuickViewOpenClick}
         isFavorite={isFavorite}
         setLastDeletedItemId={setLastDeletedItemId}
+        isLoggedIn={isLoggedIn}
         labelsPlpTiles={labelsPlpTiles}
       />
     );
@@ -161,22 +247,50 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { products } = this.props;
+    const { isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
+    let { products } = this.props;
+    products = products.length > 0 && [products[0], products[1], ...products];
+    const { logIn } = labelsLogin;
+    const { showModal, favorites } = this.state;
     return (
-      <FlatList
-        ref={ref => this.setListRef(ref)}
-        data={products}
-        renderItem={this.renderItemList}
-        keyExtractor={item => item.productInfo.generalProductId}
-        initialNumToRender={4}
-        maxToRenderPerBatch={2}
-        numColumns={2}
-        extraData={this.props}
-        ListFooterComponent={this.renderFooter}
-        ListHeaderComponent={this.renderHeader}
-        stickyHeaderIndices={[0]}
-        columnWrapperStyle={this.getColumnWrapperStyle()}
-      />
+      <>
+        {AddToFavoriteErrorMsg !== '' && (
+          <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+        )}
+        <FlatList
+          ref={ref => this.setListRef(ref)}
+          data={products}
+          renderItem={this.renderItemList}
+          keyExtractor={item => item.productInfo.generalProductId}
+          initialNumToRender={4}
+          maxToRenderPerBatch={2}
+          numColumns={2}
+          extraData={this.props}
+          ListFooterComponent={this.renderFooter}
+          ListHeaderComponent={this.renderHeader}
+          stickyHeaderIndices={[0]}
+          columnWrapperStyle={this.getColumnWrapperStyle()}
+        />
+
+        {showModal && (
+          <ModalNative
+            isOpen={showModal}
+            onRequestClose={this.toggleModal}
+            heading={logIn}
+            headingFontFamily="secondary"
+            fontSize="fs16"
+          >
+            <SafeAreaView>
+              <ModalViewWrapper>
+                {this.renderComponent({
+                  isLoggedIn,
+                  favorites,
+                })}
+              </ModalViewWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        )}
+      </>
     );
   };
 
@@ -211,6 +325,7 @@ ProductList.propTypes = {
   unbxdId: PropTypes.string,
   onProductCardHover: PropTypes.func,
   isBopisEnabledForClearance: PropTypes.bool,
+  onrenderItemCountView: PropTypes.number.isRequired,
   onQuickBopisOpenClick: PropTypes.func,
   siblingProperties: PropTypes.shape({
     colorMap: PropTypes.arrayOf(PropTypes.shape({})),
@@ -228,7 +343,11 @@ ProductList.propTypes = {
   setListRef: PropTypes.func,
   isFavorite: PropTypes.bool,
   setLastDeletedItemId: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   labelsPlpTiles: PropTypes.shape({}),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -254,7 +373,13 @@ ProductList.defaultProps = {
   isPlcc: false,
   currencySymbol: '$',
   isFavorite: false,
+  isLoggedIn: false,
+  labelsLogin: {
+    logIn: '',
+  },
   labelsPlpTiles: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductList, styles);

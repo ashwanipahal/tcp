@@ -87,17 +87,14 @@ const RenderImage = forwardRef((imgProps, ref) => {
         data-srcset={getBreakpointImgUrl('sm', imgProps)}
       />
 
-      {lazyLoad ? (
-        <LazyLoadImage
-          forwardedRef={ref}
-          src={getBreakpointImgUrl('xs', imgProps)}
-          alt={alt}
-          {...other}
-          showPlaceHolder={showPlaceHolder}
-        />
-      ) : (
-        <img ref={ref} src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
-      )}
+      <LazyLoadImage
+        className="lazyLoadImage"
+        forwardedRef={ref}
+        src={getBreakpointImgUrl('xs', imgProps)}
+        alt={alt}
+        {...other}
+        showPlaceHolder={showPlaceHolder}
+      />
     </picture>
   );
 });

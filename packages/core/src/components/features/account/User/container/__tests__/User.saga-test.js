@@ -2,6 +2,7 @@ import { all, put } from 'redux-saga/effects';
 import { getUserInfoSaga } from '../User.saga';
 import { setUserInfo, setIsRegisteredUserCallDone } from '../User.actions';
 import { setAddressList } from '../../../AddressBook/container/AddressBook.actions';
+import { setBossBopisFlags } from '../../../../../../reduxStore/actions';
 
 describe('User saga', () => {
   describe('getUserInfoSaga', () => {
@@ -20,7 +21,8 @@ describe('User saga', () => {
       expect(putDescriptor).toEqual(
         all([
           put(setUserInfo(response)),
-          put(setAddressList(response.contactList)),
+          put(setAddressList(response.contactList, true)),
+          put(setBossBopisFlags()),
           put(setIsRegisteredUserCallDone()),
         ])
       );

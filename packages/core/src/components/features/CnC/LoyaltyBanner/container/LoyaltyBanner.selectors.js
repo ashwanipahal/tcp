@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 import ConfirmationSelectors from '../../Confirmation/container/Confirmation.selectors';
 
@@ -46,6 +47,47 @@ const confirmationDetails = createSelector(
     };
   }
 );
+
+const getFooterLabels = (state, pageCategory, isGuest, isPlcc) => {
+  let userType = '';
+  if (isGuest) {
+    userType = 'guest';
+  } else if (!isPlcc) {
+    userType = 'mpr';
+  } else {
+    userType = 'plcc';
+  }
+  const MAPPINGPAGETYPE = {
+    isAddedToBagPage: 'added2bag',
+    bagPage: 'bag',
+    review: 'review',
+    confirmation: 'confirmation',
+    isProductDetailView: 'pdp',
+  };
+  const currentPage = MAPPINGPAGETYPE[pageCategory] || 'bag';
+  const labelKeys = [
+    `lbl_banner_${currentPage}_${userType}_link1_text`,
+    `lbl_banner_${currentPage}_${userType}_link1_action`,
+    `lbl_banner_${currentPage}_${userType}_link1_prefix`,
+    `lbl_banner_${currentPage}_${userType}_link2_text`,
+    `lbl_banner_${currentPage}_${userType}_link2_action`,
+    `lbl_banner_${currentPage}_${userType}_link2_prefix`,
+  ];
+  const labels = [
+    'link1Text',
+    'link1Action',
+    'link1Prefix',
+    'link2Text',
+    'link2Action',
+    'link2Prefix',
+  ];
+  const finalValue = {};
+  labelKeys.forEach((key, index) => {
+    const revievedKey = getLabelValue(state.Labels, key, 'loyalityBanner', 'global');
+    finalValue[labels[index]] = revievedKey === key ? '' : revievedKey;
+  });
+  return finalValue;
+};
 
 export const getLoyaltyBannerLabels = state => {
   const {
@@ -116,12 +158,12 @@ export const getLoyaltyBannerLabels = state => {
         lbl_banner_confirmation_plcc_points_label2: confirmationPlccPointsRemaining,
         lbl_banner_confirmation_plcc_rewards_label1: confirmationPlccRewardsHeading,
 
-        lbl_loyaltyBanner_getRewardedShopping: productDescriptionGetRewardedShoppingHeading,
-        lbl_loyaltyBanner_loyaltyPayPoints: productDescriptionLoyaltyPayPointsSubHeading,
-        lbl_loyaltyBanner_earnDoublePointsPDP: productDescriptionEarnDoublePointsHeading,
-        lbl_loyaltyBanner_myPlaceCreditCard: productDescriptionMyPlaceCreditCardDescription,
-        lbl_loyaltyBanner_getDoublePointsPLCCPDP: productDescriptionGetDoublePointsPLCCHeading,
-        lbl_loyaltyBanner_checkoutMyPlaceCreditCard: productDescriptionCheckoutMyPlaceCreditCardDescription,
+        lbl_banner_pdp_guest_rewards_label1: pdpGuestRewardsHeading,
+        lbl_banner_pdp_guest_rewards_label2: pdpGuestRewardsSubHeading,
+        lbl_banner_pdp_mpr_rewards_label1: pdpMprRewardsHeading,
+        lbl_banner_pdp_mpr_rewards_label3: pdpMprRewardsDescription,
+        lbl_banner_pdp_plcc_rewards_label1: pdpPlccRewardsHeading,
+        lbl_banner_pdp_plcc_rewards_label2: pdpPlccRewardsDescription,
       } = {},
     } = {},
   } = state.Labels;
@@ -192,13 +234,13 @@ export const getLoyaltyBannerLabels = state => {
     confirmationPlccPointsRemaining,
     confirmationPlccRewardsHeading,
 
-    productDescriptionGetRewardedShoppingHeading,
-    productDescriptionLoyaltyPayPointsSubHeading,
-    productDescriptionEarnDoublePointsHeading,
-    productDescriptionMyPlaceCreditCardDescription,
-    productDescriptionGetDoublePointsPLCCHeading,
-    productDescriptionCheckoutMyPlaceCreditCardDescription,
+    pdpGuestRewardsHeading,
+    pdpGuestRewardsSubHeading,
+    pdpMprRewardsHeading,
+    pdpMprRewardsDescription,
+    pdpPlccRewardsHeading,
+    pdpPlccRewardsDescription,
   };
 };
 
-export { getThresholdValue, cartOrderDetails, confirmationDetails };
+export { getThresholdValue, cartOrderDetails, confirmationDetails, getFooterLabels };

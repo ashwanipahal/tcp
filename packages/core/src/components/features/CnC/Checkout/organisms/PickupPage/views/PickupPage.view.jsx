@@ -16,12 +16,15 @@ import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
+import { scrollToFirstError } from '../../../util/utility';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
     super(props);
+    this.editErrorRef = React.createRef();
     this.state = {
       isEditing: false,
+      editPickupError: '',
       dataUpdated: false,
       pickUpContact: {
         firstName: '',
@@ -37,6 +40,14 @@ class PickUpFormPart extends React.Component {
     pickupDidMount();
   }
 
+  componentDidUpdate(prevProps) {
+    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const { pickupDidMount, isRegisteredUserCallDone } = this.props;
+    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+      pickupDidMount();
+    }
+  }
+
   handleEditModeChange = (isEditing, pickUpContact) => {
     if (pickUpContact) {
       this.setState({
@@ -50,8 +61,13 @@ class PickUpFormPart extends React.Component {
         },
       });
     } else {
+      let { editPickupError } = this.state;
+      if (isEditing) {
+        editPickupError = '';
+      }
       this.setState({
         isEditing,
+        editPickupError,
       });
     }
   };
@@ -72,26 +88,30 @@ class PickUpFormPart extends React.Component {
 
   SaveAndCancelButton = () => {
     const { pickUpLabels, handleSubmit } = this.props;
+    const { editPickupError } = this.state;
     return (
-      <div className="buttonContainer">
-        <Button
-          onClick={this.handleExitEditModeClick}
-          buttonVariation="variable-width"
-          type="button"
-          data-locator="pickup-cancelbtn"
-        >
-          {pickUpLabels.btnCancel}
-        </Button>
-        <Button
-          onClick={handleSubmit(this.pickupEditSubmit)}
-          className="updateButton"
-          fill="BLUE"
-          type="button"
-          buttonVariation="variable-width"
-          data-locator="pickup-addcardbtn"
-        >
-          {pickUpLabels.btnUpdate}
-        </Button>
+      <div className="editFormActionsContainer" ref={this.editErrorRef}>
+        {editPickupError && <ErrorMessage error={editPickupError} className="edit-pickup-error" />}
+        <div className="buttonContainer">
+          <Button
+            onClick={this.handleExitEditModeClick}
+            buttonVariation="variable-width"
+            type="button"
+            data-locator="pickup-cancelbtn"
+          >
+            {pickUpLabels.btnCancel}
+          </Button>
+          <Button
+            onClick={handleSubmit(this.pickupEditSubmit)}
+            className="updateButton"
+            fill="BLUE"
+            type="button"
+            buttonVariation="variable-width"
+            data-locator="pickup-addcardbtn"
+          >
+            {pickUpLabels.btnUpdate}
+          </Button>
+        </div>
       </div>
     );
   };
@@ -105,27 +125,32 @@ class PickUpFormPart extends React.Component {
   };
 
   pickupSubmit = data => {
-    const { onPickupSubmit } = this.props;
+    const { onPickupSubmit, pickUpLabels } = this.props;
+    const { isEditing } = this.state;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
-    const params = {
-      pickUpContact: {
-        firstName,
-        lastName,
-        phoneNumber,
-        emailAddress,
-        smsInfo: {
-          wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+    if (!isEditing) {
+      const params = {
+        pickUpContact: {
+          firstName,
+          lastName,
+          phoneNumber,
+          emailAddress,
+          smsInfo: {
+            wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
+          },
         },
-      },
-      hasAlternatePickup,
-      pickUpAlternate: {
-        firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
-        lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
-        emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
-      },
-    };
-    onPickupSubmit(params);
+        hasAlternatePickup,
+        pickUpAlternate: {
+          firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
+          lastName: hasAlternatePickup ? data.pickUpAlternate.lastName : '',
+          emailAddress: hasAlternatePickup ? data.pickUpAlternate.emailAddress : '',
+        },
+      };
+      return onPickupSubmit(params);
+    }
+    this.setState({ editPickupError: pickUpLabels.editFormSubmitError });
+    return this.editErrorRef.current && this.editErrorRef.current.scrollIntoView(false);
   };
 
   /**
@@ -188,8 +213,12 @@ class PickUpFormPart extends React.Component {
       ServerErrors,
       pageCategory,
       isBagLoaded,
+      checkoutRoutingDone,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
+    if (!checkoutRoutingDone) {
+      return <div>Loading....</div>;
+    }
     return (
       <>
         {isBagLoaded && (
@@ -317,7 +346,6 @@ class PickUpFormPart extends React.Component {
                 hideBackLink={false}
                 backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
                 nextButtonText={this.getNextCTAText()}
-                disableNext={isEditing}
               />
             </form>
           </div>
@@ -352,9 +380,11 @@ PickUpFormPart.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   pickupDidMount: PropTypes.func.isRequired,
+  checkoutRoutingDone: PropTypes.bool.isRequired,
   isVenmoPaymentInProgress: PropTypes.bool,
   showAccordian: PropTypes.bool,
   isBagLoaded: PropTypes.bool.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
   pageCategory: PropTypes.string,
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,
@@ -386,5 +416,6 @@ export default reduxForm({
   form: 'checkoutPickup', // a unique identifier for this form
   ...validateMethod,
   destroyOnUnmount: false,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(PickUpFormPart, styles));
 export { PickUpFormPart as PickUpFormPartVanilla };

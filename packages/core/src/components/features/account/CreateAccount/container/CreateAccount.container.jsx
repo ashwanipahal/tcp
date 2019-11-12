@@ -55,6 +55,7 @@ export class CreateAccountContainer extends React.Component {
     toastMessage: PropTypes.func,
     passwordLabels: PropTypes.shape({}).isRequired,
     isLoading: PropTypes.bool.isRequired,
+    updateHeader: PropTypes.func,
   };
 
   static defaultProps = {
@@ -72,6 +73,7 @@ export class CreateAccountContainer extends React.Component {
     isUserLoggedIn: false,
     navigation: {},
     toastMessage: () => {},
+    updateHeader: () => {},
   };
 
   constructor(props) {
@@ -145,6 +147,7 @@ export class CreateAccountContainer extends React.Component {
       toastMessage,
       passwordLabels,
       isLoading,
+      updateHeader,
     } = this.props;
     return (
       <CreateAccountView
@@ -166,6 +169,7 @@ export class CreateAccountContainer extends React.Component {
         toastMessage={toastMessage}
         passwordLabels={passwordLabels}
         isLoading={isLoading}
+        updateHeader={updateHeader}
       />
     );
   }

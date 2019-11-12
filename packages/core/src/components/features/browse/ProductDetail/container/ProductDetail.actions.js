@@ -13,3 +13,10 @@ export const getProductDetails = payload => {
     payload,
   };
 };
+
+export const setAddToFavoritePDP = payload => {
+  return {
+    type: PRODUCTDETAIL_CONSTANTS.SET_ADD_TO_FAVORITE,
+    payload,
+  };
+};

@@ -12,7 +12,9 @@ export default css`
 
     .searchWrapper {
       top: 0;
-      height: 50px;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .searchbar {
@@ -112,7 +114,6 @@ export default css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: #575757;
       border-color: unset;
-      margin-right: 10px;
     }
 
     .searchBar-input-wrapper{
@@ -132,6 +133,7 @@ export default css`
     .searchBar-input{
 
       width: 172px;
+      padding: 0;
       height: 30px;
       background-color: transparent;
       border: none;
@@ -152,6 +154,9 @@ export default css`
       position: absolute;
       top: 0;
       left:0;
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
       ${props =>
         props.fromCondensedHeader
           ? `
@@ -271,9 +276,10 @@ export default css`
       position: absolute;
       right: 10px;
       top:0;
-
+      overflow: unset;
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
+        z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
       }
 
       @media ${props => props.theme.mediaQuery.smallOnly} {
@@ -284,8 +290,8 @@ export default css`
         props.fromCondensedHeader
           ? `
           width: 437px;
-          right: 130px;
-          top: ${props.theme.spacing.ELEM_SPACING.XS};
+          right: 120px;
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
         `
           : ``};
     }

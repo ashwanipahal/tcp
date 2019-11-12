@@ -3,6 +3,7 @@ import { COUNTRY_SELECTOR_ACTION_PATTERN } from '../../../../constants/reducer.c
 const CONSTANTS = {
   INIT_CHECKOUT: 'INIT_CHECKOUT',
   INIT_CHECKOUT_SECTION_PAGE: 'INIT_CHECKOUT_SECTION_PAGE',
+  CHECKOUT_ROUTING_DONE: 'CHECKOUT_ROUTING_DONE',
   ROUTING_CONST: {
     siteIds: {
       // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)
@@ -11,6 +12,7 @@ const CONSTANTS = {
     },
   },
   EMAIL_REGISTRATION_TYPE_CONSTANT: '10',
+  REVIEW_FORM_NAME: 'expressReviewPage',
   CHECKOUT: 'checkout',
   PAYPAL_REDIRECT_PARAM: 'isPaypalPostBack',
   PAYMENT_METHOD_VENMO: 'venmo',
@@ -141,6 +143,10 @@ const CONSTANTS = {
   SET_SERVER_ERROR_CHECKOUT: 'SET_SERVER_ERROR_CHECKOUT',
   COUNTRY_SELECTOR_MODAL_TOGGLE: `${COUNTRY_SELECTOR_ACTION_PATTERN}COUNTRY_SELECTOR_MODAL_TOGGLE`,
   PAGE: 'PAGE',
+  PAYPAL_CTA_COLOR: {
+    DEFAULT: 'white',
+    BLUE: 'blue',
+  },
 };
 
 const {

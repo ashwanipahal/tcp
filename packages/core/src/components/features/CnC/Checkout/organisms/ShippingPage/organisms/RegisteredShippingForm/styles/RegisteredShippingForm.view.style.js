@@ -110,6 +110,12 @@ const styles = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
       ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+
+  .shipping-section-header {
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: auto;
+    }
+  }
 `;
 
 export default styles;

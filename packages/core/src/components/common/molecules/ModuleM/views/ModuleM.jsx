@@ -32,7 +32,7 @@ export class ModuleM extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
+    window.removeEventListener('resize', this.windowResizeEventHandler.bind(this));
   }
 
   /**
@@ -296,6 +296,7 @@ export class ModuleM extends React.PureComponent {
               medium: 8,
               large: 12,
             }}
+            className="header-container"
           >
             {headerText && this.getHeaderText(headerText)}
             {promoBanner && this.getPromoBanner(promoBanner)}

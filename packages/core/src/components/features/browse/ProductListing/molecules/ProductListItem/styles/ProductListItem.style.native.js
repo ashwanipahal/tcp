@@ -60,23 +60,8 @@ const OfferPriceAndBadge3Container = styled.View`
   flex-direction: row;
 `;
 
-// Color is hard code as not in the style guide
-const ListOfferPrice = styled.Text`
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs15};
-  color: ${props => props.theme.colorPalette.red[500]};
-  line-height: 22;
-  font-weight: ${props => props.theme.typography.fontWeights.black};
-`;
-
-// Color is hard code as not in the style guide
-const Badge3Text = styled.Text`
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs10};
-  color: #c01f1f;
-  line-height: 12;
-  font-weight: ${props => props.theme.typography.fontWeights.semibold};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+const OfferPriceAndBadge3View = styled.View`
+  height: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const TitleContainer = styled.TouchableOpacity`
@@ -111,12 +96,11 @@ export {
   Badge2Text,
   PricesSection,
   OfferPriceAndBadge3Container,
-  ListOfferPrice,
-  Badge3Text,
   TitleContainer,
   TitleText,
   AddToBagContainer,
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
 };

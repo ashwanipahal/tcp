@@ -240,8 +240,8 @@ class CardTile extends React.Component<Props> {
             fontSizeVariation="large"
             underline
             aria-describedby={creditCardId}
-            to={`/account?id=edit-credit-card&creditCardId=${creditCardId}`}
-            asPath={`/account/address-book/edit-credit-card/${creditCardId}`}
+            to={`/account?id=payment&subSection=edit-credit-card&creditCardId=${creditCardId}`}
+            asPath={`/account/payment/edit-credit-card/${creditCardId}`}
             anchorVariation="primary"
             dataLocator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"

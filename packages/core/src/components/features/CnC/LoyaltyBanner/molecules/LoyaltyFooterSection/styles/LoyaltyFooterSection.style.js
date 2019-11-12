@@ -19,8 +19,7 @@ const Styles = css`
         text-align: center;
       }`
       : ``};
-
-  .createLoginSpaceBetween {
+  .space-between {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
@@ -28,11 +27,6 @@ const Styles = css`
   }
   .links-container {
     display: flex;
-    .learnSymbolWrapper {
-      > div {
-        display: inline;
-      }
-    }
   }
 `;
 

@@ -5,7 +5,6 @@ import withStyles from '../../../../common/hoc/withStyles.native';
 import { styles, PageContainer, Container } from '../SearchDetail.style.native';
 import ProductListing from '../../ProductListing/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 class SearchDetail extends React.PureComponent {
   listRef;
@@ -54,6 +53,9 @@ class SearchDetail extends React.PureComponent {
       getProducts,
       navigation,
       sortLabels,
+      onAddItemToFavorites,
+      isLoggedIn,
+      labelsLogin,
       ...otherProps
     } = this.props;
 
@@ -76,10 +78,12 @@ class SearchDetail extends React.PureComponent {
           onGoToPDPPage={this.onGoToPDPPage}
           sortLabels={sortLabels}
           onLoadMoreProducts={this.onLoadMoreProducts}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+          labelsLogin={labelsLogin}
           {...otherProps}
         />
-        <QuickViewModal />
-        <AddedToBagContainer navigation={navigation} />
+        <QuickViewModal navigation={navigation} />
       </PageContainer>
     );
   }
@@ -100,6 +104,9 @@ SearchDetail.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 SearchDetail.defaultProps = {
@@ -107,6 +114,9 @@ SearchDetail.defaultProps = {
   labels: {},
   slpLabels: {},
   sortLabels: {},
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
+  labelsLogin: {},
 };
 
 export default withStyles(SearchDetail, styles);

@@ -81,6 +81,7 @@ class Header extends React.PureComponent {
       openNavigationDrawer,
       closeNavigationDrawer,
       isUserPlcc,
+      isRememberedUser,
       userName,
       userPoints,
       userRewards,
@@ -96,9 +97,9 @@ class Header extends React.PureComponent {
       isPickupModalOpen,
       loyaltyPromoBanner,
     } = this.props;
-
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
+
     return (
       <header className={className}>
         <HeaderTopNav
@@ -120,6 +121,7 @@ class Header extends React.PureComponent {
           closeNavigationDrawer={closeNavigationDrawer}
           navigationDrawer={navigationDrawer}
           isUserPlcc={isUserPlcc}
+          isRememberedUser={isRememberedUser}
           userName={userName}
           userPoints={userPoints}
           userRewards={userRewards}
@@ -132,13 +134,14 @@ class Header extends React.PureComponent {
           store={favStore}
           labels={labels}
         />
+        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} />
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} className="header-promo__container" />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -156,7 +159,6 @@ class Header extends React.PureComponent {
             labels={labels}
           />
         )}
-        <OverlayModal showCondensedHeader={showCondensedHeader} />
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
@@ -197,6 +199,7 @@ Header.propTypes = {
   }),
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
+  isRememberedUser: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -220,6 +223,7 @@ Header.defaultProps = {
     features: {},
   },
   isPickupModalOpen: false,
+  isRememberedUser: false,
 };
 
 export default withStyles(errorBoundary(Header), style);

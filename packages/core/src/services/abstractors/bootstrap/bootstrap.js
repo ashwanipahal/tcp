@@ -1,4 +1,5 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
+import ProductListingAbstractor from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListingApiHandler';
 import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
@@ -146,6 +147,9 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   return bootstrapData[key];
 };
 
+export const shouldInitiateSSRCall = (originalUrl, deviceType) =>
+  originalUrl.includes('/c/') && deviceType === 'bot' && typeof window === 'undefined';
+
 /**
  * Responsible for making all the http requests that need to be resolved before loading the application
  *  -   Layout
@@ -155,7 +159,7 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  * @param {String} pageName
  * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pageName = '', modules, cachedData) => {
+const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl, deviceType) => {
   const response = {};
   const apiConfig = getAPIConfig();
   const { language } = apiConfig;
@@ -207,6 +211,14 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     response.navigation = navigationAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'navigation' })
     );
+
+    if (shouldInitiateSSRCall(originalUrl, deviceType)) {
+      response.PLP = await ProductListingAbstractor({
+        navigationData: response.navigation,
+        location: { pathname: originalUrl },
+        state,
+      });
+    }
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);
   }

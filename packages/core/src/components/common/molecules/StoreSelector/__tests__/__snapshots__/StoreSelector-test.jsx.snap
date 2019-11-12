@@ -354,6 +354,7 @@ exports[`StoreSelector component should default set title as value for selected 
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -371,9 +372,11 @@ exports[`StoreSelector component should default set title as value for selected 
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -511,8 +514,18 @@ exports[`StoreSelector component should default set title as value for selected 
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -588,6 +601,10 @@ exports[`StoreSelector component should default set title as value for selected 
           "letterSpacing": "normal",
           "lineHeight": "normal",
         },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
+        },
         "letterSpacings": Object {
           "ls071": "0.71px",
           "ls1": "1px",
@@ -645,6 +662,7 @@ exports[`StoreSelector component should default set title as value for selected 
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
+        "zIndexQuickView": 10000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,
@@ -1934,7 +1952,9 @@ exports[`StoreSelector component should default set title as value for selected 
     padding: ",
               [Function],
               ";
-    background: #ffffff;
+    background: ",
+              [Function],
+              ";
     position: absolute;
     top: -24px;
     left: 50%;
@@ -9218,6 +9238,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         "fontWeight": Object {
           "black": "900",
           "bold": "700",
+          "extrabold": "800",
           "light": "300",
           "medium": "500",
           "normal": "400",
@@ -9235,9 +9256,11 @@ exports[`StoreSelector component should render correctly 1`] = `
           "tight": 1.07,
         },
         "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontExtraBoldFamily": "Montserrat-ExtraBold , Arial, Helvetica, sans-serif",
         "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
         "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
         "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontExtraBoldFamily": "Nunito-ExtraBold, Arial, Helvetica, sans-serif",
         "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
         "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
       },
@@ -9375,8 +9398,18 @@ exports[`StoreSelector component should render correctly 1`] = `
           "black": "900",
           "bold": "700",
           "extrabold": "800",
+          "medium": "500",
           "regular": "400",
           "semibold": "600",
+        },
+        "fontWeightsNames": Object {
+          "black": "Black",
+          "bold": "Bold",
+          "extrabold": "ExtraBold",
+          "medium": "Medium",
+          "regular": "Regular",
+          "semiBold": "SemiBold",
+          "semibold": "SemiBold",
         },
         "fonts": Object {
           "primary": "Montserrat",
@@ -9452,6 +9485,10 @@ exports[`StoreSelector component should render correctly 1`] = `
           "letterSpacing": "normal",
           "lineHeight": "normal",
         },
+        "iosFonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
+        },
         "letterSpacings": Object {
           "ls071": "0.71px",
           "ls1": "1px",
@@ -9509,6 +9546,7 @@ exports[`StoreSelector component should render correctly 1`] = `
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
+        "zIndexQuickView": 10000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,
@@ -10797,7 +10835,9 @@ exports[`StoreSelector component should render correctly 1`] = `
     padding: ",
               [Function],
               ";
-    background: #ffffff;
+    background: ",
+              [Function],
+              ";
     position: absolute;
     top: -24px;
     left: 50%;
