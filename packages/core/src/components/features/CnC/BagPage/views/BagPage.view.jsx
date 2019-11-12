@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
-import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
+import Heading from '../../../../common/atoms/Heading';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
@@ -341,7 +342,6 @@ class BagPageView extends React.PureComponent {
     return (
       <div className={className}>
         {showCondensedHeader && this.stickyBagCondensedHeader()}
-
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
@@ -407,7 +407,7 @@ class BagPageView extends React.PureComponent {
           showLeftSection={
             (isNoNEmptyBag && activeSection === BAGPAGE_CONSTANTS.BAG_STATE) || isNotLoaded
           }
-          isNotLoaded={!isNotLoaded}
+          // isNotLoaded={!isNotLoaded}
           bagActions={this.renderActions}
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}

@@ -2,10 +2,12 @@ import { call, takeLatest, put, delay, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getProductDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+
 import COUPON_CONSTANTS from '../Coupon.constants';
 import { validateReduxCache } from '../../../../../../../utils/cache.util';
 import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
-import BagPageAction from '../../../../BagPage/container/BagPage.actions';
+import { getCartDataSaga } from '../../../../BagPage/container/BagPage.saga';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import {
   applyCouponToCart,
@@ -61,6 +63,7 @@ export function* applyCoupon({ payload }) {
     }
 
     try {
+      yield put(setLoaderState(true));
       yield put(showLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLYING }));
       const labels = yield select(BagPageSelectors.getErrorMapping);
@@ -76,14 +79,15 @@ export function* applyCoupon({ payload }) {
       );
       yield put(trackClick('coupon applied'));
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
-      yield put(
-        BagPageAction.getCartData({
+      yield call(getCartDataSaga, {
+        payload: {
           recalcRewards: true,
           isRecalculateTaxes: true,
           translation: false,
           excludeCartItems: !fullPageInfo,
-        })
-      );
+        },
+      });
+      yield put(setLoaderState(false));
       resolve();
     } catch (e) {
       yield put(
@@ -95,6 +99,7 @@ export function* applyCoupon({ payload }) {
       );
       yield put(trackClick('invalid coupon applied'));
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
+      yield put(setLoaderState(false));
       yield put(hideLoader());
       if (source !== 'form') {
         // eslint-disable-next-line
@@ -103,20 +108,25 @@ export function* applyCoupon({ payload }) {
     }
   } else {
     try {
+      yield put(setLoaderState(true));
       yield put(showLoader());
       const labels = yield select(BagPageSelectors.getErrorMapping);
       yield call(applyCouponToCart, formData, labels);
       yield put(hideLoader());
-      yield put(
-        BagPageAction.getCartData({
+
+      yield call(getCartDataSaga, {
+        payload: {
           recalcRewards: true,
           isRecalculateTaxes: true,
           translation: false,
           excludeCartItems: !fullPageInfo,
-        })
-      );
+        },
+      });
+      yield put(setLoaderState(false));
       resolve();
     } catch (e) {
+      yield put(setLoaderState(false));
+
       yield put(hideLoader());
       reject(e);
     }
@@ -137,23 +147,26 @@ export function* removeCoupon({ payload }) {
     oldStatus = BUTTON_LABEL_STATUS.REMOVE;
   }
   try {
+    yield put(setLoaderState(true));
     yield put(showLoader());
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
     yield call(removeCouponOrPromo, formData);
-    yield put(
-      BagPageAction.getCartData({
+    yield call(getCartDataSaga, {
+      payload: {
         recalcRewards: true,
         isRecalculateTaxes: true,
         translation: false,
         excludeCartItems: !fullPageInfo,
-      })
-    );
+      },
+    });
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
+
     yield put(hideLoader());
+    yield put(setLoaderState(false));
     resolve();
   } catch (e) {
-    yield put(hideLoader());
     yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
+    yield put(setLoaderState(false));
     // eslint-disable-next-line
     yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
     yield delay(5000);
@@ -164,9 +177,12 @@ export function* removeCoupon({ payload }) {
 
 export function* getAllCoupons() {
   try {
+    yield put(setLoaderState(true));
+
     yield put(showLoader());
     const coupons = yield call(getAllCouponsAbstractor);
     yield put(setCouponList(coupons));
+    yield put(setLoaderState(false));
   } catch (e) {
     logger.error('getAllCoupons error', e);
   }
