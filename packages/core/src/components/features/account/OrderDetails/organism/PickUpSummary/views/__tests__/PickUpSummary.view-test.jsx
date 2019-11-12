@@ -19,7 +19,6 @@ describe('Order Summary Details component', () => {
         firstName: 'abc',
         lastName: 'def',
       },
-      pickUpAlternative: {},
       hours: {
         regularHours: [
           {
