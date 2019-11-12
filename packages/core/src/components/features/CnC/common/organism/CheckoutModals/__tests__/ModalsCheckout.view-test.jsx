@@ -8,6 +8,7 @@ describe('ModalsCheckoutVanilla', () => {
       modalInfo: {},
       labels: {},
       currentSelectItemInfo: {},
+      setClickAnalyticsDataCheckout: jest.fn(),
     };
     const tree = shallow(<ModalsCheckoutVanilla {...props} />);
     expect(tree).toMatchSnapshot();
@@ -21,6 +22,7 @@ describe('ModalsCheckoutVanilla', () => {
       routeForBagCheckout: jest.fn(),
       closeCheckoutModalMountState: jest.fn(),
       closeMiniBagDispatch: jest.fn(),
+      setClickAnalyticsDataCheckout: jest.fn(),
     };
     const tree = shallow(<ModalsCheckoutVanilla {...props} />);
     tree.instance().routeToCheckout({ preventDefault: jest.fn() });
