@@ -170,7 +170,7 @@ exports[`ModuleE component Should render component 1`] = `
       }
     />
     <Styled(PromoBanner)
-      dataLocator="moduleE_header_text"
+      dataLocator="moduleE_promo_text"
       promoBanner={
         Array [
           Object {
@@ -280,7 +280,7 @@ exports[`ModuleE component Should render component 1`] = `
           <div>
             <WithTheme(DamImage)
               className="module-e-img-full-width"
-              data-locator="undefined1"
+              data-locator="moduleE_carousel_image_img_1"
               imgConfigs={
                 Array [
                   "t_mod_E_carousel_img_m",
@@ -298,12 +298,21 @@ exports[`ModuleE component Should render component 1`] = `
                   "url": "https://test5.childrensplace.com/image/upload/v1573283582/module-E-test-large-1.jpg",
                 }
               }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "_blank",
+                  "text": "Shop The Collection",
+                  "title": "Shop The Collection",
+                  "url": "http://www.childrensplace.com",
+                }
+              }
             />
           </div>
           <div>
             <WithTheme(DamImage)
               className="module-e-img-full-width"
-              data-locator="undefined2"
+              data-locator="moduleE_carousel_image_img_2"
               imgConfigs={
                 Array [
                   "t_mod_E_carousel_img_m",
@@ -319,6 +328,15 @@ exports[`ModuleE component Should render component 1`] = `
                   "crop_t": "",
                   "title": "Family Tees",
                   "url": "https://test5.childrensplace.com/image/upload/v1573239143/module-E-test-large-2.jpg",
+                }
+              }
+              link={
+                Object {
+                  "external": 0,
+                  "target": "_blank",
+                  "text": "Shop The Collection",
+                  "title": "Shop The Collection",
+                  "url": "http://www.childrensplace.com/2",
                 }
               }
             />
@@ -354,7 +372,7 @@ exports[`ModuleE component Should render component 1`] = `
                   "url": "http://www.childrensplace.com",
                 }
               }
-              dataLocator="undefined0"
+              dataLocator="moduleE_carousel_image_button_cta_0"
             >
               Shop The Collection
             </Styled(Button)>
@@ -412,6 +430,9 @@ exports[`ModuleE component Should render component 1`] = `
             ]
           }
           className="button-list-container-alternate"
+          dataLocatorDivisionImages="moduleE_cta_image_"
+          dataLocatorDropDown="moduleE_shop_now_dropdown"
+          dataLocatorTextCta="moduleE_cta_links_"
         />
       </Styled(Col)>
       <Styled(Col)
@@ -467,6 +488,15 @@ exports[`ModuleE component Should render component 1`] = `
                     "crop_t": "",
                     "title": "Big & Little Sis",
                     "url": "https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-1.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "external": 1,
+                    "target": "_blank",
+                    "text": "SHOP NOW",
+                    "title": "SHOP NOW",
+                    "url": "/link/url1",
                   }
                 }
               />
@@ -547,6 +577,15 @@ exports[`ModuleE component Should render component 1`] = `
                     "crop_t": "",
                     "title": "Big & Little Bro",
                     "url": "https://test5.childrensplace.com/image/upload/v1573283630/module-E-test-large-2.jpg",
+                  }
+                }
+                link={
+                  Object {
+                    "external": 1,
+                    "target": "_blank",
+                    "text": "SHOP NOW",
+                    "title": "SHOP NOW",
+                    "url": "/link/url2",
                   }
                 }
               />
