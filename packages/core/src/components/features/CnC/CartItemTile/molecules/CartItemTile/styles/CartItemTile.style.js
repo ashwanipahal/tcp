@@ -44,8 +44,8 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
-  .padding-top-43 {
-    padding-top: 43px;
+  .padding-top-50 {
+    padding-top: 50px;
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -310,6 +310,17 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       .color-fit-size-desktop {
         width: auto;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.mobile} {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      .save-for-later-label {
+        left: 7px;
       }
     }
 
