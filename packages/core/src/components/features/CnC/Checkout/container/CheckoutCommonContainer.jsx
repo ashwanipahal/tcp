@@ -84,6 +84,8 @@ const {
   getCheckoutPageEmptyBagLabels,
 } = selectors;
 export class CheckoutContainer extends React.PureComponent<Props> {
+  initialLoad = true;
+
   componentDidMount() {
     const { router, initCheckout } = this.props;
     const {
@@ -116,19 +118,21 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   }
 
   shippingDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this.props, { initialLoad: true });
+    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this, {
+      initialLoad: this.initialLoad,
+    });
   };
 
   billingDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this);
   };
 
   reviewDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this);
   };
 
   pickupDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this);
   };
 
   render() {

@@ -6,10 +6,10 @@ const initialState = {
 };
 
 const BundleProductReducer = (state = initialState, action) => {
-  const { payload: { product, breadCrumbs } = {}, type } = action;
+  const { payload = {}, type } = action;
   switch (type) {
     case BUNDLEPRODUCT_CONSTANTS.SET_BUNDLE_DETAILS:
-      return { ...state, currentProduct: { ...product }, breadCrumbs };
+      return { ...state, currentProduct: { ...payload.product }, ...payload.breadCrumbs };
     case BUNDLEPRODUCT_CONSTANTS.SET_BUNDLE_PRODUCTS_DETAILS:
       return { ...state, currentBundle: action.payload };
     default:
