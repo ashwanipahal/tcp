@@ -19,7 +19,7 @@ export function* createsaga({ payload }) {
   yield put(setLoadingState({ isLoading: true }));
   try {
     const res = yield call(createAccountApi, payload);
-    yield put(setLoadingState({ isLoading: true }));
+    yield put(setLoadingState({ isLoading: false }));
     /* istanbul ignore else */
     if (res.body) {
       if (res.body.errors) {

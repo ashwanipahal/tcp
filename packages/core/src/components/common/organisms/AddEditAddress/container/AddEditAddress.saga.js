@@ -66,14 +66,14 @@ export function* updateAddressPut({ payload }, fromCheckout) {
       }
       return putRes;
     }
-    return yield put(addAddressFail(res.body));
+    return yield 
+    (res.body));
   } catch (err) {
     let error = {};
     yield put(setLoaderState(false));
     if (err instanceof Error) {
       error = err.response.body;
     }
-    yield put(setLoadingState(false));
     return yield put(addAddressFail(error));
   }
 }

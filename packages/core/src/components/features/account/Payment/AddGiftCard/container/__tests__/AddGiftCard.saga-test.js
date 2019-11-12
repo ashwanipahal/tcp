@@ -17,6 +17,7 @@ describe('Add Gift Card saga', () => {
 
   beforeEach(() => {
     gen = addGiftCard({ payload });
+    gen.next();
   });
 
   it('should add gift card address', () => {
@@ -25,9 +26,9 @@ describe('Add Gift Card saga', () => {
         id: '75066941',
       },
     };
-
     expect(gen.next().value).toEqual(call(addGiftCardApi, payload));
     expect(gen.next(res).value).toEqual(put(clearCardListTTL()));
+    gen.next();
     expect(gen.next(res).value).toEqual(put(addGiftCardSuccess()));
     expect(gen.next().done).toBeTruthy();
   });
@@ -37,8 +38,8 @@ describe('Add Gift Card saga', () => {
       statusCode: 400,
       message: 'Object not found',
     };
-
     expect(gen.next().value).toEqual(call(addGiftCardApi, payload));
+    gen.next();
     expect(gen.next(err).value).toEqual(put(addGiftCardFailure()));
     expect(gen.next().done).toBeTruthy();
   });

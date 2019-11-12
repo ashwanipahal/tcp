@@ -19,6 +19,7 @@ describe('Default shipping address saga', () => {
 
   beforeEach(() => {
     gen = updateDefaultShippingAddress({ payload });
+    gen.next();
   });
 
   it('should update default shipping address', () => {
@@ -28,10 +29,8 @@ describe('Default shipping address saga', () => {
         nickName: 'sb_2019-06-24 02:23:29.134',
       },
     };
-
-    gen.next();
-    const putDescriptor = gen.next(res).value;
-
+    gen.next(res);
+    const putDescriptor = gen.next().value;
     expect(putDescriptor).toEqual(put(setDefaultShippingAddressSuccess(res.body)));
   });
 
