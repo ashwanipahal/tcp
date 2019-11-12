@@ -8,7 +8,7 @@ exports[`LeftNavigation component LeftNavigation component renders correctly wit
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-bdVaJa",
-        "isStatic": true,
+        "isStatic": false,
         "rules": Array [
           "
   ",

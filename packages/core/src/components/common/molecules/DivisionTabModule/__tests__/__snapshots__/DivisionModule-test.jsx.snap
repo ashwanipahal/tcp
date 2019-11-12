@@ -4,7 +4,7 @@ exports[`DivisionTabModule component should default variant correctly 1`] = `
 <div
   className=""
 >
-  <ForwardRef
+  <ForwardRef(Styled(BodyCopy))
     className="heading"
     color="text.primary"
     component="p"
@@ -23,8 +23,8 @@ exports[`DivisionTabModule component should default variant correctly 1`] = `
     textAlign="left"
   >
     First Day Outfits
-  </ForwardRef>
-  <ForwardRef
+  </ForwardRef(Styled(BodyCopy))>
+  <ForwardRef(Styled(ButtonTabs))
     className="button-tabs"
     dataLocator=""
     onTabChange={[Function]}
