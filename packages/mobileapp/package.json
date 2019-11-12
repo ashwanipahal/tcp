@@ -15,10 +15,10 @@
     "postinstall": "npx jetify"
   },
   "dependencies": {
+    "@fabulas/astly": "^0.0.13",
     "@react-native-community/async-storage": "^1.6.2",
     "@react-native-community/cli": "^2.9.0",
     "@react-native-community/netinfo": "^4.4.0",
-    "@fabulas/astly": "^0.0.13",
     "@tcp/core": "*",
     "apisauce": "^1.0.2",
     "apollo-cache-inmemory": "^1.6.3",
@@ -38,7 +38,7 @@
     "metro-config": "^0.54.1",
     "moment": "^2.24.0",
     "query-string": "^6.8.3",
-    "raygun4js": "^2.18.0",
+    "raygun4js": "^2.18.1",
     "react": "^16.9.0",
     "react-apollo": "^2.5.6",
     "react-native": "0.61.1",
@@ -105,6 +105,8 @@
   },
   "workspaces": {
     "nohoist": [
+      "**/raygun4js",
+      "**/raygun4js/**",
       "**/react-native-fast-image",
       "**/react-native-fast-image/**",
       "**/react-native-awesome-card-io",

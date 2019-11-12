@@ -254,19 +254,19 @@ PODS:
     - React
   - react-native-cookies (3.2.0):
     - React
-  - react-native-fbsdk (1.0.4):
+  - react-native-fbsdk (1.1.1):
     - React
-    - react-native-fbsdk/Core (= 1.0.4)
-    - react-native-fbsdk/Login (= 1.0.4)
-    - react-native-fbsdk/Share (= 1.0.4)
-  - react-native-fbsdk/Core (1.0.4):
-    - FBSDKCoreKit (~> 5.5)
+    - react-native-fbsdk/Core (= 1.1.1)
+    - react-native-fbsdk/Login (= 1.1.1)
+    - react-native-fbsdk/Share (= 1.1.1)
+  - react-native-fbsdk/Core (1.1.1):
+    - FBSDKCoreKit (= 5.8)
     - React
-  - react-native-fbsdk/Login (1.0.4):
-    - FBSDKLoginKit (~> 5.5)
+  - react-native-fbsdk/Login (1.1.1):
+    - FBSDKLoginKit (= 5.8)
     - React
-  - react-native-fbsdk/Share (1.0.4):
-    - FBSDKShareKit (~> 5.5)
+  - react-native-fbsdk/Share (1.1.1):
+    - FBSDKShareKit (= 5.8)
     - React
   - react-native-geolocation (1.4.2):
     - React
@@ -597,7 +597,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 574d597112f9ea3d1b717f6fb62aef764c70dd6f
   react-native-config: 55548054279d92e0e4566ea15a8b9b81028ec342
   react-native-cookies: 854d59c4135c70b92a02ca4930e68e4e2eb58150
-  react-native-fbsdk: 45e28bbab3e905cbc635c0bdd3444b372e933ae9
+  react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
   react-native-geolocation: a7b94614afbd5fd8350e0233a2025c8228fc8041
   react-native-netinfo: 6bb847e64f45a2d69c6173741111cfd95c669301
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
