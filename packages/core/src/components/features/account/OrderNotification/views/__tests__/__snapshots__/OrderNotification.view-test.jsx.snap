@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderNotification component should renders correctly  1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  background-color: ",
+          [Function],
+          ";
+
+  .view-order-link {
+    color: ",
+          [Function],
+          ";
+  }
+  .separator-line {
+    border-bottom: solid ",
+          [Function],
+          "
+      ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(OrderNotification)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-jzJRlG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isTransactionNotificationsInMyAccountEnabled={true}
+  labels={Object {}}
+  limitOfDaysToDisplayNotification={30}
+  order={
+    Object {
+      "currencySymbol": "$",
+      "isBOSSOrder": false,
+      "isCanadaOrder": false,
+      "isEcomOrder": true,
+      "orderDate": "Oct 16, 2019",
+      "orderNumber": "7000050054",
+      "orderStatus": "lbl_orders_statusOrderExpired",
+      "orderTotal": "$0",
+      "orderTracking": "N/A",
+      "orderTrackingUrl": "N/A",
+      "status": "order expired",
+    }
+  }
+/>
+`;
+
+exports[`OrderNotification component should renders empty state correctly  1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  background-color: ",
+          [Function],
+          ";
+
+  .view-order-link {
+    color: ",
+          [Function],
+          ";
+  }
+  .separator-line {
+    border-bottom: solid ",
+          [Function],
+          "
+      ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(OrderNotification)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-jzJRlG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  isTransactionNotificationsInMyAccountEnabled={false}
+  labels={Object {}}
+  limitOfDaysToDisplayNotification={30}
+/>
+`;

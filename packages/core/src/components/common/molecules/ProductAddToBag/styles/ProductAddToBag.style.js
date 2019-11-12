@@ -28,11 +28,20 @@ const styles = css`
     font-style: normal;
     letter-spacing: ${props => props.theme.typography.letterSpacings.ls1};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding-left: 125px;
-    padding-right: 125px;
+    padding-left: 123px;
+    padding-right: 124px;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
 
     @media ${props => props.theme.mediaQuery.medium} {
+      ${props =>
+        !props.isQuickView
+          ? `padding-left: 90px;
+              padding-right: 89px;`
+          : `padding-left: 65px;
+                  padding-right: 65px;`};
+    }
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
       padding-left: 90px;
       padding-right: 89px;
     }
@@ -116,7 +125,7 @@ const styles = css`
 
   .color-selector {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    cursor: pointer;
+    cursor: auto;
     width: 100%;
     margin-bottom: 33px;
     .dropdownDivOverFlow {
@@ -130,14 +139,29 @@ const styles = css`
     }
   }
 
+  .fit-selector {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    .input-radio-title {
+      margin-bottom: 0;
+    }
+  }
+
   .size-selector {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     width: 100%;
+    position: relative;
+
+    .size-chart {
+      position: absolute;
+      right: 0;
+      font-size: ${props => props.theme.typography.fontSizes.fs12};
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
   .size-error {
-    position: absolute;
-    margin-top: -5px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
@@ -186,6 +210,13 @@ const styles = css`
     width: 100%;
     #quantity {
       font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 48px;
+    }
+    p {
+      display: inline-block;
+      vertical-align: top;
     }
   }
 
@@ -235,7 +266,7 @@ export const giftCardDesignStyle = css`
 
     /* Image color of item */
     .color-image {
-      border: 0;
+      border-radius: 0;
       height: auto;
       width: 100%;
     }
@@ -246,6 +277,7 @@ export const giftCardDesignStyle = css`
     }
 
     .input-radio-icon-checked + .input-radio-title .color-image {
+      border-radius: 0;
       border: 0;
       height: auto;
       width: 100%;

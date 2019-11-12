@@ -1,6 +1,7 @@
 /* eslint-disable max-lines */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import {
   COLOR_FITS_SIZES_MAP_PROP_TYPE,
   PRICING_PROP_TYPES,
@@ -23,6 +24,7 @@ import {
   PromotionESpot,
   PromotionESpotLeftArrow,
   PromotionESpotTextContainer,
+  UnavailableLink,
 } from '../styles/ProductPickup.style.native';
 
 import { KEY_CODES } from '../../../../../constants/keyboard.constants';
@@ -131,6 +133,7 @@ class ProductPickup extends React.PureComponent {
      * method responsible for triggering the operator method for BopisQuickViewModal
      */
     onPickUpOpenClick: PropTypes.func,
+    onPickupClickAddon: PropTypes.func,
     /**
      * carries the inventory information of the bopis item selected
      */
@@ -162,6 +165,7 @@ class ProductPickup extends React.PureComponent {
     }),
     simplifiedProductPickupView: PropTypes.bool,
     isAnchor: PropTypes.bool,
+    sizeUnavailable: PropTypes.string,
   };
 
   static defaultProps = {
@@ -183,6 +187,7 @@ class ProductPickup extends React.PureComponent {
       Quantity: null,
     },
     onPickUpOpenClick: null,
+    onPickupClickAddon: () => {},
     bopisItemInventory: [],
     isBopisEligible: false,
     // isBossEligible: false,
@@ -211,6 +216,7 @@ class ProductPickup extends React.PureComponent {
     },
     simplifiedProductPickupView: false,
     isAnchor: false,
+    sizeUnavailable: 'Size unavailable online?',
   };
 
   constructor(props) {
@@ -224,7 +230,7 @@ class ProductPickup extends React.PureComponent {
    */
 
   handlePickupModalClick = () => {
-    const { productInfo, onPickUpOpenClick } = this.props;
+    const { productInfo, onPickUpOpenClick, onPickupClickAddon } = this.props;
     const { /* colorFitsSizesMap, */ generalProductId } = productInfo;
     // const colorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
     onPickUpOpenClick({
@@ -234,8 +240,10 @@ class ProductPickup extends React.PureComponent {
       // isBossCtaEnabled: colorEntry.miscInfo.isBossEligible,
       currentProduct: productInfo,
     });
-    // if (closeQuickViewClick) {
-    // }
+
+    if (onPickupClickAddon) {
+      onPickupClickAddon();
+    }
   };
 
   handleChangeStoreOnKeyPress = event =>
@@ -483,28 +491,38 @@ class ProductPickup extends React.PureComponent {
   }
 
   renderPickUpInStoreAnchorButton() {
-    const { showPickupInfo, labels } = this.props;
+    const { showPickupInfo, labels, sizeUnavailable } = this.props;
     return (
-      <Anchor
-        noLink
-        onPress={this.handlePickupModalClick}
-        accessibilityRole="link"
-        accessibilityLabel={
-          showPickupInfo
-            ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-            : labels.lbl_Product_pickup_FIND_STORE
-        }
-        text={
-          showPickupInfo
-            ? labels.lbl_Product_pickup_PICKUP_IN_STORE
-            : labels.lbl_Product_pickup_FIND_STORE
-        }
-        anchorVariation="custom"
-        colorName="gray.900"
-        fontSizeVariation="medium"
-        centered
-        underline
-      />
+      <UnavailableLink>
+        <BodyCopyWithSpacing
+          mobilefontFamily={['secondary']}
+          fontWeight="semibold"
+          fontSize="fs12"
+          color="black"
+          text={sizeUnavailable}
+          spacingStyles="padding-right-XS"
+        />
+        <Anchor
+          noLink
+          onPress={this.handlePickupModalClick}
+          accessibilityRole="link"
+          accessibilityLabel={
+            showPickupInfo
+              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+              : labels.lbl_Product_pickup_FIND_STORE
+          }
+          text={
+            showPickupInfo
+              ? labels.lbl_Product_pickup_PICKUP_IN_STORE
+              : labels.lbl_Product_pickup_FIND_STORE
+          }
+          anchorVariation="custom"
+          colorName="gray.900"
+          fontSizeVariation="medium"
+          centered
+          underline
+        />
+      </UnavailableLink>
     );
   }
 

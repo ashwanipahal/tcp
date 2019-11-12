@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CheckoutHeader Component  Checkout Header should render correctly 1`] = `
-<Styled(SafeAreaView)>
+<Styled(View)>
   <Connect(ToastContainer) />
   <Styled(View)
     data-locator="global_headerpanel"
@@ -43,5 +43,5 @@ exports[`CheckoutHeader Component  Checkout Header should render correctly 1`] =
       />
     </Styled(View)>
   </Styled(View)>
-</Styled(SafeAreaView)>
+</Styled(View)>
 `;

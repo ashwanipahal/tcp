@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import get from 'lodash/get';
-import { FlatList, Text, Dimensions, Share } from 'react-native';
+import { FlatList, Text, Dimensions, Share, SafeAreaView } from 'react-native';
 import { withTheme } from 'styled-components/native';
 import PaginationDots from '@tcp/core/src/components/common/molecules/PaginationDots';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Container,
@@ -19,6 +20,9 @@ import {
 import CustomIcon from '../../../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../../../common/atoms/Icon/Icon.constants';
 import { DamImage } from '../../../../../../common/atoms';
+import { ModalViewWrapper } from '../../../../../account/LoginPage/molecules/LoginForm/LoginForm.style.native';
+import ModalNative from '../../../../../../common/molecules/Modal/index';
+import LoginPageContainer from '../../../../../account/LoginPage/index';
 
 const win = Dimensions.get('window');
 const paddingAroundImage = 24;
@@ -31,10 +35,18 @@ class ImageCarousel extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = { activeSlideIndex: 0 };
+    this.state = {
+      activeSlideIndex: 0,
+      showModal: false,
+    };
     const { theme } = props;
     this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
     this.favoriteIconSize = get(theme, 'typography.fontSizes.fs25', 25);
+  }
+
+  componentWillUnmount() {
+    const { removeAddToFavoritesErrorMsg } = this.props;
+    removeAddToFavoritesErrorMsg('');
   }
 
   // this method set current visible image
@@ -60,12 +72,31 @@ class ImageCarousel extends React.PureComponent {
     }
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.isLoggedIn && state.showModal) {
+      return { showModal: false };
+    }
+    return null;
+  }
+
   // this method call when tap on the pagination dots and navigate to clicked image
   onPageChange = dotClickedIndex => {
     this.flatListRef.scrollToIndex({ animated: true, index: dotClickedIndex });
   };
 
-  onFavorite = () => {};
+  onFavorite = colorProductId => {
+    const { isLoggedIn, addToFavorites } = this.props;
+    addToFavorites({ colorProductId, page: 'PDP' });
+    if (!isLoggedIn) {
+      this.setState({ showModal: true });
+    }
+  };
+
+  toggleModal = () => {
+    this.setState(state => ({
+      showModal: !state.showModal,
+    }));
+  };
 
   onShare = async () => {
     try {
@@ -87,6 +118,21 @@ class ImageCarousel extends React.PureComponent {
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  renderComponent = ({ isUserLoggedIn }) => {
+    let componentContainer = null;
+    if (!isUserLoggedIn) {
+      componentContainer = (
+        <LoginPageContainer
+          onRequestClose={this.toggleModal}
+          isUserLoggedIn={isUserLoggedIn}
+          showLogin={this.showloginModal}
+          variation="favorites"
+        />
+      );
+    }
+    return <React.Fragment>{componentContainer}</React.Fragment>;
   };
 
   renderNormalImage = imgSource => {
@@ -113,18 +159,32 @@ class ImageCarousel extends React.PureComponent {
   };
 
   renderFavoriteIcon = () => {
-    const { isBundleProduct } = this.props;
+    const { currentColorEntry, isBundleProduct } = this.props;
+    const { favoritedCount, colorProductId, isFavorite } = currentColorEntry;
     if (!isBundleProduct) {
       return (
         <FavoriteContainer>
-          <CustomIcon
-            name={ICON_NAME.favorite}
-            size={this.favoriteIconSize}
-            color={this.favoriteIconColor}
-            onPress={this.onFavorite}
-            isButton
-            dataLocator="pdp_favorite_icon"
-          />
+          {isFavorite !== undefined ? (
+            <CustomIcon
+              isButton
+              name={ICON_NAME.favorite}
+              size={this.favoriteIconSize}
+              color="gray.500"
+              fill="gray.500"
+              dataLocator="pdp_favorite_icon"
+            />
+          ) : (
+            <CustomIcon
+              isButton
+              name={ICON_NAME.favorite}
+              size={this.favoriteIconSize}
+              color={this.favoriteIconColor}
+              dataLocator="pdp_favorite_icon"
+              onPress={() => {
+                this.onFavorite(colorProductId);
+              }}
+            />
+          )}
           <BodyCopy
             dataLocator="pdp_favorite_icon_count"
             margin="0 0 0 8px"
@@ -132,7 +192,7 @@ class ImageCarousel extends React.PureComponent {
             fontSize="fs10"
             fontWeight="regular"
             color="gray.600"
-            text="100"
+            text={favoritedCount}
           />
         </FavoriteContainer>
       );
@@ -141,13 +201,16 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { imageUrls, isGiftCard } = this.props;
+    const { imageUrls, isLoggedIn, isGiftCard, AddToFavoriteErrorMsg } = this.props;
 
-    const { activeSlideIndex } = this.state;
+    const { activeSlideIndex, showModal } = this.state;
 
     if (imageUrls && imageUrls.length > 0) {
       return (
         <Container>
+          {AddToFavoriteErrorMsg !== '' && (
+            <Notification status="error" message={`Error : ${AddToFavoriteErrorMsg}`} />
+          )}
           <FlatList
             ref={ref => {
               this.flatListRef = ref;
@@ -190,6 +253,25 @@ class ImageCarousel extends React.PureComponent {
               </DownloadContainer>
             </FavoriteAndPaginationContainer>
           ) : null}
+          <FavoriteAndPaginationContainer>
+            {showModal && (
+              <ModalNative
+                isOpen={showModal}
+                onRequestClose={this.toggleModal}
+                heading="LOG IN"
+                headingFontFamily="secondary"
+                fontSize="fs16"
+              >
+                <SafeAreaView>
+                  <ModalViewWrapper>
+                    {this.renderComponent({
+                      isLoggedIn,
+                    })}
+                  </ModalViewWrapper>
+                </SafeAreaView>
+              </ModalNative>
+            )}
+          </FavoriteAndPaginationContainer>
         </Container>
       );
     }
@@ -208,6 +290,12 @@ ImageCarousel.propTypes = {
   ),
   onImageClick: PropTypes.func.isRequired,
   isGiftCard: PropTypes.bool,
+  isLoggedIn: PropTypes.bool,
+  currentProduct: PropTypes.shape({}),
+  addToFavorites: PropTypes.func,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
+  currentColorEntry: PropTypes.string,
   isBundleProduct: PropTypes.bool,
 };
 
@@ -215,6 +303,12 @@ ImageCarousel.defaultProps = {
   theme: {},
   imageUrls: [],
   isGiftCard: false,
+  isLoggedIn: false,
+  currentProduct: {},
+  addToFavorites: () => {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
+  currentColorEntry: '',
   isBundleProduct: false,
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withNavigation } from 'react-navigation';
 import {
   BodyCopyWithSpacing,
   ViewWithSpacing,
@@ -10,7 +11,6 @@ import { UrlHandler } from '@tcp/core/src/utils/utils.app';
 import { getIconCard } from '@tcp/core/src/utils/index.native';
 import { getLabelValue, getLabelsBasedOnPattern } from '@tcp/core/src/utils/utils';
 import externalEndpoints from '../../../externalEndpoints';
-import ApplyNowWrapper from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
 import {
   UnderlineStyle,
@@ -19,23 +19,16 @@ import {
   CardDetailContainer,
 } from './MyPlaceRewardsCreditCardTile.style.native';
 
-class MyPlaceRewardsCreditCardTile extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { applyCard: false };
-  }
-
+export class MyPlaceRewardsCreditCardTile extends React.PureComponent {
   toggleApplyNowModal = () => {
-    const { applyCard } = this.state;
-    this.setState({
-      applyCard: !applyCard,
-    });
+    const { toggleModal, navigation } = this.props;
+    navigation.navigate('ApplyNow');
+    toggleModal({ isModalOpen: true });
   };
 
   render() {
     const { labels, myPlaceRewardCard, handleComponentChange } = this.props;
     const cardEnrolled = myPlaceRewardCard && myPlaceRewardCard.ccType;
-    const { applyCard } = this.state;
     const addYourCardLabelKeys = getLabelsBasedOnPattern(labels, 'lbl_overview_addYourCardToPoint');
     return (
       <TileContainer>
@@ -161,7 +154,6 @@ class MyPlaceRewardsCreditCardTile extends React.PureComponent {
             }
           />
         </ViewWithSpacing>
-        <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
       </TileContainer>
     );
   }
@@ -173,6 +165,8 @@ MyPlaceRewardsCreditCardTile.propTypes = {
   }),
   myPlaceRewardCard: PropTypes.shape({}),
   handleComponentChange: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 MyPlaceRewardsCreditCardTile.defaultProps = {
@@ -182,4 +176,4 @@ MyPlaceRewardsCreditCardTile.defaultProps = {
   myPlaceRewardCard: {},
 };
 
-export default MyPlaceRewardsCreditCardTile;
+export default withNavigation(MyPlaceRewardsCreditCardTile);

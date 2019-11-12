@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import VenmoPaymentButton from '@tcp/core/src/components/common/atoms/VenmoPaymentButton';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CALL_TO_ACTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import style from '../styles/AddedToBagActions.style';
@@ -15,15 +17,17 @@ import ErrorMessage from '../../common/molecules/ErrorMessage';
 
 class AddedToBagActions extends React.PureComponent<Props> {
   getPaypalButton() {
-    const { showAddTobag, containerId, isBagPageStickyHeader } = this.props;
+    const { showAddTobag, containerId, isBagPageStickyHeader, isPayPalHidden } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
       containerID = 'paypal-button-container-bag-header';
     }
     return (
-      <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-        <PayPalButton className="payPal-button" containerId={containerID} />
-      </div>
+      !isPayPalHidden && (
+        <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
+          <PayPalButton className="payPal-button" containerId={containerID} />
+        </div>
+      )
     );
   }
 
@@ -36,23 +40,38 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getCheckoutButton() {
-    const { labels, handleCartCheckout, isEditingItem } = this.props;
+    const {
+      labels,
+      handleCartCheckout,
+      isEditingItem,
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
+    } = this.props;
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
-      <Button
-        data-locator={getLocator('addedtobag_btncheckout')}
-        className="checkout"
-        onClick={() => handleCartCheckout(isEditingItem)}
-      >
-        <BodyCopy
-          component="span"
-          color="white"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          fontSize="fs14"
+      <ClickTracker name="Gift_Services">
+        <Button
+          data-locator={getLocator('addedtobag_btncheckout')}
+          className="checkout"
+          onClick={() => {
+            setClickAnalyticsDataCheckout({
+              customEvents: ['event8'],
+              products: productsData,
+            });
+            handleCartCheckout({ isEditingItem });
+          }}
         >
-          {labels.checkout}
-        </BodyCopy>
-      </Button>
+          <BodyCopy
+            component="span"
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs14"
+          >
+            {labels.checkout}
+          </BodyCopy>
+        </Button>
+      </ClickTracker>
     );
   }
 
@@ -148,6 +167,8 @@ AddedToBagActions.propTypes = {
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
   venmoError: PropTypes.string,
+  setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 AddedToBagActions.defaultProps = {
   showAddTobag: true,

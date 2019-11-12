@@ -125,6 +125,7 @@ describe('ProductTileWrapper component', () => {
   });
   it('should render ProductTile view section with bag page sfl section', () => {
     const props = {
+      onItemEdit: jest.fn(),
       isCartItemsUpdating: { isDeleting: true },
       setHeaderErrorState: jest.fn(),
       labels: {},
@@ -175,6 +176,7 @@ describe('ProductTileWrapper component', () => {
             isBopisEligible: true,
             orderItemType: 'ECOM',
             storeId: null,
+            availability: 'SOLDOUT',
           },
         },
         {
@@ -221,9 +223,25 @@ describe('ProductTileWrapper component', () => {
             isBopisEligible: true,
             orderItemType: 'ECOM',
             storeId: null,
+            availability: 'UNAVAILABLE',
           },
         },
       ]),
+    };
+    const tree = shallow(<ProductTileWrapperVanilla {...props} isBagPageSflSection />);
+    expect(tree.find(ProductTile)).toBeTruthy();
+    tree.instance().toggleEditAllowance();
+    expect(props.onItemEdit).toHaveBeenCalled();
+  });
+
+  it('should render ProductTile view section with out any data', () => {
+    const props = {
+      onItemEdit: jest.fn(),
+      isCartItemsUpdating: { isDeleting: true },
+      setHeaderErrorState: jest.fn(),
+      pageView: 'myBag',
+      labels: {},
+      sflItems: fromJS([]),
       theme: {
         mediaQuery: {
           large: '(min-width: 1200px)',
@@ -240,5 +258,10 @@ describe('ProductTileWrapper component', () => {
     };
     const tree = shallow(<ProductTileWrapperVanilla {...props} isBagPageSflSection />);
     expect(tree.find(ProductTile)).toBeTruthy();
+    tree.instance().toggleEditAllowance();
+    expect(props.onItemEdit).toHaveBeenCalled();
+    tree.instance().setSwipedElement();
+    tree.instance().setSelectedProductTile(1);
+    tree.instance().getTickIcon();
   });
 });

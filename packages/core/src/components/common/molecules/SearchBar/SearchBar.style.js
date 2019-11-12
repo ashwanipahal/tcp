@@ -114,7 +114,6 @@ export default css`
       background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
       color: #575757;
       border-color: unset;
-      margin-right: 10px;
     }
 
     .searchBar-input-wrapper{
@@ -134,6 +133,7 @@ export default css`
     .searchBar-input{
 
       width: 172px;
+      padding: 0;
       height: 30px;
       background-color: transparent;
       border: none;
@@ -289,8 +289,8 @@ export default css`
         props.fromCondensedHeader
           ? `
           width: 437px;
-          right: 130px;
-          top: ${props.theme.spacing.ELEM_SPACING.XS};
+          right: 120px;
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
         `
           : ``};
     }

@@ -21,8 +21,12 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "medium_text_regular",
+                    "style": "large_text_bold",
                     "text": "ALL MATCHABLES",
+                  },
+                  Object {
+                    "style": "large_text_bold",
+                    "text": "60% OFF",
                   },
                 ],
               },
@@ -42,7 +46,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "large_text_black",
+                    "style": "extra_large_text_regular",
                     "text": "60% OFF",
                   },
                 ],
@@ -208,6 +212,5 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       <View />
     </Styled(View)>
   </View>
-  <Connect(QuickViewModalContainer) />
 </Styled(View)>
 `;

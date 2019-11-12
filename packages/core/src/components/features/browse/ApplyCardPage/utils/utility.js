@@ -80,8 +80,7 @@ const redirectToBag = resetPLCCResponse => {
  * @const redirectToHome - function to return home.
  *
  */
-const redirectToHome = resetPLCCResponse => {
-  resetPLCCResponse({ status: null });
+const redirectToHome = () => {
   routerPush(window.location.href, '/home');
 };
 

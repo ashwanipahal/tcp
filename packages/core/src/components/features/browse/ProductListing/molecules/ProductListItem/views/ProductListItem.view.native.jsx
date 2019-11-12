@@ -22,6 +22,7 @@ import {
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -59,14 +60,14 @@ const renderAddToBagContainer = (
   labelsPlpTiles,
   onGoToPDPPage
 ) => {
-  if (renderVariation && !renderPriceOnly) return null;
+  if (renderVariation && renderPriceOnly) return null;
   const buttonLabel = bundleProduct
     ? labelsPlpTiles.lbl_plpTiles_shop_collection
     : labelsPlpTiles.lbl_add_to_bag;
   return (
     <AddToBagContainer>
       <CustomButton
-        paddings="12px 12px 12px 12px"
+        paddings="12px 8px 12px 8px"
         fill="BLUE"
         type="button"
         buttonVariation="variable-width"
@@ -74,6 +75,7 @@ const renderAddToBagContainer = (
         text={buttonLabel}
         onPress={() => onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)}
         accessibilityLabel={buttonLabel && buttonLabel.toLowerCase()}
+        margin="0 6px 0 0"
       />
     </AddToBagContainer>
   );
@@ -100,6 +102,7 @@ const ListItem = props => {
     margins,
     paddings,
     viaModule,
+    isLoggedIn,
     labelsPlpTiles,
   } = props;
   logger.info(viaModule);
@@ -144,8 +147,10 @@ const ListItem = props => {
         setLastDeletedItemId={setLastDeletedItemId}
         isFavorite={isFavorite}
         itemInfo={isFavorite ? itemInfo : {}}
-        accessibilityLabel="Price Section"
         productInfo={productInfo}
+        item={item}
+        isLoggedIn={isLoggedIn}
+        accessibilityLabel="Price Section"
       />
       <RenderTitle
         text={name}
@@ -348,7 +353,7 @@ const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) 
       </OfferPriceAndBadge3Container>
     );
   }
-  return null;
+  return <OfferPriceAndBadge3View />;
 };
 
 const RenderPricesSection = values => {
@@ -365,6 +370,7 @@ const RenderPricesSection = values => {
   } = values;
   const { badge3 } = miscInfo;
   const { itemId } = itemInfo;
+  const { generalProductId } = productInfo || '';
   const bundleProduct = get(productInfo, 'bundleProduct', false);
   return (
     <PricesSection>
@@ -387,7 +393,9 @@ const RenderPricesSection = values => {
                 name={ICON_NAME.favorite}
                 size="fs21"
                 color="gray.600"
-                onPress={onFavorite}
+                onPress={() => {
+                  onFavorite(generalProductId);
+                }}
               />
             )}
           </FavoriteIconContainer>
@@ -453,7 +461,12 @@ const RenderSizeFit = ({ item }) => {
 };
 
 RenderSizeFit.propTypes = {
-  item: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    skuInfo: PropTypes.shape({
+      fit: PropTypes.string,
+      size: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const RenderPurchasedQuantity = ({ item }) => {
@@ -473,10 +486,6 @@ const RenderPurchasedQuantity = ({ item }) => {
   );
 };
 
-RenderPurchasedQuantity.propTypes = {
-  item: PropTypes.shape({}).isRequired,
-};
-
 const RenderMoveToWishlist = () => {
   return (
     <RowContainer margins="8px 0 0 0">
@@ -493,7 +502,12 @@ const RenderMoveToWishlist = () => {
 };
 
 RenderPurchasedQuantity.propTypes = {
-  item: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    quantityPurchased: PropTypes.string,
+    itemInfo: PropTypes.shape({
+      quantity: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 RenderTitle.propTypes = {
@@ -528,7 +542,15 @@ RenderTitle.defaultProps = {
 
 ListItem.propTypes = {
   theme: PropTypes.shape({}),
-  item: PropTypes.shape({}),
+  item: PropTypes.shape({
+    productInfo: PropTypes.shape({
+      name: PropTypes.string,
+      bundleProduct: PropTypes.shape({}),
+    }),
+    colorsMap: PropTypes.shape({}),
+    itemInfo: PropTypes.shape({}),
+    skuInfo: PropTypes.string,
+  }),
   badge1: PropTypes.string,
   badge2: PropTypes.string,
   loyaltyPromotionMessage: PropTypes.string,
@@ -547,12 +569,21 @@ ListItem.propTypes = {
   margins: PropTypes.string,
   paddings: PropTypes.string,
   viaModule: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
 };
 
 ListItem.defaultProps = {
   theme: {},
-  item: {},
+  item: {
+    productInfo: {
+      name: '',
+      bundleProduct: {},
+    },
+    colorsMap: {},
+    itemInfo: {},
+    skuInfo: '',
+  },
   badge1: '',
   badge2: '',
   loyaltyPromotionMessage: '',
@@ -567,6 +598,7 @@ ListItem.defaultProps = {
   margins: null,
   paddings: '12px 0 12px 0',
   viaModule: '',
+  isLoggedIn: false,
   labelsPlpTiles: {},
 };
 

@@ -148,6 +148,22 @@ export const getLabelsProductListing = state => {
   };
 };
 
+export const getLabelsAccountOverView = state => {
+  if (!state.Labels || !state.Labels.account)
+    return {
+      logIn: {},
+    };
+  const {
+    account: {
+      accountOverview: { lbl_overview_login_text: logIn },
+    },
+  } = state.Labels;
+
+  return {
+    logIn,
+  };
+};
+
 export const getIsLoadingMore = state => {
   return state.ProductListing.get('isLoadingMore');
 };
@@ -245,4 +261,16 @@ export const getIsFilterBy = state => {
 
 export const getIsDataLoading = state => {
   return state.ProductListing.get('isDataLoading');
+};
+
+export const getPLPTopPromos = state => {
+  const topPromos = state.ProductListing.getIn(['bannerInfo', 'val', 'top']);
+  return (
+    (topPromos &&
+      topPromos.map(promoItem => {
+        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+      })) ||
+    {}
+  );
+  // return state.ProductListing.bannerInfo.val.top;
 };

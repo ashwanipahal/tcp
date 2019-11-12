@@ -97,6 +97,7 @@ const ProductCustomizeFormPart = props => {
               <DamImage
                 data-locator={getLocator('quick_view_product_image')}
                 imgData={imgData}
+                lazyLoad={false}
                 isProductImage
               />
               <Anchor

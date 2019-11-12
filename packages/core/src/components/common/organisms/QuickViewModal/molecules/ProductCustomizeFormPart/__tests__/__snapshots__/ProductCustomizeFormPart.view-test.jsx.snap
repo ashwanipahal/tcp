@@ -25,6 +25,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               }
             }
             isProductImage={true}
+            lazyLoad={false}
           />
           <Styled(Anchor)
             className="link-redirect"
@@ -421,7 +422,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               [Function],
               " {
     .add-to-bag-button {
-      width: 243px;
+      width: 343px;
     }
   }
 ",

@@ -1,5 +1,11 @@
+import { readCookie } from '@tcp/core/src/utils/cookie.util';
+import { API_CONFIG } from '@tcp/core/src/services/config';
 import { dataLayer as defaultDataLayer } from '@tcp/core/src/analytics';
-import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers';
+import {
+  generateBrowseDataLayer,
+  generateHomePageDataLayer,
+  generateClickHandlerDataLayer,
+} from './dataLayers';
 
 /**
  * Analytics data layer object for property lookups.
@@ -21,15 +27,26 @@ import { generateBrowseDataLayer, generateHomePageDataLayer } from './dataLayers
 export default function create(store) {
   const browseDataLayer = generateBrowseDataLayer(store);
   const homepageDataLayer = generateHomePageDataLayer(store);
+  const clickHandlerDataLayer = generateClickHandlerDataLayer(store);
   const siteType = 'global site';
+  const { pageCountCookieKey } = API_CONFIG;
+
   return Object.create(defaultDataLayer, {
     ...browseDataLayer,
     ...homepageDataLayer,
+    ...clickHandlerDataLayer,
+    pageCount: {
+      get() {
+        return readCookie(pageCountCookieKey);
+      },
+    },
     pageName: {
       get() {
         return `gl:${store.getState().pageData.pageName}`;
       },
     },
+
+    isCurrentRoute: () => false,
 
     pageshortName: {
       get() {
@@ -75,21 +92,26 @@ export default function create(store) {
 
     customerType: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('isGuest')
+        return store.getState().User.getIn(['personalData', 'isGuest'])
           ? 'no rewards:guest'
           : 'rewards member:logged in';
       },
     },
 
-    userEmailAddress: {
+    checkoutType: {
       get() {
         return store
           .getState()
           .User.get('personalData')
-          .getIn(['contactInfo', 'emailAddress']);
+          .get('isGuest')
+          ? 'guest'
+          : 'registered';
+      },
+    },
+
+    userEmailAddress: {
+      get() {
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'emailAddress'], '');
       },
     },
 
@@ -107,28 +129,19 @@ export default function create(store) {
 
     customerId: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .get('userId');
+        return store.getState().User.getIn(['personalData', 'userId'], '');
       },
     },
 
     customerFirstName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'firstName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'firstName'], '');
       },
     },
 
     customerLastName: {
       get() {
-        return store
-          .getState()
-          .User.get('personalData')
-          .getIn(['contactInfo', 'lastName']);
+        return store.getState().User.getIn(['personalData', 'contactInfo', 'lastName'], '');
       },
     },
 
@@ -136,6 +149,24 @@ export default function create(store) {
     listingCount: {
       get() {
         return store.getState().ProductListing.get('totalProductsCount');
+      },
+    },
+    cartType: {
+      get() {
+        const orderDetails = store.getState().CartPageReducer.get('orderDetails');
+        let typeCart = 'standard';
+        const isBopisOrder = orderDetails.get('isBopisOrder');
+        const isBossOrder = orderDetails.get('isBossOrder');
+        const isPickupOrder = orderDetails.get('isPickupOrder');
+        const isShippingOrder = orderDetails.get('isShippingOrder');
+        if (isShippingOrder && (isBopisOrder || isBossOrder || isPickupOrder)) {
+          typeCart = 'mix';
+        } else if (isBopisOrder && !isBossOrder) {
+          typeCart = 'bopis';
+        } else if (isBossOrder && !isBopisOrder) {
+          typeCart = 'boss';
+        }
+        return typeCart;
       },
     },
   });

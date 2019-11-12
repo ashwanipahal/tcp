@@ -14,8 +14,8 @@ const buildQuery = ({ slot, contentId, lang }) => `
 				style
 			}
 			buttonList {
-				url
-				text
+				id: url
+				label: text
 				external
 				title
 				action

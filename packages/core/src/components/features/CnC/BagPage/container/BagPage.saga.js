@@ -20,6 +20,7 @@ import {
   checkoutSetCartData,
   getSetIsPaypalPaymentSettings,
   getSetCheckoutStage,
+  toggleCheckoutRouting,
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
@@ -32,7 +33,7 @@ import checkoutSelectors, {
   isRemembered,
   isExpressCheckout,
 } from '../../Checkout/container/Checkout.selector';
-import { isMobileApp, isCanada } from '../../../../../utils';
+import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 
 import {
   addItemToSflList,
@@ -45,6 +46,7 @@ import {
   getIsInternationalShipping,
   getIsRadialInventoryEnabled,
   getRecalcOrderPointsInterval,
+  getCurrentSiteLanguage,
 } from '../../../../../reduxStore/selectors/session.selectors';
 import {
   closeMiniBag,
@@ -53,7 +55,7 @@ import {
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
-import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
 import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
 
 const { getOrderPointsRecalcFlag } = utility;
@@ -89,13 +91,15 @@ export function* getTranslatedProductInfo(cartInfo) {
     if (tcpProdpartNumberList.length) {
       tcpProductsResults = yield call(
         getProductInfoForTranslationData,
-        tcpProdpartNumberList.join()
+        tcpProdpartNumberList.join(),
+        'TCP'
       );
     }
     if (gymProdpartNumberList.length) {
       gymProductsResults = yield call(
         getProductInfoForTranslationData,
-        gymProdpartNumberList.join()
+        gymProdpartNumberList.join(),
+        'GYM'
       );
     }
     gymProductsResults = (gymProductsResults && gymProductsResults.body.response.products) || [];
@@ -119,16 +123,25 @@ function createMatchObject(res, translatedProductInfo) {
   });
 }
 
+function* shouldTranslate(translation) {
+  const currentLanguage = yield select(getCurrentSiteLanguage);
+  const allowLanguageTranslation = currentLanguage !== 'en';
+  return translation && allowLanguageTranslation;
+}
+
 export function* getOrderDetailSaga(payload) {
   const { payload: { after } = {} } = payload;
   try {
     yield put(updateCartManually(true));
     const res = yield call(getOrderDetailsData);
-    const translatedProductInfo = yield call(getTranslatedProductInfo, res);
-
-    createMatchObject(res, translatedProductInfo);
+    if (yield call(shouldTranslate, true)) {
+      const translatedProductInfo = yield call(getTranslatedProductInfo, res);
+      if (!translatedProductInfo.error) {
+        createMatchObject(res, translatedProductInfo);
+      }
+    }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
-
+    yield put(toggleCheckoutRouting(true));
     if (after) {
       yield call(after);
     }
@@ -152,7 +165,7 @@ export function* getCartDataSaga(payload = {}) {
   try {
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
-    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems = true } = {} } = payload;
     const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
@@ -161,14 +174,15 @@ export function* getCartDataSaga(payload = {}) {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       ...cartProps,
     });
-    if (translation) {
+
+    if (yield call(shouldTranslate, translation)) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
       if (!translatedProductInfo.error) {
         createMatchObject(res, translatedProductInfo);
       }
     }
     yield updateBopisItems(res);
-    yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails, excludeCartItems));
 
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
@@ -178,6 +192,8 @@ export function* getCartDataSaga(payload = {}) {
     }
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
+    } else {
+      yield put(toggleCheckoutRouting(true));
     }
     yield put(BAG_PAGE_ACTIONS.setCouponsData(res.coupons));
     if (onCartRes) {
@@ -198,10 +214,13 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
-function* navigateToCheckout(stage, navigation, navigationActions) {
+function* navigateToCheckout(stage, navigation, navigationActions, isPayPalFlow = false) {
   yield put(getSetCheckoutStage(stage));
   const navigateAction = navigationActions.navigate({
     routeName: CONSTANTS.CHECKOUT_ROOT,
+    params: {
+      isPayPalFlow,
+    },
   });
   navigation.dispatch(navigateAction);
 }
@@ -342,7 +361,8 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
           navigateToCheckout,
           CONSTANTS.REVIEW_DEFAULT_PARAM,
           navigation,
-          navigationActions
+          navigationActions,
+          true
         );
       } else {
         utility.routeToPage(CHECKOUT_ROUTES.reviewPagePaypal);
@@ -350,6 +370,11 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
     }
   } catch (e) {
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
+    if (!isMobileApp()) {
+      yield put(closeMiniBag());
+      yield put(BAG_PAGE_ACTIONS.setIsPaypalBtnHidden(true));
+      routerPush('/bag', '/bag');
+    }
   }
 }
 // export function* authorizePayPalPayment() {

@@ -26,6 +26,7 @@ import {
   getAppliedSortId,
   getLabels,
   getIsFilterBy,
+  getPLPTopPromos,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -78,6 +79,10 @@ class ProductListingContainer extends React.PureComponent {
         isOutfit: true,
         asPath: path,
       });
+    } else {
+      this.setState({
+        isOutfit: false,
+      });
     }
     const url = navigation && navigation.getParam('url');
     getProducts({ URI: 'category', url, ignoreCache: true });
@@ -109,6 +114,8 @@ class ProductListingContainer extends React.PureComponent {
       isLoggedIn,
       currencyAttributes,
       currency,
+      plpTopPromos,
+      router: { asPath: asPathVal },
       ...otherProps
     } = this.props;
     const { isOutfit, asPath } = this.state;
@@ -138,16 +145,20 @@ class ProductListingContainer extends React.PureComponent {
         isLoggedIn={isLoggedIn}
         currency={currency}
         currencyExchange={currencyAttributes.exchangevalue}
+        plpTopPromos={plpTopPromos}
+        asPathVal={asPathVal}
         {...otherProps}
       />
     ) : (
       <OutfitListingContainer
         asPath={asPath}
+        asPathVal={asPathVal}
         breadCrumbs={breadCrumbs}
         navTree={navTree}
         currentNavIds={currentNavIds}
         longDescription={longDescription}
         categoryId={categoryId}
+        plpTopPromos={plpTopPromos}
       />
     );
   }
@@ -206,6 +217,7 @@ function mapStateToProps(state) {
     isFilterBy: getIsFilterBy(state),
     currencyAttributes: getCurrencyAttributes(state),
     currency: getCurrentCurrency(state),
+    plpTopPromos: getPLPTopPromos(state),
   };
 }
 
@@ -258,6 +270,7 @@ ProductListingContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   currencyAttributes: PropTypes.shape({}),
   currency: PropTypes.string,
+  plpTopPromos: PropTypes.shape({}),
 };
 
 ProductListingContainer.defaultProps = {
@@ -282,6 +295,7 @@ ProductListingContainer.defaultProps = {
     exchangevalue: 1,
   },
   currency: 'USD',
+  plpTopPromos: {},
 };
 
 export default withRouter(

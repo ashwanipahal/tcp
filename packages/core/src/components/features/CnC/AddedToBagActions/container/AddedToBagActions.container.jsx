@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 import AddedToBagActionsView from '../views/AddedToBagActions.view';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
 import { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
@@ -39,6 +40,10 @@ export class AddedToBagContainer extends React.Component<Props> {
       isPayPalWebViewEnable,
       venmoError,
       orderId,
+      isPayPalHidden,
+      payPalTop,
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -64,6 +69,10 @@ export class AddedToBagContainer extends React.Component<Props> {
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         venmoError={venmoError}
         orderId={orderId}
+        isPayPalHidden={isPayPalHidden}
+        payPalTop={payPalTop}
+        setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
+        cartOrderItems={cartOrderItems}
       />
     );
   }
@@ -76,6 +85,8 @@ AddedToBagContainer.propTypes = {
   isNoNEmptyBag: PropTypes.number.isRequired,
   isBagPageStickyHeader: PropTypes.bool,
   containerId: PropTypes.string,
+  setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
+  cartOrderItems: PropTypes.shape([]).isRequired,
 };
 
 AddedToBagContainer.defaultProps = {
@@ -87,6 +98,9 @@ const mapDispatchToProps = dispatch => {
   return {
     handleCartCheckout: payload => {
       dispatch(bagPageActions.startCheckout(payload));
+    },
+    setClickAnalyticsDataCheckout: payload => {
+      dispatch(setClickAnalyticsData(payload));
     },
   };
 };
@@ -102,6 +116,8 @@ const mapStateToProps = state => {
     isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
     orderId: getCartOrderId(state),
     venmoError: checkoutSelectors.getVenmoError(state),
+    isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
+    cartOrderItems: BagPageSelectors.getOrderItems(state),
   };
 };
 

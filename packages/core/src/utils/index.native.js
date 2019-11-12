@@ -66,6 +66,8 @@ export {
   getStyliticsUserName,
   getStyliticsRegion,
   canUseDOM,
+  calculatePriceValue,
+  getProductUrlForDAM,
 } from './utils';
 
 export { getLoading } from './JsxUtils.app';

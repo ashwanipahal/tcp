@@ -67,9 +67,7 @@ export class AddEditCreditCard extends React.PureComponent {
 
   componentDidMount() {
     const { getAddressListAction } = this.props;
-    getAddressListAction({
-      ignoreCache: true,
-    });
+    getAddressListAction();
     this.setInitialValues();
   }
 

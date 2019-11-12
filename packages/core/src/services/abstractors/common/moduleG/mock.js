@@ -17,7 +17,11 @@ export default {
           textItems: [
             {
               text: 'ALL MATCHABLES',
-              style: 'medium_text_regular',
+              style: 'large_text_bold',
+            },
+            {
+              text: '60% OFF',
+              style: 'large_text_bold',
             },
           ],
           icon: {
@@ -41,7 +45,7 @@ export default {
           textItems: [
             {
               text: '60% OFF',
-              style: 'large_text_black',
+              style: 'extra_large_text_regular',
             },
           ],
         },

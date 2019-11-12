@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../common/hoc/withStyles.native';
 import ProductList from '../molecules/ProductList/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import {
-  styles,
-  PageContainer,
-  ItemCountContainer,
-  ListHeaderContainer,
-} from '../styles/ProductListing.style.native';
+import { styles, PageContainer, ListHeaderContainer } from '../styles/ProductListing.style.native';
 import FilterModal from '../molecules/FilterModal';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
 import PLPSkeleton from '../../../../common/atoms/PLPSkeleton';
 
@@ -20,26 +13,7 @@ const renderItemCountView = itemCount => {
     return itemCount;
   }
 
-  return (
-    <ItemCountContainer>
-      <BodyCopy
-        dataLocator="pdp_product_badges"
-        mobileFontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        color="gray.900"
-        text={`${itemCount} `}
-      />
-      <BodyCopy
-        dataLocator="pdp_product_badges"
-        mobileFontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        color="gray.900"
-        text="Items"
-      />
-    </ItemCountContainer>
-  );
+  return itemCount;
 };
 
 const onRenderHeader = data => {
@@ -59,7 +33,7 @@ const onRenderHeader = data => {
   } = data;
   return (
     <ListHeaderContainer>
-      {totalProductsCount && totalProductsCount > 1 && (
+      {totalProductsCount > 1 && (
         <FilterModal
           filters={filters}
           labelsFilter={labelsFilter}
@@ -74,7 +48,6 @@ const onRenderHeader = data => {
         />
       )}
 
-      {renderItemCountView(totalProductsCount)}
       {renderBrandFilter && renderBrandFilter()}
     </ListHeaderContainer>
   );
@@ -84,6 +57,7 @@ const ProductListView = ({
   products,
   filters,
   labelsFilter,
+  labelsLogin,
   breadCrumbs,
   onPressFilter,
   onPressSort,
@@ -103,7 +77,11 @@ const ProductListView = ({
   renderBrandFilter,
   margins,
   paddings,
+  onAddItemToFavorites,
+  isLoggedIn,
   isLoadingMore,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -130,12 +108,17 @@ const ProductListView = ({
         scrollToTop={scrollToTop}
         totalProductsCount={totalProductsCount}
         onRenderHeader={() => onRenderHeader(headerData)}
+        onrenderItemCountView={() => renderItemCountView(totalProductsCount)}
         isFavorite={isFavorite}
+        onAddItemToFavorites={onAddItemToFavorites}
+        isLoggedIn={isLoggedIn}
+        labelsLogin={labelsLogin}
+        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         {...otherProps}
       />
       {isLoadingMore ? <PLPSkeleton col={20} /> : null}
       <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </PageContainer>
   );
@@ -164,7 +147,12 @@ ProductListView.propTypes = {
   renderBrandFilter: PropTypes.func,
   margins: PropTypes.string,
   paddings: PropTypes.string,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isLoadingMore: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -182,6 +170,12 @@ ProductListView.defaultProps = {
   renderBrandFilter: null,
   margins: null,
   paddings: null,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
+  labelsLogin: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductListView, styles);
+export { ProductListView as ProductListViewVanilla };

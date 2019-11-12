@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
@@ -8,6 +8,8 @@ import MyPlaceRewardsOverviewTile from '@tcp/core/src/components/features/accoun
 import MyWalletTile from '@tcp/core/src/components/features/account/common/organism/MyWalletTile';
 import EarnExtraPointsOverview from '@tcp/core/src/components/features/account/common/organism/EarnExtraPointsOverview';
 import { getLabelValue } from '@tcp/core/src/utils';
+import AsyncStorage from '@react-native-community/async-storage';
+import CookieManager from 'react-native-cookies';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import MyPlaceRewardsCreditCard from '../../common/organism/MyPlaceRewardsCreditCard';
@@ -39,9 +41,9 @@ import ImageComp from '../../../../common/atoms/Image';
 import CreateAccount from '../../CreateAccount';
 import LoginPageContainer from '../../LoginPage';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
-import ApplyNowWrapper from '../../../../common/molecules/ApplyNowPLCCModal';
 import CustomIcon from '../../../../common/atoms/Icon';
 import { ICON_NAME, ICON_FONT_CLASS } from '../../../../common/atoms/Icon/Icon.constants';
+import OrderNotification from '../../OrderNotification';
 
 const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled-heart.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
@@ -52,7 +54,6 @@ class AccountOverview extends PureComponent<Props> {
     super(props);
     this.state = {
       showModal: false,
-      applyCard: false,
       getComponentId: {
         login: '',
         createAccount: '',
@@ -76,9 +77,20 @@ class AccountOverview extends PureComponent<Props> {
     if (!changePassword) this.navigateToChangePassword();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevPops) {
     const { changePassword } = this.state;
     if (!changePassword) this.navigateToChangePassword();
+
+    const { isUserLoggedIn } = this.props;
+    if (prevPops.isUserLoggedIn !== isUserLoggedIn && isUserLoggedIn && Platform.OS === 'ios')
+      // save cookies in the async storage for ios
+      CookieManager.getAll().then(res => {
+        Object.keys(res).forEach(key => {
+          if (key.startsWith('WC_')) {
+            AsyncStorage.setItem(key, res[key].value);
+          }
+        });
+      });
   }
 
   navigateToChangePassword = () => {
@@ -157,10 +169,9 @@ class AccountOverview extends PureComponent<Props> {
   };
 
   toggleApplyNowModal = () => {
-    const { applyCard } = this.state;
-    this.setState({
-      applyCard: !applyCard,
-    });
+    const { navigation, openApplyNowModal } = this.props;
+    navigation.navigate('ApplyNow');
+    openApplyNowModal({ isModalOpen: true });
   };
 
   toggleModal = ({ getComponentId }) => {
@@ -227,12 +238,14 @@ class AccountOverview extends PureComponent<Props> {
 
   render() {
     const { isUserLoggedIn, labels, commonLabels, handleComponentChange, navigation } = this.props;
-    const { showModal, getComponentId, applyCard, modalHeaderLbl, horizontalBar } = this.state;
+    const { showModal, getComponentId, modalHeaderLbl, horizontalBar } = this.state;
     this.getModalHeader(getComponentId, labels);
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
+
     return (
       <View style={viewContainerStyle}>
+        <OrderNotification />
         {isUserLoggedIn && (
           <React.Fragment>
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}>
@@ -415,7 +428,6 @@ class AccountOverview extends PureComponent<Props> {
             </FavoritesWrapper>
             <CustomIcon name={ICON_NAME.chevronRight} size="fs12" color="gray.600" isButton />
           </TouchabelContainer>
-          <ApplyNowWrapper toggleModalWrapper={this.toggleApplyNowModal} applyNow={applyCard} />
           <Panel
             title={getLabelValue(labels, 'lbl_overview_manage_creditCard')}
             isVariationTypeLink
@@ -424,7 +436,7 @@ class AccountOverview extends PureComponent<Props> {
           <TouchabelContainer
             onPress={() => {
               navigation.navigate('GiftCardPage', {
-                title: 'Gift Cards',
+                title: getLabelValue(commonLabels, 'lbl_purchaseGiftsCard_pageTitle'),
                 pdpUrl: 'Gift Card',
               });
             }}

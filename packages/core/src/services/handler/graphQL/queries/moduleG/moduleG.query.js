@@ -1,6 +1,6 @@
 const buildQuery = ({ slot, contentId }) => `
   ${slot}: moduleById(id: "${contentId}") {
-
+   
     contentId
     name
     type

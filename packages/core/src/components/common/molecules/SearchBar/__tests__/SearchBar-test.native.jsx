@@ -14,3 +14,15 @@ describe('SearchBar native should render correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
+
+describe('SearchBar native should render correctly with showCustomizedSearch', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<SearchBar showCustomizedSearch />);
+  });
+
+  it('should match snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+});
