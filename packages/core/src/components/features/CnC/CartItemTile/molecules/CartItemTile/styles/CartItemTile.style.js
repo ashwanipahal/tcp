@@ -44,8 +44,8 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
-  .padding-top-32 {
-    padding-top: 32px;
+  .padding-top-43 {
+    padding-top: 43px;
   }
   .padding-bottom-20 {
     padding-bottom: 20px;

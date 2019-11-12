@@ -490,7 +490,7 @@ class CartItemTile extends PureComponent {
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
-    const topPaddingClass = isBagPageSflSection ? 'padding-top-32' : 'padding-top-15';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-43' : 'padding-top-15';
     return (
       <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
         {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
