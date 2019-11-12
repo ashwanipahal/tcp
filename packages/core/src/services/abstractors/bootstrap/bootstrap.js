@@ -151,7 +151,7 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
  * @param {*} bootstrapData Response from API call
  * @param {*} pageName Page Name
  */
-const checkForErrors = (bootstrapData, pageName) => {
+const checkAndLogErrors = (bootstrapData, pageName) => {
   const { labels, header, footer, navigation } = bootstrapData;
   const { errorMessage: headerErrorMessage } = header;
   const errorObject = {
@@ -166,34 +166,34 @@ const checkForErrors = (bootstrapData, pageName) => {
     if (headerErrorMessage) {
       errorObject.header_error = 1;
       errorObject.header_error_message = headerErrorMessage;
-      logger.error(`Error occurred in header ${headerErrorMessage}`);
+      logger.error(`Error occurred in header query ${headerErrorMessage}`);
     }
     const { errorMessage: footerErrorMessage } = footer;
     if (footerErrorMessage) {
       errorObject.footer_error = 1;
       errorObject.footer_error_message = footerErrorMessage;
-      logger.error(`Error occurred in footer ${footerErrorMessage}`);
+      logger.error(`Error occurred in footer query ${footerErrorMessage}`);
     }
     const [{ errorMessage: navigationErrorMessage }] = navigation;
     if (navigationErrorMessage) {
       errorObject.navigation_error = 1;
       errorObject.navigation_error_message = navigationErrorMessage;
-      logger.error(`Error occurred in navigation ${navigationErrorMessage}`);
+      logger.error(`Error occurred in navigation query ${navigationErrorMessage}`);
     }
     const [{ errorMessage: labelsErrorMessage }] = labels;
     if (labelsErrorMessage) {
       errorObject.labels_error = 1;
       errorObject.labels_error_message = labelsErrorMessage;
-      logger.error(`Error occurred in labels ${labelsErrorMessage}`);
+      logger.error(`Error occurred in labels query ${labelsErrorMessage}`);
     }
     const { errorMessage: layoutErrorMessage } = bootstrapData[pageName];
     if (layoutErrorMessage) {
       errorObject.layout_error = 1;
       errorObject.layout_error_message = layoutErrorMessage;
-      logger.error(`Error occurred in labels ${layoutErrorMessage}`);
+      logger.error(`Error occurred in layout query ${layoutErrorMessage}`);
     }
   } catch (e) {
-    logger.error(`Error Occured While Parsing error`);
+    logger.error(`Error Occurred While Parsing error response`);
   }
 
   return errorObject;
@@ -269,7 +269,7 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
     logger.info('Executing Bootstrap Query for global modules: ', bootstrapModules);
     logger.debug('Executing Bootstrap Query with params: ', bootstrapParams, pageName);
     const bootstrapData = await fetchBootstrapData(bootstrapParams, bootstrapModules);
-    const errorObject = checkForErrors(bootstrapData, pageName);
+    const errorObject = checkAndLogErrors(bootstrapData, pageName);
     logger.info('Bootstrap Query Executed Successfully');
     logger.debug('Bootstrap Query Result: ', bootstrapData);
     const fetchCachedDataParams = { bootstrapData, cachedData };

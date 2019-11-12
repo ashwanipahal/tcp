@@ -56,14 +56,14 @@ const LayoutAbstractor = {
    * Asynchronous function to get modules data from service for layouts
    * @param {Object} data Response object for layout query
    */
-  getModulesFromLayout: async (data, language) => {
+  getModulesFromLayout: async (data, language, page) => {
     logger.info('module received language ', language);
     // Adding Module 2 columns mock
     const layoutResponse = data.items;
 
     const moduleObjects = LayoutAbstractor.collateModuleObject(layoutResponse, language);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
-      return LayoutAbstractor.processModuleData(response.data);
+      return LayoutAbstractor.processModuleData(response.data, page);
     });
   },
   /**
@@ -74,7 +74,7 @@ const LayoutAbstractor = {
     const moduleIds = [];
     items.forEach(({ layout: { slots } }) => {
       slots.forEach(slot => {
-        LayoutAbstractor.slotModuleMap[slot.name] = slot.moduleName;
+        LayoutAbstractor.slotModuleMap[slot.name] = slot;
         if (slot.contentId) {
           const contentIds = slot.contentId.split(',');
           if (contentIds.length > 1) {
@@ -105,18 +105,19 @@ const LayoutAbstractor = {
     });
     return moduleIds;
   },
-  checkForErrors: (data, slotKey) => {
+  checkForErrors: (data, slotKey, page) => {
     const { errorMessage } = data;
     if (errorMessage) {
+      const { moduleName, contentId } = LayoutAbstractor.slotModuleMap[slotKey];
       logger.error(
-        `Error occurred in ${LayoutAbstractor.slotModuleMap[slotKey]}-> ${errorMessage}`
+        `Error occurred on page ${page} in module ${moduleName} {contentId: ${contentId}}-> ${errorMessage}`
       );
     }
   },
-  processModuleData: moduleData => {
+  processModuleData: (moduleData, page) => {
     const modulesObject = {};
     Object.keys(moduleData).forEach(slotKey => {
-      LayoutAbstractor.checkForErrors(moduleData[slotKey], slotKey);
+      LayoutAbstractor.checkForErrors(moduleData[slotKey], slotKey, page);
       let { set } = moduleData[slotKey];
       if (!set) {
         set = [];
