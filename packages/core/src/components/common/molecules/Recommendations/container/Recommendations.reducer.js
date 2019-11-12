@@ -14,7 +14,7 @@ const getDefaultState = state => {
 const RecommendationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_RECOMMENDATIONS_DATA:
-      return state.merge(action.payload);
+      return state.set(action.payload.reduxKey, action.payload.result);
     default:
       return getDefaultState(state);
   }

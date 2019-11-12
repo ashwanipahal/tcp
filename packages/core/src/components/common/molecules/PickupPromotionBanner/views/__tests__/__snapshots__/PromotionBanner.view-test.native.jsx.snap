@@ -11,7 +11,7 @@ exports[`ProductAddToBagVanilla should render correctly should call modifiedBann
       javaScriptEnabled={false}
       source={
         Object {
-          "html": "<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>PICK UP IN STORE AND SAVE AN EXTRA undefined%</body></html>",
+          "html": "<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>PICK UP IN STORE AND SAVE AN EXTRA 5%</body></html>",
         }
       }
       thirdPartyCookiesEnabled={false}
@@ -33,7 +33,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
         javaScriptEnabled={false}
         source={
           Object {
-            "html": "<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>EXTRA undefined% OFF</body></html>",
+            "html": "<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>EXTRA 5% OFF</body></html>",
           }
         }
         thirdPartyCookiesEnabled={false}

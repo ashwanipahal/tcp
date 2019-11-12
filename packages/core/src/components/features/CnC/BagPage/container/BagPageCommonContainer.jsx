@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isGuest as isGuestUser } from '@tcp/core/src/components/features/CnC/Checkout/container/Checkout.selector';
+import { setClickAnalyticsData, trackPageView } from '@tcp/core/src/analytics/actions';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -97,6 +98,10 @@ export class BagPageContainer extends React.Component<Props> {
       isPickupModalOpen,
       isMobile,
       bagPageServerError,
+      setClickAnalyticsDataBag,
+      cartOrderItems,
+      isCartLoaded,
+      trackPageViewBag,
     } = this.props;
 
     const showAddTobag = false;
@@ -130,6 +135,10 @@ export class BagPageContainer extends React.Component<Props> {
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
         bagPageServerError={bagPageServerError}
+        cartOrderItems={cartOrderItems}
+        setClickAnalyticsDataBag={setClickAnalyticsDataBag}
+        isCartLoaded={isCartLoaded}
+        trackPageViewBag={trackPageViewBag}
       />
     );
   }
@@ -146,6 +155,8 @@ BagPageContainer.getInitialProps = (reduxProps, pageProps) => {
       pageData: {
         pageName: 'shipping bag',
         pageSection: loadedComponent,
+        pageNavigationText: 'header-cart',
+        loadAnalyticsOnload: false,
       },
     },
   };
@@ -180,6 +191,12 @@ export const mapDispatchToProps = dispatch => {
     toastMessagePositionInfo: palyoad => {
       dispatch(toastMessagePosition(palyoad));
     },
+    setClickAnalyticsDataBag: payload => {
+      dispatch(setClickAnalyticsData(payload));
+    },
+    trackPageViewBag: payload => {
+      dispatch(trackPageView(payload));
+    },
   };
 };
 
@@ -208,6 +225,8 @@ export const mapStateToProps = state => {
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
+    cartOrderItems: BagPageSelector.getOrderItems(state),
+    isCartLoaded: BagPageSelector.getCartLoadedState(state),
   };
 };
 

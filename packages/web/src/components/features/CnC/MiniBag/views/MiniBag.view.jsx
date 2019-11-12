@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getCartItemCount, getSflItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getSflItemCount } from '@tcp/core/src/utils/cookie.util';
 import styles, { modalStyles } from '../styles/MiniBag.style';
 import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
@@ -81,9 +81,10 @@ class MiniBag extends React.Component {
       isShowSaveForLaterSwitch,
       isUserLoggedIn,
       isRememberedUser,
+      cartOrderItemsCount,
     } = this.props;
     const { country } = this.state;
-    const cartItemCount = getCartItemCount();
+    const cartItemCount = cartOrderItemsCount;
     const sflItemsCount = getSflItemCount(country);
     return (
       <Modal
@@ -146,6 +147,7 @@ MiniBag.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isRememberedUser: PropTypes.bool.isRequired,
+  cartOrderItemsCount: PropTypes.number.isRequired,
 };
 
 export default withRouter(withStyles(MiniBag, styles));
