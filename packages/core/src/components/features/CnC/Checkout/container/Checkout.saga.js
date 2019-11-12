@@ -210,7 +210,7 @@ function* initShippingData(pageName, initialLoad) {
   }
 }
 
-function* handleCheckoutInitRouting(pageName, appRouting) {
+function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouting) {
   const checkoutRoutingDone = yield select(getIfCheckoutRoutingDone);
   if (!checkoutRoutingDone && !appRouting && !isMobileApp()) {
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
@@ -223,20 +223,28 @@ function* handleCheckoutInitRouting(pageName, appRouting) {
       const orderHasPickup = yield select(getIsOrderHasPickup);
       requestedStage = orderHasPickup ? PICKUP : SHIPPING;
     }
-    utility.routeToPage(CHECKOUT_ROUTES[`${requestedStage}Page`], { appRouting: pageName });
+    utility.routeToPage(CHECKOUT_ROUTES[`${requestedStage}Page`], {
+      appRouting: pageName,
+      ...otherProps,
+    });
     yield put(toggleCheckoutRouting(true));
     return requestedStage;
   }
   return pageName;
 }
 
+function* triggerInternationalCheckoutIfRequired() {
+  const isInternationalShipping = yield select(getIsInternationalShipping);
+  if (isInternationalShipping && !isMobileApp()) {
+    return utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout);
+  }
+  return null;
+}
+
 function* initCheckoutSectionData({
   payload: { recalc, pageName, isPaypalPostBack, initialLoad, appRouting },
 }) {
-  const isInternationalShipping = yield select(getIsInternationalShipping);
-  if (isInternationalShipping) {
-    return utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout);
-  }
+  yield call(triggerInternationalCheckoutIfRequired);
   const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
@@ -272,8 +280,7 @@ function* initCheckoutSectionData({
     }
   }
   yield all(pendingPromises);
-  console.log({ handleCheckoutInitRouting });
-  const requestedStage = yield call(handleCheckoutInitRouting, pageName, appRouting);
+  const requestedStage = yield call(handleCheckoutInitRouting, { pageName }, appRouting);
   return yield call(initShippingData, requestedStage, initialLoad);
 }
 
