@@ -779,10 +779,10 @@ export const getProductInfoForTranslationData = (query, brand) => {
     brand,
   });
 };
-
+//TODO enable excludeCartItems when we exclude cart items
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems,
+  //excludeCartItems,
   recalcRewards,
   isCheckoutFlow,
   isRadialInvEnabled,
@@ -791,7 +791,8 @@ export const getCartData = ({
   const payload = {
     webService: endpoints.fullDetails,
     header: {
-      pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      //pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      pageName: 'fullOrderInfo',
       langId: -1,
       source: isLoggedIn ? 'login' : '',
       calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
