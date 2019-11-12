@@ -165,7 +165,7 @@ export class ModuleM extends React.PureComponent {
               </ImageGrid>
             );
           })}
-        {selectedProductList.length > 0 && (
+        {singleCTAButton && selectedProductList.length > 0 && (
           <CtaButtonWrapper
             length={selectedProductList.length}
             colSize={config[`images${selectedProductList.length}`].colSize}
@@ -225,17 +225,19 @@ export class ModuleM extends React.PureComponent {
               </div>
             );
           })}
-        <div className="moduleM__shopAllBtnWrapper">
-          <Anchor
-            to={singleCTAButton.url}
-            asPath={singleCTAButton.url}
-            title={singleCTAButton.tex}
-            dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
-            className="moduleM__shopAllBtn"
-          >
-            {singleCTAButton.text}
-          </Anchor>
-        </div>
+        {singleCTAButton ? (
+          <div className="moduleM__shopAllBtnWrapper">
+            <Anchor
+              to={singleCTAButton.url}
+              asPath={singleCTAButton.url}
+              title={singleCTAButton.tex}
+              dataLocator={`${getLocator('moduleM_shopAllBtn')}`}
+              className="moduleM__shopAllBtn"
+            >
+              {singleCTAButton.text}
+            </Anchor>
+          </div>
+        ) : null}
       </div>
     );
   };
@@ -244,24 +246,24 @@ export class ModuleM extends React.PureComponent {
    *  Renders image grid for tab item
    *  specific for Gymboree
    */
-  getCategoryImageList = ctaItems => {
+  getCategoryImageList = selectedProductList => {
     return (
-      ctaItems && (
+      selectedProductList && (
         <div className="image-items-container-category">
-          {ctaItems &&
-            ctaItems.map((productItem, index) => {
-              const { image, button } = productItem;
+          {selectedProductList &&
+            selectedProductList.map((productItem, index) => {
+              const { image, link } = productItem;
               return (
                 <ImageRoundFlex className="imagecategory__list">
                   <Anchor
-                    to={button.url}
-                    asPath={button.url}
+                    to={link.url}
+                    asPath={link.url}
                     dataLocator={`${getLocator('moduleM_product_image')}${index}`}
                   >
                     <DamImage
                       imgConfigs={config.IMG_DATA.productImgConfig}
                       imgData={image}
-                      link={button}
+                      link={link}
                     />
                     <BodyCopy
                       component="div"
@@ -270,7 +272,7 @@ export class ModuleM extends React.PureComponent {
                       color="text.primary"
                       fontFamily="secondary"
                     >
-                      {button.text}
+                      {link.text}
                     </BodyCopy>
                   </Anchor>
                 </ImageRoundFlex>
@@ -355,7 +357,9 @@ export class ModuleM extends React.PureComponent {
             }}
             className="product-tab-list"
           >
-            {divTabs && this.createProductTabList(this.createTabList(divTabs))}
+            {divTabs &&
+              divTabs.length > 1 &&
+              this.createProductTabList(this.createTabList(divTabs))}
           </Col>
           <Col
             colSize={{

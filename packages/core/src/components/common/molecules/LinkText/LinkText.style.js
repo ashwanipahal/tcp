@@ -134,12 +134,18 @@ export default css`
   .medium_text_subpromo {
     color: ${props => props.theme.colorPalette.gray['900']};
     font-family: ${props => props.theme.typography.fonts.primary};
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-size: ${props =>
+      props.theme.isGymboree
+        ? props.theme.typography.fontSizes.fs20
+        : props.theme.typography.fontSizes.fs14};
     font-weight: normal;
     text-align: center;
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs20};
+      font-size: ${props =>
+        props.theme.isGymboree
+          ? props.theme.typography.fontSizes.fs32
+          : props.theme.typography.fontSizes.fs20};
     }
   }
 `;
