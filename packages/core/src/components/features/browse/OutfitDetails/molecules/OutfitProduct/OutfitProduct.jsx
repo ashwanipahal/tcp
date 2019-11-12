@@ -28,6 +28,7 @@ const OutfitDetailsView = ({
   addToBagError,
   isLoggedIn,
   addToFavorites,
+  isBundleProduct,
 }) => {
   const { imagesByColor, colorFitsSizesMap } = outfitProduct;
   const colorProduct =
@@ -114,6 +115,7 @@ const OutfitDetailsView = ({
             isOutfitPage
             errorOnHandleSubmit={addToBagError}
             isPickup
+            isBundleProduct={isBundleProduct}
           />
         </div>
       </Col>
@@ -137,6 +139,7 @@ OutfitDetailsView.propTypes = {
   addToBagError: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  isBundleProduct: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -153,6 +156,7 @@ OutfitDetailsView.defaultProps = {
   labels: {},
   addToBagError: false,
   isLoggedIn: false,
+  isBundleProduct: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

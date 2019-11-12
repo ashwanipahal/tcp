@@ -9,6 +9,7 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import SocialConnect from '../../../../common/organisms/ProductImages/views/SocialConnect.view';
 import Product from '../../ProductDetail/molecules/Product/views/Product.view';
 import ProductDetailImage from '../../../../common/molecules/ProductDetailImage';
+import BundleProductItems from '../molecules/BundleProductItems';
 import config from './config';
 import {
   getImagesToDisplay,
@@ -135,7 +136,18 @@ class BundleProduct extends React.PureComponent {
   };
 
   render() {
-    const { className, currentProduct, pdpLabels } = this.props;
+    const {
+      className,
+      currentProduct,
+      currentBundle,
+      pdpLabels,
+      plpLabels,
+      handleAddToBag,
+      addToFavorites,
+      addToBagEcom,
+      currentState,
+      isLoggedIn,
+    } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap, generalProductId } = currentProduct;
       const currentColorEntry = getMapSliceForColorProductId(colorFitsSizesMap, generalProductId);
@@ -165,6 +177,19 @@ class BundleProduct extends React.PureComponent {
                   {this.getProductDescription()}
                 </Col>
               </Row>
+              <Row fullBleed className="product-items-section">
+                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                  <BundleProductItems
+                    currentBundle={currentBundle}
+                    plpLabels={plpLabels}
+                    handleAddToBag={handleAddToBag}
+                    addToFavorites={addToFavorites}
+                    addToBagEcom={addToBagEcom}
+                    currentState={currentState}
+                    isLoggedIn={isLoggedIn}
+                  />
+                </Col>
+              </Row>
             </Col>
           </Row>
         </div>
@@ -185,6 +210,13 @@ BundleProduct.propTypes = {
   productDetails: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.string,
+  plpLabels: PropTypes.shape({}),
+  currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  currentState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
 };
 
 BundleProduct.defaultProps = {
@@ -197,6 +229,8 @@ BundleProduct.defaultProps = {
   productDetails: {},
   currency: 'USD',
   currencyExchange: '',
+  plpLabels: {},
+  isLoggedIn: false,
 };
 
 export default withStyles(BundleProduct, styles);

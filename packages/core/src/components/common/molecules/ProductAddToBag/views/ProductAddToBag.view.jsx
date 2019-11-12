@@ -216,6 +216,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       showAddToBagCTA,
       alternateSizes,
       isPickup,
+      isBundleProduct,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -282,7 +283,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 </Button>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
-              {this.renderOutfitButton()}
+              {!isBundleProduct && this.renderOutfitButton()}
             </Col>
           </Row>
         )}
