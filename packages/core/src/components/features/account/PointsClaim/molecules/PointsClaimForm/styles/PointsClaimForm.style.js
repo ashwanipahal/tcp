@@ -10,6 +10,7 @@ const styles = css`
       margin-top: 0;
     }
   }
+
   .image_container {
     display: flex;
     align-items: center;
