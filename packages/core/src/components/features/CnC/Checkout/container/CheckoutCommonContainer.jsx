@@ -184,6 +184,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       pickUpContactAlternate,
       dispatchReviewReduxForm,
       updateRTPS,
+      isPayPalWebViewEnable,
     } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
@@ -192,7 +193,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItems,
       checkoutProgressBarLabels
     );
-
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
@@ -268,6 +268,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         cartOrderItemsCount={cartOrderItemsCount}
         checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
         updateRTPS={updateRTPS}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
   }
@@ -426,6 +427,7 @@ const mapStateToProps = state => {
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     couponHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     isRTPSFlow: selectors.getIsRtpsFlow(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
   };
 };
 
