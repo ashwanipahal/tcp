@@ -59,7 +59,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
     } = this.props;
     const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     return (
-      <ClickTracker name="Gift_Services">
+      <ClickTracker name="Gift_Services" className="checkoutBtnTracker">
         <Button
           data-locator={getLocator('addedtobag_btncheckout')}
           className="checkout"

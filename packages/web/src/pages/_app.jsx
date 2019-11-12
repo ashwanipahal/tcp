@@ -173,7 +173,7 @@ class TCPWebApp extends App {
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
       const { locals } = res;
-      const { device = {} } = req;
+      const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
       // preview check from akamai header
       apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
@@ -203,6 +203,7 @@ class TCPWebApp extends App {
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersObject,
+        originalUrl,
       };
 
       // Get initial props is getting called twice on server
@@ -223,11 +224,11 @@ class TCPWebApp extends App {
     return initialProps;
   }
 
-  static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
+  static async loadComponentData(Component, { store, isServer, req = {}, query = '' }, pageProps) {
     let compProps = {};
     if (Component.getInitialProps) {
       try {
-        compProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+        compProps = await Component.getInitialProps({ store, isServer, query, req }, pageProps);
       } catch (e) {
         compProps = {};
       }

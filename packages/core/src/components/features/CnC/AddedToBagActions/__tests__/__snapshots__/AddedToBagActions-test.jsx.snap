@@ -53,6 +53,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       </div>
     </div>
     <Connect(Component)
+      className="checkoutBtnTracker"
       name="Gift_Services"
     >
       <Styled(Button)
@@ -142,6 +143,7 @@ exports[`AddedToBagActions component AddedToBagActions component with Venmo Erro
       </div>
     </div>
     <Connect(Component)
+      className="checkoutBtnTracker"
       name="Gift_Services"
     >
       <Styled(Button)
