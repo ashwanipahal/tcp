@@ -14,7 +14,6 @@ export default css`
       top: 0;
       height: 100%;
       overflow: auto;
-      z-index:10000;
       -webkit-overflow-scrolling: touch;
     }
 
@@ -280,6 +279,7 @@ export default css`
       overflow: unset;
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
+        z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
       }
 
       @media ${props => props.theme.mediaQuery.smallOnly} {
