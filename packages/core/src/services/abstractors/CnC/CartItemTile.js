@@ -582,7 +582,8 @@ export const getCurrentOrderFormatter = (
     // making pickup page visible for BOSS items as well
     // replaced "BOPIS" and "BOSS" with a config variable
     const store =
-      (item.orderItemType === 'BOPIS' || item.orderItemType === 'BOSS') &&
+      (item.orderItemType === ORDER_ITEM_TYPE.BOPIS ||
+        item.orderItemType === ORDER_ITEM_TYPE.BOSS) &&
       item.stLocId &&
       orderDetailsResponse.mixOrderDetails &&
       orderDetailsResponse.mixOrderDetails.data

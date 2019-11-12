@@ -99,7 +99,7 @@ export class TextBox extends React.Component {
             </StyledErrorIcon>
           )}
           <BodyCopy
-            mobilefontFamily={['secondary']}
+            fontFamily="secondary"
             fontWeight="semibold"
             fontSize="fs12"
             text={error}
@@ -128,7 +128,7 @@ export class TextBox extends React.Component {
             <Image source={successCircleIcon} width="18px" height="18px" />
           </StyledSuccessCheck>
           <BodyCopy
-            mobilefontFamily={['secondary']}
+            fontFamily="secondary"
             fontWeight="semibold"
             fontSize="fs12"
             text={successText}

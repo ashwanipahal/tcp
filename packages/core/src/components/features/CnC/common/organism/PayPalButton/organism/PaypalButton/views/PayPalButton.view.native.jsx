@@ -1,8 +1,17 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
-import { View, WebView, Platform } from 'react-native';
+import { View, WebView, Platform, KeyboardAvoidingView } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
+import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
+
+const containerStyle = { flex: 1 };
+let styles = {
+  height: 42,
+  width: 340,
+  flex: 1,
+  overflow: 'hidden',
+};
 
 class PayPalButton extends React.PureComponent {
   state = { showAsModal: false };
@@ -43,15 +52,22 @@ class PayPalButton extends React.PureComponent {
     }
   };
 
-  render() {
-    const { getPayPalSettings, paypalEnv, paypalStaticUrl, top } = this.props;
+  dynamicWebUrl = () => {
+    const { getPayPalSettings, paypalEnv, paypalStaticUrl, isBillingPage } = this.props;
+    let webURL = '';
+    const paypalColor = isBillingPage
+      ? CONSTANTS.PAYPAL_CTA_COLOR.BLUE
+      : CONSTANTS.PAYPAL_CTA_COLOR.DEFAULT;
+    if (getPayPalSettings && getPayPalSettings.paypalInContextToken) {
+      webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
+        getPayPalSettings.paypalInContextToken
+      }&paypalEnv=${paypalEnv}&paypalColor=${paypalColor}`;
+    }
+    return webURL;
+  };
 
-    let styles = {
-      height: 42,
-      width: 150,
-      flex: 1,
-      overflow: 'hidden',
-    };
+  render() {
+    const { getPayPalSettings, top } = this.props;
 
     const { showAsModal } = this.state;
     if (showAsModal) {
@@ -66,31 +82,32 @@ class PayPalButton extends React.PureComponent {
         overflow: 'hidden',
       };
     }
-    let webURL = '';
-    if (getPayPalSettings && getPayPalSettings.paypalInContextToken) {
-      webURL = `${paypalStaticUrl}/static/paypal/index.html?key=${
-        getPayPalSettings.paypalInContextToken
-      }&paypalEnv=${paypalEnv}`;
-    }
 
+    const webURL = this.dynamicWebUrl();
     return getPayPalSettings && getPayPalSettings.paypalInContextToken ? (
       <View style={{ ...styles }}>
-        <WebView
-          scalesPageToFit={false}
-          originWhitelist={['*']}
-          source={{
-            uri: webURL,
-          }}
-          mixedContentMode="always"
-          useWebKit={Platform.OS === 'ios'}
-          scrollEnabled
-          domStorageEnabled
-          thirdPartyCookiesEnabled
-          startInLoadingState
-          allowUniversalAccessFromFileURLs
-          javaScriptEnabled
-          onMessage={this.handleWebViewEvents}
-        />
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : null}
+          style={containerStyle}
+        >
+          <WebView
+            scalesPageToFit={false}
+            originWhitelist={['*']}
+            source={{
+              uri: webURL,
+            }}
+            mixedContentMode="always"
+            useWebKit={Platform.OS === 'ios'}
+            scrollEnabled
+            domStorageEnabled
+            thirdPartyCookiesEnabled
+            startInLoadingState
+            allowUniversalAccessFromFileURLs
+            javaScriptEnabled
+            onMessage={this.handleWebViewEvents}
+            automaticallyAdjustContentInsets={false}
+          />
+        </KeyboardAvoidingView>
       </View>
     ) : null;
   }
@@ -107,6 +124,7 @@ PayPalButton.propTypes = {
   closeModal: PropTypes.bool.isRequired,
   paypalStaticUrl: PropTypes.string.isRequired,
   top: PropTypes.number,
+  isBillingPage: PropTypes.bool.isRequired,
 };
 
 PayPalButton.defaultProps = {

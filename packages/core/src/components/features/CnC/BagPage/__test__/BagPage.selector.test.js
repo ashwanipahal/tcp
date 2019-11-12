@@ -37,6 +37,7 @@ describe('#Added to bag Selectors', () => {
       isPayPalWebViewEnable: false,
     },
     isPayPalEnabled: false,
+    loaded: false,
   });
 
   const sessionState = {
@@ -136,5 +137,8 @@ describe('#Added to bag Selectors', () => {
 
   it('#getPayPalWebViewStatus should return paypalView enable status', () => {
     expect(BAGPAGE_SELECTORS.getPayPalWebViewStatus(state)).toEqual(false);
+  });
+  it('#getCartLoadedState', () => {
+    expect(BAGPAGE_SELECTORS.getCartLoadedState(state)).toEqual(false);
   });
 });

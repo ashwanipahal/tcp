@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linking } from 'react-native';
+import { Linking, View } from 'react-native';
 import queryString from 'query-string';
 import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid/index.native';
@@ -7,7 +7,6 @@ import {
   LAZYLOAD_HOST_NAME,
   navigateToNestedRoute,
   resetNavigationStack,
-  updateAPIConfigForApp,
 } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
@@ -35,6 +34,7 @@ import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import ModuleE from '@tcp/core/src/components/common/molecules/ModuleE/views/ModuleE.native';
+import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import {
   HeaderPromoContainer,
@@ -112,7 +112,12 @@ class HomePageView extends React.PureComponent<Props> {
   };
 
   renderGlobalModal = navigation => {
-    return <QuickViewModal navigation={navigation} />;
+    return (
+      <View>
+        <QuickViewModal navigation={navigation} />
+        <AddedToBagContainer navigation={navigation} />
+      </View>
+    );
   };
 
   navigate = url => {
@@ -146,7 +151,6 @@ class HomePageView extends React.PureComponent<Props> {
     const { loadNavigationData, navigation, updatePreviewDate } = this.props;
     const { value } = this.state;
     updatePreviewDate(value);
-    updateAPIConfigForApp();
     this.loadBootstrapData();
     loadNavigationData();
     resetNavigationStack(navigation);
