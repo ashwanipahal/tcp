@@ -10,6 +10,14 @@ import { Grid, LinkText, PromoBanner } from '../..';
 import style, { ImageGrid, CtaButtonWrapper, ImageRoundFlex } from '../styles/ModuleM.style';
 import config from '../moduleM.config';
 
+/**
+ * @class ModuleM - global reusable component will display display a featured
+ * category module with category links and featured product images
+ * This component is plug and play at any given slot in layout by passing required data
+ * @param {headerText} headerText the list of data for header
+ * @param {promoBanner} promoBanner promo banner data
+ * @param {divTabs} divTabs division tabs data
+ */
 export class ModuleM extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -18,6 +26,7 @@ export class ModuleM extends React.PureComponent {
       isMobile: viewportInfo && viewportInfo.isMobile,
       isTablet: viewportInfo && viewportInfo.isTablet,
       productCategoryImageList: [],
+      singleCTAButton: {},
       activeTab: 'tablList-0',
     };
     this.gridImageRef = React.createRef();
@@ -27,7 +36,8 @@ export class ModuleM extends React.PureComponent {
     const { divTabs } = this.props;
     window.addEventListener('resize', throttle(this.windowResizeEventHandler.bind(this), 500));
     this.setState({
-      productCategoryImageList: divTabs[0].smallCompImages,
+      productCategoryImageList: divTabs[0].smallCompImage,
+      singleCTAButton: divTabs[0].linkClass,
     });
   }
 
@@ -36,8 +46,8 @@ export class ModuleM extends React.PureComponent {
   }
 
   /**
-+   * Set state based on view port.
-+   */
+   * Set state based on view port.
+   */
   windowResizeEventHandler = () => {
     const viewportInfo = isClient() ? getViewportInfo() : null;
     this.setState({
@@ -46,6 +56,9 @@ export class ModuleM extends React.PureComponent {
     });
   };
 
+  /**
+   * Returns module header
+   */
   getHeaderText = headerText => {
     return (
       <div className="promo-header-wrapper">
@@ -59,6 +72,9 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   * Returns promo banner for module
+   */
   getPromoBanner = promoBanner => {
     return (
       promoBanner && (
@@ -71,6 +87,9 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   * Returns viewport keys ie. sm|md|lg
+   */
   getViewportKey = () => {
     let gutterViewportKey;
     const { isMobile, isTablet } = this.state;
@@ -81,8 +100,11 @@ export class ModuleM extends React.PureComponent {
     return gutterViewportKey;
   };
 
+  /**
+   *  Renders image grid for tab item
+   */
   getProductImageGrid = selectedProductList => {
-    const { singleCTAButton } = this.props;
+    const { singleCTAButton } = this.state;
     const viewportKey = this.getViewportKey();
     const imageData = config[`images${selectedProductList.length}`];
     const rowMaxImages = imageData ? imageData.rowMaxImages[viewportKey] : 0;
@@ -138,7 +160,7 @@ export class ModuleM extends React.PureComponent {
                     className="moduleM__productName"
                     fontSize="fs15"
                     color="text.primary"
-                    fontFamily="secondary"
+                    fontFamily="primary"
                   >
                     {link.text}
                   </BodyCopy>
@@ -171,9 +193,11 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   *  Renders flex image grid for tab item
+   */
   getProductImageFlex = selectedProductList => {
-    const { singleCTAButton } = this.props;
-
+    const { singleCTAButton } = this.state;
     return (
       <div className="image-items-container__flex">
         {selectedProductList &&
@@ -215,6 +239,10 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   *  Renders image grid for tab item
+   *  specific for Gymboree
+   */
   getCategoryImageList = ctaItems => {
     return (
       ctaItems && (
@@ -248,18 +276,28 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
-  getProductImageList = (type, list) =>
-    type === 'flex' ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
+  /**
+   *  Returns type of grid item
+   */
+  getProductImageList = (flexbox, list) =>
+    flexbox ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
 
-  onTabChange = (id, imageList) => {
-    this.setState({ productCategoryImageList: imageList, activeTab: id });
+  onTabChange = (id, imageList, linkClass) => {
+    this.setState({
+      productCategoryImageList: imageList,
+      singleCTAButton: linkClass,
+      activeTab: id,
+    });
   };
 
+  /**
+   *  Render button tab list
+   */
   createProductTabList = tabList => {
     return (
       tabList &&
       tabList.map(list => {
-        const { text: listItemText, smallCompImages, id } = list;
+        const { text: listItemText, smallCompImage, linkClass, id } = list;
         const { activeTab } = this.state;
         return (
           <div
@@ -270,7 +308,7 @@ export class ModuleM extends React.PureComponent {
             <Button
               active={id === activeTab}
               buttonVariation="mini-nav"
-              onClick={() => this.onTabChange(id, smallCompImages)}
+              onClick={() => this.onTabChange(id, smallCompImage, linkClass)}
             >
               {listItemText.text}
             </Button>
@@ -280,11 +318,14 @@ export class ModuleM extends React.PureComponent {
     );
   };
 
+  /**
+   *  Creates button tab list data
+   */
   createTabList = tabList =>
     tabList.map((list, index) => Object.assign({}, list, { id: `tablList-${index}` }));
 
   render() {
-    const { className, headerText, promoBanner, divTabs, type, ctaItems } = this.props;
+    const { className, headerText, promoBanner, divTabs, flexbox, ctaItems } = this.props;
     const { productCategoryImageList } = this.state;
 
     return (
@@ -320,7 +361,7 @@ export class ModuleM extends React.PureComponent {
           >
             {ctaItems && ctaItems.length > 0
               ? this.getCategoryImageList(ctaItems)
-              : this.getProductImageList(type, productCategoryImageList)}
+              : this.getProductImageList(flexbox, productCategoryImageList)}
           </Col>
         </Row>
       </Grid>
@@ -333,7 +374,7 @@ ModuleM.propTypes = {
   headerText: PropTypes.shape([]),
   promoBanner: PropTypes.shape([]),
   divTabs: PropTypes.shape([]),
-  type: PropTypes.string,
+  flexbox: PropTypes.bool,
   singleCTAButton: PropTypes.shape({}),
   ctaItems: PropTypes.shape({}),
 };
@@ -343,7 +384,7 @@ ModuleM.defaultProps = {
   headerText: [],
   promoBanner: [],
   divTabs: [],
-  type: [],
+  type: 0,
   singleCTAButton: [],
   ctaItems: [],
 };

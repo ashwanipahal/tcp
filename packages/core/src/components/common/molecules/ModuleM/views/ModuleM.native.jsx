@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { getLocator, isGymboree } from '../../../../../utils';
 import { getScreenWidth } from '../../../../../utils/index.native';
-import { Anchor, BodyCopy, /* DamImage, */ Image } from '../../../atoms';
+import { Anchor, BodyCopy, DamImage } from '../../../atoms';
 import {
   Container,
   HeaderContainer,
@@ -149,28 +149,28 @@ class ModuleM extends React.PureComponent {
         {smallCompImage && smallCompImage.length > 0 ? (
           <ImageContainer>
             {smallCompImage.map(({ image, link }, index) => {
-              // const { IMG_DATA } = config;
+              const { IMG_DATA } = config;
               return (
                 <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
                   <Anchor url={link.url} navigation={navigation}>
-                    <Image
+                    {/* <Image
                       source={{ uri: image.url }}
                       height={imageDimension}
                       width={imageDimension}
                       marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
                       borderRadius={isGymboree() ? 50 : 0}
-                    />
-                    {/* TODO: Need to use DAM Image Component */}
-                    {/* <DamImage
+                    /> */}
+                    <DamImage
                       alt={image.alt}
                       url={image.url}
                       testID={`${getLocator('moduleM_image')}${index}`}
                       marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
+                      borderRadius={isGymboree() ? 50 : 0}
                       height={imageDimension}
                       width={imageDimension}
                       imgData={image}
                       imgConfig={IMG_DATA.productImgConfig[0]}
-                    /> */}
+                    />
                   </Anchor>
                   <Anchor
                     url={link.url}

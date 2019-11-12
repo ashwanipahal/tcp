@@ -129,4 +129,17 @@ export default css`
       font-size: ${props => props.theme.typography.fontSizes.fs32};
     }
   }
+
+  /* Module M Heading Styles */
+  .medium_text_subpromo {
+    color: ${props => props.theme.colorPalette.gray['900']};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-weight: normal;
+    text-align: center;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs20};
+    }
+  }
 `;
