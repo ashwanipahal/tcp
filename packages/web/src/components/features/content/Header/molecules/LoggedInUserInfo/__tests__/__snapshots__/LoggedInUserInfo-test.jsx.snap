@@ -17,6 +17,7 @@ exports[`LoggedInUserInfo component LoggedInUserInfo component renders correctly
       lineHeight="normal"
       link={null}
       onClick={[Function]}
+      tabIndex="0"
       textAlign="left"
     >
       <Styled(BodyCopy)

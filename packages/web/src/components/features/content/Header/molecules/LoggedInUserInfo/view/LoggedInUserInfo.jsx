@@ -41,7 +41,13 @@ const LoggedInUserInfo = ({
   return (
     <React.Fragment>
       <ClickTracker name="welcome_message">
-        <BodyCopy component="div" id={mainId} className="account-info-section" onClick={linkClick}>
+        <BodyCopy
+          component="div"
+          id={mainId}
+          className="account-info-section"
+          onClick={linkClick}
+          tabIndex="0"
+        >
           <BodyCopy className="account-info user-name" component="div" role="button">
             {`Hi, ${handleUserName(userName)}`}
           </BodyCopy>
