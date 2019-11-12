@@ -46,6 +46,18 @@ const ignorePsuedoCodeDir = [
   '/LabeledRadioButton/',
   '/ReactToolTip/',
   '/ModuleQ/',
+  '/web/src/utils',
+  '/web/src/reduxStore/store',
+  '/web/src/reduxStore/middlewares',
+  '/web/src/analytics',
+  '/web/src/analytics/dataLayers',
+  '/utils.web.js',
+  '/features/content/Header/views',
+  '/features/content/Header/molecules/StoreLocatorLink/views',
+  '/statefulClient.js',
+  '/services/handler',
+  '/services/handler/external',
+  '/abstractors/bootstrap/xappConfig',
 ];
 
 module.exports = {
