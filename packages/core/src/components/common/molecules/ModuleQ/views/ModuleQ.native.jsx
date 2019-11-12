@@ -60,7 +60,8 @@ function getCarouselSlide(
   navigation,
   moduleQMainTile,
   ignoreLazyLoadImage,
-  hostLazyLoad
+  hostLazyLoad,
+  showOutfitItems
 ) {
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
@@ -98,38 +99,40 @@ function getCarouselSlide(
               textColor="gray.900"
             />
           </OutfitMainTileWrapper>
-          <OutfitItemsWrapper>
-            {outfitItemsToShow.map(item => {
-              const { name: alt, remoteId, smallImageUrl } = item;
+          {showOutfitItems && (
+            <OutfitItemsWrapper>
+              {outfitItemsToShow.map(item => {
+                const { name: alt, remoteId, smallImageUrl } = item;
 
-              return (
-                <OutfitItemTileWrapper>
-                  <StyledImage
-                    key={remoteId}
-                    alt={alt}
-                    host={ignoreLazyLoadImage ? '' : hostLazyLoad || LAZYLOAD_HOST_NAME.HOME}
-                    url={getUrlWithHttp(smallImageUrl)}
-                    height={OUTFIT_ITEM_IMAGE_HEIGHT}
-                    width={OUTFIT_ITEM_IMAGE_WIDTH}
+                return (
+                  <OutfitItemTileWrapper>
+                    <StyledImage
+                      key={remoteId}
+                      alt={alt}
+                      host={ignoreLazyLoadImage ? '' : hostLazyLoad || LAZYLOAD_HOST_NAME.HOME}
+                      url={getUrlWithHttp(smallImageUrl)}
+                      height={OUTFIT_ITEM_IMAGE_HEIGHT}
+                      width={OUTFIT_ITEM_IMAGE_WIDTH}
+                    />
+                  </OutfitItemTileWrapper>
+                );
+              })}
+              <OutfitItemTileWrapper>
+                <RestOutfitItemCountWrapper
+                  width={OUTFIT_ITEM_IMAGE_WIDTH}
+                  height={OUTFIT_ITEM_IMAGE_HEIGHT}
+                >
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs22"
+                    textAlign="center"
+                    fontWeight="extrabold"
+                    text={`+${items.length - totalOutfitItemsToShow}`}
                   />
-                </OutfitItemTileWrapper>
-              );
-            })}
-            <OutfitItemTileWrapper>
-              <RestOutfitItemCountWrapper
-                width={OUTFIT_ITEM_IMAGE_WIDTH}
-                height={OUTFIT_ITEM_IMAGE_HEIGHT}
-              >
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs22"
-                  textAlign="center"
-                  fontWeight="extrabold"
-                  text={`+${items.length - totalOutfitItemsToShow}`}
-                />
-              </RestOutfitItemCountWrapper>
-            </OutfitItemTileWrapper>
-          </OutfitItemsWrapper>
+                </RestOutfitItemCountWrapper>
+              </OutfitItemTileWrapper>
+            </OutfitItemsWrapper>
+          )}
         </Anchor>
       </ImageItemWrapper>
     </ImageSlideWrapper>
@@ -163,6 +166,8 @@ const ModuleQ = props => {
     hideTabs,
     selectedColorProductId,
     showRelatedOutfitHeader,
+    marginBottom,
+    showOutfitItems,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -181,7 +186,14 @@ const ModuleQ = props => {
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
-    return getCarouselSlide(item, navigation, shopThisLookLabel, ignoreLazyLoadImage, hostLazyLoad);
+    return getCarouselSlide(
+      item,
+      navigation,
+      shopThisLookLabel,
+      ignoreLazyLoadImage,
+      hostLazyLoad,
+      showOutfitItems
+    );
   };
 
   const onProductTabChange = (categoryId, tabItem) => {
@@ -191,7 +203,7 @@ const ModuleQ = props => {
   const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
-    <Container showData={showData} bgClass={bgClass}>
+    <Container marginBottom={marginBottom} bgClass={bgClass}>
       {!hideTabs ? (
         <MessageContainer>
           {headerText && (
@@ -299,6 +311,8 @@ ModuleQ.defaultProps = {
   selectedColorProductId: '',
   headerText: [],
   showRelatedOutfitHeader: null,
+  marginBottom: true,
+  showOutfitItems: true,
 };
 
 ModuleQ.propTypes = {
@@ -343,6 +357,8 @@ ModuleQ.propTypes = {
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
+  marginBottom: PropTypes.bool,
+  showOutfitItems: PropTypes.bool,
 };
 
 export default ModuleQ;

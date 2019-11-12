@@ -11,6 +11,13 @@ const TILE_SHADOW = `
   elevation: 2;
 `;
 
+const getAdditionalStyle = props => {
+  const { marginBottom } = props;
+  return {
+    ...(marginBottom && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
+  };
+};
+
 const applyBackgroundClassStyle = props => {
   if (props.bgClass === 'yellow-bg') {
     return `
@@ -22,9 +29,9 @@ const applyBackgroundClassStyle = props => {
 
 export const Container = styled.View`
   width: 100%;
-  margin-bottom: ${props => (props.showData ? props.theme.spacing.LAYOUT_SPACING.SM : '0')};
-  padding: ${props => (props.showData ? props.theme.spacing.ELEM_SPACING.LRG : '0')} 0;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
   ${applyBackgroundClassStyle}
+  ${getAdditionalStyle}
 `;
 
 export const ImageSlidesWrapper = styled.View`

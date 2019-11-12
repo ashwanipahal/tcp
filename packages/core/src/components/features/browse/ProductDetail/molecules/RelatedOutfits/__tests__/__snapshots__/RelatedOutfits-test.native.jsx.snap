@@ -2,13 +2,16 @@
 
 exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
 <View>
-  <Connect(ModuleQ)
-    bgClass="yellow-bg"
-    divTabs={Array []}
-    hideTabs={true}
-    hostLazyLoad="lazyload-pdp"
-    navigation={Object {}}
-    showRelatedOutfitHeader={[Function]}
-  />
+  <Styled(View)>
+    <Connect(ModuleQ)
+      divTabs={Array []}
+      hideTabs={true}
+      hostLazyLoad="lazyload-pdp"
+      marginBottom={false}
+      navigation={Object {}}
+      showOutfitItems={false}
+      showRelatedOutfitHeader={[Function]}
+    />
+  </Styled(View)>
 </View>
 `;

@@ -3,7 +3,11 @@ import { View, Image } from 'react-native';
 import { PropTypes } from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 import { BodyCopy, Anchor } from '../../../../../../common/atoms';
-import { StyleRelatedOutfits, ImageStyleWrapper } from '../RelatedOutfits.native.style';
+import {
+  StyleRelatedOutfits,
+  ImageStyleWrapper,
+  OutfitWrapper,
+} from '../RelatedOutfits.native.style';
 import ModuleQ from '../../../../../../common/molecules/ModuleQ';
 
 const downIcon = require('../../../../../../../assets/carrot-small-down.png');
@@ -26,15 +30,18 @@ class RelatedOutfits extends React.PureComponent {
   getRelatedOutfitSlots = () => {
     const { navigation, selectedColorProductId } = this.props;
     return (
-      <ModuleQ
-        navigation={navigation}
-        hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
-        selectedColorProductId={selectedColorProductId}
-        hideTabs
-        divTabs={[]}
-        bgClass="yellow-bg"
-        showRelatedOutfitHeader={this.setShowHeader}
-      />
+      <OutfitWrapper>
+        <ModuleQ
+          navigation={navigation}
+          hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}
+          selectedColorProductId={selectedColorProductId}
+          hideTabs
+          divTabs={[]}
+          showRelatedOutfitHeader={this.setShowHeader}
+          marginBottom={false}
+          showOutfitItems={false}
+        />
+      </OutfitWrapper>
     );
   };
 
