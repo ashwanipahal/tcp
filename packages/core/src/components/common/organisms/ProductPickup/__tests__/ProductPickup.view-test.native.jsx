@@ -72,7 +72,7 @@ describe('ProductPickupVanilla', () => {
   });
 
   it('should return styled BodyCopy component value seven', () => {
-    expect(component.find('Styled(BodyCopy)')).toHaveLength(4);
+    expect(component.find('Styled(BodyCopy)')).toHaveLength(3);
   });
 
   it('should return styled LineComp component value one', () => {

@@ -31,6 +31,7 @@ import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import ProductListingSaga from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.saga';
+import NavigationSaga from '@tcp/core/src/components/features/content/Navigation/container/Navigation.saga';
 import ProductDetailSaga from '@tcp/core/src/components/features/browse/ProductDetail/container/ProductDetail.saga';
 import QuickViewSaga from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.saga';
 import FavoriteSaga from '@tcp/core/src/components/features/browse/Favorites/container/Favorites.saga';
@@ -147,5 +148,6 @@ export default function* rootSaga() {
     StoresInternationalSaga(),
     StoreListSaga(),
     BundleProductSaga(),
+    NavigationSaga(),
   ]);
 }

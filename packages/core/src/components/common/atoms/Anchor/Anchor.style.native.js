@@ -99,6 +99,13 @@ export const AnchorStyles = css`
 
                         `
       : ''};
+  ${props =>
+    props.underlineWhite
+      ? `             text-decoration: underline;
+                      text-decoration-color: ${props.theme.colorPalette.white};
+
+                        `
+      : ''};
 
   ${props =>
     props.withCaret

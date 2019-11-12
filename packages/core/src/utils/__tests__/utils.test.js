@@ -326,35 +326,35 @@ describe('validateDiffInDaysNotification', () => {
 describe('getOrderStatusForNotification', () => {
   it('return Order Status', () => {
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_RECEIVED)).toEqual(
-      'lbl_global_yourOrderWasReceived'
+      'lbl_orders_statusOrderReceived'
     );
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_PROCESSING)).toEqual(
       'lbl_global_yourOrderIsProcessing'
     );
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_SHIPPED)).toEqual(
-      'lbl_global_yourOrderHasShipped'
+      'lbl_orders_statusOrderShipped'
     );
     expect(
       getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED)
-    ).toEqual('lbl_global_partOfYourOrderHasShipped');
+    ).toEqual('lbl_orders_statusOrderPartiallyShipped');
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_CANCELED)).toEqual(
-      'lbl_global_yourOrderWasCanceled'
+      'lbl_orders_statusOrderCancelled'
     );
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ITEMS_RECEIVED)).toEqual(
-      'lbl_global_yourOrderWasReceived'
+      'lbl_orders_statusOrderReceived'
     );
     expect(
       getOrderStatusForNotification(constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP)
-    ).toEqual('lbl_global_yourOrderIsReadyForPickup');
+    ).toEqual('lbl_orders_statusItemsReadyForPickup');
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ITEMS_PICKED_UP)).toEqual(
-      'lbl_global_yourOrderWasPickedUp'
+      'lbl_orders_statusItemsPickedUp'
     );
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_EXPIRED)).toEqual(
-      'lbl_global_yourOrderWasNotPickedUp'
+      'lbl_orders_statusOrderExpired'
     );
     expect(
       getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED)
-    ).toEqual('lbl_global_yourOrderWasReceived');
+    ).toEqual('lbl_orders_statusOrderReceived');
     expect(
       getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY)
     ).toEqual('lbl_global_yourOrderIsBeingProcessed');

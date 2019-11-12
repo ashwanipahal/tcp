@@ -207,13 +207,14 @@ class ProductsGridItem extends React.PureComponent {
     const bundleProduct = item && item.productInfo && item.productInfo.bundleProduct;
     const priceRange = item && item.productInfo && item.productInfo.priceRange;
     const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
+    const badge3Text = listPriceForColor - offerPriceForColor !== 0 ? badge3 : '';
     return (
       <ProductPricesSection
         currencySymbol={currency || '$'}
         listPrice={listPriceForColor}
         offerPrice={offerPriceForColor}
         noMerchantBadge={badge3}
-        merchantTag={isShowBadges ? badge3 : null}
+        merchantTag={isShowBadges ? badge3Text : null}
         hidePrefixListPrice
         bundleProduct={bundleProduct}
         priceRange={priceRange}
@@ -480,6 +481,7 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
+
     const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li

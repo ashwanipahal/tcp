@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemTileSkelton common component renders correctly 1`] = `
+<div
+  className="className tile-header"
+>
+  <Styled(Row)
+    className="product product-tile-wrapper"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="align-product-img product-brand-img-wrapper"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 1,
+        }
+      }
+      key="productDetails"
+    >
+      <div
+        className="imageWrapper"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="logoWrapper"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="bag-product-detail-wrapper"
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 5,
+        }
+      }
+      key="productDetails"
+    >
+      <div
+        className="badge-wrapper"
+      >
+        <SkeletonLine />
+      </div>
+      <Styled(Row)
+        className="product-detail-row"
+      >
+        <Styled(Col)
+          className="productImgBrand"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 5,
+            }
+          }
+        >
+          <SkeletonLine />
+        </Styled(Col)>
+      </Styled(Row)>
+      <div
+        className="product-upc"
+      >
+        <SkeletonLine />
+      </div>
+      <Styled(Row)
+        className="product-detail-row label-responsive-wrapper padding-top-10"
+      >
+        <SkeletonLine />
+      </Styled(Row)>
+      <div
+        className="product-price"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="product-points"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="save-for-later"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="edit"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Row)
+      className="row-border-top-middle"
+      fullBleed={true}
+    >
+      <div
+        className="cart-item-radio-button-top"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Row)>
+    <Styled(Row)
+      className="row-border-top-middle"
+      fullBleed={true}
+    >
+      <div
+        className="cart-item-radio-button-middle"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Row)>
+    <Styled(Row)
+      className="row-border-bottom"
+      fullBleed={true}
+    >
+      <div
+        className="cart-item-radio-button-bottom"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Row)>
+  </Styled(Row)>
+</div>
+`;

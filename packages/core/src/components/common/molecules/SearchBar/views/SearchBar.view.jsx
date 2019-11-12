@@ -41,8 +41,9 @@ class SearchBar extends React.PureComponent {
 
   openSearchBar = e => {
     e.preventDefault();
-    const { setSearchState } = this.props;
+    const { setSearchState, toggleSearchResults } = this.props;
 
+    toggleSearchResults(false);
     if (window.innerWidth <= breakpoints.values.lg) {
       this.openFullSizeSearchModel();
     } else {
