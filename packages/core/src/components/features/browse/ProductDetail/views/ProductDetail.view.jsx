@@ -213,7 +213,6 @@ class ProductDetailView extends React.Component {
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
       categoryName: categoryId,
       partNumber: selectedColorProductId,
-      priceOnly: true,
       showLoyaltyPromotionMessage: false,
       headerAlignment: 'left',
     };
