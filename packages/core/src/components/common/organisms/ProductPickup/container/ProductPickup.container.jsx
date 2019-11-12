@@ -267,6 +267,7 @@ class ProductPickupContainer extends React.PureComponent {
       isBopisClearanceProductEnabled,
       isBopisEnabled,
       miscInfo,
+      isAnchor,
     } = this.props;
     const bossValidatingParams = {
       isBossClearanceProductEnabled,
@@ -281,7 +282,7 @@ class ProductPickupContainer extends React.PureComponent {
     this.isBossEligible = validateBossEligibility({ ...bossValidatingParams, miscInfo });
     this.isGeoStoreAPIRequested = false;
 
-    if (this.shouldGetInventoryDetails(userDefaultStore, itemValues, prevProps)) {
+    if (this.shouldGetInventoryDetails(userDefaultStore, itemValues, prevProps, isAnchor)) {
       // Added New check for userDefaultStore to fire getBopisInventoryDetails when user has already selected sku and allows location access later.
       const itemPartNumber = getVariantId(
         productInfo.colorFitsSizesMap,
@@ -466,8 +467,9 @@ class ProductPickupContainer extends React.PureComponent {
     return !this.isBopisEligible && !this.isBossEligible;
   };
 
-  shouldGetInventoryDetails = (userDefaultStore, itemValues, prevProps) => {
+  shouldGetInventoryDetails = (userDefaultStore, itemValues, prevProps, isAnchor) => {
     return (
+      !isAnchor &&
       this.isSkuResolved &&
       userDefaultStore &&
       (itemValues.Size !== prevProps.itemValues.Size || this.compareDefaultStore(prevProps))
