@@ -1,6 +1,7 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import { setLoginInfo, setCheckoutModalMountedState } from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
@@ -22,6 +23,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
     const response = yield call(login, payload);
     if (response.success) {
       yield put(getUserInfo());
+      yield put(setLoginModalMountedState({ state: false }));
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
       } else {

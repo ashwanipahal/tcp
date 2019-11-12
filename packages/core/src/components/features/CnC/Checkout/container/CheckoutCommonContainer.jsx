@@ -332,7 +332,9 @@ export const mapDispatchToProps = dispatch => {
     submitVerifiedShippingAddressData: payload => {
       dispatch(submitVerifiedAddressData(payload));
     },
-    toastMessage: payload => dispatch(toastMessageInfo(payload)),
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
@@ -356,6 +358,7 @@ const mapStateToProps = state => {
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
     checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
+
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),

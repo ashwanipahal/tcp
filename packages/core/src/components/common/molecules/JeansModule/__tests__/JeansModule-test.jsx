@@ -5,7 +5,7 @@ import { JeansModuleVanilla as JeanModule } from '../views/JeansModule.view';
 
 describe('JeanModule component', () => {
   it('should default variant correctly', () => {
-    const wrapper = shallow(<JeanModule jeansModule={mock.JeansModule} />).get(0);
+    const wrapper = shallow(<JeanModule data={mock.JeansModule} />).get(0);
     expect(wrapper).toMatchSnapshot();
   });
 });
