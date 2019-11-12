@@ -82,7 +82,7 @@ const {
   getCheckoutPageEmptyBagLabels,
 } = selectors;
 export class CheckoutContainer extends React.PureComponent<Props> {
-  initialLoad = false;
+  initialLoad = true;
 
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent, router, initCheckout } = this.props;
