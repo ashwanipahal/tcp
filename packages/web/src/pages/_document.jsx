@@ -59,8 +59,6 @@ class MyDocument extends Document {
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
           {/* Empty global object definition for external hotfix sources to append */}
           <HotfixScript />
-          {/* TODO: Remove this script once we have the hotfixes coming externally */}
-          <script src="/static/TCP_HOTFIX.js" async />
         </Head>
         <body
           /* eslint-disable-next-line react-native/no-inline-styles */
