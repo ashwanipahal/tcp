@@ -234,13 +234,12 @@ const ModuleE = props => {
 
         {/* ---------- Promo Text Start ----------- */}
         {promoBanner && (
-          <PromoBanner promoBanner={promoBanner} dataLocator={getLocator('moduleE_header_text')} />
+          <PromoBanner promoBanner={promoBanner} dataLocator={getLocator('moduleE_promo_text')} />
         )}
         {/* ---------- Promo Text End ----------- */}
 
         {/* ----------- Promo Image Area Start----------- */}
         {getLinkedImage(linkedImage, carouselCtaType, IMG_DATA)}
-        {/* ----------- Promo Image Area End----------- */}
 
         {/* ---------- Carousel Image layout Start ----------- */}
         <Row fullBleed>
@@ -259,12 +258,13 @@ const ModuleE = props => {
                     <DamImage
                       imgConfigs={IMG_DATA.carouselImgConfig}
                       imgData={image}
-                      data-locator={`${getLocator('moduleE_small_image_img')}${index + 1}`}
+                      data-locator={`${getLocator('moduleE_carousel_image_img')}${index + 1}`}
                       className="module-e-img-full-width"
+                      link={singleCTAButton}
                     />
                     {carouselCtaType === 'link' && singleCTAButton && (
                       <Anchor
-                        dataLocator={`${getLocator('moduleE_small_image_cta')}${index + 1}`}
+                        dataLocator={`${getLocator('moduleE_carousel_image_link_cta')}${index + 1}`}
                         className="carousel-cta-link"
                         url={url}
                         title={text}
@@ -300,7 +300,7 @@ const ModuleE = props => {
                     <Button
                       buttonVariation="fixed-width"
                       dataLocator={`${getLocator(
-                        'moduleE_small_image_cta'
+                        'moduleE_carousel_image_button_cta'
                       )}${curCarouselSlideIndex}`}
                       className={`carousel-cta-button ${
                         eyebrow ? 'carousel-cta-button-with-eybrow-img' : ''
@@ -360,6 +360,7 @@ const ModuleE = props => {
                         imgData={image}
                         data-locator={`${getLocator('moduleE_small_img')}${index + 1}`}
                         className="module-e-img-full-width"
+                        link={link}
                       />
 
                       <LinkText
