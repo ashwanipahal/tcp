@@ -908,7 +908,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "_blank",
             "text": "Shop The Collection",
             "title": "Shop The Collection",
-            "url": "http://www.childrensplace.com",
+            "url": "https://google.com/u/shop-the-collection",
           },
         },
         Object {
@@ -925,7 +925,7 @@ exports[`HomePageView should render correctly 1`] = `
             "target": "_blank",
             "text": "Shop The Collection",
             "title": "Shop The Collection",
-            "url": "http://www.childrensplace.com/2",
+            "url": "https://google.com/u/shop-the-collection-2",
           },
         },
       ]

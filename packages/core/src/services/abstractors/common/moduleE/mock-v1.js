@@ -1,6 +1,6 @@
 const dummyUrl = 'http://www.childrensplace.com';
 const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
-const carouselCtaType = ['link', 'button'];
+const carouselCtaType = ['button', 'link'];
 const divCtaTitle1 = 'Big & Little Sis';
 const divCtaTitle2 = 'Big & Little Bro';
 const shopTheCollectionTitle = 'Shop The Collection';
@@ -13,7 +13,7 @@ export default {
     type: 'module',
     composites: {
       ctaType: ctaTypes[0],
-      carouselCtaType: carouselCtaType[0],
+      carouselCtaType: carouselCtaType[1],
       headerText: [
         {
           textItems: [
@@ -94,7 +94,7 @@ export default {
             crop_m: '',
           },
           singleCTAButton: {
-            url: dummyUrl,
+            url: 'https://google.com/u/shop-the-collection',
             text: shopTheCollectionTitle,
             title: shopTheCollectionTitle,
             target: '_blank',
@@ -112,7 +112,7 @@ export default {
             crop_m: '',
           },
           singleCTAButton: {
-            url: `${dummyUrl}/2`,
+            url: 'https://google.com/u/shop-the-collection-2',
             text: shopTheCollectionTitle,
             title: shopTheCollectionTitle,
             target: '_blank',
