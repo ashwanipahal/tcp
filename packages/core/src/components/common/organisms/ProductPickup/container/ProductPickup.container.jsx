@@ -556,6 +556,7 @@ class ProductPickupContainer extends React.PureComponent {
         productInfo={productInfo}
         isSkuResolved={this.isSkuResolved}
         isBopisEligible={this.isBopisEligible}
+        isBossEligible={this.isBossEligible}
         showChangeStore={showChangeStore}
         pickupTitleText={pickupTitleText}
         userDefaultStore={userDefaultStore}
