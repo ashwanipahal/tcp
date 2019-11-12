@@ -267,7 +267,6 @@ export const getPLPTopPromos = state => {
       topPromos.map(promoItem => {
         return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
       })) ||
-    {}
+    []
   );
-  // return state.ProductListing.bannerInfo.val.top;
 };
