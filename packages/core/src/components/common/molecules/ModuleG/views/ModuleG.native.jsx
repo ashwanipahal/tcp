@@ -174,7 +174,7 @@ class ModuleG extends React.PureComponent {
             <LinkText
               navigation={navigation}
               headerText={headerText}
-              locator={getLocator('moduleG_header_text')}
+              testID={getLocator('moduleG_header_text')}
               useStyle
             />
           )}
