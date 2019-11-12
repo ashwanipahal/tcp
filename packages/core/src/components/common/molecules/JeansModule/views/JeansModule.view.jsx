@@ -82,7 +82,9 @@ export class JeansModule extends PureComponent {
                 <div className="jeans-carousel" key={index.toString()}>
                   <Anchor
                     className="image-link"
-                    to={imageStyled[0].image.alt}
+                    to={
+                      imageStyled[0].image.url && imageStyled[0].image.url.replace('/c/', '/c?cid=')
+                    }
                     asPath={imageStyled[0].image.url}
                     dataLocator="dummy-datalocator"
                   >
