@@ -33,7 +33,7 @@ describe('addAddressGet saga', () => {
       addAddressGetGeneration.throw({
         response: { body: { errors: ['test'] } },
       });
-      const putDescriptor=addAddressGetGeneration.next().value;
+      const putDescriptor = addAddressGetGeneration.next().value;
       expect(putDescriptor).toEqual(put(addAddressFail('test')));
     });
   });
@@ -71,7 +71,6 @@ describe('addAddressGet saga', () => {
         },
       };
       updateAddressGetGeneration.throw(error);
-      updateAddressGetGeneration.next();
       const putDescriptor = updateAddressGetGeneration.next().value;
       expect(putDescriptor).toEqual(put(addAddressFail(errorBody)));
     });

@@ -20,6 +20,7 @@ describe('Default shipping address saga', () => {
   beforeEach(() => {
     gen = updateDefaultShippingAddress({ payload });
     gen.next();
+    gen.next();
   });
 
   it('should update default shipping address', () => {
@@ -39,8 +40,8 @@ describe('Default shipping address saga', () => {
       statusCode: 400,
       message: 'Object not found',
     };
-    gen.next();
-    expect(gen.throw(err).value).toEqual(put(setDefaultShippingAddressFailure(err)));
+    gen.throw(err);
+    expect(gen.next().value).toEqual(put(setDefaultShippingAddressFailure(err)));
   });
 
   it('should test SetDefaultShippingAddressSaga', () => {

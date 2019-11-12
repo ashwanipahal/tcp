@@ -1,7 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import constants from './AddEditAddress.constants';
-import { addAddressSuccess, addAddressFail, setLoadingState } from './AddEditAddress.actions';
+import { addAddressSuccess, addAddressFail } from './AddEditAddress.actions';
 import {
   setAddressBookNotification,
   clearGetAddressListTTL,
@@ -66,8 +66,7 @@ export function* updateAddressPut({ payload }, fromCheckout) {
       }
       return putRes;
     }
-    return yield 
-    (res.body));
+    return yield res.body;
   } catch (err) {
     let error = {};
     yield put(setLoaderState(false));
