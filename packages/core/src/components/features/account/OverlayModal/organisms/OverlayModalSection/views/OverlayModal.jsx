@@ -145,9 +145,12 @@ class OverlayModal extends React.Component {
   };
 
   getCustomStyles = ({ styleModal }) => {
-    const { component } = this.props;
+    const { component, showCondensedHeader } = this.props;
     if (this.isMobile && component !== 'accountDrawer') return;
-    const comp = document.getElementById(component);
+    let comp = document.getElementById(component);
+    if (component === 'accountDrawer' && showCondensedHeader) {
+      comp = document.getElementById('condensedLogin');
+    }
     /* istanbul ignore else */
     if (comp && window) {
       const compRectBoundingY = comp.getBoundingClientRect().y + window.scrollY;

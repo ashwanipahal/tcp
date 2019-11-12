@@ -166,8 +166,8 @@ class MiniBagBody extends React.PureComponent {
       isShowSaveForLaterSwitch,
       isRememberedUser,
       isUserLoggedIn,
+      isMiniBag,
     } = this.props;
-
     const { headerError, params } = this.state;
     return (
       <div className={className}>
@@ -217,6 +217,7 @@ class MiniBagBody extends React.PureComponent {
               sflItemsCount={savedforLaterQty}
               onItemEdit={this.handleItemEdit}
               setHeaderErrorState={this.setHeaderErrorState}
+              isMiniBag={isMiniBag}
               closeMiniBag={closeMiniBag}
             />
           ) : (
@@ -242,6 +243,7 @@ class MiniBagBody extends React.PureComponent {
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
                 showVenmo={false} // No Venmo CTA on Minibag, as per venmo requirement
+                isMiniBag={isMiniBag}
               />
               <AirmilesBanner />
             </div>
@@ -265,6 +267,10 @@ class MiniBagBody extends React.PureComponent {
   }
 }
 
+MiniBagBody.defaultProps = {
+  isMiniBag: true,
+};
+
 MiniBagBody.propTypes = {
   className: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
@@ -283,6 +289,7 @@ MiniBagBody.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isRememberedUser: PropTypes.bool.isRequired,
+  isMiniBag: PropTypes.bool,
 };
 
 export default withStyles(MiniBagBody, styles);

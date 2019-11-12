@@ -53,6 +53,7 @@ export class CreateAccountContainer extends React.Component {
     userplccCardId: PropTypes.string.isRequired,
     toastMessage: PropTypes.func,
     passwordLabels: PropTypes.shape({}).isRequired,
+    updateHeader: PropTypes.func,
   };
 
   static defaultProps = {
@@ -70,6 +71,7 @@ export class CreateAccountContainer extends React.Component {
     isUserLoggedIn: false,
     navigation: {},
     toastMessage: () => {},
+    updateHeader: () => {},
   };
 
   constructor(props) {
@@ -142,6 +144,7 @@ export class CreateAccountContainer extends React.Component {
       userplccCardId,
       toastMessage,
       passwordLabels,
+      updateHeader,
     } = this.props;
     return (
       <CreateAccountView
@@ -162,6 +165,7 @@ export class CreateAccountContainer extends React.Component {
         userplccCardId={userplccCardId}
         toastMessage={toastMessage}
         passwordLabels={passwordLabels}
+        updateHeader={updateHeader}
       />
     );
   }

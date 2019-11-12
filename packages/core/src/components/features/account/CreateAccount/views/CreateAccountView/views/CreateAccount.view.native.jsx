@@ -25,6 +25,7 @@ class CreateAccount extends React.Component<Props> {
     userplccCardId: PropTypes.string,
     toastMessage: PropTypes.func,
     passwordLabels: PropTypes.shape({}).isRequired,
+    updateHeader: PropTypes.func,
   };
 
   static defaultProps = {
@@ -40,6 +41,7 @@ class CreateAccount extends React.Component<Props> {
     userplccCardNumber: '',
     userplccCardId: '',
     toastMessage: () => {},
+    updateHeader: () => {},
   };
 
   constructor(props) {
@@ -72,6 +74,7 @@ class CreateAccount extends React.Component<Props> {
       userplccCardId,
       toastMessage,
       passwordLabels,
+      updateHeader,
     } = this.props;
     const { resetPassword } = this.state;
     return (
@@ -100,6 +103,7 @@ class CreateAccount extends React.Component<Props> {
             showForgotPasswordForm={this.showForgotPasswordForm}
             labels={labels}
             showLogin={showLogin}
+            updateHeader={updateHeader}
           />
         )}
       </View>
