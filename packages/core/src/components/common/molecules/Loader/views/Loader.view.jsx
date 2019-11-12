@@ -1,17 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import loaderStyles from '../Loader.style';
-
-const { LoaderLoyalty } = loaderStyles;
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 
 const Loader = props => {
   const { loaderState } = props;
   if (loaderState) {
-    return (
-      <LoaderLoyalty className="loaderWrapper">
-        <span>Loader...</span>
-      </LoaderLoyalty>
-    );
+    return <SpinnerOverlay />;
   }
   return null;
 };
