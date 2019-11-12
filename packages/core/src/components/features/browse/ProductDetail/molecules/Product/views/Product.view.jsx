@@ -11,6 +11,7 @@ import {
   checkIsSelectedSizeDisabled,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+// eslint-disable-next-line complexity
 const Product = props => {
   const {
     productDetails,
@@ -28,23 +29,21 @@ const Product = props => {
     isShowPriceRangeKillSwitch,
     formValues = {},
     isKeepAliveProduct,
+    isBundleProduct,
   } = props;
 
-  const productInfo = productDetails.get('currentProduct');
+  const productInfo = productDetails.currentProduct;
   if (!productInfo) {
     return <div />; // TODO - maybe add loader later
   }
   const { promotionalMessage, promotionalPLCCMessage } = productInfo;
   const colorProduct =
-    productInfo &&
-    getMapSliceForColorProductId(productInfo.colorFitsSizesMap, selectedColorProductId);
-  let prices = productInfo && getPrices(productInfo, colorProduct.color.name);
-  const badges = colorProduct.miscInfo.badge1;
+    getMapSliceForColorProductId(productInfo.colorFitsSizesMap, selectedColorProductId) || {};
+  let prices = getPrices(productInfo, colorProduct.color && colorProduct.color.name);
+  const badges = colorProduct.miscInfo ? colorProduct.miscInfo.badge1 : {};
   const badge1 = isMatchingFamily && badges.matchBadge ? badges.matchBadge : badges.defaultBadge;
 
-  const isShowPriceRangeABtest = true; // TODO
-
-  const isShowPriceRange = isShowPriceRangeKillSwitch && isShowPriceRangeABtest;
+  const isShowPriceRange = isShowPriceRangeKillSwitch;
 
   if (isShowPriceRange) {
     const { fit, size } = formValues;
@@ -56,6 +55,9 @@ const Product = props => {
       size,
       isSelectedSizeDisabled
     );
+  }
+  if (isBundleProduct) {
+    prices = getPricesWithRange(productInfo, colorProduct.color.name);
   }
 
   const { miscInfo } = colorProduct;
@@ -76,6 +78,7 @@ const Product = props => {
         isRatingsVisible
         isCanada={isCanada}
         isPlcc={isHasPlcc}
+        isBundleProduct={isBundleProduct}
         isInternationalShipping={isInternationalShipping}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
@@ -121,6 +124,11 @@ Product.propTypes = {
   isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
   isKeepAliveProduct: PropTypes.bool.isRequired,
   isMatchingFamily: PropTypes.bool.isRequired,
+  isBundleProduct: PropTypes.bool,
+};
+
+Product.defaultProps = {
+  isBundleProduct: false,
 };
 
 export default Product;

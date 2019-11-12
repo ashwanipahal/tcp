@@ -8,7 +8,7 @@ export const modalStyles = css`
   .TCPModal__InnerContent {
     text-align: center;
     && {
-      padding: 21px;
+      padding: 24px 14px;
     }
     > h2 {
       ::after {

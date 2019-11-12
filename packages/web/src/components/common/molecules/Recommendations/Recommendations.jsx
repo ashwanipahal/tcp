@@ -39,8 +39,16 @@ const { RECOMMENDATION } = constant;
 
 class Recommendations extends Component {
   componentDidMount() {
-    const { loadRecommendations, page, portalValue, partNumber, categoryName } = this.props;
+    const {
+      loadRecommendations,
+      page,
+      portalValue,
+      partNumber,
+      categoryName,
+      reduxKey,
+    } = this.props;
     const action = {
+      reduxKey,
       page: page || 'homepageTest',
       ...(partNumber && { itemPartNumber: partNumber }),
       ...(portalValue && { mboxName: portalValue }),
@@ -237,6 +245,7 @@ Recommendations.propTypes = {
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
   headerAlignment: PropTypes.string,
+  reduxKey: PropTypes.string.isRequired,
 };
 
 Recommendations.defaultProps = {
