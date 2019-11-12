@@ -179,6 +179,7 @@ const Recommendations = props => {
     portalValue,
     partNumber,
     categoryName,
+    reduxKey,
   } = props;
   const variationArray = variation.split(',');
   const action = {
@@ -186,6 +187,7 @@ const Recommendations = props => {
     ...(partNumber && { partNumber }),
     ...(portalValue && { mbox: portalValue }),
     ...(categoryName && { categoryName }),
+    reduxKey,
   };
   useEffect(fetchRecommendations(loadRecommendations, action), []);
 
@@ -206,6 +208,7 @@ Recommendations.propTypes = {
   portalValue: PropTypes.string,
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
+  reduxKey: PropTypes.string.isRequired,
 };
 
 Recommendations.defaultProps = {

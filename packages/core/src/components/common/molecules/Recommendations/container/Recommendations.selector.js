@@ -1,12 +1,10 @@
 import { createSelector } from 'reselect';
 import { RECOMMENDATIONS_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
-const getRecommendationsState = state => state[RECOMMENDATIONS_REDUCER_KEY];
-
-export const getProducts = createSelector(
-  getRecommendationsState,
-  recommendations => recommendations.get('products')
-);
+export const getProducts = (state, reduxKey) => {
+  const recommendation = state[RECOMMENDATIONS_REDUCER_KEY];
+  return recommendation && recommendation.get(reduxKey) && recommendation.get(reduxKey).products;
+};
 
 export const getLoadedProductsCount = createSelector(
   getProducts,
