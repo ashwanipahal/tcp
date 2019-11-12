@@ -198,6 +198,8 @@ exports[`ModuleE component Should render component 1`] = `
     <Styled(Anchor)
       className="promo-area-image-link promo-area-image-link-spaced"
       dataLocator="moduleE_promo_area_img_cta"
+      target=""
+      title=""
       url="http://www.childrensplace.com"
     >
       <WithTheme(DamImage)
@@ -596,60 +598,62 @@ exports[`ModuleE component Should render component 1`] = `
   </Styled(Col)>
   <Divider
     disabled={
-      Object {
-        "mediaLinkedList": Array [
-          Object {
-            "image": Object {
-              "alt": "Left Image",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Left Image",
-              "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
-            },
-            "link": Object {
-              "external": 0,
-              "target": "",
-              "text": "Left Image Link",
-              "title": "Left Image Link",
-              "url": "http://www.childrensplace.com",
-            },
-          },
-          Object {
-            "image": Object {
-              "alt": "Right Image",
-              "crop_d": "",
-              "crop_m": "",
-              "crop_t": "",
-              "title": "Right Image",
-              "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
-            },
-            "link": Object {
-              "external": 0,
-              "target": "",
-              "text": "Right Image Link",
-              "title": "Right Image Link",
-              "url": "http://www.childrensplace.com",
-            },
-          },
-        ],
-        "promoBanner": Array [
-          Object {
-            "link": Object {
-              "target": "",
-              "text": "",
-              "title": "",
-              "url": "/banner/url",
-            },
-            "textItems": Array [
-              Object {
-                "style": "small_text_normal",
-                "text": "Cue the photos",
+      Array [
+        Object {
+          "mediaLinkedList": Array [
+            Object {
+              "image": Object {
+                "alt": "Left Image",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Left Image",
+                "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
               },
-            ],
-          },
-        ],
-      }
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Left Image Link",
+                "title": "Left Image Link",
+                "url": "http://www.childrensplace.com",
+              },
+            },
+            Object {
+              "image": Object {
+                "alt": "Right Image",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Right Image",
+                "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Right Image Link",
+                "title": "Right Image Link",
+                "url": "http://www.childrensplace.com",
+              },
+            },
+          ],
+          "promoBanner": Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "small_text_normal",
+                  "text": "Cue the photos",
+                },
+              ],
+            },
+          ],
+        },
+      ]
     }
     position="bottom"
   />
