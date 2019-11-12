@@ -370,7 +370,7 @@ ProductDetailView.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
-  breadCrumbs: PropTypes.shape({}),
+  breadCrumbs: PropTypes.shape([]),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.string,
@@ -389,7 +389,7 @@ ProductDetailView.defaultProps = {
   productDetails: {},
   longDescription: '',
   shortDescription: '',
-  breadCrumbs: {},
+  breadCrumbs: [],
   currency: '',
   plpLabels: {
     lbl_sort: '',
