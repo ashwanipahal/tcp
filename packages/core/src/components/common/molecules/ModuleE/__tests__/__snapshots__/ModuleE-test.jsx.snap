@@ -472,7 +472,7 @@ exports[`ModuleE component Should render component 1`] = `
             >
               <WithTheme(DamImage)
                 className="module-e-img-full-width"
-                data-locator="undefined1"
+                data-locator="moduleE_small_img_1"
                 imgConfigs={
                   Array [
                     "t_mod_E_small_img_m",
@@ -561,7 +561,7 @@ exports[`ModuleE component Should render component 1`] = `
             >
               <WithTheme(DamImage)
                 className="module-e-img-full-width"
-                data-locator="undefined2"
+                data-locator="moduleE_small_img_2"
                 imgConfigs={
                   Array [
                     "t_mod_E_small_img_m",
