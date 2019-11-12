@@ -106,8 +106,8 @@ const ProductListView = ({
   };
   return (
     <ScrollView>
-      <PromoModules plpTopPromos={plpTopPromos} />
       <PageContainer margins={margins} paddings={paddings}>
+        <PromoModules plpTopPromos={plpTopPromos} />
         <ProductList
           products={products}
           title={title}
