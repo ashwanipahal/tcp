@@ -171,7 +171,8 @@ class ProductDetailView extends React.Component {
     ) : null;
   };
 
-  getCategoryId = () => {
+  // This is required for reommendations.
+  getCatIdForRecommendation = () => {
     const { breadCrumbs } = this.props;
     if (breadCrumbs) {
       const category = breadCrumbs.map((crumb, index) => {
@@ -218,7 +219,7 @@ class ProductDetailView extends React.Component {
     const { isGiftCard } = productInfo;
     const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
 
-    const categoryId = this.getCategoryId();
+    const categoryId = this.getCatIdForRecommendation();
     const recommendationAttributes = {
       variations: 'moduleO',
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
