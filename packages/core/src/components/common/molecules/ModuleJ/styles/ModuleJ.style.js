@@ -49,11 +49,12 @@ export default css`
   }
 
   .promo-header a:first-child > div {
-    @media ${props => props.theme.mediaQuery.smallOnly} {
-      padding: 0 12px;
-      ${props =>
-        props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
-      display: inline;
+    padding: 0 12px;
+    ${props =>
+      props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
+    display: inline;
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: 0 20px;
     }
   }
 
@@ -73,10 +74,6 @@ export default css`
   .promo-header-wrapper:first-child {
     padding: 0 0;
     display: inline-block;
-    @media ${props => props.theme.mediaQuery.medium} {
-      ${props =>
-        props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
-    }
   }
 
   &.layout-default .promo-text {
