@@ -41,7 +41,7 @@ class WalletView extends PureComponent {
             ) : null}
             <FooterLinks
               isUserLoggedIn={isUserLoggedIn}
-              labels={labels}
+              labels={{ ...labels, ...commonLabels, ...overViewLabels }}
               navigation={navigation}
               openApplyNowModal={openApplyNowModal}
               footerLinks={mock.walletFooterNavLegalLinks}
