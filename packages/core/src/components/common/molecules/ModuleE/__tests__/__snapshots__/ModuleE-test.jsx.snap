@@ -39,7 +39,7 @@ exports[`ModuleE component Should render component 1`] = `
       >
         <WithTheme(DamImage)
           className="module-e-img-full-width"
-          data-locator="moduleE_eyebrowImage_img__left"
+          dataLocator="moduleE_eyebrowImage_img__left"
           imgConfigs={
             Array [
               "t_mod_E_eyebrow_img_m",
@@ -112,7 +112,7 @@ exports[`ModuleE component Should render component 1`] = `
       >
         <WithTheme(DamImage)
           className="module-e-img-full-width"
-          data-locator="moduleE_eyebrowImage_img__right"
+          dataLocator="moduleE_eyebrowImage_img__right"
           imgConfigs={
             Array [
               "t_mod_E_eyebrow_img_m",
@@ -204,7 +204,7 @@ exports[`ModuleE component Should render component 1`] = `
     >
       <WithTheme(DamImage)
         className="module-e-img-full-width"
-        data-locator="moduleE_promo_area_img"
+        dataLocator="moduleE_promo_area_img"
         imgConfigs={
           Array [
             "t_mod_E_promo_area_img_m",
@@ -280,7 +280,7 @@ exports[`ModuleE component Should render component 1`] = `
           <div>
             <WithTheme(DamImage)
               className="module-e-img-full-width"
-              data-locator="moduleE_carousel_image_img_1"
+              dataLocator="moduleE_carousel_image_img_1"
               imgConfigs={
                 Array [
                   "t_mod_E_carousel_img_m",
@@ -312,7 +312,7 @@ exports[`ModuleE component Should render component 1`] = `
           <div>
             <WithTheme(DamImage)
               className="module-e-img-full-width"
-              data-locator="moduleE_carousel_image_img_2"
+              dataLocator="moduleE_carousel_image_img_2"
               imgConfigs={
                 Array [
                   "t_mod_E_carousel_img_m",
@@ -472,7 +472,7 @@ exports[`ModuleE component Should render component 1`] = `
             >
               <WithTheme(DamImage)
                 className="module-e-img-full-width"
-                data-locator="moduleE_small_img_1"
+                dataLocator="moduleE_small_img_1"
                 imgConfigs={
                   Array [
                     "t_mod_E_small_img_m",
@@ -561,7 +561,7 @@ exports[`ModuleE component Should render component 1`] = `
             >
               <WithTheme(DamImage)
                 className="module-e-img-full-width"
-                data-locator="moduleE_small_img_2"
+                dataLocator="moduleE_small_img_2"
                 imgConfigs={
                   Array [
                     "t_mod_E_small_img_m",

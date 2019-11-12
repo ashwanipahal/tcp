@@ -96,7 +96,7 @@ const getLinkedImage = (linkedImage, carouselCtaType, IMG_DATA) => {
         <DamImage
           imgConfigs={IMG_DATA.promoAreaImgConfig}
           imgData={linkedImage.image}
-          data-locator={`${getLocator('moduleE_promo_area_img')}`}
+          dataLocator={`${getLocator('moduleE_promo_area_img')}`}
           className="module-e-img-full-width"
         />
       </Anchor>
@@ -186,7 +186,7 @@ const ModuleE = props => {
               <DamImage
                 imgConfigs={IMG_DATA.eyeBrowImgConfig}
                 imgData={eyebrowMediaLinkedList[0].image}
-                data-locator={`${getLocator('moduleE_eyebrowImage_img')}_left`}
+                dataLocator={`${getLocator('moduleE_eyebrowImage_img')}_left`}
                 link={eyebrowMediaLinkedList[0].link}
                 className="module-e-img-full-width"
               />
@@ -215,7 +215,7 @@ const ModuleE = props => {
               <DamImage
                 imgConfigs={IMG_DATA.eyeBrowImgConfig}
                 imgData={eyebrowMediaLinkedList[1].image}
-                data-locator={`${getLocator('moduleE_eyebrowImage_img')}_right`}
+                dataLocator={`${getLocator('moduleE_eyebrowImage_img')}_right`}
                 link={eyebrowMediaLinkedList[1].link}
                 className="module-e-img-full-width"
               />
@@ -258,7 +258,7 @@ const ModuleE = props => {
                     <DamImage
                       imgConfigs={IMG_DATA.carouselImgConfig}
                       imgData={image}
-                      data-locator={`${getLocator('moduleE_carousel_image_img')}${index + 1}`}
+                      dataLocator={`${getLocator('moduleE_carousel_image_img')}${index + 1}`}
                       className="module-e-img-full-width"
                       link={singleCTAButton}
                     />
@@ -358,7 +358,7 @@ const ModuleE = props => {
                       <DamImage
                         imgConfigs={IMG_DATA.smallImgConfig}
                         imgData={image}
-                        data-locator={`${getLocator('moduleE_small_img')}${index + 1}`}
+                        dataLocator={`${getLocator('moduleE_small_img')}${index + 1}`}
                         className="module-e-img-full-width"
                         link={link}
                       />
