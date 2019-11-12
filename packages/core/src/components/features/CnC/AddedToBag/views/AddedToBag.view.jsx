@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import AddedToBagActions from '../../AddedToBagActions';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
@@ -13,6 +14,7 @@ import styles, {
   buttonActionStyles,
   LoyaltyWrapperStyles,
   recommendationStyles,
+  customStyles,
 } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
@@ -41,6 +43,7 @@ class AddedToBag extends React.PureComponent {
       handleCartCheckout,
       isInternationalShipping,
       hideHeader,
+      addedToBagLoaderState,
     } = this.props;
     return (
       <Modal
@@ -59,6 +62,7 @@ class AddedToBag extends React.PureComponent {
         inheritedStyles={modalStyles}
         innerContentClassName="atb-innerContent"
       >
+        {addedToBagLoaderState && <SpinnerOverlay inheritedStyles={customStyles} />}
         <div className="addedToBagWrapper">
           <ProductInformationView
             data={addedToBagData}
@@ -78,6 +82,7 @@ class AddedToBag extends React.PureComponent {
             containerId="paypal-button-container-added-to-bag"
             inheritedStyles={buttonActionStyles}
             hideHeader={hideHeader}
+            isAddedToBag
           />
           <div className="loyaltyAddedToBagWrapper">
             <LoyaltyBanner pageCategory="isAddedToBagPage" inheritedStyles={LoyaltyWrapperStyles} />
@@ -123,6 +128,7 @@ AddedToBag.propTypes = {
   isInternationalShipping: PropTypes.bool.isRequired,
   hideHeader: PropTypes.bool.isRequired,
   handleCartCheckout: PropTypes.func.isRequired,
+  addedToBagLoaderState: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
 

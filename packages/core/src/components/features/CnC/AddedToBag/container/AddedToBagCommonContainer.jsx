@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import { getLabelValue } from '@tcp/core/src/utils';
 import { closeAddedToBag } from './AddedToBag.actions';
-import { getAddedToBagData, isOpenAddedToBag, getQuantityValue } from './AddedToBag.selectors';
+import {
+  getAddedToBagData,
+  isOpenAddedToBag,
+  getQuantityValue,
+  getAddedToBagLoaderState,
+} from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -19,6 +24,7 @@ type Props = {
   navigation: object,
   isInternationalShipping: boolean,
   isPayPalWebViewEnable: boolean,
+  addedToBagLoaderState: boolean,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -57,6 +63,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       isPayPalWebViewEnable,
       router,
       closeModal,
+      addedToBagLoaderState,
     } = this.props;
     return (
       <AddedToBag
@@ -72,6 +79,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         navigation={navigation}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         hideHeader={this.hideHeaderWhilePaypalView}
+        addedToBagLoaderState={addedToBagLoaderState}
       />
     );
   }
@@ -94,6 +102,7 @@ const mapStateToProps = state => {
     quantity: getQuantityValue(state),
     isInternationalShipping: getIsInternationalShipping(state),
     isPayPalWebViewEnable: BagPageSelectors.getPayPalWebViewStatus(state),
+    addedToBagLoaderState: getAddedToBagLoaderState(state),
   };
 
   if (state.Labels.global) {

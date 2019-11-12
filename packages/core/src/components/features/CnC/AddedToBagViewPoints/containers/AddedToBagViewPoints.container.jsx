@@ -13,6 +13,7 @@ import {
   getPointsSummary,
 } from '../../AddedToBag/container/AddedToBag.selectors';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import AddedToBagSkeleton from '../../AddedToBag/skeleton/AddedToBagSkeleton.view';
 
 export class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {};
@@ -28,15 +29,21 @@ export class AddedToBagViewPointsContainer extends React.Component {
       inheritedStyles,
     } = this.props;
     return (
-      <AddedToBagViewPoints
-        labels={labels}
-        pointsSummary={pointsSummary}
-        isPlcc={isPlcc}
-        isUserLoggedIn={isUserLoggedIn}
-        currencySymbol={currencySymbol}
-        isInternationalShipping={isInternationalShipping}
-        inheritedStyles={inheritedStyles}
-      />
+      <>
+        {pointsSummary && pointsSummary.totalItems > 0 ? (
+          <AddedToBagViewPoints
+            labels={labels}
+            pointsSummary={pointsSummary}
+            isPlcc={isPlcc}
+            isUserLoggedIn={isUserLoggedIn}
+            currencySymbol={currencySymbol}
+            isInternationalShipping={isInternationalShipping}
+            inheritedStyles={inheritedStyles}
+          />
+        ) : (
+          <AddedToBagSkeleton />
+        )}
+      </>
     );
   }
 }
