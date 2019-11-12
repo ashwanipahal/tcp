@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../../common/hoc/withStyles.native';
@@ -57,11 +58,9 @@ const onRenderHeader = data => {
     onSortSelection,
     filteredId,
     renderBrandFilter,
-    plpTopPromos,
   } = data;
   return (
     <ListHeaderContainer>
-      <PromoModules plpTopPromos={plpTopPromos} />
       {totalProductsCount && totalProductsCount > 1 && (
         <FilterModal
           filters={filters}
@@ -133,26 +132,30 @@ const ProductListView = ({
     plpTopPromos,
   };
   return (
-    <PageContainer margins={margins} paddings={paddings}>
-      <ProductList
-        products={products}
-        title={title}
-        scrollToTop={scrollToTop}
-        totalProductsCount={totalProductsCount}
-        onRenderHeader={() => onRenderHeader(headerData)}
-        isFavorite={isFavorite}
-        onAddItemToFavorites={onAddItemToFavorites}
-        isLoggedIn={isLoggedIn}
-        labelsLogin={labelsLogin}
-        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
-        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
-        {...otherProps}
-      />
-      {isLoadingMore ? <PLPSkeleton col={20} /> : null}
-      <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer navigation={navigation} />
-      {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-    </PageContainer>
+    <ScrollView>
+      <PromoModules plpTopPromos={plpTopPromos} />
+      <PageContainer margins={margins} paddings={paddings}>
+        <ProductList
+          products={products}
+          title={title}
+          scrollToTop={scrollToTop}
+          totalProductsCount={totalProductsCount}
+          onRenderHeader={() => onRenderHeader(headerData)}
+          isFavorite={isFavorite}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+          labelsLogin={labelsLogin}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+          plpTopPromos={plpTopPromos}
+          {...otherProps}
+        />
+        {isLoadingMore ? <PLPSkeleton col={20} /> : null}
+        <QuickViewModal navigation={navigation} onPickUpOpenClick={onPickUpOpenClick} />
+        <AddedToBagContainer navigation={navigation} />
+        {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
+      </PageContainer>
+    </ScrollView>
   );
 };
 

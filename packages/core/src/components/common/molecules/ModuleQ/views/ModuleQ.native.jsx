@@ -49,17 +49,13 @@ const {
 } = CAROUSEL_OPTIONS.APP;
 const getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
-const getLoadingHost = host => {
-  return host ? LAZYLOAD_HOST_NAME.PDP : LAZYLOAD_HOST_NAME.HOME;
-};
-
 /**
  * This function is being called through snap carousel render function.
  * @param {Object} productItem SnapCarousel data item
  * @param {Object} navigation Navigation object required for children
  * @param {String} moduleQMainTile label required for all slides main tile.
  */
-function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad) {
+function getCarouselSlide(productItem, navigation, moduleQMainTile, ignoreLazyLoadImage) {
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
@@ -82,7 +78,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
             <OutfitMainImageWrapper>
               <StyledImage
                 alt={moduleQMainTile}
-                host={getLoadingHost(hostLazyLoad)}
+                host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
                 url={getUrlWithHttp(imageUrl)}
                 height={PRODUCT_IMAGE_HEIGHT}
                 width={PRODUCT_IMAGE_WIDTH}
@@ -105,7 +101,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
                   <StyledImage
                     key={remoteId}
                     alt={alt}
-                    host={getLoadingHost(hostLazyLoad)}
+                    host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
                     url={getUrlWithHttp(smallImageUrl)}
                     height={OUTFIT_ITEM_IMAGE_HEIGHT}
                     width={OUTFIT_ITEM_IMAGE_WIDTH}
@@ -156,7 +152,7 @@ const ModuleQ = props => {
     bgClass,
     autoplayInterval,
     shopThisLookLabel,
-    hostLazyLoad,
+    ignoreLazyLoadImage,
     hideTabs,
     selectedColorProductId,
     showRelatedOutfitHeader,
@@ -178,7 +174,7 @@ const ModuleQ = props => {
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
-    return getCarouselSlide(item, navigation, shopThisLookLabel, hostLazyLoad);
+    return getCarouselSlide(item, navigation, shopThisLookLabel, ignoreLazyLoadImage);
   };
 
   const onProductTabChange = (categoryId, tabItem) => {
@@ -290,7 +286,7 @@ ModuleQ.defaultProps = {
   promoBanner: null,
   autoplayInterval: 1,
   shopThisLookLabel: '',
-  hostLazyLoad: '',
+  ignoreLazyLoadImage: false,
   hideTabs: false,
   selectedColorProductId: '',
   headerText: [],
@@ -334,7 +330,7 @@ ModuleQ.propTypes = {
       singleCTAButton: PropTypes.object,
     })
   ).isRequired,
-  hostLazyLoad: PropTypes.string,
+  ignoreLazyLoadImage: PropTypes.bool,
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,

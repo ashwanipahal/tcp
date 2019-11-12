@@ -236,23 +236,7 @@ const processResponse = (
   // TODO - fix this - this.setUnbxdId(unbxdId);
   let entityCategory;
   let categoryNameTop = '';
-  let bannerInfo = {
-    // TODO - this is hard coded for app - remove it when dependency is resolved
-    val: {
-      top: [
-        {
-          sub: 'slot_1',
-          typ: 'slot',
-          val: {
-            cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
-            sub: 'divisionTabs',
-            typ: 'module',
-            val: '',
-          },
-        },
-      ],
-    },
-  };
+  let bannerInfo = {};
   // Taking the first product in plp to get the categoryID to be sent to adobe
   if (processHelpers.hasProductsInResponse(res.body.response)) {
     const firstProduct = res.body.response.products[0];
@@ -312,77 +296,82 @@ const processResponse = (
     if (res.body.banner) {
       bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
       // TODO - Remove this hardcoding once the real values are available from unbxd
-      bannerInfo.val.top[0].val.sub = 'outfitCarousel';
-      bannerInfo.val.top[0].val.cid = 'ef8e1162-41eb-4ca0-ad62-cb0833d344c3';
-      bannerInfo.val.top[1].val.sub = 'jeans';
-      bannerInfo.val.top[1].val.cid = '94d9997f-b7d2-4e1a-ab5c-2983f6bca3f4';
-
-      // Adding extra slot though not configured
-      bannerInfo.val.top[2] = {
-        sub: 'slot_3',
-        typ: 'slot',
+      bannerInfo = {
         val: {
-          cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
-          sub: 'divisionTabs',
-          typ: 'module',
-          val: '',
+          top: [
+            {
+              sub: 'slot_1',
+              typ: 'slot',
+              val: {
+                cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
+                sub: 'moduleA',
+                typ: 'module',
+                val: '',
+              },
+            },
+            {
+              sub: 'slot_2',
+              typ: 'slot',
+              val: {
+                cid: 'c53989d8-29f9-435f-bde1-d11639affbda',
+                sub: 'moduleD',
+                typ: 'module',
+                val: '',
+              },
+            },
+            {
+              sub: 'slot_3',
+              typ: 'slot',
+              val: {
+                cid: 'c716a1b9-0ad7-4125-85fb-f3ba31257587',
+                sub: 'moduleQ',
+                typ: 'module',
+                val: '',
+              },
+            },
+            {
+              sub: 'slot_4',
+              typ: 'slot',
+              val: {
+                cid: 'cb2d22f1-310f-4f9b-908c-ad625b1b6af2',
+                sub: 'moduleG',
+                typ: 'module',
+                val: '',
+              },
+            },
+            {
+              sub: 'slot_5',
+              typ: 'slot',
+              val: {
+                cid: '94d9997f-b7d2-4e1a-ab5c-2983f6bca3f4',
+                sub: 'moduleJeans',
+                typ: 'module',
+                val: '',
+              },
+            },
+            {
+              sub: 'slot_6',
+              typ: 'slot',
+              val: {
+                cid: 'ef8e1162-41eb-4ca0-ad62-cb0833d344c3',
+                sub: 'outfitCarousel',
+                typ: 'module',
+                val: '',
+              },
+            },
+            {
+              sub: 'slot_7',
+              typ: 'slot',
+              val: {
+                cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
+                sub: 'divisionTabs',
+                typ: 'module',
+                val: '',
+              },
+            },
+          ],
         },
       };
-
-      // bannerInfo.val.top[3] = {
-      //   sub: 'slot_4',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
-      //     sub: 'moduleA',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      // bannerInfo.val.top[4] = {
-      //   sub: 'slot_5',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'c53989d8-29f9-435f-bde1-d11639affbda',
-      //     sub: 'moduleD',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      // bannerInfo.val.top[5] = {
-      //   sub: 'slot_6',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
-      //     sub: 'moduleG',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      // bannerInfo.val.top[6] = {
-      //   sub: 'slot_7',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
-      //     sub: 'moduleM',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      //   bannerInfo.val.top[7] = {
-      //     sub: 'slot_8',
-      //     typ: 'slot',
-      //     val: {
-      //       cid: 'c716a1b9-0ad7-4125-85fb-f3ba31257587',
-      //       sub: 'moduleQ',
-      //       typ: 'module',
-      //       val: '',
-      //     },
-      //   };
     }
   } catch (error) {
     logger.error(error);

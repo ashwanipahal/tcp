@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ModuleA,
-  ModuleD,
-  ModuleG,
-  ModuleM,
-  ModuleQ,
-} from '@tcp/core/src/components/common/molecules';
+import { ModuleA, ModuleD, ModuleM, ModuleQ } from '@tcp/core/src/components/common/molecules';
 import DivisionTabModule from '@tcp/core/src/components/common/molecules/DivisionTabModule';
 import OutfitCarouselModule from '@tcp/core/src/components/common/molecules/OutfitCarouselModule';
 import JeansModule from '@tcp/core/src/components/common/molecules/JeansModule';
+import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/PromoModules.style';
 
@@ -33,7 +28,14 @@ const PromoModules = ({ categoryPath, plpTopPromos }) => {
       return (
         Module &&
         promo && (
-          <Module key={contentId} data={promo} asPath={categoryPath} {...slotData} {...others} />
+          <Module
+            key={contentId}
+            data={promo}
+            asPath={categoryPath}
+            ignoreLazyLoadImage
+            {...slotData}
+            {...others}
+          />
         )
       );
     })
