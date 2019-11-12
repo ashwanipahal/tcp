@@ -267,7 +267,9 @@ class ShippingForm extends React.Component {
       showAccordian,
       isMobile,
       pageCategory,
+      isLoadingShippingMethods,
     } = this.props;
+    console.log('isLoading', isLoadingShippingMethods);
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
       isVenmoPaymentInProgress && !isVenmoShippingDisplayed
@@ -369,6 +371,7 @@ class ShippingForm extends React.Component {
                       'shipping',
                       'checkout'
                     )}
+                    isLoadingShippingMethods={isLoadingShippingMethods}
                   />
                 </div>
               </FormSection>
@@ -390,6 +393,7 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
+            isLoadingShippingMethods={isLoadingShippingMethods}
           />
         </form>
       </>

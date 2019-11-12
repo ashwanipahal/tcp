@@ -59,6 +59,7 @@ export default class ShippingPage extends React.PureComponent {
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
     pickUpContactPerson: PropTypes.shape({}).isRequired,
+    isLoadingShippingMethods: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -87,6 +88,7 @@ export default class ShippingPage extends React.PureComponent {
     isVenmoShippingDisplayed: true,
     setVenmoPickupState: () => {},
     shippingPhoneAndEmail: null,
+    isLoadingShippingMethods: false,
   };
 
   constructor(props) {
@@ -373,6 +375,7 @@ export default class ShippingPage extends React.PureComponent {
       isSaveToAddressBookChecked,
       userAddresses,
       onFileAddressKey,
+      isLoadingShippingMethods,
     } = this.props;
     const { isMobile, newUserPhoneNo, shippingAddressId } = this.props;
     const { setAsDefaultShipping, labels, address, syncErrors } = this.props;
@@ -387,9 +390,9 @@ export default class ShippingPage extends React.PureComponent {
       submitData = this.submitShippingAddressData;
     }
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
-    if (!checkoutRoutingDone) {
-      return <div>Loading....</div>;
-    }
+    // if (!checkoutRoutingDone) {
+    //   return <div>Loading....</div>;
+    // }
     return (
       <>
         {shipmentMethods && shipmentMethods.length > 0 && (
@@ -442,6 +445,7 @@ export default class ShippingPage extends React.PureComponent {
               isVenmoShippingDisplayed={isVenmoShippingDisplayed}
               ServerErrors={ServerErrors}
               pageCategory={pageCategory}
+              isLoadingShippingMethods={isLoadingShippingMethods}
             />
             <AddressVerification
               onSuccess={this.submitVerifiedShippingAddressData}

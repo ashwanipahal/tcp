@@ -166,6 +166,8 @@ class CheckoutPage extends React.PureComponent {
       checkoutServerError,
       toggleCountrySelector,
       clearCheckoutServerError,
+      isFetching,
+      bagLoading,
     } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -173,6 +175,7 @@ class CheckoutPage extends React.PureComponent {
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
     const { shipmentMethods } = shippingProps;
+    console.log(isFetching, bagLoading);
 
     return (
       <div>

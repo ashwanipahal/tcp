@@ -5,6 +5,7 @@ import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
 import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
 import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
+import GiftCardSkeleton from '../skeleton/GiftCardSkeleton.view';
 
 import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 
@@ -156,6 +157,7 @@ const renderGiftCardTile = ({
   applyExistingGiftCardToOrder,
   orderBalanceTotal,
   isPaymentDisabled,
+  giftCardList,
 }) => {
   return (
     <GiftCardTile
@@ -169,6 +171,7 @@ const renderGiftCardTile = ({
       orderBalanceTotal={orderBalanceTotal}
       applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
       isPaymentDisabled={isPaymentDisabled}
+      giftCardList={giftCardList}
     />
   );
 };
@@ -264,97 +267,100 @@ export const GiftCards = ({
   isPaymentDisabled,
 }) => {
   return (
-    <Grid className={className}>
-      <Row fullBleed className="gift-section-container elem-mb-LRG">
-        <Col
-          colSize={{
-            small: 6,
-            medium: 8,
-            large: isFromReview ? 12 : 8,
-          }}
-        >
-          {!isFromReview && (
-            <>
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs26"
-                fontWeight="regular"
-                data-locator="gift-cards"
-                className="elem-mt-XXL"
-              >
-                {labels.giftCardTitle}
-              </BodyCopy>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs16"
-                fontWeight="regular"
-                data-locator="gift-cards"
-                className="elem-mt-LRG"
-              >
-                {labels.giftCardAddUpToMsg}
-              </BodyCopy>
-            </>
-          )}
-          {GiftCardSectionHeading(
-            appliedGiftCards,
+    <>
+      <GiftCardSkeleton />
+      <Grid className={className}>
+        <Row fullBleed className="gift-section-container elem-mb-LRG">
+          <Col
+            colSize={{
+              small: 6,
+              medium: 8,
+              large: isFromReview ? 12 : 8,
+            }}
+          >
+            {!isFromReview && (
+              <>
+                <BodyCopy
+                  fontFamily="primary"
+                  fontSize="fs26"
+                  fontWeight="regular"
+                  data-locator="gift-cards"
+                  className="elem-mt-XXL"
+                >
+                  {labels.giftCardTitle}
+                </BodyCopy>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="regular"
+                  data-locator="gift-cards"
+                  className="elem-mt-LRG"
+                >
+                  {labels.giftCardAddUpToMsg}
+                </BodyCopy>
+              </>
+            )}
+            {GiftCardSectionHeading(
+              appliedGiftCards,
+              labels,
+              isFromReview,
+              isExpressCheckout,
+              getHeading,
+              true
+            )}
+            {renderAppliedGiftCards({
+              appliedGiftCards,
+              handleRemoveGiftCard,
+              labels,
+              giftCardErrors,
+              isExpressCheckout,
+              isFromReview,
+              isPaymentDisabled,
+            })}
+            {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
+            {GiftCardSectionHeading(
+              giftCardList,
+              labels,
+              isFromReview,
+              isExpressCheckout,
+              getHeading
+            )}
+            {renderGiftCardsList({
+              giftCardList,
+              applyExistingGiftCardToOrder,
+              labels,
+              giftCardErrors,
+              orderBalanceTotal,
+              isExpressCheckout,
+              isFromReview,
+              isPaymentDisabled,
+            })}
+          </Col>
+        </Row>
+        {!enableAddGiftCard &&
+          (!isFromReview || (isFromReview && isExpressCheckout)) &&
+          renderAddNewGiftButton(
             labels,
-            isFromReview,
-            isExpressCheckout,
-            getHeading,
-            true
-          )}
-          {renderAppliedGiftCards({
-            appliedGiftCards,
-            handleRemoveGiftCard,
-            labels,
-            giftCardErrors,
-            isExpressCheckout,
-            isFromReview,
-            isPaymentDisabled,
-          })}
-          {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
-          {GiftCardSectionHeading(
-            giftCardList,
-            labels,
-            isFromReview,
-            isExpressCheckout,
-            getHeading
-          )}
-          {renderGiftCardsList({
-            giftCardList,
-            applyExistingGiftCardToOrder,
-            labels,
-            giftCardErrors,
             orderBalanceTotal,
-            isExpressCheckout,
+            appliedGiftCards,
+            showAddGiftCard,
             isFromReview,
-            isPaymentDisabled,
+            isExpressCheckout
+          )}
+        {enableAddGiftCard &&
+          renderAddGiftCard({
+            hideAddGiftCard,
+            onAddGiftCardClick,
+            getAddGiftCardError,
+            isGuestUser,
+            isRecapchaEnabled,
+            labels,
+            isLoading,
+            onClearError,
+            isFromReview,
           })}
-        </Col>
-      </Row>
-      {!enableAddGiftCard &&
-        (!isFromReview || (isFromReview && isExpressCheckout)) &&
-        renderAddNewGiftButton(
-          labels,
-          orderBalanceTotal,
-          appliedGiftCards,
-          showAddGiftCard,
-          isFromReview,
-          isExpressCheckout
-        )}
-      {enableAddGiftCard &&
-        renderAddGiftCard({
-          hideAddGiftCard,
-          onAddGiftCardClick,
-          getAddGiftCardError,
-          isGuestUser,
-          isRecapchaEnabled,
-          labels,
-          isLoading,
-          onClearError,
-          isFromReview,
-        })}
-    </Grid>
+      </Grid>
+    </>
   );
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
+import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
+import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
 import CHECKOUT_ACTIONS, {
   initCheckoutAction,
   submitShippingSection,
@@ -377,6 +379,9 @@ const mapStateToProps = state => {
       shippingAddress: getShippingAddress(state),
       syncErrors: getSyncError(state),
       shippingPhoneAndEmail: getShippingPhoneAndEmail(state),
+      isLoadingShippingMethods: GiftCardSelector.getIsLoading(state),
+      isFetching: getCardListFetchingState(state),
+      bagLoading: BagPageSelector.isBagLoading(state),
     },
     billingProps: {
       labels: getBillingLabels(state),
@@ -384,6 +389,8 @@ const mapStateToProps = state => {
       billingData: getBillingValues(state),
       userAddresses: getAddressListState(state),
       creditFieldLabels: getCreditFieldLabels(state),
+      isFetching: getCardListFetchingState(state),
+      bagLoading: BagPageSelector.isBagLoading(state),
     },
     activeStep: getCheckoutStage(state),
     //  isPlccOfferModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccPromoModalId,
@@ -413,6 +420,8 @@ const mapStateToProps = state => {
       isPaymentDisabled: getIsPaymentDisabled(state),
       defaultShipmentId: getDefaultShipmentID(state),
       cardType: selectors.getCardType(state),
+      isFetching: getCardListFetchingState(state),
+      bagLoading: BagPageSelector.isBagLoading(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),

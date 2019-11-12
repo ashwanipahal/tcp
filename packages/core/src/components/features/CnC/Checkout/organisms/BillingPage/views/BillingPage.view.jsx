@@ -27,6 +27,7 @@ class BillingPage extends React.PureComponent {
     isVenmoEnabled: PropTypes.bool,
     pageCategory: PropTypes.string,
     ServerErrors: PropTypes.node.isRequired,
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -40,6 +41,7 @@ class BillingPage extends React.PureComponent {
     pageCategory: '',
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
+    isFetching: false,
   };
 
   componentDidMount() {
@@ -73,11 +75,13 @@ class BillingPage extends React.PureComponent {
       ServerErrors,
       pageCategory,
       checkoutRoutingDone,
+      isFetching,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     if (!checkoutRoutingDone) {
       return <div>Loading....</div>;
     }
+    console.log('isFetching', isFetching);
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
