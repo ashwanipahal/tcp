@@ -27,9 +27,9 @@ import {
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import moduleEMockv1 from '@tcp/core/src/services/abstractors/common/moduleE/mockv1';
-import moduleEMockv1alt from '@tcp/core/src/services/abstractors/common/moduleE/mockV1alt';
-import moduleEMockv2 from '@tcp/core/src/services/abstractors/common/moduleE/mockV2';
+import moduleEMockv1 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1';
+import moduleEMockv1alt from '@tcp/core/src/services/abstractors/common/moduleE/mock-v1-alt';
+import moduleEMockv2 from '@tcp/core/src/services/abstractors/common/moduleE/mock-v2';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';

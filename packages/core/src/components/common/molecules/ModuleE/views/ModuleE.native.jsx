@@ -367,7 +367,7 @@ class ModuleE extends React.PureComponent {
       navigation,
       largeCompImageSimpleCarousel,
       ctaItems,
-      eyebrow: [eyebrow],
+      eyebrow: eyebrows,
       headerText,
       promoBanner,
       divCTALinks,
@@ -375,6 +375,8 @@ class ModuleE extends React.PureComponent {
       ctaType,
       carouselCtaType,
     } = this.props;
+
+    const [eyebrow] = eyebrows && [];
 
     const ctaTypeValue = ctaTypes[ctaType];
 
