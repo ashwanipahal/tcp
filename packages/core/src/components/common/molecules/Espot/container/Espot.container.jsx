@@ -13,11 +13,8 @@ export const mapDispatchToProps = dispatch => {
         })
       );
     },
-    openLoginOverlay: () => {
-      openOverlayModal({
-        component: 'login',
-        variation: 'primary',
-      });
+    openOverlay: payload => {
+      dispatch(openOverlayModal(payload));
     },
   };
 };

@@ -87,7 +87,7 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCM
           ignoreGutter={{ small: true }}
           colSize={{ large: getModalSizeForApprovedPLCC(isPLCCModalFlow), medium: 8, small: 12 }}
         >
-          <Espot isNativeView richTextHtml={plccData && plccData.plcc_approved_ps} />
+          <RichText richTextHtml={plccData && plccData.plcc_approved_ps} />
         </Col>
       </Row>
       <Row fullBleed className="centered">
@@ -262,7 +262,7 @@ const ApprovedPLCCApplicationView = ({
           {!isGuest ? (
             <RichText richTextHtml={plccData && plccData.plcc_shipping_info} />
           ) : (
-            <RichText richTextHtml={plccData && plccData.guest_shipping_info} />
+            <Espot richTextHtml={plccData && plccData.guest_shipping_info} />
           )}
         </Col>
       </Row>

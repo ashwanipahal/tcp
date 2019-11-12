@@ -4,14 +4,22 @@ import RichText from '@tcp/core/src/components/common/atoms/RichText';
 
 class Espot extends PureComponent {
   onClickHandler = action => {
-    const { togglePlccModal, openLoginOverlay } = this.props;
+    const { togglePlccModal, openOverlay } = this.props;
     switch (action) {
       case 'plccModal':
         togglePlccModal(true);
         break;
-
       case 'login':
-        openLoginOverlay();
+        openOverlay({
+          component: 'login',
+          variation: 'primary',
+        });
+        break;
+      case 'create-account':
+        openOverlay({
+          component: 'createAccount',
+          variation: 'primary',
+        });
         break;
 
       default:
@@ -32,7 +40,7 @@ class Espot extends PureComponent {
 Espot.propTypes = {
   togglePlccModal: PropTypes.func.isRequired,
   richTextHtml: PropTypes.string.isRequired,
-  openLoginOverlay: PropTypes.func.isRequired,
+  openOverlay: PropTypes.func.isRequired,
 };
 
 export default Espot;
