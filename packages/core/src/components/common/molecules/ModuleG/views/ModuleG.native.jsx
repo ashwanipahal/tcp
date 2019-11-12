@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Dimensions } from 'react-native';
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
-import { getLocator } from '../../../../../utils/index.native';
+import { getLocator, getProductUrlForDAM } from '../../../../../utils/index.native';
+import moduleGConfig from '../moduleG.config';
 import { Carousel } from '../..';
 import QuickViewModal from '../../../organisms/QuickViewModal/container/QuickViewModal.container';
 import {
@@ -97,7 +98,7 @@ class ModuleG extends React.PureComponent {
   renderCarouselSlide = item => {
     const { item: itemValue } = item;
     const { navigation } = this.props;
-    const { imageUrl, productItemIndex, product_name: productName, uniqueId } = itemValue;
+    const { productItemIndex, product_name: productName, uniqueId } = itemValue;
     return (
       <ImageSlideWrapper>
         <View style={{ width: screenWidth, height: PRODUCT_IMAGE_HEIGHT }}>
@@ -113,7 +114,14 @@ class ModuleG extends React.PureComponent {
             navigation={navigation}
             testID={`${getLocator('moduleG_product_image')}${productItemIndex}`}
           >
-            <DamImage url={imageUrl[0]} height={PRODUCT_IMAGE_HEIGHT} width={PRODUCT_IMAGE_WIDTH} />
+            <DamImage
+              url={getProductUrlForDAM(uniqueId)}
+              height={PRODUCT_IMAGE_HEIGHT}
+              width={PRODUCT_IMAGE_WIDTH}
+              alt={productName}
+              imgConfig={moduleGConfig.IMG_DATA.productImgConfig[0]}
+              isProductImage
+            />
           </Anchor>
         </View>
       </ImageSlideWrapper>
@@ -158,12 +166,8 @@ class ModuleG extends React.PureComponent {
               navigation={navigation}
               headerText={headerText}
               locator={getLocator('moduleG_header_text')}
-              color="gray.900"
-              fontFamily="primary"
               fontSize="fs20"
               fontWeight="medium"
-              textAlign="center"
-              letterSpacing="ls2"
             />
           )}
         </Wrapper>
@@ -173,11 +177,9 @@ class ModuleG extends React.PureComponent {
               testID={getLocator('moduleG_promobanner_text')}
               promoBanner={promoBanner}
               navigation={navigation}
-              color="gray.900"
-              fontFamily="primary"
               fontSize="fs48"
               fontWeight="black"
-              textAlign="center"
+              letterSpacing="0"
             />
           </PromoContainer>
         )}
