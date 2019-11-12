@@ -1054,16 +1054,16 @@ export const calculatePriceValue = (
   return priceValue;
 };
 export const orderStatusMapperForNotification = {
-  [constants.STATUS_CONSTANTS.ORDER_RECEIVED]: 'lbl_global_yourOrderWasReceived',
+  [constants.STATUS_CONSTANTS.ORDER_RECEIVED]: 'lbl_orders_statusOrderReceived',
   [constants.STATUS_CONSTANTS.ORDER_PROCESSING]: 'lbl_global_yourOrderIsProcessing',
-  [constants.STATUS_CONSTANTS.ORDER_SHIPPED]: 'lbl_global_yourOrderHasShipped',
-  [constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED]: 'lbl_global_partOfYourOrderHasShipped',
-  [constants.STATUS_CONSTANTS.ORDER_CANCELED]: 'lbl_global_yourOrderWasCanceled',
-  [constants.STATUS_CONSTANTS.ITEMS_RECEIVED]: 'lbl_global_yourOrderWasReceived',
-  [constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP]: 'lbl_global_yourOrderIsReadyForPickup',
-  [constants.STATUS_CONSTANTS.ITEMS_PICKED_UP]: 'lbl_global_yourOrderWasPickedUp',
-  [constants.STATUS_CONSTANTS.ORDER_EXPIRED]: 'lbl_global_yourOrderWasNotPickedUp',
-  [constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED]: 'lbl_global_yourOrderWasReceived',
+  [constants.STATUS_CONSTANTS.ORDER_SHIPPED]: 'lbl_orders_statusOrderShipped',
+  [constants.STATUS_CONSTANTS.ORDER_PARTIALLY_SHIPPED]: 'lbl_orders_statusOrderPartiallyShipped',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELED]: 'lbl_orders_statusOrderCancelled',
+  [constants.STATUS_CONSTANTS.ITEMS_RECEIVED]: 'lbl_orders_statusOrderReceived',
+  [constants.STATUS_CONSTANTS.ITEMS_READY_FOR_PICKUP]: 'lbl_orders_statusItemsReadyForPickup',
+  [constants.STATUS_CONSTANTS.ITEMS_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
+  [constants.STATUS_CONSTANTS.ORDER_EXPIRED]: 'lbl_orders_statusOrderExpired',
+  [constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED]: 'lbl_orders_statusOrderReceived',
   [constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY]: 'lbl_global_yourOrderIsBeingProcessed',
   /* Status added for BOSS */
   [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',

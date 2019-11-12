@@ -19,7 +19,11 @@ const OrderNotification = ({ className, labels, order }) => {
         className="elem-ml-MED elem-mr-MED elem-pt-LRG elem-pb-LRG separator-line"
       >
         <BodyCopy color="white" fontSize="fs18" fontWeight="extrabold" fontFamily="secondary">
-          {getLabelValue(labels, getOrderStatusForNotification(order.status), 'OrderNotification')}
+          {getLabelValue(
+            labels,
+            getOrderStatusForNotification(order.orderStatus),
+            'OrderNotification'
+          )}
         </BodyCopy>
 
         <BodyCopy component="div" className="elem-mt-SM">
@@ -51,22 +55,29 @@ const OrderNotification = ({ className, labels, order }) => {
             {getLabelValue(labels, 'lbl_global_viewOrderDetails', 'OrderNotification')}
           </Anchor>
         </BodyCopy>
-        {order.trackingUrl && order.trackingUrl !== constants.STATUS_CONSTANTS.NA && (
+        {order.orderTrackingUrl && !order.isBOSSOrder && (
           <BodyCopy component="div" className="elem-mt-SM">
             <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
               {getLabelValue(labels, 'lbl_global_tracking', 'OrderNotification')}
             </BodyCopy>
-            <Anchor
-              fontSizeVariation="medium"
-              anchorVariation="secondary"
-              underline
-              href={order.orderTrackingUrl}
-              className="view-order-link"
-              to={order.trackingUrl}
-              target="_blank"
-            >
-              {order.orderTracking}
-            </Anchor>
+
+            {order.orderTrackingUrl !== constants.STATUS_CONSTANTS.NA ? (
+              <Anchor
+                fontSizeVariation="medium"
+                anchorVariation="secondary"
+                underline
+                href={order.orderTrackingUrl}
+                className="view-order-link"
+                to={order.orderTrackingUrl}
+                target="_blank"
+              >
+                {order.orderTracking}
+              </Anchor>
+            ) : (
+              <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
+                {order.orderTracking}
+              </BodyCopy>
+            )}
           </BodyCopy>
         )}
 
