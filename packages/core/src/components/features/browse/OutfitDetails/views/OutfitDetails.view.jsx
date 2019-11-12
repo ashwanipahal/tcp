@@ -39,7 +39,6 @@ const OutfitDetailsView = ({
     variations: 'moduleO',
     page: Constants.RECOMMENDATIONS_PAGES_MAPPING.OUTFIT,
     partNumber: outfitId,
-    priceOnly: true,
     showLoyaltyPromotionMessage: false,
     headerAlignment: 'left',
   };
