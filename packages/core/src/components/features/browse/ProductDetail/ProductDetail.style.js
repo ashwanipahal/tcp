@@ -21,10 +21,15 @@ export default css`
     display: flex;
     align-items: center;
     background: transparent;
+    cursor: pointer;
   }
   .back-button {
     margin-left: 5px;
     color: ${props => props.theme.colors.TEXT.BLUE};
+  }
+  .go-back-container {
+    padding-left: 5px;
+    padding-bottom: 18px;
   }
   .product-summary-mobile-view {
     display: flex;
@@ -113,6 +118,10 @@ export default css`
       padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
+    .go-back-container {
+      padding-left: 0;
+      padding-bottom: 36px;
+    }
   }
   .loyalty-banner {
     padding-right: 0;
@@ -124,6 +133,13 @@ export const customSubmitButtonStyle = css`
   .add-to-bag-button {
     max-width: none;
   }
+  .button-wrapper {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+  .qty-selector {
+    margin-top: 40px;
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .add-to-bag-button {
       max-width: none;
@@ -132,6 +148,11 @@ export const customSubmitButtonStyle = css`
   @media ${props => props.theme.mediaQuery.large} {
     .add-to-bag-button {
       max-width: 450px;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .edit-form-css {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 `;
