@@ -7,9 +7,7 @@ import { BodyCopy } from '../../../atoms';
 import styles from '../styles/DivisionTabModule.style';
 import { getSiteId } from '../../../../../utils';
 
-const onTabChange = url => {
-  console.log('url', url);
-};
+const onTabChange = () => {};
 
 export class DivisionTabModule extends PureComponent {
   static propTypes = {

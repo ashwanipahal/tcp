@@ -269,5 +269,4 @@ export const getPLPTopPromos = state => {
       })) ||
     []
   );
-  // return state.ProductListing.bannerInfo.val.top;
 };

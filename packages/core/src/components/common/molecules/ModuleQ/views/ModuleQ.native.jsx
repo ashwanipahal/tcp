@@ -55,7 +55,13 @@ const getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
  * @param {Object} navigation Navigation object required for children
  * @param {String} moduleQMainTile label required for all slides main tile.
  */
-function getCarouselSlide(productItem, navigation, moduleQMainTile, ignoreLazyLoadImage) {
+function getCarouselSlide(
+  productItem,
+  navigation,
+  moduleQMainTile,
+  ignoreLazyLoadImage,
+  hostLazyLoad
+) {
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
@@ -78,7 +84,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, ignoreLazyLo
             <OutfitMainImageWrapper>
               <StyledImage
                 alt={moduleQMainTile}
-                host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
+                host={ignoreLazyLoadImage ? '' : hostLazyLoad || LAZYLOAD_HOST_NAME.HOME}
                 url={getUrlWithHttp(imageUrl)}
                 height={PRODUCT_IMAGE_HEIGHT}
                 width={PRODUCT_IMAGE_WIDTH}
@@ -101,7 +107,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, ignoreLazyLo
                   <StyledImage
                     key={remoteId}
                     alt={alt}
-                    host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
+                    host={ignoreLazyLoadImage ? '' : hostLazyLoad || LAZYLOAD_HOST_NAME.HOME}
                     url={getUrlWithHttp(smallImageUrl)}
                     height={OUTFIT_ITEM_IMAGE_HEIGHT}
                     width={OUTFIT_ITEM_IMAGE_WIDTH}
@@ -152,6 +158,7 @@ const ModuleQ = props => {
     bgClass,
     autoplayInterval,
     shopThisLookLabel,
+    hostLazyLoad,
     ignoreLazyLoadImage,
     hideTabs,
     selectedColorProductId,
@@ -174,7 +181,7 @@ const ModuleQ = props => {
 
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
-    return getCarouselSlide(item, navigation, shopThisLookLabel, ignoreLazyLoadImage);
+    return getCarouselSlide(item, navigation, shopThisLookLabel, ignoreLazyLoadImage, hostLazyLoad);
   };
 
   const onProductTabChange = (categoryId, tabItem) => {
@@ -287,6 +294,7 @@ ModuleQ.defaultProps = {
   autoplayInterval: 1,
   shopThisLookLabel: '',
   ignoreLazyLoadImage: false,
+  hostLazyLoad: '',
   hideTabs: false,
   selectedColorProductId: '',
   headerText: [],
@@ -331,6 +339,7 @@ ModuleQ.propTypes = {
     })
   ).isRequired,
   ignoreLazyLoadImage: PropTypes.bool,
+  hostLazyLoad: PropTypes.string,
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
