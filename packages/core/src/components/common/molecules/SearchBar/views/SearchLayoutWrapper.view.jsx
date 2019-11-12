@@ -289,12 +289,17 @@ class SearchLayoutWrapper extends React.PureComponent {
                   {searchResults &&
                     searchResults.autosuggestList &&
                     searchResults.autosuggestList.map(item => {
+                      const isCategory =
+                        item.heading === getLabelValue(labels, 'lbl_category_matches');
                       return (
                         <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
                           <ul>
                             {item &&
                               item.suggestions &&
                               item.suggestions.map(itemData => {
+                                const itemUrl = isCategory
+                                  ? itemData.url.replace(/'/g, '')
+                                  : undefined;
                                 return (
                                   <BodyCopy
                                     component="li"
@@ -306,10 +311,14 @@ class SearchLayoutWrapper extends React.PureComponent {
                                     <Anchor
                                       noLink
                                       className="suggestion-label"
-                                      to={`/${getSiteId()}/search/${itemData.text}`}
+                                      to={
+                                        isCategory
+                                          ? `/${getSiteId()}${itemUrl}`
+                                          : `/${getSiteId()}/search/${itemData.text}`
+                                      }
                                       onClick={e => {
                                         e.preventDefault();
-                                        redirectToSuggestedUrl(`${itemData.text}`);
+                                        redirectToSuggestedUrl(`${itemData.text}`, itemUrl);
                                       }}
                                     >
                                       {itemData.text && (

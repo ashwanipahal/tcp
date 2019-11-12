@@ -85,32 +85,39 @@ class SearchBar extends React.PureComponent {
     });
   };
 
-  setDataInLocalStorage = searchText => {
+  setDataInLocalStorage = (searchText, url) => {
     if (searchText) {
       const searchTextParam = searchText.trim().toLowerCase();
       const getPreviousSearchResults = getRecentStoreFromLocalStorage();
       let filteredSearchResults;
+      let originalSearchWithUrl;
       if (getPreviousSearchResults) {
-        filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+        originalSearchWithUrl = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+        filteredSearchResults = originalSearchWithUrl.map(e => e.split('<url>')[0]);
         if (filteredSearchResults.indexOf(searchTextParam) === -1) {
-          filteredSearchResults.push(searchTextParam);
+          this.updateRecentSearchResults(originalSearchWithUrl, searchTextParam, url);
         } else {
-          filteredSearchResults = this.arrayRemove(filteredSearchResults, searchTextParam);
-          filteredSearchResults.push(searchTextParam);
+          const index = filteredSearchResults.indexOf(searchTextParam);
+          const tempRef = originalSearchWithUrl[index];
+          originalSearchWithUrl = this.arrayRemove(originalSearchWithUrl, tempRef);
+          originalSearchWithUrl.push(tempRef);
+          this.updateRecentSearchResults(originalSearchWithUrl);
         }
       } else {
-        filteredSearchResults = [];
-        filteredSearchResults.push(searchTextParam);
+        this.updateRecentSearchResults([], searchTextParam, url);
       }
-      if (
-        filteredSearchResults &&
-        filteredSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
-      ) {
-        filteredSearchResults.shift();
-      }
-
-      setRecentStoreToLocalStorage(filteredSearchResults);
     }
+  };
+
+  updateRecentSearchResults = (arr, searchTextParam, url) => {
+    if (searchTextParam) {
+      const searchTermUrl = url ? `${searchTextParam}<url>${url}` : searchTextParam;
+      arr.push(searchTermUrl);
+    }
+    if (arr && arr.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX) {
+      arr.shift();
+    }
+    setRecentStoreToLocalStorage(arr);
   };
 
   commonCloseClick = () => {
@@ -137,12 +144,16 @@ class SearchBar extends React.PureComponent {
     }
   };
 
-  redirectToSuggestedUrl = searchText => {
+  redirectToSuggestedUrl = (searchText, url) => {
     if (searchText) {
-      this.setDataInLocalStorage(searchText);
+      this.setDataInLocalStorage(searchText, url);
     }
     this.clearModalParams();
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    if (url) {
+      routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+    } else {
+      routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    }
   };
 
   render() {

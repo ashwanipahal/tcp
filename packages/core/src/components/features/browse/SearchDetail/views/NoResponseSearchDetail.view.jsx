@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
@@ -83,34 +84,48 @@ class NoResponseSearchDetailView extends React.PureComponent {
     );
   };
 
-  setDataInLocalStorage = searchText => {
+  setDataInLocalStorage = (searchText, url) => {
     if (searchText) {
       const searchTextParam = searchText.trim().toLowerCase();
       const getPreviousSearchResults = getRecentStoreFromLocalStorage();
       let filteredSearchResults;
+      let originalSearchWithUrl;
       if (getPreviousSearchResults) {
-        filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+        originalSearchWithUrl = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+        filteredSearchResults = originalSearchWithUrl.map(e => e.split('<url>')[0]);
         if (filteredSearchResults.indexOf(searchTextParam) === -1) {
-          filteredSearchResults.push(searchTextParam);
+          this.updateRecentSearchResults(originalSearchWithUrl, searchTextParam, url);
+        } else {
+          const index = filteredSearchResults.indexOf(searchTextParam);
+          const tempRef = originalSearchWithUrl[index];
+          originalSearchWithUrl = this.arrayRemove(originalSearchWithUrl, tempRef);
+          originalSearchWithUrl.push(tempRef);
+          this.updateRecentSearchResults(originalSearchWithUrl);
         }
       } else {
-        filteredSearchResults = [];
-        filteredSearchResults.push(searchTextParam);
+        this.updateRecentSearchResults([], searchTextParam, url);
       }
-      if (
-        filteredSearchResults &&
-        filteredSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
-      ) {
-        filteredSearchResults.shift();
-      }
-
-      setRecentStoreToLocalStorage(filteredSearchResults);
     }
   };
 
-  redirectToSuggestedUrl = searchText => {
+  updateRecentSearchResults = (arr, searchTextParam, url) => {
+    if (searchTextParam) {
+      const searchTermUrl = url ? `${searchTextParam}<url>${url}` : searchTextParam;
+      arr.push(searchTermUrl);
+    }
+    if (arr && arr.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX) {
+      arr.shift();
+    }
+    setRecentStoreToLocalStorage(arr);
+  };
+
+  redirectToSuggestedUrl = (searchText, url) => {
     if (searchText) {
-      this.setDataInLocalStorage(searchText);
+      this.setDataInLocalStorage(searchText, url);
+    }
+    if (url) {
+      routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+    } else {
       routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
     }
   };
@@ -227,6 +242,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
                       searchResults.autosuggestList &&
                       searchResults.autosuggestList.length > 0 &&
                       searchResults.autosuggestList.map(item => {
+                        const isCategory =
+                          item.heading === getLabelValue(slpLabels, 'lbl_category_matches');
                         return (
                           <div>
                             {item && item.suggestions.length > 0 && (
@@ -239,6 +256,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
                                 {item &&
                                   item.suggestions &&
                                   item.suggestions.map(itemData => {
+                                    const itemUrl = isCategory
+                                      ? itemData.url.replace(/'/g, '')
+                                      : undefined;
                                     return (
                                       <BodyCopy
                                         component="li"
@@ -248,9 +268,17 @@ class NoResponseSearchDetailView extends React.PureComponent {
                                         className="empty-search-linkName"
                                       >
                                         <Anchor
-                                          asPath={`/search/${itemData.text}`}
-                                          to={`/search?searchQuery=${itemData.text}`}
                                           className="suggestion-label"
+                                          to={
+                                            isCategory ? `${itemUrl}` : `/search/${itemData.text}`
+                                          }
+                                          onClick={e => {
+                                            e.preventDefault();
+                                            this.redirectToSuggestedUrl(
+                                              `${itemData.text}`,
+                                              itemUrl
+                                            );
+                                          }}
                                         >
                                           {itemData.text}
                                         </Anchor>
