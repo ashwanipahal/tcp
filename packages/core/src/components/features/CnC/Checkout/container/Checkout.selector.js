@@ -49,6 +49,10 @@ const getIsOrderHasShipping = state =>
 const getIsOrderHasPickup = state =>
   !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
 
+const getIfCheckoutRoutingDone = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'routingDone']);
+};
+
 const getCardType = state => {
   return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
 };
@@ -1066,4 +1070,5 @@ export default {
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
+  getIfCheckoutRoutingDone,
 };

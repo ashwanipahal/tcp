@@ -10,7 +10,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const SearchListingView = ({
   className,
@@ -107,7 +106,6 @@ const SearchListingView = ({
         </Col>
       </Row>
       <QuickViewModal />
-      <AddedToBagContainer />
     </div>
   );
 };

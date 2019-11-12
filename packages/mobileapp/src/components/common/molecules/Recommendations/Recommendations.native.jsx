@@ -7,7 +7,6 @@ import ModuleP from '@tcp/core/src/components/common/molecules/ModuleP';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import { getScreenWidth, getLocator } from '@tcp/core/src/utils/index.native';
 import { Button, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
-import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import {
   CarouselContainer,
@@ -180,7 +179,6 @@ const Recommendations = props => {
     portalValue,
     partNumber,
     categoryName,
-    isAddedToBagOpen,
   } = props;
   const variationArray = variation.split(',');
   const action = {
@@ -194,7 +192,6 @@ const Recommendations = props => {
   return (
     <View>
       {variationArray.map(value => renderRecommendationView(props, value))}
-      {!isAddedToBagOpen ? <AddedToBagContainer navigation={navigation} /> : null}
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
     </View>
   );
@@ -209,14 +206,12 @@ Recommendations.propTypes = {
   portalValue: PropTypes.string,
   partNumber: PropTypes.string,
   categoryName: PropTypes.string,
-  isAddedToBagOpen: PropTypes.bool,
 };
 
 Recommendations.defaultProps = {
   portalValue: '',
   partNumber: '',
   categoryName: '',
-  isAddedToBagOpen: false,
 };
 
 export default Recommendations;

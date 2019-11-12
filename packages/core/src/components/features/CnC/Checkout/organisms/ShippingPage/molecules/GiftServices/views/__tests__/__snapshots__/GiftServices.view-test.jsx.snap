@@ -622,6 +622,110 @@ exports[`GiftServices component renders correctly 1`] = `
               dataLocator="giftService-list"
               id="optionId"
               name="optionId"
+              options={
+                Array [
+                  Object {
+                    "content": <React.Fragment>
+                      <div
+                        className="shortDesc"
+                      >
+                        <span>
+                          abc
+                        </span>
+                        <span
+                          className="price"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          className="longDesc"
+                        >
+                          abcde
+                        </span>
+                      </div>
+                    </React.Fragment>,
+                    "title": <React.Fragment>
+                      <div>
+                        <span>
+                          abc
+                        </span>
+                        <span
+                          className="price"
+                        />
+                      </div>
+                    </React.Fragment>,
+                    "value": undefined,
+                  },
+                  Object {
+                    "content": <React.Fragment>
+                      <div
+                        className="shortDesc"
+                      >
+                        <span>
+                          abcd
+                        </span>
+                        <span
+                          className="price"
+                        />
+                      </div>
+                      <div>
+                        <span
+                          className="longDesc"
+                        >
+                          abcde
+                        </span>
+                      </div>
+                    </React.Fragment>,
+                    "title": <React.Fragment>
+                      <div>
+                        <span>
+                          abcd
+                        </span>
+                        <span
+                          className="price"
+                        />
+                      </div>
+                    </React.Fragment>,
+                    "value": undefined,
+                  },
+                  Object {
+                    "content": <React.Fragment>
+                      <div
+                        className="shortDesc"
+                      >
+                        <span>
+                          abc
+                        </span>
+                        <span
+                          className="price"
+                        >
+                          $5.00
+                        </span>
+                      </div>
+                      <div>
+                        <span
+                          className="longDesc"
+                        >
+                          abcde
+                        </span>
+                      </div>
+                    </React.Fragment>,
+                    "title": <React.Fragment>
+                      <div>
+                        <span>
+                          abc
+                        </span>
+                        <span
+                          className="price"
+                        >
+                          $5.00
+                        </span>
+                      </div>
+                    </React.Fragment>,
+                    "value": undefined,
+                  },
+                ]
+              }
               width={87}
             />
           </div>
