@@ -138,18 +138,9 @@ class BagPageView extends React.PureComponent {
 
   wrapSection = (Component, orderItemsCount) => {
     const isNoNEmptyBag = orderItemsCount > 0;
+    const colSizes = { small: 6, medium: 5, large: 8 };
     if (!isNoNEmptyBag) {
-      return (
-        <Col
-          colSize={{
-            small: 6,
-            medium: 5,
-            large: 8,
-          }}
-        >
-          {Component}
-        </Col>
-      );
+      return <Col colSize={colSizes}>{Component}</Col>;
     }
     return Component;
   };
@@ -235,7 +226,8 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout, isMobile } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isMobile, isBagPage } = this.props;
+
     return (
       <div ref={this.getBagActionsContainerRef}>
         <AddedToBagActions
@@ -245,6 +237,7 @@ class BagPageView extends React.PureComponent {
           handleCartCheckout={handleCartCheckout}
           paypalButtonHeight={isMobile ? 42 : 48}
           containerId="paypal-button-container-bag"
+          isBagPage={isBagPage}
         />
       </div>
     );
@@ -257,7 +250,7 @@ class BagPageView extends React.PureComponent {
   };
 
   stickyBagCondensedHeader = () => {
-    const { labels, showAddTobag, handleCartCheckout, currencySymbol } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, currencySymbol, isBagPage } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
@@ -294,6 +287,7 @@ class BagPageView extends React.PureComponent {
                 isBagPageStickyHeader
                 paypalButtonHeight={42}
                 containerId="paypal-button-container-bag-header"
+                isBagPage={isBagPage}
               />
             </Col>
           </Row>
@@ -427,6 +421,10 @@ class BagPageView extends React.PureComponent {
   }
 }
 
+BagPageView.defaultProps = {
+  isBagPage: true,
+};
+
 BagPageView.propTypes = {
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
@@ -444,6 +442,7 @@ BagPageView.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
+  isBagPage: PropTypes.bool,
 };
 
 export default withStyles(BagPageView, styles);

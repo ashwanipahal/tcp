@@ -43,6 +43,9 @@ export class AddedToBagContainer extends React.Component<Props> {
       isPayPalHidden,
       payPalTop,
       paypalButtonHeight,
+      isAddedToBag,
+      isBagPage,
+      isMiniBag,
       setClickAnalyticsDataCheckout,
       cartOrderItems,
     } = this.props;
@@ -73,6 +76,9 @@ export class AddedToBagContainer extends React.Component<Props> {
         isPayPalHidden={isPayPalHidden}
         payPalTop={payPalTop}
         paypalButtonHeight={paypalButtonHeight}
+        isAddedToBag={isAddedToBag}
+        isBagPage={isBagPage}
+        isMiniBag={isMiniBag}
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         cartOrderItems={cartOrderItems}
       />

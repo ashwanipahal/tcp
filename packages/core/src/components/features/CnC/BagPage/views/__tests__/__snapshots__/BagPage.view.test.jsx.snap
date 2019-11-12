@@ -339,6 +339,7 @@ exports[`Bag page View should render with only SFL condition 1`] = `
 ",
               ]
             }
+            isBagPage={true}
             isBagPageStickyHeader={true}
             labels={Object {}}
             paypalButtonHeight={42}
@@ -566,6 +567,7 @@ exports[`Bag page View should render with showCondensedHeader: true, 1`] = `
 ",
               ]
             }
+            isBagPage={true}
             isBagPageStickyHeader={true}
             labels={Object {}}
             paypalButtonHeight={42}
