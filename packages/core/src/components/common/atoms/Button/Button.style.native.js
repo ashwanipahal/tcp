@@ -220,8 +220,8 @@ const style = css`
       : ''};
   ${props =>
     props.fill === 'BLUE'
-      ? ` background: ${props.theme.colorPalette.blue[700]}; border: 1px solid ${
-          props.theme.colorPalette.blue[700]
+      ? ` background: ${props.theme.colorPalette.blue.C900}; border: 1px solid ${
+          props.theme.colorPalette.blue.C900
         }; `
       : ''};
   ${props =>
