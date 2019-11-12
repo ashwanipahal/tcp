@@ -378,6 +378,7 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       onQuickViewOpenClick,
@@ -480,6 +481,7 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
+    const badge3Text = listPriceForColor - offerPriceForColor !== 0 ? badge3 : '';
     const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li
@@ -542,7 +544,7 @@ class ProductsGridItem extends React.PureComponent {
                 {this.getProductPriceSection(
                   listPriceForColor,
                   offerPriceForColor,
-                  badge3,
+                  badge3Text,
                   isShowBadges
                 )}
               </Col>
