@@ -397,7 +397,7 @@ class ProductPickupContainer extends React.PureComponent {
          * @returns if the product is only bopis eligible and the sku is resolved
          * then it @returns {labels.PRODUCT_BOPIS}
          */
-        pickupTitleText = labels.lbl_Product_pickup_PRODUCT_BOPIS;
+        pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
         return { showChangeStore, pickupTitleText, isBossEligBossInvAvail };
       }
       pickupTitleText = labels.lbl_Product_pickup_TITLE_DEFAULT_NOSTORE;
@@ -435,7 +435,7 @@ class ProductPickupContainer extends React.PureComponent {
     } = this.props;
 
     const isStoreBopisEligible = this.getIsStoreBopisEligible(bopisItemInventory);
-    let isStoreBossEligible = false;
+    let isStoreBossEligible = true;
     if (userDefaultStore) {
       isStoreBossEligible = numericStringToBool(
         userDefaultStore.storeBossInfo && userDefaultStore.storeBossInfo.isBossEligible
@@ -527,19 +527,9 @@ class ProductPickupContainer extends React.PureComponent {
     this.isSkuResolved = validateSkuDetails(productInfo, itemValues);
     const { isSubmitting } = this.state;
     // RAD-74 Replace Outbound1 Inventory check to Outbound2(Radial/Boss Inventory)
-    let showPickupInfo;
-    if (isRadialInventoryEnabled) {
-      showPickupInfo =
-        userDefaultStore &&
-        this.isSkuResolved &&
-        !isBOSSProductOOS(productInfo.colorFitsSizesMap, itemValues);
-    } else {
-      showPickupInfo =
-        userDefaultStore &&
-        this.isSkuResolved &&
-        !isProductOOS(productInfo.colorFitsSizesMap, itemValues);
-    }
-
+    const validateBossOOS = isRadialInventoryEnabled ? isBOSSProductOOS : isProductOOS;
+    const isbossInventoryAvailable = !validateBossOOS(productInfo.colorFitsSizesMap, itemValues);
+    const showPickupInfo = !userDefaultStore || !this.isSkuResolved || isbossInventoryAvailable;
     const { showChangeStore, pickupTitleText, isBossEligBossInvAvail } = this.setPickupTitle();
     const {
       showPickupDetails,
