@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { PropTypes } from 'prop-types';
 import OutfitListing from '../views/index';
 import getLabels from './OutfitListing.selectors';
@@ -7,11 +7,11 @@ import { getStyliticsProductTabListSelector } from '../../../../common/organisms
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 class OutfitListingContainer extends React.PureComponent {
-  componentDidMount() {
-    const { getStyliticsProductTabListData, asPath, navigation } = this.props;
+  static getInitialProps = async ({ props }) => {
+    const { getStyliticsProductTabListData, asPath, navigation } = props;
     const categoryId = (navigation && navigation.getParam('outfitPath')) || asPath;
-    getStyliticsProductTabListData({ categoryId, count: 20 });
-  }
+    await getStyliticsProductTabListData({ categoryId, count: 20 });
+  };
 
   render() {
     const {
@@ -52,6 +52,7 @@ const mapStateToProps = state => {
   return {
     labels: getLabels(state),
     styliticsProductTabList: getStyliticsProductTabListSelector(state),
+    deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
   };
 };
 
@@ -66,7 +67,6 @@ const mapDispatchToProps = dispatch => {
 OutfitListingContainer.propTypes = {
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   asPath: PropTypes.string.isRequired,
-  getStyliticsProductTabListData: PropTypes.func,
   styliticsProductTabList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
@@ -80,7 +80,6 @@ OutfitListingContainer.propTypes = {
 
 OutfitListingContainer.defaultProps = {
   labels: {},
-  getStyliticsProductTabListData: () => {},
   breadCrumbs: [],
   navTree: {},
   currentNavIds: [],
@@ -91,7 +90,8 @@ OutfitListingContainer.defaultProps = {
   asPathVal: '',
 };
 
-export default connect(
+export default withIsomorphicRenderer({
+  WrappedComponent: OutfitListingContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(OutfitListingContainer);
+  mapDispatchToProps,
+});
