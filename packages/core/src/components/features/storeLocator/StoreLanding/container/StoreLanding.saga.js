@@ -38,7 +38,7 @@ export function* getFavoriteStoreSaga({ payload }) {
       throw res;
     }
   } catch (err) {
-    if (isMobileApp())
+    if (isMobileApp() && err)
       yield put(toastMessageInfo(errorMessage.ERROR_MESSAGES_BOPIS.storeSearchException));
   }
 }

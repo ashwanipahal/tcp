@@ -1,15 +1,16 @@
-import { fromJS } from 'immutable';
 import RecentSearchReducer from '../RecentSearch.reducer';
 
 describe('RecentSearchReducer tests', () => {
   it('should handle success recent search  add success', () => {
-    const initialState = fromJS({ searchTermList: [] });
+    const initialState = { searchTermList: [] };
 
     expect(
-      RecentSearchReducer(initialState, {
-        type: '@@Navigation-SET_RECENT_SEARCH',
-        payload: { searchTerm: 'Shoes' },
-      }).size
+      Object.keys(
+        RecentSearchReducer(initialState, {
+          type: '@@Navigation-SET_RECENT_SEARCH',
+          payload: { searchTerm: 'Shoes' },
+        })
+      ).length
     ).toBe(1);
   });
 });

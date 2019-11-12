@@ -27,6 +27,9 @@ const LoginView = ({
   userplccCardId,
   isRememberedUser,
   userName,
+  openOverlay,
+  onClose,
+  closeModal,
 }) => {
   return (
     <LoginSection
@@ -53,6 +56,9 @@ const LoginView = ({
       userplccCardNumber={userplccCardNumber}
       userplccCardId={userplccCardId}
       userName={userName}
+      openOverlay={openOverlay}
+      onClose={onClose}
+      closeModal={closeModal}
     />
   );
 };
@@ -80,12 +86,18 @@ LoginView.propTypes = {
   userplccCardId: PropTypes.string.isRequired,
   isRememberedUser: PropTypes.bool,
   userName: PropTypes.string,
+  onClose: PropTypes.func,
+  openOverlay: PropTypes.func,
+  closeModal: PropTypes.func,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   openModal: () => {},
+  openOverlay: () => {},
+  onClose: () => {},
+  closeModal: () => {},
   isRememberedUser: false,
   userName: '',
 };

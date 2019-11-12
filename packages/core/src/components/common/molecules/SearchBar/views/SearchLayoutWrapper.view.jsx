@@ -167,7 +167,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
   changeSearchText = e => {
     e.preventDefault();
-    const { startSearch, labels } = this.props;
+    const { startSearch, labels, toggleSearchResults } = this.props;
     const searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     const CLOSE_IMAGE = 'close-mobile-image';
@@ -178,11 +178,7 @@ class SearchLayoutWrapper extends React.PureComponent {
 
     const termLength = 1;
     if (searchText.length <= termLength) {
-      const payload = {
-        searchText: '',
-        slpLabels: labels,
-      };
-      startSearch(payload);
+      toggleSearchResults(false);
     } else {
       const payload = {
         searchText,
@@ -359,6 +355,7 @@ SearchLayoutWrapper.propTypes = {
   setDataInLocalStorage: PropTypes.func.isRequired,
   redirectToSearchPage: PropTypes.func.isRequired,
   startSearch: PropTypes.func.isRequired,
+  toggleSearchResults: PropTypes.func.isRequired,
   commonCloseClick: PropTypes.func.isRequired,
   showProduct: PropTypes.bool,
   isSearchOpen: PropTypes.bool,

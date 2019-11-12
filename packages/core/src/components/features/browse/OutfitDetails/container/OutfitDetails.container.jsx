@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
 import {
@@ -36,37 +36,45 @@ import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      outfitIdLocal: '',
-    };
-  }
-
-  componentDidMount() {
-    const {
-      getOutfit,
-      router: { query },
-      navigation,
-    } = this.props;
-    let selectedOutfitId = '';
+  static getInitialProps = async ({ props, query, isServer }) => {
+    const { getOutfit, navigation } = props;
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
       // TODO - these are dummy for mocking. Keeping these comments till we get real outfit details data from listing
       // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
       // const outfitId = '138548';
-      getOutfit({ outfitId, vendorColorProductIdsList });
-      selectedOutfitId = outfitId;
+      await getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
-      const { vendorColorProductIdsList, outfitId } = query;
-      getOutfit({ outfitId, vendorColorProductIdsList });
-      selectedOutfitId = outfitId;
+      let vendorColorProductIdsList;
+      let outfitId;
+      if (isServer) {
+        ({ vendorColorProductIdsList, outfitId } = query);
+      } else {
+        ({
+          router: {
+            query: { vendorColorProductIdsList, outfitId },
+          },
+        } = props);
+      }
+      await getOutfit({ outfitId, vendorColorProductIdsList });
     }
+  };
 
-    if (selectedOutfitId) {
-      this.setState({ outfitIdLocal: selectedOutfitId });
-    }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      router: {
+        query: { outfitId: selectedOutfitId },
+      },
+    } = nextProps;
+    return selectedOutfitId ? { ...prevState, outfitIdLocal: selectedOutfitId } : { ...prevState };
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      outfitIdLocal: '',
+    };
   }
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
@@ -172,7 +180,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 OutfitDetailsContainer.propTypes = {
-  getOutfit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   outfitImageUrl: PropTypes.string,
   outfitProducts: PropTypes.shape({}),
@@ -215,7 +222,8 @@ OutfitDetailsContainer.defaultProps = {
   pdpLabels: {},
 };
 
-export default connect(
+export default withIsomorphicRenderer({
+  WrappedComponent: OutfitDetailsContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(OutfitDetailsContainer);
+  mapDispatchToProps,
+});

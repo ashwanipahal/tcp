@@ -1,4 +1,5 @@
 import logger from '@tcp/core/src/utils/loggerInstance';
+import ProductListingAbstractor from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListingApiHandler';
 import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
@@ -146,6 +147,9 @@ export const retrieveCachedData = ({ cachedData, key, bootstrapData }) => {
   return bootstrapData[key];
 };
 
+export const shouldInitiateSSRCall = (originalUrl, deviceType) =>
+  originalUrl.includes('/c/') && deviceType === 'bot' && typeof window === 'undefined';
+
 /**
  * This function parses Error out of response
  * @param {*} bootstrapData Response from API call
@@ -205,7 +209,14 @@ const checkAndLogErrors = (bootstrapData, pageName) => {
  * @param {*} fetchCachedDataParams
  * @param {*} bootstrapData
  */
-const parsedResponse = (response, fetchCachedDataParams, bootstrapData) => {
+const parsedResponse = async (
+  response,
+  fetchCachedDataParams,
+  bootstrapData,
+  state,
+  originalUrl,
+  deviceType
+) => {
   try {
     response.header = headerAbstractor.processData(
       retrieveCachedData({ ...fetchCachedDataParams, key: 'header' })
@@ -238,6 +249,18 @@ const parsedResponse = (response, fetchCachedDataParams, bootstrapData) => {
     logger.error(`Error occurred while processing navigation data: ${e}`);
   }
 
+  try {
+    if (shouldInitiateSSRCall(originalUrl, deviceType)) {
+      response.PLP = await ProductListingAbstractor({
+        navigationData: response.navigation,
+        location: { pathname: originalUrl },
+        state,
+      });
+    }
+  } catch (e) {
+    logger.error(`Error occurred while processing PLP data: ${e}`);
+  }
+
   return response;
 };
 
@@ -250,7 +273,7 @@ const parsedResponse = (response, fetchCachedDataParams, bootstrapData) => {
  * @param {String} pageName
  * @param {module} Array ['header', 'footer', 'layout', 'navigation']
  */
-const bootstrap = async (pageName = '', modules, cachedData) => {
+const bootstrap = async (pageName = '', modules, cachedData, state, originalUrl, deviceType) => {
   const response = {};
   const apiConfig = getAPIConfig();
   const { language } = apiConfig;
@@ -291,7 +314,14 @@ const bootstrap = async (pageName = '', modules, cachedData) => {
       }
     }
 
-    return parsedResponse(response, fetchCachedDataParams, bootstrapData);
+    return parsedResponse(
+      response,
+      fetchCachedDataParams,
+      bootstrapData,
+      state,
+      originalUrl,
+      deviceType
+    );
   } catch (error) {
     logger.error('Error occurred in bootstrap query: ', error);
   }
