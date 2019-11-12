@@ -68,7 +68,7 @@ class LoginSection extends React.PureComponent<Props> {
             underline
             fontSizeVariation="medium"
             anchorVariation="primary"
-            onClick={this.showForgotPasswordForm}
+            onClick={this.showLoginForm}
           >
             <LogOutPageContainer labels={logoutlabels} underline />
           </Anchor>

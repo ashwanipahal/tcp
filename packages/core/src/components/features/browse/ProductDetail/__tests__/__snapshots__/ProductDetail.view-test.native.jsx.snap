@@ -27,7 +27,7 @@ exports[`ProductDetailView component should renders correctly 1`] = `
           "shortDescription": "",
         }
       }
-      imageUrls={Array []}
+      imageUrls={null}
       isLoggedIn={false}
       onAddItemToFavorites={null}
       onImageClick={[Function]}

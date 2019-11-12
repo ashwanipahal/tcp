@@ -5,7 +5,7 @@ const getCategoryList = store => {
 
 const getSubCategory = store => {
   const state = store.getState();
-  const categoryListing = state.ProductListing && state.ProductListing.get('breadCrumbTrail');
+  const categoryListing = state.ProductListing && state.ProductListing.breadCrumbTrail;
   return categoryListing[1].displayName;
 };
 
