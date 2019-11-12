@@ -114,6 +114,7 @@ export default {
   moduleE_small_image: 'moduleE_small_image_',
   moduleE_small_img_header_text: 'moduleE_small_img_header_text_',
   moduleE_small_img_cta: 'moduleE_small_img_cta_',
+  moduleE_small_img: 'moduleE_small_img_',
   moduleE_promo_area_img: 'moduleE_promo_area_img',
   moduleE_promo_area_img_cta: 'moduleE_promo_area_img_cta',
   moduleE_cta_image: 'moduleE_cta_image_',
