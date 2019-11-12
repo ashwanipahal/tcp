@@ -4,10 +4,11 @@ exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
 <View
   style={
     Object {
-      "flex": 1,
       "height": 42,
       "overflow": "hidden",
-      "width": 340,
+      "position": "relative",
+      "top": 0,
+      "width": 150,
     }
   }
 >

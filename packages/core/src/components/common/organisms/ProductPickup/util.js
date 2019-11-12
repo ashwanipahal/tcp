@@ -31,7 +31,9 @@ const validateSkuDetails = (productInfo, initialValues) => {
   // eslint-disable-next-line
   for (let key in initialValues) {
     const value =
-      typeof initialValues[key] === 'object' ? initialValues[key].name : initialValues[key];
+      typeof initialValues[key] === 'object'
+        ? initialValues[key] && initialValues[key].name
+        : initialValues[key];
     if (
       !value &&
       (key.toLowerCase() !== config.SKU_DETAILS.fit ||

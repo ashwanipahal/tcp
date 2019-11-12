@@ -229,7 +229,7 @@ class BagPageView extends React.PureComponent {
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout, isBagPage } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isMobile, isBagPage } = this.props;
 
     return (
       <div ref={this.getBagActionsContainerRef}>
@@ -238,6 +238,7 @@ class BagPageView extends React.PureComponent {
           showAddTobag={showAddTobag}
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
+          paypalButtonHeight={isMobile ? 42 : 48}
           containerId="paypal-button-container-bag"
           isBagPage={isBagPage}
         />
@@ -287,6 +288,7 @@ class BagPageView extends React.PureComponent {
                 inheritedStyles={addedToBagActionsStyles}
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
+                paypalButtonHeight={42}
                 containerId="paypal-button-container-bag-header"
                 isBagPage={isBagPage}
               />
