@@ -242,23 +242,27 @@ class ModuleE extends React.PureComponent {
    */
   renderEyeBrow = (eyebrow, naviagtion) => {
     return (
-      <EyeBrowContainer>
-        <StyledImage
-          width={MODULE_EYEBROW_WIDTH}
-          height={MODULE_EYEBROW_HEIGHT}
-          url={eyebrow.mediaLinkedList[0].image.url}
-          imgConfig={IMG_DATA.eyeBrowImgConfig[0]}
-        />
-        <TopPromoWrapper width={MODULE_PROMO_EYEBROW_WIDTH}>
-          <PromoBanner naviagtion={naviagtion} promoBanner={eyebrow.promoBanner} />
-        </TopPromoWrapper>
-        <StyledImage
-          width={MODULE_EYEBROW_WIDTH}
-          height={MODULE_EYEBROW_HEIGHT}
-          url={eyebrow.mediaLinkedList[0].image.url}
-          imgConfig={IMG_DATA.eyeBrowImgConfig[0]}
-        />
-      </EyeBrowContainer>
+      <View>
+        {eyebrow && (
+          <EyeBrowContainer>
+            <StyledImage
+              width={MODULE_EYEBROW_WIDTH}
+              height={MODULE_EYEBROW_HEIGHT}
+              url={eyebrow && eyebrow.mediaLinkedList[0] && eyebrow.mediaLinkedList[0].image.url}
+              imgConfig={IMG_DATA.eyeBrowImgConfig[0]}
+            />
+            <TopPromoWrapper width={MODULE_PROMO_EYEBROW_WIDTH}>
+              <PromoBanner naviagtion={naviagtion} promoBanner={eyebrow && eyebrow.promoBanner} />
+            </TopPromoWrapper>
+            <StyledImage
+              width={MODULE_EYEBROW_WIDTH}
+              height={MODULE_EYEBROW_HEIGHT}
+              url={eyebrow && eyebrow.mediaLinkedList[0] && eyebrow.mediaLinkedList[0].image.url}
+              imgConfig={IMG_DATA.eyeBrowImgConfig[0]}
+            />
+          </EyeBrowContainer>
+        )}
+      </View>
     );
   };
 
@@ -376,7 +380,7 @@ class ModuleE extends React.PureComponent {
       carouselCtaType,
     } = this.props;
 
-    const eyebrow = eyebrows ? eyebrows[0] : [];
+    const eyebrow = eyebrows ? eyebrows[0] : null;
 
     const ctaTypeValue = ctaTypes[ctaType];
 
