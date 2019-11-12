@@ -74,6 +74,7 @@ const CnCCommonTemplate = ({
                   getPayPalSettings={getPayPalSettings}
                   navigation={navigation}
                   isBillingPage
+                  fullWidth
                   setVenmoState={() => {}}
                   closeModal={() => {}}
                 />
