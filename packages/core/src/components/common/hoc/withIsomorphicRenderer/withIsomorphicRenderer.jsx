@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import hoistNonReactStatic from 'hoist-non-react-statics';
 import { PropTypes } from 'prop-types';
 import { withRouter } from 'next/router'; // eslint-disable-line
 import { connect } from 'react-redux';
@@ -38,6 +39,10 @@ export default function({ WrappedComponent, mapStateToProps, mapDispatchToProps 
       routerParam: state.routerParam || state.router,
     };
   };
+
+  hoistNonReactStatic(IsomorphicRenderer, WrappedComponent, {
+    getInitialProps: true,
+  });
 
   return withRouter(
     connect(
