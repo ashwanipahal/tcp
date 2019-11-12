@@ -133,13 +133,22 @@ export const customSubmitButtonStyle = css`
   .add-to-bag-button {
     max-width: none;
   }
-  .button-wrapper {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  ${props =>
+    props.isGiftCard
+      ? `.button-wrapper {
+    margin-top: ${props.theme.spacing.ELEM_SPACING.XXL};
+    margin-bottom: ${props.theme.spacing.ELEM_SPACING.LRG};
   }
   .qty-selector {
     margin-top: 40px;
   }
+  @media ${props.theme.mediaQuery.smallOnly} {
+    .edit-form-css {
+      margin-top: ${props.theme.spacing.ELEM_SPACING.MED};
+    }
+  }
+  `
+      : ``}
   @media ${props => props.theme.mediaQuery.medium} {
     .add-to-bag-button {
       max-width: none;
@@ -150,9 +159,5 @@ export const customSubmitButtonStyle = css`
       max-width: 450px;
     }
   }
-  @media ${props => props.theme.mediaQuery.smallOnly} {
-    .edit-form-css {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    }
-  }
+
 `;
