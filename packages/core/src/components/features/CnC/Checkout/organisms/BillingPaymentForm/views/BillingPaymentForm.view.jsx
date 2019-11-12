@@ -16,6 +16,7 @@ import utility, {
   getExpirationRequiredFlag,
   getCreditCardList,
   getSelectedCard,
+  scrollToFirstError,
 } from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import DropdownList from './CreditCardDropdownList.view';
@@ -480,5 +481,6 @@ export default reduxForm({
   enableReinitialize: true,
   shouldValidate: () => true,
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(BillingPaymentForm, styles));
 export { BillingPaymentForm as BillingPaymentFormVanilla };

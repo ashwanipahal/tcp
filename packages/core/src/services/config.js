@@ -105,6 +105,7 @@ export const API_CONFIG = {
   },
   overlayTimeout: 5000,
   sessionCookieKey: 'QuantumMetricSessionID',
+  pageCountCookieKey: 'pv',
   apiContentType: 'application/json',
 };
 

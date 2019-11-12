@@ -141,7 +141,7 @@ export function* getOrderDetailSaga(payload) {
       }
     }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
-
+    yield put(toggleCheckoutRouting(true));
     if (after) {
       yield call(after);
     }
