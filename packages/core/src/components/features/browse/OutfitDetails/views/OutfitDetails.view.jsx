@@ -6,7 +6,6 @@ import { Row, Col, Image, Anchor } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import OutfitDetailsStyle from '../OutfitDetails.style';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import { routerPush } from '../../../../../utils';
 
 const routesBack = e => {
@@ -40,7 +39,6 @@ const OutfitDetailsView = ({
     variations: 'moduleO',
     page: Constants.RECOMMENDATIONS_PAGES_MAPPING.OUTFIT,
     partNumber: outfitId,
-    priceOnly: true,
     showLoyaltyPromotionMessage: false,
     headerAlignment: 'left',
   };
@@ -117,7 +115,6 @@ const OutfitDetailsView = ({
           />
         </Col>
       </Row>
-      <AddedToBagContainer />
     </>
   );
 };

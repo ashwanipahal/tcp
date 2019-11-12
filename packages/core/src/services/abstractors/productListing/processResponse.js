@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
 import { isClient, routerPush, getSiteId, isMobileApp, isCanada } from '../../../utils';
@@ -98,7 +99,7 @@ const getQueryString = (keyValuePairs = {}) => {
   return params.join('&');
 };
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const getPlpUrlQueryValues = filtersAndSort => {
+const getPlpUrlQueryValues = (filtersAndSort, location) => {
   // NOTE: these are parameters on query string we don't handle (nor we need to)
   // just pass them to the abstractor
   let urlQueryValues = {};
@@ -133,8 +134,8 @@ const getPlpUrlQueryValues = filtersAndSort => {
 
   urlQueryValues = getQueryString(urlQueryValues);
 
-  let displayPath = window.location.pathname;
-  const searchName = window.location.search;
+  let displayPath = typeof window === 'undefined' ? location.pathname : window.location.pathname;
+  const searchName = typeof window === 'undefined' ? location.search || '' : window.location.search;
   displayPath = `${displayPath}${searchName}`;
   const country = getSiteId();
   let urlPath = displayPath.replace(`/${country}`, '');
@@ -182,6 +183,8 @@ const processResponse = (
     searchTerm,
     sort,
     filterSortView,
+    location,
+    filterMaps = {},
     isLazyLoading,
   }
 ) => {
@@ -192,12 +195,12 @@ const processResponse = (
   // if (this.apiHelper.responseContainsErrors(res)) {
   //  TODO - error handling throw new ServiceResponseError(res);
   // }
-  if (res.body.redirect && window) {
+  if (isClient() && res.body.redirect && typeof window !== 'undefined') {
     window.location.href = res.body.redirect.value;
   }
 
   if (!isMobileApp() && filterSortView && !isLazyLoading) {
-    getPlpUrlQueryValues(filtersAndSort);
+    getPlpUrlQueryValues(filtersAndSort, location);
   }
 
   const pendingPromises = [];
@@ -227,7 +230,7 @@ const processResponse = (
     const productListingFilters = getProductsFilters(state);
     const productListingTotalCount = getTotalProductsCount(state);
     productListingCurrentNavIds = getCurrentListingIds(state);
-    filters = productListingFilters || {};
+    filters = Object.keys(productListingFilters).length ? productListingFilters : filterMaps;
     totalProductsCount = productListingTotalCount || 0;
   }
 
@@ -236,23 +239,7 @@ const processResponse = (
   // TODO - fix this - this.setUnbxdId(unbxdId);
   let entityCategory;
   let categoryNameTop = '';
-  let bannerInfo = {
-    // TODO - this is hard coded for app - remove it when dependency is resolved
-    val: {
-      top: [
-        {
-          sub: 'slot_1',
-          typ: 'slot',
-          val: {
-            cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
-            sub: 'divisionTabs',
-            typ: 'module',
-            val: '',
-          },
-        },
-      ],
-    },
-  };
+  let bannerInfo = {};
   // Taking the first product in plp to get the categoryID to be sent to adobe
   if (processHelpers.hasProductsInResponse(res.body.response)) {
     const firstProduct = res.body.response.products[0];
@@ -311,78 +298,6 @@ const processResponse = (
   try {
     if (res.body.banner) {
       bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
-      // TODO - Remove this hardcoding once the real values are available from unbxd
-      bannerInfo.val.top[0].val.sub = 'outfitCarousel';
-      bannerInfo.val.top[0].val.cid = 'ef8e1162-41eb-4ca0-ad62-cb0833d344c3';
-      bannerInfo.val.top[1].val.sub = 'moduleJeans';
-      bannerInfo.val.top[1].val.cid = '94d9997f-b7d2-4e1a-ab5c-2983f6bca3f4';
-
-      // Adding extra slot though not configured
-      bannerInfo.val.top[2] = {
-        sub: 'slot_3',
-        typ: 'slot',
-        val: {
-          cid: '518da3e5-1a67-424b-b8d6-94bf25d82d5f',
-          sub: 'divisionTabs',
-          typ: 'module',
-          val: '',
-        },
-      };
-
-      // bannerInfo.val.top[3] = {
-      //   sub: 'slot_4',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
-      //     sub: 'moduleA',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      // bannerInfo.val.top[4] = {
-      //   sub: 'slot_5',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'c53989d8-29f9-435f-bde1-d11639affbda',
-      //     sub: 'moduleD',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      // bannerInfo.val.top[5] = {
-      //   sub: 'slot_6',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
-      //     sub: 'moduleG',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      // bannerInfo.val.top[6] = {
-      //   sub: 'slot_7',
-      //   typ: 'slot',
-      //   val: {
-      //     cid: 'b8119dc0-5bd9-4047-a2cb-c8226eeb4e80',
-      //     sub: 'moduleM',
-      //     typ: 'module',
-      //     val: '',
-      //   },
-      // };
-
-      //   bannerInfo.val.top[7] = {
-      //     sub: 'slot_8',
-      //     typ: 'slot',
-      //     val: {
-      //       cid: 'c716a1b9-0ad7-4125-85fb-f3ba31257587',
-      //       sub: 'moduleQ',
-      //       typ: 'module',
-      //       val: '',
-      //     },
-      //   };
     }
   } catch (error) {
     logger.error(error);

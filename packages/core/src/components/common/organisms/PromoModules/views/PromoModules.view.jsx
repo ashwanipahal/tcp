@@ -1,8 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
-import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/PromoModules.style';
 import { Col } from '../../../atoms';
 
 const defaultResolver = mod => mod.default;
@@ -35,7 +33,6 @@ const modules = {
 };
 
 const PromoModules = ({ asPath, plpTopPromos }) => {
-  console.log('plpTopPromos', plpTopPromos);
   return (
     <Col colSize={{ small: 6, medium: 8, desktop: 12 }}>
       {plpTopPromos &&
@@ -51,23 +48,6 @@ const PromoModules = ({ asPath, plpTopPromos }) => {
         })}
     </Col>
   );
-  // return (
-  //   plpTopPromos && plpTopPromos.map(promo => {
-  //     const { contentId, moduleName } = promo;
-  //     const Module = modules[moduleName];
-  //     return (
-  //       Module &&
-  //       promo && <Module key={contentId} data={promo} asPath={asPath} />
-  //     );
-  //   })
-  // )
-  // <Col className={className} colSize={{ small: 6, medium: 8, desktop: 12 }}>
-  //   {jeansModule && <JeansModule jeansModule={jeansModule} />}
-  //   {outfitModule && <OutfitModule outfitModule={outfitModule} />}
-  //   {divisionTab && (
-  //     <DivisionTabModule divisionTab={divisionTab} onTabChange={onTabChange} asPath={asPath} />
-  //   )}
-  // </Col>
 };
 
 PromoModules.propTypes = {
@@ -80,4 +60,4 @@ PromoModules.defaultProps = {
   plpTopPromos: [],
 };
 
-export default withStyles(PromoModules, styles);
+export default PromoModules;

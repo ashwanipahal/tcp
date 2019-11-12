@@ -98,6 +98,7 @@ describe('product Listing', () => {
         {}
       )
       .then(res => {
+        console.log('JSON.stringify(res)', JSON.stringify(res));
         expect(JSON.stringify(res)).toEqual(formattedData);
       });
   });

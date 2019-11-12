@@ -71,7 +71,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
-        to="Fashion"
+        to="http://image1.sm/url"
       >
         <ForwardRef
           className="carousel-image"
@@ -263,7 +263,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
-        to="Distressed"
+        to="http://image1.sm/url"
       >
         <ForwardRef
           className="carousel-image"
@@ -455,7 +455,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
         asPath="http://image1.sm/url"
         className="image-link"
         dataLocator="dummy-datalocator"
-        to="Super Skiny"
+        to="http://image1.sm/url"
       >
         <ForwardRef
           className="carousel-image"

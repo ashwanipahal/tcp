@@ -155,7 +155,7 @@ export const importGraphQLQueriesDynamically = query => {
       case 'outfitCarousel':
         resolve(require('../services/handler/graphQL/queries/outfitCarousel'));
         break;
-      case 'jeans':
+      case 'moduleJeans':
         resolve(require('../services/handler/graphQL/queries/moduleJeans'));
         break;
       default:

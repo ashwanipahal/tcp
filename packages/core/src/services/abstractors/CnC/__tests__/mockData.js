@@ -725,10 +725,7 @@ export const response = {
         isOnlineOnly: false,
         isBopisEligible: true,
         isBossEligible: true,
-        badge: {
-          matchBadge: false,
-          defaultBadge: '',
-        },
+        badge: {},
         store: null,
         storeId: null,
         storeAddress: null,
@@ -780,10 +777,7 @@ export const response = {
         isOnlineOnly: false,
         isBopisEligible: true,
         isBossEligible: true,
-        badge: {
-          matchBadge: false,
-          defaultBadge: '',
-        },
+        badge: {},
         store: null,
         storeId: null,
         storeAddress: null,
@@ -835,10 +829,7 @@ export const response = {
         isOnlineOnly: false,
         isBopisEligible: true,
         isBossEligible: true,
-        badge: {
-          matchBadge: false,
-          defaultBadge: '',
-        },
+        badge: {},
         store: null,
         storeId: null,
         storeAddress: null,
@@ -893,7 +884,6 @@ export const response = {
         isBopisEligible: true,
         isBossEligible: true,
         badge: {
-          matchBadge: false,
           defaultBadge: 'ONLINE EXCLUSIVE',
         },
         store: null,

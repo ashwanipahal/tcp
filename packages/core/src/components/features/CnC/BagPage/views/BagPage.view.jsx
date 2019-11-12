@@ -16,6 +16,7 @@ import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
+import BagPageAnalytics from './BagPageAnalytics.view';
 
 class BagPageView extends React.PureComponent {
   constructor(props) {
@@ -137,18 +138,9 @@ class BagPageView extends React.PureComponent {
 
   wrapSection = (Component, orderItemsCount) => {
     const isNoNEmptyBag = orderItemsCount > 0;
+    const colSizes = { small: 6, medium: 5, large: 8 };
     if (!isNoNEmptyBag) {
-      return (
-        <Col
-          colSize={{
-            small: 6,
-            medium: 5,
-            large: 8,
-          }}
-        >
-          {Component}
-        </Col>
-      );
+      return <Col colSize={colSizes}>{Component}</Col>;
     }
     return Component;
   };
@@ -228,12 +220,13 @@ class BagPageView extends React.PureComponent {
             orderItemsCount
           )}
         {this.renderRecommendations()}
+        <BagPageAnalytics {...this.props} />
       </React.Fragment>
     );
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isBagPage } = this.props;
 
     return (
       <div ref={this.getBagActionsContainerRef}>
@@ -243,6 +236,7 @@ class BagPageView extends React.PureComponent {
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
           containerId="paypal-button-container-bag"
+          isBagPage={isBagPage}
         />
       </div>
     );
@@ -255,7 +249,7 @@ class BagPageView extends React.PureComponent {
   };
 
   stickyBagCondensedHeader = () => {
-    const { labels, showAddTobag, handleCartCheckout, currencySymbol } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, currencySymbol, isBagPage } = this.props;
     const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
@@ -291,6 +285,7 @@ class BagPageView extends React.PureComponent {
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
                 containerId="paypal-button-container-bag-header"
+                isBagPage={isBagPage}
               />
             </Col>
           </Row>
@@ -424,6 +419,10 @@ class BagPageView extends React.PureComponent {
   }
 }
 
+BagPageView.defaultProps = {
+  isBagPage: true,
+};
+
 BagPageView.propTypes = {
   className: PropTypes.string.isRequired,
   labels: PropTypes.shape({}).isRequired,
@@ -441,6 +440,7 @@ BagPageView.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
+  isBagPage: PropTypes.bool,
 };
 
 export default withStyles(BagPageView, styles);

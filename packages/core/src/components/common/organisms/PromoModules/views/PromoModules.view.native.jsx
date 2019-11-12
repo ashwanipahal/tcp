@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ModuleA,
-  ModuleD,
-  ModuleG,
-  ModuleM,
-  ModuleQ,
-} from '@tcp/core/src/components/common/molecules';
+import { ModuleA, ModuleD, ModuleM, ModuleQ } from '@tcp/core/src/components/common/molecules';
 import DivisionTabModule from '@tcp/core/src/components/common/molecules/DivisionTabModule';
 import OutfitCarouselModule from '@tcp/core/src/components/common/molecules/OutfitCarouselModule';
 import JeansModule from '@tcp/core/src/components/common/molecules/JeansModule';
-import withStyles from '../../../hoc/withStyles';
-import styles from '../styles/PromoModules.style';
+import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 
 const modules = {
   divisionTabs: DivisionTabModule,
@@ -40,6 +33,7 @@ const PromoModules = ({ plpTopPromos, navigation }) => {
             data={promo}
             asPath={navAsPath}
             navigation={navigation}
+            ignoreLazyLoadImage
             {...slotData}
             {...others}
           />
@@ -59,4 +53,4 @@ PromoModules.defaultProps = {
   plpTopPromos: [],
 };
 
-export default withStyles(PromoModules, styles);
+export default PromoModules;
