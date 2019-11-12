@@ -179,7 +179,7 @@ class ProductDetailView extends React.Component {
         const separationChar = index !== breadCrumbs.length - 1 ? ':' : '';
         return displayName + separationChar;
       });
-      return category.toString().replace(/,/g, '');
+      return category.join('');
     }
     return '';
   };
@@ -369,7 +369,7 @@ ProductDetailView.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
-  breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  breadCrumbs: PropTypes.shape({}),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.string,
@@ -388,7 +388,7 @@ ProductDetailView.defaultProps = {
   productDetails: {},
   longDescription: '',
   shortDescription: '',
-  breadCrumbs: [],
+  breadCrumbs: {},
   currency: '',
   plpLabels: {
     lbl_sort: '',
