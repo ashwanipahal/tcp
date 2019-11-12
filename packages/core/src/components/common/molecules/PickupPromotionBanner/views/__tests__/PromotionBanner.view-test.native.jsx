@@ -20,6 +20,7 @@ describe('ProductAddToBagVanilla should render correctly', () => {
     },
     fullBleed: false,
     tcpSegmentValue: '',
+    itemBrand: 'tcp',
   };
 
   it('should match snapshot', () => {

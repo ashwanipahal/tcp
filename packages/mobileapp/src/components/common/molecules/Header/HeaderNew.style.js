@@ -47,7 +47,7 @@ const getSafeAreaStyle = props => {
   `;
 };
 
-export const SafeAreaViewStyle = styled.SafeAreaView`
+export const SafeAreaViewStyle = styled.View`
   ${getSafeAreaStyle}
   ${getAdditionalStyle}
 `;
