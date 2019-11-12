@@ -398,7 +398,7 @@ class CheckoutCartItemsList extends Component {
         </Col>
         <div className={showAccordian ? 'hide-in-medium-down' : ''}>
           {header}
-          {this.renderItems()}
+          {!bagLoading ? this.renderItems() : <div>Skeleton</div>}
         </div>
       </div>
     );

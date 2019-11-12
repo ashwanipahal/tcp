@@ -6,7 +6,6 @@ import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
 import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
 import GiftCardSkeleton from '../skeleton/GiftCardSkeleton.view';
-
 import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 
 import {
@@ -265,67 +264,68 @@ export const GiftCards = ({
   isExpressCheckout,
   isFromReview,
   isPaymentDisabled,
+  isFetching,
 }) => {
+  console.log('isFetching', isFetching);
   return (
-    <>
-      <GiftCardSkeleton />
-      <Grid className={className}>
-        <Row fullBleed className="gift-section-container elem-mb-LRG">
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: isFromReview ? 12 : 8,
-            }}
-          >
-            {!isFromReview && (
-              <>
-                <BodyCopy
-                  fontFamily="primary"
-                  fontSize="fs26"
-                  fontWeight="regular"
-                  data-locator="gift-cards"
-                  className="elem-mt-XXL"
-                >
-                  {labels.giftCardTitle}
-                </BodyCopy>
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  fontWeight="regular"
-                  data-locator="gift-cards"
-                  className="elem-mt-LRG"
-                >
-                  {labels.giftCardAddUpToMsg}
-                </BodyCopy>
-              </>
-            )}
-            {GiftCardSectionHeading(
-              appliedGiftCards,
-              labels,
-              isFromReview,
-              isExpressCheckout,
-              getHeading,
-              true
-            )}
-            {renderAppliedGiftCards({
-              appliedGiftCards,
-              handleRemoveGiftCard,
-              labels,
-              giftCardErrors,
-              isExpressCheckout,
-              isFromReview,
-              isPaymentDisabled,
-            })}
-            {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
-            {GiftCardSectionHeading(
-              giftCardList,
-              labels,
-              isFromReview,
-              isExpressCheckout,
-              getHeading
-            )}
-            {renderGiftCardsList({
+    <Grid className={className}>
+      <Row fullBleed className="gift-section-container elem-mb-LRG">
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: isFromReview ? 12 : 8,
+          }}
+        >
+          {!isFromReview && (
+            <>
+              <BodyCopy
+                fontFamily="primary"
+                fontSize="fs26"
+                fontWeight="regular"
+                data-locator="gift-cards"
+                className="elem-mt-XXL"
+              >
+                {labels.giftCardTitle}
+              </BodyCopy>
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs16"
+                fontWeight="regular"
+                data-locator="gift-cards"
+                className="elem-mt-LRG"
+              >
+                {labels.giftCardAddUpToMsg}
+              </BodyCopy>
+            </>
+          )}
+          {GiftCardSectionHeading(
+            appliedGiftCards,
+            labels,
+            isFromReview,
+            isExpressCheckout,
+            getHeading,
+            true
+          )}
+          {renderAppliedGiftCards({
+            appliedGiftCards,
+            handleRemoveGiftCard,
+            labels,
+            giftCardErrors,
+            isExpressCheckout,
+            isFromReview,
+            isPaymentDisabled,
+          })}
+          {renderHeadsUpHeading(labels, appliedGiftCards, giftCardList)}
+          {GiftCardSectionHeading(
+            giftCardList,
+            labels,
+            isFromReview,
+            isExpressCheckout,
+            getHeading
+          )}
+          {!isFetching ? (
+            renderGiftCardsList({
               giftCardList,
               applyExistingGiftCardToOrder,
               labels,
@@ -334,33 +334,38 @@ export const GiftCards = ({
               isExpressCheckout,
               isFromReview,
               isPaymentDisabled,
-            })}
-          </Col>
-        </Row>
-        {!enableAddGiftCard &&
-          (!isFromReview || (isFromReview && isExpressCheckout)) &&
-          renderAddNewGiftButton(
-            labels,
-            orderBalanceTotal,
-            appliedGiftCards,
-            showAddGiftCard,
-            isFromReview,
-            isExpressCheckout
+            })
+          ) : (
+            <>
+              <GiftCardSkeleton />
+              <GiftCardSkeleton />
+            </>
           )}
-        {enableAddGiftCard &&
-          renderAddGiftCard({
-            hideAddGiftCard,
-            onAddGiftCardClick,
-            getAddGiftCardError,
-            isGuestUser,
-            isRecapchaEnabled,
-            labels,
-            isLoading,
-            onClearError,
-            isFromReview,
-          })}
-      </Grid>
-    </>
+        </Col>
+      </Row>
+      {!enableAddGiftCard &&
+        (!isFromReview || (isFromReview && isExpressCheckout)) &&
+        renderAddNewGiftButton(
+          labels,
+          orderBalanceTotal,
+          appliedGiftCards,
+          showAddGiftCard,
+          isFromReview,
+          isExpressCheckout
+        )}
+      {enableAddGiftCard &&
+        renderAddGiftCard({
+          hideAddGiftCard,
+          onAddGiftCardClick,
+          getAddGiftCardError,
+          isGuestUser,
+          isRecapchaEnabled,
+          labels,
+          isLoading,
+          onClearError,
+          isFromReview,
+        })}
+    </Grid>
   );
 };
 

@@ -333,6 +333,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       pageCategory,
       getPayPalSettings,
       isPayPalWebViewEnable,
+      bagLoading,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -375,6 +376,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         pageCategory={pageCategory}
         getPayPalSettings={getPayPalSettings}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
+        bagLoading={bagLoading}
       />
     );
   }

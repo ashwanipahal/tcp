@@ -104,6 +104,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       isFromReview,
       isPaymentDisabled,
       isGuestUser,
+      isFetching,
     } = this.props;
 
     let availableGiftCards = [];
@@ -141,6 +142,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         isExpressCheckout={isExpressCheckoutUser}
         isFromReview={isFromReview}
         isPaymentDisabled={isPaymentDisabled}
+        isFetching={isFetching}
       />
     );
   }

@@ -103,6 +103,7 @@ class ReviewPage extends React.PureComponent {
       pageCategory,
       reviewFormSubmit,
       checkoutRoutingDone,
+      bagLoading,
     } = this.props;
     const {
       header,
@@ -131,6 +132,7 @@ class ReviewPage extends React.PureComponent {
               onEdit={() => {
                 utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
               }}
+              bagLoading={bagLoading}
             />
           </div>
         )}
@@ -145,12 +147,13 @@ class ReviewPage extends React.PureComponent {
                 onEdit={() => {
                   utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
                 }}
+                bagLoading={bagLoading}
               />
             </div>
           )}
         </FormSection>
-        <BillingSection isExpressCheckout={isExpressCheckout} />
-        <CheckoutCartItemList disableProductRedirect />
+        <BillingSection isExpressCheckout={isExpressCheckout} bagLoading={bagLoading} />
+        <CheckoutCartItemList disableProductRedirect bagLoading={bagLoading} />
         <CheckoutOrderInfo
           showAccordian={showAccordian}
           isGuest={isGuest}

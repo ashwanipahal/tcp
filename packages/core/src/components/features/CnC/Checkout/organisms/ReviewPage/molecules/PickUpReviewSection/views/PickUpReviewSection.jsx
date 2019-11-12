@@ -84,6 +84,7 @@ export class PickUpReviewSection extends React.PureComponent {
       isAlternateUpdateChecked,
       isExpressCheckout,
       pickUpContactAlternate,
+      bagLoading,
     } = this.props;
     const {
       lbl_review_pickupSectionTitle: title,
@@ -130,77 +131,85 @@ export class PickUpReviewSection extends React.PureComponent {
             )}
           </Col>
         </Row>
-        <Row fullBleed className="row-two">
-          {stores.map((store, index) => {
-            return (
-              store && (
-                <Col
-                  key={store.storeId}
-                  colSize={{ small: 6, medium: 4, large: 5 }}
-                  className={`col-${index}`}
-                >
-                  <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
-                </Col>
-              )
-            );
-          })}
-        </Row>
-        <Row fullBleed>
-          <Col className="pickupContactPersonContainer" colSize={{ small: 6, medium: 4, large: 6 }}>
-            <BodyCopy
-              fontSize="fs16"
-              fontFamily="secondary"
-              className="pickupTitle"
-              fontWeight="extrabold"
-              color="gray.900"
-            >
-              {title}
-            </BodyCopy>
-            <PickUpContactDisplay
-              formData={
-                typeof pickUpContactPerson.firstName !== 'undefined'
-                  ? pickUpContactPerson
-                  : pickUpContactAlternate.pickUpContact
-              }
-            />
-          </Col>
-          {!isExpressCheckout && isHasPickUpAlternatePerson && (
-            <Col
-              className="pickupContactAlternateContainer"
-              colSize={{ small: 6, medium: 4, large: 6 }}
-            >
-              <BodyCopy
-                fontSize="fs16"
-                fontFamily="secondary"
-                className="pickupTitle"
-                fontWeight="extrabold"
-                color="gray.900"
+        {!bagLoading ? (
+          <Row fullBleed className="row-two">
+            {stores.map((store, index) => {
+              return (
+                store && (
+                  <Col
+                    key={store.storeId}
+                    colSize={{ small: 6, medium: 4, large: 5 }}
+                    className={`col-${index}`}
+                  >
+                    <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
+                  </Col>
+                )
+              );
+            })}
+          </Row>(
+            <Row fullBleed>
+              <Col
+                className="pickupContactPersonContainer"
+                colSize={{ small: 6, medium: 4, large: 6 }}
               >
-                {alternate}
-              </BodyCopy>
-              <PickUpContactDisplay formData={pickUpAlternatePerson} />
-            </Col>
-          )}
-          {isExpressCheckout && (
-            <Col
-              className="pickupContactAlternateContainer"
-              colSize={{ small: 6, medium: 4, large: 6 }}
-            >
-              <div className="pickUpAlternate-container">
-                <FormSection name="pickUpAlternateExpress">
-                  <PickUpAlternateFormPart
-                    isAlternateUpdateChecked={isAlternateUpdateChecked}
-                    showNoteOnToggle
-                    formName="checkoutPickup"
-                    formSection="pickUpAlternate"
-                    labels={pickUpLabels}
-                    isExpressCheckout={isExpressCheckout}
-                  />
-                </FormSection>
-              </div>
-            </Col>
-          )}
-        </Row>
+                <BodyCopy
+                  fontSize="fs16"
+                  fontFamily="secondary"
+                  className="pickupTitle"
+                  fontWeight="extrabold"
+                  color="gray.900"
+                >
+                  {title}
+                </BodyCopy>
+                <PickUpContactDisplay
+                  formData={
+                    typeof pickUpContactPerson.firstName !== 'undefined'
+                      ? pickUpContactPerson
+                      : pickUpContactAlternate.pickUpContact
+                  }
+                />
+              </Col>
+              {!isExpressCheckout && isHasPickUpAlternatePerson && (
+                <Col
+                  className="pickupContactAlternateContainer"
+                  colSize={{ small: 6, medium: 4, large: 6 }}
+                >
+                  <BodyCopy
+                    fontSize="fs16"
+                    fontFamily="secondary"
+                    className="pickupTitle"
+                    fontWeight="extrabold"
+                    color="gray.900"
+                  >
+                    {alternate}
+                  </BodyCopy>
+                  <PickUpContactDisplay formData={pickUpAlternatePerson} />
+                </Col>
+              )}
+              {isExpressCheckout && (
+                <Col
+                  className="pickupContactAlternateContainer"
+                  colSize={{ small: 6, medium: 4, large: 6 }}
+                >
+                  <div className="pickUpAlternate-container">
+                    <FormSection name="pickUpAlternateExpress">
+                      <PickUpAlternateFormPart
+                        isAlternateUpdateChecked={isAlternateUpdateChecked}
+                        showNoteOnToggle
+                        formName="checkoutPickup"
+                        formSection="pickUpAlternate"
+                        labels={pickUpLabels}
+                        isExpressCheckout={isExpressCheckout}
+                      />
+                    </FormSection>
+                  </div>
+                </Col>
+              )}
+            </Row>
+          )
+        ) : (
+          <div>Skeleton</div>
+        )}
       </div>
     );
   }

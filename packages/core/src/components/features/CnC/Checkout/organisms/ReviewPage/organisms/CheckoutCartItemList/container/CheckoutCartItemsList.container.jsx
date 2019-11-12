@@ -135,6 +135,7 @@ export const CheckoutCartItemList = ({
   labels,
   bagPageLabels,
   disableProductRedirect,
+  bagLoading,
 }) => {
   return (
     <CheckoutCartItemsList
@@ -145,6 +146,7 @@ export const CheckoutCartItemList = ({
       bagPageLabels={bagPageLabels}
       gettingSortedItemList={gettingSortedItemList}
       disableProductRedirect={disableProductRedirect}
+      bagLoading={bagLoading}
     />
   );
 };

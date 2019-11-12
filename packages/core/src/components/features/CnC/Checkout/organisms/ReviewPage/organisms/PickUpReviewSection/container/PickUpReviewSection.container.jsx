@@ -22,6 +22,7 @@ export const PickUpReviewContainer = ({
   isAlternateUpdateChecked,
   isExpressCheckout,
   pickUpContactAlternate,
+  bagLoading
 }) => {
   return (
     <PickUpReviewSection
@@ -37,6 +38,7 @@ export const PickUpReviewContainer = ({
       }
       isExpressCheckout={isExpressCheckout}
       pickUpContactAlternate={pickUpContactAlternate}
+      bagLoading={bagLoading}
     />
   );
 };

@@ -147,21 +147,17 @@ class GiftCardTile extends React.PureComponent {
 
           <Row className="gift-card-row">
             <Col {...giftTileColSize} className="gift-tile-msg-container">
-              {giftCardList && giftCardList.size > 0 ? (
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  color="text.secondary"
-                  className={`gift_card_number_detail ${
-                    !isGiftCardApplied ? 'available_giftCards_text' : ''
-                  }`}
-                >
-                  {`${getLabelValue(labels, 'lbl_giftcard_endingIn')} ${cardEndingIn}`}
-                  <span className="remainingBalanceText">{remainingBalance}</span>
-                </BodyCopy>
-              ) : (
-                <LoaderSkelton width="75%" height="20px" />
-              )}
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs16"
+                color="text.secondary"
+                className={`gift_card_number_detail ${
+                  !isGiftCardApplied ? 'available_giftCards_text' : ''
+                }`}
+              >
+                {`${getLabelValue(labels, 'lbl_giftcard_endingIn')} ${cardEndingIn}`}
+                <span className="remainingBalanceText">{remainingBalance}</span>
+              </BodyCopy>
             </Col>
             {showCtas && (
               <Col
@@ -172,12 +168,7 @@ class GiftCardTile extends React.PureComponent {
                 }}
                 className="gift-action-container"
               >
-                {giftCardList && giftCardList.size > 0 ? (
-                  this.renderApplyRemoveBtn()
-                ) : (
-                  <LoaderSkelton width="75%" height="20px" />
-                )}
-                )
+                  {this.renderApplyRemoveBtn()}
               </Col>
             )}
           </Row>

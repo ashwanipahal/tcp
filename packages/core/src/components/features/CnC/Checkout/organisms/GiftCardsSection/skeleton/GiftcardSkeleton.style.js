@@ -6,6 +6,8 @@ export default css`
 
   .column-styling {
     border: 10px solid ${props => props.theme.colorPalette.gray[300]};
+    padding: 20px;
+    height: 50px;
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

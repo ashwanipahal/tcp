@@ -64,6 +64,7 @@ export class ShippingReviewContainer extends React.PureComponent {
       updateShippingMethodSelection,
       expressReviewShippingSectionId,
       dispatch,
+      bagLoading,
     } = this.props;
     return (
       <ShippingReviewSection
@@ -80,6 +81,7 @@ export class ShippingReviewContainer extends React.PureComponent {
         formSection={formSection}
         updateShippingMethodSelection={updateShippingMethodSelection}
         expressReviewShippingSectionId={expressReviewShippingSectionId}
+        bagLoading={bagLoading}
       />
     );
   }

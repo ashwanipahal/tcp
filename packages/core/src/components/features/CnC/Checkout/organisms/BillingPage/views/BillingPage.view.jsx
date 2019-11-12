@@ -76,17 +76,17 @@ class BillingPage extends React.PureComponent {
       pageCategory,
       checkoutRoutingDone,
       isFetching,
+      bagLoading,
     } = this.props;
     const { header, backLinkPickup, backLinkShipping, nextSubmitText } = labels;
     if (!checkoutRoutingDone) {
       return <div>Loading....</div>;
     }
-    console.log('isFetching', isFetching);
     return (
       <div className={className}>
         <CheckoutSectionTitleDisplay title={header} dataLocator="billing-title" />
         {ServerErrors && <ServerErrors />}
-        <GiftCardsContainer />
+        <GiftCardsContainer isFetching={isFetching} />
         {!isGuest ? (
           <div className="payment-container">
             <BillingPaymentForm
@@ -106,6 +106,7 @@ class BillingPage extends React.PureComponent {
               isVenmoPaymentInProgress={isVenmoPaymentInProgress}
               isVenmoEnabled={isVenmoEnabled}
               pageCategory={pageCategory}
+              bagLoading={bagLoading}
             />
           </div>
         ) : (
@@ -124,6 +125,7 @@ class BillingPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             isVenmoEnabled={isVenmoEnabled}
             pageCategory={pageCategory}
+            bagLoading={bagLoading}
           />
         )}
       </div>

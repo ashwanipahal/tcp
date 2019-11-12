@@ -172,7 +172,7 @@ class GuestBillingForm extends React.Component {
                     isGuest={isGuest}
                     creditFieldLabels={creditFieldLabels}
                   />
-                  {bagLoading ? (
+                  {!bagLoading ? (
                     <CheckoutBillingAddress
                       isGuest={isGuest}
                       orderHasShipping={orderHasShipping}

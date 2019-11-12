@@ -266,7 +266,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { defaultPayment, paymentMethod, creditCardEnd, cvvCode } = labels;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { editMode, editModeSubmissionError } = this.state;
-    const { dispatch, updateCardDetail, editFormCardType } = this.props;
+    const { dispatch, updateCardDetail, editFormCardType, bagLoading } = this.props;
     const billingPaymentFormWidthCol = { large: 3, small: 4, medium: 4 };
     const cvvCodeColWidth = { large: 3, small: 2, medium: 4 };
     const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState, onEditCardFocus } = this;
@@ -360,8 +360,10 @@ export class BillingPaymentForm extends React.PureComponent {
                   />
                 )}
               </Row>
-            ) : (
+            ) : !bagLoading ? (
               this.getCheckoutBillingAddress()
+            ) : (
+              <div>Skeleton</div>
             )}
           </>
         ) : (

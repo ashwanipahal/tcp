@@ -112,6 +112,7 @@ export class BillingSection extends PureComponent {
       labels,
       venmoPayment,
       venmoPayment: { isVenmoPaymentSelected, venmoSaveToAccountDisplayed, userName },
+      bagLoading,
     } = this.props;
     const { saveVenmoPayment } = this.state;
     const colProps = this.getColProps();
@@ -149,7 +150,11 @@ export class BillingSection extends PureComponent {
                       {labels.lbl_review_paymentMethod}
                     </BodyCopy>
                     <BodyCopy>
-                      <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                      {!bagLoading ? (
+                        <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                      ) : (
+                        <div>Skeleton</div>
+                      )}
                     </BodyCopy>
                   </Fragment>
                 )}
@@ -164,7 +169,11 @@ export class BillingSection extends PureComponent {
                     >
                       {labels.lbl_review_billingAddress}
                     </BodyCopy>
-                    <Address address={address} className="review-billing-address" />
+                    {!bagLoading ? (
+                      <Address address={address} className="review-billing-address" />
+                    ) : (
+                      <div>Skeleton</div>
+                    )}
                   </Fragment>
                 )}
               </Col>
