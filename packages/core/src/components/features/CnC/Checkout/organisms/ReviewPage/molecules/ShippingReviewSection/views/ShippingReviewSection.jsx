@@ -102,7 +102,12 @@ export class ShippingReviewSection extends React.PureComponent {
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
             {isExpressCheckout && (
-              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+              <GiftWrappingDisplay
+                labels={labels}
+                displayName={giftWrappingDisplayName}
+                onEdit={onEdit}
+                isExpressCheckout={isExpressCheckout}
+              />
             )}
           </Col>
         </Row>
