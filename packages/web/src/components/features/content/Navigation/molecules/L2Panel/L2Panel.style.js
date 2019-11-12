@@ -197,6 +197,8 @@ export default css`
       .nav-bar-item-label {
         border-bottom: 2px solid ${props => props.theme.colorPalette.white};
         padding-bottom: 4px;
+        display: inline-block;
+        width: auto;
       }
       .nav-bar-item-label:hover {
         width: auto;

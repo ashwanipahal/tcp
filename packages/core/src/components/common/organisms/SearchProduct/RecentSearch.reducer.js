@@ -26,7 +26,8 @@ const RecentSearchReducer = (state = INITIAL_STATE, action) => {
       }
 
       // remove duplicates
-      searchTermList = searchTermList.filter(item => item.text !== trimmedSearchedTerm);
+      searchTermList =
+        searchTermList && searchTermList.filter(item => item.text !== trimmedSearchedTerm);
 
       if (searchTermList && searchTermList.length > 0) {
         // Add recent term to top of list
