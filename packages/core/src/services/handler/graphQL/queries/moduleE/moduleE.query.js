@@ -26,6 +26,16 @@ const buildQuery = ({ slot, contentId, lang }) => `
 						target
 					}
 				}
+				promoBanner {
+				link {
+					url
+					title
+				}
+				textItems {
+					text
+					style
+				}
+			}
 			}
 			headerText {
 				textItems {
