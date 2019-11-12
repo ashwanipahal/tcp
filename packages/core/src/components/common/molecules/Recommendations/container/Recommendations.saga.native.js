@@ -11,7 +11,12 @@ function* fetchRecommendationsData(action) {
   const { payload } = action;
   try {
     const result = yield call(RecommendationsAbstractor.getAppData, payload);
-    yield put(loadRecommendationsData({ reduxKey: payload.reduxKey, result }));
+    yield put(
+      loadRecommendationsData({
+        reduxKey: payload.reduxKey,
+        result,
+      })
+    );
   } catch (e) {
     logger.log(e);
     if (isMobileApp())
