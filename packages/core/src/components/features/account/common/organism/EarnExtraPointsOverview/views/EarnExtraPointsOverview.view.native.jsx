@@ -27,6 +27,7 @@ export const EarnExtraPointsOverview = ({ labels, handleComponentChange }) => {
       <BodyCopy
         className="elem-mb-LRG"
         fontSize="fs14"
+        fontFamily="secondary"
         fontWeight="semibold"
         data-locator="getCloserToReward"
         text={getLabelValue(labels, 'lbl_earnExtraPoints_getReward')}

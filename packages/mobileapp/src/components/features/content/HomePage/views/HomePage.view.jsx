@@ -25,6 +25,7 @@ import {
   ModuleR,
   ModuleQ,
   ModuleS,
+  ModuleG,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -53,6 +54,7 @@ const modulesMap = {
   moduleS: ModuleS,
   moduleQ: ModuleQ,
   moduleT: ModuleT,
+  moduleG: ModuleG,
 };
 
 class HomePageView extends React.PureComponent<Props> {

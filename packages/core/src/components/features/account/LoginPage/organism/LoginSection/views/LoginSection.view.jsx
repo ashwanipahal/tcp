@@ -97,6 +97,7 @@ class LoginSection extends React.PureComponent<Props> {
       resetLoginState,
       userplccCardNumber,
       userplccCardId,
+      isLoading,
       isRememberedUser,
     } = this.props;
     return (
@@ -141,6 +142,7 @@ class LoginSection extends React.PureComponent<Props> {
                   resetLoginState={resetLoginState}
                   userplccCardNumber={userplccCardNumber}
                   userplccCardId={userplccCardId}
+                  isLoading={isLoading}
                 />
               </React.Fragment>
             )}

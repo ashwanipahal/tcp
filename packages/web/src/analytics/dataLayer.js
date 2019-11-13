@@ -119,7 +119,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency;
+        return store.getState().APIConfig.currency.toUpperCase();
       },
     },
 
