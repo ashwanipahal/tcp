@@ -3,13 +3,7 @@ import countryListAbstractor from '@tcp/core/src/services/abstractors/bootstrap/
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getModuleX } from '@tcp/core/src/services/abstractors/common/moduleX';
 import { NavigateXHR } from '@tcp/core/src/services/abstractors/account';
-import {
-  getModifiedLanguageCode,
-  languageRedirect,
-  isGymboree,
-  readCookieMobileApp,
-  isMobileApp,
-} from '@tcp/core/src/utils';
+import { getModifiedLanguageCode, languageRedirect, isGymboree } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import endpoints from '@tcp/core/src/services/endpoints';
 import {
@@ -78,8 +72,7 @@ export function* submitCountrySelectionData({ payload: data }) {
     );
     const newSiteId = yield select(state => state[COUNTRY_SELECTOR_REDUCER_KEY].get('siteId'));
     yield put(udpateSiteId(newSiteId));
-    const cookies = isMobileApp() ? yield call(readCookieMobileApp) : '';
-    yield call(NavigateXHR, cookies);
+    yield call(NavigateXHR, '');
     languageRedirect(newCountry, oldCountry, newSiteId, newLanguage, oldLanguage);
   } catch (error) {
     yield null;
