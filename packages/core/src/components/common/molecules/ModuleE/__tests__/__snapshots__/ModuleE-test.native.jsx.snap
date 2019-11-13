@@ -325,7 +325,7 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
         showIcon={false}
         text="SHOP NOW"
         theme={Object {}}
-        url=""
+        url="/link/url1"
         withNoLineHeight={false}
       />
     </Styled(View)>
@@ -410,7 +410,7 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
         showIcon={false}
         text="SHOP NOW"
         theme={Object {}}
-        url=""
+        url="/link/url2"
         withNoLineHeight={false}
       />
     </Styled(View)>
@@ -746,7 +746,7 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
         showIcon={false}
         text="SHOP NOW"
         theme={Object {}}
-        url=""
+        url="/link/url1"
         withNoLineHeight={false}
       />
     </Styled(View)>
@@ -831,7 +831,7 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
         showIcon={false}
         text="SHOP NOW"
         theme={Object {}}
-        url=""
+        url="/link/url2"
         withNoLineHeight={false}
       />
     </Styled(View)>
@@ -1167,7 +1167,7 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
         showIcon={false}
         text="SHOP NOW"
         theme={Object {}}
-        url=""
+        url="/link/url1"
         withNoLineHeight={false}
       />
     </Styled(View)>
@@ -1252,7 +1252,7 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
         showIcon={false}
         text="SHOP NOW"
         theme={Object {}}
-        url=""
+        url="/link/url2"
         withNoLineHeight={false}
       />
     </Styled(View)>

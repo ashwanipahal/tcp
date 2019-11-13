@@ -292,7 +292,7 @@ class ModuleE extends React.PureComponent {
                   renderComponentInNewLine
                 />
               </HeaderViewContainer>
-              <StyledButton text={link.text} naviagtion={navigation} />
+              <StyledButton text={link.text} naviagtion={navigation} url={link.url} />
             </ImageWrapper>
           );
         })}
