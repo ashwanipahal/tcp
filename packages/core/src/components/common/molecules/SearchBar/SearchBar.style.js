@@ -279,6 +279,7 @@ export default css`
       overflow: unset;
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
+        z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
       }
 
       @media ${props => props.theme.mediaQuery.smallOnly} {
@@ -289,8 +290,8 @@ export default css`
         props.fromCondensedHeader
           ? `
           width: 437px;
-          right: 130px;
-          top: ${props.theme.spacing.ELEM_SPACING.XS};
+          right: 120px;
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
         `
           : ``};
     }

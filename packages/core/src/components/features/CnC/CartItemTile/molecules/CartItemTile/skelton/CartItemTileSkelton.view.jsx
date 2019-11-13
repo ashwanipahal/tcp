@@ -12,7 +12,7 @@ const CartItemTileSkeleton = ({ className }) => {
         <Col
           key="productDetails"
           className="align-product-img product-brand-img-wrapper"
-          colSize={{ small: 2, medium: 2, large: 3 }}
+          colSize={{ small: 1, medium: 2, large: 3 }}
         >
           <div className="imageWrapper">
             <LoaderSkelton />
@@ -24,13 +24,13 @@ const CartItemTileSkeleton = ({ className }) => {
         <Col
           className="bag-product-detail-wrapper"
           key="productDetails"
-          colSize={{ small: 4, medium: 6, large: 9 }}
+          colSize={{ small: 5, medium: 6, large: 9 }}
         >
           <div className="badge-wrapper">
             <LoaderSkelton />
           </div>
           <Row className="product-detail-row">
-            <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
+            <Col className="productImgBrand" colSize={{ small: 5, medium: 8, large: 12 }}>
               <LoaderSkelton />
             </Col>
           </Row>
@@ -46,18 +46,30 @@ const CartItemTileSkeleton = ({ className }) => {
           <div className="product-points">
             <LoaderSkelton />
           </div>
+          <div className="save-for-later">
+            <LoaderSkelton />
+          </div>
+          <div className="edit">
+            <LoaderSkelton />
+          </div>
         </Col>
       </Row>
       <Row fullBleed>
-        <div className="cart-item-radio-buttons">
-          <LoaderSkelton />
-        </div>
-        <div className="cart-item-radio-buttons">
-          <LoaderSkelton />
-        </div>
-        <div className="cart-item-radio-buttons">
-          <LoaderSkelton />
-        </div>
+        <Row fullBleed className="row-border-top-middle">
+          <div className="cart-item-radio-button-top">
+            <LoaderSkelton />
+          </div>
+        </Row>
+        <Row fullBleed className="row-border-top-middle">
+          <div className="cart-item-radio-button-middle">
+            <LoaderSkelton />
+          </div>
+        </Row>
+        <Row fullBleed className="row-border-bottom">
+          <div className="cart-item-radio-button-bottom">
+            <LoaderSkelton />
+          </div>
+        </Row>
       </Row>
     </div>
   );

@@ -25,6 +25,7 @@ import {
   getScrollToTopValue,
   getTotalProductsCount,
   getIsDataLoading,
+  getPLPTopPromos,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
 import {
@@ -94,6 +95,7 @@ class ProductListingContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       labelsLogin,
+      plpTopPromos,
       ...otherProps
     } = this.props;
     return (
@@ -123,6 +125,7 @@ class ProductListingContainer extends React.PureComponent {
         onLoadMoreProducts={this.onLoadMoreProducts}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
+        plpTopPromos={plpTopPromos}
         {...otherProps}
       />
     );
@@ -149,12 +152,10 @@ function mapStateToProps(state) {
     productsBlock: getProductsAndTitleBlocks(state, productBlocks),
     products: getAllProductsSelect(state),
     filters,
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     categoryId: getCategoryId(state),
     navTree: getNavigationTree(state),
-    breadCrumbs: processBreadCrumbs(
-      state.ProductListing && state.ProductListing.get('breadCrumbTrail')
-    ),
+    breadCrumbs: processBreadCrumbs(state.ProductListing && state.ProductListing.breadCrumbTrail),
     loadedProductCount: getLoadedProductsCount(state),
     unbxdId: getUnbxdId(state),
     filtersLength,
@@ -175,6 +176,7 @@ function mapStateToProps(state) {
     isDataLoading: getIsDataLoading(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    plpTopPromos: getPLPTopPromos(state),
   };
 }
 
@@ -225,6 +227,7 @@ ProductListingContainer.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingContainer.defaultProps = {
@@ -247,6 +250,7 @@ ProductListingContainer.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  plpTopPromos: [],
 };
 
 export default connect(

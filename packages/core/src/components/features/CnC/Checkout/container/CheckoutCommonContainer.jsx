@@ -82,6 +82,8 @@ const {
   getCheckoutPageEmptyBagLabels,
 } = selectors;
 export class CheckoutContainer extends React.PureComponent<Props> {
+  initialLoad = true;
+
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent, router, initCheckout } = this.props;
     const {
@@ -118,19 +120,21 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   }
 
   shippingDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this.props, { initialLoad: true });
+    intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this, {
+      initialLoad: this.initialLoad,
+    });
   };
 
   billingDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.BILLING, this);
   };
 
   reviewDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.REVIEW, this);
   };
 
   pickupDidMount = () => {
-    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this.props);
+    intiSectionPage(constants.CHECKOUT_STAGES.PICKUP, this);
   };
 
   render() {
@@ -184,6 +188,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isHasPickUpAlternatePerson,
       pickUpContactPerson,
       pickUpContactAlternate,
+      isPayPalWebViewEnable,
     } = this.props;
     const { dispatchReviewReduxForm, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
@@ -192,7 +197,6 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       cartOrderItems,
       checkoutProgressBarLabels
     );
-
     return (
       <CheckoutPage
         pickupDidMount={this.pickupDidMount}
@@ -267,6 +271,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         toggleCountrySelector={toggleCountrySelector}
         cartOrderItemsCount={cartOrderItemsCount}
         checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
   }
@@ -326,7 +331,9 @@ export const mapDispatchToProps = dispatch => {
     submitVerifiedShippingAddressData: payload => {
       dispatch(submitVerifiedAddressData(payload));
     },
-    toastMessage: payload => dispatch(toastMessageInfo(payload)),
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
@@ -350,6 +357,7 @@ const mapStateToProps = state => {
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
     checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
+
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),
@@ -420,6 +428,7 @@ const mapStateToProps = state => {
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     couponHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
   };
 };
 

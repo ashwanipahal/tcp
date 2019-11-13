@@ -17,6 +17,14 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       <Styled(LinkText)
         className="promo-header"
         component="div"
+        dataLocator="moduleG_header_text"
+        fontSize={
+          Array [
+            "fs20",
+            "fs20",
+            "fs32",
+          ]
+        }
         headerText={
           Array [
             Object {
@@ -46,7 +54,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
       />
       <Styled(PromoBanner)
         className="promoBanner"
-        dataLocator="moduleJ_promobanner_text"
+        dataLocator="moduleG_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -65,7 +73,7 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
         }
       />
       <Connect(ProductTabListContainer)
-        dataLocator="moduleJ_cta_links_"
+        dataLocator="moduleG_cta_links_"
         onProductTabChange={[Function]}
         tabItems={
           Array [

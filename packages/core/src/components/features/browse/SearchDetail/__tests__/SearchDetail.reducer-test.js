@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable';
 import SearchDetailReducer from '../container/SearchDetail.reducer';
 import {
   setSlpProducts,
@@ -6,9 +5,9 @@ import {
   setSlpLoadingState,
 } from '../container/SearchDetail.actions';
 
-const initialState = fromJS({
+const initialState = {
   cacheUntil: null,
-});
+};
 
 describe('SearchDetail reducer', () => {
   it('should return default object as default state', () => {
@@ -16,15 +15,15 @@ describe('SearchDetail reducer', () => {
   });
 
   it('should append the products list page when set products is initited', () => {
-    const stateWithLoadedProducts = fromJS({
+    const stateWithLoadedProducts = {
       loadedProductsPages: [{ products: { categoryId: 234322 } }],
-    });
-    expect(stateWithLoadedProducts.get('loadedProductsPages').size).toEqual(1);
+    };
+    expect(stateWithLoadedProducts.loadedProductsPages.length).toEqual(1);
     const newState = SearchDetailReducer(
       stateWithLoadedProducts,
       setSlpProducts({ loadedProductsPages: [{ products: { categoryId: 342232 } }] })
     );
-    expect(newState.get('loadedProductsPages').size).toEqual(2);
+    expect(newState.loadedProductsPages.length).toEqual(2);
   });
 
   it('should add the initial product list page state', () => {
@@ -34,7 +33,7 @@ describe('SearchDetail reducer', () => {
         productsPage: { loadedProductsPages: [{ products: { categoryId: 342232 } }] },
       })
     );
-    expect(newState.get('productsPage')).toEqual({
+    expect(newState.productsPage).toEqual({
       loadedProductsPages: [{ products: { categoryId: 342232 } }],
     });
   });
@@ -44,6 +43,6 @@ describe('SearchDetail reducer', () => {
       initialState,
       setSlpLoadingState({ loadingMoreProducts: true })
     );
-    expect(newState.get('loadingMoreProducts')).toEqual(true);
+    expect(newState.loadingMoreProducts).toEqual(true);
   });
 });

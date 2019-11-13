@@ -1,7 +1,8 @@
 /* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 
-import React from 'react';
+import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import productGridItemPropTypes, {
@@ -31,7 +32,8 @@ import { AVAILABILITY } from '../../../../Favorites/container/Favorites.constant
 // import ErrorMessage from './ErrorMessage';
 
 class ProductsGridItem extends React.PureComponent {
-  static propTypes = { ...productGridItemPropTypes };
+  // eslint-disable-next-line react/forbid-prop-types
+  static propTypes = { ...productGridItemPropTypes, forwardedRef: PropTypes.object };
 
   static defaultProps = { ...productGridDefaultProps };
 
@@ -207,13 +209,14 @@ class ProductsGridItem extends React.PureComponent {
     const bundleProduct = item && item.productInfo && item.productInfo.bundleProduct;
     const priceRange = item && item.productInfo && item.productInfo.priceRange;
     const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
+    const badge3Text = listPriceForColor - offerPriceForColor !== 0 ? badge3 : '';
     return (
       <ProductPricesSection
         currencySymbol={currency || '$'}
         listPrice={listPriceForColor}
         offerPrice={offerPriceForColor}
         noMerchantBadge={badge3}
-        merchantTag={isShowBadges ? badge3 : null}
+        merchantTag={isShowBadges ? badge3Text : null}
         hidePrefixListPrice
         bundleProduct={bundleProduct}
         priceRange={priceRange}
@@ -423,6 +426,7 @@ class ProductsGridItem extends React.PureComponent {
       labels,
       isFavoriteView,
       viaModule,
+      forwardedRef,
     } = this.props;
     logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
@@ -480,6 +484,7 @@ class ProductsGridItem extends React.PureComponent {
     //  const reviews = this.props.item.productInfo.reviewsCount || 0;
     const promotionalMessageModified = promotionalMessage || '';
     const promotionalPLCCMessageModified = promotionalPLCCMessage || '';
+
     const videoUrl = getVideoUrl(curentColorEntry);
     return (
       <li
@@ -488,6 +493,7 @@ class ProductsGridItem extends React.PureComponent {
         onMouseEnter={this.handleOpenAltImages}
         onMouseOut={this.handleCloseAltImages}
         onBlur={this.handleCloseAltImages}
+        ref={forwardedRef}
       >
         <div className="item-container-inner">
           {
@@ -586,5 +592,15 @@ class ProductsGridItem extends React.PureComponent {
   }
 }
 
-export default withStyles(ProductsGridItem, styles);
+const ProductsGridItemWithRef = forwardRef((props, ref) => {
+  return <ProductsGridItem forwardedRef={ref} {...props} />;
+});
+
 export { ProductsGridItem as ProductsGridItemVanilla };
+
+const ProductsGridItemStyled = withStyles(ProductsGridItemWithRef, styles);
+
+// Display name is needed for hotfix mapping capability
+ProductsGridItemStyled.displayName = 'ProductsGridItem';
+
+export default ProductsGridItemStyled;

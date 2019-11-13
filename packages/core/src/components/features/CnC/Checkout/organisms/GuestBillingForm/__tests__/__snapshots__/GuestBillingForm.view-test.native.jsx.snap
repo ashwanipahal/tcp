@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GuestBillingFormVanilla should render correctly 1`] = `
-<Fragment>
+<Styled(View)
+  isPayPalWebViewEnable={false}
+>
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
@@ -85,18 +87,23 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
     <CnCCommonTemplate
       backLinkText=""
       btnText=""
+      getPayPalSettings={Object {}}
       isConfirmationPage={false}
+      isPayPalWebViewEnable={false}
       onBackLinkPress={[Function]}
       pageCategory="guestBilling"
       routeToPage=""
       showAccordian={true}
+      showPayPalButton={false}
     />
   </Styled(View)>
-</Fragment>
+</Styled(View)>
 `;
 
 exports[`GuestBillingFormVanilla should render correctly when props change 1`] = `
-<Fragment>
+<Styled(View)
+  isPayPalWebViewEnable={false}
+>
   <Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
@@ -228,12 +235,15 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
     <CnCCommonTemplate
       backLinkText=""
       btnText=""
+      getPayPalSettings={Object {}}
       isConfirmationPage={false}
+      isPayPalWebViewEnable={false}
       onBackLinkPress={[Function]}
       pageCategory="guestBilling"
       routeToPage=""
       showAccordian={true}
+      showPayPalButton={false}
     />
   </Styled(View)>
-</Fragment>
+</Styled(View)>
 `;

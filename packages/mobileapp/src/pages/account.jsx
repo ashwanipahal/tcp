@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, SafeAreaView } from 'react-navigation';
 import PointsPage from '@tcp/core/src/components/features/account/PointsClaim';
 import PointsHistory from '@tcp/core/src/components/features/account/PointHistory';
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
@@ -12,12 +12,18 @@ import Account from '../components/features/account/account';
 import Header from '../components/common/molecules/Header';
 import ROUTE_NAMES from '../reduxStore/routes';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
+import { headerStyle } from '../components/common/molecules/Header/Header.style';
 
 const getNewHeader = navigation => {
   const title = navigation && navigation.getParam('title');
   const showHeader = navigation && navigation.getParam('noHeader');
   return {
-    header: props => (!showHeader ? <HeaderNew {...props} title={title} /> : null),
+    header: props =>
+      !showHeader ? (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+          <HeaderNew {...props} title={title} />
+        </SafeAreaView>
+      ) : null,
     headerBackground: 'transparent',
   };
 };
@@ -73,7 +79,11 @@ const AccountStack = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: props => <Header {...props} />,
+      header: props => (
+        <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+          <Header {...props} />
+        </SafeAreaView>
+      ),
       headerBackground: 'transparent',
     },
   }
