@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
 import { Modal } from '@tcp/core/src/components/common/molecules';
-import { getViewportInfo, isIosWeb, isAndroidWeb, isCanada } from '@tcp/core/src/utils';
+import {
+  getViewportInfo,
+  isIosWeb,
+  isAndroidWeb,
+  isCanada,
+  getLabelValue,
+} from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
 
@@ -14,6 +20,10 @@ const propTypes = {
   color: PropTypes.shape({}),
   componentProps: PropTypes.shape({}).isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({
+    lbl_login_loginCTA: PropTypes.string,
+    lbl_login_createAccountCTA: PropTypes.string,
+  }),
 };
 
 const defaultProps = {
@@ -21,6 +31,10 @@ const defaultProps = {
   closeOverlay: () => {},
   className: '',
   color: '',
+  labels: PropTypes.shape({
+    lbl_login_loginCTA: '',
+    lbl_login_createAccountCTA: '',
+  }),
 };
 
 const TAB_KEY = 9;
@@ -98,6 +112,17 @@ class OverlayModal extends React.Component {
       .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
       .forEach(element => element.removeAttribute('aria-hidden'));
   }
+
+  getHeading = () => {
+    const { labels, component, componentProps } = this.props;
+    if (component === 'login' && componentProps.currentForm !== 'forgotPassword') {
+      return getLabelValue(labels, 'lbl_login_loginCTA');
+    }
+    if (component === 'createAccount') {
+      return getLabelValue(labels, 'lbl_login_createAccountCTA');
+    }
+    return '';
+  };
 
   /**
    * Set Left position of modal triangle
@@ -218,6 +243,10 @@ class OverlayModal extends React.Component {
       showCondensedHeader,
     } = this.props;
 
+    const modalHeading = {
+      className: 'Modal_Heading_Overlay',
+    };
+
     return this.isMobile && component !== 'accountDrawer' ? (
       <div>
         <Modal
@@ -230,6 +259,8 @@ class OverlayModal extends React.Component {
           id="modalWrapper"
           widthConfig={{ small: '100%' }}
           heightConfig={{ minHeight: '500px' }}
+          heading={this.getHeading()}
+          headingStyle={this.getHeading() ? modalHeading : null}
         >
           <div
             id="dialogContent"
