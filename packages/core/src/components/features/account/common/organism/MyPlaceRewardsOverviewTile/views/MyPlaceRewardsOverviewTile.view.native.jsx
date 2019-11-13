@@ -64,6 +64,7 @@ export class MyPlaceRewardsOverviewTile extends React.PureComponent<Props> {
               <BodyCopy
                 fontSize="fs14"
                 fontWeight="semibold"
+                fontFamily="secondary"
                 data-locator={rewardDataLocator}
                 text={walletOverviewInfo}
               />

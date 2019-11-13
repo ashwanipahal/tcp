@@ -117,6 +117,7 @@ export const CreditCardFields = ({
                 placeholder={creditFieldLabels.cvvCode}
                 name="cvvCode"
                 id="cvvCode"
+                type="tel"
                 component={TextBox}
                 dataLocator="cvvTxtBox"
                 maxLength="4"

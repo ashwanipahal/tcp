@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import LoyaltyBannerSection from '../../../molecules/LoyaltyBannerSection';
 
-class LoyaltyBanner extends React.PureComponent<Props> {
+class LoyaltyBanner extends PureComponent {
+  static propTypes = {
+    labels: PropTypes.shape({}),
+    estimatedRewardsVal: PropTypes.number.isRequired,
+    currentSubtotal: PropTypes.number.isRequired,
+    estimatedSubtotal: PropTypes.number.isRequired,
+    thresholdValue: PropTypes.number.isRequired,
+    isGuest: PropTypes.bool.isRequired,
+    earnedReward: PropTypes.number.isRequired,
+    isPlcc: PropTypes.bool.isRequired,
+    pointsToNextReward: PropTypes.number.isRequired,
+    getCurrencySymbol: PropTypes.func.isRequired,
+    pageCategory: PropTypes.string.isRequired,
+    footerLabels: PropTypes.shape({}),
+    openApplyNowModal: PropTypes.func.isRequired,
+    navigation: PropTypes.shape({}).isRequired,
+    closeAddedToBagModal: PropTypes.func,
+  };
+
+  static defaultProps = {
+    labels: {},
+    footerLabels: {},
+    closeAddedToBagModal: () => {},
+  };
+
   render() {
     const {
       labels,
@@ -18,6 +43,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
       footerLabels,
       openApplyNowModal,
       navigation,
+      closeAddedToBagModal,
     } = this.props;
     return (
       <LoyaltyBannerSection
@@ -35,6 +61,7 @@ class LoyaltyBanner extends React.PureComponent<Props> {
         footerLabels={footerLabels}
         openApplyNowModal={openApplyNowModal}
         navigation={navigation}
+        closeAddedToBagModal={closeAddedToBagModal}
       />
     );
   }

@@ -42,6 +42,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   isRegisteredUserCallDone={true}
   isVenmoPaymentInProgress={false}
   labels={Object {}}
+  pageData={Object {}}
   pickupDidMount={[Function]}
   reviewProps={
     Object {
@@ -63,5 +64,8 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
       "shippingDidMount": [Function],
     }
   }
+  submitBilling={[Function]}
+  submitReview={[Function]}
+  submitShippingSection={[Function]}
 />
 `;
