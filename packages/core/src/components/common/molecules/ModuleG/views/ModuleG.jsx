@@ -233,7 +233,6 @@ class ModuleG extends React.PureComponent {
                       <DamImage
                         imgData={{ url: getProductUrlForDAM(uniqueId), alt: productName }}
                         imgConfigs={moduleGConfig.IMG_DATA.productImgConfig}
-                        lazyLoad={false}
                         isProductImage
                       />
                     </Anchor>
