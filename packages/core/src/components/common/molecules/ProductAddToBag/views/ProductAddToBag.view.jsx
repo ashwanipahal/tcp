@@ -33,6 +33,8 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
       component="div"
       fontFamily="secondary"
       fontWeight="regular"
+      role="alert"
+      aria-live="assertive"
     >
       <Image
         alt="Error"
@@ -267,7 +269,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   className="add-to-bag-button"
                   onClick={e => {
                     e.preventDefault();
-                    // TODO: with handleSubmit
                     // eslint-disable-next-line sonarjs/no-all-duplicated-branches
                     if (fitChanged) {
                       displayErrorMessage(fitChanged);
@@ -281,6 +282,31 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
               {this.renderOutfitButton()}
+            </Col>
+            <Col
+              colSize={{ small: 12, medium: 12, large: 12 }}
+              className="outfit-button-wrapper-desktop"
+            >
+              {this.renderOutfitButton()}
+              <div className="button-wrapper">
+                <Button
+                  type="submit"
+                  className="add-to-bag-button"
+                  // eslint-disable-next-line sonarjs/no-identical-functions
+                  onClick={e => {
+                    e.preventDefault();
+                    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                    if (fitChanged) {
+                      displayErrorMessage(fitChanged);
+                    } else {
+                      handleFormSubmit();
+                    }
+                  }}
+                >
+                  {this.getButtonLabel()}
+                </Button>
+                <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
+              </div>
             </Col>
           </Row>
         )}

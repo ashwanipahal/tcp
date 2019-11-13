@@ -21,6 +21,7 @@ exports[`Detailed Earn Extra Points Tile component  should render Detailed Earn 
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
     margins={null}
     onPress={[Function]}

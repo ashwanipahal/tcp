@@ -326,7 +326,7 @@ export const cropImageUrl = (url, crop, namedTransformation) => {
     }
   } else {
     // Image path transformation in case of relative image URL
-    URL = `${basePath}/${namedTransformation}/url`;
+    URL = `${basePath}/${namedTransformation}/${url}`;
   }
 
   return URL;
@@ -364,7 +364,7 @@ export const setValueInAsyncStorage = async (key, value) => {
 };
 
 export const validateExternalUrl = url => {
-  const isExternal = url.indexOf('http') || url.indexOf('https') !== true;
+  const isExternal = url && (url.indexOf('http') || url.indexOf('https') !== true);
   if (isExternal === true) {
     return true;
   }

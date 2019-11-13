@@ -10,6 +10,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       "width": "100%",
     }
   }
+  headingFontFamily="secondary"
   horizontalBar={false}
   inheritedStyles=""
   isOpen={true}
@@ -114,6 +115,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         customStyle={Object {}}
         dataLocator="couponDetailModal_applied_printAch"
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -221,6 +223,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           dataLocator="couponDetailModal_applied_tAndC"
           fontFamily="secondary"
           fontSizeVariation="medium"
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
@@ -248,6 +251,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
           customStyle={Object {}}
           dataLocator="couponDetailModal_applied_pp"
           fontSizeVariation="medium"
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
