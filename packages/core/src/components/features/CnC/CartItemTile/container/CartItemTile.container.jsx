@@ -1,6 +1,5 @@
-// TODO: Need fix unused/proptypes eslint error
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   getIsBossEnabled,
@@ -24,7 +23,6 @@ import {
 } from './CartItemTile.actions';
 import CartItemTile from '../molecules/CartItemTile/views/CartItemTile.view';
 import {
-  getCartOrderList,
   getEditableProductInfo,
   getCartToggleError,
   getCartBossBopisToggleError,
@@ -42,21 +40,7 @@ import {
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 import CONSTANTS from '../../Checkout/Checkout.constants';
 
-// @flow
-
-type Props = {
-  getOrderDetails: void,
-  removeCartItem: void,
-  cartItems: any,
-  updateCartItem: any,
-  getProductSKUInfo: any,
-  editableProductInfo: any,
-  isEditAllowed: any,
-  toggleEditAllowance: any,
-  isPlcc: any,
-  isShowSaveForLater: any,
-};
-
+/* eslint-disable no-shadow */
 export const CartItemTileContainer = ({
   labels,
   productDetail,
@@ -193,12 +177,12 @@ const createBossBopisTogglePayload = ({
 }) => {
   return {
     apiPayload: {
-      orderId: orderId + '',
+      orderId: `${orderId}`,
       orderItem: [
         {
           orderItemId: itemId,
           xitem_catEntryId: skuId,
-          quantity: quantity + '',
+          quantity: `${quantity}`,
           variantNo,
           itemPartNumber,
         },
@@ -212,7 +196,7 @@ const createBossBopisTogglePayload = ({
   };
 };
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     getOrderDetails: () => {
       dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
@@ -269,7 +253,7 @@ export function mapStateToProps(state) {
   return {
     editableProductInfo: getEditableProductInfo(state),
     isShowSaveForLater: getSaveForLaterSwitch(state),
-    sflMaxCount: parseInt(getSflMaxCount(state)),
+    sflMaxCount: parseInt(getSflMaxCount(state), 10),
     isGenricGuest: getPersonalDataState(state),
     currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
     isBossEnabledTCP: isMobile
@@ -290,6 +274,77 @@ export function mapStateToProps(state) {
     pickupStoresInCart: BAGPAGE_SELECTORS.getCartStores(state),
   };
 }
+
+CartItemTileContainer.propTypes = {
+  productDetail: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  getProductSKUInfo: PropTypes.func.isRequired,
+  updateCartItem: PropTypes.func.isRequired,
+  editableProductInfo: PropTypes.shape({}).isRequired,
+  removeCartItem: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+  isPlcc: PropTypes.string.isRequired,
+  pageView: PropTypes.string,
+  toggleEditAllowance: PropTypes.func.isRequired,
+  isEditAllowed: PropTypes.bool,
+  isShowSaveForLater: PropTypes.bool.isRequired,
+  isGenricGuest: PropTypes.shape({}).isRequired,
+  sflItemsCount: PropTypes.number,
+  sflMaxCount: PropTypes.number.isRequired,
+  addItemToSflList: PropTypes.func.isRequired,
+  setCartItemsSflError: PropTypes.func.isRequired,
+  isBagPageSflSection: PropTypes.bool,
+  startSflItemDelete: PropTypes.func.isRequired,
+  startSflDataMoveToBag: PropTypes.func.isRequired,
+  onPickUpOpenClick: PropTypes.func.isRequired,
+  orderId: PropTypes.number.isRequired,
+  currencySymbol: PropTypes.string.isRequired,
+  setShipToHome: PropTypes.func.isRequired,
+  toggleError: PropTypes.shape({}),
+  toggleBossBopisError: PropTypes.shape({
+    errorMessage: PropTypes.string,
+  }),
+  clearToggleError: PropTypes.func.isRequired,
+  currencyExchange: PropTypes.shape([]),
+  pickupStoresInCart: PropTypes.shape({}).isRequired,
+  autoSwitchPickupItemInCart: PropTypes.func.isRequired,
+  disableProductRedirect: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  closeMiniBag: PropTypes.func,
+  inheritedStyles: PropTypes.string,
+  itemIndex: PropTypes.number,
+  openedTile: PropTypes.number,
+  setSelectedProductTile: PropTypes.func.isRequired,
+  swipedElement: PropTypes.shape({}).isRequired,
+  updateAppTypeHandler: PropTypes.func.isRequired,
+  onQuickViewOpenClick: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}),
+  setSwipedElement: PropTypes.func,
+  isBopisClearanceProductEnabled: PropTypes.bool.isRequired,
+  isBossClearanceProductEnabled: PropTypes.bool.isRequired,
+  isBossEnabledTCP: PropTypes.bool.isRequired,
+  isBossEnabledGYM: PropTypes.bool.isRequired,
+  isBopisEnabledTCP: PropTypes.bool.isRequired,
+  isBopisEnabledGYM: PropTypes.bool.isRequired,
+  isRadialInventoryEnabled: PropTypes.bool.isRequired,
+};
+
+CartItemTileContainer.defaultProps = {
+  inheritedStyles: '',
+  itemIndex: 0,
+  openedTile: 0,
+  setSwipedElement: () => {},
+  closeMiniBag: () => {},
+  navigation: {},
+  pageView: '',
+  isEditAllowed: true,
+  sflItemsCount: 0,
+  isBagPageSflSection: false,
+  toggleError: null,
+  toggleBossBopisError: null,
+  currencyExchange: null,
+  disableProductRedirect: false,
+};
 
 export default connect(
   mapStateToProps,
