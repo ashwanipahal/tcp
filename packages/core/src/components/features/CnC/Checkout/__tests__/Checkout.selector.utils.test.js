@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { fromJS, List } from 'immutable';
 import CHECKOUT_SELECTORS, {
   getSendOrderUpdate,
@@ -411,4 +412,34 @@ it('#getVenmoUserEmail', () => {
   });
   expect(getPickupValues(state)).toEqual(Checkout.getIn(['values', 'pickUpContact']));
   expect(getVenmoUserEmail(state)).toEqual(email);
+});
+it('#getIsRtpsFlow', () => {
+  const { getIsRtpsFlow } = CHECKOUT_SELECTORS;
+  const Checkout = fromJS({
+    uiFlags: {
+      isRTPSFlow: true,
+    },
+  });
+
+  const state = {
+    Checkout: fromJS({
+      uiFlags: {
+        isRTPSFlow: true,
+      },
+    }),
+  };
+  expect(getIsRtpsFlow(state)).toEqual(Checkout.getIn(['uiFlags', 'isRTPSFlow']));
+});
+it('#getIsRTPSEnabled', () => {
+  const { getIsRTPSEnabled } = CHECKOUT_SELECTORS;
+  const session = {
+    siteDetails: {
+      ADS_OLPS_ENABLED: 'TRUE',
+    },
+  };
+
+  const state = {
+    session,
+  };
+  expect(getIsRTPSEnabled(state)).toEqual(true);
 });

@@ -773,10 +773,6 @@ exports[`AddressFields component should render correctly 1`] = `
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -803,7 +799,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -831,8 +829,6 @@ exports[`AddressFields component should render correctly 1`] = `
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -1393,10 +1389,6 @@ exports[`AddressFields component should render correctly 1`] = `
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -1423,7 +1415,9 @@ exports[`AddressFields component should render correctly 1`] = `
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -1451,8 +1445,6 @@ exports[`AddressFields component should render correctly 1`] = `
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -2612,10 +2604,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -2642,7 +2630,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -2670,8 +2660,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -3232,10 +3220,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -3262,7 +3246,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -3290,8 +3276,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -4117,10 +4101,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -4147,7 +4127,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -4175,8 +4157,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -4737,10 +4717,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -4767,7 +4743,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -4795,8 +4773,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -5622,10 +5598,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -5652,7 +5624,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -5680,8 +5654,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -5993,10 +5965,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                "26px",
-                ";
     appearance: none;
     background: url(",
                 "/static/images/carrot-small-down.png",
@@ -6023,7 +5991,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                "26px",
+                " 0 ",
                 [Function],
                 ";
     width: 100%;
@@ -6051,8 +6021,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding-bottom: ",
                 [Function],
                 ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {

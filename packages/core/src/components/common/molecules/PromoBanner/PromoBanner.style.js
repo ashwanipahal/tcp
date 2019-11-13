@@ -614,6 +614,32 @@ export default css`
     letter-spacing: normal;
     line-height: normal;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+  /*
+  * Module M Promo Banner styles
+  *********************************/
+  .small_white_text_semibold {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    font-weight: ${props => props.theme.typography.fontWeights.medium};
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+      letter-spacing: 0;
+    }
+  }
+
+  .extra_large_white_text_black {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    text-align: center;
+
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs64};
     }
