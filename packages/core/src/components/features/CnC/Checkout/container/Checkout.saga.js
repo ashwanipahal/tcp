@@ -58,6 +58,7 @@ const {
   getDefaultAddress,
   getGiftServicesFormData,
   getIfCheckoutRoutingDone,
+  getShipmentMethods,
 } = selectors;
 const { hasPOBox } = utility;
 let oldHasPOB = {};
@@ -188,9 +189,10 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
-function* initShippingData(pageName, initialLoad) {
+function* initShippingData(pageName) {
   if (pageName === CONSTANTS.CHECKOUT_STAGES.SHIPPING) {
     let shippingAddress = yield select(getShippingDestinationValues);
+    const shipmentMethods = yield select(getShipmentMethods);
     shippingAddress = shippingAddress.address;
     const defaultAddress = yield select(getDefaultAddress);
     const hasShipping =
@@ -199,7 +201,12 @@ function* initShippingData(pageName, initialLoad) {
       shippingAddress.state &&
       shippingAddress.zipCode;
     const isGuestUser = yield select(isGuest);
-    if (initialLoad || isGuestUser || (!hasShipping && !defaultAddress)) {
+    if (
+      isGuestUser ||
+      (!hasShipping && !defaultAddress) ||
+      !shipmentMethods ||
+      !shipmentMethods.length
+    ) {
       yield call(
         validDateAndLoadShipmentMethods,
         { country: '', state: '', zipCode: '' },
