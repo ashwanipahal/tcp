@@ -28,6 +28,7 @@ import selectors, {
   getPickupAltValues,
   isPickupAlt,
   getPickupValues,
+  getPageData,
 } from './Checkout.selector';
 import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 import BagPageSelector from '../../BagPage/container/BagPage.selectors';
@@ -256,6 +257,7 @@ export const mapStateToProps = state => {
     couponHelpContentId: BagPageSelector.getNeedHelpContentId(state),
     isRTPSFlow: selectors.getIsRtpsFlow(state),
     isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
+    pageData: getPageData(state),
   };
 };
 
