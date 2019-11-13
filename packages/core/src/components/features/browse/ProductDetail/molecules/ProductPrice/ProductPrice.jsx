@@ -14,7 +14,14 @@ const getExchangeValue = currencyExchange => {
 };
 
 const getListPricePostFix = (highListPrice, nonUSCA, currencySymbol) => {
-  return highListPrice ? ` - ${nonUSCA ? currencySymbol : ''}${highListPrice.toFixed(2)}` : '';
+  return highListPrice ? (
+    <React.Fragment>
+      <span> - </span>
+      <span className="post">{`${nonUSCA ? currencySymbol : ''}${highListPrice.toFixed(2)}`}</span>
+    </React.Fragment>
+  ) : (
+    ''
+  );
 };
 
 const getHighOfferPrice = (highOfferPrice, nonUSCA, currencySymbol) => {
@@ -114,8 +121,11 @@ class ProductPrice extends React.Component {
               color="gray.800"
             >
               {/* TODO - fix it with bundle {!(isBundleProduct || isBundleList) ? 'Was' : ''}  */}
-              {currency}
-              {listPrice.toFixed(2)}
+
+              <span className="pre">
+                {currency}
+                {listPrice.toFixed(2)}
+              </span>
               {listPricePostFix}
             </BodyCopy>
             {this.getBadge(badge2)}
