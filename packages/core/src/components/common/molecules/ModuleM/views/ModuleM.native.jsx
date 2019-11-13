@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getLocator, isGymboree } from '../../../../../utils';
+import { getLocator } from '../../../../../utils';
 import { getScreenWidth } from '../../../../../utils/index.native';
-import { Anchor, BodyCopy, DamImage } from '../../../atoms';
+import { Anchor, BodyCopy } from '../../../atoms';
 import {
   Container,
   HeaderContainer,
@@ -14,12 +14,12 @@ import {
   ButtonContainer,
   ImageContainer,
   Tile,
+  StyledDamImage,
 } from '../styles/ModuleM.style.native';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import ButtonTabs from '../../ButtonTabs';
 import config from '../moduleM.config';
-import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 const MODULE_WIDTH = getScreenWidth();
 
@@ -152,12 +152,10 @@ class ModuleM extends React.PureComponent {
               return (
                 <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
                   <Anchor url={link.url} navigation={navigation}>
-                    <DamImage
+                    <StyledDamImage
                       alt={image.alt}
                       url={image.url}
                       testID={`${getLocator('moduleM_image')}${index}`}
-                      marginBottom={parseInt(spacing.ELEM_SPACING.XXS, 10)}
-                      borderRadius={isGymboree() ? 50 : 0}
                       height={imageDimension}
                       width={imageDimension}
                       imgData={image}
