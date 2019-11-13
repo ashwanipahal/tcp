@@ -558,7 +558,7 @@ function parseStoreOpeningAndClosingTimes(store) {
 const getCouponTotal = orderDetails => {
   let total = 0;
   if (orderDetails.OrderLevelPromos && orderDetails.OrderLevelPromos.explicit) {
-    Object.keys(orderDetails.OrderLevelPromos.explicit).forEach(item => {
+    orderDetails.OrderLevelPromos.explicit.forEach(item => {
       Object.keys(item).forEach(promoCode => {
         total += Math.abs(flatCurrencyToCents(item[promoCode].price));
       });
@@ -614,6 +614,7 @@ const getOrderConfirmationDetails = ({
       valueOfEarnedPcCoupons: parseInt(orderSummary.valueOfEarnedPcCoupons, 10) || 0,
       subTotal: flatCurrencyToCents(orderSummary.orderSubTotalBeforeDiscount),
       grandTotal: orderSummary.grandTotal,
+      totalOrderSavings: flatCurrencyToCents(orderSummary.orderTotalSaving || 0),
     },
 
     isOrderPending: orderSummary.orderStatus === CheckoutConstants.REVIEW_ORDER_STATUS,
