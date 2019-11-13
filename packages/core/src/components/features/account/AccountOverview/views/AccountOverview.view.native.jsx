@@ -245,9 +245,9 @@ class AccountOverview extends PureComponent<Props> {
 
     return (
       <View style={viewContainerStyle}>
-        <OrderNotification />
         {isUserLoggedIn && (
           <React.Fragment>
+            <OrderNotification />
             <Panel title={getLabelValue(labels, 'lbl_overview_myPlaceRewardsHeading')}>
               <MyPlaceRewardsOverviewTile
                 labels={labels}
