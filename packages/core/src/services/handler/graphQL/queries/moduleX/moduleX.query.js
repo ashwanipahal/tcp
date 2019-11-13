@@ -3,6 +3,7 @@ ${slot || `moduleX`}: moduleById(id: "${contentId || cid}" ${lang ? `, lang: ${l
   contentId
   name
   type
+  errorMessage
   composites {
     richTextList {
       text

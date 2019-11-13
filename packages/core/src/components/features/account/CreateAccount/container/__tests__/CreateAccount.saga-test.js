@@ -31,7 +31,9 @@ describe('Create Account Saga', () => {
       };
       createAccountGen.next(response);
       createAccountGen.next();
-      const putDescriptor = createAccountGen.next(response).value;
+      createAccountGen.next();
+      createAccountGen.next(response);
+      const putDescriptor = createAccountGen.next().value;
       expect(putDescriptor).toEqual(put(getUserInfo()));
     });
 
@@ -46,8 +48,10 @@ describe('Create Account Saga', () => {
         },
       };
       createAccountGen.next(response);
-      const putDescriptor = createAccountGen.next().value;
-      expect(putDescriptor).toEqual(put(createAccountErr({ errorMessage: 'foo' })));
+      createAccountGen.next();
+      createAccountGen.next();
+      const putDescriptor1 = createAccountGen.next(response).value;
+      expect(putDescriptor1).toEqual(put(createAccountErr({ errorMessage: 'foo' })));
     });
 
     it('should dispatch createAccountErr action for error', () => {

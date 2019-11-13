@@ -1,7 +1,8 @@
-import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { call, takeLatest, put, select, take } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import {
   setLoginInfo,
@@ -9,7 +10,7 @@ import {
   setLoginLoadingState,
 } from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
-import { getUserInfo } from '../../User/container/User.actions';
+import { getUserInfo, setUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
 import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
@@ -30,6 +31,12 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(setLoginLoadingState({ isLoading: false }));
       yield put(getUserInfo());
       yield put(setLoginModalMountedState({ state: false }));
+      yield put(
+        setClickAnalyticsData({
+          eventName: 'login',
+          pageNavigationText: 'header-log in',
+        })
+      );
       if (afterLoginHandler) {
         yield call(afterLoginHandler);
       } else {
@@ -41,6 +48,10 @@ export function* loginSaga({ payload, afterLoginHandler }) {
         );
       }
       yield put(navigateXHRAction());
+
+      yield take(setUserInfo);
+      yield put(trackClick('login_submit'));
+
       // Provide check for current page and depending on that make Cart or OrderDetails call.
       return yield put(
         BAG_PAGE_ACTIONS.getCartData({
@@ -51,6 +62,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
         })
       );
     }
+
     return yield put(setLoginInfo(response));
   } catch (err) {
     yield put(setLoginLoadingState({ isLoading: false }));
