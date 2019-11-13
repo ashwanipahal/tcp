@@ -88,6 +88,7 @@ export function* fetchMoreProducts({ payload = {} }) {
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: true }));
   } catch (err) {
     logger.error(err);
+    yield put(setSlpLoadingState({ isLoadingMore: false }));
   }
 }
 

@@ -114,7 +114,9 @@ const totalSavingsFooterContainer = (
   plccData = {},
   labels = {},
   bagItems,
-  resetPLCCResponse
+  resetPLCCResponse,
+  isRtpsFlow,
+  togglePLCCModal
 ) => {
   return (
     <React.Fragment>
@@ -142,36 +144,42 @@ const totalSavingsFooterContainer = (
               fill="BLUE"
               type="submit"
               className="existing_checkout_button"
-              onClick={() => redirectToBag(resetPLCCResponse)}
+              onClick={() =>
+                isRtpsFlow
+                  ? togglePLCCModal({ isPLCCModalOpen: false, status: null })
+                  : redirectToBag(resetPLCCResponse)
+              }
             >
               {getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             </Button>
           </Col>
         </Row>
       ) : null}
-      <Row fullBleed className="submit_buttons_set">
-        <Col
-          className={`${
-            !bagItems
-              ? 'no_bag_items_continue existing_checkout_button'
-              : 'existing_checkout_button'
-          }`}
-          ignoreGutter={{ small: true }}
-          colSize={{ large: 3, medium: 4, small: 12 }}
-        >
-          <Anchor
-            url={redirectToHome()}
-            fontSizeVariation="large"
-            buttonVariation="fixed-width"
-            anchorVariation="button"
-            fill={!bagItems ? 'BLUE' : 'WHITE'}
-            centered
-            className="existing_continue_button"
+      {!isRtpsFlow && (
+        <Row fullBleed className="submit_buttons_set">
+          <Col
+            className={`${
+              !bagItems
+                ? 'no_bag_items_continue existing_checkout_button'
+                : 'existing_checkout_button'
+            }`}
+            ignoreGutter={{ small: true }}
+            colSize={{ large: 3, medium: 4, small: 12 }}
           >
-            {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          </Anchor>
-        </Col>
-      </Row>
+            <Anchor
+              url={redirectToHome()}
+              fontSizeVariation="large"
+              buttonVariation="fixed-width"
+              anchorVariation="button"
+              fill={!bagItems ? 'BLUE' : 'WHITE'}
+              centered
+              className="existing_continue_button"
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            </Anchor>
+          </Col>
+        </Row>
+      )}
     </React.Fragment>
   );
 };
@@ -191,6 +199,8 @@ const ApprovedPLCCApplicationView = ({
   approvedPLCCData,
   isGuest,
   resetPLCCResponse,
+  isRtpsFlow,
+  togglePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
   return (
@@ -273,7 +283,15 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       {getCouponCodeBody(approvedPLCCData, labels, plccData, isPLCCModalFlow)}
-      {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems, resetPLCCResponse)}
+      {totalSavingsFooterContainer(
+        approvedPLCCData,
+        plccData,
+        labels,
+        bagItems,
+        resetPLCCResponse,
+        isRtpsFlow,
+        togglePLCCModal
+      )}
       <Row fullBleed className="centered">
         <Col
           ignoreGutter={{ small: true }}
@@ -306,6 +324,8 @@ ApprovedPLCCApplicationView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApprovedPLCCApplicationView;

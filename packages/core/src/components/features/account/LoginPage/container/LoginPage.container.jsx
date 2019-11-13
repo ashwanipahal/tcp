@@ -24,6 +24,7 @@ import {
   shouldShowRecaptcha,
   getLoginErrorMessage,
   getLabels,
+  getLoadingState,
 } from './LoginPage.selectors';
 import {
   getUserLoggedInState,
@@ -115,6 +116,7 @@ class LoginPageContainer extends React.PureComponent {
       navigation,
       toastMessage,
       resetChangePasswordState,
+      isLoading,
       rememberedUserFlag,
       userEmail,
       userName,
@@ -158,6 +160,7 @@ class LoginPageContainer extends React.PureComponent {
         toastMessage={toastMessage}
         isRememberedUser={rememberedUserFlag}
         resetChangePasswordState={resetChangePasswordState}
+        isLoading={isLoading}
         userName={userName}
         openOverlay={openOverlay}
         onClose={this.closeBagModal}
@@ -199,6 +202,7 @@ LoginPageContainer.propTypes = {
   userplccCardId: PropTypes.string.isRequired,
   updateHeader: PropTypes.func.isRequired,
   resetChangePasswordState: PropTypes.func,
+  isLoading: PropTypes.bool.isRequired,
   rememberedUserFlag: PropTypes.bool,
   userEmail: PropTypes.string,
   userName: PropTypes.string,
@@ -261,6 +265,7 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = state => {
   return {
+    isLoading: getLoadingState(state),
     showNotification: getShowNotificationState(state),
     resetForgotPasswordErrorResponse: getResetEmailResponse(state),
     successFullResetEmail: toggleSuccessfulEmailSection(state),

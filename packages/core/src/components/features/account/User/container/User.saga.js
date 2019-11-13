@@ -1,6 +1,7 @@
 import { all, call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { submitUserSurvey } from '@tcp/core/src/services/abstractors/account/UpdateProfileInfo';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { updateProfileSuccess } from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.actions';
 import {
   setCountry,
@@ -17,6 +18,7 @@ import { API_CONFIG } from '../../../../../services/config';
 import { setAddressList } from '../../AddressBook/container/AddressBook.actions';
 
 export function* getUserInfoSaga() {
+  yield put(setLoaderState(true));
   try {
     const response = yield call(getProfile, {
       pageId: 'myAccount',
@@ -54,18 +56,23 @@ export function* getUserInfoSaga() {
     if (country === sites.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(setIsRegisteredUserCallDone());
     logger.error('Error: error in fetching user profile information');
   }
 }
 
 function* setSurveyAnswersSaga(data) {
+  yield put(setLoaderState(true));
   try {
     yield call(submitUserSurvey, data);
     yield call(getUserInfoSaga);
     yield put(updateProfileSuccess('successMessage'));
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield null;
   }
 }

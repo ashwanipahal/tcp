@@ -29,7 +29,6 @@ import { routerPush, isMobileApp } from '../../../../../utils';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 import { getLocalStorage } from '../../../../../utils/localStorageManagement';
 import CheckoutConstants from '../Checkout.constants';
-import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 
 const { CREDIT_CARDS_BIN_RANGES, ACCEPTED_CREDIT_CARDS } = CardConstants;
 
@@ -265,15 +264,6 @@ export const scrollToFirstError = errors => {
   }
 };
 
-/**
- * This method returns the current checkout section
- */
-const getCurrentSection = props => {
-  const { router } = props;
-  const section = router.query.section || router.query.subSection;
-  return section || CHECKOUT_STAGES.SHIPPING;
-};
-
 export default {
   getOrderPointsRecalcFlag,
   updateCartInfo,
@@ -284,5 +274,4 @@ export default {
   getCreditCardType,
   isOrderHasShipping,
   handleReviewFormSubmit,
-  getCurrentSection,
 };
