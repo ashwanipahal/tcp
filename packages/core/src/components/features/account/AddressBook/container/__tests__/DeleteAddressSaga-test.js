@@ -16,13 +16,15 @@ describe('DeleteAddressSaga', () => {
     beforeEach(() => {
       deleteAddressGen = deleteAddress({ payload });
       deleteAddressGen.next();
+      deleteAddressGen.next();
     });
     it('should dispatch updateAddressListOnDelete action for success response', () => {
       const response = {
         statusCode: 200,
         body: { addressId: '12345' },
       };
-      const putDescriptor = deleteAddressGen.next(response).value;
+      deleteAddressGen.next(response);
+      const putDescriptor = deleteAddressGen.next().value;
       expect(putDescriptor).toEqual(put(updateAddressListOnDelete(response.body)));
       expect(deleteAddressGen.next().value).toEqual(
         put(setDeleteModalMountedState({ state: false }))
@@ -32,7 +34,8 @@ describe('DeleteAddressSaga', () => {
       const response = {
         statusCode: 200,
       };
-      const putDescriptor = deleteAddressGen.next(response).value;
+      deleteAddressGen.next(response);
+      const putDescriptor = deleteAddressGen.next().value;
       expect(putDescriptor).toEqual(put(updateAddressListOnDelete('')));
       expect(deleteAddressGen.next().value).toEqual(
         put(setDeleteModalMountedState({ state: false }))
@@ -42,14 +45,16 @@ describe('DeleteAddressSaga', () => {
       const response = {
         error: 'error in API',
       };
-      const putDescriptor = deleteAddressGen.next(response).value;
+      deleteAddressGen.next(response);
+      const putDescriptor = deleteAddressGen.next().value;
       expect(putDescriptor).toEqual(put(updateAddressListOnDeleteErr(response.error)));
     });
     it('should dispatch updateAddressListOnDeleteErr action when api fails', () => {
       const response = {
         error: 'error in API',
       };
-      const putDescriptor = deleteAddressGen.throw(response).value;
+      deleteAddressGen.throw(response);
+      const putDescriptor = deleteAddressGen.next().value;
       expect(putDescriptor).toEqual(put(updateAddressListOnDeleteErr(response)));
     });
   });
