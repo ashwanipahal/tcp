@@ -213,6 +213,7 @@ const styles = css`
       padding-top: 0;
       padding-bottom: 0;
       width: 48px;
+      margin-top: -22px;
     }
     p {
       display: inline-block;
