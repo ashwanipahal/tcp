@@ -95,14 +95,13 @@ const ConfirmationView = ({
           isBossInList={isBossInList}
         />
       </InnerWrapper>
-      {renderAccountForm(isGuest)}
-
       <CnCTemplate
         isConfirmationPage
         isGuest={isGuest}
         navigation={navigation}
         pageCategory="confirmation"
       />
+      {renderAccountForm(isGuest)}
     </Wrapper>
   );
 };
