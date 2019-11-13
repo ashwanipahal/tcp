@@ -145,6 +145,14 @@ export default function create(store) {
       },
     },
 
+    pageNavigationText: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'pageNavigationText'], '');
+      },
+    },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {

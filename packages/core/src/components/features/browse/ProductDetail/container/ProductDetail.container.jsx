@@ -231,7 +231,7 @@ ProductDetailContainer.propTypes = {
   formValues: PropTypes.shape({}).isRequired,
   addToBagEcom: PropTypes.func.isRequired,
   productInfo: PropTypes.arrayOf(PropTypes.shape({})),
-  breadCrumbs: PropTypes.shape({}),
+  breadCrumbs: PropTypes.shape([]),
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,

@@ -33,7 +33,7 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
             {getLabelValue(labels, 'lbl_common_order_date')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 4, medium: 2, small: 2 }}>
+        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
           <BodyCopy
             data-locator="pointshistorytransactionslbl"
             fontFamily="secondary"
@@ -67,17 +67,18 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="text-break"
               >
                 {pointHistoryRow.transactionDate}
               </BodyCopy>
             </Col>
-            <Col colSize={{ large: 4, medium: 2, small: 2 }}>
+            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
               <BodyCopy
                 data-locator="pointshistorytransctionmsg"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
-                className="elem-pr-XXS"
+                className="elem-pr-XXS text-break"
               >
                 {pointHistoryRow.transactionTypeName}
               </BodyCopy>
@@ -88,6 +89,7 @@ const PointsHistory = ({ className, labels, pointHistory, isFetching }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                className="text-break"
               >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
