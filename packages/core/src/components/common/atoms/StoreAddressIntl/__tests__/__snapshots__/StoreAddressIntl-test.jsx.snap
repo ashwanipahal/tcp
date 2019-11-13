@@ -662,6 +662,7 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
         "zDrawer": 1200,
         "zEnlargedImage": 100,
         "zGoogleAutosuggest": 100000,
+        "zIndexQuickView": 10000,
         "zLoader": 1000,
         "zModal": 1300,
         "zModule": 200,
