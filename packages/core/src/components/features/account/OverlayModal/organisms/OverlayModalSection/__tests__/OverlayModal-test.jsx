@@ -112,6 +112,9 @@ describe('OverlayModal', () => {
       variation: 'primary',
       color: null,
       openState: false,
+      componentProps: {
+        currentForm: 'login',
+      },
     };
     const mockedcloseOverlay = jest.fn();
     const mockedEvent = {
