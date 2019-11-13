@@ -166,8 +166,8 @@ class ModuleG extends React.PureComponent {
               navigation={navigation}
               headerText={headerText}
               locator={getLocator('moduleG_header_text')}
-              fontSize="fs20"
               fontWeight="medium"
+              useStyle
             />
           )}
         </Wrapper>
@@ -177,7 +177,6 @@ class ModuleG extends React.PureComponent {
               testID={getLocator('moduleG_promobanner_text')}
               promoBanner={promoBanner}
               navigation={navigation}
-              fontSize="fs48"
               fontWeight="black"
               letterSpacing="0"
             />
