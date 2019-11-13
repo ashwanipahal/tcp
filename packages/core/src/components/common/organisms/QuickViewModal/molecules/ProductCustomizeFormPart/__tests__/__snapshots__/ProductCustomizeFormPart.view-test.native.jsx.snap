@@ -29,6 +29,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           anchorVariation=""
           colorName={null}
           customStyle={Object {}}
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
