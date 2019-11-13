@@ -164,7 +164,6 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
       textDecoration={null}
     />
     <Field
-      borderRadiusNone={true}
       component={[Function]}
       data={Array []}
       heading="undefined: "
@@ -184,7 +183,7 @@ exports[`ProductAddToBagVanilla native should render correctly should match snap
     customStyle={Object {}}
     customTextStyle={null}
     disableButton={false}
-    fill="BLUE.900"
+    fill="BLUE"
     fontFamily="secondary"
     fontSize="fs10"
     fontWeight="extrabold"
