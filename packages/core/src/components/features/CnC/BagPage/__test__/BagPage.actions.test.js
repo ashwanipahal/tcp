@@ -95,4 +95,9 @@ describe('#Bag Page actions', () => {
       type: BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE,
     });
   });
+  it('resetBagLoadedState', () => {
+    expect(BAG_PAGE_ACTIONS.resetBagLoadedState(false)).toEqual({
+      type: BAGPAGE_CONSTANTS.RESET_BAG_LOADED_STATE,
+    });
+  });
 });
