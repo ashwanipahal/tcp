@@ -7,9 +7,8 @@ exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
       divTabs={Array []}
       hideTabs={true}
       hostLazyLoad="lazyload-pdp"
-      marginBottom={false}
+      isCompleteTheLook={true}
       navigation={Object {}}
-      showOutfitItems={false}
       showRelatedOutfitHeader={[Function]}
     />
   </Styled(View)>
