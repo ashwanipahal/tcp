@@ -55,6 +55,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     onSortSelection={[Function]}
     onSubmit={[MockFunction]}
     paddings={null}
+    plpTopPromos={Array []}
     products={Array []}
     removeAddToFavoritesErrorMsg={[Function]}
     renderBrandFilter={null}
@@ -68,13 +69,6 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     totalProductsCount={0}
   />
   <Connect(QuickViewModalContainer)
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
-  <Connect(AddedToBagContainer)
     navigation={
       Object {
         "getParam": [Function],

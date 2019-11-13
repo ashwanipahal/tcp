@@ -8,7 +8,6 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import { isTCP } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
@@ -93,6 +92,7 @@ const HomePageView = dynamic({
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
     moduleT: () => import('@tcp/core/src/components/common/molecules/ModuleT').then(returnModule),
+    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
@@ -120,7 +120,6 @@ const HomePageView = dynamic({
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
         />
-        <AddedToBagContainer />
       </HomePageWithRouter>
     );
   },

@@ -76,7 +76,7 @@ class RegisteredShippingForm extends React.Component {
   }
 
   getAddressOptions = () => {
-    const { userAddresses } = this.props;
+    const { userAddresses, labels } = this.props;
     let addressOptions =
       (userAddresses &&
         userAddresses.map(address => {
@@ -93,7 +93,7 @@ class RegisteredShippingForm extends React.Component {
 
     addressOptions = addressOptions.push({
       id: '',
-      label: '+Add New Address',
+      label: getLabelValue(labels, 'lbl_shipping_addNewAddress', 'shipping', 'checkout'),
       content: '',
       primary: false,
     });
@@ -323,7 +323,6 @@ class RegisteredShippingForm extends React.Component {
               this.onAddressDropDownChange('');
             }}
             variation="secondary"
-            showButton={false}
             selectedValue={onFileAddressKey}
           />
         </View>

@@ -49,6 +49,10 @@ const getIsOrderHasShipping = state =>
 const getIsOrderHasPickup = state =>
   !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
 
+const getIfCheckoutRoutingDone = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'routingDone']);
+};
+
 const getCardType = state => {
   return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
 };
@@ -537,19 +541,23 @@ const getShipmentLoadingStatus = state => {
 const getDefaultShipmentID = createSelector(
   [getShipmentMethods, getShippingDestinationValues],
   (shipmentMethods, shippingDestinationValues) => {
+    let defaultMethod;
     if (shippingDestinationValues && shippingDestinationValues.method) {
       const {
         method: { shippingMethodId },
       } = shippingDestinationValues;
       if (shippingMethodId) {
         const defaultShipment = shipmentMethods.find(method => method.id === shippingMethodId);
-        return defaultShipment && defaultShipment.id;
+        defaultMethod = defaultShipment && defaultShipment.id;
+        if (defaultMethod) {
+          return defaultMethod;
+        }
       }
     }
-    const defaultMethod = shipmentMethods.find(
-      (method, index) => method.isDefault === true || index === 0
+    defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+    return (
+      (defaultMethod && defaultMethod.id) || (shipmentMethods.length > 0 && shipmentMethods[0].id)
     );
-    return defaultMethod && defaultMethod.id;
   }
 );
 
@@ -1066,4 +1074,5 @@ export default {
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
+  getIfCheckoutRoutingDone,
 };

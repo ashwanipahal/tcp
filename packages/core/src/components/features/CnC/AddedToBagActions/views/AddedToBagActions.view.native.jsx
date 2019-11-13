@@ -141,6 +141,7 @@ AddedToBagActions.propTypes = {
   isNoNEmptyBag: PropTypes.number.isRequired,
   fromAddedToBagModal: PropTypes.bool,
   payPalTop: PropTypes.number,
+  hideHeader: PropTypes.func,
 };
 
 AddedToBagActions.defaultProps = {
@@ -148,6 +149,7 @@ AddedToBagActions.defaultProps = {
   closeModal: () => {},
   fromAddedToBagModal: false,
   payPalTop: 0,
+  hideHeader: () => {},
 };
 
 export default AddedToBagActions;

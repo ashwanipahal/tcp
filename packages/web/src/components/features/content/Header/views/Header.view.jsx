@@ -5,11 +5,10 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import { getViewportInfo, isCanada } from '@tcp/core/src/utils';
+import { getViewportInfo } from '@tcp/core/src/utils';
 import { NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav, CondensedHeader } from '../molecules';
@@ -97,8 +96,8 @@ class Header extends React.PureComponent {
       favStore,
       isPickupModalOpen,
       loyaltyPromoBanner,
+      setClickAnalyticsData,
     } = this.props;
-
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
 
@@ -135,6 +134,7 @@ class Header extends React.PureComponent {
           openMiniBagDispatch={openMiniBagDispatch}
           store={favStore}
           labels={labels}
+          setClickAnalyticsData={setClickAnalyticsData}
         />
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
@@ -143,12 +143,7 @@ class Header extends React.PureComponent {
           dataPromo={headerPromoArea}
         />
         <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-        {!isCanada() ? (
-          <LoyaltyPromoBanner
-            richTextList={loyaltyPromoBanner}
-            className="header-promo__container"
-          />
-        ) : null}
+        <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} className="header-promo__container" />
         {showCondensedHeader && (
           <CondensedHeader
             openNavigationDrawer={openNavigationDrawer}
@@ -169,7 +164,6 @@ class Header extends React.PureComponent {
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
-        <SpinnerOverlay />
       </header>
     );
   }
@@ -208,6 +202,7 @@ Header.propTypes = {
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
   isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {

@@ -1,6 +1,10 @@
 /* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
+import {
+  setLoaderState,
+  setSectionLoaderState,
+} from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../../Checkout/Checkout.constants';
 import utility from '../../Checkout/util/utility';
@@ -20,6 +24,7 @@ import {
   checkoutSetCartData,
   getSetIsPaypalPaymentSettings,
   getSetCheckoutStage,
+  toggleCheckoutRouting,
 } from '../../Checkout/container/Checkout.action';
 import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
@@ -54,7 +59,7 @@ import {
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
-import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga';
+import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
 import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
 
 const { getOrderPointsRecalcFlag } = utility;
@@ -140,7 +145,7 @@ export function* getOrderDetailSaga(payload) {
       }
     }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
-
+    yield put(toggleCheckoutRouting(true));
     if (after) {
       yield call(after);
     }
@@ -164,11 +169,12 @@ export function* getCartDataSaga(payload = {}) {
   try {
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
-    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems } = {} } = payload;
+    const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems = true } = {} } = payload;
     const recalcOrderPointsInterval = yield select(getRecalcOrderPointsInterval);
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const cartProps = { excludeCartItems, recalcRewards: recalcOrderPoints, isRadialInvEnabled };
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       ...cartProps,
@@ -181,7 +187,7 @@ export function* getCartDataSaga(payload = {}) {
       }
     }
     yield updateBopisItems(res);
-    yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
+    yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails, excludeCartItems));
 
     if (res.orderDetails.orderItems.length > 0) {
       const personalData = yield select(getPersonalDataState);
@@ -191,6 +197,8 @@ export function* getCartDataSaga(payload = {}) {
     }
     if (isCheckoutFlow) {
       yield put(checkoutSetCartData({ res, isCartNotRequired, updateSmsInfo }));
+    } else {
+      yield put(toggleCheckoutRouting(true));
     }
     yield put(BAG_PAGE_ACTIONS.setCouponsData(res.coupons));
     if (onCartRes) {
@@ -266,6 +274,9 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
 export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
   const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
   const isLoggedIn = yield select(getUserLoggedInState);
+  yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+  yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+  yield put(setLoaderState(false));
   if (!isLoggedIn && !isVenmoPaymentInProgress) {
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
@@ -285,6 +296,9 @@ function* confirmStartCheckout() {
     [BAG_SELECTORS.getOOSCount, BAG_SELECTORS.getUnavailableCount].map(val => select(val))
   );
   if (OOSCount > 0 || unavailableCount > 0) {
+    yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setLoaderState(false));
     yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal());
     return yield true;
   }
@@ -292,12 +306,29 @@ function* confirmStartCheckout() {
 }
 
 export function* startCartCheckout({
-  payload: { isEditingItem, navigation, closeModal, navigationActions } = {},
+  payload: {
+    isEditingItem,
+    navigation,
+    closeModal,
+    navigationActions,
+    isMiniBag,
+    isBagPage,
+    isAddedToBag,
+  } = {},
 } = {}) {
   try {
     if (isEditingItem) {
       yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
     } else {
+      if (isMiniBag) {
+        yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
+      }
+      if (isAddedToBag) {
+        yield put(setSectionLoaderState({ addedToBagLoaderState: true, section: 'addedtobag' }));
+      }
+      if (isBagPage) {
+        yield put(setLoaderState(true));
+      }
       // this.store.dispatch(setVenmoPaymentInProgress(false));
       let res = yield call(getUnqualifiedItems);
       res = res || [];
@@ -314,6 +345,9 @@ export function* startCartCheckout({
       }
     }
   } catch (e) {
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+    yield put(setLoaderState(false));
     yield call(handleServerSideErrorAPI, e, 'CHECKOUT');
   }
 }
@@ -400,8 +434,13 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
 }
 
 export function* addItemToSFL({
-  payload: { itemId, catEntryId, userInfoRequired, afterHandler } = {},
+  payload: { itemId, catEntryId, userInfoRequired, afterHandler, isMiniBag } = {},
 } = {}) {
+  if (isMiniBag) {
+    yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
+  } else {
+    yield put(setLoaderState(true));
+  }
   const isRememberedUser = yield select(isRemembered);
   const isRegistered = yield select(getUserLoggedInState);
   const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
@@ -431,6 +470,8 @@ export function* addItemToSFL({
       yield put(removeCartItem({ itemId }));
     }
   } catch (err) {
+    yield put(setSectionLoaderState(false, 'minibag'));
+    yield put(setLoaderState(false));
     const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(getServerErrorMessage(err, errorsMapping)));
   }

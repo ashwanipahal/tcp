@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
@@ -165,23 +166,25 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             </Button>
-            {variation === 'checkout' && (
-              <Button
-                fill="WHITE"
-                type="button"
-                buttonVariation="fixed-width"
-                dataLocator="login-logincta"
-                fullWidth
-                className="elem-mb-XS elem-mt-SM"
-                onClick={handleContinueAsGuest}
-              >
-                {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
-              </Button>
+            {variation === 'checkout' && !isRememberedUser && (
+              <ClickTracker name="checkout_as_guest">
+                <Button
+                  fill="WHITE"
+                  type="button"
+                  buttonVariation="fixed-width"
+                  dataLocator="login-logincta"
+                  fullWidth
+                  className="elem-mb-XS elem-mt-SM"
+                  onClick={handleContinueAsGuest}
+                >
+                  {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
+                </Button>
+              </ClickTracker>
             )}
             {!isRememberedUser && (
               <Anchor
                 underline
-                fontSizeVariation="xlarge"
+                fontSizeVariation="large"
                 anchorVariation="primary"
                 dataLocator="login-forgotpasswordlnk"
                 onClick={this.showForgotPasswordForm}

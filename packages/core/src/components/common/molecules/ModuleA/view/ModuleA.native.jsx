@@ -72,7 +72,7 @@ const ribbonView = ({ ribbonBanner, navigation, position }) => {
   );
 };
 
-const renderView = (item, navigation, position) => {
+const renderView = (item, navigation, position, ignoreLazyLoadImage) => {
   let PromoBannerComponent;
   let HeaderComponent;
   let HeaderConfig = {};
@@ -100,7 +100,7 @@ const renderView = (item, navigation, position) => {
         width={MODULE_WIDTH}
         height={isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT}
         url={image.url}
-        host={LAZYLOAD_HOST_NAME.HOME}
+        host={ignoreLazyLoadImage ? '' : LAZYLOAD_HOST_NAME.HOME}
         crop={image.crop_m}
         imgConfig={isGymboree() ? IMG_DATA_GYM.crops[0] : IMG_DATA_TCP.crops[0]}
       />
@@ -136,7 +136,7 @@ const renderView = (item, navigation, position) => {
   );
 };
 
-const renderCarousel = (largeCompImageCarousel, navigation, position) => {
+const renderCarousel = (largeCompImageCarousel, navigation, position, ignoreLazyLoadImage) => {
   let config = {};
   if (isGymboree()) {
     config = {
@@ -154,7 +154,7 @@ const renderCarousel = (largeCompImageCarousel, navigation, position) => {
         <Carousel
           {...config}
           data={largeCompImageCarousel}
-          renderItem={item => renderView(item, navigation, position)}
+          renderItem={item => renderView(item, navigation, position, ignoreLazyLoadImage)}
           width={MODULE_WIDTH}
           carouselConfig={{
             autoplay: true,
@@ -195,12 +195,12 @@ const renderButtonList = (ctaType, navigation, ctaItems, locator, color) => {
  */
 
 const ModuleA = (props: Props) => {
-  const { navigation, largeCompImageCarousel, ctaItems, ctaType } = props;
+  const { navigation, largeCompImageCarousel, ctaItems, ctaType, ignoreLazyLoadImage } = props;
   const ctaTypeValue = ctaTypes[ctaType];
 
   return (
     <Container>
-      {renderCarousel(largeCompImageCarousel, navigation, 'left')}
+      {renderCarousel(largeCompImageCarousel, navigation, 'left', ignoreLazyLoadImage)}
 
       {ctaTypeValue === ctaTypes.divImageCTACarouse && (
         <DivImageCTAContainer>

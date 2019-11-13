@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { APICONFIG_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 import { getOrdersListState } from '../../Orders/container/Orders.selectors';
 
 export const getLabels = state => state.Labels.global;
@@ -29,13 +28,13 @@ export const getLastBopis = createSelector(
 );
 
 export const getLimitToDisplayLastOrderNotification = state => {
-  return state[APICONFIG_REDUCER_KEY].ordersNotificationsThreshold || 30; // Todo : need to change
+  return state.session.siteDetails.ORDER_THRESHOLD || 6;
 };
 
 export const getLimitToDisplayBossOrder = state => {
-  return state[APICONFIG_REDUCER_KEY].bossOrdersNotificationsThreshold || 30; // Todo : need to change
+  return state.session.siteDetails.BOSS_ORDER_NOTIFICATION || 15;
 };
 
 export const getTransactionNotificationsInMyAccountEnabled = state => {
-  return state[APICONFIG_REDUCER_KEY].isTransactionNotificationsInMyAccountEnabled || true; // Todo : need to change
+  return state.session.siteDetails.TRANS_NOTIFICATIONS_MY_ACCOUNT_ENABLED || true;
 };

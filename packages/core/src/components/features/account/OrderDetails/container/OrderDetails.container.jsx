@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+// import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
+import { isMobileApp } from '@tcp/core/src/utils';
 import OrderDetailsView from '../views';
 import { getOrderDetails } from './OrderDetails.actions';
 import {
@@ -24,6 +26,7 @@ export class OrderDetailsContainer extends PureComponent {
 
     if (
       orderId &&
+      !isMobileApp() &&
       (!orderDetailsData || (orderDetailsData && orderDetailsData.orderNumber !== orderId))
     ) {
       getOrderDetailsAction(payload);

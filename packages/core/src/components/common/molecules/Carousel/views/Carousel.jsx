@@ -19,7 +19,6 @@ type Props = {
   playIconButtonLabel: String,
   pauseIconButtonLabel: String,
   sliderImageIndex: number,
-  resetSliderDots: Boolean,
 };
 
 type State = {
@@ -44,13 +43,10 @@ class Carousel extends React.PureComponent<Props, State> {
   }
 
   componentWillReceiveProps = (nextProps: Object) => {
-    const { sliderImageIndex, resetSliderDots } = nextProps;
+    const { sliderImageIndex } = nextProps;
     const { sliderImageIndex: sliderImage } = this.props;
     if (sliderImageIndex !== sliderImage) {
       (this: any).slider.slickGoTo(sliderImageIndex);
-    }
-    if (resetSliderDots) {
-      (this: any).slider.slickGoTo('0');
     }
   };
 

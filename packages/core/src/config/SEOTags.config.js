@@ -297,73 +297,59 @@ export const getSearchSEOTags = (store, router, categoryKey) => {
   });
 };
 
-const getProductName = store => {
-  return (
-    store.getState() &&
-    store.getState().ProductDetail &&
-    store.getState().ProductDetail.currentProduct &&
-    store.getState().ProductDetail.currentProduct.name
-  );
-};
+export const getPdpSEOTags = (productInfo, router, categoryKey) => {
+  if (productInfo && productInfo.name) {
+    const productName = productInfo.name;
+    const longProductTitle = productInfo.long_product_title;
+    const productLongDescription = productInfo.product_long_description;
 
-export const getPdpSEOTags = (store, router, categoryKey) => {
-  const productName = getProductName(store);
-  const longProductTitle =
-    store.getState() &&
-    store.getState().ProductDetail &&
-    store.getState().ProductDetail.currentProduct &&
-    store.getState().ProductDetail.currentProduct.long_product_title;
-  const productLongDescription =
-    store.getState() &&
-    store.getState().ProductDetail &&
-    store.getState().ProductDetail.currentProduct &&
-    store.getState().ProductDetail.currentProduct.product_long_description;
+    const brandDetails = getBrandDetails();
 
-  const brandDetails = getBrandDetails();
+    let title;
+    let description;
 
-  let title;
-  let description;
+    if (longProductTitle) {
+      title = longProductTitle;
+    } else {
+      title = productName;
+    }
 
-  if (longProductTitle) {
-    title = longProductTitle;
-  } else {
-    title = productName;
+    if (productLongDescription) {
+      description = productLongDescription;
+    } else {
+      description = productName;
+    }
+
+    const openGraph = {
+      url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
+      title,
+      description,
+    };
+    const hrefLangs = [
+      {
+        id: 'us-en',
+        canonicalUrl: `${brandDetails.BRAND_BASE_URL}m${categoryKey}`,
+      },
+    ];
+
+    const twitter = {
+      cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
+      site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
+    };
+
+    const canonical = `${brandDetails.BRAND_BASE_URL}${categoryKey}`;
+    return getMetaSEOTags({
+      title,
+      description,
+      canonical,
+      twitter,
+      openGraph,
+      hrefLangs,
+      keywords: SEO_CONFIG.keywords.content,
+      robots: SEO_CONFIG.robots.content,
+    });
   }
-
-  if (productLongDescription) {
-    description = productLongDescription;
-  } else {
-    description = productName;
-  }
-
-  const openGraph = {
-    url: `${brandDetails.BRAND_BASE_URL}${categoryKey}`,
-    title,
-    description,
-  };
-  const hrefLangs = [
-    {
-      id: 'us-en',
-      canonicalUrl: `${brandDetails.BRAND_BASE_URL}m${categoryKey}`,
-    },
-  ];
-
-  const twitter = {
-    cardType: `${brandDetails.BRAND_TWITTER_SITE_CARD_TYPE}`,
-    site: `${brandDetails.BRAND_TWITTER_SITE_TAG}`,
-  };
-
-  const canonical = `${brandDetails.BRAND_BASE_URL}${categoryKey}`;
-  return getMetaSEOTags({
-    title,
-    description,
-    canonical,
-    twitter,
-    openGraph,
-    hrefLangs,
-    keywords: SEO_CONFIG.keywords.content,
-    robots: SEO_CONFIG.robots.content,
-  });
+  return null;
 };
 
 export const deriveSEOTags = (pageId, store, router) => {
@@ -383,7 +369,7 @@ export const deriveSEOTags = (pageId, store, router) => {
   }
   if (pageId === PAGES.PRODUCT_DESCRIPTION_PAGE) {
     const categoryKey = router.asPath;
-    return getSearchSEOTags(store, router, categoryKey);
+    return getPdpSEOTags(store, router, categoryKey);
   }
 
   return getDefaultSEOTags();
