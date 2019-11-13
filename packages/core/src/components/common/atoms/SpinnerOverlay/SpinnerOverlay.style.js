@@ -16,7 +16,6 @@ const styles = css`
     justify-content: center;
     display: flex;
   }
-  }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
