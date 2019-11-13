@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getSiteId } from '@tcp/core/src/utils/utils';
-import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 import { routerPush } from '../../../../../utils/index';
@@ -36,6 +36,10 @@ class LookingForProductDetail extends React.PureComponent {
             {searchResults &&
               searchResults.autosuggestProducts &&
               searchResults.autosuggestProducts.map(item => {
+                const itemName = item.imageUrl[0].substring(item.imageUrl[0].lastIndexOf('/') + 1);
+                const imageParts =
+                  itemName.indexOf('_') >= 0 ? itemName.split('_') : itemName.split('.');
+                const itemUrl = `${imageParts[0]}/${itemName}`;
                 return (
                   <BodyCopy component="li" key={item.id} className="productBox">
                     <Anchor
@@ -47,11 +51,13 @@ class LookingForProductDetail extends React.PureComponent {
                         this.redirectToProductUrl(`${item.productUrl}`);
                       }}
                     >
-                      <Image
-                        alt={`${item.name}`}
+                      <DamImage
                         className="autosuggest-image"
-                        src={`${item.imageUrl[0]}`}
-                        data-locator={`${item.name}`}
+                        imgData={{
+                          alt: `${item.name}`,
+                          url: `${itemUrl}`,
+                        }}
+                        isProductImage
                         height="25px"
                       />
                     </Anchor>
