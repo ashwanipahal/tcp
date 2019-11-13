@@ -4,7 +4,7 @@ import { ModuleA, ModuleD, ModuleM, ModuleQ } from '@tcp/core/src/components/com
 import DivisionTabModule from '@tcp/core/src/components/common/molecules/DivisionTabModule';
 import OutfitCarouselModule from '@tcp/core/src/components/common/molecules/OutfitCarouselModule';
 import JeansModule from '@tcp/core/src/components/common/molecules/JeansModule';
-import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
+// import ModuleG from '@tcp/core/src/components/common/molecules/ModuleG';
 
 const modules = {
   divisionTabs: DivisionTabModule,
@@ -12,12 +12,14 @@ const modules = {
   jeans: JeansModule,
   moduleA: ModuleA,
   moduleD: ModuleD,
-  moduleG: ModuleG,
+  // moduleG: ModuleG,
   moduleM: ModuleM,
   moduleQ: ModuleQ,
 };
 
-const PromoModules = ({ categoryPath, plpTopPromos }) => {
+const PromoModules = ({ plpTopPromos, navigation }) => {
+  const asPath = navigation && navigation.getParam('url').split('?cid=');
+  const navAsPath = `${asPath[0]}/${asPath[1]}`;
   return (
     plpTopPromos &&
     plpTopPromos.map(promo => {
@@ -29,7 +31,8 @@ const PromoModules = ({ categoryPath, plpTopPromos }) => {
           <Module
             key={contentId}
             data={promo}
-            asPath={categoryPath}
+            asPath={navAsPath}
+            navigation={navigation}
             ignoreLazyLoadImage
             {...slotData}
             {...others}

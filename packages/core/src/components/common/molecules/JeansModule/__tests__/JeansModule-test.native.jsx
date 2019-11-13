@@ -5,6 +5,7 @@ import { JeansModuleVanilla } from '../views/JeansModule.view.native';
 describe('JeansModuleVanilla', () => {
   let component;
   const props = {
+    navigation: {},
     data: {
       headLine: [
         {
