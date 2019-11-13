@@ -20,6 +20,7 @@ class GiftCardTile extends React.PureComponent {
     isFromReview: PropTypes.bool,
     isExpressCheckout: PropTypes.bool,
     isPaymentDisabled: PropTypes.bool,
+    giftCardList: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -32,6 +33,7 @@ class GiftCardTile extends React.PureComponent {
     isFromReview: false,
     isExpressCheckout: false,
     isPaymentDisabled: false,
+    giftCardList: {},
   };
 
   showRemoveCtas = () => {
