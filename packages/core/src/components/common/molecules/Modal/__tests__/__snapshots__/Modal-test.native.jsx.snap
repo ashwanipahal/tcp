@@ -32,7 +32,7 @@ exports[`Modal Native should render correctly 1`] = `
           <Styled(View)
             isOverlay={false}
           >
-            <Styled(Text)>
+            <Styled(View)>
               <Styled(BodyCopy)
                 accessibilityText=""
                 dataLocator=""
@@ -44,7 +44,7 @@ exports[`Modal Native should render correctly 1`] = `
                 text="Modal Heading"
                 textDecoration={null}
               />
-            </Styled(Text)>
+            </Styled(View)>
             <Styled(View)>
               <Styled(TouchableOpacity)
                 accessibilityLabel="close"
