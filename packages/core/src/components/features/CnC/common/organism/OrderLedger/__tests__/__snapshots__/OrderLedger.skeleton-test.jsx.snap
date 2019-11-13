@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Ledger Skeleton Order Ledger Skeleton should render properly 1`] = `
+<div
+  className="sample-className"
+>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+    >
+      <div
+        className="order-item-details"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="order-item-details"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="applied-coupon-details"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="applied-offer-details"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="column-end"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <div
+        className="right-section-values"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="right-section-values"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="right-section-values"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="right-section-values"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="ledger-divider"
+  />
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+    >
+      <div
+        className="total-savings"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="estimated-total-price"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="column-end"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <div
+        className="total-price"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="right-section-values"
+      >
+        <SkeletonLine />
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

@@ -7,6 +7,7 @@ const buildQuery = ({ cids, lang }) => {
     contentId
     name
     type
+    errorMessage
     composites {
       richTextList {
         text

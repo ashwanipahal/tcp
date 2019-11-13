@@ -147,7 +147,7 @@ class ProductDetailView extends React.Component {
         </button>
       </div>
     ) : (
-      breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
+      breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" isPDPPage />
     );
   };
 
@@ -169,6 +169,20 @@ class ProductDetailView extends React.Component {
         />
       </div>
     ) : null;
+  };
+
+  // This is required for reommendations.
+  getCatIdForRecommendation = () => {
+    const { breadCrumbs } = this.props;
+    if (breadCrumbs) {
+      const category = breadCrumbs.map((crumb, index) => {
+        const { displayName } = crumb;
+        const separationChar = index !== breadCrumbs.length - 1 ? ':' : '';
+        return displayName + separationChar;
+      });
+      return category.join('');
+    }
+    return '';
   };
 
   // eslint-disable-next-line complexity
@@ -205,12 +219,12 @@ class ProductDetailView extends React.Component {
     const { isGiftCard } = productInfo;
     const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
 
-    const { categoryId } = currentProduct;
+    const categoryId = this.getCatIdForRecommendation();
     const recommendationAttributes = {
       variations: 'moduleO',
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
       categoryName: categoryId,
-      partNumber: selectedColorProductId,
+      partNumber: itemPartNumber,
       showLoyaltyPromotionMessage: false,
       headerAlignment: 'left',
     };
@@ -356,7 +370,7 @@ ProductDetailView.propTypes = {
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
-  breadCrumbs: PropTypes.shape({}),
+  breadCrumbs: PropTypes.shape([]),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.string,
@@ -375,7 +389,7 @@ ProductDetailView.defaultProps = {
   productDetails: {},
   longDescription: '',
   shortDescription: '',
-  breadCrumbs: {},
+  breadCrumbs: [],
   currency: '',
   plpLabels: {
     lbl_sort: '',

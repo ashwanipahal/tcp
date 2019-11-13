@@ -97,6 +97,7 @@ class LoginSection extends React.PureComponent<Props> {
       resetLoginState,
       userplccCardNumber,
       userplccCardId,
+      isLoading,
       isRememberedUser,
     } = this.props;
     return (
@@ -117,7 +118,7 @@ class LoginSection extends React.PureComponent<Props> {
               medium: 8,
               large: `${variation === 'checkout' ? 7 : 12}`,
             }}
-            className={`elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+            className={`elem-pt-SM elem-pl-LRG elem-pr-LRG ${
               variation === 'checkout' ? 'checkoutForm' : 'loginForm'
             }`}
           >
@@ -141,6 +142,7 @@ class LoginSection extends React.PureComponent<Props> {
                   resetLoginState={resetLoginState}
                   userplccCardNumber={userplccCardNumber}
                   userplccCardId={userplccCardId}
+                  isLoading={isLoading}
                 />
               </React.Fragment>
             )}

@@ -17,6 +17,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import { scrollToFirstError } from '../../../util/utility';
+import PickupAnalytics from './PickupAnalytics.view';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -346,8 +347,10 @@ class PickUpFormPart extends React.Component {
                 hideBackLink={false}
                 backLinkText={`${pickUpLabels.returnTo} ${pickUpLabels.pickupText}`}
                 nextButtonText={this.getNextCTAText()}
+                pageCategory={pageCategory}
               />
             </form>
+            <PickupAnalytics {...this.props} />
           </div>
         )}
       </>

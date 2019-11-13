@@ -240,6 +240,7 @@ class PaymentView extends React.Component<Props> {
             <BodyCopy
               fontSize="fs16"
               fontWeight="extrabold"
+              fontFamily="secondary"
               text={getLabelValue(labels, 'lbl_payment_heading', 'paymentGC')}
             />
           </StyledHeading>
@@ -313,6 +314,7 @@ class PaymentView extends React.Component<Props> {
               isOpen={showGiftCardModal}
               onRequestClose={this.toggleGiftCardModal}
               heading={getLabelValue(labels, 'lbl_payment_addGiftCard', 'paymentGC')}
+              headingFontFamily="secondary"
             >
               <ModalViewWrapper>
                 <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />

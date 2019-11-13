@@ -94,7 +94,7 @@ export class OutfitCarouselModule extends PureComponent {
                   fontSizeVariation="small"
                   dataLocator="dummy-datalocator"
                 >
-                  {`${link.text} >`}
+                  {link.text ? `${link.text} >` : ''}
                 </Anchor>
               </div>
             );

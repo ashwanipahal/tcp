@@ -2,10 +2,12 @@
 
 exports[`LoyaltyBanner View Component LoyaltyBanner should render correctly 1`] = `
 <LoyaltyBannerSection
+  closeAddedToBagModal={[Function]}
   currentSubtotal={21}
   earnedReward={0}
   estimatedRewardsVal={20}
   estimatedSubtotal={33}
+  footerLabels={Object {}}
   getCurrencySymbol=""
   isGuest={false}
   isPlcc={false}

@@ -1,7 +1,7 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
-import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
@@ -63,9 +63,8 @@ class ProductBundle extends React.PureComponent {
         });
       }
       return (
-        <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
+        <ScrollView>
           <PageContainer>
-            {/* <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} isBundleProduct /> */}
             <ImageCarousel
               isGiftCard={currentProduct.isGiftCard}
               imageUrls={imageUrls}
@@ -103,7 +102,7 @@ class ProductBundle extends React.PureComponent {
               isLoggedIn={isLoggedIn}
             />
           </PageContainer>
-        </LazyloadScrollView>
+        </ScrollView>
       );
     }
     return getLoading();

@@ -7,7 +7,7 @@ import {
 export const getBopisItemInventory = state => {
   return (
     (state[PRODUCT_PICKUP_REDUCER_KEY] &&
-      state[PRODUCT_PICKUP_REDUCER_KEY].bopisInventoryDetails) ||
+      state[PRODUCT_PICKUP_REDUCER_KEY].get('bopisInventoryDetails')) ||
     []
   );
 };

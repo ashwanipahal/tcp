@@ -151,7 +151,11 @@ export class PointsClaimForm extends PureComponent {
           {isStore && (
             <>
               <Row fullBleed>
-                <Col colSize={{ small: 6, medium: 4, large: 3 }} ignoreGutter={{ small: true }}>
+                <Col
+                  colSize={{ small: 6, medium: 4, large: 3 }}
+                  ignoreGutter={{ small: true }}
+                  className="elem-mb-XL"
+                >
                   <Field
                     id={fieldNames.STORE_NUMBER}
                     placeholder={getLabelValue(
@@ -164,7 +168,7 @@ export class PointsClaimForm extends PureComponent {
                     dataLocator="points-claim-storenumber"
                   />
                 </Col>
-                <Col colSize={{ small: 6, medium: 4, large: 3 }}>
+                <Col colSize={{ small: 6, medium: 4, large: 3 }} className="elem-mb-XL">
                   <Field
                     id={fieldNames.REGISTER_NUMBER}
                     placeholder={getLabelValue(
@@ -178,8 +182,12 @@ export class PointsClaimForm extends PureComponent {
                   />
                 </Col>
               </Row>
-              <Row fullBleed className="elem-mb-LRG">
-                <Col colSize={{ small: 6, medium: 4, large: 3 }} ignoreGutter={{ small: true }}>
+              <Row fullBleed>
+                <Col
+                  colSize={{ small: 6, medium: 4, large: 3 }}
+                  className="elem-mb-XL"
+                  ignoreGutter={{ small: true }}
+                >
                   <Field
                     id="transactionDate"
                     placeholder={getLabelValue(
@@ -193,7 +201,7 @@ export class PointsClaimForm extends PureComponent {
                     dataLocator="points-claim-transactiondate"
                   />
                 </Col>
-                <Col colSize={{ small: 6, medium: 4, large: 3 }}>
+                <Col colSize={{ small: 6, medium: 4, large: 3 }} className="elem-mb-XL">
                   <Field
                     id={fieldNames.TRANSACTION_NUMBER}
                     placeholder={getLabelValue(

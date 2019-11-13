@@ -59,7 +59,10 @@ import {
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
-import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
+import {
+  handleServerSideErrorAPI,
+  getRouteToCheckoutStage,
+} from '../../Checkout/container/Checkout.saga.util';
 import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
 
 const { getOrderPointsRecalcFlag } = utility;
@@ -174,6 +177,7 @@ export function* getCartDataSaga(payload = {}) {
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const cartProps = { excludeCartItems, recalcRewards: recalcOrderPoints, isRadialInvEnabled };
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       ...cartProps,
@@ -256,15 +260,12 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
     const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
-    if (hasVenmoReviewPage || isExpressCheckoutEnabled) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
-      return;
-    }
-    if (orderHasPickup) {
-      utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
-    } else {
-      utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
-    }
+    yield call(
+      getRouteToCheckoutStage,
+      { recalc },
+      hasVenmoReviewPage || isExpressCheckoutEnabled,
+      true
+    );
   } else {
     utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout, { recalc });
   }

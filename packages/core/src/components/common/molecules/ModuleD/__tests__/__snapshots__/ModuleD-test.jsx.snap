@@ -139,12 +139,13 @@ exports[`ModuleD component renders correctly 1`] = `
         className="moduleD_link"
       >
         <Styled(Anchor)
+          asPath="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           centered={true}
           className="moduleD_textlink"
           dataLocator="moduleD_textlink_1"
           target=""
           title="Family Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           withCaret={true}
         />
       </div>
@@ -201,12 +202,13 @@ exports[`ModuleD component renders correctly 1`] = `
         className="moduleD_link"
       >
         <Styled(Anchor)
+          asPath="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           centered={true}
           className="moduleD_textlink"
           dataLocator="moduleD_textlink_2"
           target=""
           title="Mom & Me Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           withCaret={true}
         >
           Mom & Me Tees
@@ -261,12 +263,13 @@ exports[`ModuleD component renders correctly 1`] = `
         className="moduleD_link"
       >
         <Styled(Anchor)
+          asPath="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           centered={true}
           className="moduleD_textlink"
           dataLocator="moduleD_textlink_3"
           target=""
           title="Family Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           withCaret={true}
         >
           Family Tees
@@ -326,12 +329,13 @@ exports[`ModuleD component renders correctly 1`] = `
         className="moduleD_link"
       >
         <Styled(Anchor)
+          asPath="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           centered={true}
           className="moduleD_textlink"
           dataLocator="moduleD_textlink_4"
           target=""
           title="Mom & Me Tees"
-          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
           withCaret={true}
         >
           Mom & Me Tees

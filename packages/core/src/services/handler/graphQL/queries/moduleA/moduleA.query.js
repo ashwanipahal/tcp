@@ -7,6 +7,7 @@ const buildQuery = ({ slot, contentId, lang }) => `
     val
     key
   }
+  errorMessage
 	composites {
 		largeCompImageCarousel {
 			headerText {
