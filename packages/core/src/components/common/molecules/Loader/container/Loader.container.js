@@ -4,9 +4,9 @@ import LoaderView from '../views';
 const mapStateToProps = state => {
   const { PageLoader } = state;
   return {
-    loaderState: PageLoader.loaderState,
-    miniBagLoaderState: PageLoader.miniBagLoaderState,
-    addedToBagLoaderState: PageLoader.addedToBagLoaderState,
+    loaderState: PageLoader && PageLoader.loaderState,
+    miniBagLoaderState: PageLoader && PageLoader.miniBagLoaderState,
+    addedToBagLoaderState: PageLoader && PageLoader.addedToBagLoaderState,
   };
 };
 
