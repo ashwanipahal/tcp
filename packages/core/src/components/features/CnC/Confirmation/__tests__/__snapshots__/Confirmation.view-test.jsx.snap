@@ -93,6 +93,12 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={false}
+    pageCategory=""
+    venmoPayment={Object {}}
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -108,12 +114,6 @@ exports[`ConfirmationViewVanilla should render correctly 1`] = `
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={false}
-    pageCategory=""
-    venmoPayment={Object {}}
-  />
 </div>
 `;
 
@@ -206,6 +206,19 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    pageCategory=""
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -221,19 +234,6 @@ exports[`ConfirmationViewVanilla should render correctly with venmo payment prog
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={true}
-    pageCategory=""
-    venmoPayment={
-      Object {
-        "ccBrand": "VENMO",
-        "ccType": "VENMO",
-        "defaultInd": true,
-        "userName": "",
-      }
-    }
-  />
 </div>
 `;
 
@@ -324,6 +324,19 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={true}
+    pageCategory=""
+    venmoPayment={
+      Object {
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "defaultInd": true,
+        "userName": "",
+      }
+    }
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -339,19 +352,6 @@ exports[`ConfirmationViewVanilla should render correctly without order details 1
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={true}
-    pageCategory=""
-    venmoPayment={
-      Object {
-        "ccBrand": "VENMO",
-        "ccType": "VENMO",
-        "defaultInd": true,
-        "userName": "",
-      }
-    }
-  />
 </div>
 `;
 
@@ -448,6 +448,12 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(CheckoutOrderInfo)
+    isConfirmationPage={true}
+    isVenmoPaymentInProgress={false}
+    pageCategory=""
+    venmoPayment={Object {}}
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -463,11 +469,5 @@ exports[`ConfirmationViewVanilla should render correctly without shipping 1`] = 
       <Connect(ConfirmationAccountFormContainer) />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(CheckoutOrderInfo)
-    isConfirmationPage={true}
-    isVenmoPaymentInProgress={false}
-    pageCategory=""
-    venmoPayment={Object {}}
-  />
 </div>
 `;
