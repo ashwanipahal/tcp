@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PROMOTION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import CouponSkeleton from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/skeleton/CouponSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Col from '../../../../../../common/atoms/Col';
@@ -11,6 +12,7 @@ import CouponHelpModal from './CouponHelpModal.view';
 import CouponForm from '../../../molecules/CouponForm';
 import styles from '../styles/Coupon.style';
 import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
+
 // import ApplyNowModal from '../../../../../../common/molecules/ApplyNowPLCCModal';
 
 class CouponView extends React.PureComponent<Props> {
@@ -89,7 +91,7 @@ class CouponView extends React.PureComponent<Props> {
               additionalClassNameModal={additionalClassName}
             />
           )}
-          {availableCouponList && (
+          {availableCouponList && availableCouponList.size > 0 ? (
             <CouponListSection
               labels={labels}
               isFetching={isFetching}
@@ -103,6 +105,13 @@ class CouponView extends React.PureComponent<Props> {
               dataLocator="coupon-cartAvaliableRewards"
               handleErrorCoupon={handleErrorCoupon}
               additionalClassNameModal={additionalClassName}
+            />
+          ) : (
+            <CouponSkeleton
+              className
+              heading={labels.AVAILABLE_REWARDS_HEADING}
+              couponList={availableCouponList}
+              labels={labels}
             />
           )}
           {/* UX timer for coupons list visibility */}
@@ -132,6 +141,7 @@ class CouponView extends React.PureComponent<Props> {
             additionalClassNameModal={additionalClassName}
           />
         </div>
+
         {/* <ApplyNowModal /> */}
       </div>
     );

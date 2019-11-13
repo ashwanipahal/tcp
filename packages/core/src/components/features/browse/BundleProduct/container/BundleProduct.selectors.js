@@ -1,4 +1,5 @@
 import { getLabelValue } from '../../../../../utils';
+import { processBreadCrumbs } from '../../ProductListing/container/ProductListing.util';
 
 export const getNavTree = state => {
   return state.Navigation.navigationData;
@@ -9,27 +10,27 @@ export const prodDetails = state => {
 };
 
 export const getBreadCrumbs = state => {
-  return state.BundleProduct.get('breadCrumbs');
+  return processBreadCrumbs(state.BundleProduct && state.BundleProduct.breadCrumbs);
 };
 
 export const getAlternateSizes = state => {
-  return state.BundleProduct.getIn(['currentProduct', 'alternateSizes']);
+  return state.BundleProduct.currentProduct && state.BundleProduct.currentProduct.alternateSizes;
 };
 
 export const getDescription = state => {
-  return state.BundleProduct.getIn(['currentProduct', 'longDescription']);
+  return state.BundleProduct.currentProduct && state.BundleProduct.currentProduct.longDescription;
 };
 
 export const getRatingsProductId = state => {
-  return state.BundleProduct.getIn(['currentProduct', 'ratingsProductId']);
+  return state.BundleProduct.currentProduct && state.BundleProduct.currentProduct.ratingsProductId;
 };
 
 export const getGeneralProductId = state => {
-  return state.BundleProduct.getIn(['currentProduct', 'generalProductId']);
+  return state.BundleProduct.currentProduct && state.BundleProduct.currentProduct.generalProductId;
 };
 
 export const getShortDescription = state => {
-  return state.BundleProduct.getIn(['currentProduct', 'shortDescription']);
+  return state.BundleProduct.currentProduct && state.BundleProduct.currentProduct.shortDescription;
 };
 
 export const getPlpLabels = state => {
@@ -77,16 +78,14 @@ export const getPlpLabels = state => {
 
 // TODO - This is temporary - fix it by introducing the image carousel and zoom
 export const getDefaultImage = state => {
-  const firstColor = state.BundleProduct.getIn([
-    'currentProduct',
-    'colorFitsSizesMap',
-    0,
-    'color',
-    'name',
-  ]);
+  const firstColor =
+    state.BundleProduct.currentProduct &&
+    state.BundleProduct.currentProduct.colorFitsSizesMap &&
+    state.BundleProduct.currentProduct.colorFitsSizesMap[0].color.name;
   return (
     firstColor &&
-    state.BundleProduct.getIn(['currentProduct', 'imagesByColor', firstColor, 'basicImageUrl'])
+    state.BundleProduct.currentProduct &&
+    state.BundleProduct.currentProduct.imagesByColor[firstColor].basicImageUrl
   );
 };
 
@@ -103,11 +102,11 @@ export const getCurrencyAttributes = state => {
 };
 
 export const getCurrentProduct = state => {
-  return state.BundleProduct.get('currentProduct');
+  return state.BundleProduct && state.BundleProduct.currentProduct;
 };
 
 export const getCurrentBundle = state => {
-  return state.BundleProduct.get('currentBundle');
+  return state.BundleProduct && state.BundleProduct.currentBundle;
 };
 
 export const getPDPLabels = state => {
@@ -162,5 +161,5 @@ export const getPDPLabels = state => {
 };
 
 export const getAddedToBagErrorCatId = state => {
-  return state.AddedToBagReducer.get('errorCatId');
+  return state.AddedToBagReducer && state.AddedToBagReducer.errorCatId;
 };

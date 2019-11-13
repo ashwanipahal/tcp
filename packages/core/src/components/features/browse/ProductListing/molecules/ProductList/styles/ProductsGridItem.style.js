@@ -215,6 +215,10 @@ const styles = css`
     font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
 
+  .container-price {
+    white-space: nowrap;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .top-badge-container {
       min-height: 16px;

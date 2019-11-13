@@ -81,13 +81,13 @@ class SearchDetailContainer extends React.PureComponent {
       },
       getProducts,
       formValues,
-    } = prevProps;
+    } = this.props;
 
     const {
       router: {
         query: { searchQuery: currentSearchQuery },
       },
-    } = this.props;
+    } = prevProps;
     if (searchQuery !== currentSearchQuery) {
       const splitAsPathBy = `/search/${searchQuery}?`;
       const queryString = asPath.split(splitAsPathBy);
