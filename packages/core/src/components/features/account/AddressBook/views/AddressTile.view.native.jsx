@@ -96,6 +96,7 @@ class AddressBookTile extends React.Component<Props> {
                   fontSizeVariation="small"
                   underline
                   anchorVariation="primary"
+                  justifyContent="flex-end"
                   onPress={this.handleDefaultLinkClick}
                   noLink
                   to="/#"

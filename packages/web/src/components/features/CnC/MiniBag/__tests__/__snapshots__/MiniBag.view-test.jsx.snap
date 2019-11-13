@@ -60,12 +60,14 @@ exports[`MiniBag template should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <Styled(MiniBagHeader)
+    cartItemCount={0}
     currentPoints=""
     labels={Object {}}
     totalRewards=""
     userName=""
   />
   <Styled(MiniBagBody)
+    cartItemCount={0}
     currencySymbol=""
     isCartItemsUpdating={true}
     labels={Object {}}

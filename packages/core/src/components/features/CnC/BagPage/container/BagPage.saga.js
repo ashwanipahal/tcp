@@ -170,6 +170,8 @@ function* updateBopisItems(res) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
+    yield put(setLoaderState(false));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
     const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems = true } = {} } = payload;
@@ -274,10 +276,10 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
 export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
   const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
   const isLoggedIn = yield select(getUserLoggedInState);
-  yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
-  yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
-  yield put(setLoaderState(false));
   if (!isLoggedIn && !isVenmoPaymentInProgress) {
+    yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setLoaderState(false));
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
   return yield call(routeForCartCheckout, recalc, navigation, closeModal, navigationActions);
@@ -424,6 +426,7 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
 // }
 
 export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
+  yield put(setLoaderState(true));
   const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
   if (unqualifiedItemsIds && unqualifiedItemsIds.size > 0) {
     yield call(removeItem, unqualifiedItemsIds);

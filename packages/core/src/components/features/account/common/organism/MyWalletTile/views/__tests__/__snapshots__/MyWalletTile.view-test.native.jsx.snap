@@ -41,6 +41,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
         dataLocator="accountoverview-myWallettile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
