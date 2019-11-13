@@ -68,7 +68,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
   };
 
   renderApplyNowLink = text => {
-    const { openApplyNowModal, navigation } = this.props;
+    const { openApplyNowModal, navigation, closeAddedToBagModal } = this.props;
     return (
       <Anchor
         className="applyNow"
@@ -79,13 +79,14 @@ class LoyaltyFooterSection extends PureComponent<Props> {
         onPress={() => {
           navigation.navigate('ApplyNow');
           openApplyNowModal({ isModalOpen: false, isPLCCModalOpen: true });
+          closeAddedToBagModal();
         }}
       />
     );
   };
 
   renderLearnMoreLink = text => {
-    const { openApplyNowModal, navigation } = this.props;
+    const { openApplyNowModal, navigation, closeAddedToBagModal } = this.props;
     return (
       <Anchor
         className="learnMore"
@@ -96,6 +97,7 @@ class LoyaltyFooterSection extends PureComponent<Props> {
         onPress={() => {
           navigation.navigate('ApplyNow');
           openApplyNowModal({ isModalOpen: true });
+          closeAddedToBagModal();
         }}
       />
     );

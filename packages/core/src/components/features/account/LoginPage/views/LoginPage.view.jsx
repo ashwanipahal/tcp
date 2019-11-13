@@ -25,6 +25,7 @@ const LoginView = ({
   handleContinueAsGuest,
   userplccCardNumber,
   userplccCardId,
+  isLoading,
   isRememberedUser,
   userName,
   openOverlay,
@@ -33,6 +34,7 @@ const LoginView = ({
 }) => {
   return (
     <LoginSection
+      isLoading={isLoading}
       onSubmit={onSubmit}
       labels={labels}
       formErrorMessage={formErrorMessage}
@@ -84,6 +86,7 @@ LoginView.propTypes = {
   formErrorMessage: PropTypes.shape({}).isRequired,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   isRememberedUser: PropTypes.bool,
   userName: PropTypes.string,
   onClose: PropTypes.func,

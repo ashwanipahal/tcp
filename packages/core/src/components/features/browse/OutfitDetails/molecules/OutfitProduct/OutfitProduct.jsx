@@ -9,6 +9,7 @@ import {
   getProductListToPath,
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import withStyles from '../../../../../common/hoc/withStyles';
 import OutfitProductStyle from './OutfitProduct.style';
 
@@ -29,7 +30,7 @@ const OutfitDetailsView = ({
   isLoggedIn,
   addToFavorites,
 }) => {
-  const { imagesByColor, colorFitsSizesMap } = outfitProduct;
+  const { imagesByColor, colorFitsSizesMap, isGiftCard } = outfitProduct;
   const colorProduct =
     outfitProduct && getMapSliceForColorProductId(colorFitsSizesMap, colorProductId);
   const prices = outfitProduct && getPrices(outfitProduct, colorProduct.color.name);
@@ -42,7 +43,7 @@ const OutfitDetailsView = ({
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const viewDetails = labels && labels.lbl_outfit_viewdetail;
-
+  const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   return (
     <Row className={className}>
       <Col
@@ -114,6 +115,7 @@ const OutfitDetailsView = ({
             isOutfitPage
             errorOnHandleSubmit={addToBagError}
             isPickup
+            sizeChartLinkVisibility={sizeChartLinkVisibility}
           />
         </div>
       </Col>

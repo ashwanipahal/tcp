@@ -154,12 +154,23 @@ export const addedToBagActionsStyles = css`
   .checkout-button.checkout-button-bagHeader {
     flex-direction: row;
     margin-top: 7px;
+    float: right;
+    width: 324px;
+    padding: 0 3px 0 13px;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 366px;
+    }
     .checkout {
       height: 42px;
       padding: 12px 0;
     }
     .paypal-venmo {
+      flex: 1;
+      display: inline-flex;
       margin-bottom: 7px;
+      .paypal-wrapper {
+        min-width: unset;
+      }
       .venmo-button {
         height: 42px;
       }
