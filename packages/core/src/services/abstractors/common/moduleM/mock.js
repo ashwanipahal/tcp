@@ -95,10 +95,7 @@ export default {
           text: {
             text: 'GIRL',
           },
-          category: {
-            cat_id: '47511',
-          },
-          smallCompImages: [
+          smallCompImage: [
             {
               image: {
                 url:
@@ -244,6 +241,12 @@ export default {
               },
             },
           ],
+          linkClass: {
+            url: '/c/baby-clothes',
+            text: 'SHOP ALL',
+            title: '',
+            target: '',
+          },
         },
         {
           text: {
@@ -252,7 +255,7 @@ export default {
           category: {
             cat_id: '47512',
           },
-          smallCompImages: [
+          smallCompImage: [
             {
               image: {
                 url:
@@ -398,6 +401,12 @@ export default {
               },
             },
           ],
+          linkClass: {
+            url: '/c/baby-clothes',
+            text: 'SHOP ALL',
+            title: '',
+            target: '',
+          },
         },
         {
           text: {
@@ -406,7 +415,7 @@ export default {
           category: {
             cat_id: '47513',
           },
-          smallCompImages: [
+          smallCompImage: [
             {
               image: {
                 url:
@@ -552,6 +561,12 @@ export default {
               },
             },
           ],
+          linkClass: {
+            url: '/c/baby-clothes',
+            text: 'SHOP ALL',
+            title: '',
+            target: '',
+          },
         },
         {
           text: {
@@ -560,7 +575,7 @@ export default {
           category: {
             cat_id: '47514',
           },
-          smallCompImages: [
+          smallCompImage: [
             {
               image: {
                 url:
@@ -706,14 +721,14 @@ export default {
               },
             },
           ],
+          linkClass: {
+            url: '/c/baby-clothes',
+            text: 'SHOP ALL',
+            title: '',
+            target: '',
+          },
         },
       ],
-      singleCTAButton: {
-        url: '/c/baby-clothes',
-        text: 'SHOP ALL',
-        title: '',
-        target: '',
-      },
     },
   },
 };
