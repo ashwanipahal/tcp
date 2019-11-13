@@ -15,7 +15,7 @@ type Props = {
   useStyle: boolean,
 };
 
-const Style = { lineHeight: 47 };
+const LARGE_TEXT_BLACK_STYLE = { lineHeight: 47 };
 
 export const bodyCopyStyles = {
   // small text with regular font
@@ -53,7 +53,7 @@ export const bodyCopyStyles = {
       fontWeight="regular"
       textAlign="center"
       letterSpacing="ls2"
-      style={Style}
+      style={LARGE_TEXT_BLACK_STYLE}
       {...props}
     />
   ),

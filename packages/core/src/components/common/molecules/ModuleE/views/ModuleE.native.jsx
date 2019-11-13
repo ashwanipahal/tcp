@@ -124,7 +124,7 @@ class ModuleE extends React.PureComponent {
    *  @naviagtion is used to navigate the page.
    *  @carouselCtaType is used to manage the type of carouselCtabuttons .
    */
-  renderView = (item, naviagtion) => {
+  renderView = (item, navigation) => {
     const {
       item: { image, singleCTAButton },
     } = item;
@@ -136,7 +136,7 @@ class ModuleE extends React.PureComponent {
 
     return (
       <View>
-        <Anchor naviagation={naviagtion} url={singleCTAButton.url}>
+        <Anchor navigation={navigation} url={singleCTAButton.url}>
           <DamImage
             width={MODULE_WIDTH}
             height={MODULE_DEFAULT_HEIGHT}
@@ -257,7 +257,7 @@ class ModuleE extends React.PureComponent {
             <StyledImage
               width={MODULE_EYEBROW_WIDTH}
               height={MODULE_EYEBROW_HEIGHT}
-              url={eyebrow && eyebrow.mediaLinkedList[0] && eyebrow.mediaLinkedList[0].image.url}
+              url={eyebrow && eyebrow.mediaLinkedList[1] && eyebrow.mediaLinkedList[1].image.url}
               imgConfig={IMG_DATA.eyeBrowImgConfig[0]}
             />
           </EyeBrowContainer>
