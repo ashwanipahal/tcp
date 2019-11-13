@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, Image, BodyCopy, Anchor } from '../../../../../common/atoms';
 import ProductBasicInfo from '../../../ProductDetail/molecules/ProductBasicInfo/ProductBasicInfo';
 import ProductPrice from '../../../ProductDetail/molecules/ProductPrice/ProductPrice';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import {
   getPrices,
   getMapSliceForColorProductId,
@@ -42,8 +43,8 @@ const OutfitDetailsView = ({
 
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
-  const viewDetails = labels && labels.lbl_outfit_viewdetail;
-
+  const viewDetails = (labels && labels.lbl_outfit_viewdetail) || 'View Product Details';
+  const sizeChartLinkVisibility = isBundleProduct ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   return (
     <Row className={className}>
       <Col
@@ -116,6 +117,7 @@ const OutfitDetailsView = ({
             errorOnHandleSubmit={addToBagError}
             isPickup
             isBundleProduct={isBundleProduct}
+            sizeChartLinkVisibility={sizeChartLinkVisibility}
           />
         </div>
       </Col>

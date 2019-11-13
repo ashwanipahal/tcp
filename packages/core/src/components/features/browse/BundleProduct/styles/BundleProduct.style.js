@@ -20,13 +20,13 @@ export default css`
     padding: 20px 0;
     text-align: center;
     width: 100%;
-    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
+      margin: ${props => props.theme.spacing.ELEM_SPACING.XXL} 0;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin: ${props => props.theme.spacing.ELEM_SPACING.XL} 0;
     }
   }
 
@@ -75,9 +75,7 @@ export default css`
     border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .product-price-container {
-    margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XL};
-  }
+
   .actual-price {
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
     @media ${props => props.theme.mediaQuery.medium} {
