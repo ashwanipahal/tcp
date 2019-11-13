@@ -140,7 +140,7 @@ import {
   BUNDLEPRODUCT_REDUCER_KEY,
   ANALYTICS_DATA_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
+import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA } from '@tcp/core/src/analytics';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
@@ -188,6 +188,11 @@ function pageNameReducer(state = {}, action) {
       const { props } = action.payload;
       const { pageData = {} } = (props && props.initialProps && props.initialProps.pageProps) || {};
       return pageData;
+    }
+    case UPDATE_PAGE_DATA: {
+      return action.payload;
+      // const { pageData = {} } = (props && props.initialProps && props.initialProps.pageProps) || {};
+      // return data;
     }
     default:
       return state;
