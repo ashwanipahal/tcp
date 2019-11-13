@@ -166,8 +166,6 @@ class ModuleG extends React.PureComponent {
               navigation={navigation}
               headerText={headerText}
               locator={getLocator('moduleG_header_text')}
-              fontWeight="medium"
-              useStyle
             />
           )}
         </Wrapper>
@@ -177,8 +175,6 @@ class ModuleG extends React.PureComponent {
               testID={getLocator('moduleG_promobanner_text')}
               promoBanner={promoBanner}
               navigation={navigation}
-              fontWeight="black"
-              letterSpacing="0"
             />
           </PromoContainer>
         )}
@@ -186,8 +182,8 @@ class ModuleG extends React.PureComponent {
     );
   };
 
-  renderFirstCarousel = firstCarouseProductList => {
-    return firstCarouseProductList && firstCarouseProductList.length > 0 ? (
+  renderFirstCarousel = (isSkeletonHidden, firstCarouseProductList) => {
+    return isSkeletonHidden && firstCarouseProductList && firstCarouseProductList.length > 0 ? (
       <ImageSlidesWrapper>
         <View>
           <Carousel
@@ -212,8 +208,8 @@ class ModuleG extends React.PureComponent {
     ) : null;
   };
 
-  renderSecondCarousel = secondCarouseProductList => {
-    return secondCarouseProductList && secondCarouseProductList.length ? (
+  renderSecondCarousel = (isSkeletonHidden, secondCarouseProductList) => {
+    return isSkeletonHidden && secondCarouseProductList && secondCarouseProductList.length ? (
       <ImageSlidesWrapper>
         <View>
           <Carousel
@@ -261,9 +257,10 @@ class ModuleG extends React.PureComponent {
       <Skeleton
         row={1}
         col={3}
-        width={200}
+        width={203}
         height={200}
-        rowProps={{ justifyContent: 'center', marginTop: '20px' }}
+        rowProps={{ justifyContent: 'center', marginTop: '20px', marginBottom: '20px' }}
+        colProps={{ margin: '0 20px' }}
         showArrows
       />
     ) : null;
@@ -353,10 +350,10 @@ class ModuleG extends React.PureComponent {
         {this.renderShadowContainer(!dataStatus)}
         <View>
           {this.renderSkeleton(dataStatus)}
-          {this.renderFirstCarousel(firstCarouseProductList)}
+          {this.renderFirstCarousel(!dataStatus, firstCarouseProductList)}
           {this.renderMiddleContainer(!dataStatus, showPlusButton)}
           {this.renderSkeleton(dataStatus)}
-          {this.renderSecondCarousel(secondCarouseProductList)}
+          {this.renderSecondCarousel(!dataStatus, secondCarouseProductList)}
         </View>
         {this.renderbuttonContainer(productExists, selectedSingleCTAButton)}
         <QuickViewModal />
