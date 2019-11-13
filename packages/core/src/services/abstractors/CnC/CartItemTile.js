@@ -819,7 +819,7 @@ export const getCartData = ({
       coupons,
       orderDetails: getCurrentOrderFormatter(
         orderDetailsResponse,
-        excludeCartItems,
+        false,
         isCASite(),
         isRadialInvEnabled
       ),

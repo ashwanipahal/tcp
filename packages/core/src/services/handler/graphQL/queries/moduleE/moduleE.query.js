@@ -25,17 +25,17 @@ const buildQuery = ({ slot, contentId, lang }) => `
 						title
 						target
 					}
-        }
-        promoBanner {
-          link {
-            url
-            title
-          }
-          textItems {
-            text
-            style
-          }
-        }
+				}
+				promoBanner {
+				link {
+					url
+					title
+				}
+				textItems {
+					text
+					style
+				}
+			   }
 			}
 			headerText {
 				textItems {

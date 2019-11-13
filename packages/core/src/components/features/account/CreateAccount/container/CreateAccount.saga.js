@@ -1,4 +1,5 @@
 import { takeLatest, call, put, delay } from 'redux-saga/effects';
+import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
 import { getUserInfo } from '../../User/container/User.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
@@ -18,6 +19,13 @@ const getErrorMessage = res => {
 export function* createsaga({ payload }) {
   try {
     const res = yield call(createAccountApi, payload);
+    yield put(
+      setClickAnalyticsData({
+        eventName: 'create account',
+        pageNavigationText: 'header-create account',
+      })
+    );
+    yield put(trackClick('register_submit'));
     /* istanbul ignore else */
     if (res.body) {
       if (res.body.errors) {

@@ -1,5 +1,6 @@
 const buildQuery = ({ type, brand, country, channel, lang }) => `
   header: globalModule(type: "${type}", brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
+    errorMessage
     submodules {
       topNavWrapper {
         composites {

@@ -48,6 +48,7 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
       </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
+      className="profileinfo-rewardsId_value"
       colSize={
         Object {
           "large": 3,
@@ -224,7 +225,7 @@ exports[`UserInfo component should renders correctly with success and error 1`] 
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
+          "large": 5,
           "medium": 4,
           "small": 4,
         }
