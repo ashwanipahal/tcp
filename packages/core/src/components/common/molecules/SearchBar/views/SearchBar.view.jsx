@@ -7,9 +7,8 @@ import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 import { getSearchResult, setShowMoreProductFlag } from '../SearchBar.actions';
-import { setRecentStoreToLocalStorage, getRecentStoreFromLocalStorage } from '../userRecentStore';
+import { getRecentStoreFromLocalStorage, updateLocalStorageData } from '../userRecentStore';
 
-import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
 import SearchBarPropTypes from '../SearchBar.PropTypes';
 import SearchImageWrapper from './SearchImageWrapper.view';
 
@@ -80,29 +79,7 @@ class SearchBar extends React.PureComponent {
   };
 
   setDataInLocalStorage = (searchText, url) => {
-    if (searchText) {
-      const searchTextParam = searchText.trim().toLowerCase();
-      const searchTermWithUrl = url ? `${searchTextParam}<url>${url}` : searchTextParam;
-
-      const getPreviousSearchResults = getRecentStoreFromLocalStorage() || JSON.stringify([]);
-      const recentSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
-
-      const existingIndex = recentSearchResults.indexOf(searchTermWithUrl);
-      if (existingIndex >= 0) {
-        recentSearchResults.splice(existingIndex, 1);
-      }
-
-      recentSearchResults.push(searchTermWithUrl);
-
-      if (
-        recentSearchResults &&
-        recentSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
-      ) {
-        recentSearchResults.shift();
-      }
-
-      setRecentStoreToLocalStorage(recentSearchResults);
-    }
+    updateLocalStorageData(searchText, url);
   };
 
   commonCloseClick = () => {

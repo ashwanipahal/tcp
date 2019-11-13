@@ -13,14 +13,14 @@ const EmptyRewards = ({ labels, navigation }) => {
     <View>
       <StyledBodyCopy>
         <BodyCopy
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           data-locator="no_rewards_msg"
           text={getLabelValue(labels, 'lbl_my_rewards_no_available_rewards', 'placeRewards')}
         />
         <BodyCopy
-          mobileFontFamily="secondary"
+          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="regular"
           data-locator="no_rewards_msg"

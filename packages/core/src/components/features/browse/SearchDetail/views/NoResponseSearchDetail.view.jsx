@@ -8,12 +8,8 @@ import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
 import { Anchor, Row, Col, BodyCopy } from '../../../../common/atoms';
 import { getSearchResult } from '../container/SearchDetail.actions';
-import {
-  setRecentStoreToLocalStorage,
-  getRecentStoreFromLocalStorage,
-} from '../../../../common/molecules/SearchBar/userRecentStore';
+import { updateLocalStorageData } from '../../../../common/molecules/SearchBar/userRecentStore';
 import { routerPush } from '../../../../../utils/index';
-import RECENT_SEARCH_CONSTANTS from '../../../../common/molecules/SearchBar/SearchBar.constants';
 
 class NoResponseSearchDetailView extends React.PureComponent {
   constructor(props) {
@@ -27,10 +23,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.changeSearchText = this.changeSearchText.bind(this);
     this.getSearchResults = this.getSearchResults.bind(this);
   }
-
-  redirectToSearchPage = searchText => {
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-  };
 
   changeSearchText = e => {
     e.preventDefault();
@@ -56,7 +48,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     e.preventDefault();
     const searchText = this.searchInput.current.value;
     if (searchText) {
-      this.redirectToSearchPage(searchText);
+      this.redirectToSuggestedUrl(searchText);
     }
   };
 
@@ -64,7 +56,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     let searchText = this.searchInput.current.value;
     if (searchText) {
       searchText = searchText.toLowerCase();
-      this.redirectToSearchPage(searchText);
+      this.redirectToSuggestedUrl(searchText);
     }
   };
 
@@ -85,29 +77,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
   };
 
   setDataInLocalStorage = (searchText, url) => {
-    if (searchText) {
-      const searchTextParam = searchText.trim().toLowerCase();
-      const searchTermWithUrl = url ? `${searchTextParam}<url>${url}` : searchTextParam;
-
-      const getPreviousSearchResults = getRecentStoreFromLocalStorage() || JSON.stringify([]);
-      const recentSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
-
-      const existingIndex = recentSearchResults.indexOf(searchTermWithUrl);
-      if (existingIndex >= 0) {
-        recentSearchResults.splice(existingIndex, 1);
-      }
-
-      recentSearchResults.push(searchTermWithUrl);
-
-      if (
-        recentSearchResults &&
-        recentSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
-      ) {
-        recentSearchResults.shift();
-      }
-
-      setRecentStoreToLocalStorage(recentSearchResults);
-    }
+    updateLocalStorageData(searchText, url);
   };
 
   redirectToSuggestedUrl = (searchText, url) => {
