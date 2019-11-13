@@ -1,6 +1,10 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  setLoaderState,
+  setSectionLoaderState,
+} from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -27,6 +31,9 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidMount() {
+    setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' });
+    setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' });
+    setLoaderState(false);
     const { router, setCheckoutStage } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
@@ -143,17 +150,10 @@ class CheckoutPage extends React.PureComponent {
       initShippingPage,
       shippingMethod,
       pickupDidMount,
-      isHasPickUpAlternatePerson,
-      pickUpAlternatePerson,
-      pickUpContactPerson,
-      pickUpContactAlternate,
-      checkoutServerError,
-      toggleCountrySelector,
-      clearCheckoutServerError,
-      setClickAnalyticsDataCheckout,
-      cartOrderItems,
     } = this.props;
-
+    const { isHasPickUpAlternatePerson, pickUpAlternatePerson, pickUpContactPerson } = this.props;
+    const { pickUpContactAlternate, checkoutServerError, toggleCountrySelector } = this.props;
+    const { clearCheckoutServerError, setClickAnalyticsDataCheckout, cartOrderItems } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
