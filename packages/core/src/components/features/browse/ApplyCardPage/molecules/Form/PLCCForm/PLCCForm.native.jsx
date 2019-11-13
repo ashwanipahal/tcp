@@ -150,12 +150,13 @@ class PLCCForm extends React.PureComponent<Props> {
         {isPreScreen && (
           <TextBoxContainer>
             <Field
-              name={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeOpt')}
+              name="preScreenCode"
               id="preScreenCode"
               label={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeOpt')}
-              type="text"
+              type="tel"
               component={TextBox}
               maxLength={12}
+              keyboardType="numeric"
             />
           </TextBoxContainer>
         )}
