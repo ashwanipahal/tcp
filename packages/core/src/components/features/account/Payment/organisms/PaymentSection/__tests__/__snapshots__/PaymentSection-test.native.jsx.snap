@@ -33,6 +33,7 @@ exports[`Payment View should render correctly 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         margin={null}
@@ -224,6 +225,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         margin={null}
@@ -389,6 +391,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         margin={null}
@@ -466,6 +469,7 @@ exports[`Payment View should render with showGiftCardModal 1`] = `
     />
     <ModalNative
       heading="lbl_payment_addGiftCard"
+      headingFontFamily="secondary"
       inheritedStyles=""
       isOpen={true}
       isOverlay={false}

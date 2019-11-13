@@ -50,6 +50,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
             accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="use by"
@@ -58,6 +59,7 @@ exports[`DetailedCouponTile should render correctly 1`] = `
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="undefined"
@@ -222,6 +224,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
             accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="use by"
@@ -230,6 +233,7 @@ exports[`DetailedCouponTile should render correctly for applied coupon 1`] = `
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="undefined"
@@ -377,6 +381,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
             accessibilityText=""
             data-locator="accountoverview-myplacerewatdstile-rewarduseby"
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="use by"
@@ -385,6 +390,7 @@ exports[`DetailedCouponTile should render expiring soon notification if coupon i
           <Styled(BodyCopy)
             accessibilityText=""
             dataLocator=""
+            fontFamily="secondary"
             margin={null}
             numberOfLines={null}
             text="undefined"

@@ -31,7 +31,7 @@ const asPathConstructor = url => {
   return url && url.replace('?cid=', '/');
 };
 
-const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {
+const FixedBreadCrumbs = ({ crumbs, separationChar, className, isPDPPage }) => {
   return (
     <div className={`${className} breadcrum-container`}>
       {crumbs &&
@@ -53,7 +53,7 @@ const FixedBreadCrumbs = ({ crumbs, separationChar, className }) => {
             otherHyperLinkProps.pathSuffix = otherHyperLinkProps.categoryKey;
           }
           const itemClassName =
-            index === crumbs.length - 1 ? 'breadcrum-last-item' : 'breadcrum-item';
+            index === crumbs.length - 1 && !isPDPPage ? 'breadcrum-last-item' : 'breadcrum-item';
           return (
             <span key={`${displayName}`} className="breadcrum-item-container">
               {destinationUrl ? (
@@ -109,11 +109,13 @@ FixedBreadCrumbs.propTypes = {
   ).isRequired,
   separationChar: PropTypes.string,
   className: PropTypes.string,
+  isPDPPage: PropTypes.bool,
 };
 
 FixedBreadCrumbs.defaultProps = {
   separationChar: '/',
   className: '',
+  isPDPPage: false,
 };
 
 export default withStyles(errorBoundary(FixedBreadCrumbs), FixedBreadCrumbsStyles);

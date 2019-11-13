@@ -10,11 +10,13 @@ describe('UpdateProfile saga', () => {
     beforeEach(() => {
       gen = UpdateProfile({});
       gen.next();
+      gen.next();
     });
 
     it('should dispatch updateProfileSuccess action for success response', () => {
       const response = 'success';
       gen.next(response);
+      gen.next();
       const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(updateProfileSuccess(response)));
     });
@@ -31,7 +33,8 @@ describe('UpdateProfile saga', () => {
           errorMessage: 'The given associate ID is incorrect.',
         },
       };
-      const putDescriptor = gen.throw(responseError).value;
+      gen.throw(responseError)
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(updateProfileError(responseError.errorResponse)));
     });
   });

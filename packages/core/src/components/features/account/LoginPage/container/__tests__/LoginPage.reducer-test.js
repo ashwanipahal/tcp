@@ -9,6 +9,7 @@ describe('LoginPage reducer', () => {
     checkoutModalMountedState: false,
     loginErrorMessage: null,
     componentType: 'login',
+    isLoading:false,
   });
   it('should return default state', () => {
     expect(LoginPageReducer(undefined, {})).toEqual(initialState);
@@ -24,6 +25,7 @@ describe('LoginPage reducer', () => {
       checkoutModalMountedState: false,
       loginErrorMessage: null,
       componentType: 'login',
+      isLoading:false,
     });
 
     expect(LoginPageReducer(initialState, setLoginInfo(payload))).toEqual(expectedState);
