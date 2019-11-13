@@ -428,5 +428,17 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/account/userGroup',
   },
+  updateRTPSdata: {
+    method: 'POST',
+    URI: 'v2/ads_dms/constructOLPS',
+  },
+  prescreenApplication: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processPreScreenAcceptance',
+  },
+  processPreScreenOffer: {
+    method: 'POST',
+    URI: 'v2/ads_dms/processMadeOffer',
+  },
 };
 export default endpoints;

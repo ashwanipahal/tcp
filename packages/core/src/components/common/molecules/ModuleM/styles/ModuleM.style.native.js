@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-
+import { DamImage } from '../../../atoms';
 /*
     This method is responsible to return the last image index
     of row on the basis of images length
@@ -15,6 +15,11 @@ const getIndexes = totalImages => {
   }
   return indexes;
 };
+
+export const StyledDamImage = styled(DamImage)`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  border-radius: ${props => (props.theme.isGymboree ? `50px` : `0`)};
+`;
 
 export const Container = styled.View`
   width: 100%;
@@ -51,7 +56,7 @@ export const ButtonContainer = styled.View`
   padding: 0
     ${props =>
       props.imageCount === 3
-        ? props.theme.spacing.ELEM_SPACING.XL
+        ? props.theme.spacing.ELEM_SPACING.XXL
         : props.theme.spacing.ELEM_SPACING.SM};
   background-color: ${props => props.theme.colorPalette.blue[500]};
   height: ${props => props.imageDimension}px;
@@ -81,4 +86,5 @@ export default {
   ButtonContainer,
   ImageContainer,
   Tile,
+  StyledDamImage,
 };
