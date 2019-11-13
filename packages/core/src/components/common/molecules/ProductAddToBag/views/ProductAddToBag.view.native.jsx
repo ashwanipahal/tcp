@@ -117,6 +117,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       colorFitsSizesMap,
       selectedColorProductId
     );
+
     return (
       <ProductPickupContainer
         productInfo={currentProduct}
