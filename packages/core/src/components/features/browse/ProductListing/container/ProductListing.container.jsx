@@ -1,5 +1,7 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import { getFormValues } from 'redux-form';
 import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
@@ -368,8 +370,15 @@ ProductListingContainer.defaultProps = {
   navigationData: null,
 };
 
-export default withIsomorphicRenderer({
+const IsomorphicProductListingContainer = withIsomorphicRenderer({
   WrappedComponent: ProductListingContainer,
   mapStateToProps,
   mapDispatchToProps,
 });
+
+const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
+
+RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
+
+export default HotfixAwareProductListingContainer;
