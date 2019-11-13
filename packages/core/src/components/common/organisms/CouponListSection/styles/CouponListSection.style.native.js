@@ -28,8 +28,7 @@ const IconContainer = styled.View`
   border-radius: ${props => props.theme.spacing.ELEM_SPACING.MED};
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
   height: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  flex-direction: row;
 `;
 
 const IconTextContainer = styled.Text`
