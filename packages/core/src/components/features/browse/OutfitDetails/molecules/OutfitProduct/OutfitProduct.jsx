@@ -31,7 +31,7 @@ const OutfitDetailsView = ({
   addToFavorites,
   isBundleProduct,
 }) => {
-  const { imagesByColor, colorFitsSizesMap } = outfitProduct;
+  const { imagesByColor, colorFitsSizesMap, isGiftCard } = outfitProduct;
   const colorProduct =
     outfitProduct && getMapSliceForColorProductId(colorFitsSizesMap, colorProductId);
   const prices = outfitProduct && getPrices(outfitProduct, colorProduct.color.name);
@@ -44,7 +44,7 @@ const OutfitDetailsView = ({
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const viewDetails = labels && labels.lbl_outfit_viewdetail;
-  const sizeChartLinkVisibility = isBundleProduct ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
+  const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   return (
     <Row className={className}>
       <Col

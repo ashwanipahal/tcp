@@ -220,6 +220,12 @@ const setIsPaypalBtnHidden = payload => {
   };
 };
 
+const resetBagLoadedState = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.RESET_BAG_LOADED_STATE,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -254,4 +260,5 @@ export default {
   getSetPayPalWebView,
   setBagPageLoading,
   setIsPaypalBtnHidden,
+  resetBagLoadedState,
 };
