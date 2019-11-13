@@ -28,26 +28,36 @@ class BundleProductItems extends React.PureComponent {
     return (
       <ul className="outfiting-list-container">
         {currentBundle &&
-          currentBundle.map(product => (
-            <li key={product.generalProductId} className="bundle-product-item">
-              <OutfitProduct
-                plpLabels={plpLabels}
-                labels={labels}
-                outfitProduct={product.products}
-                productIndexText=""
-                handleAddToBag={() => {
-                  handleAddToBag(addToBagEcom, product, product.generalProductId, currentState);
-                }}
-                className={`${className} outfiting-list-details`}
-                addToBagError={addToBagErrorId === product.generalProductId && addToBagError}
-                isLoggedIn={isLoggedIn}
-                addToFavorites={addToFavorites}
-                currencySymbol={currencySymbol}
-                currencyExchange={currencyExchange}
-                isBundleProduct
-              />
-            </li>
-          ))}
+          currentBundle.map(product => {
+            const productItem = product && product.products;
+            return (
+              <li key={product.generalProductId} className="bundle-product-item">
+                <OutfitProduct
+                  plpLabels={plpLabels}
+                  labels={labels}
+                  outfitProduct={productItem}
+                  productIndexText=""
+                  handleAddToBag={() => {
+                    handleAddToBag(
+                      addToBagEcom,
+                      productItem,
+                      productItem.generalProductId,
+                      currentState
+                    );
+                  }}
+                  className={`${className} outfiting-list-details`}
+                  addToBagError={addToBagErrorId === productItem.generalProductId && addToBagError}
+                  isLoggedIn={isLoggedIn}
+                  addToFavorites={() => {
+                    addToFavorites({ colorProductId: productItem.generalProductId });
+                  }}
+                  currencySymbol={currencySymbol}
+                  currencyExchange={currencyExchange}
+                  isBundleProduct
+                />
+              </li>
+            );
+          })}
       </ul>
     );
   };

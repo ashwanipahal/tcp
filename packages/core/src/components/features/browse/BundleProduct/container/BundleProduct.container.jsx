@@ -211,6 +211,7 @@ ProductBundleContainer.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   breadCrumbs: PropTypes.shape({}),
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
+  formValues: PropTypes.shape({}).isRequired,
 };
 
 ProductBundleContainer.defaultProps = {
