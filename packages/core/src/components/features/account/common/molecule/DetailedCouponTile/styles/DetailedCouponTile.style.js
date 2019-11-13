@@ -16,8 +16,7 @@ const styles = css`
 
   .content {
     display: grid;
-    min-height: 320px;
-    box-sizing: border-box;
+    min-height: 302px;
   }
 
   .coupon {

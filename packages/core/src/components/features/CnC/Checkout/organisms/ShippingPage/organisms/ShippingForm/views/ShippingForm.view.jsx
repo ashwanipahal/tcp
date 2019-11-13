@@ -271,6 +271,7 @@ class ShippingForm extends React.Component {
       showAccordian,
       isMobile,
       pageCategory,
+      isLoadingShippingMethods,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -374,6 +375,7 @@ class ShippingForm extends React.Component {
                       'shipping',
                       'checkout'
                     )}
+                    isLoadingShippingMethods={isLoadingShippingMethods}
                   />
                 </div>
               </FormSection>
@@ -395,6 +397,7 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
+            isLoadingShippingMethods={isLoadingShippingMethods}
           />
         </form>
       </>

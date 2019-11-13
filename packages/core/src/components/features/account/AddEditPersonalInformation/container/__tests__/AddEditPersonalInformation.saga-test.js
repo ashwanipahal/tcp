@@ -33,7 +33,7 @@ describe('UpdateProfile saga', () => {
           errorMessage: 'The given associate ID is incorrect.',
         },
       };
-      gen.throw(responseError)
+      gen.throw(responseError);
       const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(updateProfileError(responseError.errorResponse)));
     });

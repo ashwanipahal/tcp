@@ -6,6 +6,7 @@ exports[`LinkText component renders correctly 1`] = `
   anchorVariation=""
   colorName={null}
   customStyle={Object {}}
+  justifyContent=""
   key="0"
   locator=""
   margins={null}
