@@ -176,10 +176,12 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
+      const pageDataReferer = {};
       // preview check from akamai header
       apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date;
+      pageDataReferer.referer = req.headers.referer || 'testing123';
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
@@ -205,8 +207,8 @@ class TCPWebApp extends App {
         deviceType: device.type,
         optimizelyHeadersObject,
         originalUrl,
+        pageDataReferer,
       };
-
       // Get initial props is getting called twice on server
       // This check ensures this block is executed once since Component is not available in first call
       if (Component.pageInfo) {

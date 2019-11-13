@@ -54,6 +54,18 @@ export default function create(store) {
       },
     },
 
+    // searchType: {
+    //   get() {
+    //     return store.getState().pageData.searchType;
+    //   },
+    // },
+
+    externalReferrer: {
+      get() {
+        return store.getState().APIConfig.pageDataReferer;
+      },
+    },
+
     pageType: {
       get() {
         return store.getState().pageData.pageName;

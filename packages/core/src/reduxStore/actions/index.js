@@ -173,6 +173,12 @@ export const setPreviewDate = payload => {
     type: GLOBAL_CONSTANTS.SET_PREVIEW_DATE,
   };
 };
+export const setPageReferer = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_PAGE_REFERER,
+  };
+};
 
 export default {
   loadLayoutData,
@@ -191,4 +197,5 @@ export default {
   getSetTcpSegment,
   SetTcpSegmentMethodCall,
   setPreviewDate,
+  setPageReferer,
 };

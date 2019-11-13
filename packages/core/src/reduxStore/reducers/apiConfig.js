@@ -6,6 +6,8 @@ const ApiConfigReducer = (state = {}, action) => {
       return { ...state, ...action.payload };
     case GLOBAL_CONSTANTS.SET_PREVIEW_DATE:
       return { ...state, ...{ previewDate: action.payload } };
+    case GLOBAL_CONSTANTS.SET_PAGE_REFERER:
+      return { ...state, pageDataReferer: action.payload };
     default:
       return state;
   }

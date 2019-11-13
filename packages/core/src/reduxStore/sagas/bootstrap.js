@@ -20,6 +20,7 @@ import {
   setCountry,
   setCurrency,
   setLanguage,
+  setPageReferer,
   storeCountriesMap,
   storeCurrenciesMap,
   getSetTcpSegment,
@@ -48,6 +49,7 @@ function* bootstrap(params) {
       optimizelyHeadersObject,
       siteConfig,
       originalUrl,
+      pageDataReferer,
     },
   } = params;
   const cachedData = {};
@@ -72,6 +74,7 @@ function* bootstrap(params) {
   try {
     if (siteConfig) {
       const { country, currency, language } = apiConfig;
+      const { referer } = pageDataReferer;
 
       // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
       yield putResolve(setAPIConfig(apiConfig));
@@ -86,6 +89,10 @@ function* bootstrap(params) {
       if (language) {
         yield put(setLanguage(language));
       }
+      if (referer) {
+        yield put(setPageReferer(referer));
+      }
+
       const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
       yield put(loadXappConfigData(xappConfig));
 
