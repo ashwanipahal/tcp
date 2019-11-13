@@ -94,6 +94,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
       colorName={null}
       customStyle={Object {}}
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={null}
@@ -201,6 +202,7 @@ exports[`ApplicationInProgress component should renders correctly while having n
       colorName={null}
       customStyle={Object {}}
       fontSizeVariation="medium"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={null}

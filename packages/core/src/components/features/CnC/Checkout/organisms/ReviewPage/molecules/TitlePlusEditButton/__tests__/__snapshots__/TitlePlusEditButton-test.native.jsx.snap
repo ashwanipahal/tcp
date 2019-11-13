@@ -23,6 +23,7 @@ exports[`TitlePlusEditButton component should renders correctly props are presen
       customStyle={Object {}}
       dataLocator="review--edit-anchor"
       fontSize="fs12"
+      justifyContent=""
       locator=""
       margins={null}
       mobileFontFamily="secondary"
@@ -58,6 +59,7 @@ exports[`TitlePlusEditButton component should renders correctly props not presen
       customStyle={Object {}}
       dataLocator="review--edit-anchor"
       fontSize="fs12"
+      justifyContent=""
       locator=""
       margins={null}
       mobileFontFamily="secondary"

@@ -19,13 +19,14 @@ const CAROUSEL_OPTIONS = {
   dots: false,
   swipe: true,
   slidesToShow: 4,
-  slidesToScroll: 1,
-  infinite: false,
+  slidesToScroll: 4,
+  infinite: true,
   responsive: [
     {
       breakpoint: parseInt(breakpoints.medium, 10) - 1,
       settings: {
         slidesToShow: 2,
+        slidesToScroll: 2,
         arrows: true,
         swipeToSlide: true,
       },
@@ -34,6 +35,7 @@ const CAROUSEL_OPTIONS = {
       breakpoint: parseInt(breakpoints.large, 10) - 1,
       settings: {
         slidesToShow: 4,
+        slidesToScroll: 4,
         arrows: true,
         swipeToSlide: true,
       },
