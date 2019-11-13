@@ -53,6 +53,7 @@ describe('Cart Item saga', () => {
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
+    getCartDataSagaGen.next();
 
     const res = {
       orderDetails: {
@@ -162,6 +163,9 @@ describe('checkoutCart Saga', () => {
     let takeLatestDescriptor = generator.next(true).value;
     takeLatestDescriptor = generator.next(false).value;
     takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(put(setCheckoutModalMountedState({ state: true })));
   });
 });
@@ -173,6 +177,7 @@ describe('Bag SFL Saga', () => {
     };
     const generator = addItemToSFL({ payload: { afterHandler: () => {} } });
     let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
@@ -210,6 +215,7 @@ describe('Bag SFL Saga', () => {
     const generator = startSflItemDelete({});
 
     let takeLatestDescriptor = generator.next().value;
+    takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(res).value;

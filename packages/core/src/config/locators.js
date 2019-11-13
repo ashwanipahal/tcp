@@ -81,6 +81,14 @@ export default {
   moduleJ_cta_link: 'moduleJ_cta_links_',
   moduleJ_cta_btn: 'moduleJ_cta_btn',
 
+  // Module G
+  moduleG_header_text: 'moduleG_header_text',
+  moduleG_promobanner_text: 'moduleG_promobanner_text',
+  moduleG_image: 'moduleG_image_',
+  moduleG_cta_link: 'moduleG_cta_links_',
+  moduleG_add_to_bag_btn: 'moduleG_add_to_bag_btn',
+  moduleG_shop_all_link: 'moduleG_shop_all_link',
+
   // Module Q
   moduleQ_header_text: 'moduleQ_header_text',
   moduleQ_promobanner_text: 'moduleQ_promobanner_text',
@@ -102,6 +110,28 @@ export default {
   moduleT_promobanner_img: 'moduleT_promobanner_img_',
   moduleT_cta_links: 'moduleT_cta_links_',
   moduleT_cta_image: 'moduleT_cta_image_',
+
+  // Module E
+  moduleE_eyebrowImage_img: 'moduleE_eyebrowImage_img_',
+  moduleE_eyebrow_text: 'moduleE_eyebrow_text',
+  moduleE_header_text: 'moduleE_header_text',
+  moduleE_promo_text: 'moduleE_promo_text',
+  moduleE_promobanner_text: 'moduleE_promobanner_text',
+  moduleE_carousel_img: 'moduleE_carousel_img_',
+  moduleE_carousel_cta: 'moduleE_carousel_cta_',
+  moduleE_small_image: 'moduleE_small_image_',
+  moduleE_small_img_header_text: 'moduleE_small_img_header_text_',
+  moduleE_small_img_cta: 'moduleE_small_img_cta_',
+  moduleE_small_img: 'moduleE_small_img_',
+  moduleE_promo_area_img: 'moduleE_promo_area_img',
+  moduleE_promo_area_img_cta: 'moduleE_promo_area_img_cta',
+  moduleE_cta_image: 'moduleE_cta_image_',
+  moduleE_cta_links: 'moduleE_cta_links_',
+  moduleE_dropdown: 'moduleE_shop_now_dropdown',
+  moduleE_carousel_image_img: 'moduleE_carousel_image_img_',
+  moduleE_carousel_image_link_cta: 'moduleE_carousel_image_link_cta_',
+  moduleE_carousel_image_button_cta: 'moduleE_carousel_image_button_cta_',
+  moduleE_carousel_image_link: 'moduleE_carousel_image_link_',
 
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',

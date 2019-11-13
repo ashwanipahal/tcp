@@ -18,7 +18,7 @@ const HeaderTopNav = ({
   const onLinkClick = e => {
     e.preventDefault();
     if (!isUserLoggedIn) openOverlay({ state: true });
-    else routerPush('/account', '/account');
+    else routerPush('/account?id=orders', '/account?id=orders');
   };
   return (
     <div className={className}>
@@ -59,7 +59,11 @@ HeaderTopNav.propTypes = {
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   openOverlay: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.objectOf(
+    PropTypes.objectOf({
+      lbl_trackOrder_trackOrderHeaderLink: PropTypes.string,
+    })
+  ),
   store: PropTypes.shape({
     basicInfo: PropTypes.shape({}),
     hours: PropTypes.shape({
@@ -73,7 +77,9 @@ HeaderTopNav.propTypes = {
 
 HeaderTopNav.defaultProps = {
   labels: {
-    trackOrder: {},
+    trackOrder: {
+      lbl_trackOrder_trackOrderHeaderLink: '',
+    },
   },
   store: {
     basicInfo: {

@@ -5,7 +5,7 @@ import { DivisionTabModuleVanilla as DivisionTabModule } from '../views/Division
 
 describe('DivisionTabModule component', () => {
   it('should default variant correctly', () => {
-    const wrapper = shallow(<DivisionTabModule divisionTab={mock.DivisionModule} />).get(0);
+    const wrapper = shallow(<DivisionTabModule data={mock.DivisionModule} />).get(0);
     expect(wrapper).toMatchSnapshot();
   });
 });

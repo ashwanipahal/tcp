@@ -46,6 +46,7 @@ import ProductTabListReducer from '@tcp/core/src/components/common/organisms/Pro
 import StyliticsProductTabListReducer from '@tcp/core/src/components/common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.reducer';
 import BirthdaySavingsListReducer from '@tcp/core/src/components/features/account/common/organism/BirthdaySavingsList/container/BirthdaySavingsList.reducer';
 import PickupModalReducer from '@tcp/core/src/components/common/organisms/PickupStoreModal/container/PickUpStoreModal.reducer';
+import ProductPickupReducer from '@tcp/core/src/components/common/organisms/ProductPickup/container/ProductPickup.reducer';
 import OutfitDetailReducer from '@tcp/core/src/components/features/browse/OutfitDetails/container/OutfitDetails.reducer';
 import RecommendationsReducer from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.reducer';
 import SearchBarReducer from '@tcp/core/src/components/common/molecules/SearchBar/SearchBar.reducer';
@@ -122,6 +123,7 @@ import {
   STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY,
   BIRTHDAY_SAVING_LIST_REDUCER_KEY,
   PICKUP_MODAL_REDUCER_KEY,
+  PRODUCT_PICKUP_REDUCER_KEY,
   RECOMMENDATIONS_REDUCER_KEY,
   SEARCH_REDUCER_KEY,
   STORE_LOCATOR_REDUCER_KEY,
@@ -141,13 +143,13 @@ import {
   ANALYTICS_DATA_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA } from '@tcp/core/src/analytics';
+import LoaderReducer from '@tcp/core/src/components/common/molecules/Loader/container/Loader.reducer';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import UserReducer from '@tcp/core/src/components/features/account/User/container/User.reducer';
 import ToastMessageReducer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.reducer.native';
-import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import CountrySelectorReducer from '../../components/features/content/Header/molecules/CountrySelector/container/CountrySelector.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
@@ -191,8 +193,6 @@ function pageNameReducer(state = {}, action) {
     }
     case UPDATE_PAGE_DATA: {
       return action.payload;
-      // const { pageData = {} } = (props && props.initialProps && props.initialProps.pageProps) || {};
-      // return data;
     }
     default:
       return state;
@@ -261,6 +261,7 @@ export default combineReducers({
   [STYLITICS_PRODUCT_TAB_LIST_REDUCER_KEY]: filteredStyliticsProductTabListReducer,
   [BIRTHDAY_SAVING_LIST_REDUCER_KEY]: BirthdaySavingsListReducer,
   [PICKUP_MODAL_REDUCER_KEY]: PickupModalReducer,
+  [PRODUCT_PICKUP_REDUCER_KEY]: ProductPickupReducer,
   [RECOMMENDATIONS_REDUCER_KEY]: RecommendationsReducer,
   [STORE_LOCATOR_REDUCER_KEY]: StoreLocatorReducer,
   [SLP_PAGE_REDUCER_KEY]: SearchPageReducer,

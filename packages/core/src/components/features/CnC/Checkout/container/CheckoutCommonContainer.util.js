@@ -90,8 +90,9 @@ export const formatPayload = payload => {
   };
 };
 
-export const intiSectionPage = (pageName, props, extraProps = {}) => {
-  const { initCheckoutSectionPage, router, isRegisteredUserCallDone, navigation } = props;
+export const intiSectionPage = (pageName, scope, extraProps = {}) => {
+  const scopeValue = scope;
+  const { initCheckoutSectionPage, router, isRegisteredUserCallDone, navigation } = scope.props;
   let recalc;
   let isPaypalPostBack;
   let appRouting;
@@ -99,6 +100,7 @@ export const intiSectionPage = (pageName, props, extraProps = {}) => {
     ({ recalc, isPaypalPostBack, appRouting } = router.query);
   }
   if (isRegisteredUserCallDone || isMobileApp()) {
+    scopeValue.initialLoad = false;
     initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
   }
   if (isMobileApp()) {
@@ -144,7 +146,9 @@ export const mapDispatchToProps = dispatch => {
     submitVerifiedShippingAddressData: payload => {
       dispatch(submitVerifiedAddressData(payload));
     },
-    toastMessage: payload => dispatch(toastMessageInfo(payload)),
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
     setVenmoPickupState: data => dispatch(setVenmoPickupMessageState(data)),
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
@@ -177,6 +181,7 @@ export const mapStateToProps = state => {
     activeStage: getCheckoutStage(state),
     shippingMethod: getDefaultShipmentID(state),
     checkoutPageEmptyBagLabels: getCheckoutPageEmptyBagLabels(state),
+
     shippingProps: {
       isSubmitting: getShipmentLoadingStatus(state),
       addressLabels: getAddEditAddressLabels(state),

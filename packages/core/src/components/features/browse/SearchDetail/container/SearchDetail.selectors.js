@@ -43,7 +43,7 @@ const getOrganizedHeaderNavigationTree = state => {
 
 export const getCurrentListingIds = createSelector(
   getSearchListingState,
-  products => products && products.get('currentNavigationIds')
+  products => products && products.currentNavigationIds
 );
 
 export const getNavigationTree = state => {
@@ -60,19 +60,18 @@ export const getNavigationTree = state => {
 
 export const getBreadCrumbTrail = createSelector(
   getSearchListingState,
-  products => products && products.get('breadCrumbTrail')
+  products => products && products.breadCrumbTrail
 );
 
 export const getProductsSelect = createSelector(
   getSearchListingState,
-  products =>
-    products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
+  products => products && products.loadedProductsPages && products.loadedProductsPages[0]
 );
 
 export const getAllProductsSelect = createSelector(
   getSearchListingState,
   products => {
-    const allProducts = products && products.get('loadedProductsPages');
+    const allProducts = products && products.loadedProductsPages;
     return allProducts && flattenArray(allProducts);
   }
 );
@@ -83,28 +82,28 @@ export const getLabels = state => {
 
 export const getTotalProductsCount = createSelector(
   getSearchListingState,
-  products => products && products.get('totalProductsCount')
+  products => products && products.totalProductsCount
 );
 
 export const getCurrentSearchForText = createSelector(
   getSearchListingState,
-  products => products && products.get('currentListingSearchForText')
+  products => products && products.currentListingSearchForText
 );
 
 export const getAppliedFilters = createSelector(
   getSearchListingState,
-  products => products && products.get('appliedFiltersIds')
+  products => products && products.appliedFiltersIds
 );
 
 export const getAppliedSortId = createSelector(
   getSearchListingState,
-  products => products && products.get('appliedSortId')
+  products => products && products.appliedSortId
 );
 
 export const getLoadedProductsCount = createSelector(
   getSearchListingState,
   products => {
-    const allProducts = products && products.get('loadedProductsPages');
+    const allProducts = products && products.loadedProductsPages;
     const totalProductCount =
       (allProducts && allProducts.reduce((sum, item) => item.length + sum, 0)) || 0;
     return totalProductCount || 0;
@@ -113,22 +112,22 @@ export const getLoadedProductsCount = createSelector(
 
 export const getLongDescription = createSelector(
   getSearchListingState,
-  ProductListing => ProductListing && ProductListing.get('currentListingDescription')
+  ProductListing => ProductListing && ProductListing.currentListingDescription
 );
 
 export const getUnbxdId = createSelector(
   getSearchListingState,
-  products => products && products.get('unbxdId')
+  products => products && products.unbxdId
 );
 
 export const getLoadedProductsPages = createSelector(
   getSearchListingState,
-  products => products && products.get('loadedProductsPages')
+  products => products && products.loadedProductsPages
 );
 
 export const getProductsFilters = createSelector(
   getSearchListingState,
-  products => products && products.get('filtersMaps')
+  products => products && products.filtersMaps
 );
 export const getLabelsProductListing = state => {
   if (!state.Labels || !state.Labels.PLP)
@@ -152,11 +151,11 @@ export const getLabelsProductListing = state => {
 };
 
 export const getIsLoadingMore = state => {
-  return state[SLP_PAGE_REDUCER_KEY].get('isLoadingMore');
+  return state[SLP_PAGE_REDUCER_KEY].isLoadingMore;
 };
 
 export const checkIfSearchResultsAvailable = state => {
-  return state[SLP_PAGE_REDUCER_KEY].get('isSearchResultsAvailable');
+  return state[SLP_PAGE_REDUCER_KEY].isSearchResultsAvailable;
 };
 
 export const getSpotlightReviewsUrl = () => {
@@ -164,8 +163,7 @@ export const getSpotlightReviewsUrl = () => {
 };
 
 export const getCategoryId = state => {
-  const currentNavigationIds =
-    state.ProductListing && state.ProductListing.get('currentNavigationIds');
+  const currentNavigationIds = state.ProductListing && state.ProductListing.currentNavigationIds;
   return currentNavigationIds && currentNavigationIds[currentNavigationIds.length - 1];
 };
 
@@ -180,7 +178,7 @@ export const getLastLoadedPageNumber = state => {
 
 export const getMaxPageNumber = state => {
   // We no longer need to divide by page size because UNBXD start parameter matches the direct number of results.
-  return Math.ceil(state[SLP_PAGE_REDUCER_KEY].get('totalProductsCount') / getPageSize());
+  return Math.ceil(state[SLP_PAGE_REDUCER_KEY].totalProductsCount / getPageSize());
 };
 
 /**
@@ -217,5 +215,5 @@ export const updateAppliedFiltersInState = state => {
 };
 
 export const getScrollToTopValue = state => {
-  return getSearchListingState(state).get('isScrollToTop');
+  return getSearchListingState(state).isScrollToTop;
 };

@@ -13,6 +13,7 @@ const initialState = fromJS({
   moduleXContent: [],
   showConfirmationModal: false,
   isEditingItem: false,
+
   uiFlags: {
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
@@ -108,6 +109,7 @@ const returnBagPageReducer = (state = initialState, action) => {
         ...action.payload,
         showModal: true,
       });
+
     default:
       return returnBagPageReducerExtension(state, action);
   }
