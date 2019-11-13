@@ -1,6 +1,10 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  setLoaderState,
+  setSectionLoaderState,
+} from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -27,6 +31,9 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidMount() {
+    setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' });
+    setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' });
+    setLoaderState(false);
     const { router } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
@@ -154,19 +161,11 @@ class CheckoutPage extends React.PureComponent {
       setVenmoShippingState,
       verifyAddressAction,
       formatPayload,
-      submitVerifiedShippingAddressData,
-      isExpressCheckout,
-      initShippingPage,
-      shippingMethod,
-      pickupDidMount,
-      isHasPickUpAlternatePerson,
-      pickUpAlternatePerson,
-      pickUpContactPerson,
-      pickUpContactAlternate,
-      checkoutServerError,
-      toggleCountrySelector,
-      clearCheckoutServerError,
     } = this.props;
+    const { submitVerifiedShippingAddressData, isExpressCheckout, initShippingPage } = this.props;
+    const { shippingMethod, pickupDidMount, isHasPickUpAlternatePerson } = this.props;
+    const { pickUpAlternatePerson, pickUpContactPerson, pickUpContactAlternate } = this.props;
+    const { checkoutServerError, toggleCountrySelector, clearCheckoutServerError } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
