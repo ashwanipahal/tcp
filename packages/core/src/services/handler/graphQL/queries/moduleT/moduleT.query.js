@@ -1,13 +1,14 @@
 const buildQuery = ({ slot, contentId, lang }) => `
   ${slot}: moduleById(id: "${contentId}", lang: "${lang}") {
 
-    	contentId
+    contentId
 		name
 		type
 		set {
 			val
 			key
-		}
+    }
+    errorMessage
 		composites {
 			headerText {
 				textItems {

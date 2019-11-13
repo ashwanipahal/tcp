@@ -78,6 +78,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       isBillingPage,
       closeModal,
       top,
+      fullWidth,
     } = this.props;
     return (
       <PayPalButton
@@ -96,6 +97,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
         closeModal={closeModal}
         top={top}
         isBillingPage={isBillingPage}
+        fullWidth={fullWidth}
       />
     );
   }

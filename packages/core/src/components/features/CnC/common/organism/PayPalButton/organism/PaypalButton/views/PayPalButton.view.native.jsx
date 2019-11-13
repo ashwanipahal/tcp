@@ -8,8 +8,7 @@ import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
 const containerStyle = { flex: 1 };
 let styles = {
   height: 42,
-  width: 340,
-  flex: 1,
+  width: 150,
   overflow: 'hidden',
 };
 
@@ -67,7 +66,7 @@ class PayPalButton extends React.PureComponent {
   };
 
   render() {
-    const { getPayPalSettings, top } = this.props;
+    const { getPayPalSettings, top, fullWidth } = this.props;
 
     const { showAsModal } = this.state;
     if (showAsModal) {
@@ -79,6 +78,14 @@ class PayPalButton extends React.PureComponent {
         width: '100%',
         height: isIOS ? screenHeight - top : screenHeight,
         zIndex: 999,
+        overflow: 'hidden',
+      };
+    } else {
+      styles = {
+        top: 0,
+        position: 'relative',
+        height: 42,
+        width: fullWidth ? '100%' : 150,
         overflow: 'hidden',
       };
     }
@@ -125,10 +132,12 @@ PayPalButton.propTypes = {
   paypalStaticUrl: PropTypes.string.isRequired,
   top: PropTypes.number,
   isBillingPage: PropTypes.bool.isRequired,
+  fullWidth: PropTypes.bool,
 };
 
 PayPalButton.defaultProps = {
   top: 0,
+  fullWidth: false,
 };
 
 export default PayPalButton;

@@ -8,7 +8,7 @@ const buildQuery = ({ slot, contentId }) => `
       val
       key
     }
-
+    errorMessage
     composites {
      headerText {
        textItems {
