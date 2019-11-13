@@ -191,6 +191,7 @@ const CarouselStyle = css`
       outline: none;
       background: transparent;
       padding: 0;
+
       &:before {
         content: '';
         box-sizing: border-box;

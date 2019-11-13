@@ -27,9 +27,10 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router } = this.props;
+    const { router, setCheckoutStage } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    setCheckoutStage(currentSection);
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
       routerPush('/', '/');
     }
@@ -45,19 +46,6 @@ class CheckoutPage extends React.PureComponent {
       scrollToParticularElement(this.pageServerError);
     }
   }
-
-  // componentDidUpdate() {
-  // const { router, cartOrderItems } = this.props;
-  // const currentStage = router.query.section;
-  // const availableStages = CheckoutProgressUtils.getAvailableStages(cartOrderItems);
-  // let requestedStage = '';
-  // if (availableStages.length > 3) {
-  //   requestedStage = CHECKOUT_STAGES.PICKUP;
-  // } else {
-  //   requestedStage = CHECKOUT_STAGES.SHIPPING;
-  // }
-  // CheckoutProgressUtils.routeToStage(requestedStage, cartOrderItems, false, currentStage);
-  // }
 
   getFormLoad = (pickupInitialValues, isGuest) => {
     return !!(
@@ -173,17 +161,11 @@ class CheckoutPage extends React.PureComponent {
       shippingMethod,
       pickupDidMount,
       isHasPickUpAlternatePerson,
-      pickUpAlternatePerson,
-      pickUpContactPerson,
-      pickUpContactAlternate,
-      checkoutServerError,
-      clearCheckoutServerError,
-      toggleCountrySelector,
-      cartOrderItemsCount,
-      checkoutPageEmptyBagLabels,
-      isBagLoaded,
     } = this.props;
-
+    const { pickUpAlternatePerson, pickUpContactPerson, pickUpContactAlternate } = this.props;
+    const { toggleCountrySelector, clearCheckoutServerError, checkoutServerError } = this.props;
+    const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
+    const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
@@ -194,7 +176,9 @@ class CheckoutPage extends React.PureComponent {
         {this.isShowVenmoBanner(currentSection) && <VenmoBanner labels={pickUpLabels} />}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP && isFormLoad && (
           <PickUpFormPart
+            checkoutRoutingDone={checkoutRoutingDone}
             pickupDidMount={pickupDidMount}
+            isRegisteredUserCallDone={isRegisteredUserCallDone}
             isBagLoaded={isBagLoaded}
             isGuest={isGuest}
             isMobile={isMobile}
@@ -224,6 +208,7 @@ class CheckoutPage extends React.PureComponent {
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
           <ShippingPage
+            checkoutRoutingDone={checkoutRoutingDone}
             isBagLoaded={isBagLoaded}
             cartOrderItemsCount={cartOrderItemsCount}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
@@ -258,6 +243,7 @@ class CheckoutPage extends React.PureComponent {
         {currentSection.toLowerCase() === CHECKOUT_STAGES.BILLING && (
           <BillingPage
             {...billingProps}
+            checkoutRoutingDone={checkoutRoutingDone}
             orderHasShipping={orderHasShipping}
             isGuest={isGuest}
             submitBilling={submitBilling}
@@ -272,6 +258,7 @@ class CheckoutPage extends React.PureComponent {
           <ReviewPage
             {...reviewProps}
             submitReview={submitReview}
+            checkoutRoutingDone={checkoutRoutingDone}
             navigation={navigation}
             orderHasPickUp={orderHasPickUp}
             orderHasShipping={orderHasShipping}
@@ -422,6 +409,7 @@ CheckoutPage.propTypes = {
   reviewProps: PropTypes.shape({}).isRequired,
   submitReview: PropTypes.func.isRequired,
   orderHasPickUp: PropTypes.bool.isRequired,
+  isRegisteredUserCallDone: PropTypes.bool.isRequired,
   navigation: PropTypes.shape({}).isRequired,
   submitShippingSection: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
@@ -436,6 +424,8 @@ CheckoutPage.propTypes = {
   updateShippingMethodSelection: PropTypes.func.isRequired,
   updateShippingAddressData: PropTypes.func.isRequired,
   addNewShippingAddressData: PropTypes.func.isRequired,
+  getIfCheckoutRoutingDone: PropTypes.bool.isRequired,
+  checkoutRoutingDone: PropTypes.bool.isRequired,
   submitBilling: PropTypes.func.isRequired,
   initShippingPage: PropTypes.func.isRequired,
   formatPayload: PropTypes.func.isRequired,
@@ -453,6 +443,8 @@ CheckoutPage.propTypes = {
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   clearCheckoutServerError: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  updateRTPS: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 CheckoutPage.defaultProps = {

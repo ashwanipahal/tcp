@@ -25,6 +25,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               }
             }
             isProductImage={true}
+            lazyLoad={false}
           />
           <Styled(Anchor)
             className="link-redirect"

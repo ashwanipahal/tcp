@@ -65,7 +65,7 @@ const breadCrumbFactory = state => {
   // const navList = storeState.globalComponents.header.navigationTree;
   // const previousPageUrl = document && document.referrer;
   // const previousPagePathName = seoURLExtactor(previousPageUrl);
-  const plpBreadCrumb = state.ProductListing.get('breadCrumbTrail');
+  const plpBreadCrumb = state.ProductListing.breadCrumbTrail;
   let breadCrumbs;
   if (plpBreadCrumb) {
     breadCrumbs = plpBreadCrumb;

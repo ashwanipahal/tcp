@@ -76,7 +76,6 @@ describe('Query Builder', () => {
     getAPIConfig.mockImplementation(() => ({
       isPreviewEnv: true,
       previewDate: '23102019',
-      previewDateEnv: '23102019',
     }));
     const query = await QueryBuilder.loadModuleQuery('layout', { path: 'homepage' });
     expect(query).toContain('is_preview');

@@ -3,12 +3,14 @@ import { css } from 'styled-components';
 export const modalStyles = css`
   .close-modal {
     margin-right: 5px;
+    ${props => (props.isRtpsFlow ? 'display:none' : '')};
   }
 
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
+    ${props => (props.isRtpsFlow ? 'height:100%' : '')};
     @media ${props => props.theme.mediaQuery.medium} {
-      height: 70vh;
+      height: ${props => (props.isRtpsFlow ? '100%' : '70vh')};
     }
   }
 

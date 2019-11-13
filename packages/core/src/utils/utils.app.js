@@ -12,8 +12,6 @@ import { getAPIConfig } from './utils';
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
 import { resetGraphQLClient } from '../services/handler';
-import { getStoreRef } from './store.utils';
-import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import googleMapConstants from '../constants/googleMap.constants';
 
 let currentAppAPIConfig = null;
@@ -79,6 +77,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleA':
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
+    case 'moduleM':
+      resolve(require('../services/handler/graphQL/queries/moduleM'));
+      break;
     case 'moduleN':
       resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
@@ -102,6 +103,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleG':
       resolve(require('../services/handler/graphQL/queries/moduleG'));
+      break;
+    case 'moduleE':
+      resolve(require('../services/handler/graphQL/queries/moduleE'));
       break;
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
@@ -150,6 +154,15 @@ export const importGraphQLQueriesDynamically = query => {
       case 'xappConfig':
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/xappConfig'));
+        break;
+      case 'divisionTabs':
+        resolve(require('../services/handler/graphQL/queries/divisionTabs'));
+        break;
+      case 'outfitCarousel':
+        resolve(require('../services/handler/graphQL/queries/outfitCarousel'));
+        break;
+      case 'moduleJeans':
+        resolve(require('../services/handler/graphQL/queries/moduleJeans'));
         break;
       default:
         importMoreGraphQLQueries({
@@ -351,7 +364,7 @@ export const setValueInAsyncStorage = async (key, value) => {
 };
 
 export const validateExternalUrl = url => {
-  const isExternal = url.indexOf('http') || url.indexOf('https') !== true;
+  const isExternal = url && (url.indexOf('http') || url.indexOf('https') !== true);
   if (isExternal === true) {
     return true;
   }
@@ -492,13 +505,6 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     cookie: null,
     catalogId,
     language: '',
-  };
-};
-
-export const updateAPIConfigForApp = () => {
-  const updatedAPIConfig = getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY];
-  return {
-    ...updatedAPIConfig,
   };
 };
 

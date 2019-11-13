@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { fromJS } from 'immutable';
 import CHECKOUT_SELECTORS, {
   isGuest,
@@ -8,6 +9,7 @@ import CHECKOUT_SELECTORS, {
   getCheckoutState,
   isRemembered,
   isUsSite,
+  getGiftServicesSend,
 } from '../container/Checkout.selector';
 import { getRecalcOrderPointsInterval } from '../../../../../reduxStore/selectors/session.selectors';
 
@@ -86,9 +88,9 @@ describe('Checkout Selectors', () => {
 
   it('#igetIsOrderHasShipping', () => {
     const State = {
-      CartPageReducer: fromJS({ orderDetails: { isShippingOrder: false } }),
+      CartPageReducer: fromJS({ orderDetails: { isShippingOrder: true } }),
     };
-    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(false);
+    expect(CHECKOUT_SELECTORS.getIsOrderHasShipping(State)).toEqual(true);
   });
 
   it('#getShippingPhoneAndEmail', () => {
@@ -247,6 +249,21 @@ describe('Checkout Selectors', () => {
     expect(getUserContactInfo(State)).toEqual(UserState.getIn(['personalData', 'contactInfo']));
   });
 
+  it('#getIfCheckoutRoutingDone', () => {
+    const Checkout = fromJS({
+      uiFlags: {
+        routingDone: true,
+      },
+    });
+
+    const State = {
+      Checkout,
+    };
+    expect(CHECKOUT_SELECTORS.getIfCheckoutRoutingDone(State)).toEqual(
+      Checkout.getIn(['uiFlags', 'routingDone'])
+    );
+  });
+
   it('#getIsMobile', () => {
     isMobileApp.mockImplementation(() => false);
     getViewportInfo.mockImplementation(() => {
@@ -292,11 +309,11 @@ describe('Checkout Selectors', () => {
   it('#getIsOrderHasPickup', () => {
     const State = {
       CartPageReducer: fromJS({
-        orderDetails: { orderItems: [] },
+        orderDetails: { isPickupOrder: true, orderItems: [] },
       }),
     };
 
-    expect(CHECKOUT_SELECTORS.getIsOrderHasPickup(State)).toEqual(false);
+    expect(CHECKOUT_SELECTORS.getIsOrderHasPickup(State)).toEqual(true);
   });
 
   it('should get checkout state', () => {
@@ -447,6 +464,44 @@ describe('Checkout Selectors', () => {
     };
     expect(CHECKOUT_SELECTORS.getSelectedShipmentId(state)).toEqual('123');
   });
+  it('#getCardType', () => {
+    const state = {
+      Checkout: fromJS({ values: {} }),
+    };
+    expect(CHECKOUT_SELECTORS.getCardType(state)).toEqual(undefined);
+  });
+  it('#getShippingAddressID', () => {
+    const state = {
+      Checkout: fromJS({ values: { shipping: {} } }),
+      User: fromJS({ personalData: {} }),
+    };
+    expect(CHECKOUT_SELECTORS.getShippingAddressID(state)).toEqual(undefined);
+  });
+  it('#getDefaultAddress', () => {
+    expect(CHECKOUT_SELECTORS.getDefaultAddress()).toEqual(false);
+  });
+  it('#getGiftServicesSend', () => {
+    const state = {
+      form: FormState,
+    };
+    expect(getGiftServicesSend(state)).toEqual(undefined);
+  });
+  it('#getSmsSignUpLabels', () => {
+    const state = {
+      Labels: { global: { smsSignup: {} } },
+    };
+    expect(CHECKOUT_SELECTORS.getSmsSignUpLabels(state)).toEqual({
+      orderUpdates: undefined,
+      privacyPolicy: undefined,
+      smsSignupText: undefined,
+    });
+  });
+  it('#getShipmentLoadingStatus', () => {
+    const state = {
+      Checkout: fromJS({ values: { isShippingFormLoading: true } }),
+    };
+    expect(CHECKOUT_SELECTORS.getShipmentLoadingStatus(state)).toEqual(true);
+  });
   it('#getShippingSendOrderUpdate', () => {
     const state = {
       form: FormState,
@@ -493,5 +548,17 @@ describe('Checkout Selectors', () => {
     expect(isVenmoPaymentSaveSelected(state)).toEqual(
       Checkout.getIn(['uiFlags', 'venmoPaymentOptionSave'])
     );
+  });
+  it('#getDefaultShipmentID', () => {
+    const { getDefaultShipmentID } = CHECKOUT_SELECTORS;
+
+    const state = {
+      Checkout: fromJS({
+        options: { shippingMethods: [] },
+        values: { shipping: { method: { shippingMethodId: 1 } } },
+      }),
+      User: fromJS({}),
+    };
+    expect(getDefaultShipmentID(state)).toEqual(false);
   });
 });

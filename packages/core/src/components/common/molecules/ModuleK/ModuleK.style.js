@@ -6,14 +6,14 @@ const StyledCarousal = styled(Carousel)`
     top: 50%;
   }
   .slick-next {
-    height: 50px;
+    height: 54px;
     right: -68px;
-    width: 13px;
+    width: 20px;
   }
   .slick-prev {
-    height: 50px;
+    height: 54px;
     left: -68px;
-    width: 13px;
+    width: 20px;
   }
   .slick-dots {
     bottom: -20px;

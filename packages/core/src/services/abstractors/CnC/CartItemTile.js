@@ -582,7 +582,8 @@ export const getCurrentOrderFormatter = (
     // making pickup page visible for BOSS items as well
     // replaced "BOPIS" and "BOSS" with a config variable
     const store =
-      (item.orderItemType === 'BOPIS' || item.orderItemType === 'BOSS') &&
+      (item.orderItemType === ORDER_ITEM_TYPE.BOPIS ||
+        item.orderItemType === ORDER_ITEM_TYPE.BOSS) &&
       item.stLocId &&
       orderDetailsResponse.mixOrderDetails &&
       orderDetailsResponse.mixOrderDetails.data
@@ -778,10 +779,10 @@ export const getProductInfoForTranslationData = (query, brand) => {
     brand,
   });
 };
-
+//TODO enable excludeCartItems when we exclude cart items
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems,
+  //excludeCartItems,
   recalcRewards,
   isCheckoutFlow,
   isRadialInvEnabled,
@@ -790,7 +791,8 @@ export const getCartData = ({
   const payload = {
     webService: endpoints.fullDetails,
     header: {
-      pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      //pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      pageName: 'fullOrderInfo',
       langId: -1,
       source: isLoggedIn ? 'login' : '',
       calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
@@ -817,7 +819,7 @@ export const getCartData = ({
       coupons,
       orderDetails: getCurrentOrderFormatter(
         orderDetailsResponse,
-        excludeCartItems,
+        false,
         isCASite(),
         isRadialInvEnabled
       ),

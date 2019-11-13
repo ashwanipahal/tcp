@@ -13,15 +13,38 @@ export const formatPayload = payload => {
   };
 };
 
-export const intiSectionPage = (pageName, props, extraProps = {}) => {
-  const { initCheckoutSectionPage, router, navigation } = props;
+export const intiSectionPage = (pageName, scope, extraProps = {}) => {
+  const scopeValue = scope;
+  const { initCheckoutSectionPage, router, isRegisteredUserCallDone, navigation } = scope.props;
   let recalc;
   let isPaypalPostBack;
+  let appRouting;
   if (router && router.query) {
-    ({ recalc, isPaypalPostBack } = router.query);
+    ({ recalc, isPaypalPostBack, appRouting } = router.query);
+  }
+  if (isRegisteredUserCallDone || isMobileApp()) {
+    scopeValue.initialLoad = false;
+    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
   }
   if (isMobileApp()) {
     isPaypalPostBack = getPayPalFlag(navigation);
   }
-  initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, ...extraProps });
+};
+
+export const callNeedHelpContent = props => {
+  const {
+    fetchNeedHelpContent,
+    needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId,
+  } = props;
+  fetchNeedHelpContent([
+    needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId,
+  ]);
 };

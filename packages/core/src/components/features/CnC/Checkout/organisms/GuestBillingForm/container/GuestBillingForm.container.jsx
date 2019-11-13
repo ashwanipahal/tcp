@@ -26,6 +26,17 @@ import { getSiteId } from '../../../../../../../utils';
  */
 class GuestBillingContainer extends React.Component {
   /**
+   * @function getSelectedPaymentMethod
+   * @description returns the initial payment method selected during billing page load.
+   */
+  getSelectedPaymentMethod = () => {
+    const { billingData } = this.props;
+    return billingData.paymentMethod === CONSTANTS.PAYPAL_LABEL
+      ? CONSTANTS.PAYMENT_METHOD_PAYPAL
+      : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD;
+  };
+
+  /**
    * @function submitBillingData
    * @description submits the billing data
    */
@@ -140,6 +151,7 @@ class GuestBillingContainer extends React.Component {
       isVenmoPaymentInProgress,
       setCheckoutStage,
       venmoError,
+      isPayPalWebViewEnable,
     } = this.props;
     let cardNumber;
     let cardType;
@@ -158,7 +170,7 @@ class GuestBillingContainer extends React.Component {
         initialValues={{
           paymentMethodId: isVenmoPaymentInProgress
             ? CONSTANTS.PAYMENT_METHOD_VENMO
-            : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
+            : this.getSelectedPaymentMethod(),
           sameAsShipping:
             orderHasShipping &&
             (isEmpty(billingData) || billingOnFileAddressKey === shippingOnFileAddressKey),
@@ -172,6 +184,7 @@ class GuestBillingContainer extends React.Component {
         syncErrorsObj={syncErrors}
         setCheckoutStage={setCheckoutStage}
         venmoError={venmoError}
+        isPayPalWebViewEnable={isPayPalWebViewEnable}
       />
     );
   }
@@ -187,6 +200,7 @@ export const mapStateToProps = state => {
     isSameAsShippingChecked: getSameAsShippingValue(state),
     shippingOnFileAddressKey: CreditCardSelector.getShippingOnFileAddressKey(state),
     venmoError: CheckoutSelectors.getVenmoError(state),
+    getPayPalSettings: CheckoutSelectors.getPayPalSettings(state),
   };
 };
 
@@ -232,6 +246,7 @@ GuestBillingContainer.propTypes = {
   setVenmoProgress: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
   venmoError: PropTypes.string,
+  isPayPalWebViewEnable: PropTypes.shape({}).isRequired,
 };
 
 GuestBillingContainer.defaultProps = {

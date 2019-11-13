@@ -17,6 +17,8 @@ import {
   getUserLastName,
   getUserPhoneNumber,
   getUserEmail,
+  getplccCardNumber,
+  isPlccUser,
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -48,6 +50,10 @@ const getIsOrderHasShipping = state =>
 
 const getIsOrderHasPickup = state =>
   !!state[CARTPAGE_REDUCER_KEY].getIn(['orderDetails', 'isPickupOrder']);
+
+const getIfCheckoutRoutingDone = state => {
+  return state[CHECKOUT_REDUCER_KEY].getIn(['uiFlags', 'routingDone']);
+};
 
 const getCardType = state => {
   return state.Checkout.getIn(['values', 'billing', 'billing', 'cardType']);
@@ -537,19 +543,23 @@ const getShipmentLoadingStatus = state => {
 const getDefaultShipmentID = createSelector(
   [getShipmentMethods, getShippingDestinationValues],
   (shipmentMethods, shippingDestinationValues) => {
+    let defaultMethod;
     if (shippingDestinationValues && shippingDestinationValues.method) {
       const {
         method: { shippingMethodId },
       } = shippingDestinationValues;
       if (shippingMethodId) {
         const defaultShipment = shipmentMethods.find(method => method.id === shippingMethodId);
-        return defaultShipment && defaultShipment.id;
+        defaultMethod = defaultShipment && defaultShipment.id;
+        if (defaultMethod) {
+          return defaultMethod;
+        }
       }
     }
-    const defaultMethod = shipmentMethods.find(
-      (method, index) => method.isDefault === true || index === 0
+    defaultMethod = shipmentMethods.find(method => method.isDefault === true);
+    return (
+      (defaultMethod && defaultMethod.id) || (shipmentMethods.length > 0 && shipmentMethods[0].id)
     );
-    return defaultMethod && defaultMethod.id;
   }
 );
 
@@ -975,6 +985,38 @@ const getCheckoutPageEmptyBagLabels = createSelector(
   }
 );
 
+const getIsRtpsFlow = createSelector(
+  getCheckoutUiFlagState,
+  uiFlags => uiFlags && uiFlags.get('isRTPSFlow')
+);
+
+const getIsRTPSEnabled = state =>
+  state[SESSIONCONFIG_REDUCER_KEY] &&
+  state[SESSIONCONFIG_REDUCER_KEY].siteDetails.ADS_OLPS_ENABLED === 'TRUE';
+
+const hasPLCCOrRTPSEnabled = createSelector(
+  [getplccCardNumber, getIsRTPSEnabled, isPlccUser],
+  (plccCardNumber, isRTPSEnabled, isPLCCUser) => {
+    const hasPLCC = isPLCCUser || plccCardNumber;
+    return !hasPLCC && isRTPSEnabled;
+  }
+);
+
+const getShowRTPSOnBilling = createSelector(
+  [getIsOrderHasShipping, getGiftWrappingValues, hasPLCCOrRTPSEnabled],
+  (isOrderHasShipping, giftWrappingValues, rtpsEnabled) => {
+    const { hasGiftWrapping } = giftWrappingValues;
+    return isOrderHasShipping && !hasGiftWrapping && rtpsEnabled;
+  }
+);
+
+const getshowRTPSOnReview = createSelector(
+  [hasPLCCOrRTPSEnabled, isExpressCheckout],
+  (rtpsEnabled, isExpressCheckoutEnabled) => {
+    return rtpsEnabled && isExpressCheckoutEnabled;
+  }
+);
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
@@ -1060,10 +1102,15 @@ export default {
   getExpressReviewShippingSectionId,
   getShippingAddressList,
   getIsBillingVisited,
+  getIsRtpsFlow,
   getVenmoUserEmail,
   getVenmoError,
   getPickupValues,
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
+  getIsRTPSEnabled,
+  getIfCheckoutRoutingDone,
+  getShowRTPSOnBilling,
+  getshowRTPSOnReview,
 };

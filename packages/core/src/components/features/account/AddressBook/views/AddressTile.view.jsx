@@ -103,7 +103,7 @@ class AddressBookTile extends React.Component {
                       fontSizeVariation="small"
                       nohover
                       type="button"
-                      link
+                      smallLink
                       underline
                       anchorVariation="primary"
                       onClick={this.handleDefaultLinkClick}
