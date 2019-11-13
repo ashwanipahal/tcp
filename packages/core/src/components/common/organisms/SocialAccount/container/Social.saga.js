@@ -3,7 +3,7 @@
  */
 
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import SOCIAL_CONSTANTS from '../social.constants';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import { setSocialAccount, showPointModalDetails, showLoader } from './Social.actions';

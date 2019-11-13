@@ -1,5 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import MY_PREFERENCE_CONSTANTS from '../MyPreferenceSubscription.constants';
 import { setSubscribeStore, getSubscribeStore } from './MyPreferenceSubscription.actions';

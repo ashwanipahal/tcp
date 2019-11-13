@@ -1,5 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import constants from './AddEditCreditCard.constants';
 import { addCreditCardSuccess, addCreditCardError } from './AddEditCreditCard.actions';
 import { addCreditCard, updateCreditCard } from '../../../../../services/abstractors/account';

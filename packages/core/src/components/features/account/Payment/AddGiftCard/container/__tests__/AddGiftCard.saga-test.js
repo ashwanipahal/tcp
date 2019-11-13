@@ -27,8 +27,8 @@ describe('Add Gift Card saga', () => {
       },
     };
     expect(gen.next().value).toEqual(call(addGiftCardApi, payload));
-    expect(gen.next(res).value).toEqual(put(clearCardListTTL()));
-    gen.next();
+    gen.next(res);
+    expect(gen.next().value).toEqual(put(clearCardListTTL()));
     expect(gen.next(res).value).toEqual(put(addGiftCardSuccess()));
     expect(gen.next().done).toBeTruthy();
   });

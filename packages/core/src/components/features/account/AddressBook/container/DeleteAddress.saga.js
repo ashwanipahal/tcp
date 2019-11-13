@@ -1,5 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import {
   updateAddressListOnDelete,

@@ -1,5 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import constants from '../AddEditPersonalInformation.constants';
 import { getUserInfo } from '../../User/container/User.actions';
 import { updateProfileError } from './AddEditPersonalInformation.actions';

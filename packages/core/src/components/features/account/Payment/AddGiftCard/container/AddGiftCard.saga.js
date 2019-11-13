@@ -1,7 +1,7 @@
 // @flow
 import type { Saga } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 import { addGiftCardFailure, addGiftCardSuccess } from './AddGiftCard.actions';
 import { clearCardListTTL } from '../../container/Payment.actions';

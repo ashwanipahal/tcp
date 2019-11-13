@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import ADDRESS_VERIFICATION_CONSTANTS from '../AddressVerification.constants';
 import { verifyAddressSuccess, verifyAddressError } from './AddressVerification.actions';
 import { verifyAddressData } from '../../../../../services/abstractors/account';

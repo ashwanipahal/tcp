@@ -29,7 +29,6 @@ describe('addAddressGet saga', () => {
     });
 
     it('should dispatch addAddressFail action if response is fail two', () => {
-      addAddressGetGeneration.next();
       addAddressGetGeneration.throw({
         response: { body: { errors: ['test'] } },
       });

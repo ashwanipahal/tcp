@@ -1,5 +1,4 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import {setLoaderState} from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import {
   getSubscribeStoreSaga,

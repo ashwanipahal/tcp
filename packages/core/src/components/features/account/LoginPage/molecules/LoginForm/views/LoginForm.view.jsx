@@ -34,6 +34,11 @@ class LoginForm extends React.PureComponent<Props> {
     }
   };
 
+  loginLoader = () => {
+    const { isLoading } = this.props;
+    return <>{isLoading ? <SpinnerOverlay inheritedStyles={customSpinnerStyle} /> : null}</>;
+  };
+
   render() {
     const {
       handleSubmit,
@@ -48,11 +53,7 @@ class LoginForm extends React.PureComponent<Props> {
       tooltipContent,
       userplccCardNumber,
       userplccCardId,
-<<<<<<< HEAD
-      isLoading,
-=======
       isRememberedUser,
->>>>>>> 3ba54312e5071fbac2d1fad638d1861c3918a6fc
     } = this.props;
     return (
       <div className={className}>
@@ -199,7 +200,7 @@ class LoginForm extends React.PureComponent<Props> {
             )}
           </BodyCopy>
         </form>
-        {isLoading && <SpinnerOverlay inheritedStyles={customSpinnerStyle} />}
+        {this.loginLoader}
       </div>
     );
   }
