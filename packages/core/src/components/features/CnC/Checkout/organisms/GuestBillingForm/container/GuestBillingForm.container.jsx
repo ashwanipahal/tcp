@@ -27,6 +27,17 @@ import { getSiteId } from '../../../../../../../utils';
  */
 class GuestBillingContainer extends React.Component {
   /**
+   * @function getSelectedPaymentMethod
+   * @description returns the initial payment method selected during billing page load.
+   */
+  getSelectedPaymentMethod = () => {
+    const { billingData } = this.props;
+    return billingData.paymentMethod === CONSTANTS.PAYPAL_LABEL
+      ? CONSTANTS.PAYMENT_METHOD_PAYPAL
+      : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD;
+  };
+
+  /**
    * @function submitBillingData
    * @description submits the billing data
    */
@@ -161,7 +172,7 @@ class GuestBillingContainer extends React.Component {
         initialValues={{
           paymentMethodId: isVenmoPaymentInProgress
             ? CONSTANTS.PAYMENT_METHOD_VENMO
-            : CONSTANTS.PAYMENT_METHOD_CREDIT_CARD,
+            : this.getSelectedPaymentMethod(),
           sameAsShipping:
             orderHasShipping &&
             (isEmpty(billingData) || billingOnFileAddressKey === shippingOnFileAddressKey),

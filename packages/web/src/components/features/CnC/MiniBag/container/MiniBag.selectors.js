@@ -20,6 +20,10 @@ export const getIsMiniBagOpen = state => {
   return state.Header.miniBag;
 };
 
+export const getMiniBagLoaderState = state => {
+  return state.PageLoader.miniBagLoaderState;
+};
+
 export const getLabelsMiniBag = state => {
   return {
     createAccount: getLabelValue(state.Labels, 'lbl_miniBag_createAccount', 'minibag', 'global'),

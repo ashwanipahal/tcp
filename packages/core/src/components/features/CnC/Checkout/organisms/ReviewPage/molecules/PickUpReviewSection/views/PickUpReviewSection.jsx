@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormSection } from 'redux-form';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../../../common/atoms/Row';
 import Col from '../../../../../../../../common/atoms/Col';
@@ -208,7 +210,11 @@ export class PickUpReviewSection extends React.PureComponent {
             </Row>
           )
         ) : (
-          <div>Skeleton</div>
+          // <div>Skeleton</div>
+          <>
+            <LoaderSkelton width="40% " height="40%" />
+            <AddressSkeleton />
+          </>
         )}
       </div>
     );

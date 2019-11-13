@@ -16,6 +16,8 @@ const styles = css`
     align-items: center;
     justify-content: center;
   }
+
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default styles;

@@ -11,6 +11,7 @@ import {
   getTransactionNotificationsInMyAccountEnabled,
   getLabels,
 } from './OrderNotification.selectors';
+import { getLabels as getOrderLabels } from '../../Account/container/Account.selectors';
 import { getOrdersListState } from '../../Orders/container/Orders.selectors';
 import { getSiteId, isCanada } from '../../../../../utils';
 import { getOrdersList } from '../../Orders/container/Orders.actions';
@@ -71,6 +72,7 @@ export class OrderNotification extends PureComponent {
   render() {
     const {
       labels,
+      orderLabels,
       isTransactionNotificationsInMyAccountEnabled,
       orderSTH,
       orderBOPIS,
@@ -86,6 +88,7 @@ export class OrderNotification extends PureComponent {
               <OrderNotificationComponent
                 order={orderBOPIS}
                 labels={labels}
+                orderLabels={orderLabels}
                 separator={BOSSEnabled || STHEnabled}
               />
             )}
@@ -94,11 +97,17 @@ export class OrderNotification extends PureComponent {
               <OrderNotificationComponent
                 order={orderBOSS}
                 labels={labels}
+                orderLabels={orderLabels}
                 separator={STHEnabled}
               />
             )}
             {STHEnabled && (
-              <OrderNotificationComponent order={orderSTH} labels={labels} separator={false} />
+              <OrderNotificationComponent
+                order={orderSTH}
+                orderLabels={orderLabels}
+                labels={labels}
+                separator={false}
+              />
             )}
           </>
         )}
@@ -109,6 +118,7 @@ export class OrderNotification extends PureComponent {
 
 export const mapStateToProps = state => ({
   labels: getLabels(state),
+  orderLabels: getOrderLabels(state),
   ordersListItems: getOrdersListState(state),
   orderSTH: getLastSTHOrder(state),
   orderBOSS: getLastBoss(state),
@@ -129,6 +139,7 @@ export const mapDispatchToProps = dispatch => ({
 OrderNotification.propTypes = {
   fetchOrders: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
+  orderLabels: PropTypes.shape({}).isRequired,
   orderSTH: PropTypes.shape({}),
   orderBOSS: PropTypes.shape({}),
   orderBOPIS: PropTypes.shape({}),

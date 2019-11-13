@@ -15,8 +15,10 @@ import { openQuickViewWithValues } from '@tcp/core/src/components/common/organis
 import RecommendationsView from '../Recommendations';
 
 const mapStateToProps = (state, ownProps) => {
+  const { page, portalValue } = ownProps;
+  const reduxKey = `${page}_${portalValue || 'global'}_products`;
   return {
-    products: getProducts(state),
+    products: getProducts(state, reduxKey),
     moduleOHeaderLabel:
       ownProps.headerLabel ||
       getLabelValue(state.Labels, 'MODULE_O_HEADER_LABEL', 'recommendations', 'global'),
@@ -30,6 +32,7 @@ const mapStateToProps = (state, ownProps) => {
     labels: getLabelsProductListing(state),
     currency: getCurrentCurrency(state),
     currencyAttributes: getCurrencyAttributes(state),
+    reduxKey,
   };
 };
 

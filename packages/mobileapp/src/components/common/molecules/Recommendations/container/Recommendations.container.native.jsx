@@ -9,8 +9,10 @@ import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.sele
 import RecommendationsView from '../Recommendations.native';
 
 const mapStateToProps = (state, ownProps) => {
+  const { page, portalValue } = ownProps;
+  const reduxKey = `${page}_${portalValue || 'global'}_products`;
   return {
-    products: getProducts(state),
+    products: getProducts(state, reduxKey),
     moduleOHeaderLabel:
       ownProps.headerLabel ||
       getLabelValue(state.Labels, 'MODULE_O_HEADER_LABEL', 'recommendations', 'global'),
@@ -23,6 +25,7 @@ const mapStateToProps = (state, ownProps) => {
     isPlcc: isPlccUser(state),
     isPickupModalOpen: getIsPickupModalOpen(state),
     labels: labelsSelectors.getPlpTilesLabels(state),
+    reduxKey,
   };
 };
 

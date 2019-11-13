@@ -19,6 +19,7 @@ import {
 } from '@tcp/core/src/utils';
 import { initErrorReporter } from '@tcp/core/src/utils/errorReporter.util';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
@@ -27,10 +28,10 @@ import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModa
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
+import { HotfixBrowserContext } from '@tcp/core/src/components/common/context/HotfixContext';
 import { Header, Footer } from '../components/features/content';
 import SEOTags from '../components/common/atoms';
 import CheckoutHeader from '../components/features/content/CheckoutHeader';
-import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
@@ -173,7 +174,7 @@ class TCPWebApp extends App {
     // This check ensures this block is executed once since Component is not available in first call
     if (isServer) {
       const { locals } = res;
-      const { device = {} } = req;
+      const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
       // preview check from akamai header
       apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
@@ -203,6 +204,7 @@ class TCPWebApp extends App {
         apiConfig,
         deviceType: device.type,
         optimizelyHeadersObject,
+        originalUrl,
       };
 
       // Get initial props is getting called twice on server
@@ -223,11 +225,11 @@ class TCPWebApp extends App {
     return initialProps;
   }
 
-  static async loadComponentData(Component, { store, isServer, query = '' }, pageProps) {
+  static async loadComponentData(Component, { store, isServer, req = {}, query = '' }, pageProps) {
     let compProps = {};
     if (Component.getInitialProps) {
       try {
-        compProps = await Component.getInitialProps({ store, isServer, query }, pageProps);
+        compProps = await Component.getInitialProps({ store, isServer, query, req }, pageProps);
       } catch (e) {
         compProps = {};
       }
@@ -243,7 +245,7 @@ class TCPWebApp extends App {
     // Just a sample - any store specific data should be set in this
     if (pageId) {
       const seoConfig = deriveSEOTags(pageId, store, router);
-      return <SEOTags seoConfig={seoConfig} />;
+      return seoConfig ? <SEOTags seoConfig={seoConfig} /> : null;
     }
     return null;
   };
@@ -295,12 +297,15 @@ class TCPWebApp extends App {
               <Header />
               <CheckoutHeader />
               <Loader />
-              <div className="content-wrapper">
-                <div id="overlayWrapper">
-                  <div id="overlayComponent" />
-                  <Component {...pageProps} pageName={componentPageName} />
+              {/* Provider for global hotfixes object */}
+              <HotfixBrowserContext.Provider value={global.TCP_HOTFIX_BROWSER || {}}>
+                <div className="content-wrapper">
+                  <div id="overlayWrapper">
+                    <div id="overlayComponent" />
+                    <Component {...pageProps} pageName={componentPageName} />
+                  </div>
                 </div>
-              </div>
+              </HotfixBrowserContext.Provider>
               <BackToTop />
               <Footer pageName={componentPageName} />
               <CheckoutModals />

@@ -2,6 +2,7 @@
 import { call, all, select, put } from 'redux-saga/effects';
 import moment from 'moment';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { isCanada, sanitizeEntity } from '../../../../../utils/utils';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import {
@@ -33,11 +34,10 @@ import {
   resetCouponReducer,
   getCouponList,
 } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+
 import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
-import setLoaderState from '../../../../../../../web/src/components/features/content/Loader/container/Loader.actions';
-
 const {
   // isVenmoPaymentAvailable,
   getCurrentOrderId,

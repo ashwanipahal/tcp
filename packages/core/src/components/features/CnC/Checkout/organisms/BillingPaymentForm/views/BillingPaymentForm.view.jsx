@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, change } from 'redux-form';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/BillingPaymentForm.style';
@@ -363,7 +364,8 @@ export class BillingPaymentForm extends React.PureComponent {
             ) : !bagLoading ? (
               this.getCheckoutBillingAddress()
             ) : (
-              <div>Skeleton</div>
+              //<div>Skeleton</div>
+              <AddressSkeleton />
             )}
           </>
         ) : (

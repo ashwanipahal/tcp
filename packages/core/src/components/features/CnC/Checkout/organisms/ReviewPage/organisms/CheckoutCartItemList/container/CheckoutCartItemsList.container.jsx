@@ -168,12 +168,14 @@ CheckoutCartItemList.propTypes = {
   labels: PropTypes.shape({}),
   bagPageLabels: PropTypes.shape({}),
   disableProductRedirect: PropTypes.bool, // Disable Product Redirect
+  bagLoading: PropTypes.bool,
 };
 
 CheckoutCartItemList.defaultProps = {
   labels: {},
   bagPageLabels: {},
   disableProductRedirect: false,
+  bagLoading: false,
 };
 
 export default connect(mapStateToProps)(CheckoutCartItemList);

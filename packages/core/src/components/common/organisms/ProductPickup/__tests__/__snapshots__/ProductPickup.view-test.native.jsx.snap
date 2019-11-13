@@ -82,17 +82,6 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
             textDecoration={null}
           />
         </Styled(View)>
-        <Styled(BodyCopy)
-          accessibilityText=""
-          color="red.500"
-          dataLocator="pdp_pick_up_error_info"
-          fontFamily="secondary"
-          fontSize="fs10"
-          fontWeight="black"
-          margin={null}
-          numberOfLines={null}
-          textDecoration={null}
-        />
       </Styled(View)>
     </Styled(View)>
     <Styled(CustomButton)

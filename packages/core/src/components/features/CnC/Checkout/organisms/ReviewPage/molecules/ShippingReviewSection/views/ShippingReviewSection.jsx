@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
 import { formatPhoneNumber } from '../../../../../../../../../utils/formValidation/phoneNumber';
 import withStyles from '../../../../../../../../common/hoc/withStyles';
 import styles from '../styles/ShippingReviewSection.style';
@@ -102,12 +103,18 @@ export class ShippingReviewSection extends React.PureComponent {
             </Col>
           </Row>
         ) : (
-          <div>skeleton</div>
+          // <div>skeleton</div>
+          <AddressSkeleton />
         )}
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
             {isExpressCheckout && (
-              <GiftWrappingDisplay labels={labels} displayName={giftWrappingDisplayName} />
+              <GiftWrappingDisplay
+                labels={labels}
+                displayName={giftWrappingDisplayName}
+                onEdit={onEdit}
+                isExpressCheckout={isExpressCheckout}
+              />
             )}
           </Col>
         </Row>

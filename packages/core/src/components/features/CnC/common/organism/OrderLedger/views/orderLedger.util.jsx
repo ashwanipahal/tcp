@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React from 'react';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -90,6 +89,10 @@ const renderSavingsTotal = (savingsTotal, className, labels, currencySymbol) => 
   ) : null;
 };
 
+const shippingTotalCurrencySymbol = (shippingTotal, currencySymbol, labels) => {
+  return shippingTotal > 0 ? `${currencySymbol}${shippingTotal.toFixed(2)}` : labels.free;
+};
+
 const orderHasShipping = (currencySymbol, isOrderHasShipping, labels, shippingTotal) => {
   return (
     isOrderHasShipping && (
@@ -117,12 +120,8 @@ const orderHasShipping = (currencySymbol, isOrderHasShipping, labels, shippingTo
             fontSize="fs16"
             textAlign="right"
           >
-            {/* eslint-disable-next-line no-nested-ternary */}
             {shippingTotal !== undefined
-              ? // eslint-disable-next-line no-constant-condition
-                shippingTotal > 0
-                ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                : labels.free
+              ? shippingTotalCurrencySymbol(shippingTotal, currencySymbol, labels)
               : '-'}
           </BodyCopy>
         </Col>

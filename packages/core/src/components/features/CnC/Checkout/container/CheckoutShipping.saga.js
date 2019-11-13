@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { CHECKOUT_ROUTES } from '../Checkout.constants';
 import selectors, { isGuest } from './Checkout.selector';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
@@ -9,7 +10,6 @@ import { isCanada } from '../../../../../utils/utils';
 import { redirectToBilling } from './Checkout.saga.util';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getServerErrorMessage } from '../../../../../services/abstractors/CnC/index';
-import setLoaderState from '../../../../../../../web/src/components/features/content/Loader/container/Loader.actions';
 
 export function* submitShippingSectionData({ payload: { navigation, ...formData } }, callback) {
   try {

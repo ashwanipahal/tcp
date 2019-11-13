@@ -98,6 +98,7 @@ export class BagPageContainer extends React.Component<Props> {
       isPickupModalOpen,
       isMobile,
       bagPageServerError,
+      isBagPage,
       setClickAnalyticsDataBag,
       cartOrderItems,
       isCartLoaded,
@@ -135,6 +136,7 @@ export class BagPageContainer extends React.Component<Props> {
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         isPickupModalOpen={isPickupModalOpen}
         bagPageServerError={bagPageServerError}
+        isBagPage={isBagPage}
         cartOrderItems={cartOrderItems}
         setClickAnalyticsDataBag={setClickAnalyticsDataBag}
         isCartLoaded={isCartLoaded}

@@ -157,13 +157,11 @@ class ProductDetailView extends React.PureComponent {
     const sizeChartLinkVisibility = !currentProduct.isGiftCard
       ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE
       : null;
-    const { categoryId } = currentProduct;
     const recommendationAttributes = {
       variation: 'moduleO',
       navigation,
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.PDP,
-      categoryName: categoryId,
-      partNumber: selectedColorProductId,
+      partNumber: itemPartNumber,
       isHeaderAccordion: true,
     };
 

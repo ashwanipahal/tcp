@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -7,6 +8,7 @@ import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import GiftCardsContainer from '../../../../GiftCardsSection';
 import { CHECKOUT_ROUTES } from '../../../../../Checkout.constants';
 import getCvvInfo from '../../../../../molecules/CVVInfo';
@@ -153,7 +155,8 @@ export class BillingSection extends PureComponent {
                       {!bagLoading ? (
                         <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
                       ) : (
-                        <div>Skeleton</div>
+                        // <div>Skeleton</div>
+                        <AddressSkeleton />
                       )}
                     </BodyCopy>
                   </Fragment>
@@ -172,7 +175,11 @@ export class BillingSection extends PureComponent {
                     {!bagLoading ? (
                       <Address address={address} className="review-billing-address" />
                     ) : (
-                      <div>Skeleton</div>
+                      // <div>Skeleton</div>
+                      <>
+                        <LoaderSkelton width="175px" height="40px" />
+                        <AddressSkeleton />
+                      </>
                     )}
                   </Fragment>
                 )}
