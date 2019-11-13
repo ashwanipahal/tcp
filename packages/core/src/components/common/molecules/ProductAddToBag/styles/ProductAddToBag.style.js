@@ -233,7 +233,7 @@ const styles = css`
   }
 
   .pdp-qty + p {
-    margin-top: -20px;
+    margin-top: 7px;
   }
 
   .size-field {

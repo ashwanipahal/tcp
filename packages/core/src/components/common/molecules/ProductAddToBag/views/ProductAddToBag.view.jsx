@@ -267,7 +267,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   className="add-to-bag-button"
                   onClick={e => {
                     e.preventDefault();
-                    // TODO: with handleSubmit
                     // eslint-disable-next-line sonarjs/no-all-duplicated-branches
                     if (fitChanged) {
                       displayErrorMessage(fitChanged);
@@ -294,7 +293,6 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   // eslint-disable-next-line sonarjs/no-identical-functions
                   onClick={e => {
                     e.preventDefault();
-                    // TODO: with handleSubmit
                     // eslint-disable-next-line sonarjs/no-all-duplicated-branches
                     if (fitChanged) {
                       displayErrorMessage(fitChanged);
