@@ -16,6 +16,8 @@ const LineComp = props => {
 LineComp.propTypes = {
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,
+  marginLeft: PropTypes.number,
+  marginRight: PropTypes.number,
   borderWidth: PropTypes.number,
   borderColor: PropTypes.string,
 };
@@ -23,6 +25,8 @@ LineComp.propTypes = {
 LineComp.defaultProps = {
   marginTop: 0,
   marginBottom: 0,
+  marginLeft: 0,
+  marginRight: 0,
   borderWidth: 0.65,
   borderColor: null,
 };

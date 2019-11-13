@@ -2,6 +2,7 @@
 import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { formValueSelector } from 'redux-form';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import CONSTANTS, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import {
   getGiftWrappingOptions,
@@ -104,7 +105,10 @@ function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
     const { navigation } = payload;
+    yield put(setLoaderState(true));
     const result = yield call(callPickupSubmitMethod, formData);
+    yield put(setLoaderState(false));
+
     if (result.addressId) {
       yield call(getAddressList);
       yield call(getCardList);
@@ -127,7 +131,10 @@ function* submitPickupSection({ payload }) {
     // }).catch((err) => {
     //   throw getSubmissionError(this.store, 'submitPickupSection', err);
     // });
+    yield put(setLoaderState(false));
   } catch (e) {
+    yield put(setLoaderState(false));
+
     yield call(handleServerSideErrorAPI, e);
   }
 }
@@ -136,6 +143,7 @@ function* submitPickupSection({ payload }) {
 // }
 function* loadShipmentMethods(miniAddress, throwError) {
   let address;
+
   if (miniAddress.formName) {
     const addressSelector = formValueSelector(miniAddress.formName);
     const addressValues = yield select(addressSelector, 'address');
@@ -148,6 +156,7 @@ function* loadShipmentMethods(miniAddress, throwError) {
   }
   try {
     const labels = yield select(BagPageSelectors.getErrorMapping);
+    yield put(setIsLoadingShippingMethods(true));
     const res = yield getShippingMethods(
       address.state || '',
       address.zipCode || '',
@@ -184,7 +193,6 @@ function* validDateAndLoadShipmentMethods(miniAddress, changhedFlags, throwError
     return yield;
   }
   oldHasPOB = newHasPOB;
-  yield put(setIsLoadingShippingMethods(true));
   return yield loadShipmentMethods(miniAddress, throwError);
 }
 
@@ -632,11 +640,13 @@ function* submitShipping({
 
 export function* submitBillingSection(action) {
   const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);
+  yield put(setLoaderState(true));
   if (isVenmoInProgress) {
     yield call(submitVenmoBilling, action);
   } else {
     yield call(submitBilling, action);
   }
+  yield put(setLoaderState(false));
 }
 
 export function* submitShippingSection(action) {
