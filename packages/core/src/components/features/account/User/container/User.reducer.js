@@ -58,6 +58,8 @@ const UserReducer = (state = initialState, { type, payload }) => {
             isExpressEligible: payload.isExpressEligible,
             associateId: payload.associateId,
             hobbies: payload.hobbies,
+            plccCardId: payload.plccCardId,
+            plccCardNumber: payload.plccCardNumber
           })
         )
         .set(
