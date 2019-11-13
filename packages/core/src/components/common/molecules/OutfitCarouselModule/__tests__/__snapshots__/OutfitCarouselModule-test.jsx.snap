@@ -59,13 +59,14 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
         "centerMode": false,
         "dots": false,
         "fade": false,
-        "infinite": false,
+        "infinite": true,
         "lazyLoad": false,
         "responsive": Array [
           Object {
             "breakpoint": 767,
             "settings": Object {
               "arrows": true,
+              "slidesToScroll": 2,
               "slidesToShow": 2,
               "swipeToSlide": true,
             },
@@ -74,12 +75,13 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
             "breakpoint": 1199,
             "settings": Object {
               "arrows": true,
+              "slidesToScroll": 4,
               "slidesToShow": 4,
               "swipeToSlide": true,
             },
           },
         ],
-        "slidesToScroll": 1,
+        "slidesToScroll": 4,
         "slidesToShow": 4,
         "speed": 1000,
         "swipe": true,
