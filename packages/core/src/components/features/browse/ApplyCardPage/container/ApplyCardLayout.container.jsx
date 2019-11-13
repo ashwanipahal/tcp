@@ -105,6 +105,7 @@ class ApplyCardLayoutContainer extends React.Component {
       closeModal,
       isRtpsFlow,
       closePLCCModal,
+      togglePLCCModal,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
 
@@ -130,6 +131,7 @@ class ApplyCardLayoutContainer extends React.Component {
           closeModal={closeModal}
           isRtpsFlow={isRtpsFlow}
           closePLCCModal={closePLCCModal}
+          togglePLCCModal={togglePLCCModal}
         />
         {!isMobileApp() && showAddEditAddressForm ? (
           <AddressVerification onSuccess={this.submitForm} />
@@ -158,6 +160,7 @@ ApplyCardLayoutContainer.propTypes = {
   closeModal: PropTypes.func,
   isRtpsFlow: PropTypes.bool.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 ApplyCardLayoutContainer.defaultProps = {

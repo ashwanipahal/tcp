@@ -184,11 +184,10 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       shippingMethod,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
-      pickUpContactPerson,
-      pickUpContactAlternate,
-      dispatchReviewReduxForm,
       isPayPalWebViewEnable,
+      dispatchReviewReduxForm,
     } = this.props;
+    const { pickUpContactPerson, pickUpContactAlternate } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;

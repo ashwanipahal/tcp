@@ -522,7 +522,8 @@ export default css`
   /*
   * Module N Promo Banner styles Gymboree
   *********************************/
-  .percentage_inline_promo {
+  .percentage_inline_promo,
+  .percentage_inline_promo_black {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: ${props => props.theme.typography.fontSizes.fs48};
@@ -531,6 +532,38 @@ export default css`
     text-align: center;
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
+  }
+
+  .percentage_inline_promo_black {
+    color: ${props => props.theme.colorPalette.gray[900]};
+  }
+
+  .spaced_text_regular_black {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    color: ${props => props.theme.colorPalette.gray[900]};
+    letter-spacing: 2px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs32};
+    }
+  }
+
+  .spaced_text_only_mobile {
+    display: block;
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+    font-size: ${props => props.theme.typography.fontSizes.fs20};
+    color: ${props => props.theme.colorPalette.gray[900]};
+    letter-spacing: 2px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: inline-block;
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+      letter-spacing: 0;
     }
   }
 

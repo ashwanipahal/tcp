@@ -5,6 +5,7 @@ import ApprovedPLCCApplicationViewStyled from './style/ApprovedPLCCApplication.s
 import { getLabelValue, scrollPage } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
+import Espot from '../../../../../../common/molecules/Espot';
 
 const CopyToClipboard = e => {
   e.preventDefault();
@@ -50,7 +51,6 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCM
                 className="credit_limit_heading"
                 aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
                 textAlign="center"
-                id="couponCode"
               >
                 {getLabelValue(labels, 'lbl_PLCCForm_welcomeOffer')}
               </BodyCopy>
@@ -62,6 +62,7 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCM
                 className="promo_code"
                 tabIndex="0"
                 textAlign="center"
+                id="couponCode"
               >
                 {approvedPLCCData && approvedPLCCData.couponCode}
               </BodyCopy>
@@ -143,7 +144,11 @@ const totalSavingsFooterContainer = (
               fill="BLUE"
               type="submit"
               className="existing_checkout_button"
-              onClick={() => isRtpsFlow ? togglePLCCModal({ isPLCCModalOpen: false, status: null }) : redirectToBag(resetPLCCResponse)}
+              onClick={() =>
+                isRtpsFlow
+                  ? togglePLCCModal({ isPLCCModalOpen: false, status: null })
+                  : redirectToBag(resetPLCCResponse)
+              }
             >
               {getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             </Button>
@@ -157,7 +162,7 @@ const totalSavingsFooterContainer = (
               !bagItems
                 ? 'no_bag_items_continue existing_checkout_button'
                 : 'existing_checkout_button'
-              }`}
+            }`}
             ignoreGutter={{ small: true }}
             colSize={{ large: 3, medium: 4, small: 12 }}
           >
@@ -195,7 +200,7 @@ const ApprovedPLCCApplicationView = ({
   isGuest,
   resetPLCCResponse,
   isRtpsFlow,
-  togglePLCCModal
+  togglePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
   return (
@@ -264,10 +269,9 @@ const ApprovedPLCCApplicationView = ({
         >
           {!isGuest ? (
             <RichText richTextHtml={plccData && plccData.plcc_shipping_info} />
-          ) :
-            (
-              <RichText richTextHtml={plccData && plccData.guest_shipping_info} />
-            )}
+          ) : (
+            <Espot richTextHtml={plccData && plccData.guest_shipping_info} />
+          )}
         </Col>
       </Row>
       <Row fullBleed className="centered">
@@ -279,7 +283,15 @@ const ApprovedPLCCApplicationView = ({
         </Col>
       </Row>
       {getCouponCodeBody(approvedPLCCData, labels, plccData, isPLCCModalFlow)}
-      {totalSavingsFooterContainer(approvedPLCCData, plccData, labels, bagItems, resetPLCCResponse, isRtpsFlow, togglePLCCModal)}
+      {totalSavingsFooterContainer(
+        approvedPLCCData,
+        plccData,
+        labels,
+        bagItems,
+        resetPLCCResponse,
+        isRtpsFlow,
+        togglePLCCModal
+      )}
       <Row fullBleed className="centered">
         <Col
           ignoreGutter={{ small: true }}

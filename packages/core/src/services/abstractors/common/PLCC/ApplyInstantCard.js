@@ -64,13 +64,13 @@ const getStatusCodeRes = (returnCode, body, args, errorsMapping) => {
   return false;
 };
 
-const applyInstantCard = (args, errorsMapping, preScreenCode, isExpressCheckout) => {
+const applyInstantCard = (args, errorsMapping, preScreenCode, isExpressCheckout, isRTPSFlow) => {
   const payload = {
     // Overriding 'application/json' - specific to processWIC
     header: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    webService: preScreenCode ? endpoints.prescreenApplication : endpoints.instantCreditApplication,
+    webService: isRTPSFlow ? endpoints.prescreenApplication : endpoints.instantCreditApplication,
     body: {
       firstName: args.firstName,
       lastName: args.lastName,

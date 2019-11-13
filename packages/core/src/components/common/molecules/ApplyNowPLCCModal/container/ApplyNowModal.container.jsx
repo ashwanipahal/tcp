@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 
 import { toggleApplyNowModal } from './ApplyNowModal.actions';
-import { getLabels, getIsModalOpen, getIsPLCCModalOpen } from './ApplyNowModal.selectors';
+import {
+  getLabels,
+  getIsModalOpen,
+  getIsPLCCModalOpen,
+  getRtpsMessages,
+} from './ApplyNowModal.selectors';
 import CheckoutSelectors from '../../../../features/CnC/Checkout/container/Checkout.selector';
 import CHECKOUT_ACTIONS from '../../../../features/CnC/Checkout/container/Checkout.action';
 import ApplyNowModalWrapper from '../views';
@@ -22,24 +27,26 @@ export const mapDispatchToProps = dispatch => {
       dispatch(fetchModuleX(payload));
     },
     setIsRTPSFlow: payload => {
-      dispatch(CHECKOUT_ACTIONS.setIsRTPSFlow(payload))
+      dispatch(CHECKOUT_ACTIONS.setIsRTPSFlow(payload));
     },
     submitAcceptOrDeclinePlcc: payload => {
-      dispatch(CHECKOUT_ACTIONS.submitAcceptOrDeclinePlccOffer(payload))
-    }
+      dispatch(CHECKOUT_ACTIONS.submitAcceptOrDeclinePlccOffer(payload));
+    },
   };
 };
 
 const mapStateToProps = (state, ownProps) => {
   const { ApplyCardPage = {} } = state;
+  const applyCardLabels = getRtpsMessages(state);
+  const { rtpsCongratsMsg, rtpsOptOutMsg, rtpsTextTerms } = applyCardLabels;
   return {
     isModalOpen: getIsModalOpen(state),
     labels: getLabels(state),
     isPLCCModalOpen: getIsPLCCModalOpen(state),
     plccBenefitsList: ApplyCardPage.plccData && ApplyCardPage.plccData.plcc_rewards_list,
-    rtpsCongratsMsg: ApplyCardPage.plccData && ApplyCardPage.plccData.rtps_congralutaions_msg,
-    rtpsOptOutMsg: ApplyCardPage.plccData && ApplyCardPage.plccData.rtps_opt_out_notice,
-    rtpsTextTerms: ApplyCardPage.plccData && ApplyCardPage.plccData.rtps_text_terms,
+    rtpsCongratsMsg,
+    rtpsOptOutMsg,
+    rtpsTextTerms,
     labelText: ownProps.labelText,
     isRtpsFlow: CheckoutSelectors.getIsRtpsFlow(state),
   };

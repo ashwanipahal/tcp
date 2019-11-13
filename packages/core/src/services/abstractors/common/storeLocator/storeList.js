@@ -38,7 +38,7 @@ export const getStoresByCountry = country => {
     .then(res => {
       if (res.body && res.body.PhysicalStore) {
         const stateMapping = {};
-        const configBrandName = getAPIConfig().brandId.toLowerCase();
+        const brandID = getAPIConfig().brandId.toLowerCase();
         res.body.PhysicalStore.forEach(store => {
           /**
            * Checking config brand name on client and then check if the response also have
@@ -50,7 +50,7 @@ export const getStoresByCountry = country => {
            *
            */
           const responseBrandNames = store.brandName || [];
-          if (responseBrandNames.find(brand => brand.toLowerCase() === configBrandName)) {
+          if (responseBrandNames.find(brand => brand.toLowerCase() === brandID)) {
             if (!stateMapping[store.stateOrProvinceName]) {
               stateMapping[store.stateOrProvinceName] = [];
             }

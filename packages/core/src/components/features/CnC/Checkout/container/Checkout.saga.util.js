@@ -7,7 +7,7 @@ import {
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
 import logger from '../../../../../utils/loggerInstance';
-import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
+import selectors, { isGuest } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
   briteVerifyStatusExtraction,
@@ -19,11 +19,7 @@ import {
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
-import {
-  getUserEmail,
-  isPlccUser,
-  getplccCardNumber,
-} from '../../../account/User/container/User.selectors';
+import { getUserEmail } from '../../../account/User/container/User.selectors';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
 import {
   addAddressGet,
@@ -367,23 +363,13 @@ function* updateUserRTPSData(payload) {
   }
 }
 
-const showOnReview = (showPLCC, isExpressCheckoutEnabled, fromExpress) => {
-  return showPLCC && isExpressCheckoutEnabled && fromExpress;
-};
-
 export function* callUpdateRTPS(pageName, fromExpress = false) {
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
-  const isPLCCUSer = yield select(isPlccUser);
-  const hasPLCCCard = yield select(getplccCardNumber);
-  const hasPLCC = isPLCCUSer || hasPLCCCard;
-  const isRTPSEnabled = yield select(selectors.getIsRTPSEnabled);
-  const isOrderHasShipping = yield select(selectors.getIsOrderHasShipping);
-  const { hasGiftWrapping } = yield select(selectors.getGiftWrappingValues);
-  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-  const showPLCC = !hasPLCC && isRTPSEnabled;
-  if (pageName === BILLING && isOrderHasShipping && !hasGiftWrapping && showPLCC) {
+  const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
+  const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
+  if (pageName === BILLING && showRTPSOnBilling) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: false });
-  } else if (showOnReview(showPLCC, isExpressCheckoutEnabled, fromExpress) && pageName === REVIEW) {
+  } else if (showRTPSOnReview && fromExpress && pageName === REVIEW) {
     yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: true });
   }
 }

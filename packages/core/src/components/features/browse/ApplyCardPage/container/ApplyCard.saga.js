@@ -5,11 +5,9 @@ import { setModuleX, obtainInstantCardApplication } from './ApplyCard.actions';
 import {
   setPlccCardIdActn,
   setPlccCardNumberActn,
-  getUserInfo
+  getUserInfo,
 } from '../../../account/User/container/User.actions';
-import {
-  isGuest
-} from '../../../CnC/Checkout/container/Checkout.selector';
+import { isGuest } from '../../../CnC/Checkout/container/Checkout.selector';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.actions';
 import { getCardList } from '../../../account/Payment/container/Payment.saga';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleXComposite';
@@ -50,9 +48,15 @@ export function* submitCreditCardForm({ payload = '' }) {
     const labels = yield select(getErrorMapping);
     const { preScreenCode } = yield select(getRtpsPreScreenData);
     const isRTPSFlow = yield select(getIsRtpsFlow);
-    // NOTE: we can't use checkoutStoreView.isExpressCheckout(). Users can navigate back to shipping and trigger RTPS from there.
     const currentCheckoutStage = yield select(getCurrentCheckoutStage);
-    const res = yield call(applyInstantCard, payload, labels, preScreenCode, currentCheckoutStage === 'review');
+    const res = yield call(
+      applyInstantCard,
+      payload,
+      labels,
+      preScreenCode,
+      currentCheckoutStage === 'review',
+      isRTPSFlow
+    );
     // Check for mobile App and to showcase the toast message of results.
     if (isMobileApp() && ERR_CONFIG.indexOf(res.status) === -1) {
       yield put(toastMessageInfo(res.status));
@@ -75,9 +79,8 @@ export function* submitCreditCardForm({ payload = '' }) {
           updateSmsInfo: false,
           translation: true,
         })
-      )
+      );
     }
-
   } catch (err) {
     yield null;
   }

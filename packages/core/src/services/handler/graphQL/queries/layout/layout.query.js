@@ -5,6 +5,7 @@ const buildQuery = ({ path, brand, country, channel }) => `
     country: "${country}",
     channel: "${channel}"
   ) {
+    errorMessage
     items {
       path
       seo {

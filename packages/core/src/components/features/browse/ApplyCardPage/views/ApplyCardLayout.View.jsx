@@ -78,8 +78,8 @@ const ApplyCardLayoutView = ({
   approvedPLCCData,
   resetPLCCApplicationStatus,
   isRtpsFlow,
-  togglePLCCModal,
   closePLCCModal,
+  togglePLCCModal,
 }) => {
   return (
     <ApplyRewardsCreditCardStyle isPLCCModalFlow={isPLCCModalFlow}>
@@ -96,8 +96,8 @@ const ApplyCardLayoutView = ({
           approvedPLCCData,
           resetPLCCApplicationStatus,
           isRtpsFlow,
-          togglePLCCModal,
           closePLCCModal,
+          togglePLCCModal,
         }
       )}
     </ApplyRewardsCreditCardStyle>
@@ -116,8 +116,8 @@ ApplyCardLayoutView.propTypes = {
   isGuest: PropTypes.bool.isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   isRtpsFlow: PropTypes.bool.isRequired,
-  togglePLCCModal: PropTypes.func.isRequired,
   closePLCCModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApplyCardLayoutView;

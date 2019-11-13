@@ -111,6 +111,28 @@ export default {
   moduleT_cta_links: 'moduleT_cta_links_',
   moduleT_cta_image: 'moduleT_cta_image_',
 
+  // Module E
+  moduleE_eyebrowImage_img: 'moduleE_eyebrowImage_img_',
+  moduleE_eyebrow_text: 'moduleE_eyebrow_text',
+  moduleE_header_text: 'moduleE_header_text',
+  moduleE_promo_text: 'moduleE_promo_text',
+  moduleE_promobanner_text: 'moduleE_promobanner_text',
+  moduleE_carousel_img: 'moduleE_carousel_img_',
+  moduleE_carousel_cta: 'moduleE_carousel_cta_',
+  moduleE_small_image: 'moduleE_small_image_',
+  moduleE_small_img_header_text: 'moduleE_small_img_header_text_',
+  moduleE_small_img_cta: 'moduleE_small_img_cta_',
+  moduleE_small_img: 'moduleE_small_img_',
+  moduleE_promo_area_img: 'moduleE_promo_area_img',
+  moduleE_promo_area_img_cta: 'moduleE_promo_area_img_cta',
+  moduleE_cta_image: 'moduleE_cta_image_',
+  moduleE_cta_links: 'moduleE_cta_links_',
+  moduleE_dropdown: 'moduleE_shop_now_dropdown',
+  moduleE_carousel_image_img: 'moduleE_carousel_image_img_',
+  moduleE_carousel_image_link_cta: 'moduleE_carousel_image_link_cta_',
+  moduleE_carousel_image_button_cta: 'moduleE_carousel_image_button_cta_',
+  moduleE_carousel_image_link: 'moduleE_carousel_image_link_',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
