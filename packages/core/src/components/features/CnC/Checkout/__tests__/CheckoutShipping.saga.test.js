@@ -15,6 +15,7 @@ describe('CheckoutShipping saga', () => {
       () => {}
     );
     CheckoutShippingSaga.next();
+    CheckoutShippingSaga.next();
     expect(CheckoutShippingSaga.next().value).toEqual(select(isCanada));
     CheckoutShippingSaga.next();
     CheckoutShippingSaga.next(false);

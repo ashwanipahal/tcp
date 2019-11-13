@@ -326,7 +326,7 @@ export const cropImageUrl = (url, crop, namedTransformation) => {
     }
   } else {
     // Image path transformation in case of relative image URL
-    URL = `${basePath}/${namedTransformation}/url`;
+    URL = `${basePath}/${namedTransformation}/${url}`;
   }
 
   return URL;

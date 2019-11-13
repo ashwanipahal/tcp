@@ -30,20 +30,6 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       >
         undefined, User 
       </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="pointsRewards"
-        color="orange.800"
-        component="span"
-        fontFamily="secondary"
-        fontSize="fs13"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        (undefined points, $NaN rewards)
-      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       className="subHeaderTextIcon"

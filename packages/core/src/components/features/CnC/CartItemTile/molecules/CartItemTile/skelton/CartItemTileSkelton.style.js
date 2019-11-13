@@ -69,7 +69,7 @@ export default css`
     }
   }
   .cart-item-radio-button-top {
-    padding: 12px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     width: 253px;
     display: block;
     height: 20px;
@@ -79,7 +79,7 @@ export default css`
     }
   }
   .cart-item-radio-button-middle {
-    padding: 12px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     width: 119px;
     display: block;
     height: 19px;
@@ -89,7 +89,7 @@ export default css`
     }
   }
   .cart-item-radio-button-bottom {
-    padding: 12px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     width: 119px;
     display: block;
     height: 19px;
