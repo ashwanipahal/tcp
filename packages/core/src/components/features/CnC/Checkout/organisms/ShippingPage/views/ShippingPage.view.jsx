@@ -227,7 +227,8 @@ export default class ShippingPage extends React.PureComponent {
     return setVenmoPickupState(true);
   };
 
-  updateShippingAddress = () => {
+  updateShippingAddress = afterUpdate => {
+    this.afterAddressUpdate = afterUpdate;
     const {
       address,
       onFileAddressKey,
@@ -316,7 +317,7 @@ export default class ShippingPage extends React.PureComponent {
         addressLine2: shippingAddress.address2,
         zipCode: shippingAddress.zip,
       };
-      return updateShippingAddressData(this.submitShippingAddressData);
+      return updateShippingAddressData(this.submitShippingAddressData, this.afterAddressUpdate);
     }
     return submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
   };

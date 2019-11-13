@@ -135,8 +135,8 @@ export const mapDispatchToProps = dispatch => {
     updateShippingMethodSelection: payload => {
       dispatch(updateShipmentMethodSelection(payload));
     },
-    updateShippingAddressData: payload => {
-      dispatch(updateShippingAddress(payload));
+    updateShippingAddressData: (payload, afterUpdateAddress) => {
+      dispatch(updateShippingAddress(payload, afterUpdateAddress));
     },
     addNewShippingAddressData: payload => {
       dispatch(addNewShippingAddress(payload));
