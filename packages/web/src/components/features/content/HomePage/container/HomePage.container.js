@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
 import { toggleEmailSignupModal } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
 import { toggleSmsSignupModal } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
@@ -70,7 +71,17 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+/**
+ * HAC - Hotfix-Aware Component
+ * This component uses getInitialProps, so we must apply the
+ * `withHotfix` HOC here instead of wrapping this component (in order
+ * to retain the NextJS data-fetching functionality).
+ * The `displayName` should be "HomePage".
+ */
+HomePageView.displayName = 'HomePage';
+const HotfixAwareHomePage = withHotfix(HomePageView);
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomePageView);
+)(HotfixAwareHomePage);

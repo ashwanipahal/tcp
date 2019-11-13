@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
@@ -146,5 +146,16 @@ HomePageView.propTypes = {
   openCountrySelectorModal: PropTypes.func.isRequired,
 };
 
-export default errorBoundary(HomePageView);
+const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
+
+const HomePageViewWithRef = forwardRef((props, ref) => {
+  return (
+    <div ref={ref}>
+      <HomePageViewWithErrorBoundary {...props} />
+    </div>
+  );
+});
+
+export default HomePageViewWithRef;
+
 export { HomePageView as HomePageViewVanilla };
