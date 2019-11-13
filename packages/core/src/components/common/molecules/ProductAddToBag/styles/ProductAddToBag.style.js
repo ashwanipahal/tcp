@@ -210,7 +210,7 @@ const styles = css`
     width: 100%;
     #quantity {
       font-size: ${props => props.theme.fonts.fontSize.anchor.xlarge}px;
-      padding-top: 5px;
+      padding-top: 0;
       padding-bottom: 0;
       width: 48px;
     }
