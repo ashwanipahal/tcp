@@ -16,6 +16,30 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
       numberOfLines={null}
       textDecoration={null}
     />
+    <FormSection
+      name="shipmentMethods"
+    >
+      <PaymentMethods
+        formName="checkoutBillingPayment"
+        paymentMethods={
+          Array [
+            Object {
+              "displayName": undefined,
+              "id": "creditCard",
+            },
+            Object {
+              "displayName": undefined,
+              "id": "payPal",
+            },
+            Object {
+              "displayName": undefined,
+              "id": "venmo",
+            },
+          ]
+        }
+        selectedPaymentId={null}
+      />
+    </FormSection>
     <AddNewCCForm
       addNewCCState={false}
       billingData={Object {}}
@@ -116,6 +140,54 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       numberOfLines={null}
       textDecoration={null}
     />
+    <FormSection
+      name="shipmentMethods"
+    >
+      <PaymentMethods
+        dispatch={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                Object {
+                  "meta": Object {
+                    "field": "cardType",
+                    "form": "checkoutBilling",
+                    "persistentSubmitErrors": undefined,
+                    "touch": undefined,
+                  },
+                  "payload": "VISA",
+                  "type": "@@redux-form/CHANGE",
+                },
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        formName="checkoutBillingPayment"
+        paymentMethods={
+          Array [
+            Object {
+              "displayName": undefined,
+              "id": "creditCard",
+            },
+            Object {
+              "displayName": undefined,
+              "id": "payPal",
+            },
+            Object {
+              "displayName": undefined,
+              "id": "venmo",
+            },
+          ]
+        }
+        selectedPaymentId="creditCard"
+      />
+    </FormSection>
     <AddNewCCForm
       addNewCCState={false}
       billingData={Object {}}
