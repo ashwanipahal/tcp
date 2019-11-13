@@ -1,7 +1,7 @@
 // @flow
 import type { Saga } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 import { addGiftCardFailure, addGiftCardSuccess } from './AddGiftCard.actions';
 import { clearCardListTTL } from '../../container/Payment.actions';
@@ -15,12 +15,11 @@ export function* addGiftCard({
   try {
     yield put(setLoaderState(true));
     const response = yield call(addGiftCardApi, payload);
+    yield put(setLoaderState(false));
     if (response && response.body) {
       yield put(clearCardListTTL());
-      yield put(setLoaderState(false));
       return yield put(addGiftCardSuccess());
     }
-    yield put(setLoaderState(false));
     return yield put(addGiftCardFailure());
   } catch (err) {
     let error = {};

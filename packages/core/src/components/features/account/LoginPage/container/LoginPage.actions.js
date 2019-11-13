@@ -14,10 +14,10 @@ export const setLoginModalMountedState = payload => {
     payload,
   };
 };
-export const setLoadingState = payload => {
+export const setLoginLoadingState = payload => {
   return {
     payload,
-    type: LOGINPAGE_CONSTANTS.SET_LOADING_STATE,
+    type: LOGINPAGE_CONSTANTS.SET_LOGIN_LOADING_STATE,
   };
 };
 export const resetLoginInfo = payload => {

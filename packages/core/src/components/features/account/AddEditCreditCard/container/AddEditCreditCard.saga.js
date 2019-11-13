@@ -1,5 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
 import constants from './AddEditCreditCard.constants';
 import { addCreditCardSuccess, addCreditCardError } from './AddEditCreditCard.actions';
 import { addCreditCard, updateCreditCard } from '../../../../../services/abstractors/account';
@@ -92,12 +92,11 @@ export function* updateCreditCardSaga({ payload }, fromCheckout) {
     yield put(setLoaderState(false));
     return yield put(addCreditCardSuccess({ response }));
   } catch (err) {
+    yield put(setLoaderState(false));
     if (fromCheckout) {
-      yield put(setLoaderState(false));
       throw err;
     }
     let error = {};
-    yield put(setLoaderState(false));
     /* istanbul ignore else */
     error = err;
     if (error && error.response) {

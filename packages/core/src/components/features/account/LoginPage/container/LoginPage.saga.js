@@ -3,7 +3,11 @@ import logger from '@tcp/core/src/utils/loggerInstance';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import { setLoginInfo, setCheckoutModalMountedState, setLoadingState } from './LoginPage.actions';
+import {
+  setLoginInfo,
+  setCheckoutModalMountedState,
+  setLoginLoadingState,
+} from './LoginPage.actions';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
@@ -19,11 +23,11 @@ const notIsLocalHost = siteOrigin => {
 };
 
 export function* loginSaga({ payload, afterLoginHandler }) {
-  yield put(setLoadingState({ isLoading: true }));
+  yield put(setLoginLoadingState({ isLoading: true }));
   try {
     const response = yield call(login, payload);
     if (response.success) {
-      yield put(setLoadingState({ isLoading: false }));
+      yield put(setLoginLoadingState({ isLoading: false }));
       yield put(getUserInfo());
       yield put(setLoginModalMountedState({ state: false }));
       if (afterLoginHandler) {
@@ -49,7 +53,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
     }
     return yield put(setLoginInfo(response));
   } catch (err) {
-    yield put(setLoadingState({ isLoading: false }));
+    yield put(setLoginLoadingState({ isLoading: false }));
     const { errorCode, errorMessage, errorResponse } = err;
     yield put(
       setLoginInfo({

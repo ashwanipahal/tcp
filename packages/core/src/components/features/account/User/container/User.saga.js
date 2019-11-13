@@ -1,7 +1,7 @@
 import { all, call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { submitUserSurvey } from '@tcp/core/src/services/abstractors/account/UpdateProfileInfo';
-import { setLoaderState } from '@tcp/web/src/components/features/content/Loader/container/Loader.actions';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader';
 import { updateProfileSuccess } from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.actions';
 import {
   setCountry,
