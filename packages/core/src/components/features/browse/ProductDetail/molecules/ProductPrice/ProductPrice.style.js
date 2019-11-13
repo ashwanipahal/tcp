@@ -5,6 +5,7 @@ const productPriceStyle = css`
     text-decoration: line-through;
   }
   .badge {
+    line-height: 2.2;
     margin-left: 8px;
   }
   .list-badge-container {
