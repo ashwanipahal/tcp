@@ -19,7 +19,7 @@ import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
 import CheckoutPageEmptyBag from '../molecules/CheckoutPageEmptyBag';
 import checkoutUtil from '../util/utility';
-// import CheckoutProgressUtils from '../../../../../../../web/src/components/features/content/CheckoutProgressIndicator/utils/utils';
+import { getCurrentSection, updateAnalyticsData, getFormLoad } from './CheckoutPage.view.util';
 
 class CheckoutPage extends React.PureComponent {
   constructor(props) {
@@ -52,32 +52,15 @@ class CheckoutPage extends React.PureComponent {
     ) {
       scrollToParticularElement(this.pageServerError);
     }
+    updateAnalyticsData(this.props, prevProps);
   }
-
-  getFormLoad = (pickupInitialValues, isGuest) => {
-    return !!(
-      isGuest ||
-      (pickupInitialValues &&
-        pickupInitialValues.pickUpContact &&
-        pickupInitialValues.pickUpContact.firstName)
-    );
-  };
-
-  /**
-   * This method returns the current checkout section
-   */
-  getCurrentSection = () => {
-    const { router } = this.props;
-    const section = router.query.section || router.query.subSection;
-    return section || CHECKOUT_STAGES.SHIPPING;
-  };
 
   /**
    * This method will set venmo banner state once it is visible, so that it won't be visible
    * once user comes back
    */
   isVenmoPickupDisplayed = () => {
-    const currentSection = this.getCurrentSection();
+    const currentSection = getCurrentSection(this.props);
     let venmoPickupDisplayed = false;
     if (currentSection && currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP) {
       venmoPickupDisplayed = checkoutSelectors.isVenmoPickupBannerDisplayed();
@@ -90,7 +73,7 @@ class CheckoutPage extends React.PureComponent {
    * once user comes back
    */
   isVenmoShippingDisplayed = () => {
-    const currentSection = this.getCurrentSection();
+    const currentSection = getCurrentSection(this.props);
     let venmoShippingDisplayed = false;
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING) {
       venmoShippingDisplayed = checkoutSelectors.isVenmoShippingBannerDisplayed();
@@ -159,17 +142,23 @@ class CheckoutPage extends React.PureComponent {
       submitReview,
       isVenmoPaymentInProgress,
       setVenmoPickupState,
+      setVenmoShippingState,
+      verifyAddressAction,
+      formatPayload,
+      submitVerifiedShippingAddressData,
+      isExpressCheckout,
+      initShippingPage,
+      shippingMethod,
+      pickupDidMount,
     } = this.props;
-    const { setVenmoShippingState, verifyAddressAction, formatPayload } = this.props;
-    const { submitVerifiedShippingAddressData, isExpressCheckout, initShippingPage } = this.props;
-    const { shippingMethod, pickupDidMount, isHasPickUpAlternatePerson } = this.props;
-    const { pickUpAlternatePerson, pickUpContactPerson, pickUpContactAlternate } = this.props;
-    const { toggleCountrySelector, clearCheckoutServerError, checkoutServerError } = this.props;
+    const { isHasPickUpAlternatePerson, pickUpAlternatePerson, pickUpContactPerson } = this.props;
+    const { pickUpContactAlternate, checkoutServerError, toggleCountrySelector } = this.props;
+    const { clearCheckoutServerError, setClickAnalyticsDataCheckout, cartOrderItems } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
-    const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
+    const isFormLoad = getFormLoad(pickupInitialValues, isGuest);
     const { shipmentMethods } = shippingProps;
 
     return (
@@ -205,6 +194,8 @@ class CheckoutPage extends React.PureComponent {
             pageCategory={currentSection.toLowerCase()}
             cartOrderItemsCount={cartOrderItemsCount}
             checkoutPageEmptyBagLabels={checkoutPageEmptyBagLabels}
+            setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
+            cartOrderItems={cartOrderItems}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING && (
@@ -444,6 +435,8 @@ CheckoutPage.propTypes = {
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   clearCheckoutServerError: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
+  updateCheckoutPageData: PropTypes.func.isRequired,
   updateRTPS: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
 };
