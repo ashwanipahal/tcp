@@ -146,9 +146,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Girl"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -164,7 +163,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined0"
@@ -217,9 +215,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Toddler Girl alt"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -235,7 +232,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined1"
@@ -288,9 +284,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Boy"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -306,7 +301,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined2"
@@ -359,9 +353,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Toddler Boy alt"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -377,7 +370,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined3"
@@ -430,9 +422,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Baby"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -448,7 +439,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined4"
@@ -501,9 +491,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Girl"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -519,7 +508,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined5"
@@ -572,9 +560,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Girl"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -590,7 +577,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined6"
@@ -643,9 +629,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(DamImage)
+        <Styled(Styled(DamImage))
           alt="Girl"
-          borderRadius={0}
           crop=""
           height={228}
           host=""
@@ -661,7 +646,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
             }
           }
           itemBrand=""
-          marginBottom={4}
           source=""
           swatchConfig=""
           testID="undefined7"
