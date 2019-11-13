@@ -85,7 +85,7 @@ class ProductBasicInfo extends React.Component {
             ) : (
               title
             )}
-            {
+            {!isGiftCard && (
               <div className="wishlist-container">
                 {!isBundleProduct &&
                   WishListIcon(
@@ -95,7 +95,7 @@ class ProductBasicInfo extends React.Component {
                     // itemNotAvailable
                   )}
               </div>
-            }
+            )}
           </div>
           {/* TODO - fix it with bundle product requirement */}
           {/* {!isBundleProduct && !isGiftCard && isRatingsVisible && <ProductRating ratingsProductId={ratingsProductId} /> } */}

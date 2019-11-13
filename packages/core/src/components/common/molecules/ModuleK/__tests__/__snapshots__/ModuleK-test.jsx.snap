@@ -230,6 +230,7 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
     letter-spacing: -0.5px;
+    line-height: 46px;
     margin-bottom: ",
                 [Function],
                 ";
@@ -343,19 +344,21 @@ exports[`ModuleK component renders correctly 1`] = `
     }
   }
 
-  /* Module M Heading Styles */
-  .medium_text_subpromo {
+  .spaced_text_regular_black {
+    display: block;
     color: ",
                 [Function],
                 ";
     font-family: ",
                 [Function],
                 ";
+    font-weight: ",
+                [Function],
+                ";
     font-size: ",
                 [Function],
                 ";
-    font-weight: normal;
-    text-align: center;
+    letter-spacing: 2px;
 
     @media ",
                 [Function],
@@ -626,6 +629,7 @@ exports[`ModuleK component renders correctly 1`] = `
       outline: none;
       background: transparent;
       padding: 0;
+
       &:before {
         content: '';
         box-sizing: border-box;

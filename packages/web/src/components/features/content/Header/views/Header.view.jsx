@@ -5,7 +5,6 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary/errorBoundary';
 import OverlayModal from '@tcp/core/src/components/features/account/OverlayModal';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import SpinnerOverlay from '@tcp/core/src/components/common/atoms/SpinnerOverlay';
 import TrackOrder from '@tcp/core/src/components/features/account/TrackOrder';
 import PickupStoreModal from '@tcp/core/src/components/common/organisms/PickupStoreModal';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -97,6 +96,7 @@ class Header extends React.PureComponent {
       favStore,
       isPickupModalOpen,
       loyaltyPromoBanner,
+      setClickAnalyticsData,
     } = this.props;
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
@@ -134,6 +134,7 @@ class Header extends React.PureComponent {
           openMiniBagDispatch={openMiniBagDispatch}
           store={favStore}
           labels={labels}
+          setClickAnalyticsData={setClickAnalyticsData}
         />
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
@@ -163,7 +164,6 @@ class Header extends React.PureComponent {
         <TrackOrder />
         {isPickupModalOpen ? <PickupStoreModal /> : null}
         <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
-        <SpinnerOverlay />
       </header>
     );
   }
@@ -202,6 +202,7 @@ Header.propTypes = {
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
   isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
