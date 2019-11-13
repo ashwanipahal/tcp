@@ -206,7 +206,7 @@ class DropDown extends React.PureComponent<Props> {
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         {typeof label !== 'function' ? (
           <BodyCopy
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs13"
             textAlign={variation === 'primary' || variation === 'secondary' ? 'center' : ''}
             color={itemStyle.color}

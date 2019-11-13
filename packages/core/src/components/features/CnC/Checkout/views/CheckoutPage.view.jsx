@@ -27,9 +27,10 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router } = this.props;
+    const { router, setCheckoutStage } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    setCheckoutStage(currentSection);
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
       routerPush('/', '/');
     }
@@ -160,13 +161,9 @@ class CheckoutPage extends React.PureComponent {
       shippingMethod,
       pickupDidMount,
       isHasPickUpAlternatePerson,
-      pickUpAlternatePerson,
-      pickUpContactPerson,
-      pickUpContactAlternate,
-      checkoutServerError,
-      toggleCountrySelector,
-      clearCheckoutServerError,
     } = this.props;
+    const { pickUpAlternatePerson, pickUpContactPerson, pickUpContactAlternate } = this.props;
+    const { toggleCountrySelector, clearCheckoutServerError, checkoutServerError } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
@@ -446,6 +443,8 @@ CheckoutPage.propTypes = {
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   clearCheckoutServerError: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  updateRTPS: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 CheckoutPage.defaultProps = {

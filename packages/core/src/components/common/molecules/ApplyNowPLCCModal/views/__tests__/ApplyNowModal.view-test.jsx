@@ -21,9 +21,20 @@ describe('ApplyNowModalWrapper component', () => {
     isModalOpen: true,
   };
 
-  const component = shallow(<StyledApplyNowModalVanilla {...props} />);
-
   it('should renders correctly', () => {
+    props.isRtpsFlow = true;
+    const component = shallow(<StyledApplyNowModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+  it('should renders correctly with rtps false ', () => {
+    props.isRtpsFlow = false;
+    const component = shallow(<StyledApplyNowModalVanilla {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should renders correctly if isPLCCModalOpen is true', () => {
+    props.isPLCCModalOpen = true;
+    const tree = shallow(<StyledApplyNowModalVanilla {...props} />);
+    expect(tree).toMatchSnapshot();
   });
 });

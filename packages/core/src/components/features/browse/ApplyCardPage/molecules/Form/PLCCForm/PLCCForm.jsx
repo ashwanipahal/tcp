@@ -173,6 +173,8 @@ class PLCCForm extends React.PureComponent {
       isPLCCModalFlow,
       applicationStatus,
       invalid,
+      isRtpsFlow,
+      closePLCCModal,
     } = this.props;
     const { isIdleModalActive, isTimedOutModalActive } = this.state;
     const bagItems = getCartItemCount();
@@ -187,15 +189,17 @@ class PLCCForm extends React.PureComponent {
                 creditCardHeader={plccData && plccData.credit_card_header}
               />
             </Row>
-            <Row fullBleed>
-              <Col
-                key="Prescreen_code_link"
-                data-locator="Prescreen_code_link"
-                colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
-              >
-                <PrescreenCode labels={labels} />
-              </Col>
-            </Row>
+            {!isRtpsFlow && (
+              <Row fullBleed>
+                <Col
+                  key="Prescreen_code_link"
+                  data-locator="Prescreen_code_link"
+                  colSize={{ large: getPageViewGridRowSize(isPLCCModalFlow), medium: 8, small: 6 }}
+                >
+                  <PrescreenCode labels={labels} />
+                </Col>
+              </Row>
+            )}
             <ContactInformationFormWrapper
               labels={labels}
               dispatch={dispatch}
@@ -308,7 +312,7 @@ class PLCCForm extends React.PureComponent {
                   <BodyCopy
                     fontFamily="secondary"
                     component="div"
-                    onClick={backToHome}
+                    onClick={() => (isRtpsFlow ? closePLCCModal() : backToHome)}
                     textAlign="center"
                     tabIndex="0"
                   >
@@ -359,6 +363,8 @@ PLCCForm.propTypes = {
     plcc_form_nothanks: PropTypes.string.isRequired,
   }).isRequired,
   invalid: PropTypes.bool,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
 };
 
 PLCCForm.defaultProps = {
