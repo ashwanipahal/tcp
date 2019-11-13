@@ -77,5 +77,9 @@ const styles = css`
     font-weight: bold;
   }
 `;
-
+export const customSpinnerStyle = css`
+  .spinner-overlay {
+    position: absolute;
+  }
+`;
 export default styles;

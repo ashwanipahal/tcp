@@ -22,29 +22,31 @@ class GiftServices extends React.PureComponent {
     super(props);
     const { isGiftServicesChecked, initialValues, cartOrderItems } = this.props;
     const productsData = [];
-    cartOrderItems.map(tile => {
-      const productDetail = getProductDetails(tile);
-      const {
-        itemInfo: { itemId, color, name, offerPrice, size, listPrice },
-        productInfo: { skuId, upc, productPartNumber },
-      } = productDetail;
+    if (cartOrderItems) {
+      cartOrderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        const {
+          itemInfo: { itemId, color, name, offerPrice, size, listPrice },
+          productInfo: { skuId, upc, productPartNumber },
+        } = productDetail;
 
-      const prodData = {
-        color,
-        id: itemId,
-        name,
-        price: offerPrice,
-        extPrice: offerPrice,
-        sflExtPrice: offerPrice,
-        listPrice,
-        partNumber: productPartNumber,
-        size,
-        upc,
-        sku: skuId.toString(),
-      };
-      productsData.push(prodData);
-      return prodData;
-    });
+        const prodData = {
+          color,
+          id: itemId,
+          name,
+          price: offerPrice,
+          extPrice: offerPrice,
+          sflExtPrice: offerPrice,
+          listPrice,
+          partNumber: productPartNumber,
+          size,
+          upc,
+          sku: skuId.toString(),
+        };
+        productsData.push(prodData);
+        return prodData;
+      });
+    }
     this.state = {
       detailStatus: false,
       isChecked: isGiftServicesChecked,

@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JeansModuleVanilla should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="white"
+      dataLocator="lbl_promo_jeans_module"
+      fontSize="fs14"
+      fontWeight="semibold"
+      margin={null}
+      mobileFontFamily="secondary"
+      numberOfLines={null}
+      style={
+        Object {
+          "height": 18,
+          "justifyContent": "center",
+          "textAlign": "center",
+          "transform": Array [
+            Object {
+              "rotate": "-90deg",
+            },
+          ],
+          "width": 312,
+        }
+      }
+      text="YOUR DENIM PLACE"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <BannerCarousel
+    customRenderer={[Function]}
+    data={
+      Array [
+        Object {
+          "__typename": "ImageTileWrapper",
+          "headLine": Array [
+            Object {
+              "style": "",
+              "text": "Headline 1",
+            },
+          ],
+          "imageStyled": Array [
+            Object {
+              "__typename": "StyledLinkedImage",
+              "image": Object {
+                "alt": "Jeans 1",
+                "title": "Jeans 1",
+                "url": "/Overlay_jneg6g.jpg",
+              },
+              "styled": Object {
+                "text": "FASHION",
+              },
+            },
+          ],
+          "singleCTAButton": Object {
+            "__typename": "Button",
+            "target": "",
+            "text": "Abc",
+            "title": "",
+            "url": "/dummy/dummy",
+          },
+          "subHeadLine": Array [
+            Object {
+              "style": "",
+              "text": "Sub headline 2",
+            },
+          ],
+          "textList": Array [
+            Object {
+              "__typename": "Text",
+              "text": "text text text",
+            },
+          ],
+        },
+        Object {
+          "__typename": "ImageTileWrapper",
+          "headLine": Array [
+            Object {
+              "style": "",
+              "text": "Headline 2",
+            },
+          ],
+          "imageStyled": Array [
+            Object {
+              "image": Object {
+                "alt": "test",
+                "title": "test",
+                "url": "/Overlay_jneg6g.jpg",
+              },
+              "styled": Object {
+                "text": "SUPER SKINNY",
+              },
+            },
+          ],
+          "singleCTAButton": Object {
+            "__typename": "Button",
+            "target": "",
+            "text": "SHOP NOW",
+            "title": "",
+            "url": "/dummy",
+          },
+          "subHeadLine": Array [
+            Object {
+              "style": "",
+              "text": "Subheadline 2",
+            },
+          ],
+          "textList": Array [
+            Object {
+              "__typename": "Text",
+              "text": "dummy 2",
+            },
+            Object {
+              "__typename": "Text",
+              "text": "more dummy text",
+            },
+          ],
+        },
+      ]
+    }
+    getImageUrl={[Function]}
+    imageHeight={250}
+    imageWidth={125}
+    itemBackgroundColor="#f1f0f0"
+    itemMargin={null}
+    itemPadding="0 8px 0 0"
+    margins={null}
+    onImageClick={[Function]}
+  />
+</Styled(View)>
+`;

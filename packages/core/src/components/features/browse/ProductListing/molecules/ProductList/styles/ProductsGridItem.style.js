@@ -190,6 +190,7 @@ const styles = css`
   }
 
   .product-image-container {
+    height: 320px;
     position: relative;
   }
 

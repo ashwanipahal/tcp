@@ -25,6 +25,7 @@ import {
   ModuleR,
   ModuleQ,
   ModuleS,
+  ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
@@ -54,6 +55,7 @@ const modulesMap = {
   moduleS: ModuleS,
   moduleQ: ModuleQ,
   moduleT: ModuleT,
+  moduleE: ModuleE,
   moduleG: ModuleG,
 };
 
@@ -177,7 +179,6 @@ class HomePageView extends React.PureComponent<Props> {
           variation="moduleO,moduleP"
           page="homepageTest"
         />
-        <QuickViewModal navigation={navigation} />
         {apiConfig.previewEnvId === ENV_PREVIEW ? (
           <>
             <TextComponent>Select scheduled preview date</TextComponent>

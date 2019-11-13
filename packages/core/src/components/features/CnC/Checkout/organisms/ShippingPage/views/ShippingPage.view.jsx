@@ -37,7 +37,7 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
-    checkoutRoutingDone: PropTypes.bool.isRequired,
+    // checkoutRoutingDone: PropTypes.bool.isRequired,
     formatPayload: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
@@ -59,6 +59,7 @@ export default class ShippingPage extends React.PureComponent {
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
     pickUpContactPerson: PropTypes.shape({}).isRequired,
+    isLoadingShippingMethods: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -87,6 +88,7 @@ export default class ShippingPage extends React.PureComponent {
     isVenmoShippingDisplayed: true,
     setVenmoPickupState: () => {},
     shippingPhoneAndEmail: null,
+    isLoadingShippingMethods: false,
   };
 
   constructor(props) {
@@ -373,13 +375,14 @@ export default class ShippingPage extends React.PureComponent {
       isSaveToAddressBookChecked,
       userAddresses,
       onFileAddressKey,
+      isLoadingShippingMethods,
     } = this.props;
     const { isMobile, newUserPhoneNo, shippingAddressId } = this.props;
     const { setAsDefaultShipping, labels, address, syncErrors } = this.props;
     const { isSubmitting, formatPayload, ServerErrors, checkoutServerError } = this.props;
     const { shippingAddress, isVenmoPaymentInProgress, isVenmoShippingDisplayed } = this.props;
     const { addressLabels, isOrderUpdateChecked, isGiftServicesChecked } = this.props;
-    const { toggleCountrySelector, pageCategory, checkoutRoutingDone } = this.props;
+    const { toggleCountrySelector, pageCategory } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     let { submitData } = this;
@@ -387,9 +390,9 @@ export default class ShippingPage extends React.PureComponent {
       submitData = this.submitShippingAddressData;
     }
     const shippingAddressData = (submitData && submitData.shipTo.address) || {};
-    if (!checkoutRoutingDone) {
-      return <div>Loading....</div>;
-    }
+    // if (!checkoutRoutingDone) {
+    //   return <div>Loading....</div>;
+    // }
     return (
       <>
         {shipmentMethods && shipmentMethods.length > 0 && (
@@ -442,6 +445,7 @@ export default class ShippingPage extends React.PureComponent {
               isVenmoShippingDisplayed={isVenmoShippingDisplayed}
               ServerErrors={ServerErrors}
               pageCategory={pageCategory}
+              isLoadingShippingMethods={isLoadingShippingMethods}
             />
             <AddressVerification
               onSuccess={this.submitVerifiedShippingAddressData}
