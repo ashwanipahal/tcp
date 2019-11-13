@@ -12,9 +12,9 @@ const TILE_SHADOW = `
 `;
 
 const getAdditionalStyle = props => {
-  const { marginBottom } = props;
+  const { isCompleteTheLook } = props;
   return {
-    ...(marginBottom && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
+    ...(!isCompleteTheLook && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
   };
 };
 

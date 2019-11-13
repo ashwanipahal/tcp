@@ -61,7 +61,7 @@ function getCarouselSlide(
   moduleQMainTile,
   ignoreLazyLoadImage,
   hostLazyLoad,
-  showOutfitItems
+  isCompleteTheLook
 ) {
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
@@ -99,7 +99,7 @@ function getCarouselSlide(
               textColor="gray.900"
             />
           </OutfitMainTileWrapper>
-          {showOutfitItems && (
+          {!isCompleteTheLook && (
             <OutfitItemsWrapper>
               {outfitItemsToShow.map(item => {
                 const { name: alt, remoteId, smallImageUrl } = item;
@@ -166,8 +166,7 @@ const ModuleQ = props => {
     hideTabs,
     selectedColorProductId,
     showRelatedOutfitHeader,
-    marginBottom,
-    showOutfitItems,
+    isCompleteTheLook,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -192,7 +191,7 @@ const ModuleQ = props => {
       shopThisLookLabel,
       ignoreLazyLoadImage,
       hostLazyLoad,
-      showOutfitItems
+      isCompleteTheLook
     );
   };
 
@@ -203,7 +202,7 @@ const ModuleQ = props => {
   const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
-    <Container marginBottom={marginBottom} bgClass={bgClass}>
+    <Container isCompleteTheLook={isCompleteTheLook} bgClass={bgClass}>
       {!hideTabs ? (
         <MessageContainer>
           {headerText && (
@@ -311,8 +310,7 @@ ModuleQ.defaultProps = {
   selectedColorProductId: '',
   headerText: [],
   showRelatedOutfitHeader: null,
-  marginBottom: true,
-  showOutfitItems: true,
+  isCompleteTheLook: false,
 };
 
 ModuleQ.propTypes = {
@@ -357,8 +355,7 @@ ModuleQ.propTypes = {
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
-  marginBottom: PropTypes.bool,
-  showOutfitItems: PropTypes.bool,
+  isCompleteTheLook: PropTypes.bool,
 };
 
 export default ModuleQ;

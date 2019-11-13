@@ -46,7 +46,7 @@ class ModuleQ extends React.PureComponent {
    */
   getSlideItem = (item, index) => {
     const { id, items, largeImageUrl, pdpUrl } = item;
-    const { shopThisLookLabel, showOutfitItems } = this.props;
+    const { shopThisLookLabel, isCompleteTheLook } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
     const outfitParams = pdpUrl && pdpUrl.split('/');
@@ -76,7 +76,7 @@ class ModuleQ extends React.PureComponent {
               </Anchor>
             </div>
           </div>
-          {showOutfitItems && (
+          {!isCompleteTheLook && (
             <div className="looks-images-wrapper">
               {looksImages.map(({ smallImageUrl, name, remoteId }) => {
                 return (
@@ -261,7 +261,7 @@ ModuleQ.defaultProps = {
   hideTabs: false,
   selectedColorProductId: '',
   showRelatedOutfitHeader: null,
-  showOutfitItems: true,
+  isCompleteTheLook: false,
 };
 
 ModuleQ.propTypes = {
@@ -301,7 +301,7 @@ ModuleQ.propTypes = {
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
-  showOutfitItems: PropTypes.bool,
+  isCompleteTheLook: PropTypes.bool,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);
