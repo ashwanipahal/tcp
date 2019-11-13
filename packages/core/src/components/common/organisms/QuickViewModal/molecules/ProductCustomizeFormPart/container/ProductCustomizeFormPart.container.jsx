@@ -52,7 +52,7 @@ class ProductCustomizeFormPartContainer extends React.Component {
   };
 
   render() {
-    const { productInfo, formRef, currencyExchange } = this.props;
+    const { productInfo, formRef, currencyExchange, onCloseClick } = this.props;
     const { currentColorEntry, formEnabled } = this.state;
     const imageUrl = currentColorEntry
       ? productInfo.imagesByColor[currentColorEntry.color.name] &&
@@ -71,6 +71,7 @@ class ProductCustomizeFormPartContainer extends React.Component {
         formRef={formRef}
         formEnabled={formEnabled}
         currencyExchange={currencyExchange}
+        onCloseClick={onCloseClick}
       />
     );
   }
