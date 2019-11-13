@@ -239,10 +239,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-              "26px",
-              ";
     appearance: none;
     background: url(",
               "/static/images/carrot-small-down.png",
@@ -269,7 +265,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               [Function],
               ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+              "26px",
+              " 0 ",
               [Function],
               ";
     width: 100%;
@@ -297,8 +295,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     padding-bottom: ",
               [Function],
               ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -416,10 +412,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-              "26px",
-              ";
     appearance: none;
     background: url(",
               "/static/images/carrot-small-down.png",
@@ -446,7 +438,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               [Function],
               ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+              "26px",
+              " 0 ",
               [Function],
               ";
     width: 100%;
@@ -474,8 +468,6 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     padding-bottom: ",
               [Function],
               ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
