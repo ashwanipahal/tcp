@@ -439,6 +439,7 @@ CheckoutPage.propTypes = {
   updateCheckoutPageData: PropTypes.func.isRequired,
   updateRTPS: PropTypes.func.isRequired,
   setCheckoutStage: PropTypes.func.isRequired,
+  pageData: PropTypes.shape({}),
 };
 
 CheckoutPage.defaultProps = {
@@ -447,6 +448,7 @@ CheckoutPage.defaultProps = {
   setVenmoShippingState: () => {},
   isExpressCheckout: false,
   shippingMethod: {},
+  pageData: {},
 };
 
 export default CheckoutPage;

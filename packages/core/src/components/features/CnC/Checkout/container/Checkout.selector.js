@@ -1017,6 +1017,10 @@ const getshowRTPSOnReview = createSelector(
   }
 );
 
+export const getPageData = state => {
+  return state.pageData;
+};
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
