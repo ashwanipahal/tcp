@@ -23,6 +23,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   shouldCloseOnOverlayClick={false}
 >
   <Connect(ApplyCardLayoutContainer)
+    closePLCCModal={[MockFunction]}
     isPLCCModalFlow={true}
   />
 </Styled(Modal)>

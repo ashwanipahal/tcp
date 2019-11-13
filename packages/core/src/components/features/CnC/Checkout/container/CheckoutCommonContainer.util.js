@@ -16,8 +16,6 @@ import CHECKOUT_ACTIONS, {
   setVenmoPickupMessageState,
   setVenmoShippingMessageState,
   submitVerifiedAddressData,
-  initCheckoutSectionPageAction,
-  toggleCountrySelectorModal,
 } from './Checkout.action';
 import selectors, {
   isGuest as isGuestUser,
@@ -111,8 +109,12 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
 /* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: (router, isPaypalFlow) => dispatch(initCheckoutAction(router, isPaypalFlow)),
-    initCheckoutSectionPage: payload => dispatch(initCheckoutSectionPageAction(payload)),
+    initCheckout: (router, isPaypalFlow) => {
+      dispatch(initCheckoutAction(router, isPaypalFlow));
+    },
+    initCheckoutSectionPage: payload => {
+      dispatch(CHECKOUT_ACTIONS.initCheckoutSectionPageAction(payload));
+    },
     submitShipping: payload => {
       dispatch(submitShippingSection(payload));
     },
@@ -153,7 +155,7 @@ export const mapDispatchToProps = dispatch => {
     setVenmoShippingState: data => dispatch(setVenmoShippingMessageState(data)),
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
     toggleCountrySelector: payload => {
-      dispatch(toggleCountrySelectorModal(payload));
+      dispatch(CHECKOUT_ACTIONS.toggleCountrySelectorModal(payload));
     },
     setClickAnalyticsDataCheckout: payload => {
       dispatch(setClickAnalyticsData(payload));
@@ -252,6 +254,25 @@ export const mapStateToProps = state => {
     pickUpContactAlternate: selectors.getPickupInitialPickupSectionValues(state),
     cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     couponHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    isRTPSFlow: selectors.getIsRtpsFlow(state),
     isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
   };
+};
+
+export const callNeedHelpContent = props => {
+  const {
+    fetchNeedHelpContent,
+    needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId,
+  } = props;
+  fetchNeedHelpContent([
+    needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId,
+  ]);
 };

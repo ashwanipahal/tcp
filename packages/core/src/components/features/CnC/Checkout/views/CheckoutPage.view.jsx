@@ -27,9 +27,10 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { router } = this.props;
+    const { router, setCheckoutStage } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    setCheckoutStage(currentSection);
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
       routerPush('/', '/');
     }
@@ -152,6 +153,7 @@ class CheckoutPage extends React.PureComponent {
       setClickAnalyticsDataCheckout,
       cartOrderItems,
     } = this.props;
+
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
@@ -435,6 +437,8 @@ CheckoutPage.propTypes = {
   cartOrderItemsCount: PropTypes.number.isRequired,
   setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
   updateCheckoutPageData: PropTypes.func.isRequired,
+  updateRTPS: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 CheckoutPage.defaultProps = {

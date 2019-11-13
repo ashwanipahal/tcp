@@ -11,32 +11,25 @@ import {
   formatPayload,
   mapDispatchToProps,
   mapStateToProps,
+  callNeedHelpContent,
 } from './CheckoutCommonContainer.util';
 
 export class CheckoutContainer extends React.PureComponent<Props> {
   initialLoad = true;
 
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent, router, initCheckout } = this.props;
+    const { router, initCheckout } = this.props;
     const {
-      getGiftServicesContentGymId,
       isRegisteredUserCallDone,
-      getGiftServicesContentTcpId,
+      checkoutServerError,
+      clearCheckoutServerError,
       navigation,
-      couponHelpContentId,
     } = this.props;
-    const { cvvCodeInfoContentId, checkoutServerError, clearCheckoutServerError } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
       initCheckout(router, getPayPalFlag(navigation));
     }
-    fetchNeedHelpContent([
-      needHelpContentId,
-      getGiftServicesContentTcpId,
-      getGiftServicesContentGymId,
-      cvvCodeInfoContentId,
-      couponHelpContentId,
-    ]);
+    callNeedHelpContent(this.props);
     if (checkoutServerError) {
       clearCheckoutServerError({});
     }
@@ -44,9 +37,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
 
   componentDidUpdate(prevProps) {
     const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-    const { isRegisteredUserCallDone, router, initCheckout, navigation } = this.props;
+    const { isRegisteredUserCallDone, router, initCheckout, navigation, isRTPSFlow } = this.props;
     /* istanbul ignore else */
-    if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
+    if (
+      prevIsRegisteredUserCallDone !== isRegisteredUserCallDone &&
+      isRegisteredUserCallDone &&
+      !isRTPSFlow
+    ) {
       initCheckout(router, getPayPalFlag(navigation));
     }
   }
@@ -155,13 +152,13 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       shippingMethod,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
-      pickUpContactPerson,
-      pickUpContactAlternate,
       isPayPalWebViewEnable,
       setClickAnalyticsDataCheckout,
       updateCheckoutPageData,
+      dispatchReviewReduxForm,
     } = this.props;
-    const { dispatchReviewReduxForm, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
+    const { pickUpContactPerson, pickUpContactAlternate } = this.props;
+    const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const { toggleCountrySelector, checkoutPageEmptyBagLabels, isBagLoaded } = this.props;
     const { toastMessage, clearCheckoutServerError, cartOrderItemsCount } = this.props;
     const availableStages = checkoutUtil.getAvailableStages(

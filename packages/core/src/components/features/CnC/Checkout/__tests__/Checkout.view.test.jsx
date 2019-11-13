@@ -20,6 +20,7 @@ describe('CheckoutPageVanilla component', () => {
     shippingProps: {
       shipmentMethods: {},
     },
+    setCheckoutStage: jest.fn(),
   };
 
   const tree = shallow(<CheckoutPageVanilla {...initialProps} />);
@@ -38,6 +39,7 @@ describe('CheckoutPageVanilla component', () => {
       shippingProps: {
         shipmentMethods: {},
       },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
@@ -58,6 +60,7 @@ describe('CheckoutPageVanilla component', () => {
       shippingProps: {
         shipmentMethods: {},
       },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
@@ -106,6 +109,7 @@ describe('CheckoutPageVanilla component', () => {
       router: { query: { section: 'pickup', subSection: 'pickup' } },
       onPickupSubmit: () => {},
       reviewProps: { labels: {} },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();
