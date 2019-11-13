@@ -39,6 +39,7 @@ class SuggestionBox extends React.PureComponent {
               <BodyCopy component="div" className="recentBoxBody" lineHeight="39">
                 <ul>
                   {latestSearchResults.reverse().map(item => {
+                    const itemParts = item.split('<url>');
                     return (
                       <BodyCopy
                         component="li"
@@ -50,13 +51,17 @@ class SuggestionBox extends React.PureComponent {
                         <Anchor
                           noLink
                           className="suggestion-label"
-                          to={`/${getSiteId()}/search/${item}`}
+                          to={
+                            itemParts[1]
+                              ? `/${getSiteId()}${itemParts[1]}`
+                              : `/${getSiteId()}/search/${itemParts[0]}`
+                          }
                           onClick={e => {
                             e.preventDefault();
-                            redirectToSuggestedUrl(`${item}`);
+                            redirectToSuggestedUrl(`${itemParts[0]}`, itemParts[1]);
                           }}
                         >
-                          {item.charAt(0).toUpperCase() + item.slice(1)}
+                          {itemParts[0].charAt(0).toUpperCase() + itemParts[0].slice(1)}
                         </Anchor>
                       </BodyCopy>
                     );
