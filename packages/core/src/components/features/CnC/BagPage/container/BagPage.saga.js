@@ -267,7 +267,7 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
       true
     );
   } else {
-    utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout, { recalc });
+    utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout);
   }
 }
 
