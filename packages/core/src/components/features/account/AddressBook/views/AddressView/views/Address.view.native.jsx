@@ -115,6 +115,7 @@ export class AddressView extends React.Component {
           <StyledHeading>
             {getLabelValue(labels, 'ACC_LBL_ADDRESS_BOOK_HEADING', 'addressBook') && (
               <BodyCopy
+                fontFamily="secondary"
                 fontSize="fs16"
                 fontWeight="extrabold"
                 color="black"

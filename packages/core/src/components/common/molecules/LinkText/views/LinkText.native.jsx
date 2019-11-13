@@ -90,6 +90,18 @@ export const bodyCopyStyles = {
       />
     );
   },
+  spaced_text_regular_black: props => {
+    return (
+      <BodyCopy
+        color="gray.900"
+        fontFamily="primary"
+        fontSize="fs20"
+        fontWeight="medium"
+        textAlign="center"
+        {...props}
+      />
+    );
+  },
 };
 
 /**
