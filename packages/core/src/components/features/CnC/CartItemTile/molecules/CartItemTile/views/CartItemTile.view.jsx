@@ -138,7 +138,6 @@ class CartItemTile extends PureComponent {
       const { onQuickViewOpenClick, productDetail } = this.props;
       const { itemId, qty, color, size, fit } = productDetail.itemInfo;
       onQuickViewOpenClick({
-        fromBagPage: pageView === 'myBag',
         colorProductId: productNumber,
         orderInfo: {
           orderItemId: itemId,
@@ -495,14 +494,16 @@ class CartItemTile extends PureComponent {
     );
   };
 
+  // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol } = this.props;
+    const { currencySymbol, isBagPageSflSection } = this.props;
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-50' : 'padding-top-15';
     return (
-      <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
+      <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
         {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (

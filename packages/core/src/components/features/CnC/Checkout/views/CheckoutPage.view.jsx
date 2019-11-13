@@ -1,6 +1,9 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  setLoaderState,
+  setSectionLoaderState,
+} from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import PickUpFormPart from '../organisms/PickupPage';
 import ShippingPage from '../organisms/ShippingPage';
@@ -15,7 +18,12 @@ import ErrorMessage from '../../common/molecules/ErrorMessage';
 import { Anchor, Button } from '../../../../common/atoms';
 import CheckoutPageEmptyBag from '../molecules/CheckoutPageEmptyBag';
 import checkoutUtil from '../util/utility';
-import { getCurrentSection, updateAnalyticsData, getFormLoad } from './CheckoutPage.view.util';
+import {
+  getCurrentSection,
+  updateAnalyticsData,
+  getFormLoad,
+  propsTypes,
+} from './CheckoutPage.view.util';
 
 class CheckoutPage extends React.PureComponent {
   constructor(props) {
@@ -27,6 +35,9 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidMount() {
+    setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' });
+    setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' });
+    setLoaderState(false);
     const { router, setCheckoutStage } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
@@ -143,17 +154,10 @@ class CheckoutPage extends React.PureComponent {
       initShippingPage,
       shippingMethod,
       pickupDidMount,
-      isHasPickUpAlternatePerson,
-      pickUpAlternatePerson,
-      pickUpContactPerson,
-      pickUpContactAlternate,
-      checkoutServerError,
-      toggleCountrySelector,
-      clearCheckoutServerError,
-      setClickAnalyticsDataCheckout,
-      cartOrderItems,
     } = this.props;
-
+    const { isHasPickUpAlternatePerson, pickUpAlternatePerson, pickUpContactPerson } = this.props;
+    const { pickUpContactAlternate, checkoutServerError, toggleCountrySelector } = this.props;
+    const { clearCheckoutServerError, setClickAnalyticsDataCheckout, cartOrderItems } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
@@ -379,67 +383,7 @@ class CheckoutPage extends React.PureComponent {
   }
 }
 
-CheckoutPage.propTypes = {
-  isGuest: PropTypes.bool.isRequired,
-  isMobile: PropTypes.bool.isRequired,
-  isUsSite: PropTypes.bool.isRequired,
-  onEditModeChange: PropTypes.bool.isRequired,
-  isSmsUpdatesEnabled: PropTypes.bool.isRequired,
-  currentPhoneNumber: PropTypes.number.isRequired,
-  shippingProps: PropTypes.shape({}).isRequired,
-  billingProps: PropTypes.shape({}).isRequired,
-  isOrderUpdateChecked: PropTypes.bool.isRequired,
-  isGiftServicesChecked: PropTypes.bool.isRequired,
-  isBagLoaded: PropTypes.bool.isRequired,
-  isAlternateUpdateChecked: PropTypes.bool.isRequired,
-  pickupInitialValues: PropTypes.shape({}).isRequired,
-  pickUpLabels: PropTypes.shape({}).isRequired,
-  smsSignUpLabels: PropTypes.shape({}).isRequired,
-  labels: PropTypes.shape({}).isRequired,
-  router: PropTypes.shape({}).isRequired,
-  initialValues: PropTypes.shape({}).isRequired,
-  reviewProps: PropTypes.shape({}).isRequired,
-  submitReview: PropTypes.func.isRequired,
-  orderHasPickUp: PropTypes.bool.isRequired,
-  isRegisteredUserCallDone: PropTypes.bool.isRequired,
-  navigation: PropTypes.shape({}).isRequired,
-  submitShippingSection: PropTypes.func.isRequired,
-  loadShipmentMethods: PropTypes.func.isRequired,
-  verifyAddressAction: PropTypes.func.isRequired,
-  toggleCountrySelector: PropTypes.func.isRequired,
-  submitVerifiedShippingAddressData: PropTypes.func.isRequired,
-  onPickupSubmit: PropTypes.func.isRequired,
-  cartOrderItems: PropTypes.shape([]).isRequired,
-  orderHasShipping: PropTypes.bool.isRequired,
-  routeToPickupPage: PropTypes.func.isRequired,
-  pickupDidMount: PropTypes.func.isRequired,
-  updateShippingMethodSelection: PropTypes.func.isRequired,
-  updateShippingAddressData: PropTypes.func.isRequired,
-  addNewShippingAddressData: PropTypes.func.isRequired,
-  getIfCheckoutRoutingDone: PropTypes.bool.isRequired,
-  checkoutRoutingDone: PropTypes.bool.isRequired,
-  submitBilling: PropTypes.func.isRequired,
-  initShippingPage: PropTypes.func.isRequired,
-  formatPayload: PropTypes.func.isRequired,
-  isVenmoPaymentInProgress: PropTypes.bool,
-  setVenmoPickupState: PropTypes.func,
-  setVenmoShippingState: PropTypes.func,
-  checkoutServerError: PropTypes.shape({}).isRequired,
-  isExpressCheckout: PropTypes.bool,
-  shippingMethod: PropTypes.shape({}),
-  pickUpAlternatePerson: PropTypes.shape({}).isRequired,
-  dispatchReviewReduxForm: PropTypes.func.isRequired,
-  isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
-  pickUpContactPerson: PropTypes.shape({}).isRequired,
-  checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
-  pickUpContactAlternate: PropTypes.shape({}).isRequired,
-  clearCheckoutServerError: PropTypes.func.isRequired,
-  cartOrderItemsCount: PropTypes.number.isRequired,
-  setClickAnalyticsDataCheckout: PropTypes.func.isRequired,
-  updateCheckoutPageData: PropTypes.func.isRequired,
-  updateRTPS: PropTypes.func.isRequired,
-  setCheckoutStage: PropTypes.func.isRequired,
-};
+CheckoutPage.propTypes = propsTypes;
 
 CheckoutPage.defaultProps = {
   isVenmoPaymentInProgress: false,
@@ -447,6 +391,7 @@ CheckoutPage.defaultProps = {
   setVenmoShippingState: () => {},
   isExpressCheckout: false,
   shippingMethod: {},
+  pageData: {},
 };
 
 export default CheckoutPage;

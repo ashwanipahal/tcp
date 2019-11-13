@@ -59,7 +59,7 @@ export function* afterRemovingCartItem() {
  */
 export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
   try {
-    if (isMiniBag) {
+    if (isMiniBag || payload.isMiniBag) {
       yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
     } else {
       yield put(setLoaderState(true));
