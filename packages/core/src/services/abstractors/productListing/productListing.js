@@ -120,7 +120,7 @@ class ProductsDynamicAbstractor {
     }
     const loadedProductsPageData =
       state.SearchListingPage &&
-      state.SearchListingPage.get('loadedProductsPages').map(a => {
+      state.SearchListingPage.loadedProductsPages.map(a => {
         return a.length;
       });
 
@@ -132,7 +132,7 @@ class ProductsDynamicAbstractor {
   };
 
   getTotalProductsCount = state => {
-    return state.SearchListingPage ? state.SearchListingPage.get('totalProductsCount') : 0;
+    return state.SearchListingPage ? state.SearchListingPage.totalProductsCount : 0;
   };
 
   isMoreProductsApiCalled = (isSearch, pageNumber, state) => {

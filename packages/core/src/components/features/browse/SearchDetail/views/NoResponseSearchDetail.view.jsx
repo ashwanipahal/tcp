@@ -27,10 +27,6 @@ class NoResponseSearchDetailView extends React.PureComponent {
     this.getSearchResults = this.getSearchResults.bind(this);
   }
 
-  redirectToSearchPage = searchText => {
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
-  };
-
   changeSearchText = e => {
     e.preventDefault();
     const { startSearch, slpLabels, searchResults } = this.props;
@@ -55,7 +51,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     e.preventDefault();
     const searchText = this.searchInput.current.value;
     if (searchText) {
-      this.redirectToSearchPage(searchText);
+      this.redirectToSuggestedUrl(searchText);
     }
   };
 
@@ -63,7 +59,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
     let searchText = this.searchInput.current.value;
     if (searchText) {
       searchText = searchText.toLowerCase();
-      this.redirectToSearchPage(searchText);
+      this.redirectToSuggestedUrl(searchText);
     }
   };
 

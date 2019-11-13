@@ -39,6 +39,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
             ? getLabelValue(labels, 'lbl_payment_editCCHeading', 'paymentGC')
             : getLabelValue(labels, 'lbl_payment_addCCHeading', 'paymentGC')
         }
+        headingFontFamily="secondary"
       >
         <ModalViewWrapper>
           <AddEditCreditCard

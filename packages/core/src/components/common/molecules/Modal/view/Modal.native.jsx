@@ -128,7 +128,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
                   {heading && (
                     <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
                       <BodyCopy
-                        mobileFontFamily={headingFontFamily || 'primary'}
+                        fontFamily={headingFontFamily || 'primary'}
                         fontWeight={headingFontWeight || 'extrabold'}
                         textAlign={headingAlign}
                         fontSize={fontSize || 'fs16'}
