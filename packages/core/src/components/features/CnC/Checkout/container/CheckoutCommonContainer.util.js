@@ -30,3 +30,21 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
     isPaypalPostBack = getPayPalFlag(navigation);
   }
 };
+
+export const callNeedHelpContent = props => {
+  const {
+    fetchNeedHelpContent,
+    needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId,
+  } = props;
+  fetchNeedHelpContent([
+    needHelpContentId,
+    getGiftServicesContentTcpId,
+    getGiftServicesContentGymId,
+    cvvCodeInfoContentId,
+    couponHelpContentId,
+  ]);
+};

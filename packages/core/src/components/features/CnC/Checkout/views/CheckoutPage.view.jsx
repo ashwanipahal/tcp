@@ -34,9 +34,10 @@ class CheckoutPage extends React.PureComponent {
     setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' });
     setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' });
     setLoaderState(false);
-    const { router } = this.props;
+    const { router, setCheckoutStage } = this.props;
     const section = router.query.section || router.query.subSection;
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    setCheckoutStage(currentSection);
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION) {
       routerPush('/', '/');
     }
@@ -158,14 +159,12 @@ class CheckoutPage extends React.PureComponent {
       submitReview,
       isVenmoPaymentInProgress,
       setVenmoPickupState,
-      setVenmoShippingState,
-      verifyAddressAction,
-      formatPayload,
     } = this.props;
+    const { setVenmoShippingState, verifyAddressAction, formatPayload } = this.props;
     const { submitVerifiedShippingAddressData, isExpressCheckout, initShippingPage } = this.props;
     const { shippingMethod, pickupDidMount, isHasPickUpAlternatePerson } = this.props;
     const { pickUpAlternatePerson, pickUpContactPerson, pickUpContactAlternate } = this.props;
-    const { checkoutServerError, toggleCountrySelector, clearCheckoutServerError } = this.props;
+    const { toggleCountrySelector, clearCheckoutServerError, checkoutServerError } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
     const section = router.query.section || router.query.subSection;
@@ -445,6 +444,8 @@ CheckoutPage.propTypes = {
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   clearCheckoutServerError: PropTypes.func.isRequired,
   cartOrderItemsCount: PropTypes.number.isRequired,
+  updateRTPS: PropTypes.func.isRequired,
+  setCheckoutStage: PropTypes.func.isRequired,
 };
 
 CheckoutPage.defaultProps = {
