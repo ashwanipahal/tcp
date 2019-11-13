@@ -175,6 +175,15 @@ class AccountOverview extends PureComponent<Props> {
     openApplyNowModal({ isModalOpen: true });
   };
 
+  showSettingsModal = () => {
+    const { navigation, isUserLoggedIn } = this.props;
+    navigation.navigate('AppSettings', {
+      handleToggle: this.toggleModal,
+      noHeader: true,
+      isUserLoggedIn,
+    });
+  };
+
   toggleModal = ({ getComponentId }) => {
     this.setState(state => ({
       showModal: !state.showModal,
@@ -460,7 +469,13 @@ class AccountOverview extends PureComponent<Props> {
             handleComponentChange={this.showTrackOrderModal}
           />
           <UnderlineStyle />
-          <Panel title={getLabelValue(labels, 'lbl_overview_app_settings')} isVariationTypeLink />
+
+          <Panel
+            title={getLabelValue(labels, 'lbl_overview_app_settings')}
+            isVariationTypeLink
+            handleComponentChange={this.showSettingsModal}
+          />
+
           <Panel title={getLabelValue(labels, 'lbl_overview_help')} isVariationTypeLink />
           <Panel title={getLabelValue(labels, 'lbl_overview_messages')} isVariationTypeLink />
         </>
