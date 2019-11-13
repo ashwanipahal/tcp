@@ -66,6 +66,10 @@ const buildQuery = ({ brand, country, channel, lang }) => `
                 text
                 style
               }
+              set {
+                key
+                val
+              }
             }
           }
         }

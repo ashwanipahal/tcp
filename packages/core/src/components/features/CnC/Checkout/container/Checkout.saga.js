@@ -23,7 +23,6 @@ import CHECKOUT_ACTIONS, {
   setShippingOptions,
   setAddressError,
   getSetCheckoutStage,
-  toggleCheckoutRouting,
 } from './Checkout.action';
 import { getCartDataSaga } from '../../BagPage/container/BagPage.saga';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
@@ -46,6 +45,7 @@ import {
   callUpdateRTPS,
   handleServerSideErrorAPI,
   submitAcceptOrDeclinePlccData,
+  handleCheckoutInitRouting,
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -54,11 +54,9 @@ import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/
 
 const {
   getIsOrderHasShipping,
-  getIsOrderHasPickup,
   getShippingDestinationValues,
   getDefaultAddress,
   getGiftServicesFormData,
-  getIfCheckoutRoutingDone,
 } = selectors;
 const { hasPOBox } = utility;
 let oldHasPOB = {};
@@ -209,29 +207,6 @@ function* initShippingData(pageName, initialLoad) {
       );
     }
   }
-}
-
-function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouting) {
-  const checkoutRoutingDone = yield select(getIfCheckoutRoutingDone);
-  if (!checkoutRoutingDone && !appRouting && !isMobileApp()) {
-    const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-    const { PICKUP, SHIPPING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
-    let requestedStage;
-    const itemsCount = yield select(BagPageSelectors.getTotalItems);
-    if (isExpressCheckoutEnabled && itemsCount > 0) {
-      requestedStage = REVIEW;
-    } else {
-      const orderHasPickup = yield select(getIsOrderHasPickup);
-      requestedStage = orderHasPickup ? PICKUP : SHIPPING;
-    }
-    utility.routeToPage(CHECKOUT_ROUTES[`${requestedStage}Page`], {
-      appRouting: pageName,
-      ...otherProps,
-    });
-    yield put(toggleCheckoutRouting(true));
-    return requestedStage;
-  }
-  return pageName;
 }
 
 function* triggerInternationalCheckoutIfRequired() {

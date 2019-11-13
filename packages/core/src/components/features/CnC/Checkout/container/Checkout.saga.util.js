@@ -7,7 +7,7 @@ import {
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
 import logger from '../../../../../utils/loggerInstance';
-import selectors, { isGuest } from './Checkout.selector';
+import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
   briteVerifyStatusExtraction,
@@ -35,6 +35,7 @@ import CHECKOUT_ACTIONS, {
   setSmsNumberForUpdates,
   emailSignupStatus,
   getSetCheckoutStage,
+  toggleCheckoutRouting,
 } from './Checkout.action';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
@@ -393,4 +394,33 @@ export function* submitAcceptOrDeclinePlccData({ payload }) {
   } catch (e) {
     logger.error(e);
   }
+}
+export function* getRouteToCheckoutStage({ pageName, ...otherProps }, isExpress, isBagRouting) {
+  let isExpressCheckoutEnabled = isExpress;
+  if (!isExpress) {
+    isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  }
+  const { PICKUP, SHIPPING, REVIEW } = constants.CHECKOUT_STAGES;
+  let requestedStage;
+  const itemsCount = yield select(BagPageSelectors.getTotalItems);
+  if (isExpressCheckoutEnabled && (!isBagRouting || itemsCount > 0)) {
+    requestedStage = REVIEW;
+  } else {
+    const orderHasPickup = yield select(selectors.getIsOrderHasPickup);
+    requestedStage = orderHasPickup ? PICKUP : SHIPPING;
+  }
+  utility.routeToPage(CHECKOUT_ROUTES[`${requestedStage}Page`], {
+    appRouting: pageName,
+    ...otherProps,
+  });
+  yield put(toggleCheckoutRouting(true));
+  return requestedStage;
+}
+
+export function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouting) {
+  const checkoutRoutingDone = yield select(selectors.getIfCheckoutRoutingDone);
+  if (!checkoutRoutingDone && !appRouting && !isMobileApp()) {
+    yield call(getRouteToCheckoutStage, { pageName, ...otherProps });
+  }
+  return pageName;
 }
