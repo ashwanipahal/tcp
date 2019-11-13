@@ -87,36 +87,27 @@ class NoResponseSearchDetailView extends React.PureComponent {
   setDataInLocalStorage = (searchText, url) => {
     if (searchText) {
       const searchTextParam = searchText.trim().toLowerCase();
-      const getPreviousSearchResults = getRecentStoreFromLocalStorage();
-      let filteredSearchResults;
-      let originalSearchWithUrl;
-      if (getPreviousSearchResults) {
-        originalSearchWithUrl = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
-        filteredSearchResults = originalSearchWithUrl.map(e => e.split('<url>')[0]);
-        if (filteredSearchResults.indexOf(searchTextParam) === -1) {
-          this.updateRecentSearchResults(originalSearchWithUrl, searchTextParam, url);
-        } else {
-          const index = filteredSearchResults.indexOf(searchTextParam);
-          const tempRef = originalSearchWithUrl[index];
-          originalSearchWithUrl = this.arrayRemove(originalSearchWithUrl, tempRef);
-          originalSearchWithUrl.push(tempRef);
-          this.updateRecentSearchResults(originalSearchWithUrl);
-        }
-      } else {
-        this.updateRecentSearchResults([], searchTextParam, url);
-      }
-    }
-  };
+      const searchTermWithUrl = url ? `${searchTextParam}<url>${url}` : searchTextParam;
 
-  updateRecentSearchResults = (arr, searchTextParam, url) => {
-    if (searchTextParam) {
-      const searchTermUrl = url ? `${searchTextParam}<url>${url}` : searchTextParam;
-      arr.push(searchTermUrl);
+      const getPreviousSearchResults = getRecentStoreFromLocalStorage() || JSON.stringify([]);
+      const recentSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
+
+      const existingIndex = recentSearchResults.indexOf(searchTermWithUrl);
+      if (existingIndex >= 0) {
+        recentSearchResults.splice(existingIndex, 1);
+      }
+
+      recentSearchResults.push(searchTermWithUrl);
+
+      if (
+        recentSearchResults &&
+        recentSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
+      ) {
+        recentSearchResults.shift();
+      }
+
+      setRecentStoreToLocalStorage(recentSearchResults);
     }
-    if (arr && arr.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX) {
-      arr.shift();
-    }
-    setRecentStoreToLocalStorage(arr);
   };
 
   redirectToSuggestedUrl = (searchText, url) => {
