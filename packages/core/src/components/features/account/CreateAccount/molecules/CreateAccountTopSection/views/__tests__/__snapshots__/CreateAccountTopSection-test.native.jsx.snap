@@ -143,6 +143,7 @@ An online account has been created with your email! Click here to reset your pas
           colorName={null}
           customStyle={Object {}}
           fontSizeVariation="medium"
+          justifyContent=""
           locator=""
           margins={null}
           onPress={[Function]}
