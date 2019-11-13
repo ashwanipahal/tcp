@@ -264,7 +264,7 @@ function* initCheckoutSectionData({
     }
   } else if (pageName === REVIEW) {
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-    if ((!isExpressCheckoutEnabled || isPaypalPostBack) && !appRouting) {
+    if (!isExpressCheckoutEnabled || isPaypalPostBack || !appRouting) {
       pendingPromises.push(
         call(getCartDataSaga, {
           payload: {
