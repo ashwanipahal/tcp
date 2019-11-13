@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
+<Styled(Grid)
+  className="undefined moduleG"
+>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(LinkText)
+        className="promo-header"
+        component="div"
+        dataLocator="moduleG_header_text"
+        fontSize={
+          Array [
+            "fs20",
+            "fs20",
+            "fs32",
+          ]
+        }
+        headerText={
+          Array [
+            Object {
+              "icon": Object {
+                "icon": "",
+                "placement": "",
+              },
+              "link": Object {
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/ab",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "large_text_bold",
+                  "text": "ALL MATCHABLES",
+                },
+                Object {
+                  "style": "large_text_bold",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+      <Styled(PromoBanner)
+        className="promoBanner"
+        dataLocator="moduleG_promobanner_text"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "title": "",
+                "url": "/c",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "extra_large_text_regular",
+                  "text": "60% OFF",
+                },
+              ],
+            },
+          ]
+        }
+      />
+      <Connect(ProductTabListContainer)
+        dataLocator="moduleG_cta_links_"
+        onProductTabChange={[Function]}
+        tabItems={
+          Array [
+            Object {
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47503",
+                },
+                Object {
+                  "key": "cat_id",
+                  "val": "47501",
+                },
+              ],
+              "singleCTAButton": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "singleCTAButtonCart": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "text": Object {
+                "text": "GIRL",
+              },
+            },
+            Object {
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47501",
+                },
+                Object {
+                  "key": "cat_id",
+                  "val": "47503>47544",
+                },
+              ],
+              "singleCTAButton": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "singleCTAButtonCart": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "text": Object {
+                "text": "TODDLER GIRL",
+              },
+            },
+            Object {
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47503",
+                },
+                Object {
+                  "key": "cat_id",
+                  "val": "47501>47526",
+                },
+              ],
+              "singleCTAButton": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "singleCTAButtonCart": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "text": Object {
+                "text": "BOY",
+              },
+            },
+            Object {
+              "category": Array [
+                Object {
+                  "key": "cat_id",
+                  "val": "47526",
+                },
+                Object {
+                  "key": "cat_id",
+                  "val": "47511|516020",
+                },
+              ],
+              "singleCTAButton": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "singleCTAButtonCart": Object {
+                "target": "",
+                "text": "Shop All Matchables",
+                "title": "add to bag",
+                "url": "/c/us",
+              },
+              "text": Object {
+                "text": "TODDLER BOY",
+              },
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="wrapper"
+    fullBleed={
+      Object {
+        "large": false,
+        "medium": true,
+        "small": true,
+      }
+    }
+  >
+    <Styled(Styled(Skeleton))
+      col={6}
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+      removeLastMargin={true}
+      showArrows={true}
+    />
+    <div
+      className="focusAreaView"
+    >
+      <span
+        className="focusArea-plus"
+      />
+    </div>
+    <Styled(Styled(Skeleton))
+      col={6}
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+      removeLastMargin={true}
+      showArrows={true}
+    />
+  </Styled(Row)>
+</Styled(Grid)>
+`;
