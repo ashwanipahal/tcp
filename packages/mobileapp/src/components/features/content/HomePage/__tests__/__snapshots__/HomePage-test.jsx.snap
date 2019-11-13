@@ -29,6 +29,7 @@ exports[`HomePageView should render correctly 1`] = `
         "moduleA": [Function],
         "moduleB": [Function],
         "moduleD": [Function],
+        "moduleE": [Function],
         "moduleG": [Function],
         "moduleH": [Function],
         "moduleJ": [Function],
@@ -69,13 +70,6 @@ exports[`HomePageView should render correctly 1`] = `
     page="homepageTest"
     showButton={true}
     variation="moduleO,moduleP"
-  />
-  <Connect(QuickViewModalContainer)
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
   />
   <View>
     <Connect(QuickViewModalContainer)
