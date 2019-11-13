@@ -4,6 +4,7 @@ const buildQuery = ({ page, brand, country, channel, lang }) => `
   } brand: "${brand}", country: "${country}", channel: "${channel}" ${
   lang ? `lang: ${lang}` : ``
 }) {
+    errorMessage
     path
     pageTitle
     keywords

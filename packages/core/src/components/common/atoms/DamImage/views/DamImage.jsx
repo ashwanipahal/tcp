@@ -146,7 +146,7 @@ const DamImage = props => {
       asPath={ctaUrl}
       target={target}
       title={title}
-      dataLocator="image-link"
+      dataLocator={`${dataLocator}_image-link`}
     >
       <RenderImage {...imgProps} ref={forwardedRef} />
     </Anchor>
