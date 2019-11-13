@@ -5,7 +5,7 @@ import Row from '../../../../common/atoms/Row';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import styles from '../styles/AddedToBagViewPoints.style';
 import withStyles from '../../../../common/hoc/withStyles';
-import { isCanada } from '../../../../../utils';
+import { isCanada, isUsOnly } from '../../../../../utils';
 
 const getModifiedString = (labels, totalItems) => {
   const subHeading = `<span>${labels.bagSubTotal.replace('#items', `${totalItems}`)}</span>`;
@@ -34,8 +34,11 @@ const getRewardsPointsLabel = (labels, isUserLoggedIn) => {
   return isUserLoggedIn ? labels.MPRPoints : labels.pointsYouCanEarn;
 };
 
-const getItemPrice = (currencySymbol, itemPrice) => {
-  return `${currencySymbol} ${(itemPrice && itemPrice.toFixed(2)) || 0}`;
+const getItemPrice = (currencySymbol, price) => {
+  if (isCanada() || isUsOnly()) {
+    return `${currencySymbol}${(price && price.toFixed(2)) || 0}`;
+  }
+  return `${currencySymbol} ${(price && price.toFixed(2)) || 0}`;
 };
 
 const AddedToBagViewPoints = ({
@@ -105,7 +108,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {`${currencySymbol} ${(bagSubTotal && bagSubTotal.toFixed(2)) || 0}`}
+          {getItemPrice(currencySymbol, bagSubTotal)}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
