@@ -11,9 +11,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
-          "medium": 10,
-          "small": 10,
+          "large": 12,
+          "medium": 12,
+          "small": 12,
         }
       }
     >
@@ -367,9 +367,9 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
-          "medium": 10,
-          "small": 10,
+          "large": 12,
+          "medium": 12,
+          "small": 12,
         }
       }
     >

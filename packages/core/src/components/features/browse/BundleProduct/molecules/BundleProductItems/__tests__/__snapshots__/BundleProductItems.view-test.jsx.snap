@@ -18,7 +18,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
   ",
           "
   && .pdp-qty {
-    padding-top: 2px;
+    padding-top: 4px;
   }
   && .select__input {
     top: 0;
@@ -29,6 +29,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
   }
   && .button-wrapper {
     position: relative;
+    min-width: 100%;
   }
 ",
           ";

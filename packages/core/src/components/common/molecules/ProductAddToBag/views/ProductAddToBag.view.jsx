@@ -236,7 +236,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
-          <Col colSize={{ small: 10, medium: 10, large: 10 }}>
+          <Col colSize={{ small: 12, medium: 12, large: 12 }}>
             <div className="select-value-wrapper">
               {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
               {this.renderFitList(fitList, fitTitle)}
