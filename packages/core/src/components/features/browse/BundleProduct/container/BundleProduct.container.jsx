@@ -17,6 +17,7 @@ import {
   getAddedToBagErrorCatId,
   getBreadCrumbs,
   prodDetails,
+  getOutfitLabels,
 } from './BundleProduct.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
@@ -107,6 +108,7 @@ export class ProductBundleContainer extends React.PureComponent {
       removeAddToFavoritesErrorMsg,
       breadCrumbs,
       productDetails,
+      outfitLabels,
     } = this.props;
     return (
       <BundleProduct
@@ -114,6 +116,7 @@ export class ProductBundleContainer extends React.PureComponent {
         selectedColorProductId={this.selectedColorProductId}
         plpLabels={plpLabels}
         pdpLabels={pdpLabels}
+        outfitLabels={outfitLabels}
         navigation={navigation}
         shortDescription={shortDescription}
         itemPartNumber={itemPartNumber}
@@ -163,6 +166,7 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     breadCrumbs: getBreadCrumbs(state),
+    outfitLabels: getOutfitLabels(state),
   };
 }
 
@@ -212,11 +216,13 @@ ProductBundleContainer.propTypes = {
   breadCrumbs: PropTypes.shape({}),
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   formValues: PropTypes.shape({}).isRequired,
+  outfitLabels: PropTypes.shape({}),
 };
 
 ProductBundleContainer.defaultProps = {
   plpLabels: {},
   pdpLabels: {},
+  outfitLabels: {},
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',

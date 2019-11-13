@@ -111,6 +111,7 @@ class BundleProduct extends React.PureComponent {
       addToBagEcom,
       currentState,
       isLoggedIn,
+      outfitLabels,
     } = this.props;
     return (
       <Row fullBleed className="product-items-section">
@@ -123,6 +124,7 @@ class BundleProduct extends React.PureComponent {
             addToBagEcom={addToBagEcom}
             currentState={currentState}
             isLoggedIn={isLoggedIn}
+            outfitLabels={outfitLabels}
             className="bundle-products-list"
           />
         </Col>
@@ -215,6 +217,7 @@ BundleProduct.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  outfitLabels: PropTypes.shape({}),
   breadCrumbs: PropTypes.shape({}),
   currentProduct: PropTypes.shape({}).isRequired,
   productDetails: PropTypes.shape({}),
@@ -235,6 +238,7 @@ BundleProduct.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   pdpLabels: {},
+  outfitLabels: {},
   breadCrumbs: [],
   productDetails: {},
   currency: 'USD',

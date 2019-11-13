@@ -43,7 +43,7 @@ const OutfitDetailsView = ({
 
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
-  const viewDetails = (labels && labels.lbl_outfit_viewdetail) || 'View Product Details';
+  const viewDetails = labels && labels.lbl_outfit_viewdetail;
   const sizeChartLinkVisibility = isBundleProduct ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   return (
     <Row className={className}>

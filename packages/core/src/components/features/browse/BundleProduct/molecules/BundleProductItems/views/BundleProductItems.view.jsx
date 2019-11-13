@@ -11,7 +11,6 @@ class BundleProductItems extends React.PureComponent {
    */
   renderItems = () => {
     const {
-      labels,
       currentBundle,
       plpLabels,
       addToBagEcom,
@@ -24,6 +23,7 @@ class BundleProductItems extends React.PureComponent {
       currencySymbol,
       currencyExchange,
       className,
+      outfitLabels,
     } = this.props;
     return (
       <ul className="outfiting-list-container">
@@ -34,7 +34,7 @@ class BundleProductItems extends React.PureComponent {
               <li key={product.generalProductId} className="bundle-product-item">
                 <OutfitProduct
                   plpLabels={plpLabels}
-                  labels={labels}
+                  labels={outfitLabels}
                   outfitProduct={productItem}
                   productIndexText=""
                   handleAddToBag={() => {
@@ -70,10 +70,10 @@ class BundleProductItems extends React.PureComponent {
 BundleProductItems.propTypes = {
   currentBundle: PropTypes.shape({}),
   plpLabels: PropTypes.shape({}),
+  outfitLabels: PropTypes.shape({}),
   addToBagEcom: PropTypes.func.isRequired,
   handleAddToBag: PropTypes.func.isRequired,
   currentState: PropTypes.shape({}).isRequired,
-  labels: PropTypes.shape({}),
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
@@ -87,7 +87,7 @@ BundleProductItems.propTypes = {
 BundleProductItems.defaultProps = {
   currentBundle: null,
   plpLabels: {},
-  labels: {},
+  outfitLabels: {},
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
