@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Anchor, DamImage, Button, BodyCopy } from '../../../atoms';
+import { Anchor, DamImage, Button } from '../../../atoms';
 
 export const Container = styled.View`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
@@ -53,12 +53,6 @@ export const StackCTAButtonWrapper = styled.View`
   margin-top: ${props => props.marginTop || '8px'};
 `;
 
-export const StyledBodyCopy = styled(BodyCopy)`
-  ${props => (props.marginTop ? ` margin-top: ${props.marginTop}` : ``)};
-  ${props => (props.marginTop ? ` margin-bottom: ${props.marginBottom}` : ``)};
-  ${props => (props.marginTop ? ` width: ${props.width}` : ``)};
-`;
-
 export const ImageContainer = styled.View`
   flex-direction: row;
   width: 100%;
@@ -100,6 +94,12 @@ export const StackCTAWrapper = styled.View`
   margin-bottom: 12px;
 `;
 
+export const HeaderViewContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  width: 160px;
+`;
+
 export default {
   Container,
   HeaderWrapper,
@@ -113,10 +113,10 @@ export default {
   StyledButton,
   ImageContainer,
   ImageWrapper,
-  StyledBodyCopy,
   StackCTAButtonWrapper,
   PromoAreaWrapper,
   BorderTopAndBottom,
   FloatingButton,
   StackCTAWrapper,
+  HeaderViewContainer,
 };

@@ -153,6 +153,7 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
         ]
       }
       height={373}
+      onSnapToItem={[Function]}
       overlap={true}
       renderItem={[Function]}
       showDots={true}
@@ -179,9 +180,9 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="Shop The Collection"
       theme={Object {}}
-      url=""
+      url="http://www.childrensplace.com"
       withNoLineHeight={false}
     />
   </Styled(View)>
@@ -274,23 +275,34 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
           width="164px"
         />
       </Styled(Styled(Anchor))>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs20"
-        fontWeight="medium"
-        letterSpacing="ls2"
-        margin={null}
-        marginBottom="16px"
-        marginTop="8px"
-        numberOfLines={null}
-        text="Big & Little Sis"
-        textAlign="center"
-        textDecoration={null}
-        width="160px"
-      />
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 1,
+                  "target": "_blank",
+                  "text": "SHOP NOW",
+                  "title": "SHOP NOW",
+                  "url": "/link/url1",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "spaced_text_regular_black",
+                    "text": "Big & Little Sis",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleE_small_header_text"
+          navigation={Object {}}
+          renderComponentInNewLine={true}
+          type="heading"
+          useStyle={true}
+        />
+      </Styled(View)>
       <Styled(Styled(CustomButton))
         active={false}
         buttonVariation="fixed-width"
@@ -311,7 +323,7 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
-        text="Big & Little Sis"
+        text="SHOP NOW"
         theme={Object {}}
         url=""
         withNoLineHeight={false}
@@ -348,23 +360,34 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
           width="164px"
         />
       </Styled(Styled(Anchor))>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs20"
-        fontWeight="medium"
-        letterSpacing="ls2"
-        margin={null}
-        marginBottom="16px"
-        marginTop="8px"
-        numberOfLines={null}
-        text="Big & Little Bro"
-        textAlign="center"
-        textDecoration={null}
-        width="160px"
-      />
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 1,
+                  "target": "_blank",
+                  "text": "SHOP NOW",
+                  "title": "SHOP NOW",
+                  "url": "/link/url2",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "spaced_text_regular_black",
+                    "text": "Big & Little Bro",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleE_small_header_text"
+          navigation={Object {}}
+          renderComponentInNewLine={true}
+          type="heading"
+          useStyle={true}
+        />
+      </Styled(View)>
       <Styled(Styled(CustomButton))
         active={false}
         buttonVariation="fixed-width"
@@ -385,7 +408,7 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
-        text="Big & Little Bro"
+        text="SHOP NOW"
         theme={Object {}}
         url=""
         withNoLineHeight={false}
@@ -551,6 +574,7 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
         ]
       }
       height={373}
+      onSnapToItem={[Function]}
       overlap={true}
       renderItem={[Function]}
       showDots={true}
@@ -577,9 +601,9 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="Shop The Collection"
       theme={Object {}}
-      url=""
+      url="http://www.childrensplace.com"
       withNoLineHeight={false}
     />
   </Styled(View)>
@@ -672,23 +696,34 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
           width="164px"
         />
       </Styled(Styled(Anchor))>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs20"
-        fontWeight="medium"
-        letterSpacing="ls2"
-        margin={null}
-        marginBottom="16px"
-        marginTop="8px"
-        numberOfLines={null}
-        text="Big & Little Sis"
-        textAlign="center"
-        textDecoration={null}
-        width="160px"
-      />
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 1,
+                  "target": "_blank",
+                  "text": "SHOP NOW",
+                  "title": "SHOP NOW",
+                  "url": "/link/url1",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "spaced_text_regular_black",
+                    "text": "Big & Little Sis",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleE_small_header_text"
+          navigation={Object {}}
+          renderComponentInNewLine={true}
+          type="heading"
+          useStyle={true}
+        />
+      </Styled(View)>
       <Styled(Styled(CustomButton))
         active={false}
         buttonVariation="fixed-width"
@@ -709,7 +744,7 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
-        text="Big & Little Sis"
+        text="SHOP NOW"
         theme={Object {}}
         url=""
         withNoLineHeight={false}
@@ -746,23 +781,34 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
           width="164px"
         />
       </Styled(Styled(Anchor))>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs20"
-        fontWeight="medium"
-        letterSpacing="ls2"
-        margin={null}
-        marginBottom="16px"
-        marginTop="8px"
-        numberOfLines={null}
-        text="Big & Little Bro"
-        textAlign="center"
-        textDecoration={null}
-        width="160px"
-      />
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 1,
+                  "target": "_blank",
+                  "text": "SHOP NOW",
+                  "title": "SHOP NOW",
+                  "url": "/link/url2",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "spaced_text_regular_black",
+                    "text": "Big & Little Bro",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleE_small_header_text"
+          navigation={Object {}}
+          renderComponentInNewLine={true}
+          type="heading"
+          useStyle={true}
+        />
+      </Styled(View)>
       <Styled(Styled(CustomButton))
         active={false}
         buttonVariation="fixed-width"
@@ -783,7 +829,7 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
-        text="Big & Little Bro"
+        text="SHOP NOW"
         theme={Object {}}
         url=""
         withNoLineHeight={false}
@@ -949,6 +995,7 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
         ]
       }
       height={373}
+      onSnapToItem={[Function]}
       overlap={true}
       renderItem={[Function]}
       showDots={true}
@@ -975,9 +1022,9 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
       selected={false}
       selectedIcon="chevron-up"
       showIcon={false}
-      text=""
+      text="Shop The Collection"
       theme={Object {}}
-      url=""
+      url="http://www.childrensplace.com"
       withNoLineHeight={false}
     />
   </Styled(View)>
@@ -1070,23 +1117,34 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
           width="164px"
         />
       </Styled(Styled(Anchor))>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs20"
-        fontWeight="medium"
-        letterSpacing="ls2"
-        margin={null}
-        marginBottom="16px"
-        marginTop="8px"
-        numberOfLines={null}
-        text="Big & Little Sis"
-        textAlign="center"
-        textDecoration={null}
-        width="160px"
-      />
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 1,
+                  "target": "_blank",
+                  "text": "SHOP NOW",
+                  "title": "SHOP NOW",
+                  "url": "/link/url1",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "spaced_text_regular_black",
+                    "text": "Big & Little Sis",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleE_small_header_text"
+          navigation={Object {}}
+          renderComponentInNewLine={true}
+          type="heading"
+          useStyle={true}
+        />
+      </Styled(View)>
       <Styled(Styled(CustomButton))
         active={false}
         buttonVariation="fixed-width"
@@ -1107,7 +1165,7 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
-        text="Big & Little Sis"
+        text="SHOP NOW"
         theme={Object {}}
         url=""
         withNoLineHeight={false}
@@ -1144,23 +1202,34 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
           width="164px"
         />
       </Styled(Styled(Anchor))>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        color="gray.900"
-        dataLocator=""
-        fontFamily="primary"
-        fontSize="fs20"
-        fontWeight="medium"
-        letterSpacing="ls2"
-        margin={null}
-        marginBottom="16px"
-        marginTop="8px"
-        numberOfLines={null}
-        text="Big & Little Bro"
-        textAlign="center"
-        textDecoration={null}
-        width="160px"
-      />
+      <Styled(View)>
+        <LinkText
+          headerText={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 1,
+                  "target": "_blank",
+                  "text": "SHOP NOW",
+                  "title": "SHOP NOW",
+                  "url": "/link/url2",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "spaced_text_regular_black",
+                    "text": "Big & Little Bro",
+                  },
+                ],
+              },
+            ]
+          }
+          locator="moduleE_small_header_text"
+          navigation={Object {}}
+          renderComponentInNewLine={true}
+          type="heading"
+          useStyle={true}
+        />
+      </Styled(View)>
       <Styled(Styled(CustomButton))
         active={false}
         buttonVariation="fixed-width"
@@ -1181,7 +1250,7 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
         selected={false}
         selectedIcon="chevron-up"
         showIcon={false}
-        text="Big & Little Bro"
+        text="SHOP NOW"
         theme={Object {}}
         url=""
         withNoLineHeight={false}

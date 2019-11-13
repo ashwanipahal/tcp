@@ -93,6 +93,19 @@ export const bodyCopyStyles = {
       />
     );
   },
+  spaced_text_regular_black: props => {
+    return (
+      <BodyCopy
+        color="gray.900"
+        fontFamily="primary"
+        fontWeight="regular"
+        fontSize="fs20"
+        textAlign="center"
+        letterSpacing="ls2"
+        {...props}
+      />
+    );
+  },
 };
 
 /**
@@ -111,7 +124,7 @@ const getTextItems = (textItems, useStyle, compProps) => {
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
-        const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
+        const StyleBodyCopy = style ? bodyCopyStyles[style] : () => null;
         return (
           <StyleBodyCopy
             accessibilityRole="text"

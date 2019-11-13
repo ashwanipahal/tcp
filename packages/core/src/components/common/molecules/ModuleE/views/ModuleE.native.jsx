@@ -21,7 +21,7 @@ import {
   ImageContainer,
   StyledAnchor,
   ImageWrapper,
-  StyledBodyCopy,
+  HeaderViewContainer,
   StackCTAButtonWrapper,
   PromoAreaWrapper,
   BorderTopAndBottom,
@@ -70,51 +70,33 @@ class ModuleE extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      shopNowText: '',
-      shopNowUrl: '',
+      curCarouselIndex: 0,
     };
   }
-
-  /**
-   * This renderAnchor method return the Anchor  .
-   *  @naviagtion is used to navigate the page.
-   */
-  renderAnchor = navigation => {
-    const { shopNowText, shopNowUrl } = this.state;
-    return (
-      <FloatingButton>
-        <StyledAnchor
-          text={shopNowText}
-          url={shopNowUrl}
-          navigation={navigation}
-          underline
-          centered
-          fontSizeVariation="large"
-          anchorVariation="custom"
-          colorName="gray.900"
-        />
-      </FloatingButton>
-    );
-  };
 
   /**
    * This renderButton method return the button according button variation .
    *  @naviagtion is used to navigate the page.
    */
   renderButton = (navigation, buttonVariation) => {
-    const { shopNowText, shopNowUrl } = this.state;
+    const { curCarouselIndex } = this.state;
+    const { largeCompImageSimpleCarousel } = this.props;
+    const {
+      singleCTAButton: { text, url },
+    } = largeCompImageSimpleCarousel[curCarouselIndex];
+
     if (buttonVariation === BUTTON_VARIATION_FULLWIDTH) {
       return (
         <StackCTAButtonWrapper>
           <Border />
-          <StyledButton text={shopNowText} url={shopNowUrl} navigation={navigation} />
+          <StyledButton text={text} url={url} navigation={navigation} />
         </StackCTAButtonWrapper>
       );
     }
 
     return (
       <StackCTAWrapper>
-        <StyledButton text={shopNowText} url={shopNowUrl} navigation={navigation} />
+        <StyledButton text={text} url={url} navigation={navigation} />
       </StackCTAWrapper>
     );
   };
@@ -124,15 +106,10 @@ class ModuleE extends React.PureComponent {
    *  @naviagtion is used to navigate the page.
    *  @carouselCtaType is used to manage the type of carouselCtabuttons .
    */
-  renderView = (item, navigation) => {
+  renderView = (item, navigation, carouselCtaType) => {
     const {
       item: { image, singleCTAButton },
     } = item;
-
-    this.setState({
-      shopNowText: singleCTAButton.text,
-      shopNowUrl: singleCTAButton.url,
-    });
 
     return (
       <View>
@@ -146,6 +123,20 @@ class ModuleE extends React.PureComponent {
             imgConfig={IMG_DATA.carouselImgConfig[0]}
           />
         </Anchor>
+        {carouselCtaType === 'link' ? (
+          <FloatingButton>
+            <StyledAnchor
+              text={singleCTAButton.text}
+              url={singleCTAButton.url}
+              navigation={navigation}
+              underline
+              centered
+              fontSizeVariation="large"
+              anchorVariation="custom"
+              colorName="gray.900"
+            />
+          </FloatingButton>
+        ) : null}
       </View>
     );
   };
@@ -159,11 +150,12 @@ class ModuleE extends React.PureComponent {
   renderCarousel = (largeCompImageSimpleCarousel, navigation, carouselCtaType) => {
     return (
       <ContainerView>
-        {largeCompImageSimpleCarousel && largeCompImageSimpleCarousel.length > 1 ? (
+        {largeCompImageSimpleCarousel.length > 1 ? (
           <Carousel
             height={MODULE_DEFAULT_HEIGHT}
             data={largeCompImageSimpleCarousel}
-            renderItem={item => this.renderView(item, navigation)}
+            renderItem={item => this.renderView(item, navigation, carouselCtaType)}
+            onSnapToItem={index => this.setState({ curCarouselIndex: index })}
             width={MODULE_WIDTH}
             carouselConfig={{
               autoplay: true,
@@ -174,7 +166,6 @@ class ModuleE extends React.PureComponent {
         ) : (
           <View>{this.renderView({ item: largeCompImageSimpleCarousel[0] })}</View>
         )}
-        {carouselCtaType === 'link' ? this.renderAnchor(navigation) : null}
       </ContainerView>
     );
   };
@@ -274,6 +265,7 @@ class ModuleE extends React.PureComponent {
     return (
       <ImageContainer>
         {divCTALinks.map(({ image, link, styled }, index) => {
+          const divCtaLinkHeaderText = [{ textItems: [{ ...styled }], link }];
           return (
             <ImageWrapper tileIndex={index}>
               <StyledAnchor
@@ -290,21 +282,17 @@ class ModuleE extends React.PureComponent {
                   imgConfig={IMG_DATA.smallImgConfig[0]}
                 />
               </StyledAnchor>
-
-              <StyledBodyCopy
-                text={styled.text}
-                fontWeight="medium"
-                color="gray.900"
-                fontFamily="primary"
-                fontSize="fs20"
-                textAlign="center"
-                marginTop="8px"
-                marginBottom="16px"
-                letterSpacing="ls2"
-                width="160px"
-              />
-
-              <StyledButton text={styled.text} naviagtion={navigation} />
+              <HeaderViewContainer>
+                <LinkText
+                  type="heading"
+                  navigation={navigation}
+                  headerText={divCtaLinkHeaderText}
+                  locator="moduleE_small_header_text"
+                  useStyle
+                  renderComponentInNewLine
+                />
+              </HeaderViewContainer>
+              <StyledButton text={link.text} naviagtion={navigation} />
             </ImageWrapper>
           );
         })}
@@ -365,6 +353,16 @@ class ModuleE extends React.PureComponent {
       </View>
     );
   };
+
+  /**
+   * This @renderTopView method return the eyebrow , headerText, promobanner, naigation according to pos.
+   * This @renderPromoArea method return the linkedImage, navigation,carouselCtaType according to pos .
+   * This @renderCarousel method return the largeCompImageSimpleCarousel, navigation, carouselCtaType according to pos .
+   * This @renderButton method return the CTAButton, navigation, according to pos .
+   * This @renderButtonList method return the ctaTypeValue, navigation, ctaItems, according to pos .
+   * This @smallCompositeImage method return the divCTALinks, navigation, according to pos .
+   * This @renderDivider method return the divider according to pos .
+   */
 
   render() {
     const {
