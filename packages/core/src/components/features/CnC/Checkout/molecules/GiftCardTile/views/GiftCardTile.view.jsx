@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import styles from '../styles/GiftCardTile.style';
 import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
@@ -127,7 +126,7 @@ class GiftCardTile extends React.PureComponent {
   }
 
   render() {
-    const { className, cardData, isGiftCardApplied, labels, giftCardList } = this.props;
+    const { className, cardData, isGiftCardApplied, labels } = this.props;
 
     let cardEndingIn = cardData.accountNo !== undefined ? cardData.accountNo.substr(-4) : '';
     let remainingBalance = '';
@@ -168,7 +167,7 @@ class GiftCardTile extends React.PureComponent {
                 }}
                 className="gift-action-container"
               >
-                  {this.renderApplyRemoveBtn()}
+                {this.renderApplyRemoveBtn()}
               </Col>
             )}
           </Row>

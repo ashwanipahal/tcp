@@ -44,6 +44,7 @@ class ReviewPage extends React.PureComponent {
     pageCategory: PropTypes.string,
     checkoutServerError: PropTypes.shape({}).isRequired,
     clearCheckoutServerError: PropTypes.func.isRequired,
+    bagLoading: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -53,6 +54,7 @@ class ReviewPage extends React.PureComponent {
     isExpressCheckout: false,
     isPaymentDisabled: false,
     pageCategory: '',
+    bagLoading: false,
   };
 
   componentDidMount() {

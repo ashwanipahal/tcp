@@ -38,6 +38,7 @@ import {
 import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
+
 const {
   // isVenmoPaymentAvailable,
   getCurrentOrderId,

@@ -18,7 +18,6 @@ const ShipmentMethods = ({
 }) => {
   const selectedShipment =
     shipmentMethods && shipmentMethods.find(method => method.id === selectedShipmentId);
-  console.log('isLoadingShippingMethods', isLoadingShippingMethods);
   return (
     <>
       <BodyCopy
@@ -89,12 +88,14 @@ ShipmentMethods.propTypes = {
   selectedShipmentId: PropTypes.string,
   className: PropTypes.string,
   shipmentHeader: PropTypes.string,
+  isLoadingShippingMethods: PropTypes.bool,
 };
 ShipmentMethods.defaultProps = {
   shipmentMethods: null,
   selectedShipmentId: null,
   className: '',
   shipmentHeader: '',
+  isLoadingShippingMethods: false,
 };
 
 export default withStyles(ShipmentMethods, styles);

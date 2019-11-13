@@ -155,7 +155,6 @@ export class BillingSection extends PureComponent {
                       {!bagLoading ? (
                         <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
                       ) : (
-                        // <div>Skeleton</div>
                         <AddressSkeleton />
                       )}
                     </BodyCopy>
@@ -175,7 +174,6 @@ export class BillingSection extends PureComponent {
                     {!bagLoading ? (
                       <Address address={address} className="review-billing-address" />
                     ) : (
-                      // <div>Skeleton</div>
                       <>
                         <LoaderSkelton width="175px" height="40px" />
                         <AddressSkeleton />
@@ -245,6 +243,7 @@ BillingSection.propTypes = {
   cvvCodeRichText: PropTypes.string,
   isBillingVisited: PropTypes.bool,
   isPaymentDisabled: PropTypes.bool,
+  bagLoading: PropTypes.bool,
 };
 
 BillingSection.defaultProps = {
@@ -267,6 +266,7 @@ BillingSection.defaultProps = {
     userName: '',
   },
   saveVenmoPaymentOption: () => {},
+  bagLoading: false,
 };
 
 export default withStyles(BillingSection, styles);

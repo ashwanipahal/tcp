@@ -48,7 +48,7 @@ export class ShippingReviewSection extends React.PureComponent {
           </Col>
         </Row>
 
-        {bagLoading ? (
+        {!bagLoading ? (
           <Row fullBleed>
             <Col colSize={{ small: 6, medium: 4, large: 5 }}>
               <div className="shippingAddressTitle">
@@ -103,7 +103,6 @@ export class ShippingReviewSection extends React.PureComponent {
             </Col>
           </Row>
         ) : (
-          // <div>skeleton</div>
           <AddressSkeleton />
         )}
         <Row fullBleed>
@@ -142,6 +141,7 @@ ShippingReviewSection.propTypes = {
   formName: PropTypes.string.isRequired,
   formSection: PropTypes.string.isRequired,
   expressReviewShippingSectionId: PropTypes.shape({}),
+  bagLoading: PropTypes.bool,
 };
 
 ShippingReviewSection.defaultProps = {
@@ -150,6 +150,7 @@ ShippingReviewSection.defaultProps = {
   isGiftOptionsEnabled: false,
   giftWrappingDisplayName: 'N/A',
   expressReviewShippingSectionId: {},
+  bagLoading: false,
 };
 
 export default withStyles(ShippingReviewSection, styles);

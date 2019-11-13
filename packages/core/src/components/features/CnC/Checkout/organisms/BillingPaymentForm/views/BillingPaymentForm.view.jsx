@@ -91,13 +91,13 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the checkout billing address form
    */
   getCheckoutBillingAddress = ({ editMode } = {}) => {
-    const { selectedOnFileAddressId, isSameAsShippingChecked } = this.props;
+    const { selectedOnFileAddressId, isSameAsShippingChecked, bagLoading } = this.props;
     const { isEditFormSameAsShippingChecked, editFormSelectedOnFileAddressId } = this.props;
     const { userAddresses, labels, cardList, isGuest, dispatch } = this.props;
     const { orderHasShipping, addressLabels, shippingAddress, billingData } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
-    return (
+    return !bagLoading ? (
       <CheckoutBillingAddress
         shippingAddress={shippingAddress}
         isSameAsShippingChecked={
@@ -116,6 +116,8 @@ export class BillingPaymentForm extends React.PureComponent {
           (creditCardList && creditCardList.size === 0)
         }
       />
+    ) : (
+      <AddressSkeleton />
     );
   };
 
@@ -267,7 +269,7 @@ export class BillingPaymentForm extends React.PureComponent {
     const { defaultPayment, paymentMethod, creditCardEnd, cvvCode } = labels;
     const selectedCard = onFileCardKey ? getSelectedCard({ creditCardList, onFileCardKey }) : '';
     const { editMode, editModeSubmissionError } = this.state;
-    const { dispatch, updateCardDetail, editFormCardType, bagLoading } = this.props;
+    const { dispatch, updateCardDetail, editFormCardType } = this.props;
     const billingPaymentFormWidthCol = { large: 3, small: 4, medium: 4 };
     const cvvCodeColWidth = { large: 3, small: 2, medium: 4 };
     const { renderCardDetailsHeading, getAddNewCCForm, unsetFormEditState, onEditCardFocus } = this;
@@ -361,11 +363,8 @@ export class BillingPaymentForm extends React.PureComponent {
                   />
                 )}
               </Row>
-            ) : !bagLoading ? (
-              this.getCheckoutBillingAddress()
             ) : (
-              //<div>Skeleton</div>
-              <AddressSkeleton />
+              this.getCheckoutBillingAddress()
             )}
           </>
         ) : (

@@ -134,21 +134,26 @@ export class PickUpReviewSection extends React.PureComponent {
           </Col>
         </Row>
         {!bagLoading ? (
-          <Row fullBleed className="row-two">
-            {stores.map((store, index) => {
-              return (
-                store && (
-                  <Col
-                    key={store.storeId}
-                    colSize={{ small: 6, medium: 4, large: 5 }}
-                    className={`col-${index}`}
-                  >
-                    <PickupStoreDisplay labels={labels} orderType={store.orderType} store={store} />
-                  </Col>
-                )
-              );
-            })}
-          </Row>(
+          <>
+            <Row fullBleed className="row-two">
+              {stores.map((store, index) => {
+                return (
+                  store && (
+                    <Col
+                      key={store.storeId}
+                      colSize={{ small: 6, medium: 4, large: 5 }}
+                      className={`col-${index}`}
+                    >
+                      <PickupStoreDisplay
+                        labels={labels}
+                        orderType={store.orderType}
+                        store={store}
+                      />
+                    </Col>
+                  )
+                );
+              })}
+            </Row>
             <Row fullBleed>
               <Col
                 className="pickupContactPersonContainer"
@@ -208,9 +213,8 @@ export class PickUpReviewSection extends React.PureComponent {
                 </Col>
               )}
             </Row>
-          )
+          </>
         ) : (
-          // <div>Skeleton</div>
           <>
             <LoaderSkelton width="40% " height="40%" />
             <AddressSkeleton />
@@ -245,6 +249,7 @@ PickUpReviewSection.propTypes = {
   isAlternateUpdateChecked: PropTypes.bool.isRequired,
   isExpressCheckout: PropTypes.bool,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 PickUpReviewSection.defaultProps = {
@@ -264,6 +269,7 @@ PickUpReviewSection.defaultProps = {
     emailAddress: '',
   },
   isExpressCheckout: false,
+  bagLoading: false,
 };
 
 export default withStyles(PickUpReviewSection, styles);

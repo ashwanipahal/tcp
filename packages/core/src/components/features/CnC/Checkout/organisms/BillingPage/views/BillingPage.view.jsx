@@ -28,6 +28,7 @@ class BillingPage extends React.PureComponent {
     pageCategory: PropTypes.string,
     ServerErrors: PropTypes.node.isRequired,
     isFetching: PropTypes.bool,
+    bagLoading: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -42,6 +43,7 @@ class BillingPage extends React.PureComponent {
     isVenmoPaymentInProgress: false,
     isVenmoEnabled: false,
     isFetching: false,
+    bagLoading: false,
   };
 
   componentDidMount() {

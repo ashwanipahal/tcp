@@ -37,7 +37,7 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
-    checkoutRoutingDone: PropTypes.bool.isRequired,
+    // checkoutRoutingDone: PropTypes.bool.isRequired,
     formatPayload: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
@@ -382,7 +382,7 @@ export default class ShippingPage extends React.PureComponent {
     const { isSubmitting, formatPayload, ServerErrors, checkoutServerError } = this.props;
     const { shippingAddress, isVenmoPaymentInProgress, isVenmoShippingDisplayed } = this.props;
     const { addressLabels, isOrderUpdateChecked, isGiftServicesChecked } = this.props;
-    const { toggleCountrySelector, pageCategory, checkoutRoutingDone } = this.props;
+    const { toggleCountrySelector, pageCategory } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     let { submitData } = this;

@@ -269,7 +269,6 @@ class ShippingForm extends React.Component {
       pageCategory,
       isLoadingShippingMethods,
     } = this.props;
-    console.log('isLoading', isLoadingShippingMethods);
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
       isVenmoPaymentInProgress && !isVenmoShippingDisplayed

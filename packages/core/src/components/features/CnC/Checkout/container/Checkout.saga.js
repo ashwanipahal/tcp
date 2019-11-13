@@ -105,9 +105,9 @@ function* submitPickupSection({ payload }) {
   try {
     const formData = { ...payload };
     const { navigation } = payload;
-    // yield put(setLoaderState(true));
+    yield put(setLoaderState(true));
     const result = yield call(callPickupSubmitMethod, formData);
-    // yield put(setLoaderState(false));
+    yield put(setLoaderState(false));
 
     if (result.addressId) {
       yield call(getAddressList);

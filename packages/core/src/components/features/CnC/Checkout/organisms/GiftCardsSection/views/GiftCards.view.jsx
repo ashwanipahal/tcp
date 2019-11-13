@@ -266,7 +266,6 @@ export const GiftCards = ({
   isPaymentDisabled,
   isFetching,
 }) => {
-  console.log('isFetching', isFetching);
   return (
     <Grid className={className}>
       <Row fullBleed className="gift-section-container elem-mb-LRG">

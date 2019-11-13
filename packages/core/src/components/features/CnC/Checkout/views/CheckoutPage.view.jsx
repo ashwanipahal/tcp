@@ -56,20 +56,11 @@ class CheckoutPage extends React.PureComponent {
   };
 
   /**
-   * This method returns the current checkout section
-   */
-  getCurrentSection = () => {
-    const { router } = this.props;
-    const section = router.query.section || router.query.subSection;
-    return section || CHECKOUT_STAGES.SHIPPING;
-  };
-
-  /**
    * This method will set venmo banner state once it is visible, so that it won't be visible
    * once user comes back
    */
   isVenmoPickupDisplayed = () => {
-    const currentSection = this.getCurrentSection();
+    const currentSection = checkoutUtil.getCurrentSection();
     let venmoPickupDisplayed = false;
     if (currentSection && currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP) {
       venmoPickupDisplayed = checkoutSelectors.isVenmoPickupBannerDisplayed();
@@ -82,7 +73,7 @@ class CheckoutPage extends React.PureComponent {
    * once user comes back
    */
   isVenmoShippingDisplayed = () => {
-    const currentSection = this.getCurrentSection();
+    const currentSection = checkoutUtil.getCurrentSection();
     let venmoShippingDisplayed = false;
     if (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING) {
       venmoShippingDisplayed = checkoutSelectors.isVenmoShippingBannerDisplayed();
@@ -166,8 +157,6 @@ class CheckoutPage extends React.PureComponent {
       checkoutServerError,
       toggleCountrySelector,
       clearCheckoutServerError,
-      isFetching,
-      bagLoading,
     } = this.props;
     const { cartOrderItemsCount, checkoutPageEmptyBagLabels } = this.props;
     const { isBagLoaded, isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -175,7 +164,6 @@ class CheckoutPage extends React.PureComponent {
     const currentSection = section || CHECKOUT_STAGES.SHIPPING;
     const isFormLoad = this.getFormLoad(pickupInitialValues, isGuest);
     const { shipmentMethods } = shippingProps;
-    console.log(isFetching, bagLoading);
 
     return (
       <div>
