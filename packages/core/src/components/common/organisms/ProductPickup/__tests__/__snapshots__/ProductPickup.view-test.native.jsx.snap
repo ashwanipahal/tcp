@@ -50,6 +50,8 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
       borderColor="gray.1600"
       borderWidth={0.65}
       marginBottom={0}
+      marginLeft={0}
+      marginRight={0}
       marginTop={16}
     />
     <Styled(View)>

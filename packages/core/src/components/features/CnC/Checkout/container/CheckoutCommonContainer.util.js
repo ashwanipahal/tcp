@@ -45,6 +45,8 @@ import { getCVVCodeInfoContentId } from '../organisms/BillingPage/container/Bill
 import constants from '../Checkout.constants';
 import { getPayPalFlag } from '../util/utility';
 import { isMobileApp } from '../../../../../utils';
+import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
+import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
 
 const {
   getSmsSignUpLabels,
@@ -211,6 +213,9 @@ export const mapStateToProps = state => {
       shippingAddress: getShippingAddress(state),
       syncErrors: getSyncError(state),
       shippingPhoneAndEmail: getShippingPhoneAndEmail(state),
+      isLoadingShippingMethods: GiftCardSelector.getIsLoading(state),
+      isFetching: getCardListFetchingState(state),
+      bagLoading: BagPageSelector.isBagLoading(state),
     },
     billingProps: {
       labels: getBillingLabels(state),
@@ -218,6 +223,8 @@ export const mapStateToProps = state => {
       billingData: getBillingValues(state),
       userAddresses: getAddressListState(state),
       creditFieldLabels: getCreditFieldLabels(state),
+      isFetching: getCardListFetchingState(state),
+      bagLoading: BagPageSelector.isBagLoading(state),
     },
     activeStep: getCheckoutStage(state),
     //  isPlccOfferModalOpen: generalStoreView.getOpenModalId(state) === MODAL_IDS.plccPromoModalId,
@@ -247,6 +254,8 @@ export const mapStateToProps = state => {
       isPaymentDisabled: getIsPaymentDisabled(state),
       defaultShipmentId: getDefaultShipmentID(state),
       cardType: selectors.getCardType(state),
+      isFetching: getCardListFetchingState(state),
+      bagLoading: BagPageSelector.isBagLoading(state),
     },
     isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
     getPayPalSettings: selectors.getPayPalSettings(state),

@@ -13,12 +13,15 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="billing-title"
   />
-  <Connect(GiftCardsContainer) />
+  <Connect(GiftCardsContainer)
+    isFetching={false}
+  />
   <div
     className="payment-container"
   >
     <Connect(GiftCardsContainer)
       addressLabels={null}
+      bagLoading={false}
       billingData={Object {}}
       creditFieldLabels={Object {}}
       cvvCodeRichText={null}
@@ -40,9 +43,12 @@ exports[`CheckoutProgressIndicator component should renders correctly props not 
   <Styled(CheckoutSectionTitleDisplay)
     dataLocator="billing-title"
   />
-  <Connect(GiftCardsContainer) />
+  <Connect(GiftCardsContainer)
+    isFetching={false}
+  />
   <Connect(GuestBillingContainer)
     addressLabels={null}
+    bagLoading={false}
     billingData={Object {}}
     creditFieldLabels={Object {}}
     cvvCodeRichText={null}
