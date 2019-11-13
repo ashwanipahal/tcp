@@ -35,10 +35,8 @@ const getRewardsPointsLabel = (labels, isUserLoggedIn) => {
 };
 
 const getItemPrice = (currencySymbol, price) => {
-  if (isCanada() || isUsOnly()) {
-    return `${currencySymbol}${(price && price.toFixed(2)) || 0}`;
-  }
-  return `${currencySymbol} ${(price && price.toFixed(2)) || 0}`;
+  return `${currencySymbol}${isCanada() || isUsOnly() ? '' : ' '}${(price && price.toFixed(2)) ||
+    0}`;
 };
 
 const AddedToBagViewPoints = ({

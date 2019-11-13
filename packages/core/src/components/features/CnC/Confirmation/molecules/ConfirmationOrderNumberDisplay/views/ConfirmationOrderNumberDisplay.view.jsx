@@ -12,10 +12,8 @@ import internalEndpoints from '../../../../../account/common/internalEndpoints';
 const { orderPage, trackOrder } = internalEndpoints;
 
 const getOrderTotal = (currencySymbol, price) => {
-  if (isCanada() || isUsOnly()) {
-    return `${currencySymbol}${(price && price.toFixed(2)) || 0}`;
-  }
-  return `${currencySymbol} ${(price && price.toFixed(2)) || 0}`;
+  return `${currencySymbol}${isCanada() || isUsOnly() ? '' : ' '}${(price && price.toFixed(2)) ||
+    0}`;
 };
 
 /**
