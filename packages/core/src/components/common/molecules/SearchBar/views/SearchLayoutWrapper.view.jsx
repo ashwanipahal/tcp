@@ -228,6 +228,16 @@ class SearchLayoutWrapper extends React.PureComponent {
     // const SEARCH_BLUE_IMAGE = 'search-icon';
     const SEARCH_BLUE_IMAGE = 'search-icon-blue';
 
+    let suggestionFound = false;
+    if (searchResults && searchResults.autosuggestList) {
+      searchResults.autosuggestList.forEach(type => {
+        if (type.suggestions && type.suggestions.length > 0) {
+          suggestionFound = true;
+          return false;
+        }
+        return true;
+      });
+    }
     return (
       <React.Fragment>
         <div className="searchWrapper" ref={this.targetElement}>
@@ -284,11 +294,10 @@ class SearchLayoutWrapper extends React.PureComponent {
               />
             ) : (
               <div className="matchBox" id="matchBox-wrapper">
-                <div className="matchLinkBox">
-                  <LookingForLabel searchResults={searchResults} />
-                  {searchResults &&
-                    searchResults.autosuggestList &&
-                    searchResults.autosuggestList.map(item => {
+                {suggestionFound && (
+                  <div className="matchLinkBox">
+                    <LookingForLabel searchResults={searchResults} />
+                    {searchResults.autosuggestList.map(item => {
                       return (
                         <BodyCopy component="div" className="matchLinkBoxBody" lineHeight="39">
                           <ul>
@@ -323,7 +332,8 @@ class SearchLayoutWrapper extends React.PureComponent {
                         </BodyCopy>
                       );
                     })}
-                </div>
+                  </div>
+                )}
 
                 {searchResults &&
                   searchResults.autosuggestProducts &&
