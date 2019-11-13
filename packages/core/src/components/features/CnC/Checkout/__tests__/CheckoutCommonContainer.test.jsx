@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { formatPayload } from '../container/CheckoutCommonContainer.util';
-import { CheckoutContainer, mapDispatchToProps } from '../container/CheckoutCommonContainer';
+import { formatPayload, mapDispatchToProps } from '../container/CheckoutCommonContainer.util';
+import { CheckoutContainer } from '../container/CheckoutCommonContainer';
 import { CheckoutPageVanilla } from '../views/CheckoutPage.view';
 
 describe('Bag page Container', () => {

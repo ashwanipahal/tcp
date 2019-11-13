@@ -1,4 +1,4 @@
-export { TRACK_PAGE_VIEW, TRACK_CLICK } from './actions';
+export { TRACK_PAGE_VIEW, TRACK_CLICK, UPDATE_PAGE_DATA } from './actions';
 
 export { default as dataLayer } from './dataLayer';
 
