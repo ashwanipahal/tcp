@@ -1,4 +1,5 @@
 import { fromJS, List } from 'immutable';
+import LOGOUT_CONSTANTS from '@tcp/core/src/components/features/account/Logout/LogOut.constants';
 import PAYMENT_CONSTANTS from '../Payment.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
@@ -43,6 +44,8 @@ const returnPaymentReducer = (state = initialState, action) => {
       return state.set('showNotification', 'error');
     case PAYMENT_CONSTANTS.SET_PAYMENT_NOTIFICATION:
       return state.set('showNotification', action.payload.status);
+    case LOGOUT_CONSTANTS.LOGOUT_APP:
+      return initialState;
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

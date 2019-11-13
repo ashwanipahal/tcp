@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
@@ -14,7 +15,8 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
-import styles from '../styles/LoginForm.styles';
+import styles, { customSpinnerStyle } from '../styles/LoginForm.styles';
+import SpinnerOverlay from '../../../../../../common/atoms/SpinnerOverlay';
 
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
@@ -30,6 +32,11 @@ class LoginForm extends React.PureComponent<Props> {
     if (loginErrorMessage) {
       resetLoginState();
     }
+  };
+
+  loginLoader = () => {
+    const { isLoading } = this.props;
+    return (<>{isLoading ? <SpinnerOverlay inheritedStyles={customSpinnerStyle} /> : null}</>);
   };
 
   render() {
@@ -165,23 +172,25 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             </Button>
-            {variation === 'checkout' && (
-              <Button
-                fill="WHITE"
-                type="button"
-                buttonVariation="fixed-width"
-                dataLocator="login-logincta"
-                fullWidth
-                className="elem-mb-XS elem-mt-SM"
-                onClick={handleContinueAsGuest}
-              >
-                {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
-              </Button>
+            {variation === 'checkout' && !isRememberedUser && (
+              <ClickTracker name="checkout_as_guest">
+                <Button
+                  fill="WHITE"
+                  type="button"
+                  buttonVariation="fixed-width"
+                  dataLocator="login-logincta"
+                  fullWidth
+                  className="elem-mb-XS elem-mt-SM"
+                  onClick={handleContinueAsGuest}
+                >
+                  {getLabelValue(labels, 'lbl_login_modal_checkout_as_guest', 'login')}
+                </Button>
+              </ClickTracker>
             )}
             {!isRememberedUser && (
               <Anchor
                 underline
-                fontSizeVariation="xlarge"
+                fontSizeVariation="large"
                 anchorVariation="primary"
                 dataLocator="login-forgotpasswordlnk"
                 onClick={this.showForgotPasswordForm}
@@ -191,6 +200,7 @@ class LoginForm extends React.PureComponent<Props> {
             )}
           </BodyCopy>
         </form>
+        {this.loginLoader}
       </div>
     );
   }

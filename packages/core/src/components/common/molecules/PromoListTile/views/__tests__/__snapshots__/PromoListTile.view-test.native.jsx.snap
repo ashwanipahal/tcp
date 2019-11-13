@@ -48,6 +48,7 @@ exports[`PromoListTile component should renders correctly with anchor in list 1`
       fontFamily="secondary"
       fontSizeVariation="large"
       fontWeight="regular"
+      justifyContent=""
       locator=""
       margins={null}
       noLink={true}

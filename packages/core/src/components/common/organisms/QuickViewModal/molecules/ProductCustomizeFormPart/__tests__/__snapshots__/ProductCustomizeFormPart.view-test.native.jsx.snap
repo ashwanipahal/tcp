@@ -29,6 +29,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           anchorVariation=""
           colorName={null}
           customStyle={Object {}}
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
@@ -275,9 +276,11 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         }
       }
       errorOnHandleSubmit=""
+      onCloseClick={[Function]}
       plpLabels={Object {}}
       showAddToBagCTA={true}
       showColorChips={true}
+      toastMessage={[Function]}
     />
   </Styled(View)>
 </Styled(View)>

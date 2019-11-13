@@ -14,7 +14,7 @@ const openModalApplyNowModal = (openApplyNowModal, step = 1) => {
   return null;
 };
 
-const renderApplyNowLink = (text, openApplyNowModal) => {
+const renderApplyNowLink = (text, closeAddedToBagModal, openApplyNowModal) => {
   return (
     <Anchor
       fontSizeVariation="medium"
@@ -23,6 +23,7 @@ const renderApplyNowLink = (text, openApplyNowModal) => {
       handleLinkClick={e => {
         e.preventDefault();
         openModalApplyNowModal(openApplyNowModal, 2);
+        closeAddedToBagModal();
       }}
       underline
     >
@@ -31,7 +32,7 @@ const renderApplyNowLink = (text, openApplyNowModal) => {
   );
 };
 
-const renderLearnMoreLink = (text, openApplyNowModal) => {
+const renderLearnMoreLink = (text, closeAddedToBagModal, openApplyNowModal) => {
   return (
     <Anchor
       fontSizeVariation="medium"
@@ -41,6 +42,7 @@ const renderLearnMoreLink = (text, openApplyNowModal) => {
       handleLinkClick={e => {
         e.preventDefault();
         openModalApplyNowModal(openApplyNowModal);
+        closeAddedToBagModal();
       }}
     >
       {text}
@@ -96,10 +98,10 @@ const getLinkWithName = (props, action, text) => {
   const { closeAddedToBagModal, openOverlay, openApplyNowModal } = props;
   switch (action) {
     case 'ApplyNowAction':
-      returnLink = renderApplyNowLink(text, openApplyNowModal);
+      returnLink = renderApplyNowLink(text, closeAddedToBagModal, openApplyNowModal);
       break;
     case 'LearnMoreAction':
-      returnLink = renderLearnMoreLink(text, openApplyNowModal);
+      returnLink = renderLearnMoreLink(text, closeAddedToBagModal, openApplyNowModal);
       break;
     case 'CreateAccountAction':
       returnLink = renderCreateAccountLink(text, closeAddedToBagModal, openOverlay);

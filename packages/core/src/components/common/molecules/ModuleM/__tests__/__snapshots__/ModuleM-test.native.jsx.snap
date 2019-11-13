@@ -4,6 +4,10 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
 <Styled(View)>
   <Styled(View)>
     <LinkText
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs32"
+      fontWeight="black"
       headerText={
         Array [
           Object {
@@ -31,7 +35,8 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           },
         ]
       }
-      useStyle={true}
+      textAlign="center"
+      type="heading"
     />
   </Styled(View)>
   <Styled(View)>
@@ -100,23 +105,23 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
   <Styled(View)>
     <ButtonTabs
       onTabChange={[Function]}
-      selectedTabId="47511"
+      selectedTabId="tablList-0"
       tabs={
         Array [
           Object {
-            "id": "47511",
+            "id": "tablList-0",
             "label": "GIRL",
           },
           Object {
-            "id": "47512",
+            "id": "tablList-1",
             "label": "TODDLER GIRL",
           },
           Object {
-            "id": "47513",
+            "id": "tablList-2",
             "label": "BOY",
           },
           Object {
-            "id": "47514",
+            "id": "tablList-3",
             "label": "TODDLER BOY",
           },
         ]
@@ -134,6 +139,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -141,18 +147,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined0"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -161,6 +176,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -194,6 +210,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -201,18 +218,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Toddler Girl alt"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Toddler Girl alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Girl title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined1"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -221,6 +247,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -254,6 +281,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -261,18 +289,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Boy"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Boy",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Boy",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined2"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -281,6 +318,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -314,6 +352,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -321,18 +360,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Toddler Boy alt"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Toddler Boy alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Boy title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined3"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -341,6 +389,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -374,6 +423,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -381,18 +431,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Baby"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Baby",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Baby",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined4"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -401,6 +460,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -434,6 +494,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -441,18 +502,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined5"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -461,6 +531,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -494,6 +565,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -501,18 +573,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined6"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -521,6 +602,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -554,6 +636,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -561,18 +644,27 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         url="/c/"
         visible={false}
       >
-        <Styled(ImageComp)
-          alt=""
-          borderRadius={0}
+        <Styled(Styled(DamImage))
+          alt="Girl"
+          crop=""
           height={228}
           host=""
-          marginBottom={4}
-          source={
+          imgConfig="t_mod_M_img_product_m"
+          imgData={
             Object {
-              "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
-          url=""
+          itemBrand=""
+          source=""
+          swatchConfig=""
+          testID="undefined7"
+          url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
           width={228}
         />
       </Styled(Anchor)>
@@ -581,6 +673,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={null}
@@ -609,6 +702,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      justifyContent=""
       locator=""
       margins={null}
       onPress={null}

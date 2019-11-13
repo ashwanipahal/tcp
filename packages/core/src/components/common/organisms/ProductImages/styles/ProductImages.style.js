@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { getIconPath } from '../../../../../utils';
 
 export default css`
   display: flex;
@@ -154,7 +155,8 @@ export const carousalStyle = css`
     width: 19px;
   }
   .slick-disabled {
-    display: none !important;
+    pointer-events: none;
+    background-image: url(${getIconPath('right-disable-carousel-carrot')});
   }
   @media ${props => props.theme.mediaQuery.large} {
     .slick-dots {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import OrderLedger from '../views/orderLedger.view';
 import { getLedgerSummaryData, getOrderLedgerLabels } from './orderLedger.selector';
 import confirmationSelectors from '../../../../Confirmation/container/Confirmation.selectors';
@@ -16,6 +17,7 @@ type Props = {
   confirmationPageLedgerSummaryData: any,
   pageCategory: any,
   navigation: object,
+  bagLoading: boolean,
 };
 
 export const OrderLedgerContainer = ({
@@ -28,6 +30,7 @@ export const OrderLedgerContainer = ({
   orderLedgerAfterView,
   pageCategory,
   navigation,
+  bagLoading,
 }: Props) => (
   <OrderLedger
     className={className}
@@ -39,6 +42,7 @@ export const OrderLedgerContainer = ({
     isConfirmationPage={isConfirmationPage}
     pageCategory={pageCategory}
     navigation={navigation}
+    bagLoading={bagLoading}
   />
 );
 
@@ -47,6 +51,7 @@ function mapStateToProps(state) {
     className: 'order-summary',
     ledgerSummaryData: getLedgerSummaryData(state),
     labels: getOrderLedgerLabels(state),
+    bagLoading: BagPageSelector.isBagLoading(state),
     confirmationPageLedgerSummaryData: confirmationSelectors.getLedgerSummaryDataConfirmation(
       state
     ),

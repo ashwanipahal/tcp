@@ -25,7 +25,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
+            "large": 11,
             "medium": 7,
             "small": 5,
           }
@@ -49,7 +49,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 2,
+            "large": 1,
             "medium": 1,
             "small": 1,
           }
@@ -70,7 +70,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
           <Styled(Anchor)
             anchorVariation="primary"
             asPath="/account/address-book/edit-address/undefined"
-            fontSizeVariation="medium"
+            fontSizeVariation="large"
             to="/account?id=edit-address&addressId=undefined"
             underline={true}
           >
@@ -80,7 +80,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
-      className="elem-mb-XL"
+      className="elem-mb-MED"
       fullBleed={true}
     >
       <Styled(Col)
@@ -131,7 +131,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
+            "large": 11,
             "medium": 7,
             "small": 5,
           }
@@ -155,7 +155,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       <Styled(Col)
         colSize={
           Object {
-            "large": 2,
+            "large": 1,
             "medium": 1,
             "small": 1,
           }
@@ -164,7 +164,7 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         <Styled(Anchor)
           anchorVariation="primary"
           asPath="/account/payment"
-          fontSizeVariation="medium"
+          fontSizeVariation="large"
           to="/account?id=payment"
           underline={true}
         >
@@ -234,7 +234,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
+            "large": 11,
             "medium": 7,
             "small": 5,
           }
@@ -258,7 +258,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       <Styled(Col)
         colSize={
           Object {
-            "large": 2,
+            "large": 1,
             "medium": 1,
             "small": 1,
           }
@@ -279,7 +279,7 @@ exports[`AddressOverviewTile render empty address component should render correc
           <Styled(Anchor)
             anchorVariation="primary"
             asPath="/account/address-book/add-new-address"
-            fontSizeVariation="medium"
+            fontSizeVariation="large"
             to="/account?id=address-book&subSection=add-new-address"
             underline={true}
           >
@@ -289,7 +289,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
-      className="elem-mb-XL"
+      className="elem-mb-MED"
       fullBleed={true}
     >
       <Styled(Col)
@@ -336,7 +336,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
+            "large": 11,
             "medium": 7,
             "small": 5,
           }
@@ -360,7 +360,7 @@ exports[`AddressOverviewTile render empty address component should render correc
       <Styled(Col)
         colSize={
           Object {
-            "large": 2,
+            "large": 1,
             "medium": 1,
             "small": 1,
           }
@@ -369,7 +369,7 @@ exports[`AddressOverviewTile render empty address component should render correc
         <Styled(Anchor)
           anchorVariation="primary"
           asPath="/account/payment/add-credit-card"
-          fontSizeVariation="medium"
+          fontSizeVariation="large"
           to="/account?id=add-credit-card"
           underline={true}
         >
@@ -435,7 +435,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
+            "large": 11,
             "medium": 7,
             "small": 5,
           }
@@ -459,7 +459,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
       <Styled(Col)
         colSize={
           Object {
-            "large": 2,
+            "large": 1,
             "medium": 1,
             "small": 1,
           }
@@ -480,7 +480,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
           <Styled(Anchor)
             anchorVariation="primary"
             asPath="/account/address-book/add-new-address"
-            fontSizeVariation="medium"
+            fontSizeVariation="large"
             to="/account?id=address-book&subSection=add-new-address"
             underline={true}
           >
@@ -490,7 +490,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
-      className="elem-mb-XL"
+      className="elem-mb-MED"
       fullBleed={true}
     >
       <Styled(Col)
@@ -537,7 +537,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
       <Styled(Col)
         colSize={
           Object {
-            "large": 10,
+            "large": 11,
             "medium": 7,
             "small": 5,
           }
@@ -561,7 +561,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
       <Styled(Col)
         colSize={
           Object {
-            "large": 2,
+            "large": 1,
             "medium": 1,
             "small": 1,
           }
@@ -570,7 +570,7 @@ exports[`AddressOverviewTile render empty address should render empty address co
         <Styled(Anchor)
           anchorVariation="primary"
           asPath="/account/payment/add-credit-card"
-          fontSizeVariation="medium"
+          fontSizeVariation="large"
           to="/account?id=add-credit-card"
           underline={true}
         >

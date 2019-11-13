@@ -22,6 +22,7 @@ import {
   OfferPriceAndFavoriteIconContainer,
   ImageSectionContainer,
   RowContainer,
+  OfferPriceAndBadge3View,
 } from '../styles/ProductListItem.style.native';
 import CustomButton from '../../../../../../common/atoms/Button';
 import ColorSwitch from '../../ColorSwitch';
@@ -66,7 +67,7 @@ const renderAddToBagContainer = (
   return (
     <AddToBagContainer>
       <CustomButton
-        paddings="12px 12px 12px 12px"
+        paddings="12px 8px 12px 8px"
         fill="BLUE"
         type="button"
         buttonVariation="variable-width"
@@ -352,7 +353,7 @@ const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) 
       </OfferPriceAndBadge3Container>
     );
   }
-  return null;
+  return <OfferPriceAndBadge3View />;
 };
 
 const RenderPricesSection = values => {

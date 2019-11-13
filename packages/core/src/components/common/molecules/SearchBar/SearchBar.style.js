@@ -133,6 +133,7 @@ export default css`
     .searchBar-input{
 
       width: 172px;
+      padding: 0;
       height: 30px;
       background-color: transparent;
       border: none;
@@ -278,6 +279,7 @@ export default css`
       overflow: unset;
       @media ${props => props.theme.mediaQuery.large} {
         width: 437px;
+        z-index: ${props => props.theme.zindex.zGoogleAutosuggest};
       }
 
       @media ${props => props.theme.mediaQuery.smallOnly} {
@@ -288,8 +290,8 @@ export default css`
         props.fromCondensedHeader
           ? `
           width: 437px;
-          right: 130px;
-          top: ${props.theme.spacing.ELEM_SPACING.XS};
+          right: 120px;
+          top: ${props.theme.spacing.ELEM_SPACING.MED};
         `
           : ``};
     }

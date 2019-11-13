@@ -23,26 +23,31 @@ const getUrl = url => {
     ? {
         pathname: url,
       }
-    : window.location;
+    : typeof window !== 'undefined' && window.location;
 };
+
 export function* fetchPlpProducts({ payload }) {
   try {
-    yield put(loadLayoutData({}, 'productListingPage'));
     const { url, formData, sortBySelected, scrollToTop } = payload;
+    yield put(loadLayoutData({}, 'productListingPage'));
     const location = getUrl(url);
-    let state = yield select();
     yield put(
       setPlpLoadingState({ isLoadingMore: true, isScrollToTop: scrollToTop, isDataLoading: true })
     );
+    let state = yield select();
     let reqObj = operatorInstance.getProductListingBucketedData(
-      state,
+      { ...state },
       location,
       sortBySelected,
       formData,
       1
     );
     if (reqObj.isFetchFiltersAndCountReq) {
-      const res = yield call(instanceProductListing.getProducts, reqObj, state);
+      const res = yield call(
+        instanceProductListing.getProducts,
+        { ...reqObj, location },
+        { ...state }
+      );
       const { layout, modules } = yield call(
         instanceProductListing.parsedModuleData,
         res.bannerInfo
@@ -51,10 +56,14 @@ export function* fetchPlpProducts({ payload }) {
       yield put(loadModulesData(modules));
       yield put(setListingFirstProductsPage({ ...res }));
       state = yield select();
-      reqObj = operatorInstance.processProductFilterAndCountData(res, state, reqObj);
+      reqObj = operatorInstance.processProductFilterAndCountData(res, { ...state }, reqObj);
     }
     if (reqObj && reqObj.categoryId) {
-      const plpProducts = yield call(instanceProductListing.getProducts, reqObj, state);
+      const plpProducts = yield call(
+        instanceProductListing.getProducts,
+        { ...reqObj, location },
+        { ...state }
+      );
       if (plpProducts) {
         const { layout, modules } = yield call(
           instanceProductListing.parsedModuleData,
@@ -64,8 +73,8 @@ export function* fetchPlpProducts({ payload }) {
         yield put(loadModulesData(modules));
         operatorInstance.updateBucketingConfig(plpProducts);
         const products = plpProducts.loadedProductsPages[0];
-        const isGuest = !getUserLoggedInState(state);
-        const isRemembered = isRememberedUser(state);
+        const isGuest = !getUserLoggedInState({ ...state });
+        const isRemembered = isRememberedUser({ ...state });
         if (!isGuest && !isRemembered) {
           const generalProductIdsList = products.map(
             product => product.productInfo.generalProductId

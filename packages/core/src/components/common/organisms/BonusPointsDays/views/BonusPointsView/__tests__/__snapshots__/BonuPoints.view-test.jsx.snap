@@ -3,7 +3,7 @@
 exports[`BonusPointsViewVanilla should render correctly 1`] = `
 <Fragment>
   <div
-    className="bonusPointsDaysWrapper elem-mb-MED "
+    className="bonusPointsDaysWrapper elem-mb-MED  "
   >
     <div
       className=""

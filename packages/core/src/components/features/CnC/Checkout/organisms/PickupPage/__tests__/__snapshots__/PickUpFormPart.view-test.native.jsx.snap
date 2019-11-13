@@ -106,6 +106,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
                 customStyle={Object {}}
                 fontSizeVariation="small"
                 href="#"
+                justifyContent=""
                 locator=""
                 margins={null}
                 noLink={true}
@@ -138,11 +139,14 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      getPayPalSettings={Object {}}
       isConfirmationPage={false}
       isGuest={true}
+      isPayPalWebViewEnable={false}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
+      showPayPalButton={false}
     />
   </ScrollViewMock>
 </Fragment>
@@ -254,6 +258,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
                 customStyle={Object {}}
                 fontSizeVariation="small"
                 href="#"
+                justifyContent=""
                 locator=""
                 margins={null}
                 noLink={true}
@@ -286,11 +291,14 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      getPayPalSettings={Object {}}
       isConfirmationPage={false}
       isGuest={true}
+      isPayPalWebViewEnable={false}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
+      showPayPalButton={false}
     />
   </ScrollViewMock>
 </Fragment>
@@ -385,11 +393,14 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
       </Styled(View)>
     </Styled(View)>
     <CnCCommonTemplate
+      getPayPalSettings={Object {}}
       isConfirmationPage={false}
       isGuest={false}
+      isPayPalWebViewEnable={false}
       pageCategory="pickupPage"
       routeToPage="ShippingPage"
       showAccordian={true}
+      showPayPalButton={false}
     />
   </ScrollViewMock>
 </Fragment>

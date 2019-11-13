@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field, change } from 'redux-form';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/BillingPaymentForm.style';
@@ -16,6 +17,7 @@ import utility, {
   getExpirationRequiredFlag,
   getCreditCardList,
   getSelectedCard,
+  scrollToFirstError,
 } from '../../../util/utility';
 import { CHECKOUT_ROUTES } from '../../../Checkout.constants';
 import DropdownList from './CreditCardDropdownList.view';
@@ -89,13 +91,13 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the checkout billing address form
    */
   getCheckoutBillingAddress = ({ editMode } = {}) => {
-    const { selectedOnFileAddressId, isSameAsShippingChecked } = this.props;
+    const { selectedOnFileAddressId, isSameAsShippingChecked, bagLoading } = this.props;
     const { isEditFormSameAsShippingChecked, editFormSelectedOnFileAddressId } = this.props;
     const { userAddresses, labels, cardList, isGuest, dispatch } = this.props;
     const { orderHasShipping, addressLabels, shippingAddress, billingData } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
-    return (
+    return !bagLoading ? (
       <CheckoutBillingAddress
         shippingAddress={shippingAddress}
         isSameAsShippingChecked={
@@ -114,6 +116,8 @@ export class BillingPaymentForm extends React.PureComponent {
           (creditCardList && creditCardList.size === 0)
         }
       />
+    ) : (
+      <AddressSkeleton />
     );
   };
 
@@ -480,5 +484,6 @@ export default reduxForm({
   enableReinitialize: true,
   shouldValidate: () => true,
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(BillingPaymentForm, styles));
 export { BillingPaymentForm as BillingPaymentFormVanilla };

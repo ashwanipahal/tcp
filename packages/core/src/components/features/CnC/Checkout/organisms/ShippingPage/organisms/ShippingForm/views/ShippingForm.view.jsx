@@ -17,6 +17,7 @@ import RegisteredShippingForm from '../../RegisteredShippingForm';
 import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
+import { scrollToFirstError } from '../../../../../util/utility';
 import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.view.style';
@@ -266,6 +267,7 @@ class ShippingForm extends React.Component {
       showAccordian,
       isMobile,
       pageCategory,
+      isLoadingShippingMethods,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -368,6 +370,7 @@ class ShippingForm extends React.Component {
                       'shipping',
                       'checkout'
                     )}
+                    isLoadingShippingMethods={isLoadingShippingMethods}
                   />
                 </div>
               </FormSection>
@@ -389,6 +392,7 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
+            isLoadingShippingMethods={isLoadingShippingMethods}
           />
         </form>
       </>
@@ -409,5 +413,6 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(ShippingForm, styles));
 export { ShippingForm as ShippingFormVanilla };

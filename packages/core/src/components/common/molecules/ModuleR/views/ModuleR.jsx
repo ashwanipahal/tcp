@@ -5,7 +5,7 @@ import { Anchor, Button, Col, Row, DamImage } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import { Grid, LinkText, PromoBanner } from '../..';
 import ProductTabList from '../../../organisms/ProductTabList';
-import { getLocator, viewport, splitUniqueIDForDAM } from '../../../../../utils';
+import { getLocator, viewport, getProductUrlForDAM } from '../../../../../utils';
 import moduleRStyle, { ImageGridCol, StyledSkeleton } from '../styles/ModuleR.style';
 import moduleRConfig from '../moduleR.config';
 
@@ -108,6 +108,7 @@ class ModuleR extends React.PureComponent {
                   medium: 2,
                   large: 2,
                 }}
+                ignoreNthRule
               >
                 <Anchor
                   to={pdpUrl}
@@ -115,7 +116,7 @@ class ModuleR extends React.PureComponent {
                   dataLocator={`${getLocator('moduleR_product_image')}${index}`}
                 >
                   <DamImage
-                    imgData={{ url: splitUniqueIDForDAM(uniqueId), alt: productName }}
+                    imgData={{ url: getProductUrlForDAM(uniqueId), alt: productName }}
                     imgConfigs={moduleRConfig.IMG_DATA.productImgConfig}
                     isProductImage
                   />
@@ -128,6 +129,7 @@ class ModuleR extends React.PureComponent {
               key={index.toString()}
               className="image-item-wrapper"
               colSize={{ small: 2, medium: 4, large: 4 }}
+              ignoreNthRule
             >
               {productItem}
             </Col>

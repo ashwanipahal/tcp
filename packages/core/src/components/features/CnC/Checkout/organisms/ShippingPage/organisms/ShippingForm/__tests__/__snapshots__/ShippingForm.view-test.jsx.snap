@@ -48,6 +48,7 @@ exports[`Shipping Form should render correctly 1`] = `
       isAddNewAddress={false}
       isEditing={false}
       isGuest={false}
+      isLoading={false}
       isMobile={false}
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}

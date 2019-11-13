@@ -39,12 +39,21 @@ const { RECOMMENDATION } = constant;
 
 class Recommendations extends Component {
   componentDidMount() {
-    const { loadRecommendations } = this.props;
-    const { page, portalValue } = this.props;
-    const action = { page };
-    if (portalValue) {
-      action.mboxName = portalValue;
-    }
+    const {
+      loadRecommendations,
+      page,
+      portalValue,
+      partNumber,
+      categoryName,
+      reduxKey,
+    } = this.props;
+    const action = {
+      reduxKey,
+      page: page || 'homepageTest',
+      ...(partNumber && { itemPartNumber: partNumber }),
+      ...(portalValue && { mboxName: portalValue }),
+      ...(categoryName && { categoryName }),
+    };
     if (window.adobe && window.adobe.target) {
       return loadRecommendations(action);
     }
@@ -106,13 +115,15 @@ class Recommendations extends Component {
       ctaText,
       ctaTitle,
       ctaUrl,
+      carouselConfigProps,
+      headerAlignment,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
     const params = config.params[variation];
     const headerLabel =
       variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
-
+    const carouselProps = { ...config.CAROUSEL_OPTIONS, ...carouselConfigProps };
     return (
       products &&
       products.length > 0 && (
@@ -120,7 +131,7 @@ class Recommendations extends Component {
           <Heading
             variant="h4"
             className={`recommendations-header ${priceOnlyClass}`}
-            textAlign="center"
+            textAlign={headerAlignment || 'center'}
             dataLocator={params.dataLocator}
           >
             {headerLabel}
@@ -141,7 +152,7 @@ class Recommendations extends Component {
               {products.length >= 4 ? (
                 <Carousel
                   className={`${variation}-variation`}
-                  options={config.CAROUSEL_OPTIONS}
+                  options={carouselProps}
                   inheritedStyles={Carousel}
                   carouselConfig={{
                     variation: 'big-arrows',
@@ -230,6 +241,11 @@ Recommendations.propTypes = {
   onQuickViewOpenClick: PropTypes.func.isRequired,
   page: PropTypes.string,
   portalValue: PropTypes.string,
+  carouselConfigProps: PropTypes.shape({}),
+  partNumber: PropTypes.string,
+  categoryName: PropTypes.string,
+  headerAlignment: PropTypes.string,
+  reduxKey: PropTypes.string.isRequired,
 };
 
 Recommendations.defaultProps = {
@@ -245,6 +261,10 @@ Recommendations.defaultProps = {
   },
   page: '',
   portalValue: '',
+  carouselConfigProps: null,
+  partNumber: '',
+  categoryName: '',
+  headerAlignment: '',
 };
 
 export { Recommendations as RecommendationsVanilla };

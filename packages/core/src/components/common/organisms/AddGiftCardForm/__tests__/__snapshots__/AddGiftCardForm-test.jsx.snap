@@ -23,6 +23,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <Field
+        autoComplete="off"
         className="giftCardNumber"
         component={
           Object {
@@ -203,6 +204,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <Field
+        autoComplete="off"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -525,6 +527,7 @@ exports[`Add gift card form component should render component correctly when isF
       }
     >
       <Field
+        autoComplete="off"
         className="giftCardNumber"
         component={
           Object {
@@ -698,6 +701,7 @@ exports[`Add gift card form component should render component correctly when isF
       }
     >
       <Field
+        autoComplete="off"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -976,6 +980,804 @@ exports[`Add gift card form component should render component correctly when isF
           "small": 1,
         }
       }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="gift-card-addcardbtn"
+        fill="BLUE"
+        type="submit"
+      >
+        lbl_payment_addCard
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+</form>
+`;
+
+exports[`Add gift card form component should render component correctly when saveToAccountEnabled props is passed 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <Styled(Row)
+    className="elem-mb-MED"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Field
+        autoComplete="off"
+        className="giftCardNumber"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: ",
+                [Function],
+                ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                [Function],
+                ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                [Function],
+                ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                [Function],
+                ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="gift-card-cardnumberfield"
+        id="giftCardNumber"
+        maxLength={50}
+        name="giftCardNumber"
+        onChange={[Function]}
+        placeholder="lbl_payment_giftCardNoPlaceholder"
+        type="tel"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Field
+        autoComplete="off"
+        className="cardPin"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: ",
+                [Function],
+                ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                [Function],
+                ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                [Function],
+                ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                [Function],
+                ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="gift-card-pinnumberfield"
+        id="cardPin"
+        name="cardPin"
+        onChange={[Function]}
+        placeholder="lbl_payment_giftCardPinPlaceholder"
+        type="tel"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <div>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 2,
+            "small": 4,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Recaptcha
+          className="card__recaptcha"
+          dataLocator="gift-card-addcardrecaptchacheckbox"
+          expiredCallback={[Function]}
+          sitekey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+          size="normal"
+          tabindex="0"
+          theme="light"
+          type="image"
+          verifyCallback={[Function]}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <div>
+      <Field
+        className="card__hidden"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: ",
+                [Function],
+                ";
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: ",
+                [Function],
+                ";
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                [Function],
+                ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                [Function],
+                ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                [Function],
+                ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        name="recaptchaToken"
+        onChange={[Function]}
+        type="hidden"
+      />
+    </div>
+  </div>
+  <Styled(Row)
+    className="elem-mb-XL savetoaccount elem-mt-MED"
+    fullBleed={true}
+  >
+    <Field
+      className="save-to-account"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-iwsKbI",
+            "isStatic": false,
+            "rules": Array [
+              "
+  ",
+              "
+  display: block;
+  align-items: ",
+              [Function],
+              ";
+
+  & .CheckBox__input {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    height: ",
+              "25px",
+              ";
+    width: ",
+              "25px",
+              ";
+    margin: 0;
+    margin-right: ",
+              [Function],
+              ";
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .CheckBox__input:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border: 1px solid ",
+              [Function],
+              ";
+  }
+
+  & .CheckBox__input:checked:before {
+    background: ",
+              [Function],
+              ";
+    border: 1px solid ",
+              [Function],
+              ";
+  }
+
+  & .CheckBox__input:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px solid ",
+              [Function],
+              ";
+    font-size: ",
+              [Function],
+              "px;
+    width: ",
+              [Function],
+              ";
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 45px);
+    display: inline-block;
+    ",
+              [Function],
+              "
+  }
+
+  & .CheckBox__text a {
+    color: ",
+              [Function],
+              ";
+  }
+
+  & .disabled {
+    opacity: ",
+              [Function],
+              ";
+  }
+
+  & .Checkbox__error {
+    display: flex;
+    flex-direction: row;
+    padding-left: ",
+              [Function],
+              ";
+  }
+  & .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: ",
+              [Function],
+              ";
+    width: ",
+              [Function],
+              ";
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+  & #checkbox__error__iAgree {
+    margin-top: 4px;
+  }
+",
+              ";
+",
+            ],
+          },
+          "displayName": "Styled(InputCheckbox)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-iwsKbI",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="gift-card-checkbox-field"
+      name="saveToAccount"
+      onChange={[Function]}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        dataLocator="gift-card-sav-to-account-heading-lbl"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
+      >
+        lbl_payment_saveToAccount
+      </Styled(BodyCopy)>
+    </Field>
+  </Styled(Row)>
+  <Styled(Row)
+    className="card__row"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="card__btn"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+      offsetLeft={null}
+      offsetRight={null}
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="gift-card-cancelbtn"
+        onClick={[Function]}
+        type="button"
+      >
+        lbl_payment_cancelCard
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="card__btn--medium"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+      offsetLeft={null}
       offsetRight={
         Object {
           "large": 0,

@@ -107,6 +107,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -246,6 +247,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -381,6 +383,9 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               }
               onPress={[Function]}
             />
+            <Connect(PromotionBannerContainer)
+              bossBanner={true}
+            />
           </ForwardRef>
           <ForwardRef>
             <View>
@@ -441,6 +446,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -576,6 +582,9 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               }
               onPress={[Function]}
             />
+            <Connect(PromotionBannerContainer)
+              bossBanner={true}
+            />
           </ForwardRef>
           <ForwardRef>
             <View>
@@ -636,6 +645,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -771,6 +781,9 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               }
               onPress={[Function]}
             />
+            <Connect(PromotionBannerContainer)
+              bossBanner={true}
+            />
           </ForwardRef>
           <ForwardRef>
             <View>
@@ -831,6 +844,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1085,6 +1099,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1187,6 +1202,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1274,6 +1290,9 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
                 }
               }
               onPress={[Function]}
+            />
+            <Connect(PromotionBannerContainer)
+              bossBanner={true}
             />
           </ForwardRef>
         </ForwardRef>
@@ -1357,6 +1376,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1445,6 +1465,9 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               }
               onPress={[Function]}
             />
+            <Connect(PromotionBannerContainer)
+              bossBanner={true}
+            />
           </ForwardRef>
         </ForwardRef>
       </React.Fragment>
@@ -1527,6 +1550,7 @@ exports[`CartItemRadioButtons native Component CartItemRadioButtons native shoul
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1709,6 +1733,7 @@ exports[`CartItemRadioButtons native Component should open change store popup fo
               colorName={null}
               customStyle={Object {}}
               fontSizeVariation="small"
+              justifyContent=""
               locator=""
               margins={null}
               onPress={[Function]}
@@ -1796,6 +1821,9 @@ exports[`CartItemRadioButtons native Component should open change store popup fo
                 }
               }
               onPress={[Function]}
+            />
+            <Connect(PromotionBannerContainer)
+              bossBanner={true}
             />
           </ForwardRef>
         </ForwardRef>
