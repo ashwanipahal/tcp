@@ -748,13 +748,6 @@ exports[`HomePageView should render correctly 1`] = `
       }
     }
   />
-  <Connect(QuickViewModalContainer)
-    navigation={
-      Object {
-        "getParam": [Function],
-      }
-    }
-  />
   <View>
     <Connect(QuickViewModalContainer)
       navigation={
@@ -771,5 +764,252 @@ exports[`HomePageView should render correctly 1`] = `
       }
     />
   </View>
+  <ModuleE
+    carouselCtaType="button"
+    ctaItems={
+      Array [
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Girl",
+            "title": "Girl",
+            "url": "/girl",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Girl",
+            "title": "Toddler Girl",
+            "url": "/toddler-girl",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Boy",
+            "title": "Boy",
+            "url": "/boy",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Toddler Boy",
+            "title": "Toddler Boy",
+            "url": "/toddler-boy",
+          },
+        },
+        Object {
+          "button": Object {
+            "external": 0,
+            "target": "",
+            "text": "Baby",
+            "title": "Baby",
+            "url": "/baby",
+          },
+        },
+      ]
+    }
+    ctaType="stackedCTAButtons"
+    divCTALinks={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Big & Little Sis",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Big & Little Sis",
+            "url": "https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-1.jpg",
+          },
+          "link": Object {
+            "external": 1,
+            "target": "_blank",
+            "text": "SHOP NOW",
+            "title": "SHOP NOW",
+            "url": "/link/url1",
+          },
+          "styled": Object {
+            "style": "spaced_text_regular_black",
+            "text": "Big & Little Sis",
+          },
+        },
+        Object {
+          "image": Object {
+            "alt": "Big & Little Bro",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Big & Little Bro",
+            "url": "https://test5.childrensplace.com/image/upload/v1573283630/module-E-test-large-2.jpg",
+          },
+          "link": Object {
+            "external": 1,
+            "target": "_blank",
+            "text": "SHOP NOW",
+            "title": "SHOP NOW",
+            "url": "/link/url2",
+          },
+          "styled": Object {
+            "style": "spaced_text_regular_black",
+            "text": "Big & Little Bro",
+          },
+        },
+      ]
+    }
+    eyebrow={
+      Array [
+        Object {
+          "mediaLinkedList": Array [
+            Object {
+              "image": Object {
+                "alt": "Left Image",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Left Image",
+                "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Left Image Link",
+                "title": "Left Image Link",
+                "url": "http://www.childrensplace.com",
+              },
+            },
+            Object {
+              "image": Object {
+                "alt": "Right Image",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Right Image",
+                "url": "https://test5.childrensplace.com/image/upload/v1573194405/moduleE-eyebrow-image.jpg",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "text": "Right Image Link",
+                "title": "Right Image Link",
+                "url": "http://www.childrensplace.com",
+              },
+            },
+          ],
+          "promoBanner": Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "small_text_normal",
+                  "text": "Cue the photos",
+                },
+              ],
+            },
+          ],
+        },
+      ]
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/node/pdp/<uuid>",
+          },
+          "textItems": Array [
+            Object {
+              "style": "medium_text_black",
+              "text": "THE DRESS UP SHOP",
+            },
+          ],
+        },
+      ]
+    }
+    largeCompImageSimpleCarousel={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Family Tees2",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Family Tees2",
+            "url": "https://test5.childrensplace.com/image/upload/v1573283582/module-E-test-large-1.jpg",
+          },
+          "singleCTAButton": Object {
+            "external": 0,
+            "target": "_blank",
+            "text": "Shop The Collection",
+            "title": "Shop The Collection",
+            "url": "http://www.childrensplace.com",
+          },
+        },
+        Object {
+          "image": Object {
+            "alt": "Family Tees",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Family Tees",
+            "url": "https://test5.childrensplace.com/image/upload/v1573239143/module-E-test-large-2.jpg",
+          },
+          "singleCTAButton": Object {
+            "external": 0,
+            "target": "_blank",
+            "text": "Shop The Collection",
+            "title": "Shop The Collection",
+            "url": "http://www.childrensplace.com/2",
+          },
+        },
+      ]
+    }
+    linkedImage={Array []}
+    navigation={
+      Object {
+        "getParam": [Function],
+      }
+    }
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/banner/url",
+          },
+          "textItems": Array [
+            Object {
+              "style": "spaced_text_regular_black",
+              "text": "ALL MATCHING FAMILY",
+            },
+            Object {
+              "style": "percentage_all_wrapped_normal_tab",
+              "text": "60 % OFF",
+            },
+          ],
+        },
+      ]
+    }
+  />
 </LazyloadScrollView>
 `;

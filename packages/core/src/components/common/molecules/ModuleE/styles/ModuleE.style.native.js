@@ -11,49 +11,13 @@ export const HeaderWrapper = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
-
-export const PromoTextBannerWrapper = styled.View``;
-
-export const PromoBannerWrapper = styled.View``;
-
-export const ButtonContainer = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-`;
 export const ContainerView = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
+
 export const Border = styled.View`
   height: 0.5px;
-  background: ${props =>
-    props.background === 'text'
-      ? props.theme.colors.BUTTON.WHITE.BORDER
-      : props.theme.colorPalette.gray[700]};
-`;
-
-export const DivImageCTAContainer = styled.View``;
-
-export const ButtonLinksContainer = styled.View`
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  background: #003057;
-`;
-
-export const PromoRibbonWrapper = styled.View`
-  width: 174px;
-  height: 54px;
-  bottom: 10px;
-  position: absolute;
-  z-index: ${props => props.theme.zindex.zOverlay}
-    ${props => (props.viewdirection === 'right' ? ` left:0; ` : '')};
-  ${props => (props.viewdirection === 'left' ? `right:0; ` : '')};
-`;
-
-export const MessageContainer = styled.View`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  position: absolute;
-  right: 0;
-  z-index: ${props => props.theme.zindex.zOverlay};
+  background: ${props => props.theme.colorPalette.gray[700]};
 `;
 
 export const HeaderView = styled.View`
@@ -69,10 +33,7 @@ export const EyeBrowContainer = styled.View`
   flex-direction: row;
 `;
 
-export const StyledImage = styled(DamImage)`
-  /* stylelint-disable-next-line */
-  resize-mode: stretch;
-`;
+export const StyledImage = styled(DamImage)``;
 
 export const StyledAnchor = styled(Anchor)`
   justify-content: center;
@@ -88,14 +49,14 @@ export const TopPromoWrapper = styled.View`
 
 export const StyledButton = styled(Button)``;
 
-export const ButtonWrapper = styled.View`
+export const StackCTAButtonWrapper = styled.View`
   margin-top: ${props => props.marginTop || '8px'};
 `;
 
 export const StyledBodyCopy = styled(BodyCopy)`
-  margin-top: ${props => props.marginTop || '1px'};
-  margin-bottom: ${props => props.marginBottom || '1px'};
-  width: ${props => props.width || '1px'};
+  ${props => (props.marginTop ? ` margin-top: ${props.marginTop}` : ``)};
+  ${props => (props.marginTop ? ` margin-bottom: ${props.marginBottom}` : ``)};
+  ${props => (props.marginTop ? ` width: ${props.width}` : ``)};
 `;
 
 export const ImageContainer = styled.View`
@@ -126,14 +87,14 @@ export const BorderTopAndBottom = styled.View`
   ${props => (props.pos === 'bottom' ? `margin-bottom: 24px` : `margin-top: 24px`)};
 `;
 
-export const AnchorWrapper = styled.View`
+export const FloatingButton = styled.View`
   margin-top: 10px;
   position: absolute;
   margin-bottom: 50px;
   bottom: 0;
 `;
 
-export const Wrapper = styled.View`
+export const StackCTAWrapper = styled.View`
   margin-left: 14px;
   margin-right: 14px;
   margin-bottom: 12px;
@@ -142,16 +103,9 @@ export const Wrapper = styled.View`
 export default {
   Container,
   HeaderWrapper,
-  PromoTextBannerWrapper,
-  ButtonContainer,
   Border,
   ContainerView,
-  DivImageCTAContainer,
-  ButtonLinksContainer,
-  MessageContainer,
-  PromoBannerWrapper,
   HeaderView,
-  PromoRibbonWrapper,
   EyeBrowContainer,
   StyledImage,
   StyledAnchor,
@@ -160,9 +114,9 @@ export default {
   ImageContainer,
   ImageWrapper,
   StyledBodyCopy,
-  ButtonWrapper,
+  StackCTAButtonWrapper,
   PromoAreaWrapper,
   BorderTopAndBottom,
-  AnchorWrapper,
-  Wrapper,
+  FloatingButton,
+  StackCTAWrapper,
 };

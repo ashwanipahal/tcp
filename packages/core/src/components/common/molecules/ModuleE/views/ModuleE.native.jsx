@@ -12,7 +12,6 @@ import {
   Container,
   ContainerView,
   HeaderWrapper,
-  PromoBannerWrapper,
   HeaderView,
   EyeBrowContainer,
   StyledImage,
@@ -23,11 +22,11 @@ import {
   StyledAnchor,
   ImageWrapper,
   StyledBodyCopy,
-  ButtonWrapper,
+  StackCTAButtonWrapper,
   PromoAreaWrapper,
   BorderTopAndBottom,
-  AnchorWrapper,
-  Wrapper,
+  FloatingButton,
+  StackCTAWrapper,
 } from '../styles/ModuleE.style.native';
 import config from '../config';
 
@@ -42,6 +41,7 @@ const MODULE_WIDTH = getScreenWidth();
 const MODULE_EYEBROW_WIDTH = 117;
 const MODULE_EYEBROW_HEIGHT = 18;
 const MODULE_PROMO_EYEBROW_WIDTH = getScreenWidth() - 234;
+const PROMO_IMAGE_HEIGHT = '67px';
 
 /**
  * These are button width.
@@ -56,7 +56,7 @@ const { ctaTypes, IMG_DATA } = config;
  */
 
 const BUTTON_VARIATION_FULLWIDTH = 'fullwidth';
-const BUTTON_VARIATION_HALFWIDTH = 'halfwidth';
+const BUTTON_VARIATION_FULLWIDTH_MARGIN = 'fullwidth_margin';
 
 /**
  * @param {object} props : Props for Module E multi type of banner list, button list, header text.
@@ -82,7 +82,7 @@ class ModuleE extends React.PureComponent {
   renderAnchor = navigation => {
     const { shopNowText, shopNowUrl } = this.state;
     return (
-      <AnchorWrapper>
+      <FloatingButton>
         <StyledAnchor
           text={shopNowText}
           url={shopNowUrl}
@@ -93,7 +93,7 @@ class ModuleE extends React.PureComponent {
           anchorVariation="custom"
           colorName="gray.900"
         />
-      </AnchorWrapper>
+      </FloatingButton>
     );
   };
 
@@ -105,17 +105,17 @@ class ModuleE extends React.PureComponent {
     const { shopNowText, shopNowUrl } = this.state;
     if (buttonVariation === BUTTON_VARIATION_FULLWIDTH) {
       return (
-        <ButtonWrapper>
+        <StackCTAButtonWrapper>
           <Border />
           <StyledButton text={shopNowText} url={shopNowUrl} navigation={navigation} />
-        </ButtonWrapper>
+        </StackCTAButtonWrapper>
       );
     }
 
     return (
-      <Wrapper>
+      <StackCTAWrapper>
         <StyledButton text={shopNowText} url={shopNowUrl} navigation={navigation} />
-      </Wrapper>
+      </StackCTAWrapper>
     );
   };
 
@@ -223,7 +223,7 @@ class ModuleE extends React.PureComponent {
             />
           )}
         </HeaderView>
-        <PromoBannerWrapper>
+        <View>
           {promoBanner && (
             <PromoBanner
               promoBanner={promoBanner}
@@ -231,7 +231,7 @@ class ModuleE extends React.PureComponent {
               locator="moduleE_promobanner_text"
             />
           )}
-        </PromoBannerWrapper>
+        </View>
       </HeaderWrapper>
     );
   };
@@ -270,7 +270,7 @@ class ModuleE extends React.PureComponent {
    * This method return the renderMediaLinkedImage method to manage all product image with cropping rule .
    *  @naviagtion is used to navigate the page.
    */
-  renderMediaLinkedImage = (divCTALinks, navigation) => {
+  smallCompositeImage = (divCTALinks, navigation) => {
     return (
       <ImageContainer>
         {divCTALinks.map(({ image, link, styled }, index) => {
@@ -329,7 +329,7 @@ class ModuleE extends React.PureComponent {
                 >
                   <StyledImage
                     url={image && image.url}
-                    height="67px"
+                    height={PROMO_IMAGE_HEIGHT}
                     width={MODULE_WIDTH}
                     testID={`${getLocator('moduleE_promoarea_img')}${index}`}
                     alt={image && image.alt}
@@ -346,9 +346,9 @@ class ModuleE extends React.PureComponent {
   };
 
   /**
-   * This method return the renderTopAndBottomBorder according to pos.
+   * This method return the renderDivider according to pos.
    */
-  renderTopAndBottomBorder = pos => {
+  renderDivider = pos => {
     return <BorderTopAndBottom pos={pos} />;
   };
 
@@ -359,7 +359,7 @@ class ModuleE extends React.PureComponent {
   renderTopView = (eyebrow, headerText, promoBanner, navigation) => {
     return (
       <View>
-        {!eyebrow && this.renderTopAndBottomBorder('bottom')}
+        {!eyebrow && this.renderDivider('bottom')}
         {eyebrow && this.renderEyeBrow(eyebrow, navigation)}
         {this.renderHeaderPromo(navigation, headerText, promoBanner)}
       </View>
@@ -391,14 +391,14 @@ class ModuleE extends React.PureComponent {
         {largeCompImageSimpleCarousel &&
           this.renderCarousel(largeCompImageSimpleCarousel, navigation, carouselCtaType)}
         {carouselCtaType === 'button' && !eyebrow
-          ? this.renderButton(navigation, BUTTON_VARIATION_HALFWIDTH)
+          ? this.renderButton(navigation, BUTTON_VARIATION_FULLWIDTH_MARGIN)
           : null}
         {carouselCtaType === 'button' && eyebrow
           ? this.renderButton(navigation, BUTTON_VARIATION_FULLWIDTH)
           : null}
         {ctaItems && this.renderButtonList(ctaTypeValue, navigation, ctaItems)}
-        {this.renderMediaLinkedImage(divCTALinks, navigation)}
-        {!eyebrow && this.renderTopAndBottomBorder('top')}
+        {this.smallCompositeImage(divCTALinks, navigation)}
+        {!eyebrow && this.renderDivider('top')}
       </Container>
     );
   }
