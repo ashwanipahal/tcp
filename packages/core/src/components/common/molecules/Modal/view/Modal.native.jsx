@@ -15,7 +15,6 @@ type Props = {
   children: node,
   isOverlay?: boolean,
   inheritedStyles?: String,
-  customHeaderMargin?: String,
 };
 
 const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherProps }: Props) => {
@@ -99,7 +98,6 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
 ModalNative.defaultProps = {
   isOverlay: false,
   inheritedStyles: '',
-  customHeaderMargin: '',
 };
 
 export default ModalNative;
