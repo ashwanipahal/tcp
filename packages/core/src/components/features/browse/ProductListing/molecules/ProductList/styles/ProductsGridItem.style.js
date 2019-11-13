@@ -41,7 +41,6 @@ const styles = css`
     width: 100%;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     &:focus {
-      outline: 0;
       background: initial;
     }
     &:hover:not([disabled]) {
@@ -51,7 +50,6 @@ const styles = css`
     &[disabled] {
       opacity: 0.5;
     }
-
     @media ${props => props.theme.mediaQuery.mediumMax} {
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
