@@ -46,6 +46,7 @@ const LoyaltyBannerSection = props => {
     footerLabels,
     openApplyNowModal,
     navigation,
+    closeAddedToBagModal,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -173,6 +174,7 @@ const LoyaltyBannerSection = props => {
             footerLabels={footerLabels}
             openApplyNowModal={openApplyNowModal}
             navigation={navigation}
+            closeAddedToBagModal={closeAddedToBagModal}
           />
         </View>
       </LoyaltySectionWrapper>
@@ -196,6 +198,7 @@ LoyaltyBannerSection.propTypes = {
   pageCategory: PropTypes.string,
   openApplyNowModal: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}),
+  closeAddedToBagModal: PropTypes.func.isRequired,
 };
 
 LoyaltyBannerSection.defaultProps = {

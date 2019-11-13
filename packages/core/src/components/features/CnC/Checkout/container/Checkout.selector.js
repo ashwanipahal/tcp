@@ -17,6 +17,8 @@ import {
   getUserLastName,
   getUserPhoneNumber,
   getUserEmail,
+  getplccCardNumber,
+  isPlccUser,
 } from '../../../account/User/container/User.selectors';
 import constants from '../Checkout.constants';
 import { getAddressListState } from '../../../account/AddressBook/container/AddressBook.selectors';
@@ -983,6 +985,42 @@ const getCheckoutPageEmptyBagLabels = createSelector(
   }
 );
 
+const getIsRtpsFlow = createSelector(
+  getCheckoutUiFlagState,
+  uiFlags => uiFlags && uiFlags.get('isRTPSFlow')
+);
+
+const getIsRTPSEnabled = state =>
+  state[SESSIONCONFIG_REDUCER_KEY] &&
+  state[SESSIONCONFIG_REDUCER_KEY].siteDetails.ADS_OLPS_ENABLED === 'TRUE';
+
+const hasPLCCOrRTPSEnabled = createSelector(
+  [getplccCardNumber, getIsRTPSEnabled, isPlccUser],
+  (plccCardNumber, isRTPSEnabled, isPLCCUser) => {
+    const hasPLCC = isPLCCUser || plccCardNumber;
+    return !hasPLCC && isRTPSEnabled;
+  }
+);
+
+const getShowRTPSOnBilling = createSelector(
+  [getIsOrderHasShipping, getGiftWrappingValues, hasPLCCOrRTPSEnabled],
+  (isOrderHasShipping, giftWrappingValues, rtpsEnabled) => {
+    const { hasGiftWrapping } = giftWrappingValues;
+    return isOrderHasShipping && !hasGiftWrapping && rtpsEnabled;
+  }
+);
+
+const getshowRTPSOnReview = createSelector(
+  [hasPLCCOrRTPSEnabled, isExpressCheckout],
+  (rtpsEnabled, isExpressCheckoutEnabled) => {
+    return rtpsEnabled && isExpressCheckoutEnabled;
+  }
+);
+
+export const getPageData = state => {
+  return state.pageData;
+};
+
 export default {
   getIsOrderHasShipping,
   getShippingDestinationValues,
@@ -1068,11 +1106,15 @@ export default {
   getExpressReviewShippingSectionId,
   getShippingAddressList,
   getIsBillingVisited,
+  getIsRtpsFlow,
   getVenmoUserEmail,
   getVenmoError,
   getPickupValues,
   getCheckoutPageEmptyBagLabels,
   getCardType,
   getShippingPhoneNo,
+  getIsRTPSEnabled,
   getIfCheckoutRoutingDone,
+  getShowRTPSOnBilling,
+  getshowRTPSOnReview,
 };

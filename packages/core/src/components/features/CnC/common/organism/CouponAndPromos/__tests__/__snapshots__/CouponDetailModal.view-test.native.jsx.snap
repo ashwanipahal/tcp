@@ -10,6 +10,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       "width": "100%",
     }
   }
+  headingFontFamily="secondary"
   horizontalBar={false}
   inheritedStyles=""
   isOpen={true}

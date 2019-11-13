@@ -46,7 +46,7 @@ class ModuleQ extends React.PureComponent {
    */
   getSlideItem = (item, index) => {
     const { id, items, largeImageUrl, pdpUrl } = item;
-    const { shopThisLookLabel } = this.props;
+    const { shopThisLookLabel, isCompleteTheLook } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
     const outfitParams = pdpUrl && pdpUrl.split('/');
@@ -76,27 +76,29 @@ class ModuleQ extends React.PureComponent {
               </Anchor>
             </div>
           </div>
-          <div className="looks-images-wrapper">
-            {looksImages.map(({ smallImageUrl, name, remoteId }) => {
-              return (
-                <div className="looks-image">
-                  <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />
+          {!isCompleteTheLook && (
+            <div className="looks-images-wrapper">
+              {looksImages.map(({ smallImageUrl, name, remoteId }) => {
+                return (
+                  <div className="looks-image">
+                    <Image key={remoteId} alt={name} src={this.getUrlWithHttp(smallImageUrl)} />
+                  </div>
+                );
+              })}
+              {hiddenImagesCount > 0 ? (
+                <div className="looks-image looks-image-last">
+                  <BodyCopy
+                    color="gray.900"
+                    fontFamily="secondary"
+                    fontSize="fs22"
+                    fontWeight="extrabold"
+                  >
+                    {`+${hiddenImagesCount}`}
+                  </BodyCopy>
                 </div>
-              );
-            })}
-            {hiddenImagesCount > 0 ? (
-              <div className="looks-image looks-image-last">
-                <BodyCopy
-                  color="gray.900"
-                  fontFamily="secondary"
-                  fontSize="fs22"
-                  fontWeight="extrabold"
-                >
-                  {`+${hiddenImagesCount}`}
-                </BodyCopy>
-              </div>
-            ) : null}
-          </div>
+              ) : null}
+            </div>
+          )}
         </Anchor>
       </div>
     );
@@ -259,6 +261,7 @@ ModuleQ.defaultProps = {
   hideTabs: false,
   selectedColorProductId: '',
   showRelatedOutfitHeader: null,
+  isCompleteTheLook: false,
 };
 
 ModuleQ.propTypes = {
@@ -298,6 +301,7 @@ ModuleQ.propTypes = {
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
+  isCompleteTheLook: PropTypes.bool,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);
