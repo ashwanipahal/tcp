@@ -7,6 +7,7 @@ exports[`Account View should render Account Correctly 1`] = `
     activeSubComponent="accountOverview"
     labels={Object {}}
     navData={Array []}
+    pageContentRef={[Function]}
     router={
       Object {
         "query": Object {
@@ -25,6 +26,7 @@ exports[`Account View should render Account container Correctly 1`] = `
     activeSubComponent="addressBook"
     labels={Object {}}
     navData={Array []}
+    pageContentRef={[Function]}
     router={
       Object {
         "query": Object {
