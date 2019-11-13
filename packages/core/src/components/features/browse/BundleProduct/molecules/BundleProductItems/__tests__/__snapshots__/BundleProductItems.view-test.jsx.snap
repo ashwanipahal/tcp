@@ -11,7 +11,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-iAyFgw",
+        "componentId": "sc-hSdWYo",
         "isStatic": true,
         "rules": Array [
           "
@@ -19,6 +19,9 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
           "
   && .pdp-qty {
     padding-top: 2px;
+  }
+  && .select__input {
+    top: 0;
   }
   .product-information {
     width: calc(100% - 30px);
@@ -35,7 +38,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
       "displayName": "Styled(BundleProductItems)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-iAyFgw",
+      "styledComponentId": "sc-hSdWYo",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
