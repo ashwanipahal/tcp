@@ -11,6 +11,9 @@ const styles = css`
     margin-right: 0;
     margin-top: 25px;
   }
+  .outfit-button-wrapper-desktop {
+    display: none;
+  }
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
@@ -227,6 +230,10 @@ const styles = css`
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     padding-top: 9px;
     text-transform: uppercase;
+  }
+
+  .pdp-qty + p {
+    margin-top: -20px;
   }
 
   .size-field {
