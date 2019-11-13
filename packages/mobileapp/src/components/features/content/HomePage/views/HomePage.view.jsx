@@ -24,14 +24,13 @@ import {
   ModuleR,
   ModuleQ,
   ModuleS,
+  ModuleE,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
-import mockE from '@tcp/core/src/services/abstractors/common/moduleE/mock-v2';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
-import ModuleE from '@tcp/core/src/components/common/molecules/ModuleE/views/ModuleE.native';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
 import {
@@ -199,8 +198,6 @@ class HomePageView extends React.PureComponent<Props> {
           </>
         ) : null}
         {this.renderGlobalModal(navigation)}
-
-        <ModuleE navigation={navigation} {...mockE.moduleE.composites} />
       </LazyloadScrollView>
     );
   }

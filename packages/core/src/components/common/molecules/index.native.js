@@ -22,6 +22,7 @@ import StoreHours from './StoreHours';
 import StoreLocations from './StoreLocations';
 import FullScreenImageCarousel from './FullScreenImageCarousel';
 import SearchBar from './SearchBar';
+import ModuleE from './ModuleE';
 
 export {
   Carousel,
@@ -48,4 +49,5 @@ export {
   FullScreenImageCarousel,
   ModuleS,
   SearchBar,
+  ModuleE,
 };

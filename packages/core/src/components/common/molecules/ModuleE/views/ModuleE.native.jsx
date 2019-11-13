@@ -28,7 +28,7 @@ import {
   FloatingButton,
   StackCTAWrapper,
 } from '../styles/ModuleE.style.native';
-import config from '../config';
+import config from '../moduleE.config';
 
 /**
  * Module height and width.
