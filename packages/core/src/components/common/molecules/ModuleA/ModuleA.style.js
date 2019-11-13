@@ -37,6 +37,14 @@ const style = css`
     background-color: ${props => props.theme.colorPalette.blue.C900};
   }
 
+  .slick-dots li button:before {
+    border: 0.5px solid white;
+  }
+
+  .slick-dots li.slick-active button:before {
+    border: 1px solid ${props => props.theme.colorPalette.gray[700]};
+  }
+
   .banner-slide {
     position: relative;
     img {
@@ -97,11 +105,11 @@ const style = css`
   .tcp_carousel_wrapper .slick-list,
   .banner-slide {
     min-height: 200px;
-    max-height: 311px;
+    max-height: ${props => (props.theme.isGymboree ? '506px' : '311px')};
 
     @media ${props => props.theme.mediaQuery.medium} {
-      min-height: 300px;
-      max-height: 406px;
+      min-height: 296px;
+      max-height: ${props => (props.theme.isGymboree ? '296px' : '406px')};
     }
 
     @media ${props => props.theme.mediaQuery.large} {
@@ -138,11 +146,12 @@ const style = css`
 
   .moduleA__ribbonBanner {
     font-size: 14px;
+    padding-left: 10px;
   }
 
   .ribbon-container {
     background: transparent url('/static/images/module-a-ribbon-right.png') no-repeat right 0;
-    background-size: contain;
+    background-size: 100% auto;
     position: absolute;
     right: 0;
     bottom: 12px;
@@ -202,9 +211,14 @@ const style = css`
 
     .ribbon-container {
       background: transparent url('/static/images/module-a-ribbon-left.png') no-repeat 0 0;
-      background-size: contain;
+      background-size: 100% auto;
       right: auto;
       left: 0;
+    }
+
+    .moduleA__ribbonBanner {
+      padding-right: 10px;
+      padding-left: 0px;
     }
   }
 `;
