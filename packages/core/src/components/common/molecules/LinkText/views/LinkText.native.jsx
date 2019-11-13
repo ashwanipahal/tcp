@@ -98,10 +98,9 @@ export const bodyCopyStyles = {
       <BodyCopy
         color="gray.900"
         fontFamily="primary"
-        fontWeight="regular"
         fontSize="fs20"
+        fontWeight="medium"
         textAlign="center"
-        letterSpacing="ls2"
         {...props}
       />
     );

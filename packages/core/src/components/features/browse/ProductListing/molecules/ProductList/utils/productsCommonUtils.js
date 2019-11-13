@@ -300,7 +300,7 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
 };
 
 export const getProductListToPath = str => {
-  const bundlePath = str.indexOf('/b') !== -1;
+  const bundlePath = str.indexOf('/b/') !== -1;
   if (bundlePath) {
     return `/b?bid=${str.split('/b/')[1]}`;
   }

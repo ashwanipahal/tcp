@@ -3,10 +3,12 @@ import {
   TRACK_CLICK,
   SET_CLICK_PAYLOAD,
   RESET_CLICK_PAYLOAD,
+  UPDATE_PAGE_DATA,
   trackPageView,
   trackClick,
   setClickAnalyticsData,
   resetClickAnalyticsData,
+  updatePageData,
 } from '../actions';
 
 describe('#Analytics Action', () => {
@@ -38,6 +40,15 @@ describe('#Analytics Action', () => {
   it('resetClickAnalyticsData', () => {
     expect(resetClickAnalyticsData()).toEqual({
       type: RESET_CLICK_PAYLOAD,
+    });
+  });
+  it('updatePageData', () => {
+    const data = {
+      id: 123,
+    };
+    expect(updatePageData(data)).toEqual({
+      payload: { id: 123 },
+      type: UPDATE_PAGE_DATA,
     });
   });
 });

@@ -802,10 +802,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -832,7 +828,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -860,8 +858,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -926,10 +922,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -956,7 +948,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -984,8 +978,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -2069,10 +2061,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -2099,7 +2087,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -2127,8 +2117,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -2192,10 +2180,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -2222,7 +2206,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -2250,8 +2236,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {

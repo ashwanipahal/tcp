@@ -281,6 +281,16 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  large_text_black: props => (
+    <BodyCopy
+      color="gray.900"
+      mobilefontFamily="primary"
+      fontSize="fs48"
+      textAlign="center"
+      fontWeight="black"
+      {...props}
+    />
+  ),
 };
 
 /**
