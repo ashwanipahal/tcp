@@ -11,7 +11,6 @@ const generateSortFilterKeys = ParamObj => {
   });
   return sortFilterKey;
 };
-
 const getFilterParams = store => {
   const state = store.getState();
   const { form: { 'filter-form': { values } = {} } = {} } = state;
@@ -40,8 +39,8 @@ const getDepartmentList = store => {
 
 const getCategoryList = store => {
   const state = store.getState();
-  const departmentListing = state.ProductListing && state.ProductListing.breadCrumbTrail;
-  return departmentListing[1].displayName;
+  const categoryListing = state.ProductListing && state.ProductListing.breadCrumbTrail;
+  return categoryListing[1].displayName;
 };
 
 const getListingCount = store => {
@@ -53,6 +52,27 @@ const getStoreId = store => {
   const state = store.getState();
   const defaultStore = state.User && state.User.get('defaultStore');
   return defaultStore.basicInfo && defaultStore.basicInfo.id;
+};
+
+const getPageType = store => {
+  const state = store.getState();
+  return state.pageData && state.pageData.pageName;
+};
+
+const getPageSection = store => {
+  const pageType = getPageType(store) || '';
+  const departmentList = getDepartmentList(store) || '';
+  return `${pageType}:${departmentList}`;
+};
+const getPageSubSubSection = store => {
+  const pageSection = getPageSection(store) || '';
+  const categoryList = getCategoryList(store) || '';
+  return `${pageSection}:${categoryList}`;
+};
+
+const getPageFullCategoryName = store => {
+  const state = store.getState();
+  return state.ProductListing && state.ProductListing.entityCategory;
 };
 
 export const generateBrowseDataLayer = store => {
@@ -89,6 +109,37 @@ export const generateBrowseDataLayer = store => {
     storeId: {
       get() {
         return getStoreId(store) || '';
+      },
+    },
+    pageType: {
+      get() {
+        return getPageType(store) || '';
+      },
+    },
+    pageSection: {
+      get() {
+        return getPageSection(store) || '';
+      },
+    },
+    pageSubSubSection: {
+      get() {
+        return getPageSubSubSection(store) || '';
+      },
+    },
+    pageFullCategoryName: {
+      get() {
+        return getPageFullCategoryName(store) || '';
+      },
+    },
+    pageShortName: {
+      get() {
+        return getPageSubSubSection(store) || '';
+      },
+    },
+
+    productFindingMethod: {
+      get() {
+        return getPageType(store) || '';
       },
     },
   };
