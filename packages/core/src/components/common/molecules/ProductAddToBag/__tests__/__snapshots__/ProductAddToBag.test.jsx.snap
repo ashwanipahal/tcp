@@ -527,6 +527,8 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
             lineHeight="normal"
             link={null}
             textAlign="left"
+            role="alert"
+            aria-live="assertive"
           >
             <Styled(Image)
               alt="Error"
@@ -546,7 +548,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
               link={null}
               textAlign="left"
             >
-               ERROR: 
+               ERROR:
             </Styled(BodyCopy)>
           </Styled(BodyCopy)>
         </div>
