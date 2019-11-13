@@ -151,11 +151,11 @@
     },
     {
       "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP",
-      "value": "ecom/v1/assets/products/tcp"
+      "value": "v1/ecom/assets/products/tcp"
     },
     {
       "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM",
-      "value": "ecom/v1/assets/products/gym"
+      "value": "v1/ecom/assets/products/gym"
     },
     {
       "name": "RWD_APP_API_DOMAIN_GYM",
