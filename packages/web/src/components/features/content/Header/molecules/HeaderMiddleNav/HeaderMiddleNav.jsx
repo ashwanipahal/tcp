@@ -65,8 +65,16 @@ class HeaderMiddleNav extends React.PureComponent {
     return null;
   }
 
-  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
-    e.stopPropagation();
+  onLinkClick = (
+    { openOverlay, userNameClick, triggerLoginCreateAccount, navname },
+    componentToOpen
+  ) => {
+    const { setClickAnalyticsData } = this.props;
+
+    setClickAnalyticsData({
+      eventName: 'navigation click',
+      pageNavigationText: navname,
+    });
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
         component: componentToOpen,
@@ -361,6 +369,7 @@ HeaderMiddleNav.propTypes = {
   }),
   labels: PropTypes.shape({}).isRequired,
   isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

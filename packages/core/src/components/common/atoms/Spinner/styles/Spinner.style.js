@@ -10,6 +10,12 @@ const styles = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 1400;
+
   .tcp-circle {
     display: inline-block;
     position: relative;

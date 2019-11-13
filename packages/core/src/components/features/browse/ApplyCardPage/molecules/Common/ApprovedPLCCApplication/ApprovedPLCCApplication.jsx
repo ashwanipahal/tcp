@@ -5,6 +5,7 @@ import ApprovedPLCCApplicationViewStyled from './style/ApprovedPLCCApplication.s
 import { getLabelValue, scrollPage } from '../../../../../../../utils';
 import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
+import Espot from '../../../../../../common/molecules/Espot';
 
 const CopyToClipboard = e => {
   e.preventDefault();
@@ -50,7 +51,6 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCM
                 className="credit_limit_heading"
                 aria-label={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
                 textAlign="center"
-                id="couponCode"
               >
                 {getLabelValue(labels, 'lbl_PLCCForm_welcomeOffer')}
               </BodyCopy>
@@ -62,6 +62,7 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCM
                 className="promo_code"
                 tabIndex="0"
                 textAlign="center"
+                id="couponCode"
               >
                 {approvedPLCCData && approvedPLCCData.couponCode}
               </BodyCopy>
@@ -259,7 +260,7 @@ const ApprovedPLCCApplicationView = ({
           {!isGuest ? (
             <RichText richTextHtml={plccData && plccData.plcc_shipping_info} />
           ) : (
-            <RichText richTextHtml={plccData && plccData.guest_shipping_info} />
+            <Espot richTextHtml={plccData && plccData.guest_shipping_info} />
           )}
         </Col>
       </Row>
