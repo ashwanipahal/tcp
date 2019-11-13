@@ -13,7 +13,7 @@ const tooltipStyle = css`
     width: fit-content;
     display: table;
     position: absolute;
-    z-index: 100;
+    z-index: ${props => props.theme.zindex.zEnlargedImage};
     bottom: 100%;
     padding-bottom: 10px;
     left: ${props => (props.aligned === 'right' ? '26px' : '50%')};
