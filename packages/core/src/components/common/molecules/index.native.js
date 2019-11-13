@@ -8,6 +8,7 @@ import ModuleN from './ModuleN';
 import ModuleS from './ModuleS';
 import ModuleQ from './ModuleQ';
 import ModuleT from './ModuleT';
+import ModuleG from './ModuleG';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 import PromoBanner from './PromoBanner';
@@ -40,6 +41,7 @@ export {
   ModuleR,
   ModuleQ,
   ModuleT,
+  ModuleG,
   ButtonTabs,
   Grid,
   StoreAddressTile,

@@ -117,7 +117,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency;
+        return store.getState().APIConfig.currency.toUpperCase();
       },
     },
 
@@ -142,6 +142,14 @@ export default function create(store) {
     customerLastName: {
       get() {
         return store.getState().User.getIn(['personalData', 'contactInfo', 'lastName'], '');
+      },
+    },
+
+    pageNavigationText: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'pageNavigationText'], '');
       },
     },
 
