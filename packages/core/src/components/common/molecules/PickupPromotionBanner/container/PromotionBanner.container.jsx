@@ -12,6 +12,7 @@ export const PromotionBannerContainer = ({
   bossBanner,
   fullBleed,
   itemBrand = getBrand(),
+  isPickUpBossEnabled,
 }) => (
   <PromotionBanner
     labels={labels}
@@ -19,6 +20,7 @@ export const PromotionBannerContainer = ({
     bossBanner={bossBanner}
     fullBleed={fullBleed}
     itemBrand={itemBrand}
+    isPickUpBossEnabled={isPickUpBossEnabled}
   />
 );
 
@@ -35,10 +37,12 @@ PromotionBannerContainer.propTypes = {
   fullBleed: PropTypes.bool,
   tcpSegmentValue: PropTypes.string.isRequired,
   itemBrand: PropTypes.string.isRequired,
+  isPickUpBossEnabled: PropTypes.bool,
 };
 
 PromotionBannerContainer.defaultProps = {
   bossBanner: false,
   fullBleed: false,
+  isPickUpBossEnabled: false,
 };
 export default connect(mapStateToProps)(PromotionBannerContainer);

@@ -41,6 +41,44 @@ export default css`
   .PickupRadioBtn {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .promotional-banner .banner-wrapper {
+        margin-top: 5px;
+        padding-left: 0;
+      }
+
+      .promotional-banner .triangle-left {
+        margin-left: 5px;
+        position: absolute;
+        top: 19px;
+        left: 82px;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid ${props => props.theme.colorPalette.yellow[500]};
+      }
+
+      .promotional-banner .promo-wrapper {
+        width: 100%;
+        max-width: 114px;
+        height: 20px;
+      }
+
+      .promotional-banner .richtextCss {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .boss-extra-details {
+        white-space: nowrap;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      .promotional-banner {
+        display: flex;
+      }
+    }
   }
   .storeInfoWrapper div:nth-child(2) {
     justify-content: normal;
