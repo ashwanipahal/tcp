@@ -9,6 +9,7 @@ import AccountNumber from '../../common/organism/AccountNumber';
 import PageHeadingWithLinks from '../../common/molecule/PageHeadingWithLinks';
 import mock from './mock';
 import FooterLinks from '../../common/molecule/FooterLinks';
+import GuestLoginOverview from '../../common/molecule/GuestLoginModule';
 
 class WalletView extends PureComponent {
   render() {
@@ -39,13 +40,20 @@ class WalletView extends PureComponent {
                 </PageHeadingWithLinks>
               </>
             ) : null}
-            <FooterLinks
+            <GuestLoginOverview
               isUserLoggedIn={isUserLoggedIn}
               labels={{ ...labels, ...commonLabels, ...overViewLabels }}
               navigation={navigation}
-              openApplyNowModal={openApplyNowModal}
-              footerLinks={mock.walletFooterNavLegalLinks}
             />
+            {mock.walletFooterNavLegalLinks && mock.walletFooterNavLegalLinks.length > 0 ? (
+              <FooterLinks
+                isUserLoggedIn={isUserLoggedIn}
+                labels={{ ...labels, ...commonLabels, ...overViewLabels }}
+                navigation={navigation}
+                openApplyNowModal={openApplyNowModal}
+                footerLinks={mock.walletFooterNavLegalLinks}
+              />
+            ) : null}
           </WalletLayout>
         </ScrollView>
       </View>

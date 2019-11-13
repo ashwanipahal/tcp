@@ -22,6 +22,7 @@ import {
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import OrderNotification from '../../OrderNotification';
 import FooterLinks from '../../common/molecule/FooterLinks';
+import GuestLoginOverview from '../../common/molecule/GuestLoginModule';
 import mock from './mock';
 
 class AccountOverview extends PureComponent<Props> {
@@ -101,6 +102,11 @@ class AccountOverview extends PureComponent<Props> {
             </Panel>
           </React.Fragment>
         )}
+        <GuestLoginOverview
+          isUserLoggedIn={isUserLoggedIn}
+          labels={labels}
+          navigation={navigation}
+        />
         {accountFooterLinks && accountFooterLinks.length > 0 ? (
           <FooterLinks
             isUserLoggedIn={isUserLoggedIn}

@@ -2,11 +2,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
-import CustomButton from '@tcp/core/src/components/common/atoms/Button';
 import CustomIcon from '@tcp/core/src/components/common/atoms/Icon';
 import {
   ICON_NAME,
@@ -15,11 +13,7 @@ import {
 import Panel from '@tcp/core/src/components/common/molecules/Panel';
 import { getLabelValue } from '@tcp/core/src/utils';
 import { ModalViewWrapper } from '@tcp/core/src/components/features/account/LoginPage/molecules/LoginForm/LoginForm.style.native';
-import {
-  LoggedinWrapper,
-  LoggedinTextWrapper,
-  LogoutWrapper,
-} from '@tcp/core/src/components/features/account/Logout/styles/LoginOut.style.native';
+import { LogoutWrapper } from '@tcp/core/src/components/features/account/Logout/styles/LoginOut.style.native';
 import CreateAccount from '@tcp/core/src/components/features/account/CreateAccount';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
@@ -124,6 +118,7 @@ class FooterLinks extends PureComponent {
           showCheckoutModal={this.showCheckoutModal}
           showLogin={this.showloginModal}
           navigation={navigation}
+          updateHeader={this.updateHeader}
           onRequestClose={this.toggleModal}
         />
       );
@@ -353,86 +348,29 @@ class FooterLinks extends PureComponent {
     const { isUserLoggedIn, labels, navigation } = this.props;
     const { showModal, getComponentId, modalHeaderLbl, horizontalBar } = this.state;
     this.getModalHeader(getComponentId, labels);
-    const colorPallete = createThemeColorPalette();
     return (
       <>
-        {!isUserLoggedIn && (
-          <React.Fragment>
-            <LoggedinTextWrapper>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_1')}
-              />
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs14"
-                textAlign="center"
-                text={getLabelValue(labels, 'lbl_overview_logout_heading_Text_2')}
-              />
-            </LoggedinTextWrapper>
-            <LoggedinWrapper>
-              <CustomButton
-                className="classBtn"
-                color={colorPallete.text.secondary}
-                id="createAccount"
-                type="submit"
-                width="47%"
-                data-locator=""
-                text={getLabelValue(labels, 'lbl_overview_join_text')}
-                onPress={e =>
-                  this.toggleModal({
-                    e,
-                    getComponentId: {
-                      login: false,
-                      createAccount: true,
-                      favorites: false,
-                    },
-                  })
-                }
-              />
-
-              <CustomButton
-                fill="BLUE"
-                id="login"
-                type="submit"
-                data-locator=""
-                width="47%"
-                text={getLabelValue(labels, 'lbl_overview_login_text')}
-                onPress={e =>
-                  this.toggleModal({
-                    e,
-                    getComponentId: {
-                      login: true,
-                      createAccount: false,
-                      favorites: false,
-                    },
-                  })
-                }
-              />
-            </LoggedinWrapper>
-            {showModal && (
-              <ModalNative
-                isOpen={showModal}
-                onRequestClose={this.toggleModal}
-                heading={modalHeaderLbl}
-                headingFontFamily="secondary"
-                fontSize="fs16"
-                horizontalBar={horizontalBar}
-              >
-                <ModalViewWrapper>
-                  {this.renderComponent({
-                    navigation,
-                    getComponentId,
-                    isUserLoggedIn,
-                  })}
-                </ModalViewWrapper>
-              </ModalNative>
-            )}
-          </React.Fragment>
-        )}
         {this.renderLinks()}
+        <React.Fragment>
+          {showModal && (
+            <ModalNative
+              isOpen={showModal}
+              onRequestClose={this.toggleModal}
+              heading={modalHeaderLbl}
+              headingFontFamily="secondary"
+              fontSize="fs16"
+              horizontalBar={horizontalBar}
+            >
+              <ModalViewWrapper>
+                {this.renderComponent({
+                  navigation,
+                  getComponentId,
+                  isUserLoggedIn,
+                })}
+              </ModalViewWrapper>
+            </ModalNative>
+          )}
+        </React.Fragment>
       </>
     );
   }
@@ -451,7 +389,7 @@ FooterLinks.propTypes = {
 FooterLinks.defaultProps = {
   labels: {},
   footerLinks: [],
-  showDivider: true,
+  showDivider: false,
 };
 
 export default FooterLinks;
