@@ -250,7 +250,7 @@ BillingSection.defaultProps = {
   venmoPayment: {
     userName: '',
   },
-  saveVenmoPaymentOption: () => { },
+  saveVenmoPaymentOption: () => {},
 };
 
 export default withStyles(BillingSection, styles);

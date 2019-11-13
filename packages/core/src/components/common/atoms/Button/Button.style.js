@@ -261,7 +261,11 @@ const ButtonStyles = css`
       ? `
         min-height: auto;
         font-family: ${props.theme.typography.fonts.secondary};
-        font-size: ${props.smallLink ? props.theme.fonts.fontSize.body.large.primary : props.theme.fonts.fontSize.body.large.secondary}px;
+        font-size: ${
+          props.smallLink
+            ? props.theme.fonts.fontSize.body.large.primary
+            : props.theme.fonts.fontSize.body.large.secondary
+        }px;
         letter-spacing: ${props.theme.fonts.letterSpacing.normal};
         border: 0;
         padding: 0;
@@ -272,7 +276,11 @@ const ButtonStyles = css`
         background: none;
       }
       @media ${props.theme.mediaQuery.large} {
-        font-size: ${props.smallLink ? props.theme.fonts.fontSize.body.large.primary : props.theme.fonts.fontSize.button.size}px;
+        font-size: ${
+          props.smallLink
+            ? props.theme.fonts.fontSize.body.large.primary
+            : props.theme.fonts.fontSize.button.size
+        }px;
       }
   `
       : ``}

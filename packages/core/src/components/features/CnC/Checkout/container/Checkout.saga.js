@@ -241,8 +241,7 @@ function* initCheckoutSectionData({
     }
   } else if (
     pageName === REVIEW &&
-    (!isExpressCheckoutEnabled || isPaypalPostBack) &&
-    !appRouting
+    (!isExpressCheckoutEnabled || isPaypalPostBack || !appRouting)
   ) {
     pendingPromises.push(
       call(getCartDataSaga, {

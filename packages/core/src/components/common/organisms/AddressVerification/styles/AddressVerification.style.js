@@ -14,7 +14,6 @@ const styles = css`
   .addressVerification__section {
     border-bottom: 1px solid;
     border-color: ${props => props.theme.colors.PRIMARY.GRAY};
-
   }
 
   .addressVerification__section--noBorder {
@@ -22,8 +21,9 @@ const styles = css`
   }
 
   .addressVerification__ctaContainer {
-    margin: ${props => props.theme.spacing.LAYOUT_SPACING.MED} ${props => props.theme.spacing.LAYOUT_SPACING.LRG} ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-
+    margin: ${props => props.theme.spacing.LAYOUT_SPACING.MED}
+      ${props => props.theme.spacing.LAYOUT_SPACING.LRG}
+      ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   }
 
   .addressVerification__cta {

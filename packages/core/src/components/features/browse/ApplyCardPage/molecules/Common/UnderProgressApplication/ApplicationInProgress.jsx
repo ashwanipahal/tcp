@@ -13,7 +13,13 @@ import { getCartItemCount } from '../../../../../../../utils/cookie.util';
  * @description - showcases application in progress screen.
  */
 
-const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse, isRtpsFlow, togglePLCCModal }) => {
+const ApplicationInProgress = ({
+  isPLCCModalFlow,
+  labels,
+  resetPLCCResponse,
+  isRtpsFlow,
+  togglePLCCModal,
+}) => {
   const bagItems = getCartItemCount();
   return (
     <ApplicationInProgressWrapper isPLCCModalFlow={isPLCCModalFlow}>
@@ -42,7 +48,11 @@ const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse, isR
               type="submit"
               className="underprogress_checkout_button"
               data-locator="submit-plcc-btn"
-              onClick={() => isRtpsFlow ? togglePLCCModal({ isPLCCModalOpen: false, status: null }) : redirectToBag(resetPLCCResponse)}
+              onClick={() =>
+                isRtpsFlow
+                  ? togglePLCCModal({ isPLCCModalOpen: false, status: null })
+                  : redirectToBag(resetPLCCResponse)
+              }
             >
               {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
             </Button>

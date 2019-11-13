@@ -20,7 +20,7 @@ const ExistingPLCCUserView = ({
   isPLCCModalFlow,
   resetPLCCResponse,
   isRtpsFlow,
-  togglePLCCModal
+  togglePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
   return (
@@ -39,7 +39,11 @@ const ExistingPLCCUserView = ({
               fill="BLUE"
               type="submit"
               className="existing_checkout_button"
-              onClick={() => isRtpsFlow ? togglePLCCModal({ isPLCCModalOpen: false, status: null }) : redirectToBag(resetPLCCResponse)}
+              onClick={() =>
+                isRtpsFlow
+                  ? togglePLCCModal({ isPLCCModalOpen: false, status: null })
+                  : redirectToBag(resetPLCCResponse)
+              }
             >
               {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
             </Button>

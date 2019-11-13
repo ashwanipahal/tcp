@@ -59,7 +59,7 @@ const UserReducer = (state = initialState, { type, payload }) => {
             associateId: payload.associateId,
             hobbies: payload.hobbies,
             plccCardId: payload.plccCardId,
-            plccCardNumber: payload.plccCardNumber
+            plccCardNumber: payload.plccCardNumber,
           })
         )
         .set(
