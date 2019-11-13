@@ -30,11 +30,17 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           "small": 6,
         }
       }
+      role="main"
     >
-      <mockConstructor
-        labels={Object {}}
-        router={Object {}}
-      />
+      <div
+        className="no-outline"
+        tabIndex={-1}
+      >
+        <mockConstructor
+          labels={Object {}}
+          router={Object {}}
+        />
+      </div>
     </Styled(Col)>
   </Styled(Row)>
 </div>

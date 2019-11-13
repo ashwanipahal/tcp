@@ -120,6 +120,8 @@ class HeaderMiddleNav extends React.PureComponent {
           openOverlay={openOverlay}
           isRememberedUser={isRememberedUser}
           userName={displayName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           isDrawer={false}
         />
       )

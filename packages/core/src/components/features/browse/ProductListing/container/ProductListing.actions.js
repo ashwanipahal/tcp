@@ -21,6 +21,13 @@ export const resetPlpProducts = payload => {
   };
 };
 
+export const setFilter = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.SET_FILTER,
+    payload,
+  };
+};
+
 export const getMorePlpProducts = payload => {
   return {
     type: PRODUCTLISTINGPAGE_CONSTANTS.GET_MORE_PRODUCTS,
