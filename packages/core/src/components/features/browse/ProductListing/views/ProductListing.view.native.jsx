@@ -30,6 +30,8 @@ const onRenderHeader = data => {
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    setSelectedFilter,
+    selectedFilterValue,
   } = data;
   return (
     <ListHeaderContainer>
@@ -45,6 +47,8 @@ const onRenderHeader = data => {
           onFilterSelection={onFilterSelection}
           onSortSelection={onSortSelection}
           filteredId={filteredId}
+          setSelectedFilter={setSelectedFilter}
+          selectedFilterValue={selectedFilterValue}
         />
       )}
 
@@ -82,6 +86,8 @@ const ProductListView = ({
   isLoadingMore,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  setSelectedFilter,
+  selectedFilterValue,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -99,6 +105,8 @@ const ProductListView = ({
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    setSelectedFilter,
+    selectedFilterValue,
   };
   return (
     <PageContainer margins={margins} paddings={paddings}>
@@ -153,6 +161,8 @@ ProductListView.propTypes = {
   isLoadingMore: PropTypes.bool.isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  selectedFilterValue: PropTypes.shape({}).isRequired,
+  setSelectedFilter: PropTypes.func.isRequired,
 };
 
 ProductListView.defaultProps = {

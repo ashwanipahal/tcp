@@ -64,6 +64,11 @@ export const getBreadCrumbTrail = createSelector(
   products => products && products.breadCrumbTrail
 );
 
+export const getSelectedFilter = createSelector(
+  getProductListingState,
+  products => products && products.selectedFilter
+);
+
 export const getProductsSelect = createSelector(
   getProductListingState,
   products => products && products.loadedProductsPages && products.loadedProductsPages[0]
