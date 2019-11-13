@@ -42,10 +42,12 @@ import {
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
 const ProductDetailWithRef = withRefWrapper(ProductDetailView);
-
 ProductDetailWithRef.displayName = 'ProductDetailPage';
-
 const ProductDetail = withHotfix(ProductDetailWithRef);
 
 class ProductDetailContainer extends React.PureComponent {

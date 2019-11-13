@@ -72,11 +72,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 /**
- * HAC - Hotfix-Aware Component
- * This component uses getInitialProps, so we must apply the
- * `withHotfix` HOC here instead of wrapping this component (in order
- * to retain the NextJS data-fetching functionality).
- * The `displayName` should be "HomePage".
+ * Hotfix-Aware Component. The use of `withHotfix` is just for making
+ * page hotfix-aware.
  */
 HomePageView.displayName = 'HomePage';
 const HotfixAwareHomePage = withHotfix(HomePageView);

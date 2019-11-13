@@ -376,8 +376,11 @@ const IsomorphicProductListingContainer = withIsomorphicRenderer({
   mapDispatchToProps,
 });
 
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
 const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
-
 RefWrappedProductListingContainer.displayName = 'ProductListingPage';
 const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
 
