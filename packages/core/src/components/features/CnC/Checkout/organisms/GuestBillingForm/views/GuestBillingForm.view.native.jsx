@@ -126,10 +126,15 @@ class GuestBillingForm extends React.Component {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const isExpirationRequired = this.getExpirationRequiredFlag();
+    const {
+      PAYMENT_METHOD_CREDIT_CARD,
+      PAYMENT_METHOD_PAY_PAL,
+      PAYMENT_METHOD_VENMO,
+    } = CREDIT_CARD_CONSTANTS;
     const paymentMethods = [
-      { id: CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
-      { id: CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
-      { id: CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_VENMO, displayName: labels.venmo },
+      { id: PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
+      { id: PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
+      { id: PAYMENT_METHOD_VENMO, displayName: labels.venmo },
     ];
     return (
       <>
