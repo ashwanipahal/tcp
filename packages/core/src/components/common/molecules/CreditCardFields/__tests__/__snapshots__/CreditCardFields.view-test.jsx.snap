@@ -726,6 +726,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       maxLength="4"
       name="cvvCode"
       placeholder=""
+      type="tel"
     />
     <Field
       component={

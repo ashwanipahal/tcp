@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 export const AnchorStyles = css`
+  font-family: ${props => props.theme.typography.fonts.secondary};
   ${props =>
     props.anchorVariation === 'custom'
       ? `
@@ -138,4 +139,8 @@ export const AnchorIcon = styled.Image`
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-export default { AnchorStyles, AnchorView, AnchorIcon };
+export default {
+  AnchorStyles,
+  AnchorView,
+  AnchorIcon,
+};

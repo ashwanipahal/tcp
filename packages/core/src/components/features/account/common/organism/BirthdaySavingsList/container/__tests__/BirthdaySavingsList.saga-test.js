@@ -12,11 +12,13 @@ describe('BirthdaySavingsList saga', () => {
     beforeEach(() => {
       gen = getChildrenSaga();
       gen.next();
+      gen.next();
     });
 
     it('should dispatch setUserChildren action for success resposnse', () => {
       const response = [{}];
-      const putDescriptor = gen.next(response).value;
+      gen.next(response);
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(
         put(
           setUserChildren({
@@ -32,18 +34,21 @@ describe('BirthdaySavingsList saga', () => {
     beforeEach(() => {
       gen = removeChildSaga({});
       gen.next();
+      gen.next();
     });
 
     it('should dispatch updateBirthdaySavingSuccess action for success resposnse', () => {
       const response = [{}];
       gen.next(response);
+      gen.next();
       const putDescriptor = gen.next(response).value;
       expect(putDescriptor).toEqual(put(updateBirthdaySavingSuccess(response)));
     });
 
     it('should dispatch updateBirthdaySavingError action for error response', () => {
       const response = [{}];
-      const putDescriptor = gen.throw(response).value;
+      gen.throw(response);
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(updateBirthdaySavingError(response)));
     });
   });
@@ -52,6 +57,7 @@ describe('BirthdaySavingsList saga', () => {
     let gen;
     beforeEach(() => {
       gen = addChildrenSaga({});
+      gen.next();
       gen.next();
     });
 
@@ -74,13 +80,15 @@ describe('BirthdaySavingsList saga', () => {
 
     it('should dispatch updateBirthdaySavingSuccess action for success resposnse', () => {
       gen.next(response);
-      gen.next(response);
-      const putDescriptor = gen.next(response).value;
+      gen.next();
+      gen.next();
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(updateBirthdaySavingSuccess(response)));
     });
 
     it('should dispatch updateBirthdaySavingError action for error response', () => {
-      const putDescriptor = gen.throw(response).value;
+      gen.throw(response);
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(updateBirthdaySavingError(response)));
     });
   });
