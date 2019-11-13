@@ -19,8 +19,6 @@ import {
   CopyrightText,
   UnderlineStyle,
 } from '../styles/AccountOverview.style.native';
-import LogOutPageContainer from '../../Logout/container/LogOut.container';
-import { LogoutWrapper } from '../../Logout/styles/LoginOut.style.native';
 import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import OrderNotification from '../../OrderNotification';
 import FooterLinks from '../../common/molecule/FooterLinks';
@@ -114,12 +112,10 @@ class AccountOverview extends PureComponent<Props> {
             showDivider
           />
         ) : null}
-        <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         <UnderlineStyle />
         <View style={LegalStyleLinkStyles}>
           <LegalLinks links={legalLinks} />
         </View>
-        {/* Replace with copyright label */}
         <CopyrightText>{getLabelValue(labels, 'lbl_overview_copyrightTxt')}</CopyrightText>
       </View>
     );

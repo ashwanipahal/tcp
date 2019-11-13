@@ -101,6 +101,16 @@ exports[`AccountOverview component should render correctly 1`] = `
           },
           "subSections": null,
         },
+        Object {
+          "leafLink": Object {
+            "external": 0,
+            "target": "",
+            "text": "Log out",
+            "title": "logout",
+            "url": "/logout",
+          },
+          "subSections": null,
+        },
       ]
     }
     labels={
@@ -121,7 +131,6 @@ exports[`AccountOverview component should render correctly 1`] = `
     }
     showDivider={true}
   />
-  <Styled(View) />
   <Styled(View) />
   <View
     style={

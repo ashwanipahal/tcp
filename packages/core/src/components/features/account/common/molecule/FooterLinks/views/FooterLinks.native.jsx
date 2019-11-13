@@ -18,9 +18,11 @@ import { ModalViewWrapper } from '@tcp/core/src/components/features/account/Logi
 import {
   LoggedinWrapper,
   LoggedinTextWrapper,
+  LogoutWrapper,
 } from '@tcp/core/src/components/features/account/Logout/styles/LoginOut.style.native';
 import CreateAccount from '@tcp/core/src/components/features/account/CreateAccount';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
+import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
 import {
   UnderlineStyle,
   TextWrapper,
@@ -214,7 +216,7 @@ class FooterLinks extends PureComponent {
     } = this.props;
     this.getModalHeader(getComponentId, labels);
 
-    /* eslint-disable-next-line complexity */
+    /* eslint-disable-next-line complexity, sonarjs/cognitive-complexity */
     return footerLinks.map((link, index) => {
       let linkMarkup = null;
       const { leafLink } = link;
@@ -332,6 +334,10 @@ class FooterLinks extends PureComponent {
               });
             }}
           />
+        );
+      } else if (leafLink.url.includes('logout')) {
+        linkMarkup = (
+          <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         );
       }
       return (

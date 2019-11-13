@@ -90,6 +90,16 @@ export default {
         external: 0,
       },
     },
+    {
+      subSections: null,
+      leafLink: {
+        url: '/logout',
+        text: 'Log out',
+        title: 'logout',
+        target: '',
+        external: 0,
+      },
+    },
   ],
   legalLinks: [
     {
