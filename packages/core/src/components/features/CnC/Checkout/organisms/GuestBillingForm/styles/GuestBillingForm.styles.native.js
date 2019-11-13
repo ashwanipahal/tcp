@@ -18,4 +18,8 @@ export const GuestBillingConatiner = styled.View`
   ${applyPositionClassStyle}
 `;
 
+export const PayPalTextContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+`;
+
 export default GuestBillingFormWrapper;

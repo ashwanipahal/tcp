@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, change } from 'redux-form';
+import { FormSection, reduxForm, change } from 'redux-form';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import AddNewCCForm from '../../AddNewCCForm';
@@ -10,9 +10,11 @@ import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
 import GuestBillingFormWrapper, {
   GuestBillingConatiner,
+  PayPalTextContainer,
 } from '../styles/GuestBillingForm.styles.native';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
+import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 
 /**
@@ -127,6 +129,11 @@ class GuestBillingForm extends React.Component {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const isExpirationRequired = this.getExpirationRequiredFlag();
+    const paymentMethods = [
+      { id: CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
+      { id: CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
+      { id: CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_VENMO, displayName: labels.venmo },
+    ];
     return (
       <GuestBillingConatiner isPayPalWebViewEnable={isPayPalWebViewEnable}>
         <GuestBillingFormWrapper>
@@ -140,6 +147,28 @@ class GuestBillingForm extends React.Component {
                 className="elem-mb-XS elem-mt-MED"
                 text={labels.paymentMethod}
               />
+              <FormSection name="shipmentMethods">
+                <PaymentMethods
+                  paymentMethods={paymentMethods}
+                  formName={CREDIT_CARD_CONSTANTS.FORM_NAME}
+                  selectedPaymentId={paymentMethodId}
+                  dispatch={dispatch}
+                />
+              </FormSection>
+              {isPayPalEnabled &&
+              paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL ? (
+                <PayPalTextContainer>
+                  <BodyCopy
+                    fontFamily="primary"
+                    fontSize="fs16"
+                    fontWeight="regular"
+                    spacingStyles="margin-bottom-MED"
+                    color="gray.900"
+                    dataLocator="paymentMethodLbl"
+                    text={labels.payPalLongText}
+                  />
+                </PayPalTextContainer>
+              ) : null}
               <AddNewCCForm
                 cvvInfo={cvvInfo({ cvvCodeRichText })}
                 cardType={cardType}
@@ -178,11 +207,11 @@ class GuestBillingForm extends React.Component {
             }
             pageCategory="guestBilling"
             showAccordian
-            isPayPalWebViewEnable={isPayPalWebViewEnable}
             getPayPalSettings={getPayPalSettings}
             showPayPalButton={
               isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL
             }
+            isPayPalWebViewEnable={isPayPalWebViewEnable}
           />
         </GuestBillingFormWrapper>
       </GuestBillingConatiner>
