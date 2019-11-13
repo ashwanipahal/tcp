@@ -67,10 +67,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
       selectedColorProductId,
       isOutfitPage,
     } = this.props;
-    const currentColorEntry = getMapSliceForColorProductId(
-      colorFitsSizesMap,
-      selectedColorProductId
-    );
+    const currentColorEntry =
+      getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId) || {};
     return isOutfitPage ? (
       <div className="outfit-pickup">
         <ProductPickupContainer

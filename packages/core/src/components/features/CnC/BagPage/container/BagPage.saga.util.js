@@ -1,4 +1,5 @@
 import { call, put, select, delay } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import { isRemembered } from '../../Checkout/container/Checkout.selector';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
@@ -11,6 +12,7 @@ import { addItemToSflList } from '../../../../../services/abstractors/CnC/SaveFo
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
+  yield put(setLoaderState(true));
   const isRememberedUser = yield select(isRemembered);
   const isRegistered = yield select(getUserLoggedInState);
   const countryCurrency = yield select(BAG_SELECTORS.getCurrentCurrency);
@@ -30,12 +32,15 @@ export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
     if (res.errorResponse && res.errorMessage) {
       const resErr = res.errorMessage[Object.keys(res.errorMessage)[0]];
       yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
+      yield put(setLoaderState(false));
     } else {
       yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(true));
       yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
       yield put(BAG_PAGE_ACTIONS.setSflItemDeleted(false));
+      yield put(setLoaderState(false));
     }
   } catch (err) {
+    yield put(setLoaderState(false));
     const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(getServerErrorMessage(err, errorsMapping)));
   }
@@ -43,6 +48,7 @@ export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
 
 export function* startSflItemMoveToBag({ payload }) {
   try {
+    yield put(setLoaderState(true));
     const { itemId } = payload;
     const addToCartData = {
       skuInfo: {
@@ -62,7 +68,9 @@ export function* startSflItemMoveToBag({ payload }) {
     );
     // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     yield put(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }

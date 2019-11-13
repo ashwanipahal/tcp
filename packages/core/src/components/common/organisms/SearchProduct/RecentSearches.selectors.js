@@ -7,7 +7,7 @@ const getRecentSearchesState = state => {
 
 const getRecentSearchesData = createSelector(
   getRecentSearchesState,
-  recentSearches => recentSearches && recentSearches.get('searchTermList')
+  recentSearches => recentSearches && recentSearches.searchTermList
 );
 
 export default getRecentSearchesData;
