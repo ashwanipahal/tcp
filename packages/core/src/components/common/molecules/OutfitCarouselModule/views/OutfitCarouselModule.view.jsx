@@ -6,6 +6,7 @@ import styles from '../styles/OutfitCarouselModule.style';
 import { getIconPath } from '../../../../../utils';
 import theme from '../../../../../../styles/themes/TCP';
 import Carousel from '../../Carousel';
+import { constructToPath } from '../../../../../utils/utils.web';
 
 const { breakpoints } = theme;
 
@@ -77,8 +78,8 @@ export class OutfitCarouselModule extends PureComponent {
               <div key={index.toString()}>
                 <Anchor
                   className="image-link"
-                  to={image.url}
-                  asPath={image.url}
+                  to={constructToPath(link.url)}
+                  asPath={link.url}
                   dataLocator="dummy-datalocator"
                 >
                   <DamImage
@@ -91,7 +92,7 @@ export class OutfitCarouselModule extends PureComponent {
                 </Anchor>
                 <Anchor
                   className="image-link"
-                  to={link.url}
+                  to={constructToPath(link.url)}
                   asPath={link.url}
                   fontSizeVariation="small"
                   dataLocator="dummy-datalocator"

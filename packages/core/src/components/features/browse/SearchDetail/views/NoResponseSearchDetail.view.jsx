@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import SearchListingStyle from '../SearchDetail.style';
@@ -60,7 +60,8 @@ class NoResponseSearchDetailView extends React.PureComponent {
     }
   };
 
-  initiateSearchBySubmit = () => {
+  initiateSearchBySubmit = e => {
+    e.preventDefault();
     this.startInitiateSearch();
   };
 
@@ -83,11 +84,11 @@ class NoResponseSearchDetailView extends React.PureComponent {
   redirectToSuggestedUrl = (searchText, url) => {
     if (searchText) {
       this.setDataInLocalStorage(searchText, url);
-    }
-    if (url) {
-      routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
-    } else {
-      routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+      if (url) {
+        routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+      } else {
+        routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+      }
     }
   };
 
@@ -146,18 +147,19 @@ class NoResponseSearchDetailView extends React.PureComponent {
                 fontWeight="semibold"
                 textAlign="center"
               >
-                {slpLabels.lbl_didYouMean}
+                {`${slpLabels.lbl_didYouMean} "`}
                 <Anchor
                   noLink
                   className="suggestion-label"
-                  to={`/us/search/${searchResultSuggestionsArg}`}
+                  to={`/${getSiteId()}/search/${searchResultSuggestionsArg}`}
                   onClick={e => {
                     e.preventDefault();
                     this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
                   }}
                 >
-                  {` "${searchResultSuggestionsArg}" ?`}
+                  {`${searchResultSuggestionsArg}`}
                 </Anchor>
+                {`"?`}
               </BodyCopy>
             </Col>
           </Row>
