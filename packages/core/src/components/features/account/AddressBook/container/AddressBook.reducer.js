@@ -34,6 +34,9 @@ const getDefaultState = (state, action) => {
   if (action.type === LOGOUT_CONSTANTS.LOGOUT_APP) {
     return initialState;
   }
+  if (action.type === ADDRESS_BOOK_CONSTANTS.CLEAR_ERROR_STATE) {
+    return state.set('showUpdatedNotificationOnModal', null);
+  }
   // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
   if (state instanceof Object) {
     return fromJS(state);
