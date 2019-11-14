@@ -53,10 +53,10 @@ exports[`AccountOverview component should render correctly 1`] = `
         Object {
           "leafLink": Object {
             "external": 0,
-            "target": "",
+            "target": "_blank",
             "text": "Manage Credit Account",
             "title": "creditAccount",
-            "url": "/credit-account",
+            "url": "https://d.comenity.net/childrensplace/?ecid=manageacct",
           },
           "subSections": null,
         },
@@ -102,10 +102,10 @@ exports[`AccountOverview component should render correctly 1`] = `
         Object {
           "leafLink": Object {
             "external": 0,
-            "target": "",
+            "target": "_self",
             "text": "Help",
             "title": "help",
-            "url": "/helpCenter",
+            "url": "https://test6.childrensplace.com/us/help-center?token=tcprwd",
           },
           "subSections": null,
         },
