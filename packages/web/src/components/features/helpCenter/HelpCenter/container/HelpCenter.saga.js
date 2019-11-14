@@ -3,7 +3,7 @@ import HELPCENTER_CONSTANTS from '../HelpCenter.constants';
 import { setNavigationData } from './HelpCenter.actions';
 import { getNavigationData } from '@tcp/core/src/services/abstractors/common/subNavigation';
 
-function* fetchSubnavigationData({ payload = {} }) {
+export function* fetchSubnavigationData({ payload = {} }) {
   try {
     const result = yield call(getNavigationData);
     yield put(setNavigationData(result));
