@@ -531,6 +531,7 @@ export default css`
     text-align: center;
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.typography.fontSizes.fs64};
+      margin-left: 10px;
     }
   }
 
