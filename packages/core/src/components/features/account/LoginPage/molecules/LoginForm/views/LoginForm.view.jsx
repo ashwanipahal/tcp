@@ -36,7 +36,7 @@ class LoginForm extends React.PureComponent<Props> {
 
   loginLoader = () => {
     const { isLoading } = this.props;
-    return (<>{isLoading ? <SpinnerOverlay inheritedStyles={customSpinnerStyle} /> : null}</>);
+    return <>{isLoading ? <SpinnerOverlay inheritedStyles={customSpinnerStyle} /> : null}</>;
   };
 
   render() {
