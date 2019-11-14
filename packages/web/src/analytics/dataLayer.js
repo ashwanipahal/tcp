@@ -189,5 +189,15 @@ export default function create(store) {
         return typeCart;
       },
     },
+    campaignId: {
+      get() {
+        return store.getState().AnalyticsDataKey.getIn(['campaignId'], '');
+      },
+    },
+    internalCampaignId: {
+      get() {
+        return store.getState().AnalyticsDataKey.getIn(['clickActionAnalyticsData'], '');
+      },
+    },
   });
 }

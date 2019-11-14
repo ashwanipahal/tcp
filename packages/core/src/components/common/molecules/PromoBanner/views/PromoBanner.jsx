@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { Anchor, BodyCopy } from '../../../atoms';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import LinkText from '../../LinkText';
@@ -72,34 +73,36 @@ const PromoBanner = props => {
             headerText={headerText}
           />
         )}
-        <Anchor {...navigationUrl} className="promo-text-link">
-          {textItems.map(({ text, style }, index) => {
-            let promoText;
-            /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
-            if (isPencentageTab(style)) {
-              const percentageTexts = text.split(' ');
-              promoText = (
-                <div className={`promo-text ${style}`}>
-                  <span className={`${style}-0`}>
-                    {percentageTexts[0] && percentageTexts[0].trim()}
-                  </span>
-                  <span className={`${style}-1`}>% </span>
-                  <span className={`${style}-2`}>
-                    {percentageTexts[2] && percentageTexts[2].trim()}
-                  </span>
-                </div>
-              );
-            } else if (style === 'currency_up_style' || style === 'style10') {
-              promoText = renderCurrencyUpVariation(style, text);
-            } else {
-              promoText = (
-                <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
-              );
-            }
+        <ClickTracker name="aboveheader_na_na_mpr_120118_mprcc">
+          <Anchor {...navigationUrl} className="promo-text-link">
+            {textItems.map(({ text, style }, index) => {
+              let promoText;
+              /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
+              if (isPencentageTab(style)) {
+                const percentageTexts = text.split(' ');
+                promoText = (
+                  <div className={`promo-text ${style}`}>
+                    <span className={`${style}-0`}>
+                      {percentageTexts[0] && percentageTexts[0].trim()}
+                    </span>
+                    <span className={`${style}-1`}>% </span>
+                    <span className={`${style}-2`}>
+                      {percentageTexts[2] && percentageTexts[2].trim()}
+                    </span>
+                  </div>
+                );
+              } else if (style === 'currency_up_style' || style === 'style10') {
+                promoText = renderCurrencyUpVariation(style, text);
+              } else {
+                promoText = (
+                  <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
+                );
+              }
 
-            return promoText;
-          })}
-        </Anchor>
+              return promoText;
+            })}
+          </Anchor>
+        </ClickTracker>
       </React.Fragment>
     </BodyCopy>
   );

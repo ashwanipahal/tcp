@@ -8,19 +8,23 @@ import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
 import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
-import { isTCP } from '@tcp/core/src/utils/utils';
+import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
 import FOOTER_CONSTANTS from '../../Footer/Footer.constants';
 
 class HomePageWrapper extends React.Component {
   componentDidMount() {
-    const { openCountrySelectorModal, router, pageName } = this.props;
+    const { openCountrySelectorModal, router, pageName, setCampaignId } = this.props;
     if (router.query.target === 'ship-to') {
       openCountrySelectorModal();
     }
 
     if (pageName === 'homepage') {
       this.subscriptionPopUpOnPageLoad();
+    }
+    const cid = getQueryParamsFromUrl(router.asPath, 'cid');
+    if (cid) {
+      setCampaignId(cid[0]);
     }
   }
 
@@ -104,6 +108,7 @@ const HomePageView = dynamic({
       openEmailSignUpModal,
       openSmsSignUpModal,
       pageName,
+      setCampaignId,
     } = compProps;
 
     return (
@@ -112,6 +117,7 @@ const HomePageView = dynamic({
         openEmailSignUpModal={openEmailSignUpModal}
         openSmsSignUpModal={openSmsSignUpModal}
         pageName={pageName}
+        setCampaignId={setCampaignId}
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
@@ -136,6 +142,7 @@ HomePageWrapper.propTypes = {
   openEmailSignUpModal: PropTypes.func.isRequired,
   openSmsSignUpModal: PropTypes.func.isRequired,
   router: PropTypes.element.isRequired,
+  setCampaignId: PropTypes.func.isRequired,
 };
 
 HomePageWrapper.defaultProps = {
@@ -146,6 +153,7 @@ HomePageView.propTypes = {
   name: PropTypes.string,
   slots: PropTypes.arrayOf(PropTypes.object),
   openCountrySelectorModal: PropTypes.func.isRequired,
+  setCampaignId: PropTypes.func.isRequired,
 };
 
 export default errorBoundary(HomePageView);

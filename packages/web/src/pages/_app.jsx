@@ -181,7 +181,7 @@ class TCPWebApp extends App {
       apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date;
-      pageDataReferer.referer = req.headers.referer || 'testing123';
+      pageDataReferer.referer = req.headers.referer;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
@@ -200,7 +200,6 @@ class TCPWebApp extends App {
           optimizelyHeadersObject[item] = optimizelyHeaderValue;
         });
       }
-
       payload = {
         siteConfig: true,
         apiConfig,

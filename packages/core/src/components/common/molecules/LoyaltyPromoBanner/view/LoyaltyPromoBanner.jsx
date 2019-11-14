@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { Anchor, RichText, Row, Col } from '../../../atoms';
 import { readCookie, setCookie } from '../../../../../utils/cookie.util';
 import withStyles from '../../../hoc/withStyles';
@@ -50,15 +51,17 @@ const LoyaltyPromoBanner = props => {
             large: 12,
           }}
         >
-          <Anchor
-            to={link.url}
-            asPath={link.url}
-            target={link.target}
-            title={link.title}
-            dataLocator={dataLocator || `loyalty-promo-banner`}
-          >
-            <RichText richTextHtml={richText.text} />
-          </Anchor>
+          <ClickTracker name="lp_s1_banner_na_050519_doubleup">
+            <Anchor
+              to={link.url}
+              asPath={link.url}
+              target={link.target}
+              title={link.title}
+              dataLocator={dataLocator || `loyalty-promo-banner`}
+            >
+              <RichText richTextHtml={richText.text} />
+            </Anchor>
+          </ClickTracker>
           <button
             aria-label="close"
             className="loyalty-promo-close-btn"
