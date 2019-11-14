@@ -12,15 +12,16 @@ export const DataAbstractor = {
   },
 
   processData: async data => {
-    // debugger;
-    // const subNavigationData = data.map(navItem => {
-    //   if(navItem.leafLink) {
-    //     navItem.leafLink.id = navItem.leafLink.text.replace(" ", "-");
-    //     navItem.leafLink.displayName = navItem.leafLink.text;
-    //     return navItem;
-    //   }
-    // });
-    return data;
+    if(Object.keys(data).length) {
+      const subNavigation = data.subNavigation.map(item => {
+        if(Object.keys(item.leafLink).length) {
+          item.leafLink.displayName = item.leafLink.text;
+          return item;
+        }
+      });
+      return subNavigation;
+    }
+    return [];
   },
 };
 
