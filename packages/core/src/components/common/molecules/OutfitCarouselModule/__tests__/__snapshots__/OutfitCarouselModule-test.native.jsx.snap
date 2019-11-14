@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OutfitCarouselModule should render correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="lbl_promo_jeans_img_title"
+    fontSize="fs16"
+    fontWeight="extrabold"
+    margin={null}
+    mobileFontFamily="primary"
+    numberOfLines={null}
+    text="Daffodil-Garden"
+    textAlign="center"
+    textDecoration={null}
+    width="125"
+  />
+  <Styled(BodyCopy)
+    accessibilityText=""
+    color="gray.900"
+    dataLocator="lbl_promo_jeans_img_title"
+    fontSize="fs14"
+    fontWeight="regular"
+    margin="10px 0 0 0"
+    mobileFontFamily="primary"
+    numberOfLines={null}
+    text="Build her head-to-toe party outfit sprinkled with all the extra-sweet details!"
+    textAlign="center"
+    textDecoration={null}
+    width="125"
+  />
+  <BannerCarousel
+    customRenderer={[Function]}
+    data={
+      Array [
+        Object {
+          "__typename": "LinkedImage",
+          "image": Object {
+            "__typename": "Image",
+            "alt": "One",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "One",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf1.jpg",
+          },
+          "link": Object {
+            "__typename": "Link",
+            "target": "",
+            "text": "",
+            "title": "",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf2.jpg",
+          },
+        },
+        Object {
+          "__typename": "LinkedImage",
+          "image": Object {
+            "__typename": "Image",
+            "alt": "Three",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Three",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf.jpg",
+          },
+          "link": Object {
+            "__typename": "Link",
+            "target": "",
+            "text": "Sunbeam",
+            "title": "",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf3.jpg",
+          },
+        },
+        Object {
+          "__typename": "LinkedImage",
+          "image": Object {
+            "__typename": "Image",
+            "alt": "Five",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Five",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf4.jpg",
+          },
+          "link": Object {
+            "__typename": "Link",
+            "target": "",
+            "text": "Floral Breeze",
+            "title": "",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf5.jpg",
+          },
+        },
+        Object {
+          "__typename": "LinkedImage",
+          "image": Object {
+            "__typename": "Image",
+            "alt": "test",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "test",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf6.jpg",
+          },
+          "link": Object {
+            "__typename": "Link",
+            "target": "",
+            "text": "Pinkalicious",
+            "title": "",
+            "url": "/dummy",
+          },
+        },
+        Object {
+          "__typename": "LinkedImage",
+          "image": Object {
+            "__typename": "Image",
+            "alt": "Outfit",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "title": "Outfit",
+            "url": "/HoppyEaster_LongGroup02_FebDressy_4913_ts6cmf7.jpg",
+          },
+          "link": Object {
+            "__typename": "Link",
+            "target": "",
+            "text": "thousand",
+            "title": "",
+            "url": "/dummy/dummy",
+          },
+        },
+      ]
+    }
+    getImageUrl={[Function]}
+    imageHeight={274}
+    imageWidth={142}
+    itemBackgroundColor={null}
+    itemMargin={null}
+    itemPadding="0 20px 0 0"
+    listLeftMargin={0}
+    listRightMargin={20}
+    margins="16px 0 0 0"
+    onImageClick={[Function]}
+  />
+</Styled(View)>
+`;
