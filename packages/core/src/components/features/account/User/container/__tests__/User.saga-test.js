@@ -10,6 +10,7 @@ describe('User saga', () => {
     beforeEach(() => {
       gen = getUserInfoSaga();
       gen.next();
+      gen.next();
     });
 
     it('should dispatch setUserInfo action for success resposnse', () => {

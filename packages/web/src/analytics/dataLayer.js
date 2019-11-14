@@ -48,15 +48,17 @@ export default function create(store) {
 
     isCurrentRoute: () => false,
 
-    pageshortName: {
+    pageShortName: {
       get() {
-        return store.getState().pageData.pageName;
+        const { pageData } = store.getState();
+        return pageData.pageShortName ? pageData.pageShortName : pageData.pageName;
       },
     },
 
     pageType: {
       get() {
-        return store.getState().pageData.pageName;
+        const { pageData } = store.getState();
+        return pageData.pageType ? pageData.pageType : pageData.pageName;
       },
     },
 
@@ -94,7 +96,7 @@ export default function create(store) {
       get() {
         return store.getState().User.getIn(['personalData', 'isGuest'])
           ? 'no rewards:guest'
-          : 'rewards member:logged in';
+          : 'no rewards:logged in';
       },
     },
 
@@ -117,7 +119,7 @@ export default function create(store) {
 
     currencyCode: {
       get() {
-        return store.getState().APIConfig.currency;
+        return store.getState().APIConfig.currency.toUpperCase();
       },
     },
 
@@ -145,6 +147,14 @@ export default function create(store) {
       },
     },
 
+    pageNavigationText: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'pageNavigationText'], '');
+      },
+    },
+
     // TODO: This formatting logic needs to match current app
     listingCount: {
       get() {
@@ -167,6 +177,13 @@ export default function create(store) {
           typeCart = 'boss';
         }
         return typeCart;
+      },
+    },
+    products: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
       },
     },
   });

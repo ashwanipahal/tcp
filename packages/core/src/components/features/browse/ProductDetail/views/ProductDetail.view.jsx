@@ -147,7 +147,7 @@ class ProductDetailView extends React.Component {
         </button>
       </div>
     ) : (
-      breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
+      breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" isPDPPage />
     );
   };
 

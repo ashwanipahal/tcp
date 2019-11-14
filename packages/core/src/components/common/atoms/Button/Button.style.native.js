@@ -55,6 +55,7 @@ const getMobileAppFilterButtonViewStyle = props => {
           border-top-width: 0;
           border-left-width: 0;
           border-right-width: 0;
+          border-radius: 0;
           `
           : ''
       };

@@ -7,6 +7,7 @@ import {
   getColor,
   getOpenState,
   getProps,
+  getLoginLabels,
 } from './OverlayModal.selectors';
 import OverlayModalComponent from '../views/OverlayModal.view';
 import { closeOverlayModal } from './OverlayModal.actions';
@@ -22,6 +23,7 @@ const propTypes = {
   componentProps: PropTypes.shape({}),
   isLoggedIn: PropTypes.bool,
   showCondensedHeader: PropTypes.bool,
+  labels: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -33,6 +35,7 @@ const defaultProps = {
   componentProps: {},
   isLoggedIn: false,
   showCondensedHeader: false,
+  labels: {},
 };
 
 export const OverlayModal = ({
@@ -45,6 +48,7 @@ export const OverlayModal = ({
   plccUser,
   isLoggedIn,
   showCondensedHeader,
+  labels,
 }) => {
   return (
     <OverlayModalComponent
@@ -57,6 +61,7 @@ export const OverlayModal = ({
       plccUser={plccUser}
       isLoggedIn={isLoggedIn}
       showCondensedHeader={showCondensedHeader}
+      labels={labels}
     />
   );
 };
@@ -70,6 +75,7 @@ const mapStateToProps = state => {
     componentProps: getProps(state),
     plccUser: isPlccUser(state),
     isLoggedIn: getUserLoggedInState(state),
+    labels: getLoginLabels(state),
   };
 };
 

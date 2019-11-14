@@ -112,6 +112,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         closeIconLeftAligned={false}
         horizontalBar={false}
         headerStyle={FullHeaderStyle}
+        headingFontFamily="secondary"
       >
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledModalWrapper>

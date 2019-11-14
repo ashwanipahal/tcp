@@ -17,6 +17,7 @@ import VenmoPaymentButton from '../../../../../../common/atoms/VenmoPaymentButto
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import BillingPayPalButton from '../../BillingPayPalButton';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
+import AddressSkeleton from '../../../../../../common/molecules/Address/skeleton/AddressSkeleton.view';
 
 class GuestBillingForm extends React.Component {
   static propTypes = {
@@ -52,6 +53,7 @@ class GuestBillingForm extends React.Component {
     pageCategory: PropTypes.string,
     venmoError: PropTypes.string,
     isPayPalWebViewEnable: PropTypes.bool,
+    bagLoading: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -83,6 +85,7 @@ class GuestBillingForm extends React.Component {
     pageCategory: '',
     venmoError: '',
     isPayPalWebViewEnable: false,
+    bagLoading: false,
   };
 
   componentDidUpdate(prevProp) {
@@ -133,12 +136,14 @@ class GuestBillingForm extends React.Component {
       venmoError,
       pageCategory,
       isPayPalWebViewEnable,
+      bagLoading,
     } = this.props;
     let cvvError;
     if (syncErrorsObj) {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const isExpirationRequired = this.getExpirationRequiredFlag();
+
     return (
       <form className={className} name="checkoutBilling" onSubmit={handleSubmit}>
         {!isPaymentDisabled && (
@@ -167,17 +172,21 @@ class GuestBillingForm extends React.Component {
                     isGuest={isGuest}
                     creditFieldLabels={creditFieldLabels}
                   />
-                  <CheckoutBillingAddress
-                    isGuest={isGuest}
-                    orderHasShipping={orderHasShipping}
-                    addressLabels={addressLabels}
-                    dispatch={dispatch}
-                    shippingAddress={shippingAddress}
-                    isSameAsShippingChecked={isSameAsShippingChecked}
-                    labels={labels}
-                    billingData={billingData}
-                    formName="checkoutBilling"
-                  />
+                  {!bagLoading ? (
+                    <CheckoutBillingAddress
+                      isGuest={isGuest}
+                      orderHasShipping={orderHasShipping}
+                      addressLabels={addressLabels}
+                      dispatch={dispatch}
+                      shippingAddress={shippingAddress}
+                      isSameAsShippingChecked={isSameAsShippingChecked}
+                      labels={labels}
+                      billingData={billingData}
+                      formName="checkoutBilling"
+                    />
+                  ) : (
+                    <AddressSkeleton />
+                  )}
                 </>
               ) : null}
               {paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO && isVenmoEnabled && (
@@ -199,7 +208,11 @@ class GuestBillingForm extends React.Component {
         />
         <CheckoutFooter
           hideBackLink
-          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
+          backLinkHandler={() =>
+            orderHasShipping
+              ? utility.routeToPage(CHECKOUT_ROUTES.shippingPage)
+              : utility.routeToPage(CHECKOUT_ROUTES.pickupPage)
+          }
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === CONSTANTS.PAYMENT_METHOD_VENMO}

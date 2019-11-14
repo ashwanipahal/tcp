@@ -350,6 +350,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -399,6 +400,7 @@ exports[`StoreAddressTile component Listing Header should render listing-header 
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -433,6 +435,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -468,6 +471,7 @@ exports[`StoreAddressTile component Listing should not render gymboree store 1`]
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -526,6 +530,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -575,6 +580,7 @@ exports[`StoreAddressTile component Listing should render listing view 1`] = `
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -634,6 +640,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -683,6 +690,7 @@ exports[`StoreAddressTile component Listing should render listing view with fav 
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}
@@ -731,6 +739,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -780,6 +789,7 @@ exports[`StoreAddressTile component Listing should render listing view with inde
       anchorVariation=""
       colorName={null}
       customStyle={Object {}}
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}

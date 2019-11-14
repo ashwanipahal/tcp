@@ -19,7 +19,7 @@ const ApplyNowPLCCModal = ({ modalStyles, isPLCCModalOpen, closePLCCModal, class
       shouldCloseOnOverlayClick={false}
       heightConfig={{ height: '100vh' }}
     >
-      <ApplyCardPage isPLCCModalFlow />
+      <ApplyCardPage isPLCCModalFlow closePLCCModal={closePLCCModal} />
     </Modal>
   );
 };

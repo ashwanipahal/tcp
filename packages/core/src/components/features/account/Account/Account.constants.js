@@ -13,6 +13,13 @@ const ACCOUNT_CONSTANTS = {
   ACCOUNT_COUNTRY_CA: 'Canada',
   ACCOUNT_SITE_US: 'us',
   ACCOUNT_SITE_CA: 'ca',
+  ACCOUNT_ANALYTICS: {
+    navigationText: {
+      createAccount: 'header-create account',
+      logIn: 'header-log in',
+      welcomeMsg: 'header-welcome message',
+    },
+  },
 };
 
 export default ACCOUNT_CONSTANTS;

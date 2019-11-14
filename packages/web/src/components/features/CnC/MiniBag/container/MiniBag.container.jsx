@@ -31,7 +31,6 @@ import {
   getUserLoggedInState,
 } from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
 import BAG_ACTIONS from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.actions';
-import BagPageSelector from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 
 export class MiniBagContainer extends React.PureComponent {
   static propTypes = {
@@ -56,7 +55,6 @@ export class MiniBagContainer extends React.PureComponent {
     rememberedUserFlag: PropTypes.bool.isRequired,
     isUserLoggedIn: PropTypes.bool.isRequired,
     miniBagLoaderState: PropTypes.bool.isRequired,
-    cartOrderItemsCount: PropTypes.number.isRequired,
   };
 
   constructor(props) {
@@ -93,7 +91,6 @@ export class MiniBagContainer extends React.PureComponent {
       rememberedUserFlag,
       isUserLoggedIn,
       miniBagLoaderState,
-      cartOrderItemsCount,
     } = this.props;
 
     return (
@@ -119,7 +116,6 @@ export class MiniBagContainer extends React.PureComponent {
         isRememberedUser={rememberedUserFlag}
         isUserLoggedIn={isUserLoggedIn}
         miniBagLoaderState={miniBagLoaderState}
-        cartOrderItemsCount={cartOrderItemsCount}
       />
     );
   }
@@ -142,7 +138,6 @@ const mapStateToProps = state => {
     rememberedUserFlag: isRememberedUser(state),
     isUserLoggedIn: getUserLoggedInState(state),
     miniBagLoaderState: getMiniBagLoaderState(state),
-    cartOrderItemsCount: BagPageSelector.getTotalItems(state),
   };
 };
 

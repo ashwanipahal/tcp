@@ -8,18 +8,15 @@ const CloseButtonStyle = css`
   border: none;
   cursor: pointer;
   position: absolute;
-  padding: 0px 7px 13px 6px;
+  padding: 10px 7px 13px 6px;
   background-size: 100% 100%;
   width: 15px;
   height: 15px;
   &.alignRight {
-    right: 15px;
+    right: 32px;
   }
   &.alignLeft {
     left: 15px;
-  }
-  &.alignTop {
-    top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
 `;
 
