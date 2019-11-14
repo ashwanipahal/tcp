@@ -146,7 +146,7 @@ class NoResponseSearchDetailView extends React.PureComponent {
                 fontWeight="semibold"
                 textAlign="center"
               >
-                {slpLabels.lbl_didYouMean}
+                {`${slpLabels.lbl_didYouMean} "`}
                 <Anchor
                   noLink
                   className="suggestion-label"
@@ -156,9 +156,9 @@ class NoResponseSearchDetailView extends React.PureComponent {
                     this.redirectToSuggestedUrl(`${searchResultSuggestionsArg}`);
                   }}
                 >
-                  {` "${searchResultSuggestionsArg}"`}
+                  {`${searchResultSuggestionsArg}`}
                 </Anchor>
-                {` ?`}
+                {`"?`}
               </BodyCopy>
             </Col>
           </Row>
