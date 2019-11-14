@@ -44,14 +44,6 @@ const styles = css`
     }
   }
 
-  .anchor-wrapper-left {
-    text-align: right;
-  }
-
-  .anchor-wrapper-right {
-    text-align: left;
-  }
-
   .rewards-container {
     display: grid;
     grid-template-columns: 100%;

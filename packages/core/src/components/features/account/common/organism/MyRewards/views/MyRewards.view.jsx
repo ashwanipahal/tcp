@@ -110,7 +110,7 @@ const MyRewards = ({
                 large: 6,
                 medium: 4,
               }}
-              className="anchor-wrapper-left"
+              className="textRight"
             >
               <Anchor
                 fontSizeVariation="medium"
@@ -131,7 +131,6 @@ const MyRewards = ({
                 large: 6,
                 medium: 4,
               }}
-              className="anchor-wrapper-right"
             >
               <Anchor
                 fontSizeVariation="medium"
