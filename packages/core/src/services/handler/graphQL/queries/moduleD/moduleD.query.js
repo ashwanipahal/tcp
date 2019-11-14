@@ -3,6 +3,7 @@ const buildQuery = ({ slot, contentId, lang }) => `
     contentId
     name
     type
+    errorMessage
     composites {
       headerText {
         textItems {

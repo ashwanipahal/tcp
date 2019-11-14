@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getLabelValue } from '@tcp/core/src/utils';
+import {
+  getLabelValue,
+  getIconPath,
+  getLocator,
+  isCanada,
+  getAPIConfig,
+  getBrand,
+  getPriceWithCurrency,
+} from '@tcp/core/src/utils';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -12,13 +20,6 @@ import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
-import {
-  getIconPath,
-  getLocator,
-  isCanada,
-  getAPIConfig,
-  getBrand,
-} from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -138,7 +139,6 @@ class CartItemTile extends PureComponent {
       const { onQuickViewOpenClick, productDetail } = this.props;
       const { itemId, qty, color, size, fit } = productDetail.itemInfo;
       onQuickViewOpenClick({
-        fromBagPage: pageView === 'myBag',
         colorProductId: productNumber,
         orderInfo: {
           orderItemId: itemId,
@@ -495,14 +495,16 @@ class CartItemTile extends PureComponent {
     );
   };
 
+  // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol } = this.props;
+    const { currencySymbol, isBagPageSflSection } = this.props;
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-50' : 'padding-top-15';
     return (
-      <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
+      <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
         {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
@@ -545,7 +547,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {`${currencySymbol}${offerPrice.toFixed(2)}`}
+            {getPriceWithCurrency(currencySymbol, offerPrice)}
           </BodyCopy>
         )}
       </Row>
@@ -618,7 +620,7 @@ class CartItemTile extends PureComponent {
               dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              {`${currencySymbol}${Number(price).toFixed(2)}`}
+              {getPriceWithCurrency(currencySymbol, Number(price))}
             </BodyCopy>
             <BodyCopy
               fontFamily="secondary"
@@ -628,7 +630,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(listPrice).toFixed(2)}`}
+              {getPriceWithCurrency(currencySymbol, Number(listPrice))}
             </BodyCopy>
           </Col>
         </>
@@ -657,7 +659,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            {`${currencySymbol}${Number(salePrice).toFixed(2)}`}
+            {getPriceWithCurrency(currencySymbol, Number(salePrice))}
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
@@ -668,7 +670,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(wasPrice).toFixed(2)}`}
+              {getPriceWithCurrency(currencySymbol, Number(wasPrice))}
             </BodyCopy>
           )}
         </Col>

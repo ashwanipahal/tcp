@@ -109,6 +109,13 @@ const StyledModal = css`
     width: ${iconSpacing};
     z-index: 1;
   }
+
+  .Modal_Heading_Overlay {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    font-size: ${props => props.theme.typography.fontSizes.fs18};
+  }
 `;
 
 export default StyledModal;

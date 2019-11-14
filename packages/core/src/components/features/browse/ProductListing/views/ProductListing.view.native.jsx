@@ -32,6 +32,8 @@ const onRenderHeader = data => {
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    setSelectedFilter,
+    selectedFilterValue,
   } = data;
   return (
     <ListHeaderContainer>
@@ -47,6 +49,8 @@ const onRenderHeader = data => {
           onFilterSelection={onFilterSelection}
           onSortSelection={onSortSelection}
           filteredId={filteredId}
+          setSelectedFilter={setSelectedFilter}
+          selectedFilterValue={selectedFilterValue}
         />
       )}
 
@@ -84,7 +88,10 @@ const ProductListView = ({
   isLoadingMore,
   AddToFavoriteErrorMsg,
   removeAddToFavoritesErrorMsg,
+  setSelectedFilter,
+  selectedFilterValue,
   plpTopPromos,
+  isSearchListing,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -102,12 +109,14 @@ const ProductListView = ({
     onSortSelection,
     filteredId,
     renderBrandFilter,
+    setSelectedFilter,
+    selectedFilterValue,
     plpTopPromos,
   };
   return (
     <ScrollView>
-      <PromoModules plpTopPromos={plpTopPromos} />
       <PageContainer margins={margins} paddings={paddings}>
+        {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
         <ProductList
           products={products}
           title={title}
@@ -160,7 +169,10 @@ ProductListView.propTypes = {
   isLoadingMore: PropTypes.bool.isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  selectedFilterValue: PropTypes.shape({}).isRequired,
+  setSelectedFilter: PropTypes.func.isRequired,
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -184,6 +196,7 @@ ProductListView.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   plpTopPromos: [],
+  isSearchListing: false,
 };
 
 export default withStyles(ProductListView, styles);

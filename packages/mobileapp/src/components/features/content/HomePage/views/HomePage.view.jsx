@@ -22,6 +22,7 @@ import {
   ModuleH,
   ModuleK,
   ModuleL,
+  ModuleM,
   ModuleN,
   ModuleA,
   ModuleB,
@@ -29,11 +30,11 @@ import {
   ModuleR,
   ModuleQ,
   ModuleS,
+  ModuleE,
+  ModuleG,
 } from '@tcp/core/src/components/common/molecules';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
-import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
-import mock from '@tcp/core/src/services/abstractors/common/moduleM/mock';
 import ModuleT from '@tcp/core/src/components/common/molecules/ModuleT';
 import AddedToBagContainer from '@tcp/core/src/components/features/CnC/AddedToBag';
 import HeaderPromo from '../../../../common/molecules/HeaderPromo';
@@ -50,6 +51,7 @@ const modulesMap = {
   moduleH: ModuleH,
   moduleK: ModuleK,
   moduleL: ModuleL,
+  moduleM: ModuleM,
   moduleN: ModuleN,
   moduleA: ModuleA,
   moduleB: ModuleB,
@@ -58,6 +60,8 @@ const modulesMap = {
   moduleS: ModuleS,
   moduleQ: ModuleQ,
   moduleT: ModuleT,
+  moduleE: ModuleE,
+  moduleG: ModuleG,
 };
 
 const buttonMargin = { margin: 30 };
@@ -180,8 +184,6 @@ class HomePageView extends React.PureComponent {
           variation="moduleO,moduleP"
           page="homepageTest"
         />
-        <ModuleM navigation={navigation} {...mock.moduleM.composites} />
-        <QuickViewModal navigation={navigation} />
         {apiConfig.previewEnvId === ENV_PREVIEW ? (
           <>
             <TextComponent>Select scheduled preview date</TextComponent>

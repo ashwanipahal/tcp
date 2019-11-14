@@ -7,6 +7,7 @@ const buildQuery = ({ slot, contentId }) => `
       key
       val
     }
+    errorMessage
     composites {
       imageGrid {
         image {

@@ -27,8 +27,8 @@ class RelatedOutfits extends React.PureComponent {
         selectedColorProductId={selectedColorProductId}
         hideTabs
         divTabs={[]}
-        bgClass="yellow-bg"
         showRelatedOutfitHeader={this.setShowHeader}
+        isCompleteTheLook
       />
     );
   };

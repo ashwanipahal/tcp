@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
 // import { LazyloadScrollView } from 'react-native-lazyload-deux';
 import { ScrollView as LazyloadScrollView } from 'react-native';
@@ -64,9 +65,8 @@ class ProductBundle extends React.PureComponent {
         });
       }
       return (
-        <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
+        <ScrollView>
           <PageContainer>
-            {/* <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} isBundleProduct /> */}
             <ImageCarousel
               isGiftCard={currentProduct.isGiftCard}
               imageUrls={imageUrls}
@@ -104,7 +104,7 @@ class ProductBundle extends React.PureComponent {
               isLoggedIn={isLoggedIn}
             />
           </PageContainer>
-        </LazyloadScrollView>
+        </ScrollView>
       );
     }
     return getLoading();

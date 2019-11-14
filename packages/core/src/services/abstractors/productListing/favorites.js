@@ -180,7 +180,7 @@ const getExistingImagesNames = (imageSuffixesArray, baseUrl) => {
 
 const getExtraImages = (imagePath, extraSizes, imageGenerator) => {
   const { productImages } = imageGenerator(imagePath);
-  const { assetHost, productAssetPath = `ecom/v1/assets/products/${getBrand()}` } = getAPIConfig();
+  const { assetHost, productAssetPath = `v1/ecom/assets/products/${getBrand()}` } = getAPIConfig();
   const baseImgPath = `${assetHost}/w_320/${productAssetPath}/${productImages[125]}`;
   return getExistingImagesNames(extraSizes || ['', '-1', '-2', '-3', '-4', '-5'], baseImgPath).then(
     existingSuffixes =>

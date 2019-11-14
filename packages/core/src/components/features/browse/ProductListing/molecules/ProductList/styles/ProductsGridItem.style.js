@@ -40,6 +40,10 @@ const styles = css`
   .added-to-bag {
     width: 100%;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    &:focus {
+      background: ${props => props.theme.colorPalette.blue.C900};
+      color: white;
+    }
     &:hover:not([disabled]) {
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
@@ -187,6 +191,7 @@ const styles = css`
   }
 
   .product-image-container {
+    height: 320px;
     position: relative;
   }
 
