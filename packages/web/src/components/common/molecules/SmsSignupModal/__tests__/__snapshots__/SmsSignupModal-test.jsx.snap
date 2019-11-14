@@ -19,17 +19,11 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
-    heightConfig={
-      Object {
-        "height": "625px",
-        "maxHeight": "625px",
-        "minHeight": "500px",
-      }
-    }
     isOpen={false}
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
+    standardHeight={true}
     widthConfig={
       Object {
         "large": "851px",
@@ -337,17 +331,11 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
-    heightConfig={
-      Object {
-        "height": "625px",
-        "maxHeight": "625px",
-        "minHeight": "500px",
-      }
-    }
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
+    standardHeight={true}
     widthConfig={
       Object {
         "large": "851px",
@@ -467,17 +455,11 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     }
     contentLabel="undefined undefined"
     contentRef={[Function]}
-    heightConfig={
-      Object {
-        "height": "625px",
-        "maxHeight": "625px",
-        "minHeight": "500px",
-      }
-    }
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
+    standardHeight={true}
     widthConfig={
       Object {
         "large": "851px",

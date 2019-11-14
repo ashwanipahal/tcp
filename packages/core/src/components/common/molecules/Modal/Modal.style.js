@@ -34,9 +34,13 @@ const ModalStyle = css`
       height: ${props => (props.heightConfig ? props.heightConfig.height : 'auto')};
       max-height: ${props => (props.heightConfig ? props.heightConfig.maxHeight : '')};
     }
-    @media ${props => props.theme.mediaQuery.medium} {
-      max-height: ${props => (props.standardHeight ? '90%' : '')};
-    }
+
+    ${props =>
+      props.standardHeight
+        ? `@media ${props.theme.mediaQuery.medium} {
+      max-height:90%
+    } `
+        : ''}
   }
   .Modal_Heading {
     font-family: ${props => props.theme.typography.fonts.secondary};
