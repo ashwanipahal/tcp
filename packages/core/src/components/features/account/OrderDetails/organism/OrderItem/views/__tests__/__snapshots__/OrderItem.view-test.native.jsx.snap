@@ -196,6 +196,7 @@ exports[`Order Items component should renders correctly 1`] = `
             fontSize="fs14"
             fontWeight="semibold"
             href="#"
+            justifyContent=""
             locator=""
             margins={null}
             noLink={true}

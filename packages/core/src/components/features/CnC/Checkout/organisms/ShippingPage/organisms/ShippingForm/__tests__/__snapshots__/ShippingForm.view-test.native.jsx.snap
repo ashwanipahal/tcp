@@ -143,6 +143,7 @@ exports[`Shipping Form should render correctly with non us site 1`] = `
           dataLocator="shipping-email-signUp-contact-anchor"
           fontSizeVariation="small"
           href="#"
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}

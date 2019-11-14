@@ -34,6 +34,8 @@ class FilterModal extends React.PureComponent {
     onFilterSelection: PropTypes.func,
     onSortSelection: PropTypes.func,
     filteredId: PropTypes.string,
+    selectedFilterValue: PropTypes.shape({}).isRequired,
+    setSelectedFilter: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -102,19 +104,21 @@ class FilterModal extends React.PureComponent {
    *
    * @memberof FilterModal
    */
-  applyFilterAndSort = () => {
-    const { onSubmit, getProducts, navigation } = this.props;
+  applyFilterAndSort = filters => {
+    const { onSubmit, getProducts, navigation, selectedFilterValue } = this.props;
     const url = navigation && navigation.getParam('url');
     let filterData = {};
+    const { language } = this.state;
 
-    if (this.filters) {
-      // restore filters if available
-      filterData = { ...this.filters };
+    if (filters) {
+      filterData = filters;
+    } else if (selectedFilterValue) {
+      filterData = selectedFilterValue;
     }
 
-    if (this.sortValue) {
+    if (language) {
       // restore sort if available
-      filterData = { ...filterData, sort: this.sortValue };
+      filterData = { ...filterData, sort: language };
     }
     onSubmit(filterData, false, getProducts, url);
     this.setModalVisibilityState(false);
@@ -147,7 +151,7 @@ class FilterModal extends React.PureComponent {
    */
   applyFilters = filters => {
     this.filters = filters;
-    this.applyFilterAndSort();
+    this.applyFilterAndSort(filters);
   };
 
   render() {
@@ -158,6 +162,7 @@ class FilterModal extends React.PureComponent {
       isFavorite,
       onFilterSelection,
       filteredId,
+      setSelectedFilter,
     } = this.props;
     const { showModal, language, showSortModal } = this.state;
     const sortOptions = isFavorite ? sortLabels : getSortOptions(sortLabels);
@@ -206,7 +211,10 @@ class FilterModal extends React.PureComponent {
                   name="filters"
                   labelsFilter={labelsFilter}
                   filters={filters}
-                  onSubmit={this.applyFilters}
+                  onSubmit={filter => {
+                    setSelectedFilter(filter);
+                    this.applyFilters(filter);
+                  }}
                   ref={ref => {
                     this.filterViewRef = ref;
                   }}
