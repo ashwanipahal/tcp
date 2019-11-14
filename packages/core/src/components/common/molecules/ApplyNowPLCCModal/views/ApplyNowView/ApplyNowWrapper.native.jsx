@@ -82,7 +82,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
           heading={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
           onRequestClose={isPLCCModalOpen ? this.closePlccModal : this.closeModal}
           fontSize="fs14"
-          customHeaderMargin="55px 24px 0 24px"
+          customHeaderMargin="55px 25px 0 25px"
         />
         {isPLCCModalOpen && (
           <ApplyCardLayoutView
