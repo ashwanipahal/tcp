@@ -71,7 +71,7 @@ export default css`
     }
   }
   .notification-text {
-    display: inline-block;
+    display: block;
 
     @media ${props => props.theme.mediaQuery.medium} {
       display: inline;
