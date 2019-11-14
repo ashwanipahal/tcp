@@ -91,9 +91,9 @@ export default class Prompt extends Component {
         <View style={styles.dialogOverlay} />
         <View style={styles.dialogContent}>
           <BodyCopy
-            fontSize="fs16"
+            fontSize="fs18"
             fontFamily="secondary"
-            fontWeight="extrabold"
+            fontWeight="regular"
             text={title}
             color="black"
           />
@@ -115,7 +115,7 @@ export default class Prompt extends Component {
               style={styles.textStyle}
             >
               <BodyCopy
-                fontSize="fs14"
+                fontSize="fs15"
                 fontFamily="secondary"
                 fontWeight="extrabold"
                 text={submitText}
@@ -128,7 +128,7 @@ export default class Prompt extends Component {
               style={styles.textStyle}
             >
               <BodyCopy
-                fontSize="fs14"
+                fontSize="fs15"
                 fontFamily="secondary"
                 fontWeight="extrabold"
                 text={cancelText}

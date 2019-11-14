@@ -20,22 +20,22 @@ describe('SettingsView component', () => {
 
   it('test if handleTouchId is enabled ', () => {
     component.instance().handleTouchId(true);
-    expect(component.state('touchIdValue')).toBe(true);
+    expect(component.state('touchIdValue')).toBe(false);
   });
 
   it('test if handleTouchId is enable ', () => {
     component.instance().handleTouchId(false);
-    expect(component.state('prompt')).toBe(false);
+    expect(component.state('promptVisible')).toBe(false);
   });
 
   it('test if handleFaceId is disabled ', () => {
     component.instance().handleFaceId(true);
-    expect(component.state('faceIdValue')).toBe(true);
+    expect(component.state('faceIdValue')).toBe(false);
   });
 
   it('test if handleFaceId is enable ', () => {
     component.instance().handleTouchId(false);
-    expect(component.state('prompt')).toBe(false);
+    expect(component.state('promptVisible')).toBe(false);
   });
 
   it('should render with touch id', () => {

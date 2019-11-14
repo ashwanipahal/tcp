@@ -7,6 +7,7 @@ import {
 import { Switch, AppState } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import AsyncStorage from '@react-native-community/async-storage';
 import Prompt from '@tcp/core/src/components/common/atoms/Prompt';
 import { getLabelValue } from '../../../../../../../utils';
 import { Row, AboutWrapper } from '../styles/Settings.style.native';
@@ -30,10 +31,10 @@ class SettingsView extends PureComponent {
       pushNotificationValue: false,
       biometryType: null,
       appState: AppState.currentState,
-      promptVisible: true,
-      prompt: false,
+      promptVisible: false,
     };
-    this.username = '';
+    this.username = null;
+    this.password = null;
   }
 
   componentDidMount() {
@@ -45,22 +46,24 @@ class SettingsView extends PureComponent {
       getUserLoginDetails().then(credentials => {
         const { username, password } = credentials;
         if (username && password) {
-          this.username = username;
+          AsyncStorage.setItem('username', username);
+          AsyncStorage.setItem('password', password);
           this.setState({
             touchIdValue: true,
             faceIdValue: true,
           });
-          isSupportedTouch().then(value => {
-            // it returns true for android and touch id is enable for android
-            if (value) {
-              this.setState({ biometryType: SETTINGS_CONSTANTS.SETTINGS_TOUCH_ID });
-            } else {
-              this.setState({ biometryType: value });
-            }
-          });
         }
       });
     }
+
+    isSupportedTouch().then(value => {
+      // it returns true for android and touch id is enable for android
+      if (value) {
+        this.setState({ biometryType: SETTINGS_CONSTANTS.SETTINGS_TOUCH_ID });
+      } else {
+        this.setState({ biometryType: value });
+      }
+    });
 
     checkNotificationPermission().then(result => {
       this.setState({ pushNotificationValue: result });
@@ -84,24 +87,32 @@ class SettingsView extends PureComponent {
   handleTouchId = value => {
     if (!value) {
       resetTouchPassword();
+      this.setState({ touchIdValue: value });
     } else {
-      this.setState({ prompt: true });
+      this.setState({ promptVisible: true });
     }
-    this.setState({ touchIdValue: value });
   };
 
   handleFaceId = value => {
     if (!value) {
       resetTouchPassword();
+      this.setState({ faceIdValue: value });
     } else {
-      this.setState({ prompt: true });
+      this.setState({ promptVisible: true });
     }
-    this.setState({ faceIdValue: value });
   };
 
   prompt = () => {
     const { labels } = this.props;
     const { promptVisible } = this.state;
+
+    AsyncStorage.getItem('username').then(result => {
+      this.username = result;
+    });
+    AsyncStorage.getItem('password').then(result => {
+      this.password = result;
+    });
+
     return (
       <Prompt
         title={getLabelValue(labels, 'lbl_overview_enter_password')}
@@ -113,10 +124,16 @@ class SettingsView extends PureComponent {
           })
         }
         onSubmit={value => {
-          this.setState({
-            promptVisible: false,
-          });
-          setUserLoginDetails(this.username, value);
+          if (value === this.password) {
+            this.setState({
+              promptVisible: false,
+            });
+            setUserLoginDetails(this.username, this.password);
+            this.setState({
+              touchIdValue: true,
+              faceIdValue: true,
+            });
+          }
         }}
       />
     );
@@ -124,7 +141,13 @@ class SettingsView extends PureComponent {
 
   render() {
     const { labels } = this.props;
-    const { touchIdValue, faceIdValue, pushNotificationValue, biometryType, prompt } = this.state;
+    const {
+      touchIdValue,
+      faceIdValue,
+      pushNotificationValue,
+      biometryType,
+      promptVisible,
+    } = this.state;
     return (
       <>
         <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG">
@@ -178,7 +201,7 @@ class SettingsView extends PureComponent {
               text={getLabelValue(labels, 'lbl_overview_app_version')}
             />
           </AboutWrapper>
-          {prompt && this.prompt()}
+          {promptVisible && this.prompt()}
         </ViewWithSpacing>
       </>
     );
