@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Image, BodyCopy, Anchor } from '../../../../../common/atoms';
+import { Row, Col, BodyCopy, Anchor, DamImage } from '../../../../../common/atoms';
 import ProductBasicInfo from '../../../ProductDetail/molecules/ProductBasicInfo/ProductBasicInfo';
 import ProductPrice from '../../../ProductDetail/molecules/ProductPrice/ProductPrice';
 import { SIZE_CHART_LINK_POSITIONS } from '../../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
@@ -31,7 +31,7 @@ const OutfitDetailsView = ({
   addToFavorites,
   isBundleProduct,
 }) => {
-  const { imagesByColor, colorFitsSizesMap, isGiftCard } = outfitProduct;
+  const { imagesByColor, colorFitsSizesMap, isGiftCard, name } = outfitProduct;
   const colorProduct =
     outfitProduct && getMapSliceForColorProductId(colorFitsSizesMap, colorProductId);
   const prices = outfitProduct && getPrices(outfitProduct, colorProduct.color.name);
@@ -45,6 +45,10 @@ const OutfitDetailsView = ({
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const viewDetails = labels && labels.lbl_outfit_viewdetail;
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
+  const imgData = {
+    alt: name,
+    url: imagesByColor[color].basicImageUrl,
+  };
   return (
     <Row className={className}>
       <Col
@@ -56,7 +60,7 @@ const OutfitDetailsView = ({
         <BodyCopy fontSize="fs10" fontFamily="secondary" className="image-section">
           {productIndexText}
         </BodyCopy>
-        <Image src={imagesByColor[color].basicImageUrl} />
+        <DamImage imgData={imgData} isProductImage lazyLoad={false} />
         <BodyCopy className="view-detail-anchor">
           <Anchor underline fontSizeVariation="large" to={pdpToPath} asPath={outfitProduct.pdpUrl}>
             {viewDetails}
@@ -74,7 +78,7 @@ const OutfitDetailsView = ({
           </BodyCopy>
 
           <BodyCopy component="div" className="outfit-mobile-image">
-            <Image src={imagesByColor[color].basicImageUrl} />
+            <DamImage imgData={imgData} isProductImage lazyLoad={false} />
           </BodyCopy>
 
           <BodyCopy className="view-detail-anchor">
