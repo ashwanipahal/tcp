@@ -166,7 +166,7 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             </Button>
-            {variation === 'checkout' && (
+            {variation === 'checkout' && !isRememberedUser && (
               <ClickTracker name="checkout_as_guest">
                 <Button
                   fill="WHITE"

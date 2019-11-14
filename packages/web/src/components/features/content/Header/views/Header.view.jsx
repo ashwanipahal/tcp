@@ -96,6 +96,7 @@ class Header extends React.PureComponent {
       favStore,
       isPickupModalOpen,
       loyaltyPromoBanner,
+      setClickAnalyticsData,
     } = this.props;
     const { showCondensedHeader } = this.state;
     const { accessibility: { skipNavigation } = {} } = labels;
@@ -133,6 +134,7 @@ class Header extends React.PureComponent {
           openMiniBagDispatch={openMiniBagDispatch}
           store={favStore}
           labels={labels}
+          setClickAnalyticsData={setClickAnalyticsData}
         />
         <OverlayModal showCondensedHeader={showCondensedHeader} />
         <HeaderPromo
@@ -200,6 +202,7 @@ Header.propTypes = {
   loadFavoriteStore: PropTypes.func.isRequired,
   isPickupModalOpen: PropTypes.bool,
   isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {

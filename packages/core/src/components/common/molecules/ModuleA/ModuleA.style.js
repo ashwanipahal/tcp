@@ -38,7 +38,7 @@ const style = css`
   }
 
   .slick-dots li button:before {
-    border: 0.5px solid white;
+    border: 0.5px solid ${props => props.theme.colorPalette.white};
   }
 
   .slick-dots li.slick-active button:before {
