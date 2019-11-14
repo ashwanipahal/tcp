@@ -106,6 +106,7 @@ exports[`PickUpFormPart component  should renders correctly props with state upd
                 customStyle={Object {}}
                 fontSizeVariation="small"
                 href="#"
+                justifyContent=""
                 locator=""
                 margins={null}
                 noLink={true}
@@ -257,6 +258,7 @@ exports[`PickUpFormPart component should renders correctly props  present  1`] =
                 customStyle={Object {}}
                 fontSizeVariation="small"
                 href="#"
+                justifyContent=""
                 locator=""
                 margins={null}
                 noLink={true}

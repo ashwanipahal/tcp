@@ -23,9 +23,7 @@ class PickupAnalytics extends React.PureComponent {
 
   render() {
     const { isBagLoaded } = this.props;
-    return (
-      <React.Fragment>{process.env.ANALYTICS && isBagLoaded && <RouteTracker />}</React.Fragment>
-    );
+    return process.env.ANALYTICS && isBagLoaded && <RouteTracker />;
   }
 }
 

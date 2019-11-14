@@ -27,6 +27,8 @@ const ProductListingReducer = (state = initialState, action) => {
       return { ...state };
     case PRODUCTLISTINGPAGE_CONSTANTS.RESET_PRODUCTS:
       return { ...state };
+    case PRODUCTLISTINGPAGE_CONSTANTS.SET_FILTER:
+      return { ...state, ...{ selectedFilter: action.payload } };
     case PRODUCTLISTINGPAGE_CONSTANTS.SET_ADD_TO_FAVORITE: {
       if (state.loadedProductsPages) {
         state.loadedProductsPages[0].forEach(item => {

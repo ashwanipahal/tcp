@@ -38,7 +38,7 @@ describe('getsocialAccounts saga', () => {
 
       it('should dispatch savesocialAccounts action for success resposnse', () => {
         const res = 'foo';
-        savesocialAccountsGeneration.next(res)
+        savesocialAccountsGeneration.next(res);
         const putDescriptor = savesocialAccountsGeneration.next().value;
         expect(putDescriptor).toEqual(put(setSocialAccount(res)));
       });

@@ -17,6 +17,7 @@ const initialState = fromJS({
       grandTotal: 0,
       pointsToNextReward: 0,
       earnedReward: '',
+      totalOrderSavings: 0,
     },
 
     orderDetails: {

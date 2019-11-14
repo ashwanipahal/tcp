@@ -1,4 +1,3 @@
-
 import { takeLatest, put } from 'redux-saga/effects';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
 import { DeleteCardSaga, deleteCard } from '../DeleteCard.saga';
@@ -53,7 +52,7 @@ describe('DeleteAddressSaga', () => {
       const response = {
         error: 'error in API',
       };
-      deleteCardGen.throw(response)
+      deleteCardGen.throw(response);
       const putDescriptor = deleteCardGen.next(response).value;
       expect(putDescriptor).toEqual(put(updateCardListonDeleteErr(response)));
     });

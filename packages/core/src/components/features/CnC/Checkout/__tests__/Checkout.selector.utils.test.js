@@ -4,6 +4,7 @@ import CHECKOUT_SELECTORS, {
   getSendOrderUpdate,
   getAlternateFormFieldsExpress,
   getPickupValues,
+  getPageData,
 } from '../container/Checkout.selector';
 import { isMobileApp, getAPIConfig } from '../../../../../utils';
 
@@ -442,4 +443,14 @@ it('#getIsRTPSEnabled', () => {
     session,
   };
   expect(getIsRTPSEnabled(state)).toEqual(true);
+});
+it('#getPageData', () => {
+  const state = {
+    pageData: {
+      pageName: 'checkout',
+    },
+  };
+  expect(getPageData(state)).toEqual({
+    pageName: 'checkout',
+  });
 });

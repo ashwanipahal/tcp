@@ -48,6 +48,11 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     }
   }
 
+  componentWillUnmount() {
+    const { clearIsBillingVisitedState } = this.props;
+    clearIsBillingVisitedState();
+  }
+
   shippingDidMount = () => {
     intiSectionPage(constants.CHECKOUT_STAGES.SHIPPING, this, {
       initialLoad: this.initialLoad,
@@ -156,6 +161,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       setClickAnalyticsDataCheckout,
       updateCheckoutPageData,
       dispatchReviewReduxForm,
+      pageData,
     } = this.props;
     const { pickUpContactPerson, pickUpContactAlternate } = this.props;
     const { isRegisteredUserCallDone, checkoutRoutingDone } = this.props;
@@ -242,6 +248,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isPayPalWebViewEnable={isPayPalWebViewEnable}
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         updateCheckoutPageData={updateCheckoutPageData}
+        pageData={pageData}
       />
     );
   }

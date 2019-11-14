@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Image, BodyCopy, Anchor } from '../../../../../common/atoms';
+import { Row, Col, BodyCopy, Anchor, DamImage } from '../../../../../common/atoms';
 import ProductBasicInfo from '../../../ProductDetail/molecules/ProductBasicInfo/ProductBasicInfo';
 import ProductPrice from '../../../ProductDetail/molecules/ProductPrice/ProductPrice';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import {
   getPrices,
   getMapSliceForColorProductId,
@@ -28,8 +29,9 @@ const OutfitDetailsView = ({
   addToBagError,
   isLoggedIn,
   addToFavorites,
+  isBundleProduct,
 }) => {
-  const { imagesByColor, colorFitsSizesMap } = outfitProduct;
+  const { imagesByColor, colorFitsSizesMap, isGiftCard, name } = outfitProduct;
   const colorProduct =
     outfitProduct && getMapSliceForColorProductId(colorFitsSizesMap, colorProductId);
   const prices = outfitProduct && getPrices(outfitProduct, colorProduct.color.name);
@@ -42,7 +44,11 @@ const OutfitDetailsView = ({
   const currentColorPdpUrl = outfitProduct && outfitProduct.pdpUrl;
   const pdpToPath = getProductListToPath(currentColorPdpUrl);
   const viewDetails = labels && labels.lbl_outfit_viewdetail;
-
+  const imgData = {
+    alt: name,
+    url: imagesByColor[color].basicImageUrl,
+  };
+  const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
   return (
     <Row className={className}>
       <Col
@@ -54,7 +60,12 @@ const OutfitDetailsView = ({
         <BodyCopy fontSize="fs10" fontFamily="secondary" className="image-section">
           {productIndexText}
         </BodyCopy>
-        <Image src={imagesByColor[color].basicImageUrl} />
+        <DamImage
+          className="full-size-desktop-image"
+          imgData={imgData}
+          itemProp="contentUrl"
+          isProductImage
+        />
         <BodyCopy className="view-detail-anchor">
           <Anchor underline fontSizeVariation="large" to={pdpToPath} asPath={outfitProduct.pdpUrl}>
             {viewDetails}
@@ -72,7 +83,12 @@ const OutfitDetailsView = ({
           </BodyCopy>
 
           <BodyCopy component="div" className="outfit-mobile-image">
-            <Image src={imagesByColor[color].basicImageUrl} />
+            <DamImage
+              className="full-size-desktop-image"
+              imgData={imgData}
+              itemProp="contentUrl"
+              isProductImage
+            />
           </BodyCopy>
 
           <BodyCopy className="view-detail-anchor">
@@ -114,6 +130,8 @@ const OutfitDetailsView = ({
             isOutfitPage
             errorOnHandleSubmit={addToBagError}
             isPickup
+            isBundleProduct={isBundleProduct}
+            sizeChartLinkVisibility={sizeChartLinkVisibility}
           />
         </div>
       </Col>
@@ -137,6 +155,7 @@ OutfitDetailsView.propTypes = {
   addToBagError: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  isBundleProduct: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -153,6 +172,7 @@ OutfitDetailsView.defaultProps = {
   labels: {},
   addToBagError: false,
   isLoggedIn: false,
+  isBundleProduct: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

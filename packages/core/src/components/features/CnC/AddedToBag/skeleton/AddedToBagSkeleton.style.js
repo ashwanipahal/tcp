@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 export default css`
   padding: 10px 15px 20px 15px;
-  /* border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]}; */
   background: ${props => props.theme.colors.WHITE};
   margin: 15px 0;
   .added-to-bag-skeleton-wrapper {
@@ -11,32 +10,32 @@ export default css`
       width: 100%;
       display: flex;
       margin-bottom: 5px;
-      margin-top: 8px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
     .sub-total-wrapper {
-      padding-top: 4px;
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
       border-top: 1px solid #9b9b9b;
       justify-content: space-between;
       width: 100%;
       display: flex;
       margin-bottom: 5px;
-      margin-top: 8px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     }
     .price-sub-text {
-      height: 12px;
+      height: ${props => props.theme.spacing.ELEM_SPACING.SM};
       width: 180px;
     }
     .price-sub-value {
-      height: 12px;
+      height: ${props => props.theme.spacing.ELEM_SPACING.SM};
       width: 50px;
     }
     .points-text {
-      height: 12px;
+      height: ${props => props.theme.spacing.ELEM_SPACING.SM};
       width: 120px;
     }
     .points-value {
-      height: 12px;
-      width: 30px;
+      height: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      width: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
     }
   }
 

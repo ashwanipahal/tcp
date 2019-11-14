@@ -28,6 +28,7 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   isUsSite={false}
   isVenmoPaymentInProgress={false}
   onEditModeChange={true}
+  pageData={Object {}}
   pickupDidMount={[Function]}
   reviewProps={
     Object {
@@ -85,6 +86,7 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   isUsSite={false}
   isVenmoPaymentInProgress={false}
   onEditModeChange={true}
+  pageData={Object {}}
   pickupDidMount={[Function]}
   reviewProps={
     Object {
