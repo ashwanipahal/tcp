@@ -57,21 +57,6 @@ exports[`CnCCommonTemplate Page should render correctly if on confirmation page 
       pageCategory={Object {}}
       showAccordian={true}
     />
-    <Styled(View)>
-      <Styled(Styled(BodyCopy))
-        accessibilityText=""
-        dataLocator=""
-        fontSize="fs16"
-        margin={null}
-        mobileFontFamily="secondary"
-        numberOfLines={null}
-        spacingStyles="margin-top-LRG margin-bottom-LRG"
-        text="ACCOUNT FORM"
-        textAlign="center"
-        textDecoration={null}
-      />
-    </Styled(View)>
-    <Connect(PersonalizedCoupons) />
     <Connect(Recommendations)
       page="checkout"
       variation="moduleO"
