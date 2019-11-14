@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Image, BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import { getSiteId, getLabelValue } from '@tcp/core/src/utils/utils';
-import { getIconPath, routerPush, disableBodyScroll, enableBodyScroll } from '@tcp/core/src/utils';
+import { getIconPath, disableBodyScroll, enableBodyScroll } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import SearchBarStyle from '../SearchBar.style';
@@ -54,16 +54,22 @@ class SearchLayoutWrapper extends React.PureComponent {
   }
 
   startInitiateSearch = () => {
-    const { setSearchState, setDataInLocalStorage, redirectToSearchPage } = this.props;
+    const {
+      setSearchState,
+      setDataInLocalStorage,
+      redirectToSearchPage,
+      commonCloseClick,
+    } = this.props;
     const searchText =
       this.searchInput && this.searchInput.current ? this.searchInput.current.value : '';
     if (searchText) {
       setDataInLocalStorage(searchText);
       redirectToSearchPage(searchText);
-    } else {
-      routerPush(`/search?searchQuery=`, `/search/`, { shallow: true });
+      setSearchState(false);
+      if (window.innerWidth <= breakpoints.values.lg) {
+        commonCloseClick();
+      }
     }
-    setSearchState(false);
   };
 
   cancelSearchBar = e => {
@@ -113,10 +119,8 @@ class SearchLayoutWrapper extends React.PureComponent {
   };
 
   initiateSearchByModal = e => {
-    const { commonCloseClick } = this.props;
     e.preventDefault();
     this.startInitiateSearch();
-    commonCloseClick();
   };
 
   initiateSearch = e => {
@@ -124,12 +128,9 @@ class SearchLayoutWrapper extends React.PureComponent {
     this.startInitiateSearch();
   };
 
-  initiateSearchBySubmit = () => {
-    const { commonCloseClick } = this.props;
+  initiateSearchBySubmit = e => {
+    e.preventDefault();
     this.startInitiateSearch();
-    if (window.innerWidth <= breakpoints.values.lg) {
-      commonCloseClick();
-    }
   };
 
   changeSearchText = e => {
