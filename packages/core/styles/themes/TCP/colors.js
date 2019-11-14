@@ -57,12 +57,12 @@ export default {
       TEXT: '#4a4a4a',
     },
     BLUE: {
-      NORMAL: '#003057',
-      BORDER: '#003057',
-      HOVER: '#254f6e',
-      FOCUS: '#254f6e',
-      ALT_HOVER: '#254f6e',
-      ALT_FOCUS: '#254f6e',
+      NORMAL: '#2e6a91',
+      BORDER: '#2e6a91',
+      HOVER: '#1f4862',
+      FOCUS: '#1f4862',
+      ALT_HOVER: '#1f4862',
+      ALT_FOCUS: '#1f4862',
       TEXT: '#fff',
     },
     RED: {

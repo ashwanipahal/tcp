@@ -191,12 +191,12 @@ exports[`StoreAddressIntl component StoreAddressIntl component renders correctly
             "TEXT": "#ffffff",
           },
           "BLUE": Object {
-            "ALT_FOCUS": "#254f6e",
-            "ALT_HOVER": "#254f6e",
-            "BORDER": "#003057",
-            "FOCUS": "#254f6e",
-            "HOVER": "#254f6e",
-            "NORMAL": "#003057",
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
             "TEXT": "#fff",
           },
           "RED": Object {
