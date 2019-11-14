@@ -61,8 +61,8 @@ const StyledModal = css`
   .modal__triangle {
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
     border-bottom: 10px solid
       ${props => (!props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce)};
     position: absolute;
