@@ -14,7 +14,6 @@ import SETTINGS_CONSTANTS from '../../../Settings.constants';
 
 /**
  * This component will render Settings component
- * @param { object } labels
  */
 class SettingsView extends PureComponent {
   constructor(props) {
