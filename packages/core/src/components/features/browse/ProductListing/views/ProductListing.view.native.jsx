@@ -118,6 +118,8 @@ const ProductListView = ({
       <PageContainer margins={margins} paddings={paddings}>
         {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
         <ProductList
+          getProducts={getProducts}
+          navigation={navigation}
           products={products}
           title={title}
           scrollToTop={scrollToTop}
