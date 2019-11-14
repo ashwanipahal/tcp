@@ -44,10 +44,6 @@ const styles = css`
     }
   }
 
-  .anchor-wrapper {
-    text-align: center;
-  }
-
   .rewards-container {
     display: grid;
     grid-template-columns: 100%;
