@@ -1,5 +1,4 @@
 const mockLeftSideNavigation = {
-    data: {
       subnavigation: [
         {
           subSections: null,
@@ -197,8 +196,7 @@ const mockLeftSideNavigation = {
           },
           __typename: 'HelpCenterNavigationContent',
         },
-      ],
-    },
+      ]
   };
   
   export default mockLeftSideNavigation;
