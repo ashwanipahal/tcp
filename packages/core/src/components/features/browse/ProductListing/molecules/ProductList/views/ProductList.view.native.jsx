@@ -42,13 +42,13 @@ class ProductList extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const { onAddItemToFavorites, getProducts, navigation } = props;
+    const { onAddItemToFavorites, getProducts, navigation, isSearchListing } = props;
     const { colorProductId } = state;
     if (props.isLoggedIn && state.showModal) {
       this.categoryUrl = navigation && navigation.getParam('url');
       getProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
       if (colorProductId !== '') {
-        onAddItemToFavorites({ colorProductId, page: 'PLP' });
+        onAddItemToFavorites({ colorProductId, page: isSearchListing ? 'SLP' : 'PLP' });
       }
       return { showModal: false, colorProductId: '' };
     }
@@ -60,12 +60,15 @@ class ProductList extends React.PureComponent {
 
   // eslint-disable-next-line
   onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
     if (!isLoggedIn) {
       this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
     } else {
-      onAddItemToFavorites({ colorProductId: generalProductId, page: 'PLP' });
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
     }
   };
 
@@ -357,6 +360,7 @@ ProductList.propTypes = {
   labelsPlpTiles: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isSearchListing: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -389,6 +393,7 @@ ProductList.defaultProps = {
   labelsPlpTiles: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isSearchListing: false,
 };
 
 export default withStyles(ProductList, styles);

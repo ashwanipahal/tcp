@@ -132,6 +132,7 @@ const ProductListView = ({
           labelsLogin={labelsLogin}
           AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
           removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
+          isSearchListing={isSearchListing}
           {...otherProps}
         />
         {isLoadingMore ? <PLPSkeleton col={20} /> : null}
