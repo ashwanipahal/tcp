@@ -116,6 +116,19 @@ const StyledModal = css`
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     font-size: ${props => props.theme.typography.fontSizes.fs18};
   }
+
+  .Modal_Heading_Overlay_default {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    border-bottom: 3px solid ${props => props.theme.colors.BLACK};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-top: 0;
+    height: 20px;
+    font-weight: ${props => props.theme.typography.fontWeights.bold};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
 `;
 
 export default StyledModal;

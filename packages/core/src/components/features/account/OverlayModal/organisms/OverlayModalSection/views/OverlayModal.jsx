@@ -239,8 +239,12 @@ class OverlayModal extends React.Component {
       showCondensedHeader,
     } = this.props;
 
+    const headingForMobile = this.getHeading();
     const modalHeading = {
       className: 'Modal_Heading_Overlay',
+    };
+    const modalHeadingDefault = {
+      className: 'Modal_Heading_Overlay_default',
     };
 
     return this.isMobile && component !== 'accountDrawer' ? (
@@ -255,8 +259,8 @@ class OverlayModal extends React.Component {
           id="modalWrapper"
           widthConfig={{ small: '100%' }}
           heightConfig={{ minHeight: '500px' }}
-          heading={this.getHeading()}
-          headingStyle={this.getHeading() ? modalHeading : null}
+          heading={headingForMobile}
+          headingStyle={headingForMobile ? modalHeading : modalHeadingDefault}
         >
           <div
             id="dialogContent"
