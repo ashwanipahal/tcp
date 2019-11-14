@@ -457,7 +457,11 @@ export class BillingPaymentForm extends React.PureComponent {
         />
         <CheckoutFooter
           hideBackLink
-          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
+          backLinkHandler={() =>
+            orderHasShipping
+              ? utility.routeToPage(CHECKOUT_ROUTES.shippingPage)
+              : utility.routeToPage(CHECKOUT_ROUTES.pickupPage)
+          }
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}

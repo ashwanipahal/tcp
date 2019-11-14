@@ -304,9 +304,14 @@ export const getCurrentOrderFormatter = (
   // Check if order is of pickup type instead of just BOPIS
   const mixOrderData =
     orderDetailsResponse.mixOrderDetails && orderDetailsResponse.mixOrderDetails.data;
-  const isBossOrder = !!(mixOrderData && mixOrderData.find(store => store.orderType === 'BOSS'));
-  const isBopisOrder = !!(mixOrderData && mixOrderData.find(store => store.orderType === 'BOPIS'));
+  let isBossOrder =
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOSS);
+  let isBopisOrder =
+    mixOrderData && mixOrderData.find(store => store.orderType === ORDER_ITEM_TYPE.BOPIS);
+
   const pickupOrder = isBopisOrder || isBossOrder;
+  isBopisOrder = !!isBopisOrder;
+  isBossOrder = !!isBossOrder;
   // show pickup address for both BOSS and BOPIS
   if (pickupOrder) {
     isPickupOrder = true;
