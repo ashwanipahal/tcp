@@ -59,6 +59,11 @@ export class BagPageContainer extends React.Component<Props> {
     }
   }
 
+  componentWillUnmount() {
+    const { resetBagLoadedState } = this.props;
+    resetBagLoadedState();
+  }
+
   closeModal = () => {};
 
   fetchInitialActions() {
@@ -198,6 +203,9 @@ export const mapDispatchToProps = dispatch => {
     },
     trackPageViewBag: payload => {
       dispatch(trackPageView(payload));
+    },
+    resetBagLoadedState: () => {
+      dispatch(BAG_PAGE_ACTIONS.resetBagLoadedState());
     },
   };
 };
