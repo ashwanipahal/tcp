@@ -7,12 +7,14 @@ import {
 import { Switch, AppState } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Prompt from '@tcp/core/src/components/common/atoms/Prompt';
 import { getLabelValue } from '../../../../../../../utils';
 import { Row, AboutWrapper } from '../styles/Settings.style.native';
 import {
   resetTouchPassword,
   isSupportedTouch,
   getUserLoginDetails,
+  setUserLoginDetails,
 } from '../../../../LoginPage/container/loginUtils/keychain.utils.native';
 import SETTINGS_CONSTANTS from '../../../Settings.constants';
 
@@ -28,7 +30,10 @@ class SettingsView extends PureComponent {
       pushNotificationValue: false,
       biometryType: null,
       appState: AppState.currentState,
+      promptVisible: true,
+      prompt: false,
     };
+    this.username = '';
   }
 
   componentDidMount() {
@@ -40,6 +45,7 @@ class SettingsView extends PureComponent {
       getUserLoginDetails().then(credentials => {
         const { username, password } = credentials;
         if (username && password) {
+          this.username = username;
           this.setState({
             touchIdValue: true,
             faceIdValue: true,
@@ -79,7 +85,7 @@ class SettingsView extends PureComponent {
     if (!value) {
       resetTouchPassword();
     } else {
-      // enable touch id
+      this.setState({ prompt: true });
     }
     this.setState({ touchIdValue: value });
   };
@@ -88,15 +94,37 @@ class SettingsView extends PureComponent {
     if (!value) {
       resetTouchPassword();
     } else {
-      // enable face id
+      this.setState({ prompt: true });
     }
     this.setState({ faceIdValue: value });
   };
 
+  prompt = () => {
+    const { labels } = this.props;
+    const { promptVisible } = this.state;
+    return (
+      <Prompt
+        title={getLabelValue(labels, 'lbl_overview_enter_password')}
+        placeholder={getLabelValue(labels, 'lbl_overview_password')}
+        visible={promptVisible}
+        onCancel={() =>
+          this.setState({
+            promptVisible: false,
+          })
+        }
+        onSubmit={value => {
+          this.setState({
+            promptVisible: false,
+          });
+          setUserLoginDetails(this.username, value);
+        }}
+      />
+    );
+  };
+
   render() {
     const { labels } = this.props;
-    const { touchIdValue, faceIdValue, pushNotificationValue, biometryType } = this.state;
-
+    const { touchIdValue, faceIdValue, pushNotificationValue, biometryType, prompt } = this.state;
     return (
       <>
         <ViewWithSpacing spacingStyles="margin-left-LRG margin-right-LRG">
@@ -134,7 +162,6 @@ class SettingsView extends PureComponent {
               onValueChange={() => changeNotificationSetting()}
             />
           </Row>
-
           <AboutWrapper>
             <BodyCopy
               fontFamily="secondary"
@@ -151,6 +178,7 @@ class SettingsView extends PureComponent {
               text={getLabelValue(labels, 'lbl_overview_app_version')}
             />
           </AboutWrapper>
+          {prompt && this.prompt()}
         </ViewWithSpacing>
       </>
     );

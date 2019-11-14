@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Prompt component should render correctly 1`] = `
+<Component
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={false}
+>
+  <View
+    key="prompt"
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.8)",
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 5,
+          "borderWidth": 1,
+          "elevation": 5,
+          "marginTop": 444.6666666666667,
+          "overflow": "hidden",
+          "padding": 24,
+          "width": 300,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="black"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        margin={null}
+        numberOfLines={null}
+        text=""
+        textDecoration={null}
+      />
+      <TextInput
+        allowFontScaling={true}
+        autoFocus={true}
+        defaultValue=""
+        onChangeText={[Function]}
+        placeholder=""
+        rejectResponderTermination={true}
+        secureTextEntry={true}
+        style={
+          Array [
+            Object {
+              "height": 30,
+              "marginTop": 20,
+            },
+          ]
+        }
+        underlineColorAndroid="white"
+      />
+      <View
+        style={
+          Object {
+            "borderTopWidth": 1,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginTop": 30,
+          }
+        }
+      >
+        <TouchableOpacity
+          accessibilityRole="button"
+          activeOpacity={0.2}
+          onPress={[Function]}
+          style={
+            Object {
+              "marginLeft": 8,
+              "marginRight": 8,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="blue.700"
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            margin={null}
+            numberOfLines={null}
+            text="OK"
+            textDecoration={null}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          accessibilityRole="button"
+          activeOpacity={0.2}
+          onPress={[Function]}
+          style={
+            Object {
+              "marginLeft": 8,
+              "marginRight": 8,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            accessibilityText=""
+            color="blue.700"
+            dataLocator=""
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            margin={null}
+            numberOfLines={null}
+            text="CANCEL"
+            textDecoration={null}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  </View>
+</Component>
+`;

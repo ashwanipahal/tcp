@@ -42,6 +42,14 @@ jest.mock('react-native-awesome-card-io', () => {
   };
 });
 
+jest.mock('react-native-keychain', () => {
+  return {
+    setGenericPassword: jest.fn(),
+    getGenericPassword: jest.fn(),
+    resetGenericPassword: jest.fn(),
+  };
+});
+
 // Mock NetInfo for react-native modules
 NativeModules.RNCNetInfo = {
   getCurrentState: jest.fn(() => Promise.resolve()),
