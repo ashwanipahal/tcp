@@ -2,6 +2,7 @@
 import { call, all, select, put } from 'redux-saga/effects';
 import moment from 'moment';
 // import { getUserEmail } from '../../../account/User/container/User.selectors';
+import setLoaderState from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { isCanada, sanitizeEntity } from '../../../../../utils/utils';
 // import { addAddress } from '../../../../../services/abstractors/account/AddEditAddress';
 import {
@@ -33,6 +34,7 @@ import {
   resetCouponReducer,
   getCouponList,
 } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+
 import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
@@ -226,6 +228,7 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     const currentLanguage = yield select(getCurrentLanguage);
     const isExpressCheckoutEnabled = yield select(isExpressCheckout);
     const pendingPromises = [];
+    yield put(setLoaderState(true));
     if (isExpressCheckoutEnabled && formData) {
       yield call(expressCheckoutSubmit, formData);
     }
@@ -368,9 +371,11 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     // .catch(err => {
     //   logErrorAndServerThrow(this.store, 'loadSflItemsCount', err);
     // });
+    yield put(setLoaderState(false));
   } catch (e) {
     const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
     const billingError = getServerErrorMessage(e, errorsMapping);
+    yield put(setLoaderState(false));
     yield put(
       CHECKOUT_ACTIONS.setServerErrorCheckout({ errorMessage: billingError, component: 'PAGE' })
     );

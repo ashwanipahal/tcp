@@ -18,13 +18,6 @@ exports[`ModuleGVanilla ModuleG should render correctly 1`] = `
         className="promo-header"
         component="div"
         dataLocator="moduleG_header_text"
-        fontSize={
-          Array [
-            "fs20",
-            "fs20",
-            "fs32",
-          ]
-        }
         headerText={
           Array [
             Object {

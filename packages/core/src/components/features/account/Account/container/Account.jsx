@@ -51,10 +51,21 @@ export class Account extends React.PureComponent {
       routerPush('/home?target=login', '/home/login');
     }
 
+    if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
+      this.activePageRef.focus();
+    }
+
     if (prevState.componentToLoad !== componentToLoad) {
       utils.scrollPage();
     }
   }
+
+  /**
+   * Set the wrapper ref
+   */
+  setPageRef = ref => {
+    this.activePageRef = ref;
+  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const nextActiveComponent = utils.getObjectValue(
@@ -100,6 +111,7 @@ export class Account extends React.PureComponent {
             navData={navData}
             router={router}
             labels={labels}
+            pageContentRef={this.setPageRef}
             isUserLoggedIn={isUserLoggedIn}
           />
           {process.env.ANALYTICS && <RouteTracker />}

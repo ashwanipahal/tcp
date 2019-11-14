@@ -134,6 +134,8 @@ exports[`Order Summary Details component should render correctly for valid coupo
     borderColor="gray.600"
     borderWidth={1}
     marginBottom={10}
+    marginLeft={0}
+    marginRight={0}
     marginTop={10}
   />
   <Styled(View)>
@@ -301,6 +303,8 @@ exports[`Order Summary Details component should renders correctly with free ship
     borderColor="gray.600"
     borderWidth={1}
     marginBottom={10}
+    marginLeft={0}
+    marginRight={0}
     marginTop={10}
   />
   <Styled(View)>
@@ -468,6 +472,8 @@ exports[`Order Summary Details component should renders correctly with shipping 
     borderColor="gray.600"
     borderWidth={1}
     marginBottom={10}
+    marginLeft={0}
+    marginRight={0}
     marginTop={10}
   />
   <Styled(View)>

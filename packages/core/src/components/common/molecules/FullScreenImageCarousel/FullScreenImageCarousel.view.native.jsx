@@ -62,6 +62,7 @@ class FullScreenImageCarousel extends React.PureComponent {
         horizontalBar={false}
         headerStyle={fullWidth}
         isOverlay
+        noscroll
       >
         <ModalCarousel height={getScreenHeight()}>
           <ImageViewer

@@ -111,6 +111,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       currentProduct: { colorFitsSizesMap },
       plpLabels,
       selectedColorProductId,
+      onCloseClick,
     } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
@@ -124,6 +125,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         sizeUnavailable={sizeUnavailable}
         isAnchor
         miscInfo={currentColorEntry && currentColorEntry.miscInfo}
+        onPickupClickAddon={onCloseClick}
       />
     );
   };

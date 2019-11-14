@@ -39,6 +39,8 @@ An online account has been created with your email! Click here to reset your pas
       borderColor={null}
       borderWidth={0.65}
       marginBottom={0}
+      marginLeft={0}
+      marginRight={0}
       marginTop={28}
     />
     <Styled(View)
@@ -141,6 +143,7 @@ An online account has been created with your email! Click here to reset your pas
           colorName={null}
           customStyle={Object {}}
           fontSizeVariation="medium"
+          justifyContent=""
           locator=""
           margins={null}
           onPress={[Function]}
@@ -154,6 +157,8 @@ An online account has been created with your email! Click here to reset your pas
       borderColor={null}
       borderWidth={0.65}
       marginBottom={0}
+      marginLeft={0}
+      marginRight={0}
       marginTop={28}
     />
   </Styled(View)>

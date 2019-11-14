@@ -35,6 +35,7 @@ exports[`Shipping Form should render correctly 1`] = `
         }
       }
       addressPhoneNo={null}
+      afterAddressUpdate={[Function]}
       className=""
       defaultAddressId={null}
       defaultShipmentId={null}
@@ -48,6 +49,7 @@ exports[`Shipping Form should render correctly 1`] = `
       isAddNewAddress={false}
       isEditing={false}
       isGuest={false}
+      isLoading={false}
       isMobile={false}
       isOrderUpdateChecked={false}
       isSaveToAddressBookChecked={false}
