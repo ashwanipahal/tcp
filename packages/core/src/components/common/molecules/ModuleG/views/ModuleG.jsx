@@ -147,7 +147,6 @@ class ModuleG extends React.PureComponent {
           headerText={headerText}
           className="promo-header"
           dataLocator={getLocator('moduleG_header_text')}
-          fontSize={['fs20', 'fs20', 'fs32']}
         />
       </div>
     ) : (
@@ -156,7 +155,6 @@ class ModuleG extends React.PureComponent {
         headerText={headerText}
         className="promo-header"
         dataLocator={getLocator('moduleG_header_text')}
-        fontSize={['fs20', 'fs20', 'fs32']}
       />
     );
   };
@@ -235,7 +233,6 @@ class ModuleG extends React.PureComponent {
                       <DamImage
                         imgData={{ url: getProductUrlForDAM(uniqueId), alt: productName }}
                         imgConfigs={moduleGConfig.IMG_DATA.productImgConfig}
-                        lazyLoad={false}
                         isProductImage
                       />
                     </Anchor>

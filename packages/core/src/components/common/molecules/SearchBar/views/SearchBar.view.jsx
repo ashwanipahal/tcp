@@ -7,9 +7,8 @@ import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 import { getSearchResult, setShowMoreProductFlag } from '../SearchBar.actions';
-import { setRecentStoreToLocalStorage, getRecentStoreFromLocalStorage } from '../userRecentStore';
+import { getRecentStoreFromLocalStorage, updateLocalStorageData } from '../userRecentStore';
 
-import RECENT_SEARCH_CONSTANTS from '../SearchBar.constants';
 import SearchBarPropTypes from '../SearchBar.PropTypes';
 import SearchImageWrapper from './SearchImageWrapper.view';
 
@@ -79,38 +78,8 @@ class SearchBar extends React.PureComponent {
     this.commonCloseClick();
   };
 
-  arrayRemove = (arr, value) => {
-    return arr.filter(ele => {
-      return ele !== value;
-    });
-  };
-
-  setDataInLocalStorage = searchText => {
-    if (searchText) {
-      const searchTextParam = searchText.trim().toLowerCase();
-      const getPreviousSearchResults = getRecentStoreFromLocalStorage();
-      let filteredSearchResults;
-      if (getPreviousSearchResults) {
-        filteredSearchResults = JSON.parse(getPreviousSearchResults.toLowerCase().split(','));
-        if (filteredSearchResults.indexOf(searchTextParam) === -1) {
-          filteredSearchResults.push(searchTextParam);
-        } else {
-          filteredSearchResults = this.arrayRemove(filteredSearchResults, searchTextParam);
-          filteredSearchResults.push(searchTextParam);
-        }
-      } else {
-        filteredSearchResults = [];
-        filteredSearchResults.push(searchTextParam);
-      }
-      if (
-        filteredSearchResults &&
-        filteredSearchResults.length > RECENT_SEARCH_CONSTANTS.RECENT_SEARCHES_NUM_MAX
-      ) {
-        filteredSearchResults.shift();
-      }
-
-      setRecentStoreToLocalStorage(filteredSearchResults);
-    }
+  setDataInLocalStorage = (searchText, url) => {
+    updateLocalStorageData(searchText, url);
   };
 
   commonCloseClick = () => {
@@ -137,12 +106,16 @@ class SearchBar extends React.PureComponent {
     }
   };
 
-  redirectToSuggestedUrl = searchText => {
+  redirectToSuggestedUrl = (searchText, url) => {
     if (searchText) {
-      this.setDataInLocalStorage(searchText);
+      this.setDataInLocalStorage(searchText, url);
     }
     this.clearModalParams();
-    routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    if (url) {
+      routerPush(`/c?cid=${url.split('/c/')[1]}`, `${url}`, { shallow: false });
+    } else {
+      routerPush(`/search?searchQuery=${searchText}`, `/search/${searchText}`, { shallow: true });
+    }
   };
 
   render() {

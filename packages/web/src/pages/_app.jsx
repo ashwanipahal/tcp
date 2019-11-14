@@ -178,7 +178,7 @@ class TCPWebApp extends App {
       const apiConfig = createAPIConfig(locals);
       const pageDataReferer = {};
       // preview check from akamai header
-      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY);
+      apiConfig.isPreviewEnv = res.getHeaders()[constants.PREVIEW_RES_HEADER_KEY];
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date;
       pageDataReferer.referer = req.headers.referer;

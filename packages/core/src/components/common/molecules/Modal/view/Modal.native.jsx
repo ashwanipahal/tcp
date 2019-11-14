@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { Modal, ScrollView, View, KeyboardAvoidingView, Platform } from 'react-native';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ToastContainer from '@tcp/core/src/components/common/atoms/Toast/container/Toast.container.native';
 import {
@@ -95,12 +95,18 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
     horizontalBar = true,
     borderColor = 'black',
     rightAlignCrossIcon,
+    noscroll,
   } = otherProps;
   let behavior = null;
   let keyboardVerticalOffset = 0;
   if (Platform.OS === 'ios') {
     behavior = 'padding';
     keyboardVerticalOffset = 64;
+  }
+
+  let Component = ScrollView;
+  if (noscroll) {
+    Component = View;
   }
 
   return (
@@ -117,7 +123,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
             keyboardVerticalOffset={keyboardVerticalOffset}
             enabled
           >
-            <ScrollView
+            <Component
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled"
               stickyHeaderIndices={[0]}
@@ -128,7 +134,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
                   {heading && (
                     <ModalHeading stickyCloseIcon={stickyCloseIcon} fullWidth={fullWidth}>
                       <BodyCopy
-                        mobileFontFamily={headingFontFamily || 'primary'}
+                        fontFamily={headingFontFamily || 'primary'}
                         fontWeight={headingFontWeight || 'extrabold'}
                         textAlign={headingAlign}
                         fontSize={fontSize || 'fs16'}
@@ -148,7 +154,7 @@ const ModalNative = ({ isOpen, children, isOverlay, inheritedStyles, ...otherPro
                 {geLine(horizontalBar, borderColor)}
               </Heading>
               {children}
-            </ScrollView>
+            </Component>
           </KeyboardAvoidingView>
         </ModalCustomWrapper>
       )}

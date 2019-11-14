@@ -10,7 +10,7 @@ class BarcodeView extends PureComponent {
     return (
       <View>
         <Barcode value={value} width={width} height={height} format={format} />
-        {displayValue && <BodyCopy textAlign="center" text={value} />}
+        {displayValue && <BodyCopy textAlign="center" fontFamily="secondary" text={value} />}
       </View>
     );
   }

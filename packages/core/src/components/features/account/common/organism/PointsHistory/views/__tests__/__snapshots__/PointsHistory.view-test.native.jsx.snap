@@ -94,6 +94,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
       fontFamily="secondary"
       fontSizeVariation="medium"
       fontWeight="regular"
+      justifyContent=""
       locator=""
       margins={null}
       noLink={true}

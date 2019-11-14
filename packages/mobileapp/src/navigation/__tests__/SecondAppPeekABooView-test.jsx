@@ -24,7 +24,7 @@ describe('SecondAppPeekABooView component test cases', () => {
 
   it('should render gymboree launch image by default', () => {
     const image = wrapper.find(Animated.Image);
-    expect(image.props().source.testUri).toContain('gymboreePeekABoo.png');
+    expect(image.props().source.testUri).toContain('gym-toggle.png');
   });
 
   it('should call peek-a-boo animation method', () => {

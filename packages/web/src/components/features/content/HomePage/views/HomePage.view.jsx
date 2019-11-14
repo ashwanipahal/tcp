@@ -5,8 +5,6 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
-import ModuleM from '@tcp/core/src/components/common/molecules/ModuleM';
-import mockM from '@tcp/core/src/components/common/molecules/ModuleM/moduleM.mock';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import { isTCP, getQueryParamsFromUrl } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -90,6 +88,7 @@ const HomePageView = dynamic({
     moduleJ: () => import('@tcp/core/src/components/common/molecules/ModuleJ').then(returnModule),
     moduleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
     moduleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
+    moduleM: () => import('@tcp/core/src/components/common/molecules/ModuleM').then(returnModule),
     moduleN: () => import('@tcp/core/src/components/common/molecules/ModuleN').then(returnModule),
     moduleQ: () => import('@tcp/core/src/components/common/molecules/ModuleQ').then(returnModule),
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
@@ -121,7 +120,6 @@ const HomePageView = dynamic({
       >
         <PageSlots slots={slots} modules={modules} />
         <GetCandid />
-        <ModuleM {...mockM.moduleM.composites} type={mockM.moduleM.set[0].val} />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
           variations="moduleO,moduleP"
