@@ -10,7 +10,6 @@ import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
-  briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
   updateRTPSData,
@@ -45,6 +44,7 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
