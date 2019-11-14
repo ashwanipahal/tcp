@@ -6801,8 +6801,8 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .padding-top-15 {
     padding-top: 15px;
   }
-  .padding-top-50 {
-    padding-top: 50px;
+  .padding-top-40 {
+    padding-top: 41px;
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -6995,6 +6995,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
       & .brand-image {
         width: 60px;
+        height: 26px;
       }
     }
 
@@ -7339,8 +7340,8 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   .padding-top-15 {
     padding-top: 15px;
   }
-  .padding-top-50 {
-    padding-top: 50px;
+  .padding-top-40 {
+    padding-top: 41px;
   }
   .padding-bottom-20 {
     padding-bottom: 20px;
@@ -7533,6 +7534,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       }
       & .brand-image {
         width: 60px;
+        height: 26px;
       }
     }
 
