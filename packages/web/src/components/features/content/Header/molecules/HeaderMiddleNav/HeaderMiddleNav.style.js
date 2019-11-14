@@ -80,12 +80,14 @@ const style = css`
     line-height: normal;
   }
   .carrot-down-icon {
+    display: inline-block;
     cursor: pointer;
     margin-left: 9px;
     transform: rotate(0deg);
     transition: transform 0.1s linear;
   }
   .carrot-up-icon {
+    display: inline-block;
     cursor: pointer;
     margin-left: 9px;
     transform: rotate(180deg);
