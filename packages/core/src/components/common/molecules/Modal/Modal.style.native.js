@@ -63,6 +63,12 @@ const RowWrapper = styled.View`
       margin: 14px 14px 0 14px
       `
       : ``}
+  ${props =>
+    props.customHeaderMargin
+      ? `
+      margin: ${props.customHeaderMargin}
+      `
+      : ``}
 `;
 
 const ImageWrapper = styled.View`
