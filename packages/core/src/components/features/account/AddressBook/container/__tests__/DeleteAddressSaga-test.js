@@ -26,6 +26,7 @@ describe('DeleteAddressSaga', () => {
       deleteAddressGen.next(response);
       const putDescriptor = deleteAddressGen.next().value;
       expect(putDescriptor).toEqual(put(updateAddressListOnDelete(response.body)));
+      deleteAddressGen.next();
       expect(deleteAddressGen.next().value).toEqual(
         put(setDeleteModalMountedState({ state: false }))
       );
@@ -37,6 +38,7 @@ describe('DeleteAddressSaga', () => {
       deleteAddressGen.next(response);
       const putDescriptor = deleteAddressGen.next().value;
       expect(putDescriptor).toEqual(put(updateAddressListOnDelete('')));
+      deleteAddressGen.next();
       expect(deleteAddressGen.next().value).toEqual(
         put(setDeleteModalMountedState({ state: false }))
       );
