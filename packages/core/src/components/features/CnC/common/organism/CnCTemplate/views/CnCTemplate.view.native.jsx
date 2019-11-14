@@ -16,12 +16,9 @@ import {
   BonusPointsWrapper,
   CouponAndPromosWrapper,
   PayPalButtonContainer,
-  BannerWrapper,
   CnContainer,
   CnContent,
 } from '../styles/CnCTemplate.style.native';
-import { BodyCopyWithSpacing } from '../../../../../../common/atoms/styledWrapper';
-import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 import PayPalButton from '../../PayPalButton';
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 
@@ -114,18 +111,6 @@ const CnCCommonTemplate = ({
             pageCategory={pageCategory}
             showAccordian
           />
-          {isGuest && (
-            <BannerWrapper>
-              <BodyCopyWithSpacing
-                textAlign="center"
-                fontSize="fs16"
-                mobileFontFamily="secondary"
-                spacingStyles="margin-top-LRG margin-bottom-LRG"
-                text="ACCOUNT FORM"
-              />
-            </BannerWrapper>
-          )}
-          <PersonalizedCoupons />
           <Recommendations
             navigation={navigation}
             variation="moduleO"
