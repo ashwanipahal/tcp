@@ -189,6 +189,7 @@ export const commonStyles = css`
 
   li.linkName {
     height: 40px;
+    line-height: 40px;
     color: ${props => props.theme.colors.ACCORDION.TEXT};
   }
 

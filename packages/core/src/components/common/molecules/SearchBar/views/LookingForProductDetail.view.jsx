@@ -18,12 +18,29 @@ import { routerPush } from '../../../../../utils/index';
  * @param {*} props
  */
 class LookingForProductDetail extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.generateDamUrl = this.generateDamUrl.bind(this);
+  }
+
   redirectToProductUrl = productUrl => {
     const { closeSearchLayover } = this.props;
     closeSearchLayover();
     routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
       shallow: false,
     });
+  };
+
+  generateDamUrl = itemUrl => {
+    const fileNameFull =
+      itemUrl && itemUrl[0] ? itemUrl[0].substring(itemUrl[0].lastIndexOf('/') + 1) : '';
+    const fileNameNoExt =
+      fileNameFull.lastIndexOf('.') > 0
+        ? fileNameFull.substring(0, fileNameFull.lastIndexOf('.'))
+        : fileNameFull;
+    const prodNum = fileNameNoExt.split('_')[0];
+    return `${prodNum}/${fileNameFull}`;
   };
 
   render() {
@@ -36,10 +53,6 @@ class LookingForProductDetail extends React.PureComponent {
             {searchResults &&
               searchResults.autosuggestProducts &&
               searchResults.autosuggestProducts.map(item => {
-                const itemName = item.imageUrl[0].substring(item.imageUrl[0].lastIndexOf('/') + 1);
-                const imageParts =
-                  itemName.indexOf('_') >= 0 ? itemName.split('_') : itemName.split('.');
-                const itemUrl = `${imageParts[0]}/${itemName}`;
                 return (
                   <BodyCopy component="li" key={item.id} className="productBox">
                     <Anchor
@@ -55,7 +68,7 @@ class LookingForProductDetail extends React.PureComponent {
                         className="autosuggest-image"
                         imgData={{
                           alt: `${item.name}`,
-                          url: `${itemUrl}`,
+                          url: `${this.generateDamUrl(item.imageUrl)}`,
                         }}
                         isProductImage
                         height="25px"
