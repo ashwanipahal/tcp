@@ -72,7 +72,7 @@ export class CouponListSection extends React.Component<Props> {
               </IconContainer>
               <Anchor
                 fontFamily="secondary"
-                fontSizeVariation="small"
+                fontSizeVariation="medium"
                 underline
                 anchorVariation="primary"
                 onPress={this.helpAnchorClick}
