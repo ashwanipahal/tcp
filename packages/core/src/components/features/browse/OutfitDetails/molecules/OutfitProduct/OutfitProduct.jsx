@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Row, Col, Image, BodyCopy, Anchor } from '../../../../../common/atoms';
 import ProductBasicInfo from '../../../ProductDetail/molecules/ProductBasicInfo/ProductBasicInfo';
 import ProductPrice from '../../../ProductDetail/molecules/ProductPrice/ProductPrice';
+import { SIZE_CHART_LINK_POSITIONS } from '../../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import {
   getPrices,
   getMapSliceForColorProductId,
   getProductListToPath,
 } from '../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
-import { SIZE_CHART_LINK_POSITIONS } from '../../../../../common/molecules/ProductAddToBag/views/ProductAddToBag.view';
 import withStyles from '../../../../../common/hoc/withStyles';
 import OutfitProductStyle from './OutfitProduct.style';
 
@@ -29,6 +29,7 @@ const OutfitDetailsView = ({
   addToBagError,
   isLoggedIn,
   addToFavorites,
+  isBundleProduct,
 }) => {
   const { imagesByColor, colorFitsSizesMap, isGiftCard } = outfitProduct;
   const colorProduct =
@@ -115,6 +116,7 @@ const OutfitDetailsView = ({
             isOutfitPage
             errorOnHandleSubmit={addToBagError}
             isPickup
+            isBundleProduct={isBundleProduct}
             sizeChartLinkVisibility={sizeChartLinkVisibility}
           />
         </div>
@@ -139,6 +141,7 @@ OutfitDetailsView.propTypes = {
   addToBagError: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  isBundleProduct: PropTypes.bool,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -155,6 +158,7 @@ OutfitDetailsView.defaultProps = {
   labels: {},
   addToBagError: false,
   isLoggedIn: false,
+  isBundleProduct: false,
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

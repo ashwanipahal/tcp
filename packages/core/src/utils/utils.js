@@ -1065,12 +1065,13 @@ export const orderStatusMapperForNotification = {
   [constants.STATUS_CONSTANTS.ORDER_EXPIRED]: 'lbl_orders_statusOrderExpired',
   [constants.STATUS_CONSTANTS.ORDER_USER_CALL_NEEDED]: 'lbl_orders_statusOrderReceived',
   [constants.STATUS_CONSTANTS.ORDER_PROCESSING_AT_FACILITY]: 'lbl_global_yourOrderIsBeingProcessed',
+  [constants.STATUS_CONSTANTS.LBL_NA]: constants.STATUS_CONSTANTS.NA,
   /* Status added for BOSS */
   [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',
   [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_global_yourOrderWasCanceled',
-  [constants.STATUS_CONSTANTS.ORDER_CONTACT_CUSTOMER_SERVICE]: 'lbl_global_yourOrderWasReceived',
+  [constants.STATUS_CONSTANTS.LBL_CallNeeded]: 'lbl_orders_statusOrderReceived',
   [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_global_yourOrderWasPickedUp',
-  [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_global_yourOrderWasReceived',
+  [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_orders_statusOrderReceived',
 };
 
 /**
@@ -1080,7 +1081,12 @@ export const orderStatusMapperForNotification = {
  * @return orderStatus
  */
 export const getOrderStatusForNotification = status => {
-  return orderStatusMapperForNotification[status.toLowerCase()] || status;
+  const orderStatus =
+    orderStatusMapperForNotification[status] ||
+    orderStatusMapperForNotification[status.toLowerCase()] ||
+    status;
+
+  return orderStatus !== constants.STATUS_CONSTANTS.NA ? orderStatus : '';
 };
 
 /**
