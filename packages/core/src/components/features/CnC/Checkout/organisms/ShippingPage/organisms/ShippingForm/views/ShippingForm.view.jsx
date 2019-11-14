@@ -284,7 +284,7 @@ class ShippingForm extends React.Component {
           fontSize="fs28"
           fontWeight="regular"
           data-locator="shipping-details"
-          className={`elem-mb-XS elem-mt-MED ${
+          className={`elem-mb-XS elem-mt-MED font-size-26 ${
             (userAddresses && userAddresses.size !== 0) || shippingAddress
               ? 'hide-on-desktop hide-on-tablet'
               : ''
