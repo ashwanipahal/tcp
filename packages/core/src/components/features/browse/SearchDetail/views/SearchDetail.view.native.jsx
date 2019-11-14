@@ -139,6 +139,7 @@ class SearchDetail extends React.PureComponent {
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
           labelsLogin={labelsLogin}
+          isSearchListing
           {...otherProps}
         />
         <QuickViewModal navigation={navigation} />
