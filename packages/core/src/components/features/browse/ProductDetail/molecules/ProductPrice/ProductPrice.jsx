@@ -15,10 +15,10 @@ const getExchangeValue = currencyExchange => {
 
 const getListPricePostFix = (highListPrice, nonUSCA, currencySymbol) => {
   return highListPrice ? (
-    <React.Fragment>
+    <>
       <span> - </span>
       <span className="post">{`${nonUSCA ? currencySymbol : ''}${highListPrice.toFixed(2)}`}</span>
-    </React.Fragment>
+    </>
   ) : (
     ''
   );

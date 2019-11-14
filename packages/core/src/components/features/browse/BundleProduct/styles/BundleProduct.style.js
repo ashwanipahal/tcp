@@ -77,24 +77,24 @@ export default css`
   }
 
   .actual-price {
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+    font-size: ${props => props.theme.typography.fontSizes.fs22};
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy8}px;
+      font-size: ${props => props.theme.typography.fontSizes.fs24};
     }
   }
   .original-price {
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
     }
   }
 
   .outfiting-list-details {
     .actual-price {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7};
     }
     .original-price {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
+      font-size: ${props => props.theme.typography.fontSizes.fs14};
     }
   }
 
