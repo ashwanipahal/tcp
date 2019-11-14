@@ -29,9 +29,7 @@ const getNavLink = (data = {}) => {
  */
 
 const LeftNavigation = ({ className }) => {
-  const {
-    data: { subnavigation: navData = [] },
-  } = mockLeftSideNavigation;
+  const { subnavigation: navData = [] } = mockLeftSideNavigation;
   const navDropDown = navData.length && navData.map(nav => nav.leafLink);
   const activeLink = useState(navDropDown[0].component || null);
 

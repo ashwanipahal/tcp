@@ -31,7 +31,6 @@ const buildQuery = ({ category, brand, country, channel }) => `
 
 export default {
   getQuery: data => {
-    debugger;
     return buildQuery(data);
   },
 };
