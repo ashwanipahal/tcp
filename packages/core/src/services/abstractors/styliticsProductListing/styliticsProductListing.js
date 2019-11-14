@@ -14,17 +14,21 @@ const Abstractor = {
    * @return {Object} return Promise.
    */
   getData: params => {
-    const { categoryId, count = 7 } = params;
+    const { categoryId, count = 7, source } = params;
 
     const styliticsRegion = getStyliticsRegion();
     const payload = {
       body: {
         username: getStyliticsUserName(),
         total: count,
-        tags: categoryId,
       },
       webService: endpoints.getStyliticsProductViewById,
     };
+    if (source === 'related-outfits') {
+      payload.body.item_number = categoryId;
+    } else {
+      payload.body.tags = categoryId;
+    }
 
     if (styliticsRegion) {
       payload.body.region = styliticsRegion;

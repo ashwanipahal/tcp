@@ -149,6 +149,7 @@ class ModuleQ extends React.PureComponent {
       hideTabs,
       selectedColorProductId,
       showRelatedOutfitHeader,
+      source,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -201,6 +202,7 @@ class ModuleQ extends React.PureComponent {
               tabItems={divTabs}
               selectedColorProductId={selectedColorProductId}
               dataLocator={getLocator('moduleQ_cta_link')}
+              source={source}
             />
           </div>
         </Row>
@@ -262,6 +264,7 @@ ModuleQ.defaultProps = {
   selectedColorProductId: '',
   showRelatedOutfitHeader: null,
   isCompleteTheLook: false,
+  source: '',
 };
 
 ModuleQ.propTypes = {
@@ -302,6 +305,7 @@ ModuleQ.propTypes = {
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
   isCompleteTheLook: PropTypes.bool,
+  source: PropTypes.string,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);
