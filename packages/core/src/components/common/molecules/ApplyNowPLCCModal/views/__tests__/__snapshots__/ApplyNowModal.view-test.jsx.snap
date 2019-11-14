@@ -22,13 +22,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     ",
       [Function],
       ";
-    @media ",
-      [Function],
-      " {
-      height: ",
-      [Function],
-      ";
-    }
   }
 
   div.TCPModal__InnerContent {
@@ -188,6 +181,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   minHeight="646px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <div
     className="Modal__Content__Wrapper"
@@ -452,13 +446,6 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
     ",
       [Function],
       ";
-    @media ",
-      [Function],
-      " {
-      height: ",
-      [Function],
-      ";
-    }
   }
 
   div.TCPModal__InnerContent {
@@ -618,6 +605,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   minHeight="646px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <div
     className="Modal__Content__Wrapper"

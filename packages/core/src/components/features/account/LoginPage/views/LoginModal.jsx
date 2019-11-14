@@ -56,8 +56,9 @@ class OpenLoginModal extends React.Component<Props> {
         heading=""
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
-        maxWidth={variation === 'checkout' ? '616px' : '450px'}
-        heightConfig={{ minHeight: '550px', maxHeight: '600px' }}
+        widthConfig={{ small: '100%', medium: '450px', large: '616px' }}
+        heightConfig={{ minHeight: '550px' }}
+        standardHeight
       >
         {component === 'login' ? (
           <LoginPageContainer
