@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { BillingPaymentForm } from '../views/BillingPaymentForm.view';
+import { onAddNewCreditCardClick } from '../views/BillingPaymentForm.util';
 
 const card = [
   {
@@ -181,9 +182,8 @@ describe('ButtonList component', () => {
   it('renders correctly with method onAddNewCreditCardClick', () => {
     const component = shallow(<BillingPaymentForm {...props} />);
     const instance = component.instance();
-    const spyOnAddNewCreditCardClick = jest.spyOn(instance, 'onAddNewCreditCardClick');
-    instance.onAddNewCreditCardClick();
-    expect(spyOnAddNewCreditCardClick).toHaveBeenCalled();
+    onAddNewCreditCardClick(instance);
+    expect(component.state('addNewCCState')).toBe(true);
   });
   it('renders correctly with method getCreditCardDropDown', () => {
     const component = shallow(<BillingPaymentForm {...props} />);

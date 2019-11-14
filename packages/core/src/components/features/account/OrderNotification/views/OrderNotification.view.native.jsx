@@ -30,94 +30,98 @@ const navigateToOrderDetail = (orderNumber, navigation, orderLabels) => {
 };
 const OrderNotification = ({ labels, orderLabels, order, navigation, separator }) => {
   return (
-    <MainContainer>
-      <Container
-        separator={separator}
-        spacingStyles="margin-left-MED margin-right-MED padding-top-LRG padding-bottom-LRG"
-      >
-        <BodyCopy
-          color="white"
-          fontSize="fs18"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          text={getLabelValue(
-            labels,
-            getOrderStatusForNotification(order.orderStatus),
-            'OrderNotification'
-          )}
-        />
-
-        <RowContainer spacingStyles="margin-top-SM">
-          <BodyCopy
-            color="white"
-            fontSize="fs12"
-            fontFamily="secondary"
-            text={getLabelValue(labels, 'lbl_global_order', 'OrderNotification')}
-          />
-
-          <Anchor
-            fontSizeVariation="medium"
-            underlineWhite
-            noLink
-            color="white"
-            anchorVariation="white"
-            fontSize="fs12"
-            dataLocator="order-number-value"
-            fontFamily="secondary"
-            onPress={() => navigateToOrderDetail(order.orderNumber, navigation, orderLabels)}
-            text={order.orderNumber}
-          />
-
-          <ViewWithSpacing spacingStyles="margin-left-LRG">
-            <Anchor
-              fontSize="fs12"
-              fontSizeVariation="medium"
-              anchorVariation="white"
-              underlineWhite
-              onPress={() => navigateToOrderDetail(order.orderNumber, navigation, orderLabels)}
-              text={getLabelValue(labels, 'lbl_global_viewOrderDetails', 'OrderNotification')}
-            />
-          </ViewWithSpacing>
-        </RowContainer>
-        {order.orderTrackingUrl && !order.isBOSSOrder && (
-          <RowContainer spacingStyles="margin-top-SM">
+    <>
+      {order && (
+        <MainContainer>
+          <Container
+            separator={separator}
+            spacingStyles="margin-left-MED margin-right-MED padding-top-LRG padding-bottom-LRG"
+          >
             <BodyCopy
               color="white"
-              fontSize="fs12"
+              fontSize="fs18"
+              fontWeight="extrabold"
               fontFamily="secondary"
-              text={getLabelValue(labels, 'lbl_global_tracking', 'OrderNotification')}
+              text={getLabelValue(
+                labels,
+                getOrderStatusForNotification(order.orderStatus),
+                'OrderNotification'
+              )}
             />
-            {order.orderTrackingUrl !== constants.STATUS_CONSTANTS.NA ? (
-              <Anchor
-                fontSizeVariation="medium"
-                anchorVariation="white"
-                fontSize="fs12"
-                underlineWhite
-                onPress={() => UrlHandler(order.trackingUrl)}
-                text={order.orderTracking}
-              />
-            ) : (
+
+            <RowContainer spacingStyles="margin-top-SM">
               <BodyCopy
                 color="white"
                 fontSize="fs12"
                 fontFamily="secondary"
-                text={order.orderTracking}
+                text={getLabelValue(labels, 'lbl_global_order', 'OrderNotification')}
               />
-            )}
-          </RowContainer>
-        )}
 
-        <BodyCopyWithSpacing
-          spacingStyles="margin-top-SM"
-          color="white"
-          fontSize="fs12"
-          fontFamily="secondary"
-          text={`${getLabelValue(labels, 'lbl_global_orderedOn', 'OrderNotification')} ${
-            order.orderDate
-          }`}
-        />
-      </Container>
-    </MainContainer>
+              <Anchor
+                fontSizeVariation="medium"
+                underlineWhite
+                noLink
+                color="white"
+                anchorVariation="white"
+                fontSize="fs12"
+                dataLocator="order-number-value"
+                fontFamily="secondary"
+                onPress={() => navigateToOrderDetail(order.orderNumber, navigation, orderLabels)}
+                text={order.orderNumber}
+              />
+
+              <ViewWithSpacing spacingStyles="margin-left-LRG">
+                <Anchor
+                  fontSize="fs12"
+                  fontSizeVariation="medium"
+                  anchorVariation="white"
+                  underlineWhite
+                  onPress={() => navigateToOrderDetail(order.orderNumber, navigation, orderLabels)}
+                  text={getLabelValue(labels, 'lbl_global_viewOrderDetails', 'OrderNotification')}
+                />
+              </ViewWithSpacing>
+            </RowContainer>
+            {order.orderTrackingUrl && !order.isBOSSOrder && (
+              <RowContainer spacingStyles="margin-top-SM">
+                <BodyCopy
+                  color="white"
+                  fontSize="fs12"
+                  fontFamily="secondary"
+                  text={getLabelValue(labels, 'lbl_global_tracking', 'OrderNotification')}
+                />
+                {order.orderTrackingUrl !== constants.STATUS_CONSTANTS.NA ? (
+                  <Anchor
+                    fontSizeVariation="medium"
+                    anchorVariation="white"
+                    fontSize="fs12"
+                    underlineWhite
+                    onPress={() => UrlHandler(order.trackingUrl)}
+                    text={order.orderTracking}
+                  />
+                ) : (
+                  <BodyCopy
+                    color="white"
+                    fontSize="fs12"
+                    fontFamily="secondary"
+                    text={order.orderTracking}
+                  />
+                )}
+              </RowContainer>
+            )}
+
+            <BodyCopyWithSpacing
+              spacingStyles="margin-top-SM"
+              color="white"
+              fontSize="fs12"
+              fontFamily="secondary"
+              text={`${getLabelValue(labels, 'lbl_global_orderedOn', 'OrderNotification')} ${
+                order.orderDate
+              }`}
+            />
+          </Container>
+        </MainContainer>
+      )}
+    </>
   );
 };
 OrderNotification.propTypes = {
