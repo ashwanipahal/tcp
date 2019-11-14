@@ -44,16 +44,18 @@ exports[`JeanModule component should default variant correctly 1`] = `
             "breakpoint": 767,
             "settings": Object {
               "arrows": false,
+              "slidesToScroll": 2.5,
               "slidesToShow": 2.5,
-              "swipeToSlide": true,
+              "swipeToSlide": false,
             },
           },
           Object {
             "breakpoint": 1199,
             "settings": Object {
               "arrows": false,
+              "slidesToScroll": 4.25,
               "slidesToShow": 4.25,
-              "swipeToSlide": true,
+              "swipeToSlide": false,
             },
           },
         ],

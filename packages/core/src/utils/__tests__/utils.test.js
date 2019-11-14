@@ -364,14 +364,14 @@ describe('getOrderStatusForNotification', () => {
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_CANCELLED)).toEqual(
       'lbl_global_yourOrderWasCanceled'
     );
-    expect(
-      getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_CONTACT_CUSTOMER_SERVICE)
-    ).toEqual('lbl_global_yourOrderWasReceived');
+    expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.LBL_CallNeeded)).toEqual(
+      'lbl_orders_statusOrderReceived'
+    );
     expect(
       getOrderStatusForNotification(constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP)
     ).toEqual('lbl_global_yourOrderWasPickedUp');
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_IN_PROCESS)).toEqual(
-      'lbl_global_yourOrderWasReceived'
+      'lbl_orders_statusOrderReceived'
     );
   });
   it('status Not Matched', () => {

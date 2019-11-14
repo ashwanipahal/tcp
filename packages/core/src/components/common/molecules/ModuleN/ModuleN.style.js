@@ -56,6 +56,12 @@ export default css`
     }
   }
 
+  .percentage_inline_promo {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-left: 10px;
+    }
+  }
+
   .promo-link {
     color: ${props => props.theme.colorPalette.white};
   }

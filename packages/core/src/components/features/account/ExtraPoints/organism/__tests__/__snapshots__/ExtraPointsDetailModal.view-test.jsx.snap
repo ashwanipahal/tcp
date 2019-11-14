@@ -63,7 +63,13 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
       component="div"
       data-locator="earnPointsModal_undefined_shortTitle"
       fontFamily="secondary"
-      fontSize="fs22"
+      fontSize={
+        Array [
+          "fs18",
+          "fs22",
+          "fs22",
+        ]
+      }
       fontWeight="extrabold"
       letterSpacing="normal"
       lineHeight="normal"
@@ -76,7 +82,13 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
       component="div"
       data-locator="earnPointsModal_undefined_ShortDesc"
       fontFamily="secondary"
-      fontSize="fs22"
+      fontSize={
+        Array [
+          "fs14",
+          "fs22",
+          "fs22",
+        ]
+      }
       fontWeight="semibold"
       letterSpacing="normal"
       lineHeight="normal"
@@ -102,7 +114,7 @@ exports[`Extra Points Details Modal should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="button"
         asPath="/account/profile"
-        buttonVariation="fixed-width"
+        buttonVariation="variable-width"
         centered={true}
         className="elem-mb-SM"
         dataLocator="earnPointsModal_undefined_activityCta"

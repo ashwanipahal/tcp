@@ -287,7 +287,7 @@ export class ModuleM extends React.PureComponent {
    *  Returns type of grid item
    */
   getProductImageList = (flexbox, list) =>
-    flexbox ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
+    parseInt(flexbox, 10) ? this.getProductImageFlex(list) : this.getProductImageGrid(list);
 
   onTabChange = (id, imageList, linkClass) => {
     this.setState({
