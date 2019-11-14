@@ -107,13 +107,17 @@ class ShippingForm extends React.Component {
     this.checkPropsOnMoreUpdation(prevProps);
   };
 
+  closeEditingMode = () => {
+    this.setState({ isEditing: false });
+  };
+
   checkPropsOnMoreUpdation = prevProps => {
     const { dispatch, defaultAddressId } = this.props;
     const { isEditingMode, isEditing } = this.state;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
     if (prevDefaultAddressId && defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-      this.setState({ isEditing: false });
+      this.closeEditingMode();
     }
     if (!isEditing && isEditingMode) {
       this.setState({ isEditingMode: false });
@@ -314,6 +318,7 @@ class ShippingForm extends React.Component {
               addNewShippingAddress={addNewShippingAddress}
               shippingAddress={shippingAddress}
               labels={labels}
+              afterAddressUpdate={this.closeEditingMode}
               setDefaultAddressId={setDefaultAddressId}
               syncErrorsObject={syncErrorsObject}
               errorMessageRef={this.editShippingErrorRef}
