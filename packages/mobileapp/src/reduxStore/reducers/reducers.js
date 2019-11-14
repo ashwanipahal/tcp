@@ -3,6 +3,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { persistReducer } from 'redux-persist';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
+import LoaderReducer from '@tcp/core/src/components/common/molecules/Loader/container/Loader.reducer';
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
@@ -105,6 +106,7 @@ import {
   STORE_LOCATOR_REDUCER_KEY,
   APPLY_NOW_MODAL_REDUCER_KEY,
   APPLY_PLCC_REDUCER_KEY,
+  LOADER_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
   SOCIAL_REDUCER_KEY,
   CONFIRMATION_REDUCER_KEY,
@@ -190,6 +192,7 @@ const rootReducer = combineReducers({
   [PRODUCT_LISTING_REDUCER_KEY]: filteredProductListingReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: filteredProductDetailReducer,
   [QUICK_VIEW_REDUCER_KEY]: QuickViewReducer,
+  [LOADER_REDUCER_KEY]: LoaderReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,

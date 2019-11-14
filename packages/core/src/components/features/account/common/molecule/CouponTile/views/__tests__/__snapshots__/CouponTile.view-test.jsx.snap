@@ -18,7 +18,7 @@ exports[`CouponTile Component should render correctly 1`] = `
     coupon={Object {}}
   />
   <Styled(BodyCopy)
-    className="elem-pt-XS"
+    className="elem-pt-XXXS elem-mt-XXS"
     color="text.primary"
     component="div"
     fontFamily="primary"
