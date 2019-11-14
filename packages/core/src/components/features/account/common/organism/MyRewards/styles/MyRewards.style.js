@@ -44,8 +44,12 @@ const styles = css`
     }
   }
 
-  .anchor-wrapper {
-    text-align: center;
+  .anchor-wrapper-left {
+    text-align: right;
+  }
+
+  .anchor-wrapper-right {
+    text-align: left;
   }
 
   .rewards-container {

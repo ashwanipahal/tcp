@@ -103,38 +103,50 @@ const MyRewards = ({
             ))}
         </Col>
         {showLink && (
-          <Col
-            colSize={{
-              small: 6,
-              large: 12,
-              medium: 8,
-            }}
-            className="anchor-wrapper"
-          >
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              noLink
-              href="https://www.childrensplace.com/us/content/myplace-rewards-page"
-              anchorVariation="primary"
-              dataLocator="my-rewards-program-details"
-              target="_blank"
+          <>
+            <Col
+              colSize={{
+                small: 3,
+                large: 6,
+                medium: 4,
+              }}
+              className="anchor-wrapper-left"
             >
-              {getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
-            </Anchor>
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              noLink
-              href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
-              anchorVariation="primary"
-              dataLocator="my-rewards-tnc"
-              className="elem-ml-XXL"
-              target="_self"
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                noLink
+                href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+                anchorVariation="primary"
+                dataLocator="my-rewards-program-details"
+                className="elem-mr-SM"
+                target="_blank"
+              >
+                {getLabelValue(labels, 'lbl_my_rewards_program_details', 'placeRewards')}
+              </Anchor>
+            </Col>
+            <Col
+              colSize={{
+                small: 3,
+                large: 6,
+                medium: 4,
+              }}
+              className="anchor-wrapper-right"
             >
-              {getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
-            </Anchor>
-          </Col>
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                noLink
+                href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+                anchorVariation="primary"
+                dataLocator="my-rewards-tnc"
+                className="elem-ml-SM"
+                target="_self"
+              >
+                {getLabelValue(labels, 'lbl_common_tnc', 'placeRewards')}
+              </Anchor>
+            </Col>
+          </>
         )}
       </Row>
     </div>
