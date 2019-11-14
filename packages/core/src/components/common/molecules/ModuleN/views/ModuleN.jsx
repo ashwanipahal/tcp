@@ -30,7 +30,10 @@ const ModuleN = props => {
   const { className, ctaItems, headerText, promoBanner, ctaType, expandableTitle } = props;
 
   const buttonListProps = getButtonListVariationProps(ctaType);
-  const dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
+  let dualVariation = null;
+  if (ctaType === 'stackedCTAButtonsExpandable' || ctaType === 'CTAButtonCarouselExpandable') {
+    dualVariation = ctaItems.length < 3 ? null : buttonListProps.dualVariation;
+  }
   const mappedPromoBanner = getMappedPromoBanner(promoBanner);
 
   return (
