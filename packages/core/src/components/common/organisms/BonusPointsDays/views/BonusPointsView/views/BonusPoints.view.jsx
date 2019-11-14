@@ -51,6 +51,15 @@ class BonusPointsView extends React.Component {
     this.setState({ openModalState: !openModalState });
   };
 
+  /**
+   * @summary - check if view is READ and Bonus Points Days Data available
+   * @param {string} - READ/EDIT mode
+   * @param {Object} - Bonus Data Object
+   */
+  isBonusPointDaysAvailable = ({ view, bonusData }) => {
+    return view === constants.VIEWS.READ && bonusData && bonusData.availableBonusPointDays;
+  };
+
   render() {
     const {
       labels,
@@ -73,7 +82,9 @@ class BonusPointsView extends React.Component {
           <div
             className={`${
               showAccordian ? 'bonusPointsDaysWrapperAccordian' : 'bonusPointsDaysWrapper'
-            } elem-mb-MED ${className}`}
+            } elem-mb-MED ${className} ${
+              this.isBonusPointDaysAvailable(view, bonusData) ? 'bordered-top' : ''
+            }`}
           >
             {view === constants.VIEWS.READ && (
               <BonusPointsReadSection

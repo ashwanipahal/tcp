@@ -1,21 +1,13 @@
 import styled from 'styled-components/native';
 
-const GuestBillingFormWrapper = styled.View`
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+const PaymentMethodHeader = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-const applyPositionClassStyle = props => {
-  if (props.isPayPalWebViewEnable) {
-    return `
-    top: 0px;
-    position: absolute;
-    `;
-  }
-  return 'position: relative;';
-};
-
-export const GuestBillingConatiner = styled.View`
-  ${applyPositionClassStyle}
+const PayPalTextContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
-export default GuestBillingFormWrapper;
+export { PaymentMethodHeader, PayPalTextContainer };

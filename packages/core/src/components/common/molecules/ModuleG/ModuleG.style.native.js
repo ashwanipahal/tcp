@@ -109,7 +109,6 @@ export const SHADOW = styled.View`
   shadow-color: ${props => props.theme.colorPalette.black};
   /* stylelint-disable-next-line */
   shadow-offset: 0px 0px;
-  elevation: 4;
   width: 55%;
   height: 520px;
   position: absolute;

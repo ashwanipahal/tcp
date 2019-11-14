@@ -41,7 +41,7 @@ exports[`SecondAppPeekABooView component test cases should match snapshot 1`] = 
   <AnimatedComponent
     source={
       Object {
-        "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
+        "testUri": "../../../src/assets/images/gymboree/gym-toggle.png",
       }
     }
     style={

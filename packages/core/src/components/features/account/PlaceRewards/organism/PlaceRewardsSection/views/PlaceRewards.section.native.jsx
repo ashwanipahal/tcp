@@ -24,7 +24,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
       <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         <StyledHeading>
           <BodyCopy
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs16"
             fontWeight="extrabold"
             text={getLabelValue(labels, 'ACC_LBL_PLACE_REWARDS_HEADING', 'placeRewards')}

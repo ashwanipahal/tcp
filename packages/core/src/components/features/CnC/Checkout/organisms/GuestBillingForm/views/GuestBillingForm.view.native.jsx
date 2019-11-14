@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, change } from 'redux-form';
+import { FormSection, reduxForm, change } from 'redux-form';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import AddNewCCForm from '../../AddNewCCForm';
@@ -8,11 +8,10 @@ import cvvInfo from '../../../molecules/CVVInfo';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CheckoutBillingAddress from '../../CheckoutBillingAddress';
 import CREDIT_CARD_CONSTANTS from '../../BillingPaymentForm/container/CreditCard.constants';
-import GuestBillingFormWrapper, {
-  GuestBillingConatiner,
-} from '../styles/GuestBillingForm.styles.native';
+import { PaymentMethodHeader, PayPalTextContainer } from '../styles/GuestBillingForm.styles.native';
 import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
+import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
 
 /**
@@ -127,11 +126,21 @@ class GuestBillingForm extends React.Component {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const isExpirationRequired = this.getExpirationRequiredFlag();
+    const {
+      PAYMENT_METHOD_CREDIT_CARD,
+      PAYMENT_METHOD_PAY_PAL,
+      PAYMENT_METHOD_VENMO,
+    } = CREDIT_CARD_CONSTANTS;
+    const paymentMethods = [
+      { id: PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
+      { id: PAYMENT_METHOD_PAY_PAL, displayName: labels.payPal },
+      { id: PAYMENT_METHOD_VENMO, displayName: labels.venmo },
+    ];
     return (
-      <GuestBillingConatiner isPayPalWebViewEnable={isPayPalWebViewEnable}>
-        <GuestBillingFormWrapper>
-          {!isPayPalWebViewEnable && !isPaymentDisabled && (
-            <>
+      <>
+        {!isPayPalWebViewEnable && !isPaymentDisabled && (
+          <>
+            <PaymentMethodHeader>
               <BodyCopy
                 mobileFontFamily="primary"
                 fontSize="fs26"
@@ -140,52 +149,74 @@ class GuestBillingForm extends React.Component {
                 className="elem-mb-XS elem-mt-MED"
                 text={labels.paymentMethod}
               />
-              <AddNewCCForm
-                cvvInfo={cvvInfo({ cvvCodeRichText })}
-                cardType={cardType}
-                cvvError={cvvError}
-                labels={labels}
-                formName="checkoutBilling"
-                isExpirationRequired={isExpirationRequired}
-                isGuest={isGuest}
+            </PaymentMethodHeader>
+            <FormSection name="shipmentMethods">
+              <PaymentMethods
+                paymentMethods={paymentMethods}
+                formName={CREDIT_CARD_CONSTANTS.GUEST_FORM_NAME}
+                selectedPaymentId={paymentMethodId}
                 dispatch={dispatch}
-                billingData={billingData}
-                creditFieldLabels={creditFieldLabels}
               />
-              <CheckoutBillingAddress
-                isGuest={isGuest}
-                orderHasShipping={orderHasShipping}
-                addressLabels={addressLabels}
-                dispatch={dispatch}
-                shippingAddress={shippingAddress}
-                isSameAsShippingChecked={isSameAsShippingChecked}
-                labels={labels}
-                billingData={billingData}
-                formName="checkoutBilling"
-              />
-            </>
-          )}
-          <CnCTemplate
-            navigation={navigation}
-            btnText={nextSubmitText}
-            routeToPage=""
-            onPress={handleSubmit(onSubmit)}
-            backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
-            onBackLinkPress={() =>
-              orderHasShipping
-                ? setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM)
-                : setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)
-            }
-            pageCategory="guestBilling"
-            showAccordian
-            isPayPalWebViewEnable={isPayPalWebViewEnable}
-            getPayPalSettings={getPayPalSettings}
-            showPayPalButton={
-              isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL
-            }
-          />
-        </GuestBillingFormWrapper>
-      </GuestBillingConatiner>
+            </FormSection>
+            {isPayPalEnabled && paymentMethodId === CREDIT_CARD_CONSTANTS.PAYMENT_METHOD_PAY_PAL ? (
+              <PayPalTextContainer>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  spacingStyles="margin-bottom-MED"
+                  color="gray.900"
+                  dataLocator="paymentMethodLbl"
+                  text={labels.payPalLongText}
+                />
+              </PayPalTextContainer>
+            ) : null}
+            {paymentMethodId === CONSTANTS.PAYMENT_METHOD_CREDIT_CARD ? (
+              <>
+                <AddNewCCForm
+                  cvvInfo={cvvInfo({ cvvCodeRichText })}
+                  cardType={cardType}
+                  cvvError={cvvError}
+                  labels={labels}
+                  formName="checkoutBilling"
+                  isExpirationRequired={isExpirationRequired}
+                  isGuest={isGuest}
+                  dispatch={dispatch}
+                  billingData={billingData}
+                  creditFieldLabels={creditFieldLabels}
+                />
+                <CheckoutBillingAddress
+                  isGuest={isGuest}
+                  orderHasShipping={orderHasShipping}
+                  addressLabels={addressLabels}
+                  dispatch={dispatch}
+                  shippingAddress={shippingAddress}
+                  isSameAsShippingChecked={isSameAsShippingChecked}
+                  labels={labels}
+                  billingData={billingData}
+                  formName="checkoutBilling"
+                />
+              </>
+            ) : null}
+          </>
+        )}
+        <CnCTemplate
+          navigation={navigation}
+          btnText={nextSubmitText}
+          routeToPage=""
+          onPress={handleSubmit(onSubmit)}
+          backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
+          onBackLinkPress={() =>
+            orderHasShipping
+              ? setCheckoutStage(CONSTANTS.SHIPPING_DEFAULT_PARAM)
+              : setCheckoutStage(CONSTANTS.PICKUP_DEFAULT_PARAM)
+          }
+          pageCategory="guestBilling"
+          showAccordian
+          getPayPalSettings={getPayPalSettings}
+          showPayPalButton={isPayPalEnabled && paymentMethodId === CONSTANTS.PAYMENT_METHOD_PAYPAL}
+          isPayPalWebViewEnable={isPayPalWebViewEnable}
+        />
+      </>
     );
   }
 }

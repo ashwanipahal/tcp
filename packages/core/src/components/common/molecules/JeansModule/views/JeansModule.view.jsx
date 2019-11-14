@@ -33,7 +33,7 @@ const CAROUSEL_OPTIONS = {
       breakpoint: parseInt(breakpoints.large, 10) - 1,
       settings: {
         slidesToShow: 4.25,
-        arrows: true,
+        arrows: false,
         swipeToSlide: true,
       },
     },
@@ -95,7 +95,7 @@ export class JeansModule extends PureComponent {
                         url: imageStyled[0].image.url,
                       }}
                     />
-                    <BodyCopy className="image-text" fontSize="fs12">
+                    <BodyCopy className="image-text" fontSize="fs18" fontWeight="extrabold">
                       {imageStyled[0].styled.text}
                     </BodyCopy>
                     <div className="overlapping-section">
@@ -145,6 +145,8 @@ export class JeansModule extends PureComponent {
                         to={singleCTAButton.url}
                         asPath={singleCTAButton.url}
                         dataLocator="dummy-datalocator"
+                        fontSizeVariation="large"
+                        fontFamily="secondary"
                       >
                         {singleCTAButton.text}
                       </Anchor>

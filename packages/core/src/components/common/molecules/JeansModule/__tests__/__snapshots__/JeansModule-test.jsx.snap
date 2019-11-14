@@ -51,7 +51,7 @@ exports[`JeanModule component should default variant correctly 1`] = `
           Object {
             "breakpoint": 1199,
             "settings": Object {
-              "arrows": true,
+              "arrows": false,
               "slidesToShow": 4.25,
               "swipeToSlide": true,
             },
@@ -87,8 +87,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
           color="text.primary"
           component="p"
           fontFamily="primary"
-          fontSize="fs12"
-          fontWeight="regular"
+          fontSize="fs18"
+          fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
           link={null}
@@ -249,6 +249,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
             asPath="/node/pdp"
             className="shop-now-link"
             dataLocator="dummy-datalocator"
+            fontFamily="secondary"
+            fontSizeVariation="large"
             to="/node/pdp"
           >
             SHOP NOW
@@ -279,8 +281,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
           color="text.primary"
           component="p"
           fontFamily="primary"
-          fontSize="fs12"
-          fontWeight="regular"
+          fontSize="fs18"
+          fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
           link={null}
@@ -441,6 +443,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
             asPath="/node/pdp"
             className="shop-now-link"
             dataLocator="dummy-datalocator"
+            fontFamily="secondary"
+            fontSizeVariation="large"
             to="/node/pdp"
           >
             SHOP NOW
@@ -471,8 +475,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
           color="text.primary"
           component="p"
           fontFamily="primary"
-          fontSize="fs12"
-          fontWeight="regular"
+          fontSize="fs18"
+          fontWeight="extrabold"
           letterSpacing="normal"
           lineHeight="normal"
           link={null}
@@ -633,6 +637,8 @@ exports[`JeanModule component should default variant correctly 1`] = `
             asPath="/node/pdp"
             className="shop-now-link"
             dataLocator="dummy-datalocator"
+            fontFamily="secondary"
+            fontSizeVariation="large"
             to="/node/pdp"
           >
             SHOP NOW

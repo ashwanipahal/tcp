@@ -10,8 +10,6 @@ const selectStyles = css`
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ${styleBottomSpacing};
     appearance: none;
     background: url(${downArrowIcon}) no-repeat right 0px bottom
       ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -28,7 +26,7 @@ const selectStyles = css`
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
-    padding: 0px 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding: ${styleBottomSpacing} 0 ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: 100%;
 
     ${props =>
@@ -52,8 +50,6 @@ const selectStyles = css`
     display: flex;
     flex-direction: row;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {

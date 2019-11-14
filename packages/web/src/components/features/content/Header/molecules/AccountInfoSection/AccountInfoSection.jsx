@@ -62,6 +62,9 @@ const AccountInfoSection = ({
         onLinkClick={onLinkClick}
         openOverlay={openOverlay}
         isDrawer
+        userName={userName}
+        userPoints={userPoints}
+        userRewards={userRewards}
       />
     </BodyCopy>
   );
