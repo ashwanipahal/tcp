@@ -93,7 +93,7 @@ export const PickupRadioButton = props => {
     >
       <BodyCopy as="div" className="promotional-banner">
         {PickStoreDetails(pickupBtnLabel)}
-        <PickupPromotionBanner bossBanner />
+        <PickupPromotionBanner bossBanner isPickupMobilePromotion />
       </BodyCopy>
       {isBossPickupButton && PickStoreBOSSExtraDetails(BossCtaProps)}
       {!isBossPickupButton && PickStoreBOPISExtraDetails(BopisCtaProps)}

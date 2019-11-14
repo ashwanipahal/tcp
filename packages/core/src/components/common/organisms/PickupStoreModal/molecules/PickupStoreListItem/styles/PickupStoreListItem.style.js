@@ -48,27 +48,6 @@ export default css`
         padding-left: 0;
       }
 
-      .promotional-banner .triangle-left {
-        margin-left: 5px;
-        position: absolute;
-        top: 19px;
-        left: 82px;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-bottom: 7px solid ${props => props.theme.colorPalette.yellow[500]};
-      }
-
-      .promotional-banner .promo-wrapper {
-        width: 100%;
-        max-width: 114px;
-        height: 20px;
-      }
-
-      .promotional-banner .richtextCss {
-        margin-right: auto;
-        margin-left: auto;
-      }
-
       .boss-extra-details {
         white-space: nowrap;
       }

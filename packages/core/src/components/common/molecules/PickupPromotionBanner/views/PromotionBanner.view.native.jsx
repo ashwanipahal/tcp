@@ -36,7 +36,7 @@ export const modifiedBannerText = (label, props) => {
 };
 
 const PromotionBanner = props => {
-  const { labels, fullBleed, isPickUpBossEnabled } = props;
+  const { labels, fullBleed, isPickupMobilePromotion } = props;
   return (
     <>
       {fullBleed ? (
@@ -51,37 +51,19 @@ const PromotionBanner = props => {
           />
         </FullBleedBannerStyle>
       ) : (
-        <>
-          {!isPickUpBossEnabled ? (
-            <TriangleBanner>
-              <LeftTriangle />
-              <TriangleBannerText>
-                <RichText
-                  source={{
-                    html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${modifiedBannerText(
-                      labels.lbl_banner_boss_text,
-                      props
-                    )}</body></html>`,
-                  }}
-                />
-              </TriangleBannerText>
-            </TriangleBanner>
-          ) : (
-            <TriangleBanner>
-              <TopTriangle />
-              <TriangleBannerText>
-                <RichText
-                  source={{
-                    html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${modifiedBannerText(
-                      labels.lbl_banner_boss_text,
-                      props
-                    )}</body></html>`,
-                  }}
-                />
-              </TriangleBannerText>
-            </TriangleBanner>
-          )}
-        </>
+        <TriangleBanner>
+          {!isPickupMobilePromotion ? <LeftTriangle /> : <TopTriangle />}
+          <TriangleBannerText>
+            <RichText
+              source={{
+                html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${modifiedBannerText(
+                  labels.lbl_banner_boss_text,
+                  props
+                )}</body></html>`,
+              }}
+            />
+          </TriangleBannerText>
+        </TriangleBanner>
       )}
     </>
   );
@@ -90,12 +72,12 @@ const PromotionBanner = props => {
 PromotionBanner.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   fullBleed: PropTypes.bool,
-  isPickUpBossEnabled: PropTypes.bool,
+  isPickupMobilePromotion: PropTypes.bool,
 };
 
 PromotionBanner.defaultProps = {
   fullBleed: false,
-  isPickUpBossEnabled: false,
+  isPickupMobilePromotion: false,
 };
 
 export default withStyles(PromotionBanner);

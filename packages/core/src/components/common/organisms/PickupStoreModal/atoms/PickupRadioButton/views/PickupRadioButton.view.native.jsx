@@ -76,7 +76,7 @@ export const PickupRadioButton = props => {
         }}
         labelStyle={RadioButtonLabelStyle}
       />
-      <PickupPromotionBanner bossBanner isPickUpBossEnabled />
+      <PickupPromotionBanner bossBanner isPickupMobilePromotion />
       {isBossPickupButton && PickStoreBOSSExtraDetails(BossCtaProps)}
       {!isBossPickupButton && PickStoreBOPISExtraDetails(BopisCtaProps)}
     </>
