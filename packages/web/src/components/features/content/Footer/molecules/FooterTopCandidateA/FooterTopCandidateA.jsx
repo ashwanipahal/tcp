@@ -91,6 +91,8 @@ class FooterTopCandidateA extends React.PureComponent {
                 submitButton: 'email_submit_btn',
                 inputField: 'enter_email_text_field',
                 errorDataLocator: 'email_error_message',
+                checkBox_gym: 'check_box_gym_opt_in',
+                checkBox_tcp: 'check_box_tcp_opt_in',
               }}
               fieldName={emailSignupFieldName}
             />
@@ -140,6 +142,8 @@ class FooterTopCandidateA extends React.PureComponent {
                 submitButton: 'sms_submit_btn',
                 inputField: 'sms_field',
                 errorDataLocator: 'sms_error_message',
+                checkBox_gym: 'sms_gym_opt_in',
+                checkBox_tcp: 'sms_tcp_opt_in',
               }}
             />
 
@@ -268,6 +272,8 @@ FooterTopCandidateA.propTypes = {
     lbl_SignUp_validationErrorLabel: PropTypes.string,
     lbl_SignUp_termsTextLabel: PropTypes.string,
     lbl_SignUp_submitButtonLabel: PropTypes.string,
+    lbl_SignUp_gymSignUpLabel: PropTypes.string,
+    lbl_SignUp_tcpSignUpLabel: PropTypes.string,
   }),
   smsSignupLabels: PropTypes.shape({
     lbl_SignUp_placeholderText: PropTypes.string,
@@ -320,6 +326,8 @@ FooterTopCandidateA.defaultProps = {
     lbl_SignUp_validationErrorLabel: '',
     lbl_SignUp_termsTextLabel: '',
     lbl_SignUp_submitButtonLabel: '',
+    lbl_SignUp_gymSignUpLabel: '',
+    lbl_SignUp_tcpSignUpLabel: '',
   },
   smsSignupLabels: {
     lbl_SignUp_placeholderText: '',
