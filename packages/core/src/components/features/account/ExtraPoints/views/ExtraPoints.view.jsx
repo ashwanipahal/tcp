@@ -25,7 +25,7 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
   return earnedPointsNotification && earnedPointsNotification.length ? (
     <Notification
       status="info"
-      className="elem-mt-MED"
+      className="elem-mt-MED notification-wrapper"
       alt={getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_imageAlt')}
     >
       <BodyCopy
@@ -33,7 +33,7 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
         fontSize="fs14"
         fontWeight="extrabold"
         fontFamily="secondary"
-        className="elem-mr-LRG"
+        className="elem-mr-LRG notification-text"
         dataLocator="earnextrapoints-notificationdate"
       >
         {earnedPointsNotification[0].transactionDate}
@@ -44,6 +44,7 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
         fontWeight="extrabold"
         fontFamily="secondary"
         dataLocator="earnextrapoints-notificationtext"
+        className="notification-text"
       >
         {infoMessage}
       </BodyCopy>
@@ -54,7 +55,7 @@ const getNotificationMarkup = (earnedPointsNotification, infoMessage, earnExtraP
         to={internalEndpoints.pointsHistoryPage.link}
         anchorVariation="primary"
         dataLocator="view-points-history"
-        className="elem-ml-XS"
+        className="notification-text-link"
       >
         {getLabelValue(earnExtraPointsLabels, 'lbl_earnExtraPoints_view_points_history')}
       </Anchor>

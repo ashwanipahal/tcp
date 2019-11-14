@@ -216,6 +216,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       showAddToBagCTA,
       alternateSizes,
       isPickup,
+      isBundleProduct,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -237,7 +238,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
-          <Col colSize={{ small: 10, medium: 10, large: 10 }}>
+          <Col colSize={{ small: 12, medium: 12, large: 12 }}>
             <div className="select-value-wrapper">
               {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
               {this.renderFitList(fitList, fitTitle)}
@@ -281,13 +282,13 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 </Button>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
-              {this.renderOutfitButton()}
+              {!isBundleProduct && this.renderOutfitButton()}
             </Col>
             <Col
               colSize={{ small: 12, medium: 12, large: 12 }}
               className="outfit-button-wrapper-desktop"
             >
-              {this.renderOutfitButton()}
+              {!isBundleProduct && this.renderOutfitButton()}
               <div className="button-wrapper">
                 <Button
                   type="submit"
