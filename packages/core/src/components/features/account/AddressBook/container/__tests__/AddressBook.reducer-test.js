@@ -144,6 +144,26 @@ describe('Address List reducer', () => {
       })
     );
   });
+
+  it('should clear ErrorState', () => {
+    // const error = fromJS({
+    //   statusCode: 400,
+    //   message: 'Object not found',
+    // });
+    const initialState = fromJS({
+      showUpdatedNotificationOnModal: 'error',
+    });
+    expect(
+      AddressBookReducer(initialState, {
+        type: ADDRESS_BOOK_CONSTANTS.CLEAR_ERROR_STATE,
+      })
+    ).toEqual(
+      fromJS({
+        showUpdatedNotificationOnModal: null,
+      })
+    );
+  });
+
   it('should handle modal mounted state', () => {
     const payload = {
       state: true,
