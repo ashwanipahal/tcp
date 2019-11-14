@@ -9,6 +9,8 @@ describe('InputCheckbox component', () => {
       marginBottom: 0,
       borderWidth: 0.65,
       borderColor: '#ff0000',
+      marginLeft: 0,
+      marginRight: 0,
     };
     const component = shallow(<LineCompVanilla {...props} />);
     expect(component).toMatchSnapshot();

@@ -59,7 +59,10 @@ import {
 import getBopisInventoryDetails from '../../../../../services/abstractors/common/bopisInventory/bopisInventory';
 import { filterBopisProducts, updateBopisInventory } from '../../CartItemTile/utils/utils';
 import { getUserInfoSaga } from '../../../account/User/container/User.saga';
-import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
+import {
+  handleServerSideErrorAPI,
+  getRouteToCheckoutStage,
+} from '../../Checkout/container/Checkout.saga.util';
 import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
 
 const { getOrderPointsRecalcFlag } = utility;
@@ -167,6 +170,8 @@ function* updateBopisItems(res) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
+    yield put(setLoaderState(false));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
     const { payload: { isCartNotRequired, updateSmsInfo, excludeCartItems = true } = {} } = payload;
@@ -174,6 +179,7 @@ export function* getCartDataSaga(payload = {}) {
     const recalcOrderPoints = getOrderPointsRecalcFlag(recalcRewards, recalcOrderPointsInterval);
     const isRadialInvEnabled = yield select(getIsRadialInventoryEnabled);
     const cartProps = { excludeCartItems, recalcRewards: recalcOrderPoints, isRadialInvEnabled };
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield call(getCartData, {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       ...cartProps,
@@ -256,27 +262,24 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
     const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
-    if (hasVenmoReviewPage || isExpressCheckoutEnabled) {
-      utility.routeToPage(CHECKOUT_ROUTES.reviewPage, { recalc });
-      return;
-    }
-    if (orderHasPickup) {
-      utility.routeToPage(CHECKOUT_ROUTES.pickupPage, { recalc });
-    } else {
-      utility.routeToPage(CHECKOUT_ROUTES.shippingPage, { recalc });
-    }
+    yield call(
+      getRouteToCheckoutStage,
+      { recalc },
+      hasVenmoReviewPage || isExpressCheckoutEnabled,
+      true
+    );
   } else {
-    utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout, { recalc });
+    utility.routeToPage(CHECKOUT_ROUTES.internationalCheckout);
   }
 }
 
 export function* checkoutCart(recalc, navigation, closeModal, navigationActions) {
   const isVenmoPaymentInProgress = yield select(checkoutSelectors.isVenmoPaymentInProgress);
   const isLoggedIn = yield select(getUserLoggedInState);
-  yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
-  yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
-  yield put(setLoaderState(false));
   if (!isLoggedIn && !isVenmoPaymentInProgress) {
+    yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
+    yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setLoaderState(false));
     return yield put(setCheckoutModalMountedState({ state: true }));
   }
   return yield call(routeForCartCheckout, recalc, navigation, closeModal, navigationActions);
@@ -423,6 +426,7 @@ export function* authorizePayPalPayment({ payload: { navigation, navigationActio
 // }
 
 export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
+  yield put(setLoaderState(true));
   const unqualifiedItemsIds = yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
   if (unqualifiedItemsIds && unqualifiedItemsIds.size > 0) {
     yield call(removeItem, unqualifiedItemsIds);

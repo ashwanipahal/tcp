@@ -44,6 +44,7 @@ describe('ApplyCardReducer', () => {
     expect(ApplyCardReducer(undefined, {})).toEqual({
       contact_information_disclaimer: '',
       pre_screen_code: '',
+      plccEligible: false,
     });
   });
 });

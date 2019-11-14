@@ -222,6 +222,7 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
     >
       <Styled(GiftWrappingDisplay)
         displayName="N/A"
+        isExpressCheckout={true}
         labels={
           Object {
             "lbl_review_sectionShippingMethodTitle": "title",

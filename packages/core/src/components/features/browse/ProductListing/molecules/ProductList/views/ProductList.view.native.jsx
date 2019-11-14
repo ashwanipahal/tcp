@@ -121,7 +121,6 @@ class ProductList extends React.PureComponent {
       onrenderItemCountView,
     } = this.props;
     const { item, index } = itemData;
-
     const { colorsMap, productInfo } = item;
     const colorProductId = colorsMap && colorsMap[0].colorProductId;
 
@@ -248,8 +247,9 @@ class ProductList extends React.PureComponent {
    * @desc This is render product list
    */
   renderList = () => {
-    const { products, isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
-
+    const { isLoggedIn, labelsLogin, AddToFavoriteErrorMsg } = this.props;
+    let { products } = this.props;
+    products = products.length > 0 && [products[0], products[1], ...products];
     const { logIn } = labelsLogin;
     const { showModal, favorites } = this.state;
     return (

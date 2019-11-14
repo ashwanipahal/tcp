@@ -76,10 +76,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -106,7 +102,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -134,8 +132,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -254,10 +250,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -284,7 +276,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -312,8 +306,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -508,10 +500,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -538,7 +526,9 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -566,8 +556,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {

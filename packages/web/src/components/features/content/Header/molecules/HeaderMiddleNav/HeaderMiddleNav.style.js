@@ -91,6 +91,7 @@ const style = css`
     transform: rotate(180deg);
     transition: transform 0.15s linear;
   }
+
   .account-info {
     font-family: ${props => props.theme.typography.fonts.secondary};
     display: none;

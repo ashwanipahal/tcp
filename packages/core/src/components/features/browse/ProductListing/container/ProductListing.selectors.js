@@ -64,6 +64,11 @@ export const getBreadCrumbTrail = createSelector(
   products => products && products.breadCrumbTrail
 );
 
+export const getSelectedFilter = createSelector(
+  getProductListingState,
+  products => products && products.selectedFilter
+);
+
 export const getProductsSelect = createSelector(
   getProductListingState,
   products => products && products.loadedProductsPages && products.loadedProductsPages[0]
@@ -267,7 +272,6 @@ export const getPLPTopPromos = state => {
       topPromos.map(promoItem => {
         return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
       })) ||
-    {}
+    []
   );
-  // return state.ProductListing.bannerInfo.val.top;
 };

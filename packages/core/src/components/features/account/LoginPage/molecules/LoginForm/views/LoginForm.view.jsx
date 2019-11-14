@@ -15,7 +15,8 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
-import styles from '../styles/LoginForm.styles';
+import styles, { customSpinnerStyle } from '../styles/LoginForm.styles';
+import SpinnerOverlay from '../../../../../../common/atoms/SpinnerOverlay';
 
 class LoginForm extends React.PureComponent<Props> {
   showForgotPasswordForm = e => {
@@ -31,6 +32,11 @@ class LoginForm extends React.PureComponent<Props> {
     if (loginErrorMessage) {
       resetLoginState();
     }
+  };
+
+  loginLoader = () => {
+    const { isLoading } = this.props;
+    return <>{isLoading ? <SpinnerOverlay inheritedStyles={customSpinnerStyle} /> : null}</>;
   };
 
   render() {
@@ -166,7 +172,7 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {getLabelValue(labels, 'lbl_login_loginCTA', 'login')}
             </Button>
-            {variation === 'checkout' && (
+            {variation === 'checkout' && !isRememberedUser && (
               <ClickTracker name="checkout_as_guest">
                 <Button
                   fill="WHITE"
@@ -184,7 +190,7 @@ class LoginForm extends React.PureComponent<Props> {
             {!isRememberedUser && (
               <Anchor
                 underline
-                fontSizeVariation="xlarge"
+                fontSizeVariation="large"
                 anchorVariation="primary"
                 dataLocator="login-forgotpasswordlnk"
                 onClick={this.showForgotPasswordForm}
@@ -194,6 +200,7 @@ class LoginForm extends React.PureComponent<Props> {
             )}
           </BodyCopy>
         </form>
+        {this.loginLoader}
       </div>
     );
   }

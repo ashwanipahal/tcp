@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as scopeTab from 'react-modal/lib/helpers/scopeTab';
 import { Modal } from '@tcp/core/src/components/common/molecules';
-import { getViewportInfo, isIosWeb, isAndroidWeb, isCanada } from '@tcp/core/src/utils';
+import { getViewportInfo, isMobileWeb, isCanada } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
 
@@ -36,7 +36,7 @@ class OverlayModal extends React.Component {
     this.bodyContainer = bodyContainer;
     const [body] = document.getElementsByTagName('body');
     this.body = body;
-    this.isMobile = getViewportInfo().isMobile && (isIosWeb() || isAndroidWeb());
+    this.isMobile = getViewportInfo().isMobile && isMobileWeb();
     this.handleWindowClick = this.handleWindowClick.bind(this);
     this.keydownInOverlay = this.keydownInOverlay.bind(this);
   }
@@ -67,6 +67,8 @@ class OverlayModal extends React.Component {
     if (nextCondensedState !== prevCondensedState) {
       this.getCustomStyles({ styleModal: true });
     }
+
+    this.isMobile = getViewportInfo().isMobile && isMobileWeb();
 
     if (!this.isMobile) {
       modal.addEventListener('keydown', this.keydownInOverlay);
@@ -145,9 +147,12 @@ class OverlayModal extends React.Component {
   };
 
   getCustomStyles = ({ styleModal }) => {
-    const { component } = this.props;
+    const { component, showCondensedHeader } = this.props;
     if (this.isMobile && component !== 'accountDrawer') return;
-    const comp = document.getElementById(component);
+    let comp = document.getElementById(component);
+    if (component === 'accountDrawer' && showCondensedHeader) {
+      comp = document.getElementById('condensedLogin');
+    }
     /* istanbul ignore else */
     if (comp && window) {
       const compRectBoundingY = comp.getBoundingClientRect().y + window.scrollY;

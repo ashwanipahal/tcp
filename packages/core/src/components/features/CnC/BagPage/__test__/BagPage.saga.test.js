@@ -53,6 +53,9 @@ describe('Cart Item saga', () => {
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
+    getCartDataSagaGen.next();
+    getCartDataSagaGen.next();
+    getCartDataSagaGen.next();
 
     const res = {
       orderDetails: {
@@ -121,10 +124,9 @@ describe('Bag page Saga', () => {
 describe('removeUnqualifiedItemsAndCheckout Saga', () => {
   it('removeUnqualifiedItemsAndCheckout effect', () => {
     const generator = removeUnqualifiedItemsAndCheckout();
-
-    let takeLatestDescriptor = generator.next().value;
+    let takeLatestDescriptor = generator.next();
+    takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(select(BAG_SELECTORS.getUnqualifiedItemsIds));
-
     takeLatestDescriptor = generator.next();
     takeLatestDescriptor = generator.next().value;
     expect(takeLatestDescriptor).toEqual(call(checkoutCart, true, undefined));

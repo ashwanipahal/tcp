@@ -1,5 +1,6 @@
 const buildQuery = ({ brand, country, channel, lang }) => `
   navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
+    errorMessage
     categoryContent {
       description
       catgroupId
@@ -64,6 +65,10 @@ const buildQuery = ({ brand, country, channel, lang }) => `
               textItems {
                 text
                 style
+              }
+              set {
+                key
+                val
               }
             }
           }

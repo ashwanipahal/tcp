@@ -14,7 +14,7 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
-import { isCanada, scrollPage, scrollTopElement } from '../../../../../../../utils';
+import { isCanada, scrollPage } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -51,12 +51,14 @@ class LoginSection extends React.PureComponent<Props> {
   };
 
   showCreateAccountForm = () => {
-    const { openModal } = this.props;
-    openModal({
+    const { onClose, openOverlay, closeModal } = this.props;
+
+    openOverlay({
       component: 'createAccount',
       variation: 'primary',
     });
-    scrollTopElement('dialogContent');
+    onClose();
+    closeModal();
   };
 
   getSignOutSection = ({ labels, isRememberedUser, logoutlabels, userName }) => {
@@ -95,6 +97,7 @@ class LoginSection extends React.PureComponent<Props> {
       resetLoginState,
       userplccCardNumber,
       userplccCardId,
+      isLoading,
       isRememberedUser,
     } = this.props;
     return (
@@ -115,7 +118,7 @@ class LoginSection extends React.PureComponent<Props> {
               medium: 8,
               large: `${variation === 'checkout' ? 7 : 12}`,
             }}
-            className={`elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+            className={`elem-pt-SM elem-pl-LRG elem-pr-LRG ${
               variation === 'checkout' ? 'checkoutForm' : 'loginForm'
             }`}
           >
@@ -139,6 +142,7 @@ class LoginSection extends React.PureComponent<Props> {
                   resetLoginState={resetLoginState}
                   userplccCardNumber={userplccCardNumber}
                   userplccCardId={userplccCardId}
+                  isLoading={isLoading}
                 />
               </React.Fragment>
             )}

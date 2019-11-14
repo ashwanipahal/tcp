@@ -1,29 +1,27 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, Field, change } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
 import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import AddEditPersonalInfoConstants from '../../../AddEditPersonalInformation.constants';
-import DropDown from '../../../../../../common/atoms/DropDown/views/DropDown.native';
 import { formatPhoneNumber } from '../../../../../../../utils/formValidation/phoneNumber';
 import {
   SaveButtonWrapper,
   FieldTopMarginWrapper,
   CancelButtonWrapper,
-  dropDownStyle,
-  itemStyle,
   InputFieldHalf,
   BirthdayContainer,
   AddEditMessageView,
   AddEditInfoWrapper,
-  HiddenStateWrapper,
   FieldBirthdayTopMarginWrapper,
 } from '../styles/AddEditPersonalInformationForm.native.style';
+import Select from '../../../../../../common/atoms/Select';
 
 export class AddEditPersonalInformationForm extends PureComponent {
   constructor(props) {
@@ -45,35 +43,10 @@ export class AddEditPersonalInformationForm extends PureComponent {
     this.isEmployeeCheck = initialValues.isEmployee;
     this.birthMonthOptionsArr = [...monthArray, ...birthMonthOptionsMap];
     this.birthYearOptionsArr = [...yearArray, ...birthYearOptionsMap];
-    this.state = {
-      birthMonthSelect: initialValues.userBirthMonth
-        ? this.birthMonthOptionsArr[initialValues.userBirthMonth].displayName
-        : this.birthMonthOptionsArr[0].displayName,
-      birthYearSelect: initialValues.userBirthYear
-        ? initialValues.userBirthYear
-        : this.birthYearOptionsArr[0].displayName,
-    };
   }
-
-  onUserBirthMonthChangeValue = itemValue => {
-    const { dispatch } = this.props;
-    dispatch(
-      change(AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM, 'userBirthMonth', itemValue)
-    );
-    this.setState({ birthMonthSelect: itemValue });
-  };
-
-  onUserBirthYear = itemValue => {
-    const { dispatch } = this.props;
-    dispatch(
-      change(AddEditPersonalInfoConstants.ADD_PROFILE_INFORMATION_FORM, 'userBirthYear', itemValue)
-    );
-    this.setState({ birthYearSelect: itemValue });
-  };
 
   render() {
     const { labels, handleSubmit, onCancel, isEmployee } = this.props;
-    const { birthMonthSelect, birthYearSelect } = this.state;
 
     return (
       <AddEditInfoWrapper>
@@ -122,47 +95,28 @@ export class AddEditPersonalInformationForm extends PureComponent {
             normalize={formatPhoneNumber}
           />
         </FieldTopMarginWrapper>
-
+        <BodyCopyWithSpacing
+          fontWeight="extrabold"
+          fontSize="fs12"
+          fontFamily="secondary"
+          text={getLabelValue(labels, 'lbl_profile_personal_info_birthday')}
+          spacingStyles="margin-top-MED"
+        />
         <BirthdayContainer>
           <InputFieldHalf>
             <Field
-              component={DropDown}
-              heading={getLabelValue(labels, 'lbl_profile_personal_info_birthday')}
-              selectedValue={birthMonthSelect}
-              data={this.birthMonthOptionsArr}
-              dataLocator="addnewaddress-country"
-              dropDownStyle={{ ...dropDownStyle }}
-              onValueChange={this.onUserBirthMonthChangeValue}
-              itemStyle={{ ...itemStyle }}
-              variation="secondary"
+              placeholder={getLabelValue(labels, 'lbl_profile_personal_info_month')}
+              name="userBirthMonth"
+              component={Select}
+              options={this.birthMonthOptionsArr}
             />
-            <HiddenStateWrapper>
-              <Field
-                component={TextBox}
-                title=""
-                type="hidden"
-                id="userBirthMonth"
-                name="userBirthMonth"
-              />
-            </HiddenStateWrapper>
           </InputFieldHalf>
-          <InputFieldHalf zipCode>
+          <InputFieldHalf>
             <Field
-              component={DropDown}
-              selectedValue={birthYearSelect}
-              data={this.birthYearOptionsArr}
-              dataLocator="editPersonalInfo-userBirthYear"
-              dropDownStyle={{ ...dropDownStyle }}
-              onValueChange={this.onUserBirthYear}
-              itemStyle={{ ...itemStyle }}
-              variation="secondary"
-            />
-            <Field
-              component={TextBox}
-              title=""
-              type="hidden"
-              id="userBirthYear"
+              placeholder={getLabelValue(labels, 'lbl_profile_personal_info_year')}
               name="userBirthYear"
+              component={Select}
+              options={this.birthYearOptionsArr}
             />
           </InputFieldHalf>
         </BirthdayContainer>
@@ -241,7 +195,6 @@ AddEditPersonalInformationForm.propTypes = {
   birthMonthOptionsMap: PropTypes.shape([]).isRequired,
   birthYearOptionsMap: PropTypes.shape([]).isRequired,
   isEmployee: PropTypes.string.isRequired,
-  dispatch: PropTypes.func,
 };
 
 AddEditPersonalInformationForm.defaultProps = {
@@ -261,7 +214,6 @@ AddEditPersonalInformationForm.defaultProps = {
     userBirthMonth: '',
     userBirthYear: '',
   },
-  dispatch: () => {},
 };
 
 const validateMethod = createValidateMethod(

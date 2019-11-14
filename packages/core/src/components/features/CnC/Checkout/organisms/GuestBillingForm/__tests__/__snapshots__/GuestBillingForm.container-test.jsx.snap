@@ -2,6 +2,7 @@
 
 exports[`BillingPageContainer should render correctly 1`] = `
 <ReduxForm
+  bagLoading={false}
   billingData={
     Object {
       "address": Object {
@@ -89,6 +90,7 @@ exports[`BillingPageContainer should render correctly 1`] = `
 
 exports[`BillingPageContainer should render correctly if billing data is present 1`] = `
 <ReduxForm
+  bagLoading={false}
   billingData={
     Object {
       "address": Object {},

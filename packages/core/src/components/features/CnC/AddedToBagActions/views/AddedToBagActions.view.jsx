@@ -29,7 +29,13 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getPaypalButton() {
-    const { showAddTobag, containerId, isBagPageStickyHeader, isPayPalHidden } = this.props;
+    const {
+      showAddTobag,
+      containerId,
+      isBagPageStickyHeader,
+      isPayPalHidden,
+      paypalButtonHeight,
+    } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
       containerID = 'paypal-button-container-bag-header';
@@ -37,7 +43,11 @@ class AddedToBagActions extends React.PureComponent<Props> {
     return (
       (!isPayPalHidden || showAddTobag) && (
         <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
-          <PayPalButton className="payPal-button" containerId={containerID} />
+          <PayPalButton
+            className="payPal-button"
+            containerId={containerID}
+            height={paypalButtonHeight}
+          />
         </div>
       )
     );
@@ -182,6 +192,7 @@ AddedToBagActions.propTypes = {
   isUSSite: PropTypes.bool,
   checkoutServerError: PropTypes.shape({}).isRequired,
   venmoError: PropTypes.string,
+  paypalButtonHeight: PropTypes.number,
   isAddedToBag: PropTypes.bool,
   isBagPage: PropTypes.bool,
   isMiniBag: PropTypes.bool,
@@ -194,6 +205,7 @@ AddedToBagActions.defaultProps = {
   isBagPageStickyHeader: false,
   isUSSite: true,
   venmoError: '',
+  paypalButtonHeight: 48,
   isAddedToBag: false,
   isBagPage: false,
   isMiniBag: false,
