@@ -11,9 +11,9 @@ export default css`
       height: 100px;
     }
     .logoWrapper {
-      margin-top: 8px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
       width: 100px;
-      height: 30px;
+      height: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XXS};
     }
   }
   .bag-product-detail-wrapper {

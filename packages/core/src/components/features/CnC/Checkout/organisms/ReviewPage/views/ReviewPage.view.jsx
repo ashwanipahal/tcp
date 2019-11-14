@@ -44,6 +44,7 @@ class ReviewPage extends React.PureComponent {
     pageCategory: PropTypes.string,
     checkoutServerError: PropTypes.shape({}).isRequired,
     clearCheckoutServerError: PropTypes.func.isRequired,
+    bagLoading: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -53,6 +54,7 @@ class ReviewPage extends React.PureComponent {
     isExpressCheckout: false,
     isPaymentDisabled: false,
     pageCategory: '',
+    bagLoading: false,
   };
 
   componentDidMount() {
@@ -78,6 +80,7 @@ class ReviewPage extends React.PureComponent {
 
   componentWillUnmount() {
     const { clearCheckoutServerError, checkoutServerError } = this.props;
+
     if (checkoutServerError) {
       clearCheckoutServerError({});
     }
@@ -102,6 +105,7 @@ class ReviewPage extends React.PureComponent {
       pageCategory,
       reviewFormSubmit,
       checkoutRoutingDone,
+      bagLoading,
     } = this.props;
     const {
       header,
@@ -130,6 +134,7 @@ class ReviewPage extends React.PureComponent {
               onEdit={() => {
                 utility.routeToPage(CHECKOUT_ROUTES.pickupPage);
               }}
+              bagLoading={bagLoading}
             />
           </div>
         )}
@@ -144,12 +149,13 @@ class ReviewPage extends React.PureComponent {
                 onEdit={() => {
                   utility.routeToPage(CHECKOUT_ROUTES.shippingPage);
                 }}
+                bagLoading={bagLoading}
               />
             </div>
           )}
         </FormSection>
-        <BillingSection isExpressCheckout={isExpressCheckout} />
-        <CheckoutCartItemList disableProductRedirect />
+        <BillingSection isExpressCheckout={isExpressCheckout} bagLoading={bagLoading} />
+        <CheckoutCartItemList disableProductRedirect bagLoading={bagLoading} />
         <CheckoutOrderInfo
           showAccordian={showAccordian}
           isGuest={isGuest}

@@ -5,7 +5,7 @@ import { Row, Col, BodyCopy, Button } from '../../../../../../common/atoms';
 import Grid from '../../../../../../common/molecules/Grid';
 import GiftCardTile from '../../../molecules/GiftCardTile';
 import AddGiftCardForm from '../../../../../../common/organisms/AddGiftCardForm/AddGiftCardForm';
-
+import GiftCardSkeleton from '../skeleton/GiftCardSkeleton.view';
 import ErrorMessage from '../../../../../../common/hoc/ErrorMessage';
 
 import {
@@ -156,6 +156,7 @@ const renderGiftCardTile = ({
   applyExistingGiftCardToOrder,
   orderBalanceTotal,
   isPaymentDisabled,
+  giftCardList,
 }) => {
   return (
     <GiftCardTile
@@ -169,6 +170,7 @@ const renderGiftCardTile = ({
       orderBalanceTotal={orderBalanceTotal}
       applyExistingGiftCardToOrder={applyExistingGiftCardToOrder}
       isPaymentDisabled={isPaymentDisabled}
+      giftCardList={giftCardList}
     />
   );
 };
@@ -262,6 +264,7 @@ export const GiftCards = ({
   isExpressCheckout,
   isFromReview,
   isPaymentDisabled,
+  isFetching,
 }) => {
   return (
     <Grid className={className}>
@@ -320,16 +323,23 @@ export const GiftCards = ({
             isExpressCheckout,
             getHeading
           )}
-          {renderGiftCardsList({
-            giftCardList,
-            applyExistingGiftCardToOrder,
-            labels,
-            giftCardErrors,
-            orderBalanceTotal,
-            isExpressCheckout,
-            isFromReview,
-            isPaymentDisabled,
-          })}
+          {!isFetching ? (
+            renderGiftCardsList({
+              giftCardList,
+              applyExistingGiftCardToOrder,
+              labels,
+              giftCardErrors,
+              orderBalanceTotal,
+              isExpressCheckout,
+              isFromReview,
+              isPaymentDisabled,
+            })
+          ) : (
+            <>
+              <GiftCardSkeleton />
+              <GiftCardSkeleton />
+            </>
+          )}
         </Col>
       </Row>
       {!enableAddGiftCard &&

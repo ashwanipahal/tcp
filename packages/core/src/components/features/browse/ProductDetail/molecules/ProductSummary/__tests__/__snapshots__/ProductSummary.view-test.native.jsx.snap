@@ -6,6 +6,8 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={10}
   />
   <Styled(View)>
@@ -94,6 +96,7 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
       customStyle={Object {}}
       fontSizeVariation="medium"
       href="#"
+      justifyContent=""
       locator="pdp_anchor_complete_the_look"
       margins={null}
       onPress={[Function]}
@@ -106,6 +109,8 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={0}
   />
   <Styled(BodyCopy)
@@ -156,6 +161,8 @@ exports[`ProductSummaryVanilla should render correctly 1`] = `
     borderColor="gray.500"
     borderWidth={0.65}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={12}
   />
 </Styled(View)>

@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Button, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, isCanada } from '@tcp/core/src/utils';
 import ACCOUNT_CONSTANTS from '@tcp/core/src/components/features/account/Account/Account.constants';
 
 const AnalyticsNavigationText = ACCOUNT_CONSTANTS.ACCOUNT_ANALYTICS.navigationText;
+
+const handleUserRewards = userRewards => {
+  return userRewards % 1 ? userRewards : Math.floor(userRewards);
+};
 
 const GuestUserInfo = ({
   createAccount,
@@ -17,6 +21,8 @@ const GuestUserInfo = ({
   isRememberedUser,
   userName,
   isDrawer,
+  userPoints,
+  userRewards,
 }) => {
   const LoginLinkClick = e =>
     onLinkClick(
@@ -29,6 +35,7 @@ const GuestUserInfo = ({
       },
       login
     );
+
   return (
     <React.Fragment>
       {!isRememberedUser && (
@@ -96,6 +103,23 @@ const GuestUserInfo = ({
                 onClick={LoginLinkClick}
               />
             )}
+
+            {!isCanada() ? (
+              <BodyCopy component="div">
+                <div className="account-info user-points">{`${userPoints} Points`}</div>
+                <span className="account-info user-rewards rightLink">
+                  {`$${handleUserRewards(userRewards)} Rewards`}
+                </span>
+              </BodyCopy>
+            ) : null}
+            {!isDrawer ? (
+              <Image
+                alt="user"
+                className="usericon"
+                src={getIconPath('user-icon')}
+                onClick={LoginLinkClick}
+              />
+            ) : null}
           </ClickTracker>
         </BodyCopy>
       )}
@@ -124,6 +148,8 @@ GuestUserInfo.propTypes = {
   isDrawer: PropTypes.bool.isRequired,
   isRememberedUser: PropTypes.bool,
   userName: PropTypes.string,
+  userPoints: PropTypes.string.isRequired,
+  userRewards: PropTypes.string.isRequired,
 };
 
 GuestUserInfo.defaultProps = {
