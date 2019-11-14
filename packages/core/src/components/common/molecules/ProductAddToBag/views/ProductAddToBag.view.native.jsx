@@ -118,6 +118,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       colorFitsSizesMap,
       selectedColorProductId
     );
+
     return (
       <ProductPickupContainer
         productInfo={currentProduct}
@@ -241,7 +242,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           <BodyCopy
             fontWeight="black"
             color="gray.900"
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs14"
             text={qunatityText}
           />

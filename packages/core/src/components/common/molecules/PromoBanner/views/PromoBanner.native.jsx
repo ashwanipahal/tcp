@@ -291,6 +291,16 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  percentage_inline_promo: props => (
+    <BodyCopy
+      color="white"
+      fontFamily="primary"
+      fontWeight="black"
+      fontSize="fs48"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**
