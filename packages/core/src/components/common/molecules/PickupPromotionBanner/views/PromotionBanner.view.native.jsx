@@ -9,6 +9,7 @@ import {
   TriangleBanner,
   LeftTriangle,
   TriangleBannerText,
+  TopTriangle,
 } from '../styles/PromotionBanner.style.native';
 
 /**
@@ -35,7 +36,7 @@ export const modifiedBannerText = (label, props) => {
 };
 
 const PromotionBanner = props => {
-  const { labels, fullBleed } = props;
+  const { labels, fullBleed, isPickupMobilePromotion } = props;
   return (
     <>
       {fullBleed ? (
@@ -51,7 +52,7 @@ const PromotionBanner = props => {
         </FullBleedBannerStyle>
       ) : (
         <TriangleBanner>
-          <LeftTriangle />
+          {!isPickupMobilePromotion ? <LeftTriangle /> : <TopTriangle />}
           <TriangleBannerText>
             <RichText
               source={{
@@ -71,10 +72,12 @@ const PromotionBanner = props => {
 PromotionBanner.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   fullBleed: PropTypes.bool,
+  isPickupMobilePromotion: PropTypes.bool,
 };
 
 PromotionBanner.defaultProps = {
   fullBleed: false,
+  isPickupMobilePromotion: false,
 };
 
 export default withStyles(PromotionBanner);
