@@ -35,6 +35,8 @@ exports[`SettingsTopSection component should renders correctly 1`] = `
     borderColor="black"
     borderWidth={2}
     marginBottom={0}
+    marginLeft={0}
+    marginRight={0}
     marginTop={5}
   />
 </Styled(View)>

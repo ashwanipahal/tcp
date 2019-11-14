@@ -7,32 +7,40 @@ describe('SettingsView component', () => {
     labels: {},
     isUserLoggedIn: false,
   };
+
+  let component;
+
+  beforeEach(() => {
+    component = shallow(<SettingsView {...props} />);
+  });
+
   it('should renders correctly', () => {
-    const component = shallow(<SettingsView {...props} />);
     expect(component).toMatchSnapshot();
   });
 
   it('test if handleTouchId is enabled ', () => {
-    const component = shallow(<SettingsView {...props} />);
     component.instance().handleTouchId(true);
     expect(component.state('touchIdValue')).toBe(true);
   });
 
   it('test if handleFaceId is disabled ', () => {
-    const component = shallow(<SettingsView {...props} />);
     component.instance().handleFaceId(true);
     expect(component.state('faceIdValue')).toBe(true);
   });
 
   it('should render with touch id', () => {
-    const component = shallow(<SettingsView {...props} />);
     component.setState({ biometryType: 'TouchID' });
     expect(component).toMatchSnapshot();
   });
 
   it('should render with face id', () => {
-    const component = shallow(<SettingsView {...props} />);
     component.setState({ biometryType: 'FaceID' });
     expect(component).toMatchSnapshot();
+  });
+
+  it('should test handleAppStateChange', () => {
+    component.setState({ appState: 'background' });
+    component.instance().handleAppStateChange('active');
+    expect(component.state('appState')).toEqual('active');
   });
 });

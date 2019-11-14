@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Switch } from 'react-native';
+import {
+  checkNotificationPermission,
+  changeNotificationSetting,
+} from 'react-native-check-notification-permission';
+import { Switch, AppState } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getLabelValue } from '../../../../../../../utils';
@@ -23,10 +27,13 @@ class SettingsView extends PureComponent {
       faceIdValue: false,
       pushNotificationValue: false,
       biometryType: null,
+      appState: AppState.currentState,
     };
   }
 
   componentDidMount() {
+    AppState.addEventListener('change', this.handleAppStateChange);
+
     // set default options
     const { isUserLoggedIn } = this.props;
     if (isUserLoggedIn) {
@@ -48,7 +55,25 @@ class SettingsView extends PureComponent {
         }
       });
     }
+
+    checkNotificationPermission().then(result => {
+      this.setState({ pushNotificationValue: result });
+    });
   }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange);
+  }
+
+  handleAppStateChange = nextAppState => {
+    const { appState } = this.state;
+    if (appState.match(/inactive|background/) && nextAppState === 'active') {
+      checkNotificationPermission().then(result => {
+        this.setState({ pushNotificationValue: result });
+      });
+    }
+    this.setState({ appState: nextAppState });
+  };
 
   handleTouchId = value => {
     if (!value) {
@@ -106,7 +131,7 @@ class SettingsView extends PureComponent {
             />
             <Switch
               value={pushNotificationValue}
-              onValueChange={value => this.setState({ pushNotificationValue: value })}
+              onValueChange={() => changeNotificationSetting()}
             />
           </Row>
 
