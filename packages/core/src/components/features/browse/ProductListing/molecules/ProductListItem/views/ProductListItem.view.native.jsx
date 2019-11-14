@@ -67,7 +67,7 @@ const renderAddToBagContainer = (
   return (
     <AddToBagContainer>
       <CustomButton
-        paddings="12px 12px 12px 12px"
+        paddings="12px 8px 12px 8px"
         fill="BLUE"
         type="button"
         buttonVariation="variable-width"

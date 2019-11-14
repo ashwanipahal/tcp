@@ -13,6 +13,7 @@ const mapStateToProps = state => {
     isInternationalShipping: getIsInternationalShipping(state),
     itemsCount: CheckoutSelectors.getTotalItems(state),
     isExpressCheckoutPage: isExpressCheckout(state),
+    bagLoading: CheckoutSelectors.isBagLoading(state),
   };
 };
 

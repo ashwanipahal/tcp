@@ -60,7 +60,7 @@ class CheckoutHeader extends React.PureComponent {
   onBackPress = () => {
     const { navigation, setCheckoutStage } = this.props;
     const { currentStage } = this.state;
-    const currentStageIndex = this.availableStages.indexOf(currentStage);
+    const currentStageIndex = this.availableStages.indexOf(currentStage.toLowerCase());
     if (currentStageIndex > 0) {
       const stageToRoute = this.availableStages[currentStageIndex - 1];
       setCheckoutStage(stageToRoute);
@@ -74,35 +74,39 @@ class CheckoutHeader extends React.PureComponent {
   }
 
   render() {
-    const { isExpressCheckoutPage, checkoutHeaderLabels } = this.props;
+    const { isExpressCheckoutPage, checkoutHeaderLabels, isPayPalWebViewEnable } = this.props;
     const { expressCheckoutLbl, checkoutHeaderLabel } = checkoutHeaderLabels;
     return (
       <SafeAreaViewStyle>
-        <ToastContainer />
-        <CheckoutHeaderContainer data-locator={getLocator('global_headerpanel')}>
-          <MessageContainer>
-            <StoreContainer>
-              <BackIconTouchable onPress={this.onBackPress}>
-                <BackIcon
-                  source={leftIcon}
-                  style={ImageColor}
-                  data-locator={getLocator('global_headerpanelcollapsedicon')}
-                  accessibilityRole="button"
+        {!isPayPalWebViewEnable && (
+          <>
+            <ToastContainer />
+            <CheckoutHeaderContainer data-locator={getLocator('global_headerpanel')}>
+              <MessageContainer>
+                <StoreContainer>
+                  <BackIconTouchable onPress={this.onBackPress}>
+                    <BackIcon
+                      source={leftIcon}
+                      style={ImageColor}
+                      data-locator={getLocator('global_headerpanelcollapsedicon')}
+                      accessibilityRole="button"
+                    />
+                  </BackIconTouchable>
+                </StoreContainer>
+              </MessageContainer>
+              <CheckoutHeaderTextSection>
+                <BodyCopy
+                  fontFamily="primary"
+                  fontSize="fs12"
+                  fontWeight="semibold"
+                  text={isExpressCheckoutPage ? expressCheckoutLbl : checkoutHeaderLabel}
+                  color="gray.900"
+                  textAlign="center"
                 />
-              </BackIconTouchable>
-            </StoreContainer>
-          </MessageContainer>
-          <CheckoutHeaderTextSection>
-            <BodyCopy
-              fontFamily="primary"
-              fontSize="fs12"
-              fontWeight="semibold"
-              text={isExpressCheckoutPage ? expressCheckoutLbl : checkoutHeaderLabel}
-              color="gray.900"
-              textAlign="center"
-            />
-          </CheckoutHeaderTextSection>
-        </CheckoutHeaderContainer>
+              </CheckoutHeaderTextSection>
+            </CheckoutHeaderContainer>
+          </>
+        )}
       </SafeAreaViewStyle>
     );
   }
@@ -128,6 +132,7 @@ const mapStateToProps = state => {
     cartOrderItems: BagPageSelector.getOrderItems(state),
     checkoutProgressBarLabels: getCheckoutProgressBarLabels(state),
     currentStage: getCurrentCheckoutStage(state),
+    isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
   };
 };
 
@@ -147,6 +152,7 @@ CheckoutHeader.propTypes = {
   setCheckoutStage: PropTypes.func.isRequired,
   isExpressCheckoutPage: PropTypes.bool,
   checkoutHeaderLabels: PropTypes.shape({}),
+  isPayPalWebViewEnable: PropTypes.bool,
 };
 
 CheckoutHeader.defaultProps = {
@@ -155,6 +161,7 @@ CheckoutHeader.defaultProps = {
     lbl_checkoutheader_checkout: '',
     lbl_checkoutHeader_expressCheckout: '',
   },
+  isPayPalWebViewEnable: false,
 };
 
 export default connect(

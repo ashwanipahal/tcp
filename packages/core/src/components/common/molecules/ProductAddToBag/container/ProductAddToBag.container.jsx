@@ -109,7 +109,9 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   getDefaultSizeForProduct = (colorFitsSizesMap, initialFormValues) => {
-    const firstSizeName = colorFitsSizesMap[0].fits[0].sizes[0].sizeName;
+    const firstSizeName = colorFitsSizesMap[0]
+      ? colorFitsSizesMap[0].fits[0].sizes[0].sizeName
+      : '';
 
     if (initialFormValues) {
       return initialFormValues.Size;
@@ -130,13 +132,13 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
   };
 
   getInitialAddToBagFormValues = (currentProduct, selectedColorProductId, nextProps) => {
-    const colorFitsSizesMapEntry =
-      currentProduct &&
-      this.getMapSliceForColorProductId(
-        currentProduct.colorFitsSizesMap,
-        currentProduct.generalProductId,
-        selectedColorProductId
-      );
+    const colorFitsSizesMapEntry = currentProduct
+      ? this.getMapSliceForColorProductId(
+          currentProduct.colorFitsSizesMap,
+          currentProduct.generalProductId,
+          selectedColorProductId
+        )
+      : {};
 
     let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
 
@@ -154,7 +156,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
     return {
       color: {
-        name: colorFitsSizesMapEntry.color.name,
+        name: colorFitsSizesMapEntry.color && colorFitsSizesMapEntry.color.name,
       },
       Fit: colorFitsSizesMapEntry.hasFits
         ? {
@@ -213,14 +215,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }
   };
 
-  colorChange = e => {
+  colorChange = (e, colorIndex) => {
     const { selectedSize, selectedFit, selectedQuantity } = this.state;
     const { onChangeColor } = this.props;
     this.setState({
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
-      fitChanged: true,
+      fitChanged: selectedSize.name === '',
     });
     // props for any custom action to call
     if (onChangeColor) {
@@ -228,7 +230,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         e,
         selectedSize && selectedSize.name,
         selectedFit && selectedFit.name,
-        selectedQuantity
+        selectedQuantity,
+        colorIndex
       );
     }
   };
@@ -444,6 +447,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       navigation,
       isPickup,
       onCloseClick,
+      isBundleProduct,
       ...otherProps
     } = this.props;
     const {
@@ -506,6 +510,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         navigation={navigation}
         isPickup={isPickup}
         onCloseClick={onCloseClick}
+        isBundleProduct={isBundleProduct}
       />
     );
   }

@@ -4,23 +4,49 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
 <CheckoutPage
   availableStages={
     Array [
-      "billingLabel",
-      "reviewLabel",
+      "billing",
+      "review",
     ]
   }
   billingProps={
     Object {
       "billingDidMount": [Function],
+      "isRegisteredUserCallDone": true,
     }
   }
-  clearCheckoutServerError={[MockFunction]}
+  checkoutServerError={true}
+  clearCheckoutServerError={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {},
+        ],
+        Array [
+          Object {},
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
   formatPayload={[Function]}
   isExpressCheckout={false}
+  isRegisteredUserCallDone={true}
   isVenmoPaymentInProgress={false}
   labels={Object {}}
+  pageData={Object {}}
   pickupDidMount={[Function]}
   reviewProps={
     Object {
+      "isRegisteredUserCallDone": true,
       "reviewDidMount": [Function],
     }
   }
@@ -34,8 +60,12 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   shippingMethod={Object {}}
   shippingProps={
     Object {
+      "isRegisteredUserCallDone": true,
       "shippingDidMount": [Function],
     }
   }
+  submitBilling={[Function]}
+  submitReview={[Function]}
+  submitShippingSection={[Function]}
 />
 `;

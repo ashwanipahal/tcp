@@ -1,4 +1,5 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import {
   addCartEcomItem,
@@ -19,6 +20,17 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { removeItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import { getAPIConfig } from '../../../../../utils';
+import { getIsGuest } from '../../../account/User/container/User.selectors';
+import { navigateXHRAction } from '../../../account/NavigateXHR/container/NavigateXHR.action';
+import { makeBrandToggling } from '../util/utility';
+
+const getErrorMessage = (err, errorMapping) => {
+  return (
+    (err && err.errorResponse && err.errorResponse.errorMessage) ||
+    (errorMapping && errorMapping.DEFAULT) ||
+    'ERROR'
+  );
+};
 
 export function* addToCartEcom({ payload }) {
   try {
@@ -44,6 +56,8 @@ export function* addToCartEcom({ payload }) {
       'calculationUsage[]': '-7',
       externalId: wishlistItemId || '',
     };
+    const isGuestUser = yield select(getIsGuest);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToBagErrorState());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addCartEcomItem, params);
@@ -63,10 +77,8 @@ export function* addToCartEcom({ payload }) {
     yield put(BAG_PAGE_ACTIONS.getOrderDetails());
   } catch (err) {
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
-    const errMsg =
-      (err && err.errorResponse && err.errorResponse.errorMessage) ||
-      (errorMapping && errorMapping.DEFAULT) ||
-      'ERROR';
+    const errMsg = getErrorMessage(err, errorMapping);
+
     yield put(AddToCartError(errMsg, payload.skuInfo.unbxdProdId));
   }
 }
@@ -96,9 +108,16 @@ export function* addItemToCartBopis({ payload }) {
       variantNo,
       itemPartNumber: variantId,
     };
+    const isGuestUser = yield select(getIsGuest);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToPickupErrorState());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addCartBopisItem, params, errorMapping);
+    yield put(
+      getFavoriteStoreActn({
+        ignoreCache: true,
+      })
+    );
     if (callback) {
       callback();
     }
@@ -145,6 +164,8 @@ export function* addMultipleItemToCartECOM({ payload: { productItemsInfo, callBa
       };
     });
 
+    const isGuestUser = yield select(getIsGuest);
+    if (makeBrandToggling(isGuestUser)) yield put(navigateXHRAction());
     yield put(clearAddToCartMultipleItemErrorState());
     const res = yield call(addMultipleProductsInEcom, paramsArray);
     if (callBack) {

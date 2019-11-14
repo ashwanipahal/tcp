@@ -22,6 +22,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     colorName={null}
     customStyle={Object {}}
     fontSizeVariation="large"
+    justifyContent=""
     locator=""
     margins={null}
     onPress={[Function]}

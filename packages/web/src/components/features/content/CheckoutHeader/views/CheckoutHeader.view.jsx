@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Anchor, Image, Row, Col } from '@tcp/core/src/components/common/atoms';
 import checkoutUtil from '@tcp/core/src/components/features/CnC/Checkout/util/utility';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import style from '../CheckoutHeader.style';
 import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
@@ -24,6 +25,7 @@ const CheckoutHeader = ({
   isInternationalShipping,
   itemsCount,
   isExpressCheckoutPage,
+  bagLoading,
 }) => {
   return (
     <header className={`${className} content-wrapper`}>
@@ -56,7 +58,9 @@ const CheckoutHeader = ({
           }}
         >
           <BodyCopy component="span" fontSize="fs32">
-            {isExpressCheckoutPage ? labels.expressCheckoutLbl : labels.checkoutHeaderLabel}
+            {isExpressCheckoutPage && itemsCount > 0
+              ? labels.expressCheckoutLbl
+              : labels.checkoutHeaderLabel}
           </BodyCopy>
         </Col>
 
@@ -68,18 +72,22 @@ const CheckoutHeader = ({
             large: 4,
           }}
         >
-          <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
-            <Anchor
-              fontSizeVariation="medium"
-              underline
-              anchorVariation="primary"
-              to="/bag"
-              dataLocator="checkout-header-returnToBag"
-              className="return-bag-link"
-            >
-              {labels.returnBagLabel}
-            </Anchor>
-          </BodyCopy>
+          {!bagLoading && itemsCount > 0 ? (
+            <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                anchorVariation="primary"
+                to="/bag"
+                dataLocator="checkout-header-returnToBag"
+                className="return-bag-link"
+              >
+                {labels.returnBagLabel}
+              </Anchor>
+            </BodyCopy>
+          ) : (
+            <LoaderSkelton width="100px" height="22px" />
+          )}
         </Col>
       </Row>
       <Row className="checkout-mobile-header" centered>
@@ -122,10 +130,12 @@ CheckoutHeader.propTypes = {
   isInternationalShipping: PropTypes.bool.isRequired,
   itemsCount: PropTypes.number.isRequired,
   isExpressCheckoutPage: PropTypes.bool,
+  bagLoading: PropTypes.bool,
 };
 
 CheckoutHeader.defaultProps = {
   isExpressCheckoutPage: false,
+  bagLoading: false,
 };
 
 export default withStyles(CheckoutHeader, style);

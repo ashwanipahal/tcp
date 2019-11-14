@@ -146,6 +146,14 @@
       "value": "https://test1.theplace.com/image/upload"
     },
     {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP",
+      "value": "v1/ecom/assets/products/tcp"
+    },
+    {
+      "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_GYM",
+      "value": "v1/ecom/assets/products/gym"
+    },
+    {
       "name": "RWD_APP_API_DOMAIN_GYM",
       "value": "https://test6.gymboree.com"
     },
@@ -316,7 +324,7 @@
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "6a3ae460-49b3-499b-9548-88244e01cffa"
+        "cc3601ed-18f9-4549-8058-a89a3d5c8730"
       ],
       "isSilent": false
     },

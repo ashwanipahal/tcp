@@ -25,6 +25,11 @@ const styles = css`
       margin-left: 0;
     }
   }
+  .item-preview-details {
+    @media ${props => props.theme.mediaQuery.medium} {
+      min-height: 115px;
+    }
+  }
 `;
 
 export default styles;

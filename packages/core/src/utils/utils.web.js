@@ -386,7 +386,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, countryKey, language) => {
     }`,
     unbxdApiKeyGYM,
     envId: processEnv.RWD_WEB_ENV_ID,
-    previewToken: processEnv.RWD_WEB_PREVIEW_TOKEN,
+    previewEnvId: processEnv.RWD_WEB_PREVIEW_ENV,
     BAZAARVOICE_SPOTLIGHT: processEnv.RWD_WEB_BAZAARVOICE_API_KEY,
     BAZAARVOICE_REVIEWS: processEnv.RWD_WEB_BAZAARVOICE_PRODUCT_REVIEWS_API_KEY,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
@@ -576,7 +576,7 @@ export const getDirections = address => {
  * To Identify whether the device is ios for web.
  */
 
-export const isIosWeb = () => {
+export const isiOSWeb = () => {
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
     return true;
@@ -595,11 +595,19 @@ export const isAndroidWeb = () => {
   }
   return false;
 };
+
+/**
+ * To Identify whether the device is Android for web.
+ */
+export const isMobileWeb = () => {
+  return isiOSWeb() || isAndroidWeb();
+};
+
 /**
  * This function will remove all the body scroll locks.
  */
 export const removeBodyScrollLocks = () => {
-  if (isIosWeb() && isClient()) {
+  if (isiOSWeb() && isClient()) {
     clearAllBodyScrollLocks();
   }
 };
@@ -608,7 +616,7 @@ export const removeBodyScrollLocks = () => {
  */
 export const enableBodyScroll = targetElem => {
   if (isClient()) {
-    if (isIosWeb() && targetElem) {
+    if (isiOSWeb() && targetElem) {
       enableBodyScrollLib(targetElem);
       return;
     }
@@ -622,7 +630,7 @@ export const enableBodyScroll = targetElem => {
  */
 export const disableBodyScroll = targetElem => {
   if (isClient()) {
-    if (isIosWeb() && targetElem) {
+    if (isiOSWeb() && targetElem) {
       disableBodyScrollLib(targetElem);
       return;
     }
@@ -657,8 +665,7 @@ export default {
   canUseDOM,
   scrollToParticularElement,
   getDirections,
-  isIosWeb,
-  isAndroidWeb,
+  isMobileWeb,
   removeBodyScrollLocks,
   enableBodyScroll,
   disableBodyScroll,

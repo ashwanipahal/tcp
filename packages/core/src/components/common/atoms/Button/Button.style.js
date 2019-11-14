@@ -149,7 +149,7 @@ const ButtonStyles = css`
         overflow: hidden;
         visibility: hidden;
       }
-      
+
       @media ${props.theme.mediaQuery.large} {
       font-size: ${props.theme.typography.fontSizes.fs20};
       ::after {
@@ -225,6 +225,7 @@ const ButtonStyles = css`
 
         &:hover, &:focus, &:active {
           background-color: transparent;
+          outline-width: 0;
         }
 
         @media ${props.theme.mediaQuery.large} {
@@ -254,13 +255,17 @@ const ButtonStyles = css`
     props.buttonVariation !== darkLinkCategory
       ? getShape(props)
       : ``}
-    
+
   ${props =>
-    props.link
+    props.link || props.smallLink
       ? `
         min-height: auto;
         font-family: ${props.theme.typography.fonts.secondary};
-        font-size: ${props.theme.fonts.fontSize.body.large.secondary}px;
+        font-size: ${
+          props.smallLink
+            ? props.theme.fonts.fontSize.body.large.primary
+            : props.theme.fonts.fontSize.body.large.secondary
+        }px;
         letter-spacing: ${props.theme.fonts.letterSpacing.normal};
         border: 0;
         padding: 0;
@@ -271,7 +276,11 @@ const ButtonStyles = css`
         background: none;
       }
       @media ${props.theme.mediaQuery.large} {
-        font-size: ${props.theme.fonts.fontSize.button.size}px;
+        font-size: ${
+          props.smallLink
+            ? props.theme.fonts.fontSize.body.large.primary
+            : props.theme.fonts.fontSize.button.size
+        }px;
       }
   `
       : ``}

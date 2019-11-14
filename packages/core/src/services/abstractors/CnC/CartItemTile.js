@@ -583,7 +583,8 @@ export const getCurrentOrderFormatter = (
     // making pickup page visible for BOSS items as well
     // replaced "BOPIS" and "BOSS" with a config variable
     const store =
-      (item.orderItemType === 'BOPIS' || item.orderItemType === 'BOSS') &&
+      (item.orderItemType === ORDER_ITEM_TYPE.BOPIS ||
+        item.orderItemType === ORDER_ITEM_TYPE.BOSS) &&
       item.stLocId &&
       orderDetailsResponse.mixOrderDetails &&
       orderDetailsResponse.mixOrderDetails.data
@@ -760,7 +761,7 @@ export const getOrderDetailsData = () => {
   });
 };
 
-export const getProductInfoForTranslationData = query => {
+export const getProductInfoForTranslationData = (query, brand) => {
   return executeUnbxdAPICall({
     body: {
       rows: 20,
@@ -776,12 +777,13 @@ export const getProductInfoForTranslationData = query => {
         'giftcard,TCPFit,product_name,TCPColor,imagename,favoritedcount,product_short_description,style_long_description,min_list_price,min_offer_price,product_long_description',
     },
     webService: endpoints.getProductInfoForTranslationByPartNumber,
+    brand,
   });
 };
-
+//TODO enable excludeCartItems when we exclude cart items
 export const getCartData = ({
   calcsEnabled,
-  excludeCartItems,
+  //excludeCartItems,
   recalcRewards,
   isCheckoutFlow,
   isRadialInvEnabled,
@@ -790,7 +792,8 @@ export const getCartData = ({
   const payload = {
     webService: endpoints.fullDetails,
     header: {
-      pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      //pageName: excludeCartItems ? 'excludeCartItems' : 'fullOrderInfo',
+      pageName: 'fullOrderInfo',
       langId: -1,
       source: isLoggedIn ? 'login' : '',
       calc: !!calcsEnabled, // new flag (4/30) that enables a BE internal mechanism to compute calcs and taxes,
@@ -817,7 +820,7 @@ export const getCartData = ({
       coupons,
       orderDetails: getCurrentOrderFormatter(
         orderDetailsResponse,
-        excludeCartItems,
+        false,
         isCASite(),
         isRadialInvEnabled
       ),

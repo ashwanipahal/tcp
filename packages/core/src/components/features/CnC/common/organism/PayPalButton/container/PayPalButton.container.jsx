@@ -40,7 +40,7 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
       locale: CONSTANTS.PAYPAL_LOCATE,
       style: {
         size: 'responsive',
-        color: 'blue',
+        color: isBillingPage ? CONSTANTS.PAYPAL_CTA_COLOR.BLUE : CONSTANTS.PAYPAL_CTA_COLOR.DEFAULT,
         shape: 'rect',
         label: CONSTANTS.PAYPAL_LABEL,
         tagline: false,
@@ -68,18 +68,22 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
     const {
       isQualifedOrder,
       containerId,
+      height,
       navigation,
       getPayPalSettings,
       payPalWebViewHandle,
       paypalAuthorizationHandle,
       clearPaypalSettings,
       setVenmoState,
+      isBillingPage,
       closeModal,
       top,
+      fullWidth,
     } = this.props;
     return (
       <PayPalButton
         isQualifedOrder={isQualifedOrder}
+        height={height}
         initalizePayPalButton={this.initalizePayPalButton}
         containerId={containerId}
         navigation={navigation}
@@ -92,6 +96,8 @@ export class PayPalButtonContainer extends React.PureComponent<Props> {
         setVenmoState={setVenmoState}
         closeModal={closeModal}
         top={top}
+        isBillingPage={isBillingPage}
+        fullWidth={fullWidth}
       />
     );
   }

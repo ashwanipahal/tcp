@@ -82,7 +82,7 @@ const ROUTES_LIST = [
   {
     noSlugPath: 'c',
     path: '/c/:cid',
-    resolver: '/ListingPage',
+    resolver: '/ProductListing',
     params: ['cid'],
   },
   {
@@ -136,7 +136,7 @@ const ROUTES_LIST = [
   },
   {
     noSlugPath: 'checkout',
-    path: '/checkout/:section',
+    path: '/checkout/:section?',
     resolver: '/Checkout',
     params: ['section'],
   },

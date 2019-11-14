@@ -124,12 +124,16 @@ class CartItemTile extends PureComponent {
     toggleEditAllowance();
   };
 
+  handleEditCartItemMiniBag = (pageView, itemBrand, productNumber) => {
+    const productNum = productNumber.slice(0, productNumber.indexOf('_'));
+    this.toggleFormVisibility();
+    const { getProductSKUInfo } = this.props;
+    getProductSKUInfo({ productNum, itemBrand });
+  };
+
   handleEditCartItem = (pageView, itemBrand, productNumber) => {
     if (pageView !== 'myBag') {
-      const productNum = productNumber.slice(0, productNumber.indexOf('_'));
-      this.toggleFormVisibility();
-      const { getProductSKUInfo } = this.props;
-      getProductSKUInfo({ productNum, itemBrand });
+      this.handleEditCartItemMiniBag(pageView, itemBrand, productNumber);
     } else {
       const { onQuickViewOpenClick, productDetail } = this.props;
       const { itemId, qty, color, size, fit } = productDetail.itemInfo;
@@ -203,6 +207,12 @@ class CartItemTile extends PureComponent {
     } else if (pageView === 'myBag') {
       const openSkuSelectionForm = true;
       this.handleEditCartItemWithStore(orderItemType, openSkuSelectionForm);
+    } else {
+      this.handleEditCartItemMiniBag(
+        pageView,
+        productDetail.itemInfo.itemBrand,
+        productDetail.productInfo.productPartNumber
+      );
     }
   };
 
@@ -224,6 +234,7 @@ class CartItemTile extends PureComponent {
       addItemToSflList,
       setCartItemsSflError,
       labels,
+      pageView,
       setClickAnalyticsData,
     } = this.props;
     const {
@@ -232,13 +243,13 @@ class CartItemTile extends PureComponent {
     } = productDetail;
     const catEntryId = isGiftItem ? generalProductId : skuId;
     const userInfoRequired = isGenricGuest && isGenricGuest.get('userId') && isCondense; // Flag to check if getRegisteredUserInfo required after SflList
-
+    const isMiniBag = pageView !== 'myBag';
     this.clearToggleErrorState();
 
     if (sflItemsCount >= sflMaxCount) {
       return setCartItemsSflError(labels.sflMaxLimitError);
     }
-    const payloadData = { itemId, catEntryId, userInfoRequired };
+    const payloadData = { itemId, catEntryId, userInfoRequired, isMiniBag };
     const productsData = {
       color,
       id: itemId,
@@ -483,14 +494,16 @@ class CartItemTile extends PureComponent {
     );
   };
 
+  // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol } = this.props;
+    const { currencySymbol, isBagPageSflSection } = this.props;
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
+    const topPaddingClass = isBagPageSflSection ? 'padding-top-50' : 'padding-top-15';
     return (
-      <Row className={`padding-top-15 padding-bottom-20 parent-${pageView}`} fullBleed>
+      <Row className={`${topPaddingClass} padding-bottom-20 parent-${pageView}`} fullBleed>
         {!isBagPage && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (

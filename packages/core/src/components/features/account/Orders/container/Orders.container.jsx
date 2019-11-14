@@ -18,8 +18,14 @@ import { getLabels } from '../../Account/container/Account.selectors';
  */
 export class OrdersContainer extends PureComponent {
   componentDidMount() {
-    const { fetchOrders } = this.props;
+    const { fetchOrders, ordersListItems, getOrderDetailsAction } = this.props;
     fetchOrders(getSiteId());
+    if (ordersListItems && ordersListItems.orders && ordersListItems.orders.length > 0) {
+      const payload = {
+        orderId: ordersListItems.orders[0].orderNumber,
+      };
+      getOrderDetailsAction(payload);
+    }
   }
 
   componentDidUpdate(prevProps) {

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, Field, change } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
@@ -14,17 +14,15 @@ import {
 } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { UrlHandler } from '../../../../../../../utils/utils.app';
 
-import DropDown from '../../../../../../common/atoms/DropDown/views/DropDown.native';
 import {
   AddChildFormWrapper,
   BirthdayContainer,
   InputFieldHalf,
-  dropDownStyle,
-  itemStyle,
   StyledAnchorWrapper,
   CheckboxMarginWrapper,
 } from '../styles/AddChild.style.native';
 import endpoints from '../../../externalEndpoints';
+import Select from '../../../../../../common/atoms/Select';
 
 export class AddChildBirthdayForm extends PureComponent {
   static propTypes = {
@@ -35,31 +33,14 @@ export class AddChildBirthdayForm extends PureComponent {
     childOptions: PropTypes.shape([]).isRequired,
     timestamp: PropTypes.instanceOf(Date).isRequired,
     closeAddModal: PropTypes.func,
-    dispatch: PropTypes.func,
   };
 
   static defaultProps = {
     closeAddModal: () => {},
-    dispatch: () => {},
   };
 
   static timestampFormatOptions = {
     timeZoneName: 'short',
-  };
-
-  onUserBirthMonthChangeValue = itemValue => {
-    const { dispatch } = this.props;
-    dispatch(change('AddChildBirthdayForm', 'userBirthMonth', itemValue));
-  };
-
-  onUserBirthYear = itemValue => {
-    const { dispatch } = this.props;
-    dispatch(change('AddChildBirthdayForm', 'userBirthYear', itemValue));
-  };
-
-  onGenderChangeValue = itemValue => {
-    const { dispatch } = this.props;
-    dispatch(change('AddChildBirthdayForm', 'gender', itemValue));
   };
 
   render() {
@@ -91,72 +72,48 @@ export class AddChildBirthdayForm extends PureComponent {
               dataLocator="childNameField"
             />
           </ViewWithSpacing>
+          <BodyCopyWithSpacing
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="black"
+            color="gray.900"
+            text={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_heading')}
+            spacingStyles="margin-left-LRG margin-right-LRG margin-top-LRG"
+          />
           <BirthdayContainer>
             <InputFieldHalf>
               <Field
-                component={DropDown}
-                heading={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_heading')}
-                selectedValue={getLabelValue(
-                  addChildBirthdayLabels,
-                  'lbl_add_child_birthday_month'
-                )}
-                data={birthMonthOptionsMap}
-                dataLocator="childBirthdayMonthDD"
-                dropDownStyle={{ ...dropDownStyle }}
-                onValueChange={this.onUserBirthMonthChangeValue}
-                itemStyle={{ ...itemStyle }}
-                variation="secondary"
-                bgColor
+                placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_month')}
+                component={Select}
+                options={birthMonthOptionsMap}
+                name="userBirthMonth"
               />
-              <ViewWithSpacing spacingStyles="margin-top-SM">
-                <Field
-                  component={TextBox}
-                  title=""
-                  type="hidden"
-                  id="userBirthMonth"
-                  name="userBirthMonth"
-                />
-              </ViewWithSpacing>
             </InputFieldHalf>
-            <InputFieldHalf birthYear>
+            <InputFieldHalf>
               <Field
-                component={DropDown}
-                data={birthYearOptionsMap}
-                selectedValue={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_year')}
-                dataLocator="childBirthdayYearDD"
-                dropDownStyle={{ ...dropDownStyle }}
-                onValueChange={this.onUserBirthYear}
-                itemStyle={{ ...itemStyle }}
-                variation="secondary"
-                bgColor
-              />
-              <Field
-                component={TextBox}
-                title=""
-                type="hidden"
-                id="userBirthYear"
+                placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_birthday_year')}
+                component={Select}
+                options={birthYearOptionsMap}
                 name="userBirthYear"
               />
             </InputFieldHalf>
           </BirthdayContainer>
-
-          <BirthdayContainer chooseGender>
+          <BodyCopyWithSpacing
+            fontFamily="secondary"
+            fontSize="fs10"
+            fontWeight="black"
+            color="gray.900"
+            text={getLabelValue(addChildBirthdayLabels, 'add_child_gender_heading')}
+            spacingStyles="margin-left-LRG margin-right-LRG margin-top-LRG"
+          />
+          <BirthdayContainer>
             <InputFieldHalf>
               <Field
-                component={DropDown}
-                heading={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_gender_heading')}
-                selectedValue={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_choose_gender')}
-                data={childOptions}
-                dataLocator="childGenderDD"
-                dropDownStyle={{ ...dropDownStyle }}
-                onValueChange={this.onGenderChangeValue}
-                itemStyle={{ ...itemStyle }}
-                variation="secondary"
-                bgColor
+                component={Select}
+                placeholder={getLabelValue(addChildBirthdayLabels, 'lbl_add_child_gender_heading')}
+                options={childOptions}
+                name="gender"
               />
-              <ViewWithSpacing spacingStyles="margin-top-SM">
-                <Field component={TextBox} title="" type="hidden" id="gender" name="gender" />
-              </ViewWithSpacing>
             </InputFieldHalf>
           </BirthdayContainer>
           <BodyCopyWithSpacing

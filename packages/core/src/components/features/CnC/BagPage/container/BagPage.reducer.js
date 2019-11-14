@@ -13,6 +13,7 @@ const initialState = fromJS({
   moduleXContent: [],
   showConfirmationModal: false,
   isEditingItem: false,
+
   uiFlags: {
     isPayPalEnabled: false,
     isPayPalWebViewEnable: false,
@@ -76,6 +77,8 @@ const returnBagPageReducerExtension = (state = initialState, action) => {
       return state.set('paypalBtnHidden', action.payload);
     case BAGPAGE_CONSTANTS.FETCHING_CART_DATA:
       return state.set('bagLoading', true);
+    case BAGPAGE_CONSTANTS.RESET_BAG_LOADED_STATE:
+      return state.set('loaded', false);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
@@ -106,6 +109,7 @@ const returnBagPageReducer = (state = initialState, action) => {
         ...action.payload,
         showModal: true,
       });
+
     default:
       return returnBagPageReducerExtension(state, action);
   }

@@ -230,6 +230,7 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
     letter-spacing: -0.5px;
+    line-height: 46px;
     margin-bottom: ",
                 [Function],
                 ";
@@ -334,6 +335,52 @@ exports[`ModuleK component renders correctly 1`] = `
                 [Function],
                 ";
     text-align: center;
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  .spaced_text_regular_black {
+    display: block;
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    letter-spacing: 2px;
+
+    @media ",
+                [Function],
+                " {
+      font-size: ",
+                [Function],
+                ";
+    }
+  }
+  /* Module M Heading Styles */
+  .medium_text_subpromo {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                ";
+    font-weight: normal;
+    text-align: center;
+
     @media ",
                 [Function],
                 " {
@@ -603,6 +650,7 @@ exports[`ModuleK component renders correctly 1`] = `
       outline: none;
       background: transparent;
       padding: 0;
+
       &:before {
         content: '';
         box-sizing: border-box;
@@ -676,14 +724,14 @@ exports[`ModuleK component renders correctly 1`] = `
     top: 50%;
   }
   .slick-next {
-    height: 50px;
+    height: 54px;
     right: -68px;
-    width: 13px;
+    width: 20px;
   }
   .slick-prev {
-    height: 50px;
+    height: 54px;
     left: -68px;
-    width: 13px;
+    width: 20px;
   }
   .slick-dots {
     bottom: -20px;

@@ -108,7 +108,7 @@ const AddedToBag = ({
         <StyledWrapper>
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
-          <AddedToBagWrapper>
+          <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
             <ScrollView>
               <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
               <AddedToBagViewPoints labels={labels} />
@@ -118,10 +118,13 @@ const AddedToBag = ({
                 closeModal={onRequestClose}
                 showAddTobag
                 fromAddedToBagModal
+                hideHeader={hide => {
+                  navigation.setParams({ headerMode: hide });
+                }}
               />
               <BossBanner labels={labels} />
               <LoyaltyBannerWrapper>
-                <LoyaltyBanner pageCategory="isAddedToBagPage" />
+                <LoyaltyBanner pageCategory="isAddedToBagPage" navigation={navigation} />
               </LoyaltyBannerWrapper>
               <RecommendationWrapper>
                 <Recommendations
