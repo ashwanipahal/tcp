@@ -38,6 +38,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <ReduxForm
         dataLocators={
           Object {
+            "checkBox_gym": "check_box_gym_opt_in",
+            "checkBox_tcp": "check_box_tcp_opt_in",
             "errorDataLocator": "email_error_message",
             "inputField": "enter_email_text_field",
             "submitButton": "email_submit_btn",
@@ -57,8 +59,10 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         keepDirtyOnReinitialize={false}
         labels={
           Object {
+            "lbl_SignUp_gymSignUpLabel": "",
             "lbl_SignUp_placeholderText": "",
             "lbl_SignUp_submitButtonLabel": "",
+            "lbl_SignUp_tcpSignUpLabel": "",
             "lbl_SignUp_termsTextLabel": "",
             "lbl_SignUp_validationErrorLabel": "",
           }
@@ -139,6 +143,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <ReduxForm
         dataLocators={
           Object {
+            "checkBox_gym": "sms_gym_opt_in",
+            "checkBox_tcp": "sms_tcp_opt_in",
             "errorDataLocator": "sms_error_message",
             "inputField": "sms_field",
             "submitButton": "sms_submit_btn",
