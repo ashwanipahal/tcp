@@ -216,6 +216,7 @@ export default css`
       }
       & .brand-image {
         width: 60px;
+        height: 26px;
       }
     }
 
