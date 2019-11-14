@@ -631,6 +631,26 @@ export const disableBodyScroll = targetElem => {
   }
 };
 
+export const constructToPath = url => {
+  let toPath = url;
+  if (url) {
+    if (url.indexOf('/outfit/') !== -1) {
+      const outfitParams = url && url.split('/');
+      toPath =
+        outfitParams &&
+        outfitParams.length > 1 &&
+        `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+          outfitParams[outfitParams.length - 1]
+        }`;
+    } else if (url.indexOf('/c/') !== -1) {
+      toPath = url.replace('/c/', '/c?cid=');
+    } else if (url.indexOf('/p/') !== -1) {
+      toPath = url.replace('/p/', '/p?pid=');
+    }
+  }
+  return toPath;
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
