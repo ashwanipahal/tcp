@@ -24,6 +24,9 @@ exports[`ProductListItem component should render correctly 1`] = `
             "miscInfo": Object {},
           },
         ],
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
         "productInfo": Object {
           "name": "tcp",
         },
@@ -39,7 +42,7 @@ exports[`ProductListItem component should render correctly 1`] = `
   <RenderPricesSection
     accessibilityLabel="Price Section"
     hideFavorite={false}
-    isFavorite={false}
+    isFavorite=""
     isLoggedIn={false}
     item={
       Object {
@@ -54,6 +57,9 @@ exports[`ProductListItem component should render correctly 1`] = `
             "miscInfo": Object {},
           },
         ],
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
         "productInfo": Object {
           "name": "tcp",
         },
@@ -96,6 +102,9 @@ exports[`ProductListItem component should render correctly 1`] = `
             "miscInfo": Object {},
           },
         ],
+        "miscInfo": Object {
+          "isInDefaultWishlist": "",
+        },
         "productInfo": Object {
           "name": "tcp",
         },

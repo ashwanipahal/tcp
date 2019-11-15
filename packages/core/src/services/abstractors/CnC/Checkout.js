@@ -1061,10 +1061,14 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
 }
 
 export function updateRTPSData(prescreen, isExpressCheckout) {
+  let fromPage = 'normal';
+  if (isExpressCheckout) {
+    fromPage = 'expressCheckout';
+  }
   const payload = {
     body: {
       prescreen,
-      fromPage: isExpressCheckout ? 'expressCheckout' : 'normal',
+      fromPage,
     },
     webService: endpoints.updateRTPSdata,
   };

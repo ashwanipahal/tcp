@@ -1011,9 +1011,9 @@ const getShowRTPSOnBilling = createSelector(
 );
 
 const getshowRTPSOnReview = createSelector(
-  [hasPLCCOrRTPSEnabled, isExpressCheckout],
-  (rtpsEnabled, isExpressCheckoutEnabled) => {
-    return rtpsEnabled && isExpressCheckoutEnabled;
+  hasPLCCOrRTPSEnabled,
+  rtpsEnabled => {
+    return rtpsEnabled;
   }
 );
 

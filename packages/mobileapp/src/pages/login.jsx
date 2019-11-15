@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator, SafeAreaView } from 'react-navigation';
-import { navigateToNestedRoute, resetNavigationStack } from '@tcp/core/src/utils/utils.app';
+import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
 import PurchaseGiftsCard from '@tcp/core/src/components/features/account/PurchaseGiftsCard';
 import HeaderNew from '../components/common/molecules/Header/HeaderNew';
 import walletPage from '../screens/walletPage';
@@ -51,7 +51,6 @@ Login.navigationOptions = {
     <NavBarIcon iconActive="wallet-active" iconInactive="wallet-inactive" {...props} />
   ),
   tabBarOnPress: ({ navigation }) => {
-    resetNavigationStack(navigation);
     navigateToNestedRoute(navigation, 'WalletStack', 'walletPage');
   },
 };

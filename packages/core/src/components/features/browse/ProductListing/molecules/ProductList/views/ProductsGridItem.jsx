@@ -53,6 +53,7 @@ class ProductsGridItem extends React.PureComponent {
       pdpUrl: props.item.productInfo.pdpUrl,
       isAltImgRequested: false,
       isMoveItemOpen: false,
+      generalProductId: '',
     };
     const {
       onQuickViewOpenClick,
@@ -67,6 +68,16 @@ class ProductsGridItem extends React.PureComponent {
   }
 
   componentDidMount() {
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
+    const { generalProductId } = this.state;
+    if (isLoggedIn && generalProductId !== '') {
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
+      this.setState({ generalProductId: '' });
+    }
+
     document.addEventListener('mousedown', this.handleClickOutside);
   }
 
@@ -143,14 +154,20 @@ class ProductsGridItem extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       removeFavItem,
+      isSearchListing,
     } = this.props;
     const { selectedColorProductId } = this.state;
     if (removeFavItem) {
       removeFavItem({ itemId });
     } else {
-      onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
+      onAddItemToFavorites({
+        colorProductId: selectedColorProductId || generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
       if (isClient() && isLoggedIn) {
         this.setState({ isInDefaultWishlist: true });
+      } else {
+        this.setState({ generalProductId: selectedColorProductId || generalProductId });
       }
     }
   };
