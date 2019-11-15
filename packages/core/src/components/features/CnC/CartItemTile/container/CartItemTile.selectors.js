@@ -433,3 +433,7 @@ export const getCartToggleError = state => {
 export const getCartBossBopisToggleError = state => {
   return state.CartItemTileReducer.get('toggleBossBopisError');
 };
+
+export const getIsDeleteConfirmationModalEnabled = state => {
+  return state.session.siteDetails.IS_DELETE_CONFIRMATION_MODAL_ENABLED === 'TRUE';
+};
