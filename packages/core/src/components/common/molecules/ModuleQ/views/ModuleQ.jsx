@@ -51,25 +51,25 @@ class ModuleQ extends React.PureComponent {
     const hiddenImagesCount = items.length - looksImages.length;
     const outfitParams = pdpUrl && pdpUrl.split('/');
     const { RECOMMENDATION } = constant;
+    const outfitUrl =
+      outfitParams &&
+      outfitParams.length > 1 &&
+      `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+        outfitParams[outfitParams.length - 1]
+      }&viaModule=${RECOMMENDATION}`;
     return (
       <div>
         <Anchor
           key={id}
           className="moduleQ-image-link"
-          to={
-            outfitParams &&
-            outfitParams.length > 1 &&
-            `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
-              outfitParams[outfitParams.length - 1]
-            }&viaModule=${RECOMMENDATION}`
-          }
+          to={outfitUrl}
           asPath={pdpUrl}
           dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
         >
           <div className="looks-large-image">
             <Image alt={id} src={this.getUrlWithHttp(largeImageUrl)} />
             <div className="shop-this-look-link">
-              <Anchor withCaret centered>
+              <Anchor to={outfitUrl} asPath={pdpUrl} withCaret centered>
                 <BodyCopy component="span" color="gray.900" fontFamily="secondary" fontSize="fs12">
                   {shopThisLookLabel}
                 </BodyCopy>

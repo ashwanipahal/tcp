@@ -167,6 +167,7 @@ const ModuleQ = props => {
     selectedColorProductId,
     showRelatedOutfitHeader,
     isCompleteTheLook,
+    source,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -248,6 +249,7 @@ const ModuleQ = props => {
         navigation={navigation}
         selectedColorProductId={selectedColorProductId}
         testID={getLocator('moduleQ_cta_link')}
+        source={source}
       />
 
       {dataStatus ? (
@@ -311,6 +313,7 @@ ModuleQ.defaultProps = {
   headerText: [],
   showRelatedOutfitHeader: null,
   isCompleteTheLook: false,
+  source: '',
 };
 
 ModuleQ.propTypes = {
@@ -356,6 +359,7 @@ ModuleQ.propTypes = {
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
   isCompleteTheLook: PropTypes.bool,
+  source: PropTypes.string,
 };
 
 export default ModuleQ;

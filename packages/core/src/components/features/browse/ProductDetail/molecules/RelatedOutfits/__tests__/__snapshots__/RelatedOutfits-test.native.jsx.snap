@@ -2,7 +2,9 @@
 
 exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
 <View>
-  <Styled(View)>
+  <Styled(View)
+    marginBottom={false}
+  >
     <Connect(ModuleQ)
       divTabs={Array []}
       hideTabs={true}
