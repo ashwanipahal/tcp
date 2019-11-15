@@ -33,13 +33,14 @@ const mapStateToProps = state => {
         };
 
         contentIds.forEach(contentId => {
-          const placeHolderName = Modules[contentId].val
-            ? capitalize(Modules[contentId].val)
-                .split(' ')
-                .join('')
-            : '';
+          const placeHolderName =
+            Modules[contentId] && Modules[contentId].val
+              ? capitalize(Modules[contentId].val)
+                  .split(' ')
+                  .join('')
+              : '';
           response.data.slot.push(
-            Modules[contentId].moduleName !== 'placeholder'
+            Modules[contentId] && Modules[contentId].moduleName !== 'placeholder'
               ? Modules[contentId]
               : {
                   ...Modules[contentId],

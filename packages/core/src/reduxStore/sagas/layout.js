@@ -1,8 +1,9 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, all } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { getNavigationData } from '@tcp/core/src/services/abstractors/common/subNavigation';
 import layoutAbstractor from '../../services/abstractors/bootstrap/layout';
 import GLOBAL_CONSTANTS from '../constants';
-import { loadLayoutData, loadModulesData } from '../actions';
+import { loadLayoutData, loadModulesData, setSubNavigationData } from '../actions';
 import { getAPIConfig } from '../../utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../services/api.constants';
 
@@ -27,7 +28,25 @@ function* fetchPageLayout(action) {
         language,
         layoutName || page
       );
+      const placeHolderIdList = Object.keys(modulesData).filter(
+        module => modulesData[module].moduleName === 'placeholder'
+      );
       yield put(loadModulesData(modulesData));
+      if (placeHolderIdList.length > 0) {
+        const placeholderResult = yield all(
+          placeHolderIdList.map(listItem =>
+            call(
+              getNavigationData,
+              modulesData[listItem].val,
+              layoutParams.brand,
+              layoutParams.country
+            )
+          )
+        );
+        yield all(
+          placeholderResult.map(results => put(setSubNavigationData(results.val, results.key)))
+        );
+      }
     } else {
       logger.error(`Error occurred in layout query ${errorMessage}`);
     }
