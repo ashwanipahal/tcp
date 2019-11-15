@@ -27,8 +27,10 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
         {links.map((link, index) => {
           return (
             <ClickTracker
-              href="#"
-              clickData={{ customEvents: ['event84'], socialNetwork: 'facebookooo' }}
+              as={Anchor}
+              to={link.url}
+              target={link.target}
+              clickData={{ customEvents: ['event84'], socialNetwork: link.title.toLowerCase() }}
             >
               <Image
                 className="social-media-icon"

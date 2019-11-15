@@ -6,7 +6,7 @@
 // Note: useDispatch() can only be called during hook execution.
 // TODO: Upgrade react-redux and use this hook
 // import { useDispatch } from 'react-redux';
-import { trackPageView, trackClick, setClickAnalyticsData } from './actions';
+import { trackPageView, trackClick, setClickAnalyticsData, updatePageData } from './actions';
 
 /**
  * Use for dispatching the "track page view" action.
@@ -44,4 +44,8 @@ export function useClickTracking(dispatch) {
 
 export function useSetClickAnalytics(dispatch) {
   return payload => dispatch(setClickAnalyticsData(payload));
+}
+
+export function useSetPageData(dispatch) {
+  return payload => dispatch(updatePageData(payload));
 }

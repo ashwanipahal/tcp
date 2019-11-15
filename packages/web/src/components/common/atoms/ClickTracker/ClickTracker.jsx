@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect } from 'react';
-import { string, node, func, object } from 'prop-types';
+import { string, node, func, shape } from 'prop-types';
 import { connect } from 'react-redux';
-import { useClickTracking, useSetClickAnalytics } from '@tcp/core/src/analytics';
+import { useClickTracking, useSetClickAnalytics, useSetPageData } from '@tcp/core/src/analytics';
 
 /**
  * This component can be used for dispatching click
@@ -20,38 +20,47 @@ import { useClickTracking, useSetClickAnalytics } from '@tcp/core/src/analytics'
  * <BrandLogo ref={logo} />
  * <ClickTracker name="brand_logo" ref={logo} />
  */
-const ClickTracker = forwardRef(({ as: Component, name, clickData, children, dispatch, ...props }, ref) => {
-  const track = useClickTracking(dispatch);
-  const setClickTrack = useSetClickAnalytics(dispatch);
+const ClickTracker = forwardRef(
+  ({ as: Component, name, clickData, pageData, children, dispatch, ...props }, ref) => {
+    const track = useClickTracking(dispatch);
+    const setClickTrack = useSetClickAnalytics(dispatch);
+    const setPageData = useSetPageData(dispatch);
 
-  const handleClick = () => {
-    setClickTrack(clickData);
-    track(name);
-  };
+    const handleClick = () => {
+      if (pageData) {
+        setPageData(pageData);
+      }
+      if (clickData) {
+        setClickTrack(clickData);
+      }
+      track(name);
+    };
 
-  // eslint-disable-next-line consistent-return
-  useEffect(() => {
-    // If a ref us supplied, then track its click events.
-    if (ref) {
-      const target = ref.current;
-      target.addEventListener('click', handleClick);
-      return () => target.removeEventListener('click', handleClick);
-    }
-  }, [ref]);
+    // eslint-disable-next-line consistent-return
+    useEffect(() => {
+      // If a ref us supplied, then track its click events.
+      if (ref) {
+        const target = ref.current;
+        target.addEventListener('click', handleClick);
+        return () => target.removeEventListener('click', handleClick);
+      }
+    }, [ref]);
 
-  // If children are supplied, assume we want to track bubbling click events.
-  return children ? (
-    <Component onClick={handleClick} {...props}>
-      {children}
-    </Component>
-  ) : null;
-});
+    // If children are supplied, assume we want to track bubbling click events.
+    return children ? (
+      <Component onClick={handleClick} {...props}>
+        {children}
+      </Component>
+    ) : null;
+  }
+);
 
 ClickTracker.propTypes = {
   as: string,
   name: string,
   children: node,
-  clickData: object,
+  clickData: shape({}),
+  pageData: shape({}),
   dispatch: func.isRequired,
 };
 
@@ -59,7 +68,8 @@ ClickTracker.defaultProps = {
   as: 'div',
   name: '',
   children: null,
-  clickData: {}
+  clickData: null,
+  pageData: null,
 };
 
 export default connect()(ClickTracker);

@@ -13,6 +13,7 @@ import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { getLocator } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 
 import SocialMediaLinks from '../SocialMediaLinks';
 /* TODO move to component itself */
@@ -206,7 +207,8 @@ class FooterTopCandidateA extends React.PureComponent {
                   }}
                   className="candidate_a_inline_container_button col-md-half-width"
                 >
-                  <Button
+                  <ClickTracker
+                    as={Button}
                     id={
                       isNavigationFooter
                         ? 'extole_zone_global_navigation_footer'
@@ -215,9 +217,15 @@ class FooterTopCandidateA extends React.PureComponent {
                     buttonVariation="variable-width"
                     data-locator={getLocator('refer_friend')}
                     className="refer_a_friend_button"
+                    clickData={{
+                      customEvents: ['event22', 'event80'],
+                    }}
+                    pageData={{
+                      pageShortName: 'content:referafriend  confirmation',
+                    }}
                   >
                     {referAFriendButtonLabels.text}
-                  </Button>
+                  </ClickTracker>
                 </Col>
               </Row>
               <div className="divider hide-in-medium-down" />

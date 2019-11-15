@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Button, Col, Row, TextItems, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import SocialMediaLinks from '../SocialMediaLinks';
 
 /* TODO move to component itself */
@@ -89,15 +90,22 @@ const FooterTopCandidateB = props => {
             }
             title={referAFriend.title}
           >
-            <Button
+            <ClickTracker
+              as={Button}
               customStyle="shadow-button"
               data-locator={getLocator('refer_friend')}
               className="candidate-b_buttons"
+              clickData={{
+                customEvents: ['event22', 'event80'],
+              }}
+              pageData={{
+                pageShortName: 'content:referafriend  confirmation',
+              }}
             >
               <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">
                 <TextItems textItems={referAFriend.textItems} />
               </BodyCopy>
-            </Button>
+            </ClickTracker>
           </span>
         </Col>
         <Col
