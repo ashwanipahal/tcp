@@ -42,10 +42,16 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const { item, selectedColorIndex, onGoToPDPPage, productImageWidth } = this.props;
+    const {
+      item,
+      selectedColorIndex,
+      onGoToPDPPage,
+      productImageWidth,
+      productImageHeight,
+    } = this.props;
     const { activeSlideIndex } = this.state;
     const { colorsMap, imagesByColor, productInfo } = item;
-    const { pdpUrl, name } = productInfo;
+    const pdpUrl = productInfo ? productInfo.pdpUrl : item.pdpUrl;
     const modifiedPdpUrl = getProductListToPathInMobileApp(pdpUrl) || '';
     const { colorProductId } = (colorsMap && colorsMap[selectedColorIndex]) || item.skuInfo;
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, colorProductId);
@@ -76,7 +82,7 @@ class ImageCarousel extends React.PureComponent {
             : `https://test4.childrensplace.com${imgSource.item.imageUrl}`;
           return (
             <TouchableOpacity
-              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, name)}
+              onPress={() => onGoToPDPPage(modifiedPdpUrl, colorProductId, productInfo)}
               accessible={index === activeSlideIndex}
               accessibilityRole="image"
               accessibilityLabel={`product image ${index + 1}`}
@@ -85,7 +91,7 @@ class ImageCarousel extends React.PureComponent {
                 key={index.toString()}
                 url={imageUrl}
                 isProductImage
-                height={imageHeight}
+                height={productImageHeight || imageHeight}
                 width={productImageWidth || imageWidth}
                 resizeMode="contain"
               />
@@ -102,12 +108,14 @@ ImageCarousel.propTypes = {
   selectedColorIndex: PropTypes.number,
   onGoToPDPPage: PropTypes.func.isRequired,
   productImageWidth: PropTypes.number,
+  productImageHeight: PropTypes.number,
 };
 
 ImageCarousel.defaultProps = {
   item: {},
   selectedColorIndex: 0,
   productImageWidth: null,
+  productImageHeight: null,
 };
 
 export default ImageCarousel;

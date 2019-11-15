@@ -5,7 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, isCanada } from '@tcp/core/src/utils';
 
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/MiniBagHeader.style';
@@ -37,6 +37,7 @@ class MiniBagHeader extends React.Component {
       currentPoints,
       totalRewards,
       isPlcc,
+      isUserLoggedIn,
     } = this.props;
 
     const createAccount = 'createAccount';
@@ -49,7 +50,7 @@ class MiniBagHeader extends React.Component {
             className={!userName ? 'subHeaderTextLogin' : 'subHeaderText'}
             colSize={{ small: 4, medium: 6, large: 9 }}
           >
-            {!userName ? (
+            {!userName && !isUserLoggedIn ? (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
                 <Anchor
                   fontSizeVariation="large"
@@ -86,19 +87,21 @@ class MiniBagHeader extends React.Component {
                 >
                   {`${labels.hi}, ${userName} `}
                 </BodyCopy>
-                <BodyCopy
-                  className="pointsRewards"
-                  color={getPointsColor(isPlcc)}
-                  component="span"
-                  fontSize="fs13"
-                  fontFamily="secondary"
-                  fontWeight="semibold"
-                  textAlign="left"
-                >
-                  {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
-                    labels.inRewards
-                  })`}
-                </BodyCopy>
+                {!isCanada && (
+                  <BodyCopy
+                    className="pointsRewards"
+                    color={getPointsColor(isPlcc)}
+                    component="span"
+                    fontSize="fs13"
+                    fontFamily="secondary"
+                    fontWeight="semibold"
+                    textAlign="left"
+                  >
+                    {`(${currentPoints} ${labels.points}, $${parseFloat(totalRewards)} ${
+                      labels.inRewards
+                    })`}
+                  </BodyCopy>
+                )}
               </>
             )}
           </Col>
@@ -145,6 +148,7 @@ MiniBagHeader.propTypes = {
   onRequestClose: PropTypes.func.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isPlcc: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default withStyles(MiniBagHeader, styles);

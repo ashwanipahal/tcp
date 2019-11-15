@@ -9,6 +9,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
     closePLCCModal={[Function]}
     isModalOpen={false}
     isPLCCModalOpen={true}
+    isRtpsFlow={true}
     labels={
       Object {
         "plcc_form_contact_info_header": "contact information",
@@ -16,13 +17,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
       }
     }
     openPLCCModal={[Function]}
-  />
-  <Styled(Anchor)
-    anchorVariation="primary"
-    fontSizeVariation="medium"
-    onClick={[Function]}
-    text="lbl_PLCCModal_applyNowLink"
-    underline={true}
+    submitAcceptOrDeclinePlcc={[MockFunction]}
   />
 </div>
 `;
@@ -30,13 +25,5 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 exports[`ApplyNowModalWrapper component should renders correctly for closed plccModal 1`] = `
 <div
   className="demo"
->
-  <Styled(Anchor)
-    anchorVariation="primary"
-    fontSizeVariation="medium"
-    onClick={[Function]}
-    text="lbl_PLCCModal_applyNowLink"
-    underline={true}
-  />
-</div>
+/>
 `;

@@ -15,7 +15,7 @@ import {
   WishListIcon,
 } from '../../../ProductListing/molecules/ProductList/views/ProductItemComponents';
 
-class ProductBasicInfo extends React.PureComponent {
+class ProductBasicInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ class ProductBasicInfo extends React.PureComponent {
 
   render() {
     const {
-      // isBundleProduct,
+      isBundleProduct,
       pdpUrl,
       badge,
       isGiftCard,
@@ -85,16 +85,17 @@ class ProductBasicInfo extends React.PureComponent {
             ) : (
               title
             )}
-            {
+            {!isGiftCard && (
               <div className="wishlist-container">
-                {WishListIcon(
-                  isFavoriteView,
-                  isInDefaultWishlist,
-                  this.handleAddToWishlist
-                  // itemNotAvailable
-                )}
+                {!isBundleProduct &&
+                  WishListIcon(
+                    isFavoriteView,
+                    isInDefaultWishlist,
+                    this.handleAddToWishlist
+                    // itemNotAvailable
+                  )}
               </div>
-            }
+            )}
           </div>
           {/* TODO - fix it with bundle product requirement */}
           {/* {!isBundleProduct && !isGiftCard && isRatingsVisible && <ProductRating ratingsProductId={ratingsProductId} /> } */}
@@ -121,6 +122,7 @@ ProductBasicInfo.propTypes = {
   isGiftCard: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  isBundleProduct: PropTypes.bool,
 };
 
 ProductBasicInfo.defaultProps = {
@@ -128,6 +130,7 @@ ProductBasicInfo.defaultProps = {
   pdpUrl: null,
   badge: '',
   isLoggedIn: false,
+  isBundleProduct: false,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);

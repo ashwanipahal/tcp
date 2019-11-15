@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
-import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
+import { getCartItemCount, readCookie } from '@tcp/core/src/utils/cookie.util';
 import { breakpoints } from '@tcp/core/styles/themes/TCP/mediaQuery';
 import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import SearchBar from '@tcp/core/src/components/common/molecules/SearchBar/index';
@@ -65,24 +65,40 @@ class HeaderMiddleNav extends React.PureComponent {
     return null;
   }
 
-  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
-    e.stopPropagation();
+  onLinkClick = (
+    { openOverlay, userNameClick, triggerLoginCreateAccount, navname },
+    componentToOpen
+  ) => {
+    const { setClickAnalyticsData } = this.props;
+
+    setClickAnalyticsData({
+      eventName: 'navigation click',
+      pageNavigationText: navname,
+    });
     if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
         component: componentToOpen,
         variation: 'primary',
       });
     }
+    this.setState({
+      userNameClick: !userNameClick,
+    });
   };
 
-  handleUserTypeColor = isUserPlcc => {
-    return isUserPlcc ? 'blue.500' : 'orange.800';
-  };
-
-  renderAccountInfoSection = (userName, openOverlay, isUserPlcc, userPoints, userRewards) => {
+  renderAccountInfoSection = (
+    userName,
+    openOverlay,
+    isUserPlcc,
+    userPoints,
+    userRewards,
+    isRememberedUser
+  ) => {
     const { userNameClick, triggerLoginCreateAccount, isSearchOpen } = this.state;
-    const { isOpenOverlay } = this.props;
-    return userName && !isSearchOpen ? (
+    const { isOpenOverlay, isLoggedIn } = this.props;
+    const displayName = userName || readCookie('tcp_firstname');
+
+    return userName && isLoggedIn && !isSearchOpen ? (
       <LoggedInUserInfo
         mainId="accountDrawer"
         userName={userName}
@@ -102,6 +118,10 @@ class HeaderMiddleNav extends React.PureComponent {
           triggerLoginCreateAccount={triggerLoginCreateAccount}
           onLinkClick={this.onLinkClick}
           openOverlay={openOverlay}
+          isRememberedUser={isRememberedUser}
+          userName={displayName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           isDrawer={false}
         />
       )
@@ -145,6 +165,7 @@ class HeaderMiddleNav extends React.PureComponent {
       userRewards,
       store,
       labels,
+      isRememberedUser,
     } = this.props;
     const { userNameClick, triggerLoginCreateAccount } = this.state;
     const brand = getBrand();
@@ -160,7 +181,7 @@ class HeaderMiddleNav extends React.PureComponent {
           <Row className={`${className} header-middle-nav`}>
             <Col
               colSize={{
-                large: 4,
+                large: 5,
                 medium: 8,
                 small: 6,
               }}
@@ -171,7 +192,7 @@ class HeaderMiddleNav extends React.PureComponent {
             <Col
               className="header-middle-nav-search"
               colSize={{
-                large: 4,
+                large: 2,
                 medium: 8,
                 small: 6,
               }}
@@ -204,7 +225,7 @@ class HeaderMiddleNav extends React.PureComponent {
               />
               <StoreLocatorLink store={store} labels={storeLabel} />
               <BrandLogo
-                alt={config[brand].alt}
+                alt={config[brand] && config[brand].alt}
                 className="header-brand__home-logo--brand"
                 dataLocator={config[brand].dataLocator}
                 imgSrc={config[brand].imgSrc}
@@ -212,7 +233,7 @@ class HeaderMiddleNav extends React.PureComponent {
             </Col>
             <Col
               colSize={{
-                large: 4,
+                large: 5,
                 medium: 8,
                 small: 6,
               }}
@@ -257,7 +278,8 @@ class HeaderMiddleNav extends React.PureComponent {
                 openOverlay,
                 isUserPlcc,
                 userPoints,
-                userRewards
+                userRewards,
+                isRememberedUser
               )}
               <Anchor
                 to=""
@@ -348,6 +370,8 @@ HeaderMiddleNav.propTypes = {
     features: PropTypes.shape({}),
   }),
   labels: PropTypes.shape({}).isRequired,
+  isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {
@@ -369,6 +393,7 @@ HeaderMiddleNav.defaultProps = {
     },
     features: {},
   },
+  isRememberedUser: false,
 };
 
 export { HeaderMiddleNav as HeaderMiddleNavVanilla };

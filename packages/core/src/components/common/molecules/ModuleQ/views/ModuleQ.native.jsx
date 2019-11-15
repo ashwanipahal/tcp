@@ -49,17 +49,20 @@ const {
 } = CAROUSEL_OPTIONS.APP;
 const getUrlWithHttp = url => url.replace(/(^\/\/)/, 'https:$1');
 
-const getLoadingHost = host => {
-  return host ? LAZYLOAD_HOST_NAME.PDP : LAZYLOAD_HOST_NAME.HOME;
-};
-
 /**
  * This function is being called through snap carousel render function.
  * @param {Object} productItem SnapCarousel data item
  * @param {Object} navigation Navigation object required for children
  * @param {String} moduleQMainTile label required for all slides main tile.
  */
-function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad) {
+function getCarouselSlide(
+  productItem,
+  navigation,
+  moduleQMainTile,
+  ignoreLazyLoadImage,
+  hostLazyLoad,
+  isCompleteTheLook
+) {
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
   const outfitItemsToShow = items.slice(0, totalOutfitItemsToShow);
@@ -82,7 +85,7 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
             <OutfitMainImageWrapper>
               <StyledImage
                 alt={moduleQMainTile}
-                host={getLoadingHost(hostLazyLoad)}
+                host={ignoreLazyLoadImage ? '' : hostLazyLoad || LAZYLOAD_HOST_NAME.HOME}
                 url={getUrlWithHttp(imageUrl)}
                 height={PRODUCT_IMAGE_HEIGHT}
                 width={PRODUCT_IMAGE_WIDTH}
@@ -96,38 +99,40 @@ function getCarouselSlide(productItem, navigation, moduleQMainTile, hostLazyLoad
               textColor="gray.900"
             />
           </OutfitMainTileWrapper>
-          <OutfitItemsWrapper>
-            {outfitItemsToShow.map(item => {
-              const { name: alt, remoteId, smallImageUrl } = item;
+          {!isCompleteTheLook && (
+            <OutfitItemsWrapper>
+              {outfitItemsToShow.map(item => {
+                const { name: alt, remoteId, smallImageUrl } = item;
 
-              return (
-                <OutfitItemTileWrapper>
-                  <StyledImage
-                    key={remoteId}
-                    alt={alt}
-                    host={getLoadingHost(hostLazyLoad)}
-                    url={getUrlWithHttp(smallImageUrl)}
-                    height={OUTFIT_ITEM_IMAGE_HEIGHT}
-                    width={OUTFIT_ITEM_IMAGE_WIDTH}
+                return (
+                  <OutfitItemTileWrapper>
+                    <StyledImage
+                      key={remoteId}
+                      alt={alt}
+                      host={ignoreLazyLoadImage ? '' : hostLazyLoad || LAZYLOAD_HOST_NAME.HOME}
+                      url={getUrlWithHttp(smallImageUrl)}
+                      height={OUTFIT_ITEM_IMAGE_HEIGHT}
+                      width={OUTFIT_ITEM_IMAGE_WIDTH}
+                    />
+                  </OutfitItemTileWrapper>
+                );
+              })}
+              <OutfitItemTileWrapper>
+                <RestOutfitItemCountWrapper
+                  width={OUTFIT_ITEM_IMAGE_WIDTH}
+                  height={OUTFIT_ITEM_IMAGE_HEIGHT}
+                >
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs22"
+                    textAlign="center"
+                    fontWeight="extrabold"
+                    text={`+${items.length - totalOutfitItemsToShow}`}
                   />
-                </OutfitItemTileWrapper>
-              );
-            })}
-            <OutfitItemTileWrapper>
-              <RestOutfitItemCountWrapper
-                width={OUTFIT_ITEM_IMAGE_WIDTH}
-                height={OUTFIT_ITEM_IMAGE_HEIGHT}
-              >
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs22"
-                  textAlign="center"
-                  fontWeight="extrabold"
-                  text={`+${items.length - totalOutfitItemsToShow}`}
-                />
-              </RestOutfitItemCountWrapper>
-            </OutfitItemTileWrapper>
-          </OutfitItemsWrapper>
+                </RestOutfitItemCountWrapper>
+              </OutfitItemTileWrapper>
+            </OutfitItemsWrapper>
+          )}
         </Anchor>
       </ImageItemWrapper>
     </ImageSlideWrapper>
@@ -157,8 +162,11 @@ const ModuleQ = props => {
     autoplayInterval,
     shopThisLookLabel,
     hostLazyLoad,
+    ignoreLazyLoadImage,
     hideTabs,
     selectedColorProductId,
+    showRelatedOutfitHeader,
+    isCompleteTheLook,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -171,9 +179,20 @@ const ModuleQ = props => {
     return { ...item, productItemIndex: index };
   });
 
+  if (selectedProductList && selectedProductList.length && showRelatedOutfitHeader) {
+    showRelatedOutfitHeader(true);
+  }
+
   const renderCarouselSlide = slideProps => {
     const { item } = slideProps;
-    return getCarouselSlide(item, navigation, shopThisLookLabel, hostLazyLoad);
+    return getCarouselSlide(
+      item,
+      navigation,
+      shopThisLookLabel,
+      ignoreLazyLoadImage,
+      hostLazyLoad,
+      isCompleteTheLook
+    );
   };
 
   const onProductTabChange = (categoryId, tabItem) => {
@@ -183,7 +202,7 @@ const ModuleQ = props => {
   const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
-    <Container showData={showData} bgClass={bgClass}>
+    <Container isCompleteTheLook={isCompleteTheLook} bgClass={bgClass}>
       {!hideTabs ? (
         <MessageContainer>
           {headerText && (
@@ -285,10 +304,13 @@ ModuleQ.defaultProps = {
   promoBanner: null,
   autoplayInterval: 1,
   shopThisLookLabel: '',
+  ignoreLazyLoadImage: false,
   hostLazyLoad: '',
   hideTabs: false,
   selectedColorProductId: '',
   headerText: [],
+  showRelatedOutfitHeader: null,
+  isCompleteTheLook: false,
 };
 
 ModuleQ.propTypes = {
@@ -328,9 +350,12 @@ ModuleQ.propTypes = {
       singleCTAButton: PropTypes.object,
     })
   ).isRequired,
+  ignoreLazyLoadImage: PropTypes.bool,
   hostLazyLoad: PropTypes.string,
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
+  showRelatedOutfitHeader: PropTypes.func,
+  isCompleteTheLook: PropTypes.bool,
 };
 
 export default ModuleQ;

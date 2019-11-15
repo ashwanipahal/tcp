@@ -40,6 +40,9 @@ const LedgerStyle = css`
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy5}px;
     font-weight: ${props => props.theme.fonts.fontWeight.bold};
     line-height: ${props => props.theme.fonts.lineHeight.normal};
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      font-size: ${props => props.theme.typography.fontSizes.fs16};
+    }
   }
 
   .order-ledger-header {
@@ -104,6 +107,20 @@ const LedgerStyle = css`
         padding: 14px 14px;
       }
     }
+  }
+
+  .orderLedgerLoyalty {
+    ${props =>
+      props.pageCategory === 'confirmation'
+        ? `
+        @media ${props.theme.mediaQuery.medium} {
+          display: none;
+        }
+        @media ${props.theme.mediaQuery.large} {
+          display: none;
+        }
+        `
+        : ''}
   }
 `;
 

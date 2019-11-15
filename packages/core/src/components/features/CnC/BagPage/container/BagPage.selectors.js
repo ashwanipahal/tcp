@@ -27,10 +27,9 @@ const getBagPageLabels = state => {
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
         lbl_orderledger_total: totalLabel,
+        lbl_recently_viewed: recentlyViewed,
+        lbl_emptyBag_applyNow: applyNow,
       } = {},
-    } = {},
-    global: {
-      addedToBagModal: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
     } = {},
   } = state.Labels;
 
@@ -57,8 +56,8 @@ const getBagPageLabels = state => {
     'checkout'
   );
   return {
-    addedToBag,
-    checkout,
+    addedToBag: getLabelValue(state.Labels, 'lbl_header_addedToBag', 'addedToBagModal', 'checkout'),
+    checkout: getLabelValue(state.Labels, 'lbl_cta_checkout', 'addedToBagModal', 'checkout'),
     bagHeading,
     loggedInMsg,
     login,
@@ -74,6 +73,8 @@ const getBagPageLabels = state => {
     sflSuccess,
     sflDeleteSuccess,
     totalLabel,
+    recentlyViewed,
+    applyNow,
   };
 };
 
@@ -115,7 +116,8 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = state.Labels.global.addedToBagModal;
+  const { referred = [] } = getLabelValue(state.Labels, 'addedToBagModal', 'global');
+
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
 };
@@ -218,11 +220,29 @@ const itemDeleteModalLabels = state => {
   };
 };
 
+const getPayPalWebViewStatus = state => {
+  return state.CartPageReducer.getIn(['uiFlags', 'isPayPalWebViewEnable']) || false;
+};
+
+const isBagLoaded = state => {
+  return state.CartPageReducer.getIn(['loaded']);
+};
 const getBagStickyHeaderInterval = state => {
   return (
     parseInt(state.session.siteDetails.BAG_CONDENSE_HEADER_INTERVAL, 10) ||
     BAGPAGE_CONSTANTS.BAG_PAGE_STICKY_HEADER_INTERVAL
   );
+};
+
+const getIsPayPalHidden = state => {
+  return state.CartPageReducer.getIn(['paypalBtnHidden']);
+};
+
+const isBagLoading = state => {
+  return state.CartPageReducer.getIn(['bagLoading']);
+};
+const getCartLoadedState = state => {
+  return state.CartPageReducer.get('loaded');
 };
 
 export default {
@@ -245,6 +265,7 @@ export default {
   getGiftServicesContentGymId,
   getCurrentCurrency,
   getCartStores,
+  isBagLoaded,
   getCartStoresToJs,
   getsflItemsList,
   checkoutIfItemIsUnqualified,
@@ -252,4 +273,8 @@ export default {
   itemDeleteModalLabels,
   getIsPayPalEnabled,
   getBagStickyHeaderInterval,
+  getPayPalWebViewStatus,
+  getIsPayPalHidden,
+  isBagLoading,
+  getCartLoadedState,
 };

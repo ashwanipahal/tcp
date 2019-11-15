@@ -10,6 +10,7 @@ function* fetchPageLayout(action) {
   try {
     const { payload: page, layoutName } = action;
     const apiConfig = getAPIConfig();
+    const { language } = apiConfig;
     const layoutParams = {
       page,
       brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
@@ -17,9 +18,19 @@ function* fetchPageLayout(action) {
       country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
     };
     const layoutData = yield call(layoutAbstractor.getLayoutData, layoutParams);
-    yield put(loadLayoutData(layoutData.items[0].layout, layoutName || page));
-    const modulesData = yield call(layoutAbstractor.getModulesFromLayout, layoutData);
-    yield put(loadModulesData(modulesData));
+    const { errorMessage } = layoutData;
+    if (!errorMessage) {
+      yield put(loadLayoutData(layoutData.items[0].layout, layoutName || page));
+      const modulesData = yield call(
+        layoutAbstractor.getModulesFromLayout,
+        layoutData,
+        language,
+        layoutName || page
+      );
+      yield put(loadModulesData(modulesData));
+    } else {
+      logger.error(`Error occurred in layout query ${errorMessage}`);
+    }
   } catch (e) {
     logger.error(e);
   }

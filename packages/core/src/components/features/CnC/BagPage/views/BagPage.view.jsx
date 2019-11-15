@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
-import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
+import Heading from '../../../../common/atoms/Heading';
 import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddedToBagActions from '../../AddedToBagActions';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
+import styles, { addedToBagActionsStyles, recommendationStyles } from '../styles/BagPage.style';
 import BagPageUtils from './Bagpage.utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import InformationHeader from '../../common/molecules/InformationHeader';
 import { isClient } from '../../../../../utils';
+import BagPageAnalytics from './BagPageAnalytics.view';
 
 class BagPageView extends React.PureComponent {
   constructor(props) {
@@ -35,12 +39,8 @@ class BagPageView extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {
-      setVenmoPaymentInProgress,
-      totalCount,
-      sflItems,
-      isShowSaveForLaterSwitch,
-    } = this.props;
+    const { setVenmoPaymentInProgress, totalCount, sflItems } = this.props;
+    const { isShowSaveForLaterSwitch } = this.props;
     setVenmoPaymentInProgress(false);
 
     this.setState({
@@ -139,30 +139,48 @@ class BagPageView extends React.PureComponent {
 
   wrapSection = (Component, orderItemsCount) => {
     const isNoNEmptyBag = orderItemsCount > 0;
+    const colSizes = { small: 6, medium: 5, large: 8 };
     if (!isNoNEmptyBag) {
-      return (
-        <Col
-          colSize={{
-            small: 6,
-            medium: 5,
-            large: 8,
-          }}
-        >
-          {Component}
-        </Col>
-      );
+      return <Col colSize={colSizes}>{Component}</Col>;
     }
     return Component;
   };
 
+  renderRecommendations = () => {
+    const { sflItems, orderItemsCount } = this.props;
+    const hideRec = orderItemsCount === 0 && sflItems.size > 0;
+    return (
+      <>
+        {!hideRec ? (
+          <Recommendations
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+            variations="moduleO"
+            inheritedStyles={recommendationStyles}
+          />
+        ) : null}
+        {this.renderRecommendationsForRecent()}
+      </>
+    );
+  };
+
+  renderRecommendationsForRecent = () => {
+    const { labels } = this.props;
+    return (
+      <div className="recentlyViewed">
+        <Recommendations
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+          headerLabel={labels.recentlyViewed}
+          variations="moduleO"
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+          inheritedStyles={recommendationStyles}
+        />
+      </div>
+    );
+  };
+
   renderLeftSection = () => {
-    const {
-      labels,
-      sflItems,
-      isShowSaveForLaterSwitch,
-      isSflItemRemoved,
-      orderItemsCount,
-    } = this.props;
+    const { labels, sflItems, orderItemsCount } = this.props;
+    const { isShowSaveForLaterSwitch, isSflItemRemoved } = this.props;
     const { activeSection } = this.state;
     const myBag = 'myBag';
     return (
@@ -179,7 +197,6 @@ class BagPageView extends React.PureComponent {
             setHeaderErrorState={this.setHeaderErrorState}
           />
         </div>
-
         {isShowSaveForLaterSwitch &&
           this.wrapSection(
             <div
@@ -205,12 +222,14 @@ class BagPageView extends React.PureComponent {
             </div>,
             orderItemsCount
           )}
+        {this.renderRecommendations()}
+        <BagPageAnalytics {...this.props} />
       </React.Fragment>
     );
   };
 
   renderActions = () => {
-    const { labels, showAddTobag, handleCartCheckout } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, isMobile, isBagPage } = this.props;
 
     return (
       <div ref={this.getBagActionsContainerRef}>
@@ -219,7 +238,9 @@ class BagPageView extends React.PureComponent {
           showAddTobag={showAddTobag}
           inheritedStyles={addedToBagActionsStyles}
           handleCartCheckout={handleCartCheckout}
+          paypalButtonHeight={isMobile ? 42 : 48}
           containerId="paypal-button-container-bag"
+          isBagPage={isBagPage}
         />
       </div>
     );
@@ -232,15 +253,8 @@ class BagPageView extends React.PureComponent {
   };
 
   stickyBagCondensedHeader = () => {
-    const {
-      labels,
-      orderBalanceTotal,
-      totalCount,
-      showAddTobag,
-      handleCartCheckout,
-      orderItemsCount,
-      currencySymbol,
-    } = this.props;
+    const { labels, showAddTobag, handleCartCheckout, currencySymbol, isBagPage } = this.props;
+    const { orderBalanceTotal, totalCount, orderItemsCount } = this.props;
     const { showCondensedHeader } = this.state;
     // if (!showCondensedHeader) return null;
     return (
@@ -274,7 +288,9 @@ class BagPageView extends React.PureComponent {
                 inheritedStyles={addedToBagActionsStyles}
                 handleCartCheckout={handleCartCheckout}
                 isBagPageStickyHeader
+                paypalButtonHeight={42}
                 containerId="paypal-button-container-bag-header"
+                isBagPage={isBagPage}
               />
             </Col>
           </Row>
@@ -318,32 +334,16 @@ class BagPageView extends React.PureComponent {
   };
 
   render() {
-    const {
-      className,
-      labels,
-      totalCount,
-      orderItemsCount,
-      isUserLoggedIn,
-      isGuest,
-      sflItems,
-      isShowSaveForLaterSwitch,
-      orderBalanceTotal,
-      currencySymbol,
-    } = this.props;
-    const {
-      activeSection,
-      showStickyHeaderMob,
-      showCondensedHeader,
-      headerError,
-      params,
-    } = this.state;
+    const { className, labels, totalCount, orderItemsCount, isUserLoggedIn, isGuest } = this.props;
+    const { sflItems, isShowSaveForLaterSwitch, orderBalanceTotal, currencySymbol } = this.props;
+    const { activeSection, showStickyHeaderMob, showCondensedHeader, headerError } = this.state;
+    const { params } = this.state;
     const isNoNEmptyBag = orderItemsCount > 0;
     const isNonEmptySFL = sflItems.size > 0;
     const isNotLoaded = orderItemsCount === false;
     return (
       <div className={className}>
         {showCondensedHeader && this.stickyBagCondensedHeader()}
-
         <div
           ref={this.getBagPageHeaderRef}
           className={`${showStickyHeaderMob ? 'stickyBagHeader' : ''}`}
@@ -400,14 +400,16 @@ class BagPageView extends React.PureComponent {
               </Col>
             )}
           </Row>
+
           {this.renderHeaderError(headerError, params)}
         </div>
+
         <CnCTemplate
           leftSection={this.renderLeftSection}
           showLeftSection={
             (isNoNEmptyBag && activeSection === BAGPAGE_CONSTANTS.BAG_STATE) || isNotLoaded
           }
-          isNotLoaded={!isNotLoaded}
+          // isNotLoaded={!isNotLoaded}
           bagActions={this.renderActions}
           isUserLoggedIn={isUserLoggedIn}
           isGuest={isGuest}
@@ -415,11 +417,15 @@ class BagPageView extends React.PureComponent {
           isNonEmptySFL={isNonEmptySFL}
           pageCategory="bagPage"
         />
-        <QuickViewModal fromBagPage />
+        <QuickViewModal />
       </div>
     );
   }
 }
+
+BagPageView.defaultProps = {
+  isBagPage: true,
+};
 
 BagPageView.propTypes = {
   className: PropTypes.string.isRequired,
@@ -438,6 +444,7 @@ BagPageView.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   currencySymbol: PropTypes.string.isRequired,
   isSflItemRemoved: PropTypes.bool.isRequired,
+  isBagPage: PropTypes.bool,
 };
 
 export default withStyles(BagPageView, styles);

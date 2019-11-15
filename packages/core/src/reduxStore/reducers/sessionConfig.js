@@ -3,7 +3,9 @@ import { API_CONFIG } from '../../services/config';
 
 const { siteIds } = API_CONFIG;
 const initialState = {
-  siteDetails: {},
+  siteDetails: {
+    tcpSegment: 'default',
+  },
   otherBrandSiteDetails: {},
   siteOptions: {
     countriesMap: [],
@@ -65,6 +67,8 @@ const SessionConfigReducer = (state = initialState, action) => {
       return { ...state, siteOptions: { ...state.siteOptions, countriesMap: action.payload } };
     case GLOBAL_CONSTANTS.COUNTRY_LIST_STORE_CURRENCIES_MAP:
       return { ...state, siteOptions: { ...state.siteOptions, currenciesMap: action.payload } };
+    case GLOBAL_CONSTANTS.GET_SET_TCP_SEGMENT:
+      return { ...state, siteDetails: { ...state.siteDetails, tcpSegment: action.payload } };
     default:
       return state;
   }

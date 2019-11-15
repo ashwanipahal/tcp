@@ -1,6 +1,7 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import LoyaltyBannerSkeleton from '../../../skeleton/LoyaltyBannerSkeleton.view';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/LoyaltyBannerSection.style';
 import { BodyCopy } from '../../../../../../common/atoms';
@@ -44,15 +45,16 @@ const utilArrayNextReward = (pointsToNextReward, className) => {
   ];
 };
 
-const returnBoolForSubTotal = (
+const returnBoolForSubTotal = ({
   estimatedSubtotal,
   checkThresholdValue,
   thresholdValue,
   isPlcc,
   isReviewPage,
   isConfirmationPage,
-  isAddedToBagPage
-) => {
+  isAddedToBagPage,
+  isProductDetailView,
+}) => {
   let showSubtotal = false;
   /* istanbul ignore else */
   if (
@@ -61,7 +63,8 @@ const returnBoolForSubTotal = (
     !isPlcc &&
     !isReviewPage &&
     !isConfirmationPage &&
-    !isAddedToBagPage
+    !isAddedToBagPage &&
+    !isProductDetailView
   ) {
     showSubtotal = true;
   }
@@ -83,9 +86,11 @@ const LoyaltyBannerSection = props => {
     pointsToNextReward,
     getCurrencySymbol,
     pageCategory,
-    isProductDetailView,
     openOverlay,
     closeAddedToBagModal,
+    openApplyNowModal,
+    bagLoading,
+    footerLabels,
   } = props;
   let showSubtotal = false;
   let headingLabel = '';
@@ -93,19 +98,24 @@ const LoyaltyBannerSection = props => {
   let subHeadingLabel = '';
   let descriptionLabel = '';
   const earnedRewardAvailable = !!earnedReward;
-
   const pageCategoryArr = getPageCategory(pageCategory);
-  const { isReviewPage, isConfirmationPage, isAddedToBagPage } = pageCategoryArr;
+  const {
+    isReviewPage,
+    isConfirmationPage,
+    isAddedToBagPage,
+    isProductDetailView,
+  } = pageCategoryArr;
 
-  showSubtotal = returnBoolForSubTotal(
+  showSubtotal = returnBoolForSubTotal({
     estimatedSubtotal,
     checkThresholdValue,
     thresholdValue,
     isPlcc,
     isReviewPage,
     isConfirmationPage,
-    isAddedToBagPage
-  );
+    isAddedToBagPage,
+    isProductDetailView,
+  });
 
   const LoyaltyLabels = renderLoyaltyLabels(
     labels,
@@ -153,43 +163,48 @@ const LoyaltyBannerSection = props => {
   );
 
   remainingPlcc = LoyaltyLabels.remainingPlccValFn ? convertHtml(finalStrRemainingValue) : false;
-
   return (
     <div className={`${className}`}>
       <div className="loyalty-banner-wrapper">
-        <BodyCopy className="loyalty-banner-section-wrapper" component="div" fontFamily="secondary">
-          <GuestMprPlccSection
-            labels={labels}
-            headingLabel={headingLabel}
-            subHeadingLabel={subHeadingLabel}
-            descriptionLabel={descriptionLabel}
-            remainingPlcc={remainingPlcc}
-            showSubtotal={showSubtotal}
-            getCurrencySymbol={getCurrencySymbol}
-            currentSubtotal={currentSubtotal}
-            estimatedSubtotal={estimatedSubtotal}
-            isPlcc={isPlcc}
-            isGuest={isGuest}
-            pageCategory={pageCategory}
-            isProductDetailView={isProductDetailView}
-            earnedRewardAvailable={earnedRewardAvailable}
-          />
-          <div className="footer">
-            <LoyaltyFooterSection
-              className={className}
+        {isProductDetailView || (!bagLoading && currentSubtotal) ? (
+          <BodyCopy
+            className="loyalty-banner-section-wrapper"
+            component="div"
+            fontFamily="secondary"
+          >
+            <GuestMprPlccSection
               labels={labels}
+              headingLabel={headingLabel}
+              subHeadingLabel={subHeadingLabel}
+              descriptionLabel={descriptionLabel}
+              remainingPlcc={remainingPlcc}
+              showSubtotal={showSubtotal}
+              getCurrencySymbol={getCurrencySymbol}
+              currentSubtotal={currentSubtotal}
+              estimatedSubtotal={estimatedSubtotal}
               isPlcc={isPlcc}
-              isProductDetailView={isProductDetailView}
-              isReviewPage={isReviewPage}
-              isConfirmationPage={isConfirmationPage}
               isGuest={isGuest}
-              isAddedToBagPage={isAddedToBagPage}
+              pageCategory={pageCategory}
+              isProductDetailView={isProductDetailView}
               earnedRewardAvailable={earnedRewardAvailable}
-              openOverlay={openOverlay}
-              closeAddedToBagModal={closeAddedToBagModal}
             />
-          </div>
-        </BodyCopy>
+
+            <div className="footer">
+              <LoyaltyFooterSection
+                footerLabels={footerLabels}
+                className={className}
+                openOverlay={openOverlay}
+                closeAddedToBagModal={closeAddedToBagModal}
+                openApplyNowModal={openApplyNowModal}
+                isProductDetailView={isProductDetailView}
+              />
+            </div>
+          </BodyCopy>
+        ) : (
+          <>
+            <LoyaltyBannerSkeleton />
+          </>
+        )}
       </div>
     </div>
   );
@@ -197,7 +212,8 @@ const LoyaltyBannerSection = props => {
 
 LoyaltyBannerSection.propTypes = {
   className: PropTypes.string,
-  labels: PropTypes.shape.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  footerLabels: PropTypes.shape({}).isRequired,
   estimatedRewardsVal: PropTypes.number,
   currentSubtotal: PropTypes.number,
   estimatedSubtotal: PropTypes.number,
@@ -208,10 +224,11 @@ LoyaltyBannerSection.propTypes = {
   isPlcc: PropTypes.bool,
   pointsToNextReward: PropTypes.number,
   getCurrencySymbol: PropTypes.string,
-  isProductDetailView: PropTypes.bool,
   pageCategory: PropTypes.string,
   openOverlay: PropTypes.func.isRequired,
   closeAddedToBagModal: PropTypes.func.isRequired,
+  openApplyNowModal: PropTypes.func.isRequired,
+  bagLoading: PropTypes.bool,
 };
 
 LoyaltyBannerSection.defaultProps = {
@@ -227,7 +244,7 @@ LoyaltyBannerSection.defaultProps = {
   pageCategory: '',
   pointsToNextReward: 0,
   getCurrencySymbol: '',
-  isProductDetailView: '',
+  bagLoading: false,
 };
 
 export default withStyles(LoyaltyBannerSection, Styles);

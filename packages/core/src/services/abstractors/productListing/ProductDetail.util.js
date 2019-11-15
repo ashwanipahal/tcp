@@ -1,7 +1,7 @@
 import { parseBoolean, isBopisProduct, isBossProduct } from './productParser';
 import { extractExtraImages } from './productListing.utils';
 import { extractAttributeValue, extractPrioritizedBadge } from '../../../utils/badge.util';
-import utils from '../../../utils';
+import utils, { isCanada } from '../../../utils';
 import processHelpers from './processHelpers';
 
 const getIsGiftCard = (isGiftCard, baseProduct) => {
@@ -65,7 +65,7 @@ const breadCrumbFactory = state => {
   // const navList = storeState.globalComponents.header.navigationTree;
   // const previousPageUrl = document && document.referrer;
   // const previousPagePathName = seoURLExtactor(previousPageUrl);
-  const plpBreadCrumb = state.ProductListing.get('breadCrumbTrail');
+  const plpBreadCrumb = state.ProductListing.breadCrumbTrail;
   let breadCrumbs;
   if (plpBreadCrumb) {
     breadCrumbs = plpBreadCrumb;
@@ -109,7 +109,7 @@ const getImgPath = (id, excludeExtension) => {
 
 const apiHelper = {
   configOptions: {
-    isUSStore: true,
+    isUSStore: !isCanada(),
     siteId: utils.getSiteId(),
   },
 };

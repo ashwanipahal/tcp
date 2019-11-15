@@ -2,9 +2,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import ApplyCardLayoutView from '../views';
 import { fetchModuleX, resetPLCCResponse, submitInstantCardApplication } from './ApplyCard.actions';
 import { isPlccUser } from '../../../account/User/container/User.selectors';
+import CheckoutSelectors from '../../../CnC/Checkout/container/Checkout.selector';
 import { getUserProfileData, getUserId, isGuest } from './ApplyCard.selectors';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
@@ -100,6 +102,10 @@ class ApplyCardLayoutContainer extends React.Component {
       applyCard,
       toggleModal,
       resetPLCCApplicationStatus,
+      closeModal,
+      isRtpsFlow,
+      closePLCCModal,
+      togglePLCCModal,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
 
@@ -122,6 +128,10 @@ class ApplyCardLayoutContainer extends React.Component {
           showAddEditAddressForm={showAddEditAddressForm}
           submitForm={this.submitForm}
           closeAddressVerificationModal={this.closeAddressVerificationModal}
+          closeModal={closeModal}
+          isRtpsFlow={isRtpsFlow}
+          closePLCCModal={closePLCCModal}
+          togglePLCCModal={togglePLCCModal}
         />
         {!isMobileApp() && showAddEditAddressForm ? (
           <AddressVerification onSuccess={this.submitForm} />
@@ -147,8 +157,17 @@ ApplyCardLayoutContainer.propTypes = {
   applyCard: PropTypes.bool.isRequired,
   toggleModal: PropTypes.shape({}).isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
+  closeModal: PropTypes.func,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
+ApplyCardLayoutContainer.defaultProps = {
+  closeModal: () => {},
+};
+
+/* istanbul ignore next */
 export const mapStateToProps = state => {
   const { ApplyCardPage, Labels } = state;
   return {
@@ -160,9 +179,11 @@ export const mapStateToProps = state => {
     profileInfo: getUserProfileData(state),
     labels: Labels && Labels.global && Labels.global.plccForm,
     userId: getUserId(state),
+    isRtpsFlow: CheckoutSelectors.getIsRtpsFlow(state),
   };
 };
 
+/* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
     submitApplication: payload => {
@@ -176,6 +197,9 @@ export const mapDispatchToProps = dispatch => {
     },
     verifyAddressAction: payload => {
       dispatch(verifyAddress(payload));
+    },
+    togglePLCCModal: payload => {
+      dispatch(toggleApplyNowModal(payload));
     },
   };
 };

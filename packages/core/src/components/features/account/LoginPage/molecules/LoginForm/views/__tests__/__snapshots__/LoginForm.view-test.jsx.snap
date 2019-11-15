@@ -494,7 +494,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
-        fontSizeVariation="xlarge"
+        fontSizeVariation="large"
         onClick={[Function]}
         underline={true}
       >
@@ -502,6 +502,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
+  <Component />
 </div>
 `;
 
@@ -1017,7 +1018,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         dataLocator="login-forgotpasswordlnk"
-        fontSizeVariation="xlarge"
+        fontSizeVariation="large"
         onClick={[Function]}
         underline={true}
       >
@@ -1025,5 +1026,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       </Styled(Anchor)>
     </Styled(BodyCopy)>
   </form>
+  <Component />
 </div>
 `;

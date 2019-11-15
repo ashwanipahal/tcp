@@ -9,7 +9,12 @@ export default css`
   }
   .moduleL__promo-banner {
     text-align: center;
+    margin-bottom: 16px;
   }
+  .moduleL__header {
+    margin-bottom: 16px;
+  }
+
   .text-black {
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }

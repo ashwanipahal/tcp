@@ -7,7 +7,9 @@ import { getAddEditAddressLabels } from '../../../../../../common/organisms/AddE
 
 import { getCVVCodeInfoContentId, getCVVCodeRichTextSelector } from './BillingPage.selectors';
 import CheckoutSelectors from '../../../container/Checkout.selector';
-import { updateCardData } from '../../../container/Checkout.action';
+import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
+
+import CheckoutActions from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
   componentDidMount() {
@@ -19,8 +21,8 @@ class BillingPageContainer extends React.Component {
   }
 
   componentWillUnmount() {
-    const { clearCheckoutServerError, checkoutServerError } = this.props;
-    if (checkoutServerError) {
+    const { clearCheckoutServerError, checkoutServerError, isPayPalHidden } = this.props;
+    if (checkoutServerError && !isPayPalHidden) {
       clearCheckoutServerError({});
     }
   }
@@ -36,7 +38,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
     updateCardDetail: payload => {
-      dispatch(updateCardData(payload));
+      dispatch(CheckoutActions.updateCardData(payload));
     },
   };
 };
@@ -50,6 +52,7 @@ export const mapStateToProps = state => {
     addressLabels: getAddEditAddressLabels(state),
     isVenmoEnabled: getIsVenmoEnabled(state), // Venmo Kill Switch, if Venmo enabled then true, else false.
     venmoError: CheckoutSelectors.getVenmoError(state),
+    isPayPalHidden: BagPageSelectors.getIsPayPalHidden(state),
   };
 };
 
@@ -58,11 +61,13 @@ BillingPageContainer.propTypes = {
   getCVVCodeInfo: PropTypes.func,
   clearCheckoutServerError: PropTypes.func.isRequired,
   checkoutServerError: PropTypes.shape({}).isRequired,
+  isPayPalHidden: PropTypes.bool,
 };
 
 BillingPageContainer.defaultProps = {
   cvvCodeInfoContentId: null,
   getCVVCodeInfo: null,
+  isPayPalHidden: false,
 };
 
 export default connect(

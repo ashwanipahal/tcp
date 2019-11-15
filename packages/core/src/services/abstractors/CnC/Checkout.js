@@ -105,8 +105,7 @@ export const getServerErrorMessage = (error, errorsMapping) => {
     ];
     errorMsg = getFormattedErrorFromResponse(error, errorsMapping, errorList);
   }
-
-  if (typeof errorMsg.errorMessages === 'undefined') {
+  if (!errorMsg || typeof errorMsg.errorMessages === 'undefined') {
     return errorsMapping.DEFAULT;
   }
   // eslint-disable-next-line
@@ -559,7 +558,7 @@ function parseStoreOpeningAndClosingTimes(store) {
 const getCouponTotal = orderDetails => {
   let total = 0;
   if (orderDetails.OrderLevelPromos && orderDetails.OrderLevelPromos.explicit) {
-    Object.keys(orderDetails.OrderLevelPromos.explicit).forEach(item => {
+    orderDetails.OrderLevelPromos.explicit.forEach(item => {
       Object.keys(item).forEach(promoCode => {
         total += Math.abs(flatCurrencyToCents(item[promoCode].price));
       });
@@ -615,6 +614,7 @@ const getOrderConfirmationDetails = ({
       valueOfEarnedPcCoupons: parseInt(orderSummary.valueOfEarnedPcCoupons, 10) || 0,
       subTotal: flatCurrencyToCents(orderSummary.orderSubTotalBeforeDiscount),
       grandTotal: orderSummary.grandTotal,
+      totalOrderSavings: flatCurrencyToCents(orderSummary.orderTotalSaving || 0),
     },
 
     isOrderPending: orderSummary.orderStatus === CheckoutConstants.REVIEW_ORDER_STATUS,
@@ -1082,6 +1082,49 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
         plccEligible: rtpsData.plccEligible,
         prescreenCode: rtpsData.prescreenCode,
       };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function updateRTPSData(prescreen, isExpressCheckout) {
+  const payload = {
+    body: {
+      prescreen,
+      fromPage: isExpressCheckout ? 'expressCheckout' : 'normal',
+    },
+    webService: endpoints.updateRTPSdata,
+  };
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      const rtpsData = extractRtpsEligibleAndCode(res);
+      return {
+        success: true,
+        plccEligible: rtpsData.plccEligible,
+        prescreenCode: rtpsData.prescreenCode,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function acceptOrDeclinePreScreenOffer(preScreenCode, accepted) {
+  const payload = {
+    body: {
+      preScreenId: preScreenCode,
+      madeOffer: accepted ? 'true' : 'false',
+    },
+    webService: endpoints.processPreScreenOffer,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return res.body;
     })
     .catch(err => {
       throw getFormattedError(err);

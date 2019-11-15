@@ -4,6 +4,7 @@
 import { NavigationActions, StackActions } from 'react-navigation';
 import { Dimensions, Linking, Platform, PixelRatio, StyleSheet } from 'react-native';
 import CookieManager from 'react-native-cookies';
+import get from 'lodash/get';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
@@ -76,6 +77,9 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
     case 'moduleA':
       resolve(require('../services/handler/graphQL/queries/moduleA'));
       break;
+    case 'moduleM':
+      resolve(require('../services/handler/graphQL/queries/moduleM'));
+      break;
     case 'moduleN':
       resolve(require('../services/handler/graphQL/queries/moduleN'));
       break;
@@ -93,6 +97,15 @@ export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
       break;
     case 'moduleQ':
       resolve(require('../services/handler/graphQL/queries/moduleQ'));
+      break;
+    case 'moduleT':
+      resolve(require('../services/handler/graphQL/queries/moduleT'));
+      break;
+    case 'moduleG':
+      resolve(require('../services/handler/graphQL/queries/moduleG'));
+      break;
+    case 'moduleE':
+      resolve(require('../services/handler/graphQL/queries/moduleE'));
       break;
     case 'categoryPromo':
       resolve(require('../services/handler/graphQL/queries/categoryPromo'));
@@ -141,6 +154,15 @@ export const importGraphQLQueriesDynamically = query => {
       case 'xappConfig':
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/xappConfig'));
+        break;
+      case 'divisionTabs':
+        resolve(require('../services/handler/graphQL/queries/divisionTabs'));
+        break;
+      case 'outfitCarousel':
+        resolve(require('../services/handler/graphQL/queries/outfitCarousel'));
+        break;
+      case 'moduleJeans':
+        resolve(require('../services/handler/graphQL/queries/moduleJeans'));
         break;
       default:
         importMoreGraphQLQueries({
@@ -304,7 +326,7 @@ export const cropImageUrl = (url, crop, namedTransformation) => {
     }
   } else {
     // Image path transformation in case of relative image URL
-    URL = `${basePath}/${namedTransformation}/url`;
+    URL = `${basePath}/${namedTransformation}/${url}`;
   }
 
   return URL;
@@ -342,7 +364,7 @@ export const setValueInAsyncStorage = async (key, value) => {
 };
 
 export const validateExternalUrl = url => {
-  const isExternal = url.indexOf('http') || url.indexOf('https') !== true;
+  const isExternal = url && (url.indexOf('http') || url.indexOf('https') !== true);
   if (isExternal === true) {
     return true;
   }
@@ -411,14 +433,15 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     unbxdApiKeyTCP,
     unboxKeyGYM: `${unbxdApiKeyGYM}/${envConfig[`RWD_APP_UNBXD_SITE_KEY_${country}_EN_GYM`]}`,
     unbxdApiKeyGYM,
-    previewToken: envConfig[`RWD_APP_PREVIEW_TOKEN_${appTypeSuffix}`],
-    previewDateEnv: envConfig[`RWD_APP_PREVIEW_DATE_${appTypeSuffix}`],
+    previewEnvId: envConfig[`RWD_APP_PREVIEW_ENV_${appTypeSuffix}`],
     CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
     CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
     RAYGUN_API_KEY: envConfig[`RWD_APP_RAYGUN_API_KEY_${appTypeSuffix}`],
     RWD_APP_VERSION: envConfig.RWD_APP_VERSION,
     isErrorReportingActive: envConfig.isErrorReportingActive,
     googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
+    paypalEnv: envConfig[`RWD_APP_PAYPAL_ENV_${appTypeSuffix}`],
+    paypalStaticUrl: envConfig[`RWD_APP_PAYPAL_STATIC_DOMAIN_${appTypeSuffix}`],
     instakey: envConfig[`RWD_APP_INSTAGRAM_${appTypeSuffix}`],
     crossDomain: envConfig.RWD_WEB_CROSS_DOMAIN,
     TWITTER_CONSUMER_KEY: envConfig[`RWD_APP_TWITTER_CONSUMER_KEY_${appTypeSuffix}`],
@@ -428,6 +451,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
     styliticsUserNameGYM: envConfig.RWD_APP_STYLITICS_USERNAME_GYM,
     styliticsRegionTCP: getRegion(envConfig.RWD_APP_STYLITICS_REGION_TCP, country),
     styliticsRegionGYM: getRegion(envConfig.RWD_APP_STYLITICS_REGION_GYM, country),
+    host: envConfig[`RWD_APP_HOST_${appTypeSuffix}`],
   };
 };
 
@@ -480,6 +504,7 @@ export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
     isMobile: false,
     cookie: null,
     catalogId,
+    language: '',
   };
 };
 
@@ -547,6 +572,7 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
 };
 
 export const isAndroid = () => Platform.OS === 'android';
+export const isIOS = () => Platform.OS === 'ios';
 
 /**
  * getPixelRatio
@@ -718,3 +744,25 @@ export const getTranslateDateInformation = (date, language) => {
     year: 'YYYY',
   });
 };
+
+export const onBack = navigation => {
+  const goBackRoute = get(navigation, 'state.params.backTo', false);
+  const isReset = get(navigation, 'state.params.reset', false);
+  if (isReset) {
+    navigation.pop();
+  } else if (goBackRoute) {
+    navigation.navigate(goBackRoute);
+  } else {
+    navigation.goBack(null);
+  }
+};
+/**
+ * @method formatPhnNumber
+ * @desc returns phone number after stripping space and new line characters
+ * @param {string} phnNumber phone number which needs modification
+ */
+export const formatPhnNumber = phnNumber =>
+  phnNumber
+    .replace(/\n /g, '')
+    .replace(/ /g, '')
+    .replace(')', ') ');

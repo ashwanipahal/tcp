@@ -31,7 +31,12 @@ export function* fetchSlpProducts({ payload }) {
     const { searchQuery, asPath, formData, url, scrollToTop } = payload;
     const location = getUrl(url);
     const state = yield select();
-    yield put(setSlpLoadingState({ isLoadingMore: true, isScrollToTop: scrollToTop || false }));
+    yield put(
+      setSlpLoadingState({
+        isLoadingMore: true,
+        isScrollToTop: scrollToTop || false,
+      })
+    );
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
     yield put(setSlpSearchTerm({ searchTerm: searchQuery }));
@@ -44,7 +49,9 @@ export function* fetchSlpProducts({ payload }) {
       location,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
-    yield put(setListingFirstProductsPage({ ...res }));
+    if (res) {
+      yield put(setListingFirstProductsPage({ ...res }));
+    }
     yield put(setSlpLoadingState({ isLoadingMore: false, isScrollToTop: false }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: true }));
   } catch (err) {
@@ -60,9 +67,8 @@ export function* fetchMoreProducts({ payload = {} }) {
     yield put(setSlpLoadingState({ isLoadingMore: true }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: false }));
 
-    const appliedFiltersIds = state[SLP_PAGE_REDUCER_KEY].get('appliedFiltersIds');
-    const sort =
-      (state[SLP_PAGE_REDUCER_KEY] && state[SLP_PAGE_REDUCER_KEY].get('appliedSortId')) || '';
+    const { appliedFiltersIds } = state[SLP_PAGE_REDUCER_KEY];
+    const sort = (state[SLP_PAGE_REDUCER_KEY] && state[SLP_PAGE_REDUCER_KEY].appliedSortId) || '';
 
     const appliedFiltersAndSort = { ...appliedFiltersIds, sort };
 
@@ -72,13 +78,17 @@ export function* fetchMoreProducts({ payload = {} }) {
       filtersAndSort: appliedFiltersAndSort,
       pageNumber: lastLoadedPageNumber + 1,
       location,
+      isLazyLoading: true,
     });
     const res = yield call(instanceProductListing.getProducts, reqObj, state);
-    yield put(setSlpProducts({ ...res }));
+    if (res) {
+      yield put(setSlpProducts({ ...res }));
+    }
     yield put(setSlpLoadingState({ isLoadingMore: false }));
     yield put(setSlpResultsAvailableState({ isSearchResultsAvailable: true }));
   } catch (err) {
     logger.error(err);
+    yield put(setSlpLoadingState({ isLoadingMore: false }));
   }
 }
 

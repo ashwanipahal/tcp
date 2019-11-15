@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -7,6 +8,7 @@ import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import CardImage from '@tcp/core/src/components/common/molecules/CardImage';
+import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
 import GiftCardsContainer from '../../../../GiftCardsSection';
 import { CHECKOUT_ROUTES } from '../../../../../Checkout.constants';
 import getCvvInfo from '../../../../../molecules/CVVInfo';
@@ -57,6 +59,7 @@ export class BillingSection extends PureComponent {
     return (
       isExpressCheckout &&
       card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD &&
+      card.ccType !== CREDIT_CONSTANTS.ACCEPTED_CREDIT_CARDS.PAYPAL &&
       !isBillingVisited && (
         <Col colSize={{ small: 3, medium: 2, large: 2 }} className="cvvCode">
           <Field
@@ -67,7 +70,7 @@ export class BillingSection extends PureComponent {
             dataLocator="cvvTxtBox"
             maxLength="4"
             enableSuccessCheck={false}
-            autocomplete="noautocomplete"
+            autoComplete="off"
           />
           <span className="cvv-icon">{getCvvInfo({ cvvCodeRichText })}</span>
         </Col>
@@ -111,6 +114,7 @@ export class BillingSection extends PureComponent {
       labels,
       venmoPayment,
       venmoPayment: { isVenmoPaymentSelected, venmoSaveToAccountDisplayed, userName },
+      bagLoading,
     } = this.props;
     const { saveVenmoPayment } = this.state;
     const colProps = this.getColProps();
@@ -119,7 +123,7 @@ export class BillingSection extends PureComponent {
       <Grid className={`${className}`}>
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy component="span" fontSize="fs28" fontFamily="primary">
+            <BodyCopy component="span" fontSize="fs26" fontFamily="primary">
               {`${labels.lbl_review_billingSectionTitle} `}
             </BodyCopy>
             <Anchor
@@ -148,7 +152,11 @@ export class BillingSection extends PureComponent {
                       {labels.lbl_review_paymentMethod}
                     </BodyCopy>
                     <BodyCopy>
-                      <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                      {!bagLoading ? (
+                        <CardImage card={card} cardNumber={renderCardNumber(card, labels)} />
+                      ) : (
+                        <AddressSkeleton />
+                      )}
                     </BodyCopy>
                   </Fragment>
                 )}
@@ -163,7 +171,14 @@ export class BillingSection extends PureComponent {
                     >
                       {labels.lbl_review_billingAddress}
                     </BodyCopy>
-                    <Address address={address} className="review-billing-address" />
+                    {!bagLoading ? (
+                      <Address address={address} className="review-billing-address" />
+                    ) : (
+                      <>
+                        <LoaderSkelton width="175px" height="40px" />
+                        <AddressSkeleton />
+                      </>
+                    )}
                   </Fragment>
                 )}
               </Col>
@@ -228,6 +243,7 @@ BillingSection.propTypes = {
   cvvCodeRichText: PropTypes.string,
   isBillingVisited: PropTypes.bool,
   isPaymentDisabled: PropTypes.bool,
+  bagLoading: PropTypes.bool,
 };
 
 BillingSection.defaultProps = {
@@ -250,6 +266,7 @@ BillingSection.defaultProps = {
     userName: '',
   },
   saveVenmoPaymentOption: () => {},
+  bagLoading: false,
 };
 
 export default withStyles(BillingSection, styles);

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList } from 'react-native';
-import { ScrollViewContainer } from '../styles/OutfitDetails.native.style';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import { ScrollViewContainer, RecommendationWrapper } from '../styles/OutfitDetails.native.style';
 import CustomImage from '../../../../common/atoms/CustomImage';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct.native';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import PickupStoreModal from '../../../../common/organisms/PickupStoreModal';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 const keyExtractor1 = (_, index) => {
   return `outfit-details-${index}`;
@@ -26,6 +27,7 @@ const renderItem = ({
   currentState,
   labels,
   navigation,
+  isLoggedIn,
 }) => {
   return (
     <OutfitProduct
@@ -34,11 +36,10 @@ const renderItem = ({
       productIndexText={`Product ${index + 1} of ${productsCount}`}
       labels={labels}
       navigation={navigation}
+      addToFavorites={addToFavorites}
+      isLoggedIn={isLoggedIn}
       handleAddToBag={() => {
         handleAddToBag(addToBagEcom, item, item.generalProductId, currentState);
-      }}
-      handleAddToFavorites={() => {
-        addToFavorites({ colorProductId: item.generalProductId });
       }}
     />
   );
@@ -57,6 +58,7 @@ renderItem.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }),
+  isLoggedIn: PropTypes.bool,
 };
 
 renderItem.defaultProps = {
@@ -67,6 +69,7 @@ renderItem.defaultProps = {
   currentState: null,
   labels: {},
   navigation: {},
+  isLoggedIn: false,
 };
 
 const OutfitDetailsView = props => {
@@ -81,7 +84,17 @@ const OutfitDetailsView = props => {
     labels,
     isPickupModalOpen,
     navigation,
+    isLoggedIn,
+    outfitId,
+    pdpLabels,
   } = props;
+  const recommendationAttributes = {
+    variation: 'moduleO',
+    navigation,
+    page: Constants.RECOMMENDATIONS_PAGES_MAPPING.OUTFIT,
+    partNumber: outfitId,
+    isHeaderAccordion: true,
+  };
   return (
     <ScrollViewContainer>
       <CustomImage url={outfitImageUrl} width="100%" />
@@ -101,11 +114,22 @@ const OutfitDetailsView = props => {
             currentState,
             labels,
             navigation,
+            isLoggedIn,
           })
         }
       />
+
+      <RecommendationWrapper>
+        <Recommendations {...recommendationAttributes} />
+        <Recommendations
+          isRecentlyViewed
+          {...recommendationAttributes}
+          headerLabel={pdpLabels.recentlyViewed}
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+        />
+      </RecommendationWrapper>
+
       {isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}
-      <AddedToBagContainer />
     </ScrollViewContainer>
   );
 };
@@ -122,6 +146,9 @@ OutfitDetailsView.propTypes = {
   labels: PropTypes.shape({}),
   isPickupModalOpen: PropTypes.bool,
   navigation: PropTypes.shape({}),
+  isLoggedIn: PropTypes.bool,
+  outfitId: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -132,6 +159,10 @@ OutfitDetailsView.defaultProps = {
   labels: {},
   isPickupModalOpen: false,
   navigation: {},
+  isLoggedIn: false,
+  outfitId: '',
+  pdpLabels: {},
 };
 
 export default OutfitDetailsView;
+export { OutfitDetailsView as OutfitDetailsViewVanilla };

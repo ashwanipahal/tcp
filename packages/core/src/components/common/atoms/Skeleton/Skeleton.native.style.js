@@ -4,6 +4,10 @@ const getRowStyle = props => {
   const { rowProps } = props;
   return rowProps;
 };
+const getColStyle = props => {
+  const { colProps } = props;
+  return colProps;
+};
 
 export const Row = styled.View`
   display: flex;
@@ -16,4 +20,6 @@ export const Col = styled.View`
   margin-right: 5px;
   background: #d8d8d8;
   position: relative;
+  ${getColStyle}
+  ${props => (props.outFitSkeleton ? `margin:12px 12px; ` : '')}
 `;

@@ -5,26 +5,27 @@ export default css`
   margin-bottom: 40px;
 
   .heading-wrapper {
-    padding: 16px 0;
+    padding-top: 32px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: 24px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding-top: 16px;
-      padding-bottom: 24px;
     }
   }
 
-  .stacked-button-list-wrapper {
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 24px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      padding-bottom: ${props => (props.theme.isGymboree ? '32px' : '24px')};
-    }
+  .button-list-wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   .text_normal {
-    margin-top: -14px;
+    margin-top: 0px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -14px;
+    }
   }
 
   .stacked-cta-wrapper-class {
@@ -33,9 +34,9 @@ export default css`
     padding-bottom: 16px;
     padding-left: 20px;
     color: ${props =>
-      props.theme.isGymboree && props.ctaType === 'stackedCTAButtons'
-        ? props.theme.colorPalette.gray['700']
-        : props.theme.colorPalette.red['300']};
+      props.theme.isGymboree &&
+      props.ctaType === 'stackedCTAButtons' &&
+      props.theme.colorPalette.red['300']};
   }
 
   .dropdown-button {
@@ -52,6 +53,12 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       display: inline;
       margin-bottom: 0;
+    }
+  }
+
+  .percentage_inline_promo {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-left: 10px;
     }
   }
 
@@ -84,12 +91,15 @@ export default css`
       align-items: center;
       justify-content: center;
       padding-bottom: 0px;
-      padding-top: ${props => (props.theme.isGymboree ? '32px' : '16px')};
+      padding-top: 24px;
     }
     .heading,
     .moduleN__promo-banner {
       display: block;
       margin-bottom: 0px;
     }
+  }
+  .ModuleN_Button .link-button-wrapper-class {
+    border-bottom-color: ${props => props.theme.colorPalette.white};
   }
 `;

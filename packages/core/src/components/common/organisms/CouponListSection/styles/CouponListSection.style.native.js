@@ -28,8 +28,7 @@ const IconContainer = styled.View`
   border-radius: ${props => props.theme.spacing.ELEM_SPACING.MED};
   width: ${props => props.theme.spacing.ELEM_SPACING.MED};
   height: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  flex-direction: row;
 `;
 
 const IconTextContainer = styled.Text`
@@ -37,7 +36,6 @@ const IconTextContainer = styled.Text`
   justify-content: center;
   line-height: ${props => props.theme.spacing.ELEM_SPACING.MED};
   font-size: ${props => props.theme.typography.fontSizes.fs10};
-  background: ${props => props.theme.colors.PRIMARY.GREEN};
   color: ${props => props.theme.colors.WHITE};
 `;
 

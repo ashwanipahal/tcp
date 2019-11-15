@@ -6,12 +6,14 @@ describe('BagPage Reducer', () => {
   const initialState = {
     orderDetails: { orderItems: [], orderId: '1234' },
     sfl: fromJS([]),
+    loaded: false,
     errors: false,
     uiFlags: {
       isItemMovedToSflList: false,
       isSflItemDeleted: false,
       cartItemSflError: null,
       isCartItemsUpdating: fromJS({}),
+      isPayPalWebViewEnable: undefined,
     },
     openItemDeleteConfirmationModalInfo: { showModal: false },
   };
@@ -63,6 +65,14 @@ describe('BagPage Reducer', () => {
     });
 
     expect(newState.get('showConfirmationModal')).toEqual(false);
+  });
+
+  it('RESET_BAG_LOADED_STATE', () => {
+    const newState = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.RESET_BAG_LOADED_STATE,
+    });
+
+    expect(newState.get('loaded')).toEqual(false);
   });
 
   it('OPEN_CHECKOUT_CONFIRMATION_MODAL', () => {
@@ -169,5 +179,14 @@ describe('BagPage Reducer', () => {
     });
 
     expect(newState).toEqual(initialStateMutated);
+  });
+
+  it('PAYPAL_WEBVIEW_ENABLE', () => {
+    const newStatee = BagPageReducer(initialStateMutated, {
+      type: BAGPAGE_CONSTANTS.PAYPAL_WEBVIEW_ENABLE,
+      isPayPalWebViewEnable: 'false',
+    });
+
+    expect(newStatee).toEqual(initialStateMutated);
   });
 });
