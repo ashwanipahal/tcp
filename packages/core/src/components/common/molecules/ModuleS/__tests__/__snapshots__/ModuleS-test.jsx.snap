@@ -46,20 +46,18 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
         Array [
           Object {
             "image": Object {
-              "alt": "Pool",
-              "crop_d": "c_crop,g_face:center,q_auto:best,w_690",
-              "crop_m": "c_crop,g_face:center,q_auto:best,w_375",
-              "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
-              "title": "Pool",
-              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png",
-              "url_m": "",
-              "url_t": "",
+              "alt": "Image Alt text attribute value",
+              "title": "Image Title attribute value",
+              "url": "http://image1.sm/url",
             },
-            "link": Object {
-              "target": "",
-              "text": "Pool",
-              "title": "Pool",
-              "url": "/c/boys-clothes",
+            "video": Object {
+              "autoplay": true,
+              "controls": true,
+              "inline": true,
+              "loop": true,
+              "muted": true,
+              "title": "Video Title attribute value",
+              "url": "https://test1.theplace.com/video/upload/v1572869480/sample_mp4.mp4",
             },
           },
         ]

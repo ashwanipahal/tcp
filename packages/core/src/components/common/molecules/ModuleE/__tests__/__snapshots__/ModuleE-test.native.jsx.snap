@@ -94,15 +94,18 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Promo Area"
+          checkBrand=""
           crop=""
           height="67px"
           host=""
           imgConfig="t_mod_E_promo_area_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1573246605/module-E-promo-area.jpg"
+          videoData={null}
           width={750}
         />
       </Styled(Styled(Anchor))>
@@ -265,15 +268,23 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Big & Little Sis"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_E_small_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-1.jpg"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Styled(Anchor))>
@@ -351,15 +362,23 @@ exports[`ModuleEVanilla ModuleE V1 alt should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Big & Little Bro"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_E_small_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined1"
           url="https://test5.childrensplace.com/image/upload/v1573283630/module-E-test-large-2.jpg"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Styled(Anchor))>
@@ -518,15 +537,18 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Promo Area"
+          checkBrand=""
           crop=""
           height="67px"
           host=""
           imgConfig="t_mod_E_promo_area_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1573246605/module-E-promo-area.jpg"
+          videoData={null}
           width={750}
         />
       </Styled(Styled(Anchor))>
@@ -689,15 +711,23 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Big & Little Sis"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_E_small_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-1.jpg"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Styled(Anchor))>
@@ -775,15 +805,23 @@ exports[`ModuleEVanilla ModuleE V1 should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Big & Little Bro"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_E_small_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined1"
           url="https://test5.childrensplace.com/image/upload/v1573283630/module-E-test-large-2.jpg"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Styled(Anchor))>
@@ -942,15 +980,18 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Promo Area"
+          checkBrand=""
           crop=""
           height="67px"
           host=""
           imgConfig="t_mod_E_promo_area_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1573246605/module-E-promo-area.jpg"
+          videoData={null}
           width={750}
         />
       </Styled(Styled(Anchor))>
@@ -1113,15 +1154,23 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Big & Little Sis"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_E_small_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://test5.childrensplace.com/image/upload/v1573193928/module-E-test-small-1.jpg"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Styled(Anchor))>
@@ -1199,15 +1248,23 @@ exports[`ModuleEVanilla ModuleE V2 should render correctly 1`] = `
       >
         <Styled(Styled(DamImage))
           alt="Big & Little Bro"
+          checkBrand=""
           crop=""
           height="202px"
           host=""
           imgConfig="t_mod_E_small_img_m"
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined1"
           url="https://test5.childrensplace.com/image/upload/v1573283630/module-E-test-large-2.jpg"
+          videoData={
+            Object {
+              "videoHeight": 202,
+              "videoWidth": 164,
+            }
+          }
           width="164px"
         />
       </Styled(Styled(Anchor))>
