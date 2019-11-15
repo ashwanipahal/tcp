@@ -14,7 +14,7 @@
       "value": "tcp"
     },
     {
-      "name": "RWD_APP_PREVIEW_ENV",
+      "name": "RWD_APP_PREVIEW_ENV_GYM",
       "value": "PREVIEW"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_API_IDENTIFIER_TCP",
@@ -151,7 +151,7 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP",
@@ -278,12 +278,12 @@
       "value": "948cee6a142678762564f9ec4e02e91c"
     },
     {
-      "name": "RWD_APP_INSTAGRAM_TCP",
-      "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
-    },
-    {
       "name": "RWD_APP_INSTAGRAM_GYM",
       "value": "f0eaf419384f43a0acd059c4f87163c1"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_TCP",
+      "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
     },
     {
       "name": "RWD_APP_ASSETHOST_TCP",
@@ -308,6 +308,14 @@
     {
       "name": "RWD_APP_TWITTER_CONSUMER_SECRET_GYM",
       "value": "OxdTAylJ5DDw8BRk48KkViwmNDWdwfgTxNMhWWzaXQXKApoL2E"
+    },
+    {
+      "name": "RWD_APP_HOST_TCP",
+      "value": ".childrensplace.com"
+    },
+    {
+      "name": "RWD_APP_HOST_GYM",
+      "value": ".gymboree.com"
     }
   ],
   "signed": true,
@@ -319,32 +327,30 @@
         "postClone": "packages/mobileapp/appcenter-post-clone.sh"
       }
     },
-    "android": {
-      "module": "app",
-      "buildVariant": "tcpPreviewRelease",
-      "isRoot": false,
-      "runTests": false,
-      "runLint": false,
-      "keystorePassword": "__protected__",
-      "keyAlias": "__protected__",
-      "keyPassword": "__protected__",
-      "keystoreFilename": "tcp.jks",
-      "automaticSigning": false,
-      "buildBundle": false,
-      "gradleWrapperPath": "packages/mobileapp/android/gradlew"
-    },
     "distribution": {
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "1881e243-2da4-473b-a5d7-e19e845f9519"
+        "f315f5a5-24c8-4d46-a3a4-d9723e23e126"
       ],
       "isSilent": false
     },
     "javascript": {
-      "nodeVersion": "10.x",
+      "nodeVersion": "12.x",
       "packageJsonPath": "packages/mobileapp/package.json",
       "runTests": false
+    },
+    "xcode": {
+      "certificatePassword": "__protected__",
+      "certificateFilename": "Dist-Certificates.p12",
+      "provisioningProfileFilename": "tcp_gymboree_distribution_22-10-2019.mobileprovision",
+      "certificateFileId": "4a99762d-6cfa-49c4-bbb2-4ae66abf5ed8",
+      "provisioningProfileFileId": "e880b7bf-3a12-455e-98cf-d8226f597d48",
+      "appExtensionProvisioningProfileFiles": [],
+      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
+      "scheme": "gymboree_preview",
+      "xcodeVersion": "10.2.1",
+      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {
