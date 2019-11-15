@@ -14,6 +14,7 @@ import {
   Container,
   StyledImage,
   HeaderContainer,
+  RTPSHeader,
 } from '../../styles/ApplyNowView.style.native';
 import { getLabelValue } from '../../../../../../utils/utils';
 import ApplyCardLayoutView from '../../../../../features/browse/ApplyCardPage';
@@ -42,9 +43,26 @@ class ApplyNowModalWrapper extends React.PureComponent {
    */
 
   toggleApplyCardModal = () => {
-    const { resetPLCCApplicationStatus, toggleModal } = this.props;
+    const {
+      resetPLCCApplicationStatus,
+      toggleModal,
+      isRtpsFlow,
+      submitAcceptOrDeclinePlcc,
+    } = this.props;
     toggleModal({ isModalOpen: false, isPLCCModalOpen: true });
     resetPLCCApplicationStatus({ status: null });
+    if (isRtpsFlow) {
+      submitAcceptOrDeclinePlcc(true);
+    }
+  };
+
+  setRTPSFlow = () => {
+    const { setIsRTPSFlow, isRtpsFlow, submitAcceptOrDeclinePlcc } = this.props;
+    /* istanbul ignore else */
+    if (isRtpsFlow && setIsRTPSFlow) {
+      submitAcceptOrDeclinePlcc(false);
+      setIsRTPSFlow(false);
+    }
   };
 
   /**
@@ -57,12 +75,41 @@ class ApplyNowModalWrapper extends React.PureComponent {
     navigation.goBack();
     toggleModal({ isModalOpen: false });
     resetPLCCApplicationStatus({ status: null });
+    this.setRTPSFlow();
   };
 
   closePlccModal = () => {
     const { toggleModal, navigation } = this.props;
     navigation.goBack();
     toggleModal({ isPLCCModalOpen: false });
+    this.setRTPSFlow();
+  };
+
+  getTermsAndCond = () => {
+    const { isRtpsFlow, rtpsTextTerms } = this.props;
+    return (
+      isRtpsFlow && (
+        <Container>
+          <RichTextContainer>
+            <RichText source={{ html: rtpsTextTerms }} />
+          </RichTextContainer>
+        </Container>
+      )
+    );
+  };
+
+  getModalHeader = () => {
+    const { isRtpsFlow, isPLCCModalOpen, labels } = this.props;
+    return !isRtpsFlow ? (
+      <ModalNativeHeader
+        heading={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
+        onRequestClose={isPLCCModalOpen ? this.closePlccModal : this.closeModal}
+        fontSize="fs14"
+        customHeaderMargin="25px 25px 0 25px"
+      />
+    ) : (
+      <RTPSHeader />
+    );
   };
 
   /**
@@ -73,22 +120,24 @@ class ApplyNowModalWrapper extends React.PureComponent {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const { labels, plccBenefitsList, isPLCCModalOpen, isModalOpen } = this.props;
-
+    const {
+      labels,
+      plccBenefitsList,
+      isPLCCModalOpen,
+      isModalOpen,
+      isRtpsFlow,
+      rtpsOptOutMsg,
+      rtpsCongratsMsg,
+    } = this.props;
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return isPLCCModalOpen || isModalOpen ? (
       <View>
-        <ModalNativeHeader
-          heading={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
-          onRequestClose={isPLCCModalOpen ? this.closePlccModal : this.closeModal}
-          fontSize="fs14"
-          customHeaderMargin="25px 25px 0 25px"
-        />
+        {this.getModalHeader()}
         {isPLCCModalOpen && (
           <ApplyCardLayoutView
-            toggleModal={this.toggleApplyCardModal}
             applyCard={isPLCCModalOpen}
-            closeModal={this.closePlccModal}
+            closePLCCModal={this.closePlccModal}
+            isRtpsFlow={isRtpsFlow}
           />
         )}
         {isModalOpen && (
@@ -126,25 +175,57 @@ class ApplyNowModalWrapper extends React.PureComponent {
               paddingLeft="12px"
               paddingRight="12px"
             />
+            {isRtpsFlow && (
+              <Container>
+                <RichTextContainer>
+                  <RichText source={{ html: rtpsCongratsMsg }} />
+                </RichTextContainer>
+              </Container>
+            )}
             <ButtonWrapper>
               <Button
                 fill="BLUE"
                 type="submit"
                 color="white"
-                text={getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')}
+                text={
+                  !isRtpsFlow
+                    ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
+                    : getLabelValue(labels, 'lbl_PLCC_interested')
+                }
                 width="90%"
                 onPress={this.toggleApplyCardModal}
               />
             </ButtonWrapper>
 
-            <StyledAnchor
-              url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
-              fontSizeVariation="xlarge"
-              anchorVariation="secondary"
-              underlineBlue
-              text={getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
-              paddingTop="23px"
-            />
+            {!isRtpsFlow ? (
+              <StyledAnchor
+                url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
+                fontSizeVariation="xlarge"
+                anchorVariation="secondary"
+                underlineBlue
+                text={getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
+                paddingTop="23px"
+              />
+            ) : (
+              <StyledAnchor
+                onPress={() => {
+                  this.closeModal();
+                }}
+                fontSizeVariation="xlarge"
+                anchorVariation="secondary"
+                underlineBlue
+                text={getLabelValue(labels, 'lbl_PLCC_noThanks')}
+                noLink
+                paddingTop="23px"
+              />
+            )}
+            {isRtpsFlow && (
+              <Container>
+                <RichTextContainer>
+                  <RichText source={{ html: rtpsOptOutMsg }} />
+                </RichTextContainer>
+              </Container>
+            )}
             <ImageContainer marginTop="28px">
               <StyledImage
                 source={offerType ? PLCC_LOOKUP_2_POINTS : PLCC_LOOKUP_1_POINTS}
@@ -204,6 +285,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
                 text={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
               />
             </BottomContainer>
+            {this.getTermsAndCond()}
           </ScrollViewContainer>
         )}
       </View>
@@ -219,6 +301,21 @@ ApplyNowModalWrapper.propTypes = {
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
   navigation: PropTypes.shape({}).isRequired,
+  rtpsCongratsMsg: PropTypes.string.isRequired,
+  rtpsOptOutMsg: PropTypes.string.isRequired,
+  rtpsTextTerms: PropTypes.string.isRequired,
+  setIsRTPSFlow: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool,
+  submitAcceptOrDeclinePlcc: PropTypes.func.isRequired,
+  isPLCCModalOpen: PropTypes.bool,
+  plccBenefitsList: PropTypes.shape({}).isRequired,
+  isModalOpen: PropTypes.bool,
+};
+
+ApplyNowModalWrapper.defaultProps = {
+  isRtpsFlow: false,
+  isPLCCModalOpen: false,
+  isModalOpen: false,
 };
 
 export default ApplyNowModalWrapper;
