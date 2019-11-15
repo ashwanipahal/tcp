@@ -116,7 +116,7 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  const { referred = [] } = getLabelValue(state.Labels, 'addedToBagModal', 'global');
+  const { referred = [] } = state.Labels.global.addedToBagModal;
 
   const content = referred.find(label => label.name === 'NEED_HELP_DATA');
   return content && content.contentId;
