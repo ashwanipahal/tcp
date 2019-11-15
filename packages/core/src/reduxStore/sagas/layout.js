@@ -2,7 +2,7 @@ import { call, put, takeLatest, all } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { getNavigationData } from '@tcp/core/src/services/abstractors/common/subNavigation';
 import layoutAbstractor from '../../services/abstractors/bootstrap/layout';
-import GLOBAL_CONSTANTS from '../constants';
+import GLOBAL_CONSTANTS, { MODULES_CONSTANT } from '../constants';
 import { loadLayoutData, loadModulesData, setSubNavigationData } from '../actions';
 import { getAPIConfig } from '../../utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../services/api.constants';
@@ -29,18 +29,20 @@ function* fetchPageLayout(action) {
         layoutName || page
       );
       const placeHolderIdList = Object.keys(modulesData).filter(
-        module => modulesData[module].moduleName === 'placeholder'
+        module => modulesData[module].moduleName === MODULES_CONSTANT.placeholder
       );
       yield put(loadModulesData(modulesData));
       if (placeHolderIdList.length > 0) {
         const placeholderResult = yield all(
           placeHolderIdList.map(listItem =>
-            call(
-              getNavigationData,
-              modulesData[listItem].val,
-              layoutParams.brand,
-              layoutParams.country
-            )
+            modulesData[listItem].moduleClassName === MODULES_CONSTANT.subNavigation
+              ? call(
+                  getNavigationData,
+                  modulesData[listItem].val,
+                  layoutParams.brand,
+                  layoutParams.country
+                )
+              : null
           )
         );
         yield all(

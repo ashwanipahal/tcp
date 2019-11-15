@@ -1,21 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import dynamic from 'next/dynamic';
-import { capitalize } from '@tcp/core/src/utils';
 
 const returnModule = mod => mod.default;
 const RenderDynamicModule = dynamic({
   modules: () => ({
-    HelpCentreLeftNavigation: () =>
+    'help-center-left-navigation': () =>
       import('@tcp/core/src/components/common/molecules/LeftNavigation').then(returnModule),
   }),
   render: (properties, modules) => {
     const { className, val } = properties;
-    const placeholder = capitalize(val)
-      .split(' ')
-      .join('');
-    const Module = modules[placeholder];
-    return <Module data={properties[placeholder]} className={className} />;
+    const Module = modules[val];
+    return <Module data={properties[val]} className={className} />;
   },
 });
 const Placeholder = props => {

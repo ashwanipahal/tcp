@@ -50,3 +50,8 @@ export const SEO_DATA = {
   seoData: 'seoData',
   home: '/home',
 };
+
+export const MODULES_CONSTANT = {
+  placeholder: 'placeholder',
+  subNavigation: 'SubNavigation',
+};

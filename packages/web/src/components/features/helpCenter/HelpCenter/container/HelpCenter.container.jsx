@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
-import { capitalize } from '@tcp/core/src/utils';
+import { MODULES_CONSTANT } from '@tcp/core/src/reduxStore/constants';
 import HelpCenterView from '../views/HelpCenter.view';
 
 HelpCenterView.getInitialProps = async ({ store, isServer }, pageProps) => {
@@ -18,8 +18,9 @@ HelpCenterView.pageInfo = {
 
 const mapStateToProps = state => {
   // TO DO - Replace the mock with the state.
-  const { Layouts, Modules, SubNavigation } = state;
+  const { Layouts, Modules } = state;
   const helpCenterPageSlots = Layouts.helpcenterpage ? Layouts.helpcenterpage.slots : [];
+
   return {
     slots: helpCenterPageSlots.map(slot => {
       const { contentId: slotContent = '' } = slot;
@@ -34,17 +35,13 @@ const mapStateToProps = state => {
 
         contentIds.forEach(contentId => {
           const placeHolderName =
-            Modules[contentId] && Modules[contentId].val
-              ? capitalize(Modules[contentId].val)
-                  .split(' ')
-                  .join('')
-              : '';
+            Modules[contentId] && Modules[contentId].val ? Modules[contentId].val : '';
           response.data.slot.push(
-            Modules[contentId] && Modules[contentId].moduleName !== 'placeholder'
+            Modules[contentId] && Modules[contentId].moduleName !== MODULES_CONSTANT.placeholder
               ? Modules[contentId]
               : {
                   ...Modules[contentId],
-                  [placeHolderName]: SubNavigation[placeHolderName],
+                  [placeHolderName]: state[Modules[contentId].moduleClassName][placeHolderName],
                 }
           );
         });

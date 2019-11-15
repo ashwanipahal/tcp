@@ -1,4 +1,3 @@
-import { capitalize } from '@tcp/core/src/utils';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import handler from '../../../handler';
 
@@ -30,9 +29,7 @@ export const DataAbstractor = {
         return tempItem;
       });
       return {
-        key: capitalize(category)
-          .split(' ')
-          .join(''),
+        key: category,
         val: subNavigation,
       };
     }
@@ -40,12 +37,7 @@ export const DataAbstractor = {
   },
 };
 
-export const getNavigationData = async (
-  category = 'Help Centre Left Navigation',
-  brand = 'TCP',
-  country = 'USA',
-  channel = 'Desktop'
-) => {
+export const getNavigationData = async (category, brand, country, channel) => {
   const { getData, processData } = DataAbstractor;
   let response = {};
 
