@@ -81,7 +81,7 @@ const redirectToBag = resetPLCCResponse => {
  *
  */
 const redirectToHome = () => {
-  routerPush(window.location.href, '/home');
+  return '/home';
 };
 
 /**
@@ -100,6 +100,15 @@ const getPageViewGridRowSize = isPLCCModalFlow => {
   return isPLCCModalFlow ? 12 : 10;
 };
 
+/**
+ * @const getFooterButtonSize - returning grid rows for plcc forms.
+ * @param isPLCCModalFlow - flag to check for a modal flow.
+ *
+ */
+const getFooterButtonSize = isPLCCModalFlow => {
+  return isPLCCModalFlow ? 3 : 4;
+};
+
 export {
   refFields,
   userAddressData,
@@ -110,4 +119,5 @@ export {
   getPageViewGridRowSize,
   getModalSizeForApprovedPLCC,
   fetchPLCCFormErrors,
+  getFooterButtonSize,
 };
