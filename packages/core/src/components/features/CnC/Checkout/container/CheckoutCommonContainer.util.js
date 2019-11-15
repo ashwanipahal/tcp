@@ -103,7 +103,14 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
   }
   if (isRegisteredUserCallDone || isMobileApp()) {
     scopeValue.initialLoad = false;
-    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
+    initCheckoutSectionPage({
+      pageName,
+      recalc,
+      isPaypalPostBack,
+      appRouting,
+      navigation,
+      ...extraProps,
+    });
   }
   if (isMobileApp()) {
     isPaypalPostBack = getPayPalFlag(navigation);
@@ -113,8 +120,8 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
 /* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: (router, isPaypalFlow) => {
-      dispatch(initCheckoutAction(router, isPaypalFlow));
+    initCheckout: (router, isPaypalFlow, navigation) => {
+      dispatch(initCheckoutAction(router, isPaypalFlow, navigation));
     },
     initCheckoutSectionPage: payload => {
       dispatch(CHECKOUT_ACTIONS.initCheckoutSectionPageAction(payload));

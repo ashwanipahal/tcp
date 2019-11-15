@@ -70,7 +70,7 @@ const StyledApplyNowModal = ({
               {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
             </BodyCopy>
 
-            <RichText className="congrats_msg" richTextHtml={rtpsCongratsMsg} />
+            {isRtpsFlow && <RichText className="congrats_msg" richTextHtml={rtpsCongratsMsg} />}
           </Col>
         </Row>
 

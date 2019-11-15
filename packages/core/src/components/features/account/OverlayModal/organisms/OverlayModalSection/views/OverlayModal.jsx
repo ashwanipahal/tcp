@@ -55,7 +55,7 @@ class OverlayModal extends React.Component {
     this.overlayElement.classList.add('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.addEventListener('mousedown', this.handleWindowClick);
+      this.body.addEventListener('click', this.handleWindowClick);
     }
     this.getCustomStyles({ styleModal: true });
     if (this.modalRef) {
@@ -98,7 +98,7 @@ class OverlayModal extends React.Component {
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.removeEventListener('mousedown', this.handleWindowClick);
+      this.body.removeEventListener('click', this.handleWindowClick);
       this.body.style['overflow-y'] = '';
     }
     const modal = document.getElementById('dialogContent');
@@ -226,6 +226,7 @@ class OverlayModal extends React.Component {
       !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
     ) {
       this.closeModal();
+      e.stopImmediatePropagation();
     }
   }
 
