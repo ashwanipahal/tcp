@@ -156,7 +156,7 @@ export default css`
 
     .white-dot {
       background-color: ${props => props.theme.colors.WHITE};
-      border: 2px solid ${props => props.theme.colors.BLACK};
+      border: 3px solid ${props => props.theme.colors.BLACK};
       border-radius: 50%;
       display: block;
       height: 22px;
