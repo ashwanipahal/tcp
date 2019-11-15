@@ -55,6 +55,15 @@
 		20A5C2CD2358664600A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
 		20A5C2CE2358664D00A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
 		20A5C2CF2358665400A183EA /* libRNTwitterSignIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 201CCB4423583F88007AD217 /* libRNTwitterSignIn.a */; };
+		20B78C8B237E9CC300E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CC6237E9CD000E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CC7237E9CD700E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CC8237E9CDF00E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CC9237E9CE600E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CCA237E9CEE00E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CCB237E9CF500E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CCC237E9CFC00E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
+		20B78CCD237E9D0200E43C4B /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */; };
 		25D5AE82AE664358A8DBBBE1 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883722ADA401457E84C798C9 /* libRNKeychain.a */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -461,6 +470,7 @@
 		D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB222D70C2600D9D051 /* Montserrat.ttf */; };
 		D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAB322D70C2600D9D051 /* Montserrat-Black.ttf */; };
 		DF7E9579DCFF4C7DB2EF058C /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C354BFBC4F6D93F3AB43 /* libTouchID.a */; };
+		E08921EB3FDB451CBC515DF6 /* libRNCheckNotificationPermission.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F52D7A2B6C72466D88A9E035 /* libRNCheckNotificationPermission.a */; };
 		E684BD90230145B600A09F02 /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D623008EA900803213 /* libTouchID.a */; };
 		E684BDBF230145BE00A09F02 /* libRNKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D5E7D123008EA900803213 /* libRNKeychain.a */; };
 		E684BDC0230145C500A09F02 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
@@ -562,6 +572,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
 			remoteInfo = RCTFBSDK;
+		};
+		20B78C4D237D2AC900E43C4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419E57D249604968BFCA1442 /* RNCheckNotificationPermission.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNCheckNotificationPermission;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -934,6 +951,7 @@
 		38D4E1E6A5B146E0B1EE4742 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		3AB56F66EFE94C7FDFB11D02 /* Pods_mobileapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF189BE5FD333E3A4DB919F /* Pods_mobileapp_int.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileapp_int.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		419E57D249604968BFCA1442 /* RNCheckNotificationPermission.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCheckNotificationPermission.xcodeproj; path = "../node_modules/react-native-check-notification-permission/ios/RNCheckNotificationPermission.xcodeproj"; sourceTree = "<group>"; };
 		43F68AC904C85F2CE0F20810 /* Pods_mobileappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mobileappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4605750D1783073A782118E1 /* Pods-gymboree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree.debug.xcconfig"; path = "Target Support Files/Pods-gymboree/Pods-gymboree.debug.xcconfig"; sourceTree = "<group>"; };
 		47885BC96A779DCEDD6266A4 /* Pods-mobileapp_int.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileapp_int.debug.xcconfig"; path = "Target Support Files/Pods-mobileapp_int/Pods-mobileapp_int.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1013,6 +1031,7 @@
 		EF6B0846A4A641FE97FB5007 /* RNCardIO.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCardIO.xcodeproj; path = "../node_modules/react-native-awesome-card-io/ios/RNCardIO.xcodeproj"; sourceTree = "<group>"; };
 		F31700E87B0C56339C08F953 /* Pods-gymboree_int.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gymboree_int.debug.xcconfig"; path = "Target Support Files/Pods-gymboree_int/Pods-gymboree_int.debug.xcconfig"; sourceTree = "<group>"; };
 		F376CC6FC2054681A5A6E13E /* libRNCNetInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCNetInfo.a; sourceTree = "<group>"; };
+		F52D7A2B6C72466D88A9E035 /* libRNCheckNotificationPermission.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCheckNotificationPermission.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1057,6 +1076,7 @@
 				C618F7D1BA224424A8DE41DC /* libRCTFBSDK.a in Frameworks */,
 				99959E0B28AC4DED8F45E675 /* libRNCardIO.a in Frameworks */,
 				498A201F3F8F3522143569A2 /* Pods_mobileapp.framework in Frameworks */,
+				E08921EB3FDB451CBC515DF6 /* libRNCheckNotificationPermission.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,6 +1111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78C8B237E9CC300E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C28E2358661500A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9DE2345C9D0000A022D /* libRNCardIO.a in Frameworks */,
 				205AA73123435148000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1126,6 +1147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CC6237E9CD000E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2C82358661C00A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9DF2345C9E5000A022D /* libRNCardIO.a in Frameworks */,
 				205AA73223435175000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1161,6 +1183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CC7237E9CD700E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2C92358662300A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E02345CA2B000A022D /* libRNCardIO.a in Frameworks */,
 				205AA733234351A6000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1196,6 +1219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CC8237E9CDF00E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2CA2358662A00A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E12345CA39000A022D /* libRNCardIO.a in Frameworks */,
 				205AA734234351B1000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1231,6 +1255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CCA237E9CEE00E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2CC2358663800A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E32345CA50000A022D /* libRNCardIO.a in Frameworks */,
 				205AA736234351C7000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1266,6 +1291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CCB237E9CF500E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2CD2358664600A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E42345CA65000A022D /* libRNCardIO.a in Frameworks */,
 				205AA737234351D3000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1301,6 +1327,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CCC237E9CFC00E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2CE2358664D00A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E52345CA72000A022D /* libRNCardIO.a in Frameworks */,
 				205AA738234351E1000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1336,6 +1363,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CCD237E9D0200E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2CF2358665400A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E62345CA7E000A022D /* libRNCardIO.a in Frameworks */,
 				205AA739234351EB000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1371,6 +1399,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B78CC9237E9CE600E43C4B /* libRNCheckNotificationPermission.a in Frameworks */,
 				20A5C2CB2358663200A183EA /* libRNTwitterSignIn.a in Frameworks */,
 				3A33A9E22345CA46000A022D /* libRNCardIO.a in Frameworks */,
 				205AA735234351BD000A190A /* libRCTFBSDK.a in Frameworks */,
@@ -1549,6 +1578,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		20B78C4A237D2AC900E43C4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1690,6 +1727,7 @@
 				7866DC2121B84C7F9D6EABDD /* RNViewShot.xcodeproj */,
 				D69AA81D56F6491F88E9900E /* RCTFBSDK.xcodeproj */,
 				EF6B0846A4A641FE97FB5007 /* RNCardIO.xcodeproj */,
+				419E57D249604968BFCA1442 /* RNCheckNotificationPermission.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1775,6 +1813,7 @@
 				A5713CC2B55449EB928CCC0D /* libRNViewShot.a */,
 				38D4E1E6A5B146E0B1EE4742 /* libRCTFBSDK.a */,
 				5A134EC073204EB9988F9374 /* libRNCardIO.a */,
+				F52D7A2B6C72466D88A9E035 /* libRNCheckNotificationPermission.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -2258,6 +2297,10 @@
 					ProjectRef = C91CA73B78244330B357DBB8 /* RNCAsyncStorage.xcodeproj */;
 				},
 				{
+					ProductGroup = 20B78C4A237D2AC900E43C4B /* Products */;
+					ProjectRef = 419E57D249604968BFCA1442 /* RNCheckNotificationPermission.xcodeproj */;
+				},
+				{
 					ProductGroup = 8448576522F99FEE00C167AD /* Products */;
 					ProjectRef = 32EA895B596D4A60B1A2ED68 /* RNCNetInfo.xcodeproj */;
 				},
@@ -2396,6 +2439,13 @@
 			fileType = archive.ar;
 			path = libRCTFBSDK.a;
 			remoteRef = 202455B5233C9ADB009D482E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		20B78C4E237D2AC900E43C4B /* libRNCheckNotificationPermission.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCheckNotificationPermission.a;
+			remoteRef = 20B78C4D237D2AC900E43C4B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
@@ -4016,12 +4066,14 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileappTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4071,12 +4123,14 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileappTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4132,6 +4186,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -4176,6 +4231,7 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -4220,11 +4276,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4280,11 +4338,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4340,11 +4400,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4399,11 +4461,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "mobileapp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4561,11 +4625,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4614,11 +4680,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4668,11 +4736,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4721,11 +4791,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4775,11 +4847,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4828,11 +4902,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = mobileapp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4881,11 +4957,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "mobileapp_prod-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4933,11 +5011,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "mobileapp_prod-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -4986,11 +5066,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5044,11 +5126,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5104,11 +5188,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5162,11 +5248,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5222,11 +5310,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5280,11 +5370,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5340,11 +5432,13 @@
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree_prod-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5397,11 +5491,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree_prod-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5457,11 +5553,13 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -5515,11 +5613,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-awesome-card-io/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-check-notification-permission/ios",
 				);
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
