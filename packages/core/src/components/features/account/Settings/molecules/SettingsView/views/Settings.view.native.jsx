@@ -4,7 +4,7 @@ import {
   checkNotificationPermission,
   changeNotificationSetting,
 } from 'react-native-check-notification-permission';
-import { Switch, AppState } from 'react-native';
+import { Switch, AppState, Alert } from 'react-native';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -54,16 +54,15 @@ class SettingsView extends PureComponent {
           });
         }
       });
+      isSupportedTouch().then(value => {
+        // it returns true for android and touch id is enable for android
+        if (value === true) {
+          this.setState({ biometryType: SETTINGS_CONSTANTS.SETTINGS_TOUCH_ID });
+        } else {
+          this.setState({ biometryType: value });
+        }
+      });
     }
-
-    isSupportedTouch().then(value => {
-      // it returns true for android and touch id is enable for android
-      if (value) {
-        this.setState({ biometryType: SETTINGS_CONSTANTS.SETTINGS_TOUCH_ID });
-      } else {
-        this.setState({ biometryType: value });
-      }
-    });
 
     checkNotificationPermission().then(result => {
       this.setState({ pushNotificationValue: result });
@@ -133,6 +132,11 @@ class SettingsView extends PureComponent {
               touchIdValue: true,
               faceIdValue: true,
             });
+          } else {
+            Alert.alert(
+              getLabelValue(labels, 'lbl_overview_error_heading'),
+              getLabelValue(labels, 'lbl_overview_enter_correct_password')
+            );
           }
         }}
       />
