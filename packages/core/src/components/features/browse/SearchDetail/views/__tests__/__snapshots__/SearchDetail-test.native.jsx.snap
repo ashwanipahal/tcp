@@ -39,6 +39,7 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     isFavorite={false}
     isLoadingMore={false}
     isLoggedIn={false}
+    isSearchListing={true}
     labels={Object {}}
     labelsFilter={Object {}}
     labelsLogin={Object {}}

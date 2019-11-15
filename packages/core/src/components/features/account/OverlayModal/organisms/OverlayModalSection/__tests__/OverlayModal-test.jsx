@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getViewportInfo, isIosWeb, isAndroidWeb } from '@tcp/core/src/utils';
+import { getViewportInfo, isMobileWeb } from '@tcp/core/src/utils';
 import { OverlayModalVanilla } from '../views/OverlayModal';
 
 jest.mock('@tcp/core/src/utils', () => {
@@ -8,8 +8,7 @@ jest.mock('@tcp/core/src/utils', () => {
   return {
     ...originalModule,
     getViewportInfo: jest.fn(),
-    isIosWeb: jest.fn(),
-    isAndroidWeb: jest.fn(),
+    isMobileWeb: jest.fn(),
     isClient: jest.fn(),
     getIconPath: jest.fn(),
   };
@@ -80,14 +79,16 @@ describe('OverlayModal', () => {
 
   it('should render Overlay correctly', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: false }));
-    isIosWeb.mockImplementation(() => false);
-    isAndroidWeb.mockImplementation(() => false);
+    isMobileWeb.mockImplementation(() => false);
     const props = {
       component: 'login',
       ModalContent: () => {},
       variation: 'primary',
       color: null,
       openState: false,
+      componentProps: {
+        currentForm: 'login',
+      },
     };
     const mockedcloseOverlay = jest.fn();
     const mockedEvent = {
@@ -104,13 +105,16 @@ describe('OverlayModal', () => {
   });
   it('should render Modal correctly', () => {
     getViewportInfo.mockImplementation(() => ({ isMobile: true }));
-    isIosWeb.mockImplementation(() => true);
+    isMobileWeb.mockImplementation(() => true);
     const props = {
       component: 'login',
       ModalContent: () => {},
       variation: 'primary',
       color: null,
       openState: false,
+      componentProps: {
+        currentForm: 'login',
+      },
     };
     const mockedcloseOverlay = jest.fn();
     const mockedEvent = {
@@ -132,6 +136,9 @@ describe('OverlayModal', () => {
       variation: 'primary',
       color: null,
       openState: false,
+      componentProps: {
+        currentForm: 'login',
+      },
     };
     const mockedcloseOverlay = jest.fn();
     const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);

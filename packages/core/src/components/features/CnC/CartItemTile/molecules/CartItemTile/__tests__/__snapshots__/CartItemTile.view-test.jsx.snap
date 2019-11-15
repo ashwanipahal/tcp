@@ -341,7 +341,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -779,7 +779,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1230,7 +1230,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1664,7 +1664,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2098,7 +2098,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2532,7 +2532,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2992,7 +2992,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3440,7 +3440,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3900,7 +3900,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4348,7 +4348,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4796,7 +4796,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5247,7 +5247,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5698,7 +5698,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6149,7 +6149,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6626,7 +6626,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            undefined 0
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>

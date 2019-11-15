@@ -130,7 +130,7 @@ export function* updateShipmentMethodSelection({ payload }) {
   }
 }
 
-export function* updateShippingAddress({ payload }) {
+export function* updateShippingAddress({ payload, after }) {
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount, onFileAddressKey },
   } = payload;
@@ -159,6 +159,9 @@ export function* updateShippingAddress({ payload }) {
     },
   });
   yield call(getAddressList);
+  if (after) {
+    after();
+  }
   yield put(setOnFileAddressKey(updateAddressResponse.payload));
 }
 

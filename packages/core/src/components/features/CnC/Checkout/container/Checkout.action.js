@@ -288,18 +288,17 @@ export const emailSignupStatus = payload => {
   };
 };
 
-export const routeToPickupPage = () => {
-  return {
-    type: constants.ROUTE_TO_PICKUP_PAGE,
-  };
-};
+export const routeToPickupPage = () => ({
+  type: constants.ROUTE_TO_PICKUP_PAGE,
+});
 
 export const initActions = [loadComponentLabelsData({ category: LABELS.checkout })];
 
-export const updateShippingAddress = payload => {
+export const updateShippingAddress = (payload, after) => {
   return {
     type: constants.UPDATE_SHIPPING_ADDRESS,
     payload,
+    after,
   };
 };
 export function getSetIsBillingVisitedActn(isBillingVisited) {
