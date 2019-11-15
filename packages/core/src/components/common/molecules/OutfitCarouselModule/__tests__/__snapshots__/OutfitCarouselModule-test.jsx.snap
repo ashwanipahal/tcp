@@ -90,10 +90,10 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
   >
     <div>
       <ForwardRef
-        asPath="http://image1.sm/url"
+        asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
-        to="http://image1.sm/url"
+        to="/node/product/<uuid>"
       >
         <ForwardRef
           className=" carousel-image"
@@ -117,10 +117,10 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
     </div>
     <div>
       <ForwardRef
-        asPath="http://image1.sm/url"
+        asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
-        to="http://image1.sm/url"
+        to="/node/product/<uuid>"
       >
         <ForwardRef
           className=" carousel-image"
@@ -144,10 +144,10 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
     </div>
     <div>
       <ForwardRef
-        asPath="http://image1.sm/url"
+        asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
-        to="http://image1.sm/url"
+        to="/node/product/<uuid>"
       >
         <ForwardRef
           className=" carousel-image"
@@ -171,10 +171,10 @@ exports[`OutfitCarouselModule component should default variant correctly 1`] = `
     </div>
     <div>
       <ForwardRef
-        asPath="http://image1.sm/url"
+        asPath="/node/product/<uuid>"
         className="image-link"
         dataLocator="dummy-datalocator"
-        to="http://image1.sm/url"
+        to="/node/product/<uuid>"
       >
         <ForwardRef
           className=" carousel-image"
