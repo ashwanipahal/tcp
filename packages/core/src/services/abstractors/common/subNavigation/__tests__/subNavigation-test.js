@@ -1,15 +1,14 @@
-import { fromJS, List } from 'immutable';
-import { getNavigationData, DataAbstractor } from '../subNavigation';
-import mockLeftSideNavigation from '../mock';
+import { fromJS } from 'immutable';
+import { DataAbstractor } from '../subNavigation';
 
 jest.mock('../../../../handler/handler');
 
-it('help cener Abstractor | DataAbstractor | processData', () => {
+it('Sub navigation Abstractor | DataAbstractor | processData', () => {
   const rawData = fromJS({
-    subNavigation: []
+    subNavigation: [],
   });
   const processedData = fromJS({
-    subNavigation: []
+    subNavigation: [],
   });
   DataAbstractor.processData(rawData).then(data => {
     expect(data).toMatchObject(processedData);
