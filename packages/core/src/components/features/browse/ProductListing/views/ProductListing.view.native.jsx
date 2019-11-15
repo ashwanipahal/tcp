@@ -91,6 +91,7 @@ const ProductListView = ({
   setSelectedFilter,
   selectedFilterValue,
   plpTopPromos,
+  isSearchListing,
   ...otherProps
 }) => {
   const title = navigation && navigation.getParam('title');
@@ -115,7 +116,7 @@ const ProductListView = ({
   return (
     <ScrollView>
       <PageContainer margins={margins} paddings={paddings}>
-        <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />
+        {!isSearchListing && <PromoModules plpTopPromos={plpTopPromos} navigation={navigation} />}
         <ProductList
           products={products}
           title={title}
@@ -171,6 +172,7 @@ ProductListView.propTypes = {
   selectedFilterValue: PropTypes.shape({}).isRequired,
   setSelectedFilter: PropTypes.func.isRequired,
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -194,6 +196,7 @@ ProductListView.defaultProps = {
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
   plpTopPromos: [],
+  isSearchListing: false,
 };
 
 export default withStyles(ProductListView, styles);

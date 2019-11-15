@@ -21,7 +21,7 @@ const Abstractor = {
       body: {
         username: getStyliticsUserName(),
         total: count,
-        item_number: categoryId,
+        tags: categoryId,
       },
       webService: endpoints.getStyliticsProductViewById,
     };

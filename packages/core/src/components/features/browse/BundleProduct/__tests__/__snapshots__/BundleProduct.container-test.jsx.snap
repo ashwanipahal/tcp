@@ -56,6 +56,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
       },
     }
   }
+  outfitLabels={Object {}}
   pdpLabels={Object {}}
   plpLabels={Object {}}
   productDetails={Array []}

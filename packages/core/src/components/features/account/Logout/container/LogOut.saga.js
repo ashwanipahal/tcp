@@ -8,6 +8,7 @@ import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.actio
 import { LogoutApplication } from '../../../../../services/abstractors/account';
 import { resetWalletAppState } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
+import { setCheckoutModalMountedState } from '../../LoginPage/container/LoginPage.actions';
 
 export function* logoutSaga() {
   try {
@@ -23,6 +24,7 @@ export function* logoutSaga() {
       if (!isMobileApp()) {
         setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
+        yield put(setCheckoutModalMountedState({ state: false }));
         if (
           window.location.href.includes('account') ||
           window.location.href.includes('checkout/confirmation')

@@ -88,7 +88,8 @@ describe('Added to bag saga', () => {
       ...payload.productInfo,
       ...response,
     };
-    const putDescriptor = addItemToCartBopisGen.next(response).value;
+    addItemToCartBopisGen.next(response);
+    const putDescriptor = addItemToCartBopisGen.next().value;
     expect(putDescriptor).toEqual(put(SetAddedToBagData(res)));
     const err = {
       ...response,

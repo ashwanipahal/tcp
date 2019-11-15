@@ -1,4 +1,5 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import {
   addCartEcomItem,
@@ -112,6 +113,11 @@ export function* addItemToCartBopis({ payload }) {
     yield put(clearAddToPickupErrorState());
     const errorMapping = yield select(BagPageSelectors.getErrorMapping);
     const res = yield call(addCartBopisItem, params, errorMapping);
+    yield put(
+      getFavoriteStoreActn({
+        ignoreCache: true,
+      })
+    );
     if (callback) {
       callback();
     }
