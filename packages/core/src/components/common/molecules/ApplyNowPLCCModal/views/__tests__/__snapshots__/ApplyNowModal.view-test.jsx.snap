@@ -680,9 +680,6 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         >
           lbl_PLCCModal_applyNowSubText
         </Styled(BodyCopy)>
-        <Styled(RichText)
-          className="congrats_msg"
-        />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)

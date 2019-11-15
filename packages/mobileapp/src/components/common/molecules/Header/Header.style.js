@@ -176,10 +176,6 @@ export const BrandIconSection = styled.View`
   height: 54px;
 `;
 
-export const Header = styled.View`
-  height: 54px;
-`;
-
 export const BackIconTouchable = styled.TouchableOpacity`
   width: 45px;
 `;

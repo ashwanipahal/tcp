@@ -57,6 +57,12 @@ const OutfitListingContainer = dynamic(() =>
 );
 
 class ProductListingContainer extends React.PureComponent {
+  static pageProps = {
+    pageData: {
+      pageName: 'browse',
+    },
+  };
+
   static getInitialProps = async ({ isServer, props, req }) => {
     const {
       getProducts,
