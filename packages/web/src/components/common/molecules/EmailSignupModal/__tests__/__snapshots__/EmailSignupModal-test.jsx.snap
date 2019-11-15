@@ -22,6 +22,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     heightConfig={
       Object {
         "height": "625px",
+        "maxHeight": "625px",
         "minHeight": "500px",
       }
     }
@@ -29,7 +30,6 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
-    standardHeight={true}
     widthConfig={
       Object {
         "large": "851px",
@@ -340,6 +340,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
     heightConfig={
       Object {
         "height": "625px",
+        "maxHeight": "625px",
         "minHeight": "500px",
       }
     }
@@ -347,7 +348,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
-    standardHeight={true}
     widthConfig={
       Object {
         "large": "851px",
@@ -658,6 +658,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     heightConfig={
       Object {
         "height": "625px",
+        "maxHeight": "625px",
         "minHeight": "500px",
       }
     }
@@ -665,7 +666,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
-    standardHeight={true}
     widthConfig={
       Object {
         "large": "851px",

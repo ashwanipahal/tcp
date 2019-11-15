@@ -172,7 +172,7 @@ class QuickViewModal extends React.Component {
             closeIconDataLocator={getLocator('quick_view_icon_btn')}
             heading={this.getHeadingText()}
             widthConfig={{ small: '375px', medium: '600px', large: '704px' }}
-            standardHeight
+            heightConfig={{ height: '95%' }}
             fixedWidth
             inheritedStyles={customHeaderStyle}
             headingAlign="center"
