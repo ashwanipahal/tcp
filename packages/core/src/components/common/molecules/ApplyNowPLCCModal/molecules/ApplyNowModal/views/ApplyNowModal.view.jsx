@@ -37,7 +37,7 @@ const StyledApplyNowModal = ({
       dataLocator={getLocator('plcc_apply_now_modal')}
       dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
       maxWidth="464px"
-      minHeight="646px"
+      standardHeight
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
       innerContentClassName="innerContent"
