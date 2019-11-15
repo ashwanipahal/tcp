@@ -1,23 +1,23 @@
 import styled from 'styled-components/native';
 
 const getAdditionalStyle = props => {
-  const { margin, width, itemMargin, itemPadding, itemBackgroundColor } = props;
+  const { margin, width, slideWidth, paddingHorizontal } = props;
   return {
     ...(margin && { margin }),
     ...(width && { width }),
-    ...(itemMargin && { margin: itemMargin }),
-    ...(itemPadding && { padding: itemPadding }),
-    ...(itemBackgroundColor && { background: itemBackgroundColor }),
+    ...(slideWidth && { width: slideWidth }),
+    ...(paddingHorizontal && { paddingHorizontal }),
   };
 };
 
 const Container = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  width: 100%;
+  justify-content: center;
 `;
 
 const ImageTouchableOpacity = styled.TouchableOpacity`
-  ${getAdditionalStyle}
+  ${getAdditionalStyle};
 `;
 
 export { Container, ImageTouchableOpacity };

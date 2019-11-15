@@ -22,7 +22,7 @@ exports[`OutfitCarouselModule should render correctly 1`] = `
     dataLocator="lbl_promo_jeans_img_title"
     fontSize="fs14"
     fontWeight="regular"
-    margin="10px 0 0 0"
+    margin="10px 0 16px 0"
     mobileFontFamily="primary"
     numberOfLines={null}
     text="Build her head-to-toe party outfit sprinkled with all the extra-sweet details!"
@@ -30,8 +30,9 @@ exports[`OutfitCarouselModule should render correctly 1`] = `
     textDecoration={null}
     width="125"
   />
-  <BannerCarousel
-    customRenderer={[Function]}
+  <WithTheme(SnapCarousel)
+    activeSlideAlignment="start"
+    autoplay={false}
     data={
       Array [
         Object {
@@ -131,16 +132,21 @@ exports[`OutfitCarouselModule should render correctly 1`] = `
         },
       ]
     }
-    getImageUrl={[Function]}
-    imageHeight={274}
-    imageWidth={142}
-    itemBackgroundColor={null}
-    itemMargin={null}
-    itemPadding="0 20px 0 0"
-    listLeftMargin={0}
-    listRightMargin={20}
-    margins="16px 0 0 0"
-    onImageClick={[Function]}
+    height={304}
+    inactiveSlideOpacity={1}
+    isUseLeftArrowIcon={true}
+    isUseRightArrowIcon={true}
+    itemWidth={353}
+    loop={true}
+    options={
+      Object {
+        "autoplay": false,
+      }
+    }
+    renderItem={[Function]}
+    sampleTestingText="OutFitCarousel"
+    sliderWidth={750}
+    variation="show-arrow"
   />
 </Styled(View)>
 `;

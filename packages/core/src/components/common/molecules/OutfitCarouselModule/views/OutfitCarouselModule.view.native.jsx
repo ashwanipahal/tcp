@@ -1,10 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import BannerCarousel from '@tcp/core/src/components/common/molecules/BannerCarousel';
 import { configureInternalNavigationFromCMSUrl, navigateToPage } from '@tcp/core/src/utils';
+import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
+import { getScreenWidth } from '@tcp/core/src/utils/index.native';
 import { Container, ImageTouchableOpacity } from '../styles/OutfitCarouselModule.style.native';
 import { BodyCopy, DamImage } from '../../../atoms';
+
+const horizontalMargin = 10;
+const sliderWidth = getScreenWidth();
+const slideWidth = sliderWidth / 2 - 42;
+const itemWidth = slideWidth + horizontalMargin * 2;
+const itemHeight = 304;
 
 export class OutfitCarouselModule extends PureComponent {
   static propTypes = {
@@ -22,15 +29,15 @@ export class OutfitCarouselModule extends PureComponent {
   };
 
   getImageTitle = item => {
-    return get(item, 'link.text', 'Not Available');
+    return get(item, 'link.text', '');
   };
 
   getTitle = data => {
-    return get(data, 'headLine[0].text', 'No Heading');
+    return get(data, 'headLine[0].text', '');
   };
 
   getSubTitle = data => {
-    return get(data, 'subHeadLine[0].text', 'No Sub Heading');
+    return get(data, 'subHeadLine[0].text', '');
   };
 
   navigateToNextScreen = item => {
@@ -40,8 +47,8 @@ export class OutfitCarouselModule extends PureComponent {
     navigateToPage(cmsValidatedUrl, navigation);
   };
 
-  itemRenderer = (props, itemData) => {
-    const { imageWidth, imageHeight, itemMargin, itemPadding, itemBackgroundColor } = props;
+  itemRenderer = itemData => {
+    // const { imageWidth, imageHeight, itemMargin, itemPadding, itemBackgroundColor } = props;
     const { index, item } = itemData;
     const imgUrl = this.getImageUrl(item) || '';
     return (
@@ -50,18 +57,18 @@ export class OutfitCarouselModule extends PureComponent {
         accessible={index}
         accessibilityRole="image"
         accessibilityLabel={`image ${index + 1}`}
-        itemMargin={itemMargin}
-        itemPadding={itemPadding}
-        itemBackgroundColor={itemBackgroundColor}
+        itemMargin={0}
+        key={index.toString()}
+        width={slideWidth}
       >
-        <DamImage key={index.toString()} url={imgUrl} width={imageWidth} height={imageHeight} />
+        <DamImage key={index.toString()} url={imgUrl} width="100%" height={274} />
         <BodyCopy
           width="125"
           margin="16px 0 0 0"
           dataLocator="lbl_promo_jeans_img_title"
           mobileFontFamily="primary"
-          fontSize="fs14"
-          fontWeight="extrabold"
+          fontSize="fs10"
+          fontWeight="regular"
           color="gray.900"
           textAlign="center"
           text={this.getImageTitle(item)}
@@ -87,7 +94,7 @@ export class OutfitCarouselModule extends PureComponent {
         />
         <BodyCopy
           width="125"
-          margin="10px 0 0 0"
+          margin="10px 0 16px 0"
           dataLocator="lbl_promo_jeans_img_title"
           mobileFontFamily="primary"
           fontSize="fs14"
@@ -96,16 +103,23 @@ export class OutfitCarouselModule extends PureComponent {
           textAlign="center"
           text={this.getSubTitle(data)}
         />
-        <BannerCarousel
-          margins="16px 0 0 0"
+        <Carousel
           data={bannerData}
-          getImageUrl={this.getImageUrl}
-          itemPadding="0 20px 0 0"
-          customRenderer={this.itemRenderer}
-          imageWidth={142}
-          imageHeight={274}
-          listLeftMargin={0}
-          listRightMargin={20}
+          renderItem={this.itemRenderer}
+          height={itemHeight}
+          sliderWidth={sliderWidth}
+          itemWidth={itemWidth}
+          loop
+          activeSlideAlignment="start"
+          inactiveSlideOpacity={1}
+          variation="show-arrow"
+          autoplay={false}
+          options={{
+            autoplay: false,
+          }}
+          sampleTestingText="OutFitCarousel"
+          isUseLeftArrowIcon
+          isUseRightArrowIcon
         />
       </Container>
     );
