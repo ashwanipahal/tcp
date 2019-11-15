@@ -1,6 +1,4 @@
 /* eslint-disable max-lines */
-// TODO: Need fix unused/proptypes eslint error
-
 import { executeStatefulAPICall, executeUnbxdAPICall } from '../../handler';
 import { parseDate, compareDate } from '../../../utils/parseDate';
 import endpoints from '../../endpoints';
@@ -331,24 +329,52 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
   );
 };
 
-/* eslint-disable complexity */
-// eslint-disable-next-line sonarjs/cognitive-complexity
-export const deriveItemAvailability = (orderDetails, item, store, isRadialInvEnabled) => {
-  const isUsOrder = orderDetails.currencyCode === 'USD';
-  const isCaOrder = orderDetails.currencyCode !== 'USD';
+const checkIfUSOrder = currencyCode => currencyCode === 'USD';
 
-  if (
-    (isUsOrder && item.productInfo.articleOOSUS) ||
-    (isCaOrder && item.productInfo.articleOOSCA)
-  ) {
+const getIsSoldOut = ({ productInfo, isUsOrder }) => {
+  const { articleOOSUS, articleOOSCA } = productInfo;
+  return (isUsOrder && articleOOSUS) || (!isUsOrder && articleOOSCA);
+};
+
+const getIsProductOK = ({ orderItemType, stLocId, bopisIntlField }) => {
+  return orderItemType === ORDER_ITEM_TYPE.BOPIS && stLocId && !parseBoolean(bopisIntlField);
+};
+
+const getIsProductUnavailble = ({ bossIntlField, isStoreBOSSEligible }) =>
+  parseBoolean(bossIntlField) || !isStoreBOSSEligible;
+
+const getAvailablityIfIsRadialInv = ({ item, orderDetails }) => {
+  const isProductBossEligible = deriveBossEligiblity(item, orderDetails); // product ineligibility added as part of RAD-88, not present earlier in production
+
+  if (item.inventoryAvailBOSS <= 0) {
+    return AVAILABILITY.UNAVAILABLE;
+  }
+  if (deriveBossInventoryMismatch(item)) {
+    return AVAILABILITY.REQ_QTY_UNAVAILABLE;
+  }
+  if (!isProductBossEligible) {
+    return AVAILABILITY.BOSSINELIGIBLE;
+  }
+
+  return AVAILABILITY.OK;
+};
+
+const getDefaultAvailability = ({ item }) => {
+  if (item.inventoryAvail > 0) {
+    return AVAILABILITY.OK;
+  }
+  return AVAILABILITY.UNAVAILABLE;
+};
+
+export const deriveItemAvailability = (orderDetails, item, store, isRadialInvEnabled) => {
+  const isUsOrder = checkIfUSOrder(orderDetails.currencyCode);
+  const { bopisIntlField, bossIntlField } = orderDetails;
+  const { productInfo, stLocId, orderItemType } = item;
+  if (getIsSoldOut({ productInfo, isUsOrder })) {
     return AVAILABILITY.SOLDOUT;
     // replaced "BOPIS" with a config variable
   }
-  if (
-    item.orderItemType === ORDER_ITEM_TYPE.BOPIS &&
-    item.stLocId &&
-    !parseBoolean(orderDetails.bopisIntlField)
-  ) {
+  if (getIsProductOK({ orderItemType, stLocId, bopisIntlField })) {
     return AVAILABILITY.OK;
   }
   if (item.orderItemType === ORDER_ITEM_TYPE.BOSS && item.stLocId) {
@@ -364,28 +390,13 @@ export const deriveItemAvailability = (orderDetails, item, store, isRadialInvEna
      * 5. boss product ineligible -  added with RAD-88/RAD-86
      * returning respective updated Error copies(RAD-86)
      */
-    if (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible) {
+    if (getIsProductUnavailble({ bossIntlField, isStoreBOSSEligible })) {
       return AVAILABILITY.UNAVAILABLE;
     }
     if (isRadialInvEnabled) {
-      const isProductBossEligible = deriveBossEligiblity(item, orderDetails); // product ineligibility added as part of RAD-88, not present earlier in production
-
-      if (item.inventoryAvailBOSS <= 0) {
-        return AVAILABILITY.UNAVAILABLE;
-      }
-      if (deriveBossInventoryMismatch(item)) {
-        return AVAILABILITY.REQ_QTY_UNAVAILABLE;
-      }
-      if (!isProductBossEligible) {
-        return AVAILABILITY.BOSSINELIGIBLE;
-      }
-
-      return AVAILABILITY.OK;
+      return getAvailablityIfIsRadialInv({ item, orderDetails });
     }
-    if (item.inventoryAvail > 0) {
-      return AVAILABILITY.OK;
-    }
-    return AVAILABILITY.UNAVAILABLE;
+    return getDefaultAvailability({ item });
   }
   if (item.qty > item.inventoryAvail) {
     return AVAILABILITY.UNAVAILABLE;
@@ -396,17 +407,16 @@ export const deriveItemAvailability = (orderDetails, item, store, isRadialInvEna
   }
   return AVAILABILITY.UNAVAILABLE;
 };
-/* eslint-enable complexity */
 
-/* eslint-disable complexity */
-/* eslint-disable max-statements */
+/* eslint-disable complexity, max-statements */
 export const getCurrentOrderFormatter = (
-  orderDetailsResponse,
+  orderDetailsResponseObj,
   excludeCartItems,
   isCanada,
   isRadialInvEnabled
   // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
+  const orderDetailsResponse = orderDetailsResponseObj;
   const EMPTY_OBJECT = Object.create(null);
   let pickUpContact = {};
   let pickUpAlternative = {};
@@ -512,11 +522,9 @@ export const getCurrentOrderFormatter = (
   }
   // When brierley fails, backend returns -1 in these fields
   if (orderDetailsResponse.pointsToNextReward === -1) {
-    // eslint-disable-next-line no-param-reassign
     orderDetailsResponse.pointsToNextReward = null;
   }
   if (orderDetailsResponse.userPoints === -1) {
-    // eslint-disable-next-line no-param-reassign
     orderDetailsResponse.userPoints = null;
   }
 
@@ -707,10 +715,9 @@ export const getCurrentOrderFormatter = (
       orderDetailsResponse.mixOrderDetails &&
       orderDetailsResponse.mixOrderDetails.data
         ? orderDetailsResponse.mixOrderDetails.data.find(
-            // eslint-disable-next-line no-shadow
-            store =>
-              store.shippingAddressDetails.stLocId === item.stLocId &&
-              store.orderType === item.orderItemType
+            storeData =>
+              storeData.shippingAddressDetails.stLocId === item.stLocId &&
+              storeData.orderType === item.orderItemType
           )
         : null;
 
@@ -843,8 +850,7 @@ tomorrowClosingTime
     orderDetailsResponse && orderDetailsResponse.cartTotalAfterPLCCDiscount;
   return usersOrder;
 };
-/* eslint-enable max-statements */
-/* eslint-enable complexity */
+/* eslint-enable complexity, max-statements */
 
 export const getOrderDetailsData = () => {
   const payload = {
