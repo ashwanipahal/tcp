@@ -14,7 +14,7 @@ const Abstractor = {
    * @return {Object} return Promise.
    */
   getData: params => {
-    const { categoryId, count = 7, isRelatedOutfit } = params;
+    const { categoryId, count = 20, isRelatedOutfit } = params;
 
     const styliticsRegion = getStyliticsRegion();
     const payload = {

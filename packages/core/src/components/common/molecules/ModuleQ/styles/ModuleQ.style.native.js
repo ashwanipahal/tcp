@@ -14,7 +14,7 @@ const TILE_SHADOW = `
 const getAdditionalStyle = props => {
   const { isRelatedOutfit } = props;
   return {
-    ...(!isRelatedOutfit && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.XS }),
+    ...(!isRelatedOutfit && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
     ...(!isRelatedOutfit && { padding: props.theme.spacing.ELEM_SPACING.LRG }),
   };
 };
