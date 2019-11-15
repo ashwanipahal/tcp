@@ -53,6 +53,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         getFormState={[Function]}
         initialValues={
           Object {
+            "isEmailOptInSecondBrand": false,
             "signup": "",
           }
         }
@@ -71,6 +72,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         openSuccessModal={[Function]}
         persistentSubmitErrors={false}
         pure={true}
+        secondFieldName="isEmailOptInSecondBrand"
         shouldAsyncValidate={[Function]}
         shouldError={[Function]}
         shouldValidate={[Function]}
@@ -164,6 +166,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         initialValues={
           Object {
             "footerTopSmsSignup": "",
+            "isTextOptInSecondBrand": false,
           }
         }
         keepDirtyOnReinitialize={false}
@@ -179,6 +182,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         openSuccessModal={[Function]}
         persistentSubmitErrors={false}
         pure={true}
+        secondFieldName="isTextOptInSecondBrand"
         shouldAsyncValidate={[Function]}
         shouldError={[Function]}
         shouldValidate={[Function]}

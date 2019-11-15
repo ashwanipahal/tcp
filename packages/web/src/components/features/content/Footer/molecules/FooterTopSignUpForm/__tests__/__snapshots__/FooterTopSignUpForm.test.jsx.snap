@@ -369,7 +369,8 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
             }
           }
           dataLocator=""
-          name="primary"
+          id=""
+          name=""
           type="checkbox"
         />
       </Styled(Col)>
