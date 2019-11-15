@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ExistingPLCCUserStyle from './style/ExistingPLCCUser.view.style';
 import { getLabelValue } from '../../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../../utils/utility';
+import { redirectToBag, redirectToHome, getFooterButtonSize } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 /**
@@ -31,7 +31,7 @@ const ExistingPLCCUserView = ({
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 3, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="existing_checkout_button"
           >
             <Button
@@ -54,7 +54,7 @@ const ExistingPLCCUserView = ({
         <Row fullBleed className="submit_buttons_set">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 3, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="existing_continue_button"
           >
             <Anchor

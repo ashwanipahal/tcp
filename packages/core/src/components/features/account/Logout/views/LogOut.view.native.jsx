@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import AsyncStorage from '@react-native-community/async-storage';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 class LogOutView extends React.Component {
@@ -13,6 +14,10 @@ class LogOutView extends React.Component {
     e.preventDefault();
     const { triggerLogout } = this.props;
     triggerLogout();
+
+    // clear the username and password
+    AsyncStorage.setItem('username', '');
+    AsyncStorage.setItem('password', '');
   }
 
   render() {

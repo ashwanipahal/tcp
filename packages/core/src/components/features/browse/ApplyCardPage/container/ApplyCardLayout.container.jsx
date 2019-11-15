@@ -108,7 +108,6 @@ class ApplyCardLayoutContainer extends React.Component {
       togglePLCCModal,
     } = this.props;
     const { showAddEditAddressForm } = this.state;
-
     return (
       <React.Fragment>
         <ApplyCardLayoutView
