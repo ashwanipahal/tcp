@@ -111,21 +111,6 @@ export const generateBrowseDataLayer = store => {
         return getStoreId(store) || '';
       },
     },
-    pageType: {
-      get() {
-        return getPageType(store) || '';
-      },
-    },
-    pageSection: {
-      get() {
-        return getPageSection(store) || '';
-      },
-    },
-    pageSubSubSection: {
-      get() {
-        return getPageSubSubSection(store) || '';
-      },
-    },
     pageFullCategoryName: {
       get() {
         return getPageFullCategoryName(store) || '';
