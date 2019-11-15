@@ -2,7 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { change, Field, reduxForm, reset } from 'redux-form';
-import { BodyCopy, Button, RichText, SelectBox } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Button, RichText } from '@tcp/core/src/components/common/atoms';
+import Select from '@tcp/core/src/components/common/atoms/Select';
 import { Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLocator } from '@tcp/core/src/utils';
@@ -121,7 +122,7 @@ class CountrySelectorModal extends React.Component {
               <Field
                 id="country"
                 name="country"
-                component={SelectBox}
+                component={Select}
                 options={countriesMap}
                 onChange={this.handleCountryChange}
                 inheritedStyles={selectBoxStyle}
@@ -141,7 +142,7 @@ class CountrySelectorModal extends React.Component {
               <Field
                 id="language"
                 name="language"
-                component={SelectBox}
+                component={Select}
                 options={languages}
                 onChange={this.handleLanguageChange}
                 inheritedStyles={selectBoxStyle}
@@ -161,7 +162,7 @@ class CountrySelectorModal extends React.Component {
               <Field
                 id="currency"
                 name="currency"
-                component={SelectBox}
+                component={Select}
                 options={currenciesMap}
                 onChange={this.handleCurrencyChange}
                 disabled={this.toggleDisable()}
