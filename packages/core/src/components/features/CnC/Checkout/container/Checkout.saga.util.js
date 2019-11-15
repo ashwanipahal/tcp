@@ -352,7 +352,7 @@ export function* redirectToBilling() {
 }
 
 function* updateUserRTPSData(payload) {
-  const { prescreen, isExpressCheckoutEnabled } = payload;
+  const { prescreen, isExpressCheckoutEnabled, navigation } = payload;
   try {
     const res = yield updateRTPSData(prescreen, isExpressCheckoutEnabled);
     yield put(setPlccEligible(res.plccEligible));
@@ -360,6 +360,9 @@ function* updateUserRTPSData(payload) {
     if (res.plccEligible) {
       // offer not yet shown, show it
       yield put(CHECKOUT_ACTIONS.setIsRTPSFlow(true));
+      if (isMobileApp()) {
+        navigation.navigate('ApplyNow');
+      }
       yield put(toggleApplyNowModal({ isModalOpen: true }));
     }
   } catch (e) {
@@ -367,16 +370,31 @@ function* updateUserRTPSData(payload) {
   }
 }
 
-export function* callUpdateRTPS(pageName, fromExpress = false) {
+export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   if (pageName === BILLING && showRTPSOnBilling) {
-    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: false });
-  } else if (showRTPSOnReview && fromExpress && pageName === REVIEW) {
-    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: true });
+    yield call(updateUserRTPSData, {
+      prescreen: true,
+      isExpressCheckoutEnabled: false,
+      navigation,
+    });
+  } else if (
+    showRTPSOnReview &&
+    (isPaypalPostBack || isExpressCheckoutEnabled) &&
+    pageName === REVIEW
+  ) {
+    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
   }
 }
+
+export const makeUpdateRTPSCall = (pageName, isPaypalPostBack, isExpressCheckoutEnabled) => {
+  const { BILLING } = constants.CHECKOUT_STAGES;
+  return pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled);
+};
+
 export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
   const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
   const billingError = getServerErrorMessage(e, errorsMapping);
