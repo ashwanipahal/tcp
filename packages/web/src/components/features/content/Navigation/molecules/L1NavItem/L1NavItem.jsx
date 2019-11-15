@@ -7,6 +7,7 @@ import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
 import { DELAY_TO_OPEN } from './L1NavItem.config';
+import ClickTracker from '../../../../../common/atoms/ClickTracker';
 
 const HideDrawerContext = React.createContext({});
 const HideDrawerProvider = HideDrawerContext.Provider;
@@ -90,6 +91,22 @@ class L1NavItem extends React.PureComponent {
     return mainCategory && mainCategory.promoBadge;
   }
 
+  navigationAnalyticsObject(breadCrumbTrail) {
+    const navigationAnalyticsObject = {};
+    const navigationAnalyticsValue =
+      breadCrumbTrail &&
+      breadCrumbTrail.map(element => {
+        return element.displayName.toLowerCase();
+      });
+
+    this.navigationAnalyticsObject = {
+      navigationAnalyticsValue:
+        (navigationAnalyticsValue && navigationAnalyticsValue.join(' ')) || '',
+      key: 'top-navigation',
+    };
+    return navigationAnalyticsObject;
+  }
+
   render() {
     const {
       categoryContent: { id, name, description, mainCategory, url, asPath },
@@ -100,8 +117,10 @@ class L1NavItem extends React.PureComponent {
       // showOnlyOnApp,
       removeL1Focus,
       hasL2,
+      breadCrumbTrail,
       ...others
     } = this.props;
+
     const { hovered } = this.state;
 
     let classForHovered = '';
@@ -109,6 +128,7 @@ class L1NavItem extends React.PureComponent {
       classForHovered = 'is-open';
       this.childRendered = true;
     }
+    const navData = this.navigationAnalyticsObject(breadCrumbTrail);
 
     // If we receive flag showOnlyOnApp then we add this class to links to hide them
     // const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
@@ -141,20 +161,24 @@ class L1NavItem extends React.PureComponent {
             onBlur={this.onMouseLeave}
             {...others}
           >
-            <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
-              <div className="nav-bar-l1-content">
-                <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
-                <span
-                  className={`nav-bar-item-content ${
-                    description ? 'nav-bar-item-sizes-range' : ''
-                  }`}
-                  data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
-                >
-                  {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
-                </span>
-                <span className="icon-arrow" />
-              </div>
-            </Anchor>
+            <ClickTracker name={navData}>
+              <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
+                <div className="nav-bar-l1-content">
+                  <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
+                  <span
+                    className={`nav-bar-item-content ${
+                      description ? 'nav-bar-item-sizes-range' : ''
+                    }`}
+                    data-locator={
+                      description ? `sizesrange_label_${index}` : `promo_badge_${index}`
+                    }
+                  >
+                    {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
+                  </span>
+                  <span className="icon-arrow" />
+                </div>
+              </Anchor>
+            </ClickTracker>
             {(hovered || this.childRendered) && children}
             <div
               className={`${className} l1-overlay ${classForHovered}`}
@@ -178,6 +202,7 @@ L1NavItem.propTypes = {
   removeL1Focus: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
   hasL2: PropTypes.number.isRequired,
+  breadCrumbTrail: PropTypes.shape({}).isRequired,
 };
 
 L1NavItem.defaultProps = {
