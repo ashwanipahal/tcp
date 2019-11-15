@@ -1,4 +1,4 @@
-import endpoints from '@tcp/core/src/service/endpoint';
+import endpoints from '@tcp/core/src/services/endpoints';
 import { executeExternalAPICall } from '../../../handler';
 
 const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
