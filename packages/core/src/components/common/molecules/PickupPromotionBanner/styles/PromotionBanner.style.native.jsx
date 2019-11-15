@@ -25,10 +25,24 @@ const LeftTriangle = styled.View`
   border-bottom-color: transparent;
 `;
 
+const TopTriangle = styled.View`
+  width: 0;
+  height: 0;
+  border-left-width: 7px;
+  border-left-color: transparent;
+  border-right-width: 7px;
+  border-right-color: transparent;
+  border-bottom-width: 7px;
+  border-bottom-color: ${props => props.theme.colorPalette.yellow[500]};
+  position: absolute;
+  top: -7px;
+  left: 65px;
+`;
+
 const TriangleBannerText = styled.View`
   background-color: ${props => props.theme.colorPalette.yellow[500]};
   height: 20px;
   width: 105px;
 `;
 
-export { FullBleedBannerStyle, TriangleBanner, LeftTriangle, TriangleBannerText };
+export { FullBleedBannerStyle, TriangleBanner, LeftTriangle, TriangleBannerText, TopTriangle };

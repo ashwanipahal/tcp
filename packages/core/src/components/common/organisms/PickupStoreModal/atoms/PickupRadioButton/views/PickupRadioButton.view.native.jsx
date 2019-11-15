@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import LabeledRadioButton from '@tcp/core/src/components/common/atoms/LabeledRadioButton';
 import { withTheme } from 'styled-components';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
@@ -75,6 +76,7 @@ export const PickupRadioButton = props => {
         }}
         labelStyle={RadioButtonLabelStyle}
       />
+      <PickupPromotionBanner bossBanner isPickupMobilePromotion />
       {isBossPickupButton && PickStoreBOSSExtraDetails(BossCtaProps)}
       {!isBossPickupButton && PickStoreBOPISExtraDetails(BopisCtaProps)}
     </>

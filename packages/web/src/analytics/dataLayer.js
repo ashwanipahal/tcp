@@ -179,5 +179,12 @@ export default function create(store) {
         return typeCart;
       },
     },
+    products: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
+      },
+    },
   });
 }

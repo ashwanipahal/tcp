@@ -15,13 +15,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     super(props);
     const { currentProduct, selectedColorProductId } = props;
     this.initialValuesForm = this.getInitialValues(currentProduct, selectedColorProductId);
-
+    this.displayATBErrorMessage = this.displayATBErrorMessage.bind(this);
     this.state = {
       selectedColor: this.initialValuesForm && this.initialValuesForm.color,
       selectedFit: this.initialValuesForm && this.initialValuesForm.Fit,
       selectedSize: this.initialValuesForm && this.initialValuesForm.Size,
       selectedQuantity: this.initialValuesForm && this.initialValuesForm.Quantity,
       isErrorMessageDisplayed: false,
+      isATBErrorMessageDisplayed: true,
       fitChanged: true,
       persistSelectedFit: '',
     };
@@ -198,6 +199,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           },
           fitChanged: true,
           isErrorMessageDisplayed: false,
+          isATBErrorMessageDisplayed: false,
         },
         this.updateSelectedSize
       );
@@ -209,6 +211,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           },
           fitChanged: false,
           isErrorMessageDisplayed: false,
+          isATBErrorMessageDisplayed: false,
         },
         this.updateSelectedSize
       );
@@ -222,6 +225,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
+      isATBErrorMessageDisplayed: false,
       fitChanged: selectedSize.name === '',
     });
     // props for any custom action to call
@@ -339,6 +343,12 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     });
   };
 
+  displayATBErrorMessage = displayError => {
+    this.setState({
+      isATBErrorMessageDisplayed: displayError,
+    });
+  };
+
   /**
    * @function getQuantityList
    * @returns quantity list with labels and values to render dropdown
@@ -387,6 +397,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       persistSelectedFit: selectedFit,
       selectedSize: { name: e },
       fitChanged: false,
+      isATBErrorMessageDisplayed: false,
     });
     if (e !== 'Select') {
       this.displayErrorMessage(false);
@@ -447,6 +458,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       navigation,
       isPickup,
       onCloseClick,
+      isBundleProduct,
       ...otherProps
     } = this.props;
     const {
@@ -455,6 +467,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       selectedSize,
       fitChanged,
       isErrorMessageDisplayed,
+      isATBErrorMessageDisplayed,
       selectedQuantity,
     } = this.state;
     if (fromBagPage) {
@@ -482,8 +495,10 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         plpLabels={plpLabels}
         fitChanged={fitChanged}
         isErrorMessageDisplayed={isErrorMessageDisplayed}
+        isATBErrorMessageDisplayed={isATBErrorMessageDisplayed}
         initialValues={initialValues}
         displayErrorMessage={this.displayErrorMessage}
+        displayATBErrorMessage={this.displayATBErrorMessage}
         selectedQuantity={selectedQuantity}
         onQuantityChange={this.quantityChange}
         generalProductId={generalProductId}
@@ -509,6 +524,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         navigation={navigation}
         isPickup={isPickup}
         onCloseClick={onCloseClick}
+        isBundleProduct={isBundleProduct}
       />
     );
   }

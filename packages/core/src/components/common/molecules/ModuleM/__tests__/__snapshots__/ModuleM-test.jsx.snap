@@ -803,50 +803,72 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
         }
       }
     >
-      <div
-        className="image-items-container__flex"
+      <Styled(Row)
+        className="image-items-container"
+        noLastMargin={true}
       >
-        <div
-          className="image-items-container__flex--item"
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+          offsetRight={Object {}}
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined0"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Girl",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Girl",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Dresses",
-                  "title": "Dresses",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -857,48 +879,63 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Dresses
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="image-items-container__flex--item"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={Object {}}
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined1"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Toddler Girl alt",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Toddler Girl title",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Skorts",
-                  "title": "Skorts",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Toddler Girl alt",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Toddler Girl title",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Skorts",
+                    "title": "Skorts",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -909,48 +946,75 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Skorts
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="image-items-container__flex--item"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
+            }
+          }
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined2"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Boy",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Boy",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Sweaters",
-                  "title": "Sweaters",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Boy",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Boy",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Sweaters",
+                    "title": "Sweaters",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -961,48 +1025,69 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Sweaters
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="image-items-container__flex--item"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+          offsetRight={Object {}}
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined3"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Toddler Boy alt",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Toddler Boy title",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Shorts",
-                  "title": "Shorts",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Toddler Boy alt",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Toddler Boy title",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Shorts",
+                    "title": "Shorts",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -1013,48 +1098,63 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Shorts
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="image-items-container__flex--item"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={Object {}}
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined4"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Baby",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Baby",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Polos",
-                  "title": "Polos",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Baby",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Baby",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Polos",
+                    "title": "Polos",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -1065,48 +1165,75 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Polos
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="image-items-container__flex--item"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
+            }
+          }
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined5"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Girl",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Girl",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Dresses",
-                  "title": "Dresses",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -1117,48 +1244,69 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Dresses
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="image-items-container__flex--item"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
+          offsetRight={Object {}}
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined6"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Girl",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Girl",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Dresses",
-                  "title": "Dresses",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -1169,48 +1317,63 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Dresses
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="image-items-container__flex--item"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={Object {}}
+          ignoreNthRule={true}
+          length={8}
+          offsetLeft={Object {}}
+          offsetRight={Object {}}
         >
           <Styled(Anchor)
             asPath="/c/"
             dataLocator="undefined7"
             to="/c/"
           >
-            <WithTheme(DamImage)
-              imgConfigs={
-                Array [
-                  "t_mod_M_img_product_m",
-                  "t_mod_M_img_product_t",
-                  "t_mod_M_img_product_d",
-                ]
-              }
-              imgData={
-                Object {
-                  "alt": "Girl",
-                  "crop_d": "",
-                  "crop_m": "",
-                  "crop_t": "",
-                  "title": "Girl",
-                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+            <div
+              className="moduleM__productImage"
+            >
+              <WithTheme(DamImage)
+                imgConfigs={
+                  Array [
+                    "t_mod_M_img_product_m",
+                    "t_mod_M_img_product_t",
+                    "t_mod_M_img_product_d",
+                  ]
                 }
-              }
-              link={
-                Object {
-                  "external": 0,
-                  "target": "",
-                  "text": "Dresses",
-                  "title": "Dresses",
-                  "url": "/c/",
+                imgData={
+                  Object {
+                    "alt": "Girl",
+                    "crop_d": "",
+                    "crop_m": "",
+                    "crop_t": "",
+                    "title": "Girl",
+                    "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                  }
                 }
-              }
-            />
+                link={
+                  Object {
+                    "external": 0,
+                    "target": "",
+                    "text": "Dresses",
+                    "title": "Dresses",
+                    "url": "/c/",
+                  }
+                }
+              />
+            </div>
             <Styled(BodyCopy)
               className="moduleM__productName"
               color="text.primary"
               component="div"
-              fontFamily="secondary"
+              fontFamily="primary"
               fontSize="fs15"
               fontWeight="regular"
               letterSpacing="normal"
@@ -1221,20 +1384,45 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               Dresses
             </Styled(BodyCopy)>
           </Styled(Anchor)>
-        </div>
-        <div
-          className="moduleM__shopAllBtnWrapper"
+        </Styled(Styled(Col))>
+        <Styled(Styled(Col))
+          className="moduleM__gridButton"
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 2,
+              "small": 2,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+              "medium": true,
+              "small": true,
+            }
+          }
+          ignoreNthRule={true}
+          isNotInlineBlock={true}
+          length={8}
+          offsetRight={
+            Object {
+              "large": 1,
+              "medium": 1,
+              "small": 0,
+            }
+          }
         >
           <Styled(Anchor)
             asPath="/c/baby-clothes"
             className="moduleM__shopAllBtn"
             dataLocator="undefined"
+            title="SHOP ALL"
             to="/c/baby-clothes"
           >
             SHOP ALL
           </Styled(Anchor)>
-        </div>
-      </div>
+        </Styled(Styled(Col))>
+      </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
 </Styled(Grid)>
