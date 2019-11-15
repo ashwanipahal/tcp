@@ -1,9 +1,5 @@
 import styled from 'styled-components/native';
 
-// const ParentWrapper = styled.View`
-//   background-color: ${props => props.theme.colorPalette.white};
-// `;
-
 const PricePointsWrapper = styled.View`
   padding: 10px 0 10px 10px;
   width: 100%;
