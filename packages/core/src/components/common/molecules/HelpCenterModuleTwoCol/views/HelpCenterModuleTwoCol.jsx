@@ -24,18 +24,16 @@ const DynamicColumns = dynamic({
         .filter(
           slot => slot && (slot.moduleName === 'placeholder' || slot.moduleName === 'divisionTabs')
         )
-        .map(slotData => {
+        .map((slotData, index) => {
           const Module = modules[slotData.moduleName];
           return (
             <Col
               colSize={{
                 small: 6,
                 medium: 8,
-                large: slotData.moduleName === 'divisionTabs' ? 9 : 2,
+                large: index === 1 ? 9 : 2,
               }}
-              offsetRight={
-                slotData.moduleName === 'divisionTabs' ? { large: 1, small: 0, medium: 0 } : {}
-              }
+              offsetRight={index === 1 ? { large: 1, small: 0, medium: 0 } : {}}
             >
               <Module halfWidth {...slotData} {...others} />
             </Col>
