@@ -123,7 +123,7 @@ const BagPageReducer = (state = initialState, action) => {
         .set('bagLoading', false)
         .set('orderDetails', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS:
-      return state.set('errors', fromJS(action.payload));
+      return state.set('bagLoading', false).set('errors', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT:
       return state.set('moduleXContent', List(action.payload));
     case 'CART_SUMMARY_SET_ORDER_ID':

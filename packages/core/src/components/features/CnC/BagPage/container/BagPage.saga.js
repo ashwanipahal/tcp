@@ -158,9 +158,9 @@ export function* getOrderDetailSaga(payload) {
   }
 }
 
-function* updateBopisItems(res) {
+function* updateBopisItems(res, isCartPage) {
   const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
-  if (bopisItems.length) {
+  if (bopisItems.length && isCartPage) {
     const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
     res.orderDetails = {
       ...res.orderDetails,
@@ -192,7 +192,8 @@ export function* getCartDataSaga(payload = {}) {
         createMatchObject(res, translatedProductInfo);
       }
     }
-    yield updateBopisItems(res);
+
+    yield updateBopisItems(res, isCartPage);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails, excludeCartItems));
 
     if (res.orderDetails.orderItems.length > 0) {
