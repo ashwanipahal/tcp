@@ -7,6 +7,7 @@ import {
   deleteAddress,
   setDeleteModalMountedState,
   setAddressBookNotification,
+  clearErrorState,
 } from './AddressBook.actions';
 import AddressView from '../views/AddressView';
 import {
@@ -43,6 +44,7 @@ export class AddressBookContainer extends React.Component<Props> {
       labels,
       addressLabels,
       verificationResult,
+      clearNotificationError,
     } = this.props;
     if (List.isList(addressList)) {
       return (
@@ -54,6 +56,7 @@ export class AddressBookContainer extends React.Component<Props> {
           showUpdatedNotification={showUpdatedNotification}
           onDeleteAddress={onDeleteAddress}
           deleteModalMountedState={deleteModalMountedState}
+          clearNotificationError={clearNotificationError}
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
           addressLabels={addressLabels}
@@ -85,6 +88,9 @@ export const mapDispatchToProps = dispatch => {
           status: '',
         })
       );
+    },
+    clearNotificationError: () => {
+      dispatch(clearErrorState());
     },
   };
 };
