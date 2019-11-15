@@ -1,18 +1,15 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import SettingsView from '../views/SettingsModal.view.native';
 import { getLabels } from '../../Account/container/Account.selectors';
 import getAccountOverviewLabels from './Settings.selectors';
 
-export class SettingsContainer extends PureComponent {
-  render() {
-    const { accountLabels, navigation, isUserLoggedIn } = this.props;
-    const labels = getAccountOverviewLabels(accountLabels);
-
-    return <SettingsView labels={labels} navigation={navigation} isUserLoggedIn={isUserLoggedIn} />;
-  }
-}
+export const SettingsContainer = props => {
+  const { accountLabels, navigation, isUserLoggedIn } = props;
+  const labels = getAccountOverviewLabels(accountLabels);
+  return <SettingsView labels={labels} navigation={navigation} isUserLoggedIn={isUserLoggedIn} />;
+};
 
 export const mapStateToProps = state => {
   return {
