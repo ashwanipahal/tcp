@@ -12,17 +12,15 @@ describe('HelpCenterTopBottomModule component', () => {
   it('HelpCenterTopBottomModule component renders correctly with props', () => {
     const props = {
       className: 'test-class',
-      composites: {
-        'help-center-header': [
-          {
-            richText: {
-              text: `<h1>Test Data</h1>`,
-              __typename: 'Text',
-            },
-          },
-        ],
-        __typename: 'Composite',
-      },
+      richTextList: [
+        {
+          text: '<h4>MOCK BOTTOM</h4>',
+          __typename: 'Text',
+        },
+      ],
+      __typename: 'Composite',
+      moduleName: 'moduleX',
+      set: [],
     };
     const component = shallow(<HelpCenterTopBottomModuleVanilla {...props} />);
     expect(component.find('.test-class')).toHaveLength(1);

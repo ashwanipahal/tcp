@@ -6,22 +6,30 @@ import style from '../styles/HelpCenterTopBottomModule.style';
 
 const HelpCenterTopBottomModule = props => {
   const { richTextList, className } = props;
-  return richTextList.map(richText => {
-    const { text } = richText;
-    if (text) {
-      return <RichText richTextHtml={text} className={className} />;
-    }
-    return null;
-  });
+  return (
+    richTextList &&
+    richTextList.map(richText => {
+      const { text } = richText;
+      if (text) {
+        return <RichText richTextHtml={text} className={className} />;
+      }
+      return null;
+    })
+  );
 };
 
 HelpCenterTopBottomModule.propTypes = {
-  className: PropTypes.string.isRequired,
-  composites: PropTypes.shape({}),
+  props: PropTypes.shape({
+    className: PropTypes.string,
+    richTextList: PropTypes.shape([]),
+  }),
 };
 
 HelpCenterTopBottomModule.defaultProps = {
-  composites: {},
+  props: {
+    className: '',
+    richTextList: [],
+  },
 };
 
 export default withStyles(HelpCenterTopBottomModule, style);
