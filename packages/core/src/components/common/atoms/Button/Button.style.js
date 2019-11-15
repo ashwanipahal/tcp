@@ -284,6 +284,12 @@ const ButtonStyles = css`
       }
   `
       : ``}
+      ${props =>
+        props.fill === 'BLUE'
+          ? ` background: ${props.theme.colorPalette.blue.C900}; border: 1px solid ${
+              props.theme.colorPalette.blue.C900
+            }; `
+          : ''};
       ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 
 `;

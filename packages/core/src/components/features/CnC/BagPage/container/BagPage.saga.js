@@ -140,6 +140,7 @@ export function* getOrderDetailSaga(payload) {
   const { payload: { after } = {} } = payload;
   try {
     yield put(updateCartManually(true));
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield call(getOrderDetailsData);
     if (yield call(shouldTranslate, true)) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
