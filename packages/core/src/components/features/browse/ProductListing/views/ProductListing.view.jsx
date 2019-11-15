@@ -60,6 +60,7 @@ const ProductListView = ({
   isLoadingMore,
   plpTopPromos,
   asPathVal,
+  isSearchListing,
   ...otherProps
 }) => {
   return (
@@ -124,6 +125,7 @@ const ProductListView = ({
               currency={currency}
               currencyExchange={currencyExchange}
               isLoadingMore={isLoadingMore}
+              isSearchListing={isSearchListing}
               {...otherProps}
             />
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
@@ -173,6 +175,7 @@ ProductListView.propTypes = {
   isLoadingMore: PropTypes.bool,
   plpTopPromos: PropTypes.shape({}),
   asPathVal: PropTypes.string,
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -196,6 +199,7 @@ ProductListView.defaultProps = {
   currency: 'USD',
   plpTopPromos: {},
   asPathVal: '',
+  isSearchListing: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
