@@ -61,11 +61,6 @@ exports[`SearchDetailVanilla should render correctly 1`] = `
     removeAddToFavoritesErrorMsg={[Function]}
     renderBrandFilter={null}
     setListRef={[Function]}
-    slpLabels={
-      Object {
-        "lbl_searched_for": "",
-      }
-    }
     sortLabels={Object {}}
     totalProductsCount={0}
   />
