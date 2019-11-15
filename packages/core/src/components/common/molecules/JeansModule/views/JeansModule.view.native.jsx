@@ -53,7 +53,7 @@ export class JeansModule extends PureComponent {
         itemBackgroundColor={itemBackgroundColor}
       >
         <DamImage key={index.toString()} url={imgUrl} width={imageWidth} height={imageHeight} />
-        <LineComp marginTop={12} marginLeft={12} marginRight={12} margin borderColor="blue.500" />
+        <LineComp marginTop={12} marginLeft={12} marginRight={12} borderColor="blue.500" />
         <BodyCopy
           width="125"
           margin="16px 0 0 0"
