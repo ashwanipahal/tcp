@@ -46,6 +46,7 @@ export class AddressView extends React.PureComponent<Props> {
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
       isFetching,
+      clearNotificationError,
     } = this.props;
     const { selectedAddress } = this.state;
 
@@ -104,6 +105,7 @@ export class AddressView extends React.PureComponent<Props> {
         {isFetching && <AddressListComponentSkeleton />}
         {!isFetching && addresses.size > 0 && (
           <AddressListComponent
+            clearNotificationError={clearNotificationError}
             addresses={addresses}
             labels={labels}
             deleteModalMountedState={deleteModalMountedState}
@@ -113,6 +115,7 @@ export class AddressView extends React.PureComponent<Props> {
           />
         )}
         <DeleteAddressModal
+          clearNotificationError={clearNotificationError}
           openState={deleteModalMountedState}
           data={{
             heading: getLabelValue(labels, 'ACC_LBL_DELETE_ADDRESS_HEADING', 'addressBook'),

@@ -25,8 +25,9 @@ const CAROUSEL_OPTIONS = {
       breakpoint: parseInt(breakpoints.medium, 10) - 1,
       settings: {
         slidesToShow: 2.5,
+        slidesToScroll: 2.5,
         arrows: false,
-        swipeToSlide: true,
+        swipeToSlide: false,
       },
     },
     {
@@ -34,7 +35,8 @@ const CAROUSEL_OPTIONS = {
       settings: {
         slidesToShow: 4.25,
         arrows: false,
-        swipeToSlide: true,
+        swipeToSlide: false,
+        slidesToScroll: 4.25,
       },
     },
   ],
