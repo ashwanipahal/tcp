@@ -21,18 +21,22 @@ import style from '../../Footer.style';
 import FooterTopSignUpForm from '../FooterTopSignUpForm';
 
 const emailSignupFieldName = 'signup';
+const emailSignupSecondBrand = 'isEmailOptInSecondBrand';
 const FooterTopEmailSignUpForm = reduxForm({
   form: 'FooterTopEmailSignUpForm', // a unique identifier for this form
   initialValues: {
     [emailSignupFieldName]: '',
+    [emailSignupSecondBrand]: false,
   },
 })(FooterTopSignUpForm);
 
 const smsSignupFieldName = 'footerTopSmsSignup';
+const textSignupSecondBrand = 'isTextOptInSecondBrand';
 const FooterTopSmsSignUpForm = reduxForm({
   form: 'FooterTopSmsSignUpForm', // a unique identifier for this form
   initialValues: {
     [smsSignupFieldName]: '',
+    [textSignupSecondBrand]: false,
   },
 })(FooterTopSignUpForm);
 
@@ -95,6 +99,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 checkBox_tcp: 'check_box_tcp_opt_in',
               }}
               fieldName={emailSignupFieldName}
+              secondFieldName={emailSignupSecondBrand}
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>
@@ -145,6 +150,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 checkBox_gym: 'sms_gym_opt_in',
                 checkBox_tcp: 'sms_tcp_opt_in',
               }}
+              secondFieldName={textSignupSecondBrand}
             />
 
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs9', 'fs9', 'fs12']}>

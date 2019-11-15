@@ -56,7 +56,7 @@ class FooterTopSignUpForm extends React.PureComponent {
 
         return new Promise((resolve, reject) => {
           this.formSubmitPromise = { resolve, reject };
-          onFormSubmit(values[fieldName]);
+          onFormSubmit(values);
         });
       })
       .catch(() => {
@@ -73,6 +73,7 @@ class FooterTopSignUpForm extends React.PureComponent {
       handleSubmit,
       dataLocators,
       fieldName,
+      secondFieldName,
       fieldProps,
     } = this.props;
 
@@ -140,7 +141,8 @@ class FooterTopSignUpForm extends React.PureComponent {
               }}
             >
               <Field
-                name="primary"
+                name={secondFieldName}
+                id={secondFieldName}
                 component={InputCheckbox}
                 dataLocator={isGym ? dataLocators.checkBox_tcp : dataLocators.checkBox_gym}
                 type="checkbox"
@@ -182,6 +184,7 @@ FooterTopSignUpForm.propTypes = {
   reset: PropTypes.func,
   fieldName: PropTypes.string,
   fieldProps: PropTypes.shape({}),
+  secondFieldName: PropTypes.string,
 };
 
 FooterTopSignUpForm.defaultProps = {
@@ -211,6 +214,7 @@ FooterTopSignUpForm.defaultProps = {
   reset: () => {},
   fieldName: 'signup',
   fieldProps: {},
+  secondFieldName: '',
 };
 
 export default withStyles(FooterTopSignUpForm, style);
