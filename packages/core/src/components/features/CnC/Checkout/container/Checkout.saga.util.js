@@ -6,6 +6,7 @@ import {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
+import { isGymboree } from '@tcp/core/src/utils/utils';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
@@ -224,12 +225,18 @@ export function* addAndSetGiftWrappingOptions(payload) {
 }
 
 export function* subscribeEmailAddress(emailObj, status, field1) {
+  const { payload } = emailObj;
+  const brandGYM = !!(isGymboree() || payload.isEmailOptInSecondBrand);
+  const brandTCP = !!(!isGymboree() || payload.isEmailOptInSecondBrand);
+
   try {
     const payloadObject = {
-      emailaddr: emailObj.payload,
+      emailaddr: payload,
       URL: 'email-confirmation',
       response: `${status}:::false:false`,
       registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
+      brandTCP,
+      brandGYM,
     };
 
     if (field1) {
