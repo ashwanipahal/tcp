@@ -90,7 +90,7 @@ class CountrySelectorModal extends React.Component {
         dataLocator={getLocator('country_selector_ship_to_modal')}
         dataLocatorHeader={getLocator('ship_to_text_1')}
         maxWidth="450px"
-        standardHeight
+        minHeight="643px"
         inheritedStyles={modalStyles}
         shouldCloseOnOverlayClick={false}
       >
