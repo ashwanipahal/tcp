@@ -11,6 +11,7 @@ import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/Chec
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import ModalNative from '../../../../../../common/molecules/Modal';
+import { getAddressInitialValues } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
@@ -362,7 +363,7 @@ export default class ShippingPage extends React.Component {
                   <ShippingForm
                     shipmentMethods={shipmentMethods}
                     initialValues={{
-                      address: { country: 'US' },
+                      address: getAddressInitialValues(this),
                       shipmentMethods: { shippingMethodId: defaultShipmentId },
                       onFileAddressKey: defaultAddressId,
                     }}
