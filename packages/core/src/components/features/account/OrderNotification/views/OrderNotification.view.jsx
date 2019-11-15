@@ -13,87 +13,91 @@ import styles from '../styles/OrderNotification.style';
  */
 const OrderNotification = ({ className, labels, order }) => {
   return (
-    <BodyCopy component="div" className={className}>
-      <BodyCopy
-        component="div"
-        className="elem-ml-MED elem-mr-MED elem-pt-LRG elem-pb-LRG separator-line"
-      >
-        <BodyCopy color="white" fontSize="fs18" fontWeight="extrabold" fontFamily="secondary">
-          {getLabelValue(
-            labels,
-            getOrderStatusForNotification(order.orderStatus),
-            'OrderNotification'
-          )}
-        </BodyCopy>
-
-        <BodyCopy component="div" className="elem-mt-SM">
-          <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
-            {getLabelValue(labels, 'lbl_global_order', 'OrderNotification')}
-          </BodyCopy>
-
-          <Anchor
-            fontSizeVariation="medium"
-            underline
-            anchorVariation="primary"
-            fontSize="fs12"
-            dataLocator="order-number-value"
-            to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
-            asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
-            fontFamily="secondary"
-            className="view-order-link"
+    <>
+      {order && (
+        <BodyCopy component="div" className={className}>
+          <BodyCopy
+            component="div"
+            className="elem-ml-MED elem-mr-MED elem-pt-LRG elem-pb-LRG separator-line"
           >
-            {order.orderNumber}
-          </Anchor>
-          <Anchor
-            fontSizeVariation="medium"
-            anchorVariation="secondary"
-            underline
-            className="view-order-link elem-ml-LRG"
-            to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
-            asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
-          >
-            {getLabelValue(labels, 'lbl_global_viewOrderDetails', 'OrderNotification')}
-          </Anchor>
-        </BodyCopy>
-        {order.orderTrackingUrl && !order.isBOSSOrder && (
-          <BodyCopy component="div" className="elem-mt-SM">
-            <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
-              {getLabelValue(labels, 'lbl_global_tracking', 'OrderNotification')}
+            <BodyCopy color="white" fontSize="fs18" fontWeight="extrabold" fontFamily="secondary">
+              {getLabelValue(
+                labels,
+                getOrderStatusForNotification(order.orderStatus),
+                'OrderNotification'
+              )}
             </BodyCopy>
 
-            {order.orderTrackingUrl !== constants.STATUS_CONSTANTS.NA ? (
+            <BodyCopy component="div" className="elem-mt-SM">
+              <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
+                {getLabelValue(labels, 'lbl_global_order', 'OrderNotification')}
+              </BodyCopy>
+
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                anchorVariation="primary"
+                fontSize="fs12"
+                dataLocator="order-number-value"
+                to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
+                asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
+                fontFamily="secondary"
+                className="view-order-link"
+              >
+                {order.orderNumber}
+              </Anchor>
               <Anchor
                 fontSizeVariation="medium"
                 anchorVariation="secondary"
                 underline
-                href={order.orderTrackingUrl}
-                className="view-order-link"
-                to={order.orderTrackingUrl}
-                target="_blank"
+                className="view-order-link elem-ml-LRG"
+                to={`${internalEndpoints.orderPage.link}&orderId=${order.orderNumber}`}
+                asPath={`${internalEndpoints.orderPage.path}/${order.orderNumber}`}
               >
-                {order.orderTracking}
+                {getLabelValue(labels, 'lbl_global_viewOrderDetails', 'OrderNotification')}
               </Anchor>
-            ) : (
-              <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
-                {order.orderTracking}
+            </BodyCopy>
+            {order.orderTrackingUrl && !order.isBOSSOrder && (
+              <BodyCopy component="div" className="elem-mt-SM">
+                <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
+                  {getLabelValue(labels, 'lbl_global_tracking', 'OrderNotification')}
+                </BodyCopy>
+
+                {order.orderTrackingUrl !== constants.STATUS_CONSTANTS.NA ? (
+                  <Anchor
+                    fontSizeVariation="medium"
+                    anchorVariation="secondary"
+                    underline
+                    href={order.orderTrackingUrl}
+                    className="view-order-link"
+                    to={order.orderTrackingUrl}
+                    target="_blank"
+                  >
+                    {order.orderTracking}
+                  </Anchor>
+                ) : (
+                  <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
+                    {order.orderTracking}
+                  </BodyCopy>
+                )}
               </BodyCopy>
             )}
-          </BodyCopy>
-        )}
 
-        <BodyCopy
-          component="p"
-          className="elem-mt-SM"
-          color="white"
-          fontSize="fs12"
-          fontFamily="secondary"
-        >
-          {`${getLabelValue(labels, 'lbl_global_orderedOn', 'OrderNotification')} ${
-            order.orderDate
-          }`}
+            <BodyCopy
+              component="p"
+              className="elem-mt-SM"
+              color="white"
+              fontSize="fs12"
+              fontFamily="secondary"
+            >
+              {`${getLabelValue(labels, 'lbl_global_orderedOn', 'OrderNotification')} ${
+                order.orderDate
+              }`}
+            </BodyCopy>
+          </BodyCopy>
         </BodyCopy>
-      </BodyCopy>
-    </BodyCopy>
+      )}
+    </>
   );
 };
 OrderNotification.propTypes = {

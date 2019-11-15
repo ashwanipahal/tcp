@@ -1,5 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
+import { clearCardListTTL } from '../../Payment/container/Payment.actions';
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import {
   updateAddressListOnDelete,
@@ -15,6 +16,7 @@ export function* deleteAddress({ payload }) {
     yield put(setLoaderState(false));
     if (res.statusCode === 200) {
       yield put(updateAddressListOnDelete(res.body || ''));
+      yield put(clearCardListTTL());
       yield put(setDeleteModalMountedState({ state: false }));
     } else {
       yield put(updateAddressListOnDeleteErr(res.error));

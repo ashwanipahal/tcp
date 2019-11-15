@@ -105,7 +105,7 @@ Button.defaultProps = {
   type: 'button',
   customStyle: '',
   uniqueKey: '',
-  noCurve: true,
+  noCurve: false,
   cta: null,
   active: false,
 };
