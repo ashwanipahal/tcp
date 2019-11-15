@@ -139,6 +139,7 @@ describe('startCartCheckout Saga', () => {
     const generator = startCartCheckout({});
 
     let takeLatestDescriptor = generator.next().value;
+    generator.next();
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(false, {}).value;
     takeLatestDescriptor = generator.next().value;

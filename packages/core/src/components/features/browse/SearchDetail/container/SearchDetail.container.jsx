@@ -170,6 +170,7 @@ class SearchDetailContainer extends React.PureComponent {
                 currency={currency}
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
+                isSearchListing={true}
                 {...otherProps}
               />
             ) : (
@@ -207,6 +208,7 @@ class SearchDetailContainer extends React.PureComponent {
               currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
+              isSearchListing={true}
               {...otherProps}
             />
           </div>

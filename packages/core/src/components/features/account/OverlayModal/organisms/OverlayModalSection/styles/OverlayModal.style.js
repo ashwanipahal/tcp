@@ -30,7 +30,7 @@ const StyledModal = css`
   }
   .dialog__content {
     background-color: ${props => props.theme.colorPalette.white};
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.25);
     width: 100%;
     overflow-y: auto;
     @media ${props => props.theme.mediaQuery.smallOnly} {
