@@ -231,7 +231,7 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
 
   try {
     const payloadObject = {
-      emailaddr: payload,
+      emailaddr: payload.signup,
       URL: 'email-confirmation',
       response: `${status}:::false:false`,
       registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
