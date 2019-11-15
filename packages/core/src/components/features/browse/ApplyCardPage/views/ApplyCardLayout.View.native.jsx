@@ -24,7 +24,8 @@ class ApplyCardLayoutView extends React.PureComponent {
           labels={labels}
           bagItems={bagItems}
           navigation={renderViewArgs.navigation}
-          toggleModal={renderViewArgs.toggleModal}
+          isRtpsFlow={renderViewArgs.isRtpsFlow}
+          togglePLCCModal={renderViewArgs.togglePLCCModal}
         />
       );
     }
@@ -35,7 +36,8 @@ class ApplyCardLayoutView extends React.PureComponent {
           labels={labels}
           existingCustomerDetails={plccData && plccData.plcc_existing_customer_details}
           navigation={renderViewArgs.navigation}
-          toggleModal={renderViewArgs.toggleModal}
+          isRtpsFlow={renderViewArgs.isRtpsFlow}
+          togglePLCCModal={renderViewArgs.togglePLCCModal}
         />
       );
     }
@@ -47,7 +49,8 @@ class ApplyCardLayoutView extends React.PureComponent {
           plccData={plccData}
           approvedPLCCData={renderViewArgs.approvedPLCCData}
           navigation={renderViewArgs.navigation}
-          toggleModal={renderViewArgs.toggleModal}
+          isRtpsFlow={renderViewArgs.isRtpsFlow}
+          togglePLCCModal={renderViewArgs.togglePLCCModal}
         />
       );
     }
@@ -58,6 +61,7 @@ class ApplyCardLayoutView extends React.PureComponent {
         plccData={plccData}
         toggleModal={renderViewArgs.toggleModal}
         initialValues={renderViewArgs.profileInfo}
+        isRtpsFlow={renderViewArgs.isRtpsFlow}
       />
     );
   };
@@ -82,7 +86,9 @@ class ApplyCardLayoutView extends React.PureComponent {
       resetPLCCApplicationStatus,
       closeAddressVerificationModal,
       profileInfo,
-      closeModal,
+      closePLCCModal,
+      isRtpsFlow,
+      togglePLCCModal,
     } = this.props;
     return (
       <ScrollView>
@@ -91,8 +97,10 @@ class ApplyCardLayoutView extends React.PureComponent {
               approvedPLCCData,
               plccUser,
               navigation,
-              toggleModal: closeModal,
+              toggleModal: closePLCCModal,
               profileInfo,
+              isRtpsFlow,
+              togglePLCCModal,
             })
           : null}
         {showAddEditAddressForm ? (
@@ -111,7 +119,7 @@ class ApplyCardLayoutView extends React.PureComponent {
 ApplyCardLayoutView.propTypes = {
   plccData: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
-  closeModal: PropTypes.func.isRequired,
+  closePLCCModal: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   applicationStatus: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   bagItems: PropTypes.bool.isRequired,
@@ -123,6 +131,9 @@ ApplyCardLayoutView.propTypes = {
   profileInfo: PropTypes.shape({}).isRequired,
   resetPLCCApplicationStatus: PropTypes.func.isRequired,
   closeAddressVerificationModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
 };
 
 export default withNavigation(ApplyCardLayoutView);
+export { ApplyCardLayoutView as ApplyCardLayoutViewVanilla };

@@ -157,6 +157,15 @@ class FooterLinks extends PureComponent {
     openApplyNowModal({ isModalOpen: true });
   };
 
+  showSettingsModal = () => {
+    const { navigation, isUserLoggedIn } = this.props;
+    navigation.navigate('AppSettings', {
+      handleToggle: this.toggleModal,
+      noHeader: true,
+      isUserLoggedIn,
+    });
+  };
+
   toggleModal = ({ getComponentId }) => {
     this.setState(state => ({
       showModal: !state.showModal,
@@ -323,7 +332,14 @@ class FooterLinks extends PureComponent {
           />
         );
       } else if (leafLink.url.includes('settings')) {
-        linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key />;
+        linkMarkup = (
+          <Panel
+            title={leafLink.text}
+            isVariationTypeLink
+            key
+            handleComponentChange={this.showSettingsModal}
+          />
+        );
       } else if (leafLink.url.includes('messages')) {
         linkMarkup = <Panel title={leafLink.text} isVariationTypeLink key="" />;
       } else if (leafLink.url.includes('store-locator')) {

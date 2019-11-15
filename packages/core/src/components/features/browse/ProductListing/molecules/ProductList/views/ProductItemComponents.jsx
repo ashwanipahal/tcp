@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /**
  * @module ProductItemComponents
  * Container of smaller function that will be renderer as Component to create a ProductItem.
@@ -193,7 +194,15 @@ export function ProductPricesSection(props) {
 
 export class ProductWishlistIcon extends ServerToClientRenderPatch {
   render() {
-    const { onClick, isRemove, isDisabled, isMobile, className, activeButton } = this.props;
+    const {
+      onClick,
+      isRemove,
+      isDisabled,
+      isMobile,
+      className,
+      activeButton,
+      favoritedCount,
+    } = this.props;
     const removeTextHeader = isMobile ? 'Tap to Remove' : 'Click to Remove';
     const removeTxtDesc = isMobile
       ? 'Remove this item from your Favorites List by tapping the heart icon again.'
@@ -216,15 +225,30 @@ export class ProductWishlistIcon extends ServerToClientRenderPatch {
             </p>
           </div>
         ) : (
-          <button className="clear-button">
-            <Image
-              data-locator={getLocator('global_favorite_button')}
-              alt="Add-to-favorite"
-              title="addToFavorite"
-              className={activeButton ? `${className} active` : className}
-              src={activeButton ? getIconPath('added-to-favorite') : getIconPath('add-to-favorite')}
-            />
-          </button>
+          <>
+            <button className="clear-button">
+              <Image
+                data-locator={getLocator('global_favorite_button')}
+                alt="Add-to-favorite"
+                title="addToFavorite"
+                className={activeButton ? `${className} active` : className}
+                src={
+                  activeButton ? getIconPath('added-to-favorite') : getIconPath('add-to-favorite')
+                }
+              />
+            </button>
+            {favoritedCount && (
+              <BodyCopy
+                dataLocator="pdp_favorite_icon_count"
+                className="favorite-count"
+                fontSize="fs10"
+                fontWeight="regular"
+                color="gray.600"
+              >
+                {favoritedCount}
+              </BodyCopy>
+            )}
+          </>
         )}
       </BodyCopy>
     );
@@ -366,7 +390,8 @@ export const WishListIcon = (
   isFavoriteView,
   isInDefaultWishlist,
   handleAddToWishlist,
-  itemNotAvailable
+  itemNotAvailable,
+  favoritedCount
 ) => {
   if (itemNotAvailable) {
     return null;
@@ -374,8 +399,9 @@ export const WishListIcon = (
   return (
     <Col colSize={{ small: 2, medium: 2, large: 2 }}>
       <ProductWishlistIcon
-        onClick={handleAddToWishlist}
+        onClick={isInDefaultWishlist || isFavoriteView ? null : handleAddToWishlist}
         activeButton={isInDefaultWishlist || isFavoriteView}
+        favoritedCount={favoritedCount}
         className="fav-icon"
       />
     </Col>

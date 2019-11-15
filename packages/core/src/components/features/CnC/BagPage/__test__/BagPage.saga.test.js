@@ -39,6 +39,7 @@ describe('Cart Item saga', () => {
     };
     getOrderDetailSagaGen.next(res);
     getOrderDetailSagaGen.next(res);
+    getOrderDetailSagaGen.next(res);
     expect(getOrderDetailSagaGen.next(res).value).toEqual(
       put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails))
     );
@@ -138,6 +139,7 @@ describe('startCartCheckout Saga', () => {
     const generator = startCartCheckout({});
 
     let takeLatestDescriptor = generator.next().value;
+    generator.next();
     takeLatestDescriptor = generator.next().value;
     takeLatestDescriptor = generator.next(false, {}).value;
     takeLatestDescriptor = generator.next().value;

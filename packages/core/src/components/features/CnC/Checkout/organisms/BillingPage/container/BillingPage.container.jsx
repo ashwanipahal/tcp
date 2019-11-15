@@ -12,14 +12,6 @@ import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 import CheckoutActions from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
-  componentDidMount() {
-    const { cvvCodeInfoContentId, getCVVCodeInfo } = this.props;
-    /* istanbul ignore else */
-    if (cvvCodeInfoContentId) {
-      getCVVCodeInfo([cvvCodeInfoContentId]);
-    }
-  }
-
   componentWillUnmount() {
     const { clearCheckoutServerError, checkoutServerError, isPayPalHidden } = this.props;
     if (checkoutServerError && !isPayPalHidden) {

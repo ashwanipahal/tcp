@@ -43,7 +43,7 @@ class TrackOrderModal extends React.Component {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content TrackOrder__Modal__content"
         maxWidth="450px"
-        minHeight="576px"
+        standardHeight
         data-locator="track_order_modal"
         ariaLabelledby="trackorder__modal__heading"
         ariaDescribedby="trackorder__modal__subheading"

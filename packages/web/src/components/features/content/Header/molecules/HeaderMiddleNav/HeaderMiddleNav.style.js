@@ -80,12 +80,14 @@ const style = css`
     line-height: normal;
   }
   .carrot-down-icon {
+    display: inline-block;
     cursor: pointer;
     margin-left: 9px;
     transform: rotate(0deg);
     transition: transform 0.1s linear;
   }
   .carrot-up-icon {
+    display: inline-block;
     cursor: pointer;
     margin-left: 9px;
     transform: rotate(180deg);
@@ -116,6 +118,7 @@ const style = css`
     color: ${props =>
       props.isUserPlcc ? props.theme.colorPalette.blue[500] : props.theme.colorPalette.orange[800]};
   }
+
   .usericon {
     cursor: pointer;
     display: inline-flex;

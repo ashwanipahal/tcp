@@ -82,6 +82,7 @@ const Product = props => {
         isInternationalShipping={isInternationalShipping}
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
+        productMiscInfo={colorProduct}
       />
       {!isGiftCard ? (
         <>

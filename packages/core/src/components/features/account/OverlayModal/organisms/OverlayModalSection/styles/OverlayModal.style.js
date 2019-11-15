@@ -30,7 +30,7 @@ const StyledModal = css`
   }
   .dialog__content {
     background-color: ${props => props.theme.colorPalette.white};
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.25);
     width: 100%;
     overflow-y: auto;
     @media ${props => props.theme.mediaQuery.smallOnly} {
@@ -108,6 +108,13 @@ const StyledModal = css`
     height: ${iconSpacing};
     width: ${iconSpacing};
     z-index: 1;
+  }
+
+  .Modal_Heading_Overlay {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    font-size: ${props => props.theme.typography.fontSizes.fs18};
   }
 `;
 
