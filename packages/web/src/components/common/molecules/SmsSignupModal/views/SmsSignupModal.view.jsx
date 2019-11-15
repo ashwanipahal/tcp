@@ -14,22 +14,22 @@ import config from '../Config';
 
 class SmsSignupModal extends React.PureComponent {
   componentDidUpdate({ subscription: oldSubscription }) {
-    const { subscription } = this.props;
+    const { subscription, trackSubscriptionSuccess } = this.props;
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
       if (subscription.error) {
         this.formSubmitPromise.reject();
       } else {
         this.formSubmitPromise.resolve();
+        trackSubscriptionSuccess();
       }
       this.formSubmitPromise = null;
     }
 
-    if (
-      this.modalContentRef &&
-      subscription.success !== oldSubscription.success &&
-      subscription.success
-    ) {
-      this.modalContentRef.focus();
+    if (subscription.success !== oldSubscription.success && subscription.success) {
+      if (this.modalContentRef) {
+        this.modalContentRef.focus();
+      }
+      trackSubscriptionSuccess();
     }
   }
 
@@ -236,6 +236,7 @@ SmsSignupModal.propTypes = {
   subscription: PropTypes.shape({}),
   submitSmsSubscription: PropTypes.func,
   validateSignupSmsPhoneNumber: PropTypes.func,
+  trackSubscriptionSuccess: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   isModalOpen: PropTypes.bool,
@@ -250,6 +251,7 @@ SmsSignupModal.defaultProps = {
   subscription: {},
   isModalOpen: false,
   submitSmsSubscription: () => {},
+  trackSubscriptionSuccess: () => {},
   validateSignupSmsPhoneNumber: () => Promise.resolve({}),
   clearSmsSignupForm: () => {},
   closeModal: () => {},

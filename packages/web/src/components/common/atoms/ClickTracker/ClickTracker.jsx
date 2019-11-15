@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect } from 'react';
-import { string, node, func } from 'prop-types';
+import { string, node, func, object } from 'prop-types';
 import { connect } from 'react-redux';
-import { useClickTracking } from '@tcp/core/src/analytics';
+import { useClickTracking, useSetClickAnalytics } from '@tcp/core/src/analytics';
 
 /**
  * This component can be used for dispatching click
@@ -20,9 +20,14 @@ import { useClickTracking } from '@tcp/core/src/analytics';
  * <BrandLogo ref={logo} />
  * <ClickTracker name="brand_logo" ref={logo} />
  */
-const ClickTracker = forwardRef(({ as: Component, name, children, dispatch, ...props }, ref) => {
+const ClickTracker = forwardRef(({ as: Component, name, clickData, children, dispatch, ...props }, ref) => {
   const track = useClickTracking(dispatch);
-  const handleClick = () => track(name);
+  const setClickTrack = useSetClickAnalytics(dispatch);
+
+  const handleClick = () => {
+    setClickTrack(clickData);
+    track(name);
+  };
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
@@ -46,6 +51,7 @@ ClickTracker.propTypes = {
   as: string,
   name: string,
   children: node,
+  clickData: object,
   dispatch: func.isRequired,
 };
 
@@ -53,6 +59,7 @@ ClickTracker.defaultProps = {
   as: 'div',
   name: '',
   children: null,
+  clickData: {}
 };
 
 export default connect()(ClickTracker);

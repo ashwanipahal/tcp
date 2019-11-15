@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
+import { trackPageView, setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 
 import {
   submitEmailSignup,
@@ -26,6 +27,28 @@ export const mapDispatchToProps = dispatch => {
     },
     validateSignupEmail: email => {
       return emailSignupAbstractor.verifyEmail(email);
+    },
+    trackSubscriptionSuccess: () => {
+      dispatch(
+        setClickAnalyticsData({
+          customEvents: ['event15', 'event80'],
+        })
+      );
+
+      dispatch(
+        trackPageView({
+          props: {
+            initialProps: {
+              pageProps: {
+                pageData: {
+                  pageName: 'content:email confirmation',
+                  pageShortName: 'content:email confirmation',
+                },
+              },
+            },
+          },
+        })
+      );
     },
   };
 };

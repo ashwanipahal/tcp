@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
+import { trackPageView, setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 
 import {
   submitSmsSignup,
@@ -21,6 +22,28 @@ export const mapDispatchToProps = dispatch => {
     },
     validateSignupSmsPhoneNumber: phoneNumber => {
       return validatePhoneNumber(phoneNumber) ? Promise.resolve({}) : Promise.reject();
+    },
+    trackSubscriptionSuccess: () => {
+      dispatch(
+        setClickAnalyticsData({
+          customEvents: ['event107', 'event80'],
+        })
+      );
+
+      dispatch(
+        trackPageView({
+          props: {
+            initialProps: {
+              pageProps: {
+                pageData: {
+                  pageName: 'content:email confirmation',
+                  pageShortName: 'content:sms confirmation',
+                },
+              },
+            },
+          },
+        })
+      );
     },
   };
 };
