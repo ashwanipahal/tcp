@@ -81,7 +81,9 @@ const ProductListView = ({
           </div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-          <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+          {plpTopPromos.length > 0 && (
+            <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+          )}
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <div className="promo-area">
               {/*
@@ -171,7 +173,12 @@ ProductListView.propTypes = {
   currencyExchange: PropTypes.string,
   currency: PropTypes.string,
   isLoadingMore: PropTypes.bool,
-  plpTopPromos: PropTypes.shape({}),
+  plpTopPromos: PropTypes.arrayOf(
+    PropTypes.shape({
+      // Only including the most important property
+      moduleName: PropTypes.string,
+    })
+  ),
   asPathVal: PropTypes.string,
 };
 
@@ -194,7 +201,7 @@ ProductListView.defaultProps = {
   isFilterBy: true,
   isLoadingMore: true,
   currency: 'USD',
-  plpTopPromos: {},
+  plpTopPromos: [],
   asPathVal: '',
 };
 

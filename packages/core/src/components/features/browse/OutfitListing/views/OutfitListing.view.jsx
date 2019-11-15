@@ -51,9 +51,11 @@ const OutfitListingView = ({
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 10 }}>
-            <Row fullBleed>
-              <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
-            </Row>
+            {plpTopPromos.length > 0 && (
+              <Row fullBleed>
+                <PromoModules plpTopPromos={plpTopPromos} asPath={asPathVal} />
+              </Row>
+            )}
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <OutfitTileSection asPath={asPath} labels={labels} outfitDetails={outfitDetails} />
               {/* <ProductsGrid productsBlock={productsBlock} labels={labels} {...otherProps} /> */}
@@ -85,7 +87,12 @@ OutfitListingView.propTypes = {
   longDescription: PropTypes.string,
   categoryId: PropTypes.string,
   asPath: PropTypes.string,
-  plpTopPromos: PropTypes.shape({}),
+  plpTopPromos: PropTypes.arrayOf(
+    PropTypes.shape({
+      // Only including the most important property
+      moduleName: PropTypes.string,
+    })
+  ),
   asPathVal: PropTypes.string,
 };
 
@@ -98,7 +105,7 @@ OutfitListingView.defaultProps = {
   longDescription: '',
   categoryId: '',
   asPath: '',
-  plpTopPromos: {},
+  plpTopPromos: [],
   asPathVal: '',
 };
 
