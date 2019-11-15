@@ -201,5 +201,12 @@ export default function create(store) {
         return store.getState().AnalyticsDataKey.getIn(['clickActionAnalyticsData'], '');
       },
     },
+    products: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'products'], '');
+      },
+    },
   });
 }

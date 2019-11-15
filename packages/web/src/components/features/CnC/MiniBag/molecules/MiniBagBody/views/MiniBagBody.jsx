@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, getPriceWithCurrency } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -235,7 +235,7 @@ class MiniBagBody extends React.PureComponent {
           <React.Fragment>
             <div className="miniBagFooter">
               <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-                {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
+                {`${labels.subTotal}: ${getPriceWithCurrency(currencySymbol, subTotal)}`}
               </BodyCopy>
               <AddedToBagActions
                 containerId="paypal-button-container-minibag"
