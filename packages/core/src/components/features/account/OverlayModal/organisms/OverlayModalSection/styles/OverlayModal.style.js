@@ -76,8 +76,6 @@ const StyledModal = css`
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid
-      ${props => (!props.isLoggedIn ? props.theme.colorPalette.userTheme.noMprPlcc : mprplcce)};
     position: absolute;
     top: -10px;
     z-index: 99;
