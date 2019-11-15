@@ -34,7 +34,7 @@ class ModuleR extends React.PureComponent {
   onProductTabChange = (catId, tabItem) => {
     this.setState({
       selectedCategoryId: catId,
-      currentTabItem: tabItem,
+      currentTabItem: [tabItem],
     });
   };
 
