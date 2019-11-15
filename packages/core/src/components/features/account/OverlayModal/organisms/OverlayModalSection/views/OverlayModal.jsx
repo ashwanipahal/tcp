@@ -79,7 +79,7 @@ class OverlayModal extends React.Component {
     this.isMobile = getViewportInfo().isMobile && isMobileWeb();
 
     if (!this.isMobile) {
-      modal.addEventListener('mousedown', this.keydownInOverlay);
+      modal.addEventListener('keydown', this.keydownInOverlay);
     }
 
     if (this.isMobile && nextTargetComponent === 'accountDrawer') {
@@ -102,7 +102,7 @@ class OverlayModal extends React.Component {
       this.body.style['overflow-y'] = '';
     }
     const modal = document.getElementById('dialogContent');
-    modal.removeEventListener('mousedown', this.keydownInOverlay);
+    modal.removeEventListener('keydown', this.keydownInOverlay);
     this.resetBodyScrollStyles();
     document
       .querySelectorAll('#overlayWrapper, .header-promo__container, footer')
