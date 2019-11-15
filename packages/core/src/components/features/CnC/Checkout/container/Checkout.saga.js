@@ -208,12 +208,7 @@ function* initShippingData(pageName) {
       shippingAddress.state &&
       shippingAddress.zipCode;
     const isGuestUser = yield select(isGuest);
-    if (
-      isGuestUser ||
-      (!hasShipping && !defaultAddress) ||
-      !shipmentMethods ||
-      !shipmentMethods.length
-    ) {
+    if (isGuestUser || (!hasShipping && !defaultAddress) || !shipmentMethods.length) {
       yield call(
         validDateAndLoadShipmentMethods,
         { country: '', state: '', zipCode: '' },
@@ -248,7 +243,7 @@ function* initCheckoutSectionData({
             excludeCartItems: false,
             recalcRewards: recalc,
             updateSmsInfo: false,
-            translation: false,
+            translation: true,
             isCheckoutFlow: true,
           },
         })
@@ -256,7 +251,8 @@ function* initCheckoutSectionData({
     }
   } else if (
     pageName === REVIEW &&
-    (!isExpressCheckoutEnabled || isPaypalPostBack || !appRouting)
+    !appRouting &&
+    !(initialLoad && isExpressCheckoutEnabled && !isPaypalPostBack)
   ) {
     pendingPromises.push(
       call(getCartDataSaga, {

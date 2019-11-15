@@ -102,8 +102,15 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
     ({ recalc, isPaypalPostBack, appRouting } = router.query);
   }
   if (isRegisteredUserCallDone || isMobileApp()) {
+    initCheckoutSectionPage({
+      pageName,
+      recalc,
+      isPaypalPostBack,
+      initialLoad: scopeValue.initialLoad,
+      appRouting,
+      ...extraProps,
+    });
     scopeValue.initialLoad = false;
-    initCheckoutSectionPage({ pageName, recalc, isPaypalPostBack, appRouting, ...extraProps });
   }
   if (isMobileApp()) {
     isPaypalPostBack = getPayPalFlag(navigation);
