@@ -58,16 +58,6 @@ export default class Prompt extends Component {
     };
   }
 
-  componentDidMount() {
-    const { defaultValue } = this.props;
-    this.setState({ value: defaultValue });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { defaultValue } = nextProps;
-    this.setState({ value: defaultValue });
-  }
-
   onChangeText = value => {
     this.setState({ value });
   };

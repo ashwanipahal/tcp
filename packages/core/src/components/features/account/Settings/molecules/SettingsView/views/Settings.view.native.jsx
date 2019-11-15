@@ -56,11 +56,14 @@ class SettingsView extends PureComponent {
       });
       isSupportedTouch().then(value => {
         // it returns true for android and touch id is enable for android
-        if (value === true) {
-          this.setState({ biometryType: SETTINGS_CONSTANTS.SETTINGS_TOUCH_ID });
-        } else {
-          this.setState({ biometryType: value });
-        }
+        AsyncStorage.getItem('password').then(result => {
+          if (result)
+            if (value === true) {
+              this.setState({ biometryType: SETTINGS_CONSTANTS.SETTINGS_TOUCH_ID });
+            } else {
+              this.setState({ biometryType: value });
+            }
+        });
       });
     }
 
