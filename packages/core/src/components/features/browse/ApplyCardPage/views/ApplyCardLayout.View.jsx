@@ -27,7 +27,7 @@ const getApplyCardLayoutView = (
       />
     );
   }
-  if (applicationStatus === constants.APPLICATION_STATE_PENDING && !renderViewInfo.plccUser) {
+  if (applicationStatus === constants.APPLICATION_STATE_PENDING) {
     return (
       <ApplicationInProgress
         labels={labels}

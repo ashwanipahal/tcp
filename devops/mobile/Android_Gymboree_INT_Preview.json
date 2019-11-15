@@ -14,7 +14,7 @@
       "value": "tcp"
     },
     {
-      "name": "RWD_APP_PREVIEW_ENV",
+      "name": "RWD_APP_PREVIEW_ENV_GYM",
       "value": "PREVIEW"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_TCP",
-      "value": "https://test5.childrensplace.com"
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_API_IDENTIFIER_TCP",
@@ -151,7 +151,7 @@
     },
     {
       "name": "RWD_APP_DAM_HOST_GYM",
-      "value": "https://test5.gymboree.com"
+      "value": "https://test1.theplace.com/image/upload"
     },
     {
       "name": "RWD_APP_DAM_PRODUCT_IMAGE_PATH_TCP",
@@ -278,12 +278,12 @@
       "value": "948cee6a142678762564f9ec4e02e91c"
     },
     {
-      "name": "RWD_APP_INSTAGRAM_TCP",
-      "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
-    },
-    {
       "name": "RWD_APP_INSTAGRAM_GYM",
       "value": "f0eaf419384f43a0acd059c4f87163c1"
+    },
+    {
+      "name": "RWD_APP_INSTAGRAM_TCP",
+      "value": "1e3babbc821c4dd8aa9a644b7bb97f8e"
     },
     {
       "name": "RWD_APP_ASSETHOST_TCP",
@@ -308,6 +308,14 @@
     {
       "name": "RWD_APP_TWITTER_CONSUMER_SECRET_GYM",
       "value": "OxdTAylJ5DDw8BRk48KkViwmNDWdwfgTxNMhWWzaXQXKApoL2E"
+    },
+    {
+      "name": "RWD_APP_HOST_TCP",
+      "value": ".childrensplace.com"
+    },
+    {
+      "name": "RWD_APP_HOST_GYM",
+      "value": ".gymboree.com"
     }
   ],
   "signed": true,
@@ -320,11 +328,25 @@
         "preBuild": "packages/mobileapp/appcenter-pre-build.sh"
       }
     },
+    "android": {
+      "module": "app",
+      "buildVariant": "gymboreePreviewRelease",
+      "isRoot": false,
+      "runTests": false,
+      "runLint": false,
+      "keystorePassword": "__protected__",
+      "keyAlias": "__protected__",
+      "keyPassword": "__protected__",
+      "keystoreFilename": "tcp.jks",
+      "automaticSigning": false,
+      "buildBundle": false,
+      "gradleWrapperPath": "packages/mobileapp/android/gradlew"
+    },
     "distribution": {
       "destinationType": "groups",
       "destinations": [
         "00000000-0000-0000-0000-000000000000",
-        "cc3601ed-18f9-4549-8058-a89a3d5c8730"
+        "f50cbc6e-db20-471e-8a0a-c9a13fd799a4"
       ],
       "isSilent": false
     },
@@ -332,18 +354,6 @@
       "nodeVersion": "10.x",
       "packageJsonPath": "packages/mobileapp/package.json",
       "runTests": false
-    },
-    "xcode": {
-      "certificatePassword": "__protected__",
-      "certificateFilename": "Dist-Certificates.p12",
-      "provisioningProfileFilename": "Hockey_Distribution_profile_22-10-2019.mobileprovision",
-      "certificateFileId": "0cbe1d51-0aea-4538-8f6f-d072a8ad4452",
-      "provisioningProfileFileId": "d0979d55-37ae-45f0-af31-6a3a6e836457",
-      "appExtensionProvisioningProfileFiles": [],
-      "projectOrWorkspacePath": "packages/mobileapp/ios/mobileapp.xcworkspace",
-      "scheme": "mobileapp_preview",
-      "xcodeVersion": "10.2.1",
-      "podfilePath": "packages/mobileapp/ios/Podfile"
     }
   },
   "artifactVersioning": {
