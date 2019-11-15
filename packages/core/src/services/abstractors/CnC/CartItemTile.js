@@ -496,19 +496,19 @@ export const getCurrentOrderFormatter = (
 
   let stateTax = -1;
   if (orderDetailsResponse.salesTax && orderDetailsResponse.salesTax.salesTax) {
-    for (const country in orderDetailsResponse.salesTax.salesTax) {
+    Object.entries(orderDetailsResponse.salesTax.salesTax).forEach(([country, states]) => {
       if (country) {
-        for (const state in orderDetailsResponse.salesTax.salesTax[country]) {
+        Object.entries(states).forEach(([state, stateTaxValue]) => {
           if (state) {
             if (stateTax === -1) {
               stateTax = 0;
             }
 
-            stateTax += orderDetailsResponse.salesTax.salesTax[country][state];
+            stateTax += stateTaxValue;
           }
-        }
+        });
       }
-    }
+    });
   }
   // When brierley fails, backend returns -1 in these fields
   if (orderDetailsResponse.pointsToNextReward === -1) {
@@ -581,7 +581,7 @@ export const getCurrentOrderFormatter = (
     usersOrder.savingsTotal = 0;
   }
   if (orderDetailsResponse.giftCardDetails) {
-    for (const giftCard of orderDetailsResponse.giftCardDetails) {
+    Object.values(orderDetailsResponse.giftCardDetails).forEach(giftCard => {
       usersOrder.appliedGiftCards.push({
         id: giftCard.piId,
         onFileCardId: giftCard.creditCardId.toString(),
@@ -589,7 +589,7 @@ export const getCurrentOrderFormatter = (
         endingNumbers: giftCard.giftCardNumber.substr(-4),
         remainingBalance: giftCard.remainingBalance,
       });
-    }
+    });
   }
 
   // DT-32443
@@ -598,7 +598,7 @@ export const getCurrentOrderFormatter = (
   // If mixOrderPaymentDetails is empty we should not save billing details and show error message
   const { mixOrderPaymentDetails } = orderDetailsResponse;
   if (mixOrderPaymentDetails && mixOrderPaymentDetails.length > 0) {
-    for (const payment of orderDetailsResponse.paymentsList) {
+    Object.values(orderDetailsResponse.paymentsList).forEach(payment => {
       if (payment.cardType !== 'GC') {
         // CC or PayPal
         const billingAddress = payment.billingAddressDetails;
@@ -649,7 +649,7 @@ export const getCurrentOrderFormatter = (
           },
         };
       }
-    }
+    });
   }
 
   if (
@@ -657,7 +657,7 @@ export const getCurrentOrderFormatter = (
     orderDetailsResponse.mixOrderDetails &&
     orderDetailsResponse.mixOrderDetails.data
   ) {
-    for (const store of orderDetailsResponse.mixOrderDetails.data) {
+    Object.values(orderDetailsResponse.mixOrderDetails.data).forEach(store => {
       if (store.orderType !== 'ECOM') {
         usersOrder.stores.push({
           stLocId: store.shippingAddressDetails.stLocId || '',
@@ -688,10 +688,11 @@ export const getCurrentOrderFormatter = (
           isStoreBOSSEligible: parseBoolean(store.shippingAddressDetails.isStoreBOSSEligible),
         });
       }
-    }
+    });
   }
 
-  for (const item of orderDetailsResponse.orderItems) {
+  Object.values(orderDetailsResponse.orderItems).forEach(itemValue => {
+    const item = itemValue;
     const sizeAndFit = item.productInfo.itemsAttributes[item.itemCatentryId.toString()];
     // When brierley fails, backend returns -1
     if (item.itemPoints === -1) {
@@ -825,7 +826,7 @@ tomorrowClosingTime
         },
       });
     }
-  }
+  });
   if (orderDetailsResponse.giftWrapItem && orderDetailsResponse.giftWrapItem.length) {
     usersOrder.checkout.giftWrap = {
       optionId: orderDetailsResponse.giftWrapItem[0].catentryId.toString(),
