@@ -59,17 +59,6 @@ const getPageType = store => {
   return state.pageData && state.pageData.pageName;
 };
 
-const getPageSection = store => {
-  const pageType = getPageType(store) || '';
-  const departmentList = getDepartmentList(store) || '';
-  return `${pageType}:${departmentList}`;
-};
-const getPageSubSubSection = store => {
-  const pageSection = getPageSection(store) || '';
-  const categoryList = getCategoryList(store) || '';
-  return `${pageSection}:${categoryList}`;
-};
-
 const getPageFullCategoryName = store => {
   const state = store.getState();
   return state.ProductListing && state.ProductListing.entityCategory;
@@ -114,11 +103,6 @@ export const generateBrowseDataLayer = store => {
     pageFullCategoryName: {
       get() {
         return getPageFullCategoryName(store) || '';
-      },
-    },
-    pageShortName: {
-      get() {
-        return getPageSubSubSection(store) || '';
       },
     },
 
