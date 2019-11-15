@@ -452,3 +452,12 @@ export function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouti
   }
   return pageName;
 }
+
+export function shouldInvokeReviewCartCall(
+  isExpressCheckoutEnabled,
+  { initialLoad, isPaypalPostBack, pageName, appRouting: isPageRefreshRouting }
+) {
+  const { REVIEW } = constants.CHECKOUT_STAGES;
+  const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
+  return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
+}
