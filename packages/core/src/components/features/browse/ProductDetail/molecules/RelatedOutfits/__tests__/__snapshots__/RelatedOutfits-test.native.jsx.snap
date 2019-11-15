@@ -10,6 +10,7 @@ exports[`RelatedOutfitsVanilla component should renders correctly 1`] = `
       isCompleteTheLook={true}
       navigation={Object {}}
       showRelatedOutfitHeader={[Function]}
+      source="related-outfits"
     />
   </Styled(View)>
 </View>
