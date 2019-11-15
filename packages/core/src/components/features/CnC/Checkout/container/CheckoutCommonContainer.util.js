@@ -153,6 +153,7 @@ export const mapDispatchToProps = dispatch => {
     },
     submitBilling: payload => dispatch(submitBillingSection(payload)),
     fetchNeedHelpContent: contentIds => dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds)),
+    markBagPageRoutingDone: () => dispatch(BAG_PAGE_ACTIONS.setBagPageIsRouting(false)),
     submitReview: payload => dispatch(submitReviewSection(payload)),
     verifyAddressAction: payload => dispatch(verifyAddress(payload)),
     dispatchReviewReduxForm: () => dispatch(submit(constants.REVIEW_FORM_NAME)),

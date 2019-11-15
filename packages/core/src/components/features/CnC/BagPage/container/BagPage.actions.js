@@ -226,6 +226,13 @@ const resetBagLoadedState = () => {
   };
 };
 
+const setBagPageIsRouting = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SET_BAG_PAGE_ROUTING,
+    payload,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
@@ -261,4 +268,5 @@ export default {
   setBagPageLoading,
   setIsPaypalBtnHidden,
   resetBagLoadedState,
+  setBagPageIsRouting,
 };
