@@ -46,6 +46,8 @@ class ProductBundle extends React.PureComponent {
       isLoggedIn,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      addToBagErrorId,
+      addToBagError,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -100,6 +102,8 @@ class ProductBundle extends React.PureComponent {
               addToBagEcom={addToBagEcom}
               currentState={currentState}
               isLoggedIn={isLoggedIn}
+              addToBagErrorId={addToBagErrorId}
+              addToBagError={addToBagError}
             />
           </PageContainer>
         </ScrollView>
@@ -126,6 +130,8 @@ ProductBundle.propTypes = {
   isLoggedIn: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string.isRequired,
   removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
+  addToBagErrorId: PropTypes.string,
+  addToBagError: PropTypes.string,
 };
 
 ProductBundle.defaultProps = {
@@ -136,6 +142,8 @@ ProductBundle.defaultProps = {
   longDescription: '',
   pdpLabels: {},
   isLoggedIn: false,
+  addToBagErrorId: '',
+  addToBagError: '',
 };
 
 export default withStyles(ProductBundle);
