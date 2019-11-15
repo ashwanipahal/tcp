@@ -61,7 +61,7 @@ function getCarouselSlide(
   moduleQMainTile,
   ignoreLazyLoadImage,
   hostLazyLoad,
-  isCompleteTheLook
+  isRelatedOutfit
 ) {
   const { imageUrl, items, subItemsId, productItemIndex, id } = productItem;
   const totalOutfitItemsToShow = 2;
@@ -99,7 +99,7 @@ function getCarouselSlide(
               textColor="gray.900"
             />
           </OutfitMainTileWrapper>
-          {!isCompleteTheLook && (
+          {!isRelatedOutfit && (
             <OutfitItemsWrapper>
               {outfitItemsToShow.map(item => {
                 const { name: alt, remoteId, smallImageUrl } = item;
@@ -166,8 +166,7 @@ const ModuleQ = props => {
     hideTabs,
     selectedColorProductId,
     showRelatedOutfitHeader,
-    isCompleteTheLook,
-    source,
+    isRelatedOutfit,
   } = props;
 
   const { singleCTAButton: selectedSingleCTAButton } = selectedTabItem || {};
@@ -192,7 +191,7 @@ const ModuleQ = props => {
       shopThisLookLabel,
       ignoreLazyLoadImage,
       hostLazyLoad,
-      isCompleteTheLook
+      isRelatedOutfit
     );
   };
 
@@ -203,7 +202,7 @@ const ModuleQ = props => {
   const dataStatus = getDataStatus(styliticsProductTabList, selectedCategoryId);
 
   return (
-    <Container isCompleteTheLook={isCompleteTheLook} bgClass={bgClass}>
+    <Container isRelatedOutfit={isRelatedOutfit} bgClass={bgClass}>
       {!hideTabs ? (
         <MessageContainer>
           {headerText && (
@@ -249,7 +248,7 @@ const ModuleQ = props => {
         navigation={navigation}
         selectedColorProductId={selectedColorProductId}
         testID={getLocator('moduleQ_cta_link')}
-        source={source}
+        isRelatedOutfit={isRelatedOutfit}
       />
 
       {dataStatus ? (
@@ -312,8 +311,7 @@ ModuleQ.defaultProps = {
   selectedColorProductId: '',
   headerText: [],
   showRelatedOutfitHeader: null,
-  isCompleteTheLook: false,
-  source: '',
+  isRelatedOutfit: false,
 };
 
 ModuleQ.propTypes = {
@@ -358,8 +356,7 @@ ModuleQ.propTypes = {
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
-  isCompleteTheLook: PropTypes.bool,
-  source: PropTypes.string,
+  isRelatedOutfit: PropTypes.bool,
 };
 
 export default ModuleQ;

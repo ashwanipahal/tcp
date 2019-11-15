@@ -43,7 +43,7 @@ function StyliticsProductTabListContainer(props) {
     onProductTabChange,
     style,
     selectedColorProductId,
-    source,
+    isRelatedOutfit,
   } = props;
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   lastSelectedId = selectedColorProductId || 0;
@@ -53,7 +53,7 @@ function StyliticsProductTabListContainer(props) {
       const categoryItem = getTabItemsMap(tabItems)[tabId];
       onProductTabChange(tabId, categoryItem);
       if (!styliticsProductTabList[tabId]) {
-        getStyliticsProductTabListData({ categoryId: tabId, source });
+        getStyliticsProductTabListData({ categoryId: tabId, isRelatedOutfit });
       }
     } else {
       const [item = {}] = tabItems;
@@ -88,7 +88,7 @@ StyliticsProductTabListContainer.defaultProps = {
   dataLocator: '',
   style: [],
   selectedColorProductId: '',
-  source: '',
+  isRelatedOutfit: false,
 };
 
 StyliticsProductTabListContainer.propTypes = {
@@ -112,7 +112,7 @@ StyliticsProductTabListContainer.propTypes = {
   onProductTabChange: PropTypes.func,
   dataLocator: PropTypes.string,
   selectedColorProductId: PropTypes.string,
-  source: PropTypes.string,
+  isRelatedOutfit: PropTypes.bool,
 };
 
 export const mapStateToProps = state => {

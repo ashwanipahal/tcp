@@ -46,7 +46,7 @@ class ModuleQ extends React.PureComponent {
    */
   getSlideItem = (item, index) => {
     const { id, items, largeImageUrl, pdpUrl } = item;
-    const { shopThisLookLabel, isCompleteTheLook } = this.props;
+    const { shopThisLookLabel, isRelatedOutfit } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
     const outfitParams = pdpUrl && pdpUrl.split('/');
@@ -76,7 +76,7 @@ class ModuleQ extends React.PureComponent {
               </Anchor>
             </div>
           </div>
-          {!isCompleteTheLook && (
+          {!isRelatedOutfit && (
             <div className="looks-images-wrapper">
               {looksImages.map(({ smallImageUrl, name, remoteId }) => {
                 return (
@@ -149,7 +149,7 @@ class ModuleQ extends React.PureComponent {
       hideTabs,
       selectedColorProductId,
       showRelatedOutfitHeader,
-      source,
+      isRelatedOutfit,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -202,7 +202,7 @@ class ModuleQ extends React.PureComponent {
               tabItems={divTabs}
               selectedColorProductId={selectedColorProductId}
               dataLocator={getLocator('moduleQ_cta_link')}
-              source={source}
+              isRelatedOutfit={isRelatedOutfit}
             />
           </div>
         </Row>
@@ -263,8 +263,7 @@ ModuleQ.defaultProps = {
   hideTabs: false,
   selectedColorProductId: '',
   showRelatedOutfitHeader: null,
-  isCompleteTheLook: false,
-  source: '',
+  isRelatedOutfit: false,
 };
 
 ModuleQ.propTypes = {
@@ -304,8 +303,7 @@ ModuleQ.propTypes = {
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
-  isCompleteTheLook: PropTypes.bool,
-  source: PropTypes.string,
+  isRelatedOutfit: PropTypes.bool,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);

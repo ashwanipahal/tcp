@@ -39,8 +39,7 @@ class RelatedOutfits extends React.PureComponent {
           hideTabs
           divTabs={[]}
           showRelatedOutfitHeader={this.setShowHeader}
-          isCompleteTheLook
-          source="related-outfits"
+          isRelatedOutfit
         />
       </OutfitWrapper>
     );

@@ -12,10 +12,10 @@ const TILE_SHADOW = `
 `;
 
 const getAdditionalStyle = props => {
-  const { isCompleteTheLook } = props;
+  const { isRelatedOutfit } = props;
   return {
-    ...(!isCompleteTheLook && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.XS }),
-    ...(!isCompleteTheLook && { padding: props.theme.spacing.ELEM_SPACING.LRG }),
+    ...(!isRelatedOutfit && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.XS }),
+    ...(!isRelatedOutfit && { padding: props.theme.spacing.ELEM_SPACING.LRG }),
   };
 };
 
