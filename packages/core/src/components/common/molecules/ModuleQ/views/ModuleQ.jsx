@@ -29,7 +29,7 @@ class ModuleQ extends React.PureComponent {
   }
 
   onProductTabChange = (catId, tabItem) => {
-    this.setState({ currentCatId: catId, currentTabItem: tabItem });
+    this.setState({ currentCatId: catId, currentTabItem: [tabItem] });
   };
 
   /** This method is to add protocol to image url

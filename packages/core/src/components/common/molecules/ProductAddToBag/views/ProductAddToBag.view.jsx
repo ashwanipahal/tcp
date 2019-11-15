@@ -211,12 +211,14 @@ class ProductAddToBag extends React.PureComponent<Props> {
       fitChanged,
       quantityList,
       displayErrorMessage,
+      displayATBErrorMessage,
       errorOnHandleSubmit,
       handleFormSubmit,
       showAddToBagCTA,
       alternateSizes,
       isPickup,
       isBundleProduct,
+      isATBErrorMessageDisplayed,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -260,7 +262,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
             <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
-        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
+        {isATBErrorMessageDisplayed &&
+          errorOnHandleSubmit &&
+          ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
         {showAddToBagCTA && (
           <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
@@ -274,6 +278,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     if (fitChanged) {
                       displayErrorMessage(fitChanged);
                     } else {
+                      displayATBErrorMessage(true);
                       handleFormSubmit();
                     }
                   }}
@@ -300,6 +305,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                     if (fitChanged) {
                       displayErrorMessage(fitChanged);
                     } else {
+                      displayATBErrorMessage(true);
                       handleFormSubmit();
                     }
                   }}
