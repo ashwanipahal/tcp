@@ -8,6 +8,7 @@ import { getIconPath } from '@tcp/core/src/utils';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import QuickViewModal from '@tcp/core/src/components/common/organisms/QuickViewModal/container/QuickViewModal.container';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import config from './config';
 import constant from './Recommendations.constant';
 import style from './Recommendations.style';
@@ -117,6 +118,7 @@ class Recommendations extends Component {
       ctaUrl,
       carouselConfigProps,
       headerAlignment,
+      page,
     } = this.props;
 
     const priceOnlyClass = priceOnly ? 'price-only' : '';
@@ -124,6 +126,8 @@ class Recommendations extends Component {
     const headerLabel =
       variation === config.variations.moduleO ? moduleOHeaderLabel : modulePHeaderLabel;
     const carouselProps = { ...config.CAROUSEL_OPTIONS, ...carouselConfigProps };
+    const bagPageStyle =
+      page === Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG ? 'bag-page-recommendations' : '';
     return (
       products &&
       products.length > 0 && (
@@ -136,7 +140,7 @@ class Recommendations extends Component {
           >
             {headerLabel}
           </Heading>
-          <Row fullBleed>
+          <Row fullBleed className={bagPageStyle}>
             <Col
               colSize={{
                 small: 6,
