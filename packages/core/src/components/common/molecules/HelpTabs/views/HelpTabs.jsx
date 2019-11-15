@@ -9,10 +9,10 @@ const HelpTabs = props => {
     <Wrapper className={className}>
       {buttonList &&
         buttonList.map((button, index) => {
-          const { label, url } = button;
+          const { label, id } = button;
           return (
             <StyledCol key={index.toString()}>
-              <StyledAnchor url={url} fullWidth>
+              <StyledAnchor url={id} fullWidth>
                 <BodyCopy
                   component="div"
                   color="gray.900"
