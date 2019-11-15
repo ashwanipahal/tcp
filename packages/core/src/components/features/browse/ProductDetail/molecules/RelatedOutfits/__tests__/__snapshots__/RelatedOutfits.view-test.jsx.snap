@@ -9,6 +9,7 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
     hideTabs={true}
     isCompleteTheLook={true}
     showRelatedOutfitHeader={[Function]}
+    source="related-outfits"
   />
 </div>
 `;

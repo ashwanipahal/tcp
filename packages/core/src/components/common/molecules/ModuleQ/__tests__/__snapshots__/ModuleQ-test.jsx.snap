@@ -80,6 +80,7 @@ exports[`ModuleQ component renders correctly 1`] = `
         dataLocator="moduleQ_cta_links_"
         onProductTabChange={[Function]}
         selectedColorProductId=""
+        source=""
         tabItems={
           Array [
             Object {
