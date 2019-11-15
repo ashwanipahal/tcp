@@ -13,6 +13,7 @@ export default function({ WrappedComponent, mapStateToProps, mapDispatchToProps 
       if (isServer && deviceBot) {
         await WrappedComponent.getInitialProps(intialProps);
       }
+      return WrappedComponent.pageProps;
     }
 
     componentDidMount() {

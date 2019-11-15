@@ -32,6 +32,7 @@ const SearchListingView = ({
   onAddItemToFavorites,
   isLoggedIn,
   isLoadingMore,
+  isSearchListing,
   ...otherProps
 }) => {
   return (
@@ -99,6 +100,7 @@ const SearchListingView = ({
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
               isLoadingMore={isLoadingMore}
+              isSearchListing={isSearchListing}
               {...otherProps}
             />
           ) : null}
@@ -134,6 +136,7 @@ SearchListingView.propTypes = {
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   isLoadingMore: PropTypes.bool,
+  isSearchListing: PropTypes.bool,
 };
 
 SearchListingView.defaultProps = {
@@ -155,6 +158,7 @@ SearchListingView.defaultProps = {
   currency: 'USD',
   isLoggedIn: false,
   isLoadingMore: false,
+  isSearchListing: true,
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

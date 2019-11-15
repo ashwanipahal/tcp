@@ -40,6 +40,7 @@ class ProductsGrid extends React.Component {
     currencyExchange: PropTypes.string,
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
+    isSearchListing: PropTypes.bool,
     // showQuickViewForProductId: PropTypes.string,
   };
 
@@ -55,6 +56,7 @@ class ProductsGrid extends React.Component {
     currency: 'USD',
     currencyExchange: 1,
     isLoggedIn: false,
+    isSearchListing: false,
   };
 
   constructor(props, context) {
@@ -153,6 +155,7 @@ class ProductsGrid extends React.Component {
       currencyExchange,
       onAddItemToFavorites,
       isLoggedIn,
+      isSearchListing,
       // showQuickViewForProductId,
       ...otherProps
     } = this.props;
@@ -189,6 +192,7 @@ class ProductsGrid extends React.Component {
                         isLoggedIn={isLoggedIn}
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
+                        isSearchListing={isSearchListing}
                         {...otherProps}
                       />
                     );

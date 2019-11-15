@@ -37,14 +37,14 @@ class BannerCarousel extends React.PureComponent {
   };
 
   render() {
-    const { data, margins, customRenderer } = this.props;
+    const { data, margins, customRenderer, listLeftMargin, listRightMargin } = this.props;
     return (
       <Container margins={margins}>
         <FlatList
           viewabilityConfig={{
             itemVisiblePercentThreshold: 50,
           }}
-          contentContainerStyle={getContentContainerStyle()}
+          contentContainerStyle={getContentContainerStyle(listLeftMargin, listRightMargin)}
           initialNumToRender={3}
           initialScrollIndex={0}
           refreshing={false}
@@ -72,6 +72,8 @@ BannerCarousel.propTypes = {
   itemPadding: PropTypes.string,
   itemBackgroundColor: PropTypes.string,
   customRenderer: PropTypes.element,
+  listLeftMargin: PropTypes.number,
+  listRightMargin: PropTypes.number,
 };
 
 BannerCarousel.defaultProps = {
@@ -85,6 +87,8 @@ BannerCarousel.defaultProps = {
   itemPadding: null,
   itemBackgroundColor: null,
   customRenderer: null,
+  listLeftMargin: 8,
+  listRightMargin: 30,
 };
 
 export default BannerCarousel;

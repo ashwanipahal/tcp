@@ -19,7 +19,13 @@ export function* logoutSaga() {
         yield put(resetWalletAppState());
       }
       yield put(resetUserInfo());
-      yield put(navigateXHRAction());
+      yield put(
+        navigateXHRAction({
+          headers: {
+            actionTaken: 'logout',
+          },
+        })
+      );
       yield put(BAG_PAGE_ACTIONS.getOrderDetails());
       if (!isMobileApp()) {
         setFavStoreToLocalStorage(null);
