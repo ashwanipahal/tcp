@@ -8,6 +8,7 @@ import PaymentReducer from '@tcp/core/src/components/features/account/Payment/co
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import SEODataReducer from '@tcp/core/src/reduxStore/reducers/seoData';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import SubNavigationReducer from '@tcp/core/src/reduxStore/reducers/subNavigation';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
@@ -65,12 +66,10 @@ import StoreListReducer from '@tcp/core/src/components/features/storeLocator/Sto
 import MyPreferenceSubscriptionReducer from '@tcp/core/src/components/features/account/MyPreferenceSubscription/container/MyPreferenceSubscription.reducer';
 import BundleProductReducer from '@tcp/core/src/components/features/browse/BundleProduct/container/BundleProduct.reducer';
 import AnalyticsReducer from '@tcp/core/src/analytics/Analytics.reducer';
-import HelpCenterReducer from '@tcp/web/src/components/features/helpCenter/HelpCenter/container/HelpCenter.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
   APPLY_PLCC_REDUCER_KEY,
-  HELPCENTER_REDUCER_KEY,
   SESSIONCONFIG_REDUCER_KEY,
   COUNTRY_SELECTOR_REDUCER_KEY,
   HEADER_REDUCER_KEY,
@@ -143,6 +142,7 @@ import {
   MY_PREFERENCE_REDUCER_KEY,
   BUNDLEPRODUCT_REDUCER_KEY,
   ANALYTICS_DATA_KEY,
+  SUB_NAVIGATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA } from '@tcp/core/src/analytics';
 import LoaderReducer from '@tcp/core/src/components/common/molecules/Loader/container/Loader.reducer';
@@ -205,7 +205,6 @@ export default combineReducers({
   pageData: pageNameReducer,
   [SOCIAL_REDUCER_KEY]: SocialReducer,
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
-  [HELPCENTER_REDUCER_KEY]: HelpCenterReducer,
   [APPLY_PLCC_REDUCER_KEY]: ApplyCardReducer,
   [SESSIONCONFIG_REDUCER_KEY]: SessionConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
@@ -279,4 +278,5 @@ export default combineReducers({
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
   [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
   [ANALYTICS_DATA_KEY]: AnalyticsReducer,
+  [SUB_NAVIGATION_REDUCER_KEY]: SubNavigationReducer,
 });

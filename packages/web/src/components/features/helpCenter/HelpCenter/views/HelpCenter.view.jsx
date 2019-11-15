@@ -7,11 +7,9 @@ import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 const returnModule = mod => mod.default;
 const HelpCenterView = dynamic({
   modules: () => ({
-    helpCenterTopModule: () => import('../molecules/HelpCenterTopBottomModule').then(returnModule),
+    moduleX: () => import('../molecules/HelpCenterTopBottomModule').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/HelpCenterModuleTwoCol').then(returnModule),
-    helpCenterBottomModule: () =>
-      import('../molecules/HelpCenterTopBottomModule').then(returnModule),
   }),
   render: (slotData, modules) => {
     const { slots } = slotData;

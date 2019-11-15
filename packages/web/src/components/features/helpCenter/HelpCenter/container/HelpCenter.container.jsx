@@ -1,34 +1,25 @@
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-/* eslint-disable no-unused-vars */
 import { fetchPageLayout } from '@tcp/core/src/reduxStore/actions';
+import { capitalize } from '@tcp/core/src/utils';
 import HelpCenterView from '../views/HelpCenter.view';
-import mock from './mock';
 
-/* eslint-disable no-unused-vars */
 HelpCenterView.getInitialProps = async ({ store, isServer }, pageProps) => {
-  // const state = store.getState();
-  // TO DO - UNCOMMENT THE BELOW CODE AFTER CMS INTEGRATION
-  // if (!isServer && !state.Layouts.helpCenterPage) {
-  // eslint-disable-next-line extra-rules/no-commented-out-code
-  //   store.dispatch(fetchPageLayout('helpCenterPage'));
-  // }
+  const state = store.getState();
+  if (!isServer && !state.Layouts.helpcenterpage) {
+    store.dispatch(fetchPageLayout('helpcenterpage'));
+  }
   return pageProps;
 };
 
-HelpCenterView.propTypes = {
-  slots: PropTypes.shape([]).isRequired,
-  labels: PropTypes.shape({}),
-};
-
-HelpCenterView.defaultProps = {
-  labels: {},
+HelpCenterView.pageInfo = {
+  pageId: 'Help Center',
+  name: 'helpcenterpage',
 };
 
 const mapStateToProps = state => {
   // TO DO - Replace the mock with the state.
-  const { Layouts, HelpCenterReducer } = mock;
-  const helpCenterPageSlots = Layouts.helpCenterPage ? Layouts.helpCenterPage.slots : [];
+  const { Layouts, Modules, SubNavigation } = state;
+  const helpCenterPageSlots = Layouts.helpcenterpage ? Layouts.helpcenterpage.slots : [];
   return {
     slots: helpCenterPageSlots.map(slot => {
       const { contentId: slotContent = '' } = slot;
@@ -42,14 +33,26 @@ const mapStateToProps = state => {
         };
 
         contentIds.forEach(contentId => {
-          response.data.slot.push(HelpCenterReducer[contentId]);
+          const placeHolderName = Modules[contentId].val
+            ? capitalize(Modules[contentId].val)
+                .split(' ')
+                .join('')
+            : '';
+          response.data.slot.push(
+            Modules[contentId].moduleName !== 'placeholder'
+              ? Modules[contentId]
+              : {
+                  ...Modules[contentId],
+                  [placeHolderName]: SubNavigation[placeHolderName],
+                }
+          );
         });
 
         return response;
       }
       return {
         ...slot,
-        data: HelpCenterReducer[slot.contentId],
+        data: Modules[slot.contentId],
       };
     }),
     labels: state.Labels.HelpCenter,

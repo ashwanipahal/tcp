@@ -5,11 +5,10 @@ import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import style from '../styles/HelpCenterTopBottomModule.style';
 
 const HelpCenterTopBottomModule = props => {
-  const { composites, className } = props;
-  return Object.keys(composites).map(key => {
-    const { richText } = composites[key][0];
-    if (richText) {
-      const { text } = richText;
+  const { richTextList, className } = props;
+  return richTextList.map(richText => {
+    const { text } = richText;
+    if (text) {
       return <RichText richTextHtml={text} className={className} />;
     }
     return null;
