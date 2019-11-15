@@ -38,7 +38,7 @@ const OrderNotification = ({ labels, orderLabels, order, navigation, separator }
             separator={separator}
             spacingStyles="margin-left-MED margin-right-MED padding-top-LRG padding-bottom-LRG"
           >
-            {orderStatus && (
+            {!!orderStatus && (
               <BodyCopyWithSpacing
                 spacingStyles="margin-bottom-SM"
                 color="white"
