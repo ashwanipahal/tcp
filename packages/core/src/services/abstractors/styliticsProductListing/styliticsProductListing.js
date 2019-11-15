@@ -38,27 +38,6 @@ const Abstractor = {
       .then(Abstractor.processData)
       .catch(Abstractor.handleError);
   },
-  getOutfit: params => {
-    const { categoryId, count = 20 } = params;
-
-    const styliticsRegion = getStyliticsRegion();
-    const payload = {
-      body: {
-        username: getStyliticsUserName(),
-        total: count,
-        tags: categoryId,
-      },
-      webService: endpoints.getStyliticsProductViewById,
-    };
-
-    if (styliticsRegion) {
-      payload.body.region = styliticsRegion;
-    }
-
-    return executeExternalAPICall(payload)
-      .then(Abstractor.processData)
-      .catch(Abstractor.handleError);
-  },
   getMock: () => {
     return mock;
   },
