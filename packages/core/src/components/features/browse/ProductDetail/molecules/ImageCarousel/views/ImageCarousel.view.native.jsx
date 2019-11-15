@@ -169,11 +169,11 @@ class ImageCarousel extends React.PureComponent {
 
   renderFavoriteIcon = () => {
     const { currentColorEntry, isBundleProduct } = this.props;
-    const { favoritedCount, colorProductId, isFavorite } = currentColorEntry;
+    const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
     if (!isBundleProduct) {
       return (
         <FavoriteContainer>
-          {isFavorite !== undefined ? (
+          {isFavorite !== undefined || miscInfo.isInDefaultWishlist ? (
             <CustomIcon
               isButton
               iconFontName={ICON_FONT_CLASS.Icomoon}
