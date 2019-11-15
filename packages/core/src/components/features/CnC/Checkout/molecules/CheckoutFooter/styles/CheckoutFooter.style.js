@@ -103,7 +103,7 @@ const styles = css`
       }
       @media ${props => props.theme.mediaQuery.smallOnly} {
         display: block;
-        width: 383px;
+        width: 100%;
       }
     }
   }
