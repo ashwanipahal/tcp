@@ -108,8 +108,14 @@ class ModuleE extends React.PureComponent {
    */
   renderView = (item, navigation, carouselCtaType) => {
     const {
-      item: { image, singleCTAButton },
+      item: { image, singleCTAButton, video },
     } = item;
+
+    const videoData = {
+      ...video,
+      videoWidth: MODULE_WIDTH,
+      videoHeight: MODULE_DEFAULT_HEIGHT,
+    };
 
     return (
       <View>
@@ -121,6 +127,7 @@ class ModuleE extends React.PureComponent {
             host={LAZYLOAD_HOST_NAME.HOME}
             crop={image.crop_m}
             imgConfig={IMG_DATA.carouselImgConfig[0]}
+            videoData={videoData}
           />
         </Anchor>
         {carouselCtaType === 'link' ? (
@@ -264,8 +271,13 @@ class ModuleE extends React.PureComponent {
   smallCompositeImage = (divCTALinks, navigation) => {
     return (
       <ImageContainer>
-        {divCTALinks.map(({ image, link, styled }, index) => {
+        {divCTALinks.map(({ image, link, styled, video }, index) => {
           const divCtaLinkHeaderText = [{ textItems: [{ ...styled }], link }];
+          const videoData = {
+            videoWidth: buttonWidth,
+            videoHeight: 202,
+            ...video,
+          };
           return (
             <ImageWrapper tileIndex={index}>
               <StyledAnchor
@@ -280,6 +292,7 @@ class ModuleE extends React.PureComponent {
                   testID={`${getLocator('moduleE_product_img')}${index}`}
                   alt={image && image.alt}
                   imgConfig={IMG_DATA.smallImgConfig[0]}
+                  videoData={videoData}
                 />
               </StyledAnchor>
               <HeaderViewContainer>

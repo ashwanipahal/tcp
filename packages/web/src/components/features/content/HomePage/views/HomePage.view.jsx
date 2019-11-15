@@ -5,6 +5,8 @@ import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
+import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
+import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import { isTCP } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -113,6 +115,7 @@ const HomePageView = dynamic({
         pageName={pageName}
       >
         <PageSlots slots={slots} modules={modules} />
+        <ModuleS {...mockS.moduleS.composites} />
         <GetCandid />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}

@@ -77,8 +77,8 @@ const renderHeaderAndBanner = (item, navigation) => {
 };
 
 /**
- * @function renderImageComponent
- * renders image component with header and banner
+ * @function renderMediaComponent
+ * renders Media component with header and banner
  * handles bannerPosition - top/bottom/overlay
  * display header and banner as overlay over image if bannerPosition is overlay
  *
@@ -86,10 +86,10 @@ const renderHeaderAndBanner = (item, navigation) => {
  * @param {*} navigation
  * @returns
  */
-const renderImageComponent = (item, navigation) => {
+const renderMediaComponent = (item, navigation) => {
   const {
     item: {
-      linkedImage: [{ image, link }],
+      linkedImage: [{ image, link, video }],
     },
     bannerPosition,
   } = item;
@@ -99,6 +99,13 @@ const renderImageComponent = (item, navigation) => {
     bannerPosition === bannerPositionTypes.overlay
       ? MODULE_HEIGHT_WITH_OVERLAY
       : MODULE_HEIGHT_WITHOUT_OVERLAY;
+
+  const videoData = {
+    videoWidth: MODULE_WIDTH,
+    videoHeight: moduleHeight,
+    ...video,
+  };
+
   return (
     <MainContainerView>
       {bannerPosition === bannerPositionTypes.top || bannerPosition === bannerPositionTypes.overlay
@@ -107,6 +114,7 @@ const renderImageComponent = (item, navigation) => {
       <Anchor url={link.url} navigation={navigation}>
         <DamImage
           width={MODULE_WIDTH}
+          videoData={videoData}
           height={moduleHeight}
           url={image.url}
           host={LAZYLOAD_HOST_NAME.HOME}
@@ -163,7 +171,7 @@ const ModuleB = (props: Props) => {
 
   return largeCompImage ? (
     <Container>
-      {renderImageComponent(
+      {renderMediaComponent(
         { item: largeCompImage[0], bannerPosition: bannerPositionInterpreted },
         navigation
       )}

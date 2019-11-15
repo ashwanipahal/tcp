@@ -27,11 +27,16 @@ const keyExtractor = (_, index) => index.toString();
  */
 const renderItem = (item, navigation, ignoreLazyLoadImage) => {
   const {
-    item: { image, link },
+    item: { image, link, video },
     index,
   } = item;
 
   const anchorEnable = true;
+  const videoData = {
+    videoWidth: imageSize,
+    videoHeight: imageSize,
+    ...video,
+  };
   return (
     <Tile tileIndex={index} key={index.toString()}>
       <Anchor url={link.url} navigation={navigation}>
@@ -41,6 +46,7 @@ const renderItem = (item, navigation, ignoreLazyLoadImage) => {
           url={image.url}
           crop={image.crop_m}
           height={imageSize}
+          videoData={videoData}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
           width={imageSize}
           imgConfig={config.IMG_DATA_2.imgConfig[0]}
