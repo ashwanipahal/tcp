@@ -320,6 +320,7 @@ export function* startCartCheckout({
   } = {},
 } = {}) {
   try {
+    yield put(setLoaderState(true));
     if (isEditingItem) {
       yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
     } else {
@@ -347,6 +348,7 @@ export function* startCartCheckout({
         yield call(checkoutCart, false, navigation, closeModal, navigationActions);
       }
     }
+    yield put(setLoaderState(false));
   } catch (e) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));

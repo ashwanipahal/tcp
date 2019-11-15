@@ -83,6 +83,9 @@ const StoreLocatorLink = ({ className, labels, store }) => {
               fontSize="fs13"
               className="storelocatorlink__detail"
             >
+              <div className="store-welcome-txt">
+                {getLabelValue(labels, 'lbl_storelocator_welcomeTxt')}
+              </div>
               {getLabelValue(labels, 'lbl_storelocator_findAStoreLink')}
             </BodyCopy>
           )}

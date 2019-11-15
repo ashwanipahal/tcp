@@ -3,6 +3,14 @@ import { css } from 'styled-components';
 const SmsSignupModalStyle = css`
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+
+    .phone-signup-second-brand {
+      padding-top: 25px;
+    }
+
+    .CheckBox__text {
+      margin-top: 6px;
+    }
   }
   .sms-signup-content {
     position: relative;
@@ -19,7 +27,8 @@ const SmsSignupModalStyle = css`
     padding: 21px 0;
   }
   .button-wrapper-form {
-    margin: 89px -15px 0;
+    margin: 89px -14px 0;
+    width: 100vw;
   }
   .button-container {
     width: 225px;
@@ -32,7 +41,7 @@ const SmsSignupModalStyle = css`
     border-bottom: 1px solid ${props => props.theme.colors.TEXTBOX.SUCCESS_BORDER};
   }
   .terms-label {
-    margin-top: 52px;
+    margin-top: 32px;
   }
   .alignRight {
     right: 14px;
@@ -57,7 +66,7 @@ const SmsSignupModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
-      width: 458px;
+      width: 457px;
     }
     .button-container {
       bottom: 24px;
@@ -84,7 +93,7 @@ const SmsSignupModalStyle = css`
       display: flex;
       width: 300px;
       margin-right: 0;
-      height: 625px;
+      height: 645px;
     }
     .img-wrapper + div {
       width: calc(100% - 300px);

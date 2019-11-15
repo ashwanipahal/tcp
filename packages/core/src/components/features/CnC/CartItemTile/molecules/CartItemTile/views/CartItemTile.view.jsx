@@ -139,6 +139,7 @@ class CartItemTile extends PureComponent {
       const { onQuickViewOpenClick, productDetail } = this.props;
       const { itemId, qty, color, size, fit } = productDetail.itemInfo;
       onQuickViewOpenClick({
+        fromBagPage: pageView === 'myBag',
         colorProductId: productNumber,
         orderInfo: {
           orderItemId: itemId,

@@ -7,6 +7,7 @@ import { createAccountErr, setLoadingState } from './CreateAccount.actions';
 import { createAccountApi } from '../../../../../services/abstractors/account';
 import { setCreateAccountSuccess } from '../../../CnC/Confirmation/container/Confirmation.actions';
 import CONFIRMATION_CONSTANTS from '../../../CnC/Confirmation/Confirmation.constants';
+import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
 
 const getErrorMessage = res => {
   let errorMessageRecieved = '';
@@ -19,7 +20,10 @@ const getErrorMessage = res => {
 export function* createsaga({ payload }) {
   yield put(setLoadingState({ isLoading: true }));
   try {
-    const res = yield call(createAccountApi, payload);
+    const { emailAddress } = payload;
+    const emailValidationStatus = yield call(briteVerifyStatusExtraction, emailAddress);
+
+    const res = yield call(createAccountApi, { ...payload, emailValidationStatus });
     yield put(setLoadingState({ isLoading: false }));
     yield put(
       setClickAnalyticsData({
