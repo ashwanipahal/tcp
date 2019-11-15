@@ -13,6 +13,7 @@ const propTypes = {
   componentProps: PropTypes.shape({}).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   showCondensedHeader: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -21,6 +22,7 @@ const defaultProps = {
   color: null,
   openState: false,
   closeOverlay: () => {},
+  labels: {},
 };
 
 const OverlayModal = ({
@@ -33,6 +35,7 @@ const OverlayModal = ({
   plccUser,
   isLoggedIn,
   showCondensedHeader,
+  labels,
 }) => {
   const ModalContent = OverlayModalComponentMapping[component];
   return openState && ModalContent ? (
@@ -47,6 +50,7 @@ const OverlayModal = ({
       plccUser={plccUser}
       isLoggedIn={isLoggedIn}
       showCondensedHeader={showCondensedHeader}
+      labels={labels}
     />
   ) : null;
 };

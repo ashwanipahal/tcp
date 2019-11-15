@@ -45,6 +45,11 @@ import {
 } from '../../../../features/browse/ProductDetail/container/ProductDetail.selectors';
 
 class SearchDetailContainer extends React.PureComponent {
+  static pageProps = {
+    pageData: {
+      pageName: 'search',
+    },
+  };
   static getInitialProps = async ({ props, query, req, isServer }) => {
     const { getProducts, formValues } = props;
     let searchQuery;
@@ -165,6 +170,7 @@ class SearchDetailContainer extends React.PureComponent {
                 currency={currency}
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
+                isSearchListing={true}
                 {...otherProps}
               />
             ) : (
@@ -202,6 +208,7 @@ class SearchDetailContainer extends React.PureComponent {
               currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
+              isSearchListing={true}
               {...otherProps}
             />
           </div>

@@ -5,6 +5,7 @@ const styles = css`
 
   .fav-icon-wrapper {
     text-align: right;
+    display: grid;
   }
   .item-container-inner {
     height: 100%;
@@ -14,7 +15,9 @@ const styles = css`
   .fulfillment-section {
     margin-top: auto;
   }
-
+  .favorite-count {
+    text-align: center;
+  }
   .clear-button {
     border: none;
     background: transparent;
@@ -41,7 +44,8 @@ const styles = css`
     width: 100%;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     &:focus {
-      background: initial;
+      background: ${props => props.theme.colorPalette.blue.C900};
+      color: white;
     }
     &:hover:not([disabled]) {
       background: ${props => props.theme.colorPalette.blue.C900};

@@ -49,6 +49,7 @@ const OutfitDetailsView = ({
     url: imagesByColor[color].basicImageUrl,
   };
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
+
   return (
     <Row className={className}>
       <Col

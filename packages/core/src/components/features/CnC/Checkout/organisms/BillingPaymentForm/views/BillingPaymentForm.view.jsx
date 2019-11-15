@@ -30,7 +30,6 @@ import {
   defaultProps,
   getCardOptions,
   onCCDropUpdateChange,
-  onAddNewCreditCardUpdate,
   getFormName,
   renderBillingAddressHeading,
 } from './BillingPaymentForm.view.util';
@@ -44,6 +43,7 @@ import {
   setFormToEditState,
   unsetPaymentFormEditState,
   handleBillingFormSubmit,
+  onAddNewCreditCardClick,
 } from './BillingPaymentForm.util';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
 
@@ -62,16 +62,6 @@ export class BillingPaymentForm extends React.PureComponent {
     this.state = { addNewCCState: false, editMode: false, editModeSubmissionError: '' };
     this.ediCardErrorRef = React.createRef();
   }
-
-  /**
-   * @function onAddNewCreditCardClick
-   * @description sets the add new credit card state as true
-   */
-  onAddNewCreditCardClick = () => {
-    const { dispatch } = this.props;
-    this.setState({ addNewCCState: true });
-    onAddNewCreditCardUpdate(dispatch);
-  };
 
   /**
    * @function getCreditCardDropDown
@@ -198,7 +188,7 @@ export class BillingPaymentForm extends React.PureComponent {
   getCCDropDown = ({ labels, creditCardList, onFileCardKey, selectedCard, editMode }) => {
     const { addNewCCState } = this.state;
     const { dispatch } = this.props;
-    const restCardParam = { addNewCC: this.onAddNewCreditCardClick, selectedCard };
+    const restCardParam = { addNewCC: () => onAddNewCreditCardClick(this), selectedCard };
     const cardParams = { creditCardList, labels, onFileCardKey, addNewCCState, ...restCardParam };
     const colSize = { large: 6, small: 6, medium: 10 };
     if (onFileCardKey) {
@@ -461,7 +451,11 @@ export class BillingPaymentForm extends React.PureComponent {
         />
         <CheckoutFooter
           hideBackLink
-          backLinkHandler={() => utility.routeToPage(CHECKOUT_ROUTES.shippingPage)}
+          backLinkHandler={() =>
+            orderHasShipping
+              ? utility.routeToPage(CHECKOUT_ROUTES.shippingPage)
+              : utility.routeToPage(CHECKOUT_ROUTES.pickupPage)
+          }
           nextButtonText={nextSubmitText}
           backLinkText={orderHasShipping ? backLinkShipping : backLinkPickup}
           showVenmoSubmit={paymentMethodId === constants.PAYMENT_METHOD_VENMO}

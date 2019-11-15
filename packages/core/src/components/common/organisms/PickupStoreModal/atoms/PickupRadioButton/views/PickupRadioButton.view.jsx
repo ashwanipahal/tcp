@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import PickupPromotionBanner from '@tcp/core/src/components/common/molecules/PickupPromotionBanner';
 import LabeledRadioButton from '../../../../../atoms/LabeledRadioButton';
 import BodyCopy from '../../../../../atoms/BodyCopy';
 
@@ -35,35 +36,37 @@ const PickStoreBOSSExtraDetails = BossCtaProps => {
   const colorBossDetail = ['text.primary', 'text.darkgray'];
   return (
     <React.Fragment>
-      <BodyCopy
-        as="span"
-        fontSize={['fs12', 'fs10']}
-        fontFamily="secondary"
-        color={colorBossDetail}
-      >
-        {pickupLabel}
-      </BodyCopy>
-      <BodyCopy
-        as="span"
-        fontFamily="secondary"
-        fontSize={['fs12', 'fs10']}
-        fontWeight={['regular', 'extrabold']}
-        color={colorBossDetail}
-        className="hide-on-desktop hide-on-tablet"
-      >
-        {` ${startDate.month} ${startDate.date} - ${endDate.month} ${endDate.date}`}
-      </BodyCopy>
-      <BodyCopy
-        as="span"
-        fontFamily="secondary"
-        fontSize={['fs12', 'fs10']}
-        fontWeight={['regular', 'extrabold']}
-        color={colorBossDetail}
-        className="hide-on-mobile"
-      >
-        {` ${startDate.day}. ${startDate.month} ${startDate.date} - ${endDate.day}. ${
-          endDate.month
-        } ${endDate.date}`}
+      <BodyCopy as="div" className="boss-extra-details">
+        <BodyCopy
+          as="span"
+          fontSize={['fs12', 'fs10']}
+          fontFamily="secondary"
+          color={colorBossDetail}
+        >
+          {pickupLabel}
+        </BodyCopy>
+        <BodyCopy
+          as="span"
+          fontFamily="secondary"
+          fontSize={['fs12', 'fs10']}
+          fontWeight={['regular', 'extrabold']}
+          color={colorBossDetail}
+          className="hide-on-desktop hide-on-tablet"
+        >
+          {` ${startDate.month} ${startDate.date} - ${endDate.month} ${endDate.date}`}
+        </BodyCopy>
+        <BodyCopy
+          as="span"
+          fontFamily="secondary"
+          fontSize={['fs12', 'fs10']}
+          fontWeight={['regular', 'extrabold']}
+          color={colorBossDetail}
+          className="hide-on-mobile"
+        >
+          {` ${startDate.day}. ${startDate.month} ${startDate.date} - ${endDate.day}. ${
+            endDate.month
+          } ${endDate.date}`}
+        </BodyCopy>
       </BodyCopy>
     </React.Fragment>
   );
@@ -88,7 +91,10 @@ export const PickupRadioButton = props => {
       checked={isSelected}
       disabled={false}
     >
-      {PickStoreDetails(pickupBtnLabel)}
+      <BodyCopy as="div" className="promotional-banner">
+        {PickStoreDetails(pickupBtnLabel)}
+        <PickupPromotionBanner bossBanner isPickupMobilePromotion />
+      </BodyCopy>
       {isBossPickupButton && PickStoreBOSSExtraDetails(BossCtaProps)}
       {!isBossPickupButton && PickStoreBOPISExtraDetails(BopisCtaProps)}
     </LabeledRadioButton>
