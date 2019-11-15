@@ -1,8 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import BagPageHeader from '../../../../../../../../mobileapp/src/components/common/molecules/Header/BagPageHeader';
-
+import ModalNativeHeader from '../../../Modal/view/Modal.native.header';
 import { Button, RichText } from '../../../../atoms';
 import {
   ImageContainer,
@@ -74,15 +73,16 @@ class ApplyNowModalWrapper extends React.PureComponent {
 
   render() {
     // eslint-disable-next-line react/prop-types
-    const { labels, plccBenefitsList, isPLCCModalOpen, isModalOpen, navigation } = this.props;
+    const { labels, plccBenefitsList, isPLCCModalOpen, isModalOpen } = this.props;
 
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return isPLCCModalOpen || isModalOpen ? (
       <View>
-        <BagPageHeader
-          navigation={navigation}
-          closeModal={isPLCCModalOpen ? this.closePlccModal : this.closeModal}
-          isApplyNowModal
+        <ModalNativeHeader
+          heading={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
+          onRequestClose={isPLCCModalOpen ? this.closePlccModal : this.closeModal}
+          fontSize="fs14"
+          customHeaderMargin="55px 25px 0 25px"
         />
         {isPLCCModalOpen && (
           <ApplyCardLayoutView

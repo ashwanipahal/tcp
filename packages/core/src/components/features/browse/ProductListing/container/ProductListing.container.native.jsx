@@ -111,6 +111,7 @@ class ProductListingContainer extends React.PureComponent {
       isLoggedIn,
       labelsLogin,
       plpTopPromos,
+      isSearchListing,
       ...otherProps
     } = this.props;
     return (
@@ -141,6 +142,7 @@ class ProductListingContainer extends React.PureComponent {
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
         plpTopPromos={plpTopPromos}
+        isSearchListing={isSearchListing}
         {...otherProps}
       />
     );
@@ -247,6 +249,7 @@ ProductListingContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -270,6 +273,7 @@ ProductListingContainer.defaultProps = {
   isLoggedIn: false,
   labelsLogin: {},
   plpTopPromos: [],
+  isSearchListing: false,
 };
 
 export default connect(

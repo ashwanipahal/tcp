@@ -12,6 +12,27 @@ const styles = css`
     border-right: 20px solid ${props => props.theme.colorPalette.yellow[500]};
     border-bottom: 10px solid transparent;
   }
+  .triangle-top {
+    margin-left: 5px;
+    position: absolute;
+    top: 29px;
+    left: 82px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid ${props => props.theme.colorPalette.yellow[500]};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 0;
+      height: 0;
+      position: inherit;
+      border-top: 10px solid transparent;
+      border-right: 20px solid ${props => props.theme.colorPalette.yellow[500]};
+      border-bottom: 10px solid transparent;
+      margin-left: 0;
+      border-left: 0;
+    }
+  }
+
   .promo-wrapper {
     display: flex;
     padding-right: 10px;
@@ -42,6 +63,21 @@ const styles = css`
     }
     .addedtobag-bossbanner {
       line-height: 2.9;
+    }
+  }
+
+  .triangle-top + .promo-wrapper {
+    width: 100%;
+    max-width: 114px;
+    height: 20px;
+
+    .richtextCss {
+      margin-right: auto;
+      margin-left: auto;
+
+      @media ${props => props.theme.mediaQuery.medium} {
+        margin-left: 3px;
+      }
     }
   }
 `;

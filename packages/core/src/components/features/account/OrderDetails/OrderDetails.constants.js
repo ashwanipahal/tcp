@@ -27,6 +27,8 @@ const ORDERDETAILS_CONSTANTS = {
     ORDER_PROCESSING_AT_FACILITY: 'order processing at facility',
     EXPIRED_AND_REFUNDED: 'expired and refunded',
     TOP_PREVIEW_ITEMS_COUNT: 3,
+    LBL_NA: 'lbl_orders_statusNa',
+    LBL_CallNeeded: 'lbl_orders_statusUserCallNeeded',
   },
 };
 

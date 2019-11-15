@@ -175,6 +175,16 @@ class Dropdown extends React.PureComponent {
             <ul className="dropdownUlBorder dropDownSelect" tabIndex={-1} role="listbox">
               {options.map(nav => this.itemLists(nav, navState.component))}
             </ul>
+            <Anchor
+              noLink
+              aria-label="Close Dropdown"
+              handleLinkClick={e => {
+                e.preventDefault();
+                this.toggleHandler();
+              }}
+            >
+              close
+            </Anchor>
           </BodyCopy>
         )}
       </BodyCopy>
