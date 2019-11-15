@@ -5,6 +5,12 @@ exports[`OverlayModal should render Modal correctly 1`] = `
   <Styled(Modal)
     className=""
     contentRef={[Function]}
+    heading="lbl_login_loginCTA"
+    headingStyle={
+      Object {
+        "className": "Modal_Heading_Overlay",
+      }
+    }
     heightConfig={
       Object {
         "minHeight": "500px",
@@ -27,6 +33,7 @@ exports[`OverlayModal should render Modal correctly 1`] = `
     >
       <ModalContent
         className="modal__content"
+        currentForm="login"
       />
     </div>
   </Styled(Modal)>
@@ -57,6 +64,7 @@ exports[`OverlayModal should render Overlay correctly 1`] = `
     />
     <ModalContent
       className="modal__content"
+      currentForm="login"
     />
   </div>
 </div>
