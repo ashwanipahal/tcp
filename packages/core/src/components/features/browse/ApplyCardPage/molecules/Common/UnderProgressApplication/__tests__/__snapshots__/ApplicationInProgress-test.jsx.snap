@@ -59,6 +59,7 @@ exports[`ApplicationInProgress component should renders correctly 1`] = `
         className="existing_continue_button"
         fill="BLUE"
         fontSizeVariation="large"
+        url="/home"
       >
         continue shopping
       </Styled(Anchor)>
