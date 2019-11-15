@@ -57,6 +57,12 @@ const OutfitListingContainer = dynamic(() =>
 );
 
 class ProductListingContainer extends React.PureComponent {
+  static pageProps = {
+    pageData: {
+      pageName: 'browse',
+    },
+  };
+
   static getInitialProps = async ({ isServer, props, req }) => {
     const {
       getProducts,
@@ -173,6 +179,7 @@ class ProductListingContainer extends React.PureComponent {
       currency,
       plpTopPromos,
       router: { asPath: asPathVal },
+      isSearchListing,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -207,6 +214,7 @@ class ProductListingContainer extends React.PureComponent {
         currencyExchange={currencyAttributes.exchangevalue}
         plpTopPromos={plpTopPromos}
         asPathVal={asPathVal}
+        isSearchListing={isSearchListing}
         {...otherProps}
       />
     ) : (
@@ -339,6 +347,7 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.shape({}),
   closeQuickViewModalAction: PropTypes.func,
   navigationData: PropTypes.shape({}),
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -366,6 +375,7 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   closeQuickViewModalAction: () => {},
   navigationData: null,
+  isSearchListing: false,
 };
 
 export default withIsomorphicRenderer({

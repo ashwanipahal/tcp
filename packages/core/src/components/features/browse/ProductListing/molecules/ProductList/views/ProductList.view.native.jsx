@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { FlatList, SafeAreaView, View } from 'react-native';
 import get from 'lodash/get';
@@ -23,6 +24,7 @@ class ProductList extends React.PureComponent {
     this.state = {
       showModal: false,
       favorites: true,
+      colorProductId: '',
     };
   }
 
@@ -40,8 +42,15 @@ class ProductList extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
+    const { onAddItemToFavorites, getProducts, navigation, isSearchListing } = props;
+    const { colorProductId } = state;
     if (props.isLoggedIn && state.showModal) {
-      return { showModal: false };
+      this.categoryUrl = navigation && navigation.getParam('url');
+      getProducts({ URI: 'category', url: this.categoryUrl, ignoreCache: true });
+      if (colorProductId !== '') {
+        onAddItemToFavorites({ colorProductId, page: isSearchListing ? 'SLP' : 'PLP' });
+      }
+      return { showModal: false, colorProductId: '' };
     }
     return null;
   }
@@ -51,12 +60,15 @@ class ProductList extends React.PureComponent {
 
   // eslint-disable-next-line
   onFavorite = generalProductId => {
-    const { isLoggedIn, onAddItemToFavorites } = this.props;
-
-    onAddItemToFavorites({ colorProductId: generalProductId, page: 'PLP' });
-
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
     if (!isLoggedIn) {
+      this.setState({ colorProductId: generalProductId });
       this.setState({ showModal: true });
+    } else {
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
     }
   };
 
@@ -348,6 +360,7 @@ ProductList.propTypes = {
   labelsPlpTiles: PropTypes.shape({}),
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
+  isSearchListing: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -380,6 +393,7 @@ ProductList.defaultProps = {
   labelsPlpTiles: {},
   AddToFavoriteErrorMsg: '',
   removeAddToFavoritesErrorMsg: () => {},
+  isSearchListing: false,
 };
 
 export default withStyles(ProductList, styles);

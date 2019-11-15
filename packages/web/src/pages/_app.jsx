@@ -177,7 +177,7 @@ class TCPWebApp extends App {
       const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
       // preview check from akamai header
-      apiConfig.isPreviewEnv = res.get(constants.PREVIEW_RES_HEADER_KEY) || '';
+      apiConfig.isPreviewEnv = req.query.preview || '';
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
       // response headers

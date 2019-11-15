@@ -29,9 +29,8 @@ class RelatedOutfits extends React.PureComponent {
 
   getRelatedOutfitSlots = () => {
     const { navigation, selectedColorProductId } = this.props;
-    const { showHeader } = this.state;
     return (
-      <OutfitWrapper marginBottom={showHeader}>
+      <OutfitWrapper>
         <ModuleQ
           navigation={navigation}
           hostLazyLoad={LAZYLOAD_HOST_NAME.PDP}

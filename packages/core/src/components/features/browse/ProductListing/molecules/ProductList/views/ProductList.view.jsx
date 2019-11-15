@@ -51,6 +51,7 @@ const ProductList = props => {
     isFavoriteView,
     removeFavItem,
     createNewWishListMoveItem,
+    isSearchListing,
   } = props;
   let gridIndex = 0;
 
@@ -114,6 +115,7 @@ const ProductList = props => {
               isFavoriteView={isFavoriteView}
               removeFavItem={removeFavItem}
               createNewWishListMoveItem={createNewWishListMoveItem}
+              isSearchListing={isSearchListing}
             />
           </div>
         );
@@ -158,6 +160,7 @@ ProductList.propTypes = {
   isFavoriteView: PropTypes.bool,
   removeFavItem: PropTypes.func,
   createNewWishListMoveItem: PropTypes.func,
+  isSearchListing: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -187,6 +190,7 @@ ProductList.defaultProps = {
   isFavoriteView: false,
   removeFavItem: null,
   createNewWishListMoveItem: null,
+  isSearchListing: false,
 };
 
 export default withStyles(ProductList, ProductListStyle);

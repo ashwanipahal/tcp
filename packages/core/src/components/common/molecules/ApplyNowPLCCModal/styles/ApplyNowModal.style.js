@@ -8,10 +8,6 @@ export const modalStyles = css`
 
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
-    ${props => (props.isRtpsFlow ? 'height:100%' : '')};
-    @media ${props => props.theme.mediaQuery.medium} {
-      height: ${props => (props.isRtpsFlow ? '100%' : '70vh')};
-    }
   }
 
   div.TCPModal__InnerContent {
