@@ -140,7 +140,7 @@ class ProductVariantSelector extends React.PureComponent {
           <BodyCopy
             fontWeight="black"
             color="gray.900"
-            mobileFontFamily="secondary"
+            fontFamily="secondary"
             fontSize="fs14"
             text={titleValue.toUpperCase()}
             dataLocator={key}

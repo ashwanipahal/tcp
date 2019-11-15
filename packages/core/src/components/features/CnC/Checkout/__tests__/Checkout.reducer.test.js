@@ -45,6 +45,7 @@ describe('Checkout Reducer', () => {
       paymentError: null,
       addressError: null,
       checkoutServerError: null,
+      isRTPSflow: false,
     },
   });
 
@@ -124,6 +125,11 @@ describe('Checkout Reducer', () => {
 
   const setOrderTotal = {
     type: 'SET_ORDER_TOTAL',
+    payload: true,
+  };
+
+  const setRTPSFlow = {
+    type: 'SET_IS_RTPS_FLOW',
     payload: true,
   };
 
@@ -216,5 +222,11 @@ describe('Checkout Reducer', () => {
       ...setOrderTotal,
     });
     expect(newState.getIn(['values', 'orderBalanceTotal'])).toEqual(true);
+  });
+  it('SET_IS_RTPS_FLOW', () => {
+    const newState = CheckoutReducer(initialState, {
+      ...setRTPSFlow,
+    });
+    expect(newState.getIn(['uiFlags', 'isRTPSFlow'])).toEqual(true);
   });
 });

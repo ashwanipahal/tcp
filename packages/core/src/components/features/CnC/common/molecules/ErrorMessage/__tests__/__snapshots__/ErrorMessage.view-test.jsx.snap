@@ -4,6 +4,7 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
 <Fragment>
   <div
     className=""
+    role="alert"
   >
     <div
       aria-disabled="true"

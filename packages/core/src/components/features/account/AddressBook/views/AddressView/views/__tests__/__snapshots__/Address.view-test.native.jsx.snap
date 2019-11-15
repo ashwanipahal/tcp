@@ -95,6 +95,7 @@ exports[`AddressView should render correctly without any address 1`] = `
         accessibilityText=""
         color="black"
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="extrabold"
         margin={null}

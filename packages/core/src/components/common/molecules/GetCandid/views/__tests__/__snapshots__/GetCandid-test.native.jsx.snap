@@ -67,6 +67,7 @@ exports[`GetCandidVanilla component should renders correctly considering selecti
     dataLocator=""
     fontFamily="secondary"
     fontSizeVariation="large"
+    justifyContent=""
     locator=""
     margins={null}
     noLink={true}

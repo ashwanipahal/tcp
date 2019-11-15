@@ -46,9 +46,10 @@ const onSaveBtnClick = ({
   addNewShippingAddress,
   modalState,
   isEditing,
+  afterAddressUpdate,
 }) => {
   if (((modalState && modalType === 'edit') || isEditing) && updateShippingAddress) {
-    updateShippingAddress();
+    updateShippingAddress(afterAddressUpdate);
   }
   if (modalState && modalType === 'add' && addNewShippingAddress) {
     addNewShippingAddress();

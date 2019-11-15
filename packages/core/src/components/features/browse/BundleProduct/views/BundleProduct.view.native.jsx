@@ -1,7 +1,7 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
-import { LazyloadScrollView } from 'react-native-lazyload-deux';
+import { getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
@@ -46,6 +46,8 @@ class ProductBundle extends React.PureComponent {
       isLoggedIn,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      addToBagErrorId,
+      addToBagError,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -63,9 +65,8 @@ class ProductBundle extends React.PureComponent {
         });
       }
       return (
-        <LazyloadScrollView name={LAZYLOAD_HOST_NAME.PDP}>
+        <ScrollView>
           <PageContainer>
-            {/* <ImageCarousel imageUrls={imageUrls} onImageClick={this.onImageClick} isBundleProduct /> */}
             <ImageCarousel
               isGiftCard={currentProduct.isGiftCard}
               imageUrls={imageUrls}
@@ -101,9 +102,11 @@ class ProductBundle extends React.PureComponent {
               addToBagEcom={addToBagEcom}
               currentState={currentState}
               isLoggedIn={isLoggedIn}
+              addToBagErrorId={addToBagErrorId}
+              addToBagError={addToBagError}
             />
           </PageContainer>
-        </LazyloadScrollView>
+        </ScrollView>
       );
     }
     return getLoading();
@@ -127,6 +130,8 @@ ProductBundle.propTypes = {
   isLoggedIn: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string.isRequired,
   removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
+  addToBagErrorId: PropTypes.string,
+  addToBagError: PropTypes.string,
 };
 
 ProductBundle.defaultProps = {
@@ -137,6 +142,8 @@ ProductBundle.defaultProps = {
   longDescription: '',
   pdpLabels: {},
   isLoggedIn: false,
+  addToBagErrorId: '',
+  addToBagError: '',
 };
 
 export default withStyles(ProductBundle);

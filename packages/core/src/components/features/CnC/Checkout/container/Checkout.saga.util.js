@@ -1,5 +1,11 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { call, put, select } from 'redux-saga/effects';
+import {
+  setPlccEligible,
+  setPlccPrescreenCode,
+} from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
+import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
@@ -7,7 +13,9 @@ import {
   briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
+  updateRTPSData,
   getServerErrorMessage,
+  acceptOrDeclinePreScreenOffer,
 } from '../../../../../services/abstractors/CnC/index';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import emailSignupAbstractor from '../../../../../services/abstractors/common/EmailSmsSignup/EmailSmsSignup';
@@ -18,6 +26,7 @@ import {
   updateAddressPut,
 } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.saga';
 import { getAddressList } from '../../../account/AddressBook/container/AddressBook.saga';
+
 import CHECKOUT_ACTIONS, {
   setOnFileAddressKey,
   setGiftWrap,
@@ -120,7 +129,7 @@ export function* updateShipmentMethodSelection({ payload }) {
   }
 }
 
-export function* updateShippingAddress({ payload }) {
+export function* updateShippingAddress({ payload, after }) {
   const {
     shipTo: { address, setAsDefault, phoneNumber, saveToAccount, onFileAddressKey },
   } = payload;
@@ -149,6 +158,9 @@ export function* updateShippingAddress({ payload }) {
     },
   });
   yield call(getAddressList);
+  if (after) {
+    after();
+  }
   yield put(setOnFileAddressKey(updateAddressResponse.payload));
 }
 
@@ -339,6 +351,32 @@ export function* redirectToBilling() {
   }
 }
 
+function* updateUserRTPSData(payload) {
+  const { prescreen, isExpressCheckoutEnabled } = payload;
+  try {
+    const res = yield updateRTPSData(prescreen, isExpressCheckoutEnabled);
+    yield put(setPlccEligible(res.plccEligible));
+    yield put(setPlccPrescreenCode(res.prescreenCode));
+    if (res.plccEligible) {
+      // offer not yet shown, show it
+      yield put(CHECKOUT_ACTIONS.setIsRTPSFlow(true));
+      yield put(toggleApplyNowModal({ isModalOpen: true }));
+    }
+  } catch (e) {
+    logger.error(e);
+  }
+}
+
+export function* callUpdateRTPS(pageName, fromExpress = false) {
+  const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
+  const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
+  const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
+  if (pageName === BILLING && showRTPSOnBilling) {
+    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: false });
+  } else if (showRTPSOnReview && fromExpress && pageName === REVIEW) {
+    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: true });
+  }
+}
 export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
   const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
   const billingError = getServerErrorMessage(e, errorsMapping);
@@ -350,6 +388,16 @@ export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
   );
 }
 
+export function* submitAcceptOrDeclinePlccData({ payload }) {
+  const preScreenData = yield select(getRtpsPreScreenData);
+  const { preScreenCode } = preScreenData;
+  const accepted = payload;
+  try {
+    yield acceptOrDeclinePreScreenOffer(preScreenCode, accepted);
+  } catch (e) {
+    logger.error(e);
+  }
+}
 export function* getRouteToCheckoutStage({ pageName, ...otherProps }, isExpress, isBagRouting) {
   let isExpressCheckoutEnabled = isExpress;
   if (!isExpress) {

@@ -60,6 +60,7 @@ describe('CheckoutReview saga', () => {
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next(true);
     expect(CheckoutReviewSaga.next(true).value).toEqual(call(expressCheckoutSubmit, formData));
     CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(
@@ -76,11 +77,13 @@ describe('CheckoutReview saga', () => {
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCouponReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(BagActions.resetCartReducer()));
+    CheckoutReviewSaga.next();
   });
   it('CheckoutReview when mobile app', () => {
     isMobileApp.mockImplementation(() => true);
     routerPush.mockImplementation(() => {});
     const CheckoutReviewSaga = CheckoutReview({ payload: { navigation: { navigate: jest.fn() } } });
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
@@ -110,6 +113,7 @@ describe('CheckoutReview saga', () => {
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
+    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(
       call(submitOrderProcessing, undefined, undefined, undefined)
     );
@@ -127,6 +131,7 @@ describe('CheckoutReview saga', () => {
     isMobileApp.mockImplementation(() => false);
     routerPush.mockImplementation(() => {});
     const CheckoutReviewSaga = CheckoutReview({ payload: {} });
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();

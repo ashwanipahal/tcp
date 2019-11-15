@@ -9,6 +9,7 @@ import FixedBreadCrumbs from '../../ProductListing/molecules/FixedBreadCrumbs/vi
 import SocialConnect from '../../../../common/organisms/ProductImages/views/SocialConnect.view';
 import Product from '../../ProductDetail/molecules/Product/views/Product.view';
 import ProductDetailImage from '../../../../common/molecules/ProductDetailImage';
+import BundleProductItems from '../molecules/BundleProductItems';
 import config from './config';
 import {
   getImagesToDisplay,
@@ -43,7 +44,16 @@ class BundleProduct extends React.PureComponent {
 
   getBreadCrumb = () => {
     const { breadCrumbs } = this.props;
-    return breadCrumbs && <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />;
+    if (breadCrumbs) {
+      return (
+        <Row>
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="breadcrum-wrapper">
+            <FixedBreadCrumbs crumbs={breadCrumbs} separationChar=">" />
+          </Col>
+        </Row>
+      );
+    }
+    return '';
   };
 
   getSocialConnectWidget = () => {
@@ -87,6 +97,40 @@ class BundleProduct extends React.PureComponent {
               <div className="promo-area-1">{pdpLabels.promoArea1}</div>
             </Col>
           </Row>
+        </Col>
+      </Row>
+    );
+  };
+
+  getBundleProductsList = () => {
+    const {
+      currentBundle,
+      plpLabels,
+      handleAddToBag,
+      addToFavorites,
+      addToBagEcom,
+      currentState,
+      isLoggedIn,
+      outfitLabels,
+      addToBagErrorId,
+      addToBagError,
+    } = this.props;
+    return (
+      <Row fullBleed className="product-items-section">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <BundleProductItems
+            currentBundle={currentBundle}
+            plpLabels={plpLabels}
+            handleAddToBag={handleAddToBag}
+            addToFavorites={addToFavorites}
+            addToBagEcom={addToBagEcom}
+            currentState={currentState}
+            isLoggedIn={isLoggedIn}
+            outfitLabels={outfitLabels}
+            addToBagErrorId={addToBagErrorId}
+            addToBagError={addToBagError}
+            className="bundle-products-list"
+          />
         </Col>
       </Row>
     );
@@ -142,17 +186,13 @@ class BundleProduct extends React.PureComponent {
 
       return (
         <div className={className}>
-          <Row>
-            <Col colSize={{ small: 6, medium: 8, large: 12 }} className="breadcrum-wrapper">
-              {this.getBreadCrumb()}
-            </Col>
-          </Row>
+          {this.getBreadCrumb()}
           <Row className="placeholder-large">
             <Col colSize={{ small: 6, medium: 8, large: 12 }}>
               <div className="promo-area-1">{pdpLabels.promoArea1}</div>
             </Col>
           </Row>
-          <Row>
+          <Row className="product-container">
             <Col colSize={{ small: 6, medium: 3, large: 6 }}>{this.getMainImageCarousel()}</Col>
             <Col colSize={{ small: 6, medium: 5, large: 6 }}>
               <Row fullBleed className="product-summary-section">
@@ -165,6 +205,7 @@ class BundleProduct extends React.PureComponent {
                   {this.getProductDescription()}
                 </Col>
               </Row>
+              {this.getBundleProductsList()}
             </Col>
           </Row>
         </div>
@@ -180,11 +221,21 @@ BundleProduct.propTypes = {
   itemPartNumber: PropTypes.string,
   longDescription: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
+  outfitLabels: PropTypes.shape({}),
   breadCrumbs: PropTypes.shape({}),
   currentProduct: PropTypes.shape({}).isRequired,
   productDetails: PropTypes.shape({}),
   currency: PropTypes.string,
   currencyExchange: PropTypes.string,
+  plpLabels: PropTypes.shape({}),
+  currentBundle: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  handleAddToBag: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  addToBagEcom: PropTypes.func.isRequired,
+  currentState: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool,
+  addToBagErrorId: PropTypes.string,
+  addToBagError: PropTypes.string,
 };
 
 BundleProduct.defaultProps = {
@@ -193,10 +244,15 @@ BundleProduct.defaultProps = {
   shortDescription: '',
   itemPartNumber: '',
   pdpLabels: {},
+  outfitLabels: {},
   breadCrumbs: [],
   productDetails: {},
   currency: 'USD',
   currencyExchange: '',
+  plpLabels: {},
+  isLoggedIn: false,
+  addToBagErrorId: '',
+  addToBagError: '',
 };
 
 export default withStyles(BundleProduct, styles);

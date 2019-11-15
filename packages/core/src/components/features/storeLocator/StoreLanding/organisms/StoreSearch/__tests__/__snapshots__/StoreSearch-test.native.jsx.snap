@@ -21,6 +21,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
     margins={null}
     onPress={null}
@@ -63,6 +64,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -141,6 +143,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 1`]
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={null}
@@ -173,6 +176,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
     margins={null}
     onPress={null}
@@ -215,6 +219,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -293,6 +298,7 @@ exports[`StoreSearch component StoreSearch component renders correctly props 2`]
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={null}
@@ -325,6 +331,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
     margins={null}
     onPress={null}
@@ -367,6 +374,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -445,6 +453,7 @@ exports[`StoreSearch component StoreSearch component renders with errors 1`] = `
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={null}
@@ -477,6 +486,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
     margins={null}
     onPress={null}
@@ -519,6 +529,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
         anchorVariation=""
         colorName={null}
         customStyle={Object {}}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -597,6 +608,7 @@ exports[`StoreSearch component component renders correctly with proper elements 
       colorName={null}
       customStyle={Object {}}
       fontWeight="regular"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={null}

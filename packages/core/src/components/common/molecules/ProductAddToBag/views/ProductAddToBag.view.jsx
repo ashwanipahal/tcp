@@ -33,6 +33,8 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
       component="div"
       fontFamily="secondary"
       fontWeight="regular"
+      role="alert"
+      aria-live="assertive"
     >
       <Image
         alt="Error"
@@ -209,11 +211,14 @@ class ProductAddToBag extends React.PureComponent<Props> {
       fitChanged,
       quantityList,
       displayErrorMessage,
+      displayATBErrorMessage,
       errorOnHandleSubmit,
       handleFormSubmit,
       showAddToBagCTA,
       alternateSizes,
       isPickup,
+      isBundleProduct,
+      isATBErrorMessageDisplayed,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -235,7 +240,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
     return (
       <form className={className} noValidate>
         <Row className="edit-form-css">
-          <Col colSize={{ small: 10, medium: 10, large: 10 }}>
+          <Col colSize={{ small: 12, medium: 12, large: 12 }}>
             <div className="select-value-wrapper">
               {this.renderColorList(colorList, colorFitSizeDisplayNames.color)}
               {this.renderFitList(fitList, fitTitle)}
@@ -257,7 +262,9 @@ class ProductAddToBag extends React.PureComponent<Props> {
             <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
         </Row>
-        {errorOnHandleSubmit && ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
+        {isATBErrorMessageDisplayed &&
+          errorOnHandleSubmit &&
+          ErrorComp(errorOnHandleSubmit, showAddToBagCTA)}
         {showAddToBagCTA && (
           <Row fullBleed className={`${errorOnHandleSubmit ? 'product-size-error' : ''}`}>
             <Col colSize={{ small: 12, medium: 12, large: 12 }} className="outfit-button-wrapper">
@@ -267,11 +274,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
                   className="add-to-bag-button"
                   onClick={e => {
                     e.preventDefault();
-                    // TODO: with handleSubmit
                     // eslint-disable-next-line sonarjs/no-all-duplicated-branches
                     if (fitChanged) {
                       displayErrorMessage(fitChanged);
                     } else {
+                      displayATBErrorMessage(true);
                       handleFormSubmit();
                     }
                   }}
@@ -280,7 +287,33 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 </Button>
                 <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
               </div>
-              {this.renderOutfitButton()}
+              {!isBundleProduct && this.renderOutfitButton()}
+            </Col>
+            <Col
+              colSize={{ small: 12, medium: 12, large: 12 }}
+              className="outfit-button-wrapper-desktop"
+            >
+              {!isBundleProduct && this.renderOutfitButton()}
+              <div className="button-wrapper">
+                <Button
+                  type="submit"
+                  className="add-to-bag-button"
+                  // eslint-disable-next-line sonarjs/no-identical-functions
+                  onClick={e => {
+                    e.preventDefault();
+                    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+                    if (fitChanged) {
+                      displayErrorMessage(fitChanged);
+                    } else {
+                      displayATBErrorMessage(true);
+                      handleFormSubmit();
+                    }
+                  }}
+                >
+                  {this.getButtonLabel()}
+                </Button>
+                <RenderPerf.Measure name={CALL_TO_ACTION_VISIBLE} />
+              </div>
             </Col>
           </Row>
         )}
