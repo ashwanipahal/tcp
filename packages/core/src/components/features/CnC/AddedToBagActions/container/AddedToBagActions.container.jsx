@@ -50,6 +50,7 @@ export class AddedToBagContainer extends React.Component<Props> {
       setClickAnalyticsDataCheckout,
       cartOrderItems,
       clearCheckoutServerError,
+      setIsPaypalBtnHidden,
     } = this.props;
     return (
       <AddedToBagActionsView
@@ -84,6 +85,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
         cartOrderItems={cartOrderItems}
         clearCheckoutServerError={clearCheckoutServerError}
+        setIsPaypalBtnHidden={setIsPaypalBtnHidden}
       />
     );
   }
@@ -114,6 +116,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(setClickAnalyticsData(payload));
     },
     clearCheckoutServerError: data => dispatch(CHECKOUT_ACTIONS.setServerErrorCheckout(data)),
+    setIsPaypalBtnHidden: payload => {
+      dispatch(bagPageActions.setIsPaypalBtnHidden(payload));
+    },
   };
 };
 

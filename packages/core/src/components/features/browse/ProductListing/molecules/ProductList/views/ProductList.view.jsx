@@ -8,7 +8,10 @@ import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItemBase from './ProductsGridItem';
 
-// Adding hotfix capability to grid item in this component to make if specific to PLP
+/**
+ * Hotfix-Aware Component. The use `withHotfix` below is just for
+ * making the cart page hotfix-aware.
+ */
 const ProductsGridItem = withHotfix(ProductsGridItemBase);
 
 const isGridItem = item => {

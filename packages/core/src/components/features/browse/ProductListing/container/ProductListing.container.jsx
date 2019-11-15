@@ -1,5 +1,7 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import { getFormValues } from 'redux-form';
 import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
@@ -378,8 +380,18 @@ ProductListingContainer.defaultProps = {
   isSearchListing: false,
 };
 
-export default withIsomorphicRenderer({
+const IsomorphicProductListingContainer = withIsomorphicRenderer({
   WrappedComponent: ProductListingContainer,
   mapStateToProps,
   mapDispatchToProps,
 });
+
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
+const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
+RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
+
+export default HotfixAwareProductListingContainer;
