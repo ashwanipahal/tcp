@@ -3,7 +3,7 @@
 exports[`ApplyNowWrapper should render correctly 1`] = `
 <View>
   <ModalHeaderNative
-    customHeaderMargin="25px 25px 0 25px"
+    customHeaderMargin="55px 25px 0 25px"
     fontSize="fs14"
     heading="lbl_PLCCForm_rewardsCardHeading"
     inheritedStyles=""
@@ -21,7 +21,7 @@ exports[`ApplyNowWrapper should render correctly 1`] = `
 exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
 <View>
   <ModalHeaderNative
-    customHeaderMargin="25px 25px 0 25px"
+    customHeaderMargin="55px 25px 0 25px"
     fontSize="fs14"
     heading="lbl_PLCCForm_rewardsCardHeading"
     inheritedStyles=""

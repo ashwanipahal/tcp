@@ -1,4 +1,4 @@
-import { getSiteId } from '../../../../../../../utils/utils.web';
+import { getSiteId } from '../../../../../../../utils';
 
 const setPickupInitialValues = pickUpContactPerson => {
   return {
@@ -22,6 +22,27 @@ export const setShippingAddress = (shippingAddress, shippingPhoneAndEmail) => {
     phoneNumber: shippingPhoneAndEmail.phoneNumber,
     country: getSiteId() && getSiteId().toUpperCase(),
     emailAddress: shippingPhoneAndEmail.emailAddress,
+  };
+};
+
+export const getAddressInitialValues = scope => {
+  const {
+    shippingAddress,
+    shippingPhoneAndEmail,
+    userAddresses,
+    isGuest,
+    pickUpContactPerson,
+    orderHasPickUp,
+  } = scope.props;
+  const shippingAddressLine1 = shippingAddress && shippingAddress.addressLine1;
+  if (!!shippingAddressLine1 && (isGuest || !userAddresses || userAddresses.size === 0)) {
+    return setShippingAddress(shippingAddress, shippingPhoneAndEmail);
+  }
+  if (!shippingAddressLine1 && isGuest && orderHasPickUp) {
+    return setPickupInitialValues(pickUpContactPerson);
+  }
+  return {
+    country: getSiteId() && getSiteId().toUpperCase(),
   };
 };
 
