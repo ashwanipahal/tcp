@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect } from 'react';
-import { string, node, func, PropTypes } from 'prop-types';
+import { string, node, func, shape } from 'prop-types';
 import { connect } from 'react-redux';
-import { useClickTracking, useSetClickAnalytics } from '@tcp/core/src/analytics';
+import { useClickTracking, useSetClickAnalytics, useSetPageData } from '@tcp/core/src/analytics';
 
 /**
  * This component can be used for dispatching click
@@ -21,12 +21,18 @@ import { useClickTracking, useSetClickAnalytics } from '@tcp/core/src/analytics'
  * <ClickTracker name="brand_logo" ref={logo} />
  */
 const ClickTracker = forwardRef(
-  ({ as: Component, name, clickData, children, dispatch, ...props }, ref) => {
+  ({ as: Component, name, clickData, pageData, children, dispatch, ...props }, ref) => {
     const track = useClickTracking(dispatch);
     const setClickTrack = useSetClickAnalytics(dispatch);
+    const setPageData = useSetPageData(dispatch);
 
     const handleClick = () => {
-      setClickTrack(clickData);
+      if (pageData) {
+        setPageData(pageData);
+      }
+      if (clickData) {
+        setClickTrack(clickData);
+      }
       track(name);
     };
 
@@ -53,7 +59,8 @@ ClickTracker.propTypes = {
   as: string,
   name: string,
   children: node,
-  clickData: PropTypes.shape({}),
+  clickData: shape({}),
+  pageData: shape({}),
   dispatch: func.isRequired,
 };
 
@@ -61,7 +68,8 @@ ClickTracker.defaultProps = {
   as: 'div',
   name: '',
   children: null,
-  clickData: {},
+  clickData: null,
+  pageData: null,
 };
 
 export default connect()(ClickTracker);

@@ -37,6 +37,10 @@ const getInternalCampaignId = store => {
   const defaultData = getAnalyticsData(store);
   return defaultData && defaultData.internalCampaignId;
 };
+const getSocialNetwork = store => {
+  const defaultData = getAnalyticsData(store);
+  return defaultData && defaultData.socialNetwork;
+};
 
 export const generateClickHandlerDataLayer = store => {
   return {
@@ -50,6 +54,7 @@ export const generateClickHandlerDataLayer = store => {
           storeSearchCriteria: getStoreSearchCriteria(store) || '',
           storeSearchDistance: getStoreSearchDistance(store) || '',
           internalCampaignId: getInternalCampaignId(store) || '',
+          socialNetwork: getSocialNetwork(store) || '',
         };
       },
     },
