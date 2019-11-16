@@ -60,28 +60,124 @@ exports[`Promo Text Banner component renders correctly 1`] = `
   textAlign="left"
 >
   <Connect(Component)
-    name="aboveheader_na_na_mpr_120118_mprcc"
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bdVaJa",
+          "isStatic": false,
+          "rules": Array [
+            "
+  ",
+            "
+  font-family: ",
+            [Function],
+            ";
+  color: inherit;
+
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+  ",
+            [Function],
+            ";
+
+  .left-arrow {
+    border: solid ",
+            [Function],
+            ";
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(135deg);
+  }
+",
+            ";
+",
+          ],
+        },
+        "displayName": "Styled(Anchor)",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "sc-bdVaJa",
+        "target": [Function],
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    asPath="http://example.com235"
+    className="promo-text-link"
+    clickData={
+      Object {
+        "internalCampaignId": "promoAnalyticsValue",
+      }
+    }
+    external={0}
+    target=""
+    title=""
+    to="http://example.com235"
+    url="http://example.com235"
   >
-    <Styled(Anchor)
-      asPath="http://example.com235"
-      className="promo-text-link"
-      external={0}
-      target=""
-      title=""
-      to="http://example.com235"
-      url="http://example.com235"
+    <span
+      className="promo-text style1"
     >
-      <span
-        className="promo-text style1"
-      >
-        alL DINOS
-      </span>
-      <span
-        className="promo-text style2"
-      >
-         50% OFF
-      </span>
-    </Styled(Anchor)>
+      alL DINOS
+    </span>
+    <span
+      className="promo-text style2"
+    >
+       50% OFF
+    </span>
   </Connect(Component)>
 </StyledComponent>
 `;

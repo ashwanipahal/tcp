@@ -33,7 +33,12 @@ exports[`Drawer component renders correctly 1`] = `
       textAlign="left"
     >
       <Connect(Component)
-        name={Object {}}
+        clickData={
+          Object {
+            "internalCampaignId": "",
+          }
+        }
+        name="navigation-analytics"
       >
         <Styled(Anchor)
           onClick={[Function]}
