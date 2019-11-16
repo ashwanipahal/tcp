@@ -204,6 +204,20 @@ export default function create(store) {
           .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'internalCampaignId'], '');
       },
     },
+    storeSearchCriteria: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'storeSearchCriteria'], '');
+      },
+    },
+    storeSearchDistance: {
+      get() {
+        return store
+          .getState()
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'storeSearchDistance'], '');
+      },
+    },
     products: {
       get() {
         return store

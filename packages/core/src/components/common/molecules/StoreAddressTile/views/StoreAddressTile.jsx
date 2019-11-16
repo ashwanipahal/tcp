@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Anchor, BodyCopy, Image, Button } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, routeToStoreDetails, getSiteId } from '@tcp/core/src/utils';
 import { getLabelValue, getLocator, getStoreHours } from '@tcp/core/src/utils/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import style, {
   TileHeader,
   TileFooter,
@@ -71,7 +72,7 @@ class StoreAddressTile extends PureComponent {
     return (
       <Fragment>
         <div>
-          <Anchor
+          <ClickTracker
             fontSizeVariation="medium"
             underline
             to={`/${getSiteId()}${routeToStoreDetails(store).url}`}
@@ -81,21 +82,25 @@ class StoreAddressTile extends PureComponent {
             className="store-details-link"
             title={getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
             noLink
+            as={Anchor}
+            clickData={{ customEvents: ['event80,event96'] }}
           >
             {getLabelValue(labels, 'lbl_storelanding_storedetails_link')}
-          </Anchor>
+          </ClickTracker>
         </div>
         <div>
           {isFavorite && this.getIsFavStoreIcon()}
           {!isFavorite && (
-            <Button
+            <ClickTracker
+              as={Button}
+              clickData={{ customEvents: ['event67'] }}
               onClick={() => setFavoriteStore(store)}
               buttonVariation="fixed-width"
               type="button"
               data-locator={locatorSetFavStore}
             >
               {getLabelValue(labels, 'lbl_storelanding_setfavStore')}
-            </Button>
+            </ClickTracker>
           )}
         </div>
       </Fragment>
@@ -176,7 +181,9 @@ class StoreAddressTile extends PureComponent {
                   }`}
                 </BodyCopy>
               )}
-              <Anchor
+
+              <ClickTracker
+                as={Anchor}
                 fontSizeVariation="medium"
                 underline
                 url={openStoreDirections(store)}
@@ -184,9 +191,10 @@ class StoreAddressTile extends PureComponent {
                 target="_blank"
                 className="store-directions-link"
                 title={getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
+                clickData={{ customEvents: ['event97'] }}
               >
                 {getLabelValue(labels, 'lbl_storelanding_getdirections_link')}
-              </Anchor>
+              </ClickTracker>
             </div>
           </div>
           <div className="address-wrapper">

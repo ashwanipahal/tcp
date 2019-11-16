@@ -285,11 +285,138 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               }
             }
           >
-            <Styled(Button)
+            <Connect(Component)
+              as={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [],
+                  "componentStyle": ComponentStyle {
+                    "componentId": "sc-bwzfXH",
+                    "isStatic": false,
+                    "rules": Array [
+                      "
+  ",
+                      "
+  border: none;
+  border-radius: 0;
+  background: none;
+  position: relative;
+  cursor: ",
+                      [Function],
+                      ";
+  opacity: ",
+                      [Function],
+                      ";
+  text-transform: uppercase;
+  min-height: 42px;
+  letter-spacing: 0.93px;
+  font-size: ",
+                      [Function],
+                      ";
+  color: ",
+                      [Function],
+                      "
+  ",
+                      [Function],
+                      "
+  ",
+                      [Function],
+                      ";
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  &:focus {
+    background: ",
+                      [Function],
+                      ";
+  }
+  &:hover:not[disabled] {
+    background: ",
+                      [Function],
+                      ";
+  }
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      ";
+
+  ",
+                      [Function],
+                      "
+
+  @media ",
+                      [Function],
+                      " {
+    ",
+                      [Function],
+                      ";
+    ",
+                      [Function],
+                      ";
+  }
+  ",
+                      [Function],
+                      "
+
+  ",
+                      [Function],
+                      "
+      ",
+                      [Function],
+                      ";
+      ",
+                      [Function],
+                      ";
+
+",
+                      ";
+",
+                    ],
+                  },
+                  "displayName": "Styled(Button)",
+                  "foldedComponentIds": Array [],
+                  "render": [Function],
+                  "styledComponentId": "sc-bwzfXH",
+                  "target": [Function],
+                  "toString": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
               buttonVariation="variable-width"
               className="refer_a_friend_button"
+              clickData={
+                Object {
+                  "customEvents": Array [
+                    "event22",
+                    "event80",
+                  ],
+                }
+              }
               data-locator="global_referfriend"
               id="extole_zone_global_footer"
+              pageData={
+                Object {
+                  "pageShortName": "content:referafriend  confirmation",
+                }
+              }
             />
           </Styled(Col)>
         </Styled(Row)>

@@ -14,6 +14,7 @@ import { AutoCompleteComponent } from '@tcp/core/src/components/common/atoms/Goo
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getAddressLocationInfo } from '@tcp/core/src/utils/addressLocation';
 import { getLabelValue, isGymboree } from '@tcp/core/src/utils';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/StoreLanding.constants';
@@ -186,7 +187,17 @@ export class StoreSearch extends PureComponent {
                   enableSuccessCheck={false}
                   onChange={this.onStoreChange}
                 />
-                <Button type="submit" title="search" className="button-search-store">
+                <ClickTracker
+                  type="submit"
+                  title="search"
+                  className="button-search-store"
+                  as={Button}
+                  clickData={{
+                    customEvents: ['event89'],
+                    storeSearchCriteria: 'storeSearchCriteria',
+                    storeSearchDistance: '4',
+                  }}
+                >
                   <Image
                     alt="search"
                     className="search-image icon-small"
@@ -195,7 +206,7 @@ export class StoreSearch extends PureComponent {
                     data-locator="search-icon"
                     height="25px"
                   />
-                </Button>
+                </ClickTracker>
               </div>
             </form>
           </Col>
