@@ -112,11 +112,16 @@ class ProductListingContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: { asPath },
+      isLoggedIn,
     } = prevProps;
     const {
       router: { asPath: currentAsPath },
+      isLoggedIn: currentLyLoggedIn,
     } = this.props;
     if (asPath !== currentAsPath) {
+      this.makeApiCall();
+    }
+    if (isLoggedIn !== currentLyLoggedIn) {
       this.makeApiCall();
     }
   }
@@ -182,6 +187,7 @@ class ProductListingContainer extends React.PureComponent {
       plpTopPromos,
       router: { asPath: asPathVal },
       isSearchListing,
+      navigation,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -217,6 +223,7 @@ class ProductListingContainer extends React.PureComponent {
         plpTopPromos={plpTopPromos}
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}
+        navigation={navigation}
         {...otherProps}
       />
     ) : (
