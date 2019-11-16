@@ -5,6 +5,7 @@ import PointsHistory from '@tcp/core/src/components/features/account/PointHistor
 import ProductDetail from '@tcp/core/src/components/features/browse/ProductDetail';
 import TrackOrderContainer from '@tcp/core/src/components/features/account/TrackOrder';
 import OrderDetail from '@tcp/core/src/components/features/account/OrderDetails';
+import Settings from '@tcp/core/src/components/features/account/Settings';
 import PurchaseGiftsCard from '@tcp/core/src/components/features/account/PurchaseGiftsCard';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -55,6 +56,23 @@ const AccountStack = createStackNavigator(
       screen: ({ navigation }) => {
         const handleToggle = navigation.getParam('handleToggle');
         return <TrackOrderContainer handleToggle={handleToggle} navigation={navigation} />;
+      },
+      navigationOptions: ({ navigation }) => {
+        return getNewHeader(navigation);
+      },
+    },
+    AppSettings: {
+      // eslint-disable-next-line react/prop-types
+      screen: ({ navigation }) => {
+        const handleToggle = navigation.getParam('handleToggle');
+        const isUserLoggedIn = navigation.getParam('isUserLoggedIn');
+        return (
+          <Settings
+            handleToggle={handleToggle}
+            navigation={navigation}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+        );
       },
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import withRefWrapper from '../../../../common/hoc/withRefWrapper';
+import withHotfix from '../../../../common/hoc/withHotfix';
 
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -447,5 +449,13 @@ BagPageView.propTypes = {
   isBagPage: PropTypes.bool,
 };
 
-export default withStyles(BagPageView, styles);
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware. The "BagPage"
+ * argument defines the displayName of the hotfix-aware component.
+ */
+const BagPageViewWithRefWrapper = withRefWrapper(BagPageView, 'div', 'BagPage');
+const BagPageViewWithHotfix = withHotfix(BagPageViewWithRefWrapper);
+
+export default withStyles(BagPageViewWithHotfix, styles);
 export { BagPageView as BagPageViewVanilla };

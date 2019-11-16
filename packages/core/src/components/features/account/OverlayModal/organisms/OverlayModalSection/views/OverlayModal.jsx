@@ -159,7 +159,7 @@ class OverlayModal extends React.Component {
       modalRectBoundingX &&
       modalTriangle
     ) {
-      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
     } else {
       modalTriangle.style.left = 'auto';
     }
@@ -181,7 +181,12 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      this.styleModalTriangle({ comp });
+      if (component === 'accountDrawer') {
+        comp = document.getElementById('account-info-user-points');
+        this.styleModalTriangle({ comp });
+      } else {
+        this.styleModalTriangle({ comp });
+      }
     }
   };
 

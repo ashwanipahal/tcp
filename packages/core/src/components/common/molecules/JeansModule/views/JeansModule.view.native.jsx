@@ -40,6 +40,7 @@ export class JeansModule extends PureComponent {
 
   itemRenderer = (props, itemData) => {
     const { imageWidth, imageHeight, itemMargin, itemPadding, itemBackgroundColor } = props;
+
     const { index, item } = itemData;
     const imgUrl = this.getImageUrl(item) || '';
     return (
@@ -90,7 +91,7 @@ export class JeansModule extends PureComponent {
           data={bannerData}
           getImageUrl={this.getImageUrl}
           itemPadding="0 8px 0 0"
-          itemBackgroundColor="#f1f0f0"
+          itemBackgroundColor="gray.1800"
           customRenderer={this.itemRenderer}
         />
       </Container>
