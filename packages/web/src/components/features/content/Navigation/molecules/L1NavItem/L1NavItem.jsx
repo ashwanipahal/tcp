@@ -68,8 +68,18 @@ class L1NavItem extends React.PureComponent {
    * This function handles if navigation drawer needs to open on current viewport or now
    * @param {*} onClick
    */
-  openNavigationDrawer = hasL2 => e => {
+  openNavigationDrawer = hasL2 => nav => breadCrumbTrail => e => {
     const { onClick } = this.props;
+    let breadCrumbValue =
+      breadCrumbTrail &&
+      breadCrumbTrail.map(element => {
+        return element.displayName.toLowerCase();
+      });
+    breadCrumbValue = (breadCrumbValue && `topmenu-${breadCrumbValue.join(' ')}`) || '';
+    const navigationValue = nav.filter(item => item.hasL2 === hasL2);
+    const value = breadCrumbTrail
+      ? breadCrumbValue
+      : navigationValue[0].categoryContent.name.toLowerCase();
     if (!getViewportInfo().isDesktop && hasL2) {
       e.preventDefault();
       e.stopPropagation();
@@ -82,15 +92,7 @@ class L1NavItem extends React.PureComponent {
         }
       );
     }
-  };
-
-  navigationAnalyticsObject = breadCrumbTrail => {
-    const navigationAnalyticsValue =
-      breadCrumbTrail &&
-      breadCrumbTrail.map(element => {
-        return element.displayName.toLowerCase();
-      });
-    return (navigationAnalyticsValue && `topmenu-${navigationAnalyticsValue.join(' ')}`) || '';
+    return value;
   };
 
   fetchPromoBadge() {
@@ -111,6 +113,7 @@ class L1NavItem extends React.PureComponent {
       removeL1Focus,
       hasL2,
       breadCrumbTrail,
+      nav,
       ...others
     } = this.props;
 
@@ -121,8 +124,6 @@ class L1NavItem extends React.PureComponent {
       classForHovered = 'is-open';
       this.childRendered = true;
     }
-    const val = this.navigationAnalyticsObject(breadCrumbTrail);
-    console.info(val, '-------val');
 
     // If we receive flag showOnlyOnApp then we add this class to links to hide them
     // const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
@@ -155,23 +156,27 @@ class L1NavItem extends React.PureComponent {
             onBlur={this.onMouseLeave}
             {...others}
           >
-            <ClickTracker name="navigation-analytics" clickData={{ internalCampaignId: val }}>
-              <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
-                <div className="nav-bar-l1-content">
-                  <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
-                  <span
-                    className={`nav-bar-item-content ${
-                      description ? 'nav-bar-item-sizes-range' : ''
-                    }`}
-                    data-locator={
-                      description ? `sizesrange_label_${index}` : `promo_badge_${index}`
-                    }
-                  >
-                    {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
-                  </span>
-                  <span className="icon-arrow" />
-                </div>
-              </Anchor>
+            <ClickTracker
+              as={Anchor}
+              to={url}
+              asPath={asPath}
+              onClick={this.openNavigationDrawer(hasL2)(nav)(breadCrumbTrail)}
+              clickData={{
+                internalCampaignId: 'check',
+              }}
+            >
+              <div className="nav-bar-l1-content">
+                <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
+                <span
+                  className={`nav-bar-item-content ${
+                    description ? 'nav-bar-item-sizes-range' : ''
+                  }`}
+                  data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
+                >
+                  {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
+                </span>
+                <span className="icon-arrow" />
+              </div>
             </ClickTracker>
             {(hovered || this.childRendered) && children}
             <div
@@ -197,6 +202,7 @@ L1NavItem.propTypes = {
   url: PropTypes.string.isRequired,
   hasL2: PropTypes.number.isRequired,
   breadCrumbTrail: PropTypes.shape({}).isRequired,
+  nav: PropTypes.shape({}).isRequired,
 };
 
 L1NavItem.defaultProps = {

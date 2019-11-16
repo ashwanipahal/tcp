@@ -61,6 +61,7 @@ const NavBar = props => {
                 // showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
                 removeL1Focus={removeL1Focus}
                 {...navL1Item}
+                nav={navigationData}
               >
                 <Drawer
                   id={`l2-drawer-${stringId}`}
