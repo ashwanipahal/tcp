@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath } from '@tcp/core/src/utils';
 import { Image, Anchor } from '@tcp/core/src/components/common/atoms';
+import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../styles/ProductImages.style';
 
@@ -48,7 +49,9 @@ class SocialConnect extends React.PureComponent {
     return (
       <span className={`${className} social-connect-sub-wrapper`}>
         {isTwitterEnabled && (
-          <Anchor
+          <ClickTracker
+            as={Anchor}
+            clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}
             url="http://instagram.com/childrensplace"
             target="_blank"
             onClick={this.handleTwitterShare}
@@ -61,11 +64,13 @@ class SocialConnect extends React.PureComponent {
               src={getIconPath('twitter-icon')}
               data-locator="twitter-icon"
             />
-          </Anchor>
+          </ClickTracker>
         )}
 
         {isFacebookEnabled && (
-          <Anchor
+          <ClickTracker
+            as={Anchor}
+            clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}
             url="https://www.facebook.com/childrensplace"
             target="_blank"
             onClick={this.handleFacebookShare}
@@ -78,10 +83,12 @@ class SocialConnect extends React.PureComponent {
               src={getIconPath('facebook-icon')}
               data-locator="facebook-icon"
             />
-          </Anchor>
+          </ClickTracker>
         )}
         {isPinterestEnabled && (
-          <Anchor
+          <ClickTracker
+            as={Anchor}
+            clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}
             url="http://www.pinterest.com/childrensplace"
             target="_blank"
             onClick={this.handlePinterestShare}
@@ -94,7 +101,7 @@ class SocialConnect extends React.PureComponent {
               src={getIconPath('pinterest-icon')}
               data-locator="pinterest-icon"
             />
-          </Anchor>
+          </ClickTracker>
         )}
       </span>
     );

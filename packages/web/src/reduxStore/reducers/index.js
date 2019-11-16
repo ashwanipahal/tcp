@@ -187,9 +187,9 @@ const filteredStyliticsProductTabListReducer = createFilteredReducer(
 function pageNameReducer(state = {}, action) {
   switch (action.type) {
     case TRACK_PAGE_VIEW: {
-      const { props } = action.payload;
+      const { props } = action.payload || {};
       const { pageData = {} } = (props && props.initialProps && props.initialProps.pageProps) || {};
-      return pageData;
+      return { ...state, ...pageData };
     }
     case UPDATE_PAGE_DATA: {
       return action.payload;
