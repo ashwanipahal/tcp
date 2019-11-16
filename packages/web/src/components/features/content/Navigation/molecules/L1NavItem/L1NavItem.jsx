@@ -84,27 +84,20 @@ class L1NavItem extends React.PureComponent {
     }
   };
 
-  fetchPromoBadge() {
-    const {
-      categoryContent: { mainCategory },
-    } = this.props;
-    return mainCategory && mainCategory.promoBadge;
-  }
-
-  navigationAnalyticsObject(breadCrumbTrail) {
-    const navigationAnalyticsObject = {};
+  navigationAnalyticsObject = breadCrumbTrail => {
     const navigationAnalyticsValue =
       breadCrumbTrail &&
       breadCrumbTrail.map(element => {
         return element.displayName.toLowerCase();
       });
+    return (navigationAnalyticsValue && `topmenu-${navigationAnalyticsValue.join(' ')}`) || '';
+  };
 
-    this.navigationAnalyticsObject = {
-      navigationAnalyticsValue:
-        (navigationAnalyticsValue && navigationAnalyticsValue.join(' ')) || '',
-      key: 'top-navigation',
-    };
-    return navigationAnalyticsObject;
+  fetchPromoBadge() {
+    const {
+      categoryContent: { mainCategory },
+    } = this.props;
+    return mainCategory && mainCategory.promoBadge;
   }
 
   render() {
@@ -128,7 +121,8 @@ class L1NavItem extends React.PureComponent {
       classForHovered = 'is-open';
       this.childRendered = true;
     }
-    const navData = this.navigationAnalyticsObject(breadCrumbTrail);
+    const val = this.navigationAnalyticsObject(breadCrumbTrail);
+    console.info(val, '-------val');
 
     // If we receive flag showOnlyOnApp then we add this class to links to hide them
     // const classToShowOnlyOnApp = showOnlyOnApp ? `show-on-mobile` : ``;
@@ -161,7 +155,7 @@ class L1NavItem extends React.PureComponent {
             onBlur={this.onMouseLeave}
             {...others}
           >
-            <ClickTracker name={navData}>
+            <ClickTracker name="navigation-analytics" clickData={{ internalCampaignId: val }}>
               <Anchor to={url} asPath={asPath} onClick={this.openNavigationDrawer(hasL2)}>
                 <div className="nav-bar-l1-content">
                   <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>

@@ -23,6 +23,21 @@ const getCouponCode = store => {
   return defaultData && defaultData.couponCode;
 };
 
+const getStoreSearchCriteria = store => {
+  const defaultData = getAnalyticsData(store);
+  return defaultData && defaultData.searchCriteria;
+};
+
+const getStoreSearchDistance = store => {
+  const defaultData = getAnalyticsData(store);
+  return defaultData && defaultData.searchDistance;
+};
+
+const getInternalCampaignId = store => {
+  const defaultData = getAnalyticsData(store);
+  return defaultData && defaultData.internalCampaignId;
+};
+
 export const generateClickHandlerDataLayer = store => {
   return {
     eventData: {
@@ -32,6 +47,9 @@ export const generateClickHandlerDataLayer = store => {
           products: getProductsData(store) || '',
           eventName: getEventName(store) || '',
           couponCode: getCouponCode(store) || '',
+          storeSearchCriteria: getStoreSearchCriteria(store) || '',
+          storeSearchDistance: getStoreSearchDistance(store) || '',
+          internalCampaignId: getInternalCampaignId(store) || '',
         };
       },
     },

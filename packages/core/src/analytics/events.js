@@ -42,7 +42,7 @@ export function trackPageView(eventDef = EventDefinition) {
 export function trackClick(eventDef = EventDefinition) {
   return (...args) =>
     TrackingEvent({
-      hitType: 'click',
+      hitType: 'click' || 'Other Click',
       eventName: TRACK_LINK_CLICK,
       ...eventDef(...args),
     });

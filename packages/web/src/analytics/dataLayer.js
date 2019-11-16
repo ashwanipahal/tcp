@@ -201,10 +201,7 @@ export default function create(store) {
       get() {
         return store
           .getState()
-          .AnalyticsDataKey.getIn(
-            ['clickActionAnalyticsData', 'pageNavigationText', 'navigationAnalyticsValue'],
-            ''
-          );
+          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'internalCampaignId'], '');
       },
     },
     products: {

@@ -7,6 +7,7 @@ import LinkText from '../../LinkText';
 import withStyles from '../../../hoc/withStyles';
 import PromoBannerStyle from '../PromoBanner.style';
 import { configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+// import { promoAnalyticsValue } from '../../../../../../../web/src/components/features/content/Header/config';
 
 /**
  * Currency & Up variation of Promo Banner
@@ -73,35 +74,40 @@ const PromoBanner = props => {
             headerText={headerText}
           />
         )}
-        <ClickTracker name="aboveheader_na_na_mpr_120118_mprcc">
-          <Anchor {...navigationUrl} className="promo-text-link">
-            {textItems.map(({ text, style }, index) => {
-              let promoText;
-              /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
-              if (isPencentageTab(style)) {
-                const percentageTexts = text.split(' ');
-                promoText = (
-                  <div className={`promo-text ${style}`}>
-                    <span className={`${style}-0`}>
-                      {percentageTexts[0] && percentageTexts[0].trim()}
-                    </span>
-                    <span className={`${style}-1`}>% </span>
-                    <span className={`${style}-2`}>
-                      {percentageTexts[2] && percentageTexts[2].trim()}
-                    </span>
-                  </div>
-                );
-              } else if (style === 'currency_up_style' || style === 'style10') {
-                promoText = renderCurrencyUpVariation(style, text);
-              } else {
-                promoText = (
-                  <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
-                );
-              }
+        <ClickTracker
+          as={Anchor}
+          {...navigationUrl}
+          className="promo-text-link"
+          clickData={{ internalCampaignId: 'promoAnalyticsValue' }}
+        >
+          {/* <Anchor {...navigationUrl} className="promo-text-link"> */}
+          {textItems.map(({ text, style }, index) => {
+            let promoText;
+            /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
+            if (isPencentageTab(style)) {
+              const percentageTexts = text.split(' ');
+              promoText = (
+                <div className={`promo-text ${style}`}>
+                  <span className={`${style}-0`}>
+                    {percentageTexts[0] && percentageTexts[0].trim()}
+                  </span>
+                  <span className={`${style}-1`}>% </span>
+                  <span className={`${style}-2`}>
+                    {percentageTexts[2] && percentageTexts[2].trim()}
+                  </span>
+                </div>
+              );
+            } else if (style === 'currency_up_style' || style === 'style10') {
+              promoText = renderCurrencyUpVariation(style, text);
+            } else {
+              promoText = (
+                <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
+              );
+            }
 
-              return promoText;
-            })}
-          </Anchor>
+            return promoText;
+          })}
+          {/* </Anchor> */}
         </ClickTracker>
       </React.Fragment>
     </BodyCopy>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { Anchor, RichText, Row, Col } from '../../../atoms';
 import { readCookie, setCookie } from '../../../../../utils/cookie.util';
+// import { loyalityAnalyticsValue } from '../../../../../../../web/src/components/features/content/Header/config';
 import withStyles from '../../../hoc/withStyles';
 
 import style from '../LoyaltyPromoBanner.style';
@@ -51,16 +52,24 @@ const LoyaltyPromoBanner = props => {
             large: 12,
           }}
         >
-          <ClickTracker name="lp_s1_banner_na_050519_doubleup">
-            <Anchor
+          <ClickTracker
+            as={Anchor}
+            to={link.url}
+            asPath={link.url}
+            target={link.target}
+            title={link.title}
+            dataLocator={dataLocator || `loyalty-promo-banner`}
+            clickData={{ internalCampaignId: 'promoAnalyticsValue' }}
+          >
+            {/* <Anchor
               to={link.url}
               asPath={link.url}
               target={link.target}
               title={link.title}
               dataLocator={dataLocator || `loyalty-promo-banner`}
-            >
-              <RichText richTextHtml={richText.text} />
-            </Anchor>
+            > */}
+            <RichText richTextHtml={richText.text} />
+            {/* </Anchor> */}
           </ClickTracker>
           <button
             aria-label="close"
