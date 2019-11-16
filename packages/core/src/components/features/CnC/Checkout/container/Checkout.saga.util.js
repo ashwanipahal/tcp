@@ -11,7 +11,6 @@ import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
-  briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
   updateRTPSData,
@@ -46,6 +45,7 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -231,7 +231,7 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
 
   try {
     const payloadObject = {
-      emailaddr: payload,
+      emailaddr: payload.signup,
       URL: 'email-confirmation',
       response: `${status}:::false:false`,
       registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
@@ -451,4 +451,13 @@ export function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouti
     yield call(getRouteToCheckoutStage, { pageName, ...otherProps });
   }
   return pageName;
+}
+
+export function shouldInvokeReviewCartCall(
+  isExpressCheckoutEnabled,
+  { initialLoad, isPaypalPostBack, pageName, appRouting: isPageRefreshRouting }
+) {
+  const { REVIEW } = constants.CHECKOUT_STAGES;
+  const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
+  return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
 }

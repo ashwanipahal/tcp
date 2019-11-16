@@ -48,6 +48,7 @@ import {
   submitAcceptOrDeclinePlccData,
   handleCheckoutInitRouting,
   makeUpdateRTPSCall,
+  shouldInvokeReviewCartCall,
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
@@ -210,12 +211,7 @@ function* initShippingData(pageName) {
       shippingAddress.state &&
       shippingAddress.zipCode;
     const isGuestUser = yield select(isGuest);
-    if (
-      isGuestUser ||
-      (!hasShipping && !defaultAddress) ||
-      !shipmentMethods ||
-      !shipmentMethods.length
-    ) {
+    if (isGuestUser || (!hasShipping && !defaultAddress) || !shipmentMethods.length) {
       yield call(
         validDateAndLoadShipmentMethods,
         { country: '', state: '', zipCode: '' },
@@ -234,12 +230,11 @@ function* triggerInternationalCheckoutIfRequired() {
   return null;
 }
 
-function* initCheckoutSectionData({
-  payload: { recalc, pageName, isPaypalPostBack, initialLoad, appRouting, navigation },
-}) {
+function* initCheckoutSectionData({ payload }) {
+  const { recalc, pageName, isPaypalPostBack, appRouting, navigation } = payload;
   yield call(triggerInternationalCheckoutIfRequired);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-  const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
+  const { PICKUP, SHIPPING, BILLING } = CONSTANTS.CHECKOUT_STAGES;
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
     if (!appRouting) {
@@ -250,16 +245,13 @@ function* initCheckoutSectionData({
             excludeCartItems: false,
             recalcRewards: recalc,
             updateSmsInfo: false,
-            translation: false,
+            translation: true,
             isCheckoutFlow: true,
           },
         })
       );
     }
-  } else if (
-    pageName === REVIEW &&
-    (!isExpressCheckoutEnabled || isPaypalPostBack || !appRouting)
-  ) {
+  } else if (shouldInvokeReviewCartCall(isExpressCheckoutEnabled, payload)) {
     pendingPromises.push(
       call(getCartDataSaga, {
         payload: {
@@ -273,9 +265,10 @@ function* initCheckoutSectionData({
       })
     );
   }
+
   yield all(pendingPromises);
   const requestedStage = yield call(handleCheckoutInitRouting, { pageName }, appRouting);
-  yield call(initShippingData, requestedStage, initialLoad);
+  yield call(initShippingData, requestedStage);
   if (makeUpdateRTPSCall(pageName, isPaypalPostBack, isExpressCheckoutEnabled)) {
     yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
   }

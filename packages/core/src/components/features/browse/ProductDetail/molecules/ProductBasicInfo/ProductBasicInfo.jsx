@@ -58,7 +58,9 @@ class ProductBasicInfo extends React.Component {
       productInfo: { ratingsProductId },
       productMiscInfo,
     } = this.props;
-    const isFavorite = productMiscInfo.isFavorite || productMiscInfo.miscInfo.isInDefaultWishlist;
+    const isFavorite =
+      productMiscInfo.isFavorite ||
+      (productMiscInfo.miscInfo && productMiscInfo.miscInfo.isInDefaultWishlist);
     const title = this.title();
     const isFavoriteView = false;
     return (
