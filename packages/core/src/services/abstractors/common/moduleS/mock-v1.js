@@ -8,8 +8,8 @@ export default {
         {
           textItems: [
             {
-              text: 'Home Run Ready!',
-              style: 'medium_text_black',
+              text: 'Home Run Ready!1',
+              style: 'medium_text_regular',
             },
             {
               text: 'Lets Play.',
@@ -18,8 +18,8 @@ export default {
           ],
           link: {
             url: '/c/girls-clothes',
-            text: 'Girls',
-            title: 'Girls',
+            text: 'Girlss',
+            title: 'Girlss',
             target: '',
             external: 0,
             action: '',
@@ -37,9 +37,9 @@ export default {
               'https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png',
             alt: 'Pool',
             title: 'Pool',
-            crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
+            crop_d: 'c_crop,g_face:center,q_auto:best,w_610',
             crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
-            crop_m: 'c_crop,g_face:center,q_auto:best,w_375',
+            crop_m: 'c_crop,g_face:center,q_auto:best,w_305',
             url_m: '',
             url_t: '',
           },
@@ -53,8 +53,8 @@ export default {
       ],
       singleCTAButton: {
         url: '/c/girls-clothes',
-        text: 'SHOP OPENING DAY',
-        title: 'SHOP OPENING DAY',
+        text: 'SHOP OPENINGG DAY',
+        title: 'SHOP OPENINNG DAY',
         target: '',
       },
       moduleWidth: 'half',

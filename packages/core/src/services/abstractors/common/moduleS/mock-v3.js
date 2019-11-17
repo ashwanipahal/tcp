@@ -8,21 +8,21 @@ export default {
         {
           textItems: [
             {
-              text: 'SHOP ALL SUMMER',
+              text: 'SHOP ALL SUMMERR',
               style: 'medium_text_black',
             },
             {
-              text: 'SURFS UP',
+              text: 'SURFS UPP',
               style: 'small_text_normal',
             },
             {
-              text: 'POOL SIDE',
+              text: 'POOL SIDEE',
               style: 'small_text_normal',
             },
           ],
           link: {
             url: '/c/girls-clothes',
-            text: 'Girls',
+            text: 'GirlsS',
             title: 'Girls',
             target: '',
             external: 0,
@@ -41,7 +41,7 @@ export default {
               'https://dam-qa-ressh.cloudinary.com/image/upload/v1570707425/Module-H_TCP_ybjasx_ahura1.jpg',
             alt: 'Pool',
             title: 'Pool',
-            crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
+            crop_d: 'c_crop,g_face:center,q_auto:best,w_120',
             crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
             crop_m: 'c_crop,g_face:center,q_auto:best,w_375,h_356',
             url_m: '',

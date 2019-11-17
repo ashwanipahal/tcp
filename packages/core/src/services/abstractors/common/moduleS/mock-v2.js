@@ -8,15 +8,15 @@ export default {
         {
           textItems: [
             {
-              text: 'A Very Cherry Valentines',
+              text: 'A Very Cherry Valentines!',
               style: 'medium_text_black',
             },
           ],
           link: {
             // eslint-disable-next-line sonarjs/no-duplicate-string
-            url: '/c/girls-clothes',
-            text: 'Girls',
-            title: 'Girls',
+            url: '/c/girls-clothes/ac',
+            text: 'Girlss',
+            title: 'Girlss',
             target: '',
             external: 0,
             action: '',
@@ -34,9 +34,9 @@ export default {
               'https://dam-qa-ressh.cloudinary.com/image/upload/v1570707425/Module-H_TCP_ybjasx_ahura1.jpg',
             alt: 'Pool',
             title: 'Pool',
-            crop_d: 'c_crop,g_face:center,q_auto:best,w_450',
-            crop_t: 'c_crop,g_face:center,q_auto:best,w_500',
-            crop_m: 'c_crop,g_face:center,q_auto:best,w_347',
+            crop_d: 'c_crop,g_face:center,q_auto:best,w_440',
+            crop_t: 'c_crop,g_face:center,q_auto:best,w_530',
+            crop_m: 'c_crop,g_face:center,q_auto:best,w_327',
             url_m: '',
             url_t: '',
           },
@@ -50,16 +50,16 @@ export default {
       ],
       singleCTAButton: {
         url: '/c/girls-clothes',
-        text: 'SHOP OPENING DAY',
-        title: 'SHOP OPENING DAY',
+        text: 'SHOP OPENING DAYD',
+        title: 'SHOP OPENING DAYD',
         target: '',
       },
       ribbonBanner: [
         {
           textItems: [
             {
-              text: '20% OFF',
-              style: 'style1',
+              text: '20% OF',
+              style: 'style10',
             },
           ],
           link: {

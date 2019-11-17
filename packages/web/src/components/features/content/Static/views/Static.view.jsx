@@ -7,6 +7,7 @@ import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 const returnModule = mod => mod.default;
 const Static = dynamic({
   modules: () => ({
+    moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
     moduleA: () => import('@tcp/core/src/components/common/molecules/ModuleA').then(returnModule),
     moduleB: () => import('@tcp/core/src/components/common/molecules/ModuleB').then(returnModule),
     moduleD: () => import('@tcp/core/src/components/common/molecules/ModuleD').then(returnModule),
@@ -24,7 +25,6 @@ const Static = dynamic({
     moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
-    moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
   }),
   render: (slotData, modules) => {
     const { slots } = slotData;
