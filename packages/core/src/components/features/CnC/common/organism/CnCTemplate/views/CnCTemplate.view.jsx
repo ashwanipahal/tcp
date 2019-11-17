@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import PlaceCashBanner from '@tcp/core/src/components/common/molecules/PlaceCashBanner';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -98,6 +99,7 @@ const CnCTemplate = ({
                     />
 
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
+                    <PlaceCashBanner />
                     <AirmilesBanner />
                     <CouponAndPromos
                       fullPageInfo={!isCheckoutView || orderLedgerAfterView}

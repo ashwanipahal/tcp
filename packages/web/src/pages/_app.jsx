@@ -9,6 +9,7 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import PlaceCashBanner from '@tcp/core/src/components/common/molecules/PlaceCashBanner';
 import { bootstrapData, SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import {
   createAPIConfig,
@@ -37,7 +38,6 @@ import ReactAxe from '../utils/react-axe';
 import RouteTracker from '../components/common/atoms/RouteTracker';
 import UserTimingRouteHandler from '../components/common/atoms/UserTimingRouteHandler';
 import AddedToBagContainer from '../../../core/src/components/features/CnC/AddedToBag';
-
 // constants
 import constants from '../constants';
 
@@ -297,6 +297,7 @@ class TCPWebApp extends App {
                 ? this.getSEOTags(Component.pageInfo.pageId, store, router)
                 : null}
               <Header />
+              <PlaceCashBanner />
               <CheckoutHeader />
               <Loader />
               {/* Provider for global hotfixes object */}
