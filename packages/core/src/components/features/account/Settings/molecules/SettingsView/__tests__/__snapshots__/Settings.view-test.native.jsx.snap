@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SettingsView component should render with face id 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-left-LRG margin-right-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_face_id"
+        textDecoration={null}
+      />
+      <Switch
+        onValueChange={[Function]}
+        value={false}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_push_notifications"
+        textDecoration={null}
+      />
+      <Switch
+        onValueChange={[Function]}
+        value={false}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="bold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_about"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_app_version"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`SettingsView component should render with touch id 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-left-LRG margin-right-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_touch_id"
+        textDecoration={null}
+      />
+      <Switch
+        onValueChange={[Function]}
+        value={false}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_push_notifications"
+        textDecoration={null}
+      />
+      <Switch
+        onValueChange={[Function]}
+        value={false}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="bold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_about"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_app_version"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;
+
+exports[`SettingsView component should renders correctly 1`] = `
+<Fragment>
+  <Styled(View)
+    spacingStyles="margin-left-LRG margin-right-LRG"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_push_notifications"
+        textDecoration={null}
+      />
+      <Switch
+        onValueChange={[Function]}
+        value={false}
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="bold"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_about"
+        textDecoration={null}
+      />
+      <Styled(BodyCopy)
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        margin={null}
+        numberOfLines={null}
+        text="lbl_overview_app_version"
+        textDecoration={null}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Fragment>
+`;

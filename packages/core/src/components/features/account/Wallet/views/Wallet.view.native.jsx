@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import RewardsPoints from '@tcp/core/src/components/features/account/common/organism/RewardsPoints';
-import { getLabelValue, getScreenHeight } from '@tcp/core/src/utils';
+import { getLabelValue } from '@tcp/core/src/utils';
 import WalletLayout from '../styles/Wallet.style.native';
 import MyRewards from '../../common/organism/MyRewards';
 import AccountNumber from '../../common/organism/AccountNumber';
@@ -22,9 +22,8 @@ class WalletView extends PureComponent {
       openApplyNowModal,
       ...props
     } = this.props;
-    const viewContainerStyle = { height: getScreenHeight() };
     return (
-      <View style={viewContainerStyle}>
+      <>
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <WalletLayout>
             {isUserLoggedIn ? (
@@ -56,7 +55,7 @@ class WalletView extends PureComponent {
             ) : null}
           </WalletLayout>
         </ScrollView>
-      </View>
+      </>
     );
   }
 }

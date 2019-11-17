@@ -234,20 +234,25 @@ const getLandingPage = url => {
  * @param {function} navigation
  * Returns navigation to the parsed URL based on  the url param
  */
-export const navigateToPage = (url, navigation) => {
+export const navigateToPage = (url, navigation, extraParams = {}) => {
   const { URL_PATTERN } = config;
   const { navigate } = navigation;
   const category = getLandingPage(url);
   const text = url.split('/');
   const titleSplitValue = text[text.length - 1].replace(/[\W_]+/g, ' ');
+
   switch (category) {
     case URL_PATTERN.PRODUCT_LIST:
       /**
        * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
        * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
        */
-      return navigate('ProductLanding', {
-        product: titleSplitValue,
+
+      return navigate('ProductDetail', {
+        pdpUrl: url,
+        title: titleSplitValue,
+        reset: true,
+        ...extraParams,
       });
 
     case URL_PATTERN.CATEGORY_LANDING:
@@ -258,6 +263,7 @@ export const navigateToPage = (url, navigation) => {
         url,
         title: titleSplitValue,
         reset: true,
+        ...extraParams,
       });
     default:
       return null;
