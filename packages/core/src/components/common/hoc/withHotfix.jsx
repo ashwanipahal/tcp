@@ -15,7 +15,7 @@ export function usePropsHotfix(Component, props) {
   const key = displayName(Component);
   const context = useContext(HotfixPropsContext);
   const hotfixFunction = context[key];
-
+  if (hotfixFunction instanceof Function === false) return {};
   try {
     return hotfixFunction(props);
   } catch (e) {
@@ -38,6 +38,9 @@ export function useBrowserHotfix(Component, props) {
 
   useLayoutEffect(() => {
     const element = ref.current;
+    if (!(hotfixFunction instanceof Function && element instanceof Element)) {
+      return undefined;
+    }
     try {
       return hotfixFunction(element, props);
     } catch (e) {
