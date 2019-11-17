@@ -5,6 +5,13 @@ export default css`
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   /*margin-bottom: 20px;*/
   position: relative;
+
+  * {
+    &:focus,
+    &:active {
+      outline: 0;
+    }
+  }
   .product {
     padding-top: 6px;
   }
