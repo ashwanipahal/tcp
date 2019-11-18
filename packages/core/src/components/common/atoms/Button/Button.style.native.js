@@ -5,11 +5,10 @@ import { StyledText } from '../../../../../styles/globalStyles/StyledText.style'
 import { BUTTON_VARIATION } from '.';
 
 const getAdditionalStyle = props => {
-  const { margin } = props;
+  const { margin, paddings } = props;
   return {
-    ...(margin && {
-      margin,
-    }),
+    ...(margin && { margin }),
+    ...(paddings && { padding: paddings }),
   };
 };
 
@@ -56,6 +55,7 @@ const getMobileAppFilterButtonViewStyle = props => {
           border-top-width: 0;
           border-left-width: 0;
           border-right-width: 0;
+          border-radius: 0;
           `
           : ''
       };
@@ -221,8 +221,8 @@ const style = css`
       : ''};
   ${props =>
     props.fill === 'BLUE'
-      ? ` background: ${props.theme.colorPalette.blue[700]}; border: 1px solid ${
-          props.theme.colorPalette.blue[700]
+      ? ` background: ${props.theme.colorPalette.blue.C900}; border: 1px solid ${
+          props.theme.colorPalette.blue.C900
         }; `
       : ''};
   ${props =>
@@ -277,13 +277,13 @@ const CustomStyleText = styled(StyledText)`
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   font-family: ${props => props.theme.typography.fonts.secondary};
   font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-  color: ${props => props.color || props.theme.colorPalette.gray[700]};
-  padding: 12px 20px;
+  color: ${props => props.color || props.theme.colorPalette.gray[800]};
+  padding: 11px 20px;
 
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-      padding: ${props.theme.spacing.ELEM_SPACING.SM} ${props.theme.spacing.ELEM_SPACING.XL};
+      padding: ${props.paddings};
   `
       : ''};
 
@@ -295,6 +295,7 @@ const CustomStyleText = styled(StyledText)`
     props.buttonVariation === 'cautionary'
       ? `
    color: ${props.theme.colorPalette.secondary.dark};
+   font-weight: ${props.theme.typography.fontWeights.extrabold};
    `
       : ''};
 

@@ -6,7 +6,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import Anchor from '../../../../atoms/Anchor';
 import styles from './styles/AlternateSizes.style';
+import { BodyCopy } from '../../../../atoms';
 
 // @flow
 type Props = {
@@ -23,12 +25,26 @@ export class AlternateSizes extends React.PureComponent<Props> {
     const { title, buttonsList, className } = this.props;
     return (
       <section className={`${className} alternate-sizes`}>
+        <BodyCopy
+          className="alternate-sizes-title"
+          fontSize="fs12"
+          color="gray.900"
+          fontFamily="secondary"
+        >
+          {title}
+        </BodyCopy>
         <ul className="alternate-sizes-list">
-          <li className="alternate-sizes-title">{title}</li>
           {Object.keys(buttonsList).map(item => {
             return (
               <li className="alternate-sizes-keys" key={item}>
-                <a href={buttonsList[item]}>{item}</a>
+                <Anchor
+                  asPath={`/p/${buttonsList[item]}`}
+                  to={`/p?pid==${buttonsList[item]}`}
+                  fontSizeVariation="medium"
+                  underline
+                >
+                  {item}
+                </Anchor>
               </li>
             );
           })}

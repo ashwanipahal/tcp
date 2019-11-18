@@ -17,16 +17,18 @@ export const AccountOverviewTile = ({
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="container">
-        <BodyCopy
-          component="h3"
-          fontSize="fs16"
-          fontFamily="secondary"
-          fontWeight="extrabold"
-          className="heading"
-          data-locator={`${dataLocator}_header`}
-        >
-          {title}
-        </BodyCopy>
+        {title && (
+          <BodyCopy
+            component="h3"
+            fontSize="fs16"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className="heading"
+            data-locator={`${dataLocator}_header`}
+          >
+            {title}
+          </BodyCopy>
+        )}
         <BodyCopy component="div" className="elem-pb-XL content">
           {children}
         </BodyCopy>

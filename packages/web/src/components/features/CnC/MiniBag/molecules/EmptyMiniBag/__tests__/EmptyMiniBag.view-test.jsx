@@ -33,4 +33,18 @@ describe('Empty Mini Bag Component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+
+  it('should render correctly for rememberedme user', () => {
+    const userName = 'User';
+    const isRememberedUser = true;
+    const tree = shallow(
+      <MiniBagHeaderVanilla
+        labels={labels}
+        userName={userName}
+        isRememberedUser={isRememberedUser}
+        className="className2"
+      />
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });

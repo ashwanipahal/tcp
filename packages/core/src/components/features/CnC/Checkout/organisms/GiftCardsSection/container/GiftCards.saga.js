@@ -1,5 +1,5 @@
 /* eslint-disable extra-rules/no-commented-out-code */
-import { call, takeLatest, put, select } from 'redux-saga/effects';
+import { call, takeLatest, put, select, delay } from 'redux-saga/effects';
 import GIFTCARD_CONSTANTS from '../GiftCards.constants';
 import {
   addGiftCardPaymentToOrder,
@@ -15,7 +15,10 @@ import {
   addGiftCardSuccess,
   resetAddGiftCard,
   setIsLoadingShippingMethods,
+  getSetIsBillingVisitedActn,
 } from '../../../container/Checkout.action';
+import checkoutSelectors from '../../../container/Checkout.selector';
+import BAGPAGE_CONSTANTS from '../../../../BagPage/BagPage.constants';
 
 export function* applyGiftCard(payloadData) {
   const { payload } = payloadData;
@@ -45,6 +48,8 @@ export function* applyGiftCard(payloadData) {
       [payload.creditCardId]: err,
     };
     yield put(setGiftCardError(errorObject));
+    yield delay(BAGPAGE_CONSTANTS.ITEM_SFL_SUCCESS_MSG_TIMEOUT);
+    yield put(resetGiftCardError());
   }
 }
 
@@ -53,6 +58,10 @@ export function* removeGiftCardFromOrder(payloadData) {
     const { payload } = payloadData;
     yield put(resetGiftCardError());
     const labels = yield select(BagPageSelectors.getErrorMapping);
+    const isPaymentDisabled = yield select(checkoutSelectors.getIsPaymentDisabled);
+    if (isPaymentDisabled) {
+      yield put(getSetIsBillingVisitedActn(false));
+    }
     yield call(removeGiftCard, payload, labels);
     yield put(
       BAG_PAGE_ACTIONS.getCartData({

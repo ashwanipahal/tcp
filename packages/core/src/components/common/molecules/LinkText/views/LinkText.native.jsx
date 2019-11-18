@@ -15,6 +15,8 @@ type Props = {
   useStyle: boolean,
 };
 
+const LARGE_TEXT_BLACK_STYLE = { lineHeight: 47 };
+
 export const bodyCopyStyles = {
   // small text with regular font
   style1: props => (
@@ -47,10 +49,11 @@ export const bodyCopyStyles = {
     <BodyCopy
       color="gray.900"
       fontFamily="primary"
-      fontSize="fs20"
+      fontSize="fs48"
       fontWeight="regular"
       textAlign="center"
       letterSpacing="ls2"
+      style={LARGE_TEXT_BLACK_STYLE}
       {...props}
     />
   ),
@@ -78,6 +81,30 @@ export const bodyCopyStyles = {
       />
     );
   },
+  medium_text_subpromo: props => {
+    return (
+      <BodyCopy
+        color="gray.900"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        textAlign="center"
+        {...props}
+      />
+    );
+  },
+  spaced_text_regular_black: props => {
+    return (
+      <BodyCopy
+        color="gray.900"
+        fontFamily="primary"
+        fontSize="fs20"
+        fontWeight="medium"
+        textAlign="center"
+        {...props}
+      />
+    );
+  },
 };
 
 /**
@@ -96,7 +123,7 @@ const getTextItems = (textItems, useStyle, compProps) => {
     textItems.map(({ text, style }, index) => {
       if (style && useStyle) {
         // use embedded style to render BodyCopy if useStyle is true
-        const StyleBodyCopy = style ? bodyCopyStyles[style] : {};
+        const StyleBodyCopy = style ? bodyCopyStyles[style] : () => null;
         return (
           <StyleBodyCopy
             accessibilityRole="text"

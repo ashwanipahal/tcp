@@ -5,6 +5,8 @@ import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/o
 import { isCanada } from '@tcp/core/src/utils';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { ViewWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AirmilesBanner from '../../common/organism/AirmilesBanner';
@@ -28,6 +30,8 @@ import {
   BagHeaderMain,
   FooterView,
   ContainerMain,
+  RecommendationWrapper,
+  RecommendationView,
 } from '../styles/BagPage.style.native';
 import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import InitialPropsHOC from '../../../../common/hoc/InitialPropsHOC/InitialPropsHOC.native';
@@ -42,6 +46,7 @@ const AnimatedBagHeaderMain = Animated.createAnimatedComponent(BagHeaderMain);
 export class BagPage extends React.Component {
   constructor(props) {
     super(props);
+    this.hideHeaderWhilePaypalView = this.hideHeaderWhilePaypalView.bind(this);
     this.state = {
       activeSection: null,
       showCondensedHeader: false,
@@ -74,6 +79,11 @@ export class BagPage extends React.Component {
       this.showToastMessage(bagPageServerError.errorMessage);
     }
   }
+
+  hideHeaderWhilePaypalView = hide => {
+    const { navigation } = this.props;
+    navigation.setParams({ headerMode: hide });
+  };
 
   showToastMessage = message => {
     const { toastMessage, toastMessagePositionInfo } = this.props;
@@ -221,10 +231,11 @@ export class BagPage extends React.Component {
   }
 
   renderOrderLedgerContainer = (isNoNEmptyBag, isBagStage) => {
+    const { navigation } = this.props;
     if (isNoNEmptyBag && isBagStage) {
       return (
         <RowSectionStyle>
-          <OrderLedgerContainer pageCategory="bagPage" />
+          <OrderLedgerContainer pageCategory="bagPage" navigation={navigation} />
         </RowSectionStyle>
       );
     }
@@ -266,6 +277,32 @@ export class BagPage extends React.Component {
     return <></>;
   };
 
+  renderRecommendations = () => {
+    const { navigation, labels, sflItems, orderItemsCount } = this.props;
+    const hideRec = orderItemsCount === 0 && sflItems.size > 0;
+
+    return (
+      <RecommendationView>
+        <RecommendationWrapper>
+          {!hideRec && (
+            <Recommendations
+              navigation={navigation}
+              page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+              variation="moduleO"
+            />
+          )}
+          <Recommendations
+            navigation={navigation}
+            page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+            variation="moduleO"
+            headerLabel={labels.recentlyViewed}
+            portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+          />
+        </RecommendationWrapper>
+      </RecommendationView>
+    );
+  };
+
   renderPickupModal = () => {
     const { isPickupModalOpen, navigation } = this.props;
     return <>{isPickupModalOpen ? <PickupStoreModal navigation={navigation} /> : null}</>;
@@ -273,7 +310,7 @@ export class BagPage extends React.Component {
 
   render() {
     const { labels, showAddTobag, navigation, orderItemsCount } = this.props;
-    const { handleCartCheckout, isUserLoggedIn, sflItems } = this.props;
+    const { handleCartCheckout, isUserLoggedIn, sflItems, isPayPalWebViewEnable } = this.props;
     const isNoNEmptyBag = orderItemsCount > 0;
     const { activeSection, showCondensedHeader, height } = this.state;
     if (!labels.tagLine) {
@@ -282,7 +319,6 @@ export class BagPage extends React.Component {
     const isBagStage = activeSection === BAGPAGE_CONSTANTS.BAG_STATE;
     const isSFLStage = activeSection === BAGPAGE_CONSTANTS.SFL_STATE;
     const viewHeight = showCondensedHeader ? '74%' : '65%';
-    const isBagPage = true;
     return (
       <>
         <ContainerMain>
@@ -320,7 +356,9 @@ export class BagPage extends React.Component {
             onMomentumScrollEnd={this.handleMomentumScrollEnd}
           >
             <MainSection>
-              {isBagStage && <ProductTileWrapper bagLabels={labels} navigation={navigation} />}
+              {isBagStage && (
+                <ProductTileWrapper bagLabels={labels} navigation={navigation} pageView="myBag" />
+              )}
               {isSFLStage && (
                 <ProductTileWrapper
                   bagLabels={labels}
@@ -333,19 +371,22 @@ export class BagPage extends React.Component {
               {this.renderBonusPoints(isUserLoggedIn, isNoNEmptyBag, isBagStage)}
               {this.renderAirMiles(isBagStage)}
               {this.renderCouponPromos(isNoNEmptyBag, isBagStage)}
+              {this.renderRecommendations()}
             </MainSection>
-            <QuickViewModal fromBagPage={isBagPage} />
+            <QuickViewModal navigation={navigation} />
             {this.renderPickupModal()}
           </ScrollViewWrapper>
         </ContainerMain>
         {isBagStage && (
-          <FooterView>
+          <FooterView isPayPalWebViewEnable={isPayPalWebViewEnable}>
             <AddedToBagActions
               handleCartCheckout={handleCartCheckout}
               labels={labels}
               showAddTobag={showAddTobag}
               navigation={navigation}
               isNoNEmptyBag={isNoNEmptyBag}
+              hideHeader={this.hideHeaderWhilePaypalView}
+              payPalTop={30}
             />
           </FooterView>
         )}
@@ -373,6 +414,7 @@ BagPage.propTypes = {
   bagStickyHeaderInterval: PropTypes.number.isRequired,
   toastMessagePositionInfo: PropTypes.func.isRequired,
   cartItemSflError: PropTypes.string.isRequired,
+  isPayPalWebViewEnable: PropTypes.bool.isRequired,
   isPickupModalOpen: PropTypes.bool,
   bagPageServerError: PropTypes.shape({}),
 };

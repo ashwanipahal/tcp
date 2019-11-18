@@ -14,7 +14,14 @@ const getExchangeValue = currencyExchange => {
 };
 
 const getListPricePostFix = (highListPrice, nonUSCA, currencySymbol) => {
-  return highListPrice ? ` - ${nonUSCA ? currencySymbol : ''}${highListPrice.toFixed(2)}` : '';
+  return highListPrice ? (
+    <>
+      <span> - </span>
+      <span className="post">{`${nonUSCA ? currencySymbol : ''}${highListPrice.toFixed(2)}`}</span>
+    </>
+  ) : (
+    ''
+  );
 };
 
 const getHighOfferPrice = (highOfferPrice, nonUSCA, currencySymbol) => {
@@ -76,7 +83,6 @@ class ProductPrice extends React.Component {
       className,
       currencySymbol,
       currencyExchange,
-      priceCurrency /* , isBundleProduct, isBundleList */,
       customFonts: { listPriceFont },
     } = this.props;
     const currency = currencySymbol === 'USD' ? '$' : currencySymbol;
@@ -87,9 +93,9 @@ class ProductPrice extends React.Component {
       highOfferPrice *= exchangeValue;
       highListPrice *= exchangeValue;
     }
-    const nonUSCA = priceCurrency === 'CAD' || priceCurrency === 'USD';
-    const listPricePostFix = getListPricePostFix(highListPrice, nonUSCA, currencySymbol);
-    const offerPricePostFix = getHighOfferPrice(highOfferPrice, nonUSCA, currencySymbol);
+    const nonUSCA = currencySymbol === 'CAD' || currencySymbol === 'USD';
+    const listPricePostFix = getListPricePostFix(highListPrice, nonUSCA, currency);
+    const offerPricePostFix = getHighOfferPrice(highOfferPrice, nonUSCA, currency);
     const showBothPrice =
       (offerPrice && offerPrice !== listPrice) ||
       (highOfferPrice && highOfferPrice !== highListPrice);
@@ -115,8 +121,11 @@ class ProductPrice extends React.Component {
               color="gray.800"
             >
               {/* TODO - fix it with bundle {!(isBundleProduct || isBundleList) ? 'Was' : ''}  */}
-              {currency}
-              {listPrice.toFixed(2)}
+
+              <span className="pre">
+                {currency}
+                {listPrice.toFixed(2)}
+              </span>
               {listPricePostFix}
             </BodyCopy>
             {this.getBadge(badge2)}
@@ -142,9 +151,10 @@ class ProductPrice extends React.Component {
     return (
       <BodyCopy
         className="price-item actual-price"
-        fontSize="fs13"
+        fontSize="fs16"
         fontFamily="secondary"
-        color="gray.500"
+        fontWeight="black"
+        color="red.600"
       >
         {currency}
         {listPrice.toFixed(2)}

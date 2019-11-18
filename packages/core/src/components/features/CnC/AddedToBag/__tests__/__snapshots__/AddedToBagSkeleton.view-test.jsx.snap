@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBagSkelton common component renders correctly 1`] = `
+<div
+  className="className tile-header"
+>
+  <Styled(Row)
+    className="added-to-bag-skeleton-wrapper"
+    fullBleed={true}
+  >
+    <div
+      className="price-points-wrapper"
+    >
+      <div
+        className="price-sub-text"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="price-sub-value"
+      >
+        <SkeletonLine />
+      </div>
+    </div>
+    <div
+      className="price-points-wrapper"
+    >
+      <div
+        className="points-text"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="points-value"
+      >
+        <SkeletonLine />
+      </div>
+    </div>
+    <div
+      className="sub-total-wrapper"
+    >
+      <div
+        className="price-sub-text"
+      >
+        <SkeletonLine />
+      </div>
+      <div
+        className="price-sub-value"
+      >
+        <SkeletonLine />
+      </div>
+    </div>
+  </Styled(Row)>
+</div>
+`;

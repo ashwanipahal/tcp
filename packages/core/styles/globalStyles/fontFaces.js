@@ -14,10 +14,28 @@ export default css`
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
+    font-weight: 500;
+    src: local('Montserrat Medium'), local('Montserrat-Medium'),
+      url('/static/fonts/Montserrat-500.woff2') format('woff2'),
+      url('/static/fonts/Montserrat-500.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
     font-weight: 600;
     src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
       url('/static/fonts/Montserrat-600.woff2') format('woff2'),
       url('/static/fonts/Montserrat-600.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+      url('/static/fonts/Montserrat-700.woff2') format('woff2'),
+      url('/static/fonts/Montserrat-700.woff') format('woff');
   }
 
   @font-face {
@@ -59,6 +77,15 @@ export default css`
   @font-face {
     font-family: 'Nunito';
     font-style: normal;
+    font-weight: 700;
+    src: local('Nunito Bold'), local('Nunito-Bold'),
+      url('/static/fonts/Nunito-700.woff2') format('woff2'),
+      url('/static/fonts/Nunito-700.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Nunito';
+    font-style: normal;
     font-weight: 800;
     src: local('Nunito ExtraBold'), local('Nunito-ExtraBold'),
       url('/static/fonts/Nunito-800.woff2') format('woff2'),
@@ -73,50 +100,4 @@ export default css`
       url('/static/fonts/Nunito-900.woff2') format('woff2'),
       url('/static/fonts/Nunito-900.woff') format('woff');
   }
-
-  /*
-     BELOWS ARE DEPRECATED FONT FACES AND, SHOULD BE REMOVED AFTER
-     THE NEW TYPOGRAPHY MIGRATION
-     ----------------------------
-   */
-
-  @font-face {
-    font-family: 'Nunito-SemiBold';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Nunito SemiBold'), local('Nunito-SemiBold'),
-      url('/static/fonts/Nunito-600.woff2') format('woff2'),
-      url('/static/fonts/Nunito-600.woff') format('woff');
-  }
-
-  @font-face {
-    font-family: 'Nunito-Black';
-    font-style: normal;
-    font-weight: 900;
-    src: local('Nunito Black'), local('Nunito-Black'),
-      url('/static/fonts/Nunito-900.woff2') format('woff2'),
-      url('/static/fonts/Nunito-900.woff') format('woff');
-  }
-
-  @font-face {
-    font-family: 'Montserrat-SemiBold';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
-      url('/static/fonts/Montserrat-600.woff2') format('woff2'),
-      url('/static/fonts/Montserrat-600.woff') format('woff');
-  }
-
-  @font-face {
-    font-family: 'Montserrat-Black';
-    font-style: normal;
-    font-weight: 900;
-    src: local('Montserrat Black'), local('Montserrat-Black'),
-      url('/static/fonts/Montserrat-900.woff2') format('woff2'),
-      url('/static/fonts/Montserrat-900.woff') format('woff');
-  }
-
-  /*
-    --------------------
-  */
 `;

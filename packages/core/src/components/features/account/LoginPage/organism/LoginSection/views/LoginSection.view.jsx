@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
+import { Anchor } from '@tcp/core/src/components/common/atoms';
+import LogOutPageContainer from '../../../../Logout/container/LogOut.container';
 import LoginForm from '../../../molecules/LoginForm';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginTopSection from '../../../molecules/LoginTopSection';
@@ -12,7 +14,7 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
-import { isCanada, scrollPage, scrollTopElement } from '../../../../../../../utils';
+import { isCanada, scrollPage } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -49,12 +51,32 @@ class LoginSection extends React.PureComponent<Props> {
   };
 
   showCreateAccountForm = () => {
-    const { openModal } = this.props;
-    openModal({
+    const { onClose, openOverlay, closeModal } = this.props;
+
+    openOverlay({
       component: 'createAccount',
       variation: 'primary',
     });
-    scrollTopElement('dialogContent');
+    onClose();
+    closeModal();
+  };
+
+  getSignOutSection = ({ labels, isRememberedUser, logoutlabels, userName }) => {
+    return isRememberedUser ? (
+      <BodyCopy component="div" className="elem-pb-LRG">
+        <BodyCopy fontFamily="primary" fontSize="fs14">
+          {`${getLabelValue(labels, 'lbl_login_not', 'login')} ${userName} ? `}
+          <Anchor
+            underline
+            fontSizeVariation="medium"
+            anchorVariation="primary"
+            onClick={this.showLoginForm}
+          >
+            <LogOutPageContainer labels={logoutlabels} underline />
+          </Anchor>
+        </BodyCopy>
+      </BodyCopy>
+    ) : null;
   };
 
   render() {
@@ -75,6 +97,8 @@ class LoginSection extends React.PureComponent<Props> {
       resetLoginState,
       userplccCardNumber,
       userplccCardId,
+      isLoading,
+      isRememberedUser,
     } = this.props;
     return (
       <>
@@ -82,7 +106,7 @@ class LoginSection extends React.PureComponent<Props> {
           <LoginTopSection
             variation={variation}
             labels={labels}
-            className="elem-mb-SM logintop-alignment"
+            className="elem-mb-SM elem-mt-MED"
             isCanada={this.isCanada}
             showForgotPasswordForm={this.showForgotPasswordForm}
           />
@@ -94,7 +118,7 @@ class LoginSection extends React.PureComponent<Props> {
               medium: 8,
               large: `${variation === 'checkout' ? 7 : 12}`,
             }}
-            className={`elem-pt-SM elem-pb-XXL  elem-pl-LRG elem-pr-LRG ${
+            className={`elem-pt-SM elem-pl-LRG elem-pr-LRG ${
               variation === 'checkout' ? 'checkoutForm' : 'loginForm'
             }`}
           >
@@ -107,6 +131,7 @@ class LoginSection extends React.PureComponent<Props> {
                   loginErrorMessage={loginErrorMessage}
                   initialValues={initialValues}
                   showRecaptcha={showRecaptcha}
+                  isRememberedUser={isRememberedUser}
                   showForgotPasswordForm={this.showForgotPasswordForm}
                   resetForm={resetForm}
                   className="elem-mb-LRG"
@@ -117,6 +142,7 @@ class LoginSection extends React.PureComponent<Props> {
                   resetLoginState={resetLoginState}
                   userplccCardNumber={userplccCardNumber}
                   userplccCardId={userplccCardId}
+                  isLoading={isLoading}
                 />
               </React.Fragment>
             )}
@@ -133,22 +159,27 @@ class LoginSection extends React.PureComponent<Props> {
                 queryParams={queryParams}
               />
             )}
+            {!isRememberedUser && (
+              <>
+                <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
+                  <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
+                    {getLabelValue(labels, 'lbl_login_createAccountHelp', 'login')}
+                  </BodyCopy>
+                </BodyCopy>
+                <Button
+                  className="create-acc-cta"
+                  fill="WHITE"
+                  type="submit"
+                  buttonVariation="fixed-width"
+                  data-locator=""
+                  onClick={this.showCreateAccountForm}
+                >
+                  {getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
+                </Button>
+              </>
+            )}
 
-            <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
-              <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
-                {getLabelValue(labels, 'lbl_login_createAccountHelp', 'login')}
-              </BodyCopy>
-            </BodyCopy>
-            <Button
-              className="create-acc-cta"
-              fill="WHITE"
-              type="submit"
-              buttonVariation="fixed-width"
-              data-locator=""
-              onClick={this.showCreateAccountForm}
-            >
-              {getLabelValue(labels, 'lbl_login_createAccountCTA', 'login')}
-            </Button>
+            {this.getSignOutSection(this.props)}
           </Col>
         </Row>
       </>
@@ -169,6 +200,7 @@ LoginSection.propTypes = {
   formErrorMessage: PropTypes.shape({}).isRequired,
   userplccCardNumber: PropTypes.string.isRequired,
   userplccCardId: PropTypes.string.isRequired,
+  logoutlabels: PropTypes.shape({}),
 };
 
 LoginSection.defaultProps = {
@@ -176,6 +208,9 @@ LoginSection.defaultProps = {
   showRecaptcha: false,
   openModal: () => {},
   currentForm: constants.PAGE_TYPE.LOGIN,
+  logoutlabels: {
+    CREATE_ACC_SIGN_OUT: 'Sign Out',
+  },
 };
 
 export default withStyles(LoginSection, styles);

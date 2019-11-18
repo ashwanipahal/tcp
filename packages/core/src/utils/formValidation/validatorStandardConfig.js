@@ -46,6 +46,12 @@ export const formValidationMessages = {
   userBirthYear: {
     userBirthday: 'lbl_err_userbirthdayyear_required',
   },
+  childBirthMonth: {
+    required: 'lbl_err_userbirthdaymonth_required',
+  },
+  childBirthYear: {
+    required: 'lbl_err_userbirthdayyear_required',
+  },
   state: {
     stateRequired: (linkedPropsValues, linkedFieldsValues) =>
       linkedFieldsValues[0] === 'US'
@@ -192,6 +198,7 @@ export const formValidationMessages = {
   orderDate: {
     required: 'lbl_err_order_date_required',
   },
+  promoId: 'lbl_err_airmilesaccountnumber',
 };
 
 export const formValidationRules = {
@@ -244,6 +251,12 @@ export const formValidationRules = {
     userBirthday: {
       linkedProps: ['values'],
     },
+  },
+  childBirthMonth: {
+    required: true,
+  },
+  childBirthYear: {
+    required: true,
   },
   firstName: {
     nonEmpty: true,
@@ -425,6 +438,10 @@ export const formValidationRules = {
   },
   transactionDate: {
     required: true,
+  },
+  promoId: {
+    number: true,
+    exactLength: 11,
   },
 };
 

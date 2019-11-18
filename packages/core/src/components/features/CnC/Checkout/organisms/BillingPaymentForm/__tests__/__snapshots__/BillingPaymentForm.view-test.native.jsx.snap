@@ -374,6 +374,7 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
           pointerColor="#fff"
           popover={
             <RichText
+              actionHandler={[Function]}
               domStorageEnabled={false}
               isApplyDeviceHeight={false}
               isNativeView={true}
@@ -627,12 +628,15 @@ exports[`ButtonList component renders correctly if  cards present and addNewCCSt
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -768,6 +772,7 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
           pointerColor="#fff"
           popover={
             <RichText
+              actionHandler={[Function]}
               domStorageEnabled={false}
               isApplyDeviceHeight={false}
               isNativeView={true}
@@ -1007,12 +1012,15 @@ exports[`ButtonList component renders correctly if  no cards present  1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -1064,12 +1072,15 @@ exports[`ButtonList component renders correctly if payment method is diff 1`] = 
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -1236,6 +1247,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
             customStyle={Object {}}
             fontSizeVariation="small"
             href=""
+            justifyContent=""
             locator=""
             margins={null}
             noLink={true}
@@ -1289,6 +1301,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
+                  "autoCapitalize": "sentences",
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
@@ -1348,6 +1361,7 @@ exports[`ButtonList component renders correctly without props 1`] = `
               pointerColor="#fff"
               popover={
                 <RichText
+                  actionHandler={[Function]}
                   domStorageEnabled={false}
                   isApplyDeviceHeight={false}
                   isNativeView={true}
@@ -1406,12 +1420,15 @@ exports[`ButtonList component renders correctly without props 1`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -1610,6 +1627,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
             customStyle={Object {}}
             fontSizeVariation="small"
             href=""
+            justifyContent=""
             locator=""
             margins={null}
             noLink={true}
@@ -1663,6 +1681,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "_foldedDefaultProps": Object {
                   "ariaLabel": "input",
+                  "autoCapitalize": "sentences",
                   "dataLocator": "input-field",
                   "enableSuccessCheck": false,
                   "id": "input",
@@ -1722,6 +1741,7 @@ exports[`ButtonList component renders correctly without props 2`] = `
               pointerColor="#fff"
               popover={
                 <RichText
+                  actionHandler={[Function]}
                   domStorageEnabled={false}
                   isApplyDeviceHeight={false}
                   isNativeView={true}
@@ -1780,12 +1800,15 @@ exports[`ButtonList component renders correctly without props 2`] = `
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -2743,12 +2766,15 @@ exports[`ButtonList component renders correctly without props with editmode 1`] 
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;
@@ -2758,12 +2784,15 @@ exports[`ButtonList component renders correctly without props with isPaymentDisa
   <CnCCommonTemplate
     backLinkText=""
     btnText=""
+    getPayPalSettings={Object {}}
     isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
     onBackLinkPress={[Function]}
     onPress={[Function]}
     pageCategory="billing"
     routeToPage=""
     showAccordian={true}
+    showPayPalButton={false}
   />
 </Fragment>
 `;

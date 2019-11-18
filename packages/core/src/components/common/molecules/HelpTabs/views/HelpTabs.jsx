@@ -4,14 +4,15 @@ import { BodyCopy } from '../../../atoms/index';
 import { Wrapper, StyledAnchor, StyledCol } from '../HelpTabs.style';
 
 const HelpTabs = props => {
-  const { className, tabs } = props;
+  const { className, buttonList } = props;
   return (
     <Wrapper className={className}>
-      {tabs &&
-        tabs.map(({ button }, index) => {
+      {buttonList &&
+        buttonList.map((button, index) => {
+          const { label, id } = button;
           return (
             <StyledCol key={index.toString()}>
-              <StyledAnchor url={button.url} fullWidth>
+              <StyledAnchor url={id} fullWidth>
                 <BodyCopy
                   component="div"
                   color="gray.900"
@@ -20,7 +21,7 @@ const HelpTabs = props => {
                   fontSize="fs16"
                   textAlign="center"
                 >
-                  {button.text}
+                  {label}
                 </BodyCopy>
               </StyledAnchor>
             </StyledCol>
@@ -31,7 +32,7 @@ const HelpTabs = props => {
 };
 
 HelpTabs.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  buttonList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   className: PropTypes.string,
 };
 HelpTabs.defaultProps = {

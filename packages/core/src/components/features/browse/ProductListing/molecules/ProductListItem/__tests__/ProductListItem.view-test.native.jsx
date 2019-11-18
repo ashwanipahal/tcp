@@ -20,6 +20,9 @@ describe('ProductListItem component', () => {
       productInfo: {
         name: 'tcp',
       },
+      miscInfo: {
+        isInDefaultWishlist: '',
+      },
     },
     badge1: '',
     badge2: '',

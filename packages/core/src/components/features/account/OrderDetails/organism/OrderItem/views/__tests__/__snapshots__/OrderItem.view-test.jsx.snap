@@ -85,113 +85,126 @@ exports[`Order Items component should renders correctly 1`] = `
         }
       }
     >
-      <Styled(Row)
-        fullBleed={true}
+      <Styled(BodyCopy)
+        className="item-preview-details"
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        link={null}
+        textAlign="left"
       >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 7,
-              "medium": 8,
-              "small": 4,
+        <Styled(Row)
+          fullBleed={true}
+        >
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 7,
+                "medium": 8,
+                "small": 4,
+              }
             }
-          }
+          >
+            <Styled(BodyCopy)
+              className={null}
+              color="text.primary"
+              component="div"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="left"
+            >
+              test product
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 5,
+                "medium": 0,
+                "small": 4,
+              }
+            }
+          />
+        </Styled(Row)>
+        <Styled(BodyCopy)
+          className="elem-mt-MED"
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_orderDetails_upc
+          test
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="elem-mt-XXXS"
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        >
+          lbl_orderDetails_color
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="elem-mt-XXXS"
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
         >
           <Styled(BodyCopy)
-            className={null}
+            className="elem-mr-XL"
             color="text.primary"
-            component="div"
+            component="span"
             fontFamily="secondary"
             fontSize="fs14"
-            fontWeight="extrabold"
+            fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
             link={null}
             textAlign="left"
           >
-            test product
+            lbl_orderDetails_fit
+            test
           </Styled(BodyCopy)>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 5,
-              "medium": 0,
-              "small": 4,
-            }
-          }
-        />
-      </Styled(Row)>
-      <Styled(BodyCopy)
-        className="elem-mt-MED"
-        color="text.primary"
-        component="div"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_orderDetails_upc
-        test
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mt-XXXS"
-        color="text.primary"
-        component="div"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        lbl_orderDetails_color
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="elem-mt-XXXS"
-        color="text.primary"
-        component="div"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        <Styled(BodyCopy)
-          className="elem-mr-XL"
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          lbl_orderDetails_fit
-          test
-        </Styled(BodyCopy)>
-        <Styled(BodyCopy)
-          className={null}
-          color="text.primary"
-          component="span"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        >
-          lbl_orderDetails_size
-          test
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="left"
+          >
+            lbl_orderDetails_size
+            test
+          </Styled(BodyCopy)>
         </Styled(BodyCopy)>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)

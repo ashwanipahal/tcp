@@ -102,7 +102,7 @@ export default css`
 
   .image-item-wrapper {
     margin-top: 15px;
-    @media ${props => props.theme.mediaQuery.large} {
+    @media ${props => props.theme.mediaQuery.medium} {
       margin-top: 29px;
     }
     @media ${props => props.theme.mediaQuery.large} {

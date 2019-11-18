@@ -27,8 +27,8 @@ class CustomSelect extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    const { activeValue } = this.props;
-    if (prevProps.activeValue !== activeValue) {
+    const { activeValue, activeTitle } = this.props;
+    if (prevProps.activeValue !== activeValue || prevProps.activeTitle !== activeTitle) {
       this.updateState();
     }
   }

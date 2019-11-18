@@ -112,6 +112,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         closeIconLeftAligned={false}
         horizontalBar={false}
         headerStyle={FullHeaderStyle}
+        headingFontFamily="secondary"
       >
         <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <StyledModalWrapper>
@@ -121,6 +122,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
               fontFamily="primary"
               fontWeight="black"
               text={coupon.title}
+              textAlign="center"
             />
             {!isConfirmation && (
               <ViewWithSpacing spacingStyles="margin-top-SM">
@@ -164,7 +166,8 @@ class CouponDetailModal extends React.PureComponent<Props> {
               <ViewWithSpacing spacingStyles="margin-bottom-LRG">
                 <CustomButton
                   text={addToBagCTALabel}
-                  buttonVariation="fixed-width"
+                  buttonVariation="variable-width"
+                  width={225}
                   disabled={isApplyButtonDisabled}
                   data-locator={`couponDetailModal_${coupon.status}_AddToBagBtn`}
                   fill="BLUE"
@@ -193,7 +196,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
                 <BodyCopy
                   data-locator={`couponDetailModal_${coupon.status}_ShortDesc`}
                   fontSize="fs12"
-                  fontFamily="primary"
+                  fontFamily="secondary"
                   fontWeight="regular"
                   text={getLabelValue(labels, 'MODAL_SHORT_DESCRIPTION')}
                 />
@@ -212,7 +215,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
                 <BodyCopy
                   data-locator={`couponDetailModal_${coupon.status}_and`}
                   fontSize="fs12"
-                  fontFamily="primary"
+                  fontFamily="secondary"
                   fontWeight="regular"
                   text=" and "
                 />

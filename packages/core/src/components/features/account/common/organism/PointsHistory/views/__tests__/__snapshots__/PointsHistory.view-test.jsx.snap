@@ -11,7 +11,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 2,
           "small": 2,
         }
@@ -36,8 +36,8 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
+          "large": 4,
+          "medium": 3,
           "small": 2,
         }
       }
@@ -91,14 +91,14 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 2,
           "small": 2,
         }
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="text-break"
         color="text.primary"
         component="p"
         data-locator="pointshistoryorderdate"
@@ -116,14 +116,14 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 2,
+          "large": 4,
+          "medium": 3,
           "small": 2,
         }
       }
     >
       <Styled(BodyCopy)
-        className="elem-pr-XXS"
+        className="elem-pr-XXS text-break"
         color="text.primary"
         component="p"
         data-locator="pointshistorytransctionmsg"
@@ -148,7 +148,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
       }
     >
       <Styled(BodyCopy)
-        className={null}
+        className="text-break"
         color="text.primary"
         component="p"
         data-locator="pointshistorypoints"
