@@ -8,6 +8,7 @@ const initialState = fromJS({
   errors: false,
   loaded: false,
   bagLoading: false,
+  isRouting: false,
   openItemDeleteConfirmationModalInfo: { showModal: false },
   currentItemId: null,
   moduleXContent: [],
@@ -79,6 +80,8 @@ const returnBagPageReducerExtension = (state = initialState, action) => {
       return state.set('bagLoading', true);
     case BAGPAGE_CONSTANTS.RESET_BAG_LOADED_STATE:
       return state.set('loaded', false);
+    case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ROUTING:
+      return state.set('isRouting', action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
