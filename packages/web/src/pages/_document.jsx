@@ -54,7 +54,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
-          <link rel="icon" href="/static/images/favicon.png" />
+          <link rel="icon" href={process.env.RWD_WEB_FAVICON_URL} />
           <link href="/static/app.css" rel="stylesheet" />
           {process.env.RWD_WEB_CSS_OVERRIDE_URL && <CSSOverride />}
           {/* Empty global object definition for external hotfix sources to append */}
