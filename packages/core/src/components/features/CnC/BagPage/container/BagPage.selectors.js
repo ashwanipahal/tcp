@@ -241,6 +241,11 @@ const getIsPayPalHidden = state => {
 const isBagLoading = state => {
   return state.CartPageReducer.getIn(['bagLoading']);
 };
+
+const isBagRouting = state => {
+  return state.CartPageReducer.get('isRouting');
+};
+
 const getCartLoadedState = state => {
   return state.CartPageReducer.get('loaded');
 };
@@ -277,4 +282,5 @@ export default {
   getIsPayPalHidden,
   isBagLoading,
   getCartLoadedState,
+  isBagRouting,
 };
