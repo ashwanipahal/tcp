@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import style from '../AccordionModule.style';
-import { Row, Col, RichText } from '../../../atoms';
+import { Row, Col } from '../../../atoms';
 import AccordionList from '../../AccordionList';
+import ModuleX from '../../ModuleX';
 
 /**
  * To render the Accordian Module and will be configured from CMS
@@ -41,7 +42,7 @@ const AccordionModule = props => {
             if (!(richText && richText.text)) {
               return null;
             }
-            return <RichText richTextHtml={richText.text} />;
+            return <ModuleX richTextList={[richText]} />;
           })}
         </AccordionList>
       </Col>

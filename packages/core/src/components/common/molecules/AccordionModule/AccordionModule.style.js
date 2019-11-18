@@ -23,6 +23,12 @@ const style = css`
       &.inactive {
         background: ${props => props.theme.colors.BUTTON.WHITE.NORMAL};
       }
+      &.active::after {
+        right: 0;
+      }
+      &.inactive::after {
+        right: 0;
+      }
       background: ${props => props.theme.colors.BUTTON.WHITE.NORMAL};
     }
   }
