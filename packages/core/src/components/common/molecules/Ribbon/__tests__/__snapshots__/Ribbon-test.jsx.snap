@@ -57,8 +57,8 @@ exports[`RibbonComponent should match snapshot 1`] = `
             "ribbonPlacement": "left",
             "textItems": Array [
               Object {
-                "style": "style1",
-                "text": "20% OFF",
+                "style": "style10",
+                "text": "20% OF",
               },
             ],
           },
