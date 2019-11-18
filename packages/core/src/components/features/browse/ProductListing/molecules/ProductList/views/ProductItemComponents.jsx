@@ -217,7 +217,7 @@ export function PromotionalMessage(props) {
 const renderWishListItem = (item, labels) => (
   <div className="wish-list-item-section">
     <p className="wish-list-name">
-      <span>
+      <span className={`${item.isDefault ? 'default-list' : ''}`}>
         {item.isDefault && (
           <Image
             src={getIconPath('selected-item-check-no-circle')}
@@ -228,11 +228,15 @@ const renderWishListItem = (item, labels) => (
           />
         )}
       </span>
-      <span>{item.displayName}</span>
+      <span className={`${item.isDefault ? 'default-list-item' : ''}`}>{item.displayName}</span>
     </p>
     <p className="wish-list-count-section">
-      <span className="wish-list-count">{item.itemsCount}</span>
-      <span>{labels.lbl_fav_items}</span>
+      <span
+        className={`${item.isDefault ? 'default-list-count wish-list-count' : 'wish-list-count'}`}
+      >
+        {item.itemsCount}
+      </span>
+      <span>{` ${labels.lbl_fav_items}`}</span>
     </p>
   </div>
 );
@@ -244,6 +248,7 @@ export const CreateWishList = props => {
     createNewWishList,
     createNewWishListMoveItem,
     itemId,
+    getActiveWishlist,
   } = props;
   return (
     <div className="create-wish-list-section">
@@ -259,7 +264,12 @@ export const CreateWishList = props => {
                 {renderWishListItem(item, labels)}
               </Button>
             ) : (
-              renderWishListItem(item, labels)
+              <Button
+                onClick={() => getActiveWishlist(item.id)}
+                className="wish-list-change-item__button"
+              >
+                {renderWishListItem(item, labels)}
+              </Button>
             )}
           </li>
         ))}
@@ -368,6 +378,11 @@ CreateWishList.propTypes = {
   createNewWishList: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   itemId: PropTypes.string.isRequired,
+  getActiveWishlist: PropTypes.func,
+};
+
+CreateWishList.defaultProps = {
+  getActiveWishlist: () => {},
 };
 
 PromotionalMessage.propTypes = {

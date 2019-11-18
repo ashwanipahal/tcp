@@ -62,6 +62,8 @@ export const fetchAddToFavoriteErrorMsg = state => {
 
 export const getLabelsFavorites = state => state.Labels.Browse && state.Labels.Browse.Favorites;
 
+export const getSLPLabels = state => state.Labels.Browse && state.Labels.Browse.SLP;
+
 export default fetchCurrencySymbol;
 
 export const getIsDataLoading = state => {

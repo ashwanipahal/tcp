@@ -23,6 +23,7 @@ import {
   selectTotalProductsCount,
   fetchCurrencySymbol,
   getLabelsFavorites,
+  getSLPLabels,
   getIsDataLoading,
 } from './Favorites.selectors';
 
@@ -98,6 +99,7 @@ class FavoritesContainer extends React.PureComponent {
       activeDisplayName,
       currencySymbol,
       labels,
+      slpLabels,
       navigation,
       onQuickViewOpenClick,
       totalProductsCount,
@@ -121,6 +123,7 @@ class FavoritesContainer extends React.PureComponent {
         activeDisplayName={activeDisplayName}
         currencySymbol={currencySymbol}
         labels={labels}
+        slpLabels={slpLabels}
         onQuickViewOpenClick={isMobileApp() ? onQuickViewOpenClick : this.openQuickViewModal}
         selectedColorProductId={selectedColorProductId}
         navigation={navigation}
@@ -146,6 +149,7 @@ const mapStateToProps = state => {
     activeDisplayName: selectActiveDisplayName(state),
     currencySymbol: fetchCurrencySymbol(state),
     labels: getLabelsFavorites(state),
+    slpLabels: getSLPLabels(state),
     totalProductsCount: selectTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
@@ -185,6 +189,7 @@ FavoritesContainer.propTypes = {
   onQuickViewOpenClick: PropTypes.func.isRequired,
   currencySymbol: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  slpLabels: PropTypes.shape({}),
   navigation: PropTypes.shape({}).isRequired,
   totalProductsCount: PropTypes.string,
   isDataLoading: PropTypes.bool,
@@ -196,6 +201,7 @@ FavoritesContainer.defaultProps = {
   activeWishList: {},
   currencySymbol: '$',
   labels: {},
+  slpLabels: {},
   totalProductsCount: '0',
   isDataLoading: false,
   labelsPlpTiles: {},
