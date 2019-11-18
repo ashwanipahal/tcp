@@ -86,6 +86,25 @@ class ProductDetailContainer extends React.PureComponent {
     // TODO - fix this to extract the product ID from the page.
     const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
     await getDetails({ productColorId: productId });
+
+    // Build a page name for tracking
+    let pageName = '';
+    if (productId) {
+      const productIdParts = productId.split('_');
+      pageName = `product:${productIdParts[0]}:${pid
+        .replace(productIdParts[0], '')
+        .replace(productIdParts[1], '')
+        .split('-')
+        .join(' ')
+        .trim()
+        .toLowerCase()}`;
+    }
+
+    return {
+      pageProps: {
+        pageName,
+      },
+    };
   };
 
   componentDidMount() {

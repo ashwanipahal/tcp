@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCouponList } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import {
   getAllRewardsCoupons,
   getCouponFetchingState,
@@ -11,15 +10,6 @@ import { getBrierleySwitch } from './MyPlaceRewardsOverviewTile.selectors';
 import MyPlaceRewardsOverviewTileSkelton from '../skelton/MyPlaceRewardsOverviewTileSkelton.view';
 
 export class MyPlaceRewardsOverviewTile extends PureComponent {
-  static propTypes = {
-    fetchCoupons: PropTypes.func.isRequired,
-  };
-
-  componentDidMount() {
-    const { fetchCoupons } = this.props;
-    fetchCoupons();
-  }
-
   render() {
     const { isFetching } = this.props;
     if (isFetching) {
@@ -43,13 +33,7 @@ const mapStateToProps = state => ({
   isFetching: getCouponFetchingState(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchCoupons: () => {
-    dispatch(getCouponList());
-  },
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(MyPlaceRewardsOverviewTile);
