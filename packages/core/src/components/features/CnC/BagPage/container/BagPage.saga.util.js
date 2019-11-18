@@ -1,6 +1,5 @@
 import { call, put, select, delay } from 'redux-saga/effects';
 import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
-import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.actions';
 import { isRemembered } from '../../Checkout/container/Checkout.selector';
 import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
@@ -11,7 +10,7 @@ import { getServerErrorMessage } from '../../../../../services/abstractors/CnC';
 import { addItemToSflList } from '../../../../../services/abstractors/CnC/SaveForLater';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
 
-export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
+export default function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
   yield put(setLoaderState(true));
   const isRememberedUser = yield select(isRemembered);
   const isRegistered = yield select(getUserLoggedInState);
@@ -43,34 +42,5 @@ export function* startSflItemDelete({ payload: { catEntryId } = {} } = {}) {
     yield put(setLoaderState(false));
     const errorsMapping = yield select(BAG_SELECTORS.getErrorMapping);
     yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(getServerErrorMessage(err, errorsMapping)));
-  }
-}
-
-export function* startSflItemMoveToBag({ payload }) {
-  try {
-    yield put(setLoaderState(true));
-    const { itemId } = payload;
-    const addToCartData = {
-      skuInfo: {
-        skuId: itemId,
-      },
-      quantity: 1,
-      fromMoveToBag: true,
-    };
-    yield put(addToCartEcom(addToCartData));
-    yield put(
-      BAG_PAGE_ACTIONS.getCartData({
-        isRecalculateTaxes: true,
-        recalcRewards: true,
-        translation: true,
-        excludeCartItems: false,
-      })
-    );
-    // yield put(BAG_PAGE_ACTIONS.getOrderDetails());
-    yield put(BAG_PAGE_ACTIONS.startSflItemDelete(payload));
-    yield put(setLoaderState(false));
-  } catch (err) {
-    yield put(setLoaderState(false));
-    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }
