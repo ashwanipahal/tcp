@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
+import { CONTROLS_VISIBLE, PAGE_NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import PromoModules from '../../../../common/organisms/PromoModules';
 
 // Changes as per RWD-9852. Keeping this for future reference.
@@ -79,6 +81,8 @@ const ProductListView = ({
               navigationTree={navTree}
               activeCategoryIds={currentNavIds}
             />
+            {/* UX timer */}
+            <RenderPerf.Measure name={PAGE_NAVIGATION_VISIBLE} />
           </div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 10 }}>
@@ -112,6 +116,8 @@ const ProductListView = ({
                 slpLabels={slpLabels}
                 isFilterBy={isFilterBy}
               />
+              {/* UX timer */}
+              <RenderPerf.Measure name={CONTROLS_VISIBLE} />
             </div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }} className="show-count-section">
