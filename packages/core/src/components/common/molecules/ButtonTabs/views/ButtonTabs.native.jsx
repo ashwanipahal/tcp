@@ -5,9 +5,9 @@ import getActiveStatus from '../utils';
 import { Wrapper, Button, ButtonWrapper } from '../ButtonTabs.style.native';
 
 function ButtonTabs(props) {
-  const { tabs, selectedTabId, onTabChange } = props;
+  const { tabs, selectedTabId, onTabChange, isDivisionTabModule } = props;
   return (
-    <Wrapper>
+    <Wrapper isDivisionTabModule={isDivisionTabModule}>
       {tabs.map(({ label, id }, index) => (
         <ButtonWrapper key={id} noRightBorder={index === tabs.length - 1}>
           <Button
@@ -26,6 +26,7 @@ ButtonTabs.defaultProps = {
   tabs: [],
   selectedTabId: '',
   onTabChange: () => {},
+  isDivisionTabModule: false,
 };
 
 ButtonTabs.propTypes = {
@@ -36,6 +37,7 @@ ButtonTabs.propTypes = {
     })
   ),
   onTabChange: PropTypes.func,
+  isDivisionTabModule: PropTypes.bool,
 };
 
 export default ButtonTabs;

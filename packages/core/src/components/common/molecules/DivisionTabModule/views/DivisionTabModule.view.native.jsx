@@ -56,7 +56,7 @@ export class DivisionTabModule extends PureComponent {
         </Container>
         <ButtonTabWrapper>
           <ButtonTabs
-            className="button-tabs"
+            isDivisionTabModule
             selectedTabId={pathWithoutSiteId}
             onTabChange={url => onTabChange(url, navigation)}
             tabs={data.buttonList}
