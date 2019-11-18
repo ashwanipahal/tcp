@@ -1068,9 +1068,9 @@ export const orderStatusMapperForNotification = {
   [constants.STATUS_CONSTANTS.LBL_NA]: constants.STATUS_CONSTANTS.NA,
   /* Status added for BOSS */
   [constants.STATUS_CONSTANTS.EXPIRED_AND_REFUNDED]: 'lbl_global_yourOrderHasBeenExpiredRefunded',
-  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_global_yourOrderWasCanceled',
+  [constants.STATUS_CONSTANTS.ORDER_CANCELLED]: 'lbl_orders_statusOrderCancelled',
   [constants.STATUS_CONSTANTS.LBL_CallNeeded]: 'lbl_orders_statusOrderReceived',
-  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_global_yourOrderWasPickedUp',
+  [constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP]: 'lbl_orders_statusItemsPickedUp',
   [constants.STATUS_CONSTANTS.ORDER_IN_PROCESS]: 'lbl_orders_statusOrderReceived',
 };
 

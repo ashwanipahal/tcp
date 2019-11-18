@@ -62,3 +62,10 @@ export const resetSlpProducts = payload => {
     payload,
   };
 };
+
+export const setAddToFavoriteSLP = payload => {
+  return {
+    type: SLP_CONSTANTS.SET_ADD_TO_FAVORITE,
+    payload,
+  };
+};

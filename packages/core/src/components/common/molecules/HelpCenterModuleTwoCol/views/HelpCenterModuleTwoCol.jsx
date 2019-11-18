@@ -10,9 +10,9 @@ import style from '../styles/HelpCenterModuleTwoCol.style';
 const returnModule = mod => mod.default;
 const DynamicColumns = dynamic({
   modules: () => ({
-    navigationModule: () =>
-      import('@tcp/core/src/components/common/molecules/LeftNavigation').then(returnModule),
-    helpCenterTabs: () =>
+    placeholder: () =>
+      import('@tcp/core/src/components/common/molecules/Placeholder').then(returnModule),
+    divisionTabs: () =>
       import('@tcp/core/src/components/common/molecules/HelpTabs').then(returnModule),
   }),
   render: (properties, modules) => {
@@ -22,13 +22,17 @@ const DynamicColumns = dynamic({
       slots &&
       slots
         .filter(
-          slot => slot && (slot.module === 'navigationModule' || slot.module === 'helpCenterTabs')
+          slot => slot && (slot.moduleName === 'placeholder' || slot.moduleName === 'divisionTabs')
         )
         .map((slotData, index) => {
-          const Module = modules[slotData.module];
+          const Module = modules[slotData.moduleName];
           return (
             <Col
-              colSize={{ small: 6, medium: 8, large: index === 0 ? 2 : 9 }}
+              colSize={{
+                small: 6,
+                medium: 8,
+                large: index === 1 ? 9 : 2,
+              }}
               offsetRight={index === 1 ? { large: 1, small: 0, medium: 0 } : {}}
             >
               <Module halfWidth {...slotData} {...others} />

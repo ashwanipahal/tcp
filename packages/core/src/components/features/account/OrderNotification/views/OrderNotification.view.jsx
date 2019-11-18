@@ -12,6 +12,7 @@ import styles from '../styles/OrderNotification.style';
  * can be passed in the component.
  */
 const OrderNotification = ({ className, labels, order }) => {
+  const orderStatus = order ? getOrderStatusForNotification(order.orderStatus) : '';
   return (
     <>
       {order && (
@@ -20,15 +21,19 @@ const OrderNotification = ({ className, labels, order }) => {
             component="div"
             className="elem-ml-MED elem-mr-MED elem-pt-LRG elem-pb-LRG separator-line"
           >
-            <BodyCopy color="white" fontSize="fs18" fontWeight="extrabold" fontFamily="secondary">
-              {getLabelValue(
-                labels,
-                getOrderStatusForNotification(order.orderStatus),
-                'OrderNotification'
-              )}
-            </BodyCopy>
+            {orderStatus && (
+              <BodyCopy
+                className="elem-mb-SM"
+                color="white"
+                fontSize="fs18"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+              >
+                {getLabelValue(labels, orderStatus, 'OrderNotification')}
+              </BodyCopy>
+            )}
 
-            <BodyCopy component="div" className="elem-mt-SM">
+            <BodyCopy component="div">
               <BodyCopy component="span" color="white" fontSize="fs12" fontFamily="secondary">
                 {getLabelValue(labels, 'lbl_global_order', 'OrderNotification')}
               </BodyCopy>

@@ -118,6 +118,7 @@ const style = css`
     color: ${props =>
       props.isUserPlcc ? props.theme.colorPalette.blue[500] : props.theme.colorPalette.orange[800]};
   }
+
   .usericon {
     cursor: pointer;
     display: inline-flex;

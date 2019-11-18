@@ -72,7 +72,7 @@ const CheckoutHeader = ({
             large: 4,
           }}
         >
-          {!bagLoading && itemsCount > 0 ? (
+          {!bagLoading ? (
             <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
               <Anchor
                 fontSizeVariation="medium"

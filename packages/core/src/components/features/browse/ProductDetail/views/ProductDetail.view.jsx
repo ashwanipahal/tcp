@@ -18,7 +18,6 @@ import { routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import ProductPrice from '../molecules/ProductPrice/ProductPrice';
-
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import {
   getImagesToDisplay,
@@ -97,7 +96,6 @@ class ProductDetailView extends PureComponent {
     const { currentGiftCardValue, currentColorEntry } = this.state;
     const selectedColorProductId = currentColorEntry && currentColorEntry.colorProductId;
     const { isGiftCard } = productInfo;
-    console.log('<Product', keepAlive);
     return (
       <div className="product-summary-wrapper">
         <Product
@@ -111,6 +109,7 @@ class ProductDetailView extends PureComponent {
           isLoggedIn={isLoggedIn}
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
+          className="hide-on-mobile"
         />
         {isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -204,7 +203,13 @@ class ProductDetailView extends PureComponent {
       addToBagError,
       alternateSizes,
       isKeepAliveEnabled,
+      currency,
+      currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
     } = this.props;
+
     const { currentProduct } = productDetails;
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
@@ -253,6 +258,17 @@ class ProductDetailView extends PureComponent {
             ) : null}
           </Col>
           <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
+            <Product
+              {...otherProps}
+              isGiftCard={isGiftCard}
+              productDetails={productDetails}
+              currencySymbol={currency}
+              selectedColorProductId={selectedColorProductId}
+              currencyExchange={currencyExchange}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              reviewOnTop
+            />
             <ProductImagesWrapper
               productName={productInfo.name}
               isGiftCard={isGiftCard}
@@ -397,7 +413,7 @@ ProductDetailView.propTypes = {
   }),
   outOfStockLabels: PropTypes.shape({
     outOfStockCaps: PropTypes.string,
-  }),
+  }).isRequired,
   isKeepAliveEnabled: PropTypes.bool,
 };
 
@@ -418,9 +434,6 @@ ProductDetailView.defaultProps = {
   currencyExchange: 1,
   isLoggedIn: false,
   alternateSizes: {},
-  outOfStockLabels: {
-    outOfStockCaps: '',
-  },
   isKeepAliveEnabled: false,
 };
 

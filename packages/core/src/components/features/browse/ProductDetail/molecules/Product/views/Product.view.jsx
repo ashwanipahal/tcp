@@ -31,6 +31,7 @@ const Product = props => {
     isBundleProduct,
     keepAlive,
     outOfStockLabels,
+    reviewOnTop,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -62,44 +63,48 @@ const Product = props => {
   }
 
   return (
-    <div>
-      <ProductBasicInfo
-        keepAlive={keepAlive}
-        outOfStockLabels={outOfStockLabels}
-        badge={badge1}
-        isGiftCard={isGiftCard}
-        productInfo={productInfo}
-        isShowFavoriteCount
-        currencySymbol={currencySymbol}
-        priceCurrency={priceCurrency}
-        currencyExchange={currencyExchange}
-        isRatingsVisible
-        isCanada={isCanada}
-        isPlcc={isHasPlcc}
-        isBundleProduct={isBundleProduct}
-        isInternationalShipping={isInternationalShipping}
-        onAddItemToFavorites={onAddItemToFavorites}
-        isLoggedIn={isLoggedIn}
-      />
-      {!isGiftCard ? (
-        <>
-          <ProductPrice
-            currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
-            currencyExchange={currencyExchange}
-            isItemPartNumberVisible={false}
-            itemPartNumber={colorProduct.colorDisplayId}
-            {...prices}
-            promotionalMessage={promotionalMessage}
-            isCanada={isCanada}
-            promotionalPLCCMessage={promotionalPLCCMessage}
-            isPlcc={isHasPlcc}
-            isInternationalShipping={isInternationalShipping}
-          />
-          <RenderPerf.Measure name={PRICING_VISIBLE} />
-        </>
-      ) : null}
-    </div>
+    <>
+      <div className={!reviewOnTop ? 'hide-on-mobile hide-on-desktop' : 'hide-on-desktop'}>
+        <ProductBasicInfo
+          keepAlive={keepAlive}
+          outOfStockLabels={outOfStockLabels}
+          badge={badge1}
+          isGiftCard={isGiftCard}
+          productInfo={productInfo}
+          isShowFavoriteCount
+          currencySymbol={currencySymbol}
+          priceCurrency={priceCurrency}
+          currencyExchange={currencyExchange}
+          isRatingsVisible
+          isCanada={isCanada}
+          isPlcc={isHasPlcc}
+          isBundleProduct={isBundleProduct}
+          isInternationalShipping={isInternationalShipping}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+        />
+      </div>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+        {!isGiftCard ? (
+          <>
+            <ProductPrice
+              currencySymbol={currencySymbol}
+              priceCurrency={priceCurrency}
+              currencyExchange={currencyExchange}
+              isItemPartNumberVisible={false}
+              itemPartNumber={colorProduct.colorDisplayId}
+              {...prices}
+              promotionalMessage={promotionalMessage}
+              isCanada={isCanada}
+              promotionalPLCCMessage={promotionalPLCCMessage}
+              isPlcc={isHasPlcc}
+              isInternationalShipping={isInternationalShipping}
+            />
+            <RenderPerf.Measure name={PRICING_VISIBLE} />
+          </>
+        ) : null}
+      </div>
+    </>
   );
 };
 
@@ -126,6 +131,7 @@ Product.propTypes = {
   outOfStockLabels: PropTypes.shape({
     itemSoldOutMessage: PropTypes.string,
   }),
+  reviewOnTop: PropTypes.bool.isRequired,
 };
 
 Product.defaultProps = {

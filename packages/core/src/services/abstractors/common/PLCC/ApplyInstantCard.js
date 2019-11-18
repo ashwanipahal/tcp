@@ -70,7 +70,10 @@ const applyInstantCard = (args, errorsMapping, preScreenCode, isExpressCheckout,
     header: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    webService: isRTPSFlow ? endpoints.prescreenApplication : endpoints.instantCreditApplication,
+    webService:
+      isRTPSFlow || args.preScreenCode
+        ? endpoints.prescreenApplication
+        : endpoints.instantCreditApplication,
     body: {
       firstName: args.firstName,
       lastName: args.lastName,
@@ -83,7 +86,7 @@ const applyInstantCard = (args, errorsMapping, preScreenCode, isExpressCheckout,
       emailAddress: args.emailAddress,
       country: getSiteId(),
       ssn: args.ssNumber,
-      prescreenId: preScreenCode,
+      prescreenId: args.preScreenCode,
       mobilePhoneNumber: args.phoneNumberWithAlt,
       phoneNumber: args.altPhoneNumber,
       birthdayDate: `${args.month}${args.date}${args.year}`,

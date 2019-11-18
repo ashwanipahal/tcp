@@ -53,6 +53,7 @@ class ProductsGridItem extends React.PureComponent {
       pdpUrl: props.item.productInfo.pdpUrl,
       isAltImgRequested: false,
       isMoveItemOpen: false,
+      generalProductId: '',
     };
     const {
       onQuickViewOpenClick,
@@ -64,6 +65,21 @@ class ProductsGridItem extends React.PureComponent {
     this.handleOpenQuickViewClick = () =>
       onQuickViewOpenClick(generalProductId, selectedColorProductId, generalProductId);
     this.handleImageChange = index => this.setState({ currentImageIndex: index });
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing, getProducts, asPathVal } = nextProps;
+    const { generalProductId } = prevState;
+
+    if (isLoggedIn && generalProductId !== '') {
+      getProducts({ URI: 'category', url: asPathVal, ignoreCache: true });
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
+      return { generalProductId: '' };
+    }
+    return null;
   }
 
   componentDidMount() {
@@ -143,14 +159,20 @@ class ProductsGridItem extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       removeFavItem,
+      isSearchListing,
     } = this.props;
     const { selectedColorProductId } = this.state;
     if (removeFavItem) {
       removeFavItem({ itemId });
     } else {
-      onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
+      onAddItemToFavorites({
+        colorProductId: selectedColorProductId || generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
       if (isClient() && isLoggedIn) {
         this.setState({ isInDefaultWishlist: true });
+      } else {
+        this.setState({ generalProductId: selectedColorProductId || generalProductId });
       }
     }
   };
@@ -417,6 +439,7 @@ class ProductsGridItem extends React.PureComponent {
         quantityPurchased,
         colorsMap,
         imagesByColor,
+        miscInfo: { isInDefaultWishlist },
       },
       // isGridView,
       // isProductsGridCTAView,
@@ -439,6 +462,7 @@ class ProductsGridItem extends React.PureComponent {
       outOfStockLabels,
       isKeepAliveEnabled,
     } = this.props;
+
     logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
@@ -447,7 +471,6 @@ class ProductsGridItem extends React.PureComponent {
       // error,
       currentImageIndex,
       pdpUrl,
-      isInDefaultWishlist,
     } = this.state;
 
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
