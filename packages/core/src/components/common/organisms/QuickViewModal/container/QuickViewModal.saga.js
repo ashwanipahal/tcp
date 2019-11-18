@@ -31,7 +31,13 @@ function* fetchProductDetail({ payload }) {
     });
     const productDetailArray = yield all(fetchDetailArray);
     yield put(setQuickView(productDetailArray));
-    yield put(setItemFromBagInfoForQuickView({ orderInfo, fromBagPage: !!payload.fromBagPage }));
+    yield put(
+      setItemFromBagInfoForQuickView({
+        orderInfo,
+        fromBagPage: !!payload.fromBagPage,
+        isSflProduct: payload.isSflProduct,
+      })
+    );
 
     if (!isMobileApp()) {
       yield put(setLoadingState({ isLoading: false }));

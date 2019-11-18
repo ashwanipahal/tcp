@@ -7,6 +7,8 @@ import TrackOrderContainer from '@tcp/core/src/components/features/account/Track
 import OrderDetail from '@tcp/core/src/components/features/account/OrderDetails';
 import Settings from '@tcp/core/src/components/features/account/Settings';
 import PurchaseGiftsCard from '@tcp/core/src/components/features/account/PurchaseGiftsCard';
+import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
+import StoreDetails from '@tcp/core/src/components/features/storeLocator/StoreDetail';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Account from '../components/features/account/account';
@@ -27,6 +29,24 @@ const getNewHeader = navigation => {
       ) : null,
     headerBackground: 'transparent',
   };
+};
+
+const getDefaultHeaderForStore = (navigation, navTitle) => {
+  const title = navTitle || (navigation && navigation.getParam('title'));
+  return {
+    header: props => (
+      <SafeAreaView style={headerStyle} forceInset={{ top: 'always', bottom: 'never' }}>
+        <Header {...props} title={title} navigation={navigation} headertype="store" />
+      </SafeAreaView>
+    ),
+    headerBackground: 'transparent',
+  };
+};
+
+const storeLocatorNavigationOptions = ({ navigation }) => {
+  const title = navigation && navigation.getParam('title');
+  const navTitle = (title && `${title.toUpperCase()}`) || '';
+  return getDefaultHeaderForStore(navigation, navTitle);
 };
 
 const AccountStack = createStackNavigator(
@@ -93,6 +113,16 @@ const AccountStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return getNewHeader(navigation);
       },
+    },
+    StoreDetails: {
+      screen: StoreDetails,
+      path: 'store-details/:storeId',
+      navigationOptions: storeLocatorNavigationOptions,
+    },
+    StoreLanding: {
+      screen: StoreLanding,
+      path: 'store-landing',
+      navigationOptions: storeLocatorNavigationOptions,
     },
   },
   {

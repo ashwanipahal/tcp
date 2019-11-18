@@ -20,6 +20,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
 import DeleteAddressModal from '../../DeleteAddressModal.view';
 import ADDRESS_BOOK_CONSTANTS from '../../../AddressBook.constants';
+import AddressListComponentSkeleton from '../../../skeleton/AddressListComponentSkeleton.view.native';
 
 export class AddressView extends React.Component {
   constructor(props) {
@@ -91,11 +92,40 @@ export class AddressView extends React.Component {
     this.setState({ modalHeading: label });
   };
 
-  render() {
+  /**
+   * render Address list
+   */
+
+  renderAddressList = () => {
     const {
       addresses,
       labels,
       onDefaultShippingAddressClick,
+      setDeleteModalMountState,
+      isFetching,
+    } = this.props;
+
+    if (isFetching) {
+      return <AddressListComponentSkeleton />;
+    }
+    return (
+      addresses.size > 0 && (
+        <AddressListComponent
+          addresses={addresses}
+          labels={labels}
+          setSelectedAddress={this.setSelectedAddress}
+          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+          setDeleteModalMountState={setDeleteModalMountState}
+          toggleAddAddressModal={this.toggleAddAddressModal}
+        />
+      )
+    );
+  };
+
+  render() {
+    const {
+      addresses,
+      labels,
       setDeleteModalMountState,
       deleteModalMountedState,
       onDeleteAddress,
@@ -169,16 +199,7 @@ export class AddressView extends React.Component {
               />
             )}
           </ButtonWrapperStyle>
-          {addresses.size > 0 && (
-            <AddressListComponent
-              addresses={addresses}
-              labels={labels}
-              setSelectedAddress={this.setSelectedAddress}
-              onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-              setDeleteModalMountState={setDeleteModalMountState}
-              toggleAddAddressModal={this.toggleAddAddressModal}
-            />
-          )}
+          {this.renderAddressList()}
 
           {addAddressMount && (
             <ModalNative
@@ -236,6 +257,7 @@ AddressView.propTypes = {
   deleteModalMountedState: PropTypes.bool,
   onDeleteAddress: PropTypes.func.isRequired,
   verificationResult: PropTypes.string,
+  isFetching: PropTypes.bool,
 };
 
 AddressView.defaultProps = {
@@ -256,6 +278,8 @@ AddressView.defaultProps = {
   },
   deleteModalMountedState: false,
   verificationResult: '',
+
+  isFetching: false,
 };
 
 export default withStyles(AddressView, ParentContainer);

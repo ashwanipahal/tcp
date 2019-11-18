@@ -27,7 +27,7 @@ const renderPromoBanner = promoBanner => {
  * This function renders Linked Image component
  * @param {*} param0
  */
-const renderImage = ([{ image, link }]) => {
+const renderMedia = ([{ image, link, video }]) => {
   const navigationUrl = link;
   navigationUrl.to = configureInternalNavigationFromCMSUrl(link.url);
   navigationUrl.asPath = link.url;
@@ -35,7 +35,12 @@ const renderImage = ([{ image, link }]) => {
   return (
     <div className="image-container" data-locator={getLocator('moduleB_image')}>
       <Anchor {...navigationUrl} className="image-link">
-        <DamImage imgData={image} className="image" imgConfigs={IMG_DATA.imgOverlayConfig} />
+        <DamImage
+          imgData={image}
+          videoData={video}
+          className="image"
+          imgConfigs={IMG_DATA.imgOverlayConfig}
+        />
       </Anchor>
     </div>
   );
@@ -58,27 +63,27 @@ const ImageBanner = props => {
       return (
         <div className="banner-top-variation">
           {renderPromoBanner(promoBanner)}
-          {renderImage(linkedImage)}
+          {renderMedia(linkedImage)}
         </div>
       );
     case bannerPositionTypes.topAlt:
       return (
         <div className="banner-top-alt-variation">
           {renderPromoBanner(promoBanner)}
-          {renderImage(linkedImage)}
+          {renderMedia(linkedImage)}
         </div>
       );
     case bannerPositionTypes.overlay:
       return (
         <div className="banner-overlay-variation">
-          {renderImage(linkedImage)}
+          {renderMedia(linkedImage)}
           {renderPromoBanner(promoBanner)}
         </div>
       );
     case bannerPositionTypes.bottom:
       return (
         <div className="banner-bottom-variation">
-          {renderImage(linkedImage)}
+          {renderMedia(linkedImage)}
           {renderPromoBanner(promoBanner)}
         </div>
       );

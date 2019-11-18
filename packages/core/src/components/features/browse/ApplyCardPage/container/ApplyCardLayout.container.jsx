@@ -10,7 +10,7 @@ import CheckoutSelectors from '../../../CnC/Checkout/container/Checkout.selector
 import { getUserProfileData, getUserId, isGuest } from './ApplyCard.selectors';
 import AddressVerification from '../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import { verifyAddress } from '../../../../common/organisms/AddressVerification/container/AddressVerification.actions';
-import { isMobileApp } from '../../../../../utils';
+import { isMobileApp, routerPush } from '../../../../../utils';
 
 class ApplyCardLayoutContainer extends React.Component {
   /**
@@ -27,8 +27,10 @@ class ApplyCardLayoutContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { plccData, fetchModuleXContent, labels } = this.props;
-    if (!plccData && labels && labels.referred) {
+    const { plccData, fetchModuleXContent, labels, plccUser } = this.props;
+    if (plccUser) {
+      routerPush(window.location.href, '/home');
+    } else if (!plccData && labels && labels.referred) {
       fetchModuleXContent(labels && labels.referred);
     }
   }
