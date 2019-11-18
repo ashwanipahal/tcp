@@ -62,7 +62,8 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
     "superagent": "^5.0.8",
-    "superagent-jsonp": "^0.2.1"
+    "superagent-jsonp": "^0.2.1",
+    "react-native-check-notification-permission": "1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -191,7 +192,9 @@
       "**/redux-persist",
       "**/redux-persist/**",
       "**/redux-persist-transform-immutable",
-      "**/redux-persist-transform-immutable/**"
+      "**/redux-persist-transform-immutable/**",
+      "**/react-native-check-notification-permission",
+      "**/react-native-check-notification-permission/**"
     ]
   }
 }

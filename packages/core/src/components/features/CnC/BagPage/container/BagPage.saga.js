@@ -140,6 +140,7 @@ export function* getOrderDetailSaga(payload) {
   const { payload: { after } = {} } = payload;
   try {
     yield put(updateCartManually(true));
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield call(getOrderDetailsData);
     if (yield call(shouldTranslate, true)) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
@@ -319,6 +320,7 @@ export function* startCartCheckout({
   } = {},
 } = {}) {
   try {
+    yield put(setLoaderState(true));
     if (isEditingItem) {
       yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
     } else {
@@ -346,6 +348,7 @@ export function* startCartCheckout({
         yield call(checkoutCart, false, navigation, closeModal, navigationActions);
       }
     }
+    yield put(setLoaderState(false));
   } catch (e) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));

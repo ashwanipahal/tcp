@@ -46,37 +46,37 @@ class ModuleQ extends React.PureComponent {
    */
   getSlideItem = (item, index) => {
     const { id, items, largeImageUrl, pdpUrl } = item;
-    const { shopThisLookLabel, isCompleteTheLook } = this.props;
+    const { shopThisLookLabel, isRelatedOutfit } = this.props;
     const looksImages = items.slice(0, 2);
     const hiddenImagesCount = items.length - looksImages.length;
     const outfitParams = pdpUrl && pdpUrl.split('/');
     const { RECOMMENDATION } = constant;
+    const outfitUrl =
+      outfitParams &&
+      outfitParams.length > 1 &&
+      `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
+        outfitParams[outfitParams.length - 1]
+      }&viaModule=${RECOMMENDATION}`;
     return (
       <div>
         <Anchor
           key={id}
           className="moduleQ-image-link"
-          to={
-            outfitParams &&
-            outfitParams.length > 1 &&
-            `/outfit?outfitId=${outfitParams[outfitParams.length - 2]}&vendorColorProductIdsList=${
-              outfitParams[outfitParams.length - 1]
-            }&viaModule=${RECOMMENDATION}`
-          }
+          to={outfitUrl}
           asPath={pdpUrl}
           dataLocator={`${getLocator('moduleQ_product_image')}${index}`}
         >
           <div className="looks-large-image">
             <Image alt={id} src={this.getUrlWithHttp(largeImageUrl)} />
             <div className="shop-this-look-link">
-              <Anchor withCaret centered>
+              <Anchor to={outfitUrl} asPath={pdpUrl} withCaret centered>
                 <BodyCopy component="span" color="gray.900" fontFamily="secondary" fontSize="fs12">
                   {shopThisLookLabel}
                 </BodyCopy>
               </Anchor>
             </div>
           </div>
-          {!isCompleteTheLook && (
+          {!isRelatedOutfit && (
             <div className="looks-images-wrapper">
               {looksImages.map(({ smallImageUrl, name, remoteId }) => {
                 return (
@@ -149,6 +149,7 @@ class ModuleQ extends React.PureComponent {
       hideTabs,
       selectedColorProductId,
       showRelatedOutfitHeader,
+      isRelatedOutfit,
     } = this.props;
     const { currentCatId } = this.state;
     const { CAROUSEL_OPTIONS, TOTAL_IMAGES } = config;
@@ -201,6 +202,7 @@ class ModuleQ extends React.PureComponent {
               tabItems={divTabs}
               selectedColorProductId={selectedColorProductId}
               dataLocator={getLocator('moduleQ_cta_link')}
+              isRelatedOutfit={isRelatedOutfit}
             />
           </div>
         </Row>
@@ -261,7 +263,7 @@ ModuleQ.defaultProps = {
   hideTabs: false,
   selectedColorProductId: '',
   showRelatedOutfitHeader: null,
-  isCompleteTheLook: false,
+  isRelatedOutfit: false,
 };
 
 ModuleQ.propTypes = {
@@ -301,7 +303,7 @@ ModuleQ.propTypes = {
   hideTabs: PropTypes.bool,
   selectedColorProductId: PropTypes.string,
   showRelatedOutfitHeader: PropTypes.func,
-  isCompleteTheLook: PropTypes.bool,
+  isRelatedOutfit: PropTypes.bool,
 };
 
 const styledModuleQ = withStyles(errorBoundary(ModuleQ), moduleQStyle);

@@ -17,10 +17,11 @@ import {
  * @function initCheckoutAction
  * action creator for type: INIT_CHECKOUT
  */
-export const initCheckoutAction = (router, isPaypalFlow) => ({
+export const initCheckoutAction = (router, isPaypalFlow, navigation) => ({
   type: constants.INIT_CHECKOUT,
   router,
   isPaypalFlow,
+  navigation,
 });
 
 export const submitPickupSection = payload => ({
