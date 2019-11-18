@@ -204,6 +204,25 @@ class ProductAddToBag extends React.PureComponent<Props> {
     );
   };
 
+  renderQuantitySelector = () => {
+    const { isFromBagProductSfl, quantityList } = this.props;
+    return (
+      !isFromBagProductSfl && (
+        <div className="qty-selector">
+          <Field
+            width={32}
+            id="quantity"
+            name="Quantity"
+            component={MiniBagSelect}
+            options={quantityList}
+            onChange={this.quantityChange}
+            dataLocator="addnewaddress-state"
+          />
+        </div>
+      )
+    );
+  };
+
   render() {
     const {
       plpLabels,
@@ -219,6 +238,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isPickup,
       isBundleProduct,
       isATBErrorMessageDisplayed,
+      isFromBagProductSfl,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -247,17 +267,12 @@ class ProductAddToBag extends React.PureComponent<Props> {
               {this.renderSizeList(sizeList, colorFitSizeDisplayNames, errorMessage)}
               {!isPickup && this.renderAlternateSizes(alternateSizes)}
               {!isPickup && this.renderUnavailableLink()}
-              <div className="qty-selector">
-                <Field
-                  width={32}
-                  id="quantity"
-                  name="Quantity"
-                  component={MiniBagSelect}
-                  options={quantityList}
-                  onChange={this.quantityChange}
-                  dataLocator="addnewaddress-state"
-                />
-              </div>
+              {this.renderQuantitySelector(
+                isFromBagProductSfl,
+                MiniBagSelect,
+                quantityList,
+                this.quantityChange
+              )}
             </div>
             <RenderPerf.Measure name={CONTROLS_VISIBLE} />
           </Col>
