@@ -6,8 +6,4 @@ const SkeletonWrapperView = styled.View`
   border: 1px solid ${props => props.theme.colorPalette.gray[700]};
 `;
 
-const SkeletonSpacingView = styled.View`
-  margin-bottom: 20px;
-`;
-
-export { SkeletonWrapperView, SkeletonSpacingView };
+export default SkeletonWrapperView;
