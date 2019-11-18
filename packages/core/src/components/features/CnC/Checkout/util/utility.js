@@ -1,5 +1,6 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import queryString from 'query-string';
+import { routerPush, isMobileApp } from '@tcp/core/src/utils';
 import {
   getSetCurrentOrderIdActn,
   getSetCartActn,
@@ -25,7 +26,6 @@ import {
   getSetAirmilesAccountActn,
 } from '../container/Checkout.action';
 import CardConstants from '../../../account/AddEditCreditCard/container/AddEditCreditCard.constants';
-import { routerPush, isMobileApp } from '../../../../../utils';
 import CreditCardConstants from '../organisms/BillingPaymentForm/container/CreditCard.constants';
 import { getLocalStorage } from '../../../../../utils/localStorageManagement';
 import CheckoutConstants from '../Checkout.constants';

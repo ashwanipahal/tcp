@@ -19,16 +19,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
 
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
-    ",
-      [Function],
-      ";
-    @media ",
-      [Function],
-      " {
-      height: ",
-      [Function],
-      ";
-    }
   }
 
   div.TCPModal__InnerContent {
@@ -185,9 +175,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   innerContentClassName="innerContent"
   isOpen={true}
   maxWidth="464px"
-  minHeight="646px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <div
     className="Modal__Content__Wrapper"
@@ -449,16 +439,6 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
 
   div.TCPModal__InnerContent.innerContent {
     padding: 21px;
-    ",
-      [Function],
-      ";
-    @media ",
-      [Function],
-      " {
-      height: ",
-      [Function],
-      ";
-    }
   }
 
   div.TCPModal__InnerContent {
@@ -615,9 +595,9 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   innerContentClassName="innerContent"
   isOpen={true}
   maxWidth="464px"
-  minHeight="646px"
   overlayClassName="TCPModal__Overlay"
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <div
     className="Modal__Content__Wrapper"
@@ -680,9 +660,6 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
         >
           lbl_PLCCModal_applyNowSubText
         </Styled(BodyCopy)>
-        <Styled(RichText)
-          className="congrats_msg"
-        />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)

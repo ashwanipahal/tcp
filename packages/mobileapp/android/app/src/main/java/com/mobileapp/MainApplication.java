@@ -3,6 +3,7 @@ package com.mobileapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNCheckNotificationPermissionPackage;
 import com.goldenowl.twittersignin.TwitterSigninPackage;
 import com.cardio.RNCardIOPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
@@ -41,6 +42,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new RNCheckNotificationPermissionPackage(),
             new TwitterSigninPackage(),
             new RNCardIOPackage(),
             new RNViewShotPackage(),

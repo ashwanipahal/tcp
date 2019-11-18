@@ -8,7 +8,10 @@ import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItemBase from './ProductsGridItem';
 
-// Adding hotfix capability to grid item in this component to make if specific to PLP
+/**
+ * Hotfix-Aware Component. The use `withHotfix` below is just for
+ * making the cart page hotfix-aware.
+ */
 const ProductsGridItem = withHotfix(ProductsGridItemBase);
 
 const isGridItem = item => {
@@ -51,6 +54,9 @@ const ProductList = props => {
     isFavoriteView,
     removeFavItem,
     createNewWishListMoveItem,
+    isSearchListing,
+    getProducts,
+    asPathVal,
   } = props;
   let gridIndex = 0;
 
@@ -114,6 +120,9 @@ const ProductList = props => {
               isFavoriteView={isFavoriteView}
               removeFavItem={removeFavItem}
               createNewWishListMoveItem={createNewWishListMoveItem}
+              isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
             />
           </div>
         );
@@ -158,6 +167,9 @@ ProductList.propTypes = {
   isFavoriteView: PropTypes.bool,
   removeFavItem: PropTypes.func,
   createNewWishListMoveItem: PropTypes.func,
+  isSearchListing: PropTypes.bool,
+  getProducts: PropTypes.func,
+  asPathVal: PropTypes.string,
 };
 
 ProductList.defaultProps = {
@@ -187,6 +199,9 @@ ProductList.defaultProps = {
   isFavoriteView: false,
   removeFavItem: null,
   createNewWishListMoveItem: null,
+  isSearchListing: false,
+  getProducts: () => {},
+  asPathVal: '',
 };
 
 export default withStyles(ProductList, ProductListStyle);

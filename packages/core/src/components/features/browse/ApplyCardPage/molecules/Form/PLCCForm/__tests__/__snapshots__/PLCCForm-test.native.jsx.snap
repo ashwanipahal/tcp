@@ -1,0 +1,7237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(Styled(ImageComp))
+      alt=""
+      height="166px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/tcp-cc.png",
+        }
+      }
+      url=""
+      width="70%"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <RichText
+        actionHandler={[Function]}
+        domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": undefined,
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="preScreenCode"
+      label="lbl_PLCCForm_preScreenCodeOpt"
+      maxLength={12}
+      name="lbl_PLCCForm_preScreenCodeOpt"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingBottom="12px"
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="26px"
+    text="lbl_PLCCForm_contactInfoHeader"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="firstName"
+          label="lbl_PLCCForm_firstName"
+          maxLength={20}
+          name="firstName"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="middleName"
+          label="lbl_PLCCForm_middleNameInitial"
+          maxLength={5}
+          name="middleName"
+          type="text"
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="lastName"
+      label="lbl_PLCCForm_lastName"
+      maxLength={15}
+      name="lastName"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="emailAddress"
+      label="lbl_PLCCForm_email"
+      name="emailAddress"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            undefined,
+          ],
+        }
+      }
+      headerTitle="lbl_PLCCForm_addressLine1"
+      id="addressLine1"
+      initialValue=""
+      name="addressLine1"
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="addressLine1"
+        label=""
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine2"
+      label="lbl_PLCCForm_addressLine2"
+      maxLength={20}
+      name="addressLine2"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="city"
+      label="lbl_PLCCForm_city"
+      maxLength={20}
+      name="city"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="State"
+        id="statewocountry"
+        name="statewocountry"
+        options={
+          Array [
+            Object {
+              "displayName": "AL",
+              "fullName": "Alabama",
+              "id": "AL",
+            },
+            Object {
+              "displayName": "AK",
+              "fullName": "Alaska",
+              "id": "AK",
+            },
+            Object {
+              "displayName": "AS",
+              "fullName": "American Samoa",
+              "id": "AS",
+            },
+            Object {
+              "displayName": "AZ",
+              "fullName": "Arizona",
+              "id": "AZ",
+            },
+            Object {
+              "displayName": "AR",
+              "fullName": "Arkansas",
+              "id": "AR",
+            },
+            Object {
+              "displayName": "AA",
+              "fullName": "",
+              "id": "AA",
+            },
+            Object {
+              "displayName": "AE",
+              "fullName": "",
+              "id": "AE",
+            },
+            Object {
+              "displayName": "AP",
+              "fullName": "",
+              "id": "AP",
+            },
+            Object {
+              "displayName": "CA",
+              "fullName": "California",
+              "id": "CA",
+            },
+            Object {
+              "displayName": "CO",
+              "fullName": "Colorado",
+              "id": "CO",
+            },
+            Object {
+              "displayName": "CT",
+              "fullName": "Connecticut",
+              "id": "CT",
+            },
+            Object {
+              "displayName": "DE",
+              "fullName": "Delaware",
+              "id": "DE",
+            },
+            Object {
+              "displayName": "DC",
+              "fullName": "Dist. of Columbia",
+              "id": "DC",
+            },
+            Object {
+              "displayName": "FM",
+              "fullName": "",
+              "id": "FM",
+            },
+            Object {
+              "displayName": "FL",
+              "fullName": "Florida",
+              "id": "FL",
+            },
+            Object {
+              "displayName": "GA",
+              "fullName": "Georgia",
+              "id": "GA",
+            },
+            Object {
+              "displayName": "GU",
+              "fullName": "Guam",
+              "id": "GU",
+            },
+            Object {
+              "displayName": "HI",
+              "fullName": "Hawaii",
+              "id": "HI",
+            },
+            Object {
+              "displayName": "ID",
+              "fullName": "Idaho",
+              "id": "ID",
+            },
+            Object {
+              "displayName": "IL",
+              "fullName": "Illinois",
+              "id": "IL",
+            },
+            Object {
+              "displayName": "IN",
+              "fullName": "Indiana",
+              "id": "IN",
+            },
+            Object {
+              "displayName": "IA",
+              "fullName": "Iowa",
+              "id": "IA",
+            },
+            Object {
+              "displayName": "KS",
+              "fullName": "Kansas",
+              "id": "KS",
+            },
+            Object {
+              "displayName": "KY",
+              "fullName": "Kentucky",
+              "id": "KY",
+            },
+            Object {
+              "displayName": "LA",
+              "fullName": "Louisiana",
+              "id": "LA",
+            },
+            Object {
+              "displayName": "ME",
+              "fullName": "Maine",
+              "id": "ME",
+            },
+            Object {
+              "displayName": "MH",
+              "fullName": "Marshall Islands",
+              "id": "MH",
+            },
+            Object {
+              "displayName": "MD",
+              "fullName": "Maryland",
+              "id": "MD",
+            },
+            Object {
+              "displayName": "MA",
+              "fullName": "Massachusetts",
+              "id": "MA",
+            },
+            Object {
+              "displayName": "MI",
+              "fullName": "Michigan",
+              "id": "MI",
+            },
+            Object {
+              "displayName": "MN",
+              "fullName": "Minnesota",
+              "id": "MN",
+            },
+            Object {
+              "displayName": "MS",
+              "fullName": "Mississippi",
+              "id": "MS",
+            },
+            Object {
+              "displayName": "MO",
+              "fullName": "Missouri",
+              "id": "MO",
+            },
+            Object {
+              "displayName": "MT",
+              "fullName": "Montana",
+              "id": "MT",
+            },
+            Object {
+              "displayName": "NE",
+              "fullName": "Nebraska",
+              "id": "NE",
+            },
+            Object {
+              "displayName": "NV",
+              "fullName": "Nevada",
+              "id": "NV",
+            },
+            Object {
+              "displayName": "NH",
+              "fullName": "New Hampshire",
+              "id": "NH",
+            },
+            Object {
+              "displayName": "NJ",
+              "fullName": "New Jersey",
+              "id": "NJ",
+            },
+            Object {
+              "displayName": "NM",
+              "fullName": "New Mexico",
+              "id": "NM",
+            },
+            Object {
+              "displayName": "NY",
+              "fullName": "New York",
+              "id": "NY",
+            },
+            Object {
+              "displayName": "NC",
+              "fullName": "North Carolina",
+              "id": "NC",
+            },
+            Object {
+              "displayName": "ND",
+              "fullName": "North Dakota",
+              "id": "ND",
+            },
+            Object {
+              "displayName": "MP",
+              "fullName": "Northern Marianas",
+              "id": "MP",
+            },
+            Object {
+              "displayName": "OH",
+              "fullName": "Ohio",
+              "id": "OH",
+            },
+            Object {
+              "displayName": "OK",
+              "fullName": "Oklahoma",
+              "id": "OK",
+            },
+            Object {
+              "displayName": "OR",
+              "fullName": "Oregon",
+              "id": "OR",
+            },
+            Object {
+              "displayName": "PW",
+              "fullName": "Palau",
+              "id": "PW",
+            },
+            Object {
+              "displayName": "PA",
+              "fullName": "Pennsylvania",
+              "id": "PA",
+            },
+            Object {
+              "displayName": "PR",
+              "fullName": "Puerto Rico",
+              "id": "PR",
+            },
+            Object {
+              "displayName": "RI",
+              "fullName": "Rhode Island",
+              "id": "RI",
+            },
+            Object {
+              "displayName": "SC",
+              "fullName": "South Carolina",
+              "id": "SC",
+            },
+            Object {
+              "displayName": "SD",
+              "fullName": "South Dakota",
+              "id": "SD",
+            },
+            Object {
+              "displayName": "TN",
+              "fullName": "Tennessee",
+              "id": "TN",
+            },
+            Object {
+              "displayName": "TX",
+              "fullName": "Texas",
+              "id": "TX",
+            },
+            Object {
+              "displayName": "UT",
+              "fullName": "Utah",
+              "id": "UT",
+            },
+            Object {
+              "displayName": "VT",
+              "fullName": "Vermont",
+              "id": "VT",
+            },
+            Object {
+              "displayName": "VI",
+              "fullName": "Virginia",
+              "id": "VI",
+            },
+            Object {
+              "displayName": "VA",
+              "fullName": "Virgin Islands",
+              "id": "VA",
+            },
+            Object {
+              "displayName": "WA",
+              "fullName": "Washington",
+              "id": "WA",
+            },
+            Object {
+              "displayName": "WV",
+              "fullName": "West Virginia",
+              "id": "WV",
+            },
+            Object {
+              "displayName": "WI",
+              "fullName": "Wisconsin",
+              "id": "WI",
+            },
+            Object {
+              "displayName": "WY",
+              "fullName": "Wyoming",
+              "id": "WY",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="noCountryZip"
+        keyboardType="numeric"
+        label="lbl_PLCCForm_zipCode"
+        maxLength={5}
+        name="noCountryZip"
+        type="text"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="phoneNumberWithAlt"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_mobilePhoneNumber"
+      maxLength={10}
+      name="phoneNumberWithAlt"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="altPhoneNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_alternatePhone"
+      maxLength={10}
+      name="altPhoneNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontSize="fs10"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    text="lbl_PLCCForm_minPhone"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="PERSONAL INFORMATION"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontSize="fs10"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingTop="10px"
+    text="lbl_PLCCForm_dob"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Mm"
+        id="month"
+        name="month"
+        options={
+          Array [
+            Object {
+              "displayName": "Jan",
+              "id": "1",
+            },
+            Object {
+              "displayName": "Feb",
+              "id": "2",
+            },
+            Object {
+              "displayName": "Mar",
+              "id": "3",
+            },
+            Object {
+              "displayName": "Apr",
+              "id": "4",
+            },
+            Object {
+              "displayName": "May",
+              "id": "5",
+            },
+            Object {
+              "displayName": "Jun",
+              "id": "6",
+            },
+            Object {
+              "displayName": "Jul",
+              "id": "7",
+            },
+            Object {
+              "displayName": "Aug",
+              "id": "8",
+            },
+            Object {
+              "displayName": "Sep",
+              "id": "9",
+            },
+            Object {
+              "displayName": "Oct",
+              "id": "10",
+            },
+            Object {
+              "displayName": "Nov",
+              "id": "11",
+            },
+            Object {
+              "displayName": "Dec",
+              "id": "12",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Dd"
+        id="date"
+        name="date"
+        options={
+          Array [
+            Object {
+              "displayName": "01",
+              "id": "01",
+            },
+            Object {
+              "displayName": "02",
+              "id": "02",
+            },
+            Object {
+              "displayName": "03",
+              "id": "03",
+            },
+            Object {
+              "displayName": "04",
+              "id": "04",
+            },
+            Object {
+              "displayName": "05",
+              "id": "05",
+            },
+            Object {
+              "displayName": "06",
+              "id": "06",
+            },
+            Object {
+              "displayName": "07",
+              "id": "07",
+            },
+            Object {
+              "displayName": "08",
+              "id": "08",
+            },
+            Object {
+              "displayName": "09",
+              "id": "09",
+            },
+            Object {
+              "displayName": "10",
+              "id": "10",
+            },
+            Object {
+              "displayName": "11",
+              "id": "11",
+            },
+            Object {
+              "displayName": "12",
+              "id": "12",
+            },
+            Object {
+              "displayName": "13",
+              "id": "13",
+            },
+            Object {
+              "displayName": "14",
+              "id": "14",
+            },
+            Object {
+              "displayName": "15",
+              "id": "15",
+            },
+            Object {
+              "displayName": "16",
+              "id": "16",
+            },
+            Object {
+              "displayName": "17",
+              "id": "17",
+            },
+            Object {
+              "displayName": "18",
+              "id": "18",
+            },
+            Object {
+              "displayName": "19",
+              "id": "19",
+            },
+            Object {
+              "displayName": "20",
+              "id": "20",
+            },
+            Object {
+              "displayName": "21",
+              "id": "21",
+            },
+            Object {
+              "displayName": "22",
+              "id": "22",
+            },
+            Object {
+              "displayName": "23",
+              "id": "23",
+            },
+            Object {
+              "displayName": "24",
+              "id": "24",
+            },
+            Object {
+              "displayName": "25",
+              "id": "25",
+            },
+            Object {
+              "displayName": "26",
+              "id": "26",
+            },
+            Object {
+              "displayName": "27",
+              "id": "27",
+            },
+            Object {
+              "displayName": "28",
+              "id": "28",
+            },
+            Object {
+              "displayName": "29",
+              "id": "29",
+            },
+            Object {
+              "displayName": "30",
+              "id": "30",
+            },
+            Object {
+              "displayName": "31",
+              "id": "31",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Yyyy"
+        id="year"
+        name="year"
+        options={
+          Array [
+            Object {
+              "displayName": "2002",
+              "id": "2002",
+            },
+            Object {
+              "displayName": "2001",
+              "id": "2001",
+            },
+            Object {
+              "displayName": "2000",
+              "id": "2000",
+            },
+            Object {
+              "displayName": "1999",
+              "id": "1999",
+            },
+            Object {
+              "displayName": "1998",
+              "id": "1998",
+            },
+            Object {
+              "displayName": "1997",
+              "id": "1997",
+            },
+            Object {
+              "displayName": "1996",
+              "id": "1996",
+            },
+            Object {
+              "displayName": "1995",
+              "id": "1995",
+            },
+            Object {
+              "displayName": "1994",
+              "id": "1994",
+            },
+            Object {
+              "displayName": "1993",
+              "id": "1993",
+            },
+            Object {
+              "displayName": "1992",
+              "id": "1992",
+            },
+            Object {
+              "displayName": "1991",
+              "id": "1991",
+            },
+            Object {
+              "displayName": "1990",
+              "id": "1990",
+            },
+            Object {
+              "displayName": "1989",
+              "id": "1989",
+            },
+            Object {
+              "displayName": "1988",
+              "id": "1988",
+            },
+            Object {
+              "displayName": "1987",
+              "id": "1987",
+            },
+            Object {
+              "displayName": "1986",
+              "id": "1986",
+            },
+            Object {
+              "displayName": "1985",
+              "id": "1985",
+            },
+            Object {
+              "displayName": "1984",
+              "id": "1984",
+            },
+            Object {
+              "displayName": "1983",
+              "id": "1983",
+            },
+            Object {
+              "displayName": "1982",
+              "id": "1982",
+            },
+            Object {
+              "displayName": "1981",
+              "id": "1981",
+            },
+            Object {
+              "displayName": "1980",
+              "id": "1980",
+            },
+            Object {
+              "displayName": "1979",
+              "id": "1979",
+            },
+            Object {
+              "displayName": "1978",
+              "id": "1978",
+            },
+            Object {
+              "displayName": "1977",
+              "id": "1977",
+            },
+            Object {
+              "displayName": "1976",
+              "id": "1976",
+            },
+            Object {
+              "displayName": "1975",
+              "id": "1975",
+            },
+            Object {
+              "displayName": "1974",
+              "id": "1974",
+            },
+            Object {
+              "displayName": "1973",
+              "id": "1973",
+            },
+            Object {
+              "displayName": "1972",
+              "id": "1972",
+            },
+            Object {
+              "displayName": "1971",
+              "id": "1971",
+            },
+            Object {
+              "displayName": "1970",
+              "id": "1970",
+            },
+            Object {
+              "displayName": "1969",
+              "id": "1969",
+            },
+            Object {
+              "displayName": "1968",
+              "id": "1968",
+            },
+            Object {
+              "displayName": "1967",
+              "id": "1967",
+            },
+            Object {
+              "displayName": "1966",
+              "id": "1966",
+            },
+            Object {
+              "displayName": "1965",
+              "id": "1965",
+            },
+            Object {
+              "displayName": "1964",
+              "id": "1964",
+            },
+            Object {
+              "displayName": "1963",
+              "id": "1963",
+            },
+            Object {
+              "displayName": "1962",
+              "id": "1962",
+            },
+            Object {
+              "displayName": "1961",
+              "id": "1961",
+            },
+            Object {
+              "displayName": "1960",
+              "id": "1960",
+            },
+            Object {
+              "displayName": "1959",
+              "id": "1959",
+            },
+            Object {
+              "displayName": "1958",
+              "id": "1958",
+            },
+            Object {
+              "displayName": "1957",
+              "id": "1957",
+            },
+            Object {
+              "displayName": "1956",
+              "id": "1956",
+            },
+            Object {
+              "displayName": "1955",
+              "id": "1955",
+            },
+            Object {
+              "displayName": "1954",
+              "id": "1954",
+            },
+            Object {
+              "displayName": "1953",
+              "id": "1953",
+            },
+            Object {
+              "displayName": "1952",
+              "id": "1952",
+            },
+            Object {
+              "displayName": "1951",
+              "id": "1951",
+            },
+            Object {
+              "displayName": "1950",
+              "id": "1950",
+            },
+            Object {
+              "displayName": "1949",
+              "id": "1949",
+            },
+            Object {
+              "displayName": "1948",
+              "id": "1948",
+            },
+            Object {
+              "displayName": "1947",
+              "id": "1947",
+            },
+            Object {
+              "displayName": "1946",
+              "id": "1946",
+            },
+            Object {
+              "displayName": "1945",
+              "id": "1945",
+            },
+            Object {
+              "displayName": "1944",
+              "id": "1944",
+            },
+            Object {
+              "displayName": "1943",
+              "id": "1943",
+            },
+            Object {
+              "displayName": "1942",
+              "id": "1942",
+            },
+            Object {
+              "displayName": "1941",
+              "id": "1941",
+            },
+            Object {
+              "displayName": "1940",
+              "id": "1940",
+            },
+            Object {
+              "displayName": "1939",
+              "id": "1939",
+            },
+            Object {
+              "displayName": "1938",
+              "id": "1938",
+            },
+            Object {
+              "displayName": "1937",
+              "id": "1937",
+            },
+            Object {
+              "displayName": "1936",
+              "id": "1936",
+            },
+            Object {
+              "displayName": "1935",
+              "id": "1935",
+            },
+            Object {
+              "displayName": "1934",
+              "id": "1934",
+            },
+            Object {
+              "displayName": "1933",
+              "id": "1933",
+            },
+            Object {
+              "displayName": "1932",
+              "id": "1932",
+            },
+            Object {
+              "displayName": "1931",
+              "id": "1931",
+            },
+            Object {
+              "displayName": "1930",
+              "id": "1930",
+            },
+            Object {
+              "displayName": "1929",
+              "id": "1929",
+            },
+            Object {
+              "displayName": "1928",
+              "id": "1928",
+            },
+            Object {
+              "displayName": "1927",
+              "id": "1927",
+            },
+            Object {
+              "displayName": "1926",
+              "id": "1926",
+            },
+            Object {
+              "displayName": "1925",
+              "id": "1925",
+            },
+            Object {
+              "displayName": "1924",
+              "id": "1924",
+            },
+            Object {
+              "displayName": "1923",
+              "id": "1923",
+            },
+            Object {
+              "displayName": "1922",
+              "id": "1922",
+            },
+            Object {
+              "displayName": "1921",
+              "id": "1921",
+            },
+            Object {
+              "displayName": "1920",
+              "id": "1920",
+            },
+            Object {
+              "displayName": "1919",
+              "id": "1919",
+            },
+            Object {
+              "displayName": "1918",
+              "id": "1918",
+            },
+            Object {
+              "displayName": "1917",
+              "id": "1917",
+            },
+            Object {
+              "displayName": "1916",
+              "id": "1916",
+            },
+            Object {
+              "displayName": "1915",
+              "id": "1915",
+            },
+            Object {
+              "displayName": "1914",
+              "id": "1914",
+            },
+            Object {
+              "displayName": "1913",
+              "id": "1913",
+            },
+            Object {
+              "displayName": "1912",
+              "id": "1912",
+            },
+            Object {
+              "displayName": "1911",
+              "id": "1911",
+            },
+            Object {
+              "displayName": "1910",
+              "id": "1910",
+            },
+            Object {
+              "displayName": "1909",
+              "id": "1909",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="ssNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_ssn"
+      maxLength={4}
+      name="ssNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="635px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="lbl_PLCCForm_financialTermsHeading"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="900px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        enableSuccessCheck={false}
+        id="iAgree"
+        name="iAgree"
+        rightText="lbl_PLCCForm_iAgreeCheckboxText"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_PLCCForm_submitButton"
+      theme={Object {}}
+      type="submit"
+      url=""
+      width="90%"
+      withNoLineHeight={false}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="large"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      paddingBottom="60px"
+      paddingTop="40px"
+      text="lbl_PLCCForm_noThanks"
+      underline={true}
+      url=""
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(ScrollViewMock)>
+`;
+
+exports[`PLCCFormVanilla it should render correctly 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(Styled(ImageComp))
+      alt=""
+      height="166px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/tcp-cc.png",
+        }
+      }
+      url=""
+      width="70%"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <RichText
+        actionHandler={[Function]}
+        domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": undefined,
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs15"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      paddingLeft="16px"
+      paddingTop="22px"
+      text="lbl_PLCCForm_preScreenCodeText"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="large"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      paddingRight="16px"
+      paddingTop="22px"
+      text="lbl_PLCCForm_clickHere"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingBottom="12px"
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="26px"
+    text="lbl_PLCCForm_contactInfoHeader"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="firstName"
+          label="lbl_PLCCForm_firstName"
+          maxLength={20}
+          name="firstName"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="middleName"
+          label="lbl_PLCCForm_middleNameInitial"
+          maxLength={5}
+          name="middleName"
+          type="text"
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="lastName"
+      label="lbl_PLCCForm_lastName"
+      maxLength={15}
+      name="lastName"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="emailAddress"
+      label="lbl_PLCCForm_email"
+      name="emailAddress"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            undefined,
+          ],
+        }
+      }
+      headerTitle="lbl_PLCCForm_addressLine1"
+      id="addressLine1"
+      initialValue=""
+      name="addressLine1"
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="addressLine1"
+        label=""
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine2"
+      label="lbl_PLCCForm_addressLine2"
+      maxLength={20}
+      name="addressLine2"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="city"
+      label="lbl_PLCCForm_city"
+      maxLength={20}
+      name="city"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="State"
+        id="statewocountry"
+        name="statewocountry"
+        options={
+          Array [
+            Object {
+              "displayName": "AL",
+              "fullName": "Alabama",
+              "id": "AL",
+            },
+            Object {
+              "displayName": "AK",
+              "fullName": "Alaska",
+              "id": "AK",
+            },
+            Object {
+              "displayName": "AS",
+              "fullName": "American Samoa",
+              "id": "AS",
+            },
+            Object {
+              "displayName": "AZ",
+              "fullName": "Arizona",
+              "id": "AZ",
+            },
+            Object {
+              "displayName": "AR",
+              "fullName": "Arkansas",
+              "id": "AR",
+            },
+            Object {
+              "displayName": "AA",
+              "fullName": "",
+              "id": "AA",
+            },
+            Object {
+              "displayName": "AE",
+              "fullName": "",
+              "id": "AE",
+            },
+            Object {
+              "displayName": "AP",
+              "fullName": "",
+              "id": "AP",
+            },
+            Object {
+              "displayName": "CA",
+              "fullName": "California",
+              "id": "CA",
+            },
+            Object {
+              "displayName": "CO",
+              "fullName": "Colorado",
+              "id": "CO",
+            },
+            Object {
+              "displayName": "CT",
+              "fullName": "Connecticut",
+              "id": "CT",
+            },
+            Object {
+              "displayName": "DE",
+              "fullName": "Delaware",
+              "id": "DE",
+            },
+            Object {
+              "displayName": "DC",
+              "fullName": "Dist. of Columbia",
+              "id": "DC",
+            },
+            Object {
+              "displayName": "FM",
+              "fullName": "",
+              "id": "FM",
+            },
+            Object {
+              "displayName": "FL",
+              "fullName": "Florida",
+              "id": "FL",
+            },
+            Object {
+              "displayName": "GA",
+              "fullName": "Georgia",
+              "id": "GA",
+            },
+            Object {
+              "displayName": "GU",
+              "fullName": "Guam",
+              "id": "GU",
+            },
+            Object {
+              "displayName": "HI",
+              "fullName": "Hawaii",
+              "id": "HI",
+            },
+            Object {
+              "displayName": "ID",
+              "fullName": "Idaho",
+              "id": "ID",
+            },
+            Object {
+              "displayName": "IL",
+              "fullName": "Illinois",
+              "id": "IL",
+            },
+            Object {
+              "displayName": "IN",
+              "fullName": "Indiana",
+              "id": "IN",
+            },
+            Object {
+              "displayName": "IA",
+              "fullName": "Iowa",
+              "id": "IA",
+            },
+            Object {
+              "displayName": "KS",
+              "fullName": "Kansas",
+              "id": "KS",
+            },
+            Object {
+              "displayName": "KY",
+              "fullName": "Kentucky",
+              "id": "KY",
+            },
+            Object {
+              "displayName": "LA",
+              "fullName": "Louisiana",
+              "id": "LA",
+            },
+            Object {
+              "displayName": "ME",
+              "fullName": "Maine",
+              "id": "ME",
+            },
+            Object {
+              "displayName": "MH",
+              "fullName": "Marshall Islands",
+              "id": "MH",
+            },
+            Object {
+              "displayName": "MD",
+              "fullName": "Maryland",
+              "id": "MD",
+            },
+            Object {
+              "displayName": "MA",
+              "fullName": "Massachusetts",
+              "id": "MA",
+            },
+            Object {
+              "displayName": "MI",
+              "fullName": "Michigan",
+              "id": "MI",
+            },
+            Object {
+              "displayName": "MN",
+              "fullName": "Minnesota",
+              "id": "MN",
+            },
+            Object {
+              "displayName": "MS",
+              "fullName": "Mississippi",
+              "id": "MS",
+            },
+            Object {
+              "displayName": "MO",
+              "fullName": "Missouri",
+              "id": "MO",
+            },
+            Object {
+              "displayName": "MT",
+              "fullName": "Montana",
+              "id": "MT",
+            },
+            Object {
+              "displayName": "NE",
+              "fullName": "Nebraska",
+              "id": "NE",
+            },
+            Object {
+              "displayName": "NV",
+              "fullName": "Nevada",
+              "id": "NV",
+            },
+            Object {
+              "displayName": "NH",
+              "fullName": "New Hampshire",
+              "id": "NH",
+            },
+            Object {
+              "displayName": "NJ",
+              "fullName": "New Jersey",
+              "id": "NJ",
+            },
+            Object {
+              "displayName": "NM",
+              "fullName": "New Mexico",
+              "id": "NM",
+            },
+            Object {
+              "displayName": "NY",
+              "fullName": "New York",
+              "id": "NY",
+            },
+            Object {
+              "displayName": "NC",
+              "fullName": "North Carolina",
+              "id": "NC",
+            },
+            Object {
+              "displayName": "ND",
+              "fullName": "North Dakota",
+              "id": "ND",
+            },
+            Object {
+              "displayName": "MP",
+              "fullName": "Northern Marianas",
+              "id": "MP",
+            },
+            Object {
+              "displayName": "OH",
+              "fullName": "Ohio",
+              "id": "OH",
+            },
+            Object {
+              "displayName": "OK",
+              "fullName": "Oklahoma",
+              "id": "OK",
+            },
+            Object {
+              "displayName": "OR",
+              "fullName": "Oregon",
+              "id": "OR",
+            },
+            Object {
+              "displayName": "PW",
+              "fullName": "Palau",
+              "id": "PW",
+            },
+            Object {
+              "displayName": "PA",
+              "fullName": "Pennsylvania",
+              "id": "PA",
+            },
+            Object {
+              "displayName": "PR",
+              "fullName": "Puerto Rico",
+              "id": "PR",
+            },
+            Object {
+              "displayName": "RI",
+              "fullName": "Rhode Island",
+              "id": "RI",
+            },
+            Object {
+              "displayName": "SC",
+              "fullName": "South Carolina",
+              "id": "SC",
+            },
+            Object {
+              "displayName": "SD",
+              "fullName": "South Dakota",
+              "id": "SD",
+            },
+            Object {
+              "displayName": "TN",
+              "fullName": "Tennessee",
+              "id": "TN",
+            },
+            Object {
+              "displayName": "TX",
+              "fullName": "Texas",
+              "id": "TX",
+            },
+            Object {
+              "displayName": "UT",
+              "fullName": "Utah",
+              "id": "UT",
+            },
+            Object {
+              "displayName": "VT",
+              "fullName": "Vermont",
+              "id": "VT",
+            },
+            Object {
+              "displayName": "VI",
+              "fullName": "Virginia",
+              "id": "VI",
+            },
+            Object {
+              "displayName": "VA",
+              "fullName": "Virgin Islands",
+              "id": "VA",
+            },
+            Object {
+              "displayName": "WA",
+              "fullName": "Washington",
+              "id": "WA",
+            },
+            Object {
+              "displayName": "WV",
+              "fullName": "West Virginia",
+              "id": "WV",
+            },
+            Object {
+              "displayName": "WI",
+              "fullName": "Wisconsin",
+              "id": "WI",
+            },
+            Object {
+              "displayName": "WY",
+              "fullName": "Wyoming",
+              "id": "WY",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="noCountryZip"
+        keyboardType="numeric"
+        label="lbl_PLCCForm_zipCode"
+        maxLength={5}
+        name="noCountryZip"
+        type="text"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="phoneNumberWithAlt"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_mobilePhoneNumber"
+      maxLength={10}
+      name="phoneNumberWithAlt"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="altPhoneNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_alternatePhone"
+      maxLength={10}
+      name="altPhoneNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontSize="fs10"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    text="lbl_PLCCForm_minPhone"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="PERSONAL INFORMATION"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontSize="fs10"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingTop="10px"
+    text="lbl_PLCCForm_dob"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Mm"
+        id="month"
+        name="month"
+        options={
+          Array [
+            Object {
+              "displayName": "Jan",
+              "id": "1",
+            },
+            Object {
+              "displayName": "Feb",
+              "id": "2",
+            },
+            Object {
+              "displayName": "Mar",
+              "id": "3",
+            },
+            Object {
+              "displayName": "Apr",
+              "id": "4",
+            },
+            Object {
+              "displayName": "May",
+              "id": "5",
+            },
+            Object {
+              "displayName": "Jun",
+              "id": "6",
+            },
+            Object {
+              "displayName": "Jul",
+              "id": "7",
+            },
+            Object {
+              "displayName": "Aug",
+              "id": "8",
+            },
+            Object {
+              "displayName": "Sep",
+              "id": "9",
+            },
+            Object {
+              "displayName": "Oct",
+              "id": "10",
+            },
+            Object {
+              "displayName": "Nov",
+              "id": "11",
+            },
+            Object {
+              "displayName": "Dec",
+              "id": "12",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Dd"
+        id="date"
+        name="date"
+        options={
+          Array [
+            Object {
+              "displayName": "01",
+              "id": "01",
+            },
+            Object {
+              "displayName": "02",
+              "id": "02",
+            },
+            Object {
+              "displayName": "03",
+              "id": "03",
+            },
+            Object {
+              "displayName": "04",
+              "id": "04",
+            },
+            Object {
+              "displayName": "05",
+              "id": "05",
+            },
+            Object {
+              "displayName": "06",
+              "id": "06",
+            },
+            Object {
+              "displayName": "07",
+              "id": "07",
+            },
+            Object {
+              "displayName": "08",
+              "id": "08",
+            },
+            Object {
+              "displayName": "09",
+              "id": "09",
+            },
+            Object {
+              "displayName": "10",
+              "id": "10",
+            },
+            Object {
+              "displayName": "11",
+              "id": "11",
+            },
+            Object {
+              "displayName": "12",
+              "id": "12",
+            },
+            Object {
+              "displayName": "13",
+              "id": "13",
+            },
+            Object {
+              "displayName": "14",
+              "id": "14",
+            },
+            Object {
+              "displayName": "15",
+              "id": "15",
+            },
+            Object {
+              "displayName": "16",
+              "id": "16",
+            },
+            Object {
+              "displayName": "17",
+              "id": "17",
+            },
+            Object {
+              "displayName": "18",
+              "id": "18",
+            },
+            Object {
+              "displayName": "19",
+              "id": "19",
+            },
+            Object {
+              "displayName": "20",
+              "id": "20",
+            },
+            Object {
+              "displayName": "21",
+              "id": "21",
+            },
+            Object {
+              "displayName": "22",
+              "id": "22",
+            },
+            Object {
+              "displayName": "23",
+              "id": "23",
+            },
+            Object {
+              "displayName": "24",
+              "id": "24",
+            },
+            Object {
+              "displayName": "25",
+              "id": "25",
+            },
+            Object {
+              "displayName": "26",
+              "id": "26",
+            },
+            Object {
+              "displayName": "27",
+              "id": "27",
+            },
+            Object {
+              "displayName": "28",
+              "id": "28",
+            },
+            Object {
+              "displayName": "29",
+              "id": "29",
+            },
+            Object {
+              "displayName": "30",
+              "id": "30",
+            },
+            Object {
+              "displayName": "31",
+              "id": "31",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Yyyy"
+        id="year"
+        name="year"
+        options={
+          Array [
+            Object {
+              "displayName": "2002",
+              "id": "2002",
+            },
+            Object {
+              "displayName": "2001",
+              "id": "2001",
+            },
+            Object {
+              "displayName": "2000",
+              "id": "2000",
+            },
+            Object {
+              "displayName": "1999",
+              "id": "1999",
+            },
+            Object {
+              "displayName": "1998",
+              "id": "1998",
+            },
+            Object {
+              "displayName": "1997",
+              "id": "1997",
+            },
+            Object {
+              "displayName": "1996",
+              "id": "1996",
+            },
+            Object {
+              "displayName": "1995",
+              "id": "1995",
+            },
+            Object {
+              "displayName": "1994",
+              "id": "1994",
+            },
+            Object {
+              "displayName": "1993",
+              "id": "1993",
+            },
+            Object {
+              "displayName": "1992",
+              "id": "1992",
+            },
+            Object {
+              "displayName": "1991",
+              "id": "1991",
+            },
+            Object {
+              "displayName": "1990",
+              "id": "1990",
+            },
+            Object {
+              "displayName": "1989",
+              "id": "1989",
+            },
+            Object {
+              "displayName": "1988",
+              "id": "1988",
+            },
+            Object {
+              "displayName": "1987",
+              "id": "1987",
+            },
+            Object {
+              "displayName": "1986",
+              "id": "1986",
+            },
+            Object {
+              "displayName": "1985",
+              "id": "1985",
+            },
+            Object {
+              "displayName": "1984",
+              "id": "1984",
+            },
+            Object {
+              "displayName": "1983",
+              "id": "1983",
+            },
+            Object {
+              "displayName": "1982",
+              "id": "1982",
+            },
+            Object {
+              "displayName": "1981",
+              "id": "1981",
+            },
+            Object {
+              "displayName": "1980",
+              "id": "1980",
+            },
+            Object {
+              "displayName": "1979",
+              "id": "1979",
+            },
+            Object {
+              "displayName": "1978",
+              "id": "1978",
+            },
+            Object {
+              "displayName": "1977",
+              "id": "1977",
+            },
+            Object {
+              "displayName": "1976",
+              "id": "1976",
+            },
+            Object {
+              "displayName": "1975",
+              "id": "1975",
+            },
+            Object {
+              "displayName": "1974",
+              "id": "1974",
+            },
+            Object {
+              "displayName": "1973",
+              "id": "1973",
+            },
+            Object {
+              "displayName": "1972",
+              "id": "1972",
+            },
+            Object {
+              "displayName": "1971",
+              "id": "1971",
+            },
+            Object {
+              "displayName": "1970",
+              "id": "1970",
+            },
+            Object {
+              "displayName": "1969",
+              "id": "1969",
+            },
+            Object {
+              "displayName": "1968",
+              "id": "1968",
+            },
+            Object {
+              "displayName": "1967",
+              "id": "1967",
+            },
+            Object {
+              "displayName": "1966",
+              "id": "1966",
+            },
+            Object {
+              "displayName": "1965",
+              "id": "1965",
+            },
+            Object {
+              "displayName": "1964",
+              "id": "1964",
+            },
+            Object {
+              "displayName": "1963",
+              "id": "1963",
+            },
+            Object {
+              "displayName": "1962",
+              "id": "1962",
+            },
+            Object {
+              "displayName": "1961",
+              "id": "1961",
+            },
+            Object {
+              "displayName": "1960",
+              "id": "1960",
+            },
+            Object {
+              "displayName": "1959",
+              "id": "1959",
+            },
+            Object {
+              "displayName": "1958",
+              "id": "1958",
+            },
+            Object {
+              "displayName": "1957",
+              "id": "1957",
+            },
+            Object {
+              "displayName": "1956",
+              "id": "1956",
+            },
+            Object {
+              "displayName": "1955",
+              "id": "1955",
+            },
+            Object {
+              "displayName": "1954",
+              "id": "1954",
+            },
+            Object {
+              "displayName": "1953",
+              "id": "1953",
+            },
+            Object {
+              "displayName": "1952",
+              "id": "1952",
+            },
+            Object {
+              "displayName": "1951",
+              "id": "1951",
+            },
+            Object {
+              "displayName": "1950",
+              "id": "1950",
+            },
+            Object {
+              "displayName": "1949",
+              "id": "1949",
+            },
+            Object {
+              "displayName": "1948",
+              "id": "1948",
+            },
+            Object {
+              "displayName": "1947",
+              "id": "1947",
+            },
+            Object {
+              "displayName": "1946",
+              "id": "1946",
+            },
+            Object {
+              "displayName": "1945",
+              "id": "1945",
+            },
+            Object {
+              "displayName": "1944",
+              "id": "1944",
+            },
+            Object {
+              "displayName": "1943",
+              "id": "1943",
+            },
+            Object {
+              "displayName": "1942",
+              "id": "1942",
+            },
+            Object {
+              "displayName": "1941",
+              "id": "1941",
+            },
+            Object {
+              "displayName": "1940",
+              "id": "1940",
+            },
+            Object {
+              "displayName": "1939",
+              "id": "1939",
+            },
+            Object {
+              "displayName": "1938",
+              "id": "1938",
+            },
+            Object {
+              "displayName": "1937",
+              "id": "1937",
+            },
+            Object {
+              "displayName": "1936",
+              "id": "1936",
+            },
+            Object {
+              "displayName": "1935",
+              "id": "1935",
+            },
+            Object {
+              "displayName": "1934",
+              "id": "1934",
+            },
+            Object {
+              "displayName": "1933",
+              "id": "1933",
+            },
+            Object {
+              "displayName": "1932",
+              "id": "1932",
+            },
+            Object {
+              "displayName": "1931",
+              "id": "1931",
+            },
+            Object {
+              "displayName": "1930",
+              "id": "1930",
+            },
+            Object {
+              "displayName": "1929",
+              "id": "1929",
+            },
+            Object {
+              "displayName": "1928",
+              "id": "1928",
+            },
+            Object {
+              "displayName": "1927",
+              "id": "1927",
+            },
+            Object {
+              "displayName": "1926",
+              "id": "1926",
+            },
+            Object {
+              "displayName": "1925",
+              "id": "1925",
+            },
+            Object {
+              "displayName": "1924",
+              "id": "1924",
+            },
+            Object {
+              "displayName": "1923",
+              "id": "1923",
+            },
+            Object {
+              "displayName": "1922",
+              "id": "1922",
+            },
+            Object {
+              "displayName": "1921",
+              "id": "1921",
+            },
+            Object {
+              "displayName": "1920",
+              "id": "1920",
+            },
+            Object {
+              "displayName": "1919",
+              "id": "1919",
+            },
+            Object {
+              "displayName": "1918",
+              "id": "1918",
+            },
+            Object {
+              "displayName": "1917",
+              "id": "1917",
+            },
+            Object {
+              "displayName": "1916",
+              "id": "1916",
+            },
+            Object {
+              "displayName": "1915",
+              "id": "1915",
+            },
+            Object {
+              "displayName": "1914",
+              "id": "1914",
+            },
+            Object {
+              "displayName": "1913",
+              "id": "1913",
+            },
+            Object {
+              "displayName": "1912",
+              "id": "1912",
+            },
+            Object {
+              "displayName": "1911",
+              "id": "1911",
+            },
+            Object {
+              "displayName": "1910",
+              "id": "1910",
+            },
+            Object {
+              "displayName": "1909",
+              "id": "1909",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="ssNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_ssn"
+      maxLength={4}
+      name="ssNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="635px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="lbl_PLCCForm_financialTermsHeading"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="900px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        enableSuccessCheck={false}
+        id="iAgree"
+        name="iAgree"
+        rightText="lbl_PLCCForm_iAgreeCheckboxText"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_PLCCForm_submitButton"
+      theme={Object {}}
+      type="submit"
+      url=""
+      width="90%"
+      withNoLineHeight={false}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="large"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      paddingBottom="60px"
+      paddingTop="40px"
+      text="lbl_PLCCForm_noThanks"
+      underline={true}
+      url=""
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(ScrollViewMock)>
+`;
+
+exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(Styled(ImageComp))
+      alt=""
+      height="166px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/tcp-cc.png",
+        }
+      }
+      url=""
+      width="70%"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <RichText
+        actionHandler={[Function]}
+        domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": undefined,
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="preScreenCode"
+      label="lbl_PLCCForm_preScreenCodeOpt"
+      maxLength={12}
+      name="lbl_PLCCForm_preScreenCodeOpt"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingBottom="12px"
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="26px"
+    text="lbl_PLCCForm_contactInfoHeader"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="firstName"
+          label="lbl_PLCCForm_firstName"
+          maxLength={20}
+          name="firstName"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="middleName"
+          label="lbl_PLCCForm_middleNameInitial"
+          maxLength={5}
+          name="middleName"
+          type="text"
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="lastName"
+      label="lbl_PLCCForm_lastName"
+      maxLength={15}
+      name="lastName"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="emailAddress"
+      label="lbl_PLCCForm_email"
+      name="emailAddress"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            undefined,
+          ],
+        }
+      }
+      headerTitle="lbl_PLCCForm_addressLine1"
+      id="addressLine1"
+      initialValue=""
+      name="addressLine1"
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="addressLine1"
+        label=""
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine2"
+      label="lbl_PLCCForm_addressLine2"
+      maxLength={20}
+      name="addressLine2"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="city"
+      label="lbl_PLCCForm_city"
+      maxLength={20}
+      name="city"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="State"
+        id="statewocountry"
+        name="statewocountry"
+        options={
+          Array [
+            Object {
+              "displayName": "AL",
+              "fullName": "Alabama",
+              "id": "AL",
+            },
+            Object {
+              "displayName": "AK",
+              "fullName": "Alaska",
+              "id": "AK",
+            },
+            Object {
+              "displayName": "AS",
+              "fullName": "American Samoa",
+              "id": "AS",
+            },
+            Object {
+              "displayName": "AZ",
+              "fullName": "Arizona",
+              "id": "AZ",
+            },
+            Object {
+              "displayName": "AR",
+              "fullName": "Arkansas",
+              "id": "AR",
+            },
+            Object {
+              "displayName": "AA",
+              "fullName": "",
+              "id": "AA",
+            },
+            Object {
+              "displayName": "AE",
+              "fullName": "",
+              "id": "AE",
+            },
+            Object {
+              "displayName": "AP",
+              "fullName": "",
+              "id": "AP",
+            },
+            Object {
+              "displayName": "CA",
+              "fullName": "California",
+              "id": "CA",
+            },
+            Object {
+              "displayName": "CO",
+              "fullName": "Colorado",
+              "id": "CO",
+            },
+            Object {
+              "displayName": "CT",
+              "fullName": "Connecticut",
+              "id": "CT",
+            },
+            Object {
+              "displayName": "DE",
+              "fullName": "Delaware",
+              "id": "DE",
+            },
+            Object {
+              "displayName": "DC",
+              "fullName": "Dist. of Columbia",
+              "id": "DC",
+            },
+            Object {
+              "displayName": "FM",
+              "fullName": "",
+              "id": "FM",
+            },
+            Object {
+              "displayName": "FL",
+              "fullName": "Florida",
+              "id": "FL",
+            },
+            Object {
+              "displayName": "GA",
+              "fullName": "Georgia",
+              "id": "GA",
+            },
+            Object {
+              "displayName": "GU",
+              "fullName": "Guam",
+              "id": "GU",
+            },
+            Object {
+              "displayName": "HI",
+              "fullName": "Hawaii",
+              "id": "HI",
+            },
+            Object {
+              "displayName": "ID",
+              "fullName": "Idaho",
+              "id": "ID",
+            },
+            Object {
+              "displayName": "IL",
+              "fullName": "Illinois",
+              "id": "IL",
+            },
+            Object {
+              "displayName": "IN",
+              "fullName": "Indiana",
+              "id": "IN",
+            },
+            Object {
+              "displayName": "IA",
+              "fullName": "Iowa",
+              "id": "IA",
+            },
+            Object {
+              "displayName": "KS",
+              "fullName": "Kansas",
+              "id": "KS",
+            },
+            Object {
+              "displayName": "KY",
+              "fullName": "Kentucky",
+              "id": "KY",
+            },
+            Object {
+              "displayName": "LA",
+              "fullName": "Louisiana",
+              "id": "LA",
+            },
+            Object {
+              "displayName": "ME",
+              "fullName": "Maine",
+              "id": "ME",
+            },
+            Object {
+              "displayName": "MH",
+              "fullName": "Marshall Islands",
+              "id": "MH",
+            },
+            Object {
+              "displayName": "MD",
+              "fullName": "Maryland",
+              "id": "MD",
+            },
+            Object {
+              "displayName": "MA",
+              "fullName": "Massachusetts",
+              "id": "MA",
+            },
+            Object {
+              "displayName": "MI",
+              "fullName": "Michigan",
+              "id": "MI",
+            },
+            Object {
+              "displayName": "MN",
+              "fullName": "Minnesota",
+              "id": "MN",
+            },
+            Object {
+              "displayName": "MS",
+              "fullName": "Mississippi",
+              "id": "MS",
+            },
+            Object {
+              "displayName": "MO",
+              "fullName": "Missouri",
+              "id": "MO",
+            },
+            Object {
+              "displayName": "MT",
+              "fullName": "Montana",
+              "id": "MT",
+            },
+            Object {
+              "displayName": "NE",
+              "fullName": "Nebraska",
+              "id": "NE",
+            },
+            Object {
+              "displayName": "NV",
+              "fullName": "Nevada",
+              "id": "NV",
+            },
+            Object {
+              "displayName": "NH",
+              "fullName": "New Hampshire",
+              "id": "NH",
+            },
+            Object {
+              "displayName": "NJ",
+              "fullName": "New Jersey",
+              "id": "NJ",
+            },
+            Object {
+              "displayName": "NM",
+              "fullName": "New Mexico",
+              "id": "NM",
+            },
+            Object {
+              "displayName": "NY",
+              "fullName": "New York",
+              "id": "NY",
+            },
+            Object {
+              "displayName": "NC",
+              "fullName": "North Carolina",
+              "id": "NC",
+            },
+            Object {
+              "displayName": "ND",
+              "fullName": "North Dakota",
+              "id": "ND",
+            },
+            Object {
+              "displayName": "MP",
+              "fullName": "Northern Marianas",
+              "id": "MP",
+            },
+            Object {
+              "displayName": "OH",
+              "fullName": "Ohio",
+              "id": "OH",
+            },
+            Object {
+              "displayName": "OK",
+              "fullName": "Oklahoma",
+              "id": "OK",
+            },
+            Object {
+              "displayName": "OR",
+              "fullName": "Oregon",
+              "id": "OR",
+            },
+            Object {
+              "displayName": "PW",
+              "fullName": "Palau",
+              "id": "PW",
+            },
+            Object {
+              "displayName": "PA",
+              "fullName": "Pennsylvania",
+              "id": "PA",
+            },
+            Object {
+              "displayName": "PR",
+              "fullName": "Puerto Rico",
+              "id": "PR",
+            },
+            Object {
+              "displayName": "RI",
+              "fullName": "Rhode Island",
+              "id": "RI",
+            },
+            Object {
+              "displayName": "SC",
+              "fullName": "South Carolina",
+              "id": "SC",
+            },
+            Object {
+              "displayName": "SD",
+              "fullName": "South Dakota",
+              "id": "SD",
+            },
+            Object {
+              "displayName": "TN",
+              "fullName": "Tennessee",
+              "id": "TN",
+            },
+            Object {
+              "displayName": "TX",
+              "fullName": "Texas",
+              "id": "TX",
+            },
+            Object {
+              "displayName": "UT",
+              "fullName": "Utah",
+              "id": "UT",
+            },
+            Object {
+              "displayName": "VT",
+              "fullName": "Vermont",
+              "id": "VT",
+            },
+            Object {
+              "displayName": "VI",
+              "fullName": "Virginia",
+              "id": "VI",
+            },
+            Object {
+              "displayName": "VA",
+              "fullName": "Virgin Islands",
+              "id": "VA",
+            },
+            Object {
+              "displayName": "WA",
+              "fullName": "Washington",
+              "id": "WA",
+            },
+            Object {
+              "displayName": "WV",
+              "fullName": "West Virginia",
+              "id": "WV",
+            },
+            Object {
+              "displayName": "WI",
+              "fullName": "Wisconsin",
+              "id": "WI",
+            },
+            Object {
+              "displayName": "WY",
+              "fullName": "Wyoming",
+              "id": "WY",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="noCountryZip"
+        keyboardType="numeric"
+        label="lbl_PLCCForm_zipCode"
+        maxLength={5}
+        name="noCountryZip"
+        type="text"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="phoneNumberWithAlt"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_mobilePhoneNumber"
+      maxLength={10}
+      name="phoneNumberWithAlt"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="altPhoneNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_alternatePhone"
+      maxLength={10}
+      name="altPhoneNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontSize="fs10"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    text="lbl_PLCCForm_minPhone"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="PERSONAL INFORMATION"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontSize="fs10"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingTop="10px"
+    text="lbl_PLCCForm_dob"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Mm"
+        id="month"
+        name="month"
+        options={
+          Array [
+            Object {
+              "displayName": "Jan",
+              "id": "1",
+            },
+            Object {
+              "displayName": "Feb",
+              "id": "2",
+            },
+            Object {
+              "displayName": "Mar",
+              "id": "3",
+            },
+            Object {
+              "displayName": "Apr",
+              "id": "4",
+            },
+            Object {
+              "displayName": "May",
+              "id": "5",
+            },
+            Object {
+              "displayName": "Jun",
+              "id": "6",
+            },
+            Object {
+              "displayName": "Jul",
+              "id": "7",
+            },
+            Object {
+              "displayName": "Aug",
+              "id": "8",
+            },
+            Object {
+              "displayName": "Sep",
+              "id": "9",
+            },
+            Object {
+              "displayName": "Oct",
+              "id": "10",
+            },
+            Object {
+              "displayName": "Nov",
+              "id": "11",
+            },
+            Object {
+              "displayName": "Dec",
+              "id": "12",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Dd"
+        id="date"
+        name="date"
+        options={
+          Array [
+            Object {
+              "displayName": "01",
+              "id": "01",
+            },
+            Object {
+              "displayName": "02",
+              "id": "02",
+            },
+            Object {
+              "displayName": "03",
+              "id": "03",
+            },
+            Object {
+              "displayName": "04",
+              "id": "04",
+            },
+            Object {
+              "displayName": "05",
+              "id": "05",
+            },
+            Object {
+              "displayName": "06",
+              "id": "06",
+            },
+            Object {
+              "displayName": "07",
+              "id": "07",
+            },
+            Object {
+              "displayName": "08",
+              "id": "08",
+            },
+            Object {
+              "displayName": "09",
+              "id": "09",
+            },
+            Object {
+              "displayName": "10",
+              "id": "10",
+            },
+            Object {
+              "displayName": "11",
+              "id": "11",
+            },
+            Object {
+              "displayName": "12",
+              "id": "12",
+            },
+            Object {
+              "displayName": "13",
+              "id": "13",
+            },
+            Object {
+              "displayName": "14",
+              "id": "14",
+            },
+            Object {
+              "displayName": "15",
+              "id": "15",
+            },
+            Object {
+              "displayName": "16",
+              "id": "16",
+            },
+            Object {
+              "displayName": "17",
+              "id": "17",
+            },
+            Object {
+              "displayName": "18",
+              "id": "18",
+            },
+            Object {
+              "displayName": "19",
+              "id": "19",
+            },
+            Object {
+              "displayName": "20",
+              "id": "20",
+            },
+            Object {
+              "displayName": "21",
+              "id": "21",
+            },
+            Object {
+              "displayName": "22",
+              "id": "22",
+            },
+            Object {
+              "displayName": "23",
+              "id": "23",
+            },
+            Object {
+              "displayName": "24",
+              "id": "24",
+            },
+            Object {
+              "displayName": "25",
+              "id": "25",
+            },
+            Object {
+              "displayName": "26",
+              "id": "26",
+            },
+            Object {
+              "displayName": "27",
+              "id": "27",
+            },
+            Object {
+              "displayName": "28",
+              "id": "28",
+            },
+            Object {
+              "displayName": "29",
+              "id": "29",
+            },
+            Object {
+              "displayName": "30",
+              "id": "30",
+            },
+            Object {
+              "displayName": "31",
+              "id": "31",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Yyyy"
+        id="year"
+        name="year"
+        options={
+          Array [
+            Object {
+              "displayName": "2002",
+              "id": "2002",
+            },
+            Object {
+              "displayName": "2001",
+              "id": "2001",
+            },
+            Object {
+              "displayName": "2000",
+              "id": "2000",
+            },
+            Object {
+              "displayName": "1999",
+              "id": "1999",
+            },
+            Object {
+              "displayName": "1998",
+              "id": "1998",
+            },
+            Object {
+              "displayName": "1997",
+              "id": "1997",
+            },
+            Object {
+              "displayName": "1996",
+              "id": "1996",
+            },
+            Object {
+              "displayName": "1995",
+              "id": "1995",
+            },
+            Object {
+              "displayName": "1994",
+              "id": "1994",
+            },
+            Object {
+              "displayName": "1993",
+              "id": "1993",
+            },
+            Object {
+              "displayName": "1992",
+              "id": "1992",
+            },
+            Object {
+              "displayName": "1991",
+              "id": "1991",
+            },
+            Object {
+              "displayName": "1990",
+              "id": "1990",
+            },
+            Object {
+              "displayName": "1989",
+              "id": "1989",
+            },
+            Object {
+              "displayName": "1988",
+              "id": "1988",
+            },
+            Object {
+              "displayName": "1987",
+              "id": "1987",
+            },
+            Object {
+              "displayName": "1986",
+              "id": "1986",
+            },
+            Object {
+              "displayName": "1985",
+              "id": "1985",
+            },
+            Object {
+              "displayName": "1984",
+              "id": "1984",
+            },
+            Object {
+              "displayName": "1983",
+              "id": "1983",
+            },
+            Object {
+              "displayName": "1982",
+              "id": "1982",
+            },
+            Object {
+              "displayName": "1981",
+              "id": "1981",
+            },
+            Object {
+              "displayName": "1980",
+              "id": "1980",
+            },
+            Object {
+              "displayName": "1979",
+              "id": "1979",
+            },
+            Object {
+              "displayName": "1978",
+              "id": "1978",
+            },
+            Object {
+              "displayName": "1977",
+              "id": "1977",
+            },
+            Object {
+              "displayName": "1976",
+              "id": "1976",
+            },
+            Object {
+              "displayName": "1975",
+              "id": "1975",
+            },
+            Object {
+              "displayName": "1974",
+              "id": "1974",
+            },
+            Object {
+              "displayName": "1973",
+              "id": "1973",
+            },
+            Object {
+              "displayName": "1972",
+              "id": "1972",
+            },
+            Object {
+              "displayName": "1971",
+              "id": "1971",
+            },
+            Object {
+              "displayName": "1970",
+              "id": "1970",
+            },
+            Object {
+              "displayName": "1969",
+              "id": "1969",
+            },
+            Object {
+              "displayName": "1968",
+              "id": "1968",
+            },
+            Object {
+              "displayName": "1967",
+              "id": "1967",
+            },
+            Object {
+              "displayName": "1966",
+              "id": "1966",
+            },
+            Object {
+              "displayName": "1965",
+              "id": "1965",
+            },
+            Object {
+              "displayName": "1964",
+              "id": "1964",
+            },
+            Object {
+              "displayName": "1963",
+              "id": "1963",
+            },
+            Object {
+              "displayName": "1962",
+              "id": "1962",
+            },
+            Object {
+              "displayName": "1961",
+              "id": "1961",
+            },
+            Object {
+              "displayName": "1960",
+              "id": "1960",
+            },
+            Object {
+              "displayName": "1959",
+              "id": "1959",
+            },
+            Object {
+              "displayName": "1958",
+              "id": "1958",
+            },
+            Object {
+              "displayName": "1957",
+              "id": "1957",
+            },
+            Object {
+              "displayName": "1956",
+              "id": "1956",
+            },
+            Object {
+              "displayName": "1955",
+              "id": "1955",
+            },
+            Object {
+              "displayName": "1954",
+              "id": "1954",
+            },
+            Object {
+              "displayName": "1953",
+              "id": "1953",
+            },
+            Object {
+              "displayName": "1952",
+              "id": "1952",
+            },
+            Object {
+              "displayName": "1951",
+              "id": "1951",
+            },
+            Object {
+              "displayName": "1950",
+              "id": "1950",
+            },
+            Object {
+              "displayName": "1949",
+              "id": "1949",
+            },
+            Object {
+              "displayName": "1948",
+              "id": "1948",
+            },
+            Object {
+              "displayName": "1947",
+              "id": "1947",
+            },
+            Object {
+              "displayName": "1946",
+              "id": "1946",
+            },
+            Object {
+              "displayName": "1945",
+              "id": "1945",
+            },
+            Object {
+              "displayName": "1944",
+              "id": "1944",
+            },
+            Object {
+              "displayName": "1943",
+              "id": "1943",
+            },
+            Object {
+              "displayName": "1942",
+              "id": "1942",
+            },
+            Object {
+              "displayName": "1941",
+              "id": "1941",
+            },
+            Object {
+              "displayName": "1940",
+              "id": "1940",
+            },
+            Object {
+              "displayName": "1939",
+              "id": "1939",
+            },
+            Object {
+              "displayName": "1938",
+              "id": "1938",
+            },
+            Object {
+              "displayName": "1937",
+              "id": "1937",
+            },
+            Object {
+              "displayName": "1936",
+              "id": "1936",
+            },
+            Object {
+              "displayName": "1935",
+              "id": "1935",
+            },
+            Object {
+              "displayName": "1934",
+              "id": "1934",
+            },
+            Object {
+              "displayName": "1933",
+              "id": "1933",
+            },
+            Object {
+              "displayName": "1932",
+              "id": "1932",
+            },
+            Object {
+              "displayName": "1931",
+              "id": "1931",
+            },
+            Object {
+              "displayName": "1930",
+              "id": "1930",
+            },
+            Object {
+              "displayName": "1929",
+              "id": "1929",
+            },
+            Object {
+              "displayName": "1928",
+              "id": "1928",
+            },
+            Object {
+              "displayName": "1927",
+              "id": "1927",
+            },
+            Object {
+              "displayName": "1926",
+              "id": "1926",
+            },
+            Object {
+              "displayName": "1925",
+              "id": "1925",
+            },
+            Object {
+              "displayName": "1924",
+              "id": "1924",
+            },
+            Object {
+              "displayName": "1923",
+              "id": "1923",
+            },
+            Object {
+              "displayName": "1922",
+              "id": "1922",
+            },
+            Object {
+              "displayName": "1921",
+              "id": "1921",
+            },
+            Object {
+              "displayName": "1920",
+              "id": "1920",
+            },
+            Object {
+              "displayName": "1919",
+              "id": "1919",
+            },
+            Object {
+              "displayName": "1918",
+              "id": "1918",
+            },
+            Object {
+              "displayName": "1917",
+              "id": "1917",
+            },
+            Object {
+              "displayName": "1916",
+              "id": "1916",
+            },
+            Object {
+              "displayName": "1915",
+              "id": "1915",
+            },
+            Object {
+              "displayName": "1914",
+              "id": "1914",
+            },
+            Object {
+              "displayName": "1913",
+              "id": "1913",
+            },
+            Object {
+              "displayName": "1912",
+              "id": "1912",
+            },
+            Object {
+              "displayName": "1911",
+              "id": "1911",
+            },
+            Object {
+              "displayName": "1910",
+              "id": "1910",
+            },
+            Object {
+              "displayName": "1909",
+              "id": "1909",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="ssNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_ssn"
+      maxLength={4}
+      name="ssNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="635px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="lbl_PLCCForm_financialTermsHeading"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="900px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        enableSuccessCheck={false}
+        id="iAgree"
+        name="iAgree"
+        rightText="lbl_PLCCForm_iAgreeCheckboxText"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_PLCCForm_submitButton"
+      theme={Object {}}
+      type="submit"
+      url=""
+      width="90%"
+      withNoLineHeight={false}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="large"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      paddingBottom="60px"
+      paddingTop="40px"
+      text="lbl_PLCCForm_noThanks"
+      underline={true}
+      url=""
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(ScrollViewMock)>
+`;
+
+exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
+<Styled(ScrollViewMock)>
+  <Styled(View)>
+    <Styled(Styled(ImageComp))
+      alt=""
+      height="166px"
+      host=""
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/tcp-cc.png",
+        }
+      }
+      url=""
+      width="70%"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <RichText
+        actionHandler={[Function]}
+        domStorageEnabled={false}
+        isApplyDeviceHeight={false}
+        isNativeView={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": undefined,
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="preScreenCode"
+      label="lbl_PLCCForm_preScreenCodeOpt"
+      maxLength={12}
+      name="lbl_PLCCForm_preScreenCodeOpt"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs15"
+      margin={null}
+      mobilefontFamily="secondary"
+      numberOfLines={null}
+      paddingLeft="16px"
+      paddingTop="1px"
+      text="lbl_PLCCForm_preScreenCodeText"
+      textAlign="center"
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      color="gray.900"
+      dataLocator=""
+      fontSize="fs15"
+      margin={null}
+      numberOfLines={null}
+      paddingRight="16px"
+      paddingTop="1px"
+      text="lbl_PLCCForm_enterHere"
+      textAlign="center"
+      textDecoration={null}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingBottom="12px"
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="26px"
+    text="lbl_PLCCForm_contactInfoHeader"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="firstName"
+          label="lbl_PLCCForm_firstName"
+          maxLength={20}
+          name="firstName"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "autoCapitalize": "sentences",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "marginBottom": true,
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "onChangeText": [Function],
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "showSuccessCheck": false,
+                "successText": "",
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          id="middleName"
+          label="lbl_PLCCForm_middleNameInitial"
+          maxLength={5}
+          name="middleName"
+          type="text"
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="lastName"
+      label="lbl_PLCCForm_lastName"
+      maxLength={15}
+      name="lastName"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="emailAddress"
+      label="lbl_PLCCForm_email"
+      name="emailAddress"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={[Function]}
+      componentRestrictions={
+        Object {
+          "country": Array [
+            undefined,
+          ],
+        }
+      }
+      headerTitle="lbl_PLCCForm_addressLine1"
+      id="addressLine1"
+      initialValue=""
+      name="addressLine1"
+      onValueChange={[Function]}
+      refs={[Function]}
+    />
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="addressLine1"
+        label=""
+        title=""
+        type="hidden"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="addressLine2"
+      label="lbl_PLCCForm_addressLine2"
+      maxLength={20}
+      name="addressLine2"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="city"
+      label="lbl_PLCCForm_city"
+      maxLength={20}
+      name="city"
+      type="text"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="State"
+        id="statewocountry"
+        name="statewocountry"
+        options={
+          Array [
+            Object {
+              "displayName": "AL",
+              "fullName": "Alabama",
+              "id": "AL",
+            },
+            Object {
+              "displayName": "AK",
+              "fullName": "Alaska",
+              "id": "AK",
+            },
+            Object {
+              "displayName": "AS",
+              "fullName": "American Samoa",
+              "id": "AS",
+            },
+            Object {
+              "displayName": "AZ",
+              "fullName": "Arizona",
+              "id": "AZ",
+            },
+            Object {
+              "displayName": "AR",
+              "fullName": "Arkansas",
+              "id": "AR",
+            },
+            Object {
+              "displayName": "AA",
+              "fullName": "",
+              "id": "AA",
+            },
+            Object {
+              "displayName": "AE",
+              "fullName": "",
+              "id": "AE",
+            },
+            Object {
+              "displayName": "AP",
+              "fullName": "",
+              "id": "AP",
+            },
+            Object {
+              "displayName": "CA",
+              "fullName": "California",
+              "id": "CA",
+            },
+            Object {
+              "displayName": "CO",
+              "fullName": "Colorado",
+              "id": "CO",
+            },
+            Object {
+              "displayName": "CT",
+              "fullName": "Connecticut",
+              "id": "CT",
+            },
+            Object {
+              "displayName": "DE",
+              "fullName": "Delaware",
+              "id": "DE",
+            },
+            Object {
+              "displayName": "DC",
+              "fullName": "Dist. of Columbia",
+              "id": "DC",
+            },
+            Object {
+              "displayName": "FM",
+              "fullName": "",
+              "id": "FM",
+            },
+            Object {
+              "displayName": "FL",
+              "fullName": "Florida",
+              "id": "FL",
+            },
+            Object {
+              "displayName": "GA",
+              "fullName": "Georgia",
+              "id": "GA",
+            },
+            Object {
+              "displayName": "GU",
+              "fullName": "Guam",
+              "id": "GU",
+            },
+            Object {
+              "displayName": "HI",
+              "fullName": "Hawaii",
+              "id": "HI",
+            },
+            Object {
+              "displayName": "ID",
+              "fullName": "Idaho",
+              "id": "ID",
+            },
+            Object {
+              "displayName": "IL",
+              "fullName": "Illinois",
+              "id": "IL",
+            },
+            Object {
+              "displayName": "IN",
+              "fullName": "Indiana",
+              "id": "IN",
+            },
+            Object {
+              "displayName": "IA",
+              "fullName": "Iowa",
+              "id": "IA",
+            },
+            Object {
+              "displayName": "KS",
+              "fullName": "Kansas",
+              "id": "KS",
+            },
+            Object {
+              "displayName": "KY",
+              "fullName": "Kentucky",
+              "id": "KY",
+            },
+            Object {
+              "displayName": "LA",
+              "fullName": "Louisiana",
+              "id": "LA",
+            },
+            Object {
+              "displayName": "ME",
+              "fullName": "Maine",
+              "id": "ME",
+            },
+            Object {
+              "displayName": "MH",
+              "fullName": "Marshall Islands",
+              "id": "MH",
+            },
+            Object {
+              "displayName": "MD",
+              "fullName": "Maryland",
+              "id": "MD",
+            },
+            Object {
+              "displayName": "MA",
+              "fullName": "Massachusetts",
+              "id": "MA",
+            },
+            Object {
+              "displayName": "MI",
+              "fullName": "Michigan",
+              "id": "MI",
+            },
+            Object {
+              "displayName": "MN",
+              "fullName": "Minnesota",
+              "id": "MN",
+            },
+            Object {
+              "displayName": "MS",
+              "fullName": "Mississippi",
+              "id": "MS",
+            },
+            Object {
+              "displayName": "MO",
+              "fullName": "Missouri",
+              "id": "MO",
+            },
+            Object {
+              "displayName": "MT",
+              "fullName": "Montana",
+              "id": "MT",
+            },
+            Object {
+              "displayName": "NE",
+              "fullName": "Nebraska",
+              "id": "NE",
+            },
+            Object {
+              "displayName": "NV",
+              "fullName": "Nevada",
+              "id": "NV",
+            },
+            Object {
+              "displayName": "NH",
+              "fullName": "New Hampshire",
+              "id": "NH",
+            },
+            Object {
+              "displayName": "NJ",
+              "fullName": "New Jersey",
+              "id": "NJ",
+            },
+            Object {
+              "displayName": "NM",
+              "fullName": "New Mexico",
+              "id": "NM",
+            },
+            Object {
+              "displayName": "NY",
+              "fullName": "New York",
+              "id": "NY",
+            },
+            Object {
+              "displayName": "NC",
+              "fullName": "North Carolina",
+              "id": "NC",
+            },
+            Object {
+              "displayName": "ND",
+              "fullName": "North Dakota",
+              "id": "ND",
+            },
+            Object {
+              "displayName": "MP",
+              "fullName": "Northern Marianas",
+              "id": "MP",
+            },
+            Object {
+              "displayName": "OH",
+              "fullName": "Ohio",
+              "id": "OH",
+            },
+            Object {
+              "displayName": "OK",
+              "fullName": "Oklahoma",
+              "id": "OK",
+            },
+            Object {
+              "displayName": "OR",
+              "fullName": "Oregon",
+              "id": "OR",
+            },
+            Object {
+              "displayName": "PW",
+              "fullName": "Palau",
+              "id": "PW",
+            },
+            Object {
+              "displayName": "PA",
+              "fullName": "Pennsylvania",
+              "id": "PA",
+            },
+            Object {
+              "displayName": "PR",
+              "fullName": "Puerto Rico",
+              "id": "PR",
+            },
+            Object {
+              "displayName": "RI",
+              "fullName": "Rhode Island",
+              "id": "RI",
+            },
+            Object {
+              "displayName": "SC",
+              "fullName": "South Carolina",
+              "id": "SC",
+            },
+            Object {
+              "displayName": "SD",
+              "fullName": "South Dakota",
+              "id": "SD",
+            },
+            Object {
+              "displayName": "TN",
+              "fullName": "Tennessee",
+              "id": "TN",
+            },
+            Object {
+              "displayName": "TX",
+              "fullName": "Texas",
+              "id": "TX",
+            },
+            Object {
+              "displayName": "UT",
+              "fullName": "Utah",
+              "id": "UT",
+            },
+            Object {
+              "displayName": "VT",
+              "fullName": "Vermont",
+              "id": "VT",
+            },
+            Object {
+              "displayName": "VI",
+              "fullName": "Virginia",
+              "id": "VI",
+            },
+            Object {
+              "displayName": "VA",
+              "fullName": "Virgin Islands",
+              "id": "VA",
+            },
+            Object {
+              "displayName": "WA",
+              "fullName": "Washington",
+              "id": "WA",
+            },
+            Object {
+              "displayName": "WV",
+              "fullName": "West Virginia",
+              "id": "WV",
+            },
+            Object {
+              "displayName": "WI",
+              "fullName": "Wisconsin",
+              "id": "WI",
+            },
+            Object {
+              "displayName": "WY",
+              "fullName": "Wyoming",
+              "id": "WY",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "_foldedDefaultProps": Object {
+              "ariaLabel": "input",
+              "autoCapitalize": "sentences",
+              "dataLocator": "input-field",
+              "enableSuccessCheck": false,
+              "id": "input",
+              "keyboardType": "default",
+              "label": "input",
+              "marginBottom": true,
+              "meta": Object {
+                "error": "",
+                "touched": "",
+              },
+              "onChangeText": [Function],
+              "secureTextEntry": false,
+              "showErrorIcon": true,
+              "showSuccessCheck": false,
+              "successText": "",
+              "type": "text",
+            },
+            "attrs": Array [],
+            "displayName": "Styled(TextBox)",
+            "inlineStyle": InlineStyle {
+              "rules": Array [
+                "
+    ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+  ",
+              ],
+            },
+            "render": [Function],
+            "styledComponentId": "StyledNativeComponent",
+            "target": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="noCountryZip"
+        keyboardType="numeric"
+        label="lbl_PLCCForm_zipCode"
+        maxLength={5}
+        name="noCountryZip"
+        type="text"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="phoneNumberWithAlt"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_mobilePhoneNumber"
+      maxLength={10}
+      name="phoneNumberWithAlt"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="altPhoneNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_alternatePhone"
+      maxLength={10}
+      name="altPhoneNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontSize="fs10"
+    margin={null}
+    mobilefontFamily="secondary"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    text="lbl_PLCCForm_minPhone"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="PERSONAL INFORMATION"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="gray.900"
+    dataLocator=""
+    fontFamily="secondary"
+    fontWeight="extrabold"
+    margin={null}
+    mobilefontSize="fs10"
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingTop="10px"
+    text="lbl_PLCCForm_dob"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Mm"
+        id="month"
+        name="month"
+        options={
+          Array [
+            Object {
+              "displayName": "Jan",
+              "id": "1",
+            },
+            Object {
+              "displayName": "Feb",
+              "id": "2",
+            },
+            Object {
+              "displayName": "Mar",
+              "id": "3",
+            },
+            Object {
+              "displayName": "Apr",
+              "id": "4",
+            },
+            Object {
+              "displayName": "May",
+              "id": "5",
+            },
+            Object {
+              "displayName": "Jun",
+              "id": "6",
+            },
+            Object {
+              "displayName": "Jul",
+              "id": "7",
+            },
+            Object {
+              "displayName": "Aug",
+              "id": "8",
+            },
+            Object {
+              "displayName": "Sep",
+              "id": "9",
+            },
+            Object {
+              "displayName": "Oct",
+              "id": "10",
+            },
+            Object {
+              "displayName": "Nov",
+              "id": "11",
+            },
+            Object {
+              "displayName": "Dec",
+              "id": "12",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Dd"
+        id="date"
+        name="date"
+        options={
+          Array [
+            Object {
+              "displayName": "01",
+              "id": "01",
+            },
+            Object {
+              "displayName": "02",
+              "id": "02",
+            },
+            Object {
+              "displayName": "03",
+              "id": "03",
+            },
+            Object {
+              "displayName": "04",
+              "id": "04",
+            },
+            Object {
+              "displayName": "05",
+              "id": "05",
+            },
+            Object {
+              "displayName": "06",
+              "id": "06",
+            },
+            Object {
+              "displayName": "07",
+              "id": "07",
+            },
+            Object {
+              "displayName": "08",
+              "id": "08",
+            },
+            Object {
+              "displayName": "09",
+              "id": "09",
+            },
+            Object {
+              "displayName": "10",
+              "id": "10",
+            },
+            Object {
+              "displayName": "11",
+              "id": "11",
+            },
+            Object {
+              "displayName": "12",
+              "id": "12",
+            },
+            Object {
+              "displayName": "13",
+              "id": "13",
+            },
+            Object {
+              "displayName": "14",
+              "id": "14",
+            },
+            Object {
+              "displayName": "15",
+              "id": "15",
+            },
+            Object {
+              "displayName": "16",
+              "id": "16",
+            },
+            Object {
+              "displayName": "17",
+              "id": "17",
+            },
+            Object {
+              "displayName": "18",
+              "id": "18",
+            },
+            Object {
+              "displayName": "19",
+              "id": "19",
+            },
+            Object {
+              "displayName": "20",
+              "id": "20",
+            },
+            Object {
+              "displayName": "21",
+              "id": "21",
+            },
+            Object {
+              "displayName": "22",
+              "id": "22",
+            },
+            Object {
+              "displayName": "23",
+              "id": "23",
+            },
+            Object {
+              "displayName": "24",
+              "id": "24",
+            },
+            Object {
+              "displayName": "25",
+              "id": "25",
+            },
+            Object {
+              "displayName": "26",
+              "id": "26",
+            },
+            Object {
+              "displayName": "27",
+              "id": "27",
+            },
+            Object {
+              "displayName": "28",
+              "id": "28",
+            },
+            Object {
+              "displayName": "29",
+              "id": "29",
+            },
+            Object {
+              "displayName": "30",
+              "id": "30",
+            },
+            Object {
+              "displayName": "31",
+              "id": "31",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        heading="Yyyy"
+        id="year"
+        name="year"
+        options={
+          Array [
+            Object {
+              "displayName": "2002",
+              "id": "2002",
+            },
+            Object {
+              "displayName": "2001",
+              "id": "2001",
+            },
+            Object {
+              "displayName": "2000",
+              "id": "2000",
+            },
+            Object {
+              "displayName": "1999",
+              "id": "1999",
+            },
+            Object {
+              "displayName": "1998",
+              "id": "1998",
+            },
+            Object {
+              "displayName": "1997",
+              "id": "1997",
+            },
+            Object {
+              "displayName": "1996",
+              "id": "1996",
+            },
+            Object {
+              "displayName": "1995",
+              "id": "1995",
+            },
+            Object {
+              "displayName": "1994",
+              "id": "1994",
+            },
+            Object {
+              "displayName": "1993",
+              "id": "1993",
+            },
+            Object {
+              "displayName": "1992",
+              "id": "1992",
+            },
+            Object {
+              "displayName": "1991",
+              "id": "1991",
+            },
+            Object {
+              "displayName": "1990",
+              "id": "1990",
+            },
+            Object {
+              "displayName": "1989",
+              "id": "1989",
+            },
+            Object {
+              "displayName": "1988",
+              "id": "1988",
+            },
+            Object {
+              "displayName": "1987",
+              "id": "1987",
+            },
+            Object {
+              "displayName": "1986",
+              "id": "1986",
+            },
+            Object {
+              "displayName": "1985",
+              "id": "1985",
+            },
+            Object {
+              "displayName": "1984",
+              "id": "1984",
+            },
+            Object {
+              "displayName": "1983",
+              "id": "1983",
+            },
+            Object {
+              "displayName": "1982",
+              "id": "1982",
+            },
+            Object {
+              "displayName": "1981",
+              "id": "1981",
+            },
+            Object {
+              "displayName": "1980",
+              "id": "1980",
+            },
+            Object {
+              "displayName": "1979",
+              "id": "1979",
+            },
+            Object {
+              "displayName": "1978",
+              "id": "1978",
+            },
+            Object {
+              "displayName": "1977",
+              "id": "1977",
+            },
+            Object {
+              "displayName": "1976",
+              "id": "1976",
+            },
+            Object {
+              "displayName": "1975",
+              "id": "1975",
+            },
+            Object {
+              "displayName": "1974",
+              "id": "1974",
+            },
+            Object {
+              "displayName": "1973",
+              "id": "1973",
+            },
+            Object {
+              "displayName": "1972",
+              "id": "1972",
+            },
+            Object {
+              "displayName": "1971",
+              "id": "1971",
+            },
+            Object {
+              "displayName": "1970",
+              "id": "1970",
+            },
+            Object {
+              "displayName": "1969",
+              "id": "1969",
+            },
+            Object {
+              "displayName": "1968",
+              "id": "1968",
+            },
+            Object {
+              "displayName": "1967",
+              "id": "1967",
+            },
+            Object {
+              "displayName": "1966",
+              "id": "1966",
+            },
+            Object {
+              "displayName": "1965",
+              "id": "1965",
+            },
+            Object {
+              "displayName": "1964",
+              "id": "1964",
+            },
+            Object {
+              "displayName": "1963",
+              "id": "1963",
+            },
+            Object {
+              "displayName": "1962",
+              "id": "1962",
+            },
+            Object {
+              "displayName": "1961",
+              "id": "1961",
+            },
+            Object {
+              "displayName": "1960",
+              "id": "1960",
+            },
+            Object {
+              "displayName": "1959",
+              "id": "1959",
+            },
+            Object {
+              "displayName": "1958",
+              "id": "1958",
+            },
+            Object {
+              "displayName": "1957",
+              "id": "1957",
+            },
+            Object {
+              "displayName": "1956",
+              "id": "1956",
+            },
+            Object {
+              "displayName": "1955",
+              "id": "1955",
+            },
+            Object {
+              "displayName": "1954",
+              "id": "1954",
+            },
+            Object {
+              "displayName": "1953",
+              "id": "1953",
+            },
+            Object {
+              "displayName": "1952",
+              "id": "1952",
+            },
+            Object {
+              "displayName": "1951",
+              "id": "1951",
+            },
+            Object {
+              "displayName": "1950",
+              "id": "1950",
+            },
+            Object {
+              "displayName": "1949",
+              "id": "1949",
+            },
+            Object {
+              "displayName": "1948",
+              "id": "1948",
+            },
+            Object {
+              "displayName": "1947",
+              "id": "1947",
+            },
+            Object {
+              "displayName": "1946",
+              "id": "1946",
+            },
+            Object {
+              "displayName": "1945",
+              "id": "1945",
+            },
+            Object {
+              "displayName": "1944",
+              "id": "1944",
+            },
+            Object {
+              "displayName": "1943",
+              "id": "1943",
+            },
+            Object {
+              "displayName": "1942",
+              "id": "1942",
+            },
+            Object {
+              "displayName": "1941",
+              "id": "1941",
+            },
+            Object {
+              "displayName": "1940",
+              "id": "1940",
+            },
+            Object {
+              "displayName": "1939",
+              "id": "1939",
+            },
+            Object {
+              "displayName": "1938",
+              "id": "1938",
+            },
+            Object {
+              "displayName": "1937",
+              "id": "1937",
+            },
+            Object {
+              "displayName": "1936",
+              "id": "1936",
+            },
+            Object {
+              "displayName": "1935",
+              "id": "1935",
+            },
+            Object {
+              "displayName": "1934",
+              "id": "1934",
+            },
+            Object {
+              "displayName": "1933",
+              "id": "1933",
+            },
+            Object {
+              "displayName": "1932",
+              "id": "1932",
+            },
+            Object {
+              "displayName": "1931",
+              "id": "1931",
+            },
+            Object {
+              "displayName": "1930",
+              "id": "1930",
+            },
+            Object {
+              "displayName": "1929",
+              "id": "1929",
+            },
+            Object {
+              "displayName": "1928",
+              "id": "1928",
+            },
+            Object {
+              "displayName": "1927",
+              "id": "1927",
+            },
+            Object {
+              "displayName": "1926",
+              "id": "1926",
+            },
+            Object {
+              "displayName": "1925",
+              "id": "1925",
+            },
+            Object {
+              "displayName": "1924",
+              "id": "1924",
+            },
+            Object {
+              "displayName": "1923",
+              "id": "1923",
+            },
+            Object {
+              "displayName": "1922",
+              "id": "1922",
+            },
+            Object {
+              "displayName": "1921",
+              "id": "1921",
+            },
+            Object {
+              "displayName": "1920",
+              "id": "1920",
+            },
+            Object {
+              "displayName": "1919",
+              "id": "1919",
+            },
+            Object {
+              "displayName": "1918",
+              "id": "1918",
+            },
+            Object {
+              "displayName": "1917",
+              "id": "1917",
+            },
+            Object {
+              "displayName": "1916",
+              "id": "1916",
+            },
+            Object {
+              "displayName": "1915",
+              "id": "1915",
+            },
+            Object {
+              "displayName": "1914",
+              "id": "1914",
+            },
+            Object {
+              "displayName": "1913",
+              "id": "1913",
+            },
+            Object {
+              "displayName": "1912",
+              "id": "1912",
+            },
+            Object {
+              "displayName": "1911",
+              "id": "1911",
+            },
+            Object {
+              "displayName": "1910",
+              "id": "1910",
+            },
+            Object {
+              "displayName": "1909",
+              "id": "1909",
+            },
+          ]
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "autoCapitalize": "sentences",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "marginBottom": true,
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "onChangeText": [Function],
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "showSuccessCheck": false,
+            "successText": "",
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      id="ssNumber"
+      keyboardType="numeric"
+      label="lbl_PLCCForm_ssn"
+      maxLength={4}
+      name="ssNumber"
+      type="tel"
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="635px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)
+    height="300px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "html": undefined,
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    color="black"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="semibold"
+    margin={null}
+    numberOfLines={null}
+    paddingLeft="16px"
+    paddingRight="16px"
+    paddingTop="34px"
+    text="lbl_PLCCForm_financialTermsHeading"
+    textAlign="left"
+    textDecoration={null}
+  />
+  <Styled(View)
+    height="900px"
+  >
+    <RichText
+      actionHandler={[Function]}
+      domStorageEnabled={false}
+      isApplyDeviceHeight={false}
+      isNativeView={false}
+      javaScriptEnabled={false}
+      source={
+        Object {
+          "uri": "https://comenity.net/childrensplace/common/Legal/disclosures.xhtml",
+        }
+      }
+      thirdPartyCookiesEnabled={false}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        enableSuccessCheck={false}
+        id="iAgree"
+        name="iAgree"
+        rightText="lbl_PLCCForm_iAgreeCheckboxText"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      active={false}
+      buttonVariation="fixed-width"
+      color="white"
+      customStyle={Object {}}
+      customTextStyle={null}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      iconColor="gray.800"
+      iconName="chevron-down"
+      iconSize="fs12"
+      locator=""
+      navigation={Object {}}
+      onPress={[MockFunction]}
+      paddings="12px 32px 12px 32px"
+      selected={false}
+      selectedIcon="chevron-up"
+      showIcon={false}
+      text="lbl_PLCCForm_submitButton"
+      theme={Object {}}
+      type="submit"
+      url=""
+      width="90%"
+      withNoLineHeight={false}
+    />
+    <Styled(Styled(Anchor))
+      accessibilityLabel=""
+      anchorVariation=""
+      colorName={null}
+      customStyle={Object {}}
+      fontSizeVariation="large"
+      justifyContent=""
+      locator=""
+      margins={null}
+      onPress={[Function]}
+      paddingBottom="60px"
+      paddingTop="40px"
+      text="lbl_PLCCForm_noThanks"
+      underline={true}
+      url=""
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(ScrollViewMock)>
+`;

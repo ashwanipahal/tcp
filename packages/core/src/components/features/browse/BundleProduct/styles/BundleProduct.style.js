@@ -40,7 +40,20 @@ export default css`
       margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
   }
+  .bundle-products-list {
+    margin: 0;
+    width: 100%;
+  }
+  .bundle-product-item .product-information {
+    max-width: 56%;
 
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: calc(100% - 30px);
+    }
+  }
+  .bundle-product-item .tablet-image-section {
+    max-width: 36%;
+  }
   .product-detail-section {
     flex: 1;
     margin: 0;

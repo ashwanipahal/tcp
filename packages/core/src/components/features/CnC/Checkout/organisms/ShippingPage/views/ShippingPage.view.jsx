@@ -2,10 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
-import { getSiteId } from '../../../../../../../utils/utils.web';
 import checkoutUtil from '../../../util/utility';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
-import setPickupInitialValues, { setShippingAddress } from './ShippingPage.view.utils';
+import { getAddressInitialValues } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 
@@ -287,27 +286,6 @@ export default class ShippingPage extends React.PureComponent {
     return null;
   };
 
-  getAddressInitialValues = () => {
-    const {
-      shippingAddress,
-      shippingPhoneAndEmail,
-      userAddresses,
-      isGuest,
-      pickUpContactPerson,
-      orderHasPickUp,
-    } = this.props;
-    const shippingAddressLine1 = shippingAddress && shippingAddress.addressLine1;
-    if (!!shippingAddressLine1 && (isGuest || !userAddresses || userAddresses.size === 0)) {
-      return setShippingAddress(shippingAddress, shippingPhoneAndEmail);
-    }
-    if (!shippingAddressLine1 && isGuest && orderHasPickUp) {
-      return setPickupInitialValues(pickUpContactPerson);
-    }
-    return {
-      country: getSiteId() && getSiteId().toUpperCase(),
-    };
-  };
-
   submitVerifiedShippingAddressData = shippingAddress => {
     const { submitVerifiedShippingAddressData, updateShippingAddressData } = this.props;
     if (this.isAddressUpdating) {
@@ -408,7 +386,7 @@ export default class ShippingPage extends React.PureComponent {
               isGiftServicesChecked={isGiftServicesChecked}
               smsSignUpLabels={smsSignUpLabels}
               initialValues={{
-                address: this.getAddressInitialValues(),
+                address: getAddressInitialValues(this),
                 shipmentMethods: { shippingMethodId: defaultShipmentId },
                 saveToAddressBook: !isGuest,
                 onFileAddressKey: shippingAddressId || primaryAddressId,

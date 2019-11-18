@@ -16,7 +16,7 @@ import { readCookieMobileApp } from '../../../../../../../../../mobileapp/src/ut
 
 const headerImage = require('../../../../../../../assets/tcp-cc.png');
 
-const ApplicationInProgress = ({ labels, navigation, toggleModal }) => {
+const ApplicationInProgress = ({ labels, navigation, togglePLCCModal, isRtpsFlow }) => {
   const [bagItems, setBagItems] = useState(0);
   const setCount = () => {
     const cartValuePromise = readCookieMobileApp('cartItemsCount');
@@ -62,8 +62,12 @@ const ApplicationInProgress = ({ labels, navigation, toggleModal }) => {
             fontWeight="regular"
             color="white"
             onPress={() => {
-              toggleModal();
-              navigation.navigate('bag');
+              togglePLCCModal({ isPLCCModalOpen: false, status: null });
+              if (!isRtpsFlow) {
+                navigation.navigate('bag');
+              } else {
+                navigation.goBack();
+              }
             }}
             buttonVariation="variable-width"
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
@@ -71,19 +75,21 @@ const ApplicationInProgress = ({ labels, navigation, toggleModal }) => {
           />
         </ButtonWrapper>
       ) : null}
-      <CheckoutButtonWrapper>
-        <Button
-          fill={bagItems ? 'WHITE' : 'BLUE'}
-          type="submit"
-          color={bagItems ? 'black' : 'white'}
-          buttonVariation="variable-width"
-          onPress={() => {
-            navigation.navigate('Home');
-          }}
-          text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          width="90%"
-        />
-      </CheckoutButtonWrapper>
+      {!isRtpsFlow && (
+        <CheckoutButtonWrapper>
+          <Button
+            fill={bagItems ? 'WHITE' : 'BLUE'}
+            type="submit"
+            color={bagItems ? 'black' : 'white'}
+            buttonVariation="variable-width"
+            onPress={() => {
+              navigation.navigate('Home');
+            }}
+            text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            width="90%"
+          />
+        </CheckoutButtonWrapper>
+      )}
       <BottomContainer>
         <StyledBodyCopy
           fontSize="fs10"
@@ -110,7 +116,12 @@ ApplicationInProgress.propTypes = {
     apply_now_link_modal: PropTypes.string,
   }).isRequired,
   navigation: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool,
+};
+
+ApplicationInProgress.defaultProps = {
+  isRtpsFlow: false,
 };
 
 export default ApplicationInProgress;

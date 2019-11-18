@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getProductDetails } from './BundleProduct.actions';
+import { getProductDetails, clearBundleState } from './BundleProduct.actions';
 import BundleProduct from '../views';
 import {
   getCurrentProduct,
@@ -53,6 +53,11 @@ export class ProductBundleContainer extends React.PureComponent {
     const { navigation } = this.props;
     this.makeApiCall();
     if (!navigation) window.scrollTo(0, 100);
+  }
+
+  componentWillUnmount() {
+    const { clearBundleDetails } = this.props;
+    clearBundleDetails();
   }
 
   makeApiCall = () => {
@@ -181,6 +186,9 @@ function mapDispatchToProps(dispatch) {
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
     },
+    clearBundleDetails: () => {
+      dispatch(clearBundleState());
+    },
     addToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
     },
@@ -217,6 +225,7 @@ ProductBundleContainer.propTypes = {
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
   formValues: PropTypes.shape({}).isRequired,
   outfitLabels: PropTypes.shape({}),
+  clearBundleDetails: PropTypes.func,
 };
 
 ProductBundleContainer.defaultProps = {
@@ -242,6 +251,7 @@ ProductBundleContainer.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   breadCrumbs: [],
   productDetails: [],
+  clearBundleDetails: () => {},
 };
 
 export default connect(

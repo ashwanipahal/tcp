@@ -131,7 +131,7 @@ export class BillingPaymentForm extends React.PureComponent {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const formCardType = editMode ? editFormCardType : cardType;
-    const isExpirationRequired = getExpirationRequiredFlag({ formCardType });
+    const isExpirationRequired = getExpirationRequiredFlag({ cardType: formCardType });
     const { addNewCCState } = this.state;
     const formName = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
     dispatch(change(formName, 'cardType', formCardType));
