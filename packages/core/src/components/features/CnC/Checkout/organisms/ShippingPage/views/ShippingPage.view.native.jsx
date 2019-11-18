@@ -6,18 +6,15 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
 import CheckoutPageEmptyBag from '../../../molecules/CheckoutPageEmptyBag';
 import { StyledHeader, HeaderContainer } from '../styles/ShippingPage.style.native';
-import checkoutUtil from '../../../util/utility';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import ModalNative from '../../../../../../common/molecules/Modal';
 
-const { hasPOBox } = checkoutUtil;
-export default class ShippingPage extends React.Component {
+export default class ShippingPage extends React.PureComponent {
   static propTypes = {
     addressLabels: PropTypes.shape({}).isRequired,
     isOrderUpdateChecked: PropTypes.bool,
-    isSubmitting: PropTypes.bool.isRequired,
     labels: PropTypes.shape({}).isRequired,
     smsSignUpLabels: PropTypes.shape({}).isRequired,
     address: PropTypes.shape({}),
@@ -31,7 +28,6 @@ export default class ShippingPage extends React.Component {
     defaultShipmentId: PropTypes.number,
     cartOrderItemsCount: PropTypes.number.isRequired,
     loadShipmentMethods: PropTypes.func.isRequired,
-    shippingDidMount: PropTypes.func.isRequired,
     formatPayload: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
@@ -45,9 +41,8 @@ export default class ShippingPage extends React.Component {
     isSaveToAddressBookChecked: PropTypes.bool,
     setAsDefaultShipping: PropTypes.bool,
     saveToAddressBook: PropTypes.bool,
-    updateShippingAddressData: PropTypes.func,
     addNewShippingAddressData: PropTypes.func,
-    updateShippingMethodSelection: PropTypes.func.isRequired,
+    shippingDidUpdate: PropTypes.func.isRequired,
     syncErrors: PropTypes.shape({}),
     newUserPhoneNo: PropTypes.string,
     setCheckoutStage: PropTypes.func.isRequired,
@@ -69,7 +64,6 @@ export default class ShippingPage extends React.Component {
     isSaveToAddressBookChecked: false,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
-    updateShippingAddressData: () => {},
     addNewShippingAddressData: () => {},
     syncErrors: {},
     newUserPhoneNo: null,
@@ -103,37 +97,9 @@ export default class ShippingPage extends React.Component {
     return null;
   }
 
-  componentDidMount() {
-    const { shippingDidMount } = this.props;
-    shippingDidMount(true);
-  }
-
-  shouldComponentUpdate() {
-    const { isSubmitting } = this.props;
-    return !isSubmitting;
-  }
-
   componentDidUpdate(prevProps) {
-    const { address, selectedShipmentId, updateShippingMethodSelection } = this.props;
-    const { address: prevAddress, selectedShipmentId: prevSelectedShipmentId } = prevProps;
-    if (address && prevAddress) {
-      const {
-        address: { addressLine1, addressLine2 },
-        loadShipmentMethods,
-      } = this.props;
-      const {
-        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
-      } = prevProps;
-      if (
-        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
-        hasPOBox(addressLine1, addressLine2)
-      ) {
-        loadShipmentMethods({ formName: 'checkoutShipping' });
-      }
-      if (selectedShipmentId !== prevSelectedShipmentId) {
-        updateShippingMethodSelection({ id: selectedShipmentId });
-      }
-    }
+    const { shippingDidUpdate } = this.props;
+    shippingDidUpdate(prevProps);
   }
 
   submitShippingForm = data => {
@@ -235,27 +201,6 @@ export default class ShippingPage extends React.Component {
     });
   };
 
-  submitVerifiedShippingAddressData = shippingAddress => {
-    const { submitVerifiedShippingAddressData, navigation, updateShippingAddressData } = this.props;
-    this.setState({ showAddressVerification: false });
-    if (this.isAddressUpdating) {
-      this.isAddressUpdating = false;
-      this.submitShippingAddressData.shipTo.address = {
-        ...this.submitShippingAddressData.shipTo.address,
-        ...shippingAddress,
-        addressLine1: shippingAddress.address1,
-        addressLine2: shippingAddress.address2,
-        zipCode: shippingAddress.zip,
-      };
-      return updateShippingAddressData(this.submitShippingAddressData);
-    }
-    return submitVerifiedShippingAddressData({
-      shippingAddress,
-      submitData: this.submitData,
-      navigation,
-    });
-  };
-
   closeAddAddressVerificationModal = () => {
     this.setState({ showAddressVerification: false });
   };
@@ -289,6 +234,7 @@ export default class ShippingPage extends React.Component {
       formatPayload,
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
+      submitVerifiedShippingAddressData,
     } = this.props;
 
     const { defaultAddressId, showAddressVerification } = this.state;
@@ -315,9 +261,9 @@ export default class ShippingPage extends React.Component {
                 <SafeAreaView>
                   <ScrollView>
                     <AddressVerification
-                      onSuccess={this.submitVerifiedShippingAddressData}
+                      onSuccess={submitVerifiedShippingAddressData(this)}
                       heading={addressLabels.addAddressHeading}
-                      onError={this.submitVerifiedShippingAddressData}
+                      onError={submitVerifiedShippingAddressData(this)}
                       shippingAddress={formatPayload(shippingAddressData)}
                       toggleAddressModal={this.closeAddAddressVerificationModal}
                     />

@@ -25,4 +25,25 @@ export const setShippingAddress = (shippingAddress, shippingPhoneAndEmail) => {
   };
 };
 
+export const shippingPageGetDerivedStateFromProps = (nextProps, prevState) => {
+  const { defaultAddress: prevDefaultAddress } = prevState;
+  const { userAddresses, addEditResponseAddressId } = nextProps;
+  if (
+    userAddresses &&
+    (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
+  ) {
+    const defaultAddress = userAddresses.filter(item => item.primary === 'true');
+    return {
+      defaultAddressId:
+        defaultAddress && defaultAddress.size > 0
+          ? defaultAddress.get(0) && defaultAddress.get(0).addressId
+          : userAddresses.get(0) && userAddresses.get(0).addressId,
+    };
+  }
+  if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
+    return { defaultAddressId: addEditResponseAddressId };
+  }
+  return null;
+};
+
 export default setPickupInitialValues;

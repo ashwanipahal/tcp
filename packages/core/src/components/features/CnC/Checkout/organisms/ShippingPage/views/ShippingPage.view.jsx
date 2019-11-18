@@ -3,11 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ShippingForm from '../organisms/ShippingForm';
 import { getSiteId } from '../../../../../../../utils/utils.web';
-import checkoutUtil from '../../../util/utility';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
-import setPickupInitialValues, { setShippingAddress } from './ShippingPage.view.utils';
-
-const { hasPOBox } = checkoutUtil;
+import setPickupInitialValues, {
+  setShippingAddress,
+  shippingPageGetDerivedStateFromProps,
+} from './ShippingPage.view.utils';
 
 export default class ShippingPage extends React.PureComponent {
   static propTypes = {
@@ -41,9 +41,8 @@ export default class ShippingPage extends React.PureComponent {
     formatPayload: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
-    updateShippingMethodSelection: PropTypes.func.isRequired,
+    shippingDidUpdate: PropTypes.func.isRequired,
     saveToAddressBook: PropTypes.bool,
-    updateShippingAddressData: PropTypes.func.isRequired,
     toggleCountrySelector: PropTypes.func.isRequired,
     shippingDidMount: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
@@ -99,41 +98,28 @@ export default class ShippingPage extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    const { shippingDidMount } = this.props;
-    shippingDidMount();
-  }
-
   componentDidUpdate(prevProps) {
-    const { shippingDidMount, isRegisteredUserCallDone } = this.props;
-    const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
+    const {
+      shippingDidMount,
+      isRegisteredUserCallDone,
+      onFileAddressKey,
+      shippingDidUpdate,
+    } = this.props;
+    const {
+      isRegisteredUserCallDone: prevIsRegisteredUserCallDone,
+      onFileAddressKey: prevFileAddressKey,
+    } = prevProps;
 
     if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && isRegisteredUserCallDone) {
       shippingDidMount();
     }
-    this.extendedComponentDidUpdate(prevProps);
+    if (onFileAddressKey !== prevFileAddressKey) {
+      this.getShipmentMethods(prevProps);
+    }
+    shippingDidUpdate(prevProps);
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const { defaultAddress: prevDefaultAddress } = prevState;
-    const { userAddresses, addEditResponseAddressId } = nextProps;
-    if (
-      userAddresses &&
-      (!addEditResponseAddressId || prevDefaultAddress === addEditResponseAddressId)
-    ) {
-      const defaultAddress = userAddresses.filter(item => item.primary === 'true');
-      return {
-        defaultAddressId:
-          defaultAddress && defaultAddress.size > 0
-            ? defaultAddress.get(0) && defaultAddress.get(0).addressId
-            : userAddresses.get(0) && userAddresses.get(0).addressId,
-      };
-    }
-    if (addEditResponseAddressId && prevDefaultAddress !== addEditResponseAddressId) {
-      return { defaultAddressId: addEditResponseAddressId };
-    }
-    return null;
-  }
+  static getDerivedStateFromProps = shippingPageGetDerivedStateFromProps;
 
   componentWillUnmount() {
     const { clearCheckoutServerError, checkoutServerError } = this.props;
@@ -308,58 +294,6 @@ export default class ShippingPage extends React.PureComponent {
     };
   };
 
-  submitVerifiedShippingAddressData = shippingAddress => {
-    const { submitVerifiedShippingAddressData, updateShippingAddressData } = this.props;
-    if (this.isAddressUpdating) {
-      this.isAddressUpdating = false;
-      this.submitShippingAddressData.shipTo.address = {
-        ...this.submitShippingAddressData.shipTo.address,
-        ...shippingAddress,
-        addressLine1: shippingAddress.address1,
-        addressLine2: shippingAddress.address2,
-        zipCode: shippingAddress.zip,
-      };
-      return updateShippingAddressData(this.submitShippingAddressData, this.afterAddressUpdate);
-    }
-    return submitVerifiedShippingAddressData({ shippingAddress, submitData: this.submitData });
-  };
-
-  extendedComponentDidUpdate = prevProps => {
-    const { onFileAddressKey, address } = this.props;
-    const { selectedShipmentId, updateShippingMethodSelection, shippingAddressId } = this.props;
-
-    const {
-      address: prevAddress,
-      onFileAddressKey: prevFileAddressKey,
-      selectedShipmentId: prevSelectedShipmentId,
-    } = prevProps;
-    if (address && prevAddress) {
-      const {
-        address: { addressLine1, addressLine2 },
-        loadShipmentMethods,
-      } = this.props;
-      const {
-        address: { addressLine1: prevAddressLine1, addressLine2: prevAddressLine2 },
-      } = prevProps;
-      if (
-        (addressLine1 !== prevAddressLine1 || addressLine2 !== prevAddressLine2) &&
-        hasPOBox(addressLine1, addressLine2)
-      ) {
-        loadShipmentMethods({ formName: 'checkoutShipping' });
-      }
-    }
-    if (onFileAddressKey !== prevFileAddressKey) {
-      this.getShipmentMethods(prevProps);
-    }
-    if (
-      shippingAddressId &&
-      prevSelectedShipmentId &&
-      selectedShipmentId !== prevSelectedShipmentId
-    ) {
-      updateShippingMethodSelection({ id: selectedShipmentId });
-    }
-  };
-
   render() {
     const {
       smsSignUpLabels,
@@ -383,7 +317,7 @@ export default class ShippingPage extends React.PureComponent {
     const { isSubmitting, formatPayload, ServerErrors, checkoutServerError } = this.props;
     const { shippingAddress, isVenmoPaymentInProgress, isVenmoShippingDisplayed } = this.props;
     const { addressLabels, isOrderUpdateChecked, isGiftServicesChecked } = this.props;
-    const { toggleCountrySelector, pageCategory } = this.props;
+    const { toggleCountrySelector, pageCategory, submitVerifiedShippingAddressData } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     let { submitData } = this;
@@ -449,9 +383,9 @@ export default class ShippingPage extends React.PureComponent {
               isLoadingShippingMethods={isLoadingShippingMethods}
             />
             <AddressVerification
-              onSuccess={this.submitVerifiedShippingAddressData}
+              onSuccess={submitVerifiedShippingAddressData(this)}
               heading={addressLabels.addAddressHeading}
-              onError={this.submitVerifiedShippingAddressData}
+              onError={submitVerifiedShippingAddressData(this)}
               shippingAddress={formatPayload(shippingAddressData)}
             />
           </>
