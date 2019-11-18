@@ -161,6 +161,13 @@ const setSflData = payload => {
   };
 };
 
+const setTranslatedSflData = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SET_TRANSLATED_SFL_DATA,
+  };
+};
+
 const startSflItemDelete = payload => {
   return {
     type: BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE,
@@ -261,4 +268,5 @@ export default {
   setBagPageLoading,
   setIsPaypalBtnHidden,
   resetBagLoadedState,
+  setTranslatedSflData,
 };

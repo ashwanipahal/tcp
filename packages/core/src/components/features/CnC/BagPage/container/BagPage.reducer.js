@@ -100,7 +100,7 @@ const returnBagPageReducer = (state = initialState, action) => {
       return setCartItemsSFL(state, action.payload);
     case BAGPAGE_CONSTANTS.CART_ITEMS_SET_SFL_ERROR:
       return setCartItemsSflError(state, action.payload);
-    case BAGPAGE_CONSTANTS.SET_SFL_DATA:
+    case BAGPAGE_CONSTANTS.SET_TRANSLATED_SFL_DATA:
       return state.set('sfl', fromJS(action.payload));
     case BAGPAGE_CONSTANTS.CLOSE_ITEM_DELETE_CONFIRMATION_MODAL:
       return state.set('openItemDeleteConfirmationModalInfo', { showModal: false });
