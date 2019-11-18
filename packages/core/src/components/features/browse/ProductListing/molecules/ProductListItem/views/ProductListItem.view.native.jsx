@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
-import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Anchor } from '@tcp/core/src/components/common/atoms';
 import PromotionalMessage from '@tcp/core/src/components/common/atoms/PromotionalMessage';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
@@ -81,6 +81,10 @@ const renderAddToBagContainer = (
   );
 };
 
+const onEditHandler = (item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick) => {
+  onCTAHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick);
+};
+
 const ListItem = props => {
   const {
     item,
@@ -128,15 +132,21 @@ const ListItem = props => {
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
+        isFavorite={isFavorite}
       />
       <RenderBadge2 text={badge2} />
       {isFavorite && (
-        <BodyCopy
-          color="gray.900"
+        <Anchor
+          fontSizeVariation="medium"
           fontFamily="secondary"
-          fontSize="fs12"
-          text="Edit"
-          textAlign="center"
+          underline
+          anchorVariation="custom"
+          onPress={() =>
+            onEditHandler(item, selectedColorIndex, onGoToPDPPage, onQuickViewOpenClick)
+          }
+          dataLocator=""
+          text={labelsPlpTiles.lbl_edit}
+          colorName="gray.900"
         />
       )}
       <RenderPricesSection
@@ -204,7 +214,13 @@ const RenderTopBadge1 = ({ text }) => {
 
 RenderTopBadge1.propTypes = TextProps;
 
-const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage, productImageWidth }) => {
+const ImageSection = ({
+  item,
+  selectedColorIndex,
+  onGoToPDPPage,
+  productImageWidth,
+  isFavorite,
+}) => {
   return (
     <ImageSectionContainer>
       <ImageCarousel
@@ -212,6 +228,7 @@ const ImageSection = ({ item, selectedColorIndex, onGoToPDPPage, productImageWid
         selectedColorIndex={selectedColorIndex}
         onGoToPDPPage={onGoToPDPPage}
         productImageWidth={productImageWidth}
+        isFavorite={isFavorite}
       />
     </ImageSectionContainer>
   );
@@ -222,10 +239,12 @@ ImageSection.propTypes = {
   selectedColorIndex: PropTypes.number.isRequired,
   onGoToPDPPage: PropTypes.func.isRequired,
   productImageWidth: PropTypes.number,
+  isFavorite: PropTypes.bool,
 };
 
 ImageSection.defaultProps = {
   productImageWidth: '',
+  isFavorite: false,
 };
 
 const RenderBadge2 = ({ text }) => {
@@ -253,7 +272,7 @@ const calculatePriceValue = (price, currencySymbol, currencyExchange, defaultRet
 };
 
 const renderOfferPrice = (productInfo, currencySymbol, currencyExchange) => {
-  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', 0);
+  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', productInfo.offerPrice || 0);
   const highOfferPrice = get(productInfo, 'priceRange.highOfferPrice', 0);
   const offerPriceValue = calculatePriceValue(
     lowOfferPrice,
@@ -334,9 +353,9 @@ const renderPricePercentageDiscountLabel = value => {
 };
 
 const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) => {
-  const lowListPrice = get(productInfo, 'priceRange.lowListPrice', 0);
+  const lowListPrice = get(productInfo, 'priceRange.lowListPrice', productInfo.listPrice || 0);
   const highListPrice = get(productInfo, 'priceRange.highListPrice', 0);
-  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', 0);
+  const lowOfferPrice = get(productInfo, 'priceRange.lowOfferPrice', productInfo.offerPrice || 0);
   const listPriceValue = calculatePriceValue(lowListPrice, currencySymbol, currencyExchange, null);
   const highListPriceValue = calculatePriceValue(
     highListPrice,

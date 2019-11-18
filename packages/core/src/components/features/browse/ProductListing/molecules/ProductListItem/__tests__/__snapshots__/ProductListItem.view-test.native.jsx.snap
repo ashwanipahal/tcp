@@ -11,6 +11,7 @@ exports[`ProductListItem component should render correctly 1`] = `
     text=""
   />
   <ImageSection
+    isFavorite={false}
     item={
       Object {
         "colorsMap": Array [
