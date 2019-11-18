@@ -20,7 +20,7 @@ export const Container = styled.View`
 
 export const Border = styled.View`
   height: 1px;
-  width: 27%;
+  width: 24%;
   background-color: ${props => props.theme.colorPalette.gray[800]};
   justify-content: center;
   align-items: center;
@@ -29,5 +29,5 @@ export const Border = styled.View`
 export const Wrapper = styled.View`
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 45%;
 `;
