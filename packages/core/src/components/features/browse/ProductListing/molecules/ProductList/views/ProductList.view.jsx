@@ -57,9 +57,9 @@ const ProductList = props => {
   } = props;
   let gridIndex = 0;
 
-  console.log('productsBlock', productsBlock);
-  console.log('plpGridPromos', plpGridPromos);
-  console.log('plpHorizontalPromos', plpHorizontalPromos);
+  console.log('productsBlock %%%% ', productsBlock);
+  console.log('plpGridPromos ### ', plpGridPromos);
+  console.log('plpHorizontalPromos RRRR ', plpHorizontalPromos);
 
   return (
     <Fragment>

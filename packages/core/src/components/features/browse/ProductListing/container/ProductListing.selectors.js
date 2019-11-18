@@ -278,11 +278,12 @@ export const getPLPTopPromos = state => {
 
 export const getPLPGridPromos = state => {
   const { bannerInfo: { val: { grid: gridPromo } = {} } = {} } = state.ProductListing;
-  console.log('gridPromo', gridPromo);
   return (
     (gridPromo &&
       gridPromo.map(promoItem => {
-        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+        const moduleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...moduleInfo, slot: promoItem && promoItem.sub };
       })) ||
     []
   );
@@ -290,11 +291,12 @@ export const getPLPGridPromos = state => {
 
 export const getPlpHorizontalPromo = state => {
   const { bannerInfo: { val: { horizontal: horizontalPromo } = {} } = {} } = state.ProductListing;
-  console.log('horizontalPromo', horizontalPromo);
   return (
     (horizontalPromo &&
       horizontalPromo.map(promoItem => {
-        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+        const horizontalModuleInfo =
+          (promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid]) || {};
+        return { ...horizontalModuleInfo, slot: promoItem && promoItem.sub };
       })) ||
     []
   );
