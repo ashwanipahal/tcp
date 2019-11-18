@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import AccountOverviewComponent from '../views/AccountOverview.view';
+import getLinks from './AccountOverview.selectors';
 import { setTrackOrderModalMountedState } from '../../TrackOrder/container/TrackOrder.actions';
 
 const getAccountOverviewLabels = labels => {
@@ -13,13 +14,7 @@ const getAccountCommonLabels = labels => {
   return (labels && labels.common) || {};
 };
 
-const AccountOverviewContainer = ({
-  labels,
-  openTrackOrder,
-  openApplyNowModal,
-  fetchFooterLinks,
-  ...otherProps
-}) => {
+const AccountOverviewContainer = ({ labels, openTrackOrder, openApplyNowModal, ...otherProps }) => {
   const overviewLabels = getAccountOverviewLabels(labels);
   const commonLabels = getAccountCommonLabels(labels);
   return (
@@ -28,7 +23,6 @@ const AccountOverviewContainer = ({
       commonLabels={commonLabels}
       openTrackOrder={openTrackOrder}
       openApplyNowModal={openApplyNowModal}
-      fetchLinks={fetchFooterLinks}
       {...otherProps}
     />
   );
@@ -40,21 +34,18 @@ AccountOverviewContainer.propTypes = {
   }),
   openTrackOrder: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
-  fetchFooterLinks: PropTypes.func,
 };
 
 AccountOverviewContainer.defaultProps = {
   labels: {
     accountOverview: {},
   },
-  fetchFooterLinks: () => {},
 };
 
 export const mapStateToProps = state => {
-  const { AccountReducer } = state;
   return {
-    accountFooterLinks: AccountReducer.get('account-footer-links'),
-    legalLinks: AccountReducer.get('account-legal-links'),
+    accountFooterLinks: getLinks(state, 'account-footer-links'),
+    legalLinks: getLinks(state, 'account-legal-links'),
   };
 };
 

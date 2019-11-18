@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { loadComponentLabelsData } from '@tcp/core/src/reduxStore/actions';
+import { loadComponentLabelsData, getSubNavigationData } from '@tcp/core/src/reduxStore/actions';
 import { LABELS } from '@tcp/core/src/reduxStore/constants';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
@@ -13,7 +13,7 @@ import { getLabels, getAccountNavigationState } from './Account.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.app';
 
-import { getAccountNavigationList, getSubNavigationData } from './Account.actions';
+import { getAccountNavigationList } from './Account.actions';
 
 const FOOTER_LINKS = 'account-footer-links';
 const LEGAL_LINKS = 'account-legal-links';
@@ -156,7 +156,7 @@ export class Account extends React.PureComponent {
    */
   render() {
     const { component, componentProps, navData } = this.state;
-    const { labels, isUserLoggedIn, navigation, fetchFooterLinks } = this.props;
+    const { labels, isUserLoggedIn, navigation } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
         <StyledScrollView keyboardShouldPersistTaps="handled">
@@ -169,7 +169,6 @@ export class Account extends React.PureComponent {
             labels={labels}
             isUserLoggedIn={isUserLoggedIn}
             navigation={navigation}
-            fetchLinks={fetchFooterLinks}
           />
         </StyledScrollView>
       </StyledKeyboardAvoidingView>

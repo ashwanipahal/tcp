@@ -11,6 +11,7 @@ import ProductListingReducer from '@tcp/core/src/components/features/browse/Prod
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import SubNavigationReducer from '@tcp/core/src/reduxStore/reducers/subNavigation';
 import AddressVerificationReducer from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.reducer';
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
@@ -125,6 +126,7 @@ import {
   MY_PREFERENCE_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   BUNDLEPRODUCT_REDUCER_KEY,
+  SUB_NAVIGATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -246,6 +248,7 @@ const rootReducer = combineReducers({
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
+  [SUB_NAVIGATION_REDUCER_KEY]: SubNavigationReducer,
 });
 
 const rootPersistConfig = {
