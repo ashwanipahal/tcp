@@ -43,6 +43,12 @@ const getDefaultHeaderForStore = (navigation, navTitle) => {
   };
 };
 
+const storeLocatorNavigationOptions = ({ navigation }) => {
+  const title = navigation && navigation.getParam('title');
+  const navTitle = (title && `${title.toUpperCase()}`) || '';
+  return getDefaultHeaderForStore(navigation, navTitle);
+};
+
 const AccountStack = createStackNavigator(
   {
     Account,
@@ -111,21 +117,12 @@ const AccountStack = createStackNavigator(
     StoreDetails: {
       screen: StoreDetails,
       path: 'store-details/:storeId',
-      navigationOptions: ({ navigation }) => {
-        const title = navigation && navigation.getParam('title');
-        const navTitle = (title && `${title.toUpperCase()}`) || '';
-        return getDefaultHeaderForStore(navigation, navTitle);
-      },
+      navigationOptions: storeLocatorNavigationOptions,
     },
     StoreLanding: {
       screen: StoreLanding,
       path: 'store-landing',
-      // eslint-disable-next-line sonarjs/no-identical-functions
-      navigationOptions: ({ navigation }) => {
-        const title = navigation && navigation.getParam('title');
-        const navTitle = (title && `${title.toUpperCase()}`) || '';
-        return getDefaultHeaderForStore(navigation, navTitle);
-      },
+      navigationOptions: storeLocatorNavigationOptions,
     },
   },
   {
