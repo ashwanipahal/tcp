@@ -5,6 +5,8 @@ import { Field, SubmissionError } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Button, Col, Row, TextBox } from '@tcp/core/src/components/common/atoms';
+import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
+import { isGymboree } from '@tcp/core/src/utils/utils';
 
 import style from '../../Footer.style';
 
@@ -54,7 +56,7 @@ class FooterTopSignUpForm extends React.PureComponent {
 
         return new Promise((resolve, reject) => {
           this.formSubmitPromise = { resolve, reject };
-          onFormSubmit(values[fieldName]);
+          onFormSubmit(values);
         });
       })
       .catch(() => {
@@ -71,8 +73,11 @@ class FooterTopSignUpForm extends React.PureComponent {
       handleSubmit,
       dataLocators,
       fieldName,
+      secondFieldName,
       fieldProps,
     } = this.props;
+
+    const isGym = isGymboree();
 
     return (
       <form className="footer_top__signup_form" onSubmit={handleSubmit(this.submitForm)}>
@@ -123,6 +128,29 @@ class FooterTopSignUpForm extends React.PureComponent {
               </Button>
             </Col>
           </Row>
+
+          <Row fullBleed className="footer_top__signup_form_row">
+            <Col
+              colSize={{
+                large: 12,
+                medium: 12,
+                small: 12,
+              }}
+              ignoreGutter={{
+                small: false,
+              }}
+            >
+              <Field
+                name={secondFieldName}
+                id={secondFieldName}
+                component={InputCheckbox}
+                dataLocator={isGym ? dataLocators.checkBox_tcp : dataLocators.checkBox_gym}
+                type="checkbox"
+              >
+                {isGym ? labels.lbl_SignUp_tcpSignUpLabel : labels.lbl_SignUp_gymSignUpLabel}
+              </Field>
+            </Col>
+          </Row>
         </Grid>
       </form>
     );
@@ -135,10 +163,14 @@ FooterTopSignUpForm.propTypes = {
     validationErrorLabel: PropTypes.string,
     lbl_SignUp_termsTextLabel: PropTypes.string,
     lbl_SignUp_submitButtonLabel: PropTypes.string,
+    lbl_SignUp_gymSignUpLabel: PropTypes.string,
+    lbl_SignUp_tcpSignUpLabel: PropTypes.string,
   }),
   dataLocators: PropTypes.shape({
     submitButton: PropTypes.string,
     inputField: PropTypes.string,
+    checkBox_gym: PropTypes.string,
+    checkBox_tcp: PropTypes.string,
   }),
   pristine: PropTypes.bool,
   invalid: PropTypes.bool,
@@ -152,6 +184,7 @@ FooterTopSignUpForm.propTypes = {
   reset: PropTypes.func,
   fieldName: PropTypes.string,
   fieldProps: PropTypes.shape({}),
+  secondFieldName: PropTypes.string,
 };
 
 FooterTopSignUpForm.defaultProps = {
@@ -160,10 +193,14 @@ FooterTopSignUpForm.defaultProps = {
     validationErrorLabel: '',
     lbl_SignUp_termsTextLabel: '',
     lbl_SignUp_submitButtonLabel: 'Submit',
+    lbl_SignUp_gymSignUpLabel: '',
+    lbl_SignUp_tcpSignUpLabel: '',
   },
   dataLocators: {
     submitButton: 'email_submit_btn',
     inputField: 'enter_email_text_field',
+    checkBox_gym: '',
+    checkBox_tcp: '',
   },
   pristine: false,
   invalid: false,
@@ -177,6 +214,7 @@ FooterTopSignUpForm.defaultProps = {
   reset: () => {},
   fieldName: 'signup',
   fieldProps: {},
+  secondFieldName: '',
 };
 
 export default withStyles(FooterTopSignUpForm, style);

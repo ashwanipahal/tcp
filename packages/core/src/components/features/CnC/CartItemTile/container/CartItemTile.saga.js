@@ -36,7 +36,10 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import { isItemBossBopisInEligible } from './CartItemTile.selectors';
+import {
+  isItemBossBopisInEligible,
+  getIsDeleteConfirmationModalEnabled,
+} from './CartItemTile.selectors';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
 import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
@@ -101,7 +104,13 @@ export function* removeCartItem({ payload }) {
     const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
     const isItemInEligible = yield select(isItemBossBopisInEligible, payload);
     const isShowSaveForLaterSwitch = yield select(getSaveForLaterSwitch);
-    if (isUnqualifiedItem || isItemInEligible || !isShowSaveForLaterSwitch) {
+    const isDeleteConfirmationModalEnabled = yield select(getIsDeleteConfirmationModalEnabled);
+    if (
+      isUnqualifiedItem ||
+      isItemInEligible ||
+      !isShowSaveForLaterSwitch ||
+      !isDeleteConfirmationModalEnabled
+    ) {
       yield call(confirmRemoveItem, { payload: itemId });
       return;
     }
@@ -150,6 +159,7 @@ function* setUpdateItemErrorMessages(payload, errorMessage) {
 export function* updateCartItemSaga({ payload }) {
   const { updateActionType } = payload;
   try {
+    yield put(setLoaderState(true));
     yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
     yield put(clearAddToBagErrorState());
     yield put(clearAddToPickupErrorState());
@@ -185,6 +195,7 @@ export function* updateCartItemSaga({ payload }) {
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setLoaderState(false));
   } catch (err) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
 
@@ -196,6 +207,7 @@ export function* updateCartItemSaga({ payload }) {
       'ERROR';
     yield call(updateSagaErrorActions, updateActionType, errorMessage);
     yield setUpdateItemErrorMessages(payload, errorMessage);
+    yield put(setLoaderState(false));
   }
 }
 

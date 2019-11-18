@@ -23,6 +23,7 @@ describe('ModalsCheckoutVanilla', () => {
       closeCheckoutModalMountState: jest.fn(),
       closeMiniBagDispatch: jest.fn(),
       setClickAnalyticsDataCheckout: jest.fn(),
+      setBagPageIsRouting: jest.fn(),
     };
     const tree = shallow(<ModalsCheckoutVanilla {...props} />);
     tree.instance().routeToCheckout({ preventDefault: jest.fn() });

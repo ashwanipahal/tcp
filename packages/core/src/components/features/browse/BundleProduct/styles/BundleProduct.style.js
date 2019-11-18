@@ -45,9 +45,10 @@ export default css`
     width: 100%;
   }
   .bundle-product-item .product-information {
-    max-width: 47%;
-    @media ${props => props.theme.mediaQuery.medium} {
-      max-width: 56%;
+    max-width: 56%;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: calc(100% - 30px);
     }
   }
   .bundle-product-item .tablet-image-section {

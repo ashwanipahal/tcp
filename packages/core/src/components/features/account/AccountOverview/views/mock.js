@@ -24,10 +24,10 @@ export default {
     {
       subSections: null,
       leafLink: {
-        url: '/credit-account',
+        url: 'https://d.comenity.net/childrensplace/?ecid=manageacct',
         text: 'Manage Credit Account',
         title: 'creditAccount',
-        target: '',
+        target: '_blank',
         external: 0,
       },
     },
@@ -73,10 +73,10 @@ export default {
     {
       subSections: null,
       leafLink: {
-        url: '/helpCenter',
+        url: 'https://test6.childrensplace.com/us/help-center?token=tcprwd',
         text: 'Help',
         title: 'help',
-        target: '',
+        target: '_self',
         external: 0,
       },
     },

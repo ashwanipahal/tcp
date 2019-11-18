@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Dropdown from '@tcp/core/src/components/common/molecules/Dropdown';
 import style from '../styles/LeftNavigation.style';
-import mockLeftSideNavigation from './mock';
 import Anchor from '../../../atoms/Anchor';
 import Row from '../../../atoms/Row';
 import Col from '../../../atoms/Col';
@@ -28,14 +27,14 @@ const getNavLink = (data = {}) => {
  * @param {data} data navigation data
  */
 
-const LeftNavigation = ({ className }) => {
-  const {
-    data: { subnavigation: navData = [] },
-  } = mockLeftSideNavigation;
+const LeftNavigation = ({ data = [], className }) => {
+  const navData = Object.assign(data);
   const navDropDown = navData.length && navData.map(nav => nav.leafLink);
-  const activeLink = useState(navDropDown[0].component || null);
-
-  return (
+  let activeLink = [];
+  if (navDropDown.lenth) {
+    activeLink = useState(navDropDown[0].component || null);
+  }
+  return navDropDown.length ? (
     <React.Fragment>
       <Row className="showonlyInMobile">
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
@@ -58,11 +57,12 @@ const LeftNavigation = ({ className }) => {
         </Col>
       </Row>
     </React.Fragment>
-  );
+  ) : null;
 };
 
 LeftNavigation.propTypes = {
   className: PropTypes.string.isRequired,
+  data: PropTypes.shape([]).isRequired,
 };
 
 export default withStyles(LeftNavigation, style);
