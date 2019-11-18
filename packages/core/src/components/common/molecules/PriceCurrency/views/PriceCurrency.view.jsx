@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 class PriceCurrency extends React.Component {
   render() {
     const { currency, currencySymbol, price } = this.props;
-    return currency === 'USD' || currency === 'CAD'
-      ? `${currencySymbol}${(price && price.toFixed(2)) || 0}`
-      : `${currencySymbol} ${(price && price.toFixed(2)) || 0}`;
+    const space = currency === 'USD' || currency === 'CAD' ? '' : ' ';
+    return `${currencySymbol}${space}${(price && price.toFixed(2)) || 0}`;
   }
 }
 
