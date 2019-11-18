@@ -117,7 +117,6 @@ const Navigation = props => {
     showCondensedHeader,
     openOverlay,
     isDrawerOpen,
-    nav,
   } = props;
 
   useEffect(registerRouterChangeEvent(closeNavigationDrawer, isDrawerOpen), []);
@@ -172,8 +171,6 @@ Navigation.propTypes = {
   triggerLoginCreateAccount: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func.isRequired,
   isDrawerOpen: PropTypes.bool.isRequired,
-
-  nav: PropTypes.shape({}).isRequired,
 };
 
 export { Navigation as NavigationVanilla };
