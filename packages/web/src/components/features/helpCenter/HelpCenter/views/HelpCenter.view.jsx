@@ -21,12 +21,12 @@ const HelpCenterView = dynamic({
     moduleR: () => import('@tcp/core/src/components/common/molecules/ModuleR').then(returnModule),
     moduleD: () => import('@tcp/core/src/components/common/molecules/ModuleD').then(returnModule),
     moduleH: () => import('@tcp/core/src/components/common/molecules/ModuleH').then(returnModule),
-    moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
-    moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/HelpCenterModuleTwoCol').then(returnModule),
     accordion: () =>
       import('@tcp/core/src/components/common/molecules/AccordionModule').then(returnModule),
+    moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
+    moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
   }),
   render: (slotData, modules) => {
     const { slots } = slotData;
