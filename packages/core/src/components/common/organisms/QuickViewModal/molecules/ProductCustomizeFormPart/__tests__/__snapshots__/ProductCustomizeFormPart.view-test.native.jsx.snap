@@ -29,6 +29,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           anchorVariation=""
           colorName={null}
           customStyle={Object {}}
+          justifyContent=""
           locator=""
           margins={null}
           noLink={true}
@@ -80,7 +81,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               color="gray.800"
               dataLocator="pdp_discounted_product_price"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs14"
               fontWeight="regular"
               margin={null}
               numberOfLines={null}
@@ -92,7 +93,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               color="red.500"
               dataLocator="pdp_discounted_percentage"
               fontFamily="secondary"
-              fontSize="fs12"
+              fontSize="fs14"
               fontWeight="regular"
               margin="0 0 0 4px"
               numberOfLines={null}
@@ -275,9 +276,11 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
         }
       }
       errorOnHandleSubmit=""
+      onCloseClick={[Function]}
       plpLabels={Object {}}
       showAddToBagCTA={true}
       showColorChips={true}
+      toastMessage={[Function]}
     />
   </Styled(View)>
 </Styled(View)>

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isCanada, getPriceWithCurrency } from '@tcp/core/src/utils';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import styles from '../styles/AddedToBagViewPoints.style';
 import withStyles from '../../../../common/hoc/withStyles';
-import { isCanada } from '../../../../../utils';
 
 const getModifiedString = (labels, totalItems) => {
   const subHeading = `<span>${labels.bagSubTotal.replace('#items', `${totalItems}`)}</span>`;
@@ -61,23 +61,23 @@ const AddedToBagViewPoints = ({
       tabIndex="0"
     >
       <Row className="row-padding" tabIndex="0">
-        <Col colSize={{ large: 8, small: 3, medium: 5 }}>{labels.price}</Col>
+        <Col colSize={{ large: 8, small: 4, medium: 6 }}>{labels.price}</Col>
         <Col
           data-locator="addedtobag-productprice"
           className="text-value"
-          colSize={{ large: 4, small: 3, medium: 3 }}
+          colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {`${currencySymbol} ${itemPrice || 0}`}
+          {getPriceWithCurrency(currencySymbol, itemPrice)}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
         <Row className="row-padding">
-          <Col colSize={{ large: 8, small: 3, medium: 5 }}>
+          <Col colSize={{ large: 8, small: 5, medium: 6 }}>
             <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {getRewardsPointsLabel(labels, isUserLoggedIn)}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 4, small: 3, medium: 3 }}>
+          <Col colSize={{ large: 4, small: 1, medium: 2 }}>
             <BodyCopy
               fontSize="fs13"
               data-locator="addedtobag-pointsonitem"
@@ -93,25 +93,25 @@ const AddedToBagViewPoints = ({
       )}
       <Row className="divided-line" />
       <Row className="row-padding" tabIndex="0">
-        <Col colSize={{ large: 8, small: 3, medium: 5 }}>
+        <Col colSize={{ large: 8, small: 4, medium: 6 }}>
           {getModifiedString(labels, totalItems || 0)}
         </Col>
         <Col
           data-locator="addedtobag-bagsubtotal"
           className="text-value"
-          colSize={{ large: 4, small: 3, medium: 3 }}
+          colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {`${currencySymbol} ${bagSubTotal || 0}`}
+          {getPriceWithCurrency(currencySymbol, bagSubTotal)}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
         <Row className="row-padding" tabIndex="0">
-          <Col colSize={{ large: 8, small: 3, medium: 5 }}>
+          <Col colSize={{ large: 8, small: 5, medium: 6 }}>
             <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {labels.totalRewardsInPoints}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 4, small: 3, medium: 3 }}>
+          <Col colSize={{ large: 4, small: 1, medium: 2 }}>
             <BodyCopy
               fontSize="fs13"
               data-locator="addedtobag-totalrewardpoints"
@@ -127,12 +127,12 @@ const AddedToBagViewPoints = ({
       )}
       {showPointsToNextRewards(isInternationalShipping) && (
         <Row className="row-padding" tabIndex="0">
-          <Col colSize={{ large: 8, small: 3, medium: 5 }}>
+          <Col colSize={{ large: 8, small: 5, medium: 6 }}>
             <BodyCopy fontSize="fs13" fontFamily="secondary" fontWeight="extrabold">
               {labels.totalNextRewards}
             </BodyCopy>
           </Col>
-          <Col colSize={{ large: 4, small: 3, medium: 3 }}>
+          <Col colSize={{ large: 4, small: 1, medium: 2 }}>
             <BodyCopy
               fontSize="fs13"
               data-locator="addedtobag-totalpointsnextreward"

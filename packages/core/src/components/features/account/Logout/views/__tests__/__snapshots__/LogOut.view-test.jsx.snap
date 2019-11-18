@@ -4,16 +4,21 @@ exports[`LogOutView Page should render correctly 1`] = `
 <Fragment
   className=""
 >
-  <Styled(Button)
-    anchorVariation="primary"
-    className="elem-pb-SM"
-    fontSizeVariation="large"
-    link={true}
-    nohover={true}
-    onClick={[Function]}
-    type="button"
+  <Connect(Component)
+    name="log_out"
   >
-    hello
-  </Styled(Button)>
+    <Styled(Button)
+      anchorVariation="primary"
+      className="elem-pb-SM"
+      fontSizeVariation="large"
+      link={true}
+      nohover={true}
+      onClick={[Function]}
+      type="button"
+      underline={false}
+    >
+      hello
+    </Styled(Button)>
+  </Connect(Component)>
 </Fragment>
 `;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
 import { Grid, LinkText, PromoBanner } from '../..';
 import config from '../config';
-import { getLocator } from '../../../../../utils';
+import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
@@ -106,7 +106,8 @@ const ModuleD = ({
                       withCaret
                       centered
                       className="moduleD_textlink"
-                      to={item.link.url}
+                      to={configureInternalNavigationFromCMSUrl(item.link.url)}
+                      asPath={item.link.url}
                       target={item.link.target}
                       title={item.link.title}
                       dataLocator={`${getLocator('moduleD_textlink')}${index + 1}`}

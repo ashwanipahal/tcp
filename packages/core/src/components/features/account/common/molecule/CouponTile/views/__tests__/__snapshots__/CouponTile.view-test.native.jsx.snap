@@ -13,6 +13,7 @@ exports[`CouponTile Component should render correctly 1`] = `
           accessibilityText=""
           data-locator="accountoverview-myplacerewatdstile-rewardvalue"
           dataLocator=""
+          fontFamily="secondary"
           fontSize="fs10"
           fontWeight="black"
           margin={null}

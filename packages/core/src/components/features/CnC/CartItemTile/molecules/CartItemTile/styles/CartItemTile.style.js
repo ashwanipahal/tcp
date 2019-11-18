@@ -44,6 +44,9 @@ export default css`
   .padding-top-15 {
     padding-top: 15px;
   }
+  .padding-top-50 {
+    padding-top: 50px;
+  }
   .padding-bottom-20 {
     padding-bottom: 20px;
   }
@@ -310,6 +313,17 @@ export default css`
       }
     }
 
+    @media ${props => props.theme.mediaQuery.mobile} {
+      .save-for-later-label {
+        left: 3px;
+      }
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      .save-for-later-label {
+        left: 7px;
+      }
+    }
+
     .price-label {
       margin-left: 122px;
     }
@@ -346,9 +360,13 @@ export default css`
     padding-bottom: 0px;
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     .save-for-later-label {
-      width: 100%;
+      flex-grow: 1;
       display: flex;
       justify-content: flex-end;
+    }
+    .padding-left-13 {
+      display: flex;
+      padding: 0;
     }
   }
 

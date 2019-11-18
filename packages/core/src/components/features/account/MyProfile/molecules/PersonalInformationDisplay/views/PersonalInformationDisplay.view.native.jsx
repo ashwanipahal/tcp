@@ -21,7 +21,12 @@ const getMyPlaceRewards = (airMiles, myPlaceNumber, labels) => {
   }
   if (myPlaceRewardsText) {
     return (
-      <BodyCopyWithSpacing className="margin-top-LRG" fontSize="fs16" text={myPlaceRewardsText} />
+      <BodyCopyWithSpacing
+        className="margin-top-LRG"
+        fontFamily="secondary"
+        fontSize="fs16"
+        text={myPlaceRewardsText}
+      />
     );
   }
   return null;
@@ -45,10 +50,12 @@ export const PersonalInformationDisplay = ({
       : '';
   return (
     <View>
-      {userFullName && <BodyCopy fontSize="fs16" text={userFullName} />}
-      {userEmail && <BodyCopy fontSize="fs16" text={userEmail} />}
-      {userPhoneNumber && <BodyCopy fontSize="fs16" text={userPhoneNumber} />}
-      <BodyCopy fontSize="fs16" text={userBirthdayDisplay} />
+      {userFullName && <BodyCopy fontSize="fs16" fontFamily="secondary" text={userFullName} />}
+      {userEmail && <BodyCopy fontSize="fs16" fontFamily="secondary" text={userEmail} />}
+      {userPhoneNumber && (
+        <BodyCopy fontSize="fs16" fontFamily="secondary" text={userPhoneNumber} />
+      )}
+      <BodyCopy fontSize="fs16" fontFamily="secondary" text={userBirthdayDisplay} />
       {getMyPlaceRewards(airMiles, myPlaceNumber, labels)}
     </View>
   );

@@ -6,8 +6,12 @@ export default styled.div`
     line-height: 1;
   }
 
-  .free_dropdown_label {
-    position: absolute;
+  .select__label {
+    padding-top: 8px;
+  }
+
+  .Checkbox__error {
+    padding-left: 12px;
   }
 
   .columnWrapper {

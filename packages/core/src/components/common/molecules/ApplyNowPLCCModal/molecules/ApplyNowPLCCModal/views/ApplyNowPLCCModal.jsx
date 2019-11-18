@@ -15,11 +15,11 @@ const ApplyNowPLCCModal = ({ modalStyles, isPLCCModalOpen, closePLCCModal, class
       dataLocator={getLocator('plcc_apply_now_modal')}
       dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
       maxWidth="724px"
-      minHeight="646px"
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
+      standardHeight
     >
-      <ApplyCardPage isPLCCModalFlow />
+      <ApplyCardPage isPLCCModalFlow closePLCCModal={closePLCCModal} />
     </Modal>
   );
 };

@@ -7,11 +7,12 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
     anchorVariation=""
     colorName={null}
     customStyle={Object {}}
+    justifyContent=""
     locator=""
     margins={null}
     onPress={null}
     text=""
-    url="/c/boys-clothes"
+    url="/c/boys-clothess"
     visible={false}
   >
     <Styled(Styled(DamImage))
@@ -19,11 +20,11 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
       crop=""
       height=""
       host="lazyload-home"
-      imgConfig="c_crop,g_face:center,q_auto:best,w_375"
+      imgConfig="c_crop,g_face:center,q_auto:best,w_305"
       itemBrand=""
       source=""
       swatchConfig=""
-      url="https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png"
+      url="https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png"
       width={750}
     />
   </Styled(Anchor)>
@@ -40,14 +41,14 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
               "action": "",
               "external": 0,
               "target": "",
-              "text": "Girls",
-              "title": "Girls",
-              "url": "/c/girls-clothes",
+              "text": "Girlss",
+              "title": "Girlss",
+              "url": "/c/girls-clothess2",
             },
             "textItems": Array [
               Object {
-                "style": "medium_text_black",
-                "text": "Home Run Ready!",
+                "style": "medium_text_regular",
+                "text": "Home Run Ready!1",
               },
               Object {
                 "style": "medium_text_black",
@@ -62,11 +63,11 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
           Object {
             "image": Object {
               "alt": "Pool",
-              "crop_d": "c_crop,g_face:center,q_auto:best,w_690",
-              "crop_m": "c_crop,g_face:center,q_auto:best,w_375",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_610",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_305",
               "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
               "title": "Pool",
-              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png",
+              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png",
               "url_m": "",
               "url_t": "",
             },
@@ -74,7 +75,7 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Pool",
               "title": "Pool",
-              "url": "/c/boys-clothes",
+              "url": "/c/boys-clothess",
             },
           },
         ]
@@ -83,9 +84,9 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
       singleCTAButton={
         Object {
           "target": "",
-          "text": "SHOP OPENING DAY",
-          "title": "SHOP OPENING DAY",
-          "url": "/c/girls-clothes",
+          "text": "SHOP OPENINGG DAY",
+          "title": "SHOP OPENINNG DAY",
+          "url": "/c/girls-clothess",
         }
       }
     />
@@ -102,14 +103,14 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
               "action": "",
               "external": 0,
               "target": "",
-              "text": "Girls",
-              "title": "Girls",
-              "url": "/c/girls-clothes",
+              "text": "Girlss",
+              "title": "Girlss",
+              "url": "/c/girls-clothess2",
             },
             "textItems": Array [
               Object {
-                "style": "medium_text_black",
-                "text": "Home Run Ready!",
+                "style": "medium_text_regular",
+                "text": "Home Run Ready!1",
               },
               Object {
                 "style": "medium_text_black",
@@ -124,11 +125,11 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
           Object {
             "image": Object {
               "alt": "Pool",
-              "crop_d": "c_crop,g_face:center,q_auto:best,w_690",
-              "crop_m": "c_crop,g_face:center,q_auto:best,w_375",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_610",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_305",
               "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
               "title": "Pool",
-              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png",
+              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png",
               "url_m": "",
               "url_t": "",
             },
@@ -136,7 +137,7 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Pool",
               "title": "Pool",
-              "url": "/c/boys-clothes",
+              "url": "/c/boys-clothess",
             },
           },
         ]
@@ -145,9 +146,9 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
       singleCTAButton={
         Object {
           "target": "",
-          "text": "SHOP OPENING DAY",
-          "title": "SHOP OPENING DAY",
-          "url": "/c/girls-clothes",
+          "text": "SHOP OPENINGG DAY",
+          "title": "SHOP OPENINNG DAY",
+          "url": "/c/girls-clothess",
         }
       }
     />

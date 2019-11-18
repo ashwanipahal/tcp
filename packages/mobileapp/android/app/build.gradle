@@ -173,6 +173,22 @@ android {
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
         }
 
+        tcpPreview {
+            dimension "version"
+            applicationIdSuffix ".tcp.preview"
+            versionNameSuffix "-PREVIEW"
+            versionName = 'My Place'
+            buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
+        }
+
+        gymboreePreview {
+            dimension "version"
+            applicationIdSuffix ".gymboree.preview"
+            versionNameSuffix "-PREVIEW"
+            versionName = 'Gymboree'
+            buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
+        }
+
         tcpUat {
             // Assigns this product flavor to the "version" flavor dimension.
             // This property is optional if you are using only one dimension.
@@ -241,6 +257,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-check-notification-permission')
     implementation project(':react-native-twitter-signin')
     implementation project(':react-native-awesome-card-io')
     implementation project(':react-native-fbsdk')
@@ -293,6 +310,11 @@ project.ext.envConfigFiles = [
     tcpprodrelease: "src/env/.env.prod",
     gymboreeproddebug: "src/env/.env.prod",
     gymboreeprodrelease: "src/env/.env.prod",
+
+    tcppreviewdebug: "src/env/.env.preview",
+    tcppreviewrelease: "src/env/.env.preview",
+    gymboreepreviewdebug: "src/env/.env.preview",
+    gymboreepreviewrelease: "src/env/.env.preview",
 
 ]
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"

@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductListContainer component should render correctly 1`] = `
+<Styled(ProductListView)
+  AddToFavoriteErrorMsg=""
+  breadCrumbs={Array []}
+  categoryId=""
+  currentNavIds={Array []}
+  filteredId="ALL"
+  filters={Object {}}
+  filtersLength={Object {}}
+  getMoreProducts={[MockFunction]}
+  getProducts={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "URI": "category",
+            "ignoreCache": true,
+            "url": undefined,
+          },
+        ],
+        Array [
+          Object {
+            "URI": "category",
+            "ignoreCache": true,
+            "url": undefined,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  initialValues={Object {}}
+  isFavorite={false}
+  isLoadingMore={false}
+  isLoggedIn={false}
+  isSearchListing={false}
+  labels={Object {}}
+  labelsFilter={Object {}}
+  labelsLogin={Object {}}
+  lastLoadedPageNumber={0}
+  longDescription=""
+  margins="0 12px 0 12px"
+  navTree={Object {}}
+  navigation={
+    Object {
+      "getParam": [MockFunction] {
+        "calls": Array [
+          Array [
+            "url",
+          ],
+          Array [
+            "url",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+    }
+  }
+  onAddItemToFavorites={null}
+  onFilterSelection={[Function]}
+  onGoToPDPPage={[Function]}
+  onLoadMoreProducts={[Function]}
+  onPickUpOpenClick={[Function]}
+  onSortSelection={[Function]}
+  onSubmit={[Function]}
+  paddings={null}
+  plpTopPromos={Array []}
+  products={Array []}
+  productsBlock={Array []}
+  removeAddToFavoritesErrorMsg={[Function]}
+  renderBrandFilter={null}
+  resetProducts={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  router={Object {}}
+  sortLabels={Array []}
+  totalProductsCount="0"
+/>
+`;

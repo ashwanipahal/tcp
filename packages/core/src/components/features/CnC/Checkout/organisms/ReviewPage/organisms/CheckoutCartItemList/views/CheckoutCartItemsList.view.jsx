@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddressSkeleton from '@tcp/core/src/components/common/molecules/Address/skeleton/AddressSkeleton.view';
 import { PropTypes } from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
@@ -49,6 +50,8 @@ class CheckoutCartItemsList extends Component {
     className: PropTypes.string.isRequired,
     gettingSortedItemList: PropTypes.func.isRequired,
     showAccordian: PropTypes.bool,
+    disableProductRedirect: PropTypes.bool,
+    bagLoading: PropTypes.bool,
   };
 
   /**
@@ -59,7 +62,7 @@ class CheckoutCartItemsList extends Component {
    * single order item html.
    */
   getOrderItem = item => {
-    const { labels, currencySymbol } = this.props;
+    const { labels, currencySymbol, disableProductRedirect } = this.props;
     const showOnReviewPage = false;
     return (
       <div className="cart-item-tile-container">
@@ -68,6 +71,7 @@ class CheckoutCartItemsList extends Component {
           labels={labels}
           showOnReviewPage={showOnReviewPage}
           currencySymbol={currencySymbol}
+          disableProductRedirect={disableProductRedirect}
         />
       </div>
     );
@@ -363,7 +367,7 @@ class CheckoutCartItemsList extends Component {
    * @summary This function responsible for rendedring view and calling further respective methods.
    */
   render() {
-    const { itemsCount, className, bagPageLabels, showAccordian } = this.props;
+    const { itemsCount, className, bagPageLabels, showAccordian, bagLoading } = this.props;
     const header = (
       <BodyCopy
         fontWeight="semibold"
@@ -396,7 +400,7 @@ class CheckoutCartItemsList extends Component {
         </Col>
         <div className={showAccordian ? 'hide-in-medium-down' : ''}>
           {header}
-          {this.renderItems()}
+          {!bagLoading ? this.renderItems() : <AddressSkeleton />}
         </div>
       </div>
     );
@@ -407,6 +411,8 @@ CheckoutCartItemsList.defaultProps = {
   labels: {},
   bagPageLabels: {},
   showAccordian: true,
+  disableProductRedirect: false, // Disable Product Redirect
+  bagLoading: false,
 };
 
 export default withStyles(CheckoutCartItemsList, styles);

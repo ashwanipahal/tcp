@@ -1,5 +1,6 @@
-const buildQuery = ({ brand, country, channel }) => `
-  navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
+const buildQuery = ({ brand, country, channel, lang }) => `
+  navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}", lang: "${lang}") {
+    errorMessage
     categoryContent {
       description
       catgroupId
@@ -17,6 +18,10 @@ const buildQuery = ({ brand, country, channel }) => `
         }
         sizesRange {
           text
+        }
+        promoBadge {
+          text
+          style
         }
         categoryLayout {
           name
@@ -46,6 +51,24 @@ const buildQuery = ({ brand, country, channel }) => `
                 title
                 text
                 target
+              }
+            }
+            textBanner {
+              link {
+                url
+                text
+                title
+                target
+                external
+                action
+              }
+              textItems {
+                text
+                style
+              }
+              set {
+                key
+                val
               }
             }
           }

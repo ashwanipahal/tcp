@@ -28,7 +28,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
         headingLabel={false}
         isGuest={false}
         isPlcc={true}
-        isProductDetailView=""
+        isProductDetailView={false}
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
@@ -40,14 +40,7 @@ exports[`LoyaltyBanner View Component earnedReward isGuest should render correct
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={true}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={true}
-          isProductDetailView=""
-          isReviewPage={false}
-          labels={Object {}}
+          isProductDetailView={false}
         />
       </div>
     </Styled(BodyCopy)>
@@ -83,7 +76,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
         headingLabel={false}
         isGuest={false}
         isPlcc={true}
-        isProductDetailView=""
+        isProductDetailView={false}
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
@@ -95,14 +88,7 @@ exports[`LoyaltyBanner View Component earnedReward should render correctly 1`] =
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={false}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={true}
-          isProductDetailView=""
-          isReviewPage={false}
-          labels={Object {}}
+          isProductDetailView={false}
         />
       </div>
     </Styled(BodyCopy)>
@@ -138,7 +124,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
         headingLabel={false}
         isGuest={false}
         isPlcc={false}
-        isProductDetailView=""
+        isProductDetailView={false}
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
@@ -150,14 +136,7 @@ exports[`LoyaltyBanner View Component isGuest isPlcc should render correctly 1`]
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={true}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={false}
-          isProductDetailView=""
-          isReviewPage={false}
-          labels={Object {}}
+          isProductDetailView={false}
         />
       </div>
     </Styled(BodyCopy)>
@@ -193,7 +172,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
         headingLabel={false}
         isGuest={true}
         isPlcc={true}
-        isProductDetailView=""
+        isProductDetailView={false}
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
@@ -205,14 +184,7 @@ exports[`LoyaltyBanner View Component isGuest should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={true}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={true}
-          isPlcc={true}
-          isProductDetailView=""
-          isReviewPage={false}
-          labels={Object {}}
+          isProductDetailView={false}
         />
       </div>
     </Styled(BodyCopy)>
@@ -248,7 +220,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
         headingLabel={false}
         isGuest={false}
         isPlcc={false}
-        isProductDetailView=""
+        isProductDetailView={false}
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
@@ -260,14 +232,7 @@ exports[`LoyaltyBanner View Component isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={false}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={false}
-          isPlcc={false}
-          isProductDetailView=""
-          isReviewPage={false}
-          labels={Object {}}
+          isProductDetailView={false}
         />
       </div>
     </Styled(BodyCopy)>
@@ -303,7 +268,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
         headingLabel={false}
         isGuest={true}
         isPlcc={false}
-        isProductDetailView=""
+        isProductDetailView={false}
         labels={Object {}}
         pageCategory=""
         remainingPlcc={false}
@@ -315,14 +280,7 @@ exports[`LoyaltyBanner View Component not isPlcc should render correctly 1`] = `
       >
         <Styled(LoyaltyFooterSection)
           className=""
-          earnedRewardAvailable={false}
-          isAddedToBagPage={false}
-          isConfirmationPage={false}
-          isGuest={true}
-          isPlcc={false}
-          isProductDetailView=""
-          isReviewPage={false}
-          labels={Object {}}
+          isProductDetailView={false}
         />
       </div>
     </Styled(BodyCopy)>

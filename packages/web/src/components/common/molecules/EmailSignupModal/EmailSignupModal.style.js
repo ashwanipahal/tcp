@@ -3,6 +3,14 @@ import { css } from 'styled-components';
 const EmailSignupModalStyle = css`
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+
+    .email-signup-second-brand {
+      padding-top: 25px;
+    }
+
+    .CheckBox__text {
+      margin-top: 6px;
+    }
   }
   .field-label {
     height: 40px;
@@ -16,14 +24,15 @@ const EmailSignupModalStyle = css`
     padding: 21px 0;
   }
   .button-wrapper-form {
-    margin: 89px -15px 0;
+    margin: 89px -14px 0;
+    width: 100vw;
   }
   .button-container {
     width: 225px;
     box-sizing: border-box;
   }
   .terms-label {
-    margin-top: 52px;
+    margin-top: 32px;
   }
   .alignRight {
     right: 14px;
@@ -50,7 +59,7 @@ const EmailSignupModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
-      width: 458px;
+      width: 457px;
     }
     .button-container {
       bottom: 24px;
@@ -73,7 +82,7 @@ const EmailSignupModalStyle = css`
       display: flex;
       width: 300px;
       margin-right: 0;
-      height: 620px;
+      height: 645px;
     }
     .img-wrapper + div {
       width: calc(100% - 300px);

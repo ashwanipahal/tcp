@@ -1,4 +1,5 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import constants from './AddEditAddress.constants';
 import { addAddressSuccess, addAddressFail } from './AddEditAddress.actions';
 import {
@@ -11,9 +12,10 @@ import { getUserEmail } from '../../../../features/account/User/container/User.s
 export function* addAddressGet({ payload }, addToAddressBook = true) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
-
+  yield put(setLoaderState(true));
   try {
     const res = yield call(addAddress, updatedPayload);
+    yield put(setLoaderState(false));
     if (!addToAddressBook) {
       return res;
     }
@@ -29,8 +31,10 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
     return yield put(addAddressFail(res.body));
   } catch (err) {
     if (!addToAddressBook) {
+      yield put(setLoaderState(false));
       throw err;
     }
+    yield put(setLoaderState(false));
     let error = {};
     /* istanbul ignore else */
     error = err;
@@ -41,12 +45,14 @@ export function* addAddressGet({ payload }, addToAddressBook = true) {
 export function* updateAddressPut({ payload }, fromCheckout) {
   const userEmail = yield select(getUserEmail);
   const updatedPayload = { ...payload, ...{ email: userEmail } };
+  yield put(setLoaderState(true));
   try {
     const res = yield call(
       updateAddress,
       updatedPayload,
       fromCheckout && fromCheckout.profileUpdate
     );
+    yield put(setLoaderState(false));
     if (res) {
       yield put(
         setAddressBookNotification({
@@ -60,9 +66,10 @@ export function* updateAddressPut({ payload }, fromCheckout) {
       }
       return putRes;
     }
-    return yield put(addAddressFail(res.body));
+    return yield res.body;
   } catch (err) {
     let error = {};
+    yield put(setLoaderState(false));
     if (err instanceof Error) {
       error = err.response.body;
     }

@@ -62,3 +62,17 @@ export const resetPLCCResponse = payload => {
     type: constants.RESET_PLCC_APPLICATION_RESPONSE,
   };
 };
+
+export const setPlccEligible = payload => {
+  return {
+    payload,
+    type: constants.SET_PLCC_ELIGIBLE,
+  };
+};
+
+export const setPlccPrescreenCode = payload => {
+  return {
+    payload,
+    type: constants.SET_PLCC_PRESCREEN_CODE,
+  };
+};

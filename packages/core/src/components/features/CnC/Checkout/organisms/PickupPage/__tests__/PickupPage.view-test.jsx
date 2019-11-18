@@ -7,7 +7,8 @@ describe('PickUpFormPartVanilla component', () => {
     const props = {
       className: '',
       isGuest: true,
-      isMobile: false,
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickupError: '',
       isUsSite: false,
       pickUpLabels: {},
@@ -40,6 +41,8 @@ describe('PickUpFormPartVanilla component', () => {
       className: '',
       isGuest: false,
       isMobile: false,
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickupError: 'Error',
       isUsSite: false,
       pickUpLabels: {},
@@ -81,7 +84,7 @@ describe('PickUpFormPartVanilla component', () => {
       isEditing: true,
     });
     component.setState({
-      isEditing: true,
+      isEditing: false,
       pickUpContact: {
         firstName: '',
         lastName: '',
@@ -100,6 +103,8 @@ describe('PickUpFormPartVanilla component', () => {
       className: '',
       isGuest: false,
       isMobile: false,
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickupError: 'Error',
       isUsSite: false,
       pickUpLabels: { nextText: 'NEXT', reviewText: 'REVIEW' },
@@ -137,6 +142,8 @@ describe('PickUpFormPartVanilla component', () => {
       isSmsUpdatesEnabled: true,
       dispatch: jest.fn(),
       handleSubmit: jest.fn(),
+      cartOrderItemsCount: 1,
+      checkoutPageEmptyBagLabels: {},
       pickupDidMount: jest.fn(),
       orderHasShipping: true,
       isVenmoPaymentInProgress: false,

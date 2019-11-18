@@ -5,7 +5,7 @@ import { css } from 'styled-components';
 const socialStyle = css`
   .social-accounts__infoList {
     display: flex;
-    padding: 15px 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0;
   }
   .Facebook-icon--enable {
     width: 62px;

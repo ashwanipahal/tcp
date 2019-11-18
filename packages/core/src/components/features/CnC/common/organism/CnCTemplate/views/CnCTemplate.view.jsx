@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -28,6 +30,19 @@ const getBonusPointsDaysSection = ({ isGuest, showAccordian }) => {
   );
 };
 
+const getRecommendationSection = isConfirmationPage => {
+  return (
+    isConfirmationPage && (
+      <div className="recommendationsWrapper">
+        <Recommendations
+          page={Constants.RECOMMENDATIONS_PAGES_MAPPING.CHECKOUT}
+          variations="moduleO"
+        />
+      </div>
+    )
+  );
+};
+
 const CnCTemplate = ({
   leftSection: LeftSection,
   bagActions: BagActions,
@@ -38,7 +53,6 @@ const CnCTemplate = ({
   isCheckoutView,
   showAccordian,
   isConfirmationPage,
-  isNotLoaded,
   orderLedgerAfterView,
   pageCategory,
 }) => {
@@ -62,7 +76,7 @@ const CnCTemplate = ({
             colSize={{ small: 6, medium: 3, large: 4 }}
             className={`right-sec ${isCheckoutView ? 'hide-mobile' : ''}`}
           >
-            {!!isNotLoaded && (
+            {
               <>
                 {isConfirmationPage ? (
                   <>
@@ -94,10 +108,11 @@ const CnCTemplate = ({
                   </>
                 )}
               </>
-            )}
+            }
           </Col>
         )}
       </Row>
+      {getRecommendationSection(isConfirmationPage)}
     </section>
   );
 };
@@ -114,7 +129,6 @@ CnCTemplate.propTypes = {
   showAccordian: PropTypes.bool,
   isCheckoutView: PropTypes.bool,
   isConfirmationPage: PropTypes.bool,
-  isNotLoaded: PropTypes.bool,
   pageCategory: PropTypes.string,
 };
 
@@ -125,7 +139,6 @@ CnCTemplate.defaultProps = {
   showAccordian: true,
   isCheckoutView: false,
   isConfirmationPage: false,
-  isNotLoaded: true,
   pageCategory: '',
 };
 

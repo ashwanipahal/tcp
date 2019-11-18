@@ -29,6 +29,7 @@ import {
   SubHeader,
   CreditCardHeader,
   CreditCardWrapper,
+  PayPalTextContainer,
   PaymentMethodMainWrapper,
   PaymentMethodImage,
 } from '../styles/BillingPaymentForm.style.native';
@@ -130,7 +131,7 @@ export class BillingPaymentForm extends React.PureComponent {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
     const formCardType = editMode ? editFormCardType : cardType;
-    const isExpirationRequired = getExpirationRequiredFlag({ formCardType });
+    const isExpirationRequired = getExpirationRequiredFlag({ cardType: formCardType });
     const { addNewCCState } = this.state;
     const formName = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
     dispatch(change(formName, 'cardType', formCardType));
@@ -365,6 +366,9 @@ export class BillingPaymentForm extends React.PureComponent {
       dispatch,
       isPaymentDisabled,
       setCheckoutStage,
+      getPayPalSettings,
+      isPayPalWebViewEnable,
+      isPayPalEnabled,
     } = this.props;
     const paymentMethods = [
       { id: constants.PAYMENT_METHOD_CREDIT_CARD, displayName: labels.creditCard },
@@ -396,7 +400,18 @@ export class BillingPaymentForm extends React.PureComponent {
                 dispatch={dispatch}
               />
             </FormSection>
-
+            {isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL ? (
+              <PayPalTextContainer>
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  spacingStyles="margin-bottom-MED"
+                  color="gray.900"
+                  dataLocator="paymentMethodLbl"
+                  text={labels.payPalLongText}
+                />
+              </PayPalTextContainer>
+            ) : null}
             {paymentMethodId === constants.PAYMENT_METHOD_CREDIT_CARD ? (
               this.getCreditCardWrapper({
                 labels,
@@ -423,6 +438,9 @@ export class BillingPaymentForm extends React.PureComponent {
           }
           pageCategory="billing"
           showAccordian
+          getPayPalSettings={getPayPalSettings}
+          showPayPalButton={isPayPalEnabled && paymentMethodId === constants.PAYMENT_METHOD_PAY_PAL}
+          isPayPalWebViewEnable={isPayPalWebViewEnable}
         />
       </>
     );
