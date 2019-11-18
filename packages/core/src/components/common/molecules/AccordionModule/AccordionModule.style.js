@@ -15,7 +15,10 @@ const style = css`
         font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
         line-height: normal;
       }
-
+      &.active,
+      &.inactive {
+        background: ${props => props.theme.colors.BUTTON.WHITE.NORMAL};
+      }
       background: ${props => props.theme.colors.BUTTON.WHITE.NORMAL};
     }
   }
