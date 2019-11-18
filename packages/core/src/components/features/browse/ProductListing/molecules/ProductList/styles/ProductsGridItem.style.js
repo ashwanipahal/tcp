@@ -211,13 +211,10 @@ const styles = css`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: rgba(224, 224, 224, 0.6);
-    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.7);
     justify-content: center;
     align-items: center;
     display: flex;
-    font-size: ${props => props.theme.typography.fontSizes.fs22};
-    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
 
   .container-price {

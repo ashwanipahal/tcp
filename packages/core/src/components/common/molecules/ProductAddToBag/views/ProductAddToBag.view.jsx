@@ -57,9 +57,10 @@ const ErrorComp = (errorMessage, showAddToBagCTA) => {
 
 class ProductAddToBag extends React.PureComponent<Props> {
   getButtonLabel = () => {
-    const { fromBagPage, plpLabels } = this.props;
+    const { fromBagPage, plpLabels, keepAlive, outOfStockLabels = {} } = this.props;
     const { addToBag, update } = plpLabels;
-    return fromBagPage ? update : addToBag;
+    const addToBagLabel = fromBagPage ? update : addToBag;
+    return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
   };
 
   renderOutfitButton = () => {
@@ -114,7 +115,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
   };
 
   renderFitList = (fitList, fitTitle) => {
-    const { selectFit } = this.props;
+    const { selectFit, keepAlive } = this.props;
     return (
       fitList &&
       fitList.size > 0 && (
@@ -128,6 +129,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             onChange={selectFit}
             dataLocator="addnewaddress-state"
             title={`${fitTitle}:`}
+            keepAlive={keepAlive}
           />
         </div>
       )
@@ -156,6 +158,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       plpLabels,
       onCloseClick,
       selectedColorProductId,
+      keepAlive,
     } = this.props;
     const sizeUnavailable = plpLabels && plpLabels.sizeUnavalaible ? plpLabels.sizeUnavalaible : '';
     const currentColorEntry = getMapSliceForColorProductId(
@@ -170,6 +173,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
         sizeUnavailable={sizeUnavailable}
         onPickupClickAddon={onCloseClick}
         miscInfo={currentColorEntry.miscInfo}
+        keepAlive={keepAlive}
       />
     );
   };
@@ -180,6 +184,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       selectSize,
       isDisableZeroInventoryEntries,
+      keepAlive,
     } = this.props;
     return (
       sizeList &&
@@ -197,6 +202,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
             dataLocator="addnewaddress-state"
             title={`${colorFitSizeDisplayNames.size}:`}
             isDisableZeroInventoryEntries={isDisableZeroInventoryEntries}
+            keepAlive={keepAlive}
           />
           {isErrorMessageDisplayed && ErrorComp(errorMessage)}
         </div>
@@ -219,6 +225,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       isPickup,
       isBundleProduct,
       isATBErrorMessageDisplayed,
+      keepAlive,
     } = this.props;
 
     let { sizeList, fitList, colorList, colorFitSizeDisplayNames } = this.props;
@@ -272,6 +279,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 <Button
                   type="submit"
                   className="add-to-bag-button"
+                  disabled={keepAlive}
                   onClick={e => {
                     e.preventDefault();
                     // eslint-disable-next-line sonarjs/no-all-duplicated-branches

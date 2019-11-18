@@ -63,6 +63,8 @@ class ProductBasicInfo extends React.Component {
       className,
       // isShowFavoriteCount,
       productInfo: { ratingsProductId },
+      keepAlive,
+      outOfStockLabels,
     } = this.props;
 
     const { isInDefaultWishlist } = this.state;
@@ -76,6 +78,11 @@ class ProductBasicInfo extends React.Component {
           className="inline-badge-item"
           text={badge}
         />
+        {keepAlive && (
+          <BodyCopy color="red.500" fontSize="fs10" fontFamily="secondary">
+            {outOfStockLabels.itemSoldOutMessage}
+          </BodyCopy>
+        )}
         <div className="information-container">
           <div className="title-wrapper">
             {typeof pdpUrl === 'string' ? (
@@ -123,6 +130,10 @@ ProductBasicInfo.propTypes = {
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    itemSoldOutMessage: PropTypes.string,
+  }),
 };
 
 ProductBasicInfo.defaultProps = {
@@ -131,6 +142,10 @@ ProductBasicInfo.defaultProps = {
   badge: '',
   isLoggedIn: false,
   isBundleProduct: false,
+  outOfStockLabels: {
+    itemSoldOutMessage: '',
+  },
+  keepAlive: false,
 };
 
 export default withStyles(ProductBasicInfo, ProductBasicInfoStyle);

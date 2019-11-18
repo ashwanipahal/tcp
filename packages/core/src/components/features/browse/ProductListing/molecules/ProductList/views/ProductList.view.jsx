@@ -51,6 +51,8 @@ const ProductList = props => {
     isFavoriteView,
     removeFavItem,
     createNewWishListMoveItem,
+    outOfStockLabels,
+    isKeepAliveEnabled,
   } = props;
   let gridIndex = 0;
 
@@ -107,13 +109,14 @@ const ProductList = props => {
               isEvenElement={isEvenElement}
               gridIndex={gridIndex}
               isPLPredesign // isPLPredesign should always be true, because this code is taken from existing project(MRT) and this filed has many condition to run the new code correctly and this and if we remove this line we need to change the many existing files.
-              isKeepAliveKillSwitch={false}
+              isKeepAliveEnabled={isKeepAliveEnabled}
               labels={labels}
               isLoggedIn={isLoggedIn}
               wishlistsSummaries={wishlistsSummaries}
               isFavoriteView={isFavoriteView}
               removeFavItem={removeFavItem}
               createNewWishListMoveItem={createNewWishListMoveItem}
+              outOfStockLabels={outOfStockLabels}
             />
           </div>
         );
@@ -158,6 +161,8 @@ ProductList.propTypes = {
   isFavoriteView: PropTypes.bool,
   removeFavItem: PropTypes.func,
   createNewWishListMoveItem: PropTypes.func,
+  outOfStockLabels: PropTypes.shape({}),
+  isKeepAliveEnabled: PropTypes.bool,
 };
 
 ProductList.defaultProps = {
@@ -187,6 +192,8 @@ ProductList.defaultProps = {
   isFavoriteView: false,
   removeFavItem: null,
   createNewWishListMoveItem: null,
+  outOfStockLabels: {},
+  isKeepAliveEnabled: false,
 };
 
 export default withStyles(ProductList, ProductListStyle);

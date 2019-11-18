@@ -4,6 +4,7 @@ import { getFormValues } from 'redux-form';
 import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
+import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import {
@@ -29,6 +30,7 @@ import {
   getLabels,
   getIsFilterBy,
   getPLPTopPromos,
+  getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -262,6 +264,7 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     onSubmit: submitProductListingFiltersForm,
@@ -278,6 +281,7 @@ function mapStateToProps(state) {
     routerParam: state.routerParam,
     plpTopPromos: getPLPTopPromos(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
   };
 }
 

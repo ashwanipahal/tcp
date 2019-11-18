@@ -33,6 +33,8 @@ import {
   getAlternateSizes,
 } from './ProductDetail.selectors';
 
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
+
 import {
   addToCartEcom,
   clearAddToBagErrorState,
@@ -137,6 +139,7 @@ class ProductDetailContainer extends React.PureComponent {
       isLoggedIn,
       alternateSizes,
       isShowPriceRangeKillSwitch,
+      outOfStockLabels,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
@@ -168,6 +171,7 @@ class ProductDetailContainer extends React.PureComponent {
               isLoggedIn={isLoggedIn}
               alternateSizes={alternateSizes}
               isShowPriceRangeKillSwitch={isShowPriceRangeKillSwitch}
+              outOfStockLabels={outOfStockLabels}
             />
           ) : null}
         </React.Fragment>
@@ -196,12 +200,13 @@ function mapStateToProps(state) {
     currencyAttributes: getCurrencyAttributes(state),
     plpLabels: getPlpLabels(state),
     pdpLabels: getPDPLabels(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     alternateSizes: getAlternateSizes(state),
     isShowPriceRangeKillSwitch: getIsShowPriceRange(state),
-    isKeepAliveProduct: getIsKeepAliveProduct(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
     store: state,
   };
 }
@@ -254,6 +259,7 @@ ProductDetailContainer.propTypes = {
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  outOfStockLabels: PropTypes.shape({}).isRequired,
 };
 
 ProductDetailContainer.defaultProps = {

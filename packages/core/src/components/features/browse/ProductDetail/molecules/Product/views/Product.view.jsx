@@ -28,8 +28,9 @@ const Product = props => {
     isLoggedIn,
     isShowPriceRangeKillSwitch,
     formValues = {},
-    isKeepAliveProduct,
     isBundleProduct,
+    keepAlive,
+    outOfStockLabels,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -60,14 +61,11 @@ const Product = props => {
     prices = getPricesWithRange(productInfo, colorProduct.color.name);
   }
 
-  const { miscInfo } = colorProduct;
-
-  const isKeepAlive = miscInfo.keepAlive && isKeepAliveProduct;
-
   return (
     <div>
       <ProductBasicInfo
-        keepAlive={isKeepAlive}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
         badge={badge1}
         isGiftCard={isGiftCard}
         productInfo={productInfo}
@@ -122,13 +120,20 @@ Product.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
-  isKeepAliveProduct: PropTypes.bool.isRequired,
   isMatchingFamily: PropTypes.bool.isRequired,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    itemSoldOutMessage: PropTypes.string,
+  }),
 };
 
 Product.defaultProps = {
   isBundleProduct: false,
+  keepAlive: false,
+  outOfStockLabels: {
+    itemSoldOutMessage: '',
+  },
 };
 
 export default Product;
