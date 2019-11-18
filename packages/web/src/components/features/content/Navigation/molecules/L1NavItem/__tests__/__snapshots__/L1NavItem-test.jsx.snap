@@ -130,10 +130,9 @@ exports[`Drawer component renders correctly 1`] = `
         }
         clickData={
           Object {
-            "internalCampaignId": "check",
+            "pageNavigationText": "",
           }
         }
-        onClick={[Function]}
       >
         <div
           className="nav-bar-l1-content"
