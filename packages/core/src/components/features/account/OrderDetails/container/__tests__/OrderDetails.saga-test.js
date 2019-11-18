@@ -35,7 +35,8 @@ describe('getOrderDetailsListSaga saga', () => {
         updatedPayload: {},
         trackOrderInfo: {},
       };
-      const putDescriptor = gen.next(OrderDetailsList).value;
+      gen.next(OrderDetailsList);
+      const putDescriptor = gen.next().value;
       expect(putDescriptor).toEqual(put(setOrderDetailInfo(OrderDetailsList.trackOrderInfo)));
     });
   });
