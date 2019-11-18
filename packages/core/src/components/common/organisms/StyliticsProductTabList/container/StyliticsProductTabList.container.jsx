@@ -47,6 +47,11 @@ function StyliticsProductTabListContainer(props) {
   } = props;
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   lastSelectedId = selectedColorProductId || 0;
+
+  useEffect(() => {
+    setSelectedCategoryId(null);
+  }, [tabItems]);
+
   useEffect(() => {
     if (lastSelectedId !== 0 || selectedCategoryId) {
       const tabId = lastSelectedId === 0 ? selectedCategoryId : lastSelectedId;

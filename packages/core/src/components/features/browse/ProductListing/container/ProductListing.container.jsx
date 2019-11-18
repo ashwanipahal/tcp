@@ -1,5 +1,7 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import { getFormValues } from 'redux-form';
 import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
@@ -110,11 +112,16 @@ class ProductListingContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: { asPath },
+      isLoggedIn,
     } = prevProps;
     const {
       router: { asPath: currentAsPath },
+      isLoggedIn: currentLyLoggedIn,
     } = this.props;
     if (asPath !== currentAsPath) {
+      this.makeApiCall();
+    }
+    if (isLoggedIn !== currentLyLoggedIn) {
       this.makeApiCall();
     }
   }
@@ -180,6 +187,7 @@ class ProductListingContainer extends React.PureComponent {
       plpTopPromos,
       router: { asPath: asPathVal },
       isSearchListing,
+      navigation,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -215,6 +223,7 @@ class ProductListingContainer extends React.PureComponent {
         plpTopPromos={plpTopPromos}
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}
+        navigation={navigation}
         {...otherProps}
       />
     ) : (
@@ -378,8 +387,18 @@ ProductListingContainer.defaultProps = {
   isSearchListing: false,
 };
 
-export default withIsomorphicRenderer({
+const IsomorphicProductListingContainer = withIsomorphicRenderer({
   WrappedComponent: ProductListingContainer,
   mapStateToProps,
   mapDispatchToProps,
 });
+
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
+const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
+RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
+
+export default HotfixAwareProductListingContainer;
