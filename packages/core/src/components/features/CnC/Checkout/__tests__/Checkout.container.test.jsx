@@ -26,6 +26,7 @@ describe('CheckoutPage Container', () => {
     fetchNeedHelpContent: jest.fn(),
     isRegisteredUserCallDone: true,
     getUserInformation: jest.fn(),
+    markBagPageRoutingDone: jest.fn(),
     isPayPalWebViewEnable: false,
   };
 

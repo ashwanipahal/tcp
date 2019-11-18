@@ -11,6 +11,7 @@ import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/Chec
 import CheckoutProgressIndicator from '../../../molecules/CheckoutProgressIndicator';
 import AddressVerification from '../../../../../../common/organisms/AddressVerification/container/AddressVerification.container';
 import ModalNative from '../../../../../../common/molecules/Modal';
+import { getAddressInitialValues } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
@@ -50,6 +51,7 @@ export default class ShippingPage extends React.Component {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     syncErrors: PropTypes.shape({}),
     newUserPhoneNo: PropTypes.string,
+    hasSetGiftOptions: PropTypes.bool,
     setCheckoutStage: PropTypes.func.isRequired,
   };
 
@@ -69,6 +71,7 @@ export default class ShippingPage extends React.Component {
     isSaveToAddressBookChecked: false,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
+    hasSetGiftOptions: false,
     updateShippingAddressData: () => {},
     addNewShippingAddressData: () => {},
     syncErrors: {},
@@ -145,7 +148,7 @@ export default class ShippingPage extends React.Component {
       saveToAddressBook,
       smsSignUp = {},
     } = data;
-    const { isGuest, userAddresses, formatPayload } = this.props;
+    const { isGuest, userAddresses, formatPayload, hasSetGiftOptions } = this.props;
     let shipAddress = address;
     if (!isGuest && userAddresses && userAddresses.size > 0 && onFileAddressKey) {
       shipAddress = userAddresses.find(item => item.addressId === onFileAddressKey);
@@ -174,6 +177,7 @@ export default class ShippingPage extends React.Component {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
+      hasSetGiftOptions,
     };
     const { handleSubmit, verifyAddressAction } = this.props;
     if (!onFileAddressKey) {
@@ -362,7 +366,7 @@ export default class ShippingPage extends React.Component {
                   <ShippingForm
                     shipmentMethods={shipmentMethods}
                     initialValues={{
-                      address: { country: 'US' },
+                      address: getAddressInitialValues(this),
                       shipmentMethods: { shippingMethodId: defaultShipmentId },
                       onFileAddressKey: defaultAddressId,
                     }}

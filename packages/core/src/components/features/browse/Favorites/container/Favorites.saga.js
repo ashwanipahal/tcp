@@ -33,6 +33,7 @@ import { setLoginModalMountedState } from '../../../account/LoginPage/container/
 import { isCanada } from '../../../../../utils';
 import { setAddToFavorite } from '../../ProductListing/container/ProductListing.actions';
 import { setAddToFavoritePDP } from '../../ProductDetail/container/ProductDetail.actions';
+import { setAddToFavoriteSLP } from '../../SearchDetail/container/SearchDetail.actions';
 
 export function* loadActiveWishlistByGuestKey(wishListId, guestAccessKey) {
   try {
@@ -75,8 +76,19 @@ export function* addItemsToWishlist({ payload }) {
         yield put(setAddToFavoriteErrorState(res));
       }
       if (res && res.newItemId) {
-        if (page === 'PDP') yield put(setAddToFavoritePDP({ colorProductId, res }));
-        if (page === 'PLP') yield put(setAddToFavorite({ colorProductId, res }));
+        switch (page) {
+          case 'PDP':
+            yield put(setAddToFavoritePDP({ colorProductId, res }));
+            break;
+          case 'PLP':
+            yield put(setAddToFavorite({ colorProductId, res }));
+            break;
+          case 'SLP':
+            yield put(setAddToFavoriteSLP({ colorProductId, res }));
+            break;
+          default:
+            break;
+        }
         yield put(setWishlistState({ colorProductId, isInDefaultWishlist: true }));
       }
     }

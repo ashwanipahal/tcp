@@ -75,6 +75,7 @@ describe('Cart Item saga remove', () => {
     removeCartItemGen.next();
     removeCartItemGen.next();
     removeCartItemGen.next();
+    removeCartItemGen.next(true);
 
     expect(removeCartItemGen.next(true).value).toEqual(
       put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payloadValue))

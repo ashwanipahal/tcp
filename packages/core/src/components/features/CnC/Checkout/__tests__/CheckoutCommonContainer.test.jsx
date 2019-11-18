@@ -12,6 +12,7 @@ describe('Bag page Container', () => {
     fetchNeedHelpContent: jest.fn(),
     setVenmoPickupState: jest.fn(),
     setVenmoShippingState: jest.fn(),
+    markBagPageRoutingDone: jest.fn(),
     getUserInformation: jest.fn(),
     isPickupModalOpen: jest.fn(),
     isRegisteredUserCallDone: true,

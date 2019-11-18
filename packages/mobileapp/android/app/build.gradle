@@ -176,7 +176,7 @@ android {
         tcpPreview {
             dimension "version"
             applicationIdSuffix ".tcp.preview"
-            versionNameSuffix ""
+            versionNameSuffix "-PREVIEW"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
         }
@@ -184,7 +184,7 @@ android {
         gymboreePreview {
             dimension "version"
             applicationIdSuffix ".gymboree.preview"
-            versionNameSuffix ""
+            versionNameSuffix "-PREVIEW"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
         }
@@ -257,6 +257,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-check-notification-permission')
     implementation project(':react-native-twitter-signin')
     implementation project(':react-native-awesome-card-io')
     implementation project(':react-native-fbsdk')
