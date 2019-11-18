@@ -55,6 +55,8 @@ const ProductList = props => {
     removeFavItem,
     createNewWishListMoveItem,
     isSearchListing,
+    getProducts,
+    asPathVal,
   } = props;
   let gridIndex = 0;
 
@@ -119,6 +121,8 @@ const ProductList = props => {
               removeFavItem={removeFavItem}
               createNewWishListMoveItem={createNewWishListMoveItem}
               isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
             />
           </div>
         );
@@ -164,6 +168,8 @@ ProductList.propTypes = {
   removeFavItem: PropTypes.func,
   createNewWishListMoveItem: PropTypes.func,
   isSearchListing: PropTypes.bool,
+  getProducts: PropTypes.func,
+  asPathVal: PropTypes.string,
 };
 
 ProductList.defaultProps = {
@@ -194,6 +200,8 @@ ProductList.defaultProps = {
   removeFavItem: null,
   createNewWishListMoveItem: null,
   isSearchListing: false,
+  getProducts: () => {},
+  asPathVal: '',
 };
 
 export default withStyles(ProductList, ProductListStyle);

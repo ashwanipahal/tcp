@@ -42,6 +42,8 @@ class ProductsGrid extends React.Component {
     isLoggedIn: PropTypes.bool,
     isSearchListing: PropTypes.bool,
     // showQuickViewForProductId: PropTypes.string,
+    getProducts: PropTypes.func,
+    asPathVal: PropTypes.string,
   };
 
   static defaultProps = {
@@ -57,6 +59,8 @@ class ProductsGrid extends React.Component {
     currencyExchange: 1,
     isLoggedIn: false,
     isSearchListing: false,
+    getProducts: () => {},
+    asPathVal: '',
   };
 
   constructor(props, context) {
@@ -157,6 +161,8 @@ class ProductsGrid extends React.Component {
       isLoggedIn,
       isSearchListing,
       // showQuickViewForProductId,
+      getProducts,
+      asPathVal,
       ...otherProps
     } = this.props;
 
@@ -193,6 +199,8 @@ class ProductsGrid extends React.Component {
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
                         isSearchListing={isSearchListing}
+                        getProducts={getProducts}
+                        asPathVal={asPathVal}
                         {...otherProps}
                       />
                     );
