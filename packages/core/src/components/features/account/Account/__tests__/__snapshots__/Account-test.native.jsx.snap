@@ -11,7 +11,6 @@ exports[`Account View should render Account Correctly 1`] = `
   >
     <Styled(MyAccountLayoutView)
       component="addressBookMobile"
-      fetchLinks={[Function]}
       handleComponentChange={[Function]}
       isUserLoggedIn={false}
       labels={

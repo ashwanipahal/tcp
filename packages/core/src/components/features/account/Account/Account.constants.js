@@ -20,8 +20,6 @@ const ACCOUNT_CONSTANTS = {
       welcomeMsg: 'header-welcome message',
     },
   },
-  GET_SUB_NAVIGATION: `${ACCOUNT_ACTION_PATTERN}GET_SUB_NAVIGATION`,
-  SET_SUB_NAVIGATION: `${ACCOUNT_ACTION_PATTERN}SET_SUB_NAVIGATION`,
 };
 
 export default ACCOUNT_CONSTANTS;

@@ -24,8 +24,6 @@ const AccountReducer = (state = initialState, action) => {
       return state
         .set('accountNavigation', action)
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(ACCOUNT_CONSTANTS.GET_ACCOUNT_NAV_LIST_TTL));
-    case ACCOUNT_CONSTANTS.SET_SUB_NAVIGATION:
-      return state.set(action.payload.key, action.payload.val);
     default:
       return getDefaultState(state);
   }
