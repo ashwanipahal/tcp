@@ -165,11 +165,9 @@ class TCPWebApp extends App {
     };
   };
 
-  getPageData = (payload, req) => {
-    return payload || (req.headers && req.headers.referer) || '';
+  getRefererFromReq = req => {
+    return (req.headers && req.headers.referer) || '';
   };
-
-  getHeaders = req => (req.headers && req.headers.referer) || '';
 
   static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
@@ -220,10 +218,9 @@ class TCPWebApp extends App {
         payload = {
           ...Component.pageInfo,
           ...payload,
-          pageReferer: this.getHeaders(req),
         };
       }
-      initialProps.pageData = this.getPageData(payload.pageData);
+      initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload, req));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);
