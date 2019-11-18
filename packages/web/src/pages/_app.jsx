@@ -58,6 +58,7 @@ const updatePayload = (req, payload, Component) => {
   let updatedPayload = { ...payload };
   const { pageInfo } = Component;
   const { staticPage, paramName } = pageInfo || {};
+
   // This check ensures this block is executed once since Component is not available in first call
   if (pageInfo) {
     updatedPayload = {
