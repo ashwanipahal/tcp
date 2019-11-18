@@ -105,7 +105,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gZMcBi",
+                    "componentId": "sc-gqjmRU",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -228,7 +228,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gZMcBi",
+                  "styledComponentId": "sc-gqjmRU",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -273,7 +273,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-gZMcBi",
+                    "componentId": "sc-gqjmRU",
                     "isStatic": false,
                     "rules": Array [
                       "
@@ -396,7 +396,7 @@ exports[`StoreSearch component StoreSearch component renders correctly 1`] = `
                   "displayName": "Styled(InputCheckbox)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-gZMcBi",
+                  "styledComponentId": "sc-gqjmRU",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],

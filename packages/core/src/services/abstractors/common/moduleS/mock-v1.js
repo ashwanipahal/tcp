@@ -1,0 +1,87 @@
+export default {
+  moduleS: {
+    contentId: 'e499bac3-6770-4757-b924-55c837712dfc',
+    name: 'moduleS',
+    type: 'module',
+    composites: {
+      headerText: [
+        {
+          textItems: [
+            {
+              text: 'Home Run Ready!',
+              style: 'medium_text_black',
+            },
+            {
+              text: 'Lets Play.',
+              style: 'medium_text_black',
+            },
+          ],
+          link: {
+            url: '/c/girls-clothes',
+            text: 'Girls',
+            title: 'Girls',
+            target: '',
+            external: 0,
+            action: '',
+          },
+          icon: {
+            icon: '',
+            placement: '',
+          },
+        },
+      ],
+      // linkedImage: [
+      //   {
+      //     image: {
+      //       url:
+      //         'https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png',
+      //       alt: 'Pool',
+      //       title: 'Pool',
+      //       crop_d: 'c_crop,g_face:center,q_auto:best,w_690',
+      //       crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
+      //       crop_m: 'c_crop,g_face:center,q_auto:best,w_375',
+      //       url_m: '',
+      //       url_t: '',
+      //     },
+      //     link: {
+      //       url: '/c/boys-clothes',
+      //       text: 'Pool',
+      //       title: 'Pool',
+      //       target: '',
+      //     },
+      //   },
+      // ],
+      linkedImage: [
+        {
+          video: {
+            url: 'https://test1.theplace.com/video/upload/v1572869480/sample_mp4.mp4',
+            title: 'Video Title attribute value',
+            autoplay: true,
+            controls: true,
+            loop: true,
+            muted: true,
+            inline: true,
+          },
+          image: {
+            url: 'http://image1.sm/url',
+            alt: 'Image Alt text attribute value',
+            title: 'Image Title attribute value',
+          },
+        },
+      ],
+      singleCTAButton: {
+        url: '/c/girls-clothes',
+        text: 'SHOP OPENING DAY',
+        title: 'SHOP OPENING DAY',
+        target: '',
+      },
+      moduleWidth: 'half',
+    },
+    set: [
+      {
+        key: 'moduleWidth',
+        val: 'half',
+      },
+    ],
+  },
+};

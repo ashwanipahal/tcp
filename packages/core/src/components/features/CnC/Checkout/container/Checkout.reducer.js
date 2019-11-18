@@ -107,6 +107,8 @@ function paypalReducer(checkout, action) {
       return checkout.setIn(['uiFlags', 'isRTPSFlow'], action.payload);
     case CheckoutConstants.CHECKOUT_ROUTING_DONE:
       return checkout.setIn(['uiFlags', 'routingDone'], action.payload);
+    case CheckoutConstants.CHECKOUT_VALUES_SET_GIFTWRAP:
+      return checkout.setIn(['values', 'giftWrap'], action.payload);
     default:
       return venmoFlagReducer(checkout, action);
   }
