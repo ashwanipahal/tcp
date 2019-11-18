@@ -48,8 +48,8 @@ export class BagPageContainer extends React.Component<Props> {
   componentDidUpdate(prevProps) {
     if (isClient()) {
       const { isRegisteredUserCallDone: prevIsRegisteredUserCallDone } = prevProps;
-      const { router, isRegisteredUserCallDone } = this.props;
-      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone) {
+      const { router, isRegisteredUserCallDone, bagPageIsRouting } = this.props;
+      if (prevIsRegisteredUserCallDone !== isRegisteredUserCallDone && !bagPageIsRouting) {
         this.fetchInitialActions();
       }
       const isSfl = utils.getObjectValue(router, undefined, 'query', 'isSfl');
@@ -237,6 +237,7 @@ export const mapStateToProps = state => {
     bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
     cartOrderItems: BagPageSelector.getOrderItems(state),
     isCartLoaded: BagPageSelector.getCartLoadedState(state),
+    bagPageIsRouting: BagPageSelector.isBagRouting(state),
   };
 };
 
