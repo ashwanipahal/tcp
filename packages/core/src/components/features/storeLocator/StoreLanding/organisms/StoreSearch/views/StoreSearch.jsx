@@ -35,12 +35,20 @@ export class StoreSearch extends PureComponent {
    * @param {object} geometry - The geometry details of the selected location
    * @param {object} location - The location details of the selected location
    */
-  handleLocationSelection = ({ geometry, location }) => {
-    const { loadStoresByCoordinates, submitting, showSubmitError } = this.props;
+  handleLocationSelection = ({ geometry, location }, place) => {
+    const {
+      loadStoresByCoordinates,
+      submitting,
+      showSubmitError,
+      setClickAnalyticsData,
+      trackClick,
+    } = this.props;
     if ((!geometry && !location) || submitting) {
       return;
     }
     const { lat, lng } = geometry ? geometry.location : location;
+    trackClick();
+    setClickAnalyticsData({ storeSearchCriteria: place });
     this.setState({ storeSelected: true });
     showSubmitError(false);
     loadStoresByCoordinates(Promise.resolve({ lat: lat(), lng: lng() }), INITIAL_STORE_LIMIT);
@@ -268,6 +276,8 @@ StoreSearch.propTypes = {
   getLocationStores: PropTypes.func.isRequired,
   mapView: PropTypes.bool,
   showSubmitError: PropTypes.func,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  trackClick: PropTypes.func.isRequired,
 };
 
 StoreSearch.defaultProps = {
