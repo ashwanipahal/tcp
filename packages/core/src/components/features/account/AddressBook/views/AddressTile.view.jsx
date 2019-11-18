@@ -127,6 +127,7 @@ class AddressBookTile extends React.Component {
             link
             underline
             aria-describedby={addressId}
+            className="addressTile__makedefaultcheck"
             anchorVariation="primary"
             dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
