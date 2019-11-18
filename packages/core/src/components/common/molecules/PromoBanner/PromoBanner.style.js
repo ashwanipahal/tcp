@@ -526,7 +526,7 @@ export default css`
   .percentage_inline_promo_black {
     font-family: ${props => props.theme.typography.fonts.primary};
     font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: ${props => props.theme.typography.fontSizes.fs48};
+    font-size: ${props => props.theme.typography.fontSizes.fs42};
     letter-spacing: 0px;
     color: ${props => props.theme.colorPalette.white};
     text-align: center;
