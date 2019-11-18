@@ -14,6 +14,7 @@ const styles = css`
   }
   .fulfillment-section {
     margin-top: auto;
+    margin-bottom: auto;
   }
   .favorite-count {
     text-align: center;

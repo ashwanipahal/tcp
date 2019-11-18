@@ -25,6 +25,8 @@ import {
   getLabelsFavorites,
   getIsDataLoading,
 } from './Favorites.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
+import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
 
 class FavoritesContainer extends React.PureComponent {
   state = {
@@ -103,6 +105,8 @@ class FavoritesContainer extends React.PureComponent {
       totalProductsCount,
       isDataLoading,
       labelsPlpTiles,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -131,6 +135,8 @@ class FavoritesContainer extends React.PureComponent {
         totalProductsCount={totalProductsCount}
         isDataLoading={isDataLoading}
         labelsPlpTiles={labelsPlpTiles}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
         {...this.state}
       />
     );
@@ -149,6 +155,8 @@ const mapStateToProps = state => {
     totalProductsCount: selectTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 };
 
@@ -189,6 +197,8 @@ FavoritesContainer.propTypes = {
   totalProductsCount: PropTypes.string,
   isDataLoading: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 FavoritesContainer.defaultProps = {
@@ -199,6 +209,8 @@ FavoritesContainer.defaultProps = {
   totalProductsCount: '0',
   isDataLoading: false,
   labelsPlpTiles: {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(

@@ -28,6 +28,8 @@ const FavoritesView = props => {
     selectBrandType,
     gymSelected,
     tcpSelected,
+    isKeepAliveEnabled,
+    outOfStockLabels,
   } = props;
 
   const favoriteListMap = wishlistsSummaries.map(favorite => {
@@ -80,6 +82,8 @@ const FavoritesView = props => {
         isFavoriteView
         removeFavItem={setLastDeletedItemId}
         createNewWishListMoveItem={createNewWishListMoveItem}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
       />
       <QuickViewModal selectedColorProductId={selectedColorProductId} />
     </>
@@ -210,12 +214,15 @@ FavoritesView.propTypes = {
   selectBrandType: PropTypes.string.isRequired,
   gymSelected: PropTypes.bool.isRequired,
   tcpSelected: PropTypes.bool.isRequired,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
   wishlistsSummaries: [],
   activeWishList: {},
   selectedColorProductId: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);
