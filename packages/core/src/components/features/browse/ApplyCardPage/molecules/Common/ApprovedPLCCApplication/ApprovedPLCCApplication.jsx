@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ApprovedPLCCApplicationViewStyled from './style/ApprovedPLCCApplication.style';
@@ -11,19 +11,25 @@ import {
 } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 import Espot from '../../../../../../common/molecules/Espot';
+import Notification from '../../../../../../common/molecules/Notification';
+import { COUPON_CODE_STATE } from '../../../RewardsCard.constants';
 
-const CopyToClipboard = e => {
+const CopyToClipboard = (e, changeStatus) => {
   e.preventDefault();
   if (document.selection) {
     const range = document.body.createTextRange();
     range.moveToElementText(document.getElementById('couponCode'));
     range.select().createTextRange();
     document.execCommand('copy');
+    changeStatus(COUPON_CODE_STATE.SUCCESS);
   } else if (window.getSelection) {
     const range = document.createRange();
     range.selectNode(document.getElementById('couponCode'));
     window.getSelection().addRange(range);
     document.execCommand('copy');
+    changeStatus(COUPON_CODE_STATE.SUCCESS);
+  } else {
+    changeStatus(COUPON_CODE_STATE.ERROR);
   }
 };
 
@@ -34,7 +40,13 @@ const CopyToClipboard = e => {
  * @param {set of labels to be displayed} labels
  * @param {moduleX content} plccData
  */
-const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCModalFlow) => {
+const getCouponCodeBody = (
+  approvedPLCCData,
+  labels = {},
+  plccData = {},
+  isPLCCModalFlow,
+  changeStatus
+) => {
   scrollPage();
   return approvedPLCCData && approvedPLCCData.couponCode ? (
     <React.Fragment>
@@ -71,7 +83,7 @@ const getCouponCodeBody = (approvedPLCCData, labels = {}, plccData = {}, isPLCCM
               >
                 {approvedPLCCData && approvedPLCCData.couponCode}
               </BodyCopy>
-              <Anchor onClick={CopyToClipboard} asPath="/bag" underline>
+              <Anchor onClick={e => CopyToClipboard(e, changeStatus)} underline>
                 {getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
               </Anchor>
             </Col>
@@ -216,8 +228,16 @@ const ApprovedPLCCApplicationView = ({
   togglePLCCModal,
 }) => {
   const bagItems = getCartItemCount();
+  const [couponCodeStatus, changeStatus] = useState('');
+  let copyStausMessage = '';
+  if (couponCodeStatus === COUPON_CODE_STATE.SUCCESS) {
+    copyStausMessage = getLabelValue(labels, 'lbl_PLCC_CouponCode_Copied');
+  } else if (couponCodeStatus === COUPON_CODE_STATE.ERROR) {
+    copyStausMessage = getLabelValue(labels, 'lbl_PLCC_Copy_Failed');
+  }
   return (
     <ApprovedPLCCApplicationViewStyled isPLCCModalFlow={isPLCCModalFlow}>
+      {couponCodeStatus && <Notification status={couponCodeStatus} message={copyStausMessage} />}
       <div className="header-image" />
       <Row fullBleed className="submit_plcc_form">
         <Col
@@ -295,7 +315,7 @@ const ApprovedPLCCApplicationView = ({
           <hr className="horizontal_divider" />
         </Col>
       </Row>
-      {getCouponCodeBody(approvedPLCCData, labels, plccData, isPLCCModalFlow)}
+      {getCouponCodeBody(approvedPLCCData, labels, plccData, isPLCCModalFlow, changeStatus)}
       {totalSavingsFooterContainer(
         approvedPLCCData,
         plccData,
