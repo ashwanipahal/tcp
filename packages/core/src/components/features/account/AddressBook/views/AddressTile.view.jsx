@@ -102,6 +102,7 @@ class AddressBookTile extends React.Component {
                     <Button
                       fontSizeVariation="small"
                       nohover
+                      className="addressTile__makedefaultcheck"
                       type="button"
                       smallLink
                       underline
@@ -127,7 +128,6 @@ class AddressBookTile extends React.Component {
             link
             underline
             aria-describedby={addressId}
-            className="addressTile__makedefaultcheck"
             anchorVariation="primary"
             dataLocator="addressbook-edit"
             onClick={this.onEditAddressClick}
