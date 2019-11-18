@@ -145,7 +145,10 @@ class TCPWebApp extends App {
     }
 
     if (navigator && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition();
+      navigator.geolocation.getCurrentPosition(pos => {
+        localStorage.setItem('lat', pos.coords.latitude);
+        localStorage.setItem('lng', pos.coords.longitude);
+      });
     }
   }
 
