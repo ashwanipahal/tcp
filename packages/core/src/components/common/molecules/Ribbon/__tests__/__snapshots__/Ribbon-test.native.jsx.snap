@@ -37,7 +37,7 @@ exports[`RibbonComponentVanilla should match snapshot 1`] = `
               "target": "",
               "text": "Girls",
               "title": "Girls",
-              "url": "/c/girls-clothes",
+              "url": "/c/girls-clothess1",
             },
             "ribbonClass": "ribbon-color-cherry",
             "ribbonPlacement": "left",
