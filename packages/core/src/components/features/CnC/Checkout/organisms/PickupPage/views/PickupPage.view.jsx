@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm, FormSection, change, initialize } from 'redux-form';
+import { reduxForm, FormSection, change, initialize } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CheckoutSectionTitleDisplay from '../../../../../../common/molecules/CheckoutSectionTitleDisplay';
 import ErrorMessage from '../../../../common/molecules/ErrorMessage';
@@ -10,14 +10,12 @@ import PickUpAlternateFormPart from '../../../molecules/PickUpAlternateFormPart'
 import PickupMainContactEditForm from '../../../molecules/PickupMainContactEditForm';
 import ContactFormFields from '../../../molecules/ContactFormFields';
 import styles from '../styles/PickupPage.style';
-import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
-import Anchor from '../../../../../../common/atoms/Anchor';
 import CheckoutFooter from '../../../molecules/CheckoutFooter';
 import CheckoutOrderInfo from '../../../molecules/CheckoutOrderInfoMobile';
 import { scrollToFirstError } from '../../../util/utility';
 import PickupAnalytics from './PickupAnalytics.view';
+import EmailSignUpCheckBox from '../../../molecules/EmailSignUpCheckBox';
 
 class PickUpFormPart extends React.Component {
   constructor(props) {
@@ -282,46 +280,7 @@ class PickUpFormPart extends React.Component {
                 </div>
               )}
               {isGuest && !isUsSite && (
-                <div className="email-signup-container">
-                  <Field
-                    dataLocator="signUp-checkbox-field"
-                    name="emailSignup"
-                    component={InputCheckbox}
-                    className="email-signup"
-                  >
-                    <BodyCopy
-                      dataLocator="pickup-email-signUp-heading-lbl"
-                      fontSize="fs16"
-                      fontFamily="secondary"
-                      fontWeight="regular"
-                    >
-                      {pickUpLabels.emailSignupHeading}
-                    </BodyCopy>
-                  </Field>
-                  <div className="emailSignupText">
-                    <BodyCopy
-                      dataLocator="pickup-email-signUp-sub-heading-text"
-                      fontSize="fs12"
-                      fontFamily="secondary"
-                      fontWeight="regular"
-                    >
-                      {pickUpLabels.emailSignupSubHeading}
-                    </BodyCopy>
-                    <BodyCopy fontSize="fs12" fontFamily="secondary" fontWeight="regular">
-                      {pickUpLabels.emailSignupSubSubHeading}
-                    </BodyCopy>
-                    <Anchor
-                      anchorVariation="primary"
-                      fontSizeVariation="small"
-                      noLink
-                      href="#"
-                      target="_blank"
-                      dataLocator="pickup-email-signUp-contact-anchor"
-                    >
-                      {pickUpLabels.emailSignupContact}
-                    </Anchor>
-                  </div>
-                </div>
+                <EmailSignUpCheckBox labels={pickUpLabels} fieldName="emailSignup" />
               )}
               <div className="pickUpAlternate-container">
                 <FormSection name="pickUpAlternate">
