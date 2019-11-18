@@ -169,6 +169,8 @@ class TCPWebApp extends App {
     return payload || (req.headers && req.headers.referer) || '';
   };
 
+  getHeaders = req => (req.headers && req.headers.referer) || '';
+
   static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
@@ -218,7 +220,7 @@ class TCPWebApp extends App {
         payload = {
           ...Component.pageInfo,
           ...payload,
-          // pageReferer: (req.headers && req.headers.referer) || '',
+          pageReferer: this.getHeaders(req),
         };
       }
       initialProps.pageData = this.getPageData(payload.pageData);
