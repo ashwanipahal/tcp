@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import { Anchor, RichText, Row, Col } from '../../../atoms';
 import { readCookie, setCookie } from '../../../../../utils/cookie.util';
-// import { loyalityAnalyticsValue } from '../../../../../../../web/src/components/features/content/Header/config';
 import withStyles from '../../../hoc/withStyles';
 
 import style from '../LoyaltyPromoBanner.style';
@@ -22,6 +21,7 @@ const LoyaltyPromoBanner = props => {
     className,
     richTextList: [{ richText, link }],
     dataLocator,
+    loyalityAnalyticsValue,
   } = props;
   const cookieName = `mprAboveHead_${getUUID('WC_USERACTIVITY_')}`;
   const [bannerClosed, setBannerClosed] = useState(true);
@@ -59,17 +59,12 @@ const LoyaltyPromoBanner = props => {
             target={link.target}
             title={link.title}
             dataLocator={dataLocator || `loyalty-promo-banner`}
-            clickData={{ internalCampaignId: 'promoAnalyticsValue' }}
+            clickData={{
+              customEvents: ['event80', 'event81'],
+              internalCampaignId: loyalityAnalyticsValue || '',
+            }}
           >
-            {/* <Anchor
-              to={link.url}
-              asPath={link.url}
-              target={link.target}
-              title={link.title}
-              dataLocator={dataLocator || `loyalty-promo-banner`}
-            > */}
             <RichText richTextHtml={richText.text} />
-            {/* </Anchor> */}
           </ClickTracker>
           <button
             aria-label="close"
@@ -94,6 +89,7 @@ LoyaltyPromoBanner.propTypes = {
   className: PropTypes.string.isRequired,
   richTextList: PropTypes.arrayOf(PropTypes.object),
   dataLocator: PropTypes.string,
+  loyalityAnalyticsValue: PropTypes.string,
 };
 
 LoyaltyPromoBanner.defaultProps = {
@@ -104,6 +100,7 @@ LoyaltyPromoBanner.defaultProps = {
     },
   ],
   dataLocator: '',
+  loyalityAnalyticsValue: '',
 };
 
 export default withStyles(LoyaltyPromoBanner, style);

@@ -54,15 +54,11 @@ export default function create(store) {
       },
     },
 
-    // searchType: {
-    //   get() {
-    //     return store.getState().pageData.searchType;
-    //   },
-    // },
-
     externalReferrer: {
       get() {
-        return store.getState().APIConfig.pageDataReferer;
+        const { pageData } = store.getState();
+        // return store.getState().APIConfig.pageReferer;
+        return (pageData && pageData.pageReferer) || '';
       },
     },
 

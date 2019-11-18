@@ -68,18 +68,8 @@ class L1NavItem extends React.PureComponent {
    * This function handles if navigation drawer needs to open on current viewport or now
    * @param {*} onClick
    */
-  openNavigationDrawer = hasL2 => nav => breadCrumbTrail => e => {
+  openNavigationDrawer = hasL2 => e => {
     const { onClick } = this.props;
-    let breadCrumbValue =
-      breadCrumbTrail &&
-      breadCrumbTrail.map(element => {
-        return element.displayName.toLowerCase();
-      });
-    breadCrumbValue = (breadCrumbValue && `topmenu-${breadCrumbValue.join(' ')}`) || '';
-    const navigationValue = nav.filter(item => item.hasL2 === hasL2);
-    const value = breadCrumbTrail
-      ? breadCrumbValue
-      : navigationValue[0].categoryContent.name.toLowerCase();
     if (!getViewportInfo().isDesktop && hasL2) {
       e.preventDefault();
       e.stopPropagation();
@@ -92,7 +82,6 @@ class L1NavItem extends React.PureComponent {
         }
       );
     }
-    return value;
   };
 
   fetchPromoBadge() {
@@ -112,8 +101,7 @@ class L1NavItem extends React.PureComponent {
       // showOnlyOnApp,
       removeL1Focus,
       hasL2,
-      breadCrumbTrail,
-      nav,
+      clickData,
       ...others
     } = this.props;
 
@@ -160,9 +148,9 @@ class L1NavItem extends React.PureComponent {
               as={Anchor}
               to={url}
               asPath={asPath}
-              onClick={this.openNavigationDrawer(hasL2)(nav)(breadCrumbTrail)}
+              // onClick={this.openNavigationDrawer(hasL2)(nav)(breadCrumbTrail)}
               clickData={{
-                internalCampaignId: 'check',
+                pageNavigationText: clickData,
               }}
             >
               <div className="nav-bar-l1-content">
@@ -201,12 +189,12 @@ L1NavItem.propTypes = {
   removeL1Focus: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
   hasL2: PropTypes.number.isRequired,
-  breadCrumbTrail: PropTypes.shape({}).isRequired,
-  nav: PropTypes.shape({}).isRequired,
+  clickData: PropTypes.string,
 };
 
 L1NavItem.defaultProps = {
   dataLocator: '',
+  clickData: '',
 };
 
 export { L1NavItem as L1NavItemVanilla };

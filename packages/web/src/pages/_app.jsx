@@ -165,6 +165,10 @@ class TCPWebApp extends App {
     };
   };
 
+  getPageData = (payload, req) => {
+    return payload || (req.headers && req.headers.referer) || '';
+  };
+
   static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
@@ -176,11 +180,9 @@ class TCPWebApp extends App {
       const { locals } = res;
       const { device = {}, originalUrl } = req;
       const apiConfig = createAPIConfig(locals);
-      const pageDataReferer = {};
       // preview check from akamai header
       apiConfig.isPreviewEnv = req.query.preview || '';
       // preview date if any from the query param
-      pageDataReferer.referer = req.headers.referer;
       apiConfig.previewDate = req.query.preview_date || '';
       // response headers
       apiConfig.headers = res.getHeaders();
@@ -208,18 +210,19 @@ class TCPWebApp extends App {
         deviceType: device.type,
         optimizelyHeadersObject,
         originalUrl,
-        pageDataReferer,
       };
+
       // Get initial props is getting called twice on server
       // This check ensures this block is executed once since Component is not available in first call
       if (Component.pageInfo) {
         payload = {
           ...Component.pageInfo,
           ...payload,
+          // pageReferer: (req.headers && req.headers.referer) || '',
         };
       }
-      initialProps.pageData = payload.pageData;
-      store.dispatch(bootstrapData(payload));
+      initialProps.pageData = this.getPageData(payload.pageData);
+      store.dispatch(bootstrapData(payload, req));
       if (asPath.includes('store') && query && query.storeStr) {
         const storeId = fetchStoreIdFromUrlPath(query.storeStr);
         store.dispatch(getCurrentStoreInfo(storeId));

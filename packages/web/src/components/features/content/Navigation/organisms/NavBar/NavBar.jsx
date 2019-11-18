@@ -47,6 +47,7 @@ const NavBar = props => {
             return (
               <L1NavItem
                 dataLocator={`l1menu_link_${index}`}
+                clickData={`topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`}
                 breadCrumbTrail={breadCrumbTrail}
                 index={index}
                 key={`l1menu_link_${stringId}`}
