@@ -64,7 +64,7 @@ class CheckoutPage extends React.PureComponent {
    */
   isVenmoPickupDisplayed = () => {
     const { isVenmoPickupBannerDisplayed } = this.props;
-    const currentSection = getCurrentSection();
+    const currentSection = getCurrentSection(this.props);
     return currentSection && currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP
       ? isVenmoPickupBannerDisplayed
       : false;
@@ -76,7 +76,7 @@ class CheckoutPage extends React.PureComponent {
    */
   isVenmoShippingDisplayed = () => {
     const { isVenmoShippingBannerDisplayed } = this.props;
-    const currentSection = getCurrentSection();
+    const currentSection = getCurrentSection(this.props);
     return currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING
       ? isVenmoShippingBannerDisplayed
       : false;

@@ -23,9 +23,9 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
         creditFieldLabels={Object {}}
         cvvCodeRichText={null}
         isGuest={true}
+        isPayPalWebViewEnable={false}
         isVenmoEnabled={false}
         isVenmoPaymentInProgress={false}
-        isPayPalWebViewEnable={false}
         labels={Object {}}
         navigation={Object {}}
         shippingAddress={null}
@@ -59,9 +59,9 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
         cvvCodeRichText={null}
         handleSubmit={[Function]}
         isGuest={false}
+        isPayPalWebViewEnable={false}
         isVenmoEnabled={false}
         isVenmoPaymentInProgress={false}
-        isPayPalWebViewEnable={false}
         labels={Object {}}
         navigation={Object {}}
         shippingAddress={null}

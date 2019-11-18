@@ -148,6 +148,7 @@ describe('CheckoutPageVanilla component', () => {
           applyConditionAndText: '',
         },
       },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();
