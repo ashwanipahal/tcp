@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getDateInformation, getPriceWithCurrency } from '@tcp/core/src/utils';
+import { getDateInformation } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import CONFIRMATION_CONSTANTS from '../../../Confirmation.constants';
 import ConfirmationItemDisplay from '../../ConfirmationItemDisplay';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -93,7 +94,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
         </ConfirmationItemDisplay>
         {orderTotal && (
           <ConfirmationItemDisplay title={labels.orderTotal} boldFont>
-            {getPriceWithCurrency(labels.currencySign, orderTotal)}
+            <PriceCurrency currencySymbol={labels.currencySign} price={orderTotal} />
           </ConfirmationItemDisplay>
         )}
       </div>

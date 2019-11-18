@@ -5,7 +5,8 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { PRICING_VISIBLE } from '@tcp/core/src/constants/rum.constants';
-import { getLocator, getPriceWithCurrency, getIconPath } from '@tcp/core/src/utils';
+import { getLocator, getIconPath } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import OrderSummarySkeleton from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/skeleton/OrderSummarySkeleton.view';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -39,7 +40,7 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
             fontSize="fs16"
             textAlign="right"
           >
-            {`${getPriceWithCurrency(currencySymbol, giftServiceTotal)}`}
+            <PriceCurrency currencySymbol={currencySymbol} price={giftServiceTotal} />
           </BodyCopy>
         </Col>
       </Row>
@@ -81,7 +82,8 @@ const renderSavingsTotal = (savingsTotal, className, labels, currencySymbol) => 
           fontSize="fs13"
           textAlign="right"
         >
-          {`-${getPriceWithCurrency(currencySymbol, savingsTotal)}`}
+          -
+          <PriceCurrency currencySymbol={currencySymbol} price={savingsTotal} />
         </BodyCopy>
       </Col>
     </Row>
@@ -89,7 +91,11 @@ const renderSavingsTotal = (savingsTotal, className, labels, currencySymbol) => 
 };
 
 const shippingTotalCurrencySymbol = (shippingTotal, currencySymbol, labels) => {
-  return shippingTotal > 0 ? `${getPriceWithCurrency(currencySymbol, shippingTotal)}` : labels.free;
+  return shippingTotal > 0 ? (
+    <PriceCurrency currencySymbol={currencySymbol} price={shippingTotal} />
+  ) : (
+    labels.free
+  );
 };
 
 const orderHasShipping = (currencySymbol, isOrderHasShipping, labels, shippingTotal) => {
@@ -184,7 +190,7 @@ const getBody = (
                   fontSize="fs16"
                   textAlign="right"
                 >
-                  {`${getPriceWithCurrency(currencySymbol, subTotal)}`}
+                  <PriceCurrency currencySymbol={currencySymbol} price={subTotal} />
                 </BodyCopy>
               </Col>
             </Row>
@@ -213,7 +219,8 @@ const getBody = (
                     fontSize="fs13"
                     textAlign="right"
                   >
-                    {`-${getPriceWithCurrency(currencySymbol, couponsTotal)}`}
+                    -
+                    <PriceCurrency currencySymbol={currencySymbol} price={couponsTotal} />
                   </BodyCopy>
                 </Col>
               </Row>
@@ -244,7 +251,8 @@ const getBody = (
                     fontSize="fs13"
                     textAlign="right"
                   >
-                    {`-${getPriceWithCurrency(currencySymbol, savingsTotal)}`}
+                    -
+                    <PriceCurrency currencySymbol={currencySymbol} price={savingsTotal} />
                   </BodyCopy>
                 </Col>
               </Row>
@@ -279,7 +287,7 @@ const getBody = (
             {/* {shippingTotal !== undefined
                       ? // eslint-disable-next-line no-constant-condition
                         shippingTotal > 0
-                        ? `${getPriceWithCurrency(currencySymbol, shippingTotal)}`
+                        ? <PriceCurrency currencySymbol={currencySymbol} price={shippingTotal} />
                         : labels.free
                       : '-'}
                   </BodyCopy>
@@ -312,7 +320,7 @@ const getBody = (
                   fontSize="fs16"
                   textAlign="right"
                 >
-                  {`${getPriceWithCurrency(currencySymbol, taxesTotal)}`}
+                  <PriceCurrency currencySymbol={currencySymbol} price={taxesTotal} />
                 </BodyCopy>
               </Col>
             </Row>
@@ -342,7 +350,7 @@ const getBody = (
                       fontSize="fs13"
                       textAlign="right"
                     >
-                      {`${getPriceWithCurrency(currencySymbol, grandTotal)}`}
+                      <PriceCurrency currencySymbol={currencySymbol} price={grandTotal} />
                     </BodyCopy>
                   </Col>
                 </Row>
@@ -370,7 +378,8 @@ const getBody = (
                       fontSize="fs13"
                       textAlign="right"
                     >
-                      {`-${getPriceWithCurrency(currencySymbol, giftCardsTotal)}`}
+                      -
+                      <PriceCurrency currencySymbol={currencySymbol} price={giftCardsTotal} />
                     </BodyCopy>
                   </Col>
                 </Row>
@@ -382,7 +391,9 @@ const getBody = (
             >
               <div className="balance-total-columns">
                 <span>{giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}</span>
-                <span>{`${getPriceWithCurrency(currencySymbol, orderBalanceTotal)}`}</span>
+                <span>
+                  <PriceCurrency currencySymbol={currencySymbol} price={orderBalanceTotal} />
+                </span>
               </div>
             </Row>
             {totalOrderSavings ? (
@@ -422,7 +433,7 @@ const getBody = (
                     fontSize="fs16"
                     textAlign="right"
                   >
-                    {`${getPriceWithCurrency(currencySymbol, totalOrderSavings)}`}
+                    <PriceCurrency currencySymbol={currencySymbol} price={totalOrderSavings} />
                   </BodyCopy>
                 </Col>
               </Row>

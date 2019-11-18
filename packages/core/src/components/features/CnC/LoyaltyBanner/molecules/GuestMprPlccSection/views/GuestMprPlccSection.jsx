@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { getPriceWithCurrency } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Styles from '../styles/GuestMprPlccSection.style';
 import { BodyCopy, Row, Col } from '../../../../../../common/atoms';
@@ -84,7 +84,7 @@ const GuestMprPlccSection = props => {
                   fontFamily="secondary"
                   fontWeight="semibold"
                 >
-                  {getPriceWithCurrency(getCurrencySymbol, currentSubtotal)}
+                  <PriceCurrency currencySymbol={getCurrencySymbol} price={currentSubtotal} />
                 </BodyCopy>
               </Col>
             )}
@@ -116,7 +116,7 @@ const GuestMprPlccSection = props => {
                   fontFamily="secondary"
                   fontWeight="extrabold"
                 >
-                  {getPriceWithCurrency(getCurrencySymbol, estimatedSubtotal)}
+                  <PriceCurrency currencySymbol={getCurrencySymbol} price={estimatedSubtotal} />
                 </BodyCopy>
               </Col>
             )}

@@ -11,8 +11,8 @@ import {
   isCanada,
   getAPIConfig,
   getBrand,
-  getPriceWithCurrency,
 } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -548,7 +548,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {getPriceWithCurrency(currencySymbol, offerPrice)}
+            <PriceCurrency currencySymbol={currencySymbol} price={offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -621,7 +621,7 @@ class CartItemTile extends PureComponent {
               dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              {getPriceWithCurrency(currencySymbol, Number(price))}
+              <PriceCurrency currencySymbol={currencySymbol} price={Number(price)} />
             </BodyCopy>
             <BodyCopy
               fontFamily="secondary"
@@ -631,7 +631,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {getPriceWithCurrency(currencySymbol, Number(listPrice))}
+              <PriceCurrency currencySymbol={currencySymbol} price={Number(listPrice)} />
             </BodyCopy>
           </Col>
         </>
@@ -660,7 +660,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            {getPriceWithCurrency(currencySymbol, Number(salePrice))}
+            <PriceCurrency currencySymbol={currencySymbol} price={Number(salePrice)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
@@ -671,7 +671,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {getPriceWithCurrency(currencySymbol, Number(wasPrice))}
+              <PriceCurrency currencySymbol={currencySymbol} price={Number(wasPrice)} />
             </BodyCopy>
           )}
         </Col>
