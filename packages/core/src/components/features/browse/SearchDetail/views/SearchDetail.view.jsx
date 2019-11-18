@@ -33,6 +33,7 @@ const SearchListingView = ({
   isLoggedIn,
   isLoadingMore,
   isSearchListing,
+  asPathVal,
   ...otherProps
 }) => {
   return (
@@ -101,6 +102,8 @@ const SearchListingView = ({
               isLoggedIn={isLoggedIn}
               isLoadingMore={isLoadingMore}
               isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
               {...otherProps}
             />
           ) : null}
@@ -137,6 +140,7 @@ SearchListingView.propTypes = {
   isLoggedIn: PropTypes.bool,
   isLoadingMore: PropTypes.bool,
   isSearchListing: PropTypes.bool,
+  asPathVal: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -159,6 +163,7 @@ SearchListingView.defaultProps = {
   isLoggedIn: false,
   isLoadingMore: false,
   isSearchListing: true,
+  asPathVal: '',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);
