@@ -156,9 +156,9 @@ const FavoritesView = props => {
         </Col>
       </Row>
       <Row fullBleed className="list-selection-row">
-        <Col colSize={{ small: 6, medium: 8, large: 8 }}>
+        <Col colSize={{ small: 6, medium: 6, large: 8 }}>
           <Row fullBleed>
-            <Col colSize={{ large: 6 }} offsetLeft={{ large: 6 }}>
+            <Col colSize={{ small: 6, medium: 5, large: 6 }} offsetLeft={{ medium: 3, large: 6 }}>
               <SelectWishListDropdown
                 labels={labels}
                 wishlistsSummaries={wishlistsSummaries}
@@ -169,9 +169,12 @@ const FavoritesView = props => {
             </Col>
           </Row>
         </Col>
-        <Col colSize={{ small: 6, medium: 8, large: 4 }}>
+        <Col colSize={{ small: 6, medium: 2, large: 4 }}>
           <Row fullBleed>
-            <Col colSize={{ large: 4 }} offsetLeft={{ large: 8 }}>
+            <Col
+              colSize={{ small: 2, medium: 6, large: 4 }}
+              offsetLeft={{ small: 4, medium: 2, large: 8 }}
+            >
               <CustomSelect
                 options={shareOptions}
                 activeTitle={labels.lbl_fav_share}

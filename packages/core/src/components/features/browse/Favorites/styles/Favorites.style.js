@@ -90,11 +90,11 @@ export default css`
   }
 
   .brand-option-list {
-    display: none;
-
     li {
       &:first-child {
         padding-top: 5px;
+        padding-bottom: 10px;
+        width: 100%;
       }
       p {
         padding-top: 5px;
@@ -104,6 +104,15 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
       margin-top: 0;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .brand-option-list {
+      li.is-label {
+        width: auto;
+        padding-bottom: 0;
+      }
     }
   }
 `;
