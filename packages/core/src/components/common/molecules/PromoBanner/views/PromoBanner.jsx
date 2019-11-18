@@ -83,7 +83,6 @@ const PromoBanner = props => {
             internalCampaignId: promoAnalyticsValue || '',
           }}
         >
-          {/* <Anchor {...navigationUrl} className="promo-text-link"> */}
           {textItems.map(({ text, style }, index) => {
             let promoText;
             /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
@@ -110,7 +109,6 @@ const PromoBanner = props => {
 
             return promoText;
           })}
-          {/* </Anchor> */}
         </ClickTracker>
       </React.Fragment>
     </BodyCopy>

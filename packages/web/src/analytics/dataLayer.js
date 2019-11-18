@@ -80,7 +80,6 @@ export default function create(store) {
     externalReferrer: {
       get() {
         const { pageData } = store.getState();
-        // return store.getState().APIConfig.pageReferer;
         return (pageData && pageData.pageReferer) || '';
       },
     },

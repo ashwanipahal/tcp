@@ -148,7 +148,6 @@ class L1NavItem extends React.PureComponent {
               as={Anchor}
               to={url}
               asPath={asPath}
-              // onClick={this.openNavigationDrawer(hasL2)(nav)(breadCrumbTrail)}
               clickData={{
                 pageNavigationText: clickData,
               }}

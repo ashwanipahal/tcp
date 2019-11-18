@@ -21,7 +21,6 @@ const NavBar = props => {
     removeL1Focus,
     accessibilityLabels,
     closeNav,
-    breadCrumbTrail,
   } = props;
 
   return (
@@ -48,7 +47,6 @@ const NavBar = props => {
               <L1NavItem
                 dataLocator={`l1menu_link_${index}`}
                 clickData={`topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`}
-                breadCrumbTrail={breadCrumbTrail}
                 index={index}
                 key={`l1menu_link_${stringId}`}
                 sizesRange={sizesRange}
@@ -117,7 +115,6 @@ NavBar.propTypes = {
   hideL3Drawer: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
   removeL1Focus: PropTypes.bool.isRequired,
-  breadCrumbTrail: PropTypes.shape([]).isRequired,
 };
 
 NavBar.defaultProps = {

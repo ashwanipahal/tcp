@@ -74,6 +74,9 @@ const updatePayload = (req, payload, Component) => {
         updatedPayload = { ...updatedPayload, name: dynamicPageName };
       }
     }
+    if (req && req.headers) {
+      updatedPayload = { ...updatedPayload, pageReferer: req.headers.referer };
+    }
   }
 
   return updatedPayload;
@@ -194,10 +197,6 @@ class TCPWebApp extends App {
     return {
       [name]: itemValue,
     };
-  };
-
-  getRefererFromReq = req => {
-    return (req.headers && req.headers.referer) || '';
   };
 
   static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
