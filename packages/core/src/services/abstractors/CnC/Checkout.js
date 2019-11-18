@@ -1,8 +1,6 @@
 /* eslint-disable max-lines */
 /* eslint-disable extra-rules/no-commented-out-code */
-import superagent from 'superagent';
 import logger from '@tcp/core/src/utils/loggerInstance';
-import jsonp from 'superagent-jsonp';
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { flatCurrencyToCents } from './CartItemTile';
@@ -15,8 +13,6 @@ import {
 import { getAPIConfig, capitalize, toTimeString } from '../../../utils';
 import { parseDate } from '../../../utils/parseDate';
 import CheckoutConstants from '../../../components/features/CnC/Checkout/Checkout.constants';
-
-const BV_API_KEY = 'e50ab0a9-ac0b-436b-9932-2a74b9486436';
 
 const ORDER_ITEM_TYPE = {
   BOSS: 'BOSS',
@@ -232,30 +228,6 @@ export function removeGiftWrappingOption() {
   };
   return executeStatefulAPICall(payloadArgs).then(res => {
     return res;
-  });
-}
-export function briteVerifyStatusExtraction(emailAddress) {
-  return new Promise(resolve => {
-    superagent
-      .get('https://bpi.briteverify.com/emails.json')
-      .query({
-        apikey: BV_API_KEY,
-        address: emailAddress,
-      })
-      .use(
-        jsonp({
-          timeout: 2000,
-        })
-      )
-      .then(response => {
-        const result = response.body;
-        resolve(`${result.status}::false:false`);
-      })
-      .catch(() => {
-        // call to briteverify validation failed
-        /** assume email address is OK -- this validation is a nicety */
-        resolve('no_response::false:false');
-      });
   });
 }
 function extractRtpsEligibleAndCode(apiResponse) {
@@ -558,7 +530,7 @@ function parseStoreOpeningAndClosingTimes(store) {
 const getCouponTotal = orderDetails => {
   let total = 0;
   if (orderDetails.OrderLevelPromos && orderDetails.OrderLevelPromos.explicit) {
-    Object.keys(orderDetails.OrderLevelPromos.explicit).forEach(item => {
+    orderDetails.OrderLevelPromos.explicit.forEach(item => {
       Object.keys(item).forEach(promoCode => {
         total += Math.abs(flatCurrencyToCents(item[promoCode].price));
       });
@@ -614,6 +586,7 @@ const getOrderConfirmationDetails = ({
       valueOfEarnedPcCoupons: parseInt(orderSummary.valueOfEarnedPcCoupons, 10) || 0,
       subTotal: flatCurrencyToCents(orderSummary.orderSubTotalBeforeDiscount),
       grandTotal: orderSummary.grandTotal,
+      totalOrderSavings: flatCurrencyToCents(orderSummary.orderTotalSaving || 0),
     },
 
     isOrderPending: orderSummary.orderStatus === CheckoutConstants.REVIEW_ORDER_STATUS,
@@ -1087,10 +1060,56 @@ export function startExpressCheckout(verifyPrescreen, source = null) {
     });
 }
 
+export function updateRTPSData(prescreen, isExpressCheckout) {
+  let fromPage = 'normal';
+  if (isExpressCheckout) {
+    fromPage = 'expressCheckout';
+  }
+  const payload = {
+    body: {
+      prescreen,
+      fromPage,
+    },
+    webService: endpoints.updateRTPSdata,
+  };
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      const rtpsData = extractRtpsEligibleAndCode(res);
+      return {
+        success: true,
+        plccEligible: rtpsData.plccEligible,
+        prescreenCode: rtpsData.prescreenCode,
+      };
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
+export function acceptOrDeclinePreScreenOffer(preScreenCode, accepted) {
+  const payload = {
+    body: {
+      preScreenId: preScreenCode,
+      madeOffer: accepted ? 'true' : 'false',
+    },
+    webService: endpoints.processPreScreenOffer,
+  };
+
+  return executeStatefulAPICall(payload)
+    .then(res => {
+      if (responseContainsErrors(res)) {
+        throw new ServiceResponseError(res);
+      }
+      return res.body;
+    })
+    .catch(err => {
+      throw getFormattedError(err);
+    });
+}
+
 export default {
   getGiftWrappingOptions,
   getShippingMethods,
-  briteVerifyStatusExtraction,
   setShippingMethodAndAddressId,
   addPickupPerson,
   addGiftCardPaymentToOrder,

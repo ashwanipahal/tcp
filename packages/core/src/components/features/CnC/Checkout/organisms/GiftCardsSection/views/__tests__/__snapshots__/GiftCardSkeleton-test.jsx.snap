@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftCard Skeleton GiftCard Skeleton  should render properly 1`] = `
+<div
+  className="sample-className"
+>
+  <div
+    className="column-styling"
+  >
+    <SkeletonLine
+      height="30px"
+      width="150px"
+    />
+    <SkeletonLine
+      height="40px"
+      inheritedStyles="float:right;"
+      width="175px"
+    />
+  </div>
+</div>
+`;

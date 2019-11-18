@@ -14,84 +14,43 @@ exports[`GuestBillingFormVanilla should render correctly 1`] = `
       numberOfLines={null}
       textDecoration={null}
     />
-    <AddNewCCForm
-      addNewCCState={false}
-      billingData={Object {}}
-      cardList={null}
-      cardType={null}
-      creditFieldLabels={Object {}}
-      cvvError={null}
-      cvvInfo={
-        <ReactTooltip
-          backgroundColor="#fff"
-          height={350}
-          onClose={[Function]}
-          onOpen={[Function]}
-          overlayColor="rgba(250, 250, 250, 0.80)"
-          pointerColor="#fff"
-          popover={
-            <RichText
-              actionHandler={[Function]}
-              domStorageEnabled={false}
-              isApplyDeviceHeight={false}
-              isNativeView={true}
-              javaScriptEnabled={false}
-              source=""
-              thirdPartyCookiesEnabled={false}
-            />
-          }
-          toggleOnPress={true}
-          width={350}
-          withOverlay={false}
-          withPointer={true}
-        >
-          <ForwardRef
-            alt=""
-            height={15}
-            host=""
-            source={
-              Object {
-                "testUri": "../../../../core/src/assets/info-icon.png",
-              }
-            }
-            url=""
-            width={15}
-          />
-        </ReactTooltip>
-      }
-      dto={Object {}}
-      editMode={false}
-      formName="checkoutBilling"
-      isExpirationRequired={true}
-      isGuest={true}
-      isSameAsShippingChecked={false}
-      isSaveToAccountChecked={true}
-      labels={Object {}}
-      selectedCard={null}
-    />
-    <Styled(CheckoutAddress)
-      billingData={Object {}}
-      editMode={false}
-      formName="checkoutBilling"
-      isGuest={true}
-      isSameAsShippingChecked={true}
-      labels={Object {}}
-      onFileAddressId={null}
-      orderHasShipping={true}
-      selectedOnFileAddressId={null}
-      shippingAddress={null}
-      userAddresses={null}
-    />
-    <CnCCommonTemplate
-      backLinkText=""
-      btnText=""
-      isConfirmationPage={false}
-      onBackLinkPress={[Function]}
-      pageCategory="guestBilling"
-      routeToPage=""
-      showAccordian={true}
-    />
   </Styled(View)>
+  <FormSection
+    name="shipmentMethods"
+  >
+    <PaymentMethods
+      formName="checkoutBilling"
+      paymentMethods={
+        Array [
+          Object {
+            "displayName": undefined,
+            "id": "creditCard",
+          },
+          Object {
+            "displayName": undefined,
+            "id": "payPal",
+          },
+          Object {
+            "displayName": undefined,
+            "id": "venmo",
+          },
+        ]
+      }
+      selectedPaymentId={null}
+    />
+  </FormSection>
+  <CnCCommonTemplate
+    backLinkText=""
+    btnText=""
+    getPayPalSettings={Object {}}
+    isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
+    onBackLinkPress={[Function]}
+    pageCategory="guestBilling"
+    routeToPage=""
+    showAccordian={true}
+    showPayPalButton={false}
+  />
 </Fragment>
 `;
 
@@ -109,131 +68,182 @@ exports[`GuestBillingFormVanilla should render correctly when props change 1`] =
       numberOfLines={null}
       textDecoration={null}
     />
-    <AddNewCCForm
-      addNewCCState={false}
-      billingData={Object {}}
-      cardList={null}
-      cardType="VISA"
-      creditFieldLabels={Object {}}
-      cvvError="error"
-      cvvInfo={
-        <ReactTooltip
-          backgroundColor="#fff"
-          height={350}
-          onClose={[Function]}
-          onOpen={[Function]}
-          overlayColor="rgba(250, 250, 250, 0.80)"
-          pointerColor="#fff"
-          popover={
-            <RichText
-              actionHandler={[Function]}
-              domStorageEnabled={false}
-              isApplyDeviceHeight={false}
-              isNativeView={true}
-              javaScriptEnabled={false}
-              source=""
-              thirdPartyCookiesEnabled={false}
-            />
-          }
-          toggleOnPress={true}
-          width={350}
-          withOverlay={false}
-          withPointer={true}
-        >
-          <ForwardRef
-            alt=""
-            height={15}
-            host=""
-            source={
-              Object {
-                "testUri": "../../../../core/src/assets/info-icon.png",
-              }
-            }
-            url=""
-            width={15}
-          />
-        </ReactTooltip>
-      }
-      dispatch={
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "cardType",
-                  "form": "checkoutBilling",
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": "VISA",
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        }
-      }
-      dto={Object {}}
-      editMode={false}
-      formName="checkoutBilling"
-      isExpirationRequired={true}
-      isGuest={true}
-      isSameAsShippingChecked={false}
-      isSaveToAccountChecked={true}
-      labels={Object {}}
-      selectedCard={null}
-    />
-    <Styled(CheckoutAddress)
-      billingData={Object {}}
-      dispatch={
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              Object {
-                "meta": Object {
-                  "field": "cardType",
-                  "form": "checkoutBilling",
-                  "persistentSubmitErrors": undefined,
-                  "touch": undefined,
-                },
-                "payload": "VISA",
-                "type": "@@redux-form/CHANGE",
-              },
-            ],
-          ],
-          "results": Array [
-            Object {
-              "type": "return",
-              "value": undefined,
-            },
-          ],
-        }
-      }
-      editMode={false}
-      formName="checkoutBilling"
-      isGuest={true}
-      isSameAsShippingChecked={true}
-      labels={Object {}}
-      onFileAddressId={null}
-      orderHasShipping={true}
-      selectedOnFileAddressId={null}
-      shippingAddress={null}
-      userAddresses={null}
-    />
-    <CnCCommonTemplate
-      backLinkText=""
-      btnText=""
-      isConfirmationPage={false}
-      onBackLinkPress={[Function]}
-      pageCategory="guestBilling"
-      routeToPage=""
-      showAccordian={true}
-    />
   </Styled(View)>
+  <FormSection
+    name="shipmentMethods"
+  >
+    <PaymentMethods
+      dispatch={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "meta": Object {
+                  "field": "cardType",
+                  "form": "checkoutBilling",
+                  "persistentSubmitErrors": undefined,
+                  "touch": undefined,
+                },
+                "payload": "VISA",
+                "type": "@@redux-form/CHANGE",
+              },
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      formName="checkoutBilling"
+      paymentMethods={
+        Array [
+          Object {
+            "displayName": undefined,
+            "id": "creditCard",
+          },
+          Object {
+            "displayName": undefined,
+            "id": "payPal",
+          },
+          Object {
+            "displayName": undefined,
+            "id": "venmo",
+          },
+        ]
+      }
+      selectedPaymentId="creditCard"
+    />
+  </FormSection>
+  <AddNewCCForm
+    addNewCCState={false}
+    billingData={Object {}}
+    cardList={null}
+    cardType="VISA"
+    creditFieldLabels={Object {}}
+    cvvError="error"
+    cvvInfo={
+      <ReactTooltip
+        backgroundColor="#fff"
+        height={350}
+        onClose={[Function]}
+        onOpen={[Function]}
+        overlayColor="rgba(250, 250, 250, 0.80)"
+        pointerColor="#fff"
+        popover={
+          <RichText
+            actionHandler={[Function]}
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            isNativeView={true}
+            javaScriptEnabled={false}
+            source=""
+            thirdPartyCookiesEnabled={false}
+          />
+        }
+        toggleOnPress={true}
+        width={350}
+        withOverlay={false}
+        withPointer={true}
+      >
+        <ForwardRef
+          alt=""
+          height={15}
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/info-icon.png",
+            }
+          }
+          url=""
+          width={15}
+        />
+      </ReactTooltip>
+    }
+    dispatch={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "meta": Object {
+                "field": "cardType",
+                "form": "checkoutBilling",
+                "persistentSubmitErrors": undefined,
+                "touch": undefined,
+              },
+              "payload": "VISA",
+              "type": "@@redux-form/CHANGE",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    dto={Object {}}
+    editMode={false}
+    formName="checkoutBilling"
+    isExpirationRequired={true}
+    isGuest={true}
+    isSameAsShippingChecked={false}
+    isSaveToAccountChecked={true}
+    labels={Object {}}
+    selectedCard={null}
+  />
+  <Styled(CheckoutAddress)
+    billingData={Object {}}
+    dispatch={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "meta": Object {
+                "field": "cardType",
+                "form": "checkoutBilling",
+                "persistentSubmitErrors": undefined,
+                "touch": undefined,
+              },
+              "payload": "VISA",
+              "type": "@@redux-form/CHANGE",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    editMode={false}
+    formName="checkoutBilling"
+    isGuest={true}
+    isSameAsShippingChecked={true}
+    labels={Object {}}
+    onFileAddressId={null}
+    orderHasShipping={true}
+    selectedOnFileAddressId={null}
+    shippingAddress={null}
+    userAddresses={null}
+  />
+  <CnCCommonTemplate
+    backLinkText=""
+    btnText=""
+    getPayPalSettings={Object {}}
+    isConfirmationPage={false}
+    isPayPalWebViewEnable={false}
+    onBackLinkPress={[Function]}
+    pageCategory="guestBilling"
+    routeToPage=""
+    showAccordian={true}
+    showPayPalButton={false}
+  />
 </Fragment>
 `;

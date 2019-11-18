@@ -74,6 +74,8 @@ class CheckoutPage extends React.PureComponent {
       cartOrderItemsCount,
       checkoutPageEmptyBagLabels,
       pickupDidMount,
+      isPayPalWebViewEnable,
+      pickUpContactPerson,
     } = this.props;
     const { PICKUP, SHIPPING, BILLING, REVIEW, CONFIRMATION } = CheckoutConstants.CHECKOUT_STAGES;
     const { venmoBannerText } = pickUpLabels;
@@ -126,6 +128,7 @@ class CheckoutPage extends React.PureComponent {
             updateShippingMethodSelection={updateShippingMethodSelection}
             updateShippingAddressData={updateShippingAddressData}
             addNewShippingAddressData={addNewShippingAddressData}
+            pickUpContactPerson={pickUpContactPerson}
             labels={labels}
             setCheckoutStage={setCheckoutStage}
             venmoBannerLabel={{ venmoBannerText }}
@@ -149,6 +152,7 @@ class CheckoutPage extends React.PureComponent {
             isVenmoPaymentInProgress={isVenmoPaymentInProgress}
             setVenmoPickupState={setVenmoPickupState}
             setVenmoShippingState={setVenmoShippingState}
+            isPayPalWebViewEnable={isPayPalWebViewEnable}
           />
         );
       case REVIEW:
@@ -208,6 +212,7 @@ CheckoutPage.propTypes = {
   smsSignUpLabels: PropTypes.shape({}).isRequired,
   router: PropTypes.shape({}).isRequired,
   initialValues: PropTypes.shape({}).isRequired,
+  pickUpContactPerson: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   onPickupSubmit: PropTypes.func.isRequired,
   loadShipmentMethods: PropTypes.func.isRequired,
@@ -239,6 +244,7 @@ CheckoutPage.propTypes = {
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   pickUpAlternatePerson: PropTypes.shape({}).isRequired,
   isHasPickUpAlternatePerson: PropTypes.shape({}).isRequired,
+  isPayPalWebViewEnable: PropTypes.shape({}).isRequired,
 };
 
 CheckoutPage.defaultProps = {

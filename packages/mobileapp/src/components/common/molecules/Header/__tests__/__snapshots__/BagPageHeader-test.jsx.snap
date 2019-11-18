@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BagPageHeader Component BagPage Header should render correctly 1`] = `
-<Styled(SafeAreaView)>
+<Styled(View)>
   <Connect(ToastContainer) />
   <Styled(View)>
     <Styled(View)>
@@ -29,5 +29,5 @@ exports[`BagPageHeader Component BagPage Header should render correctly 1`] = `
       </Styled(TouchableOpacity)>
     </Styled(View)>
   </Styled(View)>
-</Styled(SafeAreaView)>
+</Styled(View)>
 `;

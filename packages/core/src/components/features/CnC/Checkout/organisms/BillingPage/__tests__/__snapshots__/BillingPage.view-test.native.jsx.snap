@@ -1,14 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PickUpFormPart component should renders correctly props not present 1`] = `
-<Fragment>
+<Styled(View)
+  isPayPalWebViewEnable={false}
+>
   <CheckoutProgressIndicator
     activeStage="billing"
     availableStages={Object {}}
     navigation={Object {}}
   />
-  <ScrollViewMock>
-    <Styled(View)>
+  <ScrollViewMock
+    disableScrollViewPanResponder={true}
+  >
+    <Styled(View)
+      isPayPalWebViewEnable={false}
+    >
       <CheckoutSectionTitleDisplay />
       <Connect(GiftCardsContainer) />
       <Connect(GuestBillingContainer)
@@ -19,24 +25,31 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
         isGuest={true}
         isVenmoEnabled={false}
         isVenmoPaymentInProgress={false}
+        isPayPalWebViewEnable={false}
         labels={Object {}}
         navigation={Object {}}
         shippingAddress={null}
       />
     </Styled(View)>
   </ScrollViewMock>
-</Fragment>
+</Styled(View)>
 `;
 
 exports[`PickUpFormPart component should renders correctly props not present 2`] = `
-<Fragment>
+<Styled(View)
+  isPayPalWebViewEnable={false}
+>
   <CheckoutProgressIndicator
     activeStage="billing"
     availableStages={Object {}}
     navigation={Object {}}
   />
-  <ScrollViewMock>
-    <Styled(View)>
+  <ScrollViewMock
+    disableScrollViewPanResponder={true}
+  >
+    <Styled(View)
+      isPayPalWebViewEnable={false}
+    >
       <CheckoutSectionTitleDisplay />
       <Connect(GiftCardsContainer) />
       <Connect(GiftCardsContainer)
@@ -48,6 +61,7 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
         isGuest={false}
         isVenmoEnabled={false}
         isVenmoPaymentInProgress={false}
+        isPayPalWebViewEnable={false}
         labels={Object {}}
         navigation={Object {}}
         shippingAddress={null}
@@ -55,5 +69,5 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
       />
     </Styled(View)>
   </ScrollViewMock>
-</Fragment>
+</Styled(View)>
 `;

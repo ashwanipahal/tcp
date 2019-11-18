@@ -87,18 +87,14 @@ const RenderImage = forwardRef((imgProps, ref) => {
         data-srcset={getBreakpointImgUrl('sm', imgProps)}
       />
 
-      {lazyLoad ? (
-        <LazyLoadImage
-          className="lazyLoadImage"
-          forwardedRef={ref}
-          src={getBreakpointImgUrl('xs', imgProps)}
-          alt={alt}
-          {...other}
-          showPlaceHolder={showPlaceHolder}
-        />
-      ) : (
-        <img ref={ref} src={getBreakpointImgUrl('xs', imgProps)} alt={alt} {...other} />
-      )}
+      <LazyLoadImage
+        className="lazyLoadImage"
+        forwardedRef={ref}
+        src={getBreakpointImgUrl('xs', imgProps)}
+        alt={alt}
+        {...other}
+        showPlaceHolder={showPlaceHolder}
+      />
     </picture>
   );
 });
@@ -150,7 +146,7 @@ const DamImage = props => {
       asPath={ctaUrl}
       target={target}
       title={title}
-      dataLocator="image-link"
+      dataLocator={`${dataLocator}_image-link`}
     >
       <RenderImage {...imgProps} ref={forwardedRef} />
     </Anchor>

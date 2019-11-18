@@ -1,10 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Native Badge component renders correctly with  as false 1`] = `
-<Styled(View)>
+<Styled(View)
+  data-locator=""
+  lightGrayColor={false}
+>
   <Styled(View)>
     <Styled(View)
-      spacingStyles="margin-right-XXS"
+      spacingStyles="margin-right-XXS margin-top-XXXS margin-bottom-XXXS"
     >
       <Styled(CustomIcon)
         accessibilityLabel=""
@@ -16,21 +19,17 @@ exports[`Native Badge component renders correctly with  as false 1`] = `
         margins={null}
         name="check"
         onPress={[Function]}
-        size="fs10"
+        size="fs9"
       />
     </Styled(View)>
     <Styled(BodyCopy)
       accessibilityText=""
       color="white"
       dataLocator=""
+      fontFamily="secondary"
       fontSize="fs10"
-      fontWeight="semibold"
+      fontWeight="extrabold"
       margin={null}
-      mobilefontFamily={
-        Array [
-          "secondary",
-        ]
-      }
       numberOfLines={null}
       text="Shipping"
       textDecoration={null}

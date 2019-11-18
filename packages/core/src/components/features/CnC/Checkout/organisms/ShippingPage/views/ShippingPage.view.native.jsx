@@ -1,6 +1,5 @@
 import React from 'react';
 import { ScrollView, SafeAreaView } from 'react-native';
-import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ShippingForm from '../organisms/ShippingForm';
@@ -13,54 +12,11 @@ import AddressVerification from '../../../../../../common/organisms/AddressVerif
 import ModalNative from '../../../../../../common/molecules/Modal';
 import VenmoBanner from '../../../../../../common/molecules/VenmoBanner';
 import CONSTANTS from '../../../Checkout.constants';
-import { isShowVenmoBanner } from './ShippingPage.view.utils';
+import { getAddressInitialValues, isShowVenmoBanner, propsTypes } from './ShippingPage.view.utils';
 
 const { hasPOBox } = checkoutUtil;
 export default class ShippingPage extends React.Component {
-  static propTypes = {
-    addressLabels: PropTypes.shape({}).isRequired,
-    isOrderUpdateChecked: PropTypes.bool,
-    isSubmitting: PropTypes.bool.isRequired,
-    labels: PropTypes.shape({}).isRequired,
-    smsSignUpLabels: PropTypes.shape({}).isRequired,
-    address: PropTypes.shape({}),
-    selectedShipmentId: PropTypes.string,
-    addressPhoneNumber: PropTypes.number,
-    emailSignUpLabels: PropTypes.shape({}).isRequired,
-    isGuest: PropTypes.bool,
-    isUsSite: PropTypes.bool,
-    orderHasPickUp: PropTypes.bool,
-    shipmentMethods: PropTypes.shape([]),
-    defaultShipmentId: PropTypes.number,
-    cartOrderItemsCount: PropTypes.number.isRequired,
-    loadShipmentMethods: PropTypes.func.isRequired,
-    shippingDidMount: PropTypes.func.isRequired,
-    formatPayload: PropTypes.func.isRequired,
-    verifyAddressAction: PropTypes.func.isRequired,
-    submitVerifiedShippingAddressData: PropTypes.func.isRequired,
-    navigation: PropTypes.shape({}).isRequired,
-    checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    availableStages: PropTypes.shape([]).isRequired,
-    isGiftServicesChecked: PropTypes.bool,
-    userAddresses: PropTypes.shape([]),
-    onFileAddressKey: PropTypes.string,
-    isSaveToAddressBookChecked: PropTypes.bool,
-    setAsDefaultShipping: PropTypes.bool,
-    saveToAddressBook: PropTypes.bool,
-    updateShippingAddressData: PropTypes.func,
-    addNewShippingAddressData: PropTypes.func,
-    updateShippingMethodSelection: PropTypes.func.isRequired,
-    syncErrors: PropTypes.shape({}),
-    newUserPhoneNo: PropTypes.string,
-    setCheckoutStage: PropTypes.func.isRequired,
-    isVenmoPaymentInProgress: PropTypes.bool,
-    isVenmoShippingDisplayed: PropTypes.bool,
-    setVenmoPickupState: PropTypes.func,
-    venmoBannerLabel: PropTypes.shape({
-      venmoBannerText: PropTypes.string,
-    }),
-  };
+  static propTypes = propsTypes;
 
   static defaultProps = {
     isOrderUpdateChecked: false,
@@ -78,6 +34,7 @@ export default class ShippingPage extends React.Component {
     isSaveToAddressBookChecked: false,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
+    hasSetGiftOptions: false,
     updateShippingAddressData: () => {},
     addNewShippingAddressData: () => {},
     syncErrors: {},
@@ -160,7 +117,13 @@ export default class ShippingPage extends React.Component {
       saveToAddressBook,
       smsSignUp = {},
     } = data;
-    const { isGuest, userAddresses, formatPayload, setVenmoPickupState } = this.props;
+    const {
+      isGuest,
+      userAddresses,
+      formatPayload,
+      setVenmoPickupState,
+      hasSetGiftOptions,
+    } = this.props;
     let shipAddress = address;
     if (!isGuest && userAddresses && userAddresses.size > 0 && onFileAddressKey) {
       shipAddress = userAddresses.find(item => item.addressId === onFileAddressKey);
@@ -190,6 +153,7 @@ export default class ShippingPage extends React.Component {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
+      hasSetGiftOptions,
     };
     const { handleSubmit, verifyAddressAction } = this.props;
     if (!onFileAddressKey) {
@@ -388,7 +352,7 @@ export default class ShippingPage extends React.Component {
                   <ShippingForm
                     shipmentMethods={shipmentMethods}
                     initialValues={{
-                      address: { country: 'US' },
+                      address: getAddressInitialValues(this),
                       shipmentMethods: { shippingMethodId: defaultShipmentId },
                       onFileAddressKey: defaultAddressId,
                     }}

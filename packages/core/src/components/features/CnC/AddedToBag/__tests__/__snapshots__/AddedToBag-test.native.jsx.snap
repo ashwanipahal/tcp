@@ -43,20 +43,38 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
     </TouchableOpacity>
     <Styled(View)>
       <Styled(SafeAreaView) />
-      <Styled(View)>
-        <ScrollViewMock>
-          <Styled(ProductInformation)
-            data={Object {}}
-            labels={Object {}}
-            quantity=""
-          />
-          <Connect(AddedToBagViewPointsContainer)
-            labels={Object {}}
-          />
-          <Connect(AddedToBagContainer)
-            closeModal={[Function]}
-            fromAddedToBagModal={true}
-            labels={Object {}}
+      <Styled(View)
+        payPalView={[Function]}
+      >
+        <Styled(ProductInformation)
+          data={Object {}}
+          labels={Object {}}
+          quantity=""
+        />
+        <Connect(AddedToBagViewPointsContainer)
+          labels={Object {}}
+        />
+        <Connect(AddedToBagContainer)
+          closeModal={[Function]}
+          fromAddedToBagModal={true}
+          hideHeader={[Function]}
+          labels={Object {}}
+          navigation={
+            Object {
+              "getParam": [Function],
+              "navigate": [MockFunction],
+              "param": Object {
+                "headerMode": false,
+              },
+            }
+          }
+          showAddTobag={true}
+        />
+        <Styled(BossBanner)
+          labels={Object {}}
+        />
+        <Styled(View)>
+          <Connect(LoyaltyBannerContainer)
             navigation={
               Object {
                 "getParam": [Function],
@@ -66,52 +84,45 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
                 },
               }
             }
-            showAddTobag={true}
+            pageCategory="isAddedToBagPage"
           />
-          <Styled(BossBanner)
-            labels={Object {}}
-          />
-          <Styled(View)>
-            <Connect(LoyaltyBannerContainer)
-              pageCategory="isAddedToBagPage"
-            />
-          </Styled(View)>
-          <Styled(View)>
-            <Connect(Recommendations)
-              isAddedToBagOpen={true}
-              navigation={
-                Object {
-                  "getParam": [Function],
-                  "navigate": [MockFunction],
-                  "param": Object {
-                    "headerMode": false,
-                  },
-                }
+        </Styled(View)>
+        <Styled(View)>
+          <Connect(Recommendations)
+            isAddedToBagOpen={true}
+            navigation={
+              Object {
+                "getParam": [Function],
+                "navigate": [MockFunction],
+                "param": Object {
+                  "headerMode": false,
+                },
               }
-              page="cart"
-              priceOnly={true}
-              variation="moduleO"
-            />
-          </Styled(View)>
-          <Styled(View)>
-            <Styled(Anchor)
-              accessibilityLabel=""
-              anchorVariation="primary"
-              colorName={null}
-              customStyle={Object {}}
-              dataLocator="addedToBag-continueShopping"
-              fontSizeVariation="medium"
-              locator=""
-              margins={null}
-              noLink={true}
-              onPress={[Function]}
-              text=""
-              to=""
-              underline={true}
-              visible={false}
-            />
-          </Styled(View)>
-        </ScrollViewMock>
+            }
+            page="cart"
+            priceOnly={true}
+            variation="moduleO"
+          />
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(Anchor)
+            accessibilityLabel=""
+            anchorVariation="primary"
+            colorName={null}
+            customStyle={Object {}}
+            dataLocator="addedToBag-continueShopping"
+            fontSizeVariation="medium"
+            justifyContent=""
+            locator=""
+            margins={null}
+            noLink={true}
+            onPress={[Function]}
+            text=""
+            to=""
+            underline={true}
+            visible={false}
+          />
+        </Styled(View)>
       </Styled(View)>
     </Styled(View)>
   </Styled(View)>

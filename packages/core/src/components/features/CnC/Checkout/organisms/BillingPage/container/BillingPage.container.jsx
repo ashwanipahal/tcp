@@ -9,17 +9,9 @@ import { getCVVCodeInfoContentId, getCVVCodeRichTextSelector } from './BillingPa
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import BagPageSelectors from '../../../../BagPage/container/BagPage.selectors';
 
-import { updateCardData } from '../../../container/Checkout.action';
+import CheckoutActions from '../../../container/Checkout.action';
 
 class BillingPageContainer extends React.Component {
-  componentDidMount() {
-    const { cvvCodeInfoContentId, getCVVCodeInfo } = this.props;
-    /* istanbul ignore else */
-    if (cvvCodeInfoContentId) {
-      getCVVCodeInfo([cvvCodeInfoContentId]);
-    }
-  }
-
   componentWillUnmount() {
     const { clearCheckoutServerError, checkoutServerError, isPayPalHidden } = this.props;
     if (checkoutServerError && !isPayPalHidden) {
@@ -38,7 +30,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
     updateCardDetail: payload => {
-      dispatch(updateCardData(payload));
+      dispatch(CheckoutActions.updateCardData(payload));
     },
   };
 };

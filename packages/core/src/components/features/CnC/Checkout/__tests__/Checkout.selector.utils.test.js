@@ -1,7 +1,9 @@
+/* eslint-disable max-lines */
 import { fromJS, List } from 'immutable';
 import CHECKOUT_SELECTORS, {
   getSendOrderUpdate,
   getAlternateFormFieldsExpress,
+  getPageData,
 } from '../container/Checkout.selector';
 import { getAPIConfig } from '../../../../../utils';
 
@@ -307,5 +309,46 @@ describe('Checkout Selectors', () => {
       }),
     };
     expect(getIsBillingVisited(state)).toEqual(Checkout.getIn(['uiFlags', 'isBillingVisited']));
+  });
+});
+
+it('#getIsRtpsFlow', () => {
+  const { getIsRtpsFlow } = CHECKOUT_SELECTORS;
+  const Checkout = fromJS({
+    uiFlags: {
+      isRTPSFlow: true,
+    },
+  });
+
+  const state = {
+    Checkout: fromJS({
+      uiFlags: {
+        isRTPSFlow: true,
+      },
+    }),
+  };
+  expect(getIsRtpsFlow(state)).toEqual(Checkout.getIn(['uiFlags', 'isRTPSFlow']));
+});
+it('#getIsRTPSEnabled', () => {
+  const { getIsRTPSEnabled } = CHECKOUT_SELECTORS;
+  const session = {
+    siteDetails: {
+      ADS_OLPS_ENABLED: 'TRUE',
+    },
+  };
+
+  const state = {
+    session,
+  };
+  expect(getIsRTPSEnabled(state)).toEqual(true);
+});
+it('#getPageData', () => {
+  const state = {
+    pageData: {
+      pageName: 'checkout',
+    },
+  };
+  expect(getPageData(state)).toEqual({
+    pageName: 'checkout',
   });
 });

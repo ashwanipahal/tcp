@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, getPriceWithCurrency } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -166,8 +166,8 @@ class MiniBagBody extends React.PureComponent {
       isShowSaveForLaterSwitch,
       isRememberedUser,
       isUserLoggedIn,
+      isMiniBag,
     } = this.props;
-
     const { headerError, params } = this.state;
     return (
       <div className={className}>
@@ -217,6 +217,7 @@ class MiniBagBody extends React.PureComponent {
               sflItemsCount={savedforLaterQty}
               onItemEdit={this.handleItemEdit}
               setHeaderErrorState={this.setHeaderErrorState}
+              isMiniBag={isMiniBag}
               closeMiniBag={closeMiniBag}
             />
           ) : (
@@ -234,7 +235,7 @@ class MiniBagBody extends React.PureComponent {
           <React.Fragment>
             <div className="miniBagFooter">
               <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-                {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
+                {`${labels.subTotal}: ${getPriceWithCurrency(currencySymbol, subTotal)}`}
               </BodyCopy>
               <AddedToBagActions
                 containerId="paypal-button-container-minibag"
@@ -242,6 +243,7 @@ class MiniBagBody extends React.PureComponent {
                 isEditingItem={this.isEditing}
                 closeMiniBag={closeMiniBag}
                 showVenmo={false} // No Venmo CTA on Minibag, as per venmo requirement
+                isMiniBag={isMiniBag}
               />
               <AirmilesBanner />
             </div>
@@ -265,6 +267,10 @@ class MiniBagBody extends React.PureComponent {
   }
 }
 
+MiniBagBody.defaultProps = {
+  isMiniBag: true,
+};
+
 MiniBagBody.propTypes = {
   className: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
@@ -283,6 +289,7 @@ MiniBagBody.propTypes = {
   isShowSaveForLaterSwitch: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   isRememberedUser: PropTypes.bool.isRequired,
+  isMiniBag: PropTypes.bool,
 };
 
 export default withStyles(MiniBagBody, styles);

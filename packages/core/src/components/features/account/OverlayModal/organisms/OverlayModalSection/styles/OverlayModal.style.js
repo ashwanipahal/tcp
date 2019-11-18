@@ -30,7 +30,7 @@ const StyledModal = css`
   }
   .dialog__content {
     background-color: ${props => props.theme.colorPalette.white};
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.25);
     width: 100%;
     overflow-y: auto;
     @media ${props => props.theme.mediaQuery.smallOnly} {
@@ -53,7 +53,10 @@ const StyledModal = css`
     }
   }
   .modal__bar {
-    position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
+    position: absolute;
+    @media ${props => props.theme.mediaQuery.medium} {
+      position: ${props => (props.showCondensedHeader ? 'fixed' : 'absolute')};
+    }
     height: 8px;
     margin-top: -8px;
     width: 100%;
@@ -71,8 +74,8 @@ const StyledModal = css`
   .modal__triangle {
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
     position: absolute;
     top: -10px;
     z-index: 99;
@@ -105,6 +108,13 @@ const StyledModal = css`
     height: ${iconSpacing};
     width: ${iconSpacing};
     z-index: 1;
+  }
+
+  .Modal_Heading_Overlay {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    font-size: ${props => props.theme.typography.fontSizes.fs18};
   }
 `;
 

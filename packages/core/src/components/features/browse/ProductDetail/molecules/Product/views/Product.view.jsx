@@ -11,6 +11,7 @@ import {
   checkIsSelectedSizeDisabled,
 } from '../../../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
+// eslint-disable-next-line complexity
 const Product = props => {
   const {
     productDetails,
@@ -28,23 +29,22 @@ const Product = props => {
     isShowPriceRangeKillSwitch,
     formValues = {},
     isKeepAliveProduct,
+    isBundleProduct,
+    reviewOnTop,
   } = props;
 
-  const productInfo = productDetails.get('currentProduct');
+  const productInfo = productDetails.currentProduct;
   if (!productInfo) {
     return <div />; // TODO - maybe add loader later
   }
   const { promotionalMessage, promotionalPLCCMessage } = productInfo;
   const colorProduct =
-    productInfo &&
-    getMapSliceForColorProductId(productInfo.colorFitsSizesMap, selectedColorProductId);
-  let prices = productInfo && getPrices(productInfo, colorProduct.color.name);
-  const badges = colorProduct.miscInfo.badge1;
+    getMapSliceForColorProductId(productInfo.colorFitsSizesMap, selectedColorProductId) || {};
+  let prices = getPrices(productInfo, colorProduct.color && colorProduct.color.name);
+  const badges = colorProduct.miscInfo ? colorProduct.miscInfo.badge1 : {};
   const badge1 = isMatchingFamily && badges.matchBadge ? badges.matchBadge : badges.defaultBadge;
 
-  const isShowPriceRangeABtest = true; // TODO
-
-  const isShowPriceRange = isShowPriceRangeKillSwitch && isShowPriceRangeABtest;
+  const isShowPriceRange = isShowPriceRangeKillSwitch;
 
   if (isShowPriceRange) {
     const { fit, size } = formValues;
@@ -57,48 +57,56 @@ const Product = props => {
       isSelectedSizeDisabled
     );
   }
+  if (isBundleProduct) {
+    prices = getPricesWithRange(productInfo, colorProduct.color.name);
+  }
 
   const { miscInfo } = colorProduct;
 
   const isKeepAlive = miscInfo.keepAlive && isKeepAliveProduct;
 
   return (
-    <div>
-      <ProductBasicInfo
-        keepAlive={isKeepAlive}
-        badge={badge1}
-        isGiftCard={isGiftCard}
-        productInfo={productInfo}
-        isShowFavoriteCount
-        currencySymbol={currencySymbol}
-        priceCurrency={priceCurrency}
-        currencyExchange={currencyExchange}
-        isRatingsVisible
-        isCanada={isCanada}
-        isPlcc={isHasPlcc}
-        isInternationalShipping={isInternationalShipping}
-        onAddItemToFavorites={onAddItemToFavorites}
-        isLoggedIn={isLoggedIn}
-      />
-      {!isGiftCard ? (
-        <>
-          <ProductPrice
-            currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
-            currencyExchange={currencyExchange}
-            isItemPartNumberVisible={false}
-            itemPartNumber={colorProduct.colorDisplayId}
-            {...prices}
-            promotionalMessage={promotionalMessage}
-            isCanada={isCanada}
-            promotionalPLCCMessage={promotionalPLCCMessage}
-            isPlcc={isHasPlcc}
-            isInternationalShipping={isInternationalShipping}
-          />
-          <RenderPerf.Measure name={PRICING_VISIBLE} />
-        </>
-      ) : null}
-    </div>
+    <>
+      <div className={!reviewOnTop ? 'hide-on-mobile hide-on-desktop' : 'hide-on-desktop'}>
+        <ProductBasicInfo
+          keepAlive={isKeepAlive}
+          badge={badge1}
+          isGiftCard={isGiftCard}
+          productInfo={productInfo}
+          isShowFavoriteCount
+          currencySymbol={currencySymbol}
+          priceCurrency={priceCurrency}
+          currencyExchange={currencyExchange}
+          isRatingsVisible
+          isCanada={isCanada}
+          isPlcc={isHasPlcc}
+          isBundleProduct={isBundleProduct}
+          isInternationalShipping={isInternationalShipping}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+        />
+      </div>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+        {!isGiftCard ? (
+          <>
+            <ProductPrice
+              currencySymbol={currencySymbol}
+              priceCurrency={priceCurrency}
+              currencyExchange={currencyExchange}
+              isItemPartNumberVisible={false}
+              itemPartNumber={colorProduct.colorDisplayId}
+              {...prices}
+              promotionalMessage={promotionalMessage}
+              isCanada={isCanada}
+              promotionalPLCCMessage={promotionalPLCCMessage}
+              isPlcc={isHasPlcc}
+              isInternationalShipping={isInternationalShipping}
+            />
+            <RenderPerf.Measure name={PRICING_VISIBLE} />
+          </>
+        ) : null}
+      </div>
+    </>
   );
 };
 
@@ -121,6 +129,12 @@ Product.propTypes = {
   isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
   isKeepAliveProduct: PropTypes.bool.isRequired,
   isMatchingFamily: PropTypes.bool.isRequired,
+  isBundleProduct: PropTypes.bool,
+  reviewOnTop: PropTypes.bool.isRequired,
+};
+
+Product.defaultProps = {
+  isBundleProduct: false,
 };
 
 export default Product;

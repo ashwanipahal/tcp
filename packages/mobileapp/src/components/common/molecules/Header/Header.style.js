@@ -1,4 +1,7 @@
 import styled from 'styled-components/native';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+
+const colorPallete = createThemeColorPalette();
 
 const setBackground = props => {
   if (props.theme.isGymboree) {
@@ -26,7 +29,7 @@ const cartItemsWidth = cartItems => {
   return width;
 };
 
-export const SafeAreaViewStyle = styled.SafeAreaView`
+export const SafeAreaViewStyle = styled.View`
   background: ${props => props.theme.colorPalette.white};
 `;
 
@@ -173,10 +176,6 @@ export const BrandIconSection = styled.View`
   height: 54px;
 `;
 
-export const Header = styled.View`
-  height: 54px;
-`;
-
 export const BackIconTouchable = styled.TouchableOpacity`
   width: 45px;
 `;
@@ -233,6 +232,10 @@ export const TitleText = styled.Text`
   margin-left: 120px;
 `;
 
+export const headerStyle = {
+  backgroundColor: colorPallete.white,
+};
+
 export default {
   BackContainer,
   Container,
@@ -241,7 +244,6 @@ export default {
   Icon,
   CartContainer,
   RoundView,
-  SafeAreaViewStyle,
   TextStyle,
   CartIconView,
   ImageColor,
@@ -259,4 +261,6 @@ export default {
   LeftSection,
   MiddleSection,
   TitleText,
+  SafeAreaViewStyle,
+  headerStyle,
 };

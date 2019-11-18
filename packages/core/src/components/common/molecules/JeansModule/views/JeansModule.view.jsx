@@ -25,16 +25,18 @@ const CAROUSEL_OPTIONS = {
       breakpoint: parseInt(breakpoints.medium, 10) - 1,
       settings: {
         slidesToShow: 2.5,
+        slidesToScroll: 2.5,
         arrows: false,
-        swipeToSlide: true,
+        swipeToSlide: false,
       },
     },
     {
       breakpoint: parseInt(breakpoints.large, 10) - 1,
       settings: {
         slidesToShow: 4.25,
-        arrows: true,
-        swipeToSlide: true,
+        arrows: false,
+        swipeToSlide: false,
+        slidesToScroll: 4.25,
       },
     },
   ],
@@ -42,16 +44,17 @@ const CAROUSEL_OPTIONS = {
 
 export class JeansModule extends PureComponent {
   static propTypes = {
-    jeansModule: PropTypes.shape({}),
-    className: PropTypes.string.isRequired,
+    data: PropTypes.shape({}),
+    className: PropTypes.string,
   };
 
   static defaultProps = {
-    jeansModule: {},
+    data: {},
+    className: '',
   };
 
   render() {
-    const { jeansModule, className } = this.props;
+    const { data, className } = this.props;
 
     return (
       <div className={className}>
@@ -63,7 +66,7 @@ export class JeansModule extends PureComponent {
             color="white"
             textAlign="center"
           >
-            {jeansModule.headLine[0].text}
+            {data.headLine[0].text}
           </BodyCopy>
         </div>
         <Carousel
@@ -75,13 +78,15 @@ export class JeansModule extends PureComponent {
             customArrowRight: getIconPath('carousel-big-carrot'),
           }}
         >
-          {jeansModule.imageTileWrapper.map(
+          {data.imageTileWrapper.map(
             ({ imageStyled, headLine, subHeadLine, textList, singleCTAButton }, index) => {
               return (
                 <div className="jeans-carousel" key={index.toString()}>
                   <Anchor
                     className="image-link"
-                    to={imageStyled[0].image.alt}
+                    to={
+                      imageStyled[0].image.url && imageStyled[0].image.url.replace('/c/', '/c?cid=')
+                    }
                     asPath={imageStyled[0].image.url}
                     dataLocator="dummy-datalocator"
                   >
@@ -92,7 +97,7 @@ export class JeansModule extends PureComponent {
                         url: imageStyled[0].image.url,
                       }}
                     />
-                    <BodyCopy className="image-text" fontSize="fs12">
+                    <BodyCopy className="image-text" fontSize="fs18" fontWeight="extrabold">
                       {imageStyled[0].styled.text}
                     </BodyCopy>
                     <div className="overlapping-section">
@@ -142,6 +147,8 @@ export class JeansModule extends PureComponent {
                         to={singleCTAButton.url}
                         asPath={singleCTAButton.url}
                         dataLocator="dummy-datalocator"
+                        fontSizeVariation="large"
+                        fontFamily="secondary"
                       >
                         {singleCTAButton.text}
                       </Anchor>

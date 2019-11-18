@@ -38,6 +38,7 @@ class ImageCarousel extends React.PureComponent {
     this.state = {
       activeSlideIndex: 0,
       showModal: false,
+      colorProductId: '',
     };
     const { theme } = props;
     this.favoriteIconColor = get(theme, 'colorPalette.gray[600]', '#9b9b9b');
@@ -73,7 +74,12 @@ class ImageCarousel extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
+    const { onAddItemToFavorites } = props;
+    const { colorProductId } = state;
     if (props.isLoggedIn && state.showModal) {
+      if (colorProductId !== '') {
+        onAddItemToFavorites({ colorProductId, page: 'PDP' });
+      }
       return { showModal: false };
     }
     return null;
@@ -86,9 +92,12 @@ class ImageCarousel extends React.PureComponent {
 
   onFavorite = colorProductId => {
     const { isLoggedIn, onAddItemToFavorites } = this.props;
-    onAddItemToFavorites({ colorProductId, page: 'PDP' });
+
     if (!isLoggedIn) {
+      this.setState({ colorProductId });
       this.setState({ showModal: true });
+    } else {
+      onAddItemToFavorites({ colorProductId, page: 'PDP' });
     }
   };
 
@@ -158,19 +167,19 @@ class ImageCarousel extends React.PureComponent {
     );
   };
 
-  renderFavoriteIcon = currentColorEntry => {
-    const { isBundleProduct } = this.props;
-    const { favoritedCount, colorProductId, isFavorite } = currentColorEntry;
+  renderFavoriteIcon = () => {
+    const { currentColorEntry, isBundleProduct } = this.props;
+    const { favoritedCount, colorProductId, isFavorite, miscInfo } = currentColorEntry;
     if (!isBundleProduct) {
       return (
         <FavoriteContainer>
-          {isFavorite !== undefined ? (
+          {isFavorite !== undefined || miscInfo.isInDefaultWishlist ? (
             <CustomIcon
               isButton
-              name={ICON_NAME.favorite}
+              iconFontName={ICON_FONT_CLASS.Icomoon}
+              name={ICON_NAME.filledHeart}
               size={this.favoriteIconSize}
               color="gray.500"
-              fill="gray.500"
               dataLocator="pdp_favorite_icon"
             />
           ) : (
@@ -178,7 +187,7 @@ class ImageCarousel extends React.PureComponent {
               isButton
               name={ICON_NAME.favorite}
               size={this.favoriteIconSize}
-              color={this.favoriteIconColor}
+              color="gray.600"
               dataLocator="pdp_favorite_icon"
               onPress={() => {
                 this.onFavorite(colorProductId);
@@ -201,13 +210,7 @@ class ImageCarousel extends React.PureComponent {
   };
 
   render() {
-    const {
-      imageUrls,
-      isLoggedIn,
-      isGiftCard,
-      AddToFavoriteErrorMsg,
-      currentColorEntry,
-    } = this.props;
+    const { imageUrls, isLoggedIn, isGiftCard, AddToFavoriteErrorMsg } = this.props;
 
     const { activeSlideIndex, showModal } = this.state;
 
@@ -237,7 +240,7 @@ class ImageCarousel extends React.PureComponent {
           />
           {!isGiftCard ? (
             <FavoriteAndPaginationContainer>
-              {this.renderFavoriteIcon(currentColorEntry)}
+              {this.renderFavoriteIcon()}
               {imageUrls.length > 1 && (
                 <PaginationDots
                   numberOfDots={imageUrls.length}

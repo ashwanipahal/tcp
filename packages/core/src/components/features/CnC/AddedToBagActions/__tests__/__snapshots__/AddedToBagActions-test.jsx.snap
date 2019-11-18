@@ -48,27 +48,33 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
       >
         <Connect(PayPalButtonContainer)
           className="payPal-button"
+          height={48}
         />
       </div>
     </div>
-    <Styled(Button)
-      className="checkout"
-      data-locator="addedtobag-btncheckout"
-      onClick={[Function]}
+    <Connect(Component)
+      className="checkoutBtnTracker"
+      name="Gift_Services"
     >
-      <Styled(BodyCopy)
-        className={null}
-        color="white"
-        component="span"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-    </Styled(Button)>
+      <Styled(Button)
+        className="checkout"
+        data-locator="addedtobag-btncheckout"
+        onClick={[Function]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </Styled(Button)>
+    </Connect(Component)>
     <Measure
       name="call_to_action_visible"
     />
@@ -132,27 +138,33 @@ exports[`AddedToBagActions component AddedToBagActions component with Venmo Erro
       >
         <Connect(PayPalButtonContainer)
           className="payPal-button"
+          height={48}
         />
       </div>
     </div>
-    <Styled(Button)
-      className="checkout"
-      data-locator="addedtobag-btncheckout"
-      onClick={[Function]}
+    <Connect(Component)
+      className="checkoutBtnTracker"
+      name="Gift_Services"
     >
-      <Styled(BodyCopy)
-        className={null}
-        color="white"
-        component="span"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-    </Styled(Button)>
+      <Styled(Button)
+        className="checkout"
+        data-locator="addedtobag-btncheckout"
+        onClick={[Function]}
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          link={null}
+          textAlign="left"
+        />
+      </Styled(Button)>
+    </Connect(Component)>
     <Measure
       name="call_to_action_visible"
     />

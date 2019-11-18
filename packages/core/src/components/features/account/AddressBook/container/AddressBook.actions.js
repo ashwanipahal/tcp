@@ -34,6 +34,9 @@ export const updateAddressListOnDeleteErr = payload => ({
   type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE_ERR,
   payload,
 });
+export const clearErrorState = () => ({
+  type: ADDRESS_BOOK_CONSTANTS.CLEAR_ERROR_STATE,
+});
 
 export const deleteAddress = payload => ({
   type: ADDRESS_BOOK_CONSTANTS.DELETE_ADDRESS,

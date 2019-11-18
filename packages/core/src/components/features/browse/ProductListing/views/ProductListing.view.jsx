@@ -33,7 +33,6 @@ import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const ProductListView = ({
   className,
@@ -61,6 +60,7 @@ const ProductListView = ({
   isLoadingMore,
   plpTopPromos,
   asPathVal,
+  isSearchListing,
   ...otherProps
 }) => {
   return (
@@ -125,6 +125,9 @@ const ProductListView = ({
               currency={currency}
               currencyExchange={currencyExchange}
               isLoadingMore={isLoadingMore}
+              isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
               {...otherProps}
             />
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
@@ -143,7 +146,6 @@ const ProductListView = ({
         </Col>
       </Row>
       <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer />
     </div>
   );
 };
@@ -175,6 +177,7 @@ ProductListView.propTypes = {
   isLoadingMore: PropTypes.bool,
   plpTopPromos: PropTypes.shape({}),
   asPathVal: PropTypes.string,
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListView.defaultProps = {
@@ -198,6 +201,7 @@ ProductListView.defaultProps = {
   currency: 'USD',
   plpTopPromos: {},
   asPathVal: '',
+  isSearchListing: false,
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

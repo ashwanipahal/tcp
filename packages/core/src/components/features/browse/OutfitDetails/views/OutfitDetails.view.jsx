@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import { Row, Col, Image, Anchor } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import OutfitDetailsStyle from '../OutfitDetails.style';
 import OutfitProduct from '../molecules/OutfitProduct/OutfitProduct';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 import { routerPush } from '../../../../../utils';
 
 const routesBack = e => {
@@ -30,8 +31,17 @@ const OutfitDetailsView = ({
   currencyExchange,
   currencySymbol,
   labels,
+  pdpLabels,
+  outfitId,
 }) => {
   const backLabel = labels && labels.lbl_outfit_back;
+  const recommendationAttributes = {
+    variations: 'moduleO',
+    page: Constants.RECOMMENDATIONS_PAGES_MAPPING.OUTFIT,
+    partNumber: outfitId,
+    showLoyaltyPromotionMessage: false,
+    headerAlignment: 'left',
+  };
   return (
     <>
       <Row className={className}>
@@ -92,13 +102,19 @@ const OutfitDetailsView = ({
           colSize={{ small: 6, medium: 8, large: 12 }}
           ignoreGutter={{ small: true, medium: true, large: true }}
         >
-          <div className="placeholder promo-area-1">Complete the look</div>
+          <div className="placeholder promo-area-1">{pdpLabels.completeTheLook}</div>
         </Col>
         <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <div className="placeholder promo-area-1">You may also like</div>
+          <Recommendations {...recommendationAttributes} />
+        </Col>
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <Recommendations
+            headerLabel={pdpLabels.recentlyViewed}
+            portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+            {...recommendationAttributes}
+          />
         </Col>
       </Row>
-      <AddedToBagContainer />
     </>
   );
 };
@@ -118,6 +134,8 @@ OutfitDetailsView.propTypes = {
   isLoggedIn: PropTypes.bool,
   currencyExchange: PropTypes.string,
   currencySymbol: PropTypes.string,
+  pdpLabels: PropTypes.shape({}),
+  outfitId: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -131,6 +149,8 @@ OutfitDetailsView.defaultProps = {
   isLoggedIn: false,
   currencyExchange: 1,
   currencySymbol: 'USD',
+  pdpLabels: {},
+  outfitId: '',
 };
 
 export default withStyles(OutfitDetailsView, OutfitDetailsStyle);

@@ -48,12 +48,15 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
           <ForwardRef />
         </ForwardRef>
       }
+      getPayPalSettings={Object {}}
       isConfirmationPage={false}
+      isPayPalWebViewEnable={false}
       isReviewPage={true}
       onBackLinkPress={[Function]}
       pageCategory="review"
       routeToPage=""
       showAccordian={true}
+      showPayPalButton={false}
     />
   </ScrollViewMock>
 </Fragment>

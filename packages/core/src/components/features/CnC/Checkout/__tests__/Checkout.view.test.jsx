@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CheckoutPageVanilla } from '../views/CheckoutPage.view';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
+import { getCurrentSection } from '../views/CheckoutPage.view.util';
 
 describe('CheckoutPageVanilla component', () => {
   const initialProps = {
@@ -19,6 +20,7 @@ describe('CheckoutPageVanilla component', () => {
     shippingProps: {
       shipmentMethods: {},
     },
+    setCheckoutStage: jest.fn(),
   };
 
   const tree = shallow(<CheckoutPageVanilla {...initialProps} />);
@@ -37,6 +39,7 @@ describe('CheckoutPageVanilla component', () => {
       shippingProps: {
         shipmentMethods: {},
       },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
@@ -57,6 +60,7 @@ describe('CheckoutPageVanilla component', () => {
       shippingProps: {
         shipmentMethods: {},
       },
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     component.instance().renderLeftSection();
@@ -64,7 +68,14 @@ describe('CheckoutPageVanilla component', () => {
   });
 
   it('calling getCurrentSection method', () => {
-    expect(tree.instance().getCurrentSection()).toEqual('shipping');
+    const props = {
+      router: {
+        query: {
+          section: 'shipping',
+        },
+      },
+    };
+    expect(getCurrentSection(props)).toEqual('shipping');
   });
 
   it('calling isVenmoPickupDisplayed method', () => {
@@ -109,6 +120,7 @@ describe('CheckoutPageVanilla component', () => {
       reviewProps: { labels: {} },
       isVenmoPickupBannerDisplayed: false,
       isVenmoPaymentInProgress: true,
+      setCheckoutStage: jest.fn(),
     };
     const component = shallow(<CheckoutPageVanilla {...props} />);
     const componentInstance = component.instance();

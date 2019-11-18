@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isCanada, getPriceWithCurrency } from '@tcp/core/src/utils';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import styles from '../styles/AddedToBagViewPoints.style';
 import withStyles from '../../../../common/hoc/withStyles';
-import { isCanada } from '../../../../../utils';
 
 const getModifiedString = (labels, totalItems) => {
   const subHeading = `<span>${labels.bagSubTotal.replace('#items', `${totalItems}`)}</span>`;
@@ -32,10 +32,6 @@ const getPointsColor = isPlcc => {
 
 const getRewardsPointsLabel = (labels, isUserLoggedIn) => {
   return isUserLoggedIn ? labels.MPRPoints : labels.pointsYouCanEarn;
-};
-
-const getItemPrice = (currencySymbol, itemPrice) => {
-  return `${currencySymbol} ${(itemPrice && itemPrice.toFixed(2)) || 0}`;
 };
 
 const AddedToBagViewPoints = ({
@@ -71,7 +67,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {getItemPrice(currencySymbol, itemPrice)}
+          {getPriceWithCurrency(currencySymbol, itemPrice)}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -105,7 +101,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {`${currencySymbol} ${(bagSubTotal && bagSubTotal.toFixed(2)) || 0}`}
+          {getPriceWithCurrency(currencySymbol, bagSubTotal)}
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (

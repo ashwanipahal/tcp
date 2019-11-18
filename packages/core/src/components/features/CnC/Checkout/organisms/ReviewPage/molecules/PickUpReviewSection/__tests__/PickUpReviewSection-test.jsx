@@ -12,6 +12,7 @@ const props = {
     phoneNumber: '9122343456',
   },
   pickUpAlternatePerson: {},
+  bagLoading: false,
   cartStores: [
     {
       address: {
@@ -179,6 +180,7 @@ describe('PickUp Review Section', () => {
   });
 
   it('should render the component correctly with same store', () => {
+    props.bagLoading = false;
     const component = shallow(<PickUpReviewSection {...props} />);
     expect(component).toMatchSnapshot();
   });
