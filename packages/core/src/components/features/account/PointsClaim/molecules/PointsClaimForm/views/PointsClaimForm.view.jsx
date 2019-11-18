@@ -127,10 +127,10 @@ export class PointsClaimForm extends PureComponent {
             </Col>
           </Row>
           <Row fullBleed className="elem-mb-LRG">
-            <Col colSize={{ small: 6, medium: 4, large: 5 }} ignoreGutter={{ small: true }}>
+            <Col colSize={{ small: 6, medium: 5, large: 6 }} ignoreGutter={{ small: true }}>
               <UserInfoView labels={labels} {...otherprops} />
             </Col>
-            <Col colSize={{ small: 6, medium: 4, large: 4 }} ignoreGutter={{ small: true }}>
+            <Col colSize={{ small: 6, medium: 3, large: 4 }} ignoreGutter={{ small: true }}>
               {isStore && (
                 <BodyCopy component="div" className="image_container">
                   <BodyCopy

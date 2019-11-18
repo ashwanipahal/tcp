@@ -164,7 +164,9 @@ const renderAddToBagContainer = (
   handleAddToBag,
   outfitProduct,
   plpLabels,
-  sizeChartLinkVisibility
+  sizeChartLinkVisibility,
+  addToBagError,
+  isBundleProduct
 ) => {
   return (
     <ProductAddToBagContainer
@@ -172,11 +174,13 @@ const renderAddToBagContainer = (
       currentProduct={outfitProduct}
       plpLabels={plpLabels}
       sizeChartLinkVisibility={sizeChartLinkVisibility}
+      errorOnHandleSubmit={addToBagError}
       isOutfitPage
       simplifiedProductPickupView
       onChangeColor={(colorName, selectedSizeName, selectedFitName, selectedQuantity, colorIndex) =>
         onChangeColor(colorIndex, setCurrentColorIndex)
       }
+      isBundleProduct={isBundleProduct}
     />
   );
 };
@@ -204,6 +208,7 @@ const OutfitDetailsView = ({
   isLoggedIn,
   addToFavorites,
   isBundleProduct,
+  addToBagError,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
@@ -356,12 +361,15 @@ const OutfitDetailsView = ({
         handleAddToBag,
         outfitProduct,
         plpLabels,
-        sizeChartLinkVisibility
+        sizeChartLinkVisibility,
+        addToBagError,
+        isBundleProduct
       )}
-      {renderPickUpStore({
-        currentProduct: outfitProduct,
-        selectedColorProductId: colorProductId,
-      })}
+      {!isBundleProduct &&
+        renderPickUpStore({
+          currentProduct: outfitProduct,
+          selectedColorProductId: colorProductId,
+        })}
     </OutfitProductWrapper>
   );
 };
@@ -382,6 +390,7 @@ OutfitDetailsView.propTypes = {
   addToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
+  addToBagError: PropTypes.string,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -397,6 +406,7 @@ OutfitDetailsView.defaultProps = {
   isLoggedIn: false,
   addToFavorites: () => {},
   isBundleProduct: false,
+  addToBagError: '',
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

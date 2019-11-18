@@ -1,4 +1,5 @@
 import { getLabelValue } from '@tcp/core/src/utils';
+import { SESSIONCONFIG_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 export const getCartOrderList = state => {
@@ -432,4 +433,11 @@ export const getCartToggleError = state => {
 
 export const getCartBossBopisToggleError = state => {
   return state.CartItemTileReducer.get('toggleBossBopisError');
+};
+
+export const getIsDeleteConfirmationModalEnabled = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.IS_DELETE_CONFIRMATION_MODAL_ENABLED === 'TRUE'
+  );
 };

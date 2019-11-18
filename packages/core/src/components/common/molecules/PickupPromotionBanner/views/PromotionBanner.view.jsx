@@ -30,7 +30,8 @@ const modifiedBannerText = (label, props) => {
 };
 
 const PromotionBanner = props => {
-  const { labels, fullBleed, className } = props;
+  const { labels, fullBleed, className, isPickupMobilePromotion } = props;
+  const triangleClass = !isPickupMobilePromotion ? 'triangle-left' : 'triangle-top';
   return (
     <div className={className}>
       {fullBleed ? (
@@ -58,7 +59,7 @@ const PromotionBanner = props => {
         </div>
       ) : (
         <div className="banner-wrapper">
-          <div className="triangle-left" />
+          <div className={triangleClass} />
           <div className="promo-wrapper">
             <div className="richtextCss">
               <RichText richTextHtml={modifiedBannerText(labels.lbl_banner_boss_text, props)} />
@@ -74,10 +75,12 @@ PromotionBanner.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   fullBleed: PropTypes.bool,
   className: PropTypes.string.isRequired,
+  isPickupMobilePromotion: PropTypes.bool,
 };
 
 PromotionBanner.defaultProps = {
   fullBleed: false,
+  isPickupMobilePromotion: false,
 };
 
 export default withStyles(PromotionBanner, styles);
