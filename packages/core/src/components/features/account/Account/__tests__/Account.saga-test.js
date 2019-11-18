@@ -1,5 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { getAccountNavigationList, AccountSaga } from '../container/Account.saga';
+import { getAccountNavigationList, AccountSaga, getSubnavigation } from '../container/Account.saga';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import { setAccountNavigationList } from '../container/Account.actions';
 import ACCOUNT_CONSTANTS from '../Account.constants';
@@ -39,6 +39,15 @@ describe('Account Navigation List saga', () => {
       const cachedMethod = validateReduxCache(getAccountNavigationList);
       const takeLatestDescriptor = generator.next().value;
       const expected = takeLatest(ACCOUNT_CONSTANTS.GET_ACCOUNT_NAVIGATION_LIST, cachedMethod);
+      expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
+    });
+  });
+  describe('Subnavigation Saga', () => {
+    it('should return correct takeLatest effect', () => {
+      const generator = AccountSaga();
+      const cachedMethod = validateReduxCache(getSubnavigation);
+      const takeLatestDescriptor = generator.next().value;
+      const expected = takeLatest(ACCOUNT_CONSTANTS.GET_SUB_NAVIGATION, cachedMethod);
       expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
     });
   });

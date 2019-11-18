@@ -13,7 +13,10 @@ import { getLabels, getAccountNavigationState } from './Account.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.app';
 
-import { getAccountNavigationList } from './Account.actions';
+import { getAccountNavigationList, getSubNavigationData } from './Account.actions';
+
+const FOOTER_LINKS = 'account-footer-links';
+const LEGAL_LINKS = 'account-legal-links';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -47,6 +50,7 @@ export class Account extends React.PureComponent {
     getAccountNavigationAction: PropTypes.func,
     navigation: PropTypes.shape({}),
     fetchLabels: PropTypes.func,
+    fetchFooterLinks: PropTypes.func,
   };
 
   static defaultProps = {
@@ -57,6 +61,7 @@ export class Account extends React.PureComponent {
     getAccountNavigationAction: () => {},
     navigation: {},
     fetchLabels: () => {},
+    fetchFooterLinks: () => {},
   };
 
   constructor(props) {
@@ -88,8 +93,9 @@ export class Account extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { getAccountNavigationAction, fetchLabels } = this.props;
+    const { getAccountNavigationAction, fetchLabels, fetchFooterLinks } = this.props;
     getAccountNavigationAction();
+    fetchFooterLinks([FOOTER_LINKS, LEGAL_LINKS]);
     fetchLabels({ category: LABELS.account });
   }
 
@@ -150,7 +156,7 @@ export class Account extends React.PureComponent {
    */
   render() {
     const { component, componentProps, navData } = this.state;
-    const { labels, isUserLoggedIn, navigation } = this.props;
+    const { labels, isUserLoggedIn, navigation, fetchFooterLinks } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
         <StyledScrollView keyboardShouldPersistTaps="handled">
@@ -163,6 +169,7 @@ export class Account extends React.PureComponent {
             labels={labels}
             isUserLoggedIn={isUserLoggedIn}
             navigation={navigation}
+            fetchLinks={fetchFooterLinks}
           />
         </StyledScrollView>
       </StyledKeyboardAvoidingView>
@@ -185,6 +192,9 @@ export const mapDispatchToProps = dispatch => {
     },
     fetchLabels: payload => {
       dispatch(loadComponentLabelsData(payload));
+    },
+    fetchFooterLinks: payload => {
+      dispatch(getSubNavigationData(payload));
     },
   };
 };

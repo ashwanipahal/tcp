@@ -13,7 +13,13 @@ const getAccountCommonLabels = labels => {
   return (labels && labels.common) || {};
 };
 
-const AccountOverviewContainer = ({ labels, openTrackOrder, openApplyNowModal, ...otherProps }) => {
+const AccountOverviewContainer = ({
+  labels,
+  openTrackOrder,
+  openApplyNowModal,
+  fetchFooterLinks,
+  ...otherProps
+}) => {
   const overviewLabels = getAccountOverviewLabels(labels);
   const commonLabels = getAccountCommonLabels(labels);
   return (
@@ -22,6 +28,7 @@ const AccountOverviewContainer = ({ labels, openTrackOrder, openApplyNowModal, .
       commonLabels={commonLabels}
       openTrackOrder={openTrackOrder}
       openApplyNowModal={openApplyNowModal}
+      fetchLinks={fetchFooterLinks}
       {...otherProps}
     />
   );
@@ -33,15 +40,23 @@ AccountOverviewContainer.propTypes = {
   }),
   openTrackOrder: PropTypes.func.isRequired,
   openApplyNowModal: PropTypes.func.isRequired,
+  fetchFooterLinks: PropTypes.func,
 };
 
 AccountOverviewContainer.defaultProps = {
   labels: {
     accountOverview: {},
   },
+  fetchFooterLinks: () => {},
 };
 
-export const mapStateToProps = () => ({});
+export const mapStateToProps = state => {
+  const { AccountReducer } = state;
+  return {
+    accountFooterLinks: AccountReducer.get('account-footer-links'),
+    legalLinks: AccountReducer.get('account-legal-links'),
+  };
+};
 
 export const mapDispatchToProps = dispatch => {
   return {

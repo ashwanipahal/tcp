@@ -16,4 +16,14 @@ export const showLoader = () => ({
   type: ACCOUNT_CONSTANTS.SHOW_LOADER,
 });
 
+export const getSubNavigationData = payload => ({
+  type: ACCOUNT_CONSTANTS.GET_SUB_NAVIGATION,
+  payload,
+});
+
+export const setSubNavigationData = payload => ({
+  type: ACCOUNT_CONSTANTS.SET_SUB_NAVIGATION,
+  payload,
+});
+
 export const initActions = [loadComponentLabelsData({ category: LABELS.account })];
