@@ -26,6 +26,8 @@ import config, {
   MODULE_WITH_RIBBON_HEIGHT,
   TEXT_COLOR_WHITE,
   TEXT_COLOR_GYM,
+  MODULE_GYM_HEIGHT,
+  MODULE_TCP_HEIGHT,
 } from '../ModuleS.config';
 
 /**
@@ -53,9 +55,13 @@ const getImageWidth = hasRibbon => {
  * Height is fixed for mobile : TCP & Gymb
  * Width can vary as per device width.
  */
-const getImageHeight = hasRibbon => {
+const getImageHeight = (hasRibbon, hasVideo = false) => {
   if (hasRibbon) {
     return MODULE_WITH_RIBBON_HEIGHT;
+  }
+
+  if (hasVideo) {
+    return isGymboree() ? MODULE_GYM_HEIGHT : MODULE_TCP_HEIGHT;
   }
 
   return '';
@@ -69,8 +75,16 @@ const getImageHeight = hasRibbon => {
 const getLinkedImage = (props, hasRibbon) => {
   const {
     navigation,
-    linkedImage: [{ image, link }],
+    linkedImage: [{ image, link, video }],
   } = props;
+
+  let hasVideo = false;
+  if (video && video.url) {
+    hasVideo = true;
+    video.poster = image ? image.url : '';
+    video.videoWidth = getImageWidth(hasRibbon);
+    video.videoHeight = getImageHeight(hasRibbon, hasVideo);
+  }
 
   return link ? (
     <Anchor url={link.url} navigation={navigation}>
@@ -88,6 +102,7 @@ const getLinkedImage = (props, hasRibbon) => {
       height={getImageHeight(hasRibbon)}
       url={image.url}
       host={LAZYLOAD_HOST_NAME.HOME}
+      videoData={video}
       imgConfig={image.crop_m || getImageConfig(hasRibbon)}
     />
   );
@@ -208,6 +223,9 @@ getLinkedImage.propTypes = {
           text: PropTypes.string,
           title: PropTypes.string,
           target: PropTypes.string,
+        }),
+        video: PropTypes.shape({
+          url: PropTypes.string,
         }),
       })
     )

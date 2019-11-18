@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
 import { Col, DamImage, Row } from '../../../atoms';
@@ -75,6 +74,7 @@ class ModuleH extends React.PureComponent {
                   key={index.toString()}
                   imgConfigs={IMG_DATA.imgConfig}
                   imgData={item.image}
+                  videoData={item.video}
                 />
               );
             })}

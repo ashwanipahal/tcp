@@ -150,6 +150,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Girl"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -164,11 +165,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined0"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>
@@ -221,6 +224,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Toddler Girl alt"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -235,11 +239,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined1"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>
@@ -292,6 +298,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Boy"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -306,11 +313,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined2"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>
@@ -363,6 +372,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Toddler Boy alt"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -377,11 +387,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined3"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>
@@ -434,6 +446,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Baby"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -448,11 +461,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined4"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>
@@ -505,6 +520,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Girl"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -519,11 +535,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined5"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>
@@ -576,6 +594,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Girl"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -590,11 +609,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined6"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>
@@ -647,6 +668,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
       >
         <Styled(Styled(DamImage))
           alt="Girl"
+          checkBrand=""
           crop=""
           height={228}
           host=""
@@ -661,11 +683,13 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
             }
           }
+          isProductImage={false}
           itemBrand=""
           source=""
           swatchConfig=""
           testID="undefined7"
           url="https://res.cloudinary.com/tcp-dam-test/image/upload/q_auto:best/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+          videoData={null}
           width={228}
         />
       </Styled(Anchor)>

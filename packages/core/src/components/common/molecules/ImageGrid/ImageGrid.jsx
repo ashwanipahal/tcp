@@ -67,7 +67,7 @@ const ImageGrid = props => {
     <div data-locator={dataLocatorContainer}>
       {mediaLinkedList.reduce(gridReducer, gridCoordinator).final.map(medList => (
         <Row fullBleed className={className}>
-          {medList.map(({ image, link }, index) => {
+          {medList.map(({ image, link, video }, index) => {
             return (
               <Col key={index.toString()} colSize={colSize} className="image-col">
                 <DamImage
@@ -75,6 +75,7 @@ const ImageGrid = props => {
                   imgConfigs={imageConfig}
                   imgData={image}
                   link={link}
+                  videoData={video}
                 />
               </Col>
             );
