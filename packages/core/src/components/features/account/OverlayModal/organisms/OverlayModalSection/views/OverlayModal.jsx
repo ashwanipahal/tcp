@@ -172,9 +172,10 @@ class OverlayModal extends React.Component {
   // eslint-disable-next-line complexity
   getCustomStyles = ({ styleModal }) => {
     const { component, showCondensedHeader } = this.props;
+    const isAccountDrawer = component === 'accountDrawer' || false;
     if (this.isMobile && component !== 'accountDrawer') return;
     let comp = document.getElementById(component);
-    if (component === 'accountDrawer' && showCondensedHeader) {
+    if (isAccountDrawer && showCondensedHeader) {
       comp = document.getElementById('condensedLogin');
     }
     /* istanbul ignore else */
@@ -186,14 +187,13 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      if (component === 'accountDrawer') {
+      if (isAccountDrawer) {
         comp = document.getElementById('account-info-user-points');
         this.styleModalTriangle({ comp });
       } else {
         this.styleModalTriangle({ comp });
       }
-    } else if (component === 'accountDrawer' && comp === null) {
-    /* istanbul ignore else */
+    } else if (isAccountDrawer) {
       this.setInnerScrollHeight();
     }
   };
