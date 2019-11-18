@@ -3,6 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import ConfirmationAccountFormContainer from '@tcp/core/src/components/features/CnC/common/organism/ConfirmationAccountForm';
 import Recommendations from '../../../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import OrderLedgerContainer from '../../OrderLedger';
 import CouponAndPromos from '../../CouponAndPromos';
@@ -21,7 +22,6 @@ import {
 } from '../styles/CnCTemplate.style.native';
 import PersonalizedCoupons from '../../../../Confirmation/organisms/PersonalizedCoupons';
 import PayPalButton from '../../PayPalButton';
-import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
 /** The hard coded values are just to show the confirmation template. these will be removed once the components are are in place */
 
 const CnCCommonTemplate = ({
