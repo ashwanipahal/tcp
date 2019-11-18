@@ -9,8 +9,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import { getLocator } from '../../../../../../../utils';
 import AirmilesToolTip from './AirmilesToolTip.view';
 import styles from '../styles/AirmilesBanner.style';
-
-// @flow
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 class AirmilesBanner extends React.PureComponent<Props> {
   state = {
@@ -191,20 +190,7 @@ AirmilesBanner.defaultProps = {
   handleSubmit: () => {},
 };
 
-const validateMethod = createValidateMethod({
-  rules: {
-    promoId: {
-      number: true,
-      exactLength: 11,
-    },
-  },
-  messages: ({ labels }) => ({
-    promoId: {
-      exactLength: labels.exactLength,
-      number: labels.collectorOnlyNumber,
-    },
-  }),
-});
+const validateMethod = createValidateMethod(getStandardConfig(['promoId']));
 
 export default reduxForm({
   form: 'AirmilesBanner',

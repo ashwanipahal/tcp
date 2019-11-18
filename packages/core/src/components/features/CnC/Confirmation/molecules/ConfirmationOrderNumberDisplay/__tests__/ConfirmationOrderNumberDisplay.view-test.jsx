@@ -3,9 +3,13 @@ import { shallow } from 'enzyme';
 import { ConfirmationOrderNumberDisplayVanilla } from '../views/ConfirmationOrderNumberDisplay.view';
 import { getDateInformation } from '../../../../../../../utils';
 
-jest.mock('../../../../../../../utils', () => ({
-  getDateInformation: jest.fn(),
-}));
+jest.mock('../../../../../../../utils', () => {
+  const originalModule = jest.requireActual('@tcp/core/src/utils');
+  return {
+    ...originalModule,
+    getDateInformation: jest.fn(),
+  };
+});
 
 describe('ConfirmationOrderNumberDisplayVanilla', () => {
   it('should render correctly', () => {

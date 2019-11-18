@@ -15,18 +15,29 @@ exports[`ProductList component should renders correctly 1`] = `
         Object {
           "productInfo": "",
         },
+        undefined,
+        Object {
+          "productInfo": "",
+        },
       ]
     }
     disableVirtualization={false}
     extraData={
       Object {
+        "AddToFavoriteErrorMsg": "",
         "currencyExchange": Array [],
         "currencySymbol": "",
         "isBopisEnabled": false,
         "isBopisEnabledForClearance": false,
         "isFavorite": false,
+        "isLoggedIn": false,
         "isMatchingFamily": true,
         "isPlcc": false,
+        "isSearchListing": false,
+        "labelsLogin": Object {
+          "logIn": "",
+        },
+        "labelsPlpTiles": Object {},
         "loadedProductCount": 12,
         "onAddItemToFavorites": [MockFunction],
         "onColorChange": [MockFunction],
@@ -42,6 +53,7 @@ exports[`ProductList component should renders correctly 1`] = `
             "productInfo": "",
           },
         ],
+        "removeAddToFavoritesErrorMsg": [Function],
         "setLastDeletedItemId": [MockFunction],
         "setListRef": [MockFunction],
         "showQuickViewForProductId": "",

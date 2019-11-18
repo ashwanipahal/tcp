@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { shallow } from 'enzyme';
 import * as utils from '@tcp/core/src/utils/utils';
@@ -93,6 +94,7 @@ describe('CartItemTile common component', () => {
       },
       addItemToSflList: jest.fn(),
       setCartItemsSflError: jest.fn(),
+      setClickAnalyticsData: jest.fn(),
       labels: {
         color: 'Color',
         sizeL: 'Size',
@@ -202,6 +204,7 @@ describe('CartItemTile common component', () => {
       setCartItemsSflError: jest.fn(),
       startSflItemDelete: jest.fn(),
       startSflDataMoveToBag: jest.fn(),
+      setClickAnalyticsData: jest.fn(),
       labels: {
         color: 'Color',
         sizeL: 'Size',
@@ -311,6 +314,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
       isBopisClearanceProductEnabled: true,
       isRadialInventoryEnabled: true,
       pickupStoresInCart: {},
+      isBagPageSflSection: false,
       onPickUpOpenClick: jest.fn(),
       toggleBossBopisError: null,
     };
@@ -441,5 +445,12 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
     instance.componentDidUpdate({ toggleBossBopisError: null });
     jest.runAllTimers();
     expect(props.onPickUpOpenClick).toHaveBeenCalled();
+  });
+
+  it('should close mini bag', () => {
+    props.closeMiniBag = jest.fn();
+    const component = shallow(<CartItemTileVanilla {...props} />);
+    component.instance().closeMiniBagMethod();
+    expect(props.closeMiniBag).toHaveBeenCalled();
   });
 });

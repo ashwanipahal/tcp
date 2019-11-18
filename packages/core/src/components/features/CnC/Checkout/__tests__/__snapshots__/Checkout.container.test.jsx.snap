@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
+<CheckoutPage
+  activeStage="shipping"
+  activeStep="shipping"
+  availableStages={
+    Array [
+      "billing",
+      "review",
+    ]
+  }
+  billingProps={
+    Object {
+      "billingDidMount": [Function],
+      "isRegisteredUserCallDone": true,
+    }
+  }
+  currentPhoneNumber=""
+  formatPayload={[Function]}
+  initialValues={Object {}}
+  isExpressCheckout={false}
+  isGuest={true}
+  isMobile={false}
+  isPayPalWebViewEnable={false}
+  isRegisteredUserCallDone={true}
+  isSmsUpdatesEnabled={true}
+  isUsSite={false}
+  isVenmoPaymentInProgress={false}
+  onEditModeChange={true}
+  pageData={Object {}}
+  pickupDidMount={[Function]}
+  reviewProps={
+    Object {
+      "isRegisteredUserCallDone": true,
+      "reviewDidMount": [Function],
+    }
+  }
+  router={
+    Object {
+      "query": Object {
+        "section": "",
+      },
+    }
+  }
+  setVenmoPickupState={[Function]}
+  setVenmoShippingState={[Function]}
+  shippingMethod={Object {}}
+  shippingProps={
+    Object {
+      "isRegisteredUserCallDone": true,
+      "shippingDidMount": [Function],
+    }
+  }
+  submitBilling={[Function]}
+  submitReview={[Function]}
+  submitShippingSection={[Function]}
+/>
+`;
+
+exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
+<CheckoutPage
+  activeStage="shipping"
+  activeStep="shipping"
+  availableStages={
+    Array [
+      "billing",
+      "review",
+    ]
+  }
+  billingProps={
+    Object {
+      "billingDidMount": [Function],
+      "isRegisteredUserCallDone": true,
+    }
+  }
+  currentPhoneNumber=""
+  formatPayload={[Function]}
+  initialValues={Object {}}
+  isExpressCheckout={false}
+  isGuest={true}
+  isMobile={false}
+  isPayPalWebViewEnable={false}
+  isRegisteredUserCallDone={true}
+  isSmsUpdatesEnabled={true}
+  isUsSite={false}
+  isVenmoPaymentInProgress={false}
+  onEditModeChange={true}
+  pageData={Object {}}
+  pickupDidMount={[Function]}
+  reviewProps={
+    Object {
+      "isRegisteredUserCallDone": true,
+      "reviewDidMount": [Function],
+    }
+  }
+  router={
+    Object {
+      "query": Object {
+        "section": "",
+      },
+    }
+  }
+  setVenmoPickupState={[Function]}
+  setVenmoShippingState={[Function]}
+  shippingMethod={Object {}}
+  shippingProps={
+    Object {
+      "isRegisteredUserCallDone": true,
+      "shippingDidMount": [Function],
+    }
+  }
+  submitBilling={[Function]}
+  submitReview={[Function]}
+  submitShippingSection={[Function]}
+/>
+`;

@@ -15,11 +15,13 @@ function* fetchPageSEOData(action) {
   const isSEODataExist = yield select(seoDataSelector);
   if (!isSEODataExist) {
     const apiConfig = getAPIConfig();
+    const { language } = apiConfig;
     const seoDataParams = {
       page,
       brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
       channel: defaultChannel,
       country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
+      lang: language !== 'en' ? language : '', // TODO: Remove Temporary Check for en support, as not supported from CMS yet
     };
     const data = yield call(seoDataAbstractor.getData, SEO_DATA.seoData, seoDataParams);
     yield put(

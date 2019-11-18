@@ -3,22 +3,7 @@
 exports[`BillingPageContainer should render correctly 1`] = `
 <Styled(BillingPage)
   cvvCodeInfoContentId="1234"
-  getCVVCodeInfo={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          Array [
-            "1234",
-          ],
-        ],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  getCVVCodeInfo={[MockFunction]}
+  isPayPalHidden={false}
 />
 `;

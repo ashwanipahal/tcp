@@ -61,10 +61,10 @@ const ButtonStyles = css`
       ? `
       min-width: 40px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+      color: ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.typography.fonts.secondary};
       font-weight: ${props.theme.typography.fontWeights.extrabold};
-      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+      border: 1px solid ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 20px;
       width: 100%;
       &:hover{
@@ -78,10 +78,10 @@ const ButtonStyles = css`
       ? `
       min-width: 64px;
       background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
+      color: ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-weight: ${props.theme.fonts.fontWeight.black};
-      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+      border: 1px solid ${props.theme.colorPalette.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 11px 32px;
       &:hover{
         border: solid 1px #9b9b9b;
@@ -129,19 +129,19 @@ const ButtonStyles = css`
       ? `
       &:hover, &:focus {
         background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         border-color: ${props.theme.colorPalette.orange[800]};
       }
       &:hover, &:focus {
         background: none;
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         border-color: ${props.theme.colorPalette.orange[800]};
       }
 
       /* fixes button flickering on the hover because for font-weight */
       ::after {
         font-family: ${props.theme.typography.fonts.secondary};
-        font-weight: ${props.theme.typography.fontWeights.black};
+        font-weight: ${props.theme.typography.fontWeights.semibold}
         font-size: ${props.theme.typography.fontSizes.fs14};
         display: block;
         content: attr(data-category-link-label);
@@ -149,7 +149,7 @@ const ButtonStyles = css`
         overflow: hidden;
         visibility: hidden;
       }
-      
+
       @media ${props.theme.mediaQuery.large} {
       font-size: ${props.theme.typography.fontSizes.fs20};
       ::after {
@@ -184,7 +184,7 @@ const ButtonStyles = css`
         };
         box-shadow: 4px 4px white inset, 6px 6px ${
           props.theme.isGymboree
-            ? props.theme.colorPalette.orange[50]
+            ? props.theme.colorPalette.orange[800]
             : props.theme.colors.PRIMARY.COLOR1
         };
         border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
@@ -213,8 +213,8 @@ const ButtonStyles = css`
         font-size: ${props.theme.typography.fontSizes.fs14};
         font-weight: ${
           props.active
-            ? props.theme.typography.fontWeights.extrabold
-            : props.theme.typography.fontWeights.regular
+            ? props.theme.typography.fontWeights.semibold
+            : props.theme.typography.fontWeights.normal
         };
         border-bottom: 2px solid ${
           props.active ? props.theme.colorPalette.primary.main : 'transparent'
@@ -225,14 +225,15 @@ const ButtonStyles = css`
 
         &:hover, &:focus, &:active {
           background-color: transparent;
+          outline-width: 0;
         }
 
         @media ${props.theme.mediaQuery.large} {
           font-size: ${props.theme.typography.fontSizes.fs20};
           font-weight: ${
             props.active
-              ? props.theme.typography.fontWeights.extrabold
-              : props.theme.typography.fontWeights.semibold
+              ? props.theme.typography.fontWeights.semibold
+              : props.theme.typography.fontWeights.normal
           };
         }
       `
@@ -241,11 +242,11 @@ const ButtonStyles = css`
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
       props.buttonVariation === 'fixed-width'
-        ? `min-height: 51px; padding: 16px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `padding: 15px 20px;font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
     ${props =>
       props.buttonVariation === 'variable-width'
-        ? `min-height: 45px; padding: 16px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
+        ? `padding: 15px 32px;font-size: ${props.theme.typography.fontSizes.fs14}`
         : ''};
   }
   ${props =>
@@ -254,13 +255,17 @@ const ButtonStyles = css`
     props.buttonVariation !== darkLinkCategory
       ? getShape(props)
       : ``}
-    
+
   ${props =>
-    props.link
+    props.link || props.smallLink
       ? `
         min-height: auto;
         font-family: ${props.theme.typography.fonts.secondary};
-        font-size: ${props.theme.fonts.fontSize.body.large.secondary}px;
+        font-size: ${
+          props.smallLink
+            ? props.theme.fonts.fontSize.body.large.primary
+            : props.theme.fonts.fontSize.body.large.secondary
+        }px;
         letter-spacing: ${props.theme.fonts.letterSpacing.normal};
         border: 0;
         padding: 0;
@@ -271,10 +276,20 @@ const ButtonStyles = css`
         background: none;
       }
       @media ${props.theme.mediaQuery.large} {
-        font-size: ${props.theme.fonts.fontSize.button.size}px;
+        font-size: ${
+          props.smallLink
+            ? props.theme.fonts.fontSize.body.large.primary
+            : props.theme.fonts.fontSize.button.size
+        }px;
       }
   `
       : ``}
+      ${props =>
+        props.fill === 'BLUE'
+          ? ` background: ${props.theme.colorPalette.blue.C900}; border: 1px solid ${
+              props.theme.colorPalette.blue.C900
+            }; `
+          : ''};
       ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 
 `;

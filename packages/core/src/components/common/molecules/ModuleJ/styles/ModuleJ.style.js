@@ -48,6 +48,16 @@ export default css`
         : ``};
   }
 
+  .promo-header a:first-child > div {
+    padding: 0 12px;
+    ${props =>
+      props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
+    display: inline;
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: 0 20px;
+    }
+  }
+
   .promo {
     position: relative;
     text-align: center;
@@ -64,8 +74,6 @@ export default css`
   .promo-header-wrapper:first-child {
     padding: 0 0;
     display: inline-block;
-    ${props =>
-      props.layout === 'default' ? `background-color: ${props.theme.colorPalette.white}` : ''}
   }
 
   &.layout-default .promo-text {

@@ -92,7 +92,7 @@ class MyRewards extends PureComponent {
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="semibold"
               className="my-rewards-heading"
               data-locator="my-rewards-heading"
               text={heading}

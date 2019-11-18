@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { BodyCopyWithSpacing } from '../../../../common/atoms/styledWrapper';
 import CnCTemplate from '../../common/organism/CnCTemplate';
 import { Wrapper, SMSWrapper, InnerWrapper } from '../styles/Confirmation.styles.native';
@@ -10,11 +11,6 @@ import {
   checkIffullfillmentCenterMap,
 } from './Confirmation.util';
 import CONFIRMATION_CONSTANTS from '../Confirmation.constants';
-import ConfirmationAccountFormContainer from '../../common/organism/ConfirmationAccountForm';
-
-const renderAccountForm = isGuest => {
-  return isGuest ? <ConfirmationAccountFormContainer /> : null;
-};
 
 /** The hard coded values are just to show the template. these will be removed once the components are are in place */
 /**
@@ -31,6 +27,7 @@ const ConfirmationView = ({
   orderDetails,
   orderShippingDetails,
   orderNumbersByFullfillmentCenter,
+  navigation,
 }) => {
   const { date, orderNumber, trackingLink } = orderDetails || {};
 
@@ -93,8 +90,13 @@ const ConfirmationView = ({
           isBossInList={isBossInList}
         />
       </InnerWrapper>
-      {renderAccountForm(isGuest)}
-      <CnCTemplate isConfirmationPage isGuest={isGuest} pageCategory="confirmation" />
+
+      <CnCTemplate
+        isConfirmationPage
+        isGuest={isGuest}
+        navigation={navigation}
+        pageCategory="confirmation"
+      />
     </Wrapper>
   );
 };
@@ -134,10 +136,12 @@ ConfirmationView.propTypes = {
     orderTotal: PropTypes.number,
     itemsCount: PropTypes.number,
   }).isRequired,
+  navigation: PropTypes.shape({}),
 };
 ConfirmationView.defaultProps = {
   isGuest: true,
   isOrderPending: false,
   encryptedEmailAddress: '',
+  navigation: null,
 };
 export default ConfirmationView;

@@ -1,7 +1,7 @@
 import { API_CONFIG } from '@tcp/core/src/services/config';
 import { SESSIONCONFIG_REDUCER_KEY } from '../../constants/reducer.constants';
 import { defaultCountries } from '../../constants/site.constants';
-import { getBrand, parseBoolean } from '../../utils';
+import { getBrand, parseBoolean, isMobileApp } from '../../utils';
 
 const USA_VALUES = {
   currency: 'USD',
@@ -54,7 +54,7 @@ const getCrossBrandFlags = (state, key) => {
 export const getIsBossAppEnabled = state => {
   const brand = getBrand();
   const { brandFlag, otherBrandFlag } = getCrossBrandFlags(state, 'BOSS_ENABLED_APP');
-  if (brand.toUpperCase() === API_CONFIG.TCP_CONFIG_OPTIONS.brandId.toUpperCase()) {
+  if (brand && brand.toUpperCase() === API_CONFIG.TCP_CONFIG_OPTIONS.brandId.toUpperCase()) {
     return { isBossEnabledAppTCP: brandFlag, isBossEnabledAppGYM: otherBrandFlag };
   }
 
@@ -62,14 +62,18 @@ export const getIsBossAppEnabled = state => {
 };
 
 export const getIsBossEnabled = (state, brand = getBrand()) => {
-  const isBOSSEnabled = `isBOSSEnabled_${brand.toUpperCase()}`;
+  if (isMobileApp()) {
+    const isBOSSEnabledAppFlag = brand && `isBossEnabledApp${brand.toUpperCase()}`;
+    return getIsBossAppEnabled(state)[isBOSSEnabledAppFlag];
+  }
+  const isBOSSEnabled = brand && `isBOSSEnabled_${brand.toUpperCase()}`;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOSSEnabled]
   );
 };
 
 export const getIsBopisEnabled = (state, brand = getBrand()) => {
-  const isBOPISEnabled = `isBOPISEnabled_${brand.toUpperCase()}`;
+  const isBOPISEnabled = brand && `isBOPISEnabled_${brand.toUpperCase()}`;
   return (
     state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[isBOPISEnabled]
   );
@@ -106,5 +110,35 @@ export const getRecalcOrderPointsInterval = state => {
   return (
     state[SESSIONCONFIG_REDUCER_KEY] &&
     state[SESSIONCONFIG_REDUCER_KEY].siteDetails.BRIERLEY_ORD_RECALC_CACHING_INTERVAL
+  );
+};
+
+export const getTcpSegmentValue = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.tcpSegment
+  );
+};
+export const getIsShowPriceRange = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.PRICE_RANGE_SWITCH
+  );
+};
+
+export const getIsKeepAliveProduct = state => {
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] &&
+    state[SESSIONCONFIG_REDUCER_KEY].siteDetails.KEEPALIVE_PRODUCTFLAG
+  );
+};
+
+export const getCurrentSiteLanguage = state => {
+  return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.language;
+};
+
+export const getIsPayPalEnabled = state => {
+  const key = 'BOPIS_MIXCART_PAYPAL_ENABLED';
+  return (
+    state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails[key] === 'TRUE'
   );
 };

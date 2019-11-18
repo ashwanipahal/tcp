@@ -1,32 +1,27 @@
-// @flow
 import React from 'react';
-import type { Node } from 'react';
+import PropTypes from 'prop-types';
 import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import StyledTextBox from '../Select.style';
 
-/**
- * @param {object} props : Props for button
- * @desc This is a Textbox component. The textbox also supports the icons in the front of the textbox.
- * The textIcon = icon-sms and icon-email are currently supported with natural fill.
- * The border styles for success and error are governed by isErrorState and isSuccessState props.
- * The prop disabled determines if the textbox needs to be disabled or not.
- */
+const renderTitle = ({ value, title }) => {
+  return value && title ? (
+    <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
+      {title}
+    </BodyCopy>
+  ) : (
+    ''
+  );
+};
 
-type Props = {
-  id?: string,
-  className: string,
-  ariaLabel?: string,
-  name?: string,
-  type?: string,
-  placeholder?: string,
-  meta: { touched: any, error: any, warning: any },
-  input: any,
-  options: any,
-  defaultValue: any,
-  dataLocator?: string,
-  disabled?: boolean,
-  title?: string,
+renderTitle.propTypes = {
+  value: PropTypes.string,
+  title: PropTypes.string,
+};
+
+renderTitle.defaultProps = {
+  value: '',
+  title: '',
 };
 
 const SelectBox = ({
@@ -42,9 +37,8 @@ const SelectBox = ({
   disabled,
   title,
   ...otherProps
-}: Props): Node => {
-  const errorMessagea11yLbl = `selectbox__error__${name}`;
-
+}) => {
+  const errorMessagea11yLbl = name ? `selectbox__error__${name}` : 'selectbox__error';
   return (
     <div className={className}>
       <select
@@ -77,13 +71,7 @@ const SelectBox = ({
       </select>
       {/* the placeholder should not be used as title since different text
       is being used for placeholder and title in multiple instances */}
-      {title ? (
-        <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
-          {title}
-        </BodyCopy>
-      ) : (
-        ''
-      )}
+      {renderTitle({ value: input.value, title })}
       <div className="SelectBox__error">
         <div className={touched && error ? 'warning-icon' : ''} aria-disabled="true" />
         {touched && error && (
@@ -105,6 +93,21 @@ const SelectBox = ({
   );
 };
 
+SelectBox.propTypes = {
+  id: PropTypes.string,
+  className: PropTypes.string,
+  ariaLabel: PropTypes.string,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  meta: PropTypes.shape({}).isRequired,
+  input: PropTypes.shape({}).isRequired,
+  options: PropTypes.shape([]).isRequired,
+  dataLocator: PropTypes.string,
+  disabled: PropTypes.bool,
+  title: PropTypes.string,
+};
+
 SelectBox.defaultProps = {
   id: '',
   ariaLabel: '',
@@ -114,6 +117,7 @@ SelectBox.defaultProps = {
   dataLocator: '',
   disabled: false,
   title: '',
+  className: '',
 };
 
 export default withStyles(SelectBox, StyledTextBox);

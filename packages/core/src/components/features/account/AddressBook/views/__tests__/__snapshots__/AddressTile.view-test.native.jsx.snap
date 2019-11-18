@@ -19,7 +19,6 @@ exports[`AddressTile component should renders correctly 1`] = `
             "primary": "true",
           }
         }
-        customStyle={Object {}}
         dataLocatorPrefix="addressbook"
         fontSize="fs14"
         fontWeight="bold"
@@ -33,6 +32,8 @@ exports[`AddressTile component should renders correctly 1`] = `
     <View>
       <Badge
         dataLocator="addressbook-defshippinglabel"
+        lightGrayColor={false}
+        primary={false}
         showCheckmark={true}
       >
         ACC_LBL_DEFAULT_SHIPPING
@@ -48,6 +49,7 @@ exports[`AddressTile component should renders correctly 1`] = `
         colorName={null}
         customStyle={Object {}}
         fontSizeVariation="large"
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -64,6 +66,7 @@ exports[`AddressTile component should renders correctly 1`] = `
       colorName={null}
       customStyle={Object {}}
       fontSizeVariation="large"
+      justifyContent=""
       locator=""
       margins={null}
       onPress={[Function]}

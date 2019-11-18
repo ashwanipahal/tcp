@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { PropTypes } from 'prop-types';
 import OutfitDetails from '../views/index';
 import {
@@ -7,6 +7,7 @@ import {
   getOutfitImage,
   getOutfitProducts,
   getAddedToBagErrorCatId,
+  getPDPLabels,
 } from './OutfitDetails.selectors';
 import { getOutfitDetails } from './OutfitDetails.actions';
 import {
@@ -35,24 +36,45 @@ import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 
 class OutfitDetailsContainer extends React.PureComponent {
-  componentDidMount() {
-    const {
-      getOutfit,
-      router: { query },
-      navigation,
-    } = this.props;
-
+  static getInitialProps = async ({ props, query, isServer }) => {
+    const { getOutfit, navigation } = props;
     if (isMobileApp()) {
       const vendorColorProductIdsList = navigation.getParam('vendorColorProductIdsList');
       const outfitId = navigation.getParam('outfitId');
       // TODO - these are dummy for mocking. Keeping these comments till we get real outfit details data from listing
       // const vendorColorProductIdsList = '2101602_054-2044392_10-2110252_IV-2623363_IV-2079174_BQ';
       // const outfitId = '138548';
-      getOutfit({ outfitId, vendorColorProductIdsList });
+      await getOutfit({ outfitId, vendorColorProductIdsList });
     } else {
-      const { vendorColorProductIdsList, outfitId } = query;
-      getOutfit({ outfitId, vendorColorProductIdsList });
+      let vendorColorProductIdsList;
+      let outfitId;
+      if (isServer) {
+        ({ vendorColorProductIdsList, outfitId } = query);
+      } else {
+        ({
+          router: {
+            query: { vendorColorProductIdsList, outfitId },
+          },
+        } = props);
+      }
+      await getOutfit({ outfitId, vendorColorProductIdsList });
     }
+  };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      router: {
+        query: { outfitId: selectedOutfitId },
+      },
+    } = nextProps;
+    return selectedOutfitId ? { ...prevState, outfitIdLocal: selectedOutfitId } : { ...prevState };
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      outfitIdLocal: '',
+    };
   }
 
   handleAddToBag = (addToBagEcom, productInfo, generalProductId, currentState) => {
@@ -83,7 +105,9 @@ class OutfitDetailsContainer extends React.PureComponent {
       isPickupModalOpen,
       isLoggedIn,
       navigation,
+      pdpLabels,
     } = this.props;
+    const { outfitIdLocal } = this.state;
     if (outfitProducts) {
       return (
         <OutfitDetails
@@ -105,6 +129,8 @@ class OutfitDetailsContainer extends React.PureComponent {
           addToFavorites={addToFavorites}
           isLoggedIn={isLoggedIn}
           navigation={navigation}
+          outfitId={outfitIdLocal}
+          pdpLabels={pdpLabels}
         />
       );
     }
@@ -132,6 +158,7 @@ const mapStateToProps = state => {
     currentState: state,
     isPickupModalOpen: getIsPickupModalOpen(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    pdpLabels: getPDPLabels(state),
   };
 };
 
@@ -153,7 +180,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 OutfitDetailsContainer.propTypes = {
-  getOutfit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   outfitImageUrl: PropTypes.string,
   outfitProducts: PropTypes.shape({}),
@@ -173,6 +199,7 @@ OutfitDetailsContainer.propTypes = {
   isPickupModalOpen: PropTypes.bool,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
+  pdpLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsContainer.defaultProps = {
@@ -192,9 +219,11 @@ OutfitDetailsContainer.defaultProps = {
   addToBagErrorId: '',
   isPickupModalOpen: false,
   isLoggedIn: false,
+  pdpLabels: {},
 };
 
-export default connect(
+export default withIsomorphicRenderer({
+  WrappedComponent: OutfitDetailsContainer,
   mapStateToProps,
-  mapDispatchToProps
-)(OutfitDetailsContainer);
+  mapDispatchToProps,
+});

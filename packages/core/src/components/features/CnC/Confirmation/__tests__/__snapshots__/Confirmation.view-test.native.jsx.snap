@@ -27,11 +27,14 @@ exports[`ConfirmationView should render correctly 1`] = `
       isShowShippingMessage={false}
     />
   </Styled(View)>
-  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
+    getPayPalSettings={Object {}}
     isConfirmationPage={true}
     isGuest={true}
+    isPayPalWebViewEnable={false}
+    navigation={null}
     pageCategory="confirmation"
+    showPayPalButton={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -89,11 +92,14 @@ exports[`ConfirmationView should render correctly 2`] = `
       }
     />
   </Styled(View)>
-  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
+    getPayPalSettings={Object {}}
     isConfirmationPage={true}
     isGuest={true}
+    isPayPalWebViewEnable={false}
+    navigation={null}
     pageCategory="confirmation"
+    showPayPalButton={false}
   />
 </Styled(ScrollViewMock)>
 `;
@@ -146,11 +152,14 @@ exports[`ConfirmationView should render correctly without order details 1`] = `
       }
     />
   </Styled(View)>
-  <Connect(ConfirmationAccountFormContainer) />
   <CnCCommonTemplate
+    getPayPalSettings={Object {}}
     isConfirmationPage={true}
     isGuest={true}
+    isPayPalWebViewEnable={false}
+    navigation={null}
     pageCategory="confirmation"
+    showPayPalButton={false}
   />
 </Styled(ScrollViewMock)>
 `;

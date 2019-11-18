@@ -1,10 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router'; // eslint-disable-line
+import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
+import SEOTags from '@tcp/web/src/components/common/atoms';
+import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
-import ProductDetail from '../views';
+import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  getIsShowPriceRange,
+  getIsKeepAliveProduct,
+} from '../../../../../reduxStore/selectors/session.selectors';
 import {
   getUserLoggedInState,
   isRememberedUser,
@@ -35,14 +42,21 @@ import {
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
+const ProductDetailWithRef = withRefWrapper(ProductDetailView);
+ProductDetailWithRef.displayName = 'ProductDetailPage';
+const ProductDetail = withHotfix(ProductDetailWithRef);
+
 class ProductDetailContainer extends React.PureComponent {
-  componentDidMount() {
+  static extractPID = props => {
     const {
-      getDetails,
       router: {
         query: { pid },
       },
-    } = this.props;
+    } = props;
 
     // TODO - fix this to extract the product ID from the page.
     const id = pid && pid.split('-');
@@ -54,13 +68,76 @@ class ProductDetailContainer extends React.PureComponent {
       productId = 'gift';
     }
 
-    getDetails({ productColorId: productId });
+    return productId;
+  };
+
+  static getInitialProps = async ({ props, query, isServer }) => {
+    const { getDetails } = props;
+    let pid;
+    if (isServer) {
+      ({ pid } = query);
+    } else {
+      ({
+        router: {
+          query: { pid },
+        },
+      } = props);
+    }
+    // TODO - fix this to extract the product ID from the page.
+    const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
+    await getDetails({ productColorId: productId });
+
+    // Build a page name for tracking
+    let pageName = '';
+    if (productId) {
+      const productIdParts = productId.split('_');
+      pageName = `product:${productIdParts[0]}:${pid
+        .replace(productIdParts[0], '')
+        .replace(productIdParts[1], '')
+        .split('-')
+        .join(' ')
+        .trim()
+        .toLowerCase()}`;
+    }
+
+    return {
+      pageProps: {
+        pageName,
+      },
+    };
+  };
+
+  componentDidMount() {
     window.scrollTo(0, 100);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      getDetails,
+      router: {
+        query: { pid },
+      },
+    } = this.props;
+
+    if (prevProps.router.query.pid !== pid) {
+      const productId = ProductDetailContainer.extractPID(this.props);
+      getDetails({ productColorId: productId });
+      window.scrollTo(0, 100);
+    }
   }
 
   componentWillUnmount = () => {
     const { clearAddToBagError } = this.props;
     clearAddToBagError();
+  };
+
+  getSEOTags = pageId => {
+    const { productInfo, router } = this.props;
+    if (pageId) {
+      const seoConfig = deriveSEOTags(pageId, productInfo, router);
+      return seoConfig ? <SEOTags seoConfig={seoConfig} /> : null;
+    }
+    return null;
   };
 
   handleAddToBag = () => {
@@ -88,34 +165,42 @@ class ProductDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       alternateSizes,
+      isShowPriceRangeKillSwitch,
       ...otherProps
     } = this.props;
     const isProductDataAvailable = Object.keys(productInfo).length > 0;
     return (
-      <React.Fragment>
-        {isProductDataAvailable ? (
-          <ProductDetail
-            productDetails={productDetails}
-            breadCrumbs={breadCrumbs}
-            itemPartNumber={itemPartNumber}
-            longDescription={longDescription}
-            shortDescription={shortDescription}
-            ratingsProductId={ratingsProductId}
-            otherProps={otherProps}
-            defaultImage={defaultImage}
-            plpLabels={plpLabels}
-            pdpLabels={pdpLabels}
-            currency={currency}
-            currencyExchange={currencyAttributes.exchangevalue}
-            productInfo={productInfo}
-            handleAddToBag={this.handleAddToBag}
-            addToBagError={addToBagError}
-            onAddItemToFavorites={onAddItemToFavorites}
-            isLoggedIn={isLoggedIn}
-            alternateSizes={alternateSizes}
-          />
-        ) : null}
-      </React.Fragment>
+      <>
+        {ProductDetailContainer.pageInfo.pageId && productInfo
+          ? this.getSEOTags(ProductDetailContainer.pageInfo.pageId)
+          : null}
+        <React.Fragment>
+          {isProductDataAvailable ? (
+            <ProductDetail
+              {...otherProps}
+              productDetails={productDetails}
+              breadCrumbs={breadCrumbs}
+              itemPartNumber={itemPartNumber}
+              longDescription={longDescription}
+              shortDescription={shortDescription}
+              ratingsProductId={ratingsProductId}
+              otherProps={otherProps}
+              defaultImage={defaultImage}
+              plpLabels={plpLabels}
+              pdpLabels={pdpLabels}
+              currency={currency}
+              currencyExchange={currencyAttributes.exchangevalue}
+              productInfo={productInfo}
+              handleAddToBag={this.handleAddToBag}
+              addToBagError={addToBagError}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              alternateSizes={alternateSizes}
+              isShowPriceRangeKillSwitch={isShowPriceRangeKillSwitch}
+            />
+          ) : null}
+        </React.Fragment>
+      </>
     );
   }
 }
@@ -144,6 +229,9 @@ function mapStateToProps(state) {
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     alternateSizes: getAlternateSizes(state),
+    isShowPriceRangeKillSwitch: getIsShowPriceRange(state),
+    isKeepAliveProduct: getIsKeepAliveProduct(state),
+    store: state,
   };
 }
 
@@ -172,12 +260,13 @@ ProductDetailContainer.propTypes = {
   formValues: PropTypes.shape({}).isRequired,
   addToBagEcom: PropTypes.func.isRequired,
   productInfo: PropTypes.arrayOf(PropTypes.shape({})),
-  breadCrumbs: PropTypes.shape({}),
+  breadCrumbs: PropTypes.shape([]),
   pdpLabels: PropTypes.shape({}),
   longDescription: PropTypes.string,
   shortDescription: PropTypes.string,
   itemPartNumber: PropTypes.string,
   ratingsProductId: PropTypes.string,
+  isShowPriceRangeKillSwitch: PropTypes.bool.isRequired,
   router: PropTypes.shape({
     query: PropTypes.shape({
       pid: PropTypes.string,
@@ -218,9 +307,8 @@ ProductDetailContainer.defaultProps = {
   alternateSizes: {},
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProductDetailContainer)
-);
+export default withIsomorphicRenderer({
+  WrappedComponent: ProductDetailContainer,
+  mapStateToProps,
+  mapDispatchToProps,
+});

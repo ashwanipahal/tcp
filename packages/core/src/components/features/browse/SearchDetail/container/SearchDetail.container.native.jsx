@@ -3,19 +3,24 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts, resetSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from './SearchDetail.util';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
+import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import {
   getUnbxdId,
   getCategoryId,
   getLabelsProductListing,
+  getLabelsAccountOverView,
   getNavigationTree,
   getLongDescription,
   getLastLoadedPageNumber,
+  getSelectedFilter,
 } from '../../ProductListing/container/ProductListing.selectors';
+import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
   getLoadedProductsCount,
   getLoadedProductsPages,
@@ -33,6 +38,10 @@ import {
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
 import { setRecentSearch } from '../../../../common/organisms/SearchProduct/RecentSearch.actions';
+import {
+  getUserLoggedInState,
+  isRememberedUser,
+} from '../../../account/User/container/User.selectors';
 import { PLPSkeleton } from '../../../../common/atoms/index.native';
 
 class SearchDetailContainer extends React.PureComponent {
@@ -80,9 +89,11 @@ class SearchDetailContainer extends React.PureComponent {
     }
   };
 
-  onGoToPDPPage = (title, pdpUrl, selectedColorProductId) => {
+  onGoToPDPPage = (title, pdpUrl, selectedColorProductId, productInfo) => {
     const { navigation } = this.props;
-    navigation.navigate('ProductDetail', {
+    const { bundleProduct } = productInfo;
+    const routeName = bundleProduct ? 'BundleDetail' : 'ProductDetail';
+    navigation.navigate(routeName, {
       title,
       pdpUrl,
       selectedColorProductId,
@@ -133,6 +144,9 @@ class SearchDetailContainer extends React.PureComponent {
       sortLabels,
       isSearchResultsAvailable,
       searchedText,
+      onAddItemToFavorites,
+      isLoggedIn,
+      labelsLogin,
       ...otherProps
     } = this.props;
 
@@ -161,6 +175,9 @@ class SearchDetailContainer extends React.PureComponent {
                 searchResultSuggestions={searchResultSuggestions}
                 onGoToPDPPage={this.onGoToPDPPage}
                 onLoadMoreProducts={this.onLoadMoreProducts}
+                onAddItemToFavorites={onAddItemToFavorites}
+                isLoggedIn={isLoggedIn}
+                labelsLogin={labelsLogin}
                 {...otherProps}
               />
             ) : (
@@ -218,16 +235,20 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    labelsLogin: getLabelsAccountOverView(state),
     isLoadingMore: getIsLoadingMore(state),
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
+    selectedFilterValue: getSelectedFilter(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
-    currentNavIds: state.ProductListing && state.ProductListing.get('currentNavigationIds'),
+    currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
     slpLabels: getLabels(state),
     searchResultSuggestions:
-      state.SearchListingPage && state.SearchListingPage.get('searchResultSuggestions'),
+      state.SearchListingPage && state.SearchListingPage.searchResultSuggestions,
     sortLabels: getSortLabels(state),
     scrollToTop: getScrollToTopValue(state),
+    isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
+    labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
   };
 }
 
@@ -245,8 +266,14 @@ function mapDispatchToProps(dispatch) {
     onQuickViewOpenClick: payload => {
       dispatch(openQuickViewWithValues(payload));
     },
+    onAddItemToFavorites: payload => {
+      dispatch(addItemsToWishlist(payload));
+    },
     setRecentSearches: searchTerm => {
       dispatch(setRecentSearch({ searchTerm }));
+    },
+    setSelectedFilter: payload => {
+      dispatch(setFilter(payload));
     },
   };
 }
@@ -287,6 +314,9 @@ SearchDetailContainer.propTypes = {
   sortLabels: PropTypes.shape({}),
   resetProducts: PropTypes.func,
   setRecentSearches: PropTypes.func,
+  onAddItemToFavorites: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -312,6 +342,9 @@ SearchDetailContainer.defaultProps = {
   sortLabels: {},
   resetProducts: () => {},
   setRecentSearches: null,
+  onAddItemToFavorites: null,
+  isLoggedIn: false,
+  labelsLogin: {},
 };
 
 export default connect(

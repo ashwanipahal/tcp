@@ -24,6 +24,7 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
       <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
         <StyledHeading>
           <BodyCopy
+            fontFamily="secondary"
             fontSize="fs16"
             fontWeight="extrabold"
             text={getLabelValue(labels, 'ACC_LBL_PLACE_REWARDS_HEADING', 'placeRewards')}
@@ -32,8 +33,9 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
         <UnderlineStyle />
         <StyledView>
           <BodyCopy
+            fontFamily="secondary"
             fontSize="fs16"
-            fontWeight="extrabold"
+            fontWeight="bold"
             text={getLabelValue(commonLabels, 'lbl_common_point_balance')}
           />
           <RewardsPoints />
@@ -41,8 +43,9 @@ const PlaceRewardsSection = ({ labels, className, ...otherProps }) => {
         <StyledView>
           <StyledHeading>
             <BodyCopy
+              fontFamily="secondary"
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="bold"
               text={getLabelValue(labels, 'lbl_my_rewards_points_history', 'placeRewards')}
             />
           </StyledHeading>

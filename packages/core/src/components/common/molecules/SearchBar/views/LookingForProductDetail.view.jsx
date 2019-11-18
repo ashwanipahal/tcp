@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BodyCopy, Anchor, Image } from '@tcp/core/src/components/common/atoms';
+import { getSiteId } from '@tcp/core/src/utils/utils';
+import { BodyCopy, Anchor, DamImage } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SearchBarStyle from '../SearchBar.style';
 import { routerPush } from '../../../../../utils/index';
@@ -17,10 +18,29 @@ import { routerPush } from '../../../../../utils/index';
  * @param {*} props
  */
 class LookingForProductDetail extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.generateDamUrl = this.generateDamUrl.bind(this);
+  }
+
   redirectToProductUrl = productUrl => {
     const { closeSearchLayover } = this.props;
     closeSearchLayover();
-    routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, { shallow: false });
+    routerPush(`/p?pid=${productUrl.split('/p/')[1]}`, `${productUrl}`, {
+      shallow: false,
+    });
+  };
+
+  generateDamUrl = itemUrl => {
+    const fileNameFull =
+      itemUrl && itemUrl[0] ? itemUrl[0].substring(itemUrl[0].lastIndexOf('/') + 1) : '';
+    const fileNameNoExt =
+      fileNameFull.lastIndexOf('.') > 0
+        ? fileNameFull.substring(0, fileNameFull.lastIndexOf('.'))
+        : fileNameFull;
+    const prodNum = fileNameNoExt.split('_')[0];
+    return `${prodNum}/${fileNameFull}`;
   };
 
   render() {
@@ -38,17 +58,19 @@ class LookingForProductDetail extends React.PureComponent {
                     <Anchor
                       className="suggestion-label"
                       noLink
-                      to={`${item.productUrl}`}
+                      to={`/${getSiteId()}${item.productUrl}`}
                       onClick={e => {
                         e.preventDefault();
                         this.redirectToProductUrl(`${item.productUrl}`);
                       }}
                     >
-                      <Image
-                        alt={`${item.name}`}
+                      <DamImage
                         className="autosuggest-image"
-                        src={`${item.imageUrl[0]}`}
-                        data-locator={`${item.name}`}
+                        imgData={{
+                          alt: `${item.name}`,
+                          url: `${this.generateDamUrl(item.imageUrl)}`,
+                        }}
+                        isProductImage
                         height="25px"
                       />
                     </Anchor>

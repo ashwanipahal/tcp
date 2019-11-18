@@ -25,7 +25,6 @@ const getOrganizedHeaderNavigationTree = state => {
   // if (cachedOrganizedNavTree) {
   //   return cachedOrganizedNavTree;
   // }
-
   const organizedNav =
     unorganizedTree &&
     unorganizedTree.map(L1 => {
@@ -45,7 +44,7 @@ const getOrganizedHeaderNavigationTree = state => {
 
 export const getCurrentListingIds = createSelector(
   getProductListingState,
-  products => products && products.get('currentNavigationIds')
+  products => products && products.currentNavigationIds
 );
 
 export const getNavigationTree = state => {
@@ -62,19 +61,23 @@ export const getNavigationTree = state => {
 
 export const getBreadCrumbTrail = createSelector(
   getProductListingState,
-  products => products && products.get('breadCrumbTrail')
+  products => products && products.breadCrumbTrail
+);
+
+export const getSelectedFilter = createSelector(
+  getProductListingState,
+  products => products && products.selectedFilter
 );
 
 export const getProductsSelect = createSelector(
   getProductListingState,
-  products =>
-    products && products.get('loadedProductsPages') && products.get('loadedProductsPages')[0]
+  products => products && products.loadedProductsPages && products.loadedProductsPages[0]
 );
 
 export const getAllProductsSelect = createSelector(
   getProductListingState,
   products => {
-    const allProducts = products && products.get('loadedProductsPages');
+    const allProducts = products && products.loadedProductsPages;
     return allProducts && flattenArray(allProducts);
   }
 );
@@ -85,23 +88,23 @@ export const getLabels = state => {
 
 export const getTotalProductsCount = createSelector(
   getProductListingState,
-  products => products && products.get('totalProductsCount')
+  products => products && products.totalProductsCount
 );
 
 export const getAppliedFilters = createSelector(
   getProductListingState,
-  products => products && products.get('appliedFiltersIds')
+  products => products && products.appliedFiltersIds
 );
 
 export const getAppliedSortId = createSelector(
   getProductListingState,
-  products => products && products.get('appliedSortId')
+  products => products && products.appliedSortId
 );
 
 export const getLoadedProductsCount = createSelector(
   getProductListingState,
   products => {
-    const allProducts = products && products.get('loadedProductsPages');
+    const allProducts = products && products.loadedProductsPages;
     const totalProductCount =
       (allProducts && allProducts.reduce((sum, item) => item.length + sum, 0)) || 0;
     return totalProductCount || 0;
@@ -110,22 +113,22 @@ export const getLoadedProductsCount = createSelector(
 
 export const getLongDescription = createSelector(
   getProductListingState,
-  ProductListing => ProductListing && ProductListing.get('currentListingDescription')
+  ProductListing => ProductListing && ProductListing.currentListingDescription
 );
 
 export const getUnbxdId = createSelector(
   getProductListingState,
-  products => products && products.get('unbxdId')
+  products => products && products.unbxdId
 );
 
 export const getLoadedProductsPages = createSelector(
   getProductListingState,
-  products => products && products.get('loadedProductsPages')
+  products => products && products.loadedProductsPages
 );
 
 export const getProductsFilters = createSelector(
   getProductListingState,
-  products => products && products.get('filtersMaps')
+  products => products && (products.filtersMaps || {})
 );
 export const getLabelsProductListing = state => {
   if (!state.Labels || !state.Labels.PLP)
@@ -148,16 +151,32 @@ export const getLabelsProductListing = state => {
   };
 };
 
+export const getLabelsAccountOverView = state => {
+  if (!state.Labels || !state.Labels.account)
+    return {
+      logIn: {},
+    };
+  const {
+    account: {
+      accountOverview: { lbl_overview_login_text: logIn },
+    },
+  } = state.Labels;
+
+  return {
+    logIn,
+  };
+};
+
 export const getIsLoadingMore = state => {
-  return state.ProductListing.get('isLoadingMore');
+  return state.ProductListing.isLoadingMore;
 };
 
 export const getScrollToTopValue = state => {
-  return state.ProductListing.get('isScrollToTop');
+  return state.ProductListing.isScrollToTop;
 };
 
 export const getProductsInCurrCategory = state => {
-  return state.ProductListing.get('productsInCurrCategory');
+  return state.ProductListing.productsInCurrCategory;
 };
 
 export const getSpotlightReviewsUrl = () => {
@@ -169,8 +188,7 @@ export const getBazaarvoiceApiUrl = () => {
 };
 
 export const getCategoryId = state => {
-  const currentNavigationIds =
-    state.ProductListing && state.ProductListing.get('currentNavigationIds');
+  const currentNavigationIds = state.ProductListing && state.ProductListing.currentNavigationIds;
   return currentNavigationIds && currentNavigationIds[currentNavigationIds.length - 1];
 };
 
@@ -187,7 +205,7 @@ export const getLastLoadedPageNumber = state => {
 
 export const getMaxPageNumber = state => {
   // We no longer need to divide by page size because UNBXD start parameter matches the direct number of results.
-  return Math.ceil(state.ProductListing.get('totalProductsCount') / getPageSize());
+  return Math.ceil(state.ProductListing.totalProductsCount / getPageSize());
 };
 
 /**
@@ -223,8 +241,7 @@ export const updateAppliedFiltersInState = state => {
   return filters;
 };
 
-export const getIsFilterBy = state => {
-  const filterMaps = state.ProductListing.get('filtersMaps');
+export const isFiltersAvailable = filterMaps => {
   const filterKeys =
     filterMaps && filterMaps.unbxdDisplayName && Object.keys(filterMaps.unbxdDisplayName);
   return (
@@ -239,6 +256,22 @@ export const getIsFilterBy = state => {
   );
 };
 
+export const getIsFilterBy = state => {
+  const filterMaps = state.ProductListing.filtersMaps;
+  return isFiltersAvailable(filterMaps);
+};
+
 export const getIsDataLoading = state => {
-  return state.ProductListing.get('isDataLoading');
+  return state.ProductListing.isDataLoading;
+};
+
+export const getPLPTopPromos = state => {
+  const { bannerInfo: { val: { top: topPromos } = {} } = {} } = state.ProductListing;
+  return (
+    (topPromos &&
+      topPromos.map(promoItem => {
+        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+      })) ||
+    []
+  );
 };

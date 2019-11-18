@@ -44,6 +44,7 @@ const initialState = fromJS({
   },
   uiFlags: {
     stage: CheckoutConstants.CHECKOUT_STAGES.SHIPPING,
+    routingDone: false,
     stageChangeCount: 0,
     isGiftOptionsEnabled: true,
     isPLCCPaymentEnabled: false,
@@ -61,6 +62,7 @@ const initialState = fromJS({
     paymentError: null,
     addressError: null,
     checkoutServerError: null,
+    isRTPSFlow: false,
   },
 });
 
@@ -116,6 +118,10 @@ function paypalReducer(checkout, action) {
   switch (action.type) {
     case CheckoutConstants.CHECKOUT_ORDER_OPTIONS_SET_PAYPAL_PAYMENT:
       return checkout.setIn(['options', 'paypalPaymentSettings'], action.paypalPaymentSettings);
+    case CheckoutConstants.SET_IS_RTPS_FLOW:
+      return checkout.setIn(['uiFlags', 'isRTPSFlow'], action.payload);
+    case CheckoutConstants.CHECKOUT_ROUTING_DONE:
+      return checkout.setIn(['uiFlags', 'routingDone'], action.payload);
     default:
       return venmoFlagReducer(checkout, action);
   }
@@ -167,10 +173,6 @@ function uiFlagReducer(checkout, action) {
     //   return merge(uiFlags, { isPLCCPaymentEnabled: action.isPLCCPaymentEnabled });
     case CheckoutConstants.CHECKOUT_FLAGS_SET_LOAD_METHODS:
       return checkout.setIn(['uiFlags', 'isLoadingShippingMethods'], action.isLoading);
-    // case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
-    //   return merge(uiFlags, { isEditingSubform: action.isEditingSubform });
-    // case 'CHECKOUT_FLAGS_SET_LOAD_METHODS':
-    //   return merge(uiFlags, { isLoadingShippingMethods: action.isLoading });
     case 'CHECKOUT_FLAGS_SET_EDITING_SUBFORM':
       return checkout.setIn(['uiFlags', 'isEditingSubform'], action.isEditingSubform);
     case 'CHECKOUT_UIFLAGS_SET_STAGE':
