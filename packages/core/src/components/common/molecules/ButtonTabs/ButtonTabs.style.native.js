@@ -5,6 +5,12 @@ import { Button as ButtonAtom } from '../../atoms';
 export const Wrapper = styled.View`
   display: flex;
   flex-direction: row;
+  ${props =>
+    props.wrappedButtonTabs
+      ? `  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;`
+      : ''}
 `;
 
 export const ButtonWrapper = styled.View`
