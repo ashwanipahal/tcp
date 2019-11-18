@@ -107,13 +107,17 @@ class ShippingForm extends React.Component {
     this.checkPropsOnMoreUpdation(prevProps);
   };
 
+  closeEditingMode = () => {
+    this.setState({ isEditing: false });
+  };
+
   checkPropsOnMoreUpdation = prevProps => {
     const { dispatch, defaultAddressId } = this.props;
     const { isEditingMode, isEditing } = this.state;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
     if (prevDefaultAddressId && defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-      this.setState({ isEditing: false });
+      this.closeEditingMode();
     }
     if (!isEditing && isEditingMode) {
       this.setState({ isEditingMode: false });
@@ -267,6 +271,7 @@ class ShippingForm extends React.Component {
       showAccordian,
       isMobile,
       pageCategory,
+      isLoadingShippingMethods,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -274,7 +279,7 @@ class ShippingForm extends React.Component {
         ? getLabelValue(labels, 'lbl_shipping_reviewText', 'shipping', 'checkout')
         : getLabelValue(labels, 'lbl_shipping_billingText', 'shipping', 'checkout');
     return (
-      <>
+      <div className={className}>
         <CheckoutSectionTitleDisplay
           title={getLabelValue(labels, 'lbl_shipping_header', 'shipping', 'checkout')}
         />
@@ -313,6 +318,7 @@ class ShippingForm extends React.Component {
               addNewShippingAddress={addNewShippingAddress}
               shippingAddress={shippingAddress}
               labels={labels}
+              afterAddressUpdate={this.closeEditingMode}
               setDefaultAddressId={setDefaultAddressId}
               syncErrorsObject={syncErrorsObject}
               errorMessageRef={this.editShippingErrorRef}
@@ -369,6 +375,7 @@ class ShippingForm extends React.Component {
                       'shipping',
                       'checkout'
                     )}
+                    isLoadingShippingMethods={isLoadingShippingMethods}
                   />
                 </div>
               </FormSection>
@@ -390,9 +397,10 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
+            isLoadingShippingMethods={isLoadingShippingMethods}
           />
         </form>
-      </>
+      </div>
     );
   }
 }
