@@ -51,7 +51,7 @@ class SocialConnect extends React.PureComponent {
         {isTwitterEnabled && (
           <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}>
             <Anchor
-              url="http://instagram.com/childrensplace"
+              url="http://twitter.com/childrensplace"
               target="_blank"
               onClick={this.handleTwitterShare}
               className="icon-twitter"
