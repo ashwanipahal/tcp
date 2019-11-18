@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Image } from '../../../../../../common/atoms';
 
 const FavtWrapper = styled.View`
@@ -55,6 +55,18 @@ const UnderlineStyle = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
+const AnchorStyles = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  height: 48,
+};
+
+const IconStyles = css`
+  margin-right: 0;
+  margin-left: auto;
+`;
+
 export {
   UnderlineStyle,
   TextWrapper,
@@ -65,4 +77,6 @@ export {
   TouchabelContainer,
   FavImageWrapper,
   FavtWrapper,
+  AnchorStyles,
+  IconStyles,
 };

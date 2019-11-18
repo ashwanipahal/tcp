@@ -238,7 +238,7 @@ class ProductSummary extends React.PureComponent {
     const { listPrice, offerPrice, highListPrice } = productData;
     const listPriceValue = this.calculatePriceValue(listPrice);
     const highListPriceValue = this.calculatePriceValue(highListPrice, null);
-    if (listPrice && offerPrice && listPrice > offerPrice) {
+    if (listPrice > offerPrice || highListPrice > listPrice) {
       return (
         <RowContainer>
           {this.renderListPriceLabels(listPriceValue)}

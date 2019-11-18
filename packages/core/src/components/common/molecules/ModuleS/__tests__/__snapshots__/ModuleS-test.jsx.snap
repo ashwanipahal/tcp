@@ -25,14 +25,14 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
               "action": "",
               "external": 0,
               "target": "",
-              "text": "Girls",
-              "title": "Girls",
-              "url": "/c/girls-clothes",
+              "text": "Girlss",
+              "title": "Girlss",
+              "url": "/c/girls-clothess2",
             },
             "textItems": Array [
               Object {
-                "style": "medium_text_black",
-                "text": "Home Run Ready!",
+                "style": "medium_text_regular",
+                "text": "Home Run Ready!1",
               },
               Object {
                 "style": "medium_text_black",
@@ -46,18 +46,20 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
         Array [
           Object {
             "image": Object {
-              "alt": "Image Alt text attribute value",
-              "title": "Image Title attribute value",
-              "url": "http://image1.sm/url",
+              "alt": "Pool",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_610",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_305",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+              "title": "Pool",
+              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png",
+              "url_m": "",
+              "url_t": "",
             },
-            "video": Object {
-              "autoplay": true,
-              "controls": true,
-              "inline": true,
-              "loop": true,
-              "muted": true,
-              "title": "Video Title attribute value",
-              "url": "https://test1.theplace.com/video/upload/v1572869480/sample_mp4.mp4",
+            "link": Object {
+              "target": "",
+              "text": "Pool",
+              "title": "Pool",
+              "url": "/c/boys-clothess",
             },
           },
         ]
@@ -67,9 +69,9 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
       singleCTAButton={
         Object {
           "target": "",
-          "text": "SHOP OPENING DAY",
-          "title": "SHOP OPENING DAY",
-          "url": "/c/girls-clothes",
+          "text": "SHOP OPENINGG DAY",
+          "title": "SHOP OPENINNG DAY",
+          "url": "/c/girls-clothess",
         }
       }
     />

@@ -3,6 +3,7 @@ import { withRouter } from 'next/router';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
@@ -93,10 +94,10 @@ const HomePageView = dynamic({
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
     moduleT: () => import('@tcp/core/src/components/common/molecules/ModuleT').then(returnModule),
-    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
+    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
   }),
   render: (compProps, modules) => {
     const {
@@ -149,5 +150,11 @@ HomePageView.propTypes = {
   openCountrySelectorModal: PropTypes.func.isRequired,
 };
 
-export default errorBoundary(HomePageView);
+const HomePageViewWithErrorBoundary = errorBoundary(HomePageView);
+
+// Wrap the home page with a ref-forwarding element
+const RefWrappedHomePageView = withRefWrapper(HomePageViewWithErrorBoundary);
+
+export default RefWrappedHomePageView;
+
 export { HomePageView as HomePageViewVanilla };

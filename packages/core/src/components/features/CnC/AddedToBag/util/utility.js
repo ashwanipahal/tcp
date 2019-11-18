@@ -60,5 +60,5 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
 
 export const makeBrandToggling = isGuestUser => {
   const cartItemCount = getCartItemCount();
-  return isGuestUser && !cartItemCount;
+  return isGuestUser && cartItemCount === 1;
 };
