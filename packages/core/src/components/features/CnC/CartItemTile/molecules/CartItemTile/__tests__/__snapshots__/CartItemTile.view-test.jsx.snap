@@ -6757,14 +6757,12 @@ exports[`CartItemTile common component renders correctly 1`] = `
   /*margin-bottom: 20px;*/
   position: relative;
 
-  * {
+  .product {
+    padding-top: 6px;
     &:focus,
     &:active {
       outline: 0;
     }
-  }
-  .product {
-    padding-top: 6px;
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -7302,14 +7300,12 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   /*margin-bottom: 20px;*/
   position: relative;
 
-  * {
+  .product {
+    padding-top: 6px;
     &:focus,
     &:active {
       outline: 0;
     }
-  }
-  .product {
-    padding-top: 6px;
   }
   .padding-left-10 {
     padding-left: 4px;

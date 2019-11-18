@@ -6,14 +6,12 @@ export default css`
   /*margin-bottom: 20px;*/
   position: relative;
 
-  * {
+  .product {
+    padding-top: 6px;
     &:focus,
     &:active {
       outline: 0;
     }
-  }
-  .product {
-    padding-top: 6px;
   }
   .padding-left-10 {
     padding-left: 4px;
