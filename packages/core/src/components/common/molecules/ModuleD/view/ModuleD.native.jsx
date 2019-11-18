@@ -32,11 +32,12 @@ const renderItem = (item, navigation, ignoreLazyLoadImage) => {
   } = item;
 
   const anchorEnable = true;
-  const videoData = {
-    videoWidth: imageSize,
-    videoHeight: imageSize,
-    ...video,
-  };
+  const videoData = video &&
+    video.url && {
+      videoWidth: imageSize,
+      videoHeight: imageSize,
+      ...video,
+    };
   return (
     <Tile tileIndex={index} key={index.toString()}>
       <Anchor url={link.url} navigation={navigation}>

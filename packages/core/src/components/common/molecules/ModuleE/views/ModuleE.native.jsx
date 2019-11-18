@@ -111,11 +111,12 @@ class ModuleE extends React.PureComponent {
       item: { image, singleCTAButton, video },
     } = item;
 
-    const videoData = {
-      ...video,
-      videoWidth: MODULE_WIDTH,
-      videoHeight: MODULE_DEFAULT_HEIGHT,
-    };
+    const videoData = video &&
+      video.url && {
+        ...video,
+        videoWidth: MODULE_WIDTH,
+        videoHeight: MODULE_DEFAULT_HEIGHT,
+      };
 
     return (
       <View>
@@ -273,11 +274,12 @@ class ModuleE extends React.PureComponent {
       <ImageContainer>
         {divCTALinks.map(({ image, link, styled, video }, index) => {
           const divCtaLinkHeaderText = [{ textItems: [{ ...styled }], link }];
-          const videoData = {
-            videoWidth: buttonWidth,
-            videoHeight: 202,
-            ...video,
-          };
+          const videoData = video &&
+            video.url && {
+              videoWidth: buttonWidth,
+              videoHeight: 202,
+              ...video,
+            };
           return (
             <ImageWrapper tileIndex={index}>
               <StyledAnchor

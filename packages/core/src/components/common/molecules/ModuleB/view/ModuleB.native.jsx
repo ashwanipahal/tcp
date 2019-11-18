@@ -100,11 +100,12 @@ const renderMediaComponent = (item, navigation) => {
       ? MODULE_HEIGHT_WITH_OVERLAY
       : MODULE_HEIGHT_WITHOUT_OVERLAY;
 
-  const videoData = {
-    videoWidth: MODULE_WIDTH,
-    videoHeight: moduleHeight,
-    ...video,
-  };
+  const videoData = video &&
+    video.url && {
+      videoWidth: MODULE_WIDTH,
+      videoHeight: moduleHeight,
+      ...video,
+    };
 
   return (
     <MainContainerView>

@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { Image } from 'react-native';
 import { LazyloadImage } from 'react-native-lazyload-deux';
@@ -50,7 +49,7 @@ const createURI = properties => {
   };
 };
 
-const DamImage = (props: Props) => {
+const DamImage = props => {
   const {
     url,
     crop,
