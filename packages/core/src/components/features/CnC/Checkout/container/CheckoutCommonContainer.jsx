@@ -27,7 +27,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
-      initCheckout(router, getPayPalFlag(navigation));
+      initCheckout(router, getPayPalFlag(navigation), navigation);
     }
     callNeedHelpContent(this.props);
     if (checkoutServerError) {
@@ -44,7 +44,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isRegisteredUserCallDone &&
       !isRTPSFlow
     ) {
-      initCheckout(router, getPayPalFlag(navigation));
+      initCheckout(router, getPayPalFlag(navigation), navigation);
     }
   }
 

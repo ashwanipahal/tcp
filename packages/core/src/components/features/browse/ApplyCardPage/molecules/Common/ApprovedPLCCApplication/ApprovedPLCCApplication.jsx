@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, RichText, Button, Col, Row } from '../../../../../../common/atoms';
 import ApprovedPLCCApplicationViewStyled from './style/ApprovedPLCCApplication.style';
 import { getLabelValue, scrollPage } from '../../../../../../../utils';
-import { redirectToBag, redirectToHome, getModalSizeForApprovedPLCC } from '../../../utils/utility';
+import {
+  redirectToBag,
+  redirectToHome,
+  getModalSizeForApprovedPLCC,
+  getFooterButtonSize,
+} from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 import Espot from '../../../../../../common/molecules/Espot';
 
@@ -116,7 +121,7 @@ const totalSavingsFooterContainer = (
   bagItems,
   resetPLCCResponse,
   isRtpsFlow,
-  togglePLCCModal
+  residualProps = {}
 ) => {
   return (
     <React.Fragment>
@@ -136,7 +141,11 @@ const totalSavingsFooterContainer = (
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 3, medium: 4, small: 12 }}
+            colSize={{
+              large: getFooterButtonSize(residualProps.isPLCCModalFlow),
+              medium: 4,
+              small: 12,
+            }}
             className="existing_checkout_button"
           >
             <Button
@@ -146,7 +155,7 @@ const totalSavingsFooterContainer = (
               className="existing_checkout_button"
               onClick={() =>
                 isRtpsFlow
-                  ? togglePLCCModal({ isPLCCModalOpen: false, status: null })
+                  ? residualProps.togglePLCCModal({ isPLCCModalOpen: false, status: null })
                   : redirectToBag(resetPLCCResponse)
               }
             >
@@ -164,7 +173,11 @@ const totalSavingsFooterContainer = (
                 : 'existing_checkout_button'
             }`}
             ignoreGutter={{ small: true }}
-            colSize={{ large: 3, medium: 4, small: 12 }}
+            colSize={{
+              large: getFooterButtonSize(residualProps.isPLCCModalFlow),
+              medium: 4,
+              small: 12,
+            }}
           >
             <Anchor
               url={redirectToHome()}
@@ -290,7 +303,10 @@ const ApprovedPLCCApplicationView = ({
         bagItems,
         resetPLCCResponse,
         isRtpsFlow,
-        togglePLCCModal
+        {
+          togglePLCCModal,
+          isPLCCModalFlow,
+        }
       )}
       <Row fullBleed className="centered">
         <Col

@@ -123,8 +123,9 @@ const createPromoBanner = (textBanner, l1Index, hideL2Nav) => {
   const textContainerClassName = isSplitView ? 'l2-half-promo-box' : '';
   const promoHalfClass = isSplitView ? 'promo-banner-half' : '';
   const arrowContainerClassName = isSplitView ? 'l2-nav-split-nav-link promo-box-link' : '';
+  const showBanner = false;
   return (
-    textBanner && (
+    showBanner && (
       <Col
         className="l2-promo-box-wrapper"
         colSize={{
