@@ -56,4 +56,16 @@ export default css`
       margin-top: 0;
     }
   }
+  .no-favorite-container {
+    margin-top: 32px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 40px;
+    }
+  }
+  .no-favorite-container .no-favorite-text {
+    margin-top: 12px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: 24px;
+    }
+  }
 `;

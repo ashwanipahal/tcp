@@ -12,6 +12,7 @@ import {
 } from '../styles/ Favorites.style.native';
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
+import NoFavoritesFound from '../molecules/NoFavoritesFound/NoFavoritesFound.native';
 
 class FavoritesView extends React.PureComponent {
   brandOptions;
@@ -124,6 +125,8 @@ class FavoritesView extends React.PureComponent {
       }
     }
 
+    // filteredItemsList = []; DELETE this LINE
+
     return (
       <PageContainer>
         <BodyCopy
@@ -160,27 +163,31 @@ class FavoritesView extends React.PureComponent {
           underline
           margins="12px 0 0 0"
         />
-        <ProductListing
-          products={filteredItemsList}
-          filters={filtersArray}
-          totalProductsCount={filteredItemsList.length}
-          filtersLength={0}
-          navigation={navigation}
-          onGoToPDPPage={onGoToPDPPage}
-          isFavorite
-          currencySymbol={currencySymbol}
-          labelsFilter={labels}
-          labels={labels}
-          onQuickViewOpenClick={onQuickViewOpenClick}
-          selectedColorProductId={selectedColorProductId}
-          setLastDeletedItemId={setLastDeletedItemId}
-          sortLabels={getSortsList(labels)}
-          onFilterSelection={onFilterSelection}
-          onSortSelection={onSortSelection}
-          filteredId={filteredId}
-          renderBrandFilter={this.renderBrandFilter}
-          labelsPlpTiles={labelsPlpTiles}
-        />
+        {filteredItemsList.length === 0 ? (
+          <NoFavoritesFound labels={labels} />
+        ) : (
+          <ProductListing
+            products={filteredItemsList}
+            filters={filtersArray}
+            totalProductsCount={filteredItemsList.length}
+            filtersLength={0}
+            navigation={navigation}
+            onGoToPDPPage={onGoToPDPPage}
+            isFavorite
+            currencySymbol={currencySymbol}
+            labelsFilter={labels}
+            labels={labels}
+            onQuickViewOpenClick={onQuickViewOpenClick}
+            selectedColorProductId={selectedColorProductId}
+            setLastDeletedItemId={setLastDeletedItemId}
+            sortLabels={getSortsList(labels)}
+            onFilterSelection={onFilterSelection}
+            onSortSelection={onSortSelection}
+            filteredId={filteredId}
+            renderBrandFilter={this.renderBrandFilter}
+            labelsPlpTiles={labelsPlpTiles}
+          />
+        )}
       </PageContainer>
     );
   }

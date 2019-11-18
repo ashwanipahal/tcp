@@ -1,5 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
@@ -7,6 +9,7 @@ import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
+import NoFavoritesFound from '../molecules/NoFavoritesFound/NoFavoritesFound';
 
 const FavoritesView = props => {
   const {
@@ -68,6 +71,9 @@ const FavoritesView = props => {
     }
   }
 
+  // DELETE this LINE
+  filteredItemsList = [];
+
   const productsList = !!filteredItemsList && (
     <>
       <ProductsGrid
@@ -99,6 +105,13 @@ const FavoritesView = props => {
       checked: tcpSelected,
     },
   ];
+
+  const recommendationAttributes = {
+    variations: 'moduleO',
+    page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
+    showLoyaltyPromotionMessage: false,
+    headerAlignment: 'left',
+  };
 
   return (
     <div className={className}>
@@ -176,7 +189,7 @@ const FavoritesView = props => {
           className="product-list"
           ignoreGutter={{ small: true, medium: true, large: true }}
         >
-          {productsList}
+          {filteredItemsList.length === 0 ? <NoFavoritesFound labels={labels} /> : productsList}
         </Col>
         <Col
           hideCol={{ small: true, medium: true }}
@@ -184,7 +197,9 @@ const FavoritesView = props => {
           className="recommendation"
         >
           {/* Placeholder for you may also like */}
-          <div>You may also like</div>
+          <div>
+            <Recommendations {...recommendationAttributes} />
+          </div>
         </Col>
       </Row>
     </div>
