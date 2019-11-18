@@ -21,7 +21,6 @@ const LoyaltyPromoBanner = props => {
     className,
     richTextList: [{ richText, link }],
     dataLocator,
-    loyalityAnalyticsValue,
   } = props;
   const cookieName = `mprAboveHead_${getUUID('WC_USERACTIVITY_')}`;
   const [bannerClosed, setBannerClosed] = useState(true);
@@ -61,7 +60,7 @@ const LoyaltyPromoBanner = props => {
             dataLocator={dataLocator || `loyalty-promo-banner`}
             clickData={{
               customEvents: ['event80', 'event81'],
-              internalCampaignId: loyalityAnalyticsValue || '',
+              internalCampaignId: 'lp_s1_banner_na_050519_doubleup',
             }}
           >
             <RichText richTextHtml={richText.text} />
@@ -89,7 +88,6 @@ LoyaltyPromoBanner.propTypes = {
   className: PropTypes.string.isRequired,
   richTextList: PropTypes.arrayOf(PropTypes.object),
   dataLocator: PropTypes.string,
-  loyalityAnalyticsValue: PropTypes.string,
 };
 
 LoyaltyPromoBanner.defaultProps = {
@@ -100,7 +98,6 @@ LoyaltyPromoBanner.defaultProps = {
     },
   ],
   dataLocator: '',
-  loyalityAnalyticsValue: '',
 };
 
 export default withStyles(LoyaltyPromoBanner, style);

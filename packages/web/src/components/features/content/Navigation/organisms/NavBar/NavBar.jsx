@@ -43,10 +43,11 @@ const NavBar = props => {
                 });
               }
             }
+            const topNavigationAnalyticsData = `topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`;
             return (
               <L1NavItem
                 dataLocator={`l1menu_link_${index}`}
-                clickData={`topmenu- ${navL1Item.categoryContent.name.toLowerCase()}`}
+                clickData={topNavigationAnalyticsData}
                 index={index}
                 key={`l1menu_link_${stringId}`}
                 sizesRange={sizesRange}
@@ -91,6 +92,7 @@ const NavBar = props => {
                     l3Drawer={l3Drawer}
                     accessibilityLabels={accessibilityLabels}
                     closeNav={closeNav}
+                    analyticsData={topNavigationAnalyticsData}
                   />
                 </Drawer>
               </L1NavItem>

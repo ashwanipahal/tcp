@@ -6771,6 +6771,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- girl"
           categoryLayout={
             Array [
               Object {
@@ -14394,6 +14395,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- toddler girl"
           categoryLayout={
             Array [
               Object {
@@ -21971,6 +21973,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- boy"
           categoryLayout={
             Array [
               Object {
@@ -29564,6 +29567,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- toddler boy"
           categoryLayout={
             Array [
               Object {
@@ -36771,6 +36775,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- baby"
           categoryLayout={
             Array [
               Object {
@@ -43384,6 +43389,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- shoes"
           categoryLayout={
             Array [
               Object {
@@ -49840,6 +49846,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- accessories"
           categoryLayout={
             Array [
               Object {
@@ -56007,6 +56014,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- clearance"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={7}
@@ -61779,6 +61787,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- tiny collections"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={8}
@@ -67625,6 +67634,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- mini me shop"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={9}
@@ -73452,6 +73462,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- americana shop"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={10}
@@ -79341,6 +79352,7 @@ exports[`NavBar component renders correctly 1`] = `
         }
       >
         <Styled(L2Panel)
+          analyticsData="topmenu- unicorns dinos and more!"
           categoryLayout={null}
           className="nav-bar-l2"
           l1Index={11}

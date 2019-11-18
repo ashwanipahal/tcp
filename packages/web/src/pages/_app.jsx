@@ -75,7 +75,13 @@ const updatePayload = (req, payload, Component) => {
       }
     }
     if (req && req.headers) {
-      updatedPayload = { ...updatedPayload, pageReferer: req.headers.referer };
+      updatedPayload = {
+        ...updatedPayload,
+        pageData: {
+          ...updatedPayload.pageData,
+          pageReferer: req.headers.referer,
+        },
+      };
     }
   }
 
@@ -250,7 +256,6 @@ class TCPWebApp extends App {
       // This check ensures this block is executed once since Component is not available in first call
       // This will be called when we need to include the layout call in bootstrap.
       payload = updatePayload(req, payload, Component);
-      console.log('0=============', payload);
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {
