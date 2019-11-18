@@ -319,7 +319,7 @@ const renderPricePercentageDiscountLabel = value => {
   if (value) {
     return (
       <BodyCopy
-        margin="8px 0 0 0"
+        margin="0 0 0 8px"
         dataLocator="plp_filter_size_range"
         mobileFontFamily="secondary"
         fontSize="fs10"
@@ -344,7 +344,7 @@ const renderListPrice = (productInfo, currencySymbol, currencyExchange, badge3) 
     currencyExchange,
     null
   );
-  if (lowListPrice && lowOfferPrice && lowListPrice > lowOfferPrice) {
+  if (lowListPrice > lowOfferPrice || highListPrice > lowListPrice) {
     return (
       <OfferPriceAndBadge3Container>
         {renderListPriceLabels(listPriceValue)}
