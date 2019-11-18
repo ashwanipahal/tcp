@@ -126,6 +126,8 @@ const ProductListView = ({
               currencyExchange={currencyExchange}
               isLoadingMore={isLoadingMore}
               isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
               {...otherProps}
             />
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
