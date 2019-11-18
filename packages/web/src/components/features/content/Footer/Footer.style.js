@@ -77,11 +77,20 @@ export default css`
   }
 
   .footer_top__signup_form {
+    margin-bottom: 24px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-bottom: 16px;
+    }
+
     label {
       margin-bottom: 10px;
     }
     .footer_top__signup_form_row{
       align-items: normal;
+    }
+
+    .CheckBox__text {
+      margin-top: 6px;
     }
   }
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import ApplicationInProgressWrapper from './style/ApplicationInProgress.style';
 import { getLabelValue } from '../../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../../utils/utility';
+import { redirectToBag, redirectToHome, getFooterButtonSize } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 /**
@@ -39,7 +39,7 @@ const ApplicationInProgress = ({
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 4, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="underprogress_checkout_button"
           >
             <Button
@@ -63,7 +63,7 @@ const ApplicationInProgress = ({
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 4, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="underprogress_continue_button"
           >
             <Anchor
