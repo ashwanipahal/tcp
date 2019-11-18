@@ -41,6 +41,8 @@ class ProductsGrid extends React.Component {
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
     isSearchListing: PropTypes.bool,
+    plpGridPromos: PropTypes.shape({}),
+    plpHorizontalPromos: PropTypes.shape({}),
     // showQuickViewForProductId: PropTypes.string,
   };
 
@@ -57,6 +59,8 @@ class ProductsGrid extends React.Component {
     currencyExchange: 1,
     isLoggedIn: false,
     isSearchListing: false,
+    plpGridPromos: {},
+    plpHorizontalPromos: {},
   };
 
   constructor(props, context) {
@@ -156,6 +160,8 @@ class ProductsGrid extends React.Component {
       onAddItemToFavorites,
       isLoggedIn,
       isSearchListing,
+      plpGridPromos,
+      plpHorizontalPromos,
       // showQuickViewForProductId,
       ...otherProps
     } = this.props;
@@ -193,6 +199,8 @@ class ProductsGrid extends React.Component {
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
                         isSearchListing={isSearchListing}
+                        plpGridPromos={plpGridPromos}
+                        plpHorizontalPromos={plpHorizontalPromos}
                         {...otherProps}
                       />
                     );

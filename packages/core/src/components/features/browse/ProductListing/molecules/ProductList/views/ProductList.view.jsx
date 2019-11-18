@@ -52,8 +52,14 @@ const ProductList = props => {
     removeFavItem,
     createNewWishListMoveItem,
     isSearchListing,
+    plpGridPromos,
+    plpHorizontalPromos,
   } = props;
   let gridIndex = 0;
+
+  console.log('productsBlock', productsBlock);
+  console.log('plpGridPromos', plpGridPromos);
+  console.log('plpHorizontalPromos', plpHorizontalPromos);
 
   return (
     <Fragment>
@@ -161,6 +167,8 @@ ProductList.propTypes = {
   removeFavItem: PropTypes.func,
   createNewWishListMoveItem: PropTypes.func,
   isSearchListing: PropTypes.bool,
+  plpGridPromos: PropTypes.shape({}),
+  plpHorizontalPromos: PropTypes.shape({}),
 };
 
 ProductList.defaultProps = {
@@ -191,6 +199,8 @@ ProductList.defaultProps = {
   removeFavItem: null,
   createNewWishListMoveItem: null,
   isSearchListing: false,
+  plpGridPromos: {},
+  plpHorizontalPromos: {},
 };
 
 export default withStyles(ProductList, ProductListStyle);

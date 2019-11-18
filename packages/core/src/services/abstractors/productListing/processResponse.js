@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable sonarjs/cognitive-complexity */
 import logger from '@tcp/core/src/utils/loggerInstance';
 import processHelpers from './processHelpers';
@@ -298,7 +299,213 @@ const processResponse = (
   try {
     if (res.body.banner) {
       bannerInfo = JSON.parse(res.body.banner.banners[0].bannerHtml);
+      bannerInfo = {
+        cid: '06961395-c28d-4647-bd4e-9aab0e385568',
+        typ: 'promoCombination',
+        sub: 'plp',
+        val: {
+          top: [
+            {
+              typ: 'slot',
+              sub: 'slot_1',
+              val: {
+                cid: '38796a2d-58c3-4299-a4a1-989061a9b783',
+                typ: 'module',
+                sub: 'moduleA',
+                val: '',
+              },
+            },
+            {
+              typ: 'slot',
+              sub: 'slot_2',
+              val: {
+                cid: '08142819-d8a4-466d-87b1-f132aa18311f',
+                typ: 'module',
+                sub: 'moduleQ',
+                val: '',
+              },
+            },
+            {
+              typ: 'slot',
+              sub: 'slot_3',
+              val: {
+                cid: 'de2bd00b-82a7-469b-bfeb-7036f6225668',
+                typ: 'module',
+                sub: 'outfitCarousel',
+                val: '',
+              },
+            },
+          ],
+          grid: [
+            {
+              typ: 'slot',
+              sub: 'slot_8',
+              val: {
+                cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+                typ: 'module',
+                sub: 'promotion',
+                val: '',
+              },
+            },
+            {
+              typ: 'slot',
+              sub: 'slot_16',
+              val: {
+                cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+                typ: 'module',
+                sub: 'promotion',
+                val: '',
+              },
+            },
+            {
+              typ: 'slot',
+              sub: 'slot_24',
+              val: {
+                cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+                typ: 'module',
+                sub: 'promotion',
+                val: '',
+              },
+            },
+            {
+              typ: 'slot',
+              sub: 'slot_40',
+              val: {
+                cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+                typ: 'module',
+                sub: 'promotion',
+                val: '',
+              },
+            },
+          ],
+          horizontal: [
+            {
+              typ: 'slot',
+              sub: 'slot_6',
+              val: {
+                cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+                typ: 'module',
+                sub: 'promotion',
+                val: '',
+              },
+            },
+            {
+              typ: 'slot',
+              sub: 'slot_18',
+              val: {
+                cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+                typ: 'module',
+                sub: 'promotion',
+                val: '',
+              },
+            },
+          ],
+        },
+      };
     }
+    bannerInfo = {
+      cid: '06961395-c28d-4647-bd4e-9aab0e385568',
+      typ: 'promoCombination',
+      sub: 'plp',
+      val: {
+        top: [
+          {
+            typ: 'slot',
+            sub: 'slot_1',
+            val: {
+              cid: '38796a2d-58c3-4299-a4a1-989061a9b783',
+              typ: 'module',
+              sub: 'moduleA',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_2',
+            val: {
+              cid: '08142819-d8a4-466d-87b1-f132aa18311f',
+              typ: 'module',
+              sub: 'moduleQ',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_3',
+            val: {
+              cid: 'de2bd00b-82a7-469b-bfeb-7036f6225668',
+              typ: 'module',
+              sub: 'outfitCarousel',
+              val: '',
+            },
+          },
+        ],
+        grid: [
+          {
+            typ: 'slot',
+            sub: 'slot_8',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_16',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_24',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_40',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+        ],
+        horizontal: [
+          {
+            typ: 'slot',
+            sub: 'slot_6',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+          {
+            typ: 'slot',
+            sub: 'slot_18',
+            val: {
+              cid: '922412ce-e35b-4a7e-a6e2-c87822364448',
+              typ: 'module',
+              sub: 'promotion',
+              val: '',
+            },
+          },
+        ],
+      },
+    };
   } catch (error) {
     logger.error(error);
   }

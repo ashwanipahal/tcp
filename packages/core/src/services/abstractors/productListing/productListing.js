@@ -153,6 +153,7 @@ class ProductsDynamicAbstractor {
    */
   // eslint-disable-next-line no-unused-vars
   parsedModuleData = async promoCombination => {
+    console.log('promoCombination', promoCombination);
     const moduleObjects = [];
     const slotsObject = {};
     let modules = {};

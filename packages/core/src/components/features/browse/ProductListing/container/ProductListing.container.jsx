@@ -29,6 +29,8 @@ import {
   getLabels,
   getIsFilterBy,
   getPLPTopPromos,
+  getPLPGridPromos,
+  getPlpHorizontalPromo,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -178,6 +180,8 @@ class ProductListingContainer extends React.PureComponent {
       currencyAttributes,
       currency,
       plpTopPromos,
+      plpGridPromos,
+      plpHorizontalPromos,
       router: { asPath: asPathVal },
       isSearchListing,
       ...otherProps
@@ -213,6 +217,8 @@ class ProductListingContainer extends React.PureComponent {
         currency={currency}
         currencyExchange={currencyAttributes.exchangevalue}
         plpTopPromos={plpTopPromos}
+        plpGridPromos={plpGridPromos}
+        plpHorizontalPromos={plpHorizontalPromos}
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}
         {...otherProps}
@@ -285,6 +291,8 @@ function mapStateToProps(state) {
     currency: getCurrentCurrency(state),
     routerParam: state.routerParam,
     plpTopPromos: getPLPTopPromos(state),
+    plpGridPromos: getPLPGridPromos(state),
+    plpHorizontalPromos: getPlpHorizontalPromo(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
   };
 }
@@ -348,6 +356,8 @@ ProductListingContainer.propTypes = {
   closeQuickViewModalAction: PropTypes.func,
   navigationData: PropTypes.shape({}),
   isSearchListing: PropTypes.bool,
+  plpGridPromos: PropTypes.shape({}),
+  plpHorizontalPromos: PropTypes.shape({}),
 };
 
 ProductListingContainer.defaultProps = {
@@ -376,6 +386,8 @@ ProductListingContainer.defaultProps = {
   closeQuickViewModalAction: () => {},
   navigationData: null,
   isSearchListing: false,
+  plpGridPromos: {},
+  plpHorizontalPromos: {},
 };
 
 export default withIsomorphicRenderer({

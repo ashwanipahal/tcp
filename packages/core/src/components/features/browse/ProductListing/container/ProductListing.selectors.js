@@ -275,3 +275,27 @@ export const getPLPTopPromos = state => {
     []
   );
 };
+
+export const getPLPGridPromos = state => {
+  const { bannerInfo: { val: { grid: gridPromo } = {} } = {} } = state.ProductListing;
+  console.log('gridPromo', gridPromo);
+  return (
+    (gridPromo &&
+      gridPromo.map(promoItem => {
+        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+      })) ||
+    []
+  );
+};
+
+export const getPlpHorizontalPromo = state => {
+  const { bannerInfo: { val: { horizontal: horizontalPromo } = {} } = {} } = state.ProductListing;
+  console.log('horizontalPromo', horizontalPromo);
+  return (
+    (horizontalPromo &&
+      horizontalPromo.map(promoItem => {
+        return promoItem.val && promoItem.val.cid && state.Modules[promoItem.val.cid];
+      })) ||
+    []
+  );
+};

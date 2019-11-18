@@ -24,6 +24,7 @@ const PromoModules = ({ plpTopPromos, navigation }) => {
   return (
     plpTopPromos &&
     plpTopPromos.map(promo => {
+      console.log('promo', promo);
       const { contentId, moduleName, data: slotData, ...others } = promo;
       const Module = modules[moduleName];
       return (
