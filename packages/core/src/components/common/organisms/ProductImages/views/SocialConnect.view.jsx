@@ -49,58 +49,58 @@ class SocialConnect extends React.PureComponent {
     return (
       <span className={`${className} social-connect-sub-wrapper`}>
         {isTwitterEnabled && (
-          <ClickTracker
-            as={Anchor}
-            clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}
-            url="http://instagram.com/childrensplace"
-            target="_blank"
-            onClick={this.handleTwitterShare}
-            className="icon-twitter"
-            title="Twitter"
-          >
-            <Image
-              alt="twitter"
-              className="twitter"
-              src={getIconPath('twitter-icon')}
-              data-locator="twitter-icon"
-            />
+          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}>
+            <Anchor
+              url="http://instagram.com/childrensplace"
+              target="_blank"
+              onClick={this.handleTwitterShare}
+              className="icon-twitter"
+              title="Twitter"
+            >
+              <Image
+                alt="twitter"
+                className="twitter"
+                src={getIconPath('twitter-icon')}
+                data-locator="twitter-icon"
+              />
+            </Anchor>
           </ClickTracker>
         )}
 
         {isFacebookEnabled && (
-          <ClickTracker
-            as={Anchor}
-            clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}
-            url="https://www.facebook.com/childrensplace"
-            target="_blank"
-            onClick={this.handleFacebookShare}
-            className="icon-facebook"
-            title="Facebook"
-          >
-            <Image
-              alt="Facebook"
-              className="facebook"
-              src={getIconPath('facebook-icon')}
-              data-locator="facebook-icon"
-            />
+          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'facebook' }}>
+            <Anchor
+              url="https://www.facebook.com/childrensplace"
+              target="_blank"
+              onClick={this.handleFacebookShare}
+              className="icon-facebook"
+              title="Facebook"
+            >
+              <Image
+                alt="Facebook"
+                className="facebook"
+                src={getIconPath('facebook-icon')}
+                data-locator="facebook-icon"
+              />
+            </Anchor>
           </ClickTracker>
         )}
         {isPinterestEnabled && (
-          <ClickTracker
-            as={Anchor}
-            clickData={{ customEvents: ['event84'], socialNetwork: 'twitter' }}
-            url="http://www.pinterest.com/childrensplace"
-            target="_blank"
-            onClick={this.handlePinterestShare}
-            className="icon-pinterest"
-            title="Pinterest"
-          >
-            <Image
-              alt="pinterest"
-              className="pinterest"
-              src={getIconPath('pinterest-icon')}
-              data-locator="pinterest-icon"
-            />
+          <ClickTracker clickData={{ customEvents: ['event84'], socialNetwork: 'pinterest' }}>
+            <Anchor
+              url="http://www.pinterest.com/childrensplace"
+              target="_blank"
+              onClick={this.handlePinterestShare}
+              className="icon-pinterest"
+              title="Pinterest"
+            >
+              <Image
+                alt="pinterest"
+                className="pinterest"
+                src={getIconPath('pinterest-icon')}
+                data-locator="pinterest-icon"
+              />
+            </Anchor>
           </ClickTracker>
         )}
       </span>
