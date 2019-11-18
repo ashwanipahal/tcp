@@ -13,8 +13,8 @@ import {
 import { getAccountOverviewLabels, getWalletFooterLinks } from './Wallet.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp } from '../../../../../utils/utils';
+import constants from '../Wallet.constants';
 
-const WALLET_FOOTER_LINKS = 'wallet-footer-links';
 export class WalletContainer extends React.Component {
   /**
    * @function componentDidMount function is used to
@@ -24,7 +24,7 @@ export class WalletContainer extends React.Component {
     const { fetchLabels, fetchFooterLinks } = this.props;
     if (isMobileApp()) {
       fetchLabels({ category: LABELS.account });
-      fetchFooterLinks([WALLET_FOOTER_LINKS]);
+      fetchFooterLinks([constants.WALLET_FOOTER_LINKS]);
     }
   }
 

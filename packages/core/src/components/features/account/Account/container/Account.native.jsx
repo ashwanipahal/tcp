@@ -9,14 +9,12 @@ import {
   StyledKeyboardAvoidingView,
   StyledScrollView,
 } from '../styles/MyAccountContainer.style.native';
+import constants from '../Account.constants';
 import { getLabels, getAccountNavigationState } from './Account.selectors';
 import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.app';
 
 import { getAccountNavigationList } from './Account.actions';
-
-const FOOTER_LINKS = 'account-footer-links';
-const LEGAL_LINKS = 'account-legal-links';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -95,7 +93,7 @@ export class Account extends React.PureComponent {
   componentDidMount() {
     const { getAccountNavigationAction, fetchLabels, fetchFooterLinks } = this.props;
     getAccountNavigationAction();
-    fetchFooterLinks([FOOTER_LINKS, LEGAL_LINKS]);
+    fetchFooterLinks([constants.FOOTER_LINKS, constants.LEGAL_LINKS]);
     fetchLabels({ category: LABELS.account });
   }
 
