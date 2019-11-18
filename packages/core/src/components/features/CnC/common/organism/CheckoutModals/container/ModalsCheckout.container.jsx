@@ -64,11 +64,13 @@ export class AddedToBagContainer extends React.Component<Props> {
       setClickAnalyticsDataCheckout,
       cartOrderItems,
       handleCartCheckout,
+      setBagPageIsRouting,
     } = this.props;
     return (
       <ModalsCheckoutView
         handleContinueShopping={this.handleContinueShopping}
         routeForBagCheckout={routeForBagCheckout}
+        setBagPageIsRouting={setBagPageIsRouting}
         inheritedStyles={inheritedStyles}
         closeCheckoutModalMountState={closeCheckoutModalMountState}
         checkoutModalMountedState={checkoutModalMountedState}
@@ -102,6 +104,7 @@ export class AddedToBagContainer extends React.Component<Props> {
 AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  setBagPageIsRouting: PropTypes.func.isRequired,
   routeForBagCheckout: PropTypes.func.isRequired,
   removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
@@ -146,6 +149,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     handleCartCheckout: payload => {
       dispatch(bagPageActions.startCheckout(payload));
+    },
+    setBagPageIsRouting: () => {
+      dispatch(bagPageActions.setBagPageIsRouting(true));
     },
   };
 };

@@ -67,17 +67,22 @@ class ProductsGridItem extends React.PureComponent {
     this.handleImageChange = index => this.setState({ currentImageIndex: index });
   }
 
-  componentDidMount() {
-    const { isLoggedIn, onAddItemToFavorites, isSearchListing } = this.props;
-    const { generalProductId } = this.state;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing, getProducts, asPathVal } = nextProps;
+    const { generalProductId } = prevState;
+
     if (isLoggedIn && generalProductId !== '') {
+      getProducts({ URI: 'category', url: asPathVal, ignoreCache: true });
       onAddItemToFavorites({
         colorProductId: generalProductId,
         page: isSearchListing ? 'SLP' : 'PLP',
       });
-      this.setState({ generalProductId: '' });
+      return { generalProductId: '' };
     }
+    return null;
+  }
 
+  componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
   }
 
@@ -424,6 +429,7 @@ class ProductsGridItem extends React.PureComponent {
         quantityPurchased,
         colorsMap,
         imagesByColor,
+        miscInfo: { isInDefaultWishlist },
       },
       // isGridView,
       // isProductsGridCTAView,
@@ -445,6 +451,7 @@ class ProductsGridItem extends React.PureComponent {
       viaModule,
       forwardedRef,
     } = this.props;
+
     logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
@@ -453,7 +460,6 @@ class ProductsGridItem extends React.PureComponent {
       // error,
       currentImageIndex,
       pdpUrl,
-      isInDefaultWishlist,
     } = this.state;
 
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
