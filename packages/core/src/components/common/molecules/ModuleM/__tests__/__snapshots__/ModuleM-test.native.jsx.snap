@@ -104,7 +104,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
   </Styled(View)>
   <Styled(View)>
     <ButtonTabs
-      isDivisionTabModule={false}
+      wrappedButtonTabs={false}
       onTabChange={[Function]}
       selectedTabId="tablList-0"
       tabs={

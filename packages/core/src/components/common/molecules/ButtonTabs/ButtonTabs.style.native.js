@@ -6,7 +6,7 @@ export const Wrapper = styled.View`
   display: flex;
   flex-direction: row;
   ${props =>
-    props.isDivisionTabModule
+    props.wrappedButtonTabs
       ? `  flex-wrap: wrap;
   justify-content: center;
   align-items: center;`
