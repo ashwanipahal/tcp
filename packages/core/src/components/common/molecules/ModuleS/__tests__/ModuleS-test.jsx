@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ModuleS from '../view/ModuleS';
-import mockV1 from '../../../../../services/abstractors/common/moduleS/mock';
+import { mockV1 } from '../../../../../services/abstractors/common/moduleS/mock';
 
 describe('ModuleS Componenet', () => {
   let wrapper;

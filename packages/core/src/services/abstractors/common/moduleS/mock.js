@@ -1,4 +1,4 @@
-const mockV1 = {
+export const mockV1 = {
   moduleS: {
     contentId: 'e499bac3-6770-4757-b924-55c837712dfcs',
     name: 'moduleS',
@@ -68,7 +68,7 @@ const mockV1 = {
   },
 };
 
-const mockV2 = {
+export const mockV2 = {
   moduleS: {
     contentId: 'e499bac3-6770-4757-b924-55c837712dfcs',
     name: 'moduleS',
@@ -153,7 +153,7 @@ const mockV2 = {
   },
 };
 
-const mockV3 = {
+export const mockV3 = {
   moduleS: {
     contentId: 'e499bac3-6770-4757-b924-55c837712dfc',
     name: 'moduleS',
@@ -226,7 +226,7 @@ const mockV3 = {
     ],
   },
 };
-const mockV4 = {
+export const mockV4 = {
   moduleS: {
     contentId: 'e499bac3-6770-4757-b924-55c837712dfc',
     name: 'moduleS',

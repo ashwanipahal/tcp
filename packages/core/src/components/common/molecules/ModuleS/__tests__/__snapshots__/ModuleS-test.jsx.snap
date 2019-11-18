@@ -27,7 +27,7 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
               "target": "",
               "text": "Girlss",
               "title": "Girlss",
-              "url": "/c/girls-clothes",
+              "url": "/c/girls-clothess2",
             },
             "textItems": Array [
               Object {
@@ -51,7 +51,7 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
               "crop_m": "c_crop,g_face:center,q_auto:best,w_305",
               "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
               "title": "Pool",
-              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pc7srk.png",
+              "url": "https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png",
               "url_m": "",
               "url_t": "",
             },
@@ -59,7 +59,7 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
               "target": "",
               "text": "Pool",
               "title": "Pool",
-              "url": "/c/boys-clothes",
+              "url": "/c/boys-clothess",
             },
           },
         ]
@@ -71,7 +71,7 @@ exports[`ModuleS Componenet should match snapshot 1`] = `
           "target": "",
           "text": "SHOP OPENINGG DAY",
           "title": "SHOP OPENINNG DAY",
-          "url": "/c/girls-clothes",
+          "url": "/c/girls-clothess",
         }
       }
     />
