@@ -42,6 +42,7 @@ import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 import {
   addItemToSflList,
   getSflItems,
+  updateSflItem,
 } from '../../../../../services/abstractors/CnC/SaveForLater';
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
@@ -509,6 +510,33 @@ export function* setModifiedSflData(data) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
   }
 }
+export function* setSflItemUpdate(payload) {
+  try {
+    const isRememberedUser = yield select(isRemembered);
+    const isRegistered = yield select(getUserLoggedInState);
+    const currencyCode = yield select(BAG_SELECTORS.getCurrentCurrency);
+    const isCanadaSite = isCanada();
+    const {
+      payload: { oldSkuId, newSkuId, callBack },
+    } = payload;
+    const res = yield call(
+      updateSflItem,
+      oldSkuId,
+      newSkuId,
+      isRememberedUser,
+      isRegistered,
+      imageGenerator,
+      currencyCode,
+      isCanadaSite
+    );
+    if (callBack) {
+      callBack();
+    }
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
 
 export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
@@ -528,6 +556,7 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
   yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT, startPaypalNativeCheckout);
   yield takeLatest(BAGPAGE_CONSTANTS.SET_SFL_DATA, setModifiedSflData);
+  yield takeLatest(BAGPAGE_CONSTANTS.UPDATE_SFL_ITEM, setSflItemUpdate);
 }
 
 export default BagPageSaga;

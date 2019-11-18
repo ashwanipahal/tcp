@@ -19,6 +19,10 @@ export const getFromBagPage = state => {
   return state.QuickView.get('fromBagPage');
 };
 
+export const getIsFromBagProductSfl = state => {
+  return state.QuickView.get('isSflProduct');
+};
+
 export const getGeneralProductId = state => {
   return state.QuickView.getIn(['quickViewProducts', 'generalProductId']);
 };
