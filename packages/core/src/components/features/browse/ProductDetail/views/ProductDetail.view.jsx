@@ -18,7 +18,6 @@ import { routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import ProductPrice from '../molecules/ProductPrice/ProductPrice';
-
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import {
   getImagesToDisplay,
@@ -108,6 +107,7 @@ class ProductDetailView extends React.Component {
           currencyExchange={currencyExchange}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
+          className="hide-on-mobile"
         />
         {isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -199,7 +199,13 @@ class ProductDetailView extends React.Component {
       handleAddToBag,
       addToBagError,
       alternateSizes,
+      currency,
+      currencyExchange,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
     } = this.props;
+
     const { currentProduct } = productDetails;
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
@@ -246,6 +252,17 @@ class ProductDetailView extends React.Component {
             ) : null}
           </Col>
           <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
+            <Product
+              {...otherProps}
+              isGiftCard={isGiftCard}
+              productDetails={productDetails}
+              currencySymbol={currency}
+              selectedColorProductId={selectedColorProductId}
+              currencyExchange={currencyExchange}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              reviewOnTop
+            />
             <ProductImagesWrapper
               productName={productInfo.name}
               isGiftCard={isGiftCard}

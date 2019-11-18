@@ -44,7 +44,7 @@ class FadeInView extends React.Component {
   }
 
   render() {
-    const { maxOpacity, minOpacity } = this.props;
+    const { maxOpacity, minOpacity, ...otherProps } = this.props;
     return (
       <Animated.View
         style={{
@@ -54,7 +54,7 @@ class FadeInView extends React.Component {
           }),
         }}
       >
-        <LineElement />
+        <LineElement {...otherProps} />
       </Animated.View>
     );
   }
