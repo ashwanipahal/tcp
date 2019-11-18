@@ -42,6 +42,7 @@ import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 import {
   addItemToSflList,
   getSflItems,
+  updateSflItem,
 } from '../../../../../services/abstractors/CnC/SaveForLater';
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
@@ -140,6 +141,7 @@ export function* getOrderDetailSaga(payload) {
   const { payload: { after } = {} } = payload;
   try {
     yield put(updateCartManually(true));
+    yield put(BAG_PAGE_ACTIONS.setBagPageLoading());
     const res = yield call(getOrderDetailsData);
     if (yield call(shouldTranslate, true)) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
@@ -319,6 +321,7 @@ export function* startCartCheckout({
   } = {},
 } = {}) {
   try {
+    yield put(setLoaderState(true));
     if (isEditingItem) {
       yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
     } else {
@@ -346,6 +349,7 @@ export function* startCartCheckout({
         yield call(checkoutCart, false, navigation, closeModal, navigationActions);
       }
     }
+    yield put(setLoaderState(false));
   } catch (e) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
@@ -491,6 +495,34 @@ export function* getSflDataSaga() {
   }
 }
 
+export function* setSflItemUpdate(payload) {
+  try {
+    const isRememberedUser = yield select(isRemembered);
+    const isRegistered = yield select(getUserLoggedInState);
+    const currencyCode = yield select(BAG_SELECTORS.getCurrentCurrency);
+    const isCanadaSite = isCanada();
+    const {
+      payload: { oldSkuId, newSkuId, callBack },
+    } = payload;
+    const res = yield call(
+      updateSflItem,
+      oldSkuId,
+      newSkuId,
+      isRememberedUser,
+      isRegistered,
+      imageGenerator,
+      currencyCode,
+      isCanadaSite
+    );
+    if (callBack) {
+      callBack();
+    }
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
+
 export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
@@ -508,6 +540,7 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
   yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT, startPaypalNativeCheckout);
+  yield takeLatest(BAGPAGE_CONSTANTS.UPDATE_SFL_ITEM, setSflItemUpdate);
 }
 
 export default BagPageSaga;

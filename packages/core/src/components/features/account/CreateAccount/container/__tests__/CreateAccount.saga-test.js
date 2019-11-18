@@ -21,6 +21,7 @@ describe('Create Account Saga', () => {
       createAccountGen = createsaga({ payload });
       createAccountGen.next();
       createAccountGen.next();
+      createAccountGen.next();
     });
 
     it('should dispatch getUserInfo action for success response', () => {

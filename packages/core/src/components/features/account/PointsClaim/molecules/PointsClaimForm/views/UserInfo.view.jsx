@@ -11,7 +11,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
   return (
     <BodyCopy className={className}>
       <Row fullBleed className="elem-mb-SM">
-        <Col colSize={{ small: 2, medium: 4, large: 5 }} ignoreGutter={{ small: true }}>
+        <Col colSize={{ small: 2, medium: 3, large: 4 }} ignoreGutter={{ small: true }}>
           <BodyCopy
             dataLocator="profileinfo-rewardsid_lbl"
             fontFamily="secondary"
@@ -22,7 +22,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
             {getLabelValue(labels, 'lbl_points_claim_account_number', 'myPlaceRewards')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ small: 4, medium: 4, large: 3 }} className="profileinfo-rewardsId_value">
+        <Col colSize={{ small: 4, medium: 5, large: 8 }} className="profileinfo-rewardsId_value">
           <BodyCopy
             dataLocator="profileinfo-rewardsid_value"
             fontFamily="secondary"
@@ -34,7 +34,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
         </Col>
       </Row>
       <Row fullBleed className="elem-mb-SM">
-        <Col colSize={{ small: 2, medium: 4, large: 5 }} ignoreGutter={{ small: true }}>
+        <Col colSize={{ small: 2, medium: 3, large: 4 }} ignoreGutter={{ small: true }}>
           <BodyCopy
             dataLocator="profileinfo-firstname_lbl"
             fontFamily="secondary"
@@ -45,7 +45,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
             {getLabelValue(labels, 'lbl_points_claim_firstname', 'myPlaceRewards')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ small: 4, medium: 4, large: 5 }}>
+        <Col colSize={{ small: 4, medium: 5, large: 8 }}>
           <BodyCopy
             dataLocator="profileinfo-firstname_value"
             fontFamily="secondary"
@@ -57,7 +57,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
         </Col>
       </Row>
       <Row fullBleed className="elem-mb-SM">
-        <Col colSize={{ small: 2, medium: 4, large: 5 }} ignoreGutter={{ small: true }}>
+        <Col colSize={{ small: 2, medium: 3, large: 4 }} ignoreGutter={{ small: true }}>
           <BodyCopy
             dataLocator="profileinfo-lastname_lbl"
             fontFamily="secondary"
@@ -68,7 +68,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
             {getLabelValue(labels, 'lbl_points_claim_lastname', 'myPlaceRewards')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ small: 4, medium: 4, large: 5 }}>
+        <Col colSize={{ small: 4, medium: 5, large: 8 }}>
           <BodyCopy
             dataLocator="profileinfo-lastname_value"
             fontFamily="secondary"
@@ -80,7 +80,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
         </Col>
       </Row>
       <Row fullBleed className="elem-mb-XXL">
-        <Col colSize={{ small: 2, medium: 4, large: 5 }} ignoreGutter={{ small: true }}>
+        <Col colSize={{ small: 2, medium: 3, large: 4 }} ignoreGutter={{ small: true }}>
           <BodyCopy
             dataLocator="profileinfo-email_lbl"
             fontFamily="secondary"
@@ -91,7 +91,7 @@ export const UserInfo = ({ className, labels, myPlaceNumber, userInfoData }) => 
             {getLabelValue(labels, 'lbl_points_claim_email', 'myPlaceRewards')}
           </BodyCopy>
         </Col>
-        <Col colSize={{ small: 4, medium: 4, large: 5 }}>
+        <Col colSize={{ small: 4, medium: 5, large: 8 }}>
           <BodyCopy
             dataLocator="profileinfo-email_value"
             fontFamily="secondary"

@@ -1,4 +1,5 @@
 import Spinner from '@tcp/core/src/components/common/atoms/Spinner';
+import { Modal } from 'react-native';
 import React from 'react';
 import PropTypes from 'prop-types';
 import SpinnerWrapper from '../Loader.style.native';
@@ -7,9 +8,11 @@ const Loader = props => {
   const { loaderState } = props;
   if (loaderState) {
     return (
-      <SpinnerWrapper>
-        <Spinner />
-      </SpinnerWrapper>
+      <Modal transparent visible>
+        <SpinnerWrapper>
+          <Spinner />
+        </SpinnerWrapper>
+      </Modal>
     );
   }
   return null;

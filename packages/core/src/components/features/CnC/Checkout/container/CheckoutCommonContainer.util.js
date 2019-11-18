@@ -108,6 +108,7 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
       isPaypalPostBack,
       initialLoad: scopeValue.initialLoad,
       appRouting,
+      navigation,
       ...extraProps,
     });
     scopeValue.initialLoad = false;
@@ -120,8 +121,8 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
 /* istanbul ignore next */
 export const mapDispatchToProps = dispatch => {
   return {
-    initCheckout: (router, isPaypalFlow) => {
-      dispatch(initCheckoutAction(router, isPaypalFlow));
+    initCheckout: (router, isPaypalFlow, navigation) => {
+      dispatch(initCheckoutAction(router, isPaypalFlow, navigation));
     },
     initCheckoutSectionPage: payload => {
       dispatch(CHECKOUT_ACTIONS.initCheckoutSectionPageAction(payload));
