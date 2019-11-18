@@ -104,7 +104,6 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
   </Styled(View)>
   <Styled(View)>
     <ButtonTabs
-      wrappedButtonTabs={false}
       onTabChange={[Function]}
       selectedTabId="tablList-0"
       tabs={
@@ -127,6 +126,7 @@ exports[`ModuleM component ModuleM component renders correctly with props 1`] = 
           },
         ]
       }
+      wrappedButtonTabs={false}
     />
   </Styled(View)>
   <Styled(View)>
