@@ -179,7 +179,7 @@ exports[`Shipping Form should render correctly 1`] = `
             }
           }
           dataLocator="signUp-checkbox-field"
-          name="sendEmailSignup"
+          name="emailSignUp"
         >
           <Styled(BodyCopy)
             className={null}
@@ -335,7 +335,7 @@ exports[`Shipping Form should render correctly 1`] = `
             }
           }
           dataLocator="signUp-checkbox-field"
-          name="sendEmailSignupGYM"
+          name="emailSignUp-gym"
         >
           <Styled(BodyCopy)
             className={null}

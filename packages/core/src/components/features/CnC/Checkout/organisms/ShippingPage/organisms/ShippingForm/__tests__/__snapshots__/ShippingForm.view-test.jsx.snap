@@ -184,7 +184,10 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
         />
       </FormSection>
     </div>
-    <Styled(SmsSignUpCheckBox) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="sendEmailSignup"
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -310,7 +313,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </FormSection>
     </div>
-    <Styled(SmsSignUpCheckBox) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="sendEmailSignup"
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -610,7 +616,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </FormSection>
     </div>
-    <Styled(SmsSignUpCheckBox) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="sendEmailSignup"
+    />
     <Styled(Row)
       fullBleed={true}
     >
@@ -887,7 +896,10 @@ exports[`Shipping Form should render correctly with logged in user having addres
         />
       </FormSection>
     </div>
-    <Styled(SmsSignUpCheckBox) />
+    <Styled(EmailSignUpCheckBox)
+      bottomSeparator={true}
+      fieldName="sendEmailSignup"
+    />
     <Styled(Row)
       fullBleed={true}
     >

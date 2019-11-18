@@ -6,6 +6,7 @@ describe('Shipping Form', () => {
   it('should render correctly', () => {
     const props = {
       labels: {},
+      fieldName: 'emailSignUp',
     };
     const tree = shallow(<EmailSignUpCheckBoxVanilla {...props} />);
     expect(tree).toMatchSnapshot();
