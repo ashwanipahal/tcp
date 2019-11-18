@@ -270,7 +270,7 @@ export const mapStateToProps = state => {
       isFetching: getCardListFetchingState(state),
       bagLoading: BagPageSelector.isBagLoading(state),
     },
-    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
     getPayPalSettings: selectors.getPayPalSettings(state),
     checkoutServerError: selectors.getCheckoutServerError(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
