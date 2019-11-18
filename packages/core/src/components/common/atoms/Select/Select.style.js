@@ -9,6 +9,14 @@ const selectStyles = css`
   display: block;
   height: 70px;
 
+  .title {
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+  }
+
+  .input {
+    font-size: ${props => props.theme.typography.fontSizes.fs16};
+  }
+
   .select__input {
     appearance: none;
     background: url(${downArrowIcon}) no-repeat right 0px bottom
@@ -22,7 +30,6 @@ const selectStyles = css`
     border-radius: 0;
     color: ${props =>
       props.disabled ? props.theme.colorPalette.gray[600] : props.theme.colors.TEXTBOX.COLOR};
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
