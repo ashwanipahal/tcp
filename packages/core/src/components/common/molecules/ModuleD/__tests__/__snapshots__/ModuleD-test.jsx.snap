@@ -146,8 +146,15 @@ exports[`ModuleD component renders correctly 1`] = `
           target=""
           title="Family Tees"
           to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-          withCaret={true}
-        />
+        >
+          <span
+            className="right_chevron_arrow"
+          >
+            <Styled(Image)
+              src="/static/images/smallright.svg"
+            />
+          </span>
+        </Styled(Anchor)>
       </div>
     </Styled(Col)>
     <Styled(Col)
@@ -209,9 +216,15 @@ exports[`ModuleD component renders correctly 1`] = `
           target=""
           title="Mom & Me Tees"
           to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-          withCaret={true}
         >
           Mom & Me Tees
+          <span
+            className="right_chevron_arrow"
+          >
+            <Styled(Image)
+              src="/static/images/smallright.svg"
+            />
+          </span>
         </Styled(Anchor)>
       </div>
     </Styled(Col)>
@@ -270,9 +283,15 @@ exports[`ModuleD component renders correctly 1`] = `
           target=""
           title="Family Tees"
           to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-          withCaret={true}
         >
           Family Tees
+          <span
+            className="right_chevron_arrow"
+          >
+            <Styled(Image)
+              src="/static/images/smallright.svg"
+            />
+          </span>
         </Styled(Anchor)>
       </div>
     </Styled(Col)>
@@ -336,9 +355,15 @@ exports[`ModuleD component renders correctly 1`] = `
           target=""
           title="Mom & Me Tees"
           to="/c?cid=https://www.childrensplace.com/usgirls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
-          withCaret={true}
         >
           Mom & Me Tees
+          <span
+            className="right_chevron_arrow"
+          >
+            <Styled(Image)
+              src="/static/images/smallright.svg"
+            />
+          </span>
         </Styled(Anchor)>
       </div>
     </Styled(Col)>
