@@ -414,11 +414,6 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               }
               data-locator="global_referfriend"
               id="extole_zone_global_footer"
-              pageData={
-                Object {
-                  "pageShortName": "content:referafriend  confirmation",
-                }
-              }
             />
           </Styled(Col)>
         </Styled(Row)>

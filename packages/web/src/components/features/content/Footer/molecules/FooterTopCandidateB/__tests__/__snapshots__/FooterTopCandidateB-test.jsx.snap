@@ -226,11 +226,6 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
           }
           customStyle="shadow-button"
           data-locator="global_referfriend"
-          pageData={
-            Object {
-              "pageShortName": "content:referafriend  confirmation",
-            }
-          }
         >
           <Styled(BodyCopy)
             className="heading_text"
