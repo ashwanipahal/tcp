@@ -1,7 +1,11 @@
 import { css } from 'styled-components';
 
 const style = css`
+  .module-accordion {
+    position: relative;
+  }
   .list-item {
+    cursor: pointer;
     background: ${props => props.theme.colors.BUTTON.WHITE.NORMAL};
     @media ${props => props.theme.mediaQuery.medium} {
       border-bottom: 1px solid ${props => props.theme.colors.BUTTON.WHITE.FOCUS};
