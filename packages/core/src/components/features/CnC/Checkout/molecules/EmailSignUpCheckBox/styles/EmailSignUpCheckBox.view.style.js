@@ -24,12 +24,20 @@ const styles = css`
   }
 
   .email-signup-gym {
-    flex: 3;
+    flex: 1;
+    @media ${props => props.theme.mediaQuery.medium} {
+      flex: 2;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      flex: 3;
+    }
   }
 
   .email-signup-text {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    max-width: 50%;
+    @media ${props => props.theme.mediaQuery.large} {
+      max-width: 50%;
+    }
   }
 `;
 
