@@ -144,16 +144,7 @@ class TCPWebApp extends App {
       logger.info('Error occurred in Raygun initialization', e);
     }
 
-    const isUserLoggedIn = getUserLoggedInState(store.getState());
-    const isLocationEnabledForGuest =
-      store.getState().session.siteDetails.IS_LOCATION_ENABLED_FOR_GUEST === 'TRUE';
-    const isLocationEnabledForLoggedInUser =
-      store.getState().session.siteDetails.IS_LOCATION_ENABLED_FOR_LOGGED_IN_USER === 'TRUE';
-
-    if (
-      (isLocationEnabledForGuest && navigator.geolocation) ||
-      (isLocationEnabledForLoggedInUser && isUserLoggedIn && navigator.geolocation)
-    ) {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition();
     }
   }
