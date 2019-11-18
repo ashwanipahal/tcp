@@ -11,7 +11,7 @@ class ErrorMessage extends React.PureComponent {
     return (
       <>
         {error && (
-          <div className={className}>
+          <div className={className} role="alert">
             <div className="warning-icon" aria-disabled="true" />
             <BodyCopy
               component="span"

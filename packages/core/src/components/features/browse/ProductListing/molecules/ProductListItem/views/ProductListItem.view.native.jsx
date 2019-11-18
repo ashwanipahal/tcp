@@ -107,9 +107,10 @@ const ListItem = props => {
   } = props;
   logger.info(viaModule);
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
-  const { productInfo, colorsMap, itemInfo } = item;
+  const { productInfo, colorsMap, itemInfo, miscInfo } = item;
+  const { isInDefaultWishlist } = miscInfo;
   const { name, bundleProduct } = productInfo;
-  const miscInfo = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
+  const miscInfoData = colorsMap ? colorsMap[selectedColorIndex].miscInfo : productInfo;
   const colorMapData = colorsMap || [item.skuInfo];
 
   renderVariation = renderPriceAndBagOnly || renderPriceOnly;
@@ -141,11 +142,11 @@ const ListItem = props => {
       <RenderPricesSection
         hideFavorite={renderPriceAndBagOnly}
         onFavorite={onFavorite}
-        miscInfo={miscInfo}
+        miscInfo={miscInfoData}
         currencyExchange={currencyExchange}
         currencySymbol={currencySymbol}
         setLastDeletedItemId={setLastDeletedItemId}
-        isFavorite={isFavorite}
+        isFavorite={isInDefaultWishlist}
         itemInfo={isFavorite ? itemInfo : {}}
         productInfo={productInfo}
         item={item}

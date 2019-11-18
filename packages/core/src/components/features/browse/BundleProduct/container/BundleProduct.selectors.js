@@ -165,5 +165,5 @@ export const getOutfitLabels = state => {
 };
 
 export const getAddedToBagErrorCatId = state => {
-  return state.AddedToBagReducer && state.AddedToBagReducer.errorCatId;
+  return state.AddedToBagReducer.get('errorCatId');
 };

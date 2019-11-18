@@ -29,6 +29,7 @@ const navigateToOrderDetail = (orderNumber, navigation, orderLabels) => {
   });
 };
 const OrderNotification = ({ labels, orderLabels, order, navigation, separator }) => {
+  const orderStatus = order ? getOrderStatusForNotification(order.orderStatus) : '';
   return (
     <>
       {order && (
@@ -37,19 +38,17 @@ const OrderNotification = ({ labels, orderLabels, order, navigation, separator }
             separator={separator}
             spacingStyles="margin-left-MED margin-right-MED padding-top-LRG padding-bottom-LRG"
           >
-            <BodyCopy
-              color="white"
-              fontSize="fs18"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              text={getLabelValue(
-                labels,
-                getOrderStatusForNotification(order.orderStatus),
-                'OrderNotification'
-              )}
-            />
-
-            <RowContainer spacingStyles="margin-top-SM">
+            {!!orderStatus && (
+              <BodyCopyWithSpacing
+                spacingStyles="margin-bottom-SM"
+                color="white"
+                fontSize="fs18"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                text={getLabelValue(labels, orderStatus, 'OrderNotification')}
+              />
+            )}
+            <RowContainer>
               <BodyCopy
                 color="white"
                 fontSize="fs12"

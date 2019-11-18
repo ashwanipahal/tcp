@@ -1,15 +1,9 @@
 import React from 'react';
 import { change, Field } from 'redux-form';
-import {
-  BodyCopy,
-  Col,
-  Heading,
-  Row,
-  SelectBox,
-  TextBox,
-} from '@tcp/core/src/components/common/atoms';
+import { BodyCopy, Col, Heading, Row, TextBox } from '@tcp/core/src/components/common/atoms';
 import { getAddressFromPlace } from '@tcp/core/src/utils';
 import PropTypes from 'prop-types';
+import Select from '../../../../../common/atoms/Select';
 import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
@@ -184,7 +178,7 @@ class ContactInformationFormWrapper extends React.Component {
                 <Field
                   id="statewocountry"
                   name="statewocountry"
-                  component={SelectBox}
+                  component={Select}
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_state')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_state')}
                   options={this.siteId === 'us' ? UScountriesStatesTable : CAcountriesStatesTable}
