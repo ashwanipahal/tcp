@@ -15,6 +15,7 @@ class ModalsCheckout extends React.PureComponent<Props> {
       closeMiniBagDispatch,
       setClickAnalyticsDataCheckout,
       cartOrderItems,
+      setBagPageIsRouting,
     } = this.props;
     const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
     setClickAnalyticsDataCheckout({
@@ -27,6 +28,7 @@ class ModalsCheckout extends React.PureComponent<Props> {
     }
     closeMiniBagDispatch(false, false);
     closeCheckoutModalMountState({ state: false });
+    setBagPageIsRouting();
     routeForBagCheckout();
   };
 

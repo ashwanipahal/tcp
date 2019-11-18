@@ -591,9 +591,10 @@ function* submitShipping({
   saveToAccount,
   method,
   smsInfo,
+  hasSetGiftOptions,
 }) {
   const giftServicesFormData = yield select(getGiftServicesFormData);
-  yield addAndSetGiftWrappingOptions(giftServicesFormData);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData, hasSetGiftOptions);
   yield put(setAddressError(null));
   const pendingPromises = [
     // add the requested gift wrap options

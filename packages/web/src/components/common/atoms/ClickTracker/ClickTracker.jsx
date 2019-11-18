@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect } from 'react';
 import { string, node, func, shape } from 'prop-types';
 import { connect } from 'react-redux';
-import { useClickTracking, useSetClickAnalytics, useSetPageData } from '@tcp/core/src/analytics';
+import { useClickTracking, useSetAnalyticsDataOnClick } from '@tcp/core/src/analytics';
 
 /**
  * This component can be used for dispatching click
@@ -23,17 +23,16 @@ import { useClickTracking, useSetClickAnalytics, useSetPageData } from '@tcp/cor
 const ClickTracker = forwardRef(
   ({ as: Component, name, clickData, pageData, children, dispatch, ...props }, ref) => {
     const track = useClickTracking(dispatch);
-    const setClickTrack = useSetClickAnalytics(dispatch);
-    const setPageData = useSetPageData(dispatch);
+    const setAnalyticsDataOnClick = useSetAnalyticsDataOnClick(dispatch);
 
     const handleClick = () => {
-      if (pageData) {
-        setPageData(pageData);
-      }
       if (clickData) {
-        setClickTrack(clickData);
+        setAnalyticsDataOnClick(clickData);
       }
       track(name);
+      if (clickData) {
+        setAnalyticsDataOnClick({});
+      }
     };
 
     // eslint-disable-next-line consistent-return

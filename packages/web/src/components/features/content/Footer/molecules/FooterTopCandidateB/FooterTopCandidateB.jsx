@@ -97,9 +97,8 @@ const FooterTopCandidateB = props => {
               className="candidate-b_buttons"
               clickData={{
                 customEvents: ['event22', 'event80'],
-              }}
-              pageData={{
                 pageShortName: 'content:referafriend  confirmation',
+                pageName: 'content:email confirmation',
               }}
             >
               <BodyCopy component="div" fontWeight="black" fontSize="fs15" className="heading_text">

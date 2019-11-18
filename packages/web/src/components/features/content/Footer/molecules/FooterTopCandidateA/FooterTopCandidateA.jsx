@@ -219,9 +219,8 @@ class FooterTopCandidateA extends React.PureComponent {
                     className="refer_a_friend_button"
                     clickData={{
                       customEvents: ['event22', 'event80'],
-                    }}
-                    pageData={{
                       pageShortName: 'content:referafriend  confirmation',
+                      pageName: 'content:email confirmation',
                     }}
                   >
                     {referAFriendButtonLabels.text}

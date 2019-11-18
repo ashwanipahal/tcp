@@ -220,6 +220,8 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
                 "event22",
                 "event80",
               ],
+              "pageName": "content:email confirmation",
+              "pageShortName": "content:referafriend  confirmation",
             }
           }
           customStyle="shadow-button"
