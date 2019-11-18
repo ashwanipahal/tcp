@@ -38,4 +38,7 @@ export default css`
   .moduleD__promo-banner {
     margin-bottom: 16px;
   }
+  .right_chevron_arrow {
+    margin-left: 8px;
+  }
 `;

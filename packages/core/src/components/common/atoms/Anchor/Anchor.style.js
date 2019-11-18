@@ -89,8 +89,6 @@ const AnchorStyles = css`
       &:after {
         content: "›";
         font-size: 23px;
-        width:6px;
-        height:10px;
         margin-left: 8px;
       }
     `

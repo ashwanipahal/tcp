@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
+import { Anchor, Button, Col, DamImage, Row, Image } from '../../../atoms';
 import { Grid, LinkText, PromoBanner } from '../..';
 import config from '../config';
-import { getLocator, configureInternalNavigationFromCMSUrl } from '../../../../../utils';
+import {
+  getIconPath,
+  getLocator,
+  configureInternalNavigationFromCMSUrl,
+} from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/withErrorBoundary';
@@ -103,7 +107,6 @@ const ModuleD = ({
                   </div>
                   <div className="moduleD_link">
                     <Anchor
-                      withCaret
                       centered
                       className="moduleD_textlink"
                       to={configureInternalNavigationFromCMSUrl(item.link.url)}
@@ -113,6 +116,9 @@ const ModuleD = ({
                       dataLocator={`${getLocator('moduleD_textlink')}${index + 1}`}
                     >
                       {item.link.text}
+                      <span className="right_chevron_arrow">
+                        <Image src={getIconPath('smallright')} />
+                      </span>
                     </Anchor>
                   </div>
                 </Col>
