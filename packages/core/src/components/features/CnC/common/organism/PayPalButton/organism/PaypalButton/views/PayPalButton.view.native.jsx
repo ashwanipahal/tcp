@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { NavigationActions } from 'react-navigation';
-import { View, WebView, Platform, KeyboardAvoidingView } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { View, Platform, KeyboardAvoidingView } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
 import CONSTANTS from '../../../../../../Checkout/Checkout.constants';
 

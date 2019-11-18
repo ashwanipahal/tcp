@@ -18,7 +18,8 @@ class MiniBag extends React.Component {
     };
   }
 
-  componentWillReceiveProps({ router: nextRouter }) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps({ router: nextRouter }) {
     const { router, closeMiniBagDispatch } = this.props;
     /* istanbul ignore else */
     if (router.asPath !== nextRouter.asPath) {

@@ -27,7 +27,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { currentProduct, selectedColorProductId, productInfoFromBag } = nextProps;
     const {
       currentProduct: prevCurrentProduct,
