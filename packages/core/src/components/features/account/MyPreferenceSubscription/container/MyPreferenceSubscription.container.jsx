@@ -296,10 +296,7 @@ export class MyPreferenceSubscription extends PureComponent {
             maxWidth="457px"
             fixedWidth
             heading={!isMobileApp() ? '' : ' '}
-            heightConfig={{
-              maxHeight: '100%',
-              height: 'auto',
-            }}
+            standardHeight
             horizontalBar={false}
             closeIconDataLocator="ExtraPointsDetailModal_crossIcon"
           >

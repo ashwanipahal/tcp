@@ -17,6 +17,7 @@ import {
   getProductInfoFromBag,
   getLoadingState,
   getFromBagPage,
+  getIsFromBagProductSfl,
 } from './QuickViewModal.selectors';
 import {
   getPlpLabels,
@@ -30,6 +31,7 @@ import {
   clearAddToCartMultipleItemErrorState,
 } from '../../../../features/CnC/AddedToBag/container/AddedToBag.actions';
 import { updateCartItem } from '../../../../features/CnC/CartItemTile/container/CartItemTile.actions';
+import BAG_PAGE_ACTIONS from '../../../../features/CnC/BagPage/container/BagPage.actions';
 import { getCartItemInfo } from '../../../../features/CnC/AddedToBag/util/utility';
 
 class QuickViewModalContainer extends React.PureComponent {
@@ -48,7 +50,9 @@ class QuickViewModalContainer extends React.PureComponent {
       formValues,
       productInfo,
       closeQuickViewModalAction,
+      isFromBagProductSfl,
       productInfoFromBag,
+      updateCartSflItemAction,
     } = this.props;
     const [{ product }] = productInfo;
     const [formValue] = formValues;
@@ -56,17 +60,25 @@ class QuickViewModalContainer extends React.PureComponent {
     const {
       skuInfo: { skuId, variantNo, variantId },
     } = cartItemInfo;
-    const { quantity } = cartItemInfo;
-    const { orderItemId } = productInfoFromBag;
-    const payload = {
-      skuId,
-      itemId: orderItemId,
-      quantity,
-      variantNo,
-      itemPartNumber: variantId,
-      callBack: closeQuickViewModalAction,
-    };
-    updateCartItemAction(payload);
+    if (isFromBagProductSfl) {
+      updateCartSflItemAction({
+        oldSkuId: productInfoFromBag.skuId,
+        newSkuId: skuId,
+        callBack: closeQuickViewModalAction,
+      });
+    } else {
+      const { quantity } = cartItemInfo;
+      const { orderItemId } = productInfoFromBag;
+      const payload = {
+        skuId,
+        itemId: orderItemId,
+        quantity,
+        variantNo,
+        itemPartNumber: variantId,
+        callBack: closeQuickViewModalAction,
+      };
+      updateCartItemAction(payload);
+    }
   };
 
   render() {
@@ -113,6 +125,7 @@ function mapStateToProps(state) {
     addToBagMultipleItemError: getMultipleItemsAddedToBagError(state) || {},
     productInfoFromBag: getProductInfoFromBag(state),
     fromBagPage: getFromBagPage(state),
+    isFromBagProductSfl: getIsFromBagProductSfl(state),
   };
 }
 
@@ -136,6 +149,9 @@ function mapDispatchToProps(dispatch) {
     updateCartItemAction: payload => {
       dispatch(updateCartItem(payload));
     },
+    updateCartSflItemAction: payload => {
+      dispatch(BAG_PAGE_ACTIONS.updateSflItem(payload));
+    },
     toastMessage: payload => {
       dispatch(toastMessageInfo(payload));
     },
@@ -154,6 +170,8 @@ QuickViewModalContainer.propTypes = {
   productInfoFromBag: PropTypes.shape({}),
   currencyAttributes: PropTypes.shape({}),
   toastMessage: PropTypes.func,
+  isFromBagProductSfl: PropTypes.bool,
+  updateCartSflItemAction: PropTypes.func.isRequired,
 };
 
 QuickViewModalContainer.defaultProps = {
@@ -163,6 +181,7 @@ QuickViewModalContainer.defaultProps = {
     exchangevalue: 1,
   },
   toastMessage: () => {},
+  isFromBagProductSfl: false,
 };
 
 export default connect(
