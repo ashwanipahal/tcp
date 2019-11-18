@@ -80,10 +80,11 @@ exports[`PLCCFormVanilla it should call togglePreScreen 1`] = `
         }
       }
       id="preScreenCode"
+      keyboardType="numeric"
       label="lbl_PLCCForm_preScreenCodeOpt"
       maxLength={12}
-      name="lbl_PLCCForm_preScreenCodeOpt"
-      type="text"
+      name="preScreenCode"
+      type="tel"
     />
   </Styled(View)>
   <Styled(Styled(BodyCopy))
@@ -3673,10 +3674,11 @@ exports[`PLCCFormVanilla it should render correctly if rtps flow 1`] = `
         }
       }
       id="preScreenCode"
+      keyboardType="numeric"
       label="lbl_PLCCForm_preScreenCodeOpt"
       maxLength={12}
-      name="lbl_PLCCForm_preScreenCodeOpt"
-      type="text"
+      name="preScreenCode"
+      type="tel"
     />
   </Styled(View)>
   <Styled(Styled(BodyCopy))
@@ -5480,10 +5482,11 @@ exports[`PLCCFormVanilla it should render correctly with rtpsFalse 1`] = `
         }
       }
       id="preScreenCode"
+      keyboardType="numeric"
       label="lbl_PLCCForm_preScreenCodeOpt"
       maxLength={12}
-      name="lbl_PLCCForm_preScreenCodeOpt"
-      type="text"
+      name="preScreenCode"
+      type="tel"
     />
   </Styled(View)>
   <Styled(View)>
