@@ -12,6 +12,11 @@ import {
 import ProductAddToBagContainer from '../../../../../common/molecules/ProductAddToBag';
 import withStyles from '../../../../../common/hoc/withStyles';
 import OutfitProductStyle from './OutfitProduct.style';
+import OutOfStockWaterMarkView from '../../../ProductDetail/molecules/OutOfStockWaterMark';
+
+const renderOutOfStock = (keepAlive, outOfStockLabels) => {
+  return keepAlive ? <OutOfStockWaterMarkView label={outOfStockLabels.outOfStockCaps} /> : null;
+};
 
 const OutfitDetailsView = ({
   className,
@@ -30,6 +35,8 @@ const OutfitDetailsView = ({
   isLoggedIn,
   addToFavorites,
   isBundleProduct,
+  isKeepAliveEnabled,
+  outOfStockLabels,
 }) => {
   const { imagesByColor, colorFitsSizesMap, isGiftCard, name } = outfitProduct;
   const colorProduct =
@@ -49,6 +56,7 @@ const OutfitDetailsView = ({
     url: imagesByColor[color].basicImageUrl,
   };
   const sizeChartLinkVisibility = !isGiftCard ? SIZE_CHART_LINK_POSITIONS.AFTER_SIZE : null;
+  const keepAlive = isKeepAliveEnabled && colorProduct.miscInfo.keepAlive;
 
   return (
     <Row className={className}>
@@ -61,12 +69,15 @@ const OutfitDetailsView = ({
         <BodyCopy fontSize="fs10" fontFamily="secondary" className="image-section">
           {productIndexText}
         </BodyCopy>
-        <DamImage
-          className="full-size-desktop-image"
-          imgData={imgData}
-          itemProp="contentUrl"
-          isProductImage
-        />
+        <BodyCopy component="div" className="image-wrapper">
+          <DamImage
+            className="full-size-desktop-image"
+            imgData={imgData}
+            itemProp="contentUrl"
+            isProductImage
+          />
+          {renderOutOfStock(keepAlive, outOfStockLabels)}
+        </BodyCopy>
         <BodyCopy className="view-detail-anchor">
           <Anchor underline fontSizeVariation="large" to={pdpToPath} asPath={outfitProduct.pdpUrl}>
             {viewDetails}
@@ -90,6 +101,7 @@ const OutfitDetailsView = ({
               itemProp="contentUrl"
               isProductImage
             />
+            {renderOutOfStock(keepAlive, outOfStockLabels)}
           </BodyCopy>
 
           <BodyCopy className="view-detail-anchor">
@@ -105,6 +117,8 @@ const OutfitDetailsView = ({
         </div>
         <div className="product-information">
           <ProductBasicInfo
+            keepAlive={keepAlive}
+            outOfStockLabels={outOfStockLabels}
             productInfo={outfitProduct}
             isCanada={isCanada}
             isPlcc={isPlcc}
@@ -133,6 +147,8 @@ const OutfitDetailsView = ({
             isPickup
             isBundleProduct={isBundleProduct}
             sizeChartLinkVisibility={sizeChartLinkVisibility}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
           />
         </div>
       </Col>
@@ -157,6 +173,8 @@ OutfitDetailsView.propTypes = {
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 OutfitDetailsView.defaultProps = {
@@ -174,6 +192,7 @@ OutfitDetailsView.defaultProps = {
   addToBagError: false,
   isLoggedIn: false,
   isBundleProduct: false,
+  outOfStockLabels: {},
 };
 
 export default withStyles(OutfitDetailsView, OutfitProductStyle);

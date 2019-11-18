@@ -114,6 +114,8 @@ class BundleProduct extends React.PureComponent {
       outfitLabels,
       addToBagErrorId,
       addToBagError,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     return (
       <Row fullBleed className="product-items-section">
@@ -129,6 +131,8 @@ class BundleProduct extends React.PureComponent {
             outfitLabels={outfitLabels}
             addToBagErrorId={addToBagErrorId}
             addToBagError={addToBagError}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
             className="bundle-products-list"
           />
         </Col>
@@ -236,6 +240,8 @@ BundleProduct.propTypes = {
   isLoggedIn: PropTypes.bool,
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 BundleProduct.defaultProps = {
@@ -253,6 +259,7 @@ BundleProduct.defaultProps = {
   isLoggedIn: false,
   addToBagErrorId: '',
   addToBagError: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(BundleProduct, styles);

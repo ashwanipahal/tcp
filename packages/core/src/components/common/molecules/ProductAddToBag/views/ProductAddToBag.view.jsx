@@ -69,6 +69,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       currentProduct: { colorFitsSizesMap },
       selectedColorProductId,
       isOutfitPage,
+      keepAlive,
     } = this.props;
     const currentColorEntry =
       getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId) || {};
@@ -79,6 +80,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
           formName={`ProductAddToBag-${currentProduct.generalProductId}`}
           miscInfo={currentColorEntry.miscInfo}
           isOutfitVariant
+          keepAlive={keepAlive}
         />
       </div>
     ) : null;
@@ -306,6 +308,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
                 <Button
                   type="submit"
                   className="add-to-bag-button"
+                  disabled={keepAlive}
                   // eslint-disable-next-line sonarjs/no-identical-functions
                   onClick={e => {
                     e.preventDefault();
