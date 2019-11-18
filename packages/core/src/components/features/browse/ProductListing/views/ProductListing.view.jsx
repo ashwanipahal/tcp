@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
-import { CONTROLS_VISIBLE, PAGE_NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import {
+  CONTROLS_VISIBLE,
+  PAGE_NAVIGATION_VISIBLE,
+  RESULTS_VISIBLE,
+} from '@tcp/core/src/constants/rum.constants';
 import PromoModules from '../../../../common/organisms/PromoModules';
 
 // Changes as per RWD-9852. Keeping this for future reference.
@@ -36,6 +40,9 @@ import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
 
+// Minimum number of product results worth measuring with a UX timer
+const MINIMUM_RESULTS_TO_MEASURE = 3;
+
 const ProductListView = ({
   className,
   productsBlock,
@@ -65,6 +72,17 @@ const ProductListView = ({
   isSearchListing,
   ...otherProps
 }) => {
+  // State needed to trigger UX timer once initial product results have rendered
+  const [resultsExist, setResultsExist] = useState(false);
+
+  // Effect needed to set the above state
+  useEffect(() => {
+    const initialProductBlock = productsBlock[0] || [];
+    if (initialProductBlock.length >= MINIMUM_RESULTS_TO_MEASURE && !resultsExist) {
+      setResultsExist(true);
+    }
+  }, [productsBlock.length]);
+
   return (
     <div className={className}>
       <Row>
@@ -138,6 +156,9 @@ const ProductListView = ({
               asPathVal={asPathVal}
               {...otherProps}
             />
+            {/* UX timer */}
+            {resultsExist && <RenderPerf.Measure name={RESULTS_VISIBLE} />}
+            {/* Skeleton placeholder */}
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
           </Col>
 
