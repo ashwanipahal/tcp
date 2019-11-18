@@ -29,7 +29,14 @@ export class WalletContainer extends React.Component {
   }
 
   render() {
-    const { labels, commonLabels, accountLabels, isUserLoggedIn, ...props } = this.props;
+    const {
+      labels,
+      commonLabels,
+      accountLabels,
+      isUserLoggedIn,
+      footerLinks,
+      ...props
+    } = this.props;
     const overViewLabels = getAccountOverviewLabels(accountLabels);
     return (
       <WalletView
@@ -37,6 +44,7 @@ export class WalletContainer extends React.Component {
         commonLabels={commonLabels}
         overViewLabels={overViewLabels}
         isUserLoggedIn={isUserLoggedIn}
+        footerLinks={footerLinks}
         {...props}
       />
     );
@@ -74,6 +82,7 @@ WalletContainer.propTypes = {
   fetchLabels: PropTypes.func,
   isUserLoggedIn: PropTypes.bool,
   fetchFooterLinks: PropTypes.func,
+  footerLinks: PropTypes.shape([]),
 };
 
 WalletContainer.defaultProps = {
@@ -83,6 +92,7 @@ WalletContainer.defaultProps = {
   fetchLabels: () => {},
   isUserLoggedIn: false,
   fetchFooterLinks: () => {},
+  footerLinks: [],
 };
 
 export default connect(

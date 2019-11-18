@@ -180,9 +180,8 @@ export const setSubNavigationData = (payload, name) => ({
   type: GLOBAL_CONSTANTS.SET_SUB_NAVIGATION_DATA,
 });
 
-export const getSubNavigationData = (payload, name) => ({
+export const getSubNavigationData = payload => ({
   payload,
-  name,
   type: GLOBAL_CONSTANTS.GET_SUB_NAVIGATION_DATA,
 });
 
