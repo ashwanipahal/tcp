@@ -55,7 +55,7 @@ class SmsSignupModal extends React.PureComponent {
         /*
          Faking this because redux-form `submitting` based on promise resolve
        and we will resolve formSubmitPromise only when the state has success flag on
-       componentDidUpdate
+       componentDidUpdate.
        */
         return new Promise((resolve, reject) => {
           clearSmsSignupForm();
