@@ -144,7 +144,7 @@ class TCPWebApp extends App {
       logger.info('Error occurred in Raygun initialization', e);
     }
 
-    if (navigator.geolocation) {
+    if (navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition();
     }
   }
