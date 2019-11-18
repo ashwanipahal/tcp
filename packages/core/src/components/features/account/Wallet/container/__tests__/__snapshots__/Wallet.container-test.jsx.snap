@@ -5,6 +5,7 @@ exports[`WalletContainer should render correctly 1`] = `
   commonLabels={Object {}}
   fetchFooterLinks={[Function]}
   fetchLabels={[Function]}
+  footerLinks={Array []}
   isUserLoggedIn={false}
   labels={Object {}}
   overViewLabels={Object {}}
