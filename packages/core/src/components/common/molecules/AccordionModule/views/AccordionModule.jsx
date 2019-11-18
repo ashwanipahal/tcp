@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '../../../hoc/withStyles';
+import style from '../AccordionModule.style';
 import { Row, Col, RichText } from '../../../atoms';
 import AccordionList from '../../AccordionList';
 
@@ -7,7 +9,7 @@ import AccordionList from '../../AccordionList';
  * To render the Accordian Module and will be configured from CMS
  * @param {*} props
  */
-const AccordianModule = props => {
+const AccordionModule = props => {
   const { className, accordionWrapper } = props;
   const accordionItems = [];
   if (accordionWrapper && accordionWrapper.length > 0) {
@@ -34,7 +36,7 @@ const AccordianModule = props => {
           large: 12,
         }}
       >
-        <AccordionList accordionItems={accordionItems}>
+        <AccordionList accordionItems={accordionItems} className="module-accordion">
           {accordionWrapper.map(({ richText }) => {
             if (!(richText && richText.text)) {
               return null;
@@ -47,10 +49,10 @@ const AccordianModule = props => {
   ) : null;
 };
 
-AccordianModule.propTypes = {
+AccordionModule.propTypes = {
   className: PropTypes.string.isRequired,
   accordionWrapper: PropTypes.arrayOf(PropTypes.oneOfType(PropTypes.shape({}))).isRequired,
 };
 
-export default AccordianModule;
-export { AccordianModule as AccordianModuleVanilla };
+export default withStyles(AccordionModule, style);
+export { AccordionModule as AccordionModuleVanilla };

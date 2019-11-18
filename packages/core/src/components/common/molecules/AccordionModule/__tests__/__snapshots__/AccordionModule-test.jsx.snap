@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion Componenet should match snapshot 1`] = `
+<Styled(Row)
+  fullBleed={true}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <AccordionList
+      accordionItems={
+        Array [
+          Object {
+            "header": Object {
+              "title": "Accordion Item 1 Header",
+            },
+          },
+          Object {
+            "header": Object {
+              "title": "Accordion Item 2 Header",
+            },
+          },
+          Object {
+            "header": Object {
+              "title": "Accordion Item 3 Header",
+            },
+          },
+        ]
+      }
+      className="module-accordion"
+    >
+      <Styled(RichText)
+        className="congrats_msg"
+        richTextHtml="<p>Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body </p>"
+      />
+      <Styled(RichText)
+        className="congrats_msg"
+        richTextHtml="<p>Accordion Item 2 Body</p>"
+      />
+      <Styled(RichText)
+        className="congrats_msg"
+        richTextHtml="<p>Accordion Item 3 Body</p>"
+      />
+    </AccordionList>
+  </Styled(Col)>
+</Styled(Row)>
+`;
