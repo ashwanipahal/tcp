@@ -15,4 +15,7 @@ export default css`
     position: relative;
     min-width: 100%;
   }
+  .outfit-sku .size-error-message {
+    max-width: 90%;
+  }
 `;

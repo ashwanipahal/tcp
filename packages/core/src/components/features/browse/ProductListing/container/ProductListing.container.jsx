@@ -1,5 +1,7 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import { getFormValues } from 'redux-form';
 import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
@@ -57,6 +59,12 @@ const OutfitListingContainer = dynamic(() =>
 );
 
 class ProductListingContainer extends React.PureComponent {
+  static pageProps = {
+    pageData: {
+      pageName: 'browse',
+    },
+  };
+
   static getInitialProps = async ({ isServer, props, req }) => {
     const {
       getProducts,
@@ -104,11 +112,16 @@ class ProductListingContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const {
       router: { asPath },
+      isLoggedIn,
     } = prevProps;
     const {
       router: { asPath: currentAsPath },
+      isLoggedIn: currentLyLoggedIn,
     } = this.props;
     if (asPath !== currentAsPath) {
+      this.makeApiCall();
+    }
+    if (isLoggedIn !== currentLyLoggedIn) {
       this.makeApiCall();
     }
   }
@@ -173,6 +186,8 @@ class ProductListingContainer extends React.PureComponent {
       currency,
       plpTopPromos,
       router: { asPath: asPathVal },
+      isSearchListing,
+      navigation,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -207,6 +222,8 @@ class ProductListingContainer extends React.PureComponent {
         currencyExchange={currencyAttributes.exchangevalue}
         plpTopPromos={plpTopPromos}
         asPathVal={asPathVal}
+        isSearchListing={isSearchListing}
+        navigation={navigation}
         {...otherProps}
       />
     ) : (
@@ -339,6 +356,7 @@ ProductListingContainer.propTypes = {
   plpTopPromos: PropTypes.shape({}),
   closeQuickViewModalAction: PropTypes.func,
   navigationData: PropTypes.shape({}),
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -366,10 +384,21 @@ ProductListingContainer.defaultProps = {
   plpTopPromos: [],
   closeQuickViewModalAction: () => {},
   navigationData: null,
+  isSearchListing: false,
 };
 
-export default withIsomorphicRenderer({
+const IsomorphicProductListingContainer = withIsomorphicRenderer({
   WrappedComponent: ProductListingContainer,
   mapStateToProps,
   mapDispatchToProps,
 });
+
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
+const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
+RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
+
+export default HotfixAwareProductListingContainer;

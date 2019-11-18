@@ -1,9 +1,11 @@
 import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
+import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
+import withHotfix from '@tcp/core/src/components/common/hoc/withHotfix';
 import SEOTags from '@tcp/web/src/components/common/atoms';
 import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { PropTypes } from 'prop-types';
-import ProductDetail from '../views';
+import ProductDetailView from '../views';
 import { getProductDetails } from './ProductDetail.actions';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import {
@@ -39,6 +41,14 @@ import {
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
+
+/**
+ * Hotfix-Aware Component. The use of `withRefWrapper` and `withHotfix`
+ * below are just for making the page hotfix-aware.
+ */
+const ProductDetailWithRef = withRefWrapper(ProductDetailView);
+ProductDetailWithRef.displayName = 'ProductDetailPage';
+const ProductDetail = withHotfix(ProductDetailWithRef);
 
 class ProductDetailContainer extends React.PureComponent {
   static extractPID = props => {
@@ -76,6 +86,25 @@ class ProductDetailContainer extends React.PureComponent {
     // TODO - fix this to extract the product ID from the page.
     const productId = ProductDetailContainer.extractPID({ ...props, router: { query: { pid } } });
     await getDetails({ productColorId: productId });
+
+    // Build a page name for tracking
+    let pageName = '';
+    if (productId) {
+      const productIdParts = productId.split('_');
+      pageName = `product:${productIdParts[0]}:${pid
+        .replace(productIdParts[0], '')
+        .replace(productIdParts[1], '')
+        .split('-')
+        .join(' ')
+        .trim()
+        .toLowerCase()}`;
+    }
+
+    return {
+      pageProps: {
+        pageName,
+      },
+    };
   };
 
   componentDidMount() {
