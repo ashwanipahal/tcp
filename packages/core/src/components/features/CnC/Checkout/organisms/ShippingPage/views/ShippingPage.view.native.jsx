@@ -51,6 +51,7 @@ export default class ShippingPage extends React.Component {
     updateShippingMethodSelection: PropTypes.func.isRequired,
     syncErrors: PropTypes.shape({}),
     newUserPhoneNo: PropTypes.string,
+    hasSetGiftOptions: PropTypes.bool,
     setCheckoutStage: PropTypes.func.isRequired,
   };
 
@@ -70,6 +71,7 @@ export default class ShippingPage extends React.Component {
     isSaveToAddressBookChecked: false,
     setAsDefaultShipping: false,
     saveToAddressBook: false,
+    hasSetGiftOptions: false,
     updateShippingAddressData: () => {},
     addNewShippingAddressData: () => {},
     syncErrors: {},
@@ -146,7 +148,7 @@ export default class ShippingPage extends React.Component {
       saveToAddressBook,
       smsSignUp = {},
     } = data;
-    const { isGuest, userAddresses, formatPayload } = this.props;
+    const { isGuest, userAddresses, formatPayload, hasSetGiftOptions } = this.props;
     let shipAddress = address;
     if (!isGuest && userAddresses && userAddresses.size > 0 && onFileAddressKey) {
       shipAddress = userAddresses.find(item => item.addressId === onFileAddressKey);
@@ -175,6 +177,7 @@ export default class ShippingPage extends React.Component {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
+      hasSetGiftOptions,
     };
     const { handleSubmit, verifyAddressAction } = this.props;
     if (!onFileAddressKey) {
