@@ -362,14 +362,14 @@ describe('getOrderStatusForNotification', () => {
       'lbl_global_yourOrderHasBeenExpiredRefunded'
     );
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_CANCELLED)).toEqual(
-      'lbl_global_yourOrderWasCanceled'
+      'lbl_orders_statusOrderCancelled'
     );
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.LBL_CallNeeded)).toEqual(
       'lbl_orders_statusOrderReceived'
     );
     expect(
       getOrderStatusForNotification(constants.STATUS_CONSTANTS.SUCCESSFULLY_PICKED_UP)
-    ).toEqual('lbl_global_yourOrderWasPickedUp');
+    ).toEqual('lbl_orders_statusItemsPickedUp');
     expect(getOrderStatusForNotification(constants.STATUS_CONSTANTS.ORDER_IN_PROCESS)).toEqual(
       'lbl_orders_statusOrderReceived'
     );

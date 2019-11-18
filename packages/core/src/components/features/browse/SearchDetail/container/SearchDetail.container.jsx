@@ -86,14 +86,29 @@ class SearchDetailContainer extends React.PureComponent {
       },
       getProducts,
       formValues,
+      isLoggedIn: currentLyLoggedIn,
     } = this.props;
 
     const {
       router: {
         query: { searchQuery: currentSearchQuery },
       },
+      isLoggedIn,
     } = prevProps;
     if (searchQuery !== currentSearchQuery) {
+      const splitAsPathBy = `/search/${searchQuery}?`;
+      const queryString = asPath.split(splitAsPathBy);
+      const filterSortString = (queryString.length && queryString[1]) || '';
+      getProducts({
+        URI: 'search',
+        asPath: filterSortString,
+        searchQuery,
+        ignoreCache: true,
+        formValues,
+        url: asPath,
+      });
+    }
+    if (isLoggedIn !== currentLyLoggedIn) {
       const splitAsPathBy = `/search/${searchQuery}?`;
       const queryString = asPath.split(splitAsPathBy);
       const filterSortString = (queryString.length && queryString[1]) || '';
@@ -136,6 +151,7 @@ class SearchDetailContainer extends React.PureComponent {
       isSearchResultsAvailable,
       router: {
         query: { searchQuery },
+        asPath: asPathVal,
       },
       currency,
       currencyAttributes,
@@ -171,6 +187,7 @@ class SearchDetailContainer extends React.PureComponent {
                 onAddItemToFavorites={onAddItemToFavorites}
                 isLoggedIn={isLoggedIn}
                 isSearchListing={true}
+                asPathVal={asPathVal}
                 {...otherProps}
               />
             ) : (
@@ -209,6 +226,7 @@ class SearchDetailContainer extends React.PureComponent {
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
               isSearchListing={true}
+              asPathVal={asPathVal}
               {...otherProps}
             />
           </div>

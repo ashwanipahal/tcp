@@ -3,7 +3,7 @@ import QUICK_VIEW_CONSTANT from './QuickViewModal.constants';
 import { DEFAULT_REDUCER_KEY } from '../../../../../utils/cache.util';
 
 const initialState = fromJS({
-  isLoading: true,
+  isLoading: false,
   [DEFAULT_REDUCER_KEY]: null,
 });
 

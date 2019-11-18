@@ -61,7 +61,9 @@ const LoggedInUserInfo = ({
           ) : null}
           {!isCanada() ? (
             <BodyCopy component="div">
-              <div className="account-info user-points">{`${userPoints} Points`}</div>
+              <div className="account-info user-points" id="account-info-user-points">
+                {`${userPoints} Points`}
+              </div>
               <span className="account-info user-rewards rightLink">
                 {`$${handleUserRewards(userRewards)} Rewards`}
               </span>

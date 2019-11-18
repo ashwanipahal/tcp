@@ -35,13 +35,17 @@ class AddedToBagActions extends React.PureComponent<Props> {
       isBagPageStickyHeader,
       isPayPalHidden,
       paypalButtonHeight,
+      setIsPaypalBtnHidden,
     } = this.props;
     let containerID = containerId;
     if (isBagPageStickyHeader) {
       containerID = 'paypal-button-container-bag-header';
     }
+    if (showAddTobag && isPayPalHidden) {
+      setIsPaypalBtnHidden(false);
+    }
     return (
-      (!isPayPalHidden || showAddTobag) && (
+      !isPayPalHidden && (
         <div className={`${showAddTobag ? 'paypal-wrapper-atb' : 'paypal-wrapper'}`}>
           <PayPalButton
             className="payPal-button"

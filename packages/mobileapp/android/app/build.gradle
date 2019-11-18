@@ -176,7 +176,7 @@ android {
         tcpPreview {
             dimension "version"
             applicationIdSuffix ".tcp.preview"
-            versionNameSuffix ""
+            versionNameSuffix "-PREVIEW"
             versionName = 'My Place'
             buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
         }
@@ -184,7 +184,7 @@ android {
         gymboreePreview {
             dimension "version"
             applicationIdSuffix ".gymboree.preview"
-            versionNameSuffix ""
+            versionNameSuffix "-PREVIEW"
             versionName = 'Gymboree'
             buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
         }
