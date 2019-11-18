@@ -33,14 +33,32 @@ exports[`Accordion Componenet should match snapshot 1`] = `
       }
       className="module-accordion"
     >
-      <Styled(RichText)
-        richTextHtml="<p>Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body </p>"
+      <ModuleX
+        richTextList={
+          Array [
+            Object {
+              "text": "<p>Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body Accordion Item 1 Body Accordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 BodyAccordion Item 1 Body </p>",
+            },
+          ]
+        }
       />
-      <Styled(RichText)
-        richTextHtml="<p>Accordion Item 2 Body</p>"
+      <ModuleX
+        richTextList={
+          Array [
+            Object {
+              "text": "<p>Accordion Item 2 Body</p>",
+            },
+          ]
+        }
       />
-      <Styled(RichText)
-        richTextHtml="<p>Accordion Item 3 Body</p>"
+      <ModuleX
+        richTextList={
+          Array [
+            Object {
+              "text": "<p>Accordion Item 3 Body</p>",
+            },
+          ]
+        }
       />
     </AccordionList>
   </Styled(Col)>
