@@ -191,7 +191,9 @@ const ListItem = props => {
         onGoToPDPPage
       )}
       {isFavorite && <RenderPurchasedQuantity item={item} />}
-      {isFavorite && <RenderMoveToWishlist />}
+      {isFavorite && (
+        <RenderMoveToListOrSeeSuggestedList item={item} labelsPlpTiles={labelsPlpTiles} />
+      )}
     </ListContainer>
   );
 };
@@ -506,7 +508,27 @@ const RenderPurchasedQuantity = ({ item }) => {
   );
 };
 
-const RenderMoveToWishlist = () => {
+const onSeeSuggestedHandler = () => {};
+const RenderMoveToListOrSeeSuggestedList = ({ item, labelsPlpTiles }) => {
+  const {
+    itemInfo: { availability },
+  } = item;
+  if (availability && availability === 'SOLDOUT') {
+    return (
+      <Anchor
+        fontSizeVariation="large"
+        fontFamily="secondary"
+        underline
+        anchorVariation="custom"
+        onPress={onSeeSuggestedHandler}
+        dataLocator=""
+        text={labelsPlpTiles.lbl_see_suggested_items}
+        colorName="gray.900"
+        justifyContent="flex-start"
+      />
+    );
+  }
+
   return (
     <RowContainer margins="8px 0 0 0">
       <BodyCopy
@@ -519,6 +541,24 @@ const RenderMoveToWishlist = () => {
       <CustomIcon name={ICON_NAME.chevronDown} size="fs14" color="gray.600" margins="0 0 0 12px" />
     </RowContainer>
   );
+};
+
+RenderMoveToListOrSeeSuggestedList.propTypes = {
+  labelsPlpTiles: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({
+    quantityPurchased: PropTypes.string,
+    itemInfo: PropTypes.shape({
+      availability: PropTypes.string,
+    }),
+  }),
+};
+
+RenderMoveToListOrSeeSuggestedList.defaultProps = {
+  item: {
+    itemInfo: {
+      availability: 'OK',
+    },
+  },
 };
 
 RenderPurchasedQuantity.propTypes = {
