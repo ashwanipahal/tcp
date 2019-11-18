@@ -30,6 +30,9 @@ const ClickTracker = forwardRef(
         setAnalyticsDataOnClick(clickData);
       }
       track(name);
+      if (clickData) {
+        setAnalyticsDataOnClick({});
+      }
     };
 
     // eslint-disable-next-line consistent-return
