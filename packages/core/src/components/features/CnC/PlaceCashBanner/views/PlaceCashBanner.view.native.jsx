@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getLabelValue } from '@tcp/core/src/utils';
-import withStyles from '../../../hoc/withStyles';
-import { RichText } from '../../../atoms';
-import CONSTANTS from '../../../../features/CnC/Checkout/Checkout.constants';
+import withStyles from '../../../../common/hoc/withStyles';
+import { RichText } from '../../../../common/atoms';
+import CONSTANTS from '../../Checkout/Checkout.constants';
 import {
   FullBleedBannerStyle,
   TriangleBanner,

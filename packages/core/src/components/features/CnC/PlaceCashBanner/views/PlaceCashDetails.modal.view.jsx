@@ -1,10 +1,10 @@
 import React from 'react';
-import Modal from '../../Modal';
-import { RichText } from '../../../atoms';
+import Modal from '../../../../common/molecules/Modal';
+import { RichText } from '../../../../common/atoms';
 
 class PlaceCashDetailsModal extends React.PureComponent<Props> {
   render() {
-    const { openState, onRequestClose, labels, heading } = this.props;
+    const { openState, onRequestClose, labels, heading, additionalClassNameModal } = this.props;
     return (
       <Modal
         isOpen={openState}
@@ -17,6 +17,7 @@ class PlaceCashDetailsModal extends React.PureComponent<Props> {
         closeIconDataLocator="detailmodalcrossicon"
         heading={heading}
         fixedWidth
+        customWrapperClassName={additionalClassNameModal}
       >
         <RichText richTextHtml={labels.SHOW_DETAILS_RICH_TEXT} />
       </Modal>

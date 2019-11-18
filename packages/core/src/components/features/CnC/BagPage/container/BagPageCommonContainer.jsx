@@ -34,12 +34,19 @@ import {
   getGiftCardsTotal,
 } from '../../common/organism/OrderLedger/container/orderLedger.selector';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
+import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.selectors';
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const { needHelpContentId, fetchNeedHelpContent } = this.props;
-    fetchNeedHelpContent([needHelpContentId]);
-    const { setVenmoPickupState, setVenmoShippingState } = this.props;
+    const {
+      needHelpContentId,
+      fetchNeedHelpContent,
+      placeCashUsBagContentId,
+      placeCashCaBagContentId,
+      setVenmoPickupState,
+      setVenmoShippingState,
+    } = this.props;
+    fetchNeedHelpContent([needHelpContentId, placeCashUsBagContentId, placeCashCaBagContentId]);
     setVenmoPickupState(false);
     setVenmoShippingState(false);
     this.fetchInitialActions();
@@ -219,6 +226,16 @@ export const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+
+    placeCashUsBagContentId: PlaceCashSelector.getPlaceDetailsContentId(
+      state,
+      'PlaceCash_Detail_US_Bag'
+    ),
+    placeCashCaBagContentId: PlaceCashSelector.getPlaceDetailsContentId(
+      state,
+      'PlaceCash_Detail_CA_Bag'
+    ),
+
     showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
     isUserLoggedIn: getUserLoggedInState(state),
     isGuest: isGuestUser(state),

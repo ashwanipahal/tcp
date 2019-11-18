@@ -64,9 +64,9 @@ const getEarnedPlaceCashValue = state => {
   );
 };
 
-const getPlaceDetailsContentId = state => {
+const getPlaceDetailsContentId = (state, labelName) => {
   const { referred = [] } = state.Labels.checkout.placeCashBanner;
-  const content = referred.find(label => label.name === 'PlaceCashDetails');
+  const content = referred.find(label => label.name === labelName);
   return content && content.contentId;
 };
 
@@ -75,14 +75,21 @@ const getIsInternationalShipping = currentCountry => {
   return currentCountry !== 'US' || currentCountry !== 'CA';
 };
 
-export const getIsPlaceCashEnabled = state => {
+const getIsPlaceCashEnabled = state => {
   const currentCountry = getCurrentCountry(state);
   const earnedPlaceCashValue = getEarnedPlaceCashValue(state);
 
   return getIsInternationalShipping(currentCountry) && earnedPlaceCashValue > 0;
 };
 
-export const getPlaceCashBannerLabels = (state, isOrderConfirmation) => {
+const getPlaceDetailsContent = (state, labelName) => {
+  const showDetailsContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === getPlaceDetailsContentId(state, labelName)
+  );
+  return showDetailsContent && showDetailsContent.richText;
+};
+
+const getPlaceCashBannerLabels = (state, isOrderConfirmation) => {
   const currentPage = isOrderConfirmation ? 'confirmation' : 'bag';
   const currentCountry = getCurrentCountry(state);
   const replaceLabelConfig = replaceLabelUtil({
@@ -112,12 +119,15 @@ export const getPlaceCashBannerLabels = (state, isOrderConfirmation) => {
       ? labelsHashValuesReplace(labelString, labelConfig)
       : labelString;
   });
+  finalValue.SHOW_DETAILS_RICH_TEXT = getPlaceDetailsContent(
+    state,
+    `PlaceCash_Detail_${currentCountry}_${currentPage}`
+  );
   return finalValue;
 };
 
-export const getPlaceDetailsContent = state => {
-  const showDetailsContent = state.CartPageReducer.get('moduleXContent').find(
-    moduleX => moduleX.name === getPlaceDetailsContentId(state)
-  );
-  return showDetailsContent && showDetailsContent.richText;
+export default {
+  getIsPlaceCashEnabled,
+  getPlaceDetailsContentId,
+  getPlaceCashBannerLabels,
 };

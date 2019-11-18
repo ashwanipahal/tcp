@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '../../../hoc/withStyles';
+import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/PlaceCashBanner.style';
-import { BodyCopy, Row, Col, DamImage, Anchor } from '../../../atoms';
+import { BodyCopy, Row, Col, DamImage, Anchor } from '../../../../common/atoms';
 import PlaceCashDetailsModal from './PlaceCashDetails.modal.view';
 
 /**
@@ -43,6 +43,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               colSize={{ small: 6, medium: 8, large: 12 }}
               textAlign="center"
             >
+              {/* imgConfigs={['t_mod_plcc_bag_s','t_mod_plcc_bag_m','t_mod_plcc_bag_d']} */}
               <DamImage
                 className="place-cash__img"
                 imgConfigs={[]}
@@ -55,7 +56,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               <div className="place-cash__text-wrapper">
                 <BodyCopy
                   component="h3"
-                  fontSize={['fs11', 'fs11', 'fs14']}
+                  fontSize={['fs10', 'fs10', 'fs14']}
                   fontFamily="primary"
                   fontWeight="bold"
                   textAlign="center"
@@ -66,7 +67,7 @@ class PlaceCashBanner extends React.PureComponent<Props> {
                 </BodyCopy>
                 <BodyCopy
                   component="h4"
-                  fontSize={['fs11', 'fs9', 'fs12']}
+                  fontSize={['fs10', 'fs9', 'fs12']}
                   fontFamily="primary"
                   textAlign="center"
                   className="place-cash__subTitle"

@@ -9,7 +9,7 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import { BackToTop } from '@tcp/core/src/components/common/atoms';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import PlaceCashBanner from '@tcp/core/src/components/common/molecules/PlaceCashBanner';
+import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import { bootstrapData, SetTcpSegmentMethodCall } from '@tcp/core/src/reduxStore/actions';
 import {
   createAPIConfig,
