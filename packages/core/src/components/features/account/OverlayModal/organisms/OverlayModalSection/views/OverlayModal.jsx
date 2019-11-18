@@ -55,7 +55,7 @@ class OverlayModal extends React.Component {
     this.overlayElement.classList.add('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.addEventListener('mousedown', this.handleWindowClick);
+      this.body.addEventListener('click', this.handleWindowClick);
     }
     this.getCustomStyles({ styleModal: true });
     if (this.modalRef) {
@@ -98,7 +98,7 @@ class OverlayModal extends React.Component {
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
     if (this.body) {
-      this.body.removeEventListener('mousedown', this.handleWindowClick);
+      this.body.removeEventListener('click', this.handleWindowClick);
       this.body.style['overflow-y'] = '';
     }
     const modal = document.getElementById('dialogContent');
@@ -159,7 +159,7 @@ class OverlayModal extends React.Component {
       modalRectBoundingX &&
       modalTriangle
     ) {
-      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX}px`;
+      modalTriangle.style.left = `${compRectBoundingX + compWidth - modalRectBoundingX - 10}px`;
     } else {
       modalTriangle.style.left = 'auto';
     }
@@ -181,7 +181,12 @@ class OverlayModal extends React.Component {
       if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      this.styleModalTriangle({ comp });
+      if (component === 'accountDrawer') {
+        comp = document.getElementById('account-info-user-points');
+        this.styleModalTriangle({ comp });
+      } else {
+        this.styleModalTriangle({ comp });
+      }
     }
   };
 
@@ -226,6 +231,7 @@ class OverlayModal extends React.Component {
       !e.target.closest('.TCPModal__InnerContent') // TODO: find a better way to handle - prevent close overlay when click on popup modal
     ) {
       this.closeModal();
+      e.stopImmediatePropagation();
     }
   }
 

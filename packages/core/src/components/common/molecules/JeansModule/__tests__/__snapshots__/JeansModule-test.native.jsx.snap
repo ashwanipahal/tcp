@@ -123,9 +123,11 @@ exports[`JeansModuleVanilla should render correctly 1`] = `
     getImageUrl={[Function]}
     imageHeight={250}
     imageWidth={125}
-    itemBackgroundColor="#f1f0f0"
+    itemBackgroundColor="gray.1800"
     itemMargin={null}
     itemPadding="0 8px 0 0"
+    listLeftMargin={8}
+    listRightMargin={30}
     margins={null}
     onImageClick={[Function]}
   />

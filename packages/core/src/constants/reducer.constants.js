@@ -4,6 +4,7 @@ export const LABEL_REDUCER_KEY = 'Labels';
 export const SEO_DATA_REDUCER_KEY = 'SEOData';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
+export const SUB_NAVIGATION_REDUCER_KEY = 'SubNavigation';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const PRODUCT_LISTING_REDUCER_KEY = 'ProductListing';
 export const PRODUCTLISTING_ACTION_PATTERN = '@@PLP-';
@@ -162,6 +163,7 @@ export const DEVICE_INFO_REDUCER_KEY = 'DeviceInfo';
 // plcc card Page Reducer
 export const APPLY_PLCC_REDUCER_KEY = 'ApplyCardPage';
 export const APPLY_PLCC_ACTION_PATTERN = '@@ApplyCardPage-';
+
 // optimizely features reducer
 export const OPTIMIZELY_FEATURES_REDUCER = 'OptimizelyFeatures';
 

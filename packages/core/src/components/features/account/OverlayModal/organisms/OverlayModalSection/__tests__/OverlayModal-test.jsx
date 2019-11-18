@@ -95,6 +95,7 @@ describe('OverlayModal', () => {
       target: {
         closest: jest.fn(),
       },
+      stopImmediatePropagation: jest.fn(),
     };
     const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
     tree.instance().setModalRef();
@@ -121,6 +122,7 @@ describe('OverlayModal', () => {
       target: {
         closest: jest.fn(),
       },
+      stopImmediatePropagation: jest.fn(),
     };
     const tree = shallow(<OverlayModalVanilla {...props} closeOverlay={mockedcloseOverlay} />);
     tree.instance().setModalRef();

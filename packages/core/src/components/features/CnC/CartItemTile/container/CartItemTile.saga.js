@@ -150,6 +150,7 @@ function* setUpdateItemErrorMessages(payload, errorMessage) {
 export function* updateCartItemSaga({ payload }) {
   const { updateActionType } = payload;
   try {
+    yield put(setLoaderState(true));
     yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
     yield put(clearAddToBagErrorState());
     yield put(clearAddToPickupErrorState());
@@ -185,6 +186,7 @@ export function* updateCartItemSaga({ payload }) {
     yield delay(3000);
     yield put(BAG_PAGE_ACTIONS.setCartItemsUpdating({ isUpdating: false }));
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
+    yield put(setLoaderState(false));
   } catch (err) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
 
@@ -196,6 +198,7 @@ export function* updateCartItemSaga({ payload }) {
       'ERROR';
     yield call(updateSagaErrorActions, updateActionType, errorMessage);
     yield setUpdateItemErrorMessages(payload, errorMessage);
+    yield put(setLoaderState(false));
   }
 }
 

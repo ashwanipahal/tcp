@@ -82,11 +82,6 @@ class PLCCForm extends React.PureComponent<Props> {
     this.locationRef = null;
   }
 
-  onClose = () => {
-    const { setLoginModalMountState } = this.props;
-    setLoginModalMountState({ state: false });
-  };
-
   togglePreScreen = () => {
     const { isPreScreen } = this.props;
     this.setState({ isPreScreen: !isPreScreen });
@@ -111,6 +106,10 @@ class PLCCForm extends React.PureComponent<Props> {
     this.locationRef.setAddressText(address.street);
   };
 
+  getInitialAddressLine1 = initialValues => {
+    return (initialValues && initialValues.addressLine1) || '';
+  };
+
   /**
    * @function render  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
@@ -118,7 +117,7 @@ class PLCCForm extends React.PureComponent<Props> {
    */
   // eslint-disable-next-line complexity
   render() {
-    const { toggleModal, plccData, labels, handleSubmit, dispatch } = this.props;
+    const { toggleModal, plccData, labels, handleSubmit, initialValues, isRtpsFlow } = this.props;
     const { isPreScreen } = this.state;
 
     return (
@@ -143,37 +142,41 @@ class PLCCForm extends React.PureComponent<Props> {
             />
           </TextBoxContainer>
         )}
-        <PreScreenCodeContainer>
-          <StyledBodyCopy
-            text={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
-            fontSize="fs15"
-            color="gray.900"
-            paddingLeft="16px"
-            mobilefontFamily="secondary"
-            textAlign="center"
-            paddingTop={!isPreScreen ? '22px' : '1px'}
-          />
 
-          {!isPreScreen ? (
-            <StyledAnchor
-              onPress={() => this.togglePreScreen()}
-              fontSizeVariation="large"
-              underline
-              text={getLabelValue(labels, 'lbl_PLCCForm_clickHere')}
-              paddingRight="16px"
-              paddingTop={!isPreScreen ? '22px' : '1px'}
-            />
-          ) : (
+        {!isRtpsFlow && (
+          <PreScreenCodeContainer>
             <StyledBodyCopy
-              text={getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
+              text={getLabelValue(labels, 'lbl_PLCCForm_preScreenCodeText')}
               fontSize="fs15"
               color="gray.900"
+              paddingLeft="16px"
+              mobilefontFamily="secondary"
               textAlign="center"
-              paddingRight="16px"
-              paddingTop={!isPreScreen ? '12px' : '1px'}
+              paddingTop={!isPreScreen ? '22px' : '1px'}
             />
-          )}
-        </PreScreenCodeContainer>
+
+            {!isPreScreen ? (
+              <StyledAnchor
+                onPress={() => this.togglePreScreen()}
+                fontSizeVariation="large"
+                underline
+                text={getLabelValue(labels, 'lbl_PLCCForm_clickHere')}
+                paddingRight="16px"
+                paddingTop={!isPreScreen ? '22px' : '1px'}
+              />
+            ) : (
+              <StyledBodyCopy
+                text={getLabelValue(labels, 'lbl_PLCCForm_enterHere')}
+                fontSize="fs15"
+                color="gray.900"
+                textAlign="center"
+                paddingRight="16px"
+                paddingTop={!isPreScreen ? '12px' : '1px'}
+              />
+            )}
+          </PreScreenCodeContainer>
+        )}
+
         <StyledBodyCopy
           text={getLabelValue(labels, 'lbl_PLCCForm_contactInfoHeader')}
           fontSize="fs16"
@@ -236,16 +239,11 @@ class PLCCForm extends React.PureComponent<Props> {
             name="addressLine1"
             headerTitle={getLabelValue(labels, 'lbl_PLCCForm_addressLine1')}
             component={GooglePlacesInput}
-            onPlaceSelected={this.handlePlaceSelected}
             componentRestrictions={Object.assign({}, { country: [this.siteId] })}
             onValueChange={(data, inputValue) => {
               this.handlePlaceSelected(data, inputValue);
             }}
-            onChangeText={text => {
-              setTimeout(() => {
-                dispatch(change('AddressForm', 'addressLine1', text));
-              });
-            }}
+            initialValue={this.getInitialAddressLine1(initialValues)}
             refs={instance => {
               this.locationRef = instance;
             }}
@@ -425,7 +423,7 @@ class PLCCForm extends React.PureComponent<Props> {
             text={getLabelValue(labels, 'lbl_PLCCForm_noThanks')}
             paddingTop="40px"
             paddingBottom="60px"
-            onPress={toggleModal}
+            onPress={() => toggleModal()}
             url=""
           />
         </ButtonWrapper>
@@ -454,7 +452,6 @@ const validateMethod = createValidateMethod(
 );
 
 PLCCForm.propTypes = {
-  setLoginModalMountState: PropTypes.bool.isRequired,
   plccData: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
   profileInfo: PropTypes.shape({}).isRequired,
@@ -467,3 +464,5 @@ export default reduxForm({
   enableReinitialize: true,
   ...validateMethod,
 })(PLCCForm);
+
+export { PLCCForm as PLCCFormVanilla };
