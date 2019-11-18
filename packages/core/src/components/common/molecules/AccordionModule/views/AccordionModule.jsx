@@ -28,7 +28,7 @@ const AccordionModule = props => {
   }
 
   return accordionWrapper ? (
-    <Row fullBleed className={className}>
+    <Row className={className}>
       <Col
         colSize={{
           small: 6,
@@ -41,7 +41,7 @@ const AccordionModule = props => {
             if (!(richText && richText.text)) {
               return null;
             }
-            return <RichText className="congrats_msg" richTextHtml={richText.text} />;
+            return <RichText richTextHtml={richText.text} />;
           })}
         </AccordionList>
       </Col>
