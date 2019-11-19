@@ -69,7 +69,7 @@ const DamImage = props => {
     ...otherProps
   } = props;
 
-  const ImageComponent = host ? LazyloadImage : Image;
+  const ImageComponent = host ? Image : Image;
 
   if (videoData) {
     return <VideoPlayer {...videoData} />;
