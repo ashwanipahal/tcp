@@ -9,7 +9,7 @@ import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import FavoritesViewStyle from '../styles/Favorites.style';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
-import NoFavoritesFound from '../molecules/NoFavoritesFound/NoFavoritesFound';
+import NoFavoritesFound from '../molecules/NoFavoritesFound/views';
 
 const FavoritesView = props => {
   const {

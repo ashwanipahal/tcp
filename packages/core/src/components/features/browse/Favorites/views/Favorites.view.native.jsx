@@ -5,14 +5,17 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 import { getLoading, getLabelValue } from '@tcp/core/src/utils';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import {
   PageContainer,
   BrandFilterContainer,
   RowContainer,
-} from '../styles/ Favorites.style.native';
+  RecommendationWrapper,
+} from '../styles/Favorites.style.native';
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
-import NoFavoritesFound from '../molecules/NoFavoritesFound/NoFavoritesFound.native';
+import NoFavoritesFound from '../molecules/NoFavoritesFound/views';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 class FavoritesView extends React.PureComponent {
   brandOptions;
@@ -125,7 +128,14 @@ class FavoritesView extends React.PureComponent {
       }
     }
 
-    // filteredItemsList = []; DELETE this LINE
+    filteredItemsList = []; // DELETE this LINE
+
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
 
     return (
       <PageContainer>
@@ -188,6 +198,10 @@ class FavoritesView extends React.PureComponent {
             labelsPlpTiles={labelsPlpTiles}
           />
         )}
+
+        <RecommendationWrapper>
+          <Recommendations {...recommendationAttributes} />
+        </RecommendationWrapper>
       </PageContainer>
     );
   }

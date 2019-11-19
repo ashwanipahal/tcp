@@ -1,11 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
-import { Col, Row, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { NoFavoriteContainer } from '../../../styles/Favorites.style.native';
 
-export const renderText = (headerText, bodyText) => {
+const renderText = (headerText, bodyText) => {
   return (
-    <Col colSize={{ large: 12, medium: 8, small: 6 }} className="no-favorite-container">
+    <NoFavoriteContainer>
       <BodyCopy
         className="no-favorite-heading"
         fontFamily="secondary"
@@ -24,19 +25,18 @@ export const renderText = (headerText, bodyText) => {
         tabIndex="-1"
         textAlign="center"
         text={bodyText}
+        margin="12px 0 0 0"
       />
-    </Col>
+    </NoFavoriteContainer>
   );
 };
 
 const NoFavoritesFound = props => {
   const { labels } = props;
   return (
-    <View {...props}>
-      <Row className="no-favorites-found">
-        {renderText(labels.lbl_dont_have_favorites, labels.lbl_add_favorite_to_your_list)}
-        {renderText(labels.lbl_inspiration_required, labels.lbl_items_to_favorite)}
-      </Row>
+    <View>
+      {renderText(labels.lbl_dont_have_favorites, labels.lbl_add_favorite_to_your_list)}
+      {renderText(labels.lbl_inspiration_required, labels.lbl_items_to_favorite)}
     </View>
   );
 };
