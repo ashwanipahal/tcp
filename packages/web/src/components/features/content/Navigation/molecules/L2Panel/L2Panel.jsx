@@ -140,6 +140,7 @@ const createLinks = (
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + MAX_ITEMS_IN_COL : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
+
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
               <ClickTracker

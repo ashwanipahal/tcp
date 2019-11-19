@@ -77,13 +77,6 @@ export default function create(store) {
       },
     },
 
-    externalReferrer: {
-      get() {
-        const { pageData } = store.getState();
-        return (pageData && pageData.pageReferer) || '';
-      },
-    },
-
     pageType: {
       get() {
         const { pageData } = store.getState();
@@ -208,20 +201,7 @@ export default function create(store) {
         return typeCart;
       },
     },
-    campaignId: {
-      get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'campaignId'], '');
-      },
-    },
-    internalCampaignId: {
-      get() {
-        return store
-          .getState()
-          .AnalyticsDataKey.getIn(['clickActionAnalyticsData', 'internalCampaignId'], '');
-      },
-    },
+
     products: {
       get() {
         return store
