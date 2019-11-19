@@ -13,6 +13,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 // For SSR perf timing
 import { getAPIConfig } from '@tcp/core/src/utils';
+import langMap from '../config/languageMap';
 import RenderPerf from '../components/common/molecules/RenderPerf';
 // External Style Sheet
 const CSSOverride = () => {
@@ -52,7 +53,7 @@ class MyDocument extends Document {
   render() {
     const { language } = getAPIConfig();
     return (
-      <Html lang={language}>
+      <Html lang={langMap[language] || 'en'}>
         <Head>
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
           <link rel="icon" href={process.env.RWD_WEB_FAVICON_URL} />
