@@ -201,7 +201,7 @@ export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 
-export function* addAndSetGiftWrappingOptions(payload) {
+export function* addAndSetGiftWrappingOptions(payload, hasSetGiftOptions) {
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (payload.hasGiftWrapping) {
     try {
@@ -212,7 +212,7 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  } else {
+  } else if (hasSetGiftOptions) {
     try {
       const res = yield call(removeGiftWrappingOption, payload);
       if (res) {

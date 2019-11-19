@@ -24,23 +24,21 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
         {connectWithUsLabel}
       </BodyCopy>
       <div className="social-media-pallete">
-        {links.map((link, index) => {
-          return (
-            <ClickTracker
-              as={Anchor}
-              to={link.url}
-              target={link.target}
-              clickData={{ customEvents: ['event84'], socialNetwork: link.title.toLowerCase() }}
-            >
-              <Image
-                className="social-media-icon"
-                data-locator={`${getLocator('social_media_links')}${index}`}
-                src={getIconPath(link.class)}
-                alt={link.title}
-              />
-            </ClickTracker>
-          );
-        })}
+        {links.map((link, index) => (
+          <ClickTracker
+            as={Anchor}
+            to={link.url}
+            target={link.target}
+            clickData={{ customEvents: ['event84'] }}
+          >
+            <Image
+              className="social-media-icon"
+              data-locator={`${getLocator('social_media_links')}${index}`}
+              src={getIconPath(link.class)}
+              alt={link.title}
+            />
+          </ClickTracker>
+        ))}
       </div>
     </div>
   </React.Fragment>

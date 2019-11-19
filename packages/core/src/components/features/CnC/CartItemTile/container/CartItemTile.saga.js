@@ -36,7 +36,10 @@ import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { removeItem, updateItem } from '../../../../../services/abstractors/CnC';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
-import { isItemBossBopisInEligible } from './CartItemTile.selectors';
+import {
+  isItemBossBopisInEligible,
+  getIsDeleteConfirmationModalEnabled,
+} from './CartItemTile.selectors';
 import getProductInfoById from '../../../../../services/abstractors/productListing/productDetail';
 import { openPickupModalWithValues } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.actions';
 import { handleServerSideErrorAPI } from '../../Checkout/container/Checkout.saga.util';
@@ -96,17 +99,25 @@ export function* confirmRemoveItem({ payload, afterHandler, isMiniBag }) {
  *
  */
 export function* removeCartItem({ payload }) {
+  yield put(setLoaderState(true));
   const { itemId, pageView } = payload;
   if (pageView === 'myBag') {
     const isUnqualifiedItem = yield select(checkoutIfItemIsUnqualified, itemId);
     const isItemInEligible = yield select(isItemBossBopisInEligible, payload);
     const isShowSaveForLaterSwitch = yield select(getSaveForLaterSwitch);
-    if (isUnqualifiedItem || isItemInEligible || !isShowSaveForLaterSwitch) {
+    const isDeleteConfirmationModalEnabled = yield select(getIsDeleteConfirmationModalEnabled);
+    if (
+      isUnqualifiedItem ||
+      isItemInEligible ||
+      !isShowSaveForLaterSwitch ||
+      !isDeleteConfirmationModalEnabled
+    ) {
       yield call(confirmRemoveItem, { payload: itemId });
       return;
     }
     yield put(BAG_PAGE_ACTIONS.openItemDeleteConfirmationModal(payload));
   } else {
+    yield put(setLoaderState(false));
     yield call(confirmRemoveItem, { payload: itemId, isMiniBag: true });
   }
 }

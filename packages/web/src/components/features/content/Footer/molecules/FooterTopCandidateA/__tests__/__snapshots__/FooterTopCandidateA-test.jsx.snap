@@ -408,6 +408,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
                     "event22",
                     "event80",
                   ],
+                  "pageName": "content:email confirmation",
+                  "pageShortName": "content:referafriend  confirmation",
                 }
               }
               data-locator="global_referfriend"

@@ -23,27 +23,17 @@ export const mapDispatchToProps = dispatch => {
     validateSignupSmsPhoneNumber: phoneNumber => {
       return validatePhoneNumber(phoneNumber) ? Promise.resolve({}) : Promise.reject();
     },
+
     trackSubscriptionSuccess: () => {
       dispatch(
         setClickAnalyticsData({
-          customEvents: ['event107', 'event80'],
+          customEvents: ['event15', 'event80'],
+          pageName: 'content:email confirmation',
+          pageShortName: 'content:sms confirmation',
         })
       );
 
-      dispatch(
-        trackPageView({
-          props: {
-            initialProps: {
-              pageProps: {
-                pageData: {
-                  pageName: 'content:email confirmation',
-                  pageShortName: 'content:sms confirmation',
-                },
-              },
-            },
-          },
-        })
-      );
+      dispatch(trackPageView({}));
     },
   };
 };

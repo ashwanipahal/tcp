@@ -13,6 +13,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
   currentProduct={Object {}}
   currentState={Object {}}
   handleAddToBag={[Function]}
+  isKeepAliveEnabled={false}
   isLoggedIn={false}
   isPickupModalOpen={false}
   isPlcc={false}
@@ -56,6 +57,7 @@ exports[`BundleProductDetail should render correctly 1`] = `
       },
     }
   }
+  outOfStockLabels={Object {}}
   outfitLabels={Object {}}
   pdpLabels={Object {}}
   plpLabels={Object {}}

@@ -10,6 +10,7 @@ import styles, { carousalStyle } from '../styles/ProductImages.style';
 import ProductDetailImage from '../../../molecules/ProductDetailImage';
 import { getIconPath, getLocator } from '../../../../../utils';
 import SocialConnect from './SocialConnect.view';
+import OutOfStockWaterMarkView from '../../../../features/browse/ProductDetail/molecules/OutOfStockWaterMark';
 
 // function to return Thumbnails list to show on PDP and full size page
 const getThumbnailList = (
@@ -63,6 +64,10 @@ class ProductImages extends React.Component {
     onCloseClick: PropTypes.func.isRequired,
     isFullSizeModalOpen: PropTypes.bool,
     isMobile: PropTypes.bool,
+    outOfStockLabels: PropTypes.shape({
+      outOfStockCaps: PropTypes.string,
+    }),
+    keepAlive: PropTypes.bool,
   };
 
   state = {
@@ -101,6 +106,8 @@ class ProductImages extends React.Component {
       isMobile,
       pdpLabels,
       isGiftCard,
+      keepAlive,
+      outOfStockLabels,
     } = this.props;
     const { currentImageIndex } = this.state;
     const thumbnailImagesPaths = images.map(image => ({
@@ -124,7 +131,7 @@ class ProductImages extends React.Component {
         )}
         <div className={this.getImageWrapperCss()}>
           <div className="main-image-container">
-            {
+            <div className="carousel-container">
               <Carousel
                 options={config.CAROUSEL_OPTIONS}
                 inheritedStyles={carousalStyle}
@@ -151,7 +158,13 @@ class ProductImages extends React.Component {
                     );
                   })}
               </Carousel>
-            }
+              {keepAlive && (
+                <OutOfStockWaterMarkView
+                  label={outOfStockLabels.outOfStockCaps}
+                  fontSizes={['fs16', 'fs16', 'fs48']}
+                />
+              )}
+            </div>
             <div className="social-connect-wrapper">
               {isFullSizeVisible && !isGiftCard && (
                 <span className="fullSize-image-label">
@@ -205,6 +218,10 @@ ProductImages.defaultProps = {
   isFullSizeModalOpen: false,
   isMobile: true,
   isGiftCard: false,
+  outOfStockLabels: {
+    outOfStockCaps: '',
+  },
+  keepAlive: false,
 };
 
 export default withStyles(ProductImages, styles);

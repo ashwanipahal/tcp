@@ -18,7 +18,9 @@ import {
   getNavigationTree,
   getLongDescription,
   getLastLoadedPageNumber,
+  getSelectedFilter,
 } from '../../ProductListing/container/ProductListing.selectors';
+import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
   getLoadedProductsCount,
   getLoadedProductsPages,
@@ -32,6 +34,7 @@ import {
   getAllProductsSelect,
   updateAppliedFiltersInState,
   getScrollToTopValue,
+  getPDPLabels,
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -145,6 +148,8 @@ class SearchDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       labelsLogin,
+      navigation,
+      pdpLabels,
       ...otherProps
     } = this.props;
 
@@ -186,6 +191,8 @@ class SearchDetailContainer extends React.PureComponent {
                 searchedText={this.searchQuery}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
+                navigation={navigation}
+                pdpLabels={pdpLabels}
                 {...otherProps}
               />
             )}
@@ -236,6 +243,7 @@ function mapStateToProps(state) {
     labelsLogin: getLabelsAccountOverView(state),
     isLoadingMore: getIsLoadingMore(state),
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
+    selectedFilterValue: getSelectedFilter(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
@@ -246,6 +254,7 @@ function mapStateToProps(state) {
     scrollToTop: getScrollToTopValue(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    pdpLabels: getPDPLabels(state),
   };
 }
 
@@ -268,6 +277,9 @@ function mapDispatchToProps(dispatch) {
     },
     setRecentSearches: searchTerm => {
       dispatch(setRecentSearch({ searchTerm }));
+    },
+    setSelectedFilter: payload => {
+      dispatch(setFilter(payload));
     },
   };
 }
@@ -311,6 +323,7 @@ SearchDetailContainer.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -339,6 +352,7 @@ SearchDetailContainer.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  pdpLabels: {},
 };
 
 export default connect(

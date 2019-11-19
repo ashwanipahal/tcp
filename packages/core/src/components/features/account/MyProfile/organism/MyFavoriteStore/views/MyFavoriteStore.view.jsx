@@ -11,7 +11,6 @@ import styles from '../styles/MyFavoriteStore.style';
 
 const MyFavoriteStore = ({
   labels,
-  defaultStore,
   favStoreName,
   favStoreAddress,
   favStoreState,
@@ -25,10 +24,11 @@ const MyFavoriteStore = ({
     <MyProfileTile
       className={className}
       title={getLabelValue(labels, 'lbl_common_myFavoriteStore')}
-      ctaTitle={ctaTitleDefaultStore(labels, defaultStore, isMyPreferences)}
+      ctaTitle={ctaTitleDefaultStore(labels, favStoreName, isMyPreferences)}
       ctaPath="/account/profile"
       ctaLink="/account?id=profile&subSection=change-password"
       dataLocator="myFavStoreLbl"
+      favStoreName={favStoreName}
     >
       {isMyPreferences && (
         <Row fullBleed>
@@ -125,7 +125,6 @@ const MyFavoriteStore = ({
 };
 
 MyFavoriteStore.propTypes = {
-  defaultStore: PropTypes.string,
   favStoreName: PropTypes.string,
   favStoreAddress: PropTypes.string,
   favStoreState: PropTypes.string,
@@ -138,7 +137,6 @@ MyFavoriteStore.propTypes = {
 };
 
 MyFavoriteStore.defaultProps = {
-  defaultStore: '',
   favStoreName: '',
   favStoreState: '',
   favStoreCity: '',

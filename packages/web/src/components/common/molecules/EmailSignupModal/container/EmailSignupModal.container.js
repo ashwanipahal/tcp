@@ -32,23 +32,12 @@ export const mapDispatchToProps = dispatch => {
       dispatch(
         setClickAnalyticsData({
           customEvents: ['event15', 'event80'],
+          pageName: 'content:email confirmation',
+          pageShortName: 'content:email confirmation',
         })
       );
 
-      dispatch(
-        trackPageView({
-          props: {
-            initialProps: {
-              pageProps: {
-                pageData: {
-                  pageName: 'content:email confirmation',
-                  pageShortName: 'content:email confirmation',
-                },
-              },
-            },
-          },
-        })
-      );
+      dispatch(trackPageView());
     },
   };
 };

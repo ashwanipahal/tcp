@@ -24,6 +24,8 @@ class BundleProductItems extends React.PureComponent {
       currencyExchange,
       className,
       outfitLabels,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     return (
       <ul className="outfiting-list-container">
@@ -54,6 +56,8 @@ class BundleProductItems extends React.PureComponent {
                   currencySymbol={currencySymbol}
                   currencyExchange={currencyExchange}
                   isBundleProduct
+                  isKeepAliveEnabled={isKeepAliveEnabled}
+                  outOfStockLabels={outOfStockLabels}
                 />
               </li>
             );
@@ -82,6 +86,8 @@ BundleProductItems.propTypes = {
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   className: PropTypes.string,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 BundleProductItems.defaultProps = {
@@ -95,6 +101,7 @@ BundleProductItems.defaultProps = {
   currencySymbol: 'USD',
   pdpLabels: {},
   className: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(BundleProductItems, styles);
