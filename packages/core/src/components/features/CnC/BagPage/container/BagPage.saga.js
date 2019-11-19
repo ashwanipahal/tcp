@@ -64,11 +64,8 @@ import {
   handleServerSideErrorAPI,
   getRouteToCheckoutStage,
 } from '../../Checkout/container/Checkout.saga.util';
-import {
-  startSflItemDelete,
-  startSflItemMoveToBag,
-  routeForAppCartCheckout,
-} from './BagPage.saga.util';
+import startSflItemDelete, { routeForAppCartCheckout } from './BagPage.saga.util';
+import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.saga';
 
 const { getOrderPointsRecalcFlag } = utility;
 
@@ -179,7 +176,7 @@ function* updateBopisItems(res, isCartPage) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
-    yield put(setLoaderState(false));
+    // yield put(setLoaderState(false));
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
@@ -537,6 +534,34 @@ export function* setSflItemUpdate(payload) {
     yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
+
+export function* startSflItemMoveToBag({ payload }) {
+  try {
+    yield put(setLoaderState(true));
+    const { itemId } = payload;
+    const addToCartData = {
+      skuInfo: {
+        skuId: itemId,
+      },
+      quantity: 1,
+      fromMoveToBag: true,
+    };
+    yield call(addToCartEcom, { payload: addToCartData });
+    yield call(getCartDataSaga, {
+      payload: {
+        isRecalculateTaxes: true,
+        recalcRewards: true,
+        translation: true,
+        excludeCartItems: false,
+      },
+    });
+    yield call(startSflItemDelete, { payload });
+    yield put(setLoaderState(false));
+  } catch (err) {
+    yield put(setLoaderState(false));
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }
 

@@ -15,7 +15,7 @@ import {
   getSflDataSaga,
   setSflItemUpdate,
 } from '../container/BagPage.saga';
-import { startSflItemDelete } from '../container/BagPage.saga.util';
+import startSflItemDelete from '../container/BagPage.saga.util';
 import BAG_PAGE_ACTIONS from '../container/BagPage.actions';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import BAG_SELECTORS from '../container/BagPage.selectors';
@@ -57,7 +57,6 @@ describe('Cart Item saga', () => {
     const getCartDataSagaGen = getCartDataSaga({
       payload: { isCheckoutFlow: true, translation: true },
     });
-    getCartDataSagaGen.next();
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
     getCartDataSagaGen.next();
