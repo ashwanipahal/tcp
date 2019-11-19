@@ -35,6 +35,7 @@ import {
   getAppliedSortId,
   getIsLoadingMore,
   checkIfSearchResultsAvailable,
+  getPDPLabels,
 } from '../container/SearchDetail.selectors';
 
 import { isPlccUser } from '../../../account/User/container/User.selectors';
@@ -159,6 +160,7 @@ class SearchDetailContainer extends React.PureComponent {
       currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      pdpLabels,
       ...otherProps
     } = this.props;
 
@@ -200,6 +202,7 @@ class SearchDetailContainer extends React.PureComponent {
                 searchedText={searchedText}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
+                pdpLabels={pdpLabels}
                 {...otherProps}
               />
             )}
@@ -291,6 +294,7 @@ function mapStateToProps(state) {
     currencyAttributes: getCurrencyAttributes(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+    pdpLabels: getPDPLabels(state),
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
     outOfStockLabels: getLabelsOutOfStock(state),
   };
@@ -331,6 +335,7 @@ SearchDetailContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isLoadingMore: PropTypes.bool,
   isSearchResultsAvailable: PropTypes.bool,
+  pdpLabels: PropTypes.shape({}),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -340,6 +345,7 @@ SearchDetailContainer.defaultProps = {
   initialValues: {},
   isLoadingMore: false,
   isSearchResultsAvailable: false,
+  pdpLabels: {},
 };
 
 export default withIsomorphicRenderer({
