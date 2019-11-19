@@ -10,12 +10,12 @@ import {
 } from '@tcp/core/src/components/common/atoms/Icon/Icon.constants';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
-import { Container, RowContainer } from '../styles/AddList.style.native';
+import { Container, RowContainer } from '../styles/EditList.style.native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
-class AddList extends React.PureComponent {
+class EditList extends React.PureComponent {
   submitHandler = () => {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {
@@ -84,14 +84,14 @@ class AddList extends React.PureComponent {
   }
 }
 
-AddList.propTypes = {
+EditList.propTypes = {
   labels: PropTypes.shape({}),
   handleSubmit: PropTypes.func,
-  onHandleSubmit: PropTypes.func.isRequired,
   margins: PropTypes.string,
+  onHandleSubmit: PropTypes.func.isRequired,
 };
 
-AddList.defaultProps = {
+EditList.defaultProps = {
   labels: {},
   handleSubmit: () => {},
   margins: null,
@@ -100,7 +100,7 @@ AddList.defaultProps = {
 const validateMethod = createValidateMethod(getStandardConfig(['listName']));
 
 export default reduxForm({
-  form: 'addListForm',
+  form: 'EditListForm',
   ...validateMethod,
-})(withStyles(AddList));
-export { AddList as AddListVanilla };
+})(withStyles(EditList));
+export { EditList as EditListVanilla };

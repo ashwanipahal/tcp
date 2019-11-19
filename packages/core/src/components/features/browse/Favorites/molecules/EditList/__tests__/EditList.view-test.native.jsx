@@ -1,17 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddListVanilla } from '../views/AddList.view.native';
+import { EditListVanilla } from '../views/EditList.view.native';
 
 describe('BundleProductItemsVanilla', () => {
   let component;
   const props = {
     labels: {},
+    onCloseModal: null,
     handleSubmit: () => {},
     margins: null,
+    modalMargins: null,
   };
 
   beforeEach(() => {
-    component = shallow(<AddListVanilla {...props} />);
+    component = shallow(<EditListVanilla {...props} />);
   });
 
   it('should be defined', () => {

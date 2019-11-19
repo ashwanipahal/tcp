@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
-import { getLabelValue } from '@tcp/core/src/utils/utils';
-
 import { Container } from '../styles/ModalWrapper.style.native';
 
 const fullWidth = {
@@ -20,11 +18,11 @@ class ModalWrapper extends React.PureComponent {
   renderCheckBox = () => {};
 
   render() {
-    const { isOpenAddList, labels, margins, modalMargins, children } = this.props;
+    const { isOpenAddList, margins, modalMargins, heading, children } = this.props;
     return (
       <Container margins={margins}>
         <ModalNative
-          heading={getLabelValue(labels, 'lbl_fav_creat_new_list_heading')}
+          heading={heading}
           isOpen={isOpenAddList}
           onRequestClose={this.toggleModal}
           closeIconDataLocator=""
@@ -59,6 +57,7 @@ ModalWrapper.propTypes = {
   modalMargins: PropTypes.string,
   children: PropTypes.element,
   onCloseModal: PropTypes.func,
+  heading: PropTypes.string.isRequired,
 };
 
 ModalWrapper.defaultProps = {

@@ -14,9 +14,12 @@ import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
 import ModalWrapper from '../molecules/ModalWrapper';
 import AddList from '../molecules/AddList';
+import EditList from '../molecules/EditList';
 
+const ADD_LIST = 'addList';
+const EDIT_LIST = 'editList';
 class FavoritesView extends React.PureComponent {
-  currentPopupName = 'addList';
+  currentPopupName;
 
   brandOptions;
   // eslint-disable-next-line
@@ -94,8 +97,16 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
+  onAddNewListHandler = data => {
+    console.tron.log('onAddNewListHandler:', data);
+  };
+
+  onEditListHandler = data => {
+    console.tron.log('onEditListHandler:', data);
+  };
+
   handleEditList = () => {
-    this.currentPopupName = 'addList';
+    this.currentPopupName = EDIT_LIST;
     this.setState({
       isOpenAddList: true,
     });
@@ -113,6 +124,7 @@ class FavoritesView extends React.PureComponent {
     return (
       <ModalWrapper
         labels={labels}
+        heading={this.getCurrentPopUpHeading()}
         modalMargins="0 14px 0 14px"
         isOpenAddList={isOpenAddList}
         onCloseModal={this.onCloseModal}
@@ -124,10 +136,25 @@ class FavoritesView extends React.PureComponent {
 
   getCurrentPopUp = () => {
     const { labels } = this.props;
-    if (this.currentPopupName === 'addList') {
-      return <AddList labels={labels} />;
+    if (this.currentPopupName === ADD_LIST) {
+      return <AddList labels={labels} onHandleSubmit={this.onAddNewListHandler} />;
     }
+    if (this.currentPopupName === EDIT_LIST) {
+      return <EditList labels={labels} onHandleSubmit={this.onEditListHandler} />;
+    }
+
     return null;
+  };
+
+  getCurrentPopUpHeading = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === ADD_LIST) {
+      return getLabelValue(labels, 'lbl_fav_creat_new_list_heading');
+    }
+    if (this.currentPopupName === EDIT_LIST) {
+      return getLabelValue(labels, 'lbl_fav_edit_list');
+    }
+    return '';
   };
 
   render() {
