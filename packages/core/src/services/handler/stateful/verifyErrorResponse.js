@@ -96,7 +96,7 @@ export const verifyErrorResponse = response => {
   errorsList.forEach(error => {
     const errorKey = getErrorKey(error);
     if (errorKey && errorKey === 'SUCCESS') return;
-    if (errorKey) {
+    if (errorKey && ERRORS_MAP[errorKey]) {
       errorMessage[ERRORS_MAP[errorKey].formFieldName || GLOBAL_ERROR] = populateErrorPlaceholder(
         ERRORS_MAP[errorKey].errorMessage,
         error

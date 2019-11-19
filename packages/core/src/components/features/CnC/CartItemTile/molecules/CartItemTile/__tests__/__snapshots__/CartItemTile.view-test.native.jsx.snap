@@ -120,6 +120,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -130,6 +131,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should call gotopdp page 1`] = `
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -512,6 +514,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -522,6 +525,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -887,6 +891,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -897,6 +902,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -1277,6 +1283,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -1287,6 +1294,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -1663,6 +1671,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -1673,6 +1682,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -2033,6 +2043,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -2043,6 +2054,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -2404,6 +2416,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -2414,6 +2427,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -2775,6 +2789,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -2785,6 +2800,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -3100,6 +3116,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -3110,6 +3127,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -3471,6 +3489,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -3481,6 +3500,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -3796,6 +3816,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -3806,6 +3827,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -4167,6 +4189,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -4177,6 +4200,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -4558,6 +4582,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -4568,6 +4593,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -4964,6 +4990,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -4974,6 +5001,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -5370,6 +5398,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -5380,6 +5409,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>
@@ -5756,6 +5786,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           >
             <Styled(DamImage)
               alt=""
+              checkBrand=""
               crop=""
               height={100}
               host=""
@@ -5766,6 +5797,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
               source=""
               swatchConfig=""
               url=""
+              videoData={null}
               width={100}
             />
           </Styled(TouchableOpacity)>

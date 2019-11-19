@@ -16,16 +16,16 @@ import config from '../Config';
 
 class EmailSignupModal extends React.PureComponent {
   componentDidUpdate({ subscription: oldSubscription }) {
-    const { subscription } = this.props;
-
-    if (
-      this.modalContentRef &&
-      subscription.success !== oldSubscription.success &&
-      subscription.success
-    ) {
-      this.formSubmitPromise.resolve();
-      this.modalContentRef.focus();
-    } else if (subscription.error) {
+    const { subscription, trackSubscriptionSuccess } = this.props;
+    if (subscription.success !== oldSubscription.success && subscription.success) {
+      if (this.formSubmitPromise) {
+        this.formSubmitPromise.resolve();
+      }
+      if (this.modalContentRef) {
+        this.modalContentRef.focus();
+      }
+      trackSubscriptionSuccess();
+    } else if (subscription.error && this.formSubmitPromise) {
       this.formSubmitPromise.reject();
     }
   }
@@ -241,6 +241,7 @@ EmailSignupModal.propTypes = {
   reset: PropTypes.func,
   handleSubmit: PropTypes.func,
   validateSignupEmail: PropTypes.func,
+  trackSubscriptionSuccess: PropTypes.func,
   subscription: PropTypes.shape({}),
   isModalOpen: PropTypes.bool,
   pristine: PropTypes.bool,
@@ -253,6 +254,7 @@ EmailSignupModal.defaultProps = {
   closeModal: () => {},
   reset: () => {},
   handleSubmit: () => {},
+  trackSubscriptionSuccess: () => {},
   validateSignupEmail: () => Promise.resolve({}),
   className: '',
   subscription: {},

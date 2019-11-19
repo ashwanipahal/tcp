@@ -5,6 +5,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
   <Styled(View)>
     <Styled(DamImage)
       alt=""
+      checkBrand=""
       crop=""
       height={100}
       host=""
@@ -14,6 +15,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
       source=""
       swatchConfig=""
       url=""
+      videoData={null}
       width={100}
     />
     <Styled(Image)
