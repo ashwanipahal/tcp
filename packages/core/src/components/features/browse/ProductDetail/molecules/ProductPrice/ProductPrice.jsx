@@ -107,7 +107,7 @@ class ProductPrice extends React.Component {
             fontSize="fs16"
             fontFamily="secondary"
             fontWeight="black"
-            color="red.600"
+            color="red.500"
           >
             {currency}
             {offerPrice.toFixed(2)}
@@ -140,7 +140,7 @@ class ProductPrice extends React.Component {
           fontSize="fs16"
           fontFamily="secondary"
           fontWeight="black"
-          color="red.600"
+          color="red.500"
         >
           {currency}
           {offerPrice.toFixed(2)}
@@ -154,7 +154,7 @@ class ProductPrice extends React.Component {
         fontSize="fs16"
         fontFamily="secondary"
         fontWeight="black"
-        color="red.600"
+        color="red.500"
       >
         {currency}
         {listPrice.toFixed(2)}
