@@ -421,5 +421,9 @@ export default css`
       padding-bottom: 1px;
     }
   }
+  .dam-image-review-page {
+    width: 55px;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

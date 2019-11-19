@@ -992,11 +992,6 @@ class CartItemTile extends PureComponent {
     closeMiniBag();
   };
 
-  getHeightWidth = () => {
-    const { showOnReviewPage } = this.props;
-    return !showOnReviewPage ? '55px' : '100px';
-  };
-
   // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
@@ -1102,8 +1097,7 @@ class CartItemTile extends PureComponent {
                   itemBrand={this.getItemBrand(productDetail.itemInfo.itemBrand)}
                   isProductImage
                   onClick={this.closeMiniBagMethod}
-                  width={this.getHeightWidth()}
-                  height={this.getHeightWidth()}
+                  className={`${!showOnReviewPage ? 'dam-image-review-page' : ''}`}
                 />
               </LinkWrapper>
               {availability === CARTPAGE_CONSTANTS.AVAILABILITY.SOLDOUT && (
