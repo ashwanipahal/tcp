@@ -31,6 +31,10 @@ export default css`
       padding: 6px 0 4px;
     }
 
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      padding-bottom: 20px;
+    }
+
     &.pickup-shipping {
       @media ${props => props.theme.mediaQuery.large} {
         padding: 18px 0 14px;

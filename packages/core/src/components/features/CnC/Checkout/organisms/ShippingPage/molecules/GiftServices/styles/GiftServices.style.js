@@ -59,11 +59,12 @@ export default css`
       height: 100%;
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
       padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+      padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
   }
   .price {
     float: right;
-    margin-right: 5px;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .longDesc {
     font-size: ${props => props.theme.typography.fontSizes.fs12};
@@ -77,9 +78,10 @@ export default css`
   .phone-field-wrapper {
     width: auto;
     margin-left: -12px;
-    padding-right: 15px;
+    padding-right: 0;
     display: flex;
     align-self: center;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 
   .tcp-radio-button {
@@ -146,6 +148,10 @@ export default css`
     resize: none;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
+
+  .CheckBox__input {
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
 

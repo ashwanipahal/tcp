@@ -195,7 +195,7 @@ class RegisteredShippingForm extends React.Component {
         {!isEditing && !isAddNewAddress && (
           <Col colSize={{ small: 1, medium: 1, large: 1 }} className="hide-on-desktop">
             <Anchor
-              fontSizeVariation="medium"
+              fontSizeVariation="xlarge"
               underline
               noLink
               anchorVariation="primary"
@@ -264,7 +264,7 @@ class RegisteredShippingForm extends React.Component {
           {showEditLink && (
             <Col colSize={{ small: 1, medium: 1, large: 1 }} className="edit-link-placement">
               <Anchor
-                fontSizeVariation="medium"
+                fontSizeVariation="xlarge"
                 underline
                 noLink
                 anchorVariation="primary"
