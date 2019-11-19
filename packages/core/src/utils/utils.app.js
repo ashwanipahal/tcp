@@ -59,6 +59,9 @@ export const importOtherGraphQLQueries = ({ query, resolve, reject }) => {
     case 'AccountNavigation':
       resolve(require('../services/handler/graphQL/queries/AccountNavigation'));
       break;
+    case 'subNavigation':
+      resolve(require('../services/handler/graphQL/queries/subNavigation'));
+      break;
     default:
       reject();
       break;

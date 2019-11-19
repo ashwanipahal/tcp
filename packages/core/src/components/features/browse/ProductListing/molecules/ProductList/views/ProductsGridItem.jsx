@@ -5,6 +5,7 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -403,6 +404,19 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  getPriceForProduct = (listPrice, offerPrice, currencyAttributes) => {
+    let listPriceForColor = listPrice;
+    let offerPriceForColor = offerPrice;
+    if (currencyAttributes && currencyAttributes.exchangevalue) {
+      listPriceForColor = currencyConversion(listPrice, currencyAttributes);
+      offerPriceForColor = currencyConversion(offerPrice, currencyAttributes);
+    }
+    return {
+      listPriceForColor,
+      offerPriceForColor,
+    };
+  };
+
   render() {
     const {
       onQuickViewOpenClick,
@@ -410,7 +424,7 @@ class ProductsGridItem extends React.PureComponent {
       isMobile,
       //  currencySymbol,
       //  isBopisEnabled,
-      currencyExchange,
+      currencyAttributes,
       //  isBopisEnabledForClearance,
       //  isBossClearanceProductEnabled,
       //  isBossEnabled,
@@ -492,8 +506,11 @@ class ProductsGridItem extends React.PureComponent {
     // };
     const isKeepAlive = keepAlive && isKeepAliveKillSwitch;
     const topBadge = getTopBadge(isMatchingFamily, badge1);
-    const listPriceForColor = listPrice * currencyExchange;
-    const offerPriceForColor = offerPrice * currencyExchange;
+    const { listPriceForColor, offerPriceForColor } = this.getPriceForProduct(
+      listPrice,
+      offerPrice,
+      currencyAttributes
+    );
     // const isShowPickupCTA =
     //   validateBopisEligibility({
     //     isBopisClearanceProductEnabled: isBopisEnabledForClearance,

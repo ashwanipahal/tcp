@@ -219,7 +219,7 @@ class ProductListingContainer extends React.PureComponent {
         slpLabels={slpLabels}
         isLoggedIn={isLoggedIn}
         currency={currency}
-        currencyExchange={currencyAttributes.exchangevalue}
+        currencyAttributes={currencyAttributes}
         plpTopPromos={plpTopPromos}
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}

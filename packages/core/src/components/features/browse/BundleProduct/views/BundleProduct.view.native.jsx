@@ -48,6 +48,7 @@ class ProductBundle extends React.PureComponent {
       removeAddToFavoritesErrorMsg,
       addToBagErrorId,
       addToBagError,
+      toastMessage,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -104,6 +105,7 @@ class ProductBundle extends React.PureComponent {
               isLoggedIn={isLoggedIn}
               addToBagErrorId={addToBagErrorId}
               addToBagError={addToBagError}
+              toastMessage={toastMessage}
             />
           </PageContainer>
         </ScrollView>
@@ -132,6 +134,7 @@ ProductBundle.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 ProductBundle.defaultProps = {
