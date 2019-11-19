@@ -87,6 +87,10 @@ PODS:
     - RNPermissions
   - Permission-PhotoLibrary (2.0.3):
     - RNPermissions
+  - RCTACPAnalytics (1.1.2):
+    - React
+  - RCTACPCore (1.1.3):
+    - React
   - RCTRequired (0.61.1)
   - RCTTypeSafety (0.61.1):
     - FBLazyVector (= 0.61.1)
@@ -379,6 +383,8 @@ DEPENDENCIES:
   - Permission-Microphone (from `../node_modules/react-native-permissions/ios/Microphone.podspec`)
   - Permission-Notifications (from `../node_modules/react-native-permissions/ios/Notifications.podspec`)
   - Permission-PhotoLibrary (from `../node_modules/react-native-permissions/ios/PhotoLibrary.podspec`)
+  - "RCTACPAnalytics (from `../node_modules/@adobe/react-native-acpanalytics`)"
+  - "RCTACPCore (from `../node_modules/@adobe/react-native-acpcore`)"
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -480,6 +486,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions/ios/Notifications.podspec"
   Permission-PhotoLibrary:
     :path: "../node_modules/react-native-permissions/ios/PhotoLibrary.podspec"
+  RCTACPAnalytics:
+    :path: "../node_modules/@adobe/react-native-acpanalytics"
+  RCTACPCore:
+    :path: "../node_modules/@adobe/react-native-acpcore"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -594,6 +604,8 @@ SPEC CHECKSUMS:
   Permission-Microphone: aa3ee97912920c0faeaf8d6dd8ef91de1449386c
   Permission-Notifications: c11ff327feb378a2e18ccffcb0af482973ed7482
   Permission-PhotoLibrary: 23a656a9694dfba3f8ae1cbc0f33c67b35db0065
+  RCTACPAnalytics: 73481761a528828d1e5185fe2b8bd8df6e2aae6c
+  RCTACPCore: 68ff0c650a9922c3f491ead574c479e723238fc0
   RCTRequired: 53825815218847d3e9c7b6d92ad2d197a926d51e
   RCTTypeSafety: d886540c518e53064dfa081bf7693fd650699b92
   React: 5dea58967c421bd1fdf6b94c18b9ed0f5134683c
@@ -642,6 +654,6 @@ SPEC CHECKSUMS:
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
   Yoga: d8c572ddec8d05b7dba08e4e5f1924004a177078
 
-PODFILE CHECKSUM: 0ce6c5b479879a29fc99089d85121f6eac7a68ac
+PODFILE CHECKSUM: 3e5388450dd798004eaef05a03f39385fdfc6d45
 
 COCOAPODS: 1.8.4
