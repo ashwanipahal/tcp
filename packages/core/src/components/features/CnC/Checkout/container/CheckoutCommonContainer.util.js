@@ -269,7 +269,7 @@ export const mapStateToProps = state => {
       isFetching: getCardListFetchingState(state),
       bagLoading: BagPageSelector.isBagLoading(state),
     },
-    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(),
+    isVenmoPaymentInProgress: selectors.isVenmoPaymentInProgress(state),
     getPayPalSettings: selectors.getPayPalSettings(state),
     checkoutServerError: selectors.getCheckoutServerError(state),
     isRegisteredUserCallDone: getIsRegisteredUserCallDone(state),
@@ -283,6 +283,8 @@ export const mapStateToProps = state => {
     isRTPSFlow: selectors.getIsRtpsFlow(state),
     isPayPalWebViewEnable: BagPageSelector.getPayPalWebViewStatus(state),
     pageData: getPageData(state),
+    isVenmoPickupBannerDisplayed: selectors.isVenmoPickupBannerDisplayed(state),
+    isVenmoShippingBannerDisplayed: selectors.isVenmoShippingBannerDisplayed(state),
   };
 };
 

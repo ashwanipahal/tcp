@@ -4,6 +4,10 @@ import { getBirthDateOptionMap } from '../../../../utils/utils';
 export const MONTH_OPTIONS_MAP_WITH_EMPTY = [...getBirthDateOptionMap().monthsMap];
 
 export const ERR_CONFIG = ['PENDING', 'APPROVED', 'EXISTING'];
+export const COUPON_CODE_STATE = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+};
 
 export default {
   FETCH_MODULEX_CONTENT: `${APPLY_PLCC_ACTION_PATTERN}FETCH_MODULEX_CONTENT`,

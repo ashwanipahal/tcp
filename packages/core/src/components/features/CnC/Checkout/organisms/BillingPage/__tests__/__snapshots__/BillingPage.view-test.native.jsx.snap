@@ -24,6 +24,8 @@ exports[`PickUpFormPart component should renders correctly props not present 1`]
         cvvCodeRichText={null}
         isGuest={true}
         isPayPalWebViewEnable={false}
+        isVenmoEnabled={false}
+        isVenmoPaymentInProgress={false}
         labels={Object {}}
         navigation={Object {}}
         shippingAddress={null}
@@ -58,6 +60,8 @@ exports[`PickUpFormPart component should renders correctly props not present 2`]
         handleSubmit={[Function]}
         isGuest={false}
         isPayPalWebViewEnable={false}
+        isVenmoEnabled={false}
+        isVenmoPaymentInProgress={false}
         labels={Object {}}
         navigation={Object {}}
         shippingAddress={null}

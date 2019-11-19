@@ -38,7 +38,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       }
       data-locator="addedtobag-productprice"
     >
-      undefined 12.00
+      <Connect(PriceCurrency)
+        price={12}
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -127,7 +129,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       }
       data-locator="addedtobag-bagsubtotal"
     >
-      undefined 0
+      <Connect(PriceCurrency) />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)

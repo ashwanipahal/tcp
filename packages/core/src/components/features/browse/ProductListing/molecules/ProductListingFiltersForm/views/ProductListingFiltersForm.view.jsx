@@ -379,6 +379,7 @@ class ProductListingFiltersForm extends React.Component {
               <LoadedProductsCount
                 totalProductsCount={totalProductsCount}
                 showingItemsLabel={slpLabels}
+                isFavoriteView={isFavoriteView}
               />
             </Col>
           </Row>
