@@ -5,7 +5,7 @@ import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
-import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
+import { getSlpProducts, getMoreSlpProducts, initActions } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import getSortLabels from '../../ProductListing/molecules/SortSelector/views/Sort.selectors';
@@ -241,6 +241,8 @@ class SearchDetailContainer extends React.PureComponent {
 SearchDetailContainer.pageInfo = {
   pageId: 'search',
 };
+
+SearchDetailContainer.getInitActions = () => initActions;
 
 function mapStateToProps(state) {
   const productBlocks = getLoadedProductsPages(state);
