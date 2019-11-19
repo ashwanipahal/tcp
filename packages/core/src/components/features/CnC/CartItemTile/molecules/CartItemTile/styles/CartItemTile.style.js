@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-// change made here
 
 export default css`
   padding: 10px 15px;
@@ -217,7 +216,6 @@ export default css`
       }
       & .brand-image {
         width: 60px;
-        height: 26px;
       }
     }
 
