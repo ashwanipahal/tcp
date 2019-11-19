@@ -31,6 +31,8 @@ const Product = props => {
     isKeepAliveProduct,
     isBundleProduct,
     reviewOnTop,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -67,7 +69,7 @@ const Product = props => {
 
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile hide-on-desktop' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
         <ProductBasicInfo
           keepAlive={isKeepAlive}
           badge={badge1}
@@ -84,6 +86,9 @@ const Product = props => {
           isInternationalShipping={isInternationalShipping}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
+          productMiscInfo={colorProduct}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
@@ -131,10 +136,14 @@ Product.propTypes = {
   isMatchingFamily: PropTypes.bool.isRequired,
   isBundleProduct: PropTypes.bool,
   reviewOnTop: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 Product.defaultProps = {
   isBundleProduct: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default Product;
