@@ -126,5 +126,6 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       </Styled(View)>
     </Styled(View)>
   </Styled(View)>
+  <Connect(Loader) />
 </ModalNative>
 `;

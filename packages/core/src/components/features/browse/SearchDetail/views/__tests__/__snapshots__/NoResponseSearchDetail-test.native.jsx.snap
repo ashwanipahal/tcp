@@ -1,79 +1,95 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NoResponseSearchDetailVanilla component should renders correctly 1`] = `
-<Styled(View)>
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.900"
-    dataLocator="slp_store_name_value"
-    fontFamily="secondary"
-    fontSize="fs16"
-    fontWeight="semibold"
-    margin="16px 0 0 12px"
-    numberOfLines={null}
-    text="undefined \\"\\"."
-    textDecoration={null}
-  />
-  <Styled(SearchBar)
-    labels={
-      Object {
-        "lbl_check_your_spelling": "",
-        "lbl_didYouMean": "",
-        "lbl_narrow_searches": "",
-        "lbl_no_suggestion": "",
-        "lbl_simplified_keywords": "",
-        "lbl_tips": "",
-        "lbl_try_searching": "",
+<ScrollViewMock>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="slp_store_name_value"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="semibold"
+      margin="16px 0 0 12px"
+      numberOfLines={null}
+      text="undefined \\"\\"."
+      textDecoration={null}
+    />
+    <Styled(SearchBar)
+      labels={
+        Object {
+          "lbl_check_your_spelling": "",
+          "lbl_didYouMean": "",
+          "lbl_narrow_searches": "",
+          "lbl_no_suggestion": "",
+          "lbl_simplified_keywords": "",
+          "lbl_tips": "",
+          "lbl_try_searching": "",
+        }
       }
-    }
-    openSearchProductPage={[Function]}
-    showCustomizedSearch={true}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.900"
-    dataLocator="slp_store_name_value"
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="black"
-    margin="68px 0 0 0"
-    numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.1000"
-    dataLocator="slp_store_name_value"
-    fontFamily="secondary"
-    fontSize="fs12"
-    margin="6px 0 0 0"
-    numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.1000"
-    dataLocator="slp_store_name_value"
-    fontFamily="secondary"
-    fontSize="fs12"
-    margin={null}
-    numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <Styled(BodyCopy)
-    accessibilityText=""
-    color="gray.1000"
-    dataLocator="slp_store_name_value"
-    fontFamily="secondary"
-    fontSize="fs12"
-    margin={null}
-    numberOfLines={null}
-    text=""
-    textDecoration={null}
-  />
-  <ProductMatchesLabel />
-</Styled(View)>
+      openSearchProductPage={[Function]}
+      showCustomizedSearch={true}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.900"
+      dataLocator="slp_store_name_value"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="black"
+      margin="68px 0 0 0"
+      numberOfLines={null}
+      text=""
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.1000"
+      dataLocator="slp_store_name_value"
+      fontFamily="secondary"
+      fontSize="fs12"
+      margin="6px 0 0 0"
+      numberOfLines={null}
+      text=""
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.1000"
+      dataLocator="slp_store_name_value"
+      fontFamily="secondary"
+      fontSize="fs12"
+      margin={null}
+      numberOfLines={null}
+      text=""
+      textDecoration={null}
+    />
+    <Styled(BodyCopy)
+      accessibilityText=""
+      color="gray.1000"
+      dataLocator="slp_store_name_value"
+      fontFamily="secondary"
+      fontSize="fs12"
+      margin={null}
+      numberOfLines={null}
+      text=""
+      textDecoration={null}
+    />
+    <ProductMatchesLabel />
+    <Styled(View)>
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        page="null_search"
+        variation="moduleO"
+      />
+      <Connect(Recommendations)
+        isHeaderAccordion={true}
+        isRecentlyViewed={true}
+        page="null_search"
+        portalValue="recently-viewed-products"
+        variation="moduleO"
+      />
+    </Styled(View)>
+  </Styled(View)>
+</ScrollViewMock>
 `;

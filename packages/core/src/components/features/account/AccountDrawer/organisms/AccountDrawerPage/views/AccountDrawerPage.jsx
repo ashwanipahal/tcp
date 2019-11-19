@@ -15,7 +15,7 @@ const AccountDrawerPage = props => {
   const isCA = isCanada();
   return (
     <div className={className}>
-      <OrderNotification />
+      <OrderNotification closedOverlay={closedOverlay} />
       <AccountDrawerHeading userName={userName} closedOverlay={closedOverlay} />
       {!isCA && (
         <>

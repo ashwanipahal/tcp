@@ -123,6 +123,10 @@ export default styled.div`
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin: 21px 0;
     width: 227px;
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy7}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
+    text-align: center;
   }
 
   .promo-image {

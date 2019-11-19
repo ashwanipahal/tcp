@@ -68,7 +68,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           </Styled(BodyCopy)>
           <Styled(ProductPrice)
             badge2="25% OFF"
-            currencyExchange=""
             currencySymbol=""
             customFonts={
               Object {
@@ -117,7 +116,6 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           </Styled(BodyCopy)>
           <Styled(ProductPrice)
             badge2="25% OFF"
-            currencyExchange=""
             currencySymbol=""
             customFonts={
               Object {
@@ -244,6 +242,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
               },
             ]
           }
+          currencyExchange=""
           currentProduct={
             Object {
               "alternateSizes": Object {},

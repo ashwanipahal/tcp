@@ -17,6 +17,7 @@ exports[`LinkImageIconVanilla component should renders LinkImageIconVanilla corr
     alt=""
     borderRadius={6}
     borderWidth={1}
+    checkBrand=""
     crop=""
     height={10}
     host=""
@@ -28,6 +29,7 @@ exports[`LinkImageIconVanilla component should renders LinkImageIconVanilla corr
     source=""
     swatchConfig="w_50,h_50,c_thumb,g_auto:0"
     url=""
+    videoData={null}
     width={10}
   />
 </Styled(TouchableOpacity)>

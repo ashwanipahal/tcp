@@ -13,7 +13,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bZQynM",
+        "componentId": "sc-gzVnrw",
         "isStatic": false,
         "rules": Array [
           "
@@ -46,7 +46,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
       "displayName": "Styled(BodyCopy)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bZQynM",
+      "styledComponentId": "sc-gzVnrw",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
