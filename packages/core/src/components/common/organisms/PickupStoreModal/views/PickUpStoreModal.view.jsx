@@ -500,7 +500,7 @@ class PickUpStoreModalView extends React.Component {
           initialValues={SkuSelectedValues}
           selectedColor={selectedColor}
           currency={currency}
-          currencyExchange={currencyAttributes.exchangevalue}
+          currencyAttributes={currencyAttributes}
           className="pickup-sku-selection"
           onCloseClick={this.onCloseClick}
           navigation={navigation}
@@ -552,7 +552,7 @@ class PickUpStoreModalView extends React.Component {
           PickupSkuFormValues={PickupSkuFormValues}
           initialValuesFromBagPage={initialValuesFromBagPage}
           isItemShipToHome={isItemShipToHome}
-          currencyExchange={currencyAttributes.exchangevalue}
+          currencyAttributes={currencyAttributes}
           openRestrictedModalForBopis={openRestrictedModalForBopis}
         />
       </>

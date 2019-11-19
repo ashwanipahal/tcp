@@ -55,7 +55,7 @@ const ProductListView = ({
   slpLabels,
   onPickUpOpenClick,
   isFilterBy,
-  currencyExchange,
+  currencyAttributes,
   currency,
   isLoadingMore,
   plpTopPromos,
@@ -123,7 +123,7 @@ const ProductListView = ({
               productsBlock={productsBlock}
               labels={labels}
               currency={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isLoadingMore={isLoadingMore}
               isSearchListing={isSearchListing}
               getProducts={getProducts}
@@ -172,7 +172,7 @@ ProductListView.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isFilterBy: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currency: PropTypes.string,
   isLoadingMore: PropTypes.bool,
   plpTopPromos: PropTypes.shape({}),

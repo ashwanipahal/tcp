@@ -28,7 +28,7 @@ const OutfitDetailsView = ({
   addToBagErrorId,
   isLoggedIn,
   addToFavorites,
-  currencyExchange,
+  currencyAttributes,
   currencySymbol,
   labels,
   pdpLabels,
@@ -92,7 +92,7 @@ const OutfitDetailsView = ({
                     isLoggedIn={isLoggedIn}
                     addToFavorites={addToFavorites}
                     currencySymbol={currencySymbol}
-                    currencyExchange={currencyExchange}
+                    currencyAttributes={currencyAttributes}
                   />
                 </li>
               ))}
@@ -132,7 +132,7 @@ OutfitDetailsView.propTypes = {
   addToBagErrorId: PropTypes.string,
   addToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string,
   pdpLabels: PropTypes.shape({}),
   outfitId: PropTypes.string,
@@ -147,7 +147,6 @@ OutfitDetailsView.defaultProps = {
   addToBagError: '',
   addToBagErrorId: '',
   isLoggedIn: false,
-  currencyExchange: 1,
   currencySymbol: 'USD',
   pdpLabels: {},
   outfitId: '',

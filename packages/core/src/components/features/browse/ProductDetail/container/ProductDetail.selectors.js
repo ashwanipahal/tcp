@@ -103,6 +103,8 @@ export const getCurrencyAttributes = state => {
   return (
     (state.session.siteDetails && state.session.siteDetails.currencyAttributes) || {
       exchangevalue: 1,
+      merchantMargin: 1,
+      roundMethod: '',
     }
   );
 };
