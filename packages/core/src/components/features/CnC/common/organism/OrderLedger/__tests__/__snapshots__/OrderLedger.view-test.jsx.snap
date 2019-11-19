@@ -78,7 +78,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     link={null}
                     textAlign="right"
                   >
-                     0
+                    <Connect(PriceCurrency)
+                      price={0}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -134,7 +136,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     link={null}
                     textAlign="right"
                   >
-                     0
+                    <Connect(PriceCurrency)
+                      price={0}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -149,7 +153,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     undefined:
                   </span>
                   <span>
-                     0
+                    <Connect(PriceCurrency)
+                      price={0}
+                    />
                   </span>
                 </div>
               </ForwardRef>
@@ -275,7 +281,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -330,7 +338,10 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     link={null}
                     textAlign="right"
                   >
-                    - 1.00
+                    -
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -385,7 +396,10 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     link={null}
                     textAlign="right"
                   >
-                    - 1.00
+                    -
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -439,7 +453,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -494,7 +510,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -550,7 +568,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -606,7 +626,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       link={null}
                       textAlign="right"
                     >
-                       1.00
+                      <Connect(PriceCurrency)
+                        price={1}
+                      />
                     </ForwardRef>
                   </ForwardRef>
                 </ForwardRef>
@@ -661,7 +683,10 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       link={null}
                       textAlign="right"
                     >
-                      - 1.00
+                      -
+                      <Connect(PriceCurrency)
+                        price={1}
+                      />
                     </ForwardRef>
                   </ForwardRef>
                 </ForwardRef>
@@ -677,7 +702,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     undefined:
                   </span>
                   <span>
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </span>
                 </div>
               </ForwardRef>
@@ -743,7 +770,9 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -869,7 +898,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -924,7 +955,10 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     link={null}
                     textAlign="right"
                   >
-                    - 1.00
+                    -
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -979,7 +1013,10 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     link={null}
                     textAlign="right"
                   >
-                    - 1.00
+                    -
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -1034,7 +1071,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -1090,7 +1129,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>
@@ -1146,7 +1187,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       link={null}
                       textAlign="right"
                     >
-                       1.00
+                      <Connect(PriceCurrency)
+                        price={1}
+                      />
                     </ForwardRef>
                   </ForwardRef>
                 </ForwardRef>
@@ -1201,7 +1244,10 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       link={null}
                       textAlign="right"
                     >
-                      - 1.00
+                      -
+                      <Connect(PriceCurrency)
+                        price={1}
+                      />
                     </ForwardRef>
                   </ForwardRef>
                 </ForwardRef>
@@ -1217,7 +1263,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     undefined:
                   </span>
                   <span>
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </span>
                 </div>
               </ForwardRef>
@@ -1283,7 +1331,9 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     link={null}
                     textAlign="right"
                   >
-                     1.00
+                    <Connect(PriceCurrency)
+                      price={1}
+                    />
                   </ForwardRef>
                 </ForwardRef>
               </ForwardRef>

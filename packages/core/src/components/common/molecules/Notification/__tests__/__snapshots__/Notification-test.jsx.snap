@@ -3,6 +3,7 @@
 exports[`Notification Component should render notification component with status error 1`] = `
 <div
   className=" elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG"
+  role="alert"
 >
   <img
     alt="error icon"
@@ -27,6 +28,7 @@ exports[`Notification Component should render notification component with status
 exports[`Notification Component should render notification component with status success 1`] = `
 <div
   className=" elem-pt-SM elem-pr-LRG elem-pb-SM elem-pl-LRG elem-mb-LRG"
+  role="alert"
 >
   <img
     alt="success icon"
