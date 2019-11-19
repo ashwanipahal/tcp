@@ -772,18 +772,6 @@ exports[`AddressFields component should render correctly 1`] = `
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -814,6 +802,10 @@ exports[`AddressFields component should render correctly 1`] = `
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -1397,18 +1389,6 @@ exports[`AddressFields component should render correctly 1`] = `
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -1439,6 +1419,10 @@ exports[`AddressFields component should render correctly 1`] = `
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -2621,18 +2605,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -2663,6 +2635,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -3246,18 +3222,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -3288,6 +3252,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -4136,18 +4104,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -4178,6 +4134,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -4761,18 +4721,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -4803,6 +4751,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -5651,18 +5603,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -5693,6 +5633,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],
@@ -6027,18 +5971,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                [Function],
-                ";
-  }
-
-  .input {
-    font-size: ",
-                [Function],
-                ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -6069,6 +6001,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 [Function],
                 ";
     width: 100%;
+
+    ",
+                [Function],
+                ";
 
     ",
                 [Function],

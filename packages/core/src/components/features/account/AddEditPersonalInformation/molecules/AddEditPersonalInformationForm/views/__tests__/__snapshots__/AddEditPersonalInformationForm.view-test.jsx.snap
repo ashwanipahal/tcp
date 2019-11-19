@@ -801,18 +801,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
-  .input {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -843,6 +831,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -930,18 +922,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
-  .input {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -972,6 +952,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -2078,18 +2062,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
-  .input {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -2120,6 +2092,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -2206,18 +2182,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
-  .input {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -2248,6 +2212,10 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],

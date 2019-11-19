@@ -75,18 +75,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
-  .input {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -117,6 +105,10 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -258,18 +250,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
-  .input {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -300,6 +280,10 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
@@ -517,18 +501,6 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
-  .input {
-    font-size: ",
-                    [Function],
-                    ";
-  }
-
   .select__input {
     appearance: none;
     background: url(",
@@ -559,6 +531,10 @@ exports[`ContactInformationFormWrapper component should renders correctly 1`] = 
                     [Function],
                     ";
     width: 100%;
+
+    ",
+                    [Function],
+                    ";
 
     ",
                     [Function],
