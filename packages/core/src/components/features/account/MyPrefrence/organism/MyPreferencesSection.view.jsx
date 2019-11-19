@@ -53,7 +53,7 @@ class MyPrefrenceSection extends React.PureComponent {
 
         {!isCanada() && (
           <>
-            <Row fullBleed className="hide-on-mobile elem-pt-LRG elem-pb-LRG">
+            <Row fullBleed className="hide-on-mobile hide-on-tablet elem-pt-LRG elem-pb-LRG">
               <Col
                 colSize={{
                   medium: 4,

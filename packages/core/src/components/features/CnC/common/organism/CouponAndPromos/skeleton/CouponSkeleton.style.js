@@ -3,6 +3,8 @@ import { css } from 'styled-components';
 export default css`
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   background: ${props => props.theme.colors.WHITE};
+  padding-left: 10px;
+  padding-top: 10px;
 
   .skeletonStyle {
     margin-top: 16px;

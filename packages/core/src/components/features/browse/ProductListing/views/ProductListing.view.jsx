@@ -64,12 +64,14 @@ const ProductListView = ({
   slpLabels,
   onPickUpOpenClick,
   isFilterBy,
-  currencyExchange,
+  currencyAttributes,
   currency,
   isLoadingMore,
   plpTopPromos,
   asPathVal,
   isSearchListing,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
   // State needed to trigger UX timer once initial product results have rendered
@@ -149,11 +151,13 @@ const ProductListView = ({
               productsBlock={productsBlock}
               labels={labels}
               currency={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isLoadingMore={isLoadingMore}
               isSearchListing={isSearchListing}
               getProducts={getProducts}
               asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               {...otherProps}
             />
             {/* UX timer */}
@@ -201,7 +205,7 @@ ProductListView.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isFilterBy: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currency: PropTypes.string,
   isLoadingMore: PropTypes.bool,
   plpTopPromos: PropTypes.arrayOf(
@@ -212,6 +216,8 @@ ProductListView.propTypes = {
   ),
   asPathVal: PropTypes.string,
   isSearchListing: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -236,6 +242,8 @@ ProductListView.defaultProps = {
   plpTopPromos: [],
   asPathVal: '',
   isSearchListing: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

@@ -147,8 +147,13 @@ class ModuleM extends React.PureComponent {
 
         {smallCompImage && smallCompImage.length > 0 ? (
           <ImageContainer>
-            {smallCompImage.map(({ image, link }, index) => {
+            {smallCompImage.map(({ image, link, video }, index) => {
               const { IMG_DATA } = config;
+              const videoData = video && {
+                ...video,
+                videoWidth: imageDimension,
+                videoHeight: imageDimension,
+              };
               return (
                 <Tile tileIndex={index} imageCount={totalImages} key={index.toString()}>
                   <Anchor url={link.url} navigation={navigation}>
@@ -160,6 +165,7 @@ class ModuleM extends React.PureComponent {
                       width={imageDimension}
                       imgData={image}
                       imgConfig={IMG_DATA.productImgConfig[0]}
+                      videoData={videoData}
                     />
                   </Anchor>
                   <Anchor
