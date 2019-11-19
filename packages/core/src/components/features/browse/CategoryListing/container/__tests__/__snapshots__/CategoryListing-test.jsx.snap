@@ -31,6 +31,9 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
         }
       >
         Promo Banner
+        <Measure
+          name="hero_visible"
+        />
       </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
@@ -52,6 +55,9 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
         }
       >
         Left Panel
+        <Measure
+          name="navigation_visible"
+        />
       </Styled(Col)>
       <Styled(Col)
         colSize={
