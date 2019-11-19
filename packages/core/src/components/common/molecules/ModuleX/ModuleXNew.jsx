@@ -6,7 +6,7 @@ const ModuleX = ({ html }) => {
   newDiv.innerHTML = html;
   // extract script tags
   const scripts = Array.prototype.slice.call(newDiv.getElementsByTagName('script'));
-  for (let i = 0; i < scripts.length; i++) {
+  for (let i = 0; i < scripts.length; i += 1) {
     if (scripts[i].src !== '') {
       // create new script tag
       const tag = document.createElement('script');
@@ -28,7 +28,7 @@ const ModuleX = ({ html }) => {
   // extract style tags
   const styles = Array.prototype.slice.call(newDiv.getElementsByTagName('style'));
 
-  for (let i = 0; i < styles.length; i++) {
+  for (let i = 0; i < styles.length; i += 1) {
     // create new style tag
     const style = document.createElement('style');
     styles[i].type = 'text/css';
@@ -41,13 +41,13 @@ const ModuleX = ({ html }) => {
 
   useEffect(() => {
     return () => {
-      for (let i = 0; i < styles.length; i++) {
+      for (let i = 0; i < styles.length; i += 1) {
         // removes style tags from body
         document.getElementsByTagName('head')[0].removeChild(styles[i]);
         styles[i] = null;
       }
 
-      for (let i = 0; i < scripts.length; i++) {
+      for (let i = 0; i < scripts.length; i += 1) {
         // removes last child of body (these scripts are loaded last)
         // last child removal to accommodate src tags
 
