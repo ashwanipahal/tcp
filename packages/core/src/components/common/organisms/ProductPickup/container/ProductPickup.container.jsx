@@ -176,6 +176,8 @@ class ProductPickupContainer extends React.PureComponent {
     sizeUnavailable: PropTypes.string,
     onPickupClickAddon: PropTypes.func,
     isOutfitVariant: PropTypes.bool,
+    keepAlive: PropTypes.bool,
+    outOfStockLabels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -226,6 +228,8 @@ class ProductPickupContainer extends React.PureComponent {
     sizeUnavailable: 'Size unavailable online?',
     onPickupClickAddon: () => {},
     isOutfitVariant: false,
+    keepAlive: false,
+    outOfStockLabels: {},
   };
 
   constructor(props, context) {
@@ -519,6 +523,8 @@ class ProductPickupContainer extends React.PureComponent {
       sizeUnavailable,
       onPickupClickAddon,
       isOutfitVariant,
+      keepAlive,
+      outOfStockLabels,
     } = this.props;
 
     if (this.noBossBopisInfo()) {
@@ -562,6 +568,8 @@ class ProductPickupContainer extends React.PureComponent {
         onPickupClickAddon={onPickupClickAddon}
         isOutfitVariant={isOutfitVariant}
         isStoreAndProductBossEligible={isStoreAndProductBossEligible}
+        keepAlive={keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   }

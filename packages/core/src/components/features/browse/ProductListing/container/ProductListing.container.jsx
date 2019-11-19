@@ -6,6 +6,7 @@ import { getFormValues } from 'redux-form';
 import dynamic from 'next/dynamic';
 import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
+import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
 import {
   removeAddToFavoriteErrorState,
@@ -34,6 +35,7 @@ import {
   getLabels,
   getIsFilterBy,
   getPLPTopPromos,
+  getLabelsOutOfStock,
 } from './ProductListing.selectors';
 import submitProductListingFiltersForm from './productListingOnSubmitHandler';
 import {
@@ -287,6 +289,7 @@ function mapStateToProps(state) {
     labelsFilter: state.Labels && state.Labels.PLP && state.Labels.PLP.PLP_sort_filter,
     longDescription: getLongDescription(state),
     labels: getLabelsProductListing(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
     isLoadingMore: getIsLoadingMore(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     onSubmit: submitProductListingFiltersForm,
@@ -304,6 +307,7 @@ function mapStateToProps(state) {
     plpTopPromos: getPLPTopPromos(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
   };
 }
 
@@ -415,6 +419,7 @@ const IsomorphicProductListingContainer = withIsomorphicRenderer({
  */
 const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
 RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+// eslint-disable-next-line no-unused-vars
 const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
 
-export default HotfixAwareProductListingContainer;
+export default IsomorphicProductListingContainer;

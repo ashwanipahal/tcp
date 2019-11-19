@@ -39,6 +39,8 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 
 export class ProductBundleContainer extends React.PureComponent {
   selectedColorProductId;
@@ -115,6 +117,8 @@ export class ProductBundleContainer extends React.PureComponent {
       breadCrumbs,
       productDetails,
       outfitLabels,
+      isKeepAliveEnabled,
+      outOfStockLabels,
       toastMessage,
     } = this.props;
     return (
@@ -144,6 +148,8 @@ export class ProductBundleContainer extends React.PureComponent {
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         breadCrumbs={breadCrumbs}
         productDetails={productDetails}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
         toastMessage={toastMessage}
       />
     );
@@ -175,6 +181,8 @@ function mapStateToProps(state) {
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     breadCrumbs: getBreadCrumbs(state),
     outfitLabels: getOutfitLabels(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -232,6 +240,8 @@ ProductBundleContainer.propTypes = {
   formValues: PropTypes.shape({}).isRequired,
   outfitLabels: PropTypes.shape({}),
   clearBundleDetails: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
   toastMessage: PropTypes.func.isRequired,
 };
 
@@ -259,6 +269,8 @@ ProductBundleContainer.defaultProps = {
   breadCrumbs: [],
   productDetails: [],
   clearBundleDetails: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(
