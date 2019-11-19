@@ -90,6 +90,8 @@ class ProductDetailView extends React.Component {
       currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
@@ -108,6 +110,8 @@ class ProductDetailView extends React.Component {
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
           className="hide-on-mobile"
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
         {isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -399,6 +403,8 @@ ProductDetailView.propTypes = {
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -417,6 +423,8 @@ ProductDetailView.defaultProps = {
   addToBagError: '',
   isLoggedIn: false,
   alternateSizes: {},
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
