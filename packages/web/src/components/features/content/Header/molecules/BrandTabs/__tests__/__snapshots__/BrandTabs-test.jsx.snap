@@ -11,7 +11,7 @@ exports[`BrandTabs component renders correctly with brand-tabs className 1`] = `
       to="/"
     >
       <Styled(Image)
-        alt="The Children's Place"
+        alt="Gymboree"
       />
     </Styled(Anchor)>
     <Styled(Anchor)
