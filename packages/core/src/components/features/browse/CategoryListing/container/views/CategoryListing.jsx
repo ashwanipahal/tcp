@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf/RenderPerf';
-import { HERO_VISIBLE, NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
+import { HERO_VISIBLE, PAGE_NAVIGATION_VISIBLE } from '@tcp/core/src/constants/rum.constants';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -28,7 +28,7 @@ class CategoryListing extends PureComponent {
             >
               Left Panel
               {/* UX timer */}
-              <RenderPerf.Measure name={NAVIGATION_VISIBLE} />
+              <RenderPerf.Measure name={PAGE_NAVIGATION_VISIBLE} />
             </Col>
             <Col colSize={{ large: 3, medium: 8, small: 6 }}>
               <Row fullBleed>

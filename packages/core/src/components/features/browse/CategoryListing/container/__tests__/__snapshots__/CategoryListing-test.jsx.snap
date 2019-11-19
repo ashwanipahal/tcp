@@ -56,7 +56,7 @@ exports[`StoreSearch Container should render CLP Correctly 1`] = `
       >
         Left Panel
         <Measure
-          name="navigation_visible"
+          name="page_navigation_visible"
         />
       </Styled(Col)>
       <Styled(Col)
