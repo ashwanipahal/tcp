@@ -468,41 +468,6 @@ const getSmsSignUpLabels = state => {
   };
 };
 
-const getEmailSignUpLabels = state => {
-  return {
-    shippingAddressEditError: getLabelValue(
-      state.Labels,
-      'lbl_shipping_addressEditError',
-      'shipping',
-      'checkout'
-    ),
-    emailSignupHeading: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupHeading',
-      'pickup',
-      'checkout'
-    ),
-    emailSignupSubHeading: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupSubHeading',
-      'pickup',
-      'checkout'
-    ),
-    emailSignupSubSubHeading: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupSubSubHeading',
-      'pickup',
-      'checkout'
-    ),
-    emailSignupContact: getLabelValue(
-      state.Labels,
-      'lbl_pickup_emailSignupContact',
-      'pickup',
-      'checkout'
-    ),
-  };
-};
-
 const getCheckoutProgressBarLabels = state => {
   return {
     pickupLabel: getLabelValue(
@@ -901,6 +866,24 @@ const getPickupSectionLabels = createSelector(
   }
 );
 
+const getEmailSignUpLabels = createSelector(
+  getReviewPageLabels,
+  reviewLabels => {
+    const labels = {};
+    const labelKeys = [
+      'lbl_shipping_emailSignUpHeader',
+      'lbl_shipping_emailSignUpSubHeader',
+      'lbl_shipping_childrenPlaceCheckoutTxt',
+      'lbl_shipping_emailSignUpDisclaimer',
+      'lbl_shipping_gymboreePlaceCheckoutTxt',
+    ];
+    labelKeys.forEach(key => {
+      labels[key] = getLabelValue(reviewLabels, key);
+    });
+    return labels;
+  }
+);
+
 /**
  * @function getShippingSectionLabels
  * @param {Object} state
@@ -919,11 +902,6 @@ const getShippingSectionLabels = createSelector(
       'lbl_review_sectionShippingMethodTitle',
       'lbl_review_sectionShippingGiftServiceTitle',
       'lbl_review_sectionShippingGiftServiceDefault',
-      'lbl_shipping_emailSignUpHeader',
-      'lbl_shipping_emailSignUpSubHeader',
-      'lbl_shipping_childrenPlaceCheckoutTxt',
-      'lbl_shipping_emailSignUpDisclaimer',
-      'lbl_shipping_gymboreePlaceCheckoutTxt',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(reviewLabels, key);
