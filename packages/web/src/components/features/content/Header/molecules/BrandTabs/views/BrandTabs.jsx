@@ -11,7 +11,7 @@ const BrandTabs = ({ className, data }) => {
     <Fragment>
       <div className={className}>
         {data.map(tabData => {
-          const { title: alt, class: logoClass, target, url } = tabData;
+          const { class: logoClass, target, url } = tabData;
           let active = false;
 
           if (logoClass === 'header__brand-tab--tcp' && isTCP()) {
@@ -28,7 +28,11 @@ const BrandTabs = ({ className, data }) => {
               key={logoClass}
             >
               <Image
-                alt={alt}
+                alt={
+                  logoClass === 'header__brand-tab--tcp'
+                    ? 'the-childrens-place-logo'
+                    : 'gymboree-logo'
+                }
                 className={logoClass}
                 src={getIconPath(logoClass)}
                 data-locator={getLocator(logoClass)}

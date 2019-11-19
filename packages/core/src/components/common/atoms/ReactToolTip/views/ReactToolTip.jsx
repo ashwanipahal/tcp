@@ -73,7 +73,7 @@ class ReactTooltip extends React.Component<Props> {
     const { id, children, direction, message, className } = this.props;
     const { displayTooltip } = this.state;
     return (
-      <span className={className} ref={this.node}>
+      <span className={className} ref={this.node} tabIndex="0" role="option" aria-selected>
         {displayTooltip && (
           <div className="tooltip-bubble" id={id} direction={direction} message={message}>
             <div className="tooltip-message">
