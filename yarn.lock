@@ -18921,7 +18921,7 @@ react-native-vector-icons@^6.6.0:
 react-native-video@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.0.1.tgz#69fd9e8e3015c626cdfb9f659f971f77743038d1"
--  integrity sha512-r6/W8iyz9xC6jOeEAcPDEF/EOt1m0pUIAK3ouQVnW1UFJMLj84ZerQBg2HnrqvGkupMRy22QcViVIwgmdRhHkA==
+  integrity sha512-r6/W8iyz9xC6jOeEAcPDEF/EOt1m0pUIAK3ouQVnW1UFJMLj84ZerQBg2HnrqvGkupMRy22QcViVIwgmdRhHkA==
   dependencies:
     keymirror "0.1.1"
     prop-types "^15.5.10"
@@ -20614,10 +20614,10 @@ sha.js@^2.4.0, sha.js@^2.4.8:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-shaka-player@^2.4.4:
+shaka-player@2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/shaka-player/-/shaka-player-2.4.4.tgz#bade8ff6b9a4bb649899d10cd4ffd05781dd79ab"
--  integrity sha512-bX470MvIHLJ1a/lwNVVOj3tjFk8Q8u22KIpo1dR9hSkjTwkaUk4k6GCBX0VyahgwzSwnp3w2E/5m4E4i5YlquQ==
+  integrity sha512-bX470MvIHLJ1a/lwNVVOj3tjFk8Q8u22KIpo1dR9hSkjTwkaUk4k6GCBX0VyahgwzSwnp3w2E/5m4E4i5YlquQ==
 
 shallow-clone@^0.1.2:
   version "0.1.2"
