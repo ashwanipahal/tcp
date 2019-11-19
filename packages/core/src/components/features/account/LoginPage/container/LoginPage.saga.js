@@ -1,5 +1,6 @@
 import { call, takeLatest, put, select, take } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions'
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
@@ -31,6 +32,7 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(setLoginLoadingState({ isLoading: false }));
       yield put(getUserInfo());
       yield put(setLoginModalMountedState({ state: false }));
+      yield put(getFavoriteStoreActn({}))
       yield put(
         setClickAnalyticsData({
           eventName: 'login',

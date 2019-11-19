@@ -23,7 +23,6 @@ import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
-import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
@@ -154,16 +153,13 @@ class TCPWebApp extends App {
     const isLocationEnabledForGuest = true;
     const isLocationEnabledForLoggedInUser = true;
 
+    console.log("***************",isUserLoggedIn,"***************");
+
     if (
       (isLocationEnabledForGuest && navigator && navigator.geolocation) ||
       (isLocationEnabledForLoggedInUser && isUserLoggedIn && navigator && navigator.geolocation)
     ) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        StoreLanding.initiateGetFavoriteStoreRequest(pos.coords.latitude, pos.coords.longitude);
-      },
-      () => {
-        StoreLanding.initiateGetFavoriteStoreRequest();
-      });
+      navigator.geolocation.getCurrentPosition( () => {});
     }
   }
 
