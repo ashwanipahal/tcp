@@ -7,7 +7,6 @@
     "android:release": "react-native run-android --tasks assembleTcpIntRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "lint": "eslint .",
     "test": "jest --config ../../config/jest.config.native.js",
     "run:ios": "react-native run-ios",
     "run:android": "react-native run-android",
