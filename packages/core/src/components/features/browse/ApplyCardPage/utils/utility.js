@@ -79,9 +79,15 @@ const redirectToBag = resetPLCCResponse => {
 /**
  * @const redirectToHome - function to return home.
  *
+ * @param - isModalFlow - Check whether working on a modal based plcc flow.
+ * @param - closeModal - Function to trigger the closure of modal.
+ *
  */
-const redirectToHome = () => {
-  return '/home';
+const redirectToHome = (isModalFlow, closeModal) => {
+  if (isModalFlow && closeModal) {
+    closeModal();
+  }
+  routerPush(window.location.href, '/home');
 };
 
 /**
