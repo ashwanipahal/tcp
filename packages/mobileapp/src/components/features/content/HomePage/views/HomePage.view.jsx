@@ -28,6 +28,7 @@ import {
   ModuleE,
   ModuleG,
 } from '@tcp/core/src/components/common/molecules';
+import LocationAccssPrompt from '@tcp/core/src/components/common/molecules/LocationAccess';
 import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import InitialPropsHOC from '@tcp/core/src/components/common/hoc/InitialPropsHOC/InitialPropsHOC.native';
 import LoyaltyPromoBanner from '@tcp/core/src/components/common/molecules/LoyaltyPromoBanner';
@@ -117,6 +118,7 @@ class HomePageView extends React.PureComponent<Props> {
       <View>
         <QuickViewModal navigation={navigation} />
         <AddedToBagContainer navigation={navigation} />
+        <LocationAccssPrompt navigation={navigation} />
       </View>
     );
   };
