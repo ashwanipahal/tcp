@@ -277,6 +277,11 @@ PODS:
   - react-native-twitter-signin (1.1.0):
     - React
     - TwitterKit (~> 3.3)
+  - react-native-video (4.4.4):
+    - React
+    - react-native-video/Video (= 4.4.4)
+  - react-native-video/Video (4.4.4):
+    - React
   - react-native-webview (7.2.7):
     - React
   - React-RCTActionSheet (0.61.1):
@@ -392,6 +397,7 @@ DEPENDENCIES:
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-print (from `../node_modules/react-native-print`)
   - react-native-twitter-signin (from `../node_modules/react-native-twitter-signin`)
+  - react-native-video (from `../node_modules/react-native-video`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -506,6 +512,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-print"
   react-native-twitter-signin:
     :path: "../node_modules/react-native-twitter-signin"
+  react-native-video:
+    :path: "../node_modules/react-native-video"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
@@ -602,6 +610,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: 6bb847e64f45a2d69c6173741111cfd95c669301
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
   react-native-twitter-signin: d85aa337ac3f564eea008053b6eb30e56ea09f40
+  react-native-video: 8c49eca5a6087de968a05b340933b10e3b58169a
   react-native-webview: d143130e6993ea015098add115c19a765a7e1422
   React-RCTActionSheet: af4d951113b1e068bb30611f91b984a7a73597ff
   React-RCTAnimation: 4f518d70bb6890b7c3d9d732f84786d6693ca297
