@@ -214,6 +214,14 @@ export const recommendationStyles = css`
   && .slick-list {
     margin-right: 0;
   }
+
+  @media ${props => props.theme.mediaQuery.mediumOnly} {
+    &.recommendations-tile {
+      .recommendations-section-row {
+        padding-left: 6px;
+      }
+    }
+  }
 `;
 
 export default styles;
