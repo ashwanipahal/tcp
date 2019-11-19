@@ -8,7 +8,7 @@ import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelt
 import style from '../CheckoutHeader.style';
 import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
-import utils, { getIconPath } from '../../../../../../../core/src/utils';
+import { getIconPath } from '../../../../../../../core/src/utils';
 
 /**
  * This component will render the CheckoutHeader for checkout journey
@@ -27,16 +27,15 @@ const CheckoutHeader = ({
   isExpressCheckoutPage,
   bagLoading,
   cartItems,
-  router,
+  currentStage,
 }) => {
   return (
     <header className={`${className} content-wrapper`}>
       <Row className="header-topnav__row">
         <button
           onClick={() => {
-            const checkoutStage = utils.getObjectValue(router, undefined, 'query', 'section');
             const availableStages = checkoutUtil.getAvailableStages(cartItems);
-            const currentIndex = availableStages.indexOf(checkoutStage);
+            const currentIndex = availableStages.indexOf(currentStage);
             if (currentIndex === 0) {
               checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
             } else {
@@ -125,9 +124,7 @@ const CheckoutHeader = ({
             large: 12,
           }}
         >
-          {itemsCount > 0 && !isInternationalShipping && (
-            <CheckoutProgressIndicator router={router} />
-          )}
+          {itemsCount > 0 && !isInternationalShipping && <CheckoutProgressIndicator />}
         </Col>
       </Row>
     </header>
@@ -143,7 +140,7 @@ CheckoutHeader.propTypes = {
   isExpressCheckoutPage: PropTypes.bool,
   bagLoading: PropTypes.bool,
   cartItems: PropTypes.shape({}).isRequired,
-  router: PropTypes.shape({}).isRequired,
+  currentStage: PropTypes.string.isRequired,
 };
 
 CheckoutHeader.defaultProps = {

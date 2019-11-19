@@ -48,7 +48,14 @@ class CheckoutPage extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { checkoutServerError } = this.props;
+    const { checkoutServerError, router, setCheckoutStage } = this.props;
+    const { router: prevRouter } = prevProps;
+    const section = router.query.section || router.query.subSection;
+    const currentSection = section || CHECKOUT_STAGES.SHIPPING;
+    const prevSection = prevRouter.query.section || prevRouter.query.subSection;
+    if (currentSection !== prevSection) {
+      setCheckoutStage(currentSection);
+    }
     if (
       checkoutServerError &&
       this.pageServerError !== null &&

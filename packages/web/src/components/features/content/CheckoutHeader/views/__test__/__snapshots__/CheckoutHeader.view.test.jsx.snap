@@ -124,7 +124,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 1`] = `
         }
       }
     >
-      <Connect(CheckoutProgressIndicator) />
+      <withRouter(Connect(CheckoutProgressIndicator)) />
     </Styled(Col)>
   </Styled(Row)>
 </header>
@@ -254,7 +254,7 @@ exports[`CheckoutHeaderVanilla should render checkout header section 2`] = `
         }
       }
     >
-      <Connect(CheckoutProgressIndicator) />
+      <withRouter(Connect(CheckoutProgressIndicator)) />
     </Styled(Col)>
   </Styled(Row)>
 </header>
