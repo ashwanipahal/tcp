@@ -52,7 +52,10 @@ export class Account extends React.PureComponent {
     }
 
     if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
-      this.activePageRef.focus();
+      this.activePageRef.blur();
+      setTimeout(() => {
+        this.activePageRef.focus();
+      }, 100);
     }
 
     if (prevState.componentToLoad !== componentToLoad) {

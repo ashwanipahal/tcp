@@ -89,6 +89,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "1500": "#c3c3c3",
           "1600": "#979797",
           "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -686,9 +687,9 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kGXeez",
+            "componentId": "sc-kpOJdX",
             "isStatic": false,
-            "lastClassName": "UBWCa",
+            "lastClassName": "jByIYk",
             "rules": Array [
               "
   ",
@@ -716,7 +717,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kGXeez",
+          "styledComponentId": "sc-kpOJdX",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -732,7 +733,7 @@ exports[`StoresIntlTile component StoresIntlTile component renders correctly wit
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kGXeez UBWCa"
+        className="sc-kpOJdX jByIYk"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -835,6 +836,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "1500": "#c3c3c3",
           "1600": "#979797",
           "1700": "#333333",
+          "1800": "#f1f0f0",
           "300": "#f3f3f3",
           "400": "#4a4a4a",
           "500": "#d8d8d8",
@@ -1506,9 +1508,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-kGXeez",
+            "componentId": "sc-kpOJdX",
             "isStatic": false,
-            "lastClassName": "UBWCa",
+            "lastClassName": "jByIYk",
             "rules": Array [
               "
   ",
@@ -1536,7 +1538,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
           "displayName": "Styled(StoresIntlTile)",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "sc-kGXeez",
+          "styledComponentId": "sc-kpOJdX",
           "target": [Function],
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -1626,7 +1628,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
       title="Test"
     >
       <StoresIntlTile
-        className="sc-kGXeez UBWCa"
+        className="sc-kpOJdX jByIYk"
         labels={
           Object {
             "lbl_storelist_shop_in_shop": "shop-in-shop",
@@ -1709,7 +1711,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
         title="Test"
       >
         <div
-          className="sc-kGXeez UBWCa"
+          className="sc-kpOJdX jByIYk"
         >
           <styled.h3>
             <StyledComponent
@@ -1718,9 +1720,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-kgoBCf",
+                    "componentId": "sc-kGXeez",
                     "isStatic": false,
-                    "lastClassName": "byzwwl",
+                    "lastClassName": "YIGlb",
                     "rules": Array [
                       "
   position: relative;
@@ -1764,7 +1766,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "styled.h3",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-kgoBCf",
+                  "styledComponentId": "sc-kGXeez",
                   "target": "h3",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1774,7 +1776,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               forwardedRef={null}
             >
               <h3
-                className="sc-kgoBCf byzwwl"
+                className="sc-kGXeez YIGlb"
               >
                 Test
               </h3>
@@ -1789,9 +1791,9 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "sc-dnqmqq",
+                    "componentId": "sc-iwsKbI",
                     "isStatic": false,
-                    "lastClassName": "efvruK",
+                    "lastClassName": "fFjIZb",
                     "rules": Array [
                       "
   ",
@@ -1817,7 +1819,7 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
                   "displayName": "Styled(Row)",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "sc-dnqmqq",
+                  "styledComponentId": "sc-iwsKbI",
                   "target": [Function],
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1828,13 +1830,13 @@ exports[`StoresIntlTile component should render correctly with stores data 1`] =
               fullBleed={true}
             >
               <Row
-                className="sc-dnqmqq efvruK"
+                className="sc-iwsKbI fFjIZb"
                 fullBleed={true}
                 otherprops={Object {}}
                 tagName="div"
               >
                 <div
-                  className="sc-dnqmqq efvruK"
+                  className="sc-iwsKbI fFjIZb"
                   fullBleed={true}
                   otherprops={Object {}}
                 >

@@ -165,7 +165,8 @@ const renderAddToBagContainer = (
   outfitProduct,
   plpLabels,
   sizeChartLinkVisibility,
-  addToBagError
+  addToBagError,
+  isBundleProduct
 ) => {
   return (
     <ProductAddToBagContainer
@@ -179,6 +180,7 @@ const renderAddToBagContainer = (
       onChangeColor={(colorName, selectedSizeName, selectedFitName, selectedQuantity, colorIndex) =>
         onChangeColor(colorIndex, setCurrentColorIndex)
       }
+      isBundleProduct={isBundleProduct}
     />
   );
 };
@@ -360,12 +362,14 @@ const OutfitDetailsView = ({
         outfitProduct,
         plpLabels,
         sizeChartLinkVisibility,
-        addToBagError
+        addToBagError,
+        isBundleProduct
       )}
-      {renderPickUpStore({
-        currentProduct: outfitProduct,
-        selectedColorProductId: colorProductId,
-      })}
+      {!isBundleProduct &&
+        renderPickUpStore({
+          currentProduct: outfitProduct,
+          selectedColorProductId: colorProductId,
+        })}
     </OutfitProductWrapper>
   );
 };

@@ -132,14 +132,19 @@ class CartItemTile extends PureComponent {
     getProductSKUInfo({ productNum, itemBrand });
   };
 
-  handleEditCartItem = (pageView, itemBrand, productNumber) => {
+  handleEditCartItem = (pageView, itemBrand, productNumber, isBagPageSflSection = false) => {
     if (pageView !== 'myBag') {
       this.handleEditCartItemMiniBag(pageView, itemBrand, productNumber);
     } else {
       const { onQuickViewOpenClick, productDetail } = this.props;
-      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
+      const { itemId, qty, color, size, fit, isGiftItem } = productDetail.itemInfo;
+      const {
+        productInfo: { skuId, generalProductId },
+      } = productDetail;
       onQuickViewOpenClick({
+        fromBagPage: pageView === 'myBag',
         colorProductId: productNumber,
+        isSflProduct: isBagPageSflSection,
         orderInfo: {
           orderItemId: itemId,
           selectedQty: qty,
@@ -147,6 +152,7 @@ class CartItemTile extends PureComponent {
           selectedSize: size,
           selectedFit: fit,
           itemBrand,
+          skuId: isGiftItem ? generalProductId : skuId,
         },
       });
     }
@@ -195,15 +201,16 @@ class CartItemTile extends PureComponent {
   };
 
   callEditMethod = () => {
-    const { productDetail, pageView } = this.props;
+    const { productDetail, pageView, isBagPageSflSection } = this.props;
     const {
       miscInfo: { orderItemType },
     } = productDetail;
-    if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
+    if (orderItemType === CARTPAGE_CONSTANTS.ECOM || isBagPageSflSection) {
       this.handleEditCartItem(
         pageView,
         productDetail.itemInfo.itemBrand,
-        productDetail.productInfo.productPartNumber
+        productDetail.productInfo.productPartNumber,
+        isBagPageSflSection
       );
     } else if (pageView === 'myBag') {
       const openSkuSelectionForm = true;

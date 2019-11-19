@@ -199,13 +199,27 @@ class Recommendations extends Component {
   }
 
   render() {
-    const { className, variations } = this.props;
+    const {
+      className,
+      variations,
+      accessibility: { previousButton, nextIconButton } = {},
+    } = this.props;
 
     config.CAROUSEL_OPTIONS.prevArrow = (
-      <button type="button" data-locator="moduleO_left_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={previousButton}
+        data-locator="moduleO_left_arrow"
+        className="slick-prev"
+      />
     );
     config.CAROUSEL_OPTIONS.nextArrow = (
-      <button type="button" data-locator="moduleO_right_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={nextIconButton}
+        data-locator="moduleO_right_arrow"
+        className="slick-prev"
+      />
     );
 
     const variation = variations.split(',');
@@ -250,9 +264,14 @@ Recommendations.propTypes = {
   categoryName: PropTypes.string,
   headerAlignment: PropTypes.string,
   reduxKey: PropTypes.string.isRequired,
+  accessibility: PropTypes.shape({
+    previousButton: PropTypes.string,
+    nextIconButton: PropTypes.string,
+  }),
 };
 
 Recommendations.defaultProps = {
+  accessibility: {},
   priceOnly: false,
   showButton: false,
   ctaText: '',
