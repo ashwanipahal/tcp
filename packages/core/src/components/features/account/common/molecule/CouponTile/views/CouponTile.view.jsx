@@ -11,7 +11,7 @@ export const CouponTile = ({ className, coupon, labels, commonLabels }) => {
   return (
     <BodyCopy component="li" className={`${className} elem-mb-SM`}>
       <CouponIconComponent labels={commonLabels} coupon={coupon} className="elem-mr-XS" />
-      <BodyCopy component="div" className="elem-pt-XS">
+      <BodyCopy component="div" className="elem-pt-XXXS elem-mt-XXS">
         <BodyCopy
           fontSize="fs12"
           fontWeight="extrabold"

@@ -65,17 +65,21 @@ class HeaderMiddleNav extends React.PureComponent {
     return null;
   }
 
-  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }, componentToOpen) => {
-    e.stopPropagation();
-    if (userNameClick || triggerLoginCreateAccount) {
+  onLinkClick = ({ openOverlay, navname }, componentToOpen) => {
+    const { setClickAnalyticsData, isOpenOverlay, closeOverlay } = this.props;
+
+    setClickAnalyticsData({
+      eventName: 'navigation click',
+      pageNavigationText: navname,
+    });
+    if (!isOpenOverlay) {
       openOverlay({
         component: componentToOpen,
         variation: 'primary',
       });
+    } else {
+      closeOverlay();
     }
-    this.setState({
-      userNameClick: !userNameClick,
-    });
   };
 
   renderAccountInfoSection = (
@@ -112,6 +116,8 @@ class HeaderMiddleNav extends React.PureComponent {
           openOverlay={openOverlay}
           isRememberedUser={isRememberedUser}
           userName={displayName}
+          userPoints={userPoints}
+          userRewards={userRewards}
           isDrawer={false}
         />
       )
@@ -361,6 +367,8 @@ HeaderMiddleNav.propTypes = {
   }),
   labels: PropTypes.shape({}).isRequired,
   isRememberedUser: PropTypes.bool,
+  setClickAnalyticsData: PropTypes.func.isRequired,
+  closeOverlay: PropTypes.func,
 };
 
 HeaderMiddleNav.defaultProps = {
@@ -383,6 +391,7 @@ HeaderMiddleNav.defaultProps = {
     features: {},
   },
   isRememberedUser: false,
+  closeOverlay: () => {},
 };
 
 export { HeaderMiddleNav as HeaderMiddleNavVanilla };

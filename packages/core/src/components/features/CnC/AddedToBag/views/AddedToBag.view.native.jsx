@@ -1,7 +1,8 @@
 import React from 'react';
-import { TouchableOpacity, TouchableWithoutFeedback, ScrollView, Text } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -108,47 +109,49 @@ const AddedToBag = ({
         <StyledWrapper>
           {getRowWrapper(labels, onRequestClose, navigation)}
           {/* Below are place holders for   different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
-          <AddedToBagWrapper>
-            <ScrollView>
-              <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
-              <AddedToBagViewPoints labels={labels} />
-              <AddedToBagActions
-                labels={labels}
+          <AddedToBagWrapper payPalView={navigation.getParam('headerMode', false)}>
+            <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
+            <AddedToBagViewPoints labels={labels} />
+            <AddedToBagActions
+              labels={labels}
+              navigation={navigation}
+              closeModal={onRequestClose}
+              showAddTobag
+              fromAddedToBagModal
+              hideHeader={hide => {
+                navigation.setParams({ headerMode: hide });
+              }}
+            />
+            <BossBanner labels={labels} />
+            <LoyaltyBannerWrapper>
+              <LoyaltyBanner pageCategory="isAddedToBagPage" navigation={navigation} />
+            </LoyaltyBannerWrapper>
+            <RecommendationWrapper>
+              <Recommendations
                 navigation={navigation}
-                closeModal={onRequestClose}
-                showAddTobag
-                fromAddedToBagModal
+                priceOnly
+                variation="moduleO"
+                page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
+                isAddedToBagOpen
               />
-              <BossBanner labels={labels} />
-              <LoyaltyBannerWrapper>
-                <LoyaltyBanner pageCategory="isAddedToBagPage" navigation={navigation} />
-              </LoyaltyBannerWrapper>
-              <RecommendationWrapper>
-                <Recommendations
-                  navigation={navigation}
-                  priceOnly
-                  variation="moduleO"
-                  page={Constants.RECOMMENDATIONS_PAGES_MAPPING.BAG}
-                  isAddedToBagOpen
-                />
-              </RecommendationWrapper>
+            </RecommendationWrapper>
 
-              <StyledAnchorWrapper>
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  onPress={handleContinueShopping}
-                  noLink
-                  to=""
-                  dataLocator="addedToBag-continueShopping"
-                  text={labels.continueShopping}
-                />
-              </StyledAnchorWrapper>
-            </ScrollView>
+            <StyledAnchorWrapper>
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                anchorVariation="primary"
+                onPress={handleContinueShopping}
+                noLink
+                to=""
+                dataLocator="addedToBag-continueShopping"
+                text={labels.continueShopping}
+              />
+            </StyledAnchorWrapper>
           </AddedToBagWrapper>
         </StyledWrapper>
       </StyledBodyWrapper>
+      <Loader />
     </Modal>
   );
 };

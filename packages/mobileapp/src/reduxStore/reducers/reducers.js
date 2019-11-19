@@ -3,6 +3,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { persistReducer } from 'redux-persist';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
+import LoaderReducer from '@tcp/core/src/components/common/molecules/Loader/container/Loader.reducer';
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
@@ -10,6 +11,7 @@ import ProductListingReducer from '@tcp/core/src/components/features/browse/Prod
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import SubNavigationReducer from '@tcp/core/src/reduxStore/reducers/subNavigation';
 import AddressVerificationReducer from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.reducer';
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
@@ -105,6 +107,7 @@ import {
   STORE_LOCATOR_REDUCER_KEY,
   APPLY_NOW_MODAL_REDUCER_KEY,
   APPLY_PLCC_REDUCER_KEY,
+  LOADER_REDUCER_KEY,
   POINTS_CLAIM_REDUCER_KEY,
   SOCIAL_REDUCER_KEY,
   CONFIRMATION_REDUCER_KEY,
@@ -123,6 +126,7 @@ import {
   MY_PREFERENCE_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
   BUNDLEPRODUCT_REDUCER_KEY,
+  SUB_NAVIGATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -190,6 +194,7 @@ const rootReducer = combineReducers({
   [PRODUCT_LISTING_REDUCER_KEY]: filteredProductListingReducer,
   [PRODUCT_DETAIL_REDUCER_KEY]: filteredProductDetailReducer,
   [QUICK_VIEW_REDUCER_KEY]: QuickViewReducer,
+  [LOADER_REDUCER_KEY]: LoaderReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
@@ -243,6 +248,7 @@ const rootReducer = combineReducers({
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
   [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
+  [SUB_NAVIGATION_REDUCER_KEY]: SubNavigationReducer,
 });
 
 const rootPersistConfig = {

@@ -13,6 +13,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
       <Styled(Styled(BodyCopy))
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
         margin={null}
@@ -24,6 +25,7 @@ exports[`ProfileInfoActions should render correctly for empty state 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
@@ -104,6 +106,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(Styled(BodyCopy))
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
         margin={null}
@@ -115,6 +118,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
@@ -124,6 +128,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         margin={null}
         numberOfLines={null}
@@ -133,6 +138,7 @@ exports[`ProfileInfoActions should render correctly for filled state 1`] = `
       <Styled(BodyCopy)
         accessibilityText=""
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs16"
         margin={null}
         numberOfLines={null}

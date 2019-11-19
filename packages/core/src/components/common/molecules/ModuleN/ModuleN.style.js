@@ -20,6 +20,11 @@ export default css`
     padding-top: 24px;
     padding-bottom: 24px;
   }
+  .stacked-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-bottom: 0px;
+    }
+  }
 
   .text_normal {
     margin-top: 0px;
@@ -53,6 +58,12 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       display: inline;
       margin-bottom: 0;
+    }
+  }
+
+  .percentage_inline_promo {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-left: 10px;
     }
   }
 

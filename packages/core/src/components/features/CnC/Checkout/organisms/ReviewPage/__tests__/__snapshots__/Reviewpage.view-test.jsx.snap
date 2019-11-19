@@ -12,9 +12,11 @@ exports[`ReviewPageVanilla component should renders correctly props not present 
     name="expressReviewShippingSection"
   />
   <Connect(BillingSectionContainer)
+    bagLoading={false}
     isExpressCheckout={false}
   />
   <Connect(CheckoutCartItemList)
+    bagLoading={false}
     disableProductRedirect={true}
   />
   <Styled(CheckoutOrderInfo)

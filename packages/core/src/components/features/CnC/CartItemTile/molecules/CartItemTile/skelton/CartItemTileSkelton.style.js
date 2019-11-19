@@ -27,20 +27,26 @@ export default css`
       margin-bottom: 5px;
     }
     .product-detail-row {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 135px;
+      }
       margin-left: 0;
       width: 233px;
       margin-bottom: 5px;
-      @media ${props => props.theme.mediaQuery.smallOnly} {
-        width: 100%;
-      }
     }
     .product-upc {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 100px;
+      }
       width: 150px;
       display: block;
       height: 10px;
       margin-bottom: 14px;
     }
     .product-detail-row.label-responsive-wrapper {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 150px;
+      }
       width: 250px;
       height: 19px;
       display: block;
@@ -57,19 +63,26 @@ export default css`
       width: 109px;
     }
     .save-for-later {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        margin-right: 15px;
+        width: 60px;
+      }
       display: inline-block;
       margin-right: 50px;
       width: 89px;
       height: 18px;
     }
     .edit {
+      @media ${props => props.theme.mediaQuery.smallOnly} {
+        width: 60px;
+      }
       display: inline-block;
       width: 89px;
       height: 18px;
     }
   }
   .cart-item-radio-button-top {
-    padding: 12px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     width: 253px;
     display: block;
     height: 20px;
@@ -79,7 +92,7 @@ export default css`
     }
   }
   .cart-item-radio-button-middle {
-    padding: 12px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     width: 119px;
     display: block;
     height: 19px;
@@ -89,7 +102,7 @@ export default css`
     }
   }
   .cart-item-radio-button-bottom {
-    padding: 12px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     width: 119px;
     display: block;
     height: 19px;

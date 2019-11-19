@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { getProductDetails } from './BundleProduct.actions';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
+import { getProductDetails, clearBundleState } from './BundleProduct.actions';
 import BundleProduct from '../views';
 import {
   getCurrentProduct,
@@ -17,6 +18,7 @@ import {
   getAddedToBagErrorCatId,
   getBreadCrumbs,
   prodDetails,
+  getOutfitLabels,
 } from './BundleProduct.selectors';
 import getAddedToBagFormValues from '../../../../../reduxStore/selectors/form.selectors';
 import { PRODUCT_ADD_TO_BAG } from '../../../../../constants/reducer.constants';
@@ -37,6 +39,8 @@ import {
   isRememberedUser,
 } from '../../../account/User/container/User.selectors';
 import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
+import { getIsKeepAliveProduct } from '../../../../../reduxStore/selectors/session.selectors';
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
 
 export class ProductBundleContainer extends React.PureComponent {
   selectedColorProductId;
@@ -52,6 +56,11 @@ export class ProductBundleContainer extends React.PureComponent {
     const { navigation } = this.props;
     this.makeApiCall();
     if (!navigation) window.scrollTo(0, 100);
+  }
+
+  componentWillUnmount() {
+    const { clearBundleDetails } = this.props;
+    clearBundleDetails();
   }
 
   makeApiCall = () => {
@@ -107,6 +116,10 @@ export class ProductBundleContainer extends React.PureComponent {
       removeAddToFavoritesErrorMsg,
       breadCrumbs,
       productDetails,
+      outfitLabels,
+      isKeepAliveEnabled,
+      outOfStockLabels,
+      toastMessage,
     } = this.props;
     return (
       <BundleProduct
@@ -114,6 +127,7 @@ export class ProductBundleContainer extends React.PureComponent {
         selectedColorProductId={this.selectedColorProductId}
         plpLabels={plpLabels}
         pdpLabels={pdpLabels}
+        outfitLabels={outfitLabels}
         navigation={navigation}
         shortDescription={shortDescription}
         itemPartNumber={itemPartNumber}
@@ -134,6 +148,9 @@ export class ProductBundleContainer extends React.PureComponent {
         removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         breadCrumbs={breadCrumbs}
         productDetails={productDetails}
+        isKeepAliveEnabled={isKeepAliveEnabled}
+        outOfStockLabels={outOfStockLabels}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -163,6 +180,9 @@ function mapStateToProps(state) {
     isPlcc: isPlccUser(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     breadCrumbs: getBreadCrumbs(state),
+    outfitLabels: getOutfitLabels(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 
@@ -177,11 +197,17 @@ function mapDispatchToProps(dispatch) {
     clearAddToBagError: () => {
       dispatch(clearAddToBagErrorState());
     },
+    clearBundleDetails: () => {
+      dispatch(clearBundleState());
+    },
     addToFavorites: payload => {
       dispatch(addItemsToWishlist(payload));
     },
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
+    },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
     },
   };
 }
@@ -211,11 +237,18 @@ ProductBundleContainer.propTypes = {
   removeAddToFavoritesErrorMsg: PropTypes.func,
   breadCrumbs: PropTypes.shape({}),
   productDetails: PropTypes.arrayOf(PropTypes.shape({})),
+  formValues: PropTypes.shape({}).isRequired,
+  outfitLabels: PropTypes.shape({}),
+  clearBundleDetails: PropTypes.func,
+  isKeepAliveEnabled: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func.isRequired,
 };
 
 ProductBundleContainer.defaultProps = {
   plpLabels: {},
   pdpLabels: {},
+  outfitLabels: {},
   shortDescription: '',
   itemPartNumber: '',
   longDescription: '',
@@ -235,6 +268,9 @@ ProductBundleContainer.defaultProps = {
   removeAddToFavoritesErrorMsg: () => {},
   breadCrumbs: [],
   productDetails: [],
+  clearBundleDetails: () => {},
+  isKeepAliveEnabled: false,
+  outOfStockLabels: {},
 };
 
 export default connect(

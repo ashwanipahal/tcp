@@ -160,6 +160,10 @@ export const getPDPLabels = state => {
   };
 };
 
+export const getOutfitLabels = state => {
+  return state.Labels.Browse && state.Labels.Browse.Outfit;
+};
+
 export const getAddedToBagErrorCatId = state => {
-  return state.AddedToBagReducer && state.AddedToBagReducer.errorCatId;
+  return state.AddedToBagReducer.get('errorCatId');
 };

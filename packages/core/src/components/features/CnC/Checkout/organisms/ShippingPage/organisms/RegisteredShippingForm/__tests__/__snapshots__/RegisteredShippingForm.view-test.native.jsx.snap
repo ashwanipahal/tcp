@@ -615,6 +615,7 @@ exports[`RegisteredShippingForm should render correctly  1`] = `
       dataLocator="shipping-edit-contact-anchor"
       fontSizeVariation="small"
       href="#"
+      justifyContent=""
       locator=""
       margins={null}
       noLink={true}

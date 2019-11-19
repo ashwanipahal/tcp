@@ -5,6 +5,7 @@ const styles = css`
 
   .fav-icon-wrapper {
     text-align: right;
+    display: grid;
   }
   .item-container-inner {
     height: 100%;
@@ -13,8 +14,11 @@ const styles = css`
   }
   .fulfillment-section {
     margin-top: auto;
+    margin-bottom: auto;
   }
-
+  .favorite-count {
+    text-align: center;
+  }
   .clear-button {
     border: none;
     background: transparent;
@@ -27,9 +31,11 @@ const styles = css`
     height: 18px;
     cursor: pointer;
   }
+  .list-price-container {
+    padding-right: 10px;
+  }
   .list-price {
     text-decoration: line-through;
-    padding-right: 10px;
   }
   .product-title-container {
     box-sizing: border-box;
@@ -40,6 +46,10 @@ const styles = css`
   .added-to-bag {
     width: 100%;
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    &:focus {
+      background: ${props => props.theme.colorPalette.blue.C900};
+      color: white;
+    }
     &:hover:not([disabled]) {
       background: ${props => props.theme.colorPalette.blue.C900};
       color: white;
@@ -187,6 +197,9 @@ const styles = css`
   }
 
   .product-image-container {
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 320px;
+    }
     position: relative;
   }
 
@@ -206,13 +219,10 @@ const styles = css`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: rgba(224, 224, 224, 0.6);
-    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.7);
     justify-content: center;
     align-items: center;
     display: flex;
-    font-size: ${props => props.theme.typography.fontSizes.fs22};
-    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
 
   .container-price {

@@ -60,7 +60,7 @@ class CheckoutHeader extends React.PureComponent {
   onBackPress = () => {
     const { navigation, setCheckoutStage } = this.props;
     const { currentStage } = this.state;
-    const currentStageIndex = this.availableStages.indexOf(currentStage);
+    const currentStageIndex = this.availableStages.indexOf(currentStage.toLowerCase());
     if (currentStageIndex > 0) {
       const stageToRoute = this.availableStages[currentStageIndex - 1];
       setCheckoutStage(stageToRoute);

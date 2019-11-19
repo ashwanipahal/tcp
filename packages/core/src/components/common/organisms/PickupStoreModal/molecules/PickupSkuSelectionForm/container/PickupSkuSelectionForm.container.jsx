@@ -82,7 +82,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
       isPickUpWarningModal,
       currentProduct,
       prices,
-      currencyExchange,
+      currencyAttributes,
       toastMessage,
     } = this.props;
     const { currentColorEntry, selectedColor } = this.state;
@@ -113,7 +113,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
         imagePath={imageUrl}
         listPrice={listPrice}
         offerPrice={offerPrice}
-        currencyExchange={currencyExchange}
+        currencyAttributes={currencyAttributes}
       />
     ) : (
       <PickupSkuSelectionForm
@@ -125,7 +125,7 @@ class PickupSkuSelectionFormContainer extends React.Component {
         onChangeSize={this.onChangeSize}
         imageUrl={imageUrl}
         currentColorEntry={currentColorEntry}
-        currencyExchange={currencyExchange}
+        currencyAttributes={currencyAttributes}
         initialValues={this.formValues}
         toastMessage={toastMessage}
       />
@@ -170,7 +170,7 @@ PickupSkuSelectionFormContainer.propTypes = {
   currentProduct: PRODUCT_INFO_PROP_TYPE_SHAPE.isRequired,
 
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   prices: PropTypes.shape({
     listPrice: PropTypes.number.isRequired,
@@ -215,7 +215,6 @@ PickupSkuSelectionFormContainer.defaultProps = {
   onEditSku: false,
   isPickUpWarningModal: false,
   onCloseClick: () => {},
-  currencyExchange: 1,
   toastMessage: () => {},
 };
 
