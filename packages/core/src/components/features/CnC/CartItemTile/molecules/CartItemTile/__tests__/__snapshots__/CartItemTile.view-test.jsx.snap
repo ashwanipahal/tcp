@@ -6995,7 +6995,6 @@ exports[`CartItemTile common component renders correctly 1`] = `
       }
       & .brand-image {
         width: 60px;
-        height: 26px;
       }
     }
 
@@ -7534,7 +7533,6 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       }
       & .brand-image {
         width: 60px;
-        height: 26px;
       }
     }
 
