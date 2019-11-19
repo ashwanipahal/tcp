@@ -81,12 +81,15 @@ const redirectToBag = resetPLCCResponse => {
  *
  * @param - isModalFlow - Check whether working on a modal based plcc flow.
  * @param - closeModal - Function to trigger the closure of modal.
+ * @param - resetResponse - Reset response of form submission.
  *
  */
-const redirectToHome = (isModalFlow, closeModal) => {
+const redirectToHome = (isModalFlow, closeModal, resetResponse) => {
   if (isModalFlow && closeModal) {
     closeModal();
   }
+  // reseting the plcc form submission response.
+  resetResponse({ status: null });
   routerPush(window.location.href, '/home');
 };
 

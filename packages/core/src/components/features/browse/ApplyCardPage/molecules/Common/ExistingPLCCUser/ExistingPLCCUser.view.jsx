@@ -59,7 +59,7 @@ const ExistingPLCCUserView = ({
             className="existing_continue_button"
           >
             <Button
-              onClick={() => redirectToHome(isPLCCModalFlow, closePLCCModal)}
+              onClick={() => redirectToHome(isPLCCModalFlow, closePLCCModal, resetPLCCResponse)}
               buttonVariation="fixed-width"
               type="submit"
               fill={!bagItems ? 'BLUE' : 'WHITE'}

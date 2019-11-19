@@ -191,7 +191,11 @@ const totalSavingsFooterContainer = (
           >
             <Button
               onClick={() =>
-                redirectToHome(residualProps.isPLCCModalFlow, residualProps.closePLCCModal)
+                redirectToHome(
+                  residualProps.isPLCCModalFlow,
+                  residualProps.closePLCCModal,
+                  resetPLCCResponse
+                )
               }
               buttonVariation="fixed-width"
               type="submit"
