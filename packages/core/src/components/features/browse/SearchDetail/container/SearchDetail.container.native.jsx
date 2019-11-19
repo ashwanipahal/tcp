@@ -18,7 +18,9 @@ import {
   getNavigationTree,
   getLongDescription,
   getLastLoadedPageNumber,
+  getSelectedFilter,
 } from '../../ProductListing/container/ProductListing.selectors';
+import { setFilter } from '../../ProductListing/container/ProductListing.actions';
 import {
   getLoadedProductsCount,
   getLoadedProductsPages,
@@ -236,6 +238,7 @@ function mapStateToProps(state) {
     labelsLogin: getLabelsAccountOverView(state),
     isLoadingMore: getIsLoadingMore(state),
     isSearchResultsAvailable: checkIfSearchResultsAvailable(state),
+    selectedFilterValue: getSelectedFilter(state),
     lastLoadedPageNumber: getLastLoadedPageNumber(state),
     formValues: getFormValues('filter-form')(state),
     currentNavIds: state.ProductListing && state.ProductListing.currentNavigationIds,
@@ -268,6 +271,9 @@ function mapDispatchToProps(dispatch) {
     },
     setRecentSearches: searchTerm => {
       dispatch(setRecentSearch({ searchTerm }));
+    },
+    setSelectedFilter: payload => {
+      dispatch(setFilter(payload));
     },
   };
 }

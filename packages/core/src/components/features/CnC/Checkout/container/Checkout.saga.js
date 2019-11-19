@@ -55,14 +55,8 @@ import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 
-const {
-  getIsOrderHasShipping,
-  getShippingDestinationValues,
-  getDefaultAddress,
-  getGiftServicesFormData,
-  getShipmentMethods,
-  getCurrentCheckoutStage,
-} = selectors;
+const { getIsOrderHasShipping, getShippingDestinationValues, getDefaultAddress } = selectors;
+const { getGiftServicesFormData, getShipmentMethods, getCurrentCheckoutStage } = selectors;
 const { hasPOBox } = utility;
 let oldHasPOB = {};
 
@@ -87,14 +81,11 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
     //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
-    // resCheckoutValues.giftWrap &&
-    //   getSetGiftWrapValuesActn(
-    //     {
-    //       hasGiftWrapping:
-    //       !!resCheckoutValues.giftWrap.optionId,
-    //       ...resCheckoutValues.giftWrap
-    //     }
-    //   ),
+    resCheckoutValues.giftWrap &&
+      CHECKOUT_ACTIONS.getSetGiftWrapValuesActn({
+        hasGiftWrapping: !!resCheckoutValues.giftWrap.optionId,
+        ...resCheckoutValues.giftWrap,
+      }),
     resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing),
   ];
   yield all(actions.map(action => put(action)));
@@ -591,9 +582,10 @@ function* submitShipping({
   saveToAccount,
   method,
   smsInfo,
+  hasSetGiftOptions,
 }) {
   const giftServicesFormData = yield select(getGiftServicesFormData);
-  yield addAndSetGiftWrappingOptions(giftServicesFormData);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData, hasSetGiftOptions);
   yield put(setAddressError(null));
   const pendingPromises = [
     // add the requested gift wrap options

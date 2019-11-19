@@ -314,6 +314,7 @@ describe('CartItemTile - Boss Bopis Scenarios', () => {
       isBopisClearanceProductEnabled: true,
       isRadialInventoryEnabled: true,
       pickupStoresInCart: {},
+      isBagPageSflSection: false,
       onPickUpOpenClick: jest.fn(),
       toggleBossBopisError: null,
     };
