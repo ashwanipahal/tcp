@@ -55,6 +55,7 @@ export class App extends React.PureComponent {
     apiConfig: null,
   };
 
+  /* eslint-disable-next-line */
   UNSAFE_componentWillMount() {
     this.store = store;
     const { appType } = this.props;
