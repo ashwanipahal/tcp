@@ -143,24 +143,6 @@ class TCPWebApp extends App {
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
     }
-
-    const isUserLoggedIn = getUserLoggedInState(store.getState());
-    // const isLocationEnabledForGuest =
-    //   store.getState().session.siteDetails.IS_LOCATION_ENABLED_FOR_GUEST === 'TRUE';
-    // const isLocationEnabledForLoggedInUser =
-    //   store.getState().session.siteDetails.IS_LOCATION_ENABLED_FOR_LOGGED_IN_USER === 'TRUE';
-
-    const isLocationEnabledForGuest = true;
-    const isLocationEnabledForLoggedInUser = true;
-
-    console.log("***************",isUserLoggedIn,"***************");
-
-    if (
-      (isLocationEnabledForGuest && navigator && navigator.geolocation) ||
-      (isLocationEnabledForLoggedInUser && isUserLoggedIn && navigator && navigator.geolocation)
-    ) {
-      navigator.geolocation.getCurrentPosition( () => {});
-    }
   }
 
   componentDidUpdate() {

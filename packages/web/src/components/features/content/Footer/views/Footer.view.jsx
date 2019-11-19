@@ -33,6 +33,13 @@ class Footer extends React.Component {
     } else {
       this.setState({ showFooterTopCandidateB: false });
     }
+    const { isLoggedIn, isLocationEnabledForGuest, isLocationEnabledForLoggedInUser } = this.props;
+    if (
+      (true && navigator && navigator.geolocation) ||
+      (true && isLoggedIn && navigator && navigator.geolocation)
+    ) {
+      navigator.geolocation.getCurrentPosition(() => {});
+    }
   }
 
   render() {
@@ -171,6 +178,8 @@ Footer.propTypes = {
   footerActionCreator: PropTypes.func.isRequired,
   pageName: PropTypes.string,
   isNavigationFooter: PropTypes.bool,
+  isLocationEnabledForGuest: PropTypes.bool,
+  isLocationEnabledForLoggedInUser: PropTypes.bool
 };
 
 Footer.defaultProps = {
@@ -181,6 +190,8 @@ Footer.defaultProps = {
   isLoggedIn: false,
   pageName: '',
   isNavigationFooter: false,
+  isLocationEnabledForGuest: true,
+  isLocationEnabledForLoggedInUser: true
 };
 
 export default withStyles(errorBoundary(Footer), style);

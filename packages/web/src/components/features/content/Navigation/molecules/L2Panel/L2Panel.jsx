@@ -139,25 +139,27 @@ const createLinks = (
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Anchor
-                asPath={asPath}
-                to={url}
-                onClick={e =>
-                  openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
-                }
-              >
-                <BodyCopy
-                  className="l2-nav-link"
-                  fontFamily="secondary"
-                  fontSize={['fs13', 'fs13', 'fs14']}
-                  lineHeight="lh107"
-                  color="text.primary"
+              <div className="L2-panel-container">
+                <Anchor
+                  asPath={asPath}
+                  to={url}
+                  onClick={e =>
+                    openL3Nav(currentIndex, hasL3, context.hideL2Nav, openL3Drawer, closeNav, e)
+                  }
                 >
-                  {renderLabel(classForRedContent, promoBadge, name)}
-                  {renderPromoBadge(promoBadge, currentIndex)}
-                  {renderArrowIcon(hasSubCategories)}
-                </BodyCopy>
-              </Anchor>
+                  <BodyCopy
+                    className="l2-nav-link"
+                    fontFamily="secondary"
+                    fontSize={['fs13', 'fs13', 'fs14']}
+                    lineHeight="lh107"
+                    color="text.primary"
+                  >
+                    {renderLabel(classForRedContent, promoBadge, name)}
+                    {renderPromoBadge(promoBadge, currentIndex)}
+                    {renderArrowIcon(hasSubCategories)}
+                  </BodyCopy>
+                </Anchor>
+              </div>
               {renderL3Panel(
                 hasSubCategories,
                 currentIndex,
