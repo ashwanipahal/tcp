@@ -11,7 +11,6 @@ import BillingPage from '../organisms/BillingPage';
 import ReviewPage from '../organisms/ReviewPage';
 import CHECKOUT_STAGES from '../../../../../../../web/src/pages/App.constants';
 import VenmoBanner from '../../../../common/molecules/VenmoBanner';
-import checkoutSelectors from '../container/Checkout.selector';
 import Confirmation from '../../Confirmation';
 import { routerPush, scrollToParticularElement } from '../../../../../utils';
 import ErrorMessage from '../../common/molecules/ErrorMessage';
@@ -64,12 +63,11 @@ class CheckoutPage extends React.PureComponent {
    * once user comes back
    */
   isVenmoPickupDisplayed = () => {
+    const { isVenmoPickupBannerDisplayed } = this.props;
     const currentSection = getCurrentSection(this.props);
-    let venmoPickupDisplayed = false;
-    if (currentSection && currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP) {
-      venmoPickupDisplayed = checkoutSelectors.isVenmoPickupBannerDisplayed();
-    }
-    return venmoPickupDisplayed;
+    return currentSection && currentSection.toLowerCase() === CHECKOUT_STAGES.PICKUP
+      ? isVenmoPickupBannerDisplayed
+      : false;
   };
 
   /**
@@ -77,12 +75,11 @@ class CheckoutPage extends React.PureComponent {
    * once user comes back
    */
   isVenmoShippingDisplayed = () => {
+    const { isVenmoShippingBannerDisplayed } = this.props;
     const currentSection = getCurrentSection(this.props);
-    let venmoShippingDisplayed = false;
-    if (currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING) {
-      venmoShippingDisplayed = checkoutSelectors.isVenmoShippingBannerDisplayed();
-    }
-    return venmoShippingDisplayed;
+    return currentSection.toLowerCase() === CHECKOUT_STAGES.SHIPPING
+      ? isVenmoShippingBannerDisplayed
+      : false;
   };
 
   /**
@@ -391,6 +388,8 @@ CheckoutPage.defaultProps = {
   setVenmoShippingState: () => {},
   isExpressCheckout: false,
   shippingMethod: {},
+  isVenmoPickupBannerDisplayed: true,
+  isVenmoShippingBannerDisplayed: true,
   pageData: {},
 };
 

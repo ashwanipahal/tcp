@@ -53,7 +53,7 @@ exports[`ProfileInformation component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="hide-on-mobile elem-pt-LRG elem-pb-LRG"
+    className="hide-on-mobile hide-on-tablet elem-pt-LRG elem-pb-LRG"
     fullBleed={true}
   >
     <Styled(Col)
