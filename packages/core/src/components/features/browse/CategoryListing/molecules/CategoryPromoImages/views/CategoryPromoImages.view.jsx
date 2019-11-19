@@ -35,7 +35,7 @@ const ImageComponent = ({ image, link, className, titleClass, linkClass, imgData
             color="gray.900"
             textAlign="center"
           >
-            {`${link.text} > `}
+            {link.text ? `${link.text} > ` : ''}
           </BodyCopy>
         </Anchor>
       </div>
@@ -45,8 +45,26 @@ const ImageComponent = ({ image, link, className, titleClass, linkClass, imgData
 
 const CategoryPromoImages = ({ className, categoryPromoImages }) => {
   const combinedCategoryImages = [];
+  const tabMobileCombinedCategoryImages = [];
   if (Object.keys(categoryPromoImages).length) {
     Object.keys(categoryPromoImages).forEach(contentId => {
+      tabMobileCombinedCategoryImages.push(
+        categoryPromoImages[contentId].imageGrid.map(imageGrid => {
+          const { image, link } = imageGrid;
+          return (
+            <ImageComponent
+              titleClass="image-title-2-up"
+              linkClass="image-link-2-up"
+              className="image-tile-desktop-2-up"
+              image={image}
+              key={image.image}
+              link={link}
+              imgDataConfig={config.IMG_DATA_2.imgConfig}
+            />
+          );
+        })
+      );
+
       if (categoryPromoImages[contentId].images === '4') {
         combinedCategoryImages.push(
           <div className="image-variant-wrapper">
@@ -126,7 +144,10 @@ const CategoryPromoImages = ({ className, categoryPromoImages }) => {
 
   return (
     <div className={className}>
-      <div className="image-variant-wrapper">{combinedCategoryImages}</div>
+      <div className="image-variant-wrapper clp-desktop-view">{combinedCategoryImages}</div>
+      <div className="image-variant-wrapper clp-mobile-tab-view">
+        {tabMobileCombinedCategoryImages}
+      </div>
     </div>
   );
 };

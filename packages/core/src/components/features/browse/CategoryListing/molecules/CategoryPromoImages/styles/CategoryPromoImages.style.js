@@ -18,7 +18,22 @@ export default css`
   .image-link-4-up {
     margin-top: 4px;
   }
+
+  .clp-mobile-tab-view {
+    display: flex;
+  }
+  .clp-desktop-view {
+    display: none;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
+    .clp-mobile-tab-view {
+      display: flex;
+    }
+    .clp-desktop-view {
+      display: none;
+    }
+
     .image-title-fullBleed,
     .image-title-2-up,
     .image-title-3-up,
@@ -35,6 +50,9 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
+    .clp-mobile-tab-view {
+      display: none;
+    }
     .image-title-fullBleed,
     .image-title-2-up {
       margin-top: 42px;
@@ -51,6 +69,9 @@ export default css`
     }
     .image-link-3-up {
       margin-top: 8px;
+    }
+    .clp-desktop-view {
+      display: flex;
     }
   }
 `;
