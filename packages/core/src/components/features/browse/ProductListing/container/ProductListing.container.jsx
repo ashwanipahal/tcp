@@ -8,7 +8,10 @@ import { PropTypes } from 'prop-types';
 import { getAPIConfig } from '@tcp/core/src/utils/utils';
 import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import { getPlpProducts, getMorePlpProducts } from './ProductListing.actions';
-import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
+import {
+  removeAddToFavoriteErrorState,
+  addItemsToWishlist,
+} from '../../Favorites/container/Favorites.actions';
 import {
   openQuickViewWithValues,
   closeQuickViewModal,
@@ -46,6 +49,7 @@ import {
   getCurrentCurrency,
   getCurrencyAttributes,
 } from '../../ProductDetail/container/ProductDetail.selectors';
+import { fetchAddToFavoriteErrorMsg } from '../../Favorites/container/Favorites.selectors';
 import { styliticsProductTabListDataReqforOutfit } from '../../../../common/organisms/StyliticsProductTabList/container/StyliticsProductTabList.actions';
 
 const defaultResolver = mod => mod.default;
@@ -190,6 +194,8 @@ class ProductListingContainer extends React.PureComponent {
       router: { asPath: asPathVal },
       isSearchListing,
       navigation,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
     const { isOutfit, asPath, isCLP } = this.state;
@@ -226,6 +232,8 @@ class ProductListingContainer extends React.PureComponent {
         asPathVal={asPathVal}
         isSearchListing={isSearchListing}
         navigation={navigation}
+        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         {...otherProps}
       />
     ) : (
@@ -297,6 +305,7 @@ function mapStateToProps(state) {
     currency: getCurrentCurrency(state),
     routerParam: state.routerParam,
     plpTopPromos: getPLPTopPromos(state),
+    AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     navigationData: state.Navigation && state.Navigation.navigationData,
     isKeepAliveEnabled: getIsKeepAliveProduct(state),
   };
@@ -321,6 +330,9 @@ function mapDispatchToProps(dispatch) {
     },
     getStyliticsProductTabListData: payload => {
       dispatch(styliticsProductTabListDataReqforOutfit(payload));
+    },
+    removeAddToFavoritesErrorMsg: payload => {
+      dispatch(removeAddToFavoriteErrorState(payload));
     },
     addToCartEcom: () => {},
     addItemToCartBopis: () => {},
@@ -361,6 +373,8 @@ ProductListingContainer.propTypes = {
   closeQuickViewModalAction: PropTypes.func,
   navigationData: PropTypes.shape({}),
   isSearchListing: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListingContainer.defaultProps = {
@@ -389,6 +403,8 @@ ProductListingContainer.defaultProps = {
   closeQuickViewModalAction: () => {},
   navigationData: null,
   isSearchListing: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 const IsomorphicProductListingContainer = withIsomorphicRenderer({

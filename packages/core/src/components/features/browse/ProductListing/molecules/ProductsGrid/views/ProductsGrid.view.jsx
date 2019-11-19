@@ -44,6 +44,8 @@ class ProductsGrid extends React.Component {
     // showQuickViewForProductId: PropTypes.string,
     getProducts: PropTypes.func,
     asPathVal: PropTypes.string,
+    AddToFavoriteErrorMsg: PropTypes.string,
+    removeAddToFavoritesErrorMsg: PropTypes.func,
   };
 
   static defaultProps = {
@@ -60,6 +62,8 @@ class ProductsGrid extends React.Component {
     isSearchListing: false,
     getProducts: () => {},
     asPathVal: '',
+    AddToFavoriteErrorMsg: '',
+    removeAddToFavoritesErrorMsg: () => {},
   };
 
   constructor(props, context) {
@@ -162,6 +166,8 @@ class ProductsGrid extends React.Component {
       // showQuickViewForProductId,
       getProducts,
       asPathVal,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
 
@@ -200,6 +206,8 @@ class ProductsGrid extends React.Component {
                         isSearchListing={isSearchListing}
                         getProducts={getProducts}
                         asPathVal={asPathVal}
+                        AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+                        removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
                         {...otherProps}
                       />
                     );

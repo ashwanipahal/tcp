@@ -32,6 +32,8 @@ const Product = props => {
     keepAlive,
     outOfStockLabels,
     reviewOnTop,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -64,7 +66,7 @@ const Product = props => {
 
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile hide-on-desktop' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
         <ProductBasicInfo
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
@@ -82,6 +84,9 @@ const Product = props => {
           isInternationalShipping={isInternationalShipping}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
+          productMiscInfo={colorProduct}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
@@ -132,6 +137,8 @@ Product.propTypes = {
     itemSoldOutMessage: PropTypes.string,
   }),
   reviewOnTop: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 Product.defaultProps = {
@@ -140,6 +147,8 @@ Product.defaultProps = {
   outOfStockLabels: {
     itemSoldOutMessage: '',
   },
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default Product;

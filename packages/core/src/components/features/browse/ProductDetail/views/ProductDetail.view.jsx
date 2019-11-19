@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ExecutionEnvironment from 'exenv';
@@ -91,6 +92,8 @@ class ProductDetailView extends PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       outOfStockLabels,
+      AddToFavoriteErrorMsg,
+      removeAddToFavoritesErrorMsg,
       ...otherProps
     } = this.props;
     const { currentGiftCardValue, currentColorEntry } = this.state;
@@ -110,6 +113,8 @@ class ProductDetailView extends PureComponent {
           keepAlive={keepAlive}
           outOfStockLabels={outOfStockLabels}
           className="hide-on-mobile"
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
         {isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -415,6 +420,8 @@ ProductDetailView.propTypes = {
     outOfStockCaps: PropTypes.string,
   }).isRequired,
   isKeepAliveEnabled: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductDetailView.defaultProps = {
@@ -434,6 +441,8 @@ ProductDetailView.defaultProps = {
   isLoggedIn: false,
   alternateSizes: {},
   isKeepAliveEnabled: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductDetailView, ProductDetailStyle);
