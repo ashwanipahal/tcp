@@ -43,7 +43,7 @@ const ProductList = props => {
     onProductCardHover,
     isBopisEnabledForClearance,
     onQuickBopisOpenClick,
-    currencyExchange,
+    currencyAttributes,
     siblingProperties,
     loadedProductCount,
     labels,
@@ -88,7 +88,7 @@ const ProductList = props => {
               isGridView
               isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               onQuickViewOpenClick={onQuickViewOpenClick}
               onPickUpOpenClick={onPickUpOpenClick}
@@ -138,7 +138,7 @@ ProductList.propTypes = {
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
   currency: PropTypes.string,
-  currencyExchange: PropTypes.shape({}),
+  currencyAttributes: PropTypes.shape({}).isRequired,
   /** callback for clicks on wishlist CTAs. Accepts: colorProductId. */
   onAddItemToFavorites: PropTypes.func,
   /** callback for clicks on quickView CTAs. Accepts a generalProductId, colorProductId */
@@ -186,7 +186,6 @@ ProductList.defaultProps = {
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},
-  currencyExchange: 1,
   siblingProperties: {
     colorMap: [],
     promotionalMessage: '',

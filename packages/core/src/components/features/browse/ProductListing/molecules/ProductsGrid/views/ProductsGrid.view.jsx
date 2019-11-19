@@ -37,7 +37,7 @@ class ProductsGrid extends React.Component {
     labels: PropTypes.string,
     productTileVariation: PropTypes.string,
     currency: PropTypes.string,
-    currencyExchange: PropTypes.string,
+    currencyAttributes: PropTypes.shape({}).isRequired,
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
     isSearchListing: PropTypes.bool,
@@ -56,7 +56,6 @@ class ProductsGrid extends React.Component {
     labels: '',
     productTileVariation: '',
     currency: 'USD',
-    currencyExchange: 1,
     isLoggedIn: false,
     isSearchListing: false,
     getProducts: () => {},
@@ -156,7 +155,7 @@ class ProductsGrid extends React.Component {
       onQuickViewOpenClick,
       productTileVariation,
       currency,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
       isSearchListing,
@@ -194,7 +193,7 @@ class ProductsGrid extends React.Component {
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
                         currency={currency}
-                        currencyExchange={currencyExchange}
+                        currencyAttributes={currencyAttributes}
                         isLoggedIn={isLoggedIn}
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
