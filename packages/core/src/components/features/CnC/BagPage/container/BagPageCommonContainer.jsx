@@ -38,17 +38,12 @@ import PlaceCashSelector from '../../PlaceCashBanner/container/PlaceCashBanner.s
 
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
-    const {
-      needHelpContentId,
-      fetchNeedHelpContent,
-      placeCashUsBagContentId,
-      placeCashCaBagContentId,
-      setVenmoPickupState,
-      setVenmoShippingState,
-    } = this.props;
-    fetchNeedHelpContent([needHelpContentId, placeCashUsBagContentId, placeCashCaBagContentId]);
+    const { needHelpContentId, fetchNeedHelpContent } = this.props;
+    fetchNeedHelpContent([needHelpContentId]);
+    const { setVenmoPickupState, setVenmoShippingState, setVenmoInProgress } = this.props;
     setVenmoPickupState(false);
     setVenmoShippingState(false);
+    setVenmoInProgress(false); // Setting venmo progress as false. User can select normal checkout on cart page.
     this.fetchInitialActions();
   }
 

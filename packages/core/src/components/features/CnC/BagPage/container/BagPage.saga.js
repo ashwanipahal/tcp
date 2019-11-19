@@ -64,7 +64,8 @@ import {
   handleServerSideErrorAPI,
   getRouteToCheckoutStage,
 } from '../../Checkout/container/Checkout.saga.util';
-import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
+import startSflItemDelete, { routeForAppCartCheckout } from './BagPage.saga.util';
+import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.saga';
 
 const { getOrderPointsRecalcFlag } = utility;
 
@@ -175,7 +176,7 @@ function* updateBopisItems(res, isCartPage) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
-    yield put(setLoaderState(false));
+    // yield put(setLoaderState(false));
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
@@ -252,21 +253,18 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
   if (isMobileApp()) {
-    if (isExpressCheckoutEnabled) {
-      yield call(navigateToCheckout, CONSTANTS.REVIEW_DEFAULT_PARAM, navigation, navigationActions);
-    } else if (orderHasPickup) {
-      yield call(navigateToCheckout, CONSTANTS.PICKUP_DEFAULT_PARAM, navigation, navigationActions);
-    } else {
-      const params = [CONSTANTS.SHIPPING_DEFAULT_PARAM, navigation, navigationActions];
-      yield call(navigateToCheckout, ...params);
-    }
-    if (closeModal) {
-      closeModal();
-    }
+    yield call(
+      routeForAppCartCheckout,
+      recalc,
+      navigation,
+      closeModal,
+      navigationActions,
+      orderHasPickup
+    );
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
-    const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
     yield call(
       getRouteToCheckoutStage,
       { recalc },
@@ -444,7 +442,7 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
 }
 
 export function* addItemToSFL({
-  payload: { itemId, catEntryId, userInfoRequired, afterHandler, isMiniBag } = {},
+  payload: { itemId, catEntryId, afterHandler, isMiniBag } = {},
 } = {}) {
   if (isMiniBag) {
     yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
@@ -474,9 +472,6 @@ export function* addItemToSFL({
       yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
     } else {
       yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(true));
-      if (userInfoRequired) {
-        yield put(getUserInfo());
-      }
       yield put(removeCartItem({ itemId }));
     }
   } catch (err) {
@@ -536,6 +531,34 @@ export function* setSflItemUpdate(payload) {
     yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
   } catch (err) {
     yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
+
+export function* startSflItemMoveToBag({ payload }) {
+  try {
+    yield put(setLoaderState(true));
+    const { itemId } = payload;
+    const addToCartData = {
+      skuInfo: {
+        skuId: itemId,
+      },
+      quantity: 1,
+      fromMoveToBag: true,
+    };
+    yield call(addToCartEcom, { payload: addToCartData });
+    yield call(getCartDataSaga, {
+      payload: {
+        isRecalculateTaxes: true,
+        recalcRewards: true,
+        translation: true,
+        excludeCartItems: false,
+      },
+    });
+    yield call(startSflItemDelete, { payload });
+    yield put(setLoaderState(false));
+  } catch (err) {
+    yield put(setLoaderState(false));
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
   }
 }
 

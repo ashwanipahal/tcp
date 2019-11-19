@@ -54,7 +54,7 @@ export class Account extends React.PureComponent {
     if (this.activePageRef && prevState.componentToLoad !== componentToLoad) {
       this.activePageRef.blur();
       setTimeout(() => {
-        this.activePageRef.focus();
+        this.activePageRef.focus({ preventScroll: true });
       }, 100);
     }
 
