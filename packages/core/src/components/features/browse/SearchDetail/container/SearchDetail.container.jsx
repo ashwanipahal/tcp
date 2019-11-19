@@ -3,6 +3,7 @@ import React from 'react';
 import withIsomorphicRenderer from '@tcp/core/src/components/common/hoc/withIsomorphicRenderer';
 import { getFormValues } from 'redux-form';
 import { PropTypes } from 'prop-types';
+import { getIsKeepAliveProduct } from '@tcp/core/src/reduxStore/selectors/session.selectors';
 import SearchDetail from '../views/SearchDetail.view';
 import { getSlpProducts, getMoreSlpProducts } from './SearchDetail.actions';
 import { getProductsAndTitleBlocks } from '../container/SearchDetail.util';
@@ -20,6 +21,7 @@ import {
   getNavigationTree,
   getLongDescription,
   getLastLoadedPageNumber,
+  getLabelsOutOfStock,
 } from '../../ProductListing/container/ProductListing.selectors';
 import {
   getLoadedProductsCount,
@@ -287,6 +289,8 @@ function mapStateToProps(state) {
     currencyAttributes: getCurrencyAttributes(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     deviceType: state.DeviceInfo && state.DeviceInfo.deviceType,
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
   };
 }
 

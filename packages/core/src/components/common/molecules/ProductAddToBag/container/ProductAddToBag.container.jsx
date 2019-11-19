@@ -232,7 +232,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isErrorMessageDisplayed: false,
       isATBErrorMessageDisplayed: false,
       fitChanged: selectedSize.name === '',
-      keepAlive: selectedColor && selectedColor.miscInfo.keepAlive,
+      keepAlive: selectedColor && selectedColor[0] && selectedColor[0].miscInfo.keepAlive,
     });
     // props for any custom action to call
     if (onChangeColor) {
