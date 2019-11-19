@@ -67,7 +67,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
   birthdaySaving={false}
   className=""
   ctaLink="accountOverviewMobile"
-  ctaTitle="lbl_common_addAStore"
+  ctaTitle="lbl_common_updateFavoriteStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
   title="lbl_common_myFavoriteStore"
@@ -76,10 +76,49 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
+    fontWeight="regular"
     margin={null}
     numberOfLines={null}
-    spacingStyles="margin-bottom-LRG"
-    text="lbl_common_favStoreNotAdded"
+    text="store"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=", "
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=" "
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
     textDecoration={null}
   />
 </MyProfileTile>
@@ -90,7 +129,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
   birthdaySaving={false}
   className=""
   ctaLink="accountOverviewMobile"
-  ctaTitle="lbl_common_addAStore"
+  ctaTitle="lbl_common_edit"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
   title="lbl_common_myFavoriteStore"
@@ -109,10 +148,49 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
     accessibilityText=""
     dataLocator=""
     fontSize="fs16"
+    fontWeight="semibold"
     margin={null}
     numberOfLines={null}
-    spacingStyles="margin-bottom-LRG"
-    text="lbl_common_favStoreNotAdded"
+    text="store"
+    textDecoration={null}
+  />
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
+    textDecoration={null}
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=", "
+      textDecoration={null}
+    />
+    <Styled(Styled(BodyCopy))
+      accessibilityText=""
+      dataLocator=""
+      fontSize="fs16"
+      margin={null}
+      numberOfLines={null}
+      text=" "
+      textDecoration={null}
+      textTransform="uppercase"
+    />
+  </Styled(View)>
+  <Styled(Styled(BodyCopy))
+    accessibilityText=""
+    dataLocator=""
+    fontSize="fs16"
+    margin={null}
+    numberOfLines={null}
+    text=""
     textDecoration={null}
   />
 </MyProfileTile>
