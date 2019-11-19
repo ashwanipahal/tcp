@@ -1,14 +1,9 @@
-import { all, call, takeLatest, put, select } from 'redux-saga/effects';
+import { all, call, takeLatest, put } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { submitUserSurvey } from '@tcp/core/src/services/abstractors/account/UpdateProfileInfo';
 import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { updateProfileSuccess } from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.actions';
-import {
-  setCountry,
-  setCurrency,
-  setLanguage,
-  setBossBopisFlags,
-} from '../../../../../reduxStore/actions';
+import { setCountry, setLanguage, setBossBopisFlags } from '../../../../../reduxStore/actions';
 import CONSTANTS from '../User.constants';
 import { setUserInfo, setIsRegisteredUserCallDone } from './User.actions';
 import { getProfile } from '../../../../../services/abstractors/account';
@@ -26,8 +21,7 @@ export function* getUserInfoSaga() {
     });
     const siteId = getSiteId();
     const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
-    const getCurrenciesMap = state => state.session.siteOptions.currenciesMap;
-    const { country, currency, language, bossBopisFlags } = response;
+    const { country, language, bossBopisFlags } = response;
     const dataSetActions = [];
     if (country) {
       dataSetActions.push(put(setCountry(country)));
@@ -39,16 +33,6 @@ export function* getUserInfoSaga() {
       put(setIsRegisteredUserCallDone())
     );
     yield all(dataSetActions);
-    if (currency) {
-      const setCurrenciesMap = yield select(getCurrenciesMap);
-      const currencyAttributes = setCurrenciesMap.find(item => item.id === currency);
-      yield put(
-        setCurrency({
-          currency,
-          currencyAttributes,
-        })
-      );
-    }
     if (language) {
       yield put(setLanguage(language));
     }

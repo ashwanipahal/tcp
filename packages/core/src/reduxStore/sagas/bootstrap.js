@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 /* eslint-disable complexity */
 import { all, call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
@@ -21,8 +22,6 @@ import {
   setCountry,
   setCurrency,
   setLanguage,
-  storeCountriesMap,
-  storeCurrenciesMap,
   getSetTcpSegment,
   setSubNavigationData,
 } from '../actions';
@@ -30,8 +29,9 @@ import { loadHeaderData } from '../../components/common/organisms/Header/contain
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS, { MODULES_CONSTANT } from '../constants';
+import { defaultCountries, defaultCurrencies } from '../../constants/site.constants';
 import CACHED_KEYS from '../../constants/cache.config';
-import { isMobileApp, getCurrenciesMap, getCountriesMap } from '../../utils';
+import { isMobileApp } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
 import { readCookie, setCookie } from '../../utils/cookie.util';
 
@@ -73,7 +73,7 @@ function* bootstrap(params) {
 
   try {
     if (siteConfig) {
-      const { country, currency, language } = apiConfig;
+      const { country, language } = apiConfig;
 
       // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
       yield putResolve(setAPIConfig(apiConfig));
@@ -82,9 +82,7 @@ function* bootstrap(params) {
       if (country) {
         yield put(setCountry(country));
       }
-      if (currency) {
-        yield put(setCurrency({ currency }));
-      }
+
       if (language) {
         yield put(setLanguage(language));
       }
@@ -148,12 +146,27 @@ function* bootstrap(params) {
     yield put(loadHeaderData(result.header));
     if (!isMobileApp()) {
       yield put(loadNavigationData(result.navigation));
-      // Fetching countries and currencies data
-      const response = yield call(countryListAbstractor.getData);
-      const data = response && response.data.countryList;
-      const countriesMap = getCountriesMap(data);
-      const currenciesMap = getCurrenciesMap(data);
-      yield all([put(storeCountriesMap(countriesMap)), put(storeCurrenciesMap(currenciesMap))]);
+      const { savedCountry } = apiConfig;
+      const [us, ca] = defaultCountries;
+      const [currencyAttributesUS, currencyAttributesCA] = defaultCurrencies;
+      let currencyAttributes = {};
+      if (savedCountry === us.id) {
+        currencyAttributes = currencyAttributesUS;
+      } else if (savedCountry === ca.id) {
+        currencyAttributes = currencyAttributesCA;
+      } else {
+        const response = yield call(countryListAbstractor.getData, savedCountry);
+        const countryList = response && response.data.countryList;
+        const currentCountry = countryList.length && countryList[0];
+        const { currency, exchangeRate } = currentCountry;
+        currencyAttributes = { ...currency, ...exchangeRate };
+      }
+      yield put(
+        setCurrency({
+          currency: currencyAttributes.id,
+          currencyAttributes,
+        })
+      );
     }
     yield put(loadFooterData(result.footer));
   } catch (err) {

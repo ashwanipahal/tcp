@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const path = require('path');
+var cookieParser = require('cookie-parser');
 const logger = require('@tcp/core/src/utils/loggerInstance');
 
 // TODO - Ideally, all this config should be moved to @tcp/core/services/config
@@ -42,6 +43,7 @@ const settingHelmetConfig = (server, helmet) => {
   server.use(helmet.noSniff());
   server.use(helmet.xssFilter());
   server.use(helmet.ieNoOpen());
+  server.use(cookieParser());
 };
 
 /**

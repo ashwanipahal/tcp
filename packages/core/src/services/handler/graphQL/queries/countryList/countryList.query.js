@@ -1,6 +1,6 @@
-const buildQuery = () => `
+const buildQuery = val => `
   query fetchCMSData {
-    countryList {
+    countryList(countryCode: "${val}") {
       country {
         id: code
         displayName: name
@@ -20,7 +20,7 @@ const buildQuery = () => `
 `;
 
 export default {
-  getQuery: () => {
-    return buildQuery();
+  getQuery: data => {
+    return buildQuery(data);
   },
 };

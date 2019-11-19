@@ -165,6 +165,13 @@ class TCPWebApp extends App {
     };
   };
 
+  /**
+   * This function get cookie from request
+   */
+  static getCountryFromCookies = cookies => {
+    return cookies.iShippingCookie && cookies.iShippingCookie.split('|')[0];
+  };
+
   static loadGlobalData(Component, { store, res, isServer, req, asPath, query }, pageProps) {
     // getInitialProps of _App is called on every internal page navigation in spa.
     // This check is to avoid unnecessary api call in those cases
@@ -182,6 +189,8 @@ class TCPWebApp extends App {
       apiConfig.previewDate = req.query.preview_date || '';
       // response headers
       apiConfig.headers = res.getHeaders();
+      // get country from cookie
+      apiConfig.savedCountry = TCPWebApp.getCountryFromCookies(req.cookies);
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
