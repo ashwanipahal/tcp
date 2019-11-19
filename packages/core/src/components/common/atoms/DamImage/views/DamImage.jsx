@@ -1,14 +1,10 @@
 import React, { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
+import { configureInternalNavigationFromCMSUrl, getAPIConfig, getBrand } from '@tcp/core/src/utils';
 import Anchor from '../../Anchor';
 import VideoPlayer from '../../VideoPlayer';
 import LazyLoadImage from '../../LazyImage';
-import {
-  configureInternalNavigationFromCMSUrl,
-  getAPIConfig,
-  getBrand,
-} from '../../../../../utils';
 
 const getImgData = props => {
   const { imgData, imgConfigs, imgPathSplitter } = props;
