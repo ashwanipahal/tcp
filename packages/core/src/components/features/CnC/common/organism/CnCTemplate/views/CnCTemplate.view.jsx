@@ -99,7 +99,7 @@ const CnCTemplate = ({
                     />
 
                     {getBonusPointsDaysSection({ isGuest, showAccordian })}
-                    <PlaceCashBanner />
+                    {pageCategory === 'bagPage' && <PlaceCashBanner />}
                     <AirmilesBanner />
                     <CouponAndPromos
                       fullPageInfo={!isCheckoutView || orderLedgerAfterView}

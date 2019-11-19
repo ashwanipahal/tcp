@@ -56,7 +56,6 @@ const ThankYouComponent = ({
             </Col>
           ))}
       </Row>
-      <PlaceCashBanner isOrderConfirmation />
       {orderNumbersByFullfillmentCenter && (
         <Row fullBleed className="variable-width ">
           <Col
@@ -79,6 +78,7 @@ const ThankYouComponent = ({
           </Col>
         </Row>
       )}
+      <PlaceCashBanner isOrderConfirmation />
       <Row fullBleed className="variable-width ">
         <Col
           colSize={{
