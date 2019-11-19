@@ -60,7 +60,6 @@
 		4C99722E233E5B7500949134 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C997218233E5B7500949134 /* main.m */; };
 		6260A3EF86F0E877130CB58C /* libPods-gymboree_int.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB64BB25F86A48C577E5D4B3 /* libPods-gymboree_int.a */; };
 		653AB07C28F8CF3A5914723E /* libPods-mobileapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 349A27C83F665CEC4CE213A3 /* libPods-mobileapp.a */; };
-		844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
 		846779FF230BC69E001F5301 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		84677A00230BC69E001F5301 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		84677A01230BC69E001F5301 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -206,6 +205,13 @@
 		CA9E21EA236891F600365F24 /* raygun4apple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA9E21EC2368920E00365F24 /* raygun4apple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; };
 		CA9E21ED2368920E00365F24 /* raygun4apple.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA0946CC2361DA97004810F7 /* raygun4apple.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA9FB5A62384562A00225466 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		CA9FB5A72384562A00225466 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
+		CA9FB5A82384567E00225466 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		CA9FB5A92384569200225466 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6102373D921001B33E2 /* Montserrat-Medium.ttf */; };
+		CA9FB5AA2384569200225466 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6552373D931001B33E2 /* Nunito-Bold.ttf */; };
+		CA9FB5AB2384569200225466 /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE6602373D940001B33E2 /* Nunito.ttf */; };
+		CA9FB5AC2384569200225466 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 368BE66B2373D953001B33E2 /* Montserrat-Bold.ttf */; };
 		D8C6428D9158F6FD33C0E3E3 /* libPods-gymboree_prod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2922B9DE57B00E85BCF6558 /* libPods-gymboree_prod.a */; };
 		D94ECADB22D70C2600D9D051 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */; };
 		D94ECADC22D70C2600D9D051 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */; };
@@ -1232,12 +1238,13 @@
 			buildConfigurationList = 84677B33230BCECC001F5301 /* Build configuration list for PBXNativeTarget "gymboree_int" */;
 			buildPhases = (
 				7F592771877E07FC4F3B1205 /* [CP] Check Pods Manifest.lock */,
+				CA9FB5AD238458A300225466 /* ShellScript */,
 				84677B0C230BCECC001F5301 /* Sources */,
 				84677B0E230BCECC001F5301 /* Frameworks */,
 				84677B23230BCECC001F5301 /* Resources */,
 				18C18CB06B67AF93FF5C6114 /* [CP] Embed Pods Frameworks */,
-				79CB4DE3D559784CEE650729 /* ShellScript */,
 				D980E974FDAF098B13970E66 /* [CP] Copy Pods Resources */,
+				79CB4DE3D559784CEE650729 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -1848,6 +1855,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9FB5A92384569200225466 /* Montserrat-Medium.ttf in Resources */,
+				CA9FB5AA2384569200225466 /* Nunito-Bold.ttf in Resources */,
+				CA9FB5AB2384569200225466 /* Nunito.ttf in Resources */,
+				CA9FB5AC2384569200225466 /* Montserrat-Bold.ttf in Resources */,
 				CA8FB17B237B30C3006C733A /* Nunito-ExtraBold.ttf in Resources */,
 				84677B25230BCECC001F5301 /* GymboreeLaunchScreen.xib in Resources */,
 				84677B27230BCECC001F5301 /* Montserrat-SemiBold.ttf in Resources */,
@@ -1898,13 +1909,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9FB5A82384567E00225466 /* Nunito-Bold.ttf in Resources */,
+				CA9FB5A62384562A00225466 /* Nunito.ttf in Resources */,
+				CA9FB5A72384562A00225466 /* Montserrat-Bold.ttf in Resources */,
 				CA8FB17A237B30BE006C733A /* Nunito-ExtraBold.ttf in Resources */,
 				8480856522D9B52500D7D25B /* GymboreeLaunchScreen.xib in Resources */,
 				8480856622D9B52500D7D25B /* Montserrat-SemiBold.ttf in Resources */,
 				8480856722D9B52500D7D25B /* Montserrat-Black.ttf in Resources */,
 				8480856822D9B52500D7D25B /* Nunito-SemiBold.ttf in Resources */,
 				4C945DCE233E6F5000825846 /* AppCenter-Config.plist in Resources */,
-				844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */,
 				8480856922D9B52500D7D25B /* Images.xcassets in Resources */,
 				8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */,
 				8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */,
@@ -2213,7 +2226,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		79CB4DE3D559784CEE650729 /* ShellScript */ = {
+		79CB4DE3D559784CEE650729 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2241,6 +2254,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 			);
+			name = "Run Script";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
@@ -2555,6 +2569,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\n    FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n    FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n    echo \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\n    EXTRACTED_ARCHS=()\n\n    for ARCH in $ARCHS\n    do\n        echo \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n        lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n        EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n    done\n\n    echo \"Merging extracted architectures: ${ARCHS}\"\n    lipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n    rm \"${EXTRACTED_ARCHS[@]}\"\n\n    echo \"Replacing original executable with thinned version\"\n    rm \"$FRAMEWORK_EXECUTABLE_PATH\"\n    mv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
+		};
+		CA9FB5AD238458A300225466 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\n    FRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\n    FRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n    echo \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\n    EXTRACTED_ARCHS=()\n\n    for ARCH in $ARCHS\n    do\n        echo \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\n        lipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\n        EXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\n    done\n\n    echo \"Merging extracted architectures: ${ARCHS}\"\n    lipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n    rm \"${EXTRACTED_ARCHS[@]}\"\n\n    echo \"Replacing original executable with thinned version\"\n    rm \"$FRAMEWORK_EXECUTABLE_PATH\"\n    mv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\nType a script or drag a script file from your workspace to insert its path.\n";
 		};
 		CC54D13DFF0EA1AAEFE9D6AB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3431,6 +3462,7 @@
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 0.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3452,7 +3484,7 @@
 				APP_ENV = INT;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9N3QW4M4N3;
@@ -3464,6 +3496,7 @@
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 0.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3471,7 +3504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "tcp gymboree distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3628,6 +3661,7 @@
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 0.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3649,10 +3683,10 @@
 				APP_ENV = LOCAL;
 				APP_TYPE = gymboree;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Gymboree;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9N3QW4M4N3;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3661,6 +3695,7 @@
 				INFOPLIST_FILE = "gymboree-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 0.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -3668,7 +3703,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.childrensplace.gymboree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "tcp gymboree distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
