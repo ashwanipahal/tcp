@@ -149,6 +149,11 @@ class ProductAddToBag extends React.PureComponent<Props> {
     }
   };
 
+  getQtyMarginStyle = () => {
+    const { isBundleProduc } = this.props;
+    return !isBundleProduc ? '16px 0 16px 0' : '32px 0 40px 0';
+  };
+
   render() {
     const {
       colorList,
@@ -171,6 +176,7 @@ class ProductAddToBag extends React.PureComponent<Props> {
       sizeChartLinkVisibility,
       alternateSizes,
       isPickup,
+      isBundleProduct,
     } = this.props;
     const qunatityText = `${quantity}: `;
     const { name: colorName } = selectedColor || {};
@@ -237,8 +243,8 @@ class ProductAddToBag extends React.PureComponent<Props> {
           />
         </SizeViewContainer>
         {!isPickup && this.renderAlternateSizes(alternateSizes)}
-        {!isPickup && this.renderUnavailableLink()}
-        <RowViewContainer style={quantityDropDownStyle}>
+        {!isPickup && !isBundleProduct && this.renderUnavailableLink()}
+        <RowViewContainer style={quantityDropDownStyle} margins={this.getQtyMarginStyle()}>
           <BodyCopy
             fontWeight="black"
             color="gray.900"
@@ -282,6 +288,7 @@ ProductAddToBag.propTypes = {
   currentProduct: PropTypes.shape({}).isRequired,
   selectedColorProductId: PropTypes.number.isRequired,
   toastMessage: PropTypes.func,
+  isBundleProduct: PropTypes.bool,
 };
 
 ProductAddToBag.defaultProps = {
@@ -298,6 +305,7 @@ ProductAddToBag.defaultProps = {
   selectedQuantity: 1,
   showAddToBagCTA: true,
   toastMessage: () => {},
+  isBundleProduct: false,
 };
 
 /* export view with redux form */

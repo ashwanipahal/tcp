@@ -25,6 +25,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isATBErrorMessageDisplayed: true,
       fitChanged: true,
       persistSelectedFit: '',
+      keepAlive: this.initialColorFitsSizesMapEntry.miscInfo.keepAlive,
     };
   }
 
@@ -140,7 +141,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
           selectedColorProductId
         )
       : {};
-
+    this.initialColorFitsSizesMapEntry = colorFitsSizesMapEntry;
     let { initialFormValues } = nextProps && nextProps.renderReceiveProps ? nextProps : this.props;
 
     const { fromBagPage } = this.props;
@@ -220,13 +221,18 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
 
   colorChange = (e, colorIndex) => {
     const { selectedSize, selectedFit, selectedQuantity } = this.state;
-    const { onChangeColor } = this.props;
+    const {
+      onChangeColor,
+      currentProduct: { colorFitsSizesMap },
+    } = this.props;
+    const selectedColor = this.getSelectedColorData(colorFitsSizesMap, e);
     this.setState({
       selectedColor: { name: e },
       selectedSize,
       isErrorMessageDisplayed: false,
       isATBErrorMessageDisplayed: false,
       fitChanged: selectedSize.name === '',
+      keepAlive: selectedColor && selectedColor[0] && selectedColor[0].miscInfo.keepAlive,
     });
     // props for any custom action to call
     if (onChangeColor) {
@@ -363,14 +369,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }));
   };
 
-  getSelectedColorData = (colorFitsSizesMap, selectedColor) => {
+  getSelectedColorData = (colorFitsSizesMap, selectedColor = {}) => {
     return (
       colorFitsSizesMap &&
       colorFitsSizesMap.filter(colorItem => {
         const {
           color: { name },
         } = colorItem;
-        return (selectedColor && selectedColor.name) || selectedColor === name;
+        return (selectedColor.name || selectedColor) === name;
       })
     );
   };
@@ -459,6 +465,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isPickup,
       onCloseClick,
       isBundleProduct,
+      outOfStockLabels,
+      isKeepAliveEnabled,
       ...otherProps
     } = this.props;
     const {
@@ -469,6 +477,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       isErrorMessageDisplayed,
       isATBErrorMessageDisplayed,
       selectedQuantity,
+      keepAlive,
     } = this.state;
     if (fromBagPage) {
       this.setPreSelectedValuesForProduct(productInfoFromBag);
@@ -525,6 +534,8 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
         isPickup={isPickup}
         onCloseClick={onCloseClick}
         isBundleProduct={isBundleProduct}
+        keepAlive={isKeepAliveEnabled && keepAlive}
+        outOfStockLabels={outOfStockLabels}
       />
     );
   }

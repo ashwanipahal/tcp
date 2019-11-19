@@ -277,7 +277,7 @@ class CardTile extends React.Component<Props> {
         <img
           className="cardTile__img"
           data-locator={card.ccBrand}
-          alt={card.ccType}
+          alt={card.ccBrand || card.ccType}
           src={cardIcon}
         />
       </div>

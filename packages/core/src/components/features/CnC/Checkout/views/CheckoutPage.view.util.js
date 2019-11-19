@@ -16,9 +16,9 @@ export const updateAnalyticsData = (props, prevProps) => {
   const currentSection = router.query.section || router.query.subSection;
   const { router: prevRouter } = prevProps;
   const prevCurrentSection = prevRouter.query.section || prevRouter.query.subSection;
-  const { pageName } = pageData;
-  if (typeof pageName === 'undefined' || currentSection !== prevCurrentSection) {
-    const checkoutName = CONSTANTS.CHECKOUT;
+  const { pageType } = pageData;
+  const checkoutName = CONSTANTS.CHECKOUT;
+  if (pageType !== checkoutName || currentSection !== prevCurrentSection) {
     const pageDataUpdated = {
       pageName: `${checkoutName}:${currentSection}`,
       pageSection: checkoutName,

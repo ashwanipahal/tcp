@@ -20,6 +20,11 @@ export default css`
     padding-top: 24px;
     padding-bottom: 24px;
   }
+  .stacked-button-list-wrapper {
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-bottom: 0px;
+    }
+  }
 
   .text_normal {
     margin-top: 0px;

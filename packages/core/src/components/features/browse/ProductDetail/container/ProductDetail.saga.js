@@ -19,9 +19,9 @@ function* fetchProductDetail({ payload: { productColorId } }) {
     const state = yield select();
     const productDetail = yield call(getProductInfoById, productColorId, state);
     const {
-      product: { categoryId },
+      product: { category },
     } = productDetail;
-    const { layout, modules } = yield call(layoutResolver, { categoryId, pageName });
+    const { layout, modules } = yield call(layoutResolver, { category, pageName });
     yield put(loadLayoutData(layout, pageName));
     yield put(loadModulesData(modules));
     const isGuest = !getUserLoggedInState({ ...state });

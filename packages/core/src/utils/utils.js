@@ -1089,9 +1089,6 @@ export const getOrderStatusForNotification = status => {
   return orderStatus !== constants.STATUS_CONSTANTS.NA ? orderStatus : '';
 };
 
-export const getPriceWithCurrency = (currencySymbol, price) =>
-  `${currencySymbol}${isCanada() || isUsOnly() ? '' : ' '}${(price && price.toFixed(2)) || 0}`;
-
 /**
  * @function validateDiffInDaysNotification
  * @summary
@@ -1157,5 +1154,4 @@ export default {
   getLabelsBasedOnPattern,
   calculatePriceValue,
   getProductUrlForDAM,
-  getPriceWithCurrency,
 };
