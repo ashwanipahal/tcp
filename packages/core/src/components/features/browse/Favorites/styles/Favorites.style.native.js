@@ -22,7 +22,7 @@ const RowContainer = styled.View`
 `;
 
 const NoFavoriteContainer = styled.View`
-  margin-top: 32px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 const RecommendationWrapper = styled.View`

@@ -107,15 +107,15 @@ export default css`
     }
   }
   .no-favorite-container {
-    margin-top: 32px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: 40px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
   }
   .no-favorite-container .no-favorite-text {
-    margin-top: 12px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: 24px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
   @media ${props => props.theme.mediaQuery.medium} {

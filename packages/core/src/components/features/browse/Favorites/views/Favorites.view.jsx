@@ -225,7 +225,6 @@ const FavoritesView = props => {
             colSize={{ small: 6, medium: 8, large: 12 }}
             className="recommendation"
           >
-            {/* Placeholder for you may also like */}
             <div>
               <Recommendations {...recommendationAttributes} />
             </div>
