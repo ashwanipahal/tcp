@@ -48,20 +48,15 @@ import {
   submitAcceptOrDeclinePlccData,
   handleCheckoutInitRouting,
   makeUpdateRTPSCall,
+  shouldInvokeReviewCartCall,
 } from './Checkout.saga.util';
 import submitBilling, { updateCardDetails, submitVenmoBilling } from './CheckoutBilling.saga';
 import submitOrderForProcessing from './CheckoutReview.saga';
 import { submitVerifiedAddressData, submitShippingSectionData } from './CheckoutShipping.saga';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
 
-const {
-  getIsOrderHasShipping,
-  getShippingDestinationValues,
-  getDefaultAddress,
-  getGiftServicesFormData,
-  getShipmentMethods,
-  getCurrentCheckoutStage,
-} = selectors;
+const { getIsOrderHasShipping, getShippingDestinationValues, getDefaultAddress } = selectors;
+const { getGiftServicesFormData, getShipmentMethods, getCurrentCheckoutStage } = selectors;
 const { hasPOBox } = utility;
 let oldHasPOB = {};
 
@@ -86,14 +81,11 @@ function* storeUpdatedCheckoutValues(res /* isCartNotRequired, updateSmsInfo = t
     resCheckoutValues.shipping && getSetShippingValuesActn(resCheckoutValues.shipping),
     // resCheckoutValues.smsInfo && updateSmsInfo &&
     //   setSmsNumberForUpdates(resCheckoutValues.smsInfo.numberForUpdates),
-    // resCheckoutValues.giftWrap &&
-    //   getSetGiftWrapValuesActn(
-    //     {
-    //       hasGiftWrapping:
-    //       !!resCheckoutValues.giftWrap.optionId,
-    //       ...resCheckoutValues.giftWrap
-    //     }
-    //   ),
+    resCheckoutValues.giftWrap &&
+      CHECKOUT_ACTIONS.getSetGiftWrapValuesActn({
+        hasGiftWrapping: !!resCheckoutValues.giftWrap.optionId,
+        ...resCheckoutValues.giftWrap,
+      }),
     resCheckoutValues.billing && getSetBillingValuesActn(resCheckoutValues.billing),
   ];
   yield all(actions.map(action => put(action)));
@@ -210,12 +202,7 @@ function* initShippingData(pageName) {
       shippingAddress.state &&
       shippingAddress.zipCode;
     const isGuestUser = yield select(isGuest);
-    if (
-      isGuestUser ||
-      (!hasShipping && !defaultAddress) ||
-      !shipmentMethods ||
-      !shipmentMethods.length
-    ) {
+    if (isGuestUser || (!hasShipping && !defaultAddress) || !shipmentMethods.length) {
       yield call(
         validDateAndLoadShipmentMethods,
         { country: '', state: '', zipCode: '' },
@@ -234,12 +221,11 @@ function* triggerInternationalCheckoutIfRequired() {
   return null;
 }
 
-function* initCheckoutSectionData({
-  payload: { recalc, pageName, isPaypalPostBack, initialLoad, appRouting, navigation },
-}) {
+function* initCheckoutSectionData({ payload }) {
+  const { recalc, pageName, isPaypalPostBack, appRouting, navigation } = payload;
   yield call(triggerInternationalCheckoutIfRequired);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
-  const { PICKUP, SHIPPING, BILLING, REVIEW } = CONSTANTS.CHECKOUT_STAGES;
+  const { PICKUP, SHIPPING, BILLING } = CONSTANTS.CHECKOUT_STAGES;
   const pendingPromises = [];
   if (pageName === PICKUP || pageName === BILLING || pageName === SHIPPING) {
     if (!appRouting) {
@@ -250,16 +236,13 @@ function* initCheckoutSectionData({
             excludeCartItems: false,
             recalcRewards: recalc,
             updateSmsInfo: false,
-            translation: false,
+            translation: true,
             isCheckoutFlow: true,
           },
         })
       );
     }
-  } else if (
-    pageName === REVIEW &&
-    (!isExpressCheckoutEnabled || isPaypalPostBack || !appRouting)
-  ) {
+  } else if (shouldInvokeReviewCartCall(isExpressCheckoutEnabled, payload)) {
     pendingPromises.push(
       call(getCartDataSaga, {
         payload: {
@@ -273,9 +256,10 @@ function* initCheckoutSectionData({
       })
     );
   }
+
   yield all(pendingPromises);
   const requestedStage = yield call(handleCheckoutInitRouting, { pageName }, appRouting);
-  yield call(initShippingData, requestedStage, initialLoad);
+  yield call(initShippingData, requestedStage);
   if (makeUpdateRTPSCall(pageName, isPaypalPostBack, isExpressCheckoutEnabled)) {
     yield call(callUpdateRTPS, pageName, navigation, isPaypalPostBack);
   }
@@ -598,9 +582,10 @@ function* submitShipping({
   saveToAccount,
   method,
   smsInfo,
+  hasSetGiftOptions,
 }) {
   const giftServicesFormData = yield select(getGiftServicesFormData);
-  yield addAndSetGiftWrappingOptions(giftServicesFormData);
+  yield addAndSetGiftWrappingOptions(giftServicesFormData, hasSetGiftOptions);
   yield put(setAddressError(null));
   const pendingPromises = [
     // add the requested gift wrap options

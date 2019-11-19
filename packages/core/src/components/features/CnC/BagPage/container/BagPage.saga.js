@@ -42,6 +42,7 @@ import { isMobileApp, isCanada, routerPush } from '../../../../../utils';
 import {
   addItemToSflList,
   getSflItems,
+  updateSflItem,
 } from '../../../../../services/abstractors/CnC/SaveForLater';
 import { removeCartItem } from '../../CartItemTile/container/CartItemTile.actions';
 import { imageGenerator } from '../../../../../services/abstractors/CnC/CartItemTile';
@@ -63,7 +64,8 @@ import {
   handleServerSideErrorAPI,
   getRouteToCheckoutStage,
 } from '../../Checkout/container/Checkout.saga.util';
-import { startSflItemDelete, startSflItemMoveToBag } from './BagPage.saga.util';
+import startSflItemDelete, { routeForAppCartCheckout } from './BagPage.saga.util';
+import { addToCartEcom } from '../../AddedToBag/container/AddedToBag.saga';
 
 const { getOrderPointsRecalcFlag } = utility;
 
@@ -92,7 +94,9 @@ export function* getTranslatedProductInfo(cartInfo) {
   let tcpProductsResults;
   let gymProductsResults;
   try {
-    const productypes = getProductsTypes(cartInfo.orderDetails.orderItems);
+    const productypes = getProductsTypes(
+      (cartInfo.orderDetails && cartInfo.orderDetails.orderItems) || cartInfo
+    );
     const gymProdpartNumberList = productypes.gymProducts;
     const tcpProdpartNumberList = productypes.tcpProducts;
     if (tcpProdpartNumberList.length) {
@@ -114,12 +118,13 @@ export function* getTranslatedProductInfo(cartInfo) {
 
     return [...gymProductsResults, ...tcpProductsResults];
   } catch (err) {
+    console.log('err', err);
     return [];
   }
 }
 
 function createMatchObject(res, translatedProductInfo) {
-  res.orderDetails.orderItems.forEach(orderItemInfo => {
+  res.forEach(orderItemInfo => {
     const orderItem = orderItemInfo;
     translatedProductInfo.forEach(item => {
       if (orderItem.productInfo.productPartNumber === item.prodpartno) {
@@ -145,7 +150,7 @@ export function* getOrderDetailSaga(payload) {
     if (yield call(shouldTranslate, true)) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
       if (!translatedProductInfo.error) {
-        createMatchObject(res, translatedProductInfo);
+        createMatchObject(res.orderDetails.orderItems, translatedProductInfo);
       }
     }
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails));
@@ -158,9 +163,9 @@ export function* getOrderDetailSaga(payload) {
   }
 }
 
-function* updateBopisItems(res) {
+function* updateBopisItems(res, isCartPage) {
   const bopisItems = filterBopisProducts(res.orderDetails.orderItems);
-  if (bopisItems.length) {
+  if (bopisItems.length && isCartPage) {
     const bopisInventoryResponse = yield call(getBopisInventoryDetails, bopisItems);
     res.orderDetails = {
       ...res.orderDetails,
@@ -171,7 +176,7 @@ function* updateBopisItems(res) {
 
 export function* getCartDataSaga(payload = {}) {
   try {
-    yield put(setLoaderState(false));
+    // yield put(setLoaderState(false));
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     const { payload: { isRecalculateTaxes, isCheckoutFlow, isCartPage } = {} } = payload;
     const { payload: { onCartRes, recalcRewards, translation = false } = {} } = payload;
@@ -185,14 +190,14 @@ export function* getCartDataSaga(payload = {}) {
       calcsEnabled: isCartPage || isRecalculateTaxes,
       ...cartProps,
     });
-
     if (yield call(shouldTranslate, translation)) {
       const translatedProductInfo = yield call(getTranslatedProductInfo, res);
       if (!translatedProductInfo.error) {
-        createMatchObject(res, translatedProductInfo);
+        createMatchObject(res.orderDetails.orderItems, translatedProductInfo);
       }
     }
-    yield updateBopisItems(res);
+
+    yield updateBopisItems(res, isCartPage);
     yield put(BAG_PAGE_ACTIONS.getOrderDetailsComplete(res.orderDetails, excludeCartItems));
 
     if (res.orderDetails.orderItems.length > 0) {
@@ -248,21 +253,18 @@ export function* routeForCartCheckout(recalc, navigation, closeModal, navigation
   const orderHasPickup = yield select(getIsOrderHasPickup);
   const IsInternationalShipping = yield select(getIsInternationalShipping);
   const isExpressCheckoutEnabled = yield select(isExpressCheckout);
+  const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
   if (isMobileApp()) {
-    if (isExpressCheckoutEnabled) {
-      yield call(navigateToCheckout, CONSTANTS.REVIEW_DEFAULT_PARAM, navigation, navigationActions);
-    } else if (orderHasPickup) {
-      yield call(navigateToCheckout, CONSTANTS.PICKUP_DEFAULT_PARAM, navigation, navigationActions);
-    } else {
-      const params = [CONSTANTS.SHIPPING_DEFAULT_PARAM, navigation, navigationActions];
-      yield call(navigateToCheckout, ...params);
-    }
-    if (closeModal) {
-      closeModal();
-    }
+    yield call(
+      routeForAppCartCheckout,
+      recalc,
+      navigation,
+      closeModal,
+      navigationActions,
+      orderHasPickup
+    );
   } else if (!IsInternationalShipping) {
     yield put(closeMiniBag());
-    const hasVenmoReviewPage = yield select(hasVenmoReviewPageRedirect);
     yield call(
       getRouteToCheckoutStage,
       { recalc },
@@ -320,6 +322,7 @@ export function* startCartCheckout({
   } = {},
 } = {}) {
   try {
+    yield put(setLoaderState(true));
     if (isEditingItem) {
       yield put(BAG_PAGE_ACTIONS.openCheckoutConfirmationModal(isEditingItem));
     } else {
@@ -347,6 +350,7 @@ export function* startCartCheckout({
         yield call(checkoutCart, false, navigation, closeModal, navigationActions);
       }
     }
+    yield put(setLoaderState(false));
   } catch (e) {
     yield put(setSectionLoaderState({ miniBagLoaderState: false, section: 'minibag' }));
     yield put(setSectionLoaderState({ addedToBagLoaderState: false, section: 'addedtobag' }));
@@ -438,7 +442,7 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
 }
 
 export function* addItemToSFL({
-  payload: { itemId, catEntryId, userInfoRequired, afterHandler, isMiniBag } = {},
+  payload: { itemId, catEntryId, afterHandler, isMiniBag } = {},
 } = {}) {
   if (isMiniBag) {
     yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
@@ -468,9 +472,6 @@ export function* addItemToSFL({
       yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
     } else {
       yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(true));
-      if (userInfoRequired) {
-        yield put(getUserInfo());
-      }
       yield put(removeCartItem({ itemId }));
     }
   } catch (err) {
@@ -492,6 +493,75 @@ export function* getSflDataSaga() {
   }
 }
 
+export function* setModifiedSflData(data) {
+  try {
+    if (yield call(shouldTranslate, true)) {
+      const translatedProductInfo = yield call(getTranslatedProductInfo, data.payload);
+      if (!translatedProductInfo.error) {
+        createMatchObject(data.payload, translatedProductInfo);
+      }
+    }
+    yield put(BAG_PAGE_ACTIONS.setTranslatedSflData(data.payload));
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
+export function* setSflItemUpdate(payload) {
+  try {
+    const isRememberedUser = yield select(isRemembered);
+    const isRegistered = yield select(getUserLoggedInState);
+    const currencyCode = yield select(BAG_SELECTORS.getCurrentCurrency);
+    const isCanadaSite = isCanada();
+    const {
+      payload: { oldSkuId, newSkuId, callBack },
+    } = payload;
+    const res = yield call(
+      updateSflItem,
+      oldSkuId,
+      newSkuId,
+      isRememberedUser,
+      isRegistered,
+      imageGenerator,
+      currencyCode,
+      isCanadaSite
+    );
+    if (callBack) {
+      callBack();
+    }
+    yield put(BAG_PAGE_ACTIONS.setSflData(res.sflItems));
+  } catch (err) {
+    yield put(BAG_PAGE_ACTIONS.setBagPageError(err));
+  }
+}
+
+export function* startSflItemMoveToBag({ payload }) {
+  try {
+    yield put(setLoaderState(true));
+    const { itemId } = payload;
+    const addToCartData = {
+      skuInfo: {
+        skuId: itemId,
+      },
+      quantity: 1,
+      fromMoveToBag: true,
+    };
+    yield call(addToCartEcom, { payload: addToCartData });
+    yield call(getCartDataSaga, {
+      payload: {
+        isRecalculateTaxes: true,
+        recalcRewards: true,
+        translation: true,
+        excludeCartItems: false,
+      },
+    });
+    yield call(startSflItemDelete, { payload });
+    yield put(setLoaderState(false));
+  } catch (err) {
+    yield put(setLoaderState(false));
+    yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(err));
+  }
+}
+
 export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
@@ -509,6 +579,8 @@ export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_DELETE, startSflItemDelete);
   yield takeLatest(BAGPAGE_CONSTANTS.SFL_ITEMS_MOVE_TO_BAG, startSflItemMoveToBag);
   yield takeLatest(BAGPAGE_CONSTANTS.START_PAYPAL_NATIVE_CHECKOUT, startPaypalNativeCheckout);
+  yield takeLatest(BAGPAGE_CONSTANTS.SET_SFL_DATA, setModifiedSflData);
+  yield takeLatest(BAGPAGE_CONSTANTS.UPDATE_SFL_ITEM, setSflItemUpdate);
 }
 
 export default BagPageSaga;

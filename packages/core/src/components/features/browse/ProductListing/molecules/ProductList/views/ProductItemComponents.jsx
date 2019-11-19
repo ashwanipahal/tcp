@@ -5,7 +5,6 @@
  *
  * @author Florencia <facosta@minutentag.com>
  */
-
 import React from 'react';
 import Dotdotdot from 'react-dotdotdot';
 import PropTypes from 'prop-types';
@@ -17,6 +16,7 @@ import { getFormattedLoyaltyText, getProductListToPath } from '../utils/products
 import { Image, BodyCopy, Anchor, Button, Col, RichText } from '../../../../../../common/atoms';
 
 import ServerToClientRenderPatch from './ServerToClientRenderPatch';
+import BundlePriceSection from './BundlePriceSection.view';
 
 export function productLink(loadedProductCount, pdpUrl, event) {
   event.preventDefault();
@@ -49,83 +49,6 @@ export function ProductTitle(values) {
     </div>
   );
 }
-
-const renderBundlePriceSection = (
-  highListPrice,
-  highOfferPrice,
-  lowListPrice,
-  lowOfferPrice,
-  currencySymbol,
-  merchantTag
-) => {
-  return (
-    <div className="container-price">
-      {!!highOfferPrice && !!lowOfferPrice && highOfferPrice !== lowOfferPrice ? (
-        <BodyCopy
-          dataLocator={getLocator('global_Price_text')}
-          color="red.500"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          fontSize={['fs15', 'fs18', 'fs20']}
-        >
-          {`${currencySymbol} ${lowOfferPrice.toFixed(
-            2
-          )} - ${currencySymbol} ${highOfferPrice.toFixed(2)}`}
-        </BodyCopy>
-      ) : (
-        <BodyCopy
-          dataLocator={getLocator('global_Price_text')}
-          color="red.500"
-          fontWeight="extrabold"
-          fontFamily="secondary"
-          fontSize={['fs15', 'fs18', 'fs20']}
-        >
-          {`${currencySymbol} ${lowOfferPrice.toFixed(2)}`}
-        </BodyCopy>
-      )}
-      {!!highListPrice && !!lowListPrice && highListPrice !== lowListPrice ? (
-        <BodyCopy
-          component="span"
-          color="gray.700"
-          fontFamily="secondary"
-          fontWeight="semibold"
-          fontSize={['fs10', 'fs12', 'fs14']}
-          className="list-price"
-        >
-          {`${currencySymbol} ${lowListPrice.toFixed(
-            2
-          )} - ${currencySymbol} ${highListPrice.toFixed(2)}`}
-        </BodyCopy>
-      ) : (
-        lowListPrice &&
-        lowListPrice !== lowOfferPrice && (
-          <BodyCopy
-            component="span"
-            color="gray.700"
-            fontFamily="secondary"
-            fontWeight="semibold"
-            fontSize={['fs10', 'fs12', 'fs14']}
-            className="list-price"
-          >
-            {currencySymbol + lowListPrice.toFixed(2)}
-          </BodyCopy>
-        )
-      )}
-      {!!merchantTag && (
-        <BodyCopy
-          component="span"
-          color="red.500"
-          fontFamily="secondary"
-          fontWeight="semibold"
-          className="merchant-tag"
-          fontSize={['fs10', 'fs12', 'fs14']}
-        >
-          {merchantTag}
-        </BodyCopy>
-      )}
-    </div>
-  );
-};
 
 /* NOTE: This issue (DT-28867) added isMobile condition. */
 /* NOTE: As per DT-29548, isMobile condition is not valid. "Offer" price should be shown below "List" price (always) */
@@ -179,7 +102,7 @@ export function ProductPricesSection(props) {
           )}
         </div>
       ) : (
-        renderBundlePriceSection(
+        BundlePriceSection(
           highListPrice,
           highOfferPrice,
           lowListPrice,
@@ -291,11 +214,11 @@ export function PromotionalMessage(props) {
   ) : null;
 }
 
-const renderWishListItem = (item, labels) => (
+const renderWishListItem = (item, labels, activeWishListId) => (
   <div className="wish-list-item-section">
     <p className="wish-list-name">
-      <span>
-        {item.isDefault && (
+      <span className={`${item.id === activeWishListId ? 'default-list' : ''}`}>
+        {item.id === activeWishListId && (
           <Image
             src={getIconPath('selected-item-check-no-circle')}
             alt="check mark"
@@ -305,11 +228,19 @@ const renderWishListItem = (item, labels) => (
           />
         )}
       </span>
-      <span>{item.displayName}</span>
+      <span className={`${item.id === activeWishListId ? 'default-list-item' : ''}`}>
+        {item.displayName}
+      </span>
     </p>
     <p className="wish-list-count-section">
-      <span className="wish-list-count">{item.itemsCount}</span>
-      <span>{labels.lbl_fav_items}</span>
+      <span
+        className={`${
+          item.id === activeWishListId ? 'default-list-count wish-list-count' : 'wish-list-count'
+        }`}
+      >
+        {item.itemsCount}
+      </span>
+      <span>{` ${labels.lbl_fav_items}`}</span>
     </p>
   </div>
 );
@@ -321,6 +252,8 @@ export const CreateWishList = props => {
     createNewWishList,
     createNewWishListMoveItem,
     itemId,
+    getActiveWishlist,
+    activeWishListId,
   } = props;
   return (
     <div className="create-wish-list-section">
@@ -333,10 +266,15 @@ export const CreateWishList = props => {
                 onClick={() => createNewWishListMoveItem({ wisListId: item.id, id: itemId })}
                 className="wish-list-item__button"
               >
-                {renderWishListItem(item, labels)}
+                {renderWishListItem(item, labels, activeWishListId)}
               </Button>
             ) : (
-              renderWishListItem(item, labels)
+              <Button
+                onClick={() => getActiveWishlist(item.id)}
+                className="wish-list-change-item__button"
+              >
+                {renderWishListItem(item, labels, activeWishListId)}
+              </Button>
             )}
           </li>
         ))}
@@ -445,6 +383,12 @@ CreateWishList.propTypes = {
   createNewWishList: PropTypes.func.isRequired,
   createNewWishListMoveItem: PropTypes.func.isRequired,
   itemId: PropTypes.string.isRequired,
+  getActiveWishlist: PropTypes.func,
+  activeWishListId: PropTypes.string.isRequired,
+};
+
+CreateWishList.defaultProps = {
+  getActiveWishlist: () => {},
 };
 
 PromotionalMessage.propTypes = {

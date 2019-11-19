@@ -7,7 +7,7 @@ exports[`Added to Bag View should render Added to Bag view  1`] = `
   <Connect(Styled(ModuleQ))
     divTabs={Array []}
     hideTabs={true}
-    isCompleteTheLook={true}
+    isRelatedOutfit={true}
     showRelatedOutfitHeader={[Function]}
   />
 </div>

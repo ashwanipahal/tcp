@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { Col, DamImage, Row, Button, Anchor } from '../../../atoms';
 import { ButtonList, LinkText, PromoBanner } from '../..';
-
 import withStyles from '../../../hoc/withStyles';
 import moduleEStyle, { Carousel } from '../styles/ModuleE.style';
 import { getLocator, getIconPath, isGymboree } from '../../../../../utils';
@@ -96,6 +94,7 @@ const getLinkedImage = (linkedImage, carouselCtaType, IMG_DATA) => {
         <DamImage
           imgConfigs={IMG_DATA.promoAreaImgConfig}
           imgData={linkedImage.image}
+          videoData={linkedImage.video}
           dataLocator={`${getLocator('moduleE_promo_area_img')}`}
           className="module-e-img-full-width"
         />
@@ -406,47 +405,13 @@ ModuleE.defaultProps = {
 
 ModuleE.propTypes = {
   className: PropTypes.string,
-  accessibility: PropTypes.shape({
-    playIconButton: PropTypes.string,
-    pauseIconButton: PropTypes.string,
-  }).isRequired,
-  headerText: PropTypes.arrayOf(
-    PropTypes.shape({
-      textItems: PropTypes.array,
-      link: PropTypes.object,
-      icon: PropTypes.object,
-    })
-  ).isRequired,
-  promoBanner: PropTypes.arrayOf(
-    PropTypes.shape({
-      textItems: PropTypes.array,
-      link: PropTypes.object,
-    })
-  ),
-  eyebrow: PropTypes.arrayOf(
-    PropTypes.shape({
-      mediaLinkedList: PropTypes.arrayOf(PropTypes.object),
-    })
-  ),
-  largeCompImageSimpleCarousel: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.object,
-      singleCTAButton: PropTypes.object,
-    })
-  ).isRequired,
-  divCTALinks: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.object,
-      styled: PropTypes.object,
-      link: PropTypes.object,
-    })
-  ).isRequired,
-  linkedImage: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.object,
-      link: PropTypes.object,
-    })
-  ),
+  accessibility: PropTypes.shape({}).isRequired,
+  headerText: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  promoBanner: PropTypes.arrayOf(PropTypes.shape({})),
+  eyebrow: PropTypes.arrayOf(PropTypes.shape({})),
+  largeCompImageSimpleCarousel: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  divCTALinks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  linkedImage: PropTypes.arrayOf(PropTypes.shape({})),
   ctaItems: PropTypes.arrayOf(PropTypes.object),
   ctaType: PropTypes.oneOf(['stackedCTAButtons', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
   carouselCtaType: PropTypes.oneOf(['button', 'link']).isRequired,

@@ -11,7 +11,6 @@ import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
-  briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
   updateRTPSData,
@@ -46,6 +45,7 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -201,7 +201,7 @@ export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 
-export function* addAndSetGiftWrappingOptions(payload) {
+export function* addAndSetGiftWrappingOptions(payload, hasSetGiftOptions) {
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (payload.hasGiftWrapping) {
     try {
@@ -212,7 +212,7 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  } else {
+  } else if (hasSetGiftOptions) {
     try {
       const res = yield call(removeGiftWrappingOption, payload);
       if (res) {
@@ -231,7 +231,7 @@ export function* subscribeEmailAddress(emailObj, status, field1) {
 
   try {
     const payloadObject = {
-      emailaddr: payload,
+      emailaddr: payload.signup,
       URL: 'email-confirmation',
       response: `${status}:::false:false`,
       registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
@@ -451,4 +451,13 @@ export function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouti
     yield call(getRouteToCheckoutStage, { pageName, ...otherProps });
   }
   return pageName;
+}
+
+export function shouldInvokeReviewCartCall(
+  isExpressCheckoutEnabled,
+  { initialLoad, isPaypalPostBack, pageName, appRouting: isPageRefreshRouting }
+) {
+  const { REVIEW } = constants.CHECKOUT_STAGES;
+  const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
+  return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
 }
