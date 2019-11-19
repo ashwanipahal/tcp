@@ -9,14 +9,6 @@ const selectStyles = css`
   display: block;
   height: 70px;
 
-  .title {
-    font-size: ${props => props.theme.typography.fontSizes.fs13};
-  }
-
-  .input {
-    font-size: ${props => props.theme.typography.fontSizes.fs16};
-  }
-
   .select__input {
     appearance: none;
     background: url(${downArrowIcon}) no-repeat right 0px bottom
@@ -43,6 +35,11 @@ const selectStyles = css`
       border-color: ${props.theme.fieldBorderDisabledColor};
     `
         : ''};
+
+    ${props =>
+      props.input.value
+        ? `font-size: ${props.theme.typography.fontSizes.fs16};`
+        : `font-size: ${props.theme.typography.fontSizes.fs13};`};
   }
 
   .select__label {

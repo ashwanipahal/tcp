@@ -13,9 +13,6 @@ const renderTitle = ({ value, title }) => {
     ''
   );
 };
-const classNameSelect = inputValue => {
-  return inputValue ? 'select__input input' : 'select__input title';
-};
 
 renderTitle.propTypes = {
   value: PropTypes.string,
@@ -48,7 +45,7 @@ const SelectBox = ({
         {...input}
         id={id}
         aria-label={ariaLabel}
-        className={classNameSelect(input.value)}
+        className="select__input"
         name={name}
         value={input.value || placeholder}
         data-locator={dataLocator}
