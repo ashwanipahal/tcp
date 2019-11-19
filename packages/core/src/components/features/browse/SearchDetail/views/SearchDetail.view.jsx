@@ -10,7 +10,6 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { isFiltersAvailable } from '../../ProductListing/container/ProductListing.selectors';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const SearchListingView = ({
   className,
@@ -33,6 +32,8 @@ const SearchListingView = ({
   onAddItemToFavorites,
   isLoggedIn,
   isLoadingMore,
+  isSearchListing,
+  asPathVal,
   ...otherProps
 }) => {
   return (
@@ -100,6 +101,9 @@ const SearchListingView = ({
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
               isLoadingMore={isLoadingMore}
+              isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
               {...otherProps}
             />
           ) : null}
@@ -107,7 +111,6 @@ const SearchListingView = ({
         </Col>
       </Row>
       <QuickViewModal />
-      <AddedToBagContainer />
     </div>
   );
 };
@@ -136,6 +139,8 @@ SearchListingView.propTypes = {
   onAddItemToFavorites: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
   isLoadingMore: PropTypes.bool,
+  isSearchListing: PropTypes.bool,
+  asPathVal: PropTypes.string,
 };
 
 SearchListingView.defaultProps = {
@@ -157,6 +162,8 @@ SearchListingView.defaultProps = {
   currency: 'USD',
   isLoggedIn: false,
   isLoadingMore: false,
+  isSearchListing: true,
+  asPathVal: '',
 };
 
 export default withStyles(errorBoundary(SearchListingView), SearchListingStyle);

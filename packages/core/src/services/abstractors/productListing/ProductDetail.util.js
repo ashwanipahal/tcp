@@ -65,7 +65,7 @@ const breadCrumbFactory = state => {
   // const navList = storeState.globalComponents.header.navigationTree;
   // const previousPageUrl = document && document.referrer;
   // const previousPagePathName = seoURLExtactor(previousPageUrl);
-  const plpBreadCrumb = state.ProductListing.get('breadCrumbTrail');
+  const plpBreadCrumb = state.ProductListing.breadCrumbTrail;
   let breadCrumbs;
   if (plpBreadCrumb) {
     breadCrumbs = plpBreadCrumb;
@@ -198,10 +198,13 @@ const getCategoryEntity = (categoryColorId, breadCrumbs) => {
   return categoryColorId && processHelpers.parseCategoryEntity(categoryColorId, breadCrumbs);
 };
 
+const getImagePathAttr = isGiftCard => (isGiftCard ? 'prodpartno' : 'imagename');
+
 const getImagesByColor = (itemColor, colorName, getImgPathFunc, isGiftCard, imagesByColor) => {
+  const imageNameAttr = getImagePathAttr(isGiftCard); // A quickfix for changing images in swatches for giftcard
   return {
     ...extractExtraImages(
-      `${itemColor.imagename}#${colorName}`,
+      `${itemColor[imageNameAttr]}#${colorName}`,
       itemColor.alt_img,
       getImgPathFunc,
       false,
@@ -239,7 +242,8 @@ const getColorfitsSizesMap = ({
 }) => {
   let imagesByColor = images;
   const itemColorMap = productVariants.map(itemColor => {
-    const { productImages, colorSwatch } = getImgPath(itemColor.imagename);
+    const imageNameAttr = getImagePathAttr(isGiftCard); // A quickfix for changing images in swatches for giftcard
+    const { productImages, colorSwatch } = getImgPath(itemColor[imageNameAttr]);
     const colorName = getProductColorName(isGiftCard, itemColor);
     const familyName = getFamilyName(isGiftCard, itemColor);
     const categoryColorId = getCategoryColorId(itemColor);

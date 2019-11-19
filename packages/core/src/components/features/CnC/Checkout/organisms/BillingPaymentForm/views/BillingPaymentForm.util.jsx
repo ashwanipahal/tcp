@@ -1,5 +1,6 @@
 import { change, reset } from 'redux-form';
 import constants from '../container/CreditCard.constants';
+import { onAddNewCreditCardUpdate } from './BillingPaymentForm.view.util';
 
 const onEditCardFocus = scope => {
   const { dispatch } = scope.props;
@@ -12,6 +13,7 @@ const setFormToEditState = (scope, e) => {
 };
 
 const unsetPaymentFormEditState = (scope, e) => {
+  /* istanbul ignore else */
   if (e) {
     e.preventDefault();
   }
@@ -24,6 +26,7 @@ const handleBillingFormSubmit = (scope, e, isMobile) => {
   const { handleSubmit, labels, scrollView } = scope.props;
   const { editMode } = scope.state;
   if (editMode) {
+    /* istanbul ignore else */
     if (e && e.preventDefault) {
       e.preventDefault();
     }
@@ -35,4 +38,20 @@ const handleBillingFormSubmit = (scope, e, isMobile) => {
   return handleSubmit(e);
 };
 
-export { onEditCardFocus, setFormToEditState, unsetPaymentFormEditState, handleBillingFormSubmit };
+/**
+ * @function onAddNewCreditCardClick
+ * @description sets the add new credit card state as true
+ */
+const onAddNewCreditCardClick = scope => {
+  const { dispatch } = scope.props;
+  scope.setState({ addNewCCState: true });
+  onAddNewCreditCardUpdate(dispatch);
+};
+
+export {
+  onEditCardFocus,
+  setFormToEditState,
+  unsetPaymentFormEditState,
+  handleBillingFormSubmit,
+  onAddNewCreditCardClick,
+};

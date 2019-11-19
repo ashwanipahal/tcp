@@ -1,6 +1,7 @@
 import { all, call, takeLatest, put, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import { submitUserSurvey } from '@tcp/core/src/services/abstractors/account/UpdateProfileInfo';
+import { setLoaderState } from '@tcp/core/src/components/common/molecules/Loader/container/Loader.actions';
 import { updateProfileSuccess } from '@tcp/core/src/components/features/account/MyProfile/container/MyProfile.actions';
 import {
   setCountry,
@@ -17,6 +18,7 @@ import { API_CONFIG } from '../../../../../services/config';
 import { setAddressList } from '../../AddressBook/container/AddressBook.actions';
 
 export function* getUserInfoSaga() {
+  yield put(setLoaderState(true));
   try {
     const response = yield call(getProfile, {
       pageId: 'myAccount',
@@ -25,17 +27,18 @@ export function* getUserInfoSaga() {
     const siteId = getSiteId();
     const { CA_CONFIG_OPTIONS: apiConfig, sites } = API_CONFIG;
     const getCurrenciesMap = state => state.session.siteOptions.currenciesMap;
-
-    yield all([
+    const { country, currency, language, bossBopisFlags } = response;
+    const dataSetActions = [];
+    if (country) {
+      dataSetActions.push(put(setCountry(country)));
+    }
+    dataSetActions.push(
       put(setUserInfo(response)),
       put(setAddressList(response.contactList, true)),
-      put(setIsRegisteredUserCallDone()),
-    ]);
-    const { country, currency, language, bossBopisFlags } = response;
-    yield put(setBossBopisFlags(bossBopisFlags));
-    if (country) {
-      yield put(setCountry(country));
-    }
+      put(setBossBopisFlags(bossBopisFlags)),
+      put(setIsRegisteredUserCallDone())
+    );
+    yield all(dataSetActions);
     if (currency) {
       const setCurrenciesMap = yield select(getCurrenciesMap);
       const currencyAttributes = setCurrenciesMap.find(item => item.id === currency);
@@ -53,18 +56,23 @@ export function* getUserInfoSaga() {
     if (country === sites.ca.toUpperCase() && siteId !== apiConfig.siteId) {
       routerPush(window.location, '/home', null, siteId);
     }
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield put(setIsRegisteredUserCallDone());
     logger.error('Error: error in fetching user profile information');
   }
 }
 
 function* setSurveyAnswersSaga(data) {
+  yield put(setLoaderState(true));
   try {
     yield call(submitUserSurvey, data);
     yield call(getUserInfoSaga);
     yield put(updateProfileSuccess('successMessage'));
+    yield put(setLoaderState(false));
   } catch (err) {
+    yield put(setLoaderState(false));
     yield null;
   }
 }

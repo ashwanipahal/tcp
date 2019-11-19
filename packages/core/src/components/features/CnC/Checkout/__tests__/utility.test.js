@@ -120,7 +120,7 @@ describe('utility', () => {
   });
 
   it('routeToPage', () => {
-    expect(routeToPage({}, {}));
+    expect(routeToPage({ to: 'test?', as: 'test' }, {}));
     expect(Router.push).toHaveBeenCalled();
   });
 
@@ -153,7 +153,7 @@ describe('utility', () => {
         billingLabel: '',
         reviewLabel: '',
       })
-    ).toStrictEqual(['', '']);
+    ).toStrictEqual(['billing', 'review']);
   });
   it('hasPOBox', () => {
     expect(hasPOBox('dsa', 'dasdas')).toBe(false);

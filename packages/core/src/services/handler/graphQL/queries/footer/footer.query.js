@@ -6,6 +6,7 @@ const buildQuery = ({ type, brand, country, channel, lang }) => `
     channel: "${channel}",
     lang: "${lang}"
   ) {
+    errorMessage
     submodules {
       footerTop {
         composites {

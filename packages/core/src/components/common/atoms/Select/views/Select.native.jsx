@@ -15,10 +15,17 @@ const SelectBox = ({
   options,
   heading,
   onValueChange,
+  placeholder,
   meta: { touched, error },
   ...otherProps
 }) => {
   const isFocussed = !!input.value;
+  if (placeholder && !input.value && options && options[0].displayName !== placeholder) {
+    options.unshift({
+      displayName: placeholder,
+      id: '',
+    });
+  }
   return (
     <Container>
       <StyledHeading
@@ -60,6 +67,7 @@ SelectBox.propTypes = {
   options: PropTypes.shape([]).isRequired,
   onValueChange: PropTypes.func,
   heading: PropTypes.string,
+  placeholder: PropTypes.string,
   meta: PropTypes.shape({
     touched: PropTypes.bool,
     error: PropTypes.bool,
@@ -68,6 +76,7 @@ SelectBox.propTypes = {
 
 SelectBox.defaultProps = {
   id: '',
+  placeholder: '',
   onValueChange: () => {},
   heading: '',
   meta: {},

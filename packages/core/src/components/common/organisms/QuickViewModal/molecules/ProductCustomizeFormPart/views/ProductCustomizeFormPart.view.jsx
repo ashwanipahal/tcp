@@ -26,7 +26,7 @@ const ProductCustomizeFormPart = props => {
     plpLabels,
     currency,
     priceCurrency,
-    currencyExchange,
+    currencyAttributes,
     isCanada,
     isHasPlcc,
     isInternationalShipping,
@@ -53,7 +53,7 @@ const ProductCustomizeFormPart = props => {
     currentColorEntry && currentColorEntry.pdpUrl ? currentColorEntry.pdpUrl : productInfo.pdpUrl;
   const productPriceProps = {
     currencySymbol: currency,
-    currencyExchange,
+    currencyAttributes,
     priceCurrency,
     isItemPartNumberVisible: false,
     ...prices,
@@ -97,6 +97,7 @@ const ProductCustomizeFormPart = props => {
               <DamImage
                 data-locator={getLocator('quick_view_product_image')}
                 imgData={imgData}
+                lazyLoad={false}
                 isProductImage
               />
               <Anchor
@@ -181,7 +182,7 @@ ProductCustomizeFormPart.propTypes = {
   currency: PropTypes.string,
   className: PropTypes.string,
   priceCurrency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   isCanada: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   isMultiItemQVModal: PropTypes.bool.isRequired,
@@ -204,7 +205,6 @@ ProductCustomizeFormPart.defaultProps = {
   currency: 'USD',
   className: '',
   priceCurrency: '',
-  currencyExchange: 1,
   isCanada: false,
   isHasPlcc: false,
   isInternationalShipping: false,

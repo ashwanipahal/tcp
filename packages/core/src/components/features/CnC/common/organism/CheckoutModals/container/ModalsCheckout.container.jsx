@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { setClickAnalyticsData } from '@tcp/core/src/analytics/actions';
 import ModalsCheckoutView from '../views/ModalsCheckout.view';
 import { setCheckoutModalMountedState } from '../../../../../account/LoginPage/container/LoginPage.actions';
 import { getSetCheckoutStage } from '../../../../Checkout/container/Checkout.action';
@@ -60,11 +61,16 @@ export class AddedToBagContainer extends React.Component<Props> {
       bagPageServerError,
       checkoutModalComponent,
       closeAddedToBagModal,
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
+      handleCartCheckout,
+      setBagPageIsRouting,
     } = this.props;
     return (
       <ModalsCheckoutView
         handleContinueShopping={this.handleContinueShopping}
         routeForBagCheckout={routeForBagCheckout}
+        setBagPageIsRouting={setBagPageIsRouting}
         inheritedStyles={inheritedStyles}
         closeCheckoutModalMountState={closeCheckoutModalMountState}
         checkoutModalMountedState={checkoutModalMountedState}
@@ -87,6 +93,9 @@ export class AddedToBagContainer extends React.Component<Props> {
         setCheckoutStage={setCheckoutStage}
         bagPageServerError={bagPageServerError}
         checkoutModalComponentType={checkoutModalComponent}
+        setClickAnalyticsDataCheckout={setClickAnalyticsDataCheckout}
+        cartOrderItems={cartOrderItems}
+        handleCartCheckout={handleCartCheckout}
       />
     );
   }
@@ -95,6 +104,7 @@ export class AddedToBagContainer extends React.Component<Props> {
 AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  setBagPageIsRouting: PropTypes.func.isRequired,
   routeForBagCheckout: PropTypes.func.isRequired,
   removeUnqualifiedItemsAndCheckout: PropTypes.func.isRequired,
   closeCheckoutConfirmationModal: PropTypes.func.isRequired,
@@ -134,6 +144,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     setCheckoutStage: payload => {
       dispatch(getSetCheckoutStage(payload));
     },
+    setClickAnalyticsDataCheckout: payload => {
+      dispatch(setClickAnalyticsData(payload));
+    },
+    handleCartCheckout: payload => {
+      dispatch(bagPageActions.startCheckout(payload));
+    },
+    setBagPageIsRouting: () => {
+      dispatch(bagPageActions.setBagPageIsRouting(true));
+    },
   };
 };
 
@@ -149,6 +168,7 @@ const mapStateToProps = state => {
     deleteConfirmationModalLabels: bagPageSelector.itemDeleteModalLabels(state),
     isExpressCheckoutPage: isExpressCheckout(state),
     bagPageServerError: checkoutSelectors.getCheckoutServerError(state),
+    cartOrderItems: bagPageSelector.getOrderItems(state),
   };
 };
 

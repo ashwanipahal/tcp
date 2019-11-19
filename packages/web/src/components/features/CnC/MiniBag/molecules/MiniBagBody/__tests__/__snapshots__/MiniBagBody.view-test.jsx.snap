@@ -58,6 +58,7 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
     textAlign="left"
   >
     <Connect(ProductTileWrapperContainer)
+      isMiniBag={true}
       onItemEdit={[Function]}
       setHeaderErrorState={[Function]}
     />
@@ -78,11 +79,15 @@ exports[`MiniBagBody component isCanada false for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
       isEditingItem={false}
+      isMiniBag={true}
       showAddTobag={false}
       showVenmo={false}
     />
@@ -150,6 +155,7 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
     textAlign="left"
   >
     <Connect(ProductTileWrapperContainer)
+      isMiniBag={true}
       onItemEdit={[Function]}
       setHeaderErrorState={[Function]}
     />
@@ -170,11 +176,15 @@ exports[`MiniBagBody component isCanada true for Loyalty Banner 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
       isEditingItem={false}
+      isMiniBag={true}
       showAddTobag={false}
       showVenmo={false}
     />
@@ -260,6 +270,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     textAlign="left"
   >
     <Connect(ProductTileWrapperContainer)
+      isMiniBag={true}
       onItemEdit={[Function]}
       setHeaderErrorState={[Function]}
     />
@@ -280,11 +291,15 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       tag="span"
       textAlign="left"
     >
-      Subtotal: undefined112.00
+      Subtotal: 
+      <Connect(PriceCurrency)
+        price={112}
+      />
     </Styled(BodyCopy)>
     <Connect(AddedToBagContainer)
       containerId="paypal-button-container-minibag"
       isEditingItem={false}
+      isMiniBag={true}
       showAddTobag={false}
       showVenmo={false}
     />

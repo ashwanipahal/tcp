@@ -23,7 +23,9 @@ import {
   selectTotalProductsCount,
   fetchCurrencySymbol,
   getLabelsFavorites,
+  getSLPLabels,
   getIsDataLoading,
+  selectDefaultWishlist,
 } from './Favorites.selectors';
 
 class FavoritesContainer extends React.PureComponent {
@@ -98,11 +100,13 @@ class FavoritesContainer extends React.PureComponent {
       activeDisplayName,
       currencySymbol,
       labels,
+      slpLabels,
       navigation,
       onQuickViewOpenClick,
       totalProductsCount,
       isDataLoading,
       labelsPlpTiles,
+      defaultWishList,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -121,6 +125,7 @@ class FavoritesContainer extends React.PureComponent {
         activeDisplayName={activeDisplayName}
         currencySymbol={currencySymbol}
         labels={labels}
+        slpLabels={slpLabels}
         onQuickViewOpenClick={isMobileApp() ? onQuickViewOpenClick : this.openQuickViewModal}
         selectedColorProductId={selectedColorProductId}
         navigation={navigation}
@@ -131,6 +136,7 @@ class FavoritesContainer extends React.PureComponent {
         totalProductsCount={totalProductsCount}
         isDataLoading={isDataLoading}
         labelsPlpTiles={labelsPlpTiles}
+        defaultWishList={defaultWishList}
         {...this.state}
       />
     );
@@ -142,10 +148,12 @@ const mapStateToProps = state => {
     wishlistsSummaries: selectWishlistsSummaries(state),
     activeWishList: selectActiveWishList(state),
     activeWishListId: selectActiveWishlistId(state),
+    defaultWishList: selectDefaultWishlist(state),
     activeWishListProducts: selectActiveWishlistProducts(state),
     activeDisplayName: selectActiveDisplayName(state),
     currencySymbol: fetchCurrencySymbol(state),
     labels: getLabelsFavorites(state),
+    slpLabels: getSLPLabels(state),
     totalProductsCount: selectTotalProductsCount(state),
     isDataLoading: getIsDataLoading(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
@@ -185,10 +193,12 @@ FavoritesContainer.propTypes = {
   onQuickViewOpenClick: PropTypes.func.isRequired,
   currencySymbol: PropTypes.string,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  slpLabels: PropTypes.shape({}),
   navigation: PropTypes.shape({}).isRequired,
   totalProductsCount: PropTypes.string,
   isDataLoading: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
+  defaultWishList: PropTypes.shape({}),
 };
 
 FavoritesContainer.defaultProps = {
@@ -196,9 +206,11 @@ FavoritesContainer.defaultProps = {
   activeWishList: {},
   currencySymbol: '$',
   labels: {},
+  slpLabels: {},
   totalProductsCount: '0',
   isDataLoading: false,
   labelsPlpTiles: {},
+  defaultWishList: {},
 };
 
 export default connect(

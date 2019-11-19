@@ -167,6 +167,24 @@ export const SetTcpSegmentMethodCall = payload => ({
   type: GLOBAL_CONSTANTS.SET_TCP_SEGMENT_METHOD_CALL,
 });
 
+export const setPreviewDate = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_PREVIEW_DATE,
+  };
+};
+
+export const setSubNavigationData = (payload, name) => ({
+  payload,
+  name,
+  type: GLOBAL_CONSTANTS.SET_SUB_NAVIGATION_DATA,
+});
+
+export const getSubNavigationData = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.GET_SUB_NAVIGATION_DATA,
+});
+
 export default {
   loadLayoutData,
   loadLabelsData,
@@ -183,4 +201,6 @@ export default {
   setBossBopisFlags,
   getSetTcpSegment,
   SetTcpSegmentMethodCall,
+  setPreviewDate,
+  setSubNavigationData,
 };

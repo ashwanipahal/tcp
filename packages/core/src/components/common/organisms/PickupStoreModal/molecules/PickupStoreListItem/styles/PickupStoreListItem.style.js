@@ -41,6 +41,23 @@ export default css`
   .PickupRadioBtn {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      .promotional-banner .banner-wrapper {
+        margin-top: 5px;
+        padding-left: 0;
+      }
+
+      .boss-extra-details {
+        white-space: nowrap;
+      }
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      .promotional-banner {
+        display: flex;
+      }
+    }
   }
   .storeInfoWrapper div:nth-child(2) {
     justify-content: normal;

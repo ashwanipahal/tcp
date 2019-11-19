@@ -20,7 +20,7 @@ class ModuleJ extends React.PureComponent {
   }
 
   onTabChange = (catId, tabItem) => {
-    this.setState({ currentCatId: catId, currentTabItem: tabItem });
+    this.setState({ currentCatId: catId, currentTabItem: [tabItem] });
   };
 
   getCurrentCtaButton = () => {
@@ -90,8 +90,10 @@ class ModuleJ extends React.PureComponent {
     const { className, productTabList, mediaLinkedList, layout, divTabs } = this.props;
     const { currentCatId } = this.state;
     const promoMediaLinkedList = mediaLinkedList || [];
-    const { image: promoImage1, link: promoLink1 } = promoMediaLinkedList[0] || {};
-    const { image: promoImage2, link: promoLink2 } = promoMediaLinkedList[1] || {};
+    const { image: promoImage1, link: promoLink1, video: promoVideo1 } =
+      promoMediaLinkedList[0] || {};
+    const { image: promoImage2, link: promoLink2, video: promoVideo2 } =
+      promoMediaLinkedList[1] || {};
     const { CAROUSEL_OPTIONS, IMG_DATA, TOTAL_IMAGES } = moduleJConfig;
     let data = productTabList[currentCatId] || [];
     data = data.slice(0, TOTAL_IMAGES);
@@ -129,6 +131,7 @@ class ModuleJ extends React.PureComponent {
                 imgData={promoImage1}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${1}`}
                 link={promoLink1}
+                videoData={promoVideo1}
               />
             </Col>
             <Col
@@ -166,6 +169,7 @@ class ModuleJ extends React.PureComponent {
                 imgData={promoImage2}
                 data-locator={`${getLocator('moduleJ_promobanner_img')}${2}`}
                 link={promoLink2}
+                videoData={promoVideo2}
               />
             </Col>
           </Row>
@@ -262,7 +266,6 @@ class ModuleJ extends React.PureComponent {
             ) : null}
           </Col>
         </Row>
-
         {this.getCurrentCtaButton()}
       </Grid>
     );

@@ -3,8 +3,10 @@ import { shallow } from 'enzyme';
 import { ImageCarouselVanilla } from '../views/ImageCarousel.view.native';
 
 describe('ProductAltImages component', () => {
+  let component;
   const props = {
     item: {
+      isFavorite: false,
       colorsMap: [
         {
           colorProductId: '3000785_10',
@@ -46,8 +48,20 @@ describe('ProductAltImages component', () => {
     },
     imageIndex: 0,
   };
-  it('should renders ListItem correctly', () => {
-    const component = shallow(<ImageCarouselVanilla {...props} />);
+
+  beforeEach(() => {
+    component = shallow(<ImageCarouselVanilla {...props} />);
+  });
+
+  it('should be defined', () => {
+    expect(component).toBeDefined();
+  });
+
+  it('should render correctly', () => {
     expect(component).toMatchSnapshot();
+  });
+
+  it('should return FlatList component value one', () => {
+    expect(component.find('FlatList')).toHaveLength(1);
   });
 });

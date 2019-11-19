@@ -34,6 +34,9 @@ const styles = css`
       min-height: 608px;
     }
   }
+  .bordered-top {
+    border-top: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+  }
 `;
 
 export const modalstyles = css`

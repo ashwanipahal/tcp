@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BagPageUtils from '@tcp/core/src/components/features/CnC/BagPage/views/Bagpage.utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import OpenLoginModal from '../../../../../account/LoginPage/views/LoginModal';
 import style from '../../../../AddedToBagActions/styles/AddedToBagActions.style';
@@ -8,13 +9,26 @@ import ItemDeleteConfirmationModal from '../../../../BagPage/views/ItemDeleteCon
 
 class ModalsCheckout extends React.PureComponent<Props> {
   routeToCheckout = e => {
-    const { routeForBagCheckout, closeCheckoutModalMountState, closeMiniBagDispatch } = this.props;
+    const {
+      routeForBagCheckout,
+      closeCheckoutModalMountState,
+      closeMiniBagDispatch,
+      setClickAnalyticsDataCheckout,
+      cartOrderItems,
+      setBagPageIsRouting,
+    } = this.props;
+    const productsData = BagPageUtils.formatBagProductsData(cartOrderItems);
+    setClickAnalyticsDataCheckout({
+      customEvents: ['scCheckout', 'event86', 'event9'],
+      products: productsData,
+    });
     /* istanbul ignore else */
     if (e) {
       e.preventDefault();
     }
     closeMiniBagDispatch(false, false);
     closeCheckoutModalMountState({ state: false });
+    setBagPageIsRouting();
     routeForBagCheckout();
   };
 
