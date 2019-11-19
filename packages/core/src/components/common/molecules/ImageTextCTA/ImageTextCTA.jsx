@@ -15,6 +15,7 @@ const ImageTextCTA = props => {
     dataLocator,
     ctaInfo: { link, className },
     image,
+    video,
     fontWeight,
     fontSize,
     fontFamily,
@@ -37,11 +38,12 @@ const ImageTextCTA = props => {
           {...navigationUrl}
           className={ctaClassName}
         >
-          {image && (
+          {(image || video) && (
             <DamImage
               imgData={image}
               className={className}
               data-locator={dataLocator && dataLocator.image}
+              videoData={video}
             />
           )}
           <BodyCopy
@@ -59,6 +61,11 @@ const ImageTextCTA = props => {
   );
 };
 
+ImageTextCTA.defaultProps = {
+  image: null,
+  video: null,
+};
+
 ImageTextCTA.propTypes = {
   uniqueKey: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
@@ -71,7 +78,8 @@ ImageTextCTA.propTypes = {
       text: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  image: PropTypes.shape({}).isRequired,
+  image: PropTypes.shape({}),
+  video: PropTypes.shape({}),
   fontWeight: PropTypes.shape({}).isRequired,
   fontSize: PropTypes.shape({}).isRequired,
   fontFamily: PropTypes.shape({}).isRequired,

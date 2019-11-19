@@ -76,9 +76,10 @@ const mapDispatchToProps = dispatch => {
  * page hotfix-aware.
  */
 HomePageView.displayName = 'HomePage';
+// eslint-disable-next-line no-unused-vars
 const HotfixAwareHomePage = withHotfix(HomePageView);
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HotfixAwareHomePage);
+)(HomePageView);

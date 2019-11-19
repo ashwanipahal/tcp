@@ -8,6 +8,8 @@ function briteVerifyStatusExtraction(emailAddress) {
     webService: {
       method: endpoints.emailVerification.method,
       URI: endpoints.emailVerification.URI,
+      JSONP: true,
+      reqTimeout: 2000,
     },
     body: {
       apikey: BV_API_KEY,

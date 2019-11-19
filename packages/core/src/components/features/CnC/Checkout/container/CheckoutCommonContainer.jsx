@@ -18,7 +18,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   initialLoad = true;
 
   componentDidMount() {
-    const { router, initCheckout } = this.props;
+    const { router, initCheckout, markBagPageRoutingDone } = this.props;
+    markBagPageRoutingDone();
     const {
       isRegisteredUserCallDone,
       checkoutServerError,
@@ -157,6 +158,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       shippingMethod,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
       isPayPalWebViewEnable,
       setClickAnalyticsDataCheckout,
       updateCheckoutPageData,
@@ -240,6 +243,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
         toastMessage={toastMessage}
         clearCheckoutServerError={clearCheckoutServerError}
         toggleCountrySelector={toggleCountrySelector}

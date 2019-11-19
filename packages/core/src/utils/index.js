@@ -86,5 +86,4 @@ export {
   getStyliticsRegion,
   calculatePriceValue,
   getProductUrlForDAM,
-  getPriceWithCurrency,
 } from './utils';

@@ -12,6 +12,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
       <Styled(View)>
         <Styled(DamImage)
           alt=""
+          checkBrand=""
           crop=""
           height="198px"
           host=""
@@ -22,6 +23,7 @@ exports[`ProductCustomizeFormPart component should renders correctly 1`] = `
           source=""
           swatchConfig=""
           url=""
+          videoData={null}
           width="161px"
         />
         <Styled(Anchor)
