@@ -189,7 +189,7 @@ class ProductDetailContainer extends React.PureComponent {
               plpLabels={plpLabels}
               pdpLabels={pdpLabels}
               currency={currency}
-              currencyExchange={currencyAttributes.exchangevalue}
+              currencyAttributes={currencyAttributes}
               productInfo={productInfo}
               handleAddToBag={this.handleAddToBag}
               addToBagError={addToBagError}

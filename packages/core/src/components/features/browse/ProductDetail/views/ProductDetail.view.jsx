@@ -87,7 +87,7 @@ class ProductDetailView extends React.Component {
       productInfo,
       currency,
       pdpLabels,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
       ...otherProps
@@ -104,7 +104,7 @@ class ProductDetailView extends React.Component {
           productDetails={productDetails}
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
           className="hide-on-mobile"
@@ -115,7 +115,7 @@ class ProductDetailView extends React.Component {
               offerPrice={parseInt(currentGiftCardValue, 10)}
               listPrice={parseInt(currentGiftCardValue, 10)}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isGiftCard={isGiftCard}
             />
           </div>
@@ -157,14 +157,14 @@ class ProductDetailView extends React.Component {
   };
 
   getProductPriceForGiftCard = () => {
-    const { productInfo, currency, currencyExchange } = this.props;
+    const { productInfo, currency, currencyAttributes } = this.props;
     const { currentGiftCardValue } = this.state;
     return productInfo.isGiftCard ? (
       <div className="product-price-mobile-view">
         <ProductPrice
           listPrice={parseInt(currentGiftCardValue, 10)}
           offerPrice={parseInt(currentGiftCardValue, 10)}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           currencySymbol={currency}
         />
       </div>
@@ -200,7 +200,7 @@ class ProductDetailView extends React.Component {
       addToBagError,
       alternateSizes,
       currency,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
       ...otherProps
@@ -258,7 +258,7 @@ class ProductDetailView extends React.Component {
               productDetails={productDetails}
               currencySymbol={currency}
               selectedColorProductId={selectedColorProductId}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               isLoggedIn={isLoggedIn}
               reviewOnTop
@@ -390,7 +390,7 @@ ProductDetailView.propTypes = {
   breadCrumbs: PropTypes.shape([]),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
@@ -415,7 +415,6 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
-  currencyExchange: 1,
   isLoggedIn: false,
   alternateSizes: {},
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import ModalNativeHeader from '../../../Modal/view/Modal.native.header';
 import { Button, RichText } from '../../../../atoms';
@@ -105,7 +105,7 @@ class ApplyNowModalWrapper extends React.PureComponent {
         heading={getLabelValue(labels, 'lbl_PLCCForm_rewardsCardHeading')}
         onRequestClose={isPLCCModalOpen ? this.closePlccModal : this.closeModal}
         fontSize="fs14"
-        customHeaderMargin="55px 25px 0 25px"
+        customHeaderMargin="25px 25px 0 25px"
       />
     ) : (
       <RTPSHeader />
@@ -131,164 +131,166 @@ class ApplyNowModalWrapper extends React.PureComponent {
     } = this.props;
     const offerType = getLabelValue(labels, 'oneequalstwopointsoffer');
     return isPLCCModalOpen || isModalOpen ? (
-      <View>
-        {this.getModalHeader()}
-        {isPLCCModalOpen && (
-          <ApplyCardLayoutView
-            applyCard={isPLCCModalOpen}
-            closePLCCModal={this.closePlccModal}
-            isRtpsFlow={isRtpsFlow}
-          />
-        )}
-        {isModalOpen && (
-          <ScrollViewContainer>
-            <HeaderContainer>
+      <SafeAreaView>
+        <View>
+          {this.getModalHeader()}
+          {isPLCCModalOpen && (
+            <ApplyCardLayoutView
+              applyCard={isPLCCModalOpen}
+              closePLCCModal={this.closePlccModal}
+              isRtpsFlow={isRtpsFlow}
+            />
+          )}
+          {isModalOpen && (
+            <ScrollViewContainer>
+              <HeaderContainer>
+                <StyledBodyCopy
+                  color="gray.900"
+                  mobilefontFamily="primary"
+                  fontSize="fs38"
+                  textAlign="center"
+                  fontWeight="black"
+                  text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
+                  paddingTop="30px"
+                />
+                <StyledBodyCopy
+                  color="gray.900"
+                  mobilefontFamily="primary"
+                  fontSize="fs15"
+                  fontWeight="black"
+                  text="§"
+                  paddingTop="5px"
+                />
+              </HeaderContainer>
+
+              <ImageContainer>
+                <StyledImage source={headerImage} width="45%" height="112px" />
+              </ImageContainer>
               <StyledBodyCopy
                 color="gray.900"
-                mobilefontFamily="primary"
-                fontSize="fs38"
-                textAlign="center"
-                fontWeight="black"
-                text={getLabelValue(labels, 'lbl_PLCCModal_applyNowHeaderText')}
-                paddingTop="30px"
-              />
-              <StyledBodyCopy
-                color="gray.900"
-                mobilefontFamily="primary"
-                fontSize="fs15"
-                fontWeight="black"
-                text="§"
-                paddingTop="5px"
-              />
-            </HeaderContainer>
-
-            <ImageContainer>
-              <StyledImage source={headerImage} width="45%" height="112px" />
-            </ImageContainer>
-            <StyledBodyCopy
-              color="gray.900"
-              fontFamily="secondary"
-              fontSize="fs14"
-              textAlign="center"
-              text={getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
-              paddingTop="9px"
-              paddingLeft="12px"
-              paddingRight="12px"
-            />
-            {isRtpsFlow && (
-              <Container>
-                <RichTextContainer>
-                  <RichText source={{ html: rtpsCongratsMsg }} />
-                </RichTextContainer>
-              </Container>
-            )}
-            <ButtonWrapper>
-              <Button
-                fill="BLUE"
-                type="submit"
-                color="white"
-                text={
-                  !isRtpsFlow
-                    ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
-                    : getLabelValue(labels, 'lbl_PLCC_interested')
-                }
-                width="90%"
-                onPress={this.toggleApplyCardModal}
-              />
-            </ButtonWrapper>
-
-            {!isRtpsFlow ? (
-              <StyledAnchor
-                url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
-                fontSizeVariation="xlarge"
-                anchorVariation="secondary"
-                underlineBlue
-                text={getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
-                paddingTop="23px"
-              />
-            ) : (
-              <StyledAnchor
-                onPress={() => {
-                  this.closeModal();
-                }}
-                fontSizeVariation="xlarge"
-                anchorVariation="secondary"
-                underlineBlue
-                text={getLabelValue(labels, 'lbl_PLCC_noThanks')}
-                noLink
-                paddingTop="23px"
-              />
-            )}
-            {isRtpsFlow && (
-              <Container>
-                <RichTextContainer>
-                  <RichText source={{ html: rtpsOptOutMsg }} />
-                </RichTextContainer>
-              </Container>
-            )}
-            <ImageContainer marginTop="28px">
-              <StyledImage
-                source={offerType ? PLCC_LOOKUP_2_POINTS : PLCC_LOOKUP_1_POINTS}
-                width="95%"
-                height="60px"
-              />
-            </ImageContainer>
-            <StyledBodyCopy
-              fontFamily="primary"
-              fontSize="fs28"
-              fontWeight="black"
-              textAlign="center"
-              color="text.secondary"
-              text={getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
-              paddingTop="9px"
-            />
-            <Container>
-              <RichTextContainer>
-                <RichText source={{ html: plccBenefitsList }} />
-              </RichTextContainer>
-            </Container>
-            <BottomContainer>
-              <StyledBodyCopy
-                fontSize="fs10"
                 fontFamily="secondary"
-                text={getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
-                paddingRight="4px"
+                fontSize="fs14"
+                textAlign="center"
+                text={getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
+                paddingTop="9px"
+                paddingLeft="12px"
+                paddingRight="12px"
               />
+              {isRtpsFlow && (
+                <Container>
+                  <RichTextContainer>
+                    <RichText source={{ html: rtpsCongratsMsg }} />
+                  </RichTextContainer>
+                </Container>
+              )}
+              <ButtonWrapper>
+                <Button
+                  fill="BLUE"
+                  type="submit"
+                  color="white"
+                  text={
+                    !isRtpsFlow
+                      ? getLabelValue(labels, 'lbl_PLCCModal_applyNowCTA')
+                      : getLabelValue(labels, 'lbl_PLCC_interested')
+                  }
+                  width="90%"
+                  onPress={this.toggleApplyCardModal}
+                />
+              </ButtonWrapper>
 
-              <StyledAnchor
-                url={getLabelValue(labels, 'lbl_PLCCModal_detailsLink')}
-                fontSizeVariation="medium"
-                anchorVariation="primary"
-                underline
-                text={getLabelValue(labels, 'lbl_PLCCForm_details')}
-                paddingRight="28px"
+              {!isRtpsFlow ? (
+                <StyledAnchor
+                  url={getLabelValue(labels, 'lbl_PLCCModal_learnMoreLink')}
+                  fontSizeVariation="xlarge"
+                  anchorVariation="secondary"
+                  underlineBlue
+                  text={getLabelValue(labels, 'lbl_PLCCModal_learnMoreText')}
+                  paddingTop="23px"
+                />
+              ) : (
+                <StyledAnchor
+                  onPress={() => {
+                    this.closeModal();
+                  }}
+                  fontSizeVariation="xlarge"
+                  anchorVariation="secondary"
+                  underlineBlue
+                  text={getLabelValue(labels, 'lbl_PLCC_noThanks')}
+                  noLink
+                  paddingTop="23px"
+                />
+              )}
+              {isRtpsFlow && (
+                <Container>
+                  <RichTextContainer>
+                    <RichText source={{ html: rtpsOptOutMsg }} />
+                  </RichTextContainer>
+                </Container>
+              )}
+              <ImageContainer marginTop="28px">
+                <StyledImage
+                  source={offerType ? PLCC_LOOKUP_2_POINTS : PLCC_LOOKUP_1_POINTS}
+                  width="95%"
+                  height="60px"
+                />
+              </ImageContainer>
+              <StyledBodyCopy
+                fontFamily="primary"
+                fontSize="fs28"
+                fontWeight="black"
+                textAlign="center"
+                color="text.secondary"
+                text={getLabelValue(labels, 'lbl_PLCCModal_benefitsText')}
+                paddingTop="9px"
               />
+              <Container>
+                <RichTextContainer>
+                  <RichText source={{ html: plccBenefitsList }} />
+                </RichTextContainer>
+              </Container>
+              <BottomContainer>
+                <StyledBodyCopy
+                  fontSize="fs10"
+                  fontFamily="secondary"
+                  text={getLabelValue(labels, 'lbl_PLCCModal_linksTextPrefix')}
+                  paddingRight="4px"
+                />
 
-              <StyledAnchor
-                url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
-                target="_blank"
-                locator="plcc_faq"
-                fontSizeVariation="medium"
-                anchorVariation="primary"
-                underline
-                text={getLabelValue(labels, 'lbl_PLCCModal_faqText')}
-                paddingRight="28px"
-              />
+                <StyledAnchor
+                  url={getLabelValue(labels, 'lbl_PLCCModal_detailsLink')}
+                  fontSizeVariation="medium"
+                  anchorVariation="primary"
+                  underline
+                  text={getLabelValue(labels, 'lbl_PLCCForm_details')}
+                  paddingRight="28px"
+                />
 
-              <StyledAnchor
-                url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
-                target="_blank"
-                data-locator="plcc_rewards_terms"
-                fontSizeVariation="medium"
-                anchorVariation="primary"
-                underline
-                text={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
-              />
-            </BottomContainer>
-            {this.getTermsAndCond()}
-          </ScrollViewContainer>
-        )}
-      </View>
+                <StyledAnchor
+                  url={getLabelValue(labels, 'lbl_PLCCModal_faqLink')}
+                  target="_blank"
+                  locator="plcc_faq"
+                  fontSizeVariation="medium"
+                  anchorVariation="primary"
+                  underline
+                  text={getLabelValue(labels, 'lbl_PLCCModal_faqText')}
+                  paddingRight="28px"
+                />
+
+                <StyledAnchor
+                  url={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramLink')}
+                  target="_blank"
+                  data-locator="plcc_rewards_terms"
+                  fontSizeVariation="medium"
+                  anchorVariation="primary"
+                  underline
+                  text={getLabelValue(labels, 'lbl_PLCCModal_rewardsProgramText')}
+                />
+              </BottomContainer>
+              {this.getTermsAndCond()}
+            </ScrollViewContainer>
+          )}
+        </View>
+      </SafeAreaView>
     ) : null;
   }
 }
