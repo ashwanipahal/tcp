@@ -77,13 +77,10 @@ export class BillingPaymentForm extends React.PureComponent {
    * @description returns the checkout billing address form
    */
   getCheckoutBillingAddress = ({ editMode } = {}) => {
-    const {
-      isSameAsShippingChecked,
-      isEditFormSameAsShippingChecked = false,
-      editFormSelectedOnFileAddressId,
-    } = this.props;
+    const { isSameAsShippingChecked, isEditFormSameAsShippingChecked = false } = this.props;
     const { selectedOnFileAddressId, userAddresses, labels, cardList, isGuest } = this.props;
-    const { orderHasShipping, addressLabels, dispatch, shippingAddress, billingData } = this.props;
+    const { orderHasShipping, addressLabels, editFormSelectedOnFileAddressId } = this.props;
+    const { dispatch, shippingAddress, billingData } = this.props;
     const { addNewCCState } = this.state;
     const creditCardList = getCreditCardList({ cardList });
     const formType = editMode ? constants.EDIT_FORM_NAME : constants.FORM_NAME;
@@ -269,9 +266,13 @@ export class BillingPaymentForm extends React.PureComponent {
           />
         </CreditCardWrapper>
         {selectedCard ? getCardDetailsMethod(labels, setFormToEditState, editMode, this) : null}
-        {isCardDetailEdit ? this.getPaymentMethod(labels, selectedCard, cvvCodeRichText) : null}
-        {isCardDetailEdit ? getDefaultPayment(selectedCard, labels, false) : null}
-        {isCardDetailEdit ? getBillingAddressWrapper(selectedCard, onFileCardKey, labels) : null}
+        {isCardDetailEdit ? (
+          <>
+            {this.getPaymentMethod(labels, selectedCard, cvvCodeRichText)}
+            {getDefaultPayment(selectedCard, labels, false)}
+            {getBillingAddressWrapper(selectedCard, onFileCardKey, labels)}
+          </>
+        ) : null}
 
         {editMode ? (
           <CardEditFrom

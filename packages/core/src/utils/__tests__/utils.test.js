@@ -313,8 +313,8 @@ describe('parseUTCDate', () => {
 
 describe('validateDiffInDaysNotification', () => {
   it('return true if order date is falls with in limit', () => {
-    const returnValue = validateDiffInDaysNotification('Oct 16, 2019', 30);
-    expect(returnValue).toEqual(false);
+    const returnValue = validateDiffInDaysNotification(new Date(), 30);
+    expect(returnValue).toEqual(true);
   });
 
   it('return false if order date is not falls with in limit', () => {

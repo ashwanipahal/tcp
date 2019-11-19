@@ -176,6 +176,7 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   isOpen={true}
   maxWidth="464px"
   overlayClassName="TCPModal__Overlay"
+  shouldCloseOnEsc={false}
   shouldCloseOnOverlayClick={false}
   standardHeight={true}
 >
@@ -596,6 +597,7 @@ exports[`ApplyNowModalWrapper component should renders correctly with rtps false
   isOpen={true}
   maxWidth="464px"
   overlayClassName="TCPModal__Overlay"
+  shouldCloseOnEsc={true}
   shouldCloseOnOverlayClick={false}
   standardHeight={true}
 >

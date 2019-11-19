@@ -1,0 +1,9 @@
+#candid-overlay .product-label {
+  padding: 2px 20px;
+  display: block;
+  font-size: 18px;
+  line-height: 1.1;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}

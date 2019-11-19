@@ -48,6 +48,37 @@ function AnalyticsScript() {
   return <script src={process.env.ANALYTICS_SCRIPT_URL} onLoad={handleLoad} />;
 }
 
+/**
+ * TO update the payload in case component needs to be loaded at server side
+ * @param {} req
+ * @param {*} payload
+ * @param {*} Component
+ */
+const updatePayload = (req, payload, Component) => {
+  let updatedPayload = { ...payload };
+  const { pageInfo } = Component;
+  const { staticPage, paramName } = pageInfo || {};
+
+  // This check ensures this block is executed once since Component is not available in first call
+  if (pageInfo) {
+    updatedPayload = {
+      ...pageInfo,
+      ...updatedPayload,
+    };
+    // This will check when page has to be rendered at server side and includes multiple urls
+    if (staticPage && paramName) {
+      // staticPage - this var will be passed inside component pageinfo
+      // paramName - this keyword will have the variable name to page the page url from the request.
+      const dynamicPageName = req.params[paramName] || null;
+      if (!constants.staticPagesWithOwnTemplate.includes(dynamicPageName) && dynamicPageName) {
+        updatedPayload = { ...updatedPayload, name: dynamicPageName };
+      }
+    }
+  }
+
+  return updatedPayload;
+};
+
 class TCPWebApp extends App {
   static siteConfigSet = false;
 
@@ -143,6 +174,13 @@ class TCPWebApp extends App {
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
     }
+
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        localStorage.setItem('lat', pos.coords.latitude);
+        localStorage.setItem('lng', pos.coords.longitude);
+      });
+    }
   }
 
   componentDidUpdate() {
@@ -220,12 +258,8 @@ class TCPWebApp extends App {
 
       // Get initial props is getting called twice on server
       // This check ensures this block is executed once since Component is not available in first call
-      if (Component.pageInfo) {
-        payload = {
-          ...Component.pageInfo,
-          ...payload,
-        };
-      }
+      // This will be called when we need to include the layout call in bootstrap.
+      payload = updatePayload(req, payload, Component);
       initialProps.pageData = payload.pageData;
       store.dispatch(bootstrapData(payload));
       if (asPath.includes('store') && query && query.storeStr) {

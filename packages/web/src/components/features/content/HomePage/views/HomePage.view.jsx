@@ -6,6 +6,8 @@ import errorBoundary from '@tcp/core/src/components/common/hoc/withErrorBoundary
 import withRefWrapper from '@tcp/core/src/components/common/hoc/withRefWrapper';
 import PageSlots from '@tcp/core/src/components/common/molecules/PageSlots';
 import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
+import ModuleS from '@tcp/core/src/components/common/molecules/ModuleS';
+import mockS from '@tcp/core/src/services/abstractors/common/moduleS/mock-v1';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import { isTCP } from '@tcp/core/src/utils/utils';
 import Recommendations from '../../../../common/molecules/Recommendations';
@@ -92,10 +94,10 @@ const HomePageView = dynamic({
     moduleX: () => import('@tcp/core/src/components/common/molecules/ModuleX').then(returnModule),
     moduleS: () => import('@tcp/core/src/components/common/molecules/ModuleS').then(returnModule),
     moduleT: () => import('@tcp/core/src/components/common/molecules/ModuleT').then(returnModule),
-    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
     module2columns: () =>
       import('@tcp/core/src/components/common/molecules/ModuleTwoCol').then(returnModule),
     moduleG: () => import('@tcp/core/src/components/common/molecules/ModuleG').then(returnModule),
+    moduleE: () => import('@tcp/core/src/components/common/molecules/ModuleE').then(returnModule),
   }),
   render: (compProps, modules) => {
     const {
@@ -114,6 +116,7 @@ const HomePageView = dynamic({
         pageName={pageName}
       >
         <PageSlots slots={slots} modules={modules} />
+        <ModuleS {...mockS.moduleS.composites} />
         <GetCandid />
         <Recommendations
           page={Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE}
