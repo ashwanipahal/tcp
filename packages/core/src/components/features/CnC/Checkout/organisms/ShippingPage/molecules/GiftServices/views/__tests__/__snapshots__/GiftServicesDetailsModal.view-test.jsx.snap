@@ -93,11 +93,16 @@ exports[`GiftServices component renders correctly 1`] = `
       padding-right: ",
           [Function],
           ";
+      padding-top: ",
+          [Function],
+          ";
     }
   }
   .price {
     float: right;
-    margin-right: 5px;
+    margin-right: ",
+          [Function],
+          ";
   }
   .longDesc {
     font-size: ",
@@ -113,9 +118,12 @@ exports[`GiftServices component renders correctly 1`] = `
   .phone-field-wrapper {
     width: auto;
     margin-left: -12px;
-    padding-right: 15px;
+    padding-right: 0;
     display: flex;
     align-self: center;
+    margin-right: ",
+          [Function],
+          ";
   }
 
   .tcp-radio-button {
@@ -206,6 +214,12 @@ exports[`GiftServices component renders correctly 1`] = `
           [Function],
           "px;
     margin-bottom: ",
+          [Function],
+          ";
+  }
+
+  .CheckBox__input {
+    margin-right: ",
           [Function],
           ";
   }
