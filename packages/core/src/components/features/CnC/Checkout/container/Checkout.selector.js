@@ -807,23 +807,20 @@ const getPickupSectionLabels = createSelector(
   }
 );
 
-const getEmailSignUpLabels = createSelector(
-  getReviewPageLabels,
-  reviewLabels => {
-    const labels = {};
-    const labelKeys = [
-      'lbl_shipping_emailSignUpHeader',
-      'lbl_shipping_emailSignUpSubHeader',
-      'lbl_shipping_childrenPlaceCheckoutTxt',
-      'lbl_shipping_emailSignUpDisclaimer',
-      'lbl_shipping_gymboreePlaceCheckoutTxt',
-    ];
-    labelKeys.forEach(key => {
-      labels[key] = getLabelValue(reviewLabels, key);
-    });
-    return labels;
-  }
-);
+const getEmailSignUpLabels = state => {
+  const labels = {};
+  const labelKeys = [
+    'lbl_shipping_emailSignUpHeader',
+    'lbl_shipping_emailSignUpSubHeader',
+    'lbl_shipping_childrenPlaceCheckoutTxt',
+    'lbl_shipping_emailSignUpDisclaimer',
+    'lbl_shipping_gymboreePlaceCheckoutTxt',
+  ];
+  labelKeys.forEach(key => {
+    labels[key] = getLabelValue(state.Labels, key, 'shipping', 'checkout');
+  });
+  return labels;
+};
 
 /**
  * @function getShippingSectionLabels
