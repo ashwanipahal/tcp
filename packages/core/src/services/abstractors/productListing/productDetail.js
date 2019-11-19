@@ -199,7 +199,7 @@ export const layoutResolver = async ({ categoryId, pageName }) => {
         channel: channelId,
         lang: language === 'en' ? '' : language,
         path: pageName,
-        category: categoryId ? categoryId.split('>').join('|') : global,
+        category: categoryId ? categoryId.split('>').join('|') : 'global',
       },
     };
     const {
