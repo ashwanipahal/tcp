@@ -311,7 +311,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           Array [
             "t_clp_img2_m",
             "t_clp_img2_t",
-            "t_clp_img4_d",
+            "t_clp_img1_d",
           ]
         }
         link={
@@ -345,7 +345,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           Array [
             "t_clp_img2_m",
             "t_clp_img2_t",
-            "t_clp_img4_d",
+            "t_clp_img1_d",
           ]
         }
         link={
@@ -379,7 +379,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           Array [
             "t_clp_img2_m",
             "t_clp_img2_t",
-            "t_clp_img4_d",
+            "t_clp_img1_d",
           ]
         }
         link={
@@ -413,7 +413,7 @@ exports[`ProductPickupVanilla should render correctly 1`] = `
           Array [
             "t_clp_img2_m",
             "t_clp_img2_t",
-            "t_clp_img4_d",
+            "t_clp_img1_d",
           ]
         }
         link={
