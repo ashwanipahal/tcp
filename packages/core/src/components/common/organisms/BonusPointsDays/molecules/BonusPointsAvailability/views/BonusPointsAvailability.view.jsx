@@ -67,11 +67,13 @@ const BonusPointsAvailability = ({
 BonusPointsAvailability.propTypes = {
   bonusPoints: PropTypes.shape([]),
   className: PropTypes.string,
+  isPlaceRewardsPage: PropTypes.bool,
 };
 
 BonusPointsAvailability.defaultProps = {
   className: '',
   bonusPoints: [{ disabled: false, buttonText: '' }],
+  isPlaceRewardsPage: false,
 };
 
 export default withStyles(BonusPointsAvailability, styles);
