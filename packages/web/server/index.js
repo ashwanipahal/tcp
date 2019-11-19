@@ -13,7 +13,7 @@ if (process.env.RWD_APPD_ENABLED === 'true') {
       nodeName: process.env.RWD_APPD_NODE_NAME,
     });
   } catch (error) {
-    logger.error('Unable to initialize AppDynamics');
+    logger.error('Unable to initialize AppDynamics', error);
   }
 }
 
