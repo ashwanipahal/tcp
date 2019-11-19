@@ -12,8 +12,8 @@ import { FULLY_VISIBLE, NAVIGATION_START } from '@tcp/core/src/constants/rum.con
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 // For SSR perf timing
+import { getAPIConfig } from '@tcp/core/src/utils';
 import RenderPerf from '../components/common/molecules/RenderPerf';
-
 // External Style Sheet
 const CSSOverride = () => {
   return <link href={process.env.RWD_WEB_CSS_OVERRIDE_URL} rel="stylesheet" />;
@@ -50,8 +50,9 @@ class MyDocument extends Document {
   }
 
   render() {
+    const { language } = getAPIConfig();
     return (
-      <Html lang="en">
+      <Html lang={language}>
         <Head>
           <meta name="viewport" content="user-scalable=no, initial-scale=1" />
           <link rel="icon" href={process.env.RWD_WEB_FAVICON_URL} />
