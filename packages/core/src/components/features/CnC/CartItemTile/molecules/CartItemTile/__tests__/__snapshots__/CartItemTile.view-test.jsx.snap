@@ -53,6 +53,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -62,6 +63,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -491,6 +493,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -500,6 +503,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -925,6 +929,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -934,6 +939,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -1376,6 +1382,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -1385,6 +1392,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -1810,6 +1818,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -1819,6 +1828,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -2244,6 +2254,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -2253,6 +2264,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -2692,6 +2704,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -2701,6 +2714,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
         <Styled(BodyCopy)
@@ -3152,6 +3166,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -3161,6 +3176,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -3600,6 +3616,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -3609,6 +3626,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
         <Styled(BodyCopy)
@@ -4060,6 +4078,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -4069,6 +4088,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -4508,6 +4528,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -4517,6 +4538,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -4942,6 +4964,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -4951,6 +4974,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -5393,6 +5417,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -5402,6 +5427,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -5844,6 +5870,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -5853,6 +5880,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
       </div>
@@ -6309,6 +6337,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
           pdpToPath="/p?pid=undefined"
         >
           <WithTheme(DamImage)
+            height="100px"
             imgData={
               Object {
                 "alt": undefined,
@@ -6318,6 +6347,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             isProductImage={true}
             itemBrand="tcp"
             onClick={[Function]}
+            width="100px"
           />
         </LinkWrapper>
         <Styled(BodyCopy)
@@ -6938,7 +6968,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
 
     .product-detail-section {
-      display: flex;
+      display: ",
+          [Function],
+          ";
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -7183,7 +7215,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
@@ -7454,7 +7486,9 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
     }
 
     .product-detail-section {
-      display: flex;
+      display: ",
+          [Function],
+          ";
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -7699,7 +7733,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
