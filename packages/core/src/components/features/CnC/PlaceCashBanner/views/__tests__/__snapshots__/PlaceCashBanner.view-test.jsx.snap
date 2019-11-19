@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceCashBanner should render correctly should match snapshot if isEnabled=true 1`] = `
+<div
+  className=""
+>
+  <div
+    className="place-cash"
+  >
+    <Styled(Row)
+      className="place-cash__container"
+    >
+      <Styled(Col)
+        className="place-cash__row"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        key="placeCashBanner"
+        textAlign="center"
+      >
+        <WithTheme(DamImage)
+          className="place-cash__img"
+          imgConfigs={Array []}
+          imgData={
+            Object {
+              "alt": undefined,
+              "url": undefined,
+            }
+          }
+          width="100%"
+        />
+        <div
+          className="place-cash__text-wrapper"
+        >
+          <Styled(BodyCopy)
+            className="place-cash__title"
+            color="text.primary"
+            component="h3"
+            data-locator="place-cash_info_text"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs10",
+                "fs10",
+                "fs14",
+              ]
+            }
+            fontWeight="bold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="center"
+          />
+          <Styled(BodyCopy)
+            className="place-cash__subTitle"
+            color="text.primary"
+            component="h4"
+            data-locator="place-cash_info_text"
+            fontFamily="primary"
+            fontSize={
+              Array [
+                "fs10",
+                "fs9",
+                "fs12",
+              ]
+            }
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={null}
+            textAlign="center"
+          />
+          <div
+            className="place-cash__tnc-container"
+          >
+            <Styled(BodyCopy)
+              className="place-cash__tnc-text"
+              color="text.primary"
+              component="span"
+              data-locator="place-cash_info_text"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={null}
+              textAlign="center"
+            />
+            <Styled(Anchor)
+              anchorVariation="primary"
+              className="place-cash__modalLink"
+              dataLocator="detailslink"
+              fontFamily="primary"
+              fontSizeVariation="medium"
+              href="#"
+              onClick={[Function]}
+              underline={true}
+            />
+          </div>
+        </div>
+        <PlaceCashDetailsModal
+          labels={
+            Object {
+              "lbl_placeCash_CA_bag_detailModalTitle": "Place Cash Detail",
+              "lbl_placeCash_CA_bag_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+              "lbl_placeCash_CA_bag_modalLink": "See Details",
+              "lbl_placeCash_CA_bag_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+              "lbl_placeCash_CA_bag_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+              "lbl_placeCash_CA_bag_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+              "lbl_placeCash_CA_confirmation_detailModalTitle": "Place Cash Detail",
+              "lbl_placeCash_CA_confirmation_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+              "lbl_placeCash_CA_confirmation_modalLink": "See Details",
+              "lbl_placeCash_CA_confirmation_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+              "lbl_placeCash_CA_confirmation_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+              "lbl_placeCash_CA_confirmation_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+              "lbl_placeCash_US_bag_detailModalTitle": "Place Cash Detail",
+              "lbl_placeCash_US_bag_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+              "lbl_placeCash_US_bag_modalLink": "See Details",
+              "lbl_placeCash_US_bag_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+              "lbl_placeCash_US_bag_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+              "lbl_placeCash_US_bag_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+              "lbl_placeCash_US_confirmation_detailModalTitle": "Place Cash Detail",
+              "lbl_placeCash_US_confirmation_imgUrl": "https://test1.theplace.com/image/upload/v1573831659/group_3x.png",
+              "lbl_placeCash_US_confirmation_modalLink": "See Details",
+              "lbl_placeCash_US_confirmation_subTitle": "Get #cashAmountOff#  for every #placeCashOffer# you spend!",
+              "lbl_placeCash_US_confirmation_title": "YAY!, You'll Earn #earnedPlaceCashValue# in PLACE BUCKS",
+              "lbl_placeCash_US_confirmation_tnc": "Cannot be combined with any other offer. Terms & conditions apply.",
+              "referred": Array [
+                Object {
+                  "__typename": "ReferredContent",
+                  "contentId": "ab6a5c6a-3e4e-4d2b-824b-a61c93e70f73",
+                  "name": "PlaceCash_Detail_US_Bag",
+                },
+              ],
+            }
+          }
+          onRequestClose={[Function]}
+          openState={false}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</div>
+`;

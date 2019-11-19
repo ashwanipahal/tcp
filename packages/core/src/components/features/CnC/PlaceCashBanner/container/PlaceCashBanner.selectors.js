@@ -1,7 +1,7 @@
 import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { labelsHashValuesReplace } from '@tcp/core/src/components/features/CnC/LoyaltyBanner/util/utility';
-
 import { SESSIONCONFIG_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
+import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 
 const getCurrentCountry = state => {
   return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
@@ -56,12 +56,7 @@ const getCurrencySymbol = state => {
 
 /** Place cash earned on transaction */
 const getEarnedPlaceCashValue = state => {
-  return (
-    (state.cartPageReducer &&
-      state.cartPageReducer.orderDetails &&
-      state.cartPageReducer.orderDetails.rewardsToBeEarned) ||
-    0
-  );
+  return getCartOrderDetails(state).get('rewardsToBeEarned') || 0;
 };
 
 const getPlaceDetailsContentId = (state, labelName) => {
@@ -71,15 +66,14 @@ const getPlaceDetailsContentId = (state, labelName) => {
 };
 
 /** Flag indicated whether the place cash is enabled  */
-const getIsInternationalShipping = currentCountry => {
-  return currentCountry !== 'US' || currentCountry !== 'CA';
+const getIsNotInternationalShipping = currentCountry => {
+  return currentCountry === 'US' || currentCountry === 'CA';
 };
 
 const getIsPlaceCashEnabled = state => {
   const currentCountry = getCurrentCountry(state);
   const earnedPlaceCashValue = getEarnedPlaceCashValue(state);
-
-  return getIsInternationalShipping(currentCountry) && earnedPlaceCashValue > 0;
+  return getIsNotInternationalShipping(currentCountry) && earnedPlaceCashValue > 0;
 };
 
 const getPlaceDetailsContent = (state, labelName) => {
@@ -89,40 +83,54 @@ const getPlaceDetailsContent = (state, labelName) => {
   return showDetailsContent && showDetailsContent.richText;
 };
 
-const getPlaceCashBannerLabels = (state, isOrderConfirmation) => {
-  const currentPage = isOrderConfirmation ? 'confirmation' : 'bag';
-  const currentCountry = getCurrentCountry(state);
-  const replaceLabelConfig = replaceLabelUtil({
-    currency: getCurrencySymbol(state),
-    cashAmountOff: getCashAmountOff(state),
-    earnedPlaceCashValue: getEarnedPlaceCashValue(state),
-    placeCashOffer: getPlaceCashOffer(state),
-  });
-
-  const labelKeys = [
-    `lbl_placeCash_${currentCountry}_${currentPage}_title`,
-    `lbl_placeCash_${currentCountry}_${currentPage}_subTitle`,
-    `lbl_placeCash_${currentCountry}_${currentPage}_tnc`,
-    `lbl_placeCash_${currentCountry}_${currentPage}_modalLink`,
-    `lbl_placeCash_${currentCountry}_${currentPage}_imgUrl`,
-    `lbl_placeCash_${currentCountry}_${currentPage}_detailModalTitle`,
+const getPlaceCashBannerLabels = (state, isOrderConfirmation, isEnabled) => {
+  const labels = [
+    'title',
+    'subTitle',
+    'tnc',
+    'modalLink',
+    'imgUrl',
+    'detailModalTitle',
+    'SHOW_DETAILS_RICH_TEXT',
   ];
-  const labels = ['title', 'subTitle', 'tnc', 'modalLink', 'imgUrl', 'detailModalTitle'];
-
   const finalValue = {};
-  labelKeys.forEach((key, index) => {
-    const labelKeyValue = getLabelValue(state.Labels, key, 'placeCashBanner', 'checkout');
-    const labelString = labelKeyValue === key ? '' : labelKeyValue;
-    const labelConfig = replaceLabelConfig[labels[index]];
 
-    finalValue[labels[index]] = labelConfig
-      ? labelsHashValuesReplace(labelString, labelConfig)
-      : labelString;
-  });
-  finalValue.SHOW_DETAILS_RICH_TEXT = getPlaceDetailsContent(
-    state,
-    `PlaceCash_Detail_${currentCountry}_${currentPage}`
-  );
+  if (isEnabled) {
+    const currentPage = isOrderConfirmation ? 'confirmation' : 'bag';
+    const currentCountry = getCurrentCountry(state);
+    const replaceLabelConfig = replaceLabelUtil({
+      currency: getCurrencySymbol(state),
+      cashAmountOff: getCashAmountOff(state),
+      earnedPlaceCashValue: getEarnedPlaceCashValue(state),
+      placeCashOffer: getPlaceCashOffer(state),
+    });
+
+    const labelKeys = [
+      `lbl_placeCash_${currentCountry}_${currentPage}_title`,
+      `lbl_placeCash_${currentCountry}_${currentPage}_subTitle`,
+      `lbl_placeCash_${currentCountry}_${currentPage}_tnc`,
+      `lbl_placeCash_${currentCountry}_${currentPage}_modalLink`,
+      `lbl_placeCash_${currentCountry}_${currentPage}_imgUrl`,
+      `lbl_placeCash_${currentCountry}_${currentPage}_detailModalTitle`,
+    ];
+    labelKeys.forEach((key, index) => {
+      const labelKeyValue = getLabelValue(state.Labels, key, 'placeCashBanner', 'checkout');
+      const labelString = labelKeyValue === key ? '' : labelKeyValue;
+      const labelConfig = replaceLabelConfig[labels[index]];
+
+      finalValue[labels[index]] = labelConfig
+        ? labelsHashValuesReplace(labelString, labelConfig)
+        : labelString;
+    });
+    finalValue.SHOW_DETAILS_RICH_TEXT = getPlaceDetailsContent(
+      state,
+      `PlaceCash_Detail_${currentCountry}_${currentPage}`
+    );
+  } else {
+    labels.forEach(key => {
+      finalValue[key] = '';
+    });
+  }
   return finalValue;
 };
 

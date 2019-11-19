@@ -6,7 +6,8 @@ export const mapStateToProps = (state, ownProps) => {
   const isEnabled = PlaceCashSelector.getIsPlaceCashEnabled(state);
   const formattedPlaceCashLabels = PlaceCashSelector.getPlaceCashBannerLabels(
     state,
-    ownProps.isOrderConfirmation
+    ownProps.isOrderConfirmation,
+    isEnabled
   );
 
   return {

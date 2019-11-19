@@ -18,22 +18,22 @@ class PlaceCashBanner extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: false,
+      isPlaceCasModalOpen: false,
     };
   }
 
   toggleShowDetailModal = () => {
-    const { modalOpen } = this.state;
+    const { isPlaceCasModalOpen } = this.state;
     this.setState({
-      modalOpen: !modalOpen,
+      isPlaceCasModalOpen: !isPlaceCasModalOpen,
     });
   };
 
   render() {
     const { labels, className, isEnabled } = this.props;
-    const { modalOpen } = this.state;
+    const { isPlaceCasModalOpen } = this.state;
 
-    return !isEnabled ? (
+    return isEnabled ? (
       <div className={className}>
         <div className="place-cash">
           <Row className="place-cash__container">
@@ -102,10 +102,10 @@ class PlaceCashBanner extends React.PureComponent<Props> {
               </div>
               <PlaceCashDetailsModal
                 labels={labels}
-                openState={modalOpen}
+                openState={isPlaceCasModalOpen}
                 onRequestClose={() => {
                   this.setState({
-                    modalOpen: false,
+                    isPlaceCasModalOpen: false,
                   });
                 }}
                 heading={labels.detailModalTitle}
@@ -120,8 +120,12 @@ class PlaceCashBanner extends React.PureComponent<Props> {
 
 PlaceCashBanner.propTypes = {
   labels: PropTypes.shape({}).isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   isEnabled: PropTypes.bool.isRequired,
+};
+
+PlaceCashBanner.defaultProps = {
+  className: '',
 };
 
 export default withStyles(PlaceCashBanner, styles);
