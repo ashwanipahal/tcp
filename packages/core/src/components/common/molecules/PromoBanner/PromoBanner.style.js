@@ -614,6 +614,9 @@ export default css`
     letter-spacing: normal;
     line-height: normal;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
   }
   /*
   * Module M Promo Banner styles
