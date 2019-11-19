@@ -1,7 +1,10 @@
-import { all, call, put, putResolve, takeLatest } from 'redux-saga/effects';
+/* eslint-disable complexity */
+import { all, call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { setPlpProductsDataOnServer } from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.actions';
 import { getAPIConfig } from '@tcp/core/src/utils';
 import { API_CONFIG } from '@tcp/core/src/services/config';
+import { getNavigationData } from '@tcp/core/src/services/abstractors/common/subNavigation';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
 import setUserGroup from '../../services/abstractors/common/setUserGroup';
 import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
@@ -21,11 +24,12 @@ import {
   storeCountriesMap,
   storeCurrenciesMap,
   getSetTcpSegment,
+  setSubNavigationData,
 } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
-import GLOBAL_CONSTANTS from '../constants';
+import GLOBAL_CONSTANTS, { MODULES_CONSTANT } from '../constants';
 import CACHED_KEYS from '../../constants/cache.config';
 import { isMobileApp, getCurrenciesMap, getCountriesMap } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
@@ -45,9 +49,9 @@ function* bootstrap(params) {
       deviceType,
       optimizelyHeadersObject,
       siteConfig,
+      originalUrl,
     },
   } = params;
-
   const cachedData = {};
   let modulesList = modules;
 
@@ -97,11 +101,45 @@ function* bootstrap(params) {
       );
       yield put(loadXappConfigDataOtherBrand(xappConfigOtherBrand));
     }
-
-    const result = yield call(bootstrapAbstractor, pageName, modulesList, cachedData);
+    const state = yield select();
+    const result = yield call(
+      bootstrapAbstractor,
+      pageName,
+      modulesList,
+      cachedData,
+      state,
+      originalUrl,
+      deviceType
+    );
+    if (result.PLP) {
+      const { layout, modules: plpModules, pageName: layoutName, res } = result.PLP;
+      yield put(loadLayoutData(layout, layoutName));
+      yield put(loadModulesData(plpModules));
+      yield put(setPlpProductsDataOnServer(res));
+    }
     if (pageName) {
       yield put(loadLayoutData(result[pageName].items[0].layout, pageName));
+      /**
+       * Fetching the placholder content Ids so that sub navigation call can be made
+       * By fetching sub navigation sub category stored in placeholder module key val.
+       */
+      const placeHolderIdList = Object.keys(result.modules).filter(
+        module => result.modules[module].moduleName === MODULES_CONSTANT.placeholder
+      );
       yield put(loadModulesData(result.modules));
+      const { country, brand } = apiConfig;
+      if (placeHolderIdList.length > 0) {
+        const placeholderResult = yield all(
+          placeHolderIdList.map(listItem =>
+            result.modules[listItem].moduleClassName === MODULES_CONSTANT.subNavigation
+              ? call(getNavigationData, result.modules[listItem].val, brand, country)
+              : null
+          )
+        );
+        yield all(
+          placeholderResult.map(results => put(setSubNavigationData(results.val, results.key)))
+        );
+      }
     }
     yield put(loadLabelsData(result.labels));
     // TODO - GLOBAL-LABEL-CHANGE - STEP 1.4 - Remove loadLabelsData and uncomment this new code

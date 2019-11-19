@@ -17,7 +17,7 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
       className="existing_continue_button"
       colSize={
         Object {
-          "large": 3,
+          "large": 4,
           "medium": 4,
           "small": 12,
         }
@@ -35,6 +35,7 @@ exports[`ExistingPLCCUserView component should renders correctly 1`] = `
         className="existing_continue_button"
         fill="BLUE"
         fontSizeVariation="large"
+        url="/home"
       >
         continue
       </Styled(Anchor)>

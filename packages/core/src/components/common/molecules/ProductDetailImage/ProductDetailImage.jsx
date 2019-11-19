@@ -29,6 +29,7 @@ const NonZoomImage = ({ isMobile, imageUrl, imageName, onOpenSimpleFullSize }) =
           imgData={imgData}
           itemProp="contentUrl"
           isProductImage
+          lazyLoad={false}
         />
       ) : (
         <Anchor aria-label="view full size image" onClick={onOpenSimpleFullSize}>
@@ -38,6 +39,7 @@ const NonZoomImage = ({ isMobile, imageUrl, imageName, onOpenSimpleFullSize }) =
             imgData={imgData}
             itemProp="contentUrl"
             isProductImage
+            lazyLoad={false}
           />
         </Anchor>
       )}

@@ -27,18 +27,23 @@ class AddedToBagActions extends React.PureComponent<Props> {
   }
 
   getVenmoPaymentButton() {
-    const { isInternationalShipping, handleCartCheckout, isEditingItem } = this.props;
-    if (!isInternationalShipping) {
-      return (
-        <PaymentsButtonWrapper>
-          <VenmoPaymentButton
-            className="venmo-container"
-            onSuccess={() => handleCartCheckout(isEditingItem)}
-          />
-        </PaymentsButtonWrapper>
-      );
-    }
-    return null;
+    const { handleCartCheckout, isEditingItem, navigation, closeModal } = this.props;
+    return (
+      <PaymentsButtonWrapper>
+        <VenmoPaymentButton
+          className="venmo-container"
+          onSuccess={() =>
+            handleCartCheckout({
+              isEditingItem,
+              navigation,
+              closeModal,
+              navigationActions: NavigationActions,
+              isVenmoProgress: true,
+            })
+          }
+        />
+      </PaymentsButtonWrapper>
+    );
   }
 
   closeModal = close => {
@@ -112,6 +117,7 @@ class AddedToBagActions extends React.PureComponent<Props> {
                     navigation,
                     closeModal,
                     navigationActions: NavigationActions,
+                    isVenmoProgress: false,
                   });
                 }}
               >
@@ -141,6 +147,7 @@ AddedToBagActions.propTypes = {
   isNoNEmptyBag: PropTypes.number.isRequired,
   fromAddedToBagModal: PropTypes.bool,
   payPalTop: PropTypes.number,
+  hideHeader: PropTypes.func,
 };
 
 AddedToBagActions.defaultProps = {
@@ -148,6 +155,7 @@ AddedToBagActions.defaultProps = {
   closeModal: () => {},
   fromAddedToBagModal: false,
   payPalTop: 0,
+  hideHeader: () => {},
 };
 
 export default AddedToBagActions;

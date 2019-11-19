@@ -11,6 +11,9 @@ const styles = css`
     margin-right: 0;
     margin-top: 25px;
   }
+  .outfit-button-wrapper-desktop {
+    display: none;
+  }
   .button-wrapper {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
@@ -161,8 +164,7 @@ const styles = css`
   }
 
   .size-error {
-    position: absolute;
-    margin-top: -5px;
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
     color: ${props => props.theme.colors.NOTIFICATION.ERROR};
     width: 100%;
     font-size: ${props => props.theme.fonts.fontSize.body.small.secondary}px;
@@ -214,6 +216,7 @@ const styles = css`
       padding-top: 0;
       padding-bottom: 0;
       width: 48px;
+      margin-top: -22px;
     }
     p {
       display: inline-block;
@@ -228,6 +231,10 @@ const styles = css`
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     padding-top: 9px;
     text-transform: uppercase;
+  }
+
+  .pdp-qty + p {
+    margin-top: 7px;
   }
 
   .size-field {
@@ -267,7 +274,7 @@ export const giftCardDesignStyle = css`
 
     /* Image color of item */
     .color-image {
-      border: 0;
+      border-radius: 0;
       height: auto;
       width: 100%;
     }
@@ -275,9 +282,11 @@ export const giftCardDesignStyle = css`
     /* When the input is checked, the image color has black border (selected) */
     .input-radio-icon-checked + .input-radio-title {
       border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+      padding: 2px 2px;
     }
 
     .input-radio-icon-checked + .input-radio-title .color-image {
+      border-radius: 0;
       border: 0;
       height: auto;
       width: 100%;

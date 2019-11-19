@@ -88,7 +88,9 @@ class Drawer extends React.Component {
     if (
       open &&
       this.drawerRef &&
-      !this.drawerRef.contains(e.target) &&
+      (!this.drawerRef.contains(e.target) ||
+        (e.target.closest('.footer-middle') &&
+          !e.target.classList.contains('navigation-footer'))) &&
       typeof close === 'function'
     ) {
       close();

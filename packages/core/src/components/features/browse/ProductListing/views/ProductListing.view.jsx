@@ -33,7 +33,6 @@ import ProductListingFiltersForm from '../molecules/ProductListingFiltersForm';
 import ReadMore from '../molecules/ReadMore/views';
 import SpotlightContainer from '../molecules/Spotlight/container/Spotlight.container';
 import LoadedProductsCount from '../molecules/LoadedProductsCount/views';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const ProductListView = ({
   className,
@@ -56,11 +55,14 @@ const ProductListView = ({
   slpLabels,
   onPickUpOpenClick,
   isFilterBy,
-  currencyExchange,
+  currencyAttributes,
   currency,
   isLoadingMore,
   plpTopPromos,
   asPathVal,
+  isSearchListing,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
   return (
@@ -123,8 +125,13 @@ const ProductListView = ({
               productsBlock={productsBlock}
               labels={labels}
               currency={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isLoadingMore={isLoadingMore}
+              isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               {...otherProps}
             />
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
@@ -143,7 +150,6 @@ const ProductListView = ({
         </Col>
       </Row>
       <QuickViewModal onPickUpOpenClick={onPickUpOpenClick} />
-      <AddedToBagContainer />
     </div>
   );
 };
@@ -170,11 +176,14 @@ ProductListView.propTypes = {
   sortLabels: PropTypes.arrayOf(PropTypes.shape({})),
   slpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   isFilterBy: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   currency: PropTypes.string,
   isLoadingMore: PropTypes.bool,
   plpTopPromos: PropTypes.shape({}),
   asPathVal: PropTypes.string,
+  isSearchListing: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -198,6 +207,9 @@ ProductListView.defaultProps = {
   currency: 'USD',
   plpTopPromos: {},
   asPathVal: '',
+  isSearchListing: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);

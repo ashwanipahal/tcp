@@ -5,7 +5,6 @@ import {
   isPlccUser,
   getUserLoggedInState,
 } from '@tcp/core/src/components/features/account/User/container/User.selectors';
-import BAGPAGE_SELECTORS from '../../BagPage/container/BagPage.selectors';
 import AddedToBagViewPoints from '../views/AddedToBagViewPoints.view';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
 import {
@@ -13,6 +12,7 @@ import {
   getPointsSummary,
 } from '../../AddedToBag/container/AddedToBag.selectors';
 import { getIsInternationalShipping } from '../../../../../reduxStore/selectors/session.selectors';
+import AddedToBagSkeleton from '../../AddedToBag/skeleton/AddedToBagSkeleton.view';
 
 export class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {};
@@ -22,21 +22,25 @@ export class AddedToBagViewPointsContainer extends React.Component {
       pointsSummary,
       labels,
       isPlcc,
-      currencySymbol,
       isInternationalShipping,
       isUserLoggedIn,
       inheritedStyles,
     } = this.props;
     return (
-      <AddedToBagViewPoints
-        labels={labels}
-        pointsSummary={pointsSummary}
-        isPlcc={isPlcc}
-        isUserLoggedIn={isUserLoggedIn}
-        currencySymbol={currencySymbol}
-        isInternationalShipping={isInternationalShipping}
-        inheritedStyles={inheritedStyles}
-      />
+      <>
+        {pointsSummary && pointsSummary.totalItems > 0 ? (
+          <AddedToBagViewPoints
+            labels={labels}
+            pointsSummary={pointsSummary}
+            isPlcc={isPlcc}
+            isUserLoggedIn={isUserLoggedIn}
+            isInternationalShipping={isInternationalShipping}
+            inheritedStyles={inheritedStyles}
+          />
+        ) : (
+          <AddedToBagSkeleton />
+        )}
+      </>
     );
   }
 }
@@ -46,7 +50,6 @@ function mapStateToProps(state) {
     pointsSummary: getPointsSummary(getCartOrderDetails(state), getAddedToBagData(state)),
     isPlcc: isPlccUser(state),
     isUserLoggedIn: getUserLoggedInState(state),
-    currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
     isInternationalShipping: getIsInternationalShipping(state),
   };
 }
@@ -57,7 +60,6 @@ AddedToBagViewPointsContainer.propTypes = {
   isPlcc: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   inheritedStyles: PropTypes.string,
-  currencySymbol: PropTypes.string.isRequired,
   isInternationalShipping: PropTypes.bool,
 };
 

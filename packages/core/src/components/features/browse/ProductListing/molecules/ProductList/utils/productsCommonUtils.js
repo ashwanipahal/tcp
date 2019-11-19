@@ -158,7 +158,7 @@ export function getDefaultSizeForProduct(colorFitsSizesMap) {
 }
 
 const getIsColorOnModelLegible = curentColorEntry =>
-  curentColorEntry && curentColorEntry.miscInfo.hasOnModelAltImages;
+  curentColorEntry && curentColorEntry.miscInfo && curentColorEntry.miscInfo.hasOnModelAltImages;
 
 /**
  * @summary This function will return an array of image paths to display
@@ -300,6 +300,10 @@ export const isBOSSProductOOSQtyMismatched = (colorFitsSizesMap, selectedSKu) =>
 };
 
 export const getProductListToPath = str => {
+  const bundlePath = str.indexOf('/b/') !== -1;
+  if (bundlePath) {
+    return `/b?bid=${str.split('/b/')[1]}`;
+  }
   return `/p?pid=${str.split('/p/')[1]}`;
 };
 

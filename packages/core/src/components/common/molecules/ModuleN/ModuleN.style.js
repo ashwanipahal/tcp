@@ -20,19 +20,17 @@ export default css`
     padding-top: 24px;
     padding-bottom: 24px;
   }
-
   .stacked-button-list-wrapper {
-    margin-top: 16px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 24px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      padding-bottom: ${props => (props.theme.isGymboree ? '32px' : '24px')};
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      padding-bottom: 0px;
     }
   }
 
   .text_normal {
-    margin-top: -14px;
+    margin-top: 0px;
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-top: -14px;
+    }
   }
 
   .stacked-cta-wrapper-class {
@@ -60,6 +58,12 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       display: inline;
       margin-bottom: 0;
+    }
+  }
+
+  .percentage_inline_promo {
+    @media ${props => props.theme.mediaQuery.large} {
+      margin-left: 10px;
     }
   }
 

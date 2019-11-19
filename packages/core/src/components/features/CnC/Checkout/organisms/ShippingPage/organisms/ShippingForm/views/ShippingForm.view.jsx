@@ -17,6 +17,7 @@ import RegisteredShippingForm from '../../RegisteredShippingForm';
 import CheckoutOrderInfo from '../../../../../molecules/CheckoutOrderInfoMobile';
 import { getLabelValue } from '../../../../../../../../../utils';
 import { propTypes, defaultProps } from './ShippingForm.view.utils';
+import { scrollToFirstError } from '../../../../../util/utility';
 import GiftServices from '../../../molecules/GiftServices';
 
 import styles from '../styles/ShippingForm.view.style';
@@ -106,13 +107,17 @@ class ShippingForm extends React.Component {
     this.checkPropsOnMoreUpdation(prevProps);
   };
 
+  closeEditingMode = () => {
+    this.setState({ isEditing: false });
+  };
+
   checkPropsOnMoreUpdation = prevProps => {
     const { dispatch, defaultAddressId } = this.props;
     const { isEditingMode, isEditing } = this.state;
     const { defaultAddressId: prevDefaultAddressId } = prevProps;
     if (prevDefaultAddressId && defaultAddressId && defaultAddressId !== prevDefaultAddressId) {
       dispatch(change(formName, 'onFileAddressKey', defaultAddressId));
-      this.setState({ isEditing: false });
+      this.closeEditingMode();
     }
     if (!isEditing && isEditingMode) {
       this.setState({ isEditingMode: false });
@@ -266,6 +271,7 @@ class ShippingForm extends React.Component {
       showAccordian,
       isMobile,
       pageCategory,
+      isLoadingShippingMethods,
     } = this.props;
     const { isEditing, editShipmentDetailsError } = this.state;
     const nextButtonText =
@@ -312,6 +318,7 @@ class ShippingForm extends React.Component {
               addNewShippingAddress={addNewShippingAddress}
               shippingAddress={shippingAddress}
               labels={labels}
+              afterAddressUpdate={this.closeEditingMode}
               setDefaultAddressId={setDefaultAddressId}
               syncErrorsObject={syncErrorsObject}
               errorMessageRef={this.editShippingErrorRef}
@@ -368,6 +375,7 @@ class ShippingForm extends React.Component {
                       'shipping',
                       'checkout'
                     )}
+                    isLoadingShippingMethods={isLoadingShippingMethods}
                   />
                 </div>
               </FormSection>
@@ -389,6 +397,7 @@ class ShippingForm extends React.Component {
               'shipping',
               'checkout'
             )}
+            isLoadingShippingMethods={isLoadingShippingMethods}
           />
         </form>
       </>
@@ -409,5 +418,6 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: formName, // a unique identifier for this form
   ...validateMethod,
+  onSubmitFail: errors => scrollToFirstError(errors),
 })(withStyles(ShippingForm, styles));
 export { ShippingForm as ShippingFormVanilla };

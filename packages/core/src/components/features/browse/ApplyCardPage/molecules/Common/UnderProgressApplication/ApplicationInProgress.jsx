@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Anchor, BodyCopy, Button, Col, Row } from '../../../../../../common/atoms';
 import ApplicationInProgressWrapper from './style/ApplicationInProgress.style';
 import { getLabelValue } from '../../../../../../../utils';
-import { redirectToBag, redirectToHome } from '../../../utils/utility';
+import { redirectToBag, redirectToHome, getFooterButtonSize } from '../../../utils/utility';
 import { getCartItemCount } from '../../../../../../../utils/cookie.util';
 
 /**
@@ -13,7 +13,13 @@ import { getCartItemCount } from '../../../../../../../utils/cookie.util';
  * @description - showcases application in progress screen.
  */
 
-const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse }) => {
+const ApplicationInProgress = ({
+  isPLCCModalFlow,
+  labels,
+  resetPLCCResponse,
+  isRtpsFlow,
+  togglePLCCModal,
+}) => {
   const bagItems = getCartItemCount();
   return (
     <ApplicationInProgressWrapper isPLCCModalFlow={isPLCCModalFlow}>
@@ -33,7 +39,7 @@ const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse }) =
         <Row fullBleed className="submit_plcc_form">
           <Col
             ignoreGutter={{ small: true }}
-            colSize={{ large: 4, medium: 4, small: 12 }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
             className="underprogress_checkout_button"
           >
             <Button
@@ -42,32 +48,38 @@ const ApplicationInProgress = ({ isPLCCModalFlow, labels, resetPLCCResponse }) =
               type="submit"
               className="underprogress_checkout_button"
               data-locator="submit-plcc-btn"
-              onClick={() => redirectToBag(resetPLCCResponse)}
+              onClick={() =>
+                isRtpsFlow
+                  ? togglePLCCModal({ isPLCCModalOpen: false, status: null })
+                  : redirectToBag(resetPLCCResponse)
+              }
             >
               {getLabelValue(labels, 'lbl_PLCCForm_ctcButton')}
             </Button>
           </Col>
         </Row>
       ) : null}
-      <Row fullBleed className="submit_plcc_form">
-        <Col
-          ignoreGutter={{ small: true }}
-          colSize={{ large: 4, medium: 4, small: 12 }}
-          className="underprogress_continue_button"
-        >
-          <Anchor
-            url={redirectToHome()}
-            fontSizeVariation="large"
-            buttonVariation="fixed-width"
-            anchorVariation="button"
-            fill={!bagItems ? 'BLUE' : 'WHITE'}
-            centered
-            className="existing_continue_button"
+      {!isRtpsFlow && (
+        <Row fullBleed className="submit_plcc_form">
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ large: getFooterButtonSize(isPLCCModalFlow), medium: 4, small: 12 }}
+            className="underprogress_continue_button"
           >
-            {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          </Anchor>
-        </Col>
-      </Row>
+            <Anchor
+              url={redirectToHome()}
+              fontSizeVariation="large"
+              buttonVariation="fixed-width"
+              anchorVariation="button"
+              fill={!bagItems ? 'BLUE' : 'WHITE'}
+              centered
+              className="existing_continue_button"
+            >
+              {getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            </Anchor>
+          </Col>
+        </Row>
+      )}
     </ApplicationInProgressWrapper>
   );
 };
@@ -76,6 +88,8 @@ ApplicationInProgress.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isPLCCModalFlow: PropTypes.bool.isRequired,
   resetPLCCResponse: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
 };
 
 export default ApplicationInProgress;

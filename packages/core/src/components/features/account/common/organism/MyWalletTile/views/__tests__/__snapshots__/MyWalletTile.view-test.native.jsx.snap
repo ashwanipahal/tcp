@@ -41,6 +41,7 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
         dataLocator="accountoverview-myWallettile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
+        justifyContent=""
         locator=""
         margins={null}
         onPress={[Function]}
@@ -99,6 +100,7 @@ exports[`MyWalletTile component should render correctly when coupons are present
         accessibilityText=""
         data-locator="accountoverview-mywallettile-youhavewallettext"
         dataLocator=""
+        fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
         margin={null}
