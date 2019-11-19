@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`checkout header Container should render Added to Bag view section 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<Connect(Styled(CheckoutHeader))
+  brandTabs={Object {}}
+  labels={Object {}}
+/>
 `;
