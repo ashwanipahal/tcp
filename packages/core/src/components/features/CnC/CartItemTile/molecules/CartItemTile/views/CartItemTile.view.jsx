@@ -505,7 +505,7 @@ class CartItemTile extends PureComponent {
   // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol, isBagPageSflSection } = this.props;
+    const { isBagPageSflSection } = this.props;
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
@@ -554,7 +554,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            <PriceCurrency currencySymbol={currencySymbol} price={offerPrice} />
+            <PriceCurrency price={offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -598,7 +598,7 @@ class CartItemTile extends PureComponent {
   };
 
   getProductPriceList = (productDetail, pageView, currencyExchange) => {
-    const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, labels } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     const { salePrice, wasPrice, listPrice, price } = getPrices({
       productDetail,
@@ -627,7 +627,7 @@ class CartItemTile extends PureComponent {
               dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              <PriceCurrency currencySymbol={currencySymbol} price={Number(price)} />
+              <PriceCurrency price={Number(price)} />
             </BodyCopy>
             <BodyCopy
               fontFamily="secondary"
@@ -637,7 +637,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              <PriceCurrency currencySymbol={currencySymbol} price={Number(listPrice)} />
+              <PriceCurrency price={Number(listPrice)} />
             </BodyCopy>
           </Col>
         </>
@@ -666,7 +666,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            <PriceCurrency currencySymbol={currencySymbol} price={Number(salePrice)} />
+            <PriceCurrency price={Number(salePrice)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
@@ -677,7 +677,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              <PriceCurrency currencySymbol={currencySymbol} price={Number(wasPrice)} />
+              <PriceCurrency price={Number(wasPrice)} />
             </BodyCopy>
           )}
         </Col>
@@ -1304,7 +1304,6 @@ CartItemTile.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
   orderId: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
   toggleBossBopisError: PropTypes.shape({

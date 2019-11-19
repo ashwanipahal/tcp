@@ -79,7 +79,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={0}
                     />
                   </ForwardRef>
@@ -138,7 +137,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={0}
                     />
                   </ForwardRef>
@@ -156,7 +154,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 1`] = `
                   </span>
                   <span>
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={0}
                     />
                   </span>
@@ -285,7 +282,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -344,7 +340,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   >
                     -
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -403,7 +398,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   >
                     -
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -460,7 +454,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -518,7 +511,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -577,7 +569,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -636,7 +627,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                       textAlign="right"
                     >
                       <Connect(PriceCurrency)
-                        currencySymbol=""
                         price={1}
                       />
                     </ForwardRef>
@@ -695,7 +685,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     >
                       -
                       <Connect(PriceCurrency)
-                        currencySymbol=""
                         price={1}
                       />
                     </ForwardRef>
@@ -714,7 +703,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                   </span>
                   <span>
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </span>
@@ -783,7 +771,6 @@ exports[`OrderLedger Component OrderLedger should render correctly 2`] = `
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -912,7 +899,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -971,7 +957,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   >
                     -
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -1030,7 +1015,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   >
                     -
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -1088,7 +1072,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -1147,7 +1130,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>
@@ -1206,7 +1188,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                       textAlign="right"
                     >
                       <Connect(PriceCurrency)
-                        currencySymbol=""
                         price={1}
                       />
                     </ForwardRef>
@@ -1265,7 +1246,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     >
                       -
                       <Connect(PriceCurrency)
-                        currencySymbol=""
                         price={1}
                       />
                     </ForwardRef>
@@ -1284,7 +1264,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                   </span>
                   <span>
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </span>
@@ -1353,7 +1332,6 @@ exports[`OrderLedger Component on confirmation page OrderLedger on confirmation 
                     textAlign="right"
                   >
                     <Connect(PriceCurrency)
-                      currencySymbol=""
                       price={1}
                     />
                   </ForwardRef>

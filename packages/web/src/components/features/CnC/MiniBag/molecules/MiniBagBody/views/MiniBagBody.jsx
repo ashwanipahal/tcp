@@ -161,7 +161,6 @@ class MiniBagBody extends React.PureComponent {
       cartItemCount,
       savedforLaterQty,
       subTotal,
-      currencySymbol,
       closeMiniBag,
       onLinkClick,
       isShowSaveForLaterSwitch,
@@ -237,7 +236,7 @@ class MiniBagBody extends React.PureComponent {
             <div className="miniBagFooter">
               <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
                 {`${labels.subTotal}: `}
-                <PriceCurrency currencySymbol={currencySymbol} price={subTotal} />
+                <PriceCurrency price={subTotal} />
               </BodyCopy>
               <AddedToBagActions
                 containerId="paypal-button-container-minibag"
@@ -259,7 +258,8 @@ class MiniBagBody extends React.PureComponent {
               className="subTotalEmpty"
               fontFamily="secondary"
             >
-              {`${labels.subTotal}: ${currencySymbol}0.00`}
+              {`${labels.subTotal}:`}
+              <PriceCurrency price={0.0} />
             </BodyCopy>
           </div>
         )}
@@ -280,7 +280,6 @@ MiniBagBody.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   subTotal: PropTypes.number.isRequired,
   cartItemCount: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   savedforLaterQty: PropTypes.number.isRequired,
   isCartItemSFL: PropTypes.bool.isRequired,
   cartItemSflError: PropTypes.string.isRequired,

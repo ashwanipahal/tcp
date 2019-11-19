@@ -13,7 +13,7 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoyaltyBanner from '../../../../LoyaltyBanner';
 import FreeShippingBanner from '../../../../FreeShippingBanner';
 
-const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTotal, labels) => {
+const createRowForGiftServiceTotal = (className, giftServiceTotal, labels) => {
   return (
     giftServiceTotal > 0 && (
       <Row
@@ -40,7 +40,7 @@ const createRowForGiftServiceTotal = (className, currencySymbol, giftServiceTota
             fontSize="fs16"
             textAlign="right"
           >
-            <PriceCurrency currencySymbol={currencySymbol} price={giftServiceTotal} />
+            <PriceCurrency price={giftServiceTotal} />
           </BodyCopy>
         </Col>
       </Row>
@@ -56,7 +56,7 @@ const renderLoyaltyBanner = pageCategory => {
   );
 };
 
-const renderSavingsTotal = (savingsTotal, className, labels, currencySymbol) => {
+const renderSavingsTotal = (savingsTotal, className, labels) => {
   return savingsTotal ? (
     <Row
       className="promotions-total rowMargin"
@@ -83,22 +83,18 @@ const renderSavingsTotal = (savingsTotal, className, labels, currencySymbol) => 
           textAlign="right"
         >
           -
-          <PriceCurrency currencySymbol={currencySymbol} price={savingsTotal} />
+          <PriceCurrency price={savingsTotal} />
         </BodyCopy>
       </Col>
     </Row>
   ) : null;
 };
 
-const shippingTotalCurrencySymbol = (shippingTotal, currencySymbol, labels) => {
-  return shippingTotal > 0 ? (
-    <PriceCurrency currencySymbol={currencySymbol} price={shippingTotal} />
-  ) : (
-    labels.free
-  );
+const shippingTotalCurrencySymbol = (shippingTotal, labels) => {
+  return shippingTotal > 0 ? <PriceCurrency price={shippingTotal} /> : labels.free;
 };
 
-const orderHasShipping = (currencySymbol, isOrderHasShipping, labels, shippingTotal) => {
+const orderHasShipping = (isOrderHasShipping, labels, shippingTotal) => {
   return (
     isOrderHasShipping && (
       <Row
@@ -125,9 +121,7 @@ const orderHasShipping = (currencySymbol, isOrderHasShipping, labels, shippingTo
             fontSize="fs16"
             textAlign="right"
           >
-            {shippingTotal !== undefined
-              ? shippingTotalCurrencySymbol(shippingTotal, currencySymbol, labels)
-              : '-'}
+            {shippingTotal !== undefined ? shippingTotalCurrencySymbol(shippingTotal, labels) : '-'}
           </BodyCopy>
         </Col>
       </Row>
@@ -145,7 +139,6 @@ const getBody = (
 ) => {
   const {
     itemsCount,
-    currencySymbol,
     subTotal,
     couponsTotal,
     savingsTotal,
@@ -190,7 +183,7 @@ const getBody = (
                   fontSize="fs16"
                   textAlign="right"
                 >
-                  <PriceCurrency currencySymbol={currencySymbol} price={subTotal} />
+                  <PriceCurrency price={subTotal} />
                 </BodyCopy>
               </Col>
             </Row>
@@ -220,12 +213,12 @@ const getBody = (
                     textAlign="right"
                   >
                     -
-                    <PriceCurrency currencySymbol={currencySymbol} price={couponsTotal} />
+                    <PriceCurrency price={couponsTotal} />
                   </BodyCopy>
                 </Col>
               </Row>
             ) : null}
-            {renderSavingsTotal(savingsTotal, className, labels, currencySymbol)}
+            {renderSavingsTotal(savingsTotal, className, labels)}
             {/* {savingsTotal ? (
               <Row
                 className="promotions-total rowMargin"
@@ -252,12 +245,12 @@ const getBody = (
                     textAlign="right"
                   >
                     -
-                    <PriceCurrency currencySymbol={currencySymbol} price={savingsTotal} />
+                    <PriceCurrency price={savingsTotal} />
                   </BodyCopy>
                 </Col>
               </Row>
             ) : null} */}
-            {createRowForGiftServiceTotal(className, currencySymbol, giftServiceTotal, labels)}
+            {createRowForGiftServiceTotal(className, giftServiceTotal, labels)}
             {/* {isOrderHasShipping && (
               <Row
                 className="shipping-total rowMargin"
@@ -287,14 +280,14 @@ const getBody = (
             {/* {shippingTotal !== undefined
                       ? // eslint-disable-next-line no-constant-condition
                         shippingTotal > 0
-                        ? <PriceCurrency currencySymbol={currencySymbol} price={shippingTotal} />
+                        ? <PriceCurrency price={shippingTotal} />
                         : labels.free
                       : '-'}
                   </BodyCopy>
                 </Col>
               </Row>
             )} */}
-            {orderHasShipping(currencySymbol, isOrderHasShipping, labels, shippingTotal)}
+            {orderHasShipping(isOrderHasShipping, labels, shippingTotal)}
             <Row
               className="tax-total rowMargin"
               data-locator={getLocator('order_ledger_estimated_tax_label')}
@@ -320,7 +313,7 @@ const getBody = (
                   fontSize="fs16"
                   textAlign="right"
                 >
-                  <PriceCurrency currencySymbol={currencySymbol} price={taxesTotal} />
+                  <PriceCurrency price={taxesTotal} />
                 </BodyCopy>
               </Col>
             </Row>
@@ -350,7 +343,7 @@ const getBody = (
                       fontSize="fs13"
                       textAlign="right"
                     >
-                      <PriceCurrency currencySymbol={currencySymbol} price={grandTotal} />
+                      <PriceCurrency price={grandTotal} />
                     </BodyCopy>
                   </Col>
                 </Row>
@@ -379,7 +372,7 @@ const getBody = (
                       textAlign="right"
                     >
                       -
-                      <PriceCurrency currencySymbol={currencySymbol} price={giftCardsTotal} />
+                      <PriceCurrency price={giftCardsTotal} />
                     </BodyCopy>
                   </Col>
                 </Row>
@@ -392,7 +385,7 @@ const getBody = (
               <div className="balance-total-columns">
                 <span>{giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}</span>
                 <span>
-                  <PriceCurrency currencySymbol={currencySymbol} price={orderBalanceTotal} />
+                  <PriceCurrency price={orderBalanceTotal} />
                 </span>
               </div>
             </Row>
@@ -433,7 +426,7 @@ const getBody = (
                     fontSize="fs16"
                     textAlign="right"
                   >
-                    <PriceCurrency currencySymbol={currencySymbol} price={totalOrderSavings} />
+                    <PriceCurrency price={totalOrderSavings} />
                   </BodyCopy>
                 </Col>
               </Row>

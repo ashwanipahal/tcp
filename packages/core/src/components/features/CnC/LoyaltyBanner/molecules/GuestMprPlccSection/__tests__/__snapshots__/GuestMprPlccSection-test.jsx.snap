@@ -113,7 +113,6 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           textAlign="left"
         >
           <Connect(PriceCurrency)
-            currencySymbol=""
             price={21}
           />
         </Styled(BodyCopy)>
@@ -169,7 +168,6 @@ exports[`GuestMprPlccSection View Component GuestMprPlccSection should render co
           textAlign="left"
         >
           <Connect(PriceCurrency)
-            currencySymbol=""
             price={33}
           />
         </Styled(BodyCopy)>

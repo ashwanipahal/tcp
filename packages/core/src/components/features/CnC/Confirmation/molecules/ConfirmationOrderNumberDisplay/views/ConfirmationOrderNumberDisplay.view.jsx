@@ -94,7 +94,7 @@ const ConfirmationOrderNumberDisplay = ({ center, isGuest, labels, className }) 
         </ConfirmationItemDisplay>
         {orderTotal && (
           <ConfirmationItemDisplay title={labels.orderTotal} boldFont>
-            <PriceCurrency currencySymbol={labels.currencySign} price={orderTotal} />
+            <PriceCurrency price={orderTotal} />
           </ConfirmationItemDisplay>
         )}
       </div>

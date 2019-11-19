@@ -40,7 +40,6 @@ const AddedToBagViewPoints = ({
   pointsSummary,
   labels,
   isPlcc,
-  currencySymbol,
   isInternationalShipping,
   isUserLoggedIn,
 }) => {
@@ -68,7 +67,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          <PriceCurrency currencySymbol={currencySymbol} price={itemPrice} />
+          <PriceCurrency price={itemPrice} />
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -102,7 +101,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          <PriceCurrency currencySymbol={currencySymbol} price={bagSubTotal} />
+          <PriceCurrency price={bagSubTotal} />
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -156,7 +155,6 @@ AddedToBagViewPoints.propTypes = {
   pointsSummary: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
   isPlcc: PropTypes.bool.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
 };
