@@ -363,14 +363,14 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
     }));
   };
 
-  getSelectedColorData = (colorFitsSizesMap, selectedColor) => {
+  getSelectedColorData = (colorFitsSizesMap, selectedColor = {}) => {
     return (
       colorFitsSizesMap &&
       colorFitsSizesMap.filter(colorItem => {
         const {
           color: { name },
         } = colorItem;
-        return (selectedColor && selectedColor.name) || selectedColor === name;
+        return (selectedColor.name || selectedColor) === name;
       })
     );
   };
