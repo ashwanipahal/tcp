@@ -28,11 +28,7 @@ const BrandTabs = ({ className, data }) => {
               key={logoClass}
             >
               <Image
-                alt={
-                  logoClass === 'header__brand-tab--tcp'
-                    ? 'the-childrens-place-logo'
-                    : 'gymboree-logo'
-                }
+                alt={logoClass === 'header__brand-tab--tcp' ? 'The Childrens Place' : 'Gymboree'}
                 className={logoClass}
                 src={getIconPath(logoClass)}
                 data-locator={getLocator(logoClass)}
