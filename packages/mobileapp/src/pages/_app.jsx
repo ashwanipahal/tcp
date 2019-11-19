@@ -210,8 +210,11 @@ function RenderApp(props) {
     location,
     error,
   };
+  // console.log(context);
+  const { appName } = context.device;
+  const appType = appName === 'Gymboree' ? 'gymboree' : 'tcp';
 
-  return <App context={context} {...props} />;
+  return <App context={context} appType={appType} {...props} />;
 }
 
 export default props => {
