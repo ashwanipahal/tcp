@@ -7,17 +7,28 @@ import { loadLayoutData, loadModulesData, setSubNavigationData } from '../action
 import { getAPIConfig } from '../../utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../services/api.constants';
 
+const getLayoutParams = (page, apiConfig, isClpPage) => {
+  const layoutParams = {
+    page,
+    brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
+    channel: defaultChannel,
+    country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
+  };
+  if (isClpPage) {
+    layoutParams.pageName = page.replace(/-([a-z])/g, g => {
+      return g[1].toUpperCase();
+    });
+  }
+  return layoutParams;
+};
+
 function* fetchPageLayout(action) {
   try {
-    const { payload: page, layoutName } = action;
+    const { payload: page, layoutName, isClpPage } = action;
     const apiConfig = getAPIConfig();
     const { language } = apiConfig;
-    const layoutParams = {
-      page,
-      brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
-      channel: defaultChannel,
-      country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
-    };
+    const layoutParams = getLayoutParams(page, apiConfig, isClpPage);
+
     const layoutData = yield call(layoutAbstractor.getLayoutData, layoutParams);
     const { errorMessage } = layoutData;
     if (!errorMessage) {

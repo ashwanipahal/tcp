@@ -149,10 +149,11 @@ export const setOptimizelyFeaturesList = payload => ({
   type: GLOBAL_CONSTANTS.SET_OPTIMIZELY_FEATURES_LIST,
 });
 
-export const fetchPageLayout = (payload, layoutName) => {
+export const fetchPageLayout = (payload, layoutName, clpPage) => {
   return {
     payload,
     layoutName,
+    isClpPage: clpPage.clpPage,
     type: GLOBAL_CONSTANTS.FETCH_PAGE_LAYOUT,
   };
 };
