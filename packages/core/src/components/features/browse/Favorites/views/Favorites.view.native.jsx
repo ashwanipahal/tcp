@@ -128,10 +128,10 @@ class FavoritesView extends React.PureComponent {
       }
     }
 
-    filteredItemsList = []; // DELETE this LINE
+    // filteredItemsList = []; DELETE this LINE
 
     const recommendationAttributes = {
-      variations: 'moduleO',
+      variation: 'moduleO',
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
       showLoyaltyPromotionMessage: false,
       headerAlignment: 'left',

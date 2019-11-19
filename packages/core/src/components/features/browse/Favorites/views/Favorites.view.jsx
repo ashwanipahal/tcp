@@ -71,8 +71,7 @@ const FavoritesView = props => {
     }
   }
 
-  // DELETE this LINE
-  filteredItemsList = [];
+  // filteredItemsList = []; DELETE this LINE
 
   const productsList = !!filteredItemsList && (
     <>
