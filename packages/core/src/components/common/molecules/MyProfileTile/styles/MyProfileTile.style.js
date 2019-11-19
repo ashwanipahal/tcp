@@ -22,6 +22,7 @@ const styles = css`
   }
   @media ${props => props.theme.mediaQuery.large} {
     width: 80%;
+    max-width: 450px;
   }
 `;
 
