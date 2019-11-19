@@ -22,10 +22,12 @@ class BundleProductItems extends React.PureComponent {
       isLoggedIn,
       addToBagErrorId,
       addToBagError,
+      toastMessage,
     } = this.props;
     const productItem = item.products;
     return (
       <OutfitProduct
+        toastMessage={toastMessage}
         plpLabels={plpLabels}
         outfitProduct={productItem}
         productIndexText={`Product ${index + 1} of ${currentBundle.length}`}
@@ -75,6 +77,7 @@ BundleProductItems.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   addToBagError: PropTypes.string,
   addToBagErrorId: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 BundleProductItems.defaultProps = {

@@ -68,7 +68,6 @@ export const CartItemTileContainer = ({
   isBagPageSflSection,
   startSflItemDelete,
   startSflDataMoveToBag,
-  currencySymbol,
   onQuickViewOpenClick,
   isBossEnabledTCP,
   isBossEnabledGYM,
@@ -119,7 +118,6 @@ export const CartItemTileContainer = ({
     isBagPageSflSection={isBagPageSflSection}
     startSflItemDelete={startSflItemDelete}
     startSflDataMoveToBag={startSflDataMoveToBag}
-    currencySymbol={currencySymbol}
     onQuickViewOpenClick={onQuickViewOpenClick}
     isBossEnabledTCP={isBossEnabledTCP}
     isBossEnabledGYM={isBossEnabledGYM}
@@ -255,7 +253,6 @@ export function mapStateToProps(state) {
     isShowSaveForLater: getSaveForLaterSwitch(state),
     sflMaxCount: parseInt(getSflMaxCount(state), 10),
     isGenricGuest: getPersonalDataState(state),
-    currencySymbol: BAGPAGE_SELECTORS.getCurrentCurrency(state) || '$',
     isBossEnabledTCP: isMobile
       ? isBossEnabledAppTCP
       : getIsBossEnabled(state, CARTPAGE_CONSTANTS.BRANDS.TCP),
@@ -298,7 +295,6 @@ CartItemTileContainer.propTypes = {
   startSflDataMoveToBag: PropTypes.func.isRequired,
   onPickUpOpenClick: PropTypes.func.isRequired,
   orderId: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   setShipToHome: PropTypes.func.isRequired,
   toggleError: PropTypes.shape({}),
   toggleBossBopisError: PropTypes.shape({

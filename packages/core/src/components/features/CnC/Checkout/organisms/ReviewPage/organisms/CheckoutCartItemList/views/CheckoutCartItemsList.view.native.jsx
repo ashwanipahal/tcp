@@ -148,7 +148,7 @@ class CheckoutCartItemsList extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
-                text={`${today}${storeTodayOpenRange}`}
+                text={`${today}: ${storeTodayOpenRange}`}
               />
             )}
             {storeTomorrowOpenRange && (
@@ -156,7 +156,7 @@ class CheckoutCartItemsList extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
-                text={`${tomorrow}${storeTomorrowOpenRange}`}
+                text={`${tomorrow}: ${storeTomorrowOpenRange}`}
               />
             )}
             {storePhoneNumber && (
@@ -164,7 +164,7 @@ class CheckoutCartItemsList extends Component {
                 fontWeight="regular"
                 fontSize="fs12"
                 fontFamily="secondary"
-                text={`${phone}${storePhoneNumber}`}
+                text={`${phone}: ${storePhoneNumber}`}
               />
             )}
           </>

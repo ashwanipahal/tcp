@@ -41,6 +41,7 @@ const StyledApplyNowModal = ({
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
       innerContentClassName="innerContent"
+      shouldCloseOnEsc={!isRtpsFlow}
     >
       <div className="Modal__Content__Wrapper">
         <Row fullBleed className="submit_plcc_form">

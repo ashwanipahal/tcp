@@ -1,4 +1,4 @@
-import getAccountOverviewLabels from '../Wallet.selectors';
+import { getAccountOverviewLabels } from '../Wallet.selectors';
 
 describe('#Wallet Selectors', () => {
   it('#getLabels should return Labels', () => {

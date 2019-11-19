@@ -13,6 +13,7 @@ import CnCTemplate from '../../../../common/organism/CnCTemplate';
 import CONSTANTS from '../../../Checkout.constants';
 import PaymentMethods from '../../../../common/molecules/PaymentMethods';
 import AddressFields from '../../../../../../common/molecules/AddressFields';
+import { getExpirationRequiredFlag } from '../../../util/utility';
 
 /**
  * @class GuestBillingForm
@@ -82,15 +83,6 @@ class GuestBillingForm extends React.Component {
   }
 
   /**
-   * @function getExpirationRequiredFlag
-   * @description checks whether to show expiry dropdown
-   */
-  getExpirationRequiredFlag = () => {
-    const { cardType } = this.props;
-    return !cardType || cardType !== CREDIT_CARD_CONSTANTS.ACCEPTED_CREDIT_CARDS.PLACE_CARD;
-  };
-
-  /**
    * @function render
    * @description render method to be called of component
    */
@@ -125,7 +117,7 @@ class GuestBillingForm extends React.Component {
     if (syncErrorsObj) {
       cvvError = syncErrorsObj.syncError.cvvCode;
     }
-    const isExpirationRequired = this.getExpirationRequiredFlag();
+    const isExpirationRequired = getExpirationRequiredFlag({ cardType });
     const {
       PAYMENT_METHOD_CREDIT_CARD,
       PAYMENT_METHOD_PAY_PAL,

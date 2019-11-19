@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isCanada, getPriceWithCurrency } from '@tcp/core/src/utils';
+import { isCanada } from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -39,7 +40,6 @@ const AddedToBagViewPoints = ({
   pointsSummary,
   labels,
   isPlcc,
-  currencySymbol,
   isInternationalShipping,
   isUserLoggedIn,
 }) => {
@@ -67,7 +67,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {getPriceWithCurrency(currencySymbol, itemPrice)}
+          <PriceCurrency price={itemPrice} />
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -101,7 +101,7 @@ const AddedToBagViewPoints = ({
           className="text-value"
           colSize={{ large: 4, small: 2, medium: 2 }}
         >
-          {getPriceWithCurrency(currencySymbol, bagSubTotal)}
+          <PriceCurrency price={bagSubTotal} />
         </Col>
       </Row>
       {showPoints(userPoints, isInternationalShipping) && (
@@ -155,7 +155,6 @@ AddedToBagViewPoints.propTypes = {
   pointsSummary: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
   isPlcc: PropTypes.bool.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   isInternationalShipping: PropTypes.bool.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
 };
