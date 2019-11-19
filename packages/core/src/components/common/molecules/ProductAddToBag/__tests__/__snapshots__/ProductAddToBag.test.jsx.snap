@@ -84,7 +84,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot 1`
       font-size: ",
                     [Function],
                     "px;
-      color:",
+      color: ",
                     [Function],
                     ";
       border-radius: 6px;
@@ -443,7 +443,7 @@ exports[`ProductAddToBagVanilla should render correctly should match snapshot wi
       font-size: ",
                     [Function],
                     "px;
-      color:",
+      color: ",
                     [Function],
                     ";
       border-radius: 6px;
