@@ -61,6 +61,8 @@ const ProductListView = ({
   plpTopPromos,
   asPathVal,
   isSearchListing,
+  AddToFavoriteErrorMsg,
+  removeAddToFavoritesErrorMsg,
   ...otherProps
 }) => {
   return (
@@ -128,6 +130,8 @@ const ProductListView = ({
               isSearchListing={isSearchListing}
               getProducts={getProducts}
               asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
               {...otherProps}
             />
             {isLoadingMore ? <PLPSkeleton col={20} /> : null}
@@ -178,6 +182,8 @@ ProductListView.propTypes = {
   plpTopPromos: PropTypes.shape({}),
   asPathVal: PropTypes.string,
   isSearchListing: PropTypes.bool,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductListView.defaultProps = {
@@ -202,6 +208,8 @@ ProductListView.defaultProps = {
   plpTopPromos: {},
   asPathVal: '',
   isSearchListing: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
