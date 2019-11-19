@@ -138,12 +138,30 @@ class ShippingForm extends React.Component {
   };
 
   renderEmailSignUp = () => {
-    const { orderHasPickUp, isGuest, isUsSite, labels } = this.props;
+    const { orderHasPickUp, isGuest, isUsSite, labels, emailSignUpFlags } = this.props;
+    const {
+      lbl_shipping_emailSignUpHeader: emailSignUpHeader,
+      lbl_shipping_emailSignUpSubHeader: emailSignUpSubHeader,
+      lbl_shipping_childrenPlaceCheckoutTxt: childrenPlaceCheckoutTxt,
+      lbl_shipping_gymboreePlaceCheckoutTxt: gymboreePlaceCheckoutTxt,
+      lbl_shipping_emailSignUpDisclaimer: emailSignUpDisclaimer,
+    } = labels;
     return (
       !orderHasPickUp &&
       isGuest &&
       !isUsSite && (
-        <EmailSignUpCheckBox labels={labels} fieldName="sendEmailSignup" bottomSeparator />
+        <EmailSignUpCheckBox
+          labels={{
+            emailSignUpHeader,
+            emailSignUpSubHeader,
+            childrenPlaceCheckoutTxt,
+            gymboreePlaceCheckoutTxt,
+            emailSignUpDisclaimer,
+          }}
+          fieldName="emailSignUp"
+          bottomSeparator
+          emailSignUpFlags={emailSignUpFlags}
+        />
       )
     );
   };

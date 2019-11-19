@@ -128,6 +128,7 @@ class PickUpFormPart extends React.Component {
     const { isEditing } = this.state;
     const { firstName, lastName, phoneNumber, emailAddress } = data.pickUpContact;
     const { hasAlternatePickup } = data.pickUpAlternate;
+    const { emailSignUp: emailSignUpTCP, emailSignUpGYM } = data.emailSignUp || {};
     if (!isEditing) {
       const params = {
         pickUpContact: {
@@ -139,6 +140,8 @@ class PickUpFormPart extends React.Component {
             wantsSmsOrderUpdates: data.smsSignUp.sendOrderUpdate,
           },
         },
+        emailSignUpTCP,
+        emailSignUpGYM,
         hasAlternatePickup,
         pickUpAlternate: {
           firstName: hasAlternatePickup ? data.pickUpAlternate.firstName : '',
@@ -213,6 +216,7 @@ class PickUpFormPart extends React.Component {
       pageCategory,
       isBagLoaded,
       checkoutRoutingDone,
+      emailSignUpFlags,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
     if (!checkoutRoutingDone) {
@@ -280,7 +284,11 @@ class PickUpFormPart extends React.Component {
                 </div>
               )}
               {isGuest && !isUsSite && (
-                <EmailSignUpCheckBox labels={pickUpLabels} fieldName="emailSignup" />
+                <EmailSignUpCheckBox
+                  labels={pickUpLabels}
+                  fieldName="emailSignUp"
+                  values={emailSignUpFlags}
+                />
               )}
               <div className="pickUpAlternate-container">
                 <FormSection name="pickUpAlternate">
@@ -351,6 +359,7 @@ PickUpFormPart.propTypes = {
   isVenmoPickupDisplayed: PropTypes.bool,
   ServerErrors: PropTypes.node.isRequired,
   checkoutPageEmptyBagLabels: PropTypes.shape({}).isRequired,
+  emailSignUpFlags: PropTypes.shape({}).isRequired,
 };
 
 PickUpFormPart.defaultProps = {

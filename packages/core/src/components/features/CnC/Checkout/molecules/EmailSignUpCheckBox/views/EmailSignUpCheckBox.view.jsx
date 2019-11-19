@@ -2,15 +2,26 @@ import React from 'react';
 import { FormSection, Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import RichText from '../../../../../../common/atoms/RichText';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import { getLabelValue } from '../../../../../../../utils';
 import withStyles from '../../../../../../common/hoc/withStyles';
 
 import styles from '../styles/EmailSignUpCheckBox.view.style';
 
 class EmailSignUpCheckBox extends React.PureComponent {
   render() {
-    const { labels, className, fieldName } = this.props;
+    const {
+      labels: {
+        emailSignUpHeader,
+        emailSignUpSubHeader,
+        childrenPlaceCheckoutTxt,
+        gymboreePlaceCheckoutTxt,
+        emailSignUpDisclaimer,
+      },
+      className,
+      fieldName,
+      emailSignUpFlags: { emailSignUpTCP, emailSignUpGYM } = {},
+    } = this.props;
     return (
       <FormSection name="emailSignUp">
         <div className={className}>
@@ -20,7 +31,7 @@ class EmailSignUpCheckBox extends React.PureComponent {
             fontFamily="secondary"
             fontWeight="bold"
           >
-            {'SIGN UP FOR EMAILS*'}
+            {emailSignUpHeader}
           </BodyCopy>
           <BodyCopy
             dataLocator="email-signUp-subHeading"
@@ -29,7 +40,7 @@ class EmailSignUpCheckBox extends React.PureComponent {
             className="email-signUp-subHeading"
             fontWeight="regular"
           >
-            {'Stay updated on special promos & new arrivals.'}
+            {emailSignUpSubHeader}
           </BodyCopy>
           <div className="email-checkbox-container">
             <div className="email-checkbox-list">
@@ -37,6 +48,7 @@ class EmailSignUpCheckBox extends React.PureComponent {
                 dataLocator="signUp-checkbox-field"
                 name={fieldName}
                 component={InputCheckbox}
+                checked={emailSignUpTCP}
                 className="email-signup-tcp"
               >
                 <BodyCopy
@@ -45,12 +57,13 @@ class EmailSignUpCheckBox extends React.PureComponent {
                   fontFamily="secondary"
                   fontWeight="regular"
                 >
-                  {'The Children’s Place'}
+                  {childrenPlaceCheckoutTxt}
                 </BodyCopy>
               </Field>
               <Field
                 dataLocator="signUp-checkbox-field"
-                name={`${fieldName}-gym`}
+                name={`${fieldName}GYM`}
+                checked={emailSignUpGYM}
                 component={InputCheckbox}
                 className="email-signup-gym"
               >
@@ -60,19 +73,18 @@ class EmailSignUpCheckBox extends React.PureComponent {
                   fontFamily="secondary"
                   fontWeight="regular"
                 >
-                  {'Gymboree'}
+                  {gymboreePlaceCheckoutTxt}
                 </BodyCopy>
               </Field>
             </div>
             <div className="email-signup-text">
-              <BodyCopy
+              <RichText
                 fontSize="fs10"
                 fontFamily="secondary"
                 fontWeight="regular"
                 className="email-signup-disclaimer_txt"
-              >
-                {getLabelValue(labels, 'lbl_pickup_emailSignupSubSubHeading', 'pickup', 'checkout')}
-              </BodyCopy>
+                richTextHtml={emailSignUpDisclaimer}
+              />
             </div>
           </div>
         </div>
@@ -83,6 +95,7 @@ class EmailSignUpCheckBox extends React.PureComponent {
 
 EmailSignUpCheckBox.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  emailSignUpFlags: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
   fieldName: PropTypes.string.isRequired,
 };

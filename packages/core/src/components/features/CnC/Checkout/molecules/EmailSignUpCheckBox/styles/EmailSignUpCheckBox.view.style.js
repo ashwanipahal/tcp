@@ -39,6 +39,11 @@ const styles = css`
       max-width: 50%;
     }
   }
+
+  .email-signup-disclaimer_txt {
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+  }
 `;
 
 export default styles;

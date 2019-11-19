@@ -20,13 +20,14 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
       method,
       smsInfo,
       shipTo,
+      emailSignUp,
     } = formData;
     let {
       shipTo: { emailAddress },
     } = formData;
     const isCanadaUser = yield select(isCanada);
     const isGuestUser = yield select(isGuest);
-    const isEmailSignUpAllowed = !(!isCanadaUser && isGuestUser);
+    const isEmailSignUpAllowed = isCanadaUser && isGuestUser;
     const recalcFlag = false;
     if (!emailAddress || !isGuestUser) {
       // on registered user entering a new address the email field is not visible -> emailAddress = null
@@ -51,6 +52,7 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
         isEmailSignUpAllowed,
         emailAddress,
         isGuestUser,
+        emailSignUp,
       });
     }
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);

@@ -919,6 +919,11 @@ const getShippingSectionLabels = createSelector(
       'lbl_review_sectionShippingMethodTitle',
       'lbl_review_sectionShippingGiftServiceTitle',
       'lbl_review_sectionShippingGiftServiceDefault',
+      'lbl_shipping_emailSignUpHeader',
+      'lbl_shipping_emailSignUpSubHeader',
+      'lbl_shipping_childrenPlaceCheckoutTxt',
+      'lbl_shipping_emailSignUpDisclaimer',
+      'lbl_shipping_gymboreePlaceCheckoutTxt',
     ];
     labelKeys.forEach(key => {
       labels[key] = getLabelValue(reviewLabels, key);
