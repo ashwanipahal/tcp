@@ -57,6 +57,8 @@ const ProductList = props => {
     isSearchListing,
     getProducts,
     asPathVal,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
   let gridIndex = 0;
 
@@ -123,6 +125,8 @@ const ProductList = props => {
               isSearchListing={isSearchListing}
               getProducts={getProducts}
               asPathVal={asPathVal}
+              AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+              removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             />
           </div>
         );
@@ -170,6 +174,8 @@ ProductList.propTypes = {
   isSearchListing: PropTypes.bool,
   getProducts: PropTypes.func,
   asPathVal: PropTypes.string,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 ProductList.defaultProps = {
@@ -201,6 +207,8 @@ ProductList.defaultProps = {
   isSearchListing: false,
   getProducts: () => {},
   asPathVal: '',
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default withStyles(ProductList, ProductListStyle);

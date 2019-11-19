@@ -196,7 +196,9 @@ const styles = css`
   }
 
   .product-image-container {
-    height: 320px;
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 320px;
+    }
     position: relative;
   }
 
