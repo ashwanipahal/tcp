@@ -7,13 +7,15 @@ import { LAZYLOAD_HOST_NAME, getLoading } from '@tcp/core/src/utils';
 import ImageCarousel from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ImageCarousel';
 import ProductSummary from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductSummary';
 import ProductDetailDescription from '@tcp/core/src/components/features/browse/ProductDetail/molecules/ProductDescription/views/ProductDescription.view.native';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
 import withStyles from '../../../../common/hoc/withStyles.native';
-import PageContainer from '../styles/BundleProduct.style.native';
+import { PageContainer, RecommendationWrapper } from '../styles/BundleProduct.style.native';
 import {
   getImagesToDisplay,
   getMapSliceForColorProductId,
 } from '../../ProductListing/molecules/ProductList/utils/productsCommonUtils';
 import BundleProductItems from '../molecules/BundleProductItems';
+import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 
 class ProductBundle extends React.PureComponent {
   currentColorEntry;
@@ -48,6 +50,9 @@ class ProductBundle extends React.PureComponent {
       isLoggedIn,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
+      addToBagErrorId,
+      addToBagError,
+      toastMessage,
     } = this.props;
     if (currentProduct && JSON.stringify(currentProduct) !== '{}') {
       const { colorFitsSizesMap } = currentProduct;
@@ -64,6 +69,13 @@ class ProductBundle extends React.PureComponent {
           isFullSet: true,
         });
       }
+      const recommendationAttributes = {
+        variation: 'moduleO',
+        navigation,
+        page: Constants.RECOMMENDATIONS_PAGES_MAPPING.COLLECTION,
+        partNumber: itemPartNumber,
+        isHeaderAccordion: true,
+      };
       return (
         <ScrollView>
           <PageContainer>
@@ -102,7 +114,19 @@ class ProductBundle extends React.PureComponent {
               addToBagEcom={addToBagEcom}
               currentState={currentState}
               isLoggedIn={isLoggedIn}
+              addToBagErrorId={addToBagErrorId}
+              addToBagError={addToBagError}
+              toastMessage={toastMessage}
             />
+            <RecommendationWrapper>
+              <Recommendations {...recommendationAttributes} />
+              <Recommendations
+                isRecentlyViewed
+                {...recommendationAttributes}
+                headerLabel={pdpLabels.recentlyViewed}
+                portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+              />
+            </RecommendationWrapper>
           </PageContainer>
         </ScrollView>
       );
@@ -128,6 +152,9 @@ ProductBundle.propTypes = {
   isLoggedIn: PropTypes.bool,
   AddToFavoriteErrorMsg: PropTypes.string.isRequired,
   removeAddToFavoritesErrorMsg: PropTypes.func.isRequired,
+  addToBagErrorId: PropTypes.string,
+  addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 ProductBundle.defaultProps = {
@@ -138,6 +165,8 @@ ProductBundle.defaultProps = {
   longDescription: '',
   pdpLabels: {},
   isLoggedIn: false,
+  addToBagErrorId: '',
+  addToBagError: '',
 };
 
 export default withStyles(ProductBundle);

@@ -18,7 +18,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
   initialLoad = true;
 
   componentDidMount() {
-    const { router, initCheckout } = this.props;
+    const { router, initCheckout, markBagPageRoutingDone } = this.props;
+    markBagPageRoutingDone();
     const {
       isRegisteredUserCallDone,
       checkoutServerError,
@@ -27,7 +28,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
     } = this.props;
     /* istanbul ignore else */
     if (isRegisteredUserCallDone) {
-      initCheckout(router, getPayPalFlag(navigation));
+      initCheckout(router, getPayPalFlag(navigation), navigation);
     }
     callNeedHelpContent(this.props);
     if (checkoutServerError) {
@@ -44,7 +45,7 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       isRegisteredUserCallDone &&
       !isRTPSFlow
     ) {
-      initCheckout(router, getPayPalFlag(navigation));
+      initCheckout(router, getPayPalFlag(navigation), navigation);
     }
   }
 
@@ -157,6 +158,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
       shippingMethod,
       pickUpAlternatePerson,
       isHasPickUpAlternatePerson,
+      isVenmoPickupBannerDisplayed,
+      isVenmoShippingBannerDisplayed,
       isPayPalWebViewEnable,
       setClickAnalyticsDataCheckout,
       updateCheckoutPageData,
@@ -240,6 +243,8 @@ export class CheckoutContainer extends React.PureComponent<Props> {
         isHasPickUpAlternatePerson={isHasPickUpAlternatePerson}
         pickUpContactPerson={pickUpContactPerson}
         pickUpContactAlternate={pickUpContactAlternate}
+        isVenmoPickupBannerDisplayed={isVenmoPickupBannerDisplayed}
+        isVenmoShippingBannerDisplayed={isVenmoShippingBannerDisplayed}
         toastMessage={toastMessage}
         clearCheckoutServerError={clearCheckoutServerError}
         toggleCountrySelector={toggleCountrySelector}

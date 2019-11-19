@@ -73,8 +73,9 @@ export const BackContainer = styled.View`
 export const CartContainer = styled.View`
   align-items: flex-end;
   align-self: flex-end;
-  flex-basis: 100%;
+  flex-basis: 85%;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-left: 60px;
 `;
 
 export const StoreContainer = styled.TouchableOpacity`
@@ -173,10 +174,6 @@ export const BrandIconSection = styled.View`
   width: 100%;
   border-bottom-color: ${props => props.theme.colorPalette.gray[500]};
   border-bottom-width: 1;
-  height: 54px;
-`;
-
-export const Header = styled.View`
   height: 54px;
 `;
 

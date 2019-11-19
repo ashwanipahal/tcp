@@ -6,11 +6,11 @@ import {
 } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.actions';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
 import { getRtpsPreScreenData } from '@tcp/core/src/components/features/browse/ApplyCardPage/container/ApplyCard.selectors';
+import { isGymboree } from '@tcp/core/src/utils/utils';
 import logger from '../../../../../utils/loggerInstance';
 import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import {
   setShippingMethodAndAddressId,
-  briteVerifyStatusExtraction,
   getVenmoToken,
   addPickupPerson,
   updateRTPSData,
@@ -45,6 +45,7 @@ import {
 } from '../../../../../services/abstractors/CnC/Checkout';
 import { isMobileApp } from '../../../../../utils';
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
+import briteVerifyStatusExtraction from '../../../../../services/abstractors/common/briteVerifyStatusExtraction';
 
 export const pickUpRouting = ({
   getIsShippingRequired,
@@ -200,7 +201,7 @@ export function* routeToPickupPage(recalc) {
   yield call(utility.routeToPage, CHECKOUT_ROUTES.pickupPage, { recalc });
 }
 
-export function* addAndSetGiftWrappingOptions(payload) {
+export function* addAndSetGiftWrappingOptions(payload, hasSetGiftOptions) {
   const errorMappings = yield select(BagPageSelectors.getErrorMapping);
   if (payload.hasGiftWrapping) {
     try {
@@ -211,7 +212,7 @@ export function* addAndSetGiftWrappingOptions(payload) {
     } catch (err) {
       // throw getSubmissionError(store, 'submitShippingSection', err);
     }
-  } else {
+  } else if (hasSetGiftOptions) {
     try {
       const res = yield call(removeGiftWrappingOption, payload);
       if (res) {
@@ -224,12 +225,18 @@ export function* addAndSetGiftWrappingOptions(payload) {
 }
 
 export function* subscribeEmailAddress(emailObj, status, field1) {
+  const { payload } = emailObj;
+  const brandGYM = !!(isGymboree() || payload.isEmailOptInSecondBrand);
+  const brandTCP = !!(!isGymboree() || payload.isEmailOptInSecondBrand);
+
   try {
     const payloadObject = {
-      emailaddr: emailObj.payload,
+      emailaddr: payload.signup,
       URL: 'email-confirmation',
       response: `${status}:::false:false`,
       registrationType: constants.EMAIL_REGISTRATION_TYPE_CONSTANT,
+      brandTCP,
+      brandGYM,
     };
 
     if (field1) {
@@ -352,7 +359,7 @@ export function* redirectToBilling() {
 }
 
 function* updateUserRTPSData(payload) {
-  const { prescreen, isExpressCheckoutEnabled } = payload;
+  const { prescreen, isExpressCheckoutEnabled, navigation } = payload;
   try {
     const res = yield updateRTPSData(prescreen, isExpressCheckoutEnabled);
     yield put(setPlccEligible(res.plccEligible));
@@ -360,6 +367,9 @@ function* updateUserRTPSData(payload) {
     if (res.plccEligible) {
       // offer not yet shown, show it
       yield put(CHECKOUT_ACTIONS.setIsRTPSFlow(true));
+      if (isMobileApp()) {
+        navigation.navigate('ApplyNow');
+      }
       yield put(toggleApplyNowModal({ isModalOpen: true }));
     }
   } catch (e) {
@@ -367,16 +377,31 @@ function* updateUserRTPSData(payload) {
   }
 }
 
-export function* callUpdateRTPS(pageName, fromExpress = false) {
+export function* callUpdateRTPS(pageName, navigation, isPaypalPostBack) {
   const { BILLING, REVIEW } = constants.CHECKOUT_STAGES;
   const showRTPSOnBilling = yield select(selectors.getShowRTPSOnBilling);
   const showRTPSOnReview = yield select(selectors.getshowRTPSOnReview);
+  const isExpressCheckoutEnabled = yield select(isExpressCheckout);
   if (pageName === BILLING && showRTPSOnBilling) {
-    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: false });
-  } else if (showRTPSOnReview && fromExpress && pageName === REVIEW) {
-    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled: true });
+    yield call(updateUserRTPSData, {
+      prescreen: true,
+      isExpressCheckoutEnabled: false,
+      navigation,
+    });
+  } else if (
+    showRTPSOnReview &&
+    (isPaypalPostBack || isExpressCheckoutEnabled) &&
+    pageName === REVIEW
+  ) {
+    yield call(updateUserRTPSData, { prescreen: true, isExpressCheckoutEnabled, navigation });
   }
 }
+
+export const makeUpdateRTPSCall = (pageName, isPaypalPostBack, isExpressCheckoutEnabled) => {
+  const { BILLING } = constants.CHECKOUT_STAGES;
+  return pageName === BILLING || (isPaypalPostBack && !isExpressCheckoutEnabled);
+};
+
 export function* handleServerSideErrorAPI(e, componentName = constants.PAGE) {
   const errorsMapping = yield select(BagPageSelectors.getErrorMapping);
   const billingError = getServerErrorMessage(e, errorsMapping);
@@ -426,4 +451,13 @@ export function* handleCheckoutInitRouting({ pageName, ...otherProps }, appRouti
     yield call(getRouteToCheckoutStage, { pageName, ...otherProps });
   }
   return pageName;
+}
+
+export function shouldInvokeReviewCartCall(
+  isExpressCheckoutEnabled,
+  { initialLoad, isPaypalPostBack, pageName, appRouting: isPageRefreshRouting }
+) {
+  const { REVIEW } = constants.CHECKOUT_STAGES;
+  const isExpressCheckoutCase = isExpressCheckoutEnabled && !isPaypalPostBack;
+  return pageName === REVIEW && !isPageRefreshRouting && (!isExpressCheckoutCase || !initialLoad);
 }

@@ -1,13 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Wallet should render correctly 1`] = `
-<View
-  style={
-    Object {
-      "height": 1334,
-    }
-  }
->
+<Fragment>
   <ScrollViewMock
     keyboardShouldPersistTaps="handled"
     showsVerticalScrollIndicator={false}
@@ -22,51 +16,7 @@ exports[`Wallet should render correctly 1`] = `
         }
         navigation={[Function]}
       />
-      <FooterLinks
-        footerLinks={
-          Array [
-            Object {
-              "leafLink": Object {
-                "external": 0,
-                "target": "",
-                "text": "APPLY TODAY TO SAVE 30%",
-                "title": "plcc",
-                "url": "/plcc",
-              },
-              "subSections": null,
-            },
-            Object {
-              "leafLink": Object {
-                "external": 0,
-                "target": "",
-                "text": "Manage Credit Account",
-                "title": "creditAccount",
-                "url": "/credit-account",
-              },
-              "subSections": null,
-            },
-            Object {
-              "leafLink": Object {
-                "external": 0,
-                "target": "",
-                "text": "Purchase Gift Cards",
-                "title": "giftCard",
-                "url": "/gift-card",
-              },
-              "subSections": null,
-            },
-          ]
-        }
-        labels={
-          Object {
-            "common": Object {},
-            "myPlaceRewards": Object {},
-          }
-        }
-        navigation={[Function]}
-        showDivider={false}
-      />
     </Styled(View)>
   </ScrollViewMock>
-</View>
+</Fragment>
 `;

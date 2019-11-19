@@ -6,8 +6,12 @@ import { closeOverlayModal } from '../../OverlayModal/container/OverlayModal.act
 import { routerPush, isMobileApp, scrollPage } from '../../../../../utils';
 import { navigateXHRAction } from '../../NavigateXHR/container/NavigateXHR.action';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
-import { resetWalletAppState } from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
+import {
+  resetWalletAppState,
+  clearCouponTTL,
+} from '../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import { setFavStoreToLocalStorage } from '../../../storeLocator/StoreLanding/container/utils/userFavStore';
+import { setCheckoutModalMountedState } from '../../LoginPage/container/LoginPage.actions';
 
 export function* logoutSaga() {
   try {
@@ -18,11 +22,19 @@ export function* logoutSaga() {
         yield put(resetWalletAppState());
       }
       yield put(resetUserInfo());
-      yield put(navigateXHRAction());
+      yield put(
+        navigateXHRAction({
+          headers: {
+            actionTaken: 'logout',
+          },
+        })
+      );
       yield put(BAG_PAGE_ACTIONS.getOrderDetails());
+      yield put(clearCouponTTL());
       if (!isMobileApp()) {
         setFavStoreToLocalStorage(null);
         yield put(closeOverlayModal());
+        yield put(setCheckoutModalMountedState({ state: false }));
         if (
           window.location.href.includes('account') ||
           window.location.href.includes('checkout/confirmation')

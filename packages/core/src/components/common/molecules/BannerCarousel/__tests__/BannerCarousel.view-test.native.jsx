@@ -15,6 +15,8 @@ describe('BannerCarouselVanilla component', () => {
     itemPadding: null,
     itemBackgroundColor: null,
     customRenderer: null,
+    listLeftMargin: 8,
+    listRightMargin: 30,
   };
 
   beforeEach(() => {

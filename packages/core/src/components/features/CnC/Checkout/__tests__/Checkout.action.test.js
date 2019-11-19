@@ -1,5 +1,4 @@
 import CHECKOUT_ACTIONS, {
-  initCheckoutAction,
   submitPickupSection,
   checkoutSetCartData,
   getSetGiftWrapOptionsActn,
@@ -42,7 +41,7 @@ import { resetCheckoutReducer, setServerErrorCheckout } from '../container/Check
 
 describe('#chekcoutActions', () => {
   it('initCheckoutAction', () => {
-    expect(initCheckoutAction()).toEqual({ type: 'INIT_CHECKOUT' });
+    expect(CHECKOUT_ACTIONS.initCheckoutAction()).toEqual({ type: 'INIT_CHECKOUT' });
   });
   it('submitPickupSection', () => {
     expect(submitPickupSection()).toEqual({

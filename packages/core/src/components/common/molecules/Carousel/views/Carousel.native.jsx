@@ -7,6 +7,8 @@ import { getLocator } from '../../../../../utils';
 
 import { Image } from '../../../atoms';
 import config from '../Carousel.config.native';
+import CustomIcon from '../../../atoms/Icon';
+import { ICON_NAME } from '../../../atoms/Icon/Icon.constants';
 
 import {
   ControlsWrapper,
@@ -79,8 +81,9 @@ const { playIconHeight, playIconWidth } = { ...config.CAROUSEL_APP_CONFIG };
 class SnapCarousel extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
+    const { autoplay } = props;
     this.state = {
-      autoplay: props.autoplay,
+      autoplay,
       activeSlide: 0,
     };
     this.getPlayButton = this.getPlayButton.bind(this);
@@ -275,9 +278,32 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     return itemWidth || width;
   };
 
-  updateRef(ref, name) {
-    this[ref] = name;
-  }
+  /**
+   * @function This function render custom icons
+   * also update component state.
+   */
+
+  renderIcon = iconName => {
+    return <CustomIcon name={iconName} size="fs19" color="gray.900" />;
+  };
+
+  /**
+   * @function This function check which icon need to be draw
+   */
+  getIcon = (useLeftArrowIcon, useRightArrowIcon, imageSource) => {
+    if (useLeftArrowIcon) {
+      return this.renderIcon(ICON_NAME.chevronLeft);
+    }
+    if (useRightArrowIcon) {
+      return this.renderIcon(ICON_NAME.chevronRight);
+    }
+
+    if (imageSource) {
+      return <Icon source={imageSource} />;
+    }
+
+    return null;
+  };
 
   /**
    * @function play function enable autoplay for carousel
@@ -306,6 +332,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     this.setState({ autoplay: !autoplay });
   }
 
+  updateRef(ref, name) {
+    this[ref] = name;
+  }
+
   render() {
     const {
       carouselConfig,
@@ -327,6 +357,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       activeSlideAlignment,
       iconBottomMargin,
       inactiveSlideOpacity,
+      isUseLeftArrowIcon,
+      isUseRightArrowIcon,
     } = this.props;
 
     if (!data) {
@@ -353,7 +385,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               testID={getLocator('global_promobanner_right_arrow')}
               onPress={() => this.manageSlide('next')}
             >
-              <Icon source={iconTypeNext} />
+              {this.getIcon(isUseLeftArrowIcon, false, iconTypeNext)}
             </TouchableView>
             <Carousel
               data={data}
@@ -371,6 +403,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               loop={loop}
               inactiveSlideOpacity={inactiveSlideOpacity}
               {...settings}
+              activeSlideAlignment={activeSlideAlignment}
             />
             <TouchableView
               accessibilityRole="button"
@@ -378,7 +411,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               testID={getLocator('global_promobanner_left_arrowRight')}
               onPress={() => this.manageSlide('prev')}
             >
-              <Icon source={iconTypePre} />
+              {this.getIcon(false, isUseRightArrowIcon, iconTypePre)}
             </TouchableView>
           </Container>
           {data.length > 1 && showDots ? this.getPagination() : null}
@@ -450,6 +483,8 @@ SnapCarousel.defaultProps = {
   activeSlideAlignment: 'center',
   iconBottomMargin: null,
   inactiveSlideOpacity: 0.7,
+  isUseLeftArrowIcon: false,
+  isUseRightArrowIcon: false,
 };
 
 SnapCarousel.propTypes = {
@@ -479,6 +514,8 @@ SnapCarousel.propTypes = {
   itemWidth: PropTypes.number,
   activeSlideAlignment: PropTypes.string,
   inactiveSlideOpacity: PropTypes.number,
+  isUseLeftArrowIcon: PropTypes.bool,
+  isUseRightArrowIcon: PropTypes.bool,
 };
 
 export default withTheme(SnapCarousel);
