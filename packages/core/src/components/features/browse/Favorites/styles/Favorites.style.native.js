@@ -20,4 +20,30 @@ const RowContainer = styled.View`
   flex-direction: row;
   ${getAdditionalStyle}
 `;
-export { PageContainer, BrandFilterContainer, RowContainer };
+
+const DropDownContainer = styled.View`
+  margin-top: 12px;
+`;
+
+const ShareDropDownContainer = styled.View`
+  align-self: flex-end;
+`;
+
+const ListHeaderContainer = styled.View`
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
+const ListFooterContainer = styled.View`
+  padding: 12px;
+  background-color: ${props => props.theme.colors.WHITE};
+`;
+
+export {
+  PageContainer,
+  BrandFilterContainer,
+  RowContainer,
+  DropDownContainer,
+  ShareDropDownContainer,
+  ListHeaderContainer,
+  ListFooterContainer,
+};

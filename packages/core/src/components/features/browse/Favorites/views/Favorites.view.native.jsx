@@ -9,10 +9,33 @@ import {
   PageContainer,
   BrandFilterContainer,
   RowContainer,
-} from '../styles/ Favorites.style.native';
+  DropDownContainer,
+  ShareDropDownContainer,
+  ListHeaderContainer,
+  ListFooterContainer,
+} from '../styles/Favorites.style.native';
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
+import SelectWishListDropdown from '../molecules/SelectWishListDropdown/SelectWishListDropdown.native';
+import { Button } from '../../../../common/atoms';
 
+const shareOptions = [
+  {
+    id: 'share',
+    displayName: 'Share',
+    value: 'share',
+  },
+  {
+    id: 'email',
+    displayName: 'Email',
+    value: 'email',
+  },
+  {
+    id: 'copyLink',
+    displayName: 'Copy Link',
+    value: 'copyLink',
+  },
+];
 class FavoritesView extends React.PureComponent {
   brandOptions;
   // eslint-disable-next-line
@@ -33,6 +56,10 @@ class FavoritesView extends React.PureComponent {
         checked: gymSelected,
       },
     ];
+    this.state = {
+      selectedWishlist: '',
+      selectedShareOption: 'share',
+    };
   }
 
   onSelectBrandType = (branchId, isChecked) => {
@@ -66,17 +93,19 @@ class FavoritesView extends React.PureComponent {
             execOnChangeByDefault={false}
             rightText={this.brandOptions[0].brandLabel}
             isChecked={tcpSelected}
+            fontSize="fs14"
             input={{
               value: this.brandOptions[0].checked,
               onChange: isChecked => this.onSelectBrandType(this.brandOptions[0].name, isChecked),
             }}
           />
           <InputCheckbox
-            margins="0 0 0 24px"
+            margins="0 0 0 19px"
             dataLocator={this.brandOptions[1].dataLocator}
             execOnChangeByDefault={false}
             rightText={this.brandOptions[1].brandLabel}
             isChecked={gymSelected}
+            fontSize="fs14"
             input={{
               value: this.brandOptions[1].checked,
               onChange: isChecked => this.onSelectBrandType(this.brandOptions[1].name, isChecked),
@@ -89,9 +118,49 @@ class FavoritesView extends React.PureComponent {
 
   handleEditList = () => {};
 
+  handleWishlistClick = value => {
+    const { getActiveWishlist } = this.props;
+    getActiveWishlist(value);
+  };
+
+  handleShareClick = () => {};
+
+  renderHeader = () => {
+    const { labels } = this.props;
+    return (
+      <ListHeaderContainer>
+        <BodyCopy
+          margin="12px 0 0 32px"
+          dataLocator="fav_lbl_myFavorites"
+          mobileFontFamily="primary"
+          fontSize="fs14"
+          fontWeight="regular"
+          color="gray.900"
+          text={getLabelValue(labels, 'lbl_fav_myFavorites')}
+        />
+      </ListHeaderContainer>
+    );
+  };
+
+  // eslint-disable-next-line sonarjs/no-identical-functions
+  renderFooter = () => {
+    const { labels } = this.props;
+    return (
+      <ListFooterContainer>
+        <Button
+          buttonVariation="fixed-width"
+          onPress={this.createWishlist}
+          fill="BLACK"
+          text={getLabelValue(labels, 'lbl_fav_createNewList')}
+        />
+      </ListFooterContainer>
+    );
+  };
+
+  createWishlist = () => {};
+
   render() {
     const {
-      activeDisplayName,
       activeWishListProducts,
       navigation,
       currencySymbol,
@@ -108,7 +177,10 @@ class FavoritesView extends React.PureComponent {
       tcpSelected,
       isDataLoading,
       labelsPlpTiles,
+      wishlistsSummaries,
+      defaultWishList,
     } = this.props;
+    const { selectedWishlist, selectedShareOption } = this.state;
     if (isDataLoading) return getLoading();
     const filtersArray = activeWishListProducts
       ? getNonEmptyFiltersList(activeWishListProducts, labels)
@@ -124,6 +196,19 @@ class FavoritesView extends React.PureComponent {
       }
     }
 
+    const dropDownStyle = {
+      height: 49,
+      border: 1,
+    };
+    const itemStyle = {
+      height: 49,
+      color: 'gray.800',
+    };
+    const arrowImageStyle = {
+      position: 'absolute',
+      right: 0,
+    };
+
     return (
       <PageContainer>
         <BodyCopy
@@ -136,30 +221,62 @@ class FavoritesView extends React.PureComponent {
           text={getLabelValue(labels, 'lbl_fav_myFavorites')}
         />
         <LineComp borderWidth="2" marginTop="12" borderColor="black" />
-        <BodyCopy
-          margin="32px 0 0 0"
-          dataLocator="pdp_write_review_icon"
-          mobileFontFamily="secondary"
-          fontSize="fs24"
-          fontWeight="regular"
-          color="gray.900"
-          text={activeDisplayName}
-          textAlign="center"
-        />
-        <LineComp borderWidth="1" marginTop="4" borderColor="gray.600" />
-        <Anchor
-          locator="pdp_write_review_icon"
-          accessibilityRole="link"
-          accessibilityLabel="Edit List Settings"
-          text={getLabelValue(labels, 'lbl_fav_editListSettings')}
-          anchorVariation="custom"
-          colorName="gray.900"
-          fontSizeVariation="large"
-          onPress={this.handleEditList}
-          centered
-          underline
-          margins="12px 0 0 0"
-        />
+        <DropDownContainer>
+          <SelectWishListDropdown
+            selectedValue={selectedWishlist}
+            data={wishlistsSummaries}
+            defaultWishList={defaultWishList}
+            onValueChange={itemValue => {
+              this.setState({ selectedWishlist: itemValue }, () =>
+                this.handleWishlistClick(itemValue)
+              );
+            }}
+            variation="secondary"
+            dropDownStyle={{ ...dropDownStyle }}
+            itemStyle={{ ...itemStyle }}
+            selectedItemFontWeight="semibold"
+            dropDownItemFontWeight="regular"
+            renderHeader={this.renderHeader}
+            renderFooter={this.renderFooter}
+            fontSize="fs24"
+            labels={labels}
+            arrowImageStyle={arrowImageStyle}
+            isWishlist
+          />
+        </DropDownContainer>
+        <DropDownContainer>
+          <Anchor
+            locator="pdp_write_review_icon"
+            accessibilityLabel="Edit List Settings"
+            text={getLabelValue(labels, 'lbl_fav_editListSettings')}
+            anchorVariation="custom"
+            colorName="gray.900"
+            fontSizeVariation="normal"
+            onPress={this.handleEditList}
+            centered
+            underline
+          />
+        </DropDownContainer>
+
+        <ShareDropDownContainer>
+          <SelectWishListDropdown
+            selectedValue={selectedShareOption}
+            data={shareOptions}
+            onValueChange={itemValue => {
+              this.setState({ selectedShareOption: itemValue }, () =>
+                this.handleShareClick(itemValue)
+              );
+            }}
+            variation="secondary"
+            dropDownStyle={{ ...dropDownStyle }}
+            itemStyle={{ ...itemStyle }}
+            selectedItemFontWeight="extrabold"
+            dropDownItemFontWeight="regular"
+            width="100px"
+            labels={labels}
+            isShareOptions
+          />
+        </ShareDropDownContainer>
         <ProductListing
           products={filteredItemsList}
           filters={filtersArray}
@@ -193,7 +310,6 @@ FavoritesView.propTypes = {
   // eslint-disable-next-line
   activeWishListId: PropTypes.number.isRequired,
   activeWishListProducts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  activeDisplayName: PropTypes.string.isRequired,
   filters: PropTypes.shape({}),
   navigation: PropTypes.shape({}).isRequired,
   currencySymbol: PropTypes.string,
@@ -211,6 +327,8 @@ FavoritesView.propTypes = {
   tcpSelected: PropTypes.bool.isRequired,
   isDataLoading: PropTypes.bool.isRequired,
   labelsPlpTiles: PropTypes.shape({}).isRequired,
+  getActiveWishlist: PropTypes.func.isRequired,
+  defaultWishList: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -219,6 +337,7 @@ FavoritesView.defaultProps = {
   labels: {},
   selectedColorProductId: '',
   filteredId: 'ALL',
+  defaultWishList: {},
 };
 
 export default FavoritesView;
