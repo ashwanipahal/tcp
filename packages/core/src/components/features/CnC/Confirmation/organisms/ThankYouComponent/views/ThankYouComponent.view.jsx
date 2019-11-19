@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PlaceCashBanner from '@tcp/core/src/components/features/CnC/PlaceCashBanner';
 import ThankYouTitleDisplay from '../../../molecules/ThankYouTitleDisplay';
 import ConfirmationFulfillmentCenterItemDisplay from '../../ConfirmationFulfillmentCenterItemDisplay';
 import styles from '../styles/ThankYouComponent.styles';
@@ -55,26 +56,7 @@ const ThankYouComponent = ({
             </Col>
           ))}
       </Row>
-      <Row fullBleed className="variable-width">
-        <Col
-          colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
-          }}
-          className="place-cash-banner"
-        >
-          <BodyCopy
-            fontSize="fs16"
-            fontFamily="secondary"
-            fontWeight="extrabold"
-            textAlign="center"
-            className="place-cash-banner-text"
-          >
-            Place Cash Banner
-          </BodyCopy>
-        </Col>
-      </Row>
+      <PlaceCashBanner isOrderConfirmation />
       {orderNumbersByFullfillmentCenter && (
         <Row fullBleed className="variable-width ">
           <Col

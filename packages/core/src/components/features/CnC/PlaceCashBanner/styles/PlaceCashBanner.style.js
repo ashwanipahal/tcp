@@ -4,6 +4,8 @@ const styles = css`
   .place-cash {
     &__container {
       position: relative;
+      margin: 0 0 10px 0;
+      width: 100%;
     }
     &__img {
       height: 70px;
@@ -15,6 +17,7 @@ const styles = css`
       }
     }
     &__text-wrapper {
+      width: 100%;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -38,9 +41,12 @@ const styles = css`
       }
     }
     &__tnc-container {
-      width: 55%;
       margin: 0 auto;
       line-height: 0.8;
+      text-align: center;
+      @media ${props => props.theme.mediaQuery.large} {
+        width: 40%;
+      }
     }
     &__modalLink {
       font-size: 6px;

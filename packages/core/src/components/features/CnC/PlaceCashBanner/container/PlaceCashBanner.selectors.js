@@ -2,6 +2,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { labelsHashValuesReplace } from '@tcp/core/src/components/features/CnC/LoyaltyBanner/util/utility';
 import { SESSIONCONFIG_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
+import ConfirmationSelector from '../../Confirmation/container/Confirmation.selectors';
 
 const getCurrentCountry = state => {
   return state[SESSIONCONFIG_REDUCER_KEY] && state[SESSIONCONFIG_REDUCER_KEY].siteDetails.country;
@@ -56,7 +57,10 @@ const getCurrencySymbol = state => {
 
 /** Place cash earned on transaction */
 const getEarnedPlaceCashValue = state => {
-  return getCartOrderDetails(state).get('rewardsToBeEarned') || 0;
+  return (
+    getCartOrderDetails(state).get('rewardsToBeEarned') ||
+    ConfirmationSelector.getEarnedPlaceCashValue(state)
+  );
 };
 
 const getPlaceDetailsContentId = (state, labelName) => {
@@ -83,6 +87,16 @@ const getPlaceDetailsContent = (state, labelName) => {
   return showDetailsContent && showDetailsContent.richText;
 };
 
+const getCurrentPageName = isOrderConfrimation => {
+  return isOrderConfrimation ? 'confirmation' : 'bag';
+};
+
+const getPlaceCashDetailBannerLabel = (state, currentCountry, isOrderConfirmation) => {
+  const country = currentCountry || getCurrentCountry(state);
+  const page = getCurrentPageName(isOrderConfirmation);
+  return `PlaceCash_Detail_${country}_${page}`;
+};
+
 const getPlaceCashBannerLabels = (state, isOrderConfirmation, isEnabled) => {
   const labels = [
     'title',
@@ -96,7 +110,7 @@ const getPlaceCashBannerLabels = (state, isOrderConfirmation, isEnabled) => {
   const finalValue = {};
 
   if (isEnabled) {
-    const currentPage = isOrderConfirmation ? 'confirmation' : 'bag';
+    const currentPage = getCurrentPageName(isOrderConfirmation);
     const currentCountry = getCurrentCountry(state);
     const replaceLabelConfig = replaceLabelUtil({
       currency: getCurrencySymbol(state),
@@ -124,7 +138,7 @@ const getPlaceCashBannerLabels = (state, isOrderConfirmation, isEnabled) => {
     });
     finalValue.SHOW_DETAILS_RICH_TEXT = getPlaceDetailsContent(
       state,
-      `PlaceCash_Detail_${currentCountry}_${currentPage}`
+      getPlaceCashDetailBannerLabel(state, currentCountry, isOrderConfirmation)
     );
   } else {
     labels.forEach(key => {
@@ -138,4 +152,5 @@ export default {
   getIsPlaceCashEnabled,
   getPlaceDetailsContentId,
   getPlaceCashBannerLabels,
+  getPlaceCashDetailBannerLabel,
 };

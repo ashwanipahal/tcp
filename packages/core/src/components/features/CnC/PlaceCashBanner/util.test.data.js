@@ -8,7 +8,7 @@ const detailModalTitle = 'Place Cash Detail';
 export default {
   referred: [
     {
-      name: 'PlaceCash_Detail_US_Bag',
+      name: 'PlaceCash_Detail_US_bag',
       contentId: 'ab6a5c6a-3e4e-4d2b-824b-a61c93e70f73',
       __typename: 'ReferredContent',
     },

@@ -6,12 +6,11 @@ import { BodyCopy, Row, Col, DamImage, Anchor } from '../../../../common/atoms';
 import PlaceCashDetailsModal from './PlaceCashDetails.modal.view';
 
 /**
- *
- * @function modifiedBannerText
- * @description this method replaces label's dynamic value based on current country & page
+ * PlaceCashBanner Component
+ * @description Display User's place cash value earned
  * @param {*} label
- * @returns
- * @memberof PlaceCashBanner
+ * @param {Boolean} isEnabled
+ * @returns {JSX}
  */
 
 class PlaceCashBanner extends React.PureComponent<Props> {
@@ -22,7 +21,8 @@ class PlaceCashBanner extends React.PureComponent<Props> {
     };
   }
 
-  toggleShowDetailModal = () => {
+  toggleShowDetailModal = e => {
+    e.preventDefault();
     const { isPlaceCasModalOpen } = this.state;
     this.setState({
       isPlaceCasModalOpen: !isPlaceCasModalOpen,
