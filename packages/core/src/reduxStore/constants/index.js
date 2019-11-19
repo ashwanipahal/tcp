@@ -49,6 +49,7 @@ export const LABELS = {
 export const SEO_DATA = {
   seoData: 'seoData',
   home: '/home',
+  search: '/search',
 };
 
 export const MODULES_CONSTANT = {

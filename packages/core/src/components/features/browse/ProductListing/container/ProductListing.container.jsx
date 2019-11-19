@@ -399,6 +399,7 @@ const IsomorphicProductListingContainer = withIsomorphicRenderer({
  */
 const RefWrappedProductListingContainer = withRefWrapper(IsomorphicProductListingContainer);
 RefWrappedProductListingContainer.displayName = 'ProductListingPage';
+// eslint-disable-next-line no-unused-vars
 const HotfixAwareProductListingContainer = withHotfix(RefWrappedProductListingContainer);
 
-export default HotfixAwareProductListingContainer;
+export default IsomorphicProductListingContainer;
