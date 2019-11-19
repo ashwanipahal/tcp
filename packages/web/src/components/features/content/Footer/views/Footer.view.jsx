@@ -35,8 +35,11 @@ class Footer extends React.Component {
     }
     const { isLoggedIn, isLocationEnabledForGuest, isLocationEnabledForLoggedInUser } = this.props;
     if (
-      (true && navigator && navigator.geolocation) ||
-      (true && isLoggedIn && navigator && navigator.geolocation)
+      (isLocationEnabledForGuest === 'TRUE' && navigator && navigator.geolocation) ||
+      (isLocationEnabledForLoggedInUser === 'TRUE' &&
+        isLoggedIn &&
+        navigator &&
+        navigator.geolocation)
     ) {
       navigator.geolocation.getCurrentPosition(() => {});
     }
@@ -179,7 +182,7 @@ Footer.propTypes = {
   pageName: PropTypes.string,
   isNavigationFooter: PropTypes.bool,
   isLocationEnabledForGuest: PropTypes.bool,
-  isLocationEnabledForLoggedInUser: PropTypes.bool
+  isLocationEnabledForLoggedInUser: PropTypes.bool,
 };
 
 Footer.defaultProps = {
@@ -191,7 +194,7 @@ Footer.defaultProps = {
   pageName: '',
   isNavigationFooter: false,
   isLocationEnabledForGuest: true,
-  isLocationEnabledForLoggedInUser: true
+  isLocationEnabledForLoggedInUser: true,
 };
 
 export default withStyles(errorBoundary(Footer), style);
