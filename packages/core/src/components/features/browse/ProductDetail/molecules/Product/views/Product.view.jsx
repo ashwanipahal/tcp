@@ -17,7 +17,7 @@ const Product = props => {
     productDetails,
     currencySymbol,
     priceCurrency,
-    currencyExchange,
+    currencyAttributes,
     isCanada,
     isHasPlcc,
     isInternationalShipping,
@@ -31,6 +31,8 @@ const Product = props => {
     isKeepAliveProduct,
     isBundleProduct,
     reviewOnTop,
+    AddToFavoriteErrorMsg,
+    removeAddToFavoritesErrorMsg,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -67,7 +69,7 @@ const Product = props => {
 
   return (
     <>
-      <div className={!reviewOnTop ? 'hide-on-mobile hide-on-desktop' : 'hide-on-desktop'}>
+      <div className={!reviewOnTop ? 'hide-on-mobile' : 'hide-on-desktop'}>
         <ProductBasicInfo
           keepAlive={isKeepAlive}
           badge={badge1}
@@ -76,7 +78,7 @@ const Product = props => {
           isShowFavoriteCount
           currencySymbol={currencySymbol}
           priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           isRatingsVisible
           isCanada={isCanada}
           isPlcc={isHasPlcc}
@@ -84,6 +86,9 @@ const Product = props => {
           isInternationalShipping={isInternationalShipping}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
+          productMiscInfo={colorProduct}
+          AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
+          removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
         />
       </div>
       <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
@@ -92,7 +97,7 @@ const Product = props => {
             <ProductPrice
               currencySymbol={currencySymbol}
               priceCurrency={priceCurrency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isItemPartNumberVisible={false}
               itemPartNumber={colorProduct.colorDisplayId}
               {...prices}
@@ -118,7 +123,7 @@ Product.propTypes = {
   isCanada: PropTypes.bool.isRequired,
   isHasPlcc: PropTypes.bool.isRequired,
   isGiftCard: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string.isRequired,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   /* We are available to know if is an international shipping */
   isInternationalShipping: PropTypes.bool.isRequired,
@@ -131,10 +136,14 @@ Product.propTypes = {
   isMatchingFamily: PropTypes.bool.isRequired,
   isBundleProduct: PropTypes.bool,
   reviewOnTop: PropTypes.bool.isRequired,
+  AddToFavoriteErrorMsg: PropTypes.string,
+  removeAddToFavoritesErrorMsg: PropTypes.func,
 };
 
 Product.defaultProps = {
   isBundleProduct: false,
+  AddToFavoriteErrorMsg: '',
+  removeAddToFavoritesErrorMsg: () => {},
 };
 
 export default Product;

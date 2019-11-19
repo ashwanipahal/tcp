@@ -99,7 +99,7 @@ class QuickViewModalContainer extends React.PureComponent {
         plpLabels={plpLabels}
         handleAddToBag={this.handleAddToBag}
         handleUpdateItem={this.handleUpdateItem}
-        currencyExchange={currencyAttributes.exchangevalue}
+        currencyAttributes={currencyAttributes}
         toastMessage={toastMessage}
         {...otherProps}
       />

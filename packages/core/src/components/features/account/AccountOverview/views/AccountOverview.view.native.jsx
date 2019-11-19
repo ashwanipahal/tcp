@@ -23,7 +23,6 @@ import ProfileInfoContainer from '../../common/organism/ProfileInfoTile';
 import OrderNotification from '../../OrderNotification';
 import FooterLinks from '../../common/molecule/FooterLinks';
 import GuestLoginOverview from '../../common/molecule/GuestLoginModule';
-import mock from './mock';
 
 class AccountOverview extends PureComponent<Props> {
   componentDidUpdate(prevPops) {
@@ -47,10 +46,10 @@ class AccountOverview extends PureComponent<Props> {
       handleComponentChange,
       navigation,
       openApplyNowModal,
+      accountFooterLinks,
+      legalLinks,
     } = this.props;
     const viewContainerStyle = { marginTop: 15 };
-    const { legalLinks } = mock;
-    const accountFooterLinks = mock.accountFooterNavLegalLinks;
 
     return (
       <View style={viewContainerStyle}>
