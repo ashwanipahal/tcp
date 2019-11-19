@@ -169,7 +169,7 @@ export default css`
     }
 
     .product-detail-section {
-      display: flex;
+      display: ${props => (props.showOnReviewPage ? 'flex' : 'inherit')};
       align-items: center;
       flex-wrap: wrap;
       > span {
@@ -380,7 +380,7 @@ export default css`
   }
 
   .size-and-item-container {
-    display: inline-flex;
+    display: flex;
   }
   .product-detail-review-page {
     display: inline-block;
