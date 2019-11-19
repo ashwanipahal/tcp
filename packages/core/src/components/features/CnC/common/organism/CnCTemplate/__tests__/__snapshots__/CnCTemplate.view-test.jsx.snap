@@ -37,7 +37,6 @@ exports[`CnC template should render correctly 1`] = `
         enableApplyCta={true}
         showAccordian={true}
       />
-      <Connect(Styled(PlaceCashBanner)) />
       <Connect(AirmilesBannerContainer) />
       <Connect(CouponContainer)
         additionalClassNameModal="coupon-modal-web"

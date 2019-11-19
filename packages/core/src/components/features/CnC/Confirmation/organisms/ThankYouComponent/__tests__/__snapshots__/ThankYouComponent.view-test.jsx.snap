@@ -33,9 +33,6 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Connect(Styled(PlaceCashBanner))
-    isOrderConfirmation={true}
-  />
   <Styled(Row)
     className="variable-width "
     fullBleed={true}
@@ -87,6 +84,9 @@ exports[`ThankYouComponentVanilla should render correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(Styled(PlaceCashBanner))
+    isOrderConfirmation={true}
+  />
   <Styled(Row)
     className="variable-width "
     fullBleed={true}
@@ -180,9 +180,6 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Connect(Styled(PlaceCashBanner))
-    isOrderConfirmation={true}
-  />
   <Styled(Row)
     className="variable-width "
     fullBleed={true}
@@ -234,6 +231,9 @@ exports[`ThankYouComponentVanilla should render correctly with isBossInList 1`] 
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(Styled(PlaceCashBanner))
+    isOrderConfirmation={true}
+  />
   <Styled(Row)
     className="variable-width "
     fullBleed={true}

@@ -1,84 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLabelValue } from '@tcp/core/src/utils';
+import { Text } from 'react-native';
 import withStyles from '../../../../common/hoc/withStyles';
-import { RichText } from '../../../../common/atoms';
-import CONSTANTS from '../../Checkout/Checkout.constants';
-import {
-  FullBleedBannerStyle,
-  TriangleBanner,
-  LeftTriangle,
-  TriangleBannerText,
-  TopTriangle,
-} from '../styles/PromotionBanner.style.native';
 
 /**
- *
- * @function modifiedBannerText
- * @description this method replcae label's dynamic value of tcpsegment with another respective label.
+ * PlaceCashBanner Component
+ * @description Display User's place cash value earned
  * @param {*} label
- * @returns
- * @memberof PromotionBanner
+ * @param {Boolean} isEnabled
+ * @returns {JSX}
  */
-export const modifiedBannerText = (label, props) => {
-  const { bossBanner, labels, tcpSegmentValue, itemBrand } = props;
-  const brandName = itemBrand.toLowerCase();
-  const pickupType = bossBanner
-    ? CONSTANTS.ORDER_ITEM_TYPE.BOSS.toLowerCase()
-    : CONSTANTS.ORDER_ITEM_TYPE.BOPIS.toLowerCase();
-  const labelKey = label.replace(
-    /\$tcpSegmentValue\$/,
-    labels[`lbl_banner_${pickupType}_disc_${brandName}_${tcpSegmentValue}`]
-      ? labels[`lbl_banner_${pickupType}_disc_${brandName}_${tcpSegmentValue}`]
-      : labels[`lbl_banner_${pickupType}_disc_${brandName}_default`]
-  );
-  return getLabelValue(labels, labelKey);
+
+const PlaceCashBanner = props => {
+  const { labels, isEnabled } = props;
+  return isEnabled ? <Text>{labels.label1}</Text> : null;
 };
 
-const PromotionBanner = props => {
-  const { labels, fullBleed, isPickupMobilePromotion } = props;
-  return (
-    <>
-      {fullBleed ? (
-        <FullBleedBannerStyle>
-          <RichText
-            source={{
-              html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${modifiedBannerText(
-                labels.lbl_fullBleed_banner_boss_text,
-                props
-              )}</body></html>`,
-            }}
-          />
-        </FullBleedBannerStyle>
-      ) : (
-        <TriangleBanner>
-          {!isPickupMobilePromotion ? <LeftTriangle /> : <TopTriangle />}
-          <TriangleBannerText>
-            <RichText
-              source={{
-                html: `<html><header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'> </header><body>${modifiedBannerText(
-                  labels.lbl_banner_boss_text,
-                  props
-                )}</body></html>`,
-              }}
-            />
-          </TriangleBannerText>
-        </TriangleBanner>
-      )}
-    </>
-  );
-};
-
-PromotionBanner.propTypes = {
+PlaceCashBanner.propTypes = {
   labels: PropTypes.shape({}).isRequired,
-  fullBleed: PropTypes.bool,
-  isPickupMobilePromotion: PropTypes.bool,
+  isEnabled: PropTypes.isRequired,
 };
 
-PromotionBanner.defaultProps = {
-  fullBleed: false,
-  isPickupMobilePromotion: false,
-};
-
-export default withStyles(PromotionBanner);
-export { PromotionBanner as PromotionBannerVanilla };
+export default withStyles(PlaceCashBanner);
+export { PlaceCashBanner as PlaceCashBannerVanilla };
