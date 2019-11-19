@@ -1,4 +1,3 @@
-/* eslint-disable max-statements */
 /* eslint-disable complexity */
 import { all, call, put, putResolve, takeLatest, select } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
@@ -9,7 +8,6 @@ import { getNavigationData } from '@tcp/core/src/services/abstractors/common/sub
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
 import setUserGroup from '../../services/abstractors/common/setUserGroup';
 import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
-import countryListAbstractor from '../../services/abstractors/bootstrap/countryList';
 import {
   loadLayoutData,
   loadLabelsData,
@@ -20,7 +18,6 @@ import {
   setDeviceInfo,
   setOptimizelyFeaturesList,
   setCountry,
-  setCurrency,
   setLanguage,
   getSetTcpSegment,
   setSubNavigationData,
@@ -29,7 +26,6 @@ import { loadHeaderData } from '../../components/common/organisms/Header/contain
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
 import GLOBAL_CONSTANTS, { MODULES_CONSTANT } from '../constants';
-import { defaultCountries, defaultCurrencies } from '../../constants/site.constants';
 import CACHED_KEYS from '../../constants/cache.config';
 import { isMobileApp } from '../../utils';
 import { getDataFromRedis } from '../../utils/redis.util';
@@ -146,27 +142,6 @@ function* bootstrap(params) {
     yield put(loadHeaderData(result.header));
     if (!isMobileApp()) {
       yield put(loadNavigationData(result.navigation));
-      const { savedCountry } = apiConfig;
-      const [us, ca] = defaultCountries;
-      const [currencyAttributesUS, currencyAttributesCA] = defaultCurrencies;
-      let currencyAttributes = {};
-      if (savedCountry === us.id) {
-        currencyAttributes = currencyAttributesUS;
-      } else if (savedCountry === ca.id) {
-        currencyAttributes = currencyAttributesCA;
-      } else {
-        const response = yield call(countryListAbstractor.getData, savedCountry);
-        const countryList = response && response.data.countryList;
-        const currentCountry = countryList.length && countryList[0];
-        const { currency, exchangeRate } = currentCountry;
-        currencyAttributes = { ...currency, ...exchangeRate };
-      }
-      yield put(
-        setCurrency({
-          currency: currencyAttributes.id,
-          currencyAttributes,
-        })
-      );
     }
     yield put(loadFooterData(result.footer));
   } catch (err) {
