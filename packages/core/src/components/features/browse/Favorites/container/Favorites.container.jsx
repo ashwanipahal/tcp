@@ -25,6 +25,7 @@ import {
   getLabelsFavorites,
   getSLPLabels,
   getIsDataLoading,
+  selectDefaultWishlist,
 } from './Favorites.selectors';
 
 class FavoritesContainer extends React.PureComponent {
@@ -105,6 +106,7 @@ class FavoritesContainer extends React.PureComponent {
       totalProductsCount,
       isDataLoading,
       labelsPlpTiles,
+      defaultWishList,
     } = this.props;
 
     const { selectedColorProductId } = this.state;
@@ -134,6 +136,7 @@ class FavoritesContainer extends React.PureComponent {
         totalProductsCount={totalProductsCount}
         isDataLoading={isDataLoading}
         labelsPlpTiles={labelsPlpTiles}
+        defaultWishList={defaultWishList}
         {...this.state}
       />
     );
@@ -145,6 +148,7 @@ const mapStateToProps = state => {
     wishlistsSummaries: selectWishlistsSummaries(state),
     activeWishList: selectActiveWishList(state),
     activeWishListId: selectActiveWishlistId(state),
+    defaultWishList: selectDefaultWishlist(state),
     activeWishListProducts: selectActiveWishlistProducts(state),
     activeDisplayName: selectActiveDisplayName(state),
     currencySymbol: fetchCurrencySymbol(state),
@@ -194,6 +198,7 @@ FavoritesContainer.propTypes = {
   totalProductsCount: PropTypes.string,
   isDataLoading: PropTypes.bool,
   labelsPlpTiles: PropTypes.shape({}),
+  defaultWishList: PropTypes.shape({}),
 };
 
 FavoritesContainer.defaultProps = {
@@ -205,6 +210,7 @@ FavoritesContainer.defaultProps = {
   totalProductsCount: '0',
   isDataLoading: false,
   labelsPlpTiles: {},
+  defaultWishList: {},
 };
 
 export default connect(

@@ -214,11 +214,11 @@ export function PromotionalMessage(props) {
   ) : null;
 }
 
-const renderWishListItem = (item, labels) => (
+const renderWishListItem = (item, labels, activeWishListId) => (
   <div className="wish-list-item-section">
     <p className="wish-list-name">
-      <span className={`${item.isDefault ? 'default-list' : ''}`}>
-        {item.isDefault && (
+      <span className={`${item.id === activeWishListId ? 'default-list' : ''}`}>
+        {item.id === activeWishListId && (
           <Image
             src={getIconPath('selected-item-check-no-circle')}
             alt="check mark"
@@ -228,11 +228,15 @@ const renderWishListItem = (item, labels) => (
           />
         )}
       </span>
-      <span className={`${item.isDefault ? 'default-list-item' : ''}`}>{item.displayName}</span>
+      <span className={`${item.id === activeWishListId ? 'default-list-item' : ''}`}>
+        {item.displayName}
+      </span>
     </p>
     <p className="wish-list-count-section">
       <span
-        className={`${item.isDefault ? 'default-list-count wish-list-count' : 'wish-list-count'}`}
+        className={`${
+          item.id === activeWishListId ? 'default-list-count wish-list-count' : 'wish-list-count'
+        }`}
       >
         {item.itemsCount}
       </span>
@@ -249,6 +253,7 @@ export const CreateWishList = props => {
     createNewWishListMoveItem,
     itemId,
     getActiveWishlist,
+    activeWishListId,
   } = props;
   return (
     <div className="create-wish-list-section">
@@ -261,14 +266,14 @@ export const CreateWishList = props => {
                 onClick={() => createNewWishListMoveItem({ wisListId: item.id, id: itemId })}
                 className="wish-list-item__button"
               >
-                {renderWishListItem(item, labels)}
+                {renderWishListItem(item, labels, activeWishListId)}
               </Button>
             ) : (
               <Button
                 onClick={() => getActiveWishlist(item.id)}
                 className="wish-list-change-item__button"
               >
-                {renderWishListItem(item, labels)}
+                {renderWishListItem(item, labels, activeWishListId)}
               </Button>
             )}
           </li>
@@ -379,6 +384,7 @@ CreateWishList.propTypes = {
   createNewWishListMoveItem: PropTypes.func.isRequired,
   itemId: PropTypes.string.isRequired,
   getActiveWishlist: PropTypes.func,
+  activeWishListId: PropTypes.string.isRequired,
 };
 
 CreateWishList.defaultProps = {

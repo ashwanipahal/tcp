@@ -48,6 +48,18 @@ export const selectActiveWishlistId = state => {
   }
   return activeWishlistId;
 };
+
+export const selectDefaultWishlist = state => {
+  const wishlistsSummaries = selectWishlistsSummaries(state);
+  return (
+    wishlistsSummaries &&
+    wishlistsSummaries.length > 0 &&
+    wishlistsSummaries.filter(wishlist => {
+      return wishlist.isDefault === true;
+    })
+  );
+};
+
 export const fetchCurrencySymbol = state => {
   const currency = state.session && state.session.siteDetails.currency;
   if (currency) {

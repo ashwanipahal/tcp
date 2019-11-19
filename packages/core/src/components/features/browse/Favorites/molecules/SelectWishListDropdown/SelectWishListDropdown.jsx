@@ -54,28 +54,23 @@ class SelectWishListDropdown extends React.PureComponent {
       createNewWishList,
       getActiveWishlist,
       activeWishList,
+      defaultWishList,
     } = this.props;
     const { isMoveItemOpen } = this.state;
     const accordianIcon = isMoveItemOpen
       ? getIconPath('up_arrow_icon')
       : getIconPath('down_arrow_icon');
-    const defaultList =
-      wishlistsSummaries &&
-      wishlistsSummaries.length > 0 &&
-      wishlistsSummaries.filter(wishlist => {
-        return wishlist.isDefault === true;
-      });
 
-    const showDefaultHeartIcon =
-      (activeWishList && activeWishList.id === defaultList[0].id) ||
-      (defaultList && defaultList[0].id);
+    const defaultList = defaultWishList[0];
+
+    const showDefaultHeartIcon = activeWishList && activeWishList.id === defaultList.id;
     return (
       wishlistsSummaries &&
       wishlistsSummaries.length > 0 && (
         <>
           <div className="choose-list-container">
             <Button className="choose-list-button" onClick={this.openMoveItem}>
-              {activeWishList ? activeWishList.displayName : defaultList[0].displayName}
+              {activeWishList ? activeWishList.displayName : defaultList.displayName}
               {showDefaultHeartIcon ? (
                 <Image
                   alt="Default Favourite List"
@@ -100,6 +95,7 @@ class SelectWishListDropdown extends React.PureComponent {
                   wishlistsSummaries={wishlistsSummaries}
                   createNewWishList={createNewWishList}
                   getActiveWishlist={getActiveWishlist}
+                  activeWishListId={activeWishList.id}
                 />
               </div>
             )}
@@ -136,12 +132,14 @@ SelectWishListDropdown.propTypes = {
   getActiveWishlist: PropTypes.func.isRequired,
   className: PropTypes.string,
   activeWishList: PropTypes.shape({}),
+  defaultWishList: PropTypes.shape([]),
 };
 
 SelectWishListDropdown.defaultProps = {
   wishlistsSummaries: [],
   className: '',
   activeWishList: {},
+  defaultWishList: [],
 };
 
 export default withStyles(SelectWishListDropdown, styles);

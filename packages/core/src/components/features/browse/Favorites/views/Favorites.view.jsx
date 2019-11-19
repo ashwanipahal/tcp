@@ -31,38 +31,13 @@ const FavoritesView = props => {
     selectBrandType,
     gymSelected,
     tcpSelected,
+    defaultWishList,
   } = props;
 
   const shareClickHandler = value => {
     console.log(value);
   };
 
-  /* const favoriteListMap = wishlistsSummaries.map(favorite => {
-    const { id, displayName, itemsCount, isDefault } = favorite;
-    const updatedDisplayName = displayName || id;
-    return (
-      <>
-        <button className="wish-list" onClick={() => getActiveWishlist(id)}>
-          <span className="favorite-list-name">
-            {updatedDisplayName}
-            {isDefault && <i className="heart-icon-container">Default</i>}
-          </span>
-          <p>
-            <span>
-              {updatedDisplayName}
-              {isDefault && <i className="heart-icon-container">Default</i>}
-            </span>
-            <span className="item-list">
-              {itemsCount}
-              item
-              {itemsCount > 1 ? 's' : ''}
-            </span>
-          </p>
-        </button>
-      </>
-    );
-  });
-*/
   const filters = activeWishList ? getNonEmptyFiltersList(activeWishList.items, labels) : [];
 
   let filteredItemsList =
@@ -165,6 +140,7 @@ const FavoritesView = props => {
                 createNewWishList={createNewWishList}
                 getActiveWishlist={getActiveWishlist}
                 activeWishList={activeWishList}
+                defaultWishList={defaultWishList}
               />
             </Col>
           </Row>
@@ -254,6 +230,7 @@ FavoritesView.propTypes = {
   selectBrandType: PropTypes.string.isRequired,
   gymSelected: PropTypes.bool.isRequired,
   tcpSelected: PropTypes.bool.isRequired,
+  defaultWishList: PropTypes.shape({}),
 };
 
 FavoritesView.defaultProps = {
@@ -261,6 +238,7 @@ FavoritesView.defaultProps = {
   activeWishList: {},
   selectedColorProductId: '',
   slpLabels: {},
+  defaultWishList: {},
 };
 
 export default withStyles(FavoritesView, FavoritesViewStyle);
