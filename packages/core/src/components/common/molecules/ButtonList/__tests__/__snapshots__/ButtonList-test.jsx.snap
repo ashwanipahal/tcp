@@ -394,6 +394,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       }
       textAlign="center"
       uniqueKey="GIRL"
+      video={null}
     />
     <ImageTextCTA
       className="scroll-cta-wrapper-class "
@@ -425,6 +426,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       }
       textAlign="center"
       uniqueKey="BOY"
+      video={null}
     />
     <ImageTextCTA
       className="scroll-cta-wrapper-class "
@@ -456,6 +458,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       }
       textAlign="center"
       uniqueKey="TODDLER_BOY"
+      video={null}
     />
     <ImageTextCTA
       className="scroll-cta-wrapper-class "
@@ -487,6 +490,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
       }
       textAlign="center"
       uniqueKey="TODDLER_GIRL"
+      video={null}
     />
   </div>
 </Fragment>
