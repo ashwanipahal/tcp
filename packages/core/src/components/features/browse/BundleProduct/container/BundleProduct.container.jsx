@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { toastMessageInfo } from '@tcp/core/src/components/common/atoms/Toast/container/Toast.actions.native';
 import { getProductDetails, clearBundleState } from './BundleProduct.actions';
 import BundleProduct from '../views';
 import {
@@ -118,6 +119,7 @@ export class ProductBundleContainer extends React.PureComponent {
       outfitLabels,
       isKeepAliveEnabled,
       outOfStockLabels,
+      toastMessage,
     } = this.props;
     return (
       <BundleProduct
@@ -148,6 +150,7 @@ export class ProductBundleContainer extends React.PureComponent {
         productDetails={productDetails}
         isKeepAliveEnabled={isKeepAliveEnabled}
         outOfStockLabels={outOfStockLabels}
+        toastMessage={toastMessage}
       />
     );
   }
@@ -203,6 +206,9 @@ function mapDispatchToProps(dispatch) {
     removeAddToFavoritesErrorMsg: payload => {
       dispatch(removeAddToFavoriteErrorState(payload));
     },
+    toastMessage: payload => {
+      dispatch(toastMessageInfo(payload));
+    },
   };
 }
 
@@ -236,6 +242,7 @@ ProductBundleContainer.propTypes = {
   clearBundleDetails: PropTypes.func,
   isKeepAliveEnabled: PropTypes.bool,
   outOfStockLabels: PropTypes.shape({}),
+  toastMessage: PropTypes.func.isRequired,
 };
 
 ProductBundleContainer.defaultProps = {

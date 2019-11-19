@@ -197,7 +197,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -320,7 +320,7 @@ exports[`Shipping Form should render correctly with logged in user 1`] = `
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -530,7 +530,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -653,7 +653,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1037,7 +1037,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1160,7 +1160,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1521,7 +1521,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gZMcBi",
+                "componentId": "sc-gqjmRU",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1644,7 +1644,7 @@ exports[`Shipping Form should render correctly with logged in user having addres
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gZMcBi",
+              "styledComponentId": "sc-gqjmRU",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

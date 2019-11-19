@@ -96,9 +96,9 @@ exports[`ProductsGridItem component should renders correctly 1`] = `
           bundleProduct={false}
           currencySymbol="$"
           hidePrefixListPrice={true}
-          listPrice={NaN}
+          listPrice={0}
           merchantTag=""
-          offerPrice={NaN}
+          offerPrice={0}
           priceRange={Object {}}
         />
       </Styled(Col)>

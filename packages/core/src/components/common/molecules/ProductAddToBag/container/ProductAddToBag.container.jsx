@@ -225,7 +225,7 @@ class ProductAddToBagContainer extends React.PureComponent<Props> {
       onChangeColor,
       currentProduct: { colorFitsSizesMap },
     } = this.props;
-    const selectedColor = colorFitsSizesMap.find(({ color }) => color.name === e);
+    const selectedColor = this.getSelectedColorData(colorFitsSizesMap, e);
     this.setState({
       selectedColor: { name: e },
       selectedSize,

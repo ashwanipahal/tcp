@@ -29,7 +29,7 @@ const OutfitDetailsView = ({
   isPlcc,
   isInternationalShipping,
   currencySymbol,
-  currencyExchange,
+  currencyAttributes,
   handleAddToBag,
   addToBagError,
   isLoggedIn,
@@ -129,7 +129,7 @@ const OutfitDetailsView = ({
           />
           <ProductPrice
             currencySymbol={currencySymbol}
-            currencyExchange={currencyExchange}
+            currencyAttributes={currencyAttributes}
             {...prices}
             isCanada={isCanada}
             isPlcc={isPlcc}
@@ -166,7 +166,7 @@ OutfitDetailsView.propTypes = {
   isPlcc: PropTypes.bool,
   isInternationalShipping: PropTypes.bool,
   currencySymbol: PropTypes.string,
-  currencyExchange: PropTypes.number,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   handleAddToBag: PropTypes.func.isRequired,
   labels: PropTypes.shape({}),
   addToBagError: PropTypes.bool,
@@ -187,7 +187,6 @@ OutfitDetailsView.defaultProps = {
   isPlcc: false,
   isInternationalShipping: false,
   currencySymbol: 'USD',
-  currencyExchange: 1,
   labels: {},
   addToBagError: false,
   isLoggedIn: false,

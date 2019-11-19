@@ -17,7 +17,7 @@ const Product = props => {
     productDetails,
     currencySymbol,
     priceCurrency,
-    currencyExchange,
+    currencyAttributes,
     isCanada,
     isHasPlcc,
     isInternationalShipping,
@@ -74,7 +74,7 @@ const Product = props => {
           isShowFavoriteCount
           currencySymbol={currencySymbol}
           priceCurrency={priceCurrency}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           isRatingsVisible
           isCanada={isCanada}
           isPlcc={isHasPlcc}
@@ -90,7 +90,7 @@ const Product = props => {
             <ProductPrice
               currencySymbol={currencySymbol}
               priceCurrency={priceCurrency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isItemPartNumberVisible={false}
               itemPartNumber={colorProduct.colorDisplayId}
               {...prices}
@@ -116,7 +116,7 @@ Product.propTypes = {
   isCanada: PropTypes.bool.isRequired,
   isHasPlcc: PropTypes.bool.isRequired,
   isGiftCard: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string.isRequired,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   /* We are available to know if is an international shipping */
   isInternationalShipping: PropTypes.bool.isRequired,
