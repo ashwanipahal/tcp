@@ -23,6 +23,7 @@ import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
 import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { getCurrentStoreInfo } from '@tcp/core/src/components/features/storeLocator/StoreDetail/container/StoreDetail.actions';
+import StoreLanding from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.container';
 import CheckoutModals from '@tcp/core/src/components/features/CnC/common/organism/CheckoutModals';
 import ApplyNow from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal';
 import { CHECKOUT_ROUTES } from '@tcp/core/src/components/features/CnC/Checkout/Checkout.constants';
@@ -144,10 +145,24 @@ class TCPWebApp extends App {
       logger.info('Error occurred in Raygun initialization', e);
     }
 
-    if (navigator && navigator.geolocation) {
+    const isUserLoggedIn = getUserLoggedInState(store.getState());
+    // const isLocationEnabledForGuest =
+    //   store.getState().session.siteDetails.IS_LOCATION_ENABLED_FOR_GUEST === 'TRUE';
+    // const isLocationEnabledForLoggedInUser =
+    //   store.getState().session.siteDetails.IS_LOCATION_ENABLED_FOR_LOGGED_IN_USER === 'TRUE';
+
+    const isLocationEnabledForGuest = true;
+    const isLocationEnabledForLoggedInUser = true;
+
+    if (
+      (isLocationEnabledForGuest && navigator && navigator.geolocation) ||
+      (isLocationEnabledForLoggedInUser && isUserLoggedIn && navigator && navigator.geolocation)
+    ) {
       navigator.geolocation.getCurrentPosition(pos => {
-        localStorage.setItem('lat', pos.coords.latitude);
-        localStorage.setItem('lng', pos.coords.longitude);
+        StoreLanding.initiateGetFavoriteStoreRequest(pos.coords.latitude, pos.coords.longitude);
+      },
+      () => {
+        StoreLanding.initiateGetFavoriteStoreRequest();
       });
     }
   }
