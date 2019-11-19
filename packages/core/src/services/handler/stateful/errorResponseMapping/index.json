@@ -493,5 +493,9 @@
   "DEFAULT_ERROR": {
     "errorMessage": "We're sorry that we 're unable to complete your birthday savings request at this time.Please try again later.",
     "formFieldName": ""
+  },
+  "_ERR_MAX_SKU_QTY_IN_WISHLIST_ERROR": {
+    "errorMessage": "An error has occurred. If this problem persists, contact product support.",
+    "formFieldName": ""
   }
 }

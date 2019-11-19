@@ -37,10 +37,13 @@ class ProductsGrid extends React.Component {
     labels: PropTypes.string,
     productTileVariation: PropTypes.string,
     currency: PropTypes.string,
-    currencyExchange: PropTypes.string,
+    currencyAttributes: PropTypes.shape({}).isRequired,
     onAddItemToFavorites: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool,
+    isSearchListing: PropTypes.bool,
     // showQuickViewForProductId: PropTypes.string,
+    getProducts: PropTypes.func,
+    asPathVal: PropTypes.string,
   };
 
   static defaultProps = {
@@ -53,8 +56,10 @@ class ProductsGrid extends React.Component {
     labels: '',
     productTileVariation: '',
     currency: 'USD',
-    currencyExchange: 1,
     isLoggedIn: false,
+    isSearchListing: false,
+    getProducts: () => {},
+    asPathVal: '',
   };
 
   constructor(props, context) {
@@ -150,10 +155,13 @@ class ProductsGrid extends React.Component {
       onQuickViewOpenClick,
       productTileVariation,
       currency,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
+      isSearchListing,
       // showQuickViewForProductId,
+      getProducts,
+      asPathVal,
       ...otherProps
     } = this.props;
 
@@ -185,10 +193,13 @@ class ProductsGrid extends React.Component {
                         onQuickViewOpenClick={onQuickViewOpenClick}
                         productTileVariation={productTileVariation}
                         currency={currency}
-                        currencyExchange={currencyExchange}
+                        currencyAttributes={currencyAttributes}
                         isLoggedIn={isLoggedIn}
                         onAddItemToFavorites={onAddItemToFavorites}
                         // showQuickViewForProductId={showQuickViewForProductId}
+                        isSearchListing={isSearchListing}
+                        getProducts={getProducts}
+                        asPathVal={asPathVal}
                         {...otherProps}
                       />
                     );

@@ -12,11 +12,7 @@ import {
   constants as VenmoConstants,
 } from '../../../../../../../../common/atoms/VenmoPaymentButton/container/VenmoPaymentButton.util';
 import { setVenmoPaymentOptionSave } from '../../../../../container/Checkout.action';
-import {
-  getCVVCodeInfoContentId,
-  getCVVCodeRichTextSelector,
-} from '../../../../BillingPage/container/BillingPage.selectors';
-import BAG_PAGE_ACTIONS from '../../../../../../BagPage/container/BagPage.actions';
+import { getCVVCodeRichTextSelector } from '../../../../BillingPage/container/BillingPage.selectors';
 
 /**
  * @class BillingSectionContainer
@@ -42,14 +38,6 @@ class BillingSectionContainer extends PureComponent {
     cvvCodeInfoContentId: () => {},
     getCVVCodeInfo: null,
   };
-
-  componentDidMount() {
-    const { cvvCodeInfoContentId, getCVVCodeInfo } = this.props;
-    /* istanbul ignore else */
-    if (cvvCodeInfoContentId) {
-      getCVVCodeInfo([cvvCodeInfoContentId]);
-    }
-  }
 
   /**
    * @function render
@@ -104,7 +92,6 @@ export const mapStateToProps = state => {
     address,
     isGuest,
     venmoPayment,
-    cvvCodeInfoContentId: getCVVCodeInfoContentId(state),
     cvvCodeRichText: getCVVCodeRichTextSelector(state),
     isBillingVisited: getIsBillingVisited(state),
     isPaymentDisabled: getIsPaymentDisabled(state),
@@ -115,9 +102,6 @@ export const mapDispatchToProps = dispatch => {
   return {
     saveVenmoPaymentOption: payload => {
       dispatch(setVenmoPaymentOptionSave(payload));
-    },
-    getCVVCodeInfo: contentIds => {
-      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
   };
 };

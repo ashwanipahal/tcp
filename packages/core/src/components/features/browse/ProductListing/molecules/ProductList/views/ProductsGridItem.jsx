@@ -5,6 +5,7 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { getIconPath, routerPush } from '@tcp/core/src/utils';
 import logger from '@tcp/core/src/utils/loggerInstance';
+import { currencyConversion } from '@tcp/core/src/components/features/CnC/CartItemTile/utils/utils';
 import productGridItemPropTypes, {
   productGridDefaultProps,
 } from '../propTypes/ProductGridItemPropTypes';
@@ -53,6 +54,7 @@ class ProductsGridItem extends React.PureComponent {
       pdpUrl: props.item.productInfo.pdpUrl,
       isAltImgRequested: false,
       isMoveItemOpen: false,
+      generalProductId: '',
     };
     const {
       onQuickViewOpenClick,
@@ -64,6 +66,21 @@ class ProductsGridItem extends React.PureComponent {
     this.handleOpenQuickViewClick = () =>
       onQuickViewOpenClick(generalProductId, selectedColorProductId, generalProductId);
     this.handleImageChange = index => this.setState({ currentImageIndex: index });
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { isLoggedIn, onAddItemToFavorites, isSearchListing, getProducts, asPathVal } = nextProps;
+    const { generalProductId } = prevState;
+
+    if (isLoggedIn && generalProductId !== '') {
+      getProducts({ URI: 'category', url: asPathVal, ignoreCache: true });
+      onAddItemToFavorites({
+        colorProductId: generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
+      return { generalProductId: '' };
+    }
+    return null;
   }
 
   componentDidMount() {
@@ -143,14 +160,20 @@ class ProductsGridItem extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       removeFavItem,
+      isSearchListing,
     } = this.props;
     const { selectedColorProductId } = this.state;
     if (removeFavItem) {
       removeFavItem({ itemId });
     } else {
-      onAddItemToFavorites({ colorProductId: selectedColorProductId || generalProductId });
+      onAddItemToFavorites({
+        colorProductId: selectedColorProductId || generalProductId,
+        page: isSearchListing ? 'SLP' : 'PLP',
+      });
       if (isClient() && isLoggedIn) {
         this.setState({ isInDefaultWishlist: true });
+      } else {
+        this.setState({ generalProductId: selectedColorProductId || generalProductId });
       }
     }
   };
@@ -381,6 +404,19 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  getPriceForProduct = (listPrice, offerPrice, currencyAttributes) => {
+    let listPriceForColor = listPrice;
+    let offerPriceForColor = offerPrice;
+    if (currencyAttributes && currencyAttributes.exchangevalue) {
+      listPriceForColor = currencyConversion(listPrice, currencyAttributes);
+      offerPriceForColor = currencyConversion(offerPrice, currencyAttributes);
+    }
+    return {
+      listPriceForColor,
+      offerPriceForColor,
+    };
+  };
+
   render() {
     const {
       onQuickViewOpenClick,
@@ -388,7 +424,7 @@ class ProductsGridItem extends React.PureComponent {
       isMobile,
       //  currencySymbol,
       //  isBopisEnabled,
-      currencyExchange,
+      currencyAttributes,
       //  isBopisEnabledForClearance,
       //  isBossClearanceProductEnabled,
       //  isBossEnabled,
@@ -407,6 +443,7 @@ class ProductsGridItem extends React.PureComponent {
         quantityPurchased,
         colorsMap,
         imagesByColor,
+        miscInfo: { isInDefaultWishlist },
       },
       // isGridView,
       // isProductsGridCTAView,
@@ -428,6 +465,7 @@ class ProductsGridItem extends React.PureComponent {
       viaModule,
       forwardedRef,
     } = this.props;
+
     logger.info(viaModule);
     const itemNotAvailable = availability === AVAILABILITY.SOLDOUT;
     const prodNameAltImages = longProductTitle || name;
@@ -436,7 +474,6 @@ class ProductsGridItem extends React.PureComponent {
       // error,
       currentImageIndex,
       pdpUrl,
-      isInDefaultWishlist,
     } = this.state;
 
     const curentColorEntry = getMapSliceForColorProductId(colorsMap, selectedColorProductId);
@@ -469,8 +506,11 @@ class ProductsGridItem extends React.PureComponent {
     // };
     const isKeepAlive = keepAlive && isKeepAliveKillSwitch;
     const topBadge = getTopBadge(isMatchingFamily, badge1);
-    const listPriceForColor = listPrice * currencyExchange;
-    const offerPriceForColor = offerPrice * currencyExchange;
+    const { listPriceForColor, offerPriceForColor } = this.getPriceForProduct(
+      listPrice,
+      offerPrice,
+      currencyAttributes
+    );
     // const isShowPickupCTA =
     //   validateBopisEligibility({
     //     isBopisClearanceProductEnabled: isBopisEnabledForClearance,

@@ -17,7 +17,7 @@ const Product = props => {
     productDetails,
     currencySymbol,
     priceCurrency,
-    currencyExchange,
+    currencyAttributes,
     isCanada,
     isHasPlcc,
     isInternationalShipping,
@@ -30,6 +30,7 @@ const Product = props => {
     formValues = {},
     isKeepAliveProduct,
     isBundleProduct,
+    reviewOnTop,
   } = props;
 
   const productInfo = productDetails.currentProduct;
@@ -65,43 +66,47 @@ const Product = props => {
   const isKeepAlive = miscInfo.keepAlive && isKeepAliveProduct;
 
   return (
-    <div>
-      <ProductBasicInfo
-        keepAlive={isKeepAlive}
-        badge={badge1}
-        isGiftCard={isGiftCard}
-        productInfo={productInfo}
-        isShowFavoriteCount
-        currencySymbol={currencySymbol}
-        priceCurrency={priceCurrency}
-        currencyExchange={currencyExchange}
-        isRatingsVisible
-        isCanada={isCanada}
-        isPlcc={isHasPlcc}
-        isBundleProduct={isBundleProduct}
-        isInternationalShipping={isInternationalShipping}
-        onAddItemToFavorites={onAddItemToFavorites}
-        isLoggedIn={isLoggedIn}
-      />
-      {!isGiftCard ? (
-        <>
-          <ProductPrice
-            currencySymbol={currencySymbol}
-            priceCurrency={priceCurrency}
-            currencyExchange={currencyExchange}
-            isItemPartNumberVisible={false}
-            itemPartNumber={colorProduct.colorDisplayId}
-            {...prices}
-            promotionalMessage={promotionalMessage}
-            isCanada={isCanada}
-            promotionalPLCCMessage={promotionalPLCCMessage}
-            isPlcc={isHasPlcc}
-            isInternationalShipping={isInternationalShipping}
-          />
-          <RenderPerf.Measure name={PRICING_VISIBLE} />
-        </>
-      ) : null}
-    </div>
+    <>
+      <div className={!reviewOnTop ? 'hide-on-mobile hide-on-desktop' : 'hide-on-desktop'}>
+        <ProductBasicInfo
+          keepAlive={isKeepAlive}
+          badge={badge1}
+          isGiftCard={isGiftCard}
+          productInfo={productInfo}
+          isShowFavoriteCount
+          currencySymbol={currencySymbol}
+          priceCurrency={priceCurrency}
+          currencyAttributes={currencyAttributes}
+          isRatingsVisible
+          isCanada={isCanada}
+          isPlcc={isHasPlcc}
+          isBundleProduct={isBundleProduct}
+          isInternationalShipping={isInternationalShipping}
+          onAddItemToFavorites={onAddItemToFavorites}
+          isLoggedIn={isLoggedIn}
+        />
+      </div>
+      <div className={reviewOnTop ? 'hide-on-mobile hide-on-desktop' : ''}>
+        {!isGiftCard ? (
+          <>
+            <ProductPrice
+              currencySymbol={currencySymbol}
+              priceCurrency={priceCurrency}
+              currencyAttributes={currencyAttributes}
+              isItemPartNumberVisible={false}
+              itemPartNumber={colorProduct.colorDisplayId}
+              {...prices}
+              promotionalMessage={promotionalMessage}
+              isCanada={isCanada}
+              promotionalPLCCMessage={promotionalPLCCMessage}
+              isPlcc={isHasPlcc}
+              isInternationalShipping={isInternationalShipping}
+            />
+            <RenderPerf.Measure name={PRICING_VISIBLE} />
+          </>
+        ) : null}
+      </div>
+    </>
   );
 };
 
@@ -113,7 +118,7 @@ Product.propTypes = {
   isCanada: PropTypes.bool.isRequired,
   isHasPlcc: PropTypes.bool.isRequired,
   isGiftCard: PropTypes.bool.isRequired,
-  currencyExchange: PropTypes.string.isRequired,
+  currencyAttributes: PropTypes.shape({}).isRequired,
 
   /* We are available to know if is an international shipping */
   isInternationalShipping: PropTypes.bool.isRequired,
@@ -125,6 +130,7 @@ Product.propTypes = {
   isKeepAliveProduct: PropTypes.bool.isRequired,
   isMatchingFamily: PropTypes.bool.isRequired,
   isBundleProduct: PropTypes.bool,
+  reviewOnTop: PropTypes.bool.isRequired,
 };
 
 Product.defaultProps = {

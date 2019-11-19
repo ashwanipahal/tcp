@@ -1,0 +1,523 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApplyNowWrapper should render correctly 1`] = `
+<SafeAreaView>
+  <View>
+    <ModalHeaderNative
+      customHeaderMargin="25px 25px 0 25px"
+      fontSize="fs14"
+      heading="lbl_PLCCForm_rewardsCardHeading"
+      inheritedStyles=""
+      isOverlay={false}
+      onRequestClose={[Function]}
+    />
+    <Connect(ApplyCardLayoutContainer)
+      applyCard={true}
+      closePLCCModal={[Function]}
+      isRtpsFlow={false}
+    />
+  </View>
+</SafeAreaView>
+`;
+
+exports[`ApplyNowWrapper should render correctly if isModalOpen 1`] = `
+<SafeAreaView>
+  <View>
+    <ModalHeaderNative
+      customHeaderMargin="25px 25px 0 25px"
+      fontSize="fs14"
+      heading="lbl_PLCCForm_rewardsCardHeading"
+      inheritedStyles=""
+      isOverlay={false}
+      onRequestClose={[Function]}
+    />
+    <Styled(ScrollViewMock)>
+      <Styled(View)>
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs38"
+          fontWeight="black"
+          margin={null}
+          mobilefontFamily="primary"
+          numberOfLines={null}
+          paddingTop="30px"
+          text="lbl_PLCCModal_applyNowHeaderText"
+          textAlign="center"
+          textDecoration={null}
+        />
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="black"
+          margin={null}
+          mobilefontFamily="primary"
+          numberOfLines={null}
+          paddingTop="5px"
+          text="§"
+          textDecoration={null}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(Styled(ImageComp))
+          alt=""
+          height="112px"
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/tcp-cc.png",
+            }
+          }
+          url=""
+          width="45%"
+        />
+      </Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
+        paddingLeft="12px"
+        paddingRight="12px"
+        paddingTop="9px"
+        text="lbl_PLCCModal_applyNowSubText"
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(View)>
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="fixed-width"
+          color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={[Function]}
+          paddings="12px 32px 12px 32px"
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text="lbl_PLCCModal_applyNowCTA"
+          theme={Object {}}
+          type="submit"
+          url=""
+          width="90%"
+          withNoLineHeight={false}
+        />
+      </Styled(View)>
+      <Styled(Styled(Anchor))
+        accessibilityLabel=""
+        anchorVariation="secondary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="xlarge"
+        justifyContent=""
+        locator=""
+        margins={null}
+        onPress={null}
+        paddingTop="23px"
+        text="lbl_PLCCModal_learnMoreText"
+        underlineBlue={true}
+        url="lbl_PLCCModal_learnMoreLink"
+        visible={false}
+      />
+      <Styled(View)
+        marginTop="28px"
+      >
+        <Styled(Styled(ImageComp))
+          alt=""
+          height="60px"
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/PLCC_lockup_2_points.png",
+            }
+          }
+          url=""
+          width="95%"
+        />
+      </Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="text.secondary"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="black"
+        margin={null}
+        numberOfLines={null}
+        paddingTop="9px"
+        text="lbl_PLCCModal_benefitsText"
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(View)>
+        <Styled(View)>
+          <RichText
+            actionHandler={[Function]}
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            isNativeView={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": Object {},
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs10"
+          margin={null}
+          numberOfLines={null}
+          paddingRight="4px"
+          text="lbl_PLCCModal_linksTextPrefix"
+          textDecoration={null}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          fontSizeVariation="medium"
+          justifyContent=""
+          locator=""
+          margins={null}
+          onPress={null}
+          paddingRight="28px"
+          text="lbl_PLCCForm_details"
+          underline={true}
+          url="lbl_PLCCModal_detailsLink"
+          visible={false}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          fontSizeVariation="medium"
+          justifyContent=""
+          locator="plcc_faq"
+          margins={null}
+          onPress={null}
+          paddingRight="28px"
+          target="_blank"
+          text="lbl_PLCCModal_faqText"
+          underline={true}
+          url="lbl_PLCCModal_faqLink"
+          visible={false}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          data-locator="plcc_rewards_terms"
+          fontSizeVariation="medium"
+          justifyContent=""
+          locator=""
+          margins={null}
+          onPress={null}
+          target="_blank"
+          text="lbl_PLCCModal_rewardsProgramText"
+          underline={true}
+          url="lbl_PLCCModal_rewardsProgramLink"
+          visible={false}
+        />
+      </Styled(View)>
+    </Styled(ScrollViewMock)>
+  </View>
+</SafeAreaView>
+`;
+
+exports[`ApplyNowWrapper should render correctly if isModalOpen and isRtps is true 1`] = `
+<SafeAreaView>
+  <View>
+    <Styled(View) />
+    <Styled(ScrollViewMock)>
+      <Styled(View)>
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs38"
+          fontWeight="black"
+          margin={null}
+          mobilefontFamily="primary"
+          numberOfLines={null}
+          paddingTop="30px"
+          text="lbl_PLCCModal_applyNowHeaderText"
+          textAlign="center"
+          textDecoration={null}
+        />
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          color="gray.900"
+          dataLocator=""
+          fontSize="fs15"
+          fontWeight="black"
+          margin={null}
+          mobilefontFamily="primary"
+          numberOfLines={null}
+          paddingTop="5px"
+          text="§"
+          textDecoration={null}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(Styled(ImageComp))
+          alt=""
+          height="112px"
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/tcp-cc.png",
+            }
+          }
+          url=""
+          width="45%"
+        />
+      </Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="gray.900"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        margin={null}
+        numberOfLines={null}
+        paddingLeft="12px"
+        paddingRight="12px"
+        paddingTop="9px"
+        text="lbl_PLCCModal_applyNowSubText"
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(View)>
+        <Styled(View)>
+          <RichText
+            actionHandler={[Function]}
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            isNativeView={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": "congrats msg",
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(CustomButton)
+          active={false}
+          buttonVariation="fixed-width"
+          color="white"
+          customStyle={Object {}}
+          customTextStyle={null}
+          disableButton={false}
+          fill="BLUE"
+          fullWidth=""
+          iconColor="gray.800"
+          iconName="chevron-down"
+          iconSize="fs12"
+          locator=""
+          navigation={Object {}}
+          onPress={[Function]}
+          paddings="12px 32px 12px 32px"
+          selected={false}
+          selectedIcon="chevron-up"
+          showIcon={false}
+          text="lbl_PLCC_interested"
+          theme={Object {}}
+          type="submit"
+          url=""
+          width="90%"
+          withNoLineHeight={false}
+        />
+      </Styled(View)>
+      <Styled(Styled(Anchor))
+        accessibilityLabel=""
+        anchorVariation="secondary"
+        colorName={null}
+        customStyle={Object {}}
+        fontSizeVariation="xlarge"
+        justifyContent=""
+        locator=""
+        margins={null}
+        noLink={true}
+        onPress={[Function]}
+        paddingTop="23px"
+        text="lbl_PLCC_noThanks"
+        underlineBlue={true}
+        visible={false}
+      />
+      <Styled(View)>
+        <Styled(View)>
+          <RichText
+            actionHandler={[Function]}
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            isNativeView={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": "opt out msg",
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)
+        marginTop="28px"
+      >
+        <Styled(Styled(ImageComp))
+          alt=""
+          height="60px"
+          host=""
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/PLCC_lockup_2_points.png",
+            }
+          }
+          url=""
+          width="95%"
+        />
+      </Styled(View)>
+      <Styled(Styled(BodyCopy))
+        accessibilityText=""
+        color="text.secondary"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs28"
+        fontWeight="black"
+        margin={null}
+        numberOfLines={null}
+        paddingTop="9px"
+        text="lbl_PLCCModal_benefitsText"
+        textAlign="center"
+        textDecoration={null}
+      />
+      <Styled(View)>
+        <Styled(View)>
+          <RichText
+            actionHandler={[Function]}
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            isNativeView={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": Object {},
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(Styled(BodyCopy))
+          accessibilityText=""
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs10"
+          margin={null}
+          numberOfLines={null}
+          paddingRight="4px"
+          text="lbl_PLCCModal_linksTextPrefix"
+          textDecoration={null}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          fontSizeVariation="medium"
+          justifyContent=""
+          locator=""
+          margins={null}
+          onPress={null}
+          paddingRight="28px"
+          text="lbl_PLCCForm_details"
+          underline={true}
+          url="lbl_PLCCModal_detailsLink"
+          visible={false}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          fontSizeVariation="medium"
+          justifyContent=""
+          locator="plcc_faq"
+          margins={null}
+          onPress={null}
+          paddingRight="28px"
+          target="_blank"
+          text="lbl_PLCCModal_faqText"
+          underline={true}
+          url="lbl_PLCCModal_faqLink"
+          visible={false}
+        />
+        <Styled(Styled(Anchor))
+          accessibilityLabel=""
+          anchorVariation="primary"
+          colorName={null}
+          customStyle={Object {}}
+          data-locator="plcc_rewards_terms"
+          fontSizeVariation="medium"
+          justifyContent=""
+          locator=""
+          margins={null}
+          onPress={null}
+          target="_blank"
+          text="lbl_PLCCModal_rewardsProgramText"
+          underline={true}
+          url="lbl_PLCCModal_rewardsProgramLink"
+          visible={false}
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <RichText
+            actionHandler={[Function]}
+            domStorageEnabled={false}
+            isApplyDeviceHeight={false}
+            isNativeView={false}
+            javaScriptEnabled={false}
+            source={
+              Object {
+                "html": undefined,
+              }
+            }
+            thirdPartyCookiesEnabled={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(ScrollViewMock)>
+  </View>
+</SafeAreaView>
+`;

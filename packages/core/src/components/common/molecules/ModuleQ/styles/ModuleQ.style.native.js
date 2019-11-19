@@ -12,9 +12,10 @@ const TILE_SHADOW = `
 `;
 
 const getAdditionalStyle = props => {
-  const { isCompleteTheLook } = props;
+  const { isRelatedOutfit } = props;
   return {
-    ...(!isCompleteTheLook && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
+    ...(!isRelatedOutfit && { 'margin-bottom': props.theme.spacing.LAYOUT_SPACING.SM }),
+    ...(!isRelatedOutfit && { padding: props.theme.spacing.ELEM_SPACING.LRG }),
   };
 };
 
@@ -29,7 +30,6 @@ const applyBackgroundClassStyle = props => {
 
 export const Container = styled.View`
   width: 100%;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
   ${applyBackgroundClassStyle}
   ${getAdditionalStyle}
 `;

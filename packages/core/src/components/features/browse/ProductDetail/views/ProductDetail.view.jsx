@@ -18,7 +18,6 @@ import { routerPush, getIconPath } from '../../../../../utils';
 import ProductDescription from '../molecules/ProductDescription/views';
 import LoyaltyBanner from '../../../CnC/LoyaltyBanner';
 import ProductPrice from '../molecules/ProductPrice/ProductPrice';
-
 import ProductImagesWrapper from '../molecules/ProductImagesWrapper/views/ProductImagesWrapper.view';
 import {
   getImagesToDisplay,
@@ -88,7 +87,7 @@ class ProductDetailView extends React.Component {
       productInfo,
       currency,
       pdpLabels,
-      currencyExchange,
+      currencyAttributes,
       onAddItemToFavorites,
       isLoggedIn,
       ...otherProps
@@ -105,9 +104,10 @@ class ProductDetailView extends React.Component {
           productDetails={productDetails}
           currencySymbol={currency}
           selectedColorProductId={selectedColorProductId}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           onAddItemToFavorites={onAddItemToFavorites}
           isLoggedIn={isLoggedIn}
+          className="hide-on-mobile"
         />
         {isGiftCard ? (
           <div className="product-price-desktop-view">
@@ -115,7 +115,7 @@ class ProductDetailView extends React.Component {
               offerPrice={parseInt(currentGiftCardValue, 10)}
               listPrice={parseInt(currentGiftCardValue, 10)}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               isGiftCard={isGiftCard}
             />
           </div>
@@ -157,14 +157,14 @@ class ProductDetailView extends React.Component {
   };
 
   getProductPriceForGiftCard = () => {
-    const { productInfo, currency, currencyExchange } = this.props;
+    const { productInfo, currency, currencyAttributes } = this.props;
     const { currentGiftCardValue } = this.state;
     return productInfo.isGiftCard ? (
       <div className="product-price-mobile-view">
         <ProductPrice
           listPrice={parseInt(currentGiftCardValue, 10)}
           offerPrice={parseInt(currentGiftCardValue, 10)}
-          currencyExchange={currencyExchange}
+          currencyAttributes={currencyAttributes}
           currencySymbol={currency}
         />
       </div>
@@ -199,7 +199,13 @@ class ProductDetailView extends React.Component {
       handleAddToBag,
       addToBagError,
       alternateSizes,
+      currency,
+      currencyAttributes,
+      onAddItemToFavorites,
+      isLoggedIn,
+      ...otherProps
     } = this.props;
+
     const { currentProduct } = productDetails;
     const isWeb = this.isWebEnvironment();
     let imagesToDisplay = [];
@@ -246,6 +252,17 @@ class ProductDetailView extends React.Component {
             ) : null}
           </Col>
           <Col className="product-image-wrapper" colSize={{ small: 6, medium: 4, large: 7 }}>
+            <Product
+              {...otherProps}
+              isGiftCard={isGiftCard}
+              productDetails={productDetails}
+              currencySymbol={currency}
+              selectedColorProductId={selectedColorProductId}
+              currencyAttributes={currencyAttributes}
+              onAddItemToFavorites={onAddItemToFavorites}
+              isLoggedIn={isLoggedIn}
+              reviewOnTop
+            />
             <ProductImagesWrapper
               productName={productInfo.name}
               isGiftCard={isGiftCard}
@@ -373,7 +390,7 @@ ProductDetailView.propTypes = {
   breadCrumbs: PropTypes.shape([]),
   pdpLabels: PropTypes.shape({}),
   currency: PropTypes.string,
-  currencyExchange: PropTypes.string,
+  currencyAttributes: PropTypes.shape({}).isRequired,
   plpLabels: PropTypes.shape({
     lbl_sort: PropTypes.string,
   }),
@@ -398,7 +415,6 @@ ProductDetailView.defaultProps = {
   productInfo: {},
   pdpLabels: {},
   addToBagError: '',
-  currencyExchange: 1,
   isLoggedIn: false,
   alternateSizes: {},
 };

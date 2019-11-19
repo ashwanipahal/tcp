@@ -34,6 +34,8 @@ export default {
   SET_DEVICE_INFO: 'SET_DEVICE_INFO',
   SET_OPTIMIZELY_FEATURES_LIST: 'SET_OPTIMIZELY_FEATURES_LIST',
   FETCH_PAGE_LAYOUT: 'FETCH_PAGE_LAYOUT',
+  SET_SUB_NAVIGATION_DATA: 'SET_SUB_NAVIGATION_DATA',
+  GET_SUB_NAVIGATION_DATA: 'GET_SUB_NAVIGATION_DATA',
 };
 
 export const LABELS = {
@@ -48,4 +50,9 @@ export const LABELS = {
 export const SEO_DATA = {
   seoData: 'seoData',
   home: '/home',
+};
+
+export const MODULES_CONSTANT = {
+  placeholder: 'placeholder',
+  subNavigation: 'SubNavigation',
 };

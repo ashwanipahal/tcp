@@ -20,3 +20,10 @@ export const setBundleDetails = payload => {
     payload,
   };
 };
+
+export const clearBundleState = () => {
+  return {
+    type: BUNDLEPRODUCT_CONSTANTS.CLEAR_BUNDLE_DETAILS,
+    payload: {},
+  };
+};

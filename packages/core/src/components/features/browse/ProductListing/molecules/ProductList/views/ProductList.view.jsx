@@ -8,7 +8,10 @@ import ProductListStyle from '../../ProductList.style';
 import { isMobileApp } from '../../../../../../../utils';
 import ProductsGridItemBase from './ProductsGridItem';
 
-// Adding hotfix capability to grid item in this component to make if specific to PLP
+/**
+ * Hotfix-Aware Component. The use `withHotfix` below is just for
+ * making the cart page hotfix-aware.
+ */
 const ProductsGridItem = withHotfix(ProductsGridItemBase);
 
 const isGridItem = item => {
@@ -40,7 +43,7 @@ const ProductList = props => {
     onProductCardHover,
     isBopisEnabledForClearance,
     onQuickBopisOpenClick,
-    currencyExchange,
+    currencyAttributes,
     siblingProperties,
     loadedProductCount,
     labels,
@@ -51,6 +54,9 @@ const ProductList = props => {
     isFavoriteView,
     removeFavItem,
     createNewWishListMoveItem,
+    isSearchListing,
+    getProducts,
+    asPathVal,
   } = props;
   let gridIndex = 0;
 
@@ -82,7 +88,7 @@ const ProductList = props => {
               isGridView
               isShowQuickView={showQuickViewForProductId === item.productInfo.generalProductId}
               currencySymbol={currency}
-              currencyExchange={currencyExchange}
+              currencyAttributes={currencyAttributes}
               onAddItemToFavorites={onAddItemToFavorites}
               onQuickViewOpenClick={onQuickViewOpenClick}
               onPickUpOpenClick={onPickUpOpenClick}
@@ -114,6 +120,9 @@ const ProductList = props => {
               isFavoriteView={isFavoriteView}
               removeFavItem={removeFavItem}
               createNewWishListMoveItem={createNewWishListMoveItem}
+              isSearchListing={isSearchListing}
+              getProducts={getProducts}
+              asPathVal={asPathVal}
             />
           </div>
         );
@@ -129,7 +138,7 @@ ProductList.propTypes = {
   showQuickViewForProductId: PropTypes.string,
   /** Price related currency symbol to be rendered */
   currency: PropTypes.string,
-  currencyExchange: PropTypes.shape({}),
+  currencyAttributes: PropTypes.shape({}).isRequired,
   /** callback for clicks on wishlist CTAs. Accepts: colorProductId. */
   onAddItemToFavorites: PropTypes.func,
   /** callback for clicks on quickView CTAs. Accepts a generalProductId, colorProductId */
@@ -158,6 +167,9 @@ ProductList.propTypes = {
   isFavoriteView: PropTypes.bool,
   removeFavItem: PropTypes.func,
   createNewWishListMoveItem: PropTypes.func,
+  isSearchListing: PropTypes.bool,
+  getProducts: PropTypes.func,
+  asPathVal: PropTypes.string,
 };
 
 ProductList.defaultProps = {
@@ -174,7 +186,6 @@ ProductList.defaultProps = {
   onProductCardHover: () => {},
   isBopisEnabledForClearance: false,
   onQuickBopisOpenClick: () => {},
-  currencyExchange: 1,
   siblingProperties: {
     colorMap: [],
     promotionalMessage: '',
@@ -187,6 +198,9 @@ ProductList.defaultProps = {
   isFavoriteView: false,
   removeFavItem: null,
   createNewWishListMoveItem: null,
+  isSearchListing: false,
+  getProducts: () => {},
+  asPathVal: '',
 };
 
 export default withStyles(ProductList, ProductListStyle);

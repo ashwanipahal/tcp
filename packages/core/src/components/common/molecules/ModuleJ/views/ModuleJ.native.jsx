@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 import { LAZYLOAD_HOST_NAME } from '@tcp/core/src/utils';
 
 import { Button, Anchor, DamImage, Skeleton } from '../../../atoms';
-import { getLocator, validateColor, getProductUrlForDAM } from '../../../../../utils/index.native';
+import {
+  getLocator,
+  validateColor,
+  getProductUrlForDAM,
+  getScreenWidth,
+} from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import moduleJConfig from '../moduleJ.config';
 
@@ -162,6 +167,13 @@ class ModuleJ extends React.PureComponent {
       bgColor,
     } = this.props;
 
+    const videoData = mediaLinkedList[1] &&
+      mediaLinkedList[1].video && {
+        ...mediaLinkedList[1].video,
+        videoWidth: getScreenWidth(),
+        videoHeight: 310,
+      };
+
     return (
       <Container>
         <MessageContainer layout={layout} bgColor={validateColor(bgColor)}>
@@ -217,6 +229,7 @@ class ModuleJ extends React.PureComponent {
               width="100%"
               testID={`${getLocator('moduleJ_promobanner_img')}${1}`}
               alt={mediaLinkedList[1] && mediaLinkedList[1].image.alt}
+              videoData={videoData}
               imgConfig={IMG_DATA.promoImgConfig[0]}
             />
           </Anchor>

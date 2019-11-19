@@ -174,6 +174,17 @@ export const setPreviewDate = payload => {
   };
 };
 
+export const setSubNavigationData = (payload, name) => ({
+  payload,
+  name,
+  type: GLOBAL_CONSTANTS.SET_SUB_NAVIGATION_DATA,
+});
+
+export const getSubNavigationData = payload => ({
+  payload,
+  type: GLOBAL_CONSTANTS.GET_SUB_NAVIGATION_DATA,
+});
+
 export default {
   loadLayoutData,
   loadLabelsData,
@@ -191,4 +202,5 @@ export default {
   getSetTcpSegment,
   SetTcpSegmentMethodCall,
   setPreviewDate,
+  setSubNavigationData,
 };

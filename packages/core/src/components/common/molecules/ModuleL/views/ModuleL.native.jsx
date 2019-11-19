@@ -42,9 +42,15 @@ const keyExtractor = (_, index) => index.toString();
 
 const renderItem = (item, navigation) => {
   const {
-    item: { image, link, color: { color: tileBgColor } = {} },
+    item: { image, link, video, color: { color: tileBgColor } = {} },
     index,
   } = item;
+
+  const videoData = video && {
+    ...video,
+    videoWidth: 103,
+    videoHeight: 128,
+  };
 
   return (
     <Anchor
@@ -62,6 +68,7 @@ const renderItem = (item, navigation) => {
           imgConfig={config.IMG_DATA.crops[0]}
           alt={image.alt}
           host={LAZYLOAD_HOST_NAME.HOME}
+          videoData={videoData}
         />
         <MessageContainer>
           <BodyCopyContainer width={width}>
