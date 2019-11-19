@@ -12,11 +12,11 @@ class EmailSignUpCheckBox extends React.PureComponent {
   render() {
     const {
       labels: {
-        emailSignUpHeader,
-        emailSignUpSubHeader,
-        childrenPlaceCheckoutTxt,
-        gymboreePlaceCheckoutTxt,
-        emailSignUpDisclaimer,
+        lbl_shipping_emailSignUpHeader: emailSignUpHeader,
+        lbl_shipping_emailSignUpSubHeader: emailSignUpSubHeader,
+        lbl_shipping_childrenPlaceCheckoutTxt: childrenPlaceCheckoutTxt,
+        lbl_shipping_gymboreePlaceCheckoutTxt: gymboreePlaceCheckoutTxt,
+        lbl_shipping_emailSignUpDisclaimer: emailSignUpDisclaimer,
       },
       className,
       fieldName,
