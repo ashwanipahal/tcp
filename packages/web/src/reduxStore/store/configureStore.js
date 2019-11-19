@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import createSagaMiddleware from 'redux-saga';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import { setStoreRef } from '@tcp/core/src/utils/store.utils';
@@ -24,10 +24,7 @@ const configureStore = preloadedState => {
   const enhancers = [applyMiddleware(...middlewares), cacheEnhancerMiddleware()];
 
   // Choose compose method depending upon environment and platform
-  const composeEnhancers =
-    process.env.NODE_ENV !== 'production' && typeof window === 'object'
-      ? composeWithDevTools
-      : compose;
+  const composeEnhancers = typeof window === 'object' ? composeWithDevTools : compose;
 
   /**
    * Since Next.js does server-side rendering, you are REQUIRED to pass

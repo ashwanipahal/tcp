@@ -102,6 +102,7 @@ class AddressBookTile extends React.Component {
                     <Button
                       fontSizeVariation="small"
                       nohover
+                      className="addressTile__makedefaultcheck"
                       type="button"
                       smallLink
                       underline

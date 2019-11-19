@@ -58,6 +58,7 @@ export default class ShippingPage extends React.PureComponent {
     clearCheckoutServerError: PropTypes.func.isRequired,
     checkoutServerError: PropTypes.shape({}).isRequired,
     pickUpContactPerson: PropTypes.shape({}).isRequired,
+    hasSetGiftOptions: PropTypes.bool,
     isLoadingShippingMethods: PropTypes.bool,
   };
 
@@ -85,6 +86,7 @@ export default class ShippingPage extends React.PureComponent {
     pageCategory: '',
     isVenmoPaymentInProgress: false,
     isVenmoShippingDisplayed: true,
+    hasSetGiftOptions: false,
     setVenmoPickupState: () => {},
     shippingPhoneAndEmail: null,
     isLoadingShippingMethods: false,
@@ -197,7 +199,7 @@ export default class ShippingPage extends React.PureComponent {
     //   response: 'invalid::false:false',
     //   storeId: '10152',
     // };
-    const { handleSubmit, setVenmoPickupState, formatPayload } = this.props;
+    const { handleSubmit, setVenmoPickupState, formatPayload, hasSetGiftOptions } = this.props;
     const submitData = {
       method: {
         shippingMethodId: shipmentMethods.shippingMethodId,
@@ -216,6 +218,7 @@ export default class ShippingPage extends React.PureComponent {
         smsUpdateNumber: smsSignUp.phoneNumber,
         wantsSmsOrderUpdates: smsSignUp.sendOrderUpdate,
       },
+      hasSetGiftOptions,
     };
 
     if (!onFileAddressKey) {
