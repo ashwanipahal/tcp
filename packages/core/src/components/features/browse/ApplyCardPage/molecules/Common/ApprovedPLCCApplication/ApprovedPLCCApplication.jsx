@@ -14,20 +14,25 @@ import Espot from '../../../../../../common/molecules/Espot';
 import Notification from '../../../../../../common/molecules/Notification';
 import { COUPON_CODE_STATE } from '../../../RewardsCard.constants';
 
+/**
+ * @constant - CopyToClipboard
+ *
+ * @param {*} e - Synthentic event being triggered.
+ * @param {*} changeStatus - state change dispatch event from useState.
+ */
 const CopyToClipboard = (e, changeStatus) => {
   e.preventDefault();
-  if (document.selection) {
-    const range = document.body.createTextRange();
-    range.moveToElementText(document.getElementById('couponCode'));
-    range.select().createTextRange();
-    document.execCommand('copy');
-    changeStatus(COUPON_CODE_STATE.SUCCESS);
-  } else if (window.getSelection) {
-    const range = document.createRange();
-    range.selectNode(document.getElementById('couponCode'));
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    changeStatus(COUPON_CODE_STATE.SUCCESS);
+  if (window.getSelection) {
+    const copyText = document.querySelector('#couponCode');
+    copyText.select();
+    setTimeout(() => {
+      const result = document.execCommand('copy');
+      if (result) {
+        changeStatus(COUPON_CODE_STATE.SUCCESS);
+      } else {
+        changeStatus(COUPON_CODE_STATE.ERROR);
+      }
+    }, 0);
   } else {
     changeStatus(COUPON_CODE_STATE.ERROR);
   }
@@ -71,18 +76,11 @@ const getCouponCodeBody = (
               >
                 {getLabelValue(labels, 'lbl_PLCCForm_welcomeOffer')}
               </BodyCopy>
-              <BodyCopy
-                component="div"
-                fontWeight="black"
-                fontSize="fs22"
-                fontFamily="secondary"
+              <input
                 className="promo_code"
-                tabIndex="0"
-                textAlign="center"
+                value={approvedPLCCData && approvedPLCCData.couponCode}
                 id="couponCode"
-              >
-                {approvedPLCCData && approvedPLCCData.couponCode}
-              </BodyCopy>
+              />
               <Anchor onClick={e => CopyToClipboard(e, changeStatus)} underline>
                 {getLabelValue(labels, 'lbl_PLCCForm_copyToClipboard')}
               </Anchor>
@@ -231,9 +229,9 @@ const ApprovedPLCCApplicationView = ({
   const [couponCodeStatus, changeStatus] = useState('');
   let copyStausMessage = '';
   if (couponCodeStatus === COUPON_CODE_STATE.SUCCESS) {
-    copyStausMessage = getLabelValue(labels, 'lbl_PLCC_CouponCode_Copied');
+    copyStausMessage = getLabelValue(labels, 'lbl_PLCC_CouponCopy_Success');
   } else if (couponCodeStatus === COUPON_CODE_STATE.ERROR) {
-    copyStausMessage = getLabelValue(labels, 'lbl_PLCC_Copy_Failed');
+    copyStausMessage = getLabelValue(labels, 'lbl_PLCC_CouponCopy_Fail');
   }
   return (
     <ApprovedPLCCApplicationViewStyled isPLCCModalFlow={isPLCCModalFlow}>
