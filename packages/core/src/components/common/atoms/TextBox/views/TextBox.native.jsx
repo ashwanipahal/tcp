@@ -44,6 +44,7 @@ export class TextBox extends React.Component {
     successText: PropTypes.string,
     onChangeText: PropTypes.func,
     autoCapitalize: PropTypes.string,
+    bottomBorderColor: PropTypes.string,
   };
 
   static defaultProps = {
@@ -62,6 +63,7 @@ export class TextBox extends React.Component {
     successText: '',
     autoCapitalize: 'sentences',
     onChangeText: () => {},
+    bottomBorderColor: null,
   };
 
   constructor(props) {
@@ -156,6 +158,7 @@ export class TextBox extends React.Component {
       secureTextEntry,
       onChangeText,
       autoCapitalize,
+      bottomBorderColor,
     } = this.props;
     return (
       <View>
@@ -182,6 +185,7 @@ export class TextBox extends React.Component {
           enableSuccessCheck={enableSuccessCheck}
           secureTextEntry={secureTextEntry}
           onChangeText={onChangeText}
+          bottomBorderColor={bottomBorderColor}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>

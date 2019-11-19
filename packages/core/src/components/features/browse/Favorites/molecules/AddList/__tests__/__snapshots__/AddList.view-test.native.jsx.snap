@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BundleProductItemsVanilla should render correctly 1`] = `
+<Styled(View)
+  margins={null}
+>
+  <Field
+    autoCapitalize="none"
+    bottomBorderColor="gray.600"
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "autoCapitalize": "sentences",
+          "bottomBorderColor": null,
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "marginBottom": true,
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "onChangeText": [Function],
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "showSuccessCheck": false,
+          "successText": "",
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="listName"
+    id="listName"
+    label="lbl_fav_list_name"
+    maxLength={50}
+    name="listName"
+    type="text"
+  />
+  <Styled(View)
+    margins="20px 0 0 0"
+  >
+    <Field
+      component={[Function]}
+      dataLocator="default_checkbox"
+      disabled={false}
+      inputVariation="inputVariation-1"
+      name="default_checkbox"
+      rightText="lbl_fav_default_list"
+      textMargin="4px 0 0 0"
+    />
+    <Styled(CustomIcon)
+      accessibilityLabel=""
+      color="gray.900"
+      dataLocator=""
+      iconFontName="Icomoon"
+      isButton={false}
+      isDisabled={false}
+      margins="0 0 0 8px"
+      name="heart"
+      onPress={[Function]}
+      size="fs12"
+    />
+  </Styled(View)>
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color="white"
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill="BLUE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    margin="40px 0 0 0"
+    navigation={Object {}}
+    onPress={[Function]}
+    paddings="12px 32px 12px 32px"
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="btn_fav_save"
+    theme={Object {}}
+    type="submit"
+    url=""
+    withNoLineHeight={false}
+  />
+  <Styled(CustomButton)
+    active={false}
+    buttonVariation="fixed-width"
+    color=""
+    customStyle={Object {}}
+    customTextStyle={null}
+    disableButton={false}
+    fill="WHITE"
+    fullWidth=""
+    iconColor="gray.800"
+    iconName="chevron-down"
+    iconSize="fs12"
+    locator=""
+    margin="24px 0 0 0"
+    navigation={Object {}}
+    onPress={[Function]}
+    paddings="12px 32px 12px 32px"
+    selected={false}
+    selectedIcon="chevron-up"
+    showIcon={false}
+    text="btn_fav_cancel"
+    theme={Object {}}
+    type="submit"
+    url=""
+    withNoLineHeight={false}
+  />
+</Styled(View)>
+`;

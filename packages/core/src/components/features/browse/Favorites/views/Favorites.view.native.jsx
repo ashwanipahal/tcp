@@ -12,12 +12,19 @@ import {
 } from '../styles/ Favorites.style.native';
 import ProductListing from '../../ProductListing/views';
 import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '../Favorites.util';
+import ModalWrapper from '../molecules/ModalWrapper';
+import AddList from '../molecules/AddList';
 
 class FavoritesView extends React.PureComponent {
+  currentPopupName = 'addList';
+
   brandOptions;
   // eslint-disable-next-line
   constructor(props) {
     super(props);
+    this.state = {
+      isOpenAddList: false,
+    };
     const { labels, gymSelected, tcpSelected } = props;
     this.brandOptions = [
       {
@@ -87,7 +94,41 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
-  handleEditList = () => {};
+  handleEditList = () => {
+    this.currentPopupName = 'addList';
+    this.setState({
+      isOpenAddList: true,
+    });
+  };
+
+  onCloseModal = () => {
+    this.setState({
+      isOpenAddList: false,
+    });
+  };
+
+  renderModalWrapper = () => {
+    const { labels } = this.props;
+    const { isOpenAddList } = this.state;
+    return (
+      <ModalWrapper
+        labels={labels}
+        modalMargins="0 14px 0 14px"
+        isOpenAddList={isOpenAddList}
+        onCloseModal={this.onCloseModal}
+      >
+        {this.getCurrentPopUp()}
+      </ModalWrapper>
+    );
+  };
+
+  getCurrentPopUp = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === 'addList') {
+      return <AddList labels={labels} />;
+    }
+    return null;
+  };
 
   render() {
     const {
@@ -123,9 +164,9 @@ class FavoritesView extends React.PureComponent {
         filteredItemsList = filteredItemsList.filter(item => item.itemInfo.isTCP);
       }
     }
-
     return (
       <PageContainer>
+        {this.renderModalWrapper()}
         <BodyCopy
           margin="40px 0 0 0"
           dataLocator="fav_lbl_myFavorites"

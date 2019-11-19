@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BundleProductItemsVanilla should render correctly 1`] = `
+<Styled(View)
+  margins={null}
+>
+  <ModalNative
+    childrenMargins="36px 0 0 0"
+    closeIconDataLocator=""
+    closeIconLeftAligned={false}
+    fixedWidth={true}
+    fontSize="fs22"
+    fullWidth={true}
+    headerStyle={
+      Object {
+        "alignItems": "flex-end",
+        "width": "100%",
+      }
+    }
+    heading="lbl_fav_creat_new_list_heading"
+    headingAlign="center"
+    headingFontFamily="secondary"
+    headingFontWeight="bold"
+    horizontalBar={false}
+    inheritedStyles=""
+    isOverlay={true}
+    margins={null}
+    modalHeadingMargin="24px 0 0 0"
+    noscroll={true}
+    onRequestClose={[Function]}
+    stickyCloseIcon={true}
+    stickyHeader={true}
+  />
+</Styled(View)>
+`;
