@@ -34,6 +34,7 @@ import {
   getAllProductsSelect,
   updateAppliedFiltersInState,
   getScrollToTopValue,
+  getPDPLabels,
 } from './SearchDetail.selectors';
 
 import NoResponseSearchDetail from '../views/NoResponseSearchDetail.view';
@@ -147,6 +148,8 @@ class SearchDetailContainer extends React.PureComponent {
       onAddItemToFavorites,
       isLoggedIn,
       labelsLogin,
+      navigation,
+      pdpLabels,
       ...otherProps
     } = this.props;
 
@@ -188,6 +191,8 @@ class SearchDetailContainer extends React.PureComponent {
                 searchedText={this.searchQuery}
                 sortLabels={sortLabels}
                 searchResultSuggestions={searchResultSuggestions}
+                navigation={navigation}
+                pdpLabels={pdpLabels}
                 {...otherProps}
               />
             )}
@@ -249,6 +254,7 @@ function mapStateToProps(state) {
     scrollToTop: getScrollToTopValue(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    pdpLabels: getPDPLabels(state),
   };
 }
 
@@ -317,6 +323,7 @@ SearchDetailContainer.propTypes = {
   onAddItemToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+  pdpLabels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
 };
 
 SearchDetailContainer.defaultProps = {
@@ -345,6 +352,7 @@ SearchDetailContainer.defaultProps = {
   onAddItemToFavorites: null,
   isLoggedIn: false,
   labelsLogin: {},
+  pdpLabels: {},
 };
 
 export default connect(
