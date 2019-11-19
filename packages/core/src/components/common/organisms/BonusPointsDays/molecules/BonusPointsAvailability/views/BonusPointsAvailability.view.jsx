@@ -20,6 +20,7 @@ const BonusPointsAvailability = ({
   getBonusDaysData,
   orderDetails,
   bonusDayAvailableToday,
+  isPlaceRewardsPage,
 }) => {
   return (
     bonusPoints && (
@@ -48,7 +49,7 @@ const BonusPointsAvailability = ({
                 color="black"
                 id={index}
                 data-locator={item.dataLocator}
-                className={btnClass}
+                className={`${btnClass} ${isPlaceRewardsPage ? 'placeRewardsPage-btn' : ''}`}
                 onClick={() =>
                   applyBonusPoints(getBonusDaysData, orderDetails, bonusDayAvailableToday)
                 }

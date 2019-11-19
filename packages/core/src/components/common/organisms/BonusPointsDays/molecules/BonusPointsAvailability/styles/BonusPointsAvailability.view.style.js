@@ -10,6 +10,9 @@ const styles = css`
     font-size: ${props => props.theme.typography.fontSizes.fs10};
     color: ${props => props.theme.colorPalette.gray[900]};
   }
+  .placeRewardsPage-btn {
+    pointer-events: none;
+  }
   .disable-btn {
     opacity: 0.5;
     color: ${props => props.theme.colorPalette.gray[700]};
