@@ -182,7 +182,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
         id: 'plus',
       },
     ];
-    const color = { name: 'WHITE', hasFits: true, fits };
+    const color = { name: 'TIDAL', hasFits: true, fits };
     const currentProduct = {
       colorFitsSizesMap: [
         {
@@ -199,7 +199,7 @@ describe('ProductAddToBagVanilla native should render correctly', () => {
     const sizes = [];
     const fit = { sizes };
     const fits = [fit];
-    const color = { name: 'WHITE', hasFits: true, fits };
+    const color = { name: 'TIDAL', hasFits: true, fits };
     const currentProduct = {
       colorFitsSizesMap: [
         {
