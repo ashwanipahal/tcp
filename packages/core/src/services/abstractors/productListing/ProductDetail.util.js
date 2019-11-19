@@ -351,6 +351,29 @@ const getCategoryId = (breadCrumbs, baseProduct, categoryPath) => {
     : categoryPath;
 };
 
+const getCategoryValue = baseProduct => {
+  let categoryId = 'global';
+  const {
+    categoryPath3_catMap: categoryPath3CatMap,
+    categoryPath2_catMap: categoryPath2CatMap,
+  } = baseProduct;
+  try {
+    if (categoryPath3CatMap) {
+      const [, catPath2, catPath3] = categoryPath3CatMap[0].split('|')[0].split('>');
+      categoryId = [catPath2, catPath3].join('|');
+    } else if (categoryPath2CatMap) {
+      categoryId = categoryPath2CatMap[0]
+        .split('|')[0]
+        .split('>')
+        .join('|');
+    }
+  } catch (err) {
+    categoryId = 'global';
+  }
+
+  return categoryId;
+};
+
 const getBaseProduct = product => {
   return product[0] || product;
 };
@@ -455,5 +478,6 @@ const processHelperUtil = {
   setDefault,
   getDefaultColorAlternateSizes,
   getIsAdditionalStyles,
+  getCategoryValue,
 };
 export default processHelperUtil;

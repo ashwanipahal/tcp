@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from '@tcp/core/src/components/common/atoms';
+import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Recommendations from '@tcp/web/src/components/common/molecules/Recommendations';
 import Carousel from '../../../../common/molecules/Carousel';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BundleProduct.style';
@@ -114,6 +116,8 @@ class BundleProduct extends React.PureComponent {
       outfitLabels,
       addToBagErrorId,
       addToBagError,
+      isKeepAliveEnabled,
+      outOfStockLabels,
     } = this.props;
     return (
       <Row fullBleed className="product-items-section">
@@ -129,6 +133,8 @@ class BundleProduct extends React.PureComponent {
             outfitLabels={outfitLabels}
             addToBagErrorId={addToBagErrorId}
             addToBagError={addToBagError}
+            isKeepAliveEnabled={isKeepAliveEnabled}
+            outOfStockLabels={outOfStockLabels}
             className="bundle-products-list"
           />
         </Col>
@@ -151,6 +157,43 @@ class BundleProduct extends React.PureComponent {
         </Col>
         <Col colSize={{ small: 2, medium: 2, large: 3 }}>{this.getSocialConnectWidget()}</Col>
       </Row>
+    );
+  };
+
+  // This is required for reommendations.
+  getCatIdForRecommendation = () => {
+    const { breadCrumbs } = this.props;
+    if (breadCrumbs) {
+      const category = breadCrumbs.map((crumb, index) => {
+        const { displayName } = crumb;
+        const separationChar = index !== breadCrumbs.length - 1 ? ':' : '';
+        return displayName + separationChar;
+      });
+      return category.join('');
+    }
+    return '';
+  };
+
+  getRecommendations = () => {
+    const { itemPartNumber, pdpLabels } = this.props;
+    const categoryId = this.getCatIdForRecommendation();
+    const recommendationAttributes = {
+      variations: 'moduleO',
+      page: Constants.RECOMMENDATIONS_PAGES_MAPPING.COLLECTION,
+      categoryName: categoryId,
+      partNumber: itemPartNumber,
+      showLoyaltyPromotionMessage: false,
+      headerAlignment: 'left',
+    };
+    return (
+      <div className="product-detail-section">
+        <Recommendations {...recommendationAttributes} />
+        <Recommendations
+          headerLabel={pdpLabels.recentlyViewed}
+          portalValue={Constants.RECOMMENDATIONS_MBOXNAMES.RECENTLY_VIEWED}
+          {...recommendationAttributes}
+        />
+      </div>
     );
   };
 
@@ -203,6 +246,7 @@ class BundleProduct extends React.PureComponent {
                 >
                   {this.getProductSummary(currentColorEntry)}
                   {this.getProductDescription()}
+                  {this.getRecommendations()}
                 </Col>
               </Row>
               {this.getBundleProductsList()}
@@ -236,6 +280,8 @@ BundleProduct.propTypes = {
   isLoggedIn: PropTypes.bool,
   addToBagErrorId: PropTypes.string,
   addToBagError: PropTypes.string,
+  isKeepAliveEnabled: PropTypes.bool.isRequired,
+  outOfStockLabels: PropTypes.shape({}),
 };
 
 BundleProduct.defaultProps = {
@@ -253,6 +299,7 @@ BundleProduct.defaultProps = {
   isLoggedIn: false,
   addToBagErrorId: '',
   addToBagError: '',
+  outOfStockLabels: {},
 };
 
 export default withStyles(BundleProduct, styles);

@@ -136,6 +136,7 @@ export const parseProductFromAPI = (
   const categoryPathMap = processHelperUtil.getCategoryPathMap(baseProduct);
   const categoryPath = processHelperUtil.getCategory(baseProduct);
   const categoryId = processHelperUtil.getCategoryId(breadCrumbs, baseProduct, categoryPath);
+  const category = processHelperUtil.getCategoryValue(baseProduct);
 
   return processResponse({
     baseProduct,
@@ -149,6 +150,7 @@ export const parseProductFromAPI = (
     reviewsCount,
     alternateSizes,
     breadCrumbs,
+    category,
   });
 };
 
@@ -186,7 +188,7 @@ const formatSlotData = (slotItems, language) => {
  * @param {object} layoutConfig -  contains categoryId and pageName
  * @summary This will get the layout of the page from CMS based on categoryId
  */
-export const layoutResolver = async ({ categoryId, pageName }) => {
+export const layoutResolver = async ({ category, pageName }) => {
   let modules = {};
   const layout = {};
   try {
@@ -199,12 +201,17 @@ export const layoutResolver = async ({ categoryId, pageName }) => {
         channel: channelId,
         lang: language === 'en' ? '' : language,
         path: pageName,
-        category: categoryId ? categoryId.split('>').join('|') : global,
+        category,
       },
     };
-    const {
+    let {
       data: { contentLayout },
     } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig });
+    if (!(contentLayout && contentLayout.length)) {
+      ({
+        data: { contentLayout },
+      } = await handler.fetchModuleDataFromGraphQL({ ...moduleConfig, category: 'global' }));
+    }
     const moduleObjects = [];
     contentLayout.forEach(data => {
       const dataItems = data.items;

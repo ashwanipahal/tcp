@@ -358,6 +358,15 @@ class ProductsGridItem extends React.PureComponent {
     );
   };
 
+  renderAddToBagLabel = (isBundleProduct, keepAlive) => {
+    const {
+      outOfStockLabels,
+      labels: { shopCollection, addToBag },
+    } = this.props;
+    const addToBagLabel = isBundleProduct ? shopCollection : addToBag;
+    return keepAlive ? outOfStockLabels.outOfStockCaps : addToBagLabel;
+  };
+
   errorMsgDisplay = () => {
     const {
       AddToFavoriteErrorMsg,
@@ -376,7 +385,7 @@ class ProductsGridItem extends React.PureComponent {
     ) : null;
   };
 
-  renderSubmitButton = itemNotAvailable => {
+  renderSubmitButton = (keepAlive, itemNotAvailable) => {
     const {
       labels,
       item: {
@@ -420,9 +429,10 @@ class ProductsGridItem extends React.PureComponent {
               ? this.handleQuickViewOpenClick
               : this.handleViewBundleClick
           }
+          disabled={keepAlive}
           fill={isFavoriteView ? 'BLUE' : ''}
         >
-          {isBundleProduct ? 'SHOP COLLECTION' : labels.addToBag}
+          {this.renderAddToBagLabel(isBundleProduct, keepAlive)}
         </Button>
       </div>
     );
@@ -470,7 +480,7 @@ class ProductsGridItem extends React.PureComponent {
           offerPrice: itemOfferPrice,
           long_product_title: longProductTitle,
         },
-        itemInfo: { itemId, quantity, keepAlive: keepAliveFlag, availability } = {},
+        itemInfo: { itemId, quantity, availability } = {},
         quantityPurchased,
         colorsMap,
         imagesByColor,
@@ -486,7 +496,6 @@ class ProductsGridItem extends React.PureComponent {
       //  isEvenElement,
       //  siblingProperties,
       isPLPredesign,
-      isKeepAliveKillSwitch,
       loadedProductCount,
       className,
       sqnNmbr,
@@ -495,6 +504,8 @@ class ProductsGridItem extends React.PureComponent {
       isFavoriteView,
       viaModule,
       forwardedRef,
+      outOfStockLabels,
+      isKeepAliveEnabled,
     } = this.props;
 
     logger.info(viaModule);
@@ -528,14 +539,14 @@ class ProductsGridItem extends React.PureComponent {
       badge3,
       //  isClearance,
       //  isBossEligible,
-      keepAlive = keepAliveFlag,
+      keepAlive: keepAliveProduct,
     } = currentColorMiscInfo;
     // const miscInfo = {
     //   isBossEligible,
     //   isBopisEligible,
     //   isClearance,
     // };
-    const isKeepAlive = keepAlive && isKeepAliveKillSwitch;
+    const keepAlive = isKeepAliveEnabled && keepAliveProduct;
     const topBadge = getTopBadge(isMatchingFamily, badge1);
     const { listPriceForColor, offerPriceForColor } = this.getPriceForProduct(
       listPrice,
@@ -592,9 +603,9 @@ class ProductsGridItem extends React.PureComponent {
               requestId: unbxdId,
             }}
             isPLPredesign={isPLPredesign}
-            keepAlive={isKeepAlive}
+            keepAlive={keepAlive}
             isSoldOut={itemNotAvailable}
-            soldOutLabel={labels.lbl_fav_soldOut}
+            soldOutLabel={outOfStockLabels.outOfStockCaps}
           />
           {EditButton(
             { onQuickViewOpenClick, isFavoriteView, labels },
@@ -649,7 +660,9 @@ class ProductsGridItem extends React.PureComponent {
             promotionalMessageModified,
             promotionalPLCCMessageModified
           )}
-          {this.renderSubmitButton(itemNotAvailable)}
+          <div className="fulfillment-section">
+            {this.renderSubmitButton(keepAlive, itemNotAvailable)}
+          </div>
           {!itemNotAvailable && (
             <div className="favorite-move-purchase-section">
               {PurchaseSection(quantity, labels, quantityPurchased)}

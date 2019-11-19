@@ -62,6 +62,8 @@ class ProductBasicInfo extends React.Component {
       className,
       // isShowFavoriteCount,
       productInfo: { ratingsProductId },
+      keepAlive,
+      outOfStockLabels,
       productMiscInfo,
       AddToFavoriteErrorMsg,
     } = this.props;
@@ -78,6 +80,11 @@ class ProductBasicInfo extends React.Component {
           className="inline-badge-item"
           text={badge}
         />
+        {keepAlive && (
+          <BodyCopy color="red.500" fontSize="fs10" fontFamily="secondary">
+            {outOfStockLabels.itemSoldOutMessage}
+          </BodyCopy>
+        )}
         {AddToFavoriteErrorMsg && (
           <Notification
             status="error"
@@ -132,6 +139,10 @@ ProductBasicInfo.propTypes = {
   isGiftCard: PropTypes.bool.isRequired,
   onAddItemToFavorites: PropTypes.func.isRequired,
   isBundleProduct: PropTypes.bool,
+  keepAlive: PropTypes.bool,
+  outOfStockLabels: PropTypes.shape({
+    itemSoldOutMessage: PropTypes.string,
+  }),
   productMiscInfo: PropTypes.shape({
     isInDefaultWishlist: PropTypes.bool,
   }),
@@ -144,6 +155,10 @@ ProductBasicInfo.defaultProps = {
   pdpUrl: null,
   badge: '',
   isBundleProduct: false,
+  outOfStockLabels: {
+    itemSoldOutMessage: '',
+  },
+  keepAlive: false,
   productMiscInfo: {
     isInDefaultWishlist: false,
   },
