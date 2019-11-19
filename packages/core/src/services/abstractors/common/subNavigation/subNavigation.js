@@ -12,14 +12,12 @@ export const DataAbstractor = {
     return handler
       .fetchModuleDataFromGraphQL({
         name: 'subNavigation',
-        data: { category, brand, country, channel },
+        data: { category, brand, country, channel, type: 'subNavigation' },
       })
       .then(response => (response ? response.data : {}));
   },
 
   processData: async (data, category) => {
-    console.log('');
-    console.log(data);
     if (Object.keys(data).length) {
       const subNavigation = data.subNavigation.map(item => {
         const tempItem = Object.assign({}, item);

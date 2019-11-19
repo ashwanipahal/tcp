@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleApplyNowModal } from '@tcp/core/src/components/common/molecules/ApplyNowPLCCModal/container/ApplyNowModal.actions';
+import accountConstants from '@tcp/core/src/components/features/account/Account/Account.constants';
 import AccountOverviewComponent from '../views/AccountOverview.view';
 import getLinks from './AccountOverview.selectors';
 import { setTrackOrderModalMountedState } from '../../TrackOrder/container/TrackOrder.actions';
@@ -44,8 +45,8 @@ AccountOverviewContainer.defaultProps = {
 
 export const mapStateToProps = state => {
   return {
-    accountFooterLinks: getLinks(state, 'account-footer-links'),
-    legalLinks: getLinks(state, 'account-legal-links'),
+    accountFooterLinks: getLinks(state, accountConstants.FOOTER_LINKS),
+    legalLinks: getLinks(state, accountConstants.LEGAL_LINKS),
   };
 };
 
