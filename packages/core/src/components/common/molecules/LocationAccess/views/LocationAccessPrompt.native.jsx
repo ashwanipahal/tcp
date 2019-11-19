@@ -1,12 +1,21 @@
 import React from 'react';
 import { getScreenWidth } from '@tcp/core/src/utils/utils.app';
 import ModalNative from '../../Modal/view/Modal.native';
-import { Wrapper, Container, StyledImage, Touchable } from '../styles/LocationAccess.native';
+import {
+  Wrapper,
+  Container,
+  StyledImage,
+  Touchable,
+  StyledBodyCopy,
+  StyledButton,
+  StyledAnchor,
+  MessageContainer,
+} from '../styles/LocationAccess.native';
 
-// const closeImage = require('../../../../../../src/assets/dark_close.png');
+const locationImage = require('../../../../../../src/assets/location.png');
 const closeImage = require('../../../../../../src/assets/close.png');
 
-const PROPMT_WIDTH = getScreenWidth() - 40;
+const PROPMT_WIDTH = getScreenWidth() - 60;
 
 class LocationAccessPrompt extends React.PureComponent {
   constructor() {
@@ -15,11 +24,11 @@ class LocationAccessPrompt extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (true) {
-      this.setState({
-        isOpenBool: true,
-      });
-    }
+    // if (true) {
+    //   this.setState({
+    //     isOpenBool: true,
+    //   });
+    // }
   }
 
   openModal = () => {
@@ -35,9 +44,52 @@ class LocationAccessPrompt extends React.PureComponent {
       <ModalNative visible={isOpenBool} onRequestClose={this.openModal} customTransparent>
         <Container>
           <Wrapper width={PROPMT_WIDTH}>
+            <StyledImage source={locationImage} width="35px" height="35px" marginTop="15px" />
             <Touchable accessibilityRole="button" onPress={() => this.openModal}>
               <StyledImage source={closeImage} width="15px" height="15px" />
             </Touchable>
+            <MessageContainer>
+              <StyledBodyCopy
+                text="Find It In Store Today"
+                textAlign="center"
+                fontWeight="black"
+                fontFamily="secondary"
+                fontSize="fs18"
+                marginTop="15px"
+              />
+
+              <StyledBodyCopy
+                text="Turn on your location so we can show you every style, color and size available in your nearest store "
+                textAlign="center"
+                fontWeight="black"
+                fontFamily="secondary"
+                fontSize="fs12"
+                marginTop="15px"
+              />
+
+              <StyledBodyCopy
+                text="Cool. right?!"
+                textAlign="center"
+                fontWeight="black"
+                fontFamily="secondary"
+                fontSize="fs12"
+              />
+
+              <StyledButton
+                text="TURN ON LOCATION"
+                fill="BLACK"
+                marginTop="12px"
+                width="320px"
+                // onPress={() => requestCameraPermission()}
+              />
+
+              <StyledAnchor
+                text="May be later"
+                underline
+                fontSizeVariation="large"
+                marginTop="18px"
+              />
+            </MessageContainer>
           </Wrapper>
         </Container>
       </ModalNative>
