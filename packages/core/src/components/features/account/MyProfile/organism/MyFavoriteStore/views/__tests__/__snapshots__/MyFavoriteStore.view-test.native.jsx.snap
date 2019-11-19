@@ -67,7 +67,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
   birthdaySaving={false}
   className=""
   ctaLink="accountOverviewMobile"
-  ctaTitle="lbl_common_updateFavoriteStore"
+  ctaTitle="lbl_common_addAStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
   title="lbl_common_myFavoriteStore"
@@ -90,7 +90,7 @@ exports[`MyFavoriteStore Component should renders correctly when isMyPreferences
   birthdaySaving={false}
   className=""
   ctaLink="accountOverviewMobile"
-  ctaTitle="lbl_common_edit"
+  ctaTitle="lbl_common_addAStore"
   dataLocator="myFavStoreLbl"
   handleComponentChange={[Function]}
   title="lbl_common_myFavoriteStore"
