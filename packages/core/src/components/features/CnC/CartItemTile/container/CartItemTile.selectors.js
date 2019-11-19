@@ -127,6 +127,18 @@ export const getIsStoreBOSSEligible = product => {
   return product.getIn(['miscInfo', 'isStoreBOSSEligible']);
 };
 
+export const getStoreTodayOpenRange = product => {
+  return product.getIn(['miscInfo', 'storeTodayOpenRange']);
+};
+
+export const getStoreTomorrowOpenRange = product => {
+  return product.getIn(['miscInfo', 'storeTomorrowOpenRange']);
+};
+
+export const getStorePhoneNumber = product => {
+  return product.getIn(['miscInfo', 'storePhoneNumber']);
+};
+
 export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
@@ -405,6 +417,9 @@ export const getProductDetails = tile => {
       clearanceItem: getClearanceItem(tile),
       isInventoryAvailBOSS: getIsInventoryAvailBOSS(tile),
       isStoreBOSSEligible: getIsStoreBOSSEligible(tile),
+      storeTodayOpenRange: getStoreTodayOpenRange(tile),
+      storeTomorrowOpenRange: getStoreTomorrowOpenRange(tile),
+      storePhoneNumber: getStorePhoneNumber(tile),
     },
   };
 };

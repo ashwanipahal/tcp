@@ -21,6 +21,7 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
       smsInfo,
       shipTo,
       emailSignUp,
+      hasSetGiftOptions,
     } = formData;
     let {
       shipTo: { emailAddress },
@@ -53,6 +54,7 @@ export function* submitShippingSectionData({ payload: { navigation, ...formData 
         emailAddress,
         isGuestUser,
         emailSignUp,
+        hasSetGiftOptions,
       });
     }
     const isVenmoInProgress = yield select(selectors.isVenmoPaymentInProgress);

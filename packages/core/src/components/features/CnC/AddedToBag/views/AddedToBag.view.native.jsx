@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Constants from '@tcp/core/src/components/common/molecules/Recommendations/container/Recommendations.constants';
+import Loader from '@tcp/core/src/components/common/molecules/Loader';
 import Recommendations from '../../../../../../../mobileapp/src/components/common/molecules/Recommendations';
 import Modal from '../../../../common/molecules/Modal';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
@@ -150,6 +151,7 @@ const AddedToBag = ({
           </AddedToBagWrapper>
         </StyledWrapper>
       </StyledBodyWrapper>
+      <Loader />
     </Modal>
   );
 };

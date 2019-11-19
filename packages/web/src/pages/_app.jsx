@@ -174,6 +174,13 @@ class TCPWebApp extends App {
     } catch (e) {
       logger.info('Error occurred in Raygun initialization', e);
     }
+
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        localStorage.setItem('lat', pos.coords.latitude);
+        localStorage.setItem('lng', pos.coords.longitude);
+      });
+    }
   }
 
   componentDidUpdate() {
@@ -212,7 +219,8 @@ class TCPWebApp extends App {
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
       // response headers
-      apiConfig.headers = res.getHeaders();
+      apiConfig.resHeaders = res.getHeaders();
+      apiConfig.reqHeaders = req.headers;
       // optimizely headers
       const optimizelyHeadersObject = {};
       const setCookieHeaderList = setCookie.parse(res).map(TCPWebApp.parseCookieResponse);
