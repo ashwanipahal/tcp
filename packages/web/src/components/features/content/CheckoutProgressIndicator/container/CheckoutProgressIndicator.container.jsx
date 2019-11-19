@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'next/router';
 import { PropTypes } from 'prop-types';
 import BagPageSelector from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import CheckoutProgressIndicatorComponent from '../views';
@@ -41,9 +40,7 @@ CheckoutProgressIndicator.propTypes = {
   moveToCheckoutStage: PropTypes.func.isRequired,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CheckoutProgressIndicator)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CheckoutProgressIndicator);

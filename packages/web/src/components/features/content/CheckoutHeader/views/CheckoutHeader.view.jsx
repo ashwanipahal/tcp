@@ -8,7 +8,7 @@ import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelt
 import style from '../CheckoutHeader.style';
 import { BrandTabs } from '../../Header/molecules';
 import CheckoutProgressIndicator from '../../CheckoutProgressIndicator';
-import { getIconPath } from '../../../../../../../core/src/utils';
+import utils, { getIconPath } from '../../../../../../../core/src/utils';
 
 /**
  * This component will render the CheckoutHeader for checkout journey
@@ -26,13 +26,22 @@ const CheckoutHeader = ({
   itemsCount,
   isExpressCheckoutPage,
   bagLoading,
+  cartItems,
+  router,
 }) => {
   return (
     <header className={`${className} content-wrapper`}>
       <Row className="header-topnav__row">
         <button
           onClick={() => {
-            checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            const checkoutStage = utils.getObjectValue(router, undefined, 'query', 'section');
+            const availableStages = checkoutUtil.getAvailableStages(cartItems);
+            const currentIndex = availableStages.indexOf(checkoutStage);
+            if (currentIndex === 0) {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            } else {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES[`${availableStages[currentIndex - 1]}Page`]);
+            }
           }}
           className="exitFromCheckout"
         >
@@ -116,7 +125,9 @@ const CheckoutHeader = ({
             large: 12,
           }}
         >
-          {itemsCount > 0 && !isInternationalShipping && <CheckoutProgressIndicator />}
+          {itemsCount > 0 && !isInternationalShipping && (
+            <CheckoutProgressIndicator router={router} />
+          )}
         </Col>
       </Row>
     </header>
@@ -131,6 +142,8 @@ CheckoutHeader.propTypes = {
   itemsCount: PropTypes.number.isRequired,
   isExpressCheckoutPage: PropTypes.bool,
   bagLoading: PropTypes.bool,
+  cartItems: PropTypes.shape({}).isRequired,
+  router: PropTypes.shape({}).isRequired,
 };
 
 CheckoutHeader.defaultProps = {
