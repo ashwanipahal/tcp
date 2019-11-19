@@ -2,8 +2,8 @@
 
 exports[`RichText should render correctly 1`] = `
 <WebView
-  cacheEnabled={true}
   actionHandler={[Function]}
+  cacheEnabled={true}
   domStorageEnabled={false}
   isApplyDeviceHeight={false}
   isNativeView={false}

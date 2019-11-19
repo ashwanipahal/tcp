@@ -241,9 +241,7 @@
       "**/redux-persist-transform-immutable",
       "**/redux-persist-transform-immutable/**",
       "**/react-native-video",
-      "**/react-native-video/**",
-      "**/react-native-check-notification-permission",
-      "**/react-native-check-notification-permission/**"
+      "**/react-native-video/**"
     ]
   }
 }
