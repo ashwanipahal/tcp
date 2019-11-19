@@ -31,6 +31,7 @@ exports[`Add gift card form component render error message 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -84,6 +85,7 @@ exports[`Add gift card form component render error message 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -138,6 +140,7 @@ exports[`Add gift card form component render error message 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -312,6 +315,7 @@ exports[`Add gift card form component render saveToAccountEnabled 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -365,6 +369,7 @@ exports[`Add gift card form component render saveToAccountEnabled 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -419,6 +424,7 @@ exports[`Add gift card form component render saveToAccountEnabled 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
@@ -574,6 +580,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -627,6 +634,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
           "_foldedDefaultProps": Object {
             "ariaLabel": "input",
             "autoCapitalize": "sentences",
+            "bottomBorderColor": null,
             "dataLocator": "input-field",
             "enableSuccessCheck": false,
             "id": "input",
@@ -681,6 +689,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
             "_foldedDefaultProps": Object {
               "ariaLabel": "input",
               "autoCapitalize": "sentences",
+              "bottomBorderColor": null,
               "dataLocator": "input-field",
               "enableSuccessCheck": false,
               "id": "input",
