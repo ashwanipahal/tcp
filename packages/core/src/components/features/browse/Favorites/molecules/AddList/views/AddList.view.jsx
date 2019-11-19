@@ -55,17 +55,7 @@ class AddList extends React.PureComponent {
   }
 }
 
-const validateMethod = createValidateMethod(
-  getStandardConfig([
-    'acceptAddChildAgreement',
-    'childName',
-    'firstName',
-    'lastName',
-    'childBirthMonth',
-    'childBirthYear',
-    'gender',
-  ])
-);
+const validateMethod = createValidateMethod(getStandardConfig(['wishlistName']));
 
 AddList.propTypes = {
   labels: PropTypes.shape({}),

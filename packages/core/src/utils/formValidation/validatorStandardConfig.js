@@ -9,6 +9,9 @@ export const formValidationMessages = {
   gender: {
     required: 'lbl_err_gender_required',
   },
+  wishlistName: {
+    nonEmpty: 'lbl_err_listname_nonempty',
+  },
   childName: {
     nonEmpty: 'lbl_err_name_nonempty',
     name: 'lbl_err_name_name',
@@ -209,6 +212,9 @@ export const formValidationRules = {
     nonEmpty: true,
     name: true,
     maxLength: 50,
+  },
+  wishlistName: {
+    nonEmpty: true,
   },
   acceptAddChildAgreement: {
     required: true,
