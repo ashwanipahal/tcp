@@ -226,7 +226,8 @@ class TCPWebApp extends App {
       // preview date if any from the query param
       apiConfig.previewDate = req.query.preview_date || '';
       // response headers
-      apiConfig.headers = res.getHeaders();
+      apiConfig.resHeaders = res.getHeaders();
+      apiConfig.reqHeaders = req.headers;
       // get country from cookie
       apiConfig.savedCountry = TCPWebApp.getCountryFromCookies(req.cookies);
       // optimizely headers

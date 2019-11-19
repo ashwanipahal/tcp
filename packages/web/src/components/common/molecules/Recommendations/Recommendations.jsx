@@ -136,7 +136,7 @@ class Recommendations extends Component {
           >
             {headerLabel}
           </Heading>
-          <Row fullBleed>
+          <Row fullBleed className="recommendations-section-row">
             <Col
               colSize={{
                 small: 6,
