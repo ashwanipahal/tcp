@@ -81,6 +81,7 @@ class PickupStoreSelectionFormContainer extends React.Component {
     this.getIsBopisAvailable = this.getIsBopisAvailable.bind(this);
     this.preferredStore = null;
     this.isAutoSearchTriggered = false;
+    this.isZipCodePrePopulated = false;
     this.initialValues = {
       addressLocation: '',
       distance: 25,
@@ -99,7 +100,10 @@ class PickupStoreSelectionFormContainer extends React.Component {
           address: { zipCode },
         },
       } = defaultStore;
-      changeDispatch('addressLocation', zipCode);
+      if (!this.isZipCodePrePopulated) {
+        changeDispatch('addressLocation', zipCode);
+        this.isZipCodePrePopulated = true;
+      }
       // submitting the search form forcefully in case of step-2
       const autoSearch = isSkuResolved;
       if (autoSearch) {

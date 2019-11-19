@@ -164,7 +164,11 @@ const renderAddToBagContainer = (
   handleAddToBag,
   outfitProduct,
   plpLabels,
-  sizeChartLinkVisibility
+  sizeChartLinkVisibility,
+  addToBagError,
+  isBundleProduct,
+  toastMessage
+  // eslint-disable-next-line max-params
 ) => {
   return (
     <ProductAddToBagContainer
@@ -172,11 +176,14 @@ const renderAddToBagContainer = (
       currentProduct={outfitProduct}
       plpLabels={plpLabels}
       sizeChartLinkVisibility={sizeChartLinkVisibility}
+      errorOnHandleSubmit={addToBagError}
       isOutfitPage
       simplifiedProductPickupView
       onChangeColor={(colorName, selectedSizeName, selectedFitName, selectedQuantity, colorIndex) =>
         onChangeColor(colorIndex, setCurrentColorIndex)
       }
+      isBundleProduct={isBundleProduct}
+      toastMessage={toastMessage}
     />
   );
 };
@@ -204,6 +211,8 @@ const OutfitDetailsView = ({
   isLoggedIn,
   addToFavorites,
   isBundleProduct,
+  addToBagError,
+  toastMessage,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [isAddedToFav, setIsAddedToFav] = useState(false);
@@ -356,12 +365,16 @@ const OutfitDetailsView = ({
         handleAddToBag,
         outfitProduct,
         plpLabels,
-        sizeChartLinkVisibility
+        sizeChartLinkVisibility,
+        addToBagError,
+        isBundleProduct,
+        toastMessage
       )}
-      {renderPickUpStore({
-        currentProduct: outfitProduct,
-        selectedColorProductId: colorProductId,
-      })}
+      {!isBundleProduct &&
+        renderPickUpStore({
+          currentProduct: outfitProduct,
+          selectedColorProductId: colorProductId,
+        })}
     </OutfitProductWrapper>
   );
 };
@@ -382,6 +395,8 @@ OutfitDetailsView.propTypes = {
   addToFavorites: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   isBundleProduct: PropTypes.bool,
+  addToBagError: PropTypes.string,
+  toastMessage: PropTypes.func.isRequired,
 };
 
 OutfitDetailsView.defaultProps = {
@@ -397,6 +412,7 @@ OutfitDetailsView.defaultProps = {
   isLoggedIn: false,
   addToFavorites: () => {},
   isBundleProduct: false,
+  addToBagError: '',
 };
 
 // export default withStyles(OutfitDetailsView, OutfitProductStyle);

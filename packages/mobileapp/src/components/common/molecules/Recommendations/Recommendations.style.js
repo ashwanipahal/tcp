@@ -16,6 +16,7 @@ export const AccordionContainer = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 

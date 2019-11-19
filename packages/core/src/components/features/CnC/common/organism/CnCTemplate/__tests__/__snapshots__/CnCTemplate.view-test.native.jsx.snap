@@ -57,6 +57,8 @@ exports[`CnCCommonTemplate Page should render correctly if on confirmation page 
       pageCategory={Object {}}
       showAccordian={true}
     />
+    <Connect(ConfirmationAccountFormContainer) />
+    <Connect(PersonalizedCoupons) />
     <Connect(Recommendations)
       page="checkout"
       variation="moduleO"

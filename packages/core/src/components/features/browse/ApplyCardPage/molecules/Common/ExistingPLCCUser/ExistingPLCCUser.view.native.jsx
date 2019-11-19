@@ -18,7 +18,13 @@ import { readCookieMobileApp } from '../../../../../../../../../mobileapp/src/ut
 
 const headerImage = require('../../../../../../../assets/tcp-cc.png');
 
-const ExistingPLCCUserView = ({ labels, existingCustomerDetails, navigation, toggleModal }) => {
+const ExistingPLCCUserView = ({
+  labels,
+  existingCustomerDetails,
+  navigation,
+  togglePLCCModal,
+  isRtpsFlow,
+}) => {
   const [bagItems, setBagItems] = useState(0);
   const setCount = () => {
     const cartValuePromise = readCookieMobileApp('cartItemsCount');
@@ -48,27 +54,33 @@ const ExistingPLCCUserView = ({ labels, existingCustomerDetails, navigation, tog
             color="white"
             buttonVariation="variable-width"
             onPress={() => {
-              toggleModal();
-              navigation.navigate('bag');
+              togglePLCCModal({ isPLCCModalOpen: false, status: null });
+              if (!isRtpsFlow) {
+                navigation.navigate('bag');
+              } else {
+                navigation.goBack();
+              }
             }}
             text={getLabelValue(labels, 'lbl_PLCCForm_checkout')}
             width="90%"
           />
         </ButtonWrapper>
       ) : null}
-      <CheckoutButtonWrapper>
-        <Button
-          fill={bagItems ? 'WHITE' : 'BLUE'}
-          type="submit"
-          color={bagItems ? 'black' : 'white'}
-          buttonVariation="variable-width"
-          text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
-          onPress={() => {
-            navigation.navigate('Home');
-          }}
-          width="90%"
-        />
-      </CheckoutButtonWrapper>
+      {!isRtpsFlow && (
+        <CheckoutButtonWrapper>
+          <Button
+            fill={bagItems ? 'WHITE' : 'BLUE'}
+            type="submit"
+            color={bagItems ? 'black' : 'white'}
+            buttonVariation="variable-width"
+            text={getLabelValue(labels, 'lbl_PLCCForm_continueShopping')}
+            onPress={() => {
+              navigation.navigate('Home');
+            }}
+            width="90%"
+          />
+        </CheckoutButtonWrapper>
+      )}
       <BottomContainer>
         <StyledBodyCopy
           fontSize="fs10"
@@ -96,7 +108,12 @@ ExistingPLCCUserView.propTypes = {
   }).isRequired,
   existingCustomerDetails: PropTypes.string.isRequired,
   navigation: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  togglePLCCModal: PropTypes.func.isRequired,
+  isRtpsFlow: PropTypes.bool,
+};
+
+ExistingPLCCUserView.defaultProps = {
+  isRtpsFlow: false,
 };
 
 export default ExistingPLCCUserView;

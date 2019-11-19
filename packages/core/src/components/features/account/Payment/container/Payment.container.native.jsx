@@ -26,6 +26,7 @@ import {
   getPaymentBannerContentId,
 } from './Payment.selectors';
 import PaymentView from '../views/PaymentView';
+import CardViewSkeleton from '../skeleton/CardViewSkeleton.view.native';
 
 export class PaymentContainer extends React.Component<Props> {
   static propTypes = {
@@ -45,6 +46,7 @@ export class PaymentContainer extends React.Component<Props> {
     showNotificationCaptcha: PropTypes.bool,
     clearPaymentNotification: PropTypes.func,
     labels: PropTypes.shape({}),
+    isFetching: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -64,6 +66,7 @@ export class PaymentContainer extends React.Component<Props> {
     showNotificationCaptcha: '',
     clearPaymentNotification: () => {},
     labels: {},
+    isFetching: false,
   };
 
   componentDidMount() {
@@ -99,8 +102,12 @@ export class PaymentContainer extends React.Component<Props> {
       showNotificationCaptcha,
       labels,
       paymentBannerRichText,
+      isFetching,
     } = this.props;
     const updatedLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };
+    if (isFetching) {
+      return <CardViewSkeleton labels={updatedLabels} />;
+    }
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}

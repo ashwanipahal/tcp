@@ -1,7 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
-import { BodyCopy, Col, Row, SelectBox, TextBox } from '../../../../../common/atoms';
+import { BodyCopy, Col, Row, TextBox } from '../../../../../common/atoms';
+import Select from '../../../../../common/atoms/Select';
 import { calendarDaysMap, calendarYearsMap } from '../../utils/DateOfBirthHelper';
 import { MONTH_OPTIONS_MAP_WITH_EMPTY as months } from '../../RewardsCard.constants';
 import StyledPersonalFormWrapper from './styles/PersonalInformationFormWrapper.style';
@@ -41,7 +42,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                   name="month"
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_month')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_month')}
-                  component={SelectBox}
+                  component={Select}
                   options={months}
                   dataLocator={getLocator('plcc_date')}
                   className="field_dob"
@@ -58,7 +59,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                   name="date"
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_day')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_day')}
-                  component={SelectBox}
+                  component={Select}
                   options={calendarDaysMap()}
                   dataLocator={getLocator('plcc_month')}
                   className="field_dob"
@@ -75,7 +76,7 @@ export default class PersonalInformationFormWrapper extends React.PureComponent 
                   name="year"
                   placeholder={getLabelValue(labels, 'lbl_PLCCForm_year')}
                   title={getLabelValue(labels, 'lbl_PLCCForm_year')}
-                  component={SelectBox}
+                  component={Select}
                   options={calendarYearsMap()}
                   dataLocator={getLocator('plcc_year')}
                   className="field_dob"

@@ -11,7 +11,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-hSdWYo",
+        "componentId": "sc-brqgnP",
         "isStatic": true,
         "rules": Array [
           "
@@ -31,6 +31,9 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
     position: relative;
     min-width: 100%;
   }
+  .outfit-sku .size-error-message {
+    max-width: 90%;
+  }
 ",
           ";
 ",
@@ -39,7 +42,7 @@ exports[`BundleProductItemsVanilla should render correctly 1`] = `
       "displayName": "Styled(BundleProductItems)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-hSdWYo",
+      "styledComponentId": "sc-brqgnP",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

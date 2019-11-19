@@ -6,11 +6,6 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   dataLocator="plcc_apply_now_modal"
   dataLocatorHeader="plcc_apply_now_close_btn"
   fixedWidth={true}
-  heightConfig={
-    Object {
-      "height": "100vh",
-    }
-  }
   inheritedStyles={
     Object {
       "header": "secondary",
@@ -20,7 +15,9 @@ exports[`ApplyNowModalWrapper component should renders correctly 1`] = `
   maxWidth="724px"
   onRequestClose={[MockFunction]}
   overlayClassName="TCPModal__Overlay"
+  shouldCloseOnEsc={true}
   shouldCloseOnOverlayClick={false}
+  standardHeight={true}
 >
   <Connect(ApplyCardLayoutContainer)
     closePLCCModal={[MockFunction]}

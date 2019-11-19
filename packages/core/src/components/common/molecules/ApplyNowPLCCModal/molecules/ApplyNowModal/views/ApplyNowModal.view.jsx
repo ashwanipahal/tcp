@@ -37,10 +37,11 @@ const StyledApplyNowModal = ({
       dataLocator={getLocator('plcc_apply_now_modal')}
       dataLocatorHeader={getLocator('plcc_apply_now_close_btn')}
       maxWidth="464px"
-      minHeight="646px"
+      standardHeight
       inheritedStyles={modalStyles}
       shouldCloseOnOverlayClick={false}
       innerContentClassName="innerContent"
+      shouldCloseOnEsc={!isRtpsFlow}
     >
       <div className="Modal__Content__Wrapper">
         <Row fullBleed className="submit_plcc_form">
@@ -70,7 +71,7 @@ const StyledApplyNowModal = ({
               {getLabelValue(labels, 'lbl_PLCCModal_applyNowSubText')}
             </BodyCopy>
 
-            <RichText className="congrats_msg" richTextHtml={rtpsCongratsMsg} />
+            {isRtpsFlow && <RichText className="congrats_msg" richTextHtml={rtpsCongratsMsg} />}
           </Col>
         </Row>
 

@@ -3,10 +3,9 @@ import { fromJS, List } from 'immutable';
 import CHECKOUT_SELECTORS, {
   getSendOrderUpdate,
   getAlternateFormFieldsExpress,
-  getPickupValues,
   getPageData,
 } from '../container/Checkout.selector';
-import { isMobileApp, getAPIConfig } from '../../../../../utils';
+import { getAPIConfig } from '../../../../../utils';
 
 jest.mock('../../../../../utils', () => ({
   isMobileApp: jest.fn(),
@@ -199,53 +198,6 @@ describe('Checkout Selectors', () => {
     expect(CHECKOUT_SELECTORS.getShippingAddress(State)).toEqual({ addressLine: ['abc', 'def'] });
   });
 
-  it('#getIsVenmoEnabled', () => {
-    const { getIsVenmoEnabled } = CHECKOUT_SELECTORS;
-    const session = {
-      siteDetails: {
-        VENMO_ENABLED: 'TRUE',
-      },
-    };
-
-    const state = {
-      session,
-    };
-    isMobileApp.mockImplementation(() => true);
-    expect(CHECKOUT_SELECTORS.getIsMobile()).toEqual(true);
-    expect(getIsVenmoEnabled(state)).toEqual(true);
-  });
-
-  it('#getVenmoClientTokenData', () => {
-    const { getVenmoClientTokenData } = CHECKOUT_SELECTORS;
-    const Checkout = fromJS({
-      values: {
-        venmoClientTokenData: {
-          userState: 'G',
-          venmoCustomerIdAvailable: false,
-          venmoIsDefaultPaymentType: false,
-          venmoPaymentTokenAvailable: false,
-          venmoSecurityToken: '',
-        },
-      },
-    });
-
-    const state = {
-      Checkout: fromJS({
-        values: {
-          venmoClientTokenData: {
-            userState: 'G',
-            venmoCustomerIdAvailable: false,
-            venmoIsDefaultPaymentType: false,
-            venmoPaymentTokenAvailable: false,
-            venmoSecurityToken: '',
-          },
-        },
-      }),
-    };
-    expect(getVenmoClientTokenData(state)).toEqual(
-      Checkout.getIn(['values', 'venmoClientTokenData'])
-    );
-  });
   it('#getCurrentCheckoutStage', () => {
     const { getCurrentCheckoutStage } = CHECKOUT_SELECTORS;
     const Checkout = fromJS({
@@ -360,60 +312,6 @@ describe('Checkout Selectors', () => {
   });
 });
 
-it('#getVenmoError', () => {
-  const { getVenmoError } = CHECKOUT_SELECTORS;
-  const Checkout = fromJS({
-    values: {
-      venmoData: {
-        error: {
-          message: 'Venmo Authentication failed',
-        },
-      },
-    },
-  });
-
-  const state = {
-    Checkout: fromJS({
-      values: {
-        venmoData: {
-          error: {
-            message: 'Venmo Authentication failed',
-          },
-        },
-      },
-    }),
-  };
-  const error = Checkout.getIn(['values', 'venmoData', 'error']);
-  expect(getVenmoError(state)).toEqual(error.message);
-});
-
-it('#getVenmoUserEmail', () => {
-  const { getVenmoUserEmail, getShippingPhoneAndEmail } = CHECKOUT_SELECTORS;
-  const email = 'shipping-email@test.com';
-  const state = {
-    Checkout: fromJS({
-      values: {
-        shipping: { emailAddress: email, phoneNumber: 987654322 },
-        pickUpContact: fromJS({ emailAddress: 'pickup@test.com' }),
-      },
-    }),
-    User: fromJS({ personalData: {} }),
-  };
-
-  const Checkout = fromJS({
-    values: {
-      shipping: { emailAddress: email, phoneNumber: 987654322 },
-      pickUpContact: fromJS({ emailAddress: 'pickup@test.com' }),
-    },
-  });
-
-  expect(getShippingPhoneAndEmail(state)).toEqual({
-    emailAddress: email,
-    phoneNumber: 987654322,
-  });
-  expect(getPickupValues(state)).toEqual(Checkout.getIn(['values', 'pickUpContact']));
-  expect(getVenmoUserEmail(state)).toEqual(email);
-});
 it('#getIsRtpsFlow', () => {
   const { getIsRtpsFlow } = CHECKOUT_SELECTORS;
   const Checkout = fromJS({

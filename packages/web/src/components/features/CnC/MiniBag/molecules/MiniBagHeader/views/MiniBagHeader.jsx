@@ -43,6 +43,7 @@ class MiniBagHeader extends React.Component {
     const createAccount = 'createAccount';
     const login = 'login';
     const accountDrawer = 'accountDrawer';
+    const isCA = isCanada();
     return (
       <div className={className}>
         <Row className="mainWrapper">
@@ -77,7 +78,7 @@ class MiniBagHeader extends React.Component {
             ) : (
               <>
                 <BodyCopy
-                  className="userName"
+                  className={`userName ${isCA ? 'elem-pr-XL' : ''}`}
                   component="span"
                   fontSize="fs14"
                   fontWeight="extrabold"
@@ -87,7 +88,7 @@ class MiniBagHeader extends React.Component {
                 >
                   {`${labels.hi}, ${userName} `}
                 </BodyCopy>
-                {!isCanada && (
+                {!isCA && (
                   <BodyCopy
                     className="pointsRewards"
                     color={getPointsColor(isPlcc)}
