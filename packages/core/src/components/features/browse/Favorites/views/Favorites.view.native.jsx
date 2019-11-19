@@ -128,8 +128,6 @@ class FavoritesView extends React.PureComponent {
       }
     }
 
-    // filteredItemsList = []; DELETE this LINE
-
     const recommendationAttributes = {
       variation: 'moduleO',
       page: Constants.RECOMMENDATIONS_PAGES_MAPPING.HOMEPAGE,
@@ -160,48 +158,52 @@ class FavoritesView extends React.PureComponent {
           textAlign="center"
         />
         <LineComp borderWidth="1" marginTop="4" borderColor="gray.600" />
-        <Anchor
-          locator="pdp_write_review_icon"
-          accessibilityRole="link"
-          accessibilityLabel="Edit List Settings"
-          text={getLabelValue(labels, 'lbl_fav_editListSettings')}
-          anchorVariation="custom"
-          colorName="gray.900"
-          fontSizeVariation="large"
-          onPress={this.handleEditList}
-          centered
-          underline
-          margins="12px 0 0 0"
-        />
         {filteredItemsList.length === 0 ? (
-          <NoFavoritesFound labels={labels} />
+          <>
+            <NoFavoritesFound labels={labels} />
+            <RecommendationWrapper>
+              <Recommendations {...recommendationAttributes} />
+            </RecommendationWrapper>
+          </>
         ) : (
-          <ProductListing
-            products={filteredItemsList}
-            filters={filtersArray}
-            totalProductsCount={filteredItemsList.length}
-            filtersLength={0}
-            navigation={navigation}
-            onGoToPDPPage={onGoToPDPPage}
-            isFavorite
-            currencySymbol={currencySymbol}
-            labelsFilter={labels}
-            labels={labels}
-            onQuickViewOpenClick={onQuickViewOpenClick}
-            selectedColorProductId={selectedColorProductId}
-            setLastDeletedItemId={setLastDeletedItemId}
-            sortLabels={getSortsList(labels)}
-            onFilterSelection={onFilterSelection}
-            onSortSelection={onSortSelection}
-            filteredId={filteredId}
-            renderBrandFilter={this.renderBrandFilter}
-            labelsPlpTiles={labelsPlpTiles}
-          />
-        )}
+          <>
+            <Anchor
+              locator="pdp_write_review_icon"
+              accessibilityRole="link"
+              accessibilityLabel="Edit List Settings"
+              text={getLabelValue(labels, 'lbl_fav_editListSettings')}
+              anchorVariation="custom"
+              colorName="gray.900"
+              fontSizeVariation="large"
+              onPress={this.handleEditList}
+              centered
+              underline
+              margins="12px 0 0 0"
+            />
 
-        <RecommendationWrapper>
-          <Recommendations {...recommendationAttributes} />
-        </RecommendationWrapper>
+            <ProductListing
+              products={filteredItemsList}
+              filters={filtersArray}
+              totalProductsCount={filteredItemsList.length}
+              filtersLength={0}
+              navigation={navigation}
+              onGoToPDPPage={onGoToPDPPage}
+              isFavorite
+              currencySymbol={currencySymbol}
+              labelsFilter={labels}
+              labels={labels}
+              onQuickViewOpenClick={onQuickViewOpenClick}
+              selectedColorProductId={selectedColorProductId}
+              setLastDeletedItemId={setLastDeletedItemId}
+              sortLabels={getSortsList(labels)}
+              onFilterSelection={onFilterSelection}
+              onSortSelection={onSortSelection}
+              filteredId={filteredId}
+              renderBrandFilter={this.renderBrandFilter}
+              labelsPlpTiles={labelsPlpTiles}
+            />
+          </>
+        )}
       </PageContainer>
     );
   }

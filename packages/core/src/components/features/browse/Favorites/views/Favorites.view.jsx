@@ -53,8 +53,6 @@ const FavoritesView = props => {
     }
   }
 
-  // filteredItemsList = []; DELETE this LINE
-
   const productsList = !!filteredItemsList && (
     <>
       <ProductsGrid
@@ -142,83 +140,94 @@ const FavoritesView = props => {
           </BodyCopy>
         </Col>
       </Row>
-      <Row fullBleed className="list-selection-row">
-        <Col colSize={{ small: 6, medium: 6, large: 8 }}>
+      {filteredItemsList.length !== 0 ? (
+        <>
+          <Row fullBleed className="list-selection-row">
+            <Col colSize={{ small: 6, medium: 6, large: 8 }}>
+              <Row fullBleed>
+                <Col
+                  colSize={{ small: 6, medium: 5, large: 6 }}
+                  offsetLeft={{ medium: 3, large: 6 }}
+                >
+                  <SelectWishListDropdown
+                    labels={labels}
+                    wishlistsSummaries={wishlistsSummaries}
+                    createNewWishList={createNewWishList}
+                    getActiveWishlist={getActiveWishlist}
+                    activeWishList={activeWishList}
+                    defaultWishList={defaultWishList}
+                  />
+                </Col>
+              </Row>
+            </Col>
+            <Col colSize={{ small: 6, medium: 2, large: 4 }}>
+              <Row fullBleed>
+                <Col
+                  colSize={{ small: 2, medium: 6, large: 4 }}
+                  offsetLeft={{ small: 4, medium: 2, large: 8 }}
+                >
+                  <CustomSelect
+                    options={shareOptions}
+                    activeTitle={labels.lbl_fav_share}
+                    clickHandler={(e, value) => shareClickHandler(value)}
+                    customSelectClassName="social-share-fav-list"
+                  />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
           <Row fullBleed>
-            <Col colSize={{ small: 6, medium: 5, large: 6 }} offsetLeft={{ medium: 3, large: 6 }}>
-              <SelectWishListDropdown
+            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+              <ProductListingFiltersForm
+                filtersMaps={{
+                  display_group_uFilter: filters,
+                  unbxdDisplayName: {
+                    display_group_uFilter: filters.length && filters[0].displayName,
+                  },
+                }}
+                totalProductsCount={!!activeWishList && activeWishList.items.length}
+                initialValues={{}}
+                filtersLength={{}}
                 labels={labels}
-                wishlistsSummaries={wishlistsSummaries}
-                createNewWishList={createNewWishList}
-                getActiveWishlist={getActiveWishlist}
-                activeWishList={activeWishList}
-                defaultWishList={defaultWishList}
+                slpLabels={slpLabels}
+                isFavoriteView
+                favoriteSortingParams={getSortsList(labels)}
+                onFilterSelection={onFilterSelection}
+                onSortSelection={onSortSelection}
+                defaultPlaceholder={getSortsList(labels)[0].displayName}
               />
             </Col>
           </Row>
-        </Col>
-        <Col colSize={{ small: 6, medium: 2, large: 4 }}>
-          <Row fullBleed>
+          <Row className="brand-filter-section" fullBleed>
+            <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+              <BrandFilterList />
+            </Col>
+          </Row>
+          <Row>
             <Col
-              colSize={{ small: 2, medium: 6, large: 4 }}
-              offsetLeft={{ small: 4, medium: 2, large: 8 }}
+              colSize={{ small: 6, medium: 8, large: 12 }}
+              className="product-list"
+              ignoreGutter={{ small: true, medium: true, large: true }}
             >
-              <CustomSelect
-                options={shareOptions}
-                activeTitle={labels.lbl_fav_share}
-                clickHandler={(e, value) => shareClickHandler(value)}
-                customSelectClassName="social-share-fav-list"
-              />
+              {productsList}
             </Col>
           </Row>
-        </Col>
-      </Row>
-      <Row fullBleed>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <ProductListingFiltersForm
-            filtersMaps={{
-              display_group_uFilter: filters,
-              unbxdDisplayName: {
-                display_group_uFilter: filters.length && filters[0].displayName,
-              },
-            }}
-            totalProductsCount={!!activeWishList && activeWishList.items.length}
-            initialValues={{}}
-            filtersLength={{}}
-            labels={labels}
-            slpLabels={slpLabels}
-            isFavoriteView
-            favoriteSortingParams={getSortsList(labels)}
-            onFilterSelection={onFilterSelection}
-            onSortSelection={onSortSelection}
-            defaultPlaceholder={getSortsList(labels)[0].displayName}
-          />
-        </Col>
-      </Row>
-      <Row className="brand-filter-section" fullBleed>
-        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <BrandFilterList />
-        </Col>
-      </Row>
-      <Row>
-        <Col
-          colSize={{ small: 6, medium: 8, large: 12 }}
-          className="product-list"
-          ignoreGutter={{ small: true, medium: true, large: true }}
-        >
-          {filteredItemsList.length === 0 ? <NoFavoritesFound labels={labels} /> : productsList}
-        </Col>
-        <Col
-          hideCol={{ small: true, medium: true }}
-          colSize={{ small: 6, medium: 8, large: 12 }}
-          className="recommendation"
-        >
-          {/* Placeholder for you may also like */}
-          <div>
-            <Recommendations {...recommendationAttributes} />
-          </div>
-        </Col>
-      </Row>
+        </>
+      ) : (
+        <>
+          <NoFavoritesFound labels={labels} />
+          <Col
+            hideCol={{ small: true, medium: true }}
+            colSize={{ small: 6, medium: 8, large: 12 }}
+            className="recommendation"
+          >
+            {/* Placeholder for you may also like */}
+            <div>
+              <Recommendations {...recommendationAttributes} />
+            </div>
+          </Col>
+        </>
+      )}
     </div>
   );
 };
