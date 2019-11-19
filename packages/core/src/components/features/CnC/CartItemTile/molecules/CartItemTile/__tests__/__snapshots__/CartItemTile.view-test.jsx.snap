@@ -341,7 +341,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -779,7 +781,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1230,7 +1234,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -1664,7 +1670,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2098,7 +2106,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2532,7 +2542,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -2992,7 +3004,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3440,7 +3454,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -3900,7 +3916,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4348,7 +4366,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -4796,7 +4816,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5247,7 +5269,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -5698,7 +5722,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6149,7 +6175,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6626,7 +6654,9 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            undefinedNaN
+            <Connect(PriceCurrency)
+              price={NaN}
+            />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -6744,7 +6774,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKJlTe",
+        "componentId": "sc-frDJqD",
         "isStatic": false,
         "rules": Array [
           "
@@ -6756,8 +6786,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
           ";
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -7238,7 +7273,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKJlTe",
+      "styledComponentId": "sc-frDJqD",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -7282,7 +7317,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jKJlTe",
+        "componentId": "sc-frDJqD",
         "isStatic": false,
         "rules": Array [
           "
@@ -7294,8 +7329,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           ";
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -7776,7 +7816,7 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jKJlTe",
+      "styledComponentId": "sc-frDJqD",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

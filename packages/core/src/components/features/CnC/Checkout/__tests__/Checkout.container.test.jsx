@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CheckoutContainer, mapDispatchToProps } from '../container/CheckoutCommonContainer';
+import { CheckoutContainer } from '../container/CheckoutCommonContainer';
+import { mapDispatchToProps } from '../container/CheckoutCommonContainer.util';
 import CheckoutPage from '../views/CheckoutPage.view';
 
 describe('CheckoutPage Container', () => {
@@ -25,6 +26,7 @@ describe('CheckoutPage Container', () => {
     fetchNeedHelpContent: jest.fn(),
     isRegisteredUserCallDone: true,
     getUserInformation: jest.fn(),
+    markBagPageRoutingDone: jest.fn(),
     isPayPalWebViewEnable: false,
   };
 

@@ -183,7 +183,7 @@ export class AddressForm extends React.PureComponent {
             />
           </Col>
         </Row>
-        <Row fullBleed className="elem-mb-XL">
+        <Row fullBleed className="elem-mb-XXL elem-mt-LRG">
           <Col
             colSize={{ small: 4, medium: 4, large: 6 }}
             offsetLeft={{ small: 1 }}

@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import * as labelsSelectors from '@tcp/core/src/reduxStore/selectors/labels.selectors';
 import ProductListing from '../views';
-import { getPlpProducts, getMorePlpProducts, resetPlpProducts } from './ProductListing.actions';
+import {
+  getPlpProducts,
+  getMorePlpProducts,
+  resetPlpProducts,
+  setFilter,
+} from './ProductListing.actions';
 import { processBreadCrumbs, getProductsAndTitleBlocks } from './ProductListing.util';
 import { addItemsToWishlist } from '../../Favorites/container/Favorites.actions';
 import { openQuickViewWithValues } from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.actions';
@@ -25,6 +30,7 @@ import {
   getScrollToTopValue,
   getTotalProductsCount,
   getIsDataLoading,
+  getSelectedFilter,
   getPLPTopPromos,
 } from './ProductListing.selectors';
 import { getIsPickupModalOpen } from '../../../../common/organisms/PickupStoreModal/container/PickUpStoreModal.selectors';
@@ -47,6 +53,15 @@ class ProductListingContainer extends React.PureComponent {
 
   componentDidMount() {
     this.makeApiCall();
+  }
+
+  componentDidUpdate({ navigation: oldNavigation }) {
+    const { getProducts, navigation } = this.props;
+    const oldNavigationUrl = oldNavigation.getParam('url');
+    const newNavigationUrl = navigation.getParam('url');
+    if (navigation && oldNavigationUrl !== newNavigationUrl) {
+      getProducts({ URI: 'category', url: newNavigationUrl, ignoreCache: true });
+    }
   }
 
   makeApiCall = () => {
@@ -96,6 +111,7 @@ class ProductListingContainer extends React.PureComponent {
       isLoggedIn,
       labelsLogin,
       plpTopPromos,
+      isSearchListing,
       ...otherProps
     } = this.props;
     return (
@@ -126,6 +142,7 @@ class ProductListingContainer extends React.PureComponent {
         onAddItemToFavorites={onAddItemToFavorites}
         isLoggedIn={isLoggedIn}
         plpTopPromos={plpTopPromos}
+        isSearchListing={isSearchListing}
         {...otherProps}
       />
     );
@@ -176,6 +193,7 @@ function mapStateToProps(state) {
     isDataLoading: getIsDataLoading(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     labelsPlpTiles: labelsSelectors.getPlpTilesLabels(state),
+    selectedFilterValue: getSelectedFilter(state),
     plpTopPromos: getPLPTopPromos(state),
   };
 }
@@ -184,6 +202,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getProducts: payload => {
       dispatch(getPlpProducts(payload));
+    },
+    setSelectedFilter: payload => {
+      dispatch(setFilter(payload));
     },
     getMoreProducts: payload => {
       dispatch(getMorePlpProducts(payload));
@@ -228,6 +249,7 @@ ProductListingContainer.propTypes = {
   isLoggedIn: PropTypes.bool,
   labelsLogin: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   plpTopPromos: PropTypes.arrayOf(PropTypes.shape({})),
+  isSearchListing: PropTypes.bool,
 };
 
 ProductListingContainer.defaultProps = {
@@ -251,6 +273,7 @@ ProductListingContainer.defaultProps = {
   isLoggedIn: false,
   labelsLogin: {},
   plpTopPromos: [],
+  isSearchListing: false,
 };
 
 export default connect(

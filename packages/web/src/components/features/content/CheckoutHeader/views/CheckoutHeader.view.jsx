@@ -26,13 +26,21 @@ const CheckoutHeader = ({
   itemsCount,
   isExpressCheckoutPage,
   bagLoading,
+  cartItems,
+  currentStage,
 }) => {
   return (
     <header className={`${className} content-wrapper`}>
       <Row className="header-topnav__row">
         <button
           onClick={() => {
-            checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            const availableStages = checkoutUtil.getAvailableStages(cartItems);
+            const currentIndex = availableStages.indexOf(currentStage);
+            if (currentIndex === 0) {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES.bagPage);
+            } else {
+              checkoutUtil.routeToPage(CHECKOUT_ROUTES[`${availableStages[currentIndex - 1]}Page`]);
+            }
           }}
           className="exitFromCheckout"
         >
@@ -72,7 +80,7 @@ const CheckoutHeader = ({
             large: 4,
           }}
         >
-          {!bagLoading && itemsCount > 0 ? (
+          {!bagLoading ? (
             <BodyCopy component="span" fontSize="fs16" fontFamily="secondary">
               <Anchor
                 fontSizeVariation="medium"
@@ -131,6 +139,8 @@ CheckoutHeader.propTypes = {
   itemsCount: PropTypes.number.isRequired,
   isExpressCheckoutPage: PropTypes.bool,
   bagLoading: PropTypes.bool,
+  cartItems: PropTypes.shape({}).isRequired,
+  currentStage: PropTypes.string.isRequired,
 };
 
 CheckoutHeader.defaultProps = {

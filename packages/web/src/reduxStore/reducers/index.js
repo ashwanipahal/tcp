@@ -8,6 +8,7 @@ import PaymentReducer from '@tcp/core/src/components/features/account/Payment/co
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import SEODataReducer from '@tcp/core/src/reduxStore/reducers/seoData';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import SubNavigationReducer from '@tcp/core/src/reduxStore/reducers/subNavigation';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 import AddEditAddressReducer from '@tcp/core/src/components/common/organisms/AddEditAddress/container/AddEditAddress.reducer';
@@ -141,8 +142,9 @@ import {
   MY_PREFERENCE_REDUCER_KEY,
   BUNDLEPRODUCT_REDUCER_KEY,
   ANALYTICS_DATA_KEY,
+  SUB_NAVIGATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import { TRACK_PAGE_VIEW } from '@tcp/core/src/analytics';
+import { TRACK_PAGE_VIEW, UPDATE_PAGE_DATA } from '@tcp/core/src/analytics';
 import LoaderReducer from '@tcp/core/src/components/common/molecules/Loader/container/Loader.reducer';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -187,9 +189,12 @@ const filteredStyliticsProductTabListReducer = createFilteredReducer(
 function pageNameReducer(state = {}, action) {
   switch (action.type) {
     case TRACK_PAGE_VIEW: {
-      const { props } = action.payload;
+      const { props } = action.payload || {};
       const { pageData = {} } = (props && props.initialProps && props.initialProps.pageProps) || {};
-      return pageData;
+      return { ...state, ...pageData };
+    }
+    case UPDATE_PAGE_DATA: {
+      return action.payload;
     }
     default:
       return state;
@@ -273,4 +278,5 @@ export default combineReducers({
   [MY_PREFERENCE_REDUCER_KEY]: MyPreferenceSubscriptionReducer,
   [BUNDLEPRODUCT_REDUCER_KEY]: BundleProductReducer,
   [ANALYTICS_DATA_KEY]: AnalyticsReducer,
+  [SUB_NAVIGATION_REDUCER_KEY]: SubNavigationReducer,
 });

@@ -33,11 +33,13 @@ describe('getsocialAccounts saga', () => {
       beforeEach(() => {
         savesocialAccountsGeneration = savesocialAccounts({ payload });
         savesocialAccountsGeneration.next();
+        savesocialAccountsGeneration.next();
       });
 
       it('should dispatch savesocialAccounts action for success resposnse', () => {
         const res = 'foo';
-        const putDescriptor = savesocialAccountsGeneration.next(res).value;
+        savesocialAccountsGeneration.next(res);
+        const putDescriptor = savesocialAccountsGeneration.next().value;
         expect(putDescriptor).toEqual(put(setSocialAccount(res)));
       });
     });

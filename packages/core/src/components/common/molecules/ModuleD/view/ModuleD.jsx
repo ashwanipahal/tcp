@@ -95,6 +95,7 @@ const ModuleD = ({
                       dataLocator={`${getLocator('moduleD_image')}${index + 1}`}
                       imgConfigs={imgDataConfig}
                       imgData={item.image}
+                      videoData={item.video}
                       link={{
                         className: 'moduleD_textlink',
                         ...item.link,

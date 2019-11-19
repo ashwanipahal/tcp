@@ -30,7 +30,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -173,7 +173,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -203,7 +203,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -346,7 +346,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -384,7 +384,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -527,7 +527,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -571,7 +571,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -714,7 +714,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -791,7 +791,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -802,10 +802,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -832,7 +828,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -860,8 +858,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -884,7 +880,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -915,7 +911,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -926,10 +922,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -956,7 +948,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -984,8 +978,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -1008,7 +1000,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -1070,7 +1062,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1193,7 +1185,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly in in
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1297,7 +1289,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1440,7 +1432,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1470,7 +1462,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1613,7 +1605,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1651,7 +1643,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1794,7 +1786,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1838,7 +1830,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gzVnrw",
+              "componentId": "sc-htoDjs",
               "isStatic": false,
               "rules": Array [
                 "
@@ -1981,7 +1973,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gzVnrw",
+            "styledComponentId": "sc-htoDjs",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2058,7 +2050,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -2069,10 +2061,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -2099,7 +2087,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -2127,8 +2117,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -2151,7 +2139,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -2181,7 +2169,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "sc-dnqmqq",
+                  "componentId": "sc-iwsKbI",
                   "isStatic": false,
                   "rules": Array [
                     "
@@ -2192,10 +2180,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
   height: 70px;
 
   .select__input {
-    position: absolute;
-    top: ",
-                    "26px",
-                    ";
     appearance: none;
     background: url(",
                     "/static/images/carrot-small-down.png",
@@ -2222,7 +2206,9 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                     [Function],
                     ";
     outline: 0;
-    padding: 0px 0 ",
+    padding: ",
+                    "26px",
+                    " 0 ",
                     [Function],
                     ";
     width: 100%;
@@ -2250,8 +2236,6 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
     padding-bottom: ",
                     [Function],
                     ";
-    position: absolute;
-    top: 58px;
   }
 
   .warning-icon {
@@ -2274,7 +2258,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
                 "displayName": "Styled(SelectBox)",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "sc-dnqmqq",
+                "styledComponentId": "sc-iwsKbI",
                 "target": [Function],
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -2335,7 +2319,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-gZMcBi",
+              "componentId": "sc-gqjmRU",
               "isStatic": false,
               "rules": Array [
                 "
@@ -2458,7 +2442,7 @@ exports[`AddEditPersonalInformationForm component should renders correctly with 
             "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-gZMcBi",
+            "styledComponentId": "sc-gqjmRU",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

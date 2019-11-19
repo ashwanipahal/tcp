@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  getGrandTotal,
-  getCurrencySymbol,
-} from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
+import { getGrandTotal } from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger/container/orderLedger.selector';
 import {
   openMiniBag,
   closeMiniBag,
@@ -31,7 +28,6 @@ import {
   getUserLoggedInState,
 } from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
 import BAG_ACTIONS from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.actions';
-import BagPageSelector from '../../../../../../../core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 
 export class MiniBagContainer extends React.PureComponent {
   static propTypes = {
@@ -40,7 +36,6 @@ export class MiniBagContainer extends React.PureComponent {
     labels: PropTypes.shape({}).isRequired,
     userName: PropTypes.string.isRequired,
     subTotal: PropTypes.number.isRequired,
-    currencySymbol: PropTypes.string.isRequired,
     currentPoints: PropTypes.number.isRequired,
     totalRewards: PropTypes.number.isRequired,
     isCartItemsUpdating: PropTypes.bool.isRequired,
@@ -56,7 +51,6 @@ export class MiniBagContainer extends React.PureComponent {
     rememberedUserFlag: PropTypes.bool.isRequired,
     isUserLoggedIn: PropTypes.bool.isRequired,
     miniBagLoaderState: PropTypes.bool.isRequired,
-    cartOrderItemsCount: PropTypes.number.isRequired,
   };
 
   constructor(props) {
@@ -78,7 +72,6 @@ export class MiniBagContainer extends React.PureComponent {
       isOpen,
       userName,
       subTotal,
-      currencySymbol,
       currentPoints,
       totalRewards,
       isCartItemsUpdating,
@@ -93,7 +86,6 @@ export class MiniBagContainer extends React.PureComponent {
       rememberedUserFlag,
       isUserLoggedIn,
       miniBagLoaderState,
-      cartOrderItemsCount,
     } = this.props;
 
     return (
@@ -104,7 +96,6 @@ export class MiniBagContainer extends React.PureComponent {
         totalItems={totalItems}
         userName={userName}
         subTotal={subTotal}
-        currencySymbol={currencySymbol}
         currentPoints={currentPoints}
         totalRewards={totalRewards}
         isCartItemsUpdating={isCartItemsUpdating}
@@ -119,7 +110,6 @@ export class MiniBagContainer extends React.PureComponent {
         isRememberedUser={rememberedUserFlag}
         isUserLoggedIn={isUserLoggedIn}
         miniBagLoaderState={miniBagLoaderState}
-        cartOrderItemsCount={cartOrderItemsCount}
       />
     );
   }
@@ -129,7 +119,6 @@ const mapStateToProps = state => {
     labels: getLabelsMiniBag(state),
     totalItems: getTotalItemCount(state),
     subTotal: getGrandTotal(state),
-    currencySymbol: getCurrencySymbol(state),
     currentPoints: getCurrentPointsState(state),
     totalRewards: getTotalRewardsState(state),
     isCartItemsUpdating: getIsCartItemsUpdating(state),
@@ -142,7 +131,6 @@ const mapStateToProps = state => {
     rememberedUserFlag: isRememberedUser(state),
     isUserLoggedIn: getUserLoggedInState(state),
     miniBagLoaderState: getMiniBagLoaderState(state),
-    cartOrderItemsCount: BagPageSelector.getTotalItems(state),
   };
 };
 

@@ -41,6 +41,11 @@ export default css`
     position: relative;
   }
 
+  .carousel-container {
+    position: relative;
+    width: 100%;
+  }
+
   .facebook,
   .pinterest,
   .twitter {
@@ -70,6 +75,11 @@ export default css`
     position: relative;
     bottom: 0px;
   }
+  .social-connect-sub-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+  }
 
   @media ${props => props.theme.mediaQuery.medium} {
     .main-image-container-wrap {
@@ -91,10 +101,7 @@ export default css`
       width: 100%;
       display: inline-block;
     }
-    .social-connect-sub-wrapper {
-      display: block;
-      text-align: center;
-    }
+
     .facebook,
     .pinterest,
     .twitter {

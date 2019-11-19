@@ -39,7 +39,14 @@ class OpenLoginModal extends React.Component<Props> {
   };
 
   render() {
-    const { className, openState, variation, handleContinueAsGuest, handleAfterLogin } = this.props;
+    const {
+      className,
+      openState,
+      variation,
+      handleContinueAsGuest,
+      handleAfterLogin,
+      isLoading,
+    } = this.props;
     const { currentForm, component } = this.state;
     return (
       <Modal
@@ -49,8 +56,8 @@ class OpenLoginModal extends React.Component<Props> {
         heading=""
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
-        maxWidth={variation === 'checkout' ? '616px' : '450px'}
-        heightConfig={{ minHeight: '550px', maxHeight: '600px' }}
+        widthConfig={{ small: '100%', medium: '450px', large: '616px' }}
+        standardHeight
       >
         {component === 'login' ? (
           <LoginPageContainer
@@ -60,6 +67,7 @@ class OpenLoginModal extends React.Component<Props> {
             setLoginModalMountState={this.openForgotPasswordModal}
             handleContinueAsGuest={handleContinueAsGuest}
             handleAfterLogin={handleAfterLogin}
+            isLoading={isLoading}
           />
         ) : (
           <CreateAccount
@@ -77,6 +85,7 @@ OpenLoginModal.propTypes = {
   setLoginModalMountState: PropTypes.bool.isRequired,
   handleContinueAsGuest: PropTypes.func.isRequired,
   handleAfterLogin: PropTypes.func.isRequired,
+  isLoading: PropTypes.func.isRequired,
 };
 
 export default OpenLoginModal;

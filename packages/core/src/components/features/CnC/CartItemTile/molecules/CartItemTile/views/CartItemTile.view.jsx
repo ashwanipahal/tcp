@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getLabelValue } from '@tcp/core/src/utils';
+import {
+  getLabelValue,
+  getIconPath,
+  getLocator,
+  isCanada,
+  getAPIConfig,
+  getBrand,
+} from '@tcp/core/src/utils';
+import { PriceCurrency } from '@tcp/core/src/components/common/molecules';
 import { KEY_CODES } from '@tcp/core/src/constants/keyboard.constants';
 import RenderPerf from '@tcp/web/src/components/common/molecules/RenderPerf';
 import { CONTROLS_VISIBLE } from '@tcp/core/src/constants/rum.constants';
@@ -12,13 +20,6 @@ import ClickTracker from '@tcp/web/src/components/common/atoms/ClickTracker';
 import ProductEditForm from '../../../../../../common/molecules/ProductCustomizeForm';
 import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import { Image, Row, BodyCopy, Col, Anchor } from '../../../../../../common/atoms';
-import {
-  getIconPath,
-  getLocator,
-  isCanada,
-  getAPIConfig,
-  getBrand,
-} from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
 import CARTPAGE_CONSTANTS from '../../../CartItemTile.constants';
@@ -131,14 +132,19 @@ class CartItemTile extends PureComponent {
     getProductSKUInfo({ productNum, itemBrand });
   };
 
-  handleEditCartItem = (pageView, itemBrand, productNumber) => {
+  handleEditCartItem = (pageView, itemBrand, productNumber, isBagPageSflSection = false) => {
     if (pageView !== 'myBag') {
       this.handleEditCartItemMiniBag(pageView, itemBrand, productNumber);
     } else {
       const { onQuickViewOpenClick, productDetail } = this.props;
-      const { itemId, qty, color, size, fit } = productDetail.itemInfo;
+      const { itemId, qty, color, size, fit, isGiftItem } = productDetail.itemInfo;
+      const {
+        productInfo: { skuId, generalProductId },
+      } = productDetail;
       onQuickViewOpenClick({
+        fromBagPage: pageView === 'myBag',
         colorProductId: productNumber,
+        isSflProduct: isBagPageSflSection,
         orderInfo: {
           orderItemId: itemId,
           selectedQty: qty,
@@ -146,6 +152,7 @@ class CartItemTile extends PureComponent {
           selectedSize: size,
           selectedFit: fit,
           itemBrand,
+          skuId: isGiftItem ? generalProductId : skuId,
         },
       });
     }
@@ -194,15 +201,16 @@ class CartItemTile extends PureComponent {
   };
 
   callEditMethod = () => {
-    const { productDetail, pageView } = this.props;
+    const { productDetail, pageView, isBagPageSflSection } = this.props;
     const {
       miscInfo: { orderItemType },
     } = productDetail;
-    if (orderItemType === CARTPAGE_CONSTANTS.ECOM) {
+    if (orderItemType === CARTPAGE_CONSTANTS.ECOM || isBagPageSflSection) {
       this.handleEditCartItem(
         pageView,
         productDetail.itemInfo.itemBrand,
-        productDetail.productInfo.productPartNumber
+        productDetail.productInfo.productPartNumber,
+        isBagPageSflSection
       );
     } else if (pageView === 'myBag') {
       const openSkuSelectionForm = true;
@@ -497,7 +505,7 @@ class CartItemTile extends PureComponent {
   // eslint-disable-next-line complexity
   getItemDetails = (productDetail, labels, pageView) => {
     const { isEdit } = this.state;
-    const { currencySymbol, isBagPageSflSection } = this.props;
+    const { isBagPageSflSection } = this.props;
     const { offerPrice } = productDetail.itemInfo;
     // SFL prices
     const isBagPage = pageView === 'myBag';
@@ -546,7 +554,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             dataLocator={getLocator('cart_item_total_price')}
           >
-            {`${currencySymbol}${offerPrice.toFixed(2)}`}
+            <PriceCurrency price={offerPrice} />
           </BodyCopy>
         )}
       </Row>
@@ -590,7 +598,7 @@ class CartItemTile extends PureComponent {
   };
 
   getProductPriceList = (productDetail, pageView, currencyExchange) => {
-    const { isBagPageSflSection, showOnReviewPage, labels, currencySymbol } = this.props;
+    const { isBagPageSflSection, showOnReviewPage, labels } = this.props;
     const { isGiftItem } = productDetail.itemInfo;
     const { salePrice, wasPrice, listPrice, price } = getPrices({
       productDetail,
@@ -619,7 +627,7 @@ class CartItemTile extends PureComponent {
               dataLocator={getLocator('sfl_sale_price')}
               fontWeight={['extrabold']}
             >
-              {`${currencySymbol}${Number(price).toFixed(2)}`}
+              <PriceCurrency price={Number(price)} />
             </BodyCopy>
             <BodyCopy
               fontFamily="secondary"
@@ -629,7 +637,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(listPrice).toFixed(2)}`}
+              <PriceCurrency price={Number(listPrice)} />
             </BodyCopy>
           </Col>
         </>
@@ -658,7 +666,7 @@ class CartItemTile extends PureComponent {
             fontWeight={['extrabold']}
             className={!showOnReviewPage && 'reviewPagePrice'}
           >
-            {`${currencySymbol}${Number(salePrice).toFixed(2)}`}
+            <PriceCurrency price={Number(salePrice)} />
           </BodyCopy>
           {!isGiftItem && wasPrice !== salePrice && (
             <BodyCopy
@@ -669,7 +677,7 @@ class CartItemTile extends PureComponent {
               fontWeight={['regular']}
               className="was-price"
             >
-              {`${currencySymbol}${Number(wasPrice).toFixed(2)}`}
+              <PriceCurrency price={Number(wasPrice)} />
             </BodyCopy>
           )}
         </Col>
@@ -1296,7 +1304,6 @@ CartItemTile.propTypes = {
   onPickUpOpenClick: PropTypes.func.isRequired,
   onQuickViewOpenClick: PropTypes.func,
   orderId: PropTypes.number.isRequired,
-  currencySymbol: PropTypes.string.isRequired,
   setShipToHome: PropTypes.func,
   toggleError: PropTypes.shape({}),
   toggleBossBopisError: PropTypes.shape({

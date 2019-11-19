@@ -7,7 +7,7 @@ import CreditCardSelector from './CreditCard.selectors';
 import constants from './CreditCard.constants';
 import CheckoutSelectors from '../../../container/Checkout.selector';
 import * as sessionSelectors from '../../../../../../../reduxStore/selectors/session.selectors';
-import { updateCardData } from '../../../container/Checkout.action';
+import CheckoutActions from '../../../container/Checkout.action';
 import { toastMessageInfo } from '../../../../../../common/atoms/Toast/container/Toast.actions.native';
 
 /**
@@ -333,6 +333,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
       pageCategory,
       getPayPalSettings,
       isPayPalWebViewEnable,
+      bagLoading,
     } = this.props;
     this.initialValues = this.getInitialValues(this.getCreditCardDefault(cardList));
     return (
@@ -375,6 +376,7 @@ export class GiftCardsContainer extends React.PureComponent<Props> {
         pageCategory={pageCategory}
         getPayPalSettings={getPayPalSettings}
         isPayPalWebViewEnable={isPayPalWebViewEnable}
+        bagLoading={bagLoading}
       />
     );
   }
@@ -407,7 +409,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     updateCardDetail: payload => {
-      dispatch(updateCardData(payload));
+      dispatch(CheckoutActions.updateCardData(payload));
     },
     toastMessage: palyoad => {
       dispatch(toastMessageInfo(palyoad));

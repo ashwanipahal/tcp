@@ -27,7 +27,10 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
   isSmsUpdatesEnabled={true}
   isUsSite={false}
   isVenmoPaymentInProgress={false}
+  isVenmoPickupBannerDisplayed={true}
+  isVenmoShippingBannerDisplayed={true}
   onEditModeChange={true}
+  pageData={Object {}}
   pickupDidMount={[Function]}
   reviewProps={
     Object {
@@ -51,6 +54,9 @@ exports[`CheckoutPage Container should call componentDidUpdate 1`] = `
       "shippingDidMount": [Function],
     }
   }
+  submitBilling={[Function]}
+  submitReview={[Function]}
+  submitShippingSection={[Function]}
 />
 `;
 
@@ -81,7 +87,10 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
   isSmsUpdatesEnabled={true}
   isUsSite={false}
   isVenmoPaymentInProgress={false}
+  isVenmoPickupBannerDisplayed={true}
+  isVenmoShippingBannerDisplayed={true}
   onEditModeChange={true}
+  pageData={Object {}}
   pickupDidMount={[Function]}
   reviewProps={
     Object {
@@ -105,5 +114,8 @@ exports[`CheckoutPage Container should render CheckoutPage view section 1`] = `
       "shippingDidMount": [Function],
     }
   }
+  submitBilling={[Function]}
+  submitReview={[Function]}
+  submitShippingSection={[Function]}
 />
 `;

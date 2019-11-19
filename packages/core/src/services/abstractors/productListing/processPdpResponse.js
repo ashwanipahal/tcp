@@ -70,6 +70,7 @@ const processPdpResponse = ({
   reviewsCount,
   alternateSizes,
   breadCrumbs,
+  category,
 }) => {
   return {
     breadCrumbs,
@@ -80,6 +81,7 @@ const processPdpResponse = ({
       // generalProductId = color with matching seo OR colorIdOrSeoKeyword is its a number OR default to first color's ID (To Support Outfits)
       generalProductId: getGeneralProductId(colorIdOrSeoKeyword, colorFitsSizesMap, baseProduct),
       categoryId: getCatId(categoryId),
+      category,
       name: getIsGiftCard(isGiftCard, baseProduct),
       pdpUrl: `/p/${colorIdOrSeoKeyword}`,
       shortDescription: baseProduct.product_short_description,
