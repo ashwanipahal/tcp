@@ -1,4 +1,4 @@
-/* eslint max-lines: ["error", 500] */
+/* eslint max-lines: ["error", 550] */
 const enterPhoneNumber = 'lbl_err_phonenumber_required';
 const validPhoneNumber = 'lbl_err_phonenumber_phone';
 const validStreetAddress = 'lbl_err_validstreetaddress';
@@ -8,9 +8,6 @@ const ssnMessage = 'lbl_err_ssnumber_ssn';
 export const formValidationMessages = {
   gender: {
     required: 'lbl_err_gender_required',
-  },
-  wishlistName: {
-    nonEmpty: 'lbl_err_listname_nonempty',
   },
   childName: {
     nonEmpty: 'lbl_err_name_nonempty',
@@ -202,6 +199,11 @@ export const formValidationMessages = {
     required: 'lbl_err_order_date_required',
   },
   promoId: 'lbl_err_airmilesaccountnumber',
+  listName: {
+    nonEmpty: 'lbl_fav_list_name_nonempty',
+    name: 'lbl_fav_list_name',
+    maxLength: 'lbl_fav_list_name_maxlength',
+  },
 };
 
 export const formValidationRules = {
@@ -448,6 +450,12 @@ export const formValidationRules = {
   promoId: {
     number: true,
     exactLength: 11,
+  },
+  listName: {
+    nonEmpty: true,
+    name: true,
+    maxLength: 50,
+    required: true,
   },
 };
 

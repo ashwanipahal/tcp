@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import ProductsGrid from '@tcp/core/src/components/features/browse/ProductListing/molecules/ProductsGrid/views';
+import { getLabelValue } from '@tcp/core/src/utils';
 import QuickViewModal from '../../../../common/organisms/QuickViewModal/container/QuickViewModal.container';
 import ProductListingFiltersForm from '../../ProductListing/molecules/ProductListingFiltersForm';
 import { Row, Col, BodyCopy, InputCheckBox } from '../../../../common/atoms';
@@ -10,11 +11,17 @@ import { getNonEmptyFiltersList, getSortsList, getVisibleWishlistItems } from '.
 import SelectWishListDropdown from '../molecules/SelectWishListDropdown';
 import CustomSelect from '../../../../common/molecules/CustomSelect/views';
 import AddList from '../molecules/AddList/views';
+import EditList from '../molecules/EditList/views';
+import ModalWrapper from '../molecules/ModalWrapper';
 
 class FavoritesView extends React.PureComponent {
+  currentPopupName;
+
   constructor(props) {
     super(props);
-    console.log('isModalOpen');
+    this.state = {
+      isOpenAddList: false,
+    };
   }
 
   shareClickHandler = value => {
@@ -105,6 +112,74 @@ class FavoritesView extends React.PureComponent {
     );
   };
 
+  handleAddList = () => {
+    this.currentPopupName = 'addList';
+    this.setState({
+      isOpenAddList: true,
+    });
+  };
+
+  handleEditList = () => {
+    this.currentPopupName = 'editList';
+    this.setState({
+      isOpenAddList: true,
+    });
+  };
+
+  onCloseModal = () => {
+    this.setState({
+      isOpenAddList: false,
+    });
+  };
+
+  getCurrentPopUpHeading = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === 'addList') {
+      return getLabelValue(labels, 'lbl_fav_creat_new_list_heading');
+    }
+    if (this.currentPopupName === 'editList') {
+      return getLabelValue(labels, 'lbl_fav_edit_list');
+    }
+    return '';
+  };
+
+  onAddNewListHandler = data => {
+    console.log('onAddNewListHandler:', data);
+  };
+
+  onEditListHandler = data => {
+    console.log('onEditListHandler:', data);
+  };
+
+  renderModalWrapper = () => {
+    const { labels } = this.props;
+    const { isOpenAddList } = this.state;
+    return (
+      <ModalWrapper
+        labels={labels}
+        heading={this.getCurrentPopUpHeading()}
+        modalMargins="0 14px 0 14px"
+        isOpenAddList={isOpenAddList}
+        onCloseModal={this.onCloseModal}
+        widthConfig={{ small: '375px', medium: '432px', large: '432px' }}
+        heightConfig={{ minHeight: '459px', height: '459px', maxHeight: '459px' }}
+      >
+        {this.getCurrentPopUp()}
+      </ModalWrapper>
+    );
+  };
+
+  getCurrentPopUp = () => {
+    const { labels } = this.props;
+    if (this.currentPopupName === 'addList') {
+      return <AddList labels={labels} onHandleSubmit={this.onAddNewListHandler} />;
+    }
+    if (this.currentPopupName === 'editList') {
+      return <EditList labels={labels} onHandleSubmit={this.onEditListHandler} />;
+    }
+    return null;
+  };
+
   render() {
     const {
       className,
@@ -160,6 +235,8 @@ class FavoritesView extends React.PureComponent {
                   getActiveWishlist={getActiveWishlist}
                   activeWishList={activeWishList}
                   defaultWishList={defaultWishList}
+                  openAddNewList={this.handleAddList}
+                  openEditList={this.handleEditList}
                 />
               </Col>
             </Row>
@@ -222,7 +299,7 @@ class FavoritesView extends React.PureComponent {
             <div>You may also like</div>
           </Col>
         </Row>
-        <AddList labels={labels} />
+        {this.renderModalWrapper()}
       </div>
     );
   }

@@ -11,9 +11,9 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import styles from '../styles/AddList.style';
+import styles from '../styles/EditList.style';
 
-class AddList extends React.PureComponent {
+class EditList extends React.PureComponent {
   submitHandler = () => {
     const { handleSubmit, onHandleSubmit } = this.props;
     handleSubmit(data => {
@@ -97,22 +97,22 @@ class AddList extends React.PureComponent {
 
 const validateMethod = createValidateMethod(getStandardConfig(['listName']));
 
-AddList.propTypes = {
+EditList.propTypes = {
   labels: PropTypes.shape({}),
   className: PropTypes.string,
   handleSubmit: PropTypes.func,
   onHandleSubmit: PropTypes.func.isRequired,
 };
-AddList.defaultProps = {
+EditList.defaultProps = {
   labels: {},
   className: '',
   handleSubmit: () => {},
 };
 
 export default reduxForm({
-  form: 'AddListForm', // a unique identifier for this form
+  form: 'EditListForm', // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
-})(withStyles(AddList, styles));
+})(withStyles(EditList, styles));
 
-export { AddList as AddListFormVanilla };
+export { EditList as EditListFormVanilla };
