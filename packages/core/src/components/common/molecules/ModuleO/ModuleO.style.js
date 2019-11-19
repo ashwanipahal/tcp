@@ -31,6 +31,7 @@ export default css`
   }
   .container-price {
     text-align: left;
+    min-height: 50px;
   }
 
   @media ${props => props.theme.mediaQuery.large} {
