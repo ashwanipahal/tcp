@@ -257,6 +257,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-video')
     implementation project(':react-native-check-notification-permission')
     implementation project(':react-native-twitter-signin')
     implementation project(':react-native-awesome-card-io')

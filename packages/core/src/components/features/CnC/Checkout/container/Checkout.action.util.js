@@ -64,3 +64,21 @@ export const getSetIntlUrl = internationalUrl => {
     type: 'CHECKOUT_ORDER_OPTIONS_SET_INTL_URL',
   };
 };
+
+export const getSetGiftWrapValuesActn = payload => {
+  return {
+    payload,
+    type: constants.CHECKOUT_VALUES_SET_GIFTWRAP,
+  };
+};
+
+/**
+ * @function initCheckoutAction
+ * action creator for type: INIT_CHECKOUT
+ */
+export const initCheckoutAction = (router, isPaypalFlow, navigation) => ({
+  type: constants.INIT_CHECKOUT,
+  router,
+  isPaypalFlow,
+  navigation,
+});
