@@ -445,7 +445,7 @@ export function* removeUnqualifiedItemsAndCheckout({ navigation } = {}) {
 }
 
 export function* addItemToSFL({
-  payload: { itemId, catEntryId, userInfoRequired, afterHandler, isMiniBag } = {},
+  payload: { itemId, catEntryId, afterHandler, isMiniBag } = {},
 } = {}) {
   if (isMiniBag) {
     yield put(setSectionLoaderState({ miniBagLoaderState: true, section: 'minibag' }));
@@ -475,9 +475,6 @@ export function* addItemToSFL({
       yield put(BAG_PAGE_ACTIONS.setCartItemsSflError(resErr));
     } else {
       yield put(BAG_PAGE_ACTIONS.setCartItemsSFL(true));
-      if (userInfoRequired) {
-        yield put(getUserInfo());
-      }
       yield put(removeCartItem({ itemId }));
     }
   } catch (err) {
