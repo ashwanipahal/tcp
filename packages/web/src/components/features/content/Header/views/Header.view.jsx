@@ -76,7 +76,8 @@ class Header extends React.PureComponent {
       className,
       brandTabs,
       promoMessageWrapper,
-      headerPromoArea,
+      headerPromoTextArea,
+      headerPromoHtmlArea,
       navigationDrawer,
       openNavigationDrawer,
       closeNavigationDrawer,
@@ -140,9 +141,14 @@ class Header extends React.PureComponent {
         <HeaderPromo
           mobileMarkup
           className="header__promo-area--mobile"
-          dataPromo={headerPromoArea}
+          dataTextPromo={headerPromoTextArea}
+          dataHtmlPromo={headerPromoHtmlArea}
         />
-        <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
+        <HeaderPromo
+          className="header__promo-area--desktop"
+          dataTextPromo={headerPromoTextArea}
+          dataHtmlPromo={headerPromoHtmlArea}
+        />
         <LoyaltyPromoBanner richTextList={loyaltyPromoBanner} className="header-promo__container" />
         {showCondensedHeader && (
           <CondensedHeader
@@ -174,7 +180,8 @@ Header.propTypes = {
   loyaltyPromoBanner: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoTextArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoHtmlArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
