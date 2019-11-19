@@ -1,6 +1,7 @@
 const buildQuery = val => `
   query fetchCMSData {
     countryList(countryCode: "${val}") {
+      errorMessage
       country {
         id: code
         displayName: name
