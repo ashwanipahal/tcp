@@ -27,10 +27,10 @@ jest.mock('react-native-cookies', () => ({
   get: () => Promise.resolve(null),
 }));
 
-jest.mock('react-native-check-notification-permission', () => ({
-  changeNotificationSetting: jest.fn(),
-  checkNotificationPermission: jest.fn(() => Promise.resolve(false)),
-}));
+// jest.mock('react-native-check-notification-permission', () => ({
+//   changeNotificationSetting: jest.fn(),
+//   checkNotificationPermission: jest.fn(() => Promise.resolve(false)),
+// }));
 
 jest.mock('react-native-awesome-card-io', () => {
   return {
