@@ -1,7 +1,6 @@
 import { submit } from 'redux-form';
 import { setClickAnalyticsData, trackClick, updatePageData } from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
-  initCheckoutAction,
   submitShippingSection,
   submitPickupSection,
   onEditModeChangeAction,
@@ -47,6 +46,7 @@ import { getPayPalFlag } from '../util/utility';
 import { isMobileApp } from '../../../../../utils';
 import GiftCardSelector from '../organisms/GiftCardsSection/container/GiftCards.selectors';
 import { getCardListFetchingState } from '../../../account/Payment/container/Payment.selectors';
+import { getInitialGiftWrapOptions } from '../organisms/ShippingPage/molecules/GiftServices/container/GiftServices.selector';
 
 const {
   getSmsSignUpLabels,
@@ -122,7 +122,7 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
 export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: (router, isPaypalFlow, navigation) => {
-      dispatch(initCheckoutAction(router, isPaypalFlow, navigation));
+      dispatch(CHECKOUT_ACTIONS.initCheckoutAction(router, isPaypalFlow, navigation));
     },
     initCheckoutSectionPage: payload => {
       dispatch(CHECKOUT_ACTIONS.initCheckoutSectionPageAction(payload));
@@ -154,6 +154,7 @@ export const mapDispatchToProps = dispatch => {
     },
     submitBilling: payload => dispatch(submitBillingSection(payload)),
     fetchNeedHelpContent: contentIds => dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds)),
+    markBagPageRoutingDone: () => dispatch(BAG_PAGE_ACTIONS.setBagPageIsRouting(false)),
     submitReview: payload => dispatch(submitReviewSection(payload)),
     verifyAddressAction: payload => dispatch(verifyAddress(payload)),
     dispatchReviewReduxForm: () => dispatch(submit(constants.REVIEW_FORM_NAME)),
@@ -186,6 +187,8 @@ export const mapDispatchToProps = dispatch => {
 
 /* istanbul ignore next */
 export const mapStateToProps = state => {
+  const giftWrap = getInitialGiftWrapOptions(state);
+  const hasSetGiftOptions = giftWrap && giftWrap.size;
   return {
     initialValues: selectors.getPickupInitialPickupSectionValues(state),
     checkoutRoutingDone: selectors.getIfCheckoutRoutingDone(state),
@@ -224,6 +227,7 @@ export const mapStateToProps = state => {
       isLoadingShippingMethods: GiftCardSelector.getIsLoading(state),
       isFetching: getCardListFetchingState(state),
       bagLoading: BagPageSelector.isBagLoading(state),
+      hasSetGiftOptions,
     },
     billingProps: {
       labels: getBillingLabels(state),

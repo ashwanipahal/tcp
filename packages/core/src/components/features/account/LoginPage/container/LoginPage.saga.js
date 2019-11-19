@@ -1,6 +1,7 @@
 import { call, takeLatest, put, select, take } from 'redux-saga/effects';
 import logger from '@tcp/core/src/utils/loggerInstance';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
+import bagPageSelectors from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.selectors';
 import { setLoginModalMountedState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import { setClickAnalyticsData, trackClick } from '@tcp/core/src/analytics/actions';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
@@ -53,14 +54,17 @@ export function* loginSaga({ payload, afterLoginHandler }) {
       yield put(trackClick('login_submit'));
 
       // Provide check for current page and depending on that make Cart or OrderDetails call.
-      return yield put(
-        BAG_PAGE_ACTIONS.getCartData({
-          isRecalculateTaxes: true,
-          excludeCartItems: false,
-          recalcRewards: true,
-          translation: true,
-        })
-      );
+      const isBagRouting = yield select(bagPageSelectors.isBagRouting);
+      if (!isBagRouting) {
+        return yield put(
+          BAG_PAGE_ACTIONS.getCartData({
+            isRecalculateTaxes: true,
+            excludeCartItems: false,
+            recalcRewards: true,
+            translation: true,
+          })
+        );
+      }
     }
 
     return yield put(setLoginInfo(response));

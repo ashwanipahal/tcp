@@ -73,8 +73,9 @@ export const BackContainer = styled.View`
 export const CartContainer = styled.View`
   align-items: flex-end;
   align-self: flex-end;
-  flex-basis: 100%;
+  flex-basis: 85%;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-left: 60px;
 `;
 
 export const StoreContainer = styled.TouchableOpacity`
