@@ -14,11 +14,12 @@ import CONSTANTS from '../User.constants';
 import { setUserInfo, setIsRegisteredUserCallDone } from './User.actions';
 import { getProfile } from '../../../../../services/abstractors/account';
 import { validateReduxCache } from '../../../../../utils/cache.util';
-import { getSiteId, routerPush } from '../../../../../utils';
+import { getSiteId, isMobileApp, routerPush } from '../../../../../utils';
 import { API_CONFIG } from '../../../../../services/config';
 import { setAddressList } from '../../AddressBook/container/AddressBook.actions';
 import { defaultCountries, defaultCurrencies } from '../../../../../constants/site.constants';
 
+// eslint-disable-next-line complexity
 export function* getUserInfoSaga() {
   yield put(setLoaderState(true));
   try {
@@ -32,7 +33,6 @@ export function* getUserInfoSaga() {
     const dataSetActions = [];
     const [us, ca] = defaultCountries;
     const [currencyAttributesUS, currencyAttributesCA] = defaultCurrencies;
-    let currencyAttributes = {};
 
     if (country) {
       dataSetActions.push(put(setCountry(country)));
@@ -51,24 +51,27 @@ export function* getUserInfoSaga() {
      * Below code is to get currency attributes based on
      * current country returned from getRegisteredUserInfo API
      */
-    if (country === us.id) {
-      currencyAttributes = currencyAttributesUS;
-    } else if (country === ca.id) {
-      currencyAttributes = currencyAttributesCA;
-    } else {
-      const res = yield call(countryListAbstractor.getData, country);
-      const countryList = res && res.data.countryList;
-      const currentCountry = countryList.length && countryList[0];
-      const { currency: currencyObj, exchangeRate } = currentCountry;
-      currencyAttributes = { ...currencyObj, ...exchangeRate };
-    }
+    if (!isMobileApp()) {
+      let currencyAttributes = {};
+      if (country === us.id) {
+        currencyAttributes = currencyAttributesUS;
+      } else if (country === ca.id) {
+        currencyAttributes = currencyAttributesCA;
+      } else {
+        const res = yield call(countryListAbstractor.getData, country);
+        const countryList = res && res.data.countryList;
+        const currentCountry = countryList.length && countryList[0];
+        const { currency: currencyObj, exchangeRate } = currentCountry;
+        currencyAttributes = { ...currencyObj, ...exchangeRate };
+      }
 
-    yield put(
-      setCurrency({
-        currency,
-        currencyAttributes,
-      })
-    );
+      yield put(
+        setCurrency({
+          currency,
+          currencyAttributes,
+        })
+      );
+    }
 
     if (language) {
       yield put(setLanguage(language));
