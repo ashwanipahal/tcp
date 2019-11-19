@@ -30,13 +30,30 @@ const renderTiles = tiles => {
  * @param {headerText} headerText : Header data object
  * @param {imageGrid} imageGrid : Slides data in array list
  */
-const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoBanner }) => {
+const ModuleL = ({
+  className,
+  headerText,
+  imageGrid,
+  imagesPerSlide,
+  promoBanner,
+  accessibility,
+}) => {
   const options = config.CAROUSEL_OPTIONS;
   options.prevArrow = (
-    <button type="button" data-locator="moduleL_left_arrow" className="slick-prev" />
+    <button
+      type="button"
+      aria-label={accessibility.previousButton}
+      data-locator="moduleL_left_arrow"
+      className="slick-prev"
+    />
   );
   options.nextArrow = (
-    <button type="button" data-locator="moduleL_right_arrow" className="slick-prev" />
+    <button
+      type="button"
+      aria-label={accessibility.nextIconButton}
+      data-locator="moduleL_right_arrow"
+      className="slick-prev"
+    />
   );
   const checkPromo = promoBanner && promoBanner.length;
   if (parseInt(imagesPerSlide, 10) === 4) {
@@ -92,6 +109,7 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoBanner
 };
 ModuleL.defaultProps = {
   promoBanner: [],
+  accessibility: {},
 };
 
 ModuleL.propTypes = {
@@ -116,6 +134,10 @@ ModuleL.propTypes = {
       textItems: PropTypes.array,
     })
   ),
+  accessibility: PropTypes.shape({
+    previousButton: PropTypes.string,
+    nextIconButton: PropTypes.string,
+  }),
 };
 
 export default withStyles(errorBoundary(ModuleL), style);

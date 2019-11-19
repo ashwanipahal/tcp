@@ -23,6 +23,11 @@ const getCouponCode = store => {
   return defaultData && defaultData.couponCode;
 };
 
+const getSocialNetwork = store => {
+  const defaultData = getAnalyticsData(store);
+  return defaultData && defaultData.socialNetwork;
+};
+
 export const generateClickHandlerDataLayer = store => {
   return {
     eventData: {
@@ -32,6 +37,7 @@ export const generateClickHandlerDataLayer = store => {
           products: getProductsData(store) || '',
           eventName: getEventName(store) || '',
           couponCode: getCouponCode(store) || '',
+          socialNetwork: getSocialNetwork(store) || '',
         };
       },
     },

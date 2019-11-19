@@ -11,18 +11,9 @@ import {
   toggleCountrySelectorModal,
   initIntlCheckoutAction,
   getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
 } from './Checkout.action.util';
-
-/**
- * @function initCheckoutAction
- * action creator for type: INIT_CHECKOUT
- */
-export const initCheckoutAction = (router, isPaypalFlow, navigation) => ({
-  type: constants.INIT_CHECKOUT,
-  router,
-  isPaypalFlow,
-  navigation,
-});
 
 export const submitPickupSection = payload => ({
   type: 'CHECKOUT_SUBMIT_PICKUP_DATA',
@@ -495,4 +486,6 @@ export default {
   toggleCountrySelectorModal,
   initIntlCheckoutAction,
   getSetIntlUrl,
+  getSetGiftWrapValuesActn,
+  initCheckoutAction,
 };

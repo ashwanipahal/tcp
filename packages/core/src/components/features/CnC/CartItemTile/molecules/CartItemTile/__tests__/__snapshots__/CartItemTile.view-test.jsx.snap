@@ -312,7 +312,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -752,7 +752,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1205,7 +1205,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOPIS It
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -1641,7 +1641,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for BOSS Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -2077,7 +2077,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -2513,7 +2513,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -2975,7 +2975,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -3425,7 +3425,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -3887,7 +3887,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -4337,7 +4337,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -4787,7 +4787,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -5240,7 +5240,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for Boss Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -5693,7 +5693,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -6146,7 +6146,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -6625,7 +6625,7 @@ exports[`CartItemTile - Boss Bopis Scenarios should render the Tile for ECOM Ite
             link={null}
             textAlign="left"
           >
-            Price: 
+            Price:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -6786,8 +6786,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
           ";
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;
@@ -7324,8 +7329,13 @@ exports[`CartItemTile common component renders correctly with bag page sfl secti
           ";
   /*margin-bottom: 20px;*/
   position: relative;
+
   .product {
     padding-top: 6px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
   }
   .padding-left-10 {
     padding-left: 4px;

@@ -5,6 +5,7 @@ import { getLabelValue } from '@tcp/core/src/utils/utils';
 import { BodyCopyWithSpacing } from '@tcp/core/src/components/common/atoms/styledWrapper';
 import { BodyCopy } from '../../../../../../common/atoms';
 import { PointHistoryView, PointView, PointTransView } from '../styles/PointHistory.style';
+import PointHistoryViewSkeleton from '../skeleton/PointHistoryViewSkeleton.view.native';
 
 /**
  * @function PointsHistoryList The PointsHistory to show points history list
@@ -17,6 +18,7 @@ const PointsHistoryList = ({
   showSuccess,
   showError,
   claimPointsErrorMessage,
+  isFetching,
 }) => {
   const pointHistoryLen = pointHistory && pointHistory.length;
   return (
@@ -80,8 +82,9 @@ const PointsHistoryList = ({
           </PointView>
         </PointHistoryView>
       )}
-
-      {pointHistoryLen > 0 &&
+      {isFetching && <PointHistoryViewSkeleton />}
+      {!isFetching &&
+        pointHistoryLen > 0 &&
         pointHistory.map(pointHistoryRow => (
           <PointHistoryView>
             <PointView>
@@ -139,6 +142,7 @@ PointsHistoryList.propTypes = {
   showSuccess: PropTypes.string,
   showError: PropTypes.string,
   claimPointsErrorMessage: PropTypes.string,
+  isFetching: PropTypes.bool,
 };
 
 PointsHistoryList.defaultProps = {
@@ -153,6 +157,7 @@ PointsHistoryList.defaultProps = {
   showSuccess: '',
   showError: '',
   claimPointsErrorMessage: '',
+  isFetching: false,
 };
 
 export default PointsHistoryList;

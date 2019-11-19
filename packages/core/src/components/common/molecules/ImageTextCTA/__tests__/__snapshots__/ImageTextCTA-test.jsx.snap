@@ -27,6 +27,7 @@ exports[`Image Text CTA component renders correctly 1`] = `
             "url": "/test",
           }
         }
+        videoData={null}
       />
       <Styled(BodyCopy)
         className="image-comp"
