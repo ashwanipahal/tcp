@@ -1,10 +1,10 @@
 import { getLabelValue } from '../../../../../../../utils';
 
-const ctaTitleDefaultStore = (labels, defaultStore, isMyReferences) => {
-  if (defaultStore && isMyReferences) {
+const ctaTitleDefaultStore = (labels, favStoreName, isMyReferences) => {
+  if (!!favStoreName && isMyReferences) {
     return getLabelValue(labels, 'lbl_common_edit');
   }
-  if (defaultStore && !isMyReferences) {
+  if (!!favStoreName && !isMyReferences) {
     return getLabelValue(labels, 'lbl_common_updateFavoriteStore');
   }
   return getLabelValue(labels, 'lbl_common_addAStore');
