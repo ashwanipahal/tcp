@@ -17,14 +17,17 @@ exports[`ModuleSVanilla should match snapshot 1`] = `
   >
     <Styled(Styled(DamImage))
       alt=""
+      checkBrand=""
       crop=""
       height=""
       host="lazyload-home"
       imgConfig="c_crop,g_face:center,q_auto:best,w_305"
+      isProductImage={false}
       itemBrand=""
       source=""
       swatchConfig=""
       url="https://dam-qa-ressh.cloudinary.com/image/upload/v1570708260/PlayB_Spring-1_2x_diwsan_pcs7srk.png"
+      videoData={null}
       width={750}
     />
   </Styled(Anchor)>

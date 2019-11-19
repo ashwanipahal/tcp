@@ -4,4 +4,4 @@ export { default as dataLayer } from './dataLayer';
 
 export { trackPageView, trackClick } from './events';
 
-export { usePageTracking, useClickTracking } from './hooks';
+export { usePageTracking, useClickTracking, useSetAnalyticsDataOnClick } from './hooks';

@@ -15,6 +15,7 @@ import {
   getFormattedError,
 } from '../../../utils/errorMessage.util';
 import { isCanada as isCASite } from '../../../utils';
+import { parseStoreOpeningAndClosingTimes } from '../../../utils/parseStoreHours';
 import CARTITEMTILE_CONSTANTS from '../../../components/features/CnC/CartItemTile/CartItemTile.constants';
 import { UPDATE_ITEM_IN_CART } from '../../config';
 import { setLocalStorage } from '../../../utils/localStorageManagement';
@@ -724,12 +725,12 @@ export const getCurrentOrderFormatter = (
     if (!item.giftOptions) {
       usersOrder.totalItems += parseInt(item.qty, 10);
 
-      /* let {
-todayOpeningTime,
-todayClosingTime,
-tomorrowOpeningTime,
-tomorrowClosingTime
-} = parseStoreOpeningAndClosingTimes(store); */
+      const {
+        todayOpeningTime,
+        todayClosingTime,
+        tomorrowOpeningTime,
+        tomorrowClosingTime,
+      } = parseStoreOpeningAndClosingTimes(store);
 
       const isGiftCard = item.giftItem;
       usersOrder.orderItems.push({
@@ -808,8 +809,8 @@ tomorrowClosingTime
             : null,
           // making store details visible for both BOSS and BOPIS
           storePhoneNumber: store ? (store.shippingAddressDetails.phone1 || '').trim() : null,
-          // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
-          // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
+          storeTodayOpenRange: store ? `${todayOpeningTime} -  ${todayClosingTime}` : null,
+          storeTomorrowOpenRange: store ? `${tomorrowOpeningTime} - ${tomorrowClosingTime}` : null,
 
           availability: deriveItemAvailability(
             orderDetailsResponse,
