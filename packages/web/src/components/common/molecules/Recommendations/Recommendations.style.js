@@ -82,13 +82,5 @@ export default css`
       }
     }
   }
-
-  @media ${props => props.theme.mediaQuery.mediumOnly} {
-    &.recommendations-tile {
-      .bag-page-recommendations {
-        padding-left: 6px;
-      }
-    }
-  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
