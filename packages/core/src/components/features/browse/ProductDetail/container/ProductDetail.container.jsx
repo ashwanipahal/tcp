@@ -38,6 +38,8 @@ import {
   getAlternateSizes,
 } from './ProductDetail.selectors';
 
+import { getLabelsOutOfStock } from '../../ProductListing/container/ProductListing.selectors';
+
 import {
   addToCartEcom,
   clearAddToBagErrorState,
@@ -170,6 +172,7 @@ class ProductDetailContainer extends React.PureComponent {
       isLoggedIn,
       alternateSizes,
       isShowPriceRangeKillSwitch,
+      outOfStockLabels,
       AddToFavoriteErrorMsg,
       removeAddToFavoritesErrorMsg,
       ...otherProps
@@ -203,6 +206,7 @@ class ProductDetailContainer extends React.PureComponent {
               isLoggedIn={isLoggedIn}
               alternateSizes={alternateSizes}
               isShowPriceRangeKillSwitch={isShowPriceRangeKillSwitch}
+              outOfStockLabels={outOfStockLabels}
               AddToFavoriteErrorMsg={AddToFavoriteErrorMsg}
               removeAddToFavoritesErrorMsg={removeAddToFavoritesErrorMsg}
             />
@@ -233,11 +237,13 @@ function mapStateToProps(state) {
     currencyAttributes: getCurrencyAttributes(state),
     plpLabels: getPlpLabels(state),
     pdpLabels: getPDPLabels(state),
+    outOfStockLabels: getLabelsOutOfStock(state),
     addToBagError: getAddedToBagError(state),
     formValues: getProductDetailFormValues(state),
     isLoggedIn: getUserLoggedInState(state) && !isRememberedUser(state),
     alternateSizes: getAlternateSizes(state),
     isShowPriceRangeKillSwitch: getIsShowPriceRange(state),
+    isKeepAliveEnabled: getIsKeepAliveProduct(state),
     isKeepAliveProduct: getIsKeepAliveProduct(state),
     AddToFavoriteErrorMsg: fetchAddToFavoriteErrorMsg(state),
     store: state,
@@ -295,6 +301,7 @@ ProductDetailContainer.propTypes = {
   alternateSizes: PropTypes.shape({
     key: PropTypes.string,
   }),
+  outOfStockLabels: PropTypes.shape({}).isRequired,
   AddToFavoriteErrorMsg: PropTypes.string,
   removeAddToFavoritesErrorMsg: PropTypes.func,
 };
