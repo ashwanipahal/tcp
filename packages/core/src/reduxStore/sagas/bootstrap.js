@@ -18,6 +18,7 @@ import {
   setDeviceInfo,
   setOptimizelyFeaturesList,
   setCountry,
+  setCurrency,
   setLanguage,
   getSetTcpSegment,
   setSubNavigationData,
@@ -69,7 +70,7 @@ function* bootstrap(params) {
 
   try {
     if (siteConfig) {
-      const { country, language } = apiConfig;
+      const { country, currency, language } = apiConfig;
 
       // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
       yield putResolve(setAPIConfig(apiConfig));
@@ -77,6 +78,10 @@ function* bootstrap(params) {
       yield putResolve(setOptimizelyFeaturesList(optimizelyHeadersObject));
       if (country) {
         yield put(setCountry(country));
+      }
+
+      if (currency) {
+        yield put(setCurrency({ currency }));
       }
 
       if (language) {
