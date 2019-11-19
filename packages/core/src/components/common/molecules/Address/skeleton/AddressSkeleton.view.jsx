@@ -1,20 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import LoaderSkelton from '@tcp/core/src/components/common/molecules/LoaderSkelton';
+import styles from './AddressSkeleton.style';
 
-const AddressSkelton = () => {
+const AddressSkelton = ({ variation, className }) => {
+  const marginBottomClass = variation === 'secondary' ? 'address-field-margin' : 'elem-mb-LRG';
+
   return (
-    <div>
-      <div className="elem-mb-LRG">
-        <LoaderSkelton width="100%" height="42px" />
+    <div className={className}>
+      <div className={marginBottomClass}>
+        <LoaderSkelton className="address-field-size" />
       </div>
-      <div className="elem-mb-LRG">
-        <LoaderSkelton width="75%" height="42px" />
+      <div className={marginBottomClass}>
+        <LoaderSkelton className="address-field-centerSkeleton" />
       </div>
       <div>
-        <LoaderSkelton width="100%" height="42px" />
+        <LoaderSkelton className="address-field-size" />
       </div>
     </div>
   );
 };
 
-export default AddressSkelton;
+AddressSkelton.propTypes = {
+  className: PropTypes.string.isRequired,
+  variation: PropTypes.string.isRequired,
+};
+
+export default withStyles(AddressSkelton, styles);

@@ -182,6 +182,9 @@ export const mapDispatchToProps = dispatch => {
     clearIsBillingVisitedState: () => {
       dispatch(getSetIsBillingVisitedActn(false));
     },
+    cartLoading: () => {
+      dispatch(BAG_PAGE_ACTIONS.setBagPageLoading());
+    },
   };
 };
 

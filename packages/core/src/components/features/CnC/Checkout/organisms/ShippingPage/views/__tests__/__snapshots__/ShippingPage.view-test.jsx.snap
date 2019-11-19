@@ -12,6 +12,8 @@ exports[`Shipping Page should render correctly 1`] = `
     }
     addressLabels={Object {}}
     addressPhoneNo={null}
+    bagLoading={false}
+    checkoutRoutingDone={false}
     defaultShipmentId={null}
     destroyOnUnmount={true}
     enableReinitialize={false}
@@ -97,6 +99,8 @@ exports[`Shipping Page should render correctly with component did update and get
     }
     addressLabels={Object {}}
     addressPhoneNo={null}
+    bagLoading={false}
+    checkoutRoutingDone={false}
     defaultAddressId="34789"
     defaultShipmentId={null}
     destroyOnUnmount={true}
@@ -215,6 +219,8 @@ exports[`Shipping Page should render correctly with component did update and get
     }
     addressLabels={Object {}}
     addressPhoneNo={null}
+    bagLoading={false}
+    checkoutRoutingDone={false}
     defaultAddressId="123"
     defaultShipmentId={null}
     destroyOnUnmount={true}

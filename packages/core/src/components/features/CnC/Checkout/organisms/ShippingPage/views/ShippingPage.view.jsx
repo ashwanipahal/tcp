@@ -36,7 +36,7 @@ export default class ShippingPage extends React.PureComponent {
     shippingAddressId: PropTypes.string,
     setAsDefaultShipping: PropTypes.bool,
     addNewShippingAddressData: PropTypes.func.isRequired,
-    // checkoutRoutingDone: PropTypes.bool.isRequired,
+    checkoutRoutingDone: PropTypes.bool,
     formatPayload: PropTypes.func.isRequired,
     submitVerifiedShippingAddressData: PropTypes.func.isRequired,
     verifyAddressAction: PropTypes.func.isRequired,
@@ -60,6 +60,7 @@ export default class ShippingPage extends React.PureComponent {
     pickUpContactPerson: PropTypes.shape({}).isRequired,
     hasSetGiftOptions: PropTypes.bool,
     isLoadingShippingMethods: PropTypes.bool,
+    bagLoading: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -90,6 +91,8 @@ export default class ShippingPage extends React.PureComponent {
     setVenmoPickupState: () => {},
     shippingPhoneAndEmail: null,
     isLoadingShippingMethods: false,
+    checkoutRoutingDone: false,
+    bagLoading: false,
   };
 
   constructor(props) {
@@ -364,7 +367,7 @@ export default class ShippingPage extends React.PureComponent {
     const { isSubmitting, formatPayload, ServerErrors, checkoutServerError } = this.props;
     const { shippingAddress, isVenmoPaymentInProgress, isVenmoShippingDisplayed } = this.props;
     const { addressLabels, isOrderUpdateChecked, isGiftServicesChecked } = this.props;
-    const { toggleCountrySelector, pageCategory } = this.props;
+    const { toggleCountrySelector, pageCategory, checkoutRoutingDone, bagLoading } = this.props;
     const primaryAddressId = this.getPrimaryAddress();
     const { isAddNewAddress, isEditing, defaultAddressId } = this.state;
     let { submitData } = this;
@@ -377,9 +380,11 @@ export default class ShippingPage extends React.PureComponent {
     // }
     return (
       <>
-        {shipmentMethods && shipmentMethods.length > 0 && (
+        {((shipmentMethods && shipmentMethods.length > 0) || !checkoutRoutingDone) && (
           <>
             <ShippingForm
+              checkoutRoutingDone={checkoutRoutingDone}
+              bagLoading={bagLoading}
               toggleCountrySelector={toggleCountrySelector}
               checkoutServerError={checkoutServerError}
               isSubmitting={isSubmitting}

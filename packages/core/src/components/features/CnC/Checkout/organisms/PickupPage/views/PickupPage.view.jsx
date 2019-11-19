@@ -214,12 +214,11 @@ class PickUpFormPart extends React.Component {
       ServerErrors,
       pageCategory,
       isBagLoaded,
-      checkoutRoutingDone,
     } = this.props;
     const { isEditing, pickUpContact } = this.state;
-    if (!checkoutRoutingDone) {
-      return <div>Loading....</div>;
-    }
+    // if (!checkoutRoutingDone) {
+    //   return <div>Loading....</div>;
+    // }
     return (
       <>
         {isBagLoaded && (

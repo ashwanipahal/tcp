@@ -179,7 +179,7 @@ class GuestBillingForm extends React.Component {
                       formName="checkoutBilling"
                     />
                   ) : (
-                    <AddressSkeleton />
+                    <AddressSkeleton variation="secondary" />
                   )}
                 </>
               ) : null}

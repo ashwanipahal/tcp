@@ -107,7 +107,7 @@ export class BillingPaymentForm extends React.PureComponent {
         }
       />
     ) : (
-      <AddressSkeleton />
+      <AddressSkeleton variation="secondary" />
     );
   };
 

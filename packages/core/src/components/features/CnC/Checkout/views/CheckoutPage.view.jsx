@@ -158,6 +158,7 @@ class CheckoutPage extends React.PureComponent {
       initShippingPage,
       shippingMethod,
       pickupDidMount,
+      cartLoading,
     } = this.props;
     const { isHasPickUpAlternatePerson, pickUpAlternatePerson, pickUpContactPerson } = this.props;
     const { pickUpContactAlternate, checkoutServerError, toggleCountrySelector } = this.props;
@@ -288,6 +289,7 @@ class CheckoutPage extends React.PureComponent {
             }}
             clearCheckoutServerError={clearCheckoutServerError}
             pageCategory={currentSection.toLowerCase()}
+            cartLoading={cartLoading}
           />
         )}
         {currentSection.toLowerCase() === CHECKOUT_STAGES.CONFIRMATION && (

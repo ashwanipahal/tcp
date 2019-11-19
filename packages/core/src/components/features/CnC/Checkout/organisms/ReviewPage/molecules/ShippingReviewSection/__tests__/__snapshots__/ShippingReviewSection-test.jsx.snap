@@ -22,79 +22,9 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
-      <div
-        className="shippingAddressTitle"
-      >
-        <Styled(BodyCopy)
-          className={null}
-          color="gray.900"
-          component="p"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-      </div>
-      <Styled(Address)
-        className="addressStyle"
-      />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(ShippingMethodDisplay)
-        displayName=""
-        labels={
-          Object {
-            "lbl_review_sectionShippingMethodTitle": "title",
-          }
-        }
-      />
-      <Styled(GiftWrappingDisplay)
-        displayName="N/A"
-        labels={
-          Object {
-            "lbl_review_sectionShippingMethodTitle": "title",
-          }
-        }
-      />
-    </Styled(Col)>
-  </Styled(Row)>
+  <Styled(AddressSkelton)
+    variation="secondary"
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -133,81 +63,9 @@ exports[`GiftWrappingDisplay component should renders correctly props are presen
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
-      <div
-        className="shippingAddressTitle"
-      >
-        <Styled(BodyCopy)
-          className={null}
-          color="gray.900"
-          component="p"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-      </div>
-      <Styled(Address)
-        className="addressStyle"
-      />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      >
-        (123) 456-7897
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(ShipmentMethods)
-        shipmentHeader="title"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
+  <Styled(AddressSkelton)
+    variation="secondary"
+  />
   <Styled(Row)
     fullBleed={true}
   >
@@ -255,62 +113,9 @@ exports[`GiftWrappingDisplay component should renders correctly props not presen
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
-      <div
-        className="shippingAddressTitle"
-      >
-        <Styled(BodyCopy)
-          className={null}
-          color="gray.900"
-          component="p"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs16"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          link={null}
-          textAlign="left"
-        />
-      </div>
-      <Styled(Address)
-        className="addressStyle"
-      />
-      <Styled(BodyCopy)
-        className={null}
-        color="gray.900"
-        component="p"
-        dataLocator=""
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        link={null}
-        textAlign="left"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    />
-  </Styled(Row)>
+  <Styled(AddressSkelton)
+    variation="secondary"
+  />
   <Styled(Row)
     fullBleed={true}
   >

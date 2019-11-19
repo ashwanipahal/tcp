@@ -87,6 +87,7 @@ export class PickUpReviewSection extends React.PureComponent {
       isExpressCheckout,
       pickUpContactAlternate,
       bagLoading,
+      checkoutRoutingDone,
     } = this.props;
     const {
       lbl_review_pickupSectionTitle: title,
@@ -133,7 +134,7 @@ export class PickUpReviewSection extends React.PureComponent {
             )}
           </Col>
         </Row>
-        {!bagLoading ? (
+        {!bagLoading && checkoutRoutingDone ? (
           <>
             <Row fullBleed className="row-two">
               {stores.map((store, index) => {
@@ -216,8 +217,14 @@ export class PickUpReviewSection extends React.PureComponent {
           </>
         ) : (
           <>
-            <LoaderSkelton width="40% " height="40%" />
-            <AddressSkeleton />
+            <Row>
+              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                <LoaderSkelton width="100px" height="100px" />
+              </Col>
+              <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+                <AddressSkeleton variation="secondary" />
+              </Col>
+            </Row>
           </>
         )}
       </div>
@@ -250,6 +257,7 @@ PickUpReviewSection.propTypes = {
   isExpressCheckout: PropTypes.bool,
   pickUpContactAlternate: PropTypes.shape({}).isRequired,
   bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 PickUpReviewSection.defaultProps = {
@@ -270,6 +278,7 @@ PickUpReviewSection.defaultProps = {
   },
   isExpressCheckout: false,
   bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(PickUpReviewSection, styles);

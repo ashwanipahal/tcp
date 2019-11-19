@@ -14,6 +14,11 @@ import GiftWrappingDisplay from '../../GiftWrappingDisplay';
 import ShipmentMethods from '../../../../../../common/molecules/ShipmentMethods';
 
 export class ShippingReviewSection extends React.PureComponent {
+  shouldRenderAddressTile = () => {
+    const { bagLoading, checkoutRoutingDone } = this.props;
+    return !bagLoading && checkoutRoutingDone;
+  };
+
   render() {
     const {
       className,
@@ -27,7 +32,6 @@ export class ShippingReviewSection extends React.PureComponent {
       shipmentMethods,
       formName,
       formSection,
-      bagLoading,
     } = this.props;
     const {
       lbl_review_shippingSectionTitle: title,
@@ -48,7 +52,7 @@ export class ShippingReviewSection extends React.PureComponent {
           </Col>
         </Row>
 
-        {!bagLoading ? (
+        {this.shouldRenderAddressTile() ? (
           <Row fullBleed>
             <Col colSize={{ small: 6, medium: 4, large: 5 }}>
               <div className="shippingAddressTitle">
@@ -103,7 +107,7 @@ export class ShippingReviewSection extends React.PureComponent {
             </Col>
           </Row>
         ) : (
-          <AddressSkeleton />
+          <AddressSkeleton variation="secondary" />
         )}
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 4, large: 5 }}>
@@ -142,6 +146,7 @@ ShippingReviewSection.propTypes = {
   formSection: PropTypes.string.isRequired,
   expressReviewShippingSectionId: PropTypes.shape({}),
   bagLoading: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 
 ShippingReviewSection.defaultProps = {
@@ -151,6 +156,7 @@ ShippingReviewSection.defaultProps = {
   giftWrappingDisplayName: 'N/A',
   expressReviewShippingSectionId: {},
   bagLoading: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(ShippingReviewSection, styles);

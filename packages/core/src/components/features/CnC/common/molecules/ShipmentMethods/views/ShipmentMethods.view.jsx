@@ -15,6 +15,7 @@ const ShipmentMethods = ({
   className,
   shipmentHeader,
   isLoadingShippingMethods,
+  checkoutRoutingDone,
 }) => {
   const selectedShipment =
     shipmentMethods && shipmentMethods.find(method => method.id === selectedShipmentId);
@@ -29,7 +30,7 @@ const ShipmentMethods = ({
       >
         {shipmentHeader}
       </BodyCopy>
-      {!isLoadingShippingMethods ? (
+      {!isLoadingShippingMethods && checkoutRoutingDone ? (
         <Row fullBleed className={className}>
           {shipmentMethods &&
             shipmentMethods.length > 0 &&
@@ -77,7 +78,7 @@ const ShipmentMethods = ({
           )}
         </Row>
       ) : (
-        <AddressSkeleton />
+        <AddressSkeleton variation="secondary" />
       )}
     </>
   );
@@ -89,6 +90,7 @@ ShipmentMethods.propTypes = {
   className: PropTypes.string,
   shipmentHeader: PropTypes.string,
   isLoadingShippingMethods: PropTypes.bool,
+  checkoutRoutingDone: PropTypes.bool,
 };
 ShipmentMethods.defaultProps = {
   shipmentMethods: null,
@@ -96,6 +98,7 @@ ShipmentMethods.defaultProps = {
   className: '',
   shipmentHeader: '',
   isLoadingShippingMethods: false,
+  checkoutRoutingDone: false,
 };
 
 export default withStyles(ShipmentMethods, styles);
