@@ -133,7 +133,7 @@ exports[`PlaceCashBanner should render correctly should match snapshot if isEnab
                 Object {
                   "__typename": "ReferredContent",
                   "contentId": "ab6a5c6a-3e4e-4d2b-824b-a61c93e70f73",
-                  "name": "PlaceCash_Detail_US_Bag",
+                  "name": "PlaceCash_Detail_US_bag",
                 },
               ],
             }
