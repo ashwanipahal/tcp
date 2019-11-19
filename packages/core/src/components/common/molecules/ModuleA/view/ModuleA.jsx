@@ -70,7 +70,7 @@ class ModuleA extends React.Component {
       ctaItems,
       ctaType,
       className,
-      accessibility: { playIconButton, pauseIconButton } = {},
+      accessibility: { playIconButton, pauseIconButton, previousButton, nextIconButton } = {},
       fullBleed,
     } = this.props;
 
@@ -89,10 +89,20 @@ class ModuleA extends React.Component {
     };
 
     CAROUSEL_OPTIONS.prevArrow = (
-      <button type="button" data-locator="moduleA_left_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={previousButton}
+        data-locator="moduleA_left_arrow"
+        className="slick-prev"
+      />
     );
     CAROUSEL_OPTIONS.nextArrow = (
-      <button type="button" data-locator="moduleA_right_arrow" className="slick-prev" />
+      <button
+        type="button"
+        aria-label={nextIconButton}
+        data-locator="moduleA_right_arrow"
+        className="slick-prev"
+      />
     );
     carouselConfig.autoplay = carouselConfig.autoplay && largeCompImageCarousel.length > 1;
     carouselConfig.pauseIconButtonLabel = pauseIconButton;
@@ -193,6 +203,8 @@ ModuleA.propTypes = {
   accessibility: PropTypes.shape({
     playIconButton: PropTypes.string,
     pauseIconButton: PropTypes.string,
+    previousButton: PropTypes.string,
+    nextIconButton: PropTypes.string,
   }),
   className: PropTypes.string.isRequired,
   largeCompImageCarousel: PropTypes.arrayOf(

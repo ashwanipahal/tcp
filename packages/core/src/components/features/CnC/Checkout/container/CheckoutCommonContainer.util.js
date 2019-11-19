@@ -1,7 +1,6 @@
 import { submit } from 'redux-form';
 import { setClickAnalyticsData, trackClick, updatePageData } from '@tcp/core/src/analytics/actions';
 import CHECKOUT_ACTIONS, {
-  initCheckoutAction,
   submitShippingSection,
   submitPickupSection,
   onEditModeChangeAction,
@@ -123,7 +122,7 @@ export const intiSectionPage = (pageName, scope, extraProps = {}) => {
 export const mapDispatchToProps = dispatch => {
   return {
     initCheckout: (router, isPaypalFlow, navigation) => {
-      dispatch(initCheckoutAction(router, isPaypalFlow, navigation));
+      dispatch(CHECKOUT_ACTIONS.initCheckoutAction(router, isPaypalFlow, navigation));
     },
     initCheckoutSectionPage: payload => {
       dispatch(CHECKOUT_ACTIONS.initCheckoutSectionPageAction(payload));

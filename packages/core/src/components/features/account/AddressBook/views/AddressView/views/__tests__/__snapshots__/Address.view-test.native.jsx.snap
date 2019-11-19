@@ -16,6 +16,7 @@ exports[`AddressView should render correctly 1`] = `
     ]
   }
   deleteModalMountedState={false}
+  isFetching={false}
   labels={
     Object {
       "addressBook": Object {
@@ -74,6 +75,7 @@ exports[`AddressView should render correctly without any address 1`] = `
   }
   addresses={Immutable.List []}
   deleteModalMountedState={false}
+  isFetching={false}
   labels={
     Object {
       "addressBook": Object {

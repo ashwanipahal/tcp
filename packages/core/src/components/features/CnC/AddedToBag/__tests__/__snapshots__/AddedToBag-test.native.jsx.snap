@@ -46,20 +46,35 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       <Styled(View)
         payPalView={[Function]}
       >
-        <ScrollViewMock>
-          <Styled(ProductInformation)
-            data={Object {}}
-            labels={Object {}}
-            quantity=""
-          />
-          <Connect(AddedToBagViewPointsContainer)
-            labels={Object {}}
-          />
-          <Connect(AddedToBagContainer)
-            closeModal={[Function]}
-            fromAddedToBagModal={true}
-            hideHeader={[Function]}
-            labels={Object {}}
+        <Styled(ProductInformation)
+          data={Object {}}
+          labels={Object {}}
+          quantity=""
+        />
+        <Connect(AddedToBagViewPointsContainer)
+          labels={Object {}}
+        />
+        <Connect(AddedToBagContainer)
+          closeModal={[Function]}
+          fromAddedToBagModal={true}
+          hideHeader={[Function]}
+          labels={Object {}}
+          navigation={
+            Object {
+              "getParam": [Function],
+              "navigate": [MockFunction],
+              "param": Object {
+                "headerMode": false,
+              },
+            }
+          }
+          showAddTobag={true}
+        />
+        <Styled(BossBanner)
+          labels={Object {}}
+        />
+        <Styled(View)>
+          <Connect(LoyaltyBannerContainer)
             navigation={
               Object {
                 "getParam": [Function],
@@ -69,64 +84,48 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
                 },
               }
             }
-            showAddTobag={true}
+            pageCategory="isAddedToBagPage"
           />
-          <Styled(BossBanner)
-            labels={Object {}}
+        </Styled(View)>
+        <Styled(View)>
+          <Connect(Recommendations)
+            isAddedToBagOpen={true}
+            navigation={
+              Object {
+                "getParam": [Function],
+                "navigate": [MockFunction],
+                "param": Object {
+                  "headerMode": false,
+                },
+              }
+            }
+            page="cart"
+            priceOnly={true}
+            variation="moduleO"
           />
-          <Styled(View)>
-            <Connect(LoyaltyBannerContainer)
-              navigation={
-                Object {
-                  "getParam": [Function],
-                  "navigate": [MockFunction],
-                  "param": Object {
-                    "headerMode": false,
-                  },
-                }
-              }
-              pageCategory="isAddedToBagPage"
-            />
-          </Styled(View)>
-          <Styled(View)>
-            <Connect(Recommendations)
-              isAddedToBagOpen={true}
-              navigation={
-                Object {
-                  "getParam": [Function],
-                  "navigate": [MockFunction],
-                  "param": Object {
-                    "headerMode": false,
-                  },
-                }
-              }
-              page="cart"
-              priceOnly={true}
-              variation="moduleO"
-            />
-          </Styled(View)>
-          <Styled(View)>
-            <Styled(Anchor)
-              accessibilityLabel=""
-              anchorVariation="primary"
-              colorName={null}
-              customStyle={Object {}}
-              dataLocator="addedToBag-continueShopping"
-              fontSizeVariation="medium"
-              justifyContent=""
-              locator=""
-              margins={null}
-              noLink={true}
-              onPress={[Function]}
-              text=""
-              to=""
-              underline={true}
-              visible={false}
-            />
-          </Styled(View)>
-        </ScrollViewMock>
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(Anchor)
+            accessibilityLabel=""
+            anchorVariation="primary"
+            colorName={null}
+            customStyle={Object {}}
+            dataLocator="addedToBag-continueShopping"
+            fontSizeVariation="medium"
+            justifyContent=""
+            locator=""
+            margins={null}
+            noLink={true}
+            onPress={[Function]}
+            text=""
+            to=""
+            underline={true}
+            visible={false}
+          />
+        </Styled(View)>
       </Styled(View)>
     </Styled(View)>
   </Styled(View)>
+  <Connect(Loader) />
 </ModalNative>
 `;

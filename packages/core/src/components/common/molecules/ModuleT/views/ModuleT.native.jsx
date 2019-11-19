@@ -123,7 +123,13 @@ class ModuleT extends React.PureComponent {
   renderMediaLinkedImage = (mediaLinkedList, navigation) => {
     return (
       <ImageContainer>
-        {mediaLinkedList.map(({ image, link }, index) => {
+        {mediaLinkedList.map(({ image, link, video }, index) => {
+          const videoData = {
+            videoWidth: buttonWidth,
+            videoHeight: 202,
+            ...video,
+          };
+
           return (
             <ImageWrapper tileIndex={index}>
               <Anchor url={link ? link.url : ''} navigation={navigation} key={index.toString()}>
@@ -134,6 +140,7 @@ class ModuleT extends React.PureComponent {
                   testID={`${getLocator('moduleT_product_img')}${index}`}
                   alt={image && image.alt}
                   imgConfig={IMG_DATA.promoImgConfig[0]}
+                  videoData={videoData}
                 />
               </Anchor>
             </ImageWrapper>
